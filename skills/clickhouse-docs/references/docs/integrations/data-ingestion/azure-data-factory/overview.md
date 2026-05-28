@@ -8,8 +8,6 @@ integration:
   - category: 'data_ingestion'
 ---
 
-# Bringing Azure Data into ClickHouse
-
 <ClickHouseSupportedBadge/>
 
 Microsoft Azure offers a wide range of tools to store, transform, and analyze

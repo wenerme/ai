@@ -44,8 +44,8 @@ If you are not using xterm.js, you only need `@cloudflare/sandbox` for types.
 
 Add a route that proxies WebSocket connections to the sandbox terminal. The example below supports both the default session and named sessions via a query parameter:
 
-* [  JavaScript ](#tab-panel-7651)
-* [  TypeScript ](#tab-panel-7652)
+* [  JavaScript ](#tab-panel-8200)
+* [  TypeScript ](#tab-panel-8201)
 
 JavaScript
 
@@ -151,8 +151,8 @@ export default {
 
 Create the terminal in your browser code and attach the `SandboxAddon`. The addon manages the WebSocket connection, automatic reconnection, and resize forwarding.
 
-* [  JavaScript ](#tab-panel-7653)
-* [  TypeScript ](#tab-panel-7654)
+* [  JavaScript ](#tab-panel-8202)
+* [  TypeScript ](#tab-panel-8203)
 
 JavaScript
 
@@ -286,8 +286,8 @@ For the full addon API, refer to the [Terminal API reference](https://developers
 
 If you are building a custom terminal UI or running in an environment without xterm.js, connect directly over WebSockets. The protocol uses binary frames for terminal data and JSON text frames for control messages.
 
-* [  JavaScript ](#tab-panel-7655)
-* [  TypeScript ](#tab-panel-7656)
+* [  JavaScript ](#tab-panel-8204)
+* [  TypeScript ](#tab-panel-8205)
 
 JavaScript
 
@@ -459,7 +459,7 @@ For the full protocol specification, refer to the [WebSocket protocol section](h
 * **Always use FitAddon** — Without it, terminal dimensions do not match the container and text wraps incorrectly.
 * **Handle resize events** — Call `fitAddon.fit()` on window resize so the terminal and PTY stay in sync.
 * **Clean up on unmount** — Call `addon.disconnect()` when removing the terminal from the page.
-* **Use sessions for isolation** — If users need separate shell environments, create sessions with different working directories and environment variables.
+* **Scope terminals to a user sandbox** — Use sessions for multiple terminal contexts in the same workspace. Use separate sandboxes for separate users.
 
 ## Related resources
 

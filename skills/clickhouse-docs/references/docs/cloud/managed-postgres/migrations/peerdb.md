@@ -1,11 +1,10 @@
 ---
-title: 'Migrate PostgreSQL data using PeerDB'
+title: 'Migrate to Managed Postgres using PeerDB'
 description: 'Learn how to migrate your PostgreSQL data to ClickHouse Managed Postgres using PeerDB'
 keywords: ['postgres', 'postgresql', 'logical replication', 'migration', 'data transfer', 'managed postgres', 'peerdb']
 doc_type: 'guide'
 ---
 
-# Migrate to Managed Postgres using PeerDB {#peerdb-migration}
 This guide provides step-by-step instructions on how to migrate your PostgreSQL database to ClickHouse Managed Postgres using PeerDB.
 <BetaBadge link="https://clickhouse.com/cloud/postgres" galaxyTrack={true} galaxyEvent="docs.managed-postgres.migration-guide-peerdb-beta" />
 

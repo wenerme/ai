@@ -5,8 +5,6 @@ doc_type: 'guide'
 keywords: ['Redis', 'metrics', 'OTEL', 'ClickStack']
 ---
 
-# Monitoring Redis Metrics with ClickStack {#redis-metrics-clickstack}
-
 :::note[TL;DR]
 Monitor Redis performance metrics in ClickStack using the OTel Redis receiver. Includes a demo dataset and pre-built dashboard.
 

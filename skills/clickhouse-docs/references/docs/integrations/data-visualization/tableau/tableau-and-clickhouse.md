@@ -9,8 +9,6 @@ integration:
   - website: 'https://github.com/analytikaplus/clickhouse-tableau-connector-jdbc'
 ---
 
-# Connecting Tableau to ClickHouse
-
 <ClickHouseSupportedBadge/>
 
 ClickHouse offers an official Tableau Connector, featured on

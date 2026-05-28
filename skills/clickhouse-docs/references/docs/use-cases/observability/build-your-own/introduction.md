@@ -1,12 +1,10 @@
 ---
-title: 'Introduction'
+title: 'Using ClickHouse for observability'
 description: 'Using ClickHouse as an observability solution'
 keywords: ['observability', 'logs', 'traces', 'metrics', 'OpenTelemetry', 'Grafana', 'OTel']
 show_related_blogs: true
 doc_type: 'guide'
 ---
-
-# Using ClickHouse for observability
 
 ## Introduction {#introduction}
 

@@ -5,8 +5,6 @@ keywords: ['ClickHouse Cloud', 'access management']
 doc_type: 'guide'
 ---
 
-# Common access management queries
-
 > **tip**: Self-managed
 If you're working with self-managed ClickHouse please see [SQL users and roles](/guides/sre/user-management/index.md).
 

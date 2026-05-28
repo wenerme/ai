@@ -8,8 +8,6 @@ integration:
   - category: 'data_ingestion'
 ---
 
-# Integrating Amazon MSK with ClickHouse
-
 <div class='vimeo-container'>
   <iframe src="//www.youtube.com/embed/6lKI_WlQ3-s"
     width="640"

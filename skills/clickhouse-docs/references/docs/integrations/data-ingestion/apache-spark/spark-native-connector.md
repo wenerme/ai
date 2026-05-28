@@ -1,11 +1,9 @@
 ---
 description: 'Introduction to Apache Spark with ClickHouse'
 keywords: ['clickhouse', 'Apache Spark', 'migrating', 'data']
-title: 'Spark Connector'
+title: 'Spark connector'
 doc_type: 'guide'
 ---
-
-# Spark connector
 
 <ClickHouseSupportedBadge/>
 

@@ -6,8 +6,6 @@ title: 'Query API endpoints'
 doc_type: 'guide'
 ---
 
-# Query API endpoints {#query-api-endpoints}
-
 Building interactive data-driven applications requires not only a fast database, well-structured data, and optimized queries.
 Your front-end and microservices also need an easy way to consume the data returned by those queries, preferably via well-structured APIs.
 

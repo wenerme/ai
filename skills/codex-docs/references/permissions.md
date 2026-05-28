@@ -108,12 +108,46 @@ Inside an active profile, narrower deny rules stay in force even when a broader
 path is readable or writable. For example, a profile can make workspace roots
 writable while still setting a matching `.env` path to `deny`.
 
+## Extend a profile
+
+Use `extends` when a profile is mostly the same as a built-in or another named
+profile. Prefer extending a built-in profile over starting from scratch so
+baseline protections carry forward. Extending `:workspace`, for example, keeps
+the workspace root's `.codex` directory read-only unless you explicitly
+override it. Set the parent once, then add or override only the rules that
+differ.
+
+```toml
+default_permissions = "project-edit"
+
+[permissions.project-edit]
+description = "Project editing with OpenAI API access."
+extends = ":workspace"
+
+[permissions.project-edit.filesystem.":workspace_roots"]
+"**/*.env" = "deny"
+
+[permissions.project-edit.network]
+enabled = true
+
+[permissions.project-edit.network.domains]
+"api.openai.com" = "allow"
+```
+
+This profile starts with `:workspace`, keeps matching `.env` files denied, and
+allows requests to `api.openai.com`. A profile can extend `:read-only`,
+`:workspace`, or another named profile. It cannot extend
+`:danger-full-access`; Codex also rejects unknown parents and inheritance
+cycles.
+
 ## Configuration spec
 
 | Entry                                                             | Type / values              | Default                 | Details                                                                                                                                                                                                                                                                                        |
 | ----------------------------------------------------------------- | -------------------------- | ----------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | `default_permissions`                                             | String profile name        | None                    | Names the permissions profile Codex applies by default. The value must match a profile under `[permissions]` or a built-in profile such as `:workspace`. Required when permission profiles are active. If an older sandbox setting is active, Codex uses those older sandbox settings instead. |
 | `[permissions.<name>]`                                            | Table                      | None                    | Defines a profile and its identifier. `default_permissions` selects one profile as the default; other permission-profile selectors also use the profile name.                                                                                                                                  |
+| `permissions.<name>.description`                                  | String                     | None                    | Provides a human-readable description for the profile. A profile does not inherit its parent's description through `extends`.                                                                                                                                                                  |
+| `permissions.<name>.extends`                                      | String profile name        | None                    | Starts this profile from another named profile or the built-in `:read-only` or `:workspace` profile. Codex rejects `:danger-full-access`, unknown parents, and inheritance cycles.                                                                                                             |
 | `[permissions.<name>.workspace_roots]`                            | Table                      | None                    | Adds profile-defined workspace roots that receive `:workspace_roots` filesystem rules alongside the current session's runtime workspace roots.                                                                                                                                                 |
 | `permissions.<name>.workspace_roots."<path>"`                     | Boolean                    | `false`                 | Adds the path to the profile's workspace root set when `true`. Entries set to `false` remain inactive.                                                                                                                                                                                         |
 | `[permissions.<name>.filesystem]`                                 | Table                      | None                    | Maps filesystem paths to access values or scoped subpath maps. Missing or empty filesystem tables keep filesystem access restricted and emit a startup warning.                                                                                                                                |

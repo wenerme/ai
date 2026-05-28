@@ -28,6 +28,7 @@ glab runner managers 1 --output json
 ## Options
 
 ```plaintext
+      --jq string       Filter JSON output with a jq expression.
   -F, --output string   Format output as: text, json. (default "text")
   -R, --repo string     Select another repository. You can use either OWNER/REPO or GROUP/NAMESPACE/REPO. The full URL or Git URL is also accepted.
 ```

@@ -8,8 +8,6 @@ integration:
   - category: 'data_visualization'
 ---
 
-# Query builder
-
 <ClickHouseSupportedBadge/>
 
 Any query can be run with the ClickHouse plugin.

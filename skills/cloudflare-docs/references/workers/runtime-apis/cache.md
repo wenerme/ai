@@ -60,26 +60,6 @@ await myCache.match(request);
 
 ```
 
-Note
-
-When using the cache API, avoid overriding the hostname in cache requests, as this can lead to unnecessary DNS lookups and cache inefficiencies. Always use the hostname that matches the domain associated with your Worker.
-
-JavaScript
-
-```
-
-// recommended approach: use your Worker hostname to ensure efficient caching
-
-request.url = "https://your-Worker-hostname.com/";
-
-
-let myCache = await caches.open('custom:cache');
-
-let response = await myCache.match(request);
-
-
-```
-
 ---
 
 ## Headers

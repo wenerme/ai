@@ -8,8 +8,6 @@ integration:
   - category: 'data_visualization'
 ---
 
-# Connecting Splunk to ClickHouse
-
 <ClickHouseSupportedBadge/>
 
 > **tip**: Looking to store ClickHouse audit logs to Splunk? Follow the ["Storing ClickHouse Cloud Audit logs into Splunk"](/integrations/audit-splunk) guide.

@@ -5,8 +5,6 @@ title: 'Features and configurations'
 doc_type: 'guide'
 ---
 
-# Features and configurations
-
 <ClickHouseSupportedBadge/>
 
 In this section, we provide documentation about some of the features available for dbt with ClickHouse.

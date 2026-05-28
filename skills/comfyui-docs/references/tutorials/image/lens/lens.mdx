@@ -1,0 +1,110 @@
+---
+title: "Lens ComfyUI workflow example"
+description: "Lens is a 3.8B parameter text-to-image model by Microsoft, using dual-stream MMDiT with GPT-OSS-20B text features and FLUX.2 VAE for efficient, high-resolution generation."
+---
+
+**Lens** is an open text-to-image model by **Microsoft**, licensed under MIT. With **3.8 billion** parameters, it uses a **dual-stream MMDiT** architecture with **GPT-OSS-20B** text encoder features and the **FLUX.2 semantic VAE** to deliver competitive image quality with substantially less training compute than larger T2I models.
+
+**Model highlights**:
+- **Dual-stream MMDiT architecture** — joint image-text processing for coherent generation
+- **GPT-OSS-20B multi-layer text features** — rich text understanding for accurate prompt following
+- **FLUX.2 semantic VAE** — high-fidelity latent representation
+- **Mixed-resolution training** — supports various aspect ratios without cropping
+- **Compact 3.8B footprint** — runs on consumer GPUs with 24 GB VRAM
+
+**Related links**:
+- [Paper (arXiv)](https://arxiv.org/abs/2605.21573)
+- [GitHub](https://github.com/microsoft/Lens)
+- [Hugging Face (Microsoft)](https://huggingface.co/microsoft/Lens)
+- [Hugging Face (Comfy-Org)](https://huggingface.co/Comfy-Org/Lens)
+
+## Lens text-to-image workflow
+
+Both the standard and Turbo variants use a **Subgraph** node to manage the text-to-image generation pipeline. You can open the subgraph to inspect or customize the internal nodes.
+
+  This workflow uses Subgraph nodes for modular processing. Check out the Subgraph documentation to learn how to customize and extend the workflow.
+
+### Lens
+
+  
+    Download JSON or search "Lens" in Template Library
+  
+  
+  
+  
+  
+
+#### Get started
+
+1. Update ComfyUI to the latest version
+   
+2. Go to **Template** and search for **Lens**
+3. Select the **Lens** workflow
+4. Download any missing models (see [model downloads](#lens-model-downloads)), enter your prompt, and click **Queue**
+
+#### Example output
+
+[Lens text-to-image example output]
+
+### Lens Turbo
+
+Lens Turbo is a distilled variant that generates images in fewer sampling steps for faster inference.
+
+  
+    Download JSON or search "Lens Turbo" in Template Library
+  
+  
+  
+  
+  
+
+#### Get started
+
+1. Update ComfyUI to the latest version
+   
+2. Go to **Template** and search for **Lens Turbo**
+3. Select the **Lens Turbo** workflow
+4. Download any missing models (see [model downloads](#lens-model-downloads)), enter your prompt, and click **Queue**
+
+#### Example output
+
+[Lens Turbo text-to-image example output]
+
+## Lens model downloads
+
+You can find all model files at [Comfy-Org/Lens](https://huggingface.co/Comfy-Org/Lens) on Hugging Face.
+
+  
+    Diffusion model for Lens (BF16).
+  
+  
+    Diffusion model for Lens Turbo (BF16).
+  
+
+  
+    Text encoder (GPT-OSS-20B) shared by both Lens and Lens Turbo.
+  
+  
+    VAE (FLUX.2) shared by both Lens and Lens Turbo.
+  
+
+**Model storage location**
+
+```
+📂 ComfyUI/
+├── 📂 models/
+│   ├── 📂 diffusion_models/
+│   │   ├── lens_bf16.safetensors (or lens_mxfp8.safetensors)
+│   │   └── lens_turbo_bf16.safetensors (or lens_turbo_mxfp8.safetensors)
+│   ├── 📂 text_encoders/
+│   │   └── gpt_oss_20b_nvfp4.safetensors
+│   └── 📂 vae/
+│       └── flux2-vae.safetensors
+```
+
+## Available models
+
+| Model | Description | Inference steps | Link |
+|-------|-------------|-----------------|------|
+| Lens | Standard 3.8B model — higher quality, more steps | ~50 | [Hugging Face](https://huggingface.co/microsoft/Lens) |
+| Lens Turbo | Distilled variant — faster generation with fewer steps | ~8 | [Hugging Face](https://huggingface.co/microsoft/Lens) |

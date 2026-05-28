@@ -8,8 +8,6 @@ integration:
    - category: 'clickpipes'
 ---
 
-# PlanetScale for Postgres source setup guide
-
 > **info**: PlanetScale for Postgres is currently in [early access](https://planetscale.com/postgres).
 
 ## Supported Postgres versions {#supported-postgres-versions}

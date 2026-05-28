@@ -67,6 +67,7 @@ glab token create --access-level developer --scope api my-token --expires-at 202
   -D, --duration duration          Sets the token lifetime in days. Accepts: days (30d), weeks (4w), or hours in multiples of 24 (24h, 168h, 720h). Maximum: 365d. The token expires at midnight UTC on the calculated date. (default 30d)
   -E, --expires-at DATE            Sets the token's expiration date and time, in YYYY-MM-DD format. If not specified, --duration is used. (default 0001-01-01)
   -g, --group string               Create a group access token. Ignored if a user or repository argument is set.
+      --jq string                  Filter JSON output with a jq expression.
   -F, --output string              Format output as 'text' for the token value, 'json' for the actual API token structure. (default "text")
   -R, --repo string                Select another repository. You can use either OWNER/REPO or GROUP/NAMESPACE/REPO. The full URL or Git URL is also accepted.
   -S, --scope strings              Scopes for the token. Multiple scopes can be comma-separated or specified by repeating the flag. For a list, see https://docs.gitlab.com/user/profile/personal_access_tokens/#personal-access-token-scopes. (default [read_repository])

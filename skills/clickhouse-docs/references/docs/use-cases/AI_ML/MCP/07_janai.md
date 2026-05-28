@@ -1,12 +1,10 @@
 ---
-title: 'Set up ClickHouse MCP server with Jan.ai'
+title: 'Using ClickHouse MCP server with Jan.ai'
 description: 'This guide explains how to set up Jan.ai with a ClickHouse MCP server.'
 keywords: ['AI', 'Jan.ai', 'MCP']
 show_related_blogs: true
 doc_type: 'guide'
 ---
-
-# Using ClickHouse MCP server with Jan.ai
 
 > This guide explains how to use the ClickHouse MCP server with [Jan.ai](https://jan.ai/docs).
 

@@ -20,6 +20,7 @@ glab gpg-key list
 ## Options
 
 ```plaintext
+      --jq string       Filter JSON output with a jq expression.
   -F, --output string   Format output as: text, json. (default "text")
       --show-id         Shows IDs of GPG keys.
 ```

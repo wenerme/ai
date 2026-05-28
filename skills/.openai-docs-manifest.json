@@ -818,10 +818,10 @@
   "openai-docs/guides/safety-best-practices.md": {
     "url": "https://developers.openai.com/api/docs/guides/safety-best-practices.md",
     "skill": "openai-docs",
-    "etag": "W/\"a452cf14c3f060105d4742667a7da6b8\"",
-    "lastModified": "Sat, 23 May 2026 12:41:46 GMT",
-    "size": 6085,
-    "updatedAt": "2026-05-24T00:32:45.582Z"
+    "etag": "W/\"58a1676ed17ca7350cb9d106aa48e139\"",
+    "lastModified": "Thu, 28 May 2026 00:33:32 GMT",
+    "size": 6388,
+    "updatedAt": "2026-05-28T00:33:32.522Z"
   },
   "openai-docs/guides/safety-checks.md": {
     "url": "https://developers.openai.com/api/docs/guides/safety-checks.md",
@@ -1070,6 +1070,54 @@
     "lastModified": "Fri, 06 Mar 2026 06:07:11 GMT",
     "size": 8234,
     "updatedAt": "2026-03-06T06:07:11.324Z"
+  },
+  "openai-docs/guides/workload-identity-federation.md": {
+    "url": "https://developers.openai.com/api/docs/guides/workload-identity-federation.md",
+    "skill": "openai-docs",
+    "etag": "W/\"1f5eda94a54cc12abf386223937b5144\"",
+    "lastModified": "Thu, 28 May 2026 00:33:42 GMT",
+    "size": 11943,
+    "updatedAt": "2026-05-28T00:33:42.916Z"
+  },
+  "openai-docs/guides/workload-identity-federation/aws.md": {
+    "url": "https://developers.openai.com/api/docs/guides/workload-identity-federation/aws.md",
+    "skill": "openai-docs",
+    "etag": "W/\"7427dc0f56dc44bf53a9779d41abd1d7\"",
+    "lastModified": "Thu, 28 May 2026 00:33:43 GMT",
+    "size": 17403,
+    "updatedAt": "2026-05-28T00:33:43.240Z"
+  },
+  "openai-docs/guides/workload-identity-federation/github-actions.md": {
+    "url": "https://developers.openai.com/api/docs/guides/workload-identity-federation/github-actions.md",
+    "skill": "openai-docs",
+    "etag": "W/\"d4e6719bb402e9455909921fe8b8c96e\"",
+    "lastModified": "Thu, 28 May 2026 00:33:43 GMT",
+    "size": 10886,
+    "updatedAt": "2026-05-28T00:33:43.571Z"
+  },
+  "openai-docs/guides/workload-identity-federation/google-cloud.md": {
+    "url": "https://developers.openai.com/api/docs/guides/workload-identity-federation/google-cloud.md",
+    "skill": "openai-docs",
+    "etag": "W/\"05cf590700ab2306f042648002a5b32a\"",
+    "lastModified": "Thu, 28 May 2026 00:33:43 GMT",
+    "size": 15827,
+    "updatedAt": "2026-05-28T00:33:43.928Z"
+  },
+  "openai-docs/guides/workload-identity-federation/kubernetes.md": {
+    "url": "https://developers.openai.com/api/docs/guides/workload-identity-federation/kubernetes.md",
+    "skill": "openai-docs",
+    "etag": "W/\"13dcc86c19685d3c7ad2e39d709ad666\"",
+    "lastModified": "Thu, 28 May 2026 00:33:44 GMT",
+    "size": 9160,
+    "updatedAt": "2026-05-28T00:33:44.249Z"
+  },
+  "openai-docs/guides/workload-identity-federation/microsoft-azure.md": {
+    "url": "https://developers.openai.com/api/docs/guides/workload-identity-federation/microsoft-azure.md",
+    "skill": "openai-docs",
+    "etag": "W/\"aead39a5e41152935539cc4bb03e5a4f\"",
+    "lastModified": "Thu, 28 May 2026 00:33:44 GMT",
+    "size": 18187,
+    "updatedAt": "2026-05-28T00:33:44.609Z"
   },
   "openai-docs/guides/your-data.md": {
     "url": "https://developers.openai.com/api/docs/guides/your-data.md",
@@ -10258,10 +10306,10 @@
   "codex-docs/config-reference.md": {
     "url": "https://developers.openai.com/codex/config-reference.md",
     "skill": "codex-docs",
-    "etag": "W/\"8f439073b6fd5f5a0739141b6f39d581\"",
-    "lastModified": "Wed, 27 May 2026 00:21:25 GMT",
-    "size": 64050,
-    "updatedAt": "2026-05-27T00:42:58.772Z"
+    "etag": "W/\"2f642c42db45960cf17b4c0e419188bd\"",
+    "lastModified": "Wed, 27 May 2026 21:16:59 GMT",
+    "size": 64644,
+    "updatedAt": "2026-05-28T00:40:14.616Z"
   },
   "codex-docs/config-sample.md": {
     "url": "https://developers.openai.com/codex/config-sample.md",
@@ -10482,10 +10530,10 @@
   "codex-docs/permissions.md": {
     "url": "https://developers.openai.com/codex/permissions.md",
     "skill": "codex-docs",
-    "etag": "W/\"70dc00380d38a31e25ec347eb281cf90\"",
-    "lastModified": "Wed, 20 May 2026 06:13:03 GMT",
-    "size": 26483,
-    "updatedAt": "2026-05-20T11:15:36.666Z"
+    "etag": "W/\"e7d86886934c6f986577ccd54268daea\"",
+    "lastModified": "Thu, 28 May 2026 00:18:36 GMT",
+    "size": 28369,
+    "updatedAt": "2026-05-28T00:40:21.549Z"
   },
   "codex-docs/plugins.md": {
     "url": "https://developers.openai.com/codex/plugins.md",

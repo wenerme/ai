@@ -35,6 +35,7 @@ $ glab orbit remote tools
 
 ```plaintext
       --hostname gitlab.com   GitLab hostname to query. Defaults to the current repository's host or gitlab.com.
+      --jq string             Filter JSON output with a jq expression.
 ```
 
 ## Options inherited from parent commands

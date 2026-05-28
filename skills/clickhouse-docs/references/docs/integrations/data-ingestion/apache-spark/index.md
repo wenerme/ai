@@ -8,8 +8,6 @@ integration:
   - category: 'data_ingestion'
 ---
 
-# Integrating Apache Spark with ClickHouse
-
 <ClickHouseSupportedBadge/>
 
 [Apache Spark](https://spark.apache.org/) is a multi-language engine for executing data engineering, data

@@ -8,8 +8,6 @@ integration:
   - category: 'data_visualization'
 ---
 
-# Configuring ClickHouse data source in Grafana
-
 <ClickHouseSupportedBadge/>
 
 The easiest way to modify a configuration is in the Grafana UI on the plugin configuration page, but data sources can also be [provisioned with a YAML file](https://grafana.com/docs/grafana/latest/administration/provisioning/#data-sources).

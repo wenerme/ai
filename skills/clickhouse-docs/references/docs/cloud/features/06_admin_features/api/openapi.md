@@ -1,11 +1,9 @@
 ---
-title: 'Managing API Keys'
+title: 'Managing API keys'
 description: 'ClickHouse Cloud provides an API utilizing OpenAPI that allows you to programmatically manage your account and aspects of your services.'
 doc_type: 'guide'
 keywords: ['api', 'openapi', 'rest api', 'documentation', 'cloud management']
 ---
-
-# Managing API keys
 
 ClickHouse Cloud provides an API utilizing OpenAPI that allows you to programmatically manage your account and aspects of your services.
 

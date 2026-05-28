@@ -8,8 +8,6 @@ integration:
   - category: 'data_visualization'
 ---
 
-# Connecting Mitzu to ClickHouse
-
 <CommunityMaintainedBadge/>
 
 Mitzu is a no-code, warehouse-native product analytics application. Similar to tools like Amplitude, Mixpanel, and PostHog, Mitzu empowers users to analyze product usage data without requiring SQL or Python expertise.

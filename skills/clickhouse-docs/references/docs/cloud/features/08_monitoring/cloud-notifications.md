@@ -5,8 +5,6 @@ keywords: ['cloud', 'notifications', 'alerts', 'service notifications', 'billing
 doc_type: 'guide'
 ---
 
-# Notifications
-
 ClickHouse Cloud sends notifications about critical events related to your service or organization. There are a few concepts to keep in mind to understand how notifications are sent and configured:
 
 1. **Notification category**: Refers to groups of notifications such as billing notifications, service related notifications etc. Within each category, there are multiple notifications for which the delivery mode can be configured.

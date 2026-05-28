@@ -5,8 +5,6 @@ title: 'Connecting ClickHouse to external data sources with JDBC'
 doc_type: 'guide'
 ---
 
-# Connecting ClickHouse to external data sources with JDBC
-
 > **warning**: clickhouse-jdbc-bridge contains experimental codes and is no longer supported. It may contain reliability and security vulnerabilities. Use it at your own risk.
 
 > **note**: Using JDBC requires the ClickHouse JDBC bridge, so you will need to use `clickhouse-local` on a local machine to stream the data from your database to ClickHouse Cloud. Visit the [**Using clickhouse-local**](/cloud/migration/clickhouse-local) page in the **Migrate** section of the docs for details.

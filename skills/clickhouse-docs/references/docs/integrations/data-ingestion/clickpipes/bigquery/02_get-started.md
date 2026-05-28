@@ -4,8 +4,6 @@ title: 'Creating your first BigQuery ClickPipe'
 doc_type: 'guide'
 ---
 
-# Creating your first BigQuery ClickPipe {#creating-your-first-bigquery-clickpipe}
-
 <IntroClickPipe/>
 
 ## Pre-requisites {#pre-requisites}

@@ -8,8 +8,6 @@ integration:
   - category: 'data_visualization'
 ---
 
-# Connecting Draxlr to ClickHouse
-
 <CommunityMaintainedBadge/>
 
 Draxlr offers an intuitive interface for connecting to your ClickHouse database, enabling your team to explore, visualize, and publish insights within minutes. This guide will walk you through the steps to establish a successful connection.

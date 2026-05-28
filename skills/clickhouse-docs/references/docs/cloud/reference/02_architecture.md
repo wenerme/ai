@@ -5,8 +5,6 @@ keywords: ['ClickHouse Cloud', 'cloud architecture', 'separation of storage and 
 doc_type: 'reference'
 ---
 
-# ClickHouse Cloud architecture
-
 <Image img={Architecture} size='lg' alt='Cloud architecture'/>
 
 ## Storage backed by object store {#storage-backed-by-object-store}

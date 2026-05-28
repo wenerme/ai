@@ -35,7 +35,7 @@ curl -X POST "https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_
 
   --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
 
-  --header "cf-aig-gateway-id: my-gateway" \
+  --header "cf-aig-gateway-id: default" \
 
   --header "Content-Type: application/json" \
 
@@ -68,8 +68,8 @@ Create a gateway manually
 
 You can also create gateways manually with a custom name and configuration through the dashboard or API.
 
-* [ Dashboard ](#tab-panel-4551)
-* [ API ](#tab-panel-4552)
+* [ Dashboard ](#tab-panel-4567)
+* [ API ](#tab-panel-4568)
 
 [ Go to **AI Gateway** ](https://dash.cloudflare.com/?to=/:account/ai/ai-gateway)
 1. Log into the [Cloudflare dashboard ↗](https://dash.cloudflare.com/) and select your account.

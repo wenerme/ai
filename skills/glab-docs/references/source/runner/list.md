@@ -44,6 +44,7 @@ glab runner list --output json
 ```plaintext
   -g, --group string    List runners for a group. Ignored if -R/--repo is set.
   -i, --instance        List all runners available to the user (instance scope).
+      --jq string       Filter JSON output with a jq expression.
   -F, --output string   Format output as: text, json. (default "text")
   -p, --page int        Page number. (default 1)
   -P, --per-page int    Number of items to list per page. (default 30)

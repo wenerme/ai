@@ -1,11 +1,9 @@
 ---
 keywords: ['clickhouse', 'stored procedures', 'prepared statements', 'query parameters', 'UDF', 'parameterized views']
 description: 'Guide on stored procedures, prepared statements, and query parameters in ClickHouse'
-title: 'Stored procedures and query parameters'
+title: 'Stored procedures and query parameters in ClickHouse'
 doc_type: 'guide'
 ---
-
-# Stored procedures and query parameters in ClickHouse
 
 If you're coming from a traditional relational database, you may be looking for stored procedures and prepared statements in ClickHouse.
 This guide explains ClickHouse's approach to these concepts and provides recommended alternatives.

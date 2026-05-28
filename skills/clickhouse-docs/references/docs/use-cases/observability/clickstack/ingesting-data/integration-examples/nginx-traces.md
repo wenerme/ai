@@ -5,8 +5,6 @@ doc_type: 'guide'
 keywords: ['ClickStack', 'Nginx', 'traces', 'otel']
 ---
 
-# Monitoring Nginx Traces with ClickStack {#nginx-traces-clickstack}
-
 :::note[TL;DR]
 Capture distributed traces from Nginx in ClickStack using the OpenTelemetry Nginx module. Includes a demo dataset and pre-built dashboard.
 

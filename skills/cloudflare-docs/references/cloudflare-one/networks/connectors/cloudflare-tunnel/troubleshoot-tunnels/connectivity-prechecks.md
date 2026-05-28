@@ -14,6 +14,10 @@ image: https://developers.cloudflare.com/zt-preview.png
 
 This guide helps you validate connectivity between your environment and [Cloudflare Tunnel endpoints](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/configure-tunnels/tunnel-with-firewall/) before deploying [Cloudflare Tunnel](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/). You will run DNS and network checks from the same host machine that will run `cloudflared` to help you identify issues that may prevent `cloudflared` from connecting to Cloudflare Tunnel endpoints.
 
+Automated pre-checks in cloudflared 2026.5.2 and later 
+
+Starting with `cloudflared` version `2026.5.2`, these checks run**automatically** every time you start a tunnel — including DNS resolution, UDP/TCP connectivity on port `7844`, and access to the management API. If you have already installed `cloudflared`, run `cloudflared tunnel diag` to execute the checks without starting a tunnel, and skip the manual steps in this guide. The manual workflow below remains useful when you need to validate your network **before** installing `cloudflared` — for example, when a SecOps team wants to confirm firewall rules ahead of a deployment.
+
 Running these checks before you install `cloudflared` sets your deployment up for success and narrows down the cause of any later connectivity issues.
 
 This guide is structured as follows:
@@ -57,9 +61,9 @@ First, you need to verify that your DNS resolver returns the expected IP address
 
 Depending on whether you are testing a global region or the US region, run one of the following commands:
 
-* [ Global region ](#tab-panel-5213)
-* [ US region ](#tab-panel-5214)
-* [ FedRAMP High region ](#tab-panel-5215)
+* [ Global region ](#tab-panel-5267)
+* [ US region ](#tab-panel-5268)
+* [ FedRAMP High region ](#tab-panel-5269)
 
 Terminal window
 

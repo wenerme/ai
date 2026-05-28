@@ -1,11 +1,9 @@
 ---
-title: 'Overview'
+title: 'Review and restore backups'
 keywords: ['backups', 'cloud backups', 'restore']
 description: 'Provides an overview of backups in ClickHouse Cloud'
 doc_type: 'guide'
 ---
-
-# Review and restore backups
 
 This guide covers how backups work in ClickHouse Cloud, what options you have to configure backups for your service, and how to restore from a backup.
 

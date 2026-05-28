@@ -41,6 +41,7 @@ glab work-items delete 42 --group my-group
 
 ```plaintext
   -g, --group string    Delete a work items from a group or subgroup.
+      --jq string       Filter JSON output with a jq expression.
   -F, --output string   Format output as: text, json. (default "text")
   -R, --repo string     Select another repository. You can use either OWNER/REPO or GROUP/NAMESPACE/REPO. The full URL or Git URL is also accepted.
 ```

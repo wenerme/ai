@@ -50,6 +50,7 @@ glab mr note list 123
 
 ```plaintext
       --file string     Show only diff notes on this file path.
+      --jq string       Filter JSON output with a jq expression.
   -F, --output string   Format output as: text, json. (default "text")
       --state string    Resolution state: all, resolved, unresolved. (default "all")
   -t, --type string     Note type: all, general, diff, system. (default "all")

@@ -9,8 +9,6 @@ integration:
   - website: 'https://airbyte.com/'
 ---
 
-# Connect Airbyte to ClickHouse
-
 <PartnerBadge/>
 
 > **note**: Please note that the Airbyte source and destination for ClickHouse are currently in Alpha status and not suitable for moving large datasets (> 10 million rows)

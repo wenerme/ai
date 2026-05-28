@@ -5,8 +5,6 @@ doc_type: 'guide'
 keywords: ['ClickHouse Cloud', 'encryption', 'CMEK', 'KMS key poller']
 ---
 
-# Data encryption
-
 ## Storage level encryption {#storage-encryption}
 
 ClickHouse Cloud is configured with encryption at rest by default utilizing cloud provider-managed AES 256 keys. For more information review:

@@ -8,8 +8,6 @@ integration:
   - category: 'data_visualization'
 ---
 
-# Connecting Astrato to ClickHouse
-
 <CommunityMaintainedBadge/>
 
 Astrato uses Pushdown SQL to query ClickHouse Cloud or on-premise deployments directly. This means you can access all of the data you need, powered by the industry-leading performance of ClickHouse.

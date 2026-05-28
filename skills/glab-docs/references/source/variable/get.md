@@ -23,6 +23,7 @@ glab variable get -s SCOPE VAR_KEY
 
 ```plaintext
   -g, --group string    Get variable for a group.
+      --jq string       Filter JSON output with a jq expression.
   -F, --output string   Format output as: text, json. (default "text")
   -s, --scope string    The environment_scope of the variable. Values: all (*), or specific environments. (default "*")
 ```

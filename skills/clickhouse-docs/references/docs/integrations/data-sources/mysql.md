@@ -1,5 +1,5 @@
 ---
-title: 'MySQL'
+title: 'Integrating MySQL with ClickHouse'
 hide_title: true
 description: 'Page describing MySQL integration'
 doc_type: 'reference'
@@ -9,8 +9,6 @@ integration:
   - website: 'https://github.com/ClickHouse/clickhouse'
 keywords: ['mysql', 'database integration', 'external table', 'data source', 'sql database']
 ---
-
-# Integrating MySQL with ClickHouse
 
 This page covers using the `MySQL` table engine, for reading from a MySQL table.
 

@@ -8,8 +8,6 @@ integration:
    - category: 'clickpipes'
 ---
 
-# RDS MariaDB source setup guide
-
 This is a step-by-step guide on how to configure your RDS MariaDB instance for replicating its data via the MySQL ClickPipe.
 
 > **info**: We also recommend going through the MySQL FAQs [here](/integrations/data-ingestion/clickpipes/mysql/faq.md). The FAQs page is being actively updated.

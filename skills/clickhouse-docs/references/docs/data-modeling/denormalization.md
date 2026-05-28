@@ -5,8 +5,6 @@ keywords: ['data denormalization', 'denormalize', 'query optimization']
 doc_type: 'guide'
 ---
 
-# Denormalizing Data
-
 Data denormalization is a technique in ClickHouse to use flattened tables to help minimize query latency by avoiding joins.
 
 ## Comparing Normalized vs. Denormalized Schemas {#comparing-normalized-vs-denormalized-schemas}

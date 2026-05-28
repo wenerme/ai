@@ -17,6 +17,20 @@ This opens the warehouse dialog where you can view existing services and create 
 
 <Image img={readReplicaDialog} alt="Read replica management dialog" size="md" border/>
 
+## Managing read replicas {#managing-read-replicas}
+
+The **Read replicas** page gives you two views, toggled with the **Flow** and **Table** controls in the top-right corner.
+
+The **Flow** view displays the replication topology — your primary instance at the top with arrows flowing down to each attached replica, showing tier, region, and status at a glance:
+
+<Image img={readReplicasFlow} alt="Read replicas flow view showing primary and replica topology" size="lg" border/>
+
+The **Table** view lists each replica with its service name, cloud provider and region, service status, creation time, and a **Detach service** action:
+
+<Image img={readReplicasTable} alt="Read replicas table view" size="lg" border/>
+
+To create a new replica, click **Create read replica** in the top-right corner of either view.
+
 ## Why use read replicas {#why-use-read-replicas}
 
 ### Scalability {#scalability}

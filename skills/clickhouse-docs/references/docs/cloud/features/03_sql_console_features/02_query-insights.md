@@ -6,8 +6,6 @@ title: 'Query insights'
 doc_type: 'guide'
 ---
 
-# Query Insights
-
 The **Query Insights** feature makes ClickHouse's built-in query log easier to use through visualizations and tables. ClickHouse's `system.query_log` table is a key source of information for query optimization, debugging, and monitoring overall cluster health and performance.
 
 ## Query overview {#query-overview}

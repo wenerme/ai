@@ -24,6 +24,7 @@ glab label get 1234 -R owner/repo
 ## Options
 
 ```plaintext
+      --jq string       Filter JSON output with a jq expression.
   -F, --output string   Format output as: text, json. (default "text")
 ```
 

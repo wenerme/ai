@@ -8,8 +8,6 @@ integration:
   - category: 'language_client'
 ---
 
-# R2DBC driver
-
 ## R2DBC driver {#r2dbc-driver}
 
 [R2DBC](https://r2dbc.io/) wrapper of async Java client for ClickHouse.

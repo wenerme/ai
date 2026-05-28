@@ -52,6 +52,7 @@ $ glab orbit remote graph-status --full-path gitlab-org/gitlab --format llm
   -f, --format raw                    Response format: raw (structured JSON) or `llm` (compact, intended for agents). (default "raw")
       --full-path gitlab-org/gitlab   Full path of a project or group, such as gitlab-org/gitlab. Cannot be used with the ID flags.
       --hostname gitlab.com           GitLab hostname to query. Defaults to the current repository's host or gitlab.com.
+      --jq string                     Filter JSON output with a jq expression.
       --namespace-id int              Namespace (group) ID to inspect. Cannot be used with --project-id or --full-path.
       --project-id int                Project ID to inspect. Cannot be used with --namespace-id or --full-path.
 ```

@@ -5,8 +5,6 @@ keywords: ['billing compliance', 'pay-as-you-go']
 doc_type: 'guide'
 ---
 
-# ClickHouse Cloud billing compliance
-
 ## Billing compliance {#billing-compliance}
 
 Your use of ClickHouse Cloud requires your organization to have an active and

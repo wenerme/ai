@@ -5,8 +5,6 @@ keywords: ['azure', 'private link', 'privatelink']
 doc_type: 'guide'
 ---
 
-# Azure Private Link
-
 <ScalePlanFeatureBadge feature="Azure Private Link"/>
 
 This guide shows how to use Azure Private Link to provide private connectivity via a virtual network between Azure (including customer-owned and Microsoft Partner services) and ClickHouse Cloud. Azure Private Link simplifies the network architecture and secures the connection between endpoints in Azure by eliminating data exposure to the public internet.

@@ -30,6 +30,7 @@ glab release view v1.0.1
 ## Options
 
 ```plaintext
+      --jq string       Filter JSON output with a jq expression.
   -F, --output string   Format output as: text, json. (default "text")
   -w, --web             Open the release in the browser.
 ```

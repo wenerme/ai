@@ -37,6 +37,7 @@ glab repo view https://gitlab.company.org/user/repo.git
 
 ```plaintext
   -b, --branch string   View a specific branch of the repository.
+      --jq string       Filter JSON output with a jq expression.
   -F, --output string   Format output as: text, json. (default "text")
   -w, --web             Open a project in the browser.
 ```

@@ -5,8 +5,6 @@ doc_type: 'guide'
 keywords: ['MySQL', 'logs', 'OTEL', 'ClickStack', 'database monitoring', 'slow query']
 ---
 
-# Monitoring MySQL Logs with ClickStack {#mysql-logs-clickstack}
-
 :::note[TL;DR]
 Collect and visualize MySQL error and slow query logs in ClickStack using the OTel `filelog` receiver. Includes a demo dataset and pre-built dashboard.
 

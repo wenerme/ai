@@ -1,12 +1,10 @@
 ---
-title: 'Set up ClickHouse MCP server with AnythingLLM and ClickHouse Cloud'
+title: 'Using ClickHouse MCP server with AnythingLLM'
 description: 'This guide explains how to set up AnythingLLM with a ClickHouse MCP server using Docker.'
 keywords: ['AI', 'AnythingLLM', 'MCP']
 show_related_blogs: true
 doc_type: 'guide'
 ---
-
-# Using ClickHouse MCP server with AnythingLLM
 
 > This guide explains how to set up [AnythingLLM](https://anythingllm.com/) with a ClickHouse MCP server using Docker
 > and connect it to the ClickHouse example datasets.

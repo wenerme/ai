@@ -26,7 +26,7 @@ curl -X POST "https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_
 
   --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
 
-  --header "cf-aig-gateway-id: my-gateway" \
+  --header "cf-aig-gateway-id: default" \
 
   --header "Content-Type: application/json" \
 
@@ -55,8 +55,8 @@ curl -X POST "https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_
 
 You can integrate Workers AI with AI Gateway using an environment binding. To include an AI Gateway within your Worker, add the gateway as an object in your Workers AI request.
 
-* [  JavaScript ](#tab-panel-4589)
-* [  TypeScript ](#tab-panel-4590)
+* [  JavaScript ](#tab-panel-4605)
+* [  TypeScript ](#tab-panel-4606)
 
 JavaScript
 

@@ -30,6 +30,7 @@ glab repo list
       --archived            Limit by archived status. Use 'false' to exclude archived repositories. Used with the '--group' flag.
   -g, --group string        Return repositories in only the given group.
   -G, --include-subgroups   Include projects in subgroups of this group. Default is false. Used with the '--group' flag.
+      --jq string           Filter JSON output with a jq expression.
       --member              List only projects of which you are a member.
   -m, --mine                List only projects you own. Default if no filters are provided.
   -o, --order string        Return repositories ordered by id, name, path, created_at, updated_at, similarity, star_count, last_activity_at. (default "last_activity_at")

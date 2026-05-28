@@ -1,10 +1,8 @@
 ---
 description: 'Details backup/restore to or from a local disk'
-title: 'Backup and restore in ClickHouse'
+title: 'BACKUP / RESTORE to disk'
 doc_type: 'guide'
 ---
-
-# BACKUP / RESTORE to disk {#backup-to-a-local-disk}
 
 ## Syntax {#syntax}
 

@@ -8,8 +8,6 @@ integration:
   - category: 'data_visualization'
 ---
 
-# QuickSight
-
 <ClickHouseSupportedBadge/>
 
 QuickSight can connect to on-premise ClickHouse setup (23.11+) via MySQL interface using the official MySQL data source and Direct Query mode.

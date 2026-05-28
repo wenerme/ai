@@ -6,8 +6,6 @@ hide_title: true
 doc_type: 'guide'
 ---
 
-# Resource tour
-
 This article is intended to provide you with an overview of the resources available
 to you in the docs to learn how to get the most out of your ClickHouse Cloud deployment.
 Explore resource organised by the following topics:

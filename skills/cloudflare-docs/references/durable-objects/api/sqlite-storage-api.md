@@ -56,9 +56,9 @@ Durable Objects gain access to Storage API via the `DurableObjectStorage` interf
 
 The following code snippet shows you how to store and retrieve data using the Durable Object Storage API.
 
-* [  JavaScript ](#tab-panel-6162)
-* [  TypeScript ](#tab-panel-6163)
-* [  Python ](#tab-panel-6164)
+* [  JavaScript ](#tab-panel-6168)
+* [  TypeScript ](#tab-panel-6169)
+* [  Python ](#tab-panel-6170)
 
 JavaScript
 
@@ -156,8 +156,8 @@ The `SqlStorage` interface encapsulates methods that modify the SQLite database 
 
 For example, using `sql.exec()` a user can create a table and insert rows.
 
-* [  TypeScript ](#tab-panel-6154)
-* [  Python ](#tab-panel-6155)
+* [  TypeScript ](#tab-panel-6160)
+* [  Python ](#tab-panel-6161)
 
 TypeScript
 
@@ -272,9 +272,9 @@ A cursor (`SqlStorageCursor`) to iterate over query row results as objects. `Sql
 
 Consume cursors synchronously
 
-It is not safe to hold a reference to a `SqlStorageCursor` and continue reading from it after an `await`. When you `await` an asynchronous operation, other requests can interleave and modify the underlying database, which can silently invalidate the cursor. This does not produce an error — the cursor may appear to work but return unpredictable results.
+Although a cursor object can technically be held across an `await`, it does not provide a stable snapshot of the query results. A cursor resumed after an `await` may observe rows inserted, updated, or deleted after the cursor was created, including writes from a later implicit transaction that has not yet committed. If that later transaction rolls back, the cursor may have already returned data from a state that never became durable.
 
-Always consume the cursor fully before yielding the event loop. Call `.toArray()`, `.one()`, or iterate with `for...of` synchronously after calling `sql.exec()`:
+For predictable behavior, fully consume cursors synchronously before the next `await`, for example with `.toArray()` or `Array.from(cursor)`. Treat cursors that cross `await` boundaries as having no snapshot isolation guarantees.
 
 TypeScript
 
@@ -293,22 +293,20 @@ TypeScript
 
 ```
 
-// 🔴 Unsafe: cursor is read after an await
+// ⚠️ No snapshot isolation: cursor may reflect changes made after it was created
 
 const cursor = this.ctx.storage.sql.exec("SELECT * FROM users");
 
 await fetch("https://example.com/notify");
 
-// Another request may have modified the database during the await above.
+// Rows returned here may include writes that occurred during the await,
 
-// The cursor is now potentially invalid — it may appear to work but return wrong data.
+// including uncommitted data from a later implicit transaction.
 
 const rows = cursor.toArray();
 
 
 ```
-
-If you need to prevent other requests from interleaving while you hold a cursor, use [blockConcurrencyWhile()](https://developers.cloudflare.com/durable-objects/api/state/#blockconcurrencywhile).
 
 `SqlStorageCursor` supports the following methods:
 
@@ -323,8 +321,8 @@ If you need to prevent other requests from interleaving while you hold a cursor,
    * Returned Iterator supports `next()` and `toArray()` methods above.  
    * Returned cursor and `raw()` iterator iterate over the same query results and can be combined. For example:
 
-* [  TypeScript ](#tab-panel-6156)
-* [  Python ](#tab-panel-6157)
+* [  TypeScript ](#tab-panel-6162)
+* [  Python ](#tab-panel-6163)
 
 TypeScript
 
@@ -608,8 +606,8 @@ TypeScript
 
 The current SQLite database size in bytes.
 
-* [  TypeScript ](#tab-panel-6158)
-* [  Python ](#tab-panel-6159)
+* [  TypeScript ](#tab-panel-6164)
+* [  Python ](#tab-panel-6165)
 
 TypeScript
 
@@ -655,8 +653,8 @@ The PITR API represents points in time using 'bookmarks'. A bookmark is a mostly
 
 This method returns a special bookmark representing the point in time immediately before the recovery takes place (even though that point in time is still technically in the future). Thus, after the recovery completes, it can be undone by performing a second recovery to this bookmark.
 
-* [  TypeScript ](#tab-panel-6160)
-* [  Python ](#tab-panel-6161)
+* [  TypeScript ](#tab-panel-6166)
+* [  Python ](#tab-panel-6167)
 
 TypeScript
 

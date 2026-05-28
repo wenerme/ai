@@ -96,7 +96,9 @@ export default {
     const url = new URL(request.url);
 
 
-    // Get or create a sandbox instance
+    // Get or create a sandbox instance. For user-facing apps,
+
+    // derive this ID from the authenticated user.
 
     const sandbox = getSandbox(env.Sandbox, "my-sandbox");
 
@@ -150,7 +152,7 @@ export default {
 
 **Key concepts**:
 
-* `getSandbox()` \- Gets or creates a sandbox instance by ID. Use the same ID to reuse the same sandbox instance across requests.
+* `getSandbox()` \- Gets or creates a sandbox instance by ID. Use a stable ID to reconnect to the same sandbox. In user-facing apps, scope IDs to a single user.
 * `sandbox.exec()` \- Execute shell commands in the sandbox and capture stdout, stderr, and exit codes.
 * `sandbox.writeFile()` / `readFile()` \- Write and read files in the sandbox filesystem.
 
@@ -248,8 +250,8 @@ Your sandbox is now deployed and can execute code in isolated containers.
 
 Your `wrangler.jsonc` connects three pieces together:
 
-* [  wrangler.jsonc ](#tab-panel-8134)
-* [  wrangler.toml ](#tab-panel-8135)
+* [  wrangler.jsonc ](#tab-panel-8142)
+* [  wrangler.toml ](#tab-panel-8143)
 
 JSONC
 

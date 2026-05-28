@@ -99,7 +99,7 @@ If you are using TypeScript, update your `tsconfig.json` to include the correct 
 
       "vitest-environment-miniflare/globals"
 
-      "@cloudflare/vitest-pool-workers"
+      "@cloudflare/vitest-pool-workers/types"
 
     ]
 

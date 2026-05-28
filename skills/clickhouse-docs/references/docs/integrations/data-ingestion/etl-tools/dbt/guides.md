@@ -5,8 +5,6 @@ title: 'Guides'
 doc_type: 'guide'
 ---
 
-# Guides
-
 <ClickHouseSupportedBadge/>
 
 This section provides guides on setting up dbt and the ClickHouse adapter, as well as an example of using dbt with ClickHouse using a publicly available IMDB dataset. The example covers the following steps:

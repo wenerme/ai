@@ -51,7 +51,7 @@ Network interruptions are common in browser-based applications. Terminal connect
 
 The `SandboxAddon` for xterm.js implements this automatically. If you are building a custom client, you are responsible for your own reconnection logic — the server-side buffering works regardless of which client connects. Refer to the [WebSocket protocol reference](https://developers.cloudflare.com/sandbox/api/terminal/#websocket-protocol) for details on the connection lifecycle.
 
-## Session isolation
+## Session-specific terminals
 
 Each [session](https://developers.cloudflare.com/sandbox/concepts/sessions/) can have its own terminal with independent shell state:
 
@@ -88,7 +88,7 @@ const testSession = await sandbox.createSession({
 
 ```
 
-Multiple browser clients can connect to the same session's terminal simultaneously — they all see the same shell output and can all send input. This enables collaborative terminal use cases.
+Multiple browser clients can connect to the same session's terminal simultaneously. They all see the same shell output and can send input. Use this pattern for intentional collaboration inside one workspace, not to separate independent users.
 
 ## WebSocket protocol
 

@@ -4,8 +4,6 @@ description: 'Monitoring Nginx with ClickStack'
 doc_type: 'guide'
 ---
 
-# Monitoring Nginx Logs with ClickStack {#nginx-clickstack}
-
 :::note[TL;DR]
 Collect and visualize Nginx access logs (JSON format) in ClickStack using the OTel `filelog` receiver. Includes a demo dataset and pre-built dashboard.
 

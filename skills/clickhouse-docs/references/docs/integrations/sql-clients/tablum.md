@@ -8,8 +8,6 @@ integration:
   - category: 'sql_client'
 ---
 
-# Connecting TABLUM.IO to ClickHouse
-
 <CommunityMaintainedBadge/>
 
 ## Open the TABLUM.IO startup page {#open-the-tablumio-startup-page}

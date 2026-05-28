@@ -1,14 +1,12 @@
 ---
 description: 'Set up Azure Flexible Server for Postgres as a source for ClickPipes'
-title: 'Azure Flexible Server for Postgres source setup guide'
+title: 'Azure flexible server for Postgres source setup guide'
 keywords: ['azure', 'flexible server', 'postgres', 'clickpipes', 'wal level']
 doc_type: 'guide'
 integration:
    - support_level: 'core'
    - category: 'clickpipes'
 ---
-
-# Azure flexible server for Postgres source setup guide
 
 ClickPipes supports Postgres version 12 and later.
 

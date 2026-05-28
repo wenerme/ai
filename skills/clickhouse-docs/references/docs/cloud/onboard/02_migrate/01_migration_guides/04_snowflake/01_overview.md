@@ -1,12 +1,10 @@
 ---
 description: 'Migrating from Snowflake to ClickHouse'
 keywords: ['Snowflake']
-title: 'Migrate from Snowflake to ClickHouse'
+title: 'Snowflake to ClickHouse migration'
 show_related_blogs: true
 doc_type: 'guide'
 ---
-
-# Snowflake to ClickHouse migration
 
 > This document provides an introduction to migrating data from Snowflake to ClickHouse.
 

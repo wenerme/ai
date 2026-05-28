@@ -1,8 +1,3 @@
-# Batch API
-
-> [!WARNING]
-> **Ongoing incident:** The Batch API is currently experiencing an issue causing batch jobs to randomly fail. Our team is actively investigating.
-
 The Gemini Batch API is designed to process large volumes of requests
 asynchronously at [50% of the standard cost](https://ai.google.dev/gemini-api/docs/pricing).
 The target turnaround time is 24 hours, but in majority of cases, it is much
@@ -1264,12 +1259,12 @@ a JSONL input file for large batches (recommended for image generation):
 
 - **Supported models:** Batch API supports a range of Gemini models. Refer to the [Models page](https://ai.google.dev/gemini-api/docs/models) for each model's support of Batch API. The supported modalities for Batch API are the same as what's supported on the interactive (or non-batch) API.
 - **Pricing:** Batch API usage is priced at 50% of the standard interactive API cost for the equivalent model. See the [pricing page](https://ai.google.dev/gemini-api/docs/pricing) for details. Refer to the [rate limits page](https://ai.google.dev/gemini-api/docs/rate-limits#batch-mode) for details on rate limits for this feature.
-- **Service Level Objective (SLO):** Batch jobs are designed to complete within a 24-hour turnaround time. Many jobs may complete much faster depending on their size and current system load.
-- **Caching:** [Context caching](https://ai.google.dev/gemini-api/docs/caching) is enabled for batch requests. If a request in your batch results in a cache hit, the cached tokens are priced the same as for non-batch API traffic.
+- **Service level objective (SLO):** Batch jobs are designed to complete within a 24-hour turnaround time. Many jobs may complete much faster depending on their size and current system load.
+- **Caching:** [Context caching](https://ai.google.dev/gemini-api/docs/caching) is supported for batch requests. Reuse cached content by specifying the `cached_content` resource name in the configuration of individual requests within your batch. If a request in your batch results in a cache hit, you pay the [standard context caching rates](https://ai.google.dev/gemini-api/docs/pricing).
 
 ## Best practices
 
-- **Use input files for large requests:** For a large number of requests, always use the file input method for better manageability and to avoid hitting request size limits for the [`BatchGenerateContent`](https://ai.google.dev/api/batch-mode#google.ai.generativelanguage.v1beta.BatchService.BatchGenerateContent) call itself. Note that there's a the 2GB file size limit per input file.
+- **Use input files for large requests:** For a large number of requests, always use the file input method for better manageability and to avoid hitting request size limits for the [`BatchGenerateContent`](https://ai.google.dev/api/batch-mode#google.ai.generativelanguage.v1beta.BatchService.BatchGenerateContent) call itself. Note that there's a 2GB file size limit per input file.
 - **Error handling:** Check the `batchStats` for `failedRequestCount` after a job completes. If using file output, parse each line to check if it's a `GenerateContentResponse` or a status object indicating an error for that specific request. See the [troubleshooting
   guide](https://ai.google.dev/gemini-api/docs/troubleshooting#error-codes) for a complete set of error codes.
 - **Submit jobs once:** The creation of a batch job is not idempotent. If you send the same creation request twice, two separate batch jobs will be created.

@@ -8,8 +8,6 @@ integration:
    - category: 'sql_client'
 ---
 
-# SQL Console
-
 SQL console is the fastest and easiest way to explore and query your databases in ClickHouse Cloud. You can use the SQL console to:
 
 - Connect to your ClickHouse Cloud Services

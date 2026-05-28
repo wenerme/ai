@@ -5,8 +5,6 @@ keywords: ['cloud', 'monitoring', 'datadog', 'grafana', 'community', 'billing', 
 doc_type: 'guide'
 ---
 
-# Community and partner integrations
-
 ## Direct Datadog integration {#direct-datadog}
 
 Datadog offers a ClickHouse Monitoring plugin for its agent which queries system tables directly. This integration provides comprehensive database monitoring with cluster awareness through `clusterAllReplicas` functionality.

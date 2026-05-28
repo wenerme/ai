@@ -1,12 +1,10 @@
 ---
-title: 'Set up ClickHouse MCP server with LibreChat and ClickHouse Cloud'
+title: 'Using ClickHouse MCP server with LibreChat'
 description: 'This guide explains how to set up LibreChat with a ClickHouse MCP server using Docker.'
 keywords: ['AI', 'Librechat', 'MCP']
 show_related_blogs: true
 doc_type: 'guide'
 ---
-
-# Using ClickHouse MCP server with LibreChat
 
 > This guide explains how to set up LibreChat with a ClickHouse MCP server using Docker
 > and connect it to the ClickHouse example datasets.

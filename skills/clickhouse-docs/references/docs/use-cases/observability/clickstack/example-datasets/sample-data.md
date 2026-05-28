@@ -1,11 +1,9 @@
 ---
-title: 'Sample logs, traces and metrics'
+title: 'ClickStack - sample logs, traces and metrics'
 description: 'Getting started with ClickStack and a sample dataset with logs, sessions, traces and metrics'
 doc_type: 'guide'
 keywords: ['clickstack', 'example data', 'sample dataset', 'logs', 'observability']
 ---
-
-# ClickStack - Sample logs, traces and metrics {#clickstack-sample-dataset}
 
 This guide demonstrates both ClickStack Open Source and Managed ClickStack using a sample data set.
 

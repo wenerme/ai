@@ -40,8 +40,9 @@ const sandbox = getSandbox(
 **Parameters**:
 
 * `binding` \- The Durable Object namespace binding from your Worker environment
-* `sandboxId` \- Unique identifier for this sandbox. The same ID always returns the same sandbox instance
+* `sandboxId` \- Unique identifier for this sandbox. The same ID always returns the same sandbox instance. In user-facing apps, scope IDs to a single user.
 * `options` (optional) - See [SandboxOptions](https://developers.cloudflare.com/sandbox/configuration/sandbox-options/) for all available options:  
+   * `enableDefaultSession` \- Use the default session for operations without an explicit `sessionId`. Set to `false` to evaluate each call in isolation (default: `true`)  
    * `sleepAfter` \- Duration of inactivity before automatic sleep (default: `"10m"`)  
    * `keepAlive` \- Prevent automatic sleep entirely. Persists across hibernation (default: `false`)  
    * `containerTimeouts` \- Configure container startup timeouts  
@@ -53,8 +54,12 @@ Note
 
 The container starts lazily on first operation. Calling `getSandbox()` returns immediately—the container only spins up when you execute a command, write a file, or perform other operations. See [Sandbox lifecycle](https://developers.cloudflare.com/sandbox/concepts/sandboxes/) for details.
 
-* [  JavaScript ](#tab-panel-7517)
-* [  TypeScript ](#tab-panel-7518)
+Implicit execution mode
+
+By default, sandbox methods that do not specify a `sessionId` run in the sandbox's default session and preserve shell state between calls. It is recommended to set `enableDefaultSession` to `false` to ensure operations run in isolation. The `createSession()` API exists when sessions are required. Default sessions will be removed in a future version of the Sandbox SDK.
+
+* [  JavaScript ](#tab-panel-8056)
+* [  TypeScript ](#tab-panel-8057)
 
 JavaScript
 
@@ -129,8 +134,8 @@ await sandbox.setKeepAlive(keepAlive: boolean): Promise<void>
 
 When enabled, the sandbox automatically sends heartbeat pings every 30 seconds to prevent container eviction. When disabled, the sandbox returns to normal sleep behavior based on the `sleepAfter` configuration.
 
-* [  JavaScript ](#tab-panel-7519)
-* [  TypeScript ](#tab-panel-7520)
+* [  JavaScript ](#tab-panel-8058)
+* [  TypeScript ](#tab-panel-8059)
 
 JavaScript
 
@@ -204,8 +209,8 @@ Immediately terminates the container and permanently deletes all state:
 * All sessions (including the default session)
 * Network connections and exposed ports
 
-* [  JavaScript ](#tab-panel-7521)
-* [  TypeScript ](#tab-panel-7522)
+* [  JavaScript ](#tab-panel-8060)
+* [  TypeScript ](#tab-panel-8061)
 
 JavaScript
 
@@ -273,7 +278,7 @@ Containers automatically sleep after 10 minutes of inactivity but still count to
 
 * [Sandbox lifecycle concept](https://developers.cloudflare.com/sandbox/concepts/sandboxes/) \- Understanding container lifecycle and state
 * [Sandbox options configuration](https://developers.cloudflare.com/sandbox/configuration/sandbox-options/) \- Configure `keepAlive` and other options
-* [Sessions API](https://developers.cloudflare.com/sandbox/api/sessions/) \- Create isolated execution contexts within a sandbox
+* [Sessions API](https://developers.cloudflare.com/sandbox/api/sessions/) \- Create execution contexts within a sandbox
 
 ```json
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/sandbox/","name":"Sandbox SDK"}},{"@type":"ListItem","position":3,"item":{"@id":"/sandbox/api/","name":"API reference"}},{"@type":"ListItem","position":4,"item":{"@id":"/sandbox/api/lifecycle/","name":"Lifecycle"}}]}

@@ -101,7 +101,7 @@ curl -X POST "https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_
 
   --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
 
-  --header "cf-aig-gateway-id: my-gateway" \
+  --header "cf-aig-gateway-id: default" \
 
   --header "Content-Type: application/json" \
 
@@ -352,7 +352,7 @@ curl -X POST "https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_
 
   --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
 
-  --header "cf-aig-gateway-id: my-gateway" \
+  --header "cf-aig-gateway-id: default" \
 
   --header "Content-Type: application/json" \
 
@@ -391,7 +391,7 @@ const openai = new OpenAI({
 
   defaultHeaders: {
 
-    "cf-aig-gateway-id": "my-gateway",
+    "cf-aig-gateway-id": "default",
 
   },
 

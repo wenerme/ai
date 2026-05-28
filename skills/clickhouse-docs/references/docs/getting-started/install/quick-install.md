@@ -6,8 +6,6 @@ hide_title: true
 doc_type: 'guide'
 ---
 
-# Quick install
-
 If you don't need to install ClickHouse for production, the quickest way to get
 set up is using the ClickHouse CLI or running an install script using curl.
 

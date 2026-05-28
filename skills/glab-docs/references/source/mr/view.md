@@ -25,6 +25,7 @@ show
 
 ```plaintext
   -c, --comments        Show merge request comments and activities.
+      --jq string       Filter JSON output with a jq expression.
   -F, --output string   Format output as: text, json. (default "text")
   -p, --page int        Page number.
   -P, --per-page int    Number of items to list per page. (default 20)

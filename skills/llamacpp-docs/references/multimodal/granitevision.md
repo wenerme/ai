@@ -171,7 +171,7 @@ $ LLM_GGUF_PATH=$LLM_EXPORT_PATH/granite_llm_q4_k_m.gguf
 Note that currently you cannot quantize the visual encoder because granite vision models use SigLIP as the visual encoder, which has tensor dimensions that are not divisible by 32.
 
 ### 5. Running the Model in Llama cpp
-Build llama cpp normally; you should have a target binary named `llama-mtmd-cli`, which you can pass two binaries to. As an example, we pass the the llama.cpp banner.
+Build llama cpp normally; you should have a target binary named `llama-mtmd-cli`, which you can pass two binaries to. As an example, we pass the llama.cpp banner.
 
 ```bash
 $ ./build/bin/llama-mtmd-cli -m $LLM_GGUF_PATH \

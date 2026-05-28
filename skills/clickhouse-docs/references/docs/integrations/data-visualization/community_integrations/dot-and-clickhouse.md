@@ -8,8 +8,6 @@ integration:
    - category: 'data_visualization'
 ---
 
-# Dot
-
 <CommunityMaintainedBadge/>
 
 [Dot](https://www.getdot.ai/) is your **AI Data Analyst**.

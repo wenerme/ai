@@ -20,7 +20,7 @@ docker run -d --network host --name clickhouse -p 8123:8123 -p9000:9000 --ulimit
 docker exec -it clickhouse clickhouse-client
 ```
 
-## Create a Table {#create-a-table}
+## Create a table {#create-a-table}
 
 Let's borrow from the [ClickHouse tutorial] to create a simple database with The New York
 City taxi dataset:
@@ -85,7 +85,7 @@ PARTITION BY toYYYYMM(pickup_date)
 ORDER BY pickup_datetime;
 ```
 
-## Add the Data Set {#add-the-data-set}
+## Add the data set {#add-the-data-set}
 
 And then import the data:
 
@@ -459,7 +459,7 @@ your own SQL query.
     Time: 17.450 ms
     ```
 
-## Create a Dictionary {#create-a-dictionary}
+## Create a dictionary {#create-a-dictionary}
 
 Create a dictionary associated with a table in your ClickHouse service. The
 table and dictionary are based on a CSV file that contains a row for each
@@ -618,7 +618,7 @@ table.
     Time: 2.012 ms
     ```
 
-2.  This query returns rows for the the 1000 trips with the highest tip
+2.  This query returns rows for the 1000 trips with the highest tip
     amount, then performs an inner join of each row with the dictionary:
 
     ```sql

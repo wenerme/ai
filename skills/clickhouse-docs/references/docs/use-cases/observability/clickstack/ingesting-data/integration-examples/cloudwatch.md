@@ -5,8 +5,6 @@ doc_type: 'guide'
 keywords: ['AWS', 'CloudWatch', 'OTEL', 'ClickStack', 'logs']
 ---
 
-# Monitoring AWS CloudWatch Logs with ClickStack {#cloudwatch-clickstack}
-
 :::note[TL;DR]
 Forward AWS CloudWatch logs to ClickStack using the OpenTelemetry Collector's CloudWatch receiver. Supports named log groups and autodiscovery. Includes a demo dataset and pre-built dashboard.
 

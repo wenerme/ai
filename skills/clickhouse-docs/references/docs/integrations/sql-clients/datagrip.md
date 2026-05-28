@@ -9,8 +9,6 @@ integration:
 keywords: ['DataGrip', 'database IDE', 'JetBrains', 'SQL client', 'integrated development environment']
 ---
 
-# Connecting DataGrip to ClickHouse
-
 <CommunityMaintainedBadge/>
 
 ## Start or download DataGrip {#start-or-download-datagrip}

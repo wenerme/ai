@@ -5,8 +5,6 @@ description: 'Compute-compute separation in ClickHouse Cloud'
 doc_type: 'reference'
 ---
 
-# Warehouses
-
 <ScalePlanFeatureBadge feature="Compute-compute separation"/>
 
 ## What is compute-compute separation? {#what-is-compute-compute-separation}

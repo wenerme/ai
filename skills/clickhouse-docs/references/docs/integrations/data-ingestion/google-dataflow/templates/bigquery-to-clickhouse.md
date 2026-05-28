@@ -5,8 +5,6 @@ doc_type: 'guide'
 keywords: ['Dataflow', 'BigQuery']
 ---
 
-# Dataflow BigQuery to ClickHouse template
-
 The BigQuery to ClickHouse template is a batch pipeline that ingests data from a BigQuery table into a ClickHouse table.
 The template can read the entire table or filter specific records using a provided SQL query.
 

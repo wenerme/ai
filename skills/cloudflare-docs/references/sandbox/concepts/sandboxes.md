@@ -95,7 +95,7 @@ const sandbox = getSandbox(env.Sandbox, `user-${userId}`);
 
 ```
 
-User's work persists while actively using the sandbox. Good for interactive environments, playgrounds, and notebooks where users work continuously.
+Use this pattern for interactive environments, playgrounds, and notebooks where each user returns to their own active workspace.
 
 ### Per-session sandboxes
 
@@ -114,7 +114,7 @@ await sandbox.destroy();
 
 ```
 
-Fresh environment each time. Good for one-time execution, CI/CD, and isolated tests.
+Use this pattern for one-time execution, CI/CD, and tests that need a clean environment.
 
 ### Per-task sandboxes
 
@@ -163,7 +163,7 @@ try {
 
 **Destroy when**: Session ends, task completes, resources no longer needed
 
-**Don't destroy**: Personal environments, long-running services
+**Do not destroy**: Personal environments, long-running services
 
 ### Managing keepAlive containers
 
@@ -224,7 +224,7 @@ The SDK automatically checks that your npm package version matches the Docker co
 **What happens**:
 
 * On sandbox startup, the SDK queries the container's version
-* If versions don't match, a warning is logged
+* If versions do not match, a warning is logged
 * Some features may not work correctly if versions are incompatible
 
 **When you might see warnings**:
@@ -253,7 +253,7 @@ See [Dockerfile reference](https://developers.cloudflare.com/sandbox/configurati
 
 * **Name consistently** \- Use clear, predictable naming schemes
 * **Clean up temporary sandboxes** \- Always destroy when done
-* **Reuse long-lived sandboxes** \- One per user is often sufficient
+* **Reuse user workspaces** \- One long-lived sandbox per user is often sufficient
 * **Batch operations** \- Combine commands: `npm install && npm test && npm build`
 * **Design for ephemeral state** \- Containers restart after inactivity, losing all state
 

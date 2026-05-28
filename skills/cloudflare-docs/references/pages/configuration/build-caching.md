@@ -47,9 +47,25 @@ The following frameworks support build output caching:
 | Docusaurus | node\_modules/.cache, .docusaurus, build |
 | Eleventy   | .cache                                   |
 | Gatsby     | .cache, public                           |
+| Hugo       | .cache                                   |
 | Next.js    | .next/cache                              |
 | Nuxt       | node\_modules/.cache/nuxt                |
 | SvelteKit  | node\_modules/.cache/imagetools          |
+
+Hugo build caching
+
+Hugo does not use `.cache` by default. To use build caching with Hugo, set `--cacheDir=$PWD/.cache` in your build command. For example:
+
+Terminal window
+
+```
+
+hugo --minify --cacheDir=$PWD/.cache
+
+
+```
+
+Pages detects Hugo projects via the presence of a `hugo.toml`, `hugo.yaml`, `hugo.yml`, or `hugo.json` config file.
 
 ### Limits
 

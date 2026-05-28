@@ -5,8 +5,6 @@ doc_type: 'guide'
 keywords: ['systemd', 'journald', 'journal', 'OTEL', 'ClickStack', 'system logs', 'systemctl']
 ---
 
-# Monitoring Systemd Logs with ClickStack {#systemd-logs-clickstack}
-
 :::note[TL;DR]
 Collect and visualize systemd journal logs in ClickStack using the OpenTelemetry Collector's journald receiver. Includes a demo dataset and pre-built dashboard.
 

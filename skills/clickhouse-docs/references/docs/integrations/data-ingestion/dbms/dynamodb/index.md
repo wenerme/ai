@@ -6,8 +6,6 @@ show_related_blogs: true
 doc_type: 'guide'
 ---
 
-# CDC from DynamoDB to ClickHouse
-
 This page covers how set up CDC from DynamoDB to ClickHouse using ClickPipes. There are 2 components to this integration:
 1. The initial snapshot via S3 ClickPipes
 2. Real-time updates via Kinesis ClickPipes

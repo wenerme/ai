@@ -5,6 +5,4 @@ title: 'Amazon Redshift to ClickHouse migration guide'
 doc_type: 'guide'
 ---
 
-# Amazon Redshift to ClickHouse migration guide
-
 <MigrationGuide/>

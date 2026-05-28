@@ -5,8 +5,6 @@ keywords: ['managed postgres', 'metrics', 'prometheus', 'reference', 'observabil
 doc_type: 'reference'
 ---
 
-# Metrics reference
-
 <BetaBadge link="https://clickhouse.com/cloud/postgres" galaxyTrack={true} galaxyEvent="docs.managed-postgres.monitoring-metrics-beta" />
 
 This page lists every metric exposed by the

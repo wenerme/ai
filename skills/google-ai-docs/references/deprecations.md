@@ -1,5 +1,3 @@
-# Gemini deprecations
-
 <br />
 
 This page lists the known deprecation schedules for [stable (GA)](https://ai.google.dev/gemini-api/docs/models#stable) and [preview](https://ai.google.dev/gemini-api/docs/models#preview)
@@ -24,12 +22,12 @@ Already-shutdown models are indicated with gray backgrounds.
 | `gemini-3.5-flash` | May 19, 2026 | No shutdown date announced |   |
 | `gemini-3.1-flash-lite` | May 7, 2026 | May 7, 2027 |   |
 | Preview models ||||
-| `gemini-3.1-flash-lite-preview` | March 3, 2026 | May 25, 2026 | `gemini-3.1-flash-lite` |
 | `gemini-3.1-flash-image-preview` | February 26, 2026 | No shutdown date announced |   |
 | `gemini-3.1-pro-preview` | February 19, 2026 | No shutdown date announced |   |
 | `gemini-3-pro-image-preview` | November 20, 2025 | No shutdown date announced |   |
 | `gemini-3-flash-preview` | December 17, 2025 | No shutdown date announced | `gemini-3.5-flash` |
 | `gemini-3-pro-preview` | November 18, 2025 | March 9, 2026 | `gemini-3.1-pro-preview` |
+| `gemini-3.1-flash-lite-preview` | March 3, 2026 | May 25, 2026 | `gemini-3.1-flash-lite` |
 
 ## Gemini 2.5 Pro models
 

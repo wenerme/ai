@@ -49,6 +49,7 @@ glab ci get --merge-request=42 --status=failed --with-job-details
 
 ```plaintext
   -b, --branch string       Get the pipeline for a branch. Defaults to the current branch.
+      --jq string           Filter JSON output with a jq expression.
       --merge-request int   Show the pipeline for the given merge request <iid>.
   -F, --output string       Format output. Options: text, json. (default "text")
   -p, --pipeline-id int     Get the pipeline with the given <id>.

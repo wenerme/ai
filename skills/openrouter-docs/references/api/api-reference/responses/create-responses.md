@@ -5571,6 +5571,11 @@ components:
         model:
           type: string
           description: Slug of the analysis model that failed.
+        status_code:
+          type: integer
+          description: >-
+            HTTP status code from the upstream response, when available (e.g.
+            402, 429).
       required:
         - error
         - model
@@ -5988,6 +5993,13 @@ components:
                 not produce a response. Present when at least one requested
                 analysis model failed. The fusion result is still usable but was
                 produced from a degraded panel.
+            failure_reason:
+              type: string
+              description: >-
+                Typed failure reason when the fusion run failed. Possible values
+                include: all_panels_failed, insufficient_credits, rate_limited,
+                judge_not_valid_json, judge_schema_mismatch,
+                judge_upstream_error, judge_empty_completion.
             id:
               type: string
             responses:

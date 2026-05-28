@@ -5,8 +5,6 @@ keywords: ['PrivateLink']
 doc_type: 'guide'
 ---
 
-# AWS PrivateLink
-
 <ScalePlanFeatureBadge feature="AWS PrivateLink"/>
 
 You can use [AWS PrivateLink](https://aws.amazon.com/privatelink/) to establish secure connectivity between VPCs, AWS services, your on-premises systems, and ClickHouse Cloud without exposing traffic to the public Internet. This document outlines the steps to connect to ClickHouse Cloud using AWS PrivateLink.

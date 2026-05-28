@@ -5,8 +5,6 @@ doc_type: 'guide'
 keywords: ['Bindplane', 'OTEL', 'ClickStack', 'OpenTelemetry', 'collector management']
 ---
 
-# Sending OpenTelemetry to ClickStack with Bindplane {#bindplane-clickstack}
-
 <PartnerBadge/>
 
 :::note[TL;DR]

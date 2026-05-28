@@ -1,11 +1,9 @@
 ---
-title: 'Migrating between self-managed ClickHouse and ClickHouse Cloud'
+title: 'Migrating between self-managed ClickHouse and ClickHouse Cloud using remoteSecure'
 description: 'Page describing how to migrate between self-managed ClickHouse and ClickHouse Cloud'
 doc_type: 'guide'
 keywords: ['migration', 'ClickHouse Cloud', 'OSS', 'Migrate self-managed to Cloud']
 ---
-
-# Migrating between self-managed ClickHouse and ClickHouse Cloud using remoteSecure
 
 <Image img={self_managed_01} size='lg' alt='Migrating Self-managed ClickHouse'/>
 

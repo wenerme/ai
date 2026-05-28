@@ -1,5 +1,5 @@
 ---
-title: 'Java'
+title: 'Java clients overview'
 keywords: ['clickhouse', 'java', 'jdbc', 'client', 'integrate', 'r2dbc']
 description: 'Options for connecting to ClickHouse from Java'
 doc_type: 'reference'
@@ -7,8 +7,6 @@ integration:
   - support_level: 'core'
   - category: 'language_client'
 ---
-
-# Java clients overview
 
 - [Client 0.8+](./client/client.mdx)
 - [JDBC 0.8+](./jdbc/jdbc.mdx)

@@ -8,8 +8,6 @@ integration:
    - category: 'clickpipes'
 ---
 
-# RDS Postgres source setup guide
-
 ## Supported Postgres versions {#supported-postgres-versions}
 
 ClickPipes supports Postgres version 12 and later.

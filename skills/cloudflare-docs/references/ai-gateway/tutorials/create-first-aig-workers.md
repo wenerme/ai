@@ -25,8 +25,8 @@ This tutorial guides you through creating your first AI Gateway using Workers AI
 
 Then, create a new AI Gateway.
 
-* [ Dashboard ](#tab-panel-4571)
-* [ API ](#tab-panel-4572)
+* [ Dashboard ](#tab-panel-4587)
+* [ API ](#tab-panel-4588)
 
 [ Go to **AI Gateway** ](https://dash.cloudflare.com/?to=/:account/ai/ai-gateway)
 1. Log into the [Cloudflare dashboard ↗](https://dash.cloudflare.com/) and select your account.
@@ -57,7 +57,7 @@ Terminal window
 ```  
 curl -X POST "https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/v1/chat/completions" \  
   --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \  
-  --header "cf-aig-gateway-id: my-gateway" \  
+  --header "cf-aig-gateway-id: default" \  
   --header "Content-Type: application/json" \  
   --data '{  
     "model": "@cf/moonshotai/kimi-k2.6",  

@@ -8,8 +8,6 @@ integration:
   - category: 'data_integration'
 ---
 
-# Connecting Middleware to ClickHouse
-
 <PartnerBadge/>
 
 [Middleware](https://middleware.io/) is a cloud observability platform for monitoring infrastructure, logs, and application performance.

@@ -8,8 +8,6 @@ integration:
   - category: 'clickpipes'
 ---
 
-# Supabase source setup guide
-
 This is a guide on how to setup Supabase Postgres for usage in ClickPipes.
 
 > **note**: ClickPipes supports Supabase via IPv6 natively for seamless replication.

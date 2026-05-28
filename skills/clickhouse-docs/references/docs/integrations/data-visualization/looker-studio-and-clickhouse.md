@@ -8,8 +8,6 @@ integration:
   - category: 'data_visualization'
 ---
 
-# Looker Studio
-
 <PartnerBadge/>
 
 Looker Studio can connect to ClickHouse via the MySQL interface using the official Google MySQL data source.

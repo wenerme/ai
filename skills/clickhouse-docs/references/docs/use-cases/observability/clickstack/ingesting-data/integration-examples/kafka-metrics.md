@@ -5,8 +5,6 @@ doc_type: 'guide'
 keywords: ['Kafka', 'metrics', 'OTEL', 'ClickStack', 'JMX']
 ---
 
-# Monitoring Kafka Metrics with ClickStack {#kafka-metrics-clickstack}
-
 :::note[TL;DR]
 Monitor Apache Kafka performance metrics in ClickStack using the OTel JMX Metric Gatherer. Includes a demo dataset and pre-built dashboard.
 

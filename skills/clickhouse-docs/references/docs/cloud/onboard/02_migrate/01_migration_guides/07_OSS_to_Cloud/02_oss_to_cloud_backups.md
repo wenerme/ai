@@ -1,11 +1,9 @@
 ---
-title: 'Migrating between self-managed ClickHouse and ClickHouse Cloud with BACKUP/RESTORE'
+title: 'Migrating from self-managed ClickHouse to ClickHouse Cloud using backup commands'
 description: 'Page describing how to migrate between self-managed ClickHouse and ClickHouse Cloud using BACKUP and RESTORE commands'
 doc_type: 'guide'
 keywords: ['migration', 'ClickHouse Cloud', 'OSS', 'Migrate self-managed to Cloud', 'BACKUP', 'RESTORE']
 ---
-
-# Migrating from self-managed ClickHouse to ClickHouse Cloud using backup commands
 
 ## Overview {#overview-migration-approaches}
 

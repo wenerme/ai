@@ -8,8 +8,6 @@ integration:
   - category: 'data_visualization'
 ---
 
-# Connecting Embeddable to ClickHouse
-
 <CommunityMaintainedBadge/>
 
 In [Embeddable](https://embeddable.com/) you define [Data Models](https://docs.embeddable.com/data-modeling/introduction) and [Components](https://docs.embeddable.com/development/introduction) in code (stored in your own code repository) and use our **SDK** to make these available for your team in the powerful Embeddable **no-code builder.**

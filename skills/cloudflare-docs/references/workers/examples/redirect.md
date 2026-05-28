@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 # Redirect
 
-**Last reviewed:**  about 4 years ago 
+**Last reviewed:**  over 4 years ago 
 
 Redirect requests from one URL to another or from one set of URLs to another set.
 
@@ -24,11 +24,11 @@ This creates a repository in your GitHub account and deploys the application to 
 
 ## Redirect all requests to one URL
 
-* [  JavaScript ](#tab-panel-9563)
-* [  TypeScript ](#tab-panel-9564)
-* [  Python ](#tab-panel-9565)
-* [  Rust ](#tab-panel-9566)
-* [  Hono ](#tab-panel-9567)
+* [  JavaScript ](#tab-panel-9599)
+* [  TypeScript ](#tab-panel-9600)
+* [  Python ](#tab-panel-9601)
+* [  Rust ](#tab-panel-9602)
+* [  Hono ](#tab-panel-9603)
 
 JavaScript
 
@@ -51,7 +51,7 @@ export default {
 
 ```
 
-[Run Worker in Playground](https://workers.cloudflare.com/playground#LYVwNgLglgDghgJwgegGYHsHALQBM4RwDcABAEbogB2+CAngLzbPYZb6HbW5QDGU2AAwAmAMwA2ACyiA7IICc4maIBcLFm2Ac4XGnwEiJ0uYuUBYAFABhdFQgBTO9gAiUAM4x0bqNFsqSmngExCRUcMD2DABEUDT2AB4AdABWblGkqFBgjuGRMXFJqVGWNnaOENgAKnQw9v5wMDBgfARQtsjJcABucG68CLAQANTA6Ljg9paWCZ5IJLj2qHDgECQA3hYkJL10VLwB9hC8ABYAFAj2AI4g9m4QAJTrm1skvLZ387fQYb5UAKoAJQAMiQGCQoscIBAYG4VMhkAlwk17Ik3sB0s8tm8qB87gQQG4bAtQSRRIIAIxETEkC4QEAIKgkAG3Tw4lEXHgXXgQU4LO6xVq2QFAgA0JDxdMJY3s9ypWwAviKLPKiJZ1MxNNpdDx+EIxFJZAolKISrYHE5XB4vD42lR-IFtKQwhFohFCNp0gEsjkXVEyGB0GRitYzeUqjU6ttGs1eIKqB03LYphY1lFgHBYgB9UbjbJRFT5BaFNLytXqzXBbX6PVGQ2mUTMSxAA)
+[Run Worker in Playground](https://workers.cloudflare.com/playground#LYVwNgLglgDghgJwgegGYHsHALQBM4RwDcABAEbogB2+CAngLzbPYZb6HbW5QDGU2AAwBGAKwBOABwA2AEwAWebLEAuFizbAOcLjT4CREmQqViAsACgAwuioQApnewARKAGcY6N1Gi2VJTTwCYhIqOGB7BgAiKBp7AA8AOgArNyjSVCgwR3DImLik1KjLGztHCGwAFToYe384GBgwPgIoW2RkuAA3ODdeBFgIAGpgdFxwe0tLBM8kElx7VDhwCBIAbwsSEl66Kl4A+wheAAsACgR7AEcQezcIAEp1za2SXls7+dvoMN8qAFUAEoAGRIDBIUWOEAgMDcKmQyAS4Sa9kSb2A6WeWzeVA+dwIIDcNgWoJIAGYRERMSQLhAQAgqCQAbdPDiURceBdeBBTgs7rFWrZAUCADQkPG0wljez3SlbAC+woscqIlnUzE02l0PH4QjEUjkimUohKtgcTlcHi8PjaVH8gW0pDCEWiEUI2nSASyOWdUTIYHQZGK1lN5SqNTq20azV4AqoHTctimFjWUWAcFiAH1RuNslEVPkFoU0nLVWqNcEtfpdUYDaZRMxLEA)
 
 TypeScript
 
@@ -142,11 +142,11 @@ export default app;
 
 ## Redirect requests from one domain to another
 
-* [  JavaScript ](#tab-panel-9558)
-* [  TypeScript ](#tab-panel-9559)
-* [  Python ](#tab-panel-9560)
-* [  Rust ](#tab-panel-9561)
-* [  Hono ](#tab-panel-9562)
+* [  JavaScript ](#tab-panel-9594)
+* [  TypeScript ](#tab-panel-9595)
+* [  Python ](#tab-panel-9596)
+* [  Rust ](#tab-panel-9597)
+* [  Hono ](#tab-panel-9598)
 
 JavaScript
 

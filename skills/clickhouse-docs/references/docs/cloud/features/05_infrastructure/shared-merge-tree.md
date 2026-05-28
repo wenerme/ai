@@ -1,11 +1,9 @@
 ---
-title: 'SharedMergeTree'
+title: 'SharedMergeTree table engine'
 keywords: ['SharedMergeTree']
 description: 'Describes the SharedMergeTree table engine'
 doc_type: 'reference'
 ---
-
-# SharedMergeTree table engine
 
 The SharedMergeTree table engine family is a cloud-native replacement of the ReplicatedMergeTree engines that is optimized to work on top of shared storage (e.g. Amazon S3, Google Cloud Storage, MinIO, Azure Blob Storage). There is a SharedMergeTree analog for every specific MergeTree engine type, i.e. SharedReplacingMergeTree replaces ReplicatedReplacingMergeTree.
 

@@ -1,10 +1,8 @@
 ---
 description: 'Details backup/restore to or from an Azure Blob Storage endpoint'
-title: 'Backup and restore to/from Azure Blob Storage'
+title: 'BACKUP/RESTORE to or from Azure Blob Storage'
 doc_type: 'guide'
 ---
-
-# BACKUP/RESTORE to or from Azure Blob Storage {#backup-to-azure-blob-storage}
 
 ## Syntax {#syntax}
 

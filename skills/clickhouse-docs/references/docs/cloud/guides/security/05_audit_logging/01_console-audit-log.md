@@ -5,8 +5,6 @@ doc_type: 'guide'
 keywords: ['audit log']
 ---
 
-# Console audit log {#console-audit-log}
-
 Console activities are recorded in the audit log. If you have the Admin or Developer organization role, you can review the log and integrate it with your logging systems.
 
 ## Access the console log via the user interface {#console-audit-log-ui}

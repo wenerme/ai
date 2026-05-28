@@ -26,8 +26,8 @@ The SDK works with any S3-compatible object storage provider. Examples include C
 
 To mount an R2 bucket in production without passing credentials into the container, add an R2 binding and export `ContainerProxy` from your Worker entrypoint.
 
-* [  wrangler.jsonc ](#tab-panel-8320)
-* [  wrangler.toml ](#tab-panel-8321)
+* [  wrangler.jsonc ](#tab-panel-8328)
+* [  wrangler.toml ](#tab-panel-8329)
 
 JSONC
 
@@ -67,8 +67,8 @@ bucket_name = "my-r2-bucket"
 
 ```
 
-* [  JavaScript ](#tab-panel-8324)
-* [  TypeScript ](#tab-panel-8325)
+* [  JavaScript ](#tab-panel-8332)
+* [  TypeScript ](#tab-panel-8333)
 
 JavaScript
 
@@ -107,8 +107,8 @@ Mount S3-compatible buckets when you need:
 
 ## Mount an R2 bucket
 
-* [  JavaScript ](#tab-panel-8334)
-* [  TypeScript ](#tab-panel-8335)
+* [  JavaScript ](#tab-panel-8342)
+* [  TypeScript ](#tab-panel-8343)
 
 JavaScript
 
@@ -223,8 +223,8 @@ R2 credentials
 
 We also automatically detect `AWS_ACCESS_KEY_ID` and `AWS_SECRET_ACCESS_KEY` for compatibility with other S3-compatible providers.
 
-* [  JavaScript ](#tab-panel-8326)
-* [  TypeScript ](#tab-panel-8327)
+* [  JavaScript ](#tab-panel-8334)
+* [  TypeScript ](#tab-panel-8335)
 
 JavaScript
 
@@ -260,8 +260,8 @@ await sandbox.mountBucket('my-r2-bucket', '/data', {
 
 Pass credentials directly when needed:
 
-* [  JavaScript ](#tab-panel-8328)
-* [  TypeScript ](#tab-panel-8329)
+* [  JavaScript ](#tab-panel-8336)
+* [  TypeScript ](#tab-panel-8337)
 
 JavaScript
 
@@ -309,8 +309,8 @@ await sandbox.mountBucket('my-r2-bucket', '/data', {
 
 Mount a specific subdirectory within a bucket using the `prefix` option. Only contents under the prefix are visible at the mount point:
 
-* [  JavaScript ](#tab-panel-8346)
-* [  TypeScript ](#tab-panel-8347)
+* [  JavaScript ](#tab-panel-8354)
+* [  TypeScript ](#tab-panel-8355)
 
 JavaScript
 
@@ -414,8 +414,8 @@ The `prefix` must start with `/` (for example, `/data` or `/logs/2024/`).
 
 Protect data by mounting buckets in read-only mode:
 
-* [  JavaScript ](#tab-panel-8330)
-* [  TypeScript ](#tab-panel-8331)
+* [  JavaScript ](#tab-panel-8338)
+* [  TypeScript ](#tab-panel-8339)
 
 JavaScript
 
@@ -467,8 +467,8 @@ await sandbox.writeFile('/data/new-file.txt', 'data');  // Error: Read-only file
 
 You can also mount R2 buckets during local development with `wrangler dev` by passing the `localBucket` option. Production R2 binding mounts and local `localBucket` mounts both avoid explicit credentials, but they are different execution paths. Production uses credential-less egress interception and overlays the target path. Local development uses periodic synchronization with the R2 binding.
 
-* [  JavaScript ](#tab-panel-8332)
-* [  TypeScript ](#tab-panel-8333)
+* [  JavaScript ](#tab-panel-8340)
+* [  TypeScript ](#tab-panel-8341)
 
 JavaScript
 
@@ -530,8 +530,8 @@ When `localBucket` is `true`, the SDK uses local R2 binding synchronization. Whe
 
 The `readOnly` and `prefix` options work the same way in local mode:
 
-* [  JavaScript ](#tab-panel-8338)
-* [  TypeScript ](#tab-panel-8339)
+* [  JavaScript ](#tab-panel-8346)
+* [  TypeScript ](#tab-panel-8347)
 
 JavaScript
 
@@ -603,8 +603,8 @@ These considerations apply to local development with `wrangler dev` only. In pro
 
 ## Unmount buckets
 
-* [  JavaScript ](#tab-panel-8336)
-* [  TypeScript ](#tab-panel-8337)
+* [  JavaScript ](#tab-panel-8344)
+* [  TypeScript ](#tab-panel-8345)
 
 JavaScript
 
@@ -658,8 +658,8 @@ The SDK supports any S3-compatible object storage. Here are examples for common 
 
 ### Amazon S3
 
-* [  JavaScript ](#tab-panel-8340)
-* [  TypeScript ](#tab-panel-8341)
+* [  JavaScript ](#tab-panel-8348)
+* [  TypeScript ](#tab-panel-8349)
 
 JavaScript
 
@@ -705,8 +705,8 @@ await sandbox.mountBucket('my-s3-bucket', '/data', {
 
 ### Google Cloud Storage
 
-* [  JavaScript ](#tab-panel-8342)
-* [  TypeScript ](#tab-panel-8343)
+* [  JavaScript ](#tab-panel-8350)
+* [  TypeScript ](#tab-panel-8351)
 
 JavaScript
 
@@ -758,8 +758,8 @@ Generate HMAC keys in GCS console under **Settings** \> **Interoperability**.
 
 For providers like Backblaze B2, MinIO, Wasabi, or others, use the standard mount pattern:
 
-* [  JavaScript ](#tab-panel-8344)
-* [  TypeScript ](#tab-panel-8345)
+* [  JavaScript ](#tab-panel-8352)
+* [  TypeScript ](#tab-panel-8353)
 
 JavaScript
 
@@ -813,8 +813,8 @@ For provider-specific configuration, see the [s3fs-fuse wiki ↗](https://github
 
 **Solution**: Ensure your Worker has an `r2_buckets` binding and that `mountBucket()` uses the binding name, not the bucket's dashboard name:
 
-* [  wrangler.jsonc ](#tab-panel-8322)
-* [  wrangler.toml ](#tab-panel-8323)
+* [  wrangler.jsonc ](#tab-panel-8330)
+* [  wrangler.toml ](#tab-panel-8331)
 
 JSONC
 
@@ -897,13 +897,13 @@ npx wrangler secret put AWS_SECRET_ACCESS_KEY
 * Incorrect endpoint URL
 * Invalid credentials
 * Missing `ContainerProxy` export, or on older Wrangler versions missing `enable_ctx_exports`
-* Bucket doesn't exist
+* Bucket does not exist
 * Network connectivity issues
 
 Verify your binding or endpoint configuration:
 
-* [  JavaScript ](#tab-panel-8348)
-* [  TypeScript ](#tab-panel-8349)
+* [  JavaScript ](#tab-panel-8356)
+* [  TypeScript ](#tab-panel-8357)
 
 JavaScript
 
@@ -949,8 +949,8 @@ try {
 
 **Solution**: Unmount first or use a different path:
 
-* [  JavaScript ](#tab-panel-8350)
-* [  TypeScript ](#tab-panel-8351)
+* [  JavaScript ](#tab-panel-8358)
+* [  TypeScript ](#tab-panel-8359)
 
 JavaScript
 
@@ -990,8 +990,8 @@ File operations on mounted buckets are slower than local filesystem due to netwo
 
 **Solution**: Copy frequently accessed files locally:
 
-* [  JavaScript ](#tab-panel-8352)
-* [  TypeScript ](#tab-panel-8353)
+* [  JavaScript ](#tab-panel-8360)
+* [  TypeScript ](#tab-panel-8361)
 
 JavaScript
 
@@ -1053,7 +1053,7 @@ await sandbox.exec('cp', { args: ['/workspace/results.json', '/data/results/outp
 * **Choose the right mount mode** \- Use R2 binding mounts when you want Worker-managed R2 access, or use `endpoint` for explicit R2, S3, GCS, and other S3-compatible providers
 * **Secure credentials** \- Always use Worker secrets, never hardcode
 * **Read-only when possible** \- Protect data with read-only mounts
-* **Use prefixes for isolation** \- Mount subdirectories when working with specific datasets
+* **Mount the narrowest path** \- Use prefixes to expose only the data a sandbox needs
 * **Mount paths** \- Prefer `/data`, `/storage`, or `/mnt/*`; if you mount under `/workspace`, account for the mount overlaying that path in production
 * **Handle errors** \- Wrap mount operations in `try...catch` blocks
 * **Optimize access** \- Copy frequently accessed files locally

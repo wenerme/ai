@@ -9,8 +9,6 @@ integration:
   - category: 'data_visualization'
 ---
 
-# Integrating Luzmo with ClickHouse
-
 <CommunityMaintainedBadge/>
 
 ## 1. Setup a ClickHouse connection {#1-setup-a-clickhouse-connection}

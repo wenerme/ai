@@ -59,7 +59,7 @@ opencode
 5. **Try a prompt**  
 For example:  
 ```  
-Add bot protection and rate limiting to my login and checkout endpoints.  
+Optimize my Worker to serve WebP images with responsive resizing using Cloudflare Images.  
 ```
 
 ## Cloudflare platform access

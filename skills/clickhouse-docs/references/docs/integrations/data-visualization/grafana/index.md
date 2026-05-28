@@ -10,8 +10,6 @@ integration:
 keywords: ['Grafana', 'data visualization', 'dashboard', 'plugin', 'data source']
 ---
 
-# ClickHouse data source plugin for Grafana
-
 <ClickHouseSupportedBadge/>
 
 With Grafana you can explore and share all of your data through dashboards.

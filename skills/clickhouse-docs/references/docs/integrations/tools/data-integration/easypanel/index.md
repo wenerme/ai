@@ -5,8 +5,6 @@ title: 'Deploying ClickHouse on Easypanel'
 doc_type: 'guide'
 ---
 
-# Deploying ClickHouse on Easypanel
-
 <CommunityMaintainedBadge/>
 
 [Easypanel](https://easypanel.io) it's a modern server control panel. You can use it to deploy ClickHouse on your own server.

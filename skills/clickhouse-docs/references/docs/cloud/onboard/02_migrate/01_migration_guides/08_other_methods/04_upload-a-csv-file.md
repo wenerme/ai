@@ -1,10 +1,8 @@
 ---
-title: 'Uploading files'
+title: 'Upload files to Cloud'
 description: 'Learn how to upload files to Cloud'
 doc_type: 'guide'
 ---
-
-# Upload files to Cloud
 
 ClickHouse Cloud provides an easy way to import your files and supports the
 following formats:

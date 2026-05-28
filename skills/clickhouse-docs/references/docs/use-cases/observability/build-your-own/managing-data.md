@@ -6,8 +6,6 @@ show_related_blogs: true
 doc_type: 'guide'
 ---
 
-# Managing data
-
 Deployments of ClickHouse for Observability invariably involve large datasets, which need to be managed. ClickHouse offers a number of features to assist with data management.
 
 ## Partitions {#partitions}

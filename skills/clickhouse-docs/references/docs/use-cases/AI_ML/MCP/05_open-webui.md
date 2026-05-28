@@ -1,12 +1,10 @@
 ---
-title: 'Set up ClickHouse MCP server with Open WebUI and ClickHouse Cloud'
+title: 'Using ClickHouse MCP server with Open WebUI'
 description: 'This guide explains how to set up Open WebUI with a ClickHouse MCP server using Docker.'
 keywords: ['AI', 'Open WebUI', 'MCP']
 show_related_blogs: true
 doc_type: 'guide'
 ---
-
-# Using ClickHouse MCP server with Open WebUI
 
 > This guide explains how to set up [Open WebUI](https://github.com/open-webui/open-webui) with a ClickHouse MCP server
 > and connect it to the ClickHouse example datasets.

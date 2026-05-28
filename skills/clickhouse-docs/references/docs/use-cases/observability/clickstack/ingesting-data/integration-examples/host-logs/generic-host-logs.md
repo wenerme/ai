@@ -5,8 +5,6 @@ doc_type: 'guide'
 keywords: ['host logs', 'systemd', 'syslog', 'OTEL', 'ClickStack', 'system monitoring', 'server logs']
 ---
 
-# Monitoring Host Logs with ClickStack {#host-logs-clickstack}
-
 :::note[TL;DR]
 Collect and visualize host system logs (syslog, auth, kernel) in ClickStack using the OTel `filelog` receiver. Includes a demo dataset and pre-built dashboard.
 

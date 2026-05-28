@@ -38,6 +38,7 @@ glab runner-controller create --description "Production" --state enabled
 
 ```plaintext
   -d, --description string   Description of the runner controller.
+      --jq string            Filter JSON output with a jq expression.
   -F, --output string        Format output as: text, json. (default "text")
       --state string         State of the runner controller: disabled, enabled, dry_run.
 ```

@@ -5,8 +5,6 @@ description: 'Guide showing how to migrate to ClickHouse using clickhouse-local'
 doc_type: 'guide'
 ---
 
-# Migrating to ClickHouse using clickhouse-local
-
 <Image img={ch_local_01} size='lg' alt='Migrating Self-managed ClickHouse'/>
 
 You can use ClickHouse, or to be more specific,[`clickhouse-local`](/operations/utilities/clickhouse-local.md)

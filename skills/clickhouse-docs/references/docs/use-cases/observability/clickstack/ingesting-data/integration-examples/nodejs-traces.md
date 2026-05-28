@@ -5,8 +5,6 @@ doc_type: 'guide'
 keywords: ['Node.js', 'traces', 'OTEL', 'ClickStack', 'distributed tracing']
 ---
 
-# Monitoring Node.js Traces with ClickStack {#nodejs-traces-clickstack}
-
 :::note[TL;DR]
 Capture distributed traces from Node.js applications in ClickStack using OpenTelemetry automatic instrumentation. Includes a demo dataset and pre-built dashboard.
 

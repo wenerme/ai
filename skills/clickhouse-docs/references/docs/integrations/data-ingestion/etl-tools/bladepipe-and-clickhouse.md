@@ -5,8 +5,6 @@ title: 'Connect BladePipe to ClickHouse'
 doc_type: 'guide'
 ---
 
-# Connect BladePipe to ClickHouse
-
 <PartnerBadge/>
 
 <a href="https://www.bladepipe.com/" target="_blank">BladePipe</a> is a real-time end-to-end data integration tool with sub-second latency, boosting seamless data flow across platforms. 

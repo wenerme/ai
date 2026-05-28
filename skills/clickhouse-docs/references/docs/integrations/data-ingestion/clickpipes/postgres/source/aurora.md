@@ -8,8 +8,6 @@ integration:
    - category: 'clickpipes'
 ---
 
-# Aurora Postgres source setup guide
-
 ## Supported Postgres versions {#supported-postgres-versions}
 
 ClickPipes supports Aurora PostgreSQL-Compatible Edition version 12 and later.

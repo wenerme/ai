@@ -8,8 +8,6 @@ integration:
   - category: 'clickpipes'
 ---
 
-# ClickPipes for Postgres FAQ
-
 ### Are transaction rollbacks replicated to ClickHouse? {#are-transaction-rollbacks-replicated}
 
 No. CDC replicates only committed transactions. Rolled-back transactions are never sent to ClickHouse.

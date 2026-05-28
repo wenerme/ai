@@ -1,11 +1,9 @@
 ---
-title: 'Overview'
+title: 'Dictionary'
 keywords: ['dictionary', 'dictionaries']
 description: 'A dictionary provides a key-value representation of data for fast lookups.'
 doc_type: 'guide'
 ---
-
-# Dictionary
 
 A dictionary in ClickHouse provides an in-memory [key-value](https://en.wikipedia.org/wiki/Key%E2%80%93value_database) representation of data from various [internal and external sources](/sql-reference/statements/create/dictionary/sources#dictionary-sources), optimizing for super-low latency lookup queries.
 

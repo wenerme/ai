@@ -8,8 +8,6 @@ integration:
   - category: 'sql_client'
 ---
 
-# Using marimo with ClickHouse
-
 <CommunityMaintainedBadge/>
 
 [marimo](https://marimo.io/) is an open-source reactive notebook for Python with SQL built-in. When you run a cell or interact with a UI element, marimo automatically runs affected cells (or marks them as stale), keeping code and outputs consistent and preventing bugs before they happen. Every marimo notebook is stored as pure Python, executable as a script, and deployable as an app.

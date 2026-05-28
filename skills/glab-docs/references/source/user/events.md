@@ -15,6 +15,7 @@ glab user events [flags]
 
 ```plaintext
   -a, --all             Get events from all projects.
+      --jq string       Filter JSON output with a jq expression.
   -F, --output string   Format output as: 'text', 'json'. (default "text")
   -p, --page int        Page number. (default 1)
   -P, --per-page int    Number of items to list per page. (default 30)

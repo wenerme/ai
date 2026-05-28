@@ -8,8 +8,6 @@ integration:
   - category: 'data_visualization'
 ---
 
-# Connecting Explo to ClickHouse
-
 <CommunityMaintainedBadge/>
 
 Customer-facing analytics for any platform. Designed for beautiful visualization. Engineered for simplicity.

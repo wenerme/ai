@@ -25,6 +25,7 @@ glab ci list --status=failed
 ## Options
 
 ```plaintext
+      --jq string               Filter JSON output with a jq expression.
   -n, --name string             Return only pipelines with the given name.
   -o, --order string            Order pipelines by this field. Options: id, status, ref, updated_at, user_id. (default "id")
   -F, --output string           Format output. Options: text, json. (default "text")

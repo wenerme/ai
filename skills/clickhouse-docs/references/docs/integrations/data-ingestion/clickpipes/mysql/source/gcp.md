@@ -8,8 +8,6 @@ integration:
    - category: 'clickpipes'
 ---
 
-# Cloud SQL for MySQL source setup guide
-
 This is a step-by-step guide on how to configure your Cloud SQL for MySQL instance for replicating its data via the MySQL ClickPipe.
 
 ## Enable binary log retention {#enable-binlog-retention-gcp}

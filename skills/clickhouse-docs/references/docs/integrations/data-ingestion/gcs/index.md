@@ -5,8 +5,6 @@ doc_type: 'guide'
 keywords: ['Google Cloud Storage ClickHouse', 'GCS ClickHouse integration', 'GCS backed MergeTree', 'ClickHouse GCS storage', 'Google Cloud ClickHouse']
 ---
 
-# Integrate Google Cloud Storage with ClickHouse
-
 > **note**: If you're using ClickHouse Cloud on [Google Cloud](https://cloud.google.com), this page doesn't apply as your services will already be using [Google Cloud Storage](https://cloud.google.com/storage). If you're looking to `SELECT` or `INSERT` data from GCS, please see the [`gcs` table function](/sql-reference/table-functions/gcs).
 
 ClickHouse recognizes that GCS represents an attractive storage solution if you're seeking to separate storage and compute. To help achieve this, support is provided for using GCS as the storage for a MergeTree engine. This will enable you to exploit the scalability and cost benefits of GCS, and the insert and query performance of the MergeTree engine.

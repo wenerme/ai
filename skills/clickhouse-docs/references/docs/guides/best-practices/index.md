@@ -5,8 +5,6 @@ keywords: ['performance optimization', 'best practices', 'optimization guide', '
 doc_type: 'reference'
 ---
 
-# Performance and Optimizations
-
 This section contains tips and best practices for improving performance with ClickHouse. 
 We recommend users read [Core Concepts](/parts) as a precursor to this section, 
 which covers the main concepts required to improve performance.

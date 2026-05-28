@@ -1,12 +1,10 @@
 ---
-title: 'Integrating OpenTelemetry'
+title: 'Integrating OpenTelemetry for data collection'
 description: 'Integrating OpenTelemetry and ClickHouse for observability'
 keywords: ['Observability', 'OpenTelemetry']
 show_related_blogs: true
 doc_type: 'guide'
 ---
-
-# Integrating OpenTelemetry for data collection
 
 Any Observability solution requires a means of collecting and exporting logs and traces. For this purpose, ClickHouse recommends [the OpenTelemetry (OTel) project](https://opentelemetry.io/).
 

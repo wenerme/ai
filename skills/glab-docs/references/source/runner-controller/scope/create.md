@@ -49,6 +49,7 @@ glab runner-controller scope create 42 --runner 5 --output json
 
 ```plaintext
       --instance            Add an instance-level scope.
+      --jq string           Filter JSON output with a jq expression.
   -F, --output string       Format output as: text, json. (default "text")
       --runner int64Slice   Add a runner-level scope for the specified runner ID. Multiple IDs can be comma-separated or specified by repeating the flag. (default [])
 ```

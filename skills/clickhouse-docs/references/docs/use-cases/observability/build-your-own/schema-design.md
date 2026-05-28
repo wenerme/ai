@@ -1,12 +1,10 @@
 ---
-title: 'Schema design'
+title: 'Designing a schema for observability'
 description: 'Designing a schema design for observability'
 keywords: ['observability', 'logs', 'traces', 'metrics', 'OpenTelemetry', 'Grafana', 'OTel']
 show_related_blogs: true
 doc_type: 'guide'
 ---
-
-# Designing a schema for observability
 
 We recommend users always create their own schema for logs and traces for the following reasons:
 

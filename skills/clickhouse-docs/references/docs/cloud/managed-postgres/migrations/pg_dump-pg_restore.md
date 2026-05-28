@@ -1,11 +1,10 @@
 ---
-title: 'Migrate PostgreSQL data using pg_dump and pg_restore'
+title: 'Migrate to Managed Postgres using pg_dump and pg_restore'
 description: 'Learn how to migrate your PostgreSQL data to ClickHouse Managed Postgres using pg_dump and pg_restore'
 keywords: ['postgres', 'postgresql', 'pg_dump', 'pg_restore', 'migration', 'data transfer', 'managed postgres']
 doc_type: 'guide'
 ---
 
-# Migrate to Managed Postgres using pg_dump and pg_restore {#pg-dump-pg-restore}
 This guide provides step-by-step instructions on how to migrate your PostgreSQL database to ClickHouse Managed Postgres using the `pg_dump` and `pg_restore` utilities.
 
 <BetaBadge link="https://clickhouse.com/cloud/postgres" galaxyTrack={true} galaxyEvent="docs.managed-postgres.pg_dump-pg_restore-beta" />

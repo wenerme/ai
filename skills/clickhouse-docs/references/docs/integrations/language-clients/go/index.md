@@ -8,8 +8,6 @@ integration:
   - category: 'language_client'
 ---
 
-# ClickHouse Go
-
 ## Quickstart {#quick-start}
 
 Let's Go with a simple example.  This will connect to ClickHouse and select from the system database.  To get started you will need your connection details.

@@ -8,8 +8,6 @@ integration:
   - category: 'data_integration'
 ---
 
-# Connecting Retool to ClickHouse
-
 <PartnerBadge/>
 
 ## 1. Gather your connection details {#1-gather-your-connection-details}

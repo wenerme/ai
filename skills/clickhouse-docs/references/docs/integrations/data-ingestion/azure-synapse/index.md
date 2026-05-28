@@ -8,8 +8,6 @@ integration:
   - category: 'data_ingestion'
 ---
 
-# Integrating Azure Synapse with ClickHouse
-
 <ClickHouseSupportedBadge/>
 
 [Azure Synapse](https://azure.microsoft.com/en-us/products/synapse-analytics) is an integrated analytics service that combines big data, data science and warehousing to enable fast, large-scale data analysis.

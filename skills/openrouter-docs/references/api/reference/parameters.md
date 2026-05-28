@@ -204,6 +204,38 @@ Controls which (if any) tool is called by the model. 'none' means the model will
 
 Whether to enable parallel function calling during tool use. If true, the model can call multiple functions simultaneously. If false, functions will be called sequentially. Only applies when tools are provided.
 
+## Include Reasoning
+
+* Key: `include_reasoning`
+
+* Optional, **boolean**
+
+Deprecated alias for reasoning.exclude. When true, reasoning tokens are returned in the response when supported by the model.
+
+## Reasoning
+
+* Key: `reasoning`
+
+* Optional, **map**
+
+Controls reasoning behavior for models that support thinking tokens, including whether reasoning is enabled, the reasoning effort, maximum reasoning tokens, and whether reasoning is excluded from the response.
+
+## Reasoning Effort
+
+* Key: `reasoning_effort`
+
+* Optional, **enum** (xhigh, high, medium, low, minimal, none)
+
+OpenAI-style reasoning effort setting. Higher values allow the model to spend more tokens on internal reasoning when supported.
+
+## Web Search Options
+
+* Key: `web_search_options`
+
+* Optional, **map**
+
+Configures native web search options for models and providers that support web-connected answers.
+
 ## Verbosity
 
 * Key: `verbosity`

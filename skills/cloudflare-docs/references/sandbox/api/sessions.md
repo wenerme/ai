@@ -1,6 +1,6 @@
 ---
 title: Sessions
-description: Create isolated execution contexts with independent shell state within a Sandbox SDK container.
+description: Create shell sessions with independent working directories and environment variables within a sandbox.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
@@ -12,17 +12,17 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 # Sessions
 
-Create isolated execution contexts within a sandbox. Each session maintains its own shell state, environment variables, and working directory. See [Session management concept](https://developers.cloudflare.com/sandbox/concepts/sessions/) for details.
+Create shell sessions within a sandbox. Each session maintains its own shell state, environment variables, and working directory, while sharing the sandbox filesystem and process space. For more information, refer to [Session management](https://developers.cloudflare.com/sandbox/concepts/sessions/).
 
 Note
 
-Every sandbox has a default session that automatically maintains shell state. Create additional sessions when you need isolated shell contexts for different environments or parallel workflows. For sandbox-level operations like creating containers or destroying the entire sandbox, see the [Lifecycle API](https://developers.cloudflare.com/sandbox/api/lifecycle/).
+By default, for backwards compatibility, every sandbox has a default session that maintains shell state. It is recommended to set `enableDefaultSession` to `false` on `getSandbox()` so operations without an explicit `sessionId` run in isolation. Create additional sessions for separate workflows inside the same user workspace, such as development and runtime processes using the `createSession()` method. Use separate sandboxes for separate users. For sandbox-level operations like creating containers or destroying the entire sandbox, refer to the [Lifecycle API](https://developers.cloudflare.com/sandbox/api/lifecycle/).
 
 ## Methods
 
 ### `createSession()`
 
-Create a new isolated execution session.
+Create a new shell session.
 
 TypeScript
 
@@ -43,14 +43,14 @@ const session = await sandbox.createSession(options?: SessionOptions): Promise<E
 
 **Returns**: `Promise<ExecutionSession>` with all sandbox methods bound to this session
 
-* [  JavaScript ](#tab-panel-7543)
-* [  TypeScript ](#tab-panel-7544)
+* [  JavaScript ](#tab-panel-8082)
+* [  TypeScript ](#tab-panel-8083)
 
 JavaScript
 
 ```
 
-// Multiple isolated environments
+// Separate workflow environments
 
 const prodSession = await sandbox.createSession({
 
@@ -116,7 +116,7 @@ TypeScript
 
 ```
 
-// Multiple isolated environments
+// Separate workflow environments
 
 const prodSession = await sandbox.createSession({
 
@@ -197,16 +197,16 @@ const session = await sandbox.getSession(sessionId: string): Promise<ExecutionSe
 
 **Returns**: `Promise<ExecutionSession>` bound to the specified session
 
-* [  JavaScript ](#tab-panel-7537)
-* [  TypeScript ](#tab-panel-7538)
+* [  JavaScript ](#tab-panel-8076)
+* [  TypeScript ](#tab-panel-8077)
 
 JavaScript
 
 ```
 
-// First request - create session
+// First request - create a task-specific session
 
-const session = await sandbox.createSession({ id: "user-123" });
+const session = await sandbox.createSession({ id: "build" });
 
 await session.exec("git clone https://github.com/user/repo.git");
 
@@ -215,7 +215,7 @@ await session.exec("cd repo && npm install");
 
 // Second request - resume session (environment and cwd preserved)
 
-const session = await sandbox.getSession("user-123");
+const session = await sandbox.getSession("build");
 
 const result = await session.exec("cd repo && npm run build");
 
@@ -226,9 +226,9 @@ TypeScript
 
 ```
 
-// First request - create session
+// First request - create a task-specific session
 
-const session = await sandbox.createSession({ id: 'user-123' });
+const session = await sandbox.createSession({ id: 'build' });
 
 await session.exec('git clone https://github.com/user/repo.git');
 
@@ -237,7 +237,7 @@ await session.exec('cd repo && npm install');
 
 // Second request - resume session (environment and cwd preserved)
 
-const session = await sandbox.getSession('user-123');
+const session = await sandbox.getSession('build');
 
 const result = await session.exec('cd repo && npm run build');
 
@@ -269,8 +269,8 @@ const result = await sandbox.deleteSession(sessionId: string): Promise<SessionDe
 * `sessionId` \- ID of the deleted session
 * `timestamp` \- Deletion timestamp
 
-* [  JavaScript ](#tab-panel-7539)
-* [  TypeScript ](#tab-panel-7540)
+* [  JavaScript ](#tab-panel-8078)
+* [  TypeScript ](#tab-panel-8079)
 
 JavaScript
 
@@ -349,8 +349,8 @@ Warning
 
 Call `setEnvVars()` **before** any other sandbox operations to ensure environment variables are available from the start.
 
-* [  JavaScript ](#tab-panel-7541)
-* [  TypeScript ](#tab-panel-7542)
+* [  JavaScript ](#tab-panel-8080)
+* [  TypeScript ](#tab-panel-8081)
 
 JavaScript
 

@@ -1,11 +1,9 @@
 ---
-title: 'Querying system tables'
+title: 'Querying ClickHouse''s system database'
 description: 'Monitor ClickHouse Cloud by querying system tables directly'
 keywords: ['cloud', 'monitoring', 'system tables', 'query_log', 'clusterAllReplicas', 'observability dashboard']
 doc_type: 'guide'
 ---
-
-# Querying ClickHouse's system database
 
 All ClickHouse instances come with a set of [system tables](/operations/system-tables/overview) contained in the `system` database that contain information about:
 

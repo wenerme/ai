@@ -38,6 +38,7 @@ glab runner-controller token create 42 --output json
 
 ```plaintext
   -d, --description string   Description of the token.
+      --jq string            Filter JSON output with a jq expression.
   -F, --output string        Format output as: text, json. (default "text")
 ```
 

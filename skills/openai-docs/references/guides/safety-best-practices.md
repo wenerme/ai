@@ -94,3 +94,10 @@ Safety identifiers do not carry over between APIs or sessions. If your
 application already sends `safety_identifier` with Responses API requests, pass
 the same stable value separately when you create or connect each Realtime
 session.
+
+### Revoke compromised API keys
+
+If you believe an API key has been exposed, misused, or otherwise compromised,
+revoke it promptly and replace it with a new key. Go to your [Security
+settings](https://platform.openai.com/settings/profile/security) to view all API
+keys and revoke any compromised keys.

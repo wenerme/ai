@@ -8,8 +8,6 @@ integration:
   - category: 'data_visualization'
 ---
 
-# Omni
-
 <PartnerBadge/>
 
 Omni can connect to ClickHouse Cloud or on-premise deployment via the official ClickHouse data source.

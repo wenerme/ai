@@ -5,8 +5,6 @@ keywords: ['managed postgres', 'monitoring', 'dashboard', 'cloud console', 'cpu'
 doc_type: 'guide'
 ---
 
-# Monitoring dashboard
-
 <BetaBadge link="https://clickhouse.com/cloud/postgres" galaxyTrack={true} galaxyEvent="docs.managed-postgres.monitoring-dashboard-beta" />
 
 The **Monitoring** tab in the left sidebar of an instance shows

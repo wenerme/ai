@@ -1,12 +1,10 @@
 ---
-title: 'Set up ClickHouse MCP server with Claude Desktop'
+title: 'Using ClickHouse MCP server with Claude Desktop'
 description: 'This guide explains how to set up Claude Desktop with a ClickHouse MCP server.'
 keywords: ['AI', 'Librechat', 'MCP']
 show_related_blogs: true
 doc_type: 'guide'
 ---
-
-# Using ClickHouse MCP server with Claude Desktop
 
 > This guide explains how to set up Claude Desktop with a ClickHouse MCP server using uv
 > and connect it to the ClickHouse example datasets.

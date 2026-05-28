@@ -1,11 +1,9 @@
 ---
 description: 'Specific documentation for the materialized_view materialization'
 keywords: ['clickhouse', 'dbt', 'materialized_view', 'refreshable', 'Materialized Views', 'catchup']
-title: 'Materialization: materialized_view'
+title: 'Materialized views'
 doc_type: 'guide'
 ---
-
-# Materialized Views
 
 <ClickHouseSupportedBadge/>
 

@@ -18,8 +18,8 @@ The Workers API provides native email sending capabilities directly from your Cl
 
 Configure email bindings in your Wrangler configuration file to enable email sending:
 
-* [  wrangler.jsonc ](#tab-panel-5930)
-* [  wrangler.toml ](#tab-panel-5931)
+* [  wrangler.jsonc ](#tab-panel-6444)
+* [  wrangler.toml ](#tab-panel-6445)
 
 JSONC
 
@@ -153,9 +153,9 @@ interface EmailSendResult {
 
 ### Basic usage
 
-* [ Simple email ](#tab-panel-5925)
-* [ Multiple recipients ](#tab-panel-5926)
-* [ With CC and BCC ](#tab-panel-5927)
+* [ Simple email ](#tab-panel-6439)
+* [ Multiple recipients ](#tab-panel-6440)
+* [ With CC and BCC ](#tab-panel-6441)
 
 TypeScript
 
@@ -222,8 +222,8 @@ const response = await env.EMAIL.send({
 
 ### Attachments
 
-* [ PDF attachment ](#tab-panel-5928)
-* [ Inline image ](#tab-panel-5929)
+* [ PDF attachment ](#tab-panel-6442)
+* [ Inline image ](#tab-panel-6443)
 
 TypeScript
 
@@ -309,7 +309,7 @@ const response = await env.EMAIL.send({
 
 Handle email sending errors gracefully:
 
-* [ Single send errors ](#tab-panel-5924)
+* [ Single send errors ](#tab-panel-6438)
 
 TypeScript
 
@@ -422,27 +422,28 @@ export default {
 
 The following error codes may be returned when sending emails:
 
-| Error Code                        | Description                             | Common Causes                                                                                                               |
-| --------------------------------- | --------------------------------------- | --------------------------------------------------------------------------------------------------------------------------- |
-| E\_VALIDATION\_ERROR              | Validation error in the payload         | Invalid email format, missing required fields, malformed data                                                               |
-| E\_FIELD\_MISSING                 | Required field is missing               | Missing to, from, or subject fields                                                                                         |
-| E\_TOO\_MANY\_RECIPIENTS          | Too many recipients in to/cc/bcc arrays | Combined recipients exceed 50 limit                                                                                         |
-| E\_SENDER\_NOT\_VERIFIED          | Sender domain not verified              | Attempting to send from unverified domain                                                                                   |
-| E\_RECIPIENT\_NOT\_ALLOWED        | Recipient not in allowed list           | Recipient address not in allowed\_destination\_addresses                                                                    |
-| E\_RECIPIENT\_SUPPRESSED          | Recipient is on suppression list        | Email address has bounced or reported your emails as spam                                                                   |
-| E\_SENDER\_DOMAIN\_NOT\_AVAILABLE | Domain not available for sending        | Domain not onboarded to Email Service                                                                                       |
-| E\_CONTENT\_TOO\_LARGE            | Email content exceeds size limit        | Total message size exceeds the maximum                                                                                      |
-| E\_DELIVERY\_FAILED               | Could not deliver the email             | SMTP delivery failure, recipient server rejection                                                                           |
-| E\_RATE\_LIMIT\_EXCEEDED          | Rate limit exceeded                     | Sending rate limit reached                                                                                                  |
-| E\_DAILY\_LIMIT\_EXCEEDED         | Daily limit exceeded                    | Daily sending quota reached                                                                                                 |
-| E\_INTERNAL\_SERVER\_ERROR        | Internal service error                  | Email Service temporarily unavailable                                                                                       |
-| E\_HEADER\_NOT\_ALLOWED           | Header not allowed                      | Header is platform-controlled or not on the [whitelist](https://developers.cloudflare.com/email-service/reference/headers/) |
-| E\_HEADER\_USE\_API\_FIELD        | Must use API field                      | Header like From must be set via the dedicated API field                                                                    |
-| E\_HEADER\_VALUE\_INVALID         | Header value invalid                    | Malformed value, empty, or incorrect format                                                                                 |
-| E\_HEADER\_VALUE\_TOO\_LONG       | Header value too long                   | Value exceeds 2,048 byte limit                                                                                              |
-| E\_HEADER\_NAME\_INVALID          | Header name invalid                     | Invalid characters or exceeds 100 byte limit                                                                                |
-| E\_HEADERS\_TOO\_LARGE            | Headers payload too large               | Total custom headers exceed 16 KB limit                                                                                     |
-| E\_HEADERS\_TOO\_MANY             | Too many headers                        | More than 20 whitelisted (non-X) custom headers                                                                             |
+| Error Code                        | Description                               | Common Causes                                                                                                               |
+| --------------------------------- | ----------------------------------------- | --------------------------------------------------------------------------------------------------------------------------- |
+| E\_VALIDATION\_ERROR              | Validation error in the payload           | Invalid email format, missing required fields, malformed data                                                               |
+| E\_FIELD\_MISSING                 | Required field is missing                 | Missing to, from, or subject fields                                                                                         |
+| E\_TOO\_MANY\_RECIPIENTS          | Too many recipients in to/cc/bcc arrays   | Combined recipients exceed 50 limit                                                                                         |
+| E\_TOO\_MANY\_ATTACHMENTS         | Too many attachments in attachments array | attachments array exceeds 32 entries                                                                                        |
+| E\_SENDER\_NOT\_VERIFIED          | Sender domain not verified                | Attempting to send from unverified domain                                                                                   |
+| E\_RECIPIENT\_NOT\_ALLOWED        | Recipient not in allowed list             | Recipient address not in allowed\_destination\_addresses                                                                    |
+| E\_RECIPIENT\_SUPPRESSED          | Recipient is on suppression list          | Email address has bounced or reported your emails as spam                                                                   |
+| E\_SENDER\_DOMAIN\_NOT\_AVAILABLE | Domain not available for sending          | Domain not onboarded to Email Service                                                                                       |
+| E\_CONTENT\_TOO\_LARGE            | Email content exceeds size limit          | Total message size exceeds the maximum                                                                                      |
+| E\_DELIVERY\_FAILED               | Could not deliver the email               | SMTP delivery failure, recipient server rejection                                                                           |
+| E\_RATE\_LIMIT\_EXCEEDED          | Rate limit exceeded                       | Sending rate limit reached                                                                                                  |
+| E\_DAILY\_LIMIT\_EXCEEDED         | Daily limit exceeded                      | Daily sending quota reached                                                                                                 |
+| E\_INTERNAL\_SERVER\_ERROR        | Internal service error                    | Email Service temporarily unavailable                                                                                       |
+| E\_HEADER\_NOT\_ALLOWED           | Header not allowed                        | Header is platform-controlled or not on the [whitelist](https://developers.cloudflare.com/email-service/reference/headers/) |
+| E\_HEADER\_USE\_API\_FIELD        | Must use API field                        | Header like From must be set via the dedicated API field                                                                    |
+| E\_HEADER\_VALUE\_INVALID         | Header value invalid                      | Malformed value, empty, or incorrect format                                                                                 |
+| E\_HEADER\_VALUE\_TOO\_LONG       | Header value too long                     | Value exceeds 2,048 byte limit                                                                                              |
+| E\_HEADER\_NAME\_INVALID          | Header name invalid                       | Invalid characters or exceeds 100 byte limit                                                                                |
+| E\_HEADERS\_TOO\_LARGE            | Headers payload too large                 | Total custom headers exceed 16 KB limit                                                                                     |
+| E\_HEADERS\_TOO\_MANY             | Too many headers                          | More than 20 whitelisted (non-X) custom headers                                                                             |
 
 ## Legacy `EmailMessage` API
 

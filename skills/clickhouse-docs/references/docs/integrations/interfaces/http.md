@@ -5,8 +5,6 @@ title: 'HTTP interface'
 doc_type: 'reference'
 ---
 
-# HTTP Interface
-
 ## Prerequisites {#prerequisites}
 
 For the examples in this article you will need:

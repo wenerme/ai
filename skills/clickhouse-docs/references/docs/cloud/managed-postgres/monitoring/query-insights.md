@@ -5,8 +5,6 @@ keywords: ['managed postgres', 'query insights', 'pg_stat_ch', 'slow queries', '
 doc_type: 'guide'
 ---
 
-# Postgres query insights
-
 <BetaBadge link="https://clickhouse.com/cloud/postgres" galaxyTrack={true} galaxyEvent="docs.managed-postgres.query-insights-beta" />
 
 Query Insights captures per-statement telemetry from your

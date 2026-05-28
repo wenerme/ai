@@ -8,8 +8,6 @@ integration:
   - category: 'data_ingestion'
 ---
 
-# Flink Connector
-
 <ClickHouseSupportedBadge/>
 
 This is the official [Apache Flink Sink Connector](https://github.com/ClickHouse/flink-connector-clickhouse) supported by ClickHouse. It is built using Flink's [AsyncSinkBase](https://cwiki.apache.org/confluence/display/FLINK/FLIP-171%3A+Async+Sink) and the official ClickHouse [java client](https://github.com/ClickHouse/clickhouse-java).

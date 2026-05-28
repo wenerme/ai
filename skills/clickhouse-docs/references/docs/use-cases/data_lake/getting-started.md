@@ -1,11 +1,9 @@
 ---
-title: 'Getting started with open table formats'
+title: 'Getting started with data lakes'
 description: 'A hands-on introduction to querying, accelerating, and writing back data in open table formats with ClickHouse.'
 keywords: ['data lake', 'lakehouse', 'getting started', 'iceberg', 'delta lake', 'hudi', 'paimon']
 doc_type: 'guide'
 ---
-
-# Getting started with data lakes {#data-lake-getting-started}
 
 :::note[TL;DR]
 A hands-on walkthrough of querying data lake tables, accelerating them with MergeTree, and writing results back to Iceberg. All steps use public datasets and work on both Cloud and OSS.

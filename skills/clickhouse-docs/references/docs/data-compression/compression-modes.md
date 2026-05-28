@@ -5,8 +5,6 @@ keywords: ['compression', 'codec', 'encoding', 'modes']
 doc_type: 'reference'
 ---
 
-# Compression modes
-
 ClickHouse protocol supports **data blocks** compression with checksums.
 Use `LZ4` if not sure what mode to pick.
 ``

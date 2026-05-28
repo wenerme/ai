@@ -53,7 +53,7 @@ You will need the following details to export/restore backups to your own CSP st
 2. Access HMAC key and HMAC secret.
 
 <hr/>
-# Backup / Restore
+## Backup / Restore
 
 ## Backup / Restore to AWS S3 Bucket {#backup--restore-to-aws-s3-bucket}
 

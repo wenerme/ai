@@ -1,6 +1,6 @@
 ---
 title: Session management
-description: Sandbox SDK sessions are independent shell execution contexts within a single container.
+description: Sandbox SDK sessions are shell execution contexts within a single sandbox.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
@@ -12,14 +12,16 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 # Session management
 
-Sessions are bash shell execution contexts within a sandbox. Think of them like terminal tabs or panes in the same container.
+Sessions are bash shell execution contexts within a sandbox. Think of them as terminal tabs in the same computer.
 
-* **Sandbox** \= A computer (container)
-* **Session** \= A terminal shell session in that computer
+* **Sandbox** \= A user or task workspace
+* **Session** \= A shell in that workspace
+
+Sessions are useful for organizing work inside one sandbox. They are not a security boundary between users because sessions share the same filesystem and process space.
 
 ## Default session
 
-Every sandbox has a default session that maintains shell state between commands while the container is active:
+By default, every sandbox has a default session that maintains shell state between commands while the container is active:
 
 TypeScript
 
@@ -44,6 +46,28 @@ await sandbox.exec("echo $MY_VAR");  // Output: hello
 
 Working directory, environment variables, and exported variables carry over between commands. This state resets if the container restarts due to inactivity.
 
+If you set `enableDefaultSession: false` when calling `getSandbox()`, operations without an explicit `sessionId` run in isolation instead of using the default session:
+
+TypeScript
+
+```
+
+const sandbox = getSandbox(env.Sandbox, 'my-sandbox', {
+
+  enableDefaultSession: false
+
+});
+
+
+await sandbox.exec("cd /app");
+
+await sandbox.exec("pwd");  // Output: /workspace (cd was not inherited)
+
+
+```
+
+Without the default session, the second command does not inherit shell state from the first command. It is recommended that you always apply this setting as it will become the default in a future Sandbox SDK release. Create or retrieve an explicit session when you want commands to share shell state.
+
 ### Automatic session creation
 
 The container automatically creates sessions on first use. If you reference a non-existent session ID, the container creates it with default settings:
@@ -52,7 +76,7 @@ TypeScript
 
 ```
 
-// This session doesn't exist yet
+// This session does not exist yet
 
 const result = await sandbox.exec('echo hello', { sessionId: 'new-session' });
 
@@ -96,11 +120,11 @@ const result = await sandbox.exec('echo $MY_VAR', { sessionId: 'temp' });
 
 ```
 
-This auto-creation means you can't "break" commands by referencing non-existent sessions. However, custom configuration (environment variables, working directory) is lost after deletion.
+This auto-creation means commands still run when they reference a non-existent session. However, custom configuration (environment variables, working directory) is lost after deletion.
 
 ## Creating sessions
 
-Create additional sessions for isolated shell contexts:
+Create additional sessions for separate workflows in the same sandbox:
 
 TypeScript
 
@@ -159,7 +183,7 @@ await session.exec("npm test"); // Times out after 30s if still running
 
 Individual commands can override the session timeout with the `timeout` option on `exec()`. For more details, refer to the [Sessions API](https://developers.cloudflare.com/sandbox/api/sessions/) and the [execute commands guide](https://developers.cloudflare.com/sandbox/guides/execute-commands/#timeouts).
 
-## What's isolated per session
+## What is scoped to a session
 
 Each session has its own:
 
@@ -210,7 +234,7 @@ const session2 = await sandbox.createSession({
 
 ```
 
-## What's shared
+## What is shared across sessions
 
 All sessions in a sandbox share:
 
@@ -244,7 +268,7 @@ await session2.listProcesses();  // Sees the server
 
 **Use sessions when**:
 
-* You need isolated shell state for different tasks
+* You need separate shell state for one user's tasks
 * Running parallel operations with different environments
 * Keeping AI agent credentials separate from app runtime
 
@@ -284,8 +308,9 @@ await appSession.exec("node server.js");
 
 **Use separate sandboxes when**:
 
-* You need complete isolation (untrusted code)
-* Different users require fully separated environments
+* You need complete isolation for untrusted code
+* Different users need separate workspaces
+* User data must stay separated
 * Independent resource allocation is needed
 
 ## Best practices
@@ -328,9 +353,9 @@ await sandbox.deleteSession('default');
 
 ```
 
-### Filesystem isolation
+### Filesystem scope
 
-**Sessions share filesystem** \- file operations affect all sessions:
+**Sessions share the sandbox filesystem** \- file operations affect all sessions:
 
 TypeScript
 
@@ -341,9 +366,9 @@ TypeScript
 await session.exec('rm -rf /workspace/*');
 
 
-// For untrusted code isolation, use separate sandboxes
+// For user data or untrusted code, use a separate sandbox
 
-const userSandbox = getSandbox(env.Sandbox, userId);
+const userSandbox = getSandbox(env.Sandbox, `user-${userId}`);
 
 
 ```

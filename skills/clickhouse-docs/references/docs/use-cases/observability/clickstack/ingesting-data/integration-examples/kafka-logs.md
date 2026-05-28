@@ -5,8 +5,6 @@ doc_type: 'guide'
 keywords: ['Kafka', 'logs', 'OTEL', 'ClickStack', 'broker monitoring', 'Log4j']
 ---
 
-# Monitoring Kafka Logs with ClickStack {#kafka-logs-clickstack}
-
 :::note[TL;DR]
 Collect and visualize Kafka broker logs (Log4j format) in ClickStack using the OTel `filelog` receiver. Includes a demo dataset and pre-built dashboard.
 

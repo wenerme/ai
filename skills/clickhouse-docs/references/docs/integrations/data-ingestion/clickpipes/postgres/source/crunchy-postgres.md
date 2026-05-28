@@ -8,8 +8,6 @@ integration:
    - category: 'clickpipes'
 ---
 
-# Crunchy Bridge Postgres source setup guide
-
 ClickPipes supports Postgres version 12 and later.
 
 ## Enable logical replication {#enable-logical-replication}

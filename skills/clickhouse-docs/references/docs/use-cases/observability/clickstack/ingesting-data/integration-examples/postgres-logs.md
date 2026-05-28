@@ -5,8 +5,6 @@ doc_type: 'guide'
 keywords: ['PostgreSQL', 'Postgres', 'logs', 'OTEL', 'ClickStack', 'database monitoring']
 ---
 
-# Monitoring PostgreSQL Logs with ClickStack {#postgres-logs-clickstack}
-
 :::note[TL;DR]
 Collect and visualize PostgreSQL server logs (CSV format) in ClickStack using the OTel `filelog` receiver. Includes a demo dataset and pre-built dashboard.
 

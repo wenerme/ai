@@ -8,8 +8,6 @@ integration:
   - category: 'clickpipes'
 ---
 
-# MongoDB Atlas source setup guide
-
 ## Configure oplog retention {#enable-oplog-retention}
 
 Minimum oplog retention of 24 hours is required for replication. We recommend setting the oplog retention to 72 hours or longer to ensure that the oplog isn't truncated before the initial snapshot is completed. To set the oplog retention via UI:

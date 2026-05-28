@@ -76,7 +76,6 @@ high-volume tasks.
 | Model ID | Context Window (In / Out) | Knowledge Cutoff | Pricing (Input / Output)\* |
 |---|---|---|---|
 | **gemini-3.1-flash-lite** | 1M / 64k | Jan 2025 | $0.25 (text, image, video), $0.50 (audio) / $1.50 |
-| **gemini-3.1-flash-lite-preview** | 1M / 64k | Jan 2025 | $0.25 (text, image, video), $0.50 (audio) / $1.50 |
 | **gemini-3.1-flash-image-preview** | 128k / 32k | Jan 2025 | $0.25 (Text Input) / $0.067 (Image Output)\*\* |
 | **gemini-3.1-pro-preview** | 1M / 64k | Jan 2025 | $2 / $12 (\<200k tokens) $4 / $18 (\>200k tokens) |
 | **gemini-3-flash-preview** | 1M / 64k | Jan 2025 | $0.50 / $3 |
@@ -169,7 +168,7 @@ constrain the model's thinking level to `low`.
 
 ### Media resolution
 
-Gemini 3 introduces granular control over multimodal vision processing via the
+Gemini 3 introduces granular control over multimodal vision processing using the
 `media_resolution` parameter. Higher resolutions improve the model's ability to
 read fine text or identify small details, but increase token usage and latency.
 The `media_resolution` parameter determines the **maximum number of tokens
@@ -371,13 +370,13 @@ We must send back `<Sig_A>` to keep the model's train of thought.
 // User Request (Turn 1, Step 2)
 [
   { "role": "user", "parts": [{ "text": "Check flight AA100..." }] },
-  { 
-    "role": "model", 
+  {
+    "role": "model",
     "parts": [
       { 
-        "functionCall": { "name": "check_flight", "args": {...} }, 
+        "functionCall": { "name": "check_flight", "args": {...} },
         "thoughtSignature": "<Sig_A>" // REQUIRED
-      } 
+      }
     ]
   },
   { "role": "user", "parts": [{ "functionResponse": { "name": "check_flight", "response": {...} } }] }
@@ -412,14 +411,14 @@ To complete the turn, you must send back the entire chain: `<Sig_A>` AND `<Sig_B
   { 
     "role": "model", 
     "parts": [
-       { "functionCall": { "name": "check_flight", ... }, "thoughtSignature": "<Sig_A>" } 
+       { "functionCall": { "name": "check_flight", ... }, "thoughtSignature": "<Sig_A>" }
     ]
   },
   { "role": "user", "parts": [{ "functionResponse": {...} }] },
   { 
     "role": "model", 
     "parts": [
-       { "functionCall": { "name": "book_taxi", ... }, "thoughtSignature": "<Sig_B>" } 
+       { "functionCall": { "name": "book_taxi", ... }, "thoughtSignature": "<Sig_B>" }
     ]
   },
   { "role": "user", "parts": [{ "functionResponse": {...} }] }

@@ -5,8 +5,6 @@ doc_type: 'guide'
 keywords: ['skipping indexes', 'data skipping', 'performance', 'indexing', 'best practices']
 ---
 
-# Understanding ClickHouse data skipping indexes
-
 ## Introduction {#introduction}
 
 Many factors affect ClickHouse query performance. The critical element in most scenarios is whether ClickHouse can use the primary key when evaluating the query WHERE clause condition. Accordingly, selecting a primary key that applies to the most common query patterns is essential for effective table design.

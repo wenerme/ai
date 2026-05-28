@@ -21,7 +21,7 @@ Terminal-Bench v2 is a command-line benchmark suite that evaluates AI agents on 
 
 ## Evaluation Notes
 
-- Requires **Python>=3.12** and `pip install harbor==0.1.28`
+- Requires **Python>=3.12** and `pip install evalscope[terminal_bench]`
 - Environment options: docker, daytona, e2b, modal
 - Configurable agent types and timeout settings
 - Maximum turns configurable (default: 200)
@@ -32,7 +32,7 @@ Terminal-Bench v2 is a command-line benchmark suite that evaluates AI agents on 
 | Property | Value |
 |----------|-------|
 | **Benchmark Name** | `terminal_bench_v2` |
-| **Dataset ID** | [terminal-bench-2.git](https://github.com/laude-institute/terminal-bench-2.git) |
+| **Dataset ID** | [latest](https://hub.harborframework.com/datasets/terminal-bench/terminal-bench-2/latest) |
 | **Paper** | N/A |
 | **Tags** | `Coding` |
 | **Metrics** | `acc` |
@@ -59,9 +59,10 @@ Terminal-Bench v2 is a command-line benchmark suite that evaluates AI agents on 
 | Parameter | Type | Default | Description |
 |-----------|------|---------|-------------|
 | `environment_type` | `str` | `docker` | Environment type for running the benchmark. Choices: ['docker', 'daytona', 'e2b', 'modal'] |
-| `agent_name` | `str` | `terminus-2` | Agent type to be used in Harbor. Choices: ['oracle', 'terminus-2', 'claude-code', 'codex', 'qwen-coder', 'openhands', 'opencode', 'mini-swe-agent'] |
+| `agent_name` | `str` | `terminus-2` | Agent type to be used in Harbor. Only terminus-2 uses the evalscope model for inference; other agents (claude-code, codex, etc.) run as standalone CLI tools with their own API keys. Choices: ['oracle', 'terminus-2', 'claude-code', 'codex', 'qwen-coder', 'openhands', 'opencode', 'mini-swe-agent'] |
 | `timeout_multiplier` | `float` | `1.0` | Timeout multiplier. If timeout errors occur, consider increasing this value. |
 | `max_turns` | `int` | `200` | Maximum number of turns for the agent to complete the task. |
+| `environment_kwargs` | `dict` | `{}` | Extra kwargs passed to Harbor EnvironmentConfig. Supported keys: override_cpus, override_memory_mb, override_storage_mb, override_gpus, force_build, delete, env, etc. |
 
 ## Usage
 

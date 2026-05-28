@@ -9,8 +9,6 @@ integration:
 keywords: ['fivetran', 'data movement', 'etl', 'clickhouse destination', 'automated data platform', 'history mode', 'SCD Type 2']
 ---
 
-# Fivetran and ClickHouse Cloud
-
 <ClickHouseSupportedBadge/>
 
 ## Overview {#overview}

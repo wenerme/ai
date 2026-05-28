@@ -5,8 +5,6 @@ doc_type: 'guide'
 keywords: ['prewhere', 'query optimization', 'performance', 'filtering', 'best practices']
 ---
 
-# How does the PREWHERE optimization work?
-
 The [PREWHERE clause](/sql-reference/statements/select/prewhere) is a query execution optimization in ClickHouse. It reduces I/O and improves query speed by avoiding unnecessary data reads, and filtering out irrelevant data before reading non-filter columns from disk.
 
 This guide explains how PREWHERE works, how to measure its impact, and how to tune it for best performance.

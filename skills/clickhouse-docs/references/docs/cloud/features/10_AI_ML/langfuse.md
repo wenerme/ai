@@ -4,8 +4,6 @@ description: 'Langfuse is an open-source LLM engineering platform that helps tea
 doc_type: 'reference'
 ---
 
-# Langfuse
-
 ## What is Langfuse? {#what-is-langfuse}
 
 [Langfuse](https://langfuse.com) is an open-source LLM engineering platform that helps teams collaboratively debug, analyze, and iterate on their LLM applications. It is part of the ClickHouse ecosystem and relies on **ClickHouse** at its core to provide a scalable, high-performance observability backend.

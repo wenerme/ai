@@ -8,8 +8,6 @@ integration:
   - category: 'data_ingestion'
 ---
 
-# Spark JDBC
-
 <ClickHouseSupportedBadge/>
 
 JDBC is one of the most commonly used data sources in Spark.

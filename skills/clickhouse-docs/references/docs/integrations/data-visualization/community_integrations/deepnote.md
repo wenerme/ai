@@ -9,8 +9,6 @@ integration:
   - website: 'https://deepnote.com/launch?template=ClickHouse%20and%20Deepnote'
 ---
 
-# Connect ClickHouse to Deepnote
-
 <CommunityMaintainedBadge/>
 
 <a href="https://www.deepnote.com/" target="_blank">Deepnote</a> is a collaborative data notebook built for teams to discover and share insights. In addition to being Jupyter-compatible, it works in the cloud and provides you with one central place to collaborate and work on data science projects efficiently.

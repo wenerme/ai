@@ -4,8 +4,6 @@ description: 'Monitoring Redis Logs with ClickStack'
 doc_type: 'guide'
 ---
 
-# Monitoring Redis Logs with ClickStack {#redis-clickstack}
-
 :::note[TL;DR]
 Collect and visualize Redis server logs in ClickStack using the OTel `filelog` receiver. Includes a demo dataset and pre-built dashboard.
 

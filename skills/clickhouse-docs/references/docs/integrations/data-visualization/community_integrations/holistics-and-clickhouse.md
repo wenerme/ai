@@ -1,11 +1,9 @@
 ---
 keywords: ['clickhouse', 'Holistics', 'AI', 'integrate', 'bi', 'data visualization']
 description: 'Holistics is an AI-powered platform for self-service BI and embedded analytics that helps everyone make better decisions with governed, easily accessible metrics.'
-title: 'Connect ClickHouse to Holistics'
+title: 'Connecting ClickHouse to Holistics'
 doc_type: 'guide'
 ---
-
-# Connecting ClickHouse to Holistics
 
 <CommunityMaintainedBadge/>
 

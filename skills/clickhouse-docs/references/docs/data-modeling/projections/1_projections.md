@@ -7,8 +7,6 @@ sidebar_order: 1
 doc_type: 'guide'
 ---
 
-# Projections
-
 ## Introduction {#introduction}
 
 ClickHouse offers various mechanisms of speeding up analytical queries on large

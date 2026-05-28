@@ -5,8 +5,6 @@ keywords: ['managed postgres', 'monitoring', 'observability', 'metrics', 'dashbo
 doc_type: 'guide'
 ---
 
-# Managed Postgres monitoring
-
 <BetaBadge link="https://clickhouse.com/cloud/postgres" galaxyTrack={true} galaxyEvent="docs.managed-postgres.monitoring-overview-beta" />
 
 You can monitor your Managed Postgres services with the following

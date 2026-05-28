@@ -5,8 +5,6 @@ doc_type: 'guide'
 keywords: ['EC2', 'AWS', 'host logs', 'systemd', 'syslog', 'OTEL', 'ClickStack', 'system monitoring', 'cloud metadata']
 ---
 
-# Monitoring EC2 Host Logs with ClickStack {#ec2-host-logs-clickstack}
-
 :::note[TL;DR]
 Collect and visualize EC2 system logs in ClickStack using the OpenTelemetry Collector with automatic EC2 metadata enrichment (instance ID, region, AZ, instance type). Includes a demo dataset and pre-built dashboard.
 

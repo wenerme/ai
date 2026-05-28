@@ -8,8 +8,6 @@ integration:
   - category: 'data_visualization'
 ---
 
-# Connecting ClickHouse to Hashboard
-
 <CommunityMaintainedBadge/>
 
 [Hashboard](https://hashboard.com) is an interactive data exploration tool that enables anyone in your organization to track metrics and discover actionable insights. Hashboard issues live SQL queries to your ClickHouse database and is particularly useful for self-serve, ad hoc data exploration use cases.

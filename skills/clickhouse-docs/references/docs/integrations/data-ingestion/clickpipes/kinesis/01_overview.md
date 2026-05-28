@@ -8,8 +8,6 @@ integration:
   - category: 'clickpipes'
 ---
 
-# Integrating Amazon Kinesis with ClickHouse Cloud
-
 Kinesis ClickPipes can be deployed and managed manually using the ClickPipes UI, as well as programmatically using [OpenAPI](/integrations/clickpipes/programmatic-access/openapi) and [Terraform](/integrations/clickpipes/programmatic-access/terraform).
 
 ## Prerequisite {#prerequisite}

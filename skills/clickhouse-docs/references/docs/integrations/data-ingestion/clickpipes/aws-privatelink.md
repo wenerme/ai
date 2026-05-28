@@ -8,8 +8,6 @@ integration:
    - category: 'clickpipes'
 ---
 
-# AWS PrivateLink for ClickPipes
-
 You can use [AWS PrivateLink](https://aws.amazon.com/privatelink/) to establish secure connectivity between VPCs,
 AWS services, your on-premises systems, and ClickHouse Cloud without exposing traffic to the public Internet.
 

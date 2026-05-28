@@ -4,8 +4,6 @@ description: 'Monitoring JVM with ClickStack'
 doc_type: 'guide'
 ---
 
-# Monitoring JVM Metrics with ClickStack {#jvm-clickstack}
-
 :::note[TL;DR]
 Monitor JVM applications in ClickStack using the OpenTelemetry Java agent. Includes a demo dataset and pre-built dashboard.
 

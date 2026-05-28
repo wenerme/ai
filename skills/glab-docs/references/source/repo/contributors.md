@@ -30,6 +30,7 @@ glab repo contributors -R gitlab-com/www-gitlab-com
 ## Options
 
 ```plaintext
+      --jq string       Filter JSON output with a jq expression.
   -o, --order string    Return contributors ordered by name, email, or commits (orders by commit date) fields. (default "commits")
   -F, --output string   Format output as: text, json. (default "text")
   -p, --page int        Page number. (default 1)

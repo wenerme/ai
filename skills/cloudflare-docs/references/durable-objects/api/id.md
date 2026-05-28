@@ -62,8 +62,8 @@ const id = env.MY_DURABLE_OBJECT.idFromString(session_id);
 
 `equals` is used to compare equality between two instances of `DurableObjectId`.
 
-* [  JavaScript ](#tab-panel-5670)
-* [  Python ](#tab-panel-5671)
+* [  JavaScript ](#tab-panel-6144)
+* [  Python ](#tab-panel-6145)
 
 JavaScript
 
@@ -105,14 +105,21 @@ assert not id1.equals(id2), "Different unique ids should never be equal."
 
 `name` is an optional property of a `DurableObjectId`, which returns the name that was used to create the `DurableObjectId` via [DurableObjectNamespace::idFromName](https://developers.cloudflare.com/durable-objects/api/namespace/#idfromname). This value is undefined if the `DurableObjectId` was constructed using [DurableObjectNamespace::newUniqueId](https://developers.cloudflare.com/durable-objects/api/namespace/#newuniqueid).
 
-The `name` property is available on `ctx.id` inside the Durable Object when the caller uses `idFromName()` or `getByName()`. If the caller accesses the Durable Object using `idFromString()`, `ctx.id.name` will be `undefined`, even if the ID was originally created with `idFromName()`. Names longer than 1,024 bytes are not passed through and will be `undefined` on `ctx.id`.
+The `name` property is also available on `ctx.id` inside the Durable Object when the caller uses `idFromName()` or `getByName()`. `ctx.id.name` will be `undefined` in the following cases:
 
-Note
+* The caller accesses the Durable Object using `idFromString()`, even if the ID was originally created with `idFromName()`.
+* Names longer than 1,024 bytes are not passed through to `ctx.id`.
+* The Durable Object was created with `newUniqueId()`.
+
+Alarms
+
+`ctx.id.name` is especially useful inside [alarm handlers](https://developers.cloudflare.com/durable-objects/api/alarms/), where there is no calling client to pass the name as an argument. When the alarm fires, `ctx.id.name` holds the same name the object was originally accessed with.
 
 Alarms created before 2026-03-15 do not have `name` stored. When such an alarm fires, `ctx.id.name` will be `undefined`, and any new alarm scheduled from that handler will also lack a `name`. To fix this, reschedule the alarm from a `fetch()` or RPC handler where `name` is available.
 
-* [  JavaScript ](#tab-panel-5672)
-* [  Python ](#tab-panel-5673)
+* [  JavaScript ](#tab-panel-6146)
+* [  TypeScript ](#tab-panel-6147)
+* [  Python ](#tab-panel-6148)
 
 JavaScript
 
@@ -121,6 +128,27 @@ JavaScript
 const uniqueId = env.MY_DURABLE_OBJECT.newUniqueId();
 
 const fromNameId = env.MY_DURABLE_OBJECT.idFromName("foo");
+
+console.assert(uniqueId.name === undefined, "unique ids have no name");
+
+console.assert(
+
+  fromNameId.name === "foo",
+
+  "name matches parameter to idFromName",
+
+);
+
+
+```
+
+TypeScript
+
+```
+
+const uniqueId: DurableObjectId = env.MY_DURABLE_OBJECT.newUniqueId();
+
+const fromNameId: DurableObjectId = env.MY_DURABLE_OBJECT.idFromName("foo");
 
 console.assert(uniqueId.name === undefined, "unique ids have no name");
 
@@ -146,6 +174,116 @@ from_name_id = env.MY_DURABLE_OBJECT.idFromName("foo")
 assert unique_id.name is None, "unique ids have no name"
 
 assert from_name_id.name == "foo", "name matches parameter to idFromName"
+
+
+```
+
+The same `name` is available inside the Durable Object via `ctx.id.name`:
+
+* [  JavaScript ](#tab-panel-6149)
+* [  TypeScript ](#tab-panel-6150)
+* [  Python ](#tab-panel-6151)
+
+JavaScript
+
+```
+
+import { DurableObject } from "cloudflare:workers";
+
+
+export class ChatRoom extends DurableObject {
+
+  async getRoomName() {
+
+    return this.ctx.id.name; // "foo" when accessed via getByName("foo")
+
+  }
+
+}
+
+
+```
+
+TypeScript
+
+```
+
+import { DurableObject } from "cloudflare:workers";
+
+
+export class ChatRoom extends DurableObject<Env> {
+
+  async getRoomName(): Promise<string | undefined> {
+
+    return this.ctx.id.name; // "foo" when accessed via getByName("foo")
+
+  }
+
+}
+
+
+```
+
+Python
+
+```
+
+from workers import DurableObject
+
+
+class ChatRoom(DurableObject):
+
+    async def get_room_name(self):
+
+        return self.ctx.id.name  # "foo" when accessed via get_by_name("foo")
+
+
+```
+
+### `jurisdiction`
+
+`jurisdiction` is an optional property of a `DurableObjectId`, which returns the [jurisdiction](https://developers.cloudflare.com/durable-objects/reference/data-location/#restrict-durable-objects-to-a-jurisdiction) the ID is restricted to, such as `"eu"` or `"fedramp"`. The same value is available inside the Durable Object via `ctx.id.jurisdiction`, including in [alarm handlers](https://developers.cloudflare.com/durable-objects/api/alarms/) and objects accessed via `idFromString()`, so you can make region-aware decisions without passing the jurisdiction as an argument or persisting it in storage.
+
+`jurisdiction` is preserved across every ID-construction path, including:
+
+* IDs created from a jurisdiction-restricted subnamespace, for example `env.MY_DURABLE_OBJECT.jurisdiction("eu").idFromName("foo")` or `.newUniqueId()`.
+* IDs created via `env.MY_DURABLE_OBJECT.newUniqueId({ jurisdiction: "eu" })`.
+* IDs restored from a string via `idFromString()` — the jurisdiction is encoded in the string itself, so it works on any namespace binding.
+
+`ctx.id.jurisdiction` is `undefined` in two cases:
+
+* The Durable Object was not created in a jurisdiction-restricted namespace.
+* The Durable Object's alarm was scheduled before 2026-03-15\. To backfill the value, reschedule the alarm from a `fetch()` or RPC handler.
+
+* [  JavaScript ](#tab-panel-6152)
+* [  Python ](#tab-panel-6153)
+
+JavaScript
+
+```
+
+const plainId = env.MY_DURABLE_OBJECT.idFromName("foo");
+
+const euId = env.MY_DURABLE_OBJECT.jurisdiction("eu").idFromName("foo");
+
+console.assert(plainId.jurisdiction === undefined, "no jurisdiction set");
+
+console.assert(euId.jurisdiction === "eu", "jurisdiction matches namespace");
+
+
+```
+
+Python
+
+```
+
+plain_id = env.MY_DURABLE_OBJECT.idFromName("foo")
+
+eu_id = env.MY_DURABLE_OBJECT.jurisdiction("eu").idFromName("foo")
+
+assert plain_id.jurisdiction is None, "no jurisdiction set"
+
+assert eu_id.jurisdiction == "eu", "jurisdiction matches namespace"
 
 
 ```

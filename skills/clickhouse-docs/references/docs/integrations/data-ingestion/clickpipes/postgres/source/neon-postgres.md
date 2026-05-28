@@ -8,8 +8,6 @@ integration:
   - category: 'clickpipes'
 ---
 
-# Neon Postgres source setup guide
-
 This is a guide on how to setup Neon Postgres, which you can use for replication in ClickPipes.
 Make sure you're signed in to your [Neon console](https://console.neon.tech/app/projects) for this setup.
 

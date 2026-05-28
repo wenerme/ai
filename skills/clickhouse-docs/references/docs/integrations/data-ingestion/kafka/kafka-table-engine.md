@@ -5,8 +5,6 @@ doc_type: 'guide'
 keywords: ['kafka', 'table engine', 'streaming', 'real-time', 'message queue']
 ---
 
-# Using the Kafka table engine
-
 The Kafka table engine can be used to [**read** data from](#kafka-to-clickhouse) and [**write** data to](#clickhouse-to-kafka) Apache Kafka and other Kafka API-compatible brokers (e.g., Redpanda, Amazon MSK).
 
 ### Kafka to ClickHouse {#kafka-to-clickhouse}

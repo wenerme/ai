@@ -8,8 +8,6 @@ integration:
   - category: 'data_visualization'
 ---
 
-# Connection tips
-
 <ClickHouseSupportedBadge/>
 
 ## Initial SQL tab {#initial-sql-tab}

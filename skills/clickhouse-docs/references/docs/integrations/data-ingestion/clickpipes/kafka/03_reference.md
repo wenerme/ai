@@ -8,8 +8,6 @@ integration:
   - category: 'clickpipes'
 ---
 
-# Reference
-
 ## Supported data sources {#supported-data-sources}
 
 | Name                 |Logo|Type| Status          | Description                                                                                          |

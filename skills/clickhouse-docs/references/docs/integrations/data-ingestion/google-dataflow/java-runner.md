@@ -5,8 +5,6 @@ doc_type: 'guide'
 keywords: ['Dataflow Java runner', 'Google Dataflow ClickHouse', 'Apache Beam Java ClickHouse', 'ClickHouseIO connector']
 ---
 
-# Dataflow Java runner
-
 <ClickHouseSupportedBadge/>
 
 The Dataflow Java runner lets you execute custom Apache Beam pipelines on Google Cloud's Dataflow service. This approach provides maximum flexibility and is well-suited for advanced ETL workflows.

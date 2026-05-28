@@ -5,8 +5,6 @@ title: 'Automatic scaling'
 doc_type: 'guide'
 ---
 
-# Automatic scaling
-
 Scaling is the ability to adjust available resources to meet client demands. Scale and Enterprise (with standard 1:4 profile) tier services can be scaled horizontally by calling an API programmatically, or changing settings on the UI to adjust system resources. These services can also be **autoscaled** vertically to meet application demands.
 
 <ScalePlanFeatureBadge feature="Automatic vertical scaling"/>

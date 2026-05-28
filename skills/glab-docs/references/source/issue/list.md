@@ -44,6 +44,7 @@ glab issue list --milestone release-2.0.0 --opened
       --in string              search in: title, description. (default "title,description")
   -t, --issue-type string      Filter issue by its type. Options: issue, incident, test_case.
   -i, --iteration int          Filter issue by iteration <id>.
+      --jq string              Filter JSON output with a jq expression.
   -l, --label strings          Filter issue by label <name>. Multiple labels can be comma-separated or specified by repeating the flag.
   -m, --milestone string       Filter issue by milestone <id>.
       --not-assignee string    Filter issue by not being assigned to <username>.

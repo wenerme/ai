@@ -5,8 +5,6 @@ doc_type: 'guide'
 keywords: ['storage', 'compute', 'architecture', 'scalability', 'cloud']
 ---
 
-# Separation of storage and compute
-
 ## Overview {#overview}
 
 This guide explores how you can use ClickHouse and S3 to implement an architecture with separated storage and compute.

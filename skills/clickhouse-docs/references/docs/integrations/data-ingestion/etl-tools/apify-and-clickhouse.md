@@ -9,8 +9,6 @@ integration:
   - website: 'https://apify.com/'
 ---
 
-# Connect Apify to ClickHouse
-
 <CommunityMaintainedBadge/>
 
 [Apify](https://apify.com/) is a web scraping and automation platform. You build, run, and scale serverless cloud programs called [**Actors**](https://docs.apify.com/platform/actors). Actors scrape websites, crawl the web, process data, or automate workflows. Every Actor run produces structured output stored in [**Datasets**](https://docs.apify.com/platform/storage/dataset) (collections of JSON objects).

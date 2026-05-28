@@ -1,11 +1,10 @@
 ---
-title: 'Compliance overview'
+title: 'Security and compliance reports'
 description: 'Overview of ClickHouse Cloud security and compliance certifications including SOC 2, ISO 27001, U.S. DPF, and HIPAA'
 doc_type: 'reference'
 keywords: ['ClickHouse Cloud', 'SOC 2 Type II', 'ISO 27001', 'HIPAA', 'U.S. DPF', 'PCI']
 ---
 
-# Security and compliance reports
 ClickHouse evaluates the security and compliance needs of our customers and is continuously expanding the program as additional reports are requested. For additional information or to download the reports visit our [Trust Center](https://trust.clickhouse.com).
 
 ## SOC 2 Type II (since 2022) {#soc-2-type-ii-since-2022}

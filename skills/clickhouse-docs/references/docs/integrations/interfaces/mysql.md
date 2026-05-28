@@ -5,8 +5,6 @@ title: 'MySQL interface'
 doc_type: 'guide'
 ---
 
-# MySQL Interface
-
 ClickHouse supports the MySQL wire protocol. This allows certain clients that don't have native ClickHouse connectors leverage the MySQL protocol instead, and it has been validated with the following BI tools:
 
 - [Looker Studio](../data-visualization/looker-studio-and-clickhouse.md)

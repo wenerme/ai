@@ -389,7 +389,7 @@ The following configuration set `Content-Type: application/vnd.android.package-a
   This option is only for some advanced users who have configured their SSH reverse-proxy and need to use different usernames for git SSH clone.
   Most users should just leave it blank and/or modify the `BUILTIN_SSH_SERVER_USER`.
 - `SSH_DOMAIN`: **`{DOMAIN}`**: Domain name of this server, used for displayed clone URL.
-- `SSH_PORT`: **22**: SSH port displayed in clone URL.
+- `SSH_PORT`: **22**: SSH port displayed in clone URL. If you need a different "SSH clone port" from the real "SSH listen port", set the SSH_LISTEN_PORT separately.
 - `SSH_LISTEN_HOST`: **0.0.0.0**: Listen address for the built-in SSH server.
 - `SSH_LISTEN_PORT`: **`{SSH_PORT}`**: Port for the built-in SSH server.
 - `SSH_ROOT_PATH`: **_empty_**: Root path of SSH user directory for the system's standalone SSH server if Gitea is not using its builtin SSH server. Default is the '.ssh' directory in the run user's home directory.

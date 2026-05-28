@@ -8,8 +8,6 @@ integration:
   - category: 'clickpipes'
 ---
 
-# Postgres with TimescaleDB source setup guide
-
 <BetaBadge/>
 
 ## Background {#background}

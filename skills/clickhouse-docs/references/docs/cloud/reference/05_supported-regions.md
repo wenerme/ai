@@ -5,8 +5,6 @@ description: 'Supported regions for ClickHouse Cloud'
 doc_type: 'reference'
 ---
 
-# Supported cloud regions
-
 ## AWS regions {#aws-regions}
 
 - ap-northeast-1 (Tokyo)

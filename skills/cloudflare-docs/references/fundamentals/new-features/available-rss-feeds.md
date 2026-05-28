@@ -133,6 +133,8 @@ Included products
 [ Subscribe to RSS ](https://developers.cloudflare.com/changelog/rss/analytics.xml)
 * [Audit Logs](https://developers.cloudflare.com/fundamentals/account/account-security/review-audit-logs/)  
 [ Subscribe to RSS ](https://developers.cloudflare.com/changelog/rss/audit-logs.xml)
+* [Billing](https://developers.cloudflare.com/billing/)  
+[ Subscribe to RSS ](https://developers.cloudflare.com/changelog/rss/billing.xml)
 * [Cloudflare Fundamentals](https://developers.cloudflare.com/fundamentals/)  
 [ Subscribe to RSS ](https://developers.cloudflare.com/changelog/rss/fundamentals.xml)
 * [Go SDK](https://developers.cloudflare.com/fundamentals/api/reference/sdks/)  

@@ -5,8 +5,6 @@ doc_type: 'guide'
 keywords: ['Cloudflare', 'logs', 'ClickStack', 'ClickPipes', 'S3', 'HTTP', 'Logpush']
 ---
 
-# Monitoring Cloudflare Logs with ClickStack {#cloudflare-clickstack}
-
 :::note[TL;DR]
 This guide shows you how to ingest Cloudflare logs into ClickStack using ClickPipes. Cloudflare Logpush writes logs to S3, and ClickPipes continuously ingests new files into ClickHouse. Unlike most ClickStack integration guides that use the OpenTelemetry Collector, this guide uses [ClickPipes](/integrations/clickpipes) to pull data directly from S3.
 

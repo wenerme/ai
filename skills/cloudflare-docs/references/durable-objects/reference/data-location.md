@@ -67,6 +67,10 @@ Note that it is also possible to specify a jurisdiction by creating an individua
 | eu        | The European Union             |
 | fedramp   | FedRAMP-compliant data centers |
 
+### Read the jurisdiction from inside a Durable Object
+
+The jurisdiction of a Durable Object is available inside the object via [ctx.id.jurisdiction](https://developers.cloudflare.com/durable-objects/api/id/#jurisdiction). The value is preserved across `toString()` and `idFromString()` round-trips and is also available inside [alarm handlers](https://developers.cloudflare.com/durable-objects/api/alarms/) for alarms scheduled on 2026-03-15 or later, which makes it suitable for region-aware logic inside the Durable Object.
+
 ## Provide a location hint
 
 Durable Objects, as with any stateful API, will often add response latency as requests must be forwarded to the data center where the Durable Object, or state, is located.

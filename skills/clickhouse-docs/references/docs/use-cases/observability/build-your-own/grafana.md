@@ -1,12 +1,10 @@
 ---
-title: 'Using Grafana'
+title: 'Using Grafana and ClickHouse for observability'
 description: 'Using Grafana and ClickHouse for observability'
 keywords: ['Observability', 'logs', 'traces', 'metrics', 'OpenTelemetry', 'Grafana', 'OTel']
 show_related_blogs: true
 doc_type: 'guide'
 ---
-
-# Using Grafana and ClickHouse for Observability
 
 Grafana represents the preferred visualization tool for Observability data in ClickHouse. This is achieved using the official ClickHouse plugin for Grafana. You can follow the installation instructions found [here](/integrations/grafana).
 

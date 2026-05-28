@@ -4,8 +4,6 @@ title: 'PostgreSQL interface'
 doc_type: 'reference'
 ---
 
-# PostgreSQL Interface
-
 <CloudNotSupportedBadge/>
 
 > **tip**: Check out our [Managed Postgres](/docs/cloud/managed-postgres) service. Backed by NVMe storage that is physically collocated with compute, it delivers up to 10x faster performance for workloads that are disk-bound compared to alternatives using network-attached storage like EBS and allows you to replicate your Postgres data to ClickHouse using the Postgres CDC connector in ClickPipes.

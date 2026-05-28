@@ -36,12 +36,12 @@ const stream = await sandbox.watch(path: string, options?: WatchOptions): Promis
    * `recursive` \- Watch subdirectories recursively (default: `true`)  
    * `include` \- Glob patterns to include (for example, `['*.ts', '*.js']`). Cannot be used together with `exclude`.  
    * `exclude` \- Glob patterns to exclude (default: `['.git', 'node_modules', '.DS_Store']`). Cannot be used together with `include`.  
-   * `sessionId` \- Session to run the watch in (if omitted, the default session is used)
+   * `sessionId` \- Session to run the watch in (if omittied, will use the default session unless `enableDefaultSession` is set to false)
 
 **Returns**: `Promise<ReadableStream<Uint8Array>>` — an SSE stream of `FileWatchSSEEvent` objects
 
-* [  JavaScript ](#tab-panel-7827)
-* [  TypeScript ](#tab-panel-7828)
+* [  JavaScript ](#tab-panel-8018)
+* [  TypeScript ](#tab-panel-8019)
 
 JavaScript
 
@@ -282,7 +282,7 @@ interface WatchOptions {
 
   exclude?: string[];
 
-  /** Session to run the watch in. If omitted, the default session is used. */
+  /** Session to run the watch in. If omitted, the sandbox's implicit execution mode is used. */
 
   sessionId?: string;
 

@@ -1,11 +1,9 @@
 ---
-title: 'Take a backup or restore a backup from the UI'
+title: 'Backup / restore via user-interface'
 description: 'Page describing how to take a backup or restore a backup from the UI with your own bucket'
 doc_type: 'guide'
 keywords: ['backups', 'disaster recovery', 'data protection', 'restore', 'cloud features']
 ---
-
-# Backup / restore via user-interface {#ui-experience}
 
 > **note**: Automated backups to your external bucket are configured to run as "full" backups every 24 hours, and the frequency is not configurable.  
 

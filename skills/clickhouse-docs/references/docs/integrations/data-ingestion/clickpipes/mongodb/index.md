@@ -8,8 +8,6 @@ integration:
    - category: 'clickpipes'
 ---
 
-# Ingesting data from MongoDB to ClickHouse (using CDC)
-
 <BetaBadge/>
 
 > **info**: Ingesting data from MongoDB to ClickHouse Cloud via ClickPipes is in public beta.

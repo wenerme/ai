@@ -10,8 +10,6 @@ integration:
 keywords: ['vector', 'log collection', 'observability', 'data ingestion', 'pipeline']
 ---
 
-# Integrating Vector with ClickHouse
-
 <PartnerBadge/>
 
 Being able to analyze your logs in real time is critical for production applications.

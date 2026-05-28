@@ -8,8 +8,6 @@ integration:
    - category: 'clickpipes'
 ---
 
-# Ingesting data from MySQL to ClickHouse (using CDC)
-
 <BetaBadge/>
 
 > **info**: Ingesting data from MySQL to ClickHouse Cloud via ClickPipes is in public beta.

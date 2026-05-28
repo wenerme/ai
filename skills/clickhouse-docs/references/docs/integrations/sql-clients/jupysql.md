@@ -8,8 +8,6 @@ integration:
   - category: 'sql_client'
 ---
 
-# Using JupySQL with ClickHouse
-
 <CommunityMaintainedBadge/>
 
 In this guide we'll show an integration with ClickHouse.

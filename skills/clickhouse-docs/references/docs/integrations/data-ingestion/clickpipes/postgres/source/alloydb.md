@@ -4,8 +4,6 @@ title: 'AlloyDB Postgres source setup guide'
 doc_type: 'guide'
 ---
 
-# AlloyDB Postgres source setup guide
-
 ## Supported versions {#supported-versions}
 
 To propagate data from your AlloyDB instance to ClickHouse Cloud using ClickPipes, your instance must be configured for **logical replication**. This is supported **from AlloyDB Version 14**.

@@ -5,8 +5,6 @@ doc_type: 'guide'
 keywords: ['clickpipes', 'mongodb', 'documentdb', 'cdc', 'data ingestion', 'real-time sync']
 ---
 
-# Amazon DocumentDB source setup guide
-
 ## Supported DocumentDB versions {#supported-documentdb-versions}
 
 ClickPipes supports DocumentDB version 5.0.

@@ -5,8 +5,6 @@ doc_type: 'guide'
 keywords: ['PostgreSQL', 'Postgres', 'metrics', 'OTEL', 'ClickStack', 'database monitoring']
 ---
 
-# Monitoring PostgreSQL Metrics with ClickStack {#postgres-metrics-clickstack}
-
 :::note[TL;DR]
 Monitor PostgreSQL performance metrics in ClickStack using the OTel PostgreSQL receiver. Includes a demo dataset and pre-built dashboard.
 

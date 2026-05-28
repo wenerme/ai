@@ -1,11 +1,9 @@
 ---
 description: 'Documentation for the SSH interface in ClickHouse'
 keywords: ['client', 'ssh', 'putty']
-title: 'SSH interface'
+title: 'SSH interface with PTY'
 doc_type: 'reference'
 ---
-
-# SSH interface with PTY
 
 <ExperimentalBadge/>
 <CloudNotSupportedBadge/>

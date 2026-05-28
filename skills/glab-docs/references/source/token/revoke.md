@@ -51,6 +51,7 @@ glab token revoke --user johndoe johns-personal-token
 
 ```plaintext
   -g, --group string    Revoke group access token. Ignored if a user or repository argument is set.
+      --jq string       Filter JSON output with a jq expression.
   -F, --output string   Format output as: text, json. 'text' provides the name and ID of the revoked token; 'json' outputs the token with metadata. (default "text")
   -R, --repo string     Select another repository. You can use either OWNER/REPO or GROUP/NAMESPACE/REPO. The full URL or Git URL is also accepted.
   -U, --user string     Revoke personal access token. Use @me for the current user.

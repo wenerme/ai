@@ -33,6 +33,7 @@ glab runner jobs 9 --output json
 ## Options
 
 ```plaintext
+      --jq string         Filter JSON output with a jq expression.
       --order-by string   Order jobs by: id. (default "id")
   -F, --output string     Format output as: text, json. (default "text")
   -p, --page int          Page number. (default 1)

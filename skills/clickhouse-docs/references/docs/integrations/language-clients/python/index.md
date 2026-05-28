@@ -9,7 +9,7 @@ integration:
   - website: 'https://github.com/ClickHouse/clickhouse-connect'
 ---
 
-# Introduction {#introduction}
+## Introduction {#introduction}
 
 ClickHouse Connect is a core database driver providing interoperability with a wide range of Python applications.
 

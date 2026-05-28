@@ -5,8 +5,6 @@ title: 'Integrating ClickHouse with Databricks'
 doc_type: 'guide'
 ---
 
-# Integrating ClickHouse with Databricks
-
 <ClickHouseSupportedBadge/>
 
 The ClickHouse Spark connector works seamlessly with Databricks. This guide covers platform-specific setup, installation, and usage patterns for Databricks.

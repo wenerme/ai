@@ -38,6 +38,7 @@ glab work-items create --type epic --group my-group
   -c, --confidential         Mark work item confidential.
   -d, --description string   Description of the work item. Set to "-" to open an editor.
   -g, --group string         Create work items for a group or subgroup.
+      --jq string            Filter JSON output with a jq expression.
   -F, --output string        Format output as: text, json. (default "text")
   -R, --repo string          Select another repository. You can use either OWNER/REPO or GROUP/NAMESPACE/REPO. The full URL or Git URL is also accepted.
   -t, --title string         Add a title for the work item.

@@ -44,6 +44,7 @@ glab ci status
 ```plaintext
   -b, --branch string   Check pipeline status for a branch. Defaults to the current branch.
   -c, --compact         Show status in compact format.
+      --jq string       Filter JSON output with a jq expression.
   -l, --live            Show status in real time until the pipeline ends.
   -F, --output string   Format output as: text, json. Note: JSON output is not compatible with --live or --compact flags. (default "text")
 ```

@@ -9,8 +9,6 @@ integration:
 keywords: ['DBeaver', 'database management', 'SQL client', 'JDBC connection', 'multi-platform']
 ---
 
-# Connect DBeaver to ClickHouse
-
 <PartnerBadge/>
 
 DBeaver is available in multiple offerings. In this guide [DBeaver Community](https://dbeaver.io/) is used. See the various offerings and capabilities [here](https://dbeaver.com/edition/).  DBeaver connects to ClickHouse using JDBC.

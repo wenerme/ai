@@ -5,8 +5,6 @@ doc_type: 'guide'
 keywords: ['ClickHouse Cloud', 'SAML', 'SSO', 'single sign-on', 'IdP', 'Okta', 'Google']
 ---
 
-# SAML SSO setup
-
 <EnterprisePlanFeatureBadge feature="SAML SSO"/>
 
 ClickHouse Cloud supports single-sign on (SSO) via security assertion markup language (SAML). This enables you to sign in securely to your ClickHouse Cloud organization by authenticating with your identity provider (IdP).

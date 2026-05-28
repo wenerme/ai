@@ -54,6 +54,7 @@ glab mr list --not-draft
   -d, --draft                  Filter by draft merge requests.
       --environment string     Filter merge requests deployed to the given environment <name>.
   -g, --group string           Select a group/subgroup. This option is ignored if a repo argument is set.
+      --jq string              Filter JSON output with a jq expression.
   -l, --label strings          Filter merge request by label <name>. Multiple labels can be comma-separated or specified by repeating the flag.
   -M, --merged                 Get only merged merge requests.
   -m, --milestone string       Filter merge request by milestone <id>.

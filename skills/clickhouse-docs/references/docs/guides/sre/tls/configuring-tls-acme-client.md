@@ -1,11 +1,9 @@
 ---
-title: 'Configuring ACME client'
+title: 'Configuring automatic TLS provisioning via ACME'
 description: 'This guide provides simple and minimal settings to configure ClickHouse to use OpenSSL certificates to validate connections.'
 keywords: ['ACME configuration', 'TLS setup', 'OpenSSL certificates', 'secure connections', 'SRE guide', 'Let`s Encrypt']
 doc_type: 'guide'
 ---
-
-# Configuring automatic TLS provisioning via ACME
 
 <ExperimentalBadge/>
 <SelfManaged />

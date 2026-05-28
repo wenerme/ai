@@ -5,8 +5,6 @@ keywords: ['azure', 'flexible server', 'mysql', 'clickpipes', 'binlog']
 doc_type: 'guide'
 ---
 
-# Azure Flexible Server for MySQL source setup guide
-
 This step-by-step guide shows you how to configure Azure Flexible Server for MySQL to replicate data into ClickHouse Cloud using the [MySQL ClickPipe](../index.md). Only **one-time ingestion** is supported for this service. For common questions around MySQL CDC, see the [MySQL FAQs page](/integrations/data-ingestion/clickpipes/mysql/faq.md).
 
 > **warning**: Continuous ingestion via **CDC isn't supported** for this service. Azure Flexible Server for MySQL doesn't allow configuring the [`binlog_row_metadata`](https://dev.mysql.com/doc/refman/en/replication-options-binary-log.html#sysvar_binlog_row_metadata) system variable to `FULL`, which is required for full-featured MySQL CDC in ClickPipes.

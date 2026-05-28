@@ -2,11 +2,9 @@
 sidebar_title: 'SQL console'
 description: 'Run queries and create visualizations using the SQL Console.'
 keywords: ['sql console', 'sql client', 'cloud console', 'console']
-title: 'SQL console'
+title: 'SQL Console'
 doc_type: 'guide'
 ---
-
-# SQL Console
 
 SQL console is the fastest and easiest way to explore and query your databases in ClickHouse Cloud. You can use the SQL console to:
 

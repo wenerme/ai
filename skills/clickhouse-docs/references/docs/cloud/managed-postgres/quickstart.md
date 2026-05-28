@@ -1,11 +1,9 @@
 ---
-title: 'Quickstart'
+title: 'Quickstart for Managed Postgres'
 description: 'Experience NVMe-powered Postgres performance and add real-time analytics with native ClickHouse integration'
 keywords: ['managed postgres', 'quickstart', 'getting started', 'create database', 'nvme', 'performance']
 doc_type: 'guide'
 ---
-
-# Quickstart for Managed Postgres
 
 <BetaBadge link="https://clickhouse.com/cloud/postgres" galaxyTrack={true} galaxyEvent="docs.managed-postgres.quick-start-beta" />
 
@@ -243,7 +241,7 @@ The replication process will start, and you will be taken to the integration ove
 
 ### Query ClickHouse from Postgres {#pg-clickhouse-extension}
 
-The `pg_clickhouse` extension lets you query ClickHouse data directly from Postgres using standard SQL. This means your application can use Postgres as a unified query layer for both transactional and analytical data. See the [full documentation](/integrations/pg_clickhouse) for details.
+The `pg_clickhouse` extension lets you query ClickHouse data directly from Postgres using standard SQL. This means your application can use Postgres as a unified query layer for both transactional and analytical data. See the [full documentation](/cloud/managed-postgres/extensions/pg_clickhouse) for details.
 
 Enable the extension:
 

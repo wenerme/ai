@@ -34,6 +34,7 @@ glab runner-controller get 42 --output json
 ## Options
 
 ```plaintext
+      --jq string       Filter JSON output with a jq expression.
   -F, --output string   Format output as: text, json. (default "text")
 ```
 

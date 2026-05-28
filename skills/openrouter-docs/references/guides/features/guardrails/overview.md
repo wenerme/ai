@@ -185,3 +185,33 @@ See [Router Metadata — Error Responses](/docs/features/router-metadata#error-r
 You can manage guardrails programmatically using the OpenRouter API. This allows you to create, update, delete, and assign guardrails to API keys and organization members directly from your code.
 
 See the [Guardrails API reference](/docs/api/api-reference/guardrails/list-guardrails) for available endpoints and usage examples.
+
+### Updating the Workspace Default Guardrail via API
+
+Each workspace has a **default guardrail** that applies to all traffic in that workspace without needing to be explicitly assigned to individual keys or members. To update the workspace default guardrail via the API:
+
+1. **List guardrails** for the workspace to find the default guardrail:
+
+```bash
+curl https://openrouter.ai/api/v1/guardrails?workspace_id=YOUR_WORKSPACE_ID \
+  -H "Authorization: Bearer YOUR_MANAGEMENT_KEY"
+```
+
+2. **Identify the default guardrail** in the response. It is named `Workspace <workspace-id> Default` (where `<workspace-id>` is the UUID of your workspace).
+
+3. **Update it** using the guardrail's `id`:
+
+```bash
+curl -X PATCH https://openrouter.ai/api/v1/guardrails/GUARDRAIL_ID \
+  -H "Authorization: Bearer YOUR_MANAGEMENT_KEY" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "allowed_providers": ["openai", "anthropic"],
+    "limit_usd": 100,
+    "reset_interval": "monthly",
+    "enforce_zdr_anthropic": true,
+    "enforce_zdr_openai": true
+  }'
+```
+
+All [guardrail settings](#guardrail-settings) can be configured this way, including budget limits, provider/model allowlists, zero data retention enforcement, and content filters.

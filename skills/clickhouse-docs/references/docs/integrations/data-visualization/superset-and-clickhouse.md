@@ -10,8 +10,6 @@ integration:
   - website: 'https://github.com/ClickHouse/clickhouse-connect'
 ---
 
-# Connect Superset to ClickHouse
-
 <ClickHouseSupportedBadge/>
 
 <a href="https://superset.apache.org/" target="_blank">Apache Superset</a> is an open-source data exploration and visualization platform written in Python. Superset connects to ClickHouse using a Python driver provided by ClickHouse. Let's see how it works...

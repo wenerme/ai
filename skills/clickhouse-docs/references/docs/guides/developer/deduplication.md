@@ -5,8 +5,6 @@ keywords: ['deduplication strategies', 'data deduplication', 'upserts', 'updates
 doc_type: 'guide'
 ---
 
-# Deduplication strategies
-
 **Deduplication** refers to the process of ***removing duplicate rows of a dataset***. In an OLTP database, this is done easily because each row has a unique primary key-but at the cost of slower inserts. Every inserted row needs to first be searched for and, if found, needs to be replaced.
 
 ClickHouse is built for speed when it comes to data insertion. The storage files are immutable and ClickHouse doesn't check for an existing primary key before inserting a row-so deduplication involves a bit more effort. This also means that deduplication isn't immediate-it is **eventual**, which has a few side effects:

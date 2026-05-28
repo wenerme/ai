@@ -1,11 +1,9 @@
 ---
-title: 'Managed Postgres Prometheus endpoint'
+title: 'Managed Postgres Prometheus integration'
 description: 'Scrape Managed Postgres metrics into Prometheus, Grafana, Datadog, or any OpenMetrics-compatible collector'
 keywords: ['managed postgres', 'prometheus', 'grafana', 'datadog', 'metrics', 'openmetrics', 'observability']
 doc_type: 'guide'
 ---
-
-# Prometheus Integration
 
 <BetaBadge link="https://clickhouse.com/cloud/postgres" galaxyTrack={true} galaxyEvent="docs.managed-postgres.monitoring-prometheus-beta" />
 

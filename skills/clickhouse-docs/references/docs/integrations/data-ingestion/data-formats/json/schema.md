@@ -1,12 +1,10 @@
 ---
-title: 'Designing JSON schema'
+title: 'Designing your schema'
 description: 'How to optimally design JSON schemas'
 keywords: ['json', 'clickhouse', 'inserting', 'loading', 'formats', 'schema', 'structured', 'semi-structured']
 score: 20
 doc_type: 'guide'
 ---
-
-# Designing your schema
 
 While [schema inference](/integrations/data-formats/json/inference) can be used to establish an initial schema for JSON data and query JSON data files in place, e.g., in S3, you should aim to establish an optimized versioned schema for your data. We discuss the recommended approach for modeling JSON structures below.
 

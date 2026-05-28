@@ -1,15 +1,13 @@
 ---
 keywords: ['clickhouse', 'cs', 'c#', '.net', 'dotnet', 'csharp', 'client', 'driver', 'connect', 'integrate']
 description: 'The official C# client for connecting to ClickHouse.'
-title: 'ClickHouse C# driver'
+title: 'ClickHouse C# client'
 doc_type: 'guide'
 integration:
   - support_level: 'core'
   - category: 'language_client'
   - website: 'https://github.com/ClickHouse/clickhouse-cs'
 ---
-
-# ClickHouse C# client
 
 The official C# client for connecting to ClickHouse.
 The client source code is available in the [GitHub repository](https://github.com/ClickHouse/clickhouse-cs).

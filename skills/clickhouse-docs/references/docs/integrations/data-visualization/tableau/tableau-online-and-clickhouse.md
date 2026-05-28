@@ -8,8 +8,6 @@ integration:
   - category: 'data_visualization'
 ---
 
-# Tableau Online
-
 Tableau Online can connect to ClickHouse Cloud or on-premise ClickHouse setup via MySQL interface using the official MySQL data source.
 
 ## ClickHouse Cloud setup {#clickhouse-cloud-setup}

@@ -8,8 +8,6 @@ integration:
   - category: 'data_ingestion'
 ---
 
-# Integrating Amazon Glue with ClickHouse and Spark
-
 <ClickHouseSupportedBadge/>
 
 [Amazon Glue](https://aws.amazon.com/glue/) is a fully managed, serverless data integration service provided by Amazon Web Services (AWS). It simplifies the process of discovering, preparing, and transforming data for analytics, machine learning, and application development.

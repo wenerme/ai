@@ -5,8 +5,6 @@ doc_type: 'guide'
 keywords: ['ClickHouse Cloud', 'dashboards', 'data visualization', 'SQL console dashboards', 'cloud analytics']
 ---
 
-# Dashboards
-
 The SQL Console's dashboards feature allows you to collect and share visualizations from saved queries. Get started by saving and visualizing queries, adding query visualizations to a dashboard, and making the dashboard interactive using query parameters.
 
 ## Core concepts {#core-concepts}

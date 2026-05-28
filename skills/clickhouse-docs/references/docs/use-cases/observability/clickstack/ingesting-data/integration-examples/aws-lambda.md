@@ -5,8 +5,6 @@ doc_type: 'guide'
 keywords: ['AWS', 'Lambda', 'OTEL', 'ClickStack', 'logs', 'CloudWatch']
 ---
 
-# Monitoring AWS Lambda Logs with ClickStack using Rotel {#lambda-clickstack}
-
 <CommunityMaintainedBadge/>
 
 :::note[TL;DR]

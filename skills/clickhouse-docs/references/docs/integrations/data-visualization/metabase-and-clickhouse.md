@@ -10,8 +10,6 @@ integration:
   - website: 'https://github.com/clickhouse/metabase-clickhouse-driver'
 ---
 
-# Connecting Metabase to ClickHouse
-
 <PartnerBadge/>
 
 Metabase is an easy-to-use, open source UI tool for asking questions about your data. Metabase is a Java application that can be run by simply <a href="https://www.metabase.com/start/oss/jar" target="_blank">downloading the JAR file</a> and running it with `java -jar metabase.jar`. Metabase connects to ClickHouse using a JDBC driver that you download and put in the `plugins` folder:

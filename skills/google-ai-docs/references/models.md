@@ -1,5 +1,3 @@
-# Models
-
 > [!IMPORTANT]
 > We have updated our [Terms of Service](https://ai.google.dev/gemini-api/terms).
 
@@ -15,9 +13,7 @@ Stable](https://ai.google.dev/gemini-api/docs/models/gemini-3.5-flash) [### Gemi
 Frontier-class performance rivaling larger models at a fraction of the cost.
 Preview](https://ai.google.dev/gemini-api/docs/models/gemini-3-flash-preview) [### Gemini 3.1 Flash-Lite
 Frontier-class performance rivaling larger models at a fraction of the cost.
-Stable](https://ai.google.dev/gemini-api/docs/models/gemini-3.1-flash-lite) [### Gemini 3.1 Flash-Lite
-Frontier-class performance rivaling larger models at a fraction of the cost.
-Preview](https://ai.google.dev/gemini-api/docs/models/gemini-3.1-flash-lite-preview) [### Nano Banana 2
+Stable](https://ai.google.dev/gemini-api/docs/models/gemini-3.1-flash-lite) [### Nano Banana 2
 Powerful, high-efficiency image generation and editing, optimized for speed and high-volume use cases.
 Preview](https://ai.google.dev/gemini-api/docs/models/gemini-3.1-flash-image-preview) [### Nano Banana Pro
 State-of-the-art image generation and editing models for highly contextual native image creation.
@@ -26,9 +22,6 @@ High-quality, low-latency Live API model for real-time dialogue and voice-first 
 New Preview](https://ai.google.dev/gemini-api/docs/models/gemini-3.1-flash-live-preview) [### Gemini 3.1 Flash TTS
 Powerful, low-latency speech generation.
 New Preview](https://ai.google.dev/gemini-api/docs/models/gemini-3.1-flash-tts-preview)
-
-> [!WARNING]
-> **Warning:** Gemini 3 Pro Preview is [deprecated](https://ai.google.dev/gemini-api/docs/deprecations) and has been shut down March 9, 2026. Migrate to [Gemini 3.1 Pro Preview](https://ai.google.dev/gemini-api/docs/models/gemini-3.1-pro-preview) to avoid service disruption.
 
 *** ** * ** ***
 
@@ -195,6 +188,10 @@ Our second generation workhorse model, with next-gen features and improved capab
 
 Our fastest second generation model, optimized for cost efficiency and low latency.
 
+### [Gemini 3.1 Flash-Lite Preview Shut down](https://ai.google.dev/gemini-api/docs/models/gemini-3.1-flash-lite-preview)
+
+Our most cost-efficient multimodal model, offering the fastest performance for high-frequency, lightweight tasks.
+
 ### [Gemini 3 Pro Preview Shut down](https://ai.google.dev/gemini-api/docs/models/gemini-3-pro-preview)
 
 Our state-of-the-art reasoning model, with advanced multimodal understanding.
@@ -214,7 +211,7 @@ Gemini models are available in either *stable* , *preview* , *latest* , or
 Points to a specific stable model. Stable models usually don't change. Most
 production apps should use a specific stable model.
 
-For example: `gemini-2.5-flash`.
+For example: `gemini-3.5-flash`.
 
 ### Preview
 

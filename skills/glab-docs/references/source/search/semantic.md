@@ -43,6 +43,7 @@ glab search semantic -q "database migrations" --limit 5
 
 ```plaintext
   -d, --directory-path string   Restrict search to files under this path (e.g. app/services/).
+      --jq string               Filter JSON output with a jq expression.
       --knn int                 Nearest neighbours to retrieve (1–100). Defaults to 64 server-side.
   -l, --limit int               Maximum number of results (1–100). Defaults to 20 server-side.
   -F, --output string           Format output as: text, json. (default "text")

@@ -1,12 +1,10 @@
 ---
-title: 'BigQuery vs ClickHouse Cloud'
+title: 'Comparing ClickHouse Cloud and BigQuery'
 description: 'How BigQuery differs from ClickHouse Cloud'
 keywords: ['BigQuery']
 show_related_blogs: true
 doc_type: 'guide'
 ---
-
-# Comparing ClickHouse Cloud and BigQuery 
 
 ## Resource organization {#resource-organization}
 

@@ -1,10 +1,8 @@
 ---
 description: 'Overview of ClickHouse backup and restore'
-title: 'Backup and restore to/from an S3 endpoint'
+title: 'BACKUP / RESTORE to or from an S3 endpoint'
 doc_type: 'guide'
 ---
-
-# BACKUP / RESTORE to or from an S3 endpoint {#backup-to-a-local-disk}
 
 This article covers backing up or restoring backups to/from an S3 bucket
 via an S3 endpoint.

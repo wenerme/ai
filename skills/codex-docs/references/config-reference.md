@@ -1271,7 +1271,19 @@ For sandbox and approval keys (`approval_policy`, `sandbox_mode`, and `sandbox_w
       key: "default_permissions",
       type: "string",
       description:
-        "Name of the default permissions profile to apply to sandboxed tool calls. Built-ins are `:read-only`, `:workspace`, and `:danger-full-access`; custom profile names require matching `[permissions.<name>]` tables.",
+        "Name of the default permissions profile to apply to sandboxed tool calls. Built-ins are `:read-only`, `:workspace`, and `:danger-full-access`; custom profile names require matching `[permissions.<name>]` tables. Don't combine with `sandbox_mode` or `[sandbox_workspace_write]`.",
+    },
+    {
+      key: "permissions.<name>.description",
+      type: "string",
+      description:
+        "Human-readable description for this named profile. A profile does not inherit its parent's description through `extends`.",
+    },
+    {
+      key: "permissions.<name>.extends",
+      type: "string",
+      description:
+        "Optional parent profile applied before this named profile. Set it to another named profile, `:read-only`, or `:workspace`; `:danger-full-access`, undefined parents, and cycles are rejected.",
     },
     {
       key: "permissions.<name>.workspace_roots",

@@ -8,8 +8,6 @@ integration:
   - category: 'data_visualization'
 ---
 
-# Power BI
-
 <ClickHouseSupportedBadge/>
 
 Microsoft Power BI can query or load into memory data from [ClickHouse Cloud](https://clickhouse.com/cloud) or a self-managed deployment.

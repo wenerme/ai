@@ -40,6 +40,7 @@ glab variable export --output export
 
 ```plaintext
   -g, --group string    Select a group or subgroup. Ignored if a repository argument is set.
+      --jq string       Filter JSON output with a jq expression.
   -F, --output string   Format output as: json, export, env. (default "json")
   -p, --page int        Page number. (default 1)
   -P, --per-page int    Number of items to list per page. (default 100)

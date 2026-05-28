@@ -89,7 +89,9 @@ flowchart TD
 
 ## Add a DNS suffix
 
-Support for DNS suffix search lists in the Cloudflare One Client is currently in development. You can manually configure DNS suffixes at the device level using the following instructions.
+To deploy a DNS suffix search list to all devices on a [device profile](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/device-profiles/), configure [DNS search suffixes](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/settings/#dns-search-suffixes) in your Cloudflare One Client settings.
+
+For older client versions, you can manually configure DNS suffixes at the device level using the following instructions.
 
 ### macOS
 

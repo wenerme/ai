@@ -261,8 +261,8 @@
   },
   "guides/features/guardrails/overview.md": {
     "url": "https://openrouter.ai/docs/guides/features/guardrails/overview.md",
-    "size": 9398,
-    "updatedAt": "2026-05-20T00:44:54.858Z"
+    "size": 10626,
+    "updatedAt": "2026-05-28T00:41:52.091Z"
   },
   "guides/features/guardrails/prompt-injection.md": {
     "url": "https://openrouter.ai/docs/guides/features/guardrails/prompt-injection.md",
@@ -531,8 +531,8 @@
   },
   "api/reference/parameters.md": {
     "url": "https://openrouter.ai/docs/api/reference/parameters.md",
-    "size": 8614,
-    "updatedAt": "2026-05-16T00:37:48.879Z"
+    "size": 9495,
+    "updatedAt": "2026-05-28T00:42:40.571Z"
   },
   "api/reference/errors-and-debugging.md": {
     "url": "https://openrouter.ai/docs/api/reference/errors-and-debugging.md",
@@ -571,8 +571,8 @@
   },
   "api/api-reference/responses/create-responses.md": {
     "url": "https://openrouter.ai/docs/api/api-reference/responses/create-responses.md",
-    "size": 217885,
-    "updatedAt": "2026-05-27T00:46:02.944Z"
+    "size": 218426,
+    "updatedAt": "2026-05-28T00:42:46.064Z"
   },
   "api/api-reference/o-auth/exchange-auth-code-for-api-key.md": {
     "url": "https://openrouter.ai/docs/api/api-reference/o-auth/exchange-auth-code-for-api-key.md",
@@ -1061,8 +1061,8 @@
   },
   "client-sdks/python/api-reference/guardrails.md": {
     "url": "https://openrouter.ai/docs/client-sdks/python/api-reference/guardrails.md",
-    "size": 74676,
-    "updatedAt": "2026-05-16T00:40:49.879Z"
+    "size": 75116,
+    "updatedAt": "2026-05-28T00:44:47.659Z"
   },
   "client-sdks/python/api-reference/models/models.md": {
     "url": "https://openrouter.ai/docs/client-sdks/python/api-reference/models/models.md",

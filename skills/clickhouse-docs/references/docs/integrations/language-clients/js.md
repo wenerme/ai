@@ -9,8 +9,6 @@ integration:
   - website: 'https://github.com/ClickHouse/clickhouse-js'
 ---
 
-# ClickHouse JS
-
 The official JS client for connecting to ClickHouse.
 The client is written in TypeScript and provides typings for the client public API.
 

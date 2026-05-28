@@ -5,8 +5,6 @@ title: 'Storing ClickHouse Cloud audit logs into Splunk'
 doc_type: 'guide'
 ---
 
-# Storing ClickHouse Cloud audit logs into Splunk
-
 <PartnerBadge/>
 
 [Splunk](https://www.splunk.com/) is a data analytics and monitoring platform.

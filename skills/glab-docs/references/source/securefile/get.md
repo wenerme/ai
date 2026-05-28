@@ -27,6 +27,12 @@ glab securefile get 1
 glab securefile show 1
 ```
 
+## Options
+
+```plaintext
+      --jq string   Filter JSON output with a jq expression.
+```
+
 ## Options inherited from parent commands
 
 ```plaintext

@@ -5,8 +5,6 @@ doc_type: 'guide'
 keywords: ['google dataflow', 'gcp', 'data pipeline', 'templates', 'batch processing']
 ---
 
-# Google Dataflow templates
-
 <ClickHouseSupportedBadge/>
 
 Google Dataflow templates provide a convenient way to execute prebuilt, ready-to-use data pipelines without the need to write custom code. These templates are designed to simplify common data processing tasks and are built using [Apache Beam](https://beam.apache.org/), leveraging connectors like `ClickHouseIO` for seamless integration with ClickHouse databases. By running these templates on Google Dataflow, you can achieve highly scalable, distributed data processing with minimal effort.

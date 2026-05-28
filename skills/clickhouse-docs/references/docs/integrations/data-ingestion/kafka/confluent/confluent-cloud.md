@@ -9,8 +9,6 @@ integration:
   - website: 'https://clickhouse.com/cloud/clickpipes'
 ---
 
-# Integrating Confluent Cloud with ClickHouse
-
 <div class='vimeo-container'>
   <iframe src="//www.youtube.com/embed/SQAiPVbd3gg"
     width="640"

@@ -1,11 +1,9 @@
 ---
-title: 'Cloud console monitoring'
+title: 'Monitoring in the ClickHouse Cloud Console'
 description: 'Built-in monitoring dashboards in the ClickHouse Cloud Console'
 keywords: ['cloud', 'monitoring', 'dashboards', 'service health', 'resource utilization', 'advanced dashboard']
 doc_type: 'guide'
 ---
-
-# Monitoring in the ClickHouse Cloud Console
 
 Services in ClickHouse Cloud come with out-of-the-box monitoring components that serve users with dashboards and notifications. By default, all users in the Cloud Console can access these dashboards.
 

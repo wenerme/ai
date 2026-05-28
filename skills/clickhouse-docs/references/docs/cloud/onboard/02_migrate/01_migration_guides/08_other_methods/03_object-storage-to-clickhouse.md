@@ -1,11 +1,9 @@
 ---
-title: 'Using object storage'
+title: 'Move data from cloud object storage to ClickHouse Cloud'
 description: 'Moving data from object storage to ClickHouse Cloud'
 keywords: ['object storage', 's3', 'azure blob', 'gcs', 'migration']
 doc_type: 'guide'
 ---
-
-# Move data from cloud object storage to ClickHouse Cloud
 
 <Image img={object_storage_01} size='md' alt='Migrating Self-managed ClickHouse'/>
 

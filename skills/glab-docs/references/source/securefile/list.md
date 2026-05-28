@@ -36,6 +36,7 @@ glab securefile list --page 2 --per-page 10
 ## Options
 
 ```plaintext
+      --jq string      Filter JSON output with a jq expression.
   -p, --page int       Page number. (default 1)
   -P, --per-page int   Number of items to list per page. (default 30)
 ```

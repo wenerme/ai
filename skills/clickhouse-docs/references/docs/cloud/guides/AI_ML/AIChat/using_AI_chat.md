@@ -6,8 +6,6 @@ show_related_blogs: true
 doc_type: 'guide'
 ---
 
-# Use ClickHouse Assistant chat in ClickHouse Cloud
-
 > This guide explains how to enable and use the AI Chat feature in the ClickHouse Cloud Console.
 
 <VerticalStepper headerLevel="h2">

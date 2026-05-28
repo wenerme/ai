@@ -8,8 +8,6 @@ integration:
   - category: 'sql_client'
 ---
 
-# Connecting DbVisualizer to ClickHouse
-
 <CommunityMaintainedBadge/>
 
 ## Start or download DbVisualizer {#start-or-download-dbvisualizer}

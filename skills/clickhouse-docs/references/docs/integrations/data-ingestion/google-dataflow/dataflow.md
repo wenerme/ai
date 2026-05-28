@@ -5,8 +5,6 @@ doc_type: 'guide'
 keywords: ['Google Dataflow ClickHouse', 'Dataflow ClickHouse integration', 'Apache Beam ClickHouse', 'ClickHouseIO connector', 'Google Cloud ClickHouse integration']
 ---
 
-# Integrating Google Dataflow with ClickHouse
-
 <ClickHouseSupportedBadge/>
 
 [Google Dataflow](https://cloud.google.com/dataflow) is a fully managed stream and batch data processing service. It supports pipelines written in Java or Python and is built on the Apache Beam SDK.

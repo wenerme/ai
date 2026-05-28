@@ -8,8 +8,6 @@ integration:
    - category: 'clickpipes'
 ---
 
-# Aurora MySQL source setup guide
-
 This step-by-step guide shows you how to configure Amazon Aurora MySQL to replicate data into ClickHouse Cloud using the [MySQL ClickPipe](../index.md). For common questions around MySQL CDC, see the [MySQL FAQs page](/integrations/data-ingestion/clickpipes/mysql/faq.md).
 
 ## Enable binary log retention {#enable-binlog-retention-aurora}
