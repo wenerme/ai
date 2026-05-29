@@ -60,8 +60,8 @@ This example adds a [custom rule](https://developers.cloudflare.com/waf/custom-r
 
 To use the [cf.waf.content\_scan.has\_malicious\_obj](https://developers.cloudflare.com/ruleset-engine/rules-language/fields/reference/cf.waf.content%5Fscan.has%5Fmalicious%5Fobj/) field you must [enable content scanning](#enable-waf-content-scanning).
 
-* [ Terraform (v5) ](#tab-panel-8995)
-* [ Terraform (v4) ](#tab-panel-8996)
+* [ Terraform (v5) ](#tab-panel-10017)
+* [ Terraform (v4) ](#tab-panel-10018)
 
 Required API token permissions
 

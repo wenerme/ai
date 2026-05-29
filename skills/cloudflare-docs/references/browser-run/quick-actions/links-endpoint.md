@@ -14,7 +14,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 The `/links` endpoint retrieves all links from a webpage. It can be used to extract all links from a page, including those that are hidden.
 
-Before you begin, make sure you [create a custom API Token](https://developers.cloudflare.com/fundamentals/api/get-started/create-token/) with `Browser Rendering - Edit` permission. For more information, refer to [Quick Actions — Before you begin](https://developers.cloudflare.com/browser-run/quick-actions/#before-you-begin).
+You can use this endpoint in two ways. To use the REST API, [create a custom API Token](https://developers.cloudflare.com/fundamentals/api/get-started/create-token/) with `Browser Rendering - Edit` permission. To use the [Workers binding](https://developers.cloudflare.com/browser-run/reference/wrangler/#bindings) from a [Cloudflare Worker](https://developers.cloudflare.com/workers/), no API token is needed. For more information, refer to [Quick Actions — Before you begin](https://developers.cloudflare.com/browser-run/quick-actions/#before-you-begin).
 
 ## Endpoint
 
@@ -42,8 +42,9 @@ You must provide either `url` or `html`:
 
 ### Get all links on a page
 
-* [ curl ](#tab-panel-4429)
-* [ TypeScript SDK ](#tab-panel-4430)
+* [ curl ](#tab-panel-5835)
+* [ TypeScript SDK ](#tab-panel-5836)
+* [ Workers binding ](#tab-panel-5837)
 
 This example grabs all links from the [Cloudflare Doc's homepage ↗](https://developers.cloudflare.com/). The response will be a JSON array containing the links found on the page.
 
@@ -247,6 +248,34 @@ const links = await client.browserRendering.links.create({
 
 
 console.log(links);
+
+
+```
+
+TypeScript
+
+```
+
+interface Env {
+
+  BROWSER: BrowserRun;
+
+}
+
+
+export default {
+
+  async fetch(request, env): Promise<Response> {
+
+    return await env.BROWSER.quickAction("links", {
+
+      url: "https://developers.cloudflare.com/",
+
+    });
+
+  },
+
+} satisfies ExportedHandler<Env>;
 
 
 ```

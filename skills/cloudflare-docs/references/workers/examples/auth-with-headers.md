@@ -20,10 +20,10 @@ Caution when using in production
 
 The example code contains a generic header key and value of `X-Custom-PSK` and `mypresharedkey`. To best protect your resources, change the header key and value in the Workers editor before saving your code.
 
-* [  JavaScript ](#tab-panel-9388)
-* [  TypeScript ](#tab-panel-9389)
-* [  Python ](#tab-panel-9390)
-* [  Hono ](#tab-panel-9391)
+* [  JavaScript ](#tab-panel-10410)
+* [  TypeScript ](#tab-panel-10411)
+* [  Python ](#tab-panel-10412)
+* [  Hono ](#tab-panel-10413)
 
 JavaScript
 

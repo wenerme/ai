@@ -16,10 +16,10 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 Resolve requests to your domain to a set of proxy third-party origin URLs.
 
-* [  JavaScript ](#tab-panel-9400)
-* [  TypeScript ](#tab-panel-9401)
-* [  Hono ](#tab-panel-9402)
-* [  Python ](#tab-panel-9403)
+* [  JavaScript ](#tab-panel-10422)
+* [  TypeScript ](#tab-panel-10423)
+* [  Hono ](#tab-panel-10424)
+* [  Python ](#tab-panel-10425)
 
 JavaScript
 

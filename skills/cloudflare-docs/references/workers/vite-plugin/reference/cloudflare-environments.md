@@ -14,8 +14,8 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 A Worker config file may contain configuration for multiple [Cloudflare environments](https://developers.cloudflare.com/workers/wrangler/environments/). With the Cloudflare Vite plugin, you select a Cloudflare environment at dev or build time by providing the `CLOUDFLARE_ENV` environment variable. Consider the following example Worker config file:
 
-* [  wrangler.jsonc ](#tab-panel-10027)
-* [  wrangler.toml ](#tab-panel-10028)
+* [  wrangler.jsonc ](#tab-panel-11011)
+* [  wrangler.toml ](#tab-panel-11012)
 
 JSONC
 
@@ -29,7 +29,7 @@ JSONC
 
   // Set this to today's date
 
-  "compatibility_date": "2026-05-21",
+  "compatibility_date": "2026-05-28",
 
   "main": "./src/index.ts",
 
@@ -78,7 +78,7 @@ name = "my-worker"
 
 # Set this to today's date
 
-compatibility_date = "2026-05-21"
+compatibility_date = "2026-05-28"
 
 main = "./src/index.ts"
 
@@ -162,7 +162,7 @@ API_TOKEN="eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9"
 
 Do not commit secrets to git
 
-The `.dev.vars` and `.env` files should not committed to git. Add `.dev.vars*` and `.env*` to your project's `.gitignore` file.
+The `.dev.vars` and `.env` files should not be committed to git. Add `.dev.vars*` and `.env*` to your project's `.gitignore` file.
 
 To set different secrets for each Cloudflare environment, create files named `.dev.vars.<environment-name>` or `.env.<environment-name>`.
 
@@ -186,8 +186,8 @@ It is possible to control how `.env` files are loaded in local development by se
 
 You may wish to combine the concepts of [Cloudflare environments](https://developers.cloudflare.com/workers/wrangler/environments/) and [Vite modes ↗](https://vite.dev/guide/env-and-mode.html#modes). With this approach, the Vite mode can be used to select the Cloudflare environment and a single method can be used to determine environment specific configuration and code. Consider again the previous example:
 
-* [  wrangler.jsonc ](#tab-panel-10029)
-* [  wrangler.toml ](#tab-panel-10030)
+* [  wrangler.jsonc ](#tab-panel-11013)
+* [  wrangler.toml ](#tab-panel-11014)
 
 JSONC
 
@@ -201,7 +201,7 @@ JSONC
 
   // Set this to today's date
 
-  "compatibility_date": "2026-05-21",
+  "compatibility_date": "2026-05-28",
 
   "main": "./src/index.ts",
 
@@ -250,7 +250,7 @@ name = "my-worker"
 
 # Set this to today's date
 
-compatibility_date = "2026-05-21"
+compatibility_date = "2026-05-28"
 
 main = "./src/index.ts"
 

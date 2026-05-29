@@ -28,8 +28,8 @@ Binding directly to a Cloudflare Tunnel through a VPC Network binding requires t
 
 Reference a specific Cloudflare Tunnel directly by its UUID:
 
-* [  wrangler.jsonc ](#tab-panel-9172)
-* [  wrangler.toml ](#tab-panel-9173)
+* [  wrangler.jsonc ](#tab-panel-10156)
+* [  wrangler.toml ](#tab-panel-10157)
 
 JSONC
 
@@ -97,8 +97,8 @@ For destinations behind Cloudflare WAN on-ramps (GRE, IPsec, or CNI), your netwo
 
 Bind to Cloudflare Mesh using `network_id: "cf1:network"`:
 
-* [  wrangler.jsonc ](#tab-panel-9174)
-* [  wrangler.toml ](#tab-panel-9175)
+* [  wrangler.jsonc ](#tab-panel-10158)
+* [  wrangler.toml ](#tab-panel-10159)
 
 JSONC
 

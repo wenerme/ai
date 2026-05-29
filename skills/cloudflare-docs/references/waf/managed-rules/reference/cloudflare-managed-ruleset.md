@@ -26,8 +26,8 @@ It is not recommended that you enable all the available rules using overrides, s
 
 ## Deploy the Cloudflare Managed Ruleset
 
-* [  New dashboard ](#tab-panel-8602)
-* [ Old dashboard ](#tab-panel-8603)
+* [  New dashboard ](#tab-panel-10051)
+* [ Old dashboard ](#tab-panel-10052)
 
 1. In the Cloudflare dashboard, go to the Security **Settings** page.  
 [ Go to **Settings** ](https://dash.cloudflare.com/?to=/:account/:zone/security/settings)
@@ -65,8 +65,8 @@ When you enable all the rules in the ruleset, you will affect rules that are dis
 
 Once you have [deployed the Cloudflare Managed Ruleset](#deploy-in-the-dashboard), do the following to configure it in the dashboard:
 
-* [  New dashboard ](#tab-panel-8604)
-* [ Old dashboard ](#tab-panel-8605)
+* [  New dashboard ](#tab-panel-10053)
+* [ Old dashboard ](#tab-panel-10054)
 
 1. In the Cloudflare dashboard, go to the **Security rules** page.  
 [ Go to **Security rules** ](https://dash.cloudflare.com/?to=/:account/:zone/security/security-rules)
@@ -105,8 +105,8 @@ Setting any of these configurations for specific tags affects all current and fu
 
 Once you have [deployed the Cloudflare Managed Ruleset](#deploy-in-the-dashboard), do the following to configure rules with specific tags in the dashboard:
 
-* [  New dashboard ](#tab-panel-8608)
-* [ Old dashboard ](#tab-panel-8609)
+* [  New dashboard ](#tab-panel-10057)
+* [ Old dashboard ](#tab-panel-10058)
 
 1. In the Cloudflare dashboard, go to the **Security rules** page.  
 [ Go to **Security rules** ](https://dash.cloudflare.com/?to=/:account/:zone/security/security-rules)
@@ -149,8 +149,8 @@ You can configure (or override) the following Cloudflare Managed Ruleset setting
 
 Once you have [deployed the Cloudflare Managed Ruleset](#deploy-in-the-dashboard), do the following to configure individual ruleset rules in the dashboard:
 
-* [  New dashboard ](#tab-panel-8606)
-* [ Old dashboard ](#tab-panel-8607)
+* [  New dashboard ](#tab-panel-10055)
+* [ Old dashboard ](#tab-panel-10056)
 
 1. In the Cloudflare dashboard, go to the **Security rules** page.  
 [ Go to **Security rules** ](https://dash.cloudflare.com/?to=/:account/:zone/security/security-rules)
@@ -300,8 +300,8 @@ For more information on working with managed rulesets via API, refer to [Work wi
 
 The following example deploys the Cloudflare Managed Ruleset for a zone and overrides the action and status of a specific rule.
 
-* [ Terraform (v5) ](#tab-panel-8600)
-* [ Terraform (v4) ](#tab-panel-8601)
+* [ Terraform (v5) ](#tab-panel-10049)
+* [ Terraform (v4) ](#tab-panel-10050)
 
 Required API token permissions
 

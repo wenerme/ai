@@ -14,7 +14,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 The `/content` endpoint instructs the browser to navigate to a website and capture the fully rendered HTML of a page, including the `head` section, after JavaScript execution. This is ideal for capturing content from JavaScript-heavy or interactive websites.
 
-Before you begin, make sure you [create a custom API Token](https://developers.cloudflare.com/fundamentals/api/get-started/create-token/) with `Browser Rendering - Edit` permission. For more information, refer to [Quick Actions — Before you begin](https://developers.cloudflare.com/browser-run/quick-actions/#before-you-begin).
+You can use this endpoint in two ways. To use the REST API, [create a custom API Token](https://developers.cloudflare.com/fundamentals/api/get-started/create-token/) with `Browser Rendering - Edit` permission. To use the [Workers binding](https://developers.cloudflare.com/browser-run/reference/wrangler/#bindings) from a [Cloudflare Worker](https://developers.cloudflare.com/workers/), no API token is needed. For more information, refer to [Quick Actions — Before you begin](https://developers.cloudflare.com/browser-run/quick-actions/#before-you-begin).
 
 ## Endpoint
 
@@ -41,8 +41,9 @@ You must provide either `url` or `html`:
 
 ### Fetch rendered HTML from a URL
 
-* [ curl ](#tab-panel-4425)
-* [ TypeScript SDK ](#tab-panel-4426)
+* [ curl ](#tab-panel-5829)
+* [ TypeScript SDK ](#tab-panel-5830)
+* [ Workers binding ](#tab-panel-5831)
 
 Go to `https://developers.cloudflare.com/` and return the rendered HTML.
 
@@ -85,6 +86,34 @@ const content = await client.browserRendering.content.create({
 
 
 console.log(content);
+
+
+```
+
+TypeScript
+
+```
+
+interface Env {
+
+  BROWSER: BrowserRun;
+
+}
+
+
+export default {
+
+  async fetch(request, env): Promise<Response> {
+
+    return await env.BROWSER.quickAction("content", {
+
+      url: "https://developers.cloudflare.com/",
+
+    });
+
+  },
+
+} satisfies ExportedHandler<Env>;
 
 
 ```

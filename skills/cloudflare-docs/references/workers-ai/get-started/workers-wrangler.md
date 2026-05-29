@@ -73,8 +73,8 @@ You must create an AI binding for your Worker to connect to Workers AI. [Binding
 
 To bind Workers AI to your Worker, add the following to the end of your Wrangler file:
 
-* [  wrangler.jsonc ](#tab-panel-8434)
-* [  wrangler.toml ](#tab-panel-8435)
+* [  wrangler.jsonc ](#tab-panel-10134)
+* [  wrangler.toml ](#tab-panel-10135)
 
 JSONC
 
@@ -114,8 +114,8 @@ You are now ready to run an inference task in your Worker. In this case, you wil
 
 Update the `index.ts` file in your `hello-ai` application directory with the following code:
 
-* [  JavaScript ](#tab-panel-8436)
-* [  TypeScript ](#tab-panel-8437)
+* [  JavaScript ](#tab-panel-10136)
+* [  TypeScript ](#tab-panel-10137)
 
 index.js
 

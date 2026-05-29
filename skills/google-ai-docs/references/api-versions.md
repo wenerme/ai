@@ -1,8 +1,3 @@
-# API versions explained
-
-> [!IMPORTANT]
-> We have updated our [Terms of Service](https://ai.google.dev/gemini-api/terms).
-
 This document provides a high-level overview of the differences between the `v1`
 and `v1beta` versions of the Gemini API.
 

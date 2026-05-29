@@ -18,10 +18,10 @@ WAF content scanning is available to customers on an Enterprise plan with a paid
 
 ## 1\. Turn on the detection
 
-* [  New dashboard ](#tab-panel-8560)
-* [ Old dashboard ](#tab-panel-8561)
-* [ API ](#tab-panel-8562)
-* [ Terraform ](#tab-panel-8563)
+* [  New dashboard ](#tab-panel-10009)
+* [ Old dashboard ](#tab-panel-10010)
+* [ API ](#tab-panel-10011)
+* [ Terraform ](#tab-panel-10012)
 
 1. In the Cloudflare dashboard, go to the Security **Settings** page.  
 [ Go to **Settings** ](https://dash.cloudflare.com/?to=/:account/:zone/security/settings)
@@ -132,10 +132,10 @@ For additional examples, refer to [Example rules](https://developers.cloudflare.
 
 To check uploaded content in a way that is not covered by the default configuration, add a [custom scan expression](https://developers.cloudflare.com/waf/detections/malicious-uploads/#custom-scan-expressions).
 
-* [  New dashboard ](#tab-panel-8564)
-* [ Old dashboard ](#tab-panel-8565)
-* [ API ](#tab-panel-8566)
-* [ Terraform ](#tab-panel-8567)
+* [  New dashboard ](#tab-panel-10013)
+* [ Old dashboard ](#tab-panel-10014)
+* [ API ](#tab-panel-10015)
+* [ Terraform ](#tab-panel-10016)
 
 1. In the Cloudflare dashboard, go to the Security **Settings** page.  
 [ Go to **Settings** ](https://dash.cloudflare.com/?to=/:account/:zone/security/settings)

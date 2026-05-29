@@ -26,8 +26,8 @@ Bindings allow your Worker to interact with resources on the Cloudflare Develope
 
 For example, to access a [KV](https://developers.cloudflare.com/kv) namespace from a Python Worker, you would declare the following in your Worker's [Wrangler configuration file](https://developers.cloudflare.com/workers/wrangler/configuration/):
 
-* [  wrangler.jsonc ](#tab-panel-8768)
-* [  wrangler.toml ](#tab-panel-8769)
+* [  wrangler.jsonc ](#tab-panel-10647)
+* [  wrangler.toml ](#tab-panel-10648)
 
 JSONC
 

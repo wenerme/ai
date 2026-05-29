@@ -12,7 +12,10 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 # Quick Actions
 
-Quick Actions provide simple HTTP endpoints for common browser tasks like capturing screenshots, extracting HTML content, generating PDFs, and more.
+Quick Actions provide simple interfaces for common browser tasks like capturing screenshots, extracting HTML content, generating PDFs, and more. You can use Quick Actions in two ways:
+
+* REST API — HTTP endpoints for one-off requests or external integration
+* Workers binding — Call Quick Actions directly from a [Cloudflare Worker](https://developers.cloudflare.com/workers/) using `env.BROWSER.quickAction()`
 
 The following are the available options:
 
@@ -31,9 +34,55 @@ Use Quick Actions when you need a fast, simple way to perform common browser tas
 
 ## Before you begin
 
-Before you begin, make sure you [create a custom API Token](https://developers.cloudflare.com/fundamentals/api/get-started/create-token/) with the following permissions:
+### REST API
+
+To use Quick Actions via the REST API, [create a custom API Token](https://developers.cloudflare.com/fundamentals/api/get-started/create-token/) with the following permissions:
 
 * `Browser Rendering - Edit`
+
+### Workers binding
+
+To use Quick Actions from a [Worker](https://developers.cloudflare.com/workers/), configure a [browser binding](https://developers.cloudflare.com/browser-run/reference/wrangler/#bindings) in your `wrangler.json`. No API token is needed when using the Workers binding.
+
+JSONC
+
+```
+
+{
+
+  "browser": {
+
+    "binding": "BROWSER"
+
+  }
+
+}
+
+
+```
+
+Compatibility date requirement
+
+Using the `.quickAction()` method requires setting your Worker's compatibility date to `2026-03-24` or later in your `wrangler.json`:
+
+JSONC
+
+```
+
+{
+
+  "compatibility_date": "2026-03-24",
+
+  "browser": {
+
+    "binding": "BROWSER"
+
+  }
+
+}
+
+
+```
 
 Note
 

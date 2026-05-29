@@ -29,6 +29,9 @@ Claude Sonnet 4 delivers superior coding and reasoning while responding more pre
 
 ## Usage
 
+* [ TypeScript ](#tab-panel-180)
+* [ cURL ](#tab-panel-181)
+
 TypeScript
 
 ```
@@ -39,27 +42,11 @@ const response = await env.AI.run(
 
   {
 
-    messages: [
-
-      {
-
-        role: 'user',
-
-        content: 'What are the three laws of thermodynamics?',
-
-      },
-
-    ],
-
     max_tokens: 1024,
 
+    messages: [{ content: 'What are the three laws of thermodynamics?', role: 'user' }],
+
   },
-
-  {
-
-    gateway: { id: 'default' },
-
-  }
 
 )
 
@@ -68,8 +55,41 @@ console.log(response)
 
 ```
 
-* [ Output ](#tab-panel-88)
-* [ Raw response ](#tab-panel-89)
+Terminal window
+
+```
+
+curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/v1/messages \
+
+  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+
+  --header "Content-Type: application/json" \
+
+  --data '{
+
+  "model": "anthropic/claude-sonnet-4",
+
+  "max_tokens": 1024,
+
+  "messages": [
+
+    {
+
+      "content": "What are the three laws of thermodynamics?",
+
+      "role": "user"
+
+    }
+
+  ]
+
+}'
+
+
+```
+
+* [ Output ](#tab-panel-184)
+* [ Raw response ](#tab-panel-185)
 
 The three laws of thermodynamics are fundamental principles that govern energy and heat:
 
@@ -96,43 +116,43 @@ The three laws of thermodynamics are fundamental principles that govern energy a
 
 {
 
-  "id": "msg_01KCWPmBGq85xRjzGhNrX7n6",
-
-  "type": "message",
-
-  "role": "assistant",
-
   "content": [
 
     {
 
-      "type": "text",
+      "text": "The three laws of thermodynamics are fundamental principles that govern energy and heat:\n\n## First Law of Thermodynamics\n**Energy cannot be created or destroyed, only converted from one form to another.**\n- Also known as the law of conservation of energy\n- The total energy of an isolated system remains constant\n- Mathematically: ΔU = Q - W (change in internal energy equals heat added minus work done by the system)\n\n## Second Law of Thermodynamics\n**The entropy (disorder) of an isolated system always increases over time.**\n- Heat flows naturally from hot to cold objects, never the reverse (without external work)\n- No heat engine can be 100% efficient\n- It's impossible to convert heat completely into work without some energy being lost as waste heat\n\n## Third Law of Thermodynamics\n**The entropy of a perfect crystal approaches zero as temperature approaches absolute zero.**\n- Absolute zero (0 Kelvin or -273.15°C) represents the theoretical point where molecular motion stops\n- It's impossible to reach absolute zero in a finite number of steps\n\n*Note: Some formulations include a \"zeroth law\" about thermal equilibrium, making it technically four laws, but the three above are the classical formulation.*",
 
-      "text": "The three laws of thermodynamics are fundamental principles that govern energy and heat:\n\n## First Law of Thermodynamics\n**Energy cannot be created or destroyed, only converted from one form to another.**\n- Also known as the law of conservation of energy\n- The total energy of an isolated system remains constant\n- Mathematically: ΔU = Q - W (change in internal energy equals heat added minus work done by the system)\n\n## Second Law of Thermodynamics\n**The entropy (disorder) of an isolated system always increases over time.**\n- Heat flows naturally from hot to cold objects, never the reverse (without external work)\n- No heat engine can be 100% efficient\n- It's impossible to convert heat completely into work without some energy being lost as waste heat\n\n## Third Law of Thermodynamics\n**The entropy of a perfect crystal approaches zero as temperature approaches absolute zero.**\n- Absolute zero (0 Kelvin or -273.15°C) represents the theoretical point where molecular motion stops\n- It's impossible to reach absolute zero in a finite number of steps\n\n*Note: Some formulations include a \"zeroth law\" about thermal equilibrium, making it technically four laws, but the three above are the classical formulation.*"
+      "type": "text"
 
     }
 
   ],
 
+  "gatewayMetadata": {
+
+    "keySource": "BYOK"
+
+  },
+
+  "id": "msg_01KCWPmBGq85xRjzGhNrX7n6",
+
   "model": "claude-sonnet-4-20250514",
 
+  "role": "assistant",
+
+  "stop_details": null,
+
   "stop_reason": "end_turn",
+
+  "stop_sequence": null,
+
+  "type": "message",
 
   "usage": {
 
     "input_tokens": 17,
 
     "output_tokens": 272
-
-  },
-
-  "stop_sequence": null,
-
-  "stop_details": null,
-
-  "gatewayMetadata": {
-
-    "keySource": "BYOK"
 
   }
 
@@ -145,6 +165,9 @@ The three laws of thermodynamics are fundamental principles that govern energy a
 
 **With System Message**  — Using a system message to set context 
 
+* [ TypeScript ](#tab-panel-182)
+* [ cURL ](#tab-panel-183)
+
 TypeScript
 
 ```
@@ -155,31 +178,15 @@ const response = await env.AI.run(
 
   {
 
-    messages: [
-
-      {
-
-        role: 'user',
-
-        content: 'How do I read a JSON file in Python?',
-
-      },
-
-    ],
-
     max_tokens: 1024,
+
+    messages: [{ content: 'How do I read a JSON file in Python?', role: 'user' }],
 
     system: 'You are a helpful coding assistant specializing in Python.',
 
     temperature: 0.3,
 
   },
-
-  {
-
-    gateway: { id: 'default' },
-
-  }
 
 )
 
@@ -188,8 +195,45 @@ console.log(response)
 
 ```
 
-* [ Output ](#tab-panel-90)
-* [ Raw response ](#tab-panel-91)
+Terminal window
+
+```
+
+curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/v1/messages \
+
+  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+
+  --header "Content-Type: application/json" \
+
+  --data '{
+
+  "model": "anthropic/claude-sonnet-4",
+
+  "max_tokens": 1024,
+
+  "messages": [
+
+    {
+
+      "content": "How do I read a JSON file in Python?",
+
+      "role": "user"
+
+    }
+
+  ],
+
+  "system": "You are a helpful coding assistant specializing in Python.",
+
+  "temperature": 0.3
+
+}'
+
+
+```
+
+* [ Output ](#tab-panel-188)
+* [ Raw response ](#tab-panel-189)
 
 Here are several ways to read a JSON file in Python:
 
@@ -276,43 +320,43 @@ with open('example.json', 'r') as file:
 
 {
 
-  "id": "msg_01HK7EHouc5poo4jw7YU9MJr",
-
-  "type": "message",
-
-  "role": "assistant",
-
   "content": [
 
     {
 
-      "type": "text",
+      "text": "Here are several ways to read a JSON file in Python:\n\n## Basic Method\n\n```python\nimport json\n\n# Read JSON file\nwith open('data.json', 'r') as file:\n    data = json.load(file)\n    print(data)\n```\n\n## With Error Handling\n\n```python\nimport json\n\ntry:\n    with open('data.json', 'r') as file:\n        data = json.load(file)\n        print(data)\nexcept FileNotFoundError:\n    print(\"File not found!\")\nexcept json.JSONDecodeError:\n    print(\"Invalid JSON format!\")\nexcept Exception as e:\n    print(f\"An error occurred: {e}\")\n```\n\n## Specifying Encoding\n\n```python\nimport json\n\nwith open('data.json', 'r', encoding='utf-8') as file:\n    data = json.load(file)\n    print(data)\n```\n\n## Reading JSON String (if you have JSON as a string)\n\n```python\nimport json\n\njson_string = '{\"name\": \"John\", \"age\": 30}'\ndata = json.loads(json_string)  # Note: loads() not load()\nprint(data)\n```\n\n## Example with Sample Data\n\nLet's say you have a file called `example.json`:\n```json\n{\n    \"name\": \"Alice\",\n    \"age\": 25,\n    \"city\": \"New York\",\n    \"hobbies\": [\"reading\", \"swimming\"]\n}\n```\n\nReading and accessing the data:\n```python\nimport json\n\nwith open('example.json', 'r') as file:\n    data = json.load(file)\n    \n    print(f\"Name: {data['name']}\")\n    print(f\"Age: {data['age']}\")\n    print(f\"Hobbies: {', '.join(data['hobbies'])}\")\n```\n\n## Key Points:\n- Use `json.load()` for files\n- Use `json.loads()` for strings\n- Always use `with open()` for proper file handling\n- Add error handling for production code\n- The JSON data becomes a Python dictionary/list after loading",
 
-      "text": "Here are several ways to read a JSON file in Python:\n\n## Basic Method\n\n```python\nimport json\n\n# Read JSON file\nwith open('data.json', 'r') as file:\n    data = json.load(file)\n    print(data)\n```\n\n## With Error Handling\n\n```python\nimport json\n\ntry:\n    with open('data.json', 'r') as file:\n        data = json.load(file)\n        print(data)\nexcept FileNotFoundError:\n    print(\"File not found!\")\nexcept json.JSONDecodeError:\n    print(\"Invalid JSON format!\")\nexcept Exception as e:\n    print(f\"An error occurred: {e}\")\n```\n\n## Specifying Encoding\n\n```python\nimport json\n\nwith open('data.json', 'r', encoding='utf-8') as file:\n    data = json.load(file)\n    print(data)\n```\n\n## Reading JSON String (if you have JSON as a string)\n\n```python\nimport json\n\njson_string = '{\"name\": \"John\", \"age\": 30}'\ndata = json.loads(json_string)  # Note: loads() not load()\nprint(data)\n```\n\n## Example with Sample Data\n\nLet's say you have a file called `example.json`:\n```json\n{\n    \"name\": \"Alice\",\n    \"age\": 25,\n    \"city\": \"New York\",\n    \"hobbies\": [\"reading\", \"swimming\"]\n}\n```\n\nReading and accessing the data:\n```python\nimport json\n\nwith open('example.json', 'r') as file:\n    data = json.load(file)\n    \n    print(f\"Name: {data['name']}\")\n    print(f\"Age: {data['age']}\")\n    print(f\"Hobbies: {', '.join(data['hobbies'])}\")\n```\n\n## Key Points:\n- Use `json.load()` for files\n- Use `json.loads()` for strings\n- Always use `with open()` for proper file handling\n- Add error handling for production code\n- The JSON data becomes a Python dictionary/list after loading"
+      "type": "text"
 
     }
 
   ],
 
+  "gatewayMetadata": {
+
+    "keySource": "BYOK"
+
+  },
+
+  "id": "msg_01HK7EHouc5poo4jw7YU9MJr",
+
   "model": "claude-sonnet-4-20250514",
 
+  "role": "assistant",
+
+  "stop_details": null,
+
   "stop_reason": "end_turn",
+
+  "stop_sequence": null,
+
+  "type": "message",
 
   "usage": {
 
     "input_tokens": 28,
 
     "output_tokens": 501
-
-  },
-
-  "stop_sequence": null,
-
-  "stop_details": null,
-
-  "gatewayMetadata": {
-
-    "keySource": "BYOK"
 
   }
 
@@ -322,6 +366,9 @@ with open('example.json', 'r') as file:
 ```
 
 **Multi-turn Conversation**  — Continuing a conversation with context 
+
+* [ TypeScript ](#tab-panel-192)
+* [ cURL ](#tab-panel-193)
 
 TypeScript
 
@@ -333,47 +380,33 @@ const response = await env.AI.run(
 
   {
 
+    max_tokens: 1024,
+
     messages: [
 
       {
 
+        content: 'I need help planning a road trip from San Francisco to Los Angeles.',
+
         role: 'user',
-
-        content:
-
-          'I need help planning a road trip from San Francisco to Los Angeles.',
 
       },
 
       {
-
-        role: 'assistant',
 
         content:
 
           "I'd be happy to help! The drive is about 380 miles and takes roughly 5-6 hours. Would you like suggestions for scenic routes or interesting stops along the way?",
 
-      },
-
-      {
-
-        role: 'user',
-
-        content: 'Yes, what are some good places to stop?',
+        role: 'assistant',
 
       },
+
+      { content: 'Yes, what are some good places to stop?', role: 'user' },
 
     ],
 
-    max_tokens: 1024,
-
   },
-
-  {
-
-    gateway: { id: 'default' },
-
-  }
 
 )
 
@@ -382,8 +415,57 @@ console.log(response)
 
 ```
 
-* [ Output ](#tab-panel-92)
-* [ Raw response ](#tab-panel-93)
+Terminal window
+
+```
+
+curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/v1/messages \
+
+  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+
+  --header "Content-Type: application/json" \
+
+  --data '{
+
+  "model": "anthropic/claude-sonnet-4",
+
+  "max_tokens": 1024,
+
+  "messages": [
+
+    {
+
+      "content": "I need help planning a road trip from San Francisco to Los Angeles.",
+
+      "role": "user"
+
+    },
+
+    {
+
+      "content": "I'd be happy to help! The drive is about 380 miles and takes roughly 5-6 hours. Would you like suggestions for scenic routes or interesting stops along the way?",
+
+      "role": "assistant"
+
+    },
+
+    {
+
+      "content": "Yes, what are some good places to stop?",
+
+      "role": "user"
+
+    }
+
+  ]
+
+}'
+
+
+```
+
+* [ Output ](#tab-panel-194)
+* [ Raw response ](#tab-panel-195)
 
 Here are some great stops along the SF to LA route:
 
@@ -410,43 +492,43 @@ What type of experience are you looking for - scenic beauty, food, wine, or quic
 
 {
 
-  "id": "msg_01GNG7GjYUHbu1e36eP4G94J",
-
-  "type": "message",
-
-  "role": "assistant",
-
   "content": [
 
     {
 
-      "type": "text",
+      "text": "Here are some great stops along the SF to LA route:\n\n**If taking the coastal route (Highway 1/PCH):**\n- **Monterey/Carmel** - Monterey Bay Aquarium, charming Carmel-by-the-Sea\n- **Big Sur** - Stunning coastal views, McWay Falls, Bixby Creek Bridge\n- **Hearst Castle** - Historic mansion in San Simeon\n- **Morro Bay** - Iconic Morro Rock and waterfront\n- **San Luis Obispo** - Charming downtown and historic mission\n- **Pismo Beach** - Beautiful beaches and dunes\n\n**If taking the faster inland route (I-5):**\n- **Gilroy** - Famous garlic capital\n- **Paso Robles** - Wine country with great tastings\n- **Santa Ynez Valley** - More wine regions, Danish-style Solvang\n\n**Mixed route option:** Take Highway 1 partway for scenery, then cut inland via Highway 46 or 101.\n\nThe coastal route takes 7-9 hours with stops but offers incredible views. The inland route is faster (5-6 hours) but less scenic.\n\nWhat type of experience are you looking for - scenic beauty, food, wine, or quick travel time?",
 
-      "text": "Here are some great stops along the SF to LA route:\n\n**If taking the coastal route (Highway 1/PCH):**\n- **Monterey/Carmel** - Monterey Bay Aquarium, charming Carmel-by-the-Sea\n- **Big Sur** - Stunning coastal views, McWay Falls, Bixby Creek Bridge\n- **Hearst Castle** - Historic mansion in San Simeon\n- **Morro Bay** - Iconic Morro Rock and waterfront\n- **San Luis Obispo** - Charming downtown and historic mission\n- **Pismo Beach** - Beautiful beaches and dunes\n\n**If taking the faster inland route (I-5):**\n- **Gilroy** - Famous garlic capital\n- **Paso Robles** - Wine country with great tastings\n- **Santa Ynez Valley** - More wine regions, Danish-style Solvang\n\n**Mixed route option:** Take Highway 1 partway for scenery, then cut inland via Highway 46 or 101.\n\nThe coastal route takes 7-9 hours with stops but offers incredible views. The inland route is faster (5-6 hours) but less scenic.\n\nWhat type of experience are you looking for - scenic beauty, food, wine, or quick travel time?"
+      "type": "text"
 
     }
 
   ],
 
+  "gatewayMetadata": {
+
+    "keySource": "BYOK"
+
+  },
+
+  "id": "msg_01GNG7GjYUHbu1e36eP4G94J",
+
   "model": "claude-sonnet-4-20250514",
 
+  "role": "assistant",
+
+  "stop_details": null,
+
   "stop_reason": "end_turn",
+
+  "stop_sequence": null,
+
+  "type": "message",
 
   "usage": {
 
     "input_tokens": 76,
 
     "output_tokens": 299
-
-  },
-
-  "stop_sequence": null,
-
-  "stop_details": null,
-
-  "gatewayMetadata": {
-
-    "keySource": "BYOK"
 
   }
 
@@ -456,6 +538,9 @@ What type of experience are you looking for - scenic beauty, food, wine, or quic
 ```
 
 **Creative Writing**  — Higher temperature for creative output 
+
+* [ TypeScript ](#tab-panel-186)
+* [ cURL ](#tab-panel-187)
 
 TypeScript
 
@@ -467,31 +552,23 @@ const response = await env.AI.run(
 
   {
 
+    max_tokens: 512,
+
     messages: [
 
       {
 
+        content: 'Write a short story opening about a detective finding an unusual clue.',
+
         role: 'user',
-
-        content:
-
-          'Write a short story opening about a detective finding an unusual clue.',
 
       },
 
     ],
 
-    max_tokens: 512,
-
     temperature: 0.8,
 
   },
-
-  {
-
-    gateway: { id: 'default' },
-
-  }
 
 )
 
@@ -500,8 +577,43 @@ console.log(response)
 
 ```
 
-* [ Output ](#tab-panel-94)
-* [ Raw response ](#tab-panel-95)
+Terminal window
+
+```
+
+curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/v1/messages \
+
+  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+
+  --header "Content-Type: application/json" \
+
+  --data '{
+
+  "model": "anthropic/claude-sonnet-4",
+
+  "max_tokens": 512,
+
+  "messages": [
+
+    {
+
+      "content": "Write a short story opening about a detective finding an unusual clue.",
+
+      "role": "user"
+
+    }
+
+  ],
+
+  "temperature": 0.8
+
+}'
+
+
+```
+
+* [ Output ](#tab-panel-196)
+* [ Raw response ](#tab-panel-197)
 
 Detective Sarah Chen crouched beside the mahogany desk, her latex gloves squeaking against the wood as she carefully lifted what appeared to be an ordinary paper clip. But this one was different—twisted into an intricate knot that seemed to defy the laws of physics, its metal curves flowing impossibly through themselves like a three-dimensional puzzle.
 
@@ -517,43 +629,43 @@ Sarah felt a chill run down her spine as she realized the paper clip was warm to
 
 {
 
-  "id": "msg_01HXYLgMgvUFaDSpLzUG4gNp",
-
-  "type": "message",
-
-  "role": "assistant",
-
   "content": [
 
     {
 
-      "type": "text",
+      "text": "Detective Sarah Chen crouched beside the mahogany desk, her latex gloves squeaking against the wood as she carefully lifted what appeared to be an ordinary paper clip. But this one was different—twisted into an intricate knot that seemed to defy the laws of physics, its metal curves flowing impossibly through themselves like a three-dimensional puzzle.\n\n\"Henderson, come look at this,\" she called to her partner, who was dusting for prints near the shattered window. The morning light caught the paper clip's surface, revealing tiny etchings along its length—symbols that looked almost like writing, but in no alphabet she recognized.\n\nThe victim, renowned mathematician Dr. Marcus Webb, lay slumped in his chair just inches away, no visible wounds, no signs of struggle. Just him, his cluttered study, and this impossible piece of bent metal that hurt her eyes to look at directly.\n\nHenderson whistled low as he peered over her shoulder. \"That's... that's not possible. Metal doesn't bend that way.\"\n\nSarah felt a chill run down her spine as she realized the paper clip was warm to the touch, despite the October morning air seeping through the broken window. Whatever had happened in this room last night, she was certain this strange little object held the key to understanding it.",
 
-      "text": "Detective Sarah Chen crouched beside the mahogany desk, her latex gloves squeaking against the wood as she carefully lifted what appeared to be an ordinary paper clip. But this one was different—twisted into an intricate knot that seemed to defy the laws of physics, its metal curves flowing impossibly through themselves like a three-dimensional puzzle.\n\n\"Henderson, come look at this,\" she called to her partner, who was dusting for prints near the shattered window. The morning light caught the paper clip's surface, revealing tiny etchings along its length—symbols that looked almost like writing, but in no alphabet she recognized.\n\nThe victim, renowned mathematician Dr. Marcus Webb, lay slumped in his chair just inches away, no visible wounds, no signs of struggle. Just him, his cluttered study, and this impossible piece of bent metal that hurt her eyes to look at directly.\n\nHenderson whistled low as he peered over her shoulder. \"That's... that's not possible. Metal doesn't bend that way.\"\n\nSarah felt a chill run down her spine as she realized the paper clip was warm to the touch, despite the October morning air seeping through the broken window. Whatever had happened in this room last night, she was certain this strange little object held the key to understanding it."
+      "type": "text"
 
     }
 
   ],
 
+  "gatewayMetadata": {
+
+    "keySource": "BYOK"
+
+  },
+
+  "id": "msg_01HXYLgMgvUFaDSpLzUG4gNp",
+
   "model": "claude-sonnet-4-20250514",
 
+  "role": "assistant",
+
+  "stop_details": null,
+
   "stop_reason": "end_turn",
+
+  "stop_sequence": null,
+
+  "type": "message",
 
   "usage": {
 
     "input_tokens": 21,
 
     "output_tokens": 277
-
-  },
-
-  "stop_sequence": null,
-
-  "stop_details": null,
-
-  "gatewayMetadata": {
-
-    "keySource": "BYOK"
 
   }
 
@@ -563,6 +675,9 @@ Sarah felt a chill run down her spine as she realized the paper clip was warm to
 ```
 
 **Streaming Response**  — Enable streaming for real-time output 
+
+* [ TypeScript ](#tab-panel-190)
+* [ cURL ](#tab-panel-191)
 
 TypeScript
 
@@ -574,29 +689,13 @@ const response = await env.AI.run(
 
   {
 
-    messages: [
-
-      {
-
-        role: 'user',
-
-        content: 'Explain the concept of recursion with a simple example.',
-
-      },
-
-    ],
-
     max_tokens: 1024,
+
+    messages: [{ content: 'Explain the concept of recursion with a simple example.', role: 'user' }],
 
     stream: true,
 
   },
-
-  {
-
-    gateway: { id: 'default' },
-
-  }
 
 )
 
@@ -605,8 +704,43 @@ console.log(response)
 
 ```
 
-* [ Output ](#tab-panel-96)
-* [ Raw response ](#tab-panel-97)
+Terminal window
+
+```
+
+curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/v1/messages \
+
+  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+
+  --header "Content-Type: application/json" \
+
+  --data '{
+
+  "model": "anthropic/claude-sonnet-4",
+
+  "max_tokens": 1024,
+
+  "messages": [
+
+    {
+
+      "content": "Explain the concept of recursion with a simple example.",
+
+      "role": "user"
+
+    }
+
+  ],
+
+  "stream": true
+
+}'
+
+
+```
+
+* [ Output ](#tab-panel-198)
+* [ Raw response ](#tab-panel-199)
 
 # Recursion Explained
 
@@ -664,67 +798,67 @@ Think of **Russian nesting dolls**: To see what's inside, you open one doll, the
 
   {
 
-    "type": "message_start",
-
     "message": {
 
-      "model": "claude-sonnet-4-20250514",
+      "content": [],
 
       "id": "msg_01Gx5KoaDWdSUmfXCRyH2RMg",
 
-      "type": "message",
+      "model": "claude-sonnet-4-20250514",
 
       "role": "assistant",
 
-      "content": [],
+      "stop_details": null,
 
       "stop_reason": null,
 
       "stop_sequence": null,
 
-      "stop_details": null,
+      "type": "message",
 
       "usage": {
 
-        "input_tokens": 19,
+        "cache_creation": {
+
+          "ephemeral_1h_input_tokens": 0,
+
+          "ephemeral_5m_input_tokens": 0
+
+        },
 
         "cache_creation_input_tokens": 0,
 
         "cache_read_input_tokens": 0,
 
-        "cache_creation": {
+        "inference_geo": "not_available",
 
-          "ephemeral_5m_input_tokens": 0,
-
-          "ephemeral_1h_input_tokens": 0
-
-        },
+        "input_tokens": 19,
 
         "output_tokens": 1,
 
-        "service_tier": "standard",
-
-        "inference_geo": "not_available"
+        "service_tier": "standard"
 
       }
 
-    }
+    },
+
+    "type": "message_start"
 
   },
 
   {
 
-    "type": "content_block_start",
+    "content_block": {
+
+      "text": "",
+
+      "type": "text"
+
+    },
 
     "index": 0,
 
-    "content_block": {
-
-      "type": "text",
-
-      "text": ""
-
-    }
+    "type": "content_block_start"
 
   },
 
@@ -736,289 +870,289 @@ Think of **Russian nesting dolls**: To see what's inside, you open one doll, the
 
   {
 
-    "type": "content_block_delta",
-
-    "index": 0,
-
     "delta": {
 
-      "type": "text_delta",
+      "text": "#",
 
-      "text": "#"
-
-    }
-
-  },
-
-  {
-
-    "type": "content_block_delta",
-
-    "index": 0,
-
-    "delta": {
-
-      "type": "text_delta",
-
-      "text": " Recursion Explained\n\n**Recursion** is a programming technique where a function calls itself to solve a problem by breaking it down into smaller, similar subproblems.\n\n## Key Components"
-
-    }
-
-  },
-
-  {
-
-    "type": "content_block_delta",
-
-    "index": 0,
-
-    "delta": {
-
-      "type": "text_delta",
-
-      "text": " of Recursion\n\n1. **Base case**: A condition that stops the recursion\n2. **Recursive case**: The function calling itself with a modified input\n\n## Simple"
-
-    }
-
-  },
-
-  {
-
-    "type": "content_block_delta",
-
-    "index": 0,
-
-    "delta": {
-
-      "type": "text_delta",
-
-      "text": " Example: Calculating Factorial\n\nLet's calculate the factorial of a number (n! = n × (n-1) × (n-2) × ... × 1):"
-
-    }
-
-  },
-
-  {
-
-    "type": "content_block_delta",
-
-    "index": 0,
-
-    "delta": {
-
-      "type": "text_delta",
-
-      "text": "\n\n```python\ndef factorial(n):\n    # Base case: stop the recursion\n    if n == 0 or n == 1:\n        return 1\n    "
-
-    }
-
-  },
-
-  {
-
-    "type": "content_block_delta",
-
-    "index": 0,
-
-    "delta": {
-
-      "type": "text_delta",
-
-      "text": "\n    # Recursive case: function calls itself\n    else:\n        return n * factorial(n - 1)\n\n# Example usage\nprint(factorial(5))  # Output: 120\n```"
-
-    }
-
-  },
-
-  {
-
-    "type": "content_block_delta",
-
-    "index": 0,
-
-    "delta": {
-
-      "type": "text_delta",
-
-      "text": "\n\n## How it works step by step:\n\n```\nfactorial(5)\n├── 5 * factorial(4)\n    ├── 5"
-
-    }
-
-  },
-
-  {
-
-    "type": "content_block_delta",
-
-    "index": 0,
-
-    "delta": {
-
-      "type": "text_delta",
-
-      "text": " * 4 * factorial(3)\n        ├── 5 * 4 * 3 * factorial(2)\n            ├── 5 * 4 * 3 * 2 * factorial(1)\n                └"
-
-    }
-
-  },
-
-  {
-
-    "type": "content_block_delta",
-
-    "index": 0,
-
-    "delta": {
-
-      "type": "text_delta",
-
-      "text": "── 5 * 4 * 3 * 2 * 1 = 120\n```\n\n## Real-world Analogy\n\nThink of **"
-
-    }
-
-  },
-
-  {
-
-    "type": "content_block_delta",
-
-    "index": 0,
-
-    "delta": {
-
-      "type": "text_delta",
-
-      "text": "Russian nesting dolls**: To see what's inside,"
-
-    }
-
-  },
-
-  {
-
-    "type": "content_block_delta",
-
-    "index": 0,
-
-    "delta": {
-
-      "type": "text_delta",
-
-      "text": " you open one doll, then another smaller doll inside, and so on, until you reach"
-
-    }
-
-  },
-
-  {
-
-    "type": "content_block_delta",
-
-    "index": 0,
-
-    "delta": {
-
-      "type": "text_delta",
-
-      "text": " the smallest doll (base case). Then you put them back"
-
-    }
-
-  },
-
-  {
-
-    "type": "content_block_delta",
-
-    "index": 0,
-
-    "delta": {
-
-      "type": "text_delta",
-
-      "text": " together in reverse order.\n\n## Why Use Recursion?\n\n- Makes complex problems sim"
-
-    }
-
-  },
-
-  {
-
-    "type": "content_block_delta",
-
-    "index": 0,
-
-    "delta": {
-
-      "type": "text_delta",
-
-      "text": "pler to understand and code\n- Natural fit for problems with repet"
-
-    }
-
-  },
-
-  {
-
-    "type": "content_block_delta",
-
-    "index": 0,
-
-    "delta": {
-
-      "type": "text_delta",
-
-      "text": "itive, self-similar structure\n- Common in tree traversal, mathematical sequences, and divide"
-
-    }
-
-  },
-
-  {
-
-    "type": "content_block_delta",
-
-    "index": 0,
-
-    "delta": {
-
-      "type": "text_delta",
-
-      "text": "-and-conquer algorithms\n\n**Remember**: Always ensure you have a proper base case to avoid infinite recursion!"
-
-    }
-
-  },
-
-  {
-
-    "type": "content_block_stop",
-
-    "index": 0
-
-  },
-
-  {
-
-    "type": "message_delta",
-
-    "delta": {
-
-      "stop_reason": "end_turn",
-
-      "stop_sequence": null,
-
-      "stop_details": null
+      "type": "text_delta"
 
     },
 
-    "usage": {
+    "index": 0,
 
-      "input_tokens": 19,
+    "type": "content_block_delta"
+
+  },
+
+  {
+
+    "delta": {
+
+      "text": " Recursion Explained\n\n**Recursion** is a programming technique where a function calls itself to solve a problem by breaking it down into smaller, similar subproblems.\n\n## Key Components",
+
+      "type": "text_delta"
+
+    },
+
+    "index": 0,
+
+    "type": "content_block_delta"
+
+  },
+
+  {
+
+    "delta": {
+
+      "text": " of Recursion\n\n1. **Base case**: A condition that stops the recursion\n2. **Recursive case**: The function calling itself with a modified input\n\n## Simple",
+
+      "type": "text_delta"
+
+    },
+
+    "index": 0,
+
+    "type": "content_block_delta"
+
+  },
+
+  {
+
+    "delta": {
+
+      "text": " Example: Calculating Factorial\n\nLet's calculate the factorial of a number (n! = n × (n-1) × (n-2) × ... × 1):",
+
+      "type": "text_delta"
+
+    },
+
+    "index": 0,
+
+    "type": "content_block_delta"
+
+  },
+
+  {
+
+    "delta": {
+
+      "text": "\n\n```python\ndef factorial(n):\n    # Base case: stop the recursion\n    if n == 0 or n == 1:\n        return 1\n    ",
+
+      "type": "text_delta"
+
+    },
+
+    "index": 0,
+
+    "type": "content_block_delta"
+
+  },
+
+  {
+
+    "delta": {
+
+      "text": "\n    # Recursive case: function calls itself\n    else:\n        return n * factorial(n - 1)\n\n# Example usage\nprint(factorial(5))  # Output: 120\n```",
+
+      "type": "text_delta"
+
+    },
+
+    "index": 0,
+
+    "type": "content_block_delta"
+
+  },
+
+  {
+
+    "delta": {
+
+      "text": "\n\n## How it works step by step:\n\n```\nfactorial(5)\n├── 5 * factorial(4)\n    ├── 5",
+
+      "type": "text_delta"
+
+    },
+
+    "index": 0,
+
+    "type": "content_block_delta"
+
+  },
+
+  {
+
+    "delta": {
+
+      "text": " * 4 * factorial(3)\n        ├── 5 * 4 * 3 * factorial(2)\n            ├── 5 * 4 * 3 * 2 * factorial(1)\n                └",
+
+      "type": "text_delta"
+
+    },
+
+    "index": 0,
+
+    "type": "content_block_delta"
+
+  },
+
+  {
+
+    "delta": {
+
+      "text": "── 5 * 4 * 3 * 2 * 1 = 120\n```\n\n## Real-world Analogy\n\nThink of **",
+
+      "type": "text_delta"
+
+    },
+
+    "index": 0,
+
+    "type": "content_block_delta"
+
+  },
+
+  {
+
+    "delta": {
+
+      "text": "Russian nesting dolls**: To see what's inside,",
+
+      "type": "text_delta"
+
+    },
+
+    "index": 0,
+
+    "type": "content_block_delta"
+
+  },
+
+  {
+
+    "delta": {
+
+      "text": " you open one doll, then another smaller doll inside, and so on, until you reach",
+
+      "type": "text_delta"
+
+    },
+
+    "index": 0,
+
+    "type": "content_block_delta"
+
+  },
+
+  {
+
+    "delta": {
+
+      "text": " the smallest doll (base case). Then you put them back",
+
+      "type": "text_delta"
+
+    },
+
+    "index": 0,
+
+    "type": "content_block_delta"
+
+  },
+
+  {
+
+    "delta": {
+
+      "text": " together in reverse order.\n\n## Why Use Recursion?\n\n- Makes complex problems sim",
+
+      "type": "text_delta"
+
+    },
+
+    "index": 0,
+
+    "type": "content_block_delta"
+
+  },
+
+  {
+
+    "delta": {
+
+      "text": "pler to understand and code\n- Natural fit for problems with repet",
+
+      "type": "text_delta"
+
+    },
+
+    "index": 0,
+
+    "type": "content_block_delta"
+
+  },
+
+  {
+
+    "delta": {
+
+      "text": "itive, self-similar structure\n- Common in tree traversal, mathematical sequences, and divide",
+
+      "type": "text_delta"
+
+    },
+
+    "index": 0,
+
+    "type": "content_block_delta"
+
+  },
+
+  {
+
+    "delta": {
+
+      "text": "-and-conquer algorithms\n\n**Remember**: Always ensure you have a proper base case to avoid infinite recursion!",
+
+      "type": "text_delta"
+
+    },
+
+    "index": 0,
+
+    "type": "content_block_delta"
+
+  },
+
+  {
+
+    "index": 0,
+
+    "type": "content_block_stop"
+
+  },
+
+  {
+
+    "delta": {
+
+      "stop_details": null,
+
+      "stop_reason": "end_turn",
+
+      "stop_sequence": null
+
+    },
+
+    "type": "message_delta",
+
+    "usage": {
 
       "cache_creation_input_tokens": 0,
 
       "cache_read_input_tokens": 0,
+
+      "input_tokens": 19,
 
       "output_tokens": 455
 
@@ -1039,16 +1173,24 @@ Think of **Russian nesting dolls**: To see what's inside, you open one doll, the
 
 ## Parameters
 
-* [ Input ](#tab-panel-98)
-* [ Output ](#tab-panel-99)
+* [ Input ](#tab-panel-200)
+* [ Output ](#tab-panel-201)
+
+max\_tokens
+
+`number`requiredexclusiveMinimum: 0
 
 ▶messages\[\]
 
 `array`required
 
-max\_tokens
+▶metadata{}
 
-`number`requiredexclusiveMinimum: 0
+`object`
+
+stream
+
+`boolean`
 
 system
 
@@ -1056,47 +1198,39 @@ system
 
 temperature
 
-`number`minimum: 0maximum: 1
-
-top\_p
-
-`number`minimum: 0maximum: 1
+`number`maximum: 1minimum: 0
 
 top\_k
 
 `number`exclusiveMinimum: 0
 
-stream
+top\_p
 
-`boolean`
-
-▶metadata{}
-
-`object`
-
-id
-
-`string`
-
-type
-
-`string`const: message
-
-role
-
-`string`const: assistant
+`number`maximum: 1minimum: 0
 
 ▶content\[\]
 
 `array`
 
+id
+
+`string`
+
 model
 
 `string`
 
+role
+
+`string`const: assistant
+
 stop\_reason
 
 `string | null`
+
+type
+
+`string`const: message
 
 ▶usage{}
 

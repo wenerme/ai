@@ -7,6 +7,8 @@ workflows for Codex.
 
 Extend what Codex can do, for example:
 
+- Install the Codex Security plugin to scan authorized code and confirm
+  plausible vulnerability findings.
 - Install the Gmail plugin to let Codex read and manage Gmail.
 - Install the Google Drive plugin to work across Drive, Docs, Sheets, and
   Slides.
@@ -153,3 +155,8 @@ If you want to create, test, or distribute your own plugin, see
 [Build plugins](https://developers.openai.com/codex/plugins/build). That page covers local scaffolding,
 manual marketplace setup, workspace sharing, plugin manifests, and packaging
 guidance.
+
+## Plugin guides
+
+- [Codex Security plugin](https://developers.openai.com/codex/security/plugin): Scan authorized code,
+  confirm findings, and prepare reviewed fixes.

@@ -28,6 +28,9 @@ MiniMax's music generation model that creates full-length songs with vocals from
 
 ## Usage
 
+* [ TypeScript ](#tab-panel-788)
+* [ cURL ](#tab-panel-789)
+
 TypeScript
 
 ```
@@ -38,21 +41,13 @@ const response = await env.AI.run(
 
   {
 
-    prompt:
-
-      'An upbeat electronic dance track with a catchy synth melody and driving beat',
+    is_instrumental: false,
 
     lyrics_optimizer: true,
 
-    is_instrumental: false,
+    prompt: 'An upbeat electronic dance track with a catchy synth melody and driving beat',
 
   },
-
-  {
-
-    gateway: { id: 'default' },
-
-  }
 
 )
 
@@ -61,14 +56,47 @@ console.log(response)
 
 ```
 
-* [ Output ](#tab-panel-330)
-* [ Raw response ](#tab-panel-331)
+Terminal window
+
+```
+
+curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run \
+
+  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+
+  --header "Content-Type: application/json" \
+
+  --data '{
+
+  "model": "minimax/music-2.6",
+
+  "input": {
+
+    "is_instrumental": false,
+
+    "lyrics_optimizer": true,
+
+    "prompt": "An upbeat electronic dance track with a catchy synth melody and driving beat"
+
+  }
+
+}'
+
+
+```
+
+* [ Output ](#tab-panel-786)
+* [ Raw response ](#tab-panel-787)
 
 ```
 
 {
 
-  "state": "Completed",
+  "gatewayMetadata": {
+
+    "keySource": "Unified"
+
+  },
 
   "result": {
 
@@ -76,11 +104,7 @@ console.log(response)
 
   },
 
-  "gatewayMetadata": {
-
-    "keySource": "Unified"
-
-  }
+  "state": "Completed"
 
 }
 
@@ -91,6 +115,9 @@ console.log(response)
 
 **With Lyrics**  — Generate a song with custom lyrics 
 
+* [ TypeScript ](#tab-panel-794)
+* [ cURL ](#tab-panel-795)
+
 TypeScript
 
 ```
@@ -101,9 +128,7 @@ const response = await env.AI.run(
 
   {
 
-    prompt:
-
-      'A warm acoustic folk ballad with fingerpicked guitar and gentle vocals',
+    is_instrumental: false,
 
     lyrics:
 
@@ -111,15 +136,9 @@ const response = await env.AI.run(
 
     lyrics_optimizer: false,
 
-    is_instrumental: false,
+    prompt: 'A warm acoustic folk ballad with fingerpicked guitar and gentle vocals',
 
   },
-
-  {
-
-    gateway: { id: 'default' },
-
-  }
 
 )
 
@@ -128,14 +147,49 @@ console.log(response)
 
 ```
 
-* [ Output ](#tab-panel-332)
-* [ Raw response ](#tab-panel-333)
+Terminal window
+
+```
+
+curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run \
+
+  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+
+  --header "Content-Type: application/json" \
+
+  --data '{
+
+  "model": "minimax/music-2.6",
+
+  "input": {
+
+    "is_instrumental": false,
+
+    "lyrics": "Walking down a dusty road\nWith the sunset painting gold\nEvery step a story told\nOf the places I call home",
+
+    "lyrics_optimizer": false,
+
+    "prompt": "A warm acoustic folk ballad with fingerpicked guitar and gentle vocals"
+
+  }
+
+}'
+
+
+```
+
+* [ Output ](#tab-panel-790)
+* [ Raw response ](#tab-panel-791)
 
 ```
 
 {
 
-  "state": "Completed",
+  "gatewayMetadata": {
+
+    "keySource": "Unified"
+
+  },
 
   "result": {
 
@@ -143,11 +197,7 @@ console.log(response)
 
   },
 
-  "gatewayMetadata": {
-
-    "keySource": "Unified"
-
-  }
+  "state": "Completed"
 
 }
 
@@ -156,6 +206,9 @@ console.log(response)
 
 **Instrumental**  — Generate instrumental music without vocals 
 
+* [ TypeScript ](#tab-panel-796)
+* [ cURL ](#tab-panel-797)
+
 TypeScript
 
 ```
@@ -166,21 +219,13 @@ const response = await env.AI.run(
 
   {
 
-    prompt:
-
-      'A calm lo-fi hip hop instrumental with vinyl crackle and mellow piano chords',
+    is_instrumental: true,
 
     lyrics_optimizer: false,
 
-    is_instrumental: true,
+    prompt: 'A calm lo-fi hip hop instrumental with vinyl crackle and mellow piano chords',
 
   },
-
-  {
-
-    gateway: { id: 'default' },
-
-  }
 
 )
 
@@ -189,14 +234,47 @@ console.log(response)
 
 ```
 
-* [ Output ](#tab-panel-334)
-* [ Raw response ](#tab-panel-335)
+Terminal window
+
+```
+
+curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run \
+
+  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+
+  --header "Content-Type: application/json" \
+
+  --data '{
+
+  "model": "minimax/music-2.6",
+
+  "input": {
+
+    "is_instrumental": true,
+
+    "lyrics_optimizer": false,
+
+    "prompt": "A calm lo-fi hip hop instrumental with vinyl crackle and mellow piano chords"
+
+  }
+
+}'
+
+
+```
+
+* [ Output ](#tab-panel-792)
+* [ Raw response ](#tab-panel-793)
 
 ```
 
 {
 
-  "state": "Completed",
+  "gatewayMetadata": {
+
+    "keySource": "Unified"
+
+  },
 
   "result": {
 
@@ -204,11 +282,7 @@ console.log(response)
 
   },
 
-  "gatewayMetadata": {
-
-    "keySource": "Unified"
-
-  }
+  "state": "Completed"
 
 }
 
@@ -217,6 +291,9 @@ console.log(response)
 
 **High Quality Audio**  — Specify audio format and sample rate 
 
+* [ TypeScript ](#tab-panel-802)
+* [ cURL ](#tab-panel-803)
+
 TypeScript
 
 ```
@@ -227,25 +304,17 @@ const response = await env.AI.run(
 
   {
 
-    prompt:
-
-      'An orchestral cinematic score building to an epic crescendo with full symphony',
-
-    sample_rate: 44100,
-
     format: 'wav',
-
-    lyrics_optimizer: true,
 
     is_instrumental: false,
 
+    lyrics_optimizer: true,
+
+    prompt: 'An orchestral cinematic score building to an epic crescendo with full symphony',
+
+    sample_rate: 44100,
+
   },
-
-  {
-
-    gateway: { id: 'default' },
-
-  }
 
 )
 
@@ -254,14 +323,51 @@ console.log(response)
 
 ```
 
-* [ Output ](#tab-panel-336)
-* [ Raw response ](#tab-panel-337)
+Terminal window
+
+```
+
+curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run \
+
+  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+
+  --header "Content-Type: application/json" \
+
+  --data '{
+
+  "model": "minimax/music-2.6",
+
+  "input": {
+
+    "format": "wav",
+
+    "is_instrumental": false,
+
+    "lyrics_optimizer": true,
+
+    "prompt": "An orchestral cinematic score building to an epic crescendo with full symphony",
+
+    "sample_rate": 44100
+
+  }
+
+}'
+
+
+```
+
+* [ Output ](#tab-panel-798)
+* [ Raw response ](#tab-panel-799)
 
 ```
 
 {
 
-  "state": "Completed",
+  "gatewayMetadata": {
+
+    "keySource": "Unified"
+
+  },
 
   "result": {
 
@@ -269,11 +375,7 @@ console.log(response)
 
   },
 
-  "gatewayMetadata": {
-
-    "keySource": "Unified"
-
-  }
+  "state": "Completed"
 
 }
 
@@ -282,6 +384,9 @@ console.log(response)
 
 **Auto-Generated Lyrics**  — Let the model generate lyrics from the prompt 
 
+* [ TypeScript ](#tab-panel-804)
+* [ cURL ](#tab-panel-805)
+
 TypeScript
 
 ```
@@ -292,19 +397,13 @@ const response = await env.AI.run(
 
   {
 
-    prompt: 'A cheerful pop song about a summer road trip with friends',
+    is_instrumental: false,
 
     lyrics_optimizer: true,
 
-    is_instrumental: false,
+    prompt: 'A cheerful pop song about a summer road trip with friends',
 
   },
-
-  {
-
-    gateway: { id: 'default' },
-
-  }
 
 )
 
@@ -313,14 +412,47 @@ console.log(response)
 
 ```
 
-* [ Output ](#tab-panel-338)
-* [ Raw response ](#tab-panel-339)
+Terminal window
+
+```
+
+curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run \
+
+  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+
+  --header "Content-Type: application/json" \
+
+  --data '{
+
+  "model": "minimax/music-2.6",
+
+  "input": {
+
+    "is_instrumental": false,
+
+    "lyrics_optimizer": true,
+
+    "prompt": "A cheerful pop song about a summer road trip with friends"
+
+  }
+
+}'
+
+
+```
+
+* [ Output ](#tab-panel-800)
+* [ Raw response ](#tab-panel-801)
 
 ```
 
 {
 
-  "state": "Completed",
+  "gatewayMetadata": {
+
+    "keySource": "Unified"
+
+  },
 
   "result": {
 
@@ -328,11 +460,7 @@ console.log(response)
 
   },
 
-  "gatewayMetadata": {
-
-    "keySource": "Unified"
-
-  }
+  "state": "Completed"
 
 }
 
@@ -341,20 +469,8 @@ console.log(response)
 
 ## Parameters
 
-* [ Input ](#tab-panel-340)
-* [ Output ](#tab-panel-341)
-
-prompt
-
-`string`requiredmaxLength: 2000Description of the music style, mood, and scenario
-
-lyrics
-
-`string`minLength: 1maxLength: 3500Song lyrics, using \\n to separate lines
-
-▶sample\_rate
-
-`one of`
+* [ Input ](#tab-panel-806)
+* [ Output ](#tab-panel-807)
 
 ▶bitrate
 
@@ -364,13 +480,25 @@ format
 
 `string`enum: mp3, wavAudio format
 
+is\_instrumental
+
+`boolean`requireddefault: falseGenerate instrumental music (no vocals)
+
+lyrics
+
+`string`maxLength: 3500minLength: 1Song lyrics, using \\n to separate lines
+
 lyrics\_optimizer
 
 `boolean`requireddefault: falseAutomatically generate lyrics based on the prompt description
 
-is\_instrumental
+prompt
 
-`boolean`requireddefault: falseGenerate instrumental music (no vocals)
+`string`requiredmaxLength: 2000Description of the music style, mood, and scenario
+
+▶sample\_rate
+
+`one of`
 
 audio
 

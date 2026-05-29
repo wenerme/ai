@@ -768,8 +768,8 @@ formattedResults = formattedResults?.map((formattedResult, i) => {
 
 Uncomment the following lines from the Wrangler file in your project:
 
-* [  wrangler.jsonc ](#tab-panel-9130)
-* [  wrangler.toml ](#tab-panel-9131)
+* [  wrangler.jsonc ](#tab-panel-10152)
+* [  wrangler.toml ](#tab-panel-10153)
 
 JSONC
 

@@ -49,7 +49,7 @@ Add the Cloudflare API and docs servers to `~/.codeium/windsurf/mcp_config.json`
 4. **Try a prompt**  
 Open Cascade and try a prompt — for example:  
 ```  
-Configure Zero Trust access policies to protect my internal staging environment.  
+Build a serverless AI inference endpoint on Workers AI with streaming responses.  
 ```
 
 ## Cloudflare platform access
@@ -91,7 +91,6 @@ MCP servers provide typed tools to call into Cloudflare at runtime. There are tw
 * GraphQL server Get analytics data using Cloudflare’s GraphQL API https://graphql.mcp.cloudflare.com/mcp
 * Logpush server Get quick summaries for Logpush job health https://logs.mcp.cloudflare.com/mcp
 * Observability server Debug and get insight into your application's logs and analytics https://observability.mcp.cloudflare.com/mcp
-* Radar server Get global Internet traffic insights, trends, URL scans, and other utilities https://radar.mcp.cloudflare.com/mcp
 
 Wrangler CLI 
 

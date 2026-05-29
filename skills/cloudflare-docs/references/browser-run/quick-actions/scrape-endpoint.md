@@ -14,7 +14,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 The `/scrape` endpoint extracts structured data from specific elements on a webpage, returning details such as element dimensions and inner HTML.
 
-Before you begin, make sure you [create a custom API Token](https://developers.cloudflare.com/fundamentals/api/get-started/create-token/) with `Browser Rendering - Edit` permission. For more information, refer to [Quick Actions — Before you begin](https://developers.cloudflare.com/browser-run/quick-actions/#before-you-begin).
+You can use this endpoint in two ways. To use the REST API, [create a custom API Token](https://developers.cloudflare.com/fundamentals/api/get-started/create-token/) with `Browser Rendering - Edit` permission. To use the [Workers binding](https://developers.cloudflare.com/browser-run/reference/wrangler/#bindings) from a [Cloudflare Worker](https://developers.cloudflare.com/workers/), no API token is needed. For more information, refer to [Quick Actions — Before you begin](https://developers.cloudflare.com/browser-run/quick-actions/#before-you-begin).
 
 ## Endpoint
 
@@ -41,8 +41,9 @@ You must provide either `url` or `elements`:
 
 ### Extract headings and links from a URL
 
-* [ curl ](#tab-panel-4435)
-* [ TypeScript SDK ](#tab-panel-4436)
+* [ curl ](#tab-panel-5844)
+* [ TypeScript SDK ](#tab-panel-5845)
+* [ Workers binding ](#tab-panel-5846)
 
 Go to `https://example.com` and extract metadata from all `h1` and `a` elements in the DOM.
 
@@ -180,6 +181,36 @@ console.log(scrapes);
 
 ```
 
+TypeScript
+
+```
+
+interface Env {
+
+  BROWSER: BrowserRun;
+
+}
+
+
+export default {
+
+  async fetch(request, env): Promise<Response> {
+
+    return await env.BROWSER.quickAction("scrape", {
+
+      url: "https://example.com/",
+
+      elements: [{ selector: "h1" }, { selector: "a" }],
+
+    });
+
+  },
+
+} satisfies ExportedHandler<Env>;
+
+
+```
+
 Many more options exist, like setting HTTP credentials using `authenticate`, setting `cookies`, and using `gotoOptions` to control page load behaviour - check the endpoint [reference](https://developers.cloudflare.com/api/resources/browser%5Frendering/subresources/scrape/methods/create/) for all available parameters.
 
 ### Response fields
@@ -192,7 +223,7 @@ Many more options exist, like setting HTTP credentials using `authenticate`, set
          * `attributes` _(array of objects)_ \- List of extracted attributes such as `href` for links.  
          * `height`, `width`, `top`, `left` _(number)_ \- Position and dimensions of the element.
 
-## Advanced Usage
+## Advanced usage
 
 Looking for more parameters?
 

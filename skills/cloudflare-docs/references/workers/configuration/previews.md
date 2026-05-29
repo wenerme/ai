@@ -140,8 +140,8 @@ Older Wrangler versions will default to Preview URLs being enabled.
 
 To toggle Preview URLs for a Worker, include any of the following in your Worker's Wrangler file:
 
-* [  wrangler.jsonc ](#tab-panel-9104)
-* [  wrangler.toml ](#tab-panel-9105)
+* [  wrangler.jsonc ](#tab-panel-10296)
+* [  wrangler.toml ](#tab-panel-10297)
 
 JSONC
 
@@ -165,8 +165,8 @@ preview_urls = true
 
 ```
 
-* [  wrangler.jsonc ](#tab-panel-9106)
-* [  wrangler.toml ](#tab-panel-9107)
+* [  wrangler.jsonc ](#tab-panel-10298)
+* [  wrangler.toml ](#tab-panel-10299)
 
 JSONC
 

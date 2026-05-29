@@ -55,8 +55,8 @@ For more details about creating and working with WebSockets in the client, refer
 
 When an incoming WebSocket request reaches the Workers function, it will contain an `Upgrade` header, set to the string value `websocket`. Check for this header before continuing to instantiate a WebSocket:
 
-* [  JavaScript ](#tab-panel-9572)
-* [  Rust ](#tab-panel-9573)
+* [  JavaScript ](#tab-panel-10594)
+* [  Rust ](#tab-panel-10595)
 
 JavaScript
 
@@ -107,8 +107,8 @@ async fn fetch(req: HttpRequest, _env: Env, _ctx: Context) -> Result<worker::Res
 
 After you have appropriately checked for the `Upgrade` header, you can create a new instance of `WebSocketPair`, which contains server and client WebSockets. One of these WebSockets should be handled by the Workers function and the other should be returned as part of a `Response` with the [101 status code ↗](https://developer.mozilla.org/en-US/docs/Web/HTTP/Reference/Status/101), indicating the request is switching protocols:
 
-* [  JavaScript ](#tab-panel-9574)
-* [  Rust ](#tab-panel-9575)
+* [  JavaScript ](#tab-panel-10596)
+* [  Rust ](#tab-panel-10597)
 
 JavaScript
 
@@ -190,8 +190,8 @@ The `WebSocketPair` constructor returns an Object, with the `0` and `1` keys eac
 
 In order to begin communicating with the `client` WebSocket in your Worker, call `accept` on the `server` WebSocket. This will tell the Workers runtime that it should listen for WebSocket data and keep the connection open with your `client` WebSocket:
 
-* [  JavaScript ](#tab-panel-9576)
-* [  Rust ](#tab-panel-9577)
+* [  JavaScript ](#tab-panel-10598)
+* [  Rust ](#tab-panel-10599)
 
 JavaScript
 
@@ -272,9 +272,9 @@ async fn fetch(req: HttpRequest, _env: Env, _ctx: Context) -> Result<worker::Res
 
 WebSockets emit a number of [Events](https://developers.cloudflare.com/workers/runtime-apis/websockets/#events) that can be connected to using `addEventListener`. The below example hooks into the `message` event and emits a `console.log` with the data from it:
 
-* [  JavaScript ](#tab-panel-9578)
-* [  Rust ](#tab-panel-9579)
-* [  Hono ](#tab-panel-9580)
+* [  JavaScript ](#tab-panel-10600)
+* [  Rust ](#tab-panel-10601)
+* [  Hono ](#tab-panel-10602)
 
 JavaScript
 

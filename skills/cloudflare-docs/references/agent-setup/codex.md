@@ -26,8 +26,8 @@ TerminalStandaloneCloudExtensionOpen Source
 
 ## Quick start
 
-* [ Terminal ](#tab-panel-3252)
-* [ Standalone ](#tab-panel-3253)
+* [ Terminal ](#tab-panel-4184)
+* [ Standalone ](#tab-panel-4185)
 
 1. **Install Codex**  
 Install the Codex CLI. macOS and Linux are fully supported; use WSL2 on Windows. For Homebrew or other install methods, see the [Codex CLI setup guide ↗](https://developers.openai.com/codex/cli/).  
@@ -49,7 +49,7 @@ Inside Codex, run `/plugins`, then search for and install **Cloudflare**. This i
 4. **Try a prompt**  
 For example:  
 ```  
-Configure caching rules and cache TTLs to reduce origin load for my e-commerce store.  
+Use Workers for Platforms to let my customers deploy their own code in isolated environments.  
 ```
 
 1. **Download Codex**  
@@ -97,7 +97,6 @@ MCP servers provide typed tools to call into Cloudflare at runtime. There are tw
 * GraphQL server Get analytics data using Cloudflare’s GraphQL API https://graphql.mcp.cloudflare.com/mcp
 * Logpush server Get quick summaries for Logpush job health https://logs.mcp.cloudflare.com/mcp
 * Observability server Debug and get insight into your application's logs and analytics https://observability.mcp.cloudflare.com/mcp
-* Radar server Get global Internet traffic insights, trends, URL scans, and other utilities https://radar.mcp.cloudflare.com/mcp
 
 Wrangler CLI 
 

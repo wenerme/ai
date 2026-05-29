@@ -28,6 +28,9 @@ MiniMax Speech 2.8 Turbo turns text into natural, expressive speech with voice c
 
 ## Usage
 
+* [ TypeScript ](#tab-panel-830)
+* [ cURL ](#tab-panel-831)
+
 TypeScript
 
 ```
@@ -38,25 +41,19 @@ const response = await env.AI.run(
 
   {
 
+    format: 'mp3',
+
+    pitch: 0,
+
+    speed: 1,
+
     text: 'Hello! Welcome to Cloudflare AI Gateway. Let me show you what we can do.',
 
     voice_id: 'English_expressive_narrator',
 
-    speed: 1,
-
     volume: 1,
 
-    pitch: 0,
-
-    format: 'mp3',
-
   },
-
-  {
-
-    gateway: { id: 'default' },
-
-  }
 
 )
 
@@ -65,14 +62,53 @@ console.log(response)
 
 ```
 
-* [ Output ](#tab-panel-352)
-* [ Raw response ](#tab-panel-353)
+Terminal window
+
+```
+
+curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run \
+
+  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+
+  --header "Content-Type: application/json" \
+
+  --data '{
+
+  "model": "minimax/speech-2.8-turbo",
+
+  "input": {
+
+    "format": "mp3",
+
+    "pitch": 0,
+
+    "speed": 1,
+
+    "text": "Hello! Welcome to Cloudflare AI Gateway. Let me show you what we can do.",
+
+    "voice_id": "English_expressive_narrator",
+
+    "volume": 1
+
+  }
+
+}'
+
+
+```
+
+* [ Output ](#tab-panel-826)
+* [ Raw response ](#tab-panel-827)
 
 ```
 
 {
 
-  "state": "Completed",
+  "gatewayMetadata": {
+
+    "keySource": "Unified"
+
+  },
 
   "result": {
 
@@ -80,11 +116,7 @@ console.log(response)
 
   },
 
-  "gatewayMetadata": {
-
-    "keySource": "Unified"
-
-  }
+  "state": "Completed"
 
 }
 
@@ -95,6 +127,9 @@ console.log(response)
 
 **Fast Narration**  — Speed up narration for quick playback 
 
+* [ TypeScript ](#tab-panel-834)
+* [ cURL ](#tab-panel-835)
+
 TypeScript
 
 ```
@@ -105,25 +140,19 @@ const response = await env.AI.run(
 
   {
 
+    format: 'mp3',
+
+    pitch: 0,
+
+    speed: 1.5,
+
     text: 'This is a fast-paced summary of the key findings from the quarterly report. Revenue is up fifteen percent and user growth exceeded expectations.',
 
     voice_id: 'English_expressive_narrator',
 
-    speed: 1.5,
-
     volume: 1,
 
-    pitch: 0,
-
-    format: 'mp3',
-
   },
-
-  {
-
-    gateway: { id: 'default' },
-
-  }
 
 )
 
@@ -132,14 +161,53 @@ console.log(response)
 
 ```
 
-* [ Output ](#tab-panel-354)
-* [ Raw response ](#tab-panel-355)
+Terminal window
+
+```
+
+curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run \
+
+  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+
+  --header "Content-Type: application/json" \
+
+  --data '{
+
+  "model": "minimax/speech-2.8-turbo",
+
+  "input": {
+
+    "format": "mp3",
+
+    "pitch": 0,
+
+    "speed": 1.5,
+
+    "text": "This is a fast-paced summary of the key findings from the quarterly report. Revenue is up fifteen percent and user growth exceeded expectations.",
+
+    "voice_id": "English_expressive_narrator",
+
+    "volume": 1
+
+  }
+
+}'
+
+
+```
+
+* [ Output ](#tab-panel-828)
+* [ Raw response ](#tab-panel-829)
 
 ```
 
 {
 
-  "state": "Completed",
+  "gatewayMetadata": {
+
+    "keySource": "Unified"
+
+  },
 
   "result": {
 
@@ -147,11 +215,7 @@ console.log(response)
 
   },
 
-  "gatewayMetadata": {
-
-    "keySource": "Unified"
-
-  }
+  "state": "Completed"
 
 }
 
@@ -160,6 +224,9 @@ console.log(response)
 
 **Calm Tone**  — Calm and steady speech for meditation or relaxation 
 
+* [ TypeScript ](#tab-panel-838)
+* [ cURL ](#tab-panel-839)
+
 TypeScript
 
 ```
@@ -170,27 +237,21 @@ const response = await env.AI.run(
 
   {
 
-    text: 'Take a deep breath in. Hold it for a moment. Now slowly exhale. Let your shoulders relax and release any tension.',
-
-    voice_id: 'English_expressive_narrator',
-
-    speed: 0.8,
-
-    volume: 1,
-
-    pitch: 0,
-
     emotion: 'calm',
 
     format: 'mp3',
 
+    pitch: 0,
+
+    speed: 0.8,
+
+    text: 'Take a deep breath in. Hold it for a moment. Now slowly exhale. Let your shoulders relax and release any tension.',
+
+    voice_id: 'English_expressive_narrator',
+
+    volume: 1,
+
   },
-
-  {
-
-    gateway: { id: 'default' },
-
-  }
 
 )
 
@@ -199,14 +260,55 @@ console.log(response)
 
 ```
 
-* [ Output ](#tab-panel-356)
-* [ Raw response ](#tab-panel-357)
+Terminal window
+
+```
+
+curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run \
+
+  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+
+  --header "Content-Type: application/json" \
+
+  --data '{
+
+  "model": "minimax/speech-2.8-turbo",
+
+  "input": {
+
+    "emotion": "calm",
+
+    "format": "mp3",
+
+    "pitch": 0,
+
+    "speed": 0.8,
+
+    "text": "Take a deep breath in. Hold it for a moment. Now slowly exhale. Let your shoulders relax and release any tension.",
+
+    "voice_id": "English_expressive_narrator",
+
+    "volume": 1
+
+  }
+
+}'
+
+
+```
+
+* [ Output ](#tab-panel-832)
+* [ Raw response ](#tab-panel-833)
 
 ```
 
 {
 
-  "state": "Completed",
+  "gatewayMetadata": {
+
+    "keySource": "Unified"
+
+  },
 
   "result": {
 
@@ -214,11 +316,7 @@ console.log(response)
 
   },
 
-  "gatewayMetadata": {
-
-    "keySource": "Unified"
-
-  }
+  "state": "Completed"
 
 }
 
@@ -227,6 +325,9 @@ console.log(response)
 
 **Adjusted Pitch**  — Lower the pitch for a deeper voice 
 
+* [ TypeScript ](#tab-panel-840)
+* [ cURL ](#tab-panel-841)
+
 TypeScript
 
 ```
@@ -237,25 +338,19 @@ const response = await env.AI.run(
 
   {
 
+    format: 'mp3',
+
+    pitch: -6,
+
+    speed: 1,
+
     text: 'Good evening. Tonight we explore the mysteries of the deep ocean and the creatures that live in total darkness.',
 
     voice_id: 'English_expressive_narrator',
 
-    speed: 1,
-
     volume: 1,
 
-    pitch: -6,
-
-    format: 'mp3',
-
   },
-
-  {
-
-    gateway: { id: 'default' },
-
-  }
 
 )
 
@@ -264,14 +359,53 @@ console.log(response)
 
 ```
 
-* [ Output ](#tab-panel-358)
-* [ Raw response ](#tab-panel-359)
+Terminal window
+
+```
+
+curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run \
+
+  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+
+  --header "Content-Type: application/json" \
+
+  --data '{
+
+  "model": "minimax/speech-2.8-turbo",
+
+  "input": {
+
+    "format": "mp3",
+
+    "pitch": -6,
+
+    "speed": 1,
+
+    "text": "Good evening. Tonight we explore the mysteries of the deep ocean and the creatures that live in total darkness.",
+
+    "voice_id": "English_expressive_narrator",
+
+    "volume": 1
+
+  }
+
+}'
+
+
+```
+
+* [ Output ](#tab-panel-836)
+* [ Raw response ](#tab-panel-837)
 
 ```
 
 {
 
-  "state": "Completed",
+  "gatewayMetadata": {
+
+    "keySource": "Unified"
+
+  },
 
   "result": {
 
@@ -279,11 +413,7 @@ console.log(response)
 
   },
 
-  "gatewayMetadata": {
-
-    "keySource": "Unified"
-
-  }
+  "state": "Completed"
 
 }
 
@@ -292,28 +422,8 @@ console.log(response)
 
 ## Parameters
 
-* [ Input ](#tab-panel-360)
-* [ Output ](#tab-panel-361)
-
-text
-
-`string`requiredmaxLength: 10000The text to convert to speech. Maximum 10,000 characters.
-
-voice\_id
-
-`string`requireddefault: English\_expressive\_narratorThe voice ID to use for synthesis
-
-speed
-
-`number`requireddefault: 1minimum: 0.5maximum: 2Speech speed (0.5 to 2)
-
-volume
-
-`number`requireddefault: 1minimum: 0maximum: 10Speech volume (0 to 10)
-
-pitch
-
-`integer`requireddefault: 0minimum: \-12maximum: 12Pitch adjustment (-12 to 12)
+* [ Input ](#tab-panel-842)
+* [ Output ](#tab-panel-843)
 
 emotion
 
@@ -323,9 +433,29 @@ format
 
 `string`requireddefault: mp3enum: mp3, flac, wavOutput audio format
 
+pitch
+
+`integer`requireddefault: 0maximum: 12minimum: \-12Pitch adjustment (-12 to 12)
+
 ▶sample\_rate
 
 `one of`
+
+speed
+
+`number`requireddefault: 1maximum: 2minimum: 0.5Speech speed (0.5 to 2)
+
+text
+
+`string`requiredmaxLength: 10000The text to convert to speech. Maximum 10,000 characters.
+
+voice\_id
+
+`string`requireddefault: English\_expressive\_narratorThe voice ID to use for synthesis
+
+volume
+
+`number`requireddefault: 1maximum: 10minimum: 0Speech volume (0 to 10)
 
 audio
 

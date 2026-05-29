@@ -59,8 +59,8 @@ When automatic configuration runs, the following files may be created or modifie
 
 A new Wrangler configuration file is created with settings appropriate for your framework:
 
-* [  wrangler.jsonc ](#tab-panel-8895)
-* [  wrangler.toml ](#tab-panel-8896)
+* [  wrangler.jsonc ](#tab-panel-10603)
+* [  wrangler.toml ](#tab-panel-10604)
 
 JSONC
 
@@ -76,7 +76,7 @@ JSONC
 
   // Set this to today's date
 
-  "compatibility_date": "2026-04-29",
+  "compatibility_date": "2026-05-28",
 
   "compatibility_flags": ["nodejs_compat"],
 
@@ -111,7 +111,7 @@ main = "dist/_worker.js/index.js"
 
 # Set this to today's date
 
-compatibility_date = "2026-04-29"
+compatibility_date = "2026-05-28"
 
 compatibility_flags = [ "nodejs_compat" ]
 

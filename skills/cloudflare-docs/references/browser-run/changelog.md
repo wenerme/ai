@@ -16,6 +16,11 @@ This is a detailed changelog of every update to Browser Run (formerly Browser Re
 
 [ Subscribe to RSS ](https://developers.cloudflare.com/browser-run/changelog/index.xml)
 
+## 2026-05-28
+
+**Use Quick Actions directly from Workers**
+* You can now call [Quick Actions](https://developers.cloudflare.com/browser-run/quick-actions/) directly from a [Worker](https://developers.cloudflare.com/workers/) using the `quickAction()` method on the [browser binding](https://developers.cloudflare.com/browser-run/reference/wrangler/#bindings). This removes the need for API tokens or external HTTP requests when using Quick Actions within Workers. Supported actions include [screenshot](https://developers.cloudflare.com/browser-run/quick-actions/screenshot-endpoint/), [PDF](https://developers.cloudflare.com/browser-run/quick-actions/pdf-endpoint/), [content](https://developers.cloudflare.com/browser-run/quick-actions/content-endpoint/), [markdown](https://developers.cloudflare.com/browser-run/quick-actions/markdown-endpoint/), [JSON](https://developers.cloudflare.com/browser-run/quick-actions/json-endpoint/), [scrape](https://developers.cloudflare.com/browser-run/quick-actions/scrape-endpoint/), [links](https://developers.cloudflare.com/browser-run/quick-actions/links-endpoint/), and [snapshot](https://developers.cloudflare.com/browser-run/quick-actions/snapshot/). The `quickAction()` method requires a compatibility date of `2026-03-24` or later.
+
 ## 2026-04-15
 
 **@cloudflare/playwright v1.3.0 released**

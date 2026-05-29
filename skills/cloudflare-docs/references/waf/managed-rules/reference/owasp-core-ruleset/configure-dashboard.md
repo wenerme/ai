@@ -20,8 +20,8 @@ Learn more about the [concepts](https://developers.cloudflare.com/waf/managed-ru
 
 ## Deploy the Cloudflare OWASP Core Ruleset
 
-* [  New dashboard ](#tab-panel-8321)
-* [ Old dashboard ](#tab-panel-8322)
+* [  New dashboard ](#tab-panel-10059)
+* [ Old dashboard ](#tab-panel-10060)
 
 1. In the Cloudflare dashboard, go to the Security **Settings** page.  
 [ Go to **Settings** ](https://dash.cloudflare.com/?to=/:account/:zone/security/settings)
@@ -65,8 +65,8 @@ You can configure (or override) the following Cloudflare OWASP Core Ruleset sett
 
 Once you have [deployed the Cloudflare OWASP Core Ruleset](#deploy-in-the-dashboard), do the following to configure it in the dashboard:
 
-* [  New dashboard ](#tab-panel-8323)
-* [ Old dashboard ](#tab-panel-8324)
+* [  New dashboard ](#tab-panel-10061)
+* [ Old dashboard ](#tab-panel-10062)
 
 1. In the Cloudflare dashboard, go to the **Security rules** page.  
 [ Go to **Security rules** ](https://dash.cloudflare.com/?to=/:account/:zone/security/security-rules)
@@ -104,8 +104,8 @@ Setting the rule status for specific tags affects all current and future rules w
 
 Once you have [deployed the Cloudflare OWASP Core Ruleset](#deploy-in-the-dashboard), do the following to configure rules with specific tags in the dashboard:
 
-* [  New dashboard ](#tab-panel-8327)
-* [ Old dashboard ](#tab-panel-8328)
+* [  New dashboard ](#tab-panel-10065)
+* [ Old dashboard ](#tab-panel-10066)
 
 1. In the Cloudflare dashboard, go to the **Security rules** page.  
 [ Go to **Security rules** ](https://dash.cloudflare.com/?to=/:account/:zone/security/security-rules)
@@ -147,8 +147,8 @@ You can configure (or override) the following setting in the dashboard for the s
 
 Once you have [deployed the Cloudflare OWASP Core Ruleset](#deploy-in-the-dashboard), do the following to configure individual ruleset rules in the dashboard:
 
-* [  New dashboard ](#tab-panel-8325)
-* [ Old dashboard ](#tab-panel-8326)
+* [  New dashboard ](#tab-panel-10063)
+* [ Old dashboard ](#tab-panel-10064)
 
 1. In the Cloudflare dashboard, go to the **Security rules** page.  
 [ Go to **Security rules** ](https://dash.cloudflare.com/?to=/:account/:zone/security/security-rules)

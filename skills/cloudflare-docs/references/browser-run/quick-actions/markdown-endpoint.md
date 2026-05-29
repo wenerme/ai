@@ -14,7 +14,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 The `/markdown` endpoint retrieves a webpage's content and converts it into Markdown format. You can specify a URL and optional parameters to refine the extraction process.
 
-Before you begin, make sure you [create a custom API Token](https://developers.cloudflare.com/fundamentals/api/get-started/create-token/) with `Browser Rendering - Edit` permission. For more information, refer to [Quick Actions — Before you begin](https://developers.cloudflare.com/browser-run/quick-actions/#before-you-begin).
+You can use this endpoint in two ways. To use the REST API, [create a custom API Token](https://developers.cloudflare.com/fundamentals/api/get-started/create-token/) with `Browser Rendering - Edit` permission. To use the [Workers binding](https://developers.cloudflare.com/browser-run/reference/wrangler/#bindings) from a [Cloudflare Worker](https://developers.cloudflare.com/workers/), no API token is needed. For more information, refer to [Quick Actions — Before you begin](https://developers.cloudflare.com/browser-run/quick-actions/#before-you-begin).
 
 ## Endpoint
 
@@ -42,8 +42,9 @@ You must provide either `url` or `html`:
 
 ### Convert a URL to Markdown
 
-* [ curl ](#tab-panel-4431)
-* [ TypeScript SDK ](#tab-panel-4432)
+* [ curl ](#tab-panel-5838)
+* [ TypeScript SDK ](#tab-panel-5839)
+* [ Workers binding ](#tab-panel-5840)
 
 This example fetches the Markdown representation of a webpage.
 
@@ -103,6 +104,34 @@ const markdown = await client.browserRendering.markdown.create({
 
 
 console.log(markdown);
+
+
+```
+
+TypeScript
+
+```
+
+interface Env {
+
+  BROWSER: BrowserRun;
+
+}
+
+
+export default {
+
+  async fetch(request, env): Promise<Response> {
+
+    return await env.BROWSER.quickAction("markdown", {
+
+      url: "https://example.com",
+
+    });
+
+  },
+
+} satisfies ExportedHandler<Env>;
 
 
 ```

@@ -1,5 +1,5 @@
 ---
-title: Development &#38; testing
+title: Development &amp; testing
 description: Develop and test your Workers locally.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
@@ -90,8 +90,8 @@ During local development, your Worker code interacts with these bindings using t
 
 ### Example configuration
 
-* [  wrangler.jsonc ](#tab-panel-9382)
-* [  wrangler.toml ](#tab-panel-9383)
+* [  wrangler.jsonc ](#tab-panel-10366)
+* [  wrangler.toml ](#tab-panel-10367)
 
 JSONC
 
@@ -103,7 +103,7 @@ JSONC
 
   // Set this to today's date
 
-  "compatibility_date": "2026-05-23",
+  "compatibility_date": "2026-05-28",
 
 
   "r2_buckets": [
@@ -133,7 +133,7 @@ name = "my-worker"
 
 # Set this to today's date
 
-compatibility_date = "2026-05-23"
+compatibility_date = "2026-05-28"
 
 
 [[r2_buckets]]
@@ -155,8 +155,8 @@ Remote Bindings work well together with [Workers Environments](https://developer
 
 **For example:**
 
-* [  wrangler.jsonc ](#tab-panel-9394)
-* [  wrangler.toml ](#tab-panel-9395)
+* [  wrangler.jsonc ](#tab-panel-10378)
+* [  wrangler.toml ](#tab-panel-10379)
 
 JSONC
 
@@ -168,7 +168,7 @@ JSONC
 
   // Set this to today's date
 
-  "compatibility_date": "2026-05-23",
+  "compatibility_date": "2026-05-28",
 
 
   "env": {
@@ -222,7 +222,7 @@ name = "my-worker"
 
 # Set this to today's date
 
-compatibility_date = "2026-05-23"
+compatibility_date = "2026-05-28"
 
 
 [[env.production.r2_buckets]]
@@ -258,8 +258,8 @@ The following bindings are recommended to have `remote: true` in your Wrangler c
 
 To interact with a real headless browser for rendering. There is no current local simulation for Browser Run.
 
-* [  wrangler.jsonc ](#tab-panel-9380)
-* [  wrangler.toml ](#tab-panel-9381)
+* [  wrangler.jsonc ](#tab-panel-10364)
+* [  wrangler.toml ](#tab-panel-10365)
 
 JSONC
 
@@ -297,8 +297,8 @@ remote = true
 
 To utilize actual AI models deployed on Cloudflare's network for inference. There is no current local simulation for Workers AI.
 
-* [  wrangler.jsonc ](#tab-panel-9384)
-* [  wrangler.toml ](#tab-panel-9385)
+* [  wrangler.jsonc ](#tab-panel-10368)
+* [  wrangler.toml ](#tab-panel-10369)
 
 JSONC
 
@@ -336,8 +336,8 @@ remote = true
 
 To connect to your production Vectorize indexes for accurate vector search and similarity operations. There is no current local simulation for Vectorize.
 
-* [  wrangler.jsonc ](#tab-panel-9386)
-* [  wrangler.toml ](#tab-panel-9387)
+* [  wrangler.jsonc ](#tab-panel-10370)
+* [  wrangler.toml ](#tab-panel-10371)
 
 JSONC
 
@@ -383,8 +383,8 @@ remote = true
 
 To verify that the certificate exchange and validation process work as expected. There is no current local simulation for mTLS bindings.
 
-* [  wrangler.jsonc ](#tab-panel-9390)
-* [  wrangler.toml ](#tab-panel-9391)
+* [  wrangler.jsonc ](#tab-panel-10374)
+* [  wrangler.toml ](#tab-panel-10375)
 
 JSONC
 
@@ -430,8 +430,8 @@ remote = true
 
 To connect to a high-fidelity version of the Images API, and verify that all transformations work as expected. Local simulation for Cloudflare Images is [limited with only a subset of features](https://developers.cloudflare.com/images/optimization/transformations/bindings/#interact-with-your-images-binding-locally).
 
-* [  wrangler.jsonc ](#tab-panel-9388)
-* [  wrangler.toml ](#tab-panel-9389)
+* [  wrangler.jsonc ](#tab-panel-10372)
+* [  wrangler.toml ](#tab-panel-10373)
 
 JSONC
 
@@ -475,8 +475,8 @@ If a Workers AI binding has `remote` set to `false`, Cloudflare will **produce a
 
 Workers for Platforms users can configure `remote: true` in dispatch namespace binding definitions:
 
-* [  wrangler.jsonc ](#tab-panel-9392)
-* [  wrangler.toml ](#tab-panel-9393)
+* [  wrangler.jsonc ](#tab-panel-10376)
+* [  wrangler.toml ](#tab-panel-10377)
 
 JSONC
 
@@ -639,8 +639,8 @@ The function:
 
 Here's a basic example of using Miniflare with `maybeStartOrUpdateRemoteProxySession` to provide a local dev session with remote bindings. This example uses a single hardcoded KV binding.
 
-* [  JavaScript ](#tab-panel-9396)
-* [  TypeScript ](#tab-panel-9397)
+* [  JavaScript ](#tab-panel-10380)
+* [  TypeScript ](#tab-panel-10381)
 
 JavaScript
 

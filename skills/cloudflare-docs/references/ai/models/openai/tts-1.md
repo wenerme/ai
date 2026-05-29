@@ -28,6 +28,9 @@ OpenAI's text-to-speech model optimized for real-time use with low latency.
 
 ## Usage
 
+* [ TypeScript ](#tab-panel-1130)
+* [ cURL ](#tab-panel-1131)
+
 TypeScript
 
 ```
@@ -38,21 +41,15 @@ const response = await env.AI.run(
 
   {
 
-    text: 'Hello! Welcome to Cloudflare AI Gateway. Let me show you what we can do.',
-
-    voice: 'alloy',
-
     response_format: 'mp3',
 
     speed: 1,
 
+    text: 'Hello! Welcome to Cloudflare AI Gateway. Let me show you what we can do.',
+
+    voice: 'alloy',
+
   },
-
-  {
-
-    gateway: { id: 'default' },
-
-  }
 
 )
 
@@ -61,14 +58,49 @@ console.log(response)
 
 ```
 
-* [ Output ](#tab-panel-492)
-* [ Raw response ](#tab-panel-493)
+Terminal window
+
+```
+
+curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run \
+
+  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+
+  --header "Content-Type: application/json" \
+
+  --data '{
+
+  "model": "openai/tts-1",
+
+  "input": {
+
+    "response_format": "mp3",
+
+    "speed": 1,
+
+    "text": "Hello! Welcome to Cloudflare AI Gateway. Let me show you what we can do.",
+
+    "voice": "alloy"
+
+  }
+
+}'
+
+
+```
+
+* [ Output ](#tab-panel-1126)
+* [ Raw response ](#tab-panel-1127)
 
 ```
 
 {
 
-  "state": "Completed",
+  "gatewayMetadata": {
+
+    "keySource": "Unified"
+
+  },
 
   "result": {
 
@@ -76,11 +108,7 @@ console.log(response)
 
   },
 
-  "gatewayMetadata": {
-
-    "keySource": "Unified"
-
-  }
+  "state": "Completed"
 
 }
 
@@ -91,6 +119,9 @@ console.log(response)
 
 **Different Voice**  — Use the Nova voice for a different tone 
 
+* [ TypeScript ](#tab-panel-1134)
+* [ cURL ](#tab-panel-1135)
+
 TypeScript
 
 ```
@@ -101,21 +132,15 @@ const response = await env.AI.run(
 
   {
 
-    text: 'The weather today is sunny with a high of 72 degrees. Perfect for a walk in the park.',
-
-    voice: 'nova',
-
     response_format: 'mp3',
 
     speed: 1,
 
+    text: 'The weather today is sunny with a high of 72 degrees. Perfect for a walk in the park.',
+
+    voice: 'nova',
+
   },
-
-  {
-
-    gateway: { id: 'default' },
-
-  }
 
 )
 
@@ -124,14 +149,49 @@ console.log(response)
 
 ```
 
-* [ Output ](#tab-panel-494)
-* [ Raw response ](#tab-panel-495)
+Terminal window
+
+```
+
+curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run \
+
+  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+
+  --header "Content-Type: application/json" \
+
+  --data '{
+
+  "model": "openai/tts-1",
+
+  "input": {
+
+    "response_format": "mp3",
+
+    "speed": 1,
+
+    "text": "The weather today is sunny with a high of 72 degrees. Perfect for a walk in the park.",
+
+    "voice": "nova"
+
+  }
+
+}'
+
+
+```
+
+* [ Output ](#tab-panel-1128)
+* [ Raw response ](#tab-panel-1129)
 
 ```
 
 {
 
-  "state": "Completed",
+  "gatewayMetadata": {
+
+    "keySource": "Unified"
+
+  },
 
   "result": {
 
@@ -139,11 +199,7 @@ console.log(response)
 
   },
 
-  "gatewayMetadata": {
-
-    "keySource": "Unified"
-
-  }
+  "state": "Completed"
 
 }
 
@@ -152,6 +208,9 @@ console.log(response)
 
 **Narration**  — Slower narration style with the Onyx voice 
 
+* [ TypeScript ](#tab-panel-1138)
+* [ cURL ](#tab-panel-1139)
+
 TypeScript
 
 ```
@@ -162,21 +221,15 @@ const response = await env.AI.run(
 
   {
 
-    text: 'In the beginning, the universe was a singularity of infinite density. Then, in a fraction of a second, it expanded into everything we know today.',
-
-    voice: 'onyx',
-
     response_format: 'mp3',
 
     speed: 0.85,
 
+    text: 'In the beginning, the universe was a singularity of infinite density. Then, in a fraction of a second, it expanded into everything we know today.',
+
+    voice: 'onyx',
+
   },
-
-  {
-
-    gateway: { id: 'default' },
-
-  }
 
 )
 
@@ -185,14 +238,49 @@ console.log(response)
 
 ```
 
-* [ Output ](#tab-panel-496)
-* [ Raw response ](#tab-panel-497)
+Terminal window
+
+```
+
+curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run \
+
+  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+
+  --header "Content-Type: application/json" \
+
+  --data '{
+
+  "model": "openai/tts-1",
+
+  "input": {
+
+    "response_format": "mp3",
+
+    "speed": 0.85,
+
+    "text": "In the beginning, the universe was a singularity of infinite density. Then, in a fraction of a second, it expanded into everything we know today.",
+
+    "voice": "onyx"
+
+  }
+
+}'
+
+
+```
+
+* [ Output ](#tab-panel-1132)
+* [ Raw response ](#tab-panel-1133)
 
 ```
 
 {
 
-  "state": "Completed",
+  "gatewayMetadata": {
+
+    "keySource": "Unified"
+
+  },
 
   "result": {
 
@@ -200,11 +288,7 @@ console.log(response)
 
   },
 
-  "gatewayMetadata": {
-
-    "keySource": "Unified"
-
-  }
+  "state": "Completed"
 
 }
 
@@ -213,6 +297,9 @@ console.log(response)
 
 **Echo Voice**  — Use the Echo voice for a deeper tone 
 
+* [ TypeScript ](#tab-panel-1142)
+* [ cURL ](#tab-panel-1143)
+
 TypeScript
 
 ```
@@ -223,21 +310,15 @@ const response = await env.AI.run(
 
   {
 
-    text: 'Welcome back to the podcast. Today we are going to talk about the future of artificial intelligence and its impact on creative work.',
-
-    voice: 'echo',
-
     response_format: 'mp3',
 
     speed: 1,
 
+    text: 'Welcome back to the podcast. Today we are going to talk about the future of artificial intelligence and its impact on creative work.',
+
+    voice: 'echo',
+
   },
-
-  {
-
-    gateway: { id: 'default' },
-
-  }
 
 )
 
@@ -246,14 +327,49 @@ console.log(response)
 
 ```
 
-* [ Output ](#tab-panel-498)
-* [ Raw response ](#tab-panel-499)
+Terminal window
+
+```
+
+curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run \
+
+  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+
+  --header "Content-Type: application/json" \
+
+  --data '{
+
+  "model": "openai/tts-1",
+
+  "input": {
+
+    "response_format": "mp3",
+
+    "speed": 1,
+
+    "text": "Welcome back to the podcast. Today we are going to talk about the future of artificial intelligence and its impact on creative work.",
+
+    "voice": "echo"
+
+  }
+
+}'
+
+
+```
+
+* [ Output ](#tab-panel-1136)
+* [ Raw response ](#tab-panel-1137)
 
 ```
 
 {
 
-  "state": "Completed",
+  "gatewayMetadata": {
+
+    "keySource": "Unified"
+
+  },
 
   "result": {
 
@@ -261,11 +377,7 @@ console.log(response)
 
   },
 
-  "gatewayMetadata": {
-
-    "keySource": "Unified"
-
-  }
+  "state": "Completed"
 
 }
 
@@ -274,6 +386,9 @@ console.log(response)
 
 **Fast Playback**  — Speed up speech for quick listening 
 
+* [ TypeScript ](#tab-panel-1144)
+* [ cURL ](#tab-panel-1145)
+
 TypeScript
 
 ```
@@ -284,21 +399,15 @@ const response = await env.AI.run(
 
   {
 
-    text: 'This is a fast-paced summary of the key findings from the quarterly report. Revenue is up fifteen percent, user growth exceeded expectations, and infrastructure costs remain stable.',
-
-    voice: 'shimmer',
-
     response_format: 'mp3',
 
     speed: 1.5,
 
+    text: 'This is a fast-paced summary of the key findings from the quarterly report. Revenue is up fifteen percent, user growth exceeded expectations, and infrastructure costs remain stable.',
+
+    voice: 'shimmer',
+
   },
-
-  {
-
-    gateway: { id: 'default' },
-
-  }
 
 )
 
@@ -307,14 +416,49 @@ console.log(response)
 
 ```
 
-* [ Output ](#tab-panel-500)
-* [ Raw response ](#tab-panel-501)
+Terminal window
+
+```
+
+curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run \
+
+  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+
+  --header "Content-Type: application/json" \
+
+  --data '{
+
+  "model": "openai/tts-1",
+
+  "input": {
+
+    "response_format": "mp3",
+
+    "speed": 1.5,
+
+    "text": "This is a fast-paced summary of the key findings from the quarterly report. Revenue is up fifteen percent, user growth exceeded expectations, and infrastructure costs remain stable.",
+
+    "voice": "shimmer"
+
+  }
+
+}'
+
+
+```
+
+* [ Output ](#tab-panel-1140)
+* [ Raw response ](#tab-panel-1141)
 
 ```
 
 {
 
-  "state": "Completed",
+  "gatewayMetadata": {
+
+    "keySource": "Unified"
+
+  },
 
   "result": {
 
@@ -322,11 +466,7 @@ console.log(response)
 
   },
 
-  "gatewayMetadata": {
-
-    "keySource": "Unified"
-
-  }
+  "state": "Completed"
 
 }
 
@@ -335,8 +475,16 @@ console.log(response)
 
 ## Parameters
 
-* [ Input ](#tab-panel-502)
-* [ Output ](#tab-panel-503)
+* [ Input ](#tab-panel-1146)
+* [ Output ](#tab-panel-1147)
+
+response\_format
+
+`string`requireddefault: mp3enum: mp3, opus, wav, aac, flacThe output format for the audio. Supported formats are mp3, opus, wav, aac and flac.
+
+speed
+
+`number`requireddefault: 1maximum: 4minimum: 0.25The speed of the generated audio. Select a value from 0.25 to 4.0\. 1.0 is the default.
 
 text
 
@@ -345,14 +493,6 @@ text
 voice
 
 `string`requireddefault: alloyenum: alloy, echo, fable, onyx, nova, shimmerThe voice to use when generating the audio. Defaults to alloy.
-
-response\_format
-
-`string`requireddefault: mp3enum: mp3, opus, wav, aac, flacThe output format for the audio. Supported formats are mp3, opus, wav, aac and flac.
-
-speed
-
-`number`requireddefault: 1minimum: 0.25maximum: 4The speed of the generated audio. Select a value from 0.25 to 4.0\. 1.0 is the default.
 
 audio
 

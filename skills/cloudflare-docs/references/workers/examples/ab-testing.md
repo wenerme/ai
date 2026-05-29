@@ -16,10 +16,10 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 Set up an A/B test by controlling what response is served based on cookies. This version supports passing the request through to test and control on the origin, bypassing random assignment.
 
-* [  JavaScript ](#tab-panel-9368)
-* [  TypeScript ](#tab-panel-9369)
-* [  Python ](#tab-panel-9370)
-* [  Hono ](#tab-panel-9371)
+* [  JavaScript ](#tab-panel-10390)
+* [  TypeScript ](#tab-panel-10391)
+* [  Python ](#tab-panel-10392)
+* [  Hono ](#tab-panel-10393)
 
 JavaScript
 

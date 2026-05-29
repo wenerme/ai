@@ -142,8 +142,8 @@ Once the earlier build moves past `initializing`, a later POST creates a new bui
 
 A Worker that receives a `/deploy` command from Slack and triggers a build:
 
-* [  JavaScript ](#tab-panel-8545)
-* [  TypeScript ](#tab-panel-8546)
+* [  JavaScript ](#tab-panel-10251)
+* [  TypeScript ](#tab-panel-10252)
 
 JavaScript
 
@@ -233,8 +233,8 @@ export default {
 
 A Worker with a [Cron Trigger](https://developers.cloudflare.com/workers/configuration/cron-triggers/) that rebuilds every hour:
 
-* [  JavaScript ](#tab-panel-8543)
-* [  TypeScript ](#tab-panel-8544)
+* [  JavaScript ](#tab-panel-10249)
+* [  TypeScript ](#tab-panel-10250)
 
 JavaScript
 

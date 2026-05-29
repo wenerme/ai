@@ -1,6 +1,3 @@
-> [!IMPORTANT]
-> We have updated our [Terms of Service](https://ai.google.dev/gemini-api/terms).
-
 To use the Gemini API, you need an API key. This page outlines how to create and
 manage your keys in Google AI Studio as well as how to set up your environment
 to use them in your code.

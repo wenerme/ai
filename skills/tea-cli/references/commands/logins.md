@@ -14,7 +14,7 @@ Add a Gitea login
 
 **--client-id**="": OAuth client ID (for use with --oauth)
 
-**--helper, -j**: Add helper
+**--git-credentials, --helper, -j**: Register tea as a git credential helper for this login's URL, so 'git push' and 'git clone' over HTTPS authenticate silently using the stored token
 
 **--insecure, -i**: Disable TLS verification
 
@@ -59,6 +59,24 @@ Remove a Gitea login
 Get or Set Default Login
 
 **--output, -o**="": Output format. (simple, table, csv, tsv, yaml, json)
+
+### helper, git-credential
+
+Act as a git credential helper for stored Gitea logins
+
+#### store, erase
+
+No-op (git credential protocol store/erase)
+
+#### setup
+
+Register tea as a git credential helper for every configured login
+
+#### get
+
+Return the stored token for a URL (git credential protocol)
+
+**--login, -l**="": Use a specific login
 
 ### oauth-refresh
 

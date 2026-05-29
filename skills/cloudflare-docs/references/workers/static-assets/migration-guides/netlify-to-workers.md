@@ -38,8 +38,8 @@ For each case, be sure to update the `<your-project-name>` value with the name o
 
 For a **static site**, you will need to add the following to your wrangler file.
 
-* [  wrangler.jsonc ](#tab-panel-9877)
-* [  wrangler.toml ](#tab-panel-9878)
+* [  wrangler.jsonc ](#tab-panel-10921)
+* [  wrangler.toml ](#tab-panel-10922)
 
 JSONC
 
@@ -51,7 +51,7 @@ JSONC
 
   // Set this to today's date
 
-  "compatibility_date": "2026-05-16",
+  "compatibility_date": "2026-05-28",
 
   "assets": {
 
@@ -72,7 +72,7 @@ name = "<your-project-name>"
 
 # Set this to today's date
 
-compatibility_date = "2026-05-16"
+compatibility_date = "2026-05-28"
 
 
 [assets]
@@ -84,8 +84,8 @@ directory = "<your-build-directory>"
 
 For a **Single Page Application**, you will need to add the following to your Wrangler configuration file, which includes the `not_found_handling` field.
 
-* [  wrangler.jsonc ](#tab-panel-9879)
-* [  wrangler.toml ](#tab-panel-9880)
+* [  wrangler.jsonc ](#tab-panel-10923)
+* [  wrangler.toml ](#tab-panel-10924)
 
 JSONC
 
@@ -97,7 +97,7 @@ JSONC
 
   // Set this to today's date
 
-  "compatibility_date": "2026-05-16",
+  "compatibility_date": "2026-05-28",
 
   "assets": {
 
@@ -120,7 +120,7 @@ name = "<your-project-name>"
 
 # Set this to today's date
 
-compatibility_date = "2026-05-16"
+compatibility_date = "2026-05-28"
 
 
 [assets]

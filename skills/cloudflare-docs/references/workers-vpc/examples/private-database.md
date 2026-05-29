@@ -96,8 +96,8 @@ You must create a binding in your [Wrangler configuration file](https://develope
 
 To bind your Hyperdrive configuration to your Worker, add the following to the end of your Wrangler file:
 
-* [  wrangler.jsonc ](#tab-panel-8291)
-* [  wrangler.toml ](#tab-panel-8292)
+* [  wrangler.jsonc ](#tab-panel-10168)
+* [  wrangler.toml ](#tab-panel-10169)
 
 JSONC
 
@@ -143,8 +143,8 @@ Specifically:
 
 If you wish to use a local database during development, you can add a `localConnectionString` to your Hyperdrive configuration with the connection string of your database:
 
-* [  wrangler.jsonc ](#tab-panel-8293)
-* [  wrangler.toml ](#tab-panel-8294)
+* [  wrangler.jsonc ](#tab-panel-10170)
+* [  wrangler.toml ](#tab-panel-10171)
 
 JSONC
 
@@ -238,8 +238,8 @@ bun add -d @types/pg
 
 Add the required Node.js compatibility flags and Hyperdrive binding to your `wrangler.jsonc` file:
 
-* [  wrangler.jsonc ](#tab-panel-8295)
-* [  wrangler.toml ](#tab-panel-8296)
+* [  wrangler.jsonc ](#tab-panel-10172)
+* [  wrangler.toml ](#tab-panel-10173)
 
 JSONC
 
@@ -257,7 +257,7 @@ JSONC
 
   // Set this to today's date
 
-  "compatibility_date": "2026-04-30",
+  "compatibility_date": "2026-05-28",
 
   "hyperdrive": [
 
@@ -284,7 +284,7 @@ compatibility_flags = [ "nodejs_compat" ]
 
 # Set this to today's date
 
-compatibility_date = "2026-04-30"
+compatibility_date = "2026-05-28"
 
 
 [[hyperdrive]]

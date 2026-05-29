@@ -14,6 +14,36 @@ image: https://developers.cloudflare.com/zt-preview.png
 
 [ Subscribe to RSS ](https://developers.cloudflare.com/changelog/rss/cloudflare-one.xml) 
 
+## 2026-05-28
+
+[ Cloudflare Mesh ](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-mesh/)[ Cloudflare One ](https://developers.cloudflare.com/cloudflare-one/) 
+
+  
+**High availability replica management for Cloudflare Mesh**   
+
+The [Cloudflare Mesh](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-mesh/) dashboard now shows per-replica details for [high availability](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-mesh/high-availability/) nodes. You can see which replica is active, view each replica's Mesh IP and connection details, and manually trigger failover — all from the node detail page.
+
+![Mesh HA replica tabs showing active and passive replicas with per-replica Mesh IPs and a manual failover option](https://developers.cloudflare.com/_astro/mesh-ha-replicas.Dvf1GMmQ_Z2i6nGi.webp) 
+
+#### What's new
+
+* **Replica tabs** on the node detail page — switch between replicas to see each one's Mesh IP, edge data center, origin IP, platform, version, and uptime.
+* **Active/passive badges** identify which replica is currently routing traffic.
+* **Manual failover** — promote a passive replica to active with a single click. The previous active replica switches to standby.
+* **HA badge** in the overview table identifies nodes running multiple replicas.
+* **Active replica IP** shown in the overview table — the dashboard now resolves which replica is active and displays the correct Mesh IP.
+
+#### Manual failover
+
+To manually promote a passive replica:
+
+1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/?to=/:account/mesh), go to **Networking** \> **Mesh**.
+2. Select an HA-enabled node.
+3. Select the passive replica tab.
+4. Select **Promote to active** and confirm.
+
+Traffic reroutes to the promoted replica immediately. Refer to [High availability](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-mesh/high-availability/) for details on failover behavior.
+
 ## 2026-05-27
 
 [ Cloudflare One ](https://developers.cloudflare.com/cloudflare-one/)[ Gateway ](https://developers.cloudflare.com/cloudflare-one/traffic-policies/) 
@@ -4579,8 +4609,8 @@ Zero Trust Dashboard will automatically accept your user-level preferences for s
 
 ![Zero Trust dashboard supports dark mode](https://developers.cloudflare.com/_astro/dark-mode.DfLeS20d_Z2kTwNR.webp) 
 
-* [ Zero Trust Dashboard ](#tab-panel-5158)
-* [ Core Dashboard ](#tab-panel-5159)
+* [ Zero Trust Dashboard ](#tab-panel-6098)
+* [ Core Dashboard ](#tab-panel-6099)
 
 To update your view preference in the Zero Trust dashboard:
 

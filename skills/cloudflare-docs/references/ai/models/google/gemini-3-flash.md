@@ -29,6 +29,9 @@ Gemini 3 Flash is Google's fast multimodal model with frontier intelligence, sup
 
 ## Usage
 
+* [ TypeScript ](#tab-panel-454)
+* [ cURL ](#tab-panel-455)
+
 TypeScript
 
 ```
@@ -37,35 +40,7 @@ const response = await env.AI.run(
 
   'google/gemini-3-flash',
 
-  {
-
-    contents: [
-
-      {
-
-        role: 'user',
-
-        parts: [
-
-          {
-
-            text: 'What are the three laws of thermodynamics?',
-
-          },
-
-        ],
-
-      },
-
-    ],
-
-  },
-
-  {
-
-    gateway: { id: 'default' },
-
-  }
+  { contents: [{ parts: [{ text: 'What are the three laws of thermodynamics?' }], role: 'user' }] },
 
 )
 
@@ -74,8 +49,51 @@ console.log(response)
 
 ```
 
-* [ Output ](#tab-panel-170)
-* [ Raw response ](#tab-panel-171)
+Terminal window
+
+```
+
+curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run \
+
+  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+
+  --header "Content-Type: application/json" \
+
+  --data '{
+
+  "model": "google/gemini-3-flash",
+
+  "input": {
+
+    "contents": [
+
+      {
+
+        "parts": [
+
+          {
+
+            "text": "What are the three laws of thermodynamics?"
+
+          }
+
+        ],
+
+        "role": "user"
+
+      }
+
+    ]
+
+  }
+
+}'
+
+
+```
+
+* [ Output ](#tab-panel-460)
+* [ Raw response ](#tab-panel-461)
 
 While there are actually four laws of thermodynamics (numbered 0 through 3), the "Three Laws" usually refer to the following fundamental principles that govern how energy, heat, and matter behave:
 
@@ -121,9 +139,9 @@ Scientists often use a cynical "gambling" analogy to remember the laws:
 
     {
 
-      "content": {
+      "avgLogprobs": -0.1735024595133252,
 
-        "role": "model",
+      "content": {
 
         "parts": [
 
@@ -135,39 +153,33 @@ Scientists often use a cynical "gambling" analogy to remember the laws:
 
           }
 
-        ]
+        ],
+
+        "role": "model"
 
       },
 
-      "finishReason": "STOP",
-
-      "avgLogprobs": -0.1735024595133252
+      "finishReason": "STOP"
 
     }
 
   ],
 
+  "createTime": "2026-04-17T05:47:50.289216Z",
+
+  "gatewayMetadata": {
+
+    "keySource": "Unified"
+
+  },
+
+  "modelVersion": "gemini-3-flash-preview",
+
+  "responseId": "hsnhacDTEYGPq8YPsdmS-Qc",
+
   "usageMetadata": {
 
-    "promptTokenCount": 8,
-
     "candidatesTokenCount": 652,
-
-    "totalTokenCount": 1023,
-
-    "trafficType": "ON_DEMAND",
-
-    "promptTokensDetails": [
-
-      {
-
-        "modality": "TEXT",
-
-        "tokenCount": 8
-
-      }
-
-    ],
 
     "candidatesTokensDetails": [
 
@@ -181,19 +193,25 @@ Scientists often use a cynical "gambling" analogy to remember the laws:
 
     ],
 
-    "thoughtsTokenCount": 363
+    "promptTokenCount": 8,
 
-  },
+    "promptTokensDetails": [
 
-  "modelVersion": "gemini-3-flash-preview",
+      {
 
-  "createTime": "2026-04-17T05:47:50.289216Z",
+        "modality": "TEXT",
 
-  "responseId": "hsnhacDTEYGPq8YPsdmS-Qc",
+        "tokenCount": 8
 
-  "gatewayMetadata": {
+      }
 
-    "keySource": "Unified"
+    ],
+
+    "thoughtsTokenCount": 363,
+
+    "totalTokenCount": 1023,
+
+    "trafficType": "ON_DEMAND"
 
   }
 
@@ -206,6 +224,9 @@ Scientists often use a cynical "gambling" analogy to remember the laws:
 
 **With System Instruction**  — Using a system instruction to set context 
 
+* [ TypeScript ](#tab-panel-456)
+* [ cURL ](#tab-panel-457)
+
 TypeScript
 
 ```
@@ -216,53 +237,17 @@ const response = await env.AI.run(
 
   {
 
-    contents: [
+    contents: [{ parts: [{ text: 'How do I read a JSON file in Python?' }], role: 'user' }],
 
-      {
-
-        role: 'user',
-
-        parts: [
-
-          {
-
-            text: 'How do I read a JSON file in Python?',
-
-          },
-
-        ],
-
-      },
-
-    ],
+    generationConfig: { temperature: 0.3 },
 
     systemInstruction: {
 
-      parts: [
-
-        {
-
-          text: 'You are a helpful coding assistant specializing in Python.',
-
-        },
-
-      ],
-
-    },
-
-    generationConfig: {
-
-      temperature: 0.3,
+      parts: [{ text: 'You are a helpful coding assistant specializing in Python.' }],
 
     },
 
   },
-
-  {
-
-    gateway: { id: 'default' },
-
-  }
 
 )
 
@@ -271,8 +256,71 @@ console.log(response)
 
 ```
 
-* [ Output ](#tab-panel-172)
-* [ Raw response ](#tab-panel-173)
+Terminal window
+
+```
+
+curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run \
+
+  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+
+  --header "Content-Type: application/json" \
+
+  --data '{
+
+  "model": "google/gemini-3-flash",
+
+  "input": {
+
+    "contents": [
+
+      {
+
+        "parts": [
+
+          {
+
+            "text": "How do I read a JSON file in Python?"
+
+          }
+
+        ],
+
+        "role": "user"
+
+      }
+
+    ],
+
+    "generationConfig": {
+
+      "temperature": 0.3
+
+    },
+
+    "systemInstruction": {
+
+      "parts": [
+
+        {
+
+          "text": "You are a helpful coding assistant specializing in Python."
+
+        }
+
+      ]
+
+    }
+
+  }
+
+}'
+
+
+```
+
+* [ Output ](#tab-panel-464)
+* [ Raw response ](#tab-panel-465)
 
 To read a JSON file in Python, you use the built-in **`json`** module.
 
@@ -344,9 +392,9 @@ print(data)
 
     {
 
-      "content": {
+      "avgLogprobs": -0.09832632964156421,
 
-        "role": "model",
+      "content": {
 
         "parts": [
 
@@ -358,39 +406,33 @@ print(data)
 
           }
 
-        ]
+        ],
+
+        "role": "model"
 
       },
 
-      "finishReason": "STOP",
-
-      "avgLogprobs": -0.09832632964156421
+      "finishReason": "STOP"
 
     }
 
   ],
 
+  "createTime": "2026-04-17T05:47:57.460588Z",
+
+  "gatewayMetadata": {
+
+    "keySource": "Unified"
+
+  },
+
+  "modelVersion": "gemini-3-flash-preview",
+
+  "responseId": "jcnhaayOHISRq8YP2o-ouQg",
+
   "usageMetadata": {
 
-    "promptTokenCount": 20,
-
     "candidatesTokenCount": 476,
-
-    "totalTokenCount": 792,
-
-    "trafficType": "ON_DEMAND",
-
-    "promptTokensDetails": [
-
-      {
-
-        "modality": "TEXT",
-
-        "tokenCount": 20
-
-      }
-
-    ],
 
     "candidatesTokensDetails": [
 
@@ -404,19 +446,25 @@ print(data)
 
     ],
 
-    "thoughtsTokenCount": 296
+    "promptTokenCount": 20,
 
-  },
+    "promptTokensDetails": [
 
-  "modelVersion": "gemini-3-flash-preview",
+      {
 
-  "createTime": "2026-04-17T05:47:57.460588Z",
+        "modality": "TEXT",
 
-  "responseId": "jcnhaayOHISRq8YP2o-ouQg",
+        "tokenCount": 20
 
-  "gatewayMetadata": {
+      }
 
-    "keySource": "Unified"
+    ],
+
+    "thoughtsTokenCount": 296,
+
+    "totalTokenCount": 792,
+
+    "trafficType": "ON_DEMAND"
 
   }
 
@@ -426,6 +474,9 @@ print(data)
 ```
 
 **Multi-turn Conversation**  — Continuing a conversation with context 
+
+* [ TypeScript ](#tab-panel-462)
+* [ cURL ](#tab-panel-463)
 
 TypeScript
 
@@ -441,23 +492,13 @@ const response = await env.AI.run(
 
       {
 
+        parts: [{ text: 'I need help planning a road trip from San Francisco to Los Angeles.' }],
+
         role: 'user',
-
-        parts: [
-
-          {
-
-            text: 'I need help planning a road trip from San Francisco to Los Angeles.',
-
-          },
-
-        ],
 
       },
 
       {
-
-        role: 'model',
 
         parts: [
 
@@ -469,39 +510,17 @@ const response = await env.AI.run(
 
         ],
 
-      },
-
-      {
-
-        role: 'user',
-
-        parts: [
-
-          {
-
-            text: 'Yes, what are some good places to stop?',
-
-          },
-
-        ],
+        role: 'model',
 
       },
+
+      { parts: [{ text: 'Yes, what are some good places to stop?' }], role: 'user' },
 
     ],
 
-    generationConfig: {
-
-      maxOutputTokens: 500,
-
-    },
+    generationConfig: { maxOutputTokens: 2048 },
 
   },
-
-  {
-
-    gateway: { id: 'default' },
-
-  }
 
 )
 
@@ -510,8 +529,89 @@ console.log(response)
 
 ```
 
-* [ Output ](#tab-panel-174)
-* [ Raw response ](#tab-panel-175)
+Terminal window
+
+```
+
+curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run \
+
+  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+
+  --header "Content-Type: application/json" \
+
+  --data '{
+
+  "model": "google/gemini-3-flash",
+
+  "input": {
+
+    "contents": [
+
+      {
+
+        "parts": [
+
+          {
+
+            "text": "I need help planning a road trip from San Francisco to Los Angeles."
+
+          }
+
+        ],
+
+        "role": "user"
+
+      },
+
+      {
+
+        "parts": [
+
+          {
+
+            "text": "I'd be happy to help! The drive is about 380 miles and takes roughly 5-6 hours. Would you like suggestions for scenic routes or interesting stops along the way?"
+
+          }
+
+        ],
+
+        "role": "model"
+
+      },
+
+      {
+
+        "parts": [
+
+          {
+
+            "text": "Yes, what are some good places to stop?"
+
+          }
+
+        ],
+
+        "role": "user"
+
+      }
+
+    ],
+
+    "generationConfig": {
+
+      "maxOutputTokens": 2048
+
+    }
+
+  }
+
+}'
+
+
+```
+
+* [ Output ](#tab-panel-466)
+* [ Raw response ](#tab-panel-467)
 
 To give you the best recommendations, it helps to know how much time you have. The drive can
 
@@ -523,9 +623,9 @@ To give you the best recommendations, it helps to know how much time you have. T
 
     {
 
-      "content": {
+      "avgLogprobs": -7.779651683751491,
 
-        "role": "model",
+      "content": {
 
         "parts": [
 
@@ -537,39 +637,33 @@ To give you the best recommendations, it helps to know how much time you have. T
 
           }
 
-        ]
+        ],
+
+        "role": "model"
 
       },
 
-      "finishReason": "MAX_TOKENS",
-
-      "avgLogprobs": -7.779651683751491
+      "finishReason": "MAX_TOKENS"
 
     }
 
   ],
 
+  "createTime": "2026-04-17T05:48:02.222198Z",
+
+  "gatewayMetadata": {
+
+    "keySource": "Unified"
+
+  },
+
+  "modelVersion": "gemini-3-flash-preview",
+
+  "responseId": "ksnhafbHDZCeq8YPtfXXyQ4",
+
   "usageMetadata": {
 
-    "promptTokenCount": 64,
-
     "candidatesTokenCount": 20,
-
-    "totalTokenCount": 560,
-
-    "trafficType": "ON_DEMAND",
-
-    "promptTokensDetails": [
-
-      {
-
-        "modality": "TEXT",
-
-        "tokenCount": 64
-
-      }
-
-    ],
 
     "candidatesTokensDetails": [
 
@@ -583,19 +677,25 @@ To give you the best recommendations, it helps to know how much time you have. T
 
     ],
 
-    "thoughtsTokenCount": 476
+    "promptTokenCount": 64,
 
-  },
+    "promptTokensDetails": [
 
-  "modelVersion": "gemini-3-flash-preview",
+      {
 
-  "createTime": "2026-04-17T05:48:02.222198Z",
+        "modality": "TEXT",
 
-  "responseId": "ksnhafbHDZCeq8YPtfXXyQ4",
+        "tokenCount": 64
 
-  "gatewayMetadata": {
+      }
 
-    "keySource": "Unified"
+    ],
+
+    "thoughtsTokenCount": 476,
+
+    "totalTokenCount": 560,
+
+    "trafficType": "ON_DEMAND"
 
   }
 
@@ -605,6 +705,9 @@ To give you the best recommendations, it helps to know how much time you have. T
 ```
 
 **Creative Writing**  — Higher temperature for creative output 
+
+* [ TypeScript ](#tab-panel-458)
+* [ cURL ](#tab-panel-459)
 
 TypeScript
 
@@ -620,37 +723,17 @@ const response = await env.AI.run(
 
       {
 
+        parts: [{ text: 'Write a short story opening about a detective finding an unusual clue.' }],
+
         role: 'user',
-
-        parts: [
-
-          {
-
-            text: 'Write a short story opening about a detective finding an unusual clue.',
-
-          },
-
-        ],
 
       },
 
     ],
 
-    generationConfig: {
-
-      temperature: 0.8,
-
-      maxOutputTokens: 300,
-
-    },
+    generationConfig: { maxOutputTokens: 1500, temperature: 0.8 },
 
   },
-
-  {
-
-    gateway: { id: 'default' },
-
-  }
 
 )
 
@@ -659,8 +742,59 @@ console.log(response)
 
 ```
 
-* [ Output ](#tab-panel-176)
-* [ Raw response ](#tab-panel-177)
+Terminal window
+
+```
+
+curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run \
+
+  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+
+  --header "Content-Type: application/json" \
+
+  --data '{
+
+  "model": "google/gemini-3-flash",
+
+  "input": {
+
+    "contents": [
+
+      {
+
+        "parts": [
+
+          {
+
+            "text": "Write a short story opening about a detective finding an unusual clue."
+
+          }
+
+        ],
+
+        "role": "user"
+
+      }
+
+    ],
+
+    "generationConfig": {
+
+      "maxOutputTokens": 1500,
+
+      "temperature": 0.8
+
+    }
+
+  }
+
+}'
+
+
+```
+
+* [ Output ](#tab-panel-468)
+* [ Raw response ](#tab-panel-469)
 
 The yellow police tape hummed in the drafty
 
@@ -672,9 +806,9 @@ The yellow police tape hummed in the drafty
 
     {
 
-      "content": {
+      "avgLogprobs": -15.592795781649631,
 
-        "role": "model",
+      "content": {
 
         "parts": [
 
@@ -686,39 +820,33 @@ The yellow police tape hummed in the drafty
 
           }
 
-        ]
+        ],
+
+        "role": "model"
 
       },
 
-      "finishReason": "MAX_TOKENS",
-
-      "avgLogprobs": -15.592795781649631
+      "finishReason": "MAX_TOKENS"
 
     }
 
   ],
 
+  "createTime": "2026-04-17T05:48:06.216204Z",
+
+  "gatewayMetadata": {
+
+    "keySource": "Unified"
+
+  },
+
+  "modelVersion": "gemini-3-flash-preview",
+
+  "responseId": "lsnhaYyZDd-jq8YPlobFmAo",
+
   "usageMetadata": {
 
-    "promptTokenCount": 13,
-
     "candidatesTokenCount": 10,
-
-    "totalTokenCount": 309,
-
-    "trafficType": "ON_DEMAND",
-
-    "promptTokensDetails": [
-
-      {
-
-        "modality": "TEXT",
-
-        "tokenCount": 13
-
-      }
-
-    ],
 
     "candidatesTokensDetails": [
 
@@ -732,19 +860,25 @@ The yellow police tape hummed in the drafty
 
     ],
 
-    "thoughtsTokenCount": 286
+    "promptTokenCount": 13,
 
-  },
+    "promptTokensDetails": [
 
-  "modelVersion": "gemini-3-flash-preview",
+      {
 
-  "createTime": "2026-04-17T05:48:06.216204Z",
+        "modality": "TEXT",
 
-  "responseId": "lsnhaYyZDd-jq8YPlobFmAo",
+        "tokenCount": 13
 
-  "gatewayMetadata": {
+      }
 
-    "keySource": "Unified"
+    ],
+
+    "thoughtsTokenCount": 286,
+
+    "totalTokenCount": 309,
+
+    "trafficType": "ON_DEMAND"
 
   }
 
@@ -755,16 +889,12 @@ The yellow police tape hummed in the drafty
 
 ## Parameters
 
-* [ Input ](#tab-panel-178)
-* [ Output ](#tab-panel-179)
+* [ Input ](#tab-panel-470)
+* [ Output ](#tab-panel-471)
 
 ▶contents\[\]
 
 `array`required
-
-▶systemInstruction{}
-
-`object`
 
 ▶generationConfig{}
 
@@ -774,25 +904,29 @@ The yellow police tape hummed in the drafty
 
 `array`
 
-▶tools\[\]
+▶systemInstruction{}
 
-`array`
+`object`
 
 toolConfig
 
 ``
 
+▶tools\[\]
+
+`array`
+
 ▶candidates\[\]
 
 `array`
 
-▶usageMetadata{}
-
-`object`
-
 modelVersion
 
 `string`
+
+▶usageMetadata{}
+
+`object`
 
 ## API Schemas (Raw)
 

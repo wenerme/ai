@@ -22,8 +22,8 @@ Source maps translate compiled and minified code back to the original code that 
 
 To enable source maps, add the following to your Worker's [Wrangler configuration](https://developers.cloudflare.com/workers/wrangler/configuration/):
 
-* [  wrangler.jsonc ](#tab-panel-8943)
-* [  wrangler.toml ](#tab-panel-8944)
+* [  wrangler.jsonc ](#tab-panel-10689)
+* [  wrangler.toml ](#tab-panel-10690)
 
 JSONC
 

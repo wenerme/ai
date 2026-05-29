@@ -22,8 +22,8 @@ Text strings and JSON values are not encrypted and are useful for storing applic
 
 To add env variables using Wrangler, define text and JSON via the `[vars]` configuration in your Wrangler file. In the following example, `API_HOST` and `API_ACCOUNT_ID` are text values and `SERVICE_X_DATA` is a JSON value.
 
-* [  wrangler.jsonc ](#tab-panel-8572)
-* [  wrangler.toml ](#tab-panel-8573)
+* [  wrangler.jsonc ](#tab-panel-10278)
+* [  wrangler.toml ](#tab-panel-10279)
 
 JSONC
 
@@ -83,8 +83,8 @@ API_ACCOUNT_ID = "example_user"
 
 Refer to the following example on how to access the `API_HOST` environment variable in your Worker code:
 
-* [  JavaScript ](#tab-panel-8566)
-* [  TypeScript ](#tab-panel-8567)
+* [  JavaScript ](#tab-panel-10272)
+* [  TypeScript ](#tab-panel-10273)
 
 JavaScript
 
@@ -131,8 +131,8 @@ export default {
 
 You can also import `env` from [cloudflare:workers](https://developers.cloudflare.com/workers/runtime-apis/bindings/#importing-env-as-a-global) to access environment variables from anywhere in your code, including outside of request handlers:
 
-* [  JavaScript ](#tab-panel-8570)
-* [  TypeScript ](#tab-panel-8571)
+* [  JavaScript ](#tab-panel-10276)
+* [  TypeScript ](#tab-panel-10277)
 
 JavaScript
 
@@ -197,8 +197,8 @@ For more details, refer to [Importing env as a global](https://developers.cloudf
 
 The example below sets up two environments, `staging` and `production`, with different values for `API_HOST`.
 
-* [  wrangler.jsonc ](#tab-panel-8568)
-* [  wrangler.toml ](#tab-panel-8569)
+* [  wrangler.jsonc ](#tab-panel-10274)
+* [  wrangler.toml ](#tab-panel-10275)
 
 JSONC
 
@@ -331,7 +331,7 @@ API_TOKEN="eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9"
 
 Do not commit secrets to git
 
-The `.dev.vars` and `.env` files should not committed to git. Add `.dev.vars*` and `.env*` to your project's `.gitignore` file.
+The `.dev.vars` and `.env` files should not be committed to git. Add `.dev.vars*` and `.env*` to your project's `.gitignore` file.
 
 To set different secrets for each Cloudflare environment, create files named `.dev.vars.<environment-name>` or `.env.<environment-name>`.
 

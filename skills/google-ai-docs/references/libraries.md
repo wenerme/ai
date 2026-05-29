@@ -1,9 +1,4 @@
-# Gemini API libraries
-
 <br />
-
-> [!IMPORTANT]
-> We have updated our [Terms of Service](https://ai.google.dev/gemini-api/terms).
 
 When building with the Gemini API, we recommend using the **Google GenAI SDK** .
 These are the official, production-ready libraries that we develop and maintain

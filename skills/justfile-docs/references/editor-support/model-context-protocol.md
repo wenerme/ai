@@ -33,7 +33,8 @@ The search for a `justfile` is case insensitive, so any case, like `Justfile`,
 `JUSTFILE`, or `JuStFiLe`, will work. `just` will also look for files with the
 name `.justfile`, in case you'd like to hide a `justfile`.
 
-Running `just` with no arguments runs the first recipe in the `justfile`:
+By default, running `just` with no arguments runs the first recipe in the
+`justfile`:
 
 ```console
 $ just

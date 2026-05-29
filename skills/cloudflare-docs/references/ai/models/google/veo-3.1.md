@@ -28,6 +28,9 @@ Google's latest video generation model with improved quality, motion, and audio 
 
 ## Usage
 
+* [ TypeScript ](#tab-panel-650)
+* [ cURL ](#tab-panel-651)
+
 TypeScript
 
 ```
@@ -38,25 +41,19 @@ const response = await env.AI.run(
 
   {
 
+    aspect_ratio: '16:9',
+
+    duration: '8s',
+
+    generate_audio: true,
+
     prompt:
 
       'A majestic eagle soaring over snow-capped mountains, tracking shot following the bird as it glides through clouds',
 
-    duration: '8s',
-
-    aspect_ratio: '16:9',
-
     resolution: '1080p',
 
-    generate_audio: true,
-
   },
-
-  {
-
-    gateway: { id: 'default' },
-
-  }
 
 )
 
@@ -65,14 +62,51 @@ console.log(response)
 
 ```
 
-* [ Output ](#tab-panel-264)
-* [ Raw response ](#tab-panel-265)
+Terminal window
+
+```
+
+curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run \
+
+  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+
+  --header "Content-Type: application/json" \
+
+  --data '{
+
+  "model": "google/veo-3.1",
+
+  "input": {
+
+    "aspect_ratio": "16:9",
+
+    "duration": "8s",
+
+    "generate_audio": true,
+
+    "prompt": "A majestic eagle soaring over snow-capped mountains, tracking shot following the bird as it glides through clouds",
+
+    "resolution": "1080p"
+
+  }
+
+}'
+
+
+```
+
+* [ Output ](#tab-panel-646)
+* [ Raw response ](#tab-panel-647)
 
 ```
 
 {
 
-  "state": "Completed",
+  "gatewayMetadata": {
+
+    "keySource": "Unified"
+
+  },
 
   "result": {
 
@@ -80,11 +114,7 @@ console.log(response)
 
   },
 
-  "gatewayMetadata": {
-
-    "keySource": "Unified"
-
-  }
+  "state": "Completed"
 
 }
 
@@ -95,6 +125,9 @@ console.log(response)
 
 **Urban Time-lapse**  — City life time-lapse video 
 
+* [ TypeScript ](#tab-panel-654)
+* [ cURL ](#tab-panel-655)
+
 TypeScript
 
 ```
@@ -105,25 +138,19 @@ const response = await env.AI.run(
 
   {
 
+    aspect_ratio: '16:9',
+
+    duration: '6s',
+
+    generate_audio: true,
+
     prompt:
 
       'A time-lapse of a busy city intersection at night, car lights creating streaks, people walking in fast motion',
 
-    duration: '6s',
-
-    aspect_ratio: '16:9',
-
     resolution: '1080p',
 
-    generate_audio: true,
-
   },
-
-  {
-
-    gateway: { id: 'default' },
-
-  }
 
 )
 
@@ -132,14 +159,51 @@ console.log(response)
 
 ```
 
-* [ Output ](#tab-panel-266)
-* [ Raw response ](#tab-panel-267)
+Terminal window
+
+```
+
+curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run \
+
+  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+
+  --header "Content-Type: application/json" \
+
+  --data '{
+
+  "model": "google/veo-3.1",
+
+  "input": {
+
+    "aspect_ratio": "16:9",
+
+    "duration": "6s",
+
+    "generate_audio": true,
+
+    "prompt": "A time-lapse of a busy city intersection at night, car lights creating streaks, people walking in fast motion",
+
+    "resolution": "1080p"
+
+  }
+
+}'
+
+
+```
+
+* [ Output ](#tab-panel-648)
+* [ Raw response ](#tab-panel-649)
 
 ```
 
 {
 
-  "state": "Completed",
+  "gatewayMetadata": {
+
+    "keySource": "Unified"
+
+  },
 
   "result": {
 
@@ -147,11 +211,7 @@ console.log(response)
 
   },
 
-  "gatewayMetadata": {
-
-    "keySource": "Unified"
-
-  }
+  "state": "Completed"
 
 }
 
@@ -160,6 +220,9 @@ console.log(response)
 
 **Abstract Art**  — Abstract motion graphics 
 
+* [ TypeScript ](#tab-panel-658)
+* [ cURL ](#tab-panel-659)
+
 TypeScript
 
 ```
@@ -170,25 +233,19 @@ const response = await env.AI.run(
 
   {
 
+    aspect_ratio: '16:9',
+
+    duration: '6s',
+
+    generate_audio: false,
+
     prompt:
 
       'Colorful ink drops falling into water in slow motion, creating organic swirling patterns',
 
-    duration: '6s',
-
-    aspect_ratio: '16:9',
-
     resolution: '720p',
 
-    generate_audio: false,
-
   },
-
-  {
-
-    gateway: { id: 'default' },
-
-  }
 
 )
 
@@ -197,14 +254,51 @@ console.log(response)
 
 ```
 
-* [ Output ](#tab-panel-268)
-* [ Raw response ](#tab-panel-269)
+Terminal window
+
+```
+
+curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run \
+
+  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+
+  --header "Content-Type: application/json" \
+
+  --data '{
+
+  "model": "google/veo-3.1",
+
+  "input": {
+
+    "aspect_ratio": "16:9",
+
+    "duration": "6s",
+
+    "generate_audio": false,
+
+    "prompt": "Colorful ink drops falling into water in slow motion, creating organic swirling patterns",
+
+    "resolution": "720p"
+
+  }
+
+}'
+
+
+```
+
+* [ Output ](#tab-panel-652)
+* [ Raw response ](#tab-panel-653)
 
 ```
 
 {
 
-  "state": "Completed",
+  "gatewayMetadata": {
+
+    "keySource": "Unified"
+
+  },
 
   "result": {
 
@@ -212,11 +306,7 @@ console.log(response)
 
   },
 
-  "gatewayMetadata": {
-
-    "keySource": "Unified"
-
-  }
+  "state": "Completed"
 
 }
 
@@ -225,6 +315,9 @@ console.log(response)
 
 **Food Video**  — Appetizing food footage 
 
+* [ TypeScript ](#tab-panel-660)
+* [ cURL ](#tab-panel-661)
+
 TypeScript
 
 ```
@@ -235,25 +328,17 @@ const response = await env.AI.run(
 
   {
 
-    prompt:
-
-      'Melted chocolate being poured over fresh strawberries in slow motion, rich and glossy',
+    aspect_ratio: '9:16',
 
     duration: '4s',
 
-    aspect_ratio: '9:16',
+    generate_audio: true,
+
+    prompt: 'Melted chocolate being poured over fresh strawberries in slow motion, rich and glossy',
 
     resolution: '1080p',
 
-    generate_audio: true,
-
   },
-
-  {
-
-    gateway: { id: 'default' },
-
-  }
 
 )
 
@@ -262,14 +347,51 @@ console.log(response)
 
 ```
 
-* [ Output ](#tab-panel-270)
-* [ Raw response ](#tab-panel-271)
+Terminal window
+
+```
+
+curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run \
+
+  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+
+  --header "Content-Type: application/json" \
+
+  --data '{
+
+  "model": "google/veo-3.1",
+
+  "input": {
+
+    "aspect_ratio": "9:16",
+
+    "duration": "4s",
+
+    "generate_audio": true,
+
+    "prompt": "Melted chocolate being poured over fresh strawberries in slow motion, rich and glossy",
+
+    "resolution": "1080p"
+
+  }
+
+}'
+
+
+```
+
+* [ Output ](#tab-panel-656)
+* [ Raw response ](#tab-panel-657)
 
 ```
 
 {
 
-  "state": "Completed",
+  "gatewayMetadata": {
+
+    "keySource": "Unified"
+
+  },
 
   "result": {
 
@@ -277,11 +399,7 @@ console.log(response)
 
   },
 
-  "gatewayMetadata": {
-
-    "keySource": "Unified"
-
-  }
+  "state": "Completed"
 
 }
 
@@ -290,32 +408,32 @@ console.log(response)
 
 ## Parameters
 
-* [ Input ](#tab-panel-272)
-* [ Output ](#tab-panel-273)
-
-prompt
-
-`string`requiredText prompt describing the video to generate
-
-image\_input
-
-`string`Base64-encoded reference image for i2v
-
-duration
-
-`string`requireddefault: 6senum: 4s, 6s, 8sVideo duration
+* [ Input ](#tab-panel-662)
+* [ Output ](#tab-panel-663)
 
 aspect\_ratio
 
 `string`requireddefault: 16:9enum: 16:9, 9:16, 1:1Video aspect ratio
 
-resolution
+duration
 
-`string`requireddefault: 720penum: 720p, 1080pVideo resolution
+`string`requireddefault: 6senum: 4s, 6s, 8sVideo duration
 
 generate\_audio
 
 `boolean`requireddefault: trueWhether to generate audio with the video
+
+image\_input
+
+`string`Base64-encoded reference image for i2v
+
+prompt
+
+`string`requiredText prompt describing the video to generate
+
+resolution
+
+`string`requireddefault: 720penum: 720p, 1080pVideo resolution
 
 video
 

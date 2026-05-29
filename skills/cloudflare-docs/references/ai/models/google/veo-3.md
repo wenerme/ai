@@ -28,6 +28,9 @@ Google's video generation model capable of producing high-quality videos with op
 
 ## Usage
 
+* [ TypeScript ](#tab-panel-610)
+* [ cURL ](#tab-panel-611)
+
 TypeScript
 
 ```
@@ -38,25 +41,17 @@ const response = await env.AI.run(
 
   {
 
-    prompt:
-
-      'A golden retriever running through a field of sunflowers on a sunny day',
+    aspect_ratio: '16:9',
 
     duration: '6s',
 
-    aspect_ratio: '16:9',
+    generate_audio: true,
+
+    prompt: 'A golden retriever running through a field of sunflowers on a sunny day',
 
     resolution: '720p',
 
-    generate_audio: true,
-
   },
-
-  {
-
-    gateway: { id: 'default' },
-
-  }
 
 )
 
@@ -65,14 +60,51 @@ console.log(response)
 
 ```
 
-* [ Output ](#tab-panel-242)
-* [ Raw response ](#tab-panel-243)
+Terminal window
+
+```
+
+curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run \
+
+  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+
+  --header "Content-Type: application/json" \
+
+  --data '{
+
+  "model": "google/veo-3",
+
+  "input": {
+
+    "aspect_ratio": "16:9",
+
+    "duration": "6s",
+
+    "generate_audio": true,
+
+    "prompt": "A golden retriever running through a field of sunflowers on a sunny day",
+
+    "resolution": "720p"
+
+  }
+
+}'
+
+
+```
+
+* [ Output ](#tab-panel-606)
+* [ Raw response ](#tab-panel-607)
 
 ```
 
 {
 
-  "state": "Completed",
+  "gatewayMetadata": {
+
+    "keySource": "Unified"
+
+  },
 
   "result": {
 
@@ -80,11 +112,7 @@ console.log(response)
 
   },
 
-  "gatewayMetadata": {
-
-    "keySource": "Unified"
-
-  }
+  "state": "Completed"
 
 }
 
@@ -95,6 +123,9 @@ console.log(response)
 
 **Cinematic Scene**  — Widescreen cinematic video in 1080p 
 
+* [ TypeScript ](#tab-panel-614)
+* [ cURL ](#tab-panel-615)
+
 TypeScript
 
 ```
@@ -105,25 +136,19 @@ const response = await env.AI.run(
 
   {
 
+    aspect_ratio: '16:9',
+
+    duration: '8s',
+
+    generate_audio: true,
+
     prompt:
 
       'A dramatic drone shot flying through misty mountain peaks at sunrise, with clouds rolling through valleys below',
 
-    duration: '8s',
-
-    aspect_ratio: '16:9',
-
     resolution: '1080p',
 
-    generate_audio: true,
-
   },
-
-  {
-
-    gateway: { id: 'default' },
-
-  }
 
 )
 
@@ -132,14 +157,51 @@ console.log(response)
 
 ```
 
-* [ Output ](#tab-panel-244)
-* [ Raw response ](#tab-panel-245)
+Terminal window
+
+```
+
+curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run \
+
+  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+
+  --header "Content-Type: application/json" \
+
+  --data '{
+
+  "model": "google/veo-3",
+
+  "input": {
+
+    "aspect_ratio": "16:9",
+
+    "duration": "8s",
+
+    "generate_audio": true,
+
+    "prompt": "A dramatic drone shot flying through misty mountain peaks at sunrise, with clouds rolling through valleys below",
+
+    "resolution": "1080p"
+
+  }
+
+}'
+
+
+```
+
+* [ Output ](#tab-panel-608)
+* [ Raw response ](#tab-panel-609)
 
 ```
 
 {
 
-  "state": "Completed",
+  "gatewayMetadata": {
+
+    "keySource": "Unified"
+
+  },
 
   "result": {
 
@@ -147,11 +209,7 @@ console.log(response)
 
   },
 
-  "gatewayMetadata": {
-
-    "keySource": "Unified"
-
-  }
+  "state": "Completed"
 
 }
 
@@ -160,6 +218,9 @@ console.log(response)
 
 **Vertical Video**  — Portrait orientation for social media 
 
+* [ TypeScript ](#tab-panel-618)
+* [ cURL ](#tab-panel-619)
+
 TypeScript
 
 ```
@@ -170,25 +231,17 @@ const response = await env.AI.run(
 
   {
 
-    prompt:
-
-      'A barista expertly pouring latte art, close-up shot with shallow depth of field',
+    aspect_ratio: '9:16',
 
     duration: '6s',
 
-    aspect_ratio: '9:16',
+    generate_audio: true,
+
+    prompt: 'A barista expertly pouring latte art, close-up shot with shallow depth of field',
 
     resolution: '720p',
 
-    generate_audio: true,
-
   },
-
-  {
-
-    gateway: { id: 'default' },
-
-  }
 
 )
 
@@ -197,14 +250,51 @@ console.log(response)
 
 ```
 
-* [ Output ](#tab-panel-246)
-* [ Raw response ](#tab-panel-247)
+Terminal window
+
+```
+
+curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run \
+
+  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+
+  --header "Content-Type: application/json" \
+
+  --data '{
+
+  "model": "google/veo-3",
+
+  "input": {
+
+    "aspect_ratio": "9:16",
+
+    "duration": "6s",
+
+    "generate_audio": true,
+
+    "prompt": "A barista expertly pouring latte art, close-up shot with shallow depth of field",
+
+    "resolution": "720p"
+
+  }
+
+}'
+
+
+```
+
+* [ Output ](#tab-panel-612)
+* [ Raw response ](#tab-panel-613)
 
 ```
 
 {
 
-  "state": "Completed",
+  "gatewayMetadata": {
+
+    "keySource": "Unified"
+
+  },
 
   "result": {
 
@@ -212,11 +302,7 @@ console.log(response)
 
   },
 
-  "gatewayMetadata": {
-
-    "keySource": "Unified"
-
-  }
+  "state": "Completed"
 
 }
 
@@ -225,6 +311,9 @@ console.log(response)
 
 **Short Format**  — Short video for social media posts 
 
+* [ TypeScript ](#tab-panel-622)
+* [ cURL ](#tab-panel-623)
+
 TypeScript
 
 ```
@@ -235,23 +324,17 @@ const response = await env.AI.run(
 
   {
 
-    prompt: 'A timelapse of a flower blooming, soft natural lighting',
+    aspect_ratio: '16:9',
 
     duration: '4s',
 
-    aspect_ratio: '16:9',
+    generate_audio: true,
+
+    prompt: 'A timelapse of a flower blooming, soft natural lighting',
 
     resolution: '720p',
 
-    generate_audio: true,
-
   },
-
-  {
-
-    gateway: { id: 'default' },
-
-  }
 
 )
 
@@ -260,14 +343,51 @@ console.log(response)
 
 ```
 
-* [ Output ](#tab-panel-248)
-* [ Raw response ](#tab-panel-249)
+Terminal window
+
+```
+
+curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run \
+
+  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+
+  --header "Content-Type: application/json" \
+
+  --data '{
+
+  "model": "google/veo-3",
+
+  "input": {
+
+    "aspect_ratio": "16:9",
+
+    "duration": "4s",
+
+    "generate_audio": true,
+
+    "prompt": "A timelapse of a flower blooming, soft natural lighting",
+
+    "resolution": "720p"
+
+  }
+
+}'
+
+
+```
+
+* [ Output ](#tab-panel-616)
+* [ Raw response ](#tab-panel-617)
 
 ```
 
 {
 
-  "state": "Completed",
+  "gatewayMetadata": {
+
+    "keySource": "Unified"
+
+  },
 
   "result": {
 
@@ -275,11 +395,7 @@ console.log(response)
 
   },
 
-  "gatewayMetadata": {
-
-    "keySource": "Unified"
-
-  }
+  "state": "Completed"
 
 }
 
@@ -288,6 +404,9 @@ console.log(response)
 
 **Silent Video**  — Video without audio generation 
 
+* [ TypeScript ](#tab-panel-624)
+* [ cURL ](#tab-panel-625)
+
 TypeScript
 
 ```
@@ -298,23 +417,17 @@ const response = await env.AI.run(
 
   {
 
-    prompt: 'Abstract flowing liquid metal morphing into geometric shapes',
+    aspect_ratio: '16:9',
 
     duration: '6s',
 
-    aspect_ratio: '16:9',
+    generate_audio: false,
+
+    prompt: 'Abstract flowing liquid metal morphing into geometric shapes',
 
     resolution: '720p',
 
-    generate_audio: false,
-
   },
-
-  {
-
-    gateway: { id: 'default' },
-
-  }
 
 )
 
@@ -323,14 +436,51 @@ console.log(response)
 
 ```
 
-* [ Output ](#tab-panel-250)
-* [ Raw response ](#tab-panel-251)
+Terminal window
+
+```
+
+curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run \
+
+  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+
+  --header "Content-Type: application/json" \
+
+  --data '{
+
+  "model": "google/veo-3",
+
+  "input": {
+
+    "aspect_ratio": "16:9",
+
+    "duration": "6s",
+
+    "generate_audio": false,
+
+    "prompt": "Abstract flowing liquid metal morphing into geometric shapes",
+
+    "resolution": "720p"
+
+  }
+
+}'
+
+
+```
+
+* [ Output ](#tab-panel-620)
+* [ Raw response ](#tab-panel-621)
 
 ```
 
 {
 
-  "state": "Completed",
+  "gatewayMetadata": {
+
+    "keySource": "Unified"
+
+  },
 
   "result": {
 
@@ -338,11 +488,7 @@ console.log(response)
 
   },
 
-  "gatewayMetadata": {
-
-    "keySource": "Unified"
-
-  }
+  "state": "Completed"
 
 }
 
@@ -351,32 +497,32 @@ console.log(response)
 
 ## Parameters
 
-* [ Input ](#tab-panel-252)
-* [ Output ](#tab-panel-253)
-
-prompt
-
-`string`requiredText prompt describing the video to generate
-
-image\_input
-
-`string`Base64-encoded reference image for i2v
-
-duration
-
-`string`requireddefault: 6senum: 4s, 6s, 8sVideo duration
+* [ Input ](#tab-panel-626)
+* [ Output ](#tab-panel-627)
 
 aspect\_ratio
 
 `string`requireddefault: 16:9enum: 16:9, 9:16, 1:1Video aspect ratio
 
-resolution
+duration
 
-`string`requireddefault: 720penum: 720p, 1080pVideo resolution
+`string`requireddefault: 6senum: 4s, 6s, 8sVideo duration
 
 generate\_audio
 
 `boolean`requireddefault: trueWhether to generate audio with the video
+
+image\_input
+
+`string`Base64-encoded reference image for i2v
+
+prompt
+
+`string`requiredText prompt describing the video to generate
+
+resolution
+
+`string`requireddefault: 720penum: 720p, 1080pVideo resolution
 
 video
 

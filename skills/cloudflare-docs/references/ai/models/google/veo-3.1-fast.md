@@ -28,6 +28,9 @@ A faster version of Veo 3.1 optimized for lower latency while maintaining high-q
 
 ## Usage
 
+* [ TypeScript ](#tab-panel-668)
+* [ cURL ](#tab-panel-669)
+
 TypeScript
 
 ```
@@ -38,23 +41,17 @@ const response = await env.AI.run(
 
   {
 
-    prompt: 'A butterfly landing on a colorful flower in a garden',
+    aspect_ratio: '16:9',
 
     duration: '6s',
 
-    aspect_ratio: '16:9',
+    generate_audio: true,
+
+    prompt: 'A butterfly landing on a colorful flower in a garden',
 
     resolution: '720p',
 
-    generate_audio: true,
-
   },
-
-  {
-
-    gateway: { id: 'default' },
-
-  }
 
 )
 
@@ -63,14 +60,51 @@ console.log(response)
 
 ```
 
-* [ Output ](#tab-panel-274)
-* [ Raw response ](#tab-panel-275)
+Terminal window
+
+```
+
+curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run \
+
+  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+
+  --header "Content-Type: application/json" \
+
+  --data '{
+
+  "model": "google/veo-3.1-fast",
+
+  "input": {
+
+    "aspect_ratio": "16:9",
+
+    "duration": "6s",
+
+    "generate_audio": true,
+
+    "prompt": "A butterfly landing on a colorful flower in a garden",
+
+    "resolution": "720p"
+
+  }
+
+}'
+
+
+```
+
+* [ Output ](#tab-panel-664)
+* [ Raw response ](#tab-panel-665)
 
 ```
 
 {
 
-  "state": "Completed",
+  "gatewayMetadata": {
+
+    "keySource": "Unified"
+
+  },
 
   "result": {
 
@@ -78,11 +112,7 @@ console.log(response)
 
   },
 
-  "gatewayMetadata": {
-
-    "keySource": "Unified"
-
-  }
+  "state": "Completed"
 
 }
 
@@ -93,6 +123,9 @@ console.log(response)
 
 **Social Content**  — Quick vertical video for social media 
 
+* [ TypeScript ](#tab-panel-672)
+* [ cURL ](#tab-panel-673)
+
 TypeScript
 
 ```
@@ -103,25 +136,17 @@ const response = await env.AI.run(
 
   {
 
-    prompt:
-
-      'Aesthetic morning routine: sun rays through curtains, coffee being poured',
+    aspect_ratio: '9:16',
 
     duration: '6s',
 
-    aspect_ratio: '9:16',
+    generate_audio: true,
+
+    prompt: 'Aesthetic morning routine: sun rays through curtains, coffee being poured',
 
     resolution: '720p',
 
-    generate_audio: true,
-
   },
-
-  {
-
-    gateway: { id: 'default' },
-
-  }
 
 )
 
@@ -130,14 +155,51 @@ console.log(response)
 
 ```
 
-* [ Output ](#tab-panel-276)
-* [ Raw response ](#tab-panel-277)
+Terminal window
+
+```
+
+curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run \
+
+  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+
+  --header "Content-Type: application/json" \
+
+  --data '{
+
+  "model": "google/veo-3.1-fast",
+
+  "input": {
+
+    "aspect_ratio": "9:16",
+
+    "duration": "6s",
+
+    "generate_audio": true,
+
+    "prompt": "Aesthetic morning routine: sun rays through curtains, coffee being poured",
+
+    "resolution": "720p"
+
+  }
+
+}'
+
+
+```
+
+* [ Output ](#tab-panel-666)
+* [ Raw response ](#tab-panel-667)
 
 ```
 
 {
 
-  "state": "Completed",
+  "gatewayMetadata": {
+
+    "keySource": "Unified"
+
+  },
 
   "result": {
 
@@ -145,11 +207,7 @@ console.log(response)
 
   },
 
-  "gatewayMetadata": {
-
-    "keySource": "Unified"
-
-  }
+  "state": "Completed"
 
 }
 
@@ -158,6 +216,9 @@ console.log(response)
 
 **Motion Graphics**  — Quick animated graphics 
 
+* [ TypeScript ](#tab-panel-676)
+* [ cURL ](#tab-panel-677)
+
 TypeScript
 
 ```
@@ -168,25 +229,17 @@ const response = await env.AI.run(
 
   {
 
-    prompt:
-
-      'Glowing neon lines forming geometric patterns on a dark background',
+    aspect_ratio: '16:9',
 
     duration: '4s',
 
-    aspect_ratio: '16:9',
+    generate_audio: false,
+
+    prompt: 'Glowing neon lines forming geometric patterns on a dark background',
 
     resolution: '720p',
 
-    generate_audio: false,
-
   },
-
-  {
-
-    gateway: { id: 'default' },
-
-  }
 
 )
 
@@ -195,14 +248,51 @@ console.log(response)
 
 ```
 
-* [ Output ](#tab-panel-278)
-* [ Raw response ](#tab-panel-279)
+Terminal window
+
+```
+
+curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run \
+
+  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+
+  --header "Content-Type: application/json" \
+
+  --data '{
+
+  "model": "google/veo-3.1-fast",
+
+  "input": {
+
+    "aspect_ratio": "16:9",
+
+    "duration": "4s",
+
+    "generate_audio": false,
+
+    "prompt": "Glowing neon lines forming geometric patterns on a dark background",
+
+    "resolution": "720p"
+
+  }
+
+}'
+
+
+```
+
+* [ Output ](#tab-panel-670)
+* [ Raw response ](#tab-panel-671)
 
 ```
 
 {
 
-  "state": "Completed",
+  "gatewayMetadata": {
+
+    "keySource": "Unified"
+
+  },
 
   "result": {
 
@@ -210,11 +300,7 @@ console.log(response)
 
   },
 
-  "gatewayMetadata": {
-
-    "keySource": "Unified"
-
-  }
+  "state": "Completed"
 
 }
 
@@ -223,6 +309,9 @@ console.log(response)
 
 **Ambient Scene**  — Relaxing background video 
 
+* [ TypeScript ](#tab-panel-678)
+* [ cURL ](#tab-panel-679)
+
 TypeScript
 
 ```
@@ -233,25 +322,17 @@ const response = await env.AI.run(
 
   {
 
-    prompt:
-
-      'Rain falling on a window with a blurred city skyline in the background at night',
+    aspect_ratio: '16:9',
 
     duration: '8s',
 
-    aspect_ratio: '16:9',
+    generate_audio: true,
+
+    prompt: 'Rain falling on a window with a blurred city skyline in the background at night',
 
     resolution: '720p',
 
-    generate_audio: true,
-
   },
-
-  {
-
-    gateway: { id: 'default' },
-
-  }
 
 )
 
@@ -260,14 +341,51 @@ console.log(response)
 
 ```
 
-* [ Output ](#tab-panel-280)
-* [ Raw response ](#tab-panel-281)
+Terminal window
+
+```
+
+curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run \
+
+  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+
+  --header "Content-Type: application/json" \
+
+  --data '{
+
+  "model": "google/veo-3.1-fast",
+
+  "input": {
+
+    "aspect_ratio": "16:9",
+
+    "duration": "8s",
+
+    "generate_audio": true,
+
+    "prompt": "Rain falling on a window with a blurred city skyline in the background at night",
+
+    "resolution": "720p"
+
+  }
+
+}'
+
+
+```
+
+* [ Output ](#tab-panel-674)
+* [ Raw response ](#tab-panel-675)
 
 ```
 
 {
 
-  "state": "Completed",
+  "gatewayMetadata": {
+
+    "keySource": "Unified"
+
+  },
 
   "result": {
 
@@ -275,11 +393,7 @@ console.log(response)
 
   },
 
-  "gatewayMetadata": {
-
-    "keySource": "Unified"
-
-  }
+  "state": "Completed"
 
 }
 
@@ -288,32 +402,32 @@ console.log(response)
 
 ## Parameters
 
-* [ Input ](#tab-panel-282)
-* [ Output ](#tab-panel-283)
-
-prompt
-
-`string`requiredText prompt describing the video to generate
-
-image\_input
-
-`string`Base64-encoded reference image for i2v
-
-duration
-
-`string`requireddefault: 6senum: 4s, 6s, 8sVideo duration
+* [ Input ](#tab-panel-680)
+* [ Output ](#tab-panel-681)
 
 aspect\_ratio
 
 `string`requireddefault: 16:9enum: 16:9, 9:16, 1:1Video aspect ratio
 
-resolution
+duration
 
-`string`requireddefault: 720penum: 720p, 1080pVideo resolution
+`string`requireddefault: 6senum: 4s, 6s, 8sVideo duration
 
 generate\_audio
 
 `boolean`requireddefault: trueWhether to generate audio with the video
+
+image\_input
+
+`string`Base64-encoded reference image for i2v
+
+prompt
+
+`string`requiredText prompt describing the video to generate
+
+resolution
+
+`string`requireddefault: 720penum: 720p, 1080pVideo resolution
 
 video
 

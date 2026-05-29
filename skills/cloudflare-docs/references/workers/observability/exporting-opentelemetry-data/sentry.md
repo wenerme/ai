@@ -83,8 +83,8 @@ To configure your logs destination, click **Add destination** and configure the 
 
 With your destinations created in the Cloudflare dashboard, update your Worker's configuration to enable telemetry export.
 
-* [  wrangler.jsonc ](#tab-panel-8963)
-* [  wrangler.toml ](#tab-panel-8964)
+* [  wrangler.jsonc ](#tab-panel-10671)
+* [  wrangler.toml ](#tab-panel-10672)
 
 JSONC
 

@@ -25,8 +25,8 @@ When you bind to [Cloudflare Mesh](https://developers.cloudflare.com/cloudflare-
 
 Bind your Worker to Cloudflare Mesh using `network_id: "cf1:network"` in your Wrangler configuration:
 
-* [  wrangler.jsonc ](#tab-panel-9180)
-* [  wrangler.toml ](#tab-panel-9181)
+* [  wrangler.jsonc ](#tab-panel-10164)
+* [  wrangler.toml ](#tab-panel-10165)
 
 JSONC
 
@@ -42,7 +42,7 @@ JSONC
 
   // Set this to today's date
 
-  "compatibility_date": "2026-05-21",
+  "compatibility_date": "2026-05-28",
 
   "vpc_networks": [
 
@@ -75,7 +75,7 @@ main = "src/index.js"
 
 # Set this to today's date
 
-compatibility_date = "2026-05-21"
+compatibility_date = "2026-05-28"
 
 
 [[vpc_networks]]

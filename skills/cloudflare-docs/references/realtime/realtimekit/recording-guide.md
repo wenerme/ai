@@ -1,6 +1,6 @@
 ---
 title: Recording
-description: Record audio and video from RealtimeKit meetings using composite recording mode.
+description: Record RealtimeKit meetings as composite recordings or separate participant audio tracks.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 # Recording
 
-Learn how RealtimeKit records the audio and video of multiple users in a meeting, as well as interacts with RealtimeKit plugins, in a single file using composite recording mode.
+Learn how RealtimeKit records meetings as a single composite file or as separate participant audio tracks.
 
 Visit the following pages to learn more about recording meetings:
 
@@ -27,12 +27,13 @@ Visit the following pages to learn more about recording meetings:
 * [ Start Recording ](https://developers.cloudflare.com/realtime/realtimekit/recording-guide/start-recording/)
 * [ Stop Recording ](https://developers.cloudflare.com/realtime/realtimekit/recording-guide/stop-recording/)
 * [ Monitor Recording Status ](https://developers.cloudflare.com/realtime/realtimekit/recording-guide/monitor-status/)
+* [ Track recording ](https://developers.cloudflare.com/realtime/realtimekit/recording-guide/track-recording/)
 
-RealtimeKit records the audio and video of multiple users in a meeting, as well as interactions with RealtimeKit plugins, in a single file using composite recording mode.
+RealtimeKit can record the audio and video of multiple users in a meeting, as well as interactions with RealtimeKit plugins, in a single file using composite recording mode. RealtimeKit can also record separate participant audio tracks using [track recording](https://developers.cloudflare.com/realtime/realtimekit/recording-guide/track-recording/).
 
-## How does RealtimeKit recording work?
+## How composite recording works
 
-RealtimeKit recordings are powered by anonymous virtual bot users who join your meeting, record it, and then upload it to RealtimeKit's Cloudflare R2 bucket. For video files, we currently support the[H.264 ↗](https://en.wikipedia.org/wiki/Advanced%5FVideo%5FCoding) and[VP8 ↗](https://en.wikipedia.org/wiki/VP8) codecs.
+Composite recordings are powered by anonymous virtual bot users who join your meeting, record it, and then upload it to RealtimeKit's Cloudflare R2 bucket. For video files, we currently support the[H.264 ↗](https://en.wikipedia.org/wiki/Advanced%5FVideo%5FCoding) and[VP8 ↗](https://en.wikipedia.org/wiki/VP8) codecs.
 
 1. When the recording is finished, it is stored in RealtimeKit's Cloudflare R2 bucket.
 2. RealtimeKit generates a downloadable link from which the recording can be downloaded. You can get the download URL using the[Fetch details of a recording API](https://developers.cloudflare.com/api/resources/realtime%5Fkit/subresources/recordings/methods/get%5Fone%5Frecording/)or from the Developer Portal.  
@@ -51,6 +52,8 @@ A typical workflow for recording a meeting involves the following steps:
 1. Start a recording using the [Start Recording API](https://developers.cloudflare.com/api/resources/realtime%5Fkit/subresources/recordings/methods/start%5Frecordings/) or client side SDK.
 2. Manage the recording using the [Pause, resume, or stop recording API](https://developers.cloudflare.com/api/resources/realtime%5Fkit/subresources/recordings/methods/pause%5Fresume%5Fstop%5Frecording/) or client side SDK.
 3. Fetch the download URL for downloading the recording using the [Fetch details of a recording API](https://developers.cloudflare.com/api/resources/realtime%5Fkit/subresources/recordings/methods/get%5Fone%5Frecording/), webhook, or from the Developer Portal.
+
+For separate participant audio files, refer to [Track recording](https://developers.cloudflare.com/realtime/realtimekit/recording-guide/track-recording/).
 
 ```json
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/realtime/","name":"Realtime"}},{"@type":"ListItem","position":3,"item":{"@id":"/realtime/realtimekit/","name":"RealtimeKit"}},{"@type":"ListItem","position":4,"item":{"@id":"/realtime/realtimekit/recording-guide/","name":"Recording"}}]}

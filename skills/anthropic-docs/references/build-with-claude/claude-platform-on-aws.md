@@ -278,14 +278,14 @@ go get github.com/anthropics/anthropic-sdk-go
 
 <Tab title="Java">
 ```kotlin Gradle
-implementation("com.anthropic:anthropic-java-aws:2.33.0")
+implementation("com.anthropic:anthropic-java-aws:2.35.0")
 ```
 
 ```xml Maven
 <dependency>
   <groupId>com.anthropic</groupId>
   <artifactId>anthropic-java-aws</artifactId>
-  <version>2.33.0</version>
+  <version>2.35.0</version>
 </dependency>
 ```
 </Tab>
@@ -313,12 +313,13 @@ The following models are available on Claude Platform on AWS:
 
 | Model | Model ID |
 | :--- | :--- |
-| Claude Opus 4.7 | `claude-opus-4-7` |
-| Claude Opus 4.6 | `claude-opus-4-6` |
-| Claude Sonnet 4.6 | `claude-sonnet-4-6` |
-| Claude Opus 4.5 | `claude-opus-4-5` |
-| Claude Sonnet 4.5 | `claude-sonnet-4-5` |
-| Claude Haiku 4.5 | `claude-haiku-4-5` |
+| <NextOpus /> | <NextOpusId /> |
+| Claude Opus 4.7 | claude-opus-4-7 |
+| Claude Opus 4.6 | claude-opus-4-6 |
+| Claude Sonnet 4.6 | claude-sonnet-4-6 |
+| Claude Opus 4.5 | claude-opus-4-5 |
+| Claude Sonnet 4.5 | claude-sonnet-4-5 |
+| Claude Haiku 4.5 | claude-haiku-4-5 |
 
 Model IDs are identical to the first-party Claude API. There are no Bedrock-style ARNs or `anthropic.` prefixes.
 

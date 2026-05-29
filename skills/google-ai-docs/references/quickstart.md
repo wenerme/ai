@@ -1,8 +1,3 @@
-# Gemini API quickstart
-
-> [!IMPORTANT]
-> We have updated our [Terms of Service](https://ai.google.dev/gemini-api/terms).
-
 > [!NOTE]
 > This page covers the `generateContent` API. For new projects, we recommend the new **Interactions API** (Beta), which offers server-side history, built-in support for agentic workflows, and future new Gemini capabilities. Use the **API switcher toggle** at the top of the page to switch to the Interactions API quickstart.
 

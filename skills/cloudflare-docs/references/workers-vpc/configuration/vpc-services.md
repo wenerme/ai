@@ -256,8 +256,8 @@ JSONC
 
 Once you have created a VPC Service, you can bind it to your Worker:
 
-* [  wrangler.jsonc ](#tab-panel-8283)
-* [  wrangler.toml ](#tab-panel-8284)
+* [  wrangler.jsonc ](#tab-panel-10160)
+* [  wrangler.toml ](#tab-panel-10161)
 
 JSONC
 
@@ -314,8 +314,8 @@ remote = true
 
 You can have multiple VPC service bindings:
 
-* [  wrangler.jsonc ](#tab-panel-8285)
-* [  wrangler.toml ](#tab-panel-8286)
+* [  wrangler.jsonc ](#tab-panel-10162)
+* [  wrangler.toml ](#tab-panel-10163)
 
 JSONC
 

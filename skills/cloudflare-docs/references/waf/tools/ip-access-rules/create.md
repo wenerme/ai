@@ -20,9 +20,9 @@ Warning
 
 For [Spectrum](https://developers.cloudflare.com/spectrum/) applications configured with the non-HTTP/HTTPS application type, IP Access rules are the only supported mechanism for filtering traffic by IP address, IP range, country, or ASN. To use them, enable IP Access rules in your [Spectrum app configuration](https://developers.cloudflare.com/spectrum/reference/configuration-options/#ip-access-rules).
 
-* [  New dashboard ](#tab-panel-8347)
-* [ Old dashboard ](#tab-panel-8348)
-* [ API ](#tab-panel-8349)
+* [  New dashboard ](#tab-panel-10085)
+* [ Old dashboard ](#tab-panel-10086)
+* [ API ](#tab-panel-10087)
 
 Note
 

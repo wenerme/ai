@@ -28,6 +28,9 @@ Generate detailed, production-ready SVG vector graphics from text prompts with f
 
 ## Usage
 
+* [ TypeScript ](#tab-panel-1266)
+* [ cURL ](#tab-panel-1267)
+
 TypeScript
 
 ```
@@ -36,19 +39,7 @@ const response = await env.AI.run(
 
   'recraft/recraftv4-pro-vector',
 
-  {
-
-    prompt:
-
-      'A modern minimalist logo for a cloud computing company, clean geometric shapes',
-
-  },
-
-  {
-
-    gateway: { id: 'default' },
-
-  }
+  { prompt: 'A modern minimalist logo for a cloud computing company, clean geometric shapes' },
 
 )
 
@@ -57,10 +48,35 @@ console.log(response)
 
 ```
 
-* [ Output ](#tab-panel-556)
-* [ Raw response ](#tab-panel-557)
+Terminal window
 
-![Logo Design](https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/recraft__recraftv4-pro-vector/logo-design.jpg) 
+```
+
+curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run \
+
+  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+
+  --header "Content-Type: application/json" \
+
+  --data '{
+
+  "model": "recraft/recraftv4-pro-vector",
+
+  "input": {
+
+    "prompt": "A modern minimalist logo for a cloud computing company, clean geometric shapes"
+
+  }
+
+}'
+
+
+```
+
+* [ Output ](#tab-panel-1264)
+* [ Raw response ](#tab-panel-1265)
+
+![Logo Design](https://examples.aig.cloudflare.com/recraft/recraftv4-pro-vector/logo-design.svg) 
 
 ```
 
@@ -70,7 +86,7 @@ console.log(response)
 
   "result": {
 
-    "image": "https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/recraft__recraftv4-pro-vector/logo-design.jpg"
+    "image": "https://examples.aig.cloudflare.com/recraft/recraftv4-pro-vector/logo-design.svg"
 
   },
 
@@ -89,6 +105,9 @@ console.log(response)
 
 **Icon Set**  — Generate a vector icon 
 
+* [ TypeScript ](#tab-panel-1270)
+* [ cURL ](#tab-panel-1271)
+
 TypeScript
 
 ```
@@ -99,19 +118,11 @@ const response = await env.AI.run(
 
   {
 
-    prompt:
-
-      'A flat design icon of a rocket launching, suitable for a mobile app',
+    prompt: 'A flat design icon of a rocket launching, suitable for a mobile app',
 
     size: '2048x2048',
 
   },
-
-  {
-
-    gateway: { id: 'default' },
-
-  }
 
 )
 
@@ -120,10 +131,37 @@ console.log(response)
 
 ```
 
-* [ Output ](#tab-panel-558)
-* [ Raw response ](#tab-panel-559)
+Terminal window
 
-![Icon Set](https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/recraft__recraftv4-pro-vector/icon-set.jpg) 
+```
+
+curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run \
+
+  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+
+  --header "Content-Type: application/json" \
+
+  --data '{
+
+  "model": "recraft/recraftv4-pro-vector",
+
+  "input": {
+
+    "prompt": "A flat design icon of a rocket launching, suitable for a mobile app",
+
+    "size": "2048x2048"
+
+  }
+
+}'
+
+
+```
+
+* [ Output ](#tab-panel-1268)
+* [ Raw response ](#tab-panel-1269)
+
+![Icon Set](https://examples.aig.cloudflare.com/recraft/recraftv4-pro-vector/icon-set.svg) 
 
 ```
 
@@ -133,7 +171,7 @@ console.log(response)
 
   "result": {
 
-    "image": "https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/recraft__recraftv4-pro-vector/icon-set.jpg"
+    "image": "https://examples.aig.cloudflare.com/recraft/recraftv4-pro-vector/icon-set.svg"
 
   },
 
@@ -149,6 +187,9 @@ console.log(response)
 ```
 
 **Print-Ready Vector**  — High-resolution vector for large-format print 
+
+* [ TypeScript ](#tab-panel-1274)
+* [ cURL ](#tab-panel-1275)
 
 TypeScript
 
@@ -168,12 +209,6 @@ const response = await env.AI.run(
 
   },
 
-  {
-
-    gateway: { id: 'default' },
-
-  }
-
 )
 
 console.log(response)
@@ -181,10 +216,37 @@ console.log(response)
 
 ```
 
-* [ Output ](#tab-panel-560)
-* [ Raw response ](#tab-panel-561)
+Terminal window
 
-![Print-Ready Vector](https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/recraft__recraftv4-pro-vector/print-ready-vector.jpg) 
+```
+
+curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run \
+
+  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+
+  --header "Content-Type: application/json" \
+
+  --data '{
+
+  "model": "recraft/recraftv4-pro-vector",
+
+  "input": {
+
+    "prompt": "An intricate mandala pattern with floral and geometric elements, highly detailed and symmetrical",
+
+    "size": "2048x2048"
+
+  }
+
+}'
+
+
+```
+
+* [ Output ](#tab-panel-1272)
+* [ Raw response ](#tab-panel-1273)
+
+![Print-Ready Vector](https://examples.aig.cloudflare.com/recraft/recraftv4-pro-vector/print-ready-vector.svg) 
 
 ```
 
@@ -194,7 +256,7 @@ console.log(response)
 
   "result": {
 
-    "image": "https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/recraft__recraftv4-pro-vector/print-ready-vector.jpg"
+    "image": "https://examples.aig.cloudflare.com/recraft/recraftv4-pro-vector/print-ready-vector.svg"
 
   },
 
@@ -211,6 +273,9 @@ console.log(response)
 
 **Brand Illustration**  — Vector illustration with brand colors 
 
+* [ TypeScript ](#tab-panel-1278)
+* [ cURL ](#tab-panel-1279)
+
 TypeScript
 
 ```
@@ -221,43 +286,11 @@ const response = await env.AI.run(
 
   {
 
-    prompt:
+    controls: { colors: [{ rgb: [255, 87, 51] }, { rgb: [41, 50, 65] }, { rgb: [239, 239, 239] }] },
 
-      'A vector illustration of a cityscape skyline at sunset with clean lines and flat colors',
-
-    controls: {
-
-      colors: [
-
-        {
-
-          rgb: [255, 87, 51],
-
-        },
-
-        {
-
-          rgb: [41, 50, 65],
-
-        },
-
-        {
-
-          rgb: [239, 239, 239],
-
-        },
-
-      ],
-
-    },
+    prompt: 'A vector illustration of a cityscape skyline at sunset with clean lines and flat colors',
 
   },
-
-  {
-
-    gateway: { id: 'default' },
-
-  }
 
 )
 
@@ -266,10 +299,85 @@ console.log(response)
 
 ```
 
-* [ Output ](#tab-panel-562)
-* [ Raw response ](#tab-panel-563)
+Terminal window
 
-![Brand Illustration](https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/recraft__recraftv4-pro-vector/brand-illustration.jpg) 
+```
+
+curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run \
+
+  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+
+  --header "Content-Type: application/json" \
+
+  --data '{
+
+  "model": "recraft/recraftv4-pro-vector",
+
+  "input": {
+
+    "controls": {
+
+      "colors": [
+
+        {
+
+          "rgb": [
+
+            255,
+
+            87,
+
+            51
+
+          ]
+
+        },
+
+        {
+
+          "rgb": [
+
+            41,
+
+            50,
+
+            65
+
+          ]
+
+        },
+
+        {
+
+          "rgb": [
+
+            239,
+
+            239,
+
+            239
+
+          ]
+
+        }
+
+      ]
+
+    },
+
+    "prompt": "A vector illustration of a cityscape skyline at sunset with clean lines and flat colors"
+
+  }
+
+}'
+
+
+```
+
+* [ Output ](#tab-panel-1276)
+* [ Raw response ](#tab-panel-1277)
+
+![Brand Illustration](https://examples.aig.cloudflare.com/recraft/recraftv4-pro-vector/brand-illustration.svg) 
 
 ```
 
@@ -279,7 +387,7 @@ console.log(response)
 
   "result": {
 
-    "image": "https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/recraft__recraftv4-pro-vector/brand-illustration.jpg"
+    "image": "https://examples.aig.cloudflare.com/recraft/recraftv4-pro-vector/brand-illustration.svg"
 
   },
 
@@ -296,8 +404,12 @@ console.log(response)
 
 ## Parameters
 
-* [ Input ](#tab-panel-564)
-* [ Output ](#tab-panel-565)
+* [ Input ](#tab-panel-1280)
+* [ Output ](#tab-panel-1281)
+
+▶controls{}
+
+`object`
 
 prompt
 
@@ -314,10 +426,6 @@ style
 substyle
 
 `string`
-
-▶controls{}
-
-`object`
 
 image
 

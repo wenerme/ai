@@ -1,6 +1,6 @@
 ---
-title: GPT-5.4 Pro
-description: GPT-5.4 Pro uses OpenAI's Responses API with built-in tools, improved reasoning, and stateful context management.
+title: GPT-5.4 pro
+description: GPT-5.4 pro uses OpenAI's Responses API with built-in tools, improved reasoning, and stateful context management.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
@@ -12,13 +12,13 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 ![OpenAI logo](https://developers.cloudflare.com/_astro/openai.BI8PEEzI.svg) 
 
-#  GPT-5.4 Pro 
+#  GPT-5.4 pro 
 
 Text Generation • OpenAI • Proxied 
 
 `openai/gpt-5.4-pro` 
 
-GPT-5.4 Pro uses OpenAI's Responses API with built-in tools, improved reasoning, and stateful context management.
+GPT-5.4 pro uses OpenAI's Responses API with built-in tools, improved reasoning, and stateful context management.
 
 | Model Info                                                                 |                                                                                                                      |
 | -------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------- |
@@ -29,6 +29,9 @@ GPT-5.4 Pro uses OpenAI's Responses API with built-in tools, improved reasoning,
 
 ## Usage
 
+* [ TypeScript ](#tab-panel-990)
+* [ cURL ](#tab-panel-991)
+
 TypeScript
 
 ```
@@ -37,17 +40,7 @@ const response = await env.AI.run(
 
   'openai/gpt-5.4-pro',
 
-  {
-
-    input: 'What are the three laws of thermodynamics?',
-
-  },
-
-  {
-
-    gateway: { id: 'default' },
-
-  }
+  { input: 'What are the three laws of thermodynamics?' },
 
 )
 
@@ -56,85 +49,54 @@ console.log(response)
 
 ```
 
+Terminal window
+
+```
+
+curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/v1/responses \
+
+  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+
+  --header "Content-Type: application/json" \
+
+  --data '{
+
+  "model": "openai/gpt-5.4-pro",
+
+  "input": "What are the three laws of thermodynamics?"
+
+}'
+
+
+```
+
+* [ Output ](#tab-panel-1000)
+* [ Raw response ](#tab-panel-1001)
+
+The **three laws of thermodynamics** usually mean:
+
+1. **First Law — Conservation of Energy**  
+   Energy cannot be created or destroyed, only transferred or transformed.  
+   - In thermodynamics: the change in a system’s internal energy equals heat added to the system minus work done by the system.
+
+2. **Second Law — Entropy Increases**  
+   In any natural process, the total entropy of an isolated system tends to increase.  
+   - This means energy spontaneously spreads out, and no heat engine can be 100% efficient.
+   - Heat naturally flows from hot objects to cold ones, not the reverse without input of work.
+
+3. **Third Law — Entropy at Absolute Zero**  
+   As temperature approaches **absolute zero** (0 K), the entropy of a perfect crystal approaches zero.  
+   - A consequence is that absolute zero cannot be reached in a finite number of steps.
+
+Small note: thermodynamics also has a **Zeroth Law**, which is often listed before these:
+- If system A is in thermal equilibrium with B, and B is in thermal equilibrium with C, then A is in thermal equilibrium with C.  
+- This is the basis for the concept of **temperature**.
+
+If you want, I can also give a **one-line intuitive version** of each law.
+
 ```
 
 {
-
-  "id": "resp_00272dd8da5b37c90169ebb1aaeb288194a6e5ddeb7bb03dc8",
-
-  "object": "response",
-
-  "created_at": 1777054122,
-
-  "model": "gpt-5.4-pro-2026-03-05",
-
-  "output": [
-
-    {
-
-      "id": "rs_00272dd8da5b37c90169ebb1faf90c81948fd9a67a37b4c209",
-
-      "type": "reasoning",
-
-      "summary": []
-
-    },
-
-    {
-
-      "id": "msg_00272dd8da5b37c90169ebb1fafad0819488ef71fbebf8527a",
-
-      "type": "message",
-
-      "status": "completed",
-
-      "content": [
-
-        {
-
-          "type": "output_text",
-
-          "annotations": [],
-
-          "logprobs": [],
-
-          "text": "The **three laws of thermodynamics** usually mean:\n\n1. **First Law — Conservation of Energy**  \n   Energy cannot be created or destroyed, only transferred or transformed.  \n   - In thermodynamics: the change in a system’s internal energy equals heat added to the system minus work done by the system.\n\n2. **Second Law — Entropy Increases**  \n   In any natural process, the total entropy of an isolated system tends to increase.  \n   - This means energy spontaneously spreads out, and no heat engine can be 100% efficient.\n   - Heat naturally flows from hot objects to cold ones, not the reverse without input of work.\n\n3. **Third Law — Entropy at Absolute Zero**  \n   As temperature approaches **absolute zero** (0 K), the entropy of a perfect crystal approaches zero.  \n   - A consequence is that absolute zero cannot be reached in a finite number of steps.\n\nSmall note: thermodynamics also has a **Zeroth Law**, which is often listed before these:\n- If system A is in thermal equilibrium with B, and B is in thermal equilibrium with C, then A is in thermal equilibrium with C.  \n- This is the basis for the concept of **temperature**.\n\nIf you want, I can also give a **one-line intuitive version** of each law."
-
-        }
-
-      ],
-
-      "phase": "final_answer",
-
-      "role": "assistant"
-
-    }
-
-  ],
-
-  "status": "completed",
-
-  "usage": {
-
-    "input_tokens": 15,
-
-    "output_tokens": 342,
-
-    "total_tokens": 357,
-
-    "input_tokens_details": {
-
-      "cached_tokens": 0
-
-    },
-
-    "output_tokens_details": {
-
-      "reasoning_tokens": 67
-
-    }
-
-  },
 
   "background": false,
 
@@ -146,9 +108,19 @@ console.log(response)
 
   "completed_at": 1777054203,
 
+  "created_at": 1777054122,
+
   "error": null,
 
   "frequency_penalty": 0,
+
+  "gatewayMetadata": {
+
+    "keySource": "Unified"
+
+  },
+
+  "id": "resp_00272dd8da5b37c90169ebb1aaeb288194a6e5ddeb7bb03dc8",
 
   "incomplete_details": null,
 
@@ -158,7 +130,57 @@ console.log(response)
 
   "max_tool_calls": null,
 
+  "metadata": {},
+
+  "model": "gpt-5.4-pro-2026-03-05",
+
   "moderation": null,
+
+  "object": "response",
+
+  "output": [
+
+    {
+
+      "id": "rs_00272dd8da5b37c90169ebb1faf90c81948fd9a67a37b4c209",
+
+      "summary": [],
+
+      "type": "reasoning"
+
+    },
+
+    {
+
+      "content": [
+
+        {
+
+          "annotations": [],
+
+          "logprobs": [],
+
+          "text": "The **three laws of thermodynamics** usually mean:\n\n1. **First Law — Conservation of Energy**  \n   Energy cannot be created or destroyed, only transferred or transformed.  \n   - In thermodynamics: the change in a system’s internal energy equals heat added to the system minus work done by the system.\n\n2. **Second Law — Entropy Increases**  \n   In any natural process, the total entropy of an isolated system tends to increase.  \n   - This means energy spontaneously spreads out, and no heat engine can be 100% efficient.\n   - Heat naturally flows from hot objects to cold ones, not the reverse without input of work.\n\n3. **Third Law — Entropy at Absolute Zero**  \n   As temperature approaches **absolute zero** (0 K), the entropy of a perfect crystal approaches zero.  \n   - A consequence is that absolute zero cannot be reached in a finite number of steps.\n\nSmall note: thermodynamics also has a **Zeroth Law**, which is often listed before these:\n- If system A is in thermal equilibrium with B, and B is in thermal equilibrium with C, then A is in thermal equilibrium with C.  \n- This is the basis for the concept of **temperature**.\n\nIf you want, I can also give a **one-line intuitive version** of each law.",
+
+          "type": "output_text"
+
+        }
+
+      ],
+
+      "id": "msg_00272dd8da5b37c90169ebb1fafad0819488ef71fbebf8527a",
+
+      "phase": "final_answer",
+
+      "role": "assistant",
+
+      "status": "completed",
+
+      "type": "message"
+
+    }
+
+  ],
 
   "parallel_tool_calls": true,
 
@@ -181,6 +203,8 @@ console.log(response)
   "safety_identifier": null,
 
   "service_tier": "default",
+
+  "status": "completed",
 
   "store": false,
 
@@ -208,15 +232,29 @@ console.log(response)
 
   "truncation": "disabled",
 
-  "user": null,
+  "usage": {
 
-  "metadata": {},
+    "input_tokens": 15,
 
-  "gatewayMetadata": {
+    "input_tokens_details": {
 
-    "keySource": "Unified"
+      "cached_tokens": 0
 
-  }
+    },
+
+    "output_tokens": 342,
+
+    "output_tokens_details": {
+
+      "reasoning_tokens": 67
+
+    },
+
+    "total_tokens": 357
+
+  },
+
+  "user": null
 
 }
 
@@ -226,6 +264,9 @@ console.log(response)
 ## Examples
 
 **With Instructions**  — Using instructions to set context 
+
+* [ TypeScript ](#tab-panel-992)
+* [ cURL ](#tab-panel-993)
 
 TypeScript
 
@@ -243,12 +284,6 @@ const response = await env.AI.run(
 
   },
 
-  {
-
-    gateway: { id: 'default' },
-
-  }
-
 )
 
 console.log(response)
@@ -256,85 +291,103 @@ console.log(response)
 
 ```
 
+Terminal window
+
+```
+
+curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/v1/responses \
+
+  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+
+  --header "Content-Type: application/json" \
+
+  --data '{
+
+  "model": "openai/gpt-5.4-pro",
+
+  "input": "How do I read a JSON file in Python?",
+
+  "instructions": "You are a helpful coding assistant specializing in Python."
+
+}'
+
+
+```
+
+* [ Output ](#tab-panel-1002)
+* [ Raw response ](#tab-panel-1003)
+
+Use Python’s built-in `json` module.
+
+### Read a JSON file into a Python object
+```python
+import json
+
+with open("data.json", "r", encoding="utf-8") as f:
+    data = json.load(f)
+
+print(data)
+```
+
+### What you get back
+`json.load()` converts JSON into normal Python types:
+
+- JSON object → `dict`
+- JSON array → `list`
+- JSON string → `str`
+- JSON number → `int` / `float`
+- JSON true/false → `True` / `False`
+- JSON null → `None`
+
+### Example
+If `data.json` contains:
+```json
+{
+  "name": "Alice",
+  "age": 30,
+  "skills": ["Python", "SQL"]
+}
+```
+
+Then:
+```python
+import json
+
+with open("data.json", "r", encoding="utf-8") as f:
+    data = json.load(f)
+
+print(data["name"])    # Alice
+print(data["skills"])  # ['Python', 'SQL']
+```
+
+### Handle errors safely
+```python
+import json
+
+try:
+    with open("data.json", "r", encoding="utf-8") as f:
+        data = json.load(f)
+except FileNotFoundError:
+    print("File not found.")
+except json.JSONDecodeError:
+    print("Invalid JSON.")
+```
+
+### If you already have JSON as a string
+Use `json.loads()` instead:
+```python
+import json
+
+text = '{"name": "Alice", "age": 30}'
+data = json.loads(text)
+print(data)
+```
+
+If you want, I can also show how to **write JSON back to a file**.
+
 ```
 
 {
-
-  "id": "resp_00e5a81e42bf0bda0169ebb1ab449c8190a0d57802b4aebebd",
-
-  "object": "response",
-
-  "created_at": 1777054123,
-
-  "model": "gpt-5.4-pro-2026-03-05",
-
-  "output": [
-
-    {
-
-      "id": "rs_00e5a81e42bf0bda0169ebb1c0e57881909eaf01efa0557a43",
-
-      "type": "reasoning",
-
-      "summary": []
-
-    },
-
-    {
-
-      "id": "msg_00e5a81e42bf0bda0169ebb1c0e7608190b3928d22f252a21a",
-
-      "type": "message",
-
-      "status": "completed",
-
-      "content": [
-
-        {
-
-          "type": "output_text",
-
-          "annotations": [],
-
-          "logprobs": [],
-
-          "text": "Use Python’s built-in `json` module.\n\n### Read a JSON file into a Python object\n```python\nimport json\n\nwith open(\"data.json\", \"r\", encoding=\"utf-8\") as f:\n    data = json.load(f)\n\nprint(data)\n```\n\n### What you get back\n`json.load()` converts JSON into normal Python types:\n\n- JSON object → `dict`\n- JSON array → `list`\n- JSON string → `str`\n- JSON number → `int` / `float`\n- JSON true/false → `True` / `False`\n- JSON null → `None`\n\n### Example\nIf `data.json` contains:\n```json\n{\n  \"name\": \"Alice\",\n  \"age\": 30,\n  \"skills\": [\"Python\", \"SQL\"]\n}\n```\n\nThen:\n```python\nimport json\n\nwith open(\"data.json\", \"r\", encoding=\"utf-8\") as f:\n    data = json.load(f)\n\nprint(data[\"name\"])    # Alice\nprint(data[\"skills\"])  # ['Python', 'SQL']\n```\n\n### Handle errors safely\n```python\nimport json\n\ntry:\n    with open(\"data.json\", \"r\", encoding=\"utf-8\") as f:\n        data = json.load(f)\nexcept FileNotFoundError:\n    print(\"File not found.\")\nexcept json.JSONDecodeError:\n    print(\"Invalid JSON.\")\n```\n\n### If you already have JSON as a string\nUse `json.loads()` instead:\n```python\nimport json\n\ntext = '{\"name\": \"Alice\", \"age\": 30}'\ndata = json.loads(text)\nprint(data)\n```\n\nIf you want, I can also show how to **write JSON back to a file**."
-
-        }
-
-      ],
-
-      "phase": "final_answer",
-
-      "role": "assistant"
-
-    }
-
-  ],
-
-  "status": "completed",
-
-  "usage": {
-
-    "input_tokens": 30,
-
-    "output_tokens": 397,
-
-    "total_tokens": 427,
-
-    "input_tokens_details": {
-
-      "cached_tokens": 0
-
-    },
-
-    "output_tokens_details": {
-
-      "reasoning_tokens": 35
-
-    }
-
-  },
 
   "background": false,
 
@@ -346,9 +399,19 @@ console.log(response)
 
   "completed_at": 1777054145,
 
+  "created_at": 1777054123,
+
   "error": null,
 
   "frequency_penalty": 0,
+
+  "gatewayMetadata": {
+
+    "keySource": "Unified"
+
+  },
+
+  "id": "resp_00e5a81e42bf0bda0169ebb1ab449c8190a0d57802b4aebebd",
 
   "incomplete_details": null,
 
@@ -358,7 +421,57 @@ console.log(response)
 
   "max_tool_calls": null,
 
+  "metadata": {},
+
+  "model": "gpt-5.4-pro-2026-03-05",
+
   "moderation": null,
+
+  "object": "response",
+
+  "output": [
+
+    {
+
+      "id": "rs_00e5a81e42bf0bda0169ebb1c0e57881909eaf01efa0557a43",
+
+      "summary": [],
+
+      "type": "reasoning"
+
+    },
+
+    {
+
+      "content": [
+
+        {
+
+          "annotations": [],
+
+          "logprobs": [],
+
+          "text": "Use Python’s built-in `json` module.\n\n### Read a JSON file into a Python object\n```python\nimport json\n\nwith open(\"data.json\", \"r\", encoding=\"utf-8\") as f:\n    data = json.load(f)\n\nprint(data)\n```\n\n### What you get back\n`json.load()` converts JSON into normal Python types:\n\n- JSON object → `dict`\n- JSON array → `list`\n- JSON string → `str`\n- JSON number → `int` / `float`\n- JSON true/false → `True` / `False`\n- JSON null → `None`\n\n### Example\nIf `data.json` contains:\n```json\n{\n  \"name\": \"Alice\",\n  \"age\": 30,\n  \"skills\": [\"Python\", \"SQL\"]\n}\n```\n\nThen:\n```python\nimport json\n\nwith open(\"data.json\", \"r\", encoding=\"utf-8\") as f:\n    data = json.load(f)\n\nprint(data[\"name\"])    # Alice\nprint(data[\"skills\"])  # ['Python', 'SQL']\n```\n\n### Handle errors safely\n```python\nimport json\n\ntry:\n    with open(\"data.json\", \"r\", encoding=\"utf-8\") as f:\n        data = json.load(f)\nexcept FileNotFoundError:\n    print(\"File not found.\")\nexcept json.JSONDecodeError:\n    print(\"Invalid JSON.\")\n```\n\n### If you already have JSON as a string\nUse `json.loads()` instead:\n```python\nimport json\n\ntext = '{\"name\": \"Alice\", \"age\": 30}'\ndata = json.loads(text)\nprint(data)\n```\n\nIf you want, I can also show how to **write JSON back to a file**.",
+
+          "type": "output_text"
+
+        }
+
+      ],
+
+      "id": "msg_00e5a81e42bf0bda0169ebb1c0e7608190b3928d22f252a21a",
+
+      "phase": "final_answer",
+
+      "role": "assistant",
+
+      "status": "completed",
+
+      "type": "message"
+
+    }
+
+  ],
 
   "parallel_tool_calls": true,
 
@@ -381,6 +494,8 @@ console.log(response)
   "safety_identifier": null,
 
   "service_tier": "default",
+
+  "status": "completed",
 
   "store": false,
 
@@ -408,15 +523,29 @@ console.log(response)
 
   "truncation": "disabled",
 
-  "user": null,
+  "usage": {
 
-  "metadata": {},
+    "input_tokens": 30,
 
-  "gatewayMetadata": {
+    "input_tokens_details": {
 
-    "keySource": "Unified"
+      "cached_tokens": 0
 
-  }
+    },
+
+    "output_tokens": 397,
+
+    "output_tokens_details": {
+
+      "reasoning_tokens": 35
+
+    },
+
+    "total_tokens": 427
+
+  },
+
+  "user": null
 
 }
 
@@ -424,6 +553,9 @@ console.log(response)
 ```
 
 **Multi-turn Conversation**  — Continuing a conversation with message array 
+
+* [ TypeScript ](#tab-panel-998)
+* [ cURL ](#tab-panel-999)
 
 TypeScript
 
@@ -439,43 +571,29 @@ const response = await env.AI.run(
 
       {
 
+        content: 'I need help planning a road trip from San Francisco to Los Angeles.',
+
         role: 'user',
-
-        content:
-
-          'I need help planning a road trip from San Francisco to Los Angeles.',
 
       },
 
       {
-
-        role: 'assistant',
 
         content:
 
           "I'd be happy to help! The drive is about 380 miles and takes roughly 5-6 hours. Would you like suggestions for scenic routes or interesting stops along the way?",
 
-      },
-
-      {
-
-        role: 'user',
-
-        content: 'Yes, what are some good places to stop?',
+        role: 'assistant',
 
       },
+
+      { content: 'Yes, name three good stops in one short sentence each.', role: 'user' },
 
     ],
 
-    max_output_tokens: 150,
+    max_output_tokens: 16000,
 
   },
-
-  {
-
-    gateway: { id: 'default' },
-
-  }
 
 )
 
@@ -484,55 +602,65 @@ console.log(response)
 
 ```
 
+Terminal window
+
 ```
 
-{
+curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/v1/responses \
 
-  "id": "resp_0397b95354e16b7b0169ebb1c23c208195ba8c75dd3c321a8b",
+  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
 
-  "object": "response",
+  --header "Content-Type: application/json" \
 
-  "created_at": 1777054146,
+  --data '{
 
-  "model": "gpt-5.4-pro-2026-03-05",
+  "model": "openai/gpt-5.4-pro",
 
-  "output": [
+  "input": [
 
     {
 
-      "id": "rs_0397b95354e16b7b0169ebb1cc0bb08195b0ef5e3a34b7d7aa",
+      "content": "I need help planning a road trip from San Francisco to Los Angeles.",
 
-      "type": "reasoning",
+      "role": "user"
 
-      "summary": []
+    },
+
+    {
+
+      "content": "I'd be happy to help! The drive is about 380 miles and takes roughly 5-6 hours. Would you like suggestions for scenic routes or interesting stops along the way?",
+
+      "role": "assistant"
+
+    },
+
+    {
+
+      "content": "Yes, name three good stops in one short sentence each.",
+
+      "role": "user"
 
     }
 
   ],
 
-  "status": "incomplete",
+  "max_output_tokens": 16000
 
-  "usage": {
+}'
 
-    "input_tokens": 76,
 
-    "output_tokens": 150,
+```
 
-    "total_tokens": 226,
+* [ Output ](#tab-panel-1004)
+* [ Raw response ](#tab-panel-1005)
 
-    "input_tokens_details": {
+- Monterey is great for the aquarium, Cannery Row, and ocean views.  
+- San Luis Obispo is a fun lunch stop with a charming downtown and Mission Plaza.  
+- Santa Barbara offers beaches, palm-lined streets, and an easy coastal break.
 
-      "cached_tokens": 0
+```
 
-    },
-
-    "output_tokens_details": {
-
-      "reasoning_tokens": 150
-
-    }
-
-  },
+{
 
   "background": false,
 
@@ -542,25 +670,81 @@ console.log(response)
 
   },
 
-  "completed_at": null,
+  "completed_at": 1777421276,
+
+  "created_at": 1777421147,
 
   "error": null,
 
   "frequency_penalty": 0,
 
-  "incomplete_details": {
+  "gatewayMetadata": {
 
-    "reason": "max_output_tokens"
+    "keySource": "BYOK"
 
   },
 
+  "id": "resp_08addd0821ac85160169f14b5b16d881968c58b918efd0d015",
+
+  "incomplete_details": null,
+
   "instructions": null,
 
-  "max_output_tokens": 150,
+  "max_output_tokens": 16000,
 
   "max_tool_calls": null,
 
+  "metadata": {},
+
+  "model": "gpt-5.4-pro-2026-03-05",
+
   "moderation": null,
+
+  "object": "response",
+
+  "output": [
+
+    {
+
+      "id": "rs_08addd0821ac85160169f14bdca35c819696eb984a7f0beead",
+
+      "summary": [],
+
+      "type": "reasoning"
+
+    },
+
+    {
+
+      "content": [
+
+        {
+
+          "annotations": [],
+
+          "logprobs": [],
+
+          "text": "- Monterey is great for the aquarium, Cannery Row, and ocean views.  \n- San Luis Obispo is a fun lunch stop with a charming downtown and Mission Plaza.  \n- Santa Barbara offers beaches, palm-lined streets, and an easy coastal break.",
+
+          "type": "output_text"
+
+        }
+
+      ],
+
+      "id": "msg_08addd0821ac85160169f14bdca4ec8196a5b40b76291544f5",
+
+      "phase": "final_answer",
+
+      "role": "assistant",
+
+      "status": "completed",
+
+      "type": "message"
+
+    }
+
+  ],
 
   "parallel_tool_calls": true,
 
@@ -583,6 +767,8 @@ console.log(response)
   "safety_identifier": null,
 
   "service_tier": "default",
+
+  "status": "completed",
 
   "store": false,
 
@@ -610,15 +796,29 @@ console.log(response)
 
   "truncation": "disabled",
 
-  "user": null,
+  "usage": {
 
-  "metadata": {},
+    "input_tokens": 78,
 
-  "gatewayMetadata": {
+    "input_tokens_details": {
 
-    "keySource": "Unified"
+      "cached_tokens": 0
 
-  }
+    },
+
+    "output_tokens": 104,
+
+    "output_tokens_details": {
+
+      "reasoning_tokens": 46
+
+    },
+
+    "total_tokens": 182
+
+  },
+
+  "user": null
 
 }
 
@@ -626,6 +826,9 @@ console.log(response)
 ```
 
 **Temperature Control**  — Using temperature for creative responses 
+
+* [ TypeScript ](#tab-panel-994)
+* [ cURL ](#tab-panel-995)
 
 TypeScript
 
@@ -635,19 +838,7 @@ const response = await env.AI.run(
 
   'openai/gpt-5.4-pro',
 
-  {
-
-    input: 'Write a haiku about artificial intelligence',
-
-    temperature: 1,
-
-  },
-
-  {
-
-    gateway: { id: 'default' },
-
-  }
+  { input: 'Write a haiku about artificial intelligence', temperature: 1 },
 
 )
 
@@ -656,85 +847,39 @@ console.log(response)
 
 ```
 
+Terminal window
+
+```
+
+curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/v1/responses \
+
+  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+
+  --header "Content-Type: application/json" \
+
+  --data '{
+
+  "model": "openai/gpt-5.4-pro",
+
+  "input": "Write a haiku about artificial intelligence",
+
+  "temperature": 1
+
+}'
+
+
+```
+
+* [ Output ](#tab-panel-1006)
+* [ Raw response ](#tab-panel-1007)
+
+Silent circuits dream  
+Learning patterns in the dark  
+Dawn wakes metal minds
+
 ```
 
 {
-
-  "id": "resp_01b04056ffd5d9ac0169ebb1cc85348196a164e1d9e99ac1f5",
-
-  "object": "response",
-
-  "created_at": 1777054156,
-
-  "model": "gpt-5.4-pro-2026-03-05",
-
-  "output": [
-
-    {
-
-      "id": "rs_01b04056ffd5d9ac0169ebb1ee42688196859b0cd089b7924c",
-
-      "type": "reasoning",
-
-      "summary": []
-
-    },
-
-    {
-
-      "id": "msg_01b04056ffd5d9ac0169ebb1ee44248196aa66c63d28c6a59b",
-
-      "type": "message",
-
-      "status": "completed",
-
-      "content": [
-
-        {
-
-          "type": "output_text",
-
-          "annotations": [],
-
-          "logprobs": [],
-
-          "text": "Silent circuits dream  \nLearning patterns in the dark  \nDawn wakes metal minds"
-
-        }
-
-      ],
-
-      "phase": "final_answer",
-
-      "role": "assistant"
-
-    }
-
-  ],
-
-  "status": "completed",
-
-  "usage": {
-
-    "input_tokens": 13,
-
-    "output_tokens": 122,
-
-    "total_tokens": 135,
-
-    "input_tokens_details": {
-
-      "cached_tokens": 0
-
-    },
-
-    "output_tokens_details": {
-
-      "reasoning_tokens": 101
-
-    }
-
-  },
 
   "background": false,
 
@@ -746,9 +891,19 @@ console.log(response)
 
   "completed_at": 1777054190,
 
+  "created_at": 1777054156,
+
   "error": null,
 
   "frequency_penalty": 0,
+
+  "gatewayMetadata": {
+
+    "keySource": "Unified"
+
+  },
+
+  "id": "resp_01b04056ffd5d9ac0169ebb1cc85348196a164e1d9e99ac1f5",
 
   "incomplete_details": null,
 
@@ -758,7 +913,57 @@ console.log(response)
 
   "max_tool_calls": null,
 
+  "metadata": {},
+
+  "model": "gpt-5.4-pro-2026-03-05",
+
   "moderation": null,
+
+  "object": "response",
+
+  "output": [
+
+    {
+
+      "id": "rs_01b04056ffd5d9ac0169ebb1ee42688196859b0cd089b7924c",
+
+      "summary": [],
+
+      "type": "reasoning"
+
+    },
+
+    {
+
+      "content": [
+
+        {
+
+          "annotations": [],
+
+          "logprobs": [],
+
+          "text": "Silent circuits dream  \nLearning patterns in the dark  \nDawn wakes metal minds",
+
+          "type": "output_text"
+
+        }
+
+      ],
+
+      "id": "msg_01b04056ffd5d9ac0169ebb1ee44248196aa66c63d28c6a59b",
+
+      "phase": "final_answer",
+
+      "role": "assistant",
+
+      "status": "completed",
+
+      "type": "message"
+
+    }
+
+  ],
 
   "parallel_tool_calls": true,
 
@@ -781,6 +986,8 @@ console.log(response)
   "safety_identifier": null,
 
   "service_tier": "default",
+
+  "status": "completed",
 
   "store": false,
 
@@ -808,15 +1015,29 @@ console.log(response)
 
   "truncation": "disabled",
 
-  "user": null,
+  "usage": {
 
-  "metadata": {},
+    "input_tokens": 13,
 
-  "gatewayMetadata": {
+    "input_tokens_details": {
 
-    "keySource": "Unified"
+      "cached_tokens": 0
 
-  }
+    },
+
+    "output_tokens": 122,
+
+    "output_tokens_details": {
+
+      "reasoning_tokens": 101
+
+    },
+
+    "total_tokens": 135
+
+  },
+
+  "user": null
 
 }
 
@@ -824,6 +1045,9 @@ console.log(response)
 ```
 
 **With Reasoning**  — Using reasoning effort for complex problems 
+
+* [ TypeScript ](#tab-panel-996)
+* [ cURL ](#tab-panel-997)
 
 TypeScript
 
@@ -839,19 +1063,9 @@ const response = await env.AI.run(
 
       'Solve this problem step by step: A train leaves Chicago at 60mph heading east. Another train leaves New York at 80mph heading west. They are 900 miles apart. When do they meet?',
 
-    reasoning: {
-
-      effort: 'medium',
-
-    },
+    reasoning: { effort: 'medium' },
 
   },
-
-  {
-
-    gateway: { id: 'default' },
-
-  }
 
 )
 
@@ -860,85 +1074,74 @@ console.log(response)
 
 ```
 
+Terminal window
+
+```
+
+curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/v1/responses \
+
+  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+
+  --header "Content-Type: application/json" \
+
+  --data '{
+
+  "model": "openai/gpt-5.4-pro",
+
+  "input": "Solve this problem step by step: A train leaves Chicago at 60mph heading east. Another train leaves New York at 80mph heading west. They are 900 miles apart. When do they meet?",
+
+  "reasoning": {
+
+    "effort": "medium"
+
+  }
+
+}'
+
+
+```
+
+* [ Output ](#tab-panel-1008)
+* [ Raw response ](#tab-panel-1009)
+
+Step 1: Find their combined speed since they are moving toward each other.
+
+- Train from Chicago: **60 mph**
+- Train from New York: **80 mph**
+
+Combined speed:
+
+**60 + 80 = 140 mph**
+
+Step 2: Use the distance formula:
+
+\[
+\text{time}=\frac{\text{distance}}{\text{speed}}
+\]
+
+\[
+\text{time}=\frac{900}{140}
+\]
+
+\[
+\text{time}=6.428571\text{ hours}
+\]
+
+Step 3: Convert the decimal part to minutes.
+
+\[
+0.428571 \times 60 \approx 25.7 \text{ minutes}
+\]
+
+So they meet after about:
+
+**6 hours 26 minutes**
+
+Final answer: **The trains meet about 6 hours 26 minutes after they leave.**
+
 ```
 
 {
-
-  "id": "resp_01e1e7671514bf440169ebb1ef8af88190b68b1e60a0cb59ed",
-
-  "object": "response",
-
-  "created_at": 1777054191,
-
-  "model": "gpt-5.4-pro-2026-03-05",
-
-  "output": [
-
-    {
-
-      "id": "rs_01e1e7671514bf440169ebb236f1e88190931dc758c55a4050",
-
-      "type": "reasoning",
-
-      "summary": []
-
-    },
-
-    {
-
-      "id": "msg_01e1e7671514bf440169ebb236f3a88190b6a99b6fc6389fde",
-
-      "type": "message",
-
-      "status": "completed",
-
-      "content": [
-
-        {
-
-          "type": "output_text",
-
-          "annotations": [],
-
-          "logprobs": [],
-
-          "text": "Step 1: Find their combined speed since they are moving toward each other.\n\n- Train from Chicago: **60 mph**\n- Train from New York: **80 mph**\n\nCombined speed:\n\n**60 + 80 = 140 mph**\n\nStep 2: Use the distance formula:\n\n\\[\n\\text{time}=\\frac{\\text{distance}}{\\text{speed}}\n\\]\n\n\\[\n\\text{time}=\\frac{900}{140}\n\\]\n\n\\[\n\\text{time}=6.428571\\text{ hours}\n\\]\n\nStep 3: Convert the decimal part to minutes.\n\n\\[\n0.428571 \\times 60 \\approx 25.7 \\text{ minutes}\n\\]\n\nSo they meet after about:\n\n**6 hours 26 minutes**\n\nFinal answer: **The trains meet about 6 hours 26 minutes after they leave.**"
-
-        }
-
-      ],
-
-      "phase": "final_answer",
-
-      "role": "assistant"
-
-    }
-
-  ],
-
-  "status": "completed",
-
-  "usage": {
-
-    "input_tokens": 48,
-
-    "output_tokens": 272,
-
-    "total_tokens": 320,
-
-    "input_tokens_details": {
-
-      "cached_tokens": 0
-
-    },
-
-    "output_tokens_details": {
-
-      "reasoning_tokens": 88
-
-    }
-
-  },
 
   "background": false,
 
@@ -950,9 +1153,19 @@ console.log(response)
 
   "completed_at": 1777054263,
 
+  "created_at": 1777054191,
+
   "error": null,
 
   "frequency_penalty": 0,
+
+  "gatewayMetadata": {
+
+    "keySource": "Unified"
+
+  },
+
+  "id": "resp_01e1e7671514bf440169ebb1ef8af88190b68b1e60a0cb59ed",
 
   "incomplete_details": null,
 
@@ -962,7 +1175,57 @@ console.log(response)
 
   "max_tool_calls": null,
 
+  "metadata": {},
+
+  "model": "gpt-5.4-pro-2026-03-05",
+
   "moderation": null,
+
+  "object": "response",
+
+  "output": [
+
+    {
+
+      "id": "rs_01e1e7671514bf440169ebb236f1e88190931dc758c55a4050",
+
+      "summary": [],
+
+      "type": "reasoning"
+
+    },
+
+    {
+
+      "content": [
+
+        {
+
+          "annotations": [],
+
+          "logprobs": [],
+
+          "text": "Step 1: Find their combined speed since they are moving toward each other.\n\n- Train from Chicago: **60 mph**\n- Train from New York: **80 mph**\n\nCombined speed:\n\n**60 + 80 = 140 mph**\n\nStep 2: Use the distance formula:\n\n\\[\n\\text{time}=\\frac{\\text{distance}}{\\text{speed}}\n\\]\n\n\\[\n\\text{time}=\\frac{900}{140}\n\\]\n\n\\[\n\\text{time}=6.428571\\text{ hours}\n\\]\n\nStep 3: Convert the decimal part to minutes.\n\n\\[\n0.428571 \\times 60 \\approx 25.7 \\text{ minutes}\n\\]\n\nSo they meet after about:\n\n**6 hours 26 minutes**\n\nFinal answer: **The trains meet about 6 hours 26 minutes after they leave.**",
+
+          "type": "output_text"
+
+        }
+
+      ],
+
+      "id": "msg_01e1e7671514bf440169ebb236f3a88190b6a99b6fc6389fde",
+
+      "phase": "final_answer",
+
+      "role": "assistant",
+
+      "status": "completed",
+
+      "type": "message"
+
+    }
+
+  ],
 
   "parallel_tool_calls": true,
 
@@ -985,6 +1248,8 @@ console.log(response)
   "safety_identifier": null,
 
   "service_tier": "default",
+
+  "status": "completed",
 
   "store": false,
 
@@ -1012,15 +1277,29 @@ console.log(response)
 
   "truncation": "disabled",
 
-  "user": null,
+  "usage": {
 
-  "metadata": {},
+    "input_tokens": 48,
 
-  "gatewayMetadata": {
+    "input_tokens_details": {
 
-    "keySource": "Unified"
+      "cached_tokens": 0
 
-  }
+    },
+
+    "output_tokens": 272,
+
+    "output_tokens_details": {
+
+      "reasoning_tokens": 88
+
+    },
+
+    "total_tokens": 320
+
+  },
+
+  "user": null
 
 }
 
@@ -1029,8 +1308,8 @@ console.log(response)
 
 ## Parameters
 
-* [ Input ](#tab-panel-440)
-* [ Output ](#tab-panel-441)
+* [ Input ](#tab-panel-1010)
+* [ Output ](#tab-panel-1011)
 
 ▶input
 
@@ -1040,53 +1319,53 @@ instructions
 
 `string`
 
-temperature
-
-`number`minimum: 0maximum: 2
-
 max\_output\_tokens
 
 `number`exclusiveMinimum: 0
-
-top\_p
-
-`number`minimum: 0maximum: 1
-
-stream
-
-`boolean`
-
-▶tools\[\]
-
-`array`
-
-tool\_choice
-
-``
-
-▶text{}
-
-`object`
 
 ▶reasoning{}
 
 `object`
 
+stream
+
+`boolean`
+
+temperature
+
+`number`maximum: 2minimum: 0
+
+▶text{}
+
+`object`
+
+tool\_choice
+
+``
+
+▶tools\[\]
+
+`array`
+
+top\_p
+
+`number`maximum: 1minimum: 0
+
+created\_at
+
+`number`
+
 id
+
+`string`
+
+model
 
 `string`
 
 object
 
 `string`const: response
-
-created\_at
-
-`number`
-
-model
-
-`string`
 
 ▶output\[\]
 

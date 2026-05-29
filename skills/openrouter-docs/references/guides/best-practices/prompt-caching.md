@@ -26,7 +26,33 @@ To maximize cache hit rates, OpenRouter uses **provider sticky routing** to rout
 
 **Sticky routing granularity:**
 
-Sticky routing is tracked at the account level, per model, and per conversation. OpenRouter identifies conversations by hashing the first system (or developer) message and the first non-system message in each request, so requests that share the same opening messages are routed to the same provider. This means different conversations naturally stick to different providers, improving load-balancing and throughput while keeping caches warm within each conversation.
+Sticky routing is tracked at the account level, per model, and per conversation. By default, OpenRouter identifies conversations by hashing the first system (or developer) message and the first non-system message in each request, so requests that share the same opening messages are routed to the same provider. This means different conversations naturally stick to different providers, improving load-balancing and throughput while keeping caches warm within each conversation.
+
+### Using `session_id` for sticky sessions
+
+For more explicit control over sticky routing, you can pass a `session_id` in your request. When a `session_id` is present, OpenRouter uses it directly as the sticky routing key instead of deriving one from message hashing. This is especially useful for multi-turn agentic workflows where the opening messages may change between requests but you still want to route to the same provider.
+
+You can provide `session_id` in two ways:
+
+* **Request body**: Include `session_id` as a top-level field in your request body. If both are provided, the body value takes precedence.
+* **Header**: Set the `x-session-id` HTTP header.
+
+The `session_id` must be at most 256 characters.
+
+```json
+{
+  "model": "anthropic/claude-sonnet-4",
+  "session_id": "my-agent-session-abc123",
+  "messages": [
+    {
+      "role": "user",
+      "content": "Continue our conversation..."
+    }
+  ]
+}
+```
+
+When `session_id` is set, sticky routing activates on any successful request — even before cache usage is observed — so that subsequent requests in the same session benefit from prompt caching from the start. Without `session_id`, sticky routing only activates after a cache hit is detected.
 
 ## Inspecting cache usage
 
@@ -176,29 +202,13 @@ By default, the cache expires after 5 minutes, but you can extend this to 1 hour
 
 [Click here to read more about Anthropic prompt caching and its limitation.](https://platform.claude.com/docs/en/build-with-claude/prompt-caching)
 
-### Supported models
-
-The following Claude models support prompt caching (both automatic and explicit):
-
-* Claude Opus 4.7
-* Claude Opus 4.6
-* Claude Opus 4.5
-* Claude Opus 4.1
-* Claude Opus 4
-* Claude Sonnet 4.6
-* Claude Sonnet 4.5
-* Claude Sonnet 4
-* Claude Sonnet 3.7 (deprecated)
-* Claude Haiku 4.5
-* Claude Haiku 3.5
-
 ### Minimum token requirements
 
-Each model has a minimum cacheable prompt length:
+Each model has a minimum cacheable prompt length (see [Anthropic's cache limitations](https://platform.claude.com/docs/en/build-with-claude/prompt-caching#cache-limitations)):
 
-* **4096 tokens**: Claude Opus 4.7, Claude Opus 4.6, Claude Opus 4.5, Claude Haiku 4.5
-* **2048 tokens**: Claude Sonnet 4.6, Claude Haiku 3.5
-* **1024 tokens**: Claude Sonnet 4.5, Claude Opus 4.1, Claude Opus 4, Claude Sonnet 4, Claude Sonnet 3.7
+* **4,096 tokens**: Claude Opus 4.8, Claude Opus 4.7, Claude Opus 4.6, Claude Opus 4.5, Claude Haiku 4.5
+* **2,048 tokens**: Claude Haiku 3.5
+* **1,024 tokens**: Claude Sonnet 4.6, Claude Sonnet 4.5, Claude Opus 4.1, Claude Opus 4, Claude Sonnet 4
 
 Prompts shorter than these minimums will not be cached.
 

@@ -1,3 +1,5 @@
+# Gemini Interactions API
+
 The Gemini Interactions API is an experimental API that allows developers to build generative AI applications using Gemini models. Gemini is our most capable model, built from the ground up to be multimodal. It can generalize and seamlessly understand, operate across, and combine different types of information including language, images, audio, video, and code. You can use the Gemini API for use cases like reasoning across text and images, content generation, dialogue agents, summarization and classification systems, and more.
 [View as markdown](https://ai.google.dev/static/api/interactions.md.txt) [View the OpenAPI Spec](https://ai.google.dev/static/api/interactions.openapi.json)
 
@@ -264,7 +266,42 @@ Returns an [Interaction](https://ai.google.dev/api/interactions-api#Resource:Int
 
 ### Simple Request
 
-<iframe src="https:///frame/api/interactions-api_6a4cbd4d178987c4114e5516e3237dc39dff557b0a8dec0806569d5a20560d1d.frame" class="framebox inherit-locale " allow="clipboard-write https://" allowfullscreen is-upgraded></iframe>
+#### Example Request
+
+REST Python JavaScript
+
+```sh
+curl -X POST https://generativelanguage.googleapis.com/v1beta/interactions 
+  -H "x-goog-api-key: $GEMINI_API_KEY" 
+  -H "Content-Type: application/json" 
+  -H "Api-Revision: 2026-05-20" 
+  -d '{
+    "model": "gemini-3-flash-preview",
+    "input": "Hello, how are you?"
+  }'
+```
+
+```python
+from google import genai
+
+client = genai.Client()
+interaction = client.interactions.create(
+    model="gemini-3-flash-preview",
+    input="Hello, how are you?",
+)
+print(interaction.output_text)
+```
+
+```javascript
+import {GoogleGenAI} from '@google/genai';
+
+const ai = new GoogleGenAI({});
+const interaction = await ai.interactions.create({
+    model: 'gemini-3-flash-preview',
+    input: 'Hello, how are you?',
+});
+console.log(interaction.output_text);
+```
 
 #### Example Response
 
@@ -306,7 +343,54 @@ Returns an [Interaction](https://ai.google.dev/api/interactions-api#Resource:Int
 
 ### Multi-turn
 
-<iframe src="https:///frame/api/interactions-api_e17103c3a2979c473b3e5b1c2fc41358a73f9063e39ff88593ec29d3890c8a8c.frame" class="framebox inherit-locale " allow="clipboard-write https://" allowfullscreen is-upgraded></iframe>
+#### Example Request
+
+REST Python JavaScript
+
+```sh
+curl -X POST https://generativelanguage.googleapis.com/v1beta/interactions 
+  -H "x-goog-api-key: $GEMINI_API_KEY" 
+  -H "Content-Type: application/json" 
+  -H "Api-Revision: 2026-05-20" 
+  -d '{
+    "model": "gemini-3-flash-preview",
+    "input": [
+      { "type": "user_input", "content": [{ "type": "text", "text": "Hello!" }] },
+      { "type": "model_output", "content": [{ "type": "text", "text": "Hi there! How can I help you today?" }] },
+      { "type": "user_input", "content": [{ "type": "text", "text": "What is the capital of France?" }] }
+    ]
+  }'
+```
+
+```python
+from google import genai
+
+client = genai.Client()
+response = client.interactions.create(
+    model="gemini-3-flash-preview",
+    input=[
+        { "type": "user_input", "content": [{ "type": "text", "text": "Hello!" }] },
+        { "type": "model_output", "content": [{ "type": "text", "text": "Hi there! How can I help you today?" }] },
+        { "type": "user_input", "content": [{ "type": "text", "text": "What is the capital of France?" }] }
+    ]
+)
+print(response.output_text)
+```
+
+```javascript
+import {GoogleGenAI} from '@google/genai';
+
+const ai = new GoogleGenAI({});
+const interaction = await ai.interactions.create({
+    model: 'gemini-3-flash-preview',
+    input: [
+        { type: 'user_input', content: [{ type: 'text', text: 'Hello' }] },
+        { type: 'model_output', content: [{ type: 'text', text: 'Hi there! How can I help you today?' }] },
+        { type: 'user_input', content: [{ type: 'text', text: 'What is the capital of France?' }] }
+    ]
+});
+console.log(interaction.output_text);
+```
 
 #### Example Response
 
@@ -348,7 +432,58 @@ Returns an [Interaction](https://ai.google.dev/api/interactions-api#Resource:Int
 
 ### Image Input
 
-<iframe src="https:///frame/api/interactions-api_b2dd7918170d817cfe1bda79271b0af72a36fc5c4bfcaafe2ec844a96384a90d.frame" class="framebox inherit-locale " allow="clipboard-write https://" allowfullscreen is-upgraded></iframe>
+#### Example Request
+
+REST Python JavaScript
+
+```sh
+curl -X POST https://generativelanguage.googleapis.com/v1beta/interactions 
+  -H "x-goog-api-key: $GEMINI_API_KEY" 
+  -H "Content-Type: application/json" 
+  -H "Api-Revision: 2026-05-20" 
+  -d '{
+    "model": "gemini-3-flash-preview",
+    "input": [
+      {
+        "type": "text",
+        "text": "What is in this picture?"
+      },
+      {
+        "type": "image",
+        "data": "BASE64_ENCODED_IMAGE",
+        "mime_type": "image/png"
+      }
+    ]
+  }'
+```
+
+```python
+from google import genai
+
+client = genai.Client()
+response = client.interactions.create(
+    model="gemini-3-flash-preview",
+    input=[
+      { "type": "text", "text": "What is in this picture?" },
+      { "type": "image", "data": "BASE64_ENCODED_IMAGE", "mime_type": "image/png" }
+    ]
+)
+print(response.output_text)
+```
+
+```javascript
+import {GoogleGenAI} from '@google/genai';
+
+const ai = new GoogleGenAI({});
+const interaction = await ai.interactions.create({
+    model: 'gemini-3-flash-preview',
+    input: [
+      { type: 'text', text: 'What is in this picture?' },
+      { type: 'image', data: 'BASE64_ENCODED_IMAGE', mime_type: 'image/png' }
+    ]
+});
+console.log(interaction.output_text);
+```
 
 #### Example Response
 
@@ -394,7 +529,91 @@ Returns an [Interaction](https://ai.google.dev/api/interactions-api#Resource:Int
 
 ### Function Calling
 
-<iframe src="https:///frame/api/interactions-api_8050011cb433cbe6168ddf31df6ec8b05080c9af7275487c395b34a6d3686b24.frame" class="framebox inherit-locale " allow="clipboard-write https://" allowfullscreen is-upgraded></iframe>
+#### Example Request
+
+REST Python JavaScript
+
+```sh
+curl -X POST https://generativelanguage.googleapis.com/v1beta/interactions 
+  -H "x-goog-api-key: $GEMINI_API_KEY" 
+  -H "Content-Type: application/json" 
+  -H "Api-Revision: 2026-05-20" 
+  -d '{
+    "model": "gemini-3-flash-preview",
+    "tools": [
+      {
+        "type": "function",
+        "name": "get_weather",
+        "description": "Get the current weather in a given location",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "location": {
+              "type": "string",
+              "description": "The city and state, e.g. San Francisco, CA"
+            }
+          },
+          "required": [
+            "location"
+          ]
+        }
+      }
+    ],
+    "input": "What is the weather like in Boston, MA?"
+  }'
+```
+
+```python
+from google import genai
+
+client = genai.Client()
+response = client.interactions.create(
+    model="gemini-3-flash-preview",
+    tools=[{
+        "type": "function",
+        "name": "get_weather",
+        "description": "Get the current weather in a given location",
+        "parameters": {
+            "type": "object",
+            "properties": {
+                "location": {
+                    "type": "string",
+                    "description": "The city and state, e.g. San Francisco, CA"
+                }
+            },
+            "required": ["location"]
+        }
+    }],
+    input="What is the weather like in Boston, MA?"
+)
+print(response.steps[-1])
+```
+
+```javascript
+import {GoogleGenAI} from '@google/genai';
+
+const ai = new GoogleGenAI({});
+const interaction = await ai.interactions.create({
+    model: 'gemini-3-flash-preview',
+    tools: [{
+        type: 'function',
+        name: 'get_weather',
+        description: 'Get the current weather in a given location',
+        parameters: {
+            type: 'object',
+            properties: {
+                location: {
+                    type: 'string',
+                    description: 'The city and state, e.g. San Francisco, CA'
+                }
+            },
+            required: ['location']
+        }
+    }],
+    input: 'What is the weather like in Boston, MA?'
+});
+console.log(interaction.steps.at(-1));
+```
 
 #### Example Response
 
@@ -435,7 +654,45 @@ Returns an [Interaction](https://ai.google.dev/api/interactions-api#Resource:Int
 
 ### Deep Research
 
-<iframe src="https:///frame/api/interactions-api_6e9e40d1fdd53a1caf36a27f98803a7cc1dbff8b5d35ea570a8b05866b382e9e.frame" class="framebox inherit-locale " allow="clipboard-write https://" allowfullscreen is-upgraded></iframe>
+#### Example Request
+
+REST Python JavaScript
+
+```sh
+curl -X POST https://generativelanguage.googleapis.com/v1beta/interactions 
+  -H "x-goog-api-key: $GEMINI_API_KEY" 
+  -H "Content-Type: application/json" 
+  -H "Api-Revision: 2026-05-20" 
+  -d '{
+    "agent": "deep-research-pro-preview-12-2025",
+    "input": "Find a cure to cancer",
+    "background": true
+  }'
+```
+
+```python
+from google import genai
+
+client = genai.Client()
+interaction = client.interactions.create(
+    agent="deep-research-pro-preview-12-2025",
+    input="find a cure to cancer",
+    background=True,
+)
+print(interaction.status)
+```
+
+```javascript
+import {GoogleGenAI} from '@google/genai';
+
+const ai = new GoogleGenAI({});
+const interaction = await ai.interactions.create({
+    agent: 'deep-research-pro-preview-12-2025',
+    input: 'find a cure to cancer',
+    background: true,
+});
+console.log(interaction.status);
+```
 
 #### Example Response
 
@@ -499,7 +756,35 @@ Returns an [Interaction](https://ai.google.dev/api/interactions-api#Resource:Int
 
 ### Get Interaction
 
-<iframe src="https:///frame/api/interactions-api_9bfb93c53dbd222e441c5dffd6bb0d7bfcc20c1d20451ee44ca7a9b94878f06f.frame" class="framebox inherit-locale " allow="clipboard-write https://" allowfullscreen is-upgraded></iframe>
+#### Example Request
+
+REST Python JavaScript
+
+```sh
+curl -X GET "https://generativelanguage.googleapis.com/v1beta/interactions/$INTERACTION_ID" 
+  -H "x-goog-api-key: $GEMINI_API_KEY" 
+  -H "Api-Revision: 2026-05-20"
+```
+
+```python
+from google import genai
+
+client = genai.Client()
+
+
+interaction = client.interactions.get(id=created.id)
+print(interaction.status)
+```
+
+```javascript
+import {GoogleGenAI} from '@google/genai';
+
+const ai = new GoogleGenAI({});
+
+
+const interaction = await ai.interactions.get(created.id);
+console.log(interaction.status);
+```
 
 #### Example Response
 
@@ -542,7 +827,35 @@ If successful, the response is empty.
 
 ### Delete Interaction
 
-<iframe src="https:///frame/api/interactions-api_0fc2bd340016691664f848e973e53332506ebccc55dfe5a005735e2cd9b3bc83.frame" class="framebox inherit-locale " allow="clipboard-write https://" allowfullscreen is-upgraded></iframe>
+#### Example Request
+
+REST Python JavaScript
+
+```sh
+curl -X DELETE "https://generativelanguage.googleapis.com/v1beta/interactions/$INTERACTION_ID" 
+  -H "x-goog-api-key: $GEMINI_API_KEY" 
+  -H "Api-Revision: 2026-05-20"
+```
+
+```python
+from google import genai
+
+client = genai.Client()
+
+
+client.interactions.delete(id=created.id)
+print("Interaction deleted successfully.")
+```
+
+```javascript
+import {GoogleGenAI} from '@google/genai';
+
+const ai = new GoogleGenAI({});
+
+
+await ai.interactions.delete(created.id);
+console.log('Interaction deleted successfully.');
+```
 
 ## Canceling an interaction
 
@@ -561,7 +874,51 @@ Returns an [Interaction](https://ai.google.dev/api/interactions-api#Resource:Int
 
 ### Cancel Interaction
 
-<iframe src="https:///frame/api/interactions-api_fcb2135565daae5e05ed1c089b22c4353b19309adb2c3a13cf0f27bdeb9c532d.frame" class="framebox inherit-locale " allow="clipboard-write https://" allowfullscreen is-upgraded></iframe>
+#### Example Request
+
+REST Python JavaScript
+
+```sh
+curl -X POST "https://generativelanguage.googleapis.com/v1beta/interactions/$INTERACTION_ID/cancel" 
+  -H "x-goog-api-key: $GEMINI_API_KEY" 
+  -H "Api-Revision: 2026-05-20"
+```
+
+```python
+from google import genai
+
+client = genai.Client()
+
+# Start a background interaction so it stays in-progress.
+created = client.interactions.create(
+    model="gemini-3-flash-preview",
+    input="Write a long essay about the history of computing.",
+    tools=[{"type": "computer_use"}],
+    background=True,
+)
+
+# Cancel the in-progress interaction.
+interaction = client.interactions.cancel(id=created.id)
+print(interaction.status)
+```
+
+```javascript
+import {GoogleGenAI} from '@google/genai';
+
+const ai = new GoogleGenAI({});
+
+// Start a background interaction so it stays in-progress.
+const created = await ai.interactions.create({
+    model: 'gemini-3-flash-preview',
+    input: 'Write a long essay about the history of computing.',
+    tools: [{ type: 'computer_use' }],
+    background: true,
+});
+
+// Cancel the in-progress interaction.
+const interaction = await ai.interactions.cancel(created.id);
+console.log(interaction.status);
+```
 
 #### Example Response
 
@@ -1236,35 +1593,441 @@ engine string (optional) Optional. Used to specify Vertex AI Search engine.
 
 ### Function
 
-<iframe src="https:///frame/api/interactions-api_69e0aa0c64d5f68297b8bcbbbf72cab2046f4864d9d706f31363c061d97e7c2d.frame" class="framebox inherit-locale " allow="clipboard-write https://" allowfullscreen is-upgraded></iframe>
+#### Example
+
+REST Python JavaScript
+
+```sh
+curl -X POST https://generativelanguage.googleapis.com/v1beta/interactions 
+  -H "x-goog-api-key: $GEMINI_API_KEY" 
+  -H "Content-Type: application/json" 
+  -H "Api-Revision: 2026-05-20" 
+  -d '{
+    "model": "gemini-3-flash-preview",
+    "tools": [{
+      "type": "function",
+      "name": "get_weather",
+      "description": "Get the current weather in a given location",
+      "parameters": {
+        "type": "object",
+        "properties": {
+          "location": {
+            "type": "string",
+            "description": "The city and state, e.g. San Francisco, CA"
+          }
+        },
+        "required": ["location"]
+      }
+    }],
+    "input": "What is the weather like in Boston, MA?"
+  }'
+```
+
+```python
+from google import genai
+
+client = genai.Client()
+response = client.interactions.create(
+    model="gemini-3-flash-preview",
+    tools=[{
+        "type": "function",
+        "name": "get_weather",
+        "description": "Get the current weather in a given location",
+        "parameters": {
+            "type": "object",
+            "properties": {
+                "location": {
+                    "type": "string",
+                    "description": "The city and state, e.g. San Francisco, CA"
+                }
+            },
+            "required": ["location"]
+        }
+    }],
+    input="What is the weather like in Boston?"
+)
+print(response.steps[-1])
+```
+
+```javascript
+import {GoogleGenAI} from '@google/genai';
+
+const ai = new GoogleGenAI({});
+const interaction = await ai.interactions.create({
+    model: 'gemini-3-flash-preview',
+    tools: [{
+        type: 'function',
+        name: 'get_weather',
+        description: 'Get the current weather in a given location',
+        parameters: {
+            type: 'object',
+            properties: {
+                location: {
+                    type: 'string',
+                    description: 'The city and state, e.g. San Francisco, CA'
+                }
+            },
+            required: ['location']
+        }
+    }],
+    input: 'What is the weather like in Boston?'
+});
+console.log(interaction.steps.at(-1));
+```
 
 ### CodeExecution
 
-<iframe src="https:///frame/api/interactions-api_c0e7dbde92a612ce6bb7a1f400c0a9b54549383ad65e58a95b658dda06b9860f.frame" class="framebox inherit-locale " allow="clipboard-write https://" allowfullscreen is-upgraded></iframe>
+#### Example
+
+REST Python JavaScript
+
+```sh
+curl -X POST https://generativelanguage.googleapis.com/v1beta/interactions 
+  -H "x-goog-api-key: $GEMINI_API_KEY" 
+  -H "Content-Type: application/json" 
+  -H "Api-Revision: 2026-05-20" 
+  -d '{
+    "model": "gemini-3-flash-preview",
+    "tools": [{
+      "type": "code_execution"
+    }],
+    "input": "Calculate the first 10 Fibonacci numbers"
+  }'
+```
+
+```python
+from google import genai
+
+client = genai.Client()
+response = client.interactions.create(
+    model="gemini-3-flash-preview",
+    tools=[{"type": "code_execution"}],
+    input="Calculate the first 10 Fibonacci numbers"
+)
+print(response.output_text)
+```
+
+```javascript
+import {GoogleGenAI} from '@google/genai';
+
+const ai = new GoogleGenAI({});
+const interaction = await ai.interactions.create({
+    model: 'gemini-3-flash-preview',
+    tools: [{ type: 'code_execution' }],
+    input: 'Calculate the first 10 Fibonacci numbers'
+});
+console.log(interaction.output_text);
+```
 
 ### UrlContext
 
-<iframe src="https:///frame/api/interactions-api_13a5b9eb3ad25fa8c4f6cae6ef4d7ba5e10c9af981ca86211d2e956ad4e9d083.frame" class="framebox inherit-locale " allow="clipboard-write https://" allowfullscreen is-upgraded></iframe>
+#### Example
+
+REST Python JavaScript
+
+```sh
+curl -X POST https://generativelanguage.googleapis.com/v1beta/interactions 
+  -H "x-goog-api-key: $GEMINI_API_KEY" 
+  -H "Content-Type: application/json" 
+  -H "Api-Revision: 2026-05-20" 
+  -d '{
+    "model": "gemini-3-flash-preview",
+    "tools": [{
+      "type": "url_context"
+    }],
+    "input": "Summarize https://www.example.com"
+  }'
+```
+
+```python
+from google import genai
+
+client = genai.Client()
+response = client.interactions.create(
+    model="gemini-3-flash-preview",
+    tools=[{"type": "url_context"}],
+    input="Summarize https://www.example.com"
+)
+print(response.output_text)
+```
+
+```javascript
+import {GoogleGenAI} from '@google/genai';
+
+const ai = new GoogleGenAI({});
+const interaction = await ai.interactions.create({
+    model: 'gemini-3-flash-preview',
+    tools: [{ type: 'url_context' }],
+    input: 'Summarize https://www.example.com'
+});
+console.log(interaction.output_text);
+```
 
 ### ComputerUse
 
-<iframe src="https:///frame/api/interactions-api_6a3fb91cf8770fd2b668ec6269e8968fc17e2df7a50d4005f68ded26fb829ab9.frame" class="framebox inherit-locale " allow="clipboard-write https://" allowfullscreen is-upgraded></iframe>
+#### Example
+
+REST Python JavaScript
+
+```sh
+curl -X POST https://generativelanguage.googleapis.com/v1beta/interactions 
+  -H "x-goog-api-key: $GEMINI_API_KEY" 
+  -H "Content-Type: application/json" 
+  -H "Api-Revision: 2026-05-20" 
+  -d '{
+    "model": "gemini-2.5-computer-use-preview-10-2025",
+    "tools": [{
+      "type": "computer_use"
+    }],
+    "input": "Find a flight to Tokyo"
+  }'
+```
+
+```python
+from google import genai
+
+client = genai.Client()
+response = client.interactions.create(
+    model="gemini-2.5-computer-use-preview-10-2025",
+    tools=[{"type": "computer_use"}],
+    input="Find a flight to Tokyo"
+)
+print(response.output_text)
+```
+
+```javascript
+import {GoogleGenAI} from '@google/genai';
+
+const ai = new GoogleGenAI({});
+const interaction = await ai.interactions.create({
+    model: 'gemini-2.5-computer-use-preview-10-2025',
+    tools: [{ type: 'computer_use'}],
+    input: 'Find a flight to Tokyo'
+});
+console.log(interaction.output_text);
+```
 
 ### McpServer
 
-<iframe src="https:///frame/api/interactions-api_e8c6cba9455fa12dbfe7af3cbcda940f18ed60aef8e226760568601e599eb5db.frame" class="framebox inherit-locale " allow="clipboard-write https://" allowfullscreen is-upgraded></iframe>
+#### Example
+
+REST Python JavaScript
+
+```sh
+curl -X POST https://generativelanguage.googleapis.com/v1beta/interactions 
+  -H "x-goog-api-key: $GEMINI_API_KEY" 
+  -H "Content-Type: application/json" 
+  -H "Api-Revision: 2026-05-20" 
+  -d '{
+    "model": "gemini-3-flash-preview",
+    "tools": [{
+      "type": "mcp_server",
+      "name": "weather_service",
+      "url": "https://gemini-api-demos.uc.r.appspot.com/mcp"
+    }],
+    "input": "Today is 12-05-2025, what is the temperature today in London?"
+  }'
+```
+
+```python
+from google import genai
+
+client = genai.Client()
+response = client.interactions.create(
+    model="gemini-3-flash-preview",
+    tools=[{
+        "type": "mcp_server",
+        "name": "weather_service",
+        "url": "https://gemini-api-demos.uc.r.appspot.com/mcp"
+    }],
+    input="Today is 12-05-2025, what is the temperature today in London?"
+)
+print(response.output_text)
+```
+
+```javascript
+import {GoogleGenAI} from '@google/genai';
+
+const ai = new GoogleGenAI({});
+const interaction = await ai.interactions.create({
+    model: 'gemini-3-flash-preview',
+    tools: [{
+        type: 'mcp_server',
+        name: 'weather_service',
+        url: 'https://gemini-api-demos.uc.r.appspot.com/mcp'
+    }],
+    input: 'Today is 12-05-2025, what is the temperature today in London?'
+});
+console.log(interaction.output_text);
+```
 
 ### GoogleSearch
 
-<iframe src="https:///frame/api/interactions-api_71c56b0dc0dd0185fa03ad98f43416c78dc80baa024dc73c40045b6d63c7f068.frame" class="framebox inherit-locale " allow="clipboard-write https://" allowfullscreen is-upgraded></iframe>
+#### Example
+
+REST Python JavaScript
+
+```sh
+curl -X POST https://generativelanguage.googleapis.com/v1beta/interactions 
+  -H "x-goog-api-key: $GEMINI_API_KEY" 
+  -H "Content-Type: application/json" 
+  -H "Api-Revision: 2026-05-20" 
+  -d '{
+    "model": "gemini-3-flash-preview",
+    "tools": [{
+      "type": "google_search"
+    }],
+    "input": "Who is the current president of France?"
+  }'
+```
+
+```python
+from google import genai
+
+client = genai.Client()
+response = client.interactions.create(
+    model="gemini-3-flash-preview",
+    tools=[{"type": "google_search"}],
+    input="Who is the current president of France?"
+)
+print(response.output_text)
+```
+
+```javascript
+import {GoogleGenAI} from '@google/genai';
+
+const ai = new GoogleGenAI({});
+const interaction = await ai.interactions.create({
+    model: 'gemini-3-flash-preview',
+    tools: [{ type: 'google_search' }],
+    input: 'Who is the current president of France?'
+});
+console.log(interaction.output_text);
+```
 
 ### FileSearch
 
-<iframe src="https:///frame/api/interactions-api_faa7d59bae180c6b3684063dd0d63763aebe617bb9c649dcb2d3b664cb186e4a.frame" class="framebox inherit-locale " allow="clipboard-write https://" allowfullscreen is-upgraded></iframe>
+#### Example
+
+REST Python JavaScript
+
+```sh
+curl -X POST https://generativelanguage.googleapis.com/v1beta/interactions 
+  -H "x-goog-api-key: $GEMINI_API_KEY" 
+  -H "Content-Type: application/json" 
+  -H "Api-Revision: 2026-05-20" 
+  -d '{
+    "model": "gemini-3-flash-preview",
+    "tools": [{
+      "type": "file_search",
+      "file_search_store_names": ["fileSearchStores/m64d1sevsr4y-xfyawui3fxqg"]
+    }],
+    "input": "Who is the author of the book?"
+  }'
+```
+
+```python
+from google import genai
+
+client = genai.Client()
+
+# Create a file search store so we have a valid one to use.
+store = client.file_search_stores.create()
+
+response = client.interactions.create(
+    model="gemini-3-flash-preview",
+    tools=[{
+        "type": "file_search",
+        "file_search_store_names": [store.name]
+    }],
+    input="What documents are available?"
+)
+print(response.output_text)
+
+# [cleanup]
+client.file_search_stores.delete(name=store.name)
+# [/cleanup]
+```
+
+```javascript
+import {GoogleGenAI} from '@google/genai';
+
+const ai = new GoogleGenAI({});
+
+// Create a file search store so we have a valid one to use.
+const store = await ai.fileSearchStores.create({});
+if (!store.name) {
+    throw new Error('Store creation failed: Name is undefined');
+}
+
+const interaction = await ai.interactions.create({
+    model: 'gemini-3-flash-preview',
+    tools: [{
+        type: 'file_search',
+        file_search_store_names: [store.name]
+    }],
+    input: 'What documents are available?'
+});
+console.log(interaction.output_text);
+
+// [cleanup]
+await ai.fileSearchStores.delete({name: store.name});
+// [/cleanup]
+```
 
 ### GoogleMaps
 
-<iframe src="https:///frame/api/interactions-api_06369be12eb45e237cf4fb3f12b64e6e347bba296b61defeaec35dd94bdf94bd.frame" class="framebox inherit-locale " allow="clipboard-write https://" allowfullscreen is-upgraded></iframe>
+#### Example
+
+REST Python JavaScript
+
+```sh
+curl -X POST https://generativelanguage.googleapis.com/v1beta/interactions 
+  -H "x-goog-api-key: $GEMINI_API_KEY" 
+  -H "Content-Type: application/json" 
+  -H "Api-Revision: 2026-05-20" 
+  -d '{
+    "model": "gemini-3-flash-preview",
+    "tools": [{
+      "type": "google_maps",
+      "latitude": 37.7749,
+      "longitude": -122.4194
+    }],
+    "input": "What is the best food near me?"
+  }'
+```
+
+```python
+from google import genai
+
+client = genai.Client()
+response = client.interactions.create(
+    model="gemini-3-flash-preview",
+    tools=[{
+        "type": "google_maps",
+        "latitude": 37.7749,
+        "longitude": -122.4194
+    }],
+    input="What is the best food near me?"
+)
+print(response.output_text)
+```
+
+```javascript
+import {GoogleGenAI} from '@google/genai';
+
+const ai = new GoogleGenAI({});
+const interaction = await ai.interactions.create({
+    model: 'gemini-3-flash-preview',
+    tools: [{
+        type: 'google_maps',
+        latitude: 37.7749,
+        longitude: -122.4194
+    }],
+    input: 'What is the best food near me?'
+});
+console.log(interaction.output_text);
+```
 
 ### Retrieval
 

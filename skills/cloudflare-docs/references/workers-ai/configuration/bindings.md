@@ -20,8 +20,8 @@ To use Workers AI with Workers, you must create a Workers AI [binding](https://d
 
 To bind Workers AI to your Worker, add the following to the end of your Wrangler file:
 
-* [  wrangler.jsonc ](#tab-panel-8376)
-* [  wrangler.toml ](#tab-panel-8377)
+* [  wrangler.jsonc ](#tab-panel-10114)
+* [  wrangler.toml ](#tab-panel-10115)
 
 JSONC
 

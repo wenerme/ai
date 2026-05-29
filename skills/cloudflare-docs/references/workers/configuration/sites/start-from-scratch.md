@@ -50,8 +50,8 @@ The template project contains the following files and directories:
 ## Customize the `wrangler.jsonc` file:
 
 * Change the `name` property to the name of your project:  
-   * [  wrangler.jsonc ](#tab-panel-8582)  
-   * [  wrangler.toml ](#tab-panel-8583)  
+   * [  wrangler.jsonc ](#tab-panel-10326)  
+   * [  wrangler.toml ](#tab-panel-10327)  
 JSONC  
 ```  
 {  
@@ -65,8 +65,8 @@ TOML
 name = "my-site"  
 ```
 * Consider updating`compatibility_date` to today's date to get access to the most recent Workers features:  
-   * [  wrangler.jsonc ](#tab-panel-8584)  
-   * [  wrangler.toml ](#tab-panel-8585)  
+   * [  wrangler.jsonc ](#tab-panel-10328)  
+   * [  wrangler.toml ](#tab-panel-10329)  
 JSONC  
 ```  
 {  
@@ -78,8 +78,8 @@ TOML
 compatibility_date = "yyyy-mm-dd"  
 ```
 * Deploy your site to a [custom domain](https://developers.cloudflare.com/workers/configuration/routing/custom-domains/) that you own and have already attached as a Cloudflare zone:  
-   * [  wrangler.jsonc ](#tab-panel-8586)  
-   * [  wrangler.toml ](#tab-panel-8587)  
+   * [  wrangler.jsonc ](#tab-panel-10330)  
+   * [  wrangler.toml ](#tab-panel-10331)  
 JSONC  
 ```  
 {  

@@ -16,6 +16,7 @@ Presets endpoints
 
 * [CreatePresetsChatCompletions](#createpresetschatcompletions) - Create a preset from a chat-completions request body
 * [CreatePresetsMessages](#createpresetsmessages) - Create a preset from a messages request body
+* [CreatePresetsResponses](#createpresetsresponses) - Create a preset from a responses request body
 
 ## CreatePresetsChatCompletions
 
@@ -154,6 +155,72 @@ func main() {
 | `slug`            | `string`                                                                         | :heavy\_check\_mark: | URL-safe slug identifying the preset. Created if it does not exist. | my-preset                                                                                                                                                                         |
 | `messagesRequest` | [components.MessagesRequest](/docs/sdks/go/api-reference/models/messagesrequest) | :heavy\_check\_mark: | N/A                                                                 | `{"max_tokens": 1024,"messages": [{"content": "Hello, how are you?","role": "user"}`<br />],<br />"model": "anthropic/claude-4.5-sonnet-20250929",<br />"temperature": 0.7<br />} |
 | `opts`            | \[][operations.Option](/docs/sdks/go/api-reference/operations/option)            | :heavy\_minus\_sign: | The options for this request.                                       |                                                                                                                                                                                   |
+
+### Response
+
+**[\*components.CreatePresetFromInferenceResponse](/docs/sdks/go/api-reference/models/createpresetfrominferenceresponse), error**
+
+### Errors
+
+| Error Type                            | Status Code | Content Type     |
+| ------------------------------------- | ----------- | ---------------- |
+| sdkerrors.BadRequestResponseError     | 400         | application/json |
+| sdkerrors.UnauthorizedResponseError   | 401         | application/json |
+| sdkerrors.ForbiddenResponseError      | 403         | application/json |
+| sdkerrors.NotFoundResponseError       | 404         | application/json |
+| sdkerrors.ConflictResponseError       | 409         | application/json |
+| sdkerrors.InternalServerResponseError | 500         | application/json |
+| sdkerrors.APIError                    | 4XX, 5XX    | \*/\*            |
+
+## CreatePresetsResponses
+
+Creates a preset (or a new version of an existing one) from an inference request body. Only fields that overlap with the preset config are persisted; other fields (e.g. `messages`, `stream`, `prompt`) are silently ignored.
+
+### Example Usage
+
+```go
+package main
+
+import(
+	"context"
+	"os"
+	openrouter "github.com/OpenRouterTeam/go-sdk"
+	"github.com/OpenRouterTeam/go-sdk/models/components"
+	"github.com/OpenRouterTeam/go-sdk/optionalnullable"
+	"log"
+)
+
+func main() {
+    ctx := context.Background()
+
+    s := openrouter.New(
+        openrouter.WithSecurity(os.Getenv("OPENROUTER_API_KEY")),
+    )
+
+    res, err := s.Presets.CreatePresetsResponses(ctx, "my-preset", components.ResponsesRequest{
+        Input: openrouter.Pointer(components.CreateInputsUnionStr(
+            "Hello!",
+        )),
+        Instructions: optionalnullable.From(openrouter.Pointer("You are a helpful assistant.")),
+        Model: openrouter.Pointer("openai/gpt-5.4"),
+    })
+    if err != nil {
+        log.Fatal(err)
+    }
+    if res != nil {
+        // handle response
+    }
+}
+```
+
+### Parameters
+
+| Parameter          | Type                                                                               | Required             | Description                                                         | Example                                                                                                                                                                                                                                                                                                                                                                                                                                                         |
+| ------------------ | ---------------------------------------------------------------------------------- | -------------------- | ------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `ctx`              | [context.Context](https://pkg.go.dev/context#Context)                              | :heavy\_check\_mark: | The context to use for the request.                                 |                                                                                                                                                                                                                                                                                                                                                                                                                                                                 |
+| `slug`             | `string`                                                                           | :heavy\_check\_mark: | URL-safe slug identifying the preset. Created if it does not exist. | my-preset                                                                                                                                                                                                                                                                                                                                                                                                                                                       |
+| `responsesRequest` | [components.ResponsesRequest](/docs/sdks/go/api-reference/models/responsesrequest) | :heavy\_check\_mark: | N/A                                                                 | `{"input": [{"content": "Hello, how are you?","role": "user","type": "message"}`<br />],<br />"model": "anthropic/claude-4.5-sonnet-20250929",<br />"temperature": 0.7,<br />"tools": \[<br />`{"description": "Get the current weather in a given location","name": "get_current_weather","parameters": {"properties": {"location": {"type": "string"}`<br />},<br />"type": "object"<br />},<br />"type": "function"<br />}<br />],<br />"top\_p": 0.9<br />} |
+| `opts`             | \[][operations.Option](/docs/sdks/go/api-reference/operations/option)              | :heavy\_minus\_sign: | The options for this request.                                       |                                                                                                                                                                                                                                                                                                                                                                                                                                                                 |
 
 ### Response
 

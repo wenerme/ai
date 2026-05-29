@@ -28,6 +28,9 @@ Google's latest image generation model producing high-quality, photorealistic im
 
 ## Usage
 
+* [ TypeScript ](#tab-panel-528)
+* [ cURL ](#tab-panel-529)
+
 TypeScript
 
 ```
@@ -36,17 +39,7 @@ const response = await env.AI.run(
 
   'google/imagen-4',
 
-  {
-
-    prompt: 'A golden retriever puppy playing in autumn leaves',
-
-  },
-
-  {
-
-    gateway: { id: 'default' },
-
-  }
+  { prompt: 'A golden retriever puppy playing in autumn leaves' },
 
 )
 
@@ -55,8 +48,33 @@ console.log(response)
 
 ```
 
-* [ Output ](#tab-panel-198)
-* [ Raw response ](#tab-panel-199)
+Terminal window
+
+```
+
+curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run \
+
+  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+
+  --header "Content-Type: application/json" \
+
+  --data '{
+
+  "model": "google/imagen-4",
+
+  "input": {
+
+    "prompt": "A golden retriever puppy playing in autumn leaves"
+
+  }
+
+}'
+
+
+```
+
+* [ Output ](#tab-panel-526)
+* [ Raw response ](#tab-panel-527)
 
 ![Simple Generation](https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/google__imagen-4/simple-generation.png) 
 
@@ -64,7 +82,11 @@ console.log(response)
 
 {
 
-  "state": "Completed",
+  "gatewayMetadata": {
+
+    "keySource": "Unified"
+
+  },
 
   "result": {
 
@@ -72,11 +94,7 @@ console.log(response)
 
   },
 
-  "gatewayMetadata": {
-
-    "keySource": "Unified"
-
-  }
+  "state": "Completed"
 
 }
 
@@ -87,6 +105,9 @@ console.log(response)
 
 **Widescreen Landscape**  — Generate a widescreen landscape image 
 
+* [ TypeScript ](#tab-panel-532)
+* [ cURL ](#tab-panel-533)
+
 TypeScript
 
 ```
@@ -97,19 +118,13 @@ const response = await env.AI.run(
 
   {
 
+    aspect_ratio: '16:9',
+
     prompt:
 
       'A dramatic drone shot of a winding river through an autumn forest, warm golden and red tones',
 
-    aspect_ratio: '16:9',
-
   },
-
-  {
-
-    gateway: { id: 'default' },
-
-  }
 
 )
 
@@ -118,8 +133,35 @@ console.log(response)
 
 ```
 
-* [ Output ](#tab-panel-200)
-* [ Raw response ](#tab-panel-201)
+Terminal window
+
+```
+
+curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run \
+
+  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+
+  --header "Content-Type: application/json" \
+
+  --data '{
+
+  "model": "google/imagen-4",
+
+  "input": {
+
+    "aspect_ratio": "16:9",
+
+    "prompt": "A dramatic drone shot of a winding river through an autumn forest, warm golden and red tones"
+
+  }
+
+}'
+
+
+```
+
+* [ Output ](#tab-panel-530)
+* [ Raw response ](#tab-panel-531)
 
 ![Widescreen Landscape](https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/google__imagen-4/widescreen-landscape.png) 
 
@@ -127,7 +169,11 @@ console.log(response)
 
 {
 
-  "state": "Completed",
+  "gatewayMetadata": {
+
+    "keySource": "Unified"
+
+  },
 
   "result": {
 
@@ -135,11 +181,7 @@ console.log(response)
 
   },
 
-  "gatewayMetadata": {
-
-    "keySource": "Unified"
-
-  }
+  "state": "Completed"
 
 }
 
@@ -148,6 +190,9 @@ console.log(response)
 
 **Portrait Format**  — Vertical portrait-style image 
 
+* [ TypeScript ](#tab-panel-536)
+* [ cURL ](#tab-panel-537)
+
 TypeScript
 
 ```
@@ -158,19 +203,11 @@ const response = await env.AI.run(
 
   {
 
-    prompt:
-
-      'An elegant Art Deco poster featuring a jazz singer under a spotlight',
-
     aspect_ratio: '9:16',
 
+    prompt: 'An elegant Art Deco poster featuring a jazz singer under a spotlight',
+
   },
-
-  {
-
-    gateway: { id: 'default' },
-
-  }
 
 )
 
@@ -179,8 +216,35 @@ console.log(response)
 
 ```
 
-* [ Output ](#tab-panel-202)
-* [ Raw response ](#tab-panel-203)
+Terminal window
+
+```
+
+curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run \
+
+  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+
+  --header "Content-Type: application/json" \
+
+  --data '{
+
+  "model": "google/imagen-4",
+
+  "input": {
+
+    "aspect_ratio": "9:16",
+
+    "prompt": "An elegant Art Deco poster featuring a jazz singer under a spotlight"
+
+  }
+
+}'
+
+
+```
+
+* [ Output ](#tab-panel-534)
+* [ Raw response ](#tab-panel-535)
 
 ![Portrait Format](https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/google__imagen-4/portrait-format.png) 
 
@@ -188,7 +252,11 @@ console.log(response)
 
 {
 
-  "state": "Completed",
+  "gatewayMetadata": {
+
+    "keySource": "Unified"
+
+  },
 
   "result": {
 
@@ -196,11 +264,7 @@ console.log(response)
 
   },
 
-  "gatewayMetadata": {
-
-    "keySource": "Unified"
-
-  }
+  "state": "Completed"
 
 }
 
@@ -209,6 +273,9 @@ console.log(response)
 
 **With People**  — Allow generation of adult people 
 
+* [ TypeScript ](#tab-panel-540)
+* [ cURL ](#tab-panel-541)
+
 TypeScript
 
 ```
@@ -219,19 +286,11 @@ const response = await env.AI.run(
 
   {
 
-    prompt:
-
-      'A chef preparing sushi in a traditional Japanese kitchen, detailed close-up',
-
     person_generation: 'allow_adult',
 
+    prompt: 'A chef preparing sushi in a traditional Japanese kitchen, detailed close-up',
+
   },
-
-  {
-
-    gateway: { id: 'default' },
-
-  }
 
 )
 
@@ -240,8 +299,35 @@ console.log(response)
 
 ```
 
-* [ Output ](#tab-panel-204)
-* [ Raw response ](#tab-panel-205)
+Terminal window
+
+```
+
+curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run \
+
+  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+
+  --header "Content-Type: application/json" \
+
+  --data '{
+
+  "model": "google/imagen-4",
+
+  "input": {
+
+    "person_generation": "allow_adult",
+
+    "prompt": "A chef preparing sushi in a traditional Japanese kitchen, detailed close-up"
+
+  }
+
+}'
+
+
+```
+
+* [ Output ](#tab-panel-538)
+* [ Raw response ](#tab-panel-539)
 
 ![With People](https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/google__imagen-4/with-people.png) 
 
@@ -249,7 +335,11 @@ console.log(response)
 
 {
 
-  "state": "Completed",
+  "gatewayMetadata": {
+
+    "keySource": "Unified"
+
+  },
 
   "result": {
 
@@ -257,11 +347,7 @@ console.log(response)
 
   },
 
-  "gatewayMetadata": {
-
-    "keySource": "Unified"
-
-  }
+  "state": "Completed"
 
 }
 
@@ -270,6 +356,9 @@ console.log(response)
 
 **Product Photo**  — Square product photography 
 
+* [ TypeScript ](#tab-panel-544)
+* [ cURL ](#tab-panel-545)
+
 TypeScript
 
 ```
@@ -280,19 +369,13 @@ const response = await env.AI.run(
 
   {
 
+    aspect_ratio: '1:1',
+
     prompt:
 
       'A sleek wireless headphone on a minimalist white marble surface with soft studio lighting',
 
-    aspect_ratio: '1:1',
-
   },
-
-  {
-
-    gateway: { id: 'default' },
-
-  }
 
 )
 
@@ -301,8 +384,35 @@ console.log(response)
 
 ```
 
-* [ Output ](#tab-panel-206)
-* [ Raw response ](#tab-panel-207)
+Terminal window
+
+```
+
+curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run \
+
+  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+
+  --header "Content-Type: application/json" \
+
+  --data '{
+
+  "model": "google/imagen-4",
+
+  "input": {
+
+    "aspect_ratio": "1:1",
+
+    "prompt": "A sleek wireless headphone on a minimalist white marble surface with soft studio lighting"
+
+  }
+
+}'
+
+
+```
+
+* [ Output ](#tab-panel-542)
+* [ Raw response ](#tab-panel-543)
 
 ![Product Photo](https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/google__imagen-4/product-photo.png) 
 
@@ -310,7 +420,11 @@ console.log(response)
 
 {
 
-  "state": "Completed",
+  "gatewayMetadata": {
+
+    "keySource": "Unified"
+
+  },
 
   "result": {
 
@@ -318,11 +432,7 @@ console.log(response)
 
   },
 
-  "gatewayMetadata": {
-
-    "keySource": "Unified"
-
-  }
+  "state": "Completed"
 
 }
 
@@ -331,12 +441,8 @@ console.log(response)
 
 ## Parameters
 
-* [ Input ](#tab-panel-208)
-* [ Output ](#tab-panel-209)
-
-prompt
-
-`string`requiredText prompt describing the image to generate
+* [ Input ](#tab-panel-546)
+* [ Output ](#tab-panel-547)
 
 aspect\_ratio
 
@@ -345,6 +451,10 @@ aspect\_ratio
 person\_generation
 
 `string`enum: dont\_allow, allow\_adult, allow\_allAllow the model to generate images of people. dont\_allow: block people, allow\_adult: adults only, allow\_all: adults and children
+
+prompt
+
+`string`requiredText prompt describing the image to generate
 
 image
 

@@ -18,7 +18,7 @@ Note
 
 By default, the `/json` endpoint leverages [Workers AI](https://developers.cloudflare.com/workers-ai/) for data extraction using [@cf/meta/llama-3.3-70b-instruct-fp8-fast](https://developers.cloudflare.com/workers-ai/models/llama-3.3-70b-instruct-fp8-fast/). Using this endpoint incurs usage on Workers AI, which you can monitor in the [Workers AI Dashboard ↗](https://dash.cloudflare.com/?to=/:account/ai/workers-ai). To use a different model, refer to [Using a custom model (BYO API Key)](https://developers.cloudflare.com/browser-run/quick-actions/json-endpoint/#using-a-custom-model-byo-api-key).
 
-Before you begin, make sure you [create a custom API Token](https://developers.cloudflare.com/fundamentals/api/get-started/create-token/) with `Browser Rendering - Edit` permission. For more information, refer to [Quick Actions — Before you begin](https://developers.cloudflare.com/browser-run/quick-actions/#before-you-begin).
+You can use this endpoint in two ways. To use the REST API, [create a custom API Token](https://developers.cloudflare.com/fundamentals/api/get-started/create-token/) with `Browser Rendering - Edit` permission. To use the [Workers binding](https://developers.cloudflare.com/browser-run/reference/wrangler/#bindings) from a [Cloudflare Worker](https://developers.cloudflare.com/workers/), no API token is needed. For more information, refer to [Quick Actions — Before you begin](https://developers.cloudflare.com/browser-run/quick-actions/#before-you-begin).
 
 ## Endpoint
 
@@ -47,12 +47,13 @@ And at least one of:
 * Normalize article metadata (title, author, publish date, canonical URL)
 * Convert unstructured pages into typed JSON for downstream pipelines
 
-## Basic Usage
+## Basic usage
 
 ### With a Prompt and JSON schema
 
-* [ curl ](#tab-panel-4847)
-* [ TypeScript SDK ](#tab-panel-4848)
+* [ curl ](#tab-panel-5832)
+* [ TypeScript SDK ](#tab-panel-5833)
+* [ Workers binding ](#tab-panel-5834)
 
 This example captures webpage data by providing both a prompt and a JSON schema. The prompt guides the extraction process, while the JSON schema defines the expected structure of the output.
 
@@ -184,6 +185,151 @@ curl --request POST 'https://api.cloudflare.com/client/v4/accounts/CF_ACCOUNT_ID
   }
 
 }
+
+
+```
+
+Below is an example using the TypeScript SDK:
+
+TypeScript
+
+```
+
+import Cloudflare from "cloudflare";
+
+
+const client = new Cloudflare({
+
+  apiToken: process.env["CLOUDFLARE_API_TOKEN"], // This is the default and can be omitted
+
+});
+
+
+const json = await client.browserRendering.json.create({
+
+  account_id: process.env["CLOUDFLARE_ACCOUNT_ID"],
+
+  url: "https://developers.cloudflare.com/",
+
+  prompt: "Get me the list of AI products",
+
+  response_format: {
+
+    type: "json_schema",
+
+    schema: {
+
+      type: "object",
+
+      properties: {
+
+        products: {
+
+          type: "array",
+
+          items: {
+
+            type: "object",
+
+            properties: {
+
+              name: {
+
+                type: "string",
+
+              },
+
+              link: {
+
+                type: "string",
+
+              },
+
+            },
+
+            required: ["name"],
+
+          },
+
+        },
+
+      },
+
+    },
+
+  },
+
+});
+
+console.log(json);
+
+
+```
+
+TypeScript
+
+```
+
+interface Env {
+
+  BROWSER: BrowserRun;
+
+}
+
+
+export default {
+
+  async fetch(request, env): Promise<Response> {
+
+    return await env.BROWSER.quickAction("json", {
+
+      url: "https://developers.cloudflare.com/",
+
+      prompt: "Get me the list of AI products",
+
+      response_format: {
+
+        type: "json_schema",
+
+        schema: {
+
+          type: "object",
+
+          properties: {
+
+            products: {
+
+              type: "array",
+
+              items: {
+
+                type: "object",
+
+                properties: {
+
+                  name: { type: "string" },
+
+                  link: { type: "string" },
+
+                },
+
+                required: ["name"],
+
+              },
+
+            },
+
+          },
+
+        },
+
+      },
+
+    });
+
+  },
+
+} satisfies ExportedHandler<Env>;
 
 
 ```
@@ -448,84 +594,7 @@ curl --request POST 'https://api.cloudflare.com/client/v4/accounts/CF_ACCOUNT_ID
 
 ```
 
-Below is an example using the TypeScript SDK:
-
-TypeScript
-
-```
-
-import Cloudflare from "cloudflare";
-
-
-const client = new Cloudflare({
-
-  apiToken: process.env["CLOUDFLARE_API_TOKEN"], // This is the default and can be omitted
-
-});
-
-
-const json = await client.browserRendering.json.create({
-
-  account_id: process.env["CLOUDFLARE_ACCOUNT_ID"],
-
-  url: "https://developers.cloudflare.com/",
-
-  prompt: "Get me the list of AI products",
-
-  response_format: {
-
-    type: "json_schema",
-
-    schema: {
-
-      type: "object",
-
-      properties: {
-
-        products: {
-
-          type: "array",
-
-          items: {
-
-            type: "object",
-
-            properties: {
-
-              name: {
-
-                type: "string",
-
-              },
-
-              link: {
-
-                type: "string",
-
-              },
-
-            },
-
-            required: ["name"],
-
-          },
-
-        },
-
-      },
-
-    },
-
-  },
-
-});
-
-console.log(json);
-
-
-```
-
-## Advanced Usage
+## Advanced usage
 
 Looking for more parameters?
 

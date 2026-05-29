@@ -16,6 +16,8 @@ quoted space-separated list.
 To preview which jobs would be canceled without making changes, use
 `--dry-run`.
 
+Use `--force` to cancel jobs that are in a protected environment.
+
 ```plaintext
 glab ci cancel job <id> [<id>...] [flags]
 ```
@@ -35,12 +37,16 @@ glab ci cancel job "1504182795 1504182796"
 # Preview which jobs would be canceled
 glab ci cancel job 1504182795,1504182796 --dry-run
 
+# Force-cancel a job in a protected environment
+glab ci cancel job 1504182795 --force
+
 ```
 
 ## Options
 
 ```plaintext
       --dry-run   Show which jobs would be canceled, without canceling them.
+  -f, --force     Force-cancel the job, even if it runs in a protected environment. (default false)
 ```
 
 ## Options inherited from parent commands

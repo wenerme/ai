@@ -30,9 +30,9 @@ Cron Triggers execute on UTC time.
 
 To respond to a Cron Trigger, you must add a ["scheduled" handler](https://developers.cloudflare.com/workers/runtime-apis/handlers/scheduled/) to your Worker.
 
-* [  JavaScript ](#tab-panel-8557)
-* [  TypeScript ](#tab-panel-8558)
-* [  Python ](#tab-panel-8559)
+* [  JavaScript ](#tab-panel-10263)
+* [  TypeScript ](#tab-panel-10264)
+* [  Python ](#tab-panel-10265)
 
 JavaScript
 
@@ -113,8 +113,8 @@ If a Worker is managed with Wrangler, Cron Triggers should be exclusively manage
 
 Refer to the example below for a Cron Triggers configuration:
 
-* [  wrangler.jsonc ](#tab-panel-8562)
-* [  wrangler.toml ](#tab-panel-8563)
+* [  wrangler.jsonc ](#tab-panel-10268)
+* [  wrangler.toml ](#tab-panel-10269)
 
 JSONC
 
@@ -162,8 +162,8 @@ crons = [ "*/3 * * * *", "0 15 1 * *", "59 23 LW * *" ]
 
 You also can set a different Cron Trigger for each [environment](https://developers.cloudflare.com/workers/wrangler/environments/) in your [Wrangler configuration file](https://developers.cloudflare.com/workers/wrangler/configuration/). You need to put the `triggers` array under your chosen environment. For example:
 
-* [  wrangler.jsonc ](#tab-panel-8564)
-* [  wrangler.toml ](#tab-panel-8565)
+* [  wrangler.jsonc ](#tab-panel-10270)
+* [  wrangler.toml ](#tab-panel-10271)
 
 JSONC
 
@@ -252,7 +252,7 @@ Some common time intervals that may be useful for setting up your Cron Trigger:
 
 ## Test Cron Triggers locally
 
-Test Cron Triggers using Wrangler with [wrangler dev](https://developers.cloudflare.com/workers/wrangler/commands/general/#dev), or using the [Cloudflare Vite plugin ↗](https://developers.cloudflare.com/workers/vite-plugin/). This will expose a `/cdn-cgi/handler/scheduled` route which can be used to test using a HTTP request.
+Test Cron Triggers using Wrangler with [wrangler dev](https://developers.cloudflare.com/workers/wrangler/commands/general/#dev), or using the [Cloudflare Vite plugin ↗](https://developers.cloudflare.com/workers/vite-plugin/). This exposes a `/cdn-cgi/handler/scheduled` route, which can be used to test using an HTTP request.
 
 Terminal window
 
@@ -262,6 +262,32 @@ curl "http://localhost:8787/cdn-cgi/handler/scheduled"
 
 
 ```
+
+By default, the endpoint returns the scheduled handler outcome as text. To return the structured scheduled handler result as JSON, pass `?format=json`.
+
+Terminal window
+
+```
+
+curl "http://localhost:8787/cdn-cgi/handler/scheduled?format=json"
+
+
+```
+
+```
+
+{
+
+  "outcome": "ok",
+
+  "noRetry": false
+
+}
+
+
+```
+
+The `noRetry` field is `true` when the scheduled handler calls`controller.noRetry()`.
 
 To simulate different cron patterns, a `cron` query parameter can be passed in.
 
@@ -280,7 +306,7 @@ Terminal window
 
 ```
 
-curl "http://localhost:8787/cdn-cgi/handler/scheduled?cron=*+*+*+*+*&time=1745856238"
+curl "http://localhost:8787/cdn-cgi/handler/scheduled?cron=*+*+*+*+*&time=1745856238000"
 
 
 ```
@@ -323,8 +349,8 @@ When deploying a Worker with Wrangler any previous Cron Triggers are replaced wi
 * If the `crons` property is an empty array then all the Cron Triggers are removed.
 * If the `triggers` or `crons` property are `undefined` then the currently deploy Cron Triggers are left in-place.
 
-* [  wrangler.jsonc ](#tab-panel-8560)
-* [  wrangler.toml ](#tab-panel-8561)
+* [  wrangler.jsonc ](#tab-panel-10266)
+* [  wrangler.toml ](#tab-panel-10267)
 
 JSONC
 

@@ -28,6 +28,9 @@ A high-fidelity video generation model optimized for realistic human motion, cin
 
 ## Usage
 
+* [ TypeScript ](#tab-panel-738)
+* [ cURL ](#tab-panel-739)
+
 TypeScript
 
 ```
@@ -38,23 +41,17 @@ const response = await env.AI.run(
 
   {
 
+    duration: 6,
+
+    fast_pretreatment: false,
+
     prompt: 'A golden retriever playing fetch on a sandy beach at sunset',
 
     prompt_optimizer: true,
 
-    fast_pretreatment: false,
-
-    duration: 6,
-
     resolution: '768P',
 
   },
-
-  {
-
-    gateway: { id: 'default' },
-
-  }
 
 )
 
@@ -63,30 +60,63 @@ console.log(response)
 
 ```
 
-* [ Output ](#tab-panel-302)
-* [ Raw response ](#tab-panel-303)
+Terminal window
+
+```
+
+curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run \
+
+  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+
+  --header "Content-Type: application/json" \
+
+  --data '{
+
+  "model": "minimax/hailuo-2.3",
+
+  "input": {
+
+    "duration": 6,
+
+    "fast_pretreatment": false,
+
+    "prompt": "A golden retriever playing fetch on a sandy beach at sunset",
+
+    "prompt_optimizer": true,
+
+    "resolution": "768P"
+
+  }
+
+}'
+
+
+```
+
+* [ Output ](#tab-panel-736)
+* [ Raw response ](#tab-panel-737)
 
 ```
 
 {
 
-  "state": "Completed",
-
-  "result": {
-
-    "video": "https://video-product.cdn.minimax.io/inference_output/video/2026-04-17/97d0c2d0-45ab-4ce8-a1f4-177401f43073/output.mp4",
-
-    "task_id": "388507504709991",
-
-    "status": "Success"
-
-  },
-
   "gatewayMetadata": {
 
     "keySource": "Unified"
 
-  }
+  },
+
+  "result": {
+
+    "status": "Success",
+
+    "task_id": "388507504709991",
+
+    "video": "https://video-product.cdn.minimax.io/inference_output/video/2026-04-17/97d0c2d0-45ab-4ce8-a1f4-177401f43073/output.mp4"
+
+  },
+
+  "state": "Completed"
 
 }
 
@@ -97,6 +127,9 @@ console.log(response)
 
 **High Resolution**  — 1080P video for higher quality output 
 
+* [ TypeScript ](#tab-panel-742)
+* [ cURL ](#tab-panel-743)
+
 TypeScript
 
 ```
@@ -107,25 +140,19 @@ const response = await env.AI.run(
 
   {
 
+    duration: 6,
+
+    fast_pretreatment: false,
+
     prompt:
 
       'A professional chef preparing sushi in a traditional Japanese kitchen, detailed close-up shots',
 
     prompt_optimizer: true,
 
-    fast_pretreatment: false,
-
-    duration: 6,
-
     resolution: '1080P',
 
   },
-
-  {
-
-    gateway: { id: 'default' },
-
-  }
 
 )
 
@@ -134,30 +161,63 @@ console.log(response)
 
 ```
 
-* [ Output ](#tab-panel-304)
-* [ Raw response ](#tab-panel-305)
+Terminal window
+
+```
+
+curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run \
+
+  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+
+  --header "Content-Type: application/json" \
+
+  --data '{
+
+  "model": "minimax/hailuo-2.3",
+
+  "input": {
+
+    "duration": 6,
+
+    "fast_pretreatment": false,
+
+    "prompt": "A professional chef preparing sushi in a traditional Japanese kitchen, detailed close-up shots",
+
+    "prompt_optimizer": true,
+
+    "resolution": "1080P"
+
+  }
+
+}'
+
+
+```
+
+* [ Output ](#tab-panel-740)
+* [ Raw response ](#tab-panel-741)
 
 ```
 
 {
 
-  "state": "Completed",
-
-  "result": {
-
-    "video": "https://video-product.cdn.minimax.io/inference_output/video/2026-04-17/1ee6a770-eb88-4b6a-86ea-61981f01ed65/output.mp4",
-
-    "task_id": "388510158565457",
-
-    "status": "Success"
-
-  },
-
   "gatewayMetadata": {
 
     "keySource": "Unified"
 
-  }
+  },
+
+  "result": {
+
+    "status": "Success",
+
+    "task_id": "388510158565457",
+
+    "video": "https://video-product.cdn.minimax.io/inference_output/video/2026-04-17/1ee6a770-eb88-4b6a-86ea-61981f01ed65/output.mp4"
+
+  },
+
+  "state": "Completed"
 
 }
 
@@ -166,6 +226,9 @@ console.log(response)
 
 **Image to Video**  — Animate a still image with I2V 
 
+* [ TypeScript ](#tab-panel-748)
+* [ cURL ](#tab-panel-749)
+
 TypeScript
 
 ```
@@ -176,29 +239,21 @@ const response = await env.AI.run(
 
   {
 
-    prompt:
+    duration: 6,
 
-      'Slowly zoom in with subtle parallax movement, gentle atmospheric motion',
+    fast_pretreatment: false,
 
     first_frame_image:
 
       'https://replicate.delivery/xezq/MQpUhqkESIIQDlWUxtNcsznZLfUTmhEbCV3vdAZGHGPwwaMLA/tmpgl4gvv5n.jpeg',
 
+    prompt: 'Slowly zoom in with subtle parallax movement, gentle atmospheric motion',
+
     prompt_optimizer: true,
-
-    fast_pretreatment: false,
-
-    duration: 6,
 
     resolution: '768P',
 
   },
-
-  {
-
-    gateway: { id: 'default' },
-
-  }
 
 )
 
@@ -207,30 +262,65 @@ console.log(response)
 
 ```
 
-* [ Output ](#tab-panel-306)
-* [ Raw response ](#tab-panel-307)
+Terminal window
+
+```
+
+curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run \
+
+  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+
+  --header "Content-Type: application/json" \
+
+  --data '{
+
+  "model": "minimax/hailuo-2.3",
+
+  "input": {
+
+    "duration": 6,
+
+    "fast_pretreatment": false,
+
+    "first_frame_image": "https://replicate.delivery/xezq/MQpUhqkESIIQDlWUxtNcsznZLfUTmhEbCV3vdAZGHGPwwaMLA/tmpgl4gvv5n.jpeg",
+
+    "prompt": "Slowly zoom in with subtle parallax movement, gentle atmospheric motion",
+
+    "prompt_optimizer": true,
+
+    "resolution": "768P"
+
+  }
+
+}'
+
+
+```
+
+* [ Output ](#tab-panel-744)
+* [ Raw response ](#tab-panel-745)
 
 ```
 
 {
 
-  "state": "Completed",
-
-  "result": {
-
-    "video": "https://video-product.cdn.minimax.io/inference_output/video/2026-04-17/a19c7850-6f3b-47dd-b6f1-decb592a11ff/output.mp4",
-
-    "task_id": "388509844320343",
-
-    "status": "Success"
-
-  },
-
   "gatewayMetadata": {
 
     "keySource": "Unified"
 
-  }
+  },
+
+  "result": {
+
+    "status": "Success",
+
+    "task_id": "388509844320343",
+
+    "video": "https://video-product.cdn.minimax.io/inference_output/video/2026-04-17/a19c7850-6f3b-47dd-b6f1-decb592a11ff/output.mp4"
+
+  },
+
+  "state": "Completed"
 
 }
 
@@ -239,6 +329,9 @@ console.log(response)
 
 **Fast Processing**  — Enable fast pretreatment for quicker results 
 
+* [ TypeScript ](#tab-panel-750)
+* [ cURL ](#tab-panel-751)
+
 TypeScript
 
 ```
@@ -249,25 +342,17 @@ const response = await env.AI.run(
 
   {
 
-    prompt:
-
-      'Fireworks exploding over a city skyline at night, colorful reflections on water',
-
-    prompt_optimizer: true,
+    duration: 6,
 
     fast_pretreatment: true,
 
-    duration: 6,
+    prompt: 'Fireworks exploding over a city skyline at night, colorful reflections on water',
+
+    prompt_optimizer: true,
 
     resolution: '768P',
 
   },
-
-  {
-
-    gateway: { id: 'default' },
-
-  }
 
 )
 
@@ -276,30 +361,63 @@ console.log(response)
 
 ```
 
-* [ Output ](#tab-panel-308)
-* [ Raw response ](#tab-panel-309)
+Terminal window
+
+```
+
+curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run \
+
+  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+
+  --header "Content-Type: application/json" \
+
+  --data '{
+
+  "model": "minimax/hailuo-2.3",
+
+  "input": {
+
+    "duration": 6,
+
+    "fast_pretreatment": true,
+
+    "prompt": "Fireworks exploding over a city skyline at night, colorful reflections on water",
+
+    "prompt_optimizer": true,
+
+    "resolution": "768P"
+
+  }
+
+}'
+
+
+```
+
+* [ Output ](#tab-panel-746)
+* [ Raw response ](#tab-panel-747)
 
 ```
 
 {
 
-  "state": "Completed",
-
-  "result": {
-
-    "video": "https://video-product.cdn.minimax.io/inference_output/video/2026-04-17/438b5433-5d32-4760-9564-c86da3d22aee/output.mp4",
-
-    "task_id": "388509805367378",
-
-    "status": "Success"
-
-  },
-
   "gatewayMetadata": {
 
     "keySource": "Unified"
 
-  }
+  },
+
+  "result": {
+
+    "status": "Success",
+
+    "task_id": "388509805367378",
+
+    "video": "https://video-product.cdn.minimax.io/inference_output/video/2026-04-17/438b5433-5d32-4760-9564-c86da3d22aee/output.mp4"
+
+  },
+
+  "state": "Completed"
 
 }
 
@@ -308,44 +426,44 @@ console.log(response)
 
 ## Parameters
 
-* [ Input ](#tab-panel-310)
-* [ Output ](#tab-panel-311)
-
-prompt
-
-`string`maxLength: 2000
-
-first\_frame\_image
-
-`string`
-
-prompt\_optimizer
-
-`boolean`requireddefault: true
-
-fast\_pretreatment
-
-`boolean`requireddefault: false
+* [ Input ](#tab-panel-752)
+* [ Output ](#tab-panel-753)
 
 ▶duration
 
 `one of`required
 
+fast\_pretreatment
+
+`boolean`requireddefault: false
+
+first\_frame\_image
+
+`string`
+
+prompt
+
+`string`maxLength: 2000
+
+prompt\_optimizer
+
+`boolean`requireddefault: true
+
 resolution
 
 `string`requireddefault: 768Penum: 768P, 1080P
 
-video
+status
 
-`string`format: uri
+`string`enum: Preparing, Queueing, Processing, Success, Fail
 
 task\_id
 
 `string`
 
-status
+video
 
-`string`enum: Preparing, Queueing, Processing, Success, Fail
+`string`format: uri
 
 ## API Schemas (Raw)
 

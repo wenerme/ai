@@ -38,9 +38,11 @@ Authorization: Bearer <API_TOKEN>
 
 ## Send an email
 
-* [ Simple email ](#tab-panel-5921)
-* [ Multiple recipients ](#tab-panel-5922)
-* [ With CC and BCC ](#tab-panel-5923)
+* [ Simple email ](#tab-panel-7379)
+* [ Multiple recipients ](#tab-panel-7380)
+* [ With CC and BCC ](#tab-panel-7381)
+* [ Named recipients ](#tab-panel-7382)
+* [ Mixed recipients ](#tab-panel-7383)
 
 Terminal window
 
@@ -123,6 +125,66 @@ curl "https://api.cloudflare.com/client/v4/accounts/{account_id}/email/sending/s
     "html": "<h1>Your order is confirmed</h1>",
 
     "text": "Your order is confirmed"
+
+  }'
+
+
+```
+
+Terminal window
+
+```
+
+curl "https://api.cloudflare.com/client/v4/accounts/{account_id}/email/sending/send" \
+
+  --header "Authorization: Bearer <API_TOKEN>" \
+
+  --header "Content-Type: application/json" \
+
+  --data '{
+
+    "to": { "address": "jane@example.com", "name": "Jane Doe" },
+
+    "from": { "address": "support@example.com", "name": "Support Team" },
+
+    "subject": "Welcome!",
+
+    "html": "<h1>Thanks for joining!</h1>",
+
+    "text": "Thanks for joining!"
+
+  }'
+
+
+```
+
+Terminal window
+
+```
+
+curl "https://api.cloudflare.com/client/v4/accounts/{account_id}/email/sending/send" \
+
+  --header "Authorization: Bearer <API_TOKEN>" \
+
+  --header "Content-Type: application/json" \
+
+  --data '{
+
+    "to": [
+
+      "plain@example.com",
+
+      { "address": "jane@example.com", "name": "Jane Doe" }
+
+    ],
+
+    "from": "support@yourdomain.com",
+
+    "subject": "Team update",
+
+    "html": "<h1>Monthly update</h1>",
+
+    "text": "Monthly update"
 
   }'
 

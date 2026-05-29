@@ -10538,10 +10538,10 @@
   "codex-docs/plugins.md": {
     "url": "https://developers.openai.com/codex/plugins.md",
     "skill": "codex-docs",
-    "etag": "W/\"07325012f4acb52215fbf2d9c06b7575\"",
-    "lastModified": "Fri, 22 May 2026 00:18:58 GMT",
-    "size": 5619,
-    "updatedAt": "2026-05-22T00:39:46.901Z"
+    "etag": "W/\"734f4352c210b9c8df9bbc50f5e08756\"",
+    "lastModified": "Thu, 28 May 2026 22:40:34 GMT",
+    "size": 5896,
+    "updatedAt": "2026-05-29T00:44:48.938Z"
   },
   "codex-docs/plugins/build.md": {
     "url": "https://developers.openai.com/codex/plugins/build.md",
@@ -10602,10 +10602,10 @@
   "codex-docs/security.md": {
     "url": "https://developers.openai.com/codex/security.md",
     "skill": "codex-docs",
-    "etag": "\"71a9649d687daf1b43f0188901cc591b\"",
-    "lastModified": "Mon, 09 Mar 2026 03:50:56 GMT",
-    "size": 1838,
-    "updatedAt": "2026-03-09T03:50:56.795Z"
+    "etag": "W/\"218e018b44574023775e5933b5ef9087\"",
+    "lastModified": "Thu, 28 May 2026 19:48:32 GMT",
+    "size": 2895,
+    "updatedAt": "2026-05-29T00:44:50.877Z"
   },
   "codex-docs/security/faq.md": {
     "url": "https://developers.openai.com/codex/security/faq.md",
@@ -10614,6 +10614,14 @@
     "lastModified": "Mon, 09 Mar 2026 03:50:57 GMT",
     "size": 6524,
     "updatedAt": "2026-03-09T03:50:57.346Z"
+  },
+  "codex-docs/security/plugin.md": {
+    "url": "https://developers.openai.com/codex/security/plugin.md",
+    "skill": "codex-docs",
+    "etag": "W/\"8f0410d2820d9bcc392573bae4df23ec\"",
+    "lastModified": "Thu, 28 May 2026 22:40:37 GMT",
+    "size": 6054,
+    "updatedAt": "2026-05-29T00:44:51.327Z"
   },
   "codex-docs/security/setup.md": {
     "url": "https://developers.openai.com/codex/security/setup.md",
@@ -10783,6 +10791,14 @@
     "size": 1932,
     "updatedAt": "2026-05-20T00:42:49.996Z"
   },
+  "codex-docs/use-cases/collections/security.md": {
+    "url": "https://developers.openai.com/codex/use-cases/collections/security.md",
+    "skill": "codex-docs",
+    "etag": "\"9167ccad82d22dfddebf67a869481cc7\"",
+    "lastModified": "Thu, 28 May 2026 22:40:44 GMT",
+    "size": 683,
+    "updatedAt": "2026-05-29T00:44:58.755Z"
+  },
   "codex-docs/use-cases/collections/web-development.md": {
     "url": "https://developers.openai.com/codex/use-cases/collections/web-development.md",
     "skill": "codex-docs",
@@ -10814,6 +10830,14 @@
     "lastModified": "Fri, 08 May 2026 00:35:22 GMT",
     "size": 3246,
     "updatedAt": "2026-05-08T00:35:22.702Z"
+  },
+  "codex-docs/use-cases/deep-security-scan.md": {
+    "url": "https://developers.openai.com/codex/use-cases/deep-security-scan.md",
+    "skill": "codex-docs",
+    "etag": "W/\"00abc08e413f9fd4a6d5e4ee63e0f9e4\"",
+    "lastModified": "Thu, 28 May 2026 22:40:46 GMT",
+    "size": 3572,
+    "updatedAt": "2026-05-29T00:44:59.980Z"
   },
   "codex-docs/use-cases/dependency-incident-audits.md": {
     "url": "https://developers.openai.com/codex/use-cases/dependency-incident-audits.md",
@@ -11047,6 +11071,14 @@
     "size": 5270,
     "updatedAt": "2026-05-01T00:35:32.915Z"
   },
+  "codex-docs/use-cases/remediate-vulnerability-backlog.md": {
+    "url": "https://developers.openai.com/codex/use-cases/remediate-vulnerability-backlog.md",
+    "skill": "codex-docs",
+    "etag": "W/\"516a7a206b62ff036d97aff104b402ad\"",
+    "lastModified": "Thu, 28 May 2026 22:40:56 GMT",
+    "size": 4543,
+    "updatedAt": "2026-05-29T00:45:07.223Z"
+  },
   "codex-docs/use-cases/reusable-codex-skills.md": {
     "url": "https://developers.openai.com/codex/use-cases/reusable-codex-skills.md",
     "skill": "codex-docs",
@@ -11054,6 +11086,14 @@
     "lastModified": "Sat, 11 Apr 2026 00:23:46 GMT",
     "size": 6047,
     "updatedAt": "2026-04-11T00:23:46.742Z"
+  },
+  "codex-docs/use-cases/scan-code-changes-for-security.md": {
+    "url": "https://developers.openai.com/codex/use-cases/scan-code-changes-for-security.md",
+    "skill": "codex-docs",
+    "etag": "W/\"5006eaadc8489eb79fa105a0d5039da7\"",
+    "lastModified": "Thu, 28 May 2026 22:40:56 GMT",
+    "size": 3514,
+    "updatedAt": "2026-05-29T00:45:07.727Z"
   },
   "codex-docs/use-cases/slack-action-triage.md": {
     "url": "https://developers.openai.com/codex/use-cases/slack-action-triage.md",

@@ -62,8 +62,8 @@ This example adds a [custom rule](https://developers.cloudflare.com/waf/custom-r
 
 To use the [cf.waf.credential\_check.username\_and\_password\_leaked](https://developers.cloudflare.com/ruleset-engine/rules-language/fields/reference/cf.waf.credential%5Fcheck.username%5Fand%5Fpassword%5Fleaked/) field you must [enable leaked credentials detection](#enable-leaked-credentials-detection).
 
-* [ Terraform (v5) ](#tab-panel-8985)
-* [ Terraform (v4) ](#tab-panel-8986)
+* [ Terraform (v5) ](#tab-panel-10007)
+* [ Terraform (v4) ](#tab-panel-10008)
 
 Required API token permissions
 

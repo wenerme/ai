@@ -1,5 +1,5 @@
 ---
-title: TTS-1-HD
+title: TTS-1 HD
 description: OpenAI's high-definition text-to-speech model producing higher quality audio output.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 ![OpenAI logo](https://developers.cloudflare.com/_astro/openai.BI8PEEzI.svg) 
 
-#  TTS-1-HD 
+#  TTS-1 HD 
 
 Text-to-Speech • OpenAI • Proxied 
 
@@ -28,6 +28,9 @@ OpenAI's high-definition text-to-speech model producing higher quality audio out
 
 ## Usage
 
+* [ TypeScript ](#tab-panel-1152)
+* [ cURL ](#tab-panel-1153)
+
 TypeScript
 
 ```
@@ -38,21 +41,15 @@ const response = await env.AI.run(
 
   {
 
-    text: 'Hello! Welcome to Cloudflare AI Gateway. Let me show you what we can do.',
-
-    voice: 'alloy',
-
     response_format: 'mp3',
 
     speed: 1,
 
+    text: 'Hello! Welcome to Cloudflare AI Gateway. Let me show you what we can do.',
+
+    voice: 'alloy',
+
   },
-
-  {
-
-    gateway: { id: 'default' },
-
-  }
 
 )
 
@@ -61,14 +58,49 @@ console.log(response)
 
 ```
 
-* [ Output ](#tab-panel-504)
-* [ Raw response ](#tab-panel-505)
+Terminal window
+
+```
+
+curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run \
+
+  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+
+  --header "Content-Type: application/json" \
+
+  --data '{
+
+  "model": "openai/tts-1-hd",
+
+  "input": {
+
+    "response_format": "mp3",
+
+    "speed": 1,
+
+    "text": "Hello! Welcome to Cloudflare AI Gateway. Let me show you what we can do.",
+
+    "voice": "alloy"
+
+  }
+
+}'
+
+
+```
+
+* [ Output ](#tab-panel-1148)
+* [ Raw response ](#tab-panel-1149)
 
 ```
 
 {
 
-  "state": "Completed",
+  "gatewayMetadata": {
+
+    "keySource": "Unified"
+
+  },
 
   "result": {
 
@@ -76,11 +108,7 @@ console.log(response)
 
   },
 
-  "gatewayMetadata": {
-
-    "keySource": "Unified"
-
-  }
+  "state": "Completed"
 
 }
 
@@ -91,6 +119,9 @@ console.log(response)
 
 **Storytelling**  — HD narration with the Fable voice 
 
+* [ TypeScript ](#tab-panel-1156)
+* [ cURL ](#tab-panel-1157)
+
 TypeScript
 
 ```
@@ -101,21 +132,15 @@ const response = await env.AI.run(
 
   {
 
-    text: 'Once upon a time, in a kingdom beyond the clouds, there lived a young inventor who dreamed of building machines that could think.',
-
-    voice: 'fable',
-
     response_format: 'mp3',
 
     speed: 0.9,
 
+    text: 'Once upon a time, in a kingdom beyond the clouds, there lived a young inventor who dreamed of building machines that could think.',
+
+    voice: 'fable',
+
   },
-
-  {
-
-    gateway: { id: 'default' },
-
-  }
 
 )
 
@@ -124,14 +149,49 @@ console.log(response)
 
 ```
 
-* [ Output ](#tab-panel-506)
-* [ Raw response ](#tab-panel-507)
+Terminal window
+
+```
+
+curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run \
+
+  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+
+  --header "Content-Type: application/json" \
+
+  --data '{
+
+  "model": "openai/tts-1-hd",
+
+  "input": {
+
+    "response_format": "mp3",
+
+    "speed": 0.9,
+
+    "text": "Once upon a time, in a kingdom beyond the clouds, there lived a young inventor who dreamed of building machines that could think.",
+
+    "voice": "fable"
+
+  }
+
+}'
+
+
+```
+
+* [ Output ](#tab-panel-1150)
+* [ Raw response ](#tab-panel-1151)
 
 ```
 
 {
 
-  "state": "Completed",
+  "gatewayMetadata": {
+
+    "keySource": "Unified"
+
+  },
 
   "result": {
 
@@ -139,11 +199,7 @@ console.log(response)
 
   },
 
-  "gatewayMetadata": {
-
-    "keySource": "Unified"
-
-  }
+  "state": "Completed"
 
 }
 
@@ -152,6 +208,9 @@ console.log(response)
 
 **Podcast Style**  — Conversational podcast narration 
 
+* [ TypeScript ](#tab-panel-1160)
+* [ cURL ](#tab-panel-1161)
+
 TypeScript
 
 ```
@@ -162,21 +221,15 @@ const response = await env.AI.run(
 
   {
 
-    text: "So here's the thing about large language models — they're not actually thinking. They're predicting the next token based on patterns in their training data. But the results can be surprisingly coherent.",
-
-    voice: 'echo',
-
     response_format: 'mp3',
 
     speed: 1,
 
+    text: "So here's the thing about large language models — they're not actually thinking. They're predicting the next token based on patterns in their training data. But the results can be surprisingly coherent.",
+
+    voice: 'echo',
+
   },
-
-  {
-
-    gateway: { id: 'default' },
-
-  }
 
 )
 
@@ -185,14 +238,49 @@ console.log(response)
 
 ```
 
-* [ Output ](#tab-panel-508)
-* [ Raw response ](#tab-panel-509)
+Terminal window
+
+```
+
+curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run \
+
+  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+
+  --header "Content-Type: application/json" \
+
+  --data '{
+
+  "model": "openai/tts-1-hd",
+
+  "input": {
+
+    "response_format": "mp3",
+
+    "speed": 1,
+
+    "text": "So here's the thing about large language models — they're not actually thinking. They're predicting the next token based on patterns in their training data. But the results can be surprisingly coherent.",
+
+    "voice": "echo"
+
+  }
+
+}'
+
+
+```
+
+* [ Output ](#tab-panel-1154)
+* [ Raw response ](#tab-panel-1155)
 
 ```
 
 {
 
-  "state": "Completed",
+  "gatewayMetadata": {
+
+    "keySource": "Unified"
+
+  },
 
   "result": {
 
@@ -200,11 +288,7 @@ console.log(response)
 
   },
 
-  "gatewayMetadata": {
-
-    "keySource": "Unified"
-
-  }
+  "state": "Completed"
 
 }
 
@@ -213,6 +297,9 @@ console.log(response)
 
 **Shimmer Voice**  — Bright and expressive voice 
 
+* [ TypeScript ](#tab-panel-1162)
+* [ cURL ](#tab-panel-1163)
+
 TypeScript
 
 ```
@@ -223,21 +310,15 @@ const response = await env.AI.run(
 
   {
 
-    text: 'Breaking news: scientists have discovered a new species of deep-sea fish that produces its own light using bioluminescence.',
-
-    voice: 'shimmer',
-
     response_format: 'mp3',
 
     speed: 1,
 
+    text: 'Breaking news: scientists have discovered a new species of deep-sea fish that produces its own light using bioluminescence.',
+
+    voice: 'shimmer',
+
   },
-
-  {
-
-    gateway: { id: 'default' },
-
-  }
 
 )
 
@@ -246,14 +327,49 @@ console.log(response)
 
 ```
 
-* [ Output ](#tab-panel-510)
-* [ Raw response ](#tab-panel-511)
+Terminal window
+
+```
+
+curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run \
+
+  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+
+  --header "Content-Type: application/json" \
+
+  --data '{
+
+  "model": "openai/tts-1-hd",
+
+  "input": {
+
+    "response_format": "mp3",
+
+    "speed": 1,
+
+    "text": "Breaking news: scientists have discovered a new species of deep-sea fish that produces its own light using bioluminescence.",
+
+    "voice": "shimmer"
+
+  }
+
+}'
+
+
+```
+
+* [ Output ](#tab-panel-1158)
+* [ Raw response ](#tab-panel-1159)
 
 ```
 
 {
 
-  "state": "Completed",
+  "gatewayMetadata": {
+
+    "keySource": "Unified"
+
+  },
 
   "result": {
 
@@ -261,11 +377,7 @@ console.log(response)
 
   },
 
-  "gatewayMetadata": {
-
-    "keySource": "Unified"
-
-  }
+  "state": "Completed"
 
 }
 
@@ -274,8 +386,16 @@ console.log(response)
 
 ## Parameters
 
-* [ Input ](#tab-panel-512)
-* [ Output ](#tab-panel-513)
+* [ Input ](#tab-panel-1164)
+* [ Output ](#tab-panel-1165)
+
+response\_format
+
+`string`requireddefault: mp3enum: mp3, opus, wav, aac, flacThe output format for the audio. Supported formats are mp3, opus, wav, aac and flac.
+
+speed
+
+`number`requireddefault: 1maximum: 4minimum: 0.25The speed of the generated audio. Select a value from 0.25 to 4.0\. 1.0 is the default.
 
 text
 
@@ -284,14 +404,6 @@ text
 voice
 
 `string`requireddefault: alloyenum: alloy, echo, fable, onyx, nova, shimmerThe voice to use when generating the audio. Defaults to alloy.
-
-response\_format
-
-`string`requireddefault: mp3enum: mp3, opus, wav, aac, flacThe output format for the audio. Supported formats are mp3, opus, wav, aac and flac.
-
-speed
-
-`number`requireddefault: 1minimum: 0.25maximum: 4The speed of the generated audio. Select a value from 0.25 to 4.0\. 1.0 is the default.
 
 audio
 

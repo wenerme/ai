@@ -1,6 +1,3 @@
-> [!IMPORTANT]
-> We have updated our [Terms of Service](https://ai.google.dev/gemini-api/terms).
-
 *** ** * ** ***
 
 ## Gemini 3
@@ -15,9 +12,9 @@ Preview](https://ai.google.dev/gemini-api/docs/models/gemini-3-flash-preview) [#
 Frontier-class performance rivaling larger models at a fraction of the cost.
 Stable](https://ai.google.dev/gemini-api/docs/models/gemini-3.1-flash-lite) [### Nano Banana 2
 Powerful, high-efficiency image generation and editing, optimized for speed and high-volume use cases.
-Preview](https://ai.google.dev/gemini-api/docs/models/gemini-3.1-flash-image-preview) [### Nano Banana Pro
+Stable](https://ai.google.dev/gemini-api/docs/models/gemini-3.1-flash-image) [### Nano Banana Pro
 State-of-the-art image generation and editing models for highly contextual native image creation.
-Preview](https://ai.google.dev/gemini-api/docs/models/gemini-3-pro-image-preview) [### Gemini 3.1 Flash Live
+Stable](https://ai.google.dev/gemini-api/docs/models/gemini-3-pro-image) [### Gemini 3.1 Flash Live
 High-quality, low-latency Live API model for real-time dialogue and voice-first AI applications.
 New Preview](https://ai.google.dev/gemini-api/docs/models/gemini-3.1-flash-live-preview) [### Gemini 3.1 Flash TTS
 Powerful, low-latency speech generation.
@@ -95,7 +92,7 @@ High-fidelity speech synthesis optimized for quality in structured workflows lik
 
 *This section contains all generative media models, including ones that may already be listed in other sections*
 
-### [Nano Banana 2 Preview](https://ai.google.dev/gemini-api/docs/models/gemini-3.1-flash-image-preview)
+### [Nano Banana 2](https://ai.google.dev/gemini-api/docs/models/gemini-3.1-flash-image)
 
 High-efficiency production-scale visual creation, combining the intelligence of the Gemini 3 series with lightning-fast generation speeds.
 
@@ -103,7 +100,7 @@ High-efficiency production-scale visual creation, combining the intelligence of 
 
 State-of-the-art cinematic video generation with advanced creative controls and natively synchronized audio.
 
-### [Nano Banana Pro Preview](https://ai.google.dev/gemini-api/docs/models/gemini-3-pro-image-preview)
+### [Nano Banana Pro](https://ai.google.dev/gemini-api/docs/models/gemini-3-pro-image)
 
 A professional design engine with a reasoning core for studio-quality 4K visuals, complex layouts, and precise text rendering.
 

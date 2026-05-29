@@ -28,6 +28,9 @@ Alibaba's HappyHorse 1.0 text-to-video model. Generates videos from a text promp
 
 ## Usage
 
+* [ TypeScript ](#tab-panel-16)
+* [ cURL ](#tab-panel-17)
+
 TypeScript
 
 ```
@@ -36,17 +39,7 @@ const response = await env.AI.run(
 
   'alibaba/hh1-t2v',
 
-  {
-
-    prompt: 'A little girl walking on the road',
-
-  },
-
-  {
-
-    gateway: { id: 'default' },
-
-  }
+  { prompt: 'A little girl walking on the road' },
 
 )
 
@@ -55,14 +48,43 @@ console.log(response)
 
 ```
 
-* [ Output ](#tab-panel-8)
-* [ Raw response ](#tab-panel-9)
+Terminal window
+
+```
+
+curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run \
+
+  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+
+  --header "Content-Type: application/json" \
+
+  --data '{
+
+  "model": "alibaba/hh1-t2v",
+
+  "input": {
+
+    "prompt": "A little girl walking on the road"
+
+  }
+
+}'
+
+
+```
+
+* [ Output ](#tab-panel-14)
+* [ Raw response ](#tab-panel-15)
 
 ```
 
 {
 
-  "state": "Completed",
+  "gatewayMetadata": {
+
+    "keySource": "BYOK"
+
+  },
 
   "result": {
 
@@ -70,11 +92,7 @@ console.log(response)
 
   },
 
-  "gatewayMetadata": {
-
-    "keySource": "BYOK"
-
-  }
+  "state": "Completed"
 
 }
 
@@ -85,6 +103,9 @@ console.log(response)
 
 **Vertical 1080P**  — Vertical 9:16 output at 1080P for social media 
 
+* [ TypeScript ](#tab-panel-22)
+* [ cURL ](#tab-panel-23)
+
 TypeScript
 
 ```
@@ -95,23 +116,15 @@ const response = await env.AI.run(
 
   {
 
-    prompt:
+    duration: 6,
 
-      'A dog running through a field of tall grass, slow motion, golden hour',
-
-    resolution: '1080P',
+    prompt: 'A dog running through a field of tall grass, slow motion, golden hour',
 
     ratio: '9:16',
 
-    duration: 6,
+    resolution: '1080P',
 
   },
-
-  {
-
-    gateway: { id: 'default' },
-
-  }
 
 )
 
@@ -120,14 +133,49 @@ console.log(response)
 
 ```
 
-* [ Output ](#tab-panel-10)
-* [ Raw response ](#tab-panel-11)
+Terminal window
+
+```
+
+curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run \
+
+  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+
+  --header "Content-Type: application/json" \
+
+  --data '{
+
+  "model": "alibaba/hh1-t2v",
+
+  "input": {
+
+    "duration": 6,
+
+    "prompt": "A dog running through a field of tall grass, slow motion, golden hour",
+
+    "ratio": "9:16",
+
+    "resolution": "1080P"
+
+  }
+
+}'
+
+
+```
+
+* [ Output ](#tab-panel-18)
+* [ Raw response ](#tab-panel-19)
 
 ```
 
 {
 
-  "state": "Completed",
+  "gatewayMetadata": {
+
+    "keySource": "BYOK"
+
+  },
 
   "result": {
 
@@ -135,11 +183,7 @@ console.log(response)
 
   },
 
-  "gatewayMetadata": {
-
-    "keySource": "BYOK"
-
-  }
+  "state": "Completed"
 
 }
 
@@ -148,6 +192,9 @@ console.log(response)
 
 **Reproducible Output**  — Use a fixed seed for reproducibility 
 
+* [ TypeScript ](#tab-panel-24)
+* [ cURL ](#tab-panel-25)
+
 TypeScript
 
 ```
@@ -158,23 +205,17 @@ const response = await env.AI.run(
 
   {
 
-    prompt: 'Clouds drifting across a mountain range, time-lapse style',
+    duration: 5,
 
-    resolution: '720P',
+    prompt: 'Clouds drifting across a mountain range, time-lapse style',
 
     ratio: '16:9',
 
-    duration: 5,
+    resolution: '720P',
 
     seed: 42,
 
   },
-
-  {
-
-    gateway: { id: 'default' },
-
-  }
 
 )
 
@@ -183,14 +224,51 @@ console.log(response)
 
 ```
 
-* [ Output ](#tab-panel-12)
-* [ Raw response ](#tab-panel-13)
+Terminal window
+
+```
+
+curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run \
+
+  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+
+  --header "Content-Type: application/json" \
+
+  --data '{
+
+  "model": "alibaba/hh1-t2v",
+
+  "input": {
+
+    "duration": 5,
+
+    "prompt": "Clouds drifting across a mountain range, time-lapse style",
+
+    "ratio": "16:9",
+
+    "resolution": "720P",
+
+    "seed": 42
+
+  }
+
+}'
+
+
+```
+
+* [ Output ](#tab-panel-20)
+* [ Raw response ](#tab-panel-21)
 
 ```
 
 {
 
-  "state": "Completed",
+  "gatewayMetadata": {
+
+    "keySource": "BYOK"
+
+  },
 
   "result": {
 
@@ -198,11 +276,7 @@ console.log(response)
 
   },
 
-  "gatewayMetadata": {
-
-    "keySource": "BYOK"
-
-  }
+  "state": "Completed"
 
 }
 
@@ -211,28 +285,28 @@ console.log(response)
 
 ## Parameters
 
-* [ Input ](#tab-panel-14)
-* [ Output ](#tab-panel-15)
+* [ Input ](#tab-panel-26)
+* [ Output ](#tab-panel-27)
+
+duration
+
+`integer`maximum: 15minimum: 3
 
 prompt
 
-`string`requiredminLength: 1maxLength: 2500
-
-resolution
-
-`string`enum: 720P, 1080P
+`string`requiredmaxLength: 2500minLength: 1
 
 ratio
 
 `string`enum: 16:9, 9:16, 1:1, 4:3, 3:4
 
-duration
+resolution
 
-`integer`minimum: 3maximum: 15
+`string`enum: 720P, 1080P
 
 seed
 
-`integer`minimum: 0maximum: 2147483647
+`integer`maximum: 2147483647minimum: 0
 
 watermark
 

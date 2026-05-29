@@ -1,6 +1,6 @@
 ---
 title: GPT-5.4 mini
-description: GPT-5.4 Mini is a smaller, faster, and more cost-efficient version of GPT-5.4 for lightweight tasks.
+description: GPT-5.4 mini is a smaller, faster, and more cost-efficient version of GPT-5.4 for lightweight tasks.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
@@ -18,7 +18,7 @@ Text Generation • OpenAI • Proxied
 
 `openai/gpt-5.4-mini` 
 
-GPT-5.4 Mini is a smaller, faster, and more cost-efficient version of GPT-5.4 for lightweight tasks.
+GPT-5.4 mini is a smaller, faster, and more cost-efficient version of GPT-5.4 for lightweight tasks.
 
 | Model Info                                                                 |                                                                                                                       |
 | -------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------- |
@@ -29,6 +29,9 @@ GPT-5.4 Mini is a smaller, faster, and more cost-efficient version of GPT-5.4 fo
 
 ## Usage
 
+* [ TypeScript ](#tab-panel-946)
+* [ cURL ](#tab-panel-947)
+
 TypeScript
 
 ```
@@ -37,27 +40,7 @@ const response = await env.AI.run(
 
   'openai/gpt-5.4-mini',
 
-  {
-
-    messages: [
-
-      {
-
-        role: 'user',
-
-        content: 'What are the three laws of thermodynamics?',
-
-      },
-
-    ],
-
-  },
-
-  {
-
-    gateway: { id: 'default' },
-
-  }
+  { messages: [{ content: 'What are the three laws of thermodynamics?', role: 'user' }] },
 
 )
 
@@ -66,8 +49,39 @@ console.log(response)
 
 ```
 
-* [ Output ](#tab-panel-416)
-* [ Raw response ](#tab-panel-417)
+Terminal window
+
+```
+
+curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/v1/responses \
+
+  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+
+  --header "Content-Type: application/json" \
+
+  --data '{
+
+  "model": "openai/gpt-5.4-mini",
+
+  "messages": [
+
+    {
+
+      "content": "What are the three laws of thermodynamics?",
+
+      "role": "user"
+
+    }
+
+  ]
+
+}'
+
+
+```
+
+* [ Output ](#tab-panel-956)
+* [ Raw response ](#tab-panel-957)
 
 The three laws of thermodynamics are:
 
@@ -91,75 +105,75 @@ If you want, I can also give you a **very simple everyday analogy** for each law
 
 {
 
-  "id": "chatcmpl-DVnVB12AdRglT0QAUKVZ2kfSuzFOP",
-
-  "object": "chat.completion",
-
-  "created": 1776470825,
-
-  "model": "gpt-5.4-mini-2026-03-17",
-
   "choices": [
 
     {
+
+      "finish_reason": "stop",
 
       "index": 0,
 
       "message": {
 
-        "role": "assistant",
+        "annotations": [],
 
         "content": "The three laws of thermodynamics are:\n\n1. **First Law: Conservation of energy**  \n   Energy cannot be created or destroyed, only transferred or transformed.  \n   In simple form:  \n   **ΔU = Q − W**  \n   where ΔU is the change in internal energy, Q is heat added to the system, and W is work done by the system.\n\n2. **Second Law: Entropy increases**  \n   In an isolated system, entropy tends to increase over time. This means natural processes are irreversible and energy tends to spread out.  \n   A common implication: no heat engine can be 100% efficient.\n\n3. **Third Law: Absolute zero is unattainable**  \n   As temperature approaches absolute zero, the entropy of a perfect crystal approaches a minimum value, usually taken as zero.  \n   In practice, it’s impossible to reach exactly 0 K in a finite number of steps.\n\nIf you want, I can also give you a **very simple everyday analogy** for each law.",
 
         "refusal": null,
 
-        "annotations": []
+        "role": "assistant"
 
-      },
-
-      "finish_reason": "stop"
+      }
 
     }
 
   ],
 
-  "usage": {
+  "created": 1776470825,
 
-    "prompt_tokens": 15,
+  "gatewayMetadata": {
 
-    "completion_tokens": 211,
-
-    "total_tokens": 226,
-
-    "prompt_tokens_details": {
-
-      "cached_tokens": 0,
-
-      "audio_tokens": 0
-
-    },
-
-    "completion_tokens_details": {
-
-      "reasoning_tokens": 0,
-
-      "audio_tokens": 0,
-
-      "accepted_prediction_tokens": 0,
-
-      "rejected_prediction_tokens": 0
-
-    }
+    "keySource": "Unified"
 
   },
+
+  "id": "chatcmpl-DVnVB12AdRglT0QAUKVZ2kfSuzFOP",
+
+  "model": "gpt-5.4-mini-2026-03-17",
+
+  "object": "chat.completion",
 
   "service_tier": "default",
 
   "system_fingerprint": null,
 
-  "gatewayMetadata": {
+  "usage": {
 
-    "keySource": "Unified"
+    "completion_tokens": 211,
+
+    "completion_tokens_details": {
+
+      "accepted_prediction_tokens": 0,
+
+      "audio_tokens": 0,
+
+      "reasoning_tokens": 0,
+
+      "rejected_prediction_tokens": 0
+
+    },
+
+    "prompt_tokens": 15,
+
+    "prompt_tokens_details": {
+
+      "audio_tokens": 0,
+
+      "cached_tokens": 0
+
+    },
+
+    "total_tokens": 226
 
   }
 
@@ -171,6 +185,9 @@ If you want, I can also give you a **very simple everyday analogy** for each law
 ## Examples
 
 **With System Message**  — Using a system message to set context 
+
+* [ TypeScript ](#tab-panel-948)
+* [ cURL ](#tab-panel-949)
 
 TypeScript
 
@@ -184,31 +201,13 @@ const response = await env.AI.run(
 
     messages: [
 
-      {
+      { content: 'You are a helpful coding assistant specializing in Python.', role: 'system' },
 
-        role: 'system',
-
-        content: 'You are a helpful coding assistant specializing in Python.',
-
-      },
-
-      {
-
-        role: 'user',
-
-        content: 'How do I read a JSON file in Python?',
-
-      },
+      { content: 'How do I read a JSON file in Python?', role: 'user' },
 
     ],
 
   },
-
-  {
-
-    gateway: { id: 'default' },
-
-  }
 
 )
 
@@ -217,8 +216,47 @@ console.log(response)
 
 ```
 
-* [ Output ](#tab-panel-418)
-* [ Raw response ](#tab-panel-419)
+Terminal window
+
+```
+
+curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/v1/responses \
+
+  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+
+  --header "Content-Type: application/json" \
+
+  --data '{
+
+  "model": "openai/gpt-5.4-mini",
+
+  "messages": [
+
+    {
+
+      "content": "You are a helpful coding assistant specializing in Python.",
+
+      "role": "system"
+
+    },
+
+    {
+
+      "content": "How do I read a JSON file in Python?",
+
+      "role": "user"
+
+    }
+
+  ]
+
+}'
+
+
+```
+
+* [ Output ](#tab-panel-958)
+* [ Raw response ](#tab-panel-959)
 
 Use Python’s built-in `json` module.
 
@@ -258,75 +296,75 @@ If you want, I can also show how to:
 
 {
 
-  "id": "chatcmpl-DVnVDQEDXijlKMCbGNVtJzuMx2D8F",
-
-  "object": "chat.completion",
-
-  "created": 1776470827,
-
-  "model": "gpt-5.4-mini-2026-03-17",
-
   "choices": [
 
     {
+
+      "finish_reason": "stop",
 
       "index": 0,
 
       "message": {
 
-        "role": "assistant",
+        "annotations": [],
 
         "content": "Use Python’s built-in `json` module.\n\n```python\nimport json\n\nwith open(\"data.json\", \"r\", encoding=\"utf-8\") as f:\n    data = json.load(f)\n\nprint(data)\n```\n\n### Notes\n- `json.load(f)` reads JSON from a file object.\n- `json.loads(s)` reads JSON from a string.\n- The result is usually a Python `dict` or `list`, depending on the JSON structure.\n\n### Example JSON\n```json\n{\n  \"name\": \"Alice\",\n  \"age\": 30\n}\n```\n\n### Python result\n```python\n{'name': 'Alice', 'age': 30}\n```\n\nIf you want, I can also show how to:\n- read JSON into a pandas DataFrame\n- handle invalid JSON errors\n- write JSON back to a file",
 
         "refusal": null,
 
-        "annotations": []
+        "role": "assistant"
 
-      },
-
-      "finish_reason": "stop"
+      }
 
     }
 
   ],
 
-  "usage": {
+  "created": 1776470827,
 
-    "prompt_tokens": 30,
+  "gatewayMetadata": {
 
-    "completion_tokens": 176,
-
-    "total_tokens": 206,
-
-    "prompt_tokens_details": {
-
-      "cached_tokens": 0,
-
-      "audio_tokens": 0
-
-    },
-
-    "completion_tokens_details": {
-
-      "reasoning_tokens": 0,
-
-      "audio_tokens": 0,
-
-      "accepted_prediction_tokens": 0,
-
-      "rejected_prediction_tokens": 0
-
-    }
+    "keySource": "Unified"
 
   },
+
+  "id": "chatcmpl-DVnVDQEDXijlKMCbGNVtJzuMx2D8F",
+
+  "model": "gpt-5.4-mini-2026-03-17",
+
+  "object": "chat.completion",
 
   "service_tier": "default",
 
   "system_fingerprint": null,
 
-  "gatewayMetadata": {
+  "usage": {
 
-    "keySource": "Unified"
+    "completion_tokens": 176,
+
+    "completion_tokens_details": {
+
+      "accepted_prediction_tokens": 0,
+
+      "audio_tokens": 0,
+
+      "reasoning_tokens": 0,
+
+      "rejected_prediction_tokens": 0
+
+    },
+
+    "prompt_tokens": 30,
+
+    "prompt_tokens_details": {
+
+      "audio_tokens": 0,
+
+      "cached_tokens": 0
+
+    },
+
+    "total_tokens": 206
 
   }
 
@@ -336,6 +374,9 @@ If you want, I can also show how to:
 ```
 
 **Multi-turn Conversation**  — Continuing a conversation with context 
+
+* [ TypeScript ](#tab-panel-952)
+* [ cURL ](#tab-panel-953)
 
 TypeScript
 
@@ -347,47 +388,33 @@ const response = await env.AI.run(
 
   {
 
+    max_completion_tokens: 8192,
+
     messages: [
 
       {
 
+        content: 'I need help planning a road trip from San Francisco to Los Angeles.',
+
         role: 'user',
-
-        content:
-
-          'I need help planning a road trip from San Francisco to Los Angeles.',
 
       },
 
       {
-
-        role: 'assistant',
 
         content:
 
           "I'd be happy to help! The drive is about 380 miles and takes roughly 5-6 hours. Would you like suggestions for scenic routes or interesting stops along the way?",
 
-      },
-
-      {
-
-        role: 'user',
-
-        content: 'Yes, what are some good places to stop?',
+        role: 'assistant',
 
       },
+
+      { content: 'Yes, what are some good places to stop?', role: 'user' },
 
     ],
 
-    max_completion_tokens: 2048,
-
   },
-
-  {
-
-    gateway: { id: 'default' },
-
-  }
 
 )
 
@@ -396,8 +423,57 @@ console.log(response)
 
 ```
 
-* [ Output ](#tab-panel-420)
-* [ Raw response ](#tab-panel-421)
+Terminal window
+
+```
+
+curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/v1/responses \
+
+  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+
+  --header "Content-Type: application/json" \
+
+  --data '{
+
+  "model": "openai/gpt-5.4-mini",
+
+  "max_completion_tokens": 8192,
+
+  "messages": [
+
+    {
+
+      "content": "I need help planning a road trip from San Francisco to Los Angeles.",
+
+      "role": "user"
+
+    },
+
+    {
+
+      "content": "I'd be happy to help! The drive is about 380 miles and takes roughly 5-6 hours. Would you like suggestions for scenic routes or interesting stops along the way?",
+
+      "role": "assistant"
+
+    },
+
+    {
+
+      "content": "Yes, what are some good places to stop?",
+
+      "role": "user"
+
+    }
+
+  ]
+
+}'
+
+
+```
+
+* [ Output ](#tab-panel-960)
+* [ Raw response ](#tab-panel-961)
 
 Absolutely — the San Francisco to Los Angeles drive has a lot of great stop options depending on whether you want the **fastest route** or the **most scenic one**.
 
@@ -475,75 +551,75 @@ If you want, I can also make you:
 
 {
 
-  "id": "chatcmpl-DVnVDSqb2DaSLNqKCpSBwk0puM04a",
-
-  "object": "chat.completion",
-
-  "created": 1776470827,
-
-  "model": "gpt-5.4-mini-2026-03-17",
-
   "choices": [
 
     {
+
+      "finish_reason": "stop",
 
       "index": 0,
 
       "message": {
 
-        "role": "assistant",
+        "annotations": [],
 
         "content": "Absolutely — the San Francisco to Los Angeles drive has a lot of great stop options depending on whether you want the **fastest route** or the **most scenic one**.\n\n## Best stops if you take Highway 1 / Pacific Coast Highway\nThis is the most scenic route, but it can add a lot of time.\n\n### 1. Monterey / Carmel-by-the-Sea\n- Great for a first major stop south of SF\n- **Monterey Bay Aquarium** is a top attraction\n- Carmel has a charming village feel, beaches, and galleries\n\n### 2. Big Sur\n- One of the most famous scenic stretches in California\n- Must-see viewpoints:\n  - **Bixby Creek Bridge**\n  - **Pfeiffer Beach**\n  - **Julia Pfeiffer Burns State Park** / McWay Falls\n- Ideal if you want dramatic coastline and photo stops\n\n### 3. San Simeon / Hearst Castle\n- Good place to break up the drive\n- **Hearst Castle** is the big attraction here\n- Also possible to see elephant seals at **Piedras Blancas**\n\n### 4. San Luis Obispo\n- Nice overnight or lunch stop\n- Relaxed downtown, good food, and easy access to nearby wine country\n\n### 5. Santa Barbara\n- Beautiful coastal city, great for a meal or longer stop\n- **Stearns Wharf**, the mission, and the harbor are popular\n- Good “last major stop” before LA\n\n## Best stops if you take the faster inland route (US-101 / I-5)\nThis is quicker and still has good options.\n\n### 1. San Luis Obispo\n- Great midway break\n- Walkable downtown and lots of restaurants\n\n### 2. Solvang\n- A fun Danish-style town near Santa Barbara\n- Good for pastries, coffee, and a quick stretch\n\n### 3. Santa Barbara\n- Still worth stopping even on the faster route\n- Beautiful and easy to enjoy without a huge detour\n\n### 4. Ventura / Oxnard\n- Good coastal stop before reaching LA\n- Less crowded than Santa Barbara\n\n## If you want a balanced one-day route\nA practical plan is:\n- **SF → Monterey / Carmel**\n- **Monterey → Big Sur**\n- **Big Sur → San Luis Obispo**\n- **San Luis Obispo → Santa Barbara**\n- **Santa Barbara → LA**\n\nThat’s a lot for one day, so many people do it as a **2-day or 3-day road trip**.\n\n## Quick recommendation\nIf you only want a few stops, I’d pick:\n1. **Monterey**\n2. **Big Sur**\n3. **Santa Barbara**\n\nIf you want, I can also make you:\n- a **1-day itinerary**\n- a **2-day scenic itinerary**\n- or a route with **food, beaches, and hiking stops**.",
 
         "refusal": null,
 
-        "annotations": []
+        "role": "assistant"
 
-      },
-
-      "finish_reason": "stop"
+      }
 
     }
 
   ],
 
-  "usage": {
+  "created": 1776470827,
 
-    "prompt_tokens": 76,
+  "gatewayMetadata": {
 
-    "completion_tokens": 601,
-
-    "total_tokens": 677,
-
-    "prompt_tokens_details": {
-
-      "cached_tokens": 0,
-
-      "audio_tokens": 0
-
-    },
-
-    "completion_tokens_details": {
-
-      "reasoning_tokens": 0,
-
-      "audio_tokens": 0,
-
-      "accepted_prediction_tokens": 0,
-
-      "rejected_prediction_tokens": 0
-
-    }
+    "keySource": "Unified"
 
   },
+
+  "id": "chatcmpl-DVnVDSqb2DaSLNqKCpSBwk0puM04a",
+
+  "model": "gpt-5.4-mini-2026-03-17",
+
+  "object": "chat.completion",
 
   "service_tier": "default",
 
   "system_fingerprint": null,
 
-  "gatewayMetadata": {
+  "usage": {
 
-    "keySource": "Unified"
+    "completion_tokens": 601,
+
+    "completion_tokens_details": {
+
+      "accepted_prediction_tokens": 0,
+
+      "audio_tokens": 0,
+
+      "reasoning_tokens": 0,
+
+      "rejected_prediction_tokens": 0
+
+    },
+
+    "prompt_tokens": 76,
+
+    "prompt_tokens_details": {
+
+      "audio_tokens": 0,
+
+      "cached_tokens": 0
+
+    },
+
+    "total_tokens": 677
 
   }
 
@@ -553,6 +629,9 @@ If you want, I can also make you:
 ```
 
 **Creative Writing**  — Longer completion for creative output 
+
+* [ TypeScript ](#tab-panel-950)
+* [ cURL ](#tab-panel-951)
 
 TypeScript
 
@@ -564,29 +643,21 @@ const response = await env.AI.run(
 
   {
 
+    max_completion_tokens: 8192,
+
     messages: [
 
       {
 
+        content: 'Write a short story opening about a detective finding an unusual clue.',
+
         role: 'user',
-
-        content:
-
-          'Write a short story opening about a detective finding an unusual clue.',
 
       },
 
     ],
 
-    max_completion_tokens: 2048,
-
   },
-
-  {
-
-    gateway: { id: 'default' },
-
-  }
 
 )
 
@@ -595,8 +666,41 @@ console.log(response)
 
 ```
 
-* [ Output ](#tab-panel-422)
-* [ Raw response ](#tab-panel-423)
+Terminal window
+
+```
+
+curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/v1/responses \
+
+  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+
+  --header "Content-Type: application/json" \
+
+  --data '{
+
+  "model": "openai/gpt-5.4-mini",
+
+  "max_completion_tokens": 8192,
+
+  "messages": [
+
+    {
+
+      "content": "Write a short story opening about a detective finding an unusual clue.",
+
+      "role": "user"
+
+    }
+
+  ]
+
+}'
+
+
+```
+
+* [ Output ](#tab-panel-962)
+* [ Raw response ](#tab-panel-963)
 
 The rain had been falling since midnight, soft and persistent, turning the city into a blur of sodium light and reflected secrets. Detective Mara Venn stood in the doorway of apartment 4B, one gloved hand resting against the frame, and looked down at the object gleaming on the floorboards.
 
@@ -624,75 +728,75 @@ And somehow, they had expected her to come.
 
 {
 
-  "id": "chatcmpl-DVnVEh2k96IQnpAZXEH5eHHSILLHq",
-
-  "object": "chat.completion",
-
-  "created": 1776470828,
-
-  "model": "gpt-5.4-mini-2026-03-17",
-
   "choices": [
 
     {
+
+      "finish_reason": "stop",
 
       "index": 0,
 
       "message": {
 
-        "role": "assistant",
+        "annotations": [],
 
         "content": "The rain had been falling since midnight, soft and persistent, turning the city into a blur of sodium light and reflected secrets. Detective Mara Venn stood in the doorway of apartment 4B, one gloved hand resting against the frame, and looked down at the object gleaming on the floorboards.\n\nIt wasn’t a weapon. It wasn’t jewelry, either.\n\nAt first glance, it looked like a child’s toy: a tiny brass bird with one wing folded and the other raised as if caught mid-flight. But when Mara knelt and picked it up, she felt the weight of it—too heavy for its size—and noticed the fine engraved line along its belly. A seam.\n\nShe turned the figurine over. Hidden beneath the bird’s feet was a row of numbers, stamped so neatly they might have been part of the design. Not a serial number, exactly. Too deliberate for that. Too precise.\n\nBehind her, the apartment hummed with the low buzz of the refrigerator and the distant wail of a siren moving somewhere farther downtown. Inside the room, the dead man sat slumped in his chair as if he’d merely nodded off. His hands were folded on the desk. His face was calm.\n\nMara looked again at the brass bird.\n\nThe numbers weren’t random. She knew that before she even compared them to the note pinned under the victim’s pen, written in a hand so steady it seemed almost smug:\n\n**You’re late. Look under the third stone.**\n\nShe slipped the bird into an evidence bag and stared at the cold line of the victim’s mouth.\n\nSomeone had planned this very carefully.\n\nAnd somehow, they had expected her to come.",
 
         "refusal": null,
 
-        "annotations": []
+        "role": "assistant"
 
-      },
-
-      "finish_reason": "stop"
+      }
 
     }
 
   ],
 
-  "usage": {
+  "created": 1776470828,
 
-    "prompt_tokens": 19,
+  "gatewayMetadata": {
 
-    "completion_tokens": 343,
-
-    "total_tokens": 362,
-
-    "prompt_tokens_details": {
-
-      "cached_tokens": 0,
-
-      "audio_tokens": 0
-
-    },
-
-    "completion_tokens_details": {
-
-      "reasoning_tokens": 0,
-
-      "audio_tokens": 0,
-
-      "accepted_prediction_tokens": 0,
-
-      "rejected_prediction_tokens": 0
-
-    }
+    "keySource": "Unified"
 
   },
+
+  "id": "chatcmpl-DVnVEh2k96IQnpAZXEH5eHHSILLHq",
+
+  "model": "gpt-5.4-mini-2026-03-17",
+
+  "object": "chat.completion",
 
   "service_tier": "default",
 
   "system_fingerprint": null,
 
-  "gatewayMetadata": {
+  "usage": {
 
-    "keySource": "Unified"
+    "completion_tokens": 343,
+
+    "completion_tokens_details": {
+
+      "accepted_prediction_tokens": 0,
+
+      "audio_tokens": 0,
+
+      "reasoning_tokens": 0,
+
+      "rejected_prediction_tokens": 0
+
+    },
+
+    "prompt_tokens": 19,
+
+    "prompt_tokens_details": {
+
+      "audio_tokens": 0,
+
+      "cached_tokens": 0
+
+    },
+
+    "total_tokens": 362
 
   }
 
@@ -702,6 +806,9 @@ And somehow, they had expected her to come.
 ```
 
 **Streaming Response**  — Enable streaming for real-time output 
+
+* [ TypeScript ](#tab-panel-954)
+* [ cURL ](#tab-panel-955)
 
 TypeScript
 
@@ -713,33 +820,13 @@ const response = await env.AI.run(
 
   {
 
-    messages: [
-
-      {
-
-        role: 'user',
-
-        content: 'Explain the concept of recursion with a simple example.',
-
-      },
-
-    ],
+    messages: [{ content: 'Explain the concept of recursion with a simple example.', role: 'user' }],
 
     stream: true,
 
-    stream_options: {
-
-      include_usage: true,
-
-    },
+    stream_options: { include_usage: true },
 
   },
-
-  {
-
-    gateway: { id: 'default' },
-
-  }
 
 )
 
@@ -748,8 +835,47 @@ console.log(response)
 
 ```
 
-* [ Output ](#tab-panel-424)
-* [ Raw response ](#tab-panel-425)
+Terminal window
+
+```
+
+curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/v1/responses \
+
+  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+
+  --header "Content-Type: application/json" \
+
+  --data '{
+
+  "model": "openai/gpt-5.4-mini",
+
+  "messages": [
+
+    {
+
+      "content": "Explain the concept of recursion with a simple example.",
+
+      "role": "user"
+
+    }
+
+  ],
+
+  "stream": true,
+
+  "stream_options": {
+
+    "include_usage": true
+
+  }
+
+}'
+
+
+```
+
+* [ Output ](#tab-panel-964)
+* [ Raw response ](#tab-panel-965)
 
 Recursion is when a function solves a problem by calling itself on a smaller version of the same problem.
 
@@ -796,65 +922,51 @@ Recursion is like solving a big problem by breaking it into smaller versions of 
 
   {
 
-    "id": "chatcmpl-DVnVIJWPzCL8OTA38vb3b0IM2eEca",
-
-    "object": "chat.completion.chunk",
-
-    "created": 1776470832,
-
-    "model": "gpt-5.4-mini-2026-03-17",
-
-    "service_tier": "default",
-
-    "system_fingerprint": null,
-
     "choices": [
 
       {
 
-        "index": 0,
-
         "delta": {
-
-          "role": "assistant",
 
           "content": "",
 
-          "refusal": null
+          "refusal": null,
+
+          "role": "assistant"
 
         },
 
-        "finish_reason": null
+        "finish_reason": null,
+
+        "index": 0
 
       }
 
     ],
 
-    "usage": null,
-
-    "obfuscation": "9pV"
-
-  },
-
-  {
+    "created": 1776470832,
 
     "id": "chatcmpl-DVnVIJWPzCL8OTA38vb3b0IM2eEca",
 
-    "object": "chat.completion.chunk",
-
-    "created": 1776470832,
-
     "model": "gpt-5.4-mini-2026-03-17",
+
+    "obfuscation": "9pV",
+
+    "object": "chat.completion.chunk",
 
     "service_tier": "default",
 
     "system_fingerprint": null,
 
+    "usage": null
+
+  },
+
+  {
+
     "choices": [
 
       {
-
-        "index": 0,
 
         "delta": {
 
@@ -862,37 +974,37 @@ Recursion is like solving a big problem by breaking it into smaller versions of 
 
         },
 
-        "finish_reason": null
+        "finish_reason": null,
+
+        "index": 0
 
       }
 
     ],
 
-    "usage": null,
-
-    "obfuscation": "2K"
-
-  },
-
-  {
+    "created": 1776470832,
 
     "id": "chatcmpl-DVnVIJWPzCL8OTA38vb3b0IM2eEca",
 
-    "object": "chat.completion.chunk",
-
-    "created": 1776470832,
-
     "model": "gpt-5.4-mini-2026-03-17",
+
+    "obfuscation": "2K",
+
+    "object": "chat.completion.chunk",
 
     "service_tier": "default",
 
     "system_fingerprint": null,
 
+    "usage": null
+
+  },
+
+  {
+
     "choices": [
 
       {
-
-        "index": 0,
 
         "delta": {
 
@@ -900,37 +1012,37 @@ Recursion is like solving a big problem by breaking it into smaller versions of 
 
         },
 
-        "finish_reason": null
+        "finish_reason": null,
+
+        "index": 0
 
       }
 
     ],
 
-    "usage": null,
-
-    "obfuscation": "UNBcpDdj76fe6Vd"
-
-  },
-
-  {
+    "created": 1776470832,
 
     "id": "chatcmpl-DVnVIJWPzCL8OTA38vb3b0IM2eEca",
 
-    "object": "chat.completion.chunk",
-
-    "created": 1776470832,
-
     "model": "gpt-5.4-mini-2026-03-17",
+
+    "obfuscation": "UNBcpDdj76fe6Vd",
+
+    "object": "chat.completion.chunk",
 
     "service_tier": "default",
 
     "system_fingerprint": null,
 
+    "usage": null
+
+  },
+
+  {
+
     "choices": [
 
       {
-
-        "index": 0,
 
         "delta": {
 
@@ -938,37 +1050,37 @@ Recursion is like solving a big problem by breaking it into smaller versions of 
 
         },
 
-        "finish_reason": null
+        "finish_reason": null,
+
+        "index": 0
 
       }
 
     ],
 
-    "usage": null,
-
-    "obfuscation": "QA"
-
-  },
-
-  {
+    "created": 1776470832,
 
     "id": "chatcmpl-DVnVIJWPzCL8OTA38vb3b0IM2eEca",
 
-    "object": "chat.completion.chunk",
-
-    "created": 1776470832,
-
     "model": "gpt-5.4-mini-2026-03-17",
+
+    "obfuscation": "QA",
+
+    "object": "chat.completion.chunk",
 
     "service_tier": "default",
 
     "system_fingerprint": null,
 
+    "usage": null
+
+  },
+
+  {
+
     "choices": [
 
       {
-
-        "index": 0,
 
         "delta": {
 
@@ -976,37 +1088,37 @@ Recursion is like solving a big problem by breaking it into smaller versions of 
 
         },
 
-        "finish_reason": null
+        "finish_reason": null,
+
+        "index": 0
 
       }
 
     ],
 
-    "usage": null,
-
-    "obfuscation": ""
-
-  },
-
-  {
+    "created": 1776470832,
 
     "id": "chatcmpl-DVnVIJWPzCL8OTA38vb3b0IM2eEca",
 
-    "object": "chat.completion.chunk",
-
-    "created": 1776470832,
-
     "model": "gpt-5.4-mini-2026-03-17",
+
+    "obfuscation": "",
+
+    "object": "chat.completion.chunk",
 
     "service_tier": "default",
 
     "system_fingerprint": null,
 
+    "usage": null
+
+  },
+
+  {
+
     "choices": [
 
       {
-
-        "index": 0,
 
         "delta": {
 
@@ -1014,37 +1126,37 @@ Recursion is like solving a big problem by breaking it into smaller versions of 
 
         },
 
-        "finish_reason": null
+        "finish_reason": null,
+
+        "index": 0
 
       }
 
     ],
 
-    "usage": null,
-
-    "obfuscation": "res"
-
-  },
-
-  {
+    "created": 1776470832,
 
     "id": "chatcmpl-DVnVIJWPzCL8OTA38vb3b0IM2eEca",
 
-    "object": "chat.completion.chunk",
-
-    "created": 1776470832,
-
     "model": "gpt-5.4-mini-2026-03-17",
+
+    "obfuscation": "res",
+
+    "object": "chat.completion.chunk",
 
     "service_tier": "default",
 
     "system_fingerprint": null,
 
+    "usage": null
+
+  },
+
+  {
+
     "choices": [
 
       {
-
-        "index": 0,
 
         "delta": {
 
@@ -1052,37 +1164,37 @@ Recursion is like solving a big problem by breaking it into smaller versions of 
 
         },
 
-        "finish_reason": null
+        "finish_reason": null,
+
+        "index": 0
 
       }
 
     ],
 
-    "usage": null,
-
-    "obfuscation": "XpsZVZht5vF8"
-
-  },
-
-  {
+    "created": 1776470832,
 
     "id": "chatcmpl-DVnVIJWPzCL8OTA38vb3b0IM2eEca",
 
-    "object": "chat.completion.chunk",
-
-    "created": 1776470832,
-
     "model": "gpt-5.4-mini-2026-03-17",
+
+    "obfuscation": "XpsZVZht5vF8",
+
+    "object": "chat.completion.chunk",
 
     "service_tier": "default",
 
     "system_fingerprint": null,
 
+    "usage": null
+
+  },
+
+  {
+
     "choices": [
 
       {
-
-        "index": 0,
 
         "delta": {
 
@@ -1090,37 +1202,37 @@ Recursion is like solving a big problem by breaking it into smaller versions of 
 
         },
 
-        "finish_reason": null
+        "finish_reason": null,
+
+        "index": 0
 
       }
 
     ],
 
-    "usage": null,
-
-    "obfuscation": "TytWFjdpeEmnQt"
-
-  },
-
-  {
+    "created": 1776470832,
 
     "id": "chatcmpl-DVnVIJWPzCL8OTA38vb3b0IM2eEca",
 
-    "object": "chat.completion.chunk",
-
-    "created": 1776470832,
-
     "model": "gpt-5.4-mini-2026-03-17",
+
+    "obfuscation": "TytWFjdpeEmnQt",
+
+    "object": "chat.completion.chunk",
 
     "service_tier": "default",
 
     "system_fingerprint": null,
 
+    "usage": null
+
+  },
+
+  {
+
     "choices": [
 
       {
-
-        "index": 0,
 
         "delta": {
 
@@ -1128,37 +1240,37 @@ Recursion is like solving a big problem by breaking it into smaller versions of 
 
         },
 
-        "finish_reason": null
+        "finish_reason": null,
+
+        "index": 0
 
       }
 
     ],
 
-    "usage": null,
-
-    "obfuscation": "rSl"
-
-  },
-
-  {
+    "created": 1776470832,
 
     "id": "chatcmpl-DVnVIJWPzCL8OTA38vb3b0IM2eEca",
 
-    "object": "chat.completion.chunk",
-
-    "created": 1776470832,
-
     "model": "gpt-5.4-mini-2026-03-17",
+
+    "obfuscation": "rSl",
+
+    "object": "chat.completion.chunk",
 
     "service_tier": "default",
 
     "system_fingerprint": null,
 
+    "usage": null
+
+  },
+
+  {
+
     "choices": [
 
       {
-
-        "index": 0,
 
         "delta": {
 
@@ -1166,37 +1278,37 @@ Recursion is like solving a big problem by breaking it into smaller versions of 
 
         },
 
-        "finish_reason": null
+        "finish_reason": null,
+
+        "index": 0
 
       }
 
     ],
 
-    "usage": null,
-
-    "obfuscation": "EEroTB55yktwe"
-
-  },
-
-  {
+    "created": 1776470832,
 
     "id": "chatcmpl-DVnVIJWPzCL8OTA38vb3b0IM2eEca",
 
-    "object": "chat.completion.chunk",
-
-    "created": 1776470832,
-
     "model": "gpt-5.4-mini-2026-03-17",
+
+    "obfuscation": "EEroTB55yktwe",
+
+    "object": "chat.completion.chunk",
 
     "service_tier": "default",
 
     "system_fingerprint": null,
 
+    "usage": null
+
+  },
+
+  {
+
     "choices": [
 
       {
-
-        "index": 0,
 
         "delta": {
 
@@ -1204,37 +1316,37 @@ Recursion is like solving a big problem by breaking it into smaller versions of 
 
         },
 
-        "finish_reason": null
+        "finish_reason": null,
+
+        "index": 0
 
       }
 
     ],
 
-    "usage": null,
-
-    "obfuscation": "sk"
-
-  },
-
-  {
+    "created": 1776470832,
 
     "id": "chatcmpl-DVnVIJWPzCL8OTA38vb3b0IM2eEca",
 
-    "object": "chat.completion.chunk",
-
-    "created": 1776470832,
-
     "model": "gpt-5.4-mini-2026-03-17",
+
+    "obfuscation": "sk",
+
+    "object": "chat.completion.chunk",
 
     "service_tier": "default",
 
     "system_fingerprint": null,
 
+    "usage": null
+
+  },
+
+  {
+
     "choices": [
 
       {
-
-        "index": 0,
 
         "delta": {
 
@@ -1242,37 +1354,37 @@ Recursion is like solving a big problem by breaking it into smaller versions of 
 
         },
 
-        "finish_reason": null
+        "finish_reason": null,
+
+        "index": 0
 
       }
 
     ],
 
-    "usage": null,
-
-    "obfuscation": "ZGeyFsUzelW8s"
-
-  },
-
-  {
+    "created": 1776470832,
 
     "id": "chatcmpl-DVnVIJWPzCL8OTA38vb3b0IM2eEca",
 
-    "object": "chat.completion.chunk",
-
-    "created": 1776470832,
-
     "model": "gpt-5.4-mini-2026-03-17",
+
+    "obfuscation": "ZGeyFsUzelW8s",
+
+    "object": "chat.completion.chunk",
 
     "service_tier": "default",
 
     "system_fingerprint": null,
 
+    "usage": null
+
+  },
+
+  {
+
     "choices": [
 
       {
-
-        "index": 0,
 
         "delta": {
 
@@ -1280,37 +1392,37 @@ Recursion is like solving a big problem by breaking it into smaller versions of 
 
         },
 
-        "finish_reason": null
+        "finish_reason": null,
+
+        "index": 0
 
       }
 
     ],
 
-    "usage": null,
-
-    "obfuscation": "Cd4ZuEvoStoIuF"
-
-  },
-
-  {
+    "created": 1776470832,
 
     "id": "chatcmpl-DVnVIJWPzCL8OTA38vb3b0IM2eEca",
 
-    "object": "chat.completion.chunk",
-
-    "created": 1776470832,
-
     "model": "gpt-5.4-mini-2026-03-17",
+
+    "obfuscation": "Cd4ZuEvoStoIuF",
+
+    "object": "chat.completion.chunk",
 
     "service_tier": "default",
 
     "system_fingerprint": null,
 
+    "usage": null
+
+  },
+
+  {
+
     "choices": [
 
       {
-
-        "index": 0,
 
         "delta": {
 
@@ -1318,37 +1430,37 @@ Recursion is like solving a big problem by breaking it into smaller versions of 
 
         },
 
-        "finish_reason": null
+        "finish_reason": null,
+
+        "index": 0
 
       }
 
     ],
 
-    "usage": null,
-
-    "obfuscation": "ZN"
-
-  },
-
-  {
+    "created": 1776470832,
 
     "id": "chatcmpl-DVnVIJWPzCL8OTA38vb3b0IM2eEca",
 
-    "object": "chat.completion.chunk",
-
-    "created": 1776470832,
-
     "model": "gpt-5.4-mini-2026-03-17",
+
+    "obfuscation": "ZN",
+
+    "object": "chat.completion.chunk",
 
     "service_tier": "default",
 
     "system_fingerprint": null,
 
+    "usage": null
+
+  },
+
+  {
+
     "choices": [
 
       {
-
-        "index": 0,
 
         "delta": {
 
@@ -1356,37 +1468,37 @@ Recursion is like solving a big problem by breaking it into smaller versions of 
 
         },
 
-        "finish_reason": null
+        "finish_reason": null,
+
+        "index": 0
 
       }
 
     ],
 
-    "usage": null,
-
-    "obfuscation": "zEQ"
-
-  },
-
-  {
+    "created": 1776470832,
 
     "id": "chatcmpl-DVnVIJWPzCL8OTA38vb3b0IM2eEca",
 
-    "object": "chat.completion.chunk",
-
-    "created": 1776470832,
-
     "model": "gpt-5.4-mini-2026-03-17",
+
+    "obfuscation": "zEQ",
+
+    "object": "chat.completion.chunk",
 
     "service_tier": "default",
 
     "system_fingerprint": null,
 
+    "usage": null
+
+  },
+
+  {
+
     "choices": [
 
       {
-
-        "index": 0,
 
         "delta": {
 
@@ -1394,37 +1506,37 @@ Recursion is like solving a big problem by breaking it into smaller versions of 
 
         },
 
-        "finish_reason": null
+        "finish_reason": null,
+
+        "index": 0
 
       }
 
     ],
 
-    "usage": null,
-
-    "obfuscation": "8PGFH5OOv6pHZ"
-
-  },
-
-  {
+    "created": 1776470832,
 
     "id": "chatcmpl-DVnVIJWPzCL8OTA38vb3b0IM2eEca",
 
-    "object": "chat.completion.chunk",
-
-    "created": 1776470832,
-
     "model": "gpt-5.4-mini-2026-03-17",
+
+    "obfuscation": "8PGFH5OOv6pHZ",
+
+    "object": "chat.completion.chunk",
 
     "service_tier": "default",
 
     "system_fingerprint": null,
 
+    "usage": null
+
+  },
+
+  {
+
     "choices": [
 
       {
-
-        "index": 0,
 
         "delta": {
 
@@ -1432,37 +1544,37 @@ Recursion is like solving a big problem by breaking it into smaller versions of 
 
         },
 
-        "finish_reason": null
+        "finish_reason": null,
+
+        "index": 0
 
       }
 
     ],
 
-    "usage": null,
-
-    "obfuscation": "SqNngl189599Z"
-
-  },
-
-  {
+    "created": 1776470832,
 
     "id": "chatcmpl-DVnVIJWPzCL8OTA38vb3b0IM2eEca",
 
-    "object": "chat.completion.chunk",
-
-    "created": 1776470832,
-
     "model": "gpt-5.4-mini-2026-03-17",
+
+    "obfuscation": "SqNngl189599Z",
+
+    "object": "chat.completion.chunk",
 
     "service_tier": "default",
 
     "system_fingerprint": null,
 
+    "usage": null
+
+  },
+
+  {
+
     "choices": [
 
       {
-
-        "index": 0,
 
         "delta": {
 
@@ -1470,37 +1582,37 @@ Recursion is like solving a big problem by breaking it into smaller versions of 
 
         },
 
-        "finish_reason": null
+        "finish_reason": null,
+
+        "index": 0
 
       }
 
     ],
 
-    "usage": null,
-
-    "obfuscation": "NS"
-
-  },
-
-  {
+    "created": 1776470832,
 
     "id": "chatcmpl-DVnVIJWPzCL8OTA38vb3b0IM2eEca",
 
-    "object": "chat.completion.chunk",
-
-    "created": 1776470832,
-
     "model": "gpt-5.4-mini-2026-03-17",
+
+    "obfuscation": "NS",
+
+    "object": "chat.completion.chunk",
 
     "service_tier": "default",
 
     "system_fingerprint": null,
 
+    "usage": null
+
+  },
+
+  {
+
     "choices": [
 
       {
-
-        "index": 0,
 
         "delta": {
 
@@ -1508,37 +1620,37 @@ Recursion is like solving a big problem by breaking it into smaller versions of 
 
         },
 
-        "finish_reason": null
+        "finish_reason": null,
+
+        "index": 0
 
       }
 
     ],
 
-    "usage": null,
-
-    "obfuscation": "c"
-
-  },
-
-  {
+    "created": 1776470832,
 
     "id": "chatcmpl-DVnVIJWPzCL8OTA38vb3b0IM2eEca",
 
-    "object": "chat.completion.chunk",
-
-    "created": 1776470832,
-
     "model": "gpt-5.4-mini-2026-03-17",
+
+    "obfuscation": "c",
+
+    "object": "chat.completion.chunk",
 
     "service_tier": "default",
 
     "system_fingerprint": null,
 
+    "usage": null
+
+  },
+
+  {
+
     "choices": [
 
       {
-
-        "index": 0,
 
         "delta": {
 
@@ -1546,37 +1658,37 @@ Recursion is like solving a big problem by breaking it into smaller versions of 
 
         },
 
-        "finish_reason": null
+        "finish_reason": null,
+
+        "index": 0
 
       }
 
     ],
 
-    "usage": null,
-
-    "obfuscation": ""
-
-  },
-
-  {
+    "created": 1776470832,
 
     "id": "chatcmpl-DVnVIJWPzCL8OTA38vb3b0IM2eEca",
 
-    "object": "chat.completion.chunk",
-
-    "created": 1776470832,
-
     "model": "gpt-5.4-mini-2026-03-17",
+
+    "obfuscation": "",
+
+    "object": "chat.completion.chunk",
 
     "service_tier": "default",
 
     "system_fingerprint": null,
 
+    "usage": null
+
+  },
+
+  {
+
     "choices": [
 
       {
-
-        "index": 0,
 
         "delta": {
 
@@ -1584,37 +1696,37 @@ Recursion is like solving a big problem by breaking it into smaller versions of 
 
         },
 
-        "finish_reason": null
+        "finish_reason": null,
+
+        "index": 0
 
       }
 
     ],
 
-    "usage": null,
-
-    "obfuscation": "NQmrorY0usYgR"
-
-  },
-
-  {
+    "created": 1776470832,
 
     "id": "chatcmpl-DVnVIJWPzCL8OTA38vb3b0IM2eEca",
 
-    "object": "chat.completion.chunk",
-
-    "created": 1776470832,
-
     "model": "gpt-5.4-mini-2026-03-17",
+
+    "obfuscation": "NQmrorY0usYgR",
+
+    "object": "chat.completion.chunk",
 
     "service_tier": "default",
 
     "system_fingerprint": null,
 
+    "usage": null
+
+  },
+
+  {
+
     "choices": [
 
       {
-
-        "index": 0,
 
         "delta": {
 
@@ -1622,37 +1734,37 @@ Recursion is like solving a big problem by breaking it into smaller versions of 
 
         },
 
-        "finish_reason": null
+        "finish_reason": null,
+
+        "index": 0
 
       }
 
     ],
 
-    "usage": null,
-
-    "obfuscation": ""
-
-  },
-
-  {
+    "created": 1776470832,
 
     "id": "chatcmpl-DVnVIJWPzCL8OTA38vb3b0IM2eEca",
 
-    "object": "chat.completion.chunk",
-
-    "created": 1776470832,
-
     "model": "gpt-5.4-mini-2026-03-17",
+
+    "obfuscation": "",
+
+    "object": "chat.completion.chunk",
 
     "service_tier": "default",
 
     "system_fingerprint": null,
 
+    "usage": null
+
+  },
+
+  {
+
     "choices": [
 
       {
-
-        "index": 0,
 
         "delta": {
 
@@ -1660,37 +1772,37 @@ Recursion is like solving a big problem by breaking it into smaller versions of 
 
         },
 
-        "finish_reason": null
+        "finish_reason": null,
+
+        "index": 0
 
       }
 
     ],
 
-    "usage": null,
-
-    "obfuscation": "Px"
-
-  },
-
-  {
+    "created": 1776470832,
 
     "id": "chatcmpl-DVnVIJWPzCL8OTA38vb3b0IM2eEca",
 
-    "object": "chat.completion.chunk",
-
-    "created": 1776470832,
-
     "model": "gpt-5.4-mini-2026-03-17",
+
+    "obfuscation": "Px",
+
+    "object": "chat.completion.chunk",
 
     "service_tier": "default",
 
     "system_fingerprint": null,
 
+    "usage": null
+
+  },
+
+  {
+
     "choices": [
 
       {
-
-        "index": 0,
 
         "delta": {
 
@@ -1698,37 +1810,37 @@ Recursion is like solving a big problem by breaking it into smaller versions of 
 
         },
 
-        "finish_reason": null
+        "finish_reason": null,
+
+        "index": 0
 
       }
 
     ],
 
-    "usage": null,
-
-    "obfuscation": "foQrpb94keDWDy"
-
-  },
-
-  {
+    "created": 1776470832,
 
     "id": "chatcmpl-DVnVIJWPzCL8OTA38vb3b0IM2eEca",
 
-    "object": "chat.completion.chunk",
-
-    "created": 1776470832,
-
     "model": "gpt-5.4-mini-2026-03-17",
+
+    "obfuscation": "foQrpb94keDWDy",
+
+    "object": "chat.completion.chunk",
 
     "service_tier": "default",
 
     "system_fingerprint": null,
 
+    "usage": null
+
+  },
+
+  {
+
     "choices": [
 
       {
-
-        "index": 0,
 
         "delta": {
 
@@ -1736,37 +1848,37 @@ Recursion is like solving a big problem by breaking it into smaller versions of 
 
         },
 
-        "finish_reason": null
+        "finish_reason": null,
+
+        "index": 0
 
       }
 
     ],
 
-    "usage": null,
-
-    "obfuscation": ""
-
-  },
-
-  {
+    "created": 1776470832,
 
     "id": "chatcmpl-DVnVIJWPzCL8OTA38vb3b0IM2eEca",
 
-    "object": "chat.completion.chunk",
-
-    "created": 1776470832,
-
     "model": "gpt-5.4-mini-2026-03-17",
+
+    "obfuscation": "",
+
+    "object": "chat.completion.chunk",
 
     "service_tier": "default",
 
     "system_fingerprint": null,
 
+    "usage": null
+
+  },
+
+  {
+
     "choices": [
 
       {
-
-        "index": 0,
 
         "delta": {
 
@@ -1774,37 +1886,37 @@ Recursion is like solving a big problem by breaking it into smaller versions of 
 
         },
 
-        "finish_reason": null
+        "finish_reason": null,
+
+        "index": 0
 
       }
 
     ],
 
-    "usage": null,
-
-    "obfuscation": "Bx9"
-
-  },
-
-  {
+    "created": 1776470832,
 
     "id": "chatcmpl-DVnVIJWPzCL8OTA38vb3b0IM2eEca",
 
-    "object": "chat.completion.chunk",
-
-    "created": 1776470832,
-
     "model": "gpt-5.4-mini-2026-03-17",
+
+    "obfuscation": "Bx9",
+
+    "object": "chat.completion.chunk",
 
     "service_tier": "default",
 
     "system_fingerprint": null,
 
+    "usage": null
+
+  },
+
+  {
+
     "choices": [
 
       {
-
-        "index": 0,
 
         "delta": {
 
@@ -1812,37 +1924,37 @@ Recursion is like solving a big problem by breaking it into smaller versions of 
 
         },
 
-        "finish_reason": null
+        "finish_reason": null,
+
+        "index": 0
 
       }
 
     ],
 
-    "usage": null,
-
-    "obfuscation": "4HLv"
-
-  },
-
-  {
+    "created": 1776470832,
 
     "id": "chatcmpl-DVnVIJWPzCL8OTA38vb3b0IM2eEca",
 
-    "object": "chat.completion.chunk",
-
-    "created": 1776470832,
-
     "model": "gpt-5.4-mini-2026-03-17",
+
+    "obfuscation": "4HLv",
+
+    "object": "chat.completion.chunk",
 
     "service_tier": "default",
 
     "system_fingerprint": null,
 
+    "usage": null
+
+  },
+
+  {
+
     "choices": [
 
       {
-
-        "index": 0,
 
         "delta": {
 
@@ -1850,37 +1962,37 @@ Recursion is like solving a big problem by breaking it into smaller versions of 
 
         },
 
-        "finish_reason": null
+        "finish_reason": null,
+
+        "index": 0
 
       }
 
     ],
 
-    "usage": null,
-
-    "obfuscation": "j3be1oOS9IB"
-
-  },
-
-  {
+    "created": 1776470832,
 
     "id": "chatcmpl-DVnVIJWPzCL8OTA38vb3b0IM2eEca",
 
-    "object": "chat.completion.chunk",
-
-    "created": 1776470832,
-
     "model": "gpt-5.4-mini-2026-03-17",
+
+    "obfuscation": "j3be1oOS9IB",
+
+    "object": "chat.completion.chunk",
 
     "service_tier": "default",
 
     "system_fingerprint": null,
 
+    "usage": null
+
+  },
+
+  {
+
     "choices": [
 
       {
-
-        "index": 0,
 
         "delta": {
 
@@ -1888,37 +2000,37 @@ Recursion is like solving a big problem by breaking it into smaller versions of 
 
         },
 
-        "finish_reason": null
+        "finish_reason": null,
+
+        "index": 0
 
       }
 
     ],
 
-    "usage": null,
-
-    "obfuscation": "CB5WsxOZVOV6"
-
-  },
-
-  {
+    "created": 1776470832,
 
     "id": "chatcmpl-DVnVIJWPzCL8OTA38vb3b0IM2eEca",
 
-    "object": "chat.completion.chunk",
-
-    "created": 1776470832,
-
     "model": "gpt-5.4-mini-2026-03-17",
+
+    "obfuscation": "CB5WsxOZVOV6",
+
+    "object": "chat.completion.chunk",
 
     "service_tier": "default",
 
     "system_fingerprint": null,
 
+    "usage": null
+
+  },
+
+  {
+
     "choices": [
 
       {
-
-        "index": 0,
 
         "delta": {
 
@@ -1926,37 +2038,37 @@ Recursion is like solving a big problem by breaking it into smaller versions of 
 
         },
 
-        "finish_reason": null
+        "finish_reason": null,
+
+        "index": 0
 
       }
 
     ],
 
-    "usage": null,
-
-    "obfuscation": "NRq7S5Q1WBNDP"
-
-  },
-
-  {
+    "created": 1776470832,
 
     "id": "chatcmpl-DVnVIJWPzCL8OTA38vb3b0IM2eEca",
 
-    "object": "chat.completion.chunk",
-
-    "created": 1776470832,
-
     "model": "gpt-5.4-mini-2026-03-17",
+
+    "obfuscation": "NRq7S5Q1WBNDP",
+
+    "object": "chat.completion.chunk",
 
     "service_tier": "default",
 
     "system_fingerprint": null,
 
+    "usage": null
+
+  },
+
+  {
+
     "choices": [
 
       {
-
-        "index": 0,
 
         "delta": {
 
@@ -1964,37 +2076,37 @@ Recursion is like solving a big problem by breaking it into smaller versions of 
 
         },
 
-        "finish_reason": null
+        "finish_reason": null,
+
+        "index": 0
 
       }
 
     ],
 
-    "usage": null,
-
-    "obfuscation": "a"
-
-  },
-
-  {
+    "created": 1776470832,
 
     "id": "chatcmpl-DVnVIJWPzCL8OTA38vb3b0IM2eEca",
 
-    "object": "chat.completion.chunk",
-
-    "created": 1776470832,
-
     "model": "gpt-5.4-mini-2026-03-17",
+
+    "obfuscation": "a",
+
+    "object": "chat.completion.chunk",
 
     "service_tier": "default",
 
     "system_fingerprint": null,
 
+    "usage": null
+
+  },
+
+  {
+
     "choices": [
 
       {
-
-        "index": 0,
 
         "delta": {
 
@@ -2002,37 +2114,37 @@ Recursion is like solving a big problem by breaking it into smaller versions of 
 
         },
 
-        "finish_reason": null
+        "finish_reason": null,
+
+        "index": 0
 
       }
 
     ],
 
-    "usage": null,
-
-    "obfuscation": "Xq"
-
-  },
-
-  {
+    "created": 1776470832,
 
     "id": "chatcmpl-DVnVIJWPzCL8OTA38vb3b0IM2eEca",
 
-    "object": "chat.completion.chunk",
-
-    "created": 1776470832,
-
     "model": "gpt-5.4-mini-2026-03-17",
+
+    "obfuscation": "Xq",
+
+    "object": "chat.completion.chunk",
 
     "service_tier": "default",
 
     "system_fingerprint": null,
 
+    "usage": null
+
+  },
+
+  {
+
     "choices": [
 
       {
-
-        "index": 0,
 
         "delta": {
 
@@ -2040,37 +2152,37 @@ Recursion is like solving a big problem by breaking it into smaller versions of 
 
         },
 
-        "finish_reason": null
+        "finish_reason": null,
+
+        "index": 0
 
       }
 
     ],
 
-    "usage": null,
-
-    "obfuscation": "FVYX"
-
-  },
-
-  {
+    "created": 1776470832,
 
     "id": "chatcmpl-DVnVIJWPzCL8OTA38vb3b0IM2eEca",
 
-    "object": "chat.completion.chunk",
-
-    "created": 1776470832,
-
     "model": "gpt-5.4-mini-2026-03-17",
+
+    "obfuscation": "FVYX",
+
+    "object": "chat.completion.chunk",
 
     "service_tier": "default",
 
     "system_fingerprint": null,
 
+    "usage": null
+
+  },
+
+  {
+
     "choices": [
 
       {
-
-        "index": 0,
 
         "delta": {
 
@@ -2078,37 +2190,37 @@ Recursion is like solving a big problem by breaking it into smaller versions of 
 
         },
 
-        "finish_reason": null
+        "finish_reason": null,
+
+        "index": 0
 
       }
 
     ],
 
-    "usage": null,
-
-    "obfuscation": "r9j4"
-
-  },
-
-  {
+    "created": 1776470832,
 
     "id": "chatcmpl-DVnVIJWPzCL8OTA38vb3b0IM2eEca",
 
-    "object": "chat.completion.chunk",
-
-    "created": 1776470832,
-
     "model": "gpt-5.4-mini-2026-03-17",
+
+    "obfuscation": "r9j4",
+
+    "object": "chat.completion.chunk",
 
     "service_tier": "default",
 
     "system_fingerprint": null,
 
+    "usage": null
+
+  },
+
+  {
+
     "choices": [
 
       {
-
-        "index": 0,
 
         "delta": {
 
@@ -2116,37 +2228,37 @@ Recursion is like solving a big problem by breaking it into smaller versions of 
 
         },
 
-        "finish_reason": null
+        "finish_reason": null,
+
+        "index": 0
 
       }
 
     ],
 
-    "usage": null,
-
-    "obfuscation": "Ev"
-
-  },
-
-  {
+    "created": 1776470832,
 
     "id": "chatcmpl-DVnVIJWPzCL8OTA38vb3b0IM2eEca",
 
-    "object": "chat.completion.chunk",
-
-    "created": 1776470832,
-
     "model": "gpt-5.4-mini-2026-03-17",
+
+    "obfuscation": "Ev",
+
+    "object": "chat.completion.chunk",
 
     "service_tier": "default",
 
     "system_fingerprint": null,
 
+    "usage": null
+
+  },
+
+  {
+
     "choices": [
 
       {
-
-        "index": 0,
 
         "delta": {
 
@@ -2154,37 +2266,37 @@ Recursion is like solving a big problem by breaking it into smaller versions of 
 
         },
 
-        "finish_reason": null
+        "finish_reason": null,
+
+        "index": 0
 
       }
 
     ],
 
-    "usage": null,
-
-    "obfuscation": "aT3X"
-
-  },
-
-  {
+    "created": 1776470832,
 
     "id": "chatcmpl-DVnVIJWPzCL8OTA38vb3b0IM2eEca",
 
-    "object": "chat.completion.chunk",
-
-    "created": 1776470832,
-
     "model": "gpt-5.4-mini-2026-03-17",
+
+    "obfuscation": "aT3X",
+
+    "object": "chat.completion.chunk",
 
     "service_tier": "default",
 
     "system_fingerprint": null,
 
+    "usage": null
+
+  },
+
+  {
+
     "choices": [
 
       {
-
-        "index": 0,
 
         "delta": {
 
@@ -2192,37 +2304,37 @@ Recursion is like solving a big problem by breaking it into smaller versions of 
 
         },
 
-        "finish_reason": null
+        "finish_reason": null,
+
+        "index": 0
 
       }
 
     ],
 
-    "usage": null,
-
-    "obfuscation": ""
-
-  },
-
-  {
+    "created": 1776470832,
 
     "id": "chatcmpl-DVnVIJWPzCL8OTA38vb3b0IM2eEca",
 
-    "object": "chat.completion.chunk",
-
-    "created": 1776470832,
-
     "model": "gpt-5.4-mini-2026-03-17",
+
+    "obfuscation": "",
+
+    "object": "chat.completion.chunk",
 
     "service_tier": "default",
 
     "system_fingerprint": null,
 
+    "usage": null
+
+  },
+
+  {
+
     "choices": [
 
       {
-
-        "index": 0,
 
         "delta": {
 
@@ -2230,37 +2342,37 @@ Recursion is like solving a big problem by breaking it into smaller versions of 
 
         },
 
-        "finish_reason": null
+        "finish_reason": null,
+
+        "index": 0
 
       }
 
     ],
 
-    "usage": null,
-
-    "obfuscation": ""
-
-  },
-
-  {
+    "created": 1776470832,
 
     "id": "chatcmpl-DVnVIJWPzCL8OTA38vb3b0IM2eEca",
 
-    "object": "chat.completion.chunk",
-
-    "created": 1776470832,
-
     "model": "gpt-5.4-mini-2026-03-17",
+
+    "obfuscation": "",
+
+    "object": "chat.completion.chunk",
 
     "service_tier": "default",
 
     "system_fingerprint": null,
 
+    "usage": null
+
+  },
+
+  {
+
     "choices": [
 
       {
-
-        "index": 0,
 
         "delta": {
 
@@ -2268,37 +2380,37 @@ Recursion is like solving a big problem by breaking it into smaller versions of 
 
         },
 
-        "finish_reason": null
+        "finish_reason": null,
+
+        "index": 0
 
       }
 
     ],
 
-    "usage": null,
-
-    "obfuscation": "xWP"
-
-  },
-
-  {
+    "created": 1776470832,
 
     "id": "chatcmpl-DVnVIJWPzCL8OTA38vb3b0IM2eEca",
 
-    "object": "chat.completion.chunk",
-
-    "created": 1776470832,
-
     "model": "gpt-5.4-mini-2026-03-17",
+
+    "obfuscation": "xWP",
+
+    "object": "chat.completion.chunk",
 
     "service_tier": "default",
 
     "system_fingerprint": null,
 
+    "usage": null
+
+  },
+
+  {
+
     "choices": [
 
       {
-
-        "index": 0,
 
         "delta": {
 
@@ -2306,37 +2418,37 @@ Recursion is like solving a big problem by breaking it into smaller versions of 
 
         },
 
-        "finish_reason": null
+        "finish_reason": null,
+
+        "index": 0
 
       }
 
     ],
 
-    "usage": null,
-
-    "obfuscation": "1KM"
-
-  },
-
-  {
+    "created": 1776470832,
 
     "id": "chatcmpl-DVnVIJWPzCL8OTA38vb3b0IM2eEca",
 
-    "object": "chat.completion.chunk",
-
-    "created": 1776470832,
-
     "model": "gpt-5.4-mini-2026-03-17",
+
+    "obfuscation": "1KM",
+
+    "object": "chat.completion.chunk",
 
     "service_tier": "default",
 
     "system_fingerprint": null,
 
+    "usage": null
+
+  },
+
+  {
+
     "choices": [
 
       {
-
-        "index": 0,
 
         "delta": {
 
@@ -2344,37 +2456,37 @@ Recursion is like solving a big problem by breaking it into smaller versions of 
 
         },
 
-        "finish_reason": null
+        "finish_reason": null,
+
+        "index": 0
 
       }
 
     ],
 
-    "usage": null,
-
-    "obfuscation": ""
-
-  },
-
-  {
+    "created": 1776470832,
 
     "id": "chatcmpl-DVnVIJWPzCL8OTA38vb3b0IM2eEca",
 
-    "object": "chat.completion.chunk",
-
-    "created": 1776470832,
-
     "model": "gpt-5.4-mini-2026-03-17",
+
+    "obfuscation": "",
+
+    "object": "chat.completion.chunk",
 
     "service_tier": "default",
 
     "system_fingerprint": null,
 
+    "usage": null
+
+  },
+
+  {
+
     "choices": [
 
       {
-
-        "index": 0,
 
         "delta": {
 
@@ -2382,37 +2494,37 @@ Recursion is like solving a big problem by breaking it into smaller versions of 
 
         },
 
-        "finish_reason": null
+        "finish_reason": null,
+
+        "index": 0
 
       }
 
     ],
 
-    "usage": null,
-
-    "obfuscation": "qr"
-
-  },
-
-  {
+    "created": 1776470832,
 
     "id": "chatcmpl-DVnVIJWPzCL8OTA38vb3b0IM2eEca",
 
-    "object": "chat.completion.chunk",
-
-    "created": 1776470832,
-
     "model": "gpt-5.4-mini-2026-03-17",
+
+    "obfuscation": "qr",
+
+    "object": "chat.completion.chunk",
 
     "service_tier": "default",
 
     "system_fingerprint": null,
 
+    "usage": null
+
+  },
+
+  {
+
     "choices": [
 
       {
-
-        "index": 0,
 
         "delta": {
 
@@ -2420,37 +2532,37 @@ Recursion is like solving a big problem by breaking it into smaller versions of 
 
         },
 
-        "finish_reason": null
+        "finish_reason": null,
+
+        "index": 0
 
       }
 
     ],
 
-    "usage": null,
-
-    "obfuscation": ""
-
-  },
-
-  {
+    "created": 1776470832,
 
     "id": "chatcmpl-DVnVIJWPzCL8OTA38vb3b0IM2eEca",
 
-    "object": "chat.completion.chunk",
-
-    "created": 1776470832,
-
     "model": "gpt-5.4-mini-2026-03-17",
+
+    "obfuscation": "",
+
+    "object": "chat.completion.chunk",
 
     "service_tier": "default",
 
     "system_fingerprint": null,
 
+    "usage": null
+
+  },
+
+  {
+
     "choices": [
 
       {
-
-        "index": 0,
 
         "delta": {
 
@@ -2458,37 +2570,37 @@ Recursion is like solving a big problem by breaking it into smaller versions of 
 
         },
 
-        "finish_reason": null
+        "finish_reason": null,
+
+        "index": 0
 
       }
 
     ],
 
-    "usage": null,
-
-    "obfuscation": "6oCnJJxVP5Eiw"
-
-  },
-
-  {
+    "created": 1776470832,
 
     "id": "chatcmpl-DVnVIJWPzCL8OTA38vb3b0IM2eEca",
 
-    "object": "chat.completion.chunk",
-
-    "created": 1776470832,
-
     "model": "gpt-5.4-mini-2026-03-17",
+
+    "obfuscation": "6oCnJJxVP5Eiw",
+
+    "object": "chat.completion.chunk",
 
     "service_tier": "default",
 
     "system_fingerprint": null,
 
+    "usage": null
+
+  },
+
+  {
+
     "choices": [
 
       {
-
-        "index": 0,
 
         "delta": {
 
@@ -2496,37 +2608,37 @@ Recursion is like solving a big problem by breaking it into smaller versions of 
 
         },
 
-        "finish_reason": null
+        "finish_reason": null,
+
+        "index": 0
 
       }
 
     ],
 
-    "usage": null,
-
-    "obfuscation": "s5Xo8s4w10xQAi"
-
-  },
-
-  {
+    "created": 1776470832,
 
     "id": "chatcmpl-DVnVIJWPzCL8OTA38vb3b0IM2eEca",
 
-    "object": "chat.completion.chunk",
-
-    "created": 1776470832,
-
     "model": "gpt-5.4-mini-2026-03-17",
+
+    "obfuscation": "s5Xo8s4w10xQAi",
+
+    "object": "chat.completion.chunk",
 
     "service_tier": "default",
 
     "system_fingerprint": null,
 
+    "usage": null
+
+  },
+
+  {
+
     "choices": [
 
       {
-
-        "index": 0,
 
         "delta": {
 
@@ -2534,37 +2646,37 @@ Recursion is like solving a big problem by breaking it into smaller versions of 
 
         },
 
-        "finish_reason": null
+        "finish_reason": null,
+
+        "index": 0
 
       }
 
     ],
 
-    "usage": null,
-
-    "obfuscation": "lrE"
-
-  },
-
-  {
+    "created": 1776470832,
 
     "id": "chatcmpl-DVnVIJWPzCL8OTA38vb3b0IM2eEca",
 
-    "object": "chat.completion.chunk",
-
-    "created": 1776470832,
-
     "model": "gpt-5.4-mini-2026-03-17",
+
+    "obfuscation": "lrE",
+
+    "object": "chat.completion.chunk",
 
     "service_tier": "default",
 
     "system_fingerprint": null,
 
+    "usage": null
+
+  },
+
+  {
+
     "choices": [
 
       {
-
-        "index": 0,
 
         "delta": {
 
@@ -2572,37 +2684,37 @@ Recursion is like solving a big problem by breaking it into smaller versions of 
 
         },
 
-        "finish_reason": null
+        "finish_reason": null,
+
+        "index": 0
 
       }
 
     ],
 
-    "usage": null,
-
-    "obfuscation": "SmBj"
-
-  },
-
-  {
+    "created": 1776470832,
 
     "id": "chatcmpl-DVnVIJWPzCL8OTA38vb3b0IM2eEca",
 
-    "object": "chat.completion.chunk",
-
-    "created": 1776470832,
-
     "model": "gpt-5.4-mini-2026-03-17",
+
+    "obfuscation": "SmBj",
+
+    "object": "chat.completion.chunk",
 
     "service_tier": "default",
 
     "system_fingerprint": null,
 
+    "usage": null
+
+  },
+
+  {
+
     "choices": [
 
       {
-
-        "index": 0,
 
         "delta": {
 
@@ -2610,37 +2722,37 @@ Recursion is like solving a big problem by breaking it into smaller versions of 
 
         },
 
-        "finish_reason": null
+        "finish_reason": null,
+
+        "index": 0
 
       }
 
     ],
 
-    "usage": null,
-
-    "obfuscation": "X6Y3"
-
-  },
-
-  {
+    "created": 1776470832,
 
     "id": "chatcmpl-DVnVIJWPzCL8OTA38vb3b0IM2eEca",
 
-    "object": "chat.completion.chunk",
-
-    "created": 1776470832,
-
     "model": "gpt-5.4-mini-2026-03-17",
+
+    "obfuscation": "X6Y3",
+
+    "object": "chat.completion.chunk",
 
     "service_tier": "default",
 
     "system_fingerprint": null,
 
+    "usage": null
+
+  },
+
+  {
+
     "choices": [
 
       {
-
-        "index": 0,
 
         "delta": {
 
@@ -2648,37 +2760,37 @@ Recursion is like solving a big problem by breaking it into smaller versions of 
 
         },
 
-        "finish_reason": null
+        "finish_reason": null,
+
+        "index": 0
 
       }
 
     ],
 
-    "usage": null,
-
-    "obfuscation": "H5"
-
-  },
-
-  {
+    "created": 1776470832,
 
     "id": "chatcmpl-DVnVIJWPzCL8OTA38vb3b0IM2eEca",
 
-    "object": "chat.completion.chunk",
-
-    "created": 1776470832,
-
     "model": "gpt-5.4-mini-2026-03-17",
+
+    "obfuscation": "H5",
+
+    "object": "chat.completion.chunk",
 
     "service_tier": "default",
 
     "system_fingerprint": null,
 
+    "usage": null
+
+  },
+
+  {
+
     "choices": [
 
       {
-
-        "index": 0,
 
         "delta": {
 
@@ -2686,37 +2798,37 @@ Recursion is like solving a big problem by breaking it into smaller versions of 
 
         },
 
-        "finish_reason": null
+        "finish_reason": null,
+
+        "index": 0
 
       }
 
     ],
 
-    "usage": null,
-
-    "obfuscation": "euRw"
-
-  },
-
-  {
+    "created": 1776470832,
 
     "id": "chatcmpl-DVnVIJWPzCL8OTA38vb3b0IM2eEca",
 
-    "object": "chat.completion.chunk",
-
-    "created": 1776470832,
-
     "model": "gpt-5.4-mini-2026-03-17",
+
+    "obfuscation": "euRw",
+
+    "object": "chat.completion.chunk",
 
     "service_tier": "default",
 
     "system_fingerprint": null,
 
+    "usage": null
+
+  },
+
+  {
+
     "choices": [
 
       {
-
-        "index": 0,
 
         "delta": {
 
@@ -2724,37 +2836,37 @@ Recursion is like solving a big problem by breaking it into smaller versions of 
 
         },
 
-        "finish_reason": null
+        "finish_reason": null,
+
+        "index": 0
 
       }
 
     ],
 
-    "usage": null,
-
-    "obfuscation": "Sd9xJCjdXFL"
-
-  },
-
-  {
+    "created": 1776470832,
 
     "id": "chatcmpl-DVnVIJWPzCL8OTA38vb3b0IM2eEca",
 
-    "object": "chat.completion.chunk",
-
-    "created": 1776470832,
-
     "model": "gpt-5.4-mini-2026-03-17",
+
+    "obfuscation": "Sd9xJCjdXFL",
+
+    "object": "chat.completion.chunk",
 
     "service_tier": "default",
 
     "system_fingerprint": null,
 
+    "usage": null
+
+  },
+
+  {
+
     "choices": [
 
       {
-
-        "index": 0,
 
         "delta": {
 
@@ -2762,37 +2874,37 @@ Recursion is like solving a big problem by breaking it into smaller versions of 
 
         },
 
-        "finish_reason": null
+        "finish_reason": null,
+
+        "index": 0
 
       }
 
     ],
 
-    "usage": null,
-
-    "obfuscation": ""
-
-  },
-
-  {
+    "created": 1776470832,
 
     "id": "chatcmpl-DVnVIJWPzCL8OTA38vb3b0IM2eEca",
 
-    "object": "chat.completion.chunk",
-
-    "created": 1776470832,
-
     "model": "gpt-5.4-mini-2026-03-17",
+
+    "obfuscation": "",
+
+    "object": "chat.completion.chunk",
 
     "service_tier": "default",
 
     "system_fingerprint": null,
 
+    "usage": null
+
+  },
+
+  {
+
     "choices": [
 
       {
-
-        "index": 0,
 
         "delta": {
 
@@ -2800,37 +2912,37 @@ Recursion is like solving a big problem by breaking it into smaller versions of 
 
         },
 
-        "finish_reason": null
+        "finish_reason": null,
+
+        "index": 0
 
       }
 
     ],
 
-    "usage": null,
-
-    "obfuscation": "AYB"
-
-  },
-
-  {
+    "created": 1776470832,
 
     "id": "chatcmpl-DVnVIJWPzCL8OTA38vb3b0IM2eEca",
 
-    "object": "chat.completion.chunk",
-
-    "created": 1776470832,
-
     "model": "gpt-5.4-mini-2026-03-17",
+
+    "obfuscation": "AYB",
+
+    "object": "chat.completion.chunk",
 
     "service_tier": "default",
 
     "system_fingerprint": null,
 
+    "usage": null
+
+  },
+
+  {
+
     "choices": [
 
       {
-
-        "index": 0,
 
         "delta": {
 
@@ -2838,37 +2950,37 @@ Recursion is like solving a big problem by breaking it into smaller versions of 
 
         },
 
-        "finish_reason": null
+        "finish_reason": null,
+
+        "index": 0
 
       }
 
     ],
 
-    "usage": null,
-
-    "obfuscation": "Jnn"
-
-  },
-
-  {
+    "created": 1776470832,
 
     "id": "chatcmpl-DVnVIJWPzCL8OTA38vb3b0IM2eEca",
 
-    "object": "chat.completion.chunk",
-
-    "created": 1776470832,
-
     "model": "gpt-5.4-mini-2026-03-17",
+
+    "obfuscation": "Jnn",
+
+    "object": "chat.completion.chunk",
 
     "service_tier": "default",
 
     "system_fingerprint": null,
 
+    "usage": null
+
+  },
+
+  {
+
     "choices": [
 
       {
-
-        "index": 0,
 
         "delta": {
 
@@ -2876,37 +2988,37 @@ Recursion is like solving a big problem by breaking it into smaller versions of 
 
         },
 
-        "finish_reason": null
+        "finish_reason": null,
+
+        "index": 0
 
       }
 
     ],
 
-    "usage": null,
-
-    "obfuscation": ""
-
-  },
-
-  {
+    "created": 1776470832,
 
     "id": "chatcmpl-DVnVIJWPzCL8OTA38vb3b0IM2eEca",
 
-    "object": "chat.completion.chunk",
-
-    "created": 1776470832,
-
     "model": "gpt-5.4-mini-2026-03-17",
+
+    "obfuscation": "",
+
+    "object": "chat.completion.chunk",
 
     "service_tier": "default",
 
     "system_fingerprint": null,
 
+    "usage": null
+
+  },
+
+  {
+
     "choices": [
 
       {
-
-        "index": 0,
 
         "delta": {
 
@@ -2914,37 +3026,37 @@ Recursion is like solving a big problem by breaking it into smaller versions of 
 
         },
 
-        "finish_reason": null
+        "finish_reason": null,
+
+        "index": 0
 
       }
 
     ],
 
-    "usage": null,
-
-    "obfuscation": "k5"
-
-  },
-
-  {
+    "created": 1776470832,
 
     "id": "chatcmpl-DVnVIJWPzCL8OTA38vb3b0IM2eEca",
 
-    "object": "chat.completion.chunk",
-
-    "created": 1776470832,
-
     "model": "gpt-5.4-mini-2026-03-17",
+
+    "obfuscation": "k5",
+
+    "object": "chat.completion.chunk",
 
     "service_tier": "default",
 
     "system_fingerprint": null,
 
+    "usage": null
+
+  },
+
+  {
+
     "choices": [
 
       {
-
-        "index": 0,
 
         "delta": {
 
@@ -2952,37 +3064,37 @@ Recursion is like solving a big problem by breaking it into smaller versions of 
 
         },
 
-        "finish_reason": null
+        "finish_reason": null,
+
+        "index": 0
 
       }
 
     ],
 
-    "usage": null,
-
-    "obfuscation": "oEpsDttZv5dTzvD"
-
-  },
-
-  {
+    "created": 1776470832,
 
     "id": "chatcmpl-DVnVIJWPzCL8OTA38vb3b0IM2eEca",
 
-    "object": "chat.completion.chunk",
-
-    "created": 1776470832,
-
     "model": "gpt-5.4-mini-2026-03-17",
+
+    "obfuscation": "oEpsDttZv5dTzvD",
+
+    "object": "chat.completion.chunk",
 
     "service_tier": "default",
 
     "system_fingerprint": null,
 
+    "usage": null
+
+  },
+
+  {
+
     "choices": [
 
       {
-
-        "index": 0,
 
         "delta": {
 
@@ -2990,37 +3102,37 @@ Recursion is like solving a big problem by breaking it into smaller versions of 
 
         },
 
-        "finish_reason": null
+        "finish_reason": null,
+
+        "index": 0
 
       }
 
     ],
 
-    "usage": null,
-
-    "obfuscation": "9X1XdzGf2aCJsF"
-
-  },
-
-  {
+    "created": 1776470832,
 
     "id": "chatcmpl-DVnVIJWPzCL8OTA38vb3b0IM2eEca",
 
-    "object": "chat.completion.chunk",
-
-    "created": 1776470832,
-
     "model": "gpt-5.4-mini-2026-03-17",
+
+    "obfuscation": "9X1XdzGf2aCJsF",
+
+    "object": "chat.completion.chunk",
 
     "service_tier": "default",
 
     "system_fingerprint": null,
 
+    "usage": null
+
+  },
+
+  {
+
     "choices": [
 
       {
-
-        "index": 0,
 
         "delta": {
 
@@ -3028,37 +3140,37 @@ Recursion is like solving a big problem by breaking it into smaller versions of 
 
         },
 
-        "finish_reason": null
+        "finish_reason": null,
+
+        "index": 0
 
       }
 
     ],
 
-    "usage": null,
-
-    "obfuscation": ""
-
-  },
-
-  {
+    "created": 1776470832,
 
     "id": "chatcmpl-DVnVIJWPzCL8OTA38vb3b0IM2eEca",
 
-    "object": "chat.completion.chunk",
-
-    "created": 1776470832,
-
     "model": "gpt-5.4-mini-2026-03-17",
+
+    "obfuscation": "",
+
+    "object": "chat.completion.chunk",
 
     "service_tier": "default",
 
     "system_fingerprint": null,
 
+    "usage": null
+
+  },
+
+  {
+
     "choices": [
 
       {
-
-        "index": 0,
 
         "delta": {
 
@@ -3066,37 +3178,37 @@ Recursion is like solving a big problem by breaking it into smaller versions of 
 
         },
 
-        "finish_reason": null
+        "finish_reason": null,
+
+        "index": 0
 
       }
 
     ],
 
-    "usage": null,
-
-    "obfuscation": "fbW"
-
-  },
-
-  {
+    "created": 1776470832,
 
     "id": "chatcmpl-DVnVIJWPzCL8OTA38vb3b0IM2eEca",
 
-    "object": "chat.completion.chunk",
-
-    "created": 1776470832,
-
     "model": "gpt-5.4-mini-2026-03-17",
+
+    "obfuscation": "fbW",
+
+    "object": "chat.completion.chunk",
 
     "service_tier": "default",
 
     "system_fingerprint": null,
 
+    "usage": null
+
+  },
+
+  {
+
     "choices": [
 
       {
-
-        "index": 0,
 
         "delta": {
 
@@ -3104,37 +3216,37 @@ Recursion is like solving a big problem by breaking it into smaller versions of 
 
         },
 
-        "finish_reason": null
+        "finish_reason": null,
+
+        "index": 0
 
       }
 
     ],
 
-    "usage": null,
-
-    "obfuscation": "ne4yyc3X6kuZB"
-
-  },
-
-  {
+    "created": 1776470832,
 
     "id": "chatcmpl-DVnVIJWPzCL8OTA38vb3b0IM2eEca",
 
-    "object": "chat.completion.chunk",
-
-    "created": 1776470832,
-
     "model": "gpt-5.4-mini-2026-03-17",
+
+    "obfuscation": "ne4yyc3X6kuZB",
+
+    "object": "chat.completion.chunk",
 
     "service_tier": "default",
 
     "system_fingerprint": null,
 
+    "usage": null
+
+  },
+
+  {
+
     "choices": [
 
       {
-
-        "index": 0,
 
         "delta": {
 
@@ -3142,37 +3254,37 @@ Recursion is like solving a big problem by breaking it into smaller versions of 
 
         },
 
-        "finish_reason": null
+        "finish_reason": null,
+
+        "index": 0
 
       }
 
     ],
 
-    "usage": null,
-
-    "obfuscation": "a5NDpjDJwsEAyzE"
-
-  },
-
-  {
+    "created": 1776470832,
 
     "id": "chatcmpl-DVnVIJWPzCL8OTA38vb3b0IM2eEca",
 
-    "object": "chat.completion.chunk",
-
-    "created": 1776470832,
-
     "model": "gpt-5.4-mini-2026-03-17",
+
+    "obfuscation": "a5NDpjDJwsEAyzE",
+
+    "object": "chat.completion.chunk",
 
     "service_tier": "default",
 
     "system_fingerprint": null,
 
+    "usage": null
+
+  },
+
+  {
+
     "choices": [
 
       {
-
-        "index": 0,
 
         "delta": {
 
@@ -3180,37 +3292,37 @@ Recursion is like solving a big problem by breaking it into smaller versions of 
 
         },
 
-        "finish_reason": null
+        "finish_reason": null,
+
+        "index": 0
 
       }
 
     ],
 
-    "usage": null,
-
-    "obfuscation": "f"
-
-  },
-
-  {
+    "created": 1776470832,
 
     "id": "chatcmpl-DVnVIJWPzCL8OTA38vb3b0IM2eEca",
 
-    "object": "chat.completion.chunk",
-
-    "created": 1776470832,
-
     "model": "gpt-5.4-mini-2026-03-17",
+
+    "obfuscation": "f",
+
+    "object": "chat.completion.chunk",
 
     "service_tier": "default",
 
     "system_fingerprint": null,
 
+    "usage": null
+
+  },
+
+  {
+
     "choices": [
 
       {
-
-        "index": 0,
 
         "delta": {
 
@@ -3218,37 +3330,37 @@ Recursion is like solving a big problem by breaking it into smaller versions of 
 
         },
 
-        "finish_reason": null
+        "finish_reason": null,
+
+        "index": 0
 
       }
 
     ],
 
-    "usage": null,
-
-    "obfuscation": "Xa"
-
-  },
-
-  {
+    "created": 1776470832,
 
     "id": "chatcmpl-DVnVIJWPzCL8OTA38vb3b0IM2eEca",
 
-    "object": "chat.completion.chunk",
-
-    "created": 1776470832,
-
     "model": "gpt-5.4-mini-2026-03-17",
+
+    "obfuscation": "Xa",
+
+    "object": "chat.completion.chunk",
 
     "service_tier": "default",
 
     "system_fingerprint": null,
 
+    "usage": null
+
+  },
+
+  {
+
     "choices": [
 
       {
-
-        "index": 0,
 
         "delta": {
 
@@ -3256,37 +3368,37 @@ Recursion is like solving a big problem by breaking it into smaller versions of 
 
         },
 
-        "finish_reason": null
+        "finish_reason": null,
+
+        "index": 0
 
       }
 
     ],
 
-    "usage": null,
-
-    "obfuscation": "DMF0aOkbPPlAL"
-
-  },
-
-  {
+    "created": 1776470832,
 
     "id": "chatcmpl-DVnVIJWPzCL8OTA38vb3b0IM2eEca",
 
-    "object": "chat.completion.chunk",
-
-    "created": 1776470832,
-
     "model": "gpt-5.4-mini-2026-03-17",
+
+    "obfuscation": "DMF0aOkbPPlAL",
+
+    "object": "chat.completion.chunk",
 
     "service_tier": "default",
 
     "system_fingerprint": null,
 
+    "usage": null
+
+  },
+
+  {
+
     "choices": [
 
       {
-
-        "index": 0,
 
         "delta": {
 
@@ -3294,37 +3406,37 @@ Recursion is like solving a big problem by breaking it into smaller versions of 
 
         },
 
-        "finish_reason": null
+        "finish_reason": null,
+
+        "index": 0
 
       }
 
     ],
 
-    "usage": null,
-
-    "obfuscation": "8Xfm"
-
-  },
-
-  {
+    "created": 1776470832,
 
     "id": "chatcmpl-DVnVIJWPzCL8OTA38vb3b0IM2eEca",
 
-    "object": "chat.completion.chunk",
-
-    "created": 1776470832,
-
     "model": "gpt-5.4-mini-2026-03-17",
+
+    "obfuscation": "8Xfm",
+
+    "object": "chat.completion.chunk",
 
     "service_tier": "default",
 
     "system_fingerprint": null,
 
+    "usage": null
+
+  },
+
+  {
+
     "choices": [
 
       {
-
-        "index": 0,
 
         "delta": {
 
@@ -3332,37 +3444,37 @@ Recursion is like solving a big problem by breaking it into smaller versions of 
 
         },
 
-        "finish_reason": null
+        "finish_reason": null,
+
+        "index": 0
 
       }
 
     ],
 
-    "usage": null,
-
-    "obfuscation": "AGBPgRvRPLvh"
-
-  },
-
-  {
+    "created": 1776470832,
 
     "id": "chatcmpl-DVnVIJWPzCL8OTA38vb3b0IM2eEca",
 
-    "object": "chat.completion.chunk",
-
-    "created": 1776470832,
-
     "model": "gpt-5.4-mini-2026-03-17",
+
+    "obfuscation": "AGBPgRvRPLvh",
+
+    "object": "chat.completion.chunk",
 
     "service_tier": "default",
 
     "system_fingerprint": null,
 
+    "usage": null
+
+  },
+
+  {
+
     "choices": [
 
       {
-
-        "index": 0,
 
         "delta": {
 
@@ -3370,37 +3482,37 @@ Recursion is like solving a big problem by breaking it into smaller versions of 
 
         },
 
-        "finish_reason": null
+        "finish_reason": null,
+
+        "index": 0
 
       }
 
     ],
 
-    "usage": null,
-
-    "obfuscation": ""
-
-  },
-
-  {
+    "created": 1776470832,
 
     "id": "chatcmpl-DVnVIJWPzCL8OTA38vb3b0IM2eEca",
 
-    "object": "chat.completion.chunk",
-
-    "created": 1776470832,
-
     "model": "gpt-5.4-mini-2026-03-17",
+
+    "obfuscation": "",
+
+    "object": "chat.completion.chunk",
 
     "service_tier": "default",
 
     "system_fingerprint": null,
 
+    "usage": null
+
+  },
+
+  {
+
     "choices": [
 
       {
-
-        "index": 0,
 
         "delta": {
 
@@ -3408,37 +3520,37 @@ Recursion is like solving a big problem by breaking it into smaller versions of 
 
         },
 
-        "finish_reason": null
+        "finish_reason": null,
+
+        "index": 0
 
       }
 
     ],
 
-    "usage": null,
-
-    "obfuscation": "joj"
-
-  },
-
-  {
+    "created": 1776470832,
 
     "id": "chatcmpl-DVnVIJWPzCL8OTA38vb3b0IM2eEca",
 
-    "object": "chat.completion.chunk",
-
-    "created": 1776470832,
-
     "model": "gpt-5.4-mini-2026-03-17",
+
+    "obfuscation": "joj",
+
+    "object": "chat.completion.chunk",
 
     "service_tier": "default",
 
     "system_fingerprint": null,
 
+    "usage": null
+
+  },
+
+  {
+
     "choices": [
 
       {
-
-        "index": 0,
 
         "delta": {
 
@@ -3446,37 +3558,37 @@ Recursion is like solving a big problem by breaking it into smaller versions of 
 
         },
 
-        "finish_reason": null
+        "finish_reason": null,
+
+        "index": 0
 
       }
 
     ],
 
-    "usage": null,
-
-    "obfuscation": "4m"
-
-  },
-
-  {
+    "created": 1776470832,
 
     "id": "chatcmpl-DVnVIJWPzCL8OTA38vb3b0IM2eEca",
 
-    "object": "chat.completion.chunk",
-
-    "created": 1776470832,
-
     "model": "gpt-5.4-mini-2026-03-17",
+
+    "obfuscation": "4m",
+
+    "object": "chat.completion.chunk",
 
     "service_tier": "default",
 
     "system_fingerprint": null,
 
+    "usage": null
+
+  },
+
+  {
+
     "choices": [
 
       {
-
-        "index": 0,
 
         "delta": {
 
@@ -3484,37 +3596,37 @@ Recursion is like solving a big problem by breaking it into smaller versions of 
 
         },
 
-        "finish_reason": null
+        "finish_reason": null,
+
+        "index": 0
 
       }
 
     ],
 
-    "usage": null,
-
-    "obfuscation": "tlSOXevlmFm8ycj"
-
-  },
-
-  {
+    "created": 1776470832,
 
     "id": "chatcmpl-DVnVIJWPzCL8OTA38vb3b0IM2eEca",
 
-    "object": "chat.completion.chunk",
-
-    "created": 1776470832,
-
     "model": "gpt-5.4-mini-2026-03-17",
+
+    "obfuscation": "tlSOXevlmFm8ycj",
+
+    "object": "chat.completion.chunk",
 
     "service_tier": "default",
 
     "system_fingerprint": null,
 
+    "usage": null
+
+  },
+
+  {
+
     "choices": [
 
       {
-
-        "index": 0,
 
         "delta": {
 
@@ -3522,37 +3634,37 @@ Recursion is like solving a big problem by breaking it into smaller versions of 
 
         },
 
-        "finish_reason": null
+        "finish_reason": null,
+
+        "index": 0
 
       }
 
     ],
 
-    "usage": null,
-
-    "obfuscation": "w9y"
-
-  },
-
-  {
+    "created": 1776470832,
 
     "id": "chatcmpl-DVnVIJWPzCL8OTA38vb3b0IM2eEca",
 
-    "object": "chat.completion.chunk",
-
-    "created": 1776470832,
-
     "model": "gpt-5.4-mini-2026-03-17",
+
+    "obfuscation": "w9y",
+
+    "object": "chat.completion.chunk",
 
     "service_tier": "default",
 
     "system_fingerprint": null,
 
+    "usage": null
+
+  },
+
+  {
+
     "choices": [
 
       {
-
-        "index": 0,
 
         "delta": {
 
@@ -3560,37 +3672,37 @@ Recursion is like solving a big problem by breaking it into smaller versions of 
 
         },
 
-        "finish_reason": null
+        "finish_reason": null,
+
+        "index": 0
 
       }
 
     ],
 
-    "usage": null,
-
-    "obfuscation": "E3"
-
-  },
-
-  {
+    "created": 1776470832,
 
     "id": "chatcmpl-DVnVIJWPzCL8OTA38vb3b0IM2eEca",
 
-    "object": "chat.completion.chunk",
-
-    "created": 1776470832,
-
     "model": "gpt-5.4-mini-2026-03-17",
+
+    "obfuscation": "E3",
+
+    "object": "chat.completion.chunk",
 
     "service_tier": "default",
 
     "system_fingerprint": null,
 
+    "usage": null
+
+  },
+
+  {
+
     "choices": [
 
       {
-
-        "index": 0,
 
         "delta": {
 
@@ -3598,37 +3710,37 @@ Recursion is like solving a big problem by breaking it into smaller versions of 
 
         },
 
-        "finish_reason": null
+        "finish_reason": null,
+
+        "index": 0
 
       }
 
     ],
 
-    "usage": null,
-
-    "obfuscation": "bwRMWYfa0JE"
-
-  },
-
-  {
+    "created": 1776470832,
 
     "id": "chatcmpl-DVnVIJWPzCL8OTA38vb3b0IM2eEca",
 
-    "object": "chat.completion.chunk",
-
-    "created": 1776470832,
-
     "model": "gpt-5.4-mini-2026-03-17",
+
+    "obfuscation": "bwRMWYfa0JE",
+
+    "object": "chat.completion.chunk",
 
     "service_tier": "default",
 
     "system_fingerprint": null,
 
+    "usage": null
+
+  },
+
+  {
+
     "choices": [
 
       {
-
-        "index": 0,
 
         "delta": {
 
@@ -3636,37 +3748,37 @@ Recursion is like solving a big problem by breaking it into smaller versions of 
 
         },
 
-        "finish_reason": null
+        "finish_reason": null,
+
+        "index": 0
 
       }
 
     ],
 
-    "usage": null,
-
-    "obfuscation": "h2K"
-
-  },
-
-  {
+    "created": 1776470832,
 
     "id": "chatcmpl-DVnVIJWPzCL8OTA38vb3b0IM2eEca",
 
-    "object": "chat.completion.chunk",
-
-    "created": 1776470832,
-
     "model": "gpt-5.4-mini-2026-03-17",
+
+    "obfuscation": "h2K",
+
+    "object": "chat.completion.chunk",
 
     "service_tier": "default",
 
     "system_fingerprint": null,
 
+    "usage": null
+
+  },
+
+  {
+
     "choices": [
 
       {
-
-        "index": 0,
 
         "delta": {
 
@@ -3674,37 +3786,37 @@ Recursion is like solving a big problem by breaking it into smaller versions of 
 
         },
 
-        "finish_reason": null
+        "finish_reason": null,
+
+        "index": 0
 
       }
 
     ],
 
-    "usage": null,
-
-    "obfuscation": "T"
-
-  },
-
-  {
+    "created": 1776470832,
 
     "id": "chatcmpl-DVnVIJWPzCL8OTA38vb3b0IM2eEca",
 
-    "object": "chat.completion.chunk",
-
-    "created": 1776470832,
-
     "model": "gpt-5.4-mini-2026-03-17",
+
+    "obfuscation": "T",
+
+    "object": "chat.completion.chunk",
 
     "service_tier": "default",
 
     "system_fingerprint": null,
 
+    "usage": null
+
+  },
+
+  {
+
     "choices": [
 
       {
-
-        "index": 0,
 
         "delta": {
 
@@ -3712,37 +3824,37 @@ Recursion is like solving a big problem by breaking it into smaller versions of 
 
         },
 
-        "finish_reason": null
+        "finish_reason": null,
+
+        "index": 0
 
       }
 
     ],
 
-    "usage": null,
-
-    "obfuscation": "wA"
-
-  },
-
-  {
+    "created": 1776470832,
 
     "id": "chatcmpl-DVnVIJWPzCL8OTA38vb3b0IM2eEca",
 
-    "object": "chat.completion.chunk",
-
-    "created": 1776470832,
-
     "model": "gpt-5.4-mini-2026-03-17",
+
+    "obfuscation": "wA",
+
+    "object": "chat.completion.chunk",
 
     "service_tier": "default",
 
     "system_fingerprint": null,
 
+    "usage": null
+
+  },
+
+  {
+
     "choices": [
 
       {
-
-        "index": 0,
 
         "delta": {
 
@@ -3750,37 +3862,37 @@ Recursion is like solving a big problem by breaking it into smaller versions of 
 
         },
 
-        "finish_reason": null
+        "finish_reason": null,
+
+        "index": 0
 
       }
 
     ],
 
-    "usage": null,
-
-    "obfuscation": "nQ"
-
-  },
-
-  {
+    "created": 1776470832,
 
     "id": "chatcmpl-DVnVIJWPzCL8OTA38vb3b0IM2eEca",
 
-    "object": "chat.completion.chunk",
-
-    "created": 1776470832,
-
     "model": "gpt-5.4-mini-2026-03-17",
+
+    "obfuscation": "nQ",
+
+    "object": "chat.completion.chunk",
 
     "service_tier": "default",
 
     "system_fingerprint": null,
 
+    "usage": null
+
+  },
+
+  {
+
     "choices": [
 
       {
-
-        "index": 0,
 
         "delta": {
 
@@ -3788,37 +3900,37 @@ Recursion is like solving a big problem by breaking it into smaller versions of 
 
         },
 
-        "finish_reason": null
+        "finish_reason": null,
+
+        "index": 0
 
       }
 
     ],
 
-    "usage": null,
-
-    "obfuscation": "Efx"
-
-  },
-
-  {
+    "created": 1776470832,
 
     "id": "chatcmpl-DVnVIJWPzCL8OTA38vb3b0IM2eEca",
 
-    "object": "chat.completion.chunk",
-
-    "created": 1776470832,
-
     "model": "gpt-5.4-mini-2026-03-17",
+
+    "obfuscation": "Efx",
+
+    "object": "chat.completion.chunk",
 
     "service_tier": "default",
 
     "system_fingerprint": null,
 
+    "usage": null
+
+  },
+
+  {
+
     "choices": [
 
       {
-
-        "index": 0,
 
         "delta": {
 
@@ -3826,37 +3938,37 @@ Recursion is like solving a big problem by breaking it into smaller versions of 
 
         },
 
-        "finish_reason": null
+        "finish_reason": null,
+
+        "index": 0
 
       }
 
     ],
 
-    "usage": null,
-
-    "obfuscation": "Vw"
-
-  },
-
-  {
+    "created": 1776470832,
 
     "id": "chatcmpl-DVnVIJWPzCL8OTA38vb3b0IM2eEca",
 
-    "object": "chat.completion.chunk",
-
-    "created": 1776470832,
-
     "model": "gpt-5.4-mini-2026-03-17",
+
+    "obfuscation": "Vw",
+
+    "object": "chat.completion.chunk",
 
     "service_tier": "default",
 
     "system_fingerprint": null,
 
+    "usage": null
+
+  },
+
+  {
+
     "choices": [
 
       {
-
-        "index": 0,
 
         "delta": {
 
@@ -3864,37 +3976,37 @@ Recursion is like solving a big problem by breaking it into smaller versions of 
 
         },
 
-        "finish_reason": null
+        "finish_reason": null,
+
+        "index": 0
 
       }
 
     ],
 
-    "usage": null,
-
-    "obfuscation": "x5lF"
-
-  },
-
-  {
+    "created": 1776470832,
 
     "id": "chatcmpl-DVnVIJWPzCL8OTA38vb3b0IM2eEca",
 
-    "object": "chat.completion.chunk",
-
-    "created": 1776470832,
-
     "model": "gpt-5.4-mini-2026-03-17",
+
+    "obfuscation": "x5lF",
+
+    "object": "chat.completion.chunk",
 
     "service_tier": "default",
 
     "system_fingerprint": null,
 
+    "usage": null
+
+  },
+
+  {
+
     "choices": [
 
       {
-
-        "index": 0,
 
         "delta": {
 
@@ -3902,37 +4014,37 @@ Recursion is like solving a big problem by breaking it into smaller versions of 
 
         },
 
-        "finish_reason": null
+        "finish_reason": null,
+
+        "index": 0
 
       }
 
     ],
 
-    "usage": null,
-
-    "obfuscation": "HPRb"
-
-  },
-
-  {
+    "created": 1776470832,
 
     "id": "chatcmpl-DVnVIJWPzCL8OTA38vb3b0IM2eEca",
 
-    "object": "chat.completion.chunk",
-
-    "created": 1776470832,
-
     "model": "gpt-5.4-mini-2026-03-17",
+
+    "obfuscation": "HPRb",
+
+    "object": "chat.completion.chunk",
 
     "service_tier": "default",
 
     "system_fingerprint": null,
 
+    "usage": null
+
+  },
+
+  {
+
     "choices": [
 
       {
-
-        "index": 0,
 
         "delta": {
 
@@ -3940,37 +4052,37 @@ Recursion is like solving a big problem by breaking it into smaller versions of 
 
         },
 
-        "finish_reason": null
+        "finish_reason": null,
+
+        "index": 0
 
       }
 
     ],
 
-    "usage": null,
-
-    "obfuscation": "Ari5"
-
-  },
-
-  {
+    "created": 1776470832,
 
     "id": "chatcmpl-DVnVIJWPzCL8OTA38vb3b0IM2eEca",
 
-    "object": "chat.completion.chunk",
-
-    "created": 1776470832,
-
     "model": "gpt-5.4-mini-2026-03-17",
+
+    "obfuscation": "Ari5",
+
+    "object": "chat.completion.chunk",
 
     "service_tier": "default",
 
     "system_fingerprint": null,
 
+    "usage": null
+
+  },
+
+  {
+
     "choices": [
 
       {
-
-        "index": 0,
 
         "delta": {
 
@@ -3978,37 +4090,37 @@ Recursion is like solving a big problem by breaking it into smaller versions of 
 
         },
 
-        "finish_reason": null
+        "finish_reason": null,
+
+        "index": 0
 
       }
 
     ],
 
-    "usage": null,
-
-    "obfuscation": "c7Pf075yi7rl"
-
-  },
-
-  {
+    "created": 1776470832,
 
     "id": "chatcmpl-DVnVIJWPzCL8OTA38vb3b0IM2eEca",
 
-    "object": "chat.completion.chunk",
-
-    "created": 1776470832,
-
     "model": "gpt-5.4-mini-2026-03-17",
+
+    "obfuscation": "c7Pf075yi7rl",
+
+    "object": "chat.completion.chunk",
 
     "service_tier": "default",
 
     "system_fingerprint": null,
 
+    "usage": null
+
+  },
+
+  {
+
     "choices": [
 
       {
-
-        "index": 0,
 
         "delta": {
 
@@ -4016,37 +4128,37 @@ Recursion is like solving a big problem by breaking it into smaller versions of 
 
         },
 
-        "finish_reason": null
+        "finish_reason": null,
+
+        "index": 0
 
       }
 
     ],
 
-    "usage": null,
-
-    "obfuscation": "Wi7"
-
-  },
-
-  {
+    "created": 1776470832,
 
     "id": "chatcmpl-DVnVIJWPzCL8OTA38vb3b0IM2eEca",
 
-    "object": "chat.completion.chunk",
-
-    "created": 1776470832,
-
     "model": "gpt-5.4-mini-2026-03-17",
+
+    "obfuscation": "Wi7",
+
+    "object": "chat.completion.chunk",
 
     "service_tier": "default",
 
     "system_fingerprint": null,
 
+    "usage": null
+
+  },
+
+  {
+
     "choices": [
 
       {
-
-        "index": 0,
 
         "delta": {
 
@@ -4054,37 +4166,37 @@ Recursion is like solving a big problem by breaking it into smaller versions of 
 
         },
 
-        "finish_reason": null
+        "finish_reason": null,
+
+        "index": 0
 
       }
 
     ],
 
-    "usage": null,
-
-    "obfuscation": ""
-
-  },
-
-  {
+    "created": 1776470832,
 
     "id": "chatcmpl-DVnVIJWPzCL8OTA38vb3b0IM2eEca",
 
-    "object": "chat.completion.chunk",
-
-    "created": 1776470832,
-
     "model": "gpt-5.4-mini-2026-03-17",
+
+    "obfuscation": "",
+
+    "object": "chat.completion.chunk",
 
     "service_tier": "default",
 
     "system_fingerprint": null,
 
+    "usage": null
+
+  },
+
+  {
+
     "choices": [
 
       {
-
-        "index": 0,
 
         "delta": {
 
@@ -4092,37 +4204,37 @@ Recursion is like solving a big problem by breaking it into smaller versions of 
 
         },
 
-        "finish_reason": null
+        "finish_reason": null,
+
+        "index": 0
 
       }
 
     ],
 
-    "usage": null,
-
-    "obfuscation": ""
-
-  },
-
-  {
+    "created": 1776470832,
 
     "id": "chatcmpl-DVnVIJWPzCL8OTA38vb3b0IM2eEca",
 
-    "object": "chat.completion.chunk",
-
-    "created": 1776470832,
-
     "model": "gpt-5.4-mini-2026-03-17",
+
+    "obfuscation": "",
+
+    "object": "chat.completion.chunk",
 
     "service_tier": "default",
 
     "system_fingerprint": null,
 
+    "usage": null
+
+  },
+
+  {
+
     "choices": [
 
       {
-
-        "index": 0,
 
         "delta": {
 
@@ -4130,37 +4242,37 @@ Recursion is like solving a big problem by breaking it into smaller versions of 
 
         },
 
-        "finish_reason": null
+        "finish_reason": null,
+
+        "index": 0
 
       }
 
     ],
 
-    "usage": null,
-
-    "obfuscation": "Hjg"
-
-  },
-
-  {
+    "created": 1776470832,
 
     "id": "chatcmpl-DVnVIJWPzCL8OTA38vb3b0IM2eEca",
 
-    "object": "chat.completion.chunk",
-
-    "created": 1776470832,
-
     "model": "gpt-5.4-mini-2026-03-17",
+
+    "obfuscation": "Hjg",
+
+    "object": "chat.completion.chunk",
 
     "service_tier": "default",
 
     "system_fingerprint": null,
 
+    "usage": null
+
+  },
+
+  {
+
     "choices": [
 
       {
-
-        "index": 0,
 
         "delta": {
 
@@ -4168,37 +4280,37 @@ Recursion is like solving a big problem by breaking it into smaller versions of 
 
         },
 
-        "finish_reason": null
+        "finish_reason": null,
+
+        "index": 0
 
       }
 
     ],
 
-    "usage": null,
-
-    "obfuscation": "z3oL3H9dRoVaXB"
-
-  },
-
-  {
+    "created": 1776470832,
 
     "id": "chatcmpl-DVnVIJWPzCL8OTA38vb3b0IM2eEca",
 
-    "object": "chat.completion.chunk",
-
-    "created": 1776470832,
-
     "model": "gpt-5.4-mini-2026-03-17",
+
+    "obfuscation": "z3oL3H9dRoVaXB",
+
+    "object": "chat.completion.chunk",
 
     "service_tier": "default",
 
     "system_fingerprint": null,
 
+    "usage": null
+
+  },
+
+  {
+
     "choices": [
 
       {
-
-        "index": 0,
 
         "delta": {
 
@@ -4206,37 +4318,37 @@ Recursion is like solving a big problem by breaking it into smaller versions of 
 
         },
 
-        "finish_reason": null
+        "finish_reason": null,
+
+        "index": 0
 
       }
 
     ],
 
-    "usage": null,
-
-    "obfuscation": "zN06FG7KBWfOX5v"
-
-  },
-
-  {
+    "created": 1776470832,
 
     "id": "chatcmpl-DVnVIJWPzCL8OTA38vb3b0IM2eEca",
 
-    "object": "chat.completion.chunk",
-
-    "created": 1776470832,
-
     "model": "gpt-5.4-mini-2026-03-17",
+
+    "obfuscation": "zN06FG7KBWfOX5v",
+
+    "object": "chat.completion.chunk",
 
     "service_tier": "default",
 
     "system_fingerprint": null,
 
+    "usage": null
+
+  },
+
+  {
+
     "choices": [
 
       {
-
-        "index": 0,
 
         "delta": {
 
@@ -4244,37 +4356,37 @@ Recursion is like solving a big problem by breaking it into smaller versions of 
 
         },
 
-        "finish_reason": null
+        "finish_reason": null,
+
+        "index": 0
 
       }
 
     ],
 
-    "usage": null,
-
-    "obfuscation": "7f"
-
-  },
-
-  {
+    "created": 1776470832,
 
     "id": "chatcmpl-DVnVIJWPzCL8OTA38vb3b0IM2eEca",
 
-    "object": "chat.completion.chunk",
-
-    "created": 1776470832,
-
     "model": "gpt-5.4-mini-2026-03-17",
+
+    "obfuscation": "7f",
+
+    "object": "chat.completion.chunk",
 
     "service_tier": "default",
 
     "system_fingerprint": null,
 
+    "usage": null
+
+  },
+
+  {
+
     "choices": [
 
       {
-
-        "index": 0,
 
         "delta": {
 
@@ -4282,37 +4394,37 @@ Recursion is like solving a big problem by breaking it into smaller versions of 
 
         },
 
-        "finish_reason": null
+        "finish_reason": null,
+
+        "index": 0
 
       }
 
     ],
 
-    "usage": null,
-
-    "obfuscation": "d"
-
-  },
-
-  {
+    "created": 1776470832,
 
     "id": "chatcmpl-DVnVIJWPzCL8OTA38vb3b0IM2eEca",
 
-    "object": "chat.completion.chunk",
-
-    "created": 1776470832,
-
     "model": "gpt-5.4-mini-2026-03-17",
+
+    "obfuscation": "d",
+
+    "object": "chat.completion.chunk",
 
     "service_tier": "default",
 
     "system_fingerprint": null,
 
+    "usage": null
+
+  },
+
+  {
+
     "choices": [
 
       {
-
-        "index": 0,
 
         "delta": {
 
@@ -4320,37 +4432,37 @@ Recursion is like solving a big problem by breaking it into smaller versions of 
 
         },
 
-        "finish_reason": null
+        "finish_reason": null,
+
+        "index": 0
 
       }
 
     ],
 
-    "usage": null,
-
-    "obfuscation": "IIJYz3kUgGT4kcf"
-
-  },
-
-  {
+    "created": 1776470832,
 
     "id": "chatcmpl-DVnVIJWPzCL8OTA38vb3b0IM2eEca",
 
-    "object": "chat.completion.chunk",
-
-    "created": 1776470832,
-
     "model": "gpt-5.4-mini-2026-03-17",
+
+    "obfuscation": "IIJYz3kUgGT4kcf",
+
+    "object": "chat.completion.chunk",
 
     "service_tier": "default",
 
     "system_fingerprint": null,
 
+    "usage": null
+
+  },
+
+  {
+
     "choices": [
 
       {
-
-        "index": 0,
 
         "delta": {
 
@@ -4358,37 +4470,37 @@ Recursion is like solving a big problem by breaking it into smaller versions of 
 
         },
 
-        "finish_reason": null
+        "finish_reason": null,
+
+        "index": 0
 
       }
 
     ],
 
-    "usage": null,
-
-    "obfuscation": "AT"
-
-  },
-
-  {
+    "created": 1776470832,
 
     "id": "chatcmpl-DVnVIJWPzCL8OTA38vb3b0IM2eEca",
 
-    "object": "chat.completion.chunk",
-
-    "created": 1776470832,
-
     "model": "gpt-5.4-mini-2026-03-17",
+
+    "obfuscation": "AT",
+
+    "object": "chat.completion.chunk",
 
     "service_tier": "default",
 
     "system_fingerprint": null,
 
+    "usage": null
+
+  },
+
+  {
+
     "choices": [
 
       {
-
-        "index": 0,
 
         "delta": {
 
@@ -4396,37 +4508,37 @@ Recursion is like solving a big problem by breaking it into smaller versions of 
 
         },
 
-        "finish_reason": null
+        "finish_reason": null,
+
+        "index": 0
 
       }
 
     ],
 
-    "usage": null,
-
-    "obfuscation": ""
-
-  },
-
-  {
+    "created": 1776470832,
 
     "id": "chatcmpl-DVnVIJWPzCL8OTA38vb3b0IM2eEca",
 
-    "object": "chat.completion.chunk",
-
-    "created": 1776470832,
-
     "model": "gpt-5.4-mini-2026-03-17",
+
+    "obfuscation": "",
+
+    "object": "chat.completion.chunk",
 
     "service_tier": "default",
 
     "system_fingerprint": null,
 
+    "usage": null
+
+  },
+
+  {
+
     "choices": [
 
       {
-
-        "index": 0,
 
         "delta": {
 
@@ -4434,37 +4546,37 @@ Recursion is like solving a big problem by breaking it into smaller versions of 
 
         },
 
-        "finish_reason": null
+        "finish_reason": null,
+
+        "index": 0
 
       }
 
     ],
 
-    "usage": null,
-
-    "obfuscation": "hu"
-
-  },
-
-  {
+    "created": 1776470832,
 
     "id": "chatcmpl-DVnVIJWPzCL8OTA38vb3b0IM2eEca",
 
-    "object": "chat.completion.chunk",
-
-    "created": 1776470832,
-
     "model": "gpt-5.4-mini-2026-03-17",
+
+    "obfuscation": "hu",
+
+    "object": "chat.completion.chunk",
 
     "service_tier": "default",
 
     "system_fingerprint": null,
 
+    "usage": null
+
+  },
+
+  {
+
     "choices": [
 
       {
-
-        "index": 0,
 
         "delta": {
 
@@ -4472,37 +4584,37 @@ Recursion is like solving a big problem by breaking it into smaller versions of 
 
         },
 
-        "finish_reason": null
+        "finish_reason": null,
+
+        "index": 0
 
       }
 
     ],
 
-    "usage": null,
-
-    "obfuscation": "BKAttd7BJjA4pb"
-
-  },
-
-  {
+    "created": 1776470832,
 
     "id": "chatcmpl-DVnVIJWPzCL8OTA38vb3b0IM2eEca",
 
-    "object": "chat.completion.chunk",
-
-    "created": 1776470832,
-
     "model": "gpt-5.4-mini-2026-03-17",
+
+    "obfuscation": "BKAttd7BJjA4pb",
+
+    "object": "chat.completion.chunk",
 
     "service_tier": "default",
 
     "system_fingerprint": null,
 
+    "usage": null
+
+  },
+
+  {
+
     "choices": [
 
       {
-
-        "index": 0,
 
         "delta": {
 
@@ -4510,37 +4622,37 @@ Recursion is like solving a big problem by breaking it into smaller versions of 
 
         },
 
-        "finish_reason": null
+        "finish_reason": null,
+
+        "index": 0
 
       }
 
     ],
 
-    "usage": null,
-
-    "obfuscation": "ZGN8o9wQbxJXwjK"
-
-  },
-
-  {
+    "created": 1776470832,
 
     "id": "chatcmpl-DVnVIJWPzCL8OTA38vb3b0IM2eEca",
 
-    "object": "chat.completion.chunk",
-
-    "created": 1776470832,
-
     "model": "gpt-5.4-mini-2026-03-17",
+
+    "obfuscation": "ZGN8o9wQbxJXwjK",
+
+    "object": "chat.completion.chunk",
 
     "service_tier": "default",
 
     "system_fingerprint": null,
 
+    "usage": null
+
+  },
+
+  {
+
     "choices": [
 
       {
-
-        "index": 0,
 
         "delta": {
 
@@ -4548,37 +4660,37 @@ Recursion is like solving a big problem by breaking it into smaller versions of 
 
         },
 
-        "finish_reason": null
+        "finish_reason": null,
+
+        "index": 0
 
       }
 
     ],
 
-    "usage": null,
-
-    "obfuscation": "FT7"
-
-  },
-
-  {
+    "created": 1776470832,
 
     "id": "chatcmpl-DVnVIJWPzCL8OTA38vb3b0IM2eEca",
 
-    "object": "chat.completion.chunk",
-
-    "created": 1776470832,
-
     "model": "gpt-5.4-mini-2026-03-17",
+
+    "obfuscation": "FT7",
+
+    "object": "chat.completion.chunk",
 
     "service_tier": "default",
 
     "system_fingerprint": null,
 
+    "usage": null
+
+  },
+
+  {
+
     "choices": [
 
       {
-
-        "index": 0,
 
         "delta": {
 
@@ -4586,37 +4698,37 @@ Recursion is like solving a big problem by breaking it into smaller versions of 
 
         },
 
-        "finish_reason": null
+        "finish_reason": null,
+
+        "index": 0
 
       }
 
     ],
 
-    "usage": null,
-
-    "obfuscation": "Lt"
-
-  },
-
-  {
+    "created": 1776470832,
 
     "id": "chatcmpl-DVnVIJWPzCL8OTA38vb3b0IM2eEca",
 
-    "object": "chat.completion.chunk",
-
-    "created": 1776470832,
-
     "model": "gpt-5.4-mini-2026-03-17",
+
+    "obfuscation": "Lt",
+
+    "object": "chat.completion.chunk",
 
     "service_tier": "default",
 
     "system_fingerprint": null,
 
+    "usage": null
+
+  },
+
+  {
+
     "choices": [
 
       {
-
-        "index": 0,
 
         "delta": {
 
@@ -4624,37 +4736,37 @@ Recursion is like solving a big problem by breaking it into smaller versions of 
 
         },
 
-        "finish_reason": null
+        "finish_reason": null,
+
+        "index": 0
 
       }
 
     ],
 
-    "usage": null,
-
-    "obfuscation": "GG68lvRt12MOCn"
-
-  },
-
-  {
+    "created": 1776470832,
 
     "id": "chatcmpl-DVnVIJWPzCL8OTA38vb3b0IM2eEca",
 
-    "object": "chat.completion.chunk",
-
-    "created": 1776470832,
-
     "model": "gpt-5.4-mini-2026-03-17",
+
+    "obfuscation": "GG68lvRt12MOCn",
+
+    "object": "chat.completion.chunk",
 
     "service_tier": "default",
 
     "system_fingerprint": null,
 
+    "usage": null
+
+  },
+
+  {
+
     "choices": [
 
       {
-
-        "index": 0,
 
         "delta": {
 
@@ -4662,37 +4774,37 @@ Recursion is like solving a big problem by breaking it into smaller versions of 
 
         },
 
-        "finish_reason": null
+        "finish_reason": null,
+
+        "index": 0
 
       }
 
     ],
 
-    "usage": null,
-
-    "obfuscation": "1Cvprcwlwf5"
-
-  },
-
-  {
+    "created": 1776470832,
 
     "id": "chatcmpl-DVnVIJWPzCL8OTA38vb3b0IM2eEca",
 
-    "object": "chat.completion.chunk",
-
-    "created": 1776470832,
-
     "model": "gpt-5.4-mini-2026-03-17",
+
+    "obfuscation": "1Cvprcwlwf5",
+
+    "object": "chat.completion.chunk",
 
     "service_tier": "default",
 
     "system_fingerprint": null,
 
+    "usage": null
+
+  },
+
+  {
+
     "choices": [
 
       {
-
-        "index": 0,
 
         "delta": {
 
@@ -4700,37 +4812,37 @@ Recursion is like solving a big problem by breaking it into smaller versions of 
 
         },
 
-        "finish_reason": null
+        "finish_reason": null,
+
+        "index": 0
 
       }
 
     ],
 
-    "usage": null,
-
-    "obfuscation": "UIQ"
-
-  },
-
-  {
+    "created": 1776470832,
 
     "id": "chatcmpl-DVnVIJWPzCL8OTA38vb3b0IM2eEca",
 
-    "object": "chat.completion.chunk",
-
-    "created": 1776470832,
-
     "model": "gpt-5.4-mini-2026-03-17",
+
+    "obfuscation": "UIQ",
+
+    "object": "chat.completion.chunk",
 
     "service_tier": "default",
 
     "system_fingerprint": null,
 
+    "usage": null
+
+  },
+
+  {
+
     "choices": [
 
       {
-
-        "index": 0,
 
         "delta": {
 
@@ -4738,37 +4850,37 @@ Recursion is like solving a big problem by breaking it into smaller versions of 
 
         },
 
-        "finish_reason": null
+        "finish_reason": null,
+
+        "index": 0
 
       }
 
     ],
 
-    "usage": null,
-
-    "obfuscation": "Gm1"
-
-  },
-
-  {
+    "created": 1776470832,
 
     "id": "chatcmpl-DVnVIJWPzCL8OTA38vb3b0IM2eEca",
 
-    "object": "chat.completion.chunk",
-
-    "created": 1776470832,
-
     "model": "gpt-5.4-mini-2026-03-17",
+
+    "obfuscation": "Gm1",
+
+    "object": "chat.completion.chunk",
 
     "service_tier": "default",
 
     "system_fingerprint": null,
 
+    "usage": null
+
+  },
+
+  {
+
     "choices": [
 
       {
-
-        "index": 0,
 
         "delta": {
 
@@ -4776,37 +4888,37 @@ Recursion is like solving a big problem by breaking it into smaller versions of 
 
         },
 
-        "finish_reason": null
+        "finish_reason": null,
+
+        "index": 0
 
       }
 
     ],
 
-    "usage": null,
-
-    "obfuscation": "0uK9"
-
-  },
-
-  {
+    "created": 1776470832,
 
     "id": "chatcmpl-DVnVIJWPzCL8OTA38vb3b0IM2eEca",
 
-    "object": "chat.completion.chunk",
-
-    "created": 1776470832,
-
     "model": "gpt-5.4-mini-2026-03-17",
+
+    "obfuscation": "0uK9",
+
+    "object": "chat.completion.chunk",
 
     "service_tier": "default",
 
     "system_fingerprint": null,
 
+    "usage": null
+
+  },
+
+  {
+
     "choices": [
 
       {
-
-        "index": 0,
 
         "delta": {
 
@@ -4814,37 +4926,37 @@ Recursion is like solving a big problem by breaking it into smaller versions of 
 
         },
 
-        "finish_reason": null
+        "finish_reason": null,
+
+        "index": 0
 
       }
 
     ],
 
-    "usage": null,
-
-    "obfuscation": "lTG9"
-
-  },
-
-  {
+    "created": 1776470832,
 
     "id": "chatcmpl-DVnVIJWPzCL8OTA38vb3b0IM2eEca",
 
-    "object": "chat.completion.chunk",
-
-    "created": 1776470832,
-
     "model": "gpt-5.4-mini-2026-03-17",
+
+    "obfuscation": "lTG9",
+
+    "object": "chat.completion.chunk",
 
     "service_tier": "default",
 
     "system_fingerprint": null,
 
+    "usage": null
+
+  },
+
+  {
+
     "choices": [
 
       {
-
-        "index": 0,
 
         "delta": {
 
@@ -4852,37 +4964,37 @@ Recursion is like solving a big problem by breaking it into smaller versions of 
 
         },
 
-        "finish_reason": null
+        "finish_reason": null,
+
+        "index": 0
 
       }
 
     ],
 
-    "usage": null,
-
-    "obfuscation": "NzO4"
-
-  },
-
-  {
+    "created": 1776470832,
 
     "id": "chatcmpl-DVnVIJWPzCL8OTA38vb3b0IM2eEca",
 
-    "object": "chat.completion.chunk",
-
-    "created": 1776470832,
-
     "model": "gpt-5.4-mini-2026-03-17",
+
+    "obfuscation": "NzO4",
+
+    "object": "chat.completion.chunk",
 
     "service_tier": "default",
 
     "system_fingerprint": null,
 
+    "usage": null
+
+  },
+
+  {
+
     "choices": [
 
       {
-
-        "index": 0,
 
         "delta": {
 
@@ -4890,37 +5002,37 @@ Recursion is like solving a big problem by breaking it into smaller versions of 
 
         },
 
-        "finish_reason": null
+        "finish_reason": null,
+
+        "index": 0
 
       }
 
     ],
 
-    "usage": null,
-
-    "obfuscation": "9ZHg"
-
-  },
-
-  {
+    "created": 1776470832,
 
     "id": "chatcmpl-DVnVIJWPzCL8OTA38vb3b0IM2eEca",
 
-    "object": "chat.completion.chunk",
-
-    "created": 1776470832,
-
     "model": "gpt-5.4-mini-2026-03-17",
+
+    "obfuscation": "9ZHg",
+
+    "object": "chat.completion.chunk",
 
     "service_tier": "default",
 
     "system_fingerprint": null,
 
+    "usage": null
+
+  },
+
+  {
+
     "choices": [
 
       {
-
-        "index": 0,
 
         "delta": {
 
@@ -4928,37 +5040,37 @@ Recursion is like solving a big problem by breaking it into smaller versions of 
 
         },
 
-        "finish_reason": null
+        "finish_reason": null,
+
+        "index": 0
 
       }
 
     ],
 
-    "usage": null,
-
-    "obfuscation": "UWE"
-
-  },
-
-  {
+    "created": 1776470832,
 
     "id": "chatcmpl-DVnVIJWPzCL8OTA38vb3b0IM2eEca",
 
-    "object": "chat.completion.chunk",
-
-    "created": 1776470832,
-
     "model": "gpt-5.4-mini-2026-03-17",
+
+    "obfuscation": "UWE",
+
+    "object": "chat.completion.chunk",
 
     "service_tier": "default",
 
     "system_fingerprint": null,
 
+    "usage": null
+
+  },
+
+  {
+
     "choices": [
 
       {
-
-        "index": 0,
 
         "delta": {
 
@@ -4966,37 +5078,37 @@ Recursion is like solving a big problem by breaking it into smaller versions of 
 
         },
 
-        "finish_reason": null
+        "finish_reason": null,
+
+        "index": 0
 
       }
 
     ],
 
-    "usage": null,
-
-    "obfuscation": "RoXQCRnmzD2"
-
-  },
-
-  {
+    "created": 1776470832,
 
     "id": "chatcmpl-DVnVIJWPzCL8OTA38vb3b0IM2eEca",
 
-    "object": "chat.completion.chunk",
-
-    "created": 1776470832,
-
     "model": "gpt-5.4-mini-2026-03-17",
+
+    "obfuscation": "RoXQCRnmzD2",
+
+    "object": "chat.completion.chunk",
 
     "service_tier": "default",
 
     "system_fingerprint": null,
 
+    "usage": null
+
+  },
+
+  {
+
     "choices": [
 
       {
-
-        "index": 0,
 
         "delta": {
 
@@ -5004,37 +5116,37 @@ Recursion is like solving a big problem by breaking it into smaller versions of 
 
         },
 
-        "finish_reason": null
+        "finish_reason": null,
+
+        "index": 0
 
       }
 
     ],
 
-    "usage": null,
-
-    "obfuscation": ""
-
-  },
-
-  {
+    "created": 1776470832,
 
     "id": "chatcmpl-DVnVIJWPzCL8OTA38vb3b0IM2eEca",
 
-    "object": "chat.completion.chunk",
-
-    "created": 1776470832,
-
     "model": "gpt-5.4-mini-2026-03-17",
+
+    "obfuscation": "",
+
+    "object": "chat.completion.chunk",
 
     "service_tier": "default",
 
     "system_fingerprint": null,
 
+    "usage": null
+
+  },
+
+  {
+
     "choices": [
 
       {
-
-        "index": 0,
 
         "delta": {
 
@@ -5042,37 +5154,37 @@ Recursion is like solving a big problem by breaking it into smaller versions of 
 
         },
 
-        "finish_reason": null
+        "finish_reason": null,
+
+        "index": 0
 
       }
 
     ],
 
-    "usage": null,
-
-    "obfuscation": "HIK"
-
-  },
-
-  {
+    "created": 1776470832,
 
     "id": "chatcmpl-DVnVIJWPzCL8OTA38vb3b0IM2eEca",
 
-    "object": "chat.completion.chunk",
-
-    "created": 1776470832,
-
     "model": "gpt-5.4-mini-2026-03-17",
+
+    "obfuscation": "HIK",
+
+    "object": "chat.completion.chunk",
 
     "service_tier": "default",
 
     "system_fingerprint": null,
 
+    "usage": null
+
+  },
+
+  {
+
     "choices": [
 
       {
-
-        "index": 0,
 
         "delta": {
 
@@ -5080,37 +5192,37 @@ Recursion is like solving a big problem by breaking it into smaller versions of 
 
         },
 
-        "finish_reason": null
+        "finish_reason": null,
+
+        "index": 0
 
       }
 
     ],
 
-    "usage": null,
-
-    "obfuscation": "ta5"
-
-  },
-
-  {
+    "created": 1776470832,
 
     "id": "chatcmpl-DVnVIJWPzCL8OTA38vb3b0IM2eEca",
 
-    "object": "chat.completion.chunk",
-
-    "created": 1776470832,
-
     "model": "gpt-5.4-mini-2026-03-17",
+
+    "obfuscation": "ta5",
+
+    "object": "chat.completion.chunk",
 
     "service_tier": "default",
 
     "system_fingerprint": null,
 
+    "usage": null
+
+  },
+
+  {
+
     "choices": [
 
       {
-
-        "index": 0,
 
         "delta": {
 
@@ -5118,37 +5230,37 @@ Recursion is like solving a big problem by breaking it into smaller versions of 
 
         },
 
-        "finish_reason": null
+        "finish_reason": null,
+
+        "index": 0
 
       }
 
     ],
 
-    "usage": null,
-
-    "obfuscation": ""
-
-  },
-
-  {
+    "created": 1776470832,
 
     "id": "chatcmpl-DVnVIJWPzCL8OTA38vb3b0IM2eEca",
 
-    "object": "chat.completion.chunk",
-
-    "created": 1776470832,
-
     "model": "gpt-5.4-mini-2026-03-17",
+
+    "obfuscation": "",
+
+    "object": "chat.completion.chunk",
 
     "service_tier": "default",
 
     "system_fingerprint": null,
 
+    "usage": null
+
+  },
+
+  {
+
     "choices": [
 
       {
-
-        "index": 0,
 
         "delta": {
 
@@ -5156,37 +5268,37 @@ Recursion is like solving a big problem by breaking it into smaller versions of 
 
         },
 
-        "finish_reason": null
+        "finish_reason": null,
+
+        "index": 0
 
       }
 
     ],
 
-    "usage": null,
-
-    "obfuscation": "Pks"
-
-  },
-
-  {
+    "created": 1776470832,
 
     "id": "chatcmpl-DVnVIJWPzCL8OTA38vb3b0IM2eEca",
 
-    "object": "chat.completion.chunk",
-
-    "created": 1776470832,
-
     "model": "gpt-5.4-mini-2026-03-17",
+
+    "obfuscation": "Pks",
+
+    "object": "chat.completion.chunk",
 
     "service_tier": "default",
 
     "system_fingerprint": null,
 
+    "usage": null
+
+  },
+
+  {
+
     "choices": [
 
       {
-
-        "index": 0,
 
         "delta": {
 
@@ -5194,37 +5306,37 @@ Recursion is like solving a big problem by breaking it into smaller versions of 
 
         },
 
-        "finish_reason": null
+        "finish_reason": null,
+
+        "index": 0
 
       }
 
     ],
 
-    "usage": null,
-
-    "obfuscation": "y"
-
-  },
-
-  {
+    "created": 1776470832,
 
     "id": "chatcmpl-DVnVIJWPzCL8OTA38vb3b0IM2eEca",
 
-    "object": "chat.completion.chunk",
-
-    "created": 1776470832,
-
     "model": "gpt-5.4-mini-2026-03-17",
+
+    "obfuscation": "y",
+
+    "object": "chat.completion.chunk",
 
     "service_tier": "default",
 
     "system_fingerprint": null,
 
+    "usage": null
+
+  },
+
+  {
+
     "choices": [
 
       {
-
-        "index": 0,
 
         "delta": {
 
@@ -5232,37 +5344,37 @@ Recursion is like solving a big problem by breaking it into smaller versions of 
 
         },
 
-        "finish_reason": null
+        "finish_reason": null,
+
+        "index": 0
 
       }
 
     ],
 
-    "usage": null,
-
-    "obfuscation": "P"
-
-  },
-
-  {
+    "created": 1776470832,
 
     "id": "chatcmpl-DVnVIJWPzCL8OTA38vb3b0IM2eEca",
 
-    "object": "chat.completion.chunk",
-
-    "created": 1776470832,
-
     "model": "gpt-5.4-mini-2026-03-17",
+
+    "obfuscation": "P",
+
+    "object": "chat.completion.chunk",
 
     "service_tier": "default",
 
     "system_fingerprint": null,
 
+    "usage": null
+
+  },
+
+  {
+
     "choices": [
 
       {
-
-        "index": 0,
 
         "delta": {
 
@@ -5270,37 +5382,37 @@ Recursion is like solving a big problem by breaking it into smaller versions of 
 
         },
 
-        "finish_reason": null
+        "finish_reason": null,
+
+        "index": 0
 
       }
 
     ],
 
-    "usage": null,
-
-    "obfuscation": "2s"
-
-  },
-
-  {
+    "created": 1776470832,
 
     "id": "chatcmpl-DVnVIJWPzCL8OTA38vb3b0IM2eEca",
 
-    "object": "chat.completion.chunk",
-
-    "created": 1776470832,
-
     "model": "gpt-5.4-mini-2026-03-17",
+
+    "obfuscation": "2s",
+
+    "object": "chat.completion.chunk",
 
     "service_tier": "default",
 
     "system_fingerprint": null,
 
+    "usage": null
+
+  },
+
+  {
+
     "choices": [
 
       {
-
-        "index": 0,
 
         "delta": {
 
@@ -5308,37 +5420,37 @@ Recursion is like solving a big problem by breaking it into smaller versions of 
 
         },
 
-        "finish_reason": null
+        "finish_reason": null,
+
+        "index": 0
 
       }
 
     ],
 
-    "usage": null,
-
-    "obfuscation": "gZ"
-
-  },
-
-  {
+    "created": 1776470832,
 
     "id": "chatcmpl-DVnVIJWPzCL8OTA38vb3b0IM2eEca",
 
-    "object": "chat.completion.chunk",
-
-    "created": 1776470832,
-
     "model": "gpt-5.4-mini-2026-03-17",
+
+    "obfuscation": "gZ",
+
+    "object": "chat.completion.chunk",
 
     "service_tier": "default",
 
     "system_fingerprint": null,
 
+    "usage": null
+
+  },
+
+  {
+
     "choices": [
 
       {
-
-        "index": 0,
 
         "delta": {
 
@@ -5346,37 +5458,37 @@ Recursion is like solving a big problem by breaking it into smaller versions of 
 
         },
 
-        "finish_reason": null
+        "finish_reason": null,
+
+        "index": 0
 
       }
 
     ],
 
-    "usage": null,
-
-    "obfuscation": "ec1i4tqzWi7hwV3"
-
-  },
-
-  {
+    "created": 1776470832,
 
     "id": "chatcmpl-DVnVIJWPzCL8OTA38vb3b0IM2eEca",
 
-    "object": "chat.completion.chunk",
-
-    "created": 1776470832,
-
     "model": "gpt-5.4-mini-2026-03-17",
+
+    "obfuscation": "ec1i4tqzWi7hwV3",
+
+    "object": "chat.completion.chunk",
 
     "service_tier": "default",
 
     "system_fingerprint": null,
 
+    "usage": null
+
+  },
+
+  {
+
     "choices": [
 
       {
-
-        "index": 0,
 
         "delta": {
 
@@ -5384,37 +5496,37 @@ Recursion is like solving a big problem by breaking it into smaller versions of 
 
         },
 
-        "finish_reason": null
+        "finish_reason": null,
+
+        "index": 0
 
       }
 
     ],
 
-    "usage": null,
-
-    "obfuscation": "cKr"
-
-  },
-
-  {
+    "created": 1776470832,
 
     "id": "chatcmpl-DVnVIJWPzCL8OTA38vb3b0IM2eEca",
 
-    "object": "chat.completion.chunk",
-
-    "created": 1776470832,
-
     "model": "gpt-5.4-mini-2026-03-17",
+
+    "obfuscation": "cKr",
+
+    "object": "chat.completion.chunk",
 
     "service_tier": "default",
 
     "system_fingerprint": null,
 
+    "usage": null
+
+  },
+
+  {
+
     "choices": [
 
       {
-
-        "index": 0,
 
         "delta": {
 
@@ -5422,37 +5534,37 @@ Recursion is like solving a big problem by breaking it into smaller versions of 
 
         },
 
-        "finish_reason": null
+        "finish_reason": null,
+
+        "index": 0
 
       }
 
     ],
 
-    "usage": null,
-
-    "obfuscation": ""
-
-  },
-
-  {
+    "created": 1776470832,
 
     "id": "chatcmpl-DVnVIJWPzCL8OTA38vb3b0IM2eEca",
 
-    "object": "chat.completion.chunk",
-
-    "created": 1776470832,
-
     "model": "gpt-5.4-mini-2026-03-17",
+
+    "obfuscation": "",
+
+    "object": "chat.completion.chunk",
 
     "service_tier": "default",
 
     "system_fingerprint": null,
 
+    "usage": null
+
+  },
+
+  {
+
     "choices": [
 
       {
-
-        "index": 0,
 
         "delta": {
 
@@ -5460,37 +5572,37 @@ Recursion is like solving a big problem by breaking it into smaller versions of 
 
         },
 
-        "finish_reason": null
+        "finish_reason": null,
+
+        "index": 0
 
       }
 
     ],
 
-    "usage": null,
-
-    "obfuscation": "2"
-
-  },
-
-  {
+    "created": 1776470832,
 
     "id": "chatcmpl-DVnVIJWPzCL8OTA38vb3b0IM2eEca",
 
-    "object": "chat.completion.chunk",
-
-    "created": 1776470832,
-
     "model": "gpt-5.4-mini-2026-03-17",
+
+    "obfuscation": "2",
+
+    "object": "chat.completion.chunk",
 
     "service_tier": "default",
 
     "system_fingerprint": null,
 
+    "usage": null
+
+  },
+
+  {
+
     "choices": [
 
       {
-
-        "index": 0,
 
         "delta": {
 
@@ -5498,37 +5610,37 @@ Recursion is like solving a big problem by breaking it into smaller versions of 
 
         },
 
-        "finish_reason": null
+        "finish_reason": null,
+
+        "index": 0
 
       }
 
     ],
 
-    "usage": null,
-
-    "obfuscation": "44OM"
-
-  },
-
-  {
+    "created": 1776470832,
 
     "id": "chatcmpl-DVnVIJWPzCL8OTA38vb3b0IM2eEca",
 
-    "object": "chat.completion.chunk",
-
-    "created": 1776470832,
-
     "model": "gpt-5.4-mini-2026-03-17",
+
+    "obfuscation": "44OM",
+
+    "object": "chat.completion.chunk",
 
     "service_tier": "default",
 
     "system_fingerprint": null,
 
+    "usage": null
+
+  },
+
+  {
+
     "choices": [
 
       {
-
-        "index": 0,
 
         "delta": {
 
@@ -5536,37 +5648,37 @@ Recursion is like solving a big problem by breaking it into smaller versions of 
 
         },
 
-        "finish_reason": null
+        "finish_reason": null,
+
+        "index": 0
 
       }
 
     ],
 
-    "usage": null,
-
-    "obfuscation": "O8nw"
-
-  },
-
-  {
+    "created": 1776470832,
 
     "id": "chatcmpl-DVnVIJWPzCL8OTA38vb3b0IM2eEca",
 
-    "object": "chat.completion.chunk",
-
-    "created": 1776470832,
-
     "model": "gpt-5.4-mini-2026-03-17",
+
+    "obfuscation": "O8nw",
+
+    "object": "chat.completion.chunk",
 
     "service_tier": "default",
 
     "system_fingerprint": null,
 
+    "usage": null
+
+  },
+
+  {
+
     "choices": [
 
       {
-
-        "index": 0,
 
         "delta": {
 
@@ -5574,37 +5686,37 @@ Recursion is like solving a big problem by breaking it into smaller versions of 
 
         },
 
-        "finish_reason": null
+        "finish_reason": null,
+
+        "index": 0
 
       }
 
     ],
 
-    "usage": null,
-
-    "obfuscation": "nO"
-
-  },
-
-  {
+    "created": 1776470832,
 
     "id": "chatcmpl-DVnVIJWPzCL8OTA38vb3b0IM2eEca",
 
-    "object": "chat.completion.chunk",
-
-    "created": 1776470832,
-
     "model": "gpt-5.4-mini-2026-03-17",
+
+    "obfuscation": "nO",
+
+    "object": "chat.completion.chunk",
 
     "service_tier": "default",
 
     "system_fingerprint": null,
 
+    "usage": null
+
+  },
+
+  {
+
     "choices": [
 
       {
-
-        "index": 0,
 
         "delta": {
 
@@ -5612,37 +5724,37 @@ Recursion is like solving a big problem by breaking it into smaller versions of 
 
         },
 
-        "finish_reason": null
+        "finish_reason": null,
+
+        "index": 0
 
       }
 
     ],
 
-    "usage": null,
-
-    "obfuscation": "ykD"
-
-  },
-
-  {
+    "created": 1776470832,
 
     "id": "chatcmpl-DVnVIJWPzCL8OTA38vb3b0IM2eEca",
 
-    "object": "chat.completion.chunk",
-
-    "created": 1776470832,
-
     "model": "gpt-5.4-mini-2026-03-17",
+
+    "obfuscation": "ykD",
+
+    "object": "chat.completion.chunk",
 
     "service_tier": "default",
 
     "system_fingerprint": null,
 
+    "usage": null
+
+  },
+
+  {
+
     "choices": [
 
       {
-
-        "index": 0,
 
         "delta": {
 
@@ -5650,37 +5762,37 @@ Recursion is like solving a big problem by breaking it into smaller versions of 
 
         },
 
-        "finish_reason": null
+        "finish_reason": null,
+
+        "index": 0
 
       }
 
     ],
 
-    "usage": null,
-
-    "obfuscation": ""
-
-  },
-
-  {
+    "created": 1776470832,
 
     "id": "chatcmpl-DVnVIJWPzCL8OTA38vb3b0IM2eEca",
 
-    "object": "chat.completion.chunk",
-
-    "created": 1776470832,
-
     "model": "gpt-5.4-mini-2026-03-17",
+
+    "obfuscation": "",
+
+    "object": "chat.completion.chunk",
 
     "service_tier": "default",
 
     "system_fingerprint": null,
 
+    "usage": null
+
+  },
+
+  {
+
     "choices": [
 
       {
-
-        "index": 0,
 
         "delta": {
 
@@ -5688,37 +5800,37 @@ Recursion is like solving a big problem by breaking it into smaller versions of 
 
         },
 
-        "finish_reason": null
+        "finish_reason": null,
+
+        "index": 0
 
       }
 
     ],
 
-    "usage": null,
-
-    "obfuscation": "gHr"
-
-  },
-
-  {
+    "created": 1776470832,
 
     "id": "chatcmpl-DVnVIJWPzCL8OTA38vb3b0IM2eEca",
 
-    "object": "chat.completion.chunk",
-
-    "created": 1776470832,
-
     "model": "gpt-5.4-mini-2026-03-17",
+
+    "obfuscation": "gHr",
+
+    "object": "chat.completion.chunk",
 
     "service_tier": "default",
 
     "system_fingerprint": null,
 
+    "usage": null
+
+  },
+
+  {
+
     "choices": [
 
       {
-
-        "index": 0,
 
         "delta": {
 
@@ -5726,37 +5838,37 @@ Recursion is like solving a big problem by breaking it into smaller versions of 
 
         },
 
-        "finish_reason": null
+        "finish_reason": null,
+
+        "index": 0
 
       }
 
     ],
 
-    "usage": null,
-
-    "obfuscation": "chs0ThleqKhXHx"
-
-  },
-
-  {
+    "created": 1776470832,
 
     "id": "chatcmpl-DVnVIJWPzCL8OTA38vb3b0IM2eEca",
 
-    "object": "chat.completion.chunk",
-
-    "created": 1776470832,
-
     "model": "gpt-5.4-mini-2026-03-17",
+
+    "obfuscation": "chs0ThleqKhXHx",
+
+    "object": "chat.completion.chunk",
 
     "service_tier": "default",
 
     "system_fingerprint": null,
 
+    "usage": null
+
+  },
+
+  {
+
     "choices": [
 
       {
-
-        "index": 0,
 
         "delta": {
 
@@ -5764,37 +5876,37 @@ Recursion is like solving a big problem by breaking it into smaller versions of 
 
         },
 
-        "finish_reason": null
+        "finish_reason": null,
+
+        "index": 0
 
       }
 
     ],
 
-    "usage": null,
-
-    "obfuscation": "q8"
-
-  },
-
-  {
+    "created": 1776470832,
 
     "id": "chatcmpl-DVnVIJWPzCL8OTA38vb3b0IM2eEca",
 
-    "object": "chat.completion.chunk",
-
-    "created": 1776470832,
-
     "model": "gpt-5.4-mini-2026-03-17",
+
+    "obfuscation": "q8",
+
+    "object": "chat.completion.chunk",
 
     "service_tier": "default",
 
     "system_fingerprint": null,
 
+    "usage": null
+
+  },
+
+  {
+
     "choices": [
 
       {
-
-        "index": 0,
 
         "delta": {
 
@@ -5802,37 +5914,37 @@ Recursion is like solving a big problem by breaking it into smaller versions of 
 
         },
 
-        "finish_reason": null
+        "finish_reason": null,
+
+        "index": 0
 
       }
 
     ],
 
-    "usage": null,
-
-    "obfuscation": "ab"
-
-  },
-
-  {
+    "created": 1776470832,
 
     "id": "chatcmpl-DVnVIJWPzCL8OTA38vb3b0IM2eEca",
 
-    "object": "chat.completion.chunk",
-
-    "created": 1776470832,
-
     "model": "gpt-5.4-mini-2026-03-17",
+
+    "obfuscation": "ab",
+
+    "object": "chat.completion.chunk",
 
     "service_tier": "default",
 
     "system_fingerprint": null,
 
+    "usage": null
+
+  },
+
+  {
+
     "choices": [
 
       {
-
-        "index": 0,
 
         "delta": {
 
@@ -5840,37 +5952,37 @@ Recursion is like solving a big problem by breaking it into smaller versions of 
 
         },
 
-        "finish_reason": null
+        "finish_reason": null,
+
+        "index": 0
 
       }
 
     ],
 
-    "usage": null,
-
-    "obfuscation": "PzgVOReUAMxsWxJ"
-
-  },
-
-  {
+    "created": 1776470832,
 
     "id": "chatcmpl-DVnVIJWPzCL8OTA38vb3b0IM2eEca",
 
-    "object": "chat.completion.chunk",
-
-    "created": 1776470832,
-
     "model": "gpt-5.4-mini-2026-03-17",
+
+    "obfuscation": "PzgVOReUAMxsWxJ",
+
+    "object": "chat.completion.chunk",
 
     "service_tier": "default",
 
     "system_fingerprint": null,
 
+    "usage": null
+
+  },
+
+  {
+
     "choices": [
 
       {
-
-        "index": 0,
 
         "delta": {
 
@@ -5878,37 +5990,37 @@ Recursion is like solving a big problem by breaking it into smaller versions of 
 
         },
 
-        "finish_reason": null
+        "finish_reason": null,
+
+        "index": 0
 
       }
 
     ],
 
-    "usage": null,
-
-    "obfuscation": "7uj"
-
-  },
-
-  {
+    "created": 1776470832,
 
     "id": "chatcmpl-DVnVIJWPzCL8OTA38vb3b0IM2eEca",
 
-    "object": "chat.completion.chunk",
-
-    "created": 1776470832,
-
     "model": "gpt-5.4-mini-2026-03-17",
+
+    "obfuscation": "7uj",
+
+    "object": "chat.completion.chunk",
 
     "service_tier": "default",
 
     "system_fingerprint": null,
 
+    "usage": null
+
+  },
+
+  {
+
     "choices": [
 
       {
-
-        "index": 0,
 
         "delta": {
 
@@ -5916,37 +6028,37 @@ Recursion is like solving a big problem by breaking it into smaller versions of 
 
         },
 
-        "finish_reason": null
+        "finish_reason": null,
+
+        "index": 0
 
       }
 
     ],
 
-    "usage": null,
-
-    "obfuscation": "0HzL"
-
-  },
-
-  {
+    "created": 1776470832,
 
     "id": "chatcmpl-DVnVIJWPzCL8OTA38vb3b0IM2eEca",
 
-    "object": "chat.completion.chunk",
-
-    "created": 1776470832,
-
     "model": "gpt-5.4-mini-2026-03-17",
+
+    "obfuscation": "0HzL",
+
+    "object": "chat.completion.chunk",
 
     "service_tier": "default",
 
     "system_fingerprint": null,
 
+    "usage": null
+
+  },
+
+  {
+
     "choices": [
 
       {
-
-        "index": 0,
 
         "delta": {
 
@@ -5954,37 +6066,37 @@ Recursion is like solving a big problem by breaking it into smaller versions of 
 
         },
 
-        "finish_reason": null
+        "finish_reason": null,
+
+        "index": 0
 
       }
 
     ],
 
-    "usage": null,
-
-    "obfuscation": "gd6"
-
-  },
-
-  {
+    "created": 1776470832,
 
     "id": "chatcmpl-DVnVIJWPzCL8OTA38vb3b0IM2eEca",
 
-    "object": "chat.completion.chunk",
-
-    "created": 1776470832,
-
     "model": "gpt-5.4-mini-2026-03-17",
+
+    "obfuscation": "gd6",
+
+    "object": "chat.completion.chunk",
 
     "service_tier": "default",
 
     "system_fingerprint": null,
 
+    "usage": null
+
+  },
+
+  {
+
     "choices": [
 
       {
-
-        "index": 0,
 
         "delta": {
 
@@ -5992,37 +6104,37 @@ Recursion is like solving a big problem by breaking it into smaller versions of 
 
         },
 
-        "finish_reason": null
+        "finish_reason": null,
+
+        "index": 0
 
       }
 
     ],
 
-    "usage": null,
-
-    "obfuscation": "fXii"
-
-  },
-
-  {
+    "created": 1776470832,
 
     "id": "chatcmpl-DVnVIJWPzCL8OTA38vb3b0IM2eEca",
 
-    "object": "chat.completion.chunk",
-
-    "created": 1776470832,
-
     "model": "gpt-5.4-mini-2026-03-17",
+
+    "obfuscation": "fXii",
+
+    "object": "chat.completion.chunk",
 
     "service_tier": "default",
 
     "system_fingerprint": null,
 
+    "usage": null
+
+  },
+
+  {
+
     "choices": [
 
       {
-
-        "index": 0,
 
         "delta": {
 
@@ -6030,37 +6142,37 @@ Recursion is like solving a big problem by breaking it into smaller versions of 
 
         },
 
-        "finish_reason": null
+        "finish_reason": null,
+
+        "index": 0
 
       }
 
     ],
 
-    "usage": null,
-
-    "obfuscation": "MZE"
-
-  },
-
-  {
+    "created": 1776470832,
 
     "id": "chatcmpl-DVnVIJWPzCL8OTA38vb3b0IM2eEca",
 
-    "object": "chat.completion.chunk",
-
-    "created": 1776470832,
-
     "model": "gpt-5.4-mini-2026-03-17",
+
+    "obfuscation": "MZE",
+
+    "object": "chat.completion.chunk",
 
     "service_tier": "default",
 
     "system_fingerprint": null,
 
+    "usage": null
+
+  },
+
+  {
+
     "choices": [
 
       {
-
-        "index": 0,
 
         "delta": {
 
@@ -6068,37 +6180,37 @@ Recursion is like solving a big problem by breaking it into smaller versions of 
 
         },
 
-        "finish_reason": null
+        "finish_reason": null,
+
+        "index": 0
 
       }
 
     ],
 
-    "usage": null,
-
-    "obfuscation": "8o6k"
-
-  },
-
-  {
+    "created": 1776470832,
 
     "id": "chatcmpl-DVnVIJWPzCL8OTA38vb3b0IM2eEca",
 
-    "object": "chat.completion.chunk",
-
-    "created": 1776470832,
-
     "model": "gpt-5.4-mini-2026-03-17",
+
+    "obfuscation": "8o6k",
+
+    "object": "chat.completion.chunk",
 
     "service_tier": "default",
 
     "system_fingerprint": null,
 
+    "usage": null
+
+  },
+
+  {
+
     "choices": [
 
       {
-
-        "index": 0,
 
         "delta": {
 
@@ -6106,37 +6218,37 @@ Recursion is like solving a big problem by breaking it into smaller versions of 
 
         },
 
-        "finish_reason": null
+        "finish_reason": null,
+
+        "index": 0
 
       }
 
     ],
 
-    "usage": null,
-
-    "obfuscation": "i8a"
-
-  },
-
-  {
+    "created": 1776470832,
 
     "id": "chatcmpl-DVnVIJWPzCL8OTA38vb3b0IM2eEca",
 
-    "object": "chat.completion.chunk",
-
-    "created": 1776470832,
-
     "model": "gpt-5.4-mini-2026-03-17",
+
+    "obfuscation": "i8a",
+
+    "object": "chat.completion.chunk",
 
     "service_tier": "default",
 
     "system_fingerprint": null,
 
+    "usage": null
+
+  },
+
+  {
+
     "choices": [
 
       {
-
-        "index": 0,
 
         "delta": {
 
@@ -6144,37 +6256,37 @@ Recursion is like solving a big problem by breaking it into smaller versions of 
 
         },
 
-        "finish_reason": null
+        "finish_reason": null,
+
+        "index": 0
 
       }
 
     ],
 
-    "usage": null,
-
-    "obfuscation": "i"
-
-  },
-
-  {
+    "created": 1776470832,
 
     "id": "chatcmpl-DVnVIJWPzCL8OTA38vb3b0IM2eEca",
 
-    "object": "chat.completion.chunk",
-
-    "created": 1776470832,
-
     "model": "gpt-5.4-mini-2026-03-17",
+
+    "obfuscation": "i",
+
+    "object": "chat.completion.chunk",
 
     "service_tier": "default",
 
     "system_fingerprint": null,
 
+    "usage": null
+
+  },
+
+  {
+
     "choices": [
 
       {
-
-        "index": 0,
 
         "delta": {
 
@@ -6182,37 +6294,37 @@ Recursion is like solving a big problem by breaking it into smaller versions of 
 
         },
 
-        "finish_reason": null
+        "finish_reason": null,
+
+        "index": 0
 
       }
 
     ],
 
-    "usage": null,
-
-    "obfuscation": "Pk"
-
-  },
-
-  {
+    "created": 1776470832,
 
     "id": "chatcmpl-DVnVIJWPzCL8OTA38vb3b0IM2eEca",
 
-    "object": "chat.completion.chunk",
-
-    "created": 1776470832,
-
     "model": "gpt-5.4-mini-2026-03-17",
+
+    "obfuscation": "Pk",
+
+    "object": "chat.completion.chunk",
 
     "service_tier": "default",
 
     "system_fingerprint": null,
 
+    "usage": null
+
+  },
+
+  {
+
     "choices": [
 
       {
-
-        "index": 0,
 
         "delta": {
 
@@ -6220,37 +6332,37 @@ Recursion is like solving a big problem by breaking it into smaller versions of 
 
         },
 
-        "finish_reason": null
+        "finish_reason": null,
+
+        "index": 0
 
       }
 
     ],
 
-    "usage": null,
-
-    "obfuscation": "MhU"
-
-  },
-
-  {
+    "created": 1776470832,
 
     "id": "chatcmpl-DVnVIJWPzCL8OTA38vb3b0IM2eEca",
 
-    "object": "chat.completion.chunk",
-
-    "created": 1776470832,
-
     "model": "gpt-5.4-mini-2026-03-17",
+
+    "obfuscation": "MhU",
+
+    "object": "chat.completion.chunk",
 
     "service_tier": "default",
 
     "system_fingerprint": null,
 
+    "usage": null
+
+  },
+
+  {
+
     "choices": [
 
       {
-
-        "index": 0,
 
         "delta": {
 
@@ -6258,37 +6370,37 @@ Recursion is like solving a big problem by breaking it into smaller versions of 
 
         },
 
-        "finish_reason": null
+        "finish_reason": null,
+
+        "index": 0
 
       }
 
     ],
 
-    "usage": null,
-
-    "obfuscation": ""
-
-  },
-
-  {
+    "created": 1776470832,
 
     "id": "chatcmpl-DVnVIJWPzCL8OTA38vb3b0IM2eEca",
 
-    "object": "chat.completion.chunk",
-
-    "created": 1776470832,
-
     "model": "gpt-5.4-mini-2026-03-17",
+
+    "obfuscation": "",
+
+    "object": "chat.completion.chunk",
 
     "service_tier": "default",
 
     "system_fingerprint": null,
 
+    "usage": null
+
+  },
+
+  {
+
     "choices": [
 
       {
-
-        "index": 0,
 
         "delta": {
 
@@ -6296,37 +6408,37 @@ Recursion is like solving a big problem by breaking it into smaller versions of 
 
         },
 
-        "finish_reason": null
+        "finish_reason": null,
+
+        "index": 0
 
       }
 
     ],
 
-    "usage": null,
-
-    "obfuscation": "VL"
-
-  },
-
-  {
+    "created": 1776470832,
 
     "id": "chatcmpl-DVnVIJWPzCL8OTA38vb3b0IM2eEca",
 
-    "object": "chat.completion.chunk",
-
-    "created": 1776470832,
-
     "model": "gpt-5.4-mini-2026-03-17",
+
+    "obfuscation": "VL",
+
+    "object": "chat.completion.chunk",
 
     "service_tier": "default",
 
     "system_fingerprint": null,
 
+    "usage": null
+
+  },
+
+  {
+
     "choices": [
 
       {
-
-        "index": 0,
 
         "delta": {
 
@@ -6334,37 +6446,37 @@ Recursion is like solving a big problem by breaking it into smaller versions of 
 
         },
 
-        "finish_reason": null
+        "finish_reason": null,
+
+        "index": 0
 
       }
 
     ],
 
-    "usage": null,
-
-    "obfuscation": "h"
-
-  },
-
-  {
+    "created": 1776470832,
 
     "id": "chatcmpl-DVnVIJWPzCL8OTA38vb3b0IM2eEca",
 
-    "object": "chat.completion.chunk",
-
-    "created": 1776470832,
-
     "model": "gpt-5.4-mini-2026-03-17",
+
+    "obfuscation": "h",
+
+    "object": "chat.completion.chunk",
 
     "service_tier": "default",
 
     "system_fingerprint": null,
 
+    "usage": null
+
+  },
+
+  {
+
     "choices": [
 
       {
-
-        "index": 0,
 
         "delta": {
 
@@ -6372,37 +6484,37 @@ Recursion is like solving a big problem by breaking it into smaller versions of 
 
         },
 
-        "finish_reason": null
+        "finish_reason": null,
+
+        "index": 0
 
       }
 
     ],
 
-    "usage": null,
-
-    "obfuscation": "Up"
-
-  },
-
-  {
+    "created": 1776470832,
 
     "id": "chatcmpl-DVnVIJWPzCL8OTA38vb3b0IM2eEca",
 
-    "object": "chat.completion.chunk",
-
-    "created": 1776470832,
-
     "model": "gpt-5.4-mini-2026-03-17",
+
+    "obfuscation": "Up",
+
+    "object": "chat.completion.chunk",
 
     "service_tier": "default",
 
     "system_fingerprint": null,
 
+    "usage": null
+
+  },
+
+  {
+
     "choices": [
 
       {
-
-        "index": 0,
 
         "delta": {
 
@@ -6410,37 +6522,37 @@ Recursion is like solving a big problem by breaking it into smaller versions of 
 
         },
 
-        "finish_reason": null
+        "finish_reason": null,
+
+        "index": 0
 
       }
 
     ],
 
-    "usage": null,
-
-    "obfuscation": "R5Q2BhK9KG8XI3I"
-
-  },
-
-  {
+    "created": 1776470832,
 
     "id": "chatcmpl-DVnVIJWPzCL8OTA38vb3b0IM2eEca",
 
-    "object": "chat.completion.chunk",
-
-    "created": 1776470832,
-
     "model": "gpt-5.4-mini-2026-03-17",
+
+    "obfuscation": "R5Q2BhK9KG8XI3I",
+
+    "object": "chat.completion.chunk",
 
     "service_tier": "default",
 
     "system_fingerprint": null,
 
+    "usage": null
+
+  },
+
+  {
+
     "choices": [
 
       {
-
-        "index": 0,
 
         "delta": {
 
@@ -6448,37 +6560,37 @@ Recursion is like solving a big problem by breaking it into smaller versions of 
 
         },
 
-        "finish_reason": null
+        "finish_reason": null,
+
+        "index": 0
 
       }
 
     ],
 
-    "usage": null,
-
-    "obfuscation": "U5c"
-
-  },
-
-  {
+    "created": 1776470832,
 
     "id": "chatcmpl-DVnVIJWPzCL8OTA38vb3b0IM2eEca",
 
-    "object": "chat.completion.chunk",
-
-    "created": 1776470832,
-
     "model": "gpt-5.4-mini-2026-03-17",
+
+    "obfuscation": "U5c",
+
+    "object": "chat.completion.chunk",
 
     "service_tier": "default",
 
     "system_fingerprint": null,
 
+    "usage": null
+
+  },
+
+  {
+
     "choices": [
 
       {
-
-        "index": 0,
 
         "delta": {
 
@@ -6486,37 +6598,37 @@ Recursion is like solving a big problem by breaking it into smaller versions of 
 
         },
 
-        "finish_reason": null
+        "finish_reason": null,
+
+        "index": 0
 
       }
 
     ],
 
-    "usage": null,
-
-    "obfuscation": "g6Gd"
-
-  },
-
-  {
+    "created": 1776470832,
 
     "id": "chatcmpl-DVnVIJWPzCL8OTA38vb3b0IM2eEca",
 
-    "object": "chat.completion.chunk",
-
-    "created": 1776470832,
-
     "model": "gpt-5.4-mini-2026-03-17",
+
+    "obfuscation": "g6Gd",
+
+    "object": "chat.completion.chunk",
 
     "service_tier": "default",
 
     "system_fingerprint": null,
 
+    "usage": null
+
+  },
+
+  {
+
     "choices": [
 
       {
-
-        "index": 0,
 
         "delta": {
 
@@ -6524,37 +6636,37 @@ Recursion is like solving a big problem by breaking it into smaller versions of 
 
         },
 
-        "finish_reason": null
+        "finish_reason": null,
+
+        "index": 0
 
       }
 
     ],
 
-    "usage": null,
-
-    "obfuscation": "ro8"
-
-  },
-
-  {
+    "created": 1776470832,
 
     "id": "chatcmpl-DVnVIJWPzCL8OTA38vb3b0IM2eEca",
 
-    "object": "chat.completion.chunk",
-
-    "created": 1776470832,
-
     "model": "gpt-5.4-mini-2026-03-17",
+
+    "obfuscation": "ro8",
+
+    "object": "chat.completion.chunk",
 
     "service_tier": "default",
 
     "system_fingerprint": null,
 
+    "usage": null
+
+  },
+
+  {
+
     "choices": [
 
       {
-
-        "index": 0,
 
         "delta": {
 
@@ -6562,37 +6674,37 @@ Recursion is like solving a big problem by breaking it into smaller versions of 
 
         },
 
-        "finish_reason": null
+        "finish_reason": null,
+
+        "index": 0
 
       }
 
     ],
 
-    "usage": null,
-
-    "obfuscation": ""
-
-  },
-
-  {
+    "created": 1776470832,
 
     "id": "chatcmpl-DVnVIJWPzCL8OTA38vb3b0IM2eEca",
 
-    "object": "chat.completion.chunk",
-
-    "created": 1776470832,
-
     "model": "gpt-5.4-mini-2026-03-17",
+
+    "obfuscation": "",
+
+    "object": "chat.completion.chunk",
 
     "service_tier": "default",
 
     "system_fingerprint": null,
 
+    "usage": null
+
+  },
+
+  {
+
     "choices": [
 
       {
-
-        "index": 0,
 
         "delta": {
 
@@ -6600,37 +6712,37 @@ Recursion is like solving a big problem by breaking it into smaller versions of 
 
         },
 
-        "finish_reason": null
+        "finish_reason": null,
+
+        "index": 0
 
       }
 
     ],
 
-    "usage": null,
-
-    "obfuscation": "G"
-
-  },
-
-  {
+    "created": 1776470832,
 
     "id": "chatcmpl-DVnVIJWPzCL8OTA38vb3b0IM2eEca",
 
-    "object": "chat.completion.chunk",
-
-    "created": 1776470832,
-
     "model": "gpt-5.4-mini-2026-03-17",
+
+    "obfuscation": "G",
+
+    "object": "chat.completion.chunk",
 
     "service_tier": "default",
 
     "system_fingerprint": null,
 
+    "usage": null
+
+  },
+
+  {
+
     "choices": [
 
       {
-
-        "index": 0,
 
         "delta": {
 
@@ -6638,37 +6750,37 @@ Recursion is like solving a big problem by breaking it into smaller versions of 
 
         },
 
-        "finish_reason": null
+        "finish_reason": null,
+
+        "index": 0
 
       }
 
     ],
 
-    "usage": null,
-
-    "obfuscation": "eBE6"
-
-  },
-
-  {
+    "created": 1776470832,
 
     "id": "chatcmpl-DVnVIJWPzCL8OTA38vb3b0IM2eEca",
 
-    "object": "chat.completion.chunk",
-
-    "created": 1776470832,
-
     "model": "gpt-5.4-mini-2026-03-17",
+
+    "obfuscation": "eBE6",
+
+    "object": "chat.completion.chunk",
 
     "service_tier": "default",
 
     "system_fingerprint": null,
 
+    "usage": null
+
+  },
+
+  {
+
     "choices": [
 
       {
-
-        "index": 0,
 
         "delta": {
 
@@ -6676,37 +6788,37 @@ Recursion is like solving a big problem by breaking it into smaller versions of 
 
         },
 
-        "finish_reason": null
+        "finish_reason": null,
+
+        "index": 0
 
       }
 
     ],
 
-    "usage": null,
-
-    "obfuscation": "tmzr"
-
-  },
-
-  {
+    "created": 1776470832,
 
     "id": "chatcmpl-DVnVIJWPzCL8OTA38vb3b0IM2eEca",
 
-    "object": "chat.completion.chunk",
-
-    "created": 1776470832,
-
     "model": "gpt-5.4-mini-2026-03-17",
+
+    "obfuscation": "tmzr",
+
+    "object": "chat.completion.chunk",
 
     "service_tier": "default",
 
     "system_fingerprint": null,
 
+    "usage": null
+
+  },
+
+  {
+
     "choices": [
 
       {
-
-        "index": 0,
 
         "delta": {
 
@@ -6714,37 +6826,37 @@ Recursion is like solving a big problem by breaking it into smaller versions of 
 
         },
 
-        "finish_reason": null
+        "finish_reason": null,
+
+        "index": 0
 
       }
 
     ],
 
-    "usage": null,
-
-    "obfuscation": "W7w"
-
-  },
-
-  {
+    "created": 1776470832,
 
     "id": "chatcmpl-DVnVIJWPzCL8OTA38vb3b0IM2eEca",
 
-    "object": "chat.completion.chunk",
-
-    "created": 1776470832,
-
     "model": "gpt-5.4-mini-2026-03-17",
+
+    "obfuscation": "W7w",
+
+    "object": "chat.completion.chunk",
 
     "service_tier": "default",
 
     "system_fingerprint": null,
 
+    "usage": null
+
+  },
+
+  {
+
     "choices": [
 
       {
-
-        "index": 0,
 
         "delta": {
 
@@ -6752,37 +6864,37 @@ Recursion is like solving a big problem by breaking it into smaller versions of 
 
         },
 
-        "finish_reason": null
+        "finish_reason": null,
+
+        "index": 0
 
       }
 
     ],
 
-    "usage": null,
-
-    "obfuscation": "NIX4YHoaKoQ1Rh"
-
-  },
-
-  {
+    "created": 1776470832,
 
     "id": "chatcmpl-DVnVIJWPzCL8OTA38vb3b0IM2eEca",
 
-    "object": "chat.completion.chunk",
-
-    "created": 1776470832,
-
     "model": "gpt-5.4-mini-2026-03-17",
+
+    "obfuscation": "NIX4YHoaKoQ1Rh",
+
+    "object": "chat.completion.chunk",
 
     "service_tier": "default",
 
     "system_fingerprint": null,
 
+    "usage": null
+
+  },
+
+  {
+
     "choices": [
 
       {
-
-        "index": 0,
 
         "delta": {
 
@@ -6790,37 +6902,37 @@ Recursion is like solving a big problem by breaking it into smaller versions of 
 
         },
 
-        "finish_reason": null
+        "finish_reason": null,
+
+        "index": 0
 
       }
 
     ],
 
-    "usage": null,
-
-    "obfuscation": "AHQ"
-
-  },
-
-  {
+    "created": 1776470832,
 
     "id": "chatcmpl-DVnVIJWPzCL8OTA38vb3b0IM2eEca",
 
-    "object": "chat.completion.chunk",
-
-    "created": 1776470832,
-
     "model": "gpt-5.4-mini-2026-03-17",
+
+    "obfuscation": "AHQ",
+
+    "object": "chat.completion.chunk",
 
     "service_tier": "default",
 
     "system_fingerprint": null,
 
+    "usage": null
+
+  },
+
+  {
+
     "choices": [
 
       {
-
-        "index": 0,
 
         "delta": {
 
@@ -6828,37 +6940,37 @@ Recursion is like solving a big problem by breaking it into smaller versions of 
 
         },
 
-        "finish_reason": null
+        "finish_reason": null,
+
+        "index": 0
 
       }
 
     ],
 
-    "usage": null,
-
-    "obfuscation": "e3jE"
-
-  },
-
-  {
+    "created": 1776470832,
 
     "id": "chatcmpl-DVnVIJWPzCL8OTA38vb3b0IM2eEca",
 
-    "object": "chat.completion.chunk",
-
-    "created": 1776470832,
-
     "model": "gpt-5.4-mini-2026-03-17",
+
+    "obfuscation": "e3jE",
+
+    "object": "chat.completion.chunk",
 
     "service_tier": "default",
 
     "system_fingerprint": null,
 
+    "usage": null
+
+  },
+
+  {
+
     "choices": [
 
       {
-
-        "index": 0,
 
         "delta": {
 
@@ -6866,37 +6978,37 @@ Recursion is like solving a big problem by breaking it into smaller versions of 
 
         },
 
-        "finish_reason": null
+        "finish_reason": null,
+
+        "index": 0
 
       }
 
     ],
 
-    "usage": null,
-
-    "obfuscation": "cNK"
-
-  },
-
-  {
+    "created": 1776470832,
 
     "id": "chatcmpl-DVnVIJWPzCL8OTA38vb3b0IM2eEca",
 
-    "object": "chat.completion.chunk",
-
-    "created": 1776470832,
-
     "model": "gpt-5.4-mini-2026-03-17",
+
+    "obfuscation": "cNK",
+
+    "object": "chat.completion.chunk",
 
     "service_tier": "default",
 
     "system_fingerprint": null,
 
+    "usage": null
+
+  },
+
+  {
+
     "choices": [
 
       {
-
-        "index": 0,
 
         "delta": {
 
@@ -6904,37 +7016,37 @@ Recursion is like solving a big problem by breaking it into smaller versions of 
 
         },
 
-        "finish_reason": null
+        "finish_reason": null,
+
+        "index": 0
 
       }
 
     ],
 
-    "usage": null,
-
-    "obfuscation": ""
-
-  },
-
-  {
+    "created": 1776470832,
 
     "id": "chatcmpl-DVnVIJWPzCL8OTA38vb3b0IM2eEca",
 
-    "object": "chat.completion.chunk",
-
-    "created": 1776470832,
-
     "model": "gpt-5.4-mini-2026-03-17",
+
+    "obfuscation": "",
+
+    "object": "chat.completion.chunk",
 
     "service_tier": "default",
 
     "system_fingerprint": null,
 
+    "usage": null
+
+  },
+
+  {
+
     "choices": [
 
       {
-
-        "index": 0,
 
         "delta": {
 
@@ -6942,37 +7054,37 @@ Recursion is like solving a big problem by breaking it into smaller versions of 
 
         },
 
-        "finish_reason": null
+        "finish_reason": null,
+
+        "index": 0
 
       }
 
     ],
 
-    "usage": null,
-
-    "obfuscation": "jSA95eRcI8OdheI"
-
-  },
-
-  {
+    "created": 1776470832,
 
     "id": "chatcmpl-DVnVIJWPzCL8OTA38vb3b0IM2eEca",
 
-    "object": "chat.completion.chunk",
-
-    "created": 1776470832,
-
     "model": "gpt-5.4-mini-2026-03-17",
+
+    "obfuscation": "jSA95eRcI8OdheI",
+
+    "object": "chat.completion.chunk",
 
     "service_tier": "default",
 
     "system_fingerprint": null,
 
+    "usage": null
+
+  },
+
+  {
+
     "choices": [
 
       {
-
-        "index": 0,
 
         "delta": {
 
@@ -6980,37 +7092,37 @@ Recursion is like solving a big problem by breaking it into smaller versions of 
 
         },
 
-        "finish_reason": null
+        "finish_reason": null,
+
+        "index": 0
 
       }
 
     ],
 
-    "usage": null,
-
-    "obfuscation": "5Jv"
-
-  },
-
-  {
+    "created": 1776470832,
 
     "id": "chatcmpl-DVnVIJWPzCL8OTA38vb3b0IM2eEca",
 
-    "object": "chat.completion.chunk",
-
-    "created": 1776470832,
-
     "model": "gpt-5.4-mini-2026-03-17",
+
+    "obfuscation": "5Jv",
+
+    "object": "chat.completion.chunk",
 
     "service_tier": "default",
 
     "system_fingerprint": null,
 
+    "usage": null
+
+  },
+
+  {
+
     "choices": [
 
       {
-
-        "index": 0,
 
         "delta": {
 
@@ -7018,37 +7130,37 @@ Recursion is like solving a big problem by breaking it into smaller versions of 
 
         },
 
-        "finish_reason": null
+        "finish_reason": null,
+
+        "index": 0
 
       }
 
     ],
 
-    "usage": null,
-
-    "obfuscation": ""
-
-  },
-
-  {
+    "created": 1776470832,
 
     "id": "chatcmpl-DVnVIJWPzCL8OTA38vb3b0IM2eEca",
 
-    "object": "chat.completion.chunk",
-
-    "created": 1776470832,
-
     "model": "gpt-5.4-mini-2026-03-17",
+
+    "obfuscation": "",
+
+    "object": "chat.completion.chunk",
 
     "service_tier": "default",
 
     "system_fingerprint": null,
 
+    "usage": null
+
+  },
+
+  {
+
     "choices": [
 
       {
-
-        "index": 0,
 
         "delta": {
 
@@ -7056,37 +7168,37 @@ Recursion is like solving a big problem by breaking it into smaller versions of 
 
         },
 
-        "finish_reason": null
+        "finish_reason": null,
+
+        "index": 0
 
       }
 
     ],
 
-    "usage": null,
-
-    "obfuscation": "q"
-
-  },
-
-  {
+    "created": 1776470832,
 
     "id": "chatcmpl-DVnVIJWPzCL8OTA38vb3b0IM2eEca",
 
-    "object": "chat.completion.chunk",
-
-    "created": 1776470832,
-
     "model": "gpt-5.4-mini-2026-03-17",
+
+    "obfuscation": "q",
+
+    "object": "chat.completion.chunk",
 
     "service_tier": "default",
 
     "system_fingerprint": null,
 
+    "usage": null
+
+  },
+
+  {
+
     "choices": [
 
       {
-
-        "index": 0,
 
         "delta": {
 
@@ -7094,37 +7206,37 @@ Recursion is like solving a big problem by breaking it into smaller versions of 
 
         },
 
-        "finish_reason": null
+        "finish_reason": null,
+
+        "index": 0
 
       }
 
     ],
 
-    "usage": null,
-
-    "obfuscation": "oMZZ"
-
-  },
-
-  {
+    "created": 1776470832,
 
     "id": "chatcmpl-DVnVIJWPzCL8OTA38vb3b0IM2eEca",
 
-    "object": "chat.completion.chunk",
-
-    "created": 1776470832,
-
     "model": "gpt-5.4-mini-2026-03-17",
+
+    "obfuscation": "oMZZ",
+
+    "object": "chat.completion.chunk",
 
     "service_tier": "default",
 
     "system_fingerprint": null,
 
+    "usage": null
+
+  },
+
+  {
+
     "choices": [
 
       {
-
-        "index": 0,
 
         "delta": {
 
@@ -7132,37 +7244,37 @@ Recursion is like solving a big problem by breaking it into smaller versions of 
 
         },
 
-        "finish_reason": null
+        "finish_reason": null,
+
+        "index": 0
 
       }
 
     ],
 
-    "usage": null,
-
-    "obfuscation": "8aW5"
-
-  },
-
-  {
+    "created": 1776470832,
 
     "id": "chatcmpl-DVnVIJWPzCL8OTA38vb3b0IM2eEca",
 
-    "object": "chat.completion.chunk",
-
-    "created": 1776470832,
-
     "model": "gpt-5.4-mini-2026-03-17",
+
+    "obfuscation": "8aW5",
+
+    "object": "chat.completion.chunk",
 
     "service_tier": "default",
 
     "system_fingerprint": null,
 
+    "usage": null
+
+  },
+
+  {
+
     "choices": [
 
       {
-
-        "index": 0,
 
         "delta": {
 
@@ -7170,37 +7282,37 @@ Recursion is like solving a big problem by breaking it into smaller versions of 
 
         },
 
-        "finish_reason": null
+        "finish_reason": null,
+
+        "index": 0
 
       }
 
     ],
 
-    "usage": null,
-
-    "obfuscation": "r"
-
-  },
-
-  {
+    "created": 1776470832,
 
     "id": "chatcmpl-DVnVIJWPzCL8OTA38vb3b0IM2eEca",
 
-    "object": "chat.completion.chunk",
-
-    "created": 1776470832,
-
     "model": "gpt-5.4-mini-2026-03-17",
+
+    "obfuscation": "r",
+
+    "object": "chat.completion.chunk",
 
     "service_tier": "default",
 
     "system_fingerprint": null,
 
+    "usage": null
+
+  },
+
+  {
+
     "choices": [
 
       {
-
-        "index": 0,
 
         "delta": {
 
@@ -7208,37 +7320,37 @@ Recursion is like solving a big problem by breaking it into smaller versions of 
 
         },
 
-        "finish_reason": null
+        "finish_reason": null,
+
+        "index": 0
 
       }
 
     ],
 
-    "usage": null,
-
-    "obfuscation": "auA0"
-
-  },
-
-  {
+    "created": 1776470832,
 
     "id": "chatcmpl-DVnVIJWPzCL8OTA38vb3b0IM2eEca",
 
-    "object": "chat.completion.chunk",
-
-    "created": 1776470832,
-
     "model": "gpt-5.4-mini-2026-03-17",
+
+    "obfuscation": "auA0",
+
+    "object": "chat.completion.chunk",
 
     "service_tier": "default",
 
     "system_fingerprint": null,
 
+    "usage": null
+
+  },
+
+  {
+
     "choices": [
 
       {
-
-        "index": 0,
 
         "delta": {
 
@@ -7246,37 +7358,37 @@ Recursion is like solving a big problem by breaking it into smaller versions of 
 
         },
 
-        "finish_reason": null
+        "finish_reason": null,
+
+        "index": 0
 
       }
 
     ],
 
-    "usage": null,
-
-    "obfuscation": "go8"
-
-  },
-
-  {
+    "created": 1776470832,
 
     "id": "chatcmpl-DVnVIJWPzCL8OTA38vb3b0IM2eEca",
 
-    "object": "chat.completion.chunk",
-
-    "created": 1776470832,
-
     "model": "gpt-5.4-mini-2026-03-17",
+
+    "obfuscation": "go8",
+
+    "object": "chat.completion.chunk",
 
     "service_tier": "default",
 
     "system_fingerprint": null,
 
+    "usage": null
+
+  },
+
+  {
+
     "choices": [
 
       {
-
-        "index": 0,
 
         "delta": {
 
@@ -7284,37 +7396,37 @@ Recursion is like solving a big problem by breaking it into smaller versions of 
 
         },
 
-        "finish_reason": null
+        "finish_reason": null,
+
+        "index": 0
 
       }
 
     ],
 
-    "usage": null,
-
-    "obfuscation": ""
-
-  },
-
-  {
+    "created": 1776470832,
 
     "id": "chatcmpl-DVnVIJWPzCL8OTA38vb3b0IM2eEca",
 
-    "object": "chat.completion.chunk",
-
-    "created": 1776470832,
-
     "model": "gpt-5.4-mini-2026-03-17",
+
+    "obfuscation": "",
+
+    "object": "chat.completion.chunk",
 
     "service_tier": "default",
 
     "system_fingerprint": null,
 
+    "usage": null
+
+  },
+
+  {
+
     "choices": [
 
       {
-
-        "index": 0,
 
         "delta": {
 
@@ -7322,37 +7434,37 @@ Recursion is like solving a big problem by breaking it into smaller versions of 
 
         },
 
-        "finish_reason": null
+        "finish_reason": null,
+
+        "index": 0
 
       }
 
     ],
 
-    "usage": null,
-
-    "obfuscation": "N"
-
-  },
-
-  {
+    "created": 1776470832,
 
     "id": "chatcmpl-DVnVIJWPzCL8OTA38vb3b0IM2eEca",
 
-    "object": "chat.completion.chunk",
-
-    "created": 1776470832,
-
     "model": "gpt-5.4-mini-2026-03-17",
+
+    "obfuscation": "N",
+
+    "object": "chat.completion.chunk",
 
     "service_tier": "default",
 
     "system_fingerprint": null,
 
+    "usage": null
+
+  },
+
+  {
+
     "choices": [
 
       {
-
-        "index": 0,
 
         "delta": {
 
@@ -7360,37 +7472,37 @@ Recursion is like solving a big problem by breaking it into smaller versions of 
 
         },
 
-        "finish_reason": null
+        "finish_reason": null,
+
+        "index": 0
 
       }
 
     ],
 
-    "usage": null,
-
-    "obfuscation": "2S7d"
-
-  },
-
-  {
+    "created": 1776470832,
 
     "id": "chatcmpl-DVnVIJWPzCL8OTA38vb3b0IM2eEca",
 
-    "object": "chat.completion.chunk",
-
-    "created": 1776470832,
-
     "model": "gpt-5.4-mini-2026-03-17",
+
+    "obfuscation": "2S7d",
+
+    "object": "chat.completion.chunk",
 
     "service_tier": "default",
 
     "system_fingerprint": null,
 
+    "usage": null
+
+  },
+
+  {
+
     "choices": [
 
       {
-
-        "index": 0,
 
         "delta": {
 
@@ -7398,37 +7510,37 @@ Recursion is like solving a big problem by breaking it into smaller versions of 
 
         },
 
-        "finish_reason": null
+        "finish_reason": null,
+
+        "index": 0
 
       }
 
     ],
 
-    "usage": null,
-
-    "obfuscation": "OPrl"
-
-  },
-
-  {
+    "created": 1776470832,
 
     "id": "chatcmpl-DVnVIJWPzCL8OTA38vb3b0IM2eEca",
 
-    "object": "chat.completion.chunk",
-
-    "created": 1776470832,
-
     "model": "gpt-5.4-mini-2026-03-17",
+
+    "obfuscation": "OPrl",
+
+    "object": "chat.completion.chunk",
 
     "service_tier": "default",
 
     "system_fingerprint": null,
 
+    "usage": null
+
+  },
+
+  {
+
     "choices": [
 
       {
-
-        "index": 0,
 
         "delta": {
 
@@ -7436,37 +7548,37 @@ Recursion is like solving a big problem by breaking it into smaller versions of 
 
         },
 
-        "finish_reason": null
+        "finish_reason": null,
+
+        "index": 0
 
       }
 
     ],
 
-    "usage": null,
-
-    "obfuscation": "HbN"
-
-  },
-
-  {
+    "created": 1776470832,
 
     "id": "chatcmpl-DVnVIJWPzCL8OTA38vb3b0IM2eEca",
 
-    "object": "chat.completion.chunk",
-
-    "created": 1776470832,
-
     "model": "gpt-5.4-mini-2026-03-17",
+
+    "obfuscation": "HbN",
+
+    "object": "chat.completion.chunk",
 
     "service_tier": "default",
 
     "system_fingerprint": null,
 
+    "usage": null
+
+  },
+
+  {
+
     "choices": [
 
       {
-
-        "index": 0,
 
         "delta": {
 
@@ -7474,37 +7586,37 @@ Recursion is like solving a big problem by breaking it into smaller versions of 
 
         },
 
-        "finish_reason": null
+        "finish_reason": null,
+
+        "index": 0
 
       }
 
     ],
 
-    "usage": null,
-
-    "obfuscation": "Ajil8fBT6WWL9X"
-
-  },
-
-  {
+    "created": 1776470832,
 
     "id": "chatcmpl-DVnVIJWPzCL8OTA38vb3b0IM2eEca",
 
-    "object": "chat.completion.chunk",
-
-    "created": 1776470832,
-
     "model": "gpt-5.4-mini-2026-03-17",
+
+    "obfuscation": "Ajil8fBT6WWL9X",
+
+    "object": "chat.completion.chunk",
 
     "service_tier": "default",
 
     "system_fingerprint": null,
 
+    "usage": null
+
+  },
+
+  {
+
     "choices": [
 
       {
-
-        "index": 0,
 
         "delta": {
 
@@ -7512,37 +7624,37 @@ Recursion is like solving a big problem by breaking it into smaller versions of 
 
         },
 
-        "finish_reason": null
+        "finish_reason": null,
+
+        "index": 0
 
       }
 
     ],
 
-    "usage": null,
-
-    "obfuscation": "IYb"
-
-  },
-
-  {
+    "created": 1776470832,
 
     "id": "chatcmpl-DVnVIJWPzCL8OTA38vb3b0IM2eEca",
 
-    "object": "chat.completion.chunk",
-
-    "created": 1776470832,
-
     "model": "gpt-5.4-mini-2026-03-17",
+
+    "obfuscation": "IYb",
+
+    "object": "chat.completion.chunk",
 
     "service_tier": "default",
 
     "system_fingerprint": null,
 
+    "usage": null
+
+  },
+
+  {
+
     "choices": [
 
       {
-
-        "index": 0,
 
         "delta": {
 
@@ -7550,37 +7662,37 @@ Recursion is like solving a big problem by breaking it into smaller versions of 
 
         },
 
-        "finish_reason": null
+        "finish_reason": null,
+
+        "index": 0
 
       }
 
     ],
 
-    "usage": null,
-
-    "obfuscation": "V0bC"
-
-  },
-
-  {
+    "created": 1776470832,
 
     "id": "chatcmpl-DVnVIJWPzCL8OTA38vb3b0IM2eEca",
 
-    "object": "chat.completion.chunk",
-
-    "created": 1776470832,
-
     "model": "gpt-5.4-mini-2026-03-17",
+
+    "obfuscation": "V0bC",
+
+    "object": "chat.completion.chunk",
 
     "service_tier": "default",
 
     "system_fingerprint": null,
 
+    "usage": null
+
+  },
+
+  {
+
     "choices": [
 
       {
-
-        "index": 0,
 
         "delta": {
 
@@ -7588,37 +7700,37 @@ Recursion is like solving a big problem by breaking it into smaller versions of 
 
         },
 
-        "finish_reason": null
+        "finish_reason": null,
+
+        "index": 0
 
       }
 
     ],
 
-    "usage": null,
-
-    "obfuscation": "rXM"
-
-  },
-
-  {
+    "created": 1776470832,
 
     "id": "chatcmpl-DVnVIJWPzCL8OTA38vb3b0IM2eEca",
 
-    "object": "chat.completion.chunk",
-
-    "created": 1776470832,
-
     "model": "gpt-5.4-mini-2026-03-17",
+
+    "obfuscation": "rXM",
+
+    "object": "chat.completion.chunk",
 
     "service_tier": "default",
 
     "system_fingerprint": null,
 
+    "usage": null
+
+  },
+
+  {
+
     "choices": [
 
       {
-
-        "index": 0,
 
         "delta": {
 
@@ -7626,37 +7738,37 @@ Recursion is like solving a big problem by breaking it into smaller versions of 
 
         },
 
-        "finish_reason": null
+        "finish_reason": null,
+
+        "index": 0
 
       }
 
     ],
 
-    "usage": null,
-
-    "obfuscation": ""
-
-  },
-
-  {
+    "created": 1776470832,
 
     "id": "chatcmpl-DVnVIJWPzCL8OTA38vb3b0IM2eEca",
 
-    "object": "chat.completion.chunk",
-
-    "created": 1776470832,
-
     "model": "gpt-5.4-mini-2026-03-17",
+
+    "obfuscation": "",
+
+    "object": "chat.completion.chunk",
 
     "service_tier": "default",
 
     "system_fingerprint": null,
 
+    "usage": null
+
+  },
+
+  {
+
     "choices": [
 
       {
-
-        "index": 0,
 
         "delta": {
 
@@ -7664,37 +7776,37 @@ Recursion is like solving a big problem by breaking it into smaller versions of 
 
         },
 
-        "finish_reason": null
+        "finish_reason": null,
+
+        "index": 0
 
       }
 
     ],
 
-    "usage": null,
-
-    "obfuscation": "BDvA75Qb6x5O3g1"
-
-  },
-
-  {
+    "created": 1776470832,
 
     "id": "chatcmpl-DVnVIJWPzCL8OTA38vb3b0IM2eEca",
 
-    "object": "chat.completion.chunk",
-
-    "created": 1776470832,
-
     "model": "gpt-5.4-mini-2026-03-17",
+
+    "obfuscation": "BDvA75Qb6x5O3g1",
+
+    "object": "chat.completion.chunk",
 
     "service_tier": "default",
 
     "system_fingerprint": null,
 
+    "usage": null
+
+  },
+
+  {
+
     "choices": [
 
       {
-
-        "index": 0,
 
         "delta": {
 
@@ -7702,37 +7814,37 @@ Recursion is like solving a big problem by breaking it into smaller versions of 
 
         },
 
-        "finish_reason": null
+        "finish_reason": null,
+
+        "index": 0
 
       }
 
     ],
 
-    "usage": null,
-
-    "obfuscation": "HkN"
-
-  },
-
-  {
+    "created": 1776470832,
 
     "id": "chatcmpl-DVnVIJWPzCL8OTA38vb3b0IM2eEca",
 
-    "object": "chat.completion.chunk",
-
-    "created": 1776470832,
-
     "model": "gpt-5.4-mini-2026-03-17",
+
+    "obfuscation": "HkN",
+
+    "object": "chat.completion.chunk",
 
     "service_tier": "default",
 
     "system_fingerprint": null,
 
+    "usage": null
+
+  },
+
+  {
+
     "choices": [
 
       {
-
-        "index": 0,
 
         "delta": {
 
@@ -7740,37 +7852,37 @@ Recursion is like solving a big problem by breaking it into smaller versions of 
 
         },
 
-        "finish_reason": null
+        "finish_reason": null,
+
+        "index": 0
 
       }
 
     ],
 
-    "usage": null,
-
-    "obfuscation": ""
-
-  },
-
-  {
+    "created": 1776470832,
 
     "id": "chatcmpl-DVnVIJWPzCL8OTA38vb3b0IM2eEca",
 
-    "object": "chat.completion.chunk",
-
-    "created": 1776470832,
-
     "model": "gpt-5.4-mini-2026-03-17",
+
+    "obfuscation": "",
+
+    "object": "chat.completion.chunk",
 
     "service_tier": "default",
 
     "system_fingerprint": null,
 
+    "usage": null
+
+  },
+
+  {
+
     "choices": [
 
       {
-
-        "index": 0,
 
         "delta": {
 
@@ -7778,37 +7890,37 @@ Recursion is like solving a big problem by breaking it into smaller versions of 
 
         },
 
-        "finish_reason": null
+        "finish_reason": null,
+
+        "index": 0
 
       }
 
     ],
 
-    "usage": null,
-
-    "obfuscation": "o"
-
-  },
-
-  {
+    "created": 1776470832,
 
     "id": "chatcmpl-DVnVIJWPzCL8OTA38vb3b0IM2eEca",
 
-    "object": "chat.completion.chunk",
-
-    "created": 1776470832,
-
     "model": "gpt-5.4-mini-2026-03-17",
+
+    "obfuscation": "o",
+
+    "object": "chat.completion.chunk",
 
     "service_tier": "default",
 
     "system_fingerprint": null,
 
+    "usage": null
+
+  },
+
+  {
+
     "choices": [
 
       {
-
-        "index": 0,
 
         "delta": {
 
@@ -7816,37 +7928,37 @@ Recursion is like solving a big problem by breaking it into smaller versions of 
 
         },
 
-        "finish_reason": null
+        "finish_reason": null,
+
+        "index": 0
 
       }
 
     ],
 
-    "usage": null,
-
-    "obfuscation": "QaOC"
-
-  },
-
-  {
+    "created": 1776470832,
 
     "id": "chatcmpl-DVnVIJWPzCL8OTA38vb3b0IM2eEca",
 
-    "object": "chat.completion.chunk",
-
-    "created": 1776470832,
-
     "model": "gpt-5.4-mini-2026-03-17",
+
+    "obfuscation": "QaOC",
+
+    "object": "chat.completion.chunk",
 
     "service_tier": "default",
 
     "system_fingerprint": null,
 
+    "usage": null
+
+  },
+
+  {
+
     "choices": [
 
       {
-
-        "index": 0,
 
         "delta": {
 
@@ -7854,37 +7966,37 @@ Recursion is like solving a big problem by breaking it into smaller versions of 
 
         },
 
-        "finish_reason": null
+        "finish_reason": null,
+
+        "index": 0
 
       }
 
     ],
 
-    "usage": null,
-
-    "obfuscation": "183U"
-
-  },
-
-  {
+    "created": 1776470832,
 
     "id": "chatcmpl-DVnVIJWPzCL8OTA38vb3b0IM2eEca",
 
-    "object": "chat.completion.chunk",
-
-    "created": 1776470832,
-
     "model": "gpt-5.4-mini-2026-03-17",
+
+    "obfuscation": "183U",
+
+    "object": "chat.completion.chunk",
 
     "service_tier": "default",
 
     "system_fingerprint": null,
 
+    "usage": null
+
+  },
+
+  {
+
     "choices": [
 
       {
-
-        "index": 0,
 
         "delta": {
 
@@ -7892,37 +8004,37 @@ Recursion is like solving a big problem by breaking it into smaller versions of 
 
         },
 
-        "finish_reason": null
+        "finish_reason": null,
+
+        "index": 0
 
       }
 
     ],
 
-    "usage": null,
-
-    "obfuscation": "F"
-
-  },
-
-  {
+    "created": 1776470832,
 
     "id": "chatcmpl-DVnVIJWPzCL8OTA38vb3b0IM2eEca",
 
-    "object": "chat.completion.chunk",
-
-    "created": 1776470832,
-
     "model": "gpt-5.4-mini-2026-03-17",
+
+    "obfuscation": "F",
+
+    "object": "chat.completion.chunk",
 
     "service_tier": "default",
 
     "system_fingerprint": null,
 
+    "usage": null
+
+  },
+
+  {
+
     "choices": [
 
       {
-
-        "index": 0,
 
         "delta": {
 
@@ -7930,37 +8042,37 @@ Recursion is like solving a big problem by breaking it into smaller versions of 
 
         },
 
-        "finish_reason": null
+        "finish_reason": null,
+
+        "index": 0
 
       }
 
     ],
 
-    "usage": null,
-
-    "obfuscation": "Gpk9"
-
-  },
-
-  {
+    "created": 1776470832,
 
     "id": "chatcmpl-DVnVIJWPzCL8OTA38vb3b0IM2eEca",
 
-    "object": "chat.completion.chunk",
-
-    "created": 1776470832,
-
     "model": "gpt-5.4-mini-2026-03-17",
+
+    "obfuscation": "Gpk9",
+
+    "object": "chat.completion.chunk",
 
     "service_tier": "default",
 
     "system_fingerprint": null,
 
+    "usage": null
+
+  },
+
+  {
+
     "choices": [
 
       {
-
-        "index": 0,
 
         "delta": {
 
@@ -7968,37 +8080,37 @@ Recursion is like solving a big problem by breaking it into smaller versions of 
 
         },
 
-        "finish_reason": null
+        "finish_reason": null,
+
+        "index": 0
 
       }
 
     ],
 
-    "usage": null,
-
-    "obfuscation": "vqQ"
-
-  },
-
-  {
+    "created": 1776470832,
 
     "id": "chatcmpl-DVnVIJWPzCL8OTA38vb3b0IM2eEca",
 
-    "object": "chat.completion.chunk",
-
-    "created": 1776470832,
-
     "model": "gpt-5.4-mini-2026-03-17",
+
+    "obfuscation": "vqQ",
+
+    "object": "chat.completion.chunk",
 
     "service_tier": "default",
 
     "system_fingerprint": null,
 
+    "usage": null
+
+  },
+
+  {
+
     "choices": [
 
       {
-
-        "index": 0,
 
         "delta": {
 
@@ -8006,37 +8118,37 @@ Recursion is like solving a big problem by breaking it into smaller versions of 
 
         },
 
-        "finish_reason": null
+        "finish_reason": null,
+
+        "index": 0
 
       }
 
     ],
 
-    "usage": null,
-
-    "obfuscation": ""
-
-  },
-
-  {
+    "created": 1776470832,
 
     "id": "chatcmpl-DVnVIJWPzCL8OTA38vb3b0IM2eEca",
 
-    "object": "chat.completion.chunk",
-
-    "created": 1776470832,
-
     "model": "gpt-5.4-mini-2026-03-17",
+
+    "obfuscation": "",
+
+    "object": "chat.completion.chunk",
 
     "service_tier": "default",
 
     "system_fingerprint": null,
 
+    "usage": null
+
+  },
+
+  {
+
     "choices": [
 
       {
-
-        "index": 0,
 
         "delta": {
 
@@ -8044,37 +8156,37 @@ Recursion is like solving a big problem by breaking it into smaller versions of 
 
         },
 
-        "finish_reason": null
+        "finish_reason": null,
+
+        "index": 0
 
       }
 
     ],
 
-    "usage": null,
-
-    "obfuscation": "B"
-
-  },
-
-  {
+    "created": 1776470832,
 
     "id": "chatcmpl-DVnVIJWPzCL8OTA38vb3b0IM2eEca",
 
-    "object": "chat.completion.chunk",
-
-    "created": 1776470832,
-
     "model": "gpt-5.4-mini-2026-03-17",
+
+    "obfuscation": "B",
+
+    "object": "chat.completion.chunk",
 
     "service_tier": "default",
 
     "system_fingerprint": null,
 
+    "usage": null
+
+  },
+
+  {
+
     "choices": [
 
       {
-
-        "index": 0,
 
         "delta": {
 
@@ -8082,37 +8194,37 @@ Recursion is like solving a big problem by breaking it into smaller versions of 
 
         },
 
-        "finish_reason": null
+        "finish_reason": null,
+
+        "index": 0
 
       }
 
     ],
 
-    "usage": null,
-
-    "obfuscation": "a2U4"
-
-  },
-
-  {
+    "created": 1776470832,
 
     "id": "chatcmpl-DVnVIJWPzCL8OTA38vb3b0IM2eEca",
 
-    "object": "chat.completion.chunk",
-
-    "created": 1776470832,
-
     "model": "gpt-5.4-mini-2026-03-17",
+
+    "obfuscation": "a2U4",
+
+    "object": "chat.completion.chunk",
 
     "service_tier": "default",
 
     "system_fingerprint": null,
 
+    "usage": null
+
+  },
+
+  {
+
     "choices": [
 
       {
-
-        "index": 0,
 
         "delta": {
 
@@ -8120,37 +8232,37 @@ Recursion is like solving a big problem by breaking it into smaller versions of 
 
         },
 
-        "finish_reason": null
+        "finish_reason": null,
+
+        "index": 0
 
       }
 
     ],
 
-    "usage": null,
-
-    "obfuscation": "uymI"
-
-  },
-
-  {
+    "created": 1776470832,
 
     "id": "chatcmpl-DVnVIJWPzCL8OTA38vb3b0IM2eEca",
 
-    "object": "chat.completion.chunk",
-
-    "created": 1776470832,
-
     "model": "gpt-5.4-mini-2026-03-17",
+
+    "obfuscation": "uymI",
+
+    "object": "chat.completion.chunk",
 
     "service_tier": "default",
 
     "system_fingerprint": null,
 
+    "usage": null
+
+  },
+
+  {
+
     "choices": [
 
       {
-
-        "index": 0,
 
         "delta": {
 
@@ -8158,37 +8270,37 @@ Recursion is like solving a big problem by breaking it into smaller versions of 
 
         },
 
-        "finish_reason": null
+        "finish_reason": null,
+
+        "index": 0
 
       }
 
     ],
 
-    "usage": null,
-
-    "obfuscation": "2h6"
-
-  },
-
-  {
+    "created": 1776470832,
 
     "id": "chatcmpl-DVnVIJWPzCL8OTA38vb3b0IM2eEca",
 
-    "object": "chat.completion.chunk",
-
-    "created": 1776470832,
-
     "model": "gpt-5.4-mini-2026-03-17",
+
+    "obfuscation": "2h6",
+
+    "object": "chat.completion.chunk",
 
     "service_tier": "default",
 
     "system_fingerprint": null,
 
+    "usage": null
+
+  },
+
+  {
+
     "choices": [
 
       {
-
-        "index": 0,
 
         "delta": {
 
@@ -8196,37 +8308,37 @@ Recursion is like solving a big problem by breaking it into smaller versions of 
 
         },
 
-        "finish_reason": null
+        "finish_reason": null,
+
+        "index": 0
 
       }
 
     ],
 
-    "usage": null,
-
-    "obfuscation": "re42K6JXmllWYL"
-
-  },
-
-  {
+    "created": 1776470832,
 
     "id": "chatcmpl-DVnVIJWPzCL8OTA38vb3b0IM2eEca",
 
-    "object": "chat.completion.chunk",
-
-    "created": 1776470832,
-
     "model": "gpt-5.4-mini-2026-03-17",
+
+    "obfuscation": "re42K6JXmllWYL",
+
+    "object": "chat.completion.chunk",
 
     "service_tier": "default",
 
     "system_fingerprint": null,
 
+    "usage": null
+
+  },
+
+  {
+
     "choices": [
 
       {
-
-        "index": 0,
 
         "delta": {
 
@@ -8234,37 +8346,37 @@ Recursion is like solving a big problem by breaking it into smaller versions of 
 
         },
 
-        "finish_reason": null
+        "finish_reason": null,
+
+        "index": 0
 
       }
 
     ],
 
-    "usage": null,
-
-    "obfuscation": "3uN"
-
-  },
-
-  {
+    "created": 1776470832,
 
     "id": "chatcmpl-DVnVIJWPzCL8OTA38vb3b0IM2eEca",
 
-    "object": "chat.completion.chunk",
-
-    "created": 1776470832,
-
     "model": "gpt-5.4-mini-2026-03-17",
+
+    "obfuscation": "3uN",
+
+    "object": "chat.completion.chunk",
 
     "service_tier": "default",
 
     "system_fingerprint": null,
 
+    "usage": null
+
+  },
+
+  {
+
     "choices": [
 
       {
-
-        "index": 0,
 
         "delta": {
 
@@ -8272,37 +8384,37 @@ Recursion is like solving a big problem by breaking it into smaller versions of 
 
         },
 
-        "finish_reason": null
+        "finish_reason": null,
+
+        "index": 0
 
       }
 
     ],
 
-    "usage": null,
-
-    "obfuscation": "Gs1h"
-
-  },
-
-  {
+    "created": 1776470832,
 
     "id": "chatcmpl-DVnVIJWPzCL8OTA38vb3b0IM2eEca",
 
-    "object": "chat.completion.chunk",
-
-    "created": 1776470832,
-
     "model": "gpt-5.4-mini-2026-03-17",
+
+    "obfuscation": "Gs1h",
+
+    "object": "chat.completion.chunk",
 
     "service_tier": "default",
 
     "system_fingerprint": null,
 
+    "usage": null
+
+  },
+
+  {
+
     "choices": [
 
       {
-
-        "index": 0,
 
         "delta": {
 
@@ -8310,37 +8422,37 @@ Recursion is like solving a big problem by breaking it into smaller versions of 
 
         },
 
-        "finish_reason": null
+        "finish_reason": null,
+
+        "index": 0
 
       }
 
     ],
 
-    "usage": null,
-
-    "obfuscation": "ZuO"
-
-  },
-
-  {
+    "created": 1776470832,
 
     "id": "chatcmpl-DVnVIJWPzCL8OTA38vb3b0IM2eEca",
 
-    "object": "chat.completion.chunk",
-
-    "created": 1776470832,
-
     "model": "gpt-5.4-mini-2026-03-17",
+
+    "obfuscation": "ZuO",
+
+    "object": "chat.completion.chunk",
 
     "service_tier": "default",
 
     "system_fingerprint": null,
 
+    "usage": null
+
+  },
+
+  {
+
     "choices": [
 
       {
-
-        "index": 0,
 
         "delta": {
 
@@ -8348,37 +8460,37 @@ Recursion is like solving a big problem by breaking it into smaller versions of 
 
         },
 
-        "finish_reason": null
+        "finish_reason": null,
+
+        "index": 0
 
       }
 
     ],
 
-    "usage": null,
-
-    "obfuscation": ""
-
-  },
-
-  {
+    "created": 1776470832,
 
     "id": "chatcmpl-DVnVIJWPzCL8OTA38vb3b0IM2eEca",
 
-    "object": "chat.completion.chunk",
-
-    "created": 1776470832,
-
     "model": "gpt-5.4-mini-2026-03-17",
+
+    "obfuscation": "",
+
+    "object": "chat.completion.chunk",
 
     "service_tier": "default",
 
     "system_fingerprint": null,
 
+    "usage": null
+
+  },
+
+  {
+
     "choices": [
 
       {
-
-        "index": 0,
 
         "delta": {
 
@@ -8386,37 +8498,37 @@ Recursion is like solving a big problem by breaking it into smaller versions of 
 
         },
 
-        "finish_reason": null
+        "finish_reason": null,
+
+        "index": 0
 
       }
 
     ],
 
-    "usage": null,
-
-    "obfuscation": "iWHIfUQvSbltiA3"
-
-  },
-
-  {
+    "created": 1776470832,
 
     "id": "chatcmpl-DVnVIJWPzCL8OTA38vb3b0IM2eEca",
 
-    "object": "chat.completion.chunk",
-
-    "created": 1776470832,
-
     "model": "gpt-5.4-mini-2026-03-17",
+
+    "obfuscation": "iWHIfUQvSbltiA3",
+
+    "object": "chat.completion.chunk",
 
     "service_tier": "default",
 
     "system_fingerprint": null,
 
+    "usage": null
+
+  },
+
+  {
+
     "choices": [
 
       {
-
-        "index": 0,
 
         "delta": {
 
@@ -8424,37 +8536,37 @@ Recursion is like solving a big problem by breaking it into smaller versions of 
 
         },
 
-        "finish_reason": null
+        "finish_reason": null,
+
+        "index": 0
 
       }
 
     ],
 
-    "usage": null,
-
-    "obfuscation": "wRI"
-
-  },
-
-  {
+    "created": 1776470832,
 
     "id": "chatcmpl-DVnVIJWPzCL8OTA38vb3b0IM2eEca",
 
-    "object": "chat.completion.chunk",
-
-    "created": 1776470832,
-
     "model": "gpt-5.4-mini-2026-03-17",
+
+    "obfuscation": "wRI",
+
+    "object": "chat.completion.chunk",
 
     "service_tier": "default",
 
     "system_fingerprint": null,
 
+    "usage": null
+
+  },
+
+  {
+
     "choices": [
 
       {
-
-        "index": 0,
 
         "delta": {
 
@@ -8462,37 +8574,37 @@ Recursion is like solving a big problem by breaking it into smaller versions of 
 
         },
 
-        "finish_reason": null
+        "finish_reason": null,
+
+        "index": 0
 
       }
 
     ],
 
-    "usage": null,
-
-    "obfuscation": ""
-
-  },
-
-  {
+    "created": 1776470832,
 
     "id": "chatcmpl-DVnVIJWPzCL8OTA38vb3b0IM2eEca",
 
-    "object": "chat.completion.chunk",
-
-    "created": 1776470832,
-
     "model": "gpt-5.4-mini-2026-03-17",
+
+    "obfuscation": "",
+
+    "object": "chat.completion.chunk",
 
     "service_tier": "default",
 
     "system_fingerprint": null,
 
+    "usage": null
+
+  },
+
+  {
+
     "choices": [
 
       {
-
-        "index": 0,
 
         "delta": {
 
@@ -8500,37 +8612,37 @@ Recursion is like solving a big problem by breaking it into smaller versions of 
 
         },
 
-        "finish_reason": null
+        "finish_reason": null,
+
+        "index": 0
 
       }
 
     ],
 
-    "usage": null,
-
-    "obfuscation": "o"
-
-  },
-
-  {
+    "created": 1776470832,
 
     "id": "chatcmpl-DVnVIJWPzCL8OTA38vb3b0IM2eEca",
 
-    "object": "chat.completion.chunk",
-
-    "created": 1776470832,
-
     "model": "gpt-5.4-mini-2026-03-17",
+
+    "obfuscation": "o",
+
+    "object": "chat.completion.chunk",
 
     "service_tier": "default",
 
     "system_fingerprint": null,
 
+    "usage": null
+
+  },
+
+  {
+
     "choices": [
 
       {
-
-        "index": 0,
 
         "delta": {
 
@@ -8538,37 +8650,37 @@ Recursion is like solving a big problem by breaking it into smaller versions of 
 
         },
 
-        "finish_reason": null
+        "finish_reason": null,
+
+        "index": 0
 
       }
 
     ],
 
-    "usage": null,
-
-    "obfuscation": "xNs0"
-
-  },
-
-  {
+    "created": 1776470832,
 
     "id": "chatcmpl-DVnVIJWPzCL8OTA38vb3b0IM2eEca",
 
-    "object": "chat.completion.chunk",
-
-    "created": 1776470832,
-
     "model": "gpt-5.4-mini-2026-03-17",
+
+    "obfuscation": "xNs0",
+
+    "object": "chat.completion.chunk",
 
     "service_tier": "default",
 
     "system_fingerprint": null,
 
+    "usage": null
+
+  },
+
+  {
+
     "choices": [
 
       {
-
-        "index": 0,
 
         "delta": {
 
@@ -8576,37 +8688,37 @@ Recursion is like solving a big problem by breaking it into smaller versions of 
 
         },
 
-        "finish_reason": null
+        "finish_reason": null,
+
+        "index": 0
 
       }
 
     ],
 
-    "usage": null,
-
-    "obfuscation": "CNFG"
-
-  },
-
-  {
+    "created": 1776470832,
 
     "id": "chatcmpl-DVnVIJWPzCL8OTA38vb3b0IM2eEca",
 
-    "object": "chat.completion.chunk",
-
-    "created": 1776470832,
-
     "model": "gpt-5.4-mini-2026-03-17",
+
+    "obfuscation": "CNFG",
+
+    "object": "chat.completion.chunk",
 
     "service_tier": "default",
 
     "system_fingerprint": null,
 
+    "usage": null
+
+  },
+
+  {
+
     "choices": [
 
       {
-
-        "index": 0,
 
         "delta": {
 
@@ -8614,37 +8726,37 @@ Recursion is like solving a big problem by breaking it into smaller versions of 
 
         },
 
-        "finish_reason": null
+        "finish_reason": null,
+
+        "index": 0
 
       }
 
     ],
 
-    "usage": null,
-
-    "obfuscation": "B"
-
-  },
-
-  {
+    "created": 1776470832,
 
     "id": "chatcmpl-DVnVIJWPzCL8OTA38vb3b0IM2eEca",
 
-    "object": "chat.completion.chunk",
-
-    "created": 1776470832,
-
     "model": "gpt-5.4-mini-2026-03-17",
+
+    "obfuscation": "B",
+
+    "object": "chat.completion.chunk",
 
     "service_tier": "default",
 
     "system_fingerprint": null,
 
+    "usage": null
+
+  },
+
+  {
+
     "choices": [
 
       {
-
-        "index": 0,
 
         "delta": {
 
@@ -8652,37 +8764,37 @@ Recursion is like solving a big problem by breaking it into smaller versions of 
 
         },
 
-        "finish_reason": null
+        "finish_reason": null,
+
+        "index": 0
 
       }
 
     ],
 
-    "usage": null,
-
-    "obfuscation": "abMe"
-
-  },
-
-  {
+    "created": 1776470832,
 
     "id": "chatcmpl-DVnVIJWPzCL8OTA38vb3b0IM2eEca",
 
-    "object": "chat.completion.chunk",
-
-    "created": 1776470832,
-
     "model": "gpt-5.4-mini-2026-03-17",
+
+    "obfuscation": "abMe",
+
+    "object": "chat.completion.chunk",
 
     "service_tier": "default",
 
     "system_fingerprint": null,
 
+    "usage": null
+
+  },
+
+  {
+
     "choices": [
 
       {
-
-        "index": 0,
 
         "delta": {
 
@@ -8690,37 +8802,37 @@ Recursion is like solving a big problem by breaking it into smaller versions of 
 
         },
 
-        "finish_reason": null
+        "finish_reason": null,
+
+        "index": 0
 
       }
 
     ],
 
-    "usage": null,
-
-    "obfuscation": "MYD"
-
-  },
-
-  {
+    "created": 1776470832,
 
     "id": "chatcmpl-DVnVIJWPzCL8OTA38vb3b0IM2eEca",
 
-    "object": "chat.completion.chunk",
-
-    "created": 1776470832,
-
     "model": "gpt-5.4-mini-2026-03-17",
+
+    "obfuscation": "MYD",
+
+    "object": "chat.completion.chunk",
 
     "service_tier": "default",
 
     "system_fingerprint": null,
 
+    "usage": null
+
+  },
+
+  {
+
     "choices": [
 
       {
-
-        "index": 0,
 
         "delta": {
 
@@ -8728,37 +8840,37 @@ Recursion is like solving a big problem by breaking it into smaller versions of 
 
         },
 
-        "finish_reason": null
+        "finish_reason": null,
+
+        "index": 0
 
       }
 
     ],
 
-    "usage": null,
-
-    "obfuscation": ""
-
-  },
-
-  {
+    "created": 1776470832,
 
     "id": "chatcmpl-DVnVIJWPzCL8OTA38vb3b0IM2eEca",
 
-    "object": "chat.completion.chunk",
-
-    "created": 1776470832,
-
     "model": "gpt-5.4-mini-2026-03-17",
+
+    "obfuscation": "",
+
+    "object": "chat.completion.chunk",
 
     "service_tier": "default",
 
     "system_fingerprint": null,
 
+    "usage": null
+
+  },
+
+  {
+
     "choices": [
 
       {
-
-        "index": 0,
 
         "delta": {
 
@@ -8766,37 +8878,37 @@ Recursion is like solving a big problem by breaking it into smaller versions of 
 
         },
 
-        "finish_reason": null
+        "finish_reason": null,
+
+        "index": 0
 
       }
 
     ],
 
-    "usage": null,
-
-    "obfuscation": "m"
-
-  },
-
-  {
+    "created": 1776470832,
 
     "id": "chatcmpl-DVnVIJWPzCL8OTA38vb3b0IM2eEca",
 
-    "object": "chat.completion.chunk",
-
-    "created": 1776470832,
-
     "model": "gpt-5.4-mini-2026-03-17",
+
+    "obfuscation": "m",
+
+    "object": "chat.completion.chunk",
 
     "service_tier": "default",
 
     "system_fingerprint": null,
 
+    "usage": null
+
+  },
+
+  {
+
     "choices": [
 
       {
-
-        "index": 0,
 
         "delta": {
 
@@ -8804,37 +8916,37 @@ Recursion is like solving a big problem by breaking it into smaller versions of 
 
         },
 
-        "finish_reason": null
+        "finish_reason": null,
+
+        "index": 0
 
       }
 
     ],
 
-    "usage": null,
-
-    "obfuscation": "Cmx0"
-
-  },
-
-  {
+    "created": 1776470832,
 
     "id": "chatcmpl-DVnVIJWPzCL8OTA38vb3b0IM2eEca",
 
-    "object": "chat.completion.chunk",
-
-    "created": 1776470832,
-
     "model": "gpt-5.4-mini-2026-03-17",
+
+    "obfuscation": "Cmx0",
+
+    "object": "chat.completion.chunk",
 
     "service_tier": "default",
 
     "system_fingerprint": null,
 
+    "usage": null
+
+  },
+
+  {
+
     "choices": [
 
       {
-
-        "index": 0,
 
         "delta": {
 
@@ -8842,37 +8954,37 @@ Recursion is like solving a big problem by breaking it into smaller versions of 
 
         },
 
-        "finish_reason": null
+        "finish_reason": null,
+
+        "index": 0
 
       }
 
     ],
 
-    "usage": null,
-
-    "obfuscation": "I6jy"
-
-  },
-
-  {
+    "created": 1776470832,
 
     "id": "chatcmpl-DVnVIJWPzCL8OTA38vb3b0IM2eEca",
 
-    "object": "chat.completion.chunk",
-
-    "created": 1776470832,
-
     "model": "gpt-5.4-mini-2026-03-17",
+
+    "obfuscation": "I6jy",
+
+    "object": "chat.completion.chunk",
 
     "service_tier": "default",
 
     "system_fingerprint": null,
 
+    "usage": null
+
+  },
+
+  {
+
     "choices": [
 
       {
-
-        "index": 0,
 
         "delta": {
 
@@ -8880,37 +8992,37 @@ Recursion is like solving a big problem by breaking it into smaller versions of 
 
         },
 
-        "finish_reason": null
+        "finish_reason": null,
+
+        "index": 0
 
       }
 
     ],
 
-    "usage": null,
-
-    "obfuscation": "bqD"
-
-  },
-
-  {
+    "created": 1776470832,
 
     "id": "chatcmpl-DVnVIJWPzCL8OTA38vb3b0IM2eEca",
 
-    "object": "chat.completion.chunk",
-
-    "created": 1776470832,
-
     "model": "gpt-5.4-mini-2026-03-17",
+
+    "obfuscation": "bqD",
+
+    "object": "chat.completion.chunk",
 
     "service_tier": "default",
 
     "system_fingerprint": null,
 
+    "usage": null
+
+  },
+
+  {
+
     "choices": [
 
       {
-
-        "index": 0,
 
         "delta": {
 
@@ -8918,37 +9030,37 @@ Recursion is like solving a big problem by breaking it into smaller versions of 
 
         },
 
-        "finish_reason": null
+        "finish_reason": null,
+
+        "index": 0
 
       }
 
     ],
 
-    "usage": null,
-
-    "obfuscation": "yOLLx3pF6QJry"
-
-  },
-
-  {
+    "created": 1776470832,
 
     "id": "chatcmpl-DVnVIJWPzCL8OTA38vb3b0IM2eEca",
 
-    "object": "chat.completion.chunk",
-
-    "created": 1776470832,
-
     "model": "gpt-5.4-mini-2026-03-17",
+
+    "obfuscation": "yOLLx3pF6QJry",
+
+    "object": "chat.completion.chunk",
 
     "service_tier": "default",
 
     "system_fingerprint": null,
 
+    "usage": null
+
+  },
+
+  {
+
     "choices": [
 
       {
-
-        "index": 0,
 
         "delta": {
 
@@ -8956,37 +9068,37 @@ Recursion is like solving a big problem by breaking it into smaller versions of 
 
         },
 
-        "finish_reason": null
+        "finish_reason": null,
+
+        "index": 0
 
       }
 
     ],
 
-    "usage": null,
-
-    "obfuscation": "X"
-
-  },
-
-  {
+    "created": 1776470832,
 
     "id": "chatcmpl-DVnVIJWPzCL8OTA38vb3b0IM2eEca",
 
-    "object": "chat.completion.chunk",
-
-    "created": 1776470832,
-
     "model": "gpt-5.4-mini-2026-03-17",
+
+    "obfuscation": "X",
+
+    "object": "chat.completion.chunk",
 
     "service_tier": "default",
 
     "system_fingerprint": null,
 
+    "usage": null
+
+  },
+
+  {
+
     "choices": [
 
       {
-
-        "index": 0,
 
         "delta": {
 
@@ -8994,37 +9106,37 @@ Recursion is like solving a big problem by breaking it into smaller versions of 
 
         },
 
-        "finish_reason": null
+        "finish_reason": null,
+
+        "index": 0
 
       }
 
     ],
 
-    "usage": null,
-
-    "obfuscation": ""
-
-  },
-
-  {
+    "created": 1776470832,
 
     "id": "chatcmpl-DVnVIJWPzCL8OTA38vb3b0IM2eEca",
 
-    "object": "chat.completion.chunk",
-
-    "created": 1776470832,
-
     "model": "gpt-5.4-mini-2026-03-17",
+
+    "obfuscation": "",
+
+    "object": "chat.completion.chunk",
 
     "service_tier": "default",
 
     "system_fingerprint": null,
 
+    "usage": null
+
+  },
+
+  {
+
     "choices": [
 
       {
-
-        "index": 0,
 
         "delta": {
 
@@ -9032,37 +9144,37 @@ Recursion is like solving a big problem by breaking it into smaller versions of 
 
         },
 
-        "finish_reason": null
+        "finish_reason": null,
+
+        "index": 0
 
       }
 
     ],
 
-    "usage": null,
-
-    "obfuscation": ""
-
-  },
-
-  {
+    "created": 1776470832,
 
     "id": "chatcmpl-DVnVIJWPzCL8OTA38vb3b0IM2eEca",
 
-    "object": "chat.completion.chunk",
-
-    "created": 1776470832,
-
     "model": "gpt-5.4-mini-2026-03-17",
+
+    "obfuscation": "",
+
+    "object": "chat.completion.chunk",
 
     "service_tier": "default",
 
     "system_fingerprint": null,
 
+    "usage": null
+
+  },
+
+  {
+
     "choices": [
 
       {
-
-        "index": 0,
 
         "delta": {
 
@@ -9070,37 +9182,37 @@ Recursion is like solving a big problem by breaking it into smaller versions of 
 
         },
 
-        "finish_reason": null
+        "finish_reason": null,
+
+        "index": 0
 
       }
 
     ],
 
-    "usage": null,
-
-    "obfuscation": "b"
-
-  },
-
-  {
+    "created": 1776470832,
 
     "id": "chatcmpl-DVnVIJWPzCL8OTA38vb3b0IM2eEca",
 
-    "object": "chat.completion.chunk",
-
-    "created": 1776470832,
-
     "model": "gpt-5.4-mini-2026-03-17",
+
+    "obfuscation": "b",
+
+    "object": "chat.completion.chunk",
 
     "service_tier": "default",
 
     "system_fingerprint": null,
 
+    "usage": null
+
+  },
+
+  {
+
     "choices": [
 
       {
-
-        "index": 0,
 
         "delta": {
 
@@ -9108,37 +9220,37 @@ Recursion is like solving a big problem by breaking it into smaller versions of 
 
         },
 
-        "finish_reason": null
+        "finish_reason": null,
+
+        "index": 0
 
       }
 
     ],
 
-    "usage": null,
-
-    "obfuscation": "z1MC0JkG7mM9NFh"
-
-  },
-
-  {
+    "created": 1776470832,
 
     "id": "chatcmpl-DVnVIJWPzCL8OTA38vb3b0IM2eEca",
 
-    "object": "chat.completion.chunk",
-
-    "created": 1776470832,
-
     "model": "gpt-5.4-mini-2026-03-17",
+
+    "obfuscation": "z1MC0JkG7mM9NFh",
+
+    "object": "chat.completion.chunk",
 
     "service_tier": "default",
 
     "system_fingerprint": null,
 
+    "usage": null
+
+  },
+
+  {
+
     "choices": [
 
       {
-
-        "index": 0,
 
         "delta": {
 
@@ -9146,37 +9258,37 @@ Recursion is like solving a big problem by breaking it into smaller versions of 
 
         },
 
-        "finish_reason": null
+        "finish_reason": null,
+
+        "index": 0
 
       }
 
     ],
 
-    "usage": null,
-
-    "obfuscation": "Y"
-
-  },
-
-  {
+    "created": 1776470832,
 
     "id": "chatcmpl-DVnVIJWPzCL8OTA38vb3b0IM2eEca",
 
-    "object": "chat.completion.chunk",
-
-    "created": 1776470832,
-
     "model": "gpt-5.4-mini-2026-03-17",
+
+    "obfuscation": "Y",
+
+    "object": "chat.completion.chunk",
 
     "service_tier": "default",
 
     "system_fingerprint": null,
 
+    "usage": null
+
+  },
+
+  {
+
     "choices": [
 
       {
-
-        "index": 0,
 
         "delta": {
 
@@ -9184,37 +9296,37 @@ Recursion is like solving a big problem by breaking it into smaller versions of 
 
         },
 
-        "finish_reason": null
+        "finish_reason": null,
+
+        "index": 0
 
       }
 
     ],
 
-    "usage": null,
-
-    "obfuscation": "rX"
-
-  },
-
-  {
+    "created": 1776470832,
 
     "id": "chatcmpl-DVnVIJWPzCL8OTA38vb3b0IM2eEca",
 
-    "object": "chat.completion.chunk",
-
-    "created": 1776470832,
-
     "model": "gpt-5.4-mini-2026-03-17",
+
+    "obfuscation": "rX",
+
+    "object": "chat.completion.chunk",
 
     "service_tier": "default",
 
     "system_fingerprint": null,
 
+    "usage": null
+
+  },
+
+  {
+
     "choices": [
 
       {
-
-        "index": 0,
 
         "delta": {
 
@@ -9222,37 +9334,37 @@ Recursion is like solving a big problem by breaking it into smaller versions of 
 
         },
 
-        "finish_reason": null
+        "finish_reason": null,
+
+        "index": 0
 
       }
 
     ],
 
-    "usage": null,
-
-    "obfuscation": "N8"
-
-  },
-
-  {
+    "created": 1776470832,
 
     "id": "chatcmpl-DVnVIJWPzCL8OTA38vb3b0IM2eEca",
 
-    "object": "chat.completion.chunk",
-
-    "created": 1776470832,
-
     "model": "gpt-5.4-mini-2026-03-17",
+
+    "obfuscation": "N8",
+
+    "object": "chat.completion.chunk",
 
     "service_tier": "default",
 
     "system_fingerprint": null,
 
+    "usage": null
+
+  },
+
+  {
+
     "choices": [
 
       {
-
-        "index": 0,
 
         "delta": {
 
@@ -9260,37 +9372,37 @@ Recursion is like solving a big problem by breaking it into smaller versions of 
 
         },
 
-        "finish_reason": null
+        "finish_reason": null,
+
+        "index": 0
 
       }
 
     ],
 
-    "usage": null,
-
-    "obfuscation": "HIxpxLiOw4IRzpi"
-
-  },
-
-  {
+    "created": 1776470832,
 
     "id": "chatcmpl-DVnVIJWPzCL8OTA38vb3b0IM2eEca",
 
-    "object": "chat.completion.chunk",
-
-    "created": 1776470832,
-
     "model": "gpt-5.4-mini-2026-03-17",
+
+    "obfuscation": "HIxpxLiOw4IRzpi",
+
+    "object": "chat.completion.chunk",
 
     "service_tier": "default",
 
     "system_fingerprint": null,
 
+    "usage": null
+
+  },
+
+  {
+
     "choices": [
 
       {
-
-        "index": 0,
 
         "delta": {
 
@@ -9298,37 +9410,37 @@ Recursion is like solving a big problem by breaking it into smaller versions of 
 
         },
 
-        "finish_reason": null
+        "finish_reason": null,
+
+        "index": 0
 
       }
 
     ],
 
-    "usage": null,
-
-    "obfuscation": "g7s"
-
-  },
-
-  {
+    "created": 1776470832,
 
     "id": "chatcmpl-DVnVIJWPzCL8OTA38vb3b0IM2eEca",
 
-    "object": "chat.completion.chunk",
-
-    "created": 1776470832,
-
     "model": "gpt-5.4-mini-2026-03-17",
+
+    "obfuscation": "g7s",
+
+    "object": "chat.completion.chunk",
 
     "service_tier": "default",
 
     "system_fingerprint": null,
 
+    "usage": null
+
+  },
+
+  {
+
     "choices": [
 
       {
-
-        "index": 0,
 
         "delta": {
 
@@ -9336,37 +9448,37 @@ Recursion is like solving a big problem by breaking it into smaller versions of 
 
         },
 
-        "finish_reason": null
+        "finish_reason": null,
+
+        "index": 0
 
       }
 
     ],
 
-    "usage": null,
-
-    "obfuscation": "WU"
-
-  },
-
-  {
+    "created": 1776470832,
 
     "id": "chatcmpl-DVnVIJWPzCL8OTA38vb3b0IM2eEca",
 
-    "object": "chat.completion.chunk",
-
-    "created": 1776470832,
-
     "model": "gpt-5.4-mini-2026-03-17",
+
+    "obfuscation": "WU",
+
+    "object": "chat.completion.chunk",
 
     "service_tier": "default",
 
     "system_fingerprint": null,
 
+    "usage": null
+
+  },
+
+  {
+
     "choices": [
 
       {
-
-        "index": 0,
 
         "delta": {
 
@@ -9374,37 +9486,37 @@ Recursion is like solving a big problem by breaking it into smaller versions of 
 
         },
 
-        "finish_reason": null
+        "finish_reason": null,
+
+        "index": 0
 
       }
 
     ],
 
-    "usage": null,
-
-    "obfuscation": "JTiiv8pkFPdt8jH"
-
-  },
-
-  {
+    "created": 1776470832,
 
     "id": "chatcmpl-DVnVIJWPzCL8OTA38vb3b0IM2eEca",
 
-    "object": "chat.completion.chunk",
-
-    "created": 1776470832,
-
     "model": "gpt-5.4-mini-2026-03-17",
+
+    "obfuscation": "JTiiv8pkFPdt8jH",
+
+    "object": "chat.completion.chunk",
 
     "service_tier": "default",
 
     "system_fingerprint": null,
 
+    "usage": null
+
+  },
+
+  {
+
     "choices": [
 
       {
-
-        "index": 0,
 
         "delta": {
 
@@ -9412,37 +9524,37 @@ Recursion is like solving a big problem by breaking it into smaller versions of 
 
         },
 
-        "finish_reason": null
+        "finish_reason": null,
+
+        "index": 0
 
       }
 
     ],
 
-    "usage": null,
-
-    "obfuscation": "yU"
-
-  },
-
-  {
+    "created": 1776470832,
 
     "id": "chatcmpl-DVnVIJWPzCL8OTA38vb3b0IM2eEca",
 
-    "object": "chat.completion.chunk",
-
-    "created": 1776470832,
-
     "model": "gpt-5.4-mini-2026-03-17",
+
+    "obfuscation": "yU",
+
+    "object": "chat.completion.chunk",
 
     "service_tier": "default",
 
     "system_fingerprint": null,
 
+    "usage": null
+
+  },
+
+  {
+
     "choices": [
 
       {
-
-        "index": 0,
 
         "delta": {
 
@@ -9450,37 +9562,37 @@ Recursion is like solving a big problem by breaking it into smaller versions of 
 
         },
 
-        "finish_reason": null
+        "finish_reason": null,
+
+        "index": 0
 
       }
 
     ],
 
-    "usage": null,
-
-    "obfuscation": ""
-
-  },
-
-  {
+    "created": 1776470832,
 
     "id": "chatcmpl-DVnVIJWPzCL8OTA38vb3b0IM2eEca",
 
-    "object": "chat.completion.chunk",
-
-    "created": 1776470832,
-
     "model": "gpt-5.4-mini-2026-03-17",
+
+    "obfuscation": "",
+
+    "object": "chat.completion.chunk",
 
     "service_tier": "default",
 
     "system_fingerprint": null,
 
+    "usage": null
+
+  },
+
+  {
+
     "choices": [
 
       {
-
-        "index": 0,
 
         "delta": {
 
@@ -9488,37 +9600,37 @@ Recursion is like solving a big problem by breaking it into smaller versions of 
 
         },
 
-        "finish_reason": null
+        "finish_reason": null,
+
+        "index": 0
 
       }
 
     ],
 
-    "usage": null,
-
-    "obfuscation": "KXrtPef9zh9AR"
-
-  },
-
-  {
+    "created": 1776470832,
 
     "id": "chatcmpl-DVnVIJWPzCL8OTA38vb3b0IM2eEca",
 
-    "object": "chat.completion.chunk",
-
-    "created": 1776470832,
-
     "model": "gpt-5.4-mini-2026-03-17",
+
+    "obfuscation": "KXrtPef9zh9AR",
+
+    "object": "chat.completion.chunk",
 
     "service_tier": "default",
 
     "system_fingerprint": null,
 
+    "usage": null
+
+  },
+
+  {
+
     "choices": [
 
       {
-
-        "index": 0,
 
         "delta": {
 
@@ -9526,37 +9638,37 @@ Recursion is like solving a big problem by breaking it into smaller versions of 
 
         },
 
-        "finish_reason": null
+        "finish_reason": null,
+
+        "index": 0
 
       }
 
     ],
 
-    "usage": null,
-
-    "obfuscation": "APU"
-
-  },
-
-  {
+    "created": 1776470832,
 
     "id": "chatcmpl-DVnVIJWPzCL8OTA38vb3b0IM2eEca",
 
-    "object": "chat.completion.chunk",
-
-    "created": 1776470832,
-
     "model": "gpt-5.4-mini-2026-03-17",
+
+    "obfuscation": "APU",
+
+    "object": "chat.completion.chunk",
 
     "service_tier": "default",
 
     "system_fingerprint": null,
 
+    "usage": null
+
+  },
+
+  {
+
     "choices": [
 
       {
-
-        "index": 0,
 
         "delta": {
 
@@ -9564,37 +9676,37 @@ Recursion is like solving a big problem by breaking it into smaller versions of 
 
         },
 
-        "finish_reason": null
+        "finish_reason": null,
+
+        "index": 0
 
       }
 
     ],
 
-    "usage": null,
-
-    "obfuscation": "2"
-
-  },
-
-  {
+    "created": 1776470832,
 
     "id": "chatcmpl-DVnVIJWPzCL8OTA38vb3b0IM2eEca",
 
-    "object": "chat.completion.chunk",
-
-    "created": 1776470832,
-
     "model": "gpt-5.4-mini-2026-03-17",
+
+    "obfuscation": "2",
+
+    "object": "chat.completion.chunk",
 
     "service_tier": "default",
 
     "system_fingerprint": null,
 
+    "usage": null
+
+  },
+
+  {
+
     "choices": [
 
       {
-
-        "index": 0,
 
         "delta": {
 
@@ -9602,37 +9714,37 @@ Recursion is like solving a big problem by breaking it into smaller versions of 
 
         },
 
-        "finish_reason": null
+        "finish_reason": null,
+
+        "index": 0
 
       }
 
     ],
 
-    "usage": null,
-
-    "obfuscation": "RFzaPT9LSn3Vl"
-
-  },
-
-  {
+    "created": 1776470832,
 
     "id": "chatcmpl-DVnVIJWPzCL8OTA38vb3b0IM2eEca",
 
-    "object": "chat.completion.chunk",
-
-    "created": 1776470832,
-
     "model": "gpt-5.4-mini-2026-03-17",
+
+    "obfuscation": "RFzaPT9LSn3Vl",
+
+    "object": "chat.completion.chunk",
 
     "service_tier": "default",
 
     "system_fingerprint": null,
 
+    "usage": null
+
+  },
+
+  {
+
     "choices": [
 
       {
-
-        "index": 0,
 
         "delta": {
 
@@ -9640,37 +9752,37 @@ Recursion is like solving a big problem by breaking it into smaller versions of 
 
         },
 
-        "finish_reason": null
+        "finish_reason": null,
+
+        "index": 0
 
       }
 
     ],
 
-    "usage": null,
-
-    "obfuscation": "ty"
-
-  },
-
-  {
+    "created": 1776470832,
 
     "id": "chatcmpl-DVnVIJWPzCL8OTA38vb3b0IM2eEca",
 
-    "object": "chat.completion.chunk",
-
-    "created": 1776470832,
-
     "model": "gpt-5.4-mini-2026-03-17",
+
+    "obfuscation": "ty",
+
+    "object": "chat.completion.chunk",
 
     "service_tier": "default",
 
     "system_fingerprint": null,
 
+    "usage": null
+
+  },
+
+  {
+
     "choices": [
 
       {
-
-        "index": 0,
 
         "delta": {
 
@@ -9678,37 +9790,37 @@ Recursion is like solving a big problem by breaking it into smaller versions of 
 
         },
 
-        "finish_reason": null
+        "finish_reason": null,
+
+        "index": 0
 
       }
 
     ],
 
-    "usage": null,
-
-    "obfuscation": "D1dEDMF72LHc"
-
-  },
-
-  {
+    "created": 1776470832,
 
     "id": "chatcmpl-DVnVIJWPzCL8OTA38vb3b0IM2eEca",
 
-    "object": "chat.completion.chunk",
-
-    "created": 1776470832,
-
     "model": "gpt-5.4-mini-2026-03-17",
+
+    "obfuscation": "D1dEDMF72LHc",
+
+    "object": "chat.completion.chunk",
 
     "service_tier": "default",
 
     "system_fingerprint": null,
 
+    "usage": null
+
+  },
+
+  {
+
     "choices": [
 
       {
-
-        "index": 0,
 
         "delta": {
 
@@ -9716,37 +9828,37 @@ Recursion is like solving a big problem by breaking it into smaller versions of 
 
         },
 
-        "finish_reason": null
+        "finish_reason": null,
+
+        "index": 0
 
       }
 
     ],
 
-    "usage": null,
-
-    "obfuscation": "Wt"
-
-  },
-
-  {
+    "created": 1776470832,
 
     "id": "chatcmpl-DVnVIJWPzCL8OTA38vb3b0IM2eEca",
 
-    "object": "chat.completion.chunk",
-
-    "created": 1776470832,
-
     "model": "gpt-5.4-mini-2026-03-17",
+
+    "obfuscation": "Wt",
+
+    "object": "chat.completion.chunk",
 
     "service_tier": "default",
 
     "system_fingerprint": null,
 
+    "usage": null
+
+  },
+
+  {
+
     "choices": [
 
       {
-
-        "index": 0,
 
         "delta": {
 
@@ -9754,37 +9866,37 @@ Recursion is like solving a big problem by breaking it into smaller versions of 
 
         },
 
-        "finish_reason": null
+        "finish_reason": null,
+
+        "index": 0
 
       }
 
     ],
 
-    "usage": null,
-
-    "obfuscation": ""
-
-  },
-
-  {
+    "created": 1776470832,
 
     "id": "chatcmpl-DVnVIJWPzCL8OTA38vb3b0IM2eEca",
 
-    "object": "chat.completion.chunk",
-
-    "created": 1776470832,
-
     "model": "gpt-5.4-mini-2026-03-17",
+
+    "obfuscation": "",
+
+    "object": "chat.completion.chunk",
 
     "service_tier": "default",
 
     "system_fingerprint": null,
 
+    "usage": null
+
+  },
+
+  {
+
     "choices": [
 
       {
-
-        "index": 0,
 
         "delta": {
 
@@ -9792,37 +9904,37 @@ Recursion is like solving a big problem by breaking it into smaller versions of 
 
         },
 
-        "finish_reason": null
+        "finish_reason": null,
+
+        "index": 0
 
       }
 
     ],
 
-    "usage": null,
-
-    "obfuscation": "FbDrZHd6byHkA"
-
-  },
-
-  {
+    "created": 1776470832,
 
     "id": "chatcmpl-DVnVIJWPzCL8OTA38vb3b0IM2eEca",
 
-    "object": "chat.completion.chunk",
-
-    "created": 1776470832,
-
     "model": "gpt-5.4-mini-2026-03-17",
+
+    "obfuscation": "FbDrZHd6byHkA",
+
+    "object": "chat.completion.chunk",
 
     "service_tier": "default",
 
     "system_fingerprint": null,
 
+    "usage": null
+
+  },
+
+  {
+
     "choices": [
 
       {
-
-        "index": 0,
 
         "delta": {
 
@@ -9830,37 +9942,37 @@ Recursion is like solving a big problem by breaking it into smaller versions of 
 
         },
 
-        "finish_reason": null
+        "finish_reason": null,
+
+        "index": 0
 
       }
 
     ],
 
-    "usage": null,
-
-    "obfuscation": "gTNtrSNedUTQ"
-
-  },
-
-  {
+    "created": 1776470832,
 
     "id": "chatcmpl-DVnVIJWPzCL8OTA38vb3b0IM2eEca",
 
-    "object": "chat.completion.chunk",
-
-    "created": 1776470832,
-
     "model": "gpt-5.4-mini-2026-03-17",
+
+    "obfuscation": "gTNtrSNedUTQ",
+
+    "object": "chat.completion.chunk",
 
     "service_tier": "default",
 
     "system_fingerprint": null,
 
+    "usage": null
+
+  },
+
+  {
+
     "choices": [
 
       {
-
-        "index": 0,
 
         "delta": {
 
@@ -9868,37 +9980,37 @@ Recursion is like solving a big problem by breaking it into smaller versions of 
 
         },
 
-        "finish_reason": null
+        "finish_reason": null,
+
+        "index": 0
 
       }
 
     ],
 
-    "usage": null,
-
-    "obfuscation": "eY"
-
-  },
-
-  {
+    "created": 1776470832,
 
     "id": "chatcmpl-DVnVIJWPzCL8OTA38vb3b0IM2eEca",
 
-    "object": "chat.completion.chunk",
-
-    "created": 1776470832,
-
     "model": "gpt-5.4-mini-2026-03-17",
+
+    "obfuscation": "eY",
+
+    "object": "chat.completion.chunk",
 
     "service_tier": "default",
 
     "system_fingerprint": null,
 
+    "usage": null
+
+  },
+
+  {
+
     "choices": [
 
       {
-
-        "index": 0,
 
         "delta": {
 
@@ -9906,37 +10018,37 @@ Recursion is like solving a big problem by breaking it into smaller versions of 
 
         },
 
-        "finish_reason": null
+        "finish_reason": null,
+
+        "index": 0
 
       }
 
     ],
 
-    "usage": null,
-
-    "obfuscation": "x"
-
-  },
-
-  {
+    "created": 1776470832,
 
     "id": "chatcmpl-DVnVIJWPzCL8OTA38vb3b0IM2eEca",
 
-    "object": "chat.completion.chunk",
-
-    "created": 1776470832,
-
     "model": "gpt-5.4-mini-2026-03-17",
+
+    "obfuscation": "x",
+
+    "object": "chat.completion.chunk",
 
     "service_tier": "default",
 
     "system_fingerprint": null,
 
+    "usage": null
+
+  },
+
+  {
+
     "choices": [
 
       {
-
-        "index": 0,
 
         "delta": {
 
@@ -9944,37 +10056,37 @@ Recursion is like solving a big problem by breaking it into smaller versions of 
 
         },
 
-        "finish_reason": null
+        "finish_reason": null,
+
+        "index": 0
 
       }
 
     ],
 
-    "usage": null,
-
-    "obfuscation": ""
-
-  },
-
-  {
+    "created": 1776470832,
 
     "id": "chatcmpl-DVnVIJWPzCL8OTA38vb3b0IM2eEca",
 
-    "object": "chat.completion.chunk",
-
-    "created": 1776470832,
-
     "model": "gpt-5.4-mini-2026-03-17",
+
+    "obfuscation": "",
+
+    "object": "chat.completion.chunk",
 
     "service_tier": "default",
 
     "system_fingerprint": null,
 
+    "usage": null
+
+  },
+
+  {
+
     "choices": [
 
       {
-
-        "index": 0,
 
         "delta": {
 
@@ -9982,37 +10094,37 @@ Recursion is like solving a big problem by breaking it into smaller versions of 
 
         },
 
-        "finish_reason": null
+        "finish_reason": null,
+
+        "index": 0
 
       }
 
     ],
 
-    "usage": null,
-
-    "obfuscation": "UhtePXnvMuelS"
-
-  },
-
-  {
+    "created": 1776470832,
 
     "id": "chatcmpl-DVnVIJWPzCL8OTA38vb3b0IM2eEca",
 
-    "object": "chat.completion.chunk",
-
-    "created": 1776470832,
-
     "model": "gpt-5.4-mini-2026-03-17",
+
+    "obfuscation": "UhtePXnvMuelS",
+
+    "object": "chat.completion.chunk",
 
     "service_tier": "default",
 
     "system_fingerprint": null,
 
+    "usage": null
+
+  },
+
+  {
+
     "choices": [
 
       {
-
-        "index": 0,
 
         "delta": {
 
@@ -10020,37 +10132,37 @@ Recursion is like solving a big problem by breaking it into smaller versions of 
 
         },
 
-        "finish_reason": null
+        "finish_reason": null,
+
+        "index": 0
 
       }
 
     ],
 
-    "usage": null,
-
-    "obfuscation": "grMwpNuMnkdOCqD"
-
-  },
-
-  {
+    "created": 1776470832,
 
     "id": "chatcmpl-DVnVIJWPzCL8OTA38vb3b0IM2eEca",
 
-    "object": "chat.completion.chunk",
-
-    "created": 1776470832,
-
     "model": "gpt-5.4-mini-2026-03-17",
+
+    "obfuscation": "grMwpNuMnkdOCqD",
+
+    "object": "chat.completion.chunk",
 
     "service_tier": "default",
 
     "system_fingerprint": null,
 
+    "usage": null
+
+  },
+
+  {
+
     "choices": [
 
       {
-
-        "index": 0,
 
         "delta": {
 
@@ -10058,37 +10170,37 @@ Recursion is like solving a big problem by breaking it into smaller versions of 
 
         },
 
-        "finish_reason": null
+        "finish_reason": null,
+
+        "index": 0
 
       }
 
     ],
 
-    "usage": null,
-
-    "obfuscation": "H"
-
-  },
-
-  {
+    "created": 1776470832,
 
     "id": "chatcmpl-DVnVIJWPzCL8OTA38vb3b0IM2eEca",
 
-    "object": "chat.completion.chunk",
-
-    "created": 1776470832,
-
     "model": "gpt-5.4-mini-2026-03-17",
+
+    "obfuscation": "H",
+
+    "object": "chat.completion.chunk",
 
     "service_tier": "default",
 
     "system_fingerprint": null,
 
+    "usage": null
+
+  },
+
+  {
+
     "choices": [
 
       {
-
-        "index": 0,
 
         "delta": {
 
@@ -10096,37 +10208,37 @@ Recursion is like solving a big problem by breaking it into smaller versions of 
 
         },
 
-        "finish_reason": null
+        "finish_reason": null,
+
+        "index": 0
 
       }
 
     ],
 
-    "usage": null,
-
-    "obfuscation": "CKKs0fI1wij4Zvf"
-
-  },
-
-  {
+    "created": 1776470832,
 
     "id": "chatcmpl-DVnVIJWPzCL8OTA38vb3b0IM2eEca",
 
-    "object": "chat.completion.chunk",
-
-    "created": 1776470832,
-
     "model": "gpt-5.4-mini-2026-03-17",
+
+    "obfuscation": "CKKs0fI1wij4Zvf",
+
+    "object": "chat.completion.chunk",
 
     "service_tier": "default",
 
     "system_fingerprint": null,
 
+    "usage": null
+
+  },
+
+  {
+
     "choices": [
 
       {
-
-        "index": 0,
 
         "delta": {
 
@@ -10134,37 +10246,37 @@ Recursion is like solving a big problem by breaking it into smaller versions of 
 
         },
 
-        "finish_reason": null
+        "finish_reason": null,
+
+        "index": 0
 
       }
 
     ],
 
-    "usage": null,
-
-    "obfuscation": "u8p"
-
-  },
-
-  {
+    "created": 1776470832,
 
     "id": "chatcmpl-DVnVIJWPzCL8OTA38vb3b0IM2eEca",
 
-    "object": "chat.completion.chunk",
-
-    "created": 1776470832,
-
     "model": "gpt-5.4-mini-2026-03-17",
+
+    "obfuscation": "u8p",
+
+    "object": "chat.completion.chunk",
 
     "service_tier": "default",
 
     "system_fingerprint": null,
 
+    "usage": null
+
+  },
+
+  {
+
     "choices": [
 
       {
-
-        "index": 0,
 
         "delta": {
 
@@ -10172,37 +10284,37 @@ Recursion is like solving a big problem by breaking it into smaller versions of 
 
         },
 
-        "finish_reason": null
+        "finish_reason": null,
+
+        "index": 0
 
       }
 
     ],
 
-    "usage": null,
-
-    "obfuscation": "yJKyrdZAy3eD"
-
-  },
-
-  {
+    "created": 1776470832,
 
     "id": "chatcmpl-DVnVIJWPzCL8OTA38vb3b0IM2eEca",
 
-    "object": "chat.completion.chunk",
-
-    "created": 1776470832,
-
     "model": "gpt-5.4-mini-2026-03-17",
+
+    "obfuscation": "yJKyrdZAy3eD",
+
+    "object": "chat.completion.chunk",
 
     "service_tier": "default",
 
     "system_fingerprint": null,
 
+    "usage": null
+
+  },
+
+  {
+
     "choices": [
 
       {
-
-        "index": 0,
 
         "delta": {
 
@@ -10210,37 +10322,37 @@ Recursion is like solving a big problem by breaking it into smaller versions of 
 
         },
 
-        "finish_reason": null
+        "finish_reason": null,
+
+        "index": 0
 
       }
 
     ],
 
-    "usage": null,
-
-    "obfuscation": "USdrp7haRdCbJb1"
-
-  },
-
-  {
+    "created": 1776470832,
 
     "id": "chatcmpl-DVnVIJWPzCL8OTA38vb3b0IM2eEca",
 
-    "object": "chat.completion.chunk",
-
-    "created": 1776470832,
-
     "model": "gpt-5.4-mini-2026-03-17",
+
+    "obfuscation": "USdrp7haRdCbJb1",
+
+    "object": "chat.completion.chunk",
 
     "service_tier": "default",
 
     "system_fingerprint": null,
 
+    "usage": null
+
+  },
+
+  {
+
     "choices": [
 
       {
-
-        "index": 0,
 
         "delta": {
 
@@ -10248,99 +10360,113 @@ Recursion is like solving a big problem by breaking it into smaller versions of 
 
         },
 
-        "finish_reason": null
+        "finish_reason": null,
+
+        "index": 0
 
       }
 
     ],
 
-    "usage": null,
-
-    "obfuscation": "xzYa"
-
-  },
-
-  {
+    "created": 1776470832,
 
     "id": "chatcmpl-DVnVIJWPzCL8OTA38vb3b0IM2eEca",
 
-    "object": "chat.completion.chunk",
-
-    "created": 1776470832,
-
     "model": "gpt-5.4-mini-2026-03-17",
+
+    "obfuscation": "xzYa",
+
+    "object": "chat.completion.chunk",
 
     "service_tier": "default",
 
     "system_fingerprint": null,
+
+    "usage": null
+
+  },
+
+  {
 
     "choices": [
 
       {
 
-        "index": 0,
-
         "delta": {},
 
-        "finish_reason": "stop"
+        "finish_reason": "stop",
+
+        "index": 0
 
       }
 
     ],
 
-    "usage": null,
-
-    "obfuscation": "xrRbdC17ZciDxjr"
-
-  },
-
-  {
+    "created": 1776470832,
 
     "id": "chatcmpl-DVnVIJWPzCL8OTA38vb3b0IM2eEca",
 
-    "object": "chat.completion.chunk",
-
-    "created": 1776470832,
-
     "model": "gpt-5.4-mini-2026-03-17",
+
+    "obfuscation": "xrRbdC17ZciDxjr",
+
+    "object": "chat.completion.chunk",
 
     "service_tier": "default",
 
     "system_fingerprint": null,
 
+    "usage": null
+
+  },
+
+  {
+
     "choices": [],
+
+    "created": 1776470832,
+
+    "id": "chatcmpl-DVnVIJWPzCL8OTA38vb3b0IM2eEca",
+
+    "model": "gpt-5.4-mini-2026-03-17",
+
+    "obfuscation": "Ic",
+
+    "object": "chat.completion.chunk",
+
+    "service_tier": "default",
+
+    "system_fingerprint": null,
 
     "usage": {
 
-      "prompt_tokens": 16,
-
       "completion_tokens": 251,
-
-      "total_tokens": 267,
-
-      "prompt_tokens_details": {
-
-        "cached_tokens": 0,
-
-        "audio_tokens": 0
-
-      },
 
       "completion_tokens_details": {
 
-        "reasoning_tokens": 0,
+        "accepted_prediction_tokens": 0,
 
         "audio_tokens": 0,
 
-        "accepted_prediction_tokens": 0,
+        "reasoning_tokens": 0,
 
         "rejected_prediction_tokens": 0
 
-      }
+      },
 
-    },
+      "prompt_tokens": 16,
 
-    "obfuscation": "Ic"
+      "prompt_tokens_details": {
+
+        "audio_tokens": 0,
+
+        "cached_tokens": 0
+
+      },
+
+      "total_tokens": 267
+
+    }
 
   }
 
@@ -10351,36 +10477,40 @@ Recursion is like solving a big problem by breaking it into smaller versions of 
 
 ## Parameters
 
-* [ Input ](#tab-panel-426)
-* [ Output ](#tab-panel-427)
+* [ Input ](#tab-panel-966)
+* [ Output ](#tab-panel-967)
 
-▶messages\[\]
+▶audio{}
 
-`array`required
+`object`
 
-temperature
+frequency\_penalty
 
-`number`minimum: 0maximum: 2
-
-max\_tokens
-
-`number`exclusiveMinimum: 0
+`number`maximum: 2minimum: \-2
 
 max\_completion\_tokens
 
 `number`exclusiveMinimum: 0
 
-top\_p
+max\_tokens
 
-`number`minimum: 0maximum: 1
+`number`exclusiveMinimum: 0
 
-frequency\_penalty
+▶messages\[\]
 
-`number`minimum: \-2maximum: 2
+`array`required
+
+▶modalities\[\]
+
+`array`
 
 presence\_penalty
 
-`number`minimum: \-2maximum: 2
+`number`maximum: 2minimum: \-2
+
+response\_format
+
+``
 
 stream
 
@@ -10390,37 +10520,41 @@ stream
 
 `object`
 
-▶tools\[\]
+temperature
 
-`array`
+`number`maximum: 2minimum: 0
 
 tool\_choice
 
 ``
 
-response\_format
+▶tools\[\]
 
-``
+`array`
+
+top\_p
+
+`number`maximum: 1minimum: 0
+
+▶choices\[\]
+
+`array`
+
+created
+
+`number`
 
 id
+
+`string`
+
+model
 
 `string`
 
 object
 
 `string`
-
-created
-
-`number`
-
-model
-
-`string`
-
-▶choices\[\]
-
-`array`
 
 ▶usage{}
 

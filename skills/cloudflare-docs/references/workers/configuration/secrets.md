@@ -58,8 +58,8 @@ export default {
 
 You can also import `env` from `cloudflare:workers` to access secrets from anywhere in your code, including outside of request handlers:
 
-* [  JavaScript ](#tab-panel-8606)
-* [  TypeScript ](#tab-panel-8607)
+* [  JavaScript ](#tab-panel-10312)
+* [  TypeScript ](#tab-panel-10313)
 
 JavaScript
 
@@ -164,7 +164,7 @@ API_TOKEN="eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9"
 
 Do not commit secrets to git
 
-The `.dev.vars` and `.env` files should not committed to git. Add `.dev.vars*` and `.env*` to your project's `.gitignore` file.
+The `.dev.vars` and `.env` files should not be committed to git. Add `.dev.vars*` and `.env*` to your project's `.gitignore` file.
 
 To set different secrets for each Cloudflare environment, create files named `.dev.vars.<environment-name>` or `.env.<environment-name>`.
 

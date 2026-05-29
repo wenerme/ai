@@ -29,6 +29,9 @@ Google's lightest and most cost-efficient Gemini model for high-throughput tasks
 
 ## Usage
 
+* [ TypeScript ](#tab-panel-472)
+* [ cURL ](#tab-panel-473)
+
 TypeScript
 
 ```
@@ -37,35 +40,7 @@ const response = await env.AI.run(
 
   'google/gemini-3.1-flash-lite',
 
-  {
-
-    contents: [
-
-      {
-
-        role: 'user',
-
-        parts: [
-
-          {
-
-            text: 'What are the three laws of thermodynamics?',
-
-          },
-
-        ],
-
-      },
-
-    ],
-
-  },
-
-  {
-
-    gateway: { id: 'default' },
-
-  }
+  { contents: [{ parts: [{ text: 'What are the three laws of thermodynamics?' }], role: 'user' }] },
 
 )
 
@@ -74,8 +49,51 @@ console.log(response)
 
 ```
 
-* [ Output ](#tab-panel-180)
-* [ Raw response ](#tab-panel-181)
+Terminal window
+
+```
+
+curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run \
+
+  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+
+  --header "Content-Type: application/json" \
+
+  --data '{
+
+  "model": "google/gemini-3.1-flash-lite",
+
+  "input": {
+
+    "contents": [
+
+      {
+
+        "parts": [
+
+          {
+
+            "text": "What are the three laws of thermodynamics?"
+
+          }
+
+        ],
+
+        "role": "user"
+
+      }
+
+    ]
+
+  }
+
+}'
+
+
+```
+
+* [ Output ](#tab-panel-478)
+* [ Raw response ](#tab-panel-479)
 
 The three laws of thermodynamics (plus the "zeroth" law, which was defined later but is foundational) describe how energy moves and transforms within physical systems.
 
@@ -115,8 +133,6 @@ Here is a breakdown of the laws:
 
       "content": {
 
-        "role": "model",
-
         "parts": [
 
           {
@@ -127,7 +143,9 @@ Here is a breakdown of the laws:
 
           }
 
-        ]
+        ],
+
+        "role": "model"
 
       },
 
@@ -137,15 +155,35 @@ Here is a breakdown of the laws:
 
   ],
 
-  "usageMetadata": {
+  "createTime": "2026-04-17T05:56:31.311694Z",
 
-    "promptTokenCount": 8,
+  "gatewayMetadata": {
+
+    "keySource": "Unified"
+
+  },
+
+  "modelVersion": "gemini-3.1-flash-lite-preview",
+
+  "responseId": "j8vhaY6DE6yQq8YPhOuliQs",
+
+  "usageMetadata": {
 
     "candidatesTokenCount": 589,
 
-    "totalTokenCount": 597,
+    "candidatesTokensDetails": [
 
-    "trafficType": "ON_DEMAND",
+      {
+
+        "modality": "TEXT",
+
+        "tokenCount": 589
+
+      }
+
+    ],
+
+    "promptTokenCount": 8,
 
     "promptTokensDetails": [
 
@@ -159,29 +197,9 @@ Here is a breakdown of the laws:
 
     ],
 
-    "candidatesTokensDetails": [
+    "totalTokenCount": 597,
 
-      {
-
-        "modality": "TEXT",
-
-        "tokenCount": 589
-
-      }
-
-    ]
-
-  },
-
-  "modelVersion": "gemini-3.1-flash-lite-preview",
-
-  "createTime": "2026-04-17T05:56:31.311694Z",
-
-  "responseId": "j8vhaY6DE6yQq8YPhOuliQs",
-
-  "gatewayMetadata": {
-
-    "keySource": "Unified"
+    "trafficType": "ON_DEMAND"
 
   }
 
@@ -194,6 +212,9 @@ Here is a breakdown of the laws:
 
 **With System Instruction**  — Using a system instruction to set context 
 
+* [ TypeScript ](#tab-panel-474)
+* [ cURL ](#tab-panel-475)
+
 TypeScript
 
 ```
@@ -204,53 +225,17 @@ const response = await env.AI.run(
 
   {
 
-    contents: [
+    contents: [{ parts: [{ text: 'How do I read a JSON file in Python?' }], role: 'user' }],
 
-      {
-
-        role: 'user',
-
-        parts: [
-
-          {
-
-            text: 'How do I read a JSON file in Python?',
-
-          },
-
-        ],
-
-      },
-
-    ],
+    generationConfig: { temperature: 0.3 },
 
     systemInstruction: {
 
-      parts: [
-
-        {
-
-          text: 'You are a helpful coding assistant specializing in Python.',
-
-        },
-
-      ],
-
-    },
-
-    generationConfig: {
-
-      temperature: 0.3,
+      parts: [{ text: 'You are a helpful coding assistant specializing in Python.' }],
 
     },
 
   },
-
-  {
-
-    gateway: { id: 'default' },
-
-  }
 
 )
 
@@ -259,8 +244,71 @@ console.log(response)
 
 ```
 
-* [ Output ](#tab-panel-182)
-* [ Raw response ](#tab-panel-183)
+Terminal window
+
+```
+
+curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run \
+
+  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+
+  --header "Content-Type: application/json" \
+
+  --data '{
+
+  "model": "google/gemini-3.1-flash-lite",
+
+  "input": {
+
+    "contents": [
+
+      {
+
+        "parts": [
+
+          {
+
+            "text": "How do I read a JSON file in Python?"
+
+          }
+
+        ],
+
+        "role": "user"
+
+      }
+
+    ],
+
+    "generationConfig": {
+
+      "temperature": 0.3
+
+    },
+
+    "systemInstruction": {
+
+      "parts": [
+
+        {
+
+          "text": "You are a helpful coding assistant specializing in Python."
+
+        }
+
+      ]
+
+    }
+
+  }
+
+}'
+
+
+```
+
+* [ Output ](#tab-panel-480)
+* [ Raw response ](#tab-panel-481)
 
 To read a JSON file in Python, you use the built-in `json` module.
 
@@ -329,8 +377,6 @@ print(data["name"])  # Output: Alice
 
       "content": {
 
-        "role": "model",
-
         "parts": [
 
           {
@@ -341,7 +387,9 @@ print(data["name"])  # Output: Alice
 
           }
 
-        ]
+        ],
+
+        "role": "model"
 
       },
 
@@ -351,15 +399,35 @@ print(data["name"])  # Output: Alice
 
   ],
 
-  "usageMetadata": {
+  "createTime": "2026-04-17T05:56:31.695319Z",
 
-    "promptTokenCount": 20,
+  "gatewayMetadata": {
+
+    "keySource": "Unified"
+
+  },
+
+  "modelVersion": "gemini-3.1-flash-lite-preview",
+
+  "responseId": "j8vhaZe4Kuyeq8YPgY-7yQ8",
+
+  "usageMetadata": {
 
     "candidatesTokenCount": 478,
 
-    "totalTokenCount": 498,
+    "candidatesTokensDetails": [
 
-    "trafficType": "ON_DEMAND",
+      {
+
+        "modality": "TEXT",
+
+        "tokenCount": 478
+
+      }
+
+    ],
+
+    "promptTokenCount": 20,
 
     "promptTokensDetails": [
 
@@ -373,29 +441,9 @@ print(data["name"])  # Output: Alice
 
     ],
 
-    "candidatesTokensDetails": [
+    "totalTokenCount": 498,
 
-      {
-
-        "modality": "TEXT",
-
-        "tokenCount": 478
-
-      }
-
-    ]
-
-  },
-
-  "modelVersion": "gemini-3.1-flash-lite-preview",
-
-  "createTime": "2026-04-17T05:56:31.695319Z",
-
-  "responseId": "j8vhaZe4Kuyeq8YPgY-7yQ8",
-
-  "gatewayMetadata": {
-
-    "keySource": "Unified"
+    "trafficType": "ON_DEMAND"
 
   }
 
@@ -405,6 +453,9 @@ print(data["name"])  # Output: Alice
 ```
 
 **Multi-turn Conversation**  — Continuing a conversation with context 
+
+* [ TypeScript ](#tab-panel-482)
+* [ cURL ](#tab-panel-483)
 
 TypeScript
 
@@ -420,23 +471,13 @@ const response = await env.AI.run(
 
       {
 
+        parts: [{ text: 'I need help planning a road trip from San Francisco to Los Angeles.' }],
+
         role: 'user',
-
-        parts: [
-
-          {
-
-            text: 'I need help planning a road trip from San Francisco to Los Angeles.',
-
-          },
-
-        ],
 
       },
 
       {
-
-        role: 'model',
 
         parts: [
 
@@ -448,39 +489,17 @@ const response = await env.AI.run(
 
         ],
 
-      },
-
-      {
-
-        role: 'user',
-
-        parts: [
-
-          {
-
-            text: 'Yes, what are some good places to stop?',
-
-          },
-
-        ],
+        role: 'model',
 
       },
+
+      { parts: [{ text: 'Yes, what are some good places to stop?' }], role: 'user' },
 
     ],
 
-    generationConfig: {
-
-      maxOutputTokens: 500,
-
-    },
+    generationConfig: { maxOutputTokens: 2048 },
 
   },
-
-  {
-
-    gateway: { id: 'default' },
-
-  }
 
 )
 
@@ -488,6 +507,133 @@ console.log(response)
 
 
 ```
+
+Terminal window
+
+```
+
+curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run \
+
+  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+
+  --header "Content-Type: application/json" \
+
+  --data '{
+
+  "model": "google/gemini-3.1-flash-lite",
+
+  "input": {
+
+    "contents": [
+
+      {
+
+        "parts": [
+
+          {
+
+            "text": "I need help planning a road trip from San Francisco to Los Angeles."
+
+          }
+
+        ],
+
+        "role": "user"
+
+      },
+
+      {
+
+        "parts": [
+
+          {
+
+            "text": "I'd be happy to help! The drive is about 380 miles and takes roughly 5-6 hours. Would you like suggestions for scenic routes or interesting stops along the way?"
+
+          }
+
+        ],
+
+        "role": "model"
+
+      },
+
+      {
+
+        "parts": [
+
+          {
+
+            "text": "Yes, what are some good places to stop?"
+
+          }
+
+        ],
+
+        "role": "user"
+
+      }
+
+    ],
+
+    "generationConfig": {
+
+      "maxOutputTokens": 2048
+
+    }
+
+  }
+
+}'
+
+
+```
+
+* [ Output ](#tab-panel-484)
+* [ Raw response ](#tab-panel-485)
+
+The best way to drive from San Francisco to Los Angeles is to take **Highway 1 (the Pacific Coast Highway)**. While it takes significantly longer than I-5 (the inland route), it is one of the most beautiful drives in the world.
+
+To make the most of it, I recommend a **two-day trip**. Here are the essential stops, organized from North to South:
+
+### 1. Santa Cruz
+*   **The Vibe:** Classic California surf culture.
+*   **What to do:** Walk the historic **Santa Cruz Beach Boardwalk**, see the surfers at Steamer Lane, or hike through the redwoods at Henry Cowell Redwoods State Park.
+
+### 2. Monterey & Carmel-by-the-Sea
+*   **The Vibe:** Upscale coastal elegance.
+*   **What to do:** Visit the world-famous **Monterey Bay Aquarium**, drive the scenic **17-Mile Drive** (famous for the Lone Cypress tree), and explore the charming fairy-tale cottages of Carmel.
+
+### 3. Big Sur (The Highlight)
+*   **The Vibe:** Dramatic cliffs meeting the Pacific Ocean.
+*   **Note:** Always check [Caltrans](https://roads.dot.ca.gov/) for road closures before you go; parts of Highway 1 occasionally close due to slides.
+*   **What to do:** 
+    *   **Bixby Creek Bridge:** One of the most photographed bridges in the world.
+    *   **Pfeiffer Big Sur State Park:** Great for quick hikes under giant redwoods.
+    *   **McWay Falls:** A stunning waterfall that drops directly onto a pristine beach.
+
+### 4. San Simeon & Cambria
+*   **The Vibe:** History and wildlife.
+*   **What to do:** 
+    *   **Hearst Castle:** The opulent hilltop estate of William Randolph Hearst (book tickets in advance).
+    *   **Elephant Seal Vista Point:** Just north of the castle, you can see hundreds of elephant seals lounging on the beach—it’s free and very entertaining.
+
+### 5. San Luis Obispo (SLO) & Pismo Beach
+*   **The Vibe:** Vibrant college town and classic beach fun.
+*   **What to do:** SLO has a great downtown area and the famous "Bubblegum Alley." If you’re hungry, grab a tri-tip sandwich at **Firestone Grill**. If you want a photo op, head to the Pismo Beach Pier.
+
+### 6. Santa Barbara
+*   **The Vibe:** Mediterranean architecture and high-end relaxation.
+*   **What to do:** Visit the **Old Mission Santa Barbara**, walk the **Stearns Wharf**, or head to the "Funk Zone" for wine tasting and local art galleries.
+
+---
+
+### Pro-Tips for your trip:
+*   **Direction Matters:** Driving North to South is better for views because you are in the lane closest to the ocean, making it much easier to pull over into scenic overlooks.
+*   **Gas Up:** Fill your tank before entering Big Sur. Gas stations there are extremely sparse and can cost twice as much as in the city.
+*   **Cell Service:** Expect to lose cell service for long stretches through Big Sur. Download offline maps (Google Maps) before you leave.
+
+**How many days are you planning to dedicate to the drive?** If you tell me your timeframe, I can help you draft a specific itinerary!
 
 ```
 
@@ -499,25 +645,57 @@ console.log(response)
 
       "content": {
 
+        "parts": [
+
+          {
+
+            "text": "The best way to drive from San Francisco to Los Angeles is to take **Highway 1 (the Pacific Coast Highway)**. While it takes significantly longer than I-5 (the inland route), it is one of the most beautiful drives in the world.\n\nTo make the most of it, I recommend a **two-day trip**. Here are the essential stops, organized from North to South:\n\n### 1. Santa Cruz\n*   **The Vibe:** Classic California surf culture.\n*   **What to do:** Walk the historic **Santa Cruz Beach Boardwalk**, see the surfers at Steamer Lane, or hike through the redwoods at Henry Cowell Redwoods State Park.\n\n### 2. Monterey & Carmel-by-the-Sea\n*   **The Vibe:** Upscale coastal elegance.\n*   **What to do:** Visit the world-famous **Monterey Bay Aquarium**, drive the scenic **17-Mile Drive** (famous for the Lone Cypress tree), and explore the charming fairy-tale cottages of Carmel.\n\n### 3. Big Sur (The Highlight)\n*   **The Vibe:** Dramatic cliffs meeting the Pacific Ocean.\n*   **Note:** Always check [Caltrans](https://roads.dot.ca.gov/) for road closures before you go; parts of Highway 1 occasionally close due to slides.\n*   **What to do:** \n    *   **Bixby Creek Bridge:** One of the most photographed bridges in the world.\n    *   **Pfeiffer Big Sur State Park:** Great for quick hikes under giant redwoods.\n    *   **McWay Falls:** A stunning waterfall that drops directly onto a pristine beach.\n\n### 4. San Simeon & Cambria\n*   **The Vibe:** History and wildlife.\n*   **What to do:** \n    *   **Hearst Castle:** The opulent hilltop estate of William Randolph Hearst (book tickets in advance).\n    *   **Elephant Seal Vista Point:** Just north of the castle, you can see hundreds of elephant seals lounging on the beach—it’s free and very entertaining.\n\n### 5. San Luis Obispo (SLO) & Pismo Beach\n*   **The Vibe:** Vibrant college town and classic beach fun.\n*   **What to do:** SLO has a great downtown area and the famous \"Bubblegum Alley.\" If you’re hungry, grab a tri-tip sandwich at **Firestone Grill**. If you want a photo op, head to the Pismo Beach Pier.\n\n### 6. Santa Barbara\n*   **The Vibe:** Mediterranean architecture and high-end relaxation.\n*   **What to do:** Visit the **Old Mission Santa Barbara**, walk the **Stearns Wharf**, or head to the \"Funk Zone\" for wine tasting and local art galleries.\n\n---\n\n### Pro-Tips for your trip:\n*   **Direction Matters:** Driving North to South is better for views because you are in the lane closest to the ocean, making it much easier to pull over into scenic overlooks.\n*   **Gas Up:** Fill your tank before entering Big Sur. Gas stations there are extremely sparse and can cost twice as much as in the city.\n*   **Cell Service:** Expect to lose cell service for long stretches through Big Sur. Download offline maps (Google Maps) before you leave.\n\n**How many days are you planning to dedicate to the drive?** If you tell me your timeframe, I can help you draft a specific itinerary!",
+
+            "thoughtSignature": "AY89a19tNFykym7KHaZLthPWb1ZEsEjSDgSghQU80r45l+BVd0pYLlDu9m7087caZko="
+
+          }
+
+        ],
+
         "role": "model"
 
       },
 
-      "finishReason": "MAX_TOKENS"
+      "finishReason": "STOP"
 
     }
 
   ],
 
+  "createTime": "2026-04-28T23:58:11.349365Z",
+
+  "gatewayMetadata": {
+
+    "keySource": "BYOK"
+
+  },
+
+  "modelVersion": "gemini-3.1-flash-lite-preview",
+
+  "responseId": "k0nxabWpFcSeq8YP77OduQk",
+
   "usageMetadata": {
 
+    "candidatesTokenCount": 733,
+
+    "candidatesTokensDetails": [
+
+      {
+
+        "modality": "TEXT",
+
+        "tokenCount": 733
+
+      }
+
+    ],
+
     "promptTokenCount": 64,
-
-    "candidatesTokenCount": 496,
-
-    "totalTokenCount": 560,
-
-    "trafficType": "ON_DEMAND",
 
     "promptTokensDetails": [
 
@@ -531,29 +709,9 @@ console.log(response)
 
     ],
 
-    "candidatesTokensDetails": [
+    "totalTokenCount": 797,
 
-      {
-
-        "modality": "TEXT",
-
-        "tokenCount": 496
-
-      }
-
-    ]
-
-  },
-
-  "modelVersion": "gemini-3.1-flash-lite-preview",
-
-  "createTime": "2026-04-17T05:56:34.641767Z",
-
-  "responseId": "ksvhaeeVJ6CIq8YPzKOY8Qk",
-
-  "gatewayMetadata": {
-
-    "keySource": "Unified"
+    "trafficType": "ON_DEMAND"
 
   }
 
@@ -563,6 +721,9 @@ console.log(response)
 ```
 
 **Creative Writing**  — Higher temperature for creative output 
+
+* [ TypeScript ](#tab-panel-476)
+* [ cURL ](#tab-panel-477)
 
 TypeScript
 
@@ -578,37 +739,17 @@ const response = await env.AI.run(
 
       {
 
+        parts: [{ text: 'Write a short story opening about a detective finding an unusual clue.' }],
+
         role: 'user',
-
-        parts: [
-
-          {
-
-            text: 'Write a short story opening about a detective finding an unusual clue.',
-
-          },
-
-        ],
 
       },
 
     ],
 
-    generationConfig: {
-
-      temperature: 0.8,
-
-      maxOutputTokens: 300,
-
-    },
+    generationConfig: { maxOutputTokens: 1500, temperature: 0.8 },
 
   },
-
-  {
-
-    gateway: { id: 'default' },
-
-  }
 
 )
 
@@ -617,8 +758,59 @@ console.log(response)
 
 ```
 
-* [ Output ](#tab-panel-184)
-* [ Raw response ](#tab-panel-185)
+Terminal window
+
+```
+
+curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run \
+
+  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+
+  --header "Content-Type: application/json" \
+
+  --data '{
+
+  "model": "google/gemini-3.1-flash-lite",
+
+  "input": {
+
+    "contents": [
+
+      {
+
+        "parts": [
+
+          {
+
+            "text": "Write a short story opening about a detective finding an unusual clue."
+
+          }
+
+        ],
+
+        "role": "user"
+
+      }
+
+    ],
+
+    "generationConfig": {
+
+      "maxOutputTokens": 1500,
+
+      "temperature": 0.8
+
+    }
+
+  }
+
+}'
+
+
+```
+
+* [ Output ](#tab-panel-486)
+* [ Raw response ](#tab-panel-487)
 
 The rain drummed a frantic rhythm against the windowpane of the derelict apartment, but Detective Elias Thorne didn’t hear it. He was staring at the center of the dust-choked rug, where the victim had supposedly spent his final moments.
 
@@ -640,8 +832,6 @@ Thorne pulled his hand back, his pulse quickening. He had been a homicide detect
 
       "content": {
 
-        "role": "model",
-
         "parts": [
 
           {
@@ -652,7 +842,9 @@ Thorne pulled his hand back, his pulse quickening. He had been a homicide detect
 
           }
 
-        ]
+        ],
+
+        "role": "model"
 
       },
 
@@ -662,15 +854,35 @@ Thorne pulled his hand back, his pulse quickening. He had been a homicide detect
 
   ],
 
-  "usageMetadata": {
+  "createTime": "2026-04-17T05:56:34.799909Z",
 
-    "promptTokenCount": 13,
+  "gatewayMetadata": {
+
+    "keySource": "Unified"
+
+  },
+
+  "modelVersion": "gemini-3.1-flash-lite-preview",
+
+  "responseId": "ksvhaaXpMIGPq8YPsdmS-Qc",
+
+  "usageMetadata": {
 
     "candidatesTokenCount": 256,
 
-    "totalTokenCount": 269,
+    "candidatesTokensDetails": [
 
-    "trafficType": "ON_DEMAND",
+      {
+
+        "modality": "TEXT",
+
+        "tokenCount": 256
+
+      }
+
+    ],
+
+    "promptTokenCount": 13,
 
     "promptTokensDetails": [
 
@@ -684,29 +896,9 @@ Thorne pulled his hand back, his pulse quickening. He had been a homicide detect
 
     ],
 
-    "candidatesTokensDetails": [
+    "totalTokenCount": 269,
 
-      {
-
-        "modality": "TEXT",
-
-        "tokenCount": 256
-
-      }
-
-    ]
-
-  },
-
-  "modelVersion": "gemini-3.1-flash-lite-preview",
-
-  "createTime": "2026-04-17T05:56:34.799909Z",
-
-  "responseId": "ksvhaaXpMIGPq8YPsdmS-Qc",
-
-  "gatewayMetadata": {
-
-    "keySource": "Unified"
+    "trafficType": "ON_DEMAND"
 
   }
 
@@ -717,16 +909,12 @@ Thorne pulled his hand back, his pulse quickening. He had been a homicide detect
 
 ## Parameters
 
-* [ Input ](#tab-panel-186)
-* [ Output ](#tab-panel-187)
+* [ Input ](#tab-panel-488)
+* [ Output ](#tab-panel-489)
 
 ▶contents\[\]
 
 `array`required
-
-▶systemInstruction{}
-
-`object`
 
 ▶generationConfig{}
 
@@ -736,25 +924,29 @@ Thorne pulled his hand back, his pulse quickening. He had been a homicide detect
 
 `array`
 
-▶tools\[\]
+▶systemInstruction{}
 
-`array`
+`object`
 
 toolConfig
 
 ``
 
+▶tools\[\]
+
+`array`
+
 ▶candidates\[\]
 
 `array`
 
-▶usageMetadata{}
-
-`object`
-
 modelVersion
 
 `string`
+
+▶usageMetadata{}
+
+`object`
 
 ## API Schemas (Raw)
 

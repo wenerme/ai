@@ -1100,6 +1100,7 @@ components:
       enum:
         - user
         - assistant
+        - system
       title: MessagesMessageParamRole
     MessagesMessageParam:
       type: object
@@ -2771,9 +2772,12 @@ components:
           type: string
           description: >-
             A unique identifier for grouping related requests (e.g., a
-            conversation or agent workflow) for observability. If provided in
-            both the request body and the x-session-id header, the body value
-            takes precedence. Maximum of 256 characters.
+            conversation or agent workflow). When provided, OpenRouter uses it
+            as the sticky routing key, routing all requests in the session to
+            the same provider to maximize prompt cache hits. Also used for
+            observability grouping. If provided in both the request body and the
+            x-session-id header, the body value takes precedence. Maximum of 256
+            characters.
         speed:
           $ref: '#/components/schemas/AnthropicSpeed'
         stop_sequences:
@@ -3891,6 +3895,14 @@ components:
         - ephemeral_1h_input_tokens
         - ephemeral_5m_input_tokens
       title: AnthropicCacheCreation
+    AnthropicOutputTokensDetails:
+      type: object
+      properties:
+        thinking_tokens:
+          type: integer
+      required:
+        - thinking_tokens
+      title: AnthropicOutputTokensDetails
     AnthropicServerToolUsage:
       type: object
       properties:
@@ -4035,6 +4047,8 @@ components:
           type: integer
         output_tokens:
           type: integer
+        output_tokens_details:
+          $ref: '#/components/schemas/AnthropicOutputTokensDetails'
         server_tool_use:
           $ref: '#/components/schemas/AnthropicServerToolUsage'
         service_tier:
@@ -4052,6 +4066,7 @@ components:
         - inference_geo
         - input_tokens
         - output_tokens
+        - output_tokens_details
         - server_tool_use
         - service_tier
       title: MessagesResultUsage

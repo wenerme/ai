@@ -28,6 +28,9 @@ Vidu Q3 Pro is a high-quality video generation model supporting text-to-video, i
 
 ## Usage
 
+* [ TypeScript ](#tab-panel-1332)
+* [ cURL ](#tab-panel-1333)
+
 TypeScript
 
 ```
@@ -38,19 +41,13 @@ const response = await env.AI.run(
 
   {
 
-    prompt: 'A golden retriever running through a sunlit meadow in slow motion',
-
     duration: 5,
+
+    prompt: 'A golden retriever running through a sunlit meadow in slow motion',
 
     resolution: '720p',
 
   },
-
-  {
-
-    gateway: { id: 'default' },
-
-  }
 
 )
 
@@ -59,14 +56,47 @@ console.log(response)
 
 ```
 
-* [ Output ](#tab-panel-592)
-* [ Raw response ](#tab-panel-593)
+Terminal window
+
+```
+
+curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run \
+
+  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+
+  --header "Content-Type: application/json" \
+
+  --data '{
+
+  "model": "vidu/q3-pro",
+
+  "input": {
+
+    "duration": 5,
+
+    "prompt": "A golden retriever running through a sunlit meadow in slow motion",
+
+    "resolution": "720p"
+
+  }
+
+}'
+
+
+```
+
+* [ Output ](#tab-panel-1330)
+* [ Raw response ](#tab-panel-1331)
 
 ```
 
 {
 
-  "state": "Completed",
+  "gatewayMetadata": {
+
+    "keySource": "Unified"
+
+  },
 
   "result": {
 
@@ -74,11 +104,7 @@ console.log(response)
 
   },
 
-  "gatewayMetadata": {
-
-    "keySource": "Unified"
-
-  }
+  "state": "Completed"
 
 }
 
@@ -89,6 +115,9 @@ console.log(response)
 
 **Portrait Aspect Ratio**  — Vertical video for social media 
 
+* [ TypeScript ](#tab-panel-1338)
+* [ cURL ](#tab-panel-1339)
+
 TypeScript
 
 ```
@@ -99,23 +128,17 @@ const response = await env.AI.run(
 
   {
 
+    aspect_ratio: '9:16',
+
+    duration: 5,
+
     prompt:
 
       'A busy street in Tokyo at night with neon signs reflecting on wet pavement, rain falling',
 
-    duration: 5,
-
     resolution: '720p',
 
-    aspect_ratio: '9:16',
-
   },
-
-  {
-
-    gateway: { id: 'default' },
-
-  }
 
 )
 
@@ -124,14 +147,49 @@ console.log(response)
 
 ```
 
-* [ Output ](#tab-panel-594)
-* [ Raw response ](#tab-panel-595)
+Terminal window
+
+```
+
+curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run \
+
+  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+
+  --header "Content-Type: application/json" \
+
+  --data '{
+
+  "model": "vidu/q3-pro",
+
+  "input": {
+
+    "aspect_ratio": "9:16",
+
+    "duration": 5,
+
+    "prompt": "A busy street in Tokyo at night with neon signs reflecting on wet pavement, rain falling",
+
+    "resolution": "720p"
+
+  }
+
+}'
+
+
+```
+
+* [ Output ](#tab-panel-1334)
+* [ Raw response ](#tab-panel-1335)
 
 ```
 
 {
 
-  "state": "Completed",
+  "gatewayMetadata": {
+
+    "keySource": "Unified"
+
+  },
 
   "result": {
 
@@ -139,11 +197,7 @@ console.log(response)
 
   },
 
-  "gatewayMetadata": {
-
-    "keySource": "Unified"
-
-  }
+  "state": "Completed"
 
 }
 
@@ -152,6 +206,9 @@ console.log(response)
 
 **Silent Video**  — Generate video without audio 
 
+* [ TypeScript ](#tab-panel-1342)
+* [ cURL ](#tab-panel-1343)
+
 TypeScript
 
 ```
@@ -162,23 +219,15 @@ const response = await env.AI.run(
 
   {
 
-    prompt:
-
-      'Abstract paint swirls slowly mixing in water, vivid blues and golds',
+    audio: false,
 
     duration: 8,
 
+    prompt: 'Abstract paint swirls slowly mixing in water, vivid blues and golds',
+
     resolution: '720p',
 
-    audio: false,
-
   },
-
-  {
-
-    gateway: { id: 'default' },
-
-  }
 
 )
 
@@ -187,14 +236,49 @@ console.log(response)
 
 ```
 
-* [ Output ](#tab-panel-596)
-* [ Raw response ](#tab-panel-597)
+Terminal window
+
+```
+
+curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run \
+
+  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+
+  --header "Content-Type: application/json" \
+
+  --data '{
+
+  "model": "vidu/q3-pro",
+
+  "input": {
+
+    "audio": false,
+
+    "duration": 8,
+
+    "prompt": "Abstract paint swirls slowly mixing in water, vivid blues and golds",
+
+    "resolution": "720p"
+
+  }
+
+}'
+
+
+```
+
+* [ Output ](#tab-panel-1336)
+* [ Raw response ](#tab-panel-1337)
 
 ```
 
 {
 
-  "state": "Completed",
+  "gatewayMetadata": {
+
+    "keySource": "Unified"
+
+  },
 
   "result": {
 
@@ -202,11 +286,7 @@ console.log(response)
 
   },
 
-  "gatewayMetadata": {
-
-    "keySource": "Unified"
-
-  }
+  "state": "Completed"
 
 }
 
@@ -215,6 +295,9 @@ console.log(response)
 
 **Square Format**  — Square video for product demos or social posts 
 
+* [ TypeScript ](#tab-panel-1344)
+* [ cURL ](#tab-panel-1345)
+
 TypeScript
 
 ```
@@ -225,23 +308,17 @@ const response = await env.AI.run(
 
   {
 
+    aspect_ratio: '1:1',
+
+    duration: 5,
+
     prompt:
 
       'A sleek wireless headphone rotating on a pedestal with soft studio lighting and a white background',
 
-    duration: 5,
-
     resolution: '720p',
 
-    aspect_ratio: '1:1',
-
   },
-
-  {
-
-    gateway: { id: 'default' },
-
-  }
 
 )
 
@@ -250,14 +327,49 @@ console.log(response)
 
 ```
 
-* [ Output ](#tab-panel-598)
-* [ Raw response ](#tab-panel-599)
+Terminal window
+
+```
+
+curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run \
+
+  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+
+  --header "Content-Type: application/json" \
+
+  --data '{
+
+  "model": "vidu/q3-pro",
+
+  "input": {
+
+    "aspect_ratio": "1:1",
+
+    "duration": 5,
+
+    "prompt": "A sleek wireless headphone rotating on a pedestal with soft studio lighting and a white background",
+
+    "resolution": "720p"
+
+  }
+
+}'
+
+
+```
+
+* [ Output ](#tab-panel-1340)
+* [ Raw response ](#tab-panel-1341)
 
 ```
 
 {
 
-  "state": "Completed",
+  "gatewayMetadata": {
+
+    "keySource": "Unified"
+
+  },
 
   "result": {
 
@@ -265,11 +377,7 @@ console.log(response)
 
   },
 
-  "gatewayMetadata": {
-
-    "keySource": "Unified"
-
-  }
+  "state": "Completed"
 
 }
 
@@ -278,36 +386,36 @@ console.log(response)
 
 ## Parameters
 
-* [ Input ](#tab-panel-600)
-* [ Output ](#tab-panel-601)
+* [ Input ](#tab-panel-1346)
+* [ Output ](#tab-panel-1347)
 
-prompt
+aspect\_ratio
 
-`string`maxLength: 5000Text prompt describing what should appear in the video
-
-start\_image
-
-`string`Start image for video generation. Use alone for image-to-video, or with end\_image for start/end-to-video. Accepts public URL or Base64 data URI (data:image/png;base64,...)
-
-end\_image
-
-`string`End image for start/end-to-video generation. Must be used together with start\_image. Accepts public URL or Base64 data URI (data:image/png;base64,...)
-
-duration
-
-`integer`requireddefault: 5minimum: 1maximum: 16Video duration in seconds (1-16)
-
-resolution
-
-`string`requireddefault: 720penum: 540p, 720p, 1080pVideo resolution
+`string`enum: 16:9, 9:16, 3:4, 4:3, 1:1Video aspect ratio (text-to-video only). Default: 16:9
 
 audio
 
 `boolean`Enable audio-video synchronization. Default: true for Q3 models. When false, outputs silent video
 
-aspect\_ratio
+duration
 
-`string`enum: 16:9, 9:16, 3:4, 4:3, 1:1Video aspect ratio (text-to-video only). Default: 16:9
+`integer`requireddefault: 5maximum: 16minimum: 1Video duration in seconds (1-16)
+
+end\_image
+
+`string`End image for start/end-to-video generation. Must be used together with start\_image. Accepts public URL or Base64 data URI (data:image/png;base64,...)
+
+prompt
+
+`string`maxLength: 5000Text prompt describing what should appear in the video
+
+resolution
+
+`string`requireddefault: 720penum: 540p, 720p, 1080pVideo resolution
+
+start\_image
+
+`string`Start image for video generation. Use alone for image-to-video, or with end\_image for start/end-to-video. Accepts public URL or Base64 data URI (data:image/png;base64,...)
 
 video
 

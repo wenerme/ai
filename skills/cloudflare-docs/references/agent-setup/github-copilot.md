@@ -49,7 +49,7 @@ For VS Code, add to `.vscode/mcp.json`. For Copilot CLI, add to `~/.copilot/mcp-
 4. **Try a prompt**  
 Open Copilot Chat (**Ctrl+Shift+I**), switch to agent mode, and try a prompt — for example:  
 ```  
-Add a cron trigger to my Worker that processes a job queue every hour.  
+Set up custom domains with automatic SSL for my SaaS customers using SSL for SaaS.  
 ```
 
 ## Cloudflare platform access
@@ -91,7 +91,6 @@ MCP servers provide typed tools to call into Cloudflare at runtime. There are tw
 * GraphQL server Get analytics data using Cloudflare’s GraphQL API https://graphql.mcp.cloudflare.com/mcp
 * Logpush server Get quick summaries for Logpush job health https://logs.mcp.cloudflare.com/mcp
 * Observability server Debug and get insight into your application's logs and analytics https://observability.mcp.cloudflare.com/mcp
-* Radar server Get global Internet traffic insights, trends, URL scans, and other utilities https://radar.mcp.cloudflare.com/mcp
 
 Wrangler CLI 
 

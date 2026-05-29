@@ -61,8 +61,8 @@ Before you set up a route, make sure you have a DNS record set up for the [domai
 
 To configure a route using your [Wrangler configuration file](https://developers.cloudflare.com/workers/wrangler/configuration/), refer to the following example.
 
-* [  wrangler.jsonc ](#tab-panel-8600)
-* [  wrangler.toml ](#tab-panel-8601)
+* [  wrangler.jsonc ](#tab-panel-10306)
+* [  wrangler.toml ](#tab-panel-10307)
 
 JSONC
 
@@ -125,8 +125,8 @@ Add the `zone_name` or `zone_id` option after each route. The `zone_name` and `z
 
 To add multiple routes:
 
-* [  wrangler.jsonc ](#tab-panel-8602)
-* [  wrangler.toml ](#tab-panel-8603)
+* [  wrangler.jsonc ](#tab-panel-10308)
+* [  wrangler.toml ](#tab-panel-10309)
 
 JSONC
 

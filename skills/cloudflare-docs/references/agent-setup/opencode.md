@@ -59,7 +59,7 @@ opencode
 5. **Try a prompt**  
 For example:  
 ```  
-Create a Logpush job to stream Workers analytics to my data warehouse.  
+Use Workers for Platforms to let my customers deploy their own code in isolated environments.  
 ```
 
 ## Cloudflare platform access
@@ -101,7 +101,6 @@ MCP servers provide typed tools to call into Cloudflare at runtime. There are tw
 * GraphQL server Get analytics data using Cloudflare’s GraphQL API https://graphql.mcp.cloudflare.com/mcp
 * Logpush server Get quick summaries for Logpush job health https://logs.mcp.cloudflare.com/mcp
 * Observability server Debug and get insight into your application's logs and analytics https://observability.mcp.cloudflare.com/mcp
-* Radar server Get global Internet traffic insights, trends, URL scans, and other utilities https://radar.mcp.cloudflare.com/mcp
 
 Wrangler CLI 
 

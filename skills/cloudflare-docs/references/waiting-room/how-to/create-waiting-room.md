@@ -18,8 +18,8 @@ Note
 
 For additional context on creating a waiting room, refer to [Get started](https://developers.cloudflare.com/waiting-room/get-started/).
 
-* [ Dashboard ](#tab-panel-8402)
-* [ API ](#tab-panel-8403)
+* [ Dashboard ](#tab-panel-10102)
+* [ API ](#tab-panel-10103)
 
 1. Within your application, go to **Traffic** \> **Waiting Room**.
 2. Select **Create**.

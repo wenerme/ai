@@ -27,8 +27,8 @@ The RPC system is designed to feel as similar as possible to calling a JavaScrip
 
 For example, if Worker B implements the public method `add(a, b)`:
 
-* [  wrangler.jsonc ](#tab-panel-9817)
-* [  wrangler.toml ](#tab-panel-9818)
+* [  wrangler.jsonc ](#tab-panel-10839)
+* [  wrangler.toml ](#tab-panel-10840)
 
 JSONC
 
@@ -60,9 +60,9 @@ main = "./src/workerB.js"
 
 ```
 
-* [  JavaScript ](#tab-panel-9830)
-* [  TypeScript ](#tab-panel-9831)
-* [  Python ](#tab-panel-9832)
+* [  JavaScript ](#tab-panel-10852)
+* [  TypeScript ](#tab-panel-10853)
+* [  Python ](#tab-panel-10854)
 
 JavaScript
 
@@ -141,8 +141,8 @@ class Default(WorkerEntrypoint):
 
 Worker A can declare a [binding](https://developers.cloudflare.com/workers/runtime-apis/bindings) to Worker B:
 
-* [  wrangler.jsonc ](#tab-panel-9821)
-* [  wrangler.toml ](#tab-panel-9822)
+* [  wrangler.jsonc ](#tab-panel-10843)
+* [  wrangler.toml ](#tab-panel-10844)
 
 JSONC
 
@@ -195,9 +195,9 @@ service = "worker_b"
 
 Making it possible for Worker A to call the `add()` method from Worker B:
 
-* [  JavaScript ](#tab-panel-9825)
-* [  TypeScript ](#tab-panel-9826)
-* [  Python ](#tab-panel-9827)
+* [  JavaScript ](#tab-panel-10847)
+* [  TypeScript ](#tab-panel-10848)
+* [  Python ](#tab-panel-10849)
 
 JavaScript
 
@@ -287,8 +287,8 @@ You can send a function over RPC. When you do so, the function is replaced by a 
 
 Consider the following two Workers, connected via a [Service Binding](https://developers.cloudflare.com/workers/runtime-apis/bindings/service-bindings/rpc). The counter service provides the RPC method `newCounter()`, which returns a function:
 
-* [  wrangler.jsonc ](#tab-panel-9823)
-* [  wrangler.toml ](#tab-panel-9824)
+* [  wrangler.jsonc ](#tab-panel-10845)
+* [  wrangler.toml ](#tab-panel-10846)
 
 JSONC
 
@@ -320,8 +320,8 @@ main = "./src/counterService.js"
 
 ```
 
-* [  JavaScript ](#tab-panel-9835)
-* [  TypeScript ](#tab-panel-9836)
+* [  JavaScript ](#tab-panel-10857)
+* [  TypeScript ](#tab-panel-10858)
 
 JavaScript
 
@@ -395,8 +395,8 @@ export default class extends WorkerEntrypoint {
 
 This function can then be called by the client Worker:
 
-* [  wrangler.jsonc ](#tab-panel-9828)
-* [  wrangler.toml ](#tab-panel-9829)
+* [  wrangler.jsonc ](#tab-panel-10850)
+* [  wrangler.toml ](#tab-panel-10851)
 
 JSONC
 
@@ -447,8 +447,8 @@ service = "counter-service"
 
 ```
 
-* [  JavaScript ](#tab-panel-9833)
-* [  TypeScript ](#tab-panel-9834)
+* [  JavaScript ](#tab-panel-10855)
+* [  TypeScript ](#tab-panel-10856)
 
 JavaScript
 
@@ -522,8 +522,8 @@ To use an instance of a class that you define as a parameter or return value of 
 
 Consider the following example:
 
-* [  wrangler.jsonc ](#tab-panel-9799)
-* [  wrangler.toml ](#tab-panel-9800)
+* [  wrangler.jsonc ](#tab-panel-10821)
+* [  wrangler.toml ](#tab-panel-10822)
 
 JSONC
 
@@ -555,8 +555,8 @@ main = "./src/counter.js"
 
 ```
 
-* [  JavaScript ](#tab-panel-9815)
-* [  TypeScript ](#tab-panel-9816)
+* [  JavaScript ](#tab-panel-10837)
+* [  TypeScript ](#tab-panel-10838)
 
 JavaScript
 
@@ -668,8 +668,8 @@ export default {
 
 The method `increment` can be called directly by the client, as can the public property `value`:
 
-* [  wrangler.jsonc ](#tab-panel-9801)
-* [  wrangler.toml ](#tab-panel-9802)
+* [  wrangler.jsonc ](#tab-panel-10823)
+* [  wrangler.toml ](#tab-panel-10824)
 
 JSONC
 
@@ -724,8 +724,8 @@ entrypoint = "CounterService"
 
 ```
 
-* [  JavaScript ](#tab-panel-9807)
-* [  TypeScript ](#tab-panel-9808)
+* [  JavaScript ](#tab-panel-10829)
+* [  TypeScript ](#tab-panel-10830)
 
 JavaScript
 
@@ -807,8 +807,8 @@ Classes which do not inherit `RpcTarget` cannot be sent over RPC at all. This di
 
 When you call an RPC method and get back an object, it's common to immediately call a method on the object:
 
-* [  JavaScript ](#tab-panel-9803)
-* [  TypeScript ](#tab-panel-9804)
+* [  JavaScript ](#tab-panel-10825)
+* [  TypeScript ](#tab-panel-10826)
 
 JavaScript
 
@@ -842,8 +842,8 @@ With most RPC systems, the only way to avoid the problem would be to combine the
 
 Workers RPC allows a different approach: You can simply omit the first `await`:
 
-* [  JavaScript ](#tab-panel-9805)
-* [  TypeScript ](#tab-panel-9806)
+* [  JavaScript ](#tab-panel-10827)
+* [  TypeScript ](#tab-panel-10828)
 
 JavaScript
 
@@ -877,8 +877,8 @@ How does this work? The promise returned by an RPC is not a real JavaScript `Pro
 
 This works when calling properties of objects returned by RPC methods as well. For example:
 
-* [  JavaScript ](#tab-panel-9809)
-* [  TypeScript ](#tab-panel-9810)
+* [  JavaScript ](#tab-panel-10831)
+* [  TypeScript ](#tab-panel-10832)
 
 JavaScript
 
@@ -936,8 +936,8 @@ export class MyService extends WorkerEntrypoint {
 
 ```
 
-* [  JavaScript ](#tab-panel-9813)
-* [  TypeScript ](#tab-panel-9814)
+* [  JavaScript ](#tab-panel-10835)
+* [  TypeScript ](#tab-panel-10836)
 
 JavaScript
 
@@ -995,8 +995,8 @@ In all cases, ownership of the stream is transferred to the recipient. The sende
 
 A stub received over RPC from one Worker can be forwarded over RPC to another Worker.
 
-* [  JavaScript ](#tab-panel-9811)
-* [  TypeScript ](#tab-panel-9812)
+* [  JavaScript ](#tab-panel-10833)
+* [  TypeScript ](#tab-panel-10834)
 
 JavaScript
 
@@ -1048,8 +1048,8 @@ In this video, we explore how Cloudflare Workers support Remote Procedure Calls 
 
 * [Smart Placement](https://developers.cloudflare.com/workers/configuration/placement/) is currently ignored when making RPC calls. If Smart Placement is enabled for Worker A, and Worker B declares a [Service Binding](https://developers.cloudflare.com/workers/runtime-apis/bindings) to it, when Worker B calls Worker A via RPC, Worker A will run locally, on the same machine.
 * The maximum serialized RPC limit is 32 MiB. Consider using [ReadableStream](https://developers.cloudflare.com/workers/runtime-apis/streams/readablestream/) when returning more data.  
-   * [  JavaScript ](#tab-panel-9819)  
-   * [  TypeScript ](#tab-panel-9820)  
+   * [  JavaScript ](#tab-panel-10841)  
+   * [  TypeScript ](#tab-panel-10842)  
 JavaScript  
 ```  
 export class MyService extends WorkerEntrypoint {  

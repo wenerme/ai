@@ -16,8 +16,8 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 To add an exception at the zone level:
 
-* [  New dashboard ](#tab-panel-8337)
-* [ Old dashboard ](#tab-panel-8338)
+* [  New dashboard ](#tab-panel-10075)
+* [ Old dashboard ](#tab-panel-10076)
 
 1. In the Cloudflare dashboard, go to the **Security rules** page.  
 [ Go to **Security rules** ](https://dash.cloudflare.com/?to=/:account/:zone/security/security-rules)
@@ -66,8 +66,8 @@ To add an exception at the account level (Enterprise plans only):
 
 To edit an exception at the zone level:
 
-* [  New dashboard ](#tab-panel-8339)
-* [ Old dashboard ](#tab-panel-8340)
+* [  New dashboard ](#tab-panel-10077)
+* [ Old dashboard ](#tab-panel-10078)
 
 1. In the Cloudflare dashboard, go to the **Security rules** page.  
 [ Go to **Security rules** ](https://dash.cloudflare.com/?to=/:account/:zone/security/security-rules)

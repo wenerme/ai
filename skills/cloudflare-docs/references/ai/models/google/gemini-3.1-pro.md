@@ -29,6 +29,9 @@ Google's most intelligent Gemini model with improved reasoning, a medium thinkin
 
 ## Usage
 
+* [ TypeScript ](#tab-panel-508)
+* [ cURL ](#tab-panel-509)
+
 TypeScript
 
 ```
@@ -37,35 +40,7 @@ const response = await env.AI.run(
 
   'google/gemini-3.1-pro',
 
-  {
-
-    contents: [
-
-      {
-
-        role: 'user',
-
-        parts: [
-
-          {
-
-            text: 'What are the three laws of thermodynamics?',
-
-          },
-
-        ],
-
-      },
-
-    ],
-
-  },
-
-  {
-
-    gateway: { id: 'default' },
-
-  }
+  { contents: [{ parts: [{ text: 'What are the three laws of thermodynamics?' }], role: 'user' }] },
 
 )
 
@@ -74,8 +49,51 @@ console.log(response)
 
 ```
 
-* [ Output ](#tab-panel-188)
-* [ Raw response ](#tab-panel-189)
+Terminal window
+
+```
+
+curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run \
+
+  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+
+  --header "Content-Type: application/json" \
+
+  --data '{
+
+  "model": "google/gemini-3.1-pro",
+
+  "input": {
+
+    "contents": [
+
+      {
+
+        "parts": [
+
+          {
+
+            "text": "What are the three laws of thermodynamics?"
+
+          }
+
+        ],
+
+        "role": "user"
+
+      }
+
+    ]
+
+  }
+
+}'
+
+
+```
+
+* [ Output ](#tab-panel-514)
+* [ Raw response ](#tab-panel-515)
 
 The laws of thermodynamics are the fundamental principles that describe how energy moves and changes within the universe. While the prompt asks for the "three" laws, there are actually four (scientists later added a "Zeroth" law). 
 
@@ -118,9 +136,9 @@ A famous and humorous way physicists remember the laws of thermodynamics is by c
 
     {
 
-      "content": {
+      "avgLogprobs": -0.24408692330364393,
 
-        "role": "model",
+      "content": {
 
         "parts": [
 
@@ -132,39 +150,33 @@ A famous and humorous way physicists remember the laws of thermodynamics is by c
 
           }
 
-        ]
+        ],
+
+        "role": "model"
 
       },
 
-      "finishReason": "STOP",
-
-      "avgLogprobs": -0.24408692330364393
+      "finishReason": "STOP"
 
     }
 
   ],
 
+  "createTime": "2026-04-17T00:58:04.691850Z",
+
+  "gatewayMetadata": {
+
+    "keySource": "Unified"
+
+  },
+
+  "modelVersion": "gemini-3.1-pro-preview",
+
+  "responseId": "nIXhaYqdKqyA9LsPwLiNqQg",
+
   "usageMetadata": {
 
-    "promptTokenCount": 8,
-
     "candidatesTokenCount": 828,
-
-    "totalTokenCount": 1761,
-
-    "trafficType": "ON_DEMAND",
-
-    "promptTokensDetails": [
-
-      {
-
-        "modality": "TEXT",
-
-        "tokenCount": 8
-
-      }
-
-    ],
 
     "candidatesTokensDetails": [
 
@@ -178,19 +190,25 @@ A famous and humorous way physicists remember the laws of thermodynamics is by c
 
     ],
 
-    "thoughtsTokenCount": 925
+    "promptTokenCount": 8,
 
-  },
+    "promptTokensDetails": [
 
-  "modelVersion": "gemini-3.1-pro-preview",
+      {
 
-  "createTime": "2026-04-17T00:58:04.691850Z",
+        "modality": "TEXT",
 
-  "responseId": "nIXhaYqdKqyA9LsPwLiNqQg",
+        "tokenCount": 8
 
-  "gatewayMetadata": {
+      }
 
-    "keySource": "Unified"
+    ],
+
+    "thoughtsTokenCount": 925,
+
+    "totalTokenCount": 1761,
+
+    "trafficType": "ON_DEMAND"
 
   }
 
@@ -203,6 +221,9 @@ A famous and humorous way physicists remember the laws of thermodynamics is by c
 
 **With System Instruction**  — Using a system instruction to set context 
 
+* [ TypeScript ](#tab-panel-510)
+* [ cURL ](#tab-panel-511)
+
 TypeScript
 
 ```
@@ -213,53 +234,17 @@ const response = await env.AI.run(
 
   {
 
-    contents: [
+    contents: [{ parts: [{ text: 'How do I read a JSON file in Python?' }], role: 'user' }],
 
-      {
-
-        role: 'user',
-
-        parts: [
-
-          {
-
-            text: 'How do I read a JSON file in Python?',
-
-          },
-
-        ],
-
-      },
-
-    ],
+    generationConfig: { temperature: 0.3 },
 
     systemInstruction: {
 
-      parts: [
-
-        {
-
-          text: 'You are a helpful coding assistant specializing in Python.',
-
-        },
-
-      ],
-
-    },
-
-    generationConfig: {
-
-      temperature: 0.3,
+      parts: [{ text: 'You are a helpful coding assistant specializing in Python.' }],
 
     },
 
   },
-
-  {
-
-    gateway: { id: 'default' },
-
-  }
 
 )
 
@@ -268,8 +253,71 @@ console.log(response)
 
 ```
 
-* [ Output ](#tab-panel-190)
-* [ Raw response ](#tab-panel-191)
+Terminal window
+
+```
+
+curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run \
+
+  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+
+  --header "Content-Type: application/json" \
+
+  --data '{
+
+  "model": "google/gemini-3.1-pro",
+
+  "input": {
+
+    "contents": [
+
+      {
+
+        "parts": [
+
+          {
+
+            "text": "How do I read a JSON file in Python?"
+
+          }
+
+        ],
+
+        "role": "user"
+
+      }
+
+    ],
+
+    "generationConfig": {
+
+      "temperature": 0.3
+
+    },
+
+    "systemInstruction": {
+
+      "parts": [
+
+        {
+
+          "text": "You are a helpful coding assistant specializing in Python."
+
+        }
+
+      ]
+
+    }
+
+  }
+
+}'
+
+
+```
+
+* [ Output ](#tab-panel-518)
+* [ Raw response ](#tab-panel-519)
 
 To read a JSON file in Python, you can use the built-in `json` module. 
 
@@ -330,9 +378,9 @@ except json.JSONDecodeError:
 
     {
 
-      "content": {
+      "avgLogprobs": -0.13193573454933058,
 
-        "role": "model",
+      "content": {
 
         "parts": [
 
@@ -344,39 +392,33 @@ except json.JSONDecodeError:
 
           }
 
-        ]
+        ],
+
+        "role": "model"
 
       },
 
-      "finishReason": "STOP",
-
-      "avgLogprobs": -0.13193573454933058
+      "finishReason": "STOP"
 
     }
 
   ],
 
+  "createTime": "2026-04-17T00:58:06.706819Z",
+
+  "gatewayMetadata": {
+
+    "keySource": "Unified"
+
+  },
+
+  "modelVersion": "gemini-3.1-pro-preview",
+
+  "responseId": "noXhaYOSK5eDpucP34WHiQw",
+
   "usageMetadata": {
 
-    "promptTokenCount": 20,
-
     "candidatesTokenCount": 478,
-
-    "totalTokenCount": 1088,
-
-    "trafficType": "ON_DEMAND",
-
-    "promptTokensDetails": [
-
-      {
-
-        "modality": "TEXT",
-
-        "tokenCount": 20
-
-      }
-
-    ],
 
     "candidatesTokensDetails": [
 
@@ -390,19 +432,25 @@ except json.JSONDecodeError:
 
     ],
 
-    "thoughtsTokenCount": 590
+    "promptTokenCount": 20,
 
-  },
+    "promptTokensDetails": [
 
-  "modelVersion": "gemini-3.1-pro-preview",
+      {
 
-  "createTime": "2026-04-17T00:58:06.706819Z",
+        "modality": "TEXT",
 
-  "responseId": "noXhaYOSK5eDpucP34WHiQw",
+        "tokenCount": 20
 
-  "gatewayMetadata": {
+      }
 
-    "keySource": "Unified"
+    ],
+
+    "thoughtsTokenCount": 590,
+
+    "totalTokenCount": 1088,
+
+    "trafficType": "ON_DEMAND"
 
   }
 
@@ -412,6 +460,9 @@ except json.JSONDecodeError:
 ```
 
 **Multi-turn Conversation**  — Continuing a conversation with context 
+
+* [ TypeScript ](#tab-panel-516)
+* [ cURL ](#tab-panel-517)
 
 TypeScript
 
@@ -427,23 +478,13 @@ const response = await env.AI.run(
 
       {
 
+        parts: [{ text: 'I need help planning a road trip from San Francisco to Los Angeles.' }],
+
         role: 'user',
-
-        parts: [
-
-          {
-
-            text: 'I need help planning a road trip from San Francisco to Los Angeles.',
-
-          },
-
-        ],
 
       },
 
       {
-
-        role: 'model',
 
         parts: [
 
@@ -455,39 +496,17 @@ const response = await env.AI.run(
 
         ],
 
-      },
-
-      {
-
-        role: 'user',
-
-        parts: [
-
-          {
-
-            text: 'Yes, what are some good places to stop?',
-
-          },
-
-        ],
+        role: 'model',
 
       },
+
+      { parts: [{ text: 'Yes, what are some good places to stop?' }], role: 'user' },
 
     ],
 
-    generationConfig: {
-
-      maxOutputTokens: 500,
-
-    },
+    generationConfig: { maxOutputTokens: 2048 },
 
   },
-
-  {
-
-    gateway: { id: 'default' },
-
-  }
 
 )
 
@@ -496,8 +515,89 @@ console.log(response)
 
 ```
 
-* [ Output ](#tab-panel-192)
-* [ Raw response ](#tab-panel-193)
+Terminal window
+
+```
+
+curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run \
+
+  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+
+  --header "Content-Type: application/json" \
+
+  --data '{
+
+  "model": "google/gemini-3.1-pro",
+
+  "input": {
+
+    "contents": [
+
+      {
+
+        "parts": [
+
+          {
+
+            "text": "I need help planning a road trip from San Francisco to Los Angeles."
+
+          }
+
+        ],
+
+        "role": "user"
+
+      },
+
+      {
+
+        "parts": [
+
+          {
+
+            "text": "I'd be happy to help! The drive is about 380 miles and takes roughly 5-6 hours. Would you like suggestions for scenic routes or interesting stops along the way?"
+
+          }
+
+        ],
+
+        "role": "model"
+
+      },
+
+      {
+
+        "parts": [
+
+          {
+
+            "text": "Yes, what are some good places to stop?"
+
+          }
+
+        ],
+
+        "role": "user"
+
+      }
+
+    ],
+
+    "generationConfig": {
+
+      "maxOutputTokens": 2048
+
+    }
+
+  }
+
+}'
+
+
+```
+
+* [ Output ](#tab-panel-520)
+* [ Raw response ](#tab-panel-521)
 
 The best stops really depend on which route you decide to take! There are three
 
@@ -509,9 +609,9 @@ The best stops really depend on which route you decide to take! There are three
 
     {
 
-      "content": {
+      "avgLogprobs": -8.212950519499952,
 
-        "role": "model",
+      "content": {
 
         "parts": [
 
@@ -523,39 +623,33 @@ The best stops really depend on which route you decide to take! There are three
 
           }
 
-        ]
+        ],
+
+        "role": "model"
 
       },
 
-      "finishReason": "MAX_TOKENS",
-
-      "avgLogprobs": -8.212950519499952
+      "finishReason": "MAX_TOKENS"
 
     }
 
   ],
 
+  "createTime": "2026-04-17T00:58:22.165603Z",
+
+  "gatewayMetadata": {
+
+    "keySource": "Unified"
+
+  },
+
+  "modelVersion": "gemini-3.1-pro-preview",
+
+  "responseId": "roXhaeONCsmApucP_8_n-Qc",
+
   "usageMetadata": {
 
-    "promptTokenCount": 64,
-
     "candidatesTokenCount": 16,
-
-    "totalTokenCount": 560,
-
-    "trafficType": "ON_DEMAND",
-
-    "promptTokensDetails": [
-
-      {
-
-        "modality": "TEXT",
-
-        "tokenCount": 64
-
-      }
-
-    ],
 
     "candidatesTokensDetails": [
 
@@ -569,19 +663,25 @@ The best stops really depend on which route you decide to take! There are three
 
     ],
 
-    "thoughtsTokenCount": 480
+    "promptTokenCount": 64,
 
-  },
+    "promptTokensDetails": [
 
-  "modelVersion": "gemini-3.1-pro-preview",
+      {
 
-  "createTime": "2026-04-17T00:58:22.165603Z",
+        "modality": "TEXT",
 
-  "responseId": "roXhaeONCsmApucP_8_n-Qc",
+        "tokenCount": 64
 
-  "gatewayMetadata": {
+      }
 
-    "keySource": "Unified"
+    ],
+
+    "thoughtsTokenCount": 480,
+
+    "totalTokenCount": 560,
+
+    "trafficType": "ON_DEMAND"
 
   }
 
@@ -591,6 +691,9 @@ The best stops really depend on which route you decide to take! There are three
 ```
 
 **Creative Writing**  — Higher temperature for creative output 
+
+* [ TypeScript ](#tab-panel-512)
+* [ cURL ](#tab-panel-513)
 
 TypeScript
 
@@ -606,37 +709,17 @@ const response = await env.AI.run(
 
       {
 
+        parts: [{ text: 'Write a short story opening about a detective finding an unusual clue.' }],
+
         role: 'user',
-
-        parts: [
-
-          {
-
-            text: 'Write a short story opening about a detective finding an unusual clue.',
-
-          },
-
-        ],
 
       },
 
     ],
 
-    generationConfig: {
-
-      temperature: 0.8,
-
-      maxOutputTokens: 300,
-
-    },
+    generationConfig: { maxOutputTokens: 1500, temperature: 0.8 },
 
   },
-
-  {
-
-    gateway: { id: 'default' },
-
-  }
 
 )
 
@@ -645,8 +728,59 @@ console.log(response)
 
 ```
 
-* [ Output ](#tab-panel-194)
-* [ Raw response ](#tab-panel-195)
+Terminal window
+
+```
+
+curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run \
+
+  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+
+  --header "Content-Type: application/json" \
+
+  --data '{
+
+  "model": "google/gemini-3.1-pro",
+
+  "input": {
+
+    "contents": [
+
+      {
+
+        "parts": [
+
+          {
+
+            "text": "Write a short story opening about a detective finding an unusual clue."
+
+          }
+
+        ],
+
+        "role": "user"
+
+      }
+
+    ],
+
+    "generationConfig": {
+
+      "maxOutputTokens": 1500,
+
+      "temperature": 0.8
+
+    }
+
+  }
+
+}'
+
+
+```
+
+* [ Output ](#tab-panel-522)
+* [ Raw response ](#tab-panel-523)
 
 The air in Elias Vance’s apartment smelled of stale copper
 
@@ -658,9 +792,9 @@ The air in Elias Vance’s apartment smelled of stale copper
 
     {
 
-      "content": {
+      "avgLogprobs": -7.339017173991171,
 
-        "role": "model",
+      "content": {
 
         "parts": [
 
@@ -672,39 +806,33 @@ The air in Elias Vance’s apartment smelled of stale copper
 
           }
 
-        ]
+        ],
+
+        "role": "model"
 
       },
 
-      "finishReason": "MAX_TOKENS",
-
-      "avgLogprobs": -7.339017173991171
+      "finishReason": "MAX_TOKENS"
 
     }
 
   ],
 
+  "createTime": "2026-04-17T00:58:27.814075Z",
+
+  "gatewayMetadata": {
+
+    "keySource": "Unified"
+
+  },
+
+  "modelVersion": "gemini-3.1-pro-preview",
+
+  "responseId": "s4XhafvXMemVq8YPzcOY0Qg",
+
   "usageMetadata": {
 
-    "promptTokenCount": 13,
-
     "candidatesTokenCount": 12,
-
-    "totalTokenCount": 309,
-
-    "trafficType": "ON_DEMAND",
-
-    "promptTokensDetails": [
-
-      {
-
-        "modality": "TEXT",
-
-        "tokenCount": 13
-
-      }
-
-    ],
 
     "candidatesTokensDetails": [
 
@@ -718,19 +846,25 @@ The air in Elias Vance’s apartment smelled of stale copper
 
     ],
 
-    "thoughtsTokenCount": 284
+    "promptTokenCount": 13,
 
-  },
+    "promptTokensDetails": [
 
-  "modelVersion": "gemini-3.1-pro-preview",
+      {
 
-  "createTime": "2026-04-17T00:58:27.814075Z",
+        "modality": "TEXT",
 
-  "responseId": "s4XhafvXMemVq8YPzcOY0Qg",
+        "tokenCount": 13
 
-  "gatewayMetadata": {
+      }
 
-    "keySource": "Unified"
+    ],
+
+    "thoughtsTokenCount": 284,
+
+    "totalTokenCount": 309,
+
+    "trafficType": "ON_DEMAND"
 
   }
 
@@ -741,16 +875,12 @@ The air in Elias Vance’s apartment smelled of stale copper
 
 ## Parameters
 
-* [ Input ](#tab-panel-196)
-* [ Output ](#tab-panel-197)
+* [ Input ](#tab-panel-524)
+* [ Output ](#tab-panel-525)
 
 ▶contents\[\]
 
 `array`required
-
-▶systemInstruction{}
-
-`object`
 
 ▶generationConfig{}
 
@@ -760,25 +890,29 @@ The air in Elias Vance’s apartment smelled of stale copper
 
 `array`
 
-▶tools\[\]
+▶systemInstruction{}
 
-`array`
+`object`
 
 toolConfig
 
 ``
 
+▶tools\[\]
+
+`array`
+
 ▶candidates\[\]
 
 `array`
 
-▶usageMetadata{}
-
-`object`
-
 modelVersion
 
 `string`
+
+▶usageMetadata{}
+
+`object`
 
 ## API Schemas (Raw)
 

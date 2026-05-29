@@ -142,14 +142,14 @@ If your Astro project is entirely pre-rendered, follow these steps:
 
 1. **Add a Wrangler configuration file**  
 In your project root, create a Wrangler configuration file with the following content:  
-   * [  wrangler.jsonc ](#tab-panel-9583)  
-   * [  wrangler.toml ](#tab-panel-9584)  
+   * [  wrangler.jsonc ](#tab-panel-10605)  
+   * [  wrangler.toml ](#tab-panel-10606)  
 JSONC  
 ```  
 {  
   "name": "my-astro-app",  
   // Set this to today's date  
-  "compatibility_date": "2026-05-18",  
+  "compatibility_date": "2026-05-28",  
   "assets": {  
     "directory": "./dist"  
   }  
@@ -159,7 +159,7 @@ TOML
 ```  
 name = "my-astro-app"  
 # Set this to today's date  
-compatibility_date = "2026-05-18"  
+compatibility_date = "2026-05-28"  
 [assets]  
 directory = "./dist"  
 ```  
@@ -214,8 +214,8 @@ _routes.json
 ```
 3. **Add a Wrangler configuration file**  
 In your project root, create a Wrangler configuration file with the following content:  
-   * [  wrangler.jsonc ](#tab-panel-9587)  
-   * [  wrangler.toml ](#tab-panel-9588)  
+   * [  wrangler.jsonc ](#tab-panel-10609)  
+   * [  wrangler.toml ](#tab-panel-10610)  
 JSONC  
 ```  
 {  
@@ -223,7 +223,7 @@ JSONC
   "main": "./dist/_worker.js/index.js",  
   // Update to today's date  
   // Set this to today's date  
-  "compatibility_date": "2026-05-18",  
+  "compatibility_date": "2026-05-28",  
   "compatibility_flags": ["nodejs_compat"],  
   "assets": {  
     "binding": "ASSETS",  
@@ -239,7 +239,7 @@ TOML
 name = "my-astro-app"  
 main = "./dist/_worker.js/index.js"  
 # Set this to today's date  
-compatibility_date = "2026-05-18"  
+compatibility_date = "2026-05-28"  
 compatibility_flags = [ "nodejs_compat" ]  
 [assets]  
 binding = "ASSETS"  
@@ -313,8 +313,8 @@ You can customize the KV binding name with the [sessionKVBindingName ↗](https:
 
 To serve a custom 404 page for your Astro site, add `not_found_handling` to your Wrangler configuration:
 
-* [  wrangler.jsonc ](#tab-panel-9585)
-* [  wrangler.toml ](#tab-panel-9586)
+* [  wrangler.jsonc ](#tab-panel-10607)
+* [  wrangler.toml ](#tab-panel-10608)
 
 JSONC
 

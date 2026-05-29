@@ -12,8 +12,8 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 # Create a rate limiting rule in the dashboard
 
-* [  New dashboard ](#tab-panel-8341)
-* [ Old dashboard ](#tab-panel-8342)
+* [  New dashboard ](#tab-panel-10079)
+* [ Old dashboard ](#tab-panel-10080)
 
 1. In the Cloudflare dashboard, go to the **Security rules** page.  
 [ Go to **Security rules** ](https://dash.cloudflare.com/?to=/:account/:zone/security/security-rules)

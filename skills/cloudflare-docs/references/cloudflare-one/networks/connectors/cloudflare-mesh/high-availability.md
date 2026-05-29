@@ -1,6 +1,6 @@
 ---
 title: High availability
-description: High availability in Zero Trust networking.
+description: High availability for Cloudflare Mesh nodes.
 image: https://developers.cloudflare.com/zt-preview.png
 ---
 
@@ -42,8 +42,8 @@ flowchart LR
 
 ## Create a node with high availability
 
-* [ Dashboard ](#tab-panel-5189)
-* [ API ](#tab-panel-5190)
+* [ Dashboard ](#tab-panel-6147)
+* [ API ](#tab-panel-6148)
 
 When you create a Mesh node through the dashboard, high availability is enabled by default. To create a new node:
 
@@ -82,8 +82,8 @@ The response includes a `token` field. Use this token to register replicas.
 
 To add a replica to an existing high-availability node, install the Cloudflare One Client on a new Linux host and register it using the same node token.
 
-* [ Dashboard ](#tab-panel-5195)
-* [ API ](#tab-panel-5196)
+* [ Dashboard ](#tab-panel-6155)
+* [ API ](#tab-panel-6156)
 
 1. In the Cloudflare dashboard, go to **Networking** \> **Mesh**.  
 [ Go to **Mesh** ](https://dash.cloudflare.com/?to=/:account/mesh)
@@ -94,8 +94,8 @@ To add a replica to an existing high-availability node, install the Cloudflare O
 
 Installation commands
 
-* [ Debian / Ubuntu ](#tab-panel-5191)
-* [ RedHat / CentOS ](#tab-panel-5192)
+* [ Debian / Ubuntu ](#tab-panel-6151)
+* [ RedHat / CentOS ](#tab-panel-6152)
 
 Terminal window
 
@@ -168,8 +168,8 @@ curl "https://api.cloudflare.com/client/v4/accounts/{account_id}/warp_connector/
 ```  
 The response contains the token string.
 2. Install the client and register on a new Linux host:  
-   * [ Debian / Ubuntu ](#tab-panel-5193)  
-   * [ RedHat / CentOS ](#tab-panel-5194)  
+   * [ Debian / Ubuntu ](#tab-panel-6153)  
+   * [ RedHat / CentOS ](#tab-panel-6154)  
 Terminal window  
 ```  
 curl -fsSL https://pkg.cloudflareclient.com/pubkey.gpg | sudo gpg --yes --dearmor -o /usr/share/keyrings/cloudflare-warp-archive-keyring.gpg &&  
@@ -203,6 +203,20 @@ sudo warp-cli connector new <TOKEN> && sudo warp-cli connect
 The new replica will be in standby mode until the active replica disconnects.
 
 ## View replicas
+
+* [ Dashboard ](#tab-panel-6145)
+* [ API ](#tab-panel-6146)
+
+1. In the Cloudflare dashboard, go to **Networking** \> **Mesh**.  
+[ Go to **Mesh** ](https://dash.cloudflare.com/?to=/:account/mesh)
+2. Select an HA-enabled node. HA nodes display an **HA** badge in the overview table.
+3. The node detail page shows a tab for each replica. Each tab displays:  
+   * **Active** or **Passive** badge  
+   * Mesh IP (IPv4 and IPv6)  
+   * Edge data center  
+   * Origin IP  
+   * Platform, version, and device name  
+   * Connected since timestamp
 
 To view all replicas and their HA status, query the connections API endpoint:
 
@@ -281,6 +295,45 @@ The response includes each replica with its `ha_status` (`active` or `passive`),
 
 
 ```
+
+## Manual failover
+
+In addition to automatic failover when the active replica disconnects, you can manually promote a passive replica to active.
+
+* [ Dashboard ](#tab-panel-6149)
+* [ API ](#tab-panel-6150)
+
+1. In the Cloudflare dashboard, go to **Networking** \> **Mesh**.  
+[ Go to **Mesh** ](https://dash.cloudflare.com/?to=/:account/mesh)
+2. Select an HA-enabled node.
+3. Select the tab for the passive replica you want to promote.
+4. Select **Promote to active**.
+5. In the confirmation dialog, select **Promote to active** to confirm.
+
+Traffic reroutes to the promoted replica immediately. The previous active replica switches to passive standby.
+
+To manually trigger failover, send a `PUT` request with the `client_id` of the replica you want to promote:
+
+Terminal window
+
+```
+
+curl -X PUT "https://api.cloudflare.com/client/v4/accounts/{account_id}/warp_connector/{node_id}/failover" \
+
+  -H "Authorization: Bearer {api_token}" \
+
+  -H "Content-Type: application/json" \
+
+  -d '{
+
+    "client_id": "e07272a6-21fc-11f1-8997-e28f01ba3991"
+
+  }'
+
+
+```
+
+Get the `client_id` from the [connections endpoint](#view-replicas). Use the `id` field of the replica you want to promote.
 
 ## Considerations
 

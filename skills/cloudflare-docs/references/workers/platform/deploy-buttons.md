@@ -29,9 +29,9 @@ Deploy to Cloudflare buttons simplify the deployment of a Workers application by
 
 Deploy to Cloudflare buttons can be embedded anywhere developers might want to launch your project. To add a Deploy to Cloudflare button, copy the following snippet and replace the Git repository URL with your project's URL. You can also optionally specify a subdirectory.
 
-* [ Markdown ](#tab-panel-8990)
-* [ HTML ](#tab-panel-8991)
-* [ URL ](#tab-panel-8992)
+* [ Markdown ](#tab-panel-10698)
+* [ HTML ](#tab-panel-10699)
+* [ URL ](#tab-panel-10700)
 
 ```
 
@@ -73,8 +73,8 @@ Cloudflare will read the Wrangler configuration file of your source repo to dete
 
 [Worker environment variables](https://developers.cloudflare.com/workers/configuration/environment-variables/) can be defined in your Wrangler configuration file as normal:
 
-* [  wrangler.jsonc ](#tab-panel-8993)
-* [  wrangler.toml ](#tab-panel-8994)
+* [  wrangler.jsonc ](#tab-panel-10701)
+* [  wrangler.toml ](#tab-panel-10702)
 
 JSONC
 
@@ -88,7 +88,7 @@ JSONC
 
   // Set this to today's date
 
-  "compatibility_date": "2026-04-29",
+  "compatibility_date": "2026-05-28",
 
   "vars": {
 
@@ -111,7 +111,7 @@ main = "./src/index.ts"
 
 # Set this to today's date
 
-compatibility_date = "2026-04-29"
+compatibility_date = "2026-05-28"
 
 
 [vars]
@@ -134,8 +134,8 @@ COOKIE_SIGNING_KEY=my-secret # comment
 
 [Secrets Store](https://developers.cloudflare.com/secrets-store/) secrets can be configured in the Wrangler configuration file as normal:
 
-* [  wrangler.jsonc ](#tab-panel-8995)
-* [  wrangler.toml ](#tab-panel-8996)
+* [  wrangler.jsonc ](#tab-panel-10703)
+* [  wrangler.toml ](#tab-panel-10704)
 
 JSONC
 
@@ -149,7 +149,7 @@ JSONC
 
   // Set this to today's date
 
-  "compatibility_date": "2026-04-29",
+  "compatibility_date": "2026-05-28",
 
   "secrets_store_secrets": [
 
@@ -180,7 +180,7 @@ main = "./src/index.ts"
 
 # Set this to today's date
 
-compatibility_date = "2026-04-29"
+compatibility_date = "2026-05-28"
 
 
 [[secrets_store_secrets]]

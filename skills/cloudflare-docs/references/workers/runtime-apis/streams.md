@@ -33,8 +33,8 @@ If your Worker only forwards subrequest responses to the client verbatim without
 
 The worker can create a `Response` object using a `ReadableStream` as the body. Any data provided through the`ReadableStream` will be streamed to the client as it becomes available.
 
-* [  Module Worker ](#tab-panel-9157)
-* [  Service Worker ](#tab-panel-9158)
+* [  Module Worker ](#tab-panel-10865)
+* [  Service Worker ](#tab-panel-10866)
 
 JavaScript
 
@@ -93,8 +93,8 @@ async function fetchAndStream(request) {
 
 A [TransformStream](https://developers.cloudflare.com/workers/runtime-apis/streams/transformstream/) and the [ReadableStream.pipeTo()](https://developers.cloudflare.com/workers/runtime-apis/streams/readablestream/#methods) method can be used to modify the response body as it is being streamed:
 
-* [  Module Worker ](#tab-panel-9159)
-* [  Service Worker ](#tab-panel-9160)
+* [  Module Worker ](#tab-panel-10867)
+* [  Service Worker ](#tab-panel-10868)
 
 JavaScript
 

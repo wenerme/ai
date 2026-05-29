@@ -28,6 +28,9 @@ A lower-latency version of Hailuo 2.3 that preserves core motion quality, visual
 
 ## Usage
 
+* [ TypeScript ](#tab-panel-758)
+* [ cURL ](#tab-panel-759)
+
 TypeScript
 
 ```
@@ -38,6 +41,10 @@ const response = await env.AI.run(
 
   {
 
+    duration: 6,
+
+    fast_pretreatment: false,
+
     first_frame_image:
 
       'https://replicate.delivery/xezq/MQpUhqkESIIQDlWUxtNcsznZLfUTmhEbCV3vdAZGHGPwwaMLA/tmpgl4gvv5n.jpeg',
@@ -46,19 +53,9 @@ const response = await env.AI.run(
 
     prompt_optimizer: true,
 
-    fast_pretreatment: false,
-
-    duration: 6,
-
     resolution: '768P',
 
   },
-
-  {
-
-    gateway: { id: 'default' },
-
-  }
 
 )
 
@@ -67,30 +64,65 @@ console.log(response)
 
 ```
 
-* [ Output ](#tab-panel-312)
-* [ Raw response ](#tab-panel-313)
+Terminal window
+
+```
+
+curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run \
+
+  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+
+  --header "Content-Type: application/json" \
+
+  --data '{
+
+  "model": "minimax/hailuo-2.3-fast",
+
+  "input": {
+
+    "duration": 6,
+
+    "fast_pretreatment": false,
+
+    "first_frame_image": "https://replicate.delivery/xezq/MQpUhqkESIIQDlWUxtNcsznZLfUTmhEbCV3vdAZGHGPwwaMLA/tmpgl4gvv5n.jpeg",
+
+    "prompt": "Gentle movement and subtle animation, natural-looking motion",
+
+    "prompt_optimizer": true,
+
+    "resolution": "768P"
+
+  }
+
+}'
+
+
+```
+
+* [ Output ](#tab-panel-754)
+* [ Raw response ](#tab-panel-755)
 
 ```
 
 {
 
-  "state": "Completed",
-
-  "result": {
-
-    "video": "https://video-product.cdn.minimax.io/inference_output/video/2026-04-17/eff40703-0339-4d1d-b66a-db050e878038/output.mp4",
-
-    "task_id": "388514752192863",
-
-    "status": "Success"
-
-  },
-
   "gatewayMetadata": {
 
     "keySource": "Unified"
 
-  }
+  },
+
+  "result": {
+
+    "status": "Success",
+
+    "task_id": "388514752192863",
+
+    "video": "https://video-product.cdn.minimax.io/inference_output/video/2026-04-17/eff40703-0339-4d1d-b66a-db050e878038/output.mp4"
+
+  },
+
+  "state": "Completed"
 
 }
 
@@ -101,6 +133,9 @@ console.log(response)
 
 **High Resolution I2V**  — Animate a photo in 1080P 
 
+* [ TypeScript ](#tab-panel-762)
+* [ cURL ](#tab-panel-763)
+
 TypeScript
 
 ```
@@ -110,6 +145,10 @@ const response = await env.AI.run(
   'minimax/hailuo-2.3-fast',
 
   {
+
+    duration: 6,
+
+    fast_pretreatment: false,
 
     first_frame_image:
 
@@ -119,19 +158,9 @@ const response = await env.AI.run(
 
     prompt_optimizer: true,
 
-    fast_pretreatment: false,
-
-    duration: 6,
-
     resolution: '1080P',
 
   },
-
-  {
-
-    gateway: { id: 'default' },
-
-  }
 
 )
 
@@ -140,30 +169,65 @@ console.log(response)
 
 ```
 
-* [ Output ](#tab-panel-314)
-* [ Raw response ](#tab-panel-315)
+Terminal window
+
+```
+
+curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run \
+
+  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+
+  --header "Content-Type: application/json" \
+
+  --data '{
+
+  "model": "minimax/hailuo-2.3-fast",
+
+  "input": {
+
+    "duration": 6,
+
+    "fast_pretreatment": false,
+
+    "first_frame_image": "https://replicate.delivery/xezq/IeNNble3XUqhpUZTd3CkYTUf8EgkFU1fl1Jnyive3B26MsGzC/tmp51dpln4i.jpeg",
+
+    "prompt": "Camera slowly pans across the scene with cinematic depth of field",
+
+    "prompt_optimizer": true,
+
+    "resolution": "1080P"
+
+  }
+
+}'
+
+
+```
+
+* [ Output ](#tab-panel-756)
+* [ Raw response ](#tab-panel-757)
 
 ```
 
 {
 
-  "state": "Completed",
-
-  "result": {
-
-    "video": "https://video-product.cdn.minimax.io/inference_output/video/2026-04-17/2b6251d2-d4ae-4d58-b12f-2609c50fadc2/output.mp4",
-
-    "task_id": "388515984507205",
-
-    "status": "Success"
-
-  },
-
   "gatewayMetadata": {
 
     "keySource": "Unified"
 
-  }
+  },
+
+  "result": {
+
+    "status": "Success",
+
+    "task_id": "388515984507205",
+
+    "video": "https://video-product.cdn.minimax.io/inference_output/video/2026-04-17/2b6251d2-d4ae-4d58-b12f-2609c50fadc2/output.mp4"
+
+  },
+
+  "state": "Completed"
 
 }
 
@@ -171,6 +235,9 @@ console.log(response)
 ```
 
 **Fast Processing**  — Quick I2V with fast pretreatment enabled 
+
+* [ TypeScript ](#tab-panel-764)
+* [ cURL ](#tab-panel-765)
 
 TypeScript
 
@@ -182,6 +249,10 @@ const response = await env.AI.run(
 
   {
 
+    duration: 6,
+
+    fast_pretreatment: true,
+
     first_frame_image:
 
       'https://replicate.delivery/xezq/jfh37lJpnDQhaKcAfCrxSCEh7HA7lv5cCWmJW284tYXwh1YWA/tmpw2i437qe.jpeg',
@@ -190,19 +261,9 @@ const response = await env.AI.run(
 
     prompt_optimizer: true,
 
-    fast_pretreatment: true,
-
-    duration: 6,
-
     resolution: '768P',
 
   },
-
-  {
-
-    gateway: { id: 'default' },
-
-  }
 
 )
 
@@ -211,30 +272,65 @@ console.log(response)
 
 ```
 
-* [ Output ](#tab-panel-316)
-* [ Raw response ](#tab-panel-317)
+Terminal window
+
+```
+
+curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run \
+
+  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+
+  --header "Content-Type: application/json" \
+
+  --data '{
+
+  "model": "minimax/hailuo-2.3-fast",
+
+  "input": {
+
+    "duration": 6,
+
+    "fast_pretreatment": true,
+
+    "first_frame_image": "https://replicate.delivery/xezq/jfh37lJpnDQhaKcAfCrxSCEh7HA7lv5cCWmJW284tYXwh1YWA/tmpw2i437qe.jpeg",
+
+    "prompt": "Hair blowing in the wind, eyes blinking naturally",
+
+    "prompt_optimizer": true,
+
+    "resolution": "768P"
+
+  }
+
+}'
+
+
+```
+
+* [ Output ](#tab-panel-760)
+* [ Raw response ](#tab-panel-761)
 
 ```
 
 {
 
-  "state": "Completed",
-
-  "result": {
-
-    "video": "https://video-product.cdn.minimax.io/inference_output/video/2026-04-17/b64303a0-0227-4d42-983a-dcaec397b6b1/output.mp4",
-
-    "task_id": "388515980755024",
-
-    "status": "Success"
-
-  },
-
   "gatewayMetadata": {
 
     "keySource": "Unified"
 
-  }
+  },
+
+  "result": {
+
+    "status": "Success",
+
+    "task_id": "388515980755024",
+
+    "video": "https://video-product.cdn.minimax.io/inference_output/video/2026-04-17/b64303a0-0227-4d42-983a-dcaec397b6b1/output.mp4"
+
+  },
+
+  "state": "Completed"
 
 }
 
@@ -243,8 +339,16 @@ console.log(response)
 
 ## Parameters
 
-* [ Input ](#tab-panel-318)
-* [ Output ](#tab-panel-319)
+* [ Input ](#tab-panel-766)
+* [ Output ](#tab-panel-767)
+
+▶duration
+
+`one of`required
+
+fast\_pretreatment
+
+`boolean`requireddefault: false
 
 first\_frame\_image
 
@@ -258,29 +362,21 @@ prompt\_optimizer
 
 `boolean`requireddefault: true
 
-fast\_pretreatment
-
-`boolean`requireddefault: false
-
-▶duration
-
-`one of`required
-
 resolution
 
 `string`requireddefault: 768Penum: 768P, 1080P
 
-video
+status
 
-`string`format: uri
+`string`enum: Preparing, Queueing, Processing, Success, Fail
 
 task\_id
 
 `string`
 
-status
+video
 
-`string`enum: Preparing, Queueing, Processing, Success, Fail
+`string`format: uri
 
 ## API Schemas (Raw)
 

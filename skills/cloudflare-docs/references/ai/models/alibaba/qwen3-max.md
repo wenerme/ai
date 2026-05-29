@@ -28,6 +28,9 @@ Alibaba's Qwen 3 Max is a large language model with strong coding, reasoning, an
 
 ## Usage
 
+* [ TypeScript ](#tab-panel-28)
+* [ cURL ](#tab-panel-29)
+
 TypeScript
 
 ```
@@ -36,27 +39,7 @@ const response = await env.AI.run(
 
   'alibaba/qwen3-max',
 
-  {
-
-    messages: [
-
-      {
-
-        role: 'user',
-
-        content: 'What are the three laws of thermodynamics?',
-
-      },
-
-    ],
-
-  },
-
-  {
-
-    gateway: { id: 'default' },
-
-  }
+  { messages: [{ content: 'What are the three laws of thermodynamics?', role: 'user' }] },
 
 )
 
@@ -65,8 +48,39 @@ console.log(response)
 
 ```
 
-* [ Output ](#tab-panel-16)
-* [ Raw response ](#tab-panel-17)
+Terminal window
+
+```
+
+curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/v1/chat/completions \
+
+  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+
+  --header "Content-Type: application/json" \
+
+  --data '{
+
+  "model": "alibaba/qwen3-max",
+
+  "messages": [
+
+    {
+
+      "content": "What are the three laws of thermodynamics?",
+
+      "role": "user"
+
+    }
+
+  ]
+
+}'
+
+
+```
+
+* [ Output ](#tab-panel-36)
+* [ Raw response ](#tab-panel-37)
 
 The three laws of thermodynamics are fundamental principles that describe the behavior of energy and entropy in physical systems:
 
@@ -98,57 +112,57 @@ So, while commonly referred to as “three laws,” modern physics includes **fo
 
 {
 
-  "id": "chatcmpl-1cc68967-fae9-9f2f-aa72-ec0674038c0a",
-
-  "object": "chat.completion",
-
-  "created": 1776471062,
-
-  "model": "qwen3-max",
-
   "choices": [
 
     {
 
+      "finish_reason": "stop",
+
       "index": 0,
+
+      "logprobs": null,
 
       "message": {
 
-        "role": "assistant",
+        "content": "The three laws of thermodynamics are fundamental principles that describe the behavior of energy and entropy in physical systems:\n\n1. **Zeroth Law of Thermodynamics**:  \n   *If two systems are each in thermal equilibrium with a third system, then they are in thermal equilibrium with each other.*  \n   This law establishes the concept of temperature and justifies the use of thermometers.\n\n2. **First Law of Thermodynamics** (Law of Energy Conservation):  \n   *Energy cannot be created or destroyed in an isolated system; it can only change forms.*  \n   Mathematically, this is often expressed as:  \n   \\[\n   \\Delta U = Q - W\n   \\]  \n   where \\(\\Delta U\\) is the change in internal energy of the system, \\(Q\\) is the heat added to the system, and \\(W\\) is the work done by the system.\n\n3. **Second Law of Thermodynamics**:  \n   *The total entropy of an isolated system can never decrease over time; it either increases or remains constant in ideal reversible processes.*  \n   This law introduces the concept of irreversibility and explains why certain processes occur spontaneously in one direction (e.g., heat flows from hot to cold).\n\nThere is also a **Third Law of Thermodynamics**, which is sometimes included as the fourth in historical contexts but is now standardly recognized as the third:\n\n4. **Third Law of Thermodynamics**:  \n   *As the temperature of a system approaches absolute zero, the entropy of the system approaches a constant minimum value.*  \n   In practical terms, it implies that absolute zero (0 K) cannot be reached in a finite number of steps.\n\nSo, while commonly referred to as “three laws,” modern physics includes **four**—with the Zeroth Law added later for logical completeness, even though it was formulated after the first three.",
 
-        "content": "The three laws of thermodynamics are fundamental principles that describe the behavior of energy and entropy in physical systems:\n\n1. **Zeroth Law of Thermodynamics**:  \n   *If two systems are each in thermal equilibrium with a third system, then they are in thermal equilibrium with each other.*  \n   This law establishes the concept of temperature and justifies the use of thermometers.\n\n2. **First Law of Thermodynamics** (Law of Energy Conservation):  \n   *Energy cannot be created or destroyed in an isolated system; it can only change forms.*  \n   Mathematically, this is often expressed as:  \n   \\[\n   \\Delta U = Q - W\n   \\]  \n   where \\(\\Delta U\\) is the change in internal energy of the system, \\(Q\\) is the heat added to the system, and \\(W\\) is the work done by the system.\n\n3. **Second Law of Thermodynamics**:  \n   *The total entropy of an isolated system can never decrease over time; it either increases or remains constant in ideal reversible processes.*  \n   This law introduces the concept of irreversibility and explains why certain processes occur spontaneously in one direction (e.g., heat flows from hot to cold).\n\nThere is also a **Third Law of Thermodynamics**, which is sometimes included as the fourth in historical contexts but is now standardly recognized as the third:\n\n4. **Third Law of Thermodynamics**:  \n   *As the temperature of a system approaches absolute zero, the entropy of the system approaches a constant minimum value.*  \n   In practical terms, it implies that absolute zero (0 K) cannot be reached in a finite number of steps.\n\nSo, while commonly referred to as “three laws,” modern physics includes **four**—with the Zeroth Law added later for logical completeness, even though it was formulated after the first three."
+        "role": "assistant"
 
-      },
-
-      "finish_reason": "stop",
-
-      "logprobs": null
+      }
 
     }
 
   ],
 
-  "usage": {
+  "created": 1776471062,
 
-    "prompt_tokens": 17,
+  "gatewayMetadata": {
+
+    "keySource": "Unified"
+
+  },
+
+  "id": "chatcmpl-1cc68967-fae9-9f2f-aa72-ec0674038c0a",
+
+  "model": "qwen3-max",
+
+  "object": "chat.completion",
+
+  "system_fingerprint": null,
+
+  "usage": {
 
     "completion_tokens": 375,
 
-    "total_tokens": 392,
+    "prompt_tokens": 17,
 
     "prompt_tokens_details": {
 
       "cached_tokens": 0
 
-    }
+    },
 
-  },
-
-  "system_fingerprint": null,
-
-  "gatewayMetadata": {
-
-    "keySource": "Unified"
+    "total_tokens": 392
 
   }
 
@@ -160,6 +174,9 @@ So, while commonly referred to as “three laws,” modern physics includes **fo
 ## Examples
 
 **With System Message**  — Using a system message to set context 
+
+* [ TypeScript ](#tab-panel-30)
+* [ cURL ](#tab-panel-31)
 
 TypeScript
 
@@ -173,31 +190,13 @@ const response = await env.AI.run(
 
     messages: [
 
-      {
+      { content: 'You are a helpful coding assistant specializing in Python.', role: 'system' },
 
-        role: 'system',
-
-        content: 'You are a helpful coding assistant specializing in Python.',
-
-      },
-
-      {
-
-        role: 'user',
-
-        content: 'How do I read a JSON file in Python?',
-
-      },
+      { content: 'How do I read a JSON file in Python?', role: 'user' },
 
     ],
 
   },
-
-  {
-
-    gateway: { id: 'default' },
-
-  }
 
 )
 
@@ -206,8 +205,47 @@ console.log(response)
 
 ```
 
-* [ Output ](#tab-panel-18)
-* [ Raw response ](#tab-panel-19)
+Terminal window
+
+```
+
+curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/v1/chat/completions \
+
+  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+
+  --header "Content-Type: application/json" \
+
+  --data '{
+
+  "model": "alibaba/qwen3-max",
+
+  "messages": [
+
+    {
+
+      "content": "You are a helpful coding assistant specializing in Python.",
+
+      "role": "system"
+
+    },
+
+    {
+
+      "content": "How do I read a JSON file in Python?",
+
+      "role": "user"
+
+    }
+
+  ]
+
+}'
+
+
+```
+
+* [ Output ](#tab-panel-40)
+* [ Raw response ](#tab-panel-41)
 
 To read a JSON file in Python, you can use the built-in `json` module. Here's the basic approach:
 
@@ -284,57 +322,57 @@ The `json.load()` function handles UTF-8 by default, so you usually don't need t
 
 {
 
-  "id": "chatcmpl-ba93d05e-b778-9fe4-97f6-a2b16726e379",
-
-  "object": "chat.completion",
-
-  "created": 1776471064,
-
-  "model": "qwen3-max",
-
   "choices": [
 
     {
 
+      "finish_reason": "stop",
+
       "index": 0,
+
+      "logprobs": null,
 
       "message": {
 
-        "role": "assistant",
+        "content": "To read a JSON file in Python, you can use the built-in `json` module. Here's the basic approach:\n\n## Basic Example\n\n```python\nimport json\n\n# Read JSON file\nwith open('data.json', 'r') as file:\n    data = json.load(file)\n\n# Now you can work with your data\nprint(data)\n```\n\n## Step-by-step breakdown:\n\n1. **Import the json module**: `import json`\n2. **Open the file**: Use `open()` with mode `'r'` (read mode)\n3. **Parse the JSON**: Use `json.load()` to parse the file content into Python objects\n4. **Use context manager**: The `with` statement automatically closes the file when done\n\n## Common Data Types After Loading\n\nJSON data gets converted to these Python types:\n- JSON object → Python dictionary (`dict`)\n- JSON array → Python list (`list`)\n- JSON string → Python string (`str`)\n- JSON number → Python int or float\n- JSON boolean → Python `True` or `False`\n- JSON null → Python `None`\n\n## Example with Error Handling\n\n```python\nimport json\n\ntry:\n    with open('data.json', 'r') as file:\n        data = json.load(file)\n    print(\"Data loaded successfully!\")\n    print(data)\nexcept FileNotFoundError:\n    print(\"File not found!\")\nexcept json.JSONDecodeError:\n    print(\"Invalid JSON format!\")\n```\n\n## Reading JSON from a String\n\nIf you have JSON as a string (not a file), use `json.loads()` instead:\n\n```python\nimport json\n\njson_string = '{\"name\": \"Alice\", \"age\": 30}'\ndata = json.loads(json_string)\nprint(data)  # {'name': 'Alice', 'age': 30}\n```\n\n## Specifying Encoding (if needed)\n\nFor files with non-UTF-8 encoding:\n\n```python\nwith open('data.json', 'r', encoding='utf-8') as file:\n    data = json.load(file)\n```\n\nThe `json.load()` function handles UTF-8 by default, so you usually don't need to specify encoding unless you're dealing with a different character encoding.",
 
-        "content": "To read a JSON file in Python, you can use the built-in `json` module. Here's the basic approach:\n\n## Basic Example\n\n```python\nimport json\n\n# Read JSON file\nwith open('data.json', 'r') as file:\n    data = json.load(file)\n\n# Now you can work with your data\nprint(data)\n```\n\n## Step-by-step breakdown:\n\n1. **Import the json module**: `import json`\n2. **Open the file**: Use `open()` with mode `'r'` (read mode)\n3. **Parse the JSON**: Use `json.load()` to parse the file content into Python objects\n4. **Use context manager**: The `with` statement automatically closes the file when done\n\n## Common Data Types After Loading\n\nJSON data gets converted to these Python types:\n- JSON object → Python dictionary (`dict`)\n- JSON array → Python list (`list`)\n- JSON string → Python string (`str`)\n- JSON number → Python int or float\n- JSON boolean → Python `True` or `False`\n- JSON null → Python `None`\n\n## Example with Error Handling\n\n```python\nimport json\n\ntry:\n    with open('data.json', 'r') as file:\n        data = json.load(file)\n    print(\"Data loaded successfully!\")\n    print(data)\nexcept FileNotFoundError:\n    print(\"File not found!\")\nexcept json.JSONDecodeError:\n    print(\"Invalid JSON format!\")\n```\n\n## Reading JSON from a String\n\nIf you have JSON as a string (not a file), use `json.loads()` instead:\n\n```python\nimport json\n\njson_string = '{\"name\": \"Alice\", \"age\": 30}'\ndata = json.loads(json_string)\nprint(data)  # {'name': 'Alice', 'age': 30}\n```\n\n## Specifying Encoding (if needed)\n\nFor files with non-UTF-8 encoding:\n\n```python\nwith open('data.json', 'r', encoding='utf-8') as file:\n    data = json.load(file)\n```\n\nThe `json.load()` function handles UTF-8 by default, so you usually don't need to specify encoding unless you're dealing with a different character encoding."
+        "role": "assistant"
 
-      },
-
-      "finish_reason": "stop",
-
-      "logprobs": null
+      }
 
     }
 
   ],
 
-  "usage": {
+  "created": 1776471064,
 
-    "prompt_tokens": 33,
+  "gatewayMetadata": {
+
+    "keySource": "Unified"
+
+  },
+
+  "id": "chatcmpl-ba93d05e-b778-9fe4-97f6-a2b16726e379",
+
+  "model": "qwen3-max",
+
+  "object": "chat.completion",
+
+  "system_fingerprint": null,
+
+  "usage": {
 
     "completion_tokens": 449,
 
-    "total_tokens": 482,
+    "prompt_tokens": 33,
 
     "prompt_tokens_details": {
 
       "cached_tokens": 0
 
-    }
+    },
 
-  },
-
-  "system_fingerprint": null,
-
-  "gatewayMetadata": {
-
-    "keySource": "Unified"
+    "total_tokens": 482
 
   }
 
@@ -344,6 +382,9 @@ The `json.load()` function handles UTF-8 by default, so you usually don't need t
 ```
 
 **Multi-turn Conversation**  — Continuing a conversation with context 
+
+* [ TypeScript ](#tab-panel-34)
+* [ cURL ](#tab-panel-35)
 
 TypeScript
 
@@ -355,47 +396,33 @@ const response = await env.AI.run(
 
   {
 
+    max_completion_tokens: 8192,
+
     messages: [
 
       {
 
+        content: 'I need help planning a road trip from San Francisco to Los Angeles.',
+
         role: 'user',
-
-        content:
-
-          'I need help planning a road trip from San Francisco to Los Angeles.',
 
       },
 
       {
-
-        role: 'assistant',
 
         content:
 
           "I'd be happy to help! The drive is about 380 miles and takes roughly 5-6 hours. Would you like suggestions for scenic routes or interesting stops along the way?",
 
-      },
-
-      {
-
-        role: 'user',
-
-        content: 'Yes, what are some good places to stop?',
+        role: 'assistant',
 
       },
+
+      { content: 'Yes, what are some good places to stop?', role: 'user' },
 
     ],
 
-    max_completion_tokens: 2048,
-
   },
-
-  {
-
-    gateway: { id: 'default' },
-
-  }
 
 )
 
@@ -404,8 +431,57 @@ console.log(response)
 
 ```
 
-* [ Output ](#tab-panel-20)
-* [ Raw response ](#tab-panel-21)
+Terminal window
+
+```
+
+curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/v1/chat/completions \
+
+  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+
+  --header "Content-Type: application/json" \
+
+  --data '{
+
+  "model": "alibaba/qwen3-max",
+
+  "max_completion_tokens": 8192,
+
+  "messages": [
+
+    {
+
+      "content": "I need help planning a road trip from San Francisco to Los Angeles.",
+
+      "role": "user"
+
+    },
+
+    {
+
+      "content": "I'd be happy to help! The drive is about 380 miles and takes roughly 5-6 hours. Would you like suggestions for scenic routes or interesting stops along the way?",
+
+      "role": "assistant"
+
+    },
+
+    {
+
+      "content": "Yes, what are some good places to stop?",
+
+      "role": "user"
+
+    }
+
+  ]
+
+}'
+
+
+```
+
+* [ Output ](#tab-panel-42)
+* [ Raw response ](#tab-panel-43)
 
 Great! The classic route from San Francisco to Los Angeles along the California coast—especially **Highway 1 (Pacific Coast Highway)**—is one of the most scenic drives in the world. While it takes longer than the inland I-5 freeway (about 8–10 hours without stops), it’s absolutely worth it for the views and experiences. Here are some top places to stop, roughly ordered from north to south:
 
@@ -470,57 +546,57 @@ Would you like help planning an itinerary based on how many days you have?
 
 {
 
-  "id": "chatcmpl-8ebaff89-c5a7-9010-b5a4-84e5f446841a",
-
-  "object": "chat.completion",
-
-  "created": 1776471088,
-
-  "model": "qwen3-max",
-
   "choices": [
 
     {
 
+      "finish_reason": "stop",
+
       "index": 0,
+
+      "logprobs": null,
 
       "message": {
 
-        "role": "assistant",
+        "content": "Great! The classic route from San Francisco to Los Angeles along the California coast—especially **Highway 1 (Pacific Coast Highway)**—is one of the most scenic drives in the world. While it takes longer than the inland I-5 freeway (about 8–10 hours without stops), it’s absolutely worth it for the views and experiences. Here are some top places to stop, roughly ordered from north to south:\n\n### 🌉 **Half Moon Bay**  \n- Just 30 miles south of SF  \n- Charming coastal town with beaches, tide pools, and great seafood  \n- Stop at **Pillar Point Harbor** or walk the **Coastal Trail**\n\n### 🏞️ **Santa Cruz**  \n- Famous for its beach boardwalk (oldest in California!), surfing, and laid-back vibe  \n- Visit the **Santa Cruz Beach Boardwalk** or explore **Natural Bridges State Beach**\n\n### 🐬 **Monterey & Carmel-by-the-Sea**  \n- **Monterey**: Don’t miss the world-class **Monterey Bay Aquarium** and Cannery Row  \n- **Carmel**: Quaint village with art galleries, fairytale cottages, and **Carmel Beach**  \n- Optional detour: **17-Mile Drive** through Pebble Beach (toll road with stunning ocean views)\n\n### 🌲 **Big Sur**  \n- The crown jewel of the PCH! Dramatic cliffs, redwoods, and ocean vistas  \n- Must-stops:  \n  - **Bixby Creek Bridge** (iconic photo spot)  \n  - **McWay Falls** at Julia Pfeiffer Burns State Park (80-ft waterfall onto a beach!)  \n  - **Nepenthe** restaurant for lunch with panoramic views  \n\n> ⚠️ Note: Check road conditions before heading through Big Sur—landslides occasionally close Highway 1.\n\n### 🍷 **San Simeon**  \n- Home of **Hearst Castle**, the opulent estate of newspaper magnate William Randolph Hearst  \n- Also great for spotting **elephant seals** at the **Piedras Blancas Rookery** just north of town\n\n### 🏖️ **Cambria & Morro Bay**  \n- **Cambria**: Cozy seaside village with unique shops and forest-meets-ocean scenery  \n- **Morro Bay**: Known for **Morro Rock**, kayaking, and fresh oysters\n\n### 🌴 **San Luis Obispo (SLO)**  \n- A relaxed college town with a historic mission, farmers’ market (Thursday nights!), and great food  \n- Nearby: **Bubblegum Alley** and **Madonna Inn** (quirky, Instagrammable hotel)\n\n### 🏄 **Pismo Beach**  \n- Classic Central Coast surf town with dunes and a long pier  \n- Try clam chowder—it’s the “Clam Capital of the World”!\n\n### 🌺 **Santa Barbara**  \n- “The American Riviera” with Spanish architecture, palm-lined streets, and wine tasting  \n- Stroll **Stearns Wharf**, visit the **Mission Santa Barbara**, or relax on **East Beach**\n\n### 🏙️ **Final Stretch to Los Angeles**  \n- From Santa Barbara, you can stay on Highway 1 through **Malibu** (stop at **El Matador Beach** or **Point Dume**)  \n- Or hop on US-101 for a quicker arrival into LA\n\n---\n\n### Tips:\n- **Allow 2–3 days** if you want to enjoy the stops without rushing  \n- **Book lodging in advance**, especially in Big Sur, Carmel, or Santa Barbara  \n- **Fill your gas tank**—some stretches (like Big Sur) have limited services  \n- **Pack layers**—coastal weather changes fast, even in summer!\n\nWould you like help planning an itinerary based on how many days you have?",
 
-        "content": "Great! The classic route from San Francisco to Los Angeles along the California coast—especially **Highway 1 (Pacific Coast Highway)**—is one of the most scenic drives in the world. While it takes longer than the inland I-5 freeway (about 8–10 hours without stops), it’s absolutely worth it for the views and experiences. Here are some top places to stop, roughly ordered from north to south:\n\n### 🌉 **Half Moon Bay**  \n- Just 30 miles south of SF  \n- Charming coastal town with beaches, tide pools, and great seafood  \n- Stop at **Pillar Point Harbor** or walk the **Coastal Trail**\n\n### 🏞️ **Santa Cruz**  \n- Famous for its beach boardwalk (oldest in California!), surfing, and laid-back vibe  \n- Visit the **Santa Cruz Beach Boardwalk** or explore **Natural Bridges State Beach**\n\n### 🐬 **Monterey & Carmel-by-the-Sea**  \n- **Monterey**: Don’t miss the world-class **Monterey Bay Aquarium** and Cannery Row  \n- **Carmel**: Quaint village with art galleries, fairytale cottages, and **Carmel Beach**  \n- Optional detour: **17-Mile Drive** through Pebble Beach (toll road with stunning ocean views)\n\n### 🌲 **Big Sur**  \n- The crown jewel of the PCH! Dramatic cliffs, redwoods, and ocean vistas  \n- Must-stops:  \n  - **Bixby Creek Bridge** (iconic photo spot)  \n  - **McWay Falls** at Julia Pfeiffer Burns State Park (80-ft waterfall onto a beach!)  \n  - **Nepenthe** restaurant for lunch with panoramic views  \n\n> ⚠️ Note: Check road conditions before heading through Big Sur—landslides occasionally close Highway 1.\n\n### 🍷 **San Simeon**  \n- Home of **Hearst Castle**, the opulent estate of newspaper magnate William Randolph Hearst  \n- Also great for spotting **elephant seals** at the **Piedras Blancas Rookery** just north of town\n\n### 🏖️ **Cambria & Morro Bay**  \n- **Cambria**: Cozy seaside village with unique shops and forest-meets-ocean scenery  \n- **Morro Bay**: Known for **Morro Rock**, kayaking, and fresh oysters\n\n### 🌴 **San Luis Obispo (SLO)**  \n- A relaxed college town with a historic mission, farmers’ market (Thursday nights!), and great food  \n- Nearby: **Bubblegum Alley** and **Madonna Inn** (quirky, Instagrammable hotel)\n\n### 🏄 **Pismo Beach**  \n- Classic Central Coast surf town with dunes and a long pier  \n- Try clam chowder—it’s the “Clam Capital of the World”!\n\n### 🌺 **Santa Barbara**  \n- “The American Riviera” with Spanish architecture, palm-lined streets, and wine tasting  \n- Stroll **Stearns Wharf**, visit the **Mission Santa Barbara**, or relax on **East Beach**\n\n### 🏙️ **Final Stretch to Los Angeles**  \n- From Santa Barbara, you can stay on Highway 1 through **Malibu** (stop at **El Matador Beach** or **Point Dume**)  \n- Or hop on US-101 for a quicker arrival into LA\n\n---\n\n### Tips:\n- **Allow 2–3 days** if you want to enjoy the stops without rushing  \n- **Book lodging in advance**, especially in Big Sur, Carmel, or Santa Barbara  \n- **Fill your gas tank**—some stretches (like Big Sur) have limited services  \n- **Pack layers**—coastal weather changes fast, even in summer!\n\nWould you like help planning an itinerary based on how many days you have?"
+        "role": "assistant"
 
-      },
-
-      "finish_reason": "stop",
-
-      "logprobs": null
+      }
 
     }
 
   ],
 
-  "usage": {
+  "created": 1776471088,
 
-    "prompt_tokens": 81,
+  "gatewayMetadata": {
+
+    "keySource": "Unified"
+
+  },
+
+  "id": "chatcmpl-8ebaff89-c5a7-9010-b5a4-84e5f446841a",
+
+  "model": "qwen3-max",
+
+  "object": "chat.completion",
+
+  "system_fingerprint": null,
+
+  "usage": {
 
     "completion_tokens": 821,
 
-    "total_tokens": 902,
+    "prompt_tokens": 81,
 
     "prompt_tokens_details": {
 
       "cached_tokens": 0
 
-    }
+    },
 
-  },
-
-  "system_fingerprint": null,
-
-  "gatewayMetadata": {
-
-    "keySource": "Unified"
+    "total_tokens": 902
 
   }
 
@@ -530,6 +606,9 @@ Would you like help planning an itinerary based on how many days you have?
 ```
 
 **Creative Writing**  — Longer completion for creative output 
+
+* [ TypeScript ](#tab-panel-32)
+* [ cURL ](#tab-panel-33)
 
 TypeScript
 
@@ -541,29 +620,21 @@ const response = await env.AI.run(
 
   {
 
+    max_completion_tokens: 8192,
+
     messages: [
 
       {
 
+        content: 'Write a short story opening about a detective finding an unusual clue.',
+
         role: 'user',
-
-        content:
-
-          'Write a short story opening about a detective finding an unusual clue.',
 
       },
 
     ],
 
-    max_completion_tokens: 2048,
-
   },
-
-  {
-
-    gateway: { id: 'default' },
-
-  }
 
 )
 
@@ -572,8 +643,41 @@ console.log(response)
 
 ```
 
-* [ Output ](#tab-panel-22)
-* [ Raw response ](#tab-panel-23)
+Terminal window
+
+```
+
+curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/v1/chat/completions \
+
+  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+
+  --header "Content-Type: application/json" \
+
+  --data '{
+
+  "model": "alibaba/qwen3-max",
+
+  "max_completion_tokens": 8192,
+
+  "messages": [
+
+    {
+
+      "content": "Write a short story opening about a detective finding an unusual clue.",
+
+      "role": "user"
+
+    }
+
+  ]
+
+}'
+
+
+```
+
+* [ Output ](#tab-panel-44)
+* [ Raw response ](#tab-panel-45)
 
 Rain slicked the cobblestones of Blackwater Lane, turning the gaslight into smears of gold on wet stone. Detective Aris Thorne hunched deeper into his trench coat, the damp wool smell a familiar companion to the city’s usual perfume of coal smoke and despair. Another dead end—literally and figuratively—in the case of the vanished heiress, Elara Vance. The alley reeked of stale beer and something sharper, metallic.
 
@@ -589,57 +693,57 @@ Thorne crouched, ignoring the ache in his knees and the cold seeping through his
 
 {
 
-  "id": "chatcmpl-7bdc3457-d069-92c5-9ea0-0f1c3987d776",
-
-  "object": "chat.completion",
-
-  "created": 1776471079,
-
-  "model": "qwen3-max",
-
   "choices": [
 
     {
 
+      "finish_reason": "stop",
+
       "index": 0,
+
+      "logprobs": null,
 
       "message": {
 
-        "role": "assistant",
+        "content": "Rain slicked the cobblestones of Blackwater Lane, turning the gaslight into smears of gold on wet stone. Detective Aris Thorne hunched deeper into his trench coat, the damp wool smell a familiar companion to the city’s usual perfume of coal smoke and despair. Another dead end—literally and figuratively—in the case of the vanished heiress, Elara Vance. The alley reeked of stale beer and something sharper, metallic.\n\nThen he saw it.\n\nNestled in a puddle near a overflowing gutter, half-submerged but gleaming with unnatural clarity, was a single playing card. Not just any card. The Queen of Hearts. But this one was wrong. Horribly wrong.\n\nThe queen’s face wasn’t printed ink. It was *stitched*. Delicate, almost surgical sutures traced her features—a crimson thread for lips, fine black silk for eyes, silver wire forming the curve of a regal brow. And where the heart symbol should be, centered on her chest, was a tiny, perfect keyhole, wrought from what looked like tarnished silver. Rainwater pooled around it, but the stitches remained unnervingly dry, as if repelling the downpour.\n\nThorne crouched, ignoring the ache in his knees and the cold seeping through his trousers. He didn’t touch it. Not yet. This wasn’t evidence left by accident; it was a message. A challenge. And the meticulous, chilling craftsmanship whispered of a mind far more dangerous than the common cutpurse or jealous rival he’d been chasing. The rain drummed a frantic rhythm on his hat, but the only sound he truly heard was the sudden, icy thrum of his own pulse. The game, it seemed, had just changed its rules.",
 
-        "content": "Rain slicked the cobblestones of Blackwater Lane, turning the gaslight into smears of gold on wet stone. Detective Aris Thorne hunched deeper into his trench coat, the damp wool smell a familiar companion to the city’s usual perfume of coal smoke and despair. Another dead end—literally and figuratively—in the case of the vanished heiress, Elara Vance. The alley reeked of stale beer and something sharper, metallic.\n\nThen he saw it.\n\nNestled in a puddle near a overflowing gutter, half-submerged but gleaming with unnatural clarity, was a single playing card. Not just any card. The Queen of Hearts. But this one was wrong. Horribly wrong.\n\nThe queen’s face wasn’t printed ink. It was *stitched*. Delicate, almost surgical sutures traced her features—a crimson thread for lips, fine black silk for eyes, silver wire forming the curve of a regal brow. And where the heart symbol should be, centered on her chest, was a tiny, perfect keyhole, wrought from what looked like tarnished silver. Rainwater pooled around it, but the stitches remained unnervingly dry, as if repelling the downpour.\n\nThorne crouched, ignoring the ache in his knees and the cold seeping through his trousers. He didn’t touch it. Not yet. This wasn’t evidence left by accident; it was a message. A challenge. And the meticulous, chilling craftsmanship whispered of a mind far more dangerous than the common cutpurse or jealous rival he’d been chasing. The rain drummed a frantic rhythm on his hat, but the only sound he truly heard was the sudden, icy thrum of his own pulse. The game, it seemed, had just changed its rules."
+        "role": "assistant"
 
-      },
-
-      "finish_reason": "stop",
-
-      "logprobs": null
+      }
 
     }
 
   ],
 
-  "usage": {
+  "created": 1776471079,
 
-    "prompt_tokens": 21,
+  "gatewayMetadata": {
+
+    "keySource": "Unified"
+
+  },
+
+  "id": "chatcmpl-7bdc3457-d069-92c5-9ea0-0f1c3987d776",
+
+  "model": "qwen3-max",
+
+  "object": "chat.completion",
+
+  "system_fingerprint": null,
+
+  "usage": {
 
     "completion_tokens": 362,
 
-    "total_tokens": 383,
+    "prompt_tokens": 21,
 
     "prompt_tokens_details": {
 
       "cached_tokens": 0
 
-    }
+    },
 
-  },
-
-  "system_fingerprint": null,
-
-  "gatewayMetadata": {
-
-    "keySource": "Unified"
+    "total_tokens": 383
 
   }
 
@@ -649,6 +753,9 @@ Thorne crouched, ignoring the ache in his knees and the cold seeping through his
 ```
 
 **Streaming Response**  — Enable streaming for real-time output 
+
+* [ TypeScript ](#tab-panel-38)
+* [ cURL ](#tab-panel-39)
 
 TypeScript
 
@@ -660,33 +767,13 @@ const response = await env.AI.run(
 
   {
 
-    messages: [
-
-      {
-
-        role: 'user',
-
-        content: 'Explain the concept of recursion with a simple example.',
-
-      },
-
-    ],
+    messages: [{ content: 'Explain the concept of recursion with a simple example.', role: 'user' }],
 
     stream: true,
 
-    stream_options: {
-
-      include_usage: true,
-
-    },
+    stream_options: { include_usage: true },
 
   },
-
-  {
-
-    gateway: { id: 'default' },
-
-  }
 
 )
 
@@ -695,8 +782,47 @@ console.log(response)
 
 ```
 
-* [ Output ](#tab-panel-24)
-* [ Raw response ](#tab-panel-25)
+Terminal window
+
+```
+
+curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/v1/chat/completions \
+
+  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+
+  --header "Content-Type: application/json" \
+
+  --data '{
+
+  "model": "alibaba/qwen3-max",
+
+  "messages": [
+
+    {
+
+      "content": "Explain the concept of recursion with a simple example.",
+
+      "role": "user"
+
+    }
+
+  ],
+
+  "stream": true,
+
+  "stream_options": {
+
+    "include_usage": true
+
+  }
+
+}'
+
+
+```
+
+* [ Output ](#tab-panel-46)
+* [ Raw response ](#tab-panel-47)
 
 **Recursion** is a programming technique where a function calls itself to solve a problem by breaking it down into smaller, similar subproblems.
 
@@ -765,27 +891,27 @@ Each recursive call works on a **smaller version** of the original problem until
 
         },
 
+        "finish_reason": null,
+
         "index": 0,
 
-        "logprobs": null,
-
-        "finish_reason": null
+        "logprobs": null
 
       }
 
     ],
 
-    "object": "chat.completion.chunk",
-
-    "usage": null,
-
     "created": 1776471081,
 
-    "system_fingerprint": null,
+    "id": "chatcmpl-269e4881-6d79-91da-ad5b-a5d16443cade",
 
     "model": "qwen3-max",
 
-    "id": "chatcmpl-269e4881-6d79-91da-ad5b-a5d16443cade"
+    "object": "chat.completion.chunk",
+
+    "system_fingerprint": null,
+
+    "usage": null
 
   },
 
@@ -795,33 +921,33 @@ Each recursive call works on a **smaller version** of the original problem until
 
       {
 
-        "finish_reason": null,
-
-        "logprobs": null,
-
         "delta": {
 
           "content": "**"
 
         },
 
-        "index": 0
+        "finish_reason": null,
+
+        "index": 0,
+
+        "logprobs": null
 
       }
 
     ],
 
-    "object": "chat.completion.chunk",
-
-    "usage": null,
-
     "created": 1776471081,
 
-    "system_fingerprint": null,
+    "id": "chatcmpl-269e4881-6d79-91da-ad5b-a5d16443cade",
 
     "model": "qwen3-max",
 
-    "id": "chatcmpl-269e4881-6d79-91da-ad5b-a5d16443cade"
+    "object": "chat.completion.chunk",
+
+    "system_fingerprint": null,
+
+    "usage": null
 
   },
 
@@ -847,17 +973,17 @@ Each recursive call works on a **smaller version** of the original problem until
 
     ],
 
-    "object": "chat.completion.chunk",
-
-    "usage": null,
-
     "created": 1776471081,
 
-    "system_fingerprint": null,
+    "id": "chatcmpl-269e4881-6d79-91da-ad5b-a5d16443cade",
 
     "model": "qwen3-max",
 
-    "id": "chatcmpl-269e4881-6d79-91da-ad5b-a5d16443cade"
+    "object": "chat.completion.chunk",
+
+    "system_fingerprint": null,
+
+    "usage": null
 
   },
 
@@ -883,17 +1009,17 @@ Each recursive call works on a **smaller version** of the original problem until
 
     ],
 
-    "object": "chat.completion.chunk",
-
-    "usage": null,
-
     "created": 1776471081,
 
-    "system_fingerprint": null,
+    "id": "chatcmpl-269e4881-6d79-91da-ad5b-a5d16443cade",
 
     "model": "qwen3-max",
 
-    "id": "chatcmpl-269e4881-6d79-91da-ad5b-a5d16443cade"
+    "object": "chat.completion.chunk",
+
+    "system_fingerprint": null,
+
+    "usage": null
 
   },
 
@@ -919,17 +1045,17 @@ Each recursive call works on a **smaller version** of the original problem until
 
     ],
 
-    "object": "chat.completion.chunk",
-
-    "usage": null,
-
     "created": 1776471081,
 
-    "system_fingerprint": null,
+    "id": "chatcmpl-269e4881-6d79-91da-ad5b-a5d16443cade",
 
     "model": "qwen3-max",
 
-    "id": "chatcmpl-269e4881-6d79-91da-ad5b-a5d16443cade"
+    "object": "chat.completion.chunk",
+
+    "system_fingerprint": null,
+
+    "usage": null
 
   },
 
@@ -955,17 +1081,17 @@ Each recursive call works on a **smaller version** of the original problem until
 
     ],
 
-    "object": "chat.completion.chunk",
-
-    "usage": null,
-
     "created": 1776471081,
 
-    "system_fingerprint": null,
+    "id": "chatcmpl-269e4881-6d79-91da-ad5b-a5d16443cade",
 
     "model": "qwen3-max",
 
-    "id": "chatcmpl-269e4881-6d79-91da-ad5b-a5d16443cade"
+    "object": "chat.completion.chunk",
+
+    "system_fingerprint": null,
+
+    "usage": null
 
   },
 
@@ -991,17 +1117,17 @@ Each recursive call works on a **smaller version** of the original problem until
 
     ],
 
-    "object": "chat.completion.chunk",
-
-    "usage": null,
-
     "created": 1776471081,
 
-    "system_fingerprint": null,
+    "id": "chatcmpl-269e4881-6d79-91da-ad5b-a5d16443cade",
 
     "model": "qwen3-max",
 
-    "id": "chatcmpl-269e4881-6d79-91da-ad5b-a5d16443cade"
+    "object": "chat.completion.chunk",
+
+    "system_fingerprint": null,
+
+    "usage": null
 
   },
 
@@ -1027,17 +1153,17 @@ Each recursive call works on a **smaller version** of the original problem until
 
     ],
 
-    "object": "chat.completion.chunk",
-
-    "usage": null,
-
     "created": 1776471081,
 
-    "system_fingerprint": null,
+    "id": "chatcmpl-269e4881-6d79-91da-ad5b-a5d16443cade",
 
     "model": "qwen3-max",
 
-    "id": "chatcmpl-269e4881-6d79-91da-ad5b-a5d16443cade"
+    "object": "chat.completion.chunk",
+
+    "system_fingerprint": null,
+
+    "usage": null
 
   },
 
@@ -1063,17 +1189,17 @@ Each recursive call works on a **smaller version** of the original problem until
 
     ],
 
-    "object": "chat.completion.chunk",
-
-    "usage": null,
-
     "created": 1776471081,
 
-    "system_fingerprint": null,
+    "id": "chatcmpl-269e4881-6d79-91da-ad5b-a5d16443cade",
 
     "model": "qwen3-max",
 
-    "id": "chatcmpl-269e4881-6d79-91da-ad5b-a5d16443cade"
+    "object": "chat.completion.chunk",
+
+    "system_fingerprint": null,
+
+    "usage": null
 
   },
 
@@ -1099,17 +1225,17 @@ Each recursive call works on a **smaller version** of the original problem until
 
     ],
 
-    "object": "chat.completion.chunk",
-
-    "usage": null,
-
     "created": 1776471081,
 
-    "system_fingerprint": null,
+    "id": "chatcmpl-269e4881-6d79-91da-ad5b-a5d16443cade",
 
     "model": "qwen3-max",
 
-    "id": "chatcmpl-269e4881-6d79-91da-ad5b-a5d16443cade"
+    "object": "chat.completion.chunk",
+
+    "system_fingerprint": null,
+
+    "usage": null
 
   },
 
@@ -1135,17 +1261,17 @@ Each recursive call works on a **smaller version** of the original problem until
 
     ],
 
-    "object": "chat.completion.chunk",
-
-    "usage": null,
-
     "created": 1776471081,
 
-    "system_fingerprint": null,
+    "id": "chatcmpl-269e4881-6d79-91da-ad5b-a5d16443cade",
 
     "model": "qwen3-max",
 
-    "id": "chatcmpl-269e4881-6d79-91da-ad5b-a5d16443cade"
+    "object": "chat.completion.chunk",
+
+    "system_fingerprint": null,
+
+    "usage": null
 
   },
 
@@ -1171,17 +1297,17 @@ Each recursive call works on a **smaller version** of the original problem until
 
     ],
 
-    "object": "chat.completion.chunk",
-
-    "usage": null,
-
     "created": 1776471081,
 
-    "system_fingerprint": null,
+    "id": "chatcmpl-269e4881-6d79-91da-ad5b-a5d16443cade",
 
     "model": "qwen3-max",
 
-    "id": "chatcmpl-269e4881-6d79-91da-ad5b-a5d16443cade"
+    "object": "chat.completion.chunk",
+
+    "system_fingerprint": null,
+
+    "usage": null
 
   },
 
@@ -1207,17 +1333,17 @@ Each recursive call works on a **smaller version** of the original problem until
 
     ],
 
-    "object": "chat.completion.chunk",
-
-    "usage": null,
-
     "created": 1776471081,
 
-    "system_fingerprint": null,
+    "id": "chatcmpl-269e4881-6d79-91da-ad5b-a5d16443cade",
 
     "model": "qwen3-max",
 
-    "id": "chatcmpl-269e4881-6d79-91da-ad5b-a5d16443cade"
+    "object": "chat.completion.chunk",
+
+    "system_fingerprint": null,
+
+    "usage": null
 
   },
 
@@ -1243,17 +1369,17 @@ Each recursive call works on a **smaller version** of the original problem until
 
     ],
 
-    "object": "chat.completion.chunk",
-
-    "usage": null,
-
     "created": 1776471081,
 
-    "system_fingerprint": null,
+    "id": "chatcmpl-269e4881-6d79-91da-ad5b-a5d16443cade",
 
     "model": "qwen3-max",
 
-    "id": "chatcmpl-269e4881-6d79-91da-ad5b-a5d16443cade"
+    "object": "chat.completion.chunk",
+
+    "system_fingerprint": null,
+
+    "usage": null
 
   },
 
@@ -1279,17 +1405,17 @@ Each recursive call works on a **smaller version** of the original problem until
 
     ],
 
-    "object": "chat.completion.chunk",
-
-    "usage": null,
-
     "created": 1776471081,
 
-    "system_fingerprint": null,
+    "id": "chatcmpl-269e4881-6d79-91da-ad5b-a5d16443cade",
 
     "model": "qwen3-max",
 
-    "id": "chatcmpl-269e4881-6d79-91da-ad5b-a5d16443cade"
+    "object": "chat.completion.chunk",
+
+    "system_fingerprint": null,
+
+    "usage": null
 
   },
 
@@ -1315,17 +1441,17 @@ Each recursive call works on a **smaller version** of the original problem until
 
     ],
 
-    "object": "chat.completion.chunk",
-
-    "usage": null,
-
     "created": 1776471081,
 
-    "system_fingerprint": null,
+    "id": "chatcmpl-269e4881-6d79-91da-ad5b-a5d16443cade",
 
     "model": "qwen3-max",
 
-    "id": "chatcmpl-269e4881-6d79-91da-ad5b-a5d16443cade"
+    "object": "chat.completion.chunk",
+
+    "system_fingerprint": null,
+
+    "usage": null
 
   },
 
@@ -1351,17 +1477,17 @@ Each recursive call works on a **smaller version** of the original problem until
 
     ],
 
-    "object": "chat.completion.chunk",
-
-    "usage": null,
-
     "created": 1776471081,
 
-    "system_fingerprint": null,
+    "id": "chatcmpl-269e4881-6d79-91da-ad5b-a5d16443cade",
 
     "model": "qwen3-max",
 
-    "id": "chatcmpl-269e4881-6d79-91da-ad5b-a5d16443cade"
+    "object": "chat.completion.chunk",
+
+    "system_fingerprint": null,
+
+    "usage": null
 
   },
 
@@ -1387,17 +1513,17 @@ Each recursive call works on a **smaller version** of the original problem until
 
     ],
 
-    "object": "chat.completion.chunk",
-
-    "usage": null,
-
     "created": 1776471081,
 
-    "system_fingerprint": null,
+    "id": "chatcmpl-269e4881-6d79-91da-ad5b-a5d16443cade",
 
     "model": "qwen3-max",
 
-    "id": "chatcmpl-269e4881-6d79-91da-ad5b-a5d16443cade"
+    "object": "chat.completion.chunk",
+
+    "system_fingerprint": null,
+
+    "usage": null
 
   },
 
@@ -1423,17 +1549,17 @@ Each recursive call works on a **smaller version** of the original problem until
 
     ],
 
-    "object": "chat.completion.chunk",
-
-    "usage": null,
-
     "created": 1776471081,
 
-    "system_fingerprint": null,
+    "id": "chatcmpl-269e4881-6d79-91da-ad5b-a5d16443cade",
 
     "model": "qwen3-max",
 
-    "id": "chatcmpl-269e4881-6d79-91da-ad5b-a5d16443cade"
+    "object": "chat.completion.chunk",
+
+    "system_fingerprint": null,
+
+    "usage": null
 
   },
 
@@ -1459,17 +1585,17 @@ Each recursive call works on a **smaller version** of the original problem until
 
     ],
 
-    "object": "chat.completion.chunk",
-
-    "usage": null,
-
     "created": 1776471081,
 
-    "system_fingerprint": null,
+    "id": "chatcmpl-269e4881-6d79-91da-ad5b-a5d16443cade",
 
     "model": "qwen3-max",
 
-    "id": "chatcmpl-269e4881-6d79-91da-ad5b-a5d16443cade"
+    "object": "chat.completion.chunk",
+
+    "system_fingerprint": null,
+
+    "usage": null
 
   },
 
@@ -1495,17 +1621,17 @@ Each recursive call works on a **smaller version** of the original problem until
 
     ],
 
-    "object": "chat.completion.chunk",
-
-    "usage": null,
-
     "created": 1776471081,
 
-    "system_fingerprint": null,
+    "id": "chatcmpl-269e4881-6d79-91da-ad5b-a5d16443cade",
 
     "model": "qwen3-max",
 
-    "id": "chatcmpl-269e4881-6d79-91da-ad5b-a5d16443cade"
+    "object": "chat.completion.chunk",
+
+    "system_fingerprint": null,
+
+    "usage": null
 
   },
 
@@ -1531,17 +1657,17 @@ Each recursive call works on a **smaller version** of the original problem until
 
     ],
 
-    "object": "chat.completion.chunk",
-
-    "usage": null,
-
     "created": 1776471081,
 
-    "system_fingerprint": null,
+    "id": "chatcmpl-269e4881-6d79-91da-ad5b-a5d16443cade",
 
     "model": "qwen3-max",
 
-    "id": "chatcmpl-269e4881-6d79-91da-ad5b-a5d16443cade"
+    "object": "chat.completion.chunk",
+
+    "system_fingerprint": null,
+
+    "usage": null
 
   },
 
@@ -1567,17 +1693,17 @@ Each recursive call works on a **smaller version** of the original problem until
 
     ],
 
-    "object": "chat.completion.chunk",
-
-    "usage": null,
-
     "created": 1776471081,
 
-    "system_fingerprint": null,
+    "id": "chatcmpl-269e4881-6d79-91da-ad5b-a5d16443cade",
 
     "model": "qwen3-max",
 
-    "id": "chatcmpl-269e4881-6d79-91da-ad5b-a5d16443cade"
+    "object": "chat.completion.chunk",
+
+    "system_fingerprint": null,
+
+    "usage": null
 
   },
 
@@ -1603,17 +1729,17 @@ Each recursive call works on a **smaller version** of the original problem until
 
     ],
 
-    "object": "chat.completion.chunk",
-
-    "usage": null,
-
     "created": 1776471081,
 
-    "system_fingerprint": null,
+    "id": "chatcmpl-269e4881-6d79-91da-ad5b-a5d16443cade",
 
     "model": "qwen3-max",
 
-    "id": "chatcmpl-269e4881-6d79-91da-ad5b-a5d16443cade"
+    "object": "chat.completion.chunk",
+
+    "system_fingerprint": null,
+
+    "usage": null
 
   },
 
@@ -1639,17 +1765,17 @@ Each recursive call works on a **smaller version** of the original problem until
 
     ],
 
-    "object": "chat.completion.chunk",
-
-    "usage": null,
-
     "created": 1776471081,
 
-    "system_fingerprint": null,
+    "id": "chatcmpl-269e4881-6d79-91da-ad5b-a5d16443cade",
 
     "model": "qwen3-max",
 
-    "id": "chatcmpl-269e4881-6d79-91da-ad5b-a5d16443cade"
+    "object": "chat.completion.chunk",
+
+    "system_fingerprint": null,
+
+    "usage": null
 
   },
 
@@ -1675,17 +1801,17 @@ Each recursive call works on a **smaller version** of the original problem until
 
     ],
 
-    "object": "chat.completion.chunk",
-
-    "usage": null,
-
     "created": 1776471081,
 
-    "system_fingerprint": null,
+    "id": "chatcmpl-269e4881-6d79-91da-ad5b-a5d16443cade",
 
     "model": "qwen3-max",
 
-    "id": "chatcmpl-269e4881-6d79-91da-ad5b-a5d16443cade"
+    "object": "chat.completion.chunk",
+
+    "system_fingerprint": null,
+
+    "usage": null
 
   },
 
@@ -1711,17 +1837,17 @@ Each recursive call works on a **smaller version** of the original problem until
 
     ],
 
-    "object": "chat.completion.chunk",
-
-    "usage": null,
-
     "created": 1776471081,
 
-    "system_fingerprint": null,
+    "id": "chatcmpl-269e4881-6d79-91da-ad5b-a5d16443cade",
 
     "model": "qwen3-max",
 
-    "id": "chatcmpl-269e4881-6d79-91da-ad5b-a5d16443cade"
+    "object": "chat.completion.chunk",
+
+    "system_fingerprint": null,
+
+    "usage": null
 
   },
 
@@ -1747,17 +1873,17 @@ Each recursive call works on a **smaller version** of the original problem until
 
     ],
 
-    "object": "chat.completion.chunk",
-
-    "usage": null,
-
     "created": 1776471081,
 
-    "system_fingerprint": null,
+    "id": "chatcmpl-269e4881-6d79-91da-ad5b-a5d16443cade",
 
     "model": "qwen3-max",
 
-    "id": "chatcmpl-269e4881-6d79-91da-ad5b-a5d16443cade"
+    "object": "chat.completion.chunk",
+
+    "system_fingerprint": null,
+
+    "usage": null
 
   },
 
@@ -1783,17 +1909,17 @@ Each recursive call works on a **smaller version** of the original problem until
 
     ],
 
-    "object": "chat.completion.chunk",
-
-    "usage": null,
-
     "created": 1776471081,
 
-    "system_fingerprint": null,
+    "id": "chatcmpl-269e4881-6d79-91da-ad5b-a5d16443cade",
 
     "model": "qwen3-max",
 
-    "id": "chatcmpl-269e4881-6d79-91da-ad5b-a5d16443cade"
+    "object": "chat.completion.chunk",
+
+    "system_fingerprint": null,
+
+    "usage": null
 
   },
 
@@ -1819,17 +1945,17 @@ Each recursive call works on a **smaller version** of the original problem until
 
     ],
 
-    "object": "chat.completion.chunk",
-
-    "usage": null,
-
     "created": 1776471081,
 
-    "system_fingerprint": null,
+    "id": "chatcmpl-269e4881-6d79-91da-ad5b-a5d16443cade",
 
     "model": "qwen3-max",
 
-    "id": "chatcmpl-269e4881-6d79-91da-ad5b-a5d16443cade"
+    "object": "chat.completion.chunk",
+
+    "system_fingerprint": null,
+
+    "usage": null
 
   },
 
@@ -1855,17 +1981,17 @@ Each recursive call works on a **smaller version** of the original problem until
 
     ],
 
-    "object": "chat.completion.chunk",
-
-    "usage": null,
-
     "created": 1776471081,
 
-    "system_fingerprint": null,
+    "id": "chatcmpl-269e4881-6d79-91da-ad5b-a5d16443cade",
 
     "model": "qwen3-max",
 
-    "id": "chatcmpl-269e4881-6d79-91da-ad5b-a5d16443cade"
+    "object": "chat.completion.chunk",
+
+    "system_fingerprint": null,
+
+    "usage": null
 
   },
 
@@ -1891,17 +2017,17 @@ Each recursive call works on a **smaller version** of the original problem until
 
     ],
 
-    "object": "chat.completion.chunk",
-
-    "usage": null,
-
     "created": 1776471081,
 
-    "system_fingerprint": null,
+    "id": "chatcmpl-269e4881-6d79-91da-ad5b-a5d16443cade",
 
     "model": "qwen3-max",
 
-    "id": "chatcmpl-269e4881-6d79-91da-ad5b-a5d16443cade"
+    "object": "chat.completion.chunk",
+
+    "system_fingerprint": null,
+
+    "usage": null
 
   },
 
@@ -1927,17 +2053,17 @@ Each recursive call works on a **smaller version** of the original problem until
 
     ],
 
-    "object": "chat.completion.chunk",
-
-    "usage": null,
-
     "created": 1776471081,
 
-    "system_fingerprint": null,
+    "id": "chatcmpl-269e4881-6d79-91da-ad5b-a5d16443cade",
 
     "model": "qwen3-max",
 
-    "id": "chatcmpl-269e4881-6d79-91da-ad5b-a5d16443cade"
+    "object": "chat.completion.chunk",
+
+    "system_fingerprint": null,
+
+    "usage": null
 
   },
 
@@ -1963,17 +2089,17 @@ Each recursive call works on a **smaller version** of the original problem until
 
     ],
 
-    "object": "chat.completion.chunk",
-
-    "usage": null,
-
     "created": 1776471081,
 
-    "system_fingerprint": null,
+    "id": "chatcmpl-269e4881-6d79-91da-ad5b-a5d16443cade",
 
     "model": "qwen3-max",
 
-    "id": "chatcmpl-269e4881-6d79-91da-ad5b-a5d16443cade"
+    "object": "chat.completion.chunk",
+
+    "system_fingerprint": null,
+
+    "usage": null
 
   },
 
@@ -1999,17 +2125,17 @@ Each recursive call works on a **smaller version** of the original problem until
 
     ],
 
-    "object": "chat.completion.chunk",
-
-    "usage": null,
-
     "created": 1776471081,
 
-    "system_fingerprint": null,
+    "id": "chatcmpl-269e4881-6d79-91da-ad5b-a5d16443cade",
 
     "model": "qwen3-max",
 
-    "id": "chatcmpl-269e4881-6d79-91da-ad5b-a5d16443cade"
+    "object": "chat.completion.chunk",
+
+    "system_fingerprint": null,
+
+    "usage": null
 
   },
 
@@ -2035,17 +2161,17 @@ Each recursive call works on a **smaller version** of the original problem until
 
     ],
 
-    "object": "chat.completion.chunk",
-
-    "usage": null,
-
     "created": 1776471081,
 
-    "system_fingerprint": null,
+    "id": "chatcmpl-269e4881-6d79-91da-ad5b-a5d16443cade",
 
     "model": "qwen3-max",
 
-    "id": "chatcmpl-269e4881-6d79-91da-ad5b-a5d16443cade"
+    "object": "chat.completion.chunk",
+
+    "system_fingerprint": null,
+
+    "usage": null
 
   },
 
@@ -2071,17 +2197,17 @@ Each recursive call works on a **smaller version** of the original problem until
 
     ],
 
-    "object": "chat.completion.chunk",
-
-    "usage": null,
-
     "created": 1776471081,
 
-    "system_fingerprint": null,
+    "id": "chatcmpl-269e4881-6d79-91da-ad5b-a5d16443cade",
 
     "model": "qwen3-max",
 
-    "id": "chatcmpl-269e4881-6d79-91da-ad5b-a5d16443cade"
+    "object": "chat.completion.chunk",
+
+    "system_fingerprint": null,
+
+    "usage": null
 
   },
 
@@ -2107,17 +2233,17 @@ Each recursive call works on a **smaller version** of the original problem until
 
     ],
 
-    "object": "chat.completion.chunk",
-
-    "usage": null,
-
     "created": 1776471081,
 
-    "system_fingerprint": null,
+    "id": "chatcmpl-269e4881-6d79-91da-ad5b-a5d16443cade",
 
     "model": "qwen3-max",
 
-    "id": "chatcmpl-269e4881-6d79-91da-ad5b-a5d16443cade"
+    "object": "chat.completion.chunk",
+
+    "system_fingerprint": null,
+
+    "usage": null
 
   },
 
@@ -2143,17 +2269,17 @@ Each recursive call works on a **smaller version** of the original problem until
 
     ],
 
-    "object": "chat.completion.chunk",
-
-    "usage": null,
-
     "created": 1776471081,
 
-    "system_fingerprint": null,
+    "id": "chatcmpl-269e4881-6d79-91da-ad5b-a5d16443cade",
 
     "model": "qwen3-max",
 
-    "id": "chatcmpl-269e4881-6d79-91da-ad5b-a5d16443cade"
+    "object": "chat.completion.chunk",
+
+    "system_fingerprint": null,
+
+    "usage": null
 
   },
 
@@ -2179,17 +2305,17 @@ Each recursive call works on a **smaller version** of the original problem until
 
     ],
 
-    "object": "chat.completion.chunk",
-
-    "usage": null,
-
     "created": 1776471081,
 
-    "system_fingerprint": null,
+    "id": "chatcmpl-269e4881-6d79-91da-ad5b-a5d16443cade",
 
     "model": "qwen3-max",
 
-    "id": "chatcmpl-269e4881-6d79-91da-ad5b-a5d16443cade"
+    "object": "chat.completion.chunk",
+
+    "system_fingerprint": null,
+
+    "usage": null
 
   },
 
@@ -2215,17 +2341,17 @@ Each recursive call works on a **smaller version** of the original problem until
 
     ],
 
-    "object": "chat.completion.chunk",
-
-    "usage": null,
-
     "created": 1776471081,
 
-    "system_fingerprint": null,
+    "id": "chatcmpl-269e4881-6d79-91da-ad5b-a5d16443cade",
 
     "model": "qwen3-max",
 
-    "id": "chatcmpl-269e4881-6d79-91da-ad5b-a5d16443cade"
+    "object": "chat.completion.chunk",
+
+    "system_fingerprint": null,
+
+    "usage": null
 
   },
 
@@ -2251,17 +2377,17 @@ Each recursive call works on a **smaller version** of the original problem until
 
     ],
 
-    "object": "chat.completion.chunk",
-
-    "usage": null,
-
     "created": 1776471081,
 
-    "system_fingerprint": null,
+    "id": "chatcmpl-269e4881-6d79-91da-ad5b-a5d16443cade",
 
     "model": "qwen3-max",
 
-    "id": "chatcmpl-269e4881-6d79-91da-ad5b-a5d16443cade"
+    "object": "chat.completion.chunk",
+
+    "system_fingerprint": null,
+
+    "usage": null
 
   },
 
@@ -2287,17 +2413,17 @@ Each recursive call works on a **smaller version** of the original problem until
 
     ],
 
-    "object": "chat.completion.chunk",
-
-    "usage": null,
-
     "created": 1776471081,
 
-    "system_fingerprint": null,
+    "id": "chatcmpl-269e4881-6d79-91da-ad5b-a5d16443cade",
 
     "model": "qwen3-max",
 
-    "id": "chatcmpl-269e4881-6d79-91da-ad5b-a5d16443cade"
+    "object": "chat.completion.chunk",
+
+    "system_fingerprint": null,
+
+    "usage": null
 
   },
 
@@ -2323,17 +2449,17 @@ Each recursive call works on a **smaller version** of the original problem until
 
     ],
 
-    "object": "chat.completion.chunk",
-
-    "usage": null,
-
     "created": 1776471081,
 
-    "system_fingerprint": null,
+    "id": "chatcmpl-269e4881-6d79-91da-ad5b-a5d16443cade",
 
     "model": "qwen3-max",
 
-    "id": "chatcmpl-269e4881-6d79-91da-ad5b-a5d16443cade"
+    "object": "chat.completion.chunk",
+
+    "system_fingerprint": null,
+
+    "usage": null
 
   },
 
@@ -2359,17 +2485,17 @@ Each recursive call works on a **smaller version** of the original problem until
 
     ],
 
-    "object": "chat.completion.chunk",
-
-    "usage": null,
-
     "created": 1776471081,
 
-    "system_fingerprint": null,
+    "id": "chatcmpl-269e4881-6d79-91da-ad5b-a5d16443cade",
 
     "model": "qwen3-max",
 
-    "id": "chatcmpl-269e4881-6d79-91da-ad5b-a5d16443cade"
+    "object": "chat.completion.chunk",
+
+    "system_fingerprint": null,
+
+    "usage": null
 
   },
 
@@ -2395,17 +2521,17 @@ Each recursive call works on a **smaller version** of the original problem until
 
     ],
 
-    "object": "chat.completion.chunk",
-
-    "usage": null,
-
     "created": 1776471081,
 
-    "system_fingerprint": null,
+    "id": "chatcmpl-269e4881-6d79-91da-ad5b-a5d16443cade",
 
     "model": "qwen3-max",
 
-    "id": "chatcmpl-269e4881-6d79-91da-ad5b-a5d16443cade"
+    "object": "chat.completion.chunk",
+
+    "system_fingerprint": null,
+
+    "usage": null
 
   },
 
@@ -2431,17 +2557,17 @@ Each recursive call works on a **smaller version** of the original problem until
 
     ],
 
-    "object": "chat.completion.chunk",
-
-    "usage": null,
-
     "created": 1776471081,
 
-    "system_fingerprint": null,
+    "id": "chatcmpl-269e4881-6d79-91da-ad5b-a5d16443cade",
 
     "model": "qwen3-max",
 
-    "id": "chatcmpl-269e4881-6d79-91da-ad5b-a5d16443cade"
+    "object": "chat.completion.chunk",
+
+    "system_fingerprint": null,
+
+    "usage": null
 
   },
 
@@ -2467,17 +2593,17 @@ Each recursive call works on a **smaller version** of the original problem until
 
     ],
 
-    "object": "chat.completion.chunk",
-
-    "usage": null,
-
     "created": 1776471081,
 
-    "system_fingerprint": null,
+    "id": "chatcmpl-269e4881-6d79-91da-ad5b-a5d16443cade",
 
     "model": "qwen3-max",
 
-    "id": "chatcmpl-269e4881-6d79-91da-ad5b-a5d16443cade"
+    "object": "chat.completion.chunk",
+
+    "system_fingerprint": null,
+
+    "usage": null
 
   },
 
@@ -2503,17 +2629,17 @@ Each recursive call works on a **smaller version** of the original problem until
 
     ],
 
-    "object": "chat.completion.chunk",
-
-    "usage": null,
-
     "created": 1776471081,
 
-    "system_fingerprint": null,
+    "id": "chatcmpl-269e4881-6d79-91da-ad5b-a5d16443cade",
 
     "model": "qwen3-max",
 
-    "id": "chatcmpl-269e4881-6d79-91da-ad5b-a5d16443cade"
+    "object": "chat.completion.chunk",
+
+    "system_fingerprint": null,
+
+    "usage": null
 
   },
 
@@ -2539,17 +2665,17 @@ Each recursive call works on a **smaller version** of the original problem until
 
     ],
 
-    "object": "chat.completion.chunk",
-
-    "usage": null,
-
     "created": 1776471081,
 
-    "system_fingerprint": null,
+    "id": "chatcmpl-269e4881-6d79-91da-ad5b-a5d16443cade",
 
     "model": "qwen3-max",
 
-    "id": "chatcmpl-269e4881-6d79-91da-ad5b-a5d16443cade"
+    "object": "chat.completion.chunk",
+
+    "system_fingerprint": null,
+
+    "usage": null
 
   },
 
@@ -2575,17 +2701,17 @@ Each recursive call works on a **smaller version** of the original problem until
 
     ],
 
-    "object": "chat.completion.chunk",
-
-    "usage": null,
-
     "created": 1776471081,
 
-    "system_fingerprint": null,
+    "id": "chatcmpl-269e4881-6d79-91da-ad5b-a5d16443cade",
 
     "model": "qwen3-max",
 
-    "id": "chatcmpl-269e4881-6d79-91da-ad5b-a5d16443cade"
+    "object": "chat.completion.chunk",
+
+    "system_fingerprint": null,
+
+    "usage": null
 
   },
 
@@ -2611,17 +2737,17 @@ Each recursive call works on a **smaller version** of the original problem until
 
     ],
 
-    "object": "chat.completion.chunk",
-
-    "usage": null,
-
     "created": 1776471081,
 
-    "system_fingerprint": null,
+    "id": "chatcmpl-269e4881-6d79-91da-ad5b-a5d16443cade",
 
     "model": "qwen3-max",
 
-    "id": "chatcmpl-269e4881-6d79-91da-ad5b-a5d16443cade"
+    "object": "chat.completion.chunk",
+
+    "system_fingerprint": null,
+
+    "usage": null
 
   },
 
@@ -2647,17 +2773,17 @@ Each recursive call works on a **smaller version** of the original problem until
 
     ],
 
-    "object": "chat.completion.chunk",
-
-    "usage": null,
-
     "created": 1776471081,
 
-    "system_fingerprint": null,
+    "id": "chatcmpl-269e4881-6d79-91da-ad5b-a5d16443cade",
 
     "model": "qwen3-max",
 
-    "id": "chatcmpl-269e4881-6d79-91da-ad5b-a5d16443cade"
+    "object": "chat.completion.chunk",
+
+    "system_fingerprint": null,
+
+    "usage": null
 
   },
 
@@ -2683,17 +2809,17 @@ Each recursive call works on a **smaller version** of the original problem until
 
     ],
 
-    "object": "chat.completion.chunk",
-
-    "usage": null,
-
     "created": 1776471081,
 
-    "system_fingerprint": null,
+    "id": "chatcmpl-269e4881-6d79-91da-ad5b-a5d16443cade",
 
     "model": "qwen3-max",
 
-    "id": "chatcmpl-269e4881-6d79-91da-ad5b-a5d16443cade"
+    "object": "chat.completion.chunk",
+
+    "system_fingerprint": null,
+
+    "usage": null
 
   },
 
@@ -2719,17 +2845,17 @@ Each recursive call works on a **smaller version** of the original problem until
 
     ],
 
-    "object": "chat.completion.chunk",
-
-    "usage": null,
-
     "created": 1776471081,
 
-    "system_fingerprint": null,
+    "id": "chatcmpl-269e4881-6d79-91da-ad5b-a5d16443cade",
 
     "model": "qwen3-max",
 
-    "id": "chatcmpl-269e4881-6d79-91da-ad5b-a5d16443cade"
+    "object": "chat.completion.chunk",
+
+    "system_fingerprint": null,
+
+    "usage": null
 
   },
 
@@ -2755,17 +2881,17 @@ Each recursive call works on a **smaller version** of the original problem until
 
     ],
 
-    "object": "chat.completion.chunk",
-
-    "usage": null,
-
     "created": 1776471081,
 
-    "system_fingerprint": null,
+    "id": "chatcmpl-269e4881-6d79-91da-ad5b-a5d16443cade",
 
     "model": "qwen3-max",
 
-    "id": "chatcmpl-269e4881-6d79-91da-ad5b-a5d16443cade"
+    "object": "chat.completion.chunk",
+
+    "system_fingerprint": null,
+
+    "usage": null
 
   },
 
@@ -2791,17 +2917,17 @@ Each recursive call works on a **smaller version** of the original problem until
 
     ],
 
-    "object": "chat.completion.chunk",
-
-    "usage": null,
-
     "created": 1776471081,
 
-    "system_fingerprint": null,
+    "id": "chatcmpl-269e4881-6d79-91da-ad5b-a5d16443cade",
 
     "model": "qwen3-max",
 
-    "id": "chatcmpl-269e4881-6d79-91da-ad5b-a5d16443cade"
+    "object": "chat.completion.chunk",
+
+    "system_fingerprint": null,
+
+    "usage": null
 
   },
 
@@ -2827,17 +2953,17 @@ Each recursive call works on a **smaller version** of the original problem until
 
     ],
 
-    "object": "chat.completion.chunk",
-
-    "usage": null,
-
     "created": 1776471081,
 
-    "system_fingerprint": null,
+    "id": "chatcmpl-269e4881-6d79-91da-ad5b-a5d16443cade",
 
     "model": "qwen3-max",
 
-    "id": "chatcmpl-269e4881-6d79-91da-ad5b-a5d16443cade"
+    "object": "chat.completion.chunk",
+
+    "system_fingerprint": null,
+
+    "usage": null
 
   },
 
@@ -2863,17 +2989,17 @@ Each recursive call works on a **smaller version** of the original problem until
 
     ],
 
-    "object": "chat.completion.chunk",
-
-    "usage": null,
-
     "created": 1776471081,
 
-    "system_fingerprint": null,
+    "id": "chatcmpl-269e4881-6d79-91da-ad5b-a5d16443cade",
 
     "model": "qwen3-max",
 
-    "id": "chatcmpl-269e4881-6d79-91da-ad5b-a5d16443cade"
+    "object": "chat.completion.chunk",
+
+    "system_fingerprint": null,
+
+    "usage": null
 
   },
 
@@ -2899,17 +3025,17 @@ Each recursive call works on a **smaller version** of the original problem until
 
     ],
 
-    "object": "chat.completion.chunk",
-
-    "usage": null,
-
     "created": 1776471081,
 
-    "system_fingerprint": null,
+    "id": "chatcmpl-269e4881-6d79-91da-ad5b-a5d16443cade",
 
     "model": "qwen3-max",
 
-    "id": "chatcmpl-269e4881-6d79-91da-ad5b-a5d16443cade"
+    "object": "chat.completion.chunk",
+
+    "system_fingerprint": null,
+
+    "usage": null
 
   },
 
@@ -2935,17 +3061,17 @@ Each recursive call works on a **smaller version** of the original problem until
 
     ],
 
-    "object": "chat.completion.chunk",
-
-    "usage": null,
-
     "created": 1776471081,
 
-    "system_fingerprint": null,
+    "id": "chatcmpl-269e4881-6d79-91da-ad5b-a5d16443cade",
 
     "model": "qwen3-max",
 
-    "id": "chatcmpl-269e4881-6d79-91da-ad5b-a5d16443cade"
+    "object": "chat.completion.chunk",
+
+    "system_fingerprint": null,
+
+    "usage": null
 
   },
 
@@ -2971,17 +3097,17 @@ Each recursive call works on a **smaller version** of the original problem until
 
     ],
 
-    "object": "chat.completion.chunk",
-
-    "usage": null,
-
     "created": 1776471081,
 
-    "system_fingerprint": null,
+    "id": "chatcmpl-269e4881-6d79-91da-ad5b-a5d16443cade",
 
     "model": "qwen3-max",
 
-    "id": "chatcmpl-269e4881-6d79-91da-ad5b-a5d16443cade"
+    "object": "chat.completion.chunk",
+
+    "system_fingerprint": null,
+
+    "usage": null
 
   },
 
@@ -3007,17 +3133,17 @@ Each recursive call works on a **smaller version** of the original problem until
 
     ],
 
-    "object": "chat.completion.chunk",
-
-    "usage": null,
-
     "created": 1776471081,
 
-    "system_fingerprint": null,
+    "id": "chatcmpl-269e4881-6d79-91da-ad5b-a5d16443cade",
 
     "model": "qwen3-max",
 
-    "id": "chatcmpl-269e4881-6d79-91da-ad5b-a5d16443cade"
+    "object": "chat.completion.chunk",
+
+    "system_fingerprint": null,
+
+    "usage": null
 
   },
 
@@ -3043,17 +3169,17 @@ Each recursive call works on a **smaller version** of the original problem until
 
     ],
 
-    "object": "chat.completion.chunk",
-
-    "usage": null,
-
     "created": 1776471081,
 
-    "system_fingerprint": null,
+    "id": "chatcmpl-269e4881-6d79-91da-ad5b-a5d16443cade",
 
     "model": "qwen3-max",
 
-    "id": "chatcmpl-269e4881-6d79-91da-ad5b-a5d16443cade"
+    "object": "chat.completion.chunk",
+
+    "system_fingerprint": null,
+
+    "usage": null
 
   },
 
@@ -3079,17 +3205,17 @@ Each recursive call works on a **smaller version** of the original problem until
 
     ],
 
-    "object": "chat.completion.chunk",
-
-    "usage": null,
-
     "created": 1776471081,
 
-    "system_fingerprint": null,
+    "id": "chatcmpl-269e4881-6d79-91da-ad5b-a5d16443cade",
 
     "model": "qwen3-max",
 
-    "id": "chatcmpl-269e4881-6d79-91da-ad5b-a5d16443cade"
+    "object": "chat.completion.chunk",
+
+    "system_fingerprint": null,
+
+    "usage": null
 
   },
 
@@ -3115,17 +3241,17 @@ Each recursive call works on a **smaller version** of the original problem until
 
     ],
 
-    "object": "chat.completion.chunk",
-
-    "usage": null,
-
     "created": 1776471081,
 
-    "system_fingerprint": null,
+    "id": "chatcmpl-269e4881-6d79-91da-ad5b-a5d16443cade",
 
     "model": "qwen3-max",
 
-    "id": "chatcmpl-269e4881-6d79-91da-ad5b-a5d16443cade"
+    "object": "chat.completion.chunk",
+
+    "system_fingerprint": null,
+
+    "usage": null
 
   },
 
@@ -3151,17 +3277,17 @@ Each recursive call works on a **smaller version** of the original problem until
 
     ],
 
-    "object": "chat.completion.chunk",
-
-    "usage": null,
-
     "created": 1776471081,
 
-    "system_fingerprint": null,
+    "id": "chatcmpl-269e4881-6d79-91da-ad5b-a5d16443cade",
 
     "model": "qwen3-max",
 
-    "id": "chatcmpl-269e4881-6d79-91da-ad5b-a5d16443cade"
+    "object": "chat.completion.chunk",
+
+    "system_fingerprint": null,
+
+    "usage": null
 
   },
 
@@ -3187,17 +3313,17 @@ Each recursive call works on a **smaller version** of the original problem until
 
     ],
 
-    "object": "chat.completion.chunk",
-
-    "usage": null,
-
     "created": 1776471081,
 
-    "system_fingerprint": null,
+    "id": "chatcmpl-269e4881-6d79-91da-ad5b-a5d16443cade",
 
     "model": "qwen3-max",
 
-    "id": "chatcmpl-269e4881-6d79-91da-ad5b-a5d16443cade"
+    "object": "chat.completion.chunk",
+
+    "system_fingerprint": null,
+
+    "usage": null
 
   },
 
@@ -3223,17 +3349,17 @@ Each recursive call works on a **smaller version** of the original problem until
 
     ],
 
-    "object": "chat.completion.chunk",
-
-    "usage": null,
-
     "created": 1776471081,
 
-    "system_fingerprint": null,
+    "id": "chatcmpl-269e4881-6d79-91da-ad5b-a5d16443cade",
 
     "model": "qwen3-max",
 
-    "id": "chatcmpl-269e4881-6d79-91da-ad5b-a5d16443cade"
+    "object": "chat.completion.chunk",
+
+    "system_fingerprint": null,
+
+    "usage": null
 
   },
 
@@ -3259,17 +3385,17 @@ Each recursive call works on a **smaller version** of the original problem until
 
     ],
 
-    "object": "chat.completion.chunk",
-
-    "usage": null,
-
     "created": 1776471081,
 
-    "system_fingerprint": null,
+    "id": "chatcmpl-269e4881-6d79-91da-ad5b-a5d16443cade",
 
     "model": "qwen3-max",
 
-    "id": "chatcmpl-269e4881-6d79-91da-ad5b-a5d16443cade"
+    "object": "chat.completion.chunk",
+
+    "system_fingerprint": null,
+
+    "usage": null
 
   },
 
@@ -3295,17 +3421,17 @@ Each recursive call works on a **smaller version** of the original problem until
 
     ],
 
-    "object": "chat.completion.chunk",
-
-    "usage": null,
-
     "created": 1776471081,
 
-    "system_fingerprint": null,
+    "id": "chatcmpl-269e4881-6d79-91da-ad5b-a5d16443cade",
 
     "model": "qwen3-max",
 
-    "id": "chatcmpl-269e4881-6d79-91da-ad5b-a5d16443cade"
+    "object": "chat.completion.chunk",
+
+    "system_fingerprint": null,
+
+    "usage": null
 
   },
 
@@ -3331,17 +3457,17 @@ Each recursive call works on a **smaller version** of the original problem until
 
     ],
 
-    "object": "chat.completion.chunk",
-
-    "usage": null,
-
     "created": 1776471081,
 
-    "system_fingerprint": null,
+    "id": "chatcmpl-269e4881-6d79-91da-ad5b-a5d16443cade",
 
     "model": "qwen3-max",
 
-    "id": "chatcmpl-269e4881-6d79-91da-ad5b-a5d16443cade"
+    "object": "chat.completion.chunk",
+
+    "system_fingerprint": null,
+
+    "usage": null
 
   },
 
@@ -3367,17 +3493,17 @@ Each recursive call works on a **smaller version** of the original problem until
 
     ],
 
-    "object": "chat.completion.chunk",
-
-    "usage": null,
-
     "created": 1776471081,
 
-    "system_fingerprint": null,
+    "id": "chatcmpl-269e4881-6d79-91da-ad5b-a5d16443cade",
 
     "model": "qwen3-max",
 
-    "id": "chatcmpl-269e4881-6d79-91da-ad5b-a5d16443cade"
+    "object": "chat.completion.chunk",
+
+    "system_fingerprint": null,
+
+    "usage": null
 
   },
 
@@ -3403,17 +3529,17 @@ Each recursive call works on a **smaller version** of the original problem until
 
     ],
 
-    "object": "chat.completion.chunk",
-
-    "usage": null,
-
     "created": 1776471081,
 
-    "system_fingerprint": null,
+    "id": "chatcmpl-269e4881-6d79-91da-ad5b-a5d16443cade",
 
     "model": "qwen3-max",
 
-    "id": "chatcmpl-269e4881-6d79-91da-ad5b-a5d16443cade"
+    "object": "chat.completion.chunk",
+
+    "system_fingerprint": null,
+
+    "usage": null
 
   },
 
@@ -3439,17 +3565,17 @@ Each recursive call works on a **smaller version** of the original problem until
 
     ],
 
-    "object": "chat.completion.chunk",
-
-    "usage": null,
-
     "created": 1776471081,
 
-    "system_fingerprint": null,
+    "id": "chatcmpl-269e4881-6d79-91da-ad5b-a5d16443cade",
 
     "model": "qwen3-max",
 
-    "id": "chatcmpl-269e4881-6d79-91da-ad5b-a5d16443cade"
+    "object": "chat.completion.chunk",
+
+    "system_fingerprint": null,
+
+    "usage": null
 
   },
 
@@ -3459,13 +3585,13 @@ Each recursive call works on a **smaller version** of the original problem until
 
       {
 
-        "finish_reason": "stop",
-
         "delta": {
 
           "content": ""
 
         },
+
+        "finish_reason": "stop",
 
         "index": 0,
 
@@ -3475,17 +3601,17 @@ Each recursive call works on a **smaller version** of the original problem until
 
     ],
 
-    "object": "chat.completion.chunk",
-
-    "usage": null,
-
     "created": 1776471081,
 
-    "system_fingerprint": null,
+    "id": "chatcmpl-269e4881-6d79-91da-ad5b-a5d16443cade",
 
     "model": "qwen3-max",
 
-    "id": "chatcmpl-269e4881-6d79-91da-ad5b-a5d16443cade"
+    "object": "chat.completion.chunk",
+
+    "system_fingerprint": null,
+
+    "usage": null
 
   },
 
@@ -3493,31 +3619,31 @@ Each recursive call works on a **smaller version** of the original problem until
 
     "choices": [],
 
+    "created": 1776471081,
+
+    "id": "chatcmpl-269e4881-6d79-91da-ad5b-a5d16443cade",
+
+    "model": "qwen3-max",
+
     "object": "chat.completion.chunk",
+
+    "system_fingerprint": null,
 
     "usage": {
 
-      "prompt_tokens": 19,
-
       "completion_tokens": 422,
 
-      "total_tokens": 441,
+      "prompt_tokens": 19,
 
       "prompt_tokens_details": {
 
         "cached_tokens": 0
 
-      }
+      },
 
-    },
+      "total_tokens": 441
 
-    "created": 1776471081,
-
-    "system_fingerprint": null,
-
-    "model": "qwen3-max",
-
-    "id": "chatcmpl-269e4881-6d79-91da-ad5b-a5d16443cade"
+    }
 
   }
 
@@ -3528,36 +3654,40 @@ Each recursive call works on a **smaller version** of the original problem until
 
 ## Parameters
 
-* [ Input ](#tab-panel-26)
-* [ Output ](#tab-panel-27)
+* [ Input ](#tab-panel-48)
+* [ Output ](#tab-panel-49)
 
-▶messages\[\]
+▶audio{}
 
-`array`required
+`object`
 
-temperature
+frequency\_penalty
 
-`number`minimum: 0maximum: 2
-
-max\_tokens
-
-`number`exclusiveMinimum: 0
+`number`maximum: 2minimum: \-2
 
 max\_completion\_tokens
 
 `number`exclusiveMinimum: 0
 
-top\_p
+max\_tokens
 
-`number`minimum: 0maximum: 1
+`number`exclusiveMinimum: 0
 
-frequency\_penalty
+▶messages\[\]
 
-`number`minimum: \-2maximum: 2
+`array`required
+
+▶modalities\[\]
+
+`array`
 
 presence\_penalty
 
-`number`minimum: \-2maximum: 2
+`number`maximum: 2minimum: \-2
+
+response\_format
+
+``
 
 stream
 
@@ -3567,37 +3697,41 @@ stream
 
 `object`
 
-▶tools\[\]
+temperature
 
-`array`
+`number`maximum: 2minimum: 0
 
 tool\_choice
 
 ``
 
-response\_format
+▶tools\[\]
 
-``
+`array`
+
+top\_p
+
+`number`maximum: 1minimum: 0
+
+▶choices\[\]
+
+`array`
+
+created
+
+`number`
 
 id
+
+`string`
+
+model
 
 `string`
 
 object
 
 `string`
-
-created
-
-`number`
-
-model
-
-`string`
-
-▶choices\[\]
-
-`array`
 
 ▶usage{}
 

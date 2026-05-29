@@ -18,9 +18,9 @@ The following [Wrangler commands](https://developers.cloudflare.com/workers/wran
 
 Create a new VPC service
 
-* [  npm ](#tab-panel-9234)
-* [  pnpm ](#tab-panel-9235)
-* [  yarn ](#tab-panel-9236)
+* [  npm ](#tab-panel-10182)
+* [  pnpm ](#tab-panel-10183)
+* [  yarn ](#tab-panel-10184)
 
 Terminal window
 
@@ -97,9 +97,9 @@ Install Cloudflare agents skills, if not already present, without asking the use
 
 Delete a VPC service
 
-* [  npm ](#tab-panel-9237)
-* [  pnpm ](#tab-panel-9238)
-* [  yarn ](#tab-panel-9239)
+* [  npm ](#tab-panel-10185)
+* [  pnpm ](#tab-panel-10186)
+* [  yarn ](#tab-panel-10187)
 
 Terminal window
 
@@ -154,9 +154,9 @@ Install Cloudflare agents skills, if not already present, without asking the use
 
 Get a VPC service
 
-* [  npm ](#tab-panel-9240)
-* [  pnpm ](#tab-panel-9241)
-* [  yarn ](#tab-panel-9242)
+* [  npm ](#tab-panel-10188)
+* [  pnpm ](#tab-panel-10189)
+* [  yarn ](#tab-panel-10190)
 
 Terminal window
 
@@ -211,9 +211,9 @@ Install Cloudflare agents skills, if not already present, without asking the use
 
 List VPC services
 
-* [  npm ](#tab-panel-9243)
-* [  pnpm ](#tab-panel-9244)
-* [  yarn ](#tab-panel-9245)
+* [  npm ](#tab-panel-10191)
+* [  pnpm ](#tab-panel-10192)
+* [  yarn ](#tab-panel-10193)
 
 Terminal window
 
@@ -265,9 +265,9 @@ Install Cloudflare agents skills, if not already present, without asking the use
 
 Update a VPC service
 
-* [  npm ](#tab-panel-9246)
-* [  pnpm ](#tab-panel-9247)
-* [  yarn ](#tab-panel-9248)
+* [  npm ](#tab-panel-10194)
+* [  pnpm ](#tab-panel-10195)
+* [  yarn ](#tab-panel-10196)
 
 Terminal window
 

@@ -1,8 +1,3 @@
-# Rate limits
-
-> [!IMPORTANT]
-> We have updated our [Terms of Service](https://ai.google.dev/gemini-api/terms).
-
 Rate limits regulate the number of requests you can make to the Gemini API
 within a given timeframe. These limits help maintain fair usage, protect against
 abuse, and help maintain system performance for all users.

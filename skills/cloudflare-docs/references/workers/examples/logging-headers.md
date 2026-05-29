@@ -22,11 +22,11 @@ If you want to get started quickly, click on the button below.
 
 This creates a repository in your GitHub account and deploys the application to Cloudflare Workers.
 
-* [  JavaScript ](#tab-panel-9490)
-* [  TypeScript ](#tab-panel-9491)
-* [  Python ](#tab-panel-9492)
-* [  Rust ](#tab-panel-9493)
-* [  Hono ](#tab-panel-9494)
+* [  JavaScript ](#tab-panel-10512)
+* [  TypeScript ](#tab-panel-10513)
+* [  Python ](#tab-panel-10514)
+* [  Rust ](#tab-panel-10515)
+* [  Hono ](#tab-panel-10516)
 
 JavaScript
 

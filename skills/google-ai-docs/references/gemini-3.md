@@ -1,8 +1,5 @@
 # Gemini 3 Developer Guide
 
-> [!IMPORTANT]
-> We have updated our [Terms of Service](https://ai.google.dev/gemini-api/terms).
-
 Gemini 3 is our most intelligent model family to date, built on a foundation of
 state-of-the-art reasoning. It is designed to bring any idea to life by
 mastering agentic workflows, autonomous coding, and complex multimodal tasks.

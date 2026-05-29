@@ -16,10 +16,10 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 Inject [Turnstile](https://developers.cloudflare.com/turnstile/) implicitly into HTML elements using the HTMLRewriter runtime API.
 
-* [  JavaScript ](#tab-panel-9568)
-* [  TypeScript ](#tab-panel-9569)
-* [  Hono ](#tab-panel-9570)
-* [  Python ](#tab-panel-9571)
+* [  JavaScript ](#tab-panel-10590)
+* [  TypeScript ](#tab-panel-10591)
+* [  Hono ](#tab-panel-10592)
+* [  Python ](#tab-panel-10593)
 
 JavaScript
 

@@ -28,6 +28,9 @@ Vidu Q3 Turbo is a faster version of Vidu Q3 optimized for lower latency video g
 
 ## Usage
 
+* [ TypeScript ](#tab-panel-1350)
+* [ cURL ](#tab-panel-1351)
+
 TypeScript
 
 ```
@@ -36,21 +39,7 @@ const response = await env.AI.run(
 
   'vidu/q3-turbo',
 
-  {
-
-    prompt: 'A cat lazily stretching on a sunlit windowsill',
-
-    duration: 5,
-
-    resolution: '720p',
-
-  },
-
-  {
-
-    gateway: { id: 'default' },
-
-  }
+  { duration: 5, prompt: 'A cat lazily stretching on a sunlit windowsill', resolution: '720p' },
 
 )
 
@@ -59,14 +48,47 @@ console.log(response)
 
 ```
 
-* [ Output ](#tab-panel-602)
-* [ Raw response ](#tab-panel-603)
+Terminal window
+
+```
+
+curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run \
+
+  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+
+  --header "Content-Type: application/json" \
+
+  --data '{
+
+  "model": "vidu/q3-turbo",
+
+  "input": {
+
+    "duration": 5,
+
+    "prompt": "A cat lazily stretching on a sunlit windowsill",
+
+    "resolution": "720p"
+
+  }
+
+}'
+
+
+```
+
+* [ Output ](#tab-panel-1348)
+* [ Raw response ](#tab-panel-1349)
 
 ```
 
 {
 
-  "state": "Completed",
+  "gatewayMetadata": {
+
+    "keySource": "Unified"
+
+  },
 
   "result": {
 
@@ -74,11 +96,7 @@ console.log(response)
 
   },
 
-  "gatewayMetadata": {
-
-    "keySource": "Unified"
-
-  }
+  "state": "Completed"
 
 }
 
@@ -89,6 +107,9 @@ console.log(response)
 
 **High Resolution**  — Generate at 1080p 
 
+* [ TypeScript ](#tab-panel-1354)
+* [ cURL ](#tab-panel-1355)
+
 TypeScript
 
 ```
@@ -99,21 +120,15 @@ const response = await env.AI.run(
 
   {
 
+    duration: 5,
+
     prompt:
 
       'Close-up of a hummingbird feeding from a vibrant red flower, slow motion with soft bokeh background',
 
-    duration: 5,
-
     resolution: '1080p',
 
   },
-
-  {
-
-    gateway: { id: 'default' },
-
-  }
 
 )
 
@@ -122,14 +137,47 @@ console.log(response)
 
 ```
 
-* [ Output ](#tab-panel-604)
-* [ Raw response ](#tab-panel-605)
+Terminal window
+
+```
+
+curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run \
+
+  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+
+  --header "Content-Type: application/json" \
+
+  --data '{
+
+  "model": "vidu/q3-turbo",
+
+  "input": {
+
+    "duration": 5,
+
+    "prompt": "Close-up of a hummingbird feeding from a vibrant red flower, slow motion with soft bokeh background",
+
+    "resolution": "1080p"
+
+  }
+
+}'
+
+
+```
+
+* [ Output ](#tab-panel-1352)
+* [ Raw response ](#tab-panel-1353)
 
 ```
 
 {
 
-  "state": "Completed",
+  "gatewayMetadata": {
+
+    "keySource": "Unified"
+
+  },
 
   "result": {
 
@@ -137,11 +185,7 @@ console.log(response)
 
   },
 
-  "gatewayMetadata": {
-
-    "keySource": "Unified"
-
-  }
+  "state": "Completed"
 
 }
 
@@ -150,6 +194,9 @@ console.log(response)
 
 **Portrait Video**  — Vertical video for mobile viewing 
 
+* [ TypeScript ](#tab-panel-1360)
+* [ cURL ](#tab-panel-1361)
+
 TypeScript
 
 ```
@@ -160,23 +207,15 @@ const response = await env.AI.run(
 
   {
 
-    prompt:
-
-      'A waterfall cascading down mossy rocks in a tropical jungle, mist rising',
+    aspect_ratio: '9:16',
 
     duration: 5,
 
+    prompt: 'A waterfall cascading down mossy rocks in a tropical jungle, mist rising',
+
     resolution: '720p',
 
-    aspect_ratio: '9:16',
-
   },
-
-  {
-
-    gateway: { id: 'default' },
-
-  }
 
 )
 
@@ -185,14 +224,49 @@ console.log(response)
 
 ```
 
-* [ Output ](#tab-panel-606)
-* [ Raw response ](#tab-panel-607)
+Terminal window
+
+```
+
+curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run \
+
+  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+
+  --header "Content-Type: application/json" \
+
+  --data '{
+
+  "model": "vidu/q3-turbo",
+
+  "input": {
+
+    "aspect_ratio": "9:16",
+
+    "duration": 5,
+
+    "prompt": "A waterfall cascading down mossy rocks in a tropical jungle, mist rising",
+
+    "resolution": "720p"
+
+  }
+
+}'
+
+
+```
+
+* [ Output ](#tab-panel-1356)
+* [ Raw response ](#tab-panel-1357)
 
 ```
 
 {
 
-  "state": "Completed",
+  "gatewayMetadata": {
+
+    "keySource": "Unified"
+
+  },
 
   "result": {
 
@@ -200,11 +274,7 @@ console.log(response)
 
   },
 
-  "gatewayMetadata": {
-
-    "keySource": "Unified"
-
-  }
+  "state": "Completed"
 
 }
 
@@ -213,6 +283,9 @@ console.log(response)
 
 **Extended Duration**  — Longer video clip 
 
+* [ TypeScript ](#tab-panel-1362)
+* [ cURL ](#tab-panel-1363)
+
 TypeScript
 
 ```
@@ -223,21 +296,15 @@ const response = await env.AI.run(
 
   {
 
+    duration: 16,
+
     prompt:
 
       'Timelapse of clouds rolling over a mountain peak from sunrise to sunset, dramatic lighting',
 
-    duration: 16,
-
     resolution: '720p',
 
   },
-
-  {
-
-    gateway: { id: 'default' },
-
-  }
 
 )
 
@@ -246,14 +313,47 @@ console.log(response)
 
 ```
 
-* [ Output ](#tab-panel-608)
-* [ Raw response ](#tab-panel-609)
+Terminal window
+
+```
+
+curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run \
+
+  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+
+  --header "Content-Type: application/json" \
+
+  --data '{
+
+  "model": "vidu/q3-turbo",
+
+  "input": {
+
+    "duration": 16,
+
+    "prompt": "Timelapse of clouds rolling over a mountain peak from sunrise to sunset, dramatic lighting",
+
+    "resolution": "720p"
+
+  }
+
+}'
+
+
+```
+
+* [ Output ](#tab-panel-1358)
+* [ Raw response ](#tab-panel-1359)
 
 ```
 
 {
 
-  "state": "Completed",
+  "gatewayMetadata": {
+
+    "keySource": "Unified"
+
+  },
 
   "result": {
 
@@ -261,11 +361,7 @@ console.log(response)
 
   },
 
-  "gatewayMetadata": {
-
-    "keySource": "Unified"
-
-  }
+  "state": "Completed"
 
 }
 
@@ -274,6 +370,9 @@ console.log(response)
 
 **Low Resolution Fast Preview**  — Quick preview at 540p 
 
+* [ TypeScript ](#tab-panel-1366)
+* [ cURL ](#tab-panel-1367)
+
 TypeScript
 
 ```
@@ -284,19 +383,13 @@ const response = await env.AI.run(
 
   {
 
-    prompt: 'A sailboat gliding across calm ocean waters at sunset',
-
     duration: 3,
+
+    prompt: 'A sailboat gliding across calm ocean waters at sunset',
 
     resolution: '540p',
 
   },
-
-  {
-
-    gateway: { id: 'default' },
-
-  }
 
 )
 
@@ -305,14 +398,47 @@ console.log(response)
 
 ```
 
-* [ Output ](#tab-panel-610)
-* [ Raw response ](#tab-panel-611)
+Terminal window
+
+```
+
+curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run \
+
+  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+
+  --header "Content-Type: application/json" \
+
+  --data '{
+
+  "model": "vidu/q3-turbo",
+
+  "input": {
+
+    "duration": 3,
+
+    "prompt": "A sailboat gliding across calm ocean waters at sunset",
+
+    "resolution": "540p"
+
+  }
+
+}'
+
+
+```
+
+* [ Output ](#tab-panel-1364)
+* [ Raw response ](#tab-panel-1365)
 
 ```
 
 {
 
-  "state": "Completed",
+  "gatewayMetadata": {
+
+    "keySource": "Unified"
+
+  },
 
   "result": {
 
@@ -320,11 +446,7 @@ console.log(response)
 
   },
 
-  "gatewayMetadata": {
-
-    "keySource": "Unified"
-
-  }
+  "state": "Completed"
 
 }
 
@@ -333,36 +455,36 @@ console.log(response)
 
 ## Parameters
 
-* [ Input ](#tab-panel-612)
-* [ Output ](#tab-panel-613)
+* [ Input ](#tab-panel-1368)
+* [ Output ](#tab-panel-1369)
 
-prompt
+aspect\_ratio
 
-`string`maxLength: 5000Text prompt describing what should appear in the video
-
-start\_image
-
-`string`Start image for video generation. Use alone for image-to-video, or with end\_image for start/end-to-video. Accepts public URL or Base64 data URI (data:image/png;base64,...)
-
-end\_image
-
-`string`End image for start/end-to-video generation. Must be used together with start\_image. Accepts public URL or Base64 data URI (data:image/png;base64,...)
-
-duration
-
-`integer`requireddefault: 5minimum: 1maximum: 16Video duration in seconds (1-16)
-
-resolution
-
-`string`requireddefault: 720penum: 540p, 720p, 1080pVideo resolution
+`string`enum: 16:9, 9:16, 3:4, 4:3, 1:1Video aspect ratio (text-to-video only). Default: 16:9
 
 audio
 
 `boolean`Enable audio-video synchronization. Default: true for Q3 models. When false, outputs silent video
 
-aspect\_ratio
+duration
 
-`string`enum: 16:9, 9:16, 3:4, 4:3, 1:1Video aspect ratio (text-to-video only). Default: 16:9
+`integer`requireddefault: 5maximum: 16minimum: 1Video duration in seconds (1-16)
+
+end\_image
+
+`string`End image for start/end-to-video generation. Must be used together with start\_image. Accepts public URL or Base64 data URI (data:image/png;base64,...)
+
+prompt
+
+`string`maxLength: 5000Text prompt describing what should appear in the video
+
+resolution
+
+`string`requireddefault: 720penum: 540p, 720p, 1080pVideo resolution
+
+start\_image
+
+`string`Start image for video generation. Use alone for image-to-video, or with end\_image for start/end-to-video. Accepts public URL or Base64 data URI (data:image/png;base64,...)
 
 video
 

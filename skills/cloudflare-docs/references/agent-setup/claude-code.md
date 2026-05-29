@@ -47,7 +47,7 @@ In Claude Code, run these two slash commands. This installs Cloudflare Skills an
 4. **Try a prompt**  
 For example:  
 ```  
-Set up GitHub Actions to deploy this Worker to staging and production on Cloudflare.  
+Build a multi-tenant SaaS backend where each customer gets an isolated D1 database.  
 ```
 
 ## Cloudflare platform access
@@ -89,7 +89,6 @@ MCP servers provide typed tools to call into Cloudflare at runtime. There are tw
 * GraphQL server Get analytics data using Cloudflare’s GraphQL API https://graphql.mcp.cloudflare.com/mcp
 * Logpush server Get quick summaries for Logpush job health https://logs.mcp.cloudflare.com/mcp
 * Observability server Debug and get insight into your application's logs and analytics https://observability.mcp.cloudflare.com/mcp
-* Radar server Get global Internet traffic insights, trends, URL scans, and other utilities https://radar.mcp.cloudflare.com/mcp
 
 Wrangler CLI 
 

@@ -27,6 +27,9 @@ Seedream 4.5 builds on 4.0 with multi-reference image support, batch generation,
 
 ## Usage
 
+* [ TypeScript ](#tab-panel-356)
+* [ cURL ](#tab-panel-357)
+
 TypeScript
 
 ```
@@ -35,19 +38,7 @@ const response = await env.AI.run(
 
   'bytedance/seedream-4.5',
 
-  {
-
-    prompt:
-
-      'A cozy reading nook with floor-to-ceiling bookshelves and a comfortable armchair',
-
-  },
-
-  {
-
-    gateway: { id: 'default' },
-
-  }
+  { prompt: 'A cozy reading nook with floor-to-ceiling bookshelves and a comfortable armchair' },
 
 )
 
@@ -56,8 +47,33 @@ console.log(response)
 
 ```
 
-* [ Output ](#tab-panel-146)
-* [ Raw response ](#tab-panel-147)
+Terminal window
+
+```
+
+curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run \
+
+  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+
+  --header "Content-Type: application/json" \
+
+  --data '{
+
+  "model": "bytedance/seedream-4.5",
+
+  "input": {
+
+    "prompt": "A cozy reading nook with floor-to-ceiling bookshelves and a comfortable armchair"
+
+  }
+
+}'
+
+
+```
+
+* [ Output ](#tab-panel-358)
+* [ Raw response ](#tab-panel-359)
 
 ![Simple Generation](https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/bytedance__seedream-4.5/simple-generation-0.jpeg) 
 
@@ -65,7 +81,11 @@ console.log(response)
 
 {
 
-  "state": "Completed",
+  "gatewayMetadata": {
+
+    "keySource": "Unified"
+
+  },
 
   "result": {
 
@@ -77,11 +97,7 @@ console.log(response)
 
   },
 
-  "gatewayMetadata": {
-
-    "keySource": "Unified"
-
-  }
+  "state": "Completed"
 
 }
 
@@ -91,6 +107,9 @@ console.log(response)
 ## Examples
 
 **High Resolution**  — 4K quality image generation 
+
+* [ TypeScript ](#tab-panel-362)
+* [ cURL ](#tab-panel-363)
 
 TypeScript
 
@@ -102,21 +121,15 @@ const response = await env.AI.run(
 
   {
 
+    aspect_ratio: '4:3',
+
     prompt:
 
       'A hyperrealistic still life painting of fresh fruit on an antique wooden table with dramatic chiaroscuro lighting',
 
     size: '4K',
 
-    aspect_ratio: '4:3',
-
   },
-
-  {
-
-    gateway: { id: 'default' },
-
-  }
 
 )
 
@@ -125,8 +138,37 @@ console.log(response)
 
 ```
 
-* [ Output ](#tab-panel-148)
-* [ Raw response ](#tab-panel-149)
+Terminal window
+
+```
+
+curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run \
+
+  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+
+  --header "Content-Type: application/json" \
+
+  --data '{
+
+  "model": "bytedance/seedream-4.5",
+
+  "input": {
+
+    "aspect_ratio": "4:3",
+
+    "prompt": "A hyperrealistic still life painting of fresh fruit on an antique wooden table with dramatic chiaroscuro lighting",
+
+    "size": "4K"
+
+  }
+
+}'
+
+
+```
+
+* [ Output ](#tab-panel-360)
+* [ Raw response ](#tab-panel-361)
 
 ![High Resolution](https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/bytedance__seedream-4.5/high-resolution-0.jpeg) 
 
@@ -134,7 +176,11 @@ console.log(response)
 
 {
 
-  "state": "Completed",
+  "gatewayMetadata": {
+
+    "keySource": "Unified"
+
+  },
 
   "result": {
 
@@ -146,11 +192,7 @@ console.log(response)
 
   },
 
-  "gatewayMetadata": {
-
-    "keySource": "Unified"
-
-  }
+  "state": "Completed"
 
 }
 
@@ -158,6 +200,9 @@ console.log(response)
 ```
 
 **Image-to-Image**  — Edit using reference images 
+
+* [ TypeScript ](#tab-panel-366)
+* [ cURL ](#tab-panel-367)
 
 TypeScript
 
@@ -169,9 +214,7 @@ const response = await env.AI.run(
 
   {
 
-    prompt:
-
-      'Transform this scene into a winter wonderland with snow covering everything',
+    aspect_ratio: 'match_input_image',
 
     image_input: [
 
@@ -179,15 +222,9 @@ const response = await env.AI.run(
 
     ],
 
-    aspect_ratio: 'match_input_image',
+    prompt: 'Transform this scene into a winter wonderland with snow covering everything',
 
   },
-
-  {
-
-    gateway: { id: 'default' },
-
-  }
 
 )
 
@@ -196,8 +233,41 @@ console.log(response)
 
 ```
 
-* [ Output ](#tab-panel-150)
-* [ Raw response ](#tab-panel-151)
+Terminal window
+
+```
+
+curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run \
+
+  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+
+  --header "Content-Type: application/json" \
+
+  --data '{
+
+  "model": "bytedance/seedream-4.5",
+
+  "input": {
+
+    "aspect_ratio": "match_input_image",
+
+    "image_input": [
+
+      "https://replicate.delivery/xezq/0lxxNQSg3NabCZrDiQVAPGVmjP1Q2dd7TgYCOTfI9LpyZaMLA/tmp89gopylq.jpg"
+
+    ],
+
+    "prompt": "Transform this scene into a winter wonderland with snow covering everything"
+
+  }
+
+}'
+
+
+```
+
+* [ Output ](#tab-panel-364)
+* [ Raw response ](#tab-panel-365)
 
 ![Image-to-Image](https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/bytedance__seedream-4.5/image-to-image-0.jpeg) 
 
@@ -205,7 +275,11 @@ console.log(response)
 
 {
 
-  "state": "Completed",
+  "gatewayMetadata": {
+
+    "keySource": "Unified"
+
+  },
 
   "result": {
 
@@ -217,11 +291,7 @@ console.log(response)
 
   },
 
-  "gatewayMetadata": {
-
-    "keySource": "Unified"
-
-  }
+  "state": "Completed"
 
 }
 
@@ -229,6 +299,9 @@ console.log(response)
 ```
 
 **Sequential Generation**  — Generate multiple related images 
+
+* [ TypeScript ](#tab-panel-370)
+* [ cURL ](#tab-panel-371)
 
 TypeScript
 
@@ -240,23 +313,15 @@ const response = await env.AI.run(
 
   {
 
-    prompt:
-
-      'A character design sheet for a fantasy warrior: front view, side view, and back view',
-
     aspect_ratio: '16:9',
-
-    sequential_image_generation: 'auto',
 
     max_images: 3,
 
+    prompt: 'A character design sheet for a fantasy warrior: front view, side view, and back view',
+
+    sequential_image_generation: 'auto',
+
   },
-
-  {
-
-    gateway: { id: 'default' },
-
-  }
 
 )
 
@@ -265,8 +330,39 @@ console.log(response)
 
 ```
 
-* [ Output ](#tab-panel-152)
-* [ Raw response ](#tab-panel-153)
+Terminal window
+
+```
+
+curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run \
+
+  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+
+  --header "Content-Type: application/json" \
+
+  --data '{
+
+  "model": "bytedance/seedream-4.5",
+
+  "input": {
+
+    "aspect_ratio": "16:9",
+
+    "max_images": 3,
+
+    "prompt": "A character design sheet for a fantasy warrior: front view, side view, and back view",
+
+    "sequential_image_generation": "auto"
+
+  }
+
+}'
+
+
+```
+
+* [ Output ](#tab-panel-368)
+* [ Raw response ](#tab-panel-369)
 
 ![Sequential Generation](https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/bytedance__seedream-4.5/sequential-generation-0.jpeg) 
 
@@ -274,7 +370,11 @@ console.log(response)
 
 {
 
-  "state": "Completed",
+  "gatewayMetadata": {
+
+    "keySource": "Unified"
+
+  },
 
   "result": {
 
@@ -286,11 +386,7 @@ console.log(response)
 
   },
 
-  "gatewayMetadata": {
-
-    "keySource": "Unified"
-
-  }
+  "state": "Completed"
 
 }
 
@@ -298,6 +394,9 @@ console.log(response)
 ```
 
 **Multi-Image Edit**  — Combine multiple reference images 
+
+* [ TypeScript ](#tab-panel-374)
+* [ cURL ](#tab-panel-375)
 
 TypeScript
 
@@ -309,10 +408,6 @@ const response = await env.AI.run(
 
   {
 
-    prompt:
-
-      'Combine the style of the first image with the subject from the second image',
-
     image_input: [
 
       'https://replicate.delivery/xezq/TRYcLgNMrBpPJVq09ICKXWe4Z8d6olzpK5vtQPOB8O23ZaMLA/tmpaecga26m.jpg',
@@ -321,15 +416,11 @@ const response = await env.AI.run(
 
     ],
 
+    prompt: 'Combine the style of the first image with the subject from the second image',
+
     size: '2K',
 
   },
-
-  {
-
-    gateway: { id: 'default' },
-
-  }
 
 )
 
@@ -338,8 +429,43 @@ console.log(response)
 
 ```
 
-* [ Output ](#tab-panel-154)
-* [ Raw response ](#tab-panel-155)
+Terminal window
+
+```
+
+curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run \
+
+  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+
+  --header "Content-Type: application/json" \
+
+  --data '{
+
+  "model": "bytedance/seedream-4.5",
+
+  "input": {
+
+    "image_input": [
+
+      "https://replicate.delivery/xezq/TRYcLgNMrBpPJVq09ICKXWe4Z8d6olzpK5vtQPOB8O23ZaMLA/tmpaecga26m.jpg",
+
+      "https://replicate.delivery/xezq/1SbAc0aXYXbVD9doyrdCW78hYufVefMsaJXBrETN7Lu2npxsA/tmphvkx7emy.jpg"
+
+    ],
+
+    "prompt": "Combine the style of the first image with the subject from the second image",
+
+    "size": "2K"
+
+  }
+
+}'
+
+
+```
+
+* [ Output ](#tab-panel-372)
+* [ Raw response ](#tab-panel-373)
 
 ![Multi-Image Edit](https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/bytedance__seedream-4.5/multi-image-edit-0.jpeg) 
 
@@ -347,7 +473,11 @@ console.log(response)
 
 {
 
-  "state": "Completed",
+  "gatewayMetadata": {
+
+    "keySource": "Unified"
+
+  },
 
   "result": {
 
@@ -359,11 +489,7 @@ console.log(response)
 
   },
 
-  "gatewayMetadata": {
-
-    "keySource": "Unified"
-
-  }
+  "state": "Completed"
 
 }
 
@@ -372,36 +498,36 @@ console.log(response)
 
 ## Parameters
 
-* [ Input ](#tab-panel-156)
-* [ Output ](#tab-panel-157)
-
-prompt
-
-`string`required
-
-▶image\_input\[\]
-
-`array`format: uri
-
-size
-
-`string`enum: 2K, 4K
+* [ Input ](#tab-panel-376)
+* [ Output ](#tab-panel-377)
 
 aspect\_ratio
 
 `string`enum: match\_input\_image, 1:1, 4:3, 3:4, 16:9, 9:16, 3:2, 2:3, 21:9
 
+disable\_safety\_checker
+
+`boolean`
+
+▶image\_input\[\]
+
+`array`format: uri
+
+max\_images
+
+`integer`maximum: 15minimum: 1
+
+prompt
+
+`string`required
+
 sequential\_image\_generation
 
 `string`enum: disabled, auto
 
-max\_images
+size
 
-`integer`minimum: 1maximum: 15
-
-disable\_safety\_checker
-
-`boolean`
+`string`enum: 2K, 4K
 
 ▶images\[\]
 

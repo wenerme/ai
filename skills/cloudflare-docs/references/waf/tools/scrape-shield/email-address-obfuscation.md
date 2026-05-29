@@ -30,9 +30,9 @@ Cloudflare injects a small decode script (`email-decode.min.js`) into the page u
 
 Cloudflare enables email address obfuscation automatically when you sign up.
 
-* [  New dashboard ](#tab-panel-8352)
-* [ Old dashboard ](#tab-panel-8353)
-* [ API ](#tab-panel-8354)
+* [  New dashboard ](#tab-panel-10090)
+* [ Old dashboard ](#tab-panel-10091)
+* [ API ](#tab-panel-10092)
 
 To disable **Email Address Obfuscation** in the dashboard:
 

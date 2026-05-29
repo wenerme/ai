@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 # Write to Analytics Engine
 
-**Last reviewed:**  4 months ago 
+**Last reviewed:**  5 months ago 
 
 Write custom analytics events to Workers Analytics Engine.
 
@@ -24,8 +24,8 @@ Unlike logs, Analytics Engine is designed for aggregated queries over high-cardi
 
 Add an Analytics Engine dataset binding to your Wrangler configuration file. The dataset is created automatically when you first write to it.
 
-* [  wrangler.jsonc ](#tab-panel-8698)
-* [  wrangler.toml ](#tab-panel-8699)
+* [  wrangler.jsonc ](#tab-panel-10406)
+* [  wrangler.toml ](#tab-panel-10407)
 
 JSONC
 
@@ -65,8 +65,8 @@ dataset = "my_dataset"
 
 ## Write data points
 
-* [  JavaScript ](#tab-panel-8700)
-* [  TypeScript ](#tab-panel-8701)
+* [  JavaScript ](#tab-panel-10408)
+* [  TypeScript ](#tab-panel-10409)
 
 JavaScript
 

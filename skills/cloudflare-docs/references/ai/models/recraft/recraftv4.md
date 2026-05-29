@@ -28,6 +28,9 @@ Recraft V4 generates art-directed images with strong composition, accurate text 
 
 ## Usage
 
+* [ TypeScript ](#tab-panel-1226)
+* [ cURL ](#tab-panel-1227)
+
 TypeScript
 
 ```
@@ -36,17 +39,7 @@ const response = await env.AI.run(
 
   'recraft/recraftv4',
 
-  {
-
-    prompt: 'A minimalist logo of a mountain range with a sun rising behind it',
-
-  },
-
-  {
-
-    gateway: { id: 'default' },
-
-  }
+  { prompt: 'A minimalist logo of a mountain range with a sun rising behind it' },
 
 )
 
@@ -55,8 +48,33 @@ console.log(response)
 
 ```
 
-* [ Output ](#tab-panel-534)
-* [ Raw response ](#tab-panel-535)
+Terminal window
+
+```
+
+curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run \
+
+  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+
+  --header "Content-Type: application/json" \
+
+  --data '{
+
+  "model": "recraft/recraftv4",
+
+  "input": {
+
+    "prompt": "A minimalist logo of a mountain range with a sun rising behind it"
+
+  }
+
+}'
+
+
+```
+
+* [ Output ](#tab-panel-1224)
+* [ Raw response ](#tab-panel-1225)
 
 ![Simple Generation](https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/recraft__recraftv4/simple-generation.png) 
 
@@ -64,7 +82,11 @@ console.log(response)
 
 {
 
-  "state": "Completed",
+  "gatewayMetadata": {
+
+    "keySource": "Unified"
+
+  },
 
   "result": {
 
@@ -72,11 +94,7 @@ console.log(response)
 
   },
 
-  "gatewayMetadata": {
-
-    "keySource": "Unified"
-
-  }
+  "state": "Completed"
 
 }
 
@@ -87,6 +105,9 @@ console.log(response)
 
 **Scene Composition**  — Generate a complex compositional scene 
 
+* [ TypeScript ](#tab-panel-1230)
+* [ cURL ](#tab-panel-1231)
+
 TypeScript
 
 ```
@@ -97,17 +118,9 @@ const response = await env.AI.run(
 
   {
 
-    prompt:
-
-      'A cozy cabin in the woods surrounded by tall pine trees, smoke rising from the chimney',
+    prompt: 'A cozy cabin in the woods surrounded by tall pine trees, smoke rising from the chimney',
 
   },
-
-  {
-
-    gateway: { id: 'default' },
-
-  }
 
 )
 
@@ -116,8 +129,33 @@ console.log(response)
 
 ```
 
-* [ Output ](#tab-panel-536)
-* [ Raw response ](#tab-panel-537)
+Terminal window
+
+```
+
+curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run \
+
+  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+
+  --header "Content-Type: application/json" \
+
+  --data '{
+
+  "model": "recraft/recraftv4",
+
+  "input": {
+
+    "prompt": "A cozy cabin in the woods surrounded by tall pine trees, smoke rising from the chimney"
+
+  }
+
+}'
+
+
+```
+
+* [ Output ](#tab-panel-1228)
+* [ Raw response ](#tab-panel-1229)
 
 ![Scene Composition](https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/recraft__recraftv4/scene-composition.png) 
 
@@ -125,7 +163,11 @@ console.log(response)
 
 {
 
-  "state": "Completed",
+  "gatewayMetadata": {
+
+    "keySource": "Unified"
+
+  },
 
   "result": {
 
@@ -133,11 +175,7 @@ console.log(response)
 
   },
 
-  "gatewayMetadata": {
-
-    "keySource": "Unified"
-
-  }
+  "state": "Completed"
 
 }
 
@@ -146,6 +184,9 @@ console.log(response)
 
 **Custom Size**  — Specify output dimensions 
 
+* [ TypeScript ](#tab-panel-1234)
+* [ cURL ](#tab-panel-1235)
+
 TypeScript
 
 ```
@@ -156,19 +197,11 @@ const response = await env.AI.run(
 
   {
 
-    prompt:
-
-      'A flat illustration of a workspace with a laptop, coffee cup, and potted plant',
+    prompt: 'A flat illustration of a workspace with a laptop, coffee cup, and potted plant',
 
     size: '1024x1024',
 
   },
-
-  {
-
-    gateway: { id: 'default' },
-
-  }
 
 )
 
@@ -177,8 +210,35 @@ console.log(response)
 
 ```
 
-* [ Output ](#tab-panel-538)
-* [ Raw response ](#tab-panel-539)
+Terminal window
+
+```
+
+curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run \
+
+  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+
+  --header "Content-Type: application/json" \
+
+  --data '{
+
+  "model": "recraft/recraftv4",
+
+  "input": {
+
+    "prompt": "A flat illustration of a workspace with a laptop, coffee cup, and potted plant",
+
+    "size": "1024x1024"
+
+  }
+
+}'
+
+
+```
+
+* [ Output ](#tab-panel-1232)
+* [ Raw response ](#tab-panel-1233)
 
 ![Custom Size](https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/recraft__recraftv4/custom-size.png) 
 
@@ -186,7 +246,11 @@ console.log(response)
 
 {
 
-  "state": "Completed",
+  "gatewayMetadata": {
+
+    "keySource": "Unified"
+
+  },
 
   "result": {
 
@@ -194,11 +258,7 @@ console.log(response)
 
   },
 
-  "gatewayMetadata": {
-
-    "keySource": "Unified"
-
-  }
+  "state": "Completed"
 
 }
 
@@ -207,6 +267,9 @@ console.log(response)
 
 **With Color Controls**  — Guide generation with specific brand colors 
 
+* [ TypeScript ](#tab-panel-1242)
+* [ cURL ](#tab-panel-1243)
+
 TypeScript
 
 ```
@@ -217,37 +280,11 @@ const response = await env.AI.run(
 
   {
 
-    prompt:
+    controls: { colors: [{ rgb: [255, 107, 53] }, { rgb: [0, 43, 91] }] },
 
-      'An abstract geometric pattern suitable for a tech company brand identity',
-
-    controls: {
-
-      colors: [
-
-        {
-
-          rgb: [255, 107, 53],
-
-        },
-
-        {
-
-          rgb: [0, 43, 91],
-
-        },
-
-      ],
-
-    },
+    prompt: 'An abstract geometric pattern suitable for a tech company brand identity',
 
   },
-
-  {
-
-    gateway: { id: 'default' },
-
-  }
 
 )
 
@@ -256,8 +293,69 @@ console.log(response)
 
 ```
 
-* [ Output ](#tab-panel-540)
-* [ Raw response ](#tab-panel-541)
+Terminal window
+
+```
+
+curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run \
+
+  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+
+  --header "Content-Type: application/json" \
+
+  --data '{
+
+  "model": "recraft/recraftv4",
+
+  "input": {
+
+    "controls": {
+
+      "colors": [
+
+        {
+
+          "rgb": [
+
+            255,
+
+            107,
+
+            53
+
+          ]
+
+        },
+
+        {
+
+          "rgb": [
+
+            0,
+
+            43,
+
+            91
+
+          ]
+
+        }
+
+      ]
+
+    },
+
+    "prompt": "An abstract geometric pattern suitable for a tech company brand identity"
+
+  }
+
+}'
+
+
+```
+
+* [ Output ](#tab-panel-1236)
+* [ Raw response ](#tab-panel-1237)
 
 ![With Color Controls](https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/recraft__recraftv4/with-color-controls.png) 
 
@@ -265,7 +363,11 @@ console.log(response)
 
 {
 
-  "state": "Completed",
+  "gatewayMetadata": {
+
+    "keySource": "Unified"
+
+  },
 
   "result": {
 
@@ -273,11 +375,7 @@ console.log(response)
 
   },
 
-  "gatewayMetadata": {
-
-    "keySource": "Unified"
-
-  }
+  "state": "Completed"
 
 }
 
@@ -286,6 +384,9 @@ console.log(response)
 
 **Background Color**  — Set a specific background color 
 
+* [ TypeScript ](#tab-panel-1240)
+* [ cURL ](#tab-panel-1241)
+
 TypeScript
 
 ```
@@ -296,27 +397,13 @@ const response = await env.AI.run(
 
   {
 
+    controls: { background_color: { rgb: [245, 245, 245] } },
+
     prompt: 'A clean icon of a lightning bolt',
 
     size: '1024x1024',
 
-    controls: {
-
-      background_color: {
-
-        rgb: [245, 245, 245],
-
-      },
-
-    },
-
   },
-
-  {
-
-    gateway: { id: 'default' },
-
-  }
 
 )
 
@@ -325,8 +412,53 @@ console.log(response)
 
 ```
 
-* [ Output ](#tab-panel-542)
-* [ Raw response ](#tab-panel-543)
+Terminal window
+
+```
+
+curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run \
+
+  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+
+  --header "Content-Type: application/json" \
+
+  --data '{
+
+  "model": "recraft/recraftv4",
+
+  "input": {
+
+    "controls": {
+
+      "background_color": {
+
+        "rgb": [
+
+          245,
+
+          245,
+
+          245
+
+        ]
+
+      }
+
+    },
+
+    "prompt": "A clean icon of a lightning bolt",
+
+    "size": "1024x1024"
+
+  }
+
+}'
+
+
+```
+
+* [ Output ](#tab-panel-1238)
+* [ Raw response ](#tab-panel-1239)
 
 ![Background Color](https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/recraft__recraftv4/background-color.png) 
 
@@ -334,7 +466,11 @@ console.log(response)
 
 {
 
-  "state": "Completed",
+  "gatewayMetadata": {
+
+    "keySource": "Unified"
+
+  },
 
   "result": {
 
@@ -342,11 +478,7 @@ console.log(response)
 
   },
 
-  "gatewayMetadata": {
-
-    "keySource": "Unified"
-
-  }
+  "state": "Completed"
 
 }
 
@@ -355,8 +487,12 @@ console.log(response)
 
 ## Parameters
 
-* [ Input ](#tab-panel-544)
-* [ Output ](#tab-panel-545)
+* [ Input ](#tab-panel-1244)
+* [ Output ](#tab-panel-1245)
+
+▶controls{}
+
+`object`
 
 prompt
 
@@ -373,10 +509,6 @@ style
 substyle
 
 `string`
-
-▶controls{}
-
-`object`
 
 image
 

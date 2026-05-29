@@ -18,21 +18,13 @@ When a Worker is invoked via a [Cron Trigger](https://developers.cloudflare.com/
 
 Testing scheduled() handlers in local development
 
-You can test the behavior of your `scheduled()` handler in local development using Wrangler.
-
-Cron Triggers can be tested using `Wrangler` by passing in the `--test-scheduled` flag to [wrangler dev](https://developers.cloudflare.com/workers/wrangler/commands/general/#dev). This will expose a `/__scheduled` (or `/cdn-cgi/handler/scheduled` for Python Workers) route which can be used to test using a http request. To simulate different cron patterns, a `cron` query parameter can be passed in.
+You can test the behavior of your `scheduled()` handler in local development by sending an HTTP request to `/cdn-cgi/handler/scheduled` to trigger the handler. Pass `?format=json` to return the structured scheduled handler result.
 
 Terminal window
 
 ```
 
-npx wrangler dev --test-scheduled
-
-
-curl "http://localhost:8787/__scheduled?cron=*+*+*+*+*"
-
-
-curl "http://localhost:8787/cdn-cgi/handler/scheduled?cron=*+*+*+*+*" # Python Workers
+curl "http://localhost:8787/cdn-cgi/handler/scheduled?format=json"
 
 
 ```
@@ -41,9 +33,9 @@ curl "http://localhost:8787/cdn-cgi/handler/scheduled?cron=*+*+*+*+*" # Python W
 
 ## Syntax
 
-* [  JavaScript ](#tab-panel-9088)
-* [  TypeScript ](#tab-panel-9089)
-* [  Python ](#tab-panel-9090)
+* [  JavaScript ](#tab-panel-10796)
+* [  TypeScript ](#tab-panel-10797)
+* [  Python ](#tab-panel-10798)
 
 JavaScript
 
@@ -122,8 +114,8 @@ class Default(WorkerEntrypoint):
 
 When you configure multiple [Cron Triggers](https://developers.cloudflare.com/workers/configuration/cron-triggers/) for a single Worker, each trigger invokes the same `scheduled()` handler. Use `controller.cron` to distinguish which schedule fired and run different logic for each.
 
-* [  wrangler.jsonc ](#tab-panel-9093)
-* [  wrangler.toml ](#tab-panel-9094)
+* [  wrangler.jsonc ](#tab-panel-10801)
+* [  wrangler.toml ](#tab-panel-10802)
 
 JSONC
 
@@ -153,8 +145,8 @@ crons = [ "*/5 * * * *", "0 0 * * *" ]
 
 ```
 
-* [  JavaScript ](#tab-panel-9091)
-* [  TypeScript ](#tab-panel-9092)
+* [  JavaScript ](#tab-panel-10799)
+* [  TypeScript ](#tab-panel-10800)
 
 JavaScript
 

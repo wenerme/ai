@@ -22,8 +22,8 @@ The Query Builder can be found in the **Observability** page of the Cloudflare d
 
 The Query Builder is available to all developers and requires no enablement. Queries search all Workers Logs stored by Cloudflare. If you have not yet enabled Workers Logs, you can do so by adding the following setting to your [Worker's Wrangler file](https://developers.cloudflare.com/workers/observability/logs/workers-logs/#enable-workers-logs) and redeploying your Worker.
 
-* [  wrangler.jsonc ](#tab-panel-8941)
-* [  wrangler.toml ](#tab-panel-8942)
+* [  wrangler.jsonc ](#tab-panel-10687)
+* [  wrangler.toml ](#tab-panel-10688)
 
 JSONC
 

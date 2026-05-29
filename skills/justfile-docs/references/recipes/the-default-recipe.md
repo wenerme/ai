@@ -27,10 +27,9 @@ lint:
   echo Linting…
 ```
 
-If no recipe makes sense as the default recipe, you can add a recipe to the
-beginning of your `justfile` that lists the available recipes:
+If no recipe makes sense as the default recipe, you can use
+`default-list`<sup>master</sup> to list the available recipes instead:
 
 ```just
-default:
-  just --list
+set default-list := true
 ```

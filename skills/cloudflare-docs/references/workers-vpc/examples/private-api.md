@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 # Access a private API or website
 
-**Last reviewed:**  6 months ago 
+**Last reviewed:**  7 months ago 
 
 This example demonstrates how to access a private REST API that is not exposed to the public internet. In this guide, we will configure a VPC Service for an internal API, create a Worker that makes requests to that API, and deploy the Worker to validate our changes.
 
@@ -78,8 +78,8 @@ Note the service ID returned for the next step.
 
 Update your Wrangler configuration file:
 
-* [  wrangler.jsonc ](#tab-panel-8466)
-* [  wrangler.toml ](#tab-panel-8467)
+* [  wrangler.jsonc ](#tab-panel-10166)
+* [  wrangler.toml ](#tab-panel-10167)
 
 JSONC
 
@@ -95,7 +95,7 @@ JSONC
 
   // Set this to today's date
 
-  "compatibility_date": "2026-04-29",
+  "compatibility_date": "2026-05-28",
 
   "vpc_services": [
 
@@ -128,7 +128,7 @@ main = "src/index.js"
 
 # Set this to today's date
 
-compatibility_date = "2026-04-29"
+compatibility_date = "2026-05-28"
 
 
 [[vpc_services]]

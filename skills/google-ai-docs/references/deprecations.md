@@ -20,11 +20,13 @@ Already-shutdown models are indicated with gray backgrounds.
 | **Model** | **Release date** | **Shutdown date** | **Recommended replacement** |
 |---|---|---|---|
 | `gemini-3.5-flash` | May 19, 2026 | No shutdown date announced |   |
+| `gemini-3.1-flash-image` | May 28, 2026 | No shutdown date announced |   |
+| `gemini-3-pro-image` | May 28, 2026 | No shutdown date announced |   |
 | `gemini-3.1-flash-lite` | May 7, 2026 | May 7, 2027 |   |
 | Preview models ||||
-| `gemini-3.1-flash-image-preview` | February 26, 2026 | No shutdown date announced |   |
+| `gemini-3.1-flash-image-preview` | February 26, 2026 | June 25, 2026 | `gemini-3.1-flash-image` |
 | `gemini-3.1-pro-preview` | February 19, 2026 | No shutdown date announced |   |
-| `gemini-3-pro-image-preview` | November 20, 2025 | No shutdown date announced |   |
+| `gemini-3-pro-image-preview` | November 20, 2025 | June 25, 2026 | `gemini-3-pro-image` |
 | `gemini-3-flash-preview` | December 17, 2025 | No shutdown date announced | `gemini-3.5-flash` |
 | `gemini-3-pro-preview` | November 18, 2025 | March 9, 2026 | `gemini-3.1-pro-preview` |
 | `gemini-3.1-flash-lite-preview` | March 3, 2026 | May 25, 2026 | `gemini-3.1-flash-lite` |

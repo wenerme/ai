@@ -18,8 +18,8 @@ The Workers API provides native email sending capabilities directly from your Cl
 
 Configure email bindings in your Wrangler configuration file to enable email sending:
 
-* [  wrangler.jsonc ](#tab-panel-6444)
-* [  wrangler.toml ](#tab-panel-6445)
+* [  wrangler.jsonc ](#tab-panel-7392)
+* [  wrangler.toml ](#tab-panel-7393)
 
 JSONC
 
@@ -95,13 +95,22 @@ interface SendEmail {
 }
 
 
+interface EmailAddress {
+
+  email: string;
+
+  name?: string;
+
+}
+
+
 // Structured email builder (recommended)
 
 interface EmailMessageBuilder {
 
-  to: string | string[]; // Max 50 recipients
+  to: string | EmailAddress | (string | EmailAddress)[]; // Max 50 recipients
 
-  from: string | { email: string; name: string };
+  from: string | EmailAddress;
 
   subject: string;
 
@@ -109,11 +118,11 @@ interface EmailMessageBuilder {
 
   text?: string;
 
-  cc?: string | string[];
+  cc?: string | EmailAddress | (string | EmailAddress)[];
 
-  bcc?: string | string[];
+  bcc?: string | EmailAddress | (string | EmailAddress)[];
 
-  replyTo?: string | { email: string; name: string };
+  replyTo?: string | EmailAddress;
 
   attachments?: Attachment[];
 
@@ -153,9 +162,11 @@ interface EmailSendResult {
 
 ### Basic usage
 
-* [ Simple email ](#tab-panel-6439)
-* [ Multiple recipients ](#tab-panel-6440)
-* [ With CC and BCC ](#tab-panel-6441)
+* [ Simple email ](#tab-panel-7385)
+* [ Multiple recipients ](#tab-panel-7386)
+* [ With CC and BCC ](#tab-panel-7387)
+* [ Named recipients ](#tab-panel-7388)
+* [ Mixed recipients ](#tab-panel-7389)
 
 TypeScript
 
@@ -220,10 +231,58 @@ const response = await env.EMAIL.send({
 
 ```
 
+TypeScript
+
+```
+
+const response = await env.EMAIL.send({
+
+  to: { email: "jane@example.com", name: "Jane Doe" },
+
+  from: { email: "support@example.com", name: "Support Team" },
+
+  subject: "Welcome!",
+
+  html: "<h1>Thanks for joining!</h1>",
+
+  text: "Thanks for joining!",
+
+});
+
+
+```
+
+TypeScript
+
+```
+
+const response = await env.EMAIL.send({
+
+  to: [
+
+    "plain@example.com",
+
+    { email: "jane@example.com", name: "Jane Doe" },
+
+  ],
+
+  from: "support@yourdomain.com",
+
+  subject: "Team update",
+
+  html: "<h1>Monthly update</h1>",
+
+  text: "Monthly update",
+
+});
+
+
+```
+
 ### Attachments
 
-* [ PDF attachment ](#tab-panel-6442)
-* [ Inline image ](#tab-panel-6443)
+* [ PDF attachment ](#tab-panel-7390)
+* [ Inline image ](#tab-panel-7391)
 
 TypeScript
 
@@ -309,7 +368,7 @@ const response = await env.EMAIL.send({
 
 Handle email sending errors gracefully:
 
-* [ Single send errors ](#tab-panel-6438)
+* [ Single send errors ](#tab-panel-7384)
 
 TypeScript
 

@@ -1,6 +1,3 @@
-> [!IMPORTANT]
-> We have updated our [Terms of Service](https://ai.google.dev/gemini-api/terms).
-
 Start building free of charge with generous limits, then scale up with
 prepaid then pay-as-you-go pricing for your production ready applications.
 
@@ -236,18 +233,15 @@ acoustic nuance detection, numeric precision, and multimodal awareness.
 queries to Google Search. You will be charged for each individual search query
 performed.
 
-## Gemini 3.1 Flash Image Preview 🍌
+## Gemini 3.1 Flash Image 🍌
 
-*`gemini-3.1-flash-image-preview`*
+*`gemini-3.1-flash-image`*
 
 
-[Try it in Google AI Studio](https://aistudio.google.com/prompts/new_chat?model=gemini-3.1-flash-image-preview)
+[Try it in Google AI Studio](https://aistudio.google.com/prompts/new_chat?model=gemini-3.1-flash-image)
 
 Designed for speed and efficiency, the Gemini 3.1 Flash Image generation model is
 effective for quick, interactive responses and high throughput.
-
-Preview models may change before becoming stable and have more restrictive rate
-limits.
 
 ### Standard
 
@@ -367,19 +361,16 @@ superior search and grounding.
 queries to Google Search. You will be charged for each individual search query
 performed.
 
-## Gemini 3 Pro Image Preview 🍌
+## Gemini 3.1 Pro Image 🍌
 
-*`gemini-3-pro-image-preview`*
+*`gemini-3-pro-image`*
 
 
-[Try it in Google AI Studio](https://aistudio.google.com?model=gemini-3-pro-image-preview)
+[Try it in Google AI Studio](https://aistudio.google.com/prompts/new_chat?model=gemini-3-pro-image)
 
 Our native image generation model, optimized for speed, flexibility, and
 contextual understanding. **Text input and output** is priced the same as
 [Gemini 3.1 Pro](https://ai.google.dev/gemini-api/docs/pricing#gemini-3.1-pro-preview).
-
-Preview models may change before becoming stable and have more restrictive rate
-limits.
 
 ### Standard
 
@@ -927,10 +918,10 @@ PDFs into a unified embedding space.
 
 |   | Free Tier | Paid Tier, per 1M tokens in USD |
 |---|---|---|
-| Text input price | Not available | Not available |
-| Image input price | Not available | Not available |
-| Audio input price | Not available | Not available |
-| Video input price | Not available | Not available |
+| Text input price | Not available | $0.10 |
+| Image input price | Not available | $0.225 ($0.00006 per image) |
+| Audio input price | Not available | $3.25 ($0.00008 per second) |
+| Video input price | Not available | $6.00 ($0.000395 per frame) |
 | Used to improve our products | [Yes](https://ai.google.dev/gemini-api/terms) | [No](https://ai.google.dev/gemini-api/terms) |
 
 ## Gemini Embedding

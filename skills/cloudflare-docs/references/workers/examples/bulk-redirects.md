@@ -16,10 +16,10 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 Redirect requests to certain URLs based on a mapped object to the request's URL.
 
-* [  JavaScript ](#tab-panel-9470)
-* [  TypeScript ](#tab-panel-9471)
-* [  Python ](#tab-panel-9472)
-* [  Hono ](#tab-panel-9473)
+* [  JavaScript ](#tab-panel-10426)
+* [  TypeScript ](#tab-panel-10427)
+* [  Python ](#tab-panel-10428)
+* [  Hono ](#tab-panel-10429)
 
 JavaScript
 

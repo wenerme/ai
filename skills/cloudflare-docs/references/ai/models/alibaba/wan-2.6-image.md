@@ -28,6 +28,9 @@ Alibaba's Wan 2.6 text-to-image model generating images from text prompts with o
 
 ## Usage
 
+* [ TypeScript ](#tab-panel-74)
+* [ cURL ](#tab-panel-75)
+
 TypeScript
 
 ```
@@ -36,17 +39,7 @@ const response = await env.AI.run(
 
   'alibaba/wan-2.6-image',
 
-  {
-
-    prompt: 'A golden retriever puppy playing in autumn leaves',
-
-  },
-
-  {
-
-    gateway: { id: 'default' },
-
-  }
+  { prompt: 'A golden retriever puppy playing in autumn leaves' },
 
 )
 
@@ -55,8 +48,33 @@ console.log(response)
 
 ```
 
-* [ Output ](#tab-panel-40)
-* [ Raw response ](#tab-panel-41)
+Terminal window
+
+```
+
+curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run \
+
+  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+
+  --header "Content-Type: application/json" \
+
+  --data '{
+
+  "model": "alibaba/wan-2.6-image",
+
+  "input": {
+
+    "prompt": "A golden retriever puppy playing in autumn leaves"
+
+  }
+
+}'
+
+
+```
+
+* [ Output ](#tab-panel-72)
+* [ Raw response ](#tab-panel-73)
 
 ![Simple Generation](https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/alibaba__wan-2.6-image/simple-generation.png) 
 
@@ -64,7 +82,11 @@ console.log(response)
 
 {
 
-  "state": "Completed",
+  "gatewayMetadata": {
+
+    "keySource": "Unified"
+
+  },
 
   "result": {
 
@@ -72,11 +94,7 @@ console.log(response)
 
   },
 
-  "gatewayMetadata": {
-
-    "keySource": "Unified"
-
-  }
+  "state": "Completed"
 
 }
 
@@ -86,6 +104,9 @@ console.log(response)
 ## Examples
 
 **Custom Dimensions**  — Specify image size in WxH format 
+
+* [ TypeScript ](#tab-panel-78)
+* [ cURL ](#tab-panel-79)
 
 TypeScript
 
@@ -105,12 +126,6 @@ const response = await env.AI.run(
 
   },
 
-  {
-
-    gateway: { id: 'default' },
-
-  }
-
 )
 
 console.log(response)
@@ -118,8 +133,35 @@ console.log(response)
 
 ```
 
-* [ Output ](#tab-panel-42)
-* [ Raw response ](#tab-panel-43)
+Terminal window
+
+```
+
+curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run \
+
+  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+
+  --header "Content-Type: application/json" \
+
+  --data '{
+
+  "model": "alibaba/wan-2.6-image",
+
+  "input": {
+
+    "prompt": "A vast alien desert landscape with two suns setting on the horizon, ancient ruins in the foreground",
+
+    "size": "1024x768"
+
+  }
+
+}'
+
+
+```
+
+* [ Output ](#tab-panel-76)
+* [ Raw response ](#tab-panel-77)
 
 ![Custom Dimensions](https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/alibaba__wan-2.6-image/custom-dimensions.png) 
 
@@ -127,7 +169,11 @@ console.log(response)
 
 {
 
-  "state": "Completed",
+  "gatewayMetadata": {
+
+    "keySource": "Unified"
+
+  },
 
   "result": {
 
@@ -135,11 +181,7 @@ console.log(response)
 
   },
 
-  "gatewayMetadata": {
-
-    "keySource": "Unified"
-
-  }
+  "state": "Completed"
 
 }
 
@@ -147,6 +189,9 @@ console.log(response)
 ```
 
 **Square Format**  — Square image for social media or product photos 
+
+* [ TypeScript ](#tab-panel-82)
+* [ cURL ](#tab-panel-83)
 
 TypeScript
 
@@ -166,12 +211,6 @@ const response = await env.AI.run(
 
   },
 
-  {
-
-    gateway: { id: 'default' },
-
-  }
-
 )
 
 console.log(response)
@@ -179,8 +218,35 @@ console.log(response)
 
 ```
 
-* [ Output ](#tab-panel-44)
-* [ Raw response ](#tab-panel-45)
+Terminal window
+
+```
+
+curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run \
+
+  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+
+  --header "Content-Type: application/json" \
+
+  --data '{
+
+  "model": "alibaba/wan-2.6-image",
+
+  "input": {
+
+    "prompt": "A sleek wireless headphone on a minimalist white marble surface with soft studio lighting",
+
+    "size": "1024x1024"
+
+  }
+
+}'
+
+
+```
+
+* [ Output ](#tab-panel-80)
+* [ Raw response ](#tab-panel-81)
 
 ![Square Format](https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/alibaba__wan-2.6-image/square-format.png) 
 
@@ -188,7 +254,11 @@ console.log(response)
 
 {
 
-  "state": "Completed",
+  "gatewayMetadata": {
+
+    "keySource": "Unified"
+
+  },
 
   "result": {
 
@@ -196,11 +266,7 @@ console.log(response)
 
   },
 
-  "gatewayMetadata": {
-
-    "keySource": "Unified"
-
-  }
+  "state": "Completed"
 
 }
 
@@ -209,6 +275,9 @@ console.log(response)
 
 **Negative Prompt**  — Guide generation away from unwanted elements 
 
+* [ TypeScript ](#tab-panel-86)
+* [ cURL ](#tab-panel-87)
+
 TypeScript
 
 ```
@@ -219,19 +288,11 @@ const response = await env.AI.run(
 
   {
 
-    prompt:
-
-      'A detailed oil painting portrait of a Renaissance nobleman with intricate lace collar',
-
     negative_prompt: 'modern clothing, photograph, blurry, low quality',
 
+    prompt: 'A detailed oil painting portrait of a Renaissance nobleman with intricate lace collar',
+
   },
-
-  {
-
-    gateway: { id: 'default' },
-
-  }
 
 )
 
@@ -240,8 +301,35 @@ console.log(response)
 
 ```
 
-* [ Output ](#tab-panel-46)
-* [ Raw response ](#tab-panel-47)
+Terminal window
+
+```
+
+curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run \
+
+  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+
+  --header "Content-Type: application/json" \
+
+  --data '{
+
+  "model": "alibaba/wan-2.6-image",
+
+  "input": {
+
+    "negative_prompt": "modern clothing, photograph, blurry, low quality",
+
+    "prompt": "A detailed oil painting portrait of a Renaissance nobleman with intricate lace collar"
+
+  }
+
+}'
+
+
+```
+
+* [ Output ](#tab-panel-84)
+* [ Raw response ](#tab-panel-85)
 
 ![Negative Prompt](https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/alibaba__wan-2.6-image/negative-prompt.png) 
 
@@ -249,7 +337,11 @@ console.log(response)
 
 {
 
-  "state": "Completed",
+  "gatewayMetadata": {
+
+    "keySource": "Unified"
+
+  },
 
   "result": {
 
@@ -257,11 +349,7 @@ console.log(response)
 
   },
 
-  "gatewayMetadata": {
-
-    "keySource": "Unified"
-
-  }
+  "state": "Completed"
 
 }
 
@@ -270,6 +358,9 @@ console.log(response)
 
 **Portrait Format**  — Tall vertical image for portraits 
 
+* [ TypeScript ](#tab-panel-90)
+* [ cURL ](#tab-panel-91)
+
 TypeScript
 
 ```
@@ -280,19 +371,11 @@ const response = await env.AI.run(
 
   {
 
-    prompt:
-
-      'An elegant Art Deco poster featuring a jazz singer under a spotlight',
+    prompt: 'An elegant Art Deco poster featuring a jazz singer under a spotlight',
 
     size: '768x1024',
 
   },
-
-  {
-
-    gateway: { id: 'default' },
-
-  }
 
 )
 
@@ -301,8 +384,35 @@ console.log(response)
 
 ```
 
-* [ Output ](#tab-panel-48)
-* [ Raw response ](#tab-panel-49)
+Terminal window
+
+```
+
+curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run \
+
+  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+
+  --header "Content-Type: application/json" \
+
+  --data '{
+
+  "model": "alibaba/wan-2.6-image",
+
+  "input": {
+
+    "prompt": "An elegant Art Deco poster featuring a jazz singer under a spotlight",
+
+    "size": "768x1024"
+
+  }
+
+}'
+
+
+```
+
+* [ Output ](#tab-panel-88)
+* [ Raw response ](#tab-panel-89)
 
 ![Portrait Format](https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/alibaba__wan-2.6-image/portrait-format.png) 
 
@@ -310,7 +420,11 @@ console.log(response)
 
 {
 
-  "state": "Completed",
+  "gatewayMetadata": {
+
+    "keySource": "Unified"
+
+  },
 
   "result": {
 
@@ -318,11 +432,7 @@ console.log(response)
 
   },
 
-  "gatewayMetadata": {
-
-    "keySource": "Unified"
-
-  }
+  "state": "Completed"
 
 }
 
@@ -331,8 +441,12 @@ console.log(response)
 
 ## Parameters
 
-* [ Input ](#tab-panel-50)
-* [ Output ](#tab-panel-51)
+* [ Input ](#tab-panel-92)
+* [ Output ](#tab-panel-93)
+
+negative\_prompt
+
+`string`
 
 prompt
 
@@ -341,10 +455,6 @@ prompt
 size
 
 `string`pattern: ^\\d+x\\d+$
-
-negative\_prompt
-
-`string`
 
 image
 

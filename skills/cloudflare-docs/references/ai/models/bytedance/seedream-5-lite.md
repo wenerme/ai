@@ -27,6 +27,9 @@ Seedream 5 Lite is a lighter, faster version of the Seedream 5 family with multi
 
 ## Usage
 
+* [ TypeScript ](#tab-panel-378)
+* [ cURL ](#tab-panel-379)
+
 TypeScript
 
 ```
@@ -35,17 +38,7 @@ const response = await env.AI.run(
 
   'bytedance/seedream-5-lite',
 
-  {
-
-    prompt: 'A cute robot watering plants in a sunny greenhouse',
-
-  },
-
-  {
-
-    gateway: { id: 'default' },
-
-  }
+  { prompt: 'A cute robot watering plants in a sunny greenhouse' },
 
 )
 
@@ -54,8 +47,33 @@ console.log(response)
 
 ```
 
-* [ Output ](#tab-panel-158)
-* [ Raw response ](#tab-panel-159)
+Terminal window
+
+```
+
+curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run \
+
+  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+
+  --header "Content-Type: application/json" \
+
+  --data '{
+
+  "model": "bytedance/seedream-5-lite",
+
+  "input": {
+
+    "prompt": "A cute robot watering plants in a sunny greenhouse"
+
+  }
+
+}'
+
+
+```
+
+* [ Output ](#tab-panel-380)
+* [ Raw response ](#tab-panel-381)
 
 ![Simple Generation](https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/bytedance__seedream-5-lite/simple-generation-0.jpeg) 
 
@@ -63,7 +81,11 @@ console.log(response)
 
 {
 
-  "state": "Completed",
+  "gatewayMetadata": {
+
+    "keySource": "Unified"
+
+  },
 
   "result": {
 
@@ -75,11 +97,7 @@ console.log(response)
 
   },
 
-  "gatewayMetadata": {
-
-    "keySource": "Unified"
-
-  }
+  "state": "Completed"
 
 }
 
@@ -89,6 +107,9 @@ console.log(response)
 ## Examples
 
 **High Resolution PNG**  — 3K quality with PNG output 
+
+* [ TypeScript ](#tab-panel-384)
+* [ cURL ](#tab-panel-385)
 
 TypeScript
 
@@ -100,23 +121,17 @@ const response = await env.AI.run(
 
   {
 
+    aspect_ratio: '16:9',
+
+    output_format: 'png',
+
     prompt:
 
       'A detailed technical blueprint of a futuristic spacecraft with annotations and measurements',
 
     size: '3K',
 
-    aspect_ratio: '16:9',
-
-    output_format: 'png',
-
   },
-
-  {
-
-    gateway: { id: 'default' },
-
-  }
 
 )
 
@@ -125,8 +140,39 @@ console.log(response)
 
 ```
 
-* [ Output ](#tab-panel-160)
-* [ Raw response ](#tab-panel-161)
+Terminal window
+
+```
+
+curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run \
+
+  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+
+  --header "Content-Type: application/json" \
+
+  --data '{
+
+  "model": "bytedance/seedream-5-lite",
+
+  "input": {
+
+    "aspect_ratio": "16:9",
+
+    "output_format": "png",
+
+    "prompt": "A detailed technical blueprint of a futuristic spacecraft with annotations and measurements",
+
+    "size": "3K"
+
+  }
+
+}'
+
+
+```
+
+* [ Output ](#tab-panel-382)
+* [ Raw response ](#tab-panel-383)
 
 ![High Resolution PNG](https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/bytedance__seedream-5-lite/high-resolution-png-0.png) 
 
@@ -134,7 +180,11 @@ console.log(response)
 
 {
 
-  "state": "Completed",
+  "gatewayMetadata": {
+
+    "keySource": "Unified"
+
+  },
 
   "result": {
 
@@ -146,11 +196,7 @@ console.log(response)
 
   },
 
-  "gatewayMetadata": {
-
-    "keySource": "Unified"
-
-  }
+  "state": "Completed"
 
 }
 
@@ -158,6 +204,9 @@ console.log(response)
 ```
 
 **Portrait Photo**  — JPEG output for photographs 
+
+* [ TypeScript ](#tab-panel-388)
+* [ cURL ](#tab-panel-389)
 
 TypeScript
 
@@ -169,23 +218,17 @@ const response = await env.AI.run(
 
   {
 
+    aspect_ratio: '3:4',
+
+    output_format: 'jpeg',
+
     prompt:
 
       'A professional headshot portrait with soft studio lighting and a neutral gray background',
 
     size: '2K',
 
-    aspect_ratio: '3:4',
-
-    output_format: 'jpeg',
-
   },
-
-  {
-
-    gateway: { id: 'default' },
-
-  }
 
 )
 
@@ -194,8 +237,39 @@ console.log(response)
 
 ```
 
-* [ Output ](#tab-panel-162)
-* [ Raw response ](#tab-panel-163)
+Terminal window
+
+```
+
+curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run \
+
+  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+
+  --header "Content-Type: application/json" \
+
+  --data '{
+
+  "model": "bytedance/seedream-5-lite",
+
+  "input": {
+
+    "aspect_ratio": "3:4",
+
+    "output_format": "jpeg",
+
+    "prompt": "A professional headshot portrait with soft studio lighting and a neutral gray background",
+
+    "size": "2K"
+
+  }
+
+}'
+
+
+```
+
+* [ Output ](#tab-panel-386)
+* [ Raw response ](#tab-panel-387)
 
 ![Portrait Photo](https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/bytedance__seedream-5-lite/portrait-photo-0.jpeg) 
 
@@ -203,7 +277,11 @@ console.log(response)
 
 {
 
-  "state": "Completed",
+  "gatewayMetadata": {
+
+    "keySource": "Unified"
+
+  },
 
   "result": {
 
@@ -215,11 +293,7 @@ console.log(response)
 
   },
 
-  "gatewayMetadata": {
-
-    "keySource": "Unified"
-
-  }
+  "state": "Completed"
 
 }
 
@@ -227,6 +301,9 @@ console.log(response)
 ```
 
 **Sequential Comic**  — Generate sequential comic panels 
+
+* [ TypeScript ](#tab-panel-392)
+* [ cURL ](#tab-panel-393)
 
 TypeScript
 
@@ -238,23 +315,17 @@ const response = await env.AI.run(
 
   {
 
+    aspect_ratio: '4:3',
+
+    max_images: 4,
+
     prompt:
 
       'A four-panel comic strip showing a cat discovering a cardboard box and deciding to sit in it',
 
-    aspect_ratio: '4:3',
-
     sequential_image_generation: 'auto',
 
-    max_images: 4,
-
   },
-
-  {
-
-    gateway: { id: 'default' },
-
-  }
 
 )
 
@@ -263,8 +334,39 @@ console.log(response)
 
 ```
 
-* [ Output ](#tab-panel-164)
-* [ Raw response ](#tab-panel-165)
+Terminal window
+
+```
+
+curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run \
+
+  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+
+  --header "Content-Type: application/json" \
+
+  --data '{
+
+  "model": "bytedance/seedream-5-lite",
+
+  "input": {
+
+    "aspect_ratio": "4:3",
+
+    "max_images": 4,
+
+    "prompt": "A four-panel comic strip showing a cat discovering a cardboard box and deciding to sit in it",
+
+    "sequential_image_generation": "auto"
+
+  }
+
+}'
+
+
+```
+
+* [ Output ](#tab-panel-390)
+* [ Raw response ](#tab-panel-391)
 
 ![Sequential Comic](https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/bytedance__seedream-5-lite/sequential-comic-0.jpeg) 
 
@@ -272,7 +374,11 @@ console.log(response)
 
 {
 
-  "state": "Completed",
+  "gatewayMetadata": {
+
+    "keySource": "Unified"
+
+  },
 
   "result": {
 
@@ -284,11 +390,7 @@ console.log(response)
 
   },
 
-  "gatewayMetadata": {
-
-    "keySource": "Unified"
-
-  }
+  "state": "Completed"
 
 }
 
@@ -296,6 +398,9 @@ console.log(response)
 ```
 
 **Image Variation**  — Create variation from reference 
+
+* [ TypeScript ](#tab-panel-396)
+* [ cURL ](#tab-panel-397)
 
 TypeScript
 
@@ -307,7 +412,7 @@ const response = await env.AI.run(
 
   {
 
-    prompt: 'Create a variation of this image in a watercolor painting style',
+    aspect_ratio: 'match_input_image',
 
     image_input: [
 
@@ -315,17 +420,11 @@ const response = await env.AI.run(
 
     ],
 
+    prompt: 'Create a variation of this image in a watercolor painting style',
+
     size: '2K',
 
-    aspect_ratio: 'match_input_image',
-
   },
-
-  {
-
-    gateway: { id: 'default' },
-
-  }
 
 )
 
@@ -334,8 +433,43 @@ console.log(response)
 
 ```
 
-* [ Output ](#tab-panel-166)
-* [ Raw response ](#tab-panel-167)
+Terminal window
+
+```
+
+curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run \
+
+  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+
+  --header "Content-Type: application/json" \
+
+  --data '{
+
+  "model": "bytedance/seedream-5-lite",
+
+  "input": {
+
+    "aspect_ratio": "match_input_image",
+
+    "image_input": [
+
+      "https://replicate.delivery/xezq/jCypj4MeXYUiRyq7nfgm8z1OvFZF81wh4FznutDsZOuJz0YWA/tmp1iukn307.jpg"
+
+    ],
+
+    "prompt": "Create a variation of this image in a watercolor painting style",
+
+    "size": "2K"
+
+  }
+
+}'
+
+
+```
+
+* [ Output ](#tab-panel-394)
+* [ Raw response ](#tab-panel-395)
 
 ![Image Variation](https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/bytedance__seedream-5-lite/image-variation-0.jpeg) 
 
@@ -343,7 +477,11 @@ console.log(response)
 
 {
 
-  "state": "Completed",
+  "gatewayMetadata": {
+
+    "keySource": "Unified"
+
+  },
 
   "result": {
 
@@ -355,11 +493,7 @@ console.log(response)
 
   },
 
-  "gatewayMetadata": {
-
-    "keySource": "Unified"
-
-  }
+  "state": "Completed"
 
 }
 
@@ -368,36 +502,36 @@ console.log(response)
 
 ## Parameters
 
-* [ Input ](#tab-panel-168)
-* [ Output ](#tab-panel-169)
-
-prompt
-
-`string`required
-
-▶image\_input\[\]
-
-`array`maxItems: 14format: uri
-
-size
-
-`string`enum: 2K, 3K
+* [ Input ](#tab-panel-398)
+* [ Output ](#tab-panel-399)
 
 aspect\_ratio
 
 `string`enum: match\_input\_image, 1:1, 4:3, 3:4, 16:9, 9:16, 3:2, 2:3, 21:9
 
-sequential\_image\_generation
+▶image\_input\[\]
 
-`string`enum: disabled, auto
+`array`maxItems: 14format: uri
 
 max\_images
 
-`integer`minimum: 1maximum: 15
+`integer`maximum: 15minimum: 1
 
 output\_format
 
 `string`enum: png, jpeg
+
+prompt
+
+`string`required
+
+sequential\_image\_generation
+
+`string`enum: disabled, auto
+
+size
+
+`string`enum: 2K, 3K
 
 ▶images\[\]
 

@@ -30,8 +30,8 @@ Note
 
 To enable built-in Node.js APIs and polyfills, add the nodejs\_compat compatibility flag to your [Wrangler configuration file](https://developers.cloudflare.com/workers/wrangler/configuration/). This also enables nodejs\_compat\_v2 as long as your compatibility date is 2024-09-23 or later. [Learn more about the Node.js compatibility flag and v2](https://developers.cloudflare.com/workers/configuration/compatibility-flags/#nodejs-compatibility-flag).
 
-* [  wrangler.jsonc ](#tab-panel-4441)
-* [  wrangler.toml ](#tab-panel-4442)
+* [  wrangler.jsonc ](#tab-panel-5853)
+* [  wrangler.toml ](#tab-panel-5854)
 
 JSONC
 
@@ -91,6 +91,23 @@ JavaScript
 ```
 
 const browser = await puppeteer.launch(env.MYBROWSER);
+
+
+```
+
+Quick Actions compatibility
+
+The browser binding's `.quickAction()` method requires a compatibility date of `2026-03-24` or later. Ensure your `wrangler.json` includes:
+
+JSONC
+
+```
+
+{
+
+  "compatibility_date": "2026-03-24"
+
+}
 
 
 ```

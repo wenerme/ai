@@ -29,10 +29,10 @@ To serve images from a custom domain:
 2. Select **Create application** \> **Workers** \> **Create Worker** and create your Worker.
 3. In your Worker, select **Quick edit** and paste the following code.
 
-* [  JavaScript ](#tab-panel-9524)
-* [  TypeScript ](#tab-panel-9525)
-* [  Hono ](#tab-panel-9526)
-* [  Python ](#tab-panel-9527)
+* [  JavaScript ](#tab-panel-10508)
+* [  TypeScript ](#tab-panel-10509)
+* [  Hono ](#tab-panel-10510)
+* [  Python ](#tab-panel-10511)
 
 JavaScript
 

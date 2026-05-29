@@ -16,10 +16,10 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 Inspects the incoming request's TLS version and blocks if under TLSv1.2.
 
-* [  JavaScript ](#tab-panel-9462)
-* [  TypeScript ](#tab-panel-9463)
-* [  Hono ](#tab-panel-9464)
-* [  Python ](#tab-panel-9465)
+* [  JavaScript ](#tab-panel-10418)
+* [  TypeScript ](#tab-panel-10419)
+* [  Hono ](#tab-panel-10420)
+* [  Python ](#tab-panel-10421)
 
 JavaScript
 

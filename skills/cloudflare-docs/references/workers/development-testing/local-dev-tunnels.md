@@ -62,8 +62,8 @@ Run `vite dev`, then press `t + Enter` to start or close the tunnel. Add `tunnel
 
 To use a named tunnel with stable hostnames:
 
-* [  JavaScript ](#tab-panel-9340)
-* [  TypeScript ](#tab-panel-9341)
+* [  JavaScript ](#tab-panel-10382)
+* [  TypeScript ](#tab-panel-10383)
 
 vite.config.js
 
@@ -126,8 +126,8 @@ When using `vite preview`, Vite's preview host validation still applies:
 
 For example:
 
-* [  JavaScript ](#tab-panel-9342)
-* [  TypeScript ](#tab-panel-9343)
+* [  JavaScript ](#tab-panel-10384)
+* [  TypeScript ](#tab-panel-10385)
 
 vite.config.js
 

@@ -33,10 +33,10 @@ The following Worker will:
 * For request URLs beginning with `/generate/`, replace `/generate/` with `/`, sign the resulting path with its timestamp, and return the full, signed URL in the response body.
 * For all other request URLs, verify the signed URL and allow the request through.
 
-* [  JavaScript ](#tab-panel-9552)
-* [  TypeScript ](#tab-panel-9553)
-* [  Hono ](#tab-panel-9554)
-* [  Python ](#tab-panel-9555)
+* [  JavaScript ](#tab-panel-10574)
+* [  TypeScript ](#tab-panel-10575)
+* [  Hono ](#tab-panel-10576)
+* [  Python ](#tab-panel-10577)
 
 JavaScript
 

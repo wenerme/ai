@@ -16,10 +16,10 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 Set a Cron Trigger for your Worker.
 
-* [  JavaScript ](#tab-panel-9443)
-* [  TypeScript ](#tab-panel-9444)
-* [  Python ](#tab-panel-9445)
-* [  Hono ](#tab-panel-9446)
+* [  JavaScript ](#tab-panel-10465)
+* [  TypeScript ](#tab-panel-10466)
+* [  Python ](#tab-panel-10467)
+* [  Hono ](#tab-panel-10468)
 
 JavaScript
 
@@ -148,8 +148,8 @@ Refer to [Cron Triggers](https://developers.cloudflare.com/workers/configuration
 
 If you are deploying with Wrangler, set the cron syntax (once per hour as shown below) by adding this to your Wrangler file:
 
-* [  wrangler.jsonc ](#tab-panel-9447)
-* [  wrangler.toml ](#tab-panel-9448)
+* [  wrangler.jsonc ](#tab-panel-10469)
+* [  wrangler.toml ](#tab-panel-10470)
 
 JSONC
 
@@ -196,8 +196,8 @@ crons = [ "0 * * * *" ]
 
 You also can set a different Cron Trigger for each [environment](https://developers.cloudflare.com/workers/wrangler/environments/) in your [Wrangler configuration file](https://developers.cloudflare.com/workers/wrangler/configuration/). You need to put the `[triggers]` table under your chosen environment. For example:
 
-* [  wrangler.jsonc ](#tab-panel-9449)
-* [  wrangler.toml ](#tab-panel-9450)
+* [  wrangler.jsonc ](#tab-panel-10471)
+* [  wrangler.toml ](#tab-panel-10472)
 
 JSONC
 
