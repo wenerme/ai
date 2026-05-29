@@ -126,7 +126,7 @@ Web Search with live internet access is not HIPAA eligible and is not covered by
 
 Data residency controls are a project configuration option that allow you to configure the location of infrastructure OpenAI uses to provide services.
 
-Contact our [sales team](https://openai.com/contact-sales) to see if you're eligible for using data residency controls. Data residency endpoints are charged a [10% uplift](https://developers.openai.com/api/docs/pricing) for `gpt-5.5`, `gpt-5.5-pro`, `gpt-5.4` and `gpt-5.4-pro`.
+Contact our [sales team](https://openai.com/contact-sales) to see if you're eligible for using data residency controls. Data residency endpoints are charged a [10% uplift](https://developers.openai.com/api/docs/pricing) for models released on or after March 5, 2026, that are eligible for data residency.
 
 ### How does data residency work?
 

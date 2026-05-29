@@ -139,7 +139,7 @@ Flagship models
         tier="standard"
         latestSectionLabel={null}
         allModelsFootnote={pricingHtml(
-          'Regional processing (data residency) endpoints are charged a 10% uplift for <code>gpt-5.5</code>, <code>gpt-5.5-pro</code>, <code>gpt-5.4</code>, <code>gpt-5.4-mini</code>, <code>gpt-5.4-nano</code>, and <code>gpt-5.4-pro</code>. See our <a href="/api/docs/guides/your-data">Your data</a> guide for supported regions and processing details.'
+          'Regional processing (data residency) endpoints are charged a 10% uplift for models released on or after March 5, 2026, that are eligible for data residency. See our <a href="/api/docs/guides/your-data">Your data</a> guide for supported regions and processing details.'
         )}
         rows={[
           ["gpt-5.5 (<272K context length)", 5, 0.5, 30],
@@ -195,7 +195,7 @@ Flagship models
         tier="batch"
         latestSectionLabel={null}
         allModelsFootnote={pricingHtml(
-          'Regional processing (data residency) endpoints are charged a 10% uplift for <code>gpt-5.5</code>, <code>gpt-5.5-pro</code>, <code>gpt-5.4</code>, <code>gpt-5.4-mini</code>, <code>gpt-5.4-nano</code>, and <code>gpt-5.4-pro</code>. See our <a href="/api/docs/guides/your-data">Your data</a> guide for supported regions and processing details.'
+          'Regional processing (data residency) endpoints are charged a 10% uplift for models released on or after March 5, 2026, that are eligible for data residency. See our <a href="/api/docs/guides/your-data">Your data</a> guide for supported regions and processing details.'
         )}
         rows={[
           ["gpt-5.5 (<272K context length)", 2.5, 0.25, 15],
@@ -249,7 +249,7 @@ Flagship models
         tier="flex"
         latestSectionLabel={null}
         allModelsFootnote={pricingHtml(
-          'Regional processing (data residency) endpoints are charged a 10% uplift for <code>gpt-5.5</code>, <code>gpt-5.5-pro</code>, <code>gpt-5.4</code>, <code>gpt-5.4-mini</code>, <code>gpt-5.4-nano</code>, and <code>gpt-5.4-pro</code>. See our <a href="/api/docs/guides/your-data">Your data</a> guide for supported regions and processing details.'
+          'Regional processing (data residency) endpoints are charged a 10% uplift for models released on or after March 5, 2026, that are eligible for data residency. See our <a href="/api/docs/guides/your-data">Your data</a> guide for supported regions and processing details.'
         )}
         rows={[
           ["gpt-5.5 (<272K context length)", 2.5, 0.25, 15],
@@ -276,7 +276,7 @@ Flagship models
         tier="priority"
         latestSectionLabel={null}
         allModelsFootnote={pricingHtml(
-          'Regional processing (data residency) endpoints are charged a 10% uplift for <code>gpt-5.5</code>, <code>gpt-5.5-pro</code>, <code>gpt-5.4</code>, <code>gpt-5.4-mini</code>, <code>gpt-5.4-nano</code>, and <code>gpt-5.4-pro</code>. See our <a href="/api/docs/guides/your-data">Your data</a> guide for supported regions and processing details.'
+          'Regional processing (data residency) endpoints are charged a 10% uplift for models released on or after March 5, 2026, that are eligible for data residency. See our <a href="/api/docs/guides/your-data">Your data</a> guide for supported regions and processing details.'
         )}
         rows={[
           ["gpt-5.5 (<272K context length)", 12.5, 1.25, 75],

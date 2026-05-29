@@ -10,7 +10,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 [Skip to content](#%5Ftop) 
 
-![Zhipu AI logo](https://developers.cloudflare.com/_astro/zai-org.Dj2vcayE.svg) 
+![Zhipu AI logo](https://developers.cloudflare.com/_astro/zai.Dj2vcayE.svg) 
 
 #  glm-4.7-flash 
 

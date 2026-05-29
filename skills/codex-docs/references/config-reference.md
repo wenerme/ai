@@ -642,7 +642,7 @@ For sandbox and approval keys (`approval_policy`, `sandbox_mode`, and `sandbox_w
     },
     {
       key: "features.network_proxy.unix_sockets",
-      type: "map<string, allow | none>",
+      type: "map<string, allow | deny>",
       description:
         "Unix socket policy for sandboxed networking. Unset by default; add `allow` entries for permitted sockets.",
     },
@@ -1388,13 +1388,13 @@ For sandbox and approval keys (`approval_policy`, `sandbox_mode`, and `sandbox_w
       key: "permissions.<name>.network.unix_sockets",
       type: "table",
       description:
-        "Unix socket allowlist overrides for sandboxed networking. Use socket paths as keys; `allow` adds a path, and `none` clears an inherited allow entry.",
+        "Unix socket allowlist overrides for sandboxed networking. Use socket paths as keys; `allow` adds a path, and `deny` rejects it.",
     },
     {
       key: "permissions.<name>.network.unix_sockets.<path>",
-      type: "allow | none",
+      type: "allow | deny",
       description:
-        "Add an absolute Unix socket path to the effective allowlist with `allow`, or clear an inherited allow entry with `none`. `none` is not a separate deny-list decision.",
+        "Add an absolute Unix socket path to the effective allowlist with `allow`, or reject it with `deny`. Denied entries are omitted from the effective allowlist.",
     },
     {
       key: "permissions.<name>.network.allow_local_binding",
@@ -1633,7 +1633,7 @@ canonical keys that `config.toml` uses. Omitted keys remain unconstrained.
     },
     {
       key: "experimental_network.unix_sockets",
-      type: "map<string, allow | none>",
+      type: "map<string, allow | deny>",
       description:
         "Administrator-managed Unix socket policy for sandboxed networking.",
     },

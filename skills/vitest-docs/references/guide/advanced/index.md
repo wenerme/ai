@@ -12,7 +12,6 @@ You can import any method from the `vitest/node` entry-point.
 
 ```ts
 function startVitest(
-  mode: VitestRunMode,
   cliFilters: string[] = [],
   options: CliOptions = {},
   viteOverrides?: ViteUserConfig,
@@ -25,7 +24,7 @@ You can start running Vitest tests using its Node API:
 ```js
 import { startVitest } from 'vitest/node'
 
-const vitest = await startVitest('test')
+const vitest = await startVitest()
 
 await vitest.close()
 ```
@@ -45,7 +44,7 @@ After running the tests, you can get the results from the [`state.getTestModules
 ```ts
 import type { TestModule } from 'vitest/node'
 
-const vitest = await startVitest('test')
+const vitest = await startVitest()
 
 console.log(vitest.state.getTestModules()) // [TestModule]
 ```
@@ -56,7 +55,6 @@ console.log(vitest.state.getTestModules()) // [TestModule]
 
 ```ts
 function createVitest(
-  mode: VitestRunMode,
   options: CliOptions,
   viteOverrides: ViteUserConfig = {},
   vitestOptions: VitestOptions = {},

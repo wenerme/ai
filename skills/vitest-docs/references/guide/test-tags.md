@@ -230,7 +230,7 @@ If you are using a programmatic API, you can pass down a `tagsFilter` option to 
 ```ts
 import { startVitest } from 'vitest/node'
 
-await startVitest('test', [], {
+await startVitest([], {
   tagsFilter: ['frontend and backend'],
 })
 ```

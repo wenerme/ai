@@ -32,12 +32,17 @@ Browser Run offers two categories of integration methods:
 
 ## Quick Actions
 
+Quick Actions can be used via the REST API or directly from a Cloudflare Worker using a browser binding.
+
+* [ REST API ](#tab-panel-5813)
+* [ Workers binding ](#tab-panel-5814)
+
 ### Prerequisites
 
 * Sign up for a [Cloudflare account ↗](https://dash.cloudflare.com/sign-up/workers-and-pages).
 * Create a [Cloudflare API Token](https://developers.cloudflare.com/fundamentals/api/get-started/create-token/) with `Browser Rendering - Edit` permissions.
 
-### Example: Take a screenshot of the Cloudflare homepage
+### Example: Take a screenshot
 
 Terminal window
 
@@ -59,6 +64,169 @@ curl -X POST 'https://api.cloudflare.com/client/v4/accounts/<accountId>/browser-
 
 
 ```
+
+### Prerequisites
+
+* Sign up for a [Cloudflare account ↗](https://dash.cloudflare.com/sign-up/workers-and-pages).
+* Install [Node.js ↗](https://docs.npmjs.com/downloading-and-installing-node-js-and-npm).
+
+### Example: Take a screenshot from a Worker
+
+#### 1\. Create a Worker project
+
+Create a new Worker project named `browser-quick-action` by running:
+
+ npm  yarn  pnpm 
+
+```
+npm create cloudflare@latest -- browser-quick-action
+```
+
+```
+yarn create cloudflare browser-quick-action
+```
+
+```
+pnpm create cloudflare@latest browser-quick-action
+```
+
+For setup, select the following options:
+
+* For _What would you like to start with?_, choose `Hello World example`.
+* For _Which template would you like to use?_, choose `Worker only`.
+* For _Which language do you want to use?_, choose `TypeScript`.
+* For _Do you want to use git for version control?_, choose `Yes`.
+* For _Do you want to deploy your application?_, choose `No` (we will be making some changes before deploying).
+
+#### 2\. Configure the browser binding
+
+Update your [Wrangler configuration file](https://developers.cloudflare.com/workers/wrangler/configuration/) with a browser [binding](https://developers.cloudflare.com/browser-run/reference/wrangler/#bindings):
+
+* [  wrangler.jsonc ](#tab-panel-5807)
+* [  wrangler.toml ](#tab-panel-5808)
+
+JSONC
+
+```
+
+{
+
+  "$schema": "./node_modules/wrangler/config-schema.json",
+
+  "name": "browser-quick-action",
+
+  "main": "src/index.ts",
+
+  // Set this to today's date
+
+  "compatibility_date": "2026-05-29",
+
+  "browser": {
+
+    "binding": "BROWSER"
+
+  }
+
+}
+
+
+```
+
+TOML
+
+```
+
+name = "browser-quick-action"
+
+main = "src/index.ts"
+
+# Set this to today's date
+
+compatibility_date = "2026-05-29"
+
+
+[browser]
+
+binding = "BROWSER"
+
+
+```
+
+Warning
+
+Using the `.quickAction()` method requires a `compatibility_date` of `2026-03-24` or later.
+
+#### 3\. Write the Worker code
+
+Replace the contents of `src/index.ts` with the following:
+
+* [  JavaScript ](#tab-panel-5809)
+* [  TypeScript ](#tab-panel-5810)
+
+JavaScript
+
+```
+
+export default {
+
+  async fetch(request, env) {
+
+    return await env.BROWSER.quickAction("screenshot", {
+
+      url: "https://example.com",
+
+    });
+
+  },
+
+};
+
+
+```
+
+TypeScript
+
+```
+
+interface Env {
+
+  BROWSER: BrowserRun;
+
+}
+
+
+export default {
+
+  async fetch(request, env): Promise<Response> {
+
+    return await env.BROWSER.quickAction("screenshot", {
+
+      url: "https://example.com",
+
+    });
+
+  },
+
+} satisfies ExportedHandler<Env>;
+
+
+```
+
+This Worker uses the browser binding to take a screenshot of `example.com` and returns the image directly in the response.
+
+#### 4\. Test
+
+Run `npx wrangler dev --remote` to test your Worker locally.
+
+Use real headless browser during local development
+
+To interact with a real headless browser during local development, set `"remote" : true` in the Browser binding configuration. Learn more in our [remote bindings documentation](https://developers.cloudflare.com/workers/development-testing/#remote-bindings).
+
+Visit your local URL to see the screenshot.
+
+#### 5\. Deploy
+
+Run `npx wrangler deploy` to deploy your Worker to the Cloudflare global network.
 
 Other Quick Actions endpoints include:
 
@@ -158,8 +326,8 @@ Configure your `browser-worker` project's [Wrangler configuration file](https://
 
 Update your [Wrangler configuration file](https://developers.cloudflare.com/workers/wrangler/configuration/) with the Browser Run API binding and the KV namespaces you created:
 
-* [  wrangler.jsonc ](#tab-panel-4403)
-* [  wrangler.toml ](#tab-panel-4404)
+* [  wrangler.jsonc ](#tab-panel-5811)
+* [  wrangler.toml ](#tab-panel-5812)
 
 JSONC
 
@@ -175,7 +343,7 @@ JSONC
 
   // Set this to today's date
 
-  "compatibility_date": "2026-04-29",
+  "compatibility_date": "2026-05-29",
 
   "compatibility_flags": ["nodejs_compat"],
 
@@ -216,7 +384,7 @@ main = "src/index.js"
 
 # Set this to today's date
 
-compatibility_date = "2026-04-29"
+compatibility_date = "2026-05-29"
 
 compatibility_flags = [ "nodejs_compat" ]
 
@@ -239,8 +407,8 @@ preview_id = "e1f8b68b68d24381b57071445f96e623"
 
 #### 5\. Code
 
-* [  JavaScript ](#tab-panel-4401)
-* [  TypeScript ](#tab-panel-4402)
+* [  JavaScript ](#tab-panel-5805)
+* [  TypeScript ](#tab-panel-5806)
 
 Update `src/index.js` with your Worker code:
 

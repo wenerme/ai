@@ -106,6 +106,136 @@ You can reference the preset as if it was a model by sending requests to `@prese
 }
 ```
 
+## Creating Presets from API Requests
+
+In addition to the dashboard, you can create (or update) a preset
+directly from any inference request body you already use. This is
+useful when you want to capture a known-good request as a reusable
+configuration without re-typing it in the UI.
+
+Each inference skin has its own endpoint. Send the same JSON body
+you would send to the matching inference route — OpenRouter
+persists only the fields that overlap with the preset config
+(e.g. `model`, `temperature`, `provider`, `top_p`, `system`).
+Transient fields like `messages`, `input`, `prompt`, and `stream`
+are silently ignored.
+
+The endpoints are:
+
+* `POST /api/v1/presets/{slug}/chat/completions` — Chat Completions skin
+* `POST /api/v1/presets/{slug}/messages` — Anthropic Messages skin
+* `POST /api/v1/presets/{slug}/responses` — Responses skin
+
+The `{slug}` path parameter is a URL-safe identifier for the
+preset. If a preset with that slug already exists in your
+workspace, a new version is created and designated as the active
+version. If it does not exist, a new preset is created.
+
+### From a Chat Completions request
+
+Reuse the exact body you would `POST /api/v1/chat/completions`:
+
+```bash
+curl https://openrouter.ai/api/v1/presets/email-copywriter/chat/completions \
+  -H "Authorization: Bearer $OPENROUTER_API_KEY" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "model": "openai/gpt-4o",
+    "temperature": 0.7,
+    "provider": { "sort": "price" },
+    "messages": [
+      { "role": "system", "content": "You are a helpful assistant." },
+      { "role": "user", "content": "Write a marketing email." }
+    ]
+  }'
+```
+
+The `messages` array is ignored for preset storage; only the
+configuration fields (`model`, `temperature`, `provider`) and the
+extracted system prompt are persisted.
+
+### From an Anthropic Messages request
+
+```bash
+curl https://openrouter.ai/api/v1/presets/code-reviewer/messages \
+  -H "Authorization: Bearer $OPENROUTER_API_KEY" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "model": "anthropic/claude-4.6-sonnet",
+    "max_tokens": 1024,
+    "system": "You are a senior code reviewer.",
+    "messages": [
+      { "role": "user", "content": "Review this PR." }
+    ]
+  }'
+```
+
+The top-level `system` field becomes the preset's system prompt.
+
+### From a Responses request
+
+```bash
+curl https://openrouter.ai/api/v1/presets/inbound-classifier/responses \
+  -H "Authorization: Bearer $OPENROUTER_API_KEY" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "model": "openai/gpt-4o",
+    "instructions": "Classify the inbound message.",
+    "input": "Hello, I need a refund."
+  }'
+```
+
+The `instructions` field becomes the preset's system prompt.
+
+### Response shape
+
+All three endpoints return the resulting preset with its
+designated version:
+
+```json
+{
+  "data": {
+    "id": "650e8400-e29b-41d4-a716-446655440001",
+    "name": "email-copywriter",
+    "slug": "email-copywriter",
+    "status": "active",
+    "designated_version_id": "550e8400-e29b-41d4-a716-446655440000",
+    "created_at": "2026-04-20T10:00:00Z",
+    "updated_at": "2026-04-20T10:00:00Z",
+    "designated_version": {
+      "id": "550e8400-e29b-41d4-a716-446655440000",
+      "version": 1,
+      "system_prompt": "You are a helpful assistant.",
+      "config": {
+        "model": "openai/gpt-4o",
+        "temperature": 0.7,
+        "provider": { "sort": "price" }
+      },
+      "created_at": "2026-04-20T10:00:00Z",
+      "updated_at": "2026-04-20T10:00:00Z"
+    }
+  }
+}
+```
+
+Once created, the preset can be used in subsequent inference
+requests via any of the three referencing styles shown in
+[Using Presets](#using-presets).
+
+### Suggested workflow
+
+1. Build and test a request against `/chat/completions` (or
+   `/messages` / `/responses`) until it produces the output you
+   want.
+2. `POST` the same body to the matching
+   `/api/v1/presets/{slug}/...` endpoint to capture the config.
+3. In production code, swap the inference call to reference
+   `@preset/{slug}` instead of repeating the configuration.
+
+This lets you iterate on prompts and parameters in code, then
+promote the working configuration to a preset without manual
+transcription.
+
 ## Other Notes
 
 1. If you're using an organization account, all members can access organization presets. This is a great way to share best practices across teams.

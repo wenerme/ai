@@ -72,8 +72,8 @@ You can manage custom topics from two places in the dashboard:
 
 Both methods will update the same underlying topic list. Changes made in one are immediately reflected in the other.
 
-* [ Dashboard ](#tab-panel-8975)
-* [ API ](#tab-panel-8976)
+* [ Dashboard ](#tab-panel-10003)
+* [ API ](#tab-panel-10004)
 
 1. In the Cloudflare dashboard, go to the Security **Settings** page.  
 [ Go to **Settings** ](https://dash.cloudflare.com/?to=/:account/:zone/security/settings)  

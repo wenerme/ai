@@ -717,8 +717,10 @@ the models to interact with external systems, execute code, or access real-time
 information, incorporating the results into their reasoning and final response.
 
 You can try examples of using tools with thinking models in the
-[Thinking cookbook](https://colab.sandbox.google.com/github/google-gemini/cookbook/blob/main/quickstarts/Get_started_thinking.ipynb).
+\[Thinking cookbook\]\[Colab\].
 
 ## What's next?
 
 - Thinking coverage is available in our [OpenAI Compatibility](https://ai.google.dev/gemini-api/docs/openai#thinking) guide.
+
+\[Colab\]: https://colab.sandbox.google.com/github/google-gemini/cookbook/blob/main/quickstarts/Get_started_thinking.ipynb

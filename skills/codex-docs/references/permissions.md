@@ -159,7 +159,7 @@ cycles.
 | `[permissions.<name>.network.domains]`                            | Table                      | None                    | Maps host patterns to `allow` or `deny`. If there are no `allow` entries, domain requests are blocked. Deny entries override allow entries.                                                                                                                                                    |
 | `permissions.<name>.network.domains."<pattern>"`                  | `allow` or `deny`          | None                    | Supports exact hosts, `*.example.com` for subdomains, `**.example.com` for apex plus subdomains, and `*` as an allow-only global wildcard. Host patterns are normalized by trimming, lowercasing, stripping a trailing dot, and stripping simple ports or brackets.                            |
 | `[permissions.<name>.network.unix_sockets]`                       | Table                      | None                    | Maps Unix socket allowlist overrides. Use only for local integrations such as Docker.                                                                                                                                                                                                          |
-| `permissions.<name>.network.unix_sockets."<path>"`                | `allow` or `none`          | None                    | Adds an absolute Unix socket path to the effective allowlist with `allow`, or clears an inherited allow entry with `none`. `none` is not a separate deny-list decision.                                                                                                                        |
+| `permissions.<name>.network.unix_sockets."<path>"`                | `allow` or `deny`          | None                    | Adds an absolute Unix socket path to the effective allowlist with `allow`, or rejects it with `deny`. Denied entries are omitted from the effective allowlist.                                                                                                                                 |
 | `permissions.<name>.network.proxy_url`                            | URL string                 | `http://127.0.0.1:3128` | HTTP proxy listener used for `HTTP_PROXY`, `HTTPS_PROXY`, websocket proxy variables, and related tool proxy environment variables.                                                                                                                                                             |
 | `permissions.<name>.network.enable_socks5`                        | Boolean                    | `true`                  | Enables the SOCKS5 listener used for `ALL_PROXY` and FTP proxy variables.                                                                                                                                                                                                                      |
 | `permissions.<name>.network.socks_url`                            | URL string                 | `http://127.0.0.1:8081` | SOCKS5 listener address.                                                                                                                                                                                                                                                                       |
@@ -366,11 +366,11 @@ sparingly:
 ```toml
 [permissions.project-edit.network.unix_sockets]
 "/var/run/docker.sock" = "allow"
-"/tmp/old.sock" = "none"
+"/tmp/old.sock" = "deny"
 ```
 
-Use `none` to clear a socket allow entry inherited from a lower-precedence
-configuration layer. It is not a domain-style deny rule.
+Use `deny` to reject a socket path, including an inherited allow entry. Denied
+socket paths are omitted from the effective allowlist.
 
 When Unix sockets are enabled, keep proxy listeners bound to loopback addresses.
 

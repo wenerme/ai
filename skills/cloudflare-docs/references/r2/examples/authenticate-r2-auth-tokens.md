@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 # Authenticate against R2 API using auth tokens
 
-**Last reviewed:**  over 1 year ago 
+**Last reviewed:**  almost 2 years ago 
 
 The following example shows how to authenticate against R2 using the S3 API and an API token.
 
@@ -39,9 +39,9 @@ export AWS_SECRET_ACCESS_KEY=your_secret_access_key
 
 ```
 
-* [  JavaScript ](#tab-panel-7122)
-* [  Python ](#tab-panel-7123)
-* [  Go ](#tab-panel-7124)
+* [  JavaScript ](#tab-panel-8615)
+* [  Python ](#tab-panel-8616)
+* [  Go ](#tab-panel-8617)
 
 Install the `@aws-sdk/client-s3` package for the S3 API:
 

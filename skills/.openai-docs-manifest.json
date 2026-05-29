@@ -1122,10 +1122,10 @@
   "openai-docs/guides/your-data.md": {
     "url": "https://developers.openai.com/api/docs/guides/your-data.md",
     "skill": "openai-docs",
-    "etag": "W/\"c4e6e2c92179a5fede9bcf1b5b11a83e\"",
-    "lastModified": "Fri, 08 May 2026 00:28:46 GMT",
-    "size": 48151,
-    "updatedAt": "2026-05-08T00:28:46.193Z"
+    "etag": "W/\"cfebbe4581e28779d2a10076ed1d0738\"",
+    "lastModified": "Fri, 29 May 2026 06:46:57 GMT",
+    "size": 48177,
+    "updatedAt": "2026-05-29T11:11:11.750Z"
   },
   "openai-docs/libraries.md": {
     "url": "https://developers.openai.com/api/docs/libraries.md",
@@ -1154,10 +1154,10 @@
   "openai-docs/pricing.md": {
     "url": "https://developers.openai.com/api/docs/pricing.md",
     "skill": "openai-docs",
-    "etag": "W/\"c3a4d3300388e986555fed3adc702ab1\"",
-    "lastModified": "Thu, 14 May 2026 08:11:31 GMT",
-    "size": 17791,
-    "updatedAt": "2026-05-14T10:53:38.321Z"
+    "etag": "W/\"9aa806953a981d21d1174bf0b309bb25\"",
+    "lastModified": "Fri, 29 May 2026 06:34:38 GMT",
+    "size": 17499,
+    "updatedAt": "2026-05-29T11:11:13.488Z"
   },
   "openai-docs/quickstart.md": {
     "url": "https://developers.openai.com/api/docs/quickstart.md",
@@ -10306,10 +10306,10 @@
   "codex-docs/config-reference.md": {
     "url": "https://developers.openai.com/codex/config-reference.md",
     "skill": "codex-docs",
-    "etag": "W/\"2f642c42db45960cf17b4c0e419188bd\"",
-    "lastModified": "Wed, 27 May 2026 21:16:59 GMT",
-    "size": 64644,
-    "updatedAt": "2026-05-28T00:40:14.616Z"
+    "etag": "W/\"a8de1261dfe82d2d0f330ad4d9c6bf19\"",
+    "lastModified": "Fri, 29 May 2026 06:56:57 GMT",
+    "size": 64614,
+    "updatedAt": "2026-05-29T11:16:43.922Z"
   },
   "codex-docs/config-sample.md": {
     "url": "https://developers.openai.com/codex/config-sample.md",
@@ -10530,10 +10530,10 @@
   "codex-docs/permissions.md": {
     "url": "https://developers.openai.com/codex/permissions.md",
     "skill": "codex-docs",
-    "etag": "W/\"e7d86886934c6f986577ccd54268daea\"",
-    "lastModified": "Thu, 28 May 2026 00:18:36 GMT",
-    "size": 28369,
-    "updatedAt": "2026-05-28T00:40:21.549Z"
+    "etag": "W/\"15e15816108d19a1e1305ada0828a0ab\"",
+    "lastModified": "Fri, 29 May 2026 08:04:56 GMT",
+    "size": 28371,
+    "updatedAt": "2026-05-29T11:16:50.469Z"
   },
   "codex-docs/plugins.md": {
     "url": "https://developers.openai.com/codex/plugins.md",
