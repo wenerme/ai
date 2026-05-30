@@ -144,7 +144,7 @@ The bottom of the invoice shows:
 The Cloudflare dashboard organizes billing information across four tabs under **Manage Account** \> **Billing**:
 
 * **Invoices and documents** — view, download, and pay invoices. Configure your billing email preference and set up billable usage notifications.
-* **Billable usage** — track daily usage-based costs across all products for the current or previous billing period.
+* **Billable Usage** — track daily usage-based costs across all products for the current or previous billing period.
 * **Payment** — manage your primary and additional payment methods, billing address, and tax-exempt status.
 * **Subscriptions** — view all active subscriptions with their renewal dates, pricing, and invoice status. Cancel or modify subscriptions from this tab.
 
@@ -156,7 +156,7 @@ The billable usage dashboard shows a daily cost breakdown chart and a per-produc
 
 ### Budget alerts
 
-Budget alerts notify you by email when your account-wide usage-based spend crosses a dollar threshold. Set these up under **Manage Account** \> **Notifications**.
+Budget alerts notify you by email when your account-wide usage-based spend crosses a dollar threshold. Set these up under **Manage Account** \> **Billing** \> **Billable Usage**.
 
 ![The budget alert creation modal showing threshold and notification configuration](https://developers.cloudflare.com/_astro/budget-alert-modal.BjIzGOLV_Zr8DX5.webp) 
 

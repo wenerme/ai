@@ -1,5 +1,3 @@
-# Tool use with Live API
-
 Tool use allows Live API to go beyond just conversation by enabling it to
 perform actions in the real-world and pull in external context while maintaining
 a real time connection.

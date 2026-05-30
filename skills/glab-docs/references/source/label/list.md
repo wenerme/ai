@@ -5,7 +5,15 @@ group: Code Review
 info: To determine the technical writer assigned to the Stage/Group associated with this page, see <https://handbook.gitlab.com/handbook/product/ux/technical-writing/#assignments>
 ---
 
-List labels in the repository.
+List labels in a project or group.
+
+## Synopsis
+
+By default, labels are listed for the current repository. Use
+`--group` to list labels for a group or subgroup, or
+`--repo` to target another project.
+
+Use `--output json` to format the result as JSON for use with other tools.
 
 ```plaintext
 glab label list [flags]
@@ -20,10 +28,18 @@ ls
 ## Examples
 
 ```console
+# List labels in the current repository
 glab label list
-glab label ls
+
+# List labels in another project
 glab label list -R owner/repository
+
+# List labels in a group
 glab label list -g mygroup
+
+# List labels as JSON
+glab label list --output json
+
 ```
 
 ## Options

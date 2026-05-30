@@ -1,6 +1,6 @@
 ---
 title: Cancel Cloudflare subscriptions
-description: Cancel Cloudflare subscriptions
+description: Cancel Cloudflare plans, add-ons, or subscriptions before the next billing period.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 
@@ -14,7 +14,7 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 Cancellations take effect at the end of the current billing period. You retain access to paid features until then. To avoid charges for the next billing period, start the cancellation process before your current period ends.
 
-Downgrades follow the same timing — switching from a yearly plan to a monthly plan, or from a paid plan to Free, does not take immediate effect. You continue to have access to the higher-tier service for the remainder of the current billing period. Refunds are not issued for unused time within a billing period.
+Downgrades follow the same timing. Switching from a yearly plan to a monthly plan, or from a paid plan to Free, does not take immediate effect. You continue to have access to the higher-tier service for the remainder of the current billing period. Refunds are not issued for unused time within a billing period.
 
 For some subscriptions, cancellation is done by switching to the Free plan rather than selecting a separate cancel option.
 
@@ -26,30 +26,28 @@ Warning
 
 Changing the DNS on your domain does not cancel your account or active subscriptions. You must explicitly cancel subscriptions through the Cloudflare dashboard.
 
----
+## Turn off the Cloudflare subscription
 
-## Step 1: Disable the Cloudflare subscription
-
-To disable a subscription:
+For some subscriptions, you must turn off the product feature before you cancel the billing subscription.
 
 1. In the Cloudflare dashboard, go to the **Billing** page.  
 [ Go to **Billing** ](https://dash.cloudflare.com/?to=/:account/billing)
 2. Select **Subscriptions**.
-3. Select the feature you want to disable under **Active Subscriptions** (Free or Pro customers) or **Plan Extensions** (Enterprise customers).
-4. Follow the instructions to disable the feature. Each feature has a different process which could include toggling a switch, clicking a button, or choosing _Disable_ from a drop-down list.
+3. Select the feature you want to turn off under **Active Subscriptions** (Free or Pro customers) or **Plan Extensions** (Enterprise customers).
+4. Follow the product-specific instructions to turn off the feature. The flow may ask you to turn off a switch, select a button, or choose _Disable_ from a drop-down list.
 
-## Step 2: Cancel the subscription in your billing profile
+## Cancel the subscription in your billing profile
 
 1. In the Cloudflare dashboard, go to the **Billing** page.  
 [ Go to **Billing** ](https://dash.cloudflare.com/?to=/:account/billing)
 2. Select **Subscriptions**.
-3. Find the subscription you want to disable and select **Cancel**.
+3. Find the subscription you want to cancel and select **Cancel**.
 4. Select a reason for cancellation.
 5. Select **Confirm**.
 
 Note
 
-To change your plan instead of cancelling, select **Change** under **Active Subscriptions** and choose a new plan type. To cancel a paid plan entirely, select **Free**.
+To change your plan instead of canceling, select **Change** under **Active Subscriptions** and choose a new plan type. To cancel a paid plan entirely, select **Free**.
 
 Warning
 
@@ -57,7 +55,7 @@ Fees are non-refundable. You are billed for the full billing period in which you
 
 ## Related resources
 
-* [Change domain plan](https://developers.cloudflare.com/billing/manage/change-plan/) — Upgrade or downgrade instead of cancelling
+* [Change domain plan](https://developers.cloudflare.com/billing/manage/change-plan/) — Upgrade or downgrade instead of canceling
 * [Billing policy](https://developers.cloudflare.com/billing/understand/billing-policy/) — Refund policy and subscription terms
 * [How Cloudflare billing works](https://developers.cloudflare.com/billing/understand/how-billing-works/) — When downgrades and cancellations take effect
 

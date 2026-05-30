@@ -371,6 +371,13 @@ components:
         origin:
           type: string
           description: Origin URL of the request
+        preset_id:
+          type:
+            - string
+            - 'null'
+          description: >-
+            ID of the preset used for this generation, null if no preset was
+            used
         provider_name:
           type:
             - string
@@ -487,6 +494,7 @@ components:
         - num_media_prompt
         - num_search_results
         - origin
+        - preset_id
         - provider_name
         - provider_responses
         - router

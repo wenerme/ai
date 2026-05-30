@@ -309,10 +309,10 @@ blocked websites from settings.
 
 ## Computer use
 
-[Computer use](https://developers.openai.com/codex/app/computer-use) helps Codex operate a macOS app by
-seeing, clicking, and typing. This is useful for testing desktop apps, checking
-browser or simulator flows, working with data sources that aren't available as
-plugins, changing app settings, and reproducing GUI-only bugs.
+[Computer use](https://developers.openai.com/codex/app/computer-use) helps Codex operate a macOS or Windows
+app by seeing, clicking, and typing. This is useful for testing desktop apps,
+checking browser or simulator flows, working with data sources that aren't
+available as plugins, changing app settings, and reproducing GUI-only bugs.
 
 Because computer use can affect app and system state outside your project
 workspace, keep tasks narrow and review permission prompts before continuing.

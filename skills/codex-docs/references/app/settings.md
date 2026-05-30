@@ -10,6 +10,12 @@ Choose where files open and how much command output appears in threads. You can 
 require <kbd>Cmd</kbd>+<kbd>Enter</kbd> for multiline prompts or prevent sleep while a
 thread runs.
 
+## Profile
+
+Use **Profile** to review stats such as lifetime tokens, peak tokens, streaks,
+your longest task, and token activity. You can also update your profile details,
+such as your picture, display name, and username.
+
 ## Keyboard shortcuts
 
 Open **Keyboard Shortcuts** to review commands, change bindings, or reset custom
@@ -93,20 +99,19 @@ also apply to the Codex CLI and IDE extension because the MCP configuration live
 ## Browser use
 
 Use these settings to install or enable the bundled Browser plugin, set up the
-[Codex Chrome extension](https://developers.openai.com/codex/app/chrome-extension), and manage allowlisted
-and blocklisted websites. Codex asks before using a website unless you've
-allowlisted it. Removing a site from the blocklist lets Codex ask again before
-using it in the browser.
+[Codex Chrome extension](https://developers.openai.com/codex/app/chrome-extension), and manage allowed and
+blocked websites. Codex asks before using a website unless you've allowed it.
+Removing a blocked site lets Codex ask again before using it in the browser.
 
 See [In-app browser](https://developers.openai.com/codex/app/browser) for browser preview, comment, and
 browser use workflows.
 
 ## Computer Use
 
-On macOS, check your Computer Use settings to review desktop-app access and related
-preferences after setup. To revoke system-level access, update Screen Recording
-or Accessibility permissions in macOS Privacy & Security settings. The feature
-isn't available in the EEA, the United Kingdom, or Switzerland at launch.
+Check your Computer Use settings to review desktop-app access and related
+preferences after setup. On macOS, revoke system-level access by updating Screen
+Recording or Accessibility permissions in macOS Privacy & Security settings. The
+feature isn't available in the EEA, the United Kingdom, or Switzerland at launch.
 
 ## Personalization
 

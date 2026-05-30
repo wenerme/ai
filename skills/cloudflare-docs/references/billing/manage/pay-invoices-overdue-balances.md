@@ -20,14 +20,14 @@ To pay, select **Pay Now** from the **Billing** page in the Cloudflare dashboard
 
 ## Understand why you have an outstanding balance
 
-When an outstanding balance is due, a new invoice will be created in your account for that amount. When you view that new invoice, it will show the original invoice number that the outstanding balance relates to. You can look up this original invoice to understand which product(s) were not fully paid for.
+When an outstanding balance is due, a new invoice is created in your account for that amount. The new invoice shows the original invoice number that the outstanding balance relates to. You can look up this original invoice to identify which products were not fully paid for.
 
 1. In the Cloudflare dashboard, go to the **Billing** page.  
 [ Go to **Billing** ](https://dash.cloudflare.com/?to=/:account/billing)
 2. Select **Invoices and documents**.
-3. Select the most recent invoice - the amount shown should match your outstanding balance
-4. On the invoice PDF, look for the section below the **Pay Online** link: **Invoice that pays the following outstanding balance:** and note the invoice number
-5. Go back to the **Invoices and documents** section and click to view the invoice number
+3. Select the most recent invoice. The amount shown should match your outstanding balance.
+4. In the invoice PDF, find **Invoice that pays the following outstanding balance:** and note the invoice number.
+5. Return to **Invoices and documents** and select the original invoice number.
 
 ## Pay an outstanding balance
 
@@ -46,7 +46,7 @@ You will be redirected to our payment system to proceed.
 
 ## Manually pay invoices
 
-If an automatic subscription renewal payment fails, Cloudflare automatically retries the payment using your default payment method five times over five days. During this period, you can log into the dashboard and attempt to manually pay the invoices.
+If an automatic subscription renewal payment fails, Cloudflare automatically retries the payment using your default payment method five times over five days. During this period, you can log in to the dashboard and attempt to manually pay the invoices.
 
 1. In the Cloudflare dashboard, go to the **Billing** page.  
 [ Go to **Billing** ](https://dash.cloudflare.com/?to=/:account/billing)

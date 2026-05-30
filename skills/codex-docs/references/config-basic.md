@@ -142,7 +142,8 @@ include_only = ["PATH", "HOME"]
 
 #### Log directory
 
-Override where Codex writes local log files such as `codex-tui.log`.
+Override where Codex writes local log files. Setting `log_dir` explicitly also
+enables the opt-in plaintext TUI log, `codex-tui.log`, in that directory.
 
 ```toml
 log_dir = "/absolute/path/to/codex-logs"

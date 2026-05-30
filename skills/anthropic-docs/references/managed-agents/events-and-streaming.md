@@ -1052,7 +1052,7 @@ for _, event := range events.Data {
 ````java
 var events = client.beta().sessions().events().list(session.id());
 for (var event : events.data()) {
-    var json = (Map<String, JsonValue>) event._json().orElseThrow().asObject().orElseThrow();
+    var json = event._json().orElseThrow().asObject().orElseThrow();
     var type = json.get("type").asStringOrThrow();
     var processedAt = json.containsKey("processed_at")
         ? json.get("processed_at").asStringOrThrow()
@@ -1727,10 +1727,10 @@ end
 
 ### Resuming an idle session
 
-Sessions persist between interactions. Conversation history is preserved unless the session is explicitly deleted. When a session goes idle, its container is checkpointed, preserving the full container state, including the filesystem, installed packages, and any files the agent created. This allows you to resume cleanly from inactivity.
+Sessions persist between interactions. Conversation history is preserved unless the session is explicitly deleted. When a session goes idle, its sandbox is checkpointed, preserving the full sandbox state, including the filesystem, installed packages, and any files the agent created. This allows you to resume cleanly from inactivity.
 
 <Note>
-While session history is persisted until deleted, checkpoints are only preserved for 30 days after the session's last activity. If your workflow requires the full container state (files, installed tools, and so on) to persist beyond 30 days, send periodic `user.message` events to reset the inactivity timer before the checkpoint expires.
+While session history is persisted until deleted, checkpoints are only preserved for 30 days after the session's last activity. If your workflow requires the full sandbox state (files, installed tools, and so on) to persist beyond 30 days, send periodic `user.message` events to reset the inactivity timer before the checkpoint expires.
 </Note>
 
 To resume a session, send a `user.message` event to it as usual:

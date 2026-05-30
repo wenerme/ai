@@ -5,7 +5,22 @@ group: Code Review
 info: To determine the technical writer assigned to the Stage/Group associated with this page, see <https://handbook.gitlab.com/handbook/product/ux/technical-writing/#assignments>
 ---
 
-Schedule a new pipeline.
+Create a new pipeline schedule.
+
+## Synopsis
+
+Create a new CI/CD pipeline schedule. The `--cron`, `--description`, and `--ref` flags
+are required:
+
+- `--cron` sets the schedule's recurrence in cron syntax.
+- `--ref` sets the branch or tag the pipeline runs against.
+- `--description` provides a human-readable label.
+
+Use `--variable` to add pipeline variables in `key:value` format.
+Pass `--variable` multiple times to add several variables.
+
+By default, the schedule is created in the current project. Use
+`--repo` to target another project.
 
 ```plaintext
 glab schedule create [flags]
@@ -15,8 +30,11 @@ glab schedule create [flags]
 
 ```console
 # Create a scheduled pipeline that runs every hour
-$ glab schedule create --cron "0 * * * *" --description "Describe your pipeline here" --ref "main" --variable "foo:bar" --variable "baz:baz"
-Created schedule
+glab schedule create --cron "0 * * * *" --description "Hourly build" --ref main
+
+# Create a schedule with pipeline variables
+glab schedule create --cron "0 0 * * *" --description "Daily build" --ref main --variable "foo:bar" --variable "baz:qux"
+
 ```
 
 ## Options

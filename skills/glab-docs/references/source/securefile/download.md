@@ -5,39 +5,55 @@ group: Code Review
 info: To determine the technical writer assigned to the Stage/Group associated with this page, see <https://handbook.gitlab.com/handbook/product/ux/technical-writing/#assignments>
 ---
 
-Download a secure file for a project.
+Download one or more secure files from a project.
+
+## Synopsis
+
+To download a single file, identify it by its numeric ID (as a positional
+argument or with `--id`) or by its name with `--name`. To download every
+secure file in the project (up to a limit of 100), use `--all`.
+
+Use `--path` to save a single download to a specific filename, or
+`--output-dir` to choose the destination directory when downloading
+multiple files.
+
+By default, downloaded files are verified against their checksum.
+Use `--no-verify` to skip verification, or `--force-download` to keep
+files even when verification fails. Both options can allow corrupted
+or tampered files; use with caution.
+
+By default, files are downloaded from the current project. Use
+`--repo` to target another project.
 
 ```plaintext
-glab securefile download <fileID> [flags]
+glab securefile download [<id>] [flags]
 ```
 
 ## Examples
 
 ```console
-# Download a project's secure file using the file's ID by argument or flag.
+# Download a file by ID (positional or flag)
 glab securefile download 1
 glab securefile download --id 1
 
-# Download a project's secure file using the file's ID to a given path.
-glab securefile download 1 --path="securefiles/file.txt"
+# Download a file by ID to a specific path
+glab securefile download 1 --path "securefiles/file.txt"
 
-# Download a project's secure file without verifying its checksum.
-glab securefile download 1 --no-verify
-
-# Download a project's secure file even if checksum verification fails.
-glab securefile download 1 --force-download
-
-# Download a project's secure file using the file's name to the current directory.
+# Download a file by name to the current directory
 glab securefile download --name my-secure-file.pem
 
-# Download a project's secure file using the file's name to a given path.
-glab securefile download --name my-secure-file.pem --path=securefiles/some-other-name.pem
+# Download a file by name to a chosen path
+glab securefile download --name my-secure-file.pem --path securefiles/some-other-name.pem
 
-# Download all (limit 100) of a project's secure files.
+# Download without verifying the checksum
+glab securefile download 1 --no-verify
+
+# Download all secure files in the project (up to 100)
 glab securefile download --all
 
-# Download all (limit 100) of a project's secure files to a given directory.
+# Download all secure files to a specific directory
 glab securefile download --all --output-dir secure_files/
+
 ```
 
 ## Options

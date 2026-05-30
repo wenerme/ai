@@ -1,5 +1,9 @@
 # Gemini 3 Developer Guide
 
+> [!CAUTION]
+> **Deprecation notice:** This page is deprecated and will be removed. See the [What's new
+> in Gemini 3.5 Flash](https://ai.google.dev/gemini-api/docs/whats-new-gemini-3.5) guide for the latest developer guidance, including migration instructions, prompting best practices, and an updated feature overview for all Gemini 3.x models.
+
 Gemini 3 is our most intelligent model family to date, built on a foundation of
 state-of-the-art reasoning. It is designed to bring any idea to life by
 mastering agentic workflows, autonomous coding, and complex multimodal tasks.

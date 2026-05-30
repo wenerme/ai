@@ -5,7 +5,15 @@ group: Code Review
 info: To determine the technical writer assigned to the Stage/Group associated with this page, see <https://handbook.gitlab.com/handbook/product/ux/technical-writing/#assignments>
 ---
 
-List secure files for a project.
+List secure files in a project.
+
+## Synopsis
+
+List the secure files configured for a project. Use `--page` and
+`--per-page` to paginate the result.
+
+By default, files are listed for the current project. Use `--repo`
+to target another project.
 
 ```plaintext
 glab securefile list [flags]
@@ -20,17 +28,21 @@ ls
 ## Examples
 
 ```console
-# List all secure files.
+# List all secure files in the current project
 glab securefile list
 
-# List all secure files with 'cmd' alias.
+# Use the 'ls' alias
 glab securefile ls
 
-# List a specific page of secure files.
+# List a specific page
 glab securefile list --page 2
 
-# List a specific page of secure files, with a custom page size.
+# List a specific page with a custom page size
 glab securefile list --page 2 --per-page 10
+
+# List files from another project
+glab securefile list -R owner/repo
+
 ```
 
 ## Options

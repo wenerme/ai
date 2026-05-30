@@ -5,7 +5,16 @@ group: Code Review
 info: To determine the technical writer assigned to the Stage/Group associated with this page, see <https://handbook.gitlab.com/handbook/product/ux/technical-writing/#assignments>
 ---
 
-Create a group or project milestone.
+Create a milestone in a project or group.
+
+## Synopsis
+
+The `--title` flag is required.
+Optionally provide a description, due date, and start date.
+
+By default, the milestone is created in the current project. Use
+`--project` to target a different project, or `--group` to create a
+group-level milestone. `--project` and `--group` are mutually exclusive.
 
 ```plaintext
 glab milestone create [flags]
@@ -14,14 +23,15 @@ glab milestone create [flags]
 ## Examples
 
 ```console
- # Create milestone for the current project
+# Create a milestone in the current project
 glab milestone create --title='Example title' --due-date='2025-12-16'
 
-# Create milestone for the specified project
-glab milestone create --title='Example group milestone' --due-date='2025-12-16' --project 123
+# Create a milestone in a different project
+glab milestone create --title='Q4 release' --due-date='2025-12-16' --project 123
 
-# Create milestone for the specified group
-glab milestone create --title='Example group milestone' --due-date='2025-12-16' --group 456
+# Create a milestone in a group
+glab milestone create --title='FY26 planning' --due-date='2026-01-31' --group 456
+
 ```
 
 ## Options

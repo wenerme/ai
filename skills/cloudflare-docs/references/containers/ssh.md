@@ -26,8 +26,8 @@ The `ssh.enabled` property only controls whether you can SSH into a Container th
 
 To SSH into a Container with Wrangler, add an `ssh-ed25519` public key to `authorized_keys` in your Container configuration. The following example shows a basic configuration:
 
-* [  wrangler.jsonc ](#tab-panel-5633)
-* [  wrangler.toml ](#tab-panel-5634)
+* [  wrangler.jsonc ](#tab-panel-6770)
+* [  wrangler.toml ](#tab-panel-6771)
 
 JSONC
 
@@ -91,6 +91,21 @@ wrangler containers ssh <INSTANCE_ID>
 
 
 ```
+
+## Use as SSH proxy
+
+You can use `wrangler containers ssh` as an OpenSSH `ProxyCommand`. This lets your local SSH client connect through Wrangler.
+
+Terminal window
+
+```
+
+ssh -o ProxyCommand="wrangler containers ssh %h" cloudchamber@<INSTANCE_ID>
+
+
+```
+
+When used this way, Wrangler pipes standard input and output to the SSH server in the running Container. You can also pass `--stdio` to force this mode.
 
 ## Process visibility
 

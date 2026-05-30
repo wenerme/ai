@@ -18,7 +18,7 @@ A primary payment method is required to purchase Cloudflare products and service
 
 Note
 
-Customers on an [Enterprise plan ↗](https://www.cloudflare.com/plans/enterprise/contact/) have [additional payment options](https://developers.cloudflare.com/billing/get-started/create-billing-profile/#payment-options) such as wire and ACH, as well as yearly or quarterly billing.
+Because some countries tax goods and services on personal accounts, you may be asked to indicate whether your Cloudflare account is personal or business to determine tax eligibility.
 
 1. In the Cloudflare dashboard, go to the **Billing** page.  
 [ Go to **Billing** ](https://dash.cloudflare.com/?to=/:account/billing)
@@ -35,16 +35,9 @@ Customers on an [Enterprise plan ↗](https://www.cloudflare.com/plans/enterpris
    3. Verify your **PayPal username** now appears next to the PayPal logo.  
    4. Add your account contact information as well as **Company** and **VAT/GST Number**, if applicable.  
 **Wallets**: Apple Pay, Google Pay, Link, and [Instant Bank Payments via Link](https://developers.cloudflare.com/billing/payment-methods/instant-bank-payments-link/) (US-based self-serve accounts) are also available.
-
-Note
-
-Because some countries tax goods and services on personal accounts, you may be asked to indicate whether your Cloudflare account is personal or business to determine tax eligibility.
-
-1. Review the payment method and contact information to ensure it is accurate.
-2. To finish, select **Confirm**.
-3. Ensure your new payment method appears in the **Payment methods** panel.
-
-Enterprise customers must email [ar@cloudflare.com](mailto:ar@cloudflare.com) with the last four digits of the credit card and its expiration date.
+5. Review the payment method and contact information.
+6. To finish, select **Confirm**.
+7. Ensure your new payment method appears in the **Payment methods** panel.
 
 ## Add an additional payment method
 
@@ -63,42 +56,6 @@ If you are unable to add or edit a payment method, [delete a payment method](htt
 4. Enter card details or select a supported wallet. Complete 3D Secure authentication if your card issuer requires it.
 5. Confirm the billing address and select **Save**.
 6. To make the additional payment method the primary method, select **Make primary payment method**.
-
-## Payment options
-
-Enterprise customers can submit payments via the following payment options:
-
-### ACH
-
-(preferred method)
-
-* **Bank**: Citibank, One Penn's Way, New Castle, DE 19720 USA
-* **Account name**: CLOUDFLARE INC
-* **Account number**: 31460181
-* **ABA/Routing number**: 031100209
-
-### Wire transfer
-
-* **Bank**: Citibank, One Penn's Way, New Castle, DE 19720 USA
-* **Account name**: CLOUDFLARE INC
-* **Account number**: 31460181
-* **ABA/Routing number**: 031100209
-* **SWIFT**: CITIUS33
-
-### PayPal
-
-Log in to your PayPal account and send your payment to [ar@cloudflare.com](mailto:ar@cloudflare.com). The payment must include the invoice number and customer name.
-
-### International payments
-
-* **Bank**: Citibank, One Penn's Way, New Castle, DE 19720 USA
-* **Account name**: CLOUDFLARE INC
-* **Account number**: 31460181
-* **SWIFT**: CITIUS33
-
-Note
-
-US banks do not participate in International Bank Account Numbers (IBAN).
 
 ## Related resources
 

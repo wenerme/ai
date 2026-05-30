@@ -17,13 +17,13 @@ Prompt to prototype fully-functional, UI-complete apps, and see Nano Banana 2 in
 
 **Nano Banana** is the name for Gemini's native image generation capabilities.
 Gemini can generate and process images conversationally
-with text, images, or a combination of both. This lets you create, edit, and
+with text, images, video, or a combination. This lets you create, edit, and
 iterate on visuals with unprecedented control.
 
 Nano Banana refers to three distinct models available in the Gemini API:
 
-- **Nano Banana 2** : The [Gemini 3.1 Flash Image](https://ai.google.dev/gemini-api/docs/models/gemini-3.1-flash-image) model (`gemini-3.1-flash-image`). This model serves as the high-efficiency counterpart to Gemini 3.1 Pro Image, optimized for speed and high-volume developer use cases.
-- **Nano Banana Pro** : The [Gemini 3.1 Pro Image](https://ai.google.dev/gemini-api/docs/models/gemini-3-pro-image) model (`gemini-3-pro-image`). This model is designed for professional asset production, utilizing advanced reasoning ("Thinking") to follow complex instructions and render high-fidelity text.
+- **Nano Banana 2** : The [Gemini 3.1 Flash Image](https://ai.google.dev/gemini-api/docs/models/gemini-3.1-flash-image) model (`gemini-3.1-flash-image`). This model serves as the high-efficiency counterpart to Gemini 3 Pro Image, optimized for speed and high-volume developer use cases.
+- **Nano Banana Pro** : The [Gemini 3 Pro Image](https://ai.google.dev/gemini-api/docs/models/gemini-3-pro-image) model (`gemini-3-pro-image`). This model is designed for professional asset production, utilizing advanced reasoning ("Thinking") to follow complex instructions and render high-fidelity text.
 - **Nano Banana** : The [Gemini 2.5 Flash Image](https://ai.google.dev/gemini-api/docs/models/gemini-2.5-flash-image) model (`gemini-2.5-flash-image`). This model is designed for speed and efficiency, optimized for high-volume, low-latency tasks.
 
 All generated images include a [SynthID watermark](https://ai.google.dev/responsible/docs/safeguards/synthid).
@@ -880,7 +880,7 @@ they excel at complex, multi-turn creation and modification tasks.
 Gemini 3 image models let you to mix up to 14 reference images. These 14 images
 can include the following:
 
-| Gemini 3.1 Flash Image | Gemini 3.1 Pro Image |
+| Gemini 3.1 Flash Image | Gemini 3 Pro Image |
 |---|---|
 | Up to 10 images of objects with high-fidelity to include in the final image | Up to 6 images of objects with high-fidelity to include in the final image |
 | Up to 4 images of characters to maintain character consistency | Up to 5 images of characters to maintain character consistency |
@@ -1675,8 +1675,11 @@ directly in your API request or upload local video files using the
               file_data=types.FileData(file_uri="https://www.youtube.com/watch?v=UTdfxFyOQTI"),
               video_metadata=types.VideoMetadata(fps=0.5)
             ),
-            "Can you create an infographics that explains what this video is about?"
-        ]
+            "Generate a poster image that captures the key themes of this video."
+        ],
+        config=types.GenerateContentConfig(
+            response_modalities=["TEXT", "IMAGE"]
+        )
     )
 
     # Save the generated image part
@@ -1705,8 +1708,11 @@ directly in your API request or upload local video files using the
               fps: 0.5
             }
           },
-          { text: "Can you create an infographics that explains what this video is about?" }
-        ]
+          { text: "Generate a poster image that captures the key themes of this video." }
+        ],
+        config: {
+          responseModalities: ["TEXT", "IMAGE"]
+        }
       });
 
       for (const part of response.candidates[0].content.parts) {
@@ -1744,7 +1750,7 @@ directly in your API request or upload local video files using the
 
         parts := []*genai.Part{
             videoPart,
-            genai.NewPartFromText("Can you create an infographics that explains what this video is about?"),
+            genai.NewPartFromText("Generate a poster image that captures the key themes of this video."),
         }
 
         contents := []*genai.Content{
@@ -1755,7 +1761,9 @@ directly in your API request or upload local video files using the
             ctx,
             "gemini-3.1-flash-image",
             contents,
-            nil,
+            &genai.GenerateContentConfig{
+                ResponseModalities: []string{"TEXT", "IMAGE"},
+            },
         )
         if err != nil {
             log.Fatal(err)
@@ -1775,6 +1783,7 @@ directly in your API request or upload local video files using the
     import com.google.genai.Client;
     import com.google.genai.types.Content;
     import com.google.genai.types.FileData;
+    import com.google.genai.types.GenerateContentConfig;
     import com.google.genai.types.GenerateContentResponse;
     import com.google.genai.types.Part;
     import com.google.genai.types.VideoMetadata;
@@ -1798,7 +1807,11 @@ directly in your API request or upload local video files using the
               .build();
 
           Part textPart = Part.builder()
-              .text("Can you create an infographics that explains what this video is about?")
+              .text("Generate a poster image that captures the key themes of this video.")
+              .build();
+
+          GenerateContentConfig config = GenerateContentConfig.builder()
+              .responseModalities("TEXT", "IMAGE")
               .build();
 
           GenerateContentResponse response = client.models.generateContent(
@@ -1806,7 +1819,8 @@ directly in your API request or upload local video files using the
               Content.builder()
                   .role("user")
                   .parts(ImmutableList.of(videoPart, textPart))
-                  .build());
+                  .build(),
+              config);
 
           for (Part part : response.parts()) {
             if (part.inlineData().isPresent()) {
@@ -1843,7 +1857,11 @@ directly in your API request or upload local video files using the
                     FileData = new FileData { FileUri = "https://www.youtube.com/watch?v=UTdfxFyOQTI" },
                     VideoMetadata = new VideoMetadata { Fps = 0.5 }
                 },
-                new Part { Text = "Can you create an infographics that explains what this video is about?" }
+                new Part { Text = "Generate a poster image that captures the key themes of this video." }
+            },
+            config: new GenerateContentConfig
+            {
+                ResponseModalities = new List<string> { "TEXT", "IMAGE" }
             }
         );
 
@@ -1876,9 +1894,12 @@ directly in your API request or upload local video files using the
                 "fps": 0.5
               }
             },
-            {"text": "Can you create an infographics that explains what this video is about?"}
+            {"text": "Generate a poster image that captures the key themes of this video."}
           ]
-        }]
+        }],
+        "generationConfig": {
+          "responseModalities": ["TEXT", "IMAGE"]
+        }
       }'
 
 ![AI-generated infographic from a youtube video](https://ai.google.dev/static/gemini-api/docs/images/youtube_infographics.png) AI-generated infographic from a youtube video
@@ -2563,7 +2584,7 @@ white background.
 #### Accurate text in images
 
 Gemini excels at rendering text. Be clear about the text, the font style
-(descriptively), and the overall design. Use Gemini 3.1 Pro Image for
+(descriptively), and the overall design. Use Gemini 3 Pro Image for
 professional asset production.
 
 | **Prompt** | **Generated output** |
@@ -2692,7 +2713,7 @@ strategies into your workflow.
 ## Limitations
 
 - For best performance, use the following languages: EN, ar-EG, de-DE, es-MX, fr-FR, hi-IN, id-ID, it-IT, ja-JP, ko-KR, pt-BR, ru-RU, ua-UA, vi-VN, zh-CN.
-- Image generation does not support audio or video inputs.
+- Image generation does not support audio inputs. Video inputs are only supported for Gemini 3.1 Flash Image.
 - The model won't always follow the exact number of image outputs that the user explicitly asks for.
 - `gemini-2.5-flash-image` works best with up to 3 images as input, while `gemini-3-pro-image` supports 5 images with high fidelity, and up to 14 images in total. `gemini-3.1-flash-image` supports character resemblance of up to 4 characters and the fidelity of up to 10 objects in a single workflow.
 - When generating text for an image, Gemini works best if you first generate the text and then ask for an image with the text.
@@ -3021,7 +3042,7 @@ Choose the model best suited for your specific use case.
   intelligence to cost and latency balance. Check the model [pricing](https://ai.google.dev/gemini-api/docs/pricing#gemini-3.1-flash-image) and [capabilities](https://ai.google.dev/gemini-api/docs/models/gemini-3.1-flash-image) page for more
   details.
 
-- **Gemini 3.1 Pro Image (Nano Banana Pro)** is designed for
+- **Gemini 3 Pro Image (Nano Banana Pro)** is designed for
   professional asset production and complex instructions. This model features
   real-world grounding using Google Search, a default "Thinking" process that
   refines composition prior to generation, and can generate images of up to 4K

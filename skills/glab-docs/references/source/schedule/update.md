@@ -7,6 +7,20 @@ info: To determine the technical writer assigned to the Stage/Group associated w
 
 Update a pipeline schedule.
 
+## Synopsis
+
+Update a CI/CD pipeline schedule, identified by its numeric ID. Use
+the flags to change the cron expression, description, ref, time zone,
+or active state. Only the fields you specify are updated.
+
+To change pipeline variables, use `--create-variable`, `--update-variable`,
+and `--delete-variable`. The `create` and `update` flags take
+`key:value` pairs; `delete` takes a key. Pass each flag multiple times
+to change several variables.
+
+By default, the schedule is updated in the current project. Use
+`--repo` to target another project.
+
 ```plaintext
 glab schedule update <id> [flags]
 ```
@@ -14,9 +28,15 @@ glab schedule update <id> [flags]
 ## Examples
 
 ```console
-# Update a scheduled pipeline with ID 10
-$ glab schedule update 10 --cron "0 * * * *" --description "Describe your pipeline here" --ref "main" --create-variable "foo:bar" --update-variable "baz:baz" --delete-variable "qux"
-Updated schedule with ID 10
+# Update the cron expression for a schedule
+glab schedule update 10 --cron "0 * * * *"
+
+# Update a schedule's description and ref
+glab schedule update 10 --description "Hourly build" --ref main
+
+# Add, change, and remove variables in one call
+glab schedule update 10 --create-variable "foo:bar" --update-variable "baz:qux" --delete-variable "old"
+
 ```
 
 ## Options

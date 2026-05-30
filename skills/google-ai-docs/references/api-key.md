@@ -377,3 +377,5 @@ a custom role).
 
 If you do not have administrative access to a project, you can create
 a new project that is not associated with an organization to generate your keys.
+
+For a complete list of IAM permissions required for all Google AI Studio features (such as viewing usage, rate limits, or billing), see the [AI Studio troubleshooting guide](https://ai.google.dev/gemini-api/docs/troubleshoot-ai-studio#iam-permissions).

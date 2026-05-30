@@ -7,6 +7,12 @@ info: To determine the technical writer assigned to the Stage/Group associated w
 
 Work with GitLab CI/CD schedules.
 
+## Synopsis
+
+Manage GitLab CI/CD pipeline schedules. Use the subcommands to
+create, list, update, delete, or trigger schedules in the current
+project, or use `--repo` to target another project.
+
 ## Aliases
 
 ```plaintext

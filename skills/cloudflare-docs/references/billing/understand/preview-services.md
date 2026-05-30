@@ -14,13 +14,13 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 Contracted customers can try certain products and features for 30 days.
 
-Once you enable the product or feature, it will not be an officially contracted service until you purchase it. Cloudflare will reach out in case you have any questions or feedback, and provide you with a sales quote if you are enjoying the product.
+After you turn on the product or feature, it is not an officially contracted service until you purchase it. Cloudflare may reach out if you have questions or feedback and can provide a sales quote if the product is a fit for your business.
 
 You may cancel at any time before the 30 days ends by reaching out to your sales team for assistance.
 
 ## Available features and products
 
-To enable a preview service, use the **Dashboard link** in the following table. Then, select **Enable**. And that is it. You will have instant access to the product or feature you selected so you can begin determining if it is right for your business' needs.
+To turn on a preview service, use the **Dashboard link** in the following table. Then, select **Enable**. You will have instant access to the product or feature you selected.
 
 | Name                               | Dashboard link                                                                                                | Docs                                                                                                        | Community                                                                        |
 | ---------------------------------- | ------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------- |
@@ -42,9 +42,9 @@ To enable a preview service, use the **Dashboard link** in the following table. 
 
 Since these services are not yet part of your contract, we recommend that you use them on staging or other, non-production environments.
 
-## View enabled products
+## View products in preview
 
-To view which products you have previously enabled, go to your [Account Subscriptions ↗](https://dash.cloudflare.com/?to=/:account/billing/subscriptions) page and look for items that with **Terms** of **NOT IN CONTRACT**.
+To view which products you have previously turned on, go to your [Account Subscriptions ↗](https://dash.cloudflare.com/?to=/:account/billing/subscriptions) page and look for items with **Terms** of **NOT IN CONTRACT**.
 
 ## Related resources
 

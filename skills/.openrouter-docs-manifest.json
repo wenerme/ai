@@ -186,8 +186,8 @@
   },
   "guides/features/server-tools/overview.md": {
     "url": "https://openrouter.ai/docs/guides/features/server-tools/overview.md",
-    "size": 6593,
-    "updatedAt": "2026-05-16T00:35:43.328Z"
+    "size": 6999,
+    "updatedAt": "2026-05-30T00:45:12.462Z"
   },
   "guides/features/server-tools/web-search.md": {
     "url": "https://openrouter.ai/docs/guides/features/server-tools/web-search.md",
@@ -208,6 +208,11 @@
     "url": "https://openrouter.ai/docs/guides/features/server-tools/image-generation.md",
     "size": 7388,
     "updatedAt": "2026-05-23T00:41:39.656Z"
+  },
+  "guides/features/server-tools/apply-patch.md": {
+    "url": "https://openrouter.ai/docs/guides/features/server-tools/apply-patch.md",
+    "size": 7539,
+    "updatedAt": "2026-05-30T00:45:21.320Z"
   },
   "guides/features/server-tools/fusion.md": {
     "url": "https://openrouter.ai/docs/guides/features/server-tools/fusion.md",
@@ -416,8 +421,8 @@
   },
   "guides/community/for-providers.md": {
     "url": "https://openrouter.ai/docs/guides/community/for-providers.md",
-    "size": 11891,
-    "updatedAt": "2026-05-16T00:36:56.929Z"
+    "size": 12160,
+    "updatedAt": "2026-05-30T00:47:11.320Z"
   },
   "guides/community/frameworks-and-integrations-overview.md": {
     "url": "https://openrouter.ai/docs/guides/community/frameworks-and-integrations-overview.md",
@@ -661,8 +666,8 @@
   },
   "api/api-reference/generations/get-generation.md": {
     "url": "https://openrouter.ai/docs/api/api-reference/generations/get-generation.md",
-    "size": 23168,
-    "updatedAt": "2026-05-28T11:25:10.231Z"
+    "size": 23385,
+    "updatedAt": "2026-05-30T00:48:17.765Z"
   },
   "api/api-reference/generations/list-generation-content.md": {
     "url": "https://openrouter.ai/docs/api/api-reference/generations/list-generation-content.md",
@@ -786,18 +791,18 @@
   },
   "api/api-reference/observability/list-observability-destinations.md": {
     "url": "https://openrouter.ai/docs/api/api-reference/observability/list-observability-destinations.md",
-    "size": 65921,
-    "updatedAt": "2026-05-17T10:40:59.028Z"
+    "size": 66006,
+    "updatedAt": "2026-05-30T00:48:45.238Z"
   },
   "api/api-reference/observability/create-observability-destination.md": {
     "url": "https://openrouter.ai/docs/api/api-reference/observability/create-observability-destination.md",
-    "size": 73442,
-    "updatedAt": "2026-05-17T10:40:59.543Z"
+    "size": 73532,
+    "updatedAt": "2026-05-30T00:48:46.046Z"
   },
   "api/api-reference/observability/get-observability-destination.md": {
     "url": "https://openrouter.ai/docs/api/api-reference/observability/get-observability-destination.md",
-    "size": 66214,
-    "updatedAt": "2026-05-17T10:41:00.070Z"
+    "size": 66299,
+    "updatedAt": "2026-05-30T00:48:57.555Z"
   },
   "api/api-reference/observability/delete-observability-destination.md": {
     "url": "https://openrouter.ai/docs/api/api-reference/observability/delete-observability-destination.md",
@@ -806,8 +811,8 @@
   },
   "api/api-reference/observability/update-observability-destination.md": {
     "url": "https://openrouter.ai/docs/api/api-reference/observability/update-observability-destination.md",
-    "size": 74638,
-    "updatedAt": "2026-05-17T10:41:01.160Z"
+    "size": 74728,
+    "updatedAt": "2026-05-30T00:48:59.188Z"
   },
   "api/api-reference/organization/list-organization-members.md": {
     "url": "https://openrouter.ai/docs/api/api-reference/organization/list-organization-members.md",

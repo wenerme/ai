@@ -5,7 +5,16 @@ group: Code Review
 info: To determine the technical writer assigned to the Stage/Group associated with this page, see <https://handbook.gitlab.com/handbook/product/ux/technical-writing/#assignments>
 ---
 
-Returns a single label specified by the ID.
+Get information about a single label by ID.
+
+## Synopsis
+
+Get information about a single label in a project, identified by
+its numeric ID. Use the JSON output to integrate with other tools
+or scripts.
+
+By default, the label is looked up in the current repository. Use
+`--repo` to target another project.
 
 ```plaintext
 glab label get <label-id> [flags]
@@ -19,6 +28,7 @@ glab label get 1234
 
 # Get info about a label in another project
 glab label get 1234 -R owner/repo
+
 ```
 
 ## Options

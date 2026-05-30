@@ -530,7 +530,7 @@ The overall maximum input tokens limit is 8192 tokens.
 | **Image** | Maximum of 6 images per request. Supported formats: PNG, JPEG. |
 | **Audio** | Maximum duration of 180 seconds. Supported formats: MP3, WAV. |
 | **Video** | Maximum duration of 120 seconds. Supported formats: MP4, MOV. Supported codecs: H264, H265, AV1, VP9. The system processes a maximum of 32 frames per video: short videos (≤32s) are sampled at 1 fps, while longer videos are uniformly sampled to 32 frames. Audio tracks are not processed in video files. |
-| **Documents (PDF)** | Maximum of 6 pages. |
+| **Documents (PDF)** | Maximum of 1 file per request, up to 6 pages. |
 
 ### Embedding images
 
@@ -936,11 +936,30 @@ overlapping segments and embed those chunks individually.
 
 ### Embedding documents
 
-documents in PDF format can be embedded directly. The model processes the visual and text
+Documents in PDF format can be embedded directly. The model processes the visual and text
 content of each page.
 
 PDFs can be provided as inline data or as uploaded files
 through the [Files API](https://ai.google.dev/gemini-api/docs/files).
+
+#### How the model processes PDFs
+
+When you embed a PDF, the model processes the document using both visual and text features:
+
+- **Visual representation:** The model renders each page as an image, which consumes **258 tokens** per page.
+- **Text extraction:** The model extracts text from the document. For **native PDFs** (which contain digital text), the model extracts the text directly. For **scanned PDFs** (which contain images of text), the model automatically runs optical character recognition (OCR) to extract the text.
+
+To calculate the total token count for a PDF, add the visual tokens (258 per page) to the text tokens. Your inputs must fit within the model's **8,192 token limit** (shared across all modalities). The system silently truncates inputs that exceed this limit.
+
+> [!NOTE]
+> **Note:** The Gemini Developer API always enables OCR for PDFs and does not support disabling it (the `document_ocr` parameter is only available in Vertex AI).
+
+#### PDF limits
+
+- **Files per request:** You can submit a maximum of 1 PDF file.
+- **Page limit:** You can submit a maximum of 6 pages per file. For the best quality, we strongly recommend using 1 page per PDF.
+
+The following example shows how to embed a PDF using `gemini-embedding-2`:
 
 ### Python
 

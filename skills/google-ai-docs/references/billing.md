@@ -205,6 +205,8 @@ Accounts with the project editor, owner, or admin [roles](https://docs.cloud.goo
 project in AI Studio on the [Spend](https://aistudio.google.com/spend) page
 under **Monthly spend cap** \> **Edit spend cap**.
 
+For details on the specific Google Cloud IAM permissions required to view or edit spend caps and billing information in AI Studio, see the [AI Studio troubleshooting guide](https://ai.google.dev/gemini-api/docs/troubleshoot-ai-studio#iam-permissions).
+
 If you [move a project to a different billing account](https://docs.cloud.google.com/billing/docs/how-to/modify-project#change_the_billing_account_for_a_project),
 any spend cap you already set for that project will persist, but any accumulated
 spend will reset to $0 for the new billing cycle.

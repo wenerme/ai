@@ -46,7 +46,7 @@ You must implement an endpoint that returns all models that should be served by 
       ],
       // Optional
       "description": "Anthropic's flagship model...",
-      "deprecation_date": "2025-06-01", // ISO 8601 date (YYYY-MM-DD)
+      "deprecation_date": "2025-06-01T15:00:00Z", // ISO 8601 date or UTC hour
       "is_ready": true, // false to keep the model staged-but-hidden on OpenRouter
       "openrouter": {
         "slug": "anthropic/claude-sonnet-4"
@@ -104,7 +104,7 @@ Limitations:
 
 #### Deprecation Date
 
-If a model is scheduled for deprecation, include the `deprecation_date` field in ISO 8601 format (YYYY-MM-DD):
+If a model is scheduled for deprecation, include the `deprecation_date` field in ISO 8601 format. OpenRouter accepts either a date-only value or a specific UTC hour:
 
 ```json
 {
@@ -113,7 +113,10 @@ If a model is scheduled for deprecation, include the `deprecation_date` field in
 }
 ```
 
-When OpenRouter's provider monitor detects a deprecation date, it will automatically update the endpoint to display deprecation warnings to users. Models past their deprecation date may be automatically hidden from the marketplace.
+* Use `YYYY-MM-DD` for date-only deprecations. Date-only values default to 13:00 UTC on that date.
+* Use `YYYY-MM-DDTHH:00:00Z` to request a specific UTC hour, for example `2025-06-01T15:00:00Z`.
+
+When OpenRouter's provider monitor detects a deprecation date or time, it will automatically update the endpoint to display deprecation warnings to users. Models past their deprecation time may be automatically hidden from the marketplace.
 
 #### Controlling Launch with `is_ready`
 

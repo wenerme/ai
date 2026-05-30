@@ -20,7 +20,7 @@ Only Super Administrators can manage changes to domain plans.
 
 If you decide to downgrade or remove a domain, Cloudflare does not issue refunds. Refer to our [billing policy](https://developers.cloudflare.com/billing/understand/billing-policy/) for more information.
 
-Upgrades are processed immediately, but downgrades are not processed until the end of the billing period. You will not be able to upgrade if you have an unpaid invoice. When downgrading, you are allowed to continue using the higher plans' products until the new billing period begins.
+Upgrades are processed immediately, but downgrades are not processed until the end of the billing period. You cannot upgrade if you have an unpaid invoice. When downgrading, you can continue using the higher plan's products until the new billing period begins.
 
 If you downgrade your plan, your plan may have access to [fewer Page Rules](https://developers.cloudflare.com/rules/page-rules/). If you continue to use more page rules than is allowed by your plan limit, you may be charged for additional rules. Remove excess rules and [cancel additional subscriptions](https://developers.cloudflare.com/billing/manage/cancel-subscription/) if you do not want to be charged.
 
@@ -30,12 +30,12 @@ For additional help, refer to [this Community thread ↗](https://community.clou
 
 ## Change plan type
 
-* [ Dashboard ](#tab-panel-4349)
-* [ API ](#tab-panel-4350)
+* [ Dashboard ](#tab-panel-5753)
+* [ API ](#tab-panel-5754)
 
 To change the Cloudflare plan for a domain in the dashboard:
 
-1. Log into the [Cloudflare dashboard ↗](https://dash.cloudflare.com) and select your account and domain.
+1. Log in to the [Cloudflare dashboard ↗](https://dash.cloudflare.com) and select your account and domain.
 2. Go to **Overview**.
 3. For Plan Extensions, select **Change**.  
 ![Screenshot of the Overview page with the Plan extension section highlighted](https://developers.cloudflare.com/_astro/change-plan.MkI9crmU_eMjgp.webp)
@@ -52,12 +52,12 @@ If you are an Enterprise customer and cannot change your plan type, contact your
 
 ## Change plan duration
 
-* [ Dashboard ](#tab-panel-4351)
-* [ API ](#tab-panel-4352)
+* [ Dashboard ](#tab-panel-5755)
+* [ API ](#tab-panel-5756)
 
 To change the duration of your Cloudflare plan in the dashboard:
 
-1. Log into the [Cloudflare dashboard ↗](https://dash.cloudflare.com) and select your account and domain.
+1. Log in to the [Cloudflare dashboard ↗](https://dash.cloudflare.com) and select your account and domain.
 2. Go to **Overview**.
 3. For Plan Extensions, select **Change**.  
 ![Screenshot of the Overview page with the Plan extension section highlighted](https://developers.cloudflare.com/_astro/change-plan.MkI9crmU_eMjgp.webp)

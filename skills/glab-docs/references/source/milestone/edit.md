@@ -5,23 +5,34 @@ group: Code Review
 info: To determine the technical writer assigned to the Stage/Group associated with this page, see <https://handbook.gitlab.com/handbook/product/ux/technical-writing/#assignments>
 ---
 
-Edit a group or project milestone.
+Edit a milestone in a project or group.
+
+## Synopsis
+
+Edit a milestone, identified by its numeric ID, in a project or group.
+Use the flags to update the title, description, due date, start date,
+or state. Only the fields you specify are updated.
+
+By default, the milestone is edited in the current project. Use
+`--project` to target a different project, or `--group` to edit a
+group-level milestone. `--project` and `--group` are mutually exclusive.
 
 ```plaintext
-glab milestone edit [flags]
+glab milestone edit <id> [flags]
 ```
 
 ## Examples
 
 ```console
-# Edit milestone for the current project
+# Update a milestone's title and due date in the current project
 glab milestone edit 123 --title='Example title' --due-date='2025-12-16'
 
-# Edit milestone for the specified project
-glab milestone edit 123 --title='Example group milestone' --due-date='2025-12-16' --project example-path/project-path
+# Update a milestone in a different project
+glab milestone edit 123 --title='Q4 release' --due-date='2025-12-16' --project owner/project
 
-# Edit milestone for the specified group
-glab milestone edit 123 --title='Example group milestone' --due-date='2025-12-16' --group 789
+# Update a group milestone
+glab milestone edit 123 --title='FY26 planning' --due-date='2026-01-31' --group 789
+
 ```
 
 ## Options

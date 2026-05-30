@@ -265,6 +265,19 @@ The Codex CLI is supported on macOS, Windows, and Linux.
     powershell -ExecutionPolicy ByPass -c "irm https://chatgpt.com/codex/install.ps1 | iex"
     ```
 
+    For unattended installs, set `CODEX_NON_INTERACTIVE=1` on the shell that
+    runs the downloaded installer. See
+    [Environment variables](https://developers.openai.com/codex/environment-variables#installer-variables)
+    for details.
+
+    ```bash
+    curl -fsSL https://chatgpt.com/codex/install.sh | CODEX_NON_INTERACTIVE=1 sh
+    ```
+
+    ```powershell
+    $env:CODEX_NON_INTERACTIVE=1; irm https://chatgpt.com/codex/install.ps1 | iex
+    ```
+
     You can also install Codex CLI with npm or Homebrew:
 
     ```bash

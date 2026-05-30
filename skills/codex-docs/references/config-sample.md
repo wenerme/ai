@@ -65,7 +65,7 @@ model_provider = "openai"
 
 # background_terminal_max_timeout = 300000 # ms; max empty write_stdin poll window (default 5m)
 
-# log_dir = "/absolute/path/to/codex-logs" # directory for Codex logs; default: "$CODEX_HOME/log"
+# log_dir = "/absolute/path/to/codex-logs" # log directory; setting explicitly enables codex-tui.log; default: "$CODEX_HOME/log"
 
 # sqlite_home = "/absolute/path/to/codex-state" # optional SQLite-backed runtime state directory
 

@@ -62,6 +62,10 @@ Per-product strategies for reducing usage-based charges.
 
 Learn about payment methods available for Cloudflare services.
 
+[Additional payment method auto-retry](https://developers.cloudflare.com/billing/payment-methods/additional-payment-method-auto-retry/) 
+
+Understand how Cloudflare retries failed payments using your additional payment method.
+
 [Instant Bank Payments via Link](https://developers.cloudflare.com/billing/payment-methods/instant-bank-payments-link/) 
 
 Pay for Cloudflare services directly from your bank account through Link.
@@ -124,7 +128,7 @@ Fix errors when upgrading a domain or purchasing a subscription.
 
 [Resolve "you cannot modify this subscription"](https://developers.cloudflare.com/billing/troubleshoot/resolve-you-cannot-modify-this-subscription/) 
 
-Fix errors when cancelling or modifying a subscription that is already scheduled for cancellation.
+Fix errors when canceling or modifying a subscription that is already scheduled for cancellation.
 
 [Resolve "cannot remove payment method"](https://developers.cloudflare.com/billing/troubleshoot/resolve-cannot-remove-payment-method/) 
 

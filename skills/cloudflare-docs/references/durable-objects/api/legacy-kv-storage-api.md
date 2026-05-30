@@ -52,9 +52,9 @@ Durable Objects gain access to Storage API via the `DurableObjectStorage` interf
 
 The following code snippet shows you how to store and retrieve data using the Durable Object Storage API.
 
-* [  JavaScript ](#tab-panel-5674)
-* [  TypeScript ](#tab-panel-5675)
-* [  Python ](#tab-panel-5676)
+* [  JavaScript ](#tab-panel-7104)
+* [  TypeScript ](#tab-panel-7105)
+* [  Python ](#tab-panel-7106)
 
 JavaScript
 
@@ -169,7 +169,8 @@ KV-backed Durable Objects provide KV API methods which are asynchronous.
    * Stores the value and associates it with the given key. The value can be any type supported by the [structured clone algorithm ↗](https://developer.mozilla.org/en-US/docs/Web/API/Web%5FWorkers%5FAPI/Structured%5Fclone%5Falgorithm), which is true of most types.  
    The size of keys and values have different limits depending on the Durable Object storage backend you are using. Refer to either:  
          * [SQLite-backed Durable Object limits](https://developers.cloudflare.com/durable-objects/platform/limits/#sqlite-backed-durable-objects-general-limits)  
-         * [KV-backed Durable Object limits](https://developers.cloudflare.com/durable-objects/platform/limits/#key-value-backed-durable-objects-general-limits).
+         * [KV-backed Durable Object limits](https://developers.cloudflare.com/durable-objects/platform/limits/#key-value-backed-durable-objects-general-limits).  
+   On a KV-backed Durable Object, if the serialized value exceeds the 128 KiB (131072 bytes) value-size limit, `put()` throws a `RangeError` (for example, `Values cannot be larger than 131072 bytes.`) before the write is applied.
 * `` put(entries ` Object `, options ` Object ` optional) ``: ` Promise `  
    * Takes an Object and stores each of its keys and values to storage.  
    * Each value can be any type supported by the [structured clone algorithm ↗](https://developer.mozilla.org/en-US/docs/Web/API/Web%5FWorkers%5FAPI/Structured%5Fclone%5Falgorithm), which is true of most types.  

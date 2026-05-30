@@ -40,23 +40,22 @@ Here's an example that enables built-in and custom tool combinations with
         model="gemini-3.5-flash",
         contents="What is the northernmost city in the United States? What's the weather like there today?",
         config=types.GenerateContentConfig(
-          tools=[
-            types.Tool(
-              google_search=types.ToolGoogleSearch(),  # Built-in tool
-              function_declarations=[getWeather]       # Custom tool
-            ),
-          ],
-          include_server_side_tool_invocations=True
+            tools=[
+                types.Tool(
+                    google_search=types.GoogleSearch(),  # Built-in tool
+                    function_declarations=[getWeather]       # Custom tool
+                ),
+            ],
+            tool_config=types.ToolConfig(
+                include_server_side_tool_invocations=True
+            )
         ),
     )
-
+    function_call_id = None
     for part in response.candidates[0].content.parts:
-        if part.tool_call:
-            print(f"Tool call: {part.tool_call.tool_type} (ID: {part.tool_call.id})")
-        if part.tool_response:
-            print(f"Tool response: {part.tool_response.tool_type} (ID: {part.tool_response.id})")
         if part.function_call:
             print(f"Function call: {part.function_call.name} (ID: {part.function_call.id})")
+            function_call_id = part.function_call.id
 
     # Turn 2: Manually build history to circulate both tool and function context
     history = [
@@ -73,7 +72,7 @@ Here's an example that enables built-in and custom tool combinations with
                 function_response=types.FunctionResponse(
                     name="getWeather",
                     response={"response": "Very cold. 22 degrees Fahrenheit."},
-                    id=response.candidates[0].content.parts[2].function_call.id # Match the ID from the function_call
+                    id=function_call_id # Match the ID from the function_call
                 )
             )]
         )
@@ -83,14 +82,16 @@ Here's an example that enables built-in and custom tool combinations with
         model="gemini-3.5-flash",
         contents=history,
         config=types.GenerateContentConfig(
-          tools=[
-            types.Tool(
-              google_search=types.ToolGoogleSearch(),
-              function_declarations=[getWeather]
-            ),
-          ],
-          # This flag needs to be enabled for built-in tool context circulation and tool combination
-          include_server_side_tool_invocations=True
+            tools=[
+                types.Tool(
+                    google_search=types.GoogleSearch(),
+                    function_declarations=[getWeather]
+                ),
+            ],
+            # This flag needs to be enabled for built-in tool context circulation and tool combination
+            tool_config=types.ToolConfig(
+                include_server_side_tool_invocations=True
+            )
         ),
     )
 
@@ -141,12 +142,6 @@ Here's an example that enables built-in and custom tool combinations with
         const response1 = result1.response;
 
         for (const part of response1.candidates[0].content.parts) {
-            if (part.toolCall) {
-                console.log(`Tool call: ${part.toolCall.toolType} (ID: ${part.toolCall.id})`);
-            }
-            if (part.toolResponse) {
-                console.log(`Tool response: ${part.toolResponse.toolType} (ID: ${part.toolResponse.id})`);
-            }
             if (part.functionCall) {
                 console.log(`Function call: ${part.functionCall.name} (ID: ${part.functionCall.id})`);
             }
@@ -258,10 +253,6 @@ Here's an example that enables built-in and custom tool combinations with
                 if p.Name == "getWeather" {
                     functionCallID = p.ID
                 }
-            case genai.ToolCallPart:
-                fmt.Printf("Tool call: %s (ID: %s)\n", p.ToolType, p.ID)
-            case genai.ToolResponsePart:
-                fmt.Printf("Tool response: %s (ID: %s)\n", p.ToolType, p.ID)
             }
         }
 

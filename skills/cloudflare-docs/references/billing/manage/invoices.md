@@ -17,7 +17,7 @@ You will receive an invoice in the **Billing** section of your Cloudflare accoun
 * Change your Cloudflare plan type.
 * Upgrade or downgrade to or from a paid plan.
 * Add a new domain to a Cloudflare account.
-* Enable or renew a subscription or add-on service.
+* Turn on or renew a subscription or add-on service.
 
 For any historical invoices not included in the **Billing** section, [contact Cloudflare support](https://developers.cloudflare.com/support/contacting-cloudflare-support/).
 
@@ -25,18 +25,18 @@ Note
 
 Enterprise customers receive invoices directly from the Cloudflare accounting team.
 
-## Enable email invoices from Cloudflare
+## Turn on invoice emails from Cloudflare
 
-To enable Cloudflare invoice emails which are sent when you add or remove subscriptions from your account:
+To receive invoice emails when you add or remove subscriptions from your account:
 
 1. In the Cloudflare dashboard, go to the **Billing** page.  
 [ Go to **Billing** ](https://dash.cloudflare.com/?to=/:account/billing)
-2. Select **Invoices & Documents**.
-3. From **Billing email preferences**, toggle the notification switch to **On**.
+2. Select **Invoices and documents**.
+3. From **Billing email preferences**, turn on invoice emails.
 
-After you enable email invoices, you will receive invoices via email:
+After you turn on invoice emails, you will receive invoices via email:
 
-* Within one business day of initial set-up.
+* Within one business day of initial setup.
 * Every month at the end of your billing period.
 * Within one business day for all new purchases.
 
@@ -44,8 +44,8 @@ After you enable email invoices, you will receive invoices via email:
 
 1. In the Cloudflare dashboard, go to the **Billing** page.  
 [ Go to **Billing** ](https://dash.cloudflare.com/?to=/:account/billing)
-2. Select **Invoices & Documents**.
-3. Find the invoice you want to download and select the icon next to the invoice number.
+2. Select **Invoices and documents**.
+3. Find the invoice you want to download and select the download icon next to the invoice number.
 
 Note
 
@@ -55,7 +55,7 @@ Invoices cannot be regenerated after they are issued. Any pending billing update
 
 Monthly and annual billing subscriptions run on different billing cycles.
 
-The first monthly purchase on a Cloudflare account sets the billing date for the following monthly subscriptions. The same behaviour occurs for annual subscriptions.
+The first monthly purchase on a Cloudflare account sets the billing date for the following monthly subscriptions. The same behavior occurs for annual subscriptions.
 
 You can have two different billing cycles on your account, one for a monthly subscription and another for an annual subscription.
 

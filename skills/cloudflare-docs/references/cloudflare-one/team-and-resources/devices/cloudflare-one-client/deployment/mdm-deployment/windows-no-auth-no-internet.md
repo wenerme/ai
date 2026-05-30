@@ -12,6 +12,8 @@ image: https://developers.cloudflare.com/zt-preview.png
 
 # Block internet access until user authenticates
 
+## Availability Beta
+
 Feature availability
 
 | [Client modes](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/modes/) | [Zero Trust plans ↗](https://www.cloudflare.com/teams-pricing/) |

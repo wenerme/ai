@@ -5,7 +5,16 @@ group: Code Review
 info: To determine the technical writer assigned to the Stage/Group associated with this page, see <https://handbook.gitlab.com/handbook/product/ux/technical-writing/#assignments>
 ---
 
-Edit group or project label.
+Edit a label in a project.
+
+## Synopsis
+
+Edit an existing label in a project. The `--label-id` flag is required
+to identify the label to update. At least one of `--new-name` or
+`--color` must be provided; `--description` and `--priority` are optional.
+
+By default, the label is edited in the current repository. Use
+`--repo` to target another project.
 
 ```plaintext
 glab label edit [flags]
@@ -14,8 +23,12 @@ glab label edit [flags]
 ## Examples
 
 ```console
-glab label edit
-glab label edit -R owner/repo
+# Rename a label in the current repository
+glab label edit --label-id 1234 --new-name critical
+
+# Change a label's color and description in another project
+glab label edit --label-id 1234 --color "#FF0000" --description "Top priority" -R owner/repo
+
 ```
 
 ## Options

@@ -5,7 +5,19 @@ group: Code Review
 info: To determine the technical writer assigned to the Stage/Group associated with this page, see <https://handbook.gitlab.com/handbook/product/ux/technical-writing/#assignments>
 ---
 
-Get a list of milestones for a project or group.
+List milestones in a project or group.
+
+## Synopsis
+
+Filter by state with `--state` (`active` or `closed`), by title with `--title`,
+or by free-text search with `--search`. For group milestones, use
+`--include-ancestors` to also include milestones from ancestor groups.
+
+By default, milestones are listed for the current project. Use
+`--project` to target a different project, or `--group` to list
+group-level milestones. `--project` and `--group` are mutually exclusive.
+
+Use `--output json` to format the result as JSON for use with other tools.
 
 ```plaintext
 glab milestone list [flags]
@@ -14,15 +26,22 @@ glab milestone list [flags]
 ## Examples
 
 ```console
- # List milestones for a given project
+# List milestones in a project
 glab milestone list --project 123
-glab milestone list --project example-group/project-path
+glab milestone list --project owner/project
 
-# List milestones for a group
+# List milestones in a group
 glab milestone list --group example-group
 
-# List only active milestones for a given group
+# List only active milestones in a group
 glab milestone list --group example-group --state active
+
+# List group milestones, including those from ancestor groups
+glab milestone list --group example-group --include-ancestors
+
+# List milestones as JSON
+glab milestone list --project owner/project --output json
+
 ```
 
 ## Options

@@ -44,7 +44,7 @@ When an additional payment method is charged, you receive an email with:
 
 ## Manage your payment methods
 
-1. In the Cloudflare dashboard, go to the Billing page.  
+1. In the Cloudflare dashboard, go to the **Billing** page.  
 [ Go to **Billing** ](https://dash.cloudflare.com/?to=/:account/billing)
 2. Go to the **Subscriptions** page and open the **Payment methods** panel.
 3. Review your primary and additional payment methods.

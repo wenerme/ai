@@ -26,7 +26,7 @@ glab repo list
 ## Options
 
 ```plaintext
-  -a, --all                 List all projects on the instance.
+  -a, --all                 List all projects on the instance. Removes the ownership filter. Results are still paginated. Use --page to navigate.
       --archived            Limit by archived status. Use 'false' to exclude archived repositories. Used with the '--group' flag.
   -g, --group string        Return repositories in only the given group.
   -G, --include-subgroups   Include projects in subgroups of this group. Default is false. Used with the '--group' flag.

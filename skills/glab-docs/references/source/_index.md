@@ -37,6 +37,12 @@ To get started, run `glab auth login` and follow the interactive setup.
 For detailed authentication instructions, see the [Authentication section](https://gitlab.com/gitlab-org/cli#authentication)
 in the main README.
 
+## Pagination
+
+Commands that return lists of items are paginated. Use `--page` and `--per-page` to
+navigate results. These commands respect the pagination limits configured on your
+GitLab instance.
+
 ## Environment Variables
 
 | Variable | Description |

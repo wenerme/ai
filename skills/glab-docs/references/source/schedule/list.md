@@ -5,7 +5,16 @@ group: Code Review
 info: To determine the technical writer assigned to the Stage/Group associated with this page, see <https://handbook.gitlab.com/handbook/product/ux/technical-writing/#assignments>
 ---
 
-Get the list of schedules.
+List pipeline schedules in a project.
+
+## Synopsis
+
+List CI/CD pipeline schedules in a project. By default, schedules
+are listed for the current project. Use `--repo` to target another
+project.
+
+Use `--output json` to format the result as JSON for use with other
+tools.
 
 ```plaintext
 glab schedule list [flags]
@@ -14,12 +23,15 @@ glab schedule list [flags]
 ## Examples
 
 ```console
-# List all scheduled pipelines
-$ glab schedule list
-Showing schedules for project gitlab-org/cli
-ID  Description                    Cron            Ref    Active
-1   Daily build                   0 0 * * *       main   true
-2   Weekly deployment             0 0 * * 0       main   true
+# List schedules for the current project
+glab schedule list
+
+# List schedules in another project
+glab schedule list -R owner/repo
+
+# List schedules as JSON
+glab schedule list --output json
+
 ```
 
 ## Options

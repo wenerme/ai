@@ -5,10 +5,19 @@ group: Code Review
 info: To determine the technical writer assigned to the Stage/Group associated with this page, see <https://handbook.gitlab.com/handbook/product/ux/technical-writing/#assignments>
 ---
 
-Remove a secure file.
+Remove a secure file from a project.
+
+## Synopsis
+
+Remove a secure file from a project, identified by its numeric ID.
+The command asks for confirmation before deleting; use `-y` to skip
+the prompt in scripts.
+
+By default, the file is removed from the current project. Use `--repo`
+to target another project.
 
 ```plaintext
-glab securefile remove <fileID> [flags]
+glab securefile remove <id> [flags]
 ```
 
 ## Aliases
@@ -21,17 +30,18 @@ delete
 ## Examples
 
 ```console
-# Remove a project's secure file using the file's ID.
+# Remove a secure file by ID
 glab securefile remove 1
 
-# Skip the confirmation prompt and force delete.
+# Skip the confirmation prompt
 glab securefile remove 1 -y
 
-# Remove a project's secure file with 'rm' alias.
+# Use the 'rm' alias
 glab securefile rm 1
 
-# Remove a project's secure file with 'delete' alias.
+# Use the 'delete' alias
 glab securefile delete 1
+
 ```
 
 ## Options

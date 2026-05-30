@@ -7,6 +7,13 @@ info: To determine the technical writer assigned to the Stage/Group associated w
 
 Manage group or project milestones.
 
+## Synopsis
+
+Milestones group issues, merge requests, and epics around a shared
+goal or release. Use the subcommands to create, list, edit, delete,
+or look up milestones in the current project, in another project, or
+in a group.
+
 ## Options
 
 ```plaintext

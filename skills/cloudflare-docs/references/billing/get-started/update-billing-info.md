@@ -14,7 +14,7 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 To avoid potential disruptions in your Cloudflare services, make sure your billing information is current and accurate.
 
-If Cloudflare is unable to process your payment, review [Troubleshooting failed payments](https://developers.cloudflare.com/billing/troubleshoot/troubleshoot-failed-payments/).
+If Cloudflare is unable to process your payment, refer to [Resolve a payment failure](https://developers.cloudflare.com/billing/troubleshoot/troubleshoot-failed-payments/).
 
 ## Update payment methods
 
@@ -83,11 +83,11 @@ To update the billing profile address:
 
 To update the address stored on a specific payment method, edit that payment method from the **Payment methods** panel on the **Subscriptions** page. The address you enter is saved both with the payment method and with the card issuer.
 
-If paying by PayPal, refer to PayPal's [billing address documentation ↗](https://www.paypal.com/ai/smarthelp/article/how-do-i-edit-the-billing-address-linked-to-my-credit-card-faq680).
+If you pay by PayPal, refer to PayPal's [billing address documentation ↗](https://www.paypal.com/ai/smarthelp/article/how-do-i-edit-the-billing-address-linked-to-my-credit-card-faq680).
 
 ## Update billing email address
 
-Your billing email address is particularly important if you have [opted into email invoices](https://developers.cloudflare.com/billing/manage/invoices/#enable-email-invoices-from-cloudflare).
+Your billing email address is particularly important if you have [opted in to invoice emails](https://developers.cloudflare.com/billing/manage/invoices/#turn-on-invoice-emails-from-cloudflare).
 
 1. In the Cloudflare dashboard, go to the **Billing** page.  
 [ Go to **Billing** ](https://dash.cloudflare.com/?to=/:account/billing)
@@ -97,7 +97,7 @@ Your billing email address is particularly important if you have [opted into ema
 
 ## Add or change a Tax ID, VAT, or GST number
 
-If you added a payment method but did not include a Tax ID, VAT or GST number, you can add or change the Tax ID, VAT or GST number associated with the payment method afterwards.
+If you added a payment method but did not include a Tax ID, VAT, or GST number, you can add or change the Tax ID, VAT, or GST number associated with the payment method afterwards.
 
 Note
 

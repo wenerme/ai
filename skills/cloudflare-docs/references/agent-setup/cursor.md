@@ -36,7 +36,7 @@ In Cursor, run the following command or install from the [Cursor Marketplace ↗
 3. **Try a prompt**  
 For example:  
 ```  
-Connect my Worker to an existing Postgres database using Hyperdrive for connection pooling.  
+Deploy a globally distributed REST API on Workers with automatic scaling and zero cold starts.  
 ```
 
 ## Cloudflare platform access

@@ -5,23 +5,37 @@ group: Code Review
 info: To determine the technical writer assigned to the Stage/Group associated with this page, see <https://handbook.gitlab.com/handbook/product/ux/technical-writing/#assignments>
 ---
 
-Get a milestones via an ID for a project or group.
+Get a milestone by ID in a project or group.
+
+## Synopsis
+
+Get information about a single milestone in a project or group,
+identified by its numeric ID. Use `--output json` to format the result
+as JSON for use with other tools.
+
+By default, the milestone is looked up in the current project. Use
+`--project` to target a different project, or `--group` to look up a
+group-level milestone. `--project` and `--group` are mutually exclusive.
 
 ```plaintext
-glab milestone get [flags]
+glab milestone get [<id>] [flags]
 ```
 
 ## Examples
 
 ```console
- # Get milestone for the current project
+# Get a milestone from the current project
 glab milestone get 123
 
-# Get milestone for the specified project
-glab milestone get 123 --project project-name
+# Get a milestone from a different project
+glab milestone get 123 --project owner/project
 
-# Get milestone for the specified group
-glab milestone get 123 --group group-name
+# Get a group milestone
+glab milestone get 123 --group example-group
+
+# Get a milestone as JSON
+glab milestone get 123 --output json
+
 ```
 
 ## Options

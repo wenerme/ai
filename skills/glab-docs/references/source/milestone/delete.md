@@ -5,23 +5,34 @@ group: Code Review
 info: To determine the technical writer assigned to the Stage/Group associated with this page, see <https://handbook.gitlab.com/handbook/product/ux/technical-writing/#assignments>
 ---
 
-Delete a group or project milestone.
+Delete a milestone from a project or group.
+
+## Synopsis
+
+Delete a milestone, identified by its numeric ID, from a project or
+group. The milestone is removed; issues, merge requests, and epics
+that referenced it are no longer associated with it.
+
+By default, the milestone is deleted from the current project. Use
+`--project` to target a different project, or `--group` to delete a
+group-level milestone. `--project` and `--group` are mutually exclusive.
 
 ```plaintext
-glab milestone delete [flags]
+glab milestone delete <id> [flags]
 ```
 
 ## Examples
 
 ```console
-# Delete milestone for the current project
+# Delete a milestone from the current project
 glab milestone delete 123
 
-# Delete milestone for the specified project
-glab milestone delete 123 --project project-name
+# Delete a milestone from a different project
+glab milestone delete 123 --project owner/project
 
-# Delete milestone for the specified group
-glab milestone delete 123 --group group-name
+# Delete a group milestone
+glab milestone delete 123 --group example-group
+
 ```
 
 ## Options

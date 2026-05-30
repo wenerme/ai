@@ -1,6 +1,6 @@
 ---
 title: Resolve &quot;you cannot modify this subscription&quot;
-description: Fix errors when modifying a cancelled subscription.
+description: Fix errors when modifying a canceled subscription.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 
@@ -18,46 +18,51 @@ When attempting to cancel or modify a subscription, you may see the following er
 
 ## Causes
 
-* You are attempting to cancel a subscription which you have already requested cancellation for
-* You are attempting to upgrade a subscription for which a cancellation is already scheduled
+* You are attempting to cancel a subscription that is already scheduled for cancellation.
+* You are attempting to upgrade a subscription that is already scheduled for cancellation.
 
 ## Solutions
 
-If you intended to cancel a subscription, the cancellation is already scheduled. Your subscription ends at the close of the current billing period. Refer to the section below to find the exact date.
+If you intended to cancel a subscription, no further action is required. Your subscription ends at the close of the current billing period. Use the steps below to find the exact date.
 
-### When will my subscription be cancelled?
+### Find the cancellation date
 
-After requesting cancellation, the subscriptions page shows the end date under "Ending On".
+After requesting cancellation, the **Subscriptions** page shows the end date under **Ending on**.
 
-1. Log into the [Cloudflare dashboard ↗](https://dash.cloudflare.com) and select your account.
-2. Go to **Manage Account > Billing**.
-3. Go to **Subscriptions**.
-4. Locate the **Product** you have cancelled
-5. Under the **Service status** column, the status should say **ENDING ON** with the date cancellation will take effect
+1. Log in to the [Cloudflare dashboard ↗](https://dash.cloudflare.com) and select your account.
+2. Go to **Manage Account** \> **Billing**.  
+[ Go to **Billing** ](https://dash.cloudflare.com/?to=/:account/billing)
+3. Select **Subscriptions**.
+4. Locate the product you canceled.
+5. Under **Service status**, confirm that the status shows **Ending on** and the cancellation date.
 
-If you previously cancelled the subscription and have changed your decision, you need to cancel the downgrade.
+### Refunds for canceled subscriptions
 
-### Can I receive a refund for my cancelled subscription?
+Cloudflare does not issue refunds for canceled subscriptions. Instead, your subscription remains active until the end of the current billing period.
 
-No refund will be issued for a cancelled subscription - instead, your subscription will remain active until the end of the current billing period.
+If you do not want to pay for the next billing period, cancel your subscription before the current billing period ends. You can find this date on the **Subscriptions** page by checking the renewal date, for example **Renews on Aug 29, 2025**.
 
-If you do not wish to pay for the coming billing period, then you should cancel your subscription no later than on the last day of the billing period. You can discover this date by visiting the **Subscriptions** page and checking the renew date, for example “RENEWS ON Aug 29, 2025”.
+1. Log in to the [Cloudflare dashboard ↗](https://dash.cloudflare.com) and select your account.
+2. Go to **Manage Account** \> **Billing**.  
+[ Go to **Billing** ](https://dash.cloudflare.com/?to=/:account/billing)
+3. Select **Subscriptions**.
+4. Locate the product you want to cancel.
+5. Under **Service status**, confirm the next renewal date.
 
-1. Log into the [Cloudflare dashboard ↗](https://dash.cloudflare.com) and select your account.
-2. Go to **Manage Account > Billing**.
-3. Go to **Subscriptions**.
-4. Locate the **Product** you have cancelled
-5. Under the **Service status** column, the status should say **RENEWS ON** with the date of the next renewal
+### Stop the cancellation
 
-### Can I stop the cancellation?
+If you changed your decision and the cancellation has not taken effect yet, you can select **Cancel Downgrade** next to the appropriate subscription.
 
-If the cancellation hasn’t taken effect yet, you can click **Cancel Downgrade** next to the appropriate subscription in the **Billing > Subscriptions** page.
+1. Log in to the [Cloudflare dashboard ↗](https://dash.cloudflare.com) and select your account.
+2. Go to **Manage Account** \> **Billing**.  
+[ Go to **Billing** ](https://dash.cloudflare.com/?to=/:account/billing)
+3. Select **Subscriptions**.
+4. Locate the product you canceled.
+5. Under **Action**, select **Cancel Downgrade**.
 
-1. Log into the [Cloudflare dashboard ↗](https://dash.cloudflare.com) and select your account.
-2. Go to **Manage Account > Billing**.
-3. Go to **Subscriptions**.
-4. Locate the **Product** you have cancelled
-5. Under the **Action** column, click **Cancel Downgrade**
+## Verify the fix
+
+After you cancel the downgrade, return to the subscription and retry the change you originally attempted.
 
 ## Related resources
 

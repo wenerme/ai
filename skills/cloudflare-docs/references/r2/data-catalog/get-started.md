@@ -28,10 +28,10 @@ Node.js version manager
 
 Use a Node version manager like [Volta ↗](https://volta.sh/) or [nvm ↗](https://github.com/nvm-sh/nvm) to avoid permission issues and change Node.js versions. [Wrangler](https://developers.cloudflare.com/workers/wrangler/install-and-update/), discussed later in this guide, requires a Node version of `16.17.0` or later.
 
-## 1\. Create an R2 bucket
+## 1\. Create an R2 bucket and enable the data catalog
 
-* [ Wrangler CLI ](#tab-panel-7110)
-* [ Dashboard ](#tab-panel-7111)
+* [ Wrangler CLI ](#tab-panel-8603)
+* [ Dashboard ](#tab-panel-8604)
 
 1. If not already logged in, run:  
 ```  
@@ -41,36 +41,21 @@ npx wrangler login
 ```  
 npx wrangler r2 bucket create r2-data-catalog-tutorial  
 ```
+3. Enable the catalog on your bucket:  
+```  
+npx wrangler r2 bucket catalog enable r2-data-catalog-tutorial  
+```  
+When you run this command, take note of the **Warehouse** and **Catalog URI**. You will need these later.
 
-1. In the Cloudflare dashboard, go to the **R2 object storage** page.  
-[ Go to **Overview** ](https://dash.cloudflare.com/?to=/:account/r2/overview)
-2. Select **Create bucket**.
-3. Enter the bucket name: r2-data-catalog-tutorial
-4. Select **Create bucket**.
+1. In the Cloudflare dashboard, go to the **R2 Data Catalog** page.  
+[ Go to **R2 Data Catalog** ](https://dash.cloudflare.com/?to=/:account/data-catalog/overview)
+2. Select **Create catalog**.
+3. Enter the bucket name `r2-data-catalog-tutorial`. Since this bucket does not exist yet, the wizard will create it for you. Optionally choose a location hint.
+4. Enter the bucket name `r2-data-catalog-tutorial`. The wizard creates the bucket automatically if it does not already exist. Optionally choose a location hint.
+5. Review the configuration and select **Create catalog**.
+6. Once created, the catalog detail page displays your **Catalog URI** and **Warehouse name**. Note these values for later.
 
-## 2\. Enable the data catalog for your bucket
-
-* [ Wrangler CLI ](#tab-panel-7112)
-* [ Dashboard ](#tab-panel-7113)
-
-Then, enable the catalog on your chosen R2 bucket:
-
-```
-
-npx wrangler r2 bucket catalog enable r2-data-catalog-tutorial
-
-
-```
-
-When you run this command, take note of the "Warehouse" and "Catalog URI". You will need these later.
-
-1. In the Cloudflare dashboard, go to the **R2 object storage** page.  
-[ Go to **Overview** ](https://dash.cloudflare.com/?to=/:account/r2/overview)
-2. Select the bucket: r2-data-catalog-tutorial.
-3. Switch to the **Settings** tab, scroll down to **R2 Data Catalog**, and select **Enable**.
-4. Once enabled, note the **Catalog URI** and **Warehouse name**.
-
-## 3\. Create an API token
+## 2\. Create an API token
 
 Iceberg clients (including [PyIceberg ↗](https://py.iceberg.apache.org/)) must authenticate to the catalog with an [R2 API token](https://developers.cloudflare.com/r2/api/tokens/) that has both R2 and catalog permissions.
 
@@ -83,11 +68,11 @@ Iceberg clients (including [PyIceberg ↗](https://py.iceberg.apache.org/)) must
 6. Select **Create API Token**.
 7. Note the **Token value**.
 
-## 4\. Install uv
+## 3\. Install uv
 
 You need to install a Python package manager. In this guide, use [uv ↗](https://docs.astral.sh/uv/). If you do not already have uv installed, follow the [installing uv guide ↗](https://docs.astral.sh/uv/getting-started/installation/).
 
-## 5\. Install marimo and set up your project with uv
+## 4\. Install marimo and set up your project with uv
 
 We will use [marimo ↗](https://github.com/marimo-team/marimo) as a Python notebook.
 
@@ -109,7 +94,7 @@ Python
 uv add marimo pyiceberg pyarrow pandas  
 ```
 
-## 6\. Create a Python notebook to interact with the data warehouse
+## 5\. Create a Python notebook to interact with the data warehouse
 
 1. Create a file called `r2-data-catalog-tutorial.py`.
 2. Paste the following code snippet into your `r2-data-catalog-tutorial.py` file:  
@@ -199,12 +184,12 @@ def _():
 if __name__ == "__main__":  
     app.run()  
 ```
-3. Replace the `CATALOG_URI`, `WAREHOUSE`, and `TOKEN` variables with your values from sections **2** and **3** respectively.
+3. Replace the `CATALOG_URI`, `WAREHOUSE`, and `TOKEN` variables with your values from sections **1** and **2** respectively.
 4. Launch the notebook editor in your browser:  
 ```  
 uv run marimo edit r2-data-catalog-tutorial.py  
 ```  
-Once your notebook connects to the catalog, you'll see the catalog along with its namespaces and tables appear in marimo's Datasources panel.
+Once your notebook connects to the catalog, the catalog along with its namespaces and tables will appear in the Datasources panel in marimo.
 
 In the Python notebook above, you:
 

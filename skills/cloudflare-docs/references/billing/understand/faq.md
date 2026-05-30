@@ -20,7 +20,7 @@ For more detail, refer to [How Cloudflare billing works](https://developers.clou
 
 What payment methods does Cloudflare accept?
 
-Cloudflare accepts Visa, Mastercard, American Express, Discover, PayPal, Apple Pay, Google Pay, Link, and UnionPay. You can add up to two payment methods to your account. Your primary payment method is charged automatically; if it fails, Cloudflare retries your additional payment method.
+Cloudflare accepts Visa, Mastercard, American Express, Discover, PayPal, Apple Pay, Google Pay, Stripe Link, and UnionPay. You can add up to two payment methods to your account. Your primary payment method is charged automatically; if it fails, Cloudflare retries your additional payment method.
 
 To manage your payment methods, refer to [Update billing information](https://developers.cloudflare.com/billing/get-started/update-billing-info/).
 
@@ -84,7 +84,7 @@ How can I monitor my usage-based charges?
 
 Cloudflare provides two tools:
 
-1. **[Billable usage dashboard](https://developers.cloudflare.com/billing/manage/billable-usage/)** — shows daily usage-based costs per product with a chart and sortable table. Select **Manage Account** \> **Billing** \> **Billable usage** in the dashboard.
+1. **[Billable usage dashboard](https://developers.cloudflare.com/billing/manage/billable-usage/)** — shows daily usage-based costs per product with a chart and sortable table. Select **Manage Account** \> **Billing** \> **Billable Usage** in the dashboard.
 2. **[Budget alerts](https://developers.cloudflare.com/billing/manage/budget-alerts/)** — sends an email when your total spend crosses a dollar threshold you define.
 
 For optimization strategies, refer to [Optimize costs](https://developers.cloudflare.com/billing/manage/optimize-costs/).

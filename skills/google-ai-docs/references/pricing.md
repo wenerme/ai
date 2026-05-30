@@ -361,7 +361,7 @@ superior search and grounding.
 queries to Google Search. You will be charged for each individual search query
 performed.
 
-## Gemini 3.1 Pro Image 🍌
+## Gemini 3 Pro Image 🍌
 
 *`gemini-3-pro-image`*
 

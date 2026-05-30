@@ -56,9 +56,9 @@ Durable Objects gain access to Storage API via the `DurableObjectStorage` interf
 
 The following code snippet shows you how to store and retrieve data using the Durable Object Storage API.
 
-* [  JavaScript ](#tab-panel-6168)
-* [  TypeScript ](#tab-panel-6169)
-* [  Python ](#tab-panel-6170)
+* [  JavaScript ](#tab-panel-7118)
+* [  TypeScript ](#tab-panel-7119)
+* [  Python ](#tab-panel-7120)
 
 JavaScript
 
@@ -156,8 +156,8 @@ The `SqlStorage` interface encapsulates methods that modify the SQLite database 
 
 For example, using `sql.exec()` a user can create a table and insert rows.
 
-* [  TypeScript ](#tab-panel-6160)
-* [  Python ](#tab-panel-6161)
+* [  TypeScript ](#tab-panel-7110)
+* [  Python ](#tab-panel-7111)
 
 TypeScript
 
@@ -321,8 +321,8 @@ const rows = cursor.toArray();
    * Returned Iterator supports `next()` and `toArray()` methods above.  
    * Returned cursor and `raw()` iterator iterate over the same query results and can be combined. For example:
 
-* [  TypeScript ](#tab-panel-6162)
-* [  Python ](#tab-panel-6163)
+* [  TypeScript ](#tab-panel-7112)
+* [  Python ](#tab-panel-7113)
 
 TypeScript
 
@@ -606,8 +606,8 @@ TypeScript
 
 The current SQLite database size in bytes.
 
-* [  TypeScript ](#tab-panel-6164)
-* [  Python ](#tab-panel-6165)
+* [  TypeScript ](#tab-panel-7114)
+* [  Python ](#tab-panel-7115)
 
 TypeScript
 
@@ -653,8 +653,8 @@ The PITR API represents points in time using 'bookmarks'. A bookmark is a mostly
 
 This method returns a special bookmark representing the point in time immediately before the recovery takes place (even though that point in time is still technically in the future). Thus, after the recovery completes, it can be undone by performing a second recovery to this bookmark.
 
-* [  TypeScript ](#tab-panel-6166)
-* [  Python ](#tab-panel-6167)
+* [  TypeScript ](#tab-panel-7116)
+* [  Python ](#tab-panel-7117)
 
 TypeScript
 
@@ -752,7 +752,8 @@ ctx.storage.onNextSessionRestoreBookmark(bookmark)
    * Stores the value and associates it with the given key. The value can be any type supported by the [structured clone algorithm ↗](https://developer.mozilla.org/en-US/docs/Web/API/Web%5FWorkers%5FAPI/Structured%5Fclone%5Falgorithm), which is true of most types.  
    The size of keys and values have different limits depending on the Durable Object storage backend you are using. Refer to either:  
          * [SQLite-backed Durable Object limits](https://developers.cloudflare.com/durable-objects/platform/limits/#sqlite-backed-durable-objects-general-limits)  
-         * [KV-backed Durable Object limits](https://developers.cloudflare.com/durable-objects/platform/limits/#key-value-backed-durable-objects-general-limits).
+         * [KV-backed Durable Object limits](https://developers.cloudflare.com/durable-objects/platform/limits/#key-value-backed-durable-objects-general-limits).  
+   On a KV-backed Durable Object, if the serialized value exceeds the 128 KiB (131072 bytes) value-size limit, `put()` throws a `RangeError` (for example, `Values cannot be larger than 131072 bytes.`) before the write is applied.
 * `` put(entries ` Object `, options ` Object ` optional) ``: ` Promise `  
    * Takes an Object and stores each of its keys and values to storage.  
    * Each value can be any type supported by the [structured clone algorithm ↗](https://developer.mozilla.org/en-US/docs/Web/API/Web%5FWorkers%5FAPI/Structured%5Fclone%5Falgorithm), which is true of most types.  

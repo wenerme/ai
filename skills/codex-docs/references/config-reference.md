@@ -202,7 +202,7 @@ For sandbox and approval keys (`approval_policy`, `sandbox_mode`, and `sandbox_w
       key: "log_dir",
       type: "string (path)",
       description:
-        "Directory where Codex writes log files (for example `codex-tui.log`); defaults to `$CODEX_HOME/log`.",
+        "Directory where Codex writes log files; defaults to `$CODEX_HOME/log`. Setting this explicitly also enables the opt-in plaintext TUI log, `codex-tui.log`, in that directory.",
     },
     {
       key: "sqlite_home",

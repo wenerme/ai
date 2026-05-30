@@ -19,22 +19,26 @@ When trying to upgrade a domain or purchase a subscription, you may see an error
 
 ## Causes
 
-* Your account may have an outstanding unpaid balance
-* Another account previously associated with the domain / zone your purchase relates to has an outstanding unpaid balance
+* Your account may have an outstanding unpaid balance.
+* Another account previously associated with the domain or zone may have an outstanding unpaid balance.
 
 ## Solution
 
-This message appears when the account or domain involved has an outstanding unpaid balance. In the case of a domain, this may also be triggered by a previous account that owned the domain. To resolve this you will need to:
+This message appears when the account or domain involved has an outstanding unpaid balance. For a domain, this may also be triggered by a previous account that owned the domain.
 
 1. Check each Cloudflare account you have access to for an outstanding balance. Refer to [Email address and password](https://developers.cloudflare.com/fundamentals/user-profiles/change-password-or-email/) if you have forgotten these details.
-2. Refer to [Pay an outstanding balance](https://developers.cloudflare.com/billing/manage/pay-invoices-overdue-balances/#pay-an-outstanding-balance) to pay this balance
-3. Wait 24 hours after paying this balance
-4. Attempt to upgrade again
+2. To pay the balance, refer to [Pay an outstanding balance](https://developers.cloudflare.com/billing/manage/pay-invoices-overdue-balances/#pay-an-outstanding-balance).
+3. Wait 24 hours after paying this balance.
+4. Attempt the upgrade again.
 
 As a reference, the full error messages you may see are:
 
 * "Due to a Billing related issue, the zone cannot be upgraded at this time. Please visit the Billing section to ensure there is no outstanding balance."
 * "Refer to [https://cfl.re/3VUQyyL ↗](https://cfl.re/3VUQyyL) for assistance. For security reasons, there is a problem with your billing profile."
+
+## Verify the fix
+
+After you pay the outstanding balance and wait 24 hours, return to the domain or subscription you were trying to purchase and retry the upgrade.
 
 ## Related resources
 

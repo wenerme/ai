@@ -601,8 +601,8 @@ components:
               type: number
               format: double
               description: >-
-                Sampling rate for events sent to this destination, between 0 and
-                1 (1 = 100%).
+                Sampling rate for events sent to this destination, between
+                0.0001 and 1 (1 = 100%).
             updated_at:
               type: string
               description: ISO timestamp of when the destination was last updated.
@@ -670,8 +670,8 @@ components:
               type: number
               format: double
               description: >-
-                Sampling rate for events sent to this destination, between 0 and
-                1 (1 = 100%).
+                Sampling rate for events sent to this destination, between
+                0.0001 and 1 (1 = 100%).
             updated_at:
               type: string
               description: ISO timestamp of when the destination was last updated.
@@ -739,8 +739,8 @@ components:
               type: number
               format: double
               description: >-
-                Sampling rate for events sent to this destination, between 0 and
-                1 (1 = 100%).
+                Sampling rate for events sent to this destination, between
+                0.0001 and 1 (1 = 100%).
             updated_at:
               type: string
               description: ISO timestamp of when the destination was last updated.
@@ -808,8 +808,8 @@ components:
               type: number
               format: double
               description: >-
-                Sampling rate for events sent to this destination, between 0 and
-                1 (1 = 100%).
+                Sampling rate for events sent to this destination, between
+                0.0001 and 1 (1 = 100%).
             updated_at:
               type: string
               description: ISO timestamp of when the destination was last updated.
@@ -877,8 +877,8 @@ components:
               type: number
               format: double
               description: >-
-                Sampling rate for events sent to this destination, between 0 and
-                1 (1 = 100%).
+                Sampling rate for events sent to this destination, between
+                0.0001 and 1 (1 = 100%).
             updated_at:
               type: string
               description: ISO timestamp of when the destination was last updated.
@@ -946,8 +946,8 @@ components:
               type: number
               format: double
               description: >-
-                Sampling rate for events sent to this destination, between 0 and
-                1 (1 = 100%).
+                Sampling rate for events sent to this destination, between
+                0.0001 and 1 (1 = 100%).
             updated_at:
               type: string
               description: ISO timestamp of when the destination was last updated.
@@ -1015,8 +1015,8 @@ components:
               type: number
               format: double
               description: >-
-                Sampling rate for events sent to this destination, between 0 and
-                1 (1 = 100%).
+                Sampling rate for events sent to this destination, between
+                0.0001 and 1 (1 = 100%).
             updated_at:
               type: string
               description: ISO timestamp of when the destination was last updated.
@@ -1084,8 +1084,8 @@ components:
               type: number
               format: double
               description: >-
-                Sampling rate for events sent to this destination, between 0 and
-                1 (1 = 100%).
+                Sampling rate for events sent to this destination, between
+                0.0001 and 1 (1 = 100%).
             updated_at:
               type: string
               description: ISO timestamp of when the destination was last updated.
@@ -1153,8 +1153,8 @@ components:
               type: number
               format: double
               description: >-
-                Sampling rate for events sent to this destination, between 0 and
-                1 (1 = 100%).
+                Sampling rate for events sent to this destination, between
+                0.0001 and 1 (1 = 100%).
             updated_at:
               type: string
               description: ISO timestamp of when the destination was last updated.
@@ -1222,8 +1222,8 @@ components:
               type: number
               format: double
               description: >-
-                Sampling rate for events sent to this destination, between 0 and
-                1 (1 = 100%).
+                Sampling rate for events sent to this destination, between
+                0.0001 and 1 (1 = 100%).
             updated_at:
               type: string
               description: ISO timestamp of when the destination was last updated.
@@ -1291,8 +1291,8 @@ components:
               type: number
               format: double
               description: >-
-                Sampling rate for events sent to this destination, between 0 and
-                1 (1 = 100%).
+                Sampling rate for events sent to this destination, between
+                0.0001 and 1 (1 = 100%).
             updated_at:
               type: string
               description: ISO timestamp of when the destination was last updated.
@@ -1360,8 +1360,8 @@ components:
               type: number
               format: double
               description: >-
-                Sampling rate for events sent to this destination, between 0 and
-                1 (1 = 100%).
+                Sampling rate for events sent to this destination, between
+                0.0001 and 1 (1 = 100%).
             updated_at:
               type: string
               description: ISO timestamp of when the destination was last updated.
@@ -1429,8 +1429,8 @@ components:
               type: number
               format: double
               description: >-
-                Sampling rate for events sent to this destination, between 0 and
-                1 (1 = 100%).
+                Sampling rate for events sent to this destination, between
+                0.0001 and 1 (1 = 100%).
             updated_at:
               type: string
               description: ISO timestamp of when the destination was last updated.
@@ -1498,8 +1498,8 @@ components:
               type: number
               format: double
               description: >-
-                Sampling rate for events sent to this destination, between 0 and
-                1 (1 = 100%).
+                Sampling rate for events sent to this destination, between
+                0.0001 and 1 (1 = 100%).
             updated_at:
               type: string
               description: ISO timestamp of when the destination was last updated.
@@ -1567,8 +1567,8 @@ components:
               type: number
               format: double
               description: >-
-                Sampling rate for events sent to this destination, between 0 and
-                1 (1 = 100%).
+                Sampling rate for events sent to this destination, between
+                0.0001 and 1 (1 = 100%).
             updated_at:
               type: string
               description: ISO timestamp of when the destination was last updated.
@@ -1636,8 +1636,8 @@ components:
               type: number
               format: double
               description: >-
-                Sampling rate for events sent to this destination, between 0 and
-                1 (1 = 100%).
+                Sampling rate for events sent to this destination, between
+                0.0001 and 1 (1 = 100%).
             updated_at:
               type: string
               description: ISO timestamp of when the destination was last updated.
@@ -1705,8 +1705,8 @@ components:
               type: number
               format: double
               description: >-
-                Sampling rate for events sent to this destination, between 0 and
-                1 (1 = 100%).
+                Sampling rate for events sent to this destination, between
+                0.0001 and 1 (1 = 100%).
             updated_at:
               type: string
               description: ISO timestamp of when the destination was last updated.

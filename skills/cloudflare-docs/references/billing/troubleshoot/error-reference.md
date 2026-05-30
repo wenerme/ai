@@ -12,11 +12,13 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 # Billing error reference
 
-Use the table below to find common billing error messages, understand what they mean, and navigate to the right solution.
+Use the tables below to find common billing error messages, understand what they mean, and go to the right solution.
+
+When troubleshooting, start with the exact error message. Then confirm whether the account has an unpaid balance, an active subscription, a pending cancellation, or a pending payment transaction.
 
 ## Error messages
 
-| Error message                                                                               | Cause                                                                                 | Solution                                                                                                                                                                                                                      |
+| Error message                                                                               | Cause                                                                                 | What to do first                                                                                                                                                                                                              |
 | ------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | "You cannot add or modify subscriptions or services until the outstanding balance is paid." | Your account has an unpaid balance.                                                   | [Pay the outstanding balance](https://developers.cloudflare.com/billing/manage/pay-invoices-overdue-balances/).                                                                                                               |
 | "The payment has failed. Please contact your bank or use a different payment method."       | Your payment method was declined by your bank.                                        | Check your card details and bank balance, then retry. Refer to [Resolve a payment failure](https://developers.cloudflare.com/billing/troubleshoot/troubleshoot-failed-payments/).                                             |
@@ -29,13 +31,13 @@ Use the table below to find common billing error messages, understand what they 
 
 ## Email notifications
 
-| Email subject                              | What it means                                                                            | What to do                                                                                                                                                                                                       |
+| Email subject                              | What it means                                                                            | What to do first                                                                                                                                                                                                 |
 | ------------------------------------------ | ---------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | "We couldn't process your renewal payment" | A recurring subscription charge failed. Cloudflare will retry up to 5 times over 5 days. | Update your payment method or manually pay the invoice before the grace period ends. Refer to [Resolve a payment failure](https://developers.cloudflare.com/billing/troubleshoot/troubleshoot-failed-payments/). |
 
 ## Still stuck?
 
-If your error message is not listed above or the suggested solution does not resolve the issue, [contact Cloudflare support](https://developers.cloudflare.com/support/contacting-cloudflare-support/).
+If your error message is not listed above or the suggested solution does not resolve the issue, [contact Cloudflare support](https://developers.cloudflare.com/support/contacting-cloudflare-support/). Include the account ID, invoice number, exact error message, and the action you were trying to complete.
 
 ## Related resources
 

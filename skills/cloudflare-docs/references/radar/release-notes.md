@@ -14,6 +14,12 @@ image: https://developers.cloudflare.com/cf-twitter-card.png
 
 [ Subscribe to RSS ](https://developers.cloudflare.com/radar/release-notes/index.xml)
 
+## 2026-05-29
+
+**Add TLS bug detection to the Radar post-quantum TLS support checker**
+* The [post-quantum TLS support checker](https://radar.cloudflare.com/post-quantum) now reports TLS bugs detected during the handshake test (Split ClientHello, HRR Failure, Unknown Keyshare) with user-facing descriptions and remediation guidance. The bugs section only appears for hosts where issues are detected.
+* Bug detection data is returned by the existing [/post\_quantum/tls/support](https://developers.cloudflare.com/api/resources/radar/subresources/post%5Fquantum/subresources/tls/methods/support/) endpoint.
+
 ## 2026-05-04
 
 **Add new routing widgets to Cloudflare Radar**
