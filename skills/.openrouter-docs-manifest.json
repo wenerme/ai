@@ -666,8 +666,8 @@
   },
   "api/api-reference/generations/get-generation.md": {
     "url": "https://openrouter.ai/docs/api/api-reference/generations/get-generation.md",
-    "size": 23385,
-    "updatedAt": "2026-05-30T00:48:17.765Z"
+    "size": 23401,
+    "updatedAt": "2026-05-30T11:21:24.898Z"
   },
   "api/api-reference/generations/list-generation-content.md": {
     "url": "https://openrouter.ai/docs/api/api-reference/generations/list-generation-content.md",

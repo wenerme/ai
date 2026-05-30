@@ -10106,10 +10106,10 @@
   "codex-docs/app/commands.md": {
     "url": "https://developers.openai.com/codex/app/commands.md",
     "skill": "codex-docs",
-    "etag": "W/\"d432db5680de4fff76c8961a9ef0d2fa\"",
-    "lastModified": "Wed, 27 May 2026 00:39:20 GMT",
-    "size": 13097,
-    "updatedAt": "2026-05-27T00:42:53.000Z"
+    "etag": "W/\"6c3561de9cdc25040acf668cfe06e589\"",
+    "lastModified": "Sat, 30 May 2026 07:02:19 GMT",
+    "size": 13741,
+    "updatedAt": "2026-05-30T10:49:40.709Z"
   },
   "codex-docs/app/computer-use.md": {
     "url": "https://developers.openai.com/codex/app/computer-use.md",
@@ -10122,10 +10122,10 @@
   "codex-docs/app/features.md": {
     "url": "https://developers.openai.com/codex/app/features.md",
     "skill": "codex-docs",
-    "etag": "W/\"05a872faa426c8a8e25969c4ffe5b2ad\"",
-    "lastModified": "Sat, 30 May 2026 00:01:34 GMT",
-    "size": 17823,
-    "updatedAt": "2026-05-30T00:42:53.026Z"
+    "etag": "W/\"29ef71ff561da474a334d0a76992c8bf\"",
+    "lastModified": "Sat, 30 May 2026 07:02:20 GMT",
+    "size": 18200,
+    "updatedAt": "2026-05-30T10:49:41.205Z"
   },
   "codex-docs/app/local-environments.md": {
     "url": "https://developers.openai.com/codex/app/local-environments.md",

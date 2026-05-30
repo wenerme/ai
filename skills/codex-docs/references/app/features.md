@@ -23,6 +23,12 @@ The sections below note platform-specific exceptions.
 Use one Codex app window to run tasks across projects. Add a project for each
 codebase and switch between them as needed.
 
+When available in your Codex desktop app, you can ask Codex to manage threads
+in your local projects or worktrees. For example, ask it to find a related
+thread, continue an existing thread, or pin or archive a thread. To create a
+separate background thread, make that request explicit: `Create a separate
+background thread in a worktree for this project to update the tests.`
+
 If you've used the [Codex CLI](https://developers.openai.com/codex/cli), a project is like starting a
 session in a specific directory.
 

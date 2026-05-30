@@ -21,6 +21,7 @@ Use these commands and keyboard shortcuts to navigate the Codex app.
 |             | Clear the terminal | <kbd>Ctrl</kbd> + <kbd>L</kbd>                                                    |
 | **Thread**  |                    |                                                                                   |
 |             | New thread         | <kbd>Cmd</kbd> + <kbd>N</kbd> or <kbd>Cmd</kbd> + <kbd>Shift</kbd> + <kbd>O</kbd> |
+|             | Search threads     | <kbd>Cmd</kbd> + <kbd>G</kbd>                                                     |
 |             | Find in thread     | <kbd>Cmd</kbd> + <kbd>F</kbd>                                                     |
 |             | Previous thread    | <kbd>Cmd</kbd> + <kbd>Shift</kbd> + <kbd>[</kbd>                                  |
 |             | Next thread        | <kbd>Cmd</kbd> + <kbd>Shift</kbd> + <kbd>]</kbd>                                  |
@@ -29,6 +30,17 @@ Use these commands and keyboard shortcuts to navigate the Codex app.
 To find, customize, or reset shortcuts, open **Settings > Keyboard Shortcuts**.
 You can search by command name or switch the search field into keystroke mode
 and press the shortcut you want to find.
+
+## Search past threads and find in a thread
+
+Use thread search (<kbd>Cmd</kbd>/<kbd>Ctrl</kbd> + <kbd>G</kbd>) to reopen a
+past conversation. When expanded matching is available in your Codex desktop
+app, it can also match conversation content and Git branch names, so you can
+search for a phrase from the thread or a branch such as `fix/login-redirect`.
+
+Use **Find in thread** (<kbd>Cmd</kbd> + <kbd>F</kbd>) after opening a thread
+to find text within that current conversation. It does not search across other
+threads.
 
 ## Slash commands
 

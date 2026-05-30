@@ -92,6 +92,7 @@ components:
         - tts
         - stt
         - video
+        - image
       description: Type of API used for the generation
       title: GenerationResponseDataApiType
     ProviderResponseProviderName:
