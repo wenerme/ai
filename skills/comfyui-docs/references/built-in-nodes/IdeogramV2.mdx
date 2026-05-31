@@ -13,8 +13,8 @@ The Ideogram V2 node generates images using the Ideogram V2 AI model. It takes t
 |-----------|-----------|----------|-------|-------------|
 | `prompt` | STRING | Yes | - | Prompt for the image generation (default: empty string) |
 | `turbo` | BOOLEAN | No | - | Whether to use turbo mode (faster generation, potentially lower quality) (default: False) |
-| `aspect_ratio` | COMBO | No | "1:1""16:9""9:16""4:3""3:4""3:2""2:3" | The aspect ratio for image generation. Ignored if resolution is not set to AUTO. (default: "1:1") |
-| `resolution` | COMBO | No | "Auto""1024x1024""1152x896""896x1152""1216x832""832x1216""1344x768""768x1344""1536x640""640x1536" | The resolution for image generation. If not set to AUTO, this overrides the aspect_ratio setting. (default: "Auto") |
+| `aspect_ratio` | COMBO | No | "1:1""4:3""3:4""16:9""9:16""2:1""1:2""3:2""2:3""4:5""5:4" | The aspect ratio for image generation. Ignored if resolution is not set to AUTO. (default: "1:1") |
+| `resolution` | COMBO | No | "Auto""512 x 1536""576 x 1408""576 x 1472""576 x 1536""640 x 1024""640 x 1344""640 x 1408""640 x 1472""640 x 1536""704 x 1152""704 x 1216""704 x 1280""704 x 1344""704 x 1408""704 x 1472""720 x 1280""736 x 1312""768 x 1024""768 x 1088""768 x 1152""768 x 1216""768 x 1232""768 x 1280""768 x 1344""832 x 960""832 x 1024""832 x 1088""832 x 1152""832 x 1216""832 x 1248""864 x 1152""896 x 960""896 x 1024""896 x 1088""896 x 1120""896 x 1152""960 x 832""960 x 896""960 x 1024""960 x 1088""1024 x 640""1024 x 768""1024 x 832""1024 x 896""1024 x 960""1024 x 1024""1088 x 768""1088 x 832""1088 x 896""1088 x 960""1120 x 896""1152 x 704""1152 x 768""1152 x 832""1152 x 864""1152 x 896""1216 x 704""1216 x 768""1216 x 832""1232 x 768""1248 x 832""1280 x 704""1280 x 720""1280 x 768""1280 x 800""1312 x 736""1344 x 640""1344 x 704""1344 x 768""1408 x 576""1408 x 640""1408 x 704""1472 x 576""1472 x 640""1472 x 704""1536 x 512""1536 x 576""1536 x 640" | The resolution for image generation. If not set to AUTO, this overrides the aspect_ratio setting. (default: "Auto") |
 | `magic_prompt_option` | COMBO | No | "AUTO""ON""OFF" | Determine if MagicPrompt should be used in generation (default: "AUTO") |
 | `seed` | INT | No | 0-2147483647 | Random seed for generation (default: 0) |
 | `style_type` | COMBO | No | "AUTO""GENERAL""REALISTIC""DESIGN""RENDER_3D""ANIME" | Style type for generation (V2 only) (default: "NONE") |
@@ -28,3 +28,6 @@ The Ideogram V2 node generates images using the Ideogram V2 AI model. It takes t
 | Output Name | Data Type | Description |
 |-------------|-----------|-------------|
 | `output` | IMAGE | The generated image(s) from the Ideogram V2 model |
+
+---
+**Source fingerprint (SHA-256):** `6d1f0d536756252434a1a831cd96228ee2386bfcaa60555acfe4bab7d16b61e3`

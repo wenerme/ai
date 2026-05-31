@@ -17,7 +17,7 @@ Using provider keys enables direct control over rate limits and costs via your p
 
 Your provider keys are securely encrypted and used for all requests routed through the specified provider.
 
-Manage keys in your [workspace BYOK settings](/workspaces/default/byok).
+Manage keys in your [workspace BYOK settings](https://openrouter.ai/workspaces/default/byok).
 
 The cost of using custom provider keys on OpenRouter is
 **{bn(openRouterBYOKFee.fraction).times(100).toString()}%
@@ -39,7 +39,7 @@ Each BYOK key belongs to one of two sections:
 
 You can drag keys between sections on the provider
 detail page (e.g.
-[/workspaces/default/byok/openai](/workspaces/default/byok/openai)).
+[/workspaces/default/byok/openai](https://openrouter.ai/workspaces/default/byok/openai)).
 
 By default, if all keys in both sections encounter a
 rate limit or failure, OpenRouter will fall back to
@@ -108,7 +108,7 @@ Note that even though Amazon Bedrock is listed first in the `order` array, the G
 If you want to prevent fallback to OpenRouter endpoints
 entirely, enable **"Always use for this provider"** on
 your BYOK keys in your
-[workspace BYOK settings](/workspaces/default/byok).
+[workspace BYOK settings](https://openrouter.ai/workspaces/default/byok).
 
 ### Multiple BYOK Keys for the Same Provider
 
@@ -121,7 +121,7 @@ section. Prioritized keys are tried first, then
 OpenRouter endpoints, then Fallback keys. You can
 reorder keys via drag-and-drop on the provider detail
 page (e.g.
-[/workspaces/default/byok/openai](/workspaces/default/byok/openai)).
+[/workspaces/default/byok/openai](https://openrouter.ai/workspaces/default/byok/openai)).
 When a key fails (e.g. rate limit or error), OpenRouter
 falls through to the next matching key.
 

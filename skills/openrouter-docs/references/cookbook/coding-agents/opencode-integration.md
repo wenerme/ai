@@ -138,7 +138,7 @@ Switch models by updating your config or using the `/models` command — no need
 
 * **Auth Errors:** Ensure your API key is set correctly via `/connect`. Check at [openrouter.ai/keys](https://openrouter.ai/keys).
 * **Model Not Found:** Verify the model ID on [openrouter.ai/models](https://openrouter.ai/models). Use the exact format (e.g., `~anthropic/claude-sonnet-latest`).
-* **Privacy:** OpenRouter does not log your source code prompts unless you opt in to prompt logging. See our [Privacy Policy](/privacy) for details.
+* **Privacy:** OpenRouter does not log your source code prompts unless you opt in to prompt logging. See our [Privacy Policy](https://openrouter.ai/privacy) for details.
 
 ## Resources
 

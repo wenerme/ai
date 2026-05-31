@@ -7,7 +7,7 @@
 
 When using AI through OpenRouter, whether via the chat interface or the API, your prompts and responses go through multiple touchpoints. You control how your data is handled at each step.
 
-This page gives an overview of how your data is stored and used by OpenRouter. More information is available in the [privacy policy](/privacy) and [terms of service](/terms).
+This page gives an overview of how your data is stored and used by OpenRouter. More information is available in the [privacy policy](https://openrouter.ai/privacy) and [terms of service](https://openrouter.ai/terms).
 
 ## Within OpenRouter
 

@@ -20,11 +20,11 @@ Image-to-Text • Unum • Hosted
 
 UForm-Gen is a small generative vision-language model primarily designed for Image Captioning and Visual Question Answering. The model was pre-trained on the internal image captioning dataset and fine-tuned on public instructions datasets: SVIT, LVIS, VQAs datasets.
 
-| Model Info          |                                   |
-| ------------------- | --------------------------------- |
-| Planned Deprecation | 5/30/2026                         |
-| More information    | [link ↗](https://www.unum.cloud/) |
-| Beta                | Yes                               |
+| Model Info       |                                   |
+| ---------------- | --------------------------------- |
+| Deprecated       | 5/30/2026                         |
+| More information | [link ↗](https://www.unum.cloud/) |
+| Beta             | Yes                               |
 
 ## Usage
 
@@ -76,8 +76,8 @@ export default {
 
 ## Parameters
 
-* [ Input ](#tab-panel-3083)
-* [ Output ](#tab-panel-3084)
+* [ Input ](#tab-panel-4169)
+* [ Output ](#tab-panel-4170)
 
 Option 1
 

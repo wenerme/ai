@@ -1,0 +1,27 @@
+---
+title: "RTDETR_detect - ComfyUI Built-in Node Documentation"
+description: "Complete documentation for the RTDETR_detect node in ComfyUI. Learn its inputs, outputs, parameters and usage."
+mode: wide
+---
+> This documentation was AI-generated. If you find any errors or have suggestions for improvement, please feel free to contribute! [Edit on GitHub](https://github.com/Comfy-Org/embedded-docs/blob/main/comfyui_embedded_docs/docs/RTDETR_detect/en.md)
+
+The RT-DETR Detect node performs object detection on input images using an RT-DETR model. It identifies objects, draws bounding boxes around them, and labels them according to the COCO dataset classes. You can filter the results by confidence score, object class, and limit the total number of detections.
+
+## Inputs
+
+| Parameter | Data Type | Required | Range | Description |
+|-----------|-----------|----------|-------|-------------|
+| `model` | MODEL | Yes | N/A | The RT-DETR model used for object detection. |
+| `image` | IMAGE | Yes | N/A | The input image(s) to detect objects in. The node processes images in batches of up to 32. |
+| `threshold` | FLOAT | No | N/A | The minimum confidence score a detection must have to be included in the results (default: 0.5). |
+| `class_name` | COMBO | No | `"all"``"person"``"bicycle"``"car"``"motorcycle"``"airplane"``"bus"``"train"``"truck"``"boat"``"traffic light"``"fire hydrant"``"stop sign"``"parking meter"``"bench"``"bird"``"cat"``"dog"``"horse"``"sheep"``"cow"``"elephant"``"bear"``"zebra"``"giraffe"``"backpack"``"umbrella"``"handbag"``"tie"``"suitcase"``"frisbee"``"skis"``"snowboard"``"sports ball"``"kite"``"baseball bat"``"baseball glove"``"skateboard"``"surfboard"``"tennis racket"``"bottle"``"wine glass"``"cup"``"fork"``"knife"``"spoon"``"bowl"``"banana"``"apple"``"sandwich"``"orange"``"broccoli"``"carrot"``"hot dog"``"pizza"``"donut"``"cake"``"chair"``"couch"``"potted plant"``"bed"``"dining table"``"toilet"``"tv"``"laptop"``"mouse"``"remote"``"keyboard"``"cell phone"``"microwave"``"oven"``"toaster"``"sink"``"refrigerator"``"book"``"clock"``"vase"``"scissors"``"teddy bear"``"hair drier"``"toothbrush"` | Filter detections by class. Set to 'all' to disable filtering (default: "all"). |
+| `max_detections` | INT | No | N/A | Maximum number of detections to return per image. In order of descending confidence score (default: 100). |
+
+## Outputs
+
+| Output Name | Data Type | Description |
+|-------------|-----------|-------------|
+| `bboxes` | BOUNDINGBOX | A list of bounding boxes for each input image. Each box contains coordinates (x, y, width, height), a class label, and a confidence score. |
+
+---
+**Source fingerprint (SHA-256):** `2abc841cc439138bbd944a2e0f9dc5f76e373b158b3b5caed0d9dd405b7f3538`

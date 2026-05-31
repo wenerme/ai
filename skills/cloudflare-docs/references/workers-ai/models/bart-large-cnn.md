@@ -20,16 +20,16 @@ Summarization • Meta • Hosted
 
 BART is a transformer encoder-encoder (seq2seq) model with a bidirectional (BERT-like) encoder and an autoregressive (GPT-like) decoder. You can use this model for text summarization.
 
-| Model Info          |                          |
-| ------------------- | ------------------------ |
-| Planned Deprecation | 5/30/2026                |
-| Beta                | Yes                      |
-| Unit Pricing        | $0.00 per M input tokens |
+| Model Info   |                          |
+| ------------ | ------------------------ |
+| Deprecated   | 5/30/2026                |
+| Beta         | Yes                      |
+| Unit Pricing | $0.00 per M input tokens |
 
 ## Usage
 
-* [  TypeScript ](#tab-panel-2732)
-* [  curl ](#tab-panel-2733)
+* [  TypeScript ](#tab-panel-3818)
+* [  curl ](#tab-panel-3819)
 
 ```
 
@@ -82,8 +82,8 @@ curl https://api.cloudflare.com/client/v4/accounts/{cf_account_id}/ai/run/@cf/fa
 
 ## Parameters
 
-* [ Input ](#tab-panel-2734)
-* [ Output ](#tab-panel-2735)
+* [ Input ](#tab-panel-3820)
+* [ Output ](#tab-panel-3821)
 
 input\_text
 

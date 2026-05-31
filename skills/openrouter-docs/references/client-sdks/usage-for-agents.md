@@ -72,7 +72,7 @@ After installing the skill, your AI assistant can help you with tasks like:
 The assistant will know to use:
 
 ```typescript
-import OpenRouter from '@openrouter/sdk';
+import { OpenRouter } from '@openrouter/sdk';
 
 const client = new OpenRouter();
 
@@ -89,7 +89,7 @@ const completion = await client.chat.send({
 The assistant understands the streaming API:
 
 ```typescript
-import OpenRouter from '@openrouter/sdk';
+import { OpenRouter } from '@openrouter/sdk';
 
 const client = new OpenRouter();
 

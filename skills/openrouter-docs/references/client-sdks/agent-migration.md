@@ -237,7 +237,7 @@ Yes. They are designed to work side by side. Use
 `@openrouter/agent` for the agent toolkit:
 
 ```typescript
-import OpenRouter from '@openrouter/sdk';
+import { OpenRouter } from '@openrouter/sdk';
 import { callModel } from '@openrouter/agent/call-model';
 import { tool } from '@openrouter/agent/tool';
 ```

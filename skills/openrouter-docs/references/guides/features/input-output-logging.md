@@ -29,7 +29,7 @@ Only generations made after enabling Input & Output Logging will have stored con
 
 * **Storage**: Prompt and response data is stored in an isolated Google Cloud Storage project with separate access controls. All data is encrypted at rest using Google Cloud's [default encryption](https://docs.cloud.google.com/docs/security/encryption/default-encryption) (AES-256).
 * **Retention**: Data is retained for a minimum of 3 months, and may be retained beyond 3 months at OpenRouter's discretion unless you request deletion. Account owners can request deletion of their stored data at any time by contacting [support@openrouter.ai](mailto:support@openrouter.ai).
-* **Privacy**: OpenRouter does not access or use your prompt and response data logged with this feature for model training, analytics, or any other purpose. The data is stored solely for your own review and use. See the [Privacy Policy](/privacy) for full details.
+* **Privacy**: OpenRouter does not access or use your prompt and response data logged with this feature for model training, analytics, or any other purpose. The data is stored solely for your own review and use. See the [Privacy Policy](https://openrouter.ai/privacy) for full details.
 * **Organization access**: For organization accounts, only organization admins can view stored prompt and response content. Non-admin members cannot access it.
 
 ## EU Routing Limitation

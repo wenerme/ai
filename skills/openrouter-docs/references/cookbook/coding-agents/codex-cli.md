@@ -121,7 +121,7 @@ Point `model` at any OpenRouter slug (e.g. `~openai/gpt-latest`, `~anthropic/cla
 
 * **Auth Errors:** Ensure `OPENROUTER_API_KEY` is set and valid. Check at [openrouter.ai/keys](https://openrouter.ai/keys).
 * **Model Not Found:** Verify the model ID on [openrouter.ai/models](https://openrouter.ai/models). Use the exact format (e.g., `~openai/gpt-latest`).
-* **Privacy:** OpenRouter does not log your source code prompts unless you opt-in to prompt logging. See our [Privacy Policy](/privacy) for details.
+* **Privacy:** OpenRouter does not log your source code prompts unless you opt-in to prompt logging. See our [Privacy Policy](https://openrouter.ai/privacy) for details.
 
 ## Resources
 

@@ -61,9 +61,12 @@ JSONC
 
 ```
 
-Compatibility date requirement
+Warning
 
-Using the `.quickAction()` method requires setting your Worker's compatibility date to `2026-03-24` or later in your `wrangler.json`:
+The `.quickAction()` method has two requirements:
+
+* **Compatibility date:** Your Worker must use a compatibility date of `2026-03-24` or later.
+* **Remote mode for local development:** The `.quickAction()` method is not yet supported in local development mode. When developing locally with `wrangler dev`, you must use `npx wrangler dev --remote` or set `"remote": true` in your browser binding configuration. Without remote mode, you will receive the error: `The RPC receiver does not implement the method "quickAction"`.
 
 JSONC
 
@@ -75,7 +78,9 @@ JSONC
 
   "browser": {
 
-    "binding": "BROWSER"
+    "binding": "BROWSER",
+
+    "remote": true
 
   }
 

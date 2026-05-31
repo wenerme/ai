@@ -49,7 +49,7 @@ Inside Codex, run `/plugins`, then search for and install **Cloudflare**. This i
 4. **Try a prompt**  
 For example:  
 ```  
-Configure Zero Trust access policies to protect my internal staging environment.  
+Build a multi-tenant SaaS backend where each customer gets an isolated D1 database.  
 ```
 
 1. **Download Codex**  

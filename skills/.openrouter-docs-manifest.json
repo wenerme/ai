@@ -71,8 +71,8 @@
   },
   "guides/overview/auth/byok.md": {
     "url": "https://openrouter.ai/docs/guides/overview/auth/byok.md",
-    "size": 16166,
-    "updatedAt": "2026-05-16T00:35:04.760Z"
+    "size": 16250,
+    "updatedAt": "2026-05-31T00:46:06.196Z"
   },
   "guides/overview/stripe-projects.md": {
     "url": "https://openrouter.ai/docs/guides/overview/stripe-projects.md",
@@ -296,8 +296,8 @@
   },
   "guides/features/input-output-logging.md": {
     "url": "https://openrouter.ai/docs/guides/features/input-output-logging.md",
-    "size": 5212,
-    "updatedAt": "2026-05-16T00:36:21.225Z"
+    "size": 5233,
+    "updatedAt": "2026-05-31T00:57:54.795Z"
   },
   "guides/features/broadcast/overview.md": {
     "url": "https://openrouter.ai/docs/guides/features/broadcast/overview.md",
@@ -391,8 +391,8 @@
   },
   "guides/privacy/data-collection.md": {
     "url": "https://openrouter.ai/docs/guides/privacy/data-collection.md",
-    "size": 2269,
-    "updatedAt": "2026-05-16T00:36:46.567Z"
+    "size": 2311,
+    "updatedAt": "2026-05-31T01:00:12.969Z"
   },
   "guides/privacy/provider-logging.md": {
     "url": "https://openrouter.ai/docs/guides/privacy/provider-logging.md",
@@ -901,13 +901,13 @@
   },
   "client-sdks/overview.md": {
     "url": "https://openrouter.ai/docs/client-sdks/overview.md",
-    "size": 4587,
-    "updatedAt": "2026-05-16T00:39:41.252Z"
+    "size": 4591,
+    "updatedAt": "2026-05-31T01:31:53.280Z"
   },
   "client-sdks/usage-for-agents.md": {
     "url": "https://openrouter.ai/docs/client-sdks/usage-for-agents.md",
-    "size": 4164,
-    "updatedAt": "2026-05-16T00:39:43.492Z"
+    "size": 4172,
+    "updatedAt": "2026-05-31T01:32:20.700Z"
   },
   "client-sdks/typescript/overview.md": {
     "url": "https://openrouter.ai/docs/client-sdks/typescript/overview.md",
@@ -1256,8 +1256,8 @@
   },
   "client-sdks/agent-migration.md": {
     "url": "https://openrouter.ai/docs/client-sdks/agent-migration.md",
-    "size": 7930,
-    "updatedAt": "2026-05-16T00:41:46.998Z"
+    "size": 7934,
+    "updatedAt": "2026-05-31T01:58:24.847Z"
   },
   "agent-sdk/overview.md": {
     "url": "https://openrouter.ai/docs/agent-sdk/overview.md",
@@ -1356,18 +1356,18 @@
   },
   "cookbook/coding-agents/claude-code-integration.md": {
     "url": "https://openrouter.ai/docs/cookbook/coding-agents/claude-code-integration.md",
-    "size": 13158,
-    "updatedAt": "2026-05-29T00:50:58.821Z"
+    "size": 13179,
+    "updatedAt": "2026-05-31T02:06:08.281Z"
   },
   "cookbook/coding-agents/claude-desktop-integration.md": {
     "url": "https://openrouter.ai/docs/cookbook/coding-agents/claude-desktop-integration.md",
-    "size": 6361,
-    "updatedAt": "2026-05-20T11:22:38.409Z"
+    "size": 6382,
+    "updatedAt": "2026-05-31T02:09:18.436Z"
   },
   "cookbook/coding-agents/codex-cli.md": {
     "url": "https://openrouter.ai/docs/cookbook/coding-agents/codex-cli.md",
-    "size": 5193,
-    "updatedAt": "2026-05-18T11:32:42.461Z"
+    "size": 5214,
+    "updatedAt": "2026-05-31T02:09:53.078Z"
   },
   "cookbook/coding-agents/cursor-integration.md": {
     "url": "https://openrouter.ai/docs/cookbook/coding-agents/cursor-integration.md",
@@ -1396,8 +1396,8 @@
   },
   "cookbook/coding-agents/opencode-integration.md": {
     "url": "https://openrouter.ai/docs/cookbook/coding-agents/opencode-integration.md",
-    "size": 4432,
-    "updatedAt": "2026-05-18T11:32:45.261Z"
+    "size": 4453,
+    "updatedAt": "2026-05-31T02:11:27.480Z"
   },
   "cookbook/building-agents/hitl-tools.md": {
     "url": "https://openrouter.ai/docs/cookbook/building-agents/hitl-tools.md",

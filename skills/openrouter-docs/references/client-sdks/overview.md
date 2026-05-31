@@ -34,7 +34,7 @@ If you want higher-level primitives for building agents — multi-turn loops, to
 ## Quick example
 
 ```typescript title="TypeScript"
-import OpenRouter from '@openrouter/sdk';
+import { OpenRouter } from '@openrouter/sdk';
 
 const client = new OpenRouter({
   apiKey: process.env.OPENROUTER_API_KEY,

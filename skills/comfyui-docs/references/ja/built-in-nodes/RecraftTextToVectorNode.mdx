@@ -1,32 +1,31 @@
 ---
-title: "RecraftTextToVectorNode - ComfyUI 組み込みノードのドキュメント"
-description: "ComfyUI における RecraftTextToVectorNode ノードの完全なドキュメントです。入力、出力、パラメーターおよび使用方法について学びましょう。"
+title: "RecraftTextToVectorNode - ComfyUI Built-in Node Documentation"
+description: "Complete documentation for the RecraftTextToVectorNode node in ComfyUI. Learn its inputs, outputs, parameters and usage."
 mode: wide
-translationSourceHash: c90517c4
-translationFrom: built-in-nodes/RecraftTextToVectorNode.mdx, zh/built-in-nodes/RecraftTextToVectorNode.mdx
-translationMismatches:
-  - "description"
 ---
-> このドキュメントは AI によって生成されました。誤りを発見された場合、または改善のご提案がある場合は、ぜひご貢献ください！ [GitHub で編集](https://github.com/Comfy-Org/embedded-docs/blob/main/comfyui_embedded_docs/docs/RecraftTextToVectorNode/en.md)
+> このドキュメントは AI によって生成されました。エラーを見つけた場合や改善のご提案がある場合は、ぜひ貢献してください！ [GitHub で編集](https://github.com/Comfy-Org/embedded-docs/blob/main/comfyui_embedded_docs/docs/RecraftTextToVectorNode/ja.md)
 
-プロンプトと解像度に基づいて、SVG を同期的に生成します。このノードは、テキストプロンプトを Recraft API に送信することでベクター形式のイラストを作成し、生成された SVG コンテンツを返します。
+テキストプロンプトと解像度に基づいて、同期的にSVGベクターイラストを生成します。このノードはプロンプトをRecraft APIに送信し、生成されたSVGコンテンツを返します。
 
 ## 入力
 
-| パラメーター | データ型 | 必須 | 範囲 | 説明 |
+| パラメータ | データ型 | 必須 | 範囲 | 説明 |
 |-----------|-----------|----------|-------|-------------|
-| `prompt` | STRING | はい | - | 画像生成用のプロンプト。（デフォルト：""） |
-| `substyle` | COMBO | はい | 複数の選択肢あり | 生成に使用する特定のイラストスタイル。選択肢は、RecraftStyleV3 で利用可能なベクターイラストのサブスタイルによって決定されます。 |
-| `size` | COMBO | はい | 複数の選択肢あり | 生成される画像のサイズ。（デフォルト：1024×1024） |
-| `n` | INT | はい | 1–6 | 生成する画像の枚数。（デフォルト：1、最小値：1、最大値：6） |
-| `seed` | INT | はい | 0–18446744073709551615 | ノードが再実行されるかどうかを判定するためのシード値です。実際の生成結果は、シード値に関わらず非決定的です。（デフォルト：0、最小値：0、最大値：18446744073709551615） |
-| `negative_prompt` | STRING | いいえ | - | 画像に含めたくない要素をテキストで記述したオプションの内容。（デフォルト：""） |
-| `recraft_controls` | CONTROLS | いいえ | - | Recraft Controls ノードを用いた、生成プロセスに対するオプションの追加制御。 |
+| `プロンプト` | STRING | はい | - | 画像生成のためのプロンプト。（デフォルト：""） |
+| `サブスタイル` | COMBO | はい | `"2d_character"``"2d_gradient"``"2d_illustration"``"2d_flat_character"``"2d_flat_illustration"``"2d_art"``"2d_art_character"``"2d_pattern"``"2d_pixel_art"``"2d_cyberpunk"``"2d_engraving"``"2d_black_and_white"``"2d_ink"``"2d_sketch"``"2d_watercolor"``"2d_animation"``"2d_comic"``"2d_children_illustration"``"2d_vintage"``"2d_retro"``"2d_hand_drawn"``"2d_psychedelic"``"2d_graffiti"``"2d_ukiyo_e"``"2d_woodcut"``"2d_art_deco"``"2d_art_nouveau"``"2d_bauhaus"``"2d_constructivism"``"2d_cubism"``"2d_futurism"``"2d_glitch"``"2d_impressionism"``"2d_naive"``"2d_pointillism"``"2d_pop_art"``"2d_realism"``"2d_renaissance"``"2d_rococo"``"2d_romanticism"``"2d_surrealism"``"2d_suprematism"``"2d_symbolism"``"2d_expressionism"``"2d_abstract"``"2d_minimalism"``"2d_contemporary"``"2d_modern"``"2d_brutalism"``"2d_metaphysical"``"2d_mannerism"``"2d_baroque"``"2d_neoclassicism"``"2d_orientalism"``"2d_primitivism"``"2d_fauvism"``"2d_rayonism"``"2d_orphism"``"2d_vorticism"``"2d_dadaism"``"2d_neo_expressionism"``"2d_transavantgarde"``"2d_new_wild"``"2d_graffiti_classic"``"2d_graffiti_modern"``"2d_graffiti_wildstyle"``"2d_graffiti_bubble"``"2d_graffiti_throwup"``"2d_graffiti_tag"``"2d_graffiti_blockbuster"``"2d_graffiti_mural"``"2d_graffiti_stencil"``"2d_graffiti_3d"``"2d_graffiti_character"``"2d_graffiti_abstract"``"2d_graffiti_urban"``"2d_graffiti_neo_muralism"``"2d_graffiti_post_graffiti"``"2d_graffiti_street_art"` | 生成に使用する具体的なベクターイラストスタイル。 |
+| `サイズ` | COMBO | はい | `"1024x1024"``"1024x2048"``"2048x1024"``"2048x2048"``"512x512"``"512x1024"``"1024x512"``"2048x512"``"512x2048"` | 生成される画像のサイズ。（デフォルト："1024x1024"） |
+| `生成数` | INT | はい | 1-6 | 生成する画像の数。（デフォルト：1、最小：1、最大：6） |
+| `シード` | INT | はい | 0-18446744073709551615 | ノードを再実行するかどうかを決定するシード。実際の結果はシードに関係なく非決定的です。（デフォルト：0、最小：0、最大：18446744073709551615） |
+| `ネガティブプロンプト` | STRING | いいえ | - | 画像内の望ましくない要素に関するオプションのテキスト説明。（デフォルト：""） |
+| `Recraft コントロール` | CONTROLS | いいえ | - | Recraft Controlsノードを介した生成に対するオプションの追加制御。 |
 
-**注意：** `seed` パラメーターは、ノードが再実行されるタイミングのみを制御し、生成結果を決定的にすることはできません。
+**注記:** `seed`パラメータはノードが再実行されるタイミングのみを制御し、生成結果を決定論的にするものではありません。
 
 ## 出力
 
 | 出力名 | データ型 | 説明 |
 |-------------|-----------|-------------|
-| `SVG` | SVG | SVG 形式で生成されたベクターイラスト |
+| `SVG` | SVG | SVG形式で生成されたベクターイラスト |
+
+---
+**Source fingerprint (SHA-256):** `3ac4057fa100a207c0400d0d01756899fc02261e3fb7d962fb0057e6c6519100`

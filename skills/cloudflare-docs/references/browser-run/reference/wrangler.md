@@ -30,8 +30,8 @@ Note
 
 To enable built-in Node.js APIs and polyfills, add the nodejs\_compat compatibility flag to your [Wrangler configuration file](https://developers.cloudflare.com/workers/wrangler/configuration/). This also enables nodejs\_compat\_v2 as long as your compatibility date is 2024-09-23 or later. [Learn more about the Node.js compatibility flag and v2](https://developers.cloudflare.com/workers/configuration/compatibility-flags/#nodejs-compatibility-flag).
 
-* [  wrangler.jsonc ](#tab-panel-5853)
-* [  wrangler.toml ](#tab-panel-5854)
+* [  wrangler.jsonc ](#tab-panel-5859)
+* [  wrangler.toml ](#tab-panel-5860)
 
 JSONC
 
@@ -112,7 +112,32 @@ JSONC
 
 ```
 
-Run `npx wrangler dev` to test your Worker locally.
+Quick Actions require remote mode for local development
+
+The `.quickAction()` method is not yet supported in local development mode. When using `wrangler dev`, you must run with `--remote` or set `"remote": true` in your browser binding configuration:
+
+JSONC
+
+```
+
+{
+
+  "browser": {
+
+    "binding": "MYBROWSER",
+
+    "remote": true
+
+  }
+
+}
+
+
+```
+
+Without remote mode, calls to `.quickAction()` will fail with: `The RPC receiver does not implement the method "quickAction"`.
+
+For Puppeteer, Playwright, or CDP-based Workers, run `npx wrangler dev` to test locally. For Quick Actions via `.quickAction()`, use `npx wrangler dev --remote` as noted above.
 
 ### Headful mode (experimental)
 

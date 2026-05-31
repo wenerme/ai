@@ -13,7 +13,7 @@ The IdeogramV1 node generates images using the Ideogram V1 model through an API.
 |-----------|-----------|----------|-------|-------------|
 | `prompt` | STRING | Yes | - | Prompt for the image generation (default: empty) |
 | `turbo` | BOOLEAN | Yes | - | Whether to use turbo mode (faster generation, potentially lower quality) (default: False) |
-| `aspect_ratio` | COMBO | No | "1:1""16:9""9:16""4:3""3:4""3:2""2:3" | The aspect ratio for image generation (default: "1:1") |
+| `aspect_ratio` | COMBO | No | "1:1""4:3""3:4""16:9""9:16""2:1""1:2""3:2""2:3""4:5""5:4" | The aspect ratio for image generation (default: "1:1") |
 | `magic_prompt_option` | COMBO | No | "AUTO""ON""OFF" | Determine if MagicPrompt should be used in generation (default: "AUTO") |
 | `seed` | INT | No | 0-2147483647 | Random seed value for generation (default: 0) |
 | `negative_prompt` | STRING | No | - | Description of what to exclude from the image (default: empty) |
@@ -26,3 +26,6 @@ The IdeogramV1 node generates images using the Ideogram V1 model through an API.
 | Output Name | Data Type | Description |
 |-------------|-----------|-------------|
 | `output` | IMAGE | The generated image(s) from the Ideogram V1 model |
+
+---
+**Source fingerprint (SHA-256):** `a42654aea292811c5f872911d6ea7303a83ea058c7132737375d81c5c8a77740`
