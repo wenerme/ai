@@ -88,6 +88,8 @@ Create a pull-request
 
 **--description, -d**="": 
 
+**--draft**: Create as a draft (prepends "WIP: " to the title; Gitea treats WIP-prefixed PRs as drafts)
+
 **--head**="": Branch name of the PR source (default is current one). To specify a different head repo, use <user>:<branch>
 
 **--labels, -L**="": Comma-separated list of labels to assign
@@ -144,9 +146,13 @@ Edit one or more pull requests
 
 **--description, -d**="": 
 
+**--draft**: Mark as draft by prepending "WIP: " to the title (idempotent)
+
 **--login, -l**="": Use a different Gitea Login. Optional
 
 **--milestone, -m**="": Milestone to assign
+
+**--ready**: Mark as ready for review by stripping any leading "WIP: " or "[WIP]" prefix
 
 **--referenced-version, -v**="": commit-hash or tag name to assign
 
