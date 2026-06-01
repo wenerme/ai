@@ -60,14 +60,12 @@
         ctaLabel="Get Pro"
         ctaHref="https://chatgpt.com/explore/pro?utm_internal_source=openai_developers_codex"
         highlight="Everything in Plus and:"
-        footnoteLabel="*Learn more about limits and promos on both tiers."
+        footnoteLabel="*Learn more about limits on both tiers."
         footnoteHref="https://help.openai.com/en/articles/9793128-about-chatgpt-pro-plans"
       >
-        **Double your normal Codex usage on the $100/month tier until May 31, 2026.**
-
         - Access to GPT-5.3-Codex-Spark (research preview), a fast Codex model
           for day-to-day coding tasks
-        - ~~5x~~ 10x or 20x more Codex usage than Plus*
+        - 5x or 20x more Codex usage than Plus*
         - Other [ChatGPT features](https://chatgpt.com/pricing) as part of the
           Pro plan
       </PricingCard>
@@ -323,11 +321,6 @@ GPT-5.5 being a significantly more capable model.
           </tr>
           <tr>
             <td colspan="4" style="text-align:center">
-              Pro $100 gets 2x the usage shown above until May 31, 2026.
-            </td>
-          </tr>
-          <tr>
-            <td colspan="4" style="text-align:center">
               For Enterprise/Edu users, there are no fixed rate limits - usage
               scales with [credits](#credits-overview)
             </td>
@@ -392,13 +385,6 @@ GPT-5.5 being a significantly more capable model.
                 *The usage limits for local messages and cloud tasks share a
                 **five-hour window**. Additional weekly limits may apply.
               </a>
-            </td>
-          </tr>
-          <tr>
-            <td colspan="4" style="text-align:center">
-              Pro $200 gets a boost on the usage shown above until May 31,
-              2026. [Learn
-              more](https://help.openai.com/en/articles/9793128-about-chatgpt-pro-plans).
             </td>
           </tr>
           <tr>
@@ -603,14 +589,6 @@ also draws from [credits](#credits-overview).
 Image generation isn't available on the Free plan. When you use Codex with an
 API key, API pricing applies to image generation instead of included ChatGPT
 usage limits.
-
-### What's the current Codex usage promo on Pro?
-
-We’re currently offering extra Codex usage on both Pro tiers.
-
-For **Pro $100**, to celebrate the launch, you’ll get **2x Codex usage through May 31, 2026**. That means 10x usage instead of the standard 5x.
-
-**For Pro $200**, as a thank you to our most loyal customers, we’re carrying forward the benefits of our earlier 2x promo, which means Pro $200 now includes 20x Plus on an ongoing basis. In addition, we’re continuing to honor the higher 5-hour Codex limits for a limited time, so those remain at 25x Plus through May 31, 2026 instead of the standard 20x Plus.
 
 ### Where can I see my current usage limits?
 

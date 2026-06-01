@@ -21,6 +21,9 @@ For more information, see
 ## Examples
 
 ```console
+# Guided onboarding: verify access, install the skill, install the local CLI
+$ glab orbit setup
+
 # Discover the remote Knowledge Graph
 $ glab orbit remote status
 $ glab orbit remote schema
@@ -47,3 +50,4 @@ $ glab orbit local
 
 - [`local`](local.md)
 - [`remote`](remote/_index.md)
+- [`setup`](setup.md)

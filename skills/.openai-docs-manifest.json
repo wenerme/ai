@@ -10562,10 +10562,10 @@
   "codex-docs/pricing.md": {
     "url": "https://developers.openai.com/codex/pricing.md",
     "skill": "codex-docs",
-    "etag": "W/\"b97f9b338fa53651a301ec0bd99d6c98\"",
-    "lastModified": "Thu, 07 May 2026 01:32:38 GMT",
-    "size": 32502,
-    "updatedAt": "2026-05-07T10:56:07.397Z"
+    "etag": "W/\"1438d0b846cb9c938510a5741280eeaa\"",
+    "lastModified": "Mon, 01 Jun 2026 07:02:57 GMT",
+    "size": 31304,
+    "updatedAt": "2026-06-01T12:13:35.954Z"
   },
   "codex-docs/prompting.md": {
     "url": "https://developers.openai.com/codex/prompting.md",

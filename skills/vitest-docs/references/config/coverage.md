@@ -242,7 +242,7 @@ Check thresholds per file.
 Update all threshold values `lines`, `functions`, `branches` and `statements` to configuration file when current coverage is better than the configured thresholds.
 This option helps to maintain thresholds when coverage is improved.
 
-You can also pass a function for formatting the updated threshold values:
+You can also pass a function for formatting the updated threshold values. The function receives the new threshold as the first argument and the previous threshold as the second:
 
 ```ts
 {
@@ -250,6 +250,12 @@ You can also pass a function for formatting the updated threshold values:
     thresholds: {
       // Update thresholds without decimals
       autoUpdate: (newThreshold) => Math.floor(newThreshold),
+
+      // Log the change and update without decimals
+      autoUpdate: (newThreshold, previousThreshold) => {
+        console.log(`Updated threshold from ${previousThreshold} to ${newThreshold}`)
+        return Math.floor(newThreshold)
+      },
 
       // 95.85 -> 95
       functions: 95,

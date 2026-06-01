@@ -164,6 +164,11 @@
     "size": 8171,
     "updatedAt": "2026-05-21T00:54:59.897Z"
   },
+  "guides/routing/routers/fusion-router.md": {
+    "url": "https://openrouter.ai/docs/guides/routing/routers/fusion-router.md",
+    "size": 10504,
+    "updatedAt": "2026-06-01T12:22:42.800Z"
+  },
   "guides/features/workspaces.md": {
     "url": "https://openrouter.ai/docs/guides/features/workspaces.md",
     "size": 6175,
@@ -216,8 +221,8 @@
   },
   "guides/features/server-tools/fusion.md": {
     "url": "https://openrouter.ai/docs/guides/features/server-tools/fusion.md",
-    "size": 5679,
-    "updatedAt": "2026-05-16T00:35:53.438Z"
+    "size": 9381,
+    "updatedAt": "2026-06-01T12:24:40.398Z"
   },
   "guides/features/plugins/overview.md": {
     "url": "https://openrouter.ai/docs/guides/features/plugins/overview.md",
@@ -236,8 +241,8 @@
   },
   "guides/features/plugins/fusion.md": {
     "url": "https://openrouter.ai/docs/guides/features/plugins/fusion.md",
-    "size": 7167,
-    "updatedAt": "2026-05-16T00:36:05.441Z"
+    "size": 7919,
+    "updatedAt": "2026-06-01T12:25:03.370Z"
   },
   "guides/features/structured-outputs.md": {
     "url": "https://openrouter.ai/docs/guides/features/structured-outputs.md",

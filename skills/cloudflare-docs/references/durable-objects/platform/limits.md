@@ -27,6 +27,7 @@ Durable Objects are a special kind of Worker, so [Workers Limits](https://develo
 | Value size                                   | Key and value combined cannot exceed 2 MB                                                                                                                          |
 | WebSocket message size                       | 32 MiB (only for received messages)                                                                                                                                |
 | CPU per request                              | 30 seconds (default) / configurable to 5 minutes of [active CPU time](https://developers.cloudflare.com/workers/platform/limits/#cpu-time) [4](#user-content-fn-4) |
+| Simultaneous outgoing connections/request    | 6 (same as [Workers](https://developers.cloudflare.com/workers/platform/limits/#simultaneous-open-connections))                                                    |
 
 ### SQL storage limits
 
@@ -53,17 +54,18 @@ Durable Objects are available both on Workers Free and Workers Paid plans.
 
 If you wish to downgrade from a Workers Paid plan to a Workers Free plan, you must first ensure that you have deleted all Durable Object namespaces with the key-value storage backend.
 
-| Feature                                      | Limit for class with key-value storage backend                         |
-| -------------------------------------------- | ---------------------------------------------------------------------- |
-| Number of Objects                            | Unlimited (within an account or of a given class)                      |
-| Maximum Durable Object classes (per account) | 500 (Workers Paid) / 100 (Free) [5](#user-content-fn-5)                |
-| Storage per account                          | 50 GB (can be raised by contacting Cloudflare) [6](#user-content-fn-6) |
-| Storage per class                            | Unlimited                                                              |
-| Storage per Durable Object                   | Unlimited                                                              |
-| Key size                                     | 2 KiB (2048 bytes)                                                     |
-| Value size                                   | 128 KiB (131072 bytes)                                                 |
-| WebSocket message size                       | 32 MiB (only for received messages)                                    |
-| CPU per request                              | 30s (including WebSocket messages) [7](#user-content-fn-7)             |
+| Feature                                      | Limit for class with key-value storage backend                                                                  |
+| -------------------------------------------- | --------------------------------------------------------------------------------------------------------------- |
+| Number of Objects                            | Unlimited (within an account or of a given class)                                                               |
+| Maximum Durable Object classes (per account) | 500 (Workers Paid) / 100 (Free) [5](#user-content-fn-5)                                                         |
+| Storage per account                          | 50 GB (can be raised by contacting Cloudflare) [6](#user-content-fn-6)                                          |
+| Storage per class                            | Unlimited                                                                                                       |
+| Storage per Durable Object                   | Unlimited                                                                                                       |
+| Key size                                     | 2 KiB (2048 bytes)                                                                                              |
+| Value size                                   | 128 KiB (131072 bytes)                                                                                          |
+| WebSocket message size                       | 32 MiB (only for received messages)                                                                             |
+| CPU per request                              | 30s (including WebSocket messages) [7](#user-content-fn-7)                                                      |
+| Simultaneous outgoing connections/request    | 6 (same as [Workers](https://developers.cloudflare.com/workers/platform/limits/#simultaneous-open-connections)) |
 
 Need a higher limit?
 
@@ -96,8 +98,8 @@ Durable Objects are Worker scripts, and have the same [per invocation CPU limits
 
 By default, the maximum CPU time per Durable Objects invocation (HTTP request, WebSocket message, or Alarm) is set to 30 seconds, but can be increased for all Durable Objects associated with a Durable Object definition by setting `limits.cpu_ms` in your Wrangler configuration:
 
-* [  wrangler.jsonc ](#tab-panel-5858)
-* [  wrangler.toml ](#tab-panel-5859)
+* [  wrangler.jsonc ](#tab-panel-7288)
+* [  wrangler.toml ](#tab-panel-7289)
 
 JSONC
 

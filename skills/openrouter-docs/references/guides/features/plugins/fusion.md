@@ -5,33 +5,30 @@
 
 # Fusion
 
-Fusion turns any OpenRouter request into a small multi-model deliberation: a configurable panel of expert models analyzes the prompt in parallel with web search and web fetch enabled, then a judge model produces a structured analysis (consensus, contradictions, partial coverage, unique insights, blind spots). The calling model uses that analysis to write the final answer.
+The Fusion plugin gives your model access to a multi-model deliberation tool. When the model invokes it, a panel of models answers your prompt in parallel (with `openrouter:web_search`), a judge compares their responses and returns structured analysis, and your model uses that analysis to write a better final answer.
 
-The Fusion plugin is the configuration surface for this pipeline. It's a thin sugar layer on top of the [`openrouter:fusion` server tool](/docs/guides/features/server-tools/fusion) and the [`openrouter/fusion` model alias](/docs/guides/models/router-models). Pick whichever entry point fits your workflow.
+The Fusion plugin is a configuration surface for the [`openrouter:fusion` server tool](/docs/guides/features/server-tools/fusion). It's also the mechanism behind the [`openrouter/fusion` model alias](/docs/guides/routing/routers/fusion-router). All three entry points hit the same pipeline.
 
 ## When to use Fusion
 
-Reach for Fusion when a single model isn't enough — research, expert critique, or tasks that benefit from multiple perspectives. Fusion is overkill for short tactical prompts; use it when the cost of being wrong is higher than the cost of a few extra completions.
+Reach for Fusion when a single model isn't enough — research, expert critique, or tasks that benefit from multiple perspectives. Fusion is overkill for short tactical prompts; use it when the cost of being wrong outweighs the cost of a few extra completions.
 
 ## How it works
 
 ```mermaid
 flowchart LR
-  request[Your request<br />model=fusion-model<br />plugins=[fusion]] --> outer[Judge / fusion model]
-  outer -- decides to invoke --> tool[openrouter:fusion]
-  tool --> panel[Analysis panel<br />~anthropic/claude-opus-latest<br />~openai/gpt-latest]
-  panel --> judge[Judge model<br />web_search + web_fetch]
-  judge -- structured analysis --> outer
-  outer --> answer[Final answer]
+  request[Your request] --> model[Your model]
+  model -- calls openrouter:fusion --> panel[Panel<br />up to 8 models<br />+ web_search + web_fetch]
+  panel --> judge[Judge / analysis<br />+ web_search + web_fetch<br />structured JSON]
+  judge -- analysis --> model
+  model --> answer[Final answer]
 ```
 
-1. The plugin injects the `openrouter:fusion` server tool into your request and (if you sent `model: "openrouter/fusion"`) swaps the alias for the configured judge / fusion model.
-2. The judge model runs your prompt and decides whether to invoke the fusion tool.
-3. When invoked, the tool dispatches your prompt to every analysis model in parallel with `openrouter:web_search` and `openrouter:web_fetch` enabled.
-4. The same judge model then receives a synthesis prompt with every panel response and returns structured analysis JSON.
-5. The outer judge model receives that analysis and writes the final user-facing answer.
-
-The final synthesis call is **not** given web tools — by that point all the freshness lives in the panel responses, and turning off web tools keeps the answer grounded in the deliberation.
+1. The plugin injects the `openrouter:fusion` tool into your request. If you used `model: "openrouter/fusion"`, it also resolves the alias to a real model.
+2. Your model reads the prompt and decides whether to invoke `openrouter:fusion`.
+3. The **panel** — a set of models — answers your prompt in parallel, each with `openrouter:web_search` and `openrouter:web_fetch` enabled.
+4. The **judge** receives all panel responses, with `openrouter:web_search` and `openrouter:web_fetch` available, and compares them — it doesn't merge them. It returns structured analysis as JSON: consensus (points all or most models agree on, treated as higher-confidence), contradictions, partial coverage, unique insights from individual models, and blind spots none of them addressed.
+5. Your model receives the structured analysis and writes the final answer.
 
 ## Configuration
 
@@ -43,25 +40,27 @@ The final synthesis call is **not** given web tools — by that point all the fr
       "id": "fusion",
       "analysis_models": [
         "~anthropic/claude-opus-latest",
-        "~openai/gpt-latest"
+        "~openai/gpt-latest",
+        "~google/gemini-pro-latest"
       ],
-      "model": "~anthropic/claude-opus-latest"
+      "model": "~openai/gpt-latest"
     }
   ]
 }
 ```
 
-| Field             | Default                                                                | Description                                                                                                                                                   |
-| ----------------- | ---------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `analysis_models` | Quality preset (`~anthropic/claude-opus-latest`, `~openai/gpt-latest`) | Slugs of the parallel analysis panel. Each receives the prompt with web search + web fetch.                                                                   |
-| `model`           | First analysis model                                                   | Slug of the judge / fusion model used to summarize the panel and write the final answer. Only applied when the request uses `openrouter/fusion` as the model. |
-| `enabled`         | `true`                                                                 | Set to `false` to bypass the plugin for a single request.                                                                                                     |
+| Field             | Default                                                                                             | Description                                                                                                                                                                                                                                  |
+| ----------------- | --------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `analysis_models` | Quality preset (`~anthropic/claude-opus-latest`, `~openai/gpt-latest`, `~google/gemini-pro-latest`) | Models that form the panel. Each runs in parallel with `openrouter:web_search` and `openrouter:web_fetch`. 1–8 models allowed.                                                                                                               |
+| `model`           | First model in the Quality preset (`~anthropic/claude-opus-latest`)                                 | The judge model that produces the structured analysis. With `model: "openrouter/fusion"`, this also becomes the model that writes your final answer; when you attach the plugin to your own model instead, the judge defaults to that model. |
+| `max_tool_calls`  | `8`                                                                                                 | Max tool-calling steps each panel model and the judge may take in their `openrouter:web_search` / `openrouter:web_fetch` loop before they must return text. Range 1–16.                                                                      |
+| `enabled`         | `true`                                                                                              | Set to `false` to bypass fusion for a single request.                                                                                                                                                                                        |
 
-When you pass `model: "openrouter/fusion"` without a plugin config, the defaults are equivalent to the **Quality** preset on the [Fusion lab](/labs/fusion).
+When you send `model: "openrouter/fusion"` without a plugin config, the defaults match the **Quality** preset on the [Fusion lab](/labs/fusion).
 
 ## Two entry points, one pipeline
 
-`openrouter/fusion` is exactly equivalent to enabling the `openrouter:fusion` server tool on the configured judge model. The model below behaves identically:
+`openrouter/fusion` is equivalent to enabling the `openrouter:fusion` server tool on the configured model. These behave identically:
 
 ```json title="Model alias"
 {
@@ -84,7 +83,7 @@ When you pass `model: "openrouter/fusion"` without a plugin config, the defaults
 }
 ```
 
-The model decides when to call `openrouter:fusion`. For tasks that don't need deliberation, it can answer directly — including invoking any other tools you've defined.
+In both cases, the model decides when to call `openrouter:fusion`. For prompts that don't need deliberation, it answers directly — including invoking any other tools you've defined.
 
 ## Complete example
 
@@ -152,11 +151,12 @@ print(response.json()["choices"][0]["message"]["content"])
 
 ## Recursion protection
 
-Fusion attaches an `x-openrouter-fusion-depth` header to every inner call (analysis + judge). If an analysis model tries to recursively invoke `openrouter:fusion` or `openrouter/fusion`, the plugin refuses to inject the tool a second time and the call returns an error rather than fanning out unbounded extra inference.
+Inner fusion calls carry an `x-openrouter-fusion-depth` header. Panel and judge models cannot recursively invoke `openrouter:fusion` — the plugin refuses to inject the tool a second time, keeping deliberation bounded to a single level.
 
 ## Related
 
 * [`openrouter:fusion` server tool](/docs/guides/features/server-tools/fusion)
+* [Fusion Router (`openrouter/fusion`)](/docs/guides/routing/routers/fusion-router)
 * [Web Search server tool](/docs/guides/features/server-tools/web-search)
 * [Web Fetch server tool](/docs/guides/features/server-tools/web-fetch)
-* [`/labs/fusion`](/labs/fusion) — interactive playground for the same pipeline
+* [`/labs/fusion`](/labs/fusion) — interactive playground
