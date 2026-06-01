@@ -61,7 +61,12 @@ key/value tensors are the intermediate representation from the model's attention
 
 ### Configure per request
 
-If you don’t specify a retention policy, for most models the default is `in_memory`. For `gpt-5.5`, `gpt-5.5-pro`, and all future models, the default is `24h` and `in_memory` is not supported. Allowed values are `in_memory` and `24h`.
+For `gpt-5.5`, `gpt-5.5-pro`, and future models, only `24h` is supported.
+
+For older models that support both `in_memory` and `24h`, the default depends on your organization's data retention policy:
+
+- Organizations without ZDR enabled default to `24h`.
+- Organizations with ZDR enabled default to `in_memory` when `prompt_cache_retention` is not specified.
 
 ```json
 {

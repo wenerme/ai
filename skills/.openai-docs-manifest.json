@@ -602,10 +602,10 @@
   "openai-docs/guides/prompt-caching.md": {
     "url": "https://developers.openai.com/api/docs/guides/prompt-caching.md",
     "skill": "openai-docs",
-    "etag": "W/\"9d492e429a9c3e57fda05efdd322755b\"",
-    "lastModified": "Sat, 25 Apr 2026 00:23:14 GMT",
-    "size": 9286,
-    "updatedAt": "2026-04-25T00:23:14.380Z"
+    "etag": "W/\"8a64ad95cbf8166fafed542fefbcb5ab\"",
+    "lastModified": "Mon, 01 Jun 2026 00:32:37 GMT",
+    "size": 9409,
+    "updatedAt": "2026-06-01T00:35:59.795Z"
   },
   "openai-docs/guides/prompt-engineering.md": {
     "url": "https://developers.openai.com/api/docs/guides/prompt-engineering.md",
@@ -874,10 +874,10 @@
   "openai-docs/guides/structured-outputs.md": {
     "url": "https://developers.openai.com/api/docs/guides/structured-outputs.md",
     "skill": "openai-docs",
-    "etag": "W/\"68c57370fba417f18df5af7772aa1c4b\"",
-    "lastModified": "Wed, 20 May 2026 21:25:07 GMT",
-    "size": 14794,
-    "updatedAt": "2026-05-21T00:36:29.290Z"
+    "etag": "W/\"691b84d0ef20d9f630138c7ff63c2272\"",
+    "lastModified": "Mon, 01 Jun 2026 00:11:24 GMT",
+    "size": 11540,
+    "updatedAt": "2026-06-01T00:36:07.913Z"
   },
   "openai-docs/guides/supervised-fine-tuning.md": {
     "url": "https://developers.openai.com/api/docs/guides/supervised-fine-tuning.md",
@@ -1122,10 +1122,10 @@
   "openai-docs/guides/your-data.md": {
     "url": "https://developers.openai.com/api/docs/guides/your-data.md",
     "skill": "openai-docs",
-    "etag": "W/\"cfebbe4581e28779d2a10076ed1d0738\"",
-    "lastModified": "Fri, 29 May 2026 06:46:57 GMT",
-    "size": 48177,
-    "updatedAt": "2026-05-29T11:11:11.750Z"
+    "etag": "W/\"6c56db9d3bb2ea205ec059bafa17a97d\"",
+    "lastModified": "Sun, 31 May 2026 23:57:55 GMT",
+    "size": 48306,
+    "updatedAt": "2026-06-01T00:36:15.208Z"
   },
   "openai-docs/libraries.md": {
     "url": "https://developers.openai.com/api/docs/libraries.md",

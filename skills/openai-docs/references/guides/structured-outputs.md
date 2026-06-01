@@ -1,142 +1,9 @@
 # Structured model outputs
 
-export const snippetRefusalsChatCompletionsApi = {
-  python: `
-class Step(BaseModel):
-    explanation: str
-    output: str
-
-class MathReasoning(BaseModel):
-steps: list[Step]
-final_answer: str
-
-completion = client.chat.completions.parse(
-model="gpt-4o-2024-08-06",
-messages=[
-{"role": "system", "content": "You are a helpful math tutor. Guide the user through the solution step by step."},
-{"role": "user", "content": "how can I solve 8x + 7 = -23"},
-],
-response_format=MathReasoning,
-)
-
-math_reasoning = completion.choices[0].message
-
-# If the model refuses to respond, you will get a refusal message
-
-if math_reasoning.refusal:
-print(math_reasoning.refusal)
-else:
-print(math_reasoning.parsed)
-`.trim(),
-  "javascript": `
-const Step = z.object({
-explanation: z.string(),
-output: z.string(),
-});
-
-const MathReasoning = z.object({
-steps: z.array(Step),
-final_answer: z.string(),
-});
-
-const completion = await openai.chat.completions.parse({
-model: "gpt-4o-2024-08-06",
-messages: [
-{ role: "system", content: "You are a helpful math tutor. Guide the user through the solution step by step." },
-{ role: "user", content: "how can I solve 8x + 7 = -23" },
-],
-response_format: zodResponseFormat(MathReasoning, "math_reasoning"),
-});
-
-const math_reasoning = completion.choices[0].message
-
-// If the model refuses to respond, you will get a refusal message
-if (math_reasoning.refusal) {
-console.log(math_reasoning.refusal);
-} else {
-console.log(math_reasoning.parsed);
-}
-`.trim(),
-};
-export const snippetRefusalsResponsesApi = {
-  python: `
-class Step(BaseModel):
-explanation: str
-output: str
-
-class MathReasoning(BaseModel):
-steps: list[Step]
-final_answer: str
-
-response = client.responses.parse(
-model="gpt-4o-2024-08-06",
-input=[
-{"role": "system", "content": "You are a helpful math tutor. Guide the user through the solution step by step."},
-{"role": "user", "content": "how can I solve 8x + 7 = -23"},
-],
-text_format=MathReasoning,
-)
-
-for output in response.output:
-if output.type != "message":
-raise Exception("Unexpected non message")
-
-    for item in output.content:
-        if item.type == "refusal":
-            # If the model refuses to respond, you will get a refusal message
-            print(item.refusal)
-            continue
-
-        if not item.parsed:
-            raise Exception("Could not parse response")
-
-        print(item.parsed)
-
-`.trim(),
-  "javascript": `
-const Step = z.object({
-explanation: z.string(),
-output: z.string(),
-});
-
-const MathReasoning = z.object({
-steps: z.array(Step),
-final_answer: z.string(),
-});
-
-const response = await openai.responses.parse({
-model: "gpt-4o-2024-08-06",
-input: [
-{ role: "system", content: "You are a helpful math tutor. Guide the user through the solution step by step." },
-{ role: "user", content: "how can I solve 8x + 7 = -23" }
-],
-text: {
-format: zodTextFormat(MathReasoning, "math_response"),
-},
-});
-
-for (const output of response.output) {
-if (output.type != "message") {
-throw new Error("Unexpected non message");
-}
-
-    for (const item of output.content) {
-        if (item.type == "refusal") {
-            // If the model refuses to respond, you will get a refusal message
-            console.log(item.refusal);
-            continue;
-        }
-
-        if (!item.parsed) {
-            throw new Error("Could not parse response");
-        }
-
-        console.log(item.parsed);
-    }
-
-}
-`.trim(),
-};
+import {
+  snippetRefusalsChatCompletionsApi,
+  snippetRefusalsResponsesApi,
+} from "./inline-examples";
 
 export const snippetRefusalApiResponseChatCompletionsApi = {
   json: `
@@ -326,7 +193,10 @@ When using Structured Outputs with user-generated input, OpenAI models may occas
 
 When the `refusal` property appears in your output object, you might present the refusal in your UI, or include conditional logic in code that consumes the response to handle the case of a refused request.
 
-The API response from a refusal will look something like this:
+
+
+
+  The API response from a refusal will look something like this:
 
 
 
