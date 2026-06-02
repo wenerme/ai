@@ -51,8 +51,8 @@ Terraform assumes that it has complete control over account and zone rulesets. I
 
 This example configures the [HTTP DDoS Attack Protection](https://developers.cloudflare.com/ddos-protection/managed-rulesets/http/) managed ruleset for a zone using Terraform.
 
-* [ Terraform (v5) ](#tab-panel-8067)
-* [ Terraform (v4) ](#tab-panel-8068)
+* [ Terraform (v5) ](#tab-panel-10065)
+* [ Terraform (v4) ](#tab-panel-10066)
 
 Required API token permissions
 
@@ -245,8 +245,8 @@ Important
 * Only Magic Transit and Spectrum customers on an Enterprise plan can configure this managed ruleset using overrides.
 * This managed ruleset only supports overrides at the account level.
 
-* [ Terraform (v5) ](#tab-panel-8069)
-* [ Terraform (v4) ](#tab-panel-8070)
+* [ Terraform (v5) ](#tab-panel-10067)
+* [ Terraform (v4) ](#tab-panel-10068)
 
 Required API token permissions
 
@@ -383,8 +383,8 @@ Important considerations
 * Since rules are evaluated in order and the first one to match the conditions of both the expression and the sensitivity level will get applied, take care when editing and reordering existing rules. Changing a rule from Block to Log may allow attack traffic to reach your web property.
 * Overrides will not affect read-only rules in the managed ruleset.
 
-* [ Terraform (v5) ](#tab-panel-8071)
-* [ Terraform (v4) ](#tab-panel-8072)
+* [ Terraform (v5) ](#tab-panel-10069)
+* [ Terraform (v4) ](#tab-panel-10070)
 
 Required API token permissions
 

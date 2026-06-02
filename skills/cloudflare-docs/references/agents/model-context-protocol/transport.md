@@ -37,8 +37,8 @@ You can use the "Deploy to Cloudflare" button to create a remote MCP server.
 
 Create an MCP server using `createMcpHandler`. View the [complete example on GitHub ↗](https://github.com/cloudflare/agents/tree/main/examples/mcp-worker).
 
-* [  JavaScript ](#tab-panel-4476)
-* [  TypeScript ](#tab-panel-4477)
+* [  JavaScript ](#tab-panel-5646)
+* [  TypeScript ](#tab-panel-5647)
 
 JavaScript
 
@@ -182,8 +182,8 @@ export default {
 
 If your MCP server implements authentication & authorization using the [Workers OAuth Provider ↗](https://github.com/cloudflare/workers-oauth-provider) library, use `createMcpHandler` with the `apiRoute` and `apiHandler` properties. View the [complete example on GitHub ↗](https://github.com/cloudflare/agents/tree/main/examples/mcp-worker-authenticated).
 
-* [  JavaScript ](#tab-panel-4466)
-* [  TypeScript ](#tab-panel-4467)
+* [  JavaScript ](#tab-panel-5636)
+* [  TypeScript ](#tab-panel-5637)
 
 JavaScript
 
@@ -249,6 +249,8 @@ If your MCP server needs to maintain state across requests, use `createMcpHandle
 
 See [Stateful MCP Servers](https://developers.cloudflare.com/agents/api-reference/mcp-handler-api#stateful-mcp-servers) for implementation details.
 
+Streamable HTTP streams are resumable: configure an `EventStore` so clients can reconnect with a `Last-Event-ID` header and replay missed events, keeping in-flight tool calls alive across the edge idle-stream watchdog. `DurableObjectEventStore` is exported from `agents/mcp` for stateful `WorkerTransport` callers. Refer to [McpAgent: Stream resumability](https://developers.cloudflare.com/agents/api-reference/mcp-agent-api/#stream-resumability).
+
 ## RPC transport
 
 The **RPC transport** is designed for internal applications where your MCP server and agent are both running on Cloudflare — they can even run in the same Worker. It sends JSON-RPC messages directly over Cloudflare's [RPC bindings](https://developers.cloudflare.com/workers/runtime-apis/bindings/service-bindings/rpc/) without going over the public internet.
@@ -265,8 +267,8 @@ RPC transport does not support authentication. Use Streamable HTTP for external 
 
 Create your `McpAgent` with the tools you want to expose:
 
-* [  JavaScript ](#tab-panel-4478)
-* [  TypeScript ](#tab-panel-4479)
+* [  JavaScript ](#tab-panel-5648)
+* [  TypeScript ](#tab-panel-5649)
 
 JavaScript
 
@@ -393,8 +395,8 @@ export class MyMCP extends McpAgent<Env, State> {
 
 In your `Agent`, call `addMcpServer()` with the Durable Object binding in `onStart()`:
 
-* [  JavaScript ](#tab-panel-4472)
-* [  TypeScript ](#tab-panel-4473)
+* [  JavaScript ](#tab-panel-5642)
+* [  TypeScript ](#tab-panel-5643)
 
 JavaScript
 
@@ -529,8 +531,8 @@ JSONC
 
 Route requests to your Chat agent:
 
-* [  JavaScript ](#tab-panel-4470)
-* [  TypeScript ](#tab-panel-4471)
+* [  JavaScript ](#tab-panel-5640)
+* [  TypeScript ](#tab-panel-5641)
 
 JavaScript
 
@@ -610,8 +612,8 @@ export default {
 
 Since RPC transport does not have an OAuth flow, you can pass user context directly as props:
 
-* [  JavaScript ](#tab-panel-4468)
-* [  TypeScript ](#tab-panel-4469)
+* [  JavaScript ](#tab-panel-5638)
+* [  TypeScript ](#tab-panel-5639)
 
 JavaScript
 
@@ -641,8 +643,8 @@ await this.addMcpServer("my-mcp", this.env.MyMCP, {
 
 Your `McpAgent` can then access these props:
 
-* [  JavaScript ](#tab-panel-4474)
-* [  TypeScript ](#tab-panel-4475)
+* [  JavaScript ](#tab-panel-5644)
+* [  TypeScript ](#tab-panel-5645)
 
 JavaScript
 
@@ -722,8 +724,8 @@ Props are type-safe (TypeScript extracts the Props type from your `McpAgent` gen
 
 The RPC transport has a configurable timeout for waiting for tool responses. By default, the server waits **60 seconds** for a tool handler to respond. You can customize this by overriding `getRpcTransportOptions()` in your `McpAgent`:
 
-* [  JavaScript ](#tab-panel-4480)
-* [  TypeScript ](#tab-panel-4481)
+* [  JavaScript ](#tab-panel-5650)
+* [  TypeScript ](#tab-panel-5651)
 
 JavaScript
 

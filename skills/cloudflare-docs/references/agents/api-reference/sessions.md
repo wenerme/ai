@@ -20,8 +20,8 @@ The Session API is under `agents/experimental/memory/session`. The API surface i
 
 ## Quick start
 
-* [  JavaScript ](#tab-panel-3988)
-* [  TypeScript ](#tab-panel-3989)
+* [  JavaScript ](#tab-panel-5192)
+* [  TypeScript ](#tab-panel-5193)
 
 JavaScript
 
@@ -127,8 +127,8 @@ class MyAgent extends Agent {
 
 Use `Session.create(agent)` with a chainable builder. Context providers without an explicit `provider` option are auto-wired to SQLite.
 
-* [  JavaScript ](#tab-panel-3974)
-* [  TypeScript ](#tab-panel-3975)
+* [  JavaScript ](#tab-panel-5178)
+* [  TypeScript ](#tab-panel-5179)
 
 JavaScript
 
@@ -172,8 +172,8 @@ const session = Session.create(this)
 
 For full control over providers:
 
-* [  JavaScript ](#tab-panel-3984)
-* [  TypeScript ](#tab-panel-3985)
+* [  JavaScript ](#tab-panel-5188)
+* [  TypeScript ](#tab-panel-5189)
 
 JavaScript
 
@@ -259,21 +259,22 @@ const session = new Session(new AgentSessionProvider(this), {
 
 All builder methods return `this` for chaining. Order does not matter — providers are resolved lazily on first use.
 
-| Method                        | Description                                                                                                |
-| ----------------------------- | ---------------------------------------------------------------------------------------------------------- |
-| Session.create(agent)         | Static factory. agent is any object with a sql tagged template method (your Agent or Durable Object).      |
-| .forSession(sessionId)        | Namespace this session by ID. Required for multi-session isolation when not using SessionManager.          |
-| .withContext(label, options?) | Add a context block. Refer to [Context blocks](#context-blocks).                                           |
-| .withCachedPrompt(provider?)  | Enable system prompt persistence. The prompt is frozen on first use and survives hibernation and eviction. |
-| .onCompaction(fn)             | Register a compaction function. Refer to [Compaction](#compaction).                                        |
-| .compactAfter(tokenThreshold) | Auto-compact when estimated token count exceeds the threshold. Requires .onCompaction().                   |
+| Method                                  | Description                                                                                                                                              |
+| --------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Session.create(agent)                   | Static factory. agent is any object with a sql tagged template method (your Agent or Durable Object).                                                    |
+| .forSession(sessionId)                  | Namespace this session by ID. Required for multi-session isolation when not using SessionManager.                                                        |
+| .withContext(label, options?)           | Add a context block. Refer to [Context blocks](#context-blocks).                                                                                         |
+| .withCachedPrompt(provider?)            | Enable system prompt persistence. The prompt is frozen on first use and survives hibernation and eviction.                                               |
+| .onCompaction(fn)                       | Register a compaction function. Refer to [Compaction](#compaction).                                                                                      |
+| .compactAfter(tokenThreshold, options?) | Auto-compact when estimated token count exceeds the threshold. Requires .onCompaction(). Pass { tokenCounter } to control how the threshold is measured. |
+| .onCompactionError(handler)             | Handle errors from automatic compaction. Handler failures are swallowed so message writes remain non-fatal.                                              |
 
 ## Messages
 
 Messages use the `SessionMessage` type — a minimal shape with `id`, `role`, `parts`, and optional `createdAt`. The AI SDK's `UIMessage` is structurally compatible and can be passed directly. The session stores messages in a tree structure via `parent_id`, enabling branching conversations.
 
-* [  JavaScript ](#tab-panel-3982)
-* [  TypeScript ](#tab-panel-3983)
+* [  JavaScript ](#tab-panel-5186)
+* [  TypeScript ](#tab-panel-5187)
 
 JavaScript
 
@@ -337,8 +338,8 @@ Session methods are async. SQLite-backed sessions are usually fast, but external
 
 ### Reading history
 
-* [  JavaScript ](#tab-panel-3990)
-* [  TypeScript ](#tab-panel-3991)
+* [  JavaScript ](#tab-panel-5194)
+* [  TypeScript ](#tab-panel-5195)
 
 JavaScript
 
@@ -406,8 +407,8 @@ const count = await session.getPathLength();
 
 Messages form a tree. When you `appendMessage` with a `parentId` that already has children, you create a branch. Use `getBranches()` to get all child messages branching from a given point:
 
-* [  JavaScript ](#tab-panel-3976)
-* [  TypeScript ](#tab-panel-3977)
+* [  JavaScript ](#tab-panel-5180)
+* [  TypeScript ](#tab-panel-5181)
 
 JavaScript
 
@@ -437,8 +438,8 @@ This powers features like response regeneration — pass the user message ID to 
 
 Full-text search over the conversation history using SQLite FTS5:
 
-* [  JavaScript ](#tab-panel-3978)
-* [  TypeScript ](#tab-panel-3979)
+* [  JavaScript ](#tab-panel-5182)
+* [  TypeScript ](#tab-panel-5183)
 
 JavaScript
 
@@ -483,8 +484,8 @@ There are four provider types, detected by duck-typing:
 
 **`AgentContextProvider`** — SQLite-backed writable context. This is the default when using the builder without an explicit provider.
 
-* [  JavaScript ](#tab-panel-3980)
-* [  TypeScript ](#tab-panel-3981)
+* [  JavaScript ](#tab-panel-5184)
+* [  TypeScript ](#tab-panel-5185)
 
 JavaScript
 
@@ -512,8 +513,8 @@ new AgentContextProvider(this, "memory");
 
 **`R2SkillProvider`** — Cloudflare R2 bucket for on-demand document loading. Skills are listed in the system prompt as metadata; the model loads full content on demand via `load_context`.
 
-* [  JavaScript ](#tab-panel-3986)
-* [  TypeScript ](#tab-panel-3987)
+* [  JavaScript ](#tab-panel-5190)
+* [  TypeScript ](#tab-panel-5191)
 
 JavaScript
 
@@ -549,8 +550,8 @@ Session.create(this).withContext("skills", {
 
 **`AgentSearchProvider`** — SQLite FTS5 searchable context. Entries are indexed and searchable by the model via `search_context`.
 
-* [  JavaScript ](#tab-panel-3992)
-* [  TypeScript ](#tab-panel-3993)
+* [  JavaScript ](#tab-panel-5196)
+* [  TypeScript ](#tab-panel-5197)
 
 JavaScript
 
@@ -592,8 +593,8 @@ Session.create(this).withContext("knowledge", {
 
 Blocks can be added and removed dynamically after initialization:
 
-* [  JavaScript ](#tab-panel-3998)
-* [  TypeScript ](#tab-panel-3999)
+* [  JavaScript ](#tab-panel-5202)
+* [  TypeScript ](#tab-panel-5203)
 
 JavaScript
 
@@ -655,8 +656,8 @@ Note
 
 ### Reading and writing context
 
-* [  JavaScript ](#tab-panel-4000)
-* [  TypeScript ](#tab-panel-4001)
+* [  JavaScript ](#tab-panel-5204)
+* [  TypeScript ](#tab-panel-5205)
 
 JavaScript
 
@@ -742,8 +743,8 @@ User prefers dark roast.
 
 ```
 
-* [  JavaScript ](#tab-panel-3996)
-* [  TypeScript ](#tab-panel-3997)
+* [  JavaScript ](#tab-panel-5200)
+* [  TypeScript ](#tab-panel-5201)
 
 JavaScript
 
@@ -783,8 +784,8 @@ The frozen prompt survives Durable Object hibernation and eviction when `withCac
 
 Session automatically generates tools based on the provider types of your context blocks. Pass these to your LLM alongside your own tools.
 
-* [  JavaScript ](#tab-panel-3994)
-* [  TypeScript ](#tab-panel-3995)
+* [  JavaScript ](#tab-panel-5198)
+* [  TypeScript ](#tab-panel-5199)
 
 JavaScript
 
@@ -834,8 +835,8 @@ Compaction summarizes older messages to keep conversations within token limits. 
 
 ### Setup
 
-* [  JavaScript ](#tab-panel-4008)
-* [  TypeScript ](#tab-panel-4009)
+* [  JavaScript ](#tab-panel-5212)
+* [  TypeScript ](#tab-panel-5213)
 
 JavaScript
 
@@ -861,6 +862,8 @@ const session = Session.create(this)
       tailTokenBudget: 20000,
 
       minTailMessages: 2,
+
+      tokenCounter: async (messages) => estimateWithYourTokenizer({ messages }),
 
     }),
 
@@ -896,6 +899,10 @@ const session = Session.create(this)
 
       minTailMessages: 2,
 
+      tokenCounter: async (messages) =>
+
+        estimateWithYourTokenizer({ messages }),
+
     }),
 
   )
@@ -918,8 +925,8 @@ When `getHistory()` is called, compaction overlays are applied transparently —
 
 ### Manual compaction
 
-* [  JavaScript ](#tab-panel-4002)
-* [  TypeScript ](#tab-panel-4003)
+* [  JavaScript ](#tab-panel-5206)
+* [  TypeScript ](#tab-panel-5207)
 
 JavaScript
 
@@ -957,9 +964,97 @@ const overlays = await session.getCompactions();
 
 When `.compactAfter(threshold)` is set, `appendMessage()` checks the estimated token count after each write. If it exceeds the threshold, `compact()` is called automatically. Auto-compaction failure is non-fatal — the message is already saved.
 
+By default, the estimate includes stored message parts plus the Session-managed frozen system prompt, so context blocks and cached prompts managed by `Session` contribute to the threshold. It does not include framework-specific prompt additions or tool schema serialization that happen outside `Session`.
+
+There are two token-counting decisions:
+
+* `.compactAfter(threshold, { tokenCounter })` controls **when** automatic compaction is triggered after writes.
+* `createCompactFunction({ tokenCounter })` controls **which** tail messages are protected from summarization. Use this when tool-heavy histories are much larger than the Workers-safe heuristic can estimate.
+
+You usually only need to configure one counter. The `.compactAfter()` counter also flows into `createCompactFunction`'s boundary walk (via `CompactContext`) when no explicit `createCompactFunction({ tokenCounter })` is given, so a single counter drives both "should we compact?" and "what should we compact?".
+
+Warning
+
+The flowed counter is invoked **per message** during the boundary walk. A tokenizer-style counter budgets accurately; a usage-only counter that returns a fixed whole-prompt total (for example `usage.inputTokens` regardless of which messages are passed) degrades the tail budget to `minTailMessages` — compaction still runs and context stays bounded, but the byte budget is effectively ignored. Pass an explicit per-message `createCompactFunction({ tokenCounter })` for precise tail budgeting.
+
+Use a custom counter when you have model-reported usage or your own tokenizer:
+
+* [  JavaScript ](#tab-panel-5216)
+* [  TypeScript ](#tab-panel-5217)
+
+JavaScript
+
+```
+
+const session = Session.create(this)
+
+  .onCompaction(myCompactFn)
+
+  .compactAfter(100_000, {
+
+    tokenCounter: async ({ messages, systemPrompt, contextBlocks }) => {
+
+      return estimateWithYourTokenizer({
+
+        messages,
+
+        systemPrompt,
+
+        contextBlocks,
+
+      });
+
+    },
+
+  })
+
+  .onCompactionError((err) => {
+
+    console.warn("Auto-compaction failed", err);
+
+  });
+
+
+```
+
+TypeScript
+
+```
+
+const session = Session.create(this)
+
+  .onCompaction(myCompactFn)
+
+  .compactAfter(100_000, {
+
+    tokenCounter: async ({ messages, systemPrompt, contextBlocks }) => {
+
+      return estimateWithYourTokenizer({
+
+        messages,
+
+        systemPrompt,
+
+        contextBlocks,
+
+      });
+
+    },
+
+  })
+
+  .onCompactionError((err) => {
+
+    console.warn("Auto-compaction failed", err);
+
+  });
+
+
+```
+
 Note
 
-Token estimation is heuristic (not tiktoken). It uses `max(chars/4, words*1.3)` with 4 tokens per-message overhead. Tiktoken would add 80–120 MB heap overhead, which exceeds Cloudflare Workers' 128 MB limit.
+The default token estimation is heuristic (not tiktoken). It uses `max(chars/4, words*1.3)` with 4 tokens per-message overhead, and also applies the string heuristic to the Session-managed system prompt. Tiktoken would add 80–120 MB heap overhead, which exceeds Cloudflare Workers' 128 MB limit.
 
 ## SessionManager
 
@@ -967,8 +1062,8 @@ Token estimation is heuristic (not tiktoken). It uses `max(chars/4, words*1.3)` 
 
 ### Creating a SessionManager
 
-* [  JavaScript ](#tab-panel-4006)
-* [  TypeScript ](#tab-panel-4007)
+* [  JavaScript ](#tab-panel-5210)
+* [  TypeScript ](#tab-panel-5211)
 
 JavaScript
 
@@ -1022,19 +1117,20 @@ Context blocks, prompt caching, and compaction settings are propagated to all se
 
 ### Builder methods
 
-| Method                        | Description                                                                                             |
-| ----------------------------- | ------------------------------------------------------------------------------------------------------- |
-| SessionManager.create(agent)  | Static factory.                                                                                         |
-| .withContext(label, options?) | Add context block template for all sessions.                                                            |
-| .withCachedPrompt(provider?)  | Enable prompt persistence for all sessions.                                                             |
-| .onCompaction(fn)             | Register compaction function for all sessions.                                                          |
-| .compactAfter(tokenThreshold) | Auto-compact threshold for all sessions.                                                                |
-| .withSearchableHistory(label) | Add a cross-session searchable history block. The model can search past conversations from any session. |
+| Method                                  | Description                                                                                             |
+| --------------------------------------- | ------------------------------------------------------------------------------------------------------- |
+| SessionManager.create(agent)            | Static factory.                                                                                         |
+| .withContext(label, options?)           | Add context block template for all sessions.                                                            |
+| .withCachedPrompt(provider?)            | Enable prompt persistence for all sessions.                                                             |
+| .onCompaction(fn)                       | Register compaction function for all sessions.                                                          |
+| .compactAfter(tokenThreshold, options?) | Auto-compact threshold for all sessions. Supports the same tokenCounter option as Session.              |
+| .onCompactionError(handler)             | Handle automatic compaction errors for managed sessions.                                                |
+| .withSearchableHistory(label)           | Add a cross-session searchable history block. The model can search past conversations from any session. |
 
 ### Session lifecycle
 
-* [  JavaScript ](#tab-panel-4018)
-* [  TypeScript ](#tab-panel-4019)
+* [  JavaScript ](#tab-panel-5224)
+* [  TypeScript ](#tab-panel-5225)
 
 JavaScript
 
@@ -1126,8 +1222,8 @@ await manager.delete(sessionId);
 
 ### Accessing sessions
 
-* [  JavaScript ](#tab-panel-4004)
-* [  TypeScript ](#tab-panel-4005)
+* [  JavaScript ](#tab-panel-5208)
+* [  TypeScript ](#tab-panel-5209)
 
 JavaScript
 
@@ -1159,8 +1255,8 @@ const session = manager.getSession(sessionId);
 
 These delegate to the underlying Session and update the session's `updated_at` timestamp:
 
-* [  JavaScript ](#tab-panel-4020)
-* [  TypeScript ](#tab-panel-4021)
+* [  JavaScript ](#tab-panel-5226)
+* [  TypeScript ](#tab-panel-5227)
 
 JavaScript
 
@@ -1248,8 +1344,8 @@ await manager.deleteMessages(sessionId, ["msg-1"]);
 
 Fork a session at a specific message — copies history up to that point into a new session:
 
-* [  JavaScript ](#tab-panel-4010)
-* [  TypeScript ](#tab-panel-4011)
+* [  JavaScript ](#tab-panel-5214)
+* [  TypeScript ](#tab-panel-5215)
 
 JavaScript
 
@@ -1275,8 +1371,8 @@ const forked = await manager.fork(sessionId, atMessageId, "Forked Chat");
 
 ### Compaction helpers
 
-* [  JavaScript ](#tab-panel-4016)
-* [  TypeScript ](#tab-panel-4017)
+* [  JavaScript ](#tab-panel-5222)
+* [  TypeScript ](#tab-panel-5223)
 
 JavaScript
 
@@ -1340,8 +1436,8 @@ const continuation = await manager.compactAndSplit(
 
 ### Usage tracking
 
-* [  JavaScript ](#tab-panel-4012)
-* [  TypeScript ](#tab-panel-4013)
+* [  JavaScript ](#tab-panel-5218)
+* [  TypeScript ](#tab-panel-5219)
 
 JavaScript
 
@@ -1363,8 +1459,8 @@ await manager.addUsage(sessionId, inputTokens, outputTokens, cost);
 
 ### Cross-session search
 
-* [  JavaScript ](#tab-panel-4014)
-* [  TypeScript ](#tab-panel-4015)
+* [  JavaScript ](#tab-panel-5220)
+* [  TypeScript ](#tab-panel-5221)
 
 JavaScript
 
@@ -1402,8 +1498,8 @@ const tools = await manager.tools();
 
 Implement any of the four provider interfaces to plug in your own storage:
 
-* [  JavaScript ](#tab-panel-4022)
-* [  TypeScript ](#tab-panel-4023)
+* [  JavaScript ](#tab-panel-5228)
+* [  TypeScript ](#tab-panel-5229)
 
 JavaScript
 
@@ -1515,8 +1611,8 @@ const mySearch: SearchProvider = {
 
 You can also implement `SessionProvider` to replace the SQLite storage entirely:
 
-* [  JavaScript ](#tab-panel-4024)
-* [  TypeScript ](#tab-panel-4025)
+* [  JavaScript ](#tab-panel-5230)
+* [  TypeScript ](#tab-panel-5231)
 
 JavaScript
 
@@ -1707,8 +1803,8 @@ npx wrangler hyperdrive create my-session-db \
 
 Then add the Hyperdrive binding to `wrangler.jsonc`:
 
-* [  wrangler.jsonc ](#tab-panel-3972)
-* [  wrangler.toml ](#tab-panel-3973)
+* [  wrangler.jsonc ](#tab-panel-5176)
+* [  wrangler.toml ](#tab-panel-5177)
 
 JSONC
 
@@ -1888,8 +1984,8 @@ pnpm add pg
 bun add pg
 ```
 
-* [  JavaScript ](#tab-panel-4026)
-* [  TypeScript ](#tab-panel-4027)
+* [  JavaScript ](#tab-panel-5232)
+* [  TypeScript ](#tab-panel-5233)
 
 JavaScript
 
@@ -2107,7 +2203,7 @@ By default, storage is in Durable Object SQLite and tables are created lazily on
 
 ## Related
 
-* [Think](https://developers.cloudflare.com/agents/api-reference/think/) — opinionated chat agent that uses Session for conversation storage via `configureSession()`
+* [Think](https://developers.cloudflare.com/agents/think/) — opinionated chat agent that uses Session for conversation storage via `configureSession()`
 * [Chat agents](https://developers.cloudflare.com/agents/api-reference/chat-agents/) — `AIChatAgent` with its own message persistence layer
 * [Store and sync state](https://developers.cloudflare.com/agents/api-reference/store-and-sync-state/) — `setState()` for simpler key-value persistence
 

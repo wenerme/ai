@@ -39,7 +39,7 @@ Agents can loop, branch, and interact directly with users. Workflows execute ste
 * Quick API calls and responses
 * Real-time collaborative features
 * Tasks under 30 seconds
-* One durable Think chat turn with [submitMessages()](https://developers.cloudflare.com/agents/api-reference/think/#submitmessages)
+* One durable Think chat turn with [submitMessages()](https://developers.cloudflare.com/agents/think/programmatic-submissions/#submitmessages)
 
 **Use Agents with Workflows for:**
 
@@ -68,8 +68,8 @@ Workflows can communicate with Agents through several mechanisms:
 * **State updates**: Modify Agent state via `step.updateAgentState()` or `step.mergeAgentState()`, which broadcasts to connected clients
 * **Client broadcasts**: Send messages to all WebSocket clients via `this.broadcastToClients()`
 
-* [  JavaScript ](#tab-panel-4276)
-* [  TypeScript ](#tab-panel-4277)
+* [  JavaScript ](#tab-panel-5444)
+* [  TypeScript ](#tab-panel-5445)
 
 JavaScript
 
@@ -163,8 +163,8 @@ When an Agent starts a workflow using `runWorkflow()`, the workflow is automatic
 
 An Agent receives a request, starts a Workflow for heavy processing, and broadcasts progress updates to connected clients as the Workflow executes each step.
 
-* [  JavaScript ](#tab-panel-4278)
-* [  TypeScript ](#tab-panel-4279)
+* [  JavaScript ](#tab-panel-5446)
+* [  TypeScript ](#tab-panel-5447)
 
 JavaScript
 
@@ -224,8 +224,8 @@ A Workflow prepares a request, pauses to wait for approval using `waitForApprova
 
 A Workflow wraps external API calls in durable steps with retry logic. If the API fails or the workflow restarts, completed calls are not repeated and failed calls retry automatically.
 
-* [  JavaScript ](#tab-panel-4280)
-* [  TypeScript ](#tab-panel-4281)
+* [  JavaScript ](#tab-panel-5448)
+* [  TypeScript ](#tab-panel-5449)
 
 JavaScript
 

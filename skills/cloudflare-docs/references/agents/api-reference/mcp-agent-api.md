@@ -14,8 +14,8 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 When you build MCP Servers on Cloudflare, you extend the [McpAgent class ↗](https://github.com/cloudflare/agents/blob/main/packages/agents/src/mcp.ts), from the Agents SDK:
 
-* [  JavaScript ](#tab-panel-3596)
-* [  TypeScript ](#tab-panel-3597)
+* [  JavaScript ](#tab-panel-4826)
+* [  TypeScript ](#tab-panel-4827)
 
 JavaScript
 
@@ -126,8 +126,8 @@ You can use the APIs below in order to do so.
 
 The `McpAgent.serve()` static method creates a Worker handler that routes requests to your MCP server:
 
-* [  JavaScript ](#tab-panel-3598)
-* [  TypeScript ](#tab-panel-3599)
+* [  JavaScript ](#tab-panel-4828)
+* [  TypeScript ](#tab-panel-4829)
 
 JavaScript
 
@@ -207,8 +207,8 @@ This is the simplest way to deploy an MCP server — about 15 lines of code. The
 
 When using the [OAuth Provider Library ↗](https://github.com/cloudflare/workers-oauth-provider), pass your MCP server to `apiHandlers`:
 
-* [  JavaScript ](#tab-panel-3592)
-* [  TypeScript ](#tab-panel-3593)
+* [  JavaScript ](#tab-panel-4820)
+* [  TypeScript ](#tab-panel-4821)
 
 JavaScript
 
@@ -262,8 +262,8 @@ export default new OAuthProvider({
 
 For GDPR and data residency compliance, specify a jurisdiction to ensure your MCP server instances run in specific regions:
 
-* [  JavaScript ](#tab-panel-3590)
-* [  TypeScript ](#tab-panel-3591)
+* [  JavaScript ](#tab-panel-4818)
+* [  TypeScript ](#tab-panel-4819)
 
 JavaScript
 
@@ -289,8 +289,8 @@ export default MyMCP.serve("/mcp", { jurisdiction: "eu" });
 
 With OAuth:
 
-* [  JavaScript ](#tab-panel-3594)
-* [  TypeScript ](#tab-panel-3595)
+* [  JavaScript ](#tab-panel-4824)
+* [  TypeScript ](#tab-panel-4825)
 
 JavaScript
 
@@ -344,6 +344,44 @@ Available jurisdictions include `"eu"` (European Union) and `"fedramp"` (FedRAMP
 
 Hibernation is enabled by default and requires no additional configuration.
 
+## Stream resumability
+
+`McpAgent`'s Streamable HTTP transport survives the roughly 5-minute Cloudflare edge idle-stream watchdog so in-flight tool calls are not lost on a flaky connection:
+
+* **GET (standalone listen stream)** — when an `EventStore` is configured, idle drops are recovered by clients reconnecting with a `Last-Event-ID` header (no keepalive needed). Without an `EventStore`, a comment-frame keepalive (`: keepalive`, every 25 seconds) keeps long-lived listeners alive.
+* **POST (tool response stream)** — always keepalive, so in-flight tool calls survive the idle watchdog. POST streams can additionally be resumed via `Last-Event-ID` when an `EventStore` is configured; a reconnecting client replays any events it missed up to and including the final response. Each POST stream's events are cleared when its close frame is written.
+
+`DurableObjectEventStore` is exported from `agents/mcp` for stateful `WorkerTransport` callers that embed the transport inside an Agent or Durable Object:
+
+* [  JavaScript ](#tab-panel-4822)
+* [  TypeScript ](#tab-panel-4823)
+
+JavaScript
+
+```
+
+import { DurableObjectEventStore } from "agents/mcp";
+
+
+const eventStore = new DurableObjectEventStore(this.ctx.storage);
+
+
+```
+
+TypeScript
+
+```
+
+import { DurableObjectEventStore } from "agents/mcp";
+
+
+const eventStore = new DurableObjectEventStore(this.ctx.storage);
+
+
+```
+
+Refer to [MCP Transport](https://developers.cloudflare.com/agents/model-context-protocol/transport/) for transport configuration.
+
 ## Authentication and authorization
 
 The McpAgent class provides seamless integration with the [OAuth Provider Library ↗](https://github.com/cloudflare/workers-oauth-provider) for [authentication and authorization](https://developers.cloudflare.com/agents/model-context-protocol/authorization/).
@@ -371,8 +409,8 @@ Currently, each client session is backed by an instance of the `McpAgent` class.
 
 For example, the following code implements an MCP server that remembers a counter value, and updates the counter when the `add` tool is called:
 
-* [  JavaScript ](#tab-panel-3602)
-* [  TypeScript ](#tab-panel-3603)
+* [  JavaScript ](#tab-panel-4832)
+* [  TypeScript ](#tab-panel-4833)
 
 JavaScript
 
@@ -579,8 +617,8 @@ Request structured input from the user during tool execution.
 
 **Returns:** `Promise<{ action: "accept" | "decline", content?: object }>`
 
-* [  JavaScript ](#tab-panel-3604)
-* [  TypeScript ](#tab-panel-3605)
+* [  JavaScript ](#tab-panel-4834)
+* [  TypeScript ](#tab-panel-4835)
 
 JavaScript
 
@@ -918,8 +956,8 @@ const schema = {
 
 ### Handling responses
 
-* [  JavaScript ](#tab-panel-3600)
-* [  TypeScript ](#tab-panel-3601)
+* [  JavaScript ](#tab-panel-4830)
+* [  TypeScript ](#tab-panel-4831)
 
 JavaScript
 

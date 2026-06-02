@@ -31,7 +31,7 @@ Learn more about what Agents can do, the `Agent` class, and the APIs that Agents
 * [ Sub-agents ](https://developers.cloudflare.com/agents/api-reference/sub-agents/)
 * [ Agent tools ](https://developers.cloudflare.com/agents/api-reference/agent-tools/)
 * [ Email ](https://developers.cloudflare.com/agents/api-reference/email/)
-* [ Think ](https://developers.cloudflare.com/agents/api-reference/think/)
+* [ Agent Skills ](https://developers.cloudflare.com/agents/api-reference/agent-skills/)
 * [ Sessions ](https://developers.cloudflare.com/agents/api-reference/sessions/)
 * [ Codemode ](https://developers.cloudflare.com/agents/api-reference/codemode/)
 * [ Using AI Models ](https://developers.cloudflare.com/agents/api-reference/using-ai-models/)

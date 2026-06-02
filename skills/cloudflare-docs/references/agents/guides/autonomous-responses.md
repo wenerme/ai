@@ -41,8 +41,8 @@ Use `saveMessages()` when the caller can wait for the model turn to finish.
 
 Use `submitMessages()` with Think when the caller needs a fast durable receipt, idempotent retry, and later status inspection. This is useful for webhook handlers, RPC callers, and parent Workers with strict timeout limits:
 
-* [  JavaScript ](#tab-panel-4372)
-* [  TypeScript ](#tab-panel-4373)
+* [  JavaScript ](#tab-panel-5504)
+* [  TypeScript ](#tab-panel-5505)
 
 JavaScript
 
@@ -132,7 +132,7 @@ return Response.json({
 
 Use [startFiber()](https://developers.cloudflare.com/agents/api-reference/durable-execution/#startfiber) outside Think when the durable unit is a surrounding application job, such as accepting a webhook once, restoring provider state, posting a visible reply, and recording recovery policy. `submitMessages()` owns Think's conversation admission; managed fibers own external side effects around that turn.
 
-For the full Think API, refer to [submitMessages()](https://developers.cloudflare.com/agents/api-reference/think/#submitmessages).
+For the full Think API, refer to [submitMessages()](https://developers.cloudflare.com/agents/think/programmatic-submissions/#submitmessages).
 
 ### When to use `saveMessages` vs `onChatResponse`
 
@@ -152,8 +152,8 @@ Always call `waitUntilStable()` before reading `this.messages` or calling `saveM
 
 It returns `true` when stable, or `false` if the timeout expires before a pending interaction resolves. If nothing is pending, it returns immediately.
 
-* [  JavaScript ](#tab-panel-4370)
-* [  TypeScript ](#tab-panel-4371)
+* [  JavaScript ](#tab-panel-5502)
+* [  TypeScript ](#tab-panel-5503)
 
 JavaScript
 
@@ -209,8 +209,8 @@ Without this guard, you risk reading stale messages or overlapping with an in-fl
 
 A daily digest agent that summarizes activity every morning. Cron schedules are idempotent by default, so calling `schedule()` in `onStart` is safe — it does not create duplicates across Durable Object restarts.
 
-* [  JavaScript ](#tab-panel-4378)
-* [  TypeScript ](#tab-panel-4379)
+* [  JavaScript ](#tab-panel-5510)
+* [  TypeScript ](#tab-panel-5511)
 
 JavaScript
 
@@ -644,8 +644,8 @@ async addBackgroundContext(data: string) {
 
 ### Broadcasting state
 
-* [  JavaScript ](#tab-panel-4374)
-* [  TypeScript ](#tab-panel-4375)
+* [  JavaScript ](#tab-panel-5506)
+* [  TypeScript ](#tab-panel-5507)
 
 JavaScript
 
@@ -953,8 +953,8 @@ The `messageConcurrency` setting on `AIChatAgent` controls how overlapping user 
 
 Pass an `AbortSignal` when the same Durable Object starts and controls the turn:
 
-* [  JavaScript ](#tab-panel-4376)
-* [  TypeScript ](#tab-panel-4377)
+* [  JavaScript ](#tab-panel-5508)
+* [  TypeScript ](#tab-panel-5509)
 
 JavaScript
 
@@ -1028,7 +1028,7 @@ if (result.status === "aborted") {
 
 ```
 
-`continueLastTurn()` accepts the same `options.signal` argument. `AbortSignal` objects cannot cross Durable Object RPC boundaries, and the signal is in memory only. If the Durable Object hibernates mid-turn and chat recovery is enabled, the recovered turn runs without the original signal.
+`continueLastTurn()` accepts the same `options.signal` argument. `AbortSignal` objects cannot cross Durable Object RPC boundaries, and the signal is in memory only. If the Durable Object hibernates mid-turn and chat recovery is enabled, the recovered turn usually continues without the original signal; for pre-stream interruptions, recovery can instead retry the latest unanswered user message automatically. An abort fired after restart has no effect on the recovered turn.
 
 Use `cancelSubmission(submissionId)` for durable cancellation when work was accepted with `submitMessages()` or when cancellation must cross Worker and Durable Object RPC boundaries.
 

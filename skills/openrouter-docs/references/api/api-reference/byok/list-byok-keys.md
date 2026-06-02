@@ -128,7 +128,6 @@ components:
         - google-ai-studio
         - google-vertex
         - groq
-        - hyperbolic
         - inception
         - inceptron
         - inference-net
@@ -217,7 +216,6 @@ components:
         - google-ai-studio
         - google-vertex
         - groq
-        - hyperbolic
         - inception
         - inceptron
         - inference-net

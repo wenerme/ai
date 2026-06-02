@@ -26,8 +26,8 @@ If you are not the website owner, provide the website owner with a screenshot of
 
 If you are the website owner:
 
-* [  New dashboard ](#tab-panel-8059)
-* [ Old dashboard ](#tab-panel-8060)
+* [  New dashboard ](#tab-panel-10057)
+* [ Old dashboard ](#tab-panel-10058)
 
 1. Retrieve a screenshot of the 1020 error from your customer.
 2. Search the [Security Events log](https://developers.cloudflare.com/waf/analytics/security-events/) (available at **Security** \> **Analytics**, in the **Events** tab) for the [Ray ID](https://developers.cloudflare.com/fundamentals/reference/cloudflare-ray-id/) or client IP address from the visitor's 1020 error message.  

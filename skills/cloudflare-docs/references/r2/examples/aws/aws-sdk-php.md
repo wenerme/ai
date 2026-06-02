@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 # aws-sdk-php
 
-**Last reviewed:**  almost 4 years ago 
+**Last reviewed:**  about 4 years ago 
 
 Example of how to configure `aws-sdk-php` to use R2.
 

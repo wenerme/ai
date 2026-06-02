@@ -528,10 +528,6 @@ With Enterprise accounts, you also have the option to change the SOA record valu
 * As a DNS zone default: Define the SOA record values that Cloudflare will use for all new zones added to your account. Refer to [Configure DNS zone defaults](https://developers.cloudflare.com/dns/additional-options/dns-zone-defaults/) for step-by-step guidance.
 * For existing zones: Override the defaults or Cloudflare-generated values under **DNS record options** on the [**DNS Records** ↗](https://dash.cloudflare.com/?to=/:account/:zone/dns/records) page.
 
-Note
-
-If you are an Enterprise customer and these options are not displayed on your Cloudflare dashboard, reach out to your account team.
-
 Refer to the following list for information about each SOA record field:
 
 SOA record fields
@@ -564,6 +560,10 @@ The `@` symbol is replaced by the first dot. If an email address contains a dot 
 | Default | Minimum | Maximum |  
 | ------- | ------- | ------- |  
 | 1800    | 60      | 86400   |
+
+Note
+
+When you query the SOA record itself, the TTL in the response is the smaller of the `Record TTL` and the `Minimum TTL` values. For example, if `Record TTL` is `3600` and `Minimum TTL` is `1800`, the SOA record is returned with a TTL of `1800`.
 
 ### NS
 

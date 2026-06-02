@@ -61,9 +61,9 @@
   },
   "changelog.md": {
     "url": "https://raw.githubusercontent.com/anthropics/claude-code/main/CHANGELOG.md",
-    "etag": "W/\"27e00fed785d49c6e56667d634d35b85c9efead19debc44255baf09c4a47af6e\"",
-    "size": 345322,
-    "updatedAt": "2026-06-01T00:30:07.488Z"
+    "etag": "W/\"eaebfe010ebfde5c5466a9dd13309633577ba59089f87b7a9bd7781189e62da1\"",
+    "size": 349131,
+    "updatedAt": "2026-06-02T11:29:17.988Z"
   },
   "channels.md": {
     "url": "https://code.claude.com/docs/en/channels",
@@ -337,9 +337,15 @@
   },
   "mcp.md": {
     "url": "https://code.claude.com/docs/en/mcp",
-    "lastModified": "Sat, 30 May 2026 00:29:17 GMT",
-    "size": 49145,
-    "updatedAt": "2026-05-30T00:29:17.970Z"
+    "lastModified": "Tue, 02 Jun 2026 11:28:36 GMT",
+    "size": 49327,
+    "updatedAt": "2026-06-02T11:28:36.283Z"
+  },
+  "mcp-quickstart.md": {
+    "url": "https://code.claude.com/docs/en/mcp-quickstart",
+    "lastModified": "Tue, 02 Jun 2026 11:28:36 GMT",
+    "size": 22293,
+    "updatedAt": "2026-06-02T11:28:37.005Z"
   },
   "memory.md": {
     "url": "https://code.claude.com/docs/en/memory",
@@ -379,9 +385,9 @@
   },
   "overview.md": {
     "url": "https://code.claude.com/docs/en/overview",
-    "lastModified": "Mon, 18 May 2026 23:24:29 GMT",
-    "size": 15033,
-    "updatedAt": "2026-05-19T00:28:28.076Z"
+    "lastModified": "Tue, 02 Jun 2026 11:28:42 GMT",
+    "size": 15113,
+    "updatedAt": "2026-06-02T11:28:42.093Z"
   },
   "permission-modes.md": {
     "url": "https://code.claude.com/docs/en/permission-modes",
@@ -427,9 +433,9 @@
   },
   "plugins-reference.md": {
     "url": "https://code.claude.com/docs/en/plugins-reference",
-    "lastModified": "Sat, 30 May 2026 00:29:27 GMT",
-    "size": 76569,
-    "updatedAt": "2026-05-30T00:29:27.970Z"
+    "lastModified": "Tue, 02 Jun 2026 11:28:47 GMT",
+    "size": 76363,
+    "updatedAt": "2026-06-02T11:28:47.406Z"
   },
   "prompt-caching.md": {
     "url": "https://code.claude.com/docs/en/prompt-caching",
@@ -505,9 +511,9 @@
   },
   "settings.md": {
     "url": "https://code.claude.com/docs/en/settings",
-    "lastModified": "Sat, 30 May 2026 00:29:35 GMT",
-    "size": 135278,
-    "updatedAt": "2026-05-30T00:29:35.855Z"
+    "lastModified": "Tue, 02 Jun 2026 11:28:56 GMT",
+    "size": 135307,
+    "updatedAt": "2026-06-02T11:28:56.930Z"
   },
   "setup.md": {
     "url": "https://code.claude.com/docs/en/setup",
@@ -601,9 +607,9 @@
   },
   "workflows.md": {
     "url": "https://code.claude.com/docs/en/workflows",
-    "lastModified": "Tue, 02 Jun 2026 00:34:34 GMT",
-    "size": 19413,
-    "updatedAt": "2026-06-02T00:34:34.998Z"
+    "lastModified": "Tue, 02 Jun 2026 11:29:16 GMT",
+    "size": 20069,
+    "updatedAt": "2026-06-02T11:29:16.759Z"
   },
   "worktrees.md": {
     "url": "https://code.claude.com/docs/en/worktrees",

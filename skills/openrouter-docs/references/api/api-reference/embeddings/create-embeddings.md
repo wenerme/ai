@@ -342,7 +342,6 @@ components:
         - Google
         - Google AI Studio
         - Groq
-        - Hyperbolic
         - Inception
         - Inceptron
         - InferenceNet

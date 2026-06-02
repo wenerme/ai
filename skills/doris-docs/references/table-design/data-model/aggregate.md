@@ -163,7 +163,7 @@ The computation in the table at this point is shown in the following figure:
 
 [state-func-group-concat-state-result-2]
 
-The query results are as follows:
+Because `group_concat` is order-sensitive, the result is unstable. The query results are as follows:
 
 ```sql
 mysql> SELECT sum(v1), group_concat_merge(v2) FROM aggstate;
