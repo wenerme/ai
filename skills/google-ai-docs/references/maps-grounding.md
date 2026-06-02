@@ -7,7 +7,6 @@ are relevant to the user's specified location or general area.
 
 - **Accurate, location-aware responses:** Leverage Google Maps' extensive and current data for geographically specific queries.
 - **Enhanced personalization:** Tailor recommendations and information based on user-provided locations.
-- **Contextual information and widgets:** Context tokens to render interactive Google Maps widgets alongside generated content.
 
 ## Get started
 
@@ -124,7 +123,7 @@ The process typically involves:
 2. **Tool invocation:** The Gemini model, recognizing the geographical intent, invokes the Grounding with Google Maps tool. This tool can optionally be provided with the user's `latitude` and `longitude`. The tool is a textual search tool and behaves similarly to searching on Maps, in that local queries ("near me") will use the coordinates, while specific or non-local queries are unlikely to be influenced by the explicit location.
 3. **Data retrieval:** The Grounding with Google Maps service queries Google Maps for relevant information (e.g., places, reviews, photos, addresses, opening hours).
 4. **Grounded generation:** The retrieved Maps data is used to inform the Gemini model's response, ensuring factual accuracy and relevance.
-5. **Response \& widget token:** The model returns a text response, which includes citations to Google Maps sources. Optionally, the API response may also contain a `google_maps_widget_context_token`, allowing developers to render a contextual Google Maps widget in their application for visual interaction.
+5. **Response:** The model returns a text response, which includes citations to Google Maps sources.
 
 ## Why and when to use Grounding with Google Maps
 
@@ -161,23 +160,6 @@ request.
         ]
       }],
       "tools":  { "googleMaps": {} }
-    }
-
-The [`googleMaps`](https://ai.google.dev/api/caching#GoogleMaps) tool can additionally accept a
-boolean `enableWidget` parameter, that is used to control whether the
-[`googleMapsWidgetContextToken`](https://ai.google.dev/api/generate-content#GroundingMetadata)
-field is returned in the response. This can be used to display a
-[contextual Places widget](https://developers.google.com/maps/documentation/javascript/reference/places-widget).
-
-### JSON
-
-    {
-    "contents": [{
-        "parts": [
-          {"text": "Restaurants near Times Square."}
-        ]
-      }],
-      "tools":  { "googleMaps": { "enableWidget": true } }
     }
 
 Additionally, the tool supports passing the contextual location as `toolConfig`.
@@ -246,8 +228,7 @@ requirements.
             ],
             "webSearchQueries": [
               "restaurants near me"
-            ],
-            "googleMapsWidgetContextToken": "widgetcontent/..."
+            ]
           }
         }
       ]
@@ -258,17 +239,10 @@ The Gemini API returns the following information with the
 
 - `groundingChunks`: Array of objects containing the `maps` sources (`uri`, `placeId` and `title`).
 - `groundingSupports`: Array of chunks to connect model response text to the sources in `groundingChunks`. Each chunk links a text span (defined by `startIndex` and `endIndex`) to one or more `groundingChunkIndices`. This is the key to building inline citations.
-- `googleMapsWidgetContextToken`: A text token that can be used to render a [contextual Places widget](https://developers.google.com/maps/documentation/javascript/reference/places-widget).
 
 For a code snippet showing how to render inline citations in text, see [the
 example](https://ai.google.dev/gemini-api/docs/google-search#attributing_sources_with_inline_citations)
 in the Grounding with Google Search docs.
-
-### Display the Google Maps contextual widget
-
-To use the returned `googleMapsWidgetContextToken`, you need to [load the
-Google Maps JavaScript
-API](https://developers.google.com/maps/documentation/javascript/load-maps-js-api).
 
 ## Use cases
 
@@ -484,12 +458,6 @@ area.
 Generate multi-day plans with directions and information about various
 locations, perfect for travel applications.
 
-In this example, the `googleMapsWidgetContextToken` has been requested by
-enabling the widget in the Google Maps tool. When enabled, the returned token
-can be used to render a contextual Places widget using the
-`https://developers.google.com/maps/documentation/javascript/reference/places-widget#PlaceContextualElement`
-from the Google Maps JavaScript API.
-
 ### Python
 
     from google import genai
@@ -503,7 +471,7 @@ from the Google Maps JavaScript API.
         model='gemini-3.5-flash',
         contents=prompt,
         config=types.GenerateContentConfig(
-          tools=[types.Tool(google_maps=types.GoogleMaps(enable_widget=True))],
+          tools=[types.Tool(google_maps=types.GoogleMaps())],
           tool_config=types.ToolConfig(retrieval_config=types.RetrievalConfig(
               # Provide the location as context, this is in San Francisco.
               lat_lng=types.LatLng(
@@ -521,10 +489,6 @@ from the Google Maps JavaScript API.
         for chunk in grounding.grounding_chunks:
           print(f'- [{chunk.maps.title}]({chunk.maps.uri})')
 
-      if widget_token := grounding.google_maps_widget_context_token:
-        print('-' * 40)
-        print(f'<gmp-place-contextual context-token="{widget_token}"></gmp-place-contextual>')
-
 ### Javascript
 
     import { GoogleGenAI } from '@google/genai';
@@ -538,7 +502,7 @@ from the Google Maps JavaScript API.
         model: 'gemini-3.5-flash',
         contents: prompt,
         config: {
-          tools: [{googleMaps: {enableWidget: true}}],
+          tools: [{googleMaps: {}}],
           toolConfig: {
             retrievalConfig: {
               // Provide the location as context, this is in San Francisco.
@@ -565,11 +529,6 @@ from the Google Maps JavaScript API.
             }
           }
         }
-
-        if (groundingMetadata.googleMapsWidgetContextToken) {
-          console.log('-'.repeat(40));
-          document.body.insertAdjacentHTML('beforeend', `<gmp-place-contextual context-token="${groundingMetadata.googleMapsWidgetContextToken}`"></gmp-place-contextual>`);
-        }
       }
     }
 
@@ -587,17 +546,13 @@ from the Google Maps JavaScript API.
           "text": "Plan a day in San Francisco for me. I want to see the Golden Gate Bridge, visit a museum, and have a nice dinner."
         }]
       }],
-      "tools": [{"googleMaps": {"enableWidget":"true"}}],
+      "tools": [{"googleMaps": {}}],
       "toolConfig": {
         "retrievalConfig": {
         "latLng": {"latitude": 37.78193, "longitude": -122.40476}
       }
       }
     }'
-
-When the widget is rendered, it will look something like the following:
-
-![An example of a maps widget when rendered](https://ai.google.dev/static/gemini-api/docs/images/maps/maps-widget.png)
 
 ## Service usage requirements
 
@@ -688,12 +643,11 @@ color on a white or light background.
     color: #5e5e5e;
     }
 
-### Context token, place ID, and review ID
+### Place ID and review ID
 
-The Google Maps data includes context token, place ID, and review ID. You might
+The Google Maps data includes place ID and review ID. You might
 cache, store, and export the following response data:
 
-- `googleMapsWidgetContextToken`
 - `placeId`
 - `reviewId`
 
@@ -712,8 +666,6 @@ restrictions in the [Terms](https://ai.google.dev/gemini-api/terms#grounding-wit
 ## Best practices
 
 - **Provide user location:** For the most relevant and personalized responses, always include the `user_location` (latitude and longitude) in your `googleMapsGrounding` configuration when the user's location is known.
-- **Render the Google Maps contextual widget:** The contextual widget is rendered using the context token, `googleMapsWidgetContextToken`, which is returned in the Gemini API response and can be used to render visual content from Google Maps. For more information on the contextual widget, see [Grounding with Google Maps
-  widget](https://developers.google.com/maps/documentation/javascript/maps-grounding-widget) in the Google Developer Guide.
 - **Inform End-Users:** Clearly inform your end-users that Google Maps data is being used to answer their queries, especially when the tool is enabled.
 - **Monitor Latency:** For conversational applications, ensure that the P95 latency for grounded responses remains within acceptable thresholds to maintain a smooth user experience.
 - **Toggle Off When Not Needed:** Grounding with Google Maps is off by default. Only enable it (`"tools": [{"googleMaps": {}}]`) when a query has a clear geographical context, to optimize performance and cost.
@@ -722,7 +674,7 @@ restrictions in the [Terms](https://ai.google.dev/gemini-api/terms#grounding-wit
 
 - **Geographical Scope:** Grounding with Google Maps is globally available
 - **Model Support:** See the [Supported models](https://ai.google.dev/gemini-api/docs/maps-grounding#supported-models) section.
-- **Multimodal Inputs/Outputs:** Grounding with Google Maps does not currently support multimodal inputs or outputs beyond text and contextual map widgets.
+- **Multimodal Inputs/Outputs:** Grounding with Google Maps does not currently support multimodal inputs or outputs beyond text.
 - **Default State:** The Grounding with Google Maps tool is off by default. You must explicitly enable it in your API requests.
 
 ## Pricing and rate limits
@@ -753,7 +705,6 @@ The following models support Grounding with Google Maps:
 | [Gemini 2.5 Pro](https://ai.google.dev/gemini-api/docs/models/gemini-2.5-pro) | ✔️ |
 | [Gemini 2.5 Flash](https://ai.google.dev/gemini-api/docs/models/gemini-2.5-flash) | ✔️ |
 | [Gemini 2.5 Flash-Lite](https://ai.google.dev/gemini-api/docs/models/gemini-2.5-flash-lite) | ✔️ |
-| [Gemini 2.0 Flash](https://ai.google.dev/gemini-api/docs/models/gemini-2.0-flash) | ✔️ |
 
 ## Supported tool combinations
 

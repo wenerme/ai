@@ -42,8 +42,8 @@ For more information on bot score, refer to [Bot scores](https://developers.clou
 
 To turn on a traffic detection:
 
-* [  New dashboard ](#tab-panel-8253)
-* [ Old dashboard ](#tab-panel-8254)
+* [  New dashboard ](#tab-panel-10217)
+* [ Old dashboard ](#tab-panel-10218)
 
 1. In the Cloudflare dashboard, go to the Security **Settings** page.  
 [ Go to **Settings** ](https://dash.cloudflare.com/?to=/:account/:zone/security/settings)

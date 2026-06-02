@@ -28,8 +28,8 @@ FLUX.2 \[max\] is Black Forest Labs' highest-quality image model — top editing
 
 ## Usage
 
-* [ TypeScript ](#tab-panel-282)
-* [ cURL ](#tab-panel-283)
+* [ TypeScript ](#tab-panel-298)
+* [ cURL ](#tab-panel-299)
 
 TypeScript
 
@@ -45,17 +45,11 @@ const response = await env.AI.run(
 
       'A cat on its back legs running like a human is holding a big silver fish with its arms. The cat is running away from the shop owner and has a panicked look on his face. The scene is situated in a crowded market.',
 
-    width: 1440,
-
     height: 2048,
 
+    width: 1440,
+
   },
-
-  {
-
-    gateway: { id: 'default' },
-
-  }
 
 )
 
@@ -80,9 +74,9 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
   "input": {
 
-    "height": 2048,
-
     "prompt": "A cat on its back legs running like a human is holding a big silver fish with its arms. The cat is running away from the shop owner and has a panicked look on his face. The scene is situated in a crowded market.",
+
+    "height": 2048,
 
     "width": 1440
 
@@ -93,8 +87,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 ```
 
-* [ Output ](#tab-panel-278)
-* [ Raw response ](#tab-panel-279)
+* [ Output ](#tab-panel-296)
+* [ Raw response ](#tab-panel-297)
 
 ![High Resolution Scene](https://examples.aig.cloudflare.com/black-forest-labs/flux-2-max/high-resolution-scene.jpeg) 
 
@@ -125,8 +119,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 **Hex Color Control**  — Exact color control via hex codes — useful for brand-consistent imagery 
 
-* [ TypeScript ](#tab-panel-284)
-* [ cURL ](#tab-panel-285)
+* [ TypeScript ](#tab-panel-302)
+* [ cURL ](#tab-panel-303)
 
 TypeScript
 
@@ -143,12 +137,6 @@ const response = await env.AI.run(
       'A vase on a table in living room, the color of the vase is a gradient of color, starting with color #02eb3c and finishing with color #edfa3c. The flowers inside the vase have the color #ff0088',
 
   },
-
-  {
-
-    gateway: { id: 'default' },
-
-  }
 
 )
 
@@ -182,8 +170,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 ```
 
-* [ Output ](#tab-panel-280)
-* [ Raw response ](#tab-panel-281)
+* [ Output ](#tab-panel-300)
+* [ Raw response ](#tab-panel-301)
 
 ![Hex Color Control](https://examples.aig.cloudflare.com/black-forest-labs/flux-2-max/hex-color-control.jpeg) 
 
@@ -212,8 +200,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 **Image Editing**  — Single-reference image editing — relight or restage a product photo 
 
-* [ TypeScript ](#tab-panel-288)
-* [ cURL ](#tab-panel-289)
+* [ TypeScript ](#tab-panel-306)
+* [ cURL ](#tab-panel-307)
 
 TypeScript
 
@@ -234,12 +222,6 @@ const response = await env.AI.run(
     ],
 
   },
-
-  {
-
-    gateway: { id: 'default' },
-
-  }
 
 )
 
@@ -264,13 +246,13 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
   "input": {
 
+    "prompt": "Place this product onto a minimalist marble countertop with soft window light",
+
     "input_images": [
 
       "https://replicate.delivery/xezq/jCypj4MeXYUiRyq7nfgm8z1OvFZF81wh4FznutDsZOuJz0YWA/tmp1iukn307.jpg"
 
-    ],
-
-    "prompt": "Place this product onto a minimalist marble countertop with soft window light"
+    ]
 
   }
 
@@ -279,8 +261,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 ```
 
-* [ Output ](#tab-panel-286)
-* [ Raw response ](#tab-panel-287)
+* [ Output ](#tab-panel-304)
+* [ Raw response ](#tab-panel-305)
 
 ![Image Editing](https://examples.aig.cloudflare.com/black-forest-labs/flux-2-max/image-editing.jpeg) 
 
@@ -309,8 +291,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 ## Parameters
 
-* [ Input ](#tab-panel-290)
-* [ Output ](#tab-panel-291)
+* [ Input ](#tab-panel-308)
+* [ Output ](#tab-panel-309)
 
 height
 

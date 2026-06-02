@@ -36,7 +36,7 @@ In Cursor, run the following command or install from the [Cursor Marketplace ↗
 3. **Try a prompt**  
 For example:  
 ```  
-Add bot protection and rate limiting to my login and checkout endpoints.  
+Add mTLS authentication and schema validation to protect my API endpoints.  
 ```
 
 ## Cloudflare platform access

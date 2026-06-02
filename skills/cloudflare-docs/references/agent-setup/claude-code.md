@@ -47,7 +47,7 @@ In Claude Code, run these two slash commands. This installs Cloudflare Skills an
 4. **Try a prompt**  
 For example:  
 ```  
-Set up AI Gateway to route requests across OpenAI and Workers AI with automatic fallback and cost tracking.  
+Check my Workers deployment logs for errors and suggest fixes.  
 ```
 
 ## Cloudflare platform access

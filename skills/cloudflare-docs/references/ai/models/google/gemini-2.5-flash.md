@@ -29,8 +29,8 @@ Google's fast multimodal Gemini 2.5 model with strong reasoning and a 1M token c
 
 ## Usage
 
-* [ TypeScript ](#tab-panel-400)
-* [ cURL ](#tab-panel-401)
+* [ TypeScript ](#tab-panel-418)
+* [ cURL ](#tab-panel-419)
 
 TypeScript
 
@@ -92,8 +92,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 ```
 
-* [ Output ](#tab-panel-406)
-* [ Raw response ](#tab-panel-407)
+* [ Output ](#tab-panel-424)
+* [ Raw response ](#tab-panel-425)
 
 The three laws of thermodynamics are fundamental principles that govern how energy is transferred and transformed in physical systems. They are:
 
@@ -202,8 +202,8 @@ These three laws are cornerstones of physics and chemistry, explaining a vast ra
 
 **With System Instruction**  — Using a system instruction to set context 
 
-* [ TypeScript ](#tab-panel-402)
-* [ cURL ](#tab-panel-403)
+* [ TypeScript ](#tab-panel-420)
+* [ cURL ](#tab-panel-421)
 
 TypeScript
 
@@ -297,8 +297,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 ```
 
-* [ Output ](#tab-panel-408)
-* [ Raw response ](#tab-panel-409)
+* [ Output ](#tab-panel-426)
+* [ Raw response ](#tab-panel-427)
 
 Reading a JSON (JavaScript Object Notation) file in Python is straightforward, thanks to the built-in `json` module.
 
@@ -530,8 +530,8 @@ When `json.load()` or `json.loads()` parses JSON, it converts JSON data types to
 
 **Multi-turn Conversation**  — Continuing a conversation with context 
 
-* [ TypeScript ](#tab-panel-410)
-* [ cURL ](#tab-panel-411)
+* [ TypeScript ](#tab-panel-428)
+* [ cURL ](#tab-panel-429)
 
 TypeScript
 
@@ -624,7 +624,7 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
           {
 
-            "text": "I'd be happy to help! The drive is about 380 miles and takes roughly 5-6 hours. Would you like suggestions for scenic routes or interesting stops along the way?"
+            "text": "I'\''d be happy to help! The drive is about 380 miles and takes roughly 5-6 hours. Would you like suggestions for scenic routes or interesting stops along the way?"
 
           }
 
@@ -665,8 +665,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 ```
 
-* [ Output ](#tab-panel-412)
-* [ Raw response ](#tab-panel-413)
+* [ Output ](#tab-panel-430)
+* [ Raw response ](#tab-panel-431)
 
 Okay, you've got two main routes, each with its own character and fantastic stops
 
@@ -759,8 +759,8 @@ Okay, you've got two main routes, each with its own character and fantastic stop
 
 **Creative Writing**  — Higher temperature for creative output 
 
-* [ TypeScript ](#tab-panel-404)
-* [ cURL ](#tab-panel-405)
+* [ TypeScript ](#tab-panel-422)
+* [ cURL ](#tab-panel-423)
 
 TypeScript
 
@@ -846,8 +846,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 ```
 
-* [ Output ](#tab-panel-414)
-* [ Raw response ](#tab-panel-415)
+* [ Output ](#tab-panel-432)
+* [ Raw response ](#tab-panel-433)
 
 The rain had been a relentless drumbeat against
 
@@ -940,8 +940,8 @@ The rain had been a relentless drumbeat against
 
 ## Parameters
 
-* [ Input ](#tab-panel-416)
-* [ Output ](#tab-panel-417)
+* [ Input ](#tab-panel-434)
+* [ Output ](#tab-panel-435)
 
 ▶contents\[\]
 

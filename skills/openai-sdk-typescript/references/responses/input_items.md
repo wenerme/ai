@@ -57,7 +57,7 @@ Returns a list of input items for a given response.
 
 ### Returns
 
-- `ResponseItem = ResponseInputMessageItem | ResponseOutputMessage | ResponseFileSearchToolCall | 23 more`
+- `ResponseItem = ResponseInputMessageItem | ResponseOutputMessage | ResponseFileSearchToolCall | 24 more`
 
   Content item used to generate a response.
 
@@ -958,10 +958,6 @@ Returns a list of input items for a given response.
 
         Action type "search" - Performs a web search query.
 
-        - `query: string`
-
-          [DEPRECATED] The search query.
-
         - `type: "search"`
 
           The action type.
@@ -971,6 +967,10 @@ Returns a list of input items for a given response.
         - `queries?: Array<string>`
 
           The search queries.
+
+        - `query?: string`
+
+          The search query.
 
         - `sources?: Array<Source>`
 
@@ -2149,6 +2149,104 @@ Returns a list of input items for a given response.
     - `created_by?: string`
 
       The identifier of the actor that created the item.
+
+  - `AdditionalTools`
+
+    - `id: string`
+
+      The unique ID of the additional tools item.
+
+    - `role: "unknown" | "user" | "assistant" | 5 more`
+
+      The role that provided the additional tools.
+
+      - `"unknown"`
+
+      - `"user"`
+
+      - `"assistant"`
+
+      - `"system"`
+
+      - `"critic"`
+
+      - `"discriminator"`
+
+      - `"developer"`
+
+      - `"tool"`
+
+    - `tools: Array<Tool>`
+
+      The additional tool definitions made available at this item.
+
+      - `FunctionTool`
+
+        Defines a function in your own code the model can choose to call. Learn more about [function calling](https://platform.openai.com/docs/guides/function-calling).
+
+      - `FileSearchTool`
+
+        A tool that searches for relevant content from uploaded files. Learn more about the [file search tool](https://platform.openai.com/docs/guides/tools-file-search).
+
+      - `ComputerTool`
+
+        A tool that controls a virtual computer. Learn more about the [computer tool](https://platform.openai.com/docs/guides/tools-computer-use).
+
+      - `ComputerUsePreviewTool`
+
+        A tool that controls a virtual computer. Learn more about the [computer tool](https://platform.openai.com/docs/guides/tools-computer-use).
+
+      - `WebSearchTool`
+
+        Search the Internet for sources related to the prompt. Learn more about the
+        [web search tool](https://platform.openai.com/docs/guides/tools-web-search).
+
+      - `Mcp`
+
+        Give the model access to additional tools via remote Model Context Protocol
+        (MCP) servers. [Learn more about MCP](https://platform.openai.com/docs/guides/tools-remote-mcp).
+
+      - `CodeInterpreter`
+
+        A tool that runs Python code to help generate a response to a prompt.
+
+      - `ImageGeneration`
+
+        A tool that generates images using the GPT image models.
+
+      - `LocalShell`
+
+        A tool that allows the model to execute shell commands in a local environment.
+
+      - `FunctionShellTool`
+
+        A tool that allows the model to execute shell commands.
+
+      - `CustomTool`
+
+        A custom tool that processes input using a specified format. Learn more about   [custom tools](https://platform.openai.com/docs/guides/function-calling#custom-tools)
+
+      - `NamespaceTool`
+
+        Groups function/custom tools under a shared namespace.
+
+      - `ToolSearchTool`
+
+        Hosted or BYOT tool search configuration for deferred tools.
+
+      - `WebSearchPreviewTool`
+
+        This tool searches the web for relevant results to use in a response. Learn more about the [web search tool](https://platform.openai.com/docs/guides/tools-web-search).
+
+      - `ApplyPatchTool`
+
+        Allows the assistant to create, delete, or update files using unified diffs.
+
+    - `type: "additional_tools"`
+
+      The type of the item. Always `additional_tools`.
+
+      - `"additional_tools"`
 
   - `ResponseReasoningItem`
 
@@ -3864,10 +3962,6 @@ console.log(response.data);
 
           Action type "search" - Performs a web search query.
 
-          - `query: string`
-
-            [DEPRECATED] The search query.
-
           - `type: "search"`
 
             The action type.
@@ -3877,6 +3971,10 @@ console.log(response.data);
           - `queries?: Array<string>`
 
             The search queries.
+
+          - `query?: string`
+
+            The search query.
 
           - `sources?: Array<Source>`
 
@@ -5055,6 +5153,104 @@ console.log(response.data);
       - `created_by?: string`
 
         The identifier of the actor that created the item.
+
+    - `AdditionalTools`
+
+      - `id: string`
+
+        The unique ID of the additional tools item.
+
+      - `role: "unknown" | "user" | "assistant" | 5 more`
+
+        The role that provided the additional tools.
+
+        - `"unknown"`
+
+        - `"user"`
+
+        - `"assistant"`
+
+        - `"system"`
+
+        - `"critic"`
+
+        - `"discriminator"`
+
+        - `"developer"`
+
+        - `"tool"`
+
+      - `tools: Array<Tool>`
+
+        The additional tool definitions made available at this item.
+
+        - `FunctionTool`
+
+          Defines a function in your own code the model can choose to call. Learn more about [function calling](https://platform.openai.com/docs/guides/function-calling).
+
+        - `FileSearchTool`
+
+          A tool that searches for relevant content from uploaded files. Learn more about the [file search tool](https://platform.openai.com/docs/guides/tools-file-search).
+
+        - `ComputerTool`
+
+          A tool that controls a virtual computer. Learn more about the [computer tool](https://platform.openai.com/docs/guides/tools-computer-use).
+
+        - `ComputerUsePreviewTool`
+
+          A tool that controls a virtual computer. Learn more about the [computer tool](https://platform.openai.com/docs/guides/tools-computer-use).
+
+        - `WebSearchTool`
+
+          Search the Internet for sources related to the prompt. Learn more about the
+          [web search tool](https://platform.openai.com/docs/guides/tools-web-search).
+
+        - `Mcp`
+
+          Give the model access to additional tools via remote Model Context Protocol
+          (MCP) servers. [Learn more about MCP](https://platform.openai.com/docs/guides/tools-remote-mcp).
+
+        - `CodeInterpreter`
+
+          A tool that runs Python code to help generate a response to a prompt.
+
+        - `ImageGeneration`
+
+          A tool that generates images using the GPT image models.
+
+        - `LocalShell`
+
+          A tool that allows the model to execute shell commands in a local environment.
+
+        - `FunctionShellTool`
+
+          A tool that allows the model to execute shell commands.
+
+        - `CustomTool`
+
+          A custom tool that processes input using a specified format. Learn more about   [custom tools](https://platform.openai.com/docs/guides/function-calling#custom-tools)
+
+        - `NamespaceTool`
+
+          Groups function/custom tools under a shared namespace.
+
+        - `ToolSearchTool`
+
+          Hosted or BYOT tool search configuration for deferred tools.
+
+        - `WebSearchPreviewTool`
+
+          This tool searches the web for relevant results to use in a response. Learn more about the [web search tool](https://platform.openai.com/docs/guides/tools-web-search).
+
+        - `ApplyPatchTool`
+
+          Allows the assistant to create, delete, or update files using unified diffs.
+
+      - `type: "additional_tools"`
+
+        The type of the item. Always `additional_tools`.
+
+        - `"additional_tools"`
 
     - `ResponseReasoningItem`
 

@@ -29,8 +29,8 @@ Google's lightest and most cost-efficient Gemini 2.5 model for high-throughput t
 
 ## Usage
 
-* [ TypeScript ](#tab-panel-418)
-* [ cURL ](#tab-panel-419)
+* [ TypeScript ](#tab-panel-436)
+* [ cURL ](#tab-panel-437)
 
 TypeScript
 
@@ -92,8 +92,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 ```
 
-* [ Output ](#tab-panel-424)
-* [ Raw response ](#tab-panel-425)
+* [ Output ](#tab-panel-442)
+* [ Raw response ](#tab-panel-443)
 
 The three laws of thermodynamics are fundamental principles that describe the behavior of energy and matter. Here they are:
 
@@ -208,8 +208,8 @@ These three laws are fundamental to understanding how energy works in everything
 
 **With System Instruction**  — Using a system instruction to set context 
 
-* [ TypeScript ](#tab-panel-420)
-* [ cURL ](#tab-panel-421)
+* [ TypeScript ](#tab-panel-438)
+* [ cURL ](#tab-panel-439)
 
 TypeScript
 
@@ -303,8 +303,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 ```
 
-* [ Output ](#tab-panel-426)
-* [ Raw response ](#tab-panel-427)
+* [ Output ](#tab-panel-444)
+* [ Raw response ](#tab-panel-445)
 
 Reading a JSON file in Python is a straightforward process thanks to the built-in `json` module. Here's a breakdown of how to do it, along with explanations and examples:
 
@@ -527,8 +527,8 @@ By following these steps, you can effectively read and work with JSON data in yo
 
 **Multi-turn Conversation**  — Continuing a conversation with context 
 
-* [ TypeScript ](#tab-panel-428)
-* [ cURL ](#tab-panel-429)
+* [ TypeScript ](#tab-panel-446)
+* [ cURL ](#tab-panel-447)
 
 TypeScript
 
@@ -621,7 +621,7 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
           {
 
-            "text": "I'd be happy to help! The drive is about 380 miles and takes roughly 5-6 hours. Would you like suggestions for scenic routes or interesting stops along the way?"
+            "text": "I'\''d be happy to help! The drive is about 380 miles and takes roughly 5-6 hours. Would you like suggestions for scenic routes or interesting stops along the way?"
 
           }
 
@@ -662,8 +662,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 ```
 
-* [ Output ](#tab-panel-430)
-* [ Raw response ](#tab-panel-431)
+* [ Output ](#tab-panel-448)
+* [ Raw response ](#tab-panel-449)
 
 Absolutely! The drive from San Francisco to Los Angeles offers a variety of stunning scenery and charming towns. Here are some of the most popular and highly recommended stops, depending on your interests and how much time you have:
 
@@ -779,8 +779,8 @@ This is the iconic drive for a reason! Expect breathtaking ocean views, dramatic
 
 **Creative Writing**  — Higher temperature for creative output 
 
-* [ TypeScript ](#tab-panel-422)
-* [ cURL ](#tab-panel-423)
+* [ TypeScript ](#tab-panel-440)
+* [ cURL ](#tab-panel-441)
 
 TypeScript
 
@@ -866,8 +866,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 ```
 
-* [ Output ](#tab-panel-432)
-* [ Raw response ](#tab-panel-433)
+* [ Output ](#tab-panel-450)
+* [ Raw response ](#tab-panel-451)
 
 The air in the cramped apartment hung thick with the scent of stale cigarettes and something vaguely floral, a cloying perfume that did little to mask the metallic tang of dried blood. Detective Miles Corbin, a man whose trench coat seemed permanently etched with the grime of a thousand city streets, surveyed the scene with weary eyes. Another Tuesday, another victim. But this one, a young woman named Clara Bellweather, had left behind more than just a messy end to her life.
 
@@ -962,8 +962,8 @@ Not just any feather, either. This one shimmered with an iridescent blues and gr
 
 ## Parameters
 
-* [ Input ](#tab-panel-434)
-* [ Output ](#tab-panel-435)
+* [ Input ](#tab-panel-452)
+* [ Output ](#tab-panel-453)
 
 ▶contents\[\]
 

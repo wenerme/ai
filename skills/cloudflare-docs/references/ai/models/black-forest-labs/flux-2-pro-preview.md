@@ -28,8 +28,8 @@ FLUX.2 \[pro\] Preview is Black Forest Labs' recommended default for production 
 
 ## Usage
 
-* [ TypeScript ](#tab-panel-296)
-* [ cURL ](#tab-panel-297)
+* [ TypeScript ](#tab-panel-312)
+* [ cURL ](#tab-panel-313)
 
 TypeScript
 
@@ -45,17 +45,11 @@ const response = await env.AI.run(
 
       'A serene mountain landscape at golden hour, soft diffused light filtering through clouds',
 
-    width: 1024,
-
     height: 1024,
 
+    width: 1024,
+
   },
-
-  {
-
-    gateway: { id: 'default' },
-
-  }
 
 )
 
@@ -80,9 +74,9 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
   "input": {
 
-    "height": 1024,
-
     "prompt": "A serene mountain landscape at golden hour, soft diffused light filtering through clouds",
+
+    "height": 1024,
 
     "width": 1024
 
@@ -93,8 +87,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 ```
 
-* [ Output ](#tab-panel-292)
-* [ Raw response ](#tab-panel-293)
+* [ Output ](#tab-panel-310)
+* [ Raw response ](#tab-panel-311)
 
 ![Simple Prompt](https://examples.aig.cloudflare.com/black-forest-labs/flux-2-pro-preview/simple-prompt.jpeg) 
 
@@ -125,8 +119,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 **Multi-Reference Editing**  — Multi-reference editing — combine two reference images in a single composition 
 
-* [ TypeScript ](#tab-panel-300)
-* [ cURL ](#tab-panel-301)
+* [ TypeScript ](#tab-panel-318)
+* [ cURL ](#tab-panel-319)
 
 TypeScript
 
@@ -149,12 +143,6 @@ const response = await env.AI.run(
     ],
 
   },
-
-  {
-
-    gateway: { id: 'default' },
-
-  }
 
 )
 
@@ -179,15 +167,15 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
   "input": {
 
+    "prompt": "Combine the subjects of these images into a single editorial fashion scene",
+
     "input_images": [
 
       "https://replicate.delivery/xezq/jCypj4MeXYUiRyq7nfgm8z1OvFZF81wh4FznutDsZOuJz0YWA/tmp1iukn307.jpg",
 
       "https://replicate.delivery/xezq/0lxxNQSg3NabCZrDiQVAPGVmjP1Q2dd7TgYCOTfI9LpyZaMLA/tmp89gopylq.jpg"
 
-    ],
-
-    "prompt": "Combine the subjects of these images into a single editorial fashion scene"
+    ]
 
   }
 
@@ -196,8 +184,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 ```
 
-* [ Output ](#tab-panel-294)
-* [ Raw response ](#tab-panel-295)
+* [ Output ](#tab-panel-314)
+* [ Raw response ](#tab-panel-315)
 
 ![Multi-Reference Editing](https://examples.aig.cloudflare.com/black-forest-labs/flux-2-pro-preview/multi-reference-editing.jpeg) 
 
@@ -226,8 +214,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 **Reproducible PNG Output**  — Seeded generation with PNG output for downstream editing pipelines 
 
-* [ TypeScript ](#tab-panel-302)
-* [ cURL ](#tab-panel-303)
+* [ TypeScript ](#tab-panel-320)
+* [ cURL ](#tab-panel-321)
 
 TypeScript
 
@@ -237,21 +225,7 @@ const response = await env.AI.run(
 
   'black-forest-labs/flux-2-pro-preview',
 
-  {
-
-    prompt: 'A pastel watercolor of a koi pond at sunrise',
-
-    seed: 1337,
-
-    output_format: 'png',
-
-  },
-
-  {
-
-    gateway: { id: 'default' },
-
-  }
+  { prompt: 'A pastel watercolor of a koi pond at sunrise', output_format: 'png', seed: 1337 },
 
 )
 
@@ -276,9 +250,9 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
   "input": {
 
-    "output_format": "png",
-
     "prompt": "A pastel watercolor of a koi pond at sunrise",
+
+    "output_format": "png",
 
     "seed": 1337
 
@@ -289,8 +263,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 ```
 
-* [ Output ](#tab-panel-298)
-* [ Raw response ](#tab-panel-299)
+* [ Output ](#tab-panel-316)
+* [ Raw response ](#tab-panel-317)
 
 ![Reproducible PNG Output](https://examples.aig.cloudflare.com/black-forest-labs/flux-2-pro-preview/reproducible-png-output.png) 
 
@@ -319,8 +293,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 ## Parameters
 
-* [ Input ](#tab-panel-304)
-* [ Output ](#tab-panel-305)
+* [ Input ](#tab-panel-322)
+* [ Output ](#tab-panel-323)
 
 height
 

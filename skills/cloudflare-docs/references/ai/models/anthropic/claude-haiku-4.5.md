@@ -29,8 +29,8 @@ Claude Haiku 4.5 delivers similar levels of coding performance at one-third the 
 
 ## Usage
 
-* [ TypeScript ](#tab-panel-94)
-* [ cURL ](#tab-panel-95)
+* [ TypeScript ](#tab-panel-112)
+* [ cURL ](#tab-panel-113)
 
 TypeScript
 
@@ -88,8 +88,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/v1/
 
 ```
 
-* [ Output ](#tab-panel-98)
-* [ Raw response ](#tab-panel-99)
+* [ Output ](#tab-panel-116)
+* [ Raw response ](#tab-panel-117)
 
 # The Three Laws of Thermodynamics
 
@@ -159,8 +159,8 @@ These laws form the foundation of thermodynamics and explain why perpetual motio
 
 **With System Message**  — Using a system message to set context 
 
-* [ TypeScript ](#tab-panel-96)
-* [ cURL ](#tab-panel-97)
+* [ TypeScript ](#tab-panel-114)
+* [ cURL ](#tab-panel-115)
 
 TypeScript
 
@@ -226,8 +226,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/v1/
 
 ```
 
-* [ Output ](#tab-panel-102)
-* [ Raw response ](#tab-panel-103)
+* [ Output ](#tab-panel-120)
+* [ Raw response ](#tab-panel-121)
 
 # Reading a JSON File in Python
 
@@ -355,8 +355,8 @@ The `with` statement is recommended because it automatically closes the file whe
 
 **Multi-turn Conversation**  — Continuing a conversation with context 
 
-* [ TypeScript ](#tab-panel-106)
-* [ cURL ](#tab-panel-107)
+* [ TypeScript ](#tab-panel-124)
+* [ cURL ](#tab-panel-125)
 
 TypeScript
 
@@ -431,7 +431,7 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/v1/
 
     {
 
-      "content": "I'd be happy to help! The drive is about 380 miles and takes roughly 5-6 hours. Would you like suggestions for scenic routes or interesting stops along the way?",
+      "content": "I'\''d be happy to help! The drive is about 380 miles and takes roughly 5-6 hours. Would you like suggestions for scenic routes or interesting stops along the way?",
 
       "role": "assistant"
 
@@ -452,8 +452,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/v1/
 
 ```
 
-* [ Output ](#tab-panel-108)
-* [ Raw response ](#tab-panel-109)
+* [ Output ](#tab-panel-126)
+* [ Raw response ](#tab-panel-127)
 
 # Good Stops on the SF to LA Route
 
@@ -529,8 +529,8 @@ What's your timeline? Are you interested in nature, wine, food, or something els
 
 **Creative Writing**  — Higher temperature for creative output 
 
-* [ TypeScript ](#tab-panel-100)
-* [ cURL ](#tab-panel-101)
+* [ TypeScript ](#tab-panel-118)
+* [ cURL ](#tab-panel-119)
 
 TypeScript
 
@@ -602,8 +602,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/v1/
 
 ```
 
-* [ Output ](#tab-panel-110)
-* [ Raw response ](#tab-panel-111)
+* [ Output ](#tab-panel-128)
+* [ Raw response ](#tab-panel-129)
 
 # The Photograph
 
@@ -676,8 +676,8 @@ It was a warning.
 
 **Streaming Response**  — Enable streaming for real-time output 
 
-* [ TypeScript ](#tab-panel-104)
-* [ cURL ](#tab-panel-105)
+* [ TypeScript ](#tab-panel-122)
+* [ cURL ](#tab-panel-123)
 
 TypeScript
 
@@ -739,8 +739,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/v1/
 
 ```
 
-* [ Output ](#tab-panel-112)
-* [ Raw response ](#tab-panel-113)
+* [ Output ](#tab-panel-130)
+* [ Raw response ](#tab-panel-131)
 
 # Recursion Explained
 
@@ -1178,8 +1178,8 @@ Recursion is elegant but always ensure you have a clear base case!
 
 ## Parameters
 
-* [ Input ](#tab-panel-114)
-* [ Output ](#tab-panel-115)
+* [ Input ](#tab-panel-132)
+* [ Output ](#tab-panel-133)
 
 max\_tokens
 

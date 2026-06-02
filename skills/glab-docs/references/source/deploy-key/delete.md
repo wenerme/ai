@@ -7,6 +7,14 @@ info: To determine the technical writer assigned to the Stage/Group associated w
 
 Deletes a single deploy key specified by the ID.
 
+## Synopsis
+
+Pass the ID of the key to delete as an argument. Find key IDs by
+running `glab deploy-key list --show-id`. Use `--repo` to target a
+project other than the current one.
+
+This action is permanent and cannot be undone.
+
 ```plaintext
 glab deploy-key delete <key-id> [flags]
 ```
@@ -14,7 +22,7 @@ glab deploy-key delete <key-id> [flags]
 ## Examples
 
 ```console
-# Delete SSH key with ID as argument
+# Delete deploy key with ID as argument
 glab deploy-key delete 1234
 ```
 

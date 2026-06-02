@@ -49,7 +49,7 @@ Add the Cloudflare API and docs servers to `~/.codeium/windsurf/mcp_config.json`
 4. **Try a prompt**  
 Open Cascade and try a prompt — for example:  
 ```  
-Set up rate limiting and WAF rules to block abuse on my public API.  
+Build an image upload and transformation service using R2 and Cloudflare Images.  
 ```
 
 ## Cloudflare platform access

@@ -740,7 +740,7 @@ limits.
 *`gemini-2.0-flash`*
 
 > [!WARNING]
-> **Warning:** Gemini 2.0 Flash is [deprecated](https://ai.google.dev/gemini-api/docs/deprecations) and will be shut down June 1, 2026. Migrate to [a newer model](https://ai.google.dev/gemini-api/docs/models) to avoid service disruption.
+> **Warning:** Gemini 2.0 Flash is [deprecated](https://ai.google.dev/gemini-api/docs/deprecations) and has been shut down June 1, 2026. Migrate to [a newer model](https://ai.google.dev/gemini-api/docs/models) to avoid service disruption.
 
 ### Standard
 
@@ -778,7 +778,7 @@ limits.
 *`gemini-2.0-flash-lite`*
 
 > [!WARNING]
-> **Warning:** Gemini 2.0 Flash-Lite is [deprecated](https://ai.google.dev/gemini-api/docs/deprecations) and will be shut down June 1, 2026. Migrate to [a newer model](https://ai.google.dev/gemini-api/docs/models) to avoid service disruption.
+> **Warning:** Gemini 2.0 Flash-Lite is [deprecated](https://ai.google.dev/gemini-api/docs/deprecations) and has been shut down June 1, 2026. Migrate to [a newer model](https://ai.google.dev/gemini-api/docs/models) to avoid service disruption.
 
 ### Standard
 

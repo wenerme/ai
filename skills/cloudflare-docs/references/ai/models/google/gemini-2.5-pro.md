@@ -29,8 +29,8 @@ Google's most capable Gemini 2.5 model with strong reasoning, thinking support, 
 
 ## Usage
 
-* [ TypeScript ](#tab-panel-436)
-* [ cURL ](#tab-panel-437)
+* [ TypeScript ](#tab-panel-454)
+* [ cURL ](#tab-panel-455)
 
 TypeScript
 
@@ -92,8 +92,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 ```
 
-* [ Output ](#tab-panel-442)
-* [ Raw response ](#tab-panel-443)
+* [ Output ](#tab-panel-460)
+* [ Raw response ](#tab-panel-461)
 
 Of course! The three laws of thermodynamics are fundamental principles in physics that describe the relationships between heat, energy, and work.
 
@@ -241,8 +241,8 @@ Before the three main laws, it's helpful to understand the **Zeroth Law**, which
 
 **With System Instruction**  — Using a system instruction to set context 
 
-* [ TypeScript ](#tab-panel-438)
-* [ cURL ](#tab-panel-439)
+* [ TypeScript ](#tab-panel-456)
+* [ cURL ](#tab-panel-457)
 
 TypeScript
 
@@ -336,8 +336,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 ```
 
-* [ Output ](#tab-panel-444)
-* [ Raw response ](#tab-panel-445)
+* [ Output ](#tab-panel-462)
+* [ Raw response ](#tab-panel-463)
 
 Of course! Reading a JSON file in Python is a common task, and the built-in `json` module makes it very straightforward.
 
@@ -588,8 +588,8 @@ print(data['city'])  # Output: New York
 
 **Multi-turn Conversation**  — Continuing a conversation with context 
 
-* [ TypeScript ](#tab-panel-446)
-* [ cURL ](#tab-panel-447)
+* [ TypeScript ](#tab-panel-464)
+* [ cURL ](#tab-panel-465)
 
 TypeScript
 
@@ -682,7 +682,7 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
           {
 
-            "text": "I'd be happy to help! The drive is about 380 miles and takes roughly 5-6 hours. Would you like suggestions for scenic routes or interesting stops along the way?"
+            "text": "I'\''d be happy to help! The drive is about 380 miles and takes roughly 5-6 hours. Would you like suggestions for scenic routes or interesting stops along the way?"
 
           }
 
@@ -723,8 +723,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 ```
 
-* [ Output ](#tab-panel-448)
-* [ Raw response ](#tab-panel-449)
+* [ Output ](#tab-panel-466)
+* [ Raw response ](#tab-panel-467)
 
 Of course! The drive from San Francisco to Los Angeles offers two very different experiences, depending on
 
@@ -817,8 +817,8 @@ Of course! The drive from San Francisco to Los Angeles offers two very different
 
 **Creative Writing**  — Higher temperature for creative output 
 
-* [ TypeScript ](#tab-panel-440)
-* [ cURL ](#tab-panel-441)
+* [ TypeScript ](#tab-panel-458)
+* [ cURL ](#tab-panel-459)
 
 TypeScript
 
@@ -904,8 +904,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 ```
 
-* [ Output ](#tab-panel-450)
-* [ Raw response ](#tab-panel-451)
+* [ Output ](#tab-panel-468)
+* [ Raw response ](#tab-panel-469)
 
 The stale, metallic tang of blood was the first
 
@@ -998,8 +998,8 @@ The stale, metallic tang of blood was the first
 
 ## Parameters
 
-* [ Input ](#tab-panel-452)
-* [ Output ](#tab-panel-453)
+* [ Input ](#tab-panel-470)
+* [ Output ](#tab-panel-471)
 
 ▶contents\[\]
 

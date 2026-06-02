@@ -27,7 +27,7 @@ The agent toolset includes the following tools. All are enabled by default when 
 | Web fetch | `web_fetch` | Fetch content from a URL |
 | Web search | `web_search` | Search the web for information |
 
-When a tool output exceeds 100K tokens, it is automatically written to a file in the sandbox. The model receives a truncated preview with the file path and can read the full content from there.
+When a tool output exceeds 100,000 tokens, it is automatically written to a file in the sandbox. The model receives a truncated preview with the file path and can read the full content from there.
 
 ## Configuring the toolset
 
@@ -43,7 +43,7 @@ agent=$(curl -fsSL https://api.anthropic.com/v1/agents \
   -d @- <<'EOF'
 {
   "name": "Coding Assistant",
-  "model": "claude-opus-4-7",
+  "model": "claude-opus-4-8",
   "tools": [
     {
       "type": "agent_toolset_20260401",
@@ -60,7 +60,7 @@ EOF
 ```bash CLI
 ant beta:agents create <<'YAML'
 name: Coding Assistant
-model: claude-opus-4-7
+model: claude-opus-4-8
 tools:
   - type: agent_toolset_20260401
     configs:
@@ -72,7 +72,7 @@ YAML
 ```python Python
 agent = client.beta.agents.create(
     name="Coding Assistant",
-    model="claude-opus-4-7",
+    model="claude-opus-4-8",
     tools=[
         {
             "type": "agent_toolset_20260401",
@@ -87,7 +87,7 @@ agent = client.beta.agents.create(
 ```typescript TypeScript
 const agent = await client.beta.agents.create({
   name: "Coding Assistant",
-  model: "claude-opus-4-7",
+  model: "claude-opus-4-8",
   tools: [
     {
       type: "agent_toolset_20260401",
@@ -101,7 +101,7 @@ const agent = await client.beta.agents.create({
 var agent = await client.Beta.Agents.Create(new()
 {
     Name = "Coding Assistant",
-    Model = new("claude-opus-4-7"),
+    Model = new("claude-opus-4-8"),
     Tools =
     [
         new BetaManagedAgentsAgentToolset20260401Params
@@ -120,7 +120,7 @@ var agent = await client.Beta.Agents.Create(new()
 agent, err := client.Beta.Agents.New(ctx, anthropic.BetaAgentNewParams{
 	Name: "Coding Assistant",
 	Model: anthropic.BetaManagedAgentsModelConfigParams{
-		ID: "claude-opus-4-7",
+		ID: "claude-opus-4-8",
 	},
 	Tools: []anthropic.BetaAgentNewParamsToolUnion{{
 		OfAgentToolset20260401: &anthropic.BetaManagedAgentsAgentToolset20260401Params{
@@ -141,7 +141,7 @@ _ = agent
 ```java Java
 var agent = client.beta().agents().create(AgentCreateParams.builder()
     .name("Coding Assistant")
-    .model(BetaManagedAgentsModel.CLAUDE_OPUS_4_7)
+    .model(BetaManagedAgentsModel.CLAUDE_OPUS_4_8)
     .addTool(BetaManagedAgentsAgentToolset20260401Params.builder()
         .type(BetaManagedAgentsAgentToolset20260401Params.Type.AGENT_TOOLSET_20260401)
         .addConfig(BetaManagedAgentsAgentToolConfigParams.builder()
@@ -156,7 +156,7 @@ var agent = client.beta().agents().create(AgentCreateParams.builder()
 
 $agent = $client->beta->agents->create(
     name: 'Coding Assistant',
-    model: 'claude-opus-4-7',
+    model: 'claude-opus-4-8',
     tools: [
         BetaManagedAgentsAgentToolset20260401Params::with(
             type: 'agent_toolset_20260401',
@@ -171,7 +171,7 @@ $agent = $client->beta->agents->create(
 ```ruby Ruby
 agent = client.beta.agents.create(
   name: "Coding Assistant",
-  model: "claude-opus-4-7",
+  model: "claude-opus-4-8",
   tools: [
     {
       type: :agent_toolset_20260401,
@@ -218,7 +218,7 @@ To start with everything off and enable only what you need, set `default_config.
 
 In addition to built-in tools, you can define custom tools. Custom tools are analogous to [user-defined client tools](/docs/en/agents-and-tools/tool-use/how-tool-use-works#user-defined-tools-client-executed) in the Messages API.
 
-Custom tools allow you to extend Claude's capabilities to perform a wider variety of tasks. Each tool defines a contract: you specify what operations are available and what they return; Claude decides when and how to call them. The model never executes anything on its own. It emits a structured request, your code runs the operation, and the result flows back into the conversation.
+Custom tools allow you to extend Claude's capabilities to perform a wider variety of tasks. Each tool defines a contract: you specify what operations are available and what they return; Claude determines when and how to call them. The model never executes anything on its own. It emits a structured request, your code runs the operation, and the result flows back into the conversation.
 
 <CodeGroup defaultLanguage="CLI">
 ```bash curl
@@ -230,7 +230,7 @@ agent=$(curl -fsSL https://api.anthropic.com/v1/agents \
   -d @- <<'EOF'
 {
   "name": "Weather Agent",
-  "model": "claude-opus-4-7",
+  "model": "claude-opus-4-8",
   "tools": [
     {
       "type": "agent_toolset_20260401"
@@ -256,7 +256,7 @@ EOF
 ```bash CLI
 ant beta:agents create <<'YAML'
 name: Weather Agent
-model: claude-opus-4-7
+model: claude-opus-4-8
 tools:
   - type: agent_toolset_20260401
   - type: custom
@@ -276,7 +276,7 @@ YAML
 ```python Python
 agent = client.beta.agents.create(
     name="Weather Agent",
-    model="claude-opus-4-7",
+    model="claude-opus-4-8",
     tools=[
         {
             "type": "agent_toolset_20260401",
@@ -300,7 +300,7 @@ agent = client.beta.agents.create(
 ```typescript TypeScript
 const agent = await client.beta.agents.create({
   name: "Weather Agent",
-  model: "claude-opus-4-7",
+  model: "claude-opus-4-8",
   tools: [
     { type: "agent_toolset_20260401" },
     {
@@ -322,7 +322,7 @@ const agent = await client.beta.agents.create({
 var agent = await client.Beta.Agents.Create(new()
 {
     Name = "Weather Agent",
-    Model = new("claude-opus-4-7"),
+    Model = new("claude-opus-4-8"),
     Tools =
     [
         new BetaManagedAgentsAgentToolset20260401Params
@@ -354,7 +354,7 @@ var agent = await client.Beta.Agents.Create(new()
 agent, err := client.Beta.Agents.New(ctx, anthropic.BetaAgentNewParams{
 	Name: "Weather Agent",
 	Model: anthropic.BetaManagedAgentsModelConfigParams{
-		ID: "claude-opus-4-7",
+		ID: "claude-opus-4-8",
 	},
 	Tools: []anthropic.BetaAgentNewParamsToolUnion{{
 		OfAgentToolset20260401: &anthropic.BetaManagedAgentsAgentToolset20260401Params{
@@ -387,7 +387,7 @@ _ = agent
 ```java Java
 var agent = client.beta().agents().create(AgentCreateParams.builder()
     .name("Weather Agent")
-    .model(BetaManagedAgentsModel.CLAUDE_OPUS_4_7)
+    .model(BetaManagedAgentsModel.CLAUDE_OPUS_4_8)
     .addTool(BetaManagedAgentsAgentToolset20260401Params.builder()
         .type(BetaManagedAgentsAgentToolset20260401Params.Type.AGENT_TOOLSET_20260401)
         .build())
@@ -414,7 +414,7 @@ use Anthropic\Beta\Agents\BetaManagedAgentsCustomToolParams;
 
 $agent = $client->beta->agents->create(
     name: 'Weather Agent',
-    model: 'claude-opus-4-7',
+    model: 'claude-opus-4-8',
     tools: [
         BetaManagedAgentsAgentToolset20260401Params::with(
             type: 'agent_toolset_20260401',
@@ -436,7 +436,7 @@ $agent = $client->beta->agents->create(
 ```ruby Ruby
 agent = client.beta.agents.create(
   name: "Weather Agent",
-  model: "claude-opus-4-7",
+  model: "claude-opus-4-8",
   tools: [
     {type: :agent_toolset_20260401},
     {
@@ -454,11 +454,11 @@ agent = client.beta.agents.create(
 ```
 </CodeGroup>
 
-Once you've defined the tool at the agent level, the agent will invoke the tools through the course of a session. See [Session event stream](/docs/en/managed-agents/events-and-streaming#handling-custom-tool-calls) for the full flow.
+Once you've defined the tool at the agent level, the agent invokes the tools through the course of a session. See [Session event stream](/docs/en/managed-agents/events-and-streaming#handling-custom-tool-calls) for the full flow.
 
 ### Best practices for custom tool definitions
 
-- **Provide extremely detailed descriptions.** This is by far the most important factor in tool performance. Your descriptions should explain what the tool does, when it should be used (and when it shouldn't), what each parameter means and how it affects the tool's behavior, and any important caveats or limitations. The more context you can give Claude about your tools, the better it will be at deciding when and how to use them. Aim for at least 3-4 sentences per tool description, more if the tool is complex.
+- **Provide extremely detailed descriptions.** This is by far the most important factor in tool performance. Your descriptions should explain what the tool does, when it should be used (and when it shouldn't), what each parameter means and how it affects the tool's behavior, and any important caveats or limitations. The more context you can give Claude about your tools, the better it is at determining when and how to use them. Aim for at least 3-4 sentences per tool description, more if the tool is complex.
 - **Consolidate related operations into fewer tools.** Rather than creating a separate tool for every action (`create_pr`, `review_pr`, `merge_pr`), group them into a single tool with an `action` parameter. Fewer, more capable tools reduce selection ambiguity and make your tool surface easier for Claude to navigate.
-- **Use meaningful namespacing in tool names.** When your tools span multiple services or resources, prefix names with the resource (e.g., `db_query`, `storage_read`). This makes tool selection unambiguous as your library grows.
-- **Design tool responses to return only high-signal information.** Return semantic, stable identifiers (e.g., slugs or UUIDs) rather than opaque internal references, and include only the fields Claude needs to reason about its next step. Bloated responses waste context and make it harder for Claude to extract what matters.
+- **Use meaningful namespacing in tool names.** When your tools span multiple services or resources, prefix names with the resource (for example, `db_query` or `storage_read`). This makes tool selection unambiguous as your library grows.
+- **Design tool responses to return only high-signal information.** Return semantic, stable identifiers (for example, slugs or UUIDs) rather than opaque internal references, and include only the fields Claude needs to reason about its next step. Bloated responses waste context and make it harder for Claude to extract what matters.

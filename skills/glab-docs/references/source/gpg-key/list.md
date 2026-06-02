@@ -7,6 +7,12 @@ info: To determine the technical writer assigned to the Stage/Group associated w
 
 Get a list of GPG keys for the currently authenticated user.
 
+## Synopsis
+
+Each row shows the key and its creation date. Pass `--show-id` to
+also display the key ID, which the `get` and `delete` commands accept
+as an argument.
+
 ```plaintext
 glab gpg-key list [flags]
 ```
@@ -14,7 +20,11 @@ glab gpg-key list [flags]
 ## Examples
 
 ```console
+# List your GPG keys
 glab gpg-key list
+
+# Include the key ID in the output
+glab gpg-key list --show-id
 ```
 
 ## Options

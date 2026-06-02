@@ -29,8 +29,8 @@ Gemini 3 Flash is Google's fast multimodal model with frontier intelligence, sup
 
 ## Usage
 
-* [ TypeScript ](#tab-panel-454)
-* [ cURL ](#tab-panel-455)
+* [ TypeScript ](#tab-panel-472)
+* [ cURL ](#tab-panel-473)
 
 TypeScript
 
@@ -92,8 +92,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 ```
 
-* [ Output ](#tab-panel-460)
-* [ Raw response ](#tab-panel-461)
+* [ Output ](#tab-panel-478)
+* [ Raw response ](#tab-panel-479)
 
 While there are actually four laws of thermodynamics (numbered 0 through 3), the "Three Laws" usually refer to the following fundamental principles that govern how energy, heat, and matter behave:
 
@@ -224,8 +224,8 @@ Scientists often use a cynical "gambling" analogy to remember the laws:
 
 **With System Instruction**  — Using a system instruction to set context 
 
-* [ TypeScript ](#tab-panel-456)
-* [ cURL ](#tab-panel-457)
+* [ TypeScript ](#tab-panel-474)
+* [ cURL ](#tab-panel-475)
 
 TypeScript
 
@@ -319,8 +319,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 ```
 
-* [ Output ](#tab-panel-464)
-* [ Raw response ](#tab-panel-465)
+* [ Output ](#tab-panel-482)
+* [ Raw response ](#tab-panel-483)
 
 To read a JSON file in Python, you use the built-in **`json`** module.
 
@@ -475,8 +475,8 @@ print(data)
 
 **Multi-turn Conversation**  — Continuing a conversation with context 
 
-* [ TypeScript ](#tab-panel-462)
-* [ cURL ](#tab-panel-463)
+* [ TypeScript ](#tab-panel-480)
+* [ cURL ](#tab-panel-481)
 
 TypeScript
 
@@ -569,7 +569,7 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
           {
 
-            "text": "I'd be happy to help! The drive is about 380 miles and takes roughly 5-6 hours. Would you like suggestions for scenic routes or interesting stops along the way?"
+            "text": "I'\''d be happy to help! The drive is about 380 miles and takes roughly 5-6 hours. Would you like suggestions for scenic routes or interesting stops along the way?"
 
           }
 
@@ -610,8 +610,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 ```
 
-* [ Output ](#tab-panel-466)
-* [ Raw response ](#tab-panel-467)
+* [ Output ](#tab-panel-484)
+* [ Raw response ](#tab-panel-485)
 
 To give you the best recommendations, it helps to know how much time you have. The drive can
 
@@ -706,8 +706,8 @@ To give you the best recommendations, it helps to know how much time you have. T
 
 **Creative Writing**  — Higher temperature for creative output 
 
-* [ TypeScript ](#tab-panel-458)
-* [ cURL ](#tab-panel-459)
+* [ TypeScript ](#tab-panel-476)
+* [ cURL ](#tab-panel-477)
 
 TypeScript
 
@@ -793,8 +793,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 ```
 
-* [ Output ](#tab-panel-468)
-* [ Raw response ](#tab-panel-469)
+* [ Output ](#tab-panel-486)
+* [ Raw response ](#tab-panel-487)
 
 The yellow police tape hummed in the drafty
 
@@ -889,8 +889,8 @@ The yellow police tape hummed in the drafty
 
 ## Parameters
 
-* [ Input ](#tab-panel-470)
-* [ Output ](#tab-panel-471)
+* [ Input ](#tab-panel-488)
+* [ Output ](#tab-panel-489)
 
 ▶contents\[\]
 

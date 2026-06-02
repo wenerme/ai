@@ -29,8 +29,8 @@ GPT-5.4 mini is a smaller, faster, and more cost-efficient version of GPT-5.4 fo
 
 ## Usage
 
-* [ TypeScript ](#tab-panel-946)
-* [ cURL ](#tab-panel-947)
+* [ TypeScript ](#tab-panel-982)
+* [ cURL ](#tab-panel-983)
 
 TypeScript
 
@@ -53,7 +53,7 @@ Terminal window
 
 ```
 
-curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/v1/responses \
+curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/v1/chat/completions \
 
   --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
 
@@ -80,8 +80,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/v1/
 
 ```
 
-* [ Output ](#tab-panel-956)
-* [ Raw response ](#tab-panel-957)
+* [ Output ](#tab-panel-992)
+* [ Raw response ](#tab-panel-993)
 
 The three laws of thermodynamics are:
 
@@ -186,8 +186,8 @@ If you want, I can also give you a **very simple everyday analogy** for each law
 
 **With System Message**  — Using a system message to set context 
 
-* [ TypeScript ](#tab-panel-948)
-* [ cURL ](#tab-panel-949)
+* [ TypeScript ](#tab-panel-984)
+* [ cURL ](#tab-panel-985)
 
 TypeScript
 
@@ -220,7 +220,7 @@ Terminal window
 
 ```
 
-curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/v1/responses \
+curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/v1/chat/completions \
 
   --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
 
@@ -255,8 +255,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/v1/
 
 ```
 
-* [ Output ](#tab-panel-958)
-* [ Raw response ](#tab-panel-959)
+* [ Output ](#tab-panel-994)
+* [ Raw response ](#tab-panel-995)
 
 Use Python’s built-in `json` module.
 
@@ -375,8 +375,8 @@ If you want, I can also show how to:
 
 **Multi-turn Conversation**  — Continuing a conversation with context 
 
-* [ TypeScript ](#tab-panel-952)
-* [ cURL ](#tab-panel-953)
+* [ TypeScript ](#tab-panel-988)
+* [ cURL ](#tab-panel-989)
 
 TypeScript
 
@@ -427,7 +427,7 @@ Terminal window
 
 ```
 
-curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/v1/responses \
+curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/v1/chat/completions \
 
   --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
 
@@ -451,7 +451,7 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/v1/
 
     {
 
-      "content": "I'd be happy to help! The drive is about 380 miles and takes roughly 5-6 hours. Would you like suggestions for scenic routes or interesting stops along the way?",
+      "content": "I'\''d be happy to help! The drive is about 380 miles and takes roughly 5-6 hours. Would you like suggestions for scenic routes or interesting stops along the way?",
 
       "role": "assistant"
 
@@ -472,8 +472,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/v1/
 
 ```
 
-* [ Output ](#tab-panel-960)
-* [ Raw response ](#tab-panel-961)
+* [ Output ](#tab-panel-996)
+* [ Raw response ](#tab-panel-997)
 
 Absolutely — the San Francisco to Los Angeles drive has a lot of great stop options depending on whether you want the **fastest route** or the **most scenic one**.
 
@@ -630,8 +630,8 @@ If you want, I can also make you:
 
 **Creative Writing**  — Longer completion for creative output 
 
-* [ TypeScript ](#tab-panel-950)
-* [ cURL ](#tab-panel-951)
+* [ TypeScript ](#tab-panel-986)
+* [ cURL ](#tab-panel-987)
 
 TypeScript
 
@@ -670,7 +670,7 @@ Terminal window
 
 ```
 
-curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/v1/responses \
+curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/v1/chat/completions \
 
   --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
 
@@ -699,8 +699,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/v1/
 
 ```
 
-* [ Output ](#tab-panel-962)
-* [ Raw response ](#tab-panel-963)
+* [ Output ](#tab-panel-998)
+* [ Raw response ](#tab-panel-999)
 
 The rain had been falling since midnight, soft and persistent, turning the city into a blur of sodium light and reflected secrets. Detective Mara Venn stood in the doorway of apartment 4B, one gloved hand resting against the frame, and looked down at the object gleaming on the floorboards.
 
@@ -807,8 +807,8 @@ And somehow, they had expected her to come.
 
 **Streaming Response**  — Enable streaming for real-time output 
 
-* [ TypeScript ](#tab-panel-954)
-* [ cURL ](#tab-panel-955)
+* [ TypeScript ](#tab-panel-990)
+* [ cURL ](#tab-panel-991)
 
 TypeScript
 
@@ -839,7 +839,7 @@ Terminal window
 
 ```
 
-curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/v1/responses \
+curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/v1/chat/completions \
 
   --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
 
@@ -874,8 +874,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/v1/
 
 ```
 
-* [ Output ](#tab-panel-964)
-* [ Raw response ](#tab-panel-965)
+* [ Output ](#tab-panel-1000)
+* [ Raw response ](#tab-panel-1001)
 
 Recursion is when a function solves a problem by calling itself on a smaller version of the same problem.
 
@@ -10477,8 +10477,8 @@ Recursion is like solving a big problem by breaking it into smaller versions of 
 
 ## Parameters
 
-* [ Input ](#tab-panel-966)
-* [ Output ](#tab-panel-967)
+* [ Input ](#tab-panel-1002)
+* [ Output ](#tab-panel-1003)
 
 ▶audio{}
 

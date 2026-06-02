@@ -9,12 +9,11 @@ Opens the glab configuration file.
 
 ## Synopsis
 
-Opens the glab configuration file.
 The command uses the following order when choosing the editor to use:
 
-1. 'glab_editor' field in the configuration file
-2. 'VISUAL' environment variable
-3. 'EDITOR' environment variable
+1. `glab_editor` field in the configuration file.
+1. `VISUAL` environment variable.
+1. `EDITOR` environment variable.
 
 ```plaintext
 glab config edit [flags]

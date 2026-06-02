@@ -29,8 +29,8 @@ Claude Sonnet 4.5 is the best coding model to date, with significant improvement
 
 ## Usage
 
-* [ TypeScript ](#tab-panel-202)
-* [ cURL ](#tab-panel-203)
+* [ TypeScript ](#tab-panel-220)
+* [ cURL ](#tab-panel-221)
 
 TypeScript
 
@@ -88,8 +88,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/v1/
 
 ```
 
-* [ Output ](#tab-panel-206)
-* [ Raw response ](#tab-panel-207)
+* [ Output ](#tab-panel-224)
+* [ Raw response ](#tab-panel-225)
 
 # The Three Laws of Thermodynamics
 
@@ -160,8 +160,8 @@ As temperature approaches absolute zero (0 Kelvin or -273.15°C), the entropy of
 
 **With System Message**  — Using a system message to set context 
 
-* [ TypeScript ](#tab-panel-204)
-* [ cURL ](#tab-panel-205)
+* [ TypeScript ](#tab-panel-222)
+* [ cURL ](#tab-panel-223)
 
 TypeScript
 
@@ -227,8 +227,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/v1/
 
 ```
 
-* [ Output ](#tab-panel-210)
-* [ Raw response ](#tab-panel-211)
+* [ Output ](#tab-panel-228)
+* [ Raw response ](#tab-panel-229)
 
 # Reading a JSON File in Python
 
@@ -346,8 +346,8 @@ print(data)
 
 **Multi-turn Conversation**  — Continuing a conversation with context 
 
-* [ TypeScript ](#tab-panel-214)
-* [ cURL ](#tab-panel-215)
+* [ TypeScript ](#tab-panel-232)
+* [ cURL ](#tab-panel-233)
 
 TypeScript
 
@@ -422,7 +422,7 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/v1/
 
     {
 
-      "content": "I'd be happy to help! The drive is about 380 miles and takes roughly 5-6 hours. Would you like suggestions for scenic routes or interesting stops along the way?",
+      "content": "I'\''d be happy to help! The drive is about 380 miles and takes roughly 5-6 hours. Would you like suggestions for scenic routes or interesting stops along the way?",
 
       "role": "assistant"
 
@@ -443,8 +443,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/v1/
 
 ```
 
-* [ Output ](#tab-panel-216)
-* [ Raw response ](#tab-panel-217)
+* [ Output ](#tab-panel-234)
+* [ Raw response ](#tab-panel-235)
 
 Here are some great stops between San Francisco and Los Angeles:
 
@@ -521,8 +521,8 @@ What interests you most - beaches, nature, food, or historic sites? I can refine
 
 **Creative Writing**  — Higher temperature for creative output 
 
-* [ TypeScript ](#tab-panel-208)
-* [ cURL ](#tab-panel-209)
+* [ TypeScript ](#tab-panel-226)
+* [ cURL ](#tab-panel-227)
 
 TypeScript
 
@@ -594,8 +594,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/v1/
 
 ```
 
-* [ Output ](#tab-panel-218)
-* [ Raw response ](#tab-panel-219)
+* [ Output ](#tab-panel-236)
+* [ Raw response ](#tab-panel-237)
 
 # The Blue Feather
 
@@ -664,8 +664,8 @@ Then it started to hum.
 
 **Streaming Response**  — Enable streaming for real-time output 
 
-* [ TypeScript ](#tab-panel-212)
-* [ cURL ](#tab-panel-213)
+* [ TypeScript ](#tab-panel-230)
+* [ cURL ](#tab-panel-231)
 
 TypeScript
 
@@ -727,8 +727,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/v1/
 
 ```
 
-* [ Output ](#tab-panel-220)
-* [ Raw response ](#tab-panel-221)
+* [ Output ](#tab-panel-238)
+* [ Raw response ](#tab-panel-239)
 
 # Recursion Explained
 
@@ -1098,8 +1098,8 @@ Think of Russian nesting dolls:
 
 ## Parameters
 
-* [ Input ](#tab-panel-222)
-* [ Output ](#tab-panel-223)
+* [ Input ](#tab-panel-240)
+* [ Output ](#tab-panel-241)
 
 max\_tokens
 

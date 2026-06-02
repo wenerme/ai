@@ -7,6 +7,14 @@ info: To determine the technical writer assigned to the Stage/Group associated w
 
 Returns a single SSH key specified by the ID.
 
+## Synopsis
+
+Pass the key ID as an argument, or run the command without arguments
+to select a key interactively. Find key IDs by running `glab ssh-key list --show-id`.
+
+By default, the command prints the public key. Use `--output json` to return
+the full key object.
+
 ```plaintext
 glab ssh-key get <key-id> [flags]
 ```

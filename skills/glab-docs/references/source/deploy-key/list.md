@@ -7,6 +7,13 @@ info: To determine the technical writer assigned to the Stage/Group associated w
 
 Get a list of deploy keys for the current project.
 
+## Synopsis
+
+Each row shows the key's title, key, push access, and creation date.
+Pass `--show-id` to also display the key ID, which the `get` and `delete`
+commands accept as an argument. Use `--repo` to target a project other than
+the current one.
+
 ```plaintext
 glab deploy-key list [flags]
 ```
@@ -14,7 +21,11 @@ glab deploy-key list [flags]
 ## Examples
 
 ```console
+# List the current project's deploy keys
 glab deploy-key list
+
+# Include the key ID in the output
+glab deploy-key list --show-id
 ```
 
 ## Options

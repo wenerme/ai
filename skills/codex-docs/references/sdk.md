@@ -60,28 +60,30 @@ For more details, check out the [TypeScript repo](https://github.com/openai/code
 
 ## Python library
 
-The Python SDK is experimental and controls the local Codex app-server over JSON-RPC. It requires Python 3.10 or later and a local checkout of the open-source Codex repo.
+The Python SDK controls the local Codex app-server over JSON-RPC. It requires Python 3.10 or later. Published SDK builds include a pinned Codex CLI runtime dependency.
 
 ### Installation
 
-From the Codex repo root, install the SDK in editable mode:
+To install the SDK run:
 
 ```bash
-cd sdk/python
-python -m pip install -e .
+pip install openai-codex
 ```
 
-For manual local SDK usage, pass `AppServerConfig(codex_bin=...)` to point at a local `codex` binary, or use the repo examples and notebook bootstrap.
+Published SDK builds automatically use their pinned runtime. Pass `AppServerConfig(codex_bin=...)` only when you intentionally want to run against a specific local app-server binary.
 
 ### Usage
 
 Start Codex, create a thread, and run a prompt:
 
 ```python
-from codex_app_server import Codex
+from openai_codex import Codex, Sandbox
 
 with Codex() as codex:
-    thread = codex.thread_start(model="gpt-5.4")
+    thread = codex.thread_start(
+        model="gpt-5.4",
+        sandbox=Sandbox.workspace_write,
+    )
     result = thread.run("Make a plan to diagnose and fix the CI failures")
     print(result.final_response)
 ```
@@ -91,7 +93,7 @@ Use `AsyncCodex` when your application is already asynchronous:
 ```python
 import asyncio
 
-from codex_app_server import AsyncCodex
+from openai_codex import AsyncCodex
 
 
 async def main() -> None:
@@ -103,5 +105,29 @@ async def main() -> None:
 
 asyncio.run(main())
 ```
+
+### Sandbox presets
+
+Use the same `Sandbox` presets when creating a thread or changing its filesystem
+access for a later turn:
+
+```python
+from openai_codex import Codex, Sandbox
+
+with Codex() as codex:
+    thread = codex.thread_start(sandbox=Sandbox.workspace_write)
+    thread.run("Make the requested change.")
+    review = thread.run("Review the diff only.", sandbox=Sandbox.read_only)
+```
+
+Available presets:
+
+- `Sandbox.read_only`: Read files without allowing writes.
+- `Sandbox.workspace_write`: Read files and write inside the workspace and configured writable roots.
+- `Sandbox.full_access`: Run without filesystem access restrictions.
+
+When you omit `sandbox=`, app-server uses its configured default. A sandbox
+passed to `run(...)` or `turn(...)` applies to that turn and later turns
+on the thread.
 
 For more details, check out the [Python repo](https://github.com/openai/codex/tree/main/sdk/python).

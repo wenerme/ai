@@ -44,8 +44,8 @@ This configuration gives you additional protection by enabling PL3 rules, but wi
 
 The second rule logs any matches for PL4 rules, the most strict set of rules in the ruleset, so that it does not affect live traffic. You could use this configuration to understand which traffic would be affected by PL4 rules.
 
-* [ Dashboard ](#tab-panel-8276)
-* [ API ](#tab-panel-8277)
+* [ Dashboard ](#tab-panel-10202)
+* [ API ](#tab-panel-10203)
 
 1. Deploy the Cloudflare OWASP Core Ruleset by following the [dashboard instructions](https://developers.cloudflare.com/waf/account/managed-rulesets/deploy-dashboard/#deploy-a-managed-ruleset), customizing the ruleset behavior using these settings:  
    * **OWASP Anomaly Score Threshold**: _Medium - 40 and higher_  

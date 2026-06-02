@@ -205,8 +205,8 @@ The [Cloudflare Managed Ruleset](https://developers.cloudflare.com/waf/managed-r
 
 Bot Fight Mode challenges requests that match known bot patterns across your entire domain. It is available on all plans and requires no configuration beyond turning it on.
 
-* [  New dashboard ](#tab-panel-8019)
-* [ Old dashboard ](#tab-panel-8020)
+* [  New dashboard ](#tab-panel-10122)
+* [ Old dashboard ](#tab-panel-10123)
 
 1. In the Cloudflare dashboard, go to the **Security Settings** page.  
 [ Go to **Settings** ](https://dash.cloudflare.com/?to=/:account/:zone/security/settings)

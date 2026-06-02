@@ -20,8 +20,8 @@ Run a `cloudflared` [replica](https://developers.cloudflare.com/tunnel/configura
 
 ## Port configuration
 
-* [ Linux ](#tab-panel-8087)
-* [ Windows ](#tab-panel-8088)
+* [ Linux ](#tab-panel-10049)
+* [ Windows ](#tab-panel-10050)
 
 To increase the number of ports available to `cloudflared` on Linux:
 

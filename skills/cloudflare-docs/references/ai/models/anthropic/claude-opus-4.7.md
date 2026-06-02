@@ -29,8 +29,8 @@ Claude Opus 4.7 is Anthropic's most capable generally available model, with a st
 
 ## Usage
 
-* [ TypeScript ](#tab-panel-138)
-* [ cURL ](#tab-panel-139)
+* [ TypeScript ](#tab-panel-156)
+* [ cURL ](#tab-panel-157)
 
 TypeScript
 
@@ -88,8 +88,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/v1/
 
 ```
 
-* [ Output ](#tab-panel-142)
-* [ Raw response ](#tab-panel-143)
+* [ Output ](#tab-panel-160)
+* [ Raw response ](#tab-panel-161)
 
 # The Three Laws of Thermodynamics
 
@@ -161,8 +161,8 @@ Often mentioned alongside these: if two systems are each in thermal equilibrium 
 
 **With System Message**  — Using a system message to set context 
 
-* [ TypeScript ](#tab-panel-140)
-* [ cURL ](#tab-panel-141)
+* [ TypeScript ](#tab-panel-158)
+* [ cURL ](#tab-panel-159)
 
 TypeScript
 
@@ -224,8 +224,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/v1/
 
 ```
 
-* [ Output ](#tab-panel-144)
-* [ Raw response ](#tab-panel-145)
+* [ Output ](#tab-panel-162)
+* [ Raw response ](#tab-panel-163)
 
 # Reading a JSON File in Python
 
@@ -354,8 +354,8 @@ The `indent=4` argument makes the output nicely formatted. Let me know if you'd 
 
 **Multi-turn Conversation**  — Continuing a conversation with context 
 
-* [ TypeScript ](#tab-panel-148)
-* [ cURL ](#tab-panel-149)
+* [ TypeScript ](#tab-panel-166)
+* [ cURL ](#tab-panel-167)
 
 TypeScript
 
@@ -430,7 +430,7 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/v1/
 
     {
 
-      "content": "I'd be happy to help! The drive is about 380 miles and takes roughly 5-6 hours. Would you like suggestions for scenic routes or interesting stops along the way?",
+      "content": "I'\''d be happy to help! The drive is about 380 miles and takes roughly 5-6 hours. Would you like suggestions for scenic routes or interesting stops along the way?",
 
       "role": "assistant"
 
@@ -451,8 +451,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/v1/
 
 ```
 
-* [ Output ](#tab-panel-150)
-* [ Raw response ](#tab-panel-151)
+* [ Output ](#tab-panel-168)
+* [ Raw response ](#tab-panel-169)
 
 Great choice to explore along the way! Here are some popular stops, organized by route:
 
@@ -540,8 +540,8 @@ Let me know and I can build a more detailed itinerary!
 
 **Creative Writing with Adaptive Thinking**  — Use adaptive thinking with high effort to steer creative output -- the recommended replacement for the deprecated \`temperature\` parameter. 
 
-* [ TypeScript ](#tab-panel-152)
-* [ cURL ](#tab-panel-153)
+* [ TypeScript ](#tab-panel-170)
+* [ cURL ](#tab-panel-171)
 
 TypeScript
 
@@ -625,8 +625,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/v1/
 
 ```
 
-* [ Output ](#tab-panel-154)
-* [ Raw response ](#tab-panel-155)
+* [ Output ](#tab-panel-172)
+* [ Raw response ](#tab-panel-173)
 
 # The Wrong Kind of Silence
 
@@ -703,8 +703,8 @@ Seven grains. Facing north. On the desk of a man who drew maps for a living.
 
 **Streaming Response**  — Enable streaming for real-time output 
 
-* [ TypeScript ](#tab-panel-146)
-* [ cURL ](#tab-panel-147)
+* [ TypeScript ](#tab-panel-164)
+* [ cURL ](#tab-panel-165)
 
 TypeScript
 
@@ -766,8 +766,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/v1/
 
 ```
 
-* [ Output ](#tab-panel-156)
-* [ Raw response ](#tab-panel-157)
+* [ Output ](#tab-panel-174)
+* [ Raw response ](#tab-panel-175)
 
 # Recursion Explained
 
@@ -1329,8 +1329,8 @@ Recursion is elegant for problems that can be broken into **smaller versions of 
 
 ## Parameters
 
-* [ Input ](#tab-panel-158)
-* [ Output ](#tab-panel-159)
+* [ Input ](#tab-panel-176)
+* [ Output ](#tab-panel-177)
 
 max\_tokens
 

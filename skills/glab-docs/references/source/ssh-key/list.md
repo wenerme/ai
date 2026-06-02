@@ -7,6 +7,12 @@ info: To determine the technical writer assigned to the Stage/Group associated w
 
 Get a list of SSH keys for the currently authenticated user.
 
+## Synopsis
+
+Each row shows the key's title, key, usage type, and creation date.
+Pass `--show-id` to also display the key ID, which the `get` and `delete`
+commands accept as an argument.
+
 ```plaintext
 glab ssh-key list [flags]
 ```
@@ -14,7 +20,11 @@ glab ssh-key list [flags]
 ## Examples
 
 ```console
+# List your SSH keys
 glab ssh-key list
+
+# Include the key ID in the output
+glab ssh-key list --show-id
 ```
 
 ## Options

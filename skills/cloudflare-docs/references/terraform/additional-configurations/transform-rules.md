@@ -48,8 +48,8 @@ Terraform assumes that it has complete control over account and zone rulesets. I
 
 The following example creates a URL rewrite rule that rewrites requests for `example.com/old-folder` to `example.com/new-folder`:
 
-* [ Terraform (v5) ](#tab-panel-8081)
-* [ Terraform (v4) ](#tab-panel-8082)
+* [ Terraform (v5) ](#tab-panel-10005)
+* [ Terraform (v4) ](#tab-panel-10006)
 
 Required API token permissions
 
@@ -167,8 +167,8 @@ The following configuration example performs the following adjustments to HTTP r
 * Adds a `my-header-2` header to the request with a dynamic value defined by an expression.
 * Deletes the `existing-header` header from the request, if it exists.
 
-* [ Terraform (v5) ](#tab-panel-8083)
-* [ Terraform (v4) ](#tab-panel-8084)
+* [ Terraform (v5) ](#tab-panel-10007)
+* [ Terraform (v4) ](#tab-panel-10008)
 
 Required API token permissions
 
@@ -319,8 +319,8 @@ The following configuration example performs the following adjustments to HTTP r
 * Adds a `my-header-2` header to the response with a dynamic value defined by an expression.
 * Deletes the `existing-header` header from the response, if it exists.
 
-* [ Terraform (v5) ](#tab-panel-8085)
-* [ Terraform (v4) ](#tab-panel-8086)
+* [ Terraform (v5) ](#tab-panel-10009)
+* [ Terraform (v4) ](#tab-panel-10010)
 
 Required API token permissions
 
@@ -465,8 +465,8 @@ For more information on modifying response headers, refer to [Response Header Tr
 
 ## Configure Managed Transforms
 
-* [ Terraform (v5) ](#tab-panel-8079)
-* [ Terraform (v4) ](#tab-panel-8080)
+* [ Terraform (v5) ](#tab-panel-10003)
+* [ Terraform (v4) ](#tab-panel-10004)
 
 Required API token permissions
 

@@ -40,8 +40,8 @@ graph LR
 
 ### Deploy a replica
 
-* [ Dashboard ](#tab-panel-8825)
-* [ CLI ](#tab-panel-8826)
+* [ Dashboard ](#tab-panel-10041)
+* [ CLI ](#tab-panel-10042)
 
 To deploy a replica for a remotely-managed tunnel:
 

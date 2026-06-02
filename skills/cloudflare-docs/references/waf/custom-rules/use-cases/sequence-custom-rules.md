@@ -14,8 +14,8 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 You can build an [API sequence rule](https://developers.cloudflare.com/api-shield/security/sequence-mitigation/custom-rules/) via the Cloudflare dashboard.
 
-* [  New dashboard ](#tab-panel-8251)
-* [ Old dashboard ](#tab-panel-8252)
+* [  New dashboard ](#tab-panel-10215)
+* [ Old dashboard ](#tab-panel-10216)
 
 1. In the Cloudflare dashboard, go to the **Security rules** page.  
 [ Go to **Security rules** ](https://dash.cloudflare.com/?to=/:account/:zone/security/security-rules)

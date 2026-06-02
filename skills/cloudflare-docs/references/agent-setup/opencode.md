@@ -59,7 +59,7 @@ opencode
 5. **Try a prompt**  
 For example:  
 ```  
-Build an AI chat agent using the Cloudflare Agents SDK with persistent conversation history stored in D1.  
+Deploy a full-stack React app to Cloudflare Pages with a Workers API backend and D1 database.  
 ```
 
 ## Cloudflare platform access

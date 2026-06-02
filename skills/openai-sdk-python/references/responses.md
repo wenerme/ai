@@ -1068,10 +1068,6 @@ as input for the model's response.
 
           Action type "search" - Performs a web search query.
 
-          - `query: str`
-
-            [DEPRECATED] The search query.
-
           - `type: Literal["search"]`
 
             The action type.
@@ -1081,6 +1077,10 @@ as input for the model's response.
           - `queries: Optional[List[str]]`
 
             The search queries.
+
+          - `query: Optional[str]`
+
+            The search query.
 
           - `sources: Optional[List[ActionSearchSource]]`
 
@@ -2346,6 +2346,90 @@ as input for the model's response.
 
         - `"incomplete"`
 
+    - `class AdditionalTools: …`
+
+      - `role: Literal["developer"]`
+
+        The role that provided the additional tools. Only `developer` is supported.
+
+        - `"developer"`
+
+      - `tools: List[Tool]`
+
+        A list of additional tools made available at this item.
+
+        - `class FunctionTool: …`
+
+          Defines a function in your own code the model can choose to call. Learn more about [function calling](https://platform.openai.com/docs/guides/function-calling).
+
+        - `class FileSearchTool: …`
+
+          A tool that searches for relevant content from uploaded files. Learn more about the [file search tool](https://platform.openai.com/docs/guides/tools-file-search).
+
+        - `class ComputerTool: …`
+
+          A tool that controls a virtual computer. Learn more about the [computer tool](https://platform.openai.com/docs/guides/tools-computer-use).
+
+        - `class ComputerUsePreviewTool: …`
+
+          A tool that controls a virtual computer. Learn more about the [computer tool](https://platform.openai.com/docs/guides/tools-computer-use).
+
+        - `class WebSearchTool: …`
+
+          Search the Internet for sources related to the prompt. Learn more about the
+          [web search tool](https://platform.openai.com/docs/guides/tools-web-search).
+
+        - `class Mcp: …`
+
+          Give the model access to additional tools via remote Model Context Protocol
+          (MCP) servers. [Learn more about MCP](https://platform.openai.com/docs/guides/tools-remote-mcp).
+
+        - `class CodeInterpreter: …`
+
+          A tool that runs Python code to help generate a response to a prompt.
+
+        - `class ImageGeneration: …`
+
+          A tool that generates images using the GPT image models.
+
+        - `class LocalShell: …`
+
+          A tool that allows the model to execute shell commands in a local environment.
+
+        - `class FunctionShellTool: …`
+
+          A tool that allows the model to execute shell commands.
+
+        - `class CustomTool: …`
+
+          A custom tool that processes input using a specified format. Learn more about   [custom tools](https://platform.openai.com/docs/guides/function-calling#custom-tools)
+
+        - `class NamespaceTool: …`
+
+          Groups function/custom tools under a shared namespace.
+
+        - `class ToolSearchTool: …`
+
+          Hosted or BYOT tool search configuration for deferred tools.
+
+        - `class WebSearchPreviewTool: …`
+
+          This tool searches the web for relevant results to use in a response. Learn more about the [web search tool](https://platform.openai.com/docs/guides/tools-web-search).
+
+        - `class ApplyPatchTool: …`
+
+          Allows the assistant to create, delete, or update files using unified diffs.
+
+      - `type: Literal["additional_tools"]`
+
+        The item type. Always `additional_tools`.
+
+        - `"additional_tools"`
+
+      - `id: Optional[str]`
+
+        The unique ID of this additional tools item.
+
     - `class ResponseReasoningItem: …`
 
       A description of the chain of thought used by a reasoning model while generating
@@ -3360,6 +3444,12 @@ as input for the model's response.
 - `prompt_cache_retention: Optional[Literal["in_memory", "24h"]]`
 
   The retention policy for the prompt cache. Set to `24h` to enable extended prompt caching, which keeps cached prefixes active for longer, up to a maximum of 24 hours. [Learn more](https://platform.openai.com/docs/guides/prompt-caching#prompt-cache-retention).
+  For `gpt-5.5`, `gpt-5.5-pro`, and future models, only `24h` is supported.
+
+  For older models that support both `in_memory` and `24h`, the default depends on your organization's data retention policy:
+
+  - Organizations without ZDR enabled default to `24h`.
+  - Organizations with ZDR enabled default to `in_memory` when `prompt_cache_retention` is not specified.
 
   - `"in_memory"`
 
@@ -4889,10 +4979,6 @@ as input for the model's response.
 
             Action type "search" - Performs a web search query.
 
-            - `query: str`
-
-              [DEPRECATED] The search query.
-
             - `type: Literal["search"]`
 
               The action type.
@@ -4902,6 +4988,10 @@ as input for the model's response.
             - `queries: Optional[List[str]]`
 
               The search queries.
+
+            - `query: Optional[str]`
+
+              The search query.
 
             - `sources: Optional[List[ActionSearchSource]]`
 
@@ -6167,6 +6257,90 @@ as input for the model's response.
 
           - `"incomplete"`
 
+      - `class AdditionalTools: …`
+
+        - `role: Literal["developer"]`
+
+          The role that provided the additional tools. Only `developer` is supported.
+
+          - `"developer"`
+
+        - `tools: List[Tool]`
+
+          A list of additional tools made available at this item.
+
+          - `class FunctionTool: …`
+
+            Defines a function in your own code the model can choose to call. Learn more about [function calling](https://platform.openai.com/docs/guides/function-calling).
+
+          - `class FileSearchTool: …`
+
+            A tool that searches for relevant content from uploaded files. Learn more about the [file search tool](https://platform.openai.com/docs/guides/tools-file-search).
+
+          - `class ComputerTool: …`
+
+            A tool that controls a virtual computer. Learn more about the [computer tool](https://platform.openai.com/docs/guides/tools-computer-use).
+
+          - `class ComputerUsePreviewTool: …`
+
+            A tool that controls a virtual computer. Learn more about the [computer tool](https://platform.openai.com/docs/guides/tools-computer-use).
+
+          - `class WebSearchTool: …`
+
+            Search the Internet for sources related to the prompt. Learn more about the
+            [web search tool](https://platform.openai.com/docs/guides/tools-web-search).
+
+          - `class Mcp: …`
+
+            Give the model access to additional tools via remote Model Context Protocol
+            (MCP) servers. [Learn more about MCP](https://platform.openai.com/docs/guides/tools-remote-mcp).
+
+          - `class CodeInterpreter: …`
+
+            A tool that runs Python code to help generate a response to a prompt.
+
+          - `class ImageGeneration: …`
+
+            A tool that generates images using the GPT image models.
+
+          - `class LocalShell: …`
+
+            A tool that allows the model to execute shell commands in a local environment.
+
+          - `class FunctionShellTool: …`
+
+            A tool that allows the model to execute shell commands.
+
+          - `class CustomTool: …`
+
+            A custom tool that processes input using a specified format. Learn more about   [custom tools](https://platform.openai.com/docs/guides/function-calling#custom-tools)
+
+          - `class NamespaceTool: …`
+
+            Groups function/custom tools under a shared namespace.
+
+          - `class ToolSearchTool: …`
+
+            Hosted or BYOT tool search configuration for deferred tools.
+
+          - `class WebSearchPreviewTool: …`
+
+            This tool searches the web for relevant results to use in a response. Learn more about the [web search tool](https://platform.openai.com/docs/guides/tools-web-search).
+
+          - `class ApplyPatchTool: …`
+
+            Allows the assistant to create, delete, or update files using unified diffs.
+
+        - `type: Literal["additional_tools"]`
+
+          The item type. Always `additional_tools`.
+
+          - `"additional_tools"`
+
+        - `id: Optional[str]`
+
+          The unique ID of this additional tools item.
+
       - `class ResponseReasoningItem: …`
 
         A description of the chain of thought used by a reasoning model while generating
@@ -7419,6 +7593,104 @@ as input for the model's response.
 
         The identifier of the actor that created the item.
 
+    - `class AdditionalTools: …`
+
+      - `id: str`
+
+        The unique ID of the additional tools item.
+
+      - `role: Literal["unknown", "user", "assistant", 5 more]`
+
+        The role that provided the additional tools.
+
+        - `"unknown"`
+
+        - `"user"`
+
+        - `"assistant"`
+
+        - `"system"`
+
+        - `"critic"`
+
+        - `"discriminator"`
+
+        - `"developer"`
+
+        - `"tool"`
+
+      - `tools: List[Tool]`
+
+        The additional tool definitions made available at this item.
+
+        - `class FunctionTool: …`
+
+          Defines a function in your own code the model can choose to call. Learn more about [function calling](https://platform.openai.com/docs/guides/function-calling).
+
+        - `class FileSearchTool: …`
+
+          A tool that searches for relevant content from uploaded files. Learn more about the [file search tool](https://platform.openai.com/docs/guides/tools-file-search).
+
+        - `class ComputerTool: …`
+
+          A tool that controls a virtual computer. Learn more about the [computer tool](https://platform.openai.com/docs/guides/tools-computer-use).
+
+        - `class ComputerUsePreviewTool: …`
+
+          A tool that controls a virtual computer. Learn more about the [computer tool](https://platform.openai.com/docs/guides/tools-computer-use).
+
+        - `class WebSearchTool: …`
+
+          Search the Internet for sources related to the prompt. Learn more about the
+          [web search tool](https://platform.openai.com/docs/guides/tools-web-search).
+
+        - `class Mcp: …`
+
+          Give the model access to additional tools via remote Model Context Protocol
+          (MCP) servers. [Learn more about MCP](https://platform.openai.com/docs/guides/tools-remote-mcp).
+
+        - `class CodeInterpreter: …`
+
+          A tool that runs Python code to help generate a response to a prompt.
+
+        - `class ImageGeneration: …`
+
+          A tool that generates images using the GPT image models.
+
+        - `class LocalShell: …`
+
+          A tool that allows the model to execute shell commands in a local environment.
+
+        - `class FunctionShellTool: …`
+
+          A tool that allows the model to execute shell commands.
+
+        - `class CustomTool: …`
+
+          A custom tool that processes input using a specified format. Learn more about   [custom tools](https://platform.openai.com/docs/guides/function-calling#custom-tools)
+
+        - `class NamespaceTool: …`
+
+          Groups function/custom tools under a shared namespace.
+
+        - `class ToolSearchTool: …`
+
+          Hosted or BYOT tool search configuration for deferred tools.
+
+        - `class WebSearchPreviewTool: …`
+
+          This tool searches the web for relevant results to use in a response. Learn more about the [web search tool](https://platform.openai.com/docs/guides/tools-web-search).
+
+        - `class ApplyPatchTool: …`
+
+          Allows the assistant to create, delete, or update files using unified diffs.
+
+      - `type: Literal["additional_tools"]`
+
+        The type of the item. Always `additional_tools`.
+
+        - `"additional_tools"`
+
     - `class ResponseCompactionItem: …`
 
       A compaction item generated by the [`v1/responses/compact` API](https://platform.openai.com/docs/api-reference/responses/compact).
@@ -8330,6 +8602,12 @@ as input for the model's response.
   - `prompt_cache_retention: Optional[Literal["in_memory", "24h"]]`
 
     The retention policy for the prompt cache. Set to `24h` to enable extended prompt caching, which keeps cached prefixes active for longer, up to a maximum of 24 hours. [Learn more](https://platform.openai.com/docs/guides/prompt-caching#prompt-cache-retention).
+    For `gpt-5.5`, `gpt-5.5-pro`, and future models, only `24h` is supported.
+
+    For older models that support both `in_memory` and `24h`, the default depends on your organization's data retention policy:
+
+    - Organizations without ZDR enabled default to `24h`.
+    - Organizations with ZDR enabled default to `in_memory` when `prompt_cache_retention` is not specified.
 
     - `"in_memory"`
 
@@ -10603,10 +10881,6 @@ Retrieves a model response with the given ID.
 
             Action type "search" - Performs a web search query.
 
-            - `query: str`
-
-              [DEPRECATED] The search query.
-
             - `type: Literal["search"]`
 
               The action type.
@@ -10616,6 +10890,10 @@ Retrieves a model response with the given ID.
             - `queries: Optional[List[str]]`
 
               The search queries.
+
+            - `query: Optional[str]`
+
+              The search query.
 
             - `sources: Optional[List[ActionSearchSource]]`
 
@@ -11881,6 +12159,90 @@ Retrieves a model response with the given ID.
 
           - `"incomplete"`
 
+      - `class AdditionalTools: …`
+
+        - `role: Literal["developer"]`
+
+          The role that provided the additional tools. Only `developer` is supported.
+
+          - `"developer"`
+
+        - `tools: List[Tool]`
+
+          A list of additional tools made available at this item.
+
+          - `class FunctionTool: …`
+
+            Defines a function in your own code the model can choose to call. Learn more about [function calling](https://platform.openai.com/docs/guides/function-calling).
+
+          - `class FileSearchTool: …`
+
+            A tool that searches for relevant content from uploaded files. Learn more about the [file search tool](https://platform.openai.com/docs/guides/tools-file-search).
+
+          - `class ComputerTool: …`
+
+            A tool that controls a virtual computer. Learn more about the [computer tool](https://platform.openai.com/docs/guides/tools-computer-use).
+
+          - `class ComputerUsePreviewTool: …`
+
+            A tool that controls a virtual computer. Learn more about the [computer tool](https://platform.openai.com/docs/guides/tools-computer-use).
+
+          - `class WebSearchTool: …`
+
+            Search the Internet for sources related to the prompt. Learn more about the
+            [web search tool](https://platform.openai.com/docs/guides/tools-web-search).
+
+          - `class Mcp: …`
+
+            Give the model access to additional tools via remote Model Context Protocol
+            (MCP) servers. [Learn more about MCP](https://platform.openai.com/docs/guides/tools-remote-mcp).
+
+          - `class CodeInterpreter: …`
+
+            A tool that runs Python code to help generate a response to a prompt.
+
+          - `class ImageGeneration: …`
+
+            A tool that generates images using the GPT image models.
+
+          - `class LocalShell: …`
+
+            A tool that allows the model to execute shell commands in a local environment.
+
+          - `class FunctionShellTool: …`
+
+            A tool that allows the model to execute shell commands.
+
+          - `class CustomTool: …`
+
+            A custom tool that processes input using a specified format. Learn more about   [custom tools](https://platform.openai.com/docs/guides/function-calling#custom-tools)
+
+          - `class NamespaceTool: …`
+
+            Groups function/custom tools under a shared namespace.
+
+          - `class ToolSearchTool: …`
+
+            Hosted or BYOT tool search configuration for deferred tools.
+
+          - `class WebSearchPreviewTool: …`
+
+            This tool searches the web for relevant results to use in a response. Learn more about the [web search tool](https://platform.openai.com/docs/guides/tools-web-search).
+
+          - `class ApplyPatchTool: …`
+
+            Allows the assistant to create, delete, or update files using unified diffs.
+
+        - `type: Literal["additional_tools"]`
+
+          The item type. Always `additional_tools`.
+
+          - `"additional_tools"`
+
+        - `id: Optional[str]`
+
+          The unique ID of this additional tools item.
+
       - `class ResponseReasoningItem: …`
 
         A description of the chain of thought used by a reasoning model while generating
@@ -13133,6 +13495,104 @@ Retrieves a model response with the given ID.
 
         The identifier of the actor that created the item.
 
+    - `class AdditionalTools: …`
+
+      - `id: str`
+
+        The unique ID of the additional tools item.
+
+      - `role: Literal["unknown", "user", "assistant", 5 more]`
+
+        The role that provided the additional tools.
+
+        - `"unknown"`
+
+        - `"user"`
+
+        - `"assistant"`
+
+        - `"system"`
+
+        - `"critic"`
+
+        - `"discriminator"`
+
+        - `"developer"`
+
+        - `"tool"`
+
+      - `tools: List[Tool]`
+
+        The additional tool definitions made available at this item.
+
+        - `class FunctionTool: …`
+
+          Defines a function in your own code the model can choose to call. Learn more about [function calling](https://platform.openai.com/docs/guides/function-calling).
+
+        - `class FileSearchTool: …`
+
+          A tool that searches for relevant content from uploaded files. Learn more about the [file search tool](https://platform.openai.com/docs/guides/tools-file-search).
+
+        - `class ComputerTool: …`
+
+          A tool that controls a virtual computer. Learn more about the [computer tool](https://platform.openai.com/docs/guides/tools-computer-use).
+
+        - `class ComputerUsePreviewTool: …`
+
+          A tool that controls a virtual computer. Learn more about the [computer tool](https://platform.openai.com/docs/guides/tools-computer-use).
+
+        - `class WebSearchTool: …`
+
+          Search the Internet for sources related to the prompt. Learn more about the
+          [web search tool](https://platform.openai.com/docs/guides/tools-web-search).
+
+        - `class Mcp: …`
+
+          Give the model access to additional tools via remote Model Context Protocol
+          (MCP) servers. [Learn more about MCP](https://platform.openai.com/docs/guides/tools-remote-mcp).
+
+        - `class CodeInterpreter: …`
+
+          A tool that runs Python code to help generate a response to a prompt.
+
+        - `class ImageGeneration: …`
+
+          A tool that generates images using the GPT image models.
+
+        - `class LocalShell: …`
+
+          A tool that allows the model to execute shell commands in a local environment.
+
+        - `class FunctionShellTool: …`
+
+          A tool that allows the model to execute shell commands.
+
+        - `class CustomTool: …`
+
+          A custom tool that processes input using a specified format. Learn more about   [custom tools](https://platform.openai.com/docs/guides/function-calling#custom-tools)
+
+        - `class NamespaceTool: …`
+
+          Groups function/custom tools under a shared namespace.
+
+        - `class ToolSearchTool: …`
+
+          Hosted or BYOT tool search configuration for deferred tools.
+
+        - `class WebSearchPreviewTool: …`
+
+          This tool searches the web for relevant results to use in a response. Learn more about the [web search tool](https://platform.openai.com/docs/guides/tools-web-search).
+
+        - `class ApplyPatchTool: …`
+
+          Allows the assistant to create, delete, or update files using unified diffs.
+
+      - `type: Literal["additional_tools"]`
+
+        The type of the item. Always `additional_tools`.
+
+        - `"additional_tools"`
+
     - `class ResponseCompactionItem: …`
 
       A compaction item generated by the [`v1/responses/compact` API](https://platform.openai.com/docs/api-reference/responses/compact).
@@ -14044,6 +14504,12 @@ Retrieves a model response with the given ID.
   - `prompt_cache_retention: Optional[Literal["in_memory", "24h"]]`
 
     The retention policy for the prompt cache. Set to `24h` to enable extended prompt caching, which keeps cached prefixes active for longer, up to a maximum of 24 hours. [Learn more](https://platform.openai.com/docs/guides/prompt-caching#prompt-cache-retention).
+    For `gpt-5.5`, `gpt-5.5-pro`, and future models, only `24h` is supported.
+
+    For older models that support both `in_memory` and `24h`, the default depends on your organization's data retention policy:
+
+    - Organizations without ZDR enabled default to `24h`.
+    - Organizations with ZDR enabled default to `in_memory` when `prompt_cache_retention` is not specified.
 
     - `"in_memory"`
 
@@ -15619,10 +16085,6 @@ the `background` parameter set to `true` can be cancelled.
 
             Action type "search" - Performs a web search query.
 
-            - `query: str`
-
-              [DEPRECATED] The search query.
-
             - `type: Literal["search"]`
 
               The action type.
@@ -15632,6 +16094,10 @@ the `background` parameter set to `true` can be cancelled.
             - `queries: Optional[List[str]]`
 
               The search queries.
+
+            - `query: Optional[str]`
+
+              The search query.
 
             - `sources: Optional[List[ActionSearchSource]]`
 
@@ -16897,6 +17363,90 @@ the `background` parameter set to `true` can be cancelled.
 
           - `"incomplete"`
 
+      - `class AdditionalTools: …`
+
+        - `role: Literal["developer"]`
+
+          The role that provided the additional tools. Only `developer` is supported.
+
+          - `"developer"`
+
+        - `tools: List[Tool]`
+
+          A list of additional tools made available at this item.
+
+          - `class FunctionTool: …`
+
+            Defines a function in your own code the model can choose to call. Learn more about [function calling](https://platform.openai.com/docs/guides/function-calling).
+
+          - `class FileSearchTool: …`
+
+            A tool that searches for relevant content from uploaded files. Learn more about the [file search tool](https://platform.openai.com/docs/guides/tools-file-search).
+
+          - `class ComputerTool: …`
+
+            A tool that controls a virtual computer. Learn more about the [computer tool](https://platform.openai.com/docs/guides/tools-computer-use).
+
+          - `class ComputerUsePreviewTool: …`
+
+            A tool that controls a virtual computer. Learn more about the [computer tool](https://platform.openai.com/docs/guides/tools-computer-use).
+
+          - `class WebSearchTool: …`
+
+            Search the Internet for sources related to the prompt. Learn more about the
+            [web search tool](https://platform.openai.com/docs/guides/tools-web-search).
+
+          - `class Mcp: …`
+
+            Give the model access to additional tools via remote Model Context Protocol
+            (MCP) servers. [Learn more about MCP](https://platform.openai.com/docs/guides/tools-remote-mcp).
+
+          - `class CodeInterpreter: …`
+
+            A tool that runs Python code to help generate a response to a prompt.
+
+          - `class ImageGeneration: …`
+
+            A tool that generates images using the GPT image models.
+
+          - `class LocalShell: …`
+
+            A tool that allows the model to execute shell commands in a local environment.
+
+          - `class FunctionShellTool: …`
+
+            A tool that allows the model to execute shell commands.
+
+          - `class CustomTool: …`
+
+            A custom tool that processes input using a specified format. Learn more about   [custom tools](https://platform.openai.com/docs/guides/function-calling#custom-tools)
+
+          - `class NamespaceTool: …`
+
+            Groups function/custom tools under a shared namespace.
+
+          - `class ToolSearchTool: …`
+
+            Hosted or BYOT tool search configuration for deferred tools.
+
+          - `class WebSearchPreviewTool: …`
+
+            This tool searches the web for relevant results to use in a response. Learn more about the [web search tool](https://platform.openai.com/docs/guides/tools-web-search).
+
+          - `class ApplyPatchTool: …`
+
+            Allows the assistant to create, delete, or update files using unified diffs.
+
+        - `type: Literal["additional_tools"]`
+
+          The item type. Always `additional_tools`.
+
+          - `"additional_tools"`
+
+        - `id: Optional[str]`
+
+          The unique ID of this additional tools item.
+
       - `class ResponseReasoningItem: …`
 
         A description of the chain of thought used by a reasoning model while generating
@@ -18149,6 +18699,104 @@ the `background` parameter set to `true` can be cancelled.
 
         The identifier of the actor that created the item.
 
+    - `class AdditionalTools: …`
+
+      - `id: str`
+
+        The unique ID of the additional tools item.
+
+      - `role: Literal["unknown", "user", "assistant", 5 more]`
+
+        The role that provided the additional tools.
+
+        - `"unknown"`
+
+        - `"user"`
+
+        - `"assistant"`
+
+        - `"system"`
+
+        - `"critic"`
+
+        - `"discriminator"`
+
+        - `"developer"`
+
+        - `"tool"`
+
+      - `tools: List[Tool]`
+
+        The additional tool definitions made available at this item.
+
+        - `class FunctionTool: …`
+
+          Defines a function in your own code the model can choose to call. Learn more about [function calling](https://platform.openai.com/docs/guides/function-calling).
+
+        - `class FileSearchTool: …`
+
+          A tool that searches for relevant content from uploaded files. Learn more about the [file search tool](https://platform.openai.com/docs/guides/tools-file-search).
+
+        - `class ComputerTool: …`
+
+          A tool that controls a virtual computer. Learn more about the [computer tool](https://platform.openai.com/docs/guides/tools-computer-use).
+
+        - `class ComputerUsePreviewTool: …`
+
+          A tool that controls a virtual computer. Learn more about the [computer tool](https://platform.openai.com/docs/guides/tools-computer-use).
+
+        - `class WebSearchTool: …`
+
+          Search the Internet for sources related to the prompt. Learn more about the
+          [web search tool](https://platform.openai.com/docs/guides/tools-web-search).
+
+        - `class Mcp: …`
+
+          Give the model access to additional tools via remote Model Context Protocol
+          (MCP) servers. [Learn more about MCP](https://platform.openai.com/docs/guides/tools-remote-mcp).
+
+        - `class CodeInterpreter: …`
+
+          A tool that runs Python code to help generate a response to a prompt.
+
+        - `class ImageGeneration: …`
+
+          A tool that generates images using the GPT image models.
+
+        - `class LocalShell: …`
+
+          A tool that allows the model to execute shell commands in a local environment.
+
+        - `class FunctionShellTool: …`
+
+          A tool that allows the model to execute shell commands.
+
+        - `class CustomTool: …`
+
+          A custom tool that processes input using a specified format. Learn more about   [custom tools](https://platform.openai.com/docs/guides/function-calling#custom-tools)
+
+        - `class NamespaceTool: …`
+
+          Groups function/custom tools under a shared namespace.
+
+        - `class ToolSearchTool: …`
+
+          Hosted or BYOT tool search configuration for deferred tools.
+
+        - `class WebSearchPreviewTool: …`
+
+          This tool searches the web for relevant results to use in a response. Learn more about the [web search tool](https://platform.openai.com/docs/guides/tools-web-search).
+
+        - `class ApplyPatchTool: …`
+
+          Allows the assistant to create, delete, or update files using unified diffs.
+
+      - `type: Literal["additional_tools"]`
+
+        The type of the item. Always `additional_tools`.
+
+        - `"additional_tools"`
+
     - `class ResponseCompactionItem: …`
 
       A compaction item generated by the [`v1/responses/compact` API](https://platform.openai.com/docs/api-reference/responses/compact).
@@ -19060,6 +19708,12 @@ the `background` parameter set to `true` can be cancelled.
   - `prompt_cache_retention: Optional[Literal["in_memory", "24h"]]`
 
     The retention policy for the prompt cache. Set to `24h` to enable extended prompt caching, which keeps cached prefixes active for longer, up to a maximum of 24 hours. [Learn more](https://platform.openai.com/docs/guides/prompt-caching#prompt-cache-retention).
+    For `gpt-5.5`, `gpt-5.5-pro`, and future models, only `24h` is supported.
+
+    For older models that support both `in_memory` and `24h`, the default depends on your organization's data retention policy:
+
+    - Organizations without ZDR enabled default to `24h`.
+    - Organizations with ZDR enabled default to `in_memory` when `prompt_cache_retention` is not specified.
 
     - `"in_memory"`
 
@@ -20694,10 +21348,6 @@ Learn when and how to compact long-running conversations in the [conversation st
 
           Action type "search" - Performs a web search query.
 
-          - `query: str`
-
-            [DEPRECATED] The search query.
-
           - `type: Literal["search"]`
 
             The action type.
@@ -20707,6 +21357,10 @@ Learn when and how to compact long-running conversations in the [conversation st
           - `queries: Optional[List[str]]`
 
             The search queries.
+
+          - `query: Optional[str]`
+
+            The search query.
 
           - `sources: Optional[List[ActionSearchSource]]`
 
@@ -21972,6 +22626,90 @@ Learn when and how to compact long-running conversations in the [conversation st
 
         - `"incomplete"`
 
+    - `class AdditionalTools: …`
+
+      - `role: Literal["developer"]`
+
+        The role that provided the additional tools. Only `developer` is supported.
+
+        - `"developer"`
+
+      - `tools: List[Tool]`
+
+        A list of additional tools made available at this item.
+
+        - `class FunctionTool: …`
+
+          Defines a function in your own code the model can choose to call. Learn more about [function calling](https://platform.openai.com/docs/guides/function-calling).
+
+        - `class FileSearchTool: …`
+
+          A tool that searches for relevant content from uploaded files. Learn more about the [file search tool](https://platform.openai.com/docs/guides/tools-file-search).
+
+        - `class ComputerTool: …`
+
+          A tool that controls a virtual computer. Learn more about the [computer tool](https://platform.openai.com/docs/guides/tools-computer-use).
+
+        - `class ComputerUsePreviewTool: …`
+
+          A tool that controls a virtual computer. Learn more about the [computer tool](https://platform.openai.com/docs/guides/tools-computer-use).
+
+        - `class WebSearchTool: …`
+
+          Search the Internet for sources related to the prompt. Learn more about the
+          [web search tool](https://platform.openai.com/docs/guides/tools-web-search).
+
+        - `class Mcp: …`
+
+          Give the model access to additional tools via remote Model Context Protocol
+          (MCP) servers. [Learn more about MCP](https://platform.openai.com/docs/guides/tools-remote-mcp).
+
+        - `class CodeInterpreter: …`
+
+          A tool that runs Python code to help generate a response to a prompt.
+
+        - `class ImageGeneration: …`
+
+          A tool that generates images using the GPT image models.
+
+        - `class LocalShell: …`
+
+          A tool that allows the model to execute shell commands in a local environment.
+
+        - `class FunctionShellTool: …`
+
+          A tool that allows the model to execute shell commands.
+
+        - `class CustomTool: …`
+
+          A custom tool that processes input using a specified format. Learn more about   [custom tools](https://platform.openai.com/docs/guides/function-calling#custom-tools)
+
+        - `class NamespaceTool: …`
+
+          Groups function/custom tools under a shared namespace.
+
+        - `class ToolSearchTool: …`
+
+          Hosted or BYOT tool search configuration for deferred tools.
+
+        - `class WebSearchPreviewTool: …`
+
+          This tool searches the web for relevant results to use in a response. Learn more about the [web search tool](https://platform.openai.com/docs/guides/tools-web-search).
+
+        - `class ApplyPatchTool: …`
+
+          Allows the assistant to create, delete, or update files using unified diffs.
+
+      - `type: Literal["additional_tools"]`
+
+        The item type. Always `additional_tools`.
+
+        - `"additional_tools"`
+
+      - `id: Optional[str]`
+
+        The unique ID of this additional tools item.
+
     - `class ResponseReasoningItem: …`
 
       A description of the chain of thought used by a reasoning model while generating
@@ -23208,10 +23946,6 @@ Learn when and how to compact long-running conversations in the [conversation st
 
           Action type "search" - Performs a web search query.
 
-          - `query: str`
-
-            [DEPRECATED] The search query.
-
           - `type: Literal["search"]`
 
             The action type.
@@ -23221,6 +23955,10 @@ Learn when and how to compact long-running conversations in the [conversation st
           - `queries: Optional[List[str]]`
 
             The search queries.
+
+          - `query: Optional[str]`
+
+            The search query.
 
           - `sources: Optional[List[ActionSearchSource]]`
 
@@ -24902,6 +25640,104 @@ Learn when and how to compact long-running conversations in the [conversation st
       - `created_by: Optional[str]`
 
         The identifier of the actor that created the item.
+
+    - `class AdditionalTools: …`
+
+      - `id: str`
+
+        The unique ID of the additional tools item.
+
+      - `role: Literal["unknown", "user", "assistant", 5 more]`
+
+        The role that provided the additional tools.
+
+        - `"unknown"`
+
+        - `"user"`
+
+        - `"assistant"`
+
+        - `"system"`
+
+        - `"critic"`
+
+        - `"discriminator"`
+
+        - `"developer"`
+
+        - `"tool"`
+
+      - `tools: List[Tool]`
+
+        The additional tool definitions made available at this item.
+
+        - `class FunctionTool: …`
+
+          Defines a function in your own code the model can choose to call. Learn more about [function calling](https://platform.openai.com/docs/guides/function-calling).
+
+        - `class FileSearchTool: …`
+
+          A tool that searches for relevant content from uploaded files. Learn more about the [file search tool](https://platform.openai.com/docs/guides/tools-file-search).
+
+        - `class ComputerTool: …`
+
+          A tool that controls a virtual computer. Learn more about the [computer tool](https://platform.openai.com/docs/guides/tools-computer-use).
+
+        - `class ComputerUsePreviewTool: …`
+
+          A tool that controls a virtual computer. Learn more about the [computer tool](https://platform.openai.com/docs/guides/tools-computer-use).
+
+        - `class WebSearchTool: …`
+
+          Search the Internet for sources related to the prompt. Learn more about the
+          [web search tool](https://platform.openai.com/docs/guides/tools-web-search).
+
+        - `class Mcp: …`
+
+          Give the model access to additional tools via remote Model Context Protocol
+          (MCP) servers. [Learn more about MCP](https://platform.openai.com/docs/guides/tools-remote-mcp).
+
+        - `class CodeInterpreter: …`
+
+          A tool that runs Python code to help generate a response to a prompt.
+
+        - `class ImageGeneration: …`
+
+          A tool that generates images using the GPT image models.
+
+        - `class LocalShell: …`
+
+          A tool that allows the model to execute shell commands in a local environment.
+
+        - `class FunctionShellTool: …`
+
+          A tool that allows the model to execute shell commands.
+
+        - `class CustomTool: …`
+
+          A custom tool that processes input using a specified format. Learn more about   [custom tools](https://platform.openai.com/docs/guides/function-calling#custom-tools)
+
+        - `class NamespaceTool: …`
+
+          Groups function/custom tools under a shared namespace.
+
+        - `class ToolSearchTool: …`
+
+          Hosted or BYOT tool search configuration for deferred tools.
+
+        - `class WebSearchPreviewTool: …`
+
+          This tool searches the web for relevant results to use in a response. Learn more about the [web search tool](https://platform.openai.com/docs/guides/tools-web-search).
+
+        - `class ApplyPatchTool: …`
+
+          Allows the assistant to create, delete, or update files using unified diffs.
+
+      - `type: Literal["additional_tools"]`
+
+        The type of the item. Always `additional_tools`.
+
+        - `"additional_tools"`
 
     - `class ResponseCompactionItem: …`
 
@@ -26240,10 +27076,6 @@ print(compacted_response)
 
           Action type "search" - Performs a web search query.
 
-          - `query: str`
-
-            [DEPRECATED] The search query.
-
           - `type: Literal["search"]`
 
             The action type.
@@ -26253,6 +27085,10 @@ print(compacted_response)
           - `queries: Optional[List[str]]`
 
             The search queries.
+
+          - `query: Optional[str]`
+
+            The search query.
 
           - `sources: Optional[List[ActionSearchSource]]`
 
@@ -27934,6 +28770,104 @@ print(compacted_response)
       - `created_by: Optional[str]`
 
         The identifier of the actor that created the item.
+
+    - `class AdditionalTools: …`
+
+      - `id: str`
+
+        The unique ID of the additional tools item.
+
+      - `role: Literal["unknown", "user", "assistant", 5 more]`
+
+        The role that provided the additional tools.
+
+        - `"unknown"`
+
+        - `"user"`
+
+        - `"assistant"`
+
+        - `"system"`
+
+        - `"critic"`
+
+        - `"discriminator"`
+
+        - `"developer"`
+
+        - `"tool"`
+
+      - `tools: List[Tool]`
+
+        The additional tool definitions made available at this item.
+
+        - `class FunctionTool: …`
+
+          Defines a function in your own code the model can choose to call. Learn more about [function calling](https://platform.openai.com/docs/guides/function-calling).
+
+        - `class FileSearchTool: …`
+
+          A tool that searches for relevant content from uploaded files. Learn more about the [file search tool](https://platform.openai.com/docs/guides/tools-file-search).
+
+        - `class ComputerTool: …`
+
+          A tool that controls a virtual computer. Learn more about the [computer tool](https://platform.openai.com/docs/guides/tools-computer-use).
+
+        - `class ComputerUsePreviewTool: …`
+
+          A tool that controls a virtual computer. Learn more about the [computer tool](https://platform.openai.com/docs/guides/tools-computer-use).
+
+        - `class WebSearchTool: …`
+
+          Search the Internet for sources related to the prompt. Learn more about the
+          [web search tool](https://platform.openai.com/docs/guides/tools-web-search).
+
+        - `class Mcp: …`
+
+          Give the model access to additional tools via remote Model Context Protocol
+          (MCP) servers. [Learn more about MCP](https://platform.openai.com/docs/guides/tools-remote-mcp).
+
+        - `class CodeInterpreter: …`
+
+          A tool that runs Python code to help generate a response to a prompt.
+
+        - `class ImageGeneration: …`
+
+          A tool that generates images using the GPT image models.
+
+        - `class LocalShell: …`
+
+          A tool that allows the model to execute shell commands in a local environment.
+
+        - `class FunctionShellTool: …`
+
+          A tool that allows the model to execute shell commands.
+
+        - `class CustomTool: …`
+
+          A custom tool that processes input using a specified format. Learn more about   [custom tools](https://platform.openai.com/docs/guides/function-calling#custom-tools)
+
+        - `class NamespaceTool: …`
+
+          Groups function/custom tools under a shared namespace.
+
+        - `class ToolSearchTool: …`
+
+          Hosted or BYOT tool search configuration for deferred tools.
+
+        - `class WebSearchPreviewTool: …`
+
+          This tool searches the web for relevant results to use in a response. Learn more about the [web search tool](https://platform.openai.com/docs/guides/tools-web-search).
+
+        - `class ApplyPatchTool: …`
+
+          Allows the assistant to create, delete, or update files using unified diffs.
+
+      - `type: Literal["additional_tools"]`
+
+        The type of the item. Always `additional_tools`.
+
+        - `"additional_tools"`
 
     - `class ResponseCompactionItem: …`
 
@@ -31038,10 +31972,6 @@ print(compacted_response)
 
             Action type "search" - Performs a web search query.
 
-            - `query: str`
-
-              [DEPRECATED] The search query.
-
             - `type: Literal["search"]`
 
               The action type.
@@ -31051,6 +31981,10 @@ print(compacted_response)
             - `queries: Optional[List[str]]`
 
               The search queries.
+
+            - `query: Optional[str]`
+
+              The search query.
 
             - `sources: Optional[List[ActionSearchSource]]`
 
@@ -32316,6 +33250,90 @@ print(compacted_response)
 
           - `"incomplete"`
 
+      - `class AdditionalTools: …`
+
+        - `role: Literal["developer"]`
+
+          The role that provided the additional tools. Only `developer` is supported.
+
+          - `"developer"`
+
+        - `tools: List[Tool]`
+
+          A list of additional tools made available at this item.
+
+          - `class FunctionTool: …`
+
+            Defines a function in your own code the model can choose to call. Learn more about [function calling](https://platform.openai.com/docs/guides/function-calling).
+
+          - `class FileSearchTool: …`
+
+            A tool that searches for relevant content from uploaded files. Learn more about the [file search tool](https://platform.openai.com/docs/guides/tools-file-search).
+
+          - `class ComputerTool: …`
+
+            A tool that controls a virtual computer. Learn more about the [computer tool](https://platform.openai.com/docs/guides/tools-computer-use).
+
+          - `class ComputerUsePreviewTool: …`
+
+            A tool that controls a virtual computer. Learn more about the [computer tool](https://platform.openai.com/docs/guides/tools-computer-use).
+
+          - `class WebSearchTool: …`
+
+            Search the Internet for sources related to the prompt. Learn more about the
+            [web search tool](https://platform.openai.com/docs/guides/tools-web-search).
+
+          - `class Mcp: …`
+
+            Give the model access to additional tools via remote Model Context Protocol
+            (MCP) servers. [Learn more about MCP](https://platform.openai.com/docs/guides/tools-remote-mcp).
+
+          - `class CodeInterpreter: …`
+
+            A tool that runs Python code to help generate a response to a prompt.
+
+          - `class ImageGeneration: …`
+
+            A tool that generates images using the GPT image models.
+
+          - `class LocalShell: …`
+
+            A tool that allows the model to execute shell commands in a local environment.
+
+          - `class FunctionShellTool: …`
+
+            A tool that allows the model to execute shell commands.
+
+          - `class CustomTool: …`
+
+            A custom tool that processes input using a specified format. Learn more about   [custom tools](https://platform.openai.com/docs/guides/function-calling#custom-tools)
+
+          - `class NamespaceTool: …`
+
+            Groups function/custom tools under a shared namespace.
+
+          - `class ToolSearchTool: …`
+
+            Hosted or BYOT tool search configuration for deferred tools.
+
+          - `class WebSearchPreviewTool: …`
+
+            This tool searches the web for relevant results to use in a response. Learn more about the [web search tool](https://platform.openai.com/docs/guides/tools-web-search).
+
+          - `class ApplyPatchTool: …`
+
+            Allows the assistant to create, delete, or update files using unified diffs.
+
+        - `type: Literal["additional_tools"]`
+
+          The item type. Always `additional_tools`.
+
+          - `"additional_tools"`
+
+        - `id: Optional[str]`
+
+          The unique ID of this additional tools item.
+
       - `class ResponseReasoningItem: …`
 
         A description of the chain of thought used by a reasoning model while generating
@@ -33568,6 +34586,104 @@ print(compacted_response)
 
         The identifier of the actor that created the item.
 
+    - `class AdditionalTools: …`
+
+      - `id: str`
+
+        The unique ID of the additional tools item.
+
+      - `role: Literal["unknown", "user", "assistant", 5 more]`
+
+        The role that provided the additional tools.
+
+        - `"unknown"`
+
+        - `"user"`
+
+        - `"assistant"`
+
+        - `"system"`
+
+        - `"critic"`
+
+        - `"discriminator"`
+
+        - `"developer"`
+
+        - `"tool"`
+
+      - `tools: List[Tool]`
+
+        The additional tool definitions made available at this item.
+
+        - `class FunctionTool: …`
+
+          Defines a function in your own code the model can choose to call. Learn more about [function calling](https://platform.openai.com/docs/guides/function-calling).
+
+        - `class FileSearchTool: …`
+
+          A tool that searches for relevant content from uploaded files. Learn more about the [file search tool](https://platform.openai.com/docs/guides/tools-file-search).
+
+        - `class ComputerTool: …`
+
+          A tool that controls a virtual computer. Learn more about the [computer tool](https://platform.openai.com/docs/guides/tools-computer-use).
+
+        - `class ComputerUsePreviewTool: …`
+
+          A tool that controls a virtual computer. Learn more about the [computer tool](https://platform.openai.com/docs/guides/tools-computer-use).
+
+        - `class WebSearchTool: …`
+
+          Search the Internet for sources related to the prompt. Learn more about the
+          [web search tool](https://platform.openai.com/docs/guides/tools-web-search).
+
+        - `class Mcp: …`
+
+          Give the model access to additional tools via remote Model Context Protocol
+          (MCP) servers. [Learn more about MCP](https://platform.openai.com/docs/guides/tools-remote-mcp).
+
+        - `class CodeInterpreter: …`
+
+          A tool that runs Python code to help generate a response to a prompt.
+
+        - `class ImageGeneration: …`
+
+          A tool that generates images using the GPT image models.
+
+        - `class LocalShell: …`
+
+          A tool that allows the model to execute shell commands in a local environment.
+
+        - `class FunctionShellTool: …`
+
+          A tool that allows the model to execute shell commands.
+
+        - `class CustomTool: …`
+
+          A custom tool that processes input using a specified format. Learn more about   [custom tools](https://platform.openai.com/docs/guides/function-calling#custom-tools)
+
+        - `class NamespaceTool: …`
+
+          Groups function/custom tools under a shared namespace.
+
+        - `class ToolSearchTool: …`
+
+          Hosted or BYOT tool search configuration for deferred tools.
+
+        - `class WebSearchPreviewTool: …`
+
+          This tool searches the web for relevant results to use in a response. Learn more about the [web search tool](https://platform.openai.com/docs/guides/tools-web-search).
+
+        - `class ApplyPatchTool: …`
+
+          Allows the assistant to create, delete, or update files using unified diffs.
+
+      - `type: Literal["additional_tools"]`
+
+        The type of the item. Always `additional_tools`.
+
+        - `"additional_tools"`
+
     - `class ResponseCompactionItem: …`
 
       A compaction item generated by the [`v1/responses/compact` API](https://platform.openai.com/docs/api-reference/responses/compact).
@@ -34479,6 +35595,12 @@ print(compacted_response)
   - `prompt_cache_retention: Optional[Literal["in_memory", "24h"]]`
 
     The retention policy for the prompt cache. Set to `24h` to enable extended prompt caching, which keeps cached prefixes active for longer, up to a maximum of 24 hours. [Learn more](https://platform.openai.com/docs/guides/prompt-caching#prompt-cache-retention).
+    For `gpt-5.5`, `gpt-5.5-pro`, and future models, only `24h` is supported.
+
+    For older models that support both `in_memory` and `24h`, the default depends on your organization's data retention policy:
+
+    - Organizations without ZDR enabled default to `24h`.
+    - Organizations with ZDR enabled default to `in_memory` when `prompt_cache_retention` is not specified.
 
     - `"in_memory"`
 
@@ -36225,10 +37347,6 @@ print(compacted_response)
 
               Action type "search" - Performs a web search query.
 
-              - `query: str`
-
-                [DEPRECATED] The search query.
-
               - `type: Literal["search"]`
 
                 The action type.
@@ -36238,6 +37356,10 @@ print(compacted_response)
               - `queries: Optional[List[str]]`
 
                 The search queries.
+
+              - `query: Optional[str]`
+
+                The search query.
 
               - `sources: Optional[List[ActionSearchSource]]`
 
@@ -37503,6 +38625,90 @@ print(compacted_response)
 
             - `"incomplete"`
 
+        - `class AdditionalTools: …`
+
+          - `role: Literal["developer"]`
+
+            The role that provided the additional tools. Only `developer` is supported.
+
+            - `"developer"`
+
+          - `tools: List[Tool]`
+
+            A list of additional tools made available at this item.
+
+            - `class FunctionTool: …`
+
+              Defines a function in your own code the model can choose to call. Learn more about [function calling](https://platform.openai.com/docs/guides/function-calling).
+
+            - `class FileSearchTool: …`
+
+              A tool that searches for relevant content from uploaded files. Learn more about the [file search tool](https://platform.openai.com/docs/guides/tools-file-search).
+
+            - `class ComputerTool: …`
+
+              A tool that controls a virtual computer. Learn more about the [computer tool](https://platform.openai.com/docs/guides/tools-computer-use).
+
+            - `class ComputerUsePreviewTool: …`
+
+              A tool that controls a virtual computer. Learn more about the [computer tool](https://platform.openai.com/docs/guides/tools-computer-use).
+
+            - `class WebSearchTool: …`
+
+              Search the Internet for sources related to the prompt. Learn more about the
+              [web search tool](https://platform.openai.com/docs/guides/tools-web-search).
+
+            - `class Mcp: …`
+
+              Give the model access to additional tools via remote Model Context Protocol
+              (MCP) servers. [Learn more about MCP](https://platform.openai.com/docs/guides/tools-remote-mcp).
+
+            - `class CodeInterpreter: …`
+
+              A tool that runs Python code to help generate a response to a prompt.
+
+            - `class ImageGeneration: …`
+
+              A tool that generates images using the GPT image models.
+
+            - `class LocalShell: …`
+
+              A tool that allows the model to execute shell commands in a local environment.
+
+            - `class FunctionShellTool: …`
+
+              A tool that allows the model to execute shell commands.
+
+            - `class CustomTool: …`
+
+              A custom tool that processes input using a specified format. Learn more about   [custom tools](https://platform.openai.com/docs/guides/function-calling#custom-tools)
+
+            - `class NamespaceTool: …`
+
+              Groups function/custom tools under a shared namespace.
+
+            - `class ToolSearchTool: …`
+
+              Hosted or BYOT tool search configuration for deferred tools.
+
+            - `class WebSearchPreviewTool: …`
+
+              This tool searches the web for relevant results to use in a response. Learn more about the [web search tool](https://platform.openai.com/docs/guides/tools-web-search).
+
+            - `class ApplyPatchTool: …`
+
+              Allows the assistant to create, delete, or update files using unified diffs.
+
+          - `type: Literal["additional_tools"]`
+
+            The item type. Always `additional_tools`.
+
+            - `"additional_tools"`
+
+          - `id: Optional[str]`
+
+            The unique ID of this additional tools item.
+
         - `class ResponseReasoningItem: …`
 
           A description of the chain of thought used by a reasoning model while generating
@@ -38755,6 +39961,104 @@ print(compacted_response)
 
           The identifier of the actor that created the item.
 
+      - `class AdditionalTools: …`
+
+        - `id: str`
+
+          The unique ID of the additional tools item.
+
+        - `role: Literal["unknown", "user", "assistant", 5 more]`
+
+          The role that provided the additional tools.
+
+          - `"unknown"`
+
+          - `"user"`
+
+          - `"assistant"`
+
+          - `"system"`
+
+          - `"critic"`
+
+          - `"discriminator"`
+
+          - `"developer"`
+
+          - `"tool"`
+
+        - `tools: List[Tool]`
+
+          The additional tool definitions made available at this item.
+
+          - `class FunctionTool: …`
+
+            Defines a function in your own code the model can choose to call. Learn more about [function calling](https://platform.openai.com/docs/guides/function-calling).
+
+          - `class FileSearchTool: …`
+
+            A tool that searches for relevant content from uploaded files. Learn more about the [file search tool](https://platform.openai.com/docs/guides/tools-file-search).
+
+          - `class ComputerTool: …`
+
+            A tool that controls a virtual computer. Learn more about the [computer tool](https://platform.openai.com/docs/guides/tools-computer-use).
+
+          - `class ComputerUsePreviewTool: …`
+
+            A tool that controls a virtual computer. Learn more about the [computer tool](https://platform.openai.com/docs/guides/tools-computer-use).
+
+          - `class WebSearchTool: …`
+
+            Search the Internet for sources related to the prompt. Learn more about the
+            [web search tool](https://platform.openai.com/docs/guides/tools-web-search).
+
+          - `class Mcp: …`
+
+            Give the model access to additional tools via remote Model Context Protocol
+            (MCP) servers. [Learn more about MCP](https://platform.openai.com/docs/guides/tools-remote-mcp).
+
+          - `class CodeInterpreter: …`
+
+            A tool that runs Python code to help generate a response to a prompt.
+
+          - `class ImageGeneration: …`
+
+            A tool that generates images using the GPT image models.
+
+          - `class LocalShell: …`
+
+            A tool that allows the model to execute shell commands in a local environment.
+
+          - `class FunctionShellTool: …`
+
+            A tool that allows the model to execute shell commands.
+
+          - `class CustomTool: …`
+
+            A custom tool that processes input using a specified format. Learn more about   [custom tools](https://platform.openai.com/docs/guides/function-calling#custom-tools)
+
+          - `class NamespaceTool: …`
+
+            Groups function/custom tools under a shared namespace.
+
+          - `class ToolSearchTool: …`
+
+            Hosted or BYOT tool search configuration for deferred tools.
+
+          - `class WebSearchPreviewTool: …`
+
+            This tool searches the web for relevant results to use in a response. Learn more about the [web search tool](https://platform.openai.com/docs/guides/tools-web-search).
+
+          - `class ApplyPatchTool: …`
+
+            Allows the assistant to create, delete, or update files using unified diffs.
+
+        - `type: Literal["additional_tools"]`
+
+          The type of the item. Always `additional_tools`.
+
+          - `"additional_tools"`
+
       - `class ResponseCompactionItem: …`
 
         A compaction item generated by the [`v1/responses/compact` API](https://platform.openai.com/docs/api-reference/responses/compact).
@@ -39666,6 +40970,12 @@ print(compacted_response)
     - `prompt_cache_retention: Optional[Literal["in_memory", "24h"]]`
 
       The retention policy for the prompt cache. Set to `24h` to enable extended prompt caching, which keeps cached prefixes active for longer, up to a maximum of 24 hours. [Learn more](https://platform.openai.com/docs/guides/prompt-caching#prompt-cache-retention).
+      For `gpt-5.5`, `gpt-5.5-pro`, and future models, only `24h` is supported.
+
+      For older models that support both `in_memory` and `24h`, the default depends on your organization's data retention policy:
+
+      - Organizations without ZDR enabled default to `24h`.
+      - Organizations with ZDR enabled default to `in_memory` when `prompt_cache_retention` is not specified.
 
       - `"in_memory"`
 
@@ -42162,10 +43472,6 @@ print(compacted_response)
 
               Action type "search" - Performs a web search query.
 
-              - `query: str`
-
-                [DEPRECATED] The search query.
-
               - `type: Literal["search"]`
 
                 The action type.
@@ -42175,6 +43481,10 @@ print(compacted_response)
               - `queries: Optional[List[str]]`
 
                 The search queries.
+
+              - `query: Optional[str]`
+
+                The search query.
 
               - `sources: Optional[List[ActionSearchSource]]`
 
@@ -43440,6 +44750,90 @@ print(compacted_response)
 
             - `"incomplete"`
 
+        - `class AdditionalTools: …`
+
+          - `role: Literal["developer"]`
+
+            The role that provided the additional tools. Only `developer` is supported.
+
+            - `"developer"`
+
+          - `tools: List[Tool]`
+
+            A list of additional tools made available at this item.
+
+            - `class FunctionTool: …`
+
+              Defines a function in your own code the model can choose to call. Learn more about [function calling](https://platform.openai.com/docs/guides/function-calling).
+
+            - `class FileSearchTool: …`
+
+              A tool that searches for relevant content from uploaded files. Learn more about the [file search tool](https://platform.openai.com/docs/guides/tools-file-search).
+
+            - `class ComputerTool: …`
+
+              A tool that controls a virtual computer. Learn more about the [computer tool](https://platform.openai.com/docs/guides/tools-computer-use).
+
+            - `class ComputerUsePreviewTool: …`
+
+              A tool that controls a virtual computer. Learn more about the [computer tool](https://platform.openai.com/docs/guides/tools-computer-use).
+
+            - `class WebSearchTool: …`
+
+              Search the Internet for sources related to the prompt. Learn more about the
+              [web search tool](https://platform.openai.com/docs/guides/tools-web-search).
+
+            - `class Mcp: …`
+
+              Give the model access to additional tools via remote Model Context Protocol
+              (MCP) servers. [Learn more about MCP](https://platform.openai.com/docs/guides/tools-remote-mcp).
+
+            - `class CodeInterpreter: …`
+
+              A tool that runs Python code to help generate a response to a prompt.
+
+            - `class ImageGeneration: …`
+
+              A tool that generates images using the GPT image models.
+
+            - `class LocalShell: …`
+
+              A tool that allows the model to execute shell commands in a local environment.
+
+            - `class FunctionShellTool: …`
+
+              A tool that allows the model to execute shell commands.
+
+            - `class CustomTool: …`
+
+              A custom tool that processes input using a specified format. Learn more about   [custom tools](https://platform.openai.com/docs/guides/function-calling#custom-tools)
+
+            - `class NamespaceTool: …`
+
+              Groups function/custom tools under a shared namespace.
+
+            - `class ToolSearchTool: …`
+
+              Hosted or BYOT tool search configuration for deferred tools.
+
+            - `class WebSearchPreviewTool: …`
+
+              This tool searches the web for relevant results to use in a response. Learn more about the [web search tool](https://platform.openai.com/docs/guides/tools-web-search).
+
+            - `class ApplyPatchTool: …`
+
+              Allows the assistant to create, delete, or update files using unified diffs.
+
+          - `type: Literal["additional_tools"]`
+
+            The item type. Always `additional_tools`.
+
+            - `"additional_tools"`
+
+          - `id: Optional[str]`
+
+            The unique ID of this additional tools item.
+
         - `class ResponseReasoningItem: …`
 
           A description of the chain of thought used by a reasoning model while generating
@@ -44692,6 +46086,104 @@ print(compacted_response)
 
           The identifier of the actor that created the item.
 
+      - `class AdditionalTools: …`
+
+        - `id: str`
+
+          The unique ID of the additional tools item.
+
+        - `role: Literal["unknown", "user", "assistant", 5 more]`
+
+          The role that provided the additional tools.
+
+          - `"unknown"`
+
+          - `"user"`
+
+          - `"assistant"`
+
+          - `"system"`
+
+          - `"critic"`
+
+          - `"discriminator"`
+
+          - `"developer"`
+
+          - `"tool"`
+
+        - `tools: List[Tool]`
+
+          The additional tool definitions made available at this item.
+
+          - `class FunctionTool: …`
+
+            Defines a function in your own code the model can choose to call. Learn more about [function calling](https://platform.openai.com/docs/guides/function-calling).
+
+          - `class FileSearchTool: …`
+
+            A tool that searches for relevant content from uploaded files. Learn more about the [file search tool](https://platform.openai.com/docs/guides/tools-file-search).
+
+          - `class ComputerTool: …`
+
+            A tool that controls a virtual computer. Learn more about the [computer tool](https://platform.openai.com/docs/guides/tools-computer-use).
+
+          - `class ComputerUsePreviewTool: …`
+
+            A tool that controls a virtual computer. Learn more about the [computer tool](https://platform.openai.com/docs/guides/tools-computer-use).
+
+          - `class WebSearchTool: …`
+
+            Search the Internet for sources related to the prompt. Learn more about the
+            [web search tool](https://platform.openai.com/docs/guides/tools-web-search).
+
+          - `class Mcp: …`
+
+            Give the model access to additional tools via remote Model Context Protocol
+            (MCP) servers. [Learn more about MCP](https://platform.openai.com/docs/guides/tools-remote-mcp).
+
+          - `class CodeInterpreter: …`
+
+            A tool that runs Python code to help generate a response to a prompt.
+
+          - `class ImageGeneration: …`
+
+            A tool that generates images using the GPT image models.
+
+          - `class LocalShell: …`
+
+            A tool that allows the model to execute shell commands in a local environment.
+
+          - `class FunctionShellTool: …`
+
+            A tool that allows the model to execute shell commands.
+
+          - `class CustomTool: …`
+
+            A custom tool that processes input using a specified format. Learn more about   [custom tools](https://platform.openai.com/docs/guides/function-calling#custom-tools)
+
+          - `class NamespaceTool: …`
+
+            Groups function/custom tools under a shared namespace.
+
+          - `class ToolSearchTool: …`
+
+            Hosted or BYOT tool search configuration for deferred tools.
+
+          - `class WebSearchPreviewTool: …`
+
+            This tool searches the web for relevant results to use in a response. Learn more about the [web search tool](https://platform.openai.com/docs/guides/tools-web-search).
+
+          - `class ApplyPatchTool: …`
+
+            Allows the assistant to create, delete, or update files using unified diffs.
+
+        - `type: Literal["additional_tools"]`
+
+          The type of the item. Always `additional_tools`.
+
+          - `"additional_tools"`
+
       - `class ResponseCompactionItem: …`
 
         A compaction item generated by the [`v1/responses/compact` API](https://platform.openai.com/docs/api-reference/responses/compact).
@@ -45603,6 +47095,12 @@ print(compacted_response)
     - `prompt_cache_retention: Optional[Literal["in_memory", "24h"]]`
 
       The retention policy for the prompt cache. Set to `24h` to enable extended prompt caching, which keeps cached prefixes active for longer, up to a maximum of 24 hours. [Learn more](https://platform.openai.com/docs/guides/prompt-caching#prompt-cache-retention).
+      For `gpt-5.5`, `gpt-5.5-pro`, and future models, only `24h` is supported.
+
+      For older models that support both `in_memory` and `24h`, the default depends on your organization's data retention policy:
+
+      - Organizations without ZDR enabled default to `24h`.
+      - Organizations with ZDR enabled default to `in_memory` when `prompt_cache_retention` is not specified.
 
       - `"in_memory"`
 
@@ -47249,10 +48747,6 @@ print(compacted_response)
 
               Action type "search" - Performs a web search query.
 
-              - `query: str`
-
-                [DEPRECATED] The search query.
-
               - `type: Literal["search"]`
 
                 The action type.
@@ -47262,6 +48756,10 @@ print(compacted_response)
               - `queries: Optional[List[str]]`
 
                 The search queries.
+
+              - `query: Optional[str]`
+
+                The search query.
 
               - `sources: Optional[List[ActionSearchSource]]`
 
@@ -48527,6 +50025,90 @@ print(compacted_response)
 
             - `"incomplete"`
 
+        - `class AdditionalTools: …`
+
+          - `role: Literal["developer"]`
+
+            The role that provided the additional tools. Only `developer` is supported.
+
+            - `"developer"`
+
+          - `tools: List[Tool]`
+
+            A list of additional tools made available at this item.
+
+            - `class FunctionTool: …`
+
+              Defines a function in your own code the model can choose to call. Learn more about [function calling](https://platform.openai.com/docs/guides/function-calling).
+
+            - `class FileSearchTool: …`
+
+              A tool that searches for relevant content from uploaded files. Learn more about the [file search tool](https://platform.openai.com/docs/guides/tools-file-search).
+
+            - `class ComputerTool: …`
+
+              A tool that controls a virtual computer. Learn more about the [computer tool](https://platform.openai.com/docs/guides/tools-computer-use).
+
+            - `class ComputerUsePreviewTool: …`
+
+              A tool that controls a virtual computer. Learn more about the [computer tool](https://platform.openai.com/docs/guides/tools-computer-use).
+
+            - `class WebSearchTool: …`
+
+              Search the Internet for sources related to the prompt. Learn more about the
+              [web search tool](https://platform.openai.com/docs/guides/tools-web-search).
+
+            - `class Mcp: …`
+
+              Give the model access to additional tools via remote Model Context Protocol
+              (MCP) servers. [Learn more about MCP](https://platform.openai.com/docs/guides/tools-remote-mcp).
+
+            - `class CodeInterpreter: …`
+
+              A tool that runs Python code to help generate a response to a prompt.
+
+            - `class ImageGeneration: …`
+
+              A tool that generates images using the GPT image models.
+
+            - `class LocalShell: …`
+
+              A tool that allows the model to execute shell commands in a local environment.
+
+            - `class FunctionShellTool: …`
+
+              A tool that allows the model to execute shell commands.
+
+            - `class CustomTool: …`
+
+              A custom tool that processes input using a specified format. Learn more about   [custom tools](https://platform.openai.com/docs/guides/function-calling#custom-tools)
+
+            - `class NamespaceTool: …`
+
+              Groups function/custom tools under a shared namespace.
+
+            - `class ToolSearchTool: …`
+
+              Hosted or BYOT tool search configuration for deferred tools.
+
+            - `class WebSearchPreviewTool: …`
+
+              This tool searches the web for relevant results to use in a response. Learn more about the [web search tool](https://platform.openai.com/docs/guides/tools-web-search).
+
+            - `class ApplyPatchTool: …`
+
+              Allows the assistant to create, delete, or update files using unified diffs.
+
+          - `type: Literal["additional_tools"]`
+
+            The item type. Always `additional_tools`.
+
+            - `"additional_tools"`
+
+          - `id: Optional[str]`
+
+            The unique ID of this additional tools item.
+
         - `class ResponseReasoningItem: …`
 
           A description of the chain of thought used by a reasoning model while generating
@@ -49779,6 +51361,104 @@ print(compacted_response)
 
           The identifier of the actor that created the item.
 
+      - `class AdditionalTools: …`
+
+        - `id: str`
+
+          The unique ID of the additional tools item.
+
+        - `role: Literal["unknown", "user", "assistant", 5 more]`
+
+          The role that provided the additional tools.
+
+          - `"unknown"`
+
+          - `"user"`
+
+          - `"assistant"`
+
+          - `"system"`
+
+          - `"critic"`
+
+          - `"discriminator"`
+
+          - `"developer"`
+
+          - `"tool"`
+
+        - `tools: List[Tool]`
+
+          The additional tool definitions made available at this item.
+
+          - `class FunctionTool: …`
+
+            Defines a function in your own code the model can choose to call. Learn more about [function calling](https://platform.openai.com/docs/guides/function-calling).
+
+          - `class FileSearchTool: …`
+
+            A tool that searches for relevant content from uploaded files. Learn more about the [file search tool](https://platform.openai.com/docs/guides/tools-file-search).
+
+          - `class ComputerTool: …`
+
+            A tool that controls a virtual computer. Learn more about the [computer tool](https://platform.openai.com/docs/guides/tools-computer-use).
+
+          - `class ComputerUsePreviewTool: …`
+
+            A tool that controls a virtual computer. Learn more about the [computer tool](https://platform.openai.com/docs/guides/tools-computer-use).
+
+          - `class WebSearchTool: …`
+
+            Search the Internet for sources related to the prompt. Learn more about the
+            [web search tool](https://platform.openai.com/docs/guides/tools-web-search).
+
+          - `class Mcp: …`
+
+            Give the model access to additional tools via remote Model Context Protocol
+            (MCP) servers. [Learn more about MCP](https://platform.openai.com/docs/guides/tools-remote-mcp).
+
+          - `class CodeInterpreter: …`
+
+            A tool that runs Python code to help generate a response to a prompt.
+
+          - `class ImageGeneration: …`
+
+            A tool that generates images using the GPT image models.
+
+          - `class LocalShell: …`
+
+            A tool that allows the model to execute shell commands in a local environment.
+
+          - `class FunctionShellTool: …`
+
+            A tool that allows the model to execute shell commands.
+
+          - `class CustomTool: …`
+
+            A custom tool that processes input using a specified format. Learn more about   [custom tools](https://platform.openai.com/docs/guides/function-calling#custom-tools)
+
+          - `class NamespaceTool: …`
+
+            Groups function/custom tools under a shared namespace.
+
+          - `class ToolSearchTool: …`
+
+            Hosted or BYOT tool search configuration for deferred tools.
+
+          - `class WebSearchPreviewTool: …`
+
+            This tool searches the web for relevant results to use in a response. Learn more about the [web search tool](https://platform.openai.com/docs/guides/tools-web-search).
+
+          - `class ApplyPatchTool: …`
+
+            Allows the assistant to create, delete, or update files using unified diffs.
+
+        - `type: Literal["additional_tools"]`
+
+          The type of the item. Always `additional_tools`.
+
+          - `"additional_tools"`
+
       - `class ResponseCompactionItem: …`
 
         A compaction item generated by the [`v1/responses/compact` API](https://platform.openai.com/docs/api-reference/responses/compact).
@@ -50690,6 +52370,12 @@ print(compacted_response)
     - `prompt_cache_retention: Optional[Literal["in_memory", "24h"]]`
 
       The retention policy for the prompt cache. Set to `24h` to enable extended prompt caching, which keeps cached prefixes active for longer, up to a maximum of 24 hours. [Learn more](https://platform.openai.com/docs/guides/prompt-caching#prompt-cache-retention).
+      For `gpt-5.5`, `gpt-5.5-pro`, and future models, only `24h` is supported.
+
+      For older models that support both `in_memory` and `24h`, the default depends on your organization's data retention policy:
+
+      - Organizations without ZDR enabled default to `24h`.
+      - Organizations with ZDR enabled default to `in_memory` when `prompt_cache_retention` is not specified.
 
       - `"in_memory"`
 
@@ -51853,10 +53539,6 @@ print(compacted_response)
 
       Action type "search" - Performs a web search query.
 
-      - `query: str`
-
-        [DEPRECATED] The search query.
-
       - `type: Literal["search"]`
 
         The action type.
@@ -51866,6 +53548,10 @@ print(compacted_response)
       - `queries: Optional[List[str]]`
 
         The search queries.
+
+      - `query: Optional[str]`
+
+        The search query.
 
       - `sources: Optional[List[ActionSearchSource]]`
 
@@ -53082,10 +54768,6 @@ print(compacted_response)
 
               Action type "search" - Performs a web search query.
 
-              - `query: str`
-
-                [DEPRECATED] The search query.
-
               - `type: Literal["search"]`
 
                 The action type.
@@ -53095,6 +54777,10 @@ print(compacted_response)
               - `queries: Optional[List[str]]`
 
                 The search queries.
+
+              - `query: Optional[str]`
+
+                The search query.
 
               - `sources: Optional[List[ActionSearchSource]]`
 
@@ -54360,6 +56046,90 @@ print(compacted_response)
 
             - `"incomplete"`
 
+        - `class AdditionalTools: …`
+
+          - `role: Literal["developer"]`
+
+            The role that provided the additional tools. Only `developer` is supported.
+
+            - `"developer"`
+
+          - `tools: List[Tool]`
+
+            A list of additional tools made available at this item.
+
+            - `class FunctionTool: …`
+
+              Defines a function in your own code the model can choose to call. Learn more about [function calling](https://platform.openai.com/docs/guides/function-calling).
+
+            - `class FileSearchTool: …`
+
+              A tool that searches for relevant content from uploaded files. Learn more about the [file search tool](https://platform.openai.com/docs/guides/tools-file-search).
+
+            - `class ComputerTool: …`
+
+              A tool that controls a virtual computer. Learn more about the [computer tool](https://platform.openai.com/docs/guides/tools-computer-use).
+
+            - `class ComputerUsePreviewTool: …`
+
+              A tool that controls a virtual computer. Learn more about the [computer tool](https://platform.openai.com/docs/guides/tools-computer-use).
+
+            - `class WebSearchTool: …`
+
+              Search the Internet for sources related to the prompt. Learn more about the
+              [web search tool](https://platform.openai.com/docs/guides/tools-web-search).
+
+            - `class Mcp: …`
+
+              Give the model access to additional tools via remote Model Context Protocol
+              (MCP) servers. [Learn more about MCP](https://platform.openai.com/docs/guides/tools-remote-mcp).
+
+            - `class CodeInterpreter: …`
+
+              A tool that runs Python code to help generate a response to a prompt.
+
+            - `class ImageGeneration: …`
+
+              A tool that generates images using the GPT image models.
+
+            - `class LocalShell: …`
+
+              A tool that allows the model to execute shell commands in a local environment.
+
+            - `class FunctionShellTool: …`
+
+              A tool that allows the model to execute shell commands.
+
+            - `class CustomTool: …`
+
+              A custom tool that processes input using a specified format. Learn more about   [custom tools](https://platform.openai.com/docs/guides/function-calling#custom-tools)
+
+            - `class NamespaceTool: …`
+
+              Groups function/custom tools under a shared namespace.
+
+            - `class ToolSearchTool: …`
+
+              Hosted or BYOT tool search configuration for deferred tools.
+
+            - `class WebSearchPreviewTool: …`
+
+              This tool searches the web for relevant results to use in a response. Learn more about the [web search tool](https://platform.openai.com/docs/guides/tools-web-search).
+
+            - `class ApplyPatchTool: …`
+
+              Allows the assistant to create, delete, or update files using unified diffs.
+
+          - `type: Literal["additional_tools"]`
+
+            The item type. Always `additional_tools`.
+
+            - `"additional_tools"`
+
+          - `id: Optional[str]`
+
+            The unique ID of this additional tools item.
+
         - `class ResponseReasoningItem: …`
 
           A description of the chain of thought used by a reasoning model while generating
@@ -55612,6 +57382,104 @@ print(compacted_response)
 
           The identifier of the actor that created the item.
 
+      - `class AdditionalTools: …`
+
+        - `id: str`
+
+          The unique ID of the additional tools item.
+
+        - `role: Literal["unknown", "user", "assistant", 5 more]`
+
+          The role that provided the additional tools.
+
+          - `"unknown"`
+
+          - `"user"`
+
+          - `"assistant"`
+
+          - `"system"`
+
+          - `"critic"`
+
+          - `"discriminator"`
+
+          - `"developer"`
+
+          - `"tool"`
+
+        - `tools: List[Tool]`
+
+          The additional tool definitions made available at this item.
+
+          - `class FunctionTool: …`
+
+            Defines a function in your own code the model can choose to call. Learn more about [function calling](https://platform.openai.com/docs/guides/function-calling).
+
+          - `class FileSearchTool: …`
+
+            A tool that searches for relevant content from uploaded files. Learn more about the [file search tool](https://platform.openai.com/docs/guides/tools-file-search).
+
+          - `class ComputerTool: …`
+
+            A tool that controls a virtual computer. Learn more about the [computer tool](https://platform.openai.com/docs/guides/tools-computer-use).
+
+          - `class ComputerUsePreviewTool: …`
+
+            A tool that controls a virtual computer. Learn more about the [computer tool](https://platform.openai.com/docs/guides/tools-computer-use).
+
+          - `class WebSearchTool: …`
+
+            Search the Internet for sources related to the prompt. Learn more about the
+            [web search tool](https://platform.openai.com/docs/guides/tools-web-search).
+
+          - `class Mcp: …`
+
+            Give the model access to additional tools via remote Model Context Protocol
+            (MCP) servers. [Learn more about MCP](https://platform.openai.com/docs/guides/tools-remote-mcp).
+
+          - `class CodeInterpreter: …`
+
+            A tool that runs Python code to help generate a response to a prompt.
+
+          - `class ImageGeneration: …`
+
+            A tool that generates images using the GPT image models.
+
+          - `class LocalShell: …`
+
+            A tool that allows the model to execute shell commands in a local environment.
+
+          - `class FunctionShellTool: …`
+
+            A tool that allows the model to execute shell commands.
+
+          - `class CustomTool: …`
+
+            A custom tool that processes input using a specified format. Learn more about   [custom tools](https://platform.openai.com/docs/guides/function-calling#custom-tools)
+
+          - `class NamespaceTool: …`
+
+            Groups function/custom tools under a shared namespace.
+
+          - `class ToolSearchTool: …`
+
+            Hosted or BYOT tool search configuration for deferred tools.
+
+          - `class WebSearchPreviewTool: …`
+
+            This tool searches the web for relevant results to use in a response. Learn more about the [web search tool](https://platform.openai.com/docs/guides/tools-web-search).
+
+          - `class ApplyPatchTool: …`
+
+            Allows the assistant to create, delete, or update files using unified diffs.
+
+        - `type: Literal["additional_tools"]`
+
+          The type of the item. Always `additional_tools`.
+
+          - `"additional_tools"`
+
       - `class ResponseCompactionItem: …`
 
         A compaction item generated by the [`v1/responses/compact` API](https://platform.openai.com/docs/api-reference/responses/compact).
@@ -56523,6 +58391,12 @@ print(compacted_response)
     - `prompt_cache_retention: Optional[Literal["in_memory", "24h"]]`
 
       The retention policy for the prompt cache. Set to `24h` to enable extended prompt caching, which keeps cached prefixes active for longer, up to a maximum of 24 hours. [Learn more](https://platform.openai.com/docs/guides/prompt-caching#prompt-cache-retention).
+      For `gpt-5.5`, `gpt-5.5-pro`, and future models, only `24h` is supported.
+
+      For older models that support both `in_memory` and `24h`, the default depends on your organization's data retention policy:
+
+      - Organizations without ZDR enabled default to `24h`.
+      - Organizations with ZDR enabled default to `in_memory` when `prompt_cache_retention` is not specified.
 
       - `"in_memory"`
 
@@ -57873,10 +59747,6 @@ print(compacted_response)
 
               Action type "search" - Performs a web search query.
 
-              - `query: str`
-
-                [DEPRECATED] The search query.
-
               - `type: Literal["search"]`
 
                 The action type.
@@ -57886,6 +59756,10 @@ print(compacted_response)
               - `queries: Optional[List[str]]`
 
                 The search queries.
+
+              - `query: Optional[str]`
+
+                The search query.
 
               - `sources: Optional[List[ActionSearchSource]]`
 
@@ -59151,6 +61025,90 @@ print(compacted_response)
 
             - `"incomplete"`
 
+        - `class AdditionalTools: …`
+
+          - `role: Literal["developer"]`
+
+            The role that provided the additional tools. Only `developer` is supported.
+
+            - `"developer"`
+
+          - `tools: List[Tool]`
+
+            A list of additional tools made available at this item.
+
+            - `class FunctionTool: …`
+
+              Defines a function in your own code the model can choose to call. Learn more about [function calling](https://platform.openai.com/docs/guides/function-calling).
+
+            - `class FileSearchTool: …`
+
+              A tool that searches for relevant content from uploaded files. Learn more about the [file search tool](https://platform.openai.com/docs/guides/tools-file-search).
+
+            - `class ComputerTool: …`
+
+              A tool that controls a virtual computer. Learn more about the [computer tool](https://platform.openai.com/docs/guides/tools-computer-use).
+
+            - `class ComputerUsePreviewTool: …`
+
+              A tool that controls a virtual computer. Learn more about the [computer tool](https://platform.openai.com/docs/guides/tools-computer-use).
+
+            - `class WebSearchTool: …`
+
+              Search the Internet for sources related to the prompt. Learn more about the
+              [web search tool](https://platform.openai.com/docs/guides/tools-web-search).
+
+            - `class Mcp: …`
+
+              Give the model access to additional tools via remote Model Context Protocol
+              (MCP) servers. [Learn more about MCP](https://platform.openai.com/docs/guides/tools-remote-mcp).
+
+            - `class CodeInterpreter: …`
+
+              A tool that runs Python code to help generate a response to a prompt.
+
+            - `class ImageGeneration: …`
+
+              A tool that generates images using the GPT image models.
+
+            - `class LocalShell: …`
+
+              A tool that allows the model to execute shell commands in a local environment.
+
+            - `class FunctionShellTool: …`
+
+              A tool that allows the model to execute shell commands.
+
+            - `class CustomTool: …`
+
+              A custom tool that processes input using a specified format. Learn more about   [custom tools](https://platform.openai.com/docs/guides/function-calling#custom-tools)
+
+            - `class NamespaceTool: …`
+
+              Groups function/custom tools under a shared namespace.
+
+            - `class ToolSearchTool: …`
+
+              Hosted or BYOT tool search configuration for deferred tools.
+
+            - `class WebSearchPreviewTool: …`
+
+              This tool searches the web for relevant results to use in a response. Learn more about the [web search tool](https://platform.openai.com/docs/guides/tools-web-search).
+
+            - `class ApplyPatchTool: …`
+
+              Allows the assistant to create, delete, or update files using unified diffs.
+
+          - `type: Literal["additional_tools"]`
+
+            The item type. Always `additional_tools`.
+
+            - `"additional_tools"`
+
+          - `id: Optional[str]`
+
+            The unique ID of this additional tools item.
+
         - `class ResponseReasoningItem: …`
 
           A description of the chain of thought used by a reasoning model while generating
@@ -60403,6 +62361,104 @@ print(compacted_response)
 
           The identifier of the actor that created the item.
 
+      - `class AdditionalTools: …`
+
+        - `id: str`
+
+          The unique ID of the additional tools item.
+
+        - `role: Literal["unknown", "user", "assistant", 5 more]`
+
+          The role that provided the additional tools.
+
+          - `"unknown"`
+
+          - `"user"`
+
+          - `"assistant"`
+
+          - `"system"`
+
+          - `"critic"`
+
+          - `"discriminator"`
+
+          - `"developer"`
+
+          - `"tool"`
+
+        - `tools: List[Tool]`
+
+          The additional tool definitions made available at this item.
+
+          - `class FunctionTool: …`
+
+            Defines a function in your own code the model can choose to call. Learn more about [function calling](https://platform.openai.com/docs/guides/function-calling).
+
+          - `class FileSearchTool: …`
+
+            A tool that searches for relevant content from uploaded files. Learn more about the [file search tool](https://platform.openai.com/docs/guides/tools-file-search).
+
+          - `class ComputerTool: …`
+
+            A tool that controls a virtual computer. Learn more about the [computer tool](https://platform.openai.com/docs/guides/tools-computer-use).
+
+          - `class ComputerUsePreviewTool: …`
+
+            A tool that controls a virtual computer. Learn more about the [computer tool](https://platform.openai.com/docs/guides/tools-computer-use).
+
+          - `class WebSearchTool: …`
+
+            Search the Internet for sources related to the prompt. Learn more about the
+            [web search tool](https://platform.openai.com/docs/guides/tools-web-search).
+
+          - `class Mcp: …`
+
+            Give the model access to additional tools via remote Model Context Protocol
+            (MCP) servers. [Learn more about MCP](https://platform.openai.com/docs/guides/tools-remote-mcp).
+
+          - `class CodeInterpreter: …`
+
+            A tool that runs Python code to help generate a response to a prompt.
+
+          - `class ImageGeneration: …`
+
+            A tool that generates images using the GPT image models.
+
+          - `class LocalShell: …`
+
+            A tool that allows the model to execute shell commands in a local environment.
+
+          - `class FunctionShellTool: …`
+
+            A tool that allows the model to execute shell commands.
+
+          - `class CustomTool: …`
+
+            A custom tool that processes input using a specified format. Learn more about   [custom tools](https://platform.openai.com/docs/guides/function-calling#custom-tools)
+
+          - `class NamespaceTool: …`
+
+            Groups function/custom tools under a shared namespace.
+
+          - `class ToolSearchTool: …`
+
+            Hosted or BYOT tool search configuration for deferred tools.
+
+          - `class WebSearchPreviewTool: …`
+
+            This tool searches the web for relevant results to use in a response. Learn more about the [web search tool](https://platform.openai.com/docs/guides/tools-web-search).
+
+          - `class ApplyPatchTool: …`
+
+            Allows the assistant to create, delete, or update files using unified diffs.
+
+        - `type: Literal["additional_tools"]`
+
+          The type of the item. Always `additional_tools`.
+
+          - `"additional_tools"`
+
       - `class ResponseCompactionItem: …`
 
         A compaction item generated by the [`v1/responses/compact` API](https://platform.openai.com/docs/api-reference/responses/compact).
@@ -61314,6 +63370,12 @@ print(compacted_response)
     - `prompt_cache_retention: Optional[Literal["in_memory", "24h"]]`
 
       The retention policy for the prompt cache. Set to `24h` to enable extended prompt caching, which keeps cached prefixes active for longer, up to a maximum of 24 hours. [Learn more](https://platform.openai.com/docs/guides/prompt-caching#prompt-cache-retention).
+      For `gpt-5.5`, `gpt-5.5-pro`, and future models, only `24h` is supported.
+
+      For older models that support both `in_memory` and `24h`, the default depends on your organization's data retention policy:
+
+      - Organizations without ZDR enabled default to `24h`.
+      - Organizations with ZDR enabled default to `in_memory` when `prompt_cache_retention` is not specified.
 
       - `"in_memory"`
 
@@ -62544,10 +64606,6 @@ print(compacted_response)
 
         Action type "search" - Performs a web search query.
 
-        - `query: str`
-
-          [DEPRECATED] The search query.
-
         - `type: Literal["search"]`
 
           The action type.
@@ -62557,6 +64615,10 @@ print(compacted_response)
         - `queries: Optional[List[str]]`
 
           The search queries.
+
+        - `query: Optional[str]`
+
+          The search query.
 
         - `sources: Optional[List[ActionSearchSource]]`
 
@@ -63821,6 +65883,90 @@ print(compacted_response)
       - `"completed"`
 
       - `"incomplete"`
+
+  - `class AdditionalTools: …`
+
+    - `role: Literal["developer"]`
+
+      The role that provided the additional tools. Only `developer` is supported.
+
+      - `"developer"`
+
+    - `tools: List[Tool]`
+
+      A list of additional tools made available at this item.
+
+      - `class FunctionTool: …`
+
+        Defines a function in your own code the model can choose to call. Learn more about [function calling](https://platform.openai.com/docs/guides/function-calling).
+
+      - `class FileSearchTool: …`
+
+        A tool that searches for relevant content from uploaded files. Learn more about the [file search tool](https://platform.openai.com/docs/guides/tools-file-search).
+
+      - `class ComputerTool: …`
+
+        A tool that controls a virtual computer. Learn more about the [computer tool](https://platform.openai.com/docs/guides/tools-computer-use).
+
+      - `class ComputerUsePreviewTool: …`
+
+        A tool that controls a virtual computer. Learn more about the [computer tool](https://platform.openai.com/docs/guides/tools-computer-use).
+
+      - `class WebSearchTool: …`
+
+        Search the Internet for sources related to the prompt. Learn more about the
+        [web search tool](https://platform.openai.com/docs/guides/tools-web-search).
+
+      - `class Mcp: …`
+
+        Give the model access to additional tools via remote Model Context Protocol
+        (MCP) servers. [Learn more about MCP](https://platform.openai.com/docs/guides/tools-remote-mcp).
+
+      - `class CodeInterpreter: …`
+
+        A tool that runs Python code to help generate a response to a prompt.
+
+      - `class ImageGeneration: …`
+
+        A tool that generates images using the GPT image models.
+
+      - `class LocalShell: …`
+
+        A tool that allows the model to execute shell commands in a local environment.
+
+      - `class FunctionShellTool: …`
+
+        A tool that allows the model to execute shell commands.
+
+      - `class CustomTool: …`
+
+        A custom tool that processes input using a specified format. Learn more about   [custom tools](https://platform.openai.com/docs/guides/function-calling#custom-tools)
+
+      - `class NamespaceTool: …`
+
+        Groups function/custom tools under a shared namespace.
+
+      - `class ToolSearchTool: …`
+
+        Hosted or BYOT tool search configuration for deferred tools.
+
+      - `class WebSearchPreviewTool: …`
+
+        This tool searches the web for relevant results to use in a response. Learn more about the [web search tool](https://platform.openai.com/docs/guides/tools-web-search).
+
+      - `class ApplyPatchTool: …`
+
+        Allows the assistant to create, delete, or update files using unified diffs.
+
+    - `type: Literal["additional_tools"]`
+
+      The item type. Always `additional_tools`.
+
+      - `"additional_tools"`
+
+    - `id: Optional[str]`
+
+      The unique ID of this additional tools item.
 
   - `class ResponseReasoningItem: …`
 
@@ -65772,10 +67918,6 @@ print(compacted_response)
 
         Action type "search" - Performs a web search query.
 
-        - `query: str`
-
-          [DEPRECATED] The search query.
-
         - `type: Literal["search"]`
 
           The action type.
@@ -65785,6 +67927,10 @@ print(compacted_response)
         - `queries: Optional[List[str]]`
 
           The search queries.
+
+        - `query: Optional[str]`
+
+          The search query.
 
         - `sources: Optional[List[ActionSearchSource]]`
 
@@ -67049,6 +69195,90 @@ print(compacted_response)
       - `"completed"`
 
       - `"incomplete"`
+
+  - `class AdditionalTools: …`
+
+    - `role: Literal["developer"]`
+
+      The role that provided the additional tools. Only `developer` is supported.
+
+      - `"developer"`
+
+    - `tools: List[Tool]`
+
+      A list of additional tools made available at this item.
+
+      - `class FunctionTool: …`
+
+        Defines a function in your own code the model can choose to call. Learn more about [function calling](https://platform.openai.com/docs/guides/function-calling).
+
+      - `class FileSearchTool: …`
+
+        A tool that searches for relevant content from uploaded files. Learn more about the [file search tool](https://platform.openai.com/docs/guides/tools-file-search).
+
+      - `class ComputerTool: …`
+
+        A tool that controls a virtual computer. Learn more about the [computer tool](https://platform.openai.com/docs/guides/tools-computer-use).
+
+      - `class ComputerUsePreviewTool: …`
+
+        A tool that controls a virtual computer. Learn more about the [computer tool](https://platform.openai.com/docs/guides/tools-computer-use).
+
+      - `class WebSearchTool: …`
+
+        Search the Internet for sources related to the prompt. Learn more about the
+        [web search tool](https://platform.openai.com/docs/guides/tools-web-search).
+
+      - `class Mcp: …`
+
+        Give the model access to additional tools via remote Model Context Protocol
+        (MCP) servers. [Learn more about MCP](https://platform.openai.com/docs/guides/tools-remote-mcp).
+
+      - `class CodeInterpreter: …`
+
+        A tool that runs Python code to help generate a response to a prompt.
+
+      - `class ImageGeneration: …`
+
+        A tool that generates images using the GPT image models.
+
+      - `class LocalShell: …`
+
+        A tool that allows the model to execute shell commands in a local environment.
+
+      - `class FunctionShellTool: …`
+
+        A tool that allows the model to execute shell commands.
+
+      - `class CustomTool: …`
+
+        A custom tool that processes input using a specified format. Learn more about   [custom tools](https://platform.openai.com/docs/guides/function-calling#custom-tools)
+
+      - `class NamespaceTool: …`
+
+        Groups function/custom tools under a shared namespace.
+
+      - `class ToolSearchTool: …`
+
+        Hosted or BYOT tool search configuration for deferred tools.
+
+      - `class WebSearchPreviewTool: …`
+
+        This tool searches the web for relevant results to use in a response. Learn more about the [web search tool](https://platform.openai.com/docs/guides/tools-web-search).
+
+      - `class ApplyPatchTool: …`
+
+        Allows the assistant to create, delete, or update files using unified diffs.
+
+    - `type: Literal["additional_tools"]`
+
+      The item type. Always `additional_tools`.
+
+      - `"additional_tools"`
+
+    - `id: Optional[str]`
+
+      The unique ID of this additional tools item.
 
   - `class ResponseReasoningItem: …`
 
@@ -68930,10 +71160,6 @@ print(compacted_response)
 
         Action type "search" - Performs a web search query.
 
-        - `query: str`
-
-          [DEPRECATED] The search query.
-
         - `type: Literal["search"]`
 
           The action type.
@@ -68943,6 +71169,10 @@ print(compacted_response)
         - `queries: Optional[List[str]]`
 
           The search queries.
+
+        - `query: Optional[str]`
+
+          The search query.
 
         - `sources: Optional[List[ActionSearchSource]]`
 
@@ -70137,6 +72367,104 @@ print(compacted_response)
     - `created_by: Optional[str]`
 
       The identifier of the actor that created the item.
+
+  - `class AdditionalTools: …`
+
+    - `id: str`
+
+      The unique ID of the additional tools item.
+
+    - `role: Literal["unknown", "user", "assistant", 5 more]`
+
+      The role that provided the additional tools.
+
+      - `"unknown"`
+
+      - `"user"`
+
+      - `"assistant"`
+
+      - `"system"`
+
+      - `"critic"`
+
+      - `"discriminator"`
+
+      - `"developer"`
+
+      - `"tool"`
+
+    - `tools: List[Tool]`
+
+      The additional tool definitions made available at this item.
+
+      - `class FunctionTool: …`
+
+        Defines a function in your own code the model can choose to call. Learn more about [function calling](https://platform.openai.com/docs/guides/function-calling).
+
+      - `class FileSearchTool: …`
+
+        A tool that searches for relevant content from uploaded files. Learn more about the [file search tool](https://platform.openai.com/docs/guides/tools-file-search).
+
+      - `class ComputerTool: …`
+
+        A tool that controls a virtual computer. Learn more about the [computer tool](https://platform.openai.com/docs/guides/tools-computer-use).
+
+      - `class ComputerUsePreviewTool: …`
+
+        A tool that controls a virtual computer. Learn more about the [computer tool](https://platform.openai.com/docs/guides/tools-computer-use).
+
+      - `class WebSearchTool: …`
+
+        Search the Internet for sources related to the prompt. Learn more about the
+        [web search tool](https://platform.openai.com/docs/guides/tools-web-search).
+
+      - `class Mcp: …`
+
+        Give the model access to additional tools via remote Model Context Protocol
+        (MCP) servers. [Learn more about MCP](https://platform.openai.com/docs/guides/tools-remote-mcp).
+
+      - `class CodeInterpreter: …`
+
+        A tool that runs Python code to help generate a response to a prompt.
+
+      - `class ImageGeneration: …`
+
+        A tool that generates images using the GPT image models.
+
+      - `class LocalShell: …`
+
+        A tool that allows the model to execute shell commands in a local environment.
+
+      - `class FunctionShellTool: …`
+
+        A tool that allows the model to execute shell commands.
+
+      - `class CustomTool: …`
+
+        A custom tool that processes input using a specified format. Learn more about   [custom tools](https://platform.openai.com/docs/guides/function-calling#custom-tools)
+
+      - `class NamespaceTool: …`
+
+        Groups function/custom tools under a shared namespace.
+
+      - `class ToolSearchTool: …`
+
+        Hosted or BYOT tool search configuration for deferred tools.
+
+      - `class WebSearchPreviewTool: …`
+
+        This tool searches the web for relevant results to use in a response. Learn more about the [web search tool](https://platform.openai.com/docs/guides/tools-web-search).
+
+      - `class ApplyPatchTool: …`
+
+        Allows the assistant to create, delete, or update files using unified diffs.
+
+    - `type: Literal["additional_tools"]`
+
+      The type of the item. Always `additional_tools`.
+
+      - `"additional_tools"`
 
   - `class ResponseReasoningItem: …`
 
@@ -71546,10 +73874,6 @@ print(compacted_response)
 
         Action type "search" - Performs a web search query.
 
-        - `query: str`
-
-          [DEPRECATED] The search query.
-
         - `type: Literal["search"]`
 
           The action type.
@@ -71559,6 +73883,10 @@ print(compacted_response)
         - `queries: Optional[List[str]]`
 
           The search queries.
+
+        - `query: Optional[str]`
+
+          The search query.
 
         - `sources: Optional[List[ActionSearchSource]]`
 
@@ -73241,6 +75569,104 @@ print(compacted_response)
 
       The identifier of the actor that created the item.
 
+  - `class AdditionalTools: …`
+
+    - `id: str`
+
+      The unique ID of the additional tools item.
+
+    - `role: Literal["unknown", "user", "assistant", 5 more]`
+
+      The role that provided the additional tools.
+
+      - `"unknown"`
+
+      - `"user"`
+
+      - `"assistant"`
+
+      - `"system"`
+
+      - `"critic"`
+
+      - `"discriminator"`
+
+      - `"developer"`
+
+      - `"tool"`
+
+    - `tools: List[Tool]`
+
+      The additional tool definitions made available at this item.
+
+      - `class FunctionTool: …`
+
+        Defines a function in your own code the model can choose to call. Learn more about [function calling](https://platform.openai.com/docs/guides/function-calling).
+
+      - `class FileSearchTool: …`
+
+        A tool that searches for relevant content from uploaded files. Learn more about the [file search tool](https://platform.openai.com/docs/guides/tools-file-search).
+
+      - `class ComputerTool: …`
+
+        A tool that controls a virtual computer. Learn more about the [computer tool](https://platform.openai.com/docs/guides/tools-computer-use).
+
+      - `class ComputerUsePreviewTool: …`
+
+        A tool that controls a virtual computer. Learn more about the [computer tool](https://platform.openai.com/docs/guides/tools-computer-use).
+
+      - `class WebSearchTool: …`
+
+        Search the Internet for sources related to the prompt. Learn more about the
+        [web search tool](https://platform.openai.com/docs/guides/tools-web-search).
+
+      - `class Mcp: …`
+
+        Give the model access to additional tools via remote Model Context Protocol
+        (MCP) servers. [Learn more about MCP](https://platform.openai.com/docs/guides/tools-remote-mcp).
+
+      - `class CodeInterpreter: …`
+
+        A tool that runs Python code to help generate a response to a prompt.
+
+      - `class ImageGeneration: …`
+
+        A tool that generates images using the GPT image models.
+
+      - `class LocalShell: …`
+
+        A tool that allows the model to execute shell commands in a local environment.
+
+      - `class FunctionShellTool: …`
+
+        A tool that allows the model to execute shell commands.
+
+      - `class CustomTool: …`
+
+        A custom tool that processes input using a specified format. Learn more about   [custom tools](https://platform.openai.com/docs/guides/function-calling#custom-tools)
+
+      - `class NamespaceTool: …`
+
+        Groups function/custom tools under a shared namespace.
+
+      - `class ToolSearchTool: …`
+
+        Hosted or BYOT tool search configuration for deferred tools.
+
+      - `class WebSearchPreviewTool: …`
+
+        This tool searches the web for relevant results to use in a response. Learn more about the [web search tool](https://platform.openai.com/docs/guides/tools-web-search).
+
+      - `class ApplyPatchTool: …`
+
+        Allows the assistant to create, delete, or update files using unified diffs.
+
+    - `type: Literal["additional_tools"]`
+
+      The type of the item. Always `additional_tools`.
+
+      - `"additional_tools"`
+
   - `class ResponseCompactionItem: …`
 
     A compaction item generated by the [`v1/responses/compact` API](https://platform.openai.com/docs/api-reference/responses/compact).
@@ -74367,10 +76793,6 @@ print(compacted_response)
 
           Action type "search" - Performs a web search query.
 
-          - `query: str`
-
-            [DEPRECATED] The search query.
-
           - `type: Literal["search"]`
 
             The action type.
@@ -74380,6 +76802,10 @@ print(compacted_response)
           - `queries: Optional[List[str]]`
 
             The search queries.
+
+          - `query: Optional[str]`
+
+            The search query.
 
           - `sources: Optional[List[ActionSearchSource]]`
 
@@ -76061,6 +78487,104 @@ print(compacted_response)
       - `created_by: Optional[str]`
 
         The identifier of the actor that created the item.
+
+    - `class AdditionalTools: …`
+
+      - `id: str`
+
+        The unique ID of the additional tools item.
+
+      - `role: Literal["unknown", "user", "assistant", 5 more]`
+
+        The role that provided the additional tools.
+
+        - `"unknown"`
+
+        - `"user"`
+
+        - `"assistant"`
+
+        - `"system"`
+
+        - `"critic"`
+
+        - `"discriminator"`
+
+        - `"developer"`
+
+        - `"tool"`
+
+      - `tools: List[Tool]`
+
+        The additional tool definitions made available at this item.
+
+        - `class FunctionTool: …`
+
+          Defines a function in your own code the model can choose to call. Learn more about [function calling](https://platform.openai.com/docs/guides/function-calling).
+
+        - `class FileSearchTool: …`
+
+          A tool that searches for relevant content from uploaded files. Learn more about the [file search tool](https://platform.openai.com/docs/guides/tools-file-search).
+
+        - `class ComputerTool: …`
+
+          A tool that controls a virtual computer. Learn more about the [computer tool](https://platform.openai.com/docs/guides/tools-computer-use).
+
+        - `class ComputerUsePreviewTool: …`
+
+          A tool that controls a virtual computer. Learn more about the [computer tool](https://platform.openai.com/docs/guides/tools-computer-use).
+
+        - `class WebSearchTool: …`
+
+          Search the Internet for sources related to the prompt. Learn more about the
+          [web search tool](https://platform.openai.com/docs/guides/tools-web-search).
+
+        - `class Mcp: …`
+
+          Give the model access to additional tools via remote Model Context Protocol
+          (MCP) servers. [Learn more about MCP](https://platform.openai.com/docs/guides/tools-remote-mcp).
+
+        - `class CodeInterpreter: …`
+
+          A tool that runs Python code to help generate a response to a prompt.
+
+        - `class ImageGeneration: …`
+
+          A tool that generates images using the GPT image models.
+
+        - `class LocalShell: …`
+
+          A tool that allows the model to execute shell commands in a local environment.
+
+        - `class FunctionShellTool: …`
+
+          A tool that allows the model to execute shell commands.
+
+        - `class CustomTool: …`
+
+          A custom tool that processes input using a specified format. Learn more about   [custom tools](https://platform.openai.com/docs/guides/function-calling#custom-tools)
+
+        - `class NamespaceTool: …`
+
+          Groups function/custom tools under a shared namespace.
+
+        - `class ToolSearchTool: …`
+
+          Hosted or BYOT tool search configuration for deferred tools.
+
+        - `class WebSearchPreviewTool: …`
+
+          This tool searches the web for relevant results to use in a response. Learn more about the [web search tool](https://platform.openai.com/docs/guides/tools-web-search).
+
+        - `class ApplyPatchTool: …`
+
+          Allows the assistant to create, delete, or update files using unified diffs.
+
+      - `type: Literal["additional_tools"]`
+
+        The type of the item. Always `additional_tools`.
+
+        - `"additional_tools"`
 
     - `class ResponseCompactionItem: …`
 
@@ -77202,10 +79726,6 @@ print(compacted_response)
 
           Action type "search" - Performs a web search query.
 
-          - `query: str`
-
-            [DEPRECATED] The search query.
-
           - `type: Literal["search"]`
 
             The action type.
@@ -77215,6 +79735,10 @@ print(compacted_response)
           - `queries: Optional[List[str]]`
 
             The search queries.
+
+          - `query: Optional[str]`
+
+            The search query.
 
           - `sources: Optional[List[ActionSearchSource]]`
 
@@ -78896,6 +81420,104 @@ print(compacted_response)
       - `created_by: Optional[str]`
 
         The identifier of the actor that created the item.
+
+    - `class AdditionalTools: …`
+
+      - `id: str`
+
+        The unique ID of the additional tools item.
+
+      - `role: Literal["unknown", "user", "assistant", 5 more]`
+
+        The role that provided the additional tools.
+
+        - `"unknown"`
+
+        - `"user"`
+
+        - `"assistant"`
+
+        - `"system"`
+
+        - `"critic"`
+
+        - `"discriminator"`
+
+        - `"developer"`
+
+        - `"tool"`
+
+      - `tools: List[Tool]`
+
+        The additional tool definitions made available at this item.
+
+        - `class FunctionTool: …`
+
+          Defines a function in your own code the model can choose to call. Learn more about [function calling](https://platform.openai.com/docs/guides/function-calling).
+
+        - `class FileSearchTool: …`
+
+          A tool that searches for relevant content from uploaded files. Learn more about the [file search tool](https://platform.openai.com/docs/guides/tools-file-search).
+
+        - `class ComputerTool: …`
+
+          A tool that controls a virtual computer. Learn more about the [computer tool](https://platform.openai.com/docs/guides/tools-computer-use).
+
+        - `class ComputerUsePreviewTool: …`
+
+          A tool that controls a virtual computer. Learn more about the [computer tool](https://platform.openai.com/docs/guides/tools-computer-use).
+
+        - `class WebSearchTool: …`
+
+          Search the Internet for sources related to the prompt. Learn more about the
+          [web search tool](https://platform.openai.com/docs/guides/tools-web-search).
+
+        - `class Mcp: …`
+
+          Give the model access to additional tools via remote Model Context Protocol
+          (MCP) servers. [Learn more about MCP](https://platform.openai.com/docs/guides/tools-remote-mcp).
+
+        - `class CodeInterpreter: …`
+
+          A tool that runs Python code to help generate a response to a prompt.
+
+        - `class ImageGeneration: …`
+
+          A tool that generates images using the GPT image models.
+
+        - `class LocalShell: …`
+
+          A tool that allows the model to execute shell commands in a local environment.
+
+        - `class FunctionShellTool: …`
+
+          A tool that allows the model to execute shell commands.
+
+        - `class CustomTool: …`
+
+          A custom tool that processes input using a specified format. Learn more about   [custom tools](https://platform.openai.com/docs/guides/function-calling#custom-tools)
+
+        - `class NamespaceTool: …`
+
+          Groups function/custom tools under a shared namespace.
+
+        - `class ToolSearchTool: …`
+
+          Hosted or BYOT tool search configuration for deferred tools.
+
+        - `class WebSearchPreviewTool: …`
+
+          This tool searches the web for relevant results to use in a response. Learn more about the [web search tool](https://platform.openai.com/docs/guides/tools-web-search).
+
+        - `class ApplyPatchTool: …`
+
+          Allows the assistant to create, delete, or update files using unified diffs.
+
+      - `type: Literal["additional_tools"]`
+
+        The type of the item. Always `additional_tools`.
+
+        - `"additional_tools"`
 
     - `class ResponseCompactionItem: …`
 
@@ -81111,10 +83733,6 @@ print(compacted_response)
 
               Action type "search" - Performs a web search query.
 
-              - `query: str`
-
-                [DEPRECATED] The search query.
-
               - `type: Literal["search"]`
 
                 The action type.
@@ -81124,6 +83742,10 @@ print(compacted_response)
               - `queries: Optional[List[str]]`
 
                 The search queries.
+
+              - `query: Optional[str]`
+
+                The search query.
 
               - `sources: Optional[List[ActionSearchSource]]`
 
@@ -82389,6 +85011,90 @@ print(compacted_response)
 
             - `"incomplete"`
 
+        - `class AdditionalTools: …`
+
+          - `role: Literal["developer"]`
+
+            The role that provided the additional tools. Only `developer` is supported.
+
+            - `"developer"`
+
+          - `tools: List[Tool]`
+
+            A list of additional tools made available at this item.
+
+            - `class FunctionTool: …`
+
+              Defines a function in your own code the model can choose to call. Learn more about [function calling](https://platform.openai.com/docs/guides/function-calling).
+
+            - `class FileSearchTool: …`
+
+              A tool that searches for relevant content from uploaded files. Learn more about the [file search tool](https://platform.openai.com/docs/guides/tools-file-search).
+
+            - `class ComputerTool: …`
+
+              A tool that controls a virtual computer. Learn more about the [computer tool](https://platform.openai.com/docs/guides/tools-computer-use).
+
+            - `class ComputerUsePreviewTool: …`
+
+              A tool that controls a virtual computer. Learn more about the [computer tool](https://platform.openai.com/docs/guides/tools-computer-use).
+
+            - `class WebSearchTool: …`
+
+              Search the Internet for sources related to the prompt. Learn more about the
+              [web search tool](https://platform.openai.com/docs/guides/tools-web-search).
+
+            - `class Mcp: …`
+
+              Give the model access to additional tools via remote Model Context Protocol
+              (MCP) servers. [Learn more about MCP](https://platform.openai.com/docs/guides/tools-remote-mcp).
+
+            - `class CodeInterpreter: …`
+
+              A tool that runs Python code to help generate a response to a prompt.
+
+            - `class ImageGeneration: …`
+
+              A tool that generates images using the GPT image models.
+
+            - `class LocalShell: …`
+
+              A tool that allows the model to execute shell commands in a local environment.
+
+            - `class FunctionShellTool: …`
+
+              A tool that allows the model to execute shell commands.
+
+            - `class CustomTool: …`
+
+              A custom tool that processes input using a specified format. Learn more about   [custom tools](https://platform.openai.com/docs/guides/function-calling#custom-tools)
+
+            - `class NamespaceTool: …`
+
+              Groups function/custom tools under a shared namespace.
+
+            - `class ToolSearchTool: …`
+
+              Hosted or BYOT tool search configuration for deferred tools.
+
+            - `class WebSearchPreviewTool: …`
+
+              This tool searches the web for relevant results to use in a response. Learn more about the [web search tool](https://platform.openai.com/docs/guides/tools-web-search).
+
+            - `class ApplyPatchTool: …`
+
+              Allows the assistant to create, delete, or update files using unified diffs.
+
+          - `type: Literal["additional_tools"]`
+
+            The item type. Always `additional_tools`.
+
+            - `"additional_tools"`
+
+          - `id: Optional[str]`
+
+            The unique ID of this additional tools item.
+
         - `class ResponseReasoningItem: …`
 
           A description of the chain of thought used by a reasoning model while generating
@@ -83641,6 +86347,104 @@ print(compacted_response)
 
           The identifier of the actor that created the item.
 
+      - `class AdditionalTools: …`
+
+        - `id: str`
+
+          The unique ID of the additional tools item.
+
+        - `role: Literal["unknown", "user", "assistant", 5 more]`
+
+          The role that provided the additional tools.
+
+          - `"unknown"`
+
+          - `"user"`
+
+          - `"assistant"`
+
+          - `"system"`
+
+          - `"critic"`
+
+          - `"discriminator"`
+
+          - `"developer"`
+
+          - `"tool"`
+
+        - `tools: List[Tool]`
+
+          The additional tool definitions made available at this item.
+
+          - `class FunctionTool: …`
+
+            Defines a function in your own code the model can choose to call. Learn more about [function calling](https://platform.openai.com/docs/guides/function-calling).
+
+          - `class FileSearchTool: …`
+
+            A tool that searches for relevant content from uploaded files. Learn more about the [file search tool](https://platform.openai.com/docs/guides/tools-file-search).
+
+          - `class ComputerTool: …`
+
+            A tool that controls a virtual computer. Learn more about the [computer tool](https://platform.openai.com/docs/guides/tools-computer-use).
+
+          - `class ComputerUsePreviewTool: …`
+
+            A tool that controls a virtual computer. Learn more about the [computer tool](https://platform.openai.com/docs/guides/tools-computer-use).
+
+          - `class WebSearchTool: …`
+
+            Search the Internet for sources related to the prompt. Learn more about the
+            [web search tool](https://platform.openai.com/docs/guides/tools-web-search).
+
+          - `class Mcp: …`
+
+            Give the model access to additional tools via remote Model Context Protocol
+            (MCP) servers. [Learn more about MCP](https://platform.openai.com/docs/guides/tools-remote-mcp).
+
+          - `class CodeInterpreter: …`
+
+            A tool that runs Python code to help generate a response to a prompt.
+
+          - `class ImageGeneration: …`
+
+            A tool that generates images using the GPT image models.
+
+          - `class LocalShell: …`
+
+            A tool that allows the model to execute shell commands in a local environment.
+
+          - `class FunctionShellTool: …`
+
+            A tool that allows the model to execute shell commands.
+
+          - `class CustomTool: …`
+
+            A custom tool that processes input using a specified format. Learn more about   [custom tools](https://platform.openai.com/docs/guides/function-calling#custom-tools)
+
+          - `class NamespaceTool: …`
+
+            Groups function/custom tools under a shared namespace.
+
+          - `class ToolSearchTool: …`
+
+            Hosted or BYOT tool search configuration for deferred tools.
+
+          - `class WebSearchPreviewTool: …`
+
+            This tool searches the web for relevant results to use in a response. Learn more about the [web search tool](https://platform.openai.com/docs/guides/tools-web-search).
+
+          - `class ApplyPatchTool: …`
+
+            Allows the assistant to create, delete, or update files using unified diffs.
+
+        - `type: Literal["additional_tools"]`
+
+          The type of the item. Always `additional_tools`.
+
+          - `"additional_tools"`
+
       - `class ResponseCompactionItem: …`
 
         A compaction item generated by the [`v1/responses/compact` API](https://platform.openai.com/docs/api-reference/responses/compact).
@@ -84552,6 +87356,12 @@ print(compacted_response)
     - `prompt_cache_retention: Optional[Literal["in_memory", "24h"]]`
 
       The retention policy for the prompt cache. Set to `24h` to enable extended prompt caching, which keeps cached prefixes active for longer, up to a maximum of 24 hours. [Learn more](https://platform.openai.com/docs/guides/prompt-caching#prompt-cache-retention).
+      For `gpt-5.5`, `gpt-5.5-pro`, and future models, only `24h` is supported.
+
+      For older models that support both `in_memory` and `24h`, the default depends on your organization's data retention policy:
+
+      - Organizations without ZDR enabled default to `24h`.
+      - Organizations with ZDR enabled default to `in_memory` when `prompt_cache_retention` is not specified.
 
       - `"in_memory"`
 
@@ -86415,10 +89225,6 @@ print(compacted_response)
 
                 Action type "search" - Performs a web search query.
 
-                - `query: str`
-
-                  [DEPRECATED] The search query.
-
                 - `type: Literal["search"]`
 
                   The action type.
@@ -86428,6 +89234,10 @@ print(compacted_response)
                 - `queries: Optional[List[str]]`
 
                   The search queries.
+
+                - `query: Optional[str]`
+
+                  The search query.
 
                 - `sources: Optional[List[ActionSearchSource]]`
 
@@ -87693,6 +90503,90 @@ print(compacted_response)
 
               - `"incomplete"`
 
+          - `class AdditionalTools: …`
+
+            - `role: Literal["developer"]`
+
+              The role that provided the additional tools. Only `developer` is supported.
+
+              - `"developer"`
+
+            - `tools: List[Tool]`
+
+              A list of additional tools made available at this item.
+
+              - `class FunctionTool: …`
+
+                Defines a function in your own code the model can choose to call. Learn more about [function calling](https://platform.openai.com/docs/guides/function-calling).
+
+              - `class FileSearchTool: …`
+
+                A tool that searches for relevant content from uploaded files. Learn more about the [file search tool](https://platform.openai.com/docs/guides/tools-file-search).
+
+              - `class ComputerTool: …`
+
+                A tool that controls a virtual computer. Learn more about the [computer tool](https://platform.openai.com/docs/guides/tools-computer-use).
+
+              - `class ComputerUsePreviewTool: …`
+
+                A tool that controls a virtual computer. Learn more about the [computer tool](https://platform.openai.com/docs/guides/tools-computer-use).
+
+              - `class WebSearchTool: …`
+
+                Search the Internet for sources related to the prompt. Learn more about the
+                [web search tool](https://platform.openai.com/docs/guides/tools-web-search).
+
+              - `class Mcp: …`
+
+                Give the model access to additional tools via remote Model Context Protocol
+                (MCP) servers. [Learn more about MCP](https://platform.openai.com/docs/guides/tools-remote-mcp).
+
+              - `class CodeInterpreter: …`
+
+                A tool that runs Python code to help generate a response to a prompt.
+
+              - `class ImageGeneration: …`
+
+                A tool that generates images using the GPT image models.
+
+              - `class LocalShell: …`
+
+                A tool that allows the model to execute shell commands in a local environment.
+
+              - `class FunctionShellTool: …`
+
+                A tool that allows the model to execute shell commands.
+
+              - `class CustomTool: …`
+
+                A custom tool that processes input using a specified format. Learn more about   [custom tools](https://platform.openai.com/docs/guides/function-calling#custom-tools)
+
+              - `class NamespaceTool: …`
+
+                Groups function/custom tools under a shared namespace.
+
+              - `class ToolSearchTool: …`
+
+                Hosted or BYOT tool search configuration for deferred tools.
+
+              - `class WebSearchPreviewTool: …`
+
+                This tool searches the web for relevant results to use in a response. Learn more about the [web search tool](https://platform.openai.com/docs/guides/tools-web-search).
+
+              - `class ApplyPatchTool: …`
+
+                Allows the assistant to create, delete, or update files using unified diffs.
+
+            - `type: Literal["additional_tools"]`
+
+              The item type. Always `additional_tools`.
+
+              - `"additional_tools"`
+
+            - `id: Optional[str]`
+
+              The unique ID of this additional tools item.
+
           - `class ResponseReasoningItem: …`
 
             A description of the chain of thought used by a reasoning model while generating
@@ -88945,6 +91839,104 @@ print(compacted_response)
 
             The identifier of the actor that created the item.
 
+        - `class AdditionalTools: …`
+
+          - `id: str`
+
+            The unique ID of the additional tools item.
+
+          - `role: Literal["unknown", "user", "assistant", 5 more]`
+
+            The role that provided the additional tools.
+
+            - `"unknown"`
+
+            - `"user"`
+
+            - `"assistant"`
+
+            - `"system"`
+
+            - `"critic"`
+
+            - `"discriminator"`
+
+            - `"developer"`
+
+            - `"tool"`
+
+          - `tools: List[Tool]`
+
+            The additional tool definitions made available at this item.
+
+            - `class FunctionTool: …`
+
+              Defines a function in your own code the model can choose to call. Learn more about [function calling](https://platform.openai.com/docs/guides/function-calling).
+
+            - `class FileSearchTool: …`
+
+              A tool that searches for relevant content from uploaded files. Learn more about the [file search tool](https://platform.openai.com/docs/guides/tools-file-search).
+
+            - `class ComputerTool: …`
+
+              A tool that controls a virtual computer. Learn more about the [computer tool](https://platform.openai.com/docs/guides/tools-computer-use).
+
+            - `class ComputerUsePreviewTool: …`
+
+              A tool that controls a virtual computer. Learn more about the [computer tool](https://platform.openai.com/docs/guides/tools-computer-use).
+
+            - `class WebSearchTool: …`
+
+              Search the Internet for sources related to the prompt. Learn more about the
+              [web search tool](https://platform.openai.com/docs/guides/tools-web-search).
+
+            - `class Mcp: …`
+
+              Give the model access to additional tools via remote Model Context Protocol
+              (MCP) servers. [Learn more about MCP](https://platform.openai.com/docs/guides/tools-remote-mcp).
+
+            - `class CodeInterpreter: …`
+
+              A tool that runs Python code to help generate a response to a prompt.
+
+            - `class ImageGeneration: …`
+
+              A tool that generates images using the GPT image models.
+
+            - `class LocalShell: …`
+
+              A tool that allows the model to execute shell commands in a local environment.
+
+            - `class FunctionShellTool: …`
+
+              A tool that allows the model to execute shell commands.
+
+            - `class CustomTool: …`
+
+              A custom tool that processes input using a specified format. Learn more about   [custom tools](https://platform.openai.com/docs/guides/function-calling#custom-tools)
+
+            - `class NamespaceTool: …`
+
+              Groups function/custom tools under a shared namespace.
+
+            - `class ToolSearchTool: …`
+
+              Hosted or BYOT tool search configuration for deferred tools.
+
+            - `class WebSearchPreviewTool: …`
+
+              This tool searches the web for relevant results to use in a response. Learn more about the [web search tool](https://platform.openai.com/docs/guides/tools-web-search).
+
+            - `class ApplyPatchTool: …`
+
+              Allows the assistant to create, delete, or update files using unified diffs.
+
+          - `type: Literal["additional_tools"]`
+
+            The type of the item. Always `additional_tools`.
+
+            - `"additional_tools"`
+
         - `class ResponseCompactionItem: …`
 
           A compaction item generated by the [`v1/responses/compact` API](https://platform.openai.com/docs/api-reference/responses/compact).
@@ -89856,6 +92848,12 @@ print(compacted_response)
       - `prompt_cache_retention: Optional[Literal["in_memory", "24h"]]`
 
         The retention policy for the prompt cache. Set to `24h` to enable extended prompt caching, which keeps cached prefixes active for longer, up to a maximum of 24 hours. [Learn more](https://platform.openai.com/docs/guides/prompt-caching#prompt-cache-retention).
+        For `gpt-5.5`, `gpt-5.5-pro`, and future models, only `24h` is supported.
+
+        For older models that support both `in_memory` and `24h`, the default depends on your organization's data retention policy:
+
+        - Organizations without ZDR enabled default to `24h`.
+        - Organizations with ZDR enabled default to `in_memory` when `prompt_cache_retention` is not specified.
 
         - `"in_memory"`
 
@@ -90496,6 +93494,8 @@ print(compacted_response)
       - `class ResponseToolSearchCall: …`
 
       - `class ResponseToolSearchOutputItem: …`
+
+      - `class AdditionalTools: …`
 
       - `class ResponseCompactionItem: …`
 
@@ -94828,10 +97828,6 @@ print(compacted_response)
 
             Action type "search" - Performs a web search query.
 
-            - `query: str`
-
-              [DEPRECATED] The search query.
-
             - `type: Literal["search"]`
 
               The action type.
@@ -94841,6 +97837,10 @@ print(compacted_response)
             - `queries: Optional[List[str]]`
 
               The search queries.
+
+            - `query: Optional[str]`
+
+              The search query.
 
             - `sources: Optional[List[ActionSearchSource]]`
 
@@ -96106,6 +99106,90 @@ print(compacted_response)
 
           - `"incomplete"`
 
+      - `class AdditionalTools: …`
+
+        - `role: Literal["developer"]`
+
+          The role that provided the additional tools. Only `developer` is supported.
+
+          - `"developer"`
+
+        - `tools: List[Tool]`
+
+          A list of additional tools made available at this item.
+
+          - `class FunctionTool: …`
+
+            Defines a function in your own code the model can choose to call. Learn more about [function calling](https://platform.openai.com/docs/guides/function-calling).
+
+          - `class FileSearchTool: …`
+
+            A tool that searches for relevant content from uploaded files. Learn more about the [file search tool](https://platform.openai.com/docs/guides/tools-file-search).
+
+          - `class ComputerTool: …`
+
+            A tool that controls a virtual computer. Learn more about the [computer tool](https://platform.openai.com/docs/guides/tools-computer-use).
+
+          - `class ComputerUsePreviewTool: …`
+
+            A tool that controls a virtual computer. Learn more about the [computer tool](https://platform.openai.com/docs/guides/tools-computer-use).
+
+          - `class WebSearchTool: …`
+
+            Search the Internet for sources related to the prompt. Learn more about the
+            [web search tool](https://platform.openai.com/docs/guides/tools-web-search).
+
+          - `class Mcp: …`
+
+            Give the model access to additional tools via remote Model Context Protocol
+            (MCP) servers. [Learn more about MCP](https://platform.openai.com/docs/guides/tools-remote-mcp).
+
+          - `class CodeInterpreter: …`
+
+            A tool that runs Python code to help generate a response to a prompt.
+
+          - `class ImageGeneration: …`
+
+            A tool that generates images using the GPT image models.
+
+          - `class LocalShell: …`
+
+            A tool that allows the model to execute shell commands in a local environment.
+
+          - `class FunctionShellTool: …`
+
+            A tool that allows the model to execute shell commands.
+
+          - `class CustomTool: …`
+
+            A custom tool that processes input using a specified format. Learn more about   [custom tools](https://platform.openai.com/docs/guides/function-calling#custom-tools)
+
+          - `class NamespaceTool: …`
+
+            Groups function/custom tools under a shared namespace.
+
+          - `class ToolSearchTool: …`
+
+            Hosted or BYOT tool search configuration for deferred tools.
+
+          - `class WebSearchPreviewTool: …`
+
+            This tool searches the web for relevant results to use in a response. Learn more about the [web search tool](https://platform.openai.com/docs/guides/tools-web-search).
+
+          - `class ApplyPatchTool: …`
+
+            Allows the assistant to create, delete, or update files using unified diffs.
+
+        - `type: Literal["additional_tools"]`
+
+          The item type. Always `additional_tools`.
+
+          - `"additional_tools"`
+
+        - `id: Optional[str]`
+
+          The unique ID of this additional tools item.
+
       - `class ResponseReasoningItem: …`
 
         A description of the chain of thought used by a reasoning model while generating
@@ -97120,6 +100204,12 @@ print(compacted_response)
   - `prompt_cache_retention: Optional[Literal["in_memory", "24h"]]`
 
     The retention policy for the prompt cache. Set to `24h` to enable extended prompt caching, which keeps cached prefixes active for longer, up to a maximum of 24 hours. [Learn more](https://platform.openai.com/docs/guides/prompt-caching#prompt-cache-retention).
+    For `gpt-5.5`, `gpt-5.5-pro`, and future models, only `24h` is supported.
+
+    For older models that support both `in_memory` and `24h`, the default depends on your organization's data retention policy:
+
+    - Organizations without ZDR enabled default to `24h`.
+    - Organizations with ZDR enabled default to `in_memory` when `prompt_cache_retention` is not specified.
 
     - `"in_memory"`
 
@@ -98839,10 +101929,6 @@ print(compacted_response)
 
                 Action type "search" - Performs a web search query.
 
-                - `query: str`
-
-                  [DEPRECATED] The search query.
-
                 - `type: Literal["search"]`
 
                   The action type.
@@ -98852,6 +101938,10 @@ print(compacted_response)
                 - `queries: Optional[List[str]]`
 
                   The search queries.
+
+                - `query: Optional[str]`
+
+                  The search query.
 
                 - `sources: Optional[List[ActionSearchSource]]`
 
@@ -100117,6 +103207,90 @@ print(compacted_response)
 
               - `"incomplete"`
 
+          - `class AdditionalTools: …`
+
+            - `role: Literal["developer"]`
+
+              The role that provided the additional tools. Only `developer` is supported.
+
+              - `"developer"`
+
+            - `tools: List[Tool]`
+
+              A list of additional tools made available at this item.
+
+              - `class FunctionTool: …`
+
+                Defines a function in your own code the model can choose to call. Learn more about [function calling](https://platform.openai.com/docs/guides/function-calling).
+
+              - `class FileSearchTool: …`
+
+                A tool that searches for relevant content from uploaded files. Learn more about the [file search tool](https://platform.openai.com/docs/guides/tools-file-search).
+
+              - `class ComputerTool: …`
+
+                A tool that controls a virtual computer. Learn more about the [computer tool](https://platform.openai.com/docs/guides/tools-computer-use).
+
+              - `class ComputerUsePreviewTool: …`
+
+                A tool that controls a virtual computer. Learn more about the [computer tool](https://platform.openai.com/docs/guides/tools-computer-use).
+
+              - `class WebSearchTool: …`
+
+                Search the Internet for sources related to the prompt. Learn more about the
+                [web search tool](https://platform.openai.com/docs/guides/tools-web-search).
+
+              - `class Mcp: …`
+
+                Give the model access to additional tools via remote Model Context Protocol
+                (MCP) servers. [Learn more about MCP](https://platform.openai.com/docs/guides/tools-remote-mcp).
+
+              - `class CodeInterpreter: …`
+
+                A tool that runs Python code to help generate a response to a prompt.
+
+              - `class ImageGeneration: …`
+
+                A tool that generates images using the GPT image models.
+
+              - `class LocalShell: …`
+
+                A tool that allows the model to execute shell commands in a local environment.
+
+              - `class FunctionShellTool: …`
+
+                A tool that allows the model to execute shell commands.
+
+              - `class CustomTool: …`
+
+                A custom tool that processes input using a specified format. Learn more about   [custom tools](https://platform.openai.com/docs/guides/function-calling#custom-tools)
+
+              - `class NamespaceTool: …`
+
+                Groups function/custom tools under a shared namespace.
+
+              - `class ToolSearchTool: …`
+
+                Hosted or BYOT tool search configuration for deferred tools.
+
+              - `class WebSearchPreviewTool: …`
+
+                This tool searches the web for relevant results to use in a response. Learn more about the [web search tool](https://platform.openai.com/docs/guides/tools-web-search).
+
+              - `class ApplyPatchTool: …`
+
+                Allows the assistant to create, delete, or update files using unified diffs.
+
+            - `type: Literal["additional_tools"]`
+
+              The item type. Always `additional_tools`.
+
+              - `"additional_tools"`
+
+            - `id: Optional[str]`
+
+              The unique ID of this additional tools item.
+
           - `class ResponseReasoningItem: …`
 
             A description of the chain of thought used by a reasoning model while generating
@@ -101369,6 +104543,104 @@ print(compacted_response)
 
             The identifier of the actor that created the item.
 
+        - `class AdditionalTools: …`
+
+          - `id: str`
+
+            The unique ID of the additional tools item.
+
+          - `role: Literal["unknown", "user", "assistant", 5 more]`
+
+            The role that provided the additional tools.
+
+            - `"unknown"`
+
+            - `"user"`
+
+            - `"assistant"`
+
+            - `"system"`
+
+            - `"critic"`
+
+            - `"discriminator"`
+
+            - `"developer"`
+
+            - `"tool"`
+
+          - `tools: List[Tool]`
+
+            The additional tool definitions made available at this item.
+
+            - `class FunctionTool: …`
+
+              Defines a function in your own code the model can choose to call. Learn more about [function calling](https://platform.openai.com/docs/guides/function-calling).
+
+            - `class FileSearchTool: …`
+
+              A tool that searches for relevant content from uploaded files. Learn more about the [file search tool](https://platform.openai.com/docs/guides/tools-file-search).
+
+            - `class ComputerTool: …`
+
+              A tool that controls a virtual computer. Learn more about the [computer tool](https://platform.openai.com/docs/guides/tools-computer-use).
+
+            - `class ComputerUsePreviewTool: …`
+
+              A tool that controls a virtual computer. Learn more about the [computer tool](https://platform.openai.com/docs/guides/tools-computer-use).
+
+            - `class WebSearchTool: …`
+
+              Search the Internet for sources related to the prompt. Learn more about the
+              [web search tool](https://platform.openai.com/docs/guides/tools-web-search).
+
+            - `class Mcp: …`
+
+              Give the model access to additional tools via remote Model Context Protocol
+              (MCP) servers. [Learn more about MCP](https://platform.openai.com/docs/guides/tools-remote-mcp).
+
+            - `class CodeInterpreter: …`
+
+              A tool that runs Python code to help generate a response to a prompt.
+
+            - `class ImageGeneration: …`
+
+              A tool that generates images using the GPT image models.
+
+            - `class LocalShell: …`
+
+              A tool that allows the model to execute shell commands in a local environment.
+
+            - `class FunctionShellTool: …`
+
+              A tool that allows the model to execute shell commands.
+
+            - `class CustomTool: …`
+
+              A custom tool that processes input using a specified format. Learn more about   [custom tools](https://platform.openai.com/docs/guides/function-calling#custom-tools)
+
+            - `class NamespaceTool: …`
+
+              Groups function/custom tools under a shared namespace.
+
+            - `class ToolSearchTool: …`
+
+              Hosted or BYOT tool search configuration for deferred tools.
+
+            - `class WebSearchPreviewTool: …`
+
+              This tool searches the web for relevant results to use in a response. Learn more about the [web search tool](https://platform.openai.com/docs/guides/tools-web-search).
+
+            - `class ApplyPatchTool: …`
+
+              Allows the assistant to create, delete, or update files using unified diffs.
+
+          - `type: Literal["additional_tools"]`
+
+            The type of the item. Always `additional_tools`.
+
+            - `"additional_tools"`
+
         - `class ResponseCompactionItem: …`
 
           A compaction item generated by the [`v1/responses/compact` API](https://platform.openai.com/docs/api-reference/responses/compact).
@@ -102280,6 +105552,12 @@ print(compacted_response)
       - `prompt_cache_retention: Optional[Literal["in_memory", "24h"]]`
 
         The retention policy for the prompt cache. Set to `24h` to enable extended prompt caching, which keeps cached prefixes active for longer, up to a maximum of 24 hours. [Learn more](https://platform.openai.com/docs/guides/prompt-caching#prompt-cache-retention).
+        For `gpt-5.5`, `gpt-5.5-pro`, and future models, only `24h` is supported.
+
+        For older models that support both `in_memory` and `24h`, the default depends on your organization's data retention policy:
+
+        - Organizations without ZDR enabled default to `24h`.
+        - Organizations with ZDR enabled default to `in_memory` when `prompt_cache_retention` is not specified.
 
         - `"in_memory"`
 
@@ -102920,6 +106198,8 @@ print(compacted_response)
       - `class ResponseToolSearchCall: …`
 
       - `class ResponseToolSearchOutputItem: …`
+
+      - `class AdditionalTools: …`
 
       - `class ResponseCompactionItem: …`
 
@@ -106101,10 +109381,6 @@ Returns a list of input items for a given response.
 
         Action type "search" - Performs a web search query.
 
-        - `query: str`
-
-          [DEPRECATED] The search query.
-
         - `type: Literal["search"]`
 
           The action type.
@@ -106114,6 +109390,10 @@ Returns a list of input items for a given response.
         - `queries: Optional[List[str]]`
 
           The search queries.
+
+        - `query: Optional[str]`
+
+          The search query.
 
         - `sources: Optional[List[ActionSearchSource]]`
 
@@ -107308,6 +110588,104 @@ Returns a list of input items for a given response.
     - `created_by: Optional[str]`
 
       The identifier of the actor that created the item.
+
+  - `class AdditionalTools: …`
+
+    - `id: str`
+
+      The unique ID of the additional tools item.
+
+    - `role: Literal["unknown", "user", "assistant", 5 more]`
+
+      The role that provided the additional tools.
+
+      - `"unknown"`
+
+      - `"user"`
+
+      - `"assistant"`
+
+      - `"system"`
+
+      - `"critic"`
+
+      - `"discriminator"`
+
+      - `"developer"`
+
+      - `"tool"`
+
+    - `tools: List[Tool]`
+
+      The additional tool definitions made available at this item.
+
+      - `class FunctionTool: …`
+
+        Defines a function in your own code the model can choose to call. Learn more about [function calling](https://platform.openai.com/docs/guides/function-calling).
+
+      - `class FileSearchTool: …`
+
+        A tool that searches for relevant content from uploaded files. Learn more about the [file search tool](https://platform.openai.com/docs/guides/tools-file-search).
+
+      - `class ComputerTool: …`
+
+        A tool that controls a virtual computer. Learn more about the [computer tool](https://platform.openai.com/docs/guides/tools-computer-use).
+
+      - `class ComputerUsePreviewTool: …`
+
+        A tool that controls a virtual computer. Learn more about the [computer tool](https://platform.openai.com/docs/guides/tools-computer-use).
+
+      - `class WebSearchTool: …`
+
+        Search the Internet for sources related to the prompt. Learn more about the
+        [web search tool](https://platform.openai.com/docs/guides/tools-web-search).
+
+      - `class Mcp: …`
+
+        Give the model access to additional tools via remote Model Context Protocol
+        (MCP) servers. [Learn more about MCP](https://platform.openai.com/docs/guides/tools-remote-mcp).
+
+      - `class CodeInterpreter: …`
+
+        A tool that runs Python code to help generate a response to a prompt.
+
+      - `class ImageGeneration: …`
+
+        A tool that generates images using the GPT image models.
+
+      - `class LocalShell: …`
+
+        A tool that allows the model to execute shell commands in a local environment.
+
+      - `class FunctionShellTool: …`
+
+        A tool that allows the model to execute shell commands.
+
+      - `class CustomTool: …`
+
+        A custom tool that processes input using a specified format. Learn more about   [custom tools](https://platform.openai.com/docs/guides/function-calling#custom-tools)
+
+      - `class NamespaceTool: …`
+
+        Groups function/custom tools under a shared namespace.
+
+      - `class ToolSearchTool: …`
+
+        Hosted or BYOT tool search configuration for deferred tools.
+
+      - `class WebSearchPreviewTool: …`
+
+        This tool searches the web for relevant results to use in a response. Learn more about the [web search tool](https://platform.openai.com/docs/guides/tools-web-search).
+
+      - `class ApplyPatchTool: …`
+
+        Allows the assistant to create, delete, or update files using unified diffs.
+
+    - `type: Literal["additional_tools"]`
+
+      The type of the item. Always `additional_tools`.
+
+      - `"additional_tools"`
 
   - `class ResponseReasoningItem: …`
 
@@ -109024,10 +112402,6 @@ print(response.data)
 
           Action type "search" - Performs a web search query.
 
-          - `query: str`
-
-            [DEPRECATED] The search query.
-
           - `type: Literal["search"]`
 
             The action type.
@@ -109037,6 +112411,10 @@ print(response.data)
           - `queries: Optional[List[str]]`
 
             The search queries.
+
+          - `query: Optional[str]`
+
+            The search query.
 
           - `sources: Optional[List[ActionSearchSource]]`
 
@@ -110231,6 +113609,104 @@ print(response.data)
       - `created_by: Optional[str]`
 
         The identifier of the actor that created the item.
+
+    - `class AdditionalTools: …`
+
+      - `id: str`
+
+        The unique ID of the additional tools item.
+
+      - `role: Literal["unknown", "user", "assistant", 5 more]`
+
+        The role that provided the additional tools.
+
+        - `"unknown"`
+
+        - `"user"`
+
+        - `"assistant"`
+
+        - `"system"`
+
+        - `"critic"`
+
+        - `"discriminator"`
+
+        - `"developer"`
+
+        - `"tool"`
+
+      - `tools: List[Tool]`
+
+        The additional tool definitions made available at this item.
+
+        - `class FunctionTool: …`
+
+          Defines a function in your own code the model can choose to call. Learn more about [function calling](https://platform.openai.com/docs/guides/function-calling).
+
+        - `class FileSearchTool: …`
+
+          A tool that searches for relevant content from uploaded files. Learn more about the [file search tool](https://platform.openai.com/docs/guides/tools-file-search).
+
+        - `class ComputerTool: …`
+
+          A tool that controls a virtual computer. Learn more about the [computer tool](https://platform.openai.com/docs/guides/tools-computer-use).
+
+        - `class ComputerUsePreviewTool: …`
+
+          A tool that controls a virtual computer. Learn more about the [computer tool](https://platform.openai.com/docs/guides/tools-computer-use).
+
+        - `class WebSearchTool: …`
+
+          Search the Internet for sources related to the prompt. Learn more about the
+          [web search tool](https://platform.openai.com/docs/guides/tools-web-search).
+
+        - `class Mcp: …`
+
+          Give the model access to additional tools via remote Model Context Protocol
+          (MCP) servers. [Learn more about MCP](https://platform.openai.com/docs/guides/tools-remote-mcp).
+
+        - `class CodeInterpreter: …`
+
+          A tool that runs Python code to help generate a response to a prompt.
+
+        - `class ImageGeneration: …`
+
+          A tool that generates images using the GPT image models.
+
+        - `class LocalShell: …`
+
+          A tool that allows the model to execute shell commands in a local environment.
+
+        - `class FunctionShellTool: …`
+
+          A tool that allows the model to execute shell commands.
+
+        - `class CustomTool: …`
+
+          A custom tool that processes input using a specified format. Learn more about   [custom tools](https://platform.openai.com/docs/guides/function-calling#custom-tools)
+
+        - `class NamespaceTool: …`
+
+          Groups function/custom tools under a shared namespace.
+
+        - `class ToolSearchTool: …`
+
+          Hosted or BYOT tool search configuration for deferred tools.
+
+        - `class WebSearchPreviewTool: …`
+
+          This tool searches the web for relevant results to use in a response. Learn more about the [web search tool](https://platform.openai.com/docs/guides/tools-web-search).
+
+        - `class ApplyPatchTool: …`
+
+          Allows the assistant to create, delete, or update files using unified diffs.
+
+      - `type: Literal["additional_tools"]`
+
+        The type of the item. Always `additional_tools`.
+
+        - `"additional_tools"`
 
     - `class ResponseReasoningItem: …`
 
@@ -111975,10 +115451,6 @@ Returns an object with `object` set to `response.input_tokens` and an `input_tok
 
           Action type "search" - Performs a web search query.
 
-          - `query: str`
-
-            [DEPRECATED] The search query.
-
           - `type: Literal["search"]`
 
             The action type.
@@ -111988,6 +115460,10 @@ Returns an object with `object` set to `response.input_tokens` and an `input_tok
           - `queries: Optional[List[str]]`
 
             The search queries.
+
+          - `query: Optional[str]`
+
+            The search query.
 
           - `sources: Optional[List[ActionSearchSource]]`
 
@@ -113253,6 +116729,90 @@ Returns an object with `object` set to `response.input_tokens` and an `input_tok
 
         - `"incomplete"`
 
+    - `class AdditionalTools: …`
+
+      - `role: Literal["developer"]`
+
+        The role that provided the additional tools. Only `developer` is supported.
+
+        - `"developer"`
+
+      - `tools: List[Tool]`
+
+        A list of additional tools made available at this item.
+
+        - `class FunctionTool: …`
+
+          Defines a function in your own code the model can choose to call. Learn more about [function calling](https://platform.openai.com/docs/guides/function-calling).
+
+        - `class FileSearchTool: …`
+
+          A tool that searches for relevant content from uploaded files. Learn more about the [file search tool](https://platform.openai.com/docs/guides/tools-file-search).
+
+        - `class ComputerTool: …`
+
+          A tool that controls a virtual computer. Learn more about the [computer tool](https://platform.openai.com/docs/guides/tools-computer-use).
+
+        - `class ComputerUsePreviewTool: …`
+
+          A tool that controls a virtual computer. Learn more about the [computer tool](https://platform.openai.com/docs/guides/tools-computer-use).
+
+        - `class WebSearchTool: …`
+
+          Search the Internet for sources related to the prompt. Learn more about the
+          [web search tool](https://platform.openai.com/docs/guides/tools-web-search).
+
+        - `class Mcp: …`
+
+          Give the model access to additional tools via remote Model Context Protocol
+          (MCP) servers. [Learn more about MCP](https://platform.openai.com/docs/guides/tools-remote-mcp).
+
+        - `class CodeInterpreter: …`
+
+          A tool that runs Python code to help generate a response to a prompt.
+
+        - `class ImageGeneration: …`
+
+          A tool that generates images using the GPT image models.
+
+        - `class LocalShell: …`
+
+          A tool that allows the model to execute shell commands in a local environment.
+
+        - `class FunctionShellTool: …`
+
+          A tool that allows the model to execute shell commands.
+
+        - `class CustomTool: …`
+
+          A custom tool that processes input using a specified format. Learn more about   [custom tools](https://platform.openai.com/docs/guides/function-calling#custom-tools)
+
+        - `class NamespaceTool: …`
+
+          Groups function/custom tools under a shared namespace.
+
+        - `class ToolSearchTool: …`
+
+          Hosted or BYOT tool search configuration for deferred tools.
+
+        - `class WebSearchPreviewTool: …`
+
+          This tool searches the web for relevant results to use in a response. Learn more about the [web search tool](https://platform.openai.com/docs/guides/tools-web-search).
+
+        - `class ApplyPatchTool: …`
+
+          Allows the assistant to create, delete, or update files using unified diffs.
+
+      - `type: Literal["additional_tools"]`
+
+        The item type. Always `additional_tools`.
+
+        - `"additional_tools"`
+
+      - `id: Optional[str]`
+
+        The unique ID of this additional tools item.
+
     - `class ResponseReasoningItem: …`
 
       A description of the chain of thought used by a reasoning model while generating
@@ -114007,6 +117567,20 @@ Returns an object with `object` set to `response.input_tokens` and an `input_tok
 - `parallel_tool_calls: Optional[bool]`
 
   Whether to allow the model to run tool calls in parallel.
+
+- `personality: Optional[Union[str, Literal["friendly", "pragmatic"]]]`
+
+  A model-owned style preset to apply to this request. Omit this parameter to use the model's default style. Supported values may expand over time. Values must be at most 64 characters.
+
+  - `str`
+
+  - `Literal["friendly", "pragmatic"]`
+
+    A model-owned style preset to apply to this request. Omit this parameter to use the model's default style. Supported values may expand over time. Values must be at most 64 characters.
+
+    - `"friendly"`
+
+    - `"pragmatic"`
 
 - `previous_response_id: Optional[str]`
 

@@ -7,6 +7,15 @@ info: To determine the technical writer assigned to the Stage/Group associated w
 
 Manage deploy keys.
 
+## Synopsis
+
+Add, list, get, and delete the deploy keys for a project.
+
+Deploy keys grant access to a repository over SSH without being tied to a
+user account, and are commonly used by CI/CD jobs and external systems.
+These commands operate on the current project. Use `--repo` to target
+another project.
+
 ## Options
 
 ```plaintext

@@ -7,6 +7,12 @@ info: To determine the technical writer assigned to the Stage/Group associated w
 
 Manage GPG keys registered with your GitLab account.
 
+## Synopsis
+
+Add, list, get, and delete the GPG keys associated with your account.
+
+GitLab uses GPG keys to verify the signatures on signed commits and tags.
+
 ## Options
 
 ```plaintext

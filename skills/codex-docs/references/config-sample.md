@@ -589,7 +589,7 @@ show_tooltips = true
 
 # theme = "catppuccin-mocha"
 
-# Custom key bindings. Context-specific bindings override [tui.keymap.global].
+# Custom key bindings. Selected composer actions fall back to matching [tui.keymap.global] bindings.
 
 # Use [] to unbind an action.
 
@@ -604,6 +604,10 @@ show_tooltips = true
 # [tui.keymap.composer]
 
 # submit = ["enter", "ctrl-m"]
+
+# [tui.keymap.chat]
+
+# interrupt_turn = "f12"
 
 # Internal tooltip state keyed by model slug. Usually managed by Codex.
 

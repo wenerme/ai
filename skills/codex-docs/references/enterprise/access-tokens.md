@@ -43,12 +43,26 @@ Use the Codex Local controls in workspace settings to turn on access token creat
   variant="no-wallpaper"
 />
 
-1. Go to [Workspace Settings > Settings and Permissions](https://chatgpt.com/admin/settings).
+1. Go to [Workspace Settings > Permissions & roles](https://chatgpt.com/admin/settings).
 2. In the Codex Local section, make sure **Allow members to use Codex Local** is turned on.
 3. Turn on **Allow members to use Codex access tokens** if all allowed members should be able to create access tokens.
 4. If you use custom roles for a narrower rollout, assign the access token permission only to groups that need to create tokens.
 
 Keep access token creation limited to people or service owners who understand where the token will be stored, which automation will use it, and how it will be rotated.
+
+## Set an access token expiration limit
+
+Workspace owners and admins can set the longest expiration that members can choose when they create a Codex access token. Go to [Workspace Settings > Permissions & roles](https://chatgpt.com/admin/settings), then set **Access token expiration limit** in the Codex Local section.
+
+<CodexScreenshot
+  alt="Access token expiration limit in ChatGPT workspace permissions settings"
+  lightSrc="/images/codex/enterprise/access_token_expiration_limit.png"
+  darkSrc="/images/codex/enterprise/access_token_expiration_limit_dark.png"
+  maxWidth={847}
+  variant="no-wallpaper"
+/>
+
+The limit applies to new access tokens. Existing tokens keep their current expiration.
 
 ## Create an access token
 

@@ -1,5 +1,3 @@
-# Migrate to the Google GenAI SDK
-
 Starting with the Gemini 2.0 release in late 2024, we introduced a new set of
 libraries called the [Google GenAI SDK](https://ai.google.dev/gemini-api/docs/libraries). It offers
 an improved developer experience through
@@ -67,7 +65,7 @@ objects.
     import google.generativeai as genai
 
     # Directly create and use model objects
-    model = genai.GenerativeModel('gemini-2.0-flash')
+    model = genai.GenerativeModel('gemini-3.5-flash')
     response = model.generate_content(...)
     chat = model.start_chat(...)
 
@@ -85,7 +83,7 @@ instantiating entirely separate client classes.
     const cacheManager = new GoogleAICacheManager("GEMINI_API_KEY");
 
     // Get a model instance, then call methods on it
-    const model = genAI.getGenerativeModel({ model: "gemini-2.5-flash" });
+    const model = genAI.getGenerativeModel({ model: "gemini-3.5-flash" });
     const result = await model.generateContent(...);
     const chat = model.startChat(...);
 
@@ -110,7 +108,7 @@ distinct packages or patterns.
     fileClient, err := fileman.NewClient(ctx, option.WithAPIKey("GEMINI_API_KEY"))
 
     // Get a model instance, then call methods on it
-    model := client.GenerativeModel("gemini-2.0-flash")
+    model := client.GenerativeModel("gemini-3.5-flash")
     resp, err := model.GenerateContent(...)
     cs := model.StartChat()
 
@@ -241,7 +239,7 @@ Previously, there were no client objects, you accessed APIs directly through
 
     import google.generativeai as genai
 
-    model = genai.GenerativeModel('gemini-2.0-flash')
+    model = genai.GenerativeModel('gemini-3.5-flash')
     response = model.generate_content(
         'Tell me a story in 300 words'
     )
@@ -252,7 +250,7 @@ Previously, there were no client objects, you accessed APIs directly through
     import { GoogleGenerativeAI } from "@google/generative-ai";
 
     const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY);
-    const model = genAI.getGenerativeModel({ model: "gemini-2.0-flash" });
+    const model = genAI.getGenerativeModel({ model: "gemini-3.5-flash" });
     const prompt = "Tell me a story in 300 words";
 
     const result = await model.generateContent(prompt);
@@ -267,7 +265,7 @@ Previously, there were no client objects, you accessed APIs directly through
     }
     defer client.Close()
 
-    model := client.GenerativeModel("gemini-2.0-flash")
+    model := client.GenerativeModel("gemini-3.5-flash")
     resp, err := model.GenerateContent(ctx, genai.Text("Tell me a story in 300 words."))
     if err != nil {
         log.Fatal(err)
@@ -288,7 +286,7 @@ uniformity, objects returned are `pydantic` classes.
     client = genai.Client()
 
     response = client.models.generate_content(
-        model='gemini-2.0-flash',
+        model='gemini-3.5-flash',
         contents='Tell me a story in 300 words.'
     )
     print(response.text)
@@ -303,7 +301,7 @@ uniformity, objects returned are `pydantic` classes.
     const ai = new GoogleGenAI({ apiKey: "GEMINI_API_KEY" });
 
     const response = await ai.models.generateContent({
-      model: "gemini-2.0-flash",
+      model: "gemini-3.5-flash",
       contents: "Tell me a story in 300 words.",
     });
     console.log(response.text);
@@ -316,7 +314,7 @@ uniformity, objects returned are `pydantic` classes.
         log.Fatal(err)
     }
 
-    result, err := client.Models.GenerateContent(ctx, "gemini-2.0-flash", genai.Text("Tell me a story in 300 words."), nil)
+    result, err := client.Models.GenerateContent(ctx, "gemini-3.5-flash", genai.Text("Tell me a story in 300 words."), nil)
     if err != nil {
         log.Fatal(err)
     }
@@ -330,7 +328,7 @@ uniformity, objects returned are `pydantic` classes.
 
     import google.generativeai as genai
 
-    model = genai.GenerativeModel('gemini-2.0-flash')
+    model = genai.GenerativeModel('gemini-3.5-flash')
     response = model.generate_content([
         'Tell me a story based on this image',
         Image.open(image_path)
@@ -342,7 +340,7 @@ uniformity, objects returned are `pydantic` classes.
     import { GoogleGenerativeAI } from "@google/generative-ai";
 
     const genAI = new GoogleGenerativeAI("GEMINI_API_KEY");
-    const model = genAI.getGenerativeModel({ model: "gemini-2.0-flash" });
+    const model = genAI.getGenerativeModel({ model: "gemini-3.5-flash" });
 
     function fileToGenerativePart(path, mimeType) {
       return {
@@ -372,7 +370,7 @@ uniformity, objects returned are `pydantic` classes.
     }
     defer client.Close()
 
-    model := client.GenerativeModel("gemini-2.0-flash")
+    model := client.GenerativeModel("gemini-3.5-flash")
 
     imgData, err := os.ReadFile("path/to/organ.jpg")
     if err != nil {
@@ -401,7 +399,7 @@ example, `PIL.Image` objects are automatically converted.
     client = genai.Client()
 
     response = client.models.generate_content(
-        model='gemini-2.0-flash',
+        model='gemini-3.5-flash',
         contents=[
             'Tell me a story based on this image',
             Image.open(image_path)
@@ -420,7 +418,7 @@ example, `PIL.Image` objects are automatically converted.
     });
 
     const response = await ai.models.generateContent({
-      model: "gemini-2.0-flash",
+      model: "gemini-3.5-flash",
       contents: [
         createUserContent([
           "Tell me a story based on this image",
@@ -451,7 +449,7 @@ example, `PIL.Image` objects are automatically converted.
         {Parts: parts},
     }
 
-    result, err := client.Models.GenerateContent(ctx, "gemini-2.0-flash", contents, nil)
+    result, err := client.Models.GenerateContent(ctx, "gemini-3.5-flash", contents, nil)
     if err != nil {
         log.Fatal(err)
     }
@@ -476,7 +474,7 @@ example, `PIL.Image` objects are automatically converted.
     import { GoogleGenerativeAI } from "@google/generative-ai";
 
     const genAI = new GoogleGenerativeAI("GEMINI_API_KEY");
-    const model = genAI.getGenerativeModel({ model: "gemini-2.0-flash" });
+    const model = genAI.getGenerativeModel({ model: "gemini-3.5-flash" });
 
     const prompt = "Write a story about a magic backpack.";
 
@@ -497,7 +495,7 @@ example, `PIL.Image` objects are automatically converted.
     }
     defer client.Close()
 
-    model := client.GenerativeModel("gemini-2.0-flash")
+    model := client.GenerativeModel("gemini-3.5-flash")
     iter := model.GenerateContentStream(ctx, genai.Text("Write a story about a magic backpack."))
     for {
         resp, err := iter.Next()
@@ -519,7 +517,7 @@ example, `PIL.Image` objects are automatically converted.
     client = genai.Client()
 
     for chunk in client.models.generate_content_stream(
-      model='gemini-2.0-flash',
+      model='gemini-3.5-flash',
       contents='Tell me a story in 300 words.'
     ):
         print(chunk.text)
@@ -531,7 +529,7 @@ example, `PIL.Image` objects are automatically converted.
     const ai = new GoogleGenAI({ apiKey: "GEMINI_API_KEY" });
 
     const response = await ai.models.generateContentStream({
-      model: "gemini-2.0-flash",
+      model: "gemini-3.5-flash",
       contents: "Write a story about a magic backpack.",
     });
     let text = "";
@@ -550,7 +548,7 @@ example, `PIL.Image` objects are automatically converted.
 
     for result, err := range client.Models.GenerateContentStream(
         ctx,
-        "gemini-2.0-flash",
+        "gemini-3.5-flash",
         genai.Text("Write a story about a magic backpack."),
         nil,
     ) {
@@ -569,7 +567,7 @@ example, `PIL.Image` objects are automatically converted.
     import google.generativeai as genai
 
     model = genai.GenerativeModel(
-      'gemini-2.0-flash',
+      'gemini-3.5-flash',
         system_instruction='you are a story teller for kids under 5 years old',
         generation_config=genai.GenerationConfig(
           max_output_tokens=400,
@@ -588,7 +586,7 @@ example, `PIL.Image` objects are automatically converted.
 
     const genAI = new GoogleGenerativeAI("GEMINI_API_KEY");
     const model = genAI.getGenerativeModel({
-      model: "gemini-2.0-flash",
+      model: "gemini-3.5-flash",
       generationConfig: {
         candidateCount: 1,
         stopSequences: ["x"],
@@ -611,7 +609,7 @@ example, `PIL.Image` objects are automatically converted.
     }
     defer client.Close()
 
-    model := client.GenerativeModel("gemini-2.0-flash")
+    model := client.GenerativeModel("gemini-3.5-flash")
     model.SetTemperature(0.5)
     model.SetTopP(0.5)
     model.SetTopK(2.0)
@@ -640,7 +638,7 @@ classes.
     client = genai.Client()
 
     response = client.models.generate_content(
-      model='gemini-2.0-flash',
+      model='gemini-3.5-flash',
       contents='Tell me a story in 100 words.',
       config=types.GenerateContentConfig(
           system_instruction='you are a story teller for kids under 5 years old',
@@ -661,7 +659,7 @@ classes.
     const ai = new GoogleGenAI({ apiKey: "GEMINI_API_KEY" });
 
     const response = await ai.models.generateContent({
-      model: "gemini-2.0-flash",
+      model: "gemini-3.5-flash",
       contents: "Tell me a story about a magic backpack.",
       config: {
         candidateCount: 1,
@@ -682,7 +680,7 @@ classes.
     }
 
     result, err := client.Models.GenerateContent(ctx,
-        "gemini-2.0-flash",
+        "gemini-3.5-flash",
         genai.Text("Tell me about New York"),
         &genai.GenerateContentConfig{
             Temperature:      genai.Ptr[float32](0.5),
@@ -712,7 +710,7 @@ Generate a response with safety settings:
 
     import google.generativeai as genai
 
-    model = genai.GenerativeModel('gemini-2.0-flash')
+    model = genai.GenerativeModel('gemini-3.5-flash')
     response = model.generate_content(
         'say something bad',
         safety_settings={
@@ -727,7 +725,7 @@ Generate a response with safety settings:
 
     const genAI = new GoogleGenerativeAI("GEMINI_API_KEY");
     const model = genAI.getGenerativeModel({
-      model: "gemini-2.0-flash",
+      model: "gemini-3.5-flash",
       safetySettings: [
         {
           category: HarmCategory.HARM_CATEGORY_HARASSMENT,
@@ -760,7 +758,7 @@ Generate a response with safety settings:
     client = genai.Client()
 
     response = client.models.generate_content(
-      model='gemini-2.0-flash',
+      model='gemini-3.5-flash',
       contents='say something bad',
       config=types.GenerateContentConfig(
           safety_settings= [
@@ -783,7 +781,7 @@ Generate a response with safety settings:
       "them how I feel about them.";
 
     const response = await ai.models.generateContent({
-      model: "gemini-2.0-flash",
+      model: "gemini-3.5-flash",
       contents: unsafePrompt,
       config: {
         safetySettings: [
@@ -806,7 +804,7 @@ Generate a response with safety settings:
 
     import google.generativeai as genai
 
-    model = genai.GenerativeModel('gemini-2.0-flash')
+    model = genai.GenerativeModel('gemini-3.5-flash')
     response = model.generate_content_async(
         'tell me a story in 100 words'
     )
@@ -823,7 +821,7 @@ implementation of every method under `client.aio`.
     client = genai.Client()
 
     response = await client.aio.models.generate_content(
-        model='gemini-2.0-flash',
+        model='gemini-3.5-flash',
         contents='Tell me a story in 300 words.'
     )
 
@@ -837,7 +835,7 @@ Start a chat and send a message to the model:
 
     import google.generativeai as genai
 
-    model = genai.GenerativeModel('gemini-2.0-flash')
+    model = genai.GenerativeModel('gemini-3.5-flash')
     chat = model.start_chat()
 
     response = chat.send_message(
@@ -850,7 +848,7 @@ Start a chat and send a message to the model:
     import { GoogleGenerativeAI } from "@google/generative-ai";
 
     const genAI = new GoogleGenerativeAI("GEMINI_API_KEY");
-    const model = genAI.getGenerativeModel({ model: "gemini-2.0-flash" });
+    const model = genAI.getGenerativeModel({ model: "gemini-3.5-flash" });
     const chat = model.startChat({
       history: [
         {
@@ -877,7 +875,7 @@ Start a chat and send a message to the model:
     }
     defer client.Close()
 
-    model := client.GenerativeModel("gemini-2.0-flash")
+    model := client.GenerativeModel("gemini-3.5-flash")
     cs := model.StartChat()
 
     cs.History = []*genai.Content{
@@ -909,7 +907,7 @@ Start a chat and send a message to the model:
 
     client = genai.Client()
 
-    chat = client.chats.create(model='gemini-2.0-flash')
+    chat = client.chats.create(model='gemini-3.5-flash')
 
     response = chat.send_message(
         message='Tell me a story in 100 words')
@@ -922,7 +920,7 @@ Start a chat and send a message to the model:
 
     const ai = new GoogleGenAI({ apiKey: "GEMINI_API_KEY" });
     const chat = ai.chats.create({
-      model: "gemini-2.0-flash",
+      model: "gemini-3.5-flash",
       history: [
         {
           role: "user",
@@ -953,7 +951,7 @@ Start a chat and send a message to the model:
         log.Fatal(err)
     }
 
-    chat, err := client.Chats.Create(ctx, "gemini-2.0-flash", nil, nil)
+    chat, err := client.Chats.Create(ctx, "gemini-3.5-flash", nil, nil)
     if err != nil {
         log.Fatal(err)
     }
@@ -990,7 +988,7 @@ Start a chat and send a message to the model:
         return "23C"
 
     model = genai.GenerativeModel(
-        model_name="gemini-2.0-flash",
+        model_name="gemini-3.5-flash",
         tools=[get_current_weather]
     )
 
@@ -1020,7 +1018,7 @@ it.
         return "23C"
 
     response = client.models.generate_content(
-      model='gemini-2.0-flash',
+      model='gemini-3.5-flash',
       contents="What is the weather like in Boston?",
       config=types.GenerateContentConfig(
           tools=[get_current_weather],
@@ -1045,7 +1043,7 @@ this is the default behavior in `generate_content`.
         return "23C"
 
     model = genai.GenerativeModel(
-        model_name="gemini-2.0-flash",
+        model_name="gemini-3.5-flash",
         tools=[get_current_weather]
     )
 
@@ -1065,7 +1063,7 @@ this is the default behavior in `generate_content`.
         return "23C"
 
     response = client.models.generate_content(
-      model='gemini-2.0-flash',
+      model='gemini-3.5-flash',
       contents="What is the weather like in Boston?",
       config=types.GenerateContentConfig(
           tools=[get_current_weather]
@@ -1084,7 +1082,7 @@ and return the result.
     import google.generativeai as genai
 
     model = genai.GenerativeModel(
-        model_name="gemini-2.0-flash",
+        model_name="gemini-3.5-flash",
         tools="code_execution"
     )
 
@@ -1098,7 +1096,7 @@ and return the result.
 
     const genAI = new GoogleGenerativeAI("GEMINI_API_KEY");
     const model = genAI.getGenerativeModel({
-      model: "gemini-2.0-flash",
+      model: "gemini-3.5-flash",
       tools: [{ codeExecution: {} }],
     });
 
@@ -1120,7 +1118,7 @@ and return the result.
     client = genai.Client()
 
     response = client.models.generate_content(
-        model='gemini-2.0-flash',
+        model='gemini-3.5-flash',
         contents='What is the sum of the first 50 prime numbers? Generate and run '
                 'code for the calculation, and make sure you get all 50.',
         config=types.GenerateContentConfig(
@@ -1135,7 +1133,7 @@ and return the result.
     const ai = new GoogleGenAI({ apiKey: "GEMINI_API_KEY" });
 
     const response = await ai.models.generateContent({
-      model: "gemini-2.0-flash",
+      model: "gemini-3.5-flash",
       contents: `Write and execute code that calculates the sum of the first 50 prime numbers.
                 Ensure that only the executable code and its resulting output are generated.`,
     });
@@ -1162,7 +1160,7 @@ Google.
 
     import google.generativeai as genai
 
-    model = genai.GenerativeModel('gemini-2.0-flash')
+    model = genai.GenerativeModel('gemini-3.5-flash')
     response = model.generate_content(
         contents="what is the Google stock price?",
         tools='google_search_retrieval'
@@ -1178,7 +1176,7 @@ Google.
     client = genai.Client()
 
     response = client.models.generate_content(
-        model='gemini-2.0-flash',
+        model='gemini-3.5-flash',
         contents='What is the Google stock price?',
         config=types.GenerateContentConfig(
             tools=[
@@ -1214,7 +1212,7 @@ produce a `JSON` response following a given structure.
         official_language: str
         total_area_sq_mi: int
 
-    model = genai.GenerativeModel(model_name="gemini-2.0-flash")
+    model = genai.GenerativeModel(model_name="gemini-3.5-flash")
     result = model.generate_content(
         "Give me information of the United States",
         generation_config=genai.GenerationConfig(
@@ -1246,7 +1244,7 @@ produce a `JSON` response following a given structure.
     };
 
     const model = genAI.getGenerativeModel({
-      model: "gemini-2.0-flash",
+      model: "gemini-3.5-flash",
       generationConfig: {
         responseMimeType: "application/json",
         responseSchema: schema,
@@ -1285,7 +1283,7 @@ to an instance of the class.
         total_area_sq_mi: int
 
     response = client.models.generate_content(
-        model='gemini-2.0-flash',
+        model='gemini-3.5-flash',
         contents='Give me information of the United States.',
         config={
             'response_mime_type': 'application/json',
@@ -1301,7 +1299,7 @@ to an instance of the class.
 
     const ai = new GoogleGenAI({ apiKey: "GEMINI_API_KEY" });
     const response = await ai.models.generateContent({
-      model: "gemini-2.0-flash",
+      model: "gemini-3.5-flash",
       contents: "List a few popular cookie recipes.",
       config: {
         responseMimeType: "application/json",
@@ -1341,7 +1339,7 @@ Upload a file:
 
     file = genai.upload_file(path='a11.txt')
 
-    model = genai.GenerativeModel('gemini-2.0-flash')
+    model = genai.GenerativeModel('gemini-3.5-flash')
     response = model.generate_content([
         'Can you summarize this file:',
         my_file
@@ -1366,7 +1364,7 @@ Upload a file:
     my_file = client.files.upload(file='a11.txt')
 
     response = client.models.generate_content(
-        model='gemini-2.0-flash',
+        model='gemini-3.5-flash',
         contents=[
             'Can you summarize this file:',
             my_file
@@ -1456,7 +1454,7 @@ the cost.
 
     # Create cache
     apollo_cache = caching.CachedContent.create(
-        model="gemini-2.0-flash-001",
+        model="gemini-3.5-flash",
         system_instruction="You are an expert at analyzing transcripts.",
         contents=[document],
     )
@@ -1480,7 +1478,7 @@ the cost.
     });
 
     const cacheResult = await cacheManager.create({
-      model: "models/gemini-2.0-flash",
+      model: "models/gemini-3.5-flash",
       contents: [
         {
           role: "user",
@@ -1532,7 +1530,7 @@ the cost.
     document = client.files.upload(file='a11.txt')
 
     # Create cache
-    model='gemini-2.0-flash-001'
+    model='gemini-3.5-flash'
     apollo_cache = client.caches.create(
           model=model,
           config={
@@ -1561,7 +1559,7 @@ the cost.
       config: { mimeType: "text/plain" },
     });
     console.log("Uploaded file name:", document.name);
-    const modelName = "gemini-2.0-flash";
+    const modelName = "gemini-3.5-flash";
 
     const contents = [
       createUserContent(createPartFromUri(document.uri, document.mimeType)),
@@ -1593,7 +1591,7 @@ Count the number of tokens in a request.
 
     import google.generativeai as genai
 
-    model = genai.GenerativeModel('gemini-2.0-flash')
+    model = genai.GenerativeModel('gemini-3.5-flash')
     response = model.count_tokens(
         'The quick brown fox jumps over the lazy dog.')
 
@@ -1603,7 +1601,7 @@ Count the number of tokens in a request.
 
      const genAI = new GoogleGenerativeAI("GEMINI_API_KEY");
      const model = genAI.getGenerativeModel({
-       model: "gemini-2.0-flash",
+       model: "gemini-3.5-flash",
      });
 
      // Count tokens in a prompt without calling text generation.
@@ -1634,7 +1632,7 @@ Count the number of tokens in a request.
     client = genai.Client()
 
     response = client.models.count_tokens(
-        model='gemini-2.0-flash',
+        model='gemini-3.5-flash',
         contents='The quick brown fox jumps over the lazy dog.',
     )
 
@@ -1645,13 +1643,13 @@ Count the number of tokens in a request.
     const ai = new GoogleGenAI({ apiKey: "GEMINI_API_KEY" });
     const prompt = "The quick brown fox jumps over the lazy dog.";
     const countTokensResponse = await ai.models.countTokens({
-      model: "gemini-2.0-flash",
+      model: "gemini-3.5-flash",
       contents: prompt,
     });
     console.log(countTokensResponse.totalTokens);
 
     const generateResponse = await ai.models.generateContent({
-      model: "gemini-2.0-flash",
+      model: "gemini-3.5-flash",
       contents: prompt,
     });
     console.log(generateResponse.usageMetadata);

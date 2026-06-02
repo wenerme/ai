@@ -54,8 +54,8 @@ Terraform assumes that it has complete control over account and zone rulesets. I
 
 The following example deploys two managed rulesets to the zone with ID `<ZONE_ID>` using Terraform, using a `cloudflare_ruleset` resource with two rules that execute the managed rulesets.
 
-* [ Terraform (v5) ](#tab-panel-8101)
-* [ Terraform (v4) ](#tab-panel-8102)
+* [ Terraform (v5) ](#tab-panel-10025)
+* [ Terraform (v4) ](#tab-panel-10026)
 
 Required API token permissions
 
@@ -203,8 +203,8 @@ Notes
 
 The following example deploys two managed rulesets to the account with ID `<ACCOUNT_ID>` using Terraform, using a `cloudflare_ruleset` resource with two rules that execute the managed rulesets for two hostnames belonging to Enterprise zones.
 
-* [ Terraform (v5) ](#tab-panel-8103)
-* [ Terraform (v4) ](#tab-panel-8104)
+* [ Terraform (v5) ](#tab-panel-10027)
+* [ Terraform (v4) ](#tab-panel-10028)
 
 Required API token permissions
 
@@ -349,8 +349,8 @@ The following example adds two [exceptions](https://developers.cloudflare.com/wa
 
 Add the two exceptions to the `cloudflare_ruleset` resource before the rule that deploys the Cloudflare Managed Ruleset:
 
-* [ Terraform (v5) ](#tab-panel-8093)
-* [ Terraform (v4) ](#tab-panel-8094)
+* [ Terraform (v5) ](#tab-panel-10017)
+* [ Terraform (v4) ](#tab-panel-10018)
 
 ```
 
@@ -537,8 +537,8 @@ Ruleset overrides and tag overrides apply to both existing and _future_ rules in
 
 The following configuration includes the three overrides in the rule that executes the Cloudflare Managed Ruleset:
 
-* [ Terraform (v5) ](#tab-panel-8095)
-* [ Terraform (v4) ](#tab-panel-8096)
+* [ Terraform (v5) ](#tab-panel-10019)
+* [ Terraform (v4) ](#tab-panel-10020)
 
 ```
 
@@ -676,8 +676,8 @@ This example enables [payload logging](https://developers.cloudflare.com/waf/man
 
 Building upon the rule that deploys the Cloudflare Managed Ruleset, the following rule configuration adds the `matched_data` object with the public key used to encrypt the payload:
 
-* [ Terraform (v5) ](#tab-panel-8097)
-* [ Terraform (v4) ](#tab-panel-8098)
+* [ Terraform (v5) ](#tab-panel-10021)
+* [ Terraform (v4) ](#tab-panel-10022)
 
 ```
 
@@ -770,8 +770,8 @@ The following example rule of a `cloudflare_ruleset` Terraform resource performs
 * Sets the score threshold to `60` (_Low_).
 * Sets the ruleset action to `log`.
 
-* [ Terraform (v5) ](#tab-panel-8099)
-* [ Terraform (v4) ](#tab-panel-8100)
+* [ Terraform (v5) ](#tab-panel-10023)
+* [ Terraform (v4) ](#tab-panel-10024)
 
 ```
 

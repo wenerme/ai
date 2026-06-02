@@ -29,8 +29,8 @@ Claude Sonnet 4.6 is Anthropic's latest balanced model offering strong coding, r
 
 ## Usage
 
-* [ TypeScript ](#tab-panel-224)
-* [ cURL ](#tab-panel-225)
+* [ TypeScript ](#tab-panel-242)
+* [ cURL ](#tab-panel-243)
 
 TypeScript
 
@@ -88,8 +88,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/v1/
 
 ```
 
-* [ Output ](#tab-panel-228)
-* [ Raw response ](#tab-panel-229)
+* [ Output ](#tab-panel-246)
+* [ Raw response ](#tab-panel-247)
 
 There are actually **four laws of thermodynamics** (numbered 0–3), but the three *main* ones most commonly referenced are:
 
@@ -167,8 +167,8 @@ Would you like a deeper explanation of any of these?
 
 **With System Message**  — Using a system message to set context 
 
-* [ TypeScript ](#tab-panel-226)
-* [ cURL ](#tab-panel-227)
+* [ TypeScript ](#tab-panel-244)
+* [ cURL ](#tab-panel-245)
 
 TypeScript
 
@@ -234,8 +234,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/v1/
 
 ```
 
-* [ Output ](#tab-panel-232)
-* [ Raw response ](#tab-panel-233)
+* [ Output ](#tab-panel-250)
+* [ Raw response ](#tab-panel-251)
 
 ## Reading a JSON File in Python
 
@@ -378,8 +378,8 @@ The `json` module is built into Python, so **no installation is needed**.
 
 **Multi-turn Conversation**  — Continuing a conversation with context 
 
-* [ TypeScript ](#tab-panel-236)
-* [ cURL ](#tab-panel-237)
+* [ TypeScript ](#tab-panel-254)
+* [ cURL ](#tab-panel-255)
 
 TypeScript
 
@@ -454,7 +454,7 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/v1/
 
     {
 
-      "content": "I'd be happy to help! The drive is about 380 miles and takes roughly 5-6 hours. Would you like suggestions for scenic routes or interesting stops along the way?",
+      "content": "I'\''d be happy to help! The drive is about 380 miles and takes roughly 5-6 hours. Would you like suggestions for scenic routes or interesting stops along the way?",
 
       "role": "assistant"
 
@@ -475,8 +475,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/v1/
 
 ```
 
-* [ Output ](#tab-panel-238)
-* [ Raw response ](#tab-panel-239)
+* [ Output ](#tab-panel-256)
+* [ Raw response ](#tab-panel-257)
 
 Here are some great stops depending on which route you take:
 
@@ -555,8 +555,8 @@ Here are some great stops depending on which route you take:
 
 **Creative Writing**  — Higher temperature for creative output 
 
-* [ TypeScript ](#tab-panel-230)
-* [ cURL ](#tab-panel-231)
+* [ TypeScript ](#tab-panel-248)
+* [ cURL ](#tab-panel-249)
 
 TypeScript
 
@@ -628,8 +628,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/v1/
 
 ```
 
-* [ Output ](#tab-panel-240)
-* [ Raw response ](#tab-panel-241)
+* [ Output ](#tab-panel-258)
+* [ Raw response ](#tab-panel-259)
 
 # The Smell of Lavender
 
@@ -708,8 +708,8 @@ Then she circled it twice.
 
 **Streaming Response**  — Enable streaming for real-time output 
 
-* [ TypeScript ](#tab-panel-234)
-* [ cURL ](#tab-panel-235)
+* [ TypeScript ](#tab-panel-252)
+* [ cURL ](#tab-panel-253)
 
 TypeScript
 
@@ -771,8 +771,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/v1/
 
 ```
 
-* [ Output ](#tab-panel-242)
-* [ Raw response ](#tab-panel-243)
+* [ Output ](#tab-panel-260)
+* [ Raw response ](#tab-panel-261)
 
 # Recursion
 
@@ -1372,8 +1372,8 @@ Both solve the same problem — recursion is often **more readable** for natural
 
 ## Parameters
 
-* [ Input ](#tab-panel-244)
-* [ Output ](#tab-panel-245)
+* [ Input ](#tab-panel-262)
+* [ Output ](#tab-panel-263)
 
 max\_tokens
 

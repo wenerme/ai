@@ -100,8 +100,8 @@ cloudflared tunnel --loglevel info --logfile cloudflared.log run <UUID>
 
 You can stream real-time logs from a running tunnel without SSH access to the server.
 
-* [ CLI ](#tab-panel-8803)
-* [ Dashboard ](#tab-panel-8804)
+* [ CLI ](#tab-panel-10057)
+* [ Dashboard ](#tab-panel-10058)
 
 The `cloudflared` daemon can stream logs from any tunnel in your account to the local command line. `cloudflared` must be installed on both your local machine and the origin server.
 

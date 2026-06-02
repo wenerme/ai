@@ -7,6 +7,13 @@ info: To determine the technical writer assigned to the Stage/Group associated w
 
 Manage SSH keys registered with your GitLab account.
 
+## Synopsis
+
+Add, list, get, and delete the SSH keys associated with your account.
+
+GitLab uses SSH keys to authenticate Git operations over SSH, and,
+depending on each key's usage type, to verify signed commits.
+
 ## Options
 
 ```plaintext

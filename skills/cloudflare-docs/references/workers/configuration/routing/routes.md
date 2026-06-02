@@ -30,7 +30,7 @@ To add a route, you must have:
 
 1. An [active Cloudflare zone](https://developers.cloudflare.com/dns/zone-setups/).
 2. A Worker to invoke.
-3. A DNS record set up for the [domain](https://developers.cloudflare.com/dns/manage-dns-records/how-to/create-zone-apex/) or [subdomain](https://developers.cloudflare.com/dns/manage-dns-records/how-to/create-subdomain/) proxied by Cloudflare (also known as orange-clouded) you would like to route to.
+3. A DNS record set up for the [domain](https://developers.cloudflare.com/dns/manage-dns-records/how-to/create-zone-apex/) or [subdomain](https://developers.cloudflare.com/dns/manage-dns-records/how-to/create-subdomain/) proxied by Cloudflare (also known as [orange-clouded](https://developers.cloudflare.com/dns/proxy-status/#benefits)) you would like to route to.
 
 Warning
 
@@ -61,8 +61,8 @@ Before you set up a route, make sure you have a DNS record set up for the [domai
 
 To configure a route using your [Wrangler configuration file](https://developers.cloudflare.com/workers/wrangler/configuration/), refer to the following example.
 
-* [  wrangler.jsonc ](#tab-panel-10306)
-* [  wrangler.toml ](#tab-panel-10307)
+* [  wrangler.jsonc ](#tab-panel-10538)
+* [  wrangler.toml ](#tab-panel-10539)
 
 JSONC
 
@@ -125,8 +125,8 @@ Add the `zone_name` or `zone_id` option after each route. The `zone_name` and `z
 
 To add multiple routes:
 
-* [  wrangler.jsonc ](#tab-panel-10308)
-* [  wrangler.toml ](#tab-panel-10309)
+* [  wrangler.jsonc ](#tab-panel-10540)
+* [  wrangler.toml ](#tab-panel-10541)
 
 JSONC
 

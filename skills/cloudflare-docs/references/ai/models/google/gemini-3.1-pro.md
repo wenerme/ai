@@ -29,8 +29,8 @@ Google's most intelligent Gemini model with improved reasoning, a medium thinkin
 
 ## Usage
 
-* [ TypeScript ](#tab-panel-508)
-* [ cURL ](#tab-panel-509)
+* [ TypeScript ](#tab-panel-526)
+* [ cURL ](#tab-panel-527)
 
 TypeScript
 
@@ -92,8 +92,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 ```
 
-* [ Output ](#tab-panel-514)
-* [ Raw response ](#tab-panel-515)
+* [ Output ](#tab-panel-532)
+* [ Raw response ](#tab-panel-533)
 
 The laws of thermodynamics are the fundamental principles that describe how energy moves and changes within the universe. While the prompt asks for the "three" laws, there are actually four (scientists later added a "Zeroth" law). 
 
@@ -221,8 +221,8 @@ A famous and humorous way physicists remember the laws of thermodynamics is by c
 
 **With System Instruction**  — Using a system instruction to set context 
 
-* [ TypeScript ](#tab-panel-510)
-* [ cURL ](#tab-panel-511)
+* [ TypeScript ](#tab-panel-528)
+* [ cURL ](#tab-panel-529)
 
 TypeScript
 
@@ -316,8 +316,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 ```
 
-* [ Output ](#tab-panel-518)
-* [ Raw response ](#tab-panel-519)
+* [ Output ](#tab-panel-536)
+* [ Raw response ](#tab-panel-537)
 
 To read a JSON file in Python, you can use the built-in `json` module. 
 
@@ -461,8 +461,8 @@ except json.JSONDecodeError:
 
 **Multi-turn Conversation**  — Continuing a conversation with context 
 
-* [ TypeScript ](#tab-panel-516)
-* [ cURL ](#tab-panel-517)
+* [ TypeScript ](#tab-panel-534)
+* [ cURL ](#tab-panel-535)
 
 TypeScript
 
@@ -555,7 +555,7 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
           {
 
-            "text": "I'd be happy to help! The drive is about 380 miles and takes roughly 5-6 hours. Would you like suggestions for scenic routes or interesting stops along the way?"
+            "text": "I'\''d be happy to help! The drive is about 380 miles and takes roughly 5-6 hours. Would you like suggestions for scenic routes or interesting stops along the way?"
 
           }
 
@@ -596,8 +596,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 ```
 
-* [ Output ](#tab-panel-520)
-* [ Raw response ](#tab-panel-521)
+* [ Output ](#tab-panel-538)
+* [ Raw response ](#tab-panel-539)
 
 The best stops really depend on which route you decide to take! There are three
 
@@ -692,8 +692,8 @@ The best stops really depend on which route you decide to take! There are three
 
 **Creative Writing**  — Higher temperature for creative output 
 
-* [ TypeScript ](#tab-panel-512)
-* [ cURL ](#tab-panel-513)
+* [ TypeScript ](#tab-panel-530)
+* [ cURL ](#tab-panel-531)
 
 TypeScript
 
@@ -779,8 +779,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 ```
 
-* [ Output ](#tab-panel-522)
-* [ Raw response ](#tab-panel-523)
+* [ Output ](#tab-panel-540)
+* [ Raw response ](#tab-panel-541)
 
 The air in Elias Vance’s apartment smelled of stale copper
 
@@ -875,8 +875,8 @@ The air in Elias Vance’s apartment smelled of stale copper
 
 ## Parameters
 
-* [ Input ](#tab-panel-524)
-* [ Output ](#tab-panel-525)
+* [ Input ](#tab-panel-542)
+* [ Output ](#tab-panel-543)
 
 ▶contents\[\]
 

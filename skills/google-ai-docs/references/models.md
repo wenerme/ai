@@ -177,11 +177,11 @@ Advanced embodied reasoning model that understands physical spaces and plans mul
 > [!WARNING]
 > These models are [deprecated](https://ai.google.dev/gemini-api/docs/deprecations) and will be shut down soon; migrate to newer models to prevent service interruptions.
 
-### [Gemini 2.0 Flash Deprecated](https://ai.google.dev/gemini-api/docs/models/gemini-2.0-flash)
+### [Gemini 2.0 Flash Shut down](https://ai.google.dev/gemini-api/docs/models/gemini-2.0-flash)
 
 Our second generation workhorse model, with next-gen features and improved capabilities, including superior speed, native tool use, and a 1M token context window.
 
-### [Gemini 2.0 Flash-Lite Deprecated](https://ai.google.dev/gemini-api/docs/models/gemini-2.0-flash-lite)
+### [Gemini 2.0 Flash-Lite Shut down](https://ai.google.dev/gemini-api/docs/models/gemini-2.0-flash-lite)
 
 Our fastest second generation model, optimized for cost efficiency and low latency.
 

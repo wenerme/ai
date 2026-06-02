@@ -28,8 +28,8 @@ OpenAI's high-definition text-to-speech model producing higher quality audio out
 
 ## Usage
 
-* [ TypeScript ](#tab-panel-1152)
-* [ cURL ](#tab-panel-1153)
+* [ TypeScript ](#tab-panel-1188)
+* [ cURL ](#tab-panel-1189)
 
 TypeScript
 
@@ -89,8 +89,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 ```
 
-* [ Output ](#tab-panel-1148)
-* [ Raw response ](#tab-panel-1149)
+* [ Output ](#tab-panel-1184)
+* [ Raw response ](#tab-panel-1185)
 
 ```
 
@@ -119,8 +119,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 **Storytelling**  — HD narration with the Fable voice 
 
-* [ TypeScript ](#tab-panel-1156)
-* [ cURL ](#tab-panel-1157)
+* [ TypeScript ](#tab-panel-1192)
+* [ cURL ](#tab-panel-1193)
 
 TypeScript
 
@@ -180,8 +180,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 ```
 
-* [ Output ](#tab-panel-1150)
-* [ Raw response ](#tab-panel-1151)
+* [ Output ](#tab-panel-1186)
+* [ Raw response ](#tab-panel-1187)
 
 ```
 
@@ -208,8 +208,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 **Podcast Style**  — Conversational podcast narration 
 
-* [ TypeScript ](#tab-panel-1160)
-* [ cURL ](#tab-panel-1161)
+* [ TypeScript ](#tab-panel-1196)
+* [ cURL ](#tab-panel-1197)
 
 TypeScript
 
@@ -258,7 +258,7 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
     "speed": 1,
 
-    "text": "So here's the thing about large language models — they're not actually thinking. They're predicting the next token based on patterns in their training data. But the results can be surprisingly coherent.",
+    "text": "So here'\''s the thing about large language models — they'\''re not actually thinking. They'\''re predicting the next token based on patterns in their training data. But the results can be surprisingly coherent.",
 
     "voice": "echo"
 
@@ -269,8 +269,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 ```
 
-* [ Output ](#tab-panel-1154)
-* [ Raw response ](#tab-panel-1155)
+* [ Output ](#tab-panel-1190)
+* [ Raw response ](#tab-panel-1191)
 
 ```
 
@@ -297,8 +297,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 **Shimmer Voice**  — Bright and expressive voice 
 
-* [ TypeScript ](#tab-panel-1162)
-* [ cURL ](#tab-panel-1163)
+* [ TypeScript ](#tab-panel-1198)
+* [ cURL ](#tab-panel-1199)
 
 TypeScript
 
@@ -358,8 +358,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 ```
 
-* [ Output ](#tab-panel-1158)
-* [ Raw response ](#tab-panel-1159)
+* [ Output ](#tab-panel-1194)
+* [ Raw response ](#tab-panel-1195)
 
 ```
 
@@ -386,8 +386,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 ## Parameters
 
-* [ Input ](#tab-panel-1164)
-* [ Output ](#tab-panel-1165)
+* [ Input ](#tab-panel-1200)
+* [ Output ](#tab-panel-1201)
 
 response\_format
 

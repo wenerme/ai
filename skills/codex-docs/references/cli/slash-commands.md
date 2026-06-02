@@ -55,7 +55,7 @@ completion still works before you queue the command.
 | [`/ps`](#check-background-terminals-with-ps)                                    | Show experimental background terminals and their recent output. | Check long-running commands without leaving the main transcript.                                           |
 | [`/stop`](#stop-background-terminals-with-stop)                                 | Stop all background terminals.                                  | Cancel background terminal work started by the current session.                                            |
 | [`/fork`](#fork-the-current-conversation-with-fork)                             | Fork the current conversation into a new thread.                | Branch the active session to explore a new approach without losing the current transcript.                 |
-| [`/side`](#start-a-side-conversation-with-side)                                 | Start an ephemeral side conversation.                           | Ask a focused follow-up without disrupting the main thread's transcript.                                   |
+| [`/side`, `/btw`](#start-a-side-conversation-with-side)                         | Start an ephemeral side conversation.                           | Ask a focused follow-up without disrupting the main thread's transcript.                                   |
 | [`/raw`](#toggle-raw-scrollback-with-raw)                                       | Toggle raw scrollback mode.                                     | Make terminal selection and copying less formatted while reviewing long output.                            |
 | [`/resume`](#resume-a-saved-conversation-with-resume)                           | Resume a saved conversation from your session list.             | Continue work from a previous CLI session without starting over.                                           |
 | [`/new`](#start-a-new-conversation-with-new)                                    | Start a new conversation inside the same CLI session.           | Reset the chat context without leaving the CLI when you want a fresh prompt in the same repo.              |
@@ -193,7 +193,9 @@ chat. Codex disables both actions while a task is in progress.
 
 1. Type `/permissions` and press Enter.
 2. Select the approval preset that matches your comfort level, for example
-   `Auto` for hands-off runs or `Read Only` to review edits.
+   `Auto` for hands-off runs or `Read Only` to review edits. When named
+   permission profiles are active, the picker also shows configured custom
+   profiles and their descriptions.
 
 Expected: Codex announces the updated policy. Future actions respect the
 updated approval mode until you change it again.
@@ -249,10 +251,12 @@ that directory for later commands that run in the sandbox.
 ### Inspect the session with `/status`
 
 1. In any conversation, type `/status`.
-2. Review the output for the active model, approval policy, writable roots, and current token usage.
+2. Review the output for the active model, approval policy, writable roots, and
+   current token usage. When the TUI connects remotely, the output also
+   shows the remote address and the server version.
 
-Expected: You see a summary like what `codex status` prints in the shell,
-confirming Codex is operating where you expect.
+Expected: Codex prints a summary confirming that it's operating where you
+expect.
 
 ### Inspect config layers with `/debug-config`
 

@@ -48,8 +48,8 @@ Terraform assumes that it has complete control over account and zone rulesets. I
 
 The following example configures a custom rule in the zone entry point ruleset for the `http_request_firewall_custom` phase for zone with ID `<ZONE_ID>`. The rule will block all traffic on non-standard HTTP(S) ports:
 
-* [ Terraform (v5) ](#tab-panel-8089)
-* [ Terraform (v4) ](#tab-panel-8090)
+* [ Terraform (v5) ](#tab-panel-10013)
+* [ Terraform (v4) ](#tab-panel-10014)
 
 Required API token permissions
 
@@ -137,8 +137,8 @@ The following example creates a [custom ruleset](https://developers.cloudflare.c
 
 The following configuration creates a custom ruleset with a single rule:
 
-* [ Terraform (v5) ](#tab-panel-8091)
-* [ Terraform (v4) ](#tab-panel-8092)
+* [ Terraform (v5) ](#tab-panel-10015)
+* [ Terraform (v4) ](#tab-panel-10016)
 
 Required API token permissions
 
@@ -218,8 +218,8 @@ To create another custom rule in the custom ruleset, add a new `rules` object to
   
 The following configuration deploys the custom ruleset at the account level. It defines a dependency on the `account_firewall_custom_ruleset` resource and uses the ID of the created custom ruleset in `action_parameters`:
 
-* [ Terraform (v5) ](#tab-panel-8087)
-* [ Terraform (v4) ](#tab-panel-8088)
+* [ Terraform (v5) ](#tab-panel-10011)
+* [ Terraform (v4) ](#tab-panel-10012)
 
 Required API token permissions
 

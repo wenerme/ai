@@ -46,7 +46,7 @@ List user actions and configuration changes within this organization.
 
     Return only events whose `effective_at` (Unix seconds) is less than or equal to this value.
 
-- `event_types: Optional[List[Literal["api_key.created", "api_key.updated", "api_key.deleted", 48 more]]]`
+- `event_types: Optional[List[Literal["api_key.created", "api_key.updated", "api_key.deleted", 54 more]]]`
 
   Return only events with a `type` in one of these values. For example, `project.created`. For all options, see the documentation for the [audit log object](https://platform.openai.com/docs/api-reference/audit-logs/object).
 
@@ -126,6 +126,18 @@ List user actions and configuration changes within this organization.
 
   - `"tunnel.deleted"`
 
+  - `"workload_identity_provider.created"`
+
+  - `"workload_identity_provider.updated"`
+
+  - `"workload_identity_provider.deleted"`
+
+  - `"workload_identity_provider_mapping.created"`
+
+  - `"workload_identity_provider_mapping.updated"`
+
+  - `"workload_identity_provider_mapping.deleted"`
+
   - `"role.created"`
 
   - `"role.updated"`
@@ -178,7 +190,7 @@ List user actions and configuration changes within this organization.
 
     The Unix timestamp (in seconds) of the event.
 
-  - `type: Literal["api_key.created", "api_key.updated", "api_key.deleted", 48 more]`
+  - `type: Literal["api_key.created", "api_key.updated", "api_key.deleted", 54 more]`
 
     The event type.
 
@@ -257,6 +269,18 @@ List user actions and configuration changes within this organization.
     - `"tunnel.updated"`
 
     - `"tunnel.deleted"`
+
+    - `"workload_identity_provider.created"`
+
+    - `"workload_identity_provider.updated"`
+
+    - `"workload_identity_provider.deleted"`
+
+    - `"workload_identity_provider_mapping.created"`
+
+    - `"workload_identity_provider_mapping.updated"`
+
+    - `"workload_identity_provider_mapping.deleted"`
 
     - `"role.created"`
 
@@ -1055,6 +1079,94 @@ List user actions and configuration changes within this organization.
       - `role: Optional[str]`
 
         The role of the user. Is either `owner` or `member`.
+
+  - `workload_identity_provider_mapping_created: Optional[WorkloadIdentityProviderMappingCreated]`
+
+    The details for events with this `type`.
+
+    - `id: Optional[str]`
+
+      The workload identity provider mapping ID.
+
+    - `data: Optional[object]`
+
+      The payload used to create the workload identity provider mapping.
+
+    - `identity_provider_id: Optional[str]`
+
+      The workload identity provider ID.
+
+  - `workload_identity_provider_mapping_deleted: Optional[WorkloadIdentityProviderMappingDeleted]`
+
+    The details for events with this `type`.
+
+    - `id: Optional[str]`
+
+      The workload identity provider mapping ID.
+
+    - `identity_provider_id: Optional[str]`
+
+      The workload identity provider ID.
+
+    - `project_id: Optional[str]`
+
+      The project ID.
+
+    - `service_account_id: Optional[str]`
+
+      The mapped service account ID.
+
+  - `workload_identity_provider_mapping_updated: Optional[WorkloadIdentityProviderMappingUpdated]`
+
+    The details for events with this `type`.
+
+    - `id: Optional[str]`
+
+      The workload identity provider mapping ID.
+
+    - `changes_requested: Optional[object]`
+
+      The payload used to update the workload identity provider mapping.
+
+    - `identity_provider_id: Optional[str]`
+
+      The workload identity provider ID.
+
+  - `workload_identity_provider_created: Optional[WorkloadIdentityProviderCreated]`
+
+    The details for events with this `type`.
+
+    - `id: Optional[str]`
+
+      The workload identity provider ID.
+
+    - `data: Optional[object]`
+
+      The payload used to create the workload identity provider.
+
+  - `workload_identity_provider_deleted: Optional[WorkloadIdentityProviderDeleted]`
+
+    The details for events with this `type`.
+
+    - `id: Optional[str]`
+
+      The workload identity provider ID.
+
+    - `name: Optional[str]`
+
+      The workload identity provider name.
+
+  - `workload_identity_provider_updated: Optional[WorkloadIdentityProviderUpdated]`
+
+    The details for events with this `type`.
+
+    - `id: Optional[str]`
+
+      The workload identity provider ID.
+
+    - `changes_requested: Optional[object]`
+
+      The payload used to update the workload identity provider.
 
 ### Example
 
@@ -1365,6 +1477,34 @@ print(page.id)
         "changes_requested": {
           "role": "role"
         }
+      },
+      "workload_identity_provider_mapping.created": {
+        "id": "id",
+        "data": {},
+        "identity_provider_id": "identity_provider_id"
+      },
+      "workload_identity_provider_mapping.deleted": {
+        "id": "id",
+        "identity_provider_id": "identity_provider_id",
+        "project_id": "project_id",
+        "service_account_id": "service_account_id"
+      },
+      "workload_identity_provider_mapping.updated": {
+        "id": "id",
+        "changes_requested": {},
+        "identity_provider_id": "identity_provider_id"
+      },
+      "workload_identity_provider.created": {
+        "id": "id",
+        "data": {}
+      },
+      "workload_identity_provider.deleted": {
+        "id": "id",
+        "name": "name"
+      },
+      "workload_identity_provider.updated": {
+        "id": "id",
+        "changes_requested": {}
       }
     }
   ],
@@ -1391,7 +1531,7 @@ print(page.id)
 
     The Unix timestamp (in seconds) of the event.
 
-  - `type: Literal["api_key.created", "api_key.updated", "api_key.deleted", 48 more]`
+  - `type: Literal["api_key.created", "api_key.updated", "api_key.deleted", 54 more]`
 
     The event type.
 
@@ -1470,6 +1610,18 @@ print(page.id)
     - `"tunnel.updated"`
 
     - `"tunnel.deleted"`
+
+    - `"workload_identity_provider.created"`
+
+    - `"workload_identity_provider.updated"`
+
+    - `"workload_identity_provider.deleted"`
+
+    - `"workload_identity_provider_mapping.created"`
+
+    - `"workload_identity_provider_mapping.updated"`
+
+    - `"workload_identity_provider_mapping.deleted"`
 
     - `"role.created"`
 
@@ -2268,3 +2420,91 @@ print(page.id)
       - `role: Optional[str]`
 
         The role of the user. Is either `owner` or `member`.
+
+  - `workload_identity_provider_mapping_created: Optional[WorkloadIdentityProviderMappingCreated]`
+
+    The details for events with this `type`.
+
+    - `id: Optional[str]`
+
+      The workload identity provider mapping ID.
+
+    - `data: Optional[object]`
+
+      The payload used to create the workload identity provider mapping.
+
+    - `identity_provider_id: Optional[str]`
+
+      The workload identity provider ID.
+
+  - `workload_identity_provider_mapping_deleted: Optional[WorkloadIdentityProviderMappingDeleted]`
+
+    The details for events with this `type`.
+
+    - `id: Optional[str]`
+
+      The workload identity provider mapping ID.
+
+    - `identity_provider_id: Optional[str]`
+
+      The workload identity provider ID.
+
+    - `project_id: Optional[str]`
+
+      The project ID.
+
+    - `service_account_id: Optional[str]`
+
+      The mapped service account ID.
+
+  - `workload_identity_provider_mapping_updated: Optional[WorkloadIdentityProviderMappingUpdated]`
+
+    The details for events with this `type`.
+
+    - `id: Optional[str]`
+
+      The workload identity provider mapping ID.
+
+    - `changes_requested: Optional[object]`
+
+      The payload used to update the workload identity provider mapping.
+
+    - `identity_provider_id: Optional[str]`
+
+      The workload identity provider ID.
+
+  - `workload_identity_provider_created: Optional[WorkloadIdentityProviderCreated]`
+
+    The details for events with this `type`.
+
+    - `id: Optional[str]`
+
+      The workload identity provider ID.
+
+    - `data: Optional[object]`
+
+      The payload used to create the workload identity provider.
+
+  - `workload_identity_provider_deleted: Optional[WorkloadIdentityProviderDeleted]`
+
+    The details for events with this `type`.
+
+    - `id: Optional[str]`
+
+      The workload identity provider ID.
+
+    - `name: Optional[str]`
+
+      The workload identity provider name.
+
+  - `workload_identity_provider_updated: Optional[WorkloadIdentityProviderUpdated]`
+
+    The details for events with this `type`.
+
+    - `id: Optional[str]`
+
+      The workload identity provider ID.
+
+    - `changes_requested: Optional[object]`
+
+      The payload used to update the workload identity provider.

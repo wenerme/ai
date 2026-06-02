@@ -45,8 +45,8 @@ Terraform assumes that it has complete control over account and zone rulesets. I
 
 This example creates a rate limiting rule in zone with ID `<ZONE_ID>` blocking traffic that exceeds the configured rate:
 
-* [ Terraform (v5) ](#tab-panel-8073)
-* [ Terraform (v4) ](#tab-panel-8074)
+* [ Terraform (v5) ](#tab-panel-9997)
+* [ Terraform (v4) ](#tab-panel-9998)
 
 Required API token permissions
 
@@ -160,8 +160,8 @@ Notes
 
 This example defines a [custom ruleset](https://developers.cloudflare.com/ruleset-engine/custom-rulesets/) with a single rate limiting rule in account with ID `<ACCOUNT_ID>` that blocks traffic for the `/api/` path exceeding the configured rate. The second `cloudflare_ruleset` resource defines an `execute` rule that deploys the custom ruleset for traffic addressed at `example.com`.
 
-* [ Terraform (v5) ](#tab-panel-8075)
-* [ Terraform (v4) ](#tab-panel-8076)
+* [ Terraform (v5) ](#tab-panel-9999)
+* [ Terraform (v4) ](#tab-panel-10000)
 
 Required API token permissions
 
@@ -352,8 +352,8 @@ This example creates a rate limiting rule in zone with ID `<ZONE_ID>` with:
 * A custom counting expression that includes a response field (`http.response.code`).
 * A custom JSON response for rate limited requests.
 
-* [ Terraform (v5) ](#tab-panel-8077)
-* [ Terraform (v4) ](#tab-panel-8078)
+* [ Terraform (v5) ](#tab-panel-10001)
+* [ Terraform (v4) ](#tab-panel-10002)
 
 Required API token permissions
 

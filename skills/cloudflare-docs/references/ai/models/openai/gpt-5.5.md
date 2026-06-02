@@ -29,8 +29,8 @@ GPT-5.5 is OpenAI's flagship model with strong coding, reasoning, and multimodal
 
 ## Usage
 
-* [ TypeScript ](#tab-panel-1012)
-* [ cURL ](#tab-panel-1013)
+* [ TypeScript ](#tab-panel-1048)
+* [ cURL ](#tab-panel-1049)
 
 TypeScript
 
@@ -53,7 +53,7 @@ Terminal window
 
 ```
 
-curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/v1/responses \
+curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/v1/chat/completions \
 
   --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
 
@@ -80,8 +80,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/v1/
 
 ```
 
-* [ Output ](#tab-panel-1022)
-* [ Raw response ](#tab-panel-1023)
+* [ Output ](#tab-panel-1058)
+* [ Raw response ](#tab-panel-1059)
 
 The **three laws of thermodynamics** are:
 
@@ -188,8 +188,8 @@ There is also a **Zeroth Law**, which says that if two systems are each in therm
 
 **With System Message**  — Using a system message to set context 
 
-* [ TypeScript ](#tab-panel-1014)
-* [ cURL ](#tab-panel-1015)
+* [ TypeScript ](#tab-panel-1050)
+* [ cURL ](#tab-panel-1051)
 
 TypeScript
 
@@ -222,7 +222,7 @@ Terminal window
 
 ```
 
-curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/v1/responses \
+curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/v1/chat/completions \
 
   --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
 
@@ -257,8 +257,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/v1/
 
 ```
 
-* [ Output ](#tab-panel-1024)
-* [ Raw response ](#tab-panel-1025)
+* [ Output ](#tab-panel-1060)
+* [ Raw response ](#tab-panel-1061)
 
 You can read a JSON file in Python using the built-in `json` module.
 
@@ -399,8 +399,8 @@ print(data["name"])
 
 **Multi-turn Conversation**  — Continuing a conversation with context 
 
-* [ TypeScript ](#tab-panel-1018)
-* [ cURL ](#tab-panel-1019)
+* [ TypeScript ](#tab-panel-1054)
+* [ cURL ](#tab-panel-1055)
 
 TypeScript
 
@@ -451,7 +451,7 @@ Terminal window
 
 ```
 
-curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/v1/responses \
+curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/v1/chat/completions \
 
   --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
 
@@ -475,7 +475,7 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/v1/
 
     {
 
-      "content": "I'd be happy to help! The drive is about 380 miles and takes roughly 5-6 hours. Would you like suggestions for scenic routes or interesting stops along the way?",
+      "content": "I'\''d be happy to help! The drive is about 380 miles and takes roughly 5-6 hours. Would you like suggestions for scenic routes or interesting stops along the way?",
 
       "role": "assistant"
 
@@ -496,8 +496,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/v1/
 
 ```
 
-* [ Output ](#tab-panel-1026)
-* [ Raw response ](#tab-panel-1027)
+* [ Output ](#tab-panel-1062)
+* [ Raw response ](#tab-panel-1063)
 
 Absolutely — the best stops depend on whether you take the **scenic coastal route** or the **faster inland route**.
 
@@ -627,8 +627,8 @@ Also, check current road conditions for **Highway 1 near Big Sur**, since closur
 
 **Creative Writing**  — Longer completion for creative output 
 
-* [ TypeScript ](#tab-panel-1016)
-* [ cURL ](#tab-panel-1017)
+* [ TypeScript ](#tab-panel-1052)
+* [ cURL ](#tab-panel-1053)
 
 TypeScript
 
@@ -667,7 +667,7 @@ Terminal window
 
 ```
 
-curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/v1/responses \
+curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/v1/chat/completions \
 
   --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
 
@@ -696,8 +696,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/v1/
 
 ```
 
-* [ Output ](#tab-panel-1028)
-* [ Raw response ](#tab-panel-1029)
+* [ Output ](#tab-panel-1064)
+* [ Raw response ](#tab-panel-1065)
 
 Detective Mara Venn found the clue inside the grandfather clock, though the clock had not worked in twenty years.
 
@@ -798,8 +798,8 @@ Inside the vial was a single human tooth, etched with three tiny words in gold:
 
 **Streaming Response**  — Enable streaming for real-time output 
 
-* [ TypeScript ](#tab-panel-1020)
-* [ cURL ](#tab-panel-1021)
+* [ TypeScript ](#tab-panel-1056)
+* [ cURL ](#tab-panel-1057)
 
 TypeScript
 
@@ -830,7 +830,7 @@ Terminal window
 
 ```
 
-curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/v1/responses \
+curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/v1/chat/completions \
 
   --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
 
@@ -865,8 +865,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/v1/
 
 ```
 
-* [ Output ](#tab-panel-1030)
-* [ Raw response ](#tab-panel-1031)
+* [ Output ](#tab-panel-1066)
+* [ Raw response ](#tab-panel-1067)
 
 Recursion is when a function solves a problem by calling itself with a smaller or simpler version of the same problem.
 
@@ -9593,8 +9593,8 @@ So, recursion is like breaking a problem into smaller versions of itself until r
 
 ## Parameters
 
-* [ Input ](#tab-panel-1032)
-* [ Output ](#tab-panel-1033)
+* [ Input ](#tab-panel-1068)
+* [ Output ](#tab-panel-1069)
 
 ▶audio{}
 

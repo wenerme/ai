@@ -1,5 +1,3 @@
-# Live API - WebSockets API reference
-
 <br />
 
 > [!WARNING]

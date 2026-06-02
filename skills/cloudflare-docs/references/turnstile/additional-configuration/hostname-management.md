@@ -71,8 +71,8 @@ Use a specific subdomain when you want to restrict the widget to a narrower scop
 
 ## Add hostnames
 
-* [ Dashboard ](#tab-panel-8107)
-* [ API ](#tab-panel-8108)
+* [ Dashboard ](#tab-panel-10069)
+* [ API ](#tab-panel-10070)
 
 Existing widget
 

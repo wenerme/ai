@@ -20,9 +20,9 @@ You can skip [rate limiting rules](https://developers.cloudflare.com/waf/rate-li
 
 For more information on the available options, refer to [Available skip options](https://developers.cloudflare.com/waf/custom-rules/skip/options/).
 
-* [  New dashboard ](#tab-panel-8244)
-* [ Old dashboard ](#tab-panel-8245)
-* [ API ](#tab-panel-8246)
+* [  New dashboard ](#tab-panel-10208)
+* [ Old dashboard ](#tab-panel-10209)
+* [ API ](#tab-panel-10210)
 
 1. In the Cloudflare dashboard, go to the **Security rules** page.  
 [ Go to **Security rules** ](https://dash.cloudflare.com/?to=/:account/:zone/security/security-rules)

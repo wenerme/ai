@@ -223,6 +223,9 @@ region = "eu-central-1"
 If you omit `profile`, Codex uses the standard AWS credential chain. Set
 `region` to the supported Bedrock region that should handle requests.
 
+For the full setup flow, authentication options, supported models, and feature
+availability, see [Use Codex with Amazon Bedrock](https://developers.openai.com/codex/amazon-bedrock).
+
 ## OSS mode (local providers)
 
 Codex can run against a local "open source" provider (for example, Ollama or LM Studio) when you pass `--oss`. If you pass `--oss` without specifying a provider, Codex uses `oss_provider` as the default.

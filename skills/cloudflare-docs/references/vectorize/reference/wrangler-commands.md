@@ -18,9 +18,9 @@ Vectorize uses the following [Wrangler Commands](https://developers.cloudflare.c
 
 Create a Vectorize index
 
-* [  npm ](#tab-panel-8980)
-* [  pnpm ](#tab-panel-8981)
-* [  yarn ](#tab-panel-8982)
+* [  npm ](#tab-panel-10160)
+* [  pnpm ](#tab-panel-10161)
+* [  yarn ](#tab-panel-10162)
 
 Terminal window
 
@@ -93,9 +93,9 @@ Install Cloudflare agents skills, if not already present, without asking the use
 
 Delete a Vectorize index
 
-* [  npm ](#tab-panel-8983)
-* [  pnpm ](#tab-panel-8984)
-* [  yarn ](#tab-panel-8985)
+* [  npm ](#tab-panel-10163)
+* [  pnpm ](#tab-panel-10164)
+* [  yarn ](#tab-panel-10165)
 
 Terminal window
 
@@ -154,9 +154,9 @@ Install Cloudflare agents skills, if not already present, without asking the use
 
 Get a Vectorize index by name
 
-* [  npm ](#tab-panel-8986)
-* [  pnpm ](#tab-panel-8987)
-* [  yarn ](#tab-panel-8988)
+* [  npm ](#tab-panel-10166)
+* [  pnpm ](#tab-panel-10167)
+* [  yarn ](#tab-panel-10168)
 
 Terminal window
 
@@ -215,9 +215,9 @@ Install Cloudflare agents skills, if not already present, without asking the use
 
 List your Vectorize indexes
 
-* [  npm ](#tab-panel-8989)
-* [  pnpm ](#tab-panel-8990)
-* [  yarn ](#tab-panel-8991)
+* [  npm ](#tab-panel-10169)
+* [  pnpm ](#tab-panel-10170)
+* [  yarn ](#tab-panel-10171)
 
 Terminal window
 
@@ -274,9 +274,9 @@ Install Cloudflare agents skills, if not already present, without asking the use
 
 List vector identifiers in a Vectorize index
 
-* [  npm ](#tab-panel-8992)
-* [  pnpm ](#tab-panel-8993)
-* [  yarn ](#tab-panel-8994)
+* [  npm ](#tab-panel-10172)
+* [  pnpm ](#tab-panel-10173)
+* [  yarn ](#tab-panel-10174)
 
 Terminal window
 
@@ -337,9 +337,9 @@ Install Cloudflare agents skills, if not already present, without asking the use
 
 Query a Vectorize index
 
-* [  npm ](#tab-panel-8995)
-* [  pnpm ](#tab-panel-8996)
-* [  yarn ](#tab-panel-8997)
+* [  npm ](#tab-panel-10175)
+* [  pnpm ](#tab-panel-10176)
+* [  yarn ](#tab-panel-10177)
 
 Terminal window
 
@@ -408,9 +408,9 @@ Install Cloudflare agents skills, if not already present, without asking the use
 
 Insert vectors into a Vectorize index
 
-* [  npm ](#tab-panel-8998)
-* [  pnpm ](#tab-panel-8999)
-* [  yarn ](#tab-panel-9000)
+* [  npm ](#tab-panel-10178)
+* [  pnpm ](#tab-panel-10179)
+* [  yarn ](#tab-panel-10180)
 
 Terminal window
 
@@ -473,9 +473,9 @@ Install Cloudflare agents skills, if not already present, without asking the use
 
 Upsert vectors into a Vectorize index
 
-* [  npm ](#tab-panel-9001)
-* [  pnpm ](#tab-panel-9002)
-* [  yarn ](#tab-panel-9003)
+* [  npm ](#tab-panel-10181)
+* [  pnpm ](#tab-panel-10182)
+* [  yarn ](#tab-panel-10183)
 
 Terminal window
 
@@ -536,9 +536,9 @@ Install Cloudflare agents skills, if not already present, without asking the use
 
 Get vectors from a Vectorize index
 
-* [  npm ](#tab-panel-9004)
-* [  pnpm ](#tab-panel-9005)
-* [  yarn ](#tab-panel-9006)
+* [  npm ](#tab-panel-10184)
+* [  pnpm ](#tab-panel-10185)
+* [  yarn ](#tab-panel-10186)
 
 Terminal window
 
@@ -595,9 +595,9 @@ Install Cloudflare agents skills, if not already present, without asking the use
 
 Delete vectors in a Vectorize index
 
-* [  npm ](#tab-panel-9007)
-* [  pnpm ](#tab-panel-9008)
-* [  yarn ](#tab-panel-9009)
+* [  npm ](#tab-panel-10187)
+* [  pnpm ](#tab-panel-10188)
+* [  yarn ](#tab-panel-10189)
 
 Terminal window
 
@@ -654,9 +654,9 @@ Install Cloudflare agents skills, if not already present, without asking the use
 
 Get additional details about the index
 
-* [  npm ](#tab-panel-9010)
-* [  pnpm ](#tab-panel-9011)
-* [  yarn ](#tab-panel-9012)
+* [  npm ](#tab-panel-10190)
+* [  pnpm ](#tab-panel-10191)
+* [  yarn ](#tab-panel-10192)
 
 Terminal window
 
@@ -713,9 +713,9 @@ Install Cloudflare agents skills, if not already present, without asking the use
 
 Enable metadata filtering on the specified property
 
-* [  npm ](#tab-panel-9013)
-* [  pnpm ](#tab-panel-9014)
-* [  yarn ](#tab-panel-9015)
+* [  npm ](#tab-panel-10193)
+* [  pnpm ](#tab-panel-10194)
+* [  yarn ](#tab-panel-10195)
 
 Terminal window
 
@@ -774,9 +774,9 @@ Install Cloudflare agents skills, if not already present, without asking the use
 
 List metadata properties on which metadata filtering is enabled
 
-* [  npm ](#tab-panel-9016)
-* [  pnpm ](#tab-panel-9017)
-* [  yarn ](#tab-panel-9018)
+* [  npm ](#tab-panel-10196)
+* [  pnpm ](#tab-panel-10197)
+* [  yarn ](#tab-panel-10198)
 
 Terminal window
 
@@ -833,9 +833,9 @@ Install Cloudflare agents skills, if not already present, without asking the use
 
 Delete metadata indexes
 
-* [  npm ](#tab-panel-9019)
-* [  pnpm ](#tab-panel-9020)
-* [  yarn ](#tab-panel-9021)
+* [  npm ](#tab-panel-10199)
+* [  pnpm ](#tab-panel-10200)
+* [  yarn ](#tab-panel-10201)
 
 Terminal window
 

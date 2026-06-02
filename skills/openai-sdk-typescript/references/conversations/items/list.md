@@ -62,7 +62,7 @@ List all items for a conversation with the given ID.
 
 ### Returns
 
-- `ConversationItem = Message | ResponseFunctionToolCallItem | ResponseFunctionToolCallOutputItem | 22 more`
+- `ConversationItem = Message | ResponseFunctionToolCallItem | ResponseFunctionToolCallOutputItem | 23 more`
 
   A single item within a conversation. The set of possible types are the same as the `output` type of a [Response object](https://platform.openai.com/docs/api-reference/responses/object#responses/object-output).
 
@@ -574,10 +574,6 @@ List all items for a conversation with the given ID.
 
         Action type "search" - Performs a web search query.
 
-        - `query: string`
-
-          [DEPRECATED] The search query.
-
         - `type: "search"`
 
           The action type.
@@ -587,6 +583,10 @@ List all items for a conversation with the given ID.
         - `queries?: Array<string>`
 
           The search queries.
+
+        - `query?: string`
+
+          The search query.
 
         - `sources?: Array<Source>`
 
@@ -2225,6 +2225,104 @@ List all items for a conversation with the given ID.
     - `created_by?: string`
 
       The identifier of the actor that created the item.
+
+  - `AdditionalTools`
+
+    - `id: string`
+
+      The unique ID of the additional tools item.
+
+    - `role: "unknown" | "user" | "assistant" | 5 more`
+
+      The role that provided the additional tools.
+
+      - `"unknown"`
+
+      - `"user"`
+
+      - `"assistant"`
+
+      - `"system"`
+
+      - `"critic"`
+
+      - `"discriminator"`
+
+      - `"developer"`
+
+      - `"tool"`
+
+    - `tools: Array<Tool>`
+
+      The additional tool definitions made available at this item.
+
+      - `FunctionTool`
+
+        Defines a function in your own code the model can choose to call. Learn more about [function calling](https://platform.openai.com/docs/guides/function-calling).
+
+      - `FileSearchTool`
+
+        A tool that searches for relevant content from uploaded files. Learn more about the [file search tool](https://platform.openai.com/docs/guides/tools-file-search).
+
+      - `ComputerTool`
+
+        A tool that controls a virtual computer. Learn more about the [computer tool](https://platform.openai.com/docs/guides/tools-computer-use).
+
+      - `ComputerUsePreviewTool`
+
+        A tool that controls a virtual computer. Learn more about the [computer tool](https://platform.openai.com/docs/guides/tools-computer-use).
+
+      - `WebSearchTool`
+
+        Search the Internet for sources related to the prompt. Learn more about the
+        [web search tool](https://platform.openai.com/docs/guides/tools-web-search).
+
+      - `Mcp`
+
+        Give the model access to additional tools via remote Model Context Protocol
+        (MCP) servers. [Learn more about MCP](https://platform.openai.com/docs/guides/tools-remote-mcp).
+
+      - `CodeInterpreter`
+
+        A tool that runs Python code to help generate a response to a prompt.
+
+      - `ImageGeneration`
+
+        A tool that generates images using the GPT image models.
+
+      - `LocalShell`
+
+        A tool that allows the model to execute shell commands in a local environment.
+
+      - `FunctionShellTool`
+
+        A tool that allows the model to execute shell commands.
+
+      - `CustomTool`
+
+        A custom tool that processes input using a specified format. Learn more about   [custom tools](https://platform.openai.com/docs/guides/function-calling#custom-tools)
+
+      - `NamespaceTool`
+
+        Groups function/custom tools under a shared namespace.
+
+      - `ToolSearchTool`
+
+        Hosted or BYOT tool search configuration for deferred tools.
+
+      - `WebSearchPreviewTool`
+
+        This tool searches the web for relevant results to use in a response. Learn more about the [web search tool](https://platform.openai.com/docs/guides/tools-web-search).
+
+      - `ApplyPatchTool`
+
+        Allows the assistant to create, delete, or update files using unified diffs.
+
+    - `type: "additional_tools"`
+
+      The type of the item. Always `additional_tools`.
+
+      - `"additional_tools"`
 
   - `ResponseReasoningItem`
 

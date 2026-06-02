@@ -28,8 +28,8 @@ If your server is behind a restrictive firewall, verify it can reach Cloudflare 
 
 To create a new Cloudflare Tunnel:
 
-* [ Dashboard ](#tab-panel-8141)
-* [ API ](#tab-panel-8142)
+* [ Dashboard ](#tab-panel-10065)
+* [ API ](#tab-panel-10066)
 
 1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Networking** \> **Tunnels**.  
 [ Go to **Tunnels** ](https://dash.cloudflare.com/?to=/:account/tunnels)
@@ -69,8 +69,8 @@ curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/cfd_tunnel" \
 
 To make an application accessible from the Internet, add a published application route to your tunnel. The tunnel route maps a public hostname to a local service.
 
-* [ Dashboard ](#tab-panel-8143)
-* [ API ](#tab-panel-8144)
+* [ Dashboard ](#tab-panel-10067)
+* [ API ](#tab-panel-10068)
 
 1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Networking** \> **Tunnels** and select your tunnel. [ Go to **Tunnels** ](https://dash.cloudflare.com/?to=/:account/tunnels)
 2. Under **Routes**, select **Add route**.
@@ -127,10 +127,10 @@ curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/dns_records" \
   }'  
 ```
 3. Install `cloudflared` on your server and run the tunnel using the `token` obtained in [Create a tunnel](https://developers.cloudflare.com/tunnel/setup/#create-a-tunnel):  
-   * [ Linux ](#tab-panel-8137)  
-   * [ Windows ](#tab-panel-8138)  
-   * [ macOS ](#tab-panel-8139)  
-   * [ Docker ](#tab-panel-8140)  
+   * [ Linux ](#tab-panel-10061)  
+   * [ Windows ](#tab-panel-10062)  
+   * [ macOS ](#tab-panel-10063)  
+   * [ Docker ](#tab-panel-10064)  
    1. [Download and install ↗](https://pkg.cloudflare.com/index.html) `cloudflared`.  
    2. Run the following command:  
    Terminal window  

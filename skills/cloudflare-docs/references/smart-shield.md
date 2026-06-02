@@ -21,7 +21,7 @@ Smart Shield includes [Smart Tiered Cache](https://developers.cloudflare.com/sma
 Depending on your [package tier](https://developers.cloudflare.com/smart-shield/get-started/#packages-and-availability), Smart Shield can also include:
 
 * [Argo Smart Routing](https://developers.cloudflare.com/smart-shield/configuration/argo/) — routes traffic through the fastest network paths to reduce latency.
-* [Regional Tiered Cache](https://developers.cloudflare.com/smart-shield/configuration/regional-tiered-cache/) — adds a regional cache layer between lower-tier and upper-tier data centers for geographic data locality.
+* [Regional Tiered Cache](https://developers.cloudflare.com/smart-shield/configuration/regional-tiered-cache/) — adds a regional cache layer between lower-tier and upper-tier data centers for geographic data locality (Enterprise plans, or Smart Shield Advanced).
 * [Cache Reserve](https://developers.cloudflare.com/smart-shield/configuration/cache-reserve/) — persistent cache storage that reduces cache misses for infrequently accessed content.
 * [Health Checks](https://developers.cloudflare.com/smart-shield/configuration/health-checks/) — monitors your origin server availability (Pro plans and above).
 * [Dedicated CDN Egress IPs](https://developers.cloudflare.com/smart-shield/configuration/dedicated-egress-ips/) — reserved IP addresses for origin allowlisting (Enterprise).

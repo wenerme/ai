@@ -28,8 +28,8 @@ Inworld's most powerful and expressive text-to-speech model. Builds on TTS 1.5 w
 
 ## Usage
 
-* [ TypeScript ](#tab-panel-718)
-* [ cURL ](#tab-panel-719)
+* [ TypeScript ](#tab-panel-736)
+* [ cURL ](#tab-panel-737)
 
 TypeScript
 
@@ -93,8 +93,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 ```
 
-* [ Output ](#tab-panel-714)
-* [ Raw response ](#tab-panel-715)
+* [ Output ](#tab-panel-732)
+* [ Raw response ](#tab-panel-733)
 
 ```
 
@@ -123,8 +123,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 **Natural Language Steering**  — Direct the voice with bracketed natural-language cues for emotion, pace, and style. 
 
-* [ TypeScript ](#tab-panel-722)
-* [ cURL ](#tab-panel-723)
+* [ TypeScript ](#tab-panel-740)
+* [ cURL ](#tab-panel-741)
 
 TypeScript
 
@@ -175,7 +175,7 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
     "temperature": 1,
 
-    "text": "[speak with excitement] I'm really excited about Inworld's new model. Have you tried out the steering capabilities? It's pretty cool!",
+    "text": "[speak with excitement] I'\''m really excited about Inworld'\''s new model. Have you tried out the steering capabilities? It'\''s pretty cool!",
 
     "timestamp_type": "none",
 
@@ -188,8 +188,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 ```
 
-* [ Output ](#tab-panel-716)
-* [ Raw response ](#tab-panel-717)
+* [ Output ](#tab-panel-734)
+* [ Raw response ](#tab-panel-735)
 
 ```
 
@@ -216,8 +216,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 **Whisper**  — Use steering tags to whisper 
 
-* [ TypeScript ](#tab-panel-726)
-* [ cURL ](#tab-panel-727)
+* [ TypeScript ](#tab-panel-744)
+* [ cURL ](#tab-panel-745)
 
 TypeScript
 
@@ -281,8 +281,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 ```
 
-* [ Output ](#tab-panel-720)
-* [ Raw response ](#tab-panel-721)
+* [ Output ](#tab-panel-738)
+* [ Raw response ](#tab-panel-739)
 
 ```
 
@@ -309,8 +309,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 **High Quality Audio**  — Higher sample rate for studio quality 
 
-* [ TypeScript ](#tab-panel-730)
-* [ cURL ](#tab-panel-731)
+* [ TypeScript ](#tab-panel-748)
+* [ cURL ](#tab-panel-749)
 
 TypeScript
 
@@ -378,8 +378,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 ```
 
-* [ Output ](#tab-panel-724)
-* [ Raw response ](#tab-panel-725)
+* [ Output ](#tab-panel-742)
+* [ Raw response ](#tab-panel-743)
 
 ```
 
@@ -406,8 +406,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 **With Text Normalization**  — Expand numbers and abbreviations before synthesis 
 
-* [ TypeScript ](#tab-panel-732)
-* [ cURL ](#tab-panel-733)
+* [ TypeScript ](#tab-panel-750)
+* [ cURL ](#tab-panel-751)
 
 TypeScript
 
@@ -475,8 +475,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 ```
 
-* [ Output ](#tab-panel-728)
-* [ Raw response ](#tab-panel-729)
+* [ Output ](#tab-panel-746)
+* [ Raw response ](#tab-panel-747)
 
 ```
 
@@ -503,8 +503,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 ## Parameters
 
-* [ Input ](#tab-panel-734)
-* [ Output ](#tab-panel-735)
+* [ Input ](#tab-panel-752)
+* [ Output ](#tab-panel-753)
 
 apply\_text\_normalization
 

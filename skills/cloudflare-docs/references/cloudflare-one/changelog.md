@@ -75,7 +75,6 @@ This release introduces the new Cloudflare One Client UI for Windows! You can ex
 
 **Known issues**
 
-* Registration authentication for devices via the integrated WebView2 browser is unavailable in this version as a temporary measure. As a result, the client will utilize the default browser on the device to complete the authentication process.
 * An error indicating that Microsoft Edge can't read and write to its data directory may be displayed during captive portal login; this error is benign and can be dismissed.
 * Registration may hang at "Checking your organization configuration" due to IPC errors. A system reboot should resolve the error, allowing registration to proceed.
 * Split tunnel list configuration is not available in the new UI. Management of Split Tunnel entries is currently only possible via `warp-cli tunnel ip` and `warp-cli tunnel host`. UI support will be added in a future release.
@@ -4681,8 +4680,8 @@ Zero Trust Dashboard will automatically accept your user-level preferences for s
 
 ![Zero Trust dashboard supports dark mode](https://developers.cloudflare.com/_astro/dark-mode.DfLeS20d_Z2kTwNR.webp) 
 
-* [ Zero Trust Dashboard ](#tab-panel-6104)
-* [ Core Dashboard ](#tab-panel-6105)
+* [ Zero Trust Dashboard ](#tab-panel-6328)
+* [ Core Dashboard ](#tab-panel-6329)
 
 To update your view preference in the Zero Trust dashboard:
 

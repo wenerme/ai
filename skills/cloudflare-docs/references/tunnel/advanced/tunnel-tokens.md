@@ -18,8 +18,8 @@ A remotely-managed tunnel only requires a token to run. Anyone with the token ca
 
 To get the token for a remotely-managed tunnel:
 
-* [ Dashboard ](#tab-panel-8785)
-* [ API ](#tab-panel-8786)
+* [ Dashboard ](#tab-panel-10039)
+* [ API ](#tab-panel-10040)
 
 1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Networking** \> **Tunnels**.  
 [ Go to **Tunnels** ](https://dash.cloudflare.com/?to=/:account/tunnels)

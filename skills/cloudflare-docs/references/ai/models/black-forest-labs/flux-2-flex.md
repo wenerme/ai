@@ -28,8 +28,8 @@ FLUX.2 \[flex\] is Black Forest Labs' fine-grained control variant of FLUX.2 —
 
 ## Usage
 
-* [ TypeScript ](#tab-panel-266)
-* [ cURL ](#tab-panel-267)
+* [ TypeScript ](#tab-panel-284)
+* [ cURL ](#tab-panel-285)
 
 TypeScript
 
@@ -46,12 +46,6 @@ const response = await env.AI.run(
       "Samsung Galaxy S25 Ultra product advertisement, 'Ultra-strong titanium' headline, close-up of phone edge showing titanium frame, dark gradient background, clean minimalist tech aesthetic",
 
   },
-
-  {
-
-    gateway: { id: 'default' },
-
-  }
 
 )
 
@@ -85,8 +79,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 ```
 
-* [ Output ](#tab-panel-264)
-* [ Raw response ](#tab-panel-265)
+* [ Output ](#tab-panel-282)
+* [ Raw response ](#tab-panel-283)
 
 ![Typography & Design](https://examples.aig.cloudflare.com/black-forest-labs/flux-2-flex/typography-design.jpeg) 
 
@@ -117,8 +111,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 **High Detail Generation**  — Crank steps and guidance for maximum detail when latency is not the priority 
 
-* [ TypeScript ](#tab-panel-272)
-* [ cURL ](#tab-panel-273)
+* [ TypeScript ](#tab-panel-288)
+* [ cURL ](#tab-panel-289)
 
 TypeScript
 
@@ -132,17 +126,11 @@ const response = await env.AI.run(
 
     prompt: 'A detailed oil painting portrait of a Renaissance nobleman with intricate lace collar',
 
-    steps: 50,
-
     guidance: 7.5,
 
+    steps: 50,
+
   },
-
-  {
-
-    gateway: { id: 'default' },
-
-  }
 
 )
 
@@ -167,9 +155,9 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
   "input": {
 
-    "guidance": 7.5,
-
     "prompt": "A detailed oil painting portrait of a Renaissance nobleman with intricate lace collar",
+
+    "guidance": 7.5,
 
     "steps": 50
 
@@ -180,8 +168,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 ```
 
-* [ Output ](#tab-panel-268)
-* [ Raw response ](#tab-panel-269)
+* [ Output ](#tab-panel-286)
+* [ Raw response ](#tab-panel-287)
 
 ![High Detail Generation](https://examples.aig.cloudflare.com/black-forest-labs/flux-2-flex/high-detail-generation.jpeg) 
 
@@ -210,8 +198,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 **Fast Draft**  — Fast draft with prompt upsampling disabled — preserves the literal prompt 
 
-* [ TypeScript ](#tab-panel-274)
-* [ cURL ](#tab-panel-275)
+* [ TypeScript ](#tab-panel-292)
+* [ cURL ](#tab-panel-293)
 
 TypeScript
 
@@ -221,21 +209,7 @@ const response = await env.AI.run(
 
   'black-forest-labs/flux-2-flex',
 
-  {
-
-    prompt: 'A simple line sketch of a mountain landscape',
-
-    steps: 10,
-
-    prompt_upsampling: false,
-
-  },
-
-  {
-
-    gateway: { id: 'default' },
-
-  }
+  { prompt: 'A simple line sketch of a mountain landscape', prompt_upsampling: false, steps: 10 },
 
 )
 
@@ -273,8 +247,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 ```
 
-* [ Output ](#tab-panel-270)
-* [ Raw response ](#tab-panel-271)
+* [ Output ](#tab-panel-290)
+* [ Raw response ](#tab-panel-291)
 
 ![Fast Draft](https://examples.aig.cloudflare.com/black-forest-labs/flux-2-flex/fast-draft.jpeg) 
 
@@ -303,8 +277,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 ## Parameters
 
-* [ Input ](#tab-panel-276)
-* [ Output ](#tab-panel-277)
+* [ Input ](#tab-panel-294)
+* [ Output ](#tab-panel-295)
 
 guidance
 

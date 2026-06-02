@@ -43,8 +43,8 @@ Available features vary according to your Cloudflare plan:
 
 To open Security Events for a given zone:
 
-* [  New dashboard ](#tab-panel-8950)
-* [ Old dashboard ](#tab-panel-8951)
+* [  New dashboard ](#tab-panel-10204)
+* [ Old dashboard ](#tab-panel-10205)
 
 1. In the Cloudflare dashboard, go to the **Analytics** page.  
 [ Go to **Analytics** ](https://dash.cloudflare.com/?to=/:account/:zone/security/analytics)

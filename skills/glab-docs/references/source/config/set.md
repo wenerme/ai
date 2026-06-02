@@ -9,9 +9,8 @@ Updates configuration with the value of a given key.
 
 ## Synopsis
 
-Update the configuration by setting a key to a value.
-Use 'glab config set --global' to set a global config.
-Specifying the '--host' flag also saves in the global configuration file.
+Use `glab config set --global` to write to the global configuration.
+Specifying the `--host` flag also saves to the global configuration file.
 
 ```plaintext
 glab config set <key> <value> [flags]

@@ -7,6 +7,13 @@ info: To determine the technical writer assigned to the Stage/Group associated w
 
 Deletes a single GPG key specified by the ID.
 
+## Synopsis
+
+Pass the ID of the key to delete as an argument. Find key IDs by
+running `glab gpg-key list --show-id`.
+
+This action is permanent and cannot be undone.
+
 ```plaintext
 glab gpg-key delete <key-id> [flags]
 ```

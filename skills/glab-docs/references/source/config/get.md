@@ -7,6 +7,15 @@ info: To determine the technical writer assigned to the Stage/Group associated w
 
 Prints the value of a given configuration key.
 
+## Synopsis
+
+By default, the lookup order is: environment variables, then the local
+repository configuration, then the global configuration. Use `--global` to
+read only from the global configuration file, or `--host` to read a
+per-host setting.
+
+If the key is not set, nothing is printed.
+
 ```plaintext
 glab config get <key> [flags]
 ```

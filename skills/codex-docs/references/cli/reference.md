@@ -86,15 +86,22 @@ export const globalFlagOptions = [
   },
   {
     key: "--remote",
-    type: "ws://host:port | wss://host:port",
+    type: "ws://host:port | wss://host:port | unix:// | unix://PATH",
     description:
-      "Connect the interactive TUI to a remote app-server WebSocket endpoint. Supported for `codex`, `codex resume`, and `codex fork`; other subcommands reject remote mode.",
+      "Connect the interactive TUI to a remote app-server endpoint over WebSocket or a Unix socket. Supported for `codex`, `codex resume`, and `codex fork`; other subcommands reject remote mode.",
   },
   {
     key: "--remote-auth-token-env",
     type: "ENV_VAR",
     description:
-      "Read a bearer token from this environment variable and send it when connecting with `--remote`. Requires `--remote`; tokens are only sent over `wss://` URLs or `ws://` URLs whose host is `localhost`, `127.0.0.1`, or `::1`.",
+      "Read a bearer token from this environment variable and send it when connecting with `--remote`. Requires `--remote`; tokens are only sent over `wss://` URLs or local-only `ws://` URLs.",
+  },
+  {
+    key: "--strict-config",
+    type: "boolean",
+    defaultValue: "false",
+    description:
+      "Error when `config.toml` contains fields this Codex version does not recognize. Supported by runtime commands such as `codex`, `exec`, `review`, `resume`, `fork`, `app-server`, `mcp-server`, and `exec-server`.",
   },
   {
     key: "--enable",
@@ -112,7 +119,7 @@ export const globalFlagOptions = [
     key: "--config, -c",
     type: "key=value",
     description:
-      "Override configuration values. Values parse as JSON if possible; otherwise the literal string is used.",
+      "Override configuration values. Values parse as TOML if possible; otherwise the literal string is used.",
   },
 ];
 
@@ -179,6 +186,13 @@ export const commandOverview = [
     type: "stable",
     description:
       "Generate shell completion scripts for Bash, Zsh, Fish, or PowerShell.",
+  },
+  {
+    key: "codex doctor",
+    href: "/codex/cli/reference#codex-doctor",
+    type: "stable",
+    description:
+      "Generate a diagnostic report for local installation, config, auth, runtime, Git, terminal, app-server, and thread inventory issues.",
   },
   {
     key: "codex features",
@@ -412,7 +426,13 @@ export const appServerOptions = [
     key: "--ws-token-file",
     type: "absolute path",
     description:
-      "File containing the shared capability token. Required with `--ws-auth capability-token`.",
+      "File containing the shared capability token. Use with `--ws-auth capability-token` unless you provide `--ws-token-sha256` instead.",
+  },
+  {
+    key: "--ws-token-sha256",
+    type: "hexadecimal SHA-256 digest",
+    description:
+      "Expected SHA-256 digest for capability-token authentication. Use instead of `--ws-token-file` when the client token comes from another source.",
   },
   {
     key: "--ws-shared-secret-file",
@@ -483,6 +503,40 @@ export const debugModelsOptions = [
   },
 ];
 
+export const doctorOptions = [
+  {
+    key: "--json",
+    type: "boolean",
+    defaultValue: "false",
+    description: "Emit a redacted machine-readable support report.",
+  },
+  {
+    key: "--summary",
+    type: "boolean",
+    defaultValue: "false",
+    description: "Show grouped check rows and the final count summary only.",
+  },
+  {
+    key: "--all",
+    type: "boolean",
+    defaultValue: "false",
+    description: "Expand long lists in the detailed human-readable report.",
+  },
+  {
+    key: "--no-color",
+    type: "boolean",
+    defaultValue: "false",
+    description: "Disable ANSI color in human-readable output.",
+  },
+  {
+    key: "--ascii",
+    type: "boolean",
+    defaultValue: "false",
+    description:
+      "Use ASCII status labels and separators in human-readable output.",
+  },
+];
+
 export const resumeOptions = [
   {
     key: "SESSION_ID",
@@ -517,13 +571,13 @@ export const featuresOptions = [
     key: "Enable subcommand",
     type: "codex features enable <feature>",
     description:
-      "Persistently enable a feature flag in the active config file. With `--profile profile-name`, writes to `$CODEX_HOME/profile-name.config.toml`.",
+      "Persistently enable a feature flag in `$CODEX_HOME/config.toml`.",
   },
   {
     key: "Disable subcommand",
     type: "codex features disable <feature>",
     description:
-      "Persistently disable a feature flag in the active config file. With `--profile profile-name`, writes to `$CODEX_HOME/profile-name.config.toml`.",
+      "Persistently disable a feature flag in `$CODEX_HOME/config.toml`.",
   },
 ];
 
@@ -643,6 +697,12 @@ export const applyOptions = [
 
 export const sandboxMacOptions = [
   {
+    key: "--profile, -p",
+    type: "NAME",
+    description:
+      "Layer `$CODEX_HOME/NAME.config.toml` on top of the base user config.",
+  },
+  {
     key: "--permissions-profile",
     type: "NAME",
     description:
@@ -690,6 +750,12 @@ export const sandboxMacOptions = [
 
 export const sandboxLinuxOptions = [
   {
+    key: "--profile, -p",
+    type: "NAME",
+    description:
+      "Layer `$CODEX_HOME/NAME.config.toml` on top of the base user config.",
+  },
+  {
     key: "--permissions-profile",
     type: "NAME",
     description:
@@ -723,6 +789,12 @@ export const sandboxLinuxOptions = [
 ];
 
 export const sandboxWindowsOptions = [
+  {
+    key: "--profile, -p",
+    type: "NAME",
+    description:
+      "Layer `$CODEX_HOME/NAME.config.toml` on top of the base user config.",
+  },
   {
     key: "--permissions-profile",
     type: "NAME",
@@ -873,6 +945,18 @@ export const mcpAddOptions = [
     description:
       "Environment variable whose value is sent as a bearer token when connecting to a streamable HTTP server.",
   },
+  {
+    key: "--oauth-client-id",
+    type: "CLIENT_ID",
+    description:
+      "OAuth client identifier for a streamable HTTP MCP server. Requires `--url`.",
+  },
+  {
+    key: "--oauth-resource",
+    type: "RESOURCE",
+    description:
+      "OAuth resource parameter to include during login for a streamable HTTP MCP server. Requires `--url`.",
+  },
 ];
 
 export const marketplaceCommands = [
@@ -911,8 +995,10 @@ The CLI inherits most defaults from <code>~/.codex/config.toml</code>. Any
 
 <ConfigTable client:load options={globalFlagOptions} />
 
-These options apply to the base `codex` command and propagate to each subcommand unless a section below specifies otherwise.
-When you run a subcommand, place global flags after it (for example, `codex exec --oss ...`) so Codex applies them as intended.
+These options apply to the base `codex` command. Most propagate to commands;
+see the notes above or the relevant command help for exceptions. For propagated
+flags, follow the relevant command help. For example, `codex exec --oss ...`
+applies `--oss` to `exec`.
 
 ## Command overview
 
@@ -933,7 +1019,7 @@ The Maturity column uses feature maturity labels such as Experimental, Beta,
 
 Running `codex` with no subcommand launches the interactive terminal UI (TUI). The agent accepts the global flags above plus image attachments. Web search defaults to cached mode; use `--search` to switch to live browsing. For low-friction local work, use `--sandbox workspace-write --ask-for-approval on-request`.
 
-Use `--remote ws://host:port` or `--remote wss://host:port` to connect the TUI to an app server started with `codex app-server --listen ws://IP:PORT`. Add `--remote-auth-token-env <ENV_VAR>` when the server requires a bearer token for WebSocket authentication.
+Use `--remote ws://host:port` or `--remote wss://host:port` to connect the TUI to an app server started with `codex app-server --listen ws://IP:PORT`. For a local Unix socket, use `--remote unix://` for the default socket or `--remote unix://PATH` for an explicit path. Add `--remote-auth-token-env <ENV_VAR>` when the server requires a bearer token for WebSocket authentication.
 
 ### `codex app-server`
 
@@ -1006,9 +1092,20 @@ Generate shell completion scripts and redirect the output to the appropriate loc
 
 <ConfigTable client:load options={completionOptions} />
 
+### `codex doctor`
+
+Generate a local diagnostic report before filing a support issue or
+while investigating a broken Codex installation. The report checks installation,
+configuration, authentication, runtime, Git, terminal, app-server, and thread
+inventory health.
+
+<ConfigTable client:load options={doctorOptions} />
+
 ### `codex features`
 
-Manage feature flags stored in `~/.codex/config.toml` or the selected profile file. The `enable` and `disable` commands persist changes so they apply to future sessions. When you launch with `--profile profile-name`, Codex writes to `$CODEX_HOME/profile-name.config.toml` instead of the base user config.
+Manage feature flags stored in `$CODEX_HOME/config.toml`. The `enable` and
+`disable` commands persist changes so they apply to future sessions. The
+`features` subcommand doesn't accept `--profile`.
 
 <ConfigTable client:load options={featuresOptions} />
 

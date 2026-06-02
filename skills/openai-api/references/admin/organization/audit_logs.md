@@ -44,7 +44,7 @@ List user actions and configuration changes within this organization.
 
     Return only events whose `effective_at` (Unix seconds) is less than or equal to this value.
 
-- `event_types: optional array of "api_key.created" or "api_key.updated" or "api_key.deleted" or 48 more`
+- `event_types: optional array of "api_key.created" or "api_key.updated" or "api_key.deleted" or 54 more`
 
   Return only events with a `type` in one of these values. For example, `project.created`. For all options, see the documentation for the [audit log object](/docs/api-reference/audit-logs/object).
 
@@ -124,6 +124,18 @@ List user actions and configuration changes within this organization.
 
   - `"tunnel.deleted"`
 
+  - `"workload_identity_provider.created"`
+
+  - `"workload_identity_provider.updated"`
+
+  - `"workload_identity_provider.deleted"`
+
+  - `"workload_identity_provider_mapping.created"`
+
+  - `"workload_identity_provider_mapping.updated"`
+
+  - `"workload_identity_provider_mapping.deleted"`
+
   - `"role.created"`
 
   - `"role.updated"`
@@ -164,7 +176,7 @@ List user actions and configuration changes within this organization.
 
 ### Returns
 
-- `data: array of object { id, effective_at, type, 49 more }`
+- `data: array of object { id, effective_at, type, 55 more }`
 
   - `id: string`
 
@@ -174,7 +186,7 @@ List user actions and configuration changes within this organization.
 
     The Unix timestamp (in seconds) of the event.
 
-  - `type: "api_key.created" or "api_key.updated" or "api_key.deleted" or 48 more`
+  - `type: "api_key.created" or "api_key.updated" or "api_key.deleted" or 54 more`
 
     The event type.
 
@@ -253,6 +265,18 @@ List user actions and configuration changes within this organization.
     - `"tunnel.updated"`
 
     - `"tunnel.deleted"`
+
+    - `"workload_identity_provider.created"`
+
+    - `"workload_identity_provider.updated"`
+
+    - `"workload_identity_provider.deleted"`
+
+    - `"workload_identity_provider_mapping.created"`
+
+    - `"workload_identity_provider_mapping.updated"`
+
+    - `"workload_identity_provider_mapping.deleted"`
 
     - `"role.created"`
 
@@ -1051,6 +1075,94 @@ List user actions and configuration changes within this organization.
       - `role: optional string`
 
         The role of the user. Is either `owner` or `member`.
+
+  - `"workload_identity_provider_mapping.created": optional object { id, data, identity_provider_id }`
+
+    The details for events with this `type`.
+
+    - `id: optional string`
+
+      The workload identity provider mapping ID.
+
+    - `data: optional unknown`
+
+      The payload used to create the workload identity provider mapping.
+
+    - `identity_provider_id: optional string`
+
+      The workload identity provider ID.
+
+  - `"workload_identity_provider_mapping.deleted": optional object { id, identity_provider_id, project_id, service_account_id }`
+
+    The details for events with this `type`.
+
+    - `id: optional string`
+
+      The workload identity provider mapping ID.
+
+    - `identity_provider_id: optional string`
+
+      The workload identity provider ID.
+
+    - `project_id: optional string`
+
+      The project ID.
+
+    - `service_account_id: optional string`
+
+      The mapped service account ID.
+
+  - `"workload_identity_provider_mapping.updated": optional object { id, changes_requested, identity_provider_id }`
+
+    The details for events with this `type`.
+
+    - `id: optional string`
+
+      The workload identity provider mapping ID.
+
+    - `changes_requested: optional unknown`
+
+      The payload used to update the workload identity provider mapping.
+
+    - `identity_provider_id: optional string`
+
+      The workload identity provider ID.
+
+  - `"workload_identity_provider.created": optional object { id, data }`
+
+    The details for events with this `type`.
+
+    - `id: optional string`
+
+      The workload identity provider ID.
+
+    - `data: optional unknown`
+
+      The payload used to create the workload identity provider.
+
+  - `"workload_identity_provider.deleted": optional object { id, name }`
+
+    The details for events with this `type`.
+
+    - `id: optional string`
+
+      The workload identity provider ID.
+
+    - `name: optional string`
+
+      The workload identity provider name.
+
+  - `"workload_identity_provider.updated": optional object { id, changes_requested }`
+
+    The details for events with this `type`.
+
+    - `id: optional string`
+
+      The workload identity provider ID.
+
+    - `changes_requested: optional unknown`
+
+      The payload used to update the workload identity provider.
 
 - `has_more: boolean`
 
@@ -1364,6 +1476,34 @@ curl https://api.openai.com/v1/organization/audit_logs \
         "changes_requested": {
           "role": "role"
         }
+      },
+      "workload_identity_provider_mapping.created": {
+        "id": "id",
+        "data": {},
+        "identity_provider_id": "identity_provider_id"
+      },
+      "workload_identity_provider_mapping.deleted": {
+        "id": "id",
+        "identity_provider_id": "identity_provider_id",
+        "project_id": "project_id",
+        "service_account_id": "service_account_id"
+      },
+      "workload_identity_provider_mapping.updated": {
+        "id": "id",
+        "changes_requested": {},
+        "identity_provider_id": "identity_provider_id"
+      },
+      "workload_identity_provider.created": {
+        "id": "id",
+        "data": {}
+      },
+      "workload_identity_provider.deleted": {
+        "id": "id",
+        "name": "name"
+      },
+      "workload_identity_provider.updated": {
+        "id": "id",
+        "changes_requested": {}
       }
     }
   ],
@@ -1450,7 +1590,7 @@ curl https://api.openai.com/v1/organization/audit_logs \
 
 ### Audit Log List Response
 
-- `AuditLogListResponse object { id, effective_at, type, 49 more }`
+- `AuditLogListResponse object { id, effective_at, type, 55 more }`
 
   A log of a user action or configuration change within this organization.
 
@@ -1462,7 +1602,7 @@ curl https://api.openai.com/v1/organization/audit_logs \
 
     The Unix timestamp (in seconds) of the event.
 
-  - `type: "api_key.created" or "api_key.updated" or "api_key.deleted" or 48 more`
+  - `type: "api_key.created" or "api_key.updated" or "api_key.deleted" or 54 more`
 
     The event type.
 
@@ -1541,6 +1681,18 @@ curl https://api.openai.com/v1/organization/audit_logs \
     - `"tunnel.updated"`
 
     - `"tunnel.deleted"`
+
+    - `"workload_identity_provider.created"`
+
+    - `"workload_identity_provider.updated"`
+
+    - `"workload_identity_provider.deleted"`
+
+    - `"workload_identity_provider_mapping.created"`
+
+    - `"workload_identity_provider_mapping.updated"`
+
+    - `"workload_identity_provider_mapping.deleted"`
 
     - `"role.created"`
 
@@ -2339,3 +2491,91 @@ curl https://api.openai.com/v1/organization/audit_logs \
       - `role: optional string`
 
         The role of the user. Is either `owner` or `member`.
+
+  - `"workload_identity_provider_mapping.created": optional object { id, data, identity_provider_id }`
+
+    The details for events with this `type`.
+
+    - `id: optional string`
+
+      The workload identity provider mapping ID.
+
+    - `data: optional unknown`
+
+      The payload used to create the workload identity provider mapping.
+
+    - `identity_provider_id: optional string`
+
+      The workload identity provider ID.
+
+  - `"workload_identity_provider_mapping.deleted": optional object { id, identity_provider_id, project_id, service_account_id }`
+
+    The details for events with this `type`.
+
+    - `id: optional string`
+
+      The workload identity provider mapping ID.
+
+    - `identity_provider_id: optional string`
+
+      The workload identity provider ID.
+
+    - `project_id: optional string`
+
+      The project ID.
+
+    - `service_account_id: optional string`
+
+      The mapped service account ID.
+
+  - `"workload_identity_provider_mapping.updated": optional object { id, changes_requested, identity_provider_id }`
+
+    The details for events with this `type`.
+
+    - `id: optional string`
+
+      The workload identity provider mapping ID.
+
+    - `changes_requested: optional unknown`
+
+      The payload used to update the workload identity provider mapping.
+
+    - `identity_provider_id: optional string`
+
+      The workload identity provider ID.
+
+  - `"workload_identity_provider.created": optional object { id, data }`
+
+    The details for events with this `type`.
+
+    - `id: optional string`
+
+      The workload identity provider ID.
+
+    - `data: optional unknown`
+
+      The payload used to create the workload identity provider.
+
+  - `"workload_identity_provider.deleted": optional object { id, name }`
+
+    The details for events with this `type`.
+
+    - `id: optional string`
+
+      The workload identity provider ID.
+
+    - `name: optional string`
+
+      The workload identity provider name.
+
+  - `"workload_identity_provider.updated": optional object { id, changes_requested }`
+
+    The details for events with this `type`.
+
+    - `id: optional string`
+
+      The workload identity provider ID.
+
+    - `changes_requested: optional unknown`
+
+      The payload used to update the workload identity provider.

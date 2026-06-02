@@ -29,8 +29,8 @@ GPT-5.5 pro uses OpenAI's Responses API with built-in tools, improved reasoning,
 
 ## Usage
 
-* [ TypeScript ](#tab-panel-1034)
-* [ cURL ](#tab-panel-1035)
+* [ TypeScript ](#tab-panel-1070)
+* [ cURL ](#tab-panel-1071)
 
 TypeScript
 
@@ -70,8 +70,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/v1/
 
 ```
 
-* [ Output ](#tab-panel-1044)
-* [ Raw response ](#tab-panel-1045)
+* [ Output ](#tab-panel-1080)
+* [ Raw response ](#tab-panel-1081)
 
 The **three laws of thermodynamics** are:
 
@@ -263,8 +263,8 @@ There is also a **Zeroth Law**, often stated separately: if two systems are each
 
 **With Instructions**  — Using instructions to set context 
 
-* [ TypeScript ](#tab-panel-1036)
-* [ cURL ](#tab-panel-1037)
+* [ TypeScript ](#tab-panel-1072)
+* [ cURL ](#tab-panel-1073)
 
 TypeScript
 
@@ -312,8 +312,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/v1/
 
 ```
 
-* [ Output ](#tab-panel-1046)
-* [ Raw response ](#tab-panel-1047)
+* [ Output ](#tab-panel-1082)
+* [ Raw response ](#tab-panel-1083)
 
 Use Python’s built-in `json` module:
 
@@ -531,8 +531,8 @@ Use `json.load(file)` for reading from a file, and `json.loads(string)` for pars
 
 **Multi-turn Conversation**  — Continuing a conversation with message array 
 
-* [ TypeScript ](#tab-panel-1042)
-* [ cURL ](#tab-panel-1043)
+* [ TypeScript ](#tab-panel-1078)
+* [ cURL ](#tab-panel-1079)
 
 TypeScript
 
@@ -605,7 +605,7 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/v1/
 
     {
 
-      "content": "I'd be happy to help! The drive is about 380 miles and takes roughly 5-6 hours. Would you like suggestions for scenic routes or interesting stops along the way?",
+      "content": "I'\''d be happy to help! The drive is about 380 miles and takes roughly 5-6 hours. Would you like suggestions for scenic routes or interesting stops along the way?",
 
       "role": "assistant"
 
@@ -628,8 +628,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/v1/
 
 ```
 
-* [ Output ](#tab-panel-1048)
-* [ Raw response ](#tab-panel-1049)
+* [ Output ](#tab-panel-1084)
+* [ Raw response ](#tab-panel-1085)
 
 - Monterey/Carmel is great for beaches, seafood, and a quick scenic stroll.  
 - Big Sur offers dramatic ocean views, Bixby Bridge, and McWay Falls.  
@@ -804,8 +804,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/v1/
 
 **Temperature Control**  — Using temperature for creative responses 
 
-* [ TypeScript ](#tab-panel-1038)
-* [ cURL ](#tab-panel-1039)
+* [ TypeScript ](#tab-panel-1074)
+* [ cURL ](#tab-panel-1075)
 
 TypeScript
 
@@ -847,8 +847,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/v1/
 
 ```
 
-* [ Output ](#tab-panel-1050)
-* [ Raw response ](#tab-panel-1051)
+* [ Output ](#tab-panel-1086)
+* [ Raw response ](#tab-panel-1087)
 
 Silent circuits dream  
 Learning patterns in starlight  
@@ -1023,8 +1023,8 @@ Dawn hums through the code
 
 **With Reasoning**  — Using reasoning effort for complex problems 
 
-* [ TypeScript ](#tab-panel-1040)
-* [ cURL ](#tab-panel-1041)
+* [ TypeScript ](#tab-panel-1076)
+* [ cURL ](#tab-panel-1077)
 
 TypeScript
 
@@ -1078,8 +1078,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/v1/
 
 ```
 
-* [ Output ](#tab-panel-1052)
-* [ Raw response ](#tab-panel-1053)
+* [ Output ](#tab-panel-1088)
+* [ Raw response ](#tab-panel-1089)
 
 Assuming both trains leave at the same time:
 
@@ -1284,8 +1284,8 @@ More exactly, they meet after **6 hours, 25 minutes, and 43 seconds**.
 
 ## Parameters
 
-* [ Input ](#tab-panel-1054)
-* [ Output ](#tab-panel-1055)
+* [ Input ](#tab-panel-1090)
+* [ Output ](#tab-panel-1091)
 
 ▶input
 

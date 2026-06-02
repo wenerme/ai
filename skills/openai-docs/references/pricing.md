@@ -117,7 +117,6 @@ import {
     }
   `}
 />
-
 <div className="pricing-switcher-layout">
   <div className="pricing-switcher-header pricing-section-heading">
     
@@ -300,7 +299,26 @@ Flagship models
 
 
 </div>
+<div className="pricing-subsection pricing-section-heading">
+  
 
+Amazon Bedrock pricing
+
+
+  <p>
+    Amazon Bedrock usage is billed through AWS and can differ from direct OpenAI
+    API pricing. If you plan to use OpenAI models in Bedrock, compare the AWS
+    pricing materials for that deployment path with the direct API pricing on
+    this page.
+  </p>
+  <p>
+    See 
+    <a href="/api/docs/guides/amazon-bedrock">
+      OpenAI models in Amazon Bedrock
+    </a> 
+    for availability and feature considerations.
+  </p>
+</div>
 <div className="pricing-switcher-layout">
   <div className="pricing-switcher-header pricing-section-heading">
     
@@ -310,7 +328,6 @@ Multimodal models
 
   </div>
 </div>
-
 <div className="pricing-subsection pricing-section-heading pricing-multimodal-subsection">
   
 
@@ -352,7 +369,6 @@ Image generation models
 
 
 </div>
-
 <div className="pricing-subsection pricing-switcher-layout pricing-multimodal-subsection">
   <div className="pricing-switcher-header pricing-section-heading">
     
@@ -376,7 +392,6 @@ Video generation models
 
 
 </div>
-
 <div className="pricing-subsection pricing-section-heading pricing-multimodal-subsection">
   
 
@@ -445,7 +460,6 @@ Tools
   style={{ marginTop: "16px" }}
   set:html={`Tokens used for built-in tools are billed at the chosen model's per-token rates. GB refers to binary gigabytes (also known as gibibytes), where 1 GB is 2^30 bytes. Web search content tokens are tokens retrieved from the search index and fed to the model alongside your prompt to generate an answer. For <code>gpt-4o-mini</code> and <code>gpt-4.1-mini</code> with the non-preview web search tool, search content tokens are billed as a fixed block of 8,000 input tokens per call. File search tool call pricing applies to the Responses API only. Container pricing includes <a href="/api/docs/guides/tools-shell#hosted-shell-quickstart">Hosted Shell</a> and <a href="/api/docs/guides/tools-code-interpreter">Code Interpreter</a>. Eligible container sessions are billed at the full 20-minute session rate. Responses API, Chat Completions API, Realtime API, Batch API, and Assistants API are not priced separately. Tokens are billed at the chosen model's input and output rates.`}
 />
-
 <div className="pricing-subsection pricing-switcher-layout">
   <div className="pricing-switcher-header pricing-section-heading">
     
@@ -506,7 +520,6 @@ Specialized models
 
 
 </div>
-
 <div className="pricing-subsection pricing-switcher-layout">
   <div className="pricing-switcher-header pricing-section-heading">
     

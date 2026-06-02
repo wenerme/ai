@@ -14,7 +14,7 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 Availability
 
-Available with Smart Shield Advanced.
+Included with Enterprise plans. Available to Free, Pro, and Business plans through Smart Shield Advanced.
 
 Regional Tiered Cache provides an additional layer of caching for customers who have a global traffic footprint and want to serve content faster by avoiding network latency when there is a cache `MISS` in a lower-tier, resulting in an upper-tier fetch in a data center located far away.
 

@@ -28,8 +28,8 @@ MiniMax Speech 2.8 HD focuses on studio-grade audio generation with emotion cont
 
 ## Usage
 
-* [ TypeScript ](#tab-panel-812)
-* [ cURL ](#tab-panel-813)
+* [ TypeScript ](#tab-panel-848)
+* [ cURL ](#tab-panel-849)
 
 TypeScript
 
@@ -97,8 +97,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 ```
 
-* [ Output ](#tab-panel-808)
-* [ Raw response ](#tab-panel-809)
+* [ Output ](#tab-panel-844)
+* [ Raw response ](#tab-panel-845)
 
 ```
 
@@ -127,8 +127,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 **Custom Voice**  — Use a specific voice and adjust speed 
 
-* [ TypeScript ](#tab-panel-816)
-* [ cURL ](#tab-panel-817)
+* [ TypeScript ](#tab-panel-852)
+* [ cURL ](#tab-panel-853)
 
 TypeScript
 
@@ -196,8 +196,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 ```
 
-* [ Output ](#tab-panel-810)
-* [ Raw response ](#tab-panel-811)
+* [ Output ](#tab-panel-846)
+* [ Raw response ](#tab-panel-847)
 
 ```
 
@@ -224,8 +224,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 **With Emotion**  — Apply emotional tone to speech 
 
-* [ TypeScript ](#tab-panel-820)
-* [ cURL ](#tab-panel-821)
+* [ TypeScript ](#tab-panel-856)
+* [ cURL ](#tab-panel-857)
 
 TypeScript
 
@@ -284,7 +284,7 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
     "speed": 1,
 
-    "text": "Congratulations! You've just won the grand prize! This is absolutely incredible news!",
+    "text": "Congratulations! You'\''ve just won the grand prize! This is absolutely incredible news!",
 
     "voice_id": "English_expressive_narrator",
 
@@ -297,8 +297,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 ```
 
-* [ Output ](#tab-panel-814)
-* [ Raw response ](#tab-panel-815)
+* [ Output ](#tab-panel-850)
+* [ Raw response ](#tab-panel-851)
 
 ```
 
@@ -325,8 +325,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 **High Sample Rate**  — Studio quality at 44.1kHz sample rate 
 
-* [ TypeScript ](#tab-panel-822)
-* [ cURL ](#tab-panel-823)
+* [ TypeScript ](#tab-panel-858)
+* [ cURL ](#tab-panel-859)
 
 TypeScript
 
@@ -398,8 +398,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 ```
 
-* [ Output ](#tab-panel-818)
-* [ Raw response ](#tab-panel-819)
+* [ Output ](#tab-panel-854)
+* [ Raw response ](#tab-panel-855)
 
 ```
 
@@ -426,8 +426,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 ## Parameters
 
-* [ Input ](#tab-panel-824)
-* [ Output ](#tab-panel-825)
+* [ Input ](#tab-panel-860)
+* [ Output ](#tab-panel-861)
 
 emotion
 

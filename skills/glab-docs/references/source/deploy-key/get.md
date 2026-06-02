@@ -7,6 +7,15 @@ info: To determine the technical writer assigned to the Stage/Group associated w
 
 Returns a single deploy key specified by the ID.
 
+## Synopsis
+
+Pass the ID of the key to return as an argument. Find key IDs by
+running `glab deploy-key list --show-id`. Use `--repo` to target a
+project other than the current one.
+
+By default, the command prints the key's title, public key, push access,
+and creation date. Use `--output json` to return the full key object.
+
 ```plaintext
 glab deploy-key get <key-id> [flags]
 ```

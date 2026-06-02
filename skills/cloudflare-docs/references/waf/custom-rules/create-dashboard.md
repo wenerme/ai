@@ -12,8 +12,8 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 # Create a custom rule in the dashboard
 
-* [  New dashboard ](#tab-panel-8242)
-* [ Old dashboard ](#tab-panel-8243)
+* [  New dashboard ](#tab-panel-10206)
+* [ Old dashboard ](#tab-panel-10207)
 
 1. In the Cloudflare dashboard, go to the **Security rules** page.  
 [ Go to **Security rules** ](https://dash.cloudflare.com/?to=/:account/:zone/security/security-rules)

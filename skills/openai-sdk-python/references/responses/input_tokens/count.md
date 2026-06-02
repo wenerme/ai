@@ -990,10 +990,6 @@ Returns an object with `object` set to `response.input_tokens` and an `input_tok
 
           Action type "search" - Performs a web search query.
 
-          - `query: str`
-
-            [DEPRECATED] The search query.
-
           - `type: Literal["search"]`
 
             The action type.
@@ -1003,6 +999,10 @@ Returns an object with `object` set to `response.input_tokens` and an `input_tok
           - `queries: Optional[List[str]]`
 
             The search queries.
+
+          - `query: Optional[str]`
+
+            The search query.
 
           - `sources: Optional[List[ActionSearchSource]]`
 
@@ -2268,6 +2268,90 @@ Returns an object with `object` set to `response.input_tokens` and an `input_tok
 
         - `"incomplete"`
 
+    - `class AdditionalTools: …`
+
+      - `role: Literal["developer"]`
+
+        The role that provided the additional tools. Only `developer` is supported.
+
+        - `"developer"`
+
+      - `tools: List[Tool]`
+
+        A list of additional tools made available at this item.
+
+        - `class FunctionTool: …`
+
+          Defines a function in your own code the model can choose to call. Learn more about [function calling](https://platform.openai.com/docs/guides/function-calling).
+
+        - `class FileSearchTool: …`
+
+          A tool that searches for relevant content from uploaded files. Learn more about the [file search tool](https://platform.openai.com/docs/guides/tools-file-search).
+
+        - `class ComputerTool: …`
+
+          A tool that controls a virtual computer. Learn more about the [computer tool](https://platform.openai.com/docs/guides/tools-computer-use).
+
+        - `class ComputerUsePreviewTool: …`
+
+          A tool that controls a virtual computer. Learn more about the [computer tool](https://platform.openai.com/docs/guides/tools-computer-use).
+
+        - `class WebSearchTool: …`
+
+          Search the Internet for sources related to the prompt. Learn more about the
+          [web search tool](https://platform.openai.com/docs/guides/tools-web-search).
+
+        - `class Mcp: …`
+
+          Give the model access to additional tools via remote Model Context Protocol
+          (MCP) servers. [Learn more about MCP](https://platform.openai.com/docs/guides/tools-remote-mcp).
+
+        - `class CodeInterpreter: …`
+
+          A tool that runs Python code to help generate a response to a prompt.
+
+        - `class ImageGeneration: …`
+
+          A tool that generates images using the GPT image models.
+
+        - `class LocalShell: …`
+
+          A tool that allows the model to execute shell commands in a local environment.
+
+        - `class FunctionShellTool: …`
+
+          A tool that allows the model to execute shell commands.
+
+        - `class CustomTool: …`
+
+          A custom tool that processes input using a specified format. Learn more about   [custom tools](https://platform.openai.com/docs/guides/function-calling#custom-tools)
+
+        - `class NamespaceTool: …`
+
+          Groups function/custom tools under a shared namespace.
+
+        - `class ToolSearchTool: …`
+
+          Hosted or BYOT tool search configuration for deferred tools.
+
+        - `class WebSearchPreviewTool: …`
+
+          This tool searches the web for relevant results to use in a response. Learn more about the [web search tool](https://platform.openai.com/docs/guides/tools-web-search).
+
+        - `class ApplyPatchTool: …`
+
+          Allows the assistant to create, delete, or update files using unified diffs.
+
+      - `type: Literal["additional_tools"]`
+
+        The item type. Always `additional_tools`.
+
+        - `"additional_tools"`
+
+      - `id: Optional[str]`
+
+        The unique ID of this additional tools item.
+
     - `class ResponseReasoningItem: …`
 
       A description of the chain of thought used by a reasoning model while generating
@@ -3022,6 +3106,20 @@ Returns an object with `object` set to `response.input_tokens` and an `input_tok
 - `parallel_tool_calls: Optional[bool]`
 
   Whether to allow the model to run tool calls in parallel.
+
+- `personality: Optional[Union[str, Literal["friendly", "pragmatic"]]]`
+
+  A model-owned style preset to apply to this request. Omit this parameter to use the model's default style. Supported values may expand over time. Values must be at most 64 characters.
+
+  - `str`
+
+  - `Literal["friendly", "pragmatic"]`
+
+    A model-owned style preset to apply to this request. Omit this parameter to use the model's default style. Supported values may expand over time. Values must be at most 64 characters.
+
+    - `"friendly"`
+
+    - `"pragmatic"`
 
 - `previous_response_id: Optional[str]`
 

@@ -7,6 +7,14 @@ info: To determine the technical writer assigned to the Stage/Group associated w
 
 Returns a single GPG key specified by the ID.
 
+## Synopsis
+
+Pass the ID of the key to return as an argument. Find key IDs by
+running `glab gpg-key list --show-id`.
+
+By default, the command prints the key's ID, public key, and creation date.
+Use `--output json` to return the full key object.
+
 ```plaintext
 glab gpg-key get <key-id> [flags]
 ```

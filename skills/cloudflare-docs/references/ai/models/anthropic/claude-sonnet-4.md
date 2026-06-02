@@ -29,8 +29,8 @@ Claude Sonnet 4 delivers superior coding and reasoning while responding more pre
 
 ## Usage
 
-* [ TypeScript ](#tab-panel-180)
-* [ cURL ](#tab-panel-181)
+* [ TypeScript ](#tab-panel-198)
+* [ cURL ](#tab-panel-199)
 
 TypeScript
 
@@ -88,8 +88,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/v1/
 
 ```
 
-* [ Output ](#tab-panel-184)
-* [ Raw response ](#tab-panel-185)
+* [ Output ](#tab-panel-202)
+* [ Raw response ](#tab-panel-203)
 
 The three laws of thermodynamics are fundamental principles that govern energy and heat:
 
@@ -165,8 +165,8 @@ The three laws of thermodynamics are fundamental principles that govern energy a
 
 **With System Message**  — Using a system message to set context 
 
-* [ TypeScript ](#tab-panel-182)
-* [ cURL ](#tab-panel-183)
+* [ TypeScript ](#tab-panel-200)
+* [ cURL ](#tab-panel-201)
 
 TypeScript
 
@@ -232,8 +232,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/v1/
 
 ```
 
-* [ Output ](#tab-panel-188)
-* [ Raw response ](#tab-panel-189)
+* [ Output ](#tab-panel-206)
+* [ Raw response ](#tab-panel-207)
 
 Here are several ways to read a JSON file in Python:
 
@@ -367,8 +367,8 @@ with open('example.json', 'r') as file:
 
 **Multi-turn Conversation**  — Continuing a conversation with context 
 
-* [ TypeScript ](#tab-panel-192)
-* [ cURL ](#tab-panel-193)
+* [ TypeScript ](#tab-panel-210)
+* [ cURL ](#tab-panel-211)
 
 TypeScript
 
@@ -443,7 +443,7 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/v1/
 
     {
 
-      "content": "I'd be happy to help! The drive is about 380 miles and takes roughly 5-6 hours. Would you like suggestions for scenic routes or interesting stops along the way?",
+      "content": "I'\''d be happy to help! The drive is about 380 miles and takes roughly 5-6 hours. Would you like suggestions for scenic routes or interesting stops along the way?",
 
       "role": "assistant"
 
@@ -464,8 +464,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/v1/
 
 ```
 
-* [ Output ](#tab-panel-194)
-* [ Raw response ](#tab-panel-195)
+* [ Output ](#tab-panel-212)
+* [ Raw response ](#tab-panel-213)
 
 Here are some great stops along the SF to LA route:
 
@@ -539,8 +539,8 @@ What type of experience are you looking for - scenic beauty, food, wine, or quic
 
 **Creative Writing**  — Higher temperature for creative output 
 
-* [ TypeScript ](#tab-panel-186)
-* [ cURL ](#tab-panel-187)
+* [ TypeScript ](#tab-panel-204)
+* [ cURL ](#tab-panel-205)
 
 TypeScript
 
@@ -612,8 +612,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/v1/
 
 ```
 
-* [ Output ](#tab-panel-196)
-* [ Raw response ](#tab-panel-197)
+* [ Output ](#tab-panel-214)
+* [ Raw response ](#tab-panel-215)
 
 Detective Sarah Chen crouched beside the mahogany desk, her latex gloves squeaking against the wood as she carefully lifted what appeared to be an ordinary paper clip. But this one was different—twisted into an intricate knot that seemed to defy the laws of physics, its metal curves flowing impossibly through themselves like a three-dimensional puzzle.
 
@@ -676,8 +676,8 @@ Sarah felt a chill run down her spine as she realized the paper clip was warm to
 
 **Streaming Response**  — Enable streaming for real-time output 
 
-* [ TypeScript ](#tab-panel-190)
-* [ cURL ](#tab-panel-191)
+* [ TypeScript ](#tab-panel-208)
+* [ cURL ](#tab-panel-209)
 
 TypeScript
 
@@ -739,8 +739,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/v1/
 
 ```
 
-* [ Output ](#tab-panel-198)
-* [ Raw response ](#tab-panel-199)
+* [ Output ](#tab-panel-216)
+* [ Raw response ](#tab-panel-217)
 
 # Recursion Explained
 
@@ -1173,8 +1173,8 @@ Think of **Russian nesting dolls**: To see what's inside, you open one doll, the
 
 ## Parameters
 
-* [ Input ](#tab-panel-200)
-* [ Output ](#tab-panel-201)
+* [ Input ](#tab-panel-218)
+* [ Output ](#tab-panel-219)
 
 max\_tokens
 
