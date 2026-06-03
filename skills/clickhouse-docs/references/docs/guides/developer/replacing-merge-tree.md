@@ -96,7 +96,9 @@ Consider the posts table above. We can use the normal method of loading this dat
 ```sql
 INSERT INTO stackoverflow.posts_updateable SELECT 0 AS Version, 0 AS Deleted, *
 FROM s3('https://datasets-documentation.s3.eu-west-3.amazonaws.com/stackoverflow/parquet/posts/*.parquet') WHERE AnswerCount > 0 LIMIT 10000
+```
 
+```response
 0 rows in set. Elapsed: 1.980 sec. Processed 8.19 thousand rows, 3.52 MB (4.14 thousand rows/s., 1.78 MB/s.)
 ```
 
@@ -104,7 +106,9 @@ Let's confirm the number of rows:
 
 ```sql
 SELECT count() FROM stackoverflow.posts_updateable
+```
 
+```response
 ┌─count()─┐
 │   10000 │
 └─────────┘
@@ -143,7 +147,9 @@ INSERT INTO posts_updateable SELECT
 FROM posts_updateable --select 100 random rows
 WHERE (Id % toInt32(floor(randUniform(1, 11)))) = 0
 LIMIT 5000
+```
 
+```response
 0 rows in set. Elapsed: 4.056 sec. Processed 1.42 million rows, 2.20 GB (349.63 thousand rows/s., 543.39 MB/s.)
 ```
 
@@ -178,7 +184,9 @@ INSERT INTO posts_updateable SELECT
 FROM posts_updateable --select 100 random rows
 WHERE (Id % toInt32(floor(randUniform(1, 11)))) = 0 AND AnswerCount > 0
 LIMIT 1000
+```
 
+```response
 0 rows in set. Elapsed: 0.166 sec. Processed 135.53 thousand rows, 212.65 MB (816.30 thousand rows/s., 1.28 GB/s.)
 ```
 
@@ -187,7 +195,9 @@ The result of the above operations will be 16,000 rows i.e. 10,000 + 5000 + 1000
 ```sql
 SELECT count()
 FROM posts_updateable
+```
 
+```response
 ┌─count()─┐
 │   10000 │
 └─────────┘
@@ -200,7 +210,9 @@ Your results will vary here depending on the merges that have occurred. We can s
 SELECT count()
 FROM posts_updateable
 FINAL
+```
 
+```response
 ┌─count()─┐
 │    9000 │
 └─────────┘
@@ -240,7 +252,9 @@ ORDER BY (PostTypeId, toDate(CreationDate), CreationDate, Id)
 
 INSERT INTO stackoverflow.posts_no_part SELECT 0 AS Version, 0 AS Deleted, *
 FROM s3('https://datasets-documentation.s3.eu-west-3.amazonaws.com/stackoverflow/parquet/posts/*.parquet')
+```
 
+```response
 0 rows in set. Elapsed: 182.895 sec. Processed 59.82 million rows, 38.07 GB (327.07 thousand rows/s., 208.17 MB/s.)
 ```
 
@@ -260,7 +274,9 @@ FROM posts_no_part
 FINAL
 GROUP BY year
 ORDER BY year ASC
+```
 
+```response
 ┌─year─┬─total_answers─┐
 │ 2008 │        371480 │
 ...
@@ -292,7 +308,9 @@ FROM posts_with_part
 FINAL
 GROUP BY year
 ORDER BY year ASC
+```
 
+```response
 ┌─year─┬─total_answers─┐
 │ 2008 │       387832  │
 │ 2009 │       1165506 │

@@ -48,7 +48,9 @@ column are scanned:
 
 ```sql
 SELECT * FROM skip_table WHERE my_value IN (125, 700)
+```
 
+```response
 ┌─my_key─┬─my_value─┐
 │ 512000 │      125 │
 │ 512001 │      125 │
@@ -76,7 +78,9 @@ Rerun the query with the newly created index:
 
 ```sql
 SELECT * FROM skip_table WHERE my_value IN (125, 700)
+```
 
+```response
 ┌─my_key─┬─my_value─┐
 │ 512000 │      125 │
 │ 512001 │      125 │

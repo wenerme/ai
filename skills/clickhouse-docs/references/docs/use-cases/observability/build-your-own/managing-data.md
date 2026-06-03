@@ -38,7 +38,9 @@ SELECT Timestamp::Date AS day,
 FROM otel_logs
 GROUP BY day
 ORDER BY c DESC
+```
 
+```response
 ┌────────day─┬───────c─┐
 │ 2019-01-22 │ 2333977 │
 │ 2019-01-23 │ 2326694 │
@@ -57,7 +59,9 @@ Current partitions can be found using a simple system table query:
 SELECT DISTINCT partition
 FROM system.parts
 WHERE `table` = 'otel_logs'
+```
 
+```response
 ┌─partition──┐
 │ 2019-01-22 │
 │ 2019-01-23 │
@@ -83,7 +87,9 @@ SELECT
 FROM otel_logs
 GROUP BY day
 ORDER BY c DESC
+```
 
+```response
 ┌────────day─┬───────c─┐
 │ 2019-01-22 │ 2333977 │
 │ 2019-01-23 │ 2326694 │
@@ -93,13 +99,17 @@ ORDER BY c DESC
 
 4 rows in set. Elapsed: 0.051 sec. Processed 8.38 million rows, 67.03 MB (163.52 million rows/s., 1.31 GB/s.)
 Peak memory usage: 4.40 MiB.
+```
 
+```sql
 SELECT Timestamp::Date AS day,
         count() AS c
 FROM otel_logs_archive
 GROUP BY day
 ORDER BY c DESC
+```
 
+```response
 ┌────────day─┬───────c─┐
 │ 2019-01-26 │ 1986456 │
 └────────────┴─────────┘
@@ -125,6 +135,9 @@ SELECT
 FROM otel_logs
 GROUP BY day
 ORDER BY c DESC
+```
+
+```response
 ┌────────day─┬───────c─┐
 │ 2019-01-22 │ 4667954 │
 │ 2019-01-23 │ 4653388 │
@@ -318,6 +331,9 @@ In the above example, we specify the default as the `size` key in `LogAttributes
 SELECT Size
 FROM otel_logs_v2
 LIMIT 5
+```
+
+```response
 ┌──Size─┐
 │ 30577 │
 │  5667 │
@@ -369,7 +385,9 @@ FROM merge('otel_logs_v[2|3]')
 GROUP BY Status
 ORDER BY c DESC
 LIMIT 5
+```
 
+```response
 ┌─Status─┬────────c─┐
 │   200  │ 38319300 │
 │   304  │  1360912 │
@@ -392,7 +410,9 @@ FROM otel_logs_merged
 GROUP BY Status
 ORDER BY c DESC
 LIMIT 5
+```
 
+```response
 ┌─Status─┬────────c─┐
 │   200  │ 38319300 │
 │   304  │  1360912 │
@@ -417,7 +437,9 @@ FROM otel_logs_merged
 GROUP BY Status
 ORDER BY c DESC
 LIMIT 5
+```
 
+```response
 ┌─Status─┬────────c─┐
 │   200  │ 39259996 │
 │   304  │  1378564 │

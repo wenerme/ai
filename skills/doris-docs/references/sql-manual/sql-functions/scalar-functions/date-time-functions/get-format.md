@@ -42,6 +42,7 @@ Returns a format string. The results for different arguments are shown in the ta
 If the second argument is not one of `'USA', 'JIS', 'ISO', 'EUR', 'INTERNAL'` or is NULL, the function returns NULL.
 
 ## Examples
+
 ```sql
 SELECT * FROM get_format_test
 ```

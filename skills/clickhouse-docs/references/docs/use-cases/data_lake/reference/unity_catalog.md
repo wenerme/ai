@@ -61,7 +61,9 @@ Now that the connection is in place, you can start querying via the Unity catalo
 USE unity;
 
 SHOW TABLES;
+```
 
+```response
 ┌─name───────────────────────────────────────────────┐
 │ clickbench.delta_hits                              │
 │ demo.fake_user                                     │
@@ -99,7 +101,9 @@ SHOW TABLES;
 
 ```sql
 SHOW TABLES
+```
 
+```response
 ┌─name───────────────┐
 │ uniform.delta_hits │
 └────────────────────┘

@@ -36,7 +36,9 @@ GROUP BY OwnerDisplayName
 HAVING count() > 10
 ORDER BY total_views DESC
 LIMIT 5
+```
 
+```response
 ┌─OwnerDisplayName─┬─total_views─┐
 │ Joan Venge       │    25520387 │
 │ Ray Vega         │    21576470 │
@@ -80,7 +82,9 @@ FROM posts
 GROUP BY tags
 ORDER BY views DESC
 LIMIT 5
+```
 
+```response
 ┌─tags───────┬──────views─┐
 │ javascript │ 8190916894 │
 │ python     │ 8175132834 │
@@ -140,6 +144,9 @@ WHERE PostTypeId = 'Question'
 GROUP BY Year
 ORDER BY Year ASC
 FORMAT Vertical
+```
+
+```response
 Row 1:
 ──────
 Year:                   2008
@@ -220,7 +227,9 @@ GROUP BY tag
 HAVING (count_2022 > 10000) AND (count_2023 > 10000)
 ORDER BY percent_change DESC
 LIMIT 5
+```
 
+```response
 ┌─tag─────────┬─count_2023─┬─count_2022─┬──────percent_change─┐
 │ next.js     │      13788 │      10520 │   31.06463878326996 │
 │ spring-boot │      16573 │      17721 │  -6.478189718413183 │

@@ -75,7 +75,9 @@ Partitioning in ClickHouse has similar applications as in Postgres but with some
 SELECT DISTINCT partition
 FROM system.parts
 WHERE `table` = 'posts'
+```
 
+```response
 ┌─partition─┐
 │ 2008      │
 │ 2009      │
@@ -97,10 +99,14 @@ WHERE `table` = 'posts'
 └───────────┘
 
 17 rows in set. Elapsed: 0.002 sec.
+```
 
+```sql
 ALTER TABLE posts
 (DROP PARTITION '2008')
+```
 
+```response
 Ok.
 
 0 rows in set. Elapsed: 0.103 sec.
@@ -132,7 +138,9 @@ For example, consider the following query:
 SELECT avg(Score)
 FROM comments
 WHERE UserId = 8592047
+```
 
+```response
    ┌──────────avg(Score)─┐
 1. │ 0.18181818181818182 │
    └─────────────────────┘
@@ -185,7 +193,9 @@ SELECT
         latest_fail_reason
 FROM system.mutations
 WHERE (`table` = 'comments') AND (command LIKE '%MATERIALIZE%')
+```
 
+```response
    ┌─parts_to_do─┬─is_done─┬─latest_fail_reason─┐
 1. │           1 │       0 │                    │
    └─────────────┴─────────┴────────────────────┘
@@ -199,7 +209,9 @@ If we repeat the above query, we can see performance has improved significantly 
 SELECT avg(Score)
 FROM comments
 WHERE UserId = 8592047
+```
 
+```response
    ┌──────────avg(Score)─┐
 1. │ 0.18181818181818182 │
    └─────────────────────┘
@@ -215,7 +227,9 @@ EXPLAIN indexes = 1
 SELECT avg(Score)
 FROM comments
 WHERE UserId = 8592047
+```
 
+```response
     ┌─explain─────────────────────────────────────────────┐
  1. │ Expression ((Projection + Before ORDER BY))         │
  2. │   Aggregating                                       │

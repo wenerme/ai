@@ -250,7 +250,9 @@ ORDER BY
     tempMax DESC,
     date ASC
 LIMIT 5
+```
 
+```response
 ┌─maxTemp─┬─location──────────┬─name───────────────────────────────────────────┬───────date─┐
 │    56.7 │ (-116.8667,36.45) │ CA GREENLAND RCH                               │ 1913-07-10 │
 │    56.7 │ (-115.4667,32.55) │ MEXICALI (SMN)                                 │ 1949-08-20 │
@@ -320,7 +322,9 @@ FROM
 )
 ORDER BY total_snow DESC
 LIMIT 5
+```
 
+```response
 ┌─resort_name──────────┬─total_snow_m─┬─resort_location─┬─month_year─┐
 │ Sugar Bowl, CA       │        7.799 │ (-120.3,39.27)  │     201902 │
 │ Donner Ski Ranch, CA │        7.799 │ (-120.34,39.31) │     201902 │

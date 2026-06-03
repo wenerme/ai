@@ -39,7 +39,9 @@ FROM icebergS3('https://datasets-documentation.s3.amazonaws.com/lake_formats/ice
 GROUP BY url
 ORDER BY cnt DESC
 LIMIT 5
+```
 
+```response
 ┌─url────────────────────────────────────────────────┬─────cnt─┐
 │ http://liver.ru/belgorod/page/1006.jки/доп_приборы │ 3288173 │ -- 3.29 million
 │ http://kinopoisk.ru                                │ 1625250 │ -- 1.63 million
@@ -117,7 +119,9 @@ FROM hits_iceberg
 GROUP BY url
 ORDER BY cnt DESC
 LIMIT 5
+```
 
+```response
 ┌─url────────────────────────────────────────────────┬─────cnt─┐
 │ http://liver.ru/belgorod/page/1006.jки/доп_приборы │ 3288173 │
 │ http://kinopoisk.ru                                │ 1625250 │
@@ -157,7 +161,9 @@ FROM deltaLake('https://datasets-documentation.s3.amazonaws.com/lake_formats/del
 GROUP BY URL
 ORDER BY cnt DESC
 LIMIT 5
+```
 
+```response
 ┌─URL────────────────────────────────────────────────┬─────cnt─┐
 │ http://liver.ru/belgorod/page/1006.jки/доп_приборы │ 3288173 │ -- 3.29 million
 │ http://kinopoisk.ru                                │ 1625250 │ -- 1.63 million
@@ -230,7 +236,9 @@ FROM hits_delta
 GROUP BY URL
 ORDER BY cnt DESC
 LIMIT 5
+```
 
+```response
 ┌─URL────────────────────────────────────────────────┬─────cnt─┐
 │ http://liver.ru/belgorod/page/1006.jки/доп_приборы │ 3288173 │
 │ http://kinopoisk.ru                                │ 1625250 │

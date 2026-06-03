@@ -53,6 +53,15 @@ import {
         grid-column: 1 / -1;
         grid-row: 2;
       }
+
+      .pricing-switcher-layout-with-notice .pricing-switcher-notice {
+        grid-column: 1 / -1;
+        grid-row: 2;
+      }
+
+      .pricing-switcher-layout-with-notice .content-switcher-panes {
+        grid-row: 3;
+      }
     }
 
     .pricing-section-heading .anchor-heading-wrapper {
@@ -138,7 +147,7 @@ Flagship models
         tier="standard"
         latestSectionLabel={null}
         allModelsFootnote={pricingHtml(
-          'Regional processing (data residency) endpoints are charged a 10% uplift for models released on or after March 5, 2026, that are eligible for data residency. See our <a href="/api/docs/guides/your-data">Your data</a> guide for supported regions and processing details.'
+          'Regional processing (data residency) endpoints are charged a 10% uplift for models released on or after March 5, 2026, that are eligible for data residency. See our <a href="/api/docs/guides/your-data">Your data</a> guide for supported regions and processing details. <a href="/api/docs/guides/amazon-bedrock">OpenAI models in Amazon Bedrock</a> are billed through AWS and may differ from direct OpenAI pricing.'
         )}
         rows={[
           ["gpt-5.5 (<272K context length)", 5, 0.5, 30],
@@ -298,26 +307,6 @@ Flagship models
     </div>
 
 
-</div>
-<div className="pricing-subsection pricing-section-heading">
-  
-
-Amazon Bedrock pricing
-
-
-  <p>
-    Amazon Bedrock usage is billed through AWS and can differ from direct OpenAI
-    API pricing. If you plan to use OpenAI models in Bedrock, compare the AWS
-    pricing materials for that deployment path with the direct API pricing on
-    this page.
-  </p>
-  <p>
-    See 
-    <a href="/api/docs/guides/amazon-bedrock">
-      OpenAI models in Amazon Bedrock
-    </a> 
-    for availability and feature considerations.
-  </p>
 </div>
 <div className="pricing-switcher-layout">
   <div className="pricing-switcher-header pricing-section-heading">
@@ -520,7 +509,7 @@ Specialized models
 
 
 </div>
-<div className="pricing-subsection pricing-switcher-layout">
+<div className="pricing-subsection pricing-switcher-layout pricing-switcher-layout-with-notice">
   <div className="pricing-switcher-header pricing-section-heading">
     
 
@@ -528,6 +517,8 @@ Finetuning
 
 
     <small className="pricing-switcher-meta">Prices per 1M tokens.</small>
+  </div>
+  <div className="pricing-switcher-notice">
     OpenAI is winding down the fine-tuning platform. The platform is no longer
       accessible to new users, but existing users of the fine-tuning platform
       will be able to create training jobs for the coming months.

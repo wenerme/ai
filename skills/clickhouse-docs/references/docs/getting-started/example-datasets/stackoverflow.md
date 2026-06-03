@@ -59,7 +59,9 @@ PARTITION BY toYear(CreationDate)
 ORDER BY (PostTypeId, toDate(CreationDate), CreationDate)
 
 INSERT INTO stackoverflow.posts SELECT * FROM s3('https://datasets-documentation.s3.eu-west-3.amazonaws.com/stackoverflow/parquet/posts/*.parquet')
+```
 
+```response
 0 rows in set. Elapsed: 265.466 sec. Processed 59.82 million rows, 38.07 GB (225.34 thousand rows/s., 143.42 MB/s.)
 ```
 
@@ -81,7 +83,9 @@ ENGINE = MergeTree
 ORDER BY (VoteTypeId, CreationDate, PostId, UserId)
 
 INSERT INTO stackoverflow.votes SELECT * FROM s3('https://datasets-documentation.s3.eu-west-3.amazonaws.com/stackoverflow/parquet/votes/*.parquet')
+```
 
+```response
 0 rows in set. Elapsed: 21.605 sec. Processed 238.98 million rows, 2.13 GB (11.06 million rows/s., 98.46 MB/s.)
 ```
 
@@ -104,7 +108,9 @@ ENGINE = MergeTree
 ORDER BY CreationDate
 
 INSERT INTO stackoverflow.comments SELECT * FROM s3('https://datasets-documentation.s3.eu-west-3.amazonaws.com/stackoverflow/parquet/comments/*.parquet')
+```
 
+```response
 0 rows in set. Elapsed: 56.593 sec. Processed 90.38 million rows, 11.14 GB (1.60 million rows/s., 196.78 MB/s.)
 ```
 
@@ -132,7 +138,9 @@ ENGINE = MergeTree
 ORDER BY (Id, CreationDate)
 
 INSERT INTO stackoverflow.users SELECT * FROM s3('https://datasets-documentation.s3.eu-west-3.amazonaws.com/stackoverflow/parquet/users.parquet')
+```
 
+```response
 0 rows in set. Elapsed: 10.988 sec. Processed 22.48 million rows, 1.36 GB (2.05 million rows/s., 124.10 MB/s.)
 ```
 
@@ -152,7 +160,9 @@ ENGINE = MergeTree
 ORDER BY UserId
 
 INSERT INTO stackoverflow.badges SELECT * FROM s3('https://datasets-documentation.s3.eu-west-3.amazonaws.com/stackoverflow/parquet/badges.parquet')
+```
 
+```response
 0 rows in set. Elapsed: 6.635 sec. Processed 51.29 million rows, 797.05 MB (7.73 million rows/s., 120.13 MB/s.)
 ```
 
@@ -171,7 +181,9 @@ ENGINE = MergeTree
 ORDER BY (PostId, RelatedPostId)
 
 INSERT INTO stackoverflow.postlinks SELECT * FROM s3('https://datasets-documentation.s3.eu-west-3.amazonaws.com/stackoverflow/parquet/postlinks.parquet')
+```
 
+```response
 0 rows in set. Elapsed: 1.534 sec. Processed 6.55 million rows, 129.70 MB (4.27 million rows/s., 84.57 MB/s.)
 ```
 
@@ -195,7 +207,9 @@ ENGINE = MergeTree
 ORDER BY (CreationDate, PostId)
 
 INSERT INTO stackoverflow.posthistory SELECT * FROM s3('https://datasets-documentation.s3.eu-west-3.amazonaws.com/stackoverflow/parquet/posthistory/*.parquet')
+```
 
+```response
 0 rows in set. Elapsed: 422.795 sec. Processed 160.79 million rows, 67.08 GB (380.30 thousand rows/s., 158.67 MB/s.)
 ```
 
@@ -270,7 +284,6 @@ A few simple questions to you get started.
 ### Most popular tags on Stack Overflow {#most-popular-tags-on-stack-overflow}
 
 ```sql
-
 SELECT
     arrayJoin(arrayFilter(t -> (t != ''), splitByChar('|', Tags))) AS Tags,
     count() AS c
@@ -278,7 +291,9 @@ FROM stackoverflow.posts
 GROUP BY Tags
 ORDER BY c DESC
 LIMIT 10
+```
 
+```response
 ┌─Tags───────┬───────c─┐
 │ javascript │ 2527130 │
 │ python     │ 2189638 │
@@ -309,7 +324,9 @@ FROM stackoverflow.posts WHERE OwnerDisplayName != '' AND PostTypeId='Answer' AN
 GROUP BY OwnerDisplayName
 ORDER BY c DESC
 LIMIT 5
+```
 
+```response
 ┌─UserId─┬─OwnerDisplayName─┬────c─┐
 │  22656 │ Jon Skeet        │ 2727 │
 │  23354 │ Marc Gravell     │ 2150 │
@@ -334,7 +351,9 @@ FROM stackoverflow.posts
 WHERE Title ILIKE '%ClickHouse%'
 ORDER BY ViewCount DESC
 LIMIT 10
+```
 
+```response
 ┌───────Id─┬─Title────────────────────────────────────────────────────────────────────────────┬─ViewCount─┬─AnswerCount─┐
 │ 52355143 │ Is it possible to delete old records from clickhouse table?                      │     41462 │           3 │
 │ 37954203 │ Clickhouse Data Import                                                           │     38735 │           3 │
@@ -375,7 +394,9 @@ INNER JOIN
 WHERE Title != ''
 ORDER BY Controversial_ratio ASC
 LIMIT 3
+```
 
+```response
 ┌───────Id─┬─Title─────────────────────────────────────────────┬─UpVotes─┬─DownVotes─┬─Controversial_ratio─┐
 │   583177 │ VB.NET Infinite For Loop                          │      12 │        12 │                   0 │
 │  9756797 │ Read console input as enumerable - one statement? │      16 │        16 │                   0 │

@@ -74,7 +74,9 @@ Let's write a query to see what data we've got:
 ```sql
 SELECT quantilesExact(0, 0.5, 0.75, 0.99)(number) AS quants
 FROM foo.randomNumbers
+```
 
+```response
 ┌─quants────────────────────────────────┐
 │ [69,2147776478,3221525118,4252096960] │
 └───────────────────────────────────────┘

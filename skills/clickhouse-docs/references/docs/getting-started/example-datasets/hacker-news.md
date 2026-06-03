@@ -473,7 +473,7 @@ even though they aren't in the data.
 
 Run the following command to view the inferred schema:
 
-```sql title="Query"
+```response title="Response"
 ┌─name────────┬─type───────────────────┬
 │ id          │ Nullable(Int64)        │
 │ deleted     │ Nullable(UInt8)        │
@@ -640,7 +640,7 @@ FROM hackernews
 WHERE hasToken(lower(comment), 'avx') AND hasToken(lower(comment), 'sve');
 ```
 
-```response
+```response title="Response"
 ┌─count()─┐
 │      22 │
 └─────────┘

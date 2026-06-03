@@ -83,7 +83,9 @@ FROM url(
     d String,
     e String'
 ) SETTINGS max_http_get_redirects=10;
+```
 
+```response
 30906560 rows in set. Elapsed: 59.852 sec. Processed 30.91 million rows, 5.41 GB (516.39 thousand rows/s., 90.40 MB/s.)
 Peak memory usage: 485.15 MiB.
 ```
@@ -127,7 +129,9 @@ SET allow_experimental_insert_into_iceberg = 1;
 INSERT INTO uk.uk_iceberg SELECT *
 FROM uk.uk_price_paid
 WHERE town = 'LONDON'
+```
 
+```response
 2346741 rows in set. Elapsed: 1.419 sec. Processed 30.91 million rows, 153.43 MB (21.78 million rows/s., 108.15 MB/s.)
 Peak memory usage: 371.60 MiB.
 ```
@@ -145,7 +149,9 @@ WHERE locality != ''
 GROUP BY locality
 ORDER BY count() DESC
 LIMIT 10
+```
 
+```response
 ┌─locality────┬─count()─┐
 │ LONDON      │  896796 │
 │ WALTHAMSTOW │    8610 │
@@ -188,7 +194,9 @@ INSERT INTO uk.uk_avg_town SELECT
     town
 FROM uk.uk_price_paid
 GROUP BY town
+```
 
+```response
 1173 rows in set. Elapsed: 0.480 sec. Processed 30.91 million rows, 185.44 MB (64.34 million rows/s., 386.05 MB/s.)
 Peak memory usage: 4.18 MiB.
 ```
@@ -204,7 +212,9 @@ SELECT
 FROM uk.uk_avg_town
 ORDER BY price DESC
 LIMIT 10
+```
 
+```response
 ┌─town───────────────┬──────────────price─┐
 │ GATWICK            │ 28232811.583333332 │
 │ THORNHILL          │             985000 │

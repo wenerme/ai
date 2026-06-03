@@ -28,7 +28,9 @@ For example, you can create an array of numbers:
 
 ```sql
 SELECT array(1, 2, 3) AS numeric_array
+```
 
+```response
 ┌─numeric_array─┐
 │ [1,2,3]       │
 └───────────────┘
@@ -38,7 +40,9 @@ Or an array of strings:
 
 ```sql
 SELECT array('hello', 'world') AS string_array
+```
 
+```response
 ┌─string_array──────┐
 │ ['hello','world'] │
 └───────────────────┘
@@ -48,7 +52,9 @@ Or an array of nested types such as [tuples](/sql-reference/data-types/tuple):
 
 ```sql
 SELECT array(tuple(1, 2), tuple(3, 4))
+```
 
+```response
 ┌─[(1, 2), (3, 4)]─┐
 │ [(1,2),(3,4)]    │
 └──────────────────┘
@@ -73,7 +79,9 @@ For example, if you create an array of integers and floats, a super-type of floa
 
 ```sql
 SELECT [1::UInt8, 2.5::Float32, 3::UInt8] AS mixed_array, toTypeName([1, 2.5, 3]) AS array_type;
+```
 
+```response
 ┌─mixed_array─┬─array_type─────┐
 │ [1,2.5,3]   │ Array(Float64) │
 └─────────────┴────────────────┘
@@ -125,7 +133,9 @@ For example, given an array, you can select the first element of an array by wri
 ```sql
 WITH array('hello', 'world') AS string_array
 SELECT string_array[1];
+```
 
+```response
 ┌─arrayElement⋯g_array, 1)─┐
 │ hello                    │
 └──────────────────────────┘
@@ -137,7 +147,9 @@ In this way, you can select elements relative to the last element:
 ```sql
 WITH array('hello', 'world') AS string_array
 SELECT string_array[-1];
+```
 
+```response
 ┌─arrayElement⋯g_array, -1)─┐
 │ world                     │
 └───────────────────────────┘
@@ -150,7 +162,9 @@ In the example below, an empty string is returned as this is the default value f
 ```sql
 WITH ['hello', 'world', 'arrays are great aren\'t they?'] AS string_array
 SELECT string_array[0]
+```
 
+```response
 ┌─arrayElement⋯g_array, 0)─┐
 │                          │
 └──────────────────────────┘
@@ -168,7 +182,9 @@ The `length` function is used to return the number of elements in the array:
 ```sql
 WITH array('learning', 'ClickHouse', 'arrays') AS string_array
 SELECT length(string_array);
+```
 
+```response
 ┌─length(string_array)─┐
 │                    3 │
 └──────────────────────┘
@@ -179,7 +195,9 @@ You can also use the [`arrayEnumerate`](/sql-reference/functions/array-functions
 ```sql
 WITH array('learning', 'ClickHouse', 'arrays') AS string_array
 SELECT arrayEnumerate(string_array);
+```
 
+```response
 ┌─arrayEnumerate(string_array)─┐
 │ [1,2,3]                      │
 └──────────────────────────────┘
@@ -189,7 +207,9 @@ If you want to find the index of a particular value, you can use the `indexOf` f
 
 ```sql
 SELECT indexOf([4, 2, 8, 8, 9], 8);
+```
 
+```response
 ┌─indexOf([4, 2, 8, 8, 9], 8)─┐
 │                           3 │
 └─────────────────────────────┘

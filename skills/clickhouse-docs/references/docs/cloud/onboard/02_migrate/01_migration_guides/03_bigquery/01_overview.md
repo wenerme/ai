@@ -199,6 +199,9 @@ FROM
     UNION ALL
     SELECT 3
 )
+```
+
+```response
    ┌─new_array─┐
 1. │ [1,2,3]   │
    └───────────┘
@@ -277,7 +280,9 @@ _ClickHouse_
 
 ```sql
 SELECT arrayMap(x -> (toDate('2016-10-05') + x), range(toUInt32((toDate('2016-10-08') - toDate('2016-10-05')) + 1))) AS example
+```
 
+```response
    ┌─example───────────────────────────────────────────────┐
 1. │ ['2016-10-05','2016-10-06','2016-10-07','2016-10-08'] │
    └───────────────────────────────────────────────────────┘
@@ -306,7 +311,9 @@ _ClickHouse_
 
 ```sql
 SELECT arrayMap(x -> (toDateTime('2016-10-05 00:00:00') + toIntervalDay(x)), range(dateDiff('day', toDateTime('2016-10-05 00:00:00'), toDateTime('2016-10-07 00:00:00')) + 1)) AS timestamp_array
+```
 
+```response
 Query id: b324c11f-655b-479f-9337-f4d34fd02190
 
    ┌─timestamp_array─────────────────────────────────────────────────────┐
@@ -355,6 +362,9 @@ WITH Sequences AS
     )
 SELECT arrayMap(x -> (x * 2), arrayFilter(x -> (x < 5), some_numbers)) AS doubled_less_than_five
 FROM Sequences;
+```
+
+```response
    ┌─doubled_less_than_five─┐
 1. │ [0,2,2,4,6]            │
    └────────────────────────┘
@@ -414,6 +424,9 @@ WITH Combinations AS
     )
 SELECT arrayZip(letters, arrayResize(numbers, length(letters))) AS pairs
 FROM Combinations;
+```
+
+```response
    ┌─pairs─────────────┐
 1. │ [('a',1),('b',2)] │
    └───────────────────┘
@@ -461,6 +474,9 @@ SELECT
     some_numbers,
     arraySum(some_numbers) AS sums
 FROM Sequences;
+```
+
+```response
    ┌─some_numbers──┬─sums─┐
 1. │ [0,1,1,2,3,5] │   12 │
    └───────────────┴──────┘

@@ -35,7 +35,9 @@ The goal of a parser is to transform the query text into an AST (Abstract Syntax
 
 ```sql
 EXPLAIN AST SELECT min(timestamp), max(timestamp) FROM session_events;
+```
 
+```response
 ┌─explain────────────────────────────────────────────┐
 │ SelectWithUnionQuery (children 1)                  │
 │  ExpressionList (children 1)                       │
@@ -70,7 +72,9 @@ The analyzer is an important step of the query execution. It takes an AST and tr
 
 ```sql
 EXPLAIN QUERY TREE passes=0 SELECT min(timestamp) AS minimum_date, max(timestamp) AS maximum_date FROM session_events SETTINGS allow_experimental_analyzer=1;
+```
 
+```response
 ┌─explain────────────────────────────────────────────────────────────────────────────────┐
 │ QUERY id: 0                                                                            │
 │   PROJECTION                                                                           │
@@ -91,7 +95,9 @@ EXPLAIN QUERY TREE passes=0 SELECT min(timestamp) AS minimum_date, max(timestamp
 
 ```sql
 EXPLAIN QUERY TREE passes=20 SELECT min(timestamp) AS minimum_date, max(timestamp) AS maximum_date FROM session_events SETTINGS allow_experimental_analyzer=1;
+```
 
+```response
 ┌─explain───────────────────────────────────────────────────────────────────────────────────┐
 │ QUERY id: 0                                                                               │
 │   PROJECTION COLUMNS                                                                      │
@@ -126,7 +132,9 @@ EXPLAIN PLAN WITH
        FROM session_events
    ) AS total_rows
 SELECT type, min(timestamp) AS minimum_date, max(timestamp) AS maximum_date, count(*) /total_rows * 100 AS percentage FROM session_events GROUP BY type
+```
 
+```response
 ┌─explain──────────────────────────────────────────┐
 │ Expression ((Projection + Before ORDER BY))      │
 │   Aggregating                                    │
@@ -150,7 +158,9 @@ SELECT
    (count(*) / total_rows) * 100 AS percentage
 FROM session_events
 GROUP BY type
+```
 
+```response
 ┌─explain──────────────────────────────────────────┐
 │ Expression ((Projection + Before ORDER BY))      │
 │ Header: type String                              │
@@ -186,7 +196,9 @@ SELECT
    (count(*) / total_rows) * 100 AS percentage
 FROM session_events
 GROUP BY type
+```
 
+```response
 ┌─explain────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────┐
 │ Expression ((Projection + Before ORDER BY))                                                                                                │
 │ Actions: INPUT :: 0 -> type String : 0                                                                                                     │
@@ -244,7 +256,9 @@ SELECT
    (count(*) / total_rows) * 100 AS percentage
 FROM session_events
 GROUP BY type;
+```
 
+```response
 ┌─explain────────────────────────────────────────────────────────────────────┐
 │ (Expression)                                                               │
 │ ExpressionTransform × 2                                                    │

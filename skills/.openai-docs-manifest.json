@@ -1162,10 +1162,10 @@
   "openai-docs/pricing.md": {
     "url": "https://developers.openai.com/api/docs/pricing.md",
     "skill": "openai-docs",
-    "etag": "W/\"111d8f832d58508f5cb8fb077e979f2b\"",
-    "lastModified": "Wed, 03 Jun 2026 00:40:18 GMT",
-    "size": 18092,
-    "updatedAt": "2026-06-03T00:45:37.908Z"
+    "etag": "W/\"26d4bee2d0c009506af5a28099d6a788\"",
+    "lastModified": "Wed, 03 Jun 2026 11:43:37 GMT",
+    "size": 18025,
+    "updatedAt": "2026-06-03T11:43:37.296Z"
   },
   "openai-docs/quickstart.md": {
     "url": "https://developers.openai.com/api/docs/quickstart.md",

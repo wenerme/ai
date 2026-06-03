@@ -60,7 +60,9 @@ SELECT _part
 FROM uk.uk_price_paid_simple
 GROUP BY _part
 ORDER BY _part ASC;
+```
 
+```response
    ┌─_part───────┐
 1. │ all_0_5_1   │
 2. │ all_12_17_1 │
@@ -80,7 +82,9 @@ SELECT
 FROM system.parts
 WHERE (database = 'uk') AND (`table` = 'uk_price_paid_simple') AND active
 ORDER BY name ASC;
+```
 
+```response
    ┌─name────────┬─level─┬────rows─┐
 1. │ all_0_5_1   │     1 │ 6368414 │
 2. │ all_12_17_1 │     1 │ 6442494 │

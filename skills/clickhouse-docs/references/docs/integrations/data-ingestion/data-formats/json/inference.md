@@ -114,7 +114,9 @@ ORDER BY
     year ASC,
  c DESC
 LIMIT 1 BY year
+```
 
+```response
 ┌─year─┬─authors────────────────────────────────────┬───c─┐
 │ 2007 │ The BABAR Collaboration, B. Aubert, et al  │  98 │
 │ 2008 │ The OPAL collaboration, G. Abbiendi, et al │  59 │
@@ -224,7 +226,9 @@ The previous commands created a table to which data can be loaded. You can now i
 ```sql
 INSERT INTO arxiv SELECT *
 FROM s3('https://datasets-documentation.s3.eu-west-3.amazonaws.com/arxiv/arxiv.json.gz')
+```
 
+```response
 0 rows in set. Elapsed: 38.498 sec. Processed 2.52 million rows, 1.39 GB (65.35 thousand rows/s., 36.03 MB/s.)
 Peak memory usage: 870.67 MiB.
 ```
@@ -265,7 +269,9 @@ FORMAT PrettyJSONEachRow
     ]
   ]
 }
+```
 
+```response
 1 row in set. Elapsed: 0.009 sec.
 ```
 
@@ -306,7 +312,9 @@ A sample of this data is publicly available in newline-delimited JSON format. If
 DESCRIBE s3('https://datasets-documentation.s3.eu-west-3.amazonaws.com/pypi/pypi_with_tags/sample_rows.json.gz')
 
 -- result omitted for brevity
+```
 
+```response
 9 rows in set. Elapsed: 127.066 sec.
 ```
 
@@ -319,7 +327,9 @@ With thousands of unique columns this approach to inference is slow. As an alter
 ```sql
 DESCRIBE TABLE s3('https://datasets-documentation.s3.eu-west-3.amazonaws.com/pypi/pypi_with_tags/sample_rows.json.gz', 'JSONAsObject')
 SETTINGS describe_compact_output = 1
+```
 
+```response
 ┌─name─┬─type─┐
 │ json │ JSON │
 └──────┴──────┘
@@ -339,7 +349,9 @@ In this case, ClickHouse is able to coerce the type collision and resolve the co
 ```sql
 DESCRIBE TABLE s3('https://datasets-documentation.s3.eu-west-3.amazonaws.com/json/sample.json')
 SETTINGS describe_compact_output = 1
+```
 
+```response
 ┌─name─┬─type─────────────┐
 │ a    │ Nullable(String) │
 └──────┴──────────────────┘
@@ -361,9 +373,13 @@ In this case any form of type conversion here isn't possible. A `DESCRIBE` comma
 
 ```sql
 DESCRIBE s3('https://datasets-documentation.s3.eu-west-3.amazonaws.com/json/conflict_sample.json')
+```
 
+```response
 Elapsed: 0.755 sec.
+```
 
+```sql
 Received exception from server (version 24.12.1):
 Code: 636. DB::Exception: Received from sql-clickhouse.clickhouse.com:9440. DB::Exception: The table structure cannot be extracted from a JSON format file. Error:
 Code: 53. DB::Exception: Automatically defined type Tuple(b Int64) for column 'a' in row 1 differs from type defined by previous rows: Int64. You can specify the type for this column using setting schema_inference_hints.
@@ -374,7 +390,9 @@ In this case, `JSONAsObject` considers each row as a single [`JSON`](/sql-refere
 ```sql
 DESCRIBE TABLE s3('https://datasets-documentation.s3.eu-west-3.amazonaws.com/json/conflict_sample.json', JSONAsObject)
 SETTINGS enable_json_type = 1, describe_compact_output = 1
+```
 
+```response
 ┌─name─┬─type─┐
 │ json │ JSON │
 └──────┴──────┘

@@ -131,7 +131,9 @@ SELECT
 FROM user_activity
 GROUP BY UserID
 HAVING sum(Sign) > 0
+```
 
+```response
 ┌──────────────UserID─┬─PageViews─┬─Duration─┐
 │ 4324182021466249494 │         6 │      185 │
 └─────────────────────┴───────────┴──────────┘
@@ -282,17 +284,23 @@ On-the-fly mutations provide a mechanism to update rows such that subsequent `SE
 SET apply_mutations_on_fly = 1;
 
 SELECT ViewCount FROM posts WHERE Id = 404346
+```
 
+```response
 ┌─ViewCount─┐
 │     26762 │
 └───────────┘
+```
 
+```sql
 -- Increment the count
 ALTER TABLE posts UPDATE ViewCount = ViewCount + 1 WHERE Id = 404346
 
 -- The updated value is immediately visible
 SELECT ViewCount FROM posts WHERE Id = 404346
+```
 
+```response
 ┌─ViewCount─┐
 │     26763 │
 └───────────┘

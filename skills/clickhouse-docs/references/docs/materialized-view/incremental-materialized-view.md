@@ -38,7 +38,9 @@ ENGINE = MergeTree
 ORDER BY (VoteTypeId, CreationDate, PostId)
 
 INSERT INTO votes SELECT * FROM s3('https://datasets-documentation.s3.eu-west-3.amazonaws.com/stackoverflow/parquet/votes/*.parquet')
+```
 
+```response
 0 rows in set. Elapsed: 29.359 sec. Processed 238.98 million rows, 2.13 GB (8.14 million rows/s., 72.45 MB/s.)
 ```
 
@@ -52,7 +54,9 @@ FROM votes
 GROUP BY day
 ORDER BY day ASC
 LIMIT 10
+```
 
+```response
 ┌─────────────────day─┬─UpVotes─┬─DownVotes─┐
 │ 2008-07-31 00:00:00 │       6 │         0 │
 │ 2008-08-01 00:00:00 │     182 │        50 │
@@ -105,7 +109,9 @@ We can repopulate our votes table from our earlier insert:
 ```sql
 INSERT INTO votes SELECT toUInt32(Id) AS Id, toInt32(PostId) AS PostId, VoteTypeId, CreationDate, UserId, BountyAmount
 FROM s3('https://datasets-documentation.s3.eu-west-3.amazonaws.com/stackoverflow/parquet/votes/*.parquet')
+```
 
+```response
 0 rows in set. Elapsed: 111.964 sec. Processed 477.97 million rows, 3.89 GB (4.27 million rows/s., 34.71 MB/s.)
 Peak memory usage: 283.49 MiB.
 ```
@@ -116,7 +122,9 @@ On completion, we can confirm the size of our `up_down_votes_per_day` - we shoul
 SELECT count()
 FROM up_down_votes_per_day
 FINAL
+```
 
+```response
 ┌─count()─┐
 │    5723 │
 └─────────┘
@@ -138,15 +146,22 @@ FROM up_down_votes_per_day
 FINAL
 ORDER BY Day ASC
 LIMIT 10
+```
 
+```response
 10 rows in set. Elapsed: 0.004 sec. Processed 8.97 thousand rows, 89.68 KB (2.09 million rows/s., 20.89 MB/s.)
 Peak memory usage: 289.75 KiB.
+```
 
+```sql
 SELECT Day, sum(UpVotes) AS UpVotes, sum(DownVotes) AS DownVotes
 FROM up_down_votes_per_day
 GROUP BY Day
 ORDER BY Day ASC
 LIMIT 10
+```
+
+```response
 ┌────────Day─┬─UpVotes─┬─DownVotes─┐
 │ 2008-07-31 │       6 │         0 │
 │ 2008-08-01 │     182 │        50 │
@@ -184,7 +199,9 @@ FROM posts
 GROUP BY Day
 ORDER BY Day DESC
 LIMIT 10
+```
 
+```response
 ┌─────────────────Day─┬────────Score_99th─┬────AvgCommentCount─┐
 │ 2024-03-31 00:00:00 │  5.23700000000008 │ 1.3429811866859624 │
 │ 2024-03-30 00:00:00 │                 5 │ 1.3097158891616976 │
@@ -247,7 +264,9 @@ To populate our `post_stats_per_day` via our materialized view, we can simply in
 
 ```sql
 INSERT INTO posts_null SELECT * FROM posts
+```
 
+```response
 0 rows in set. Elapsed: 13.329 sec. Processed 119.64 million rows, 76.99 GB (8.98 million rows/s., 5.78 GB/s.)
 ```
 
@@ -302,7 +321,9 @@ CREATE TABLE comments
 )
 ENGINE = MergeTree
 ORDER BY PostId
+```
 
+```response
 0 rows in set. Elapsed: 46.357 sec. Processed 90.38 million rows, 11.14 GB (1.95 million rows/s., 240.22 MB/s.)
 ```
 
@@ -314,7 +335,9 @@ Suppose a user wishes to filter on a specific `UserId` and compute their average
 SELECT avg(Score)
 FROM comments
 WHERE UserId = 8592047
+```
 
+```response
 ┌──────────avg(Score)─┐
 │ 0.18181818181818182 │
 └─────────────────────┘
@@ -340,7 +363,9 @@ CREATE MATERIALIZED VIEW comments_posts_users_mv TO comments_posts_users AS
 SELECT PostId, UserId FROM comments_null
 
 INSERT INTO comments_null SELECT * FROM comments
+```
 
+```response
 0 rows in set. Elapsed: 5.163 sec. Processed 90.38 million rows, 17.25 GB (17.51 million rows/s., 3.34 GB/s.)
 ```
 
@@ -354,7 +379,9 @@ WHERE PostId IN (
         FROM comments_posts_users
         WHERE UserId = 8592047
 ) AND UserId = 8592047
+```
 
+```response
 ┌──────────avg(Score)─┐
 │ 0.18181818181818182 │
 └─────────────────────┘
@@ -458,7 +485,9 @@ If we now populate the badges, the view will be triggered - populating our `dail
 ```sql
 INSERT INTO badges SELECT *
 FROM s3('https://datasets-documentation.s3.eu-west-3.amazonaws.com/stackoverflow/parquet/badges.parquet')
+```
 
+```response
 0 rows in set. Elapsed: 433.762 sec. Processed 1.16 billion rows, 28.50 GB (2.67 million rows/s., 65.70 MB/s.)
 ```
 
@@ -469,7 +498,9 @@ SELECT *
 FROM daily_badges_by_user
 FINAL
 WHERE DisplayName = 'gingerwizard'
+```
 
+```response
 ┌────────Day─┬──UserId─┬─DisplayName──┬─Gold─┬─Silver─┬─Bronze─┐
 │ 2023-02-27 │ 2936484 │ gingerwizard │    0 │      0 │      1 │
 │ 2023-02-28 │ 2936484 │ gingerwizard │    0 │      0 │      1 │
@@ -488,13 +519,20 @@ Now, if this user receives a new badge and a row is inserted, our view will be u
 
 ```sql
 INSERT INTO badges VALUES (53505058, 2936484, 'gingerwizard', now(), 'Gold', 0);
+```
 
+```response
 1 row in set. Elapsed: 7.517 sec.
+```
 
+```sql
 SELECT *
 FROM daily_badges_by_user
 FINAL
 WHERE DisplayName = 'gingerwizard'
+```
+
+```response
 ┌────────Day─┬──UserId─┬─DisplayName──┬─Gold─┬─Silver─┬─Bronze─┐
 │ 2013-10-30 │ 2936484 │ gingerwizard │    0 │      0 │      1 │
 │ 2013-11-18 │ 2936484 │ gingerwizard │    0 │      0 │      1 │
@@ -524,7 +562,9 @@ SELECT *
 FROM daily_badges_by_user
 FINAL
 WHERE DisplayName = 'brand_new_user';
+```
 
+```response
 0 rows in set. Elapsed: 0.017 sec. Processed 32.77 thousand rows, 644.32 KB (1.98 million rows/s., 38.94 MB/s.)
 ```
 
@@ -537,7 +577,9 @@ SELECT *
 FROM daily_badges_by_user
 FINAL
 WHERE DisplayName = 'brand_new_user'
+```
 
+```response
 ┌────────Day─┬───UserId─┬─DisplayName────┬─Gold─┬─Silver─┬─Bronze─┐
 │ 2025-04-13 │ 23923286 │ brand_new_user │    0 │      0 │      1 │
 └────────────┴──────────┴────────────────┴──────┴────────┴────────┘
@@ -595,12 +637,20 @@ INSERT INTO t0 VALUES (1),(2),(3);
 INSERT INTO t0 VALUES (1),(2),(3),(4),(5);
 
 SELECT * FROM mvw1;
+```
+
+```response
 ┌─c0─┐
 │  3 │
 │  5 │
 └────┘
+```
 
+```sql
 SELECT * FROM mvw2;
+```
+
+```response
 ┌─c0─┐
 │  3 │
 │  8 │
@@ -659,7 +709,9 @@ This view significantly impacted insert latency on the `badges` table e.g.
 
 ```sql
 INSERT INTO badges VALUES (53505058, 2936484, 'gingerwizard', now(), 'Gold', 0);
+```
 
+```response
 1 row in set. Elapsed: 7.517 sec.
 ```
 
@@ -697,7 +749,9 @@ Not only does this speed up the initial badges insert:
 ```sql
 INSERT INTO badges SELECT *
 FROM s3('https://datasets-documentation.s3.eu-west-3.amazonaws.com/stackoverflow/parquet/badges.parquet')
+```
 
+```response
 0 rows in set. Elapsed: 132.118 sec. Processed 323.43 million rows, 4.69 GB (2.45 million rows/s., 35.49 MB/s.)
 Peak memory usage: 1.99 GiB.
 ```
@@ -706,7 +760,9 @@ But also means future badge inserts are efficient:
 
 ```sql
 INSERT INTO badges VALUES (53505058, 2936484, 'gingerwizard', now(), 'Gold', 0);
+```
 
+```response
 1 row in set. Elapsed: 0.583 sec.
 ```
 
@@ -841,7 +897,9 @@ SELECT
 FROM user_activity
 WHERE UserId = '2936484'
 GROUP BY UserId
+```
 
+```response
 ┌─UserId──┬─description──────┬─activity_type─┬───────────last_activity─┐
 │ 2936484 │ The answer is 42 │ comment       │ 2025-04-15 09:56:19.000 │
 └─────────┴──────────────────┴───────────────┴─────────────────────────┘
@@ -862,7 +920,9 @@ SELECT
 FROM user_activity
 WHERE UserId = '2936484'
 GROUP BY UserId;
+```
 
+```response
 ┌─UserId──┬─description──────┬─activity_type─┬───────────last_activity─┐
 │ 2936484 │ The answer is 42 │ comment       │ 2025-04-15 09:56:19.000 │
 └─────────┴──────────────────┴───────────────┴─────────────────────────┘
@@ -908,7 +968,9 @@ SELECT
 FROM user_activity
 WHERE UserId = '2936484'
 GROUP BY UserId;
+```
 
+```response
 ┌─UserId──┬─description──────┬─activity_type─┬───────────last_activity─┐
 │ 2936484 │ The answer is 42 │ comment       │ 2025-04-15 10:18:47.000 │
 └─────────┴──────────────────┴───────────────┴─────────────────────────┘
@@ -929,7 +991,9 @@ SELECT
 FROM user_activity
 WHERE UserId = '2936484'
 GROUP BY UserId
+```
 
+```response
 ┌─UserId──┬─description──┬─activity_type─┬───────────last_activity─┐
 │ 2936484 │ gingerwizard │ badge         │ 2025-04-15 10:20:18.000 │
 └─────────┴──────────────┴───────────────┴─────────────────────────┘
@@ -994,7 +1058,9 @@ Inserting a row into the table `source` takes ~3 seconds, with each view executi
 
 ```sql
 INSERT INTO source VALUES ('test')
+```
 
+```response
 1 row in set. Elapsed: 3.786 sec.
 ```
 
@@ -1007,7 +1073,9 @@ SELECT
     now
 FROM target
 ORDER BY now ASC
+```
 
+```response
 ┌─message─┬─from─┬───────────────────────────now─┐
 │ test    │ mv3  │ 2025-04-15 14:52:01.306162309 │
 │ test    │ mv1  │ 2025-04-15 14:52:02.307693521 │
@@ -1026,7 +1094,9 @@ SELECT
 FROM system.tables
 WHERE name IN ('mv_1', 'mv_2', 'mv_3')
 ORDER BY uuid ASC
+```
 
+```response
 ┌─name─┬─uuid─────────────────────────────────┐
 │ mv_3 │ ba5e36d0-fa9e-4fe8-8f8c-bc4f72324111 │
 │ mv_1 │ b961c3ac-5a0e-4117-ab71-baa585824d43 │
@@ -1043,16 +1113,22 @@ TRUNCATE target;
 SET parallel_view_processing = 1;
 
 INSERT INTO source VALUES ('test');
+```
 
+```response
 1 row in set. Elapsed: 1.588 sec.
+```
 
+```sql
 SELECT
     message,
     from,
     now
 FROM target
 ORDER BY now ASC
+```
 
+```response
 ┌─message─┬─from─┬───────────────────────────now─┐
 │ test    │ mv3  │ 2025-04-15 19:47:32.242937372 │
 │ test    │ mv1  │ 2025-04-15 19:47:32.243058183 │
@@ -1150,7 +1226,9 @@ GROUP BY
     PostType
 ORDER BY Day DESC
 LIMIT 10
+```
 
+```response
 ┌────────Day─┬─PostType─┬───────────AvgScore─┬─PostsCreated─┬─TotalViews─┐
 │ 2024-03-31 │ Question │ 1.3317757009345794 │          214 │       9728 │
 │ 2024-03-31 │ Answer   │ 1.4747191011235956 │          356 │          0 │

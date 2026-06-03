@@ -60,7 +60,9 @@ INNER JOIN
 WHERE Id IN (PostIds)
 ORDER BY Controversial_ratio ASC
 LIMIT 1
+```
 
+```response
 Row 1:
 ──────
 Id:                     25372161
@@ -89,7 +91,9 @@ SELECT table,
 FROM system.columns
 WHERE table IN ('votes')
 GROUP BY table
+```
 
+```response
 ┌─table───────────┬─compressed_size─┬─uncompressed_size─┬─ratio─┐
 │ votes           │ 1.25 GiB        │ 3.79 GiB          │  3.04 │
 └─────────────────┴─────────────────┴───────────────────┴───────┘
@@ -122,7 +126,9 @@ PRIMARY KEY PostId
 SOURCE(CLICKHOUSE(QUERY 'SELECT PostId, countIf(VoteTypeId = 2) AS UpVotes, countIf(VoteTypeId = 3) AS DownVotes FROM votes GROUP BY PostId'))
 LIFETIME(MIN 600 MAX 900)
 LAYOUT(HASHED())
+```
 
+```response
 0 rows in set. Elapsed: 36.063 sec.
 ```
 
@@ -134,7 +140,9 @@ To confirm the memory consumed by our dictionary:
 SELECT formatReadableSize(bytes_allocated) AS size
 FROM system.dictionaries
 WHERE name = 'votes_dict'
+```
 
+```response
 ┌─size─────┐
 │ 4.00 GiB │
 └──────────┘
@@ -144,13 +152,17 @@ Retrieving the up and down votes for a specific `PostId` can be now achieved wit
 
 ```sql
 SELECT dictGet('votes_dict', ('UpVotes', 'DownVotes'), '11227902') AS votes
+```
 
+```response
 ┌─votes──────┐
 │ (34999,32) │
 └────────────┘
+```
 
 Exploiting this in our earlier query, we can remove the JOIN:
 
+```sql
 WITH PostIds AS
 (
         SELECT Id
@@ -165,7 +177,9 @@ FROM posts
 WHERE (Id IN (PostIds)) AND (UpVotes > 10) AND (DownVotes > 10)
 ORDER BY Controversial_ratio ASC
 LIMIT 3
+```
 
+```response
 3 rows in set. Elapsed: 0.551 sec. Processed 119.64 million rows, 3.29 GB (216.96 million rows/s., 5.97 GB/s.)
 Peak memory usage: 552.26 MiB.
 ```
@@ -199,7 +213,9 @@ FROM posts
 WHERE Title ILIKE '%clickhouse%'
 LIMIT 5
 FORMAT PrettyCompactMonoBlock
+```
 
+```response
 ┌───────Id─┬─Title─────────────────────────────────────────────────────────┬─Location──────────────┐
 │ 52296928 │ Comparison between two Strings in ClickHouse                  │ Spain                 │
 │ 52345137 │ How to use a file to migrate data from mysql to a clickhouse? │ 中国江苏省Nanjing Shi   │
@@ -223,7 +239,9 @@ WHERE location != ''
 GROUP BY location
 ORDER BY c DESC
 LIMIT 5
+```
 
+```response
 ┌─location───────────────┬──────c─┐
 │ India                  │ 787814 │
 │ Germany                │ 685347 │
@@ -280,7 +298,9 @@ To populate the table we can use the usual `INSERT INTO SELECT` from S3:
 
 ```sql
 INSERT INTO posts_with_location SELECT Id, PostTypeId::UInt8, AcceptedAnswerId, CreationDate, Score, ViewCount, Body, OwnerUserId, OwnerDisplayName, LastEditorUserId, LastEditorDisplayName, LastEditDate, LastActivityDate, Title, Tags, AnswerCount, CommentCount, FavoriteCount, ContentLicense, ParentId, CommunityOwnedDate, ClosedDate FROM s3('https://datasets-documentation.s3.eu-west-3.amazonaws.com/stackoverflow/parquet/posts/*.parquet')
+```
 
+```response
 0 rows in set. Elapsed: 36.830 sec. Processed 238.98 million rows, 2.64 GB (6.49 million rows/s., 71.79 MB/s.)
 ```
 
@@ -293,7 +313,9 @@ WHERE Location != ''
 GROUP BY Location
 ORDER BY c DESC
 LIMIT 4
+```
 
+```response
 ┌─Location───────────────┬──────c─┐
 │ India                  │ 787814 │
 │ Germany                │ 685347 │
