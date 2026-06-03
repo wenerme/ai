@@ -15,7 +15,38 @@ Key organization capabilities include shared credit pools for centralized billin
 
 For complete details on organization setup and management, see the [Organization Management](/docs/cookbook/administration/organization-management) guide.
 
-## 2. Configure API Key Management
+## 2. Set Up Workspaces
+
+Workspaces let you organize your projects into separate environments, each with its own API keys, routing defaults, guardrails, and observability integrations. Use them to isolate teams, projects, or deployment stages (e.g. staging vs. production) under a single organization.
+
+Your existing setup starts in a **Default workspace** — all organization members are automatically added to it. If you only need one environment, keep working as usual; nothing changes.
+
+### Creating Workspaces
+
+1. Go to your [home dashboard](https://openrouter.ai/workspaces)
+2. Click the workspace picker and select **[Create Workspace](https://openrouter.ai/workspaces/new)**
+3. Name your workspace and add a description
+
+Only organization admins can create and delete workspaces. You can also create and manage workspaces programmatically using the [Workspaces API](/docs/api/api-reference/workspaces/list-workspaces).
+
+### What's Scoped to Each Workspace
+
+Each workspace has independent settings for:
+
+* **API Keys** — Every key lives in a workspace. Members create keys in any workspace they belong to; admins can create system keys owned by the workspace.
+* **Guardrails** — Each workspace has its own guardrail, inheriting account-level policies with the ability to add stricter rules.
+* **BYOK** — Bring your own provider keys per workspace, or share provider keys across multiple workspaces.
+* **Routing** — Configure provider routing per workspace to optimize for cost, latency, throughput, or tool-calling quality.
+* **Presets** — Organize shortcuts for system prompts, model and provider configurations, and request parameters.
+* **Plugins** — Configure default plugin behavior for API requests in each workspace.
+* **Observability** — Connect different observability integrations per workspace, or send traces from all workspaces to the same platform.
+* **Members** — Control which team members have access to each workspace.
+
+Account-level settings like billing, activity, logs, management keys, and privacy policies apply globally across all workspaces.
+
+For complete details, see the [Workspaces](/docs/guides/features/workspaces) guide.
+
+## 3. Configure API Key Management
 
 Enterprise deployments typically require programmatic API key management for automated provisioning, rotation, and lifecycle management.
 
@@ -33,13 +64,13 @@ If you use [BYOK (Bring Your Own Key)](/docs/guides/overview/auth/byok), you can
 
 See [API Key Rotation](/docs/cookbook/administration/api-key-rotation) for step-by-step instructions.
 
-## 3. Implement Security Controls
+## 4. Implement Security Controls
 
 ### Guardrails
 
 Guardrails let organizations control how members and API keys use OpenRouter. Configure spending limits with daily, weekly, or monthly resets, model and provider allowlists to restrict access, and Zero Data Retention enforcement for sensitive workloads.
 
-Guardrails can be assigned to organization members (baseline for all their keys) or directly to specific API keys for granular control. When multiple guardrails apply, stricter rules always win.
+Guardrails can be assigned at the workspace level (applying to all traffic in that workspace), to organization members (baseline for all their keys), or directly to specific API keys for granular control. When multiple guardrails apply, stricter rules always win.
 
 See [Guardrails](/docs/guides/features/guardrails) for configuration details and the [Guardrails API reference](/docs/api/api-reference/guardrails/list-guardrails) for programmatic management.
 
@@ -57,7 +88,32 @@ OpenRouter does not store your prompts or responses unless you opt in to prompt 
 
 See [Data Collection](/docs/guides/privacy/data-collection) and [Provider Logging](/docs/guides/privacy/provider-logging) for complete privacy documentation.
 
-## 4. Set Up Observability
+## 5. Configure Presets
+
+Presets let you separate your LLM configuration from your code. Create named configurations that encapsulate model selection, provider routing, system prompts, and generation parameters, then reference them in API requests using `@preset/your-preset-slug`.
+
+This enables rapid iteration — switch models, adjust prompts, or change provider preferences without deploying code changes.
+
+### Creating Presets
+
+1. Navigate to your workspace's [Presets](https://openrouter.ai/workspaces/default/presets) page
+2. Click **Create Preset** and configure your model, routing, and parameters
+3. Reference the preset in API requests:
+
+```json
+{
+  "model": "@preset/your-preset-slug",
+  "messages": [
+    { "role": "user", "content": "Hello" }
+  ]
+}
+```
+
+Presets are scoped to workspaces, so different teams or environments can maintain their own configurations independently.
+
+See [Presets](/docs/guides/features/presets) for the full guide including creating presets from inference requests and version management.
+
+## 6. Set Up Observability
 
 ### Broadcast
 
@@ -67,13 +123,21 @@ Configure broadcast at [Settings > Observability](https://openrouter.ai/settings
 
 See [Broadcast](/docs/guides/features/broadcast) for setup instructions and destination-specific walkthroughs.
 
+### Input & Output Logging
+
+Input & Output Logging lets you privately save and review the full content of your requests and responses. Use it to debug issues, compare model responses, and optimize prompts. Once enabled, prompts and completions are accessible from your [Logs](https://openrouter.ai/logs) page.
+
+Enable it in your workspace's [Observability settings](https://openrouter.ai/workspaces/default/observability) by toggling **Input & Output Logging**. For organizations, only admins can view and toggle this setting.
+
+See [Input & Output Logging](/docs/guides/features/input-output-logging) for storage details, privacy guarantees, and comparison with Broadcast.
+
 ### User Tracking
 
 Track your end-users by including a `user` parameter in API requests. This improves caching performance (sticky routing per user) and enables user-level analytics in your activity feed and exports.
 
 See [User Tracking](/docs/cookbook/administration/user-tracking) for implementation details.
 
-## 5. Monitor Usage and Costs
+## 7. Monitor Usage and Costs
 
 ### Usage Accounting
 
@@ -87,7 +151,7 @@ Export aggregated usage data as CSV or PDF from the [Activity page](https://open
 
 See [Activity Export](/docs/cookbook/administration/activity-export) for export instructions.
 
-## 6. Optimize for Reliability
+## 8. Optimize for Reliability
 
 ### Provider Routing and Fallbacks
 

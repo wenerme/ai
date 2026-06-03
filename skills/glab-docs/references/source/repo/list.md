@@ -7,6 +7,12 @@ info: To determine the technical writer assigned to the Stage/Group associated w
 
 Get list of repositories.
 
+## Synopsis
+
+By default, lists the projects you own. Use `--all` to list every
+project on the instance, `--group` to scope to one group, or
+`--user` to list another user's projects.
+
 ```plaintext
 glab repo list [flags]
 ```

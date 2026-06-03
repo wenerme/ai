@@ -175,6 +175,35 @@ You can pass provider-specific options using the `provider` parameter. Options a
 }
 ```
 
+#### Azure (MAI-Voice-2)
+
+Azure TTS uses SSML internally, but this is fully abstracted — you only need the standard parameters. The `voice` parameter takes an Azure voice name (e.g., `en-US-Harper:MAI-Voice-2`), and `speed` is supported (range: 0.5–2.0).
+
+For expressive synthesis, pass `style` and optionally `styledegree` via provider options:
+
+```json
+{
+  "model": "microsoft/mai-voice-2",
+  "input": "Welcome to the event!",
+  "voice": "en-US-Harper:MAI-Voice-2",
+  "response_format": "mp3",
+  "speed": 1.0,
+  "provider": {
+    "options": {
+      "azure": {
+        "style": "cheerful",
+        "styledegree": 1.2
+      }
+    }
+  }
+}
+```
+
+| Option        | Type   | Description                                                                                                    |
+| ------------- | ------ | -------------------------------------------------------------------------------------------------------------- |
+| `style`       | string | Expressive speaking style (e.g., `cheerful`, `sad`, `angry`, `excited`). Available styles depend on the voice. |
+| `styledegree` | number | Intensity of the style effect. Default is `1.0`; higher values increase expressiveness.                        |
+
 ## Response Format
 
 The TTS endpoint returns a **raw audio byte stream**, not JSON. The response includes the following headers:

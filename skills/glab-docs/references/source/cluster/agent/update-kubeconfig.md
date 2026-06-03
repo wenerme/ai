@@ -35,7 +35,7 @@ glab cluster agent update-kubeconfig --agent 123 --use-context
 
 ```plaintext
   -a, --agent int                        The numeric agent ID to create the kubeconfig entry for.
-  -c, --cache-mode string                Mode to use for caching the token. Allowed values: keyring-filesystem-fallback, force-keyring, force-filesystem, no (default "force-keyring")
+  -c, --cache-mode string                Mode to use for caching the token. Allowed values: keyring-filesystem-fallback, force-keyring, force-filesystem, no. (default "force-keyring")
       --check-revoked                    Check if a cached token is revoked. Requires an API call to GitLab, which adds latency every time a cached token is accessed.
       --kubeconfig string                Use a particular kubeconfig file.
       --token-expiry-duration duration   Duration for generated token's validity. Minimum is 1 day. Expires at end of day, and ignores time. (default 24h0m0s)

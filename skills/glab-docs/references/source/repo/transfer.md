@@ -7,6 +7,12 @@ info: To determine the technical writer assigned to the Stage/Group associated w
 
 Transfer a repository to a new namespace.
 
+## Synopsis
+
+Moves a project to a different group or user namespace. Specify the
+destination with `--target-namespace`. You must have permission to
+create projects in the target namespace.
+
 ```plaintext
 glab repo transfer [repo] [flags]
 ```

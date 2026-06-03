@@ -7,6 +7,15 @@ info: To determine the technical writer assigned to the Stage/Group associated w
 
 Manage GitLab releases.
 
+## Synopsis
+
+A release bundles a Git tag with release notes and downloadable
+assets, such as binaries or source archives.
+
+Create and update releases, list and view them, upload assets, and
+download or delete releases. Use `--repo` to target a project other
+than the current one.
+
 ## Options
 
 ```plaintext

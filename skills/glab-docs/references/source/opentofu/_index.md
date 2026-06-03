@@ -7,6 +7,14 @@ info: To determine the technical writer assigned to the Stage/Group associated w
 
 Work with the OpenTofu or Terraform integration.
 
+## Synopsis
+
+Manage OpenTofu and Terraform state stored in the GitLab-managed
+state backend.
+
+Initialize a working directory against a GitLab-managed state, and
+list, lock, unlock, download, or delete states.
+
 ## Aliases
 
 ```plaintext

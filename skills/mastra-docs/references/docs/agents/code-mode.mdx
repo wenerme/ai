@@ -9,7 +9,7 @@ packages:
 
 :::experimental
 
-This feature is experimental. Breaking changes may occur without a major version bump until the API is stable.
+This feature is in alpha. Breaking changes may occur without a major version bump until the API is stable.
 
 Code mode gives an agent a single tool that runs a short TypeScript program in a sandbox. Instead of calling tools one at a time, the model writes a program that orchestrates your existing tools as `external_*` functions, batching calls with `Promise.all`, aggregating with `reduce`, branching, and doing math in a real runtime, then returns a single result.
 

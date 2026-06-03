@@ -7,6 +7,12 @@ info: To determine the technical writer assigned to the Stage/Group associated w
 
 Work with the OpenTofu or Terraform states.
 
+## Synopsis
+
+List the states in the current project, lock or unlock a state to
+control concurrent access, download a state as JSON, or delete a
+state or one of its versions.
+
 ## Options inherited from parent commands
 
 ```plaintext

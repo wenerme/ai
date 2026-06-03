@@ -7,8 +7,20 @@ info: To determine the technical writer assigned to the Stage/Group associated w
 
 Lock the given state.
 
+## Synopsis
+
+Locking a state prevents others from modifying it until it is
+unlocked, which avoids concurrent writes that could corrupt the
+state.
+
 ```plaintext
 glab opentofu state lock <state> [flags]
+```
+
+## Examples
+
+```console
+glab opentofu state lock production
 ```
 
 ## Options inherited from parent commands

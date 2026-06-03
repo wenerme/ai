@@ -7,6 +7,14 @@ info: To determine the technical writer assigned to the Stage/Group associated w
 
 List your to-do items.
 
+## Synopsis
+
+By default, lists your pending to-do items. Use `--state` to
+show done or all items instead.
+
+Narrow the results with `--action` to filter by why an item was
+created, or `--type` to filter by its target type.
+
 ```plaintext
 glab todo list [flags]
 ```

@@ -7,6 +7,12 @@ info: To determine the technical writer assigned to the Stage/Group associated w
 
 Search for GitLab repositories and projects by name.
 
+## Synopsis
+
+Searches every project visible to you for a string in the project
+name. Provide the query with `--search`, and use `-F json` for
+machine-readable output.
+
 ```plaintext
 glab repo search [flags]
 ```

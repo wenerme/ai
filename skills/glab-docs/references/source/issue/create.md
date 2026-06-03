@@ -7,6 +7,17 @@ info: To determine the technical writer assigned to the Stage/Group associated w
 
 Create an issue.
 
+## Synopsis
+
+Opens an editor to draft the issue unless you pass a title and
+description. Use `--web` to create the issue in your browser, or
+`--template` to start from an issue template.
+
+The `--recover` flag is an experiment: it might be unstable or
+removed at any time, and is not ready for production use. For more
+information, see
+<https://docs.gitlab.com/policy/development_stages_support/>.
+
 ```plaintext
 glab issue create [flags]
 ```

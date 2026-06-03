@@ -16,7 +16,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 Export a D1 database into R2 storage with Workflows
 
-In this example, we implement a Workflow periodically triggered by a [Cron Trigger](https://developers.cloudflare.com/workers/configuration/cron-triggers). That Workflow initiates a backup for a D1 database using the REST API, and then stores the SQL dump in an [R2](https://developers.cloudflare.com/r2) bucket.
+In this example, we implement a Workflow that runs on a schedule using the `schedules` field on the Workflow binding. That Workflow initiates a backup for a D1 database using the REST API, and then stores the SQL dump in an [R2](https://developers.cloudflare.com/r2) bucket.
 
 When the Workflow is triggered, it fetches the REST API to initiate an export job for a specific database. Then it fetches the same endpoint to check if the backup job is ready and the SQL dump is available to download.
 
@@ -55,27 +55,22 @@ type Env = {
 
   BACKUP_BUCKET: R2Bucket;
 
-};
+  ACCOUNT_ID: string;
 
-
-// Workflow parameters: we expect accountId and databaseId
-
-type Params = {
-
-  accountId: string;
-
-  databaseId: string;
+  DATABASE_ID: string;
 
 };
 
 
 // Workflow logic
 
-export class backupWorkflow extends WorkflowEntrypoint<Env, Params> {
+export class backupWorkflow extends WorkflowEntrypoint<Env> {
 
-  async run(event: WorkflowEvent<Params>, step: WorkflowStep) {
+  async run(_event: WorkflowEvent<unknown>, step: WorkflowStep) {
 
-    const { accountId, databaseId } = event.payload;
+    const accountId = this.env.ACCOUNT_ID;
+
+    const databaseId = this.env.DATABASE_ID;
 
 
     const url = `https://api.cloudflare.com/client/v4/accounts/${accountId}/d1/database/${databaseId}/export`;
@@ -172,30 +167,6 @@ export default {
 
   },
 
-  async scheduled(
-
-    controller: ScheduledController,
-
-    env: Env,
-
-    ctx: ExecutionContext,
-
-  ) {
-
-    const params: Params = {
-
-      accountId: "{accountId}",
-
-      databaseId: "{databaseId}",
-
-    };
-
-    const instance = await env.BACKUP_WORKFLOW.create({ params });
-
-    console.log(`Started workflow: ${instance.id}`);
-
-  },
-
 };
 
 
@@ -218,10 +189,12 @@ Here is a minimal package.json:
 
 ```
 
+Create `D1_REST_API_TOKEN` as a [secret](https://developers.cloudflare.com/workers/configuration/secrets/) with permission to export the target D1 database.
+
 Here is a [Wrangler configuration file](https://developers.cloudflare.com/workers/wrangler/configuration/):
 
-* [  wrangler.jsonc ](#tab-panel-10829)
-* [  wrangler.toml ](#tab-panel-10830)
+* [  wrangler.jsonc ](#tab-panel-12261)
+* [  wrangler.toml ](#tab-panel-12262)
 
 JSONC
 
@@ -237,13 +210,21 @@ JSONC
 
   // Set this to today's date
 
-  "compatibility_date": "2026-05-18",
+  "compatibility_date": "2026-06-02",
 
   "compatibility_flags": [
 
     "nodejs_compat"
 
   ],
+
+  "vars": {
+
+    "ACCOUNT_ID": "account-id",
+
+    "DATABASE_ID": "database-id"
+
+  },
 
   "workflows": [
 
@@ -253,7 +234,9 @@ JSONC
 
       "binding": "BACKUP_WORKFLOW",
 
-      "class_name": "backupWorkflow"
+      "class_name": "backupWorkflow",
+
+      "schedules": ["0 0 * * *"]
 
     }
 
@@ -269,17 +252,7 @@ JSONC
 
     }
 
-  ],
-
-  "triggers": {
-
-    "crons": [
-
-      "0 0 * * *"
-
-    ]
-
-  }
+  ]
 
 }
 
@@ -298,9 +271,16 @@ main = "src/index.ts"
 
 # Set this to today's date
 
-compatibility_date = "2026-05-18"
+compatibility_date = "2026-06-02"
 
 compatibility_flags = [ "nodejs_compat" ]
+
+
+[vars]
+
+ACCOUNT_ID = "account-id"
+
+DATABASE_ID = "database-id"
 
 
 [[workflows]]
@@ -311,6 +291,8 @@ binding = "BACKUP_WORKFLOW"
 
 class_name = "backupWorkflow"
 
+schedules = [ "0 0 * * *" ]
+
 
 [[r2_buckets]]
 
@@ -319,12 +301,13 @@ binding = "BACKUP_BUCKET"
 bucket_name = "d1-backups"
 
 
-[triggers]
-
-crons = [ "0 0 * * *" ]
-
-
 ```
+
+Each scheduled run creates a new Workflow instance automatically.
+
+Scheduled instances include the matching cron expression and scheduled trigger time on `event.schedule`.
+
+Use the latest Wrangler release when configuring Workflow schedules. If your local Wrangler schema does not recognize `schedules` yet, update Wrangler before deploying.
 
 ```json
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/workflows/","name":"Workflows"}},{"@type":"ListItem","position":3,"item":{"@id":"/workflows/examples/","name":"Examples"}},{"@type":"ListItem","position":4,"item":{"@id":"/workflows/examples/backup-d1/","name":"Export and save D1 database"}}]}

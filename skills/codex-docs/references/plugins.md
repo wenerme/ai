@@ -13,6 +13,8 @@ Extend what Codex can do, for example:
 - Install the Google Drive plugin to work across Drive, Docs, Sheets, and
   Slides.
 - Install the Slack plugin to summarize channels or draft replies.
+- Install [Sites](https://developers.openai.com/codex/sites) to create and deploy hosted websites,
+  web apps, and games.
 
 A plugin can contain:
 

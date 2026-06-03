@@ -30,11 +30,11 @@ You can enable downloads for an uploaded video once it is ready to view by makin
 
 To get notified when a video is ready to view, refer to [Using webhooks](https://developers.cloudflare.com/stream/manage-video-library/using-webhooks/#notifications).
 
-* [ REST API ](#tab-panel-8475)
-* [ Workers Binding API ](#tab-panel-8476)
+* [ REST API ](#tab-panel-10080)
+* [ Workers Binding API ](#tab-panel-10081)
 
-* [ cURL ](#tab-panel-8459)
-* [ TypeScript ](#tab-panel-8460)
+* [ cURL ](#tab-panel-10064)
+* [ TypeScript ](#tab-panel-10065)
 
 Terminal window
 
@@ -106,8 +106,8 @@ The response includes the download type, URL, and processing status:
 
 See the full Stream [REST API and SDK reference](https://developers.cloudflare.com/api/resources/stream/) for details on using REST API from external applications, with pre-generated SDK's for external TypeScript, Python, or Go applications.
 
-* [ index.ts ](#tab-panel-8461)
-* [ wrangler.jsonc ](#tab-panel-8462)
+* [ index.ts ](#tab-panel-10066)
+* [ wrangler.jsonc ](#tab-panel-10067)
 
 TypeScript
 
@@ -165,11 +165,11 @@ See the full [Workers Stream binding API reference](https://developers.cloudflar
 
 To enable M4A support on a per video basis, follow steps similar to that of generating an MP4 download, but instead send a POST request to the `/downloads/audio` endpoint.
 
-* [ REST API ](#tab-panel-8477)
-* [ Workers Binding API ](#tab-panel-8478)
+* [ REST API ](#tab-panel-10082)
+* [ Workers Binding API ](#tab-panel-10083)
 
-* [ cURL ](#tab-panel-8463)
-* [ TypeScript ](#tab-panel-8464)
+* [ cURL ](#tab-panel-10068)
+* [ TypeScript ](#tab-panel-10069)
 
 Terminal window
 
@@ -241,8 +241,8 @@ The response includes the download type, URL, and processing status:
 
 See the full Stream [REST API and SDK reference](https://developers.cloudflare.com/api/resources/stream/) for details on using REST API from external applications, with pre-generated SDK's for external TypeScript, Python, or Go applications.
 
-* [ index.ts ](#tab-panel-8465)
-* [ wrangler.jsonc ](#tab-panel-8466)
+* [ index.ts ](#tab-panel-10070)
+* [ wrangler.jsonc ](#tab-panel-10071)
 
 TypeScript
 
@@ -300,11 +300,11 @@ See the full [Workers Stream binding API reference](https://developers.cloudflar
 
 You can view all available downloads for a video by making a `GET` HTTP request to the downloads API.
 
-* [ REST API ](#tab-panel-8479)
-* [ Workers Binding API ](#tab-panel-8480)
+* [ REST API ](#tab-panel-10084)
+* [ Workers Binding API ](#tab-panel-10085)
 
-* [ cURL ](#tab-panel-8467)
-* [ TypeScript ](#tab-panel-8468)
+* [ cURL ](#tab-panel-10072)
+* [ TypeScript ](#tab-panel-10073)
 
 Terminal window
 
@@ -386,8 +386,8 @@ Response
 
 See the full Stream [REST API and SDK reference](https://developers.cloudflare.com/api/resources/stream/) for details on using REST API from external applications, with pre-generated SDK's for external TypeScript, Python, or Go applications.
 
-* [ index.ts ](#tab-panel-8469)
-* [ wrangler.jsonc ](#tab-panel-8470)
+* [ index.ts ](#tab-panel-10074)
+* [ wrangler.jsonc ](#tab-panel-10075)
 
 TypeScript
 
@@ -468,11 +468,11 @@ curl -L https://customer-<CODE>.cloudflarestream.com/<VIDEO_UID>/downloads/defau
 
 You can delete a download for a video. Available types are `default` and `audio`. Defaults to `default` when omitted.
 
-* [ REST API ](#tab-panel-8481)
-* [ Workers Binding API ](#tab-panel-8482)
+* [ REST API ](#tab-panel-10086)
+* [ Workers Binding API ](#tab-panel-10087)
 
-* [ cURL ](#tab-panel-8471)
-* [ TypeScript ](#tab-panel-8472)
+* [ cURL ](#tab-panel-10076)
+* [ TypeScript ](#tab-panel-10077)
 
 Terminal window
 
@@ -513,8 +513,8 @@ await client.stream.downloads.default.delete({
 
 See the full Stream [REST API and SDK reference](https://developers.cloudflare.com/api/resources/stream/) for details on using REST API from external applications, with pre-generated SDK's for external TypeScript, Python, or Go applications.
 
-* [ index.ts ](#tab-panel-8473)
-* [ wrangler.jsonc ](#tab-panel-8474)
+* [ index.ts ](#tab-panel-10078)
+* [ wrangler.jsonc ](#tab-panel-10079)
 
 TypeScript
 

@@ -7,8 +7,19 @@ info: To determine the technical writer assigned to the Stage/Group associated w
 
 View project issue board.
 
+## Synopsis
+
+Opens an interactive view of the project's issue boards in your
+terminal, where you can browse issues by list.
+
 ```plaintext
 glab issue board view [flags]
+```
+
+## Examples
+
+```console
+glab issue board view
 ```
 
 ## Options

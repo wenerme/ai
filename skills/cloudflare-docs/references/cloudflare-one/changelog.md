@@ -14,6 +14,21 @@ image: https://developers.cloudflare.com/zt-preview.png
 
 [ Subscribe to RSS ](https://developers.cloudflare.com/changelog/rss/cloudflare-one.xml) 
 
+## 2026-06-02
+
+[ Cloudflare WAN ](https://developers.cloudflare.com/cloudflare-wan/)[ Cloudflare One ](https://developers.cloudflare.com/cloudflare-one/) 
+
+  
+**Cisco IOS XE**   
+
+The Cisco IOS XE third-party integration guide for Cloudflare WAN has been updated to include:
+
+* Post Quantum Cryptography (PQC)
+* Policy-Based Routing (PBR)
+* IP Service Level Agreement (IP SLA)
+
+This link will take you directly to the updated [Cisco IOS XE](https://developers.cloudflare.com/cloudflare-wan/configuration/third-party/cisco-ios-xe/) guide.
+
 ## 2026-05-29
 
 [ Cloudflare One Client ](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/) 
@@ -4680,8 +4695,8 @@ Zero Trust Dashboard will automatically accept your user-level preferences for s
 
 ![Zero Trust dashboard supports dark mode](https://developers.cloudflare.com/_astro/dark-mode.DfLeS20d_Z2kTwNR.webp) 
 
-* [ Zero Trust Dashboard ](#tab-panel-6328)
-* [ Core Dashboard ](#tab-panel-6329)
+* [ Zero Trust Dashboard ](#tab-panel-6490)
+* [ Core Dashboard ](#tab-panel-6491)
 
 To update your view preference in the Zero Trust dashboard:
 

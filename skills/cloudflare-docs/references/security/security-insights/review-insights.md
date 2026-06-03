@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/cf-twitter-card.png
 
 # Review Security Insights
 
-After [enabling Security Insights](https://developers.cloudflare.com/security-center/get-started/) and letting the first scan run, check the **Security Insights** tab for a list of detected insights that you should address.
+Check the **Security Insights** tab for a list of detected insights that you should address.
 
 For each detected insight, you can resolve it or archive it, after understanding its risks.
 

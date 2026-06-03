@@ -26,8 +26,8 @@
   },
   "guides/overview/multimodal/image-generation.md": {
     "url": "https://openrouter.ai/docs/guides/overview/multimodal/image-generation.md",
-    "size": 17864,
-    "updatedAt": "2026-05-16T00:34:45.008Z"
+    "size": 18123,
+    "updatedAt": "2026-06-03T00:52:21.745Z"
   },
   "guides/overview/multimodal/pdfs.md": {
     "url": "https://openrouter.ai/docs/guides/overview/multimodal/pdfs.md",
@@ -51,8 +51,8 @@
   },
   "guides/overview/multimodal/tts.md": {
     "url": "https://openrouter.ai/docs/guides/overview/multimodal/tts.md",
-    "size": 10269,
-    "updatedAt": "2026-05-16T00:34:55.561Z"
+    "size": 11473,
+    "updatedAt": "2026-06-03T00:53:16.274Z"
   },
   "guides/overview/multimodal/stt.md": {
     "url": "https://openrouter.ai/docs/guides/overview/multimodal/stt.md",
@@ -1346,8 +1346,8 @@
   },
   "cookbook/get-started/enterprise-quickstart.md": {
     "url": "https://openrouter.ai/docs/cookbook/get-started/enterprise-quickstart.md",
-    "size": 7060,
-    "updatedAt": "2026-05-16T00:42:23.407Z"
+    "size": 10991,
+    "updatedAt": "2026-06-03T01:14:05.524Z"
   },
   "cookbook/get-started/free-models-router-playground.md": {
     "url": "https://openrouter.ai/docs/cookbook/get-started/free-models-router-playground.md",

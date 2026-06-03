@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/cf-twitter-card.png
 
 # How it works
 
-Once you [enable Security Insights](https://developers.cloudflare.com/security-center/get-started/), Cloudflare runs regular security scans on your account. These scans check your Cloudflare account settings, DNS record configurations, and product configurations — such as SSL/TLS, WAF, and Access — across all domains in your account.
+Cloudflare runs regular security scans on your account. These scans check your Cloudflare account settings, DNS record configurations, and product configurations — such as SSL/TLS, WAF, and Access — across all domains in your account.
 
 Each scan compares your current configuration against a set of ideal product configurations that indicate a strong security posture. When your configuration does not match an ideal configuration for one or more checks, the scan produces a **Security Insight** — a finding that represents a potential risk.
 
@@ -35,12 +35,13 @@ For a full list of insight types and their descriptions, refer to [Security Insi
 
 ## Scan frequency
 
-Once you enable Security Insights, Cloudflare performs scans automatically. Paying customers (as defined in the table below) are re-scanned daily and can trigger a scan manually:
+Cloudflare performs scans automatically for all accounts and zones by default. On-demand scans are available on all plans:
 
-| Plan                                      | Scan Frequency | On-Demand |
-| ----------------------------------------- | -------------- | --------- |
-| Accounts on a Free, Pro, or Business plan | Every 7 days   | Yes       |
-| Accounts on an Enterprise plan            | Every 3 days   | Yes       |
+| Plan             | Scan Frequency | On-Demand |
+| ---------------- | -------------- | --------- |
+| Free             | Every 7 days   | Yes       |
+| Pro and Business | Every 3 days   | Yes       |
+| Enterprise       | Daily          | Yes       |
 
 Eligible accounts (Business, Enterprise, or Teams plans) can also manually start a scan. Refer to [Get started](https://developers.cloudflare.com/security-center/get-started/) for instructions.
 

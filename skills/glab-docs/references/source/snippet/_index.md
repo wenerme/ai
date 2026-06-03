@@ -7,6 +7,12 @@ info: To determine the technical writer assigned to the Stage/Group associated w
 
 Create, view and manage snippets.
 
+## Synopsis
+
+Snippets store and share small pieces of code or text. A snippet can
+belong to a project, or to your personal account when you pass
+`--personal`.
+
 ## Examples
 
 ```console

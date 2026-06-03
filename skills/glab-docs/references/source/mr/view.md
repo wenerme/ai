@@ -21,6 +21,15 @@ glab mr view [<id | branch>] [flags]
 show
 ```
 
+## Examples
+
+```console
+glab mr view 123
+glab mr view branch-name
+glab mr view 123 --comments
+glab mr view 123 --web
+```
+
 ## Options
 
 ```plaintext

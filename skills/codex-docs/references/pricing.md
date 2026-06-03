@@ -157,6 +157,11 @@
 
 ## Frequently asked questions
 
+### How much does Sites cost?
+
+[Sites](https://developers.openai.com/codex/sites) is free while in preview. Pricing information will be
+available soon.
+
 ### What are the usage limits for my plan?
 
 The number of Codex messages you can send depends on the model used, size and
@@ -839,3 +844,688 @@ tips to maximize your limits:
 - **Switch to a smaller model for routine tasks.** Using GPT-5.4 or
   GPT-5.4-mini can extend your local-message usage limits, depending on the
   model you switch from.
+
+## Feature availability
+
+<CodexPlanFeatureMatrix
+  client:load
+  data={{
+    plans: [
+      { id: "plus", shortLabel: "Plus", label: "ChatGPT Plus" },
+      { id: "pro", shortLabel: "Pro", label: "ChatGPT Pro" },
+      {
+        id: "business",
+        shortLabel: "Business",
+        label: "ChatGPT Business",
+      },
+      {
+        id: "enterprise",
+        shortLabel: "Enterprise",
+        label: "Enterprise / Education",
+      },
+      { id: "api", shortLabel: "API Key", label: "API Key" },
+    ],
+    sections: [
+      {
+        title: "Access and surfaces",
+        features: [
+          {
+            name: "Codex web",
+            href: "/codex/cloud",
+            availability: {
+              plus: "available",
+              pro: "available",
+              business: "available",
+              enterprise: "available",
+              api: "unavailable",
+            },
+          },
+          {
+            name: "Codex app for local tasks",
+            href: "/codex/app",
+            availability: {
+              plus: "available",
+              pro: "available",
+              business: "available",
+              enterprise: "available",
+              api: "available",
+            },
+          },
+          {
+            name: "Codex CLI",
+            href: "/codex/cli",
+            availability: {
+              plus: "available",
+              pro: "available",
+              business: "available",
+              enterprise: "available",
+              api: "available",
+            },
+          },
+          {
+            name: "IDE extension",
+            href: "/codex/ide",
+            availability: {
+              plus: "available",
+              pro: "available",
+              business: "available",
+              enterprise: "available",
+              api: "available",
+            },
+          },
+          {
+            name: "Codex SDK, `codex exec`, and scriptable workflows",
+            shortName: "Codex SDK and scripting",
+            href: "/codex/sdk",
+            availability: {
+              plus: "available",
+              pro: "available",
+              business: "available",
+              enterprise: "available",
+              api: "available",
+            },
+          },
+          {
+            name: "Codex access tokens for trusted automation",
+            shortName: "Automation access tokens",
+            href: "/codex/enterprise/access-tokens",
+            availability: {
+              plus: "unavailable",
+              pro: "unavailable",
+              business: "available",
+              enterprise: "available",
+              api: "unavailable",
+            },
+          },
+        ],
+      },
+      {
+        title: "Models and multimodal",
+        features: [
+          {
+            name: "Fast mode",
+            href: "/codex/speed",
+            availability: {
+              plus: "available",
+              pro: "available",
+              business: "available",
+              enterprise: "available",
+              api: "available",
+            },
+          },
+          {
+            name: "Codex-Spark research preview",
+            href: "/codex/models",
+            availability: {
+              plus: "unavailable",
+              pro: "available",
+              business: "unavailable",
+              enterprise: "unavailable",
+              api: "unavailable",
+            },
+          },
+          {
+            name: "Image generation and editing",
+            href: "/codex/app/features#image-generation",
+            availability: {
+              plus: "available",
+              pro: "available",
+              business: "available",
+              enterprise: "available",
+              api: "available",
+            },
+          },
+          {
+            name: "Voice dictation",
+            href: "/codex/app/features#voice-dictation",
+            availability: {
+              plus: "available",
+              pro: "available",
+              business: "available",
+              enterprise: "available",
+              api: "unavailable",
+            },
+          },
+          {
+            name: "Web search",
+            href: "/codex/app/features#web-search",
+            availability: {
+              plus: "available",
+              pro: "available",
+              business: "available",
+              enterprise: "available",
+              api: "available",
+            },
+          },
+        ],
+      },
+      {
+        title: "Local features",
+        features: [
+          {
+            name: "Local code review with `/review`",
+            shortName: "Local code review",
+            href: "/codex/workflows#do-a-local-code-review",
+            availability: {
+              plus: "available",
+              pro: "available",
+              business: "available",
+              enterprise: "available",
+              api: "available",
+            },
+          },
+          {
+            name: "Auto-review for approval requests",
+            href: "/codex/concepts/sandboxing/auto-review",
+            availability: {
+              plus: "available",
+              pro: "available",
+              business: "available",
+              enterprise: "available",
+              api: "available",
+            },
+          },
+          {
+            name: "Sandboxing and permission controls",
+            href: "/codex/permissions",
+            availability: {
+              plus: "available",
+              pro: "available",
+              business: "available",
+              enterprise: "available",
+              api: "available",
+            },
+          },
+          {
+            name: "Project and standalone app automations",
+            shortName: "App automations",
+            href: "/codex/app/automations",
+            availability: {
+              plus: "available",
+              pro: "available",
+              business: "available",
+              enterprise: "available",
+              api: "available",
+            },
+          },
+          {
+            name: "Automations",
+            href: "/codex/app/automations",
+            availability: {
+              plus: "available",
+              pro: "available",
+              business: "available",
+              enterprise: "available",
+              api: "available",
+            },
+          },
+          {
+            name: "Worktrees and built-in Git tools",
+            shortName: "Built-in Git tools",
+            href: "/codex/app/worktrees",
+            availability: {
+              plus: "available",
+              pro: "available",
+              business: "available",
+              enterprise: "available",
+              api: "available",
+            },
+          },
+          {
+            name: "Local environments and repeatable actions",
+            shortName: "Repeatable actions",
+            href: "/codex/app/local-environments",
+            availability: {
+              plus: "available",
+              pro: "available",
+              business: "available",
+              enterprise: "available",
+              api: "available",
+            },
+          },
+          {
+            name: "Appshots",
+            href: "/codex/appshots",
+            availability: {
+              plus: "available",
+              pro: "available",
+              business: "available",
+              enterprise: "unavailable",
+              api: "available",
+            },
+          },
+        ],
+      },
+      {
+        title: "Browser and remote control",
+        features: [
+          {
+            name: "In-app browser previews and comments",
+            shortName: "In-app browser",
+            href: "/codex/app/browser",
+            availability: {
+              plus: "available",
+              pro: "available",
+              business: "available",
+              enterprise: "available",
+              api: "available",
+            },
+          },
+          {
+            name: "Browser Use automation",
+            href: "/codex/app/browser#browser-use",
+            availability: {
+              plus: "limited",
+              pro: "limited",
+              business: "limited",
+              enterprise: "limited",
+              api: "limited",
+            },
+          },
+          {
+            name: "Chrome extension browser control",
+            shortName: "Chrome browser control",
+            href: "/codex/app/chrome-extension",
+            availability: {
+              plus: "limited",
+              pro: "limited",
+              business: "limited",
+              enterprise: "limited",
+              api: "limited",
+            },
+          },
+          {
+            name: "Computer Use",
+            href: "/codex/app/computer-use",
+            availability: {
+              plus: "limited",
+              pro: "limited",
+              business: "limited",
+              enterprise: "limited",
+              api: "limited",
+            },
+          },
+          {
+            name: "SSH remote connections",
+            shortName: "SSH remote",
+            href: "/codex/remote-connections#connect-to-an-ssh-host",
+            availability: {
+              plus: "available",
+              pro: "available",
+              business: "available",
+              enterprise: "available",
+              api: "available",
+            },
+          },
+          {
+            name: "Mobile remote control",
+            href: "/codex/remote-connections",
+            availability: {
+              plus: "available",
+              pro: "available",
+              business: "available",
+              enterprise: "available",
+              api: "unavailable",
+            },
+          },
+        ],
+      },
+      {
+        title: "Customization and extensions",
+        features: [
+          {
+            name: "Custom instructions with `AGENTS.md`",
+            shortName: "Custom instructions",
+            href: "/codex/guides/agents-md",
+            availability: {
+              plus: "available",
+              pro: "available",
+              business: "available",
+              enterprise: "available",
+              api: "available",
+            },
+          },
+          {
+            name: "Skills",
+            href: "/codex/skills",
+            availability: {
+              plus: "available",
+              pro: "available",
+              business: "available",
+              enterprise: "available",
+              api: "available",
+            },
+          },
+          {
+            name: "Plugins",
+            href: "/codex/plugins",
+            availability: {
+              plus: "available",
+              pro: "available",
+              business: "available",
+              enterprise: "available",
+              api: "limited",
+            },
+            limitedFootnote: "plugins",
+          },
+          {
+            name: "Plugin sharing",
+            href: "/codex/plugins/build#share-a-local-plugin-with-your-workspace",
+            availability: {
+              plus: "available",
+              pro: "available",
+              business: "available",
+              enterprise: "available",
+              api: "unavailable",
+            },
+          },
+          {
+            name: "App connectors",
+            href: "/codex/plugins",
+            availability: {
+              plus: "available",
+              pro: "available",
+              business: "available",
+              enterprise: "available",
+              api: "unavailable",
+            },
+          },
+          {
+            name: "MCP",
+            href: "/codex/mcp",
+            availability: {
+              plus: "available",
+              pro: "available",
+              business: "available",
+              enterprise: "available",
+              api: "available",
+            },
+          },
+          {
+            name: "Subagents and custom agents",
+            shortName: "Subagents",
+            href: "/codex/subagents",
+            availability: {
+              plus: "available",
+              pro: "available",
+              business: "available",
+              enterprise: "available",
+              api: "available",
+            },
+          },
+          {
+            name: "Memories",
+            href: "/codex/memories",
+            availability: {
+              plus: "limited",
+              pro: "limited",
+              business: "limited",
+              enterprise: "limited",
+              api: "limited",
+            },
+          },
+          {
+            name: "Chronicle",
+            href: "/codex/memories/chronicle",
+            availability: {
+              plus: "unavailable",
+              pro: "limited",
+              business: "unavailable",
+              enterprise: "unavailable",
+              api: "unavailable",
+            },
+          },
+        ],
+      },
+      {
+        title: "Cloud and integrations",
+        features: [
+          {
+            name: "Codex cloud tasks",
+            shortName: "Cloud tasks",
+            href: "/codex/cloud",
+            availability: {
+              plus: "available",
+              pro: "available",
+              business: "available",
+              enterprise: "available",
+              api: "unavailable",
+            },
+          },
+          {
+            name: "Cloud environments and setup scripts",
+            shortName: "Cloud environments",
+            href: "/codex/cloud/environments",
+            availability: {
+              plus: "available",
+              pro: "available",
+              business: "available",
+              enterprise: "available",
+              api: "unavailable",
+            },
+          },
+          {
+            name: "Cloud agent internet access controls",
+            shortName: "Internet controls",
+            href: "/codex/cloud/internet-access",
+            availability: {
+              plus: "available",
+              pro: "available",
+              business: "available",
+              enterprise: "available",
+              api: "unavailable",
+            },
+          },
+          {
+            name: "Sites",
+            href: "/codex/sites",
+            availability: {
+              plus: "unavailable",
+              pro: "unavailable",
+              business: "available",
+              enterprise: "available",
+              api: "unavailable",
+            },
+          },
+          {
+            name: "GitHub issue and PR delegation with `@codex`",
+            shortName: "GitHub delegation",
+            href: "/codex/integrations/github#give-codex-other-tasks",
+            availability: {
+              plus: "available",
+              pro: "available",
+              business: "available",
+              enterprise: "available",
+              api: "unavailable",
+            },
+          },
+          {
+            name: "GitHub code review and automatic PR reviews",
+            shortName: "GitHub PR reviews",
+            href: "/codex/integrations/github",
+            availability: {
+              plus: "available",
+              pro: "available",
+              business: "available",
+              enterprise: "available",
+              api: "unavailable",
+            },
+          },
+          {
+            name: "Slack cloud integration",
+            shortName: "Slack integration",
+            href: "/codex/integrations/slack",
+            availability: {
+              plus: "available",
+              pro: "available",
+              business: "available",
+              enterprise: "available",
+              api: "unavailable",
+            },
+          },
+          {
+            name: "Linear cloud integration",
+            shortName: "Linear integration",
+            href: "/codex/integrations/linear",
+            availability: {
+              plus: "available",
+              pro: "available",
+              business: "available",
+              enterprise: "available",
+              api: "unavailable",
+            },
+          },
+        ],
+      },
+      {
+        title: "Admin, security, and analytics",
+        features: [
+          {
+            name: "SAML SSO, MFA, and workspace user management",
+            shortName: "Workspace management",
+            href: "/codex/enterprise/admin-setup",
+            availability: {
+              plus: "unavailable",
+              pro: "unavailable",
+              business: "available",
+              enterprise: "available",
+              api: "unavailable",
+            },
+          },
+          {
+            name: "`requirements.toml` managed config",
+            shortName: "`requirements.toml` config",
+            href: "/codex/enterprise/managed-configuration",
+            availability: {
+              plus: "available",
+              pro: "available",
+              business: "available",
+              enterprise: "available",
+              api: "available",
+            },
+          },
+          {
+            name: "Cloud-managed config policies",
+            shortName: "Cloud-managed policies",
+            href: "/codex/enterprise/managed-configuration#cloud-managed-requirements",
+            availability: {
+              plus: "unavailable",
+              pro: "unavailable",
+              business: "available",
+              enterprise: "available",
+              api: "unavailable",
+            },
+          },
+          {
+            name: "Codex RBAC and custom roles",
+            shortName: "RBAC and roles",
+            href: "/codex/enterprise/admin-setup#step-2-set-up-custom-roles-rbac",
+            availability: {
+              plus: "unavailable",
+              pro: "unavailable",
+              business: "unavailable",
+              enterprise: "available",
+              api: "unavailable",
+            },
+          },
+          {
+            name: "SCIM, EKM, and domain verification",
+            shortName: "SCIM, EKM, and domains",
+            href: "/codex/enterprise/admin-setup#enterprise-grade-security-and-privacy",
+            availability: {
+              plus: "unavailable",
+              pro: "unavailable",
+              business: "unavailable",
+              enterprise: "available",
+              api: "unavailable",
+            },
+          },
+          {
+            name: "Enterprise retention and residency controls",
+            shortName: "Retention and residency",
+            href: "/codex/enterprise/admin-setup#enterprise-grade-security-and-privacy",
+            availability: {
+              plus: "unavailable",
+              pro: "unavailable",
+              business: "unavailable",
+              enterprise: "available",
+              api: "unavailable",
+            },
+          },
+          {
+            name: "No training on API or business data by default",
+            shortName: "No default training",
+            href: "https://openai.com/business-data/",
+            availability: {
+              plus: "unavailable",
+              pro: "unavailable",
+              business: "available",
+              enterprise: "available",
+              api: "available",
+            },
+          },
+          {
+            name: "Analytics dashboard",
+            href: "/codex/enterprise/governance#analytics-dashboard",
+            availability: {
+              plus: "unavailable",
+              pro: "unavailable",
+              business: "unavailable",
+              enterprise: "available",
+              api: "unavailable",
+            },
+          },
+          {
+            name: "Analytics API",
+            href: "/codex/enterprise/governance#analytics-api",
+            availability: {
+              plus: "unavailable",
+              pro: "unavailable",
+              business: "unavailable",
+              enterprise: "available",
+              api: "unavailable",
+            },
+          },
+          {
+            name: "Compliance API and audit logs",
+            shortName: "Compliance and audit logs",
+            href: "/codex/enterprise/governance#compliance-api",
+            availability: {
+              plus: "unavailable",
+              pro: "unavailable",
+              business: "unavailable",
+              enterprise: "available",
+              api: "unavailable",
+            },
+          },
+          {
+            name: "Codex Security for connected GitHub repositories",
+            shortName: "Codex Security",
+            href: "/codex/security",
+            availability: {
+              plus: "unavailable",
+              pro: "unavailable",
+              business: "unavailable",
+              enterprise: "available",
+              api: "unavailable",
+            },
+          },
+        ],
+      },
+    ],
+  }}
+/>
+
+<div
+  id="codex-plan-region-limits"
+  className="not-prose mt-3 text-sm text-secondary"
+>
+  <sup>*</sup> Feature is currently limited to only specific regions. Check the
+  individual feature documentation to learn more about geo restrictions.
+</div>
+<div
+  id="codex-plan-plugin-limits"
+  className="not-prose mt-1 text-sm text-secondary"
+>
+  <sup>†</sup> Some first party plugins are not available.
+</div>

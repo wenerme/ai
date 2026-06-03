@@ -79,6 +79,19 @@ TypeScript
 
 ```
 
+export type WorkflowCronSchedule = {
+
+  /** Cron expression that triggered this event. */
+
+  cron: string;
+
+  /** Timestamp of the scheduled trigger, in milliseconds since the Unix epoch. */
+
+  scheduledTime: number;
+
+};
+
+
 export type WorkflowEvent<T> = {
 
   payload: Readonly<T>;
@@ -87,15 +100,21 @@ export type WorkflowEvent<T> = {
 
   instanceId: string;
 
+  workflowName: string;
+
+  schedule?: WorkflowCronSchedule;
+
 };
 
 
 ```
 
-* The `WorkflowEvent` is the first argument to a Workflow's `run` method, and includes an optional `payload` parameter and a `timestamp` property.  
+* The `WorkflowEvent` is the first argument to a Workflow's `run` method.  
    * `payload` \- a default type of `any` or type `T` if a type parameter is provided.  
    * `timestamp` \- a `Date` object set to the time the Workflow instance was created (triggered).  
-   * `instanceId` \- the ID of the associated instance.
+   * `instanceId` \- the ID of the associated instance.  
+   * `workflowName` \- the name of the associated Workflow.  
+   * `schedule` \- metadata for Workflow instances created by a cron schedule, including the `cron` expression and `scheduledTime` in milliseconds since the Unix epoch.
 
 Refer to the [events and parameters](https://developers.cloudflare.com/workflows/build/events-and-parameters/) documentation for how to handle events within your Workflow code.
 
@@ -129,8 +148,8 @@ After a `ReadableStream<Uint8Array>` object has been persisted within a step, it
 
 :::
 
-* [  JavaScript ](#tab-panel-10668)
-* [  TypeScript ](#tab-panel-10669)
+* [  JavaScript ](#tab-panel-12257)
+* [  TypeScript ](#tab-panel-12258)
 
 JavaScript
 
@@ -227,8 +246,8 @@ More information about the limits imposed on Workflow can be found in the [Workf
 
 * `step.waitForEvent(name: string, options: ): Promise<void>`\-`name` \- the name of the step. - `options` \- an object with properties for`type` (up to 100 characters [1](#user-content-fn-1)), which determines which event type this`waitForEvent` call will match on when calling `instance.sendEvent`, and an optional `timeout` property, which defines how long the `waitForEvent` call will block for before throwing a timeout exception. The default timeout is 24 hours.
 
-* [  JavaScript ](#tab-panel-10664)
-* [  TypeScript ](#tab-panel-10665)
+* [  JavaScript ](#tab-panel-12253)
+* [  TypeScript ](#tab-panel-12254)
 
 JavaScript
 
@@ -352,8 +371,8 @@ Refer to the [step context documentation](https://developers.cloudflare.com/work
 
 Each workflow on Workers Paid supports 10,000 steps by default. You can increase this up to 25,000 steps by configuring `steps` within the `limits` property of your Workflow definition in your Wrangler configuration:
 
-* [  wrangler.jsonc ](#tab-panel-10660)
-* [  wrangler.toml ](#tab-panel-10661)
+* [  wrangler.jsonc ](#tab-panel-12249)
+* [  wrangler.toml ](#tab-panel-12250)
 
 JSONC
 
@@ -426,8 +445,8 @@ You can bind to a Workflow by defining a `[[workflows]]` binding within your Wra
 
 For example, to bind to a Workflow called `workflows-starter` and to make it available on the `MY_WORKFLOW` variable to your Worker script, you would configure the following fields within the `[[workflows]]` binding definition:
 
-* [  wrangler.jsonc ](#tab-panel-10662)
-* [  wrangler.toml ](#tab-panel-10663)
+* [  wrangler.jsonc ](#tab-panel-12251)
+* [  wrangler.toml ](#tab-panel-12252)
 
 JSONC
 
@@ -443,7 +462,7 @@ JSONC
 
   // Set this to today's date
 
-  "compatibility_date": "2026-05-12",
+  "compatibility_date": "2026-06-02",
 
   "workflows": [
 
@@ -482,7 +501,7 @@ main = "src/index.ts"
 
 # Set this to today's date
 
-compatibility_date = "2026-05-12"
+compatibility_date = "2026-06-02"
 
 
 [[workflows]]
@@ -508,8 +527,8 @@ You can also bind to a Workflow that is defined in a different Worker script fro
 
 For example, if your Workflow is defined in a Worker script named `billing-worker`, but you are calling it from your `web-api-worker` script, your [Wrangler configuration file](https://developers.cloudflare.com/workers/wrangler/configuration/) would resemble the following:
 
-* [  wrangler.jsonc ](#tab-panel-10666)
-* [  wrangler.toml ](#tab-panel-10667)
+* [  wrangler.jsonc ](#tab-panel-12255)
+* [  wrangler.toml ](#tab-panel-12256)
 
 JSONC
 
@@ -525,7 +544,7 @@ JSONC
 
   // Set this to today's date
 
-  "compatibility_date": "2026-05-12",
+  "compatibility_date": "2026-06-02",
 
   "workflows": [
 
@@ -570,7 +589,7 @@ main = "src/index.ts"
 
 # Set this to today's date
 
-compatibility_date = "2026-05-12"
+compatibility_date = "2026-06-02"
 
 
 [[workflows]]
@@ -1071,8 +1090,8 @@ Terminate a Workflow instance.
 
 Return `void` on success; throws an exception if the Workflow is not running or is an errored state.
 
-* [  JavaScript ](#tab-panel-10670)
-* [  TypeScript ](#tab-panel-10671)
+* [  JavaScript ](#tab-panel-12259)
+* [  TypeScript ](#tab-panel-12260)
 
 JavaScript
 

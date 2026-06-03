@@ -16,6 +16,13 @@ rules configured for the project.
 glab mr approvers [<id> | <branch>] [flags]
 ```
 
+## Examples
+
+```console
+glab mr approvers 123
+glab mr approvers branch-name
+```
+
 ## Options
 
 ```plaintext

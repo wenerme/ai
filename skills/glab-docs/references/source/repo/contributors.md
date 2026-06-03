@@ -7,6 +7,12 @@ info: To determine the technical writer assigned to the Stage/Group associated w
 
 Get repository contributors list.
 
+## Synopsis
+
+Lists the users who have contributed commits to the repository, with
+each contributor's commit count. Use `--repo` to target a different
+repository.
+
 ```plaintext
 glab repo contributors [flags]
 ```

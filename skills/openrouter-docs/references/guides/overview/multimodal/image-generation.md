@@ -160,6 +160,16 @@ Set `image_config.aspect_ratio` to request specific aspect ratios for generated 
 * `16:9` → 1344×768
 * `21:9` → 1536×672
 
+**Azure MAI Image aspect ratios** (supported by [`microsoft/mai-image-2.5`](/models/microsoft/mai-image-2.5)):
+
+* `1:1` → 1024×1024 (default)
+* `4:3` → 1024×768
+* `3:4` → 768×1024
+* `16:9` → 1365×768
+* `9:16` → 768×1365
+* `3:2` → 1152×768
+* `2:3` → 768×1152
+
 **Extended aspect ratios** (supported by [`google/gemini-3.1-flash-image-preview`](/models/google/gemini-3.1-flash-image-preview) only):
 
 * `1:4` → Tall, narrow format ideal for scrolling carousels and vertical UI elements

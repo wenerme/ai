@@ -132,6 +132,12 @@ export class MyWorkflow extends WorkflowEntrypoint<Env> {
 
 While a given Workflow instance is waiting for 30 days, it will transition to the `waiting` state, allowing other `queued` instances to run if concurrency limits are reached.
 
+### Cron-triggered instances on Workers Paid
+
+On [Workers Paid](https://developers.cloudflare.com/workers/platform/pricing/#workers), Workflow instances created by `schedules` can run for up to one hour per cron firing without consuming a Workflow concurrency slot.
+
+After that budget is used, the instance yields and enters the normal concurrency queue. It resumes when a concurrency slot is available. The instance does not fail, time out, or terminate because it used this cron concurrency budget.
+
 ### Increasing Workflow step limits
 
 Each Workflow instance supports 10,000 steps by default, but this can be increased up to 25,000 steps in your Wrangler configuration. Refer to [Workflow step limits](https://developers.cloudflare.com/workflows/build/workers-api/#workflow-step-limits) for more information.
@@ -153,8 +159,8 @@ This will appear as `exceededCpu` in [wrangler tail](https://developers.cloudfla
 
 By default, the maximum CPU time per Workflow invocation is set to 30 seconds, but can be increased for all invocations associated with a Workflow definition by setting `limits.cpu_ms` in your Wrangler configuration:
 
-* [  wrangler.jsonc ](#tab-panel-10495)
-* [  wrangler.toml ](#tab-panel-10496)
+* [  wrangler.jsonc ](#tab-panel-12279)
+* [  wrangler.toml ](#tab-panel-12280)
 
 JSONC
 
@@ -207,8 +213,8 @@ This will appear as `exceededResources` in [Workers metrics](https://developers.
 
 By default, the maximum number of subrequests per Workflow instance is 10,000 on Workers Paid plans, but this can be increased up to 10 million by setting `limits.subrequests` in your Wrangler configuration:
 
-* [  wrangler.jsonc ](#tab-panel-10497)
-* [  wrangler.toml ](#tab-panel-10498)
+* [  wrangler.jsonc ](#tab-panel-12281)
+* [  wrangler.toml ](#tab-panel-12282)
 
 JSONC
 
@@ -267,7 +273,7 @@ The following table summarizes the wall time limits for different types of Worke
 2. Applies to non-stream `step.do()` return values. In JavaScript Workflows, `ReadableStream<Uint8Array>` is also a supported serializable return type for larger binary output. [↩](#user-content-fnref-9)
 3. This total includes persisted bytes from streamed step outputs returned from JavaScript `step.do()` calls. [↩](#user-content-fnref-10)
 4. `step.sleep` does not count towards the maximum steps limit [↩](#user-content-fnref-5)
-5. Only instances with a `running` state count towards the concurrency limits. Instances in the `waiting` state are excluded from these limits. [↩](#user-content-fnref-7)
+5. Only instances with a `running` state count towards the concurrency limits. Instances in the `waiting` state are excluded from these limits. Workers Paid cron-triggered Workflow instances have a separate one-hour cron concurrency budget per firing. [↩](#user-content-fnref-7)
 6. Each instance created or restarted counts towards this limit [↩](#user-content-fnref-8)
 7. Workflows will return a HTTP 429 rate limited error if you exceed the rate of new Workflow instance creation. [↩](#user-content-fnref-6) [↩2](#user-content-fnref-6-2)
 8. Workflow instance state and logs will be retained for 3 days on the Workers Free plan and for 30 days on the Workers Paid plan. [↩](#user-content-fnref-2)

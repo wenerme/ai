@@ -7,6 +7,11 @@ info: To determine the technical writer assigned to the Stage/Group associated w
 
 Create a project issue board.
 
+## Synopsis
+
+Creates a new issue board in the project. If you don't provide a
+name, you're prompted for one.
+
 ```plaintext
 glab issue board create [flags]
 ```
@@ -15,6 +20,13 @@ glab issue board create [flags]
 
 ```plaintext
 new
+```
+
+## Examples
+
+```console
+glab issue board create
+glab issue board create "Sprint Board"
 ```
 
 ## Options

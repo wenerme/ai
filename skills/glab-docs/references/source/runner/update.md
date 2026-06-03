@@ -39,8 +39,8 @@ glab runner update <runner-id> --pause -R owner/repo
 ## Options
 
 ```plaintext
-      --pause     Pause the runner
-      --unpause   Resume a paused runner
+      --pause     Pause the runner.
+      --unpause   Resume a paused runner.
 ```
 
 ## Options inherited from parent commands

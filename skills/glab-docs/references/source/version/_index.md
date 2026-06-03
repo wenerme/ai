@@ -7,6 +7,11 @@ info: To determine the technical writer assigned to the Stage/Group associated w
 
 Show version information for glab.
 
+## Synopsis
+
+Prints the installed glab version and the commit it was built from.
+Include this information when reporting a bug.
+
 ```plaintext
 glab version [flags]
 ```
@@ -15,6 +20,12 @@ glab version [flags]
 
 ```plaintext
 v
+```
+
+## Examples
+
+```console
+glab version
 ```
 
 ## Options inherited from parent commands

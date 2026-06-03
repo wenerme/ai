@@ -100,6 +100,16 @@ For Homebrew, see [brew shell completion](https://docs.brew.sh/Shell-Completion)
 glab completion [flags]
 ```
 
+## Examples
+
+```console
+# Load completions in the current zsh session
+source <(glab completion -s zsh); compdef _glab glab
+
+# Print the bash completion script
+glab completion -s bash
+```
+
 ## Options
 
 ```plaintext

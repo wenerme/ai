@@ -231,7 +231,7 @@ There are eight map layer types to choose from in a geomap.
 - [Route](#route-layer) render data points as a route.
 - [Photos](#photos-layer) renders a photo at each data point.
 - [Network](#network-layer) visualizes a network graph from the data.
-- [Open Street Map](#open-street-map-layer) adds a map from a collaborative free geographic world database.
+- [OpenStreetMap](#openstreetmap-layer) adds a map from a collaborative free geographic world database.
 - [CARTO basemap](#carto-basemap-layer) adds a layer from CARTO Raster basemaps.
 - [ArcGIS MapServer](#arcgis-mapserver-layer) adds a layer from an ESRI ArcGIS MapServer.
 - [XYZ Tile layer](#xyz-tile-layer) adds a map from a generic tile layer.
@@ -441,16 +441,16 @@ You can convert node graph data to a network layer:
 | Fill opacity | Configures the transparency of each edge. |
 | Text label | Configures a text label for each edge. |
 
-#### Open Street Map layer
+#### OpenStreetMap layer
 
 A map from a collaborative free geographic world database.
 
-{{< figure src="/static/img/docs/geomap-panel/geomap-osm-9-1-0.png" max-width="600px" alt="Geomap panel Open Street Map" >}}
+{{< figure src="/static/img/docs/geomap-panel/geomap-osm-9-1-0.png" max-width="600px" alt="Geomap panel OpenStreetMap" >}}
 
 - **Opacity** from 0 (transparent) to 1 (opaque)
 - **Display tooltip** - allows you to toggle tooltips for the layer.
 
-[About Open Street Map](https://www.openstreetmap.org/about)
+[About OpenStreetMap](https://www.openstreetmap.org/about)
 
 #### CARTO basemap layer
 
@@ -512,7 +512,7 @@ The XYZ Tile layer is a map from a generic tile layer.
 ##### More information
 
 - [Tiled Web Map Wikipedia](https://en.wikipedia.org/wiki/Tiled_web_map)
-- [List of Open Street Map Tile Servers](https://wiki.openstreetmap.org/wiki/Tile_servers)
+- [List of OpenStreetMap Tile Servers](https://wiki.openstreetmap.org/wiki/Tile_servers)
 
 #### MapLibre Style layer
 
@@ -530,7 +530,7 @@ Basemap layer types can also be added as layers. You can specify an opacity.
 
 There are five basemap layer types to choose from in a geomap.
 
-- [Open Street Map](#open-street-map-layer) adds a map from a collaborative free geographic world database.
+- [OpenStreetMap](#openstreetmap-layer) adds a map from a collaborative free geographic world database.
 - [CARTO basemap](#carto-basemap-layer) adds a layer from CARTO Raster basemaps.
 - [ArcGIS MapServer](#arcgis-mapserver-layer) adds a layer from an ESRI ArcGIS MapServer.
 - [XYZ Tile layer](#xyz-tile-layer) adds a map from a generic tile layer.
@@ -604,7 +604,7 @@ default_baselayer_config = `{
 default_baselayer_config = `{
   "type": "xyz",
   "config": {
-    "attribution": "Open street map",
+    "attribution": "OpenStreetMap",
     "url": "https://tile.openstreetmap.org/{z}/{x}/{y}.png"
   }
 }`

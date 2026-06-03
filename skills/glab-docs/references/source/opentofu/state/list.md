@@ -7,8 +7,20 @@ info: To determine the technical writer assigned to the Stage/Group associated w
 
 List states.
 
+## Synopsis
+
+Lists the OpenTofu or Terraform states in the current project,
+including each state's latest version serial and lock status.
+
 ```plaintext
 glab opentofu state list [flags]
+```
+
+## Examples
+
+```console
+glab opentofu state list
+glab opentofu state list -F json
 ```
 
 ## Options

@@ -7,6 +7,14 @@ info: To determine the technical writer assigned to the Stage/Group associated w
 
 Work with GitLab incidents.
 
+## Synopsis
+
+Incidents track service disruptions and their resolution. List and
+view incidents, comment on them, and subscribe, close, or reopen
+them.
+
+Use `--repo` to target a project other than the current one.
+
 ## Examples
 
 ```console

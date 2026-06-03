@@ -166,6 +166,9 @@ need to click the **Switch to postpay** button that appears in the top right of
 the [AI Studio Billing](https://aistudio.google.com/billing) page when your
 account becomes eligible.
 
+> [!NOTE]
+> **Note:** The option to manually switch to Postpay billing is temporarily disabled.
+
 Then, on the **Billing** page you'll be able to view your balance, due dates,
 and past payments, as well as make payments and manage payment methods.
 

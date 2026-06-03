@@ -27,6 +27,11 @@ To create a release from an annotated Git tag:
 4. Optional. To fetch the new tag locally after the release, run
    `git fetch --tags origin`.
 
+The `--publish-to-catalog` flag is an experiment: it might be
+unstable or removed at any time, and is not ready for production use.
+For more information, see
+<https://docs.gitlab.com/policy/development_stages_support/>.
+
 ```plaintext
 glab release create <tag> [<files>...] [flags]
 ```

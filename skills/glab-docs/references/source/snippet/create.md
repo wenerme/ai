@@ -7,6 +7,15 @@ info: To determine the technical writer assigned to the Stage/Group associated w
 
 Create a new snippet.
 
+## Synopsis
+
+Provide one or more file paths to upload, or pass `--filename` and
+pipe content from standard input.
+
+Snippets are created in the current project by default. Use
+`--personal` to create the snippet in your personal account instead,
+and `--visibility` to control who can see it.
+
 ```plaintext
 glab snippet create [flags] -t <title> <file1> [<file2>...]
 glab snippet create [flags] -t <title> -f <filename>  # reads from stdin

@@ -122,10 +122,10 @@
   "openai-docs/deprecations.md": {
     "url": "https://developers.openai.com/api/docs/deprecations.md",
     "skill": "openai-docs",
-    "etag": "W/\"bcf0d4e9be6fe48b1664eb435a0ad9d7\"",
-    "lastModified": "Wed, 20 May 2026 06:10:28 GMT",
-    "size": 28875,
-    "updatedAt": "2026-05-20T11:07:56.839Z"
+    "etag": "W/\"d73a0a549d0d01119fa163e094d54660\"",
+    "lastModified": "Wed, 03 Jun 2026 00:40:45 GMT",
+    "size": 30943,
+    "updatedAt": "2026-06-03T00:45:06.546Z"
   },
   "openai-docs/gpts/release-notes.md": {
     "url": "https://developers.openai.com/api/docs/gpts/release-notes.md",
@@ -994,10 +994,10 @@
   "openai-docs/guides/tools-tool-search.md": {
     "url": "https://developers.openai.com/api/docs/guides/tools-tool-search.md",
     "skill": "openai-docs",
-    "etag": "W/\"63a612785b9e6f837002851a7cc764cc\"",
-    "lastModified": "Wed, 20 May 2026 22:04:40 GMT",
-    "size": 8190,
-    "updatedAt": "2026-05-21T00:36:32.722Z"
+    "etag": "W/\"aa9a6c186177786bc043a9f464919aee\"",
+    "lastModified": "Wed, 03 Jun 2026 00:40:57 GMT",
+    "size": 9321,
+    "updatedAt": "2026-06-03T00:45:32.378Z"
   },
   "openai-docs/guides/tools-web-search.md": {
     "url": "https://developers.openai.com/api/docs/guides/tools-web-search.md",
@@ -1162,10 +1162,10 @@
   "openai-docs/pricing.md": {
     "url": "https://developers.openai.com/api/docs/pricing.md",
     "skill": "openai-docs",
-    "etag": "W/\"90308a5f770ec5eaa50ca49164919720\"",
-    "lastModified": "Mon, 01 Jun 2026 23:15:44 GMT",
-    "size": 18020,
-    "updatedAt": "2026-06-02T00:40:56.551Z"
+    "etag": "W/\"111d8f832d58508f5cb8fb077e979f2b\"",
+    "lastModified": "Wed, 03 Jun 2026 00:40:18 GMT",
+    "size": 18092,
+    "updatedAt": "2026-06-03T00:45:37.908Z"
   },
   "openai-docs/quickstart.md": {
     "url": "https://developers.openai.com/api/docs/quickstart.md",
@@ -10074,10 +10074,10 @@
   "codex-docs/amazon-bedrock.md": {
     "url": "https://developers.openai.com/codex/amazon-bedrock.md",
     "skill": "codex-docs",
-    "etag": "W/\"4b072f6f398f97152edd0003ea71a9a7\"",
-    "lastModified": "Mon, 01 Jun 2026 23:15:46 GMT",
-    "size": 5743,
-    "updatedAt": "2026-06-02T00:46:23.426Z"
+    "etag": "W/\"3f7bc78ee88a136813e28ab87174764f\"",
+    "lastModified": "Wed, 03 Jun 2026 00:13:23 GMT",
+    "size": 18366,
+    "updatedAt": "2026-06-03T00:51:06.159Z"
   },
   "codex-docs/app-server.md": {
     "url": "https://developers.openai.com/codex/app-server.md",
@@ -10090,10 +10090,10 @@
   "codex-docs/app.md": {
     "url": "https://developers.openai.com/codex/app.md",
     "skill": "codex-docs",
-    "etag": "W/\"c22ae9d235b79910115755514edd32e9\"",
-    "lastModified": "Fri, 22 May 2026 00:18:50 GMT",
-    "size": 8302,
-    "updatedAt": "2026-05-22T00:39:33.342Z"
+    "etag": "W/\"61f86667b06215cae1bdff957d020a91\"",
+    "lastModified": "Wed, 03 Jun 2026 00:13:24 GMT",
+    "size": 8432,
+    "updatedAt": "2026-06-03T00:51:06.618Z"
   },
   "codex-docs/app/automations.md": {
     "url": "https://developers.openai.com/codex/app/automations.md",
@@ -10202,10 +10202,10 @@
   "codex-docs/auth.md": {
     "url": "https://developers.openai.com/codex/auth.md",
     "skill": "codex-docs",
-    "etag": "W/\"3c96511bfede1e8da2e671c68851be9f\"",
-    "lastModified": "Mon, 18 May 2026 21:47:53 GMT",
-    "size": 10441,
-    "updatedAt": "2026-05-19T00:41:04.226Z"
+    "etag": "W/\"c0bc2c21ba4d86cce8b56e770562bd00\"",
+    "lastModified": "Wed, 03 Jun 2026 00:02:14 GMT",
+    "size": 10598,
+    "updatedAt": "2026-06-03T00:51:09.792Z"
   },
   "codex-docs/cli.md": {
     "url": "https://developers.openai.com/codex/cli.md",
@@ -10562,10 +10562,10 @@
   "codex-docs/plugins.md": {
     "url": "https://developers.openai.com/codex/plugins.md",
     "skill": "codex-docs",
-    "etag": "W/\"734f4352c210b9c8df9bbc50f5e08756\"",
-    "lastModified": "Thu, 28 May 2026 22:40:34 GMT",
-    "size": 5896,
-    "updatedAt": "2026-05-29T00:44:48.938Z"
+    "etag": "W/\"654446ed6c92f5b636077d0f462ebda4\"",
+    "lastModified": "Wed, 03 Jun 2026 00:06:07 GMT",
+    "size": 6018,
+    "updatedAt": "2026-06-03T00:51:20.605Z"
   },
   "codex-docs/plugins/build.md": {
     "url": "https://developers.openai.com/codex/plugins/build.md",
@@ -10578,10 +10578,10 @@
   "codex-docs/pricing.md": {
     "url": "https://developers.openai.com/codex/pricing.md",
     "skill": "codex-docs",
-    "etag": "W/\"1438d0b846cb9c938510a5741280eeaa\"",
-    "lastModified": "Mon, 01 Jun 2026 07:02:57 GMT",
-    "size": 31304,
-    "updatedAt": "2026-06-01T12:13:35.954Z"
+    "etag": "W/\"0f123042a0d08c584b6a7adec7f94c9d\"",
+    "lastModified": "Wed, 03 Jun 2026 00:13:59 GMT",
+    "size": 52296,
+    "updatedAt": "2026-06-03T00:51:21.084Z"
   },
   "codex-docs/prompting.md": {
     "url": "https://developers.openai.com/codex/prompting.md",
@@ -10594,10 +10594,10 @@
   "codex-docs/quickstart.md": {
     "url": "https://developers.openai.com/codex/quickstart.md",
     "skill": "codex-docs",
-    "etag": "W/\"200e91d4f64a8e2a3e61c26602097800\"",
-    "lastModified": "Sat, 30 May 2026 00:01:54 GMT",
-    "size": 19430,
-    "updatedAt": "2026-05-30T00:43:07.509Z"
+    "etag": "W/\"8be1fe588e0b9c8fd51d69416ed94cc0\"",
+    "lastModified": "Wed, 03 Jun 2026 00:14:00 GMT",
+    "size": 19419,
+    "updatedAt": "2026-06-03T00:51:21.556Z"
   },
   "codex-docs/remote-connections.md": {
     "url": "https://developers.openai.com/codex/remote-connections.md",
@@ -10662,6 +10662,14 @@
     "lastModified": "Mon, 09 Mar 2026 03:50:58 GMT",
     "size": 1994,
     "updatedAt": "2026-03-09T03:50:58.550Z"
+  },
+  "codex-docs/sites.md": {
+    "url": "https://developers.openai.com/codex/sites.md",
+    "skill": "codex-docs",
+    "etag": "W/\"4fbdcdb278ac2e3af4ca6f91ac1e6113\"",
+    "lastModified": "Wed, 03 Jun 2026 00:05:37 GMT",
+    "size": 8989,
+    "updatedAt": "2026-06-03T00:51:23.661Z"
   },
   "codex-docs/skills.md": {
     "url": "https://developers.openai.com/codex/skills.md",
@@ -10742,6 +10750,14 @@
     "lastModified": "Fri, 08 May 2026 00:35:17 GMT",
     "size": 2890,
     "updatedAt": "2026-05-08T00:35:17.851Z"
+  },
+  "codex-docs/use-cases/build-and-deploy-internal-apps.md": {
+    "url": "https://developers.openai.com/codex/use-cases/build-and-deploy-internal-apps.md",
+    "skill": "codex-docs",
+    "etag": "W/\"f638a53b377456917770822ac244b78b\"",
+    "lastModified": "Wed, 03 Jun 2026 00:14:15 GMT",
+    "size": 5286,
+    "updatedAt": "2026-06-03T00:51:27.966Z"
   },
   "codex-docs/use-cases/cash-flow-forecast.md": {
     "url": "https://developers.openai.com/codex/use-cases/cash-flow-forecast.md",

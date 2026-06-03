@@ -41,7 +41,7 @@ glab incident list --milestone release-2.0.0 --opened
   -C, --confidential           Filter by confidential incidents.
   -e, --epic int               List issues belonging to a given epic (requires --group, no pagination support).
   -g, --group string           Select a group or subgroup. Ignored if a repo argument is set.
-      --in string              search in: title, description. (default "title,description")
+      --in string              Search in: title, description. (default "title,description")
       --jq string              Filter JSON output with a jq expression.
   -l, --label strings          Filter incident by label <name>. Multiple labels can be comma-separated or specified by repeating the flag.
   -m, --milestone string       Filter incident by milestone <id>.

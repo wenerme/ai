@@ -21,6 +21,13 @@ glab incident note <incident-id> [flags]
 comment
 ```
 
+## Examples
+
+```console
+glab incident note 123 --message "Looking into this now."
+glab incident note 123
+```
+
 ## Options
 
 ```plaintext

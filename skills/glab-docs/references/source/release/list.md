@@ -7,6 +7,12 @@ info: To determine the technical writer assigned to the Stage/Group associated w
 
 List releases in a repository.
 
+## Synopsis
+
+By default, lists the releases for the current project, most recent
+first. Use `--repo` to target a different project, or `-F json` for
+machine-readable output.
+
 ```plaintext
 glab release list [flags]
 ```
@@ -15,6 +21,15 @@ glab release list [flags]
 
 ```plaintext
 ls
+```
+
+## Examples
+
+```console
+glab release list
+glab release list --per-page 50
+glab release list -R owner/repository
+glab release list -F json
 ```
 
 ## Options

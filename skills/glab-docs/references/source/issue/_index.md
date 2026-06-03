@@ -7,6 +7,14 @@ info: To determine the technical writer assigned to the Stage/Group associated w
 
 Work with GitLab issues.
 
+## Synopsis
+
+Open issues, list and view them, and manage their lifecycle: assign,
+label, comment, close, reopen, and more. Work with issue boards under
+`issue board`.
+
+Use `--repo` to target a project other than the current one.
+
 ## Examples
 
 ```console

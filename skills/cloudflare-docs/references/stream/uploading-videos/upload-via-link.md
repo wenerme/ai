@@ -14,11 +14,11 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 If you have videos stored in a cloud storage bucket, you can pass a HTTP link for the file, and Stream will fetch the file on your behalf.
 
-* [ REST API ](#tab-panel-8457)
-* [ Workers Binding API ](#tab-panel-8458)
+* [ REST API ](#tab-panel-10062)
+* [ Workers Binding API ](#tab-panel-10063)
 
-* [ cURL ](#tab-panel-8453)
-* [ TypeScript ](#tab-panel-8454)
+* [ cURL ](#tab-panel-10058)
+* [ TypeScript ](#tab-panel-10059)
 
 Make a `POST` request to the Stream API using the link to your video.
 
@@ -63,8 +63,8 @@ const video = await client.stream.copy.create({
 
 See the full Stream [REST API and SDK reference](https://developers.cloudflare.com/api/resources/stream/) for details on using REST API from external applications, with pre-generated SDK's for external TypeScript, Python, or Go applications.
 
-* [ index.ts ](#tab-panel-8455)
-* [ wrangler.jsonc ](#tab-panel-8456)
+* [ index.ts ](#tab-panel-10060)
+* [ wrangler.jsonc ](#tab-panel-10061)
 
 TypeScript
 

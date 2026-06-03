@@ -128,8 +128,8 @@
   "google-ai-docs/caching.md": {
     "url": "https://ai.google.dev/gemini-api/docs/caching",
     "skill": "google-ai-docs",
-    "size": 19318,
-    "updatedAt": "2026-05-20T00:53:28.875Z"
+    "size": 19320,
+    "updatedAt": "2026-06-03T01:16:17.199Z"
   },
   "google-ai-docs/long-context.md": {
     "url": "https://ai.google.dev/gemini-api/docs/long-context",
@@ -152,8 +152,8 @@
   "google-ai-docs/pricing.md": {
     "url": "https://ai.google.dev/gemini-api/docs/pricing",
     "skill": "google-ai-docs",
-    "size": 55053,
-    "updatedAt": "2026-06-02T00:52:45.338Z"
+    "size": 55021,
+    "updatedAt": "2026-06-03T01:16:20.148Z"
   },
   "google-ai-docs/rate-limits.md": {
     "url": "https://ai.google.dev/gemini-api/docs/rate-limits",
@@ -380,8 +380,8 @@
   "google-ai-docs/billing.md": {
     "url": "https://ai.google.dev/gemini-api/docs/billing",
     "skill": "google-ai-docs",
-    "size": 33501,
-    "updatedAt": "2026-05-30T00:54:00.569Z"
+    "size": 33598,
+    "updatedAt": "2026-06-03T01:16:45.044Z"
   },
   "google-ai-docs/priority-inference.md": {
     "url": "https://ai.google.dev/gemini-api/docs/priority-inference",

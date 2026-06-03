@@ -21,6 +21,13 @@ glab mr todo [<id> | <branch>] [flags]
 add-todo
 ```
 
+## Examples
+
+```console
+glab mr todo 123
+glab mr todo branch-name
+```
+
 ## Options inherited from parent commands
 
 ```plaintext

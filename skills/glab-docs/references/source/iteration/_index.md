@@ -7,6 +7,14 @@ info: To determine the technical writer assigned to the Stage/Group associated w
 
 Retrieve iteration information.
 
+## Synopsis
+
+Iterations are time-boxed periods, similar to sprints, that group
+issues and merge requests in a project or group.
+
+List the iterations for the current project, or use the `--group`
+flag to list a group's iterations instead.
+
 ## Options
 
 ```plaintext

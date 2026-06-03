@@ -35,9 +35,7 @@ After Programmable Flow Protection has been enabled to your account, go to **Net
 1. Upload your eBPF program written in C.  
 The program is validated by the system and stored in your account. The API compiles the program, then runs a verifier against the compiled program to enforce memory checks and verify program termination. If the program fails compilation or verification, the Cloudflare dashboard will return a detailed error message.
 2. Create a [rule](https://developers.cloudflare.com/ddos-protection/advanced-ddos-systems/how-to/create-rule/#create-a-programmable-flow-protection-rule)
-3. To observe the program's behavior, query the `programmableFlowProtectionNetworkAnalyticsAdaptiveGroups` group in GraphQL.  
-Note  
-The Network Analytics dashboard does not yet support filtering by the Programmable Flow Protection feature. This feature will be added soon.
+3. To observe the program's behavior, check the Network Analytics dashboard and select the **Programmable Flow Protection** tab.
 
 You can create additional rules with different [rule settings](https://developers.cloudflare.com/ddos-protection/advanced-ddos-systems/concepts/#rule-settings) [scoped](https://developers.cloudflare.com/ddos-protection/advanced-ddos-systems/concepts/#scope) to various regions and Cloudflare locations to change the [mode](https://developers.cloudflare.com/ddos-protection/advanced-ddos-systems/concepts/#mode) (Mitigation or Monitoring) to accommodate for your traffic patterns and business use cases.
 
@@ -783,7 +781,11 @@ This program demonstrates several key concepts:
 
 ## State
 
-Each program has access to its own local state. State is local to each server and is not shared between datacenters. There are two state tables available to your program.
+Each program has access to its own local state. State is local to each server and is not shared between datacenters.
+
+State is tied to a specific program. If you modify a rule's mode (disabled, monitoring, or enabled), the content of the state tables persists. However, if you modify a rule's program or the contents of the program itself, the state tables are cleared.
+
+There are two state tables available to your program.
 
 Warning
 
@@ -846,13 +848,15 @@ The table below provides a list of currently supported helper functions:
 | hash\_crc32                  | int hash\_crc32(uint8\_t \*src, size\_t src\_len, uint8\_t \*dst)                                    | Computes CRC32 hash of the source buffer and stores result in destination buffer.                                                                                                                                           |
 | hmac\_sha256                 | int hmac\_sha256(uint8\_t \*key, size\_t key\_len, uint8\_t \*msg, size\_t msg\_len, uint8\_t \*dst) | Computes HMAC-SHA256 of the message using the provided key and stores result in destination buffer.                                                                                                                         |
 | hmac\_sha512                 | int hmac\_sha512(uint8\_t \*key, size\_t key\_len, uint8\_t \*msg, size\_t msg\_len, uint8\_t \*dst) | Computes HMAC-SHA512 of the message using the provided key and stores result in destination buffer.                                                                                                                         |
+| hash\_blake2b512             | int hash\_blake2b512(uint8\_t \*src, size\_t src\_len, uint8\_t \*dest, size\_t dest\_len)           | Computes BLAKE2B-512 hash of the source and stores result in destination buffer.                                                                                                                                            |
+| hmac\_blake2b512             | int hmac\_blake2b512(uint8\_t \*src, size\_t src\_len, uint8\_t \*dest, size\_t dest\_len)           | Computes BLAKE2B-512 HMAC of the message and stores result in the destination buffer.                                                                                                                                       |
 | set\_challenge               | int set\_challenge(uint8\_t \*src, size\_t src\_len)                                                 | Sets challenge data for the current packet. If src\_len is 0, challenge buffer is reset.                                                                                                                                    |
 | get\_src\_ip\_status         | uint64\_t get\_src\_ip\_status(void)                                                                 | Retrieves the status value associated with the source IP address from the state table.                                                                                                                                      |
 | set\_src\_ip\_status         | int set\_src\_ip\_status(uint64\_t status)                                                           | Sets the status value associated with the source IP address in the state table.                                                                                                                                             |
-| get\_src\_ip\_data           | int get\_src\_ip\_data(uint8\_t \*dst, size\_t dst\_len)                                             | Retrieves custom data associated with the source IP address from the state table.                                                                                                                                           |
-| set\_src\_ip\_data           | int set\_src\_ip\_data(uint8\_t \*src, size\_t src\_len)                                             | Stores custom data associated with the source IP address in the state table.                                                                                                                                                |
-| get\_flow\_data              | int get\_flow\_data(uint8\_t \*dst, size\_t dst\_len)                                                | Retrieves custom data associated with the current flow from the state table.                                                                                                                                                |
-| set\_flow\_data              | int set\_flow\_data(uint8\_t \*src, size\_t src\_len)                                                | Stores custom data associated with the current flow in the state table.                                                                                                                                                     |
+| get\_src\_ip\_data           | int get\_src\_ip\_data(uint64\_t \*data)                                                             | Retrieves custom data associated with the source IP address from the state table.                                                                                                                                           |
+| set\_src\_ip\_data           | int set\_src\_ip\_data(uint64\_t data)                                                               | Stores custom data associated with the source IP address in the state table.                                                                                                                                                |
+| get\_flow\_data              | int get\_flow\_data(uint64\_t \*data)                                                                | Retrieves custom data associated with the current flow from the state table.                                                                                                                                                |
+| set\_flow\_data              | int set\_flow\_data(uint64\_t data)                                                                  | Stores custom data associated with the current flow in the state table.                                                                                                                                                     |
 | entropy                      | double entropy(uint8\_t \*src, size\_t src\_len)                                                     | Calculates the entropy of the source buffer.                                                                                                                                                                                |
 | set\_network\_analytics\_tag | int set\_network\_analytics\_tag(Tag value)                                                          | Sets a custom tag for network analytics reporting. Defaults to 0 if not set.                                                                                                                                                |
 | ntohs                        | uint16\_t ntohs(uint16\_t netshort)                                                                  | Converts a 16-bit integer from network byte order to host byte order.                                                                                                                                                       |
@@ -986,115 +990,15 @@ Using the `Expression` field to limit programs to a subset of IPs or prefixes an
 
 Traffic flowing through Programmable Flow Protection can be found in the [Network Analytics](https://developers.cloudflare.com/analytics/network-analytics/) dashboard.
 
-You can use the Cloudflare [GraphQL](https://developers.cloudflare.com/analytics/graphql-api/) API to granularly query traffic data in the `programmableFlowProtectionNetworkAnalyticsAdaptiveGroups` group.
-
-For example, the curl command below executes a query that shows the total sum of bits and packets that went through Programmable Flow Protection in a time frame.
-
-`$CLOUDFLARE_API_TOKEN` and `<ACCOUNT_TAG>` must be changed to correlate to the user's account.
-
-Cloudflare recommends using a [client](https://developers.cloudflare.com/analytics/graphql-api/getting-started/explore-graphql-schema/) like GraphQL to explore all the dimensions and fields available for querying in `programmableFlowProtectionNetworkAnalyticsAdaptiveGroups`.
-
-Request
-
-```
-
-echo '{ "query":
-
-  "query PFPActivity {
-
-    viewer {
-
-      accounts(filter: { accountTag: \"<ACCOUNT_TAG>\" }) {
-
-        programmableFlowProtectionNetworkAnalyticsAdaptiveGroups(
-
-          filter: {
-
-            datetime_geq: \"2025-12-03T11:00:00Z\"
-
-            datetime_leq: \"2025-12-04T11:10:00Z\"
-
-          }
-
-          limit: 10
-
-        ) {
-
-          sum {
-
-            bits
-
-            packets
-
-          }
-
-        }
-
-      }
-
-    }
-
-  }"
-
-}' | tr -d '\n' | curl --silent \
-
-https://api.cloudflare.com/client/v4/graphql \
-
---header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
-
---header "Content-Type: application/json" \
-
---data @-
-
-
-```
-
-```
-
-{
-
-  "data": {
-
-    "viewer": {
-
-      "accounts": [
-
-        {
-
-          "programmableFlowProtectionNetworkAnalyticsAdaptiveGroups": [
-
-            {
-
-              "sum": {
-
-                "bits": 16680384000,
-
-                "packets": 23020000
-
-              }
-
-            }
-
-          ]
-
-        }
-
-      ]
-
-    }
-
-  },
-
-  "errors": null
-
-}
-
-
-```
+In the Network Analytics dashboard, select the **Programmable Flow Protection** tab to filter traffic based on this feature. You can filter traffic by program ID, custom network analytics tags, actions, IPs, and ports.
 
 ---
 
 ## Supported BPF helper functions and structures
+
+Our helper function definitions and verifier wrapper sources are available on [GitHub ↗](https://github.com/cloudflare/pfp-tools/tree/main/pfp-headers/include).
+
+The section below contains function signatures for every helper function your program may call.
 
 ```
 
@@ -1341,6 +1245,16 @@ int hmac_sha256(uint8_t *key, size_t key_len, uint8_t *msg, size_t msg_len, uint
 int hmac_sha512(uint8_t *key, size_t key_len, uint8_t *msg, size_t msg_len, uint8_t *dst);
 
 
+/* Computes BLAKE2B-512 hash of the source and stores result in destination buffer. */
+
+int hash_blake2b512(uint8_t *src, size_t src_len, uint8_t *dest, size_t dest_len);
+
+
+/* Computes BLAKE2B-512 HMAC of the message and stores result in the destination buffer. */
+
+int hmac_blake2b512(uint8_t *src, size_t src_len, uint8_t *dest, size_t dest_len);
+
+
 /* Sets challenge data for the current packet. If src_len is 0, challenge buffer is reset. */
 
 int set_challenge(uint8_t *src, size_t src_len);
@@ -1358,22 +1272,22 @@ int set_src_ip_status(uint64_t status);
 
 /* Retrieves custom data associated with the source IP address from the state table. */
 
-int get_src_ip_data(uint8_t *dst, size_t dst_len);
+int get_src_ip_data(uint64_t *data);
 
 
 /* Stores custom data associated with the source IP address in the state table. */
 
-int set_src_ip_data(uint8_t *src, size_t src_len);
+int set_src_ip_data(uint64_t data);
 
 
 /* Retrieves custom data associated with the current flow from the state table. */
 
-int get_flow_data(uint8_t *dst, size_t dst_len);
+int get_flow_data(uint64_t *data);
 
 
 /* Stores custom data associated with the current flow in the state table. */
 
-int set_flow_data(uint8_t *src, size_t src_len);
+int set_flow_data(uint64_t data);
 
 
 /* Calculates the entropy of the source buffer. */

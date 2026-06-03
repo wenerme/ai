@@ -7,6 +7,12 @@ info: To determine the technical writer assigned to the Stage/Group associated w
 
 List project iterations.
 
+## Synopsis
+
+By default, lists the iterations for the current project. Use
+`--group` to list a group's iterations instead, or `--repo` to
+target a project other than the current one.
+
 ```plaintext
 glab iteration list [flags]
 ```

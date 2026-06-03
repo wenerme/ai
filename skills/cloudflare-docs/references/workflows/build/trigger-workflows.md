@@ -15,17 +15,19 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 You can trigger Workflows both programmatically and via the Workflows APIs, including:
 
 1. With [Workers](https://developers.cloudflare.com/workers) via HTTP requests in a `fetch` handler, or bindings from a `queue` or `scheduled` handler
-2. Using the [Workflows REST API](https://developers.cloudflare.com/api/resources/workflows/methods/list/)
-3. Via the [wrangler CLI](https://developers.cloudflare.com/workers/wrangler/commands/workflows/#workflows) in your terminal
+2. On a recurring interval by defining `schedules` on a Workflow binding in your Wrangler configuration
+3. Using the [Workflows REST API](https://developers.cloudflare.com/api/resources/workflows/methods/list/)
+4. Via the [wrangler CLI](https://developers.cloudflare.com/workers/wrangler/commands/workflows/#workflows) in your terminal
 
 ## Workers API (Bindings)
 
 You can interact with Workflows programmatically from any Worker script by creating a binding to a Workflow. A Worker can bind to multiple Workflows, including Workflows defined in other Workers projects (scripts) within your account.
 
-You can interact with a Workflow:
+You can trigger a Workflow:
 
 * Directly over HTTP via the [fetch](https://developers.cloudflare.com/workers/runtime-apis/handlers/fetch/) handler
 * From a [Queue consumer](https://developers.cloudflare.com/queues/configuration/javascript-apis/#consumer) inside a `queue` handler
+* On a recurring schedule by defining `schedules` on the Workflow binding in `wrangler.jsonc`
 * From a [Cron Trigger](https://developers.cloudflare.com/workers/configuration/cron-triggers/) inside a `scheduled` handler
 * Within a [Durable Object](https://developers.cloudflare.com/durable-objects/)
 
@@ -35,8 +37,8 @@ New to Workflows? Start with the [Workflows tutorial](https://developers.cloudfl
 
 To bind to a Workflow from your Workers code, you need to define a [binding](https://developers.cloudflare.com/workers/wrangler/configuration/) to a specific Workflow. For example, to bind to the Workflow defined in the [get started guide](https://developers.cloudflare.com/workflows/get-started/guide/), you would configure the [Wrangler configuration file](https://developers.cloudflare.com/workers/wrangler/configuration/) with the below:
 
-* [  wrangler.jsonc ](#tab-panel-10813)
-* [  wrangler.toml ](#tab-panel-10814)
+* [  wrangler.jsonc ](#tab-panel-12243)
+* [  wrangler.toml ](#tab-panel-12244)
 
 JSONC
 
@@ -52,7 +54,7 @@ JSONC
 
   // Set this to today's date
 
-  "compatibility_date": "2026-05-18",
+  "compatibility_date": "2026-06-02",
 
   "workflows": [
 
@@ -95,7 +97,7 @@ main = "src/index.ts"
 
 # Set this to today's date
 
-compatibility_date = "2026-05-18"
+compatibility_date = "2026-06-02"
 
 
 [[workflows]]
@@ -110,6 +112,109 @@ class_name = "MyWorkflow"
 ```
 
 The `binding = "MY_WORKFLOW"` line defines the JavaScript variable that our Workflow methods are accessible on, including `create` (which triggers a new instance) or `get` (which returns the status of an existing instance).
+
+### Schedule a Workflow directly
+
+If you want to create Workflow instances on a recurring interval, add a `schedules` array to the Workflow binding in your Wrangler configuration:
+
+* [  wrangler.jsonc ](#tab-panel-12245)
+* [  wrangler.toml ](#tab-panel-12246)
+
+JSONC
+
+```
+
+{
+
+  "$schema": "./node_modules/wrangler/config-schema.json",
+
+  "name": "workflows-tutorial",
+
+  "main": "src/index.ts",
+
+  // Set this to today's date
+
+  "compatibility_date": "2026-06-02",
+
+  "workflows": [
+
+    {
+
+      "name": "workflows-tutorial",
+
+      "binding": "MY_WORKFLOW",
+
+      "class_name": "MyWorkflow",
+
+      "schedules": ["0 * * * *"]
+
+    }
+
+  ]
+
+}
+
+
+```
+
+TOML
+
+```
+
+"$schema" = "./node_modules/wrangler/config-schema.json"
+
+name = "workflows-tutorial"
+
+main = "src/index.ts"
+
+# Set this to today's date
+
+compatibility_date = "2026-06-02"
+
+
+[[workflows]]
+
+name = "workflows-tutorial"
+
+binding = "MY_WORKFLOW"
+
+class_name = "MyWorkflow"
+
+schedules = [ "0 * * * *" ]
+
+
+```
+
+Each matching cron expression creates a new Workflow instance automatically. Use this when you want to run a Workflow on a schedule without defining top-level `triggers.crons` and a separate `scheduled` handler.
+
+Scheduled instances include the matching cron expression and scheduled trigger time on `event.schedule`:
+
+TypeScript
+
+```
+
+export class MyWorkflow extends WorkflowEntrypoint<Env> {
+
+  async run(event: WorkflowEvent<unknown>, step: WorkflowStep) {
+
+    if (event.schedule) {
+
+      console.log(event.schedule.cron);
+
+      console.log(new Date(event.schedule.scheduledTime));
+
+    }
+
+  }
+
+}
+
+
+```
+
+On [Workers Paid](https://developers.cloudflare.com/workers/platform/pricing/#workers), Workflow instances created by `schedules` can run for up to one hour per cron firing without consuming a Workflow concurrency slot. If the instance pauses or sleeps after that window, the instance yields and enters the normal concurrency queue upon resume. It resumes when a concurrency slot is available.
+
+Use the latest Wrangler release when configuring Workflow schedules. If your local Wrangler schema does not recognize `schedules` yet, update Wrangler before deploying.
 
 The following example shows how you can manage Workflows from within a Worker, including:
 
@@ -305,8 +410,8 @@ To restart an instance from a specific step instead of the beginning, refer to [
 
 You can create a new Workflow instance from within a step of another Workflow. The parent Workflow will not block waiting for the child Workflow to complete — it continues execution immediately after the child instance is successfully created.
 
-* [  JavaScript ](#tab-panel-10815)
-* [  TypeScript ](#tab-panel-10816)
+* [  JavaScript ](#tab-panel-12247)
+* [  TypeScript ](#tab-panel-12248)
 
 JavaScript
 

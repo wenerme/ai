@@ -7,6 +7,11 @@ info: To determine the technical writer assigned to the Stage/Group associated w
 
 Interact with a GitLab user account.
 
+## Synopsis
+
+Look up information about GitLab users, such as the events a user has
+generated.
+
 ## Options inherited from parent commands
 
 ```plaintext

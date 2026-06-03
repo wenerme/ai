@@ -38,8 +38,8 @@ The Media binding is enabled on a per-Worker basis.
 
 To bind Media Transformations to your Worker, add the following to the end of your Wrangler configuration file:
 
-* [  wrangler.jsonc ](#tab-panel-7989)
-* [  wrangler.toml ](#tab-panel-7990)
+* [  wrangler.jsonc ](#tab-panel-10050)
+* [  wrangler.toml ](#tab-panel-10051)
 
 JSONC
 
@@ -484,8 +484,8 @@ The Media Transformations API is available _in remote mode_ for local developmen
 
 To enable usage in local development, add `remote` to the binding configuration:
 
-* [  wrangler.jsonc ](#tab-panel-7991)
-* [  wrangler.toml ](#tab-panel-7992)
+* [  wrangler.jsonc ](#tab-panel-10052)
+* [  wrangler.toml ](#tab-panel-10053)
 
 JSONC
 

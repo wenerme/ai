@@ -7,8 +7,21 @@ info: To determine the technical writer assigned to the Stage/Group associated w
 
 View user events.
 
+## Synopsis
+
+By default, lists events for the current project. Use `--all` to
+include events from every project you can access.
+
 ```plaintext
 glab user events [flags]
+```
+
+## Examples
+
+```console
+glab user events
+glab user events --all
+glab user events -F json
 ```
 
 ## Options

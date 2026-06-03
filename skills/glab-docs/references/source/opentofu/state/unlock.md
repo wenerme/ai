@@ -7,8 +7,19 @@ info: To determine the technical writer assigned to the Stage/Group associated w
 
 Unlock the given state.
 
+## Synopsis
+
+Unlocking a state releases a lock held on it, so others can modify
+the state again.
+
 ```plaintext
 glab opentofu state unlock <state> [flags]
+```
+
+## Examples
+
+```console
+glab opentofu state unlock production
 ```
 
 ## Options inherited from parent commands

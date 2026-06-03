@@ -125,8 +125,8 @@ For more guidance on how to define your Workflow logic, refer to [Rules of Workf
 ## 3\. Configure your Workflow
 
 1. Open `wrangler.jsonc`, which is your [Wrangler configuration file](https://developers.cloudflare.com/workers/wrangler/configuration/) for your Workers project and your Workflow, and add the `workflows` configuration:  
-   * [  wrangler.jsonc ](#tab-panel-10489)  
-   * [  wrangler.toml ](#tab-panel-10490)  
+   * [  wrangler.jsonc ](#tab-panel-12271)  
+   * [  wrangler.toml ](#tab-panel-12272)  
 JSONC  
 ```  
 {  
@@ -134,7 +134,7 @@ JSONC
   "name": "my-workflow",  
   "main": "src/index.ts",  
   // Set this to today's date  
-  "compatibility_date": "2026-05-04",  
+  "compatibility_date": "2026-06-02",  
   "observability": {  
     "enabled": true  
   },  
@@ -153,7 +153,7 @@ TOML
 name = "my-workflow"  
 main = "src/index.ts"  
 # Set this to today's date  
-compatibility_date = "2026-05-04"  
+compatibility_date = "2026-06-02"  
 [observability]  
 enabled = true  
 [[workflows]]  
@@ -162,6 +162,43 @@ binding = "MY_WORKFLOW"
 class_name = "MyWorkflow"  
 ```  
 The `class_name` must match your exported class, and `binding` is the variable name you use to access the Workflow in your code (like `env.MY_WORKFLOW`).  
+If you want the same Workflow to run automatically on a recurring interval, add `schedules` to the Workflow definition:  
+   * [  wrangler.jsonc ](#tab-panel-12273)  
+   * [  wrangler.toml ](#tab-panel-12274)  
+JSONC  
+```  
+{  
+  "$schema": "node_modules/wrangler/config-schema.json",  
+  "name": "my-workflow",  
+  "main": "src/index.ts",  
+  // Set this to today's date  
+  "compatibility_date": "2026-06-02",  
+  "workflows": [  
+    {  
+      "name": "my-workflow",  
+      "binding": "MY_WORKFLOW",  
+      "class_name": "MyWorkflow",  
+      "schedules": ["0 * * * *"]  
+    }  
+  ]  
+}  
+```  
+TOML  
+```  
+"$schema" = "node_modules/wrangler/config-schema.json"  
+name = "my-workflow"  
+main = "src/index.ts"  
+# Set this to today's date  
+compatibility_date = "2026-06-02"  
+[[workflows]]  
+name = "my-workflow"  
+binding = "MY_WORKFLOW"  
+class_name = "MyWorkflow"  
+schedules = [ "0 * * * *" ]  
+```  
+Each matching cron expression creates a new Workflow instance automatically, so you do not need top-level `triggers.crons` and a separate `scheduled` handler for Workflow-specific recurring runs.  
+Scheduled instances include the matching cron expression and scheduled trigger time on `event.schedule`.  
+Use the latest Wrangler release when configuring Workflow schedules. If your local Wrangler schema does not recognize `schedules` yet, update Wrangler before deploying.  
 You can also access [bindings](https://developers.cloudflare.com/workers/runtime-apis/bindings/) (such as [KV](https://developers.cloudflare.com/kv/), [R2](https://developers.cloudflare.com/r2/), or [D1](https://developers.cloudflare.com/d1/)) via `this.env` within your Workflow. For more information on bindings within Workers, refer to [Bindings (env)](https://developers.cloudflare.com/workers/runtime-apis/bindings/).
 2. Now, generate types for your bindings:  
 Terminal window  

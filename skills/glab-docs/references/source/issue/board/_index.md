@@ -7,6 +7,12 @@ info: To determine the technical writer assigned to the Stage/Group associated w
 
 Work with GitLab issue boards in the given project.
 
+## Synopsis
+
+Issue boards organize issues into lists, similar to a kanban board,
+so you can track work as it moves between stages. Create a board, or
+view one interactively in the terminal.
+
 ## Options
 
 ```plaintext

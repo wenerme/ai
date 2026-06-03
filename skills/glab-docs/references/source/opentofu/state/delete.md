@@ -16,6 +16,19 @@ the confirmation prompt.
 glab opentofu state delete <state> [<serial>] [flags]
 ```
 
+## Examples
+
+```console
+# Delete a state and all its versions
+glab opentofu state delete production
+
+# Delete only a specific version of a state, by serial
+glab opentofu state delete production 42
+
+# Delete without the confirmation prompt
+glab opentofu state delete production --force
+```
+
 ## Options
 
 ```plaintext

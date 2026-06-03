@@ -7,7 +7,7 @@
 |:----|:----|:----|
 |[sparkle](https://github.com/xishang0128/sparkle)|维护中 |
 |[clash-verge](https://github.com/MetaCubeX/clash-verge)|停止维护 |
-|[clash-verge-rev](https://github.com/clash-verge-rev/clash-verge-rev)|维护中 |注意：该项目在[v2.5.2+autobuild.0602.3283c04](https://github.com/clash-verge-rev/clash-verge-rev/commit/2cb9c13ab6f0b0fec5ccc622c669843c935942ed)引入了收集并上传设备指纹行为，请避免使用后续版本 |
+|[clash-verge-rev](https://github.com/clash-verge-rev/clash-verge-rev)|维护中 |
 |[clash-nyanpasu](https://github.com/keiko233/clash-nyanpasu)|维护中 |
 |[ClashMetaForWindows_Mini](https://github.com/kogekiplay/ClashMetaForWindows_Mini)|停止维护 |
 |[clashN](https://github.com/2dust/clashN)|停止维护 |
@@ -35,7 +35,7 @@
 |:----|:----|:----|
 |[sparkle](https://github.com/xishang0128/sparkle)|维护中 |
 |[clash-verge](https://github.com/MetaCubeX/clash-verge)|停止维护 |
-|[clash-verge-rev](https://github.com/clash-verge-rev/clash-verge-rev)|维护中 |注意：该项目在[v2.5.2+autobuild.0602.3283c04](https://github.com/clash-verge-rev/clash-verge-rev/commit/2cb9c13ab6f0b0fec5ccc622c669843c935942ed)引入了收集并上传设备指纹行为，请避免使用后续版本 |
+|[clash-verge-rev](https://github.com/clash-verge-rev/clash-verge-rev)|维护中 |
 |[clash-nyanpasu](https://github.com/keiko233/clash-nyanpasu)|维护中 |
 |[GUI.for.Clash](https://github.com/GUI-for-Cores/GUI.for.Clash)|维护中 |
 |[FlClash](https://github.com/chen08209/FlClash)|维护中 |
@@ -58,7 +58,7 @@
 |:----|:----|:----|
 |[sparkle](https://github.com/xishang0128/sparkle)|维护中 |
 |[clash-verge](https://github.com/MetaCubeX/clash-verge)|停止维护 |
-|[clash-verge-rev](https://github.com/clash-verge-rev/clash-verge-rev)|维护中 |注意：该项目在[v2.5.2+autobuild.0602.3283c04](https://github.com/clash-verge-rev/clash-verge-rev/commit/2cb9c13ab6f0b0fec5ccc622c669843c935942ed)引入了收集并上传设备指纹行为，请避免使用后续版本 |
+|[clash-verge-rev](https://github.com/clash-verge-rev/clash-verge-rev)|维护中 |
 |[clash-nyanpasu](https://github.com/keiko233/clash-nyanpasu)|维护中 |
 |[clashtui](https://github.com/JohanChane/clashtui)|维护中 |
 |[GUI.for.Clash](https://github.com/GUI-for-Cores/GUI.for.Clash)|维护中 |

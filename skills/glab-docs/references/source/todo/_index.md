@@ -7,6 +7,14 @@ info: To determine the technical writer assigned to the Stage/Group associated w
 
 Manage your to-do list.
 
+## Synopsis
+
+Your to-do list collects the items that need your attention, such as
+issues and merge requests where you were assigned, mentioned, or
+asked to review.
+
+List pending items, then mark them as done individually or all at once.
+
 ## Examples
 
 ```console

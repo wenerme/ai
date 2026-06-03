@@ -7,6 +7,12 @@ info: To determine the technical writer assigned to the Stage/Group associated w
 
 Update issue.
 
+## Synopsis
+
+Change an issue's labels, assignees, milestone, title, or
+description. Use `--label` and `--unlabel` to add or remove
+labels.
+
 ```plaintext
 glab issue update <id> [flags]
 ```

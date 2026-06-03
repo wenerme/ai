@@ -41,7 +41,7 @@ export class ImageProcessingWorkflow extends WorkflowEntrypoint {
 
     const imageData = await step.do('fetch image', async () => {
 
-      const object = await this.env.BUCKET.get(event.params.imageKey);
+      const object = await this.env.BUCKET.get(event.payload.imageKey);
 
       return await object.arrayBuffer();
 
@@ -76,7 +76,7 @@ export class ImageProcessingWorkflow extends WorkflowEntrypoint {
 
     await step.do('publish', async () => {
 
-      await this.env.BUCKET.put(`public/${event.params.imageKey}`, imageData);
+      await this.env.BUCKET.put(`public/${event.payload.imageKey}`, imageData);
 
     });
 

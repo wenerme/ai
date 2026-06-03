@@ -7,6 +7,11 @@ info: To determine the technical writer assigned to the Stage/Group associated w
 
 Delete an issue.
 
+## Synopsis
+
+Permanently deletes the issue. You can pass an issue ID or a full
+issue URL.
+
 ```plaintext
 glab issue delete <id> [flags]
 ```

@@ -36,7 +36,7 @@ In Cursor, run the following command or install from the [Cursor Marketplace ↗
 3. **Try a prompt**  
 For example:  
 ```  
-Build an image upload and transformation service using R2 and Cloudflare Images.  
+Set up a KV namespace for edge-cached session storage in my Worker.  
 ```
 
 ## Cloudflare platform access

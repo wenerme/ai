@@ -7,6 +7,13 @@ info: To determine the technical writer assigned to the Stage/Group associated w
 
 Mark a to-do item as done.
 
+## Synopsis
+
+Pass a to-do item's ID to mark that single item as done, or use
+`--all` to mark every pending item as done at once.
+
+Find item IDs with `glab todo list`.
+
 ```plaintext
 glab todo done [<id>] [flags]
 ```

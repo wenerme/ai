@@ -7,6 +7,11 @@ info: To determine the technical writer assigned to the Stage/Group associated w
 
 Manage personal, project, or group tokens.
 
+## Synopsis
+
+Create, list, revoke, and rotate access tokens for your user
+account, a project, or a group.
+
 ## Aliases
 
 ```plaintext

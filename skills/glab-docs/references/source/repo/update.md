@@ -7,6 +7,11 @@ info: To determine the technical writer assigned to the Stage/Group associated w
 
 Update an existing GitLab project or repository.
 
+## Synopsis
+
+Change project settings such as the description or default branch, or
+archive and unarchive the project with `--archive`.
+
 ```plaintext
 glab repo update [path] [flags]
 ```

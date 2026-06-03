@@ -135,16 +135,447 @@ Fast Mode isn't available with Amazon Bedrock. Fast Mode uses priority
   processing, and the initial Amazon Bedrock offering supports on-demand
   inference only.
 
-| Capability                                                     | State         |
-| -------------------------------------------------------------- | ------------- |
-| Codex CLI local workflows                                      | Supported     |
-| Codex desktop app local workflows                              | Supported     |
-| Codex IDE extension local workflows                            | Supported     |
-| Bedrock-backed inference with supported OpenAI models          | Supported     |
-| Locally configured MCP servers and connectors                  | Supported     |
-| Hosted first-party plugin directory                            | Not available |
-| Codex cloud agents, including review, security, and web agents | Not available |
-| Image generation and voice transcription                       | Not available |
+<ToggleSection title="Detailed feature availability">
+  <CodexPlanFeatureMatrix
+    client:load
+    data={{
+      plans: [
+        {
+          id: "bedrock",
+          shortLabel: "Amazon Bedrock",
+          label: "Amazon Bedrock",
+        },
+      ],
+      sections: [
+        {
+          title: "Access and surfaces",
+          features: [
+            {
+              name: "Codex web",
+              href: "/codex/cloud",
+              availability: {
+                bedrock: "unavailable",
+              },
+            },
+            {
+              name: "Codex app for local tasks",
+              href: "/codex/app",
+              availability: {
+                bedrock: "available",
+              },
+            },
+            {
+              name: "Codex CLI",
+              href: "/codex/cli",
+              availability: {
+                bedrock: "available",
+              },
+            },
+            {
+              name: "IDE extension",
+              href: "/codex/ide",
+              availability: {
+                bedrock: "available",
+              },
+            },
+            {
+              name: "Codex SDK, `codex exec`, and scriptable workflows",
+              shortName: "Codex SDK and scripting",
+              href: "/codex/sdk",
+              availability: {
+                bedrock: "available",
+              },
+            },
+          ],
+        },
+        {
+          title: "Models and multimodal",
+          features: [
+            {
+              name: "Bedrock-backed inference with supported OpenAI models",
+              shortName: "Bedrock-backed inference",
+              href: "/codex/amazon-bedrock",
+              availability: {
+                bedrock: "available",
+              },
+            },
+            {
+              name: "Fast mode",
+              href: "/codex/speed",
+              availability: {
+                bedrock: "unavailable",
+              },
+            },
+            {
+              name: "Image generation and editing",
+              href: "/codex/app/features#image-generation",
+              availability: {
+                bedrock: "unavailable",
+              },
+            },
+            {
+              name: "Voice dictation",
+              href: "/codex/app/features#voice-dictation",
+              availability: {
+                bedrock: "unavailable",
+              },
+            },
+            {
+              name: "Web search",
+              href: "/codex/app/features#web-search",
+              availability: {
+                bedrock: "unavailable",
+              },
+            },
+          ],
+        },
+        {
+          title: "Local features",
+          features: [
+            {
+              name: "Local code review with `/review`",
+              shortName: "Local code review",
+              href: "/codex/workflows#do-a-local-code-review",
+              availability: {
+                bedrock: "available",
+              },
+            },
+            {
+              name: "Auto-review for approval requests",
+              href: "/codex/concepts/sandboxing/auto-review",
+              availability: {
+                bedrock: "available",
+              },
+            },
+            {
+              name: "Sandboxing and permission controls",
+              href: "/codex/permissions",
+              availability: {
+                bedrock: "available",
+              },
+            },
+            {
+              name: "Project and standalone app automations",
+              shortName: "App automations",
+              href: "/codex/app/automations",
+              availability: {
+                bedrock: "available",
+              },
+            },
+            {
+              name: "Automations",
+              href: "/codex/app/automations",
+              availability: {
+                bedrock: "available",
+              },
+            },
+            {
+              name: "Worktrees and built-in Git tools",
+              shortName: "Built-in Git tools",
+              href: "/codex/app/worktrees",
+              availability: {
+                bedrock: "available",
+              },
+            },
+            {
+              name: "Local environments and repeatable actions",
+              shortName: "Repeatable actions",
+              href: "/codex/app/local-environments",
+              availability: {
+                bedrock: "available",
+              },
+            },
+            {
+              name: "Appshots",
+              href: "/codex/appshots",
+              availability: {
+                bedrock: "available",
+              },
+            },
+          ],
+        },
+        {
+          title: "Browser and remote control",
+          features: [
+            {
+              name: "In-app browser previews and comments",
+              shortName: "In-app browser",
+              href: "/codex/app/browser",
+              availability: {
+                bedrock: "available",
+              },
+            },
+            {
+              name: "Browser Use automation",
+              href: "/codex/app/browser#browser-use",
+              availability: {
+                bedrock: "limited",
+              },
+            },
+            {
+              name: "Chrome extension browser control",
+              shortName: "Chrome browser control",
+              href: "/codex/app/chrome-extension",
+              availability: {
+                bedrock: "limited",
+              },
+            },
+            {
+              name: "Computer Use",
+              href: "/codex/app/computer-use",
+              availability: {
+                bedrock: "limited",
+              },
+            },
+            {
+              name: "SSH remote connections",
+              shortName: "SSH remote",
+              href: "/codex/remote-connections#connect-to-an-ssh-host",
+              availability: {
+                bedrock: "available",
+              },
+            },
+            {
+              name: "Mobile remote control",
+              href: "/codex/remote-connections",
+              availability: {
+                bedrock: "unavailable",
+              },
+            },
+          ],
+        },
+        {
+          title: "Customization and extensions",
+          features: [
+            {
+              name: "Custom instructions with `AGENTS.md`",
+              shortName: "Custom instructions",
+              href: "/codex/guides/agents-md",
+              availability: {
+                bedrock: "available",
+              },
+            },
+            {
+              name: "Skills",
+              href: "/codex/skills",
+              availability: {
+                bedrock: "available",
+              },
+            },
+            {
+              name: "Plugins",
+              href: "/codex/plugins",
+              availability: {
+                bedrock: "limited",
+              },
+              limitedFootnote: "plugins",
+            },
+            {
+              name: "Plugin sharing",
+              href: "/codex/plugins/build#share-a-local-plugin-with-your-workspace",
+              availability: {
+                bedrock: "unavailable",
+              },
+            },
+            {
+              name: "App connectors",
+              href: "/codex/plugins",
+              availability: {
+                bedrock: "unavailable",
+              },
+            },
+            {
+              name: "MCP",
+              href: "/codex/mcp",
+              availability: {
+                bedrock: "available",
+              },
+            },
+            {
+              name: "Subagents and custom agents",
+              shortName: "Subagents",
+              href: "/codex/subagents",
+              availability: {
+                bedrock: "available",
+              },
+            },
+            {
+              name: "Memories",
+              href: "/codex/memories",
+              availability: {
+                bedrock: "limited",
+              },
+            },
+            {
+              name: "Chronicle",
+              href: "/codex/memories/chronicle",
+              availability: {
+                bedrock: "unavailable",
+              },
+            },
+          ],
+        },
+        {
+          title: "Cloud and integrations",
+          features: [
+            {
+              name: "Codex cloud tasks",
+              shortName: "Cloud tasks",
+              href: "/codex/cloud",
+              availability: {
+                bedrock: "unavailable",
+              },
+            },
+            {
+              name: "Sites",
+              href: "/codex/sites",
+              availability: {
+                bedrock: "unavailable",
+              },
+            },
+            {
+              name: "GitHub issue and PR delegation with `@codex`",
+              shortName: "GitHub delegation",
+              href: "/codex/integrations/github#give-codex-other-tasks",
+              availability: {
+                bedrock: "unavailable",
+              },
+            },
+            {
+              name: "GitHub code review and automatic PR reviews",
+              shortName: "GitHub PR reviews",
+              href: "/codex/integrations/github",
+              availability: {
+                bedrock: "unavailable",
+              },
+            },
+            {
+              name: "Slack cloud integration",
+              shortName: "Slack integration",
+              href: "/codex/integrations/slack",
+              availability: {
+                bedrock: "unavailable",
+              },
+            },
+            {
+              name: "Linear cloud integration",
+              shortName: "Linear integration",
+              href: "/codex/integrations/linear",
+              availability: {
+                bedrock: "unavailable",
+              },
+            },
+          ],
+        },
+        {
+          title: "Admin, security, and analytics",
+          features: [
+            {
+              name: "SAML SSO, MFA, and workspace user management",
+              shortName: "Workspace management",
+              href: "/codex/enterprise/admin-setup",
+              availability: {
+                bedrock: "unavailable",
+              },
+            },
+            {
+              name: "`requirements.toml` managed config",
+              shortName: "`requirements.toml` config",
+              href: "/codex/enterprise/managed-configuration",
+              availability: {
+                bedrock: "available",
+              },
+            },
+            {
+              name: "Cloud-managed config policies",
+              shortName: "Cloud-managed policies",
+              href: "/codex/enterprise/managed-configuration#cloud-managed-requirements",
+              availability: {
+                bedrock: "unavailable",
+              },
+            },
+            {
+              name: "Codex RBAC and custom roles",
+              shortName: "RBAC and roles",
+              href: "/codex/enterprise/admin-setup#step-2-set-up-custom-roles-rbac",
+              availability: {
+                bedrock: "unavailable",
+              },
+            },
+            {
+              name: "SCIM, EKM, and domain verification",
+              shortName: "SCIM, EKM, and domains",
+              href: "/codex/enterprise/admin-setup#enterprise-grade-security-and-privacy",
+              availability: {
+                bedrock: "unavailable",
+              },
+            },
+            {
+              name: "Enterprise retention and residency controls",
+              shortName: "Retention and residency",
+              href: "/codex/enterprise/admin-setup#enterprise-grade-security-and-privacy",
+              availability: {
+                bedrock: "unavailable",
+              },
+            },
+            {
+              name: "No training on API or business data by default",
+              shortName: "No default training",
+              href: "https://openai.com/business-data/",
+              availability: {
+                bedrock: "available",
+              },
+            },
+            {
+              name: "Analytics dashboard",
+              href: "/codex/enterprise/governance#analytics-dashboard",
+              availability: {
+                bedrock: "unavailable",
+              },
+            },
+            {
+              name: "Analytics API",
+              href: "/codex/enterprise/governance#analytics-api",
+              availability: {
+                bedrock: "unavailable",
+              },
+            },
+            {
+              name: "Compliance API and audit logs",
+              shortName: "Compliance and audit logs",
+              href: "/codex/enterprise/governance#compliance-api",
+              availability: {
+                bedrock: "unavailable",
+              },
+            },
+            {
+              name: "Codex Security for connected GitHub repositories",
+              shortName: "Codex Security",
+              href: "/codex/security",
+              availability: {
+                bedrock: "unavailable",
+              },
+            },
+          ],
+        },
+      ],
+    }}
+  />
+
+  <div
+    id="codex-plan-region-limits"
+    className="not-prose mt-3 text-sm text-secondary"
+  >
+    <sup>*</sup> Feature is currently limited to only specific regions. Check
+    the individual feature documentation to learn more about geo restrictions.
+  </div>
+  <div
+    id="codex-plan-plugin-limits"
+    className="not-prose mt-1 text-sm text-secondary"
+  >
+    <sup>†</sup> Some first party plugins are not available.
+  </div>
+</ToggleSection>
 
 ## Troubleshooting
 

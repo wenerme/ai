@@ -14,6 +14,19 @@ image: https://developers.cloudflare.com/zt-preview.png
 
 [ Subscribe to RSS ](https://developers.cloudflare.com/changelog/rss/cloudflare-wan.xml) 
 
+## 2026-06-02
+
+  
+**Cisco IOS XE**   
+
+The Cisco IOS XE third-party integration guide for Cloudflare WAN has been updated to include:
+
+* Post Quantum Cryptography (PQC)
+* Policy-Based Routing (PBR)
+* IP Service Level Agreement (IP SLA)
+
+This link will take you directly to the updated [Cisco IOS XE](https://developers.cloudflare.com/cloudflare-wan/configuration/third-party/cisco-ios-xe/) guide.
+
 ## 2026-05-18
 
   

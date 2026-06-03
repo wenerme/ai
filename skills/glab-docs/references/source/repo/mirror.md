@@ -25,7 +25,7 @@ Authentication:
 - For push mirrors to private repositories, configure credentials in the GitLab UI or use SSH URLs with deploy keys.
 
 ```plaintext
-glab repo mirror [ID | URL | PATH] [flags]
+glab repo mirror [<id | url | path>] [flags]
 ```
 
 ## Examples

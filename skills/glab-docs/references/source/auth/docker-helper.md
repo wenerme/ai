@@ -16,6 +16,14 @@ registries. Docker invokes this command automatically.
 glab auth docker-helper [flags]
 ```
 
+## Examples
+
+```console
+# Docker invokes the helper automatically; supported actions are 'store', 'get', and 'erase'.
+# Retrieve the stored credentials for a registry:
+echo registry.gitlab.com | glab auth docker-helper get
+```
+
 ## Options inherited from parent commands
 
 ```plaintext

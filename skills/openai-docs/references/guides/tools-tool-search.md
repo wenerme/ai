@@ -123,6 +123,37 @@ Most integrations declare tools in the request's `tools` parameter. Client-execu
 
 All tools are loaded at the end of the model's context window. This holds true for both hosted tool search and client-executed tool search. This allows the model's cache to be preserved from one request to another, lowering overall costs and boosting speed.
 
+### Add tools at a specific point in the input
+
+For advanced workflows, you can use an `additional_tools` input item to make tools available at a specific point in the conversation. This is useful when your application loads tools outside the normal tool search flow or needs to preserve the ordering of tools added during a previous response.
+
+Set `role` to `developer` and include the tools to add in the item's `tools` array:
+
+```json
+{
+    "type": "additional_tools",
+    "role": "developer",
+    "tools": [
+      {
+        "type": "function",
+        "name": "get_customer",
+        "description": "Look up a customer by ID.",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "customer_id": { "type": "string" }
+          },
+          "required": ["customer_id"],
+          "additionalProperties": false
+        }
+      }
+    ]
+  }
+```
+
+
+Tools in an `additional_tools` item become available only after that item appears in the input. When you manually round-trip conversation items, preserve the item's position so the model sees the same tools at the same point in the conversation.
+
 ## Related guides
 
 - Use [function calling](https://developers.openai.com/api/docs/guides/function-calling) to define callable functions and custom tools.

@@ -33,9 +33,13 @@ You can also sign in to the Codex app, CLI, or IDE Extension with an API key. Ge
 
 OpenAI bills API key usage through your OpenAI Platform account at standard API rates. See the [API pricing page](https://openai.com/api/pricing/).
 
-Features that rely on ChatGPT credits, such as [fast mode](https://developers.openai.com/codex/speed), are
-available only when you sign in with ChatGPT. If you sign in with an API key,
-Codex uses standard API pricing instead.
+API key authentication supports local Codex workflows, but some features that
+rely on ChatGPT workspace access or cloud services are limited or unavailable.
+Compare support by plan in
+[Feature availability](https://developers.openai.com/codex/pricing#feature-availability).
+
+When you sign in with an API key, Codex uses standard API pricing instead of
+included ChatGPT plan credits.
 
 We recommend API key authentication for programmatic Codex CLI workflows, such
 as CI/CD jobs. Don't expose Codex execution in untrusted or public environments.

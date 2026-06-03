@@ -7,6 +7,13 @@ info: To determine the technical writer assigned to the Stage/Group associated w
 
 Work with GitLab CI/CD jobs.
 
+## Synopsis
+
+Inspect CI/CD jobs from a pipeline. Download the artifacts a job
+produced with `job artifact`.
+
+Use `--repo` to target a project other than the current one.
+
 ## Options
 
 ```plaintext

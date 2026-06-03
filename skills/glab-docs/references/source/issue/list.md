@@ -41,7 +41,7 @@ glab issue list --milestone release-2.0.0 --opened
   -C, --confidential           Filter by confidential issues.
   -e, --epic int               List issues belonging to a given epic (requires --group, no pagination support).
   -g, --group string           Select a group or subgroup. Ignored if a repo argument is set.
-      --in string              search in: title, description. (default "title,description")
+      --in string              Search in: title, description. (default "title,description")
   -t, --issue-type string      Filter issue by its type. Options: issue, incident, test_case.
   -i, --iteration int          Filter issue by iteration <id>.
       --jq string              Filter JSON output with a jq expression.

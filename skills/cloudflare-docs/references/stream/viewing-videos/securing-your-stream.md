@@ -74,8 +74,8 @@ Response:
 
 You can also require signed URLs using the Stream binding in your Worker. Refer to [Bind to Workers API](https://developers.cloudflare.com/stream/manage-video-library/bindings/) for setup instructions.
 
-* [  JavaScript ](#tab-panel-8483)
-* [  TypeScript ](#tab-panel-8484)
+* [  JavaScript ](#tab-panel-10088)
+* [  TypeScript ](#tab-panel-10089)
 
 JavaScript
 
@@ -175,8 +175,8 @@ You will see a response similar to this if the request succeeds:
 
 You can generate a signed token using the Stream binding:
 
-* [  JavaScript ](#tab-panel-8485)
-* [  TypeScript ](#tab-panel-8486)
+* [  JavaScript ](#tab-panel-10090)
+* [  TypeScript ](#tab-panel-10091)
 
 JavaScript
 
@@ -318,8 +318,8 @@ If you are using the Stream binding in your Worker, you can generate signed toke
 
 Refer to [Bind to Workers API](https://developers.cloudflare.com/stream/manage-video-library/bindings/) for setup instructions.
 
-* [  JavaScript ](#tab-panel-8487)
-* [  TypeScript ](#tab-panel-8488)
+* [  JavaScript ](#tab-panel-10092)
+* [  TypeScript ](#tab-panel-10093)
 
 JavaScript
 
@@ -751,8 +751,8 @@ curl https://api.cloudflare.com/client/v4/accounts/{account_id}/stream/{video_ui
 
 You can also set allowed origins using the Stream binding:
 
-* [  JavaScript ](#tab-panel-8489)
-* [  TypeScript ](#tab-panel-8490)
+* [  JavaScript ](#tab-panel-10094)
+* [  TypeScript ](#tab-panel-10095)
 
 JavaScript
 

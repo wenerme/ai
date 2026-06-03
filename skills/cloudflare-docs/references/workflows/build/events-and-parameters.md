@@ -32,8 +32,8 @@ A `WorkflowEvent` and its associated `payload` property are effectively _immutab
 
 Store state durably by returning it from your `step.do` callbacks.
 
-* [  JavaScript ](#tab-panel-10429)
-* [  TypeScript ](#tab-panel-10430)
+* [  JavaScript ](#tab-panel-12209)
+* [  TypeScript ](#tab-panel-12210)
 
 JavaScript
 
@@ -150,8 +150,8 @@ The `waitForEvent` type parameter only supports letters, digits, `-`, and `_`. C
 
 For example, to wait for billing webhook:
 
-* [  JavaScript ](#tab-panel-10425)
-* [  TypeScript ](#tab-panel-10426)
+* [  JavaScript ](#tab-panel-12205)
+* [  TypeScript ](#tab-panel-12206)
 
 JavaScript
 
@@ -215,8 +215,8 @@ The above example:
 
 The default timeout for a `waitForEvent` call is 24 hours, which can be changed by passing `{ timeout: WorkflowTimeoutDuration }` as the second argument to your `waitForEvent` call.
 
-* [  JavaScript ](#tab-panel-10423)
-* [  TypeScript ](#tab-panel-10424)
+* [  JavaScript ](#tab-panel-12203)
+* [  TypeScript ](#tab-panel-12204)
 
 JavaScript
 
@@ -254,8 +254,8 @@ Timeout behavior
 
 When `waitForEvent` times out, the Workflow will throw an error and the instance will fail. If you want your Workflow to continue even if the event is not received, wrap the `waitForEvent` call in a `try...catch` block:
 
-* [  JavaScript ](#tab-panel-10427)
-* [  TypeScript ](#tab-panel-10428)
+* [  JavaScript ](#tab-panel-12207)
+* [  TypeScript ](#tab-panel-12208)
 
 JavaScript
 
@@ -315,8 +315,8 @@ try {
 
 Workflow instances that are waiting on events using the `waitForEvent` API can be sent events using the `instance.sendEvent` API:
 
-* [  JavaScript ](#tab-panel-10431)
-* [  TypeScript ](#tab-panel-10432)
+* [  JavaScript ](#tab-panel-12211)
+* [  TypeScript ](#tab-panel-12212)
 
 JavaScript
 
@@ -410,27 +410,73 @@ You can send an event to a Workflow instance _before_ it reaches the correspondi
 
 ## TypeScript and type parameters
 
-By default, the `WorkflowEvent` passed to the `run` method of your Workflow definition has a type that conforms to the following, with `payload` (your data), `timestamp`, and `instanceId` properties:
+By default, the `WorkflowEvent` passed to the `run` method of your Workflow definition has a type that conforms to the following:
 
 TypeScript
 
 ```
 
+export type WorkflowCronSchedule = {
+
+  /** Cron expression that triggered this event. */
+
+  cron: string;
+
+  /** Timestamp of the scheduled trigger, in milliseconds since the Unix epoch. */
+
+  scheduledTime: number;
+
+};
+
+
 export type WorkflowEvent<T> = {
 
-  // The data passed as the parameter when the Workflow instance was triggered
+  /** The data passed as the parameter when the Workflow instance was triggered. */
 
-  payload: T;
+  payload: Readonly<T>;
 
-  // The timestamp that the Workflow was triggered
+  /** The timestamp that the Workflow was triggered. */
 
   timestamp: Date;
 
-  // ID of the current Workflow instance
+  /** ID of the current Workflow instance. */
 
   instanceId: string;
 
+  /** Name of the current Workflow. */
+
+  workflowName: string;
+
+  /** Metadata for Workflow instances created by a cron schedule. */
+
+  schedule?: WorkflowCronSchedule;
+
 };
+
+
+```
+
+When a Workflow instance is created by a cron schedule configured on a Workflow binding, `event.schedule` includes the cron expression that created the instance and the scheduled trigger time:
+
+TypeScript
+
+```
+
+export class MyWorkflow extends WorkflowEntrypoint<Env> {
+
+  async run(event: WorkflowEvent<unknown>, step: WorkflowStep) {
+
+    if (event.schedule) {
+
+      console.log(event.schedule.cron);
+
+      console.log(new Date(event.schedule.scheduledTime));
+
+    }
+
+  }
+
+}
 
 
 ```

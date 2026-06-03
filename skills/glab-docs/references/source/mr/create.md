@@ -13,6 +13,11 @@ Defaults to the current branch as the source branch. Use `--fill`
 to automatically fill the title and description from the commit history. Use
 `--draft` to create a draft merge request.
 
+The `--recover` flag is an experiment: it might be unstable or
+removed at any time, and is not ready for production use. For more
+information, see
+<https://docs.gitlab.com/policy/development_stages_support/>.
+
 ```plaintext
 glab mr create [flags]
 ```

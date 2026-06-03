@@ -7,6 +7,14 @@ info: To determine the technical writer assigned to the Stage/Group associated w
 
 Create, view, and manage merge requests.
 
+## Synopsis
+
+Open a merge request from your current branch, list and view existing
+merge requests, and manage them: approve, merge, rebase, comment, and
+more.
+
+Use `--repo` to target a project other than the current one.
+
 ## Examples
 
 ```console

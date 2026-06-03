@@ -20,7 +20,7 @@ Cron Triggers are ideal for running periodic jobs, such as for maintenance or ca
 
 Note
 
-Cron Triggers can also be combined with [Workflows](https://developers.cloudflare.com/workflows/) to trigger multi-step, long-running tasks. You can [bind to a Workflow](https://developers.cloudflare.com/workflows/build/workers-api/) directly from your Cron Trigger to execute a Workflow on a schedule.
+Cron Triggers are also available directly in [Workflows](https://developers.cloudflare.com/workflows/) via `schedules` on the Workflow binding instead. Refer to [Trigger Workflows](https://developers.cloudflare.com/workflows/build/trigger-workflows/) for details, and use a Wrangler release that supports Workflow schedules.
 
 Cron Triggers execute on UTC time.
 
@@ -30,9 +30,9 @@ Cron Triggers execute on UTC time.
 
 To respond to a Cron Trigger, you must add a ["scheduled" handler](https://developers.cloudflare.com/workers/runtime-apis/handlers/scheduled/) to your Worker.
 
-* [  JavaScript ](#tab-panel-10263)
-* [  TypeScript ](#tab-panel-10264)
-* [  Python ](#tab-panel-10265)
+* [  JavaScript ](#tab-panel-10671)
+* [  TypeScript ](#tab-panel-10672)
+* [  Python ](#tab-panel-10673)
 
 JavaScript
 
@@ -113,8 +113,8 @@ If a Worker is managed with Wrangler, Cron Triggers should be exclusively manage
 
 Refer to the example below for a Cron Triggers configuration:
 
-* [  wrangler.jsonc ](#tab-panel-10268)
-* [  wrangler.toml ](#tab-panel-10269)
+* [  wrangler.jsonc ](#tab-panel-10676)
+* [  wrangler.toml ](#tab-panel-10677)
 
 JSONC
 
@@ -162,8 +162,8 @@ crons = [ "*/3 * * * *", "0 15 1 * *", "59 23 LW * *" ]
 
 You also can set a different Cron Trigger for each [environment](https://developers.cloudflare.com/workers/wrangler/environments/) in your [Wrangler configuration file](https://developers.cloudflare.com/workers/wrangler/configuration/). You need to put the `triggers` array under your chosen environment. For example:
 
-* [  wrangler.jsonc ](#tab-panel-10270)
-* [  wrangler.toml ](#tab-panel-10271)
+* [  wrangler.jsonc ](#tab-panel-10678)
+* [  wrangler.toml ](#tab-panel-10679)
 
 JSONC
 
@@ -349,8 +349,8 @@ When deploying a Worker with Wrangler any previous Cron Triggers are replaced wi
 * If the `crons` property is an empty array then all the Cron Triggers are removed.
 * If the `triggers` or `crons` property are `undefined` then the currently deploy Cron Triggers are left in-place.
 
-* [  wrangler.jsonc ](#tab-panel-10266)
-* [  wrangler.toml ](#tab-panel-10267)
+* [  wrangler.jsonc ](#tab-panel-10674)
+* [  wrangler.toml ](#tab-panel-10675)
 
 JSONC
 

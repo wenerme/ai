@@ -18,11 +18,11 @@ For basic uploads, you will need to add the Creator ID after you upload the vide
 
 ## Upload from URL
 
-* [ REST API ](#tab-panel-8439)
-* [ Workers Binding API ](#tab-panel-8440)
+* [ REST API ](#tab-panel-10044)
+* [ Workers Binding API ](#tab-panel-10045)
 
-* [ cURL ](#tab-panel-8421)
-* [ TypeScript ](#tab-panel-8422)
+* [ cURL ](#tab-panel-10026)
+* [ TypeScript ](#tab-panel-10027)
 
 Terminal window
 
@@ -184,8 +184,8 @@ const video = await client.stream.copy.create({
 
 See the full Stream [REST API and SDK reference](https://developers.cloudflare.com/api/resources/stream/) for details on using REST API from external applications, with pre-generated SDK's for external TypeScript, Python, or Go applications.
 
-* [ index.ts ](#tab-panel-8423)
-* [ wrangler.jsonc ](#tab-panel-8424)
+* [ index.ts ](#tab-panel-10028)
+* [ wrangler.jsonc ](#tab-panel-10029)
 
 TypeScript
 
@@ -253,10 +253,10 @@ See the full [Workers Stream binding API reference](https://developers.cloudflar
 
 You can associate videos with a single creator by setting a default creator ID value, which you can later use for searching for videos by creator ID or for analytics data.
 
-* [ REST API ](#tab-panel-8437)
+* [ REST API ](#tab-panel-10042)
 
-* [ cURL ](#tab-panel-8425)
-* [ TypeScript ](#tab-panel-8426)
+* [ cURL ](#tab-panel-10030)
+* [ TypeScript ](#tab-panel-10031)
 
 Terminal window
 
@@ -311,11 +311,11 @@ Setting default creator IDs for live inputs is only available via the API. The S
 
 To update the creator property in existing videos, make a `POST` request to the video object endpoint with a JSON payload specifying the creator property as show in the example below.
 
-* [ REST API ](#tab-panel-8441)
-* [ Workers Binding API ](#tab-panel-8442)
+* [ REST API ](#tab-panel-10046)
+* [ Workers Binding API ](#tab-panel-10047)
 
-* [ cURL ](#tab-panel-8427)
-* [ TypeScript ](#tab-panel-8428)
+* [ cURL ](#tab-panel-10032)
+* [ TypeScript ](#tab-panel-10033)
 
 Terminal window
 
@@ -360,8 +360,8 @@ const video = await client.stream.edit({
 
 See the full Stream [REST API and SDK reference](https://developers.cloudflare.com/api/resources/stream/) for details on using REST API from external applications, with pre-generated SDK's for external TypeScript, Python, or Go applications.
 
-* [ index.ts ](#tab-panel-8429)
-* [ wrangler.jsonc ](#tab-panel-8430)
+* [ index.ts ](#tab-panel-10034)
+* [ wrangler.jsonc ](#tab-panel-10035)
 
 TypeScript
 
@@ -419,11 +419,11 @@ See the full [Workers Stream binding API reference](https://developers.cloudflar
 
 ## Direct creator upload
 
-* [ REST API ](#tab-panel-8443)
-* [ Workers Binding API ](#tab-panel-8444)
+* [ REST API ](#tab-panel-10048)
+* [ Workers Binding API ](#tab-panel-10049)
 
-* [ cURL ](#tab-panel-8431)
-* [ TypeScript ](#tab-panel-8432)
+* [ cURL ](#tab-panel-10036)
+* [ TypeScript ](#tab-panel-10037)
 
 Terminal window
 
@@ -531,8 +531,8 @@ const directUpload = await client.stream.directUpload.create({
 
 See the full Stream [REST API and SDK reference](https://developers.cloudflare.com/api/resources/stream/) for details on using REST API from external applications, with pre-generated SDK's for external TypeScript, Python, or Go applications.
 
-* [ index.ts ](#tab-panel-8433)
-* [ wrangler.jsonc ](#tab-panel-8434)
+* [ index.ts ](#tab-panel-10038)
+* [ wrangler.jsonc ](#tab-panel-10039)
 
 TypeScript
 
@@ -606,10 +606,10 @@ See the full [Workers Stream binding API reference](https://developers.cloudflar
 
 ## Get videos by Creator ID
 
-* [ REST API ](#tab-panel-8438)
+* [ REST API ](#tab-panel-10043)
 
-* [ cURL ](#tab-panel-8435)
-* [ TypeScript ](#tab-panel-8436)
+* [ cURL ](#tab-panel-10040)
+* [ TypeScript ](#tab-panel-10041)
 
 Terminal window
 

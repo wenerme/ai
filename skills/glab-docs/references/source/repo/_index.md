@@ -7,6 +7,12 @@ info: To determine the technical writer assigned to the Stage/Group associated w
 
 Work with GitLab repositories and projects.
 
+## Synopsis
+
+Create, clone, fork, view, and manage GitLab projects. List and
+search for projects, and configure project settings such as
+mirroring and members.
+
 ## Aliases
 
 ```plaintext
