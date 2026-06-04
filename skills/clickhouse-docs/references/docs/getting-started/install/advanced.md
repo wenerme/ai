@@ -1,7 +1,7 @@
 ---
 description: 'Instructions for compiling ClickHouse from source or installing a CI-generated binary'
 keywords: ['ClickHouse', 'install', 'advanced', 'compile from source', 'CI generated binary']
-title: 'Advanced installation methods'
+title: 'Source & CI builds'
 hide_title: false
 doc_type: 'guide'
 ---

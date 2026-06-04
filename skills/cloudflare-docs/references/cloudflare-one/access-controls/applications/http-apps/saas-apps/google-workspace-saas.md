@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/zt-preview.png
 
 # Google Workspace
 
-**Last reviewed:**  almost 2 years ago 
+**Last reviewed:**  about 2 years ago 
 
 This guide covers how to configure [Google Workspace ↗](https://support.google.com/a/topic/7579248?ref%5Ftopic=7556686&sjid=14539485562330725560-NA) as a SAML application in Cloudflare One.
 

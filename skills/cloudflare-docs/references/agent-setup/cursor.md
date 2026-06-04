@@ -36,7 +36,7 @@ In Cursor, run the following command or install from the [Cursor Marketplace ↗
 3. **Try a prompt**  
 For example:  
 ```  
-Build an AI chat agent using the Cloudflare Agents SDK with persistent conversation history stored in D1.  
+Set up rate limiting and WAF rules to block abuse on my public API.  
 ```
 
 ## Cloudflare platform access

@@ -45,7 +45,7 @@ You can count tokens in the following ways:
   (output tokens).
 
   If you are using a [thinking
-  model](https://ai.google.dev/gemini-api/docs/thinking), the token used during the thinking
+  model](https://ai.google.dev/gemini-api/docs/thinking), the tokens used during the thinking
   process are returned in `thoughts_token_count`. And if you are using
   [Context caching](https://ai.google.dev/gemini-api/docs/caching), the cached token
   count will be in `cached_content_token_count`.
@@ -626,6 +626,35 @@ attribute on the `response` object to get the following:
       log.Fatal(err)
     }
     fmt.Println(string(usageMetadata))
+
+### Count thought tokens
+
+> [!NOTE]
+> **Note:** The API provides **summaries** in both the [free and paid tiers](https://ai.google.dev/gemini-api/docs/pricing). **Thought signatures** increase the input token count (and your cost) when you send them back in subsequent conversational turns.
+
+When you turn on thinking, response pricing is the sum of output tokens and thinking tokens. You can retrieve the total number of generated thinking tokens from the `thoughtsTokenCount` field (or SDK equivalent).
+
+### Python
+
+    # ...
+    print("Thoughts tokens:", response.usage_metadata.thoughts_token_count)
+    print("Output tokens:", response.usage_metadata.candidates_token_count)
+
+### JavaScript
+
+    // ...
+    console.log(`Thoughts tokens: ${response.usageMetadata.thoughtsTokenCount}`);
+    console.log(`Output tokens: ${response.usageMetadata.candidatesTokenCount}`);
+
+### Go
+
+    // ...
+    fmt.Println("Thoughts tokens:", response.UsageMetadata.ThoughtsTokenCount)
+    fmt.Println("Output tokens:", response.UsageMetadata.CandidatesTokenCount)
+
+Thinking models generate full thoughts to improve the quality of the final response, and then output [summaries](https://ai.google.dev/gemini-api/docs/thinking#summaries) to provide insight into the thought process. So, the API bases pricing on the full thought tokens the model generates to create a summary, even though the API only outputs the summary.
+
+You can learn more about how to configure thinking in the [Gemini thinking](https://ai.google.dev/gemini-api/docs/thinking) guide.
 
 ## Context windows
 

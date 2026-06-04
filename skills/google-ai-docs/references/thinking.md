@@ -649,8 +649,8 @@ tokens from the `thoughtsTokenCount` field.
 ### Python
 
     # ...
-    print("Thoughts tokens:",response.usage_metadata.thoughts_token_count)
-    print("Output tokens:",response.usage_metadata.candidates_token_count)
+    print("Thoughts tokens:", response.usage_metadata.thoughts_token_count)
+    print("Output tokens:", response.usage_metadata.candidates_token_count)
 
 ### JavaScript
 
@@ -661,12 +661,8 @@ tokens from the `thoughtsTokenCount` field.
 ### Go
 
     // ...
-    usageMetadata, err := json.MarshalIndent(response.UsageMetadata, "", "  ")
-    if err != nil {
-      log.Fatal(err)
-    }
-    fmt.Println("Thoughts tokens:", string(usageMetadata.thoughts_token_count))
-    fmt.Println("Output tokens:", string(usageMetadata.candidates_token_count))
+    fmt.Println("Thoughts tokens:", response.UsageMetadata.ThoughtsTokenCount)
+    fmt.Println("Output tokens:", response.UsageMetadata.CandidatesTokenCount)
 
 Thinking models generate full thoughts to improve the quality of the final
 response, and then output [summaries](https://ai.google.dev/gemini-api/docs/thinking#summaries) to provide insight into the

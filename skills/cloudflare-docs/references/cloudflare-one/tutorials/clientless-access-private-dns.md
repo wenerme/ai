@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/zt-preview.png
 
 # Access a web application via its private hostname without the Cloudflare One Client
 
-**Last reviewed:**  about 2 years ago 
+**Last reviewed:**  over 2 years ago 
 
 With Cloudflare Browser Isolation and resolver policies, users can connect to private web-based applications via their private hostnames without needing to install the Cloudflare One Client. By the end of this tutorial, users who pass your Gateway DNS and network policies will be able to access your private application at `https://<your-team-name>.cloudflareaccess.com/browser/https://internalrecord.com`.
 
