@@ -9,11 +9,11 @@ description: "Programmatic access to Comfy Cloud for running workflows, managing
 
 The Comfy Cloud API provides programmatic access to run workflows on Comfy Cloud infrastructure. The API is compatible with local ComfyUI's API, making it easy to migrate existing integrations.
 
-  **Creator or Pro subscription required:** API access is only available on the **Creator** and **Pro** tiers. The Free and Standard tiers do not include API access. See [pricing plans](https://www.comfy.org/cloud/pricing?utm_source=docs&utm_campaign=cloud-api) for details.
+  **Subscription required:** API access is available on the **Standard**, **Creator** and **Pro** tiers. The Free tier does not include API access. See [pricing plans](https://www.comfy.org/cloud/pricing?utm_source=docs&utm_campaign=cloud-api) for details.
 
 ## Credits and Usage
 
-API requests draw from the same monthly credit allocation as the Comfy Cloud web UI — there is no separate API credit pool. Each tier's included credits, top-up options, and per-workflow runtime caps apply to API jobs in exactly the same way as UI jobs. See the [pricing page](https://www.comfy.org/cloud/pricing?utm_source=docs&utm_campaign=cloud-api) for the monthly credit amounts on the Creator and Pro tiers. If you run out of credits mid-month, top-ups can be purchased from your account dashboard.
+API requests draw from the same monthly credit allocation as the Comfy Cloud web UI — there is no separate API credit pool. Each tier's included credits, top-up options, and per-workflow runtime caps apply to API jobs in exactly the same way as UI jobs. See the [pricing page](https://www.comfy.org/cloud/pricing?utm_source=docs&utm_campaign=cloud-api) for the monthly credit amounts on the Standard, Creator and Pro tiers. If you run out of credits mid-month, top-ups can be purchased from your account dashboard.
 
 ## Base URL
 
@@ -80,6 +80,7 @@ API users can submit multiple workflows concurrently without waiting for previou
 
 | Subscription Tier | Concurrent Jobs |
 |-------------------|-----------------|
+| Standard          | 1               |
 | Creator           | 3               |
 | Pro               | 5               |
 

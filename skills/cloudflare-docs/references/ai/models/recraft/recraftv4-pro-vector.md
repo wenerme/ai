@@ -14,7 +14,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 #  Recraft V4 Pro SVG 
 
-Text-to-Image • Recraft • Proxied 
+Text-to-Image • Recraft 
 
 `recraft/recraftv4-pro-vector` 
 
@@ -28,8 +28,8 @@ Generate detailed, production-ready SVG vector graphics from text prompts with f
 
 ## Usage
 
-* [ TypeScript ](#tab-panel-1266)
-* [ cURL ](#tab-panel-1267)
+* [ TypeScript ](#tab-panel-1454)
+* [ cURL ](#tab-panel-1455)
 
 TypeScript
 
@@ -73,8 +73,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 ```
 
-* [ Output ](#tab-panel-1264)
-* [ Raw response ](#tab-panel-1265)
+* [ Output ](#tab-panel-1452)
+* [ Raw response ](#tab-panel-1453)
 
 ![Logo Design](https://examples.aig.cloudflare.com/recraft/recraftv4-pro-vector/logo-design.svg) 
 
@@ -105,8 +105,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 **Icon Set**  — Generate a vector icon 
 
-* [ TypeScript ](#tab-panel-1270)
-* [ cURL ](#tab-panel-1271)
+* [ TypeScript ](#tab-panel-1458)
+* [ cURL ](#tab-panel-1459)
 
 TypeScript
 
@@ -158,8 +158,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 ```
 
-* [ Output ](#tab-panel-1268)
-* [ Raw response ](#tab-panel-1269)
+* [ Output ](#tab-panel-1456)
+* [ Raw response ](#tab-panel-1457)
 
 ![Icon Set](https://examples.aig.cloudflare.com/recraft/recraftv4-pro-vector/icon-set.svg) 
 
@@ -188,8 +188,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 **Print-Ready Vector**  — High-resolution vector for large-format print 
 
-* [ TypeScript ](#tab-panel-1274)
-* [ cURL ](#tab-panel-1275)
+* [ TypeScript ](#tab-panel-1462)
+* [ cURL ](#tab-panel-1463)
 
 TypeScript
 
@@ -243,8 +243,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 ```
 
-* [ Output ](#tab-panel-1272)
-* [ Raw response ](#tab-panel-1273)
+* [ Output ](#tab-panel-1460)
+* [ Raw response ](#tab-panel-1461)
 
 ![Print-Ready Vector](https://examples.aig.cloudflare.com/recraft/recraftv4-pro-vector/print-ready-vector.svg) 
 
@@ -273,8 +273,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 **Brand Illustration**  — Vector illustration with brand colors 
 
-* [ TypeScript ](#tab-panel-1278)
-* [ cURL ](#tab-panel-1279)
+* [ TypeScript ](#tab-panel-1466)
+* [ cURL ](#tab-panel-1467)
 
 TypeScript
 
@@ -286,9 +286,9 @@ const response = await env.AI.run(
 
   {
 
-    controls: { colors: [{ rgb: [255, 87, 51] }, { rgb: [41, 50, 65] }, { rgb: [239, 239, 239] }] },
-
     prompt: 'A vector illustration of a cityscape skyline at sunset with clean lines and flat colors',
+
+    controls: { colors: [{ rgb: [255, 87, 51] }, { rgb: [41, 50, 65] }, { rgb: [239, 239, 239] }] },
 
   },
 
@@ -314,6 +314,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
   "model": "recraft/recraftv4-pro-vector",
 
   "input": {
+
+    "prompt": "A vector illustration of a cityscape skyline at sunset with clean lines and flat colors",
 
     "controls": {
 
@@ -363,9 +365,7 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
       ]
 
-    },
-
-    "prompt": "A vector illustration of a cityscape skyline at sunset with clean lines and flat colors"
+    }
 
   }
 
@@ -374,8 +374,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 ```
 
-* [ Output ](#tab-panel-1276)
-* [ Raw response ](#tab-panel-1277)
+* [ Output ](#tab-panel-1464)
+* [ Raw response ](#tab-panel-1465)
 
 ![Brand Illustration](https://examples.aig.cloudflare.com/recraft/recraftv4-pro-vector/brand-illustration.svg) 
 
@@ -404,8 +404,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 ## Parameters
 
-* [ Input ](#tab-panel-1280)
-* [ Output ](#tab-panel-1281)
+* [ Input ](#tab-panel-1468)
+* [ Output ](#tab-panel-1469)
 
 ▶controls{}
 

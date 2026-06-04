@@ -14,7 +14,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 #  llama-2-7b-chat-hf-lora Beta 
 
-Text Generation • Meta • Hosted 
+Text Generation • Meta 
 
 `@cf/meta-llama/llama-2-7b-chat-hf-lora` 
 
@@ -34,10 +34,10 @@ Try out this model with Workers AI LLM Playground. It does not require any setup
 
 ## Usage
 
-* [  Worker (Streaming) ](#tab-panel-2643)
-* [  TypeScript ](#tab-panel-2644)
-* [  Python ](#tab-panel-2645)
-* [  curl ](#tab-panel-2646)
+* [  Worker (Streaming) ](#tab-panel-4355)
+* [  TypeScript ](#tab-panel-4356)
+* [  Python ](#tab-panel-4357)
+* [  curl ](#tab-panel-4358)
 
 TypeScript
 

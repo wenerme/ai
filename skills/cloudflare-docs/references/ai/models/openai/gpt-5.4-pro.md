@@ -14,7 +14,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 #  GPT-5.4 pro 
 
-Text Generation • OpenAI • Proxied 
+Text Generation • OpenAI 
 
 `openai/gpt-5.4-pro` 
 

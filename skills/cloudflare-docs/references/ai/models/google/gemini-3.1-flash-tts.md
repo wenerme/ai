@@ -13,14 +13,14 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 #  Gemini 3.1 Flash TTS 
 
-Text-to-Speech • Google • Proxied 
+Text-to-Speech • Google 
 
 `google/gemini-3.1-flash-tts` 
 
 ## Usage
 
-* [ TypeScript ](#tab-panel-494)
-* [ cURL ](#tab-panel-495)
+* [ TypeScript ](#tab-panel-512)
+* [ cURL ](#tab-panel-513)
 
 TypeScript
 
@@ -64,8 +64,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 ```
 
-* [ Output ](#tab-panel-490)
-* [ Raw response ](#tab-panel-491)
+* [ Output ](#tab-panel-508)
+* [ Raw response ](#tab-panel-509)
 
 ```
 
@@ -88,8 +88,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 **Custom Voice**  — Generate speech with a specific voice 
 
-* [ TypeScript ](#tab-panel-498)
-* [ cURL ](#tab-panel-499)
+* [ TypeScript ](#tab-panel-516)
+* [ cURL ](#tab-panel-517)
 
 TypeScript
 
@@ -135,8 +135,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 ```
 
-* [ Output ](#tab-panel-492)
-* [ Raw response ](#tab-panel-493)
+* [ Output ](#tab-panel-510)
+* [ Raw response ](#tab-panel-511)
 
 ```
 
@@ -157,8 +157,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 **Longer Text**  — Convert longer text to speech 
 
-* [ TypeScript ](#tab-panel-502)
-* [ cURL ](#tab-panel-503)
+* [ TypeScript ](#tab-panel-520)
+* [ cURL ](#tab-panel-521)
 
 TypeScript
 
@@ -210,8 +210,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 ```
 
-* [ Output ](#tab-panel-496)
-* [ Raw response ](#tab-panel-497)
+* [ Output ](#tab-panel-514)
+* [ Raw response ](#tab-panel-515)
 
 ```
 
@@ -232,8 +232,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 **Narrative Voice**  — Generate speech with a narrative voice style 
 
-* [ TypeScript ](#tab-panel-504)
-* [ cURL ](#tab-panel-505)
+* [ TypeScript ](#tab-panel-522)
+* [ cURL ](#tab-panel-523)
 
 TypeScript
 
@@ -285,8 +285,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 ```
 
-* [ Output ](#tab-panel-500)
-* [ Raw response ](#tab-panel-501)
+* [ Output ](#tab-panel-518)
+* [ Raw response ](#tab-panel-519)
 
 ```
 
@@ -307,8 +307,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 ## Parameters
 
-* [ Input ](#tab-panel-506)
-* [ Output ](#tab-panel-507)
+* [ Input ](#tab-panel-524)
+* [ Output ](#tab-panel-525)
 
 maxOutputTokens
 

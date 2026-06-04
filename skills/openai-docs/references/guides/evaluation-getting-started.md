@@ -2,6 +2,13 @@
 
 Evaluations (often called **evals**) test model outputs to ensure they meet your specified style and content criteria. Writing evals is an essential part of building reliable applications. [Datasets](https://platform.openai.com/evaluation/datasets), a feature of the OpenAI platform, provide a quick way to get started with evals and test prompts.
 
+OpenAI is deprecating the Evals platform. Existing evals content remains
+  available during the transition window. Evals will become read-only for
+  existing users on October 31, 2026, and the platform is scheduled to shut down
+  on November 30, 2026. See the [deprecations
+  page](https://developers.openai.com/api/docs/deprecations#2026-06-03-evals-platform) for the current
+  timeline.
+
 If you need advanced features such as evaluation against external models, want
   to interact with your eval runs via API, or want to run evaluations on a
   larger scale, consider using [Evals](https://developers.openai.com/api/docs/guides/evals) instead.

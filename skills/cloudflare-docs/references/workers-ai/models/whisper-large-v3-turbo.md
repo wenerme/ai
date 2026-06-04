@@ -14,7 +14,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 #  whisper-large-v3-turbo 
 
-Automatic Speech Recognition • OpenAI • Hosted 
+Automatic Speech Recognition • OpenAI 
 
 `@cf/openai/whisper-large-v3-turbo` 
 
@@ -27,9 +27,9 @@ Whisper is a pre-trained model for automatic speech recognition (ASR) and speech
 
 ## Usage
 
-* [  TypeScript ](#tab-panel-2875)
-* [  Python ](#tab-panel-2876)
-* [  curl ](#tab-panel-2877)
+* [  TypeScript ](#tab-panel-4539)
+* [  Python ](#tab-panel-4540)
+* [  curl ](#tab-panel-4541)
 
 ```
 
@@ -169,8 +169,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 ## Parameters
 
-* [ Input ](#tab-panel-2878)
-* [ Output ](#tab-panel-2879)
+* [ Input ](#tab-panel-4542)
+* [ Output ](#tab-panel-4543)
 
 ▶audio
 

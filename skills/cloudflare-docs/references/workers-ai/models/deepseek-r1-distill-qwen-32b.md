@@ -14,7 +14,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 #  deepseek-r1-distill-qwen-32b 
 
-Text Generation • DeepSeek • Hosted 
+Text Generation • DeepSeek 
 
 `@cf/deepseek-ai/deepseek-r1-distill-qwen-32b` 
 
@@ -35,10 +35,10 @@ Try out this model with Workers AI LLM Playground. It does not require any setup
 
 ## Usage
 
-* [  Worker (Streaming) ](#tab-panel-2495)
-* [  TypeScript ](#tab-panel-2496)
-* [  Python ](#tab-panel-2497)
-* [  curl ](#tab-panel-2498)
+* [  Worker (Streaming) ](#tab-panel-4219)
+* [  TypeScript ](#tab-panel-4220)
+* [  Python ](#tab-panel-4221)
+* [  curl ](#tab-panel-4222)
 
 TypeScript
 

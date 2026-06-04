@@ -15,7 +15,12 @@ import {
 
 
 
+
 LLM output is non-deterministic, and model behavior changes between model snapshots and families. Developers must constantly measure and tune the performance of LLM applications to ensure they're getting the best results. In this guide, we explore the techniques and OpenAI platform tools you can use to ensure high quality outputs from the model.
+
+This guide covers evals and fine-tuning workflows that are being moved into
+  legacy documentation. See the [deprecations page](https://developers.openai.com/api/docs/deprecations) for
+  the current timelines for the affected platform surfaces.
 
 <div className="my-4 w-full max-w-full overflow-hidden">
   </div>
@@ -52,7 +57,7 @@ Run your evals against test inputs like you expect to see in production. Using o
 With evals in place, you can effectively iterate on [prompts](https://developers.openai.com/api/docs/guides/text). The prompt engineering process may be all you need in order to get great results for your use case. Different models may require different prompting techniques, but there are several best practices you can apply across the board to get better results.
 
 - **Include relevant context** - in your instructions, include text or image content that the model will need to generate a response from outside its training data. This could include data from private databases or current, up-to-the-minute information.
-- **Provide clear instructions** - your prompt should contain clear goals about what kind of output you want. GPT models like `gpt-4.1` are great at following very explicit instructions, while [reasoning models](https://developers.openai.com/api/docs/guides/reasoning) like `o4-mini` tend to do better with high level guidance on outcomes.
+- **Provide clear instructions** - your prompt should contain clear goals about what kind of output you want. Start with [`gpt-5.5`](https://developers.openai.com/api/docs/models/gpt-5.5) for new work, and use [reasoning model guidance](https://developers.openai.com/api/docs/guides/reasoning) to tune outcome-level instructions, reasoning effort, and verbosity.
 - **Provide example outputs** - give the model a few examples of correct output for a given prompt (a process called few-shot learning). The model can extrapolate from these examples how it should respond for other prompts.
 
 [

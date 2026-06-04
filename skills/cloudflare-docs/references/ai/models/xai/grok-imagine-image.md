@@ -14,7 +14,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 #  Grok Imagine Image 
 
-Text-to-Image • xAI • Proxied 
+Text-to-Image • xAI 
 
 `xai/grok-imagine-image` 
 
@@ -28,8 +28,8 @@ xAI's Grok Imagine image model. Generates and edits images from text and referen
 
 ## Usage
 
-* [ TypeScript ](#tab-panel-1460)
-* [ cURL ](#tab-panel-1461)
+* [ TypeScript ](#tab-panel-1648)
+* [ cURL ](#tab-panel-1649)
 
 TypeScript
 
@@ -73,8 +73,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 ```
 
-* [ Output ](#tab-panel-1458)
-* [ Raw response ](#tab-panel-1459)
+* [ Output ](#tab-panel-1646)
+* [ Raw response ](#tab-panel-1647)
 
 ![Simple Generation](https://examples.aig.cloudflare.com/xai/grok-imagine-image/simple-generation.jpeg) 
 
@@ -105,8 +105,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 **Custom Aspect Ratio**  — Portrait orientation render at 2K resolution 
 
-* [ TypeScript ](#tab-panel-1464)
-* [ cURL ](#tab-panel-1465)
+* [ TypeScript ](#tab-panel-1652)
+* [ cURL ](#tab-panel-1653)
 
 TypeScript
 
@@ -118,11 +118,11 @@ const response = await env.AI.run(
 
   {
 
-    aspect_ratio: '3:4',
-
     prompt:
 
       'A detailed botanical illustration of exotic tropical flowers with fine line work and watercolor textures',
+
+    aspect_ratio: '3:4',
 
     resolution: '2k',
 
@@ -151,9 +151,9 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
   "input": {
 
-    "aspect_ratio": "3:4",
-
     "prompt": "A detailed botanical illustration of exotic tropical flowers with fine line work and watercolor textures",
+
+    "aspect_ratio": "3:4",
 
     "resolution": "2k"
 
@@ -164,8 +164,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 ```
 
-* [ Output ](#tab-panel-1462)
-* [ Raw response ](#tab-panel-1463)
+* [ Output ](#tab-panel-1650)
+* [ Raw response ](#tab-panel-1651)
 
 ![Custom Aspect Ratio](https://examples.aig.cloudflare.com/xai/grok-imagine-image/custom-aspect-ratio.png) 
 
@@ -194,8 +194,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 **Cinematic Landscape**  — Widescreen landscape at 2K resolution 
 
-* [ TypeScript ](#tab-panel-1468)
-* [ cURL ](#tab-panel-1469)
+* [ TypeScript ](#tab-panel-1656)
+* [ cURL ](#tab-panel-1657)
 
 TypeScript
 
@@ -207,11 +207,11 @@ const response = await env.AI.run(
 
   {
 
-    aspect_ratio: '16:9',
-
     prompt:
 
       'A neon-lit cyberpunk figure standing in the rain beneath a holographic billboard, cinematic lighting',
+
+    aspect_ratio: '16:9',
 
     resolution: '2k',
 
@@ -240,9 +240,9 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
   "input": {
 
-    "aspect_ratio": "16:9",
-
     "prompt": "A neon-lit cyberpunk figure standing in the rain beneath a holographic billboard, cinematic lighting",
+
+    "aspect_ratio": "16:9",
 
     "resolution": "2k"
 
@@ -253,8 +253,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 ```
 
-* [ Output ](#tab-panel-1466)
-* [ Raw response ](#tab-panel-1467)
+* [ Output ](#tab-panel-1654)
+* [ Raw response ](#tab-panel-1655)
 
 ![Cinematic Landscape](https://examples.aig.cloudflare.com/xai/grok-imagine-image/cinematic-landscape.png) 
 
@@ -283,8 +283,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 ## Parameters
 
-* [ Input ](#tab-panel-1470)
-* [ Output ](#tab-panel-1471)
+* [ Input ](#tab-panel-1658)
+* [ Output ](#tab-panel-1659)
 
 aspect\_ratio
 

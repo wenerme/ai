@@ -16,7 +16,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 #  plamo-embedding-1b 
 
-Text Embeddings • pfnet • Hosted 
+Text Embeddings • pfnet 
 
 `@cf/pfnet/plamo-embedding-1b` 
 
@@ -28,9 +28,9 @@ PLaMo-Embedding-1B is a Japanese text embedding model developed by Preferred Net
 
 ## Usage
 
-* [  TypeScript ](#tab-panel-2787)
-* [  Python ](#tab-panel-2788)
-* [  curl ](#tab-panel-2789)
+* [  TypeScript ](#tab-panel-4479)
+* [  Python ](#tab-panel-4480)
+* [  curl ](#tab-panel-4481)
 
 ```
 
@@ -141,8 +141,8 @@ Workers AI also supports OpenAI compatible API endpoints for `/v1/chat/completio
 
 ## Parameters
 
-* [ Input ](#tab-panel-2790)
-* [ Output ](#tab-panel-2791)
+* [ Input ](#tab-panel-4482)
+* [ Output ](#tab-panel-4483)
 
 ▶text
 

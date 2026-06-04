@@ -1,6 +1,6 @@
 # Code generation
 
-Writing, reviewing, editing, and answering questions about code is one of the primary use cases for OpenAI models today. This guide walks through your options for code generation with GPT-5.4 and Codex.
+Writing, reviewing, editing, and answering questions about code is one of the primary use cases for OpenAI models today. This guide walks through your options for code generation with [`gpt-5.5`](https://developers.openai.com/api/docs/models/gpt-5.5) and Codex.
 
 ## Get started
 

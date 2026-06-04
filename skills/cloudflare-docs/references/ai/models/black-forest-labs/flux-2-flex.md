@@ -14,7 +14,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 #  FLUX.2 \[flex\] 
 
-Text-to-Image • Black Forest Labs • Proxied 
+Text-to-Image • Black Forest Labs 
 
 `black-forest-labs/flux-2-flex` 
 

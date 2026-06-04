@@ -4,6 +4,13 @@ Generative AI is variable. Models sometimes produce different output from the sa
 
 This guide provides high-level guidance on designing evals. To get started with the [Evals API](https://developers.openai.com/api/docs/api-reference/evals), see [evaluating model performance](https://developers.openai.com/api/docs/guides/evals).
 
+OpenAI is deprecating the Evals platform. Existing evals content remains
+  available during the transition window. Evals will become read-only for
+  existing users on October 31, 2026, and the platform is scheduled to shut down
+  on November 30, 2026. See the [deprecations
+  page](https://developers.openai.com/api/docs/deprecations#2026-06-03-evals-platform) for the current
+  timeline.
+
 ## What are evals?
 
 Evals are structured tests for measuring a model's performance. They help ensure accuracy, performance, and reliability, despite the nondeterministic nature of AI systems. They're also one of the only ways to _improve_ performance of an LLM-based application (through [fine-tuning](https://developers.openai.com/api/docs/guides/model-optimization)).
@@ -87,10 +94,12 @@ To test your LLM-based application's ability to do Q&A over docs, your eval desi
 1. **Continuously evaluate**<br/>
    Set up continuous evaluation (CE) to run evals on every change, monitor your app to identify new cases of nondeterminism, and grow the eval set over time.
 
-When creating an eval dataset, o3 and GPT-4.1 are useful for collecting eval
-  examples and edge cases. Consider using o3 to help you generate a diverse set
-  of test data across various scenarios. Ensure your test data includes typical
-  cases, edge cases, and adversarial cases. Use human expert labellers.
+When creating an eval dataset, 
+  [`gpt-5.5`](https://developers.openai.com/api/docs/models/gpt-5.5) 
+  is useful for collecting eval examples and edge cases. Consider using it to
+  help you generate a diverse set of test data across various scenarios. Ensure
+  your test data includes typical cases, edge cases, and adversarial cases. Use
+  human expert labellers.
 
 ## Identify where you need evals
 
@@ -362,7 +371,7 @@ Human judgment evals provide the highest quality but are slow and expensive.
 
 ### LLM-as-a-judge and model graders
 
-Using models to judge output is cheaper to run and more scalable than human evaluation. Strong LLM judges like GPT-4.1 can match both controlled and crowdsourced human preferences, achieving over 80% agreement (the same level of agreement between humans).
+Using models to judge output is cheaper to run and more scalable than human evaluation. Start with [`gpt-5.5`](https://developers.openai.com/api/docs/models/gpt-5.5) when you need a strong LLM judge, then validate agreement against your human labels before optimizing for cost or latency.
 
 - **Examples**:
   - Pairwise comparison: Present the judge model with two responses and ask it to determine which one is better based on specific criteria
@@ -371,7 +380,7 @@ Using models to judge output is cheaper to run and more scalable than human eval
 - **Challenges**: Position bias (response order), verbosity bias (preferring longer responses)
 - **Recommendations**:
   - Use pairwise comparison or pass/fail for more reliability
-  - Use the most capable model to grade if you can (e.g., o3)—o-series models excel at auto-grading from rubics or from a collection of reference expert answers
+  - Use the most capable model to grade if you can. Start with [`gpt-5.5`](https://developers.openai.com/api/docs/models/gpt-5.5), then validate whether a specialized reasoning model performs better for your rubric or reference-answer set
   - Control for response lengths as LLMs bias towards longer responses in general
   - Add reasoning and chain-of-thought as reasoning before scoring improves eval performance
   - Once the LLM judge reaches a point where it's faster, cheaper, and consistently agrees with human annotations, scale up

@@ -31,11 +31,11 @@ For a list of accepted file types, refer to [Supported video formats](https://de
 
 To use the API, replace the `API_TOKEN` and `ACCOUNT_ID` values with your credentials in the example below.
 
-* [ REST API ](#tab-panel-8389)
-* [ Workers Binding API ](#tab-panel-8390)
+* [ REST API ](#tab-panel-10054)
+* [ Workers Binding API ](#tab-panel-10055)
 
-* [ cURL ](#tab-panel-8382)
-* [ TypeScript ](#tab-panel-8383)
+* [ cURL ](#tab-panel-10047)
+* [ TypeScript ](#tab-panel-10048)
 
 Terminal window
 
@@ -82,8 +82,8 @@ const video = await client.stream.copy.create({
 
 See the full Stream [REST API and SDK reference](https://developers.cloudflare.com/api/resources/stream/) for details on using REST API from external applications, with pre-generated SDK's for external TypeScript, Python, or Go applications.
 
-* [ index.ts ](#tab-panel-8384)
-* [ wrangler.jsonc ](#tab-panel-8385)
+* [ index.ts ](#tab-panel-10049)
+* [ wrangler.jsonc ](#tab-panel-10050)
 
 TypeScript
 
@@ -255,10 +255,10 @@ You can create a live input using the API or the **Live inputs** page of the Clo
 
 To use the API, replace the `API_TOKEN` and `ACCOUNT_ID` values with your credentials in the example below.
 
-* [ REST API ](#tab-panel-8388)
+* [ REST API ](#tab-panel-10053)
 
-* [ cURL ](#tab-panel-8386)
-* [ TypeScript ](#tab-panel-8387)
+* [ cURL ](#tab-panel-10051)
+* [ TypeScript ](#tab-panel-10052)
 
 Terminal window
 

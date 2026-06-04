@@ -14,7 +14,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 #  llama-guard-3-8b 
 
-Text Generation • Meta • Hosted 
+Text Generation • Meta 
 
 `@cf/meta/llama-guard-3-8b` 
 
@@ -34,9 +34,9 @@ Try out this model with Workers AI LLM Playground. It does not require any setup
 
 ## Usage
 
-* [  TypeScript ](#tab-panel-2711)
-* [  Python ](#tab-panel-2712)
-* [  curl ](#tab-panel-2713)
+* [  TypeScript ](#tab-panel-4423)
+* [  Python ](#tab-panel-4424)
+* [  curl ](#tab-panel-4425)
 
 ```
 
@@ -139,8 +139,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 ## Parameters
 
-* [ Input ](#tab-panel-2714)
-* [ Output ](#tab-panel-2715)
+* [ Input ](#tab-panel-4426)
+* [ Output ](#tab-panel-4427)
 
 ▶messages\[\]
 

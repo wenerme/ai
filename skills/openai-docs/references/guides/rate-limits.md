@@ -15,7 +15,7 @@ wait_random_exponential,
 def completion_with_backoff(**kwargs):
 return client.completions.create(**kwargs)
 
-completion_with_backoff(model="gpt-4o-mini", prompt="Once upon a time,")
+completion_with_backoff(model="gpt-3.5-turbo-instruct", prompt="Once upon a time,")
 `.trim(),
 };
 
@@ -30,7 +30,7 @@ client = OpenAI()
 def completions_with_backoff(**kwargs):
 return client.completions.create(**kwargs)
 
-completions_with_backoff(model="gpt-4o-mini", prompt="Once upon a time,")
+completions_with_backoff(model="gpt-3.5-turbo-instruct", prompt="Once upon a time,")
 `.trim(),
 };
 
@@ -121,7 +121,7 @@ Other important things worth noting:
 
 - Rate limits are defined at the [organization level](https://developers.openai.com/api/docs/guides/production-best-practices) and at the project level, not user level.
 - Rate limits vary by the [model](https://developers.openai.com/api/docs/models) being used.
-- For long context models like GPT-4.1, there is a separate rate limit for long context requests. You can view these rate limits in [developer console](https://platform.openai.com/settings/organization/limits).
+- For long context models like GPT-5.5, there is a separate rate limit for long context requests. You can view these rate limits in [developer console](https://platform.openai.com/settings/organization/limits).
 - Limits are also placed on the total amount an organization can spend on the API each month. These are also known as "usage limits".
 - Some model families have shared rate limits. Any models listed under a "shared limit" in your [organizations limit page](https://platform.openai.com/settings/organization/limits) share a rate limit between them. For example, if the listed shared TPM is 3.5M, all calls to any model in the given "shared limit" list will count towards that 3.5M.
 - Vector store ingestion is also rate limited per vector store ID. `/vector_stores/{vector_store_id}/files` and `/vector_stores/{vector_store_id}/file_batches` share a limit of 300 requests per minute for each vector store. For larger ingests, prefer `/vector_stores/{vector_store_id}/file_batches`.
@@ -134,10 +134,10 @@ You can view the rate and usage limits for your organization under the [limits](
 | ----------- | --------------------------------------------------------------------- | ---------------- |
 | Free        | User must be in an [allowed geography](https://developers.openai.com/api/docs/supported-countries) | $100 / month     |
 | Tier&nbsp;1 | $5 paid                                                               | $100 / month     |
-| Tier&nbsp;2 | $50 paid and 7+ days since first successful payment                   | $500 / month     |
-| Tier&nbsp;3 | $100 paid and 7+ days since first successful payment                  | $1,000 / month   |
-| Tier&nbsp;4 | $250 paid and 14+ days since first successful payment                 | $5,000 / month   |
-| Tier&nbsp;5 | $1,000 paid and 30+ days since first successful payment               | $200,000 / month |
+| Tier&nbsp;2 | $50 paid                                                              | $500 / month     |
+| Tier&nbsp;3 | $100 paid                                                             | $1,000 / month   |
+| Tier&nbsp;4 | $250 paid                                                             | $5,000 / month   |
+| Tier&nbsp;5 | $1,000 paid                                                           | $200,000 / month |
 
 To view a high-level summary of rate limits per model, visit the [models page](https://developers.openai.com/api/docs/models).
 

@@ -14,7 +14,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 #  Vidu Q3 Pro 
 
-Text-to-Video • Vidu • Proxied 
+Text-to-Video • Vidu 
 
 `vidu/q3-pro` 
 
@@ -28,8 +28,8 @@ Vidu Q3 Pro is a high-quality video generation model supporting text-to-video, i
 
 ## Usage
 
-* [ TypeScript ](#tab-panel-1332)
-* [ cURL ](#tab-panel-1333)
+* [ TypeScript ](#tab-panel-1520)
+* [ cURL ](#tab-panel-1521)
 
 TypeScript
 
@@ -41,9 +41,9 @@ const response = await env.AI.run(
 
   {
 
-    duration: 5,
-
     prompt: 'A golden retriever running through a sunlit meadow in slow motion',
+
+    duration: 5,
 
     resolution: '720p',
 
@@ -72,9 +72,9 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
   "input": {
 
-    "duration": 5,
-
     "prompt": "A golden retriever running through a sunlit meadow in slow motion",
+
+    "duration": 5,
 
     "resolution": "720p"
 
@@ -85,8 +85,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 ```
 
-* [ Output ](#tab-panel-1330)
-* [ Raw response ](#tab-panel-1331)
+* [ Output ](#tab-panel-1518)
+* [ Raw response ](#tab-panel-1519)
 
 ```
 
@@ -115,8 +115,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 **Portrait Aspect Ratio**  — Vertical video for social media 
 
-* [ TypeScript ](#tab-panel-1338)
-* [ cURL ](#tab-panel-1339)
+* [ TypeScript ](#tab-panel-1526)
+* [ cURL ](#tab-panel-1527)
 
 TypeScript
 
@@ -128,13 +128,13 @@ const response = await env.AI.run(
 
   {
 
-    aspect_ratio: '9:16',
-
-    duration: 5,
-
     prompt:
 
       'A busy street in Tokyo at night with neon signs reflecting on wet pavement, rain falling',
+
+    aspect_ratio: '9:16',
+
+    duration: 5,
 
     resolution: '720p',
 
@@ -163,11 +163,11 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
   "input": {
 
+    "prompt": "A busy street in Tokyo at night with neon signs reflecting on wet pavement, rain falling",
+
     "aspect_ratio": "9:16",
 
     "duration": 5,
-
-    "prompt": "A busy street in Tokyo at night with neon signs reflecting on wet pavement, rain falling",
 
     "resolution": "720p"
 
@@ -178,8 +178,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 ```
 
-* [ Output ](#tab-panel-1334)
-* [ Raw response ](#tab-panel-1335)
+* [ Output ](#tab-panel-1522)
+* [ Raw response ](#tab-panel-1523)
 
 ```
 
@@ -206,8 +206,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 **Silent Video**  — Generate video without audio 
 
-* [ TypeScript ](#tab-panel-1342)
-* [ cURL ](#tab-panel-1343)
+* [ TypeScript ](#tab-panel-1530)
+* [ cURL ](#tab-panel-1531)
 
 TypeScript
 
@@ -221,9 +221,9 @@ const response = await env.AI.run(
 
     audio: false,
 
-    duration: 8,
-
     prompt: 'Abstract paint swirls slowly mixing in water, vivid blues and golds',
+
+    duration: 8,
 
     resolution: '720p',
 
@@ -254,9 +254,9 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
     "audio": false,
 
-    "duration": 8,
-
     "prompt": "Abstract paint swirls slowly mixing in water, vivid blues and golds",
+
+    "duration": 8,
 
     "resolution": "720p"
 
@@ -267,8 +267,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 ```
 
-* [ Output ](#tab-panel-1336)
-* [ Raw response ](#tab-panel-1337)
+* [ Output ](#tab-panel-1524)
+* [ Raw response ](#tab-panel-1525)
 
 ```
 
@@ -295,8 +295,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 **Square Format**  — Square video for product demos or social posts 
 
-* [ TypeScript ](#tab-panel-1344)
-* [ cURL ](#tab-panel-1345)
+* [ TypeScript ](#tab-panel-1532)
+* [ cURL ](#tab-panel-1533)
 
 TypeScript
 
@@ -308,13 +308,13 @@ const response = await env.AI.run(
 
   {
 
-    aspect_ratio: '1:1',
-
-    duration: 5,
-
     prompt:
 
       'A sleek wireless headphone rotating on a pedestal with soft studio lighting and a white background',
+
+    aspect_ratio: '1:1',
+
+    duration: 5,
 
     resolution: '720p',
 
@@ -343,11 +343,11 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
   "input": {
 
+    "prompt": "A sleek wireless headphone rotating on a pedestal with soft studio lighting and a white background",
+
     "aspect_ratio": "1:1",
 
     "duration": 5,
-
-    "prompt": "A sleek wireless headphone rotating on a pedestal with soft studio lighting and a white background",
 
     "resolution": "720p"
 
@@ -358,8 +358,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 ```
 
-* [ Output ](#tab-panel-1340)
-* [ Raw response ](#tab-panel-1341)
+* [ Output ](#tab-panel-1528)
+* [ Raw response ](#tab-panel-1529)
 
 ```
 
@@ -386,8 +386,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 ## Parameters
 
-* [ Input ](#tab-panel-1346)
-* [ Output ](#tab-panel-1347)
+* [ Input ](#tab-panel-1534)
+* [ Output ](#tab-panel-1535)
 
 aspect\_ratio
 

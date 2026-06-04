@@ -287,7 +287,7 @@ Codex uses short-lived, least-privilege GitHub App installation tokens for each 
 
 ### Configure IP addresses
 
-If your GitHub organization controls the IP addresses that apps use to connect, make sure to include these [egress IP ranges](https://openai.com/chatgpt-agents.json).
+If your GitHub organization controls the IP addresses that apps use to connect, make sure to include the [Codex cloud egress IP ranges](https://developers.openai.com/api/docs/guides/ip-addresses).
 
 These IP ranges can change. Consider checking them automatically and updating your allow list based on the latest values.
 

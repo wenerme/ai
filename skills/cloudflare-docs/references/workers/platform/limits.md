@@ -89,8 +89,8 @@ To resolve a CPU time limit error:
 
 On the Workers Paid plan, you can increase the maximum CPU time from the default 30 seconds to 5 minutes (300,000 ms).
 
-* [  wrangler.jsonc ](#tab-panel-10711)
-* [  wrangler.toml ](#tab-panel-10712)
+* [  wrangler.jsonc ](#tab-panel-11181)
+* [  wrangler.toml ](#tab-panel-11182)
 
 JSONC
 
@@ -167,7 +167,7 @@ To view memory errors in the dashboard:
 
 ## Duration
 
-Duration measures wall-clock time from start to end of a Worker invocation. There is no hard limit on duration for HTTP-triggered Workers. As long as the client remains connected, the Worker can continue processing, making subrequests, and setting timeouts.
+Duration measures wall-clock time from start to end of a Worker invocation.
 
 | Trigger type                                                                                       | Duration limit |
 | -------------------------------------------------------------------------------------------------- | -------------- |
@@ -176,7 +176,7 @@ Duration measures wall-clock time from start to end of a Worker invocation. Ther
 | [Durable Object Alarm](https://developers.cloudflare.com/durable-objects/api/alarms/)              | 15 min         |
 | [Queue Consumer](https://developers.cloudflare.com/queues/configuration/javascript-apis/#consumer) | 15 min         |
 
-When the client disconnects, all tasks associated with that request are canceled. Use [event.waitUntil()](https://developers.cloudflare.com/workers/runtime-apis/handlers/fetch/) to delay cancellation for another 30 seconds or until the promise you pass to `waitUntil()` completes.
+There is no hard limit on duration for HTTP-triggered Workers. As long as the client remains connected, the Worker can continue processing, making subrequests, and streaming a response body. When the client disconnects or the response is complete, tasks associated with that request may be canceled. Use [ctx.waitUntil()](https://developers.cloudflare.com/workers/runtime-apis/context/#waituntil) to perform work after returning a response. `waitUntil()` can extend execution for up to 30 seconds after the response is sent or the client disconnects.
 
 Note
 
@@ -210,7 +210,7 @@ A subrequest is any request a Worker makes using the [Fetch API](https://develop
 
 Each subrequest in a redirect chain counts against this limit. The total number of subrequests may exceed the number of `fetch()` calls in your code. You can change the subrequest limit per Worker using the [limits configuration](https://developers.cloudflare.com/workers/wrangler/configuration/#limits) in your Wrangler configuration file.
 
-There is no set time limit on individual subrequests. As long as the client remains connected, the Worker can continue making subrequests. When the client disconnects, all tasks are canceled. Use [event.waitUntil()](https://developers.cloudflare.com/workers/runtime-apis/handlers/fetch/) to delay cancellation for up to 30 seconds.
+There is no set time limit on individual subrequests. As long as the client remains connected, the Worker can continue making subrequests. When the client disconnects or the response is complete, outstanding work may be canceled unless it is passed to [ctx.waitUntil()](https://developers.cloudflare.com/workers/runtime-apis/context/#waituntil), which can extend execution for up to 30 seconds.
 
 ### Worker-to-Worker subrequests
 
@@ -237,8 +237,8 @@ Once response headers arrive for a connection, it no longer counts toward the si
 
 If you use `fetch()` but do not need the response body, calling `response.body.cancel()` is still good practice to free memory:
 
-* [  JavaScript ](#tab-panel-10713)
-* [  TypeScript ](#tab-panel-10714)
+* [  JavaScript ](#tab-panel-11183)
+* [  TypeScript ](#tab-panel-11184)
 
 src/index.js
 
@@ -467,14 +467,14 @@ Wall time (also called wall-clock time) is the total elapsed time from the start
 
 The following table summarizes the wall time limits for different types of Worker invocations across the developer platform:
 
-| Invocation type                                                                                     | Wall time limit | Details                                                                                                                                                                                                                                          |
-| --------------------------------------------------------------------------------------------------- | --------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| Incoming HTTP request                                                                               | Unlimited       | No hard limit while the client remains connected. When the client disconnects, tasks are canceled unless you call [waitUntil()](https://developers.cloudflare.com/workers/runtime-apis/handlers/fetch/) to extend execution by up to 30 seconds. |
-| [Cron Triggers](https://developers.cloudflare.com/workers/configuration/cron-triggers/)             | 15 minutes      | Scheduled Workers have a maximum wall time of 15 minutes per invocation.                                                                                                                                                                         |
-| [Queue consumers](https://developers.cloudflare.com/queues/configuration/javascript-apis/#consumer) | 15 minutes      | Each consumer invocation has a maximum wall time of 15 minutes.                                                                                                                                                                                  |
-| [Durable Object alarm handlers](https://developers.cloudflare.com/durable-objects/api/alarms/)      | 15 minutes      | Alarm handler invocations have a maximum wall time of 15 minutes.                                                                                                                                                                                |
-| [Durable Objects](https://developers.cloudflare.com/durable-objects/) (RPC / HTTP)                  | Unlimited       | No hard limit while the caller stays connected to the Durable Object.                                                                                                                                                                            |
-| [Workflows](https://developers.cloudflare.com/workflows/) (per step)                                | Unlimited       | Each step can run for an unlimited wall time. Individual steps are subject to the configured [CPU time limit](https://developers.cloudflare.com/workers/platform/limits/#cpu-time).                                                              |
+| Invocation type                                                                                     | Wall time limit | Details                                                                                                                                                                                                                                                                              |
+| --------------------------------------------------------------------------------------------------- | --------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| Incoming HTTP request                                                                               | Unlimited       | No hard limit while the client remains connected. A Worker that is still streaming a response body remains active. [waitUntil()](https://developers.cloudflare.com/workers/runtime-apis/context/#waituntil) extends execution for up to 30 seconds after the response or disconnect. |
+| [Cron Triggers](https://developers.cloudflare.com/workers/configuration/cron-triggers/)             | 15 minutes      | Scheduled Workers have a maximum wall time of 15 minutes per invocation.                                                                                                                                                                                                             |
+| [Queue consumers](https://developers.cloudflare.com/queues/configuration/javascript-apis/#consumer) | 15 minutes      | Each consumer invocation has a maximum wall time of 15 minutes.                                                                                                                                                                                                                      |
+| [Durable Object alarm handlers](https://developers.cloudflare.com/durable-objects/api/alarms/)      | 15 minutes      | Alarm handler invocations have a maximum wall time of 15 minutes.                                                                                                                                                                                                                    |
+| [Durable Objects](https://developers.cloudflare.com/durable-objects/) (RPC / HTTP)                  | Unlimited       | No hard limit while the caller stays connected to the Durable Object. Durable Objects remain active while a request, RPC call, response stream, WebSocket, or pending I/O is in flight.                                                                                              |
+| [Workflows](https://developers.cloudflare.com/workflows/) (per step)                                | Unlimited       | Each step can run for an unlimited wall time. Individual steps are subject to the configured [CPU time limit](https://developers.cloudflare.com/workers/platform/limits/#cpu-time).                                                                                                  |
 
 ---
 

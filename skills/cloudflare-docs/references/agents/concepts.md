@@ -13,13 +13,11 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 # Concepts
 
 * [ What are agents? ](https://developers.cloudflare.com/agents/concepts/what-are-agents/)
-* [ Workflows ](https://developers.cloudflare.com/agents/concepts/workflows/)
+* [ Conversation state and memory ](https://developers.cloudflare.com/agents/concepts/conversation-state-and-memory/)
 * [ Tools ](https://developers.cloudflare.com/agents/concepts/tools/)
-* [ Agent class internals ](https://developers.cloudflare.com/agents/concepts/agent-class/)
-* [ Human in the Loop ](https://developers.cloudflare.com/agents/concepts/human-in-the-loop/)
 * [ Calling LLMs ](https://developers.cloudflare.com/agents/concepts/calling-llms/)
-* [ Long-running agents ](https://developers.cloudflare.com/agents/concepts/long-running-agents/)
-* [ Memory ](https://developers.cloudflare.com/agents/concepts/memory/)
+* [ Using Agents with Workflows ](https://developers.cloudflare.com/agents/concepts/workflows/)
+* [ Agentic patterns ](https://developers.cloudflare.com/agents/concepts/agentic-patterns/)
 
 ```json
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/agents/","name":"Agents"}},{"@type":"ListItem","position":3,"item":{"@id":"/agents/concepts/","name":"Concepts"}}]}

@@ -14,14 +14,14 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 Agents change how you work with LLMs. In a stateless Worker, every request starts from scratch — you reconstruct context, call a model, return the response, and forget everything. An Agent keeps state between calls, stays connected to clients over WebSocket, and can call models on its own schedule without a user present.
 
-This page covers the patterns that become possible when your LLM calls happen inside a stateful Agent. For provider setup and code examples, refer to [Using AI Models](https://developers.cloudflare.com/agents/api-reference/using-ai-models/).
+This page covers the patterns that become possible when your LLM calls happen inside a stateful Agent. For provider setup and code examples, refer to [Using AI Models](https://developers.cloudflare.com/agents/runtime/operations/using-ai-models/).
 
 ## State as context
 
-Every Agent has a built-in [SQL database](https://developers.cloudflare.com/agents/api-reference/store-and-sync-state/) and key-value state. Instead of passing an entire conversation history from the client on every request, the Agent stores it and builds prompts from its own storage.
+Every Agent has a built-in [SQL database](https://developers.cloudflare.com/agents/runtime/lifecycle/state/) and key-value state. Instead of passing an entire conversation history from the client on every request, the Agent stores it and builds prompts from its own storage.
 
-* [  JavaScript ](#tab-panel-4220)
-* [  TypeScript ](#tab-panel-4221)
+* [  JavaScript ](#tab-panel-4808)
+* [  TypeScript ](#tab-panel-4809)
 
 JavaScript
 
@@ -111,8 +111,8 @@ Reasoning models like DeepSeek R1 or GLM-4 can take 30 seconds to several minute
 
 An Agent keeps running after the client disconnects. When the response arrives, the Agent can persist it to state and deliver it when the client reconnects — even hours or days later.
 
-* [  JavaScript ](#tab-panel-4222)
-* [  TypeScript ](#tab-panel-4223)
+* [  JavaScript ](#tab-panel-4810)
+* [  TypeScript ](#tab-panel-4811)
 
 JavaScript
 
@@ -208,14 +208,14 @@ export class MyAgent extends Agent<Env> {
 
 ```
 
-With [AIChatAgent](https://developers.cloudflare.com/agents/api-reference/chat-agents/), this is handled automatically — messages are persisted to SQLite and streams resume on reconnect.
+With [AIChatAgent](https://developers.cloudflare.com/agents/communication-channels/chat/chat-agents/), this is handled automatically — messages are persisted to SQLite and streams resume on reconnect.
 
 ## Autonomous model calls
 
 Agents do not need a user request to call a model. You can schedule model calls to run in the background — for nightly summarization, periodic classification, monitoring, or any task that should happen without human interaction.
 
-* [  JavaScript ](#tab-panel-4224)
-* [  TypeScript ](#tab-panel-4225)
+* [  JavaScript ](#tab-panel-4812)
+* [  TypeScript ](#tab-panel-4813)
 
 JavaScript
 
@@ -321,8 +321,8 @@ export class DigestAgent extends Agent<Env> {
 
 Because an Agent maintains state across calls, you can chain multiple models in a single method — using a fast model for classification, a reasoning model for planning, and an embedding model for retrieval — without losing context between steps.
 
-* [  JavaScript ](#tab-panel-4228)
-* [  TypeScript ](#tab-panel-4229)
+* [  JavaScript ](#tab-panel-4816)
+* [  TypeScript ](#tab-panel-4817)
 
 JavaScript
 
@@ -452,8 +452,8 @@ Each intermediate result stays in the Agent's memory for the duration of the met
 
 Persistent storage means you can cache model responses and avoid redundant calls. This is especially useful for expensive operations like embeddings or long reasoning chains.
 
-* [  JavaScript ](#tab-panel-4226)
-* [  TypeScript ](#tab-panel-4227)
+* [  JavaScript ](#tab-panel-4814)
+* [  TypeScript ](#tab-panel-4815)
 
 JavaScript
 
@@ -555,13 +555,13 @@ For provider-level caching and rate limit management across multiple agents, use
 
 ## Next steps
 
-[ Using AI Models ](https://developers.cloudflare.com/agents/api-reference/using-ai-models/) Provider setup, streaming, and code examples for Workers AI, OpenAI, Anthropic, and more. 
+[ Using AI Models ](https://developers.cloudflare.com/agents/runtime/operations/using-ai-models/) Provider setup, streaming, and code examples for Workers AI, OpenAI, Anthropic, and more. 
 
-[ Chat agents ](https://developers.cloudflare.com/agents/api-reference/chat-agents/) AIChatAgent handles message persistence, resumable streaming, and tools automatically. 
+[ Chat agents ](https://developers.cloudflare.com/agents/communication-channels/chat/chat-agents/) AIChatAgent handles message persistence, resumable streaming, and tools automatically. 
 
-[ Store and sync state ](https://developers.cloudflare.com/agents/api-reference/store-and-sync-state/) SQL database and key-value state APIs for building context and caching. 
+[ Store and sync state ](https://developers.cloudflare.com/agents/runtime/lifecycle/state/) SQL database and key-value state APIs for building context and caching. 
 
-[ Schedule tasks ](https://developers.cloudflare.com/agents/api-reference/schedule-tasks/) Run autonomous model calls on a delay, schedule, or cron. 
+[ Schedule tasks ](https://developers.cloudflare.com/agents/runtime/execution/schedule-tasks/) Run autonomous model calls on a delay, schedule, or cron. 
 
 ```json
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/agents/","name":"Agents"}},{"@type":"ListItem","position":3,"item":{"@id":"/agents/concepts/","name":"Concepts"}},{"@type":"ListItem","position":4,"item":{"@id":"/agents/concepts/calling-llms/","name":"Calling LLMs"}}]}

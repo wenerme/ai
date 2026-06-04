@@ -14,7 +14,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 #  flux-2-dev 
 
-Text-to-Image • Black Forest Labs • Hosted 
+Text-to-Image • Black Forest Labs 
 
 `@cf/black-forest-labs/flux-2-dev` 
 
@@ -28,8 +28,8 @@ FLUX.2 \[dev\] is an image model from Black Forest Labs where you can generate h
 
 ## Usage
 
-* [  TypeScript ](#tab-panel-2532)
-* [  curl ](#tab-panel-2533)
+* [  TypeScript ](#tab-panel-4248)
+* [  curl ](#tab-panel-4249)
 
 ```
 
@@ -113,8 +113,8 @@ curl --request POST \
 
 ## Parameters
 
-* [ Input ](#tab-panel-2534)
-* [ Output ](#tab-panel-2535)
+* [ Input ](#tab-panel-4250)
+* [ Output ](#tab-panel-4251)
 
 ▶multipart{}
 

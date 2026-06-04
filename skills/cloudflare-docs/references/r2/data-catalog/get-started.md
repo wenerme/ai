@@ -30,18 +30,21 @@ Use a Node version manager like [Volta ↗](https://volta.sh/) or [nvm ↗](http
 
 ## 1\. Create an R2 bucket and enable the data catalog
 
-* [ Wrangler CLI ](#tab-panel-8603)
-* [ Dashboard ](#tab-panel-8604)
+* [ Wrangler CLI ](#tab-panel-9051)
+* [ Dashboard ](#tab-panel-9052)
 
 1. If not already logged in, run:  
+Terminal window  
 ```  
 npx wrangler login  
 ```
 2. Create an R2 bucket:  
+Terminal window  
 ```  
 npx wrangler r2 bucket create r2-data-catalog-tutorial  
 ```
 3. Enable the catalog on your bucket:  
+Terminal window  
 ```  
 npx wrangler r2 bucket catalog enable r2-data-catalog-tutorial  
 ```  
@@ -77,10 +80,12 @@ You need to install a Python package manager. In this guide, use [uv ↗](https:
 We will use [marimo ↗](https://github.com/marimo-team/marimo) as a Python notebook.
 
 1. Create a directory where our notebook will be stored:  
+Terminal window  
 ```  
 mkdir r2-data-catalog-notebook  
 ```
 2. Change into our new directory:  
+Terminal window  
 ```  
 cd r2-data-catalog-notebook  
 ```

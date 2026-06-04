@@ -18,8 +18,8 @@ Use the Workers API to access Agent Memory from your [Worker](https://developers
 
 Add an `agent_memory` entry to your Wrangler configuration. The `binding` field is the variable name you use in Worker code, and the `namespace` field is the Agent Memory namespace to bind to.
 
-* [  wrangler.jsonc ](#tab-panel-4408)
-* [  wrangler.toml ](#tab-panel-4409)
+* [  wrangler.jsonc ](#tab-panel-4548)
+* [  wrangler.toml ](#tab-panel-4549)
 
 JSONC
 
@@ -86,7 +86,7 @@ Use namespace methods on the binding to access and manage memory profiles.
 
 Gets a memory profile by name. If the profile does not exist, Agent Memory creates it.
 
-* `profileName` ` string ` required: Name of the profile to access. Maximum 32 characters.
+* `profileName` ` string ` required: Name of the profile to access. Maximum 100 characters.
 * Returns ` Promise<AgentMemoryProfile> `
 
 The first `getProfile()` call for a new profile may take longer while Agent Memory creates the profile.
@@ -95,7 +95,7 @@ The first `getProfile()` call for a new profile may take longer while Agent Memo
 
 Marks a profile and all its memories and messages for deletion.
 
-* `profileName` ` string ` required: Name of the profile to delete. Maximum 32 characters.
+* `profileName` ` string ` required: Name of the profile to delete. Maximum 100 characters.
 * Returns ` Promise<void> `
 
 ## Profile methods

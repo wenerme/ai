@@ -14,7 +14,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 #  phi-2 Beta 
 
-Text Generation • Microsoft • Hosted 
+Text Generation • Microsoft 
 
 `@cf/microsoft/phi-2` 
 
@@ -22,7 +22,7 @@ Phi-2 is a Transformer-based model with a next-word prediction objective, traine
 
 | Model Info                                                                 |                                                  |
 | -------------------------------------------------------------------------- | ------------------------------------------------ |
-| Planned Deprecation                                                        | 5/30/2026                                        |
+| Deprecated                                                                 | 5/30/2026                                        |
 | Context Window[ ↗](https://developers.cloudflare.com/workers-ai/glossary/) | 2,048 tokens                                     |
 | More information                                                           | [link ↗](https://huggingface.co/microsoft/phi-2) |
 | Beta                                                                       | Yes                                              |
@@ -35,10 +35,10 @@ Try out this model with Workers AI LLM Playground. It does not require any setup
 
 ## Usage
 
-* [  Worker (Streaming) ](#tab-panel-3021)
-* [  TypeScript ](#tab-panel-3022)
-* [  Python ](#tab-panel-3023)
-* [  curl ](#tab-panel-3024)
+* [  Worker (Streaming) ](#tab-panel-4471)
+* [  TypeScript ](#tab-panel-4472)
+* [  Python ](#tab-panel-4473)
+* [  curl ](#tab-panel-4474)
 
 TypeScript
 

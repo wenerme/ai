@@ -14,7 +14,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 #  flux 
 
-Automatic Speech Recognition • Deepgram • Hosted 
+Automatic Speech Recognition • Deepgram 
 
 `@cf/deepgram/flux` 
 
@@ -156,8 +156,8 @@ function generateRandomAudio() {
 
 ## Parameters
 
-* [ Input ](#tab-panel-2525)
-* [ Output ](#tab-panel-2526)
+* [ Input ](#tab-panel-4241)
+* [ Output ](#tab-panel-4242)
 
 encoding
 

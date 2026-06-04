@@ -16,7 +16,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 #  bge-reranker-base 
 
-Text Classification • BAAI • Hosted 
+Text Classification • BAAI 
 
 `@cf/baai/bge-reranker-base` 
 
@@ -28,9 +28,9 @@ Different from embedding model, reranker uses question and document as input and
 
 ## Usage
 
-* [  TypeScript ](#tab-panel-2471)
-* [  Python ](#tab-panel-2472)
-* [  curl ](#tab-panel-2473)
+* [  TypeScript ](#tab-panel-4207)
+* [  Python ](#tab-panel-4208)
+* [  curl ](#tab-panel-4209)
 
 ```
 
@@ -134,8 +134,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 ## Parameters
 
-* [ Input ](#tab-panel-2474)
-* [ Output ](#tab-panel-2475)
+* [ Input ](#tab-panel-4210)
+* [ Output ](#tab-panel-4211)
 
 query
 

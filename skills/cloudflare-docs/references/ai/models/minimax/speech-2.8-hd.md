@@ -14,7 +14,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 #  MiniMax Speech 2.8 HD 
 
-Text-to-Speech • MiniMax • Proxied 
+Text-to-Speech • MiniMax 
 
 `minimax/speech-2.8-hd` 
 

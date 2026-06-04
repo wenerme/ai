@@ -14,7 +14,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 #  Seedream 5 Lite 
 
-Text-to-Image • ByteDance • Proxied 
+Text-to-Image • ByteDance 
 
 `bytedance/seedream-5-lite` 
 
@@ -27,8 +27,8 @@ Seedream 5 Lite is a lighter, faster version of the Seedream 5 family with multi
 
 ## Usage
 
-* [ TypeScript ](#tab-panel-378)
-* [ cURL ](#tab-panel-379)
+* [ TypeScript ](#tab-panel-396)
+* [ cURL ](#tab-panel-397)
 
 TypeScript
 
@@ -72,8 +72,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 ```
 
-* [ Output ](#tab-panel-380)
-* [ Raw response ](#tab-panel-381)
+* [ Output ](#tab-panel-398)
+* [ Raw response ](#tab-panel-399)
 
 ![Simple Generation](https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/bytedance__seedream-5-lite/simple-generation-0.jpeg) 
 
@@ -108,8 +108,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 **High Resolution PNG**  — 3K quality with PNG output 
 
-* [ TypeScript ](#tab-panel-384)
-* [ cURL ](#tab-panel-385)
+* [ TypeScript ](#tab-panel-402)
+* [ cURL ](#tab-panel-403)
 
 TypeScript
 
@@ -121,13 +121,13 @@ const response = await env.AI.run(
 
   {
 
-    aspect_ratio: '16:9',
-
-    output_format: 'png',
-
     prompt:
 
       'A detailed technical blueprint of a futuristic spacecraft with annotations and measurements',
+
+    aspect_ratio: '16:9',
+
+    output_format: 'png',
 
     size: '3K',
 
@@ -156,11 +156,11 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
   "input": {
 
+    "prompt": "A detailed technical blueprint of a futuristic spacecraft with annotations and measurements",
+
     "aspect_ratio": "16:9",
 
     "output_format": "png",
-
-    "prompt": "A detailed technical blueprint of a futuristic spacecraft with annotations and measurements",
 
     "size": "3K"
 
@@ -171,8 +171,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 ```
 
-* [ Output ](#tab-panel-382)
-* [ Raw response ](#tab-panel-383)
+* [ Output ](#tab-panel-400)
+* [ Raw response ](#tab-panel-401)
 
 ![High Resolution PNG](https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/bytedance__seedream-5-lite/high-resolution-png-0.png) 
 
@@ -205,8 +205,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 **Portrait Photo**  — JPEG output for photographs 
 
-* [ TypeScript ](#tab-panel-388)
-* [ cURL ](#tab-panel-389)
+* [ TypeScript ](#tab-panel-406)
+* [ cURL ](#tab-panel-407)
 
 TypeScript
 
@@ -218,13 +218,13 @@ const response = await env.AI.run(
 
   {
 
-    aspect_ratio: '3:4',
-
-    output_format: 'jpeg',
-
     prompt:
 
       'A professional headshot portrait with soft studio lighting and a neutral gray background',
+
+    aspect_ratio: '3:4',
+
+    output_format: 'jpeg',
 
     size: '2K',
 
@@ -253,11 +253,11 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
   "input": {
 
+    "prompt": "A professional headshot portrait with soft studio lighting and a neutral gray background",
+
     "aspect_ratio": "3:4",
 
     "output_format": "jpeg",
-
-    "prompt": "A professional headshot portrait with soft studio lighting and a neutral gray background",
 
     "size": "2K"
 
@@ -268,8 +268,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 ```
 
-* [ Output ](#tab-panel-386)
-* [ Raw response ](#tab-panel-387)
+* [ Output ](#tab-panel-404)
+* [ Raw response ](#tab-panel-405)
 
 ![Portrait Photo](https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/bytedance__seedream-5-lite/portrait-photo-0.jpeg) 
 
@@ -302,8 +302,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 **Sequential Comic**  — Generate sequential comic panels 
 
-* [ TypeScript ](#tab-panel-392)
-* [ cURL ](#tab-panel-393)
+* [ TypeScript ](#tab-panel-410)
+* [ cURL ](#tab-panel-411)
 
 TypeScript
 
@@ -315,13 +315,13 @@ const response = await env.AI.run(
 
   {
 
-    aspect_ratio: '4:3',
-
-    max_images: 4,
-
     prompt:
 
       'A four-panel comic strip showing a cat discovering a cardboard box and deciding to sit in it',
+
+    aspect_ratio: '4:3',
+
+    max_images: 4,
 
     sequential_image_generation: 'auto',
 
@@ -350,11 +350,11 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
   "input": {
 
+    "prompt": "A four-panel comic strip showing a cat discovering a cardboard box and deciding to sit in it",
+
     "aspect_ratio": "4:3",
 
     "max_images": 4,
-
-    "prompt": "A four-panel comic strip showing a cat discovering a cardboard box and deciding to sit in it",
 
     "sequential_image_generation": "auto"
 
@@ -365,8 +365,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 ```
 
-* [ Output ](#tab-panel-390)
-* [ Raw response ](#tab-panel-391)
+* [ Output ](#tab-panel-408)
+* [ Raw response ](#tab-panel-409)
 
 ![Sequential Comic](https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/bytedance__seedream-5-lite/sequential-comic-0.jpeg) 
 
@@ -399,8 +399,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 **Image Variation**  — Create variation from reference 
 
-* [ TypeScript ](#tab-panel-396)
-* [ cURL ](#tab-panel-397)
+* [ TypeScript ](#tab-panel-414)
+* [ cURL ](#tab-panel-415)
 
 TypeScript
 
@@ -412,6 +412,8 @@ const response = await env.AI.run(
 
   {
 
+    prompt: 'Create a variation of this image in a watercolor painting style',
+
     aspect_ratio: 'match_input_image',
 
     image_input: [
@@ -419,8 +421,6 @@ const response = await env.AI.run(
       'https://replicate.delivery/xezq/jCypj4MeXYUiRyq7nfgm8z1OvFZF81wh4FznutDsZOuJz0YWA/tmp1iukn307.jpg',
 
     ],
-
-    prompt: 'Create a variation of this image in a watercolor painting style',
 
     size: '2K',
 
@@ -449,6 +449,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
   "input": {
 
+    "prompt": "Create a variation of this image in a watercolor painting style",
+
     "aspect_ratio": "match_input_image",
 
     "image_input": [
@@ -456,8 +458,6 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
       "https://replicate.delivery/xezq/jCypj4MeXYUiRyq7nfgm8z1OvFZF81wh4FznutDsZOuJz0YWA/tmp1iukn307.jpg"
 
     ],
-
-    "prompt": "Create a variation of this image in a watercolor painting style",
 
     "size": "2K"
 
@@ -468,8 +468,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 ```
 
-* [ Output ](#tab-panel-394)
-* [ Raw response ](#tab-panel-395)
+* [ Output ](#tab-panel-412)
+* [ Raw response ](#tab-panel-413)
 
 ![Image Variation](https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/bytedance__seedream-5-lite/image-variation-0.jpeg) 
 
@@ -502,8 +502,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 ## Parameters
 
-* [ Input ](#tab-panel-398)
-* [ Output ](#tab-panel-399)
+* [ Input ](#tab-panel-416)
+* [ Output ](#tab-panel-417)
 
 aspect\_ratio
 

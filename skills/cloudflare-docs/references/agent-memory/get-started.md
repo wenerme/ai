@@ -14,7 +14,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 Add Agent Memory to an agent so it can recall durable context across conversations.
 
-This guide uses the [Agents SDK](https://developers.cloudflare.com/agents/) and its [Session API](https://developers.cloudflare.com/agents/api-reference/sessions/) to expose memory recall as a model-callable tool. The same pattern applies if you use another agent framework: store memories with `ingest()` or `remember()`, expose `recall()` through one of your agent's tools, and use the system prompt to tell the model when to search memory.
+This guide uses the [Agents SDK](https://developers.cloudflare.com/agents/) and its [Session API](https://developers.cloudflare.com/agents/runtime/lifecycle/sessions/) to expose memory recall as a model-callable tool. The same pattern applies if you use another agent framework: store memories with `ingest()` or `remember()`, expose `recall()` through one of your agent's tools, and use the system prompt to tell the model when to search memory.
 
 ## Prerequisites
 
@@ -114,8 +114,8 @@ You will use the namespace name, `my-agent`, in your Worker binding.
 
 Add an `agent_memory` binding to your Wrangler configuration. If you use the Agents SDK, also register your agent Durable Object.
 
-* [  wrangler.jsonc ](#tab-panel-4410)
-* [  wrangler.toml ](#tab-panel-4411)
+* [  wrangler.jsonc ](#tab-panel-4550)
+* [  wrangler.toml ](#tab-panel-4551)
 
 JSONC
 
@@ -131,7 +131,7 @@ JSONC
 
   // Set this to today's date
 
-  "compatibility_date": "2026-06-02",
+  "compatibility_date": "2026-06-03",
 
   "compatibility_flags": [
 
@@ -204,7 +204,7 @@ main = "src/server.ts"
 
 # Set this to today's date
 
-compatibility_date = "2026-06-02"
+compatibility_date = "2026-06-03"
 
 compatibility_flags = ["nodejs_compat"]
 
@@ -257,12 +257,12 @@ pnpm wrangler types
 
 The model cannot use memory just because your application has a memory binding. You need to expose recall through a tool and instruct the model when to call it.
 
-With the Agents SDK [Session API](https://developers.cloudflare.com/agents/api-reference/sessions/), add a searchable context provider. Session turns the provider's `search()` method into a `search_context` tool for the model.
+With the Agents SDK [Session API](https://developers.cloudflare.com/agents/runtime/lifecycle/sessions/), add a searchable context provider. Session turns the provider's `search()` method into a `search_context` tool for the model.
 
 Create `src/server.ts` and add the recall setup:
 
-* [  JavaScript ](#tab-panel-4418)
-* [  TypeScript ](#tab-panel-4419)
+* [  JavaScript ](#tab-panel-4558)
+* [  TypeScript ](#tab-panel-4559)
 
 src/server.js
 
@@ -477,8 +477,8 @@ Next, give your agent a way to add durable memories. In a chat agent, the usual 
 
 Change the `agents` import and add the AI SDK imports. Keep the `Session` import from step 4.
 
-* [  JavaScript ](#tab-panel-4414)
-* [  TypeScript ](#tab-panel-4415)
+* [  JavaScript ](#tab-panel-4554)
+* [  TypeScript ](#tab-panel-4555)
 
 src/server.js
 
@@ -511,8 +511,8 @@ import { createWorkersAI } from "workers-ai-provider";
 
 Add the ingestion delay near the top of the file, below the imports:
 
-* [  JavaScript ](#tab-panel-4412)
-* [  TypeScript ](#tab-panel-4413)
+* [  JavaScript ](#tab-panel-4552)
+* [  TypeScript ](#tab-panel-4553)
 
 src/server.js
 
@@ -534,8 +534,8 @@ const MEMORY_INGEST_DELAY_SECONDS = 10;
 
 Then update `ChatAgent` with the following shape. The comment marks where to keep the Session setup from step 4.
 
-* [  JavaScript ](#tab-panel-4420)
-* [  TypeScript ](#tab-panel-4421)
+* [  JavaScript ](#tab-panel-4560)
+* [  TypeScript ](#tab-panel-4561)
 
 src/server.js
 
@@ -901,8 +901,8 @@ export class ChatAgent extends Agent<Env, ChatAgentState> {
 
 Replace the default export with a small test endpoint. Each `conversationId` maps to a separate Agent instance with its own Session history.
 
-* [  JavaScript ](#tab-panel-4416)
-* [  TypeScript ](#tab-panel-4417)
+* [  JavaScript ](#tab-panel-4556)
+* [  TypeScript ](#tab-panel-4557)
 
 src/server.js
 

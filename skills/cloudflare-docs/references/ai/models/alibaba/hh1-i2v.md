@@ -14,7 +14,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 #  HappyHorse 1.0 I2V 
 
-Image-to-Video • Alibaba • Proxied 
+Image-to-Video • Alibaba 
 
 `alibaba/hh1-i2v` 
 

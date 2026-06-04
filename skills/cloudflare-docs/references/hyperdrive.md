@@ -20,13 +20,14 @@ Hyperdrive is a service that accelerates queries you make to existing databases,
 
 Hyperdrive supports any Postgres or MySQL database, including those hosted on AWS, Google Cloud, Azure, Neon and PlanetScale. Hyperdrive also supports Postgres-compatible databases like CockroachDB and Timescale. You do not need to write new code or replace your favorite tools: Hyperdrive works with your existing code and tools you use.
 
-Use Hyperdrive's connection string from your Cloudflare Workers application with your existing Postgres drivers and object-relational mapping (ORM) libraries:
+Use Hyperdrive's connection details from your Cloudflare Workers application with your existing database drivers and object-relational mapping (ORM) libraries.
 
-* [ PostgreSQL ](#tab-panel-6038)
-* [ MySQL ](#tab-panel-6039)
+## Examples
 
-* [ index.ts ](#tab-panel-6034)
-* [ wrangler.jsonc ](#tab-panel-6035)
+### PostgreSQL
+
+* [ index.ts ](#tab-panel-7950)
+* [ wrangler.jsonc ](#tab-panel-7951)
 
 TypeScript
 
@@ -119,8 +120,10 @@ export default {
 
 ```
 
-* [ index.ts ](#tab-panel-6036)
-* [ wrangler.jsonc ](#tab-panel-6037)
+### MySQL
+
+* [ index.ts ](#tab-panel-7952)
+* [ wrangler.jsonc ](#tab-panel-7953)
 
 TypeScript
 

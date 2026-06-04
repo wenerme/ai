@@ -14,7 +14,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 #  gemma-sea-lion-v4-27b-it 
 
-Text Generation • aisingapore • Hosted 
+Text Generation • aisingapore 
 
 `@cf/aisingapore/gemma-sea-lion-v4-27b-it` 
 
@@ -33,10 +33,10 @@ Try out this model with Workers AI LLM Playground. It does not require any setup
 
 ## Usage
 
-* [  Worker (Streaming) ](#tab-panel-2570)
-* [  TypeScript ](#tab-panel-2571)
-* [  Python ](#tab-panel-2572)
-* [  curl ](#tab-panel-2573)
+* [  Worker (Streaming) ](#tab-panel-4286)
+* [  TypeScript ](#tab-panel-4287)
+* [  Python ](#tab-panel-4288)
+* [  curl ](#tab-panel-4289)
 
 TypeScript
 
@@ -195,8 +195,8 @@ Workers AI also supports OpenAI compatible API endpoints for `/v1/chat/completio
 
 Synchronous — Send a request and receive a complete response 
 
-* [ Input ](#tab-panel-2574)
-* [ Output ](#tab-panel-2575)
+* [ Input ](#tab-panel-4290)
+* [ Output ](#tab-panel-4291)
 
 prompt
 
@@ -280,8 +280,8 @@ prompt\_logprobs{}
 
 Streaming — Send a request with \`stream: true\` and receive server-sent events 
 
-* [ Input ](#tab-panel-2576)
-* [ Output ](#tab-panel-2577)
+* [ Input ](#tab-panel-4292)
+* [ Output ](#tab-panel-4293)
 
 prompt
 
@@ -349,8 +349,8 @@ format
 
 Batch — Send multiple requests in a single API call 
 
-* [ Input ](#tab-panel-2578)
-* [ Output ](#tab-panel-2579)
+* [ Input ](#tab-panel-4294)
+* [ Output ](#tab-panel-4295)
 
 ▶requests\[\]
 

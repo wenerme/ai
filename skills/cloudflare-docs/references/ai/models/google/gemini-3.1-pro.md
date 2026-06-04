@@ -14,7 +14,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 #  Gemini 3.1 Pro 
 
-Text Generation • Google • Proxied 
+Text Generation • Google 
 
 `google/gemini-3.1-pro` 
 

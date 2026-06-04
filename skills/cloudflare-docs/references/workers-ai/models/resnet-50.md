@@ -14,7 +14,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 #  resnet-50 
 
-Image Classification • Microsoft • Hosted 
+Image Classification • Microsoft 
 
 `@cf/microsoft/resnet-50` 
 
@@ -27,8 +27,8 @@ Image Classification • Microsoft • Hosted
 
 ## Usage
 
-* [  TypeScript ](#tab-panel-2831)
-* [  curl ](#tab-panel-2832)
+* [  TypeScript ](#tab-panel-4507)
+* [  curl ](#tab-panel-4508)
 
 ```
 
@@ -90,8 +90,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 ## Parameters
 
-* [ Input ](#tab-panel-2833)
-* [ Output ](#tab-panel-2834)
+* [ Input ](#tab-panel-4509)
+* [ Output ](#tab-panel-4510)
 
 Option 1
 

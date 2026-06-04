@@ -14,7 +14,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 #  indictrans2-en-indic-1B 
 
-Translation • ai4bharat • Hosted 
+Translation • ai4bharat 
 
 `@cf/ai4bharat/indictrans2-en-indic-1B` 
 
@@ -26,9 +26,9 @@ IndicTrans2 is the first open-source transformer-based multilingual NMT model th
 
 ## Usage
 
-* [  TypeScript ](#tab-panel-2610)
-* [  Python ](#tab-panel-2611)
-* [  curl ](#tab-panel-2612)
+* [  TypeScript ](#tab-panel-4326)
+* [  Python ](#tab-panel-4327)
+* [  curl ](#tab-panel-4328)
 
 ```
 
@@ -120,8 +120,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 ## Parameters
 
-* [ Input ](#tab-panel-2613)
-* [ Output ](#tab-panel-2614)
+* [ Input ](#tab-panel-4329)
+* [ Output ](#tab-panel-4330)
 
 ▶text
 

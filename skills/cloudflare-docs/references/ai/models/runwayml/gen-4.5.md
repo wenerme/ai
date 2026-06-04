@@ -14,7 +14,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 #  RunwayML Gen-4.5 
 
-Text-to-Video • RunwayML • Proxied 
+Text-to-Video • RunwayML 
 
 `runwayml/gen-4.5` 
 
@@ -28,8 +28,8 @@ RunwayML's video generation model supporting both text-to-video and image-to-vid
 
 ## Usage
 
-* [ TypeScript ](#tab-panel-1302)
-* [ cURL ](#tab-panel-1303)
+* [ TypeScript ](#tab-panel-1490)
+* [ cURL ](#tab-panel-1491)
 
 TypeScript
 
@@ -41,9 +41,9 @@ const response = await env.AI.run(
 
   {
 
-    duration: 5,
-
     prompt: 'A timelapse of the Eiffel Tower on a sunny day with clouds flying by',
+
+    duration: 5,
 
     ratio: '1280:720',
 
@@ -72,9 +72,9 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
   "input": {
 
-    "duration": 5,
-
     "prompt": "A timelapse of the Eiffel Tower on a sunny day with clouds flying by",
+
+    "duration": 5,
 
     "ratio": "1280:720"
 
@@ -85,8 +85,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 ```
 
-* [ Output ](#tab-panel-1300)
-* [ Raw response ](#tab-panel-1301)
+* [ Output ](#tab-panel-1488)
+* [ Raw response ](#tab-panel-1489)
 
 ```
 
@@ -115,8 +115,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 **Portrait Video**  — Vertical video for social media 
 
-* [ TypeScript ](#tab-panel-1306)
-* [ cURL ](#tab-panel-1307)
+* [ TypeScript ](#tab-panel-1494)
+* [ cURL ](#tab-panel-1495)
 
 TypeScript
 
@@ -128,11 +128,11 @@ const response = await env.AI.run(
 
   {
 
-    duration: 5,
-
     prompt:
 
       'A busy street in Tokyo at night with neon signs reflecting on wet pavement, rain falling',
+
+    duration: 5,
 
     ratio: '720:1280',
 
@@ -161,9 +161,9 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
   "input": {
 
-    "duration": 5,
-
     "prompt": "A busy street in Tokyo at night with neon signs reflecting on wet pavement, rain falling",
+
+    "duration": 5,
 
     "ratio": "720:1280"
 
@@ -174,8 +174,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 ```
 
-* [ Output ](#tab-panel-1304)
-* [ Raw response ](#tab-panel-1305)
+* [ Output ](#tab-panel-1492)
+* [ Raw response ](#tab-panel-1493)
 
 ```
 
@@ -202,8 +202,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 **Nature Close-up**  — Close-up wildlife shot in 16:9 
 
-* [ TypeScript ](#tab-panel-1310)
-* [ cURL ](#tab-panel-1311)
+* [ TypeScript ](#tab-panel-1498)
+* [ cURL ](#tab-panel-1499)
 
 TypeScript
 
@@ -215,11 +215,11 @@ const response = await env.AI.run(
 
   {
 
-    duration: 5,
-
     prompt:
 
       'Close-up of a hummingbird feeding from a vibrant red flower, slow motion with soft bokeh background',
+
+    duration: 5,
 
     ratio: '1280:720',
 
@@ -248,9 +248,9 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
   "input": {
 
-    "duration": 5,
-
     "prompt": "Close-up of a hummingbird feeding from a vibrant red flower, slow motion with soft bokeh background",
+
+    "duration": 5,
 
     "ratio": "1280:720"
 
@@ -261,8 +261,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 ```
 
-* [ Output ](#tab-panel-1308)
-* [ Raw response ](#tab-panel-1309)
+* [ Output ](#tab-panel-1496)
+* [ Raw response ](#tab-panel-1497)
 
 ```
 
@@ -289,8 +289,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 **Cinematic Scene**  — Longer duration cinematic video 
 
-* [ TypeScript ](#tab-panel-1314)
-* [ cURL ](#tab-panel-1315)
+* [ TypeScript ](#tab-panel-1502)
+* [ cURL ](#tab-panel-1503)
 
 TypeScript
 
@@ -302,11 +302,11 @@ const response = await env.AI.run(
 
   {
 
-    duration: 10,
-
     prompt:
 
       'Aerial drone shot flying through a misty forest at dawn, rays of sunlight breaking through the trees',
+
+    duration: 10,
 
     ratio: '1280:720',
 
@@ -335,9 +335,9 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
   "input": {
 
-    "duration": 10,
-
     "prompt": "Aerial drone shot flying through a misty forest at dawn, rays of sunlight breaking through the trees",
+
+    "duration": 10,
 
     "ratio": "1280:720"
 
@@ -348,8 +348,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 ```
 
-* [ Output ](#tab-panel-1312)
-* [ Raw response ](#tab-panel-1313)
+* [ Output ](#tab-panel-1500)
+* [ Raw response ](#tab-panel-1501)
 
 ```
 
@@ -376,8 +376,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 **Image-to-Video**  — Animate an existing image 
 
-* [ TypeScript ](#tab-panel-1320)
-* [ cURL ](#tab-panel-1321)
+* [ TypeScript ](#tab-panel-1508)
+* [ cURL ](#tab-panel-1509)
 
 TypeScript
 
@@ -389,13 +389,13 @@ const response = await env.AI.run(
 
   {
 
+    prompt: 'Camera slowly pans across the scene, gentle wind blowing',
+
     duration: 5,
 
     image_input:
 
       'https://upload.wikimedia.org/wikipedia/commons/8/85/Tour_Eiffel_Wikimedia_Commons_(cropped).jpg',
-
-    prompt: 'Camera slowly pans across the scene, gentle wind blowing',
 
     ratio: '1280:720',
 
@@ -424,11 +424,11 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
   "input": {
 
+    "prompt": "Camera slowly pans across the scene, gentle wind blowing",
+
     "duration": 5,
 
     "image_input": "https://upload.wikimedia.org/wikipedia/commons/8/85/Tour_Eiffel_Wikimedia_Commons_(cropped).jpg",
-
-    "prompt": "Camera slowly pans across the scene, gentle wind blowing",
 
     "ratio": "1280:720"
 
@@ -439,8 +439,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 ```
 
-* [ Output ](#tab-panel-1316)
-* [ Raw response ](#tab-panel-1317)
+* [ Output ](#tab-panel-1504)
+* [ Raw response ](#tab-panel-1505)
 
 ```
 
@@ -467,8 +467,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 **Reproducible Generation**  — Use seed for consistent results 
 
-* [ TypeScript ](#tab-panel-1324)
-* [ cURL ](#tab-panel-1325)
+* [ TypeScript ](#tab-panel-1512)
+* [ cURL ](#tab-panel-1513)
 
 TypeScript
 
@@ -480,9 +480,9 @@ const response = await env.AI.run(
 
   {
 
-    duration: 5,
-
     prompt: 'A sailboat gliding across calm ocean waters at sunset',
+
+    duration: 5,
 
     ratio: '1280:720',
 
@@ -513,9 +513,9 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
   "input": {
 
-    "duration": 5,
-
     "prompt": "A sailboat gliding across calm ocean waters at sunset",
+
+    "duration": 5,
 
     "ratio": "1280:720",
 
@@ -528,8 +528,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 ```
 
-* [ Output ](#tab-panel-1318)
-* [ Raw response ](#tab-panel-1319)
+* [ Output ](#tab-panel-1506)
+* [ Raw response ](#tab-panel-1507)
 
 ```
 
@@ -556,8 +556,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 **With Content Moderation**  — Adjust content moderation settings 
 
-* [ TypeScript ](#tab-panel-1326)
-* [ cURL ](#tab-panel-1327)
+* [ TypeScript ](#tab-panel-1514)
+* [ cURL ](#tab-panel-1515)
 
 TypeScript
 
@@ -569,11 +569,11 @@ const response = await env.AI.run(
 
   {
 
+    prompt: 'A press conference with multiple speakers at podiums',
+
     content_moderation: { public_figure_threshold: 'low' },
 
     duration: 5,
-
-    prompt: 'A press conference with multiple speakers at podiums',
 
     ratio: '1280:720',
 
@@ -602,6 +602,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
   "input": {
 
+    "prompt": "A press conference with multiple speakers at podiums",
+
     "content_moderation": {
 
       "public_figure_threshold": "low"
@@ -609,8 +611,6 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
     },
 
     "duration": 5,
-
-    "prompt": "A press conference with multiple speakers at podiums",
 
     "ratio": "1280:720"
 
@@ -621,8 +621,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 ```
 
-* [ Output ](#tab-panel-1322)
-* [ Raw response ](#tab-panel-1323)
+* [ Output ](#tab-panel-1510)
+* [ Raw response ](#tab-panel-1511)
 
 ```
 
@@ -649,8 +649,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 ## Parameters
 
-* [ Input ](#tab-panel-1328)
-* [ Output ](#tab-panel-1329)
+* [ Input ](#tab-panel-1516)
+* [ Output ](#tab-panel-1517)
 
 ▶content\_moderation{}
 

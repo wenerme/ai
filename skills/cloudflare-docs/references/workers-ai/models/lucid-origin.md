@@ -15,7 +15,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 #  lucid-origin 
 
-Text-to-Image • Leonardo • Hosted 
+Text-to-Image • Leonardo 
 
 `@cf/leonardo/lucid-origin` 
 
@@ -29,8 +29,8 @@ Lucid Origin from Leonardo.AI is their most adaptable and prompt-responsive mode
 
 ## Usage
 
-* [  TypeScript ](#tab-panel-2722)
-* [  curl ](#tab-panel-2723)
+* [  TypeScript ](#tab-panel-4430)
+* [  curl ](#tab-panel-4431)
 
 ```
 
@@ -96,8 +96,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 ## Parameters
 
-* [ Input ](#tab-panel-2724)
-* [ Output ](#tab-panel-2725)
+* [ Input ](#tab-panel-4432)
+* [ Output ](#tab-panel-4433)
 
 prompt
 

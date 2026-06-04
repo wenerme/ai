@@ -14,7 +14,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 #  Veo 3 
 
-Text-to-Video • Google • Proxied 
+Text-to-Video • Google 
 
 `google/veo-3` 
 
@@ -28,8 +28,8 @@ Google's video generation model capable of producing high-quality videos with op
 
 ## Usage
 
-* [ TypeScript ](#tab-panel-610)
-* [ cURL ](#tab-panel-611)
+* [ TypeScript ](#tab-panel-628)
+* [ cURL ](#tab-panel-629)
 
 TypeScript
 
@@ -41,13 +41,13 @@ const response = await env.AI.run(
 
   {
 
+    prompt: 'A golden retriever running through a field of sunflowers on a sunny day',
+
     aspect_ratio: '16:9',
 
     duration: '6s',
 
     generate_audio: true,
-
-    prompt: 'A golden retriever running through a field of sunflowers on a sunny day',
 
     resolution: '720p',
 
@@ -76,13 +76,13 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
   "input": {
 
+    "prompt": "A golden retriever running through a field of sunflowers on a sunny day",
+
     "aspect_ratio": "16:9",
 
     "duration": "6s",
 
     "generate_audio": true,
-
-    "prompt": "A golden retriever running through a field of sunflowers on a sunny day",
 
     "resolution": "720p"
 
@@ -93,8 +93,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 ```
 
-* [ Output ](#tab-panel-606)
-* [ Raw response ](#tab-panel-607)
+* [ Output ](#tab-panel-624)
+* [ Raw response ](#tab-panel-625)
 
 ```
 
@@ -123,8 +123,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 **Cinematic Scene**  — Widescreen cinematic video in 1080p 
 
-* [ TypeScript ](#tab-panel-614)
-* [ cURL ](#tab-panel-615)
+* [ TypeScript ](#tab-panel-632)
+* [ cURL ](#tab-panel-633)
 
 TypeScript
 
@@ -136,15 +136,15 @@ const response = await env.AI.run(
 
   {
 
+    prompt:
+
+      'A dramatic drone shot flying through misty mountain peaks at sunrise, with clouds rolling through valleys below',
+
     aspect_ratio: '16:9',
 
     duration: '8s',
 
     generate_audio: true,
-
-    prompt:
-
-      'A dramatic drone shot flying through misty mountain peaks at sunrise, with clouds rolling through valleys below',
 
     resolution: '1080p',
 
@@ -173,13 +173,13 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
   "input": {
 
+    "prompt": "A dramatic drone shot flying through misty mountain peaks at sunrise, with clouds rolling through valleys below",
+
     "aspect_ratio": "16:9",
 
     "duration": "8s",
 
     "generate_audio": true,
-
-    "prompt": "A dramatic drone shot flying through misty mountain peaks at sunrise, with clouds rolling through valleys below",
 
     "resolution": "1080p"
 
@@ -190,8 +190,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 ```
 
-* [ Output ](#tab-panel-608)
-* [ Raw response ](#tab-panel-609)
+* [ Output ](#tab-panel-626)
+* [ Raw response ](#tab-panel-627)
 
 ```
 
@@ -218,8 +218,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 **Vertical Video**  — Portrait orientation for social media 
 
-* [ TypeScript ](#tab-panel-618)
-* [ cURL ](#tab-panel-619)
+* [ TypeScript ](#tab-panel-636)
+* [ cURL ](#tab-panel-637)
 
 TypeScript
 
@@ -231,13 +231,13 @@ const response = await env.AI.run(
 
   {
 
+    prompt: 'A barista expertly pouring latte art, close-up shot with shallow depth of field',
+
     aspect_ratio: '9:16',
 
     duration: '6s',
 
     generate_audio: true,
-
-    prompt: 'A barista expertly pouring latte art, close-up shot with shallow depth of field',
 
     resolution: '720p',
 
@@ -266,13 +266,13 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
   "input": {
 
+    "prompt": "A barista expertly pouring latte art, close-up shot with shallow depth of field",
+
     "aspect_ratio": "9:16",
 
     "duration": "6s",
 
     "generate_audio": true,
-
-    "prompt": "A barista expertly pouring latte art, close-up shot with shallow depth of field",
 
     "resolution": "720p"
 
@@ -283,8 +283,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 ```
 
-* [ Output ](#tab-panel-612)
-* [ Raw response ](#tab-panel-613)
+* [ Output ](#tab-panel-630)
+* [ Raw response ](#tab-panel-631)
 
 ```
 
@@ -311,8 +311,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 **Short Format**  — Short video for social media posts 
 
-* [ TypeScript ](#tab-panel-622)
-* [ cURL ](#tab-panel-623)
+* [ TypeScript ](#tab-panel-640)
+* [ cURL ](#tab-panel-641)
 
 TypeScript
 
@@ -324,13 +324,13 @@ const response = await env.AI.run(
 
   {
 
+    prompt: 'A timelapse of a flower blooming, soft natural lighting',
+
     aspect_ratio: '16:9',
 
     duration: '4s',
 
     generate_audio: true,
-
-    prompt: 'A timelapse of a flower blooming, soft natural lighting',
 
     resolution: '720p',
 
@@ -359,13 +359,13 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
   "input": {
 
+    "prompt": "A timelapse of a flower blooming, soft natural lighting",
+
     "aspect_ratio": "16:9",
 
     "duration": "4s",
 
     "generate_audio": true,
-
-    "prompt": "A timelapse of a flower blooming, soft natural lighting",
 
     "resolution": "720p"
 
@@ -376,8 +376,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 ```
 
-* [ Output ](#tab-panel-616)
-* [ Raw response ](#tab-panel-617)
+* [ Output ](#tab-panel-634)
+* [ Raw response ](#tab-panel-635)
 
 ```
 
@@ -404,8 +404,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 **Silent Video**  — Video without audio generation 
 
-* [ TypeScript ](#tab-panel-624)
-* [ cURL ](#tab-panel-625)
+* [ TypeScript ](#tab-panel-642)
+* [ cURL ](#tab-panel-643)
 
 TypeScript
 
@@ -417,13 +417,13 @@ const response = await env.AI.run(
 
   {
 
+    prompt: 'Abstract flowing liquid metal morphing into geometric shapes',
+
     aspect_ratio: '16:9',
 
     duration: '6s',
 
     generate_audio: false,
-
-    prompt: 'Abstract flowing liquid metal morphing into geometric shapes',
 
     resolution: '720p',
 
@@ -452,13 +452,13 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
   "input": {
 
+    "prompt": "Abstract flowing liquid metal morphing into geometric shapes",
+
     "aspect_ratio": "16:9",
 
     "duration": "6s",
 
     "generate_audio": false,
-
-    "prompt": "Abstract flowing liquid metal morphing into geometric shapes",
 
     "resolution": "720p"
 
@@ -469,8 +469,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 ```
 
-* [ Output ](#tab-panel-620)
-* [ Raw response ](#tab-panel-621)
+* [ Output ](#tab-panel-638)
+* [ Raw response ](#tab-panel-639)
 
 ```
 
@@ -497,8 +497,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 ## Parameters
 
-* [ Input ](#tab-panel-626)
-* [ Output ](#tab-panel-627)
+* [ Input ](#tab-panel-644)
+* [ Output ](#tab-panel-645)
 
 aspect\_ratio
 

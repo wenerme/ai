@@ -6,18 +6,31 @@
 
 Prompting is both an art and a science. OpenAI has some strategies and API design decisions to help you construct strong prompts and get consistently good results from a model. We encourage you to experiment.
 
-### Prompts in the API
-
-OpenAI provides a long-lived prompt object, with versioning and templating shared by all users in a project. This design lets you manage, test, and reuse prompts across your team, with one central definition across APIs, SDKs, and dashboard.
-
-Universal prompt IDs give you flexibility to test and build. Variables and prompts share a base prompt, so when you create a new version, you can use that for [evals](https://developers.openai.com/api/docs/guides/evals) and determine whether a prompt performs better or worse.
-
-### Prompting tools and techniques
+## Prompting tools and techniques
 
 - **[Prompt caching](https://developers.openai.com/api/docs/guides/prompt-caching)**: Reduce latency by up to 80% and cost by up to 75%
 - **[Prompt engineering](https://developers.openai.com/api/docs/guides/prompt-engineering)**: Learn strategies, techniques, and tools to construct prompts
 
-## Create a prompt
+## Refine your prompt
+
+- Put overall tone or role guidance in the system message; keep task-specific details and examples in user messages.
+- Combine few-shot examples into a concise YAML-style or bulleted block so they’re easy to scan and update.
+- Mirror your project structure with clear folder names so teammates can locate prompts quickly.
+- Rerun your linked eval every time you publish—catching issues early is cheaper than fixing them in production.
+
+## Prompts in the API
+
+OpenAI provides a long-lived prompt object, with versioning and templating shared by all users in a project. This design lets you manage, test, and reuse prompts across your team, with one central definition across APIs, SDKs, and dashboard.
+
+OpenAI is deprecating reusable prompt objects in the API. Prompt creation will
+  be de-emphasized beginning June 3, 2026, and `v1/prompts` is scheduled to shut
+  down on November 30, 2026. See the [deprecations
+  page](https://developers.openai.com/api/docs/deprecations#2026-06-03-reusable-prompts) for the current
+  timeline.
+
+Universal prompt IDs give you flexibility to test and build. Variables and prompts share a base prompt, so when you create a new version, you can use that for [evals](https://developers.openai.com/api/docs/guides/evals) and determine whether a prompt performs better or worse.
+
+### Create a prompt
 
 Log in and use the OpenAI [dashboard](https://platform.openai.com/chat) to create, save, version, and share your prompts.
 
@@ -64,24 +77,9 @@ Log in and use the OpenAI [dashboard](https://platform.openai.com/chat) to creat
 
    In the [prompts dashboard](https://platform.openai.com/chat), select the prompt you want to roll back. On the right, click **History**. Find the version you want to restore, and click **Restore**.
 
-## Refine your prompt
-
-- Put overall tone or role guidance in the system message; keep task-specific details and examples in user messages.
-- Combine few-shot examples into a concise YAML-style or bulleted block so they’re easy to scan and update.
-- Mirror your project structure with clear folder names so teammates can locate prompts quickly.
-- Rerun your linked eval every time you publish—catching issues early is cheaper than fixing them in production.
-
 ## Next steps
 
 When you feel confident in your prompts, you might want to check out the following guides and resources.
-
-[
-
-<span slot="icon">
-      </span>
-    Use the Playground to develop and iterate on prompts.
-
-](https://platform.openai.com/chat/edit)
 
 [
 

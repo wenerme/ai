@@ -14,7 +14,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 #  detr-resnet-50 Beta 
 
-Object Detection • Meta • Hosted 
+Object Detection • Meta 
 
 `@cf/facebook/detr-resnet-50` 
 
@@ -27,8 +27,8 @@ DEtection TRansformer (DETR) model trained end-to-end on COCO 2017 object detect
 
 ## Usage
 
-* [  TypeScript ](#tab-panel-2499)
-* [  curl ](#tab-panel-2500)
+* [  TypeScript ](#tab-panel-4223)
+* [  curl ](#tab-panel-4224)
 
 ```
 
@@ -90,8 +90,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 ## Parameters
 
-* [ Input ](#tab-panel-2501)
-* [ Output ](#tab-panel-2502)
+* [ Input ](#tab-panel-4225)
+* [ Output ](#tab-panel-4226)
 
 Option 1
 

@@ -14,7 +14,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 #  bge-m3 
 
-Text Embeddings • BAAI • Hosted 
+Text Embeddings • BAAI 
 
 `@cf/baai/bge-m3` 
 
@@ -27,9 +27,9 @@ Multi-Functionality, Multi-Linguality, and Multi-Granularity embeddings model.
 
 ## Usage
 
-* [  TypeScript ](#tab-panel-2464)
-* [  Python ](#tab-panel-2465)
-* [  curl ](#tab-panel-2466)
+* [  TypeScript ](#tab-panel-4200)
+* [  Python ](#tab-panel-4201)
+* [  curl ](#tab-panel-4202)
 
 ```
 
@@ -142,8 +142,8 @@ Workers AI also supports OpenAI compatible API endpoints for `/v1/chat/completio
 
 Synchronous — Send a request and receive a complete response 
 
-* [ Input ](#tab-panel-2467)
-* [ Output ](#tab-panel-2468)
+* [ Input ](#tab-panel-4203)
+* [ Output ](#tab-panel-4204)
 
 query
 
@@ -163,8 +163,8 @@ request\_id
 
 Batch — Send multiple requests in a single API call 
 
-* [ Input ](#tab-panel-2469)
-* [ Output ](#tab-panel-2470)
+* [ Input ](#tab-panel-4205)
+* [ Output ](#tab-panel-4206)
 
 ▶requests\[\]
 

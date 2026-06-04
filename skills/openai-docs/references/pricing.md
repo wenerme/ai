@@ -422,7 +422,7 @@ Tools
           pricingHtml(
             '<span id="container-usage-pricing"></span>Hosted Shell and Code Interpreter'
           ),
-          "1 GB $0.03, 4 GB $0.12, 16 GB $0.48, 64 GB $1.92 - container sessions will be billed by the minute, with a 5-minute minimum per session.",
+          "1 GB $0.03, 4 GB $0.12, 16 GB $0.48, 64 GB $1.92 per 20-minute session per container.",
         ],
       ],
     },

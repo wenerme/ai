@@ -14,7 +14,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 #  MiniMax Hailuo 2.3 Fast 
 
-Text-to-Video • MiniMax • Proxied 
+Text-to-Video • MiniMax 
 
 `minimax/hailuo-2.3-fast` 
 
@@ -28,8 +28,8 @@ A lower-latency version of Hailuo 2.3 that preserves core motion quality, visual
 
 ## Usage
 
-* [ TypeScript ](#tab-panel-758)
-* [ cURL ](#tab-panel-759)
+* [ TypeScript ](#tab-panel-776)
+* [ cURL ](#tab-panel-777)
 
 TypeScript
 
@@ -41,6 +41,8 @@ const response = await env.AI.run(
 
   {
 
+    prompt: 'Gentle movement and subtle animation, natural-looking motion',
+
     duration: 6,
 
     fast_pretreatment: false,
@@ -48,8 +50,6 @@ const response = await env.AI.run(
     first_frame_image:
 
       'https://replicate.delivery/xezq/MQpUhqkESIIQDlWUxtNcsznZLfUTmhEbCV3vdAZGHGPwwaMLA/tmpgl4gvv5n.jpeg',
-
-    prompt: 'Gentle movement and subtle animation, natural-looking motion',
 
     prompt_optimizer: true,
 
@@ -80,13 +80,13 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
   "input": {
 
+    "prompt": "Gentle movement and subtle animation, natural-looking motion",
+
     "duration": 6,
 
     "fast_pretreatment": false,
 
     "first_frame_image": "https://replicate.delivery/xezq/MQpUhqkESIIQDlWUxtNcsznZLfUTmhEbCV3vdAZGHGPwwaMLA/tmpgl4gvv5n.jpeg",
-
-    "prompt": "Gentle movement and subtle animation, natural-looking motion",
 
     "prompt_optimizer": true,
 
@@ -99,8 +99,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 ```
 
-* [ Output ](#tab-panel-754)
-* [ Raw response ](#tab-panel-755)
+* [ Output ](#tab-panel-772)
+* [ Raw response ](#tab-panel-773)
 
 ```
 
@@ -133,8 +133,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 **High Resolution I2V**  — Animate a photo in 1080P 
 
-* [ TypeScript ](#tab-panel-762)
-* [ cURL ](#tab-panel-763)
+* [ TypeScript ](#tab-panel-780)
+* [ cURL ](#tab-panel-781)
 
 TypeScript
 
@@ -146,6 +146,8 @@ const response = await env.AI.run(
 
   {
 
+    prompt: 'Camera slowly pans across the scene with cinematic depth of field',
+
     duration: 6,
 
     fast_pretreatment: false,
@@ -153,8 +155,6 @@ const response = await env.AI.run(
     first_frame_image:
 
       'https://replicate.delivery/xezq/IeNNble3XUqhpUZTd3CkYTUf8EgkFU1fl1Jnyive3B26MsGzC/tmp51dpln4i.jpeg',
-
-    prompt: 'Camera slowly pans across the scene with cinematic depth of field',
 
     prompt_optimizer: true,
 
@@ -185,13 +185,13 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
   "input": {
 
+    "prompt": "Camera slowly pans across the scene with cinematic depth of field",
+
     "duration": 6,
 
     "fast_pretreatment": false,
 
     "first_frame_image": "https://replicate.delivery/xezq/IeNNble3XUqhpUZTd3CkYTUf8EgkFU1fl1Jnyive3B26MsGzC/tmp51dpln4i.jpeg",
-
-    "prompt": "Camera slowly pans across the scene with cinematic depth of field",
 
     "prompt_optimizer": true,
 
@@ -204,8 +204,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 ```
 
-* [ Output ](#tab-panel-756)
-* [ Raw response ](#tab-panel-757)
+* [ Output ](#tab-panel-774)
+* [ Raw response ](#tab-panel-775)
 
 ```
 
@@ -236,8 +236,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 **Fast Processing**  — Quick I2V with fast pretreatment enabled 
 
-* [ TypeScript ](#tab-panel-764)
-* [ cURL ](#tab-panel-765)
+* [ TypeScript ](#tab-panel-782)
+* [ cURL ](#tab-panel-783)
 
 TypeScript
 
@@ -249,6 +249,8 @@ const response = await env.AI.run(
 
   {
 
+    prompt: 'Hair blowing in the wind, eyes blinking naturally',
+
     duration: 6,
 
     fast_pretreatment: true,
@@ -256,8 +258,6 @@ const response = await env.AI.run(
     first_frame_image:
 
       'https://replicate.delivery/xezq/jfh37lJpnDQhaKcAfCrxSCEh7HA7lv5cCWmJW284tYXwh1YWA/tmpw2i437qe.jpeg',
-
-    prompt: 'Hair blowing in the wind, eyes blinking naturally',
 
     prompt_optimizer: true,
 
@@ -288,13 +288,13 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
   "input": {
 
+    "prompt": "Hair blowing in the wind, eyes blinking naturally",
+
     "duration": 6,
 
     "fast_pretreatment": true,
 
     "first_frame_image": "https://replicate.delivery/xezq/jfh37lJpnDQhaKcAfCrxSCEh7HA7lv5cCWmJW284tYXwh1YWA/tmpw2i437qe.jpeg",
-
-    "prompt": "Hair blowing in the wind, eyes blinking naturally",
 
     "prompt_optimizer": true,
 
@@ -307,8 +307,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 ```
 
-* [ Output ](#tab-panel-760)
-* [ Raw response ](#tab-panel-761)
+* [ Output ](#tab-panel-778)
+* [ Raw response ](#tab-panel-779)
 
 ```
 
@@ -339,8 +339,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 ## Parameters
 
-* [ Input ](#tab-panel-766)
-* [ Output ](#tab-panel-767)
+* [ Input ](#tab-panel-784)
+* [ Output ](#tab-panel-785)
 
 ▶duration
 

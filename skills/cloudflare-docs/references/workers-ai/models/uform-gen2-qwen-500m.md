@@ -14,7 +14,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 #  uform-gen2-qwen-500m Beta 
 
-Image-to-Text • Unum • Hosted 
+Image-to-Text • Unum 
 
 `@cf/unum/uform-gen2-qwen-500m` 
 
@@ -76,8 +76,8 @@ export default {
 
 ## Parameters
 
-* [ Input ](#tab-panel-4169)
-* [ Output ](#tab-panel-4170)
+* [ Input ](#tab-panel-4533)
+* [ Output ](#tab-panel-4534)
 
 Option 1
 

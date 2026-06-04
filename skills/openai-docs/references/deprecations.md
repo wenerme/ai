@@ -32,6 +32,42 @@ We use the term "legacy" to refer to models and endpoints that no longer receive
 
 Upcoming deprecations are listed below, with the most recent announcements at the top.
 
+### 2026-06-03: Reusable prompts
+
+On June 3, 2026, we notified developers using reusable prompts in the dashboard and API that reusable prompt objects are being deprecated.
+
+| Date         | Update                                                                       |
+| ------------ | ---------------------------------------------------------------------------- |
+| June 3, 2026 | Deprecation announced and prompt creation de-emphasized in the platform.     |
+| Nov 30, 2026 | The `v1/prompts` API and reusable prompt objects are scheduled to shut down. |
+
+To migrate, move reusable prompt content into your application code. See [Migrate from prompt objects](https://developers.openai.com/api/docs/guides/prompting/migrate-from-prompt-object).
+
+### 2026-06-03: Evals platform
+
+On June 3, 2026, we notified developers using the Evals platform that the product is being deprecated.
+
+| Date         | Update                                                  |
+| ------------ | ------------------------------------------------------- |
+| June 3, 2026 | Deprecation announced for the Evals platform.           |
+| Oct 31, 2026 | Existing evals become read-only.                        |
+| Nov 30, 2026 | The Evals dashboard and API are scheduled to shut down. |
+
+Graders documented for eval workflows are part of this transition. Fine-tuning-related timelines remain covered in the self-serve fine-tuning section below.
+
+See [Moving from OpenAI Evals to Promptfoo](https://developers.openai.com/cookbook/examples/evaluation/moving-from-openai-evals-to-promptfoo) for a migration path.
+
+### 2026-06-03: Agent Builder
+
+On June 3, 2026, we notified developers using Agent Builder that the product is being deprecated. ChatKit remains available.
+
+| Date         | Update                                   |
+| ------------ | ---------------------------------------- |
+| June 3, 2026 | Deprecation announced for Agent Builder. |
+| Nov 30, 2026 | Agent Builder is scheduled to shut down. |
+
+See [Migrate from Agent Builder](https://developers.openai.com/api/docs/guides/agent-builder/migrate-from-agent-builder) to continue with the Agents SDK or ChatGPT Workspace Agents.
+
 ### 2026-06-02: GPT Image model deprecations
 
 On June 2, 2026, we notified developers using older GPT Image models of their deprecation and removal from the API on December 1, 2026.

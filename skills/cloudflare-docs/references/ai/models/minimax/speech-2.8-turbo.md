@@ -14,7 +14,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 #  MiniMax Speech 2.8 Turbo 
 
-Text-to-Speech • MiniMax • Proxied 
+Text-to-Speech • MiniMax 
 
 `minimax/speech-2.8-turbo` 
 
@@ -28,8 +28,8 @@ MiniMax Speech 2.8 Turbo turns text into natural, expressive speech with voice c
 
 ## Usage
 
-* [ TypeScript ](#tab-panel-830)
-* [ cURL ](#tab-panel-831)
+* [ TypeScript ](#tab-panel-866)
+* [ cURL ](#tab-panel-867)
 
 TypeScript
 
@@ -97,8 +97,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 ```
 
-* [ Output ](#tab-panel-826)
-* [ Raw response ](#tab-panel-827)
+* [ Output ](#tab-panel-862)
+* [ Raw response ](#tab-panel-863)
 
 ```
 
@@ -127,8 +127,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 **Fast Narration**  — Speed up narration for quick playback 
 
-* [ TypeScript ](#tab-panel-834)
-* [ cURL ](#tab-panel-835)
+* [ TypeScript ](#tab-panel-870)
+* [ cURL ](#tab-panel-871)
 
 TypeScript
 
@@ -196,8 +196,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 ```
 
-* [ Output ](#tab-panel-828)
-* [ Raw response ](#tab-panel-829)
+* [ Output ](#tab-panel-864)
+* [ Raw response ](#tab-panel-865)
 
 ```
 
@@ -224,8 +224,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 **Calm Tone**  — Calm and steady speech for meditation or relaxation 
 
-* [ TypeScript ](#tab-panel-838)
-* [ cURL ](#tab-panel-839)
+* [ TypeScript ](#tab-panel-874)
+* [ cURL ](#tab-panel-875)
 
 TypeScript
 
@@ -297,8 +297,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 ```
 
-* [ Output ](#tab-panel-832)
-* [ Raw response ](#tab-panel-833)
+* [ Output ](#tab-panel-868)
+* [ Raw response ](#tab-panel-869)
 
 ```
 
@@ -325,8 +325,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 **Adjusted Pitch**  — Lower the pitch for a deeper voice 
 
-* [ TypeScript ](#tab-panel-840)
-* [ cURL ](#tab-panel-841)
+* [ TypeScript ](#tab-panel-876)
+* [ cURL ](#tab-panel-877)
 
 TypeScript
 
@@ -394,8 +394,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 ```
 
-* [ Output ](#tab-panel-836)
-* [ Raw response ](#tab-panel-837)
+* [ Output ](#tab-panel-872)
+* [ Raw response ](#tab-panel-873)
 
 ```
 
@@ -422,8 +422,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 ## Parameters
 
-* [ Input ](#tab-panel-842)
-* [ Output ](#tab-panel-843)
+* [ Input ](#tab-panel-878)
+* [ Output ](#tab-panel-879)
 
 emotion
 

@@ -7,7 +7,7 @@
 
 ## For Providers
 
-If you'd like to be a model provider and sell inference on OpenRouter, [fill out our form](https://openrouter.ai/how-to-list) to get started.
+If you'd like to be a model provider and sell inference on OpenRouter, [fill out our form](https://openrouter.ai/providers/apply/form) to get started.
 
 To be eligible to provide inference on OpenRouter you must have the following:
 
@@ -48,6 +48,7 @@ You must implement an endpoint that returns all models that should be served by 
       "description": "Anthropic's flagship model...",
       "deprecation_date": "2025-06-01T15:00:00Z", // ISO 8601 date or UTC hour
       "is_ready": true, // false to keep the model staged-but-hidden on OpenRouter
+      "is_free": false, // true to mark as a free endpoint
       "openrouter": {
         "slug": "anthropic/claude-sonnet-4"
       },
@@ -133,6 +134,23 @@ Behavior:
 
 * `is_ready: false` keeps newly-staged endpoints hidden even if all baseline tests pass, and auto-hides any matching endpoint that is currently live. Use this to upload a model in advance of launch, or to take a live model offline coordinated with us.
 * `is_ready: true` and an omitted/absent field both preserve the default auto-stage and auto-unhide behavior.
+
+#### Free Model Variants with `is_free`
+
+If you want to offer a free version of a model, set `is_free: true`:
+
+```json
+{
+  "id": "your-org/your-model",
+  "is_free": true
+}
+```
+
+Behavior:
+
+* `is_free: true` marks the endpoint as a **free endpoint** (`:free` suffix).
+* Any upstream `pricing` sent alongside `is_free: true` is **ignored** — free endpoints always have zero cost.
+* `is_free: false` or an omitted field preserves the default behavior (standard paid variant).
 
 ### 2. Auto Top Up or Invoicing
 

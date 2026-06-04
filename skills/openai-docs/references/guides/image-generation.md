@@ -29,6 +29,8 @@ The Responses API image generation tool uses its own GPT Image model selection. 
 - If you only need to generate or edit a single image from one prompt, the Image API is your best choice.
 - If you want to build conversational, editable image experiences with GPT Image, go with the Responses API.
 
+With the Image API, you choose a GPT Image model directly. With the Responses API, you choose a mainline model that supports the image generation tool; the tool handles GPT Image model selection. Responses API requests include the mainline model's token usage in addition to image generation costs.
+
 Both APIs let you [customize output](#customize-image-output) by adjusting quality, size, format, and compression. Transparent backgrounds depend on model support.
 
 This guide focuses on GPT Image.
@@ -61,59 +63,7 @@ You can set the `n` parameter to generate multiple images at once in a single re
 
 
 
-<div data-content-switcher-pane data-value="responses">
-    <div class="hidden">Responses API</div>
-    Generate an image
-
-```javascript
-import OpenAI from "openai";
-const openai = new OpenAI();
-
-const response = await openai.responses.create({
-    model: "gpt-5.5",
-    input: "Generate an image of gray tabby cat hugging an otter with an orange scarf",
-    tools: [{type: "image_generation"}],
-});
-
-// Save the image to a file
-const imageData = response.output
-  .filter((output) => output.type === "image_generation_call")
-  .map((output) => output.result);
-
-if (imageData.length > 0) {
-  const imageBase64 = imageData[0];
-  const fs = await import("fs");
-  fs.writeFileSync("otter.png", Buffer.from(imageBase64, "base64"));
-}
-```
-
-```python
-from openai import OpenAI
-import base64
-
-client = OpenAI() 
-
-response = client.responses.create(
-    model="gpt-5.5",
-    input="Generate an image of gray tabby cat hugging an otter with an orange scarf",
-    tools=[{"type": "image_generation"}],
-)
-
-# Save the image to a file
-image_data = [
-    output.result
-    for output in response.output
-    if output.type == "image_generation_call"
-]
-    
-if image_data:
-    image_base64 = image_data[0]
-    with open("otter.png", "wb") as f:
-        f.write(base64.b64decode(image_base64))
-```
-
-  </div>
-  <div data-content-switcher-pane data-value="image" hidden>
+<div data-content-switcher-pane data-value="image">
     <div class="hidden">Image API</div>
     Generate an image
 
@@ -177,6 +127,58 @@ openai images generate \\
   --prompt "A childrens book drawing of a veterinarian using a stethoscope to listen to the heartbeat of a baby otter." \\
   --raw-output \\
   --transform 'data.0.b64_json' | base64 --decode > otter.png
+```
+
+  </div>
+  <div data-content-switcher-pane data-value="responses" hidden>
+    <div class="hidden">Responses API</div>
+    Generate an image
+
+```javascript
+import OpenAI from "openai";
+const openai = new OpenAI();
+
+const response = await openai.responses.create({
+    model: "gpt-5.5",
+    input: "Generate an image of gray tabby cat hugging an otter with an orange scarf",
+    tools: [{type: "image_generation"}],
+});
+
+// Save the image to a file
+const imageData = response.output
+  .filter((output) => output.type === "image_generation_call")
+  .map((output) => output.result);
+
+if (imageData.length > 0) {
+  const imageBase64 = imageData[0];
+  const fs = await import("fs");
+  fs.writeFileSync("otter.png", Buffer.from(imageBase64, "base64"));
+}
+```
+
+```python
+from openai import OpenAI
+import base64
+
+client = OpenAI() 
+
+response = client.responses.create(
+    model="gpt-5.5",
+    input="Generate an image of gray tabby cat hugging an otter with an orange scarf",
+    tools=[{"type": "image_generation"}],
+)
+
+# Save the image to a file
+image_data = [
+    output.result
+    for output in response.output
+    if output.type == "image_generation_call"
+]
+    
+if image_data:
+    image_base64 = image_data[0]
+    with open("otter.png", "wb") as f:
+        f.write(base64.b64decode(image_base64))
 ```
 
   </div>
@@ -781,7 +783,14 @@ If you provide multiple input images, the mask will be applied to the first imag
 
 ```python
 from openai import OpenAI
+import base64
+
 client = OpenAI()
+
+def create_file(file_path):
+    with open(file_path, "rb") as file_content:
+        result = client.files.create(file=file_content, purpose="vision")
+    return result.id
 
 fileId = create_file("sunlit_lounge.png")
 maskId = create_file("mask.png")
@@ -827,8 +836,18 @@ if image_data:
 ```
 
 ```javascript
+import fs from "fs";
 import OpenAI from "openai";
+
 const openai = new OpenAI();
+
+async function createFile(filePath) {
+  const result = await openai.files.create({
+    file: fs.createReadStream(filePath),
+    purpose: "vision",
+  });
+  return result.id;
+}
 
 const fileId = await createFile("sunlit_lounge.png");
 const maskId = await createFile("mask.png");
@@ -867,7 +886,6 @@ const imageData = response.output
 
 if (imageData.length > 0) {
   const imageBase64 = imageData[0];
-  const fs = await import("fs");
   fs.writeFileSync("lounge.png", Buffer.from(imageBase64, "base64"));
 }
 ```
@@ -879,6 +897,8 @@ if (imageData.length > 0) {
 
 ```python
 from openai import OpenAI
+import base64
+
 client = OpenAI()
 
 result = client.images.edit(
@@ -971,7 +991,7 @@ from PIL import Image
 from io import BytesIO
 
 # 1. Load your black & white mask as a grayscale image
-mask = Image.open(img_path_mask).convert("L")
+mask = Image.open("mask.png").convert("L")
 
 # 2. Convert it to RGBA so it has space for an alpha channel
 mask_rgba = mask.convert("RGBA")

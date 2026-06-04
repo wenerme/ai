@@ -14,7 +14,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 #  Claude Haiku 4.5 
 
-Text Generation • Anthropic • Proxied 
+Text Generation • Anthropic 
 
 `anthropic/claude-haiku-4.5` 
 

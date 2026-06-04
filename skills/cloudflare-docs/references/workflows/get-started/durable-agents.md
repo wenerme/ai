@@ -551,8 +551,8 @@ export class ResearchAgent extends Agent<Env, State> {
 ## 5\. Configure your project
 
 1. Open `wrangler.jsonc` and add the Agent and Workflow configuration:  
-   * [  wrangler.jsonc ](#tab-panel-10487)  
-   * [  wrangler.toml ](#tab-panel-10488)  
+   * [  wrangler.jsonc ](#tab-panel-12331)  
+   * [  wrangler.toml ](#tab-panel-12332)  
 JSONC  
 ```  
 {  
@@ -560,7 +560,7 @@ JSONC
   "name": "durable-ai-agent",  
   "main": "src/index.ts",  
   // Set this to today's date  
-  "compatibility_date": "2026-05-04",  
+  "compatibility_date": "2026-06-03",  
   "observability": {  
     "enabled": true  
   },  
@@ -593,7 +593,7 @@ TOML
 name = "durable-ai-agent"  
 main = "src/index.ts"  
 # Set this to today's date  
-compatibility_date = "2026-05-04"  
+compatibility_date = "2026-06-03"  
 [observability]  
 enabled = true  
 [[durable_objects.bindings]]  
@@ -849,7 +849,7 @@ Agent class names are automatically converted to kebab-case for URLs (`ResearchA
 
 ## Learn more
 
-[ Agents SDK Workflows ](https://developers.cloudflare.com/agents/api-reference/run-workflows/) Complete API reference for AgentWorkflow, lifecycle callbacks, and bidirectional communication. 
+[ Agents SDK Workflows ](https://developers.cloudflare.com/agents/runtime/execution/run-workflows/) Complete API reference for AgentWorkflow, lifecycle callbacks, and bidirectional communication. 
 
 [ Events and parameters ](https://developers.cloudflare.com/workflows/build/events-and-parameters/) Pass data to Workflows and pause for external events with waitForEvent. 
 

@@ -4668,6 +4668,122 @@ Retrieves a model response with the given ID.
 
     The maximum number of total calls to built-in tools that can be processed in a response. This maximum number applies across all built-in tool calls, not per individual tool. Any further attempts to call a tool by the model will be ignored.
 
+  - `moderation?: Moderation | null`
+
+    Moderation results for the response input and output, if moderated completions were requested.
+
+    - `input: ModerationResult | Error`
+
+      Moderation for the response input.
+
+      - `ModerationResult`
+
+        A moderation result produced for the response input or output.
+
+        - `categories: Record<string, boolean>`
+
+          A dictionary of moderation categories to booleans, True if the input is flagged under this category.
+
+        - `category_applied_input_types: Record<string, Array<"text" | "image">>`
+
+          Which modalities of input are reflected by the score for each category.
+
+          - `"text"`
+
+          - `"image"`
+
+        - `category_scores: Record<string, number>`
+
+          A dictionary of moderation categories to scores.
+
+        - `flagged: boolean`
+
+          A boolean indicating whether the content was flagged by any category.
+
+        - `model: string`
+
+          The moderation model that produced this result.
+
+        - `type: "moderation_result"`
+
+          The object type, which was always `moderation_result` for successful moderation results.
+
+          - `"moderation_result"`
+
+      - `Error`
+
+        An error produced while attempting moderation for the response input or output.
+
+        - `code: string`
+
+          The error code.
+
+        - `message: string`
+
+          The error message.
+
+        - `type: "error"`
+
+          The object type, which was always `error` for moderation failures.
+
+          - `"error"`
+
+    - `output: ModerationResult | Error`
+
+      Moderation for the response output.
+
+      - `ModerationResult`
+
+        A moderation result produced for the response input or output.
+
+        - `categories: Record<string, boolean>`
+
+          A dictionary of moderation categories to booleans, True if the input is flagged under this category.
+
+        - `category_applied_input_types: Record<string, Array<"text" | "image">>`
+
+          Which modalities of input are reflected by the score for each category.
+
+          - `"text"`
+
+          - `"image"`
+
+        - `category_scores: Record<string, number>`
+
+          A dictionary of moderation categories to scores.
+
+        - `flagged: boolean`
+
+          A boolean indicating whether the content was flagged by any category.
+
+        - `model: string`
+
+          The moderation model that produced this result.
+
+        - `type: "moderation_result"`
+
+          The object type, which was always `moderation_result` for successful moderation results.
+
+          - `"moderation_result"`
+
+      - `Error`
+
+        An error produced while attempting moderation for the response input or output.
+
+        - `code: string`
+
+          The error code.
+
+        - `message: string`
+
+          The error message.
+
+        - `type: "error"`
+
+          The object type, which was always `error` for moderation failures.
+
+          - `"error"`
+
   - `previous_response_id?: string | null`
 
     The unique ID of the previous response to the model. Use this to
@@ -5079,6 +5195,40 @@ console.log(response.id);
   },
   "max_output_tokens": 0,
   "max_tool_calls": 0,
+  "moderation": {
+    "input": {
+      "categories": {
+        "foo": true
+      },
+      "category_applied_input_types": {
+        "foo": [
+          "text"
+        ]
+      },
+      "category_scores": {
+        "foo": 0
+      },
+      "flagged": true,
+      "model": "model",
+      "type": "moderation_result"
+    },
+    "output": {
+      "categories": {
+        "foo": true
+      },
+      "category_applied_input_types": {
+        "foo": [
+          "text"
+        ]
+      },
+      "category_scores": {
+        "foo": 0
+      },
+      "flagged": true,
+      "model": "model",
+      "type": "moderation_result"
+    }
+  },
   "output_text": "output_text",
   "previous_response_id": "previous_response_id",
   "prompt": {

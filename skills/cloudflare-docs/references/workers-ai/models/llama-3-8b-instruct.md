@@ -14,7 +14,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 #  llama-3-8b-instruct 
 
-Text Generation • Meta • Hosted 
+Text Generation • Meta 
 
 `@cf/meta/llama-3-8b-instruct` 
 
@@ -22,7 +22,7 @@ Generation over generation, Meta Llama 3 demonstrates state-of-the-art performan
 
 | Model Info                                                                 |                                                     |
 | -------------------------------------------------------------------------- | --------------------------------------------------- |
-| Planned Deprecation                                                        | 5/30/2026                                           |
+| Deprecated                                                                 | 5/30/2026                                           |
 | Context Window[ ↗](https://developers.cloudflare.com/workers-ai/glossary/) | 7,968 tokens                                        |
 | Terms and License                                                          | [link ↗](https://llama.meta.com/llama3/license/#)   |
 | More information                                                           | [link ↗](https://llama.meta.com)                    |
@@ -36,10 +36,10 @@ Try out this model with Workers AI LLM Playground. It does not require any setup
 
 ## Usage
 
-* [  Worker (Streaming) ](#tab-panel-2913)
-* [  TypeScript ](#tab-panel-2914)
-* [  Python ](#tab-panel-2915)
-* [  curl ](#tab-panel-2916)
+* [  Worker (Streaming) ](#tab-panel-4363)
+* [  TypeScript ](#tab-panel-4364)
+* [  Python ](#tab-panel-4365)
+* [  curl ](#tab-panel-4366)
 
 TypeScript
 

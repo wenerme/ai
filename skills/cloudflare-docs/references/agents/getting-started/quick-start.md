@@ -102,8 +102,8 @@ Open [http://localhost:5173 ↗](http://localhost:5173) to see your agent in act
 
 Build a simple counter agent from scratch. Replace `src/server.ts`:
 
-* [  JavaScript ](#tab-panel-4258)
-* [  TypeScript ](#tab-panel-4259)
+* [  JavaScript ](#tab-panel-4972)
+* [  TypeScript ](#tab-panel-4973)
 
 JavaScript
 
@@ -263,8 +263,8 @@ export default {
 
 Update `wrangler.jsonc` to register the agent:
 
-* [  wrangler.jsonc ](#tab-panel-4250)
-* [  wrangler.toml ](#tab-panel-4251)
+* [  wrangler.jsonc ](#tab-panel-4964)
+* [  wrangler.toml ](#tab-panel-4965)
 
 JSONC
 
@@ -278,7 +278,7 @@ JSONC
 
   // Set this to today's date
 
-  "compatibility_date": "2026-05-04",
+  "compatibility_date": "2026-06-03",
 
   "compatibility_flags": ["nodejs_compat"],
 
@@ -325,7 +325,7 @@ main = "src/server.ts"
 
 # Set this to today's date
 
-compatibility_date = "2026-05-04"
+compatibility_date = "2026-06-03"
 
 compatibility_flags = [ "nodejs_compat" ]
 
@@ -446,8 +446,8 @@ flowchart LR
 
 If you are not using React:
 
-* [  JavaScript ](#tab-panel-4254)
-* [  TypeScript ](#tab-panel-4255)
+* [  JavaScript ](#tab-panel-4968)
+* [  TypeScript ](#tab-panel-4969)
 
 JavaScript
 
@@ -546,8 +546,8 @@ Check that:
 
 Make sure your methods are decorated with `@callable()`:
 
-* [  JavaScript ](#tab-panel-4252)
-* [  TypeScript ](#tab-panel-4253)
+* [  JavaScript ](#tab-panel-4966)
+* [  TypeScript ](#tab-panel-4967)
 
 JavaScript
 
@@ -597,8 +597,8 @@ export class MyAgent extends Agent {
 
 Add the agent and state type parameters:
 
-* [  JavaScript ](#tab-panel-4256)
-* [  TypeScript ](#tab-panel-4257)
+* [  JavaScript ](#tab-panel-4970)
+* [  TypeScript ](#tab-panel-4971)
 
 JavaScript
 
@@ -681,23 +681,23 @@ Now that you have a working agent, explore these topics:
 
 ### Common patterns
 
-| Learn how to             | Refer to                                                                                   |
-| ------------------------ | ------------------------------------------------------------------------------------------ |
-| Add AI/LLM capabilities  | [Using AI models](https://developers.cloudflare.com/agents/api-reference/using-ai-models/) |
-| Expose tools via MCP     | [MCP servers](https://developers.cloudflare.com/agents/api-reference/mcp-agent-api/)       |
-| Run background tasks     | [Schedule tasks](https://developers.cloudflare.com/agents/api-reference/schedule-tasks/)   |
-| Handle emails            | [Email routing](https://developers.cloudflare.com/agents/api-reference/email/)             |
-| Use Cloudflare Workflows | [Run Workflows](https://developers.cloudflare.com/agents/api-reference/run-workflows/)     |
+| Learn how to             | Refer to                                                                                        |
+| ------------------------ | ----------------------------------------------------------------------------------------------- |
+| Add AI/LLM capabilities  | [Using AI models](https://developers.cloudflare.com/agents/runtime/operations/using-ai-models/) |
+| Expose tools via MCP     | [MCP servers](https://developers.cloudflare.com/agents/model-context-protocol/apis/agent-api/)  |
+| Run background tasks     | [Schedule tasks](https://developers.cloudflare.com/agents/runtime/execution/schedule-tasks/)    |
+| Handle emails            | [Email routing](https://developers.cloudflare.com/agents/communication-channels/email/)         |
+| Use Cloudflare Workflows | [Run Workflows](https://developers.cloudflare.com/agents/runtime/execution/run-workflows/)      |
 
 ### Explore more
 
-[ State management ](https://developers.cloudflare.com/agents/api-reference/store-and-sync-state/) Deep dive into setState(), initialState, and onStateChanged(). 
+[ State management ](https://developers.cloudflare.com/agents/runtime/lifecycle/state/) Deep dive into setState(), initialState, and onStateChanged(). 
 
-[ Client SDK ](https://developers.cloudflare.com/agents/api-reference/client-sdk/) Full useAgent and AgentClient API reference. 
+[ Client SDK ](https://developers.cloudflare.com/agents/communication-channels/chat/client-sdk/) Full useAgent and AgentClient API reference. 
 
-[ Callable methods ](https://developers.cloudflare.com/agents/api-reference/callable-methods/) Expose methods to clients with @callable(). 
+[ Callable methods ](https://developers.cloudflare.com/agents/runtime/lifecycle/callable-methods/) Expose methods to clients with @callable(). 
 
-[ Schedule tasks ](https://developers.cloudflare.com/agents/api-reference/schedule-tasks/) Run tasks on a delay, schedule, or cron. 
+[ Schedule tasks ](https://developers.cloudflare.com/agents/runtime/execution/schedule-tasks/) Run tasks on a delay, schedule, or cron. 
 
 ```json
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/agents/","name":"Agents"}},{"@type":"ListItem","position":3,"item":{"@id":"/agents/getting-started/","name":"Getting started"}},{"@type":"ListItem","position":4,"item":{"@id":"/agents/getting-started/quick-start/","name":"Quick start"}}]}

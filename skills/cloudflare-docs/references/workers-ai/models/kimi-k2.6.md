@@ -14,7 +14,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 #  kimi-k2.6 
 
-Text Generation • Moonshot AI • Hosted 
+Text Generation • Moonshot AI 
 
 `@cf/moonshotai/kimi-k2.6` 
 
@@ -37,10 +37,10 @@ Try out this model with Workers AI LLM Playground. It does not require any setup
 
 ## Usage
 
-* [  Worker (Streaming) ](#tab-panel-2625)
-* [  TypeScript ](#tab-panel-2626)
-* [  Python ](#tab-panel-2627)
-* [  curl ](#tab-panel-2628)
+* [  Worker (Streaming) ](#tab-panel-4341)
+* [  TypeScript ](#tab-panel-4342)
+* [  Python ](#tab-panel-4343)
+* [  curl ](#tab-panel-4344)
 
 TypeScript
 
@@ -199,8 +199,8 @@ Workers AI also supports OpenAI compatible API endpoints for `/v1/chat/completio
 
 Synchronous — Send a request and receive a complete response 
 
-* [ Input ](#tab-panel-2629)
-* [ Output ](#tab-panel-2630)
+* [ Input ](#tab-panel-4345)
+* [ Output ](#tab-panel-4346)
 
 Input format
 
@@ -374,8 +374,8 @@ service\_tier
 
 Streaming — Send a request with \`stream: true\` and receive server-sent events 
 
-* [ Input ](#tab-panel-2631)
-* [ Output ](#tab-panel-2632)
+* [ Input ](#tab-panel-4347)
+* [ Output ](#tab-panel-4348)
 
 Input format
 
@@ -529,8 +529,8 @@ format
 
 Batch — Send multiple requests in a single API call 
 
-* [ Input ](#tab-panel-2633)
-* [ Output ](#tab-panel-2634)
+* [ Input ](#tab-panel-4349)
+* [ Output ](#tab-panel-4350)
 
 ▶requests\[\]
 

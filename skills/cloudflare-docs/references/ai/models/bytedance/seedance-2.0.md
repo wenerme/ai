@@ -14,7 +14,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 #  Seedance 2.0 
 
-Text-to-Video • ByteDance • Proxied 
+Text-to-Video • ByteDance 
 
 `bytedance/seedance-2.0` 
 
@@ -27,8 +27,8 @@ ByteDance's next-generation video model with a unified multimodal architecture. 
 
 ## Usage
 
-* [ TypeScript ](#tab-panel-310)
-* [ cURL ](#tab-panel-311)
+* [ TypeScript ](#tab-panel-328)
+* [ cURL ](#tab-panel-329)
 
 TypeScript
 
@@ -40,11 +40,11 @@ const response = await env.AI.run(
 
   {
 
+    prompt: 'A golden retriever running through a field of sunflowers on a sunny day',
+
     aspect_ratio: '16:9',
 
     duration: 5,
-
-    prompt: 'A golden retriever running through a field of sunflowers on a sunny day',
 
     resolution: '720p',
 
@@ -73,11 +73,11 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
   "input": {
 
+    "prompt": "A golden retriever running through a field of sunflowers on a sunny day",
+
     "aspect_ratio": "16:9",
 
     "duration": 5,
-
-    "prompt": "A golden retriever running through a field of sunflowers on a sunny day",
 
     "resolution": "720p"
 
@@ -88,8 +88,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 ```
 
-* [ Output ](#tab-panel-306)
-* [ Raw response ](#tab-panel-307)
+* [ Output ](#tab-panel-324)
+* [ Raw response ](#tab-panel-325)
 
 ```
 
@@ -118,8 +118,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 **High Resolution Cinematic**  — Cinematic video in 1080p 
 
-* [ TypeScript ](#tab-panel-314)
-* [ cURL ](#tab-panel-315)
+* [ TypeScript ](#tab-panel-332)
+* [ cURL ](#tab-panel-333)
 
 TypeScript
 
@@ -131,13 +131,13 @@ const response = await env.AI.run(
 
   {
 
-    aspect_ratio: '16:9',
-
-    duration: 10,
-
     prompt:
 
       'A dramatic drone shot flying through misty mountain peaks at sunrise, cinematic lighting with volumetric fog',
+
+    aspect_ratio: '16:9',
+
+    duration: 10,
 
     resolution: '1080p',
 
@@ -166,11 +166,11 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
   "input": {
 
+    "prompt": "A dramatic drone shot flying through misty mountain peaks at sunrise, cinematic lighting with volumetric fog",
+
     "aspect_ratio": "16:9",
 
     "duration": 10,
-
-    "prompt": "A dramatic drone shot flying through misty mountain peaks at sunrise, cinematic lighting with volumetric fog",
 
     "resolution": "1080p"
 
@@ -181,8 +181,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 ```
 
-* [ Output ](#tab-panel-308)
-* [ Raw response ](#tab-panel-309)
+* [ Output ](#tab-panel-326)
+* [ Raw response ](#tab-panel-327)
 
 ```
 
@@ -209,8 +209,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 **Image to Video**  — Generate video from a reference image 
 
-* [ TypeScript ](#tab-panel-318)
-* [ cURL ](#tab-panel-319)
+* [ TypeScript ](#tab-panel-336)
+* [ cURL ](#tab-panel-337)
 
 TypeScript
 
@@ -222,15 +222,15 @@ const response = await env.AI.run(
 
   {
 
-    aspect_ratio: '16:9',
-
-    duration: 5,
-
     image:
 
       'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAnklEQVR42u2XQRLAIAgD8/839i/26qFCACm0ozPe1KwcQsAoXvgcAABxpwFowl4QWITHxW0LCBhxVngF4gKIirMQyBRnIJAtrkE8AuwWnyFEgKzfS1UA+3sWTju3BGAu7gKYIfBW+Q/AAQgBeMCkt1wVsLZjcwUYG2Z9wGLHZitWk1DEisubUYt2XB5IWkSyFqG0RSxvMZi0Gc1+Ox3fm00ZJ5mGVtkAAAAASUVORK5CYII=',
 
     prompt: 'The character begins walking forward through the scene',
+
+    aspect_ratio: '16:9',
+
+    duration: 5,
 
     resolution: '720p',
 
@@ -259,13 +259,13 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
   "input": {
 
-    "aspect_ratio": "16:9",
-
-    "duration": 5,
-
     "image": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAnklEQVR42u2XQRLAIAgD8/839i/26qFCACm0ozPe1KwcQsAoXvgcAABxpwFowl4QWITHxW0LCBhxVngF4gKIirMQyBRnIJAtrkE8AuwWnyFEgKzfS1UA+3sWTju3BGAu7gKYIfBW+Q/AAQgBeMCkt1wVsLZjcwUYG2Z9wGLHZitWk1DEisubUYt2XB5IWkSyFqG0RSxvMZi0Gc1+Ox3fm00ZJ5mGVtkAAAAASUVORK5CYII=",
 
     "prompt": "The character begins walking forward through the scene",
+
+    "aspect_ratio": "16:9",
+
+    "duration": 5,
 
     "resolution": "720p"
 
@@ -276,8 +276,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 ```
 
-* [ Output ](#tab-panel-312)
-* [ Raw response ](#tab-panel-313)
+* [ Output ](#tab-panel-330)
+* [ Raw response ](#tab-panel-331)
 
 ```
 
@@ -304,8 +304,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 **Portrait Video**  — Vertical video for social media 
 
-* [ TypeScript ](#tab-panel-320)
-* [ cURL ](#tab-panel-321)
+* [ TypeScript ](#tab-panel-338)
+* [ cURL ](#tab-panel-339)
 
 TypeScript
 
@@ -317,11 +317,11 @@ const response = await env.AI.run(
 
   {
 
+    prompt: 'Abstract ink drops spreading through water, vivid colors mixing in slow motion',
+
     aspect_ratio: '9:16',
 
     duration: 5,
-
-    prompt: 'Abstract ink drops spreading through water, vivid colors mixing in slow motion',
 
     resolution: '720p',
 
@@ -350,11 +350,11 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
   "input": {
 
+    "prompt": "Abstract ink drops spreading through water, vivid colors mixing in slow motion",
+
     "aspect_ratio": "9:16",
 
     "duration": 5,
-
-    "prompt": "Abstract ink drops spreading through water, vivid colors mixing in slow motion",
 
     "resolution": "720p"
 
@@ -365,8 +365,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 ```
 
-* [ Output ](#tab-panel-316)
-* [ Raw response ](#tab-panel-317)
+* [ Output ](#tab-panel-334)
+* [ Raw response ](#tab-panel-335)
 
 ```
 
@@ -393,8 +393,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 ## Parameters
 
-* [ Input ](#tab-panel-322)
-* [ Output ](#tab-panel-323)
+* [ Input ](#tab-panel-340)
+* [ Output ](#tab-panel-341)
 
 aspect\_ratio
 

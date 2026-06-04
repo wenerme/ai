@@ -426,8 +426,8 @@
   },
   "guides/community/for-providers.md": {
     "url": "https://openrouter.ai/docs/guides/community/for-providers.md",
-    "size": 12160,
-    "updatedAt": "2026-05-30T00:47:11.320Z"
+    "size": 12701,
+    "updatedAt": "2026-06-04T01:01:19.016Z"
   },
   "guides/community/frameworks-and-integrations-overview.md": {
     "url": "https://openrouter.ai/docs/guides/community/frameworks-and-integrations-overview.md",
@@ -681,18 +681,18 @@
   },
   "api/api-reference/guardrails/list-guardrails.md": {
     "url": "https://openrouter.ai/docs/api/api-reference/guardrails/list-guardrails.md",
-    "size": 14094,
-    "updatedAt": "2026-05-27T00:46:31.556Z"
+    "size": 14486,
+    "updatedAt": "2026-06-04T01:02:39.042Z"
   },
   "api/api-reference/guardrails/create-guardrail.md": {
     "url": "https://openrouter.ai/docs/api/api-reference/guardrails/create-guardrail.md",
-    "size": 24566,
-    "updatedAt": "2026-05-27T00:46:40.030Z"
+    "size": 25042,
+    "updatedAt": "2026-06-04T01:02:40.308Z"
   },
   "api/api-reference/guardrails/get-guardrail.md": {
     "url": "https://openrouter.ai/docs/api/api-reference/guardrails/get-guardrail.md",
-    "size": 14890,
-    "updatedAt": "2026-05-27T00:46:40.902Z"
+    "size": 15282,
+    "updatedAt": "2026-06-04T01:02:41.707Z"
   },
   "api/api-reference/guardrails/delete-guardrail.md": {
     "url": "https://openrouter.ai/docs/api/api-reference/guardrails/delete-guardrail.md",
@@ -701,8 +701,8 @@
   },
   "api/api-reference/guardrails/update-guardrail.md": {
     "url": "https://openrouter.ai/docs/api/api-reference/guardrails/update-guardrail.md",
-    "size": 22386,
-    "updatedAt": "2026-05-27T00:46:42.560Z"
+    "size": 22862,
+    "updatedAt": "2026-06-04T01:02:43.975Z"
   },
   "api/api-reference/guardrails/list-guardrail-key-assignments.md": {
     "url": "https://openrouter.ai/docs/api/api-reference/guardrails/list-guardrail-key-assignments.md",

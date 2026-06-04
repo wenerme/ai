@@ -28,7 +28,7 @@ For setup instructions and Bot Management integration examples, see the [templat
 * [Cloudflare Workers](https://developers.cloudflare.com/workers/) — Build and deploy serverless applications
 * [Workers templates ↗](https://github.com/cloudflare/templates) — More templates on GitHub
 * [Pay Per Crawl](https://developers.cloudflare.com/ai-crawl-control/features/pay-per-crawl/what-is-pay-per-crawl/) — Native Cloudflare integration for monetizing crawler access
-* [x402 payments](https://developers.cloudflare.com/agents/agentic-payments/x402/) — Gate resources, charge for MCP tools, add payments to coding agents
+* [x402 payments](https://developers.cloudflare.com/agents/tools/payments/x402/) — Gate resources, charge for MCP tools, add payments to coding agents
 
 ```json
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/ai-crawl-control/","name":"AI Crawl Control"}},{"@type":"ListItem","position":3,"item":{"@id":"/ai-crawl-control/reference/","name":"Reference"}},{"@type":"ListItem","position":4,"item":{"@id":"/ai-crawl-control/reference/worker-templates/","name":"Worker templates"}}]}

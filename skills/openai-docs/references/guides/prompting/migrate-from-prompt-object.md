@@ -1,5 +1,11 @@
 # Migrate from prompt objects
 
+OpenAI is deprecating reusable prompt objects in the API. Prompt creation will
+  be de-emphasized beginning June 3, 2026, and `v1/prompts` is scheduled to shut
+  down on November 30, 2026. See the [deprecations
+  page](https://developers.openai.com/api/docs/deprecations#2026-06-03-reusable-prompts) for the current
+  timeline.
+
 To migrate away from **Prompts** in the OpenAI API platform, move the prompt content out of the managed `prompt` object and into your application code. This gives you more control over review, testing, deployment, and versioning.
 
 ## Before: using a Prompt Object
@@ -76,12 +82,8 @@ const response = await client.responses.create({
     },
     {
       role: "user",
-      content: \`
-Customer name: Acme
-Issue: billing question
-
-Write a response to the customer.
-      \`.trim(),
+      content:
+        "Customer name: Acme. Issue: billing question. Write a response to the customer.",
     },
   ],
 });
@@ -103,12 +105,7 @@ response = client.responses.create(
         },
         {
             "role": "user",
-            "content": """
-Customer name: Acme
-Issue: billing question
-
-Write a response to the customer.
-            """.strip(),
+            "content": "Customer name: Acme. Issue: billing question. Write a response to the customer.",
         },
     ],
 )
@@ -129,7 +126,7 @@ curl https://api.openai.com/v1/responses \\
       },
       {
         "role": "user",
-        "content": "Customer name: Acme\\nIssue: billing question\\n\\nWrite a response to the customer."
+        "content": "Customer name: Acme. Issue: billing question. Write a response to the customer."
       }
     ]
   }'
@@ -167,20 +164,12 @@ function buildSupportPrompt({ customerName, issue }) {
   return [
     {
       role: "system",
-      content: \`
-You are a helpful support assistant.
-Be concise, accurate, and friendly.
-Do not invent policy details.
-      \`.trim(),
+      content:
+        "You are a helpful support assistant. Be concise, accurate, and friendly. Do not invent policy details.",
     },
     {
       role: "user",
-      content: \`
-Customer name: \${customerName}
-Issue: \${issue}
-
-Write a response to the customer.
-      \`.trim(),
+      content: \`Customer name: \${customerName}. Issue: \${issue}. Write a response to the customer.\`,
     },
   ];
 }
@@ -203,20 +192,11 @@ def build_support_prompt(customer_name, issue):
     return [
         {
             "role": "system",
-            "content": """
-You are a helpful support assistant.
-Be concise, accurate, and friendly.
-Do not invent policy details.
-            """.strip(),
+            "content": "You are a helpful support assistant. Be concise, accurate, and friendly. Do not invent policy details.",
         },
         {
             "role": "user",
-            "content": f"""
-Customer name: {customer_name}
-Issue: {issue}
-
-Write a response to the customer.
-            """.strip(),
+            "content": f"Customer name: {customer_name}. Issue: {issue}. Write a response to the customer.",
         },
     ]
 

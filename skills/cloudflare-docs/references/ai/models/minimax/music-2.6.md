@@ -14,7 +14,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 #  MiniMax Music 2.6 
 
-Music Generation • MiniMax • Proxied 
+Music Generation • MiniMax 
 
 `minimax/music-2.6` 
 
@@ -28,8 +28,8 @@ MiniMax's music generation model that creates full-length songs with vocals from
 
 ## Usage
 
-* [ TypeScript ](#tab-panel-788)
-* [ cURL ](#tab-panel-789)
+* [ TypeScript ](#tab-panel-824)
+* [ cURL ](#tab-panel-825)
 
 TypeScript
 
@@ -41,11 +41,11 @@ const response = await env.AI.run(
 
   {
 
+    prompt: 'An upbeat electronic dance track with a catchy synth melody and driving beat',
+
     is_instrumental: false,
 
     lyrics_optimizer: true,
-
-    prompt: 'An upbeat electronic dance track with a catchy synth melody and driving beat',
 
   },
 
@@ -72,11 +72,11 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
   "input": {
 
+    "prompt": "An upbeat electronic dance track with a catchy synth melody and driving beat",
+
     "is_instrumental": false,
 
-    "lyrics_optimizer": true,
-
-    "prompt": "An upbeat electronic dance track with a catchy synth melody and driving beat"
+    "lyrics_optimizer": true
 
   }
 
@@ -85,8 +85,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 ```
 
-* [ Output ](#tab-panel-786)
-* [ Raw response ](#tab-panel-787)
+* [ Output ](#tab-panel-822)
+* [ Raw response ](#tab-panel-823)
 
 ```
 
@@ -115,8 +115,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 **With Lyrics**  — Generate a song with custom lyrics 
 
-* [ TypeScript ](#tab-panel-794)
-* [ cURL ](#tab-panel-795)
+* [ TypeScript ](#tab-panel-830)
+* [ cURL ](#tab-panel-831)
 
 TypeScript
 
@@ -128,6 +128,8 @@ const response = await env.AI.run(
 
   {
 
+    prompt: 'A warm acoustic folk ballad with fingerpicked guitar and gentle vocals',
+
     is_instrumental: false,
 
     lyrics:
@@ -135,8 +137,6 @@ const response = await env.AI.run(
       'Walking down a dusty road\nWith the sunset painting gold\nEvery step a story told\nOf the places I call home',
 
     lyrics_optimizer: false,
-
-    prompt: 'A warm acoustic folk ballad with fingerpicked guitar and gentle vocals',
 
   },
 
@@ -163,13 +163,13 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
   "input": {
 
+    "prompt": "A warm acoustic folk ballad with fingerpicked guitar and gentle vocals",
+
     "is_instrumental": false,
 
     "lyrics": "Walking down a dusty road\nWith the sunset painting gold\nEvery step a story told\nOf the places I call home",
 
-    "lyrics_optimizer": false,
-
-    "prompt": "A warm acoustic folk ballad with fingerpicked guitar and gentle vocals"
+    "lyrics_optimizer": false
 
   }
 
@@ -178,8 +178,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 ```
 
-* [ Output ](#tab-panel-790)
-* [ Raw response ](#tab-panel-791)
+* [ Output ](#tab-panel-826)
+* [ Raw response ](#tab-panel-827)
 
 ```
 
@@ -206,8 +206,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 **Instrumental**  — Generate instrumental music without vocals 
 
-* [ TypeScript ](#tab-panel-796)
-* [ cURL ](#tab-panel-797)
+* [ TypeScript ](#tab-panel-832)
+* [ cURL ](#tab-panel-833)
 
 TypeScript
 
@@ -219,11 +219,11 @@ const response = await env.AI.run(
 
   {
 
+    prompt: 'A calm lo-fi hip hop instrumental with vinyl crackle and mellow piano chords',
+
     is_instrumental: true,
 
     lyrics_optimizer: false,
-
-    prompt: 'A calm lo-fi hip hop instrumental with vinyl crackle and mellow piano chords',
 
   },
 
@@ -250,11 +250,11 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
   "input": {
 
+    "prompt": "A calm lo-fi hip hop instrumental with vinyl crackle and mellow piano chords",
+
     "is_instrumental": true,
 
-    "lyrics_optimizer": false,
-
-    "prompt": "A calm lo-fi hip hop instrumental with vinyl crackle and mellow piano chords"
+    "lyrics_optimizer": false
 
   }
 
@@ -263,8 +263,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 ```
 
-* [ Output ](#tab-panel-792)
-* [ Raw response ](#tab-panel-793)
+* [ Output ](#tab-panel-828)
+* [ Raw response ](#tab-panel-829)
 
 ```
 
@@ -291,8 +291,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 **High Quality Audio**  — Specify audio format and sample rate 
 
-* [ TypeScript ](#tab-panel-802)
-* [ cURL ](#tab-panel-803)
+* [ TypeScript ](#tab-panel-838)
+* [ cURL ](#tab-panel-839)
 
 TypeScript
 
@@ -304,13 +304,13 @@ const response = await env.AI.run(
 
   {
 
+    prompt: 'An orchestral cinematic score building to an epic crescendo with full symphony',
+
     format: 'wav',
 
     is_instrumental: false,
 
     lyrics_optimizer: true,
-
-    prompt: 'An orchestral cinematic score building to an epic crescendo with full symphony',
 
     sample_rate: 44100,
 
@@ -339,13 +339,13 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
   "input": {
 
+    "prompt": "An orchestral cinematic score building to an epic crescendo with full symphony",
+
     "format": "wav",
 
     "is_instrumental": false,
 
     "lyrics_optimizer": true,
-
-    "prompt": "An orchestral cinematic score building to an epic crescendo with full symphony",
 
     "sample_rate": 44100
 
@@ -356,8 +356,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 ```
 
-* [ Output ](#tab-panel-798)
-* [ Raw response ](#tab-panel-799)
+* [ Output ](#tab-panel-834)
+* [ Raw response ](#tab-panel-835)
 
 ```
 
@@ -384,8 +384,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 **Auto-Generated Lyrics**  — Let the model generate lyrics from the prompt 
 
-* [ TypeScript ](#tab-panel-804)
-* [ cURL ](#tab-panel-805)
+* [ TypeScript ](#tab-panel-840)
+* [ cURL ](#tab-panel-841)
 
 TypeScript
 
@@ -397,11 +397,11 @@ const response = await env.AI.run(
 
   {
 
+    prompt: 'A cheerful pop song about a summer road trip with friends',
+
     is_instrumental: false,
 
     lyrics_optimizer: true,
-
-    prompt: 'A cheerful pop song about a summer road trip with friends',
 
   },
 
@@ -428,11 +428,11 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
   "input": {
 
+    "prompt": "A cheerful pop song about a summer road trip with friends",
+
     "is_instrumental": false,
 
-    "lyrics_optimizer": true,
-
-    "prompt": "A cheerful pop song about a summer road trip with friends"
+    "lyrics_optimizer": true
 
   }
 
@@ -441,8 +441,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 ```
 
-* [ Output ](#tab-panel-800)
-* [ Raw response ](#tab-panel-801)
+* [ Output ](#tab-panel-836)
+* [ Raw response ](#tab-panel-837)
 
 ```
 
@@ -469,8 +469,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 ## Parameters
 
-* [ Input ](#tab-panel-806)
-* [ Output ](#tab-panel-807)
+* [ Input ](#tab-panel-842)
+* [ Output ](#tab-panel-843)
 
 ▶bitrate
 

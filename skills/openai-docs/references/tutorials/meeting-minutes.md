@@ -1,6 +1,6 @@
 # Meeting minutes
 
-In this tutorial, we'll harness the power of OpenAI's Whisper and GPT-4 models to develop an automated meeting minutes generator. The application transcribes audio from a meeting, provides a summary of the discussion, extracts key points and action items, and performs a sentiment analysis.
+In this tutorial, we'll harness the power of OpenAI's Whisper and GPT models to develop an automated meeting minutes generator. The application transcribes audio from a meeting, provides a summary of the discussion, extracts key points and action items, and performs a sentiment analysis.
 
 ## Getting started
 
@@ -71,11 +71,11 @@ def transcribe_audio(audio_file_path):
 
 In this function, `audio_file_path` is the path to the audio file you want to transcribe. The function opens this file and passes it to the Whisper ASR model (`whisper-1`) for transcription. The result is returned as raw text. It’s important to note that the `openai.Audio.transcribe` function requires the actual audio file to be passed in, not just the path to the file locally or on a remote server. This means that if you are running this code on a server where you might not also be storing your audio files, you will need to have a preprocessing step that first downloads the audio files onto that device.
 
-## Summarizing and analyzing the transcript with GPT-4
+## Summarizing and analyzing the transcript with a GPT model
 
-Having obtained the transcript, we now pass it to GPT-4 via the [Chat Completions API](https://developers.openai.com/api/docs/api-reference/chat/create). GPT-4 is OpenAI's state-of-the-art large language model which we'll use to generate a summary, extract key points, action items, and perform sentiment analysis.
+Having obtained the transcript, we now pass it to a GPT model via the [Chat Completions API](https://developers.openai.com/api/docs/api-reference/chat/create). The snippets below use a tested model to generate a summary, extract key points, action items, and perform sentiment analysis. For new projects, start with [`gpt-5.5`](https://developers.openai.com/api/docs/models/gpt-5.5).
 
-This tutorial uses distinct functions for each task we want GPT-4 to perform. This is not the most efficient way to do this task - you can put these instructions into one function, however, splitting them up can lead to higher quality summarization.
+This tutorial uses distinct functions for each task we want the model to perform. This is not the most efficient way to do this task - you can put these instructions into one function, however, splitting them up can lead to higher quality summarization.
 
 To split the tasks up, we define the `meeting_minutes` function which will serve as the main function of this application:
 
@@ -104,8 +104,7 @@ The `abstract_summary_extraction` function takes the transcription and summarize
 ```python
 def abstract_summary_extraction(transcription):
     response = client.chat.completions.create(
-        model="gpt-4",
-        temperature=0,
+        model="gpt-5.5",
         messages=[
             {
                 "role": "system",
@@ -128,8 +127,7 @@ The `key_points_extraction` function identifies and lists the main points discus
 
 def key_points_extraction(transcription):
     response = client.chat.completions.create(
-        model="gpt-4",
-        temperature=0,
+        model="gpt-5.5",
         messages=[
             {
                 "role": "system",
@@ -152,8 +150,7 @@ The `action_item_extraction` function identifies tasks, assignments, or actions 
 
 def action_item_extraction(transcription):
     response = client.chat.completions.create(
-        model="gpt-4",
-        temperature=0,
+        model="gpt-5.5",
         messages=[
             {
                 "role": "system",
@@ -170,13 +167,12 @@ def action_item_extraction(transcription):
 
 ### Sentiment analysis
 
-The `sentiment_analysis` function analyzes the overall sentiment of the discussion. It considers the tone, the emotions conveyed by the language used, and the context in which words and phrases are used. For tasks which are less complicated, it may also be worthwhile to try out `gpt-3.5-turbo` in addition to `gpt-4` to see if you can get a similar level of performance. It might also be useful to experiment with taking the results of the `sentiment_analysis` function and passing it to the other functions to see how having the sentiment of the conversation impacts the other attributes.
+The `sentiment_analysis` function analyzes the overall sentiment of the discussion. It considers the tone, the emotions conveyed by the language used, and the context in which words and phrases are used. For less complicated tasks, it may also be worthwhile to try [`gpt-5.4-mini`](https://developers.openai.com/api/docs/models/gpt-5.4-mini) to see if you can get a similar level of performance at lower cost and latency. It might also be useful to experiment with taking the results of the `sentiment_analysis` function and passing it to the other functions to see how having the sentiment of the conversation impacts the other attributes.
 
 ```python
 def sentiment_analysis(transcription):
     response = client.chat.completions.create(
-        model="gpt-4",
-        temperature=0,
+        model="gpt-5.5",
         messages=[
             {
                 "role": "system",

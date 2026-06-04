@@ -37,14 +37,14 @@ Because the content generated from a model is non-deterministic, prompting to ge
 
 Some prompt engineering techniques work with every model, like using message roles. But different models might need to be prompted differently to produce the best results. Even different snapshots of models within the same family could produce different results. So as you build more complex applications, we strongly recommend:
 
-- Pinning your production applications to specific [model snapshots](https://developers.openai.com/api/docs/models) (like `gpt-5-2025-08-07` for example) to ensure consistent behavior
+- Pinning your production applications to specific [model snapshots](https://developers.openai.com/api/docs/models) (like `gpt-5.5-2026-04-23` for example) to ensure consistent behavior
 - Building [evals](https://developers.openai.com/api/docs/guides/evals) that measure the behavior of your prompts so you can monitor prompt performance as you iterate, or when you change and upgrade model versions
 
 Now, let's examine some tools and techniques available to you to construct prompts.
 
 ## Choosing models and APIs
 
-OpenAI has many different [models](https://developers.openai.com/api/docs/models) and several APIs to choose from. [Reasoning models](https://developers.openai.com/api/docs/guides/reasoning), like o3 and GPT-5, behave differently from chat models and respond better to different prompts. One important note is that reasoning models perform better and demonstrate higher intelligence when used with the Responses API.
+OpenAI has many different [models](https://developers.openai.com/api/docs/models) and several APIs to choose from. [Reasoning models](https://developers.openai.com/api/docs/guides/reasoning), like [`gpt-5.5`](https://developers.openai.com/api/docs/models/gpt-5.5), behave differently from chat models and respond better to different prompts. One important note is that reasoning models perform better and demonstrate higher intelligence when used with the Responses API.
 
 If you're building any text generation app, we recommend using the Responses API over the older Chat Completions API. And if you're using a reasoning model, it's especially useful to [migrate to Responses](https://developers.openai.com/api/docs/guides/migrate-to-responses).
 
@@ -61,7 +61,7 @@ import OpenAI from "openai";
 const client = new OpenAI();
 
 const response = await client.responses.create({
-    model: "gpt-5",
+    model: "gpt-5.5",
     reasoning: { effort: "low" },
     instructions: "${semicolonsDevMsg}",
     input: "${semicolonsPrompt}",
@@ -75,7 +75,7 @@ from openai import OpenAI
 client = OpenAI()
 
 response = client.responses.create(
-    model="gpt-5",
+    model="gpt-5.5",
     reasoning={"effort": "low"},
     instructions="${semicolonsDevMsg}",
     input="${semicolonsPrompt}",
@@ -89,7 +89,7 @@ curl "https://api.openai.com/v1/responses" \\
     -H "Content-Type: application/json" \\
     -H "Authorization: Bearer $OPENAI_API_KEY" \\
     -d '{
-        "model": "gpt-5",
+        "model": "gpt-5.5",
         "reasoning": {"effort": "low"},
         "instructions": "${semicolonsDevMsg}",
         "input": "${semicolonsPrompt}"
@@ -106,7 +106,7 @@ import OpenAI from "openai";
 const client = new OpenAI();
 
 const response = await client.responses.create({
-    model: "gpt-5",
+    model: "gpt-5.5",
     reasoning: { effort: "low" },
     input: [
         {
@@ -128,7 +128,7 @@ from openai import OpenAI
 client = OpenAI()
 
 response = client.responses.create(
-    model="gpt-5",
+    model="gpt-5.5",
     reasoning={"effort": "low"},
     input=[
         {
@@ -150,7 +150,7 @@ curl "https://api.openai.com/v1/responses" \\
     -H "Content-Type: application/json" \\
     -H "Authorization: Bearer $OPENAI_API_KEY" \\
     -d '{
-        "model": "gpt-5",
+        "model": "gpt-5.5",
         "reasoning": {"effort": "low"},
         "input": [
             {
@@ -206,6 +206,12 @@ You could think about `developer` and `user` messages like a function and its ar
 
 In the OpenAI dashboard, you can develop reusable [prompts](https://platform.openai.com/chat/edit) that you can use in API requests, rather than specifying the content of prompts in code. This way, you can more easily build and evaluate your prompts, and deploy improved versions of your prompts without changing your integration code.
 
+OpenAI is deprecating reusable prompt objects in the API. Prompt creation will
+  be de-emphasized beginning June 3, 2026, and `v1/prompts` is scheduled to shut
+  down on November 30, 2026. See the [deprecations
+  page](https://developers.openai.com/api/docs/deprecations#2026-06-03-reusable-prompts) for the current
+  timeline.
+
 Here's how it works:
 
 1. **Create a reusable prompt** in the [dashboard](https://platform.openai.com/chat/edit) with placeholders like `{{customer_name}}`.
@@ -225,7 +231,7 @@ import OpenAI from "openai";
 const client = new OpenAI();
 
 const response = await client.responses.create({
-    model: "gpt-5",
+    model: "gpt-5.5",
     prompt: {
         id: "pmpt_abc123",
         version: "2",
@@ -244,7 +250,7 @@ from openai import OpenAI
 client = OpenAI()
 
 response = client.responses.create(
-    model="gpt-5",
+    model="gpt-5.5",
     prompt={
         "id": "pmpt_abc123",
         "version": "2",
@@ -263,7 +269,7 @@ curl https://api.openai.com/v1/responses \\
   -H "Authorization: Bearer $OPENAI_API_KEY" \\
   -H "Content-Type: application/json" \\
   -d '{
-    "model": "gpt-5",
+    "model": "gpt-5.5",
     "prompt": {
       "id": "pmpt_abc123",
       "version": "2",
@@ -292,7 +298,7 @@ const file = await client.files.create({
 });
 
 const response = await client.responses.create({
-    model: "gpt-5",
+    model: "gpt-5.5",
     prompt: {
         id: "pmpt_abc123",
         variables: {
@@ -320,7 +326,7 @@ file = client.files.create(
 )
 
 response = client.responses.create(
-    model="gpt-5",
+    model="gpt-5.5",
     prompt={
         "id": "pmpt_abc123",
         "variables": {
@@ -342,7 +348,7 @@ curl https://api.openai.com/v1/responses \
   -H "Authorization: Bearer $OPENAI_API_KEY" \
   -H "Content-Type: application/json" \
   -d '{
-    "model": "gpt-5",
+    "model": "gpt-5.5",
     "prompt": {
       "id": "pmpt_abc123",
       "variables": {

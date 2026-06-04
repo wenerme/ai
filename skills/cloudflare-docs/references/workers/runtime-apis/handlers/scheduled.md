@@ -33,9 +33,9 @@ curl "http://localhost:8787/cdn-cgi/handler/scheduled?format=json"
 
 ## Syntax
 
-* [  JavaScript ](#tab-panel-10796)
-* [  TypeScript ](#tab-panel-10797)
-* [  Python ](#tab-panel-10798)
+* [  JavaScript ](#tab-panel-11266)
+* [  TypeScript ](#tab-panel-11267)
+* [  Python ](#tab-panel-11268)
 
 JavaScript
 
@@ -45,7 +45,7 @@ export default {
 
   async scheduled(controller, env, ctx) {
 
-    ctx.waitUntil(doSomeTaskOnASchedule());
+    await doSomeTaskOnASchedule();
 
   },
 
@@ -72,7 +72,7 @@ export default {
 
   ) {
 
-    ctx.waitUntil(doSomeTaskOnASchedule());
+    await doSomeTaskOnASchedule();
 
   },
 
@@ -92,7 +92,7 @@ class Default(WorkerEntrypoint):
 
     async def scheduled(self, controller, env, ctx):
 
-        ctx.waitUntil(doSomeTaskOnASchedule())
+        await doSomeTaskOnASchedule()
 
 
 ```
@@ -114,8 +114,8 @@ class Default(WorkerEntrypoint):
 
 When you configure multiple [Cron Triggers](https://developers.cloudflare.com/workers/configuration/cron-triggers/) for a single Worker, each trigger invokes the same `scheduled()` handler. Use `controller.cron` to distinguish which schedule fired and run different logic for each.
 
-* [  wrangler.jsonc ](#tab-panel-10801)
-* [  wrangler.toml ](#tab-panel-10802)
+* [  wrangler.jsonc ](#tab-panel-11271)
+* [  wrangler.toml ](#tab-panel-11272)
 
 JSONC
 
@@ -145,8 +145,8 @@ crons = [ "*/5 * * * *", "0 0 * * *" ]
 
 ```
 
-* [  JavaScript ](#tab-panel-10799)
-* [  TypeScript ](#tab-panel-10800)
+* [  JavaScript ](#tab-panel-11269)
+* [  TypeScript ](#tab-panel-11270)
 
 JavaScript
 
@@ -160,13 +160,13 @@ export default {
 
       case "*/5 * * * *":
 
-        ctx.waitUntil(fetch("https://example.com/api/sync"));
+        await fetch("https://example.com/api/sync");
 
         break;
 
       case "0 0 * * *":
 
-        ctx.waitUntil(env.MY_KV.put("last-cleanup", new Date().toISOString()));
+        await env.MY_KV.put("last-cleanup", new Date().toISOString());
 
         break;
 
@@ -199,13 +199,13 @@ export default {
 
       case "*/5 * * * *":
 
-        ctx.waitUntil(fetch("https://example.com/api/sync"));
+        await fetch("https://example.com/api/sync");
 
         break;
 
       case "0 0 * * *":
 
-        ctx.waitUntil(env.MY_KV.put("last-cleanup", new Date().toISOString()));
+        await env.MY_KV.put("last-cleanup", new Date().toISOString());
 
         break;
 
@@ -224,7 +224,11 @@ The value of `controller.cron` is the exact cron expression string from your con
 
 When a Workers script is invoked by a [Cron Trigger](https://developers.cloudflare.com/workers/configuration/cron-triggers/), the Workers runtime starts a `ScheduledEvent` which will be handled by the `scheduled` function in your Workers Module class. The `ctx` argument represents the context your function runs in, and contains the following methods to control what happens next:
 
-* `ctx.waitUntil(promisePromise)` : void - Use this method to notify the runtime to wait for asynchronous tasks (for example, logging, analytics to third-party services, streaming and caching). The first `ctx.waitUntil` to fail will be observed and recorded as the status in the [Cron Trigger](https://developers.cloudflare.com/workers/configuration/cron-triggers/) Past Events table. Otherwise, it will be reported as a success.
+* `ctx.waitUntil(promise)` : void - Use this method to register asynchronous tasks (for example, logging, analytics to third-party services, streaming and caching) that should settle before the invocation completes. The first `ctx.waitUntil` to fail will be observed and recorded as the status in the [Cron Trigger](https://developers.cloudflare.com/workers/configuration/cron-triggers/) Past Events table. Otherwise, it will be reported as a success.
+
+Note
+
+The runtime waits for the promise returned by the `scheduled()` handler to resolve (up to the 15-minute duration limit). You do not need to use`waitUntil()` for the runtime to wait for a single asynchronous task.`waitUntil()` is most useful when you need to run multiple concurrent tasks, or when you want the outcome of a specific promise to be recorded as the Cron Trigger invocation status.
 
 ```json
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/workers/","name":"Workers"}},{"@type":"ListItem","position":3,"item":{"@id":"/workers/runtime-apis/","name":"Runtime APIs"}},{"@type":"ListItem","position":4,"item":{"@id":"/workers/runtime-apis/handlers/","name":"Handlers"}},{"@type":"ListItem","position":5,"item":{"@id":"/workers/runtime-apis/handlers/scheduled/","name":"Scheduled Handler"}}]}

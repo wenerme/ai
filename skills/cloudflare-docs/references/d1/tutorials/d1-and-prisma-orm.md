@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 # Query D1 using Prisma ORM
 
-**Last reviewed:**  12 months ago 
+**Last reviewed:**  about 1 year ago 
 
 ## What is Prisma ORM?
 
@@ -205,8 +205,8 @@ You now have a D1 database in your Cloudflare account with a binding to your Clo
 
 Copy the last part of the command output and paste it into your Wrangler file. It should look similar to this:
 
-* [  wrangler.jsonc ](#tab-panel-5843)
-* [  wrangler.toml ](#tab-panel-5844)
+* [  wrangler.jsonc ](#tab-panel-7285)
+* [  wrangler.toml ](#tab-panel-7286)
 
 JSONC
 
@@ -222,7 +222,7 @@ JSONC
 
   // Set this to today's date
 
-  "compatibility_date": "2026-05-18",
+  "compatibility_date": "2026-06-03",
 
   "compatibility_flags": [
 
@@ -267,7 +267,7 @@ main = "src/index.ts"
 
 # Set this to today's date
 
-compatibility_date = "2026-05-18"
+compatibility_date = "2026-06-03"
 
 compatibility_flags = [ "nodejs_compat" ]
 
@@ -344,8 +344,8 @@ model User {
 
 Now, run the following command in your terminal to generate the SQL statement that creates a `User` table equivalent to the `User` model above:
 
-* [ Prisma (v7) ](#tab-panel-5841)
-* [ Prisma (v6) ](#tab-panel-5842)
+* [ Prisma (v7) ](#tab-panel-7283)
+* [ Prisma (v6) ](#tab-panel-7284)
 
 Terminal window
 
@@ -483,8 +483,8 @@ To query your database from the Worker using Prisma ORM, you need to:
 
 Open `src/index.ts` and replace the entire content with the following:
 
-* [  JavaScript ](#tab-panel-5845)
-* [  TypeScript ](#tab-panel-5846)
+* [  JavaScript ](#tab-panel-7287)
+* [  TypeScript ](#tab-panel-7288)
 
 JavaScript
 

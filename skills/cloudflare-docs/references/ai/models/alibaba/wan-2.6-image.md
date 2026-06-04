@@ -14,7 +14,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 #  Wan 2.6 Image 
 
-Text-to-Image • Alibaba • Proxied 
+Text-to-Image • Alibaba 
 
 `alibaba/wan-2.6-image` 
 
@@ -288,9 +288,9 @@ const response = await env.AI.run(
 
   {
 
-    negative_prompt: 'modern clothing, photograph, blurry, low quality',
-
     prompt: 'A detailed oil painting portrait of a Renaissance nobleman with intricate lace collar',
+
+    negative_prompt: 'modern clothing, photograph, blurry, low quality',
 
   },
 
@@ -317,9 +317,9 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
   "input": {
 
-    "negative_prompt": "modern clothing, photograph, blurry, low quality",
+    "prompt": "A detailed oil painting portrait of a Renaissance nobleman with intricate lace collar",
 
-    "prompt": "A detailed oil painting portrait of a Renaissance nobleman with intricate lace collar"
+    "negative_prompt": "modern clothing, photograph, blurry, low quality"
 
   }
 

@@ -230,9 +230,9 @@ client = OpenAI()
 
 try:
   #Make your OpenAI API request here
-  response = client.chat.completions.create(
-    prompt="Hello world",
-    model="gpt-4o-mini"
+  response = client.responses.create(
+    model="gpt-5.5",
+    input="Hello world"
   )
 except openai.APIError as e:
   #Handle API error here, e.g. retry or log

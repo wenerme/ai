@@ -32,8 +32,8 @@ The following guide deploys a remote MCP server on [Cloudflare Workers](https://
 
 To deploy our [example MCP server ↗](https://github.com/cloudflare/ai/tree/main/demos/remote-mcp-cf-access-self-hosted) to your Cloudflare account:
 
-* [ Dashboard ](#tab-panel-5021)
-* [ CLI ](#tab-panel-5022)
+* [ Dashboard ](#tab-panel-6457)
+* [ CLI ](#tab-panel-6458)
 
 1. Select the following button to launch the quickstart flow:  
 [![Deploy to Workers](https://deploy.workers.cloudflare.com/button)](https://deploy.workers.cloudflare.com/?url=https://github.com/cloudflare/ai/tree/main/demos/remote-mcp-cf-access-self-hosted)
@@ -75,8 +75,8 @@ The Worker will be deployed to your `*.workers.dev` subdomain at `mcp-access-sel
 
 ### 2\. Create a self-hosted Access application
 
-* [ Dashboard ](#tab-panel-5029)
-* [ API ](#tab-panel-5030)
+* [ Dashboard ](#tab-panel-6465)
+* [ API ](#tab-panel-6466)
 
 1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** \> **Access controls** \> **Applications**.
 2. Select **Create new application**.
@@ -117,8 +117,8 @@ The MCP server validates the `Cf-Access-Jwt-Assertion` header on each request by
 
 To configure the environment variables for our [example MCP server](#1-deploy-an-example-mcp-server):
 
-* [ Dashboard ](#tab-panel-5025)
-* [ CLI ](#tab-panel-5026)
+* [ Dashboard ](#tab-panel-6461)
+* [ CLI ](#tab-panel-6462)
 
 1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to the **Workers & Pages** page.  
 [ Go to **Workers & Pages** ](https://dash.cloudflare.com/?to=/:account/workers-and-pages)
@@ -146,7 +146,7 @@ npx wrangler deploy
 
 ### 4\. Test the connection
 
-You can now connect to your MCP server at `https://mcp-access-self-hosted.<YOUR_SUBDOMAIN>.workers.dev/mcp` using [Workers AI Playground ↗](https://playground.ai.cloudflare.com/), [MCP inspector ↗](https://github.com/modelcontextprotocol/inspector), or [other MCP clients](https://developers.cloudflare.com/agents/guides/remote-mcp-server/#connect-your-mcp-server-to-claude-and-other-mcp-clients) that support remote MCP servers.
+You can now connect to your MCP server at `https://mcp-access-self-hosted.<YOUR_SUBDOMAIN>.workers.dev/mcp` using [Workers AI Playground ↗](https://playground.ai.cloudflare.com/), [MCP inspector ↗](https://github.com/modelcontextprotocol/inspector), or [other MCP clients](https://developers.cloudflare.com/agents/model-context-protocol/guides/remote-mcp-server/#connect-your-mcp-server-to-claude-and-other-mcp-clients) that support remote MCP servers.
 
 To test in Workers AI Playground:
 
@@ -172,8 +172,8 @@ The following guide walks through the Access for SaaS approach. It deploys a rem
 
 To deploy our [example MCP server ↗](https://github.com/cloudflare/ai/tree/main/demos/remote-mcp-cf-access) to your Cloudflare account:
 
-* [ Dashboard ](#tab-panel-5023)
-* [ CLI ](#tab-panel-5024)
+* [ Dashboard ](#tab-panel-6459)
+* [ CLI ](#tab-panel-6460)
 
 1. Select the following button to launch the quickstart flow:  
 [![Deploy to Workers](https://deploy.workers.cloudflare.com/button)](https://deploy.workers.cloudflare.com/?url=https://github.com/cloudflare/ai/tree/main/demos/remote-mcp-cf-access)
@@ -243,8 +243,8 @@ The Worker will be deployed to your `*.workers.dev` subdomain at `mcp-server-cf-
 
 ### 2\. Create an Access for SaaS app
 
-* [ Dashboard ](#tab-panel-5031)
-* [ API ](#tab-panel-5032)
+* [ Dashboard ](#tab-panel-6467)
+* [ API ](#tab-panel-6468)
 
 1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** \> **Access controls** \> **Applications**.
 2. Select **Create new application**.
@@ -312,8 +312,8 @@ Your MCP server needs to perform an OAuth 2.0 authorization flow to get an `acce
 
 To add OAuth endpoints and credentials to our [example MCP server](#1-deploy-an-example-mcp-server-1):
 
-* [ Dashboard ](#tab-panel-5027)
-* [ CLI ](#tab-panel-5028)
+* [ Dashboard ](#tab-panel-6463)
+* [ CLI ](#tab-panel-6464)
 
 1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to the **Workers & Pages** page.  
 [ Go to **Workers & Pages** ](https://dash.cloudflare.com/?to=/:account/workers-and-pages)
@@ -368,7 +368,7 @@ npx wrangler secret put COOKIE_ENCRYPTION_KEY
 
 ### 4\. Test the connection
 
-You can now connect to your MCP server at `https://mcp-server-cf-access.<YOUR_SUBDOMAIN>.workers.dev/mcp` using [Workers AI Playground ↗](https://playground.ai.cloudflare.com/), [MCP inspector ↗](https://github.com/modelcontextprotocol/inspector), or [other MCP clients](https://developers.cloudflare.com/agents/guides/remote-mcp-server/#connect-your-mcp-server-to-claude-and-other-mcp-clients) that support remote MCP servers.
+You can now connect to your MCP server at `https://mcp-server-cf-access.<YOUR_SUBDOMAIN>.workers.dev/mcp` using [Workers AI Playground ↗](https://playground.ai.cloudflare.com/), [MCP inspector ↗](https://github.com/modelcontextprotocol/inspector), or [other MCP clients](https://developers.cloudflare.com/agents/model-context-protocol/guides/remote-mcp-server/#connect-your-mcp-server-to-claude-and-other-mcp-clients) that support remote MCP servers.
 
 To test in Workers AI Playground:
 

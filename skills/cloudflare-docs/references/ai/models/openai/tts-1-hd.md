@@ -14,7 +14,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 #  TTS-1 HD 
 
-Text-to-Speech • OpenAI • Proxied 
+Text-to-Speech • OpenAI 
 
 `openai/tts-1-hd` 
 

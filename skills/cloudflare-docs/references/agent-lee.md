@@ -110,19 +110,19 @@ Agent Lee is entirely optional. If you do not open the Ask AI panel, none of you
 
 Agent Lee is built on Cloudflare's own developer platform using the same primitives available to any Cloudflare developer.
 
-| Component                                                                                      | Role                                                  |
-| ---------------------------------------------------------------------------------------------- | ----------------------------------------------------- |
-| [Agents SDK](https://developers.cloudflare.com/agents/)                                        | Agent lifecycle, state management, and scheduling     |
-| [Durable Objects](https://developers.cloudflare.com/durable-objects/)                          | Per-user conversation storage and write approval gate |
-| [Workers AI](https://developers.cloudflare.com/workers-ai/)                                    | LLM inference                                         |
-| [Cloudflare MCP server](https://developers.cloudflare.com/agents/api-reference/mcp-agent-api/) | Tool definitions for Cloudflare API operations        |
+| Component                                                                                                | Role                                                  |
+| -------------------------------------------------------------------------------------------------------- | ----------------------------------------------------- |
+| [Agents SDK](https://developers.cloudflare.com/agents/)                                                  | Agent lifecycle, state management, and scheduling     |
+| [Durable Objects](https://developers.cloudflare.com/durable-objects/)                                    | Per-user conversation storage and write approval gate |
+| [Workers AI](https://developers.cloudflare.com/workers-ai/)                                              | LLM inference                                         |
+| [Cloudflare MCP server](https://developers.cloudflare.com/agents/model-context-protocol/apis/agent-api/) | Tool definitions for Cloudflare API operations        |
 
 ---
 
 ## Related resources
 
 * [Agents SDK](https://developers.cloudflare.com/agents/)
-* [Human in the Loop](https://developers.cloudflare.com/agents/concepts/human-in-the-loop/)
+* [Human in the Loop](https://developers.cloudflare.com/agents/concepts/agentic-patterns/human-in-the-loop/)
 * [Workers AI](https://developers.cloudflare.com/workers-ai/)
 * [Blog post: Introducing Agent Lee ↗](https://blog.cloudflare.com/introducing-agent-lee)
 

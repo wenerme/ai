@@ -3876,6 +3876,14 @@ as input for the model's response.
 
     - `"gpt-5.1-codex-max"`
 
+- `moderation: optional object { model }`
+
+  Configuration for running moderation on the input and output of this response.
+
+  - `model: string`
+
+    The moderation model to use for moderated completions, e.g. 'omni-moderation-latest'.
+
 - `parallel_tool_calls: optional boolean`
 
   Whether to allow the model to run tool calls in parallel.
@@ -5089,7 +5097,7 @@ as input for the model's response.
 
 ### Returns
 
-- `Response object { id, created_at, error, 30 more }`
+- `Response object { id, created_at, error, 31 more }`
 
   - `id: string`
 
@@ -12614,6 +12622,122 @@ as input for the model's response.
 
     The maximum number of total calls to built-in tools that can be processed in a response. This maximum number applies across all built-in tool calls, not per individual tool. Any further attempts to call a tool by the model will be ignored.
 
+  - `moderation: optional object { input, output }`
+
+    Moderation results for the response input and output, if moderated completions were requested.
+
+    - `input: object { categories, category_applied_input_types, category_scores, 3 more }  or object { code, message, type }`
+
+      Moderation for the response input.
+
+      - `ModerationResult object { categories, category_applied_input_types, category_scores, 3 more }`
+
+        A moderation result produced for the response input or output.
+
+        - `categories: map[boolean]`
+
+          A dictionary of moderation categories to booleans, True if the input is flagged under this category.
+
+        - `category_applied_input_types: map[array of "text" or "image"]`
+
+          Which modalities of input are reflected by the score for each category.
+
+          - `"text"`
+
+          - `"image"`
+
+        - `category_scores: map[number]`
+
+          A dictionary of moderation categories to scores.
+
+        - `flagged: boolean`
+
+          A boolean indicating whether the content was flagged by any category.
+
+        - `model: string`
+
+          The moderation model that produced this result.
+
+        - `type: "moderation_result"`
+
+          The object type, which was always `moderation_result` for successful moderation results.
+
+          - `"moderation_result"`
+
+      - `Error object { code, message, type }`
+
+        An error produced while attempting moderation for the response input or output.
+
+        - `code: string`
+
+          The error code.
+
+        - `message: string`
+
+          The error message.
+
+        - `type: "error"`
+
+          The object type, which was always `error` for moderation failures.
+
+          - `"error"`
+
+    - `output: object { categories, category_applied_input_types, category_scores, 3 more }  or object { code, message, type }`
+
+      Moderation for the response output.
+
+      - `ModerationResult object { categories, category_applied_input_types, category_scores, 3 more }`
+
+        A moderation result produced for the response input or output.
+
+        - `categories: map[boolean]`
+
+          A dictionary of moderation categories to booleans, True if the input is flagged under this category.
+
+        - `category_applied_input_types: map[array of "text" or "image"]`
+
+          Which modalities of input are reflected by the score for each category.
+
+          - `"text"`
+
+          - `"image"`
+
+        - `category_scores: map[number]`
+
+          A dictionary of moderation categories to scores.
+
+        - `flagged: boolean`
+
+          A boolean indicating whether the content was flagged by any category.
+
+        - `model: string`
+
+          The moderation model that produced this result.
+
+        - `type: "moderation_result"`
+
+          The object type, which was always `moderation_result` for successful moderation results.
+
+          - `"moderation_result"`
+
+      - `Error object { code, message, type }`
+
+        An error produced while attempting moderation for the response input or output.
+
+        - `code: string`
+
+          The error code.
+
+        - `message: string`
+
+          The error message.
+
+        - `type: "error"`
+
+          The object type, which was always `error` for moderation failures.
+
+          - `"error"`
+
   - `output_text: optional string`
 
     SDK-only convenience property that contains the aggregated text output
@@ -13033,6 +13157,40 @@ curl https://api.openai.com/v1/responses \
   },
   "max_output_tokens": 0,
   "max_tool_calls": 0,
+  "moderation": {
+    "input": {
+      "categories": {
+        "foo": true
+      },
+      "category_applied_input_types": {
+        "foo": [
+          "text"
+        ]
+      },
+      "category_scores": {
+        "foo": 0
+      },
+      "flagged": true,
+      "model": "model",
+      "type": "moderation_result"
+    },
+    "output": {
+      "categories": {
+        "foo": true
+      },
+      "category_applied_input_types": {
+        "foo": [
+          "text"
+        ]
+      },
+      "category_scores": {
+        "foo": 0
+      },
+      "flagged": true,
+      "model": "model",
+      "type": "moderation_result"
+    }
+  },
   "output_text": "output_text",
   "previous_response_id": "previous_response_id",
   "prompt": {

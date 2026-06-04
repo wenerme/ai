@@ -14,7 +14,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 #  mistral-7b-instruct-v0.1 
 
-Text Generation • MistralAI • Hosted 
+Text Generation • MistralAI 
 
 `@cf/mistral/mistral-7b-instruct-v0.1` 
 
@@ -22,7 +22,7 @@ Instruct fine-tuned version of the Mistral-7b generative text model with 7 billi
 
 | Model Info                                                                 |                                                          |
 | -------------------------------------------------------------------------- | -------------------------------------------------------- |
-| Planned Deprecation                                                        | 5/30/2026                                                |
+| Deprecated                                                                 | 5/30/2026                                                |
 | Context Window[ ↗](https://developers.cloudflare.com/workers-ai/glossary/) | 2,824 tokens                                             |
 | More information                                                           | [link ↗](https://mistral.ai/news/announcing-mistral-7b/) |
 | LoRA                                                                       | Yes                                                      |
@@ -36,10 +36,10 @@ Try out this model with Workers AI LLM Playground. It does not require any setup
 
 ## Usage
 
-* [  Worker (Streaming) ](#tab-panel-2997)
-* [  TypeScript ](#tab-panel-2998)
-* [  Python ](#tab-panel-2999)
-* [  curl ](#tab-panel-3000)
+* [  Worker (Streaming) ](#tab-panel-4447)
+* [  TypeScript ](#tab-panel-4448)
+* [  Python ](#tab-panel-4449)
+* [  curl ](#tab-panel-4450)
 
 TypeScript
 

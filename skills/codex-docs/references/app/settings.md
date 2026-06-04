@@ -6,9 +6,9 @@ press <kbd>Cmd</kbd>+<kbd>,</kbd>.
 
 ## General
 
-Choose where files open and how much command output appears in threads. You can also
-require <kbd>Cmd</kbd>+<kbd>Enter</kbd> for multiline prompts or prevent sleep while a
-thread runs.
+Choose where files open, how much command output appears in threads, and where
+terminal tabs open by default. You can also require <kbd>Cmd</kbd>+<kbd>Enter</kbd>
+for multiline prompts or prevent sleep while a thread runs.
 
 ## Profile
 

@@ -4,6 +4,12 @@
 
 You can start from templates, drag and drop nodes for each step in your workflow, provide typed inputs and outputs, and preview runs using live data. When you're ready to deploy, embed the workflow into your site with ChatKit, or download the SDK code to run it yourself.
 
+OpenAI is deprecating Agent Builder. Existing users can continue using it
+  during the transition window, and the product is scheduled to shut down on
+  November 30, 2026. ChatKit remains available. See the [deprecations
+  page](https://developers.openai.com/api/docs/deprecations#2026-06-03-agent-builder) for the current
+  timeline.
+
 Use this guide to learn the process and parts of building agents.
 
 ## Agents and workflows

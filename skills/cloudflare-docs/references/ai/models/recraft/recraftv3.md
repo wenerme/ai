@@ -14,7 +14,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 #  Recraft V3 
 
-Text-to-Image • Recraft • Proxied 
+Text-to-Image • Recraft 
 
 `recraft/recraftv3` 
 
@@ -28,8 +28,8 @@ Recraft V3 is the previous-generation text-to-image model from Recraft, well-sui
 
 ## Usage
 
-* [ TypeScript ](#tab-panel-1204)
-* [ cURL ](#tab-panel-1205)
+* [ TypeScript ](#tab-panel-1240)
+* [ cURL ](#tab-panel-1241)
 
 TypeScript
 
@@ -73,8 +73,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 ```
 
-* [ Output ](#tab-panel-1202)
-* [ Raw response ](#tab-panel-1203)
+* [ Output ](#tab-panel-1238)
+* [ Raw response ](#tab-panel-1239)
 
 ![Simple Generation](https://examples.aig.cloudflare.com/recraft/recraftv3/simple-generation.png) 
 
@@ -105,8 +105,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 **Scene Composition**  — Generate a complex compositional scene 
 
-* [ TypeScript ](#tab-panel-1208)
-* [ cURL ](#tab-panel-1209)
+* [ TypeScript ](#tab-panel-1244)
+* [ cURL ](#tab-panel-1245)
 
 TypeScript
 
@@ -154,8 +154,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 ```
 
-* [ Output ](#tab-panel-1206)
-* [ Raw response ](#tab-panel-1207)
+* [ Output ](#tab-panel-1242)
+* [ Raw response ](#tab-panel-1243)
 
 ![Scene Composition](https://examples.aig.cloudflare.com/recraft/recraftv3/scene-composition.png) 
 
@@ -184,8 +184,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 **Custom Size**  — Specify output dimensions 
 
-* [ TypeScript ](#tab-panel-1212)
-* [ cURL ](#tab-panel-1213)
+* [ TypeScript ](#tab-panel-1248)
+* [ cURL ](#tab-panel-1249)
 
 TypeScript
 
@@ -237,8 +237,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 ```
 
-* [ Output ](#tab-panel-1210)
-* [ Raw response ](#tab-panel-1211)
+* [ Output ](#tab-panel-1246)
+* [ Raw response ](#tab-panel-1247)
 
 ![Custom Size](https://examples.aig.cloudflare.com/recraft/recraftv3/custom-size.png) 
 
@@ -267,8 +267,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 **With Color Controls**  — Guide generation with specific brand colors 
 
-* [ TypeScript ](#tab-panel-1220)
-* [ cURL ](#tab-panel-1221)
+* [ TypeScript ](#tab-panel-1256)
+* [ cURL ](#tab-panel-1257)
 
 TypeScript
 
@@ -280,9 +280,9 @@ const response = await env.AI.run(
 
   {
 
-    controls: { colors: [{ rgb: [255, 107, 53] }, { rgb: [0, 43, 91] }] },
-
     prompt: 'An abstract geometric pattern suitable for a tech company brand identity',
+
+    controls: { colors: [{ rgb: [255, 107, 53] }, { rgb: [0, 43, 91] }] },
 
   },
 
@@ -308,6 +308,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
   "model": "recraft/recraftv3",
 
   "input": {
+
+    "prompt": "An abstract geometric pattern suitable for a tech company brand identity",
 
     "controls": {
 
@@ -343,9 +345,7 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
       ]
 
-    },
-
-    "prompt": "An abstract geometric pattern suitable for a tech company brand identity"
+    }
 
   }
 
@@ -354,8 +354,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 ```
 
-* [ Output ](#tab-panel-1214)
-* [ Raw response ](#tab-panel-1215)
+* [ Output ](#tab-panel-1250)
+* [ Raw response ](#tab-panel-1251)
 
 ![With Color Controls](https://examples.aig.cloudflare.com/recraft/recraftv3/with-color-controls.png) 
 
@@ -384,8 +384,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 **Background Color**  — Set a specific background color 
 
-* [ TypeScript ](#tab-panel-1218)
-* [ cURL ](#tab-panel-1219)
+* [ TypeScript ](#tab-panel-1254)
+* [ cURL ](#tab-panel-1255)
 
 TypeScript
 
@@ -397,9 +397,9 @@ const response = await env.AI.run(
 
   {
 
-    controls: { background_color: { rgb: [245, 245, 245] } },
-
     prompt: 'A clean icon of a lightning bolt',
+
+    controls: { background_color: { rgb: [245, 245, 245] } },
 
     size: '1024x1024',
 
@@ -428,6 +428,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
   "input": {
 
+    "prompt": "A clean icon of a lightning bolt",
+
     "controls": {
 
       "background_color": {
@@ -446,8 +448,6 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
     },
 
-    "prompt": "A clean icon of a lightning bolt",
-
     "size": "1024x1024"
 
   }
@@ -457,8 +457,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 ```
 
-* [ Output ](#tab-panel-1216)
-* [ Raw response ](#tab-panel-1217)
+* [ Output ](#tab-panel-1252)
+* [ Raw response ](#tab-panel-1253)
 
 ![Background Color](https://examples.aig.cloudflare.com/recraft/recraftv3/background-color.png) 
 
@@ -487,8 +487,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 ## Parameters
 
-* [ Input ](#tab-panel-1222)
-* [ Output ](#tab-panel-1223)
+* [ Input ](#tab-panel-1258)
+* [ Output ](#tab-panel-1259)
 
 ▶controls{}
 

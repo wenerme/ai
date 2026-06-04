@@ -14,7 +14,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 #  MiniMax Hailuo 2.3 
 
-Text-to-Video • MiniMax • Proxied 
+Text-to-Video • MiniMax 
 
 `minimax/hailuo-2.3` 
 
@@ -28,8 +28,8 @@ A high-fidelity video generation model optimized for realistic human motion, cin
 
 ## Usage
 
-* [ TypeScript ](#tab-panel-738)
-* [ cURL ](#tab-panel-739)
+* [ TypeScript ](#tab-panel-756)
+* [ cURL ](#tab-panel-757)
 
 TypeScript
 
@@ -41,11 +41,11 @@ const response = await env.AI.run(
 
   {
 
+    prompt: 'A golden retriever playing fetch on a sandy beach at sunset',
+
     duration: 6,
 
     fast_pretreatment: false,
-
-    prompt: 'A golden retriever playing fetch on a sandy beach at sunset',
 
     prompt_optimizer: true,
 
@@ -76,11 +76,11 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
   "input": {
 
+    "prompt": "A golden retriever playing fetch on a sandy beach at sunset",
+
     "duration": 6,
 
     "fast_pretreatment": false,
-
-    "prompt": "A golden retriever playing fetch on a sandy beach at sunset",
 
     "prompt_optimizer": true,
 
@@ -93,8 +93,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 ```
 
-* [ Output ](#tab-panel-736)
-* [ Raw response ](#tab-panel-737)
+* [ Output ](#tab-panel-754)
+* [ Raw response ](#tab-panel-755)
 
 ```
 
@@ -127,8 +127,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 **High Resolution**  — 1080P video for higher quality output 
 
-* [ TypeScript ](#tab-panel-742)
-* [ cURL ](#tab-panel-743)
+* [ TypeScript ](#tab-panel-760)
+* [ cURL ](#tab-panel-761)
 
 TypeScript
 
@@ -140,13 +140,13 @@ const response = await env.AI.run(
 
   {
 
-    duration: 6,
-
-    fast_pretreatment: false,
-
     prompt:
 
       'A professional chef preparing sushi in a traditional Japanese kitchen, detailed close-up shots',
+
+    duration: 6,
+
+    fast_pretreatment: false,
 
     prompt_optimizer: true,
 
@@ -177,11 +177,11 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
   "input": {
 
+    "prompt": "A professional chef preparing sushi in a traditional Japanese kitchen, detailed close-up shots",
+
     "duration": 6,
 
     "fast_pretreatment": false,
-
-    "prompt": "A professional chef preparing sushi in a traditional Japanese kitchen, detailed close-up shots",
 
     "prompt_optimizer": true,
 
@@ -194,8 +194,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 ```
 
-* [ Output ](#tab-panel-740)
-* [ Raw response ](#tab-panel-741)
+* [ Output ](#tab-panel-758)
+* [ Raw response ](#tab-panel-759)
 
 ```
 
@@ -226,8 +226,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 **Image to Video**  — Animate a still image with I2V 
 
-* [ TypeScript ](#tab-panel-748)
-* [ cURL ](#tab-panel-749)
+* [ TypeScript ](#tab-panel-766)
+* [ cURL ](#tab-panel-767)
 
 TypeScript
 
@@ -239,6 +239,8 @@ const response = await env.AI.run(
 
   {
 
+    prompt: 'Slowly zoom in with subtle parallax movement, gentle atmospheric motion',
+
     duration: 6,
 
     fast_pretreatment: false,
@@ -246,8 +248,6 @@ const response = await env.AI.run(
     first_frame_image:
 
       'https://replicate.delivery/xezq/MQpUhqkESIIQDlWUxtNcsznZLfUTmhEbCV3vdAZGHGPwwaMLA/tmpgl4gvv5n.jpeg',
-
-    prompt: 'Slowly zoom in with subtle parallax movement, gentle atmospheric motion',
 
     prompt_optimizer: true,
 
@@ -278,13 +278,13 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
   "input": {
 
+    "prompt": "Slowly zoom in with subtle parallax movement, gentle atmospheric motion",
+
     "duration": 6,
 
     "fast_pretreatment": false,
 
     "first_frame_image": "https://replicate.delivery/xezq/MQpUhqkESIIQDlWUxtNcsznZLfUTmhEbCV3vdAZGHGPwwaMLA/tmpgl4gvv5n.jpeg",
-
-    "prompt": "Slowly zoom in with subtle parallax movement, gentle atmospheric motion",
 
     "prompt_optimizer": true,
 
@@ -297,8 +297,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 ```
 
-* [ Output ](#tab-panel-744)
-* [ Raw response ](#tab-panel-745)
+* [ Output ](#tab-panel-762)
+* [ Raw response ](#tab-panel-763)
 
 ```
 
@@ -329,8 +329,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 **Fast Processing**  — Enable fast pretreatment for quicker results 
 
-* [ TypeScript ](#tab-panel-750)
-* [ cURL ](#tab-panel-751)
+* [ TypeScript ](#tab-panel-768)
+* [ cURL ](#tab-panel-769)
 
 TypeScript
 
@@ -342,11 +342,11 @@ const response = await env.AI.run(
 
   {
 
+    prompt: 'Fireworks exploding over a city skyline at night, colorful reflections on water',
+
     duration: 6,
 
     fast_pretreatment: true,
-
-    prompt: 'Fireworks exploding over a city skyline at night, colorful reflections on water',
 
     prompt_optimizer: true,
 
@@ -377,11 +377,11 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
   "input": {
 
+    "prompt": "Fireworks exploding over a city skyline at night, colorful reflections on water",
+
     "duration": 6,
 
     "fast_pretreatment": true,
-
-    "prompt": "Fireworks exploding over a city skyline at night, colorful reflections on water",
 
     "prompt_optimizer": true,
 
@@ -394,8 +394,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 ```
 
-* [ Output ](#tab-panel-746)
-* [ Raw response ](#tab-panel-747)
+* [ Output ](#tab-panel-764)
+* [ Raw response ](#tab-panel-765)
 
 ```
 
@@ -426,8 +426,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 ## Parameters
 
-* [ Input ](#tab-panel-752)
-* [ Output ](#tab-panel-753)
+* [ Input ](#tab-panel-770)
+* [ Output ](#tab-panel-771)
 
 ▶duration
 

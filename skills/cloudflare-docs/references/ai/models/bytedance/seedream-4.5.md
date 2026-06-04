@@ -14,7 +14,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 #  Seedream 4.5 
 
-Text-to-Image • ByteDance • Proxied 
+Text-to-Image • ByteDance 
 
 `bytedance/seedream-4.5` 
 
@@ -27,8 +27,8 @@ Seedream 4.5 builds on 4.0 with multi-reference image support, batch generation,
 
 ## Usage
 
-* [ TypeScript ](#tab-panel-356)
-* [ cURL ](#tab-panel-357)
+* [ TypeScript ](#tab-panel-374)
+* [ cURL ](#tab-panel-375)
 
 TypeScript
 
@@ -72,8 +72,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 ```
 
-* [ Output ](#tab-panel-358)
-* [ Raw response ](#tab-panel-359)
+* [ Output ](#tab-panel-376)
+* [ Raw response ](#tab-panel-377)
 
 ![Simple Generation](https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/bytedance__seedream-4.5/simple-generation-0.jpeg) 
 
@@ -108,8 +108,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 **High Resolution**  — 4K quality image generation 
 
-* [ TypeScript ](#tab-panel-362)
-* [ cURL ](#tab-panel-363)
+* [ TypeScript ](#tab-panel-380)
+* [ cURL ](#tab-panel-381)
 
 TypeScript
 
@@ -121,11 +121,11 @@ const response = await env.AI.run(
 
   {
 
-    aspect_ratio: '4:3',
-
     prompt:
 
       'A hyperrealistic still life painting of fresh fruit on an antique wooden table with dramatic chiaroscuro lighting',
+
+    aspect_ratio: '4:3',
 
     size: '4K',
 
@@ -154,9 +154,9 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
   "input": {
 
-    "aspect_ratio": "4:3",
-
     "prompt": "A hyperrealistic still life painting of fresh fruit on an antique wooden table with dramatic chiaroscuro lighting",
+
+    "aspect_ratio": "4:3",
 
     "size": "4K"
 
@@ -167,8 +167,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 ```
 
-* [ Output ](#tab-panel-360)
-* [ Raw response ](#tab-panel-361)
+* [ Output ](#tab-panel-378)
+* [ Raw response ](#tab-panel-379)
 
 ![High Resolution](https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/bytedance__seedream-4.5/high-resolution-0.jpeg) 
 
@@ -201,8 +201,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 **Image-to-Image**  — Edit using reference images 
 
-* [ TypeScript ](#tab-panel-366)
-* [ cURL ](#tab-panel-367)
+* [ TypeScript ](#tab-panel-384)
+* [ cURL ](#tab-panel-385)
 
 TypeScript
 
@@ -214,6 +214,8 @@ const response = await env.AI.run(
 
   {
 
+    prompt: 'Transform this scene into a winter wonderland with snow covering everything',
+
     aspect_ratio: 'match_input_image',
 
     image_input: [
@@ -221,8 +223,6 @@ const response = await env.AI.run(
       'https://replicate.delivery/xezq/0lxxNQSg3NabCZrDiQVAPGVmjP1Q2dd7TgYCOTfI9LpyZaMLA/tmp89gopylq.jpg',
 
     ],
-
-    prompt: 'Transform this scene into a winter wonderland with snow covering everything',
 
   },
 
@@ -249,15 +249,15 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
   "input": {
 
+    "prompt": "Transform this scene into a winter wonderland with snow covering everything",
+
     "aspect_ratio": "match_input_image",
 
     "image_input": [
 
       "https://replicate.delivery/xezq/0lxxNQSg3NabCZrDiQVAPGVmjP1Q2dd7TgYCOTfI9LpyZaMLA/tmp89gopylq.jpg"
 
-    ],
-
-    "prompt": "Transform this scene into a winter wonderland with snow covering everything"
+    ]
 
   }
 
@@ -266,8 +266,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 ```
 
-* [ Output ](#tab-panel-364)
-* [ Raw response ](#tab-panel-365)
+* [ Output ](#tab-panel-382)
+* [ Raw response ](#tab-panel-383)
 
 ![Image-to-Image](https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/bytedance__seedream-4.5/image-to-image-0.jpeg) 
 
@@ -300,8 +300,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 **Sequential Generation**  — Generate multiple related images 
 
-* [ TypeScript ](#tab-panel-370)
-* [ cURL ](#tab-panel-371)
+* [ TypeScript ](#tab-panel-388)
+* [ cURL ](#tab-panel-389)
 
 TypeScript
 
@@ -313,11 +313,11 @@ const response = await env.AI.run(
 
   {
 
+    prompt: 'A character design sheet for a fantasy warrior: front view, side view, and back view',
+
     aspect_ratio: '16:9',
 
     max_images: 3,
-
-    prompt: 'A character design sheet for a fantasy warrior: front view, side view, and back view',
 
     sequential_image_generation: 'auto',
 
@@ -346,11 +346,11 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
   "input": {
 
+    "prompt": "A character design sheet for a fantasy warrior: front view, side view, and back view",
+
     "aspect_ratio": "16:9",
 
     "max_images": 3,
-
-    "prompt": "A character design sheet for a fantasy warrior: front view, side view, and back view",
 
     "sequential_image_generation": "auto"
 
@@ -361,8 +361,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 ```
 
-* [ Output ](#tab-panel-368)
-* [ Raw response ](#tab-panel-369)
+* [ Output ](#tab-panel-386)
+* [ Raw response ](#tab-panel-387)
 
 ![Sequential Generation](https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/bytedance__seedream-4.5/sequential-generation-0.jpeg) 
 
@@ -395,8 +395,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 **Multi-Image Edit**  — Combine multiple reference images 
 
-* [ TypeScript ](#tab-panel-374)
-* [ cURL ](#tab-panel-375)
+* [ TypeScript ](#tab-panel-392)
+* [ cURL ](#tab-panel-393)
 
 TypeScript
 
@@ -408,6 +408,8 @@ const response = await env.AI.run(
 
   {
 
+    prompt: 'Combine the style of the first image with the subject from the second image',
+
     image_input: [
 
       'https://replicate.delivery/xezq/TRYcLgNMrBpPJVq09ICKXWe4Z8d6olzpK5vtQPOB8O23ZaMLA/tmpaecga26m.jpg',
@@ -415,8 +417,6 @@ const response = await env.AI.run(
       'https://replicate.delivery/xezq/1SbAc0aXYXbVD9doyrdCW78hYufVefMsaJXBrETN7Lu2npxsA/tmphvkx7emy.jpg',
 
     ],
-
-    prompt: 'Combine the style of the first image with the subject from the second image',
 
     size: '2K',
 
@@ -445,6 +445,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
   "input": {
 
+    "prompt": "Combine the style of the first image with the subject from the second image",
+
     "image_input": [
 
       "https://replicate.delivery/xezq/TRYcLgNMrBpPJVq09ICKXWe4Z8d6olzpK5vtQPOB8O23ZaMLA/tmpaecga26m.jpg",
@@ -452,8 +454,6 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
       "https://replicate.delivery/xezq/1SbAc0aXYXbVD9doyrdCW78hYufVefMsaJXBrETN7Lu2npxsA/tmphvkx7emy.jpg"
 
     ],
-
-    "prompt": "Combine the style of the first image with the subject from the second image",
 
     "size": "2K"
 
@@ -464,8 +464,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 ```
 
-* [ Output ](#tab-panel-372)
-* [ Raw response ](#tab-panel-373)
+* [ Output ](#tab-panel-390)
+* [ Raw response ](#tab-panel-391)
 
 ![Multi-Image Edit](https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/bytedance__seedream-4.5/multi-image-edit-0.jpeg) 
 
@@ -498,8 +498,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 ## Parameters
 
-* [ Input ](#tab-panel-376)
-* [ Output ](#tab-panel-377)
+* [ Input ](#tab-panel-394)
+* [ Output ](#tab-panel-395)
 
 aspect\_ratio
 

@@ -294,7 +294,7 @@ curl "https://api.openai.com/v1/responses" \\
     -H "Content-Type: application/json" \\
     -H "Authorization: Bearer $OPENAI_API_KEY" \\
     -d '{
-        "model": "gpt-5",
+        "model": "gpt-5.5",
         "input": [
             {
                 "role": "user",
@@ -323,7 +323,7 @@ const data = fs.readFileSync("draconomicon.pdf");
 const base64String = data.toString("base64");
 
 const response = await client.responses.create({
-    model: "gpt-5",
+    model: "gpt-5.5",
     input: [
         {
             role: "user",
@@ -356,7 +356,7 @@ with open("draconomicon.pdf", "rb") as f:
 base64_string = base64.b64encode(data).decode("utf-8")
 
 response = client.responses.create(
-    model="gpt-5",
+    model="gpt-5.5",
     input=[
         {
             "role": "user",

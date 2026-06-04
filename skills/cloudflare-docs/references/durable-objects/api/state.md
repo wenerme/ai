@@ -18,9 +18,9 @@ The `DurableObjectState` interface is accessible as an instance property on the 
 
 The `DurableObjectState` interface is different from the Storage API in that it does not have top-level methods which manipulate persistent application data. These methods are instead encapsulated in the [DurableObjectStorage](https://developers.cloudflare.com/durable-objects/api/sqlite-storage-api/) interface and accessed by [DurableObjectState::storage](https://developers.cloudflare.com/durable-objects/api/state/#storage).
 
-* [  JavaScript ](#tab-panel-5691)
-* [  TypeScript ](#tab-panel-5692)
-* [  Python ](#tab-panel-5693)
+* [  JavaScript ](#tab-panel-7559)
+* [  TypeScript ](#tab-panel-7560)
+* [  Python ](#tab-panel-7561)
 
 JavaScript
 
@@ -111,11 +111,11 @@ Contains loopback bindings to the Worker's own top-level exports. This has exact
 
 ### `waitUntil`
 
-`waitUntil` waits until the promise which is passed as a parameter resolves, and can extend a request context even after the last client disconnects. Refer to [Lifecycle of a Durable Object](https://developers.cloudflare.com/durable-objects/concepts/durable-object-lifecycle/) for more information.
+`waitUntil` is available on `DurableObjectState` for API compatibility with [Workers Runtime APIs](https://developers.cloudflare.com/workers/runtime-apis/context/#waituntil).
 
 `waitUntil` has no effect in Durable Objects
 
-Unlike in Workers, `waitUntil` has no effect in Durable Objects. It exists only for API compatibility with the [Workers Runtime APIs](https://developers.cloudflare.com/workers/runtime-apis/context/#waituntil).
+Unlike in Workers, `waitUntil` has no effect in Durable Objects. It does not extend the lifetime of a Durable Object or affect when a request or RPC completes.
 
 Durable Objects automatically remain active as long as there is ongoing work or pending I/O, so `waitUntil` is not needed. Refer to [Lifecycle of a Durable Object](https://developers.cloudflare.com/durable-objects/concepts/durable-object-lifecycle/) for more information.
 
@@ -146,8 +146,8 @@ For regular request handling, you rarely need `blockConcurrencyWhile`. SQLite st
 
 Reserve `blockConcurrencyWhile` outside the constructor for cases where you make external async calls (such as `fetch()`) and cannot tolerate state changes while the event loop yields.
 
-* [  JavaScript ](#tab-panel-5694)
-* [  Python ](#tab-panel-5695)
+* [  JavaScript ](#tab-panel-7562)
+* [  Python ](#tab-panel-7563)
 
 JavaScript
 
@@ -351,8 +351,8 @@ If no parameter or a parameter of `0` is provided and a timeout has been previou
 
 `abort` is used to forcibly reset a Durable Object. A JavaScript `Error` with the message passed as a parameter will be logged. This error is not able to be caught within the application code.
 
-* [  TypeScript ](#tab-panel-5696)
-* [  Python ](#tab-panel-5697)
+* [  TypeScript ](#tab-panel-7564)
+* [  Python ](#tab-panel-7565)
 
 JavaScript
 

@@ -14,7 +14,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 #  nova-3 
 
-Automatic Speech Recognition • Deepgram • Hosted 
+Automatic Speech Recognition • Deepgram 
 
 `@cf/deepgram/nova-3` 
 
@@ -58,8 +58,8 @@ If no language is specified, the model defaults to `en-US`. For best accuracy, e
 
 ## Usage
 
-* [  TypeScript ](#tab-panel-2767)
-* [  curl ](#tab-panel-2768)
+* [  TypeScript ](#tab-panel-4467)
+* [  curl ](#tab-panel-4468)
 
 ```
 
@@ -110,8 +110,8 @@ curl --request POST   --url 'https://api.cloudflare.com/client/v4/accounts/{ACCO
 
 ## Parameters
 
-* [ Input ](#tab-panel-2769)
-* [ Output ](#tab-panel-2770)
+* [ Input ](#tab-panel-4469)
+* [ Output ](#tab-panel-4470)
 
 ▶audio{}
 

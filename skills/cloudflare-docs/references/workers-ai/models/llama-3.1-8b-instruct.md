@@ -14,7 +14,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 #  llama-3.1-8b-instruct 
 
-Text Generation • Meta • Hosted 
+Text Generation • Meta 
 
 `@cf/meta/llama-3.1-8b-instruct` 
 
@@ -22,7 +22,7 @@ The Meta Llama 3.1 collection of multilingual large language models (LLMs) is a 
 
 | Model Info                                                                 |                                                                                          |
 | -------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------- |
-| Planned Deprecation                                                        | 5/30/2026                                                                                |
+| Deprecated                                                                 | 5/30/2026                                                                                |
 | Context Window[ ↗](https://developers.cloudflare.com/workers-ai/glossary/) | 7,968 tokens                                                                             |
 | Terms and License                                                          | [link ↗](https://github.com/meta-llama/llama-models/blob/main/models/llama3%5F1/LICENSE) |
 | Unit Pricing                                                               | $0.28 per M input tokens, $0.83 per M output tokens                                      |
@@ -35,10 +35,10 @@ Try out this model with Workers AI LLM Playground. It does not require any setup
 
 ## Usage
 
-* [  Worker (Streaming) ](#tab-panel-2925)
-* [  TypeScript ](#tab-panel-2926)
-* [  Python ](#tab-panel-2927)
-* [  curl ](#tab-panel-2928)
+* [  Worker (Streaming) ](#tab-panel-4375)
+* [  TypeScript ](#tab-panel-4376)
+* [  Python ](#tab-panel-4377)
+* [  curl ](#tab-panel-4378)
 
 TypeScript
 

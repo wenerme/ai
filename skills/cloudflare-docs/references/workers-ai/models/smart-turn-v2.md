@@ -14,7 +14,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 #  smart-turn-v2 
 
-Voice Activity Detection • Pipecat • Hosted 
+Voice Activity Detection • Pipecat 
 
 `@cf/pipecat-ai/smart-turn-v2` 
 
@@ -28,8 +28,8 @@ An open source, community-driven, native audio turn detection model in 2nd versi
 
 ## Parameters
 
-* [ Input ](#tab-panel-2835)
-* [ Output ](#tab-panel-2836)
+* [ Input ](#tab-panel-4511)
+* [ Output ](#tab-panel-4512)
 
 ▶Option 1{}
 

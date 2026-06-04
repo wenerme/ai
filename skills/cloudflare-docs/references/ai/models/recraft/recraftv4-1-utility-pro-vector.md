@@ -14,7 +14,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 #  Recraft V4.1 Utility Pro SVG 
 
-Text-to-Image • Recraft • Proxied 
+Text-to-Image • Recraft 
 
 `recraft/recraftv4-1-utility-pro-vector` 
 

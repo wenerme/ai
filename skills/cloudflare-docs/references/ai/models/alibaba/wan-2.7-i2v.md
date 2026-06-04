@@ -14,7 +14,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 #  Wan 2.7 I2V 
 
-Image-to-Video • Alibaba • Proxied 
+Image-to-Video • Alibaba 
 
 `alibaba/wan-2.7-i2v` 
 

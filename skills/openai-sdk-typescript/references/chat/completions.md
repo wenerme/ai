@@ -720,6 +720,14 @@ chunk objects if the request is streamed.
 
       - `"audio"`
 
+    - `moderation?: Moderation | null`
+
+      Configuration for running moderation on the request input and generated output.
+
+      - `model: string`
+
+        The moderation model to use for moderated completions, e.g. 'omni-moderation-latest'.
+
     - `n?: number | null`
 
       How many chat completion choices to generate for each input message. Note that you will be charged based on the number of generated tokens across all of the choices. Keep `n` as `1` to minimize costs.
@@ -1286,6 +1294,7 @@ chunk objects if the request is streamed.
       `length` if the maximum number of tokens specified in the request was reached,
       `content_filter` if content was omitted due to a flag from our content filters,
       `tool_calls` if the model called a tool, or `function_call` (deprecated) if the model called a function.
+      Read the [Model Spec](https://model-spec.openai.com/2025-12-18.html) for more.
 
       - `"stop"`
 
@@ -1512,6 +1521,151 @@ chunk objects if the request is streamed.
 
     - `"chat.completion"`
 
+  - `moderation?: Moderation | null`
+
+    Moderation results for the request input and generated output, if moderated
+    completions were requested.
+
+    - `input: ModerationResults | Error`
+
+      Moderation for the request input.
+
+      - `ModerationResults`
+
+        Successful moderation results for the request input or generated output.
+
+        - `model: string`
+
+          The moderation model used to generate the results.
+
+        - `results: Array<Result>`
+
+          A list of moderation results.
+
+          - `categories: Record<string, boolean>`
+
+            A dictionary of moderation categories to booleans, True if the input is flagged under this category.
+
+          - `category_applied_input_types: Record<string, Array<"text" | "image">>`
+
+            Which modalities of input are reflected by the score for each category.
+
+            - `"text"`
+
+            - `"image"`
+
+          - `category_scores: Record<string, number>`
+
+            A dictionary of moderation categories to scores.
+
+          - `flagged: boolean`
+
+            A boolean indicating whether the content was flagged by any category.
+
+          - `model: string`
+
+            The moderation model that produced this result.
+
+          - `type: "moderation_result"`
+
+            The object type, which was always `moderation_result` for successful moderation results.
+
+            - `"moderation_result"`
+
+        - `type: "moderation_results"`
+
+          The object type, which is always `moderation_results`.
+
+          - `"moderation_results"`
+
+      - `Error`
+
+        An error produced while attempting moderation.
+
+        - `code: string`
+
+          The error code.
+
+        - `message: string`
+
+          The error message.
+
+        - `type: "error"`
+
+          The object type, which is always `error`.
+
+          - `"error"`
+
+    - `output: ModerationResults | Error`
+
+      Moderation for the generated output.
+
+      - `ModerationResults`
+
+        Successful moderation results for the request input or generated output.
+
+        - `model: string`
+
+          The moderation model used to generate the results.
+
+        - `results: Array<Result>`
+
+          A list of moderation results.
+
+          - `categories: Record<string, boolean>`
+
+            A dictionary of moderation categories to booleans, True if the input is flagged under this category.
+
+          - `category_applied_input_types: Record<string, Array<"text" | "image">>`
+
+            Which modalities of input are reflected by the score for each category.
+
+            - `"text"`
+
+            - `"image"`
+
+          - `category_scores: Record<string, number>`
+
+            A dictionary of moderation categories to scores.
+
+          - `flagged: boolean`
+
+            A boolean indicating whether the content was flagged by any category.
+
+          - `model: string`
+
+            The moderation model that produced this result.
+
+          - `type: "moderation_result"`
+
+            The object type, which was always `moderation_result` for successful moderation results.
+
+            - `"moderation_result"`
+
+        - `type: "moderation_results"`
+
+          The object type, which is always `moderation_results`.
+
+          - `"moderation_results"`
+
+      - `Error`
+
+        An error produced while attempting moderation.
+
+        - `code: string`
+
+          The error code.
+
+        - `message: string`
+
+          The error message.
+
+        - `type: "error"`
+
+          The object type, which is always `error`.
+
+          - `"error"`
+
   - `service_tier?: "auto" | "default" | "flex" | 2 more | null`
 
     Specifies the processing type used for serving the request.
@@ -1697,6 +1851,52 @@ console.log(chatCompletion);
   "created": 0,
   "model": "model",
   "object": "chat.completion",
+  "moderation": {
+    "input": {
+      "model": "model",
+      "results": [
+        {
+          "categories": {
+            "foo": true
+          },
+          "category_applied_input_types": {
+            "foo": [
+              "text"
+            ]
+          },
+          "category_scores": {
+            "foo": 0
+          },
+          "flagged": true,
+          "model": "model",
+          "type": "moderation_result"
+        }
+      ],
+      "type": "moderation_results"
+    },
+    "output": {
+      "model": "model",
+      "results": [
+        {
+          "categories": {
+            "foo": true
+          },
+          "category_applied_input_types": {
+            "foo": [
+              "text"
+            ]
+          },
+          "category_scores": {
+            "foo": 0
+          },
+          "flagged": true,
+          "model": "model",
+          "type": "moderation_result"
+        }
+      ],
+      "type": "moderation_results"
+    }
+  },
   "service_tier": "auto",
   "system_fingerprint": "system_fingerprint",
   "usage": {
@@ -2243,6 +2443,7 @@ with the `store` parameter set to `true` will be returned.
       `length` if the maximum number of tokens specified in the request was reached,
       `content_filter` if content was omitted due to a flag from our content filters,
       `tool_calls` if the model called a tool, or `function_call` (deprecated) if the model called a function.
+      Read the [Model Spec](https://model-spec.openai.com/2025-12-18.html) for more.
 
       - `"stop"`
 
@@ -2468,6 +2669,151 @@ with the `store` parameter set to `true` will be returned.
     The object type, which is always `chat.completion`.
 
     - `"chat.completion"`
+
+  - `moderation?: Moderation | null`
+
+    Moderation results for the request input and generated output, if moderated
+    completions were requested.
+
+    - `input: ModerationResults | Error`
+
+      Moderation for the request input.
+
+      - `ModerationResults`
+
+        Successful moderation results for the request input or generated output.
+
+        - `model: string`
+
+          The moderation model used to generate the results.
+
+        - `results: Array<Result>`
+
+          A list of moderation results.
+
+          - `categories: Record<string, boolean>`
+
+            A dictionary of moderation categories to booleans, True if the input is flagged under this category.
+
+          - `category_applied_input_types: Record<string, Array<"text" | "image">>`
+
+            Which modalities of input are reflected by the score for each category.
+
+            - `"text"`
+
+            - `"image"`
+
+          - `category_scores: Record<string, number>`
+
+            A dictionary of moderation categories to scores.
+
+          - `flagged: boolean`
+
+            A boolean indicating whether the content was flagged by any category.
+
+          - `model: string`
+
+            The moderation model that produced this result.
+
+          - `type: "moderation_result"`
+
+            The object type, which was always `moderation_result` for successful moderation results.
+
+            - `"moderation_result"`
+
+        - `type: "moderation_results"`
+
+          The object type, which is always `moderation_results`.
+
+          - `"moderation_results"`
+
+      - `Error`
+
+        An error produced while attempting moderation.
+
+        - `code: string`
+
+          The error code.
+
+        - `message: string`
+
+          The error message.
+
+        - `type: "error"`
+
+          The object type, which is always `error`.
+
+          - `"error"`
+
+    - `output: ModerationResults | Error`
+
+      Moderation for the generated output.
+
+      - `ModerationResults`
+
+        Successful moderation results for the request input or generated output.
+
+        - `model: string`
+
+          The moderation model used to generate the results.
+
+        - `results: Array<Result>`
+
+          A list of moderation results.
+
+          - `categories: Record<string, boolean>`
+
+            A dictionary of moderation categories to booleans, True if the input is flagged under this category.
+
+          - `category_applied_input_types: Record<string, Array<"text" | "image">>`
+
+            Which modalities of input are reflected by the score for each category.
+
+            - `"text"`
+
+            - `"image"`
+
+          - `category_scores: Record<string, number>`
+
+            A dictionary of moderation categories to scores.
+
+          - `flagged: boolean`
+
+            A boolean indicating whether the content was flagged by any category.
+
+          - `model: string`
+
+            The moderation model that produced this result.
+
+          - `type: "moderation_result"`
+
+            The object type, which was always `moderation_result` for successful moderation results.
+
+            - `"moderation_result"`
+
+        - `type: "moderation_results"`
+
+          The object type, which is always `moderation_results`.
+
+          - `"moderation_results"`
+
+      - `Error`
+
+        An error produced while attempting moderation.
+
+        - `code: string`
+
+          The error code.
+
+        - `message: string`
+
+          The error message.
+
+        - `type: "error"`
+
+          The object type, which is always `error`.
+
+          - `"error"`
 
   - `service_tier?: "auto" | "default" | "flex" | 2 more | null`
 
@@ -2654,6 +3000,52 @@ for await (const chatCompletion of client.chat.completions.list()) {
       "created": 0,
       "model": "model",
       "object": "chat.completion",
+      "moderation": {
+        "input": {
+          "model": "model",
+          "results": [
+            {
+              "categories": {
+                "foo": true
+              },
+              "category_applied_input_types": {
+                "foo": [
+                  "text"
+                ]
+              },
+              "category_scores": {
+                "foo": 0
+              },
+              "flagged": true,
+              "model": "model",
+              "type": "moderation_result"
+            }
+          ],
+          "type": "moderation_results"
+        },
+        "output": {
+          "model": "model",
+          "results": [
+            {
+              "categories": {
+                "foo": true
+              },
+              "category_applied_input_types": {
+                "foo": [
+                  "text"
+                ]
+              },
+              "category_scores": {
+                "foo": 0
+              },
+              "flagged": true,
+              "model": "model",
+              "type": "moderation_result"
+            }
+          ],
+          "type": "moderation_results"
+        }
+      },
       "service_tier": "auto",
       "system_fingerprint": "system_fingerprint",
       "usage": {
@@ -2713,6 +3105,7 @@ with the `store` parameter set to `true` will be returned.
       `length` if the maximum number of tokens specified in the request was reached,
       `content_filter` if content was omitted due to a flag from our content filters,
       `tool_calls` if the model called a tool, or `function_call` (deprecated) if the model called a function.
+      Read the [Model Spec](https://model-spec.openai.com/2025-12-18.html) for more.
 
       - `"stop"`
 
@@ -2938,6 +3331,151 @@ with the `store` parameter set to `true` will be returned.
     The object type, which is always `chat.completion`.
 
     - `"chat.completion"`
+
+  - `moderation?: Moderation | null`
+
+    Moderation results for the request input and generated output, if moderated
+    completions were requested.
+
+    - `input: ModerationResults | Error`
+
+      Moderation for the request input.
+
+      - `ModerationResults`
+
+        Successful moderation results for the request input or generated output.
+
+        - `model: string`
+
+          The moderation model used to generate the results.
+
+        - `results: Array<Result>`
+
+          A list of moderation results.
+
+          - `categories: Record<string, boolean>`
+
+            A dictionary of moderation categories to booleans, True if the input is flagged under this category.
+
+          - `category_applied_input_types: Record<string, Array<"text" | "image">>`
+
+            Which modalities of input are reflected by the score for each category.
+
+            - `"text"`
+
+            - `"image"`
+
+          - `category_scores: Record<string, number>`
+
+            A dictionary of moderation categories to scores.
+
+          - `flagged: boolean`
+
+            A boolean indicating whether the content was flagged by any category.
+
+          - `model: string`
+
+            The moderation model that produced this result.
+
+          - `type: "moderation_result"`
+
+            The object type, which was always `moderation_result` for successful moderation results.
+
+            - `"moderation_result"`
+
+        - `type: "moderation_results"`
+
+          The object type, which is always `moderation_results`.
+
+          - `"moderation_results"`
+
+      - `Error`
+
+        An error produced while attempting moderation.
+
+        - `code: string`
+
+          The error code.
+
+        - `message: string`
+
+          The error message.
+
+        - `type: "error"`
+
+          The object type, which is always `error`.
+
+          - `"error"`
+
+    - `output: ModerationResults | Error`
+
+      Moderation for the generated output.
+
+      - `ModerationResults`
+
+        Successful moderation results for the request input or generated output.
+
+        - `model: string`
+
+          The moderation model used to generate the results.
+
+        - `results: Array<Result>`
+
+          A list of moderation results.
+
+          - `categories: Record<string, boolean>`
+
+            A dictionary of moderation categories to booleans, True if the input is flagged under this category.
+
+          - `category_applied_input_types: Record<string, Array<"text" | "image">>`
+
+            Which modalities of input are reflected by the score for each category.
+
+            - `"text"`
+
+            - `"image"`
+
+          - `category_scores: Record<string, number>`
+
+            A dictionary of moderation categories to scores.
+
+          - `flagged: boolean`
+
+            A boolean indicating whether the content was flagged by any category.
+
+          - `model: string`
+
+            The moderation model that produced this result.
+
+          - `type: "moderation_result"`
+
+            The object type, which was always `moderation_result` for successful moderation results.
+
+            - `"moderation_result"`
+
+        - `type: "moderation_results"`
+
+          The object type, which is always `moderation_results`.
+
+          - `"moderation_results"`
+
+      - `Error`
+
+        An error produced while attempting moderation.
+
+        - `code: string`
+
+          The error code.
+
+        - `message: string`
+
+          The error message.
+
+        - `type: "error"`
+
+          The object type, which is always `error`.
+
+          - `"error"`
 
   - `service_tier?: "auto" | "default" | "flex" | 2 more | null`
 
@@ -3121,6 +3659,52 @@ console.log(chatCompletion.id);
   "created": 0,
   "model": "model",
   "object": "chat.completion",
+  "moderation": {
+    "input": {
+      "model": "model",
+      "results": [
+        {
+          "categories": {
+            "foo": true
+          },
+          "category_applied_input_types": {
+            "foo": [
+              "text"
+            ]
+          },
+          "category_scores": {
+            "foo": 0
+          },
+          "flagged": true,
+          "model": "model",
+          "type": "moderation_result"
+        }
+      ],
+      "type": "moderation_results"
+    },
+    "output": {
+      "model": "model",
+      "results": [
+        {
+          "categories": {
+            "foo": true
+          },
+          "category_applied_input_types": {
+            "foo": [
+              "text"
+            ]
+          },
+          "category_scores": {
+            "foo": 0
+          },
+          "flagged": true,
+          "model": "model",
+          "type": "moderation_result"
+        }
+      ],
+      "type": "moderation_results"
+    }
+  },
   "service_tier": "auto",
   "system_fingerprint": "system_fingerprint",
   "usage": {
@@ -3186,6 +3770,7 @@ the only supported modification is to update the `metadata` field.
       `length` if the maximum number of tokens specified in the request was reached,
       `content_filter` if content was omitted due to a flag from our content filters,
       `tool_calls` if the model called a tool, or `function_call` (deprecated) if the model called a function.
+      Read the [Model Spec](https://model-spec.openai.com/2025-12-18.html) for more.
 
       - `"stop"`
 
@@ -3411,6 +3996,151 @@ the only supported modification is to update the `metadata` field.
     The object type, which is always `chat.completion`.
 
     - `"chat.completion"`
+
+  - `moderation?: Moderation | null`
+
+    Moderation results for the request input and generated output, if moderated
+    completions were requested.
+
+    - `input: ModerationResults | Error`
+
+      Moderation for the request input.
+
+      - `ModerationResults`
+
+        Successful moderation results for the request input or generated output.
+
+        - `model: string`
+
+          The moderation model used to generate the results.
+
+        - `results: Array<Result>`
+
+          A list of moderation results.
+
+          - `categories: Record<string, boolean>`
+
+            A dictionary of moderation categories to booleans, True if the input is flagged under this category.
+
+          - `category_applied_input_types: Record<string, Array<"text" | "image">>`
+
+            Which modalities of input are reflected by the score for each category.
+
+            - `"text"`
+
+            - `"image"`
+
+          - `category_scores: Record<string, number>`
+
+            A dictionary of moderation categories to scores.
+
+          - `flagged: boolean`
+
+            A boolean indicating whether the content was flagged by any category.
+
+          - `model: string`
+
+            The moderation model that produced this result.
+
+          - `type: "moderation_result"`
+
+            The object type, which was always `moderation_result` for successful moderation results.
+
+            - `"moderation_result"`
+
+        - `type: "moderation_results"`
+
+          The object type, which is always `moderation_results`.
+
+          - `"moderation_results"`
+
+      - `Error`
+
+        An error produced while attempting moderation.
+
+        - `code: string`
+
+          The error code.
+
+        - `message: string`
+
+          The error message.
+
+        - `type: "error"`
+
+          The object type, which is always `error`.
+
+          - `"error"`
+
+    - `output: ModerationResults | Error`
+
+      Moderation for the generated output.
+
+      - `ModerationResults`
+
+        Successful moderation results for the request input or generated output.
+
+        - `model: string`
+
+          The moderation model used to generate the results.
+
+        - `results: Array<Result>`
+
+          A list of moderation results.
+
+          - `categories: Record<string, boolean>`
+
+            A dictionary of moderation categories to booleans, True if the input is flagged under this category.
+
+          - `category_applied_input_types: Record<string, Array<"text" | "image">>`
+
+            Which modalities of input are reflected by the score for each category.
+
+            - `"text"`
+
+            - `"image"`
+
+          - `category_scores: Record<string, number>`
+
+            A dictionary of moderation categories to scores.
+
+          - `flagged: boolean`
+
+            A boolean indicating whether the content was flagged by any category.
+
+          - `model: string`
+
+            The moderation model that produced this result.
+
+          - `type: "moderation_result"`
+
+            The object type, which was always `moderation_result` for successful moderation results.
+
+            - `"moderation_result"`
+
+        - `type: "moderation_results"`
+
+          The object type, which is always `moderation_results`.
+
+          - `"moderation_results"`
+
+      - `Error`
+
+        An error produced while attempting moderation.
+
+        - `code: string`
+
+          The error code.
+
+        - `message: string`
+
+          The error message.
+
+        - `type: "error"`
+
+          The object type, which is always `error`.
+
+          - `"error"`
 
   - `service_tier?: "auto" | "default" | "flex" | 2 more | null`
 
@@ -3596,6 +4326,52 @@ console.log(chatCompletion.id);
   "created": 0,
   "model": "model",
   "object": "chat.completion",
+  "moderation": {
+    "input": {
+      "model": "model",
+      "results": [
+        {
+          "categories": {
+            "foo": true
+          },
+          "category_applied_input_types": {
+            "foo": [
+              "text"
+            ]
+          },
+          "category_scores": {
+            "foo": 0
+          },
+          "flagged": true,
+          "model": "model",
+          "type": "moderation_result"
+        }
+      ],
+      "type": "moderation_results"
+    },
+    "output": {
+      "model": "model",
+      "results": [
+        {
+          "categories": {
+            "foo": true
+          },
+          "category_applied_input_types": {
+            "foo": [
+              "text"
+            ]
+          },
+          "category_scores": {
+            "foo": 0
+          },
+          "flagged": true,
+          "model": "model",
+          "type": "moderation_result"
+        }
+      ],
+      "type": "moderation_results"
+    }
+  },
   "service_tier": "auto",
   "system_fingerprint": "system_fingerprint",
   "usage": {
@@ -3693,6 +4469,7 @@ console.log(chatCompletionDeleted.id);
       `length` if the maximum number of tokens specified in the request was reached,
       `content_filter` if content was omitted due to a flag from our content filters,
       `tool_calls` if the model called a tool, or `function_call` (deprecated) if the model called a function.
+      Read the [Model Spec](https://model-spec.openai.com/2025-12-18.html) for more.
 
       - `"stop"`
 
@@ -3918,6 +4695,151 @@ console.log(chatCompletionDeleted.id);
     The object type, which is always `chat.completion`.
 
     - `"chat.completion"`
+
+  - `moderation?: Moderation | null`
+
+    Moderation results for the request input and generated output, if moderated
+    completions were requested.
+
+    - `input: ModerationResults | Error`
+
+      Moderation for the request input.
+
+      - `ModerationResults`
+
+        Successful moderation results for the request input or generated output.
+
+        - `model: string`
+
+          The moderation model used to generate the results.
+
+        - `results: Array<Result>`
+
+          A list of moderation results.
+
+          - `categories: Record<string, boolean>`
+
+            A dictionary of moderation categories to booleans, True if the input is flagged under this category.
+
+          - `category_applied_input_types: Record<string, Array<"text" | "image">>`
+
+            Which modalities of input are reflected by the score for each category.
+
+            - `"text"`
+
+            - `"image"`
+
+          - `category_scores: Record<string, number>`
+
+            A dictionary of moderation categories to scores.
+
+          - `flagged: boolean`
+
+            A boolean indicating whether the content was flagged by any category.
+
+          - `model: string`
+
+            The moderation model that produced this result.
+
+          - `type: "moderation_result"`
+
+            The object type, which was always `moderation_result` for successful moderation results.
+
+            - `"moderation_result"`
+
+        - `type: "moderation_results"`
+
+          The object type, which is always `moderation_results`.
+
+          - `"moderation_results"`
+
+      - `Error`
+
+        An error produced while attempting moderation.
+
+        - `code: string`
+
+          The error code.
+
+        - `message: string`
+
+          The error message.
+
+        - `type: "error"`
+
+          The object type, which is always `error`.
+
+          - `"error"`
+
+    - `output: ModerationResults | Error`
+
+      Moderation for the generated output.
+
+      - `ModerationResults`
+
+        Successful moderation results for the request input or generated output.
+
+        - `model: string`
+
+          The moderation model used to generate the results.
+
+        - `results: Array<Result>`
+
+          A list of moderation results.
+
+          - `categories: Record<string, boolean>`
+
+            A dictionary of moderation categories to booleans, True if the input is flagged under this category.
+
+          - `category_applied_input_types: Record<string, Array<"text" | "image">>`
+
+            Which modalities of input are reflected by the score for each category.
+
+            - `"text"`
+
+            - `"image"`
+
+          - `category_scores: Record<string, number>`
+
+            A dictionary of moderation categories to scores.
+
+          - `flagged: boolean`
+
+            A boolean indicating whether the content was flagged by any category.
+
+          - `model: string`
+
+            The moderation model that produced this result.
+
+          - `type: "moderation_result"`
+
+            The object type, which was always `moderation_result` for successful moderation results.
+
+            - `"moderation_result"`
+
+        - `type: "moderation_results"`
+
+          The object type, which is always `moderation_results`.
+
+          - `"moderation_results"`
+
+      - `Error`
+
+        An error produced while attempting moderation.
+
+        - `code: string`
+
+          The error code.
+
+        - `message: string`
+
+          The error message.
+
+        - `type: "error"`
+
+          The object type, which is always `error`.
+
+          - `"error"`
 
   - `service_tier?: "auto" | "default" | "flex" | 2 more | null`
 
@@ -4430,6 +5352,151 @@ console.log(chatCompletionDeleted.id);
     The object type, which is always `chat.completion.chunk`.
 
     - `"chat.completion.chunk"`
+
+  - `moderation?: Moderation | null`
+
+    Moderation results for the request input and generated output. Present
+    on the moderation chunk when moderated completions are requested.
+
+    - `input: ModerationResults | Error`
+
+      Moderation for the request input.
+
+      - `ModerationResults`
+
+        Successful moderation results for the request input or generated output.
+
+        - `model: string`
+
+          The moderation model used to generate the results.
+
+        - `results: Array<Result>`
+
+          A list of moderation results.
+
+          - `categories: Record<string, boolean>`
+
+            A dictionary of moderation categories to booleans, True if the input is flagged under this category.
+
+          - `category_applied_input_types: Record<string, Array<"text" | "image">>`
+
+            Which modalities of input are reflected by the score for each category.
+
+            - `"text"`
+
+            - `"image"`
+
+          - `category_scores: Record<string, number>`
+
+            A dictionary of moderation categories to scores.
+
+          - `flagged: boolean`
+
+            A boolean indicating whether the content was flagged by any category.
+
+          - `model: string`
+
+            The moderation model that produced this result.
+
+          - `type: "moderation_result"`
+
+            The object type, which was always `moderation_result` for successful moderation results.
+
+            - `"moderation_result"`
+
+        - `type: "moderation_results"`
+
+          The object type, which is always `moderation_results`.
+
+          - `"moderation_results"`
+
+      - `Error`
+
+        An error produced while attempting moderation.
+
+        - `code: string`
+
+          The error code.
+
+        - `message: string`
+
+          The error message.
+
+        - `type: "error"`
+
+          The object type, which is always `error`.
+
+          - `"error"`
+
+    - `output: ModerationResults | Error`
+
+      Moderation for the generated output.
+
+      - `ModerationResults`
+
+        Successful moderation results for the request input or generated output.
+
+        - `model: string`
+
+          The moderation model used to generate the results.
+
+        - `results: Array<Result>`
+
+          A list of moderation results.
+
+          - `categories: Record<string, boolean>`
+
+            A dictionary of moderation categories to booleans, True if the input is flagged under this category.
+
+          - `category_applied_input_types: Record<string, Array<"text" | "image">>`
+
+            Which modalities of input are reflected by the score for each category.
+
+            - `"text"`
+
+            - `"image"`
+
+          - `category_scores: Record<string, number>`
+
+            A dictionary of moderation categories to scores.
+
+          - `flagged: boolean`
+
+            A boolean indicating whether the content was flagged by any category.
+
+          - `model: string`
+
+            The moderation model that produced this result.
+
+          - `type: "moderation_result"`
+
+            The object type, which was always `moderation_result` for successful moderation results.
+
+            - `"moderation_result"`
+
+        - `type: "moderation_results"`
+
+          The object type, which is always `moderation_results`.
+
+          - `"moderation_results"`
+
+      - `Error`
+
+        An error produced while attempting moderation.
+
+        - `code: string`
+
+          The error code.
+
+        - `message: string`
+
+          The error message.
+
+        - `type: "error"`
+
+          The object type, which is always `error`.
+
+          - `"error"`
 
   - `service_tier?: "auto" | "default" | "flex" | 2 more | null`
 

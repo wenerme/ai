@@ -14,7 +14,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 #  stable-diffusion-v1-5-img2img Beta 
 
-Text-to-Image • RunwayML • Hosted 
+Text-to-Image • RunwayML 
 
 `@cf/runwayml/stable-diffusion-v1-5-img2img` 
 
@@ -29,8 +29,8 @@ Stable Diffusion is a latent text-to-image diffusion model capable of generating
 
 ## Usage
 
-* [  TypeScript ](#tab-panel-2841)
-* [  curl ](#tab-panel-2842)
+* [  TypeScript ](#tab-panel-4517)
+* [  curl ](#tab-panel-4518)
 
 ```
 
@@ -107,8 +107,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 ## Parameters
 
-* [ Input ](#tab-panel-2843)
-* [ Output ](#tab-panel-2844)
+* [ Input ](#tab-panel-4519)
+* [ Output ](#tab-panel-4520)
 
 prompt
 

@@ -14,7 +14,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 #  Veo 3.1 Fast 
 
-Text-to-Video • Google • Proxied 
+Text-to-Video • Google 
 
 `google/veo-3.1-fast` 
 
@@ -28,8 +28,8 @@ A faster version of Veo 3.1 optimized for lower latency while maintaining high-q
 
 ## Usage
 
-* [ TypeScript ](#tab-panel-668)
-* [ cURL ](#tab-panel-669)
+* [ TypeScript ](#tab-panel-686)
+* [ cURL ](#tab-panel-687)
 
 TypeScript
 
@@ -41,13 +41,13 @@ const response = await env.AI.run(
 
   {
 
+    prompt: 'A butterfly landing on a colorful flower in a garden',
+
     aspect_ratio: '16:9',
 
     duration: '6s',
 
     generate_audio: true,
-
-    prompt: 'A butterfly landing on a colorful flower in a garden',
 
     resolution: '720p',
 
@@ -76,13 +76,13 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
   "input": {
 
+    "prompt": "A butterfly landing on a colorful flower in a garden",
+
     "aspect_ratio": "16:9",
 
     "duration": "6s",
 
     "generate_audio": true,
-
-    "prompt": "A butterfly landing on a colorful flower in a garden",
 
     "resolution": "720p"
 
@@ -93,8 +93,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 ```
 
-* [ Output ](#tab-panel-664)
-* [ Raw response ](#tab-panel-665)
+* [ Output ](#tab-panel-682)
+* [ Raw response ](#tab-panel-683)
 
 ```
 
@@ -123,8 +123,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 **Social Content**  — Quick vertical video for social media 
 
-* [ TypeScript ](#tab-panel-672)
-* [ cURL ](#tab-panel-673)
+* [ TypeScript ](#tab-panel-690)
+* [ cURL ](#tab-panel-691)
 
 TypeScript
 
@@ -136,13 +136,13 @@ const response = await env.AI.run(
 
   {
 
+    prompt: 'Aesthetic morning routine: sun rays through curtains, coffee being poured',
+
     aspect_ratio: '9:16',
 
     duration: '6s',
 
     generate_audio: true,
-
-    prompt: 'Aesthetic morning routine: sun rays through curtains, coffee being poured',
 
     resolution: '720p',
 
@@ -171,13 +171,13 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
   "input": {
 
+    "prompt": "Aesthetic morning routine: sun rays through curtains, coffee being poured",
+
     "aspect_ratio": "9:16",
 
     "duration": "6s",
 
     "generate_audio": true,
-
-    "prompt": "Aesthetic morning routine: sun rays through curtains, coffee being poured",
 
     "resolution": "720p"
 
@@ -188,8 +188,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 ```
 
-* [ Output ](#tab-panel-666)
-* [ Raw response ](#tab-panel-667)
+* [ Output ](#tab-panel-684)
+* [ Raw response ](#tab-panel-685)
 
 ```
 
@@ -216,8 +216,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 **Motion Graphics**  — Quick animated graphics 
 
-* [ TypeScript ](#tab-panel-676)
-* [ cURL ](#tab-panel-677)
+* [ TypeScript ](#tab-panel-694)
+* [ cURL ](#tab-panel-695)
 
 TypeScript
 
@@ -229,13 +229,13 @@ const response = await env.AI.run(
 
   {
 
+    prompt: 'Glowing neon lines forming geometric patterns on a dark background',
+
     aspect_ratio: '16:9',
 
     duration: '4s',
 
     generate_audio: false,
-
-    prompt: 'Glowing neon lines forming geometric patterns on a dark background',
 
     resolution: '720p',
 
@@ -264,13 +264,13 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
   "input": {
 
+    "prompt": "Glowing neon lines forming geometric patterns on a dark background",
+
     "aspect_ratio": "16:9",
 
     "duration": "4s",
 
     "generate_audio": false,
-
-    "prompt": "Glowing neon lines forming geometric patterns on a dark background",
 
     "resolution": "720p"
 
@@ -281,8 +281,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 ```
 
-* [ Output ](#tab-panel-670)
-* [ Raw response ](#tab-panel-671)
+* [ Output ](#tab-panel-688)
+* [ Raw response ](#tab-panel-689)
 
 ```
 
@@ -309,8 +309,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 **Ambient Scene**  — Relaxing background video 
 
-* [ TypeScript ](#tab-panel-678)
-* [ cURL ](#tab-panel-679)
+* [ TypeScript ](#tab-panel-696)
+* [ cURL ](#tab-panel-697)
 
 TypeScript
 
@@ -322,13 +322,13 @@ const response = await env.AI.run(
 
   {
 
+    prompt: 'Rain falling on a window with a blurred city skyline in the background at night',
+
     aspect_ratio: '16:9',
 
     duration: '8s',
 
     generate_audio: true,
-
-    prompt: 'Rain falling on a window with a blurred city skyline in the background at night',
 
     resolution: '720p',
 
@@ -357,13 +357,13 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
   "input": {
 
+    "prompt": "Rain falling on a window with a blurred city skyline in the background at night",
+
     "aspect_ratio": "16:9",
 
     "duration": "8s",
 
     "generate_audio": true,
-
-    "prompt": "Rain falling on a window with a blurred city skyline in the background at night",
 
     "resolution": "720p"
 
@@ -374,8 +374,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 ```
 
-* [ Output ](#tab-panel-674)
-* [ Raw response ](#tab-panel-675)
+* [ Output ](#tab-panel-692)
+* [ Raw response ](#tab-panel-693)
 
 ```
 
@@ -402,8 +402,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 ## Parameters
 
-* [ Input ](#tab-panel-680)
-* [ Output ](#tab-panel-681)
+* [ Input ](#tab-panel-698)
+* [ Output ](#tab-panel-699)
 
 aspect\_ratio
 

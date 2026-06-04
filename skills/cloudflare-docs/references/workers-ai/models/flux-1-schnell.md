@@ -14,7 +14,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 #  flux-1-schnell 
 
-Text-to-Image • Black Forest Labs • Hosted 
+Text-to-Image • Black Forest Labs 
 
 `@cf/black-forest-labs/flux-1-schnell` 
 
@@ -27,9 +27,9 @@ FLUX.1 \[schnell\] is a 12 billion parameter rectified flow transformer capable 
 
 ## Usage
 
-* [  Worker (Data URI) ](#tab-panel-2527)
-* [  Worker (Image) ](#tab-panel-2528)
-* [  curl ](#tab-panel-2529)
+* [  Worker (Data URI) ](#tab-panel-4243)
+* [  Worker (Image) ](#tab-panel-4244)
+* [  curl ](#tab-panel-4245)
 
 TypeScript
 
@@ -132,8 +132,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 ## Parameters
 
-* [ Input ](#tab-panel-2530)
-* [ Output ](#tab-panel-2531)
+* [ Input ](#tab-panel-4246)
+* [ Output ](#tab-panel-4247)
 
 prompt
 

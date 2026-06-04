@@ -102,6 +102,32 @@ This release introduces the new Cloudflare One Client UI for Windows! You can ex
 
 ## 2026-05-28
 
+[ Access ](https://developers.cloudflare.com/cloudflare-one/access-controls/policies/) 
+
+  
+**Tool and prompt aliases for MCP server portals**   
+
+When you connect third-party MCP servers through [MCP server portals](https://developers.cloudflare.com/cloudflare-one/access-controls/ai-controls/mcp-portals/), you have no control over how the server author named tools or wrote descriptions. Unclear names make it harder for AI agents to select the right tool and harder for users to understand what is available.
+
+You can now [rename tools and prompts](https://developers.cloudflare.com/cloudflare-one/access-controls/ai-controls/mcp-portals/#rename-tools-and-prompts-with-aliases) and rewrite their descriptions directly on the portal, without modifying the upstream server. For example, a tool named `super_cool_tool` can become `search_customer_records` with a description tailored to your organization.
+
+![Edit tool modal showing name and description fields for an MCP server tool](https://developers.cloudflare.com/_astro/portal-edit-tool-modal.DrxORhBl_Z1NtRnj.webp) 
+
+Modified tools display a **Modified** label in the tools list so administrators can see which tools have been customized at a glance.
+
+![Tools authorized list showing a modified label on a renamed tool](https://developers.cloudflare.com/_astro/portal-tools-authorized-modified.B674Xvip_12xxcK.webp) 
+
+Aliases override the metadata that MCP clients receive. You can set them at two levels:
+
+* **Per portal**: Applies only within a specific portal. Takes precedence over server-level aliases.
+* **Per server**: Applies across all portals that use the server.
+
+You can reset an alias at any time to restore the original upstream name.
+
+For more information, refer to [Tool and prompt aliases](https://developers.cloudflare.com/cloudflare-one/access-controls/ai-controls/mcp-portals/#rename-tools-and-prompts-with-aliases).
+
+## 2026-05-28
+
 [ Cloudflare Mesh ](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-mesh/)[ Cloudflare One ](https://developers.cloudflare.com/cloudflare-one/) 
 
   
@@ -1347,7 +1373,7 @@ For more information, refer to [Access authentication logs](https://developers.c
   
 **Code mode for MCP server portals**   
 
-[MCP server portals](https://developers.cloudflare.com/cloudflare-one/access-controls/ai-controls/mcp-portals/) support [code mode](https://developers.cloudflare.com/agents/api-reference/codemode/), a technique that reduces context window usage by replacing individual tool definitions with a single code execution tool. Code mode is turned on by default on all portals.
+[MCP server portals](https://developers.cloudflare.com/cloudflare-one/access-controls/ai-controls/mcp-portals/) support [code mode](https://developers.cloudflare.com/agents/model-context-protocol/protocol/codemode/), a technique that reduces context window usage by replacing individual tool definitions with a single code execution tool. Code mode is turned on by default on all portals.
 
 To turn it off, edit the portal in **Access controls** \> **AI controls** and turn off **Code mode** under **Basic information**.
 
@@ -4695,8 +4721,8 @@ Zero Trust Dashboard will automatically accept your user-level preferences for s
 
 ![Zero Trust dashboard supports dark mode](https://developers.cloudflare.com/_astro/dark-mode.DfLeS20d_Z2kTwNR.webp) 
 
-* [ Zero Trust Dashboard ](#tab-panel-6490)
-* [ Core Dashboard ](#tab-panel-6491)
+* [ Zero Trust Dashboard ](#tab-panel-6542)
+* [ Core Dashboard ](#tab-panel-6543)
 
 To update your view preference in the Zero Trust dashboard:
 

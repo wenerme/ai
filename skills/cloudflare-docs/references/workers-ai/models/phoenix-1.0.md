@@ -14,7 +14,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 #  phoenix-1.0 
 
-Text-to-Image • Leonardo • Hosted 
+Text-to-Image • Leonardo 
 
 `@cf/leonardo/phoenix-1.0` 
 
@@ -28,8 +28,8 @@ Phoenix 1.0 is a model by Leonardo.Ai that generates images with exceptional pro
 
 ## Usage
 
-* [  TypeScript ](#tab-panel-2783)
-* [  curl ](#tab-panel-2784)
+* [  TypeScript ](#tab-panel-4475)
+* [  curl ](#tab-panel-4476)
 
 ```
 
@@ -95,8 +95,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 ## Parameters
 
-* [ Input ](#tab-panel-2785)
-* [ Output ](#tab-panel-2786)
+* [ Input ](#tab-panel-4477)
+* [ Output ](#tab-panel-4478)
 
 prompt
 

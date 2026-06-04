@@ -14,7 +14,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 #  Vidu Q3 Turbo 
 
-Text-to-Video • Vidu • Proxied 
+Text-to-Video • Vidu 
 
 `vidu/q3-turbo` 
 
@@ -28,8 +28,8 @@ Vidu Q3 Turbo is a faster version of Vidu Q3 optimized for lower latency video g
 
 ## Usage
 
-* [ TypeScript ](#tab-panel-1350)
-* [ cURL ](#tab-panel-1351)
+* [ TypeScript ](#tab-panel-1538)
+* [ cURL ](#tab-panel-1539)
 
 TypeScript
 
@@ -39,7 +39,7 @@ const response = await env.AI.run(
 
   'vidu/q3-turbo',
 
-  { duration: 5, prompt: 'A cat lazily stretching on a sunlit windowsill', resolution: '720p' },
+  { prompt: 'A cat lazily stretching on a sunlit windowsill', duration: 5, resolution: '720p' },
 
 )
 
@@ -64,9 +64,9 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
   "input": {
 
-    "duration": 5,
-
     "prompt": "A cat lazily stretching on a sunlit windowsill",
+
+    "duration": 5,
 
     "resolution": "720p"
 
@@ -77,8 +77,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 ```
 
-* [ Output ](#tab-panel-1348)
-* [ Raw response ](#tab-panel-1349)
+* [ Output ](#tab-panel-1536)
+* [ Raw response ](#tab-panel-1537)
 
 ```
 
@@ -107,8 +107,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 **High Resolution**  — Generate at 1080p 
 
-* [ TypeScript ](#tab-panel-1354)
-* [ cURL ](#tab-panel-1355)
+* [ TypeScript ](#tab-panel-1542)
+* [ cURL ](#tab-panel-1543)
 
 TypeScript
 
@@ -120,11 +120,11 @@ const response = await env.AI.run(
 
   {
 
-    duration: 5,
-
     prompt:
 
       'Close-up of a hummingbird feeding from a vibrant red flower, slow motion with soft bokeh background',
+
+    duration: 5,
 
     resolution: '1080p',
 
@@ -153,9 +153,9 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
   "input": {
 
-    "duration": 5,
-
     "prompt": "Close-up of a hummingbird feeding from a vibrant red flower, slow motion with soft bokeh background",
+
+    "duration": 5,
 
     "resolution": "1080p"
 
@@ -166,8 +166,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 ```
 
-* [ Output ](#tab-panel-1352)
-* [ Raw response ](#tab-panel-1353)
+* [ Output ](#tab-panel-1540)
+* [ Raw response ](#tab-panel-1541)
 
 ```
 
@@ -194,8 +194,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 **Portrait Video**  — Vertical video for mobile viewing 
 
-* [ TypeScript ](#tab-panel-1360)
-* [ cURL ](#tab-panel-1361)
+* [ TypeScript ](#tab-panel-1548)
+* [ cURL ](#tab-panel-1549)
 
 TypeScript
 
@@ -207,11 +207,11 @@ const response = await env.AI.run(
 
   {
 
+    prompt: 'A waterfall cascading down mossy rocks in a tropical jungle, mist rising',
+
     aspect_ratio: '9:16',
 
     duration: 5,
-
-    prompt: 'A waterfall cascading down mossy rocks in a tropical jungle, mist rising',
 
     resolution: '720p',
 
@@ -240,11 +240,11 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
   "input": {
 
+    "prompt": "A waterfall cascading down mossy rocks in a tropical jungle, mist rising",
+
     "aspect_ratio": "9:16",
 
     "duration": 5,
-
-    "prompt": "A waterfall cascading down mossy rocks in a tropical jungle, mist rising",
 
     "resolution": "720p"
 
@@ -255,8 +255,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 ```
 
-* [ Output ](#tab-panel-1356)
-* [ Raw response ](#tab-panel-1357)
+* [ Output ](#tab-panel-1544)
+* [ Raw response ](#tab-panel-1545)
 
 ```
 
@@ -283,8 +283,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 **Extended Duration**  — Longer video clip 
 
-* [ TypeScript ](#tab-panel-1362)
-* [ cURL ](#tab-panel-1363)
+* [ TypeScript ](#tab-panel-1550)
+* [ cURL ](#tab-panel-1551)
 
 TypeScript
 
@@ -296,11 +296,11 @@ const response = await env.AI.run(
 
   {
 
-    duration: 16,
-
     prompt:
 
       'Timelapse of clouds rolling over a mountain peak from sunrise to sunset, dramatic lighting',
+
+    duration: 16,
 
     resolution: '720p',
 
@@ -329,9 +329,9 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
   "input": {
 
-    "duration": 16,
-
     "prompt": "Timelapse of clouds rolling over a mountain peak from sunrise to sunset, dramatic lighting",
+
+    "duration": 16,
 
     "resolution": "720p"
 
@@ -342,8 +342,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 ```
 
-* [ Output ](#tab-panel-1358)
-* [ Raw response ](#tab-panel-1359)
+* [ Output ](#tab-panel-1546)
+* [ Raw response ](#tab-panel-1547)
 
 ```
 
@@ -370,8 +370,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 **Low Resolution Fast Preview**  — Quick preview at 540p 
 
-* [ TypeScript ](#tab-panel-1366)
-* [ cURL ](#tab-panel-1367)
+* [ TypeScript ](#tab-panel-1554)
+* [ cURL ](#tab-panel-1555)
 
 TypeScript
 
@@ -383,9 +383,9 @@ const response = await env.AI.run(
 
   {
 
-    duration: 3,
-
     prompt: 'A sailboat gliding across calm ocean waters at sunset',
+
+    duration: 3,
 
     resolution: '540p',
 
@@ -414,9 +414,9 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
   "input": {
 
-    "duration": 3,
-
     "prompt": "A sailboat gliding across calm ocean waters at sunset",
+
+    "duration": 3,
 
     "resolution": "540p"
 
@@ -427,8 +427,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 ```
 
-* [ Output ](#tab-panel-1364)
-* [ Raw response ](#tab-panel-1365)
+* [ Output ](#tab-panel-1552)
+* [ Raw response ](#tab-panel-1553)
 
 ```
 
@@ -455,8 +455,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 ## Parameters
 
-* [ Input ](#tab-panel-1368)
-* [ Output ](#tab-panel-1369)
+* [ Input ](#tab-panel-1556)
+* [ Output ](#tab-panel-1557)
 
 aspect\_ratio
 

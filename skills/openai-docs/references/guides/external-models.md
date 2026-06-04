@@ -4,6 +4,13 @@ Model selection is an important lever that enables builders to improve their AI 
 
 We support accessing **third-party models** (no API key required) and accessing **custom endpoints** (API key required).
 
+OpenAI is deprecating the Evals platform. Existing evals content remains
+  available during the transition window. Evals will become read-only for
+  existing users on October 31, 2026, and the platform is scheduled to shut down
+  on November 30, 2026. See the [deprecations
+  page](https://developers.openai.com/api/docs/deprecations#2026-06-03-evals-platform) for the current
+  timeline.
+
 ## Third-party models
 
 In order to use third-party models, the following must be true:
@@ -72,7 +79,7 @@ For more inspiration, visit the [OpenAI Cookbook](https://developers.openai.com/
 
 <span slot="icon">
       </span>
-    Uses Datasets to quickly build evals and interate on prompts.
+    Uses Datasets to quickly build evals and iterate on prompts.
 
 
 </a>

@@ -14,7 +14,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 #  dreamshaper-8-lcm 
 
-Text-to-Image • lykon • Hosted 
+Text-to-Image • lykon 
 
 `@cf/lykon/dreamshaper-8-lcm` 
 
@@ -26,8 +26,8 @@ Stable Diffusion model that has been fine-tuned to be better at photorealism wit
 
 ## Usage
 
-* [  TypeScript ](#tab-panel-2512)
-* [  curl ](#tab-panel-2513)
+* [  TypeScript ](#tab-panel-4232)
+* [  curl ](#tab-panel-4233)
 
 ```
 
@@ -93,8 +93,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 ## Parameters
 
-* [ Input ](#tab-panel-2514)
-* [ Output ](#tab-panel-2515)
+* [ Input ](#tab-panel-4234)
+* [ Output ](#tab-panel-4235)
 
 prompt
 

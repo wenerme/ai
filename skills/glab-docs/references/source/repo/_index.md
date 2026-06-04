@@ -36,6 +36,7 @@ project
 - [`list`](list.md)
 - [`members`](members/_index.md)
 - [`mirror`](mirror.md)
+- [`prune`](prune.md)
 - [`publish`](publish/_index.md)
 - [`remote`](remote/_index.md)
 - [`search`](search.md)

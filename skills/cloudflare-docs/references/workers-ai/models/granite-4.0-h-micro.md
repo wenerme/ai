@@ -14,7 +14,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 #  granite-4.0-h-micro 
 
-Text Generation • IBM • Hosted 
+Text Generation • IBM 
 
 `@cf/ibm-granite/granite-4.0-h-micro` 
 
@@ -34,10 +34,10 @@ Try out this model with Workers AI LLM Playground. It does not require any setup
 
 ## Usage
 
-* [  Worker (Streaming) ](#tab-panel-2602)
-* [  TypeScript ](#tab-panel-2603)
-* [  Python ](#tab-panel-2604)
-* [  curl ](#tab-panel-2605)
+* [  Worker (Streaming) ](#tab-panel-4318)
+* [  TypeScript ](#tab-panel-4319)
+* [  Python ](#tab-panel-4320)
+* [  curl ](#tab-panel-4321)
 
 TypeScript
 

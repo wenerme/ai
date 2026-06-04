@@ -14,7 +14,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 #  gpt-oss-20b 
 
-Text Generation • OpenAI • Hosted 
+Text Generation • OpenAI 
 
 `@cf/openai/gpt-oss-20b` 
 
@@ -29,9 +29,9 @@ OpenAI's open-weight models designed for powerful reasoning, agentic tasks, and 
 
 ## Usage
 
-* [  TypeScript ](#tab-panel-2593)
-* [  Python ](#tab-panel-2594)
-* [  curl ](#tab-panel-2595)
+* [  TypeScript ](#tab-panel-4309)
+* [  Python ](#tab-panel-4310)
+* [  curl ](#tab-panel-4311)
 
 ```
 
@@ -120,8 +120,8 @@ This model supports three different API formats:
 
 Synchronous — Send a request and receive a complete response 
 
-* [ Input ](#tab-panel-2596)
-* [ Output ](#tab-panel-2597)
+* [ Input ](#tab-panel-4312)
+* [ Output ](#tab-panel-4313)
 
 Input format
 
@@ -199,8 +199,8 @@ response
 
 Streaming — Send a request with \`stream: true\` and receive server-sent events 
 
-* [ Input ](#tab-panel-2598)
-* [ Output ](#tab-panel-2599)
+* [ Input ](#tab-panel-4314)
+* [ Output ](#tab-panel-4315)
 
 Input format
 
@@ -286,8 +286,8 @@ format
 
 Batch — Send multiple requests in a single API call 
 
-* [ Input ](#tab-panel-2600)
-* [ Output ](#tab-panel-2601)
+* [ Input ](#tab-panel-4316)
+* [ Output ](#tab-panel-4317)
 
 ▶requests\[\]
 

@@ -14,6 +14,32 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 Templates are GitHub repositories that are designed to be a starting point for building a new Cloudflare Workers project. To start any of the projects below, run:
 
+### ai-brand-visibility-template
+
+[![Deploy to Cloudflare](https://deploy.workers.cloudflare.com/button)](https://deploy.workers.cloudflare.com/?url=https://github.com/cloudflare/templates/tree/main/ai-brand-visibility-template)
+
+Test whether AI models mention your brand when answering relevant queries. Runs prompts through GPT-5.4, Claude Sonnet 4, Gemini 3 Flash, Llama 4, and Mistral via Cloudflare AI Gateway.
+
+Explore on [GitHub ↗](https://github.com/cloudflare/templates/tree/main/ai-brand-visibility-template)
+
+ npm  yarn  pnpm 
+
+```
+npm create cloudflare@latest -- --template=cloudflare/templates/ai-brand-visibility-template
+```
+
+```
+yarn create cloudflare --template=cloudflare/templates/ai-brand-visibility-template
+```
+
+```
+pnpm create cloudflare@latest --template=cloudflare/templates/ai-brand-visibility-template
+```
+
+  
+---
+
+  
 ### astro-blog-starter-template
 
 [![Deploy to Cloudflare](https://deploy.workers.cloudflare.com/button)](https://deploy.workers.cloudflare.com/?url=https://github.com/cloudflare/templates/tree/main/astro-blog-starter-template)

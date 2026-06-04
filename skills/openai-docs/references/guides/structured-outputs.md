@@ -154,7 +154,7 @@ However, Structured Outputs with `response_format: {type: "json_schema", ...}` i
 |--------------------------------------------|--------------------------------------------------------------------------------------------------------------------------------|--------------------------------------------|
 | **Outputs valid JSON**                     | Yes                                                                                                                            | Yes                                        |
 | **Adheres to schema**                      | Yes (see [supported schemas](#supported-schemas))                                               | No                                         |
-| **Compatible models**                      | `gpt-4o-mini`, `gpt-4o-2024-08-06`, and later                                                                                  | `gpt-3.5-turbo`, `gpt-4-*` and `gpt-4o-*` models |
+| **Compatible models**                      | `gpt-4o-mini`, `gpt-4o-2024-08-06`, and later                                                                                  | `gpt-3.5-turbo`, `gpt-4-*`, `gpt-4o-*`, and compatible GPT-5 models |
 | **Enabling**                               | `text: { format: { type: "json_schema", "strict": true, "schema": ... } }`                                       | `text: { format: { type: "json_object" } }` |
 
 

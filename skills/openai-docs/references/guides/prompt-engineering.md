@@ -73,7 +73,7 @@ import OpenAI from "openai";
 const client = new OpenAI();
 
 const response = await client.responses.create({
-    model: "gpt-5",
+    model: "gpt-5.5",
     reasoning: { effort: "low" },
     instructions: "${semicolonsDevMsg}",
     input: "${semicolonsPrompt}",
@@ -87,7 +87,7 @@ from openai import OpenAI
 client = OpenAI()
 
 response = client.responses.create(
-    model="gpt-5",
+    model="gpt-5.5",
     reasoning={"effort": "low"},
     instructions="${semicolonsDevMsg}",
     input="${semicolonsPrompt}",
@@ -101,7 +101,7 @@ curl "https://api.openai.com/v1/responses" \\
     -H "Content-Type: application/json" \\
     -H "Authorization: Bearer $OPENAI_API_KEY" \\
     -d '{
-        "model": "gpt-5",
+        "model": "gpt-5.5",
         "reasoning": {"effort": "low"},
         "instructions": "${semicolonsDevMsg}",
         "input": "${semicolonsPrompt}"
@@ -118,7 +118,7 @@ import OpenAI from "openai";
 const client = new OpenAI();
 
 const response = await client.responses.create({
-    model: "gpt-5",
+    model: "gpt-5.5",
     reasoning: { effort: "low" },
     input: [
         {
@@ -140,7 +140,7 @@ from openai import OpenAI
 client = OpenAI()
 
 response = client.responses.create(
-    model="gpt-5",
+    model="gpt-5.5",
     reasoning={"effort": "low"},
     input=[
         {
@@ -162,7 +162,7 @@ curl "https://api.openai.com/v1/responses" \\
     -H "Content-Type: application/json" \\
     -H "Authorization: Bearer $OPENAI_API_KEY" \\
     -d '{
-        "model": "gpt-5",
+        "model": "gpt-5.5",
         "reasoning": {"effort": "low"},
         "input": [
             {
@@ -201,6 +201,12 @@ You could think about `developer` and `user` messages like a function and its ar
 
 In the OpenAI dashboard, you can develop reusable [prompts](https://platform.openai.com/chat/edit) that you can use in API requests, rather than specifying the content of prompts in code. This way, you can more easily build and evaluate your prompts, and deploy improved versions of your prompts without changing your integration code.
 
+OpenAI is deprecating reusable prompt objects in the API. Prompt creation will
+  be de-emphasized beginning June 3, 2026, and `v1/prompts` is scheduled to shut
+  down on November 30, 2026. See the [deprecations
+  page](https://developers.openai.com/api/docs/deprecations#2026-06-03-reusable-prompts) for the current
+  timeline.
+
 
 
 
@@ -224,7 +230,7 @@ import OpenAI from "openai";
 const client = new OpenAI();
 
 const response = await client.responses.create({
-    model: "gpt-5",
+    model: "gpt-5.5",
     prompt: {
         id: "pmpt_abc123",
         version: "2",
@@ -243,7 +249,7 @@ from openai import OpenAI
 client = OpenAI()
 
 response = client.responses.create(
-    model="gpt-5",
+    model="gpt-5.5",
     prompt={
         "id": "pmpt_abc123",
         "version": "2",
@@ -262,7 +268,7 @@ curl https://api.openai.com/v1/responses \\
   -H "Authorization: Bearer $OPENAI_API_KEY" \\
   -H "Content-Type: application/json" \\
   -d '{
-    "model": "gpt-5",
+    "model": "gpt-5.5",
     "prompt": {
       "id": "pmpt_abc123",
       "version": "2",
@@ -291,7 +297,7 @@ const file = await client.files.create({
 });
 
 const response = await client.responses.create({
-    model: "gpt-5",
+    model: "gpt-5.5",
     prompt: {
         id: "pmpt_abc123",
         variables: {
@@ -319,7 +325,7 @@ file = client.files.create(
 )
 
 response = client.responses.create(
-    model="gpt-5",
+    model="gpt-5.5",
     prompt={
         "id": "pmpt_abc123",
         "variables": {
@@ -341,7 +347,7 @@ curl https://api.openai.com/v1/responses \
   -H "Authorization: Bearer $OPENAI_API_KEY" \
   -H "Content-Type: application/json" \
   -d '{
-    "model": "gpt-5",
+    "model": "gpt-5.5",
     "prompt": {
       "id": "pmpt_abc123",
       "variables": {
@@ -393,7 +399,7 @@ const client = new OpenAI();
 const instructions = await fs.readFile("prompt.txt", "utf-8");
 
 const response = await client.responses.create({
-    model: "gpt-5",
+    model: "gpt-5.5",
     instructions,
     input: "How would I declare a variable for a last name?",
 });
@@ -409,7 +415,7 @@ with open("prompt.txt", "r", encoding="utf-8") as f:
     instructions = f.read()
 
 response = client.responses.create(
-    model="gpt-5",
+    model="gpt-5.5",
     instructions=instructions,
     input="How would I declare a variable for a last name?",
 )
@@ -422,7 +428,7 @@ curl https://api.openai.com/v1/responses \\
   -H "Authorization: Bearer $OPENAI_API_KEY" \\
   -H "Content-Type: application/json" \\
   -d '{
-    "model": "gpt-5",
+    "model": "gpt-5.5",
     "instructions": "'"$(< prompt.txt)"'",
     "input": "How would I declare a variable for a last name?"
   }'

@@ -14,7 +14,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 #  AssemblyAI Universal-3 Pro 
 
-Automatic Speech Recognition • AssemblyAI • Proxied 
+Automatic Speech Recognition • AssemblyAI 
 
 `assemblyai/universal-3-pro` 
 
@@ -28,8 +28,8 @@ AssemblyAI's Universal 3 Pro speech recognition model for high-accuracy transcri
 
 ## Usage
 
-* [ TypeScript ](#tab-panel-246)
-* [ cURL ](#tab-panel-247)
+* [ TypeScript ](#tab-panel-264)
+* [ cURL ](#tab-panel-265)
 
 TypeScript
 
@@ -73,8 +73,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 ```
 
-* [ Output ](#tab-panel-254)
-* [ Raw response ](#tab-panel-255)
+* [ Output ](#tab-panel-272)
+* [ Raw response ](#tab-panel-273)
 
 The sun rises in the east and sets in the west. This simple fact has been observed by humans for thousands of years.
 
@@ -439,8 +439,8 @@ The sun rises in the east and sets in the west. This simple fact has been observ
 
 **With Language Code**  — Transcribe with an explicit language code 
 
-* [ TypeScript ](#tab-panel-248)
-* [ cURL ](#tab-panel-249)
+* [ TypeScript ](#tab-panel-266)
+* [ cURL ](#tab-panel-267)
 
 TypeScript
 
@@ -486,8 +486,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 ```
 
-* [ Output ](#tab-panel-258)
-* [ Raw response ](#tab-panel-259)
+* [ Output ](#tab-panel-276)
+* [ Raw response ](#tab-panel-277)
 
 In the heart of the city, there is a large park where people go to relax and enjoy nature. The park has a beautiful pond with ducks and swans.
 
@@ -934,8 +934,8 @@ In the heart of the city, there is a large park where people go to relax and enj
 
 **With Key Terms**  — Improve accuracy for domain-specific vocabulary 
 
-* [ TypeScript ](#tab-panel-252)
-* [ cURL ](#tab-panel-253)
+* [ TypeScript ](#tab-panel-270)
+* [ cURL ](#tab-panel-271)
 
 TypeScript
 
@@ -997,8 +997,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 ```
 
-* [ Output ](#tab-panel-260)
-* [ Raw response ](#tab-panel-261)
+* [ Output ](#tab-panel-278)
+* [ Raw response ](#tab-panel-279)
 
 In the kitchen, the aroma of freshly baked bread filled the air. The loaves were golden brown and crusty on the outside and soft and warm on the inside.
 
@@ -1445,8 +1445,8 @@ In the kitchen, the aroma of freshly baked bread filled the air. The loaves were
 
 **Speaker Diarization**  — Identify different speakers in the audio 
 
-* [ TypeScript ](#tab-panel-250)
-* [ cURL ](#tab-panel-251)
+* [ TypeScript ](#tab-panel-268)
+* [ cURL ](#tab-panel-269)
 
 TypeScript
 
@@ -1492,8 +1492,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 ```
 
-* [ Output ](#tab-panel-256)
-* [ Raw response ](#tab-panel-257)
+* [ Output ](#tab-panel-274)
+* [ Raw response ](#tab-panel-275)
 
 The train chugged along the tracks, carrying passengers to their destinations. The rhythmic sound of the wheels on the rails was soothing.
 
@@ -1858,8 +1858,8 @@ The train chugged along the tracks, carrying passengers to their destinations. T
 
 ## Parameters
 
-* [ Input ](#tab-panel-262)
-* [ Output ](#tab-panel-263)
+* [ Input ](#tab-panel-280)
+* [ Output ](#tab-panel-281)
 
 audio\_end\_at
 
@@ -1871,7 +1871,7 @@ audio\_start\_from
 
 audio\_url
 
-`string`requiredThe URL of the audio file to transcribe. Can be a publicly accessible URL or a data URI (data:audio/...;base64,...). For data URIs, the audio will be uploaded to AssemblyAI automatically.
+`string`The URL of the audio file to transcribe. Can be a publicly accessible URL or a data URI (data:audio/...;base64,...). For data URIs, the audio will be uploaded to AssemblyAI automatically. Required for pre-recorded transcription (when stream is false or not set).
 
 auto\_chapters
 
@@ -1976,6 +1976,10 @@ temperature
 webhook\_url
 
 `string`format: uriURL to receive webhook notifications when transcription is complete.
+
+websocket
+
+`boolean`Enable real-time WebSocket streaming for live audio transcription. When true, a WebSocket connection is established instead of submitting a pre-recorded transcription job. Cannot be used with audio\_url.
 
 ▶word\_boost\[\]
 

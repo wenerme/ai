@@ -2,6 +2,12 @@
 
 As you build and deploy agents with [Agent Builder](https://developers.openai.com/api/docs/guides/agent-builder), it's important to understand the risks. Learn about risk types and how to mitigate them when building multi-agent workflows.
 
+OpenAI is deprecating Agent Builder. Existing users can continue using it
+  during the transition window, and the product is scheduled to shut down on
+  November 30, 2026. ChatKit remains available. See the [deprecations
+  page](https://developers.openai.com/api/docs/deprecations#2026-06-03-agent-builder) for the current
+  timeline.
+
 ## Types of risk
 
 Certain agent workflow patterns are more vulnerable to risk. In chat workflows, two important considerations are protecting user input and being careful about MCP tool calling.

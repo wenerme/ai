@@ -22,13 +22,13 @@ You can build and deploy [Model Context Protocol (MCP) ↗](https://modelcontext
 
 * **MCP Hosts**: AI assistants (like [Claude ↗](https://claude.ai) or [Cursor ↗](https://cursor.com)), AI agents, or applications that need to access external capabilities.
 * **MCP Clients**: Clients embedded within the MCP hosts that connect to MCP servers and invoke tools. Each MCP client instance has a single connection to an MCP server.
-* **MCP Servers**: Applications that expose [tools](https://developers.cloudflare.com/agents/model-context-protocol/tools/), [prompts ↗](https://modelcontextprotocol.io/docs/concepts/prompts), and [resources ↗](https://modelcontextprotocol.io/docs/concepts/resources) that MCP clients can use.
+* **MCP Servers**: Applications that expose [tools](https://developers.cloudflare.com/agents/model-context-protocol/protocol/tools/), [prompts ↗](https://modelcontextprotocol.io/docs/concepts/prompts), and [resources ↗](https://modelcontextprotocol.io/docs/concepts/resources) that MCP clients can use.
 
 ### Remote vs. local MCP connections
 
 The MCP standard supports two modes of operation:
 
-* **Remote MCP connections**: MCP clients connect to MCP servers over the Internet, establishing a connection using [Streamable HTTP](https://developers.cloudflare.com/agents/model-context-protocol/transport/), and authorizing the MCP client access to resources on the user's account using [OAuth](https://developers.cloudflare.com/agents/model-context-protocol/authorization/).
+* **Remote MCP connections**: MCP clients connect to MCP servers over the Internet, establishing a connection using [Streamable HTTP](https://developers.cloudflare.com/agents/model-context-protocol/protocol/transport/), and authorizing the MCP client access to resources on the user's account using [OAuth](https://developers.cloudflare.com/agents/model-context-protocol/protocol/authorization/).
 * **Local MCP connections**: MCP clients connect to MCP servers on the same machine, using [stdio ↗](https://modelcontextprotocol.io/specification/2025-06-18/basic/transports#stdio) as a local transport method.
 
 ### Best Practices
@@ -40,7 +40,7 @@ The MCP standard supports two modes of operation:
 
 ### Get Started
 
-Go to the [Getting Started](https://developers.cloudflare.com/agents/guides/remote-mcp-server/) guide to learn how to build and deploy your first remote MCP server to Cloudflare.
+Go to the [Getting Started](https://developers.cloudflare.com/agents/model-context-protocol/guides/remote-mcp-server/) guide to learn how to build and deploy your first remote MCP server to Cloudflare.
 
 ```json
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/agents/","name":"Agents"}},{"@type":"ListItem","position":3,"item":{"@id":"/agents/model-context-protocol/","name":"Model Context Protocol (MCP)"}}]}

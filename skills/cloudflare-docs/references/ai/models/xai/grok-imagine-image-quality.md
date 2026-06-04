@@ -14,7 +14,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 #  Grok Imagine Image Quality 
 
-Text-to-Image • xAI • Proxied 
+Text-to-Image • xAI 
 
 `xai/grok-imagine-image-quality` 
 
@@ -28,8 +28,8 @@ xAI's higher-fidelity text-to-image model optimized for sharper details, more ac
 
 ## Usage
 
-* [ TypeScript ](#tab-panel-1474)
-* [ cURL ](#tab-panel-1475)
+* [ TypeScript ](#tab-panel-1662)
+* [ cURL ](#tab-panel-1663)
 
 TypeScript
 
@@ -73,8 +73,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 ```
 
-* [ Output ](#tab-panel-1472)
-* [ Raw response ](#tab-panel-1473)
+* [ Output ](#tab-panel-1660)
+* [ Raw response ](#tab-panel-1661)
 
 ![Simple Generation](https://examples.aig.cloudflare.com/xai/grok-imagine-image-quality/simple-generation.jpeg) 
 
@@ -105,8 +105,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 **High Quality Portrait**  — High-quality portrait-orientation render at 2K resolution 
 
-* [ TypeScript ](#tab-panel-1480)
-* [ cURL ](#tab-panel-1481)
+* [ TypeScript ](#tab-panel-1668)
+* [ cURL ](#tab-panel-1669)
 
 TypeScript
 
@@ -118,11 +118,11 @@ const response = await env.AI.run(
 
   {
 
-    aspect_ratio: '3:4',
-
     prompt:
 
       'A detailed botanical illustration of exotic tropical flowers with fine line work and watercolor textures',
+
+    aspect_ratio: '3:4',
 
     quality: 'high',
 
@@ -153,9 +153,9 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
   "input": {
 
-    "aspect_ratio": "3:4",
-
     "prompt": "A detailed botanical illustration of exotic tropical flowers with fine line work and watercolor textures",
+
+    "aspect_ratio": "3:4",
 
     "quality": "high",
 
@@ -168,8 +168,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 ```
 
-* [ Output ](#tab-panel-1476)
-* [ Raw response ](#tab-panel-1477)
+* [ Output ](#tab-panel-1664)
+* [ Raw response ](#tab-panel-1665)
 
 ![High Quality Portrait](https://examples.aig.cloudflare.com/xai/grok-imagine-image-quality/high-quality-portrait.png) 
 
@@ -198,8 +198,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 **Cinematic Widescreen**  — Widescreen cinematic composition 
 
-* [ TypeScript ](#tab-panel-1484)
-* [ cURL ](#tab-panel-1485)
+* [ TypeScript ](#tab-panel-1672)
+* [ cURL ](#tab-panel-1673)
 
 TypeScript
 
@@ -211,11 +211,11 @@ const response = await env.AI.run(
 
   {
 
-    aspect_ratio: '16:9',
-
     prompt:
 
       'A neon-lit cyberpunk figure standing in the rain beneath a holographic billboard, cinematic lighting',
+
+    aspect_ratio: '16:9',
 
     quality: 'high',
 
@@ -246,9 +246,9 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
   "input": {
 
-    "aspect_ratio": "16:9",
-
     "prompt": "A neon-lit cyberpunk figure standing in the rain beneath a holographic billboard, cinematic lighting",
+
+    "aspect_ratio": "16:9",
 
     "quality": "high",
 
@@ -261,8 +261,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 ```
 
-* [ Output ](#tab-panel-1478)
-* [ Raw response ](#tab-panel-1479)
+* [ Output ](#tab-panel-1666)
+* [ Raw response ](#tab-panel-1667)
 
 ![Cinematic Widescreen](https://examples.aig.cloudflare.com/xai/grok-imagine-image-quality/cinematic-widescreen.png) 
 
@@ -291,8 +291,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 **Medium Quality Landscape**  — Balanced quality landscape render 
 
-* [ TypeScript ](#tab-panel-1488)
-* [ cURL ](#tab-panel-1489)
+* [ TypeScript ](#tab-panel-1676)
+* [ cURL ](#tab-panel-1677)
 
 TypeScript
 
@@ -304,11 +304,11 @@ const response = await env.AI.run(
 
   {
 
-    aspect_ratio: '16:9',
-
     prompt:
 
       'A panoramic view of the northern lights over a snowy mountain range, vivid greens and purples dancing across the sky',
+
+    aspect_ratio: '16:9',
 
     quality: 'medium',
 
@@ -339,9 +339,9 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
   "input": {
 
-    "aspect_ratio": "16:9",
-
     "prompt": "A panoramic view of the northern lights over a snowy mountain range, vivid greens and purples dancing across the sky",
+
+    "aspect_ratio": "16:9",
 
     "quality": "medium",
 
@@ -354,8 +354,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 ```
 
-* [ Output ](#tab-panel-1482)
-* [ Raw response ](#tab-panel-1483)
+* [ Output ](#tab-panel-1670)
+* [ Raw response ](#tab-panel-1671)
 
 ![Medium Quality Landscape](https://examples.aig.cloudflare.com/xai/grok-imagine-image-quality/medium-quality-landscape.jpeg) 
 
@@ -384,8 +384,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 **Square Low Quality Draft**  — Fast, rough draft for iteration 
 
-* [ TypeScript ](#tab-panel-1490)
-* [ cURL ](#tab-panel-1491)
+* [ TypeScript ](#tab-panel-1678)
+* [ cURL ](#tab-panel-1679)
 
 TypeScript
 
@@ -397,9 +397,9 @@ const response = await env.AI.run(
 
   {
 
-    aspect_ratio: '1:1',
-
     prompt: 'A quiet Japanese garden in morning mist with a stone lantern and koi pond',
+
+    aspect_ratio: '1:1',
 
     quality: 'low',
 
@@ -430,9 +430,9 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
   "input": {
 
-    "aspect_ratio": "1:1",
-
     "prompt": "A quiet Japanese garden in morning mist with a stone lantern and koi pond",
+
+    "aspect_ratio": "1:1",
 
     "quality": "low",
 
@@ -445,8 +445,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 ```
 
-* [ Output ](#tab-panel-1486)
-* [ Raw response ](#tab-panel-1487)
+* [ Output ](#tab-panel-1674)
+* [ Raw response ](#tab-panel-1675)
 
 ![Square Low Quality Draft](https://examples.aig.cloudflare.com/xai/grok-imagine-image-quality/square-low-quality-draft.jpeg) 
 
@@ -475,8 +475,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 ## Parameters
 
-* [ Input ](#tab-panel-1492)
-* [ Output ](#tab-panel-1493)
+* [ Input ](#tab-panel-1680)
+* [ Output ](#tab-panel-1681)
 
 aspect\_ratio
 

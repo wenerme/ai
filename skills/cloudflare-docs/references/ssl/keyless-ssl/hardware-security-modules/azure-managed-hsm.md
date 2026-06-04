@@ -43,6 +43,8 @@ Set up the Azure CLI (used to access the private key).
 
 For example, if you were using macOS:
 
+Terminal window
+
 ```
 
 brew install azure-cli
@@ -78,6 +80,8 @@ az keyvault key import --hsm-name "KeylessHSM" --name "hsm-pub-keyless" --pem-fi
 ## 5\. Restart gokeyless
 
 Once you save the config file, restart `gokeyless` and verify that it started successfully:
+
+Terminal window
 
 ```
 

@@ -4,6 +4,13 @@ Evaluations (often called **evals**) test model outputs to ensure they meet styl
 
 In this guide, we will focus on **configuring evals programmatically using the [Evals API](https://developers.openai.com/api/docs/api-reference/evals)**. If you prefer, you can also configure evals [in the OpenAI dashboard](https://platform.openai.com/evaluations).
 
+OpenAI is deprecating the Evals platform. Existing evals content remains
+  available during the transition window. Evals will become read-only for
+  existing users on October 31, 2026, and the platform is scheduled to shut down
+  on November 30, 2026. See the [deprecations
+  page](https://developers.openai.com/api/docs/deprecations#2026-06-03-evals-platform) for the current
+  timeline.
+
 If you're new to evaluations, or want a more iterative environment to
   experiment in as you build your eval, consider trying
   [Datasets](https://developers.openai.com/api/docs/guides/evaluation-getting-started) instead.
@@ -30,7 +37,7 @@ curl https://api.openai.com/v1/responses \\
     -H "Authorization: Bearer $OPENAI_API_KEY" \\
     -H "Content-Type: application/json" \\
     -d '{
-        "model": "gpt-4.1",
+        "model": "gpt-5.5",
         "input": [
             {
                 "role": "developer",
@@ -57,7 +64,7 @@ or "Other". Respond with only one of those words.
 const ticket = "My monitor won't turn on - help!";
 
 const response = await client.responses.create({
-    model: "gpt-4.1",
+    model: "gpt-5.5",
     input: [
         { role: "developer", content: instructions },
         { role: "user", content: ticket },
@@ -80,7 +87,7 @@ or "Other". Respond with only one of those words.
 ticket = "My monitor won't turn on - help!"
 
 response = client.responses.create(
-    model="gpt-4.1",
+    model="gpt-5.5",
     input=[
         {"role": "developer", "content": instructions},
         {"role": "user", "content": ticket},

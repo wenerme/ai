@@ -1,6 +1,12 @@
 # Node reference
 
-[Agent Builder](https://platform.openai.com/agent-builder) is a visual canvas for composing agentic worfklows. Workflows are made up of nodes and connections that control the sequence and flow. Insert nodes, then configure and connect them to define the process you want your agents to follow.
+[Agent Builder](https://platform.openai.com/agent-builder) is a visual canvas for composing agentic workflows. Workflows are made up of nodes and connections that control the sequence and flow. Insert nodes, then configure and connect them to define the process you want your agents to follow.
+
+OpenAI is deprecating Agent Builder. Existing users can continue using it
+  during the transition window, and the product is scheduled to shut down on
+  November 30, 2026. ChatKit remains available. See the [deprecations
+  page](https://developers.openai.com/api/docs/deprecations#2026-06-03-agent-builder) for the current
+  timeline.
 
 Explore all available nodes below. To learn more, read the [Agent Builder guide](https://developers.openai.com/api/docs/guides/agent-builder).
 

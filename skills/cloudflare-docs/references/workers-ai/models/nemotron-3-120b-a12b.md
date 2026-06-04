@@ -14,7 +14,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 #  nemotron-3-120b-a12b 
 
-Text Generation • NVIDIA • Hosted 
+Text Generation • NVIDIA 
 
 `@cf/nvidia/nemotron-3-120b-a12b` 
 
@@ -36,10 +36,10 @@ Try out this model with Workers AI LLM Playground. It does not require any setup
 
 ## Usage
 
-* [  Worker (Streaming) ](#tab-panel-2759)
-* [  TypeScript ](#tab-panel-2760)
-* [  Python ](#tab-panel-2761)
-* [  curl ](#tab-panel-2762)
+* [  Worker (Streaming) ](#tab-panel-4463)
+* [  TypeScript ](#tab-panel-4464)
+* [  Python ](#tab-panel-4465)
+* [  curl ](#tab-panel-4466)
 
 TypeScript
 

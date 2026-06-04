@@ -14,7 +14,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 #  Recraft V4 SVG 
 
-Text-to-Image • Recraft • Proxied 
+Text-to-Image • Recraft 
 
 `recraft/recraftv4-vector` 
 
@@ -28,8 +28,8 @@ Generate production-ready SVG vector graphics from text prompts with clean geome
 
 ## Usage
 
-* [ TypeScript ](#tab-panel-1284)
-* [ cURL ](#tab-panel-1285)
+* [ TypeScript ](#tab-panel-1472)
+* [ cURL ](#tab-panel-1473)
 
 TypeScript
 
@@ -73,8 +73,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 ```
 
-* [ Output ](#tab-panel-1282)
-* [ Raw response ](#tab-panel-1283)
+* [ Output ](#tab-panel-1470)
+* [ Raw response ](#tab-panel-1471)
 
 ![Simple Icon](https://examples.aig.cloudflare.com/recraft/recraftv4-vector/simple-icon.svg) 
 
@@ -105,8 +105,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 **App Icon**  — Mobile app icon in vector format 
 
-* [ TypeScript ](#tab-panel-1288)
-* [ cURL ](#tab-panel-1289)
+* [ TypeScript ](#tab-panel-1476)
+* [ cURL ](#tab-panel-1477)
 
 TypeScript
 
@@ -158,8 +158,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 ```
 
-* [ Output ](#tab-panel-1286)
-* [ Raw response ](#tab-panel-1287)
+* [ Output ](#tab-panel-1474)
+* [ Raw response ](#tab-panel-1475)
 
 ![App Icon](https://examples.aig.cloudflare.com/recraft/recraftv4-vector/app-icon.svg) 
 
@@ -188,8 +188,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 **Illustration**  — Vector illustration for web use 
 
-* [ TypeScript ](#tab-panel-1292)
-* [ cURL ](#tab-panel-1293)
+* [ TypeScript ](#tab-panel-1480)
+* [ cURL ](#tab-panel-1481)
 
 TypeScript
 
@@ -243,8 +243,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 ```
 
-* [ Output ](#tab-panel-1290)
-* [ Raw response ](#tab-panel-1291)
+* [ Output ](#tab-panel-1478)
+* [ Raw response ](#tab-panel-1479)
 
 ![Illustration](https://examples.aig.cloudflare.com/recraft/recraftv4-vector/illustration.svg) 
 
@@ -273,8 +273,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 **With Brand Colors**  — Vector with specific color palette 
 
-* [ TypeScript ](#tab-panel-1296)
-* [ cURL ](#tab-panel-1297)
+* [ TypeScript ](#tab-panel-1484)
+* [ cURL ](#tab-panel-1485)
 
 TypeScript
 
@@ -286,6 +286,8 @@ const response = await env.AI.run(
 
   {
 
+    prompt: 'A badge or seal design with a star in the center, suitable for a certification mark',
+
     controls: {
 
       background_color: { rgb: [255, 255, 255] },
@@ -293,8 +295,6 @@ const response = await env.AI.run(
       colors: [{ rgb: [0, 119, 182] }, { rgb: [255, 209, 102] }],
 
     },
-
-    prompt: 'A badge or seal design with a star in the center, suitable for a certification mark',
 
   },
 
@@ -320,6 +320,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
   "model": "recraft/recraftv4-vector",
 
   "input": {
+
+    "prompt": "A badge or seal design with a star in the center, suitable for a certification mark",
 
     "controls": {
 
@@ -369,9 +371,7 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
       ]
 
-    },
-
-    "prompt": "A badge or seal design with a star in the center, suitable for a certification mark"
+    }
 
   }
 
@@ -380,8 +380,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 ```
 
-* [ Output ](#tab-panel-1294)
-* [ Raw response ](#tab-panel-1295)
+* [ Output ](#tab-panel-1482)
+* [ Raw response ](#tab-panel-1483)
 
 ![With Brand Colors](https://examples.aig.cloudflare.com/recraft/recraftv4-vector/with-brand-colors.svg) 
 
@@ -410,8 +410,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 ## Parameters
 
-* [ Input ](#tab-panel-1298)
-* [ Output ](#tab-panel-1299)
+* [ Input ](#tab-panel-1486)
+* [ Output ](#tab-panel-1487)
 
 ▶controls{}
 

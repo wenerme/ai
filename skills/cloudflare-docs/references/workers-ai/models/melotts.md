@@ -14,7 +14,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 #  melotts 
 
-Text-to-Speech • MyShell • Hosted 
+Text-to-Speech • MyShell 
 
 `@cf/myshell-ai/melotts` 
 
@@ -62,8 +62,8 @@ export default {
 
 ## Parameters
 
-* [ Input ](#tab-panel-2733)
-* [ Output ](#tab-panel-2734)
+* [ Input ](#tab-panel-4441)
+* [ Output ](#tab-panel-4442)
 
 prompt
 

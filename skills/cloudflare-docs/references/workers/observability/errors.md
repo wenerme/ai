@@ -372,10 +372,10 @@ Exceptions will show up under the `exceptions` field in the JSON returned by `wr
 
 A Worker can make HTTP requests to any HTTP service on the public Internet. You can use a service like [Sentry ↗](https://sentry.io) to collect error logs from your Worker, by making an HTTP request to the service to report the error. Refer to your service’s API documentation for details on what kind of request to make.
 
-When using an external logging strategy, remember that outstanding asynchronous tasks are canceled as soon as a Worker finishes sending its main response body to the client. To ensure that a logging subrequest completes, pass the request promise to [event.waitUntil() ↗](https://developer.mozilla.org/en-US/docs/Web/API/ExtendableEvent/waitUntil). For example:
+When using an external logging strategy, remember that floating promises (promises that are neither `await`ed, `return`ed, nor passed to `ctx.waitUntil()`) may be canceled when the Worker invocation completes. A Worker invocation has not completed while it is still streaming a response body to the client. To run logging after the response is complete, pass the request promise to [ctx.waitUntil()](https://developers.cloudflare.com/workers/runtime-apis/context/#waituntil). For example:
 
-* [  Module Worker ](#tab-panel-10657)
-* [  Service Worker ](#tab-panel-10658)
+* [  Module Worker ](#tab-panel-11127)
+* [  Service Worker ](#tab-panel-11128)
 
 JavaScript
 
@@ -463,8 +463,8 @@ Configure the [Wasm Coredump Service ↗](https://github.com/cloudflare/wasm-cor
 
 By using [event.passThroughOnException](https://developers.cloudflare.com/workers/runtime-apis/context/#passthroughonexception), a Workers application will forward requests to your origin if an exception is thrown during the Worker's execution. This allows you to add logging, tracking, or other features with Workers, without degrading your application's functionality.
 
-* [  Module Worker ](#tab-panel-10659)
-* [  Service Worker ](#tab-panel-10660)
+* [  Module Worker ](#tab-panel-11129)
+* [  Service Worker ](#tab-panel-11130)
 
 JavaScript
 

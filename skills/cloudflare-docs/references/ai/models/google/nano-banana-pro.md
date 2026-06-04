@@ -14,7 +14,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 #  Nano Banana Pro 
 
-Text-to-Image • Google • Proxied 
+Text-to-Image • Google 
 
 `google/nano-banana-pro` 
 
@@ -28,8 +28,8 @@ Google's higher-quality image generation model with improved detail and prompt a
 
 ## Usage
 
-* [ TypeScript ](#tab-panel-590)
-* [ cURL ](#tab-panel-591)
+* [ TypeScript ](#tab-panel-608)
+* [ cURL ](#tab-panel-609)
 
 TypeScript
 
@@ -41,13 +41,13 @@ const response = await env.AI.run(
 
   {
 
-    aspect_ratio: '1:1',
-
-    output_format: 'png',
-
     prompt:
 
       'A sleek modern wireless headphone on a minimalist white marble surface with soft studio lighting and subtle shadows',
+
+    aspect_ratio: '1:1',
+
+    output_format: 'png',
 
   },
 
@@ -74,11 +74,11 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
   "input": {
 
+    "prompt": "A sleek modern wireless headphone on a minimalist white marble surface with soft studio lighting and subtle shadows",
+
     "aspect_ratio": "1:1",
 
-    "output_format": "png",
-
-    "prompt": "A sleek modern wireless headphone on a minimalist white marble surface with soft studio lighting and subtle shadows"
+    "output_format": "png"
 
   }
 
@@ -87,8 +87,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 ```
 
-* [ Output ](#tab-panel-588)
-* [ Raw response ](#tab-panel-589)
+* [ Output ](#tab-panel-606)
+* [ Raw response ](#tab-panel-607)
 
 ![Product Photography](https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/google__nano-banana-pro/product-photography.png) 
 
@@ -119,8 +119,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 **Fantasy Illustration**  — Epic fantasy scene 
 
-* [ TypeScript ](#tab-panel-594)
-* [ cURL ](#tab-panel-595)
+* [ TypeScript ](#tab-panel-612)
+* [ cURL ](#tab-panel-613)
 
 TypeScript
 
@@ -132,13 +132,13 @@ const response = await env.AI.run(
 
   {
 
-    aspect_ratio: '16:9',
-
-    image_size: '2K',
-
     prompt:
 
       'An epic fantasy illustration of a wizard casting a spell in an ancient library, magical runes floating in the air, dust motes catching golden light streaming through stained glass windows',
+
+    aspect_ratio: '16:9',
+
+    image_size: '2K',
 
   },
 
@@ -165,11 +165,11 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
   "input": {
 
+    "prompt": "An epic fantasy illustration of a wizard casting a spell in an ancient library, magical runes floating in the air, dust motes catching golden light streaming through stained glass windows",
+
     "aspect_ratio": "16:9",
 
-    "image_size": "2K",
-
-    "prompt": "An epic fantasy illustration of a wizard casting a spell in an ancient library, magical runes floating in the air, dust motes catching golden light streaming through stained glass windows"
+    "image_size": "2K"
 
   }
 
@@ -178,8 +178,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 ```
 
-* [ Output ](#tab-panel-592)
-* [ Raw response ](#tab-panel-593)
+* [ Output ](#tab-panel-610)
+* [ Raw response ](#tab-panel-611)
 
 ![Fantasy Illustration](https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/google__nano-banana-pro/fantasy-illustration.png) 
 
@@ -208,8 +208,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 **Architectural Visualization**  — Modern architecture render 
 
-* [ TypeScript ](#tab-panel-600)
-* [ cURL ](#tab-panel-601)
+* [ TypeScript ](#tab-panel-618)
+* [ cURL ](#tab-panel-619)
 
 TypeScript
 
@@ -221,15 +221,15 @@ const response = await env.AI.run(
 
   {
 
+    prompt:
+
+      'A photorealistic architectural visualization of a modern glass house perched on a cliff overlooking the ocean at sunset',
+
     aspect_ratio: '16:9',
 
     image_size: '4K',
 
     output_format: 'jpg',
-
-    prompt:
-
-      'A photorealistic architectural visualization of a modern glass house perched on a cliff overlooking the ocean at sunset',
 
   },
 
@@ -256,13 +256,13 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
   "input": {
 
+    "prompt": "A photorealistic architectural visualization of a modern glass house perched on a cliff overlooking the ocean at sunset",
+
     "aspect_ratio": "16:9",
 
     "image_size": "4K",
 
-    "output_format": "jpg",
-
-    "prompt": "A photorealistic architectural visualization of a modern glass house perched on a cliff overlooking the ocean at sunset"
+    "output_format": "jpg"
 
   }
 
@@ -271,8 +271,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 ```
 
-* [ Output ](#tab-panel-596)
-* [ Raw response ](#tab-panel-597)
+* [ Output ](#tab-panel-614)
+* [ Raw response ](#tab-panel-615)
 
 ![Architectural Visualization](https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/google__nano-banana-pro/architectural-visualization.jpg) 
 
@@ -301,8 +301,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 **Character Design**  — Game character concept art 
 
-* [ TypeScript ](#tab-panel-602)
-* [ cURL ](#tab-panel-603)
+* [ TypeScript ](#tab-panel-620)
+* [ cURL ](#tab-panel-621)
 
 TypeScript
 
@@ -314,11 +314,11 @@ const response = await env.AI.run(
 
   {
 
-    aspect_ratio: '3:2',
-
     prompt:
 
       'A detailed character design sheet for a steampunk inventor, showing front view, side view, and detail callouts for mechanical arm and goggles',
+
+    aspect_ratio: '3:2',
 
   },
 
@@ -345,9 +345,9 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
   "input": {
 
-    "aspect_ratio": "3:2",
+    "prompt": "A detailed character design sheet for a steampunk inventor, showing front view, side view, and detail callouts for mechanical arm and goggles",
 
-    "prompt": "A detailed character design sheet for a steampunk inventor, showing front view, side view, and detail callouts for mechanical arm and goggles"
+    "aspect_ratio": "3:2"
 
   }
 
@@ -356,8 +356,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 ```
 
-* [ Output ](#tab-panel-598)
-* [ Raw response ](#tab-panel-599)
+* [ Output ](#tab-panel-616)
+* [ Raw response ](#tab-panel-617)
 
 ![Character Design](https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/google__nano-banana-pro/character-design.png) 
 
@@ -386,8 +386,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 ## Parameters
 
-* [ Input ](#tab-panel-604)
-* [ Output ](#tab-panel-605)
+* [ Input ](#tab-panel-622)
+* [ Output ](#tab-panel-623)
 
 aspect\_ratio
 

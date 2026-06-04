@@ -14,7 +14,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 #  stable-diffusion-v1-5-inpainting Beta 
 
-Text-to-Image • RunwayML • Hosted 
+Text-to-Image • RunwayML 
 
 `@cf/runwayml/stable-diffusion-v1-5-inpainting` 
 
@@ -29,8 +29,8 @@ Stable Diffusion Inpainting is a latent text-to-image diffusion model capable of
 
 ## Usage
 
-* [  TypeScript ](#tab-panel-2845)
-* [  curl ](#tab-panel-2846)
+* [  TypeScript ](#tab-panel-4521)
+* [  curl ](#tab-panel-4522)
 
 ```
 
@@ -120,8 +120,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 ## Parameters
 
-* [ Input ](#tab-panel-2847)
-* [ Output ](#tab-panel-2848)
+* [ Input ](#tab-panel-4523)
+* [ Output ](#tab-panel-4524)
 
 prompt
 

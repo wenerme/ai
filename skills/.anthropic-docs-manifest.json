@@ -386,10 +386,10 @@
   "anthropic-docs/build-with-claude/mid-conversation-effort-example.md": {
     "url": "https://platform.claude.com/docs/en/build-with-claude/mid-conversation-effort-example",
     "skill": "anthropic-docs",
-    "etag": "W/\"1e450-19e8a4072a0\"",
-    "lastModified": "Tue, 02 Jun 2026 21:32:20 GMT",
-    "size": 123984,
-    "updatedAt": "2026-06-03T00:39:37.479Z"
+    "etag": "W/\"26a15-19e8e97de10\"",
+    "lastModified": "Wed, 03 Jun 2026 17:46:18 GMT",
+    "size": 158229,
+    "updatedAt": "2026-06-04T00:43:39.434Z"
   },
   "anthropic-docs/build-with-claude/cache-diagnostics.md": {
     "url": "https://platform.claude.com/docs/en/build-with-claude/cache-diagnostics",
@@ -426,10 +426,10 @@
   "anthropic-docs/build-with-claude/vision.md": {
     "url": "https://platform.claude.com/docs/en/build-with-claude/vision",
     "skill": "anthropic-docs",
-    "etag": "W/\"ccb5-19e8a4072a0\"",
-    "lastModified": "Tue, 02 Jun 2026 21:32:20 GMT",
-    "size": 52405,
-    "updatedAt": "2026-06-03T00:39:38.913Z"
+    "etag": "W/\"cfef-19e8e97de10\"",
+    "lastModified": "Wed, 03 Jun 2026 17:46:18 GMT",
+    "size": 53231,
+    "updatedAt": "2026-06-04T00:43:41.063Z"
   },
   "anthropic-docs/agents-and-tools/agent-skills/overview.md": {
     "url": "https://platform.claude.com/docs/en/agents-and-tools/agent-skills/overview",
@@ -682,10 +682,10 @@
   "anthropic-docs/managed-agents/self-hosted-sandboxes.md": {
     "url": "https://platform.claude.com/docs/en/managed-agents/self-hosted-sandboxes",
     "skill": "anthropic-docs",
-    "etag": "W/\"aa20-19e8a406eb8\"",
-    "lastModified": "Tue, 02 Jun 2026 21:32:19 GMT",
-    "size": 43552,
-    "updatedAt": "2026-06-03T00:39:48.018Z"
+    "etag": "W/\"aa97-19e8e97de10\"",
+    "lastModified": "Wed, 03 Jun 2026 17:46:18 GMT",
+    "size": 43671,
+    "updatedAt": "2026-06-04T00:43:51.347Z"
   },
   "anthropic-docs/managed-agents/self-hosted-sandboxes-security.md": {
     "url": "https://platform.claude.com/docs/en/managed-agents/self-hosted-sandboxes-security",

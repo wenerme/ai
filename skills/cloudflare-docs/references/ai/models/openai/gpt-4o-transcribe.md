@@ -14,7 +14,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 #  GPT-4o Transcribe 
 
-Automatic Speech Recognition • OpenAI • Proxied 
+Automatic Speech Recognition • OpenAI 
 
 `openai/gpt-4o-transcribe` 
 
@@ -28,8 +28,8 @@ A speech-to-text model that uses GPT-4o to transcribe audio with improved word e
 
 ## Usage
 
-* [ TypeScript ](#tab-panel-890)
-* [ cURL ](#tab-panel-891)
+* [ TypeScript ](#tab-panel-926)
+* [ cURL ](#tab-panel-927)
 
 TypeScript
 
@@ -73,8 +73,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 ```
 
-* [ Output ](#tab-panel-888)
-* [ Raw response ](#tab-panel-889)
+* [ Output ](#tab-panel-924)
+* [ Raw response ](#tab-panel-925)
 
 Hello
 
@@ -105,8 +105,8 @@ Hello
 
 **With Language Hint**  — Transcribe with a language hint for better accuracy 
 
-* [ TypeScript ](#tab-panel-894)
-* [ cURL ](#tab-panel-895)
+* [ TypeScript ](#tab-panel-930)
+* [ cURL ](#tab-panel-931)
 
 TypeScript
 
@@ -152,8 +152,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 ```
 
-* [ Output ](#tab-panel-892)
-* [ Raw response ](#tab-panel-893)
+* [ Output ](#tab-panel-928)
+* [ Raw response ](#tab-panel-929)
 
 Hello
 
@@ -182,8 +182,8 @@ Hello
 
 **Guided Transcription**  — Use a prompt to guide transcription style and context 
 
-* [ TypeScript ](#tab-panel-898)
-* [ cURL ](#tab-panel-899)
+* [ TypeScript ](#tab-panel-934)
+* [ cURL ](#tab-panel-935)
 
 TypeScript
 
@@ -197,9 +197,9 @@ const response = await env.AI.run(
 
     file: 'data:audio/wav;base64,<...>',
 
-    language: 'en',
-
     prompt: 'This is a technical discussion about Kubernetes and cloud-native architecture.',
+
+    language: 'en',
 
   },
 
@@ -228,9 +228,9 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
     "file": "data:audio/wav;base64,<...>",
 
-    "language": "en",
+    "prompt": "This is a technical discussion about Kubernetes and cloud-native architecture.",
 
-    "prompt": "This is a technical discussion about Kubernetes and cloud-native architecture."
+    "language": "en"
 
   }
 
@@ -239,8 +239,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 ```
 
-* [ Output ](#tab-panel-896)
-* [ Raw response ](#tab-panel-897)
+* [ Output ](#tab-panel-932)
+* [ Raw response ](#tab-panel-933)
 
 This is a technical discussion about Kubernetes and cloud-native architecture.
 
@@ -269,8 +269,8 @@ This is a technical discussion about Kubernetes and cloud-native architecture.
 
 **High Temperature**  — Higher temperature for more varied transcription 
 
-* [ TypeScript ](#tab-panel-902)
-* [ cURL ](#tab-panel-903)
+* [ TypeScript ](#tab-panel-938)
+* [ cURL ](#tab-panel-939)
 
 TypeScript
 
@@ -316,8 +316,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 ```
 
-* [ Output ](#tab-panel-900)
-* [ Raw response ](#tab-panel-901)
+* [ Output ](#tab-panel-936)
+* [ Raw response ](#tab-panel-937)
 
 Hello, world!
 
@@ -346,8 +346,8 @@ Hello, world!
 
 ## Parameters
 
-* [ Input ](#tab-panel-904)
-* [ Output ](#tab-panel-905)
+* [ Input ](#tab-panel-940)
+* [ Output ](#tab-panel-941)
 
 file
 

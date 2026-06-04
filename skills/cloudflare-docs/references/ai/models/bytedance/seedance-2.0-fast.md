@@ -14,7 +14,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 #  Seedance 2.0 Fast 
 
-Text-to-Video • ByteDance • Proxied 
+Text-to-Video • ByteDance 
 
 `bytedance/seedance-2.0-fast` 
 
@@ -27,8 +27,8 @@ Faster variant of ByteDance's Seedance 2.0 video model. Trades some quality for 
 
 ## Usage
 
-* [ TypeScript ](#tab-panel-328)
-* [ cURL ](#tab-panel-329)
+* [ TypeScript ](#tab-panel-346)
+* [ cURL ](#tab-panel-347)
 
 TypeScript
 
@@ -40,11 +40,11 @@ const response = await env.AI.run(
 
   {
 
+    prompt: 'A golden retriever running through a field of sunflowers on a sunny day',
+
     aspect_ratio: '16:9',
 
     duration: 5,
-
-    prompt: 'A golden retriever running through a field of sunflowers on a sunny day',
 
     resolution: '720p',
 
@@ -73,11 +73,11 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
   "input": {
 
+    "prompt": "A golden retriever running through a field of sunflowers on a sunny day",
+
     "aspect_ratio": "16:9",
 
     "duration": 5,
-
-    "prompt": "A golden retriever running through a field of sunflowers on a sunny day",
 
     "resolution": "720p"
 
@@ -88,8 +88,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 ```
 
-* [ Output ](#tab-panel-324)
-* [ Raw response ](#tab-panel-325)
+* [ Output ](#tab-panel-342)
+* [ Raw response ](#tab-panel-343)
 
 ```
 
@@ -118,8 +118,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 **Portrait Video**  — Vertical video for social media 
 
-* [ TypeScript ](#tab-panel-330)
-* [ cURL ](#tab-panel-331)
+* [ TypeScript ](#tab-panel-348)
+* [ cURL ](#tab-panel-349)
 
 TypeScript
 
@@ -131,11 +131,11 @@ const response = await env.AI.run(
 
   {
 
+    prompt: 'A barista pouring latte art in a cozy coffee shop, close-up with shallow depth of field',
+
     aspect_ratio: '9:16',
 
     duration: 5,
-
-    prompt: 'A barista pouring latte art in a cozy coffee shop, close-up with shallow depth of field',
 
     resolution: '720p',
 
@@ -164,11 +164,11 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
   "input": {
 
+    "prompt": "A barista pouring latte art in a cozy coffee shop, close-up with shallow depth of field",
+
     "aspect_ratio": "9:16",
 
     "duration": 5,
-
-    "prompt": "A barista pouring latte art in a cozy coffee shop, close-up with shallow depth of field",
 
     "resolution": "720p"
 
@@ -179,8 +179,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 ```
 
-* [ Output ](#tab-panel-326)
-* [ Raw response ](#tab-panel-327)
+* [ Output ](#tab-panel-344)
+* [ Raw response ](#tab-panel-345)
 
 ```
 
@@ -207,8 +207,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 ## Parameters
 
-* [ Input ](#tab-panel-332)
-* [ Output ](#tab-panel-333)
+* [ Input ](#tab-panel-350)
+* [ Output ](#tab-panel-351)
 
 aspect\_ratio
 

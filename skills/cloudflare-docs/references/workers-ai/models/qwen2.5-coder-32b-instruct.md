@@ -14,7 +14,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 #  qwen2.5-coder-32b-instruct 
 
-Text Generation • Qwen • Hosted 
+Text Generation • Qwen 
 
 `@cf/qwen/qwen2.5-coder-32b-instruct` 
 
@@ -34,10 +34,10 @@ Try out this model with Workers AI LLM Playground. It does not require any setup
 
 ## Usage
 
-* [  Worker (Streaming) ](#tab-panel-2808)
-* [  TypeScript ](#tab-panel-2809)
-* [  Python ](#tab-panel-2810)
-* [  curl ](#tab-panel-2811)
+* [  Worker (Streaming) ](#tab-panel-4484)
+* [  TypeScript ](#tab-panel-4485)
+* [  Python ](#tab-panel-4486)
+* [  curl ](#tab-panel-4487)
 
 TypeScript
 

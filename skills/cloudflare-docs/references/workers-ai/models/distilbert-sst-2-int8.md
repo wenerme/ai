@@ -14,7 +14,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 #  distilbert-sst-2-int8 
 
-Text Classification • HuggingFace • Hosted 
+Text Classification • HuggingFace 
 
 `@cf/huggingface/distilbert-sst-2-int8` 
 
@@ -27,9 +27,9 @@ Distilled BERT model that was finetuned on SST-2 for sentiment classification
 
 ## Usage
 
-* [  TypeScript ](#tab-panel-2507)
-* [  Python ](#tab-panel-2508)
-* [  curl ](#tab-panel-2509)
+* [  TypeScript ](#tab-panel-4227)
+* [  Python ](#tab-panel-4228)
+* [  curl ](#tab-panel-4229)
 
 ```
 
@@ -105,8 +105,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 ## Parameters
 
-* [ Input ](#tab-panel-2510)
-* [ Output ](#tab-panel-2511)
+* [ Input ](#tab-panel-4230)
+* [ Output ](#tab-panel-4231)
 
 text
 

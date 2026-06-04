@@ -14,7 +14,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 #  gemma-2b-it-lora Beta 
 
-Text Generation • Google • Hosted 
+Text Generation • Google 
 
 `@cf/google/gemma-2b-it-lora` 
 
@@ -34,10 +34,10 @@ Try out this model with Workers AI LLM Playground. It does not require any setup
 
 ## Usage
 
-* [  Worker (Streaming) ](#tab-panel-2544)
-* [  TypeScript ](#tab-panel-2545)
-* [  Python ](#tab-panel-2546)
-* [  curl ](#tab-panel-2547)
+* [  Worker (Streaming) ](#tab-panel-4260)
+* [  TypeScript ](#tab-panel-4261)
+* [  Python ](#tab-panel-4262)
+* [  curl ](#tab-panel-4263)
 
 TypeScript
 

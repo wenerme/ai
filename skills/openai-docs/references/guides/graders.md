@@ -2,6 +2,10 @@
 
 Graders are a way to evaluate your model's performance against reference answers. Our [graders API](https://developers.openai.com/api/docs/api-reference/graders) is a way to test your graders, experiment with results, and improve your fine-tuning or evaluation framework to get the results you want.
 
+OpenAI is deprecating graders as part of the evals and fine-tuning workflows
+  they support. See the [deprecations page](https://developers.openai.com/api/docs/deprecations) for the
+  current transition timelines.
+
 ## Overview
 
 Graders let you compare reference answers to the corresponding model-generated answer and return a grade in the range from 0 to 1. It's sometimes helpful to give the model partial credit for an answer, rather than a binary 0 or 1.

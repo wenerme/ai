@@ -14,7 +14,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 #  Qwen 3 Max 
 
-Text Generation • Alibaba • Proxied 
+Text Generation • Alibaba 
 
 `alibaba/qwen3-max` 
 

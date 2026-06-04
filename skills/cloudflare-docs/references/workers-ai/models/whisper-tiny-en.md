@@ -14,7 +14,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 #  whisper-tiny-en Beta 
 
-Automatic Speech Recognition • OpenAI • Hosted 
+Automatic Speech Recognition • OpenAI 
 
 `@cf/openai/whisper-tiny-en` 
 
@@ -26,8 +26,8 @@ Whisper is a pre-trained model for automatic speech recognition (ASR) and speech
 
 ## Usage
 
-* [  TypeScript ](#tab-panel-2880)
-* [  curl ](#tab-panel-2881)
+* [  TypeScript ](#tab-panel-4544)
+* [  curl ](#tab-panel-4545)
 
 ```
 
@@ -93,8 +93,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 ## Parameters
 
-* [ Input ](#tab-panel-2882)
-* [ Output ](#tab-panel-2883)
+* [ Input ](#tab-panel-4546)
+* [ Output ](#tab-panel-4547)
 
 Option 1
 

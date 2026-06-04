@@ -258,8 +258,9 @@ GPT-5.5 being a significantly more capable model.
           </tr>
           <tr>
             <td colspan="4" style="text-align:center">
-              For Enterprise/Edu users, there are no fixed rate limits - usage
-              scales with [credits](#credits-overview)
+              For Enterprise/Edu users with flexible pricing, there are no
+              fixed rate limits - usage scales with
+              [credits](#credits-overview)
             </td>
           </tr>
           <tr>
@@ -326,8 +327,9 @@ GPT-5.5 being a significantly more capable model.
           </tr>
           <tr>
             <td colspan="4" style="text-align:center">
-              For Enterprise/Edu users, there are no fixed rate limits - usage
-              scales with [credits](#credits-overview)
+              For Enterprise/Edu users with flexible pricing, there are no
+              fixed rate limits - usage scales with
+              [credits](#credits-overview)
             </td>
           </tr>
           <tr>
@@ -394,8 +396,9 @@ GPT-5.5 being a significantly more capable model.
           </tr>
           <tr>
             <td colspan="4" style="text-align:center">
-              For Enterprise/Edu users, there are no fixed rate limits - usage
-              scales with [credits](#credits-overview)
+              For Enterprise/Edu users with flexible pricing, there are no
+              fixed rate limits - usage scales with
+              [credits](#credits-overview)
             </td>
           </tr>
           <tr>
@@ -462,8 +465,9 @@ GPT-5.5 being a significantly more capable model.
           </tr>
           <tr>
             <td colspan="4" style="text-align:center">
-              For Enterprise/Edu users, there are no fixed rate limits - usage
-              scales with [credits](#credits-overview)
+              For Enterprise/Edu users with flexible pricing, there are no
+              fixed rate limits - usage scales with
+              [credits](#credits-overview)
             </td>
           </tr>
           <tr>
@@ -536,8 +540,9 @@ GPT-5.5 being a significantly more capable model.
           </tr>
           <tr>
             <td colspan="4" style="text-align:center">
-              For Enterprise/Edu users, there are no fixed rate limits - usage
-              scales with [credits](#credits-overview)
+              For Enterprise/Edu users with flexible pricing, there are no
+              fixed rate limits - usage scales with
+              [credits](#credits-overview)
             </td>
           </tr>
           <tr>
@@ -607,208 +612,105 @@ Credits let you continue using Codex after you reach your included usage
 limits. Usage draws down from your available credits based on the models and
 features you use, allowing you to extend work without interruption.
 
-As of April 2nd, we're moving pricing to API token-based rates. Credits remain
-the core pricing unit that customers purchase and consume, but usage is based
-on tokens consumed, calculated as credits per million input tokens, cached
-input tokens and output tokens your workspace consumes. Read about tokens
+Codex credit usage is based on API token-based rates. Credits remain the core
+pricing unit that customers purchase and consume, but usage is calculated as
+credits per million input tokens, cached input tokens, and output tokens your
+workspace consumes. Read about tokens
 [here](https://help.openai.com/en/articles/4936856-what-are-tokens-and-how-to-count-them).
 
-This format replaces average per-message estimates for your plan with a direct
-mapping between token usage and credits. It's most useful when you want a
-clearer view of how input, cached input, and output affect credit consumption.
+The rate card below shows the credit cost per million tokens for Codex models
+and features.
 
-Under this model, actual credit usage depends on the mix of input, cached input,
-and output tokens in each task. The new rate card is displayed in the table
-below, and is currently applicable to **new and existing Business customers,
-and new Enterprise customers**.
-
-**New and existing customers on all other plan types** should continue to use
-the previous message based rate card, until we migrate you to the new rates in
-the upcoming weeks.
-
-Select your appropriate plan type in the table below to see rates.
+A small subset of Enterprise customers should continue using the legacy rate
+card until we migrate you to the new token-based pricing for Codex. For more
+information, [contact OpenAI
+sales](https://chatgpt.com/contact-sales?utm_internal_source=openai_developers_codex).
 
 <div id="credits-overview">
-  <ContentSwitcher
-    id="codex-credit-costs"
-    initialValue="business-enterprise-new"
-    align="right"
-    options={[
-      {
-        label: "Business & New Enterprise Customers",
-        value: "business-enterprise-new",
-      },
-      {
-        label: "Plus, Pro, Existing Enterprise/Edu and New Edu",
-        value: "plus-pro-enterprise-edu-legacy",
-      },
-    ]}
-  >
-    <div data-content-switcher-pane data-value="business-enterprise-new">
-      <div class="hidden">Business & New Enterprise Customers</div>
-      <table>
-        <thead>
-          <tr>
-            <th scope="col">Credits per 1M tokens</th>
-            <th scope="col" style="text-align:center">
-              Input Tokens
-            </th>
-            <th scope="col" style="text-align:center">
-              Cached input tokens
-            </th>
-            <th scope="col" style="text-align:center">
-              Output Tokens
-            </th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>GPT-5.5</td>
-            <td style="text-align:center">125 credits</td>
-            <td style="text-align:center">12.50 credits</td>
-            <td style="text-align:center">750 credits</td>
-          </tr>
-          <tr>
-            <td>GPT-5.4</td>
-            <td style="text-align:center">62.50 credits</td>
-            <td style="text-align:center">6.250 credits</td>
-            <td style="text-align:center">375 credits</td>
-          </tr>
-          <tr>
-            <td>GPT-5.4-mini</td>
-            <td style="text-align:center">18.75 credits</td>
-            <td style="text-align:center">1.875 credits</td>
-            <td style="text-align:center">113 credits</td>
-          </tr>
-          <tr>
-            <td>GPT-5.3-Codex</td>
-            <td style="text-align:center">43.75 credits</td>
-            <td style="text-align:center">4.375 credits</td>
-            <td style="text-align:center">350 credits</td>
-          </tr>
-          <tr>
-            <td>GPT-5.2</td>
-            <td style="text-align:center">43.75 credits</td>
-            <td style="text-align:center">4.375 credits</td>
-            <td style="text-align:center">350 credits</td>
-          </tr>
-          <tr>
-            <td>GPT-5.3-Codex-Spark</td>
-            <td colspan="3" style="text-align:center">
-              research preview
-            </td>
-          </tr>
-          <tr>
-            <td>GPT-Image-2 (image)</td>
-            <td style="text-align:center">200 credits</td>
-            <td style="text-align:center">50 credits</td>
-            <td style="text-align:center">750 credits</td>
-          </tr>
-          <tr>
-            <td>GPT-Image-2 (text)</td>
-            <td style="text-align:center">125 credits</td>
-            <td style="text-align:center">31.25 credits</td>
-            <td style="text-align:center">250 credits</td>
-          </tr>
-        </tbody>
-        <tfoot>
-          <tr>
-            <td colspan="4" style="text-align:center">
-              Fast mode consumes credits at a higher rate for supported models.
-              See <a href="/codex/speed">Speed</a> for rates.
-            </td>
-          </tr>
-          <tr>
-            <td colspan="4" style="text-align:center">
-              Cloud tasks and code review run on GPT-5.3-Codex.
-            </td>
-          </tr>
-        </tfoot>
-      </table>
-    </div>
-    <div
-      data-content-switcher-pane
-      data-value="plus-pro-enterprise-edu-legacy"
-      hidden
-    >
-      <div class="hidden">Plus, Pro, Existing Enterprise/Edu and New Edu</div>
-      <table>
-        <thead>
-          <tr>
-            <th scope="col"></th>
-            <th scope="col" style="text-align:center">
-              Unit
-            </th>
-            <th scope="col" style="text-align:center">
-              GPT-5.5
-            </th>
-            <th scope="col" style="text-align:center">
-              GPT-5.4
-            </th>
-            <th scope="col" style="text-align:center">
-              GPT-5.3-Codex
-            </th>
-            <th scope="col" style="text-align:center">
-              GPT-5.4-mini
-            </th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>Local Tasks</td>
-            <td style="text-align:center">1 message</td>
-            <td style="text-align:center">\~14 credits</td>
-            <td style="text-align:center">\~7 credits</td>
-            <td style="text-align:center">\~5 credits</td>
-            <td style="text-align:center">\~2 credits</td>
-          </tr>
-          <tr>
-            <td>Cloud Tasks</td>
-            <td style="text-align:center">1 message</td>
-            <td style="text-align:center">Not available</td>
-            <td style="text-align:center">Not available</td>
-            <td style="text-align:center">\~25 credits</td>
-            <td style="text-align:center">Not available</td>
-          </tr>
-          <tr>
-            <td>Code Review</td>
-            <td style="text-align:center">1 pull request</td>
-            <td style="text-align:center">Not available</td>
-            <td style="text-align:center">Not available</td>
-            <td style="text-align:center">\~25 credits</td>
-            <td style="text-align:center">Not available</td>
-          </tr>
-          <tr>
-            <td>Image generation</td>
-            <td style="text-align:center">1 image (1024px &times; 1024px)</td>
-            <td colspan="4" style="text-align:center">
-              \~5-6 credits
-            </td>
-          </tr>
-          <tr>
-            <td>Image generation</td>
-            <td style="text-align:center">1 image (1024px &times; 1536px)</td>
-            <td colspan="4" style="text-align:center">
-              \~7-8 credits
-            </td>
-          </tr>
-        </tbody>
-        <tfoot>
-          <tr>
-            <td colspan="6" style="text-align:center">
-              Fast mode consumes credits at a higher rate for supported models.
-              See <a href="/codex/speed">Speed</a> for rates.
-            </td>
-          </tr>
-          <tr>
-            <td colspan="6" style="text-align:center">
-              These averages also apply to GPT-5.2.
-            </td>
-          </tr>
-        </tfoot>
-      </table>
-    </div>
-  </ContentSwitcher>
+  <table>
+    <thead>
+      <tr>
+        <th scope="col">Credits per 1M tokens</th>
+        <th scope="col" style="text-align:center">
+          Input Tokens
+        </th>
+        <th scope="col" style="text-align:center">
+          Cached input tokens
+        </th>
+        <th scope="col" style="text-align:center">
+          Output Tokens
+        </th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>GPT-5.5</td>
+        <td style="text-align:center">125 credits</td>
+        <td style="text-align:center">12.50 credits</td>
+        <td style="text-align:center">750 credits</td>
+      </tr>
+      <tr>
+        <td>GPT-5.4</td>
+        <td style="text-align:center">62.50 credits</td>
+        <td style="text-align:center">6.250 credits</td>
+        <td style="text-align:center">375 credits</td>
+      </tr>
+      <tr>
+        <td>GPT-5.4-mini</td>
+        <td style="text-align:center">18.75 credits</td>
+        <td style="text-align:center">1.875 credits</td>
+        <td style="text-align:center">113 credits</td>
+      </tr>
+      <tr>
+        <td>GPT-5.3-Codex</td>
+        <td style="text-align:center">43.75 credits</td>
+        <td style="text-align:center">4.375 credits</td>
+        <td style="text-align:center">350 credits</td>
+      </tr>
+      <tr>
+        <td>GPT-5.2</td>
+        <td style="text-align:center">43.75 credits</td>
+        <td style="text-align:center">4.375 credits</td>
+        <td style="text-align:center">350 credits</td>
+      </tr>
+      <tr>
+        <td>GPT-5.3-Codex-Spark</td>
+        <td colspan="3" style="text-align:center">
+          research preview
+        </td>
+      </tr>
+      <tr>
+        <td>GPT-Image-2 (image)</td>
+        <td style="text-align:center">200 credits</td>
+        <td style="text-align:center">50 credits</td>
+        <td style="text-align:center">750 credits</td>
+      </tr>
+      <tr>
+        <td>GPT-Image-2 (text)</td>
+        <td style="text-align:center">125 credits</td>
+        <td style="text-align:center">31.25 credits</td>
+        <td style="text-align:center">250 credits</td>
+      </tr>
+    </tbody>
+    <tfoot>
+      <tr>
+        <td colspan="4" style="text-align:center">
+          GPT-5.5 usage averages 5-45 credits per message.
+        </td>
+      </tr>
+      <tr>
+        <td colspan="4" style="text-align:center">
+          Fast mode consumes credits at a higher rate for supported models. See
+          <a href="/codex/speed">Speed</a> for rates.
+        </td>
+      </tr>
+      <tr>
+        <td colspan="4" style="text-align:center">
+          Cloud tasks and code review run on GPT-5.3-Codex.
+        </td>
+      </tr>
+    </tfoot>
+  </table>
 </div>
 
 Speed configurations will increase credit consumption for all models that apply.

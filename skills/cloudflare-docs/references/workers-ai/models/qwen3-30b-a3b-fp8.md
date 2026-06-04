@@ -14,7 +14,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 #  qwen3-30b-a3b-fp8 
 
-Text Generation • Qwen • Hosted 
+Text Generation • Qwen 
 
 `@cf/qwen/qwen3-30b-a3b-fp8` 
 
@@ -36,10 +36,10 @@ Try out this model with Workers AI LLM Playground. It does not require any setup
 
 ## Usage
 
-* [  Worker (Streaming) ](#tab-panel-2812)
-* [  TypeScript ](#tab-panel-2813)
-* [  Python ](#tab-panel-2814)
-* [  curl ](#tab-panel-2815)
+* [  Worker (Streaming) ](#tab-panel-4488)
+* [  TypeScript ](#tab-panel-4489)
+* [  Python ](#tab-panel-4490)
+* [  curl ](#tab-panel-4491)
 
 TypeScript
 
@@ -198,8 +198,8 @@ Workers AI also supports OpenAI compatible API endpoints for `/v1/chat/completio
 
 Synchronous — Send a request and receive a complete response 
 
-* [ Input ](#tab-panel-2816)
-* [ Output ](#tab-panel-2817)
+* [ Input ](#tab-panel-4492)
+* [ Output ](#tab-panel-4493)
 
 prompt
 
@@ -283,8 +283,8 @@ prompt\_logprobs{}
 
 Streaming — Send a request with \`stream: true\` and receive server-sent events 
 
-* [ Input ](#tab-panel-2818)
-* [ Output ](#tab-panel-2819)
+* [ Input ](#tab-panel-4494)
+* [ Output ](#tab-panel-4495)
 
 prompt
 
@@ -352,8 +352,8 @@ format
 
 Batch — Send multiple requests in a single API call 
 
-* [ Input ](#tab-panel-2820)
-* [ Output ](#tab-panel-2821)
+* [ Input ](#tab-panel-4496)
+* [ Output ](#tab-panel-4497)
 
 ▶requests\[\]
 

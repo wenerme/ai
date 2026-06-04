@@ -14,7 +14,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 #  Inworld TTS 2 
 
-Text-to-Speech • Inworld • Proxied 
+Text-to-Speech • Inworld 
 
 `inworld/tts-2` 
 

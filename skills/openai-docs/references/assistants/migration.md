@@ -156,7 +156,7 @@ Responses are designed to be used alone, but you can also use them with prompt a
   "incomplete_details": null,
   "instructions": null,
   "metadata": {},
-  "model": "gpt-4.1-2025-04-14",
+  "model": "gpt-5.5",
   "object": "response",
   "output": [
     {
@@ -229,6 +229,11 @@ Follow the migration steps below to move from the Assistants API to the Response
 1. Find these in the dashboard and click `Create prompt`.
 
 This will create a prompt object out of each existing assistant object.
+
+Reusable prompt objects are also being deprecated. If you use this migration
+  path, review the [prompts deprecation
+  timeline](https://developers.openai.com/api/docs/deprecations#2026-06-03-reusable-prompts) before adopting
+  prompt objects in a long-lived integration.
 
 ### 2. Move new user chats over to conversations and responses
 

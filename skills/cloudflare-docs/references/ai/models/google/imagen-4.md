@@ -14,7 +14,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 #  Imagen 4 
 
-Text-to-Image • Google • Proxied 
+Text-to-Image • Google 
 
 `google/imagen-4` 
 
@@ -28,8 +28,8 @@ Google's latest image generation model producing high-quality, photorealistic im
 
 ## Usage
 
-* [ TypeScript ](#tab-panel-528)
-* [ cURL ](#tab-panel-529)
+* [ TypeScript ](#tab-panel-546)
+* [ cURL ](#tab-panel-547)
 
 TypeScript
 
@@ -73,8 +73,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 ```
 
-* [ Output ](#tab-panel-526)
-* [ Raw response ](#tab-panel-527)
+* [ Output ](#tab-panel-544)
+* [ Raw response ](#tab-panel-545)
 
 ![Simple Generation](https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/google__imagen-4/simple-generation.png) 
 
@@ -105,8 +105,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 **Widescreen Landscape**  — Generate a widescreen landscape image 
 
-* [ TypeScript ](#tab-panel-532)
-* [ cURL ](#tab-panel-533)
+* [ TypeScript ](#tab-panel-550)
+* [ cURL ](#tab-panel-551)
 
 TypeScript
 
@@ -118,11 +118,11 @@ const response = await env.AI.run(
 
   {
 
-    aspect_ratio: '16:9',
-
     prompt:
 
       'A dramatic drone shot of a winding river through an autumn forest, warm golden and red tones',
+
+    aspect_ratio: '16:9',
 
   },
 
@@ -149,9 +149,9 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
   "input": {
 
-    "aspect_ratio": "16:9",
+    "prompt": "A dramatic drone shot of a winding river through an autumn forest, warm golden and red tones",
 
-    "prompt": "A dramatic drone shot of a winding river through an autumn forest, warm golden and red tones"
+    "aspect_ratio": "16:9"
 
   }
 
@@ -160,8 +160,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 ```
 
-* [ Output ](#tab-panel-530)
-* [ Raw response ](#tab-panel-531)
+* [ Output ](#tab-panel-548)
+* [ Raw response ](#tab-panel-549)
 
 ![Widescreen Landscape](https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/google__imagen-4/widescreen-landscape.png) 
 
@@ -190,8 +190,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 **Portrait Format**  — Vertical portrait-style image 
 
-* [ TypeScript ](#tab-panel-536)
-* [ cURL ](#tab-panel-537)
+* [ TypeScript ](#tab-panel-554)
+* [ cURL ](#tab-panel-555)
 
 TypeScript
 
@@ -203,9 +203,9 @@ const response = await env.AI.run(
 
   {
 
-    aspect_ratio: '9:16',
-
     prompt: 'An elegant Art Deco poster featuring a jazz singer under a spotlight',
+
+    aspect_ratio: '9:16',
 
   },
 
@@ -232,9 +232,9 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
   "input": {
 
-    "aspect_ratio": "9:16",
+    "prompt": "An elegant Art Deco poster featuring a jazz singer under a spotlight",
 
-    "prompt": "An elegant Art Deco poster featuring a jazz singer under a spotlight"
+    "aspect_ratio": "9:16"
 
   }
 
@@ -243,8 +243,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 ```
 
-* [ Output ](#tab-panel-534)
-* [ Raw response ](#tab-panel-535)
+* [ Output ](#tab-panel-552)
+* [ Raw response ](#tab-panel-553)
 
 ![Portrait Format](https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/google__imagen-4/portrait-format.png) 
 
@@ -273,8 +273,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 **With People**  — Allow generation of adult people 
 
-* [ TypeScript ](#tab-panel-540)
-* [ cURL ](#tab-panel-541)
+* [ TypeScript ](#tab-panel-558)
+* [ cURL ](#tab-panel-559)
 
 TypeScript
 
@@ -286,9 +286,9 @@ const response = await env.AI.run(
 
   {
 
-    person_generation: 'allow_adult',
-
     prompt: 'A chef preparing sushi in a traditional Japanese kitchen, detailed close-up',
+
+    person_generation: 'allow_adult',
 
   },
 
@@ -315,9 +315,9 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
   "input": {
 
-    "person_generation": "allow_adult",
+    "prompt": "A chef preparing sushi in a traditional Japanese kitchen, detailed close-up",
 
-    "prompt": "A chef preparing sushi in a traditional Japanese kitchen, detailed close-up"
+    "person_generation": "allow_adult"
 
   }
 
@@ -326,8 +326,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 ```
 
-* [ Output ](#tab-panel-538)
-* [ Raw response ](#tab-panel-539)
+* [ Output ](#tab-panel-556)
+* [ Raw response ](#tab-panel-557)
 
 ![With People](https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/google__imagen-4/with-people.png) 
 
@@ -356,8 +356,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 **Product Photo**  — Square product photography 
 
-* [ TypeScript ](#tab-panel-544)
-* [ cURL ](#tab-panel-545)
+* [ TypeScript ](#tab-panel-562)
+* [ cURL ](#tab-panel-563)
 
 TypeScript
 
@@ -369,11 +369,11 @@ const response = await env.AI.run(
 
   {
 
-    aspect_ratio: '1:1',
-
     prompt:
 
       'A sleek wireless headphone on a minimalist white marble surface with soft studio lighting',
+
+    aspect_ratio: '1:1',
 
   },
 
@@ -400,9 +400,9 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
   "input": {
 
-    "aspect_ratio": "1:1",
+    "prompt": "A sleek wireless headphone on a minimalist white marble surface with soft studio lighting",
 
-    "prompt": "A sleek wireless headphone on a minimalist white marble surface with soft studio lighting"
+    "aspect_ratio": "1:1"
 
   }
 
@@ -411,8 +411,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 ```
 
-* [ Output ](#tab-panel-542)
-* [ Raw response ](#tab-panel-543)
+* [ Output ](#tab-panel-560)
+* [ Raw response ](#tab-panel-561)
 
 ![Product Photo](https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/google__imagen-4/product-photo.png) 
 
@@ -441,8 +441,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 ## Parameters
 
-* [ Input ](#tab-panel-546)
-* [ Output ](#tab-panel-547)
+* [ Input ](#tab-panel-564)
+* [ Output ](#tab-panel-565)
 
 aspect\_ratio
 

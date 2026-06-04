@@ -142,7 +142,7 @@ The process to establish IPsec tunnels on Cisco IOS XE involves the following st
 * Policy-Based Routing (recommended)
 * Health Tracking - IP SLA (recommended)
 
-### Virtual Tunnel Interfaces
+### Virtual tunnel interfaces
 
 Add one Virtual Tunnel Interface per IPsec tunnel to facilitate routing to Cloudflare.
 
@@ -226,7 +226,7 @@ crypto ikev2 proposal CF_WAN_IKEV2_PROP
 
 ```
 
-Note
+Tip
 
 Simply add/remove `pqc mlkem768` from the proposal to enable/disable Post-Quantum Cryptography.
 
@@ -439,7 +439,7 @@ crypto ipsec profile CF_WAN_TUN_02_IPSEC_PROF
 
 ```
 
-### Bind IPsec Profiles to tunnel interfaces
+### Bind IPsec profiles to tunnel interfaces
 
 Bind the IPsec profiles to the corresponding Virtual Tunnel Interfaces to instantiate the IPsec tunnels:
 
@@ -644,6 +644,10 @@ track 2 ip sla 2 reachability
 show crypto ikev2 sa detailed
 
 
+```
+
+```
+
  IPv4 Crypto IKEv2  SA
 
 
@@ -733,7 +737,7 @@ no shutdown
 
 ```
 
-### Policy-Based Routing
+### Policy-based routing
 
 * Display Route Map details. Ensure the counters increment to confirm whether traffic matches the policy (`CF_WAN_PBR_ALL`):
 
@@ -741,6 +745,10 @@ no shutdown
 
 show route-map CF_WAN_PBR_RM
 
+
+```
+
+```
 
 route-map CF_WAN_PBR_RM, permit, sequence 10
 
@@ -807,6 +815,11 @@ S*    0.0.0.0/0 [1/0] via 169.254.250.0
 
 show ip cef vrf CF_WAN_PBR_VRF 0.0.0.0/0
 
+
+```
+
+```
+
 0.0.0.0/0
 
   nexthop 169.254.250.0 Tunnel1
@@ -816,13 +829,18 @@ show ip cef vrf CF_WAN_PBR_VRF 0.0.0.0/0
 
 ```
 
-#### Health Tracking - IP SLA
+#### Health tracking - IP SLA
 
 * Display `track` object state:
 
 ```
 
 show track brief
+
+
+```
+
+```
 
 Track Type        Instance                   Parameter        State Last Change
 
@@ -838,6 +856,11 @@ Track Type        Instance                   Parameter        State Last Change
 ```
 
 show ip sla statistics
+
+
+```
+
+```
 
 IPSLAs Latest Operation Statistics
 

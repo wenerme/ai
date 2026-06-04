@@ -22,11 +22,11 @@ Watermark profile has many customizable options. However, the default parameters
 
 ### Step 1: Create a profile
 
-* [ REST API ](#tab-panel-8364)
-* [ Workers Binding API ](#tab-panel-8365)
+* [ REST API ](#tab-panel-10029)
+* [ Workers Binding API ](#tab-panel-10030)
 
-* [ cURL ](#tab-panel-8328)
-* [ TypeScript ](#tab-panel-8329)
+* [ cURL ](#tab-panel-9993)
+* [ TypeScript ](#tab-panel-9994)
 
 Terminal window
 
@@ -69,8 +69,8 @@ const watermark = await client.stream.watermarks.create({
 
 See the full Stream [REST API and SDK reference](https://developers.cloudflare.com/api/resources/stream/) for details on using REST API from external applications, with pre-generated SDK's for external TypeScript, Python, or Go applications.
 
-* [ index.ts ](#tab-panel-8330)
-* [ wrangler.jsonc ](#tab-panel-8331)
+* [ index.ts ](#tab-panel-9995)
+* [ wrangler.jsonc ](#tab-panel-9996)
 
 TypeScript
 
@@ -132,11 +132,11 @@ See the full [Workers Stream binding API reference](https://developers.cloudflar
 
 ### Step 2: Specify the profile UID at upload
 
-* [ REST API ](#tab-panel-8366)
-* [ Workers Binding API ](#tab-panel-8367)
+* [ REST API ](#tab-panel-10031)
+* [ Workers Binding API ](#tab-panel-10032)
 
-* [ cURL ](#tab-panel-8332)
-* [ TypeScript ](#tab-panel-8333)
+* [ cURL ](#tab-panel-9997)
+* [ TypeScript ](#tab-panel-9998)
 
 Terminal window
 
@@ -181,8 +181,8 @@ const video = await client.stream.copy.create({
 
 See the full Stream [REST API and SDK reference](https://developers.cloudflare.com/api/resources/stream/) for details on using REST API from external applications, with pre-generated SDK's for external TypeScript, Python, or Go applications.
 
-* [ index.ts ](#tab-panel-8334)
-* [ wrangler.jsonc ](#tab-panel-8335)
+* [ index.ts ](#tab-panel-9999)
+* [ wrangler.jsonc ](#tab-panel-10000)
 
 TypeScript
 
@@ -271,11 +271,11 @@ To create, list, delete, or get information about the profile, you will need you
 
 To upload the image directly, please send a POST request using `multipart/form-data` as the content-type and specify the file under the `file` key. All other fields are optional.
 
-* [ REST API ](#tab-panel-8368)
-* [ Workers Binding API ](#tab-panel-8369)
+* [ REST API ](#tab-panel-10033)
+* [ Workers Binding API ](#tab-panel-10034)
 
-* [ cURL ](#tab-panel-8336)
-* [ TypeScript ](#tab-panel-8337)
+* [ cURL ](#tab-panel-10001)
+* [ TypeScript ](#tab-panel-10002)
 
 Terminal window
 
@@ -336,8 +336,8 @@ const watermark = await client.stream.watermarks.create({
 
 See the full Stream [REST API and SDK reference](https://developers.cloudflare.com/api/resources/stream/) for details on using REST API from external applications, with pre-generated SDK's for external TypeScript, Python, or Go applications.
 
-* [ index.ts ](#tab-panel-8338)
-* [ wrangler.jsonc ](#tab-panel-8339)
+* [ index.ts ](#tab-panel-10003)
+* [ wrangler.jsonc ](#tab-panel-10004)
 
 TypeScript
 
@@ -409,11 +409,11 @@ See the full [Workers Stream binding API reference](https://developers.cloudflar
 
 To specify a URL for upload, please send a POST request using `application/json` as the content-type and specify the file location using the `url` key. All other fields are optional.
 
-* [ Workers Binding API ](#tab-panel-8370)
-* [ REST API ](#tab-panel-8371)
+* [ Workers Binding API ](#tab-panel-10035)
+* [ REST API ](#tab-panel-10036)
 
-* [ index.ts ](#tab-panel-8340)
-* [ wrangler.jsonc ](#tab-panel-8341)
+* [ index.ts ](#tab-panel-10005)
+* [ wrangler.jsonc ](#tab-panel-10006)
 
 TypeScript
 
@@ -483,8 +483,8 @@ export default {
 
 See the full [Workers Stream binding API reference](https://developers.cloudflare.com/stream/manage-video-library/bindings/).
 
-* [ cURL ](#tab-panel-8342)
-* [ TypeScript ](#tab-panel-8343)
+* [ cURL ](#tab-panel-10007)
+* [ TypeScript ](#tab-panel-10008)
 
 Terminal window
 
@@ -610,11 +610,11 @@ Unfortunately, Stream does not currently support specifying watermark profile at
 
 ### Upload video with a link
 
-* [ Workers Binding API ](#tab-panel-8372)
-* [ REST API ](#tab-panel-8373)
+* [ Workers Binding API ](#tab-panel-10037)
+* [ REST API ](#tab-panel-10038)
 
-* [ index.ts ](#tab-panel-8344)
-* [ wrangler.jsonc ](#tab-panel-8345)
+* [ index.ts ](#tab-panel-10009)
+* [ wrangler.jsonc ](#tab-panel-10010)
 
 TypeScript
 
@@ -672,8 +672,8 @@ export default {
 
 See the full [Workers Stream binding API reference](https://developers.cloudflare.com/stream/manage-video-library/bindings/).
 
-* [ cURL ](#tab-panel-8346)
-* [ TypeScript ](#tab-panel-8347)
+* [ cURL ](#tab-panel-10011)
+* [ TypeScript ](#tab-panel-10012)
 
 Terminal window
 
@@ -802,11 +802,11 @@ tus-upload --chunk-size 5242880 \
 
 The video uploaded with the generated unique one-time URL will be watermarked with the profile specified.
 
-* [ Workers Binding API ](#tab-panel-8374)
-* [ REST API ](#tab-panel-8375)
+* [ Workers Binding API ](#tab-panel-10039)
+* [ REST API ](#tab-panel-10040)
 
-* [ index.ts ](#tab-panel-8348)
-* [ wrangler.jsonc ](#tab-panel-8349)
+* [ index.ts ](#tab-panel-10013)
+* [ wrangler.jsonc ](#tab-panel-10014)
 
 TypeScript
 
@@ -864,8 +864,8 @@ export default {
 
 See the full [Workers Stream binding API reference](https://developers.cloudflare.com/stream/manage-video-library/bindings/).
 
-* [ cURL ](#tab-panel-8350)
-* [ TypeScript ](#tab-panel-8351)
+* [ cURL ](#tab-panel-10015)
+* [ TypeScript ](#tab-panel-10016)
 
 Terminal window
 
@@ -977,11 +977,11 @@ See the full Stream [REST API and SDK reference](https://developers.cloudflare.c
 
 To view a watermark profile that you created:
 
-* [ Workers Binding API ](#tab-panel-8376)
-* [ REST API ](#tab-panel-8377)
+* [ Workers Binding API ](#tab-panel-10041)
+* [ REST API ](#tab-panel-10042)
 
-* [ index.ts ](#tab-panel-8352)
-* [ wrangler.jsonc ](#tab-panel-8353)
+* [ index.ts ](#tab-panel-10017)
+* [ wrangler.jsonc ](#tab-panel-10018)
 
 TypeScript
 
@@ -1033,8 +1033,8 @@ export default {
 
 See the full [Workers Stream binding API reference](https://developers.cloudflare.com/stream/manage-video-library/bindings/).
 
-* [ cURL ](#tab-panel-8354)
-* [ TypeScript ](#tab-panel-8355)
+* [ cURL ](#tab-panel-10019)
+* [ TypeScript ](#tab-panel-10020)
 
 Terminal window
 
@@ -1120,11 +1120,11 @@ See the full Stream [REST API and SDK reference](https://developers.cloudflare.c
 
 To list watermark profiles that you created:
 
-* [ Workers Binding API ](#tab-panel-8378)
-* [ REST API ](#tab-panel-8379)
+* [ Workers Binding API ](#tab-panel-10043)
+* [ REST API ](#tab-panel-10044)
 
-* [ index.ts ](#tab-panel-8356)
-* [ wrangler.jsonc ](#tab-panel-8357)
+* [ index.ts ](#tab-panel-10021)
+* [ wrangler.jsonc ](#tab-panel-10022)
 
 TypeScript
 
@@ -1176,8 +1176,8 @@ export default {
 
 See the full [Workers Stream binding API reference](https://developers.cloudflare.com/stream/manage-video-library/bindings/).
 
-* [ cURL ](#tab-panel-8358)
-* [ TypeScript ](#tab-panel-8359)
+* [ cURL ](#tab-panel-10023)
+* [ TypeScript ](#tab-panel-10024)
 
 Terminal window
 
@@ -1291,11 +1291,11 @@ See the full Stream [REST API and SDK reference](https://developers.cloudflare.c
 
 To delete a watermark profile that you created:
 
-* [ Workers Binding API ](#tab-panel-8380)
-* [ REST API ](#tab-panel-8381)
+* [ Workers Binding API ](#tab-panel-10045)
+* [ REST API ](#tab-panel-10046)
 
-* [ index.ts ](#tab-panel-8360)
-* [ wrangler.jsonc ](#tab-panel-8361)
+* [ index.ts ](#tab-panel-10025)
+* [ wrangler.jsonc ](#tab-panel-10026)
 
 TypeScript
 
@@ -1347,8 +1347,8 @@ export default {
 
 See the full [Workers Stream binding API reference](https://developers.cloudflare.com/stream/manage-video-library/bindings/).
 
-* [ cURL ](#tab-panel-8362)
-* [ TypeScript ](#tab-panel-8363)
+* [ cURL ](#tab-panel-10027)
+* [ TypeScript ](#tab-panel-10028)
 
 Terminal window
 

@@ -2,6 +2,12 @@
 
 The [prompt optimizer](https://platform.openai.com/chat/edit?optimize=true) is a chat interface in the dashboard, where you enter a prompt, and we optimize it according to current best practices before returning it to you. Pairing the prompt optimizer with [datasets](https://developers.openai.com/api/docs/guides/evaluation-getting-started) is a powerful way to automatically improve prompts.
 
+OpenAI is deprecating the dataset-backed prompt optimizer as part of the Evals
+  platform. Evals will become read-only for existing users on October 31, 2026,
+  and the platform is scheduled to shut down on November 30, 2026. See the
+  [deprecations page](https://developers.openai.com/api/docs/deprecations#2026-06-03-evals-platform) for the
+  current timeline.
+
 ## Prepare your data
 
 1. Set up a [dataset](https://developers.openai.com/api/docs/guides/evaluation-getting-started) containing the prompt you want to optimize and an evaluation dataset.

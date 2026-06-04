@@ -222,7 +222,7 @@ The Realtime API
 
 ### Meta-schemas
 
-Each meta-schema has a corresponding prompt which includes few-shot examples. When combined with the reliability of Structured Outputs — even without strict mode — we were able to use `gpt-4o-mini` for schema generation.
+Each meta-schema has a corresponding prompt which includes few-shot examples. When combined with the reliability of Structured Outputs — even without strict mode — we were able to generate schemas.
 
 export const soMetaSchema = {
         python:`
@@ -240,7 +240,7 @@ META_SCHEMA_PROMPT + "\n" + `""".strip()
 
 def generate_schema(description: str):
 completion = client.chat.completions.create(
-model="gpt-4o-mini",
+model="gpt-5.4-mini",
 response_format={"type": "json_schema", "json_schema": META_SCHEMA},
 messages=[
 {
@@ -275,7 +275,7 @@ FUNCTION_META_SCHEMA_PROMPT + "\n" + `""".strip()
 
 def generate_function_schema(description: str):
 completion = client.chat.completions.create(
-model="gpt-4o-mini",
+model="gpt-5.4-mini",
 response_format={"type": "json_schema", "json_schema": META_SCHEMA},
 messages=[
 {

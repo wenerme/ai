@@ -14,7 +14,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 #  aura-1 
 
-Text-to-Speech • Deepgram • Hosted 
+Text-to-Speech • Deepgram 
 
 `@cf/deepgram/aura-1` 
 
@@ -30,8 +30,8 @@ Aura is a context-aware text-to-speech (TTS) model that applies natural pacing, 
 
 ## Usage
 
-* [  TypeScript ](#tab-panel-2438)
-* [  curl ](#tab-panel-2439)
+* [  TypeScript ](#tab-panel-4174)
+* [  curl ](#tab-panel-4175)
 
 ```
 
@@ -74,8 +74,8 @@ curl --request POST   --url 'https://api.cloudflare.com/client/v4/accounts/{ACCO
 
 ## Parameters
 
-* [ Input ](#tab-panel-2440)
-* [ Output ](#tab-panel-2441)
+* [ Input ](#tab-panel-4176)
+* [ Output ](#tab-panel-4177)
 
 speaker
 

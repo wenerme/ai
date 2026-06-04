@@ -14,7 +14,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 #  qwen3-embedding-0.6b 
 
-Text Embeddings • Qwen • Hosted 
+Text Embeddings • Qwen 
 
 `@cf/qwen/qwen3-embedding-0.6b` 
 
@@ -27,9 +27,9 @@ The Qwen3 Embedding model series is the latest proprietary model of the Qwen fam
 
 ## Usage
 
-* [  TypeScript ](#tab-panel-2822)
-* [  Python ](#tab-panel-2823)
-* [  curl ](#tab-panel-2824)
+* [  TypeScript ](#tab-panel-4498)
+* [  Python ](#tab-panel-4499)
+* [  curl ](#tab-panel-4500)
 
 ```
 
@@ -140,8 +140,8 @@ Workers AI also supports OpenAI compatible API endpoints for `/v1/chat/completio
 
 ## Parameters
 
-* [ Input ](#tab-panel-2825)
-* [ Output ](#tab-panel-2826)
+* [ Input ](#tab-panel-4501)
+* [ Output ](#tab-panel-4502)
 
 ▶queries
 

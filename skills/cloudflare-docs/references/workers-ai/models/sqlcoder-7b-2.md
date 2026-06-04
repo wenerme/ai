@@ -14,7 +14,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 #  sqlcoder-7b-2 Beta 
 
-Text Generation • Defog • Hosted 
+Text Generation • Defog 
 
 `@cf/defog/sqlcoder-7b-2` 
 
@@ -22,7 +22,7 @@ This model is intended to be used by non-technical users to understand data insi
 
 | Model Info                                                                 |                                                                  |
 | -------------------------------------------------------------------------- | ---------------------------------------------------------------- |
-| Planned Deprecation                                                        | 5/30/2026                                                        |
+| Deprecated                                                                 | 5/30/2026                                                        |
 | Context Window[ ↗](https://developers.cloudflare.com/workers-ai/glossary/) | 10,000 tokens                                                    |
 | Terms and License                                                          | [link ↗](https://creativecommons.org/licenses/by-sa/4.0/deed.en) |
 | More information                                                           | [link ↗](https://huggingface.co/defog/sqlcoder-7b-2)             |
@@ -36,10 +36,10 @@ Try out this model with Workers AI LLM Playground. It does not require any setup
 
 ## Usage
 
-* [  Worker (Streaming) ](#tab-panel-3063)
-* [  TypeScript ](#tab-panel-3064)
-* [  Python ](#tab-panel-3065)
-* [  curl ](#tab-panel-3066)
+* [  Worker (Streaming) ](#tab-panel-4513)
+* [  TypeScript ](#tab-panel-4514)
+* [  Python ](#tab-panel-4515)
+* [  curl ](#tab-panel-4516)
 
 TypeScript
 

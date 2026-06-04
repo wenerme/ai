@@ -14,7 +14,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 #  Grok 4.20 Multi-Agent 
 
-Text Generation • xAI • Proxied 
+Text Generation • xAI 
 
 `xai/grok-4.20-multi-agent-0309` 
 

@@ -14,7 +14,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 #  embeddinggemma-300m 
 
-Text Embeddings • Google • Hosted 
+Text Embeddings • Google 
 
 `@cf/google/embeddinggemma-300m` 
 
@@ -22,9 +22,9 @@ EmbeddingGemma is a 300M parameter, state-of-the-art for its size, open embeddin
 
 ## Usage
 
-* [  TypeScript ](#tab-panel-2516)
-* [  Python ](#tab-panel-2517)
-* [  curl ](#tab-panel-2518)
+* [  TypeScript ](#tab-panel-4236)
+* [  Python ](#tab-panel-4237)
+* [  curl ](#tab-panel-4238)
 
 ```
 
@@ -135,8 +135,8 @@ Workers AI also supports OpenAI compatible API endpoints for `/v1/chat/completio
 
 ## Parameters
 
-* [ Input ](#tab-panel-2519)
-* [ Output ](#tab-panel-2520)
+* [ Input ](#tab-panel-4239)
+* [ Output ](#tab-panel-4240)
 
 ▶text
 

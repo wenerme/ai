@@ -14,7 +14,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 #  Claude Opus 4.7 
 
-Text Generation • Anthropic • Proxied 
+Text Generation • Anthropic 
 
 `anthropic/claude-opus-4.7` 
 

@@ -14,7 +14,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 #  gemma-3-12b-it 
 
-Text Generation • Google • Hosted 
+Text Generation • Google 
 
 `@cf/google/gemma-3-12b-it` 
 
@@ -22,7 +22,7 @@ Gemma 3 models are well-suited for a variety of text generation and image unders
 
 | Model Info                                                                 |                                                     |
 | -------------------------------------------------------------------------- | --------------------------------------------------- |
-| Planned Deprecation                                                        | 5/30/2026                                           |
+| Deprecated                                                                 | 5/30/2026                                           |
 | Context Window[ ↗](https://developers.cloudflare.com/workers-ai/glossary/) | 80,000 tokens                                       |
 | LoRA                                                                       | Yes                                                 |
 | Unit Pricing                                                               | $0.35 per M input tokens, $0.56 per M output tokens |
@@ -35,10 +35,10 @@ Try out this model with Workers AI LLM Playground. It does not require any setup
 
 ## Usage
 
-* [  Worker (Streaming) ](#tab-panel-2814)
-* [  TypeScript ](#tab-panel-2815)
-* [  Python ](#tab-panel-2816)
-* [  curl ](#tab-panel-2817)
+* [  Worker (Streaming) ](#tab-panel-4264)
+* [  TypeScript ](#tab-panel-4265)
+* [  Python ](#tab-panel-4266)
+* [  curl ](#tab-panel-4267)
 
 TypeScript
 

@@ -87,9 +87,9 @@ The Cloudflare Agents SDK provides the infrastructure for building production ag
 
 [ Quick start ](https://developers.cloudflare.com/agents/getting-started/quick-start/) Build your first agent in 10 minutes. 
 
-[ Agents API ](https://developers.cloudflare.com/agents/api-reference/agents-api/) Complete API reference for the Agents SDK. 
+[ Agents API ](https://developers.cloudflare.com/agents/runtime/agents-api/) Complete API reference for the Agents SDK. 
 
-[ Using AI models ](https://developers.cloudflare.com/agents/api-reference/using-ai-models/) Integrate OpenAI, Anthropic, and other providers. 
+[ Using AI models ](https://developers.cloudflare.com/agents/runtime/operations/using-ai-models/) Integrate OpenAI, Anthropic, and other providers. 
 
 ```json
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/agents/","name":"Agents"}},{"@type":"ListItem","position":3,"item":{"@id":"/agents/concepts/","name":"Concepts"}},{"@type":"ListItem","position":4,"item":{"@id":"/agents/concepts/what-are-agents/","name":"What are agents?"}}]}

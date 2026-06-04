@@ -14,7 +14,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 #  Veo 3 Fast 
 
-Text-to-Video • Google • Proxied 
+Text-to-Video • Google 
 
 `google/veo-3-fast` 
 
@@ -28,8 +28,8 @@ A faster version of Veo 3 optimized for lower latency video generation with audi
 
 ## Usage
 
-* [ TypeScript ](#tab-panel-632)
-* [ cURL ](#tab-panel-633)
+* [ TypeScript ](#tab-panel-650)
+* [ cURL ](#tab-panel-651)
 
 TypeScript
 
@@ -41,13 +41,13 @@ const response = await env.AI.run(
 
   {
 
+    prompt: 'Ocean waves crashing on a rocky shoreline at sunset',
+
     aspect_ratio: '16:9',
 
     duration: '6s',
 
     generate_audio: true,
-
-    prompt: 'Ocean waves crashing on a rocky shoreline at sunset',
 
     resolution: '720p',
 
@@ -76,13 +76,13 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
   "input": {
 
+    "prompt": "Ocean waves crashing on a rocky shoreline at sunset",
+
     "aspect_ratio": "16:9",
 
     "duration": "6s",
 
     "generate_audio": true,
-
-    "prompt": "Ocean waves crashing on a rocky shoreline at sunset",
 
     "resolution": "720p"
 
@@ -93,8 +93,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 ```
 
-* [ Output ](#tab-panel-628)
-* [ Raw response ](#tab-panel-629)
+* [ Output ](#tab-panel-646)
+* [ Raw response ](#tab-panel-647)
 
 ```
 
@@ -123,8 +123,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 **Social Media Clip**  — Quick vertical video for stories 
 
-* [ TypeScript ](#tab-panel-636)
-* [ cURL ](#tab-panel-637)
+* [ TypeScript ](#tab-panel-654)
+* [ cURL ](#tab-panel-655)
 
 TypeScript
 
@@ -136,13 +136,13 @@ const response = await env.AI.run(
 
   {
 
+    prompt: 'A coffee cup with steam rising, cozy cafe atmosphere',
+
     aspect_ratio: '9:16',
 
     duration: '4s',
 
     generate_audio: true,
-
-    prompt: 'A coffee cup with steam rising, cozy cafe atmosphere',
 
     resolution: '720p',
 
@@ -171,13 +171,13 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
   "input": {
 
+    "prompt": "A coffee cup with steam rising, cozy cafe atmosphere",
+
     "aspect_ratio": "9:16",
 
     "duration": "4s",
 
     "generate_audio": true,
-
-    "prompt": "A coffee cup with steam rising, cozy cafe atmosphere",
 
     "resolution": "720p"
 
@@ -188,8 +188,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 ```
 
-* [ Output ](#tab-panel-630)
-* [ Raw response ](#tab-panel-631)
+* [ Output ](#tab-panel-648)
+* [ Raw response ](#tab-panel-649)
 
 ```
 
@@ -216,8 +216,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 **Animated Loop**  — Short loopable animation 
 
-* [ TypeScript ](#tab-panel-640)
-* [ cURL ](#tab-panel-641)
+* [ TypeScript ](#tab-panel-658)
+* [ cURL ](#tab-panel-659)
 
 TypeScript
 
@@ -229,13 +229,13 @@ const response = await env.AI.run(
 
   {
 
+    prompt: 'A campfire burning with flames dancing and sparks floating upward, seamless loop',
+
     aspect_ratio: '16:9',
 
     duration: '4s',
 
     generate_audio: true,
-
-    prompt: 'A campfire burning with flames dancing and sparks floating upward, seamless loop',
 
     resolution: '720p',
 
@@ -264,13 +264,13 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
   "input": {
 
+    "prompt": "A campfire burning with flames dancing and sparks floating upward, seamless loop",
+
     "aspect_ratio": "16:9",
 
     "duration": "4s",
 
     "generate_audio": true,
-
-    "prompt": "A campfire burning with flames dancing and sparks floating upward, seamless loop",
 
     "resolution": "720p"
 
@@ -281,8 +281,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 ```
 
-* [ Output ](#tab-panel-634)
-* [ Raw response ](#tab-panel-635)
+* [ Output ](#tab-panel-652)
+* [ Raw response ](#tab-panel-653)
 
 ```
 
@@ -309,8 +309,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 **Product Shot**  — Quick product video preview 
 
-* [ TypeScript ](#tab-panel-642)
-* [ cURL ](#tab-panel-643)
+* [ TypeScript ](#tab-panel-660)
+* [ cURL ](#tab-panel-661)
 
 TypeScript
 
@@ -322,13 +322,13 @@ const response = await env.AI.run(
 
   {
 
+    prompt: 'A smartphone rotating on a dark surface with dramatic lighting',
+
     aspect_ratio: '16:9',
 
     duration: '6s',
 
     generate_audio: false,
-
-    prompt: 'A smartphone rotating on a dark surface with dramatic lighting',
 
     resolution: '720p',
 
@@ -357,13 +357,13 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
   "input": {
 
+    "prompt": "A smartphone rotating on a dark surface with dramatic lighting",
+
     "aspect_ratio": "16:9",
 
     "duration": "6s",
 
     "generate_audio": false,
-
-    "prompt": "A smartphone rotating on a dark surface with dramatic lighting",
 
     "resolution": "720p"
 
@@ -374,8 +374,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 ```
 
-* [ Output ](#tab-panel-638)
-* [ Raw response ](#tab-panel-639)
+* [ Output ](#tab-panel-656)
+* [ Raw response ](#tab-panel-657)
 
 ```
 
@@ -402,8 +402,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 ## Parameters
 
-* [ Input ](#tab-panel-644)
-* [ Output ](#tab-panel-645)
+* [ Input ](#tab-panel-662)
+* [ Output ](#tab-panel-663)
 
 aspect\_ratio
 

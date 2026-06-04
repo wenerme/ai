@@ -14,7 +14,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 #  stable-diffusion-xl-base-1.0 Beta 
 
-Text-to-Image • Stability.ai • Hosted 
+Text-to-Image • Stability.ai 
 
 `@cf/stabilityai/stable-diffusion-xl-base-1.0` 
 
@@ -29,8 +29,8 @@ Diffusion-based text-to-image generative model by Stability AI. Generates and mo
 
 ## Usage
 
-* [  TypeScript ](#tab-panel-2849)
-* [  curl ](#tab-panel-2850)
+* [  TypeScript ](#tab-panel-4525)
+* [  curl ](#tab-panel-4526)
 
 ```
 
@@ -96,8 +96,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 ## Parameters
 
-* [ Input ](#tab-panel-2851)
-* [ Output ](#tab-panel-2852)
+* [ Input ](#tab-panel-4527)
+* [ Output ](#tab-panel-4528)
 
 prompt
 

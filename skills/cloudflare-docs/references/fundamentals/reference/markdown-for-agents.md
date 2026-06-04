@@ -39,8 +39,8 @@ curl https://developers.cloudflare.com/fundamentals/reference/markdown-for-agent
 
 Or if you’re building an AI Agent using Workers, you can use TypeScript:
 
-* [  JavaScript ](#tab-panel-6357)
-* [  TypeScript ](#tab-panel-6358)
+* [  JavaScript ](#tab-panel-7948)
+* [  TypeScript ](#tab-panel-7949)
 
 JavaScript
 
@@ -227,9 +227,9 @@ Example output:
 
 ## How to enable
 
-* [ Dashboard ](#tab-panel-6354)
-* [ API ](#tab-panel-6355)
-* [ Custom Hostnames ](#tab-panel-6356)
+* [ Dashboard ](#tab-panel-7945)
+* [ API ](#tab-panel-7946)
+* [ Custom Hostnames ](#tab-panel-7947)
 
 To enable Markdown for Agents for your zone in the dashboard:
 
@@ -417,7 +417,6 @@ curl https://blog.cloudflare.com/markdown-for-agents/ \
 
 * We only convert from HTML, other types of documents may be included in the future.
 * The origin response cannot exceed 2 MB (2,097,152 bytes).
-* If the feature is enabled but responses are still `text/html`, contact [Cloudflare Support](https://developers.cloudflare.com/support/contacting-cloudflare-support/) to verify your zone's compatibility.
 
 ## Other Markdown conversion APIs
 

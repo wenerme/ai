@@ -464,7 +464,7 @@ A realistic sounding answer to the question can be created with the completion e
 ```python
 def answer_question(
     df,
-    model="gpt-3.5-turbo",
+    model="gpt-3.5-turbo-instruct",
     question="Am I allowed to publish model outputs to Twitter, without a human review?",
     max_len=1800,
     size="ada",
@@ -487,13 +487,10 @@ def answer_question(
         print("\n\n")
 
     try:
-        # Create a chat completion using the question and context
-        response = client.chat.completions.create(
-            model="gpt-3.5-turbo",
-            messages=[
-                {"role": "system", "content": "Answer the question based on the context below, and if the question can't be answered based on the context, say \"I don't know\"\n\n"},
-                {"role": "user", f"content": "Context: {context}\n\n---\n\nQuestion: {question}\nAnswer:"}
-            ],
+        # Create a completion using the question and context
+        response = client.completions.create(
+            model=model,
+            prompt=f"Answer the question based on the context below, and if the question can't be answered based on the context, say \"I don't know\"\n\nContext: {context}\n\n---\n\nQuestion: {question}\nAnswer:",
             temperature=0,
             max_tokens=max_tokens,
             top_p=1,
@@ -501,7 +498,7 @@ def answer_question(
             presence_penalty=0,
             stop=stop_sequence,
         )
-        return response.choices[0].message.strip()
+        return response.choices[0].text.strip()
     except Exception as e:
         print(e)
         return ""

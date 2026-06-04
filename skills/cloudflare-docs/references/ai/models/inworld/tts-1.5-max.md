@@ -14,7 +14,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 #  Inworld TTS 1.5 Max 
 
-Text-to-Speech • Inworld • Proxied 
+Text-to-Speech • Inworld 
 
 `inworld/tts-1.5-max` 
 
@@ -28,8 +28,8 @@ Highest-quality text-to-speech with under 200ms latency, emotion control, and 15
 
 ## Usage
 
-* [ TypeScript ](#tab-panel-686)
-* [ cURL ](#tab-panel-687)
+* [ TypeScript ](#tab-panel-704)
+* [ cURL ](#tab-panel-705)
 
 TypeScript
 
@@ -93,8 +93,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 ```
 
-* [ Output ](#tab-panel-682)
-* [ Raw response ](#tab-panel-683)
+* [ Output ](#tab-panel-700)
+* [ Raw response ](#tab-panel-701)
 
 ```
 
@@ -123,8 +123,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 **Slow Narration**  — Slower speech for narration 
 
-* [ TypeScript ](#tab-panel-690)
-* [ cURL ](#tab-panel-691)
+* [ TypeScript ](#tab-panel-708)
+* [ cURL ](#tab-panel-709)
 
 TypeScript
 
@@ -192,8 +192,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 ```
 
-* [ Output ](#tab-panel-684)
-* [ Raw response ](#tab-panel-685)
+* [ Output ](#tab-panel-702)
+* [ Raw response ](#tab-panel-703)
 
 ```
 
@@ -220,8 +220,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 **High Quality Audio**  — Higher sample rate for studio quality 
 
-* [ TypeScript ](#tab-panel-694)
-* [ cURL ](#tab-panel-695)
+* [ TypeScript ](#tab-panel-712)
+* [ cURL ](#tab-panel-713)
 
 TypeScript
 
@@ -289,8 +289,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 ```
 
-* [ Output ](#tab-panel-688)
-* [ Raw response ](#tab-panel-689)
+* [ Output ](#tab-panel-706)
+* [ Raw response ](#tab-panel-707)
 
 ```
 
@@ -317,8 +317,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 **With Text Normalization**  — Expand numbers and abbreviations before synthesis 
 
-* [ TypeScript ](#tab-panel-696)
-* [ cURL ](#tab-panel-697)
+* [ TypeScript ](#tab-panel-714)
+* [ cURL ](#tab-panel-715)
 
 TypeScript
 
@@ -386,8 +386,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 ```
 
-* [ Output ](#tab-panel-692)
-* [ Raw response ](#tab-panel-693)
+* [ Output ](#tab-panel-710)
+* [ Raw response ](#tab-panel-711)
 
 ```
 
@@ -414,8 +414,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 ## Parameters
 
-* [ Input ](#tab-panel-698)
-* [ Output ](#tab-panel-699)
+* [ Input ](#tab-panel-716)
+* [ Output ](#tab-panel-717)
 
 apply\_text\_normalization
 

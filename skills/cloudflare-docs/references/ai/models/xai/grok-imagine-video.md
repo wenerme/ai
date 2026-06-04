@@ -14,7 +14,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 #  Grok Imagine Video 
 
-Text-to-Video • xAI • Proxied 
+Text-to-Video • xAI 
 
 `xai/grok-imagine-video` 
 
@@ -28,8 +28,8 @@ xAI's video generation model. Generates, edits, and extends videos from text and
 
 ## Usage
 
-* [ TypeScript ](#tab-panel-1498)
-* [ cURL ](#tab-panel-1499)
+* [ TypeScript ](#tab-panel-1686)
+* [ cURL ](#tab-panel-1687)
 
 TypeScript
 
@@ -41,11 +41,11 @@ const response = await env.AI.run(
 
   {
 
+    prompt: 'A golden retriever running through a field of sunflowers on a sunny day',
+
     aspect_ratio: '16:9',
 
     duration: 5,
-
-    prompt: 'A golden retriever running through a field of sunflowers on a sunny day',
 
     resolution: '720p',
 
@@ -74,11 +74,11 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
   "input": {
 
+    "prompt": "A golden retriever running through a field of sunflowers on a sunny day",
+
     "aspect_ratio": "16:9",
 
     "duration": 5,
-
-    "prompt": "A golden retriever running through a field of sunflowers on a sunny day",
 
     "resolution": "720p"
 
@@ -89,8 +89,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 ```
 
-* [ Output ](#tab-panel-1494)
-* [ Raw response ](#tab-panel-1495)
+* [ Output ](#tab-panel-1682)
+* [ Raw response ](#tab-panel-1683)
 
 ```
 
@@ -119,8 +119,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 **Portrait Video**  — Vertical video for social media 
 
-* [ TypeScript ](#tab-panel-1502)
-* [ cURL ](#tab-panel-1503)
+* [ TypeScript ](#tab-panel-1690)
+* [ cURL ](#tab-panel-1691)
 
 TypeScript
 
@@ -132,11 +132,11 @@ const response = await env.AI.run(
 
   {
 
+    prompt: 'Slow-motion close-up of ink drops blooming through water against a black background',
+
     aspect_ratio: '9:16',
 
     duration: 5,
-
-    prompt: 'Slow-motion close-up of ink drops blooming through water against a black background',
 
     resolution: '720p',
 
@@ -165,11 +165,11 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
   "input": {
 
+    "prompt": "Slow-motion close-up of ink drops blooming through water against a black background",
+
     "aspect_ratio": "9:16",
 
     "duration": 5,
-
-    "prompt": "Slow-motion close-up of ink drops blooming through water against a black background",
 
     "resolution": "720p"
 
@@ -180,8 +180,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 ```
 
-* [ Output ](#tab-panel-1496)
-* [ Raw response ](#tab-panel-1497)
+* [ Output ](#tab-panel-1684)
+* [ Raw response ](#tab-panel-1685)
 
 ```
 
@@ -208,8 +208,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 **Cinematic Landscape**  — Widescreen cinematic shot at extended duration 
 
-* [ TypeScript ](#tab-panel-1504)
-* [ cURL ](#tab-panel-1505)
+* [ TypeScript ](#tab-panel-1692)
+* [ cURL ](#tab-panel-1693)
 
 TypeScript
 
@@ -221,13 +221,13 @@ const response = await env.AI.run(
 
   {
 
-    aspect_ratio: '16:9',
-
-    duration: 10,
-
     prompt:
 
       'A wide drone shot over snow-covered mountain peaks at sunrise, dramatic lighting with low clouds',
+
+    aspect_ratio: '16:9',
+
+    duration: 10,
 
     resolution: '720p',
 
@@ -256,11 +256,11 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
   "input": {
 
+    "prompt": "A wide drone shot over snow-covered mountain peaks at sunrise, dramatic lighting with low clouds",
+
     "aspect_ratio": "16:9",
 
     "duration": 10,
-
-    "prompt": "A wide drone shot over snow-covered mountain peaks at sunrise, dramatic lighting with low clouds",
 
     "resolution": "720p"
 
@@ -271,8 +271,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 ```
 
-* [ Output ](#tab-panel-1500)
-* [ Raw response ](#tab-panel-1501)
+* [ Output ](#tab-panel-1688)
+* [ Raw response ](#tab-panel-1689)
 
 ```
 
@@ -299,8 +299,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 ## Parameters
 
-* [ Input ](#tab-panel-1506)
-* [ Output ](#tab-panel-1507)
+* [ Input ](#tab-panel-1694)
+* [ Output ](#tab-panel-1695)
 
 \_operation
 

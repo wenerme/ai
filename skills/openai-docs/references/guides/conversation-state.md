@@ -3,7 +3,7 @@
 OpenAI provides a few ways to manage conversation state, which is important for preserving information across multiple messages or turns in a conversation.
 
 
-  When troubleshooting cases where GPT-5.4 treats an intermediate update as
+  When troubleshooting cases where GPT-5.5 treats an intermediate update as
     the final answer, verify your integration preserves the assistant message
     `phase` field correctly. See [Phase
     parameter](https://developers.openai.com/api/docs/guides/reasoning#phase-parameter) for details.
@@ -23,7 +23,7 @@ import OpenAI from "openai";
 const openai = new OpenAI();
 
 const response = await openai.responses.create({
-    model: "gpt-4o-mini",
+    model: "gpt-5.5",
     input: [
         { role: "user", content: "knock knock." },
         { role: "assistant", content: "Who's there?" },
@@ -40,7 +40,7 @@ from openai import OpenAI
 client = OpenAI()
 
 response = client.responses.create(
-    model="gpt-4o-mini",
+    model="gpt-5.5",
     input=[
         {"role": "user", "content": "knock knock."},
         {"role": "assistant", "content": "Who's there?"},
@@ -77,22 +77,15 @@ let history = [
 ];
 
 const response = await openai.responses.create({
-    model: "gpt-4o-mini",
+    model: "gpt-5.5",
     input: history,
     store: true,
 });
 
 console.log(response.output_text);
 
-// Add the response to the history
-history = [
-    ...history,
-    ...response.output.map((el) => {
-        // TODO: Remove this step
-        delete el.id;
-        return el;
-    }),
-];
+// Add all response output items, including reasoning items, to the history
+history = [...history, ...response.output];
 
 history.push({
     role: "user",
@@ -100,7 +93,7 @@ history.push({
 });
 
 const secondResponse = await openai.responses.create({
-    model: "gpt-4o-mini",
+    model: "gpt-5.5",
     input: history,
     store: true,
 });
@@ -121,22 +114,24 @@ history = [
 ]
 
 response = client.responses.create(
-    model="gpt-4o-mini",
+    model="gpt-5.5",
     input=history,
-    store=False
+    store=False,
+    include=["reasoning.encrypted_content"],
 )
 
 print(response.output_text)
 
-# Add the response to the conversation
-history += [{"role": el.role, "content": el.content} for el in response.output]
+# Add all response output items, including encrypted reasoning items, to the conversation
+history += response.output
 
 history.append({ "role": "user", "content": "tell me another" })
 
 second_response = client.responses.create(
-    model="gpt-4o-mini",
+    model="gpt-5.5",
     input=history,
-    store=False
+    store=False,
+    include=["reasoning.encrypted_content"],
 )
 
 print(second_response.output_text)
@@ -171,7 +166,7 @@ In a multi-turn interaction, you can pass the `conversation` into subsequent res
 
 ```python
 response = openai.responses.create(
-  model="gpt-4.1",
+  model="gpt-5.5",
   input=[{"role": "user", "content": "What are the 5 Ds of dodgeball?"}],
   conversation="conv_689667905b048191b4740501625afd940c7533ace33a2dab"
 )
@@ -190,7 +185,7 @@ import OpenAI from "openai";
 const openai = new OpenAI();
 
 const response = await openai.responses.create({
-    model: "gpt-4o-mini",
+    model: "gpt-5.5",
     input: "tell me a joke",
     store: true,
 });
@@ -198,7 +193,7 @@ const response = await openai.responses.create({
 console.log(response.output_text);
 
 const secondResponse = await openai.responses.create({
-    model: "gpt-4o-mini",
+    model: "gpt-5.5",
     previous_response_id: response.id,
     input: [{"role": "user", "content": "explain why this is funny."}],
     store: true,
@@ -212,13 +207,13 @@ from openai import OpenAI
 client = OpenAI()
 
 response = client.responses.create(
-    model="gpt-4o-mini",
+    model="gpt-5.5",
     input="tell me a joke",
 )
 print(response.output_text)
 
 second_response = client.responses.create(
-    model="gpt-4o-mini",
+    model="gpt-5.5",
     previous_response_id=response.id,
     input=[{"role": "user", "content": "explain why this is funny."}],
 )
@@ -237,7 +232,7 @@ import OpenAI from "openai";
 const openai = new OpenAI();
 
 const response = await openai.responses.create({
-    model: "gpt-4o-mini",
+    model: "gpt-5.5",
     input: "tell me a joke",
     store: true,
 });
@@ -245,7 +240,7 @@ const response = await openai.responses.create({
 console.log(response.output_text);
 
 const secondResponse = await openai.responses.create({
-    model: "gpt-4o-mini",
+    model: "gpt-5.5",
     previous_response_id: response.id,
     input: [{"role": "user", "content": "explain why this is funny."}],
     store: true,
@@ -259,13 +254,13 @@ from openai import OpenAI
 client = OpenAI()
 
 response = client.responses.create(
-    model="gpt-4o-mini",
+    model="gpt-5.5",
     input="tell me a joke",
 )
 print(response.output_text)
 
 second_response = client.responses.create(
-    model="gpt-4o-mini",
+    model="gpt-5.5",
     previous_response_id=response.id,
     input=[{"role": "user", "content": "explain why this is funny."}],
 )

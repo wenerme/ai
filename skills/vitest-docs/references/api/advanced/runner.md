@@ -93,7 +93,7 @@ export interface VitestRunner {
   /**
    * Publicly available configuration.
    */
-  config: VitestRunnerConfig
+  config: SerializedConfig
   /**
    * The name of the current pool. Can affect how stack trace is inferred on the server side.
    */

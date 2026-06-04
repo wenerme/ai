@@ -220,6 +220,8 @@ If you are using Windows, you can find more details on how to use curl on Window
 
 Run the following command to send a standard HTTP GET request to your website (replace `www.example.com` with your hostname):
 
+Terminal window
+
 ```
 
 curl -svo /dev/null http://www.example.com/
@@ -239,6 +241,8 @@ View the sections below for tips on troubleshooting HTTP errors, performance, ca
 
 When troubleshooting HTTP errors in responses from Cloudflare, test whether your origin caused the errors by sending requests directly to your origin web server. To troubleshoot HTTP errors, run a curl directly to your origin web server IP address (bypassing Cloudflare’s proxy):
 
+Terminal window
+
 ```
 
 curl -svo /dev/null http://example.com --connect-to ::203.0.113.34
@@ -253,6 +257,8 @@ If you have multiple origin web servers, test each one to ensure there are no re
 #### Performance
 
 curl measures latency or performance degradation for HTTP/HTTPS requests via the [\-w or \--write-out curl option ↗](https://curl.haxx.se/docs/manpage.html#-w). The example curl below measures several performance vectors in the request transaction such as duration of the TLS handshake, DNS lookup, redirects, transfers, etc:
+
+Terminal window
 
 ```
 

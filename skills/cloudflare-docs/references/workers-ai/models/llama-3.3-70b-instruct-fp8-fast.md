@@ -14,7 +14,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 #  llama-3.3-70b-instruct-fp8-fast 
 
-Text Generation • Meta • Hosted 
+Text Generation • Meta 
 
 `@cf/meta/llama-3.3-70b-instruct-fp8-fast` 
 
@@ -36,10 +36,10 @@ Try out this model with Workers AI LLM Playground. It does not require any setup
 
 ## Usage
 
-* [  Worker (Streaming) ](#tab-panel-2691)
-* [  TypeScript ](#tab-panel-2692)
-* [  Python ](#tab-panel-2693)
-* [  curl ](#tab-panel-2694)
+* [  Worker (Streaming) ](#tab-panel-4403)
+* [  TypeScript ](#tab-panel-4404)
+* [  Python ](#tab-panel-4405)
+* [  curl ](#tab-panel-4406)
 
 TypeScript
 
@@ -198,8 +198,8 @@ Workers AI also supports OpenAI compatible API endpoints for `/v1/chat/completio
 
 Synchronous — Send a request and receive a complete response 
 
-* [ Input ](#tab-panel-2695)
-* [ Output ](#tab-panel-2696)
+* [ Input ](#tab-panel-4407)
+* [ Output ](#tab-panel-4408)
 
 prompt
 
@@ -267,8 +267,8 @@ response
 
 Streaming — Send a request with \`stream: true\` and receive server-sent events 
 
-* [ Input ](#tab-panel-2697)
-* [ Output ](#tab-panel-2698)
+* [ Input ](#tab-panel-4409)
+* [ Output ](#tab-panel-4410)
 
 prompt
 
@@ -336,8 +336,8 @@ format
 
 Batch — Send multiple requests in a single API call 
 
-* [ Input ](#tab-panel-2699)
-* [ Output ](#tab-panel-2700)
+* [ Input ](#tab-panel-4411)
+* [ Output ](#tab-panel-4412)
 
 ▶requests\[\]
 

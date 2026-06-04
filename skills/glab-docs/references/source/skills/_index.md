@@ -31,3 +31,4 @@ For more information, see
 
 - [`install`](install.md)
 - [`list`](list.md)
+- [`update`](update.md)

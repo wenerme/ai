@@ -229,16 +229,17 @@ members of your ChatGPT workspace from the Codex app.
 1. Open **Plugins** in the Codex app.
 2. Go to **Created by you** and open the plugin details page.
 3. Select **Share**.
-4. Add workspace members or copy a share link.
+4. Add workspace members or workspace groups, or copy a share link.
 5. Choose who has access, then send the invitation or link.
 
 People you share with can find the plugin under **Shared with you** in the
 plugin directory. Sharing a local plugin with your workspace doesn't publish
 it to the public Plugin Directory. Shared plugins stay within your workspace
 and organization boundary; accounts that aren't signed in to that workspace
-can't access them. Use a marketplace when you want repo or CLI distribution,
-and use workspace sharing when you want selected teammates to install a plugin
-from the Codex app.
+can't access them. Use groups when a team or role should share the same plugin
+access. Use a marketplace when you want repo or CLI distribution, and use
+workspace sharing when you want selected teammates to install a plugin from the
+Codex app.
 
 Workspace admins can disable plugin sharing from cloud-managed requirements by
 adding `plugin_sharing = false` to `requirements.toml`:

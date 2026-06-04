@@ -1,6 +1,6 @@
 # Model selection
 
-Choosing the right model, whether GPT-4o or a smaller option like GPT-4o-mini, requires balancing **accuracy**, **latency**, and **cost**. This guide explains key principles to help you make informed decisions, along with a practical example.
+Choosing the right model, whether [`gpt-5.5`](https://developers.openai.com/api/docs/models/gpt-5.5) or a smaller option like [`gpt-5.4-mini`](https://developers.openai.com/api/docs/models/gpt-5.4-mini), requires balancing **accuracy**, **latency**, and **cost**. This guide explains key principles to help you make informed decisions, along with a practical example.
 
 ## Core principles
 
@@ -57,7 +57,7 @@ Clear exceptions exist for these principles. If your use case is extremely cost 
 
 ## Practical example
 
-To demonstrate these principles, we'll develop a fake news classifier with the following target metrics:
+To demonstrate these principles, we'll develop a fake news classifier with the following target metrics. The experiment below uses historical GPT-4o-family results to show the workflow; for current evaluations, start with [`gpt-5.5`](https://developers.openai.com/api/docs/models/gpt-5.5) and compare against smaller or fine-tuned models.
 
 - **Accuracy:** Achieve 90% correct classification
 - **Cost:** Spend less than $5 per 1,000 articles
@@ -81,4 +81,4 @@ We ran three experiments to reach our goal:
 
 By switching from `gpt-4o` to `gpt-4o-mini` with fine-tuning, we achieved **equivalent performance for less than 2%** of the cost, using only 1,000 labeled examples.
 
-This process is important - you often can’t jump right to fine-tuning because you don’t know whether fine-tuning is the right tool for the optimization you need, or you don’t have enough labeled examples. Use `gpt-4o` to achieve your accuracy targets, and curate a good training set - then go for a smaller, more efficient model with fine-tuning.
+This process is important - you often can’t jump right to fine-tuning because you don’t know whether fine-tuning is the right tool for the optimization you need, or you don’t have enough labeled examples. Start with [`gpt-5.5`](https://developers.openai.com/api/docs/models/gpt-5.5) to establish your accuracy target, then test smaller or fine-tuned models when cost and latency matter.

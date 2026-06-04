@@ -14,7 +14,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 #  Claude Sonnet 4.6 
 
-Text Generation • Anthropic • Proxied 
+Text Generation • Anthropic 
 
 `anthropic/claude-sonnet-4.6` 
 

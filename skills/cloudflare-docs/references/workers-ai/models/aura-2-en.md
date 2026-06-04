@@ -14,7 +14,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 #  aura-2-en 
 
-Text-to-Speech • Deepgram • Hosted 
+Text-to-Speech • Deepgram 
 
 `@cf/deepgram/aura-2-en` 
 
@@ -30,8 +30,8 @@ Aura-2 is a context-aware text-to-speech (TTS) model that applies natural pacing
 
 ## Parameters
 
-* [ Input ](#tab-panel-2442)
-* [ Output ](#tab-panel-2443)
+* [ Input ](#tab-panel-4178)
+* [ Output ](#tab-panel-4179)
 
 speaker
 

@@ -14,7 +14,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 #  bart-large-cnn Beta 
 
-Summarization • Meta • Hosted 
+Summarization • Meta 
 
 `@cf/facebook/bart-large-cnn` 
 
@@ -28,8 +28,8 @@ BART is a transformer encoder-encoder (seq2seq) model with a bidirectional (BERT
 
 ## Usage
 
-* [  TypeScript ](#tab-panel-3818)
-* [  curl ](#tab-panel-3819)
+* [  TypeScript ](#tab-panel-4182)
+* [  curl ](#tab-panel-4183)
 
 ```
 
@@ -82,8 +82,8 @@ curl https://api.cloudflare.com/client/v4/accounts/{cf_account_id}/ai/run/@cf/fa
 
 ## Parameters
 
-* [ Input ](#tab-panel-3820)
-* [ Output ](#tab-panel-3821)
+* [ Input ](#tab-panel-4184)
+* [ Output ](#tab-panel-4185)
 
 input\_text
 

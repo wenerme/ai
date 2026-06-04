@@ -14,7 +14,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 #  stable-diffusion-xl-lightning Beta 
 
-Text-to-Image • ByteDance • Hosted 
+Text-to-Image • ByteDance 
 
 `@cf/bytedance/stable-diffusion-xl-lightning` 
 
@@ -28,8 +28,8 @@ SDXL-Lightning is a lightning-fast text-to-image generation model. It can genera
 
 ## Usage
 
-* [  TypeScript ](#tab-panel-2853)
-* [  curl ](#tab-panel-2854)
+* [  TypeScript ](#tab-panel-4529)
+* [  curl ](#tab-panel-4530)
 
 ```
 
@@ -95,8 +95,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 ## Parameters
 
-* [ Input ](#tab-panel-2855)
-* [ Output ](#tab-panel-2856)
+* [ Input ](#tab-panel-4531)
+* [ Output ](#tab-panel-4532)
 
 prompt
 

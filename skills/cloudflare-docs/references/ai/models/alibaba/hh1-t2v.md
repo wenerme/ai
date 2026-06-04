@@ -14,7 +14,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 #  HappyHorse 1.0 T2V 
 
-Text-to-Video • Alibaba • Proxied 
+Text-to-Video • Alibaba 
 
 `alibaba/hh1-t2v` 
 
@@ -116,9 +116,9 @@ const response = await env.AI.run(
 
   {
 
-    duration: 6,
-
     prompt: 'A dog running through a field of tall grass, slow motion, golden hour',
+
+    duration: 6,
 
     ratio: '9:16',
 
@@ -149,9 +149,9 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
   "input": {
 
-    "duration": 6,
-
     "prompt": "A dog running through a field of tall grass, slow motion, golden hour",
+
+    "duration": 6,
 
     "ratio": "9:16",
 
@@ -205,9 +205,9 @@ const response = await env.AI.run(
 
   {
 
-    duration: 5,
-
     prompt: 'Clouds drifting across a mountain range, time-lapse style',
+
+    duration: 5,
 
     ratio: '16:9',
 
@@ -240,9 +240,9 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
   "input": {
 
-    "duration": 5,
-
     "prompt": "Clouds drifting across a mountain range, time-lapse style",
+
+    "duration": 5,
 
     "ratio": "16:9",
 

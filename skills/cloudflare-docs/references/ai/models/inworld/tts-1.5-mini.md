@@ -14,7 +14,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 #  Inworld TTS 1.5 Mini 
 
-Text-to-Speech • Inworld • Proxied 
+Text-to-Speech • Inworld 
 
 `inworld/tts-1.5-mini` 
 
@@ -28,8 +28,8 @@ Ultra-fast, cost-efficient text-to-speech with approximately 120ms latency and 1
 
 ## Usage
 
-* [ TypeScript ](#tab-panel-704)
-* [ cURL ](#tab-panel-705)
+* [ TypeScript ](#tab-panel-722)
+* [ cURL ](#tab-panel-723)
 
 TypeScript
 
@@ -93,8 +93,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 ```
 
-* [ Output ](#tab-panel-700)
-* [ Raw response ](#tab-panel-701)
+* [ Output ](#tab-panel-718)
+* [ Raw response ](#tab-panel-719)
 
 ```
 
@@ -123,8 +123,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 **Fast Speech**  — Speed up speech for quick playback 
 
-* [ TypeScript ](#tab-panel-708)
-* [ cURL ](#tab-panel-709)
+* [ TypeScript ](#tab-panel-726)
+* [ cURL ](#tab-panel-727)
 
 TypeScript
 
@@ -192,8 +192,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 ```
 
-* [ Output ](#tab-panel-702)
-* [ Raw response ](#tab-panel-703)
+* [ Output ](#tab-panel-720)
+* [ Raw response ](#tab-panel-721)
 
 ```
 
@@ -220,8 +220,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 **Low Latency**  — Minimize latency by disabling text normalization 
 
-* [ TypeScript ](#tab-panel-710)
-* [ cURL ](#tab-panel-711)
+* [ TypeScript ](#tab-panel-728)
+* [ cURL ](#tab-panel-729)
 
 TypeScript
 
@@ -289,8 +289,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 ```
 
-* [ Output ](#tab-panel-706)
-* [ Raw response ](#tab-panel-707)
+* [ Output ](#tab-panel-724)
+* [ Raw response ](#tab-panel-725)
 
 ```
 
@@ -317,8 +317,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 ## Parameters
 
-* [ Input ](#tab-panel-712)
-* [ Output ](#tab-panel-713)
+* [ Input ](#tab-panel-730)
+* [ Output ](#tab-panel-731)
 
 apply\_text\_normalization
 

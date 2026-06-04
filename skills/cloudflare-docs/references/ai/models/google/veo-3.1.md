@@ -14,7 +14,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 #  Veo 3.1 
 
-Text-to-Video • Google • Proxied 
+Text-to-Video • Google 
 
 `google/veo-3.1` 
 
@@ -28,8 +28,8 @@ Google's latest video generation model with improved quality, motion, and audio 
 
 ## Usage
 
-* [ TypeScript ](#tab-panel-650)
-* [ cURL ](#tab-panel-651)
+* [ TypeScript ](#tab-panel-668)
+* [ cURL ](#tab-panel-669)
 
 TypeScript
 
@@ -41,15 +41,15 @@ const response = await env.AI.run(
 
   {
 
+    prompt:
+
+      'A majestic eagle soaring over snow-capped mountains, tracking shot following the bird as it glides through clouds',
+
     aspect_ratio: '16:9',
 
     duration: '8s',
 
     generate_audio: true,
-
-    prompt:
-
-      'A majestic eagle soaring over snow-capped mountains, tracking shot following the bird as it glides through clouds',
 
     resolution: '1080p',
 
@@ -78,13 +78,13 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
   "input": {
 
+    "prompt": "A majestic eagle soaring over snow-capped mountains, tracking shot following the bird as it glides through clouds",
+
     "aspect_ratio": "16:9",
 
     "duration": "8s",
 
     "generate_audio": true,
-
-    "prompt": "A majestic eagle soaring over snow-capped mountains, tracking shot following the bird as it glides through clouds",
 
     "resolution": "1080p"
 
@@ -95,8 +95,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 ```
 
-* [ Output ](#tab-panel-646)
-* [ Raw response ](#tab-panel-647)
+* [ Output ](#tab-panel-664)
+* [ Raw response ](#tab-panel-665)
 
 ```
 
@@ -125,8 +125,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 **Urban Time-lapse**  — City life time-lapse video 
 
-* [ TypeScript ](#tab-panel-654)
-* [ cURL ](#tab-panel-655)
+* [ TypeScript ](#tab-panel-672)
+* [ cURL ](#tab-panel-673)
 
 TypeScript
 
@@ -138,15 +138,15 @@ const response = await env.AI.run(
 
   {
 
+    prompt:
+
+      'A time-lapse of a busy city intersection at night, car lights creating streaks, people walking in fast motion',
+
     aspect_ratio: '16:9',
 
     duration: '6s',
 
     generate_audio: true,
-
-    prompt:
-
-      'A time-lapse of a busy city intersection at night, car lights creating streaks, people walking in fast motion',
 
     resolution: '1080p',
 
@@ -175,13 +175,13 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
   "input": {
 
+    "prompt": "A time-lapse of a busy city intersection at night, car lights creating streaks, people walking in fast motion",
+
     "aspect_ratio": "16:9",
 
     "duration": "6s",
 
     "generate_audio": true,
-
-    "prompt": "A time-lapse of a busy city intersection at night, car lights creating streaks, people walking in fast motion",
 
     "resolution": "1080p"
 
@@ -192,8 +192,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 ```
 
-* [ Output ](#tab-panel-648)
-* [ Raw response ](#tab-panel-649)
+* [ Output ](#tab-panel-666)
+* [ Raw response ](#tab-panel-667)
 
 ```
 
@@ -220,8 +220,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 **Abstract Art**  — Abstract motion graphics 
 
-* [ TypeScript ](#tab-panel-658)
-* [ cURL ](#tab-panel-659)
+* [ TypeScript ](#tab-panel-676)
+* [ cURL ](#tab-panel-677)
 
 TypeScript
 
@@ -233,15 +233,15 @@ const response = await env.AI.run(
 
   {
 
+    prompt:
+
+      'Colorful ink drops falling into water in slow motion, creating organic swirling patterns',
+
     aspect_ratio: '16:9',
 
     duration: '6s',
 
     generate_audio: false,
-
-    prompt:
-
-      'Colorful ink drops falling into water in slow motion, creating organic swirling patterns',
 
     resolution: '720p',
 
@@ -270,13 +270,13 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
   "input": {
 
+    "prompt": "Colorful ink drops falling into water in slow motion, creating organic swirling patterns",
+
     "aspect_ratio": "16:9",
 
     "duration": "6s",
 
     "generate_audio": false,
-
-    "prompt": "Colorful ink drops falling into water in slow motion, creating organic swirling patterns",
 
     "resolution": "720p"
 
@@ -287,8 +287,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 ```
 
-* [ Output ](#tab-panel-652)
-* [ Raw response ](#tab-panel-653)
+* [ Output ](#tab-panel-670)
+* [ Raw response ](#tab-panel-671)
 
 ```
 
@@ -315,8 +315,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 **Food Video**  — Appetizing food footage 
 
-* [ TypeScript ](#tab-panel-660)
-* [ cURL ](#tab-panel-661)
+* [ TypeScript ](#tab-panel-678)
+* [ cURL ](#tab-panel-679)
 
 TypeScript
 
@@ -328,13 +328,13 @@ const response = await env.AI.run(
 
   {
 
+    prompt: 'Melted chocolate being poured over fresh strawberries in slow motion, rich and glossy',
+
     aspect_ratio: '9:16',
 
     duration: '4s',
 
     generate_audio: true,
-
-    prompt: 'Melted chocolate being poured over fresh strawberries in slow motion, rich and glossy',
 
     resolution: '1080p',
 
@@ -363,13 +363,13 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
   "input": {
 
+    "prompt": "Melted chocolate being poured over fresh strawberries in slow motion, rich and glossy",
+
     "aspect_ratio": "9:16",
 
     "duration": "4s",
 
     "generate_audio": true,
-
-    "prompt": "Melted chocolate being poured over fresh strawberries in slow motion, rich and glossy",
 
     "resolution": "1080p"
 
@@ -380,8 +380,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 ```
 
-* [ Output ](#tab-panel-656)
-* [ Raw response ](#tab-panel-657)
+* [ Output ](#tab-panel-674)
+* [ Raw response ](#tab-panel-675)
 
 ```
 
@@ -408,8 +408,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 ## Parameters
 
-* [ Input ](#tab-panel-662)
-* [ Output ](#tab-panel-663)
+* [ Input ](#tab-panel-680)
+* [ Output ](#tab-panel-681)
 
 aspect\_ratio
 

@@ -17,7 +17,7 @@ curl https://api.openai.com/v1/responses \
   -H "Authorization: Bearer $OPENAI_API_KEY" \
   -H "Content-Type: application/json" \
   -d '{
-    "model": "gpt-5",
+    "model": "gpt-5.5",
     "input": "What does 'fit check for my napalm era' mean?",
     "service_tier": "priority"
   }'
@@ -29,7 +29,7 @@ import OpenAI from "openai";
 const openai = new OpenAI();
 
 const response = await openai.responses.create({
-  model: "gpt-5",
+  model: "gpt-5.5",
   input: "What does 'fit check for my napalm era' mean?",
   service_tier: "priority"
 });
@@ -43,7 +43,7 @@ from openai import OpenAI
 client = OpenAI()
 
 response = client.responses.create(
-    model="gpt-5",
+    model="gpt-5.5",
     input="What does 'fit check for my napalm era' mean?",
     service_tier="priority"
 )

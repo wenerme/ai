@@ -16,9 +16,7 @@ All traffic to your action must use TLS 1.2 or later on port 443 with a valid pu
 
 ## IP egress ranges
 
-ChatGPT will call your action from an IP address from one of the [CIDR blocks](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing) listed in [chatgpt-connectors.json](https://openai.com/chatgpt-connectors.json)
-
-You may wish to explicitly allowlist these IP addresses. This list is updated automatically periodically.
+ChatGPT will call your action from one of the [published IP ranges](https://developers.openai.com/api/docs/guides/ip-addresses). You may wish to explicitly allowlist these IP addresses.
 
 ## Multiple authentication schemas
 

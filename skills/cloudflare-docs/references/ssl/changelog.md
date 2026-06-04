@@ -42,6 +42,8 @@ You can also create your secret with the newly available **ai\_gateway** scope v
 
 Then, pass the key in the request header using its Secrets Store reference:
 
+Terminal window
+
 ```
 
 curl -X POST https://gateway.ai.cloudflare.com/v1/<ACCOUNT_ID>/my-gateway/anthropic/v1/messages \

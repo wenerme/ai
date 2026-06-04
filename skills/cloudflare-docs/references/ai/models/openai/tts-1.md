@@ -14,7 +14,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 #  TTS-1 
 
-Text-to-Speech • OpenAI • Proxied 
+Text-to-Speech • OpenAI 
 
 `openai/tts-1` 
 
@@ -28,8 +28,8 @@ OpenAI's text-to-speech model optimized for real-time use with low latency.
 
 ## Usage
 
-* [ TypeScript ](#tab-panel-1130)
-* [ cURL ](#tab-panel-1131)
+* [ TypeScript ](#tab-panel-1166)
+* [ cURL ](#tab-panel-1167)
 
 TypeScript
 
@@ -89,8 +89,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 ```
 
-* [ Output ](#tab-panel-1126)
-* [ Raw response ](#tab-panel-1127)
+* [ Output ](#tab-panel-1162)
+* [ Raw response ](#tab-panel-1163)
 
 ```
 
@@ -119,8 +119,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 **Different Voice**  — Use the Nova voice for a different tone 
 
-* [ TypeScript ](#tab-panel-1134)
-* [ cURL ](#tab-panel-1135)
+* [ TypeScript ](#tab-panel-1170)
+* [ cURL ](#tab-panel-1171)
 
 TypeScript
 
@@ -180,8 +180,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 ```
 
-* [ Output ](#tab-panel-1128)
-* [ Raw response ](#tab-panel-1129)
+* [ Output ](#tab-panel-1164)
+* [ Raw response ](#tab-panel-1165)
 
 ```
 
@@ -208,8 +208,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 **Narration**  — Slower narration style with the Onyx voice 
 
-* [ TypeScript ](#tab-panel-1138)
-* [ cURL ](#tab-panel-1139)
+* [ TypeScript ](#tab-panel-1174)
+* [ cURL ](#tab-panel-1175)
 
 TypeScript
 
@@ -269,8 +269,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 ```
 
-* [ Output ](#tab-panel-1132)
-* [ Raw response ](#tab-panel-1133)
+* [ Output ](#tab-panel-1168)
+* [ Raw response ](#tab-panel-1169)
 
 ```
 
@@ -297,8 +297,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 **Echo Voice**  — Use the Echo voice for a deeper tone 
 
-* [ TypeScript ](#tab-panel-1142)
-* [ cURL ](#tab-panel-1143)
+* [ TypeScript ](#tab-panel-1178)
+* [ cURL ](#tab-panel-1179)
 
 TypeScript
 
@@ -358,8 +358,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 ```
 
-* [ Output ](#tab-panel-1136)
-* [ Raw response ](#tab-panel-1137)
+* [ Output ](#tab-panel-1172)
+* [ Raw response ](#tab-panel-1173)
 
 ```
 
@@ -386,8 +386,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 **Fast Playback**  — Speed up speech for quick listening 
 
-* [ TypeScript ](#tab-panel-1144)
-* [ cURL ](#tab-panel-1145)
+* [ TypeScript ](#tab-panel-1180)
+* [ cURL ](#tab-panel-1181)
 
 TypeScript
 
@@ -447,8 +447,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 ```
 
-* [ Output ](#tab-panel-1140)
-* [ Raw response ](#tab-panel-1141)
+* [ Output ](#tab-panel-1176)
+* [ Raw response ](#tab-panel-1177)
 
 ```
 
@@ -475,8 +475,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 ## Parameters
 
-* [ Input ](#tab-panel-1146)
-* [ Output ](#tab-panel-1147)
+* [ Input ](#tab-panel-1182)
+* [ Output ](#tab-panel-1183)
 
 response\_format
 

@@ -14,7 +14,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 #  glm-4.7-flash 
 
-Text Generation • Zhipu AI • Hosted 
+Text Generation • Zhipu AI 
 
 `@cf/zai-org/glm-4.7-flash` 
 
@@ -35,10 +35,10 @@ Try out this model with Workers AI LLM Playground. It does not require any setup
 
 ## Usage
 
-* [  Worker (Streaming) ](#tab-panel-3932)
-* [  TypeScript ](#tab-panel-3933)
-* [  Python ](#tab-panel-3934)
-* [  curl ](#tab-panel-3935)
+* [  Worker (Streaming) ](#tab-panel-4296)
+* [  TypeScript ](#tab-panel-4297)
+* [  Python ](#tab-panel-4298)
+* [  curl ](#tab-panel-4299)
 
 TypeScript
 

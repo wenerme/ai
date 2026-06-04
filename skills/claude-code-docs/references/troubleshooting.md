@@ -14,7 +14,7 @@ This page covers performance, stability, and search problems once Claude Code is
 | Login loops, OAuth errors, `403 Forbidden`, "organization disabled", Bedrock/Vertex/Foundry credentials | [Troubleshoot installation and login](/en/troubleshoot-install#login-and-authentication) |
 | Settings not applying, hooks not firing, MCP servers not loading                                        | [Debug your configuration](/en/debug-your-config)                                        |
 | `API Error: 5xx`, `529 Overloaded`, `429`, request validation errors                                    | [Error reference](/en/errors)                                                            |
-| `model not found` or `you may not have access to it`                                                    | [Error reference](/en/errors#theres-an-issue-with-the-selected-model)                    |
+| `model not found` or `you may not have access to it`                                                    | [Error reference](/en/errors#there%E2%80%99s-an-issue-with-the-selected-model)           |
 | VS Code extension not connecting or detecting Claude                                                    | [VS Code integration](/en/vs-code#fix-common-issues)                                     |
 | JetBrains plugin or IDE not detected                                                                    | [JetBrains integration](/en/jetbrains#troubleshooting)                                   |
 | High CPU or memory, slow responses, hangs, search not finding files                                     | [Performance and stability](#performance-and-stability) below                            |
@@ -56,6 +56,10 @@ If Claude Code seems unresponsive:
 2. If unresponsive, you may need to close the terminal and restart
 
 Restarting doesn't lose your conversation. Run `claude --resume` in the same directory to pick the session back up.
+
+### Garbled or corrupted text in an editor's integrated terminal
+
+If characters render as boxes, smears, or the wrong glyphs when running Claude Code in the VS Code, Cursor, or Devin Desktop integrated terminal, the terminal's GPU renderer is likely the cause. Run `/terminal-setup` inside Claude Code to set `terminal.integrated.gpuAcceleration` to `"off"`, or set it manually in your editor settings and reload the window. See [Terminal configuration](/en/terminal-config) for the other settings `/terminal-setup` writes.
 
 ### Search and discovery issues
 

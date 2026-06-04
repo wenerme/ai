@@ -14,7 +14,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 #  Nano Banana 2 
 
-Text-to-Image • Google • Proxied 
+Text-to-Image • Google 
 
 `google/nano-banana-2` 
 
@@ -28,8 +28,8 @@ Google's second-generation image generation model with improved quality and spee
 
 ## Usage
 
-* [ TypeScript ](#tab-panel-572)
-* [ cURL ](#tab-panel-573)
+* [ TypeScript ](#tab-panel-590)
+* [ cURL ](#tab-panel-591)
 
 TypeScript
 
@@ -41,11 +41,11 @@ const response = await env.AI.run(
 
   {
 
-    aspect_ratio: '16:9',
-
     prompt:
 
       'A futuristic cyberpunk city at night with towering skyscrapers, neon signs in Japanese and English, flying cars, and rain-slicked streets reflecting colorful lights',
+
+    aspect_ratio: '16:9',
 
   },
 
@@ -72,9 +72,9 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
   "input": {
 
-    "aspect_ratio": "16:9",
+    "prompt": "A futuristic cyberpunk city at night with towering skyscrapers, neon signs in Japanese and English, flying cars, and rain-slicked streets reflecting colorful lights",
 
-    "prompt": "A futuristic cyberpunk city at night with towering skyscrapers, neon signs in Japanese and English, flying cars, and rain-slicked streets reflecting colorful lights"
+    "aspect_ratio": "16:9"
 
   }
 
@@ -83,8 +83,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 ```
 
-* [ Output ](#tab-panel-570)
-* [ Raw response ](#tab-panel-571)
+* [ Output ](#tab-panel-588)
+* [ Raw response ](#tab-panel-589)
 
 ![Futuristic City](https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/google__nano-banana-2/futuristic-city.png) 
 
@@ -115,8 +115,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 **Abstract Art**  — Modern abstract expressionist painting 
 
-* [ TypeScript ](#tab-panel-576)
-* [ cURL ](#tab-panel-577)
+* [ TypeScript ](#tab-panel-594)
+* [ cURL ](#tab-panel-595)
 
 TypeScript
 
@@ -128,13 +128,13 @@ const response = await env.AI.run(
 
   {
 
-    aspect_ratio: '1:1',
-
-    output_format: 'png',
-
     prompt:
 
       'An abstract expressionist painting with bold splashes of cobalt blue, crimson red, and gold leaf accents on a large canvas',
+
+    aspect_ratio: '1:1',
+
+    output_format: 'png',
 
   },
 
@@ -161,11 +161,11 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
   "input": {
 
+    "prompt": "An abstract expressionist painting with bold splashes of cobalt blue, crimson red, and gold leaf accents on a large canvas",
+
     "aspect_ratio": "1:1",
 
-    "output_format": "png",
-
-    "prompt": "An abstract expressionist painting with bold splashes of cobalt blue, crimson red, and gold leaf accents on a large canvas"
+    "output_format": "png"
 
   }
 
@@ -174,8 +174,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 ```
 
-* [ Output ](#tab-panel-574)
-* [ Raw response ](#tab-panel-575)
+* [ Output ](#tab-panel-592)
+* [ Raw response ](#tab-panel-593)
 
 ![Abstract Art](https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/google__nano-banana-2/abstract-art.png) 
 
@@ -204,8 +204,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 **With Google Search**  — Use web search grounding for current events 
 
-* [ TypeScript ](#tab-panel-580)
-* [ cURL ](#tab-panel-581)
+* [ TypeScript ](#tab-panel-598)
+* [ cURL ](#tab-panel-599)
 
 TypeScript
 
@@ -217,11 +217,11 @@ const response = await env.AI.run(
 
   {
 
+    prompt: 'An illustration of the latest Mars rover exploring the Martian surface',
+
     aspect_ratio: '16:9',
 
     google_search: true,
-
-    prompt: 'An illustration of the latest Mars rover exploring the Martian surface',
 
   },
 
@@ -248,11 +248,11 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
   "input": {
 
+    "prompt": "An illustration of the latest Mars rover exploring the Martian surface",
+
     "aspect_ratio": "16:9",
 
-    "google_search": true,
-
-    "prompt": "An illustration of the latest Mars rover exploring the Martian surface"
+    "google_search": true
 
   }
 
@@ -261,8 +261,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 ```
 
-* [ Output ](#tab-panel-578)
-* [ Raw response ](#tab-panel-579)
+* [ Output ](#tab-panel-596)
+* [ Raw response ](#tab-panel-597)
 
 ![With Google Search](https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/google__nano-banana-2/with-google-search.png) 
 
@@ -291,8 +291,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 **High Resolution Portrait**  — 4K portrait with specific aspect ratio 
 
-* [ TypeScript ](#tab-panel-584)
-* [ cURL ](#tab-panel-585)
+* [ TypeScript ](#tab-panel-602)
+* [ cURL ](#tab-panel-603)
 
 TypeScript
 
@@ -304,13 +304,13 @@ const response = await env.AI.run(
 
   {
 
-    aspect_ratio: '3:4',
-
-    output_format: 'jpg',
-
     prompt:
 
       'A professional studio portrait of a woman with dramatic side lighting, wearing elegant jewelry',
+
+    aspect_ratio: '3:4',
+
+    output_format: 'jpg',
 
     resolution: '4K',
 
@@ -339,11 +339,11 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
   "input": {
 
+    "prompt": "A professional studio portrait of a woman with dramatic side lighting, wearing elegant jewelry",
+
     "aspect_ratio": "3:4",
 
     "output_format": "jpg",
-
-    "prompt": "A professional studio portrait of a woman with dramatic side lighting, wearing elegant jewelry",
 
     "resolution": "4K"
 
@@ -354,8 +354,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 ```
 
-* [ Output ](#tab-panel-582)
-* [ Raw response ](#tab-panel-583)
+* [ Output ](#tab-panel-600)
+* [ Raw response ](#tab-panel-601)
 
 ![High Resolution Portrait](https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/google__nano-banana-2/high-resolution-portrait.jpg) 
 
@@ -384,8 +384,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 ## Parameters
 
-* [ Input ](#tab-panel-586)
-* [ Output ](#tab-panel-587)
+* [ Input ](#tab-panel-604)
+* [ Output ](#tab-panel-605)
 
 aspect\_ratio
 

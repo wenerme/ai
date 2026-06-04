@@ -14,7 +14,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 #  llava-1.5-7b-hf Beta 
 
-Image-to-Text • llava-hf • Hosted 
+Image-to-Text • llava-hf 
 
 `@cf/llava-hf/llava-1.5-7b-hf` 
 
@@ -74,8 +74,8 @@ export default {
 
 ## Parameters
 
-* [ Input ](#tab-panel-2720)
-* [ Output ](#tab-panel-2721)
+* [ Input ](#tab-panel-4428)
+* [ Output ](#tab-panel-4429)
 
 Option 1
 

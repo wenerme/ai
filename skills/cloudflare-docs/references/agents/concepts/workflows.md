@@ -1,5 +1,5 @@
 ---
-title: Workflows
+title: Using Agents with Workflows
 description: Integrate Cloudflare Workflows with Agents for durable, multi-step background processing with automatic retries.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
@@ -10,7 +10,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 [Skip to content](#%5Ftop) 
 
-# Workflows
+# Using Agents with Workflows
 
 ## What are Workflows?
 
@@ -39,10 +39,7 @@ Agents can loop, branch, and interact directly with users. Workflows execute ste
 * Quick API calls and responses
 * Real-time collaborative features
 * Tasks under 30 seconds
-* One durable Think chat turn with [submitMessages()](https://developers.cloudflare.com/agents/think/programmatic-submissions/#submitmessages)
-
-**Use Agents with Workflows for:**
-
+* One durable Think chat turn with [submitMessages()](https://developers.cloudflare.com/agents/harnesses/think/programmatic-submissions/#submitmessages) **Use Agents with Workflows for:**
 * Data processing pipelines
 * Report generation
 * Human-in-the-loop approval flows
@@ -68,8 +65,8 @@ Workflows can communicate with Agents through several mechanisms:
 * **State updates**: Modify Agent state via `step.updateAgentState()` or `step.mergeAgentState()`, which broadcasts to connected clients
 * **Client broadcasts**: Send messages to all WebSocket clients via `this.broadcastToClients()`
 
-* [  JavaScript ](#tab-panel-5444)
-* [  TypeScript ](#tab-panel-5445)
+* [  JavaScript ](#tab-panel-4850)
+* [  TypeScript ](#tab-panel-4851)
 
 JavaScript
 
@@ -163,8 +160,8 @@ When an Agent starts a workflow using `runWorkflow()`, the workflow is automatic
 
 An Agent receives a request, starts a Workflow for heavy processing, and broadcasts progress updates to connected clients as the Workflow executes each step.
 
-* [  JavaScript ](#tab-panel-5446)
-* [  TypeScript ](#tab-panel-5447)
+* [  JavaScript ](#tab-panel-4852)
+* [  TypeScript ](#tab-panel-4853)
 
 JavaScript
 
@@ -224,8 +221,8 @@ A Workflow prepares a request, pauses to wait for approval using `waitForApprova
 
 A Workflow wraps external API calls in durable steps with retry logic. If the API fails or the workflow restarts, completed calls are not repeated and failed calls retry automatically.
 
-* [  JavaScript ](#tab-panel-5448)
-* [  TypeScript ](#tab-panel-5449)
+* [  JavaScript ](#tab-panel-4854)
+* [  TypeScript ](#tab-panel-4855)
 
 JavaScript
 
@@ -295,12 +292,12 @@ A Workflow updates Agent state at key milestones using `step.updateAgentState()`
 
 ## Related resources
 
-[ Run Workflows API ](https://developers.cloudflare.com/agents/api-reference/run-workflows/) Implementation details for agent workflows. 
+[ Run Workflows API ](https://developers.cloudflare.com/agents/runtime/execution/run-workflows/) Implementation details for agent workflows. 
 
 [ Cloudflare Workflows ](https://developers.cloudflare.com/workflows/) Workflow fundamentals and documentation. 
 
-[ Human-in-the-loop ](https://developers.cloudflare.com/agents/concepts/human-in-the-loop/) Approval flows and manual intervention. 
+[ Human-in-the-loop ](https://developers.cloudflare.com/agents/concepts/agentic-patterns/human-in-the-loop/) Approval flows and manual intervention. 
 
 ```json
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/agents/","name":"Agents"}},{"@type":"ListItem","position":3,"item":{"@id":"/agents/concepts/","name":"Concepts"}},{"@type":"ListItem","position":4,"item":{"@id":"/agents/concepts/workflows/","name":"Workflows"}}]}
+{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/agents/","name":"Agents"}},{"@type":"ListItem","position":3,"item":{"@id":"/agents/concepts/","name":"Concepts"}},{"@type":"ListItem","position":4,"item":{"@id":"/agents/concepts/workflows/","name":"Using Agents with Workflows"}}]}
 ```

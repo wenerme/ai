@@ -14,7 +14,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 #  bge-base-en-v1.5 
 
-Text Embeddings • BAAI • Hosted 
+Text Embeddings • BAAI 
 
 `@cf/baai/bge-base-en-v1.5` 
 
@@ -31,9 +31,9 @@ BAAI general embedding (Base) model that transforms any given text into a 768-di
 
 ## Usage
 
-* [  TypeScript ](#tab-panel-2450)
-* [  Python ](#tab-panel-2451)
-* [  curl ](#tab-panel-2452)
+* [  TypeScript ](#tab-panel-4186)
+* [  Python ](#tab-panel-4187)
+* [  curl ](#tab-panel-4188)
 
 ```
 
@@ -146,8 +146,8 @@ Workers AI also supports OpenAI compatible API endpoints for `/v1/chat/completio
 
 Synchronous — Send a request and receive a complete response 
 
-* [ Input ](#tab-panel-2453)
-* [ Output ](#tab-panel-2454)
+* [ Input ](#tab-panel-4189)
+* [ Output ](#tab-panel-4190)
 
 ▶text
 
@@ -171,8 +171,8 @@ pooling
 
 Batch — Send multiple requests in a single API call 
 
-* [ Input ](#tab-panel-2455)
-* [ Output ](#tab-panel-2456)
+* [ Input ](#tab-panel-4191)
+* [ Output ](#tab-panel-4192)
 
 ▶requests\[\]
 

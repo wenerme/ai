@@ -79,6 +79,15 @@ components:
         - flag
       description: Action taken when the builtin filter triggers
       title: ContentFilterBuiltinAction
+    PromptInjectionScanScope:
+      type: string
+      enum:
+        - user_only
+        - all_messages
+      description: >-
+        Which message roles to scan for prompt injection. Only applies to the
+        regex-prompt-injection builtin. Defaults to all_messages.
+      title: PromptInjectionScanScope
     ContentFilterBuiltinSlug:
       type: string
       enum:
@@ -102,6 +111,8 @@ components:
           description: >-
             Read-only, system-assigned redaction placeholder derived from the
             slug (e.g. "[EMAIL]", "[PHONE]"). Not settable by the caller.
+        scan_scope:
+          $ref: '#/components/schemas/PromptInjectionScanScope'
         slug:
           $ref: '#/components/schemas/ContentFilterBuiltinSlug'
       required:

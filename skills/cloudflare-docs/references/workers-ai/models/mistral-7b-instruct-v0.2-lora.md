@@ -14,7 +14,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 #  mistral-7b-instruct-v0.2-lora Beta 
 
-Text Generation • MistralAI • Hosted 
+Text Generation • MistralAI 
 
 `@cf/mistral/mistral-7b-instruct-v0.2-lora` 
 
@@ -34,10 +34,10 @@ Try out this model with Workers AI LLM Playground. It does not require any setup
 
 ## Usage
 
-* [  Worker (Streaming) ](#tab-panel-2751)
-* [  TypeScript ](#tab-panel-2752)
-* [  Python ](#tab-panel-2753)
-* [  curl ](#tab-panel-2754)
+* [  Worker (Streaming) ](#tab-panel-4455)
+* [  TypeScript ](#tab-panel-4456)
+* [  Python ](#tab-panel-4457)
+* [  curl ](#tab-panel-4458)
 
 TypeScript
 

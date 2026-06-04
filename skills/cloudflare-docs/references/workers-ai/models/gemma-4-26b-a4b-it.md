@@ -14,7 +14,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 #  gemma-4-26b-a4b-it 
 
-Text Generation • Google • Hosted 
+Text Generation • Google 
 
 `@cf/google/gemma-4-26b-a4b-it` 
 
@@ -37,10 +37,10 @@ Try out this model with Workers AI LLM Playground. It does not require any setup
 
 ## Usage
 
-* [  Worker (Streaming) ](#tab-panel-2552)
-* [  TypeScript ](#tab-panel-2553)
-* [  Python ](#tab-panel-2554)
-* [  curl ](#tab-panel-2555)
+* [  Worker (Streaming) ](#tab-panel-4268)
+* [  TypeScript ](#tab-panel-4269)
+* [  Python ](#tab-panel-4270)
+* [  curl ](#tab-panel-4271)
 
 TypeScript
 
@@ -199,8 +199,8 @@ Workers AI also supports OpenAI compatible API endpoints for `/v1/chat/completio
 
 Synchronous — Send a request and receive a complete response 
 
-* [ Input ](#tab-panel-2556)
-* [ Output ](#tab-panel-2557)
+* [ Input ](#tab-panel-4272)
+* [ Output ](#tab-panel-4273)
 
 Input format
 
@@ -378,8 +378,8 @@ service\_tier
 
 Streaming — Send a request with \`stream: true\` and receive server-sent events 
 
-* [ Input ](#tab-panel-2558)
-* [ Output ](#tab-panel-2559)
+* [ Input ](#tab-panel-4274)
+* [ Output ](#tab-panel-4275)
 
 Input format
 
@@ -537,8 +537,8 @@ format
 
 Batch — Send multiple requests in a single API call 
 
-* [ Input ](#tab-panel-2560)
-* [ Output ](#tab-panel-2561)
+* [ Input ](#tab-panel-4276)
+* [ Output ](#tab-panel-4277)
 
 ▶requests\[\]
 

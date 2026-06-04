@@ -14,7 +14,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 #  mistral-small-3.1-24b-instruct 
 
-Text Generation • MistralAI • Hosted 
+Text Generation • MistralAI 
 
 `@cf/mistralai/mistral-small-3.1-24b-instruct` 
 
@@ -34,10 +34,10 @@ Try out this model with Workers AI LLM Playground. It does not require any setup
 
 ## Usage
 
-* [  Worker (Streaming) ](#tab-panel-2755)
-* [  TypeScript ](#tab-panel-2756)
-* [  Python ](#tab-panel-2757)
-* [  curl ](#tab-panel-2758)
+* [  Worker (Streaming) ](#tab-panel-4459)
+* [  TypeScript ](#tab-panel-4460)
+* [  Python ](#tab-panel-4461)
+* [  curl ](#tab-panel-4462)
 
 TypeScript
 

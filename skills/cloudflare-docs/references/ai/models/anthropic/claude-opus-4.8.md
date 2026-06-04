@@ -14,7 +14,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 #  Claude Opus 4.8 
 
-Text Generation • Anthropic • Proxied 
+Text Generation • Anthropic 
 
 `anthropic/claude-opus-4.8` 
 
@@ -29,8 +29,8 @@ Claude Opus 4.8 is Anthropic's most capable generally available model, with a st
 
 ## Usage
 
-* [ TypeScript ](#tab-panel-160)
-* [ cURL ](#tab-panel-161)
+* [ TypeScript ](#tab-panel-178)
+* [ cURL ](#tab-panel-179)
 
 TypeScript
 
@@ -88,8 +88,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/v1/
 
 ```
 
-* [ Output ](#tab-panel-164)
-* [ Raw response ](#tab-panel-165)
+* [ Output ](#tab-panel-182)
+* [ Raw response ](#tab-panel-183)
 
 # The Three Laws of Thermodynamics
 
@@ -177,8 +177,8 @@ Let me know if you'd like a deeper explanation of any of these!
 
 **With System Message**  — Using a system message to set context 
 
-* [ TypeScript ](#tab-panel-162)
-* [ cURL ](#tab-panel-163)
+* [ TypeScript ](#tab-panel-180)
+* [ cURL ](#tab-panel-181)
 
 TypeScript
 
@@ -240,8 +240,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/v1/
 
 ```
 
-* [ Output ](#tab-panel-166)
-* [ Raw response ](#tab-panel-167)
+* [ Output ](#tab-panel-184)
+* [ Raw response ](#tab-panel-185)
 
 # Reading a JSON File in Python
 
@@ -363,8 +363,8 @@ Let me know if you'd like help **writing** JSON or working with a specific data 
 
 **Multi-turn Conversation**  — Continuing a conversation with context 
 
-* [ TypeScript ](#tab-panel-170)
-* [ cURL ](#tab-panel-171)
+* [ TypeScript ](#tab-panel-188)
+* [ cURL ](#tab-panel-189)
 
 TypeScript
 
@@ -460,8 +460,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/v1/
 
 ```
 
-* [ Output ](#tab-panel-172)
-* [ Raw response ](#tab-panel-173)
+* [ Output ](#tab-panel-190)
+* [ Raw response ](#tab-panel-191)
 
 Here are some great stops along the way, depending on which route you take:
 
@@ -549,8 +549,8 @@ Let me know and I can help build an itinerary!
 
 **Creative Writing with Adaptive Thinking**  — Use adaptive thinking with high effort to steer creative output -- the recommended replacement for the deprecated \`temperature\` parameter. 
 
-* [ TypeScript ](#tab-panel-174)
-* [ cURL ](#tab-panel-175)
+* [ TypeScript ](#tab-panel-192)
+* [ cURL ](#tab-panel-193)
 
 TypeScript
 
@@ -634,8 +634,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/v1/
 
 ```
 
-* [ Output ](#tab-panel-176)
-* [ Raw response ](#tab-panel-177)
+* [ Output ](#tab-panel-194)
+* [ Raw response ](#tab-panel-195)
 
 Detective Mara Voss had seen blood spatter shaped like everything from constellations to corporate logos, but she'd never seen a crime scene that smelled like oranges.
 
@@ -708,8 +708,8 @@ The question was who had sat here, calm as a churchgoer, peeling an orange besid
 
 **Streaming Response**  — Enable streaming for real-time output 
 
-* [ TypeScript ](#tab-panel-168)
-* [ cURL ](#tab-panel-169)
+* [ TypeScript ](#tab-panel-186)
+* [ cURL ](#tab-panel-187)
 
 TypeScript
 
@@ -773,8 +773,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/v1/
 
 ## Parameters
 
-* [ Input ](#tab-panel-178)
-* [ Output ](#tab-panel-179)
+* [ Input ](#tab-panel-196)
+* [ Output ](#tab-panel-197)
 
 max\_tokens
 

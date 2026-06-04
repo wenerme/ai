@@ -12,11 +12,38 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 # Build Agents on Cloudflare
 
-Most AI applications today are stateless — they process a request, return a response, and forget everything. Real agents need more. They need to remember conversations, act on schedules, call tools, coordinate with other agents, and stay connected to users in real-time. The Agents SDK gives you all of this as a TypeScript class.
+Build and host Agents on Cloudflare, connect chat, voice, email, Slack, and webhooks to a durable agent runtime with Browser, Sandbox, AI Search, MCP, Payments, and other MCP tools.
 
-Each agent runs on a [Durable Object](https://developers.cloudflare.com/durable-objects/) — a stateful micro-server with its own SQL database, WebSocket connections, and scheduling. Deploy once and Cloudflare runs your agents across its global network, scaling to tens of millions of instances. No infrastructure to manage, no sessions to reconstruct, no state to externalize.
+When you host agents on Cloudflare, each agent session has a durable identity, local SQL storage, real-time connections, scheduled work, and recoverable execution.
 
-The mental model is simple: define a TypeScript class, give each real-world thing a stable name, and route requests or WebSocket connections to that named instance. The instance wakes when something happens, reads its durable state, does work, and hibernates when idle.
+Deploy once and Cloudflare runs your agents across its global network, scaling to tens of millions of instances. No infrastructure to manage, no sessions to reconstruct, no state to externalize.
+
+[Chat](https://developers.cloudflare.com/agents/communication-channels/chat/)[Email](https://developers.cloudflare.com/agents/communication-channels/email/)[Voice](https://developers.cloudflare.com/agents/communication-channels/voice/)[Slack](https://developers.cloudflare.com/agents/communication-channels/slack/)[Webhook](https://developers.cloudflare.com/agents/communication-channels/webhooks/) 
+
+Agent harness
+
+Controls planning, tool use, and response flow.
+
+[Project Think](https://developers.cloudflare.com/agents/harnesses/think/) [Build-your-own agent](https://developers.cloudflare.com/agents/runtime/agents-api/) 
+
+Agents SDK runtime
+
+Durable identity, state, connections, scheduling, and recovery.
+
+[Agent class](https://developers.cloudflare.com/agents/runtime/agents-api/) 
+
+[State](https://developers.cloudflare.com/agents/runtime/lifecycle/state/)[Sessions](https://developers.cloudflare.com/agents/runtime/lifecycle/sessions/)[Routing](https://developers.cloudflare.com/agents/runtime/communication/routing/)[WebSockets](https://developers.cloudflare.com/agents/runtime/communication/websockets/)[Scheduling](https://developers.cloudflare.com/agents/runtime/execution/schedule-tasks/)[Fibers](https://developers.cloudflare.com/agents/runtime/execution/durable-execution/) 
+
+[Sandbox](https://developers.cloudflare.com/agents/tools/sandbox/)[MCP](https://developers.cloudflare.com/agents/tools/mcp/)[Browser](https://developers.cloudflare.com/agents/tools/browser/)[AI Search](https://developers.cloudflare.com/agents/tools/ai-search/)[Payments](https://developers.cloudflare.com/agents/tools/payments/) 
+
+[ Observability Logs · metrics · traces ](https://developers.cloudflare.com/agents/runtime/operations/observability/) 
+
+Agents on Cloudflare are composed from four parts:
+
+* **Communication channels** define how users and systems reach your agent, such as [chat](https://developers.cloudflare.com/agents/communication-channels/chat/), [voice](https://developers.cloudflare.com/agents/communication-channels/voice/), [email](https://developers.cloudflare.com/agents/communication-channels/email/), [Slack](https://developers.cloudflare.com/agents/communication-channels/slack/), [webhooks](https://developers.cloudflare.com/agents/communication-channels/webhooks/), and other event sources.
+* **The agent harness** defines the loop: how the agent calls models, selects tools, handles tool results, streams responses, and decides whether to continue. Use [Project Think](https://developers.cloudflare.com/agents/harnesses/think/) for an opinionated harness, or build your own loop directly on the [Agents SDK runtime](https://developers.cloudflare.com/agents/runtime/agents-api/).
+* **The Agents SDK runtime** provides durable infrastructure: the [Agent class](https://developers.cloudflare.com/agents/runtime/lifecycle/agent-class/), [state](https://developers.cloudflare.com/agents/runtime/lifecycle/state/), [sessions](https://developers.cloudflare.com/agents/runtime/lifecycle/sessions/), [routing](https://developers.cloudflare.com/agents/runtime/communication/routing/), [WebSockets](https://developers.cloudflare.com/agents/runtime/communication/websockets/), [scheduling](https://developers.cloudflare.com/agents/runtime/execution/schedule-tasks/), [fibers](https://developers.cloudflare.com/agents/runtime/execution/durable-execution/), and [observability](https://developers.cloudflare.com/agents/runtime/operations/observability/).
+* **Tools** give the agent capabilities: [browser automation](https://developers.cloudflare.com/agents/tools/browser/), [sandboxed code execution](https://developers.cloudflare.com/agents/tools/sandbox/), [AI Search](https://developers.cloudflare.com/agents/tools/ai-search/), [MCP tools](https://developers.cloudflare.com/agents/tools/mcp/), and [payments](https://developers.cloudflare.com/agents/tools/payments/).
 
 ### Get started
 
@@ -35,208 +62,29 @@ npm run dev
 
 ```
 
-The starter includes streaming AI chat, server-side and client-side tools, human-in-the-loop approval, and task scheduling — a foundation you can build on or tear apart. You can also swap in [OpenAI, Anthropic, Google Gemini, or any other provider](https://developers.cloudflare.com/agents/api-reference/using-ai-models/).
+The starter includes streaming AI chat, server-side and client-side tools, human-in-the-loop approval, and task scheduling — a foundation you can build on or tear apart. You can also swap in [OpenAI, Anthropic, Google Gemini, or any other provider](https://developers.cloudflare.com/agents/runtime/operations/using-ai-models/).
 
-[ Build a chat agent ](https://developers.cloudflare.com/agents/getting-started/build-a-chat-agent/) Step-by-step tutorial that walks through the starter and shows how to customize it. 
+### Example agents
 
-[ Add to an existing project ](https://developers.cloudflare.com/agents/getting-started/add-to-existing-project/) Install the agents package into a Workers project and wire up routing. 
+**[Chat agent](https://developers.cloudflare.com/agents/examples/chat-agent/)** 
 
-### What agents can do
+Build a streaming AI chat agent with tools and human-in-the-loop approvals.
 
-* **Remember everything** — Every agent has a built-in [SQL database](https://developers.cloudflare.com/agents/api-reference/store-and-sync-state/) and key-value state that syncs to connected clients in real-time. State survives restarts, deploys, and hibernation.
-* **Build AI chat** — [AIChatAgent](https://developers.cloudflare.com/agents/api-reference/chat-agents/) gives you streaming AI chat with automatic message persistence, resumable streams, and tool support. Pair it with the [useAgentChat](https://developers.cloudflare.com/agents/api-reference/chat-agents/) React hook to build chat UIs in minutes.
-* **Think with any model** — Call [any AI model](https://developers.cloudflare.com/agents/api-reference/using-ai-models/) — Workers AI, OpenAI, Anthropic, Gemini — and stream responses over [WebSockets](https://developers.cloudflare.com/agents/api-reference/websockets/) or [Server-Sent Events](https://developers.cloudflare.com/agents/api-reference/http-sse/). Long-running reasoning models that take minutes to respond work out of the box.
-* **Use and serve tools** — Define server-side tools, client-side tools that run in the browser, and [human-in-the-loop](https://developers.cloudflare.com/agents/concepts/human-in-the-loop/) approval flows. Expose your agent's tools to other agents and LLMs via [MCP](https://developers.cloudflare.com/agents/api-reference/mcp-agent-api/).
-* **Act on their own** — [Schedule tasks](https://developers.cloudflare.com/agents/api-reference/schedule-tasks/) on a delay, at a specific time, or on a cron. Agents can wake themselves up, do work, and go back to sleep — without a user present.
-* **Browse the web** — Give your agents [browser tools](https://developers.cloudflare.com/agents/api-reference/browse-the-web/) powered by the Chrome DevTools Protocol to scrape, screenshot, debug, and interact with web pages.
-* **Talk to users** — Build real-time [voice agents](https://developers.cloudflare.com/agents/api-reference/voice/) with speech-to-text, text-to-speech, and conversation persistence, or connect messenger platforms with [Chat SDK](https://developers.cloudflare.com/agents/api-reference/chat-sdk/) and store conversation state in Agents sub-agents.
-* **Orchestrate work** — Run multi-step [workflows](https://developers.cloudflare.com/agents/api-reference/run-workflows/) with automatic retries, coordinate across [sub-agents](https://developers.cloudflare.com/agents/api-reference/sub-agents/), or run chat-capable [agent tools](https://developers.cloudflare.com/agents/api-reference/agent-tools/) with retained streaming timelines.
-* **React to events** — Handle [inbound email](https://developers.cloudflare.com/agents/api-reference/email/) (see the [email agent example ↗](https://github.com/cloudflare/agents/tree/main/examples/email-agent)), HTTP requests, WebSocket messages, and state changes — all from the same class.
+**[Slack agent](https://developers.cloudflare.com/agents/examples/slack-agent/)** 
 
-### How it works
+Build an agent that responds to Slack messages, mentions, and commands.
 
-An agent is a TypeScript class. Methods marked with `@callable()` become typed RPC that clients can call directly over WebSocket.
+**[Voice agent](https://developers.cloudflare.com/agents/examples/voice-agent/)** 
 
-* [  JavaScript ](#tab-panel-3238)
-* [  TypeScript ](#tab-panel-3239)
+Build a real-time voice agent with speech-to-text and text-to-speech.
 
-JavaScript
+**[Browser agent](https://developers.cloudflare.com/agents/examples/browser-agent/)** 
 
-```
+Build an agent that can inspect pages, capture screenshots, and use browser tools.
 
-import { Agent, callable } from "agents";
+**[Email agent](https://developers.cloudflare.com/agents/examples/email-agent/)** 
 
-
-export class CounterAgent extends Agent {
-
-  initialState = { count: 0 };
-
-
-  @callable()
-
-  increment() {
-
-    this.setState({ count: this.state.count + 1 });
-
-    return this.state.count;
-
-  }
-
-}
-
-
-```
-
-TypeScript
-
-```
-
-import { Agent, callable } from "agents";
-
-
-export class CounterAgent extends Agent<Env, { count: number }> {
-
-  initialState = { count: 0 };
-
-
-  @callable()
-
-  increment() {
-
-    this.setState({ count: this.state.count + 1 });
-
-    return this.state.count;
-
-  }
-
-}
-
-
-```
-
-```
-
-import { useAgent } from "agents/react";
-
-
-function Counter() {
-
-  const [count, setCount] = useState(0);
-
-  const agent = useAgent({
-
-    agent: "CounterAgent",
-
-    onStateUpdate: (state) => setCount(state.count),
-
-  });
-
-
-  return <button onClick={() => agent.stub.increment()}>{count}</button>;
-
-}
-
-
-```
-
-For AI chat, extend `AIChatAgent` instead. Messages are persisted automatically, streams resume on disconnect, and the React hook handles the UI.
-
-* [  JavaScript ](#tab-panel-3240)
-* [  TypeScript ](#tab-panel-3241)
-
-JavaScript
-
-```
-
-import { AIChatAgent } from "@cloudflare/ai-chat";
-
-import { createWorkersAI } from "workers-ai-provider";
-
-import { streamText, convertToModelMessages } from "ai";
-
-
-export class ChatAgent extends AIChatAgent {
-
-  async onChatMessage() {
-
-    const workersai = createWorkersAI({ binding: this.env.AI });
-
-    const result = streamText({
-
-      model: workersai("@cf/zai-org/glm-4.7-flash"),
-
-      messages: await convertToModelMessages(this.messages),
-
-    });
-
-    return result.toUIMessageStreamResponse();
-
-  }
-
-}
-
-
-```
-
-TypeScript
-
-```
-
-import { AIChatAgent } from "@cloudflare/ai-chat";
-
-import { createWorkersAI } from "workers-ai-provider";
-
-import { streamText, convertToModelMessages } from "ai";
-
-
-export class ChatAgent extends AIChatAgent {
-
-  async onChatMessage() {
-
-    const workersai = createWorkersAI({ binding: this.env.AI });
-
-    const result = streamText({
-
-      model: workersai("@cf/zai-org/glm-4.7-flash"),
-
-      messages: await convertToModelMessages(this.messages),
-
-    });
-
-    return result.toUIMessageStreamResponse();
-
-  }
-
-}
-
-
-```
-
-Refer to the [quick start](https://developers.cloudflare.com/agents/getting-started/quick-start/) for a full walkthrough, the [chat agents guide](https://developers.cloudflare.com/agents/api-reference/chat-agents/) for the full chat API, or the [Agents API reference](https://developers.cloudflare.com/agents/api-reference/agents-api/) for the complete SDK.
-
----
-
-### Build on the Cloudflare Platform
-
-**[Workers AI](https://developers.cloudflare.com/workers-ai/)** 
-
-Run machine learning models, powered by serverless GPUs, on Cloudflare's global network. No API keys required.
-
-**[Workers](https://developers.cloudflare.com/workers/)** 
-
-Build serverless applications and deploy instantly across the globe for exceptional performance, reliability, and scale.
-
-**[AI Gateway](https://developers.cloudflare.com/ai-gateway/)** 
-
-Observe and control your AI applications with caching, rate limiting, request retries, model fallback, and more.
-
-**[Vectorize](https://developers.cloudflare.com/vectorize/)** 
-
-Build full-stack AI applications with Vectorize, Cloudflare's vector database for semantic search, recommendations, and providing context to LLMs.
-
-**[Workflows](https://developers.cloudflare.com/workflows/)** 
-
-Build stateful agents that guarantee executions, including automatic retries, persistent state that runs for minutes, hours, days, or weeks.
+Build an agent that sends, receives, routes, and replies to email.
 
 ```json
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/agents/","name":"Agents"}}]}

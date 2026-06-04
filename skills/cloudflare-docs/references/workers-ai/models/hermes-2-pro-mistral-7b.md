@@ -14,7 +14,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 #  hermes-2-pro-mistral-7b Beta 
 
-Text Generation • nousresearch • Hosted 
+Text Generation • nousresearch 
 
 `@hf/nousresearch/hermes-2-pro-mistral-7b` 
 
@@ -22,7 +22,7 @@ Hermes 2 Pro on Mistral 7B is the new flagship 7B Hermes! Hermes 2 Pro is an upg
 
 | Model Info                                                                           |                                                                       |
 | ------------------------------------------------------------------------------------ | --------------------------------------------------------------------- |
-| Planned Deprecation                                                                  | 5/30/2026                                                             |
+| Deprecated                                                                           | 5/30/2026                                                             |
 | Context Window[ ↗](https://developers.cloudflare.com/workers-ai/glossary/)           | 24,000 tokens                                                         |
 | More information                                                                     | [link ↗](https://huggingface.co/NousResearch/Hermes-2-Pro-Mistral-7B) |
 | Function calling [ ↗](https://developers.cloudflare.com/workers-ai/function-calling) | Yes                                                                   |
@@ -36,10 +36,10 @@ Try out this model with Workers AI LLM Playground. It does not require any setup
 
 ## Usage
 
-* [  Worker (Streaming) ](#tab-panel-2872)
-* [  TypeScript ](#tab-panel-2873)
-* [  Python ](#tab-panel-2874)
-* [  curl ](#tab-panel-2875)
+* [  Worker (Streaming) ](#tab-panel-4322)
+* [  TypeScript ](#tab-panel-4323)
+* [  Python ](#tab-panel-4324)
+* [  curl ](#tab-panel-4325)
 
 TypeScript
 

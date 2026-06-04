@@ -27,8 +27,8 @@ Note that the Context API is available strictly in stateless contexts, that is, 
 
 For example, imagine that you are configuring a Worker called "frontend-worker", which must talk to another Worker called "doc-worker" in order to manipulate documents. You might configure "frontend-worker" with a [Service Binding](https://developers.cloudflare.com/workers/runtime-apis/bindings/service-bindings) like:
 
-* [  wrangler.jsonc ](#tab-panel-10789)
-* [  wrangler.toml ](#tab-panel-10790)
+* [  wrangler.jsonc ](#tab-panel-11259)
+* [  wrangler.toml ](#tab-panel-11260)
 
 JSONC
 
@@ -99,8 +99,8 @@ The Workers platform is designed to ensure that `ctx.props` can only be set by s
 
 `ctx.props` can also be used to configure an RPC interface to represent a _specific_ resource, thus creating a "custom binding". For example, we could configure a Service Binding to our "doc-worker" which grants access only to a specific document:
 
-* [  wrangler.jsonc ](#tab-panel-10791)
-* [  wrangler.toml ](#tab-panel-10792)
+* [  wrangler.jsonc ](#tab-panel-11261)
+* [  wrangler.toml ](#tab-panel-11262)
 
 JSONC
 
@@ -217,8 +217,8 @@ In this example, the default fetch handler calls the `Greeter` class over RPC, l
 
 Loopback Service Bindings in `ctx.exports` have an extra capability that regular Service Bindings do not: the caller can specify the value of `ctx.props` that should be delivered to the callee.
 
-* [  JavaScript ](#tab-panel-10787)
-* [  TypeScript ](#tab-panel-10788)
+* [  JavaScript ](#tab-panel-11257)
+* [  TypeScript ](#tab-panel-11258)
 
 JavaScript
 
@@ -323,22 +323,28 @@ When declaring an entrypoint class that accepts `props`, make sure to declare it
 
 `ctx.waitUntil()` extends the lifetime of your Worker, allowing you to perform work without blocking returning a response, and that may continue after a response is returned. It accepts a `Promise`, which the Workers runtime will continue executing, even after a response has been returned by the Worker's [handler](https://developers.cloudflare.com/workers/runtime-apis/handlers/).
 
+Use `ctx.waitUntil()` for work that can run after the response is sent, such as logging, analytics, or cache writes, as long as the work can finish within the `waitUntil()` time limit. If the client is still receiving the response, including a streamed response body, the Worker invocation remains active without `ctx.waitUntil()`. If your response depends on the work, `await` the work before returning the response or stream the response as the work completes.
+
 `waitUntil` is commonly used to:
 
 * Fire off events to external analytics providers. (note that when you use [Workers Analytics Engine](https://developers.cloudflare.com/analytics/analytics-engine/), you do not need to use `waitUntil`)
 * Put items into cache using the [Cache API](https://developers.cloudflare.com/workers/runtime-apis/cache/)
 
-`waitUntil` has a 30-second time limit
+`waitUntil` has a 30-second time limit after invocation end
 
-The Worker's lifetime is extended for up to 30 seconds after the response is sent or the client disconnects. This time limit is shared across all `waitUntil()` calls within the same request — if any Promises have not settled after 30 seconds, they are cancelled. When `waitUntil` tasks are cancelled, the following warning will be logged to [Workers Logs](https://developers.cloudflare.com/workers/observability/logs/workers-logs/) and any attached [Tail Workers](https://developers.cloudflare.com/workers/observability/logs/tail-workers/): `waitUntil() tasks did not complete within the allowed time after invocation end and have been cancelled.`
+For HTTP-triggered Workers, `ctx.waitUntil()` can extend execution for up to 30 seconds after the response is sent or the client disconnects. This is not a limit on the total wall time of an HTTP request. This time limit is shared across all `waitUntil()` calls within the same request. If any Promises have not settled after 30 seconds, they are canceled. When `waitUntil` tasks are canceled, the following warning will be logged to [Workers Logs](https://developers.cloudflare.com/workers/observability/logs/workers-logs/) and any attached [Tail Workers](https://developers.cloudflare.com/workers/observability/logs/tail-workers/): `waitUntil() tasks did not complete within the allowed time after invocation end and have been cancelled.`
 
-If you need to guarantee that work completes successfully, you should send messages to a [Queue](https://developers.cloudflare.com/queues/) and process them in a separate consumer Worker. Queues provide reliable delivery and automatic retries, ensuring your work is not lost.
+If the work cannot finish within the `waitUntil()` time limit, send messages to a [Queue](https://developers.cloudflare.com/queues/) and process them in a separate consumer Worker. Queues provide reliable delivery and automatic retries.
 
 Alternatives to waitUntil
 
 If you are using `waitUntil()` to emit logs or exceptions, we recommend using [Tail Workers](https://developers.cloudflare.com/workers/observability/logs/tail-workers/) instead. Even if your Worker throws an uncaught exception, the Tail Worker will execute, ensuring that you can emit logs or exceptions regardless of the Worker's invocation status.
 
 [Cloudflare Queues](https://developers.cloudflare.com/queues/) is purpose-built for performing work out-of-band, without blocking returning a response back to the client Worker.
+
+`waitUntil` in Durable Objects
+
+Do not use `waitUntil()` to keep a Durable Object alive during normal request or RPC handling. Durable Objects remain active while they are handling requests, RPC calls, response streams, WebSockets, or pending I/O. [DurableObjectState.waitUntil()](https://developers.cloudflare.com/durable-objects/api/state/#waituntil) exists for API compatibility and is not needed for this behavior.
 
 You can call `waitUntil()` multiple times. Similar to `Promise.allSettled`, even if a promise passed to one `waitUntil` call is rejected, promises passed to other `waitUntil()` calls will still continue to execute.
 

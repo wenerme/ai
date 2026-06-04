@@ -14,7 +14,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 #  Recraft V4 Pro 
 
-Text-to-Image • Recraft • Proxied 
+Text-to-Image • Recraft 
 
 `recraft/recraftv4-pro` 
 
@@ -28,8 +28,8 @@ Recraft V4 Pro generates high-resolution, art-directed images at 2048px+ with st
 
 ## Usage
 
-* [ TypeScript ](#tab-panel-1248)
-* [ cURL ](#tab-panel-1249)
+* [ TypeScript ](#tab-panel-1436)
+* [ cURL ](#tab-panel-1437)
 
 TypeScript
 
@@ -79,8 +79,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 ```
 
-* [ Output ](#tab-panel-1246)
-* [ Raw response ](#tab-panel-1247)
+* [ Output ](#tab-panel-1434)
+* [ Raw response ](#tab-panel-1435)
 
 ![Print-Ready Illustration](https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/recraft__recraftv4-pro/print-ready-illustration.png) 
 
@@ -111,8 +111,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 **Large Format Art**  — Large canvas digital art 
 
-* [ TypeScript ](#tab-panel-1252)
-* [ cURL ](#tab-panel-1253)
+* [ TypeScript ](#tab-panel-1440)
+* [ cURL ](#tab-panel-1441)
 
 TypeScript
 
@@ -166,8 +166,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 ```
 
-* [ Output ](#tab-panel-1250)
-* [ Raw response ](#tab-panel-1251)
+* [ Output ](#tab-panel-1438)
+* [ Raw response ](#tab-panel-1439)
 
 ![Large Format Art](https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/recraft__recraftv4-pro/large-format-art.png) 
 
@@ -196,8 +196,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 **Brand Asset**  — Professional brand asset with controlled colors 
 
-* [ TypeScript ](#tab-panel-1260)
-* [ cURL ](#tab-panel-1261)
+* [ TypeScript ](#tab-panel-1448)
+* [ cURL ](#tab-panel-1449)
 
 TypeScript
 
@@ -209,6 +209,10 @@ const response = await env.AI.run(
 
   {
 
+    prompt:
+
+      'A modern, clean illustration of a shield with a checkmark inside, representing security and trust',
+
     controls: {
 
       background_color: { rgb: [15, 23, 42] },
@@ -216,10 +220,6 @@ const response = await env.AI.run(
       colors: [{ rgb: [46, 117, 182] }, { rgb: [255, 255, 255] }],
 
     },
-
-    prompt:
-
-      'A modern, clean illustration of a shield with a checkmark inside, representing security and trust',
 
     size: '2048x2048',
 
@@ -247,6 +247,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
   "model": "recraft/recraftv4-pro",
 
   "input": {
+
+    "prompt": "A modern, clean illustration of a shield with a checkmark inside, representing security and trust",
 
     "controls": {
 
@@ -298,8 +300,6 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
     },
 
-    "prompt": "A modern, clean illustration of a shield with a checkmark inside, representing security and trust",
-
     "size": "2048x2048"
 
   }
@@ -309,8 +309,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 ```
 
-* [ Output ](#tab-panel-1254)
-* [ Raw response ](#tab-panel-1255)
+* [ Output ](#tab-panel-1442)
+* [ Raw response ](#tab-panel-1443)
 
 ![Brand Asset](https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/recraft__recraftv4-pro/brand-asset.png) 
 
@@ -339,8 +339,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 **Editorial Illustration**  — Magazine-quality editorial illustration 
 
-* [ TypeScript ](#tab-panel-1258)
-* [ cURL ](#tab-panel-1259)
+* [ TypeScript ](#tab-panel-1446)
+* [ cURL ](#tab-panel-1447)
 
 TypeScript
 
@@ -390,8 +390,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 ```
 
-* [ Output ](#tab-panel-1256)
-* [ Raw response ](#tab-panel-1257)
+* [ Output ](#tab-panel-1444)
+* [ Raw response ](#tab-panel-1445)
 
 ![Editorial Illustration](https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/recraft__recraftv4-pro/editorial-illustration.png) 
 
@@ -420,8 +420,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 ## Parameters
 
-* [ Input ](#tab-panel-1262)
-* [ Output ](#tab-panel-1263)
+* [ Input ](#tab-panel-1450)
+* [ Output ](#tab-panel-1451)
 
 ▶controls{}
 

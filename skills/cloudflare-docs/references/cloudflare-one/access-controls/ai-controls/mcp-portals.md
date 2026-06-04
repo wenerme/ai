@@ -22,8 +22,9 @@ This guide explains how to add MCP servers to Cloudflare Access, create an MCP p
 
 MCP server portals provide the following capabilities:
 
-* **Streamlined access to multiple MCP servers**: MCP server portals support both unauthenticated MCP servers and MCP servers secured using OAuth (for example, via [Access for SaaS](https://developers.cloudflare.com/cloudflare-one/access-controls/ai-controls/secure-mcp-servers/) or a [third-party OAuth provider](https://developers.cloudflare.com/agents/model-context-protocol/authorization/)). Users log in to the portal URL through Cloudflare Access and are prompted to authenticate separately to each server that requires OAuth.
+* **Streamlined access to multiple MCP servers**: MCP server portals support both unauthenticated MCP servers and MCP servers secured using OAuth (for example, via [Access for SaaS](https://developers.cloudflare.com/cloudflare-one/access-controls/ai-controls/secure-mcp-servers/) or a [third-party OAuth provider](https://developers.cloudflare.com/agents/model-context-protocol/protocol/authorization/)). Users log in to the portal URL through Cloudflare Access and are prompted to authenticate separately to each server that requires OAuth.
 * **Customized tools per portal**: Admins can tailor an MCP portal to a particular use case by choosing the specific tools and prompt templates that they want to make available to users through the portal. This allows users to access a curated set of tools and prompts — the less external context exposed to the AI model, the better the AI responses tend to be.
+* **Tool and prompt aliases**: Admins can [rename tools and prompts](#rename-tools-and-prompts-with-aliases) and edit their descriptions at the portal or server level without modifying the upstream MCP server. Aliases help end users find the right tool and help AI agents select the correct one.
 * **Context optimization**: Portals support query parameter options that reduce context window usage by minimizing or hiding tool definitions. Refer to [Optimize context](#optimize-context) for details.
 * **Non-browser client support**: MCP clients authenticate to the portal using a standard OAuth 2.0 authorization code flow via [managed OAuth](https://developers.cloudflare.com/cloudflare-one/access-controls/applications/http-apps/managed-oauth/). Non-browser clients receive a `401` response with a `WWW-Authenticate` header pointing to Access's OAuth discovery endpoints, rather than a browser redirect. You can also connect using [Access service tokens](#connect-with-a-service-token) for machine-to-machine access.
 * **Code mode**: Code mode is available by default on all portals. It collapses all upstream tools into a single `code` tool. The AI agent writes JavaScript that calls typed methods for each tool, and the code runs in an isolated [Dynamic Worker](https://developers.cloudflare.com/workers/runtime-apis/bindings/worker-loader/) environment. This keeps context window usage fixed regardless of how many tools are available. Refer to [code mode](#code-mode) for connection instructions.
@@ -188,20 +189,135 @@ API request body (portal update)
 
 With `default_disabled` set to `true`, only `search_documents` and `list_projects` will be available to portal users. All other tools from this server will be hidden.
 
-### Rename tools with aliases
+### Rename tools and prompts with aliases
 
-You can assign aliases to tools to give them clearer names in the portal. Aliases are useful when multiple MCP servers expose tools with similar names, or when the original tool name is not descriptive.
+Aliases let you give tools and prompts clearer names in the portal. Use aliases to:
 
-Aliases can be set at two levels:
+* Replace unclear tool names with names that match your organization's terminology.
+* Add or improve descriptions so AI agents select the correct tool.
+* Standardize naming across multiple MCP servers in a portal.
 
-| Level            | Field         | Scope                                                                                   |
-| ---------------- | ------------- | --------------------------------------------------------------------------------------- |
-| **Server-level** | alias         | Applies to the tool across all portals that include this server                         |
-| **Portal-level** | portal\_alias | Applies only within this specific portal and takes priority over the server-level alias |
+Alias names must be 1-40 characters and can only contain letters, numbers, hyphens, and underscores. Names must start and end with an alphanumeric character. The value must match `^[a-zA-Z0-9]+([_-][a-zA-Z0-9]+)*$`. For example, `search_customer_records` or `get-user-profile`. No two tools or prompts on the same server can share the same name, whether that name is an alias or the original upstream name.
 
-When a tool has multiple names configured, the portal uses the following priority order: `portal_alias` \> `server_alias` \> `alias` \> original tool name.
+#### Alias precedence
 
-Alias values must be 1-40 characters and can only contain letters, numbers, hyphens, and underscores.
+You can set aliases at two levels. Portal-level aliases take precedence over server-level aliases.
+
+| Level            | Field         | Scope                                                         |
+| ---------------- | ------------- | ------------------------------------------------------------- |
+| **Server-level** | alias         | Applies across all portals that include this server           |
+| **Portal-level** | portal\_alias | Applies only within a specific portal; overrides server-level |
+
+When multiple names exist, the portal resolves them in this order: `portal_alias` \> `server_alias` \> `alias` \> original tool name.
+
+If no alias is set, the portal uses the original name and description from the upstream server.
+
+#### Set aliases in the dashboard
+
+* [ Portal-level alias ](#tab-panel-6453)
+* [ Server-level alias ](#tab-panel-6454)
+
+To set an alias that applies to a specific portal:
+
+1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** \> **Access controls** \> **AI controls**.
+2. Find the portal you want to configure, then select the three dots > **Edit**.
+3. Go to the **Servers** tab.
+4. Select the **Tools authorized** or **Prompts authorized** value for the server you want to configure (for example, `10/10`).
+5. Find the tool or prompt you want to modify, then select the three dots > **Edit**.
+6. In the modal, update the **Name** and **Description** as needed.
+7. Select **Confirm**.
+
+To set an alias that applies across all portals using a server:
+
+1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** \> **Access controls** \> **AI controls**.
+2. Go to the **MCP servers** tab.
+3. Find the server you want to configure, then select the three dots > **Edit**.
+4. Go to the **Tools** or **Prompts** tab.
+5. Find the tool or prompt you want to modify, then select the three dots > **Edit**.
+6. In the modal, update the **Name** and **Description** as needed.
+7. Select **Confirm**.
+8. Scroll to the bottom of the page and select **Save server**.
+
+Tools and prompts that have been modified display a **Modified** label in the dashboard.
+
+#### Set aliases with the API
+
+Send a `PUT` request to the [update a MCP portal](https://developers.cloudflare.com/api/resources/zero%5Ftrust/subresources/access/subresources/ai%5Fcontrols/subresources/mcp/subresources/portals/methods/update/) endpoint. Include the `alias` field for each tool or prompt you want to rename.
+
+Terminal window
+
+```
+
+curl "https://api.cloudflare.com/client/v4/accounts/%7Baccount_id%7D/access/ai-controls/mcp/portals/%7Bid%7D" \
+
+  --request PUT \
+
+  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+
+  --json '{
+
+    "servers": [
+
+        {
+
+            "server_id": "example-server",
+
+            "updated_tools": [
+
+                {
+
+                    "name": "original_tool_name",
+
+                    "enabled": true,
+
+                    "description": "A clearer description of what this tool does.",
+
+                    "alias": "renamed_tool"
+
+                }
+
+            ],
+
+            "updated_prompts": [
+
+                {
+
+                    "name": "original_prompt_name",
+
+                    "enabled": true,
+
+                    "description": "An updated description for this prompt.",
+
+                    "alias": "renamed_prompt"
+
+                }
+
+            ]
+
+        }
+
+    ]
+
+  }'
+
+
+```
+
+To set server-level aliases that apply across all portals, send a `PUT` request to the [update a MCP server](https://developers.cloudflare.com/api/resources/zero%5Ftrust/subresources/access/subresources/ai%5Fcontrols/subresources/mcp/subresources/servers/methods/update/) endpoint with the same `updated_tools` and `updated_prompts` fields.
+
+#### Reset an alias
+
+To reset a tool or prompt to its original upstream name, open the edit modal for the tool or prompt in the dashboard and select "Reset to server definition." When using the API, omit the `alias` field from the corresponding entry in `updated_tools` or `updated_prompts`.
+
+#### How aliases affect end users
+
+MCP clients receive the aliased name and description instead of the original. End users do not see the original name.
+
+If you change an alias while a user has an active session, the user must reauthenticate to see the update. Refer to [Manage portal sessions](#manage-portal-sessions) for reauthentication options.
+
+Warning
+
+If the upstream server renames a tool or prompt, your alias for it will be removed on the next sync. Verify that your aliases still apply after each sync.
 
 ### Tool namespacing
 
@@ -339,7 +455,7 @@ curl "https://api.cloudflare.com/client/v4/accounts/%7Baccount_id%7D/access/ai-c
 
 ## Code mode
 
-[Code mode](https://developers.cloudflare.com/agents/api-reference/codemode/) is turned on by default on all MCP server portals. It reduces context window usage by collapsing all tools in the portal into a single `code` tool. Instead of loading a separate tool definition for each upstream MCP server tool, the connected AI agent writes JavaScript that calls typed `codemode.*` methods. The generated code runs in an isolated [Dynamic Worker](https://developers.cloudflare.com/workers/runtime-apis/bindings/worker-loader/) environment, which keeps authentication credentials and environment variables out of the model context.
+[Code mode](https://developers.cloudflare.com/agents/model-context-protocol/protocol/codemode/) is turned on by default on all MCP server portals. It reduces context window usage by collapsing all tools in the portal into a single `code` tool. Instead of loading a separate tool definition for each upstream MCP server tool, the connected AI agent writes JavaScript that calls typed `codemode.*` methods. The generated code runs in an isolated [Dynamic Worker](https://developers.cloudflare.com/workers/runtime-apis/bindings/worker-loader/) environment, which keeps authentication credentials and environment variables out of the model context.
 
 To use code mode, the MCP client must request it when connecting to the portal URL. Refer to [Connect with code mode](#connect-with-code-mode) for the required query parameter.
 
@@ -393,14 +509,14 @@ MCP client configuration with code mode
 
 When code mode is active, the portal advertises a single `code` tool to connected MCP clients. The AI agent discovers available tools by inspecting the typed method signatures in the Dynamic Worker environment and composes multiple tool calls into a single code execution.
 
-For more information on building with code mode, refer to the [code mode SDK reference](https://developers.cloudflare.com/agents/api-reference/codemode/).
+For more information on building with code mode, refer to the [code mode SDK reference](https://developers.cloudflare.com/agents/model-context-protocol/protocol/codemode/).
 
 ### Turn off code mode
 
 To turn off code mode for a portal:
 
-* [ Dashboard ](#tab-panel-5055)
-* [ API ](#tab-panel-5056)
+* [ Dashboard ](#tab-panel-6455)
+* [ API ](#tab-panel-6456)
 
 1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** \> **Access controls** \> **AI controls**.
 2. Find the portal you want to configure, then select the three dots > **Edit**.
@@ -458,7 +574,7 @@ DLP [AI prompt profiles](https://developers.cloudflare.com/cloudflare-one/data-l
 
 ## Connect to a portal
 
-Users can connect to your MCP server running at `https://<subdomain>.<domain>/mcp` using [Workers AI Playground ↗](https://playground.ai.cloudflare.com/), [MCP inspector ↗](https://github.com/modelcontextprotocol/inspector), or [other MCP clients](https://developers.cloudflare.com/agents/guides/remote-mcp-server/#connect-your-mcp-server-to-claude-and-other-mcp-clients) that support remote MCP servers.
+Users can connect to your MCP server running at `https://<subdomain>.<domain>/mcp` using [Workers AI Playground ↗](https://playground.ai.cloudflare.com/), [MCP inspector ↗](https://github.com/modelcontextprotocol/inspector), or [other MCP clients](https://developers.cloudflare.com/agents/model-context-protocol/guides/remote-mcp-server/#connect-your-mcp-server-to-claude-and-other-mcp-clients) that support remote MCP servers.
 
 To test in Workers AI Playground:
 
@@ -652,7 +768,7 @@ MCP client configuration with search\_and\_execute
 
 ```
 
-For more information on the code mode pattern behind `search_and_execute`, refer to the [Code mode SDK reference](https://developers.cloudflare.com/agents/api-reference/codemode/).
+For more information on the code mode pattern behind `search_and_execute`, refer to the [Code mode SDK reference](https://developers.cloudflare.com/agents/model-context-protocol/protocol/codemode/).
 
 ## Manage portal sessions
 

@@ -28,8 +28,8 @@ The Stream binding is enabled on a per-Worker basis.
 
 To bind Stream to your Worker, add the following to the end of your Wrangler configuration file:
 
-* [  wrangler.jsonc ](#tab-panel-9996)
-* [  wrangler.toml ](#tab-panel-9997)
+* [  wrangler.jsonc ](#tab-panel-10056)
+* [  wrangler.toml ](#tab-panel-10057)
 
 JSONC
 
@@ -193,8 +193,8 @@ Delete a watermark profile. Returns `Promise<void>`.
 
 ### Upload a video from a URL
 
-* [  JavaScript ](#tab-panel-9998)
-* [  TypeScript ](#tab-panel-9999)
+* [  JavaScript ](#tab-panel-10058)
+* [  TypeScript ](#tab-panel-10059)
 
 JavaScript
 
@@ -252,8 +252,8 @@ export default {
 
 ### Create a direct upload
 
-* [  JavaScript ](#tab-panel-10000)
-* [  TypeScript ](#tab-panel-10001)
+* [  JavaScript ](#tab-panel-10060)
+* [  TypeScript ](#tab-panel-10061)
 
 JavaScript
 
@@ -311,8 +311,8 @@ export default {
 
 ### List videos
 
-* [  JavaScript ](#tab-panel-10004)
-* [  TypeScript ](#tab-panel-10005)
+* [  JavaScript ](#tab-panel-10064)
+* [  TypeScript ](#tab-panel-10065)
 
 JavaScript
 
@@ -366,8 +366,8 @@ export default {
 
 ### Get video details
 
-* [  JavaScript ](#tab-panel-10002)
-* [  TypeScript ](#tab-panel-10003)
+* [  JavaScript ](#tab-panel-10062)
+* [  TypeScript ](#tab-panel-10063)
 
 JavaScript
 
@@ -409,8 +409,8 @@ export default {
 
 ### Update video metadata
 
-* [  JavaScript ](#tab-panel-10008)
-* [  TypeScript ](#tab-panel-10009)
+* [  JavaScript ](#tab-panel-10068)
+* [  TypeScript ](#tab-panel-10069)
 
 JavaScript
 
@@ -464,8 +464,8 @@ export default {
 
 ### Delete a video
 
-* [  JavaScript ](#tab-panel-10006)
-* [  TypeScript ](#tab-panel-10007)
+* [  JavaScript ](#tab-panel-10066)
+* [  TypeScript ](#tab-panel-10067)
 
 JavaScript
 
@@ -507,8 +507,8 @@ export default {
 
 ### Generate a signed URL token
 
-* [  JavaScript ](#tab-panel-10010)
-* [  TypeScript ](#tab-panel-10011)
+* [  JavaScript ](#tab-panel-10070)
+* [  TypeScript ](#tab-panel-10071)
 
 JavaScript
 
@@ -550,8 +550,8 @@ export default {
 
 ### Upload captions
 
-* [  JavaScript ](#tab-panel-10014)
-* [  TypeScript ](#tab-panel-10015)
+* [  JavaScript ](#tab-panel-10074)
+* [  TypeScript ](#tab-panel-10075)
 
 JavaScript
 
@@ -609,8 +609,8 @@ export default {
 
 ### Generate AI captions
 
-* [  JavaScript ](#tab-panel-10012)
-* [  TypeScript ](#tab-panel-10013)
+* [  JavaScript ](#tab-panel-10072)
+* [  TypeScript ](#tab-panel-10073)
 
 JavaScript
 
@@ -652,8 +652,8 @@ export default {
 
 ### List and delete captions
 
-* [  JavaScript ](#tab-panel-10016)
-* [  TypeScript ](#tab-panel-10017)
+* [  JavaScript ](#tab-panel-10076)
+* [  TypeScript ](#tab-panel-10077)
 
 JavaScript
 
@@ -703,8 +703,8 @@ export default {
 
 ### Generate and list downloads
 
-* [  JavaScript ](#tab-panel-10018)
-* [  TypeScript ](#tab-panel-10019)
+* [  JavaScript ](#tab-panel-10078)
+* [  TypeScript ](#tab-panel-10079)
 
 JavaScript
 
@@ -758,8 +758,8 @@ export default {
 
 ### Create a watermark profile
 
-* [  JavaScript ](#tab-panel-10022)
-* [  TypeScript ](#tab-panel-10023)
+* [  JavaScript ](#tab-panel-10082)
+* [  TypeScript ](#tab-panel-10083)
 
 JavaScript
 
@@ -837,8 +837,8 @@ export default {
 
 ### List and delete watermark profiles
 
-* [  JavaScript ](#tab-panel-10020)
-* [  TypeScript ](#tab-panel-10021)
+* [  JavaScript ](#tab-panel-10080)
+* [  TypeScript ](#tab-panel-10081)
 
 JavaScript
 
@@ -1220,8 +1220,8 @@ The following error subtypes may be thrown:
 
 Use a `try...catch` block to handle errors:
 
-* [  JavaScript ](#tab-panel-10024)
-* [  TypeScript ](#tab-panel-10025)
+* [  JavaScript ](#tab-panel-10084)
+* [  TypeScript ](#tab-panel-10085)
 
 JavaScript
 

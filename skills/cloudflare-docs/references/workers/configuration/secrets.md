@@ -58,8 +58,8 @@ export default {
 
 You can also import `env` from `cloudflare:workers` to access secrets from anywhere in your code, including outside of request handlers:
 
-* [  JavaScript ](#tab-panel-10312)
-* [  TypeScript ](#tab-panel-10313)
+* [  JavaScript ](#tab-panel-10780)
+* [  TypeScript ](#tab-panel-10781)
 
 JavaScript
 
@@ -236,7 +236,7 @@ To add a secret via the dashboard:
 
 #### Upload secrets alongside code
 
-You can upload secrets at the same time as your Worker code using the `--secrets-file` flag on [wrangler deploy](https://developers.cloudflare.com/workers/wrangler/commands/workers/#deploy) or [wrangler versions upload](https://developers.cloudflare.com/workers/wrangler/commands/workers/#versions-upload). This accepts a path to a JSON or `.env` file — the same formats accepted by [wrangler secret bulk](https://developers.cloudflare.com/workers/wrangler/commands/workers/#secret-bulk).
+You can upload secrets at the same time as your Worker code using the `--secrets-file` flag on [wrangler deploy](https://developers.cloudflare.com/workers/wrangler/commands/workers/#deploy) or [wrangler versions upload](https://developers.cloudflare.com/workers/wrangler/commands/workers/#versions-upload). This accepts a path to a JSON or `.env` file — the same formats accepted by [wrangler secret bulk](https://developers.cloudflare.com/workers/wrangler/commands/workers/#secret-bulk). You can upload up to 100 secrets per bulk request for a single version.
 
 Terminal window
 

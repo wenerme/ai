@@ -14,7 +14,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 #  flux-2-klein-9b 
 
-Text-to-Image • Black Forest Labs • Hosted 
+Text-to-Image • Black Forest Labs 
 
 `@cf/black-forest-labs/flux-2-klein-9b` 
 
@@ -28,8 +28,8 @@ FLUX.2 \[klein\] 9B is an ultra-fast, distilled image model with enhanced qualit
 
 ## Usage
 
-* [  TypeScript ](#tab-panel-2540)
-* [  curl ](#tab-panel-2541)
+* [  TypeScript ](#tab-panel-4256)
+* [  curl ](#tab-panel-4257)
 
 ```
 
@@ -113,8 +113,8 @@ curl --request POST \
 
 ## Parameters
 
-* [ Input ](#tab-panel-2542)
-* [ Output ](#tab-panel-2543)
+* [ Input ](#tab-panel-4258)
+* [ Output ](#tab-panel-4259)
 
 ▶multipart{}
 

@@ -14,7 +14,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 #  llama-3.2-1b-instruct 
 
-Text Generation • Meta • Hosted 
+Text Generation • Meta 
 
 `@cf/meta/llama-3.2-1b-instruct` 
 
@@ -34,10 +34,10 @@ Try out this model with Workers AI LLM Playground. It does not require any setup
 
 ## Usage
 
-* [  Worker (Streaming) ](#tab-panel-2683)
-* [  TypeScript ](#tab-panel-2684)
-* [  Python ](#tab-panel-2685)
-* [  curl ](#tab-panel-2686)
+* [  Worker (Streaming) ](#tab-panel-4395)
+* [  TypeScript ](#tab-panel-4396)
+* [  Python ](#tab-panel-4397)
+* [  curl ](#tab-panel-4398)
 
 TypeScript
 

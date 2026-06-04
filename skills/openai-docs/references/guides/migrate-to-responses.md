@@ -71,8 +71,8 @@ Instead of a `message`, you receive a typed `response` object with its own `id`.
 Responses are stored by default. Chat completions are stored by default for new accounts.
 To disable storage when using either API, set `store: false`.
 
-The objects you recieve back from these APIs will differ slightly. In Chat Completions, you receive an array of
-`choices`, each containing a `message`. In Responses, you receive an array of Items labled `output`.
+The objects you receive back from these APIs will differ slightly. In Chat Completions, you receive an array of
+`choices`, each containing a `message`. In Responses, you receive an array of Items labeled `output`.
 
 ### Additional differences
 
@@ -103,7 +103,7 @@ curl -s https://api.openai.com/v1/chat/completions \\
   -H "Content-Type: application/json" \\
   -H "Authorization: Bearer $OPENAI_API_KEY" \\
   -d "{
-    \\"model\\": \\"gpt-5\\",
+    \\"model\\": \\"gpt-5.5\\",
     \\"messages\\": $INPUT
   }"
 
@@ -111,7 +111,7 @@ curl -s https://api.openai.com/v1/responses \\
   -H "Content-Type: application/json" \\
   -H "Authorization: Bearer $OPENAI_API_KEY" \\
   -d "{
-    \\"model\\": \\"gpt-5\\",
+    \\"model\\": \\"gpt-5.5\\",
     \\"input\\": $INPUT
   }"
 ```
@@ -123,12 +123,12 @@ const context = [
 ];
 
 const completion = await client.chat.completions.create({
-  model: 'gpt-5',
-  messages: messages
+  model: 'gpt-5.5',
+  messages: context
 });
 
 const response = await client.responses.create({
-  model: "gpt-5",
+  model: "gpt-5.5",
   input: context
 });
 ```
@@ -140,12 +140,12 @@ context = [
 ]
 
 completion = client.chat.completions.create(
-  model="gpt-5",
-  messages=messages
+  model="gpt-5.5",
+  messages=context
 )
 
 response = client.responses.create(
-  model="gpt-5",
+  model="gpt-5.5",
   input=context
 )
 ```
@@ -165,7 +165,7 @@ import OpenAI from 'openai';
 const client = new OpenAI({ apiKey: process.env.OPENAI_API_KEY });
 
 const completion = await client.chat.completions.create({
-  model: 'gpt-5',
+  model: 'gpt-5.5',
   messages: [
     { 'role': 'system', 'content': 'You are a helpful assistant.' },
     { 'role': 'user', 'content': 'Hello!' }
@@ -179,7 +179,7 @@ from openai import OpenAI
 client = OpenAI()
 
 completion = client.chat.completions.create(
-    model="gpt-5",
+    model="gpt-5.5",
     messages=[
         {"role": "system", "content": "You are a helpful assistant."},
         {"role": "user", "content": "Hello!"}
@@ -193,7 +193,7 @@ curl https://api.openai.com/v1/chat/completions \\
   -H "Content-Type: application/json" \\
   -H "Authorization: Bearer $OPENAI_API_KEY" \\
   -d '{
-      "model": "gpt-5",
+      "model": "gpt-5.5",
       "messages": [
           {"role": "system", "content": "You are a helpful assistant."},
           {"role": "user", "content": "Hello!"}
@@ -216,7 +216,7 @@ import OpenAI from 'openai';
 const client = new OpenAI({ apiKey: process.env.OPENAI_API_KEY });
 
 const response = await client.responses.create({
-  model: 'gpt-5',
+  model: 'gpt-5.5',
   instructions: 'You are a helpful assistant.',
   input: 'Hello!'
 });
@@ -229,7 +229,7 @@ from openai import OpenAI
 client = OpenAI()
 
 response = client.responses.create(
-    model="gpt-5",
+    model="gpt-5.5",
     instructions="You are a helpful assistant.",
     input="Hello!"
 )
@@ -241,7 +241,7 @@ curl https://api.openai.com/v1/responses \\
   -H "Content-Type: application/json" \\
   -H "Authorization: Bearer $OPENAI_API_KEY" \\
   -d '{
-      "model": "gpt-5",
+      "model": "gpt-5.5",
       "instructions": "You are a helpful assistant.",
       "input": "Hello!"
   }'
@@ -269,7 +269,7 @@ import OpenAI from 'openai';
 const client = new OpenAI({ apiKey: process.env.OPENAI_API_KEY });
 
 const completion = await client.chat.completions.create({
-  model: 'gpt-5',
+  model: 'gpt-5.5',
   messages: [
     { 'role': 'system', 'content': 'You are a helpful assistant.' },
     { 'role': 'user', 'content': 'Hello!' }
@@ -283,7 +283,7 @@ from openai import OpenAI
 client = OpenAI()
 
 completion = client.chat.completions.create(
-    model="gpt-5",
+    model="gpt-5.5",
     messages=[
         {"role": "system", "content": "You are a helpful assistant."},
         {"role": "user", "content": "Hello!"}
@@ -297,7 +297,7 @@ curl https://api.openai.com/v1/chat/completions \\
   -H "Content-Type: application/json" \\
   -H "Authorization: Bearer $OPENAI_API_KEY" \\
   -d '{
-      "model": "gpt-5",
+      "model": "gpt-5.5",
       "messages": [
           {"role": "system", "content": "You are a helpful assistant."},
           {"role": "user", "content": "Hello!"}
@@ -320,7 +320,7 @@ import OpenAI from 'openai';
 const client = new OpenAI({ apiKey: process.env.OPENAI_API_KEY });
 
 const response = await client.responses.create({
-  model: 'gpt-5',
+  model: 'gpt-5.5',
   instructions: 'You are a helpful assistant.',
   input: 'Hello!'
 });
@@ -333,7 +333,7 @@ from openai import OpenAI
 client = OpenAI()
 
 response = client.responses.create(
-    model="gpt-5",
+    model="gpt-5.5",
     instructions="You are a helpful assistant.",
     input="Hello!"
 )
@@ -345,7 +345,7 @@ curl https://api.openai.com/v1/responses \\
   -H "Content-Type: application/json" \\
   -H "Authorization: Bearer $OPENAI_API_KEY" \\
   -d '{
-      "model": "gpt-5",
+      "model": "gpt-5.5",
       "instructions": "You are a helpful assistant.",
       "input": "Hello!"
   }'
@@ -376,7 +376,7 @@ let messages = [
     { 'role': 'user', 'content': 'What is the capital of France?' }
   ];
 const res1 = await client.chat.completions.create({
-  model: 'gpt-5',
+  model: 'gpt-5.5',
   messages
 });
 
@@ -384,7 +384,7 @@ messages = messages.concat([res1.choices[0].message]);
 messages.push({ 'role': 'user', 'content': 'And its population?' });
 
 const res2 = await client.chat.completions.create({
-  model: 'gpt-5',
+  model: 'gpt-5.5',
   messages
 });
 ```
@@ -394,12 +394,12 @@ messages = [
     {"role": "system", "content": "You are a helpful assistant."},
     {"role": "user", "content": "What is the capital of France?"}
 ]
-res1 = client.chat.completions.create(model="gpt-5", messages=messages)
+res1 = client.chat.completions.create(model="gpt-5.5", messages=messages)
 
 messages += [res1.choices[0].message]
 messages += [{"role": "user", "content": "And its population?"}]
 
-res2 = client.chat.completions.create(model="gpt-5", messages=messages)
+res2 = client.chat.completions.create(model="gpt-5.5", messages=messages)
 ```
 
                     </>
@@ -414,34 +414,34 @@ res2 = client.chat.completions.create(model="gpt-5", messages=messages)
 
 ```python
 context = [
-    { "role": "role", "content": "What is the capital of France?" }
+    { "role": "user", "content": "What is the capital of France?" }
 ]
 res1 = client.responses.create(
-    model="gpt-5",
+    model="gpt-5.5",
     input=context,
 )
 
-// Append the first response’s output to context
+# Append the first response's output to context
 context += res1.output
 
-// Add the next user message
+# Add the next user message
 context += [
-    { "role": "role", "content": "And it's population?" }
+    { "role": "user", "content": "And its population?" }
 ]
 
 res2 = client.responses.create(
-    model="gpt-5",
+    model="gpt-5.5",
     input=context,
 )
 ```
 
 ```javascript
 let context = [
-  { role: "role", content: "What is the capital of France?" }
+  { role: "user", content: "What is the capital of France?" }
 ];
 
 const res1 = await client.responses.create({
-  model: "gpt-5",
+  model: "gpt-5.5",
   input: context,
 });
 
@@ -449,10 +449,10 @@ const res1 = await client.responses.create({
 context = context.concat(res1.output);
 
 // Add the next user message
-context.push({ role: "role", content: "And its population?" });
+context.push({ role: "user", content: "And its population?" });
 
 const res2 = await client.responses.create({
-  model: "gpt-5",
+  model: "gpt-5.5",
   input: context,
 });
 ```
@@ -465,13 +465,13 @@ const res2 = await client.responses.create({
 
 ```javascript
 const res1 = await client.responses.create({
-  model: 'gpt-5',
+  model: 'gpt-5.5',
   input: 'What is the capital of France?',
   store: true
 });
 
 const res2 = await client.responses.create({
-  model: 'gpt-5',
+  model: 'gpt-5.5',
   input: 'And its population?',
   previous_response_id: res1.id,
   store: true
@@ -480,13 +480,13 @@ const res2 = await client.responses.create({
 
 ```python
 res1 = client.responses.create(
-    model="gpt-5",
+    model="gpt-5.5",
     input="What is the capital of France?",
     store=True
 )
 
 res2 = client.responses.create(
-    model="gpt-5",
+    model="gpt-5.5",
     input="And its population?",
     previous_response_id=res1.id,
     store=True
@@ -540,11 +540,11 @@ curl https://api.openai.com/v1/chat/completions \\
   -H "Content-Type: application/json" \\
   -H "Authorization: Bearer $OPENAI_API_KEY" \\
   -d '{
-  "model": "gpt-5",
+  "model": "gpt-5.5",
   "messages": [
     {
       "role": "user",
-      "content": "Jane, 54 years old",
+      "content": "Jane, 54 years old"
     }
   ],
   "response_format": {
@@ -573,7 +573,6 @@ curl https://api.openai.com/v1/chat/completions \\
       }
     }
   },
-  "verbosity": "medium",
   "reasoning_effort": "medium"
 }'
 ```
@@ -583,7 +582,7 @@ from openai import OpenAI
 client = OpenAI()
 
 response = client.chat.completions.create(
-  model="gpt-5",
+  model="gpt-5.5",
   messages=[
     {
       "role": "user",
@@ -616,14 +615,13 @@ response = client.chat.completions.create(
       }
     }
   },
-  verbosity="medium",
   reasoning_effort="medium"
 )
 ```
 
 ```javascript
 const completion = await openai.chat.completions.create({
-  model: "gpt-5",
+  model: "gpt-5.5",
   messages: [
     {
       "role": "user",
@@ -649,14 +647,13 @@ const completion = await openai.chat.completions.create({
           }
         },
         required: [
-          name,
-          age
+          "name",
+          "age"
         ],
         additionalProperties: false
       }
     }
   },
-  verbosity: "medium",
   reasoning_effort: "medium"
 });
 ```
@@ -671,7 +668,7 @@ curl https://api.openai.com/v1/responses \\
   -H "Content-Type: application/json" \\
   -H "Authorization: Bearer $OPENAI_API_KEY" \\
   -d '{
-  "model": "gpt-5",
+  "model": "gpt-5.5",
   "input": "Jane, 54 years old",
   "text": {
     "format": {
@@ -704,7 +701,7 @@ curl https://api.openai.com/v1/responses \\
 
 ```python
 response = client.responses.create(
-  model="gpt-5",
+  model="gpt-5.5",
   input="Jane, 54 years old", 
   text={
     "format": {
@@ -737,7 +734,7 @@ response = client.responses.create(
 
 ```javascript
 const response = await openai.responses.create({
-  model: "gpt-5",
+  model: "gpt-5.5",
   input: "Jane, 54 years old",
   text: {
     format: {
@@ -758,8 +755,8 @@ const response = await openai.responses.create({
           }
         },
         required: [
-          name,
-          age
+          "name",
+          "age"
         ],
         additionalProperties: false
       }
@@ -793,7 +790,7 @@ async function web_search(query) {
 }
 
 const completion = await client.chat.completions.create({
-  model: 'gpt-5',
+  model: 'gpt-5.5',
   messages: [
     { role: 'system', content: 'You are a helpful assistant.' },
     { role: 'user', content: 'Who is the current president of France?' }
@@ -820,7 +817,7 @@ def web_search(query):
     return r.json().get("results", [])
 
 completion = client.chat.completions.create(
-    model="gpt-5",
+    model="gpt-5.5",
     messages=[
         {"role": "system", "content": "You are a helpful assistant."},
         {"role": "user", "content": "Who is the current president of France?"}
@@ -894,9 +891,14 @@ curl https://api.openai.com/v1/responses \\
 
 ## Incremental migration
 
-The Responses API is a superset of the Chat Completions API. The Chat Completions API will also continue to be supported. As such, you can incrementally adopt the Responses API if desired. You can migrate user flows who would benefit from improved reasoning models to the Responses API while keeping other flows on the Chat Completions API until you're ready for a full migration.
+The Responses API is a superset of the Chat Completions API, and Chat Completions remains supported. You can migrate one user flow at a time:
 
-As a best practice, we encourage all users to migrate to the Responses API to take advantage of the latest features and improvements from OpenAI.
+1. Start with a simple text-generation flow and update the endpoint, input, and output handling.
+2. Update multi-turn state management, then migrate function calling and Structured Outputs.
+3. For streaming flows, update consumers to handle typed Responses events such as `response.output_text.delta`. See the [streaming Responses guide](https://developers.openai.com/api/docs/guides/streaming-responses?api-mode=responses).
+4. Compare behavior, latency, and errors before routing more traffic to Responses.
+
+We recommend migrating all flows to the Responses API over time to take advantage of the latest OpenAI features and improvements.
 
 ## Assistants API
 

@@ -18,7 +18,7 @@ Start building agents that can remember context, communicate with users, and act
 
 [ Quick start ](https://developers.cloudflare.com/agents/getting-started/quick-start/) Build a small stateful counter agent and learn the core Agent, state, and client SDK model. 
 
-[ Build a chat agent ](https://developers.cloudflare.com/agents/getting-started/build-a-chat-agent/) Build a streaming AI chat agent with Workers AI, server tools, client tools, and approvals. 
+[ Build a chat agent ](https://developers.cloudflare.com/agents/examples/chat-agent/) Build a streaming AI chat agent with Workers AI, server tools, client tools, and approvals. 
 
 [ Add Agents to an existing project ](https://developers.cloudflare.com/agents/getting-started/add-to-existing-project/) Install the Agents SDK into an existing Workers application and wire up routing. 
 
@@ -29,8 +29,6 @@ Start building agents that can remember context, communicate with users, and act
 * [ Quick start ](https://developers.cloudflare.com/agents/getting-started/quick-start/)
 * [ Add to existing project ](https://developers.cloudflare.com/agents/getting-started/add-to-existing-project/)
 * [ Testing your Agents ](https://developers.cloudflare.com/agents/getting-started/testing-your-agent/)
-* [ Build a chat agent ](https://developers.cloudflare.com/agents/getting-started/build-a-chat-agent/)
-* [ Prompt an AI model ](https://developers.cloudflare.com/workers/get-started/prompting/)
 
 ```json
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/agents/","name":"Agents"}},{"@type":"ListItem","position":3,"item":{"@id":"/agents/getting-started/","name":"Getting started"}}]}

@@ -14,7 +14,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 #  whisper 
 
-Automatic Speech Recognition • OpenAI • Hosted 
+Automatic Speech Recognition • OpenAI 
 
 `@cf/openai/whisper` 
 
@@ -27,8 +27,8 @@ Whisper is a general-purpose speech recognition model. It is trained on a large 
 
 ## Usage
 
-* [  TypeScript ](#tab-panel-2871)
-* [  curl ](#tab-panel-2872)
+* [  TypeScript ](#tab-panel-4535)
+* [  curl ](#tab-panel-4536)
 
 ```
 
@@ -94,8 +94,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 ## Parameters
 
-* [ Input ](#tab-panel-2873)
-* [ Output ](#tab-panel-2874)
+* [ Input ](#tab-panel-4537)
+* [ Output ](#tab-panel-4538)
 
 Option 1
 
