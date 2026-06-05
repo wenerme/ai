@@ -68,8 +68,8 @@ The user will have an unlimited amount of time to activate their code.
 
 To activate the override code on a user device:
 
-* [ Version 2026.2+ ](#tab-panel-5425)
-* [ Version 2026.1 and earlier ](#tab-panel-5426)
+* [ Version 2026.2+ ](#tab-panel-6857)
+* [ Version 2026.1 and earlier ](#tab-panel-6858)
 
 1. Open the Cloudflare One Client and go to **Settings**.
 2. In **Temporarily disconnect Cloudflare One Client**, select **Enter admin code**.
@@ -162,7 +162,7 @@ Requires the [Super Administrator](https://developers.cloudflare.com/cloudflare-
 
 To resume normal operations, turn off **Disconnect the Cloudflare One Client on all devices**. The Cloudflare One Client will automatically reconnect.
 
-For more information on how **Disconnect the Cloudflare One Client on all devices** works with other device client settings, refer to [Device client settings precedence](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/settings/external-disconnect/#warp-settings-precedence).
+For more information on how **Disconnect the Cloudflare One Client on all devices** works with other device client settings, refer to [Device client settings precedence](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/settings/emergency-disconnect/#device-client-settings-precedence).
 
 ### Manage device connection using an external signal
 
@@ -183,7 +183,28 @@ Feature availability
 
 Allows administrators to disconnect and reconnect the Cloudflare One Client independently from any Cloudflare infrastructure. When `Enabled`, Cloudflare One Clients will periodically poll the configured HTTPS endpoint and disconnect when they receive a valid disconnect signal.
 
-To set up the external HTTPS endpoint, refer to [External emergency disconnect](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/settings/external-disconnect/).
+To set up the external HTTPS endpoint, refer to [Emergency Disconnect](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/settings/emergency-disconnect/#set-up-external-emergency-disconnect).
+
+### Manage device connection using a local file
+
+Feature availability
+
+| [Client modes](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/modes/) | [Zero Trust plans ↗](https://www.cloudflare.com/teams-pricing/) |
+| ---------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------- |
+| All modes                                                                                                                          | All plans                                                       |
+
+| System   | Availability | Minimum client version |
+| -------- | ------------ | ---------------------- |
+| Windows  | ✅            | 2026.5.0               |
+| macOS    | ✅            | 2026.5.0               |
+| Linux    | ✅            | 2026.5.0               |
+| iOS      | ❌            |                        |
+| Android  | ❌            |                        |
+| ChromeOS | ❌            |                        |
+
+Allows administrators to disconnect and reconnect the Cloudflare One Client using a local JSON file on the device, without requiring any network connectivity. When `Enabled`, the Cloudflare One Client monitors a fixed file path for a disconnect signal. This is useful for disaster recovery scenarios where both Cloudflare and your own infrastructure may be unreachable.
+
+To set up the local signal file, refer to [Emergency Disconnect](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/settings/emergency-disconnect/#set-up-local-emergency-disconnect).
 
 ## Device profile settings
 
@@ -381,9 +402,9 @@ Enabling this setting comes with two major consequences:
 
 To turn on local network access in the Cloudflare One Client:
 
-* [ Windows and macOS ](#tab-panel-5427)
-* [ Linux ](#tab-panel-5428)
-* [ Android and ChromeOS ](#tab-panel-5429)
+* [ Windows and macOS ](#tab-panel-6859)
+* [ Linux ](#tab-panel-6860)
+* [ Android and ChromeOS ](#tab-panel-6861)
 
 1. Open the Cloudflare One Client and go to **Settings**.
 2. In **Temporarily access local network resources**, select **Access resources**.

@@ -31,6 +31,19 @@ Serve identical requests directly from Cloudflare's global cache, reducing laten
 
 [ Use Caching ](https://developers.cloudflare.com/ai-gateway/features/caching/) 
 
+###  Spend Limits 
+
+Set cost-based budgets that track cumulative dollar spend across requests. Scope limits by model, provider, or custom metadata dimensions like user, team, or application.
+
+**Key benefits:**
+
+* Per-provider or per-model budgets
+* Per-user or per-team budgets using [custom metadata](https://developers.cloudflare.com/ai-gateway/observability/custom-metadata/)
+* Configurable time windows (daily, weekly, monthly)
+* Automatic request blocking when budget is exceeded
+
+[ Use Spend Limits ](https://developers.cloudflare.com/ai-gateway/features/spend-limits/) 
+
 ###  Rate Limiting 
 
 Control application scaling and protect against abuse with flexible rate limiting options. Set limits based on requests per time window with sliding or fixed window techniques.
@@ -175,13 +188,13 @@ Override default pricing with your negotiated rates or custom cost models. Apply
 
 ## Feature Comparison by Use Case
 
-| Use Case                   | Recommended Features                           |
-| -------------------------- | ---------------------------------------------- |
-| **Cost Optimization**      | Caching, Rate Limiting, Custom Costs           |
-| **High Availability**      | Fallbacks using Dynamic Routing                |
-| **Security & Compliance**  | Guardrails, DLP, Authentication, BYOK, Logging |
-| **Performance Monitoring** | Analytics, Logging, Custom Metadata            |
-| **A/B Testing**            | Dynamic Routing, Custom Metadata, Analytics    |
+| Use Case                   | Recommended Features                               |
+| -------------------------- | -------------------------------------------------- |
+| **Cost Optimization**      | Caching, Spend Limits, Rate Limiting, Custom Costs |
+| **High Availability**      | Fallbacks using Dynamic Routing                    |
+| **Security & Compliance**  | Guardrails, DLP, Authentication, BYOK, Logging     |
+| **Performance Monitoring** | Analytics, Logging, Custom Metadata                |
+| **A/B Testing**            | Dynamic Routing, Custom Metadata, Analytics        |
 
 ## Getting Started with Features
 

@@ -514,10 +514,10 @@
   "openai-docs/guides/image-generation.md": {
     "url": "https://developers.openai.com/api/docs/guides/image-generation.md",
     "skill": "openai-docs",
-    "etag": "W/\"074ed49566d5f9983a7761ba9ec6e2f1\"",
-    "lastModified": "Fri, 05 Jun 2026 00:34:13 GMT",
-    "size": 43807,
-    "updatedAt": "2026-06-05T00:43:14.929Z"
+    "etag": "W/\"521ca2c534639434a8a68c205e777ca7\"",
+    "lastModified": "Fri, 05 Jun 2026 11:01:55 GMT",
+    "size": 48782,
+    "updatedAt": "2026-06-05T11:12:04.957Z"
   },
   "openai-docs/guides/images-vision.md": {
     "url": "https://developers.openai.com/api/docs/guides/images-vision.md",
@@ -10570,10 +10570,10 @@
   "codex-docs/permissions.md": {
     "url": "https://developers.openai.com/codex/permissions.md",
     "skill": "codex-docs",
-    "etag": "W/\"15e15816108d19a1e1305ada0828a0ab\"",
-    "lastModified": "Fri, 29 May 2026 08:04:56 GMT",
-    "size": 28371,
-    "updatedAt": "2026-05-29T11:16:50.469Z"
+    "etag": "W/\"c1d14d0de3ab36de068a3ee61f3b362a\"",
+    "lastModified": "Fri, 05 Jun 2026 11:18:18 GMT",
+    "size": 29623,
+    "updatedAt": "2026-06-05T11:18:18.298Z"
   },
   "codex-docs/plugins.md": {
     "url": "https://developers.openai.com/codex/plugins.md",
@@ -10866,10 +10866,10 @@
   "codex-docs/use-cases/collections/security.md": {
     "url": "https://developers.openai.com/codex/use-cases/collections/security.md",
     "skill": "codex-docs",
-    "etag": "\"9167ccad82d22dfddebf67a869481cc7\"",
-    "lastModified": "Thu, 28 May 2026 22:40:44 GMT",
-    "size": 683,
-    "updatedAt": "2026-05-29T00:44:58.755Z"
+    "etag": "W/\"7aaa63dd6f7a0b65d21542862685fdb5\"",
+    "lastModified": "Fri, 05 Jun 2026 11:18:30 GMT",
+    "size": 1379,
+    "updatedAt": "2026-06-05T11:18:30.464Z"
   },
   "codex-docs/use-cases/collections/web-development.md": {
     "url": "https://developers.openai.com/codex/use-cases/collections/web-development.md",

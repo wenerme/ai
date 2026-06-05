@@ -32,8 +32,8 @@ Depending on your origin configuration, you may have to adjust settings to avoid
 
 ### Process
 
-* [ Dashboard ](#tab-panel-7979)
-* [ API ](#tab-panel-7980)
+* [ Dashboard ](#tab-panel-10003)
+* [ API ](#tab-panel-10004)
 
 To change your encryption mode in the dashboard:
 

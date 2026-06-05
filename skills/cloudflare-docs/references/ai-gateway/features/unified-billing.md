@@ -130,7 +130,12 @@ The HTTP API supports the following providers:
 
 ### Spend limits
 
-Set spend limits to prevent unexpected charges on your loaded credits. You can define daily, weekly, or monthly limits. When a limit is reached, the AI Gateway automatically stops processing requests until the period resets or you increase the limit.
+You can set spend limits at two levels:
+
+* **Account-level** — Set a spend limit on your loaded credits on this page to cap total Unified Billing spend across all gateways.
+* **Per-gateway** — Set [granular spend limit rules](https://developers.cloudflare.com/ai-gateway/features/spend-limits/) on individual gateways, scoped by model, provider, or custom metadata dimensions like user or team.
+
+Both limits are enforced independently. Whichever one is reached first will block requests.
 
 ### Zero Data Retention (ZDR)
 
@@ -147,8 +152,8 @@ If ZDR is enabled for a provider that does not support it, AI Gateway falls back
 
 #### Default configuration
 
-* [ Dashboard ](#tab-panel-4511)
-* [ API ](#tab-panel-4512)
+* [ Dashboard ](#tab-panel-5973)
+* [ API ](#tab-panel-5974)
 
 To set ZDR as the default for Unified Billing in the dashboard:
 

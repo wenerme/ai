@@ -59,7 +59,7 @@ GitLab instance.
 | `GLAB_SEND_TELEMETRY` | Set to false to disable telemetry being sent to your GitLab instance. Can be set in the config with `glab config set telemetry false`. See <https://docs.gitlab.com/administration/settings/usage_statistics/> for more information |
 | `GLAMOUR_STYLE` | The environment variable to set your desired Markdown renderer style. Available options: dark, light, notty. To set a custom style, read <https://github.com/charmbracelet/glamour#styles> |
 | `NO_COLOR` | Set to any value to avoid printing ANSI escape sequences for color output. |
-| `NO_PROMPT` | Set to true to disable prompts. |
+| `GLAB_NO_PROMPT` | Set to true (or 1) to disable prompts, or false (or 0) to enable them. |
 | `REMOTE_ALIAS or GIT_REMOTE_URL_VAR` | A `git remote` variable or alias that contains the GitLab URL. Can be set in the config with `glab config set remote_alias origin`. |
 | `VISUAL, EDITOR (in order of precedence)` | The editor tool to use for authoring text. Can be set in the config with `glab config set editor vim`. |
 | `GLAB_ENABLE_CI_AUTOLOGIN` | Set to `true` to enable auto-login in GitLab CI. CI auto-login detects if glab is running in a GitLab CI job by checking the predefined CI/CD variable `GITLAB_CI`. If detected, it uses predefined CI/CD variables such as `CI_SERVER_FQDN` and `CI_JOB_TOKEN` to sign in, and ignores host variables like `GITLAB_HOST`. If `GITLAB_TOKEN`, `GITLAB_ACCESS_TOKEN`, or `OAUTH_TOKEN` are set, they take precedence over `CI_JOB_TOKEN`. Only glab commands that support `CI_JOB_TOKEN` work with CI auto-login. For a list of supported commands, see <https://docs.gitlab.com/ci/jobs/ci_job_token/#job-token-access>. |

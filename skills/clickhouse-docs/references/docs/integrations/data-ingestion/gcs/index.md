@@ -18,7 +18,6 @@ To utilize a GCS bucket as a disk, we must first declare it within the ClickHous
 #### Storage configuration > disks > gcs {#storage_configuration--disks--gcs}
 
 This part of the configuration is shown in the highlighted section and specifies that:
-- Batch deletes aren't to be performed.  GCS doesn't currently support batch deletes, so the autodetect is disabled to suppress error messages.
 - The type of the disk is `s3` because the S3 API is in use.
 - The endpoint as provided by GCS
 - The service account HMAC key and secret
@@ -30,7 +29,7 @@ This part of the configuration is shown in the highlighted section and specifies
         <disks>
             <gcs>
             <!--highlight-start-->
-                <support_batch_delete>false</support_batch_delete>
+                <support_batch_delete>true</support_batch_delete>
                 <type>s3</type>
                 <endpoint>https://storage.googleapis.com/BUCKET NAME/FOLDER NAME/</endpoint>
                 <access_key_id>SERVICE ACCOUNT HMAC KEY</access_key_id>
@@ -60,7 +59,7 @@ The example configuration highlighted below enables a 10Gi memory cache for the 
     <storage_configuration>
         <disks>
             <gcs>
-                <support_batch_delete>false</support_batch_delete>
+                <support_batch_delete>true</support_batch_delete>
                 <type>s3</type>
                 <endpoint>https://storage.googleapis.com/BUCKET NAME/FOLDER NAME/</endpoint>
                 <access_key_id>SERVICE ACCOUNT HMAC KEY</access_key_id>
@@ -97,7 +96,7 @@ Storage configuration policies allow choosing where data is stored.  The policy 
     <storage_configuration>
         <disks>
             <gcs>
-                <support_batch_delete>false</support_batch_delete>
+                <support_batch_delete>true</support_batch_delete>
                 <type>s3</type>
                 <endpoint>https://storage.googleapis.com/BUCKET NAME/FOLDER NAME/</endpoint>
                 <access_key_id>SERVICE ACCOUNT HMAC KEY</access_key_id>
@@ -380,7 +379,7 @@ These substitutions are common across the two nodes:
     <storage_configuration>
         <disks>
             <gcs>
-                <support_batch_delete>false</support_batch_delete>
+                <support_batch_delete>true</support_batch_delete>
                 <type>s3</type>
                 <endpoint>https://storage.googleapis.com/REPLICA 1 BUCKET/REPLICA 1 FOLDER/</endpoint>
                 <access_key_id>SERVICE ACCOUNT HMAC KEY</access_key_id>
