@@ -45,7 +45,7 @@ For video generation in Batch:
 - Multipart `input_reference` uploads, including video reference inputs, aren't supported in Batch.
 - Batch-generated videos are available for download for up to `24` hours after the batch completes.
 
-When targeting `/v1/moderations`, include an `input` field in every request body. Batch accepts both plain-text inputs (for `omni-moderation-latest` and `text-moderation-latest`) and multimodal content arrays (for `omni-moderation-latest`). The Batch worker enforces the same non-streaming requirement as the synchronous Moderations API and rejects requests that set `stream=true`.
+When targeting `/v1/moderations`, include an `input` field in every request body. Batch accepts plain-text inputs and content arrays with text or image inputs using `omni-moderation-latest`. The Batch worker rejects requests that set `stream=true`, matching the synchronous moderation endpoint.
 
 ```jsonl
 {"custom_id": "request-1", "method": "POST", "url": "/v1/chat/completions", "body": {"model": "gpt-3.5-turbo-0125", "messages": [{"role": "system", "content": "You are a helpful assistant."},{"role": "user", "content": "Hello world!"}],"max_tokens": 1000}}

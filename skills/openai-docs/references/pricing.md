@@ -490,10 +490,7 @@ Specialized models
           },
           {
             model: "Moderation",
-            rows: [
-              ["omni-moderation-latest", "Free", "-", "-"],
-              ["text-moderation-latest", "Free", "-", "-"],
-            ],
+            rows: [["omni-moderation-latest", "Free", "-", "-"]],
           },
         ]}
       />

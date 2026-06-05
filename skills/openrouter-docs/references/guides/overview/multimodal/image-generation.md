@@ -402,7 +402,7 @@ Each font input is an object with:
 * Use line breaks or double spaces to separate headlines and sub-headers when using the same font
 * Works best with short, clear headlines and sub-headlines
 
-#### Super Resolution References (Sourceful only)
+#### Super Resolution References (Sourceful V2 only)
 
 Use `image_config.super_resolution_references` to enhance low-quality elements in your input image using high-quality reference images. The output image will match the size of your input image, so use larger input images for better results. This parameter is only supported by Sourceful models (`sourceful/riverflow-v2-fast` and `sourceful/riverflow-v2-pro`) when using image-to-image generation (i.e., when input images are provided in `messages`).
 

@@ -25,7 +25,7 @@ You must implement an endpoint that returns all models that should be served by 
       "name": "Anthropic: Claude Sonnet 4",
       "created": 1690502400,
       "input_modalities": ["text", "image", "file"],
-      "output_modalities": ["text", "image", "file"],
+      "output_modalities": ["text"],
       "quantization": "fp8",
       "context_length": 1000000,
       "max_output_length": 128000,
@@ -65,6 +65,10 @@ You must implement an endpoint that returns all models that should be served by 
 The `id` field should be the exact model identifier that OpenRouter will use when calling your API.
 
 The `pricing` fields are in string format to avoid floating point precision issues, and must be in USD.
+
+Valid input modalities are: `text`, `image`, `file`, `audio`, `video`.
+
+Valid output modalities are: `text`, `image`, `embeddings`, `audio`, `video`, `rerank`, `speech`, `transcription`.
 
 Valid quantization values are: `int4`, `int8`, `fp4`, `fp6`, `fp8`, `fp16`, `bf16`, `fp32`.
 

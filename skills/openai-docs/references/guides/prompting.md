@@ -16,11 +16,11 @@ Prompting is both an art and a science. OpenAI has some strategies and API desig
 - Put overall tone or role guidance in the system message; keep task-specific details and examples in user messages.
 - Combine few-shot examples into a concise YAML-style or bulleted block so they’re easy to scan and update.
 - Mirror your project structure with clear folder names so teammates can locate prompts quickly.
-- Rerun your linked eval every time you publish—catching issues early is cheaper than fixing them in production.
+- Run your prompt tests and evaluation cases every time you publish; catching issues early is cheaper than fixing them in production.
 
-## Prompts in the API
+## Prompts in your application
 
-OpenAI provides a long-lived prompt object, with versioning and templating shared by all users in a project. This design lets you manage, test, and reuse prompts across your team, with one central definition across APIs, SDKs, and dashboard.
+Treat prompts as application code. Store prompt content in named modules, build dynamic sections with typed function arguments, and review prompt changes in the same pull requests as the product behavior they support.
 
 OpenAI is deprecating reusable prompt objects in the API. Prompt creation will
   be de-emphasized beginning June 3, 2026, and `v1/prompts` is scheduled to shut
@@ -28,54 +28,15 @@ OpenAI is deprecating reusable prompt objects in the API. Prompt creation will
   page](https://developers.openai.com/api/docs/deprecations#2026-06-03-reusable-prompts) for the current
   timeline.
 
-Universal prompt IDs give you flexibility to test and build. Variables and prompts share a base prompt, so when you create a new version, you can use that for [evals](https://developers.openai.com/api/docs/guides/evals) and determine whether a prompt performs better or worse.
+For new work, don't create reusable prompt objects. Instead:
 
-### Create a prompt
+- Keep each production prompt in a code-managed, versioned helper such as `prompts/supportReply.ts`.
+- Replace prompt variables with typed function parameters or validated input objects.
+- Pass generated messages directly to the [Responses API](https://developers.openai.com/api/docs/guides/text?api-mode=responses) through `input` and `instructions`.
+- Cover prompt changes with tests, representative fixtures, and evaluation checks that run with your deployment process.
+- Use git history, PR review, release tags, and feature flags to review, ship, compare, and roll back prompt changes.
 
-Log in and use the OpenAI [dashboard](https://platform.openai.com/chat) to create, save, version, and share your prompts.
-
-1. **Start a prompt**
-
-   In the [Playground](https://platform.openai.com/playground), fill out the fields to create your desired prompt.
-
-   <br />
-
-1. **Add prompt variables**
-
-   Variables let you inject dynamic values without changing your prompt. Use them in any message role using `{{variable}}`. For example, when creating a local weather prompt, you might add a `city` variable with the value `San Francisco`.
-
-   <br />
-
-1. **Use the prompt in your [Responses API](https://developers.openai.com/api/docs/guides/text?api-mode=responses) call**
-
-   Find your prompt ID and version number in the URL, and pass it as `prompt_id`:
-
-   ```curl
-   curl -s -X POST "https://api.openai.com/v1/responses" \
-   -H "Content-Type: application/json" \
-   -H "Authorization: Bearer $OPENAI_API_KEY" \
-   -d '{
-       "prompt": {
-       "prompt_id": "pmpt_123",
-       "variables": {
-           "city": "San Francisco"
-       }
-       }
-   }'
-
-   ```
-
-1. **Create a new prompt version**
-
-   Versions let you iterate on your prompts without overwriting existing details. You can use all versions in the API and evaluate their performance against each other. The prompt ID points to the latest published version unless you specify a version.
-
-   To create a new version, edit the prompt and click **Update**. You'll receive a new prompt ID to copy and use in your Responses API calls.
-
-   <br />
-
-1. **Roll back if needed**
-
-   In the [prompts dashboard](https://platform.openai.com/chat), select the prompt you want to roll back. On the right, click **History**. Find the version you want to restore, and click **Restore**.
+If you already use prompt IDs or prompt versions in API requests, follow the [migration guide](https://developers.openai.com/api/docs/guides/prompting/migrate-from-prompt-object) to move those prompts into code.
 
 ## Next steps
 

@@ -9,7 +9,7 @@ Use both features to track, analyze, and optimize the performance of groups of a
 ## Get started with traces
 
 1. In the dashboard, navigate to Logs > [Traces](https://platform.openai.com/logs?api=traces).
-1. Select a worfklow. You'll see logs from any workflows you created in [Agent Builder](https://developers.openai.com/api/docs/guides/agent-builder).
+1. Select a workflow. You'll see traces from SDK-based apps, and from existing [Agent Builder](https://developers.openai.com/api/docs/guides/agent-builder) workflows during the transition window.
 1. Select a trace to inspect your workflow.
 1. Create a grader, and run it to grade your agents' performance against grader criteria.
 

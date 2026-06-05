@@ -46,8 +46,8 @@ Otherwise, your visitors may experience a [526 error](https://developers.cloudfl
 
 ### Process
 
-* [ Dashboard ](#tab-panel-7981)
-* [ API ](#tab-panel-7982)
+* [ Dashboard ](#tab-panel-9999)
+* [ API ](#tab-panel-10000)
 
 To change your encryption mode in the dashboard:
 

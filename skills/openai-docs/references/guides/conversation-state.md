@@ -141,7 +141,7 @@ print(second_response.output_text)
 
 ## OpenAI APIs for conversation state
 
-Our APIs make it easier to manage conversation state automatically, so you don't have to do pass inputs manually with each turn of a conversation.
+Our APIs make it easier to manage conversation state automatically, so you don't have to pass inputs manually with each turn of a conversation.
 
 
 
@@ -345,4 +345,4 @@ For more specific examples and use cases, visit the [OpenAI Cookbook](https://de
 -   [Receive JSON responses with Structured Outputs](https://developers.openai.com/api/docs/guides/structured-outputs)
 -   [Extend the models with function calling](https://developers.openai.com/api/docs/guides/function-calling)
 -   [Enable streaming for real-time responses](https://developers.openai.com/api/docs/guides/streaming-responses)
--   [Build a computer using agent](https://developers.openai.com/api/docs/guides/tools-computer-use)
+-   [Build a computer-using agent](https://developers.openai.com/api/docs/guides/tools-computer-use)

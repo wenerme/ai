@@ -22,8 +22,8 @@ Worker bindings provide a secure way to send data to streams from [Workers](http
 
 Add a pipeline binding to your Wrangler file that points to your stream:
 
-* [  wrangler.jsonc ](#tab-panel-6869)
-* [  wrangler.toml ](#tab-panel-6870)
+* [  wrangler.jsonc ](#tab-panel-8845)
+* [  wrangler.toml ](#tab-panel-8846)
 
 JSONC
 
@@ -35,9 +35,9 @@ JSONC
 
     {
 
-      "pipeline": "<STREAM_ID>",
+      "binding": "STREAM",
 
-      "binding": "STREAM"
+      "stream": "<STREAM_ID>"
 
     }
 
@@ -54,12 +54,16 @@ TOML
 
 [[pipelines]]
 
-pipeline = "<STREAM_ID>"
-
 binding = "STREAM"
+
+stream = "<STREAM_ID>"
 
 
 ```
+
+Note
+
+The `pipeline` field in the `pipelines` binding configuration has been renamed to `stream`. Existing configurations that use `pipeline` will continue to work, but Wrangler will display a deprecation warning. Update your configuration to use `stream` instead.
 
 ### Workers API
 
@@ -69,8 +73,8 @@ The pipeline binding exposes a method for sending data to your stream:
 
 Sends an array of JSON-serializable records to the stream. Returns a Promise that resolves when records are confirmed as ingested.
 
-* [  JavaScript ](#tab-panel-6871)
-* [  TypeScript ](#tab-panel-6872)
+* [  JavaScript ](#tab-panel-8847)
+* [  TypeScript ](#tab-panel-8848)
 
 JavaScript
 

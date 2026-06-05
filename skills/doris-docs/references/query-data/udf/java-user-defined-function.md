@@ -130,7 +130,8 @@ When writing a UDF in Java, the main entry point must be the `evaluate` function
         "file"="file:///path/to/java-udf-demo-jar-with-dependencies.jar",
         "symbol"="org.apache.doris.udf.AddOne",
         "always_nullable"="true",
-        "type"="JAVA_UDF"
+        "type"="JAVA_UDF",
+        "volatility"="immutable"
     );
     ```
 
@@ -333,7 +334,8 @@ public void destroy(State state) {
         "file"="file:///pathTo/java-udaf.jar",
         "symbol"="org.apache.doris.udf.SimpleDemo",
         "always_nullable"="true",
-        "type"="JAVA_UDF"
+        "type"="JAVA_UDF",
+        "volatility"="immutable"
     );
     ```
 
@@ -375,7 +377,8 @@ void reset(State state)
         "file"="file:///pathTo/java-udaf.jar",
         "symbol"="org.apache.doris.udf.SimpleDemo",
         "always_nullable"="true",
-        "type"="JAVA_UDF"
+        "type"="JAVA_UDF",
+        "volatility"="immutable"
     );
     ```
 
@@ -418,7 +421,8 @@ Like UDF, UDTF requires you to implement the `evaluate` method, but the return v
         "file"="file:///pathTo/java-udtf.jar",
         "symbol"="org.apache.doris.udf.demo.UDTFStringTest",
         "always_nullable"="true",
-        "type"="JAVA_UDF"
+        "type"="JAVA_UDF",
+        "volatility"="immutable"
     );
     ```
 
@@ -511,7 +515,8 @@ The steps are as follows:
         "file"="file:///pathTo/FunctionUdf.jar",
         "symbol"="org.apache.doris.udf.FunctionUdf",
         "always_nullable"="true",
-        "type"="JAVA_UDF"
+        "type"="JAVA_UDF",
+        "volatility"="immutable"
     );
     ```
 

@@ -73,11 +73,11 @@ Videos may include captions for several languages, but each language must be uni
 
 The `<LANGUAGE_TAG>` must adhere to the BCP 47 format. The tag for English is `en`. You may specify a region in the tag, such as `en-GB`, which will render a label that shows `British English` for the caption.
 
-* [ REST API ](#tab-panel-8320)
-* [ Workers Binding API ](#tab-panel-8321)
+* [ REST API ](#tab-panel-10029)
+* [ Workers Binding API ](#tab-panel-10030)
 
-* [ cURL ](#tab-panel-8304)
-* [ TypeScript ](#tab-panel-8305)
+* [ cURL ](#tab-panel-10013)
+* [ TypeScript ](#tab-panel-10014)
 
 Terminal window
 
@@ -116,8 +116,8 @@ const caption = await client.stream.captions.language.create("<VIDEO_UID>", "en"
 
 See the full Stream [REST API and SDK reference](https://developers.cloudflare.com/api/resources/stream/) for details on using REST API from external applications, with pre-generated SDK's for external TypeScript, Python, or Go applications.
 
-* [ index.ts ](#tab-panel-8306)
-* [ wrangler.jsonc ](#tab-panel-8307)
+* [ index.ts ](#tab-panel-10015)
+* [ wrangler.jsonc ](#tab-panel-10016)
 
 TypeScript
 
@@ -213,11 +213,11 @@ Note two changes if you edit a generated caption: the generated field will chang
 
 To create or replace a caption file:
 
-* [ REST API ](#tab-panel-8322)
-* [ Workers Binding API ](#tab-panel-8323)
+* [ REST API ](#tab-panel-10031)
+* [ Workers Binding API ](#tab-panel-10032)
 
-* [ cURL ](#tab-panel-8308)
-* [ TypeScript ](#tab-panel-8309)
+* [ cURL ](#tab-panel-10017)
+* [ TypeScript ](#tab-panel-10018)
 
 Terminal window
 
@@ -260,8 +260,8 @@ const caption = await client.stream.captions.language.update("<VIDEO_UID>", "en"
 
 See the full Stream [REST API and SDK reference](https://developers.cloudflare.com/api/resources/stream/) for details on using REST API from external applications, with pre-generated SDK's for external TypeScript, Python, or Go applications.
 
-* [ index.ts ](#tab-panel-8310)
-* [ wrangler.jsonc ](#tab-panel-8311)
+* [ index.ts ](#tab-panel-10019)
+* [ wrangler.jsonc ](#tab-panel-10020)
 
 TypeScript
 
@@ -354,11 +354,11 @@ See the full [Workers Stream binding API reference](https://developers.cloudflar
 
 To view captions associated with a video. Note this results list will also include generated captions that are `inprogress`and `error` status:
 
-* [ REST API ](#tab-panel-8324)
-* [ Workers Binding API ](#tab-panel-8325)
+* [ REST API ](#tab-panel-10033)
+* [ Workers Binding API ](#tab-panel-10034)
 
-* [ cURL ](#tab-panel-8312)
-* [ TypeScript ](#tab-panel-8313)
+* [ cURL ](#tab-panel-10021)
+* [ TypeScript ](#tab-panel-10022)
 
 Terminal window
 
@@ -395,8 +395,8 @@ const captions = await client.stream.captions.get("<VIDEO_UID>", {
 
 See the full Stream [REST API and SDK reference](https://developers.cloudflare.com/api/resources/stream/) for details on using REST API from external applications, with pre-generated SDK's for external TypeScript, Python, or Go applications.
 
-* [ index.ts ](#tab-panel-8314)
-* [ wrangler.jsonc ](#tab-panel-8315)
+* [ index.ts ](#tab-panel-10023)
+* [ wrangler.jsonc ](#tab-panel-10024)
 
 TypeScript
 
@@ -539,11 +539,11 @@ a WebVTT caption response.
 
 To remove a caption associated with your video:
 
-* [ REST API ](#tab-panel-8326)
-* [ Workers Binding API ](#tab-panel-8327)
+* [ REST API ](#tab-panel-10035)
+* [ Workers Binding API ](#tab-panel-10036)
 
-* [ cURL ](#tab-panel-8316)
-* [ TypeScript ](#tab-panel-8317)
+* [ cURL ](#tab-panel-10025)
+* [ TypeScript ](#tab-panel-10026)
 
 Terminal window
 
@@ -582,8 +582,8 @@ await client.stream.captions.language.delete("<VIDEO_UID>", "en", {
 
 See the full Stream [REST API and SDK reference](https://developers.cloudflare.com/api/resources/stream/) for details on using REST API from external applications, with pre-generated SDK's for external TypeScript, Python, or Go applications.
 
-* [ index.ts ](#tab-panel-8318)
-* [ wrangler.jsonc ](#tab-panel-8319)
+* [ index.ts ](#tab-panel-10027)
+* [ wrangler.jsonc ](#tab-panel-10028)
 
 TypeScript
 

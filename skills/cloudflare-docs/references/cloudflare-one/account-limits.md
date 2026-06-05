@@ -16,23 +16,25 @@ This page lists the default account limits for rules, applications, fields, and 
 
 ## Access
 
-| Feature                  | Limit |
-| ------------------------ | ----- |
-| Applications             | 500   |
-| Audit Logpush jobs       | 5     |
-| Email addresses per rule | 1,000 |
-| Rule groups              | 300   |
-| Rules per rule group     | 1,000 |
-| IP addresses per rule    | 1,000 |
-| mTLS root certificates   | 50    |
-| Service tokens           | 50    |
-| Identity providers       | 50    |
-| Reusable policies        | 500   |
-| Rules per application    | 1,000 |
-| Domains per application  | 5     |
-| Infrastructure targets   | 5,000 |
-| MCP portals              | 20    |
-| MCP servers per portal   | 10    |
+| Feature                               | Limit    |
+| ------------------------------------- | -------- |
+| Applications                          | 500      |
+| Audit Logpush jobs                    | 5        |
+| Email addresses per rule              | 1,000    |
+| Rule groups                           | 300      |
+| Rules per rule group                  | 1,000    |
+| IP addresses per rule                 | 1,000    |
+| mTLS root certificates                | 50       |
+| Service tokens                        | 50       |
+| Identity providers                    | 50       |
+| Reusable policies                     | 500      |
+| Rules per application                 | 1,000    |
+| Domains per application               | 5        |
+| Infrastructure targets                | 5,000    |
+| MCP portals                           | 20       |
+| MCP servers per portal                | 20       |
+| Custom domains per MCP portal         | 5        |
+| MCP portal session inactivity timeout | 24 hours |
 
 ## Gateway
 
@@ -111,6 +113,11 @@ This page lists the default account limits for rules, applications, fields, and 
 | Target name                   | 255             |
 | Application URL               | 63              |
 | Team domain                   | 63              |
+| MCP portal name               | 350             |
+| MCP server name               | 350             |
+| MCP server description        | 512             |
+| MCP tool alias                | 40              |
+| MCP portal/server ID          | 32              |
 | Gateway API policy expression | 140,000         |
 
 ## Cloudflare One Client

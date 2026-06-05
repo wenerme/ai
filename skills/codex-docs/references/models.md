@@ -47,7 +47,7 @@
   name="gpt-5.4"
   slug="gpt-5.4"
   wallpaperUrl="/images/api/models/gpt-5.4.jpg"
-  description="Flagship frontier model for professional work that brings the industry-leading coding capabilities of GPT-5.3-Codex together with stronger reasoning, tool use, and agentic workflows."
+  description="Flagship frontier model for professional work with strong coding, reasoning, tool use, and agentic workflow capabilities."
   data={{
     features: [
       {
@@ -120,45 +120,6 @@
 
 <ModelDetails
   client:load
-  name="gpt-5.3-codex"
-  slug="gpt-5.3-codex"
-  wallpaperUrl="/images/codex/codex-wallpaper-1.webp"
-  description="Industry-leading coding model for complex software engineering. Its coding capabilities now also power GPT-5.4."
-  data={{
-    features: [
-      {
-        title: "Capability",
-        value: "",
-        icons: [
-          "openai.SparklesFilled",
-          "openai.SparklesFilled",
-          "openai.SparklesFilled",
-          "openai.SparklesFilled",
-          "openai.SparklesFilled",
-        ],
-      },
-      {
-        title: "Speed",
-        value: "",
-        icons: ["openai.Flash", "openai.Flash", "openai.Flash"],
-      },
-      {
-        title: "Codex CLI & SDK",
-        value: true,
-      },
-      { title: "Codex app & IDE extension", value: true },
-      {
-        title: "Codex Cloud",
-        value: true,
-      },
-      { title: "ChatGPT Credits", value: true },
-      { title: "API Access", value: true },
-    ],
-  }}
-/>
-
-<ModelDetails
-  client:load
   name="gpt-5.3-codex-spark"
   slug="gpt-5.3-codex-spark"
   wallpaperUrl="/images/codex/codex-wallpaper-2.webp"
@@ -213,57 +174,20 @@ For most tasks in Codex, start with
   for ChatGPT Pro subscribers and is optimized for near-instant, real-time
   coding iteration.
 
-## Alternative models
-
-<div class="not-prose grid gap-4 md:grid-cols-2 xl:grid-cols-3">
-<ModelDetails
-  client:load
-  name="gpt-5.2"
-  slug="gpt-5.2"
-  description="Previous general-purpose model for coding and agentic tasks, including hard debugging tasks that benefit from deeper deliberation."
-  collapsible
-  data={{
-    features: [
-      {
-        title: "Capability",
-        value: "",
-        icons: [
-          "openai.SparklesFilled",
-          "openai.SparklesFilled",
-          "openai.SparklesFilled",
-          "openai.SparklesFilled",
-        ],
-      },
-      {
-        title: "Speed",
-        value: "",
-        icons: ["openai.Flash", "openai.Flash", "openai.Flash"],
-      },
-      {
-        title: "Codex CLI & SDK",
-        value: true,
-      },
-      { title: "Codex app & IDE extension", value: true },
-      {
-        title: "Codex Cloud",
-        value: false,
-      },
-      { title: "ChatGPT Credits", value: true },
-      { title: "API Access", value: true },
-    ],
-  }}
-/>
-
-  </div>
-
 ## Other models
 
-When you sign in with ChatGPT, Codex works best with the models listed above.
+When you sign in with ChatGPT, Codex works best with the recommended models listed above.
 
 You can also point Codex at any model and provider that supports either the [Chat Completions](https://platform.openai.com/docs/api-reference/chat) or [Responses APIs](https://platform.openai.com/docs/api-reference/responses) to fit your specific use case.
 
 Support for the Chat Completions API is deprecated and will be removed in
   future releases of Codex.
+
+## Deprecated Codex models
+
+The `gpt-5.2` and `gpt-5.3-codex` models are deprecated in Codex when you sign in with ChatGPT. If your scripts, configuration files, or `codex exec --model` commands still reference deprecated models, update them to the latest model listed above.
+
+Some models that are deprecated for ChatGPT sign-in may still be available in the API. If your workflow depends on one of those models, use API-key authentication and check the [API models page](https://developers.openai.com/api/docs/models) for current availability.
 
 ## Configuring models
 

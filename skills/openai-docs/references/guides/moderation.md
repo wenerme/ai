@@ -1,15 +1,45 @@
 # Moderation
 
-Use the [moderations](https://developers.openai.com/api/docs/api-reference/moderations) endpoint to check whether text or images are potentially harmful. If harmful content is identified, you can take corrective action, like filtering content or intervening with user accounts creating offending content. The moderation endpoint is free to use. Image files are limited to 20 MB.
+Use OpenAI moderation models to detect harmful content in text and images. You can classify standalone inputs with the [moderation endpoint](https://developers.openai.com/api/docs/api-reference/moderations) or request moderation scores alongside a generated response. Use the results to enforce your application's policy, such as filtering content, routing a request for review, or intervening with accounts that submit flagged content.
 
-You can use two models for this endpoint:
+The `omni-moderation-latest` model accepts text and image inputs. It doesn't classify audio. The moderation endpoint is free to use, and image files can be up to 20 MB.
 
-- `omni-moderation-latest`: This model and all snapshots support more categorization options and multi-modal inputs.
-- `text-moderation-latest` **(Legacy)**: Older model that supports only text inputs and fewer input categorizations. The newer omni-moderation models will be the best choice for new applications.
+## Choose a moderation workflow
 
-## Quickstart
+| Workflow                                                        | Use when                                                                                                     |
+| --------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------ |
+| [Moderate generated content](#moderate-generated-content)       | Your application generates text with the Responses API or Chat Completions API and needs moderation signals. |
+| [Classify standalone inputs](#classify-standalone-inputs)       | Your application needs to classify text or images without generating a model response.                       |
+| [Understand moderation results](#understand-moderation-results) | Your application needs to interpret flags, categories, scores, or applied input types.                       |
+| [Review supported categories](#review-supported-categories)     | Your application needs to know which harm categories apply to text, images, or both.                         |
 
-Use the tabs below to see how you can moderate text inputs or image inputs, using our [official SDKs](https://developers.openai.com/api/docs/libraries) and the [omni-moderation-latest model](https://developers.openai.com/api/docs/models#moderation):
+## Moderate generated content
+
+When your application needs generated text and moderation scores together, pass a top-level `moderation` object in the generation request. The API returns moderation scores for the model input and generated output without a separate moderation request.
+
+The model still generates normally. Review the moderation results before you show the output to a user or take downstream actions.
+
+
+
+Set `moderation.model` when you create a response:
+
+The Responses API returns an input `moderation_result` object at `response.moderation.input` and an output `moderation_result` object at `response.moderation.output`.
+
+
+
+
+
+Inline moderation results use the same category fields as a standalone moderation result. Start with `flagged` for a first-pass decision, then inspect `categories` and `category_scores` for logging, routing, audit trails, or human-review queues. A refusal or other safety-aware response can still trigger a flag if it discusses harmful content. Treat moderation scores as signals for your application's policy, not as an automatic blocking decision.
+
+Check the moderation result type before you read scores if your application needs to handle moderation failures. If a moderation step can't complete, the corresponding input or output moderation field can contain an error instead of moderation scores.
+
+For tool-calling requests, moderation covers tool-call arguments and tool outputs when they appear in conversation content. It doesn't cover tool names, tool descriptions, tool schemas, or response-format schemas.
+
+If you stream a generated response, moderation scores arrive after the full generated output is available. They aren't included with partial output deltas.
+
+## Classify standalone inputs
+
+Use the [moderation endpoint](https://developers.openai.com/api/docs/api-reference/moderations) to classify text or image inputs without generating a model response. The tabs below show how to use the [OpenAI libraries](https://developers.openai.com/api/docs/libraries) and the [`omni-moderation-latest` model](https://developers.openai.com/api/docs/models#moderation):
 
 
 
@@ -22,7 +52,9 @@ Use the tabs below to see how you can moderate text inputs or image inputs, usin
 
 
 
-Here's a full example output, where the input is an image from a single frame of a war movie. The model correctly predicts indicators of violence in the image, with a `violence` category score of greater than 0.8.
+## Understand moderation results
+
+Here's a full example output for an image from a single frame of a war movie. The model identifies indicators of violence in the image, with a `violence` category score greater than 0.8.
 
 ```json
 {
@@ -81,7 +113,7 @@ Here's a full example output, where the input is an image from a single frame of
 }
 ```
 
-The output has several categories in the JSON response, which tell you which (if any) categories of content are present in the inputs, and to what degree the model believes them to be present.
+The JSON response includes fields that describe which categories are present in the input and the model's confidence in each category.
 
 <table>
   <tr>
@@ -106,20 +138,17 @@ The output has several categories in the JSON response, which tell you which (if
   <tr>
     <td>`category_scores`</td>
     <td>
-      Contains a dictionary of per-category scores output by the model, denoting
-      the model's confidence that the input violates the OpenAI's policy for the
-      category. The value is between 0 and 1, where higher values denote higher
-      confidence.
+      Contains a dictionary of per-category scores. Each score represents the
+      model's confidence that the input contains content in the category. The
+      value is between 0 and 1, where higher values denote higher confidence.
     </td>
   </tr>
   <tr>
     <td>`category_applied_input_types`</td>
     <td>
-      This property contains information on which input types were flagged in
-      the response, for each category. For example, if the both the image and
-      text inputs to the model are flagged for "violence/graphic", the
-      `violence/graphic` property will be set to `["image", "text"]`. This is
-      only available on omni models.
+      Contains the input types that the category score applies to. For example,
+      if the `violence/graphic` category applies to both image and text inputs,
+      the `violence/graphic` property is set to `["image", "text"]`.
     </td>
   </tr>
 </table>
@@ -128,9 +157,9 @@ We plan to continuously upgrade the moderation endpoint's underlying model.
   Therefore, custom policies that rely on `category_scores` may need
   recalibration over time.
 
-## Content classifications
+## Review supported categories
 
-The table below describes the types of content that can be detected in the moderation API, along with which models and input types are supported for each category.
+The table below describes the content categories that the moderation endpoint can detect and the input types that each category supports.
 
 Categories marked as "Text only" do not support image inputs. If you send only
   images (without accompanying text) to the `omni-moderation-latest` model, it
@@ -146,9 +175,6 @@ Categories marked as "Text only" do not support image inputs. If you send only
       <strong>Description</strong>
     </th>
     <th>
-      <strong>Models</strong>
-    </th>
-    <th>
       <strong>Inputs</strong>
     </th>
   </tr>
@@ -158,7 +184,6 @@ Categories marked as "Text only" do not support image inputs. If you send only
       Content that expresses, incites, or promotes harassing language towards
       any target.
     </td>
-    <td>All</td>
     <td>Text only</td>
   </tr>
   <tr>
@@ -167,7 +192,6 @@ Categories marked as "Text only" do not support image inputs. If you send only
       Harassment content that also includes violence or serious harm towards any
       target.
     </td>
-    <td>All</td>
     <td>Text only</td>
   </tr>
   <tr>
@@ -178,7 +202,6 @@ Categories marked as "Text only" do not support image inputs. If you send only
       or caste. Hateful content aimed at non-protected groups (e.g., chess
       players) is harassment.
     </td>
-    <td>All</td>
     <td>Text only</td>
   </tr>
   <tr>
@@ -188,7 +211,6 @@ Categories marked as "Text only" do not support image inputs. If you send only
       targeted group based on race, gender, ethnicity, religion, nationality,
       sexual orientation, disability status, or caste.
     </td>
-    <td>All</td>
     <td>Text only</td>
   </tr>
   <tr>
@@ -197,7 +219,6 @@ Categories marked as "Text only" do not support image inputs. If you send only
       Content that gives advice or instruction on how to commit illicit acts. A
       phrase like "how to shoplift" would fit this category.
     </td>
-    <td>Omni only</td>
     <td>Text only</td>
   </tr>
   <tr>
@@ -206,7 +227,6 @@ Categories marked as "Text only" do not support image inputs. If you send only
       The same types of content flagged by the `illicit` category, but also
       includes references to violence or procuring a weapon.
     </td>
-    <td>Omni only</td>
     <td>Text only</td>
   </tr>
   <tr>
@@ -215,7 +235,6 @@ Categories marked as "Text only" do not support image inputs. If you send only
       Content that promotes, encourages, or depicts acts of self-harm, such as
       suicide, cutting, and eating disorders.
     </td>
-    <td>All</td>
     <td>Text and images</td>
   </tr>
   <tr>
@@ -225,7 +244,6 @@ Categories marked as "Text only" do not support image inputs. If you send only
       engage in acts of self-harm, such as suicide, cutting, and eating
       disorders.
     </td>
-    <td>All</td>
     <td>Text and images</td>
   </tr>
   <tr>
@@ -235,7 +253,6 @@ Categories marked as "Text only" do not support image inputs. If you send only
       cutting, and eating disorders, or that gives instructions or advice on how
       to commit such acts.
     </td>
-    <td>All</td>
     <td>Text and images</td>
   </tr>
   <tr>
@@ -245,7 +262,6 @@ Categories marked as "Text only" do not support image inputs. If you send only
       sexual activity, or that promotes sexual services (excluding sex education
       and wellness).
     </td>
-    <td>All</td>
     <td>Text and images</td>
   </tr>
   <tr>
@@ -253,13 +269,11 @@ Categories marked as "Text only" do not support image inputs. If you send only
     <td>
       Sexual content that includes an individual who is under 18 years old.
     </td>
-    <td>All</td>
     <td>Text only</td>
   </tr>
   <tr>
     <td>`violence`</td>
     <td>Content that depicts death, violence, or physical injury.</td>
-    <td>All</td>
     <td>Text and images</td>
   </tr>
   <tr>
@@ -268,7 +282,6 @@ Categories marked as "Text only" do not support image inputs. If you send only
       Content that depicts death, violence, or physical injury in graphic
       detail.
     </td>
-    <td>All</td>
     <td>Text and images</td>
   </tr>
 </table>

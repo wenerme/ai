@@ -29,10 +29,10 @@ The Monitoring API includes the following core entities, which each provide dist
 
 You can construct any query you'd like using the above datasets, but here are some example queries you can use.
 
-* [ Events ](#tab-panel-12378)
-* [ Loads ](#tab-panel-12379)
-* [ Triggers ](#tab-panel-12380)
-* [ Erroneous responses ](#tab-panel-12381)
+* [ Events ](#tab-panel-12422)
+* [ Loads ](#tab-panel-12423)
+* [ Triggers ](#tab-panel-12424)
+* [ Erroneous responses ](#tab-panel-12425)
 
 Query for the count of Zaraz events, grouped by time.
 
@@ -85,7 +85,7 @@ query ZarazEvents(
 
 ```
 
-[Run in GraphQL API Explorer](https://graphql.cloudflare.com/explorer?query=I4VwpgTgngBAWgQwggXgUQG5gHYBcDOAFAFAwwAkKA9tmACoIDmAXDPrhAJbaOkUA2nALadcrEN1wA2ACwBCPuXZIxMOsLCKcAE1bqhmsuSoRtkAEJRWcGmETIUdZAGMA1gEFtCAA65OWAHEIKhBvfAB5UwsoBQBKGABvPgxOMAB3SES+MmpaIgAzTn5cSFYEmFz6JlZKWwZGGABfeKSyNpgvXARWFCRUJwQ3Tx8-QODQomz2mEERVXJZ0Sn2wuLSxI6EEr8DAAkQiAB9RjBgGuUIXAAaTe2NfZAj-lOanSbltpMzCEtWAG1jFEflAALofFofMjOEJ4SEdDTYfCcGj4LLTaYEVidMA7MAPCBwxofIntEnvRpAA&variables=N4IgXg9gdgpgKgQwOYgFwgFoHkByBRAfQEkAREAGhABsBLAWxoBc0BGABjcoGdGEAnZugBMbIQDYAtG0lsALHDmoRqAMwB2DBRAwoAEzQgR4qTPnslbVRq0Q+umHwBCATwO6EjGI3owAEhABXPgIAQQBlAGEQAF8gA)
+[Run in GraphQL API Explorer](https://graphql.cloudflare.com/explorer?query=I4VwpgTgngBAWgQwggXgUQG5gHYBcDOAFAFAwwAkKA9tmACoIDmAXDPrhAJbaOkUA2nALadcrEN1wA2ACwBCPuXZIxMOsLCKcAE1bqhmsuSoRtkAEJRWcGmETIUdZAGMA1gEFtCAA65OWAHEIKhBvfAB5UwsoBQBKGABvPgxOMAB3SES+MmpaIgAzTn5cSFYEmFz6JlZKWwZGGABfeKSyNpgvXARWFCRUJwQ3Tx8-QODQomz2mEERVXJZ0Sn2wuLSxI6EEr8DAAkQiAB9RjBgGuUIXAAaTe2NfZAj-lOanSbltpMzCEtWAG1jFEflAALofFofMjOEJ4SEdDTYfCcGj4LLTaYEVidMA7MAPCBwxofIntEnvRpAA&variables=N4IgXg9gdgpgKgQwOYgFwgFoHkByBRAfQEkAREAGhABsBLAWxoBc0BGABjcoGdGEAnZugBMbIQDYAtG0lsALHBZjULAOypZbDBRAwoAEzQgR4qTPlChytRq2UIfPTD4AhAJ6G9CRjEb0YACQgAVz4CAEEAZQBhEABfIA)
 
 Query for the count of Zaraz loads, grouped by time.
 
@@ -254,7 +254,7 @@ query ErroneousResponses(
 
 ```
 
-[Run in GraphQL API Explorer](https://graphql.cloudflare.com/explorer?query=I4VwpgTgngBAohCB7AdmJIDOAlMmAOqmeAFAFAwwAkAXqmACoCGA5gFwyYAuEAliiwrUANrwC2vLhxD8uANgAsAQiFVuTCFJgNxYVWBQATDjrF7KVJBEOQAQlA4Ateo41MaAMTBcAxgAsAQUMmfC5eADcwAHFkEHxMAHlrOygVAEoYAG8hcN4wAHdILKFKOjRMEgAzXmEuSA5MmDLGVg5aemYWGABfDOzKAZhgriYOGjdPb38gkLDImIx48kHB0QktKjXJEpXq2vrilZXh710ACQwIAH0WMGA29U0do5OwswuQa+E7toNDZ5Wn2EVzQ9xgACJwQDBuouFgOAoAAyI6E9VFWGwQewcADalmSWKgAF0AX1UT4MCguKjDLoUJheERDkcBlxMBxXudLqjKCgmGZpBBhKjugDRYNxWjukA&variables=N4IgXg9gdgpgKgQwOYgFwgFoHkByBRAfQEkAREAGhABsBLAWxoBc0BGABjcoGdGEAnZugBMbIQDYAtG0lsALHDmoRqAMwB2DBRAwoAEzQgR4qTPnslbVRq0Q+umHwBCATwO6EjGI3owAEhABXPgIAQQBlAGEQAF8gA)
+[Run in GraphQL API Explorer](https://graphql.cloudflare.com/explorer?query=I4VwpgTgngBAohCB7AdmJIDOAlMmAOqmeAFAFAwwAkAXqmACoCGA5gFwyYAuEAliiwrUANrwC2vLhxD8uANgAsAQiFVuTCFJgNxYVWBQATDjrF7KVJBEOQAQlA4Ateo41MaAMTBcAxgAsAQUMmfC5eADcwAHFkEHxMAHlrOygVAEoYAG8hcN4wAHdILKFKOjRMEgAzXmEuSA5MmDLGVg5aemYWGABfDOzKAZhgriYOGjdPb38gkLDImIx48kHB0QktKjXJEpXq2vrilZXh710ACQwIAH0WMGA29U0do5OwswuQa+E7toNDZ5Wn2EVzQ9xgACJwQDBuouFgOAoAAyI6E9VFWGwQewcADalmSWKgAF0AX1UT4MCguKjDLoUJheERDkcBlxMBxXudLqjKCgmGZpBBhKjugDRYNxWjukA&variables=N4IgXg9gdgpgKgQwOYgFwgFoHkByBRAfQEkAREAGhABsBLAWxoBc0BGABjcoGdGEAnZugBMbIQDYAtG0lsALHBZjULAOypZbDBRAwoAEzQgR4qTPlChytRq2UIfPTD4AhAJ6G9CRjEb0YACQgAVz4CAEEAZQBhEABfIA)
 
 ### Variables Example
 

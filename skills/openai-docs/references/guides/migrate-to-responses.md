@@ -17,8 +17,7 @@ The [Responses API](https://developers.openai.com/api/docs/api-reference/respons
 
 The Responses API is a unified interface for building powerful, agent-like applications. It contains:
 
-- Built-in tools like [web search](https://developers.openai.com/api/docs/guides/tools-web-search), [file search](https://developers.openai.com/api/docs/guides/tools-file-search)
-  , [computer use](https://developers.openai.com/api/docs/guides/tools-computer-use), [code interpreter](https://developers.openai.com/api/docs/guides/tools-code-interpreter), and [remote MCPs](https://developers.openai.com/api/docs/guides/tools-remote-mcp).
+- Built-in tools like [web search](https://developers.openai.com/api/docs/guides/tools-web-search), [file search](https://developers.openai.com/api/docs/guides/tools-file-search), [computer use](https://developers.openai.com/api/docs/guides/tools-computer-use), [code interpreter](https://developers.openai.com/api/docs/guides/tools-code-interpreter), and [remote MCPs](https://developers.openai.com/api/docs/guides/tools-remote-mcp).
 - Seamless multi-turn interactions that allow you to pass previous responses for higher accuracy reasoning results.
 - Native multimodal support for text and images.
 
@@ -85,13 +84,15 @@ The objects you receive back from these APIs will differ slightly. In Chat Compl
 
 ## Migrating from Chat Completions
 
+Treat migration as three related changes: send requests to `/v1/responses`, read output from a typed `output` array, and choose how your application will carry state between turns.
+
 ### 1. Update generation endpoints
 
 Start by updating your generation endpoints from `post /v1/chat/completions` to `post /v1/responses`.
 
-If you are not using functions or multimodal inputs, then you're done! Simple message inputs are compatible from one API to the other:
+If you are not using functions or multimodal inputs, simple message inputs are compatible from one API to the other:
 
-Web search tool
+Reuse simple message input
 
 ```bash
 INPUT='[
@@ -155,114 +156,9 @@ response = client.responses.create(
 
 <div data-content-switcher-pane data-value="chat-completions">
     <div class="hidden">Chat Completions</div>
-    <>
-                        With Chat Completions, you need to create an array of messages that specify different roles and content for each role.
-
-                        Generate text from a model
-
-```javascript
-import OpenAI from 'openai';
-const client = new OpenAI({ apiKey: process.env.OPENAI_API_KEY });
-
-const completion = await client.chat.completions.create({
-  model: 'gpt-5.5',
-  messages: [
-    { 'role': 'system', 'content': 'You are a helpful assistant.' },
-    { 'role': 'user', 'content': 'Hello!' }
-  ]
-});
-console.log(completion.choices[0].message.content);
-```
-
-```python
-from openai import OpenAI
-client = OpenAI()
-
-completion = client.chat.completions.create(
-    model="gpt-5.5",
-    messages=[
-        {"role": "system", "content": "You are a helpful assistant."},
-        {"role": "user", "content": "Hello!"}
-    ]
-)
-print(completion.choices[0].message.content)
-```
-
-```bash
-curl https://api.openai.com/v1/chat/completions \\
-  -H "Content-Type: application/json" \\
-  -H "Authorization: Bearer $OPENAI_API_KEY" \\
-  -d '{
-      "model": "gpt-5.5",
-      "messages": [
-          {"role": "system", "content": "You are a helpful assistant."},
-          {"role": "user", "content": "Hello!"}
-      ]
-  }'
-```
-
-                    </>
-
-  </div>
-  <div data-content-switcher-pane data-value="responses" hidden>
-    <div class="hidden">Responses</div>
-    <>
-                        With Responses, you can separate instructions and input at the top-level. The API shape is similar to Chat Completions but has cleaner semantics.
-
-                        Generate text from a model
-
-```javascript
-import OpenAI from 'openai';
-const client = new OpenAI({ apiKey: process.env.OPENAI_API_KEY });
-
-const response = await client.responses.create({
-  model: 'gpt-5.5',
-  instructions: 'You are a helpful assistant.',
-  input: 'Hello!'
-});
-
-console.log(response.output_text);
-```
-
-```python
-from openai import OpenAI
-client = OpenAI()
-
-response = client.responses.create(
-    model="gpt-5.5",
-    instructions="You are a helpful assistant.",
-    input="Hello!"
-)
-print(response.output_text)
-```
-
-```bash
-curl https://api.openai.com/v1/responses \\
-  -H "Content-Type: application/json" \\
-  -H "Authorization: Bearer $OPENAI_API_KEY" \\
-  -d '{
-      "model": "gpt-5.5",
-      "instructions": "You are a helpful assistant.",
-      "input": "Hello!"
-  }'
-```
-
-                    </>
-
-  </div>
-
-
-
-### 2. Update item definitions
-
-
-
-<div data-content-switcher-pane data-value="chat-completions">
-    <div class="hidden">Chat Completions</div>
-    <>
-                        With Chat Completions, you need to create an array of messages that specify different roles and content for each role.
-
-                        Generate text from a model
+    With Chat Completions, you create a `messages` array and read the model text
+    from `completion.choices[0].message.content`.
+    Generate text from a model
 
 ```javascript
 import OpenAI from 'openai';
@@ -305,15 +201,13 @@ curl https://api.openai.com/v1/chat/completions \\
   }'
 ```
 
-                    </>
 
   </div>
   <div data-content-switcher-pane data-value="responses" hidden>
     <div class="hidden">Responses</div>
-    <>
-                        With Responses, you can separate instructions and input at the top-level. The API shape is similar to Chat Completions but has cleaner semantics.
-
-                        Generate text from a model
+    With Responses, you can separate `instructions` and `input` at the top level
+    and read generated text from `response.output_text`.
+    Generate text from a model
 
 ```javascript
 import OpenAI from 'openai';
@@ -351,24 +245,42 @@ curl https://api.openai.com/v1/responses \\
   }'
 ```
 
-                    </>
 
   </div>
 
 
+
+### 2. Map Messages to Items
+
+Chat Completions uses `messages` as both input and output. Responses uses `input` and `output` arrays of typed Items. A `message` is one Item type, alongside Items such as `reasoning`, `function_call`, and `function_call_output`.
+
+| Chat Completions concept      | Responses mapping                                                                                      |
+| ----------------------------- | ------------------------------------------------------------------------------------------------------ |
+| `messages[]`                  | `input`, as a string or an array of input Items                                                        |
+| System or developer guidance  | Top-level `instructions`, or compatible message Items when you need to preserve an existing transcript |
+| User message                  | An input message Item with `role: "user"`                                                              |
+| Assistant message             | An output message Item in `response.output`; pass it back in `input` if you manually manage state      |
+| Tool or function call         | A `function_call` output Item                                                                          |
+| Tool or function result       | A `function_call_output` input Item linked to the call with `call_id`                                  |
+| Multiple generations with `n` | Not available in Responses; make separate requests if you need multiple candidate outputs              |
+
+When you only need the final text, use the SDK `output_text` helper. When your flow uses reasoning, tools, or multimodal output, iterate over `response.output` and handle each Item by its `type`.
 
 ### 3. Update multi-turn conversations
 
-If you have multi-turn conversations in your application, update your context logic.
+If you have multi-turn conversations in your application, update your context logic. Responses gives you three common state-management options:
+
+- Use `previous_response_id` when you want OpenAI to manage prior response context. Resend stable `instructions` on each request, because `previous_response_id` does not carry over the previous response's top-level `instructions`.
+- Pass prior `output` Items back into the next request when you need to manage or trim context yourself.
+- Use the [Conversations API](https://developers.openai.com/api/docs/guides/conversation-state?api-mode=responses#using-the-conversations-api) when you need a persistent conversation object.
 
 
 
 <div data-content-switcher-pane data-value="chat-completions">
     <div class="hidden">Chat Completions</div>
-    <>
-                        In Chat Completions, you have to store and manage context yourself.
-
-                        Multi-turn conversation
+    In Chat Completions, you store the transcript and send the accumulated
+    `messages` array on each request.
+    Multi-turn conversation
 
 ```javascript
 let messages = [
@@ -402,15 +314,13 @@ messages += [{"role": "user", "content": "And its population?"}]
 res2 = client.chat.completions.create(model="gpt-5.5", messages=messages)
 ```
 
-                    </>
 
   </div>
   <div data-content-switcher-pane data-value="responses" hidden>
     <div class="hidden">Responses</div>
-    <>
-                        With responses, the pattern is similar, you can pass outputs from one response to the input of another.
-
-                        Multi-turn conversation
+    With Responses, you can manually pass outputs from one response into the
+    input of another.
+    Multi-turn conversation
 
 ```python
 context = [
@@ -457,11 +367,9 @@ const res2 = await client.responses.create({
 });
 ```
 
-
-                        As a simplification, we've also built a way to simply reference inputs and outputs from a previous response by passing its id.
-                        You can use `previous_response_id` to form chains of responses that build upon one other or create forks in a history.
-
-                        Multi-turn conversation
+    You can also use `previous_response_id` to reference the previous response
+    and create response chains or forks.
+    Multi-turn conversation
 
 ```javascript
 const res1 = await client.responses.create({
@@ -493,41 +401,44 @@ res2 = client.responses.create(
 )
 ```
 
-                    </>
 
   </div>
 
 
 
-    ### 4. Decide when to use statefulness
+Even when using `previous_response_id`, all previous input tokens for responses in the chain are billed as input tokens in the API.
 
-    Some organizations—such as those with Zero Data Retention (ZDR) requirements—cannot use the Responses API in a stateful way due to compliance or data retention policies. To support these cases, OpenAI offers encrypted reasoning items, allowing you to keep your workflow stateless while still benefiting from reasoning items.
+### 4. Decide when to use statefulness
 
-    To disable statefulness, but still take advantage of reasoning:
-    - set `store: false` in the [store field](https://developers.openai.com/api/docs/api-reference/responses/create#responses_create-store)
-    - add `["reasoning.encrypted_content"]` to the [include field](https://developers.openai.com/api/docs/api-reference/responses/create#responses_create-include)
+Responses are stored by default. Chat Completions are stored by default for new accounts. To disable storage in either API, set `store: false`.
 
-    The API will then return an encrypted version of the reasoning tokens, which you can pass back in future requests just like regular reasoning items.
-    For ZDR organizations, OpenAI enforces store=false automatically. When a request includes encrypted_content, it is decrypted in-memory (never written to disk), used for generating the next response, and then securely discarded. Any new reasoning tokens are immediately encrypted and returned to you, ensuring no intermediate state is ever persisted.
+Some organizations, such as those with Zero Data Retention (ZDR) requirements, cannot use the Responses API in a stateful way due to compliance or data retention policies. To support these cases, OpenAI offers encrypted reasoning items, allowing you to keep your workflow stateless while still benefiting from reasoning items.
 
+To disable statefulness but still take advantage of reasoning:
 
-    ### 5. Update function definitions
+- Set `store: false` in the [store field](https://developers.openai.com/api/docs/api-reference/responses/create#responses_create-store).
+- Add `["reasoning.encrypted_content"]` to the [include field](https://developers.openai.com/api/docs/api-reference/responses/create#responses_create-include).
 
-    There are two minor, but notable, differences in how functions are defined between Chat Completions and Responses.
+The API will then return an encrypted version of the reasoning tokens, which you can pass back in future requests just like regular reasoning items.
+For ZDR organizations, OpenAI enforces `store: false` automatically. When a request includes `encrypted_content`, it is decrypted in memory, used for generating the next response, and then securely discarded. Any new reasoning tokens are immediately encrypted and returned to you, ensuring no intermediate state is persisted.
 
-    1. In Chat Completions, functions are defined using externally tagged polymorphism, whereas in Responses, they are internally-tagged.
-    2. In Chat Completions, functions are non-strict by default, whereas in the Responses API, functions _are_ strict by default.
+### 5. Update function definitions and outputs
 
-    The Responses API function example on the right is functionally equivalent to the Chat Completions example on the left.
+There are two minor, but notable, differences in how functions are defined between Chat Completions and Responses.
 
-    #### Follow function-calling best practices
+1. In Chat Completions, function definitions are externally tagged. In Responses, they are internally tagged.
+2. In Chat Completions, functions are non-strict by default. In Responses, function schemas are normalized into strict mode by default. To keep non-strict, best-effort function calling in Responses, explicitly set `strict: false`.
 
-    In Responses, tool calls and their outputs are two distinct types of Items that are correlated using a `call_id`. See
-    the [tool calling docs](https://developers.openai.com/api/docs/guides/function-calling#function-tool-example) for more detail on how function calling works in Responses.
+The Responses API function example on the right is functionally equivalent to the Chat Completions example on the left.
 
-    ### 6. Update Structured Outputs definition
+#### Follow function-calling best practices
 
-    In the Responses API, defining structured outputs have moved from `response_format` to `text.format`:
+In Responses, tool calls and their outputs are two distinct types of Items that are correlated using a `call_id`. See
+the [function calling docs](https://developers.openai.com/api/docs/guides/function-calling#function-tool-example) for more detail on how function calling works in Responses.
+
+### 6. Update Structured Outputs definitions
+
+In the Responses API, Structured Outputs definitions have moved from `response_format` to `text.format`:
 
 
 
@@ -769,24 +680,37 @@ const response = await openai.responses.create({
 
 
 
-    ### 7. Upgrade to native tools
+### 7. Update streaming consumers
 
-    If your application has use cases that would benefit from OpenAI's native [tools](https://developers.openai.com/api/docs/guides/tools), you can update your tool calls to use OpenAI's tools out of the box.
+Chat Completions streaming returns incremental chunks with a `delta` field. Responses streaming uses typed server-sent events. Update stream consumers to branch on each event's `type` and handle the events your UI or orchestration layer needs.
+
+For text streaming, listen for events such as:
+
+- `response.created`
+- `response.output_text.delta`
+- `response.completed`
+- `error`
+
+Function-calling streams can also emit events such as `response.function_call_arguments.delta` and `response.function_call_arguments.done`. See the [streaming Responses guide](https://developers.openai.com/api/docs/guides/streaming-responses?api-mode=responses) and [Responses streaming events reference](https://developers.openai.com/api/docs/api-reference/responses-streaming).
+
+### 8. Upgrade to native tools
+
+If your application has use cases that would benefit from OpenAI's native [tools](https://developers.openai.com/api/docs/guides/tools), you can update your tool calls to use OpenAI's tools out of the box.
 
 
 
 <div data-content-switcher-pane data-value="chat-completions">
     <div class="hidden">Chat Completions</div>
-    <>
-                        With Chat Completions, you cannot use OpenAI's tools natively and have to write your own.
-                        Web search tool
+    With Chat Completions, you cannot use OpenAI-hosted tools natively and have
+    to write your own tool integration.
+    Web search tool
 
 ```javascript
 async function web_search(query) {
-    const fetch = (await import('node-fetch')).default;
-    const res = await fetch(\`https://api.example.com/search?q=\${query}\`);
-    const data = await res.json();
-    return data.results;
+  const fetch = (await import('node-fetch')).default;
+  const res = await fetch(\`https://api.example.com/search?q=\${query}\`);
+  const data = await res.json();
+  return data.results;
 }
 
 const completion = await client.chat.completions.create({
@@ -843,20 +767,17 @@ curl https://api.example.com/search \\
   --data-urlencode "key=$SEARCH_API_KEY"\
 ```
 
-                    </>
   </div>
   <div data-content-switcher-pane data-value="responses" hidden>
     <div class="hidden">Responses</div>
-    <>
-                        With Responses, you can simply specify the tools that you are interested in.
-
-                        Web search tool
+    With Responses, you can specify the tools that you want the model to use.
+    Web search tool
 
 ```javascript
 const answer = await client.responses.create({
-    model: 'gpt-5.5',
-    input: 'Who is the current president of France?',
-    tools: [{ type: 'web_search' }]
+  model: 'gpt-5.5',
+  input: 'Who is the current president of France?',
+  tools: [{ type: 'web_search' }]
 });
 
 console.log(answer.output_text);
@@ -883,20 +804,36 @@ curl https://api.openai.com/v1/responses \\
   }'
 ```
 
-                    </>
 
   </div>
 
 
 
-## Incremental migration
+### 9. Check common migration errors
 
-The Responses API is a superset of the Chat Completions API, and Chat Completions remains supported. You can migrate one user flow at a time:
+Watch for these issues when moving code from Chat Completions to Responses:
 
-1. Start with a simple text-generation flow and update the endpoint, input, and output handling.
-2. Update multi-turn state management, then migrate function calling and Structured Outputs.
-3. For streaming flows, update consumers to handle typed Responses events such as `response.output_text.delta`. See the [streaming Responses guide](https://developers.openai.com/api/docs/guides/streaming-responses?api-mode=responses).
-4. Compare behavior, latency, and errors before routing more traffic to Responses.
+- Reading `choices[0].message.content` instead of `response.output_text` or `response.output`.
+- Treating every `output` entry as a message. Reasoning, tool, and function calls are separate Item types.
+- Dropping reasoning, function call, or function call output Items when manually carrying context into the next response.
+- Sending a function result without the matching `call_id`.
+- Using `response_format` in a Responses request instead of `text.format`.
+- Reusing Chat Completions streaming chunk handlers without handling typed Responses events.
+- Assuming `previous_response_id` removes billing for prior context. Previous input tokens in the response chain are still billed as input tokens.
+
+## Incremental rollout checklist
+
+Chat Completions remains supported, so you can migrate one user flow at a time.
+
+- [ ] Start with a simple text-generation flow.
+- [ ] Update the endpoint, request body, and output handling.
+- [ ] Decide whether the flow uses `previous_response_id`, manual Item replay, or the Conversations API.
+- [ ] If the flow is stateless or ZDR, add `store: false` and include encrypted reasoning items when reasoning context must continue across turns.
+- [ ] Migrate function definitions and verify function call outputs include the correct `call_id`.
+- [ ] Move Structured Outputs schemas from `response_format` to `text.format`.
+- [ ] Update streaming consumers to handle typed Responses events.
+- [ ] Replace custom orchestration with OpenAI-hosted tools where they fit the workflow.
+- [ ] Compare behavior, latency, token usage, and errors before routing more traffic to Responses.
 
 We recommend migrating all flows to the Responses API over time to take advantage of the latest OpenAI features and improvements.
 
@@ -904,4 +841,4 @@ We recommend migrating all flows to the Responses API over time to take advantag
 
 Based on developer feedback from the [Assistants API](https://developers.openai.com/api/docs/api-reference/assistants) beta, we've incorporated key improvements into the Responses API to make it more flexible, faster, and easier to use. The Responses API represents the future direction for building agents on OpenAI.
 
-We now have Assistant-like and Thread-like objects in the Responses API. Learn more in the [migration guide](https://developers.openai.com/api/docs/guides/assistants/migration). As of August 26th, 2025, we're deprecating the Assistants API, with a sunset date of August 26, 2026.
+We now have Assistant-like and Thread-like objects in the Responses API. Learn more in the [migration guide](https://developers.openai.com/api/docs/guides/assistants/migration). As of August 26, 2025, we're deprecating the Assistants API, with a sunset date of August 26, 2026.

@@ -14,6 +14,32 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 Templates are GitHub repositories that are designed to be a starting point for building a new Cloudflare Workers project. To start any of the projects below, run:
 
+### agent-visibility-template
+
+[![Deploy to Cloudflare](https://deploy.workers.cloudflare.com/button)](https://deploy.workers.cloudflare.com/?url=https://github.com/cloudflare/templates/tree/main/agent-visibility-template)
+
+Make your content visible to AI agents across every discovery surface — llms.txt, a typed JSON index, per-page Markdown, robots.txt, Content-Signal headers, and JSON-LD — all generated from one store by Workers AI.
+
+Explore on [GitHub ↗](https://github.com/cloudflare/templates/tree/main/agent-visibility-template)
+
+ npm  yarn  pnpm 
+
+```
+npm create cloudflare@latest -- --template=cloudflare/templates/agent-visibility-template
+```
+
+```
+yarn create cloudflare --template=cloudflare/templates/agent-visibility-template
+```
+
+```
+pnpm create cloudflare@latest --template=cloudflare/templates/agent-visibility-template
+```
+
+  
+---
+
+  
 ### ai-brand-visibility-template
 
 [![Deploy to Cloudflare](https://deploy.workers.cloudflare.com/button)](https://deploy.workers.cloudflare.com/?url=https://github.com/cloudflare/templates/tree/main/ai-brand-visibility-template)
@@ -112,6 +138,32 @@ yarn create cloudflare --template=cloudflare/templates/cli
 
 ```
 pnpm create cloudflare@latest --template=cloudflare/templates/cli
+```
+
+  
+---
+
+  
+### commerce-llms-txt-template
+
+[![Deploy to Cloudflare](https://deploy.workers.cloudflare.com/button)](https://deploy.workers.cloudflare.com/?url=https://github.com/cloudflare/templates/tree/main/commerce-llms-txt-template)
+
+Make your product catalog visible to AI agents with a dynamic /llms.txt endpoint powered by Workers AI.
+
+Explore on [GitHub ↗](https://github.com/cloudflare/templates/tree/main/commerce-llms-txt-template)
+
+ npm  yarn  pnpm 
+
+```
+npm create cloudflare@latest -- --template=cloudflare/templates/commerce-llms-txt-template
+```
+
+```
+yarn create cloudflare --template=cloudflare/templates/commerce-llms-txt-template
+```
+
+```
+pnpm create cloudflare@latest --template=cloudflare/templates/commerce-llms-txt-template
 ```
 
   

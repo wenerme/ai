@@ -36,8 +36,8 @@ To make sure you do not inadvertently block the **SSL/TLS Recommender**, review 
 
 Then, you can enable the SSL/TLS recommender.
 
-* [ Dashboard ](#tab-panel-7987)
-* [ API ](#tab-panel-7988)
+* [ Dashboard ](#tab-panel-10005)
+* [ API ](#tab-panel-10006)
 
 To enable SSL/TLS recommendations in the dashboard:
 

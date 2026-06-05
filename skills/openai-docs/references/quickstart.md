@@ -131,7 +131,7 @@ StatsigClient.logEvent("quickstart_add_credits_billing_click", null, null)
 <div className="mt-2">Congrats on running a free test API request! Start building real applications with higher limits and use <a href="/api/docs/models" target="_blank">our models</a> to generate text, audio, images, videos and more.</div>
 
 <div className="mt-2">
-  Access dashboard features designed to help you ship faster:
+  Explore tools and docs designed to help you ship faster:
 </div>
 <a
   href="https://platform.openai.com/chat"
@@ -153,26 +153,13 @@ StatsigClient.logEvent("quickstart_add_credits_billing_click", null, null)
 
 
 </a>
-<a
-  href="https://platform.openai.com/agent-builder"
-  target="_blank"
-  rel="noreferrer"
-  onClick={() =>
-    StatsigClient.logEvent(
-      "quickstart_add_credits_agent_builder_click",
-      null,
-      null
-    )
-  }
->
-  
+[
 
 <span slot="icon">
       </span>
-    Build, deploy, and optimize agent workflows.
+    Use the Agents SDK to build, run, and observe agent workflows.
 
-
-</a>
+](https://developers.openai.com/api/docs/guides/agents)
 
 ## Analyze images and files
 
@@ -219,6 +206,9 @@ Give the model access to external data and functions by attaching [tools](https:
     </div>
   <div data-content-switcher-pane data-value="file-search" hidden>
     <div class="hidden">File search</div>
+    </div>
+  <div data-content-switcher-pane data-value="code-interpreter" hidden>
+    <div class="hidden">Code Interpreter</div>
     </div>
   <div data-content-switcher-pane data-value="function-calling" hidden>
     <div class="hidden">Function calling</div>

@@ -24,7 +24,7 @@ curl https://api.anthropic.com/v1/messages \
   -H "x-api-key: $ANTHROPIC_API_KEY" \
   -H "anthropic-version: 2023-06-01" \
   -d '{
-    "model": "claude-opus-4-7",
+    "model": "claude-opus-4-8",
     "max_tokens": 1024,
     "messages": [
       {
@@ -53,7 +53,7 @@ curl https://api.anthropic.com/v1/messages \
 
 ```bash CLI
 ant messages create <<'YAML'
-model: claude-opus-4-7
+model: claude-opus-4-8
 max_tokens: 1024
 messages:
   - role: user
@@ -78,7 +78,7 @@ import anthropic
 client = anthropic.Anthropic()
 
 response = client.messages.create(
-    model="claude-opus-4-7",
+    model="claude-opus-4-8",
     max_tokens=1024,
     messages=[
         {
@@ -130,7 +130,7 @@ public class DocumentExample {
       .build();
 
     MessageCreateParams params = MessageCreateParams.builder()
-      .model(Model.CLAUDE_OPUS_4_7)
+      .model(Model.CLAUDE_OPUS_4_8)
       .maxTokens(1024)
       .addUserMessageOfBlockParams(
         List.of(
@@ -234,7 +234,7 @@ curl https://api.anthropic.com/v1/messages \
      --header "anthropic-version: 2023-06-01" \
      --header "content-type: application/json" \
      --data '{
-    "model": "claude-opus-4-7",
+    "model": "claude-opus-4-8",
     "max_tokens": 1024,
     "messages": [
         {
@@ -262,7 +262,7 @@ curl https://api.anthropic.com/v1/messages \
 
 ```bash CLI
 ant messages create \
-  --model claude-opus-4-7 \
+  --model claude-opus-4-8 \
   --max-tokens 1024 <<'YAML'
 messages:
   - role: user
@@ -292,7 +292,7 @@ long_document = (
 )  # Minimum cacheable length
 
 response = client.messages.create(
-    model="claude-opus-4-7",
+    model="claude-opus-4-8",
     max_tokens=1024,
     messages=[
         {
@@ -331,7 +331,7 @@ const longDocument =
   "This is a very long document with thousands of words..." + " ... ".repeat(1000); // Minimum cacheable length
 
 const response = await client.messages.create({
-  model: "claude-opus-4-7",
+  model: "claude-opus-4-8",
   max_tokens: 1024,
   messages: [
     {
@@ -430,7 +430,7 @@ Plain text documents are automatically chunked into sentences. You can provide t
 
 ### PDF documents
 
-PDF documents can be provided as base64-encoded data or by `file_id`. PDF text is extracted and chunked into sentences. As image citations are not yet supported, PDFs that are scans of documents and do not contain extractable text will not be citable.
+PDF documents can be provided as base64-encoded data, a URL, or by `file_id`. PDF text is extracted and chunked into sentences. As image citations are not yet supported, PDFs that are scans of documents and do not contain extractable text will not be citable.
 
 <Tabs>
 <Tab title="Base64">
@@ -442,6 +442,17 @@ PDF documents can be provided as base64-encoded data or by `file_id`. PDF text i
         "media_type": "application/pdf",
         "data": base64_encoded_pdf_data,
     },
+    "title": "Document Title",  # optional
+    "context": "Context about the document that will not be cited from",  # optional
+    "citations": {"enabled": True},
+}
+```
+</Tab>
+<Tab title="URL">
+```python
+{
+    "type": "document",
+    "source": {"type": "url", "url": "https://example.com/document.pdf"},
     "title": "Document Title",  # optional
     "context": "Context about the document that will not be cited from",  # optional
     "citations": {"enabled": True},

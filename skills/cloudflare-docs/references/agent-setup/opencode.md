@@ -59,7 +59,7 @@ opencode
 5. **Try a prompt**  
 For example:  
 ```  
-Check my Workers deployment logs for errors and suggest fixes.  
+Create a Logpush job to stream Workers analytics to my data warehouse.  
 ```
 
 ## Cloudflare platform access

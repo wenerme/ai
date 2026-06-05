@@ -18,7 +18,7 @@ import OpenAI from "openai";
 const openai = new OpenAI();
 
 const response = await openai.responses.create({
-    model: "gpt-5.4",
+    model: "gpt-5.5",
     input: "Generate an image of gray tabby cat hugging an otter with an orange scarf",
     tools: [{type: "image_generation"}],
 });
@@ -42,7 +42,7 @@ import base64
 client = OpenAI() 
 
 response = client.responses.create(
-    model="gpt-5.4",
+    model="gpt-5.5",
     input="Generate an image of gray tabby cat hugging an otter with an orange scarf",
     tools=[{"type": "image_generation"}],
 )
@@ -86,7 +86,7 @@ When using the Responses API image generation tool, supported GPT Image models c
 
 ### Revised prompt
 
-When using the image generation tool, the mainline model, for example, `gpt-5.4`, will automatically revise your prompt for improved performance.
+When using the image generation tool, the mainline model, for example, `gpt-5.5`, will automatically revise your prompt for improved performance.
 
 You can access the revised prompt in the `revised_prompt` field of the image generation call:
 
@@ -121,7 +121,7 @@ import OpenAI from "openai";
 const openai = new OpenAI();
 
 const response = await openai.responses.create({
-  model: "gpt-5.4",
+  model: "gpt-5.5",
   input:
     "Generate an image of gray tabby cat hugging an otter with an orange scarf",
   tools: [{ type: "image_generation" }],
@@ -140,7 +140,7 @@ if (imageData.length > 0) {
 // Follow up
 
 const response_fwup = await openai.responses.create({
-  model: "gpt-5.4",
+  model: "gpt-5.5",
   previous_response_id: response.id,
   input: "Now make it look realistic",
   tools: [{ type: "image_generation" }],
@@ -167,7 +167,7 @@ import base64
 client = OpenAI()
 
 response = client.responses.create(
-    model="gpt-5.4",
+    model="gpt-5.5",
     input="Generate an image of gray tabby cat hugging an otter with an orange scarf",
     tools=[{"type": "image_generation"}],
 )
@@ -188,7 +188,7 @@ if image_data:
 # Follow up
 
 response_fwup = client.responses.create(
-    model="gpt-5.4",
+    model="gpt-5.5",
     previous_response_id=response.id,
     input="Now make it look realistic",
     tools=[{"type": "image_generation"}],
@@ -216,7 +216,7 @@ import OpenAI from "openai";
 const openai = new OpenAI();
 
 const response = await openai.responses.create({
-  model: "gpt-5.4",
+  model: "gpt-5.5",
   input:
     "Generate an image of gray tabby cat hugging an otter with an orange scarf",
   tools: [{ type: "image_generation" }],
@@ -237,7 +237,7 @@ if (imageData.length > 0) {
 // Follow up
 
 const response_fwup = await openai.responses.create({
-  model: "gpt-5.4",
+  model: "gpt-5.5",
   input: [
     {
       role: "user",
@@ -270,7 +270,7 @@ import openai
 import base64
 
 response = openai.responses.create(
-    model="gpt-5.4",
+    model="gpt-5.5",
     input="Generate an image of gray tabby cat hugging an otter with an orange scarf",
     tools=[{"type": "image_generation"}],
 )
@@ -293,7 +293,7 @@ if image_data:
 # Follow up
 
 response_fwup = openai.responses.create(
-    model="gpt-5.4",
+    model="gpt-5.5",
     input=[
         {
             "role": "user",
@@ -332,26 +332,35 @@ You can set the number of partial images (1-3) with the `partial_images` paramet
 Stream an image
 
 ```javascript
-import fs from "fs";
 import OpenAI from "openai";
-
+import fs from "fs";
 const openai = new OpenAI();
 
-const prompt =
-  "Draw a gorgeous image of a river made of white owl feathers, snaking its way through a serene winter landscape";
-const stream = await openai.images.generate({
-  prompt: prompt,
-  model: "gpt-image-2",
+function saveBase64Image(filename, imageBase64) {
+  const imageBuffer = Buffer.from(imageBase64, "base64");
+  fs.writeFileSync(filename, imageBuffer);
+}
+
+const stream = await openai.responses.create({
+  model: "gpt-5.5",
+  input:
+    "Draw a gorgeous image of a river made of white owl feathers, snaking its way through a serene winter landscape",
   stream: true,
-  partial_images: 2,
+  tools: [{ type: "image_generation", partial_images: 2 }],
 });
 
 for await (const event of stream) {
-  if (event.type === "image_generation.partial_image") {
+  if (event.type === "response.image_generation_call.partial_image") {
     const idx = event.partial_image_index;
-    const imageBase64 = event.b64_json;
-    const imageBuffer = Buffer.from(imageBase64, "base64");
-    fs.writeFileSync(\`river\${idx}.png\`, imageBuffer);
+    saveBase64Image(\`river-partial-\${idx}.png\`, event.partial_image_b64);
+  } else if (event.type === "response.completed") {
+    const imageData = event.response.output
+      .filter((output) => output.type === "image_generation_call")
+      .map((output) => output.result);
+
+    if (imageData.length > 0) {
+      saveBase64Image("river-final.png", imageData[0]);
+    }
   }
 }
 ```
@@ -362,20 +371,31 @@ import base64
 
 client = OpenAI()
 
-stream = client.images.generate(
-    prompt="Draw a gorgeous image of a river made of white owl feathers, snaking its way through a serene winter landscape",
-    model="gpt-image-2",
+def save_base64_image(filename, image_base64):
+    image_bytes = base64.b64decode(image_base64)
+    with open(filename, "wb") as f:
+        f.write(image_bytes)
+
+stream = client.responses.create(
+    model="gpt-5.5",
+    input="Draw a gorgeous image of a river made of white owl feathers, snaking its way through a serene winter landscape",
     stream=True,
-    partial_images=2,
+    tools=[{"type": "image_generation", "partial_images": 2}],
 )
 
 for event in stream:
-    if event.type == "image_generation.partial_image":
+    if event.type == "response.image_generation_call.partial_image":
         idx = event.partial_image_index
-        image_base64 = event.b64_json
-        image_bytes = base64.b64decode(image_base64)
-        with open(f"river{idx}.png", "wb") as f:
-            f.write(image_bytes)
+        save_base64_image(f"river-partial-{idx}.png", event.partial_image_b64)
+    elif event.type == "response.completed":
+        image_data = [
+            output.result
+            for output in event.response.output
+            if output.type == "image_generation_call"
+        ]
+
+        if image_data:
+            save_base64_image("river-final.png", image_data[0])
 ```
 
 
@@ -383,17 +403,17 @@ for event in stream:
 
 The following models support the image generation tool:
 
-- `gpt-4o`
-- `gpt-4o-mini`
+- `gpt-5.5`
+- `gpt-5.4-mini`
+- `gpt-5.4-nano`
+- `gpt-5.2`
+- `gpt-5`
+- `gpt-5-nano`
+- `o3`
 - `gpt-4.1`
 - `gpt-4.1-mini`
 - `gpt-4.1-nano`
-- `o3`
-- `gpt-5`
-- `gpt-5.4-mini`
-- `gpt-5.4-nano`
-- `gpt-5-nano`
-- `gpt-5.4`
-- `gpt-5.2`
+- `gpt-4o`
+- `gpt-4o-mini`
 
-The model used for the image generation process is always a GPT Image model, including `gpt-image-2`, `gpt-image-1.5`, `gpt-image-1`, and `gpt-image-1-mini`, but these models aren't valid values for the `model` field in the Responses API. Use a text-capable mainline model (for example, `gpt-5.4` or `gpt-5`) with the hosted `image_generation` tool.
+The model used for the image generation process is always a GPT Image model, including `gpt-image-2`, `gpt-image-1.5`, `gpt-image-1`, and `gpt-image-1-mini`, but these models aren't valid values for the `model` field in the Responses API. Use a text-capable mainline model (for example, `gpt-5.5` or `gpt-5`) with the hosted `image_generation` tool.

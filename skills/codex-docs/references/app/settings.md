@@ -12,9 +12,11 @@ for multiline prompts or prevent sleep while a thread runs.
 
 ## Profile
 
-Use **Profile** to review stats such as lifetime tokens, peak tokens, streaks,
-your longest task, and token activity. You can also update your profile details,
-such as your picture, display name, and username.
+Use **Profile** to review activity insights, lifetime tokens, peak tokens,
+streaks, your longest task, and token activity. You can also update your profile
+details, such as your picture, display name, and username, and save a profile
+card with usage highlights. Sharing profile cards is available on consumer
+ChatGPT plans.
 
 ## Keyboard shortcuts
 

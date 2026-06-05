@@ -14,6 +14,25 @@ image: https://developers.cloudflare.com/zt-preview.png
 
 [ Subscribe to RSS ](https://developers.cloudflare.com/changelog/rss/cloudflare-one.xml) 
 
+## 2026-06-04
+
+[ Access ](https://developers.cloudflare.com/cloudflare-one/access-controls/policies/) 
+
+  
+**Share identity providers across accounts with IdP federation**   
+
+Cloudflare Access now supports [IdP federation](https://developers.cloudflare.com/cloudflare-one/integrations/identity-providers/idp-federation/), which allows organizations to share a single identity provider across multiple Cloudflare accounts.
+
+Instead of configuring the same IdP (for example, Okta or Entra ID) separately in every account, you configure it once in a source account and share it with the other accounts in your organization. Each recipient account gets a read-only IdP connection that routes authentication back to the source account through a bridge — a hidden application in the source account that brokers the cross-account login. End users sign in with their existing IdP credentials, and each account's Access policies evaluate the resulting identity just like any other IdP login.
+
+Key capabilities:
+
+* **One IdP, many accounts** — Configure your IdP once and share it with all accounts in your organization.
+* **Lifecycle management** — As accounts join or leave your Cloudflare organization, their IdP connections are provisioned and removed automatically — no manual cleanup required.
+* **Immutable recipient connections** — IdP connections in recipient accounts cannot be accidentally modified or deleted.
+
+To get started, refer to [IdP federation](https://developers.cloudflare.com/cloudflare-one/integrations/identity-providers/idp-federation/).
+
 ## 2026-06-03
 
 [ Access ](https://developers.cloudflare.com/cloudflare-one/access-controls/policies/) 
@@ -404,11 +423,11 @@ The [Access login page](https://developers.cloudflare.com/cloudflare-one/reusabl
 
 **Before:**
 
-![Screenshot of the previous Access login page](https://developers.cloudflare.com/_astro/access-login-old.Cv5Cxv8S_Z1P5C13.webp) 
+![Screenshot of the previous Access login page](https://developers.cloudflare.com/_astro/access-login-old.CwNVkCQH_Z187ARH.webp) 
 
 **After:**
 
-![Screenshot of the updated Access login page](https://developers.cloudflare.com/_astro/access-login-new.BqqGV8fX_ZKWWdW.webp) 
+![Screenshot of the updated Access login page](https://developers.cloudflare.com/_astro/access-login-new.Y7WUfg9G_1QeY33.webp) 
 
 The updated login experience includes:
 
@@ -4742,8 +4761,8 @@ Zero Trust Dashboard will automatically accept your user-level preferences for s
 
 ![Zero Trust dashboard supports dark mode](https://developers.cloudflare.com/_astro/dark-mode.DfLeS20d_Z2kTwNR.webp) 
 
-* [ Zero Trust Dashboard ](#tab-panel-6542)
-* [ Core Dashboard ](#tab-panel-6543)
+* [ Zero Trust Dashboard ](#tab-panel-6582)
+* [ Core Dashboard ](#tab-panel-6583)
 
 To update your view preference in the Zero Trust dashboard:
 

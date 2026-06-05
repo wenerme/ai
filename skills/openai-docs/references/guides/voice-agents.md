@@ -17,7 +17,7 @@ Voice agents turn the same agent concepts into spoken, low-latency interactions.
 | Speech-to-speech with live audio sessions | Natural, low-latency conversations                        | The model handles live audio input and output directly                                |
 | Chained voice pipeline                    | Predictable workflows or extending an existing text agent | Your app keeps explicit control over transcription, text reasoning, and speech output |
 
-Agent Builder doesn't currently support voice workflows, so voice stays an SDK-first surface.
+Voice workflows are an SDK-first surface. If you're migrating a related Agent Builder project, see [Migrate from Agent Builder](https://developers.openai.com/api/docs/guides/agent-builder/migrate-from-agent-builder) for the current transition path.
 
 ## Recommended starting points
 

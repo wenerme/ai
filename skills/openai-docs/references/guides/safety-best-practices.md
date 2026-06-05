@@ -33,6 +33,10 @@ curl https://api.openai.com/v1/chat/completions \\
 
 OpenAI's [Moderation API](https://developers.openai.com/api/docs/guides/moderation) is free-to-use and can help reduce the frequency of unsafe content in your completions. Alternatively, you may wish to develop your own content filtration system tailored to your use case.
 
+If your application generates text with the Responses API or Chat Completions,
+you can also [request moderation scores in the generation
+request](https://developers.openai.com/api/docs/guides/moderation#moderate-generated-content).
+
 ### Adversarial testing
 
 We recommend “red-teaming” your application to ensure it's robust to adversarial input. Test your product over a wide range of inputs and user behaviors, both a representative set and those reflective of someone trying to ‘break' your application. Does it wander off topic? Can someone easily redirect the feature via prompt injections, e.g. “ignore the previous instructions and do this instead”?

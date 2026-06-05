@@ -30,6 +30,56 @@ MCP server portals provide the following capabilities:
 * **Code mode**: Code mode is available by default on all portals. It collapses all upstream tools into a single `code` tool. The AI agent writes JavaScript that calls typed methods for each tool, and the code runs in an isolated [Dynamic Worker](https://developers.cloudflare.com/workers/runtime-apis/bindings/worker-loader/) environment. This keeps context window usage fixed regardless of how many tools are available. Refer to [code mode](#code-mode) for connection instructions.
 * **Observability**: Once the user's AI agent is connected to the portal, Cloudflare Access logs the individual requests made using the tools in the portal. You can optionally route portal traffic through [Cloudflare Gateway](#route-portal-traffic-through-gateway) for richer HTTP logging and data loss prevention (DLP) scanning.
 
+## How it works
+
+When a user connects an MCP client to a portal, the following flow occurs:
+
+1. The MCP client sends a request to the portal URL (`https://<subdomain>.<domain>/mcp`).
+2. Cloudflare Access authenticates the user via a browser-based OAuth 2.0 flow (or [service token](#connect-with-a-service-token) headers).
+3. The portal establishes an MCP session and returns the list of available tools from all enabled upstream servers.
+4. When the user calls a tool, the portal identifies the target upstream MCP server based on the [tool namespace](#tool-namespacing), attaches the appropriate credentials (user OAuth token or admin credential), and proxies the request.
+5. If [Gateway routing](#route-portal-traffic-through-gateway) is turned on, the outbound request passes through Cloudflare Gateway for HTTP logging and DLP inspection before reaching the upstream server.
+6. The upstream server's response is returned to the MCP client.
+
+### Transport
+
+The portal connects to upstream MCP servers using [Streamable HTTP ↗](https://spec.modelcontextprotocol.io/specification/2025-03-26/basic/transports/#streamable-http) or [SSE ↗](https://spec.modelcontextprotocol.io/specification/2024-11-05/basic/transports/#server-sent-events-sse-deprecated) transport. You do not need to specify which transport your upstream server uses. The portal automatically detects the correct transport by trying multiple connection strategies in order:
+
+| Upstream URL pattern | Connection strategies (in order)                                                                                    |
+| -------------------- | ------------------------------------------------------------------------------------------------------------------- |
+| Ends in /mcp         | Streamable HTTP only                                                                                                |
+| Ends in /sse         | SSE (or Streamable HTTP if Gateway routing is turned on)                                                            |
+| All other URLs       | Streamable HTTP on original URL, then SSE on original URL, then Streamable HTTP on {url}/mcp, then SSE on {url}/sse |
+
+If a connection attempt returns a `404`, `405`, or `406` error, the portal falls back to the next strategy. All other errors stop the connection attempt.
+
+### Built-in portal tools
+
+Every portal exposes the following built-in tools to MCP clients, in addition to the upstream server tools:
+
+| Tool                           | Description                                                                                         |
+| ------------------------------ | --------------------------------------------------------------------------------------------------- |
+| portal\_list\_servers          | Lists all available upstream servers with their ID, name, and whether they are currently turned on. |
+| portal\_toggle\_servers        | Opens a URL-based server selection page where you can turn servers on or off.                       |
+| portal\_toggle\_single\_server | Turns a single server on or off by server ID, without leaving the MCP client.                       |
+
+When [context optimization](#optimize-context) is turned on, additional tools are exposed depending on the mode:
+
+| Mode                 | Additional tools                                                                    |
+| -------------------- | ----------------------------------------------------------------------------------- |
+| minimize\_tools      | portal\_query\_tools — Search tools by regex pattern and return full definitions.   |
+| search\_and\_execute | portal\_query\_tools and portal\_execute — Search tools and execute them via proxy. |
+
+### Session lifecycle
+
+Each MCP client connection creates a session that persists until the user disconnects or the session expires due to inactivity. Sessions expire after 24 hours of inactivity.
+
+Within a session, users can turn individual servers on or off without disconnecting. Server toggles are scoped to the session and do not affect other users or sessions on the same portal.
+
+### Naming
+
+MCP server portals were previously referred to as **Agents Gateway** in some contexts. The API paths, Terraform resources, and internal codebases may still use `agents_gateway` or `agw` prefixes. The product name is **MCP server portals** and the dashboard navigation is **AI controls**.
+
 ## Prerequisites
 
 * An [active domain on Cloudflare](https://developers.cloudflare.com/fundamentals/manage-domains/add-site/)
@@ -214,8 +264,8 @@ If no alias is set, the portal uses the original name and description from the u
 
 #### Set aliases in the dashboard
 
-* [ Portal-level alias ](#tab-panel-6453)
-* [ Server-level alias ](#tab-panel-6454)
+* [ Portal-level alias ](#tab-panel-6493)
+* [ Server-level alias ](#tab-panel-6494)
 
 To set an alias that applies to a specific portal:
 
@@ -515,8 +565,8 @@ For more information on building with code mode, refer to the [code mode SDK ref
 
 To turn off code mode for a portal:
 
-* [ Dashboard ](#tab-panel-6455)
-* [ API ](#tab-panel-6456)
+* [ Dashboard ](#tab-panel-6495)
+* [ API ](#tab-panel-6496)
 
 1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** \> **Access controls** \> **AI controls**.
 2. Find the portal you want to configure, then select the three dots > **Edit**.

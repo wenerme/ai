@@ -117,14 +117,14 @@ curl -X POST "https://api.openai.com/v1/images/generations" \\
     -H "Content-type: application/json" \\
     -d '{
         "model": "gpt-image-2",
-        "prompt": "A childrens book drawing of a veterinarian using a stethoscope to listen to the heartbeat of a baby otter."
+        "prompt": "A children'\\''s book drawing of a veterinarian using a stethoscope to listen to the heartbeat of a baby otter."
     }' | jq -r '.data[0].b64_json' | base64 --decode > otter.png
 ```
 
 ```cli
 openai images generate \\
   --model gpt-image-2 \\
-  --prompt "A childrens book drawing of a veterinarian using a stethoscope to listen to the heartbeat of a baby otter." \\
+  --prompt "A children's book drawing of a veterinarian using a stethoscope to listen to the heartbeat of a baby otter." \\
   --raw-output \\
   --transform 'data.0.b64_json' | base64 --decode > otter.png
 ```
@@ -515,6 +515,11 @@ import OpenAI from "openai";
 import fs from "fs";
 const openai = new OpenAI();
 
+function saveBase64Image(filename, imageBase64) {
+  const imageBuffer = Buffer.from(imageBase64, "base64");
+  fs.writeFileSync(filename, imageBuffer);
+}
+
 const stream = await openai.responses.create({
   model: "gpt-5.5",
   input:
@@ -526,9 +531,15 @@ const stream = await openai.responses.create({
 for await (const event of stream) {
   if (event.type === "response.image_generation_call.partial_image") {
     const idx = event.partial_image_index;
-    const imageBase64 = event.partial_image_b64;
-    const imageBuffer = Buffer.from(imageBase64, "base64");
-    fs.writeFileSync(\`river\${idx}.png\`, imageBuffer);
+    saveBase64Image(\`river-partial-\${idx}.png\`, event.partial_image_b64);
+  } else if (event.type === "response.completed") {
+    const imageData = event.response.output
+      .filter((output) => output.type === "image_generation_call")
+      .map((output) => output.result);
+
+    if (imageData.length > 0) {
+      saveBase64Image("river-final.png", imageData[0]);
+    }
   }
 }
 ```
@@ -538,6 +549,11 @@ from openai import OpenAI
 import base64
 
 client = OpenAI()
+
+def save_base64_image(filename, image_base64):
+    image_bytes = base64.b64decode(image_base64)
+    with open(filename, "wb") as f:
+        f.write(image_bytes)
 
 stream = client.responses.create(
     model="gpt-5.5",
@@ -549,10 +565,16 @@ stream = client.responses.create(
 for event in stream:
     if event.type == "response.image_generation_call.partial_image":
         idx = event.partial_image_index
-        image_base64 = event.partial_image_b64
-        image_bytes = base64.b64decode(image_base64)
-        with open(f"river{idx}.png", "wb") as f:
-            f.write(image_bytes)
+        save_base64_image(f"river-partial-{idx}.png", event.partial_image_b64)
+    elif event.type == "response.completed":
+        image_data = [
+            output.result
+            for output in event.response.output
+            if output.type == "image_generation_call"
+        ]
+
+        if image_data:
+            save_base64_image("river-final.png", image_data[0])
 ```
 
   </div>
@@ -966,9 +988,9 @@ openai images edit \\
 
 <div className="images-examples">
 
-| Image                                                                                                                                 | Mask                                                                                                                            | Output                                                                                                                                                                               |
-| ------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| <img className="images-example-image" src="https://cdn.openai.com/API/docs/images/sunlit_lounge.png" alt="A pink room with a pool" /> | <img className="images-example-image" src="https://cdn.openai.com/API/docs/images/mask.png" alt="A mask in part of the pool" /> | <img className="images-example-image" src="https://cdn.openai.com/API/docs/images/sunlit_lounge_result.png" alt="The original pool with an inflatable flamigo replacing the mask" /> |
+| Image                                                                                                                                 | Mask                                                                                                                            | Output                                                                                                                                                                                |
+| ------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| <img className="images-example-image" src="https://cdn.openai.com/API/docs/images/sunlit_lounge.png" alt="A pink room with a pool" /> | <img className="images-example-image" src="https://cdn.openai.com/API/docs/images/mask.png" alt="A mask in part of the pool" /> | <img className="images-example-image" src="https://cdn.openai.com/API/docs/images/sunlit_lounge_result.png" alt="The original pool with an inflatable flamingo replacing the mask" /> |
 
 </div>
 

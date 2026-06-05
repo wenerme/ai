@@ -34,8 +34,8 @@ Session timeouts have no impact on Gateway DNS policies. DNS policies remain act
 
 To configure a session timeout for a Gateway policy:
 
-* [ Dashboard ](#tab-panel-5334)
-* [ Terraform (v5) ](#tab-panel-5335)
+* [ Dashboard ](#tab-panel-6820)
+* [ Terraform (v5) ](#tab-panel-6821)
 
 1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** \> **Traffic policies** \> **Firewall policies**. Choose either **Network** or **HTTP**.
 2. Add a policy and select the _Allow_ action. Alternatively, choose any existing _Allow_ policy.
@@ -79,10 +79,9 @@ You can allow users to log in to Access applications using their device client s
 
 To configure device client sessions for Access applications:
 
-1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** \> **Team & Resources** \> **Devices** \> **Management**.
-2. In **Device enrollment permissions**, select **Manage**.
-3. Go to **Authentication** and enable **Authenticate with Cloudflare One Client**.
-4. Under **Session duration**, choose a session timeout value. This timeout will apply to all Access applications that have **Authenticate with Cloudflare One Client** enabled.
+1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** \> **Access controls** \> **Access settings**.
+2. Enable **Authenticate with Cloudflare One Client**.
+3. Under **Session duration**, choose a session timeout value. This timeout will apply to all Access applications that have **Authenticate with Cloudflare One Client** enabled.
 
 Note
 

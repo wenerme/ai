@@ -76,3 +76,5 @@ For more advanced use cases, like streaming tool calls, check out the following 
 ## Moderation risk
 
 Note that streaming the model's output in a production application makes it more difficult to moderate the content of the completions, as partial completions may be more difficult to evaluate. This may have implications for approved usage.
+
+If you request [moderation scores with a generation request](https://developers.openai.com/api/docs/guides/moderation#moderate-generated-content), the scores arrive after the full generated output is available. They aren't included with partial output deltas.

@@ -18,7 +18,7 @@ Use trace grading when you want to answer questions like:
 ### Trace-grading workflow
 
 1. Open **Logs** > **Traces** in the dashboard.
-2. Inspect a representative workflow trace from Agent Builder or an SDK-based app with tracing enabled.
+2. Inspect a representative workflow trace from an SDK-based app, or from an existing Agent Builder workflow during the transition window.
 3. Create a grader and run it against the selected traces.
 4. Use the results to refine prompts, tool surfaces, routing logic, or guardrails.
 

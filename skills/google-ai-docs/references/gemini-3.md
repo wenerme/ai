@@ -1284,6 +1284,7 @@ improvement over Gemini 2.5. When migrating, consider the following:
   Use](https://ai.google.dev/gemini-api/docs/computer-use). Unlike the 2.5 series, you don't need to use a separate model to access the Computer Use tool.
 - **Tool support** : [Combining built-in tools with function calling](https://ai.google.dev/gemini-api/docs/tool-combination) is now supported for Gemini 3 models. [Maps
   grounding](https://ai.google.dev/gemini-api/docs/maps-grounding) is also now supported for Gemini 3 models.
+- **Candidate count** : Gemini 3 models do not support `candidateCount > 1`. Setting this parameter to a value greater than `1` will return a 400 error.
 
 ## OpenAI compatibility
 

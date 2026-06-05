@@ -34,6 +34,8 @@ Server tools are specialized tools operated by OpenRouter that any model can cal
 | [**Image Generation**](/docs/guides/features/server-tools/image-generation) | `openrouter:image_generation` | Generate images from text prompts                            |
 | [**Web Fetch**](/docs/guides/features/server-tools/web-fetch)               | `openrouter:web_fetch`        | Fetch and extract content from URLs                          |
 | [**Apply Patch**](/docs/guides/features/server-tools/apply-patch)           | `openrouter:apply_patch`      | Propose file edits via V4A diff patches (Responses API only) |
+| [**Fusion**](/docs/guides/features/server-tools/fusion)                     | `openrouter:fusion`           | Run a panel of models and a judge for multi-model analysis   |
+| [**Advisor**](/docs/guides/features/server-tools/advisor)                   | `openrouter:advisor`          | Consult a stronger model for guidance mid-generation         |
 
 ## How Server Tools Work
 
@@ -175,4 +177,6 @@ Server tool usage is tracked in the response `usage` object:
 * [Image Generation](/docs/guides/features/server-tools/image-generation) — Generate images from text prompts
 * [Web Fetch](/docs/guides/features/server-tools/web-fetch) — Fetch and extract content from URLs
 * [Apply Patch](/docs/guides/features/server-tools/apply-patch) — Propose file edits via V4A diffs
+* [Fusion](/docs/guides/features/server-tools/fusion) — Run a panel of models and a judge for multi-model analysis
+* [Advisor](/docs/guides/features/server-tools/advisor) — Consult a stronger model for guidance mid-generation
 * [Tool Calling](/docs/guides/features/tool-calling) — Learn about user-defined tool calling

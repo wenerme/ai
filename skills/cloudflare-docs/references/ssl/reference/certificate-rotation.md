@@ -22,9 +22,9 @@ The key principle is to ensure the new certificate pack reaches **Active** befor
 
 ### 1\. Create the new certificate pack
 
-* [ Dashboard ](#tab-panel-8338)
-* [ API ](#tab-panel-8339)
-* [ Terraform ](#tab-panel-8340)
+* [ Dashboard ](#tab-panel-10007)
+* [ API ](#tab-panel-10008)
+* [ Terraform ](#tab-panel-10009)
 
 1. In the Cloudflare dashboard, go to the **Edge Certificates** page.  
 [ Go to **Edge Certificates** ](https://dash.cloudflare.com/?to=/:account/:zone/ssl-tls/edge-certificates)
@@ -56,9 +56,9 @@ For zones using Cloudflare as authoritative DNS (full setup), most validations c
 
 Once the new pack is **Active**, it is safe to delete the old one.
 
-* [ Dashboard ](#tab-panel-8341)
-* [ API ](#tab-panel-8342)
-* [ Terraform ](#tab-panel-8343)
+* [ Dashboard ](#tab-panel-10010)
+* [ API ](#tab-panel-10011)
+* [ Terraform ](#tab-panel-10012)
 
 1. In the Cloudflare dashboard, go to the **Edge Certificates** page.  
 [ Go to **Edge Certificates** ](https://dash.cloudflare.com/?to=/:account/:zone/ssl-tls/edge-certificates)

@@ -137,30 +137,81 @@ components:
         - type
         - frame_type
       title: FrameImage
-    ContentPartImageImageUrl:
+    InputReferenceDiscriminatorMappingAudioUrlAudioUrl:
       type: object
       properties:
         url:
           type: string
       required:
         - url
-      title: ContentPartImageImageUrl
-    ContentPartImageType:
-      type: string
-      enum:
-        - image_url
-      title: ContentPartImageType
-    ContentPartImage:
+      title: InputReferenceDiscriminatorMappingAudioUrlAudioUrl
+    InputReferenceDiscriminatorMappingImageUrlImageUrl:
       type: object
       properties:
-        image_url:
-          $ref: '#/components/schemas/ContentPartImageImageUrl'
-        type:
-          $ref: '#/components/schemas/ContentPartImageType'
+        url:
+          type: string
       required:
-        - image_url
-        - type
-      title: ContentPartImage
+        - url
+      title: InputReferenceDiscriminatorMappingImageUrlImageUrl
+    InputReferenceDiscriminatorMappingVideoUrlVideoUrl:
+      type: object
+      properties:
+        url:
+          type: string
+      required:
+        - url
+      title: InputReferenceDiscriminatorMappingVideoUrlVideoUrl
+    InputReference:
+      oneOf:
+        - type: object
+          properties:
+            type:
+              type: string
+              enum:
+                - audio_url
+              description: 'Discriminator value: audio_url'
+            audio_url:
+              $ref: >-
+                #/components/schemas/InputReferenceDiscriminatorMappingAudioUrlAudioUrl
+          required:
+            - type
+            - audio_url
+          description: audio_url variant
+        - type: object
+          properties:
+            type:
+              type: string
+              enum:
+                - image_url
+              description: 'Discriminator value: image_url'
+            image_url:
+              $ref: >-
+                #/components/schemas/InputReferenceDiscriminatorMappingImageUrlImageUrl
+          required:
+            - type
+            - image_url
+          description: image_url variant
+        - type: object
+          properties:
+            type:
+              type: string
+              enum:
+                - video_url
+              description: 'Discriminator value: video_url'
+            video_url:
+              $ref: >-
+                #/components/schemas/InputReferenceDiscriminatorMappingVideoUrlVideoUrl
+          required:
+            - type
+            - video_url
+          description: video_url variant
+      discriminator:
+        propertyName: type
+      description: >-
+        A reference asset used to guide video generation. Image references are
+        supported by all providers; audio and video references are only honored
+        by providers that support them (currently BytePlus Seedance 2.0).
+      title: InputReference
     VideoGenerationRequestProviderOptions:
       type: object
       properties:
@@ -669,8 +720,12 @@ components:
         input_references:
           type: array
           items:
-            $ref: '#/components/schemas/ContentPartImage'
-          description: Reference images to guide video generation
+            $ref: '#/components/schemas/InputReference'
+          description: >-
+            Reference assets to guide video generation. Accepts image, audio,
+            and video references. Audio and video references are only honored by
+            providers that support them (currently BytePlus Seedance 2.0); other
+            providers use image references and ignore the rest.
         model:
           type: string
         prompt:
