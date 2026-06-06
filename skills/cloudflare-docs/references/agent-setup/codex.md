@@ -49,7 +49,7 @@ Inside Codex, run `/plugins`, then search for and install **Cloudflare**. This i
 4. **Try a prompt**  
 For example:  
 ```  
-Optimize my Worker to serve WebP images with responsive resizing using Cloudflare Images.  
+Build a multi-tenant SaaS backend where each customer gets an isolated D1 database.  
 ```
 
 1. **Download Codex**  

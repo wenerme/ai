@@ -36,7 +36,7 @@ In Cursor, run the following command or install from the [Cursor Marketplace ↗
 3. **Try a prompt**  
 For example:  
 ```  
-Set up AI Gateway to route requests across OpenAI and Workers AI with automatic fallback and cost tracking.  
+Add real-time collaboration to my app using Durable Objects with WebSocket hibernation.  
 ```
 
 ## Cloudflare platform access

@@ -49,7 +49,7 @@ For VS Code, add to `.vscode/mcp.json`. For Copilot CLI, add to `~/.copilot/mcp-
 4. **Try a prompt**  
 Open Copilot Chat (**Ctrl+Shift+I**), switch to agent mode, and try a prompt — for example:  
 ```  
-Use Workers for Platforms to let my customers deploy their own code in isolated environments.  
+Set up GitHub Actions to deploy this Worker to staging and production on Cloudflare.  
 ```
 
 ## Cloudflare platform access

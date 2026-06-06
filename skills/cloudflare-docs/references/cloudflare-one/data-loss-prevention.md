@@ -24,15 +24,11 @@ DLP scans HTTP traffic, SaaS application files, and AI prompts for sensitive dat
 
 Cloudflare does not write scanned content to disk. DLP encrypts and temporarily stores content in memory only. To retain matched content for review, configure [payload logging](https://developers.cloudflare.com/cloudflare-one/data-loss-prevention/dlp-policies/logging-options/#log-the-payload-of-matched-rules) for encrypted payload copies or a [Logpush destination](https://developers.cloudflare.com/cloudflare-one/data-loss-prevention/dlp-policies/logging-options/#send-dlp-forensic-copies-to-logpush-destination) to export full matching HTTP requests.
 
-## Data classification
-
-Data Classification extends Cloudflare DLP with reusable labels and data classes for organizing sensitive content. Use it to define sensitivity schemas, sensitivity levels, data tag groups, data tags, and reusable classification rules that can then be applied in custom DLP profiles.
-
-To get started, refer to [Data Classification](https://developers.cloudflare.com/cloudflare-one/data-loss-prevention/data-classification/).
+DLP uses [**profiles**](https://developers.cloudflare.com/cloudflare-one/data-loss-prevention/dlp-profiles/) to define what to detect, [**detection entries**](https://developers.cloudflare.com/cloudflare-one/data-loss-prevention/detection-entries/) to identify specific patterns and data, and optional [**Data Classification**](https://developers.cloudflare.com/cloudflare-one/data-loss-prevention/data-classification/) to organize and label findings at scale.
 
 ## Data in transit
 
-Data Loss Prevention complements [Secure Web Gateway](https://developers.cloudflare.com/cloudflare-one/traffic-policies/) to detect sensitive data transferred in HTTP requests. DLP scans the HTTP body (excluding headers), which may include uploaded or downloaded files, chat messages, forms, and other web content. You can also use DLP with [Email security](https://developers.cloudflare.com/cloudflare-one/email-security/) to scan [outbound emails](https://developers.cloudflare.com/cloudflare-one/email-security/outbound-dlp/).
+Data Loss Prevention complements [Secure Web Gateway](https://developers.cloudflare.com/cloudflare-one/traffic-policies/) to detect sensitive data transferred in HTTP requests. DLP scans the HTTP body (excluding headers), which may include uploaded or downloaded files, chat messages, forms, and other web content.
 
 DLP requires [Gateway HTTP filtering](https://developers.cloudflare.com/cloudflare-one/traffic-policies/get-started/http/) with [TLS decryption](https://developers.cloudflare.com/cloudflare-one/traffic-policies/http-policies/tls-decryption/) to read the contents of HTTPS traffic in transit. The depth of visibility varies for each site or application. DLP does not scan any traffic that bypasses Cloudflare Gateway (such as traffic that matches a [Do Not Inspect](https://developers.cloudflare.com/cloudflare-one/traffic-policies/http-policies/#do-not-inspect) policy).
 
@@ -44,11 +40,17 @@ Data Loss Prevention complements [Cloudflare CASB](https://developers.cloudflare
 
 To get started, refer to [Scan SaaS applications with DLP](https://developers.cloudflare.com/cloudflare-one/cloud-and-saas-findings/casb-dlp/).
 
-## AI traffic
+## AI applications and controls
 
-Data Loss Prevention integrates with [Cloudflare AI Gateway](https://developers.cloudflare.com/ai-gateway/) to scan AI prompts and responses for sensitive data. When DLP is enabled on an AI Gateway, it inspects the text content of requests sent to AI providers and responses returned from AI models, without requiring Gateway HTTP filtering or TLS decryption.
+* **AI Gateway** — Data Loss Prevention integrates with [Cloudflare AI Gateway](https://developers.cloudflare.com/ai-gateway/) to scan AI prompts and responses for sensitive data. To enable this, refer to [Set up DLP for AI Gateway](https://developers.cloudflare.com/ai-gateway/features/dlp/set-up-dlp/). When enabled, DLP inspects the text content of requests sent to AI providers and responses returned from AI models, without requiring Gateway HTTP filtering or TLS decryption.
+* **Gateway Application Granular Controls** — [Gateway Application Granular Controls](https://developers.cloudflare.com/cloudflare-one/traffic-policies/http-policies/#granular-controls) let you control specific actions within AI applications without blocking the entire application. You can add the [DLP Profile selector](https://developers.cloudflare.com/cloudflare-one/traffic-policies/http-policies/#dlp-profile) to the same HTTP policy to scan those operations for sensitive data, as described in [Scan HTTP traffic with DLP](https://developers.cloudflare.com/cloudflare-one/data-loss-prevention/dlp-policies/).
+* **AI Security for Apps** — DLP complements [AI Security for Apps](https://developers.cloudflare.com/waf/detections/ai-security-for-apps/) by providing profile-based detection of sensitive data in AI traffic, while AI Security for Apps handles large language model (LLM)-specific threats such as prompt injection and unsafe topics. To detect sensitive data alongside AI Security for Apps, configure [DLP profiles](https://developers.cloudflare.com/cloudflare-one/data-loss-prevention/dlp-profiles/) and apply them to your AI traffic policies.
 
-To get started, refer to [Set up DLP for AI Gateway](https://developers.cloudflare.com/ai-gateway/features/dlp/set-up-dlp/).
+## Email security
+
+Data Loss Prevention integrates with [Cloudflare Email Security](https://developers.cloudflare.com/cloudflare-one/email-security/) to scan [outbound emails](https://developers.cloudflare.com/cloudflare-one/email-security/outbound-dlp/) for sensitive data. Outbound DLP requires [Microsoft 365 ↗](https://www.cloudflare.com/learning/cloud/what-is-microsoft-365/) and uses a client-side Outlook add-in to inspect emails before they are sent.
+
+To get started, refer to [Outbound Data Loss Prevention (DLP)](https://developers.cloudflare.com/cloudflare-one/email-security/outbound-dlp/).
 
 ## Troubleshooting
 
@@ -61,7 +63,7 @@ For help resolving common issues with DLP, refer to [Troubleshoot DLP](https://d
 DLP supports reporting and scanning the following file types:
 
 * Text and CSV
-* Microsoft Office 2007 and later (`.docx`, `.xlsx,` `.pptx`), including Microsoft 365
+* Microsoft Office 2007 and later (`.docx`, `.xlsx`, `.pptx`), including Microsoft 365
 * PDF
 * ZIP files containing the above
 
