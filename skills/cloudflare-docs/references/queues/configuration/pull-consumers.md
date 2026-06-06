@@ -36,7 +36,7 @@ To configure a pull-based consumer and receive messages from a queue, you need t
 
 ## 1\. Enable HTTP pull
 
-You can enable HTTP pull or change a queue from push-based to pull-based via the the `wrangler` CLI or via the [Cloudflare dashboard ↗](https://dash.cloudflare.com/). Enabling HTTP pull from a [Wrangler configuration file](https://developers.cloudflare.com/workers/wrangler/configuration/) is no longer supported.
+You can enable HTTP pull or change a queue from push-based to pull-based via the `wrangler` CLI or via the [Cloudflare dashboard ↗](https://dash.cloudflare.com/). Enabling HTTP pull from a [Wrangler configuration file](https://developers.cloudflare.com/workers/wrangler/configuration/) is no longer supported.
 
 Note
 
@@ -116,9 +116,9 @@ You will need to note the token down: it will only be displayed once.
 
 To pull a message, make a HTTP POST request to the [Queues REST API](https://developers.cloudflare.com/api/resources/queues/subresources/messages/methods/pull/) with a JSON-encoded body that optionally specifies a `visibility_timeout` and a `batch_size`, or an empty JSON object (`{}`):
 
-* [  JavaScript ](#tab-panel-6983)
-* [  TypeScript ](#tab-panel-6984)
-* [  Python ](#tab-panel-6985)
+* [  JavaScript ](#tab-panel-9055)
+* [  TypeScript ](#tab-panel-9056)
+* [  Python ](#tab-panel-9057)
 
 index.js
 
@@ -327,9 +327,9 @@ Messages pulled by a consumer need to be either acknowledged or marked for retry
 
 To acknowledge and/or mark messages to be retried, make a HTTP `POST` request to `/ack` endpoint of your queue per the [Queues REST API](https://developers.cloudflare.com/api/resources/queues/subresources/messages/methods/ack/) by providing an array of `lease_id` objects to acknowledge and/or retry:
 
-* [  JavaScript ](#tab-panel-6986)
-* [  TypeScript ](#tab-panel-6987)
-* [  Python ](#tab-panel-6988)
+* [  JavaScript ](#tab-panel-9058)
+* [  TypeScript ](#tab-panel-9059)
+* [  Python ](#tab-panel-9060)
 
 index.js
 

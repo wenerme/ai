@@ -40,8 +40,8 @@ A Transaction Signature (TSIG) authenticates communication between a primary and
 Note  
 The TSIG names configured at your primary and secondary DNS providers have to be exactly the same. Any differences in TSIG names will cause zone transfers to fail.  
 While optional, this step is highly recommended.  
-   * [ Dashboard ](#tab-panel-5611)  
-   * [ API ](#tab-panel-5612)  
+   * [ Dashboard ](#tab-panel-7613)  
+   * [ API ](#tab-panel-7614)  
 To create a TSIG using the dashboard:  
    1. In the Cloudflare dashboard, go to the account **Settings** page.  
    [ Go to **Configurations** ](https://dash.cloudflare.com/?to=/:account/configurations)  
@@ -54,8 +54,8 @@ To create a TSIG using the dashboard:
    5. Select **Create**.  
 To create a TSIG using the API, send a [POST](https://developers.cloudflare.com/api/resources/dns/subresources/zone%5Ftransfers/subresources/tsigs/methods/create/) request.
 3. Create a peer server.  
-   * [ Dashboard ](#tab-panel-5609)  
-   * [ API ](#tab-panel-5610)  
+   * [ Dashboard ](#tab-panel-7611)  
+   * [ API ](#tab-panel-7612)  
 To create a peer server using the dashboard:  
    1. In the Cloudflare dashboard, go to the account **Settings** page.  
    [ Go to **Configurations** ](https://dash.cloudflare.com/?to=/:account/configurations)  
@@ -76,7 +76,7 @@ To create a peer DNS server using the API, send a [POST request](https://develop
 [ Go to **Settings** ](https://dash.cloudflare.com/?to=/:account/:zone/dns/settings)
 3. Select **Manage linked peers** under **DNS Zone Transfers**.
 4. Link the peer server you created in the previous steps and select **Save**.
-5. Back to the the [**DNS Settings** ↗](https://dash.cloudflare.com/?to=/:account/:zone/dns/settings) page, select **Initiate zone transfer**.
+5. Back on the [**DNS Settings** ↗](https://dash.cloudflare.com/?to=/:account/:zone/dns/settings) page, select **Initiate zone transfer**.
 6. Confirm the DNS records are transferring as expected.
 7. Go to the [**DNS Records** ↗](https://dash.cloudflare.com/?to=/:account/:zone/dns/records) page and take note of your new **Cloudflare Nameservers**.
 8. At your domain registrar (or parent zone), [update your nameservers](https://developers.cloudflare.com/dns/nameservers/update-nameservers/) to include the `secondary.cloudflare.com` nameservers.

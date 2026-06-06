@@ -83,8 +83,8 @@ basicConstraints=CA:FALSE
 
 ## 1\. Upload your certificate to Cloudflare
 
-* [ Dashboard ](#tab-panel-7971)
-* [ API ](#tab-panel-7972)
+* [ Dashboard ](#tab-panel-10085)
+* [ API ](#tab-panel-10086)
 
 1. Go to the **Origin Server** page.  
 [ Go to **Origin Server** ](https://dash.cloudflare.com/?to=/:account/:zone/ssl-tls/origin)
@@ -139,8 +139,8 @@ At this point, you may also want to enable logging on your origin so that you ca
 
 ## 4\. Enable zone-level Authenticated Origin Pulls
 
-* [ Dashboard ](#tab-panel-7973)
-* [ API ](#tab-panel-7974)
+* [ Dashboard ](#tab-panel-10087)
+* [ API ](#tab-panel-10088)
 
 1. Go to the **Origin Server** page.  
 [ Go to **Origin Server** ](https://dash.cloudflare.com/?to=/:account/:zone/ssl-tls/origin)

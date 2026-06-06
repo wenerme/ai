@@ -22,7 +22,7 @@ Read [Cloudflare Analytics](https://developers.cloudflare.com/analytics/faq/abou
 
 ## View your website analytics
 
-To view metrics for your website, in the Cloudflare dashboard, go to the **Analytis & Logs** page.
+To view metrics for your website, in the Cloudflare dashboard, go to the **Analytics & Logs** page.
 
 [ Go to **HTTP Traffic** ](https://dash.cloudflare.com/?to=/:account/:zone/analytics/traffic) 
 

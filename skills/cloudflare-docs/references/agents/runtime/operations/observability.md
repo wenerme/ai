@@ -45,20 +45,20 @@ TypeScript
 
 Events are routed to named channels based on their type:
 
-| Channel            | Event types                                                                                                                                                         | Description                                        |
-| ------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------- |
-| agents:state       | state:update                                                                                                                                                        | State sync events                                  |
-| agents:rpc         | rpc, rpc:error                                                                                                                                                      | RPC method calls and failures                      |
-| agents:message     | message:request, message:response, message:clear, message:cancel, message:error, tool:result, tool:approval, submission:create, submission:status, submission:error | Chat message, tool, and Think submission lifecycle |
-| agents:chat        | chat:request:failed, chat:recovery:\*, chat:stream:stalled                                                                                                          | Chat request, recovery, and stream-stall lifecycle |
-| agents:transcript  | chat:transcript:repaired                                                                                                                                            | Transcript repair events                           |
-| agents:fiber       | fiber:run:\*, fiber:recovery:\*                                                                                                                                     | Durable fiber lifecycle                            |
-| agents:agent\_tool | agent\_tool:recovery:\*                                                                                                                                             | Parent/child agent-tool recovery                   |
-| agents:schedule    | schedule:create, schedule:execute, schedule:cancel, schedule:retry, schedule:error, schedule:duplicate\_warning, queue:create, queue:retry, queue:error             | Scheduled and queued task lifecycle                |
-| agents:lifecycle   | connect, disconnect, destroy                                                                                                                                        | Agent connection and teardown                      |
-| agents:workflow    | workflow:start, workflow:event, workflow:approved, workflow:rejected, workflow:terminated, workflow:paused, workflow:resumed, workflow:restarted                    | Workflow state transitions                         |
-| agents:mcp         | mcp:client:preconnect, mcp:client:connect, mcp:client:authorize, mcp:client:discover                                                                                | MCP client operations                              |
-| agents:email       | email:receive, email:reply, email:send                                                                                                                              | Email processing                                   |
+| Channel            | Event types                                                                                                                                                         | Description                                                            |
+| ------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------- |
+| agents:state       | state:update                                                                                                                                                        | State sync events                                                      |
+| agents:rpc         | rpc, rpc:error                                                                                                                                                      | RPC method calls and failures                                          |
+| agents:message     | message:request, message:response, message:clear, message:cancel, message:error, tool:result, tool:approval, submission:create, submission:status, submission:error | Chat message, tool, and Think submission lifecycle                     |
+| agents:chat        | chat:request:failed, chat:recovery:\*, chat:stream:stalled, chat:context:compacted                                                                                  | Chat request, recovery, stream-stall, and context-compaction lifecycle |
+| agents:transcript  | chat:transcript:repaired                                                                                                                                            | Transcript repair events                                               |
+| agents:fiber       | fiber:run:\*, fiber:recovery:\*                                                                                                                                     | Durable fiber lifecycle                                                |
+| agents:agent\_tool | agent\_tool:recovery:\*                                                                                                                                             | Parent/child agent-tool recovery                                       |
+| agents:schedule    | schedule:create, schedule:execute, schedule:cancel, schedule:retry, schedule:error, schedule:duplicate\_warning, queue:create, queue:retry, queue:error             | Scheduled and queued task lifecycle                                    |
+| agents:lifecycle   | connect, disconnect, destroy                                                                                                                                        | Agent connection and teardown                                          |
+| agents:workflow    | workflow:start, workflow:event, workflow:approved, workflow:rejected, workflow:terminated, workflow:paused, workflow:resumed, workflow:restarted                    | Workflow state transitions                                             |
+| agents:mcp         | mcp:client:preconnect, mcp:client:connect, mcp:client:authorize, mcp:client:discover                                                                                | MCP client operations                                                  |
+| agents:email       | email:receive, email:reply, email:send                                                                                                                              | Email processing                                                       |
 
 ## Subscribing to events
 
@@ -66,8 +66,8 @@ Events are routed to named channels based on their type:
 
 The `subscribe()` function from `agents/observability` provides type-safe access to events on a specific channel:
 
-* [  JavaScript ](#tab-panel-5864)
-* [  TypeScript ](#tab-panel-5865)
+* [  JavaScript ](#tab-panel-5986)
+* [  TypeScript ](#tab-panel-5987)
 
 JavaScript
 
@@ -147,8 +147,8 @@ The typed helper uses camelCase keys, so agent-tool recovery is `subscribe("agen
 
 You can also subscribe directly using the Node.js API:
 
-* [  JavaScript ](#tab-panel-5860)
-* [  TypeScript ](#tab-panel-5861)
+* [  JavaScript ](#tab-panel-5982)
+* [  TypeScript ](#tab-panel-5983)
 
 JavaScript
 
@@ -186,8 +186,8 @@ subscribe("agents:schedule", (event) => {
 
 In production, all diagnostics channel messages are automatically forwarded to [Tail Workers](https://developers.cloudflare.com/workers/observability/logs/tail-workers/). No subscription code is needed in the agent itself — attach a Tail Worker and access events via `event.diagnosticsChannelEvents`:
 
-* [  JavaScript ](#tab-panel-5866)
-* [  TypeScript ](#tab-panel-5867)
+* [  JavaScript ](#tab-panel-5988)
+* [  TypeScript ](#tab-panel-5989)
 
 JavaScript
 
@@ -253,8 +253,8 @@ This gives you structured, filterable observability in production with zero over
 
 You can override the default implementation by providing your own `Observability` interface:
 
-* [  JavaScript ](#tab-panel-5868)
-* [  TypeScript ](#tab-panel-5869)
+* [  JavaScript ](#tab-panel-5990)
+* [  TypeScript ](#tab-panel-5991)
 
 JavaScript
 
@@ -326,8 +326,8 @@ class MyAgent extends Agent {
 
 Set `observability` to `undefined` to disable all event emission:
 
-* [  JavaScript ](#tab-panel-5862)
-* [  TypeScript ](#tab-panel-5863)
+* [  JavaScript ](#tab-panel-5984)
+* [  TypeScript ](#tab-panel-5985)
 
 JavaScript
 
@@ -408,6 +408,12 @@ These events track chat message lifecycle, client-side tool interactions, and Th
 | chat:stream:stalled     | { requestId, timeoutMs }                                               | The inactivity watchdog fired — no stream chunk arrived within chatStreamStallTimeoutMs. With chatRecovery on, the turn routes into recovery |
 
 `recoveryKind` is `"retry"` when recovery replays an unanswered user turn and `"continue"` when it continues a partial assistant turn.
+
+### Chat context events
+
+| Type                   | Payload                                     | When                                                                                                                                                                                                                                                                                                                                                                                                                                                                     |
+| ---------------------- | ------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| chat:context:compacted | { reason, shortened, requestId?, attempt? } | Think compacts the session to handle a context-window overflow. reason is "proactive" (the contextOverflow.proactive guard fired before a step) or "reactive" (contextOverflow.reactive fired after an overflow). shortened is whether compaction actually reduced history — false means a retry would overflow again. Refer to [Context-window overflow recovery](https://developers.cloudflare.com/agents/harnesses/think/recovery/#context-window-overflow-recovery). |
 
 ### Transcript events
 

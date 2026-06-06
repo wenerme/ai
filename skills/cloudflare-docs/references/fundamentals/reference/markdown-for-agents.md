@@ -39,8 +39,8 @@ curl https://developers.cloudflare.com/fundamentals/reference/markdown-for-agent
 
 Or if you’re building an AI Agent using Workers, you can use TypeScript:
 
-* [  JavaScript ](#tab-panel-7948)
-* [  TypeScript ](#tab-panel-7949)
+* [  JavaScript ](#tab-panel-8088)
+* [  TypeScript ](#tab-panel-8089)
 
 JavaScript
 
@@ -63,6 +63,8 @@ const r = await fetch(
 );
 
 const tokenCount = r.headers.get("x-markdown-tokens");
+
+const originalTokenCount = r.headers.get("x-original-tokens");
 
 const markdown = await r.text();
 
@@ -91,6 +93,8 @@ const r = await fetch(
 
 const tokenCount = r.headers.get("x-markdown-tokens");
 
+const originalTokenCount = r.headers.get("x-original-tokens");
+
 const markdown = await r.text();
 
 
@@ -111,6 +115,8 @@ content-length: 2899
 vary: accept
 
 x-markdown-tokens: 725
+
+x-original-tokens: 12345
 
 content-signal: ai-train=yes, search=yes, ai-input=yes
 
@@ -136,9 +142,9 @@ ultimately resulting in better results while minimizing token waste.
 
 ```
 
-### x-markdown-tokens
+### Token count headers
 
-Note that we include an `x-markdown-tokens` header with the converted response that indicates the estimated number of tokens in the markdown document. You can use this value in your flow, for example to calculate the size of a context window or to decide on your chunking strategy.
+Note that we include token count headers with the converted response. `x-markdown-tokens` indicates the estimated number of tokens in the Markdown document, and `x-original-tokens` indicates the estimated number of tokens in the original HTML document before conversion. You can use these values in your flow, for example to calculate the size of a context window, estimate the token savings from Markdown conversion, or decide on your chunking strategy.
 
 ### Content Signals Policy
 
@@ -227,9 +233,9 @@ Example output:
 
 ## How to enable
 
-* [ Dashboard ](#tab-panel-7945)
-* [ API ](#tab-panel-7946)
-* [ Custom Hostnames ](#tab-panel-7947)
+* [ Dashboard ](#tab-panel-8085)
+* [ API ](#tab-panel-8086)
+* [ Custom Hostnames ](#tab-panel-8087)
 
 To enable Markdown for Agents for your zone in the dashboard:
 

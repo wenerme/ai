@@ -44,9 +44,9 @@ A target represents a single resource in your infrastructure (such as a server, 
 
 Targets are protocol-agnostic, meaning that you do not need to define a new target for each protocol that runs on the server. To create a new target: 
 
-* [ Dashboard ](#tab-panel-5049)
-* [ API ](#tab-panel-5050)
-* [ Terraform ](#tab-panel-5051)
+* [ Dashboard ](#tab-panel-6607)
+* [ API ](#tab-panel-6608)
+* [ Terraform ](#tab-panel-6609)
 
 1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** \> **Access controls** \> **Targets**.
 2. Select **Add a target**.
@@ -134,9 +134,9 @@ Next, create an Access application to secure the target.
 
 ## 2\. Add an infrastructure application
 
-* [ Dashboard ](#tab-panel-5052)
-* [ API ](#tab-panel-5053)
-* [ Terraform (v4) ](#tab-panel-5054)
+* [ Dashboard ](#tab-panel-6610)
+* [ API ](#tab-panel-6611)
+* [ Terraform (v4) ](#tab-panel-6612)
 
 1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** \> **Access controls** \> **Applications**.
 2. Select **Create new application**.
@@ -390,6 +390,12 @@ To view all available filters, type `warp-cli target list --help`.
 ## Revoke a user's session
 
 To revoke a user's access to all infrastructure targets, you can either [revoke the user from Zero Trust](https://developers.cloudflare.com/cloudflare-one/access-controls/access-settings/session-management/#per-user) or revoke their device. Cloudflare does not currently support revoking a user's session for a specific target.
+
+## Granular target permissions
+
+Infrastructure Access supports granular read permissions through [Cloudflare's role-based access control](https://developers.cloudflare.com/fundamentals/manage-members/roles/). Administrators can assign read-only roles scoped to specific targets instead of granting account-wide access. When a user with a scoped role calls the targets list API, the response is automatically filtered to only include the targets they have permission to view.
+
+This is useful for organizations that want to give teams visibility into their own infrastructure targets without exposing the full target inventory.
 
 ## Infrastructure policy selectors
 

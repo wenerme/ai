@@ -14,6 +14,104 @@ image: https://developers.cloudflare.com/zt-preview.png
 
 [ Subscribe to RSS ](https://developers.cloudflare.com/changelog/rss/cloudflare-one.xml) 
 
+## 2026-06-05
+
+[ Gateway ](https://developers.cloudflare.com/cloudflare-one/traffic-policies/)[ Cloudflare Mesh ](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-mesh/)[ Workers VPC ](https://developers.cloudflare.com/workers-vpc/) 
+
+  
+**Filter Workers' public Internet traffic using Gateway policies**   
+
+Workers using a [VPC Network](https://developers.cloudflare.com/workers-vpc/configuration/vpc-networks/) binding with `network_id: "cf1:network"` now egress to public Internet destinations through [Cloudflare Gateway](https://developers.cloudflare.com/cloudflare-one/traffic-policies/). This means your existing Zero Trust traffic policies — DNS, HTTP, Network, and egress — extend to traffic that originates from your Workers, the same way they do for WARP users today.
+
+1. [Worker](https://developers.cloudflare.com/workers/)  
+Calls `env.EGRESS.fetch()`
+2. [VPC binding](https://developers.cloudflare.com/workers-vpc/) ↓
+3. [Cloudflare Mesh](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-mesh/)  
+Bind via [cf1:network](https://developers.cloudflare.com/workers-vpc/configuration/vpc-networks/)
+4. ↓
+5. [Cloudflare Gateway](https://developers.cloudflare.com/cloudflare-one/traffic-policies/)  
+Policies applied:  
+[ DNS ](https://developers.cloudflare.com/cloudflare-one/traffic-policies/dns-policies/)[ HTTP ](https://developers.cloudflare.com/cloudflare-one/traffic-policies/http-policies/)[ Network ](https://developers.cloudflare.com/cloudflare-one/traffic-policies/network-policies/)
+6. ↓
+7. ↗ Public Internet  
+Any public hostname or IP
+[ Gateway logs DNS HTTP Network ](https://developers.cloudflare.com/cloudflare-one/insights/logs/dashboard-logs/gateway-logs/) 
+
+What you get by default:
+
+* **Visibility.** Worker egress shows up in Gateway [DNS](https://developers.cloudflare.com/cloudflare-one/traffic-policies/dns-policies/), [HTTP](https://developers.cloudflare.com/cloudflare-one/traffic-policies/http-policies/), and [Network](https://developers.cloudflare.com/cloudflare-one/traffic-policies/network-policies/) logs alongside your other traffic, so you can audit what your Workers are calling and when.
+* **Enforcement.** Any existing Gateway policy whose selectors match a Worker request will apply — including allow / block lists, DNS category filtering, and HTTP destination rules. If you have already blocked a category for your workforce, your Workers inherit that block.
+
+* [  wrangler.jsonc ](#tab-panel-6666)
+* [  wrangler.toml ](#tab-panel-6667)
+
+JSONC
+
+```
+
+{
+
+  "vpc_networks": [
+
+    {
+
+      "binding": "EGRESS",
+
+      "network_id": "cf1:network",
+
+      "remote": true,
+
+    },
+
+  ],
+
+}
+
+
+```
+
+TOML
+
+```
+
+[[vpc_networks]]
+
+binding = "EGRESS"
+
+network_id = "cf1:network"
+
+remote = true
+
+
+```
+
+* [  JavaScript ](#tab-panel-6668)
+* [  TypeScript ](#tab-panel-6669)
+
+JavaScript
+
+```
+
+// Egress to a public destination — subject to your Gateway policies and logged
+
+const response = await env.EGRESS.fetch("https://api.example.com/data");
+
+
+```
+
+TypeScript
+
+```
+
+// Egress to a public destination — subject to your Gateway policies and logged
+
+const response = await env.EGRESS.fetch("https://api.example.com/data");
+
+
+```
+
+For configuration options, refer to [VPC Networks](https://developers.cloudflare.com/workers-vpc/configuration/vpc-networks/). For policy authoring, refer to [Cloudflare Gateway traffic policies](https://developers.cloudflare.com/cloudflare-one/traffic-policies/).
+
 ## 2026-06-04
 
 [ Access ](https://developers.cloudflare.com/cloudflare-one/access-controls/policies/) 
@@ -4454,62 +4552,6 @@ This release contains new improvements in addition to the features and improveme
 
 ## 2025-06-05
 
-[ Cloudflare One Client ](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/) 
-
-  
-**WARP client for Windows (version 2025.5.735.1)**   
-
-A new Beta release for the Windows WARP client is now available on the [beta releases downloads page](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/download/beta-releases/).
-
-This release contains improvements and new exciting features, including [SCCM VPN boundary support](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/settings/#sccm-vpn-boundary-support) and [post-quantum cryptography](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/deployment/mdm-deployment/parameters/#enable%5Fpost%5Fquantum). By tunneling your corporate network traffic over Cloudflare, you can now gain the immediate protection of post-quantum cryptography without needing to upgrade any of your individual corporate applications or systems.
-
-**Changes and improvements**
-
-* Fixed a device registration issue causing WARP connection failures when changing networks.
-* Captive portal improvements including showing connectivity status in the client and sending system notifications for captive portal sign in.
-* Fixed a bug where in Gateway with DoH mode, connection to DNS servers was not automatically restored after reconnecting WARP.
-* The WARP client now applies post-quantum cryptography end-to-end on enabled devices accessing resources behind a Cloudflare Tunnel. This feature can be [enabled by MDM](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/deployment/mdm-deployment/parameters/#enable%5Fpost%5Fquantum).
-* Improvement to gracefully handle changes made by MDM while WARP is not running.
-* Improvement for multi-user mode to avoid unnecessary key rotations when transitioning from a pre-login to a logged-in state.
-* Added a WARP client device posture check for SAN attributes to the [client certificate check](https://developers.cloudflare.com/cloudflare-one/reusable-components/posture-checks/warp-client-checks/client-certificate/).
-* Fixed an issue affecting Split Tunnel Include mode, where traffic outside the tunnel was blocked when switching between Wi-Fi and Ethernet networks.
-* Added [SCCM VPN boundary support](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/settings/#sccm-vpn-boundary-support) to device profile settings. With SCCM VPN boundary support enabled, operating systems will register WARP's local interface IP with the on-premise DNS server when reachable.
-
-**Known issues**
-
-* Microsoft has confirmed a regression with Windows 11 starting around 24H2 that may cause performance issues for some users. These performance issues could manifest as mouse lag, audio cracking, or other slowdowns. A fix from Microsoft is expected in early July.
-* Devices with `KB5055523` installed may receive a warning about `Win32/ClickFix.ABA` being present in the installer. To resolve this false positive, update Microsoft Security Intelligence to [version 1.429.19.0](https://www.microsoft.com/en-us/wdsi/definitions/antimalware-definition-release-notes?requestVersion=1.429.19.0) or later.
-* DNS resolution may be broken when the following conditions are all true:  
-   * WARP is in Secure Web Gateway without DNS filtering (tunnel-only) mode.  
-   * A custom DNS server address is configured on the primary network adapter.  
-   * The custom DNS server address on the primary network adapter is changed while WARP is connected. To work around this issue, reconnect the WARP client by toggling off and back on.
-
-## 2025-06-05
-
-[ Cloudflare One Client ](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/) 
-
-  
-**WARP client for macOS (version 2025.5.735.1)**   
-
-A new Beta release for the macOS WARP client is now available on the [beta releases downloads page](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/download/beta-releases/).
-
-This release contains improvements and new exciting features, including [post-quantum cryptography](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/deployment/mdm-deployment/parameters/#enable%5Fpost%5Fquantum). By tunneling your corporate network traffic over Cloudflare, you can now gain the immediate protection of post-quantum cryptography without needing to upgrade any of your individual corporate applications or systems.
-
-**Changes and improvements**
-
-* Fixed an issue where the Cloudflare WARP application may not have automatically relaunched after an update.
-* Fixed a device registration issue causing WARP connection failures when changing networks.
-* Captive portal improvements including showing connectivity status in the client and sending system notifications for captive portal sign in.
-* The WARP client now applies post-quantum cryptography end-to-end on enabled devices accessing resources behind a Cloudflare Tunnel. This feature can be [enabled by MDM](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/deployment/mdm-deployment/parameters/#enable%5Fpost%5Fquantum).
-* Improvement to gracefully handle changes made by MDM while WARP is not running.
-* Fixed an issue affecting Split Tunnel Include mode, where traffic outside the tunnel was blocked when switching between Wi-Fi and Ethernet networks.
-
-**Known issues**
-
-* macOS Sequoia: Due to changes Apple introduced in macOS 15.0.x, the WARP client may not behave as expected. Cloudflare recommends the use of macOS 15.4 or later.
-
-## 2025-06-05
-
 [ Access ](https://developers.cloudflare.com/cloudflare-one/access-controls/policies/)[ Cloudflare One ](https://developers.cloudflare.com/cloudflare-one/) 
 
   
@@ -4761,8 +4803,8 @@ Zero Trust Dashboard will automatically accept your user-level preferences for s
 
 ![Zero Trust dashboard supports dark mode](https://developers.cloudflare.com/_astro/dark-mode.DfLeS20d_Z2kTwNR.webp) 
 
-* [ Zero Trust Dashboard ](#tab-panel-6582)
-* [ Core Dashboard ](#tab-panel-6583)
+* [ Zero Trust Dashboard ](#tab-panel-6664)
+* [ Core Dashboard ](#tab-panel-6665)
 
 To update your view preference in the Zero Trust dashboard:
 

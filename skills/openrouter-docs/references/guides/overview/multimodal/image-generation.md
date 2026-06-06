@@ -141,7 +141,7 @@ if (result.choices) {
 
 ### Image Configuration Options
 
-Some image generation models support additional configuration through the `image_config` parameter.
+Some image generation models support additional configuration through the `image_config` parameter. The shared options below — aspect ratio and image size — work across many image models. Parameters that are specific to a single provider are grouped into dedicated [Recraft](#recraft-image-options) and [Sourceful](#sourceful-image-options) sections further down.
 
 #### Aspect Ratio
 
@@ -262,9 +262,13 @@ if (result.choices) {
 }
 ```
 
-#### Strength (Recraft only)
+### Recraft Image Options
 
-Set `image_config.strength` to control how much the output image differs from the input image during image-to-image generation. This parameter only applies when input images are provided in `messages`. It is only supported by Recraft models.
+The parameters in this section are supported only by [Recraft](/models?q=Recraft) models. Where support is limited to a specific Recraft version (for example, V3 but not V4), that is noted on the parameter.
+
+#### Strength
+
+Set `image_config.strength` to control how much the output image differs from the input image during image-to-image generation. This parameter only applies when input images are provided in `messages`. Supported by all Recraft models (`recraft/recraft-v3`, `recraft/recraft-v4`, and `recraft/recraft-v4-pro`).
 
 * **Range**: `0.0` to `1.0`
 * **Default**: `0.2`
@@ -324,9 +328,9 @@ See the [full list of available styles](https://www.recraft.ai/docs/api-referenc
 }
 ```
 
-#### RGB Colors (Recraft only)
+#### RGB Colors
 
-Use `image_config.rgb_colors` to specify a color palette that influences the generated image. Each color is a `[r, g, b]` array of three integers (0 to 255). This parameter is supported by Recraft models for both text-to-image and image-to-image requests.
+Use `image_config.rgb_colors` to specify a color palette that influences the generated image. Each color is a `[r, g, b]` array of three integers (0 to 255). Supported by all Recraft models (`recraft/recraft-v3`, `recraft/recraft-v4`, and `recraft/recraft-v4-pro`) for both text-to-image and image-to-image requests.
 
 **Example:**
 
@@ -341,9 +345,9 @@ Use `image_config.rgb_colors` to specify a color palette that influences the gen
 }
 ```
 
-#### Background RGB Color (Recraft only)
+#### Background RGB Color
 
-Use `image_config.background_rgb_color` to set a specific background color for the generated image. The value is a `[r, g, b]` array of three integers (0 to 255). This parameter is supported by Recraft models for both text-to-image and image-to-image requests.
+Use `image_config.background_rgb_color` to set a specific background color for the generated image. The value is a `[r, g, b]` array of three integers (0 to 255). Supported by all Recraft models (`recraft/recraft-v3`, `recraft/recraft-v4`, and `recraft/recraft-v4-pro`) for both text-to-image and image-to-image requests.
 
 **Example:**
 
@@ -366,9 +370,13 @@ You can combine `rgb_colors` and `background_rgb_color` in the same request:
 }
 ```
 
-#### Font Inputs (Sourceful only)
+### Sourceful Image Options
 
-Use `image_config.font_inputs` to render custom text with specific fonts in generated images. The text you want to render must also be included in your prompt for best results. This parameter is only supported by Sourceful models (`sourceful/riverflow-v2-fast` and `sourceful/riverflow-v2-pro`).
+The parameters in this section are supported only by [Sourceful](/models?q=Sourceful) models. Each parameter notes the Sourceful version (V2 or V2.5) that supports it.
+
+#### Font Inputs (Riverflow V2 and newer)
+
+Use `image_config.font_inputs` to render custom text with specific fonts in generated images. The text you want to render must also be included in your prompt for best results. Supported by Sourceful Riverflow V2 and newer — `sourceful/riverflow-v2-fast`, `sourceful/riverflow-v2-pro`, `sourceful/riverflow-v2.5-fast`, and `sourceful/riverflow-v2.5-pro`.
 
 Each font input is an object with:
 
@@ -402,9 +410,9 @@ Each font input is an object with:
 * Use line breaks or double spaces to separate headlines and sub-headers when using the same font
 * Works best with short, clear headlines and sub-headlines
 
-#### Super Resolution References (Sourceful V2 only)
+#### Super Resolution References (Riverflow V2 only)
 
-Use `image_config.super_resolution_references` to enhance low-quality elements in your input image using high-quality reference images. The output image will match the size of your input image, so use larger input images for better results. This parameter is only supported by Sourceful models (`sourceful/riverflow-v2-fast` and `sourceful/riverflow-v2-pro`) when using image-to-image generation (i.e., when input images are provided in `messages`).
+Use `image_config.super_resolution_references` to enhance low-quality elements in your input image using high-quality reference images. The output image will match the size of your input image, so use larger input images for better results. Supported by Sourceful V2 models (`sourceful/riverflow-v2-fast` and `sourceful/riverflow-v2-pro`) when using image-to-image generation (i.e., when input images are provided in `messages`).
 
 **Limits:**
 
@@ -430,6 +438,100 @@ Use `image_config.super_resolution_references` to enhance low-quality elements i
 * Supply an input image where the elements to enhance are present but low quality
 * Use larger input images for better output quality (output matches input size)
 * Use high-quality reference images that show what you want the enhanced elements to look like
+
+#### Scoring Prompt (Riverflow V2.5 only)
+
+Use `image_config.scoring_prompt` to give the model free-form guidance it uses to evaluate and refine its own output during generation. Supported by Sourceful V2.5 models (`sourceful/riverflow-v2.5-fast` and `sourceful/riverflow-v2.5-pro`).
+
+**Example:**
+
+```json
+{
+  "image_config": {
+    "scoring_prompt": "Prefer realistic materials, crisp product edges, and even studio lighting."
+  }
+}
+```
+
+#### Scoring Rubric (Riverflow V2.5 only)
+
+Use `image_config.scoring_rubric` to provide a structured set of weighted dimensions the model scores its output against. This is the structured complement to `scoring_prompt` — the two are independent and can be provided together in the same request (rubric for weighted dimension scoring, prompt for additional free-form guidance). Supported by Sourceful V2.5 models (`sourceful/riverflow-v2.5-fast` and `sourceful/riverflow-v2.5-pro`).
+
+Each rubric entry is an object with:
+
+* `key` (required): unique machine-readable identifier for the dimension
+* `label` (required): human-readable name
+* `description` (required): what this dimension evaluates
+* `weight` (required): relative importance as a positive number
+* `passing_score` (optional): minimum acceptable score
+* `score_guidance` (optional): array of `{ "score": number, "description": string }` anchors
+
+**Limits:**
+
+* 1 to 8 dimensions per request
+
+**Example:**
+
+```json
+{
+  "image_config": {
+    "scoring_rubric": [
+      {
+        "key": "lighting",
+        "label": "Lighting quality",
+        "description": "Even, professional studio lighting with no blown highlights.",
+        "weight": 2,
+        "passing_score": 7,
+        "score_guidance": [
+          { "score": 10, "description": "Flawless, even studio lighting." },
+          { "score": 5, "description": "Acceptable but uneven lighting." }
+        ]
+      },
+      {
+        "key": "edges",
+        "label": "Edge sharpness",
+        "description": "Crisp, clean product edges without halos.",
+        "weight": 1
+      }
+    ]
+  }
+}
+```
+
+#### Background Mode and Color (Riverflow V2.5 only)
+
+Use `image_config.background_mode` to control how the generated image's background is handled, and `image_config.background_hex_color` to set the fill color for solid backgrounds. Supported by Sourceful V2.5 models (`sourceful/riverflow-v2.5-fast` and `sourceful/riverflow-v2.5-pro`).
+
+* `background_mode`: one of `original` (default — keep the generated background), `transparent` (remove the background), or `solid` (composite onto a flat color).
+* `background_hex_color`: a `#RRGGBB` hex string. Required when `background_mode` is `solid`.
+
+**Behavior:**
+
+* Passing only `background_hex_color` (without `background_mode`) is treated as `solid` with that color.
+* `background_hex_color` is validated but then discarded for `original` and `transparent` modes — a malformed hex string always returns a 400 regardless of mode.
+
+**Example (solid color):**
+
+```json
+{
+  "image_config": {
+    "background_mode": "solid",
+    "background_hex_color": "#f6f1e8"
+  }
+}
+```
+
+**Example (transparent):**
+
+```json
+{
+  "image_config": {
+    "background_mode": "transparent"
+  }
+}
+```
+
+Recraft uses `background_rgb_color` (an `[r, g, b]` array) to set a solid background color, whereas Sourceful V2.5 uses `background_mode` together with `background_hex_color`.
 
 ### Streaming Image Generation
 

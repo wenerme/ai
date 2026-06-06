@@ -52,8 +52,8 @@ If you remove HTTPS before disabling HSTS or before waiting for the duration of 
 
 ## Enable HSTS
 
-* [ Dashboard ](#tab-panel-8397)
-* [ API ](#tab-panel-8398)
+* [ Dashboard ](#tab-panel-10027)
+* [ API ](#tab-panel-10028)
 
 To enable HSTS using the dashboard:
 

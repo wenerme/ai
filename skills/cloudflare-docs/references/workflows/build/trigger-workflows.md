@@ -37,8 +37,8 @@ New to Workflows? Start with the [Workflows tutorial](https://developers.cloudfl
 
 To bind to a Workflow from your Workers code, you need to define a [binding](https://developers.cloudflare.com/workers/wrangler/configuration/) to a specific Workflow. For example, to bind to the Workflow defined in the [get started guide](https://developers.cloudflare.com/workflows/get-started/guide/), you would configure the [Wrangler configuration file](https://developers.cloudflare.com/workers/wrangler/configuration/) with the below:
 
-* [  wrangler.jsonc ](#tab-panel-12243)
-* [  wrangler.toml ](#tab-panel-12244)
+* [  wrangler.jsonc ](#tab-panel-12447)
+* [  wrangler.toml ](#tab-panel-12448)
 
 JSONC
 
@@ -54,7 +54,7 @@ JSONC
 
   // Set this to today's date
 
-  "compatibility_date": "2026-06-02",
+  "compatibility_date": "2026-06-06",
 
   "workflows": [
 
@@ -97,7 +97,7 @@ main = "src/index.ts"
 
 # Set this to today's date
 
-compatibility_date = "2026-06-02"
+compatibility_date = "2026-06-06"
 
 
 [[workflows]]
@@ -117,8 +117,8 @@ The `binding = "MY_WORKFLOW"` line defines the JavaScript variable that our Work
 
 If you want to create Workflow instances on a recurring interval, add a `schedules` array to the Workflow binding in your Wrangler configuration:
 
-* [  wrangler.jsonc ](#tab-panel-12245)
-* [  wrangler.toml ](#tab-panel-12246)
+* [  wrangler.jsonc ](#tab-panel-12449)
+* [  wrangler.toml ](#tab-panel-12450)
 
 JSONC
 
@@ -134,7 +134,7 @@ JSONC
 
   // Set this to today's date
 
-  "compatibility_date": "2026-06-02",
+  "compatibility_date": "2026-06-06",
 
   "workflows": [
 
@@ -169,7 +169,7 @@ main = "src/index.ts"
 
 # Set this to today's date
 
-compatibility_date = "2026-06-02"
+compatibility_date = "2026-06-06"
 
 
 [[workflows]]
@@ -333,8 +333,28 @@ TypeScript
 
   output?: unknown;
 
+  rollback:
+
+    | {
+
+        outcome: "complete" | "failed";
+
+        error: {
+
+          name: string,
+
+          message: string,
+
+        } | null,
+
+      }
+
+    | null;
+
 
 ```
+
+If your Workflow registers rollback handlers on `step.do()`, inspect `rollback` after the instance finishes to see whether the compensating steps completed successfully. While rollback is actively running, the Workers API continues to return `status: "running"`.
 
 ### Explicitly pause a Workflow
 
@@ -410,8 +430,8 @@ To restart an instance from a specific step instead of the beginning, refer to [
 
 You can create a new Workflow instance from within a step of another Workflow. The parent Workflow will not block waiting for the child Workflow to complete — it continues execution immediately after the child instance is successfully created.
 
-* [  JavaScript ](#tab-panel-12247)
-* [  TypeScript ](#tab-panel-12248)
+* [  JavaScript ](#tab-panel-12451)
+* [  TypeScript ](#tab-panel-12452)
 
 JavaScript
 

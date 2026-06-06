@@ -34,7 +34,7 @@ fn(1,2,3);  // does nothing... but
 
 console.log(fn.mock.callCount());  // Records how many times it was called
 
-console.log(fn.mock.calls[0].arguments));  // Recoreds the arguments that were passed each call
+console.log(fn.mock.calls[0].arguments);  // Records the arguments that were passed each call
 
 
 ```

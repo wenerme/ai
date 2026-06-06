@@ -114,7 +114,7 @@ pnpm run deploy
 ```  
 Note  
 [**Workers Builds**](https://developers.cloudflare.com/workers/ci-cd/builds/) requires you to configure environment variables in the ["Build Variables and secrets"](https://developers.cloudflare.com/workers/ci-cd/builds/configuration/#:~:text=Build%20variables%20and%20secrets) section.  
-This ensures the Next build has the necessary access to both public `NEXT_PUBLC...` variables and [non-NEXT\_PUBLIC\_... ↗](https://nextjs.org/docs/pages/guides/environment-variables#bundling-environment-variables-for-the-browser), which are essential for tasks like inlining and building SSG pages.  
+This ensures the Next build has the necessary access to both public `NEXT_PUBLIC_...` variables and [non-NEXT\_PUBLIC\_... ↗](https://nextjs.org/docs/pages/guides/environment-variables#bundling-environment-variables-for-the-browser), which are essential for tasks like inlining and building SSG pages.  
 Learn more in the [OpenNext environment variable guide ↗](https://opennext.js.org/cloudflare/howtos/env-vars#workers-builds)
 
 ## Deploy an existing Next.js project on Workers
@@ -201,8 +201,8 @@ bun add -d wrangler@latest
 ```
 3. **Add a Wrangler configuration file**  
 In your project root, create a [Wrangler configuration file](https://developers.cloudflare.com/workers/wrangler/configuration/) with the following content:  
-   * [  wrangler.jsonc ](#tab-panel-10617)  
-   * [  wrangler.toml ](#tab-panel-10618)  
+   * [  wrangler.jsonc ](#tab-panel-11227)  
+   * [  wrangler.toml ](#tab-panel-11228)  
 JSONC  
 ```  
 {  
@@ -210,7 +210,7 @@ JSONC
   "main": ".open-next/worker.js",  
   "name": "my-app",  
   // Set this to today's date  
-  "compatibility_date": "2026-05-28",  
+  "compatibility_date": "2026-06-05",  
   "compatibility_flags": [  
     "nodejs_compat"  
   ],  
@@ -226,7 +226,7 @@ TOML
 main = ".open-next/worker.js"  
 name = "my-app"  
 # Set this to today's date  
-compatibility_date = "2026-05-28"  
+compatibility_date = "2026-06-05"  
 compatibility_flags = [ "nodejs_compat" ]  
 [assets]  
 directory = ".open-next/assets"  
@@ -292,7 +292,7 @@ pnpm run deploy
 ```  
 Note  
 [**Workers Builds**](https://developers.cloudflare.com/workers/ci-cd/builds/) requires you to configure environment variables in the ["Build Variables and secrets"](https://developers.cloudflare.com/workers/ci-cd/builds/configuration/#:~:text=Build%20variables%20and%20secrets) section.  
-This ensures the Next build has the necessary access to both public `NEXT_PUBLC...` variables and [non-NEXT\_PUBLIC\_... ↗](https://nextjs.org/docs/pages/guides/environment-variables#bundling-environment-variables-for-the-browser), which are essential for tasks like inlining and building SSG pages.  
+This ensures the Next build has the necessary access to both public `NEXT_PUBLIC_...` variables and [non-NEXT\_PUBLIC\_... ↗](https://nextjs.org/docs/pages/guides/environment-variables#bundling-environment-variables-for-the-browser), which are essential for tasks like inlining and building SSG pages.  
 Learn more in the [OpenNext environment variable guide ↗](https://opennext.js.org/cloudflare/howtos/env-vars#workers-builds)
 
 ```json

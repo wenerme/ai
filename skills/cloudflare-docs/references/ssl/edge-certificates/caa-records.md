@@ -90,8 +90,8 @@ This list is not exhaustive, and other CAs might be added or removed for operati
 
 Create a CAA record for each Certificate Authority (CA) that you plan to use for your domain.
 
-* [ Dashboard ](#tab-panel-8411)
-* [ API ](#tab-panel-8412)
+* [ Dashboard ](#tab-panel-10041)
+* [ API ](#tab-panel-10042)
 
 To add a CAA record in the dashboard,
 

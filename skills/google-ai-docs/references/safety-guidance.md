@@ -1,5 +1,3 @@
-# Safety and factuality guidance
-
 Generative artificial intelligence models are powerful tools, but they are not
 without their limitations. Their versatility and applicability can sometimes
 lead to unexpected outputs, such as outputs that are inaccurate, biased, or
@@ -71,7 +69,7 @@ the art studies in your app domain, observing how people are using similar apps,
 or running a user study, survey, or conducting informal interviews with
 potential users.
 
-#### Advanced tips
+### Advanced tips
 
 - Speak with a diverse mix of prospective users within your target population about your application and its intended purpose so as to get a wider perspective on potential risks and to adjust diversity criteria as needed.
 - The [AI Risk Management Framework](https://www.nist.gov/itl/ai-risk-management-framework) released by the U.S. government's National Institute of Standards and Technology (NIST) provides more detailed guidance and additional learning resources for AI risk management.
@@ -103,15 +101,11 @@ For example, when designing an application consider:
   handle the request based on the type of harm detected. For example, If the
   input is overtly adversarial or abusive in nature, it could be blocked and
   instead output a pre-scripted response.
+  **Advanced tip:** If signals determine the output to be harmful, the
+  application can employ the following options:
 
-  #### Advanced tip
-
-  - If signals determine the output to be harmful, the application can employ the following options:
-    - Provide an error message or pre-scripted output.
-    - Try the prompt again, in case an alternative safe output is generated, since sometimes the same prompt will elicit different outputs.
-
-  <br />
-
+  - Provide an error message or pre-scripted output.
+  - Try the prompt again, in case an alternative safe output is generated, since sometimes the same prompt will elicit different outputs.
 - **Putting safeguards in place against deliberate misuse** such as assigning
   each user a unique ID and imposing a limit on the volume of user queries
   that can be submitted in a given period. Another safeguard is to try and
@@ -173,8 +167,7 @@ applications:
   the evaluation dataset based on the tests that evaluate the metrics you care
   about most.
 
-  #### Advanced tips
-
+  **Advanced tips:**
   - Beware of over-relying on "off the shelf" approaches as it's likely you'll need to build your own testing datasets using human raters to fully suit your application's context.
   - If you have more than one metric you'll need to decide how you'll trade off if a change leads to improvements for one metric to the detriment of another. Like with other performance engineering, you may want to focus on worst-case performance across your evaluation set rather than average performance.
 - **Adversarial testing** involves proactively trying to break your
@@ -188,13 +181,24 @@ applications:
   - Adversarial testing is a method for systematically evaluating an ML model with the intent of learning how it behaves when provided with malicious or inadvertently harmful input:
     - An input may be malicious when the input is clearly designed to produce an unsafe or harmful output-- for example, asking a text generation model to generate a hateful rant about a particular religion.
     - An input is inadvertently harmful when the input itself may be innocuous, but produces harmful output -- for example, asking a text generation model to describe a person of a particular ethnicity and receiving a racist output.
-  - What distinguishes an adversarial test from a standard evaluation is the composition of the data used for testing. For adversarial tests, select test data that is most likely to elicit problematic output from the model. This means probing the model's behavior for all the types of harms that are possible, including rare or unusual examples and edge-cases that are relevant to safety policies. It should also include diversity in the different dimensions of a sentence such as structure, meaning and length. You can refer to the [Google's Responsible AI
+  - What distinguishes an adversarial test from a standard evaluation is the
+    composition of the data used for testing. For adversarial tests, select
+    test data that is most likely to elicit problematic output from
+    the model. This means probing the model's behavior for all the types of
+    harms that are possible, including rare or unusual examples and
+    edge-cases that are relevant to safety policies. It should also include
+    diversity in the different dimensions of a sentence such as structure,
+    meaning and length. You can refer to the [Google's Responsible AI
     practices in
-    fairness](https://ai.google/responsibilities/responsible-ai-practices/?category=fairness) for more details on what to consider when building a test dataset.
+    fairness](https://ai.google/responsibilities/responsible-ai-practices/?category=fairness)
+    for more details on what to consider when building a test dataset.
+    **Advanced tips:**
 
-    #### Advanced tips
-
-    - Use [automated testing](https://www.deepmind.com/blog/red-teaming-language-models-with-language-models) instead of the traditional method of enlisting people in 'red teams' to try and break your application. In automated testing, the 'red team' is another language model that finds input text that elicit harmful outputs from the model being tested.
+  - Use [automated testing](https://www.deepmind.com/blog/red-teaming-language-models-with-language-models)
+    instead of the traditional method of enlisting people in 'red
+    teams' to try and break your application. In automated testing,
+    the 'red team' is another language model that finds input text
+    that elicit harmful outputs from the model being tested.
 
   > [!NOTE]
   > **Note:** LLMs are known to sometimes produce different outputs for the same input prompt. Multiple rounds of testing may be needed to catch more of the problematic outputs.
@@ -208,7 +212,7 @@ approaches include setting up a monitored channel for users to share feedback
 feedback from a diverse mix of users --- especially valuable if usage patterns are
 different to expectations.
 
-#### Advanced tips
+### Advanced tips
 
 - When users give feedback to AI products, it can greatly improve the AI performance and the user experience over time by, for example, helping you choose better examples for prompt tuning. The [Feedback and Control chapter](https://pair.withgoogle.com/chapter/feedback-controls/) in [Google's People and AI guidebook](https://pair.withgoogle.com/guidebook/chapters) highlights key considerations to take into account when designing feedback mechanisms.
 

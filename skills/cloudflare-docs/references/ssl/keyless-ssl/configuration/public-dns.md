@@ -59,8 +59,8 @@ Upload certificates to Cloudflare with only SANs that you wish to use with Cloud
 
 You will have to upload each certificate used with Keyless SSL.
 
-* [ Dashboard ](#tab-panel-8437)
-* [ API ](#tab-panel-8438)
+* [ Dashboard ](#tab-panel-10067)
+* [ API ](#tab-panel-10068)
 
 To create a Keyless certificate in the dashboard:
 
@@ -95,12 +95,12 @@ These steps are also at the [Cloudflare package repository ↗](https://pkg.clou
 
 #### Debian/Ubuntu packages
 
-* [ Debian 13 (Trixie) ](#tab-panel-8439)
-* [ Debian 12 (Bookworm) ](#tab-panel-8440)
-* [ Debian 11 (Bullseye) ](#tab-panel-8441)
-* [ Ubuntu 24.04 (Noble) ](#tab-panel-8442)
-* [ Ubuntu 22.04 (Jammy) ](#tab-panel-8443)
-* [ Ubuntu 20.04 (Focal) ](#tab-panel-8444)
+* [ Debian 13 (Trixie) ](#tab-panel-10069)
+* [ Debian 12 (Bookworm) ](#tab-panel-10070)
+* [ Debian 11 (Bullseye) ](#tab-panel-10071)
+* [ Ubuntu 24.04 (Noble) ](#tab-panel-10072)
+* [ Ubuntu 22.04 (Jammy) ](#tab-panel-10073)
+* [ Ubuntu 20.04 (Focal) ](#tab-panel-10074)
 
 Terminal window
 
@@ -208,10 +208,10 @@ sudo apt-get update && sudo apt-get install gokeyless
 
 Gokeyless uses CGO for PKCS#11/HSM support, which creates glibc dependencies. Use the repository that matches your distribution.
 
-* [ RHEL 9 / CentOS Stream 9 ](#tab-panel-8445)
-* [ Amazon Linux 2023 ](#tab-panel-8446)
-* [ RHEL 8 / CentOS 8 ](#tab-panel-8447)
-* [ Amazon Linux 2 ](#tab-panel-8448)
+* [ RHEL 9 / CentOS Stream 9 ](#tab-panel-10075)
+* [ Amazon Linux 2023 ](#tab-panel-10076)
+* [ RHEL 8 / CentOS 8 ](#tab-panel-10077)
+* [ Amazon Linux 2 ](#tab-panel-10078)
 
 Terminal window
 

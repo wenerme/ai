@@ -18,8 +18,8 @@ Operational guidance for managing Cloudflare Mesh deployments — updating the c
 
 Updating a Mesh node means updating the `cloudflare-warp` package on the Linux host. The node briefly disconnects during the update, which interrupts traffic routed through it. If you have [high availability](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-mesh/high-availability/) enabled, traffic fails over to a standby replica automatically.
 
-* [ Debian / Ubuntu ](#tab-panel-5165)
-* [ RedHat / CentOS ](#tab-panel-5166)
+* [ Debian / Ubuntu ](#tab-panel-6741)
+* [ RedHat / CentOS ](#tab-panel-6742)
 
 1. Check the current version:  
 Terminal window  
@@ -131,6 +131,8 @@ To route traffic between Cloudflare Mesh and [Cloudflare WAN](https://developers
 ## Connect Workers to Mesh
 
 Cloudflare Workers can connect to your Mesh network using [VPC Network bindings](https://developers.cloudflare.com/workers-vpc/configuration/vpc-networks/). Bind to `cf1:network` to reach any Mesh node, client device, or subnet route in your account — without specifying a particular tunnel UUID.
+
+The same binding also handles outbound traffic to public Internet destinations: requests egress through [Cloudflare Gateway](https://developers.cloudflare.com/cloudflare-one/traffic-policies/), so your existing Zero Trust traffic policies are enforced and Worker traffic appears in Gateway DNS, HTTP, and Network logs alongside the rest of your traffic.
 
 For setup instructions and examples, refer to [Connect Workers to Cloudflare Mesh](https://developers.cloudflare.com/workers-vpc/examples/connect-to-cloudflare-mesh/).
 

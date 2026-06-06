@@ -28,8 +28,8 @@ Binding directly to a Cloudflare Tunnel through a VPC Network binding requires t
 
 Reference a specific Cloudflare Tunnel directly by its UUID:
 
-* [  wrangler.jsonc ](#tab-panel-10156)
-* [  wrangler.toml ](#tab-panel-10157)
+* [  wrangler.jsonc ](#tab-panel-10764)
+* [  wrangler.toml ](#tab-panel-10765)
 
 JSONC
 
@@ -80,6 +80,7 @@ The `remote` flag must be set to `true` to enable remote bindings during local d
 * Any Mesh node or client device in your account
 * Subnet routes and hostname routes announced through Cloudflare Tunnel or Cloudflare Mesh
 * Destinations reachable through [Cloudflare WAN](https://developers.cloudflare.com/cloudflare-wan/) on-ramps (GRE, IPsec, and CNI)
+* Public Internet destinations through [Cloudflare Gateway](https://developers.cloudflare.com/cloudflare-one/traffic-policies/) — with your existing Zero Trust traffic policies enforced and traffic logged in DNS, HTTP, and Network logs
 
 All of this without specifying a particular Cloudflare Tunnel UUID.
 
@@ -88,6 +89,7 @@ Use `cf1:network` when:
 * Your Workers need to reach private services across multiple Cloudflare Tunnels, Mesh nodes, or Cloudflare WAN on-ramps
 * You want to access your entire private network from a Worker without managing individual Cloudflare Tunnel bindings
 * Your private network topology may change (new connections, new nodes, new routes) and you do not want to update Worker configuration each time
+* You want Worker egress to public destinations to flow through Cloudflare Gateway for policy enforcement and visibility
 
 Note
 
@@ -97,8 +99,8 @@ For destinations behind Cloudflare WAN on-ramps (GRE, IPsec, or CNI), your netwo
 
 Bind to Cloudflare Mesh using `network_id: "cf1:network"`:
 
-* [  wrangler.jsonc ](#tab-panel-10158)
-* [  wrangler.toml ](#tab-panel-10159)
+* [  wrangler.jsonc ](#tab-panel-10766)
+* [  wrangler.toml ](#tab-panel-10767)
 
 JSONC
 

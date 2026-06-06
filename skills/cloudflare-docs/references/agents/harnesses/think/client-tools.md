@@ -18,8 +18,8 @@ Think supports tools that execute in the browser. The client sends serializable 
 
 For dynamic client-side tools, pass `tools` to `useAgentChat`. Tools with an `execute` function are registered with the server as client-executed tools:
 
-* [  JavaScript ](#tab-panel-4984)
-* [  TypeScript ](#tab-panel-4985)
+* [  JavaScript ](#tab-panel-5096)
+* [  TypeScript ](#tab-panel-5097)
 
 JavaScript
 
@@ -119,8 +119,8 @@ For most apps, prefer defining tools on the server and using `onToolCall` for br
 
 Handle browser-side tool execution on the client with `onToolCall`:
 
-* [  JavaScript ](#tab-panel-4982)
-* [  TypeScript ](#tab-panel-4983)
+* [  JavaScript ](#tab-panel-5094)
+* [  TypeScript ](#tab-panel-5095)
 
 JavaScript
 
@@ -190,6 +190,12 @@ After a client tool result is received, Think automatically continues the conver
 
 When a turn produces several client tool calls at once, Think waits for **all** of their results before starting a single continuation, instead of starting one continuation per result. An immediate resume request that arrives while a continuation is already pending attaches to that pending continuation rather than starting a duplicate, and server-side `needsApproval` continuations resume reliably once the approval is recorded.
 
+## Survive restarts while waiting for a human
+
+A Durable Object can be evicted at any time, including while a turn is paused on an approval prompt or a client-side tool call. Because `Think` enables [chatRecovery](https://developers.cloudflare.com/agents/harnesses/think/recovery/) by default, the SDK treats such a turn as waiting on the human, not stuck. It parks the turn instead of failing it, and the user's eventual approval or tool result resumes the conversation.
+
+For which interactions are exempt from recovery budgets, refer to [Turns waiting on a human are not sealed](https://developers.cloudflare.com/agents/communication-channels/chat/chat-agents/#turns-waiting-on-a-human-are-not-sealed).
+
 ## Message concurrency
 
 The `messageConcurrency` property controls how overlapping user submits behave when a chat turn is already active.
@@ -202,8 +208,8 @@ The `messageConcurrency` property controls how overlapping user submits behave w
 | "drop"                                        | Ignore overlapping submits entirely. Messages are not persisted.                                                                    |
 | { strategy: "debounce", debounceMs?: number } | Trailing-edge latest with a quiet window (default 750ms).                                                                           |
 
-* [  JavaScript ](#tab-panel-4980)
-* [  TypeScript ](#tab-panel-4981)
+* [  JavaScript ](#tab-panel-5092)
+* [  TypeScript ](#tab-panel-5093)
 
 JavaScript
 

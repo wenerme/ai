@@ -1,6 +1,6 @@
 ---
 title: Define your company's AI risk tolerance and strategy
-description: Learn about define your companys ai risk tolerance and strategy in this guide.
+description: Set AI security goals and risk boundaries.
 image: https://developers.cloudflare.com/cf-twitter-card.png
 ---
 

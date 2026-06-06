@@ -52,6 +52,20 @@ If both modes are available, use `elevated`. If the default native sandbox
 doesn't work in your environment, use `unelevated` as a fallback while you
 troubleshoot the setup.
 
+Enterprise administrators can constrain which native sandbox implementations
+Codex can use through [`requirements.toml`](https://developers.openai.com/codex/enterprise/managed-configuration#admin-enforced-requirements-requirementstoml):
+
+```toml
+[windows]
+allowed_sandbox_implementations = ["elevated"]
+```
+
+This example requires the `elevated` sandbox and prevents users from falling
+back to `unelevated`. To permit either implementation, include both values;
+Codex prefers `elevated` when no mode is selected. See the
+[`requirements.toml` reference](https://developers.openai.com/codex/config-reference#requirementstoml) for
+the supported values.
+
 By default, both sandbox modes also use a private desktop for stronger UI
 isolation. Set `windows.sandbox_private_desktop = false` only if you need the
 older `Winsta0\\Default` behavior for compatibility.

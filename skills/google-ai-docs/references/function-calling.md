@@ -1,19 +1,23 @@
 # Function calling with the Gemini API
 
+> [!NOTE]
+> **Important:** Gemini 3 model APIs now generate a unique `id` for every function call. If you are manually constructing the conversation history or using the REST API, when returning the result of your executed function to the model we recommend passing the matching `id` in your `functionResponse`. If you are using the standard Python or Node.js SDKs, this is handled automatically.
+
 Function calling lets you connect models to external tools and APIs.
 Instead of generating text responses, the model determines when to call specific
 functions and provides the necessary parameters to execute real-world actions.
 This allows the model to act as a bridge between natural language and real-world
 actions and data. Function calling has 3 primary use cases:
 
-- **Augment Knowledge:** Access information from external sources like databases, APIs, and knowledge bases.
-- **Extend Capabilities:** Use external tools to perform computations and extend the limitations of the model, such as using a calculator or creating charts.
-- **Take Actions:** Interact with external systems using APIs, such as scheduling appointments, creating invoices, sending emails, or controlling smart home devices.
+- [**Take Actions:**](https://ai.google.dev/gemini-api/docs/function-calling#meeting) Interact with external systems using APIs, such as scheduling appointments, creating invoices, sending emails, or controlling smart home devices.
+- [**Augment Knowledge:**](https://ai.google.dev/gemini-api/docs/function-calling#weather) Access information from external sources like databases, APIs, and knowledge bases.
+- [**Extend Capabilities:**](https://ai.google.dev/gemini-api/docs/function-calling#chart) Use external tools to perform computations and extend the limitations of the model, such as using a calculator or creating charts.
 
-> [!NOTE]
-> **Important:** Gemini 3 model APIs now generate a unique `id` for every function call. If you are manually constructing the conversation history or using the REST API, when returning the result of your executed function to the model we recommend passing the matching `id` in your `functionResponse`. If you are using the standard Python or Node.js SDKs, this is handled automatically.
+You can browse examples of these use cases below:
 
-<button value="weather">Get Weather</button> <button value="meeting" default="">Schedule Meeting</button> <button value="chart">Create Chart</button>
+### Schedule Meeting
+
+This example shows how to define a function that schedules a meeting with attendees at a specific time, allowing the model to parse user requests and return structured arguments to trigger actions in external systems.
 
 ### Python
 
@@ -178,6 +182,307 @@ actions and data. Function calling has 3 primary use cases:
                     }
                   },
                   "required": ["attendees", "date", "time", "topic"]
+                }
+              }
+            ]
+          }
+        ]
+      }'
+
+### Get Weather
+
+This example shows how to define a function that retrieves temperature data for a location, enabling the model to call external APIs to answer queries requiring real-time or external information.
+
+### Python
+
+    from google import genai
+    from google.genai import types
+
+    # Define the function declaration for the model
+    weather_function = {
+        "name": "get_current_temperature",
+        "description": "Gets the current temperature for a given location.",
+        "parameters": {
+            "type": "object",
+            "properties": {
+                "location": {
+                    "type": "string",
+                    "description": "The city name, e.g. San Francisco",
+                },
+            },
+            "required": ["location"],
+        },
+    }
+
+    # Configure the client and tools
+    client = genai.Client()
+    tools = types.Tool(function_declarations=[weather_function])
+    config = types.GenerateContentConfig(tools=[tools])
+
+    # Send request with function declarations
+    response = client.models.generate_content(
+        model="gemini-3.5-flash",
+        contents="What's the temperature in London?",
+        config=config,
+    )
+
+    # Check for a function call
+    if response.candidates[0].content.parts[0].function_call:
+        function_call = response.candidates[0].content.parts[0].function_call
+        print(f"Function to call: {function_call.name}")
+        print(f"ID: {function_call.id}")
+        print(f"Arguments: {function_call.args}")
+        #  In a real app, you would call your function here:
+        #  result = get_current_temperature(**function_call.args)
+    else:
+        print("No function call found in the response.")
+        print(response.text)
+
+### JavaScript
+
+    import { GoogleGenAI, Type } from '@google/genai';
+
+    // Configure the client
+    const ai = new GoogleGenAI({});
+
+    // Define the function declaration for the model
+    const weatherFunctionDeclaration = {
+      name: 'get_current_temperature',
+      description: 'Gets the current temperature for a given location.',
+      parameters: {
+        type: Type.OBJECT,
+        properties: {
+          location: {
+            type: Type.STRING,
+            description: 'The city name, e.g. San Francisco',
+          },
+        },
+        required: ['location'],
+      },
+    };
+
+    // Send request with function declarations
+    const response = await ai.models.generateContent({
+      model: 'gemini-3.5-flash',
+      contents: "What's the temperature in London?",
+      config: {
+        tools: [{
+          functionDeclarations: [weatherFunctionDeclaration]
+        }],
+      },
+    });
+
+    // Check for function calls in the response
+    if (response.functionCalls && response.functionCalls.length > 0) {
+      const functionCall = response.functionCalls[0]; // Assuming one function call
+      console.log(`Function to call: ${functionCall.name}`);
+      console.log(`ID: ${functionCall.id}`);
+      console.log(`Arguments: ${JSON.stringify(functionCall.args)}`);
+      // In a real app, you would call your actual function here:
+      // const result = await getCurrentTemperature(functionCall.args);
+    } else {
+      console.log("No function call found in the response.");
+      console.log(response.text);
+    }
+
+### REST
+
+    curl "https://generativelanguage.googleapis.com/v1beta/models/gemini-3.5-flash:generateContent" \
+      -H "x-goog-api-key: $GEMINI_API_KEY" \
+      -H 'Content-Type: application/json' \
+      -X POST \
+      -d '{
+        "contents": [
+          {
+            "role": "user",
+            "parts": [
+              {
+                "text": "What'\''s the temperature in London?"
+              }
+            ]
+          }
+        ],
+        "tools": [
+          {
+            "functionDeclarations": [
+              {
+                "name": "get_current_temperature",
+                "description": "Gets the current temperature for a given location.",
+                "parameters": {
+                  "type": "object",
+                  "properties": {
+                    "location": {
+                      "type": "string",
+                      "description": "The city name, e.g. San Francisco"
+                    }
+                  },
+                  "required": ["location"]
+                }
+              }
+            ]
+          }
+        ]
+      }'
+
+### Create Chart
+
+This example shows how to define a function that generates a bar chart from structured data, demonstrating how the model can use external tools to perform computations or create visual assets:
+
+### Python
+
+    import os
+    from google import genai
+    from google.genai import types
+
+    # Define the function declaration for the model
+    create_chart_function = {
+        "name": "create_bar_chart",
+        "description": "Creates a bar chart given a title, labels, and corresponding values.",
+        "parameters": {
+            "type": "object",
+            "properties": {
+                "title": {
+                    "type": "string",
+                    "description": "The title for the chart.",
+                },
+                "labels": {
+                    "type": "array",
+                    "items": {"type": "string"},
+                    "description": "List of labels for the data points (e.g., ['Q1', 'Q2', 'Q3']).",
+                },
+                "values": {
+                    "type": "array",
+                    "items": {"type": "number"},
+                    "description": "List of numerical values corresponding to the labels (e.g., [50000, 75000, 60000]).",
+                },
+            },
+            "required": ["title", "labels", "values"],
+        },
+    }
+
+    # Configure the client and tools
+    client = genai.Client()
+    tools = types.Tool(function_declarations=[create_chart_function])
+    config = types.GenerateContentConfig(tools=[tools])
+
+    # Send request with function declarations
+    response = client.models.generate_content(
+        model="gemini-3.5-flash",
+        contents="Create a bar chart titled 'Quarterly Sales' with data: Q1: 50000, Q2: 75000, Q3: 60000.",
+        config=config,
+    )
+
+    # Check for a function call
+    if response.candidates[0].content.parts[0].function_call:
+        function_call = response.candidates[0].content.parts[0].function_call
+        print(f"Function to call: {function_call.name}")
+        print(f"ID: {function_call.id}")
+        print(f"Arguments: {function_call.args}")
+        #  In a real app, you would call your function here using a charting library:
+        #  result = create_bar_chart(**function_call.args)
+    else:
+        print("No function call found in the response.")
+        print(response.text)
+
+### JavaScript
+
+    import { GoogleGenAI, Type } from '@google/genai';
+
+    // Configure the client
+    const ai = new GoogleGenAI({});
+
+    // Define the function declaration for the model
+    const createChartFunctionDeclaration = {
+      name: 'create_bar_chart',
+      description: 'Creates a bar chart given a title, labels, and corresponding values.',
+      parameters: {
+        type: Type.OBJECT,
+        properties: {
+          title: {
+            type: Type.STRING,
+            description: 'The title for the chart.',
+          },
+          labels: {
+            type: Type.ARRAY,
+            items: { type: Type.STRING },
+            description: 'List of labels for the data points (e.g., ["Q1", "Q2", "Q3"]).',
+          },
+          values: {
+            type: Type.ARRAY,
+            items: { type: Type.NUMBER },
+            description: 'List of numerical values corresponding to the labels (e.g., [50000, 75000, 60000]).',
+          },
+        },
+        required: ['title', 'labels', 'values'],
+      },
+    };
+
+    // Send request with function declarations
+    const response = await ai.models.generateContent({
+      model: 'gemini-3.5-flash',
+      contents: "Create a bar chart titled 'Quarterly Sales' with data: Q1: 50000, Q2: 75000, Q3: 60000.",
+      config: {
+        tools: [{
+          functionDeclarations: [createChartFunctionDeclaration]
+        }],
+      },
+    });
+
+    // Check for function calls in the response
+    if (response.functionCalls && response.functionCalls.length > 0) {
+      const functionCall = response.functionCalls[0]; // Assuming one function call
+      console.log(`Function to call: ${functionCall.name}`);
+      console.log(`ID: ${functionCall.id}`);
+      console.log(`Arguments: ${JSON.stringify(functionCall.args)}`);
+      // In a real app, you would call your actual function here:
+      // const result = await createBarChart(functionCall.args);
+    } else {
+      console.log("No function call found in the response.");
+      console.log(response.text);
+    }
+
+### REST
+
+    curl "https://generativelanguage.googleapis.com/v1beta/models/gemini-3.5-flash:generateContent" \
+      -H "x-goog-api-key: $GEMINI_API_KEY" \
+      -H 'Content-Type: application/json' \
+      -X POST \
+      -d '{
+        "contents": [
+          {
+            "role": "user",
+            "parts": [
+              {
+                "text": "Create a bar chart titled ''Quarterly Sales'' with data: Q1: 50000, Q2: 75000, Q3: 60000."
+              }
+            ]
+          }
+        ],
+        "tools": [
+          {
+            "functionDeclarations": [
+              {
+                "name": "create_bar_chart",
+                "description": "Creates a bar chart given a title, labels, and corresponding values.",
+                "parameters": {
+                  "type": "object",
+                  "properties": {
+                    "title": {
+                      "type": "string",
+                      "description": "The title for the chart."
+                    },
+                    "labels": {
+                      "type": "array",
+                      "items": {"type": "string"},
+                      "description": "List of labels for the data points (e.g., [''Q1'', ''Q2'', ''Q3''])."
+                    },
+                    "values": {
+                      "type": "array",
+                      "items": {"type": "number"},
+                      "description": "List of numerical values corresponding to the labels (e.g., [50000, 75000, 60000])."
+                    }
+                  },
+                  "required": ["title", "labels", "values"]
                 }
               }
             ]

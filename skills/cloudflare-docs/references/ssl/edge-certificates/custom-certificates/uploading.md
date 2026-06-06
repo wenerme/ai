@@ -42,8 +42,8 @@ Warning
 
 When using `compatible` or `modern` [bundling](https://developers.cloudflare.com/ssl/edge-certificates/custom-certificates/bundling-methodologies), make sure to upload only the leaf certificate. This will allow Cloudflare to properly handle [the expiration of intermediate and root certificates](https://developers.cloudflare.com/ssl/edge-certificates/custom-certificates/bundling-methodologies/#intermediate-and-root-certificates).
 
-* [ Dashboard ](#tab-panel-7935)
-* [ API ](#tab-panel-7936)
+* [ Dashboard ](#tab-panel-10049)
+* [ API ](#tab-panel-10050)
 
 To upload a custom SSL certificate in the dashboard:
 
@@ -234,8 +234,8 @@ If you are on an Enterprise plan and want to update a custom (modern) certificat
 
 Replacing a custom certificate following these steps does not lead to any downtime. No connections will be terminated and new connections will use the new certificate. The old certificate will only actually be deleted when the new certificate is uploaded and active.
 
-* [ Dashboard ](#tab-panel-7933)
-* [ API ](#tab-panel-7934)
+* [ Dashboard ](#tab-panel-10047)
+* [ API ](#tab-panel-10048)
 
 To update a certificate in the dashboard:
 

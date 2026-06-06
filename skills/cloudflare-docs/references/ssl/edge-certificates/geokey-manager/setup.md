@@ -106,8 +106,8 @@ For more information on the `policy` field, refer to [Supported options](https:/
 
 The first version of Geo Key Manager supports 3 regions: U.S., E.U., and a set of High Security Data Centers. If you would like to restrict your private key to another country or region, [apply for the closed beta ↗](https://www.cloudflare.com/lp/geo-key-manager/) of the new version.
 
-* [ Dashboard ](#tab-panel-8421)
-* [ API ](#tab-panel-8422)
+* [ Dashboard ](#tab-panel-10051)
+* [ API ](#tab-panel-10052)
 
 To use Geo Key Manager in the dashboard:
 

@@ -5,12 +5,6 @@ doc_type: 'guide'
 keywords: ['clickstack', 'deployment', 'setup', 'configuration', 'observability']
 ---
 
-<BetaBadge/>
-
-::::note[Beta feature]
-This feature is in ClickHouse Cloud beta.
-::::
-
 This **guide is for existing users of ClickHouse Cloud**. If you're new to ClickHouse Cloud, we recommend our [Getting Started](/use-cases/observability/clickstack/getting-started/managed) guide for Managed ClickStack.
 
 In this deployment pattern, both ClickHouse and the ClickStack UI (HyperDX) are hosted in ClickHouse Cloud, minimizing the number of components the user needs to self-host.

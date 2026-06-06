@@ -10338,10 +10338,10 @@
   "codex-docs/config-reference.md": {
     "url": "https://developers.openai.com/codex/config-reference.md",
     "skill": "codex-docs",
-    "etag": "W/\"ef96e63ba622c3aa42fa8bf3b2db6272\"",
-    "lastModified": "Mon, 01 Jun 2026 23:06:41 GMT",
-    "size": 64816,
-    "updatedAt": "2026-06-02T00:46:30.768Z"
+    "etag": "W/\"bedb400b65eb857c9dffd9bc8d4aa27a\"",
+    "lastModified": "Fri, 05 Jun 2026 20:38:24 GMT",
+    "size": 65143,
+    "updatedAt": "2026-06-06T00:46:17.029Z"
   },
   "codex-docs/config-sample.md": {
     "url": "https://developers.openai.com/codex/config-sample.md",
@@ -10414,6 +10414,14 @@
     "lastModified": "Wed, 27 May 2026 00:34:34 GMT",
     "size": 7363,
     "updatedAt": "2026-05-27T00:43:00.538Z"
+  },
+  "codex-docs/glossary.md": {
+    "url": "https://developers.openai.com/codex/glossary.md",
+    "skill": "codex-docs",
+    "etag": "W/\"47534a9390628bbad06d8027103ab1b5\"",
+    "lastModified": "Fri, 05 Jun 2026 22:46:27 GMT",
+    "size": 25605,
+    "updatedAt": "2026-06-06T00:46:19.453Z"
   },
   "codex-docs/guides/agents-md.md": {
     "url": "https://developers.openai.com/codex/guides/agents-md.md",
@@ -11250,10 +11258,10 @@
   "codex-docs/windows.md": {
     "url": "https://developers.openai.com/codex/windows.md",
     "skill": "codex-docs",
-    "etag": "W/\"3afc75fbf5d5ed023fcec096841c7c4f\"",
-    "lastModified": "Wed, 27 May 2026 00:40:06 GMT",
-    "size": 13455,
-    "updatedAt": "2026-05-27T00:43:31.256Z"
+    "etag": "W/\"5f48217617897179b17b8bee05412962\"",
+    "lastModified": "Fri, 05 Jun 2026 20:39:40 GMT",
+    "size": 14105,
+    "updatedAt": "2026-06-06T00:46:45.563Z"
   },
   "codex-docs/workflows.md": {
     "url": "https://developers.openai.com/codex/workflows.md",

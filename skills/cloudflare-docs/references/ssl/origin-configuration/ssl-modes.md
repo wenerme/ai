@@ -130,8 +130,8 @@ To use Custom SSL/TLS, select the custom option (if you prefer to manually set t
 
 ## Update your encryption mode
 
-* [ Dashboard ](#tab-panel-9999)
-* [ API ](#tab-panel-10000)
+* [ Dashboard ](#tab-panel-10089)
+* [ API ](#tab-panel-10090)
 
 To change your encryption mode in the dashboard:
 

@@ -71,23 +71,15 @@ following:
 The examples in this section use a browser as the execution environment
 and [Playwright](https://playwright.dev/) as the client-side action handler. To
 run these samples you must install the necessary dependencies and initialize a
-Playwright browser instance.
+Playwright browser instance:
 
-#### Install Playwright
+### 0. Install Playwright
 
-<br />
-
-```
     pip install google-genai playwright
     playwright install chromium
-    
-```
 
-#### Initialize Playwright browser instance
+### 0. Initialize Playwright browser instance
 
-<br />
-
-```
     from playwright.sync_api import sync_playwright
 
     # 1. Configure screen dimensions for the target environment
@@ -111,8 +103,6 @@ Playwright browser instance.
 
     # The 'page', 'SCREEN_WIDTH', and 'SCREEN_HEIGHT' variables
     # will be used in the steps below.
-    
-```
 
 Sample code for extending to an Android
 environment is included in the [Using custom user-defined
@@ -701,11 +691,10 @@ practices:
      high-stakes irreversible actions. Here is an example of a custom safety
      system instruction you may include when interacting with the model.
 
-     #### Example safety instructions
+     **Example safety instructions:**
 
      Set your custom safety rules as a system instruction:
 
-     ```
          ## **RULE 1: Seek User Confirmation (USER_CONFIRMATION)**
 
          This is your first and most important check. If the next required action falls
@@ -790,8 +779,7 @@ practices:
          Write final response to the user in the following cases:
          - User confirmation
          - When the task is complete or you have enough information to respond to the user
-         
-     ```
+
 2. **Secure execution environment:** Run your agent in a secure, sandboxed
    environment to limit its potential impact (e.g., A sandboxed virtual machine
    (VM), a container (e.g., Docker), or a dedicated browser profile with limited

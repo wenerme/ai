@@ -30,8 +30,8 @@ A binding is defined in the Wrangler file of your Worker project's directory.
 
 To bind your R2 bucket to your Worker, add the following to your Wrangler file. Update the `binding` property to a valid JavaScript variable identifier and `bucket_name` to the name of your R2 bucket:
 
-* [  wrangler.jsonc ](#tab-panel-7097)
-* [  wrangler.toml ](#tab-panel-7098)
+* [  wrangler.jsonc ](#tab-panel-9178)
+* [  wrangler.toml ](#tab-panel-9179)
 
 JSONC
 
@@ -77,8 +77,8 @@ The following methods are available on the bucket binding object injected into y
 
 For example, to issue a `PUT` object request using the binding above:
 
-* [  JavaScript ](#tab-panel-7095)
-* [  Python ](#tab-panel-7096)
+* [  JavaScript ](#tab-panel-9176)
+* [  Python ](#tab-panel-9177)
 
 JavaScript
 
@@ -236,7 +236,7 @@ Cloudflare recommends using the `httpEtag` field when returning an etag in a res
 * `arrayBuffer` ` (): Promise<ArrayBuffer> `  
    * Returns a Promise that resolves to an `ArrayBuffer` containing the object's value.
 * `text` ` (): Promise<string> `  
-   * Returns a Promise that resolves to an string containing the object's value.
+   * Returns a Promise that resolves to a string containing the object's value.
 * `json` ` <T>() : Promise<T> `  
    * Returns a Promise that resolves to the given object containing the object's value.
 * `blob` ` (): Promise<Blob> `  

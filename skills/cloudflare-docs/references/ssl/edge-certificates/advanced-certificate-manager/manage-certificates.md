@@ -18,8 +18,8 @@ If you are using an existing [Universal SSL certificate](https://developers.clou
 
 Once you order a certificate, you can review the [certificate's status](https://developers.cloudflare.com/ssl/reference/certificate-statuses/) on the [**Edge Certificates** ↗](https://dash.cloudflare.com/?to=/:account/:zone/ssl-tls/edge-certificates) page or via the API with a [GET request](https://developers.cloudflare.com/api/resources/ssl/subresources/certificate%5Fpacks/methods/list/).
 
-* [ Dashboard ](#tab-panel-7923)
-* [ API ](#tab-panel-7924)
+* [ Dashboard ](#tab-panel-10037)
+* [ API ](#tab-panel-10038)
 
 To create a new advanced certificate in the dashboard:
 
@@ -47,8 +47,8 @@ The available options for **Validation method** and **Certificate Validity Perio
 
 ## Delete a certificate
 
-* [ Dashboard ](#tab-panel-7925)
-* [ API ](#tab-panel-7926)
+* [ Dashboard ](#tab-panel-10039)
+* [ API ](#tab-panel-10040)
 
 To delete an advanced certificate in the dashboard:
 

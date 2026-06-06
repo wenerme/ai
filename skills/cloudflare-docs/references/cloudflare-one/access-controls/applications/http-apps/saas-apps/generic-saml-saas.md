@@ -99,9 +99,11 @@ To send additional SAML attributes to your SaaS application, configure the follo
 * **Required**: If an attribute is marked as required but is not provided by an IdP, Cloudflare will fail the authentication request and show an error page.
 * **Add per IdP claim**: (Optional) If you turned on multiple identity providers for the SaaS application, you can choose different attribute mappings for each IdP. These values will override the parent **IdP claim**.
 
-### JSONata transforms
+### JSONata attribute transforms
 
 In **Advanced settings** \> **Transformation**, you can enter a [JSONata ↗](https://jsonata.org/) script that modifies a copy of the [User Registry identity](https://developers.cloudflare.com/cloudflare-one/team-and-resources/users/users/). This is useful for setting default values, excluding email addresses, or ensuring usernames meet arbitrary criteria. Access will send the modified user identity to the SaaS application as SAML attributes.
+
+This corresponds to the `saml_attribute_transform_jsonata` field in the [Access applications API](https://developers.cloudflare.com/api/resources/zero%5Ftrust/subresources/access/subresources/applications/methods/create/).
 
 Note
 
@@ -626,6 +628,111 @@ Result after applying the JSONata transform:
   }
 
 }
+
+
+```
+
+### NameID transform
+
+By default, Access sends the user's email address as the SAML `NameID`. Some SaaS applications require a different value, such as an employee ID, a modified email address, or a username from a legacy system.
+
+You can customize the `NameID` by setting the `name_id_transform_jsonata` field on the SaaS application via the [Access applications API](https://developers.cloudflare.com/api/resources/zero%5Ftrust/subresources/access/subresources/applications/methods/create/). This field accepts a [JSONata ↗](https://jsonata.org/) expression that evaluates against the user's identity and must return a single string value. The result replaces the default `NameID` in the SAML assertion.
+
+Note
+
+The NameID transform is only available through the API. To configure it, update the `saas_app.name_id_transform_jsonata` field on your Access application.
+
+For example, to modify the user's email so that it includes a `+sandbox` suffix (useful when connecting multiple instances of the same SaaS app):
+
+Set a NameID transform via the API
+
+```
+
+curl --request PUT \
+
+https://api.cloudflare.com/client/v4/accounts/{account_id}/access/apps/{app_id} \
+
+--header "Authorization: Bearer {api_token}" \
+
+--header "Content-Type: application/json" \
+
+--data '{
+
+  "saas_app": {
+
+    "auth_type": "saml",
+
+    "name_id_transform_jsonata": "$substringBefore(email, '\''@'\'') & '\''+sandbox@'\'' & $substringAfter(email, '\''@'\'')"
+
+  }
+
+}'
+
+
+```
+
+Given a user with the email `jdoe@company.com`, this expression produces a `NameID` of `jdoe+sandbox@company.com`.
+
+Use employee ID as NameID
+
+To send a non-email attribute such as an employee ID, reference the attribute name directly in the JSONata expression. The attribute must be available in the user's identity from the IdP.
+
+Set employee\_id as NameID
+
+```
+
+curl --request PUT \
+
+https://api.cloudflare.com/client/v4/accounts/{account_id}/access/apps/{app_id} \
+
+--header "Authorization: Bearer {api_token}" \
+
+--header "Content-Type: application/json" \
+
+--data '{
+
+  "saas_app": {
+
+    "auth_type": "saml",
+
+    "name_id_transform_jsonata": "employee_id"
+
+  }
+
+}'
+
+
+```
+
+Given a user identity that contains `"employee_id": "efgh5678"`, the `NameID` sent in the SAML assertion will be `efgh5678`.
+
+Remove NameID transform
+
+To revert to the default behavior (sending the user's email as the `NameID`), set the field to an empty string:
+
+Remove NameID transform
+
+```
+
+curl --request PUT \
+
+https://api.cloudflare.com/client/v4/accounts/{account_id}/access/apps/{app_id} \
+
+--header "Authorization: Bearer {api_token}" \
+
+--header "Content-Type: application/json" \
+
+--data '{
+
+  "saas_app": {
+
+    "auth_type": "saml",
+
+    "name_id_transform_jsonata": ""
+
+  }
+
+}'
 
 
 ```

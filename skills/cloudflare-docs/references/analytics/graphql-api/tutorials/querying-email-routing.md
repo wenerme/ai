@@ -14,7 +14,7 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 This example uses the GraphQL Analytics API to query for Email Routing events over a specified time period.
 
-## Activiy Logs API Call
+## Activity logs API call
 
 The following API call will request Email Routing activity logs over a one day period, and output the requested fields. Be sure to replace `<CLOUDFLARE_ZONE_TAG>` and `<API_TOKEN>`[1](#user-content-fn-1) with your zone tag and API credentials, and adjust the `datetime_geg` and `datetime_leq` values as required.
 

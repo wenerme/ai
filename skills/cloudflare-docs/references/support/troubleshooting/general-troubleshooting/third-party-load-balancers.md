@@ -18,7 +18,7 @@ This guide explains how to troubleshoot common issues when using Cloudflare in f
 
 ## F5 BIG-IP cookie persistence
 
-When using Cloudflare as a reverse proxy (orange-clouded) in front of F5 BIG-IP load balancers, you may encounter session affinity issues due to how Cloudflare maintains persistent connections.
+When using Cloudflare as a reverse proxy ([orange-clouded](https://developers.cloudflare.com/dns/proxy-status/#benefits)) in front of F5 BIG-IP load balancers, you may encounter session affinity issues due to how Cloudflare maintains persistent connections.
 
 ### The problem
 

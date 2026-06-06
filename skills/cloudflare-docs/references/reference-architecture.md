@@ -16,7 +16,7 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 All the documents in this section are designed to help you understand how Cloudflare and its products are designed and architected. These documents describe how you can leverage our platform to create solutions based on your business needs.
 
-No matter if you know Cloudflare well, or if you are just starting out. These documents help you understand how our connectivity cloud is architectured and how the services can be integrated with your own infrastructure. Read [How to use](https://developers.cloudflare.com/reference-architecture/how-to-use/) to understand how the documentation is structured, and either navigate by type from the menu or [find by solution](https://developers.cloudflare.com/reference-architecture/by-solution/) area.
+No matter if you know Cloudflare well, or if you are just starting out. These documents help you understand how our connectivity cloud is architected and how the services can be integrated with your own infrastructure. Read [How to use](https://developers.cloudflare.com/reference-architecture/how-to-use/) to understand how the documentation is structured, and either navigate by type from the menu or [find by solution](https://developers.cloudflare.com/reference-architecture/by-solution/) area.
 
 * [ How to use ](https://developers.cloudflare.com/reference-architecture/how-to-use/)
 * [ Find by solution ](https://developers.cloudflare.com/reference-architecture/by-solution/)

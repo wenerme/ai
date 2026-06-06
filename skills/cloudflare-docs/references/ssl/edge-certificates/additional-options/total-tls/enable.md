@@ -14,8 +14,8 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 To enable [Total TLS](https://developers.cloudflare.com/ssl/edge-certificates/additional-options/total-tls/) \- which issues individual certificates for your proxied hostnames - follow these instructions:
 
-* [ Dashboard ](#tab-panel-7921)
-* [ API ](#tab-panel-7922)
+* [ Dashboard ](#tab-panel-10035)
+* [ API ](#tab-panel-10036)
 
 To enable Total TLS in the dashboard:
 

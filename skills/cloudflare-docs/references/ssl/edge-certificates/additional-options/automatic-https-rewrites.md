@@ -32,8 +32,8 @@ For security reasons, this feature will run on URLs pointing to `localhost` if t
 
 ## Enable Automatic HTTPS Rewrites
 
-* [ Dashboard ](#tab-panel-7905)
-* [ API ](#tab-panel-7906)
+* [ Dashboard ](#tab-panel-10019)
+* [ API ](#tab-panel-10020)
 
 To enable **Automatic HTTPS Rewrites** in the dashboard:
 

@@ -1500,6 +1500,12 @@ canonical keys that `config.toml` uses. Omitted keys remain unconstrained.
       description: "Allowed values for `sandbox_mode`.",
     },
     {
+      key: "windows.allowed_sandbox_implementations",
+      type: "array<string>",
+      description:
+        "Allowed native Windows sandbox implementations for `windows.sandbox` (`elevated` and `unelevated`). The list must not be empty. When both are allowed and no mode is selected, Codex prefers `elevated`.",
+    },
+    {
       key: "remote_sandbox_config",
       type: "array<table>",
       description:

@@ -19,10 +19,9 @@ see the [Veo prompt guide](https://ai.google.dev/gemini-api/docs/video#prompt-gu
 
 ## Text to video generation
 
-Choose an example to see how to generate a video with dialogue, cinematic
-realism, or creative animation:
+The following examples show how you can generate a video with [dialogue](https://ai.google.dev/gemini-api/docs/video#dialoque), [cinematic realism](https://ai.google.dev/gemini-api/docs/video#realism), or [creative animation](https://ai.google.dev/gemini-api/docs/video#style):
 
-<button value="dialogue" default="">Dialogue \& Sound Effects</button> <button value="realism">Cinematic Realism</button> <button value="style">Creative Animation</button>
+### Dialogue \& Sound Effects
 
 ### Python
 
@@ -63,7 +62,7 @@ realism, or creative animation:
 
     let operation = await ai.models.generateVideos({
         model: "veo-3.1-generate-preview",
-        prompt: prompt,
+        prompt=prompt,
     });
 
     // Poll the operation status until the video is ready.
@@ -206,7 +205,369 @@ realism, or creative animation:
 
 [Video](https://www.youtube.com/watch?v=rYj2zM5s95s)
 
-### Control the aspect ratio
+### Cinematic Realism
+
+### Python
+
+    import time
+    from google import genai
+    from google.genai import types
+
+    client = genai.Client()
+
+    prompt = """Drone shot following a classic red convertible driven by a man along a winding coastal road at sunset, waves crashing against the rocks below.
+    The convertible accelerates fast and the engine roars loudly."""
+
+    operation = client.models.generate_videos(
+        model="veo-3.1-generate-preview",
+        prompt=prompt,
+    )
+
+    # Poll the operation status until the video is ready.
+    while not operation.done:
+        print("Waiting for video generation to complete...")
+        time.sleep(10)
+        operation = client.operations.get(operation)
+
+    # Download the generated video.
+    generated_video = operation.response.generated_videos[0]
+    client.files.download(file=generated_video.video)
+    generated_video.video.save("realism_example.mp4")
+    print("Generated video saved to realism_example.mp4")
+
+### JavaScript
+
+    import { GoogleGenAI } from "@google/genai";
+
+    const ai = new GoogleGenAI({});
+
+    const prompt = `Drone shot following a classic red convertible driven by a man along a winding coastal road at sunset, waves crashing against the rocks below.
+    The convertible accelerates fast and the engine roars loudly.`;
+
+    let operation = await ai.models.generateVideos({
+        model: "veo-3.1-generate-preview",
+        prompt: prompt,
+    });
+
+    // Poll the operation status until the video is ready.
+    while (!operation.done) {
+        console.log("Waiting for video generation to complete...")
+        await new Promise((resolve) => setTimeout(resolve, 10000));
+        operation = await ai.operations.getVideosOperation({
+            operation: operation,
+        });
+    }
+
+    // Download the generated video.
+    ai.files.download({
+        file: operation.response.generatedVideos[0].video,
+        downloadPath: "realism_example.mp4",
+    });
+    console.log(`Generated video saved to realism_example.mp4`);
+
+### Go
+
+    package main
+
+    import (
+        "context"
+        "log"
+        "os"
+        "time"
+
+        "google.golang.org/genai"
+    )
+
+    func main() {
+        ctx := context.Background()
+        client, err := genai.NewClient(ctx, nil)
+        if err != nil {
+            log.Fatal(err)
+        }
+
+        prompt := `Drone shot following a classic red convertible driven by a man along a winding coastal road at sunset, waves crashing against the rocks below.
+      The convertible accelerates fast and the engine roars loudly.`
+
+        operation, _ := client.Models.GenerateVideos(
+            ctx,
+            "veo-3.1-generate-preview",
+            prompt,
+            nil,
+            nil,
+        )
+
+        // Poll the operation status until the video is ready.
+        for !operation.Done {
+        log.Println("Waiting for video generation to complete...")
+            time.Sleep(10 * time.Second)
+            operation, _ = client.Operations.GetVideosOperation(ctx, operation, nil)
+        }
+
+        // Download the generated video.
+        video := operation.Response.GeneratedVideos[0]
+        client.Files.Download(ctx, video.Video, nil)
+        fname := "realism_example.mp4"
+        _ = os.WriteFile(fname, video.Video.VideoBytes, 0644)
+        log.Printf("Generated video saved to %s\n", fname)
+    }
+
+### Java
+
+    import com.google.genai.Client;
+    import com.google.genai.types.GenerateVideosOperation;
+    import com.google.genai.types.Video;
+    import java.nio.file.Files;
+    import java.nio.file.Path;
+    import java.nio.file.Paths;
+
+    class GenerateVideoFromText {
+      public static void main(String[] args) throws Exception {
+        Client client = new Client();
+
+        String prompt = "Drone shot following a classic red convertible driven by a man along a winding coastal road at sunset, waves crashing against the rocks below.\n" +
+    "The convertible accelerates fast and the engine roars loudly.";
+
+        GenerateVideosOperation operation =
+            client.models.generateVideos("veo-3.1-generate-preview", prompt, null, null);
+
+        // Poll the operation status until the video is ready.
+        while (!operation.done().isPresent() || !operation.done().get()) {
+          System.out.println("Waiting for video generation to complete...");
+          Thread.sleep(10000);
+          operation = client.operations.getVideosOperation(operation, null);
+        }
+
+        // Download the generated video.
+        Video video = operation.response().get().generatedVideos().get().get(0).video().get();
+        Path path = Paths.get("realism_example.mp4");
+        client.files.download(video, path.toString(), null);
+        if (video.videoBytes().isPresent()) {
+          Files.write(path, video.videoBytes().get());
+          System.out.println("Generated video saved to realism_example.mp4");
+        }
+      }
+    }
+
+### REST
+
+    # Note: This script uses jq to parse the JSON response.
+    # GEMINI API Base URL
+    BASE_URL="https://generativelanguage.googleapis.com/v1beta"
+
+    # Send request to generate video and capture the operation name into a variable.
+    operation_name=$(curl -s "${BASE_URL}/models/veo-3.1-generate-preview:predictLongRunning" \
+      -H "x-goog-api-key: $GEMINI_API_KEY" \
+      -H "Content-Type: application/json" \
+      -X "POST" \
+      -d '{
+        "instances": [{
+            "prompt": "Drone shot following a classic red convertible driven by a man along a winding coastal road at sunset, waves crashing against the rocks below. The convertible accelerates fast and the engine roars loudly."
+          }
+        ]
+      }' | jq -r .name)
+
+    # Poll the operation status until the video is ready
+    while true; do
+      # Get the full JSON status and store it in a variable.
+      status_response=$(curl -s -H "x-goog-api-key: $GEMINI_API_KEY" "${BASE_URL}/${operation_name}")
+
+      # Check the "done" field from the JSON stored in the variable.
+      is_done=$(echo "${status_response}" | jq .done)
+
+      if [ "${is_done}" = "true" ]; then
+        # Extract the download URI from the final response.
+        video_uri=$(echo "${status_response}" | jq -r '.response.generateVideoResponse.generatedSamples[0].video.uri')
+        echo "Downloading video from: ${video_uri}"
+
+        # Download the video using the URI and API key and follow redirects.
+        curl -L -o realism_example.mp4 -H "x-goog-api-key: $GEMINI_API_KEY" "${video_uri}"
+        break
+      fi
+      # Wait for 5 seconds before checking again.
+      sleep 10
+    done
+
+[Video](https://www.youtube.com/watch?v=_U-hiHGscak)
+
+### Creative Animation
+
+### Python
+
+    import time
+    from google import genai
+
+    client = genai.Client()
+    prompt = "A whimsical stop-motion animation of a tiny robot tending to a garden of glowing mushrooms on a miniature planet."
+
+    operation = client.models.generate_videos(
+        model="veo-3.1-generate-preview",
+        prompt=prompt,
+    )
+
+    # Poll the operation status until the video is ready.
+    while not operation.done:
+        print("Waiting for video generation to complete...")
+        time.sleep(10)
+        operation = client.operations.get(operation)
+
+    # Download the generated video.
+    generated_video = operation.response.generated_videos[0]
+    client.files.download(file=generated_video.video)
+    generated_video.video.save("style_example.mp4")
+    print("Generated video saved to style_example.mp4")
+
+### JavaScript
+
+    import { GoogleGenAI } from "@google/genai";
+
+    const ai = new GoogleGenAI({});
+
+    const prompt = "A whimsical stop-motion animation of a tiny robot tending to a garden of glowing mushrooms on a miniature planet.";
+
+    let operation = await ai.models.generateVideos({
+        model: "veo-3.1-generate-preview",
+        prompt: prompt,
+    });
+
+    // Poll the operation status until the video is ready.
+    while (!operation.done) {
+        console.log("Waiting for video generation to complete...")
+        await new Promise((resolve) => setTimeout(resolve, 10000));
+        operation = await ai.operations.getVideosOperation({
+            operation: operation,
+        });
+    }
+
+    // Download the generated video.
+    ai.files.download({
+        file: operation.response.generatedVideos[0].video,
+        downloadPath: "style_example.mp4",
+    });
+    console.log(`Generated video saved to style_example.mp4`);
+
+### Go
+
+    package main
+
+    import (
+        "context"
+        "log"
+        "os"
+        "time"
+
+        "google.golang.org/genai"
+    )
+
+    func main() {
+        ctx := context.Background()
+        client, err := genai.NewClient(ctx, nil)
+        if err != nil {
+            log.Fatal(err)
+        }
+
+        prompt := `A whimsical stop-motion animation of a tiny robot tending to a garden of glowing mushrooms on a miniature planet.`
+
+        operation, _ := client.Models.GenerateVideos(
+            ctx,
+            "vveo-3.1-generate-preview",
+            prompt,
+            nil,
+            nil,
+        )
+
+        // Poll the operation status until the video is ready.
+        for !operation.Done {
+        log.Println("Waiting for video generation to complete...")
+            time.Sleep(10 * time.Second)
+            operation, _ = client.Operations.GetVideosOperation(ctx, operation, nil)
+        }
+
+        // Download the generated video.
+        video := operation.Response.GeneratedVideos[0]
+        client.Files.Download(ctx, video.Video, nil)
+        fname := "style_example.mp4"
+        _ = os.WriteFile(fname, video.Video.VideoBytes, 0644)
+        log.Printf("Generated video saved to %s\n", fname)
+    }
+
+### Java
+
+    import com.google.genai.Client;
+    import com.google.genai.types.GenerateVideosOperation;
+    import com.google.genai.types.Video;
+    import java.nio.file.Files;
+    import java.nio.file.Path;
+    import java.nio.file.Paths;
+
+    class GenerateVideoFromText {
+      public static void main(String[] args) throws Exception {
+        Client client = new Client();
+
+        String prompt = "A whimsical stop-motion animation of a tiny robot tending to a garden of glowing mushrooms on a miniature planet.";
+
+        GenerateVideosOperation operation =
+            client.models.generateVideos("veo-3.1-generate-preview", prompt, null, null);
+
+        // Poll the operation status until the video is ready.
+        while (!operation.done().isPresent() || !operation.done().get()) {
+          System.out.println("Waiting for video generation to complete...");
+          Thread.sleep(10000);
+          operation = client.operations.getVideosOperation(operation, null);
+        }
+
+        // Download the generated video.
+        Video video = operation.response().get().generatedVideos().get().get(0).video().get();
+        Path path = Paths.get("style_example.mp4");
+        client.files.download(video, path.toString(), null);
+        if (video.videoBytes().isPresent()) {
+          Files.write(path, video.videoBytes().get());
+          System.out.println("Generated video saved to style_example.mp4");
+        }
+      }
+    }
+
+### REST
+
+    # Note: This script uses jq to parse the JSON response.
+    # GEMINI API Base URL
+    BASE_URL="https://generativelanguage.googleapis.com/v1beta"
+
+    # Send request to generate video and capture the operation name into a variable.
+    operation_name=$(curl -s "${BASE_URL}/models/veo-3.1-generate-preview:predictLongRunning" \
+      -H "x-goog-api-key: $GEMINI_API_KEY" \
+      -H "Content-Type: application/json" \
+      -X "POST" \
+      -d '{
+        "instances": [{
+            "prompt": "A whimsical stop-motion animation of a tiny robot tending to a garden of glowing mushrooms on a miniature planet."
+          }
+        ]
+      }' | jq -r .name)
+
+    # Poll the operation status until the video is ready
+    while true; do
+      # Get the full JSON status and store it in a variable.
+      status_response=$(curl -s -H "x-goog-api-key: $GEMINI_API_KEY" "${BASE_URL}/${operation_name}")
+
+      # Check the "done" field from the JSON stored in the variable.
+      is_done=$(echo "${status_response}" | jq .done)
+
+      if [ "${is_done}" = "true" ]; then
+        # Extract the download URI from the final response.
+        video_uri=$(echo "${status_response}" | jq -r '.response.generateVideoResponse.generatedSamples[0].video.uri')
+        echo "Downloading video from: ${video_uri}"
+
+        # Download the video using the URI and API key and follow redirects.
+        curl -L -o style_example.mp4 -H "x-goog-api-key: $GEMINI_API_KEY" "${video_uri}"
+        break
+      fi
+      # Wait for 5 seconds before checking again.
+      sleep 10
+    done
+
+[Video](https://www.youtube.com/watch?v=cbIDB6nXMMg)
+
+## Control the aspect ratio
 
 Veo 3.1 lets you create landscape (`16:9`, the default setting) or portrait
 (`9:16`) videos. You can tell the model which one you want using the
@@ -367,7 +728,7 @@ Veo 3.1 lets you create landscape (`16:9`, the default setting) or portrait
 
 [Video](https://www.youtube.com/watch?v=4-kXyNJt_yg)
 
-### Control the resolution
+## Control the resolution
 
 Veo 3.1 can also directly generate 720p, 1080p or 4k videos (4k not available
 for Veo 3.1 Lite).

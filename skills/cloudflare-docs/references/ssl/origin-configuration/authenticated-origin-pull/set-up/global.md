@@ -65,8 +65,8 @@ At this point, you may also want to enable logging on your origin so that you ca
 
 ## 3\. Enable global Authenticated Origin Pulls
 
-* [ Dashboard ](#tab-panel-8449)
-* [ API ](#tab-panel-8450)
+* [ Dashboard ](#tab-panel-10079)
+* [ API ](#tab-panel-10080)
 
 1. Go to the **Origin Server** page.  
 [ Go to **Origin Server** ](https://dash.cloudflare.com/?to=/:account/:zone/ssl-tls/origin)

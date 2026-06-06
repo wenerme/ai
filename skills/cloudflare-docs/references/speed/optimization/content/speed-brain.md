@@ -43,7 +43,7 @@ By prefetching pages that the browser considers likely to be navigated to, Speed
 
 ## How Speed Brain works
 
-When Cloudflare's Speed Brain feature is enabled, an HTTP header called `Speculation-Rules` is added to web page responses. The value for this header is an URL that hosts an opinionated Speculation-Rules configuration. This configuration instructs the browser to consider prefetching any future navigations with a `conservative` [eagerness ↗](https://developer.chrome.com/docs/web-platform/prerender-pages#eagerness).
+When Cloudflare's Speed Brain feature is enabled, an HTTP header called `Speculation-Rules` is added to web page responses. The value for this header is a URL that hosts an opinionated Speculation-Rules configuration. This configuration instructs the browser to consider prefetching any future navigations with a `conservative` [eagerness ↗](https://developer.chrome.com/docs/web-platform/prerender-pages#eagerness).
 
 The configuration looks like this:
 
@@ -92,9 +92,9 @@ While you can use Speed Brain without RUM enabled, you will not have visibility 
 
 Speed Brain is available in Cloudflare's **Speed** tab of the dashboard and also in the API.
 
-* [ Dashboard ](#tab-panel-7884)
-* [ API ](#tab-panel-7885)
-* [ Terraform ](#tab-panel-7886)
+* [ Dashboard ](#tab-panel-9986)
+* [ API ](#tab-panel-9987)
+* [ Terraform ](#tab-panel-9988)
 
 To enable or disable **Speed Brain** in the dashboard:
 

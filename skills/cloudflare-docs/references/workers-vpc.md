@@ -20,14 +20,44 @@ Workers VPC allows you to connect your Workers to your private APIs, services, a
 
 With Workers VPC, you can configure a [Cloudflare Tunnel](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/) to establish secure, private connections from your private networks to Cloudflare. Then, you can configure a [VPC Service](https://developers.cloudflare.com/workers-vpc/configuration/vpc-services/) for each service in the external private network you need to connect to, and use [VPC Service bindings](https://developers.cloudflare.com/workers-vpc/api/) to connect from Workers. VPC Services support both HTTP and TCP service types, allowing you to connect to web APIs and databases (through [Hyperdrive](https://developers.cloudflare.com/hyperdrive/)).
 
-You can also use [VPC Network bindings](https://developers.cloudflare.com/workers-vpc/configuration/vpc-networks/) to give Workers broader access to your private infrastructure — services behind [Cloudflare Mesh](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-mesh/), subnet and hostname routes announced through Cloudflare Tunnel or Mesh, and destinations connected through [Cloudflare WAN](https://developers.cloudflare.com/cloudflare-wan/) on-ramps (GRE, IPsec, and CNI).
+You can also use [VPC Network bindings](https://developers.cloudflare.com/workers-vpc/configuration/vpc-networks/) to give Workers broader access to your private infrastructure — services behind [Cloudflare Mesh](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-mesh/), subnet and hostname routes announced through Cloudflare Tunnel or Mesh, and destinations connected through [Cloudflare WAN](https://developers.cloudflare.com/cloudflare-wan/) on-ramps (GRE, IPsec, and CNI). The same binding can also egress to public Internet destinations through [Cloudflare Gateway](https://developers.cloudflare.com/cloudflare-one/traffic-policies/), so your existing Zero Trust traffic policies and logs apply to Worker requests.
+
+[Worker](https://developers.cloudflare.com/workers/) 
+
+Bind via [vpc\_services](https://developers.cloudflare.com/workers-vpc/configuration/vpc-services/) or [vpc\_networks](https://developers.cloudflare.com/workers-vpc/configuration/vpc-networks/) 
+
+[Cloudflare Tunnel](https://developers.cloudflare.com/tunnel/) 
+
+Reach private applications or networks through `cloudflared` 
+
+[Cloudflare Mesh](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-mesh/) 
+
+Reach the full account through `cf1:network` 
+
+[Cloudflare WAN](https://developers.cloudflare.com/cloudflare-wan/) 
+
+Reach destinations through GRE, IPsec, or CNI on-ramps
+
+[Cloudflare Gateway](https://developers.cloudflare.com/cloudflare-one/traffic-policies/) 
+
+Mesh and WAN traffic flows through Gateway, with policies enforced and traffic [logged](https://developers.cloudflare.com/cloudflare-one/insights/logs/dashboard-logs/gateway-logs/).
+
+[ DNS ](https://developers.cloudflare.com/cloudflare-one/traffic-policies/dns-policies/)[ HTTP ](https://developers.cloudflare.com/cloudflare-one/traffic-policies/http-policies/)[ Network ](https://developers.cloudflare.com/cloudflare-one/traffic-policies/network-policies/) 
+
+Private services 
+
+APIs, databases, hosts in your network — reachable via any on-ramp
+
+Public Internet 
+
+Reachable via Mesh or WAN
 
 Note
 
 Workers VPC is currently in beta. Features and APIs may change before general availability. While in beta, Workers VPC is available for free to all Workers plans.
 
-* [ index.ts ](#tab-panel-10154)
-* [ wrangler.jsonc ](#tab-panel-10155)
+* [ index.ts ](#tab-panel-10762)
+* [ wrangler.jsonc ](#tab-panel-10763)
 
 TypeScript
 
@@ -109,6 +139,10 @@ Route requests to internal microservices in your private network based on URL pa
 ### Internal tooling, agents, dashboards
 
 Build employee-facing applications and MCP servers that aggregate data from multiple private services. Create unified dashboards, admin panels, and internal tools without exposing backend systems.
+
+### Apply Zero Trust controls to Worker egress
+
+Route public Internet traffic from your Workers through [Cloudflare Gateway](https://developers.cloudflare.com/cloudflare-one/traffic-policies/) so existing DNS, HTTP, Network, and egress policies — and the corresponding logs — apply to programmatic compute the same way they apply to your workforce. Stop a Worker from reaching unwanted destinations without writing custom proxy logic.
 
 ## Related products
 

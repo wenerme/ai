@@ -97,12 +97,12 @@ These steps are also at the [Cloudflare package repository ↗](https://pkg.clou
 
 #### Debian/Ubuntu packages
 
-* [ Debian 13 (Trixie) ](#tab-panel-8427)
-* [ Debian 12 (Bookworm) ](#tab-panel-8428)
-* [ Debian 11 (Bullseye) ](#tab-panel-8429)
-* [ Ubuntu 24.04 (Noble) ](#tab-panel-8430)
-* [ Ubuntu 22.04 (Jammy) ](#tab-panel-8431)
-* [ Ubuntu 20.04 (Focal) ](#tab-panel-8432)
+* [ Debian 13 (Trixie) ](#tab-panel-10057)
+* [ Debian 12 (Bookworm) ](#tab-panel-10058)
+* [ Debian 11 (Bullseye) ](#tab-panel-10059)
+* [ Ubuntu 24.04 (Noble) ](#tab-panel-10060)
+* [ Ubuntu 22.04 (Jammy) ](#tab-panel-10061)
+* [ Ubuntu 20.04 (Focal) ](#tab-panel-10062)
 
 Terminal window
 
@@ -210,10 +210,10 @@ sudo apt-get update && sudo apt-get install gokeyless
 
 Gokeyless uses CGO for PKCS#11/HSM support, which creates glibc dependencies. Use the repository that matches your distribution.
 
-* [ RHEL 9 / CentOS Stream 9 ](#tab-panel-8433)
-* [ Amazon Linux 2023 ](#tab-panel-8434)
-* [ RHEL 8 / CentOS 8 ](#tab-panel-8435)
-* [ Amazon Linux 2 ](#tab-panel-8436)
+* [ RHEL 9 / CentOS Stream 9 ](#tab-panel-10063)
+* [ Amazon Linux 2023 ](#tab-panel-10064)
+* [ RHEL 8 / CentOS 8 ](#tab-panel-10065)
+* [ Amazon Linux 2 ](#tab-panel-10066)
 
 Terminal window
 

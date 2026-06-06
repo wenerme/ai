@@ -28,8 +28,8 @@ Because you can [configure MFA at the application and policy level](https://deve
 
 Before you can [enforce independent MFA on applications and policies](https://developers.cloudflare.com/cloudflare-one/access-controls/policies/mfa-requirements/#independent-mfa), you must turn on independent MFA at the organization level.
 
-* [ Dashboard ](#tab-panel-5007)
-* [ API ](#tab-panel-5008)
+* [ Dashboard ](#tab-panel-6563)
+* [ API ](#tab-panel-6564)
 
 1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** \> **Access controls** \> **Access settings**.
 2. Under **Allow multi-factor authentication (MFA)**, select the [MFA methods](#supported-mfa-methods) you want to allow in your organization.
@@ -91,19 +91,14 @@ AAGUID restrictions apply at enrollment time only. Access verifies the AAGUID wh
 
 Warning
 
-Some authenticators do not send an AAGUID during WebAuthn registration, including:
-
-* Apple devices using iCloud Keychain passkeys.
-* YubiKey 4 and earlier models using U2F (CTAP1).
-
-Users cannot enroll these authenticators when AAGUID restrictions are turned on. Before turning on AAGUID restrictions, confirm that your required authenticators are in the [FIDO Alliance Metadata Service ↗](https://fidoalliance.org/metadata/).
+Some authenticators do not send an AAGUID during WebAuthn registration, such as YubiKey 4 and earlier models using U2F (CTAP1). Users cannot enroll these authenticators when AAGUID restrictions are turned on. Before turning on AAGUID restrictions, confirm that your required authenticators are in the [FIDO Alliance Metadata Service ↗](https://fidoalliance.org/metadata/).
 
 ### 1\. Create an AAGUID list
 
 AAGUIDs are managed using [Lists](https://developers.cloudflare.com/cloudflare-one/reusable-components/lists/). Create a list of type **AAGUID**, then reference the list in your organization's MFA configuration.
 
-* [ Dashboard ](#tab-panel-5005)
-* [ API ](#tab-panel-5006)
+* [ Dashboard ](#tab-panel-6561)
+* [ API ](#tab-panel-6562)
 
 1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** \> **Resources** \> **Lists**.
 2. Select **Create new list**.
@@ -161,8 +156,8 @@ You can look up AAGUIDs for common authenticators in the [FIDO Alliance Metadata
 
 ### 2\. Assign an AAGUID list to your organization
 
-* [ Dashboard ](#tab-panel-5011)
-* [ API ](#tab-panel-5012)
+* [ Dashboard ](#tab-panel-6567)
+* [ API ](#tab-panel-6568)
 
 1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** \> **Access controls** \> **Access settings**.
 2. Under **Allow multi-factor authentication (MFA)**, go to **Limit MFA to specific authentication methods**.
@@ -210,7 +205,7 @@ To remove the restriction, set `required_aaguids` to `null`.
 
 Note
 
-AAGUID requirements and [AMR matching](#use-identity-provider-mfa) cannot both be turned on at the organization level. If AAGUID requirements are turned on, Access skips AMR matching even when the identity provider returns a matching AMR value.
+AAGUID restrictions and [AMR matching](#use-identity-provider-mfa) can both be turned on simultaneously, but AMR matching is more permissive than independent MFA when AAGUID restrictions are configured. Most identity providers do not include AAGUID information in their AMR claims, so Access cannot verify that the authenticator used for IdP MFA is in the list of approved AAGUIDs. If the IdP returns a matching AMR value, Access will skip the independent MFA prompt regardless of which authenticator the user used at the IdP.
 
 ## Use identity provider MFA
 
@@ -233,8 +228,8 @@ Access ignores AMR values that do not map to a supported authenticator type (for
 
 ### Turn on AMR matching
 
-* [ Dashboard ](#tab-panel-5013)
-* [ API ](#tab-panel-5014)
+* [ Dashboard ](#tab-panel-6569)
+* [ API ](#tab-panel-6570)
 
 1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** \> **Access controls** \> **Access settings**.
 2. Under **Allow multi-factor authentication (MFA)**, turn on **Use identity provider MFA**.
@@ -282,7 +277,6 @@ curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/access/organizat
 
 Access does not apply AMR matching in the following cases:
 
-* [AAGUID requirements](#restrict-authenticators-by-aaguid) are turned on at the organization level. AAGUID information is not present in the IdP's AMR claim, so Access cannot verify that the IdP's MFA came from an approved device.
 * The IdP does not return an `amr` claim.
 * The IdP returns only AMR values that do not map to an [allowed authenticator type](#supported-mfa-methods) for the application or policy.
 * The user's AMR matching session has expired because they last performed MFA via their IdP longer ago than the configured AMR matching duration.
@@ -301,8 +295,8 @@ Turning off independent MFA removes MFA protection on all Access applications. B
 
 To turn off independent MFA for the organization:
 
-* [ Dashboard ](#tab-panel-5009)
-* [ API ](#tab-panel-5010)
+* [ Dashboard ](#tab-panel-6565)
+* [ API ](#tab-panel-6566)
 
 1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** \> **Access controls** \> **Access settings**.
 2. Under **Allow multi-factor authentication (MFA)**, turn off **Apply global MFA settings by default**.
@@ -412,8 +406,8 @@ To view a user's enrolled authenticators:
 
 If a user is locked out or you need to revoke an authenticator for security reasons, you can delete it from the dashboard or API.
 
-* [ Dashboard ](#tab-panel-5003)
-* [ API ](#tab-panel-5004)
+* [ Dashboard ](#tab-panel-6559)
+* [ API ](#tab-panel-6560)
 
 1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** \> **Team & Resources** \> **Users**.
 2. Select the user whose authenticator you want to delete.

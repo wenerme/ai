@@ -180,6 +180,12 @@ ANAME or ALIAS are DNS records used by specific DNS providers. If your previous 
 
 1. A process in which Cloudflare returns an IP address instead of the target hostname that a CNAME record points to. [↩](#user-content-fnref-1)
 
+### Why does my TXT record show a double quote in the middle of the value?
+
+This is expected behavior. Per [RFC 4408 ↗](https://www.rfc-editor.org/rfc/rfc4408#section-3.1.3) and the DNS protocol specification ([RFC 1035 ↗](https://www.rfc-editor.org/rfc/rfc1035#section-3.3.14)), a single DNS TXT record is composed of one or more character strings, each with a maximum length of 255 characters. When the value you enter exceeds 255 characters, it must be split into multiple strings. Each string is enclosed in double quotes (`"`), so the resulting record may appear to have a quote in the middle — for example, `"first part" "second part"`.
+
+This splitting is required by the DNS protocol and is performed by all DNS providers, even if some do not display it in their UI or API. For all major TXT record use cases (such as SPF, DKIM, and DMARC), the receiving application will concatenate the strings back together, so the behavior of the record is not affected.
+
 ### Why are Cloudflare's A or AAAA records / IP addresses for my domain's DNS responses appearing?
 
 For DNS records proxied to Cloudflare, Cloudflare's IP addresses are returned in DNS queries instead of your original server IP address. This allows Cloudflare to optimize, cache, and protect all requests for your website.

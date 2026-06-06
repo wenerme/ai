@@ -20,7 +20,7 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 ## Log Explorer
 
-[Log Explorer](https://developers.cloudflare.com/log-explorer/) provides access to Cloudflare logs with all the context available within the Cloudflare platform. You can monitor security and performance issues with custom dashboards or investigate and troubleshoot issues with log search. Log explorer [allows to build queries](https://developers.cloudflare.com/log-explorer/log-search/) filtering for specific [Ray ID](https://developers.cloudflare.com/fundamentals/reference/cloudflare-ray-id/), which can be useful to investigate HTTP Errors.
+[Log Explorer](https://developers.cloudflare.com/log-explorer/) provides access to Cloudflare logs with all the context available within the Cloudflare platform. You can monitor security and performance issues with custom dashboards or investigate and troubleshoot issues with log search. Log explorer [allows you to build queries](https://developers.cloudflare.com/log-explorer/log-search/) filtering for a specific [Ray ID](https://developers.cloudflare.com/fundamentals/reference/cloudflare-ray-id/), which can be useful to investigate HTTP Errors.
 
 ## 400 Bad Request
 

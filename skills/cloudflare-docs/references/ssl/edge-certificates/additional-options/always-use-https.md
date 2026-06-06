@@ -34,8 +34,8 @@ Note
 
 If only some parts of your application can support HTTPS traffic, do not enable **Always Use HTTPS** and use a [single redirect](https://developers.cloudflare.com/rules/url-forwarding/single-redirects/) to selectively perform the redirect to HTTPS. Refer to [Redirect admin area requests to HTTPS](https://developers.cloudflare.com/rules/url-forwarding/examples/redirect-admin-https/) for an example.
 
-* [ Dashboard ](#tab-panel-8387)
-* [ API ](#tab-panel-8388)
+* [ Dashboard ](#tab-panel-10017)
+* [ API ](#tab-panel-10018)
 
 To enable **Always Use HTTPS** in the dashboard:
 

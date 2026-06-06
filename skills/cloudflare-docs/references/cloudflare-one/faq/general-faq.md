@@ -37,6 +37,23 @@ These browsers are supported:
 * Chrome (current release, last release)
 * Safari (current release, last release)
 
+## What languages does the Cloudflare dashboard support?
+
+The Cloudflare dashboard is available in the following languages:
+
+* Deutsch (German)
+* English
+* Español (Spanish)
+* Français (French)
+* Italiano (Italian)
+* 日本語 (Japanese)
+* 한국어 (Korean)
+* Português (Portuguese)
+* 简体中文 (Mandarin Chinese, Simplified)
+* 繁體中文 (Mandarin Chinese, Traditional)
+
+To change your dashboard language, refer to [Profile settings](https://developers.cloudflare.com/fundamentals/user-profiles/customize-account/#language).
+
 ## What data localization services are supported?
 
 Cloudflare Zero Trust can be used with the Data Localization Suite to ensure that traffic is only inspected in the regions you choose. For more information refer to [Use Zero Trust with Data Localization Suite](https://developers.cloudflare.com/data-localization/how-to/zero-trust/).

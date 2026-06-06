@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 # Replacing existing TURN servers
 
-If you are a existing TURN provider but would like to switch to providing Cloudflare Realtime TURN for your customers, there is a few considerations.
+If you are an existing TURN provider but would like to switch to providing Cloudflare Realtime TURN for your customers, there are a few considerations.
 
 ## Benefits
 

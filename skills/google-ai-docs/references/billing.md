@@ -25,10 +25,10 @@ details and refer to the [Google Cloud Starter Tier documentation](https://docs.
 
 To access higher rate limits, use advanced models, and ensure your prompts and
 responses are **not** used to improve Google products^\*^, you can
-[link a billing account](https://ai.google.dev/gemini-api/docs/billing#setup-billing) and [prepay](https://ai.google.dev/gemini-api/docs/billing#prepay) to move to the
+[link a billing account](https://ai.google.dev/gemini-api/docs/billing#setup-billing) and [Prepay](https://ai.google.dev/gemini-api/docs/billing#prepay) to move to the
 Paid Tiers.
 Then, you'll move through higher tiers based on cumulative spend and account
-age. At Tier 3, you may have the option to switch to [postpay](https://ai.google.dev/gemini-api/docs/billing#postpay)
+age. At Tier 3, you may have the option to switch to [Postpay](https://ai.google.dev/gemini-api/docs/billing#postpay)
 billing.
 
 Tiers, rate limits, and billing account caps are all determined at the [billing
@@ -83,7 +83,7 @@ billing status actions you may need to take for a project display in the
 *Billing Tier* or *Status* columns:
 
 - "***Set up billing***" if the project doesn't have a billing account attached.
-- "***Set up prepay*** " if the project does have a billing account attached, but is required to use a [Prepay](https://ai.google.dev/gemini-api/docs/billing#prepay) billing plan that needs to be set up.
+- "***Set up Prepay*** " if the project does have a billing account attached, but is required to use a [Prepay](https://ai.google.dev/gemini-api/docs/billing#prepay) billing plan that needs to be set up.
 - "***No available credits***" if the billing account is required to purchase credits but the Prepay payments account isn't set up or the available credit balance is depleted.
 
 Click any of the messages to proceed with the necessary actions.
@@ -151,6 +151,22 @@ credits* card on the [AI Studio Billing](https://aistudio.google.com/billing)
 page. Click **Setup auto-reload** or
 **Manage auto-reload** to set your payment method, reload amount, and the
 minimum balance that triggers a reload payment.
+
+#### Monthly auto-charge limit
+
+The monthly auto-charge limit is available to Prepay users
+and helps prevent unexpected costs from frequent automatic credit reloads.
+Use this feature to set a maximum limit for automatic credit reloads within
+a single billing cycle. Once the total amount of automatic reloads in a billing
+cycle reaches this limit, the system disables auto-reload until the start of the
+next month. One-time payments you initiate manually don't count against this limit.
+
+To set the monthly auto-charge limit when auto-reload is enabled:
+
+1. Go to the [AI Studio Billing](https://aistudio.google.com/billing) page.
+2. Click **Manage auto-reload**.
+3. Expand the **Monthly Limit** section and enter the maximum monthly limit for auto-reloads.
+4. Click **Save**.
 
 ### Postpay
 
@@ -442,7 +458,7 @@ Prepaid billing plan. During the AI Studio [Set up Billing](https://ai.google.de
 process, the UI will guide you through the billing set up flow and will indicate
 if you are required to prepay.
 
-### How do I purchase prepay credits, and is there a minimum amount or maximum?
+### How do I purchase Prepay credits, and is there a minimum amount or maximum?
 
 You can [purchase credits](https://ai.google.dev/gemini-api/docs/billing#buy-credits) on the AI Studio Billing page. During
 the purchase process, the UI will provide the minimum pre-purchase amount that
@@ -454,6 +470,13 @@ be in your account at one time.
 Yes, we recommend that you configure [auto-reload](https://ai.google.dev/gemini-api/docs/billing#auto-reload) in the AI
 Studio Billing settings. You specify a "trigger" credit balance (e.g., "when my
 balance falls below $30") and a "reload value" (e.g., "add $100").
+
+### Can I limit the amount of automatic reload charges?
+
+Yes, Prepay users can set a [Monthly Auto-Charge Limit](https://ai.google.dev/gemini-api/docs/billing#monthly-auto-charge-limit)
+within the **Auto-Reload** widget. When the total amount of automatic reloads in a billing
+cycle reaches this limit, the system disables auto-reload until the next month. Manual credit
+purchases do not count toward this limit.
 
 ### Can I get a refund for my unused credits?
 

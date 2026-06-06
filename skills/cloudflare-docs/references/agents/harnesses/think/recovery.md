@@ -22,12 +22,12 @@ When `chatRecovery` is `true`, WebSocket turns, sub-agent `chat()` turns, durabl
 
 ## Bounded recovery
 
-A stream-stall watchdog abort (`chatStreamStallTimeoutMs`, below) is treated as just another interruption: when `chatRecovery` is on, a stall routes into this same bounded path — the settled partial is preserved and a continuation is scheduled — so a transient hang recovers automatically. A persistently hanging provider exhausts the budget and terminalizes through the **same** exhaustion handling as a deploy or eviction interruption: `onExhausted` fires, the `chat:recovery:exhausted` event is emitted, and the configured `terminalMessage` is shown (not a raw stall error).
+A stream-stall watchdog abort (`chatStreamStallTimeoutMs`) is treated as just another interruption: when `chatRecovery` is on, a stall routes into this same bounded path — the settled partial is preserved and a continuation is scheduled — so a transient hang recovers automatically. A persistently hanging provider exhausts the budget and terminalizes through the **same** exhaustion handling as a deploy or eviction interruption: `onExhausted` fires, the `chat:recovery:exhausted` event is emitted, and the configured `terminalMessage` is shown (not a raw stall error).
 
 Configure bounded recovery by setting `chatRecovery` to an object:
 
-* [  JavaScript ](#tab-panel-5026)
-* [  TypeScript ](#tab-panel-5027)
+* [  JavaScript ](#tab-panel-5142)
+* [  TypeScript ](#tab-panel-5143)
 
 JavaScript
 
@@ -103,8 +103,8 @@ The same recovery events are available through `agents/observability` on the `ch
 
 Override `onChatRecovery` when you need provider-specific recovery, such as retrieving a stored OpenAI Responses result instead of issuing a new model call:
 
-* [  JavaScript ](#tab-panel-5030)
-* [  TypeScript ](#tab-panel-5031)
+* [  JavaScript ](#tab-panel-5146)
+* [  TypeScript ](#tab-panel-5147)
 
 JavaScript
 
@@ -114,7 +114,7 @@ export class MyAgent extends Think {
 
   chatRecovery = {
 
-    maxAttempts: 6,
+    maxAttempts: 10,
 
     terminalMessage: "The assistant was interrupted. Please try again.",
 
@@ -151,7 +151,7 @@ export class MyAgent extends Think<Env> {
 
   override chatRecovery = {
 
-    maxAttempts: 6,
+    maxAttempts: 10,
 
     terminalMessage: "The assistant was interrupted. Please try again.",
 
@@ -225,14 +225,119 @@ onChatRecovery(ctx: ChatRecoveryContext): ChatRecoveryOptions {
 
 Use `ctx.createdAt` to skip stale recoveries. For example, if the interrupted turn is older than a few minutes, return `{ continue: false }` so the partial response is preserved without starting an old continuation.
 
+### Recovery budgets and limits
+
+Instead of `chatRecovery = true`, assign an object to tune how long recovery is allowed to run and when it is given up on. A turn that keeps making forward progress is never terminated by the framework on its own — duration is not a bound. Recovery is only sealed by one of the limits in the following table.
+
+* [  JavaScript ](#tab-panel-5150)
+* [  TypeScript ](#tab-panel-5151)
+
+JavaScript
+
+```
+
+export class MyAgent extends Think {
+
+  chatRecovery = {
+
+    maxAttempts: 10,
+
+    noProgressTimeoutMs: 5 * 60 * 1000,
+
+    maxRecoveryWork: Infinity,
+
+    terminalMessage: "The assistant was interrupted and could not recover.",
+
+    // Consulted from the second recovery attempt onward. Return false to stop.
+
+    // Called as `config.shouldKeepRecovering(ctx)`, so it is NOT bound to the
+
+    // agent instance — track real token/cost spend in your own store keyed by
+
+    // `ctx.recoveryRootRequestId`.
+
+    async shouldKeepRecovering(ctx) {
+
+      return (await getSpendForTurn(ctx.recoveryRootRequestId)) < MAX_SPEND;
+
+    },
+
+    async onExhausted(ctx) {
+
+      console.warn("Recovery exhausted", ctx.incidentId, ctx.reason);
+
+    },
+
+  };
+
+}
+
+
+```
+
+TypeScript
+
+```
+
+export class MyAgent extends Think<Env> {
+
+  override chatRecovery = {
+
+    maxAttempts: 10,
+
+    noProgressTimeoutMs: 5 * 60 * 1000,
+
+    maxRecoveryWork: Infinity,
+
+    terminalMessage: "The assistant was interrupted and could not recover.",
+
+    // Consulted from the second recovery attempt onward. Return false to stop.
+
+    // Called as `config.shouldKeepRecovering(ctx)`, so it is NOT bound to the
+
+    // agent instance — track real token/cost spend in your own store keyed by
+
+    // `ctx.recoveryRootRequestId`.
+
+    async shouldKeepRecovering(ctx) {
+
+      return (await getSpendForTurn(ctx.recoveryRootRequestId)) < MAX_SPEND;
+
+    },
+
+    async onExhausted(ctx) {
+
+      console.warn("Recovery exhausted", ctx.incidentId, ctx.reason);
+
+    },
+
+  };
+
+}
+
+
+```
+
+| Field                | Default          | Description                                                                                                                                                                     |
+| -------------------- | ---------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| maxAttempts          | 10               | Attempt cap. Resets on forward progress, so it catches a tight no-progress alarm loop, not a healthy long turn.                                                                 |
+| stableTimeoutMs      | 10\_000          | How long an attempt waits for the isolate to reach stable state before rescheduling.                                                                                            |
+| noProgressTimeoutMs  | 300\_000 (5 min) | Primary stuck-turn bound: max time without forward progress before sealing. **Resets on every progress-bearing attempt.**                                                       |
+| maxRecoveryWork      | Infinity         | Runaway-loop guard: max produced content/tool units since the incident opened before a still-progressing turn is sealed. No cap by default.                                     |
+| shouldKeepRecovering | —                | Caller policy consulted from the second attempt onward. Return false to stop recovery. The hook point for a token/cost budget (ctx.work is a coarse segment count, not tokens). |
+| terminalMessage      | generic message  | Message shown to the user when recovery is given up on.                                                                                                                         |
+| onExhausted          | —                | Called once when recovery is given up on. Inspect ctx.reason.                                                                                                                   |
+
+`ctx.reason` on the exhausted hook is one of: `no_progress_timeout` (stuck), `max_attempts_exceeded` (no-progress alarm loop), `work_budget_exceeded` (runaway), `recovery_aborted` (your `shouldKeepRecovering` returned `false`), or `stable_timeout` (extreme churn). Refer to [Stream recovery](https://developers.cloudflare.com/agents/communication-channels/chat/chat-agents/#stream-recovery) for the full shared reference — Think and `@cloudflare/ai-chat` use the same recovery configuration.
+
 ## Repairing interrupted tool calls
 
 When a turn is interrupted mid-flight, the transcript can contain a tool call with no settled result. Before the next provider call, Think repairs each such call so the model does not silently re-run it and the provider does not reject the transcript with `AI_MissingToolResultsError`. The default flips the interrupted call to an errored tool result, so the record survives and conversion still has a tool result for it.
 
 Override `repairInterruptedToolPart` to customize the repaired shape. The common case is a client-resolved tool — for example an `ask_user` question that has no server `execute` and is normally answered by the user's next message. Converting it to a plain text part lets the model treat it as ordinary conversation rather than a tool error, and keeps the question verbatim through compaction:
 
-* [  JavaScript ](#tab-panel-5032)
-* [  TypeScript ](#tab-panel-5033)
+* [  JavaScript ](#tab-panel-5152)
+* [  TypeScript ](#tab-panel-5153)
 
 JavaScript
 
@@ -305,6 +410,130 @@ export class MyAgent extends Think<Env> {
 
 This runs during transcript repair — before the repaired transcript is persisted and sent to the model — so the conversion shapes the current turn, not just the next one. The `input` is already normalized to a valid object. A returned tool part must carry a settled result (`output-available`, `output-error`, or `output-denied`); returning a non-tool part such as text is also fine.
 
+## Context-window overflow recovery
+
+[Compaction](https://developers.cloudflare.com/agents/runtime/lifecycle/sessions/#compaction) is checked **between turns** — `compactAfter()` runs after each `appendMessage()`. But a single long, tool-heavy turn grows the prompt step by step inside one `streamText` loop and can exceed the model context window **mid-turn**, before the next pre-turn check. The provider then rejects the request (`"prompt is too long"`, `context_length_exceeded`), and the turn would otherwise die terminally.
+
+Think recovers from this with two opt-in, provider-agnostic layers, both configured through the `contextOverflow` property. Both are off by default, so existing behavior is unchanged. Both reuse your session's compaction function, so they require a `configureSession()` with `onCompaction()` configured. Both require [classifyChatError](https://developers.cloudflare.com/agents/harnesses/think/lifecycle-hooks/#classifychaterror) to tell Think which errors are overflows — Think ships no provider-specific matching in core.
+
+**1\. Reactive backstop — `contextOverflow.reactive`.** When a turn fails with an error you classify as `"context_overflow"`, Think discards the truncated partial, runs `session.compact()`, and re-runs the turn from the compacted history. The partial is not persisted: the turn restarts from scratch, so keeping the cut-off assistant message would orphan it beside the recovered answer. It is bounded by `contextOverflow.maxRetries` (default `1`); if compaction cannot shorten history or the budget is spent, the overflow surfaces terminally through `onChatError` with `classification: "context_overflow"` — it never loops or ends silently.
+
+* [  JavaScript ](#tab-panel-5144)
+* [  TypeScript ](#tab-panel-5145)
+
+JavaScript
+
+```
+
+import { Think, defaultContextOverflowClassifier } from "@cloudflare/think";
+
+
+export class MyAgent extends Think {
+
+  contextOverflow = { reactive: true };
+
+
+  // The bundled classifier covers the common providers (Anthropic, OpenAI,
+
+  // Google, Bedrock, …). Assign it directly, or write your own.
+
+  classifyChatError = defaultContextOverflowClassifier;
+
+}
+
+
+```
+
+TypeScript
+
+```
+
+import { Think, defaultContextOverflowClassifier } from "@cloudflare/think";
+
+
+export class MyAgent extends Think<Env> {
+
+  override contextOverflow = { reactive: true };
+
+
+  // The bundled classifier covers the common providers (Anthropic, OpenAI,
+
+  // Google, Bedrock, …). Assign it directly, or write your own.
+
+  override classifyChatError = defaultContextOverflowClassifier;
+
+}
+
+
+```
+
+**2\. Proactive guard — `contextOverflow.proactive`.** Heads off the provider error before it happens. Before each step, Think reads the previous step's model-reported `usage.inputTokens` (provider-agnostic) and, if it crosses `maxInputTokens * (headroom ?? 0.9)`, compacts in place and feeds the recompacted history into the upcoming step. If a provider omits `inputTokens`, it falls back to `usage.totalTokens` (a safe over-approximation — it compacts slightly early rather than missing the threshold). It compacts at most `proactive.maxCompactions` times per turn (default `1`) — independent of the reactive `maxRetries` budget — so a history that cannot shorten does not compact on every step.
+
+* [  JavaScript ](#tab-panel-5148)
+* [  TypeScript ](#tab-panel-5149)
+
+JavaScript
+
+```
+
+import { Think, defaultContextOverflowClassifier } from "@cloudflare/think";
+
+
+export class MyAgent extends Think {
+
+  contextOverflow = {
+
+    reactive: true,
+
+    // Compact mid-turn once a step approaches 90% of a 200K window.
+
+    proactive: { maxInputTokens: 200_000 },
+
+  };
+
+
+  classifyChatError = defaultContextOverflowClassifier;
+
+}
+
+
+```
+
+TypeScript
+
+```
+
+import { Think, defaultContextOverflowClassifier } from "@cloudflare/think";
+
+
+export class MyAgent extends Think<Env> {
+
+  override contextOverflow = {
+
+    reactive: true,
+
+    // Compact mid-turn once a step approaches 90% of a 200K window.
+
+    proactive: { maxInputTokens: 200_000 },
+
+  };
+
+
+  override classifyChatError = defaultContextOverflowClassifier;
+
+}
+
+
+```
+
+Use either layer alone, or both together: the proactive guard avoids most overflows, and the reactive backstop catches any that still slip through (for example, a turn that starts already over budget, or a single tool result so large that compaction cannot help — in which case it terminalizes cleanly). Both apply to every turn entry path (WebSocket, sub-agent `chat()`, and programmatic `saveMessages()` / `submitMessages()`), and both emit a `chat:context:compacted` [observability event](https://developers.cloudflare.com/agents/runtime/operations/observability/#chat-context-events).
+
+Note
+
+A no-op compaction cannot rescue an over-budget turn, so recovery is only as effective as your compaction configuration. For tool-heavy histories, configure a `tokenCounter` on `compactAfter()` (refer to [Sessions](https://developers.cloudflare.com/agents/runtime/lifecycle/sessions/#auto-compaction)).
+
+For a runnable demo against a real Workers AI model, refer to the [context-overflow-recovery example ↗](https://github.com/cloudflare/agents/tree/main/examples/context-overflow-recovery).
+
 ## Stability detection
 
 Think provides methods to check if the agent is in a stable state — no pending tool results, no pending approvals, no active turns.
@@ -326,8 +555,8 @@ protected hasPendingInteraction(): boolean
 
 Returns a promise that resolves to `true` when the agent reaches a stable state, or `false` if the timeout is exceeded.
 
-* [  JavaScript ](#tab-panel-5028)
-* [  TypeScript ](#tab-panel-5029)
+* [  JavaScript ](#tab-panel-5154)
+* [  TypeScript ](#tab-panel-5155)
 
 JavaScript
 

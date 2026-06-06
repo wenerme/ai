@@ -15,7 +15,9 @@ make it easy to define schemas using
 [Pydantic](https://docs.pydantic.dev/latest/) (Python) and
 [Zod](https://zod.dev/) (JavaScript).
 
-<button value="recipe" default="">Recipe Extractor</button> <button value="feedback">Content Moderation</button> <button value="recursive">Recursive Structures</button>
+## Structured output examples
+
+### Recipe Extractor
 
 This example demonstrates how to extract structured data from text using basic
 JSON Schema types like `object`, `array`, `string`, and `integer`.
@@ -291,6 +293,411 @@ JSON Schema types like `object`, `array`, `string`, and `integer`.
         "Gradually beat in the dry ingredients until just combined.",
         "Stir in the chocolate chips.",
         "Drop by rounded tablespoons onto ungreased baking sheets and bake for 9 to 11 minutes."
+      ]
+    }
+
+### Content Moderation
+
+This example showcases `anyOf` for conditional schemas and `enum` for
+classification, allowing the output structure to vary based on the content.
+
+### Python
+
+    from google import genai
+    from pydantic import BaseModel, Field
+    from typing import Union, Literal
+
+    class SpamDetails(BaseModel):
+        reason: str = Field(description="The reason why the content is considered spam.")
+        spam_type: Literal["phishing", "scam", "unsolicited promotion", "other"] = Field(description="The type of spam.")
+
+    class NotSpamDetails(BaseModel):
+        summary: str = Field(description="A brief summary of the content.")
+        is_safe: bool = Field(description="Whether the content is safe for all audiences.")
+
+    class ModerationResult(BaseModel):
+        decision: Union[SpamDetails, NotSpamDetails]
+
+    client = genai.Client()
+
+    prompt = """
+    Please moderate the following content and provide a decision.
+    Content: 'Congratulations! You''ve won a free cruise to the Bahamas. Click here to claim your prize: www.definitely-not-a-scam.com'
+    """
+
+    response = client.models.generate_content(
+        model="gemini-3.5-flash",
+        contents=prompt,
+        config={
+            "response_format": {"text": {"mime_type": "application/json", "schema": ModerationResult.model_json_schema()}},
+        },
+    )
+
+    result = ModerationResult.model_validate_json(response.text)
+    print(result)
+
+### JavaScript
+
+    import { GoogleGenAI } from "@google/genai";
+    import { z } from "zod";
+    import { zodToJsonSchema } from "zod-to-json-schema";
+
+    const spamDetailsSchema = z.object({
+      reason: z.string().describe("The reason why the content is considered spam."),
+      spam_type: z.enum(["phishing", "scam", "unsolicited promotion", "other"]).describe("The type of spam."),
+    });
+
+    const notSpamDetailsSchema = z.object({
+      summary: z.string().describe("A brief summary of the content."),
+      is_safe: z.boolean().describe("Whether the content is safe for all audiences."),
+    });
+
+    const moderationResultSchema = z.object({
+      decision: z.union([spamDetailsSchema, notSpamDetailsSchema]),
+    });
+
+    const ai = new GoogleGenAI({});
+
+    const prompt = `
+    Please moderate the following content and provide a decision.
+    Content: 'Congratulations! You''ve won a free cruise to the Bahamas. Click here to claim your prize: www.definitely-not-a-scam.com'
+    `;
+
+    const response = await ai.models.generateContent({
+      model: "gemini-3.5-flash",
+      contents: prompt,
+      config: {
+        responseFormat: { text: { mimeType: "application/json", schema: zodToJsonSchema(moderationResultSchema) } },
+      },
+    });
+
+    const result = moderationResultSchema.parse(JSON.parse(response.text));
+    console.log(result);
+
+### Go
+
+    package main
+
+    import (
+        "context"
+        "fmt"
+        "log"
+
+        "google.golang.org/genai"
+    )
+
+    func main() {
+        ctx := context.Background()
+        client, err := genai.NewClient(ctx, nil)
+        if err != nil {
+            log.Fatal(err)
+        }
+
+        prompt := `
+      Please moderate the following content and provide a decision.
+      Content: 'Congratulations! You''ve won a free cruise to the Bahamas. Click here to claim your prize: www.definitely-not-a-scam.com'
+      `
+        config := &genai.GenerateContentConfig{
+            ResponseMIMEType: "application/json",
+            ResponseJsonSchema: map[string]any{
+                "type": "object",
+                "properties": map[string]any{
+                    "decision": map[string]any{
+                        "anyOf": []map[string]any{
+                            {
+                                "type":        "object",
+                                "title":       "SpamDetails",
+                                "description": "Details for content classified as spam.",
+                                "properties": map[string]any{
+                                    "reason": map[string]any{
+                                        "type":        "string",
+                                        "description": "The reason why the content is considered spam.",
+                                    },
+                                    "spam_type": map[string]any{
+                                        "type":        "string",
+                                        "enum":        []string{"phishing", "scam", "unsolicited promotion", "other"},
+                                        "description": "The type of spam.",
+                                    },
+                                },
+                                "required": []string{"reason", "spam_type"},
+                            },
+                            {
+                                "type":        "object",
+                                "title":       "NotSpamDetails",
+                                "description": "Details for content classified as not spam.",
+                                "properties": map[string]any{
+                                    "summary": map[string]any{
+                                        "type":        "string",
+                                        "description": "A brief summary of the content.",
+                                    },
+                                    "is_safe": map[string]any{
+                                        "type":        "boolean",
+                                        "description": "Whether the content is safe for all audiences.",
+                                    },
+                                },
+                                "required": []string{"summary", "is_safe"},
+                            },
+                        },
+                    },
+                },
+                "required": []string{"decision"},
+            },
+        }
+
+        result, err := client.Models.GenerateContent(
+            ctx,
+            "gemini-3.5-flash",
+            genai.Text(prompt),
+            config,
+        )
+        if err != nil {
+            log.Fatal(err)
+        }
+        fmt.Println(result.Text())
+    }
+
+### REST
+
+    curl "https://generativelanguage.googleapis.com/v1beta/models/gemini-3.5-flash:generateContent" \
+        -H "x-goog-api-key: $GEMINI_API_KEY" \
+        -H 'Content-Type: application/json' \
+        -X POST \
+        -d '{
+          "contents": [{
+            "parts":[
+              { "text": "Please moderate the following content and provide a decision.\nContent: ''Congratulations! You have won a free cruise to the Bahamas. Click here to claim your prize: www.definitely-not-a-scam.com''" }
+            ]
+          }],
+          "generationConfig": {
+            "responseFormat": {
+              "text": {
+                "mimeType": "application/json",
+                "schema": {
+              "type": "object",
+              "properties": {
+                "decision": {
+                  "anyOf": [
+                    {
+                      "type": "object",
+                      "title": "SpamDetails",
+                      "description": "Details for content classified as spam.",
+                      "properties": {
+                        "reason": { "type": "string", "description": "The reason why the content is considered spam." },
+                        "spam_type": { "type": "string", "enum": ["phishing", "scam", "unsolicited promotion", "other"], "description": "The type of spam." }
+              }
+            }
+          },
+                       "required": ["reason", "spam_type"]
+                     },
+                     {
+                       "type": "object",
+                       "title": "NotSpamDetails",
+                       "description": "Details for content classified as not spam.",
+                       "properties": {
+                         "summary": { "type": "string", "description": "A brief summary of the content." },
+                         "is_safe": { "type": "boolean", "description": "Whether the content is safe for all audiences." }
+                       },
+                       "required": ["summary", "is_safe"]
+                     }
+                   ]
+                 }
+               },
+               "required": ["decision"]
+             }
+           }
+         }'
+     ```
+
+    **Example Response:**
+
+    ```json
+    {
+    "decision": {
+     "reason": "The content is an unsolicited prize notification attempting to trick the user into clicking a suspicious link.",
+     "spam_type": "scam"
+    }
+    }
+
+### Recursive Structures
+
+This example illustrates how to define a recursive schema such as an organization
+chart.
+
+### Python
+
+    from google import genai
+    from pydantic import BaseModel, Field
+    from typing import List
+
+    class Employee(BaseModel):
+        """Represents an employee in an organization."""
+        name: str
+        employee_id: int
+        reports: List["Employee"] = Field(
+            default_factory=list,
+            description="A list of employees reporting to this employee."
+        )
+
+    client = genai.Client()
+
+    prompt = """
+    Generate an organization chart for a small team.
+    The manager is Alice, who manages Bob and Charlie. Bob manages David.
+    """
+
+    response = client.models.generate_content(
+        model="gemini-3.5-flash",
+        contents=prompt,
+        config={
+            "response_format": {"text": {"mime_type": "application/json", "schema": Employee.model_json_schema()}},
+        },
+    )
+
+    employee = Employee.model_validate_json(response.text)
+    print(employee)
+
+### JavaScript
+
+    import { GoogleGenAI } from "@google/genai";
+    import { z } from "zod";
+    import { zodToJsonSchema } from "zod-to-json-schema";
+
+    const employeeSchema = z.object({
+      name: z.string(),
+      employee_id: z.number().int(),
+      reports: z.lazy(() => z.array(employeeSchema)).describe("A list of employees reporting to this employee."),
+    });
+
+    const ai = new GoogleGenAI({});
+
+    const prompt = `
+    Generate an organization chart for a small team.
+    The manager is Alice, who manages Bob and Charlie. Bob manages David.
+    `;
+
+    const response = await ai.models.generateContent({
+      model: "gemini-3.5-flash",
+      contents: prompt,
+      config: {
+        responseFormat: { text: { mimeType: "application/json", schema: zodToJsonSchema(employeeSchema) } },
+      },
+    });
+
+    const employee = employeeSchema.parse(JSON.parse(response.text));
+    console.log(employee);
+
+### Go
+
+    package main
+
+    import (
+        "context"
+        "fmt"
+        "log"
+
+        "google.golang.org/genai"
+    )
+
+    func main() {
+        ctx := context.Background()
+        client, err := genai.NewClient(ctx, nil)
+        if err != nil {
+            log.Fatal(err)
+        }
+
+        prompt := `
+      Generate an organization chart for a small team.
+      The manager is Alice, who manages Bob and Charlie. Bob manages David.
+      `
+        config := &genai.GenerateContentConfig{
+            ResponseMIMEType: "application/json",
+            ResponseJsonSchema: map[string]any{
+                "type": "object",
+                "properties": map[string]any{
+                    "name":        map[string]any{"type": "string"},
+                    "employee_id": map[string]any{"type": "integer"},
+                    "reports": map[string]any{
+                        "type":        "array",
+                        "description": "A list of employees reporting to this employee.",
+                        "items": map[string]any{
+                            "$ref": "#",
+                        },
+                    },
+                },
+                "required": []string{"name", "employee_id", "reports"},
+            },
+        }
+
+        result, err := client.Models.GenerateContent(
+            ctx,
+            "gemini-3.5-flash",
+            genai.Text(prompt),
+            config,
+        )
+        if err != nil {
+            log.Fatal(err)
+        }
+        fmt.Println(result.Text())
+    }
+
+### REST
+
+    curl "https://generativelanguage.googleapis.com/v1beta/models/gemini-3.5-flash:generateContent" \
+        -H "x-goog-api-key: $GEMINI_API_KEY" \
+        -H 'Content-Type: application/json' \
+        -X POST \
+        -d '{
+          "contents": [{
+            "parts":[
+              { "text": "Generate an organization chart for a small team.\nThe manager is Alice, who manages Bob and Charlie. Bob manages David." }
+            ]
+          }],
+          "generationConfig": {
+            "responseFormat": {
+              "text": {
+                "mimeType": "application/json",
+                "schema": {
+              "type": "object",
+              "properties": {
+                "name": { "type": "string" },
+                "employee_id": { "type": "integer" },
+                "reports": {
+                  "type": "array",
+                  "description": "A list of employees reporting to this employee.",
+                  "items": {
+                    "$ref": "#"
+                  }
+              }
+            }
+          }
+              },
+              "required": ["name", "employee_id", "reports"]
+            }
+          }
+        }'
+
+**Example Response:**
+
+    {
+      "name": "Alice",
+      "employee_id": 101,
+      "reports": [
+        {
+          "name": "Bob",
+          "employee_id": 102,
+          "reports": [
+            {
+              "name": "David",
+              "employee_id": 104,
+              "reports": []
+            }
+          ]
+        },
+        {
+          "name": "Charlie",
+          "employee_id": 103,
+          "reports": []
+        }
       ]
     }
 

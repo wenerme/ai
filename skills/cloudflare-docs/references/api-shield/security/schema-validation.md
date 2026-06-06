@@ -40,8 +40,8 @@ To view the contents in your learned schema, refer to [Export a schema](https://
 
 ### Add validation by uploading a schema
 
-* [  New dashboard ](#tab-panel-4271)
-* [ Old dashboard ](#tab-panel-4272)
+* [  New dashboard ](#tab-panel-6214)
+* [ Old dashboard ](#tab-panel-6215)
 
 1. In the Cloudflare dashboard, go to the **Web Assets** page.  
 [ Go to **Web assets** ](https://dash.cloudflare.com/?to=/:account/:zone/security/web-assets)
@@ -64,8 +64,8 @@ Changes may take a few minutes to process depending on the number of added endpo
 
 ### Add validation by applying a learned schema to a single endpoint
 
-* [  New dashboard ](#tab-panel-4273)
-* [ Old dashboard ](#tab-panel-4274)
+* [  New dashboard ](#tab-panel-6216)
+* [ Old dashboard ](#tab-panel-6217)
 
 1. In the Cloudflare dashboard, go to the **Web Assets** page.  
 [ Go to **Web assets** ](https://dash.cloudflare.com/?to=/:account/:zone/security/web-assets)
@@ -84,8 +84,8 @@ Changes may take a few minutes to process depending on the number of added endpo
 
 At this time, learned schemas will not overwrite customer-uploaded schemas. If an endpoint is covered by a customer-uploaded schema and also appears in a learned schema, the **Changes** field is set to `Unaffected`.
 
-* [  New dashboard ](#tab-panel-4275)
-* [ Old dashboard ](#tab-panel-4276)
+* [  New dashboard ](#tab-panel-6218)
+* [ Old dashboard ](#tab-panel-6219)
 
 1. In the Cloudflare dashboard, go to the **Web Assets** page.  
 [ Go to **Web assets** ](https://dash.cloudflare.com/?to=/:account/:zone/security/web-assets)
@@ -116,8 +116,8 @@ By ensuring that all your endpoints in a schema are added to Endpoint Management
 
 To set up a fallthrough action:
 
-* [  New dashboard ](#tab-panel-4289)
-* [ Old dashboard ](#tab-panel-4290)
+* [  New dashboard ](#tab-panel-6232)
+* [ Old dashboard ](#tab-panel-6233)
 
 1. In the Cloudflare dashboard, go to the **Security rules** page.  
 [ Go to **Security rules** ](https://dash.cloudflare.com/?to=/:account/:zone/security/security-rules)
@@ -146,8 +146,8 @@ You can use the `cf.api_gateway.fallthrough_detected` field in your own custom r
 
 ### Change the action of an entire schema
 
-* [  New dashboard ](#tab-panel-4277)
-* [ Old dashboard ](#tab-panel-4278)
+* [  New dashboard ](#tab-panel-6220)
+* [ Old dashboard ](#tab-panel-6221)
 
 1. In the Cloudflare dashboard, go to the **Web Assets** page.  
 [ Go to **Web assets** ](https://dash.cloudflare.com/?to=/:account/:zone/security/web-assets)
@@ -176,8 +176,8 @@ Schema validation’s default action is visible on the main Schema validation pa
 
 To change the default action:
 
-* [  New dashboard ](#tab-panel-4279)
-* [ Old dashboard ](#tab-panel-4280)
+* [  New dashboard ](#tab-panel-6222)
+* [ Old dashboard ](#tab-panel-6223)
 
 1. In the Cloudflare dashboard, go to the **Security Settings** page.  
 [ Go to **Settings** ](https://dash.cloudflare.com/?to=/:account/:zone/security/settings)
@@ -203,8 +203,8 @@ This allows you to be stricter on blocking non-compliant requests on certain end
 
 To change the action on an individual endpoint:
 
-* [  New dashboard ](#tab-panel-4281)
-* [ Old dashboard ](#tab-panel-4282)
+* [  New dashboard ](#tab-panel-6224)
+* [ Old dashboard ](#tab-panel-6225)
 
 1. In the Cloudflare dashboard, go to the **Web Assets** page.  
 [ Go to **Web assets** ](https://dash.cloudflare.com/?to=/:account/:zone/security/web-assets)
@@ -226,8 +226,8 @@ You can disable Schema validation entirely for temporary troubleshooting. You ca
 
 To disable Schema validation without changing actions:
 
-* [  New dashboard ](#tab-panel-4283)
-* [ Old dashboard ](#tab-panel-4284)
+* [  New dashboard ](#tab-panel-6226)
+* [ Old dashboard ](#tab-panel-6227)
 
 1. In the Cloudflare dashboard, go to the **Web Assets** page.  
 [ Go to **Web assets** ](https://dash.cloudflare.com/?to=/:account/:zone/security/web-assets)
@@ -245,8 +245,8 @@ Your per-endpoint configurations will be saved when modifying the setting, so th
 
 ### View active schemas
 
-* [  New dashboard ](#tab-panel-4285)
-* [ Old dashboard ](#tab-panel-4286)
+* [  New dashboard ](#tab-panel-6228)
+* [ Old dashboard ](#tab-panel-6229)
 
 1. In the Cloudflare dashboard, go to the **Web Assets** page.  
 [ Go to **Web assets** ](https://dash.cloudflare.com/?to=/:account/:zone/security/web-assets)
@@ -271,8 +271,8 @@ Deleting the schema will remove validation from the currently associated endpoin
 
 To delete currently uploaded or learned schemas:
 
-* [  New dashboard ](#tab-panel-4287)
-* [ Old dashboard ](#tab-panel-4288)
+* [  New dashboard ](#tab-panel-6230)
+* [ Old dashboard ](#tab-panel-6231)
 
 1. In the Cloudflare dashboard, go to the **Web Assets** page.  
 [ Go to **Web assets** ](https://dash.cloudflare.com/?to=/:account/:zone/security/web-assets)
@@ -432,7 +432,7 @@ For example, when the OpenAPI file specifies `application/*` as part of the requ
 
 Cloudflare recommends keeping the media-ranges as tight as possible by setting them to an individual media-type. If you need to support multiple content-types on an API endpoint, you can utilize wildcard media-ranges.
 
-Care should also be taken if the origin is configured to perform [MIME sniffing ↗](https://mimesniff.spec.whatwg.org/). For example, when a request carrying a JSON body is deliberately carrying an `application/malicous` content-type and Cloudflare was configured to allow `application/*` media-ranges, the request would be passed along to the origin without validating the JSON body contents. However, an origin that ignores the content-type and either trial deserializes or sniffs the MIME type may deserialize the JSON body with a wrong assumption of having passed schema body validation.
+Care should also be taken if the origin is configured to perform [MIME sniffing ↗](https://mimesniff.spec.whatwg.org/). For example, when a request carrying a JSON body is deliberately carrying an `application/malicious` content-type and Cloudflare was configured to allow `application/*` media-ranges, the request would be passed along to the origin without validating the JSON body contents. However, an origin that ignores the content-type and either trial deserializes or sniffs the MIME type may deserialize the JSON body with a wrong assumption of having passed schema body validation.
 
 As such, if you need to support `application/json` and `application/xml` on the same endpoint, you can use `application/*`. Cloudflare will validate the provided schema for request bodies where the content-type is set to `application/json`. Requests with content-type `application/xml` (and others matching `application/*`) will be let through. It is still strongly advised to disable content-type sniffing on your origin.
 

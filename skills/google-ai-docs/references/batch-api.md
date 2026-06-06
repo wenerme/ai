@@ -1026,10 +1026,215 @@ of images, you can use the Batch API to get higher
 [rate limits](https://ai.google.dev/gemini-api/docs/rate-limits) in exchange for a turnaround of up
 to 24 hours.
 
-You can either use inline requests for small batches of requests (under 20MB) or
-a JSONL input file for large batches (recommended for image generation):
+You can either use [inline requests](https://ai.google.dev/gemini-api/docs/batch-api#inline-requests-images) for small batches of requests (under 20MB) or
+a [JSONL input file](https://ai.google.dev/gemini-api/docs/batch-api#input-file-images) for large batches (recommended for image generation):
 
-<button value="inline">Inline requests</button> <button value="file" default="">Input file</button>
+### Inline requests for images
+
+### Python
+
+    import time
+    import base64
+    import json
+    from google import genai
+    from google.genai import types
+    from PIL import Image
+
+    client = genai.Client()
+
+    # 1. Create batch job with inline requests
+    inline_requests = [
+        {
+            'contents': [{'parts': [{'text': 'A big letter A surrounded by animals starting with the A letter'}]}],
+            'config': {'response_modalities': ['TEXT', 'IMAGE']}
+        },
+        {
+            'contents': [{'parts': [{'text': 'A big letter B surrounded by animals starting with the B letter'}]}],
+            'config': {'response_modalities': ['TEXT', 'IMAGE']}
+        }
+    ]
+
+    inline_batch_job = client.batches.create(
+        model="gemini-3-pro-image-preview",
+        src=inline_requests,
+        config={
+            'display_name': "inlined-image-requests-job-1",
+        },
+    )
+
+    print(f"Created batch job: {inline_batch_job.name}")
+
+    # 2. Monitor job status
+    job_name = inline_batch_job.name
+    print(f"Polling status for job: {job_name}")
+
+    completed_states = set([
+        'JOB_STATE_SUCCEEDED',
+        'JOB_STATE_FAILED',
+        'JOB_STATE_CANCELLED',
+        'JOB_STATE_EXPIRED',
+    ])
+
+    batch_job = client.batches.get(name=job_name) # Initial get
+    while batch_job.state.name not in completed_states:
+      print(f"Current state: {batch_job.state.name}")
+      time.sleep(10) # Wait for 10 seconds before polling again
+      batch_job = client.batches.get(name=job_name)
+
+    print(f"Job finished with state: {batch_job.state.name}")
+
+    # 3. Retrieve results
+    if batch_job.state.name == 'JOB_STATE_SUCCEEDED':
+        print("Results are inline:")
+        for i, inline_response in enumerate(batch_job.dest.inlined_responses):
+            print(f"Response {i+1}:")
+            if inline_response.response:
+                for part in inline_response.response.candidates[0].content.parts:
+                    if part.text:
+                        print(part.text)
+                    elif part.inline_data:
+                        print(f"Image mime type: {part.inline_data.mime_type}")
+                        image = part.as_image()
+                        image.save(f"image_{i+1}.png")
+            elif inline_response.error:
+                print(f"Error: {inline_response.error}")
+    elif batch_job.state.name == 'JOB_STATE_FAILED':
+        print(f"Error: {batch_job.error}")
+
+### JavaScript
+
+    import {GoogleGenAI} from '@google/genai';
+
+    const ai = new GoogleGenAI({});
+
+    async function run() {
+        // 1. Create batch job with inline requests
+        const inlinedRequests = [
+            {
+                contents: [{parts: [{text: 'A big letter A surrounded by animals starting with the A letter'}]}],
+                config: {responseModalities: ['TEXT', 'IMAGE']}
+            },
+            {
+                contents: [{parts: [{text: 'A big letter B surrounded by animals starting with the B letter'}]}],
+                config: {responseModalities: ['TEXT', 'IMAGE']}
+            }
+        ]
+
+        const inlineBatchJob = await ai.batches.create({
+            model: 'gemini-3-pro-image-preview',
+            src: inlinedRequests,
+            config: {
+                displayName: 'inlined-image-requests-job-1',
+            }
+        });
+
+        console.log(inlineBatchJob);
+
+        // 2. Monitor job status
+        let batchJob;
+        const completedStates = new Set([
+            'JOB_STATE_SUCCEEDED',
+            'JOB_STATE_FAILED',
+            'JOB_STATE_CANCELLED',
+            'JOB_STATE_EXPIRED',
+        ]);
+
+        try {
+            batchJob = await ai.batches.get({name: inlineBatchJob.name});
+            while (!completedStates.has(batchJob.state)) {
+                console.log(`Current state: ${batchJob.state}`);
+                // Wait for 10 seconds before polling again
+                await new Promise(resolve => setTimeout(resolve, 10000));
+                batchJob = await ai.batches.get({ name: batchJob.name });
+            }
+            console.log(`Job finished with state: ${batchJob.state}`);
+        } catch (error) {
+            console.error(`An error occurred while polling job ${inlineBatchJob.name}:`, error);
+            return;
+        }
+
+        // 3. Retrieve results
+        if (batchJob.state === 'JOB_STATE_SUCCEEDED') {
+            if (batchJob.dest?.inlinedResponses) {
+                console.log("Results are inline:");
+                for (let i = 0; i < batchJob.dest.inlinedResponses.length; i++) {
+                    const inlineResponse = batchJob.dest.inlinedResponses[i];
+                    console.log(`Response ${i + 1}:`);
+                    if (inlineResponse.response) {
+                        for (const part of inlineResponse.response.candidates[0].content.parts) {
+                            if (part.text) {
+                                console.log(part.text);
+                            } else if (part.inlineData) {
+                                console.log(`Image mime type: ${part.inlineData.mimeType}`);
+                            }
+                        }
+                    } else if (inlineResponse.error) {
+                        console.error(`Error: ${inlineResponse.error}`);
+                    }
+                }
+            } else {
+                console.log("No inline results found.");
+            }
+        } else if (batchJob.state === 'JOB_STATE_FAILED') {
+             console.error(`Error: ${typeof batchJob.error === 'string' ? batchJob.error : batchJob.error.message || JSON.stringify(batchJob.error)}`);
+        }
+    }
+    run();
+
+### REST
+
+    # 1. Create batch job
+    printf -v request_data '{
+        "batch": {
+            "display_name": "my-batch-image-requests",
+            "input_config": {
+                "requests": {
+                    "requests": [
+                        {
+                            "request": {
+                                "contents": [{"parts": [{"text": "A big letter A surrounded by animals starting with the A letter"}]}],
+                                "generation_config": {"responseModalities": ["TEXT", "IMAGE"]}
+                            },
+                            "metadata": { "key": "request-1" }
+                        },
+                        {
+                            "request": {
+                                "contents": [{"parts": [{"text": "A big letter B surrounded by animals starting with the B letter"}]}],
+                                "generation_config": {"responseModalities": ["TEXT", "IMAGE"]}
+                            },
+                            "metadata": { "key": "request-2" }
+                        }
+                    ]
+                }
+            }
+        }
+    }'
+    curl https://generativelanguage.googleapis.com/v1beta/models/gemini-3-pro-image-preview:batchGenerateContent \
+      -H "x-goog-api-key: $GEMINI_API_KEY" \
+      -X POST \
+      -H "Content-Type:application/json" \
+      -d "$request_data" > created_batch.json
+
+    BATCH_NAME=$(jq -r '.name' created_batch.json)
+    echo "Created batch job: $BATCH_NAME"
+
+    # 2. Poll job status until completion by repeating the following command
+    # Replace $BATCH_NAME with the name returned above.
+    curl https://generativelanguage.googleapis.com/v1beta/$BATCH_NAME \
+      -H "x-goog-api-key: $GEMINI_API_KEY" \
+      -H "Content-Type:application/json" > batch_status.json
+
+    echo "Current status:"
+    jq '.' batch_status.json
+
+    # 3. If state is JOB_STATE_SUCCEEDED, retrieve results from batch_status.json
+    batch_state=$(jq -r '.state' batch_status.json)
+    if [[ $batch_state = "JOB_STATE_SUCCEEDED" ]]; then
+        echo "Job succeeded. Results:"
+        jq -r '.dest.inlinedResponses' batch_status.json
+    fi
+
+### Input file for images
 
 ### Python
 

@@ -5,8 +5,6 @@ doc_type: 'guide'
 keywords: ['Managed ClickStack', 'getting started', 'ClickHouse Cloud']
 ---
 
-<BetaBadge/>
-
 The easiest way to get started is by deploying **Managed ClickStack** on **ClickHouse Cloud**, which provides a fully managed, secure backend while retaining complete control over ingestion, schema, and observability workflows. This removes the need to operate ClickHouse yourself and delivers a range of benefits: 
 
 - Automatic scaling of compute, independent of storage

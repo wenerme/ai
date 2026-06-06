@@ -70,7 +70,7 @@ This release introduces the new Cloudflare One Client UI for Windows! You can ex
    * The custom DNS server address on the primary network adapter is changed while the client is connected.  
    To work around this issue, please reconnect the client by selecting "disconnect" and then "connect" in the client user interface.
 
-Previous version history (8)
+Previous version history (7)
 
 Windows 2026.3.566.1
 
@@ -274,37 +274,6 @@ This release contains new improvements in addition to the features and improveme
    * A custom DNS server address is configured on the primary network adapter.  
    * The custom DNS server address on the primary network adapter is changed while WARP is connected. To work around this issue, reconnect the WARP client by toggling off and back on.
 
-Windows 2025.5.735.1
-
-**Version:**  Windows 2025.5.735.1 **Date:**  2025-06-05 **Size:** 129 MB 
-
-[Download](https://downloads.cloudflareclient.com/v1/download/windows/version/2025.5.735.1) 
-
-#### Release notes
-
-This release contains improvements and new exciting features, including [SCCM VPN boundary support](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/settings/#sccm-vpn-boundary-support) and [post-quantum cryptography](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/deployment/mdm-deployment/parameters/#enable%5Fpost%5Fquantum). By tunneling your corporate network traffic over Cloudflare, you can now gain the immediate protection of post-quantum cryptography without needing to upgrade any of your individual corporate applications or systems.
-
-**Changes and improvements**
-
-* Fixed a device registration issue causing WARP connection failures when changing networks.
-* Captive portal improvements including showing connectivity status in the client and sending system notifications for captive portal sign in.
-* Fixed a bug where in Gateway with DoH mode, connection to DNS servers was not automatically restored after reconnecting WARP.
-* The WARP client now applies post-quantum cryptography end-to-end on enabled devices accessing resources behind a Cloudflare Tunnel. This feature can be [enabled by MDM](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/deployment/mdm-deployment/parameters/#enable%5Fpost%5Fquantum).
-* Improvement to gracefully handle changes made by MDM while WARP is not running.
-* Improvement for multi-user mode to avoid unnecessary key rotations when transitioning from a pre-login to a logged-in state.
-* Added a WARP client device posture check for SAN attributes to the [client certificate check](https://developers.cloudflare.com/cloudflare-one/reusable-components/posture-checks/warp-client-checks/client-certificate/).
-* Fixed an issue affecting Split Tunnel Include mode, where traffic outside the tunnel was blocked when switching between Wi-Fi and Ethernet networks.
-* Added [SCCM VPN boundary support](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/settings/#sccm-vpn-boundary-support) to device profile settings. With SCCM VPN boundary support enabled, operating systems will register WARP's local interface IP with the on-premise DNS server when reachable.
-
-**Known issues**
-
-* Microsoft has confirmed a regression with Windows 11 starting around 24H2 that may cause performance issues for some users. These performance issues could manifest as mouse lag, audio cracking, or other slowdowns. A fix from Microsoft is expected in early July.
-* Devices with `KB5055523` installed may receive a warning about `Win32/ClickFix.ABA` being present in the installer. To resolve this false positive, update Microsoft Security Intelligence to [version 1.429.19.0](https://www.microsoft.com/en-us/wdsi/definitions/antimalware-definition-release-notes?requestVersion=1.429.19.0) or later.
-* DNS resolution may be broken when the following conditions are all true:  
-   * WARP is in Secure Web Gateway without DNS filtering (tunnel-only) mode.  
-   * A custom DNS server address is configured on the primary network adapter.  
-   * The custom DNS server address on the primary network adapter is changed while WARP is connected. To work around this issue, reconnect the WARP client by toggling off and back on.
-
 ## macOS
 
 [ Download latest beta release ](https://downloads.cloudflareclient.com/v1/download/macos/beta) 
@@ -351,7 +320,7 @@ This release introduces the new Cloudflare One Client UI for macOS! You can expe
 * Registration may hang at "Checking your organization configuration" due to IPC errors. A system reboot should resolve the error, allowing registration to proceed.
 * Split tunnel list configuration is not available in the new UI. Management of split tunnel entries is currently only possible via `warp-cli tunnel ip` and `warp-cli tunnel host`. UI support will be added in a future release.
 
-Previous version history (8)
+Previous version history (7)
 
 macOS 2026.3.566.1
 
@@ -488,29 +457,6 @@ This release contains new improvements in addition to the features and improveme
 **Changes and improvements**
 
 * Improvement for WARP connectivity issues on macOS due to the operating system not accepting DNS server configurations.
-
-**Known issues**
-
-* macOS Sequoia: Due to changes Apple introduced in macOS 15.0.x, the WARP client may not behave as expected. Cloudflare recommends the use of macOS 15.4 or later.
-
-macOS 2025.5.735.1
-
-**Version:**  macOS 2025.5.735.1 **Date:**  2025-06-05 **Size:** 95.2 MB 
-
-[Download](https://downloads.cloudflareclient.com/v1/download/macos/version/2025.5.735.1) 
-
-#### Release notes
-
-This release contains improvements and new exciting features, including [post-quantum cryptography](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/deployment/mdm-deployment/parameters/#enable%5Fpost%5Fquantum). By tunneling your corporate network traffic over Cloudflare, you can now gain the immediate protection of post-quantum cryptography without needing to upgrade any of your individual corporate applications or systems.
-
-**Changes and improvements**
-
-* Fixed an issue where the Cloudflare WARP application may not have automatically relaunched after an update.
-* Fixed a device registration issue causing WARP connection failures when changing networks.
-* Captive portal improvements including showing connectivity status in the client and sending system notifications for captive portal sign in.
-* The WARP client now applies post-quantum cryptography end-to-end on enabled devices accessing resources behind a Cloudflare Tunnel. This feature can be [enabled by MDM](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/deployment/mdm-deployment/parameters/#enable%5Fpost%5Fquantum).
-* Improvement to gracefully handle changes made by MDM while WARP is not running.
-* Fixed an issue affecting Split Tunnel Include mode, where traffic outside the tunnel was blocked when switching between Wi-Fi and Ethernet networks.
 
 **Known issues**
 

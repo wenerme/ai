@@ -20,8 +20,8 @@ The Session API is under `agents/experimental/memory/session`. The API surface i
 
 ## Quick start
 
-* [  JavaScript ](#tab-panel-5716)
-* [  TypeScript ](#tab-panel-5717)
+* [  JavaScript ](#tab-panel-5838)
+* [  TypeScript ](#tab-panel-5839)
 
 JavaScript
 
@@ -127,8 +127,8 @@ class MyAgent extends Agent {
 
 Use `Session.create(agent)` with a chainable builder. Context providers without an explicit `provider` option are auto-wired to SQLite.
 
-* [  JavaScript ](#tab-panel-5702)
-* [  TypeScript ](#tab-panel-5703)
+* [  JavaScript ](#tab-panel-5824)
+* [  TypeScript ](#tab-panel-5825)
 
 JavaScript
 
@@ -172,8 +172,8 @@ const session = Session.create(this)
 
 For full control over providers:
 
-* [  JavaScript ](#tab-panel-5712)
-* [  TypeScript ](#tab-panel-5713)
+* [  JavaScript ](#tab-panel-5834)
+* [  TypeScript ](#tab-panel-5835)
 
 JavaScript
 
@@ -273,8 +273,8 @@ All builder methods return `this` for chaining. Order does not matter — provid
 
 Messages use the `SessionMessage` type — a minimal shape with `id`, `role`, `parts`, and optional `createdAt`. The AI SDK's `UIMessage` is structurally compatible and can be passed directly. The session stores messages in a tree structure via `parent_id`, enabling branching conversations.
 
-* [  JavaScript ](#tab-panel-5710)
-* [  TypeScript ](#tab-panel-5711)
+* [  JavaScript ](#tab-panel-5832)
+* [  TypeScript ](#tab-panel-5833)
 
 JavaScript
 
@@ -338,8 +338,8 @@ Session methods are async. SQLite-backed sessions are usually fast, but external
 
 ### Reading history
 
-* [  JavaScript ](#tab-panel-5718)
-* [  TypeScript ](#tab-panel-5719)
+* [  JavaScript ](#tab-panel-5840)
+* [  TypeScript ](#tab-panel-5841)
 
 JavaScript
 
@@ -407,8 +407,8 @@ const count = await session.getPathLength();
 
 Messages form a tree. When you `appendMessage` with a `parentId` that already has children, you create a branch. Use `getBranches()` to get all child messages branching from a given point:
 
-* [  JavaScript ](#tab-panel-5704)
-* [  TypeScript ](#tab-panel-5705)
+* [  JavaScript ](#tab-panel-5826)
+* [  TypeScript ](#tab-panel-5827)
 
 JavaScript
 
@@ -438,8 +438,8 @@ This powers features like response regeneration — pass the user message ID to 
 
 Full-text search over the conversation history using SQLite FTS5:
 
-* [  JavaScript ](#tab-panel-5706)
-* [  TypeScript ](#tab-panel-5707)
+* [  JavaScript ](#tab-panel-5828)
+* [  TypeScript ](#tab-panel-5829)
 
 JavaScript
 
@@ -484,8 +484,8 @@ There are four provider types, detected by duck-typing:
 
 **`AgentContextProvider`** — SQLite-backed writable context. This is the default when using the builder without an explicit provider.
 
-* [  JavaScript ](#tab-panel-5708)
-* [  TypeScript ](#tab-panel-5709)
+* [  JavaScript ](#tab-panel-5830)
+* [  TypeScript ](#tab-panel-5831)
 
 JavaScript
 
@@ -513,8 +513,8 @@ new AgentContextProvider(this, "memory");
 
 **`R2SkillProvider`** — Cloudflare R2 bucket for on-demand document loading. Skills are listed in the system prompt as metadata; the model loads full content on demand via `load_context`.
 
-* [  JavaScript ](#tab-panel-5714)
-* [  TypeScript ](#tab-panel-5715)
+* [  JavaScript ](#tab-panel-5836)
+* [  TypeScript ](#tab-panel-5837)
 
 JavaScript
 
@@ -550,8 +550,8 @@ Session.create(this).withContext("skills", {
 
 **`AgentSearchProvider`** — SQLite FTS5 searchable context. Entries are indexed and searchable by the model via `search_context`.
 
-* [  JavaScript ](#tab-panel-5720)
-* [  TypeScript ](#tab-panel-5721)
+* [  JavaScript ](#tab-panel-5842)
+* [  TypeScript ](#tab-panel-5843)
 
 JavaScript
 
@@ -593,8 +593,8 @@ Session.create(this).withContext("knowledge", {
 
 Blocks can be added and removed dynamically after initialization:
 
-* [  JavaScript ](#tab-panel-5726)
-* [  TypeScript ](#tab-panel-5727)
+* [  JavaScript ](#tab-panel-5848)
+* [  TypeScript ](#tab-panel-5849)
 
 JavaScript
 
@@ -656,8 +656,8 @@ Note
 
 ### Reading and writing context
 
-* [  JavaScript ](#tab-panel-5728)
-* [  TypeScript ](#tab-panel-5729)
+* [  JavaScript ](#tab-panel-5850)
+* [  TypeScript ](#tab-panel-5851)
 
 JavaScript
 
@@ -743,8 +743,8 @@ User prefers dark roast.
 
 ```
 
-* [  JavaScript ](#tab-panel-5724)
-* [  TypeScript ](#tab-panel-5725)
+* [  JavaScript ](#tab-panel-5846)
+* [  TypeScript ](#tab-panel-5847)
 
 JavaScript
 
@@ -784,8 +784,8 @@ The frozen prompt survives Durable Object hibernation and eviction when `withCac
 
 Session automatically generates tools based on the provider types of your context blocks. Pass these to your LLM alongside your own tools.
 
-* [  JavaScript ](#tab-panel-5722)
-* [  TypeScript ](#tab-panel-5723)
+* [  JavaScript ](#tab-panel-5844)
+* [  TypeScript ](#tab-panel-5845)
 
 JavaScript
 
@@ -835,8 +835,8 @@ Compaction summarizes older messages to keep conversations within token limits. 
 
 ### Setup
 
-* [  JavaScript ](#tab-panel-5736)
-* [  TypeScript ](#tab-panel-5737)
+* [  JavaScript ](#tab-panel-5856)
+* [  TypeScript ](#tab-panel-5857)
 
 JavaScript
 
@@ -899,9 +899,7 @@ const session = Session.create(this)
 
       minTailMessages: 2,
 
-      tokenCounter: async (messages) =>
-
-        estimateWithYourTokenizer({ messages }),
+      tokenCounter: async (messages) => estimateWithYourTokenizer({ messages }),
 
     }),
 
@@ -925,8 +923,8 @@ When `getHistory()` is called, compaction overlays are applied transparently —
 
 ### Manual compaction
 
-* [  JavaScript ](#tab-panel-5730)
-* [  TypeScript ](#tab-panel-5731)
+* [  JavaScript ](#tab-panel-5852)
+* [  TypeScript ](#tab-panel-5853)
 
 JavaScript
 
@@ -964,6 +962,10 @@ const overlays = await session.getCompactions();
 
 When `.compactAfter(threshold)` is set, `appendMessage()` checks the estimated token count after each write. If it exceeds the threshold, `compact()` is called automatically. Auto-compaction failure is non-fatal — the message is already saved.
 
+Note
+
+Auto-compaction is checked **between turns** (on each `appendMessage()`), not within a turn. A single long, tool-heavy turn can grow past the model context window mid-flight, before the next check. `@cloudflare/think` adds opt-in mid-turn recovery on top of this — refer to [Context-window overflow recovery](https://developers.cloudflare.com/agents/harnesses/think/recovery/#context-window-overflow-recovery).
+
 By default, the estimate includes stored message parts plus the Session-managed frozen system prompt, so context blocks and cached prompts managed by `Session` contribute to the threshold. It does not include framework-specific prompt additions or tool schema serialization that happen outside `Session`.
 
 There are two token-counting decisions:
@@ -979,8 +981,8 @@ The flowed counter is invoked **per message** during the boundary walk. A tokeni
 
 Use a custom counter when you have model-reported usage or your own tokenizer:
 
-* [  JavaScript ](#tab-panel-5740)
-* [  TypeScript ](#tab-panel-5741)
+* [  JavaScript ](#tab-panel-5862)
+* [  TypeScript ](#tab-panel-5863)
 
 JavaScript
 
@@ -1062,8 +1064,8 @@ The default token estimation is heuristic (not tiktoken). It uses `max(chars/4, 
 
 ### Creating a SessionManager
 
-* [  JavaScript ](#tab-panel-5734)
-* [  TypeScript ](#tab-panel-5735)
+* [  JavaScript ](#tab-panel-5858)
+* [  TypeScript ](#tab-panel-5859)
 
 JavaScript
 
@@ -1129,8 +1131,8 @@ Context blocks, prompt caching, and compaction settings are propagated to all se
 
 ### Session lifecycle
 
-* [  JavaScript ](#tab-panel-5748)
-* [  TypeScript ](#tab-panel-5749)
+* [  JavaScript ](#tab-panel-5870)
+* [  TypeScript ](#tab-panel-5871)
 
 JavaScript
 
@@ -1222,8 +1224,8 @@ await manager.delete(sessionId);
 
 ### Accessing sessions
 
-* [  JavaScript ](#tab-panel-5732)
-* [  TypeScript ](#tab-panel-5733)
+* [  JavaScript ](#tab-panel-5854)
+* [  TypeScript ](#tab-panel-5855)
 
 JavaScript
 
@@ -1255,8 +1257,8 @@ const session = manager.getSession(sessionId);
 
 These delegate to the underlying Session and update the session's `updated_at` timestamp:
 
-* [  JavaScript ](#tab-panel-5750)
-* [  TypeScript ](#tab-panel-5751)
+* [  JavaScript ](#tab-panel-5872)
+* [  TypeScript ](#tab-panel-5873)
 
 JavaScript
 
@@ -1344,8 +1346,8 @@ await manager.deleteMessages(sessionId, ["msg-1"]);
 
 Fork a session at a specific message — copies history up to that point into a new session:
 
-* [  JavaScript ](#tab-panel-5738)
-* [  TypeScript ](#tab-panel-5739)
+* [  JavaScript ](#tab-panel-5860)
+* [  TypeScript ](#tab-panel-5861)
 
 JavaScript
 
@@ -1371,8 +1373,8 @@ const forked = await manager.fork(sessionId, atMessageId, "Forked Chat");
 
 ### Compaction helpers
 
-* [  JavaScript ](#tab-panel-5746)
-* [  TypeScript ](#tab-panel-5747)
+* [  JavaScript ](#tab-panel-5868)
+* [  TypeScript ](#tab-panel-5869)
 
 JavaScript
 
@@ -1436,8 +1438,8 @@ const continuation = await manager.compactAndSplit(
 
 ### Usage tracking
 
-* [  JavaScript ](#tab-panel-5742)
-* [  TypeScript ](#tab-panel-5743)
+* [  JavaScript ](#tab-panel-5864)
+* [  TypeScript ](#tab-panel-5865)
 
 JavaScript
 
@@ -1459,8 +1461,8 @@ await manager.addUsage(sessionId, inputTokens, outputTokens, cost);
 
 ### Cross-session search
 
-* [  JavaScript ](#tab-panel-5744)
-* [  TypeScript ](#tab-panel-5745)
+* [  JavaScript ](#tab-panel-5866)
+* [  TypeScript ](#tab-panel-5867)
 
 JavaScript
 
@@ -1498,8 +1500,8 @@ const tools = await manager.tools();
 
 Implement any of the four provider interfaces to plug in your own storage:
 
-* [  JavaScript ](#tab-panel-5752)
-* [  TypeScript ](#tab-panel-5753)
+* [  JavaScript ](#tab-panel-5874)
+* [  TypeScript ](#tab-panel-5875)
 
 JavaScript
 
@@ -1611,8 +1613,8 @@ const mySearch: SearchProvider = {
 
 You can also implement `SessionProvider` to replace the SQLite storage entirely:
 
-* [  JavaScript ](#tab-panel-5754)
-* [  TypeScript ](#tab-panel-5755)
+* [  JavaScript ](#tab-panel-5876)
+* [  TypeScript ](#tab-panel-5877)
 
 JavaScript
 
@@ -1803,8 +1805,8 @@ npx wrangler hyperdrive create my-session-db \
 
 Then add the Hyperdrive binding to `wrangler.jsonc`:
 
-* [  wrangler.jsonc ](#tab-panel-5700)
-* [  wrangler.toml ](#tab-panel-5701)
+* [  wrangler.jsonc ](#tab-panel-5822)
+* [  wrangler.toml ](#tab-panel-5823)
 
 JSONC
 
@@ -1984,8 +1986,8 @@ pnpm add pg
 bun add pg
 ```
 
-* [  JavaScript ](#tab-panel-5756)
-* [  TypeScript ](#tab-panel-5757)
+* [  JavaScript ](#tab-panel-5878)
+* [  TypeScript ](#tab-panel-5879)
 
 JavaScript
 

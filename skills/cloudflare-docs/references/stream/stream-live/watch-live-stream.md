@@ -26,7 +26,7 @@ Whether you use the Stream Player or a custom player with a manifest, you can re
 
 Use a Live Input ID in instances where a player should always show the active broadcast, if there is one, or a "Stream has not started" message if the input is idle. This option is best for cases where a page is dedicated to a creator, channel, or recurring program. The Live Input ID is provisioned for you when you create the input; it will not change.
 
-Use a Video ID in instances where a player should be used to display a single broadcast or its recording once the broadcast has concluded. This option is best for cases where a page is dedicated to a one-time event, specific episode/occurance, or date. There is a _new_ Video ID generated for each broadcast _when it starts._
+Use a Video ID in instances where a player should be used to display a single broadcast or its recording once the broadcast has concluded. This option is best for cases where a page is dedicated to a one-time event, specific episode/occurrence, or date. There is a _new_ Video ID generated for each broadcast _when it starts._
 
 Using DVR mode, explained below, there are additional considerations.
 
