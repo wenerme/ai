@@ -49,7 +49,7 @@ Inside Codex, run `/plugins`, then search for and install **Cloudflare**. This i
 4. **Try a prompt**  
 For example:  
 ```  
-Build a multi-tenant SaaS backend where each customer gets an isolated D1 database.  
+Connect my Worker to an existing Postgres database using Hyperdrive for connection pooling.  
 ```
 
 1. **Download Codex**  

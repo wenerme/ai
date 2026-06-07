@@ -54,6 +54,8 @@ The `session_id` must be at most 256 characters.
 
 When `session_id` is set, sticky routing activates on any successful request — even before cache usage is observed — so that subsequent requests in the same session benefit from prompt caching from the start. Without `session_id`, sticky routing only activates after a cache hit is detected.
 
+When using router models like [Auto Router](/docs/guides/routing/routers/auto-router) or [Pareto Router](/docs/guides/routing/routers/pareto-router), sticky routing also pins the **resolved model** — not just the provider. This prevents the router from selecting a different model on each turn of a conversation. See [Auto Router — Session Stickiness](/docs/guides/routing/routers/auto-router#session-stickiness) for details.
+
 ## Inspecting cache usage
 
 To see how much caching saved on each generation, you can:

@@ -141,8 +141,8 @@
   },
   "guides/routing/routers/auto-router.md": {
     "url": "https://openrouter.ai/docs/guides/routing/routers/auto-router.md",
-    "size": 9616,
-    "updatedAt": "2026-05-27T00:43:56.451Z"
+    "size": 12943,
+    "updatedAt": "2026-06-07T00:47:19.953Z"
   },
   "guides/routing/routers/body-builder.md": {
     "url": "https://openrouter.ai/docs/guides/routing/routers/body-builder.md",
@@ -416,8 +416,8 @@
   },
   "guides/best-practices/prompt-caching.md": {
     "url": "https://openrouter.ai/docs/guides/best-practices/prompt-caching.md",
-    "size": 18676,
-    "updatedAt": "2026-05-29T00:46:37.080Z"
+    "size": 19103,
+    "updatedAt": "2026-06-07T00:50:25.343Z"
   },
   "guides/best-practices/uptime-optimization.md": {
     "url": "https://openrouter.ai/docs/guides/best-practices/uptime-optimization.md",

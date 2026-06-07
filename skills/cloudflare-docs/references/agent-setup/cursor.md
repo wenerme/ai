@@ -36,7 +36,7 @@ In Cursor, run the following command or install from the [Cursor Marketplace ↗
 3. **Try a prompt**  
 For example:  
 ```  
-Add real-time collaboration to my app using Durable Objects with WebSocket hibernation.  
+Build a multi-tenant SaaS backend where each customer gets an isolated D1 database.  
 ```
 
 ## Cloudflare platform access

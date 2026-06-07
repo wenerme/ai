@@ -119,6 +119,89 @@ The response includes the `model` field showing which model was actually used:
 3. **Request Forwarding**: Your request is forwarded to the selected model
 4. **Response Tracking**: The response includes metadata showing which model was used
 
+## Session Stickiness
+
+The Auto Router pins both the selected **model** and **provider** so that subsequent requests in the same conversation route to the same place. This ensures consistent behavior within a conversation and maximizes [prompt cache](/docs/guides/best-practices/prompt-caching) hits.
+
+Stickiness applies at two levels:
+
+* **Implicit (automatic)**: OpenRouter derives a conversation fingerprint from your messages (hashing the first system message and first user message). Once the provider reports prompt cache usage, the model and provider are pinned for that conversation. No configuration needed.
+* **Explicit (`session_id`)**: When you include a `session_id`, stickiness kicks in on the first successful response — even before cache usage is observed. This is recommended for multi-turn conversations and agent workflows where you want consistent routing from the start.
+
+In both cases, the cache expires after **5 minutes** of inactivity. Each successful request resets the timer. If the cached provider returns an error, the cache is not updated, allowing the next request to be re-routed.
+
+For full details on how sticky routing works, cache key granularity, and the `x-session-id` header, see [Provider Sticky Routing](/docs/guides/best-practices/prompt-caching#provider-sticky-routing).
+
+### Example with `session_id`
+
+```typescript title="TypeScript SDK"
+const completion = await openRouter.chat.send({
+  model: 'openrouter/auto',
+  session_id: 'my-conversation-123',
+  messages: [
+    {
+      role: 'user',
+      content: 'Explain quantum entanglement',
+    },
+  ],
+});
+
+// Subsequent requests with the same session_id will use the same model and provider
+const followUp = await openRouter.chat.send({
+  model: 'openrouter/auto',
+  session_id: 'my-conversation-123',
+  messages: [
+    { role: 'user', content: 'Explain quantum entanglement' },
+    { role: 'assistant', content: completion.choices[0].message.content ?? '' },
+    { role: 'user', content: 'Now explain it to a 5-year-old' },
+  ],
+});
+```
+
+```typescript title="TypeScript (fetch)"
+const response = await fetch('https://openrouter.ai/api/v1/chat/completions', {
+  method: 'POST',
+  headers: {
+    Authorization: 'Bearer <OPENROUTER_API_KEY>',
+    'Content-Type': 'application/json',
+  },
+  body: JSON.stringify({
+    model: 'openrouter/auto',
+    session_id: 'my-conversation-123',
+    messages: [
+      {
+        role: 'user',
+        content: 'Explain quantum entanglement',
+      },
+    ],
+  }),
+});
+```
+
+```python title="Python"
+response = requests.post(
+  url="https://openrouter.ai/api/v1/chat/completions",
+  headers={
+    "Authorization": "Bearer <OPENROUTER_API_KEY>",
+    "Content-Type": "application/json",
+  },
+  data=json.dumps({
+    "model": "openrouter/auto",
+    "session_id": "my-conversation-123",
+    "messages": [
+      {
+        "role": "user",
+        "content": "Explain quantum entanglement"
+      }
+    ]
+  })
+)
+```
+
+### Why It Matters for the Auto Router
+
+Unlike using a fixed model, the Auto Router selects a different model each time based on your prompt. Session stickiness is especially important here because it also pins the **model selection** — not just the provider. Without it, you could get different models on each turn of a conversation, leading to inconsistent behavior and wasted prompt cache.
+
 ## Supported Models
 
 The Auto Router selects from a curated set of high-quality models including:
