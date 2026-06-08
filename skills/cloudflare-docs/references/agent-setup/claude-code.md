@@ -47,7 +47,7 @@ In Claude Code, run these two slash commands. This installs Cloudflare Skills an
 4. **Try a prompt**  
 For example:  
 ```  
-Create a Logpush job to stream Workers analytics to my data warehouse.  
+Set up a KV namespace for edge-cached session storage in my Worker.  
 ```
 
 ## Cloudflare platform access

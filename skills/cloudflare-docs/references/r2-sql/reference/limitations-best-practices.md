@@ -39,9 +39,9 @@ This page summarizes supported features, limitations, and best practices.
 | Derived tables (FROM subqueries)                        | Yes       | Can be nested and joined. LATERAL derived tables not supported.            |
 | Self-joins                                              | Yes       | Same table with different aliases                                          |
 | Window functions (OVER)                                 | No        |                                                                            |
-| SELECT DISTINCT                                         | No        | Use approx\_distinct                                                       |
+| SELECT DISTINCT                                         | Yes       |                                                                            |
 | OFFSET                                                  | No        |                                                                            |
-| UNION / INTERSECT / EXCEPT                              | No        |                                                                            |
+| UNION / INTERSECT / EXCEPT                              | Yes       | UNION ALL also supported                                                   |
 | INSERT / UPDATE / DELETE                                | No        | Read-only                                                                  |
 | CREATE / DROP / ALTER                                   | No        | Read-only                                                                  |
 
@@ -51,19 +51,17 @@ For the full SQL syntax, refer to the [SQL reference](https://developers.cloudfl
 
 ## Unsupported SQL features
 
-| Feature                                                            | Error                                                 |
-| ------------------------------------------------------------------ | ----------------------------------------------------- |
-| SELECT DISTINCT                                                    | unsupported feature: SELECT DISTINCT is not supported |
-| OFFSET                                                             | unsupported feature: OFFSET clause is not supported   |
-| UNION / INTERSECT / EXCEPT                                         | Set operations not supported                          |
-| Window functions (OVER)                                            | unsupported feature: window functions (OVER clause)   |
-| INSERT / UPDATE / DELETE                                           | only read-only queries are allowed                    |
-| CREATE / DROP / ALTER                                              | only read-only queries are allowed                    |
-| UNNEST / PIVOT / UNPIVOT                                           | Not supported                                         |
-| Wildcard modifiers (ILIKE, EXCLUDE, EXCEPT, REPLACE, RENAME on \*) | Not supported                                         |
-| Nested (parenthesized) joins                                       | Not supported                                         |
-| LATERAL derived tables                                             | Not supported                                         |
-| LATERAL VIEW / QUALIFY                                             | Not supported                                         |
+| Feature                                                            | Error                                               |
+| ------------------------------------------------------------------ | --------------------------------------------------- |
+| OFFSET                                                             | unsupported feature: OFFSET clause is not supported |
+| Window functions (OVER)                                            | unsupported feature: window functions (OVER clause) |
+| INSERT / UPDATE / DELETE                                           | only read-only queries are allowed                  |
+| CREATE / DROP / ALTER                                              | only read-only queries are allowed                  |
+| UNNEST / PIVOT / UNPIVOT                                           | Not supported                                       |
+| Wildcard modifiers (ILIKE, EXCLUDE, EXCEPT, REPLACE, RENAME on \*) | Not supported                                       |
+| Nested (parenthesized) joins                                       | Not supported                                       |
+| LATERAL derived tables                                             | Not supported                                       |
+| LATERAL VIEW / QUALIFY                                             | Not supported                                       |
 
 ---
 

@@ -59,7 +59,7 @@ opencode
 5. **Try a prompt**  
 For example:  
 ```  
-Add a D1 database to my Worker and create a users table with full CRUD endpoints.  
+Configure caching rules and cache TTLs to reduce origin load for my e-commerce store.  
 ```
 
 ## Cloudflare platform access

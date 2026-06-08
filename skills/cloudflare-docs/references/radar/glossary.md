@@ -86,6 +86,12 @@ Above the visualization, a table details the prefix origin, including the origin
 
 Hovering over a link in the diagram reveals a tooltip with the connected ASNs, the observing BGP route collectors (from [RIPE RIS ↗](https://ris.ripe.net/docs/route-collectors/) and [RouteViews ↗](https://www.routeviews.org/routeviews/collectors/)), and the last update timestamp.
 
+## Bot vs. human traffic
+
+The percentage of HTTP requests classified as bot versus human, based on [bot scores](https://developers.cloudflare.com/bots/concepts/bot-score/). Requests with a bot score between 1 and 29 are classified as likely automated (bot), while requests with a score of 30 or above are classified as likely human. For more information, refer to [Bot classes](https://developers.cloudflare.com/radar/concepts/bot-classes/).
+
+By default, Radar shows bot vs. human traffic for requests to HTML content. This filter is meant to represent traditional web traffic by excluding API calls, asset requests (images, scripts, fonts), and other machine-to-machine requests.
+
 ## Certificates
 
 Encryption is a critical part of a safe Internet. SSL/TLS is the standard security technology for establishing an encrypted link between a client and a server.

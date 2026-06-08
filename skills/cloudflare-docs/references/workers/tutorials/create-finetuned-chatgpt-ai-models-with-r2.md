@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 # Create a fine-tuned OpenAI model with R2
 
-**Last reviewed:**  almost 2 years ago 
+**Last reviewed:**  about 2 years ago 
 
 In this tutorial, you will use the [OpenAI ↗](https://openai.com) API and [Cloudflare R2](https://developers.cloudflare.com/r2) to create a [fine-tuned model ↗](https://platform.openai.com/docs/guides/fine-tuning).
 
@@ -110,8 +110,8 @@ A binding is how your Worker interacts with external resources such as the R2 bu
 
 To bind the R2 bucket to your Worker, add the following to your Wrangler file. Update the binding property to a valid JavaScript variable identifier. Replace `<YOUR_BUCKET_NAME>` with the name of the bucket you created in [step 2](#2-upload-a-fine-tune-document-to-r2):
 
-* [  wrangler.jsonc ](#tab-panel-10015)
-* [  wrangler.toml ](#tab-panel-10016)
+* [  wrangler.jsonc ](#tab-panel-11581)
+* [  wrangler.toml ](#tab-panel-11582)
 
 JSONC
 

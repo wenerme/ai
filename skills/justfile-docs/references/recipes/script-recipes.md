@@ -12,3 +12,6 @@ the value of `set shell`.
 
 The body of the recipe is evaluated, written to disk in the temporary
 directory, and run by passing its path as an argument to `COMMAND`.
+
+With `set default-script := true`<sup>master</sup>, recipes default to script
+recipes instead of linewise recipes.
