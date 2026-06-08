@@ -6,13 +6,12 @@ title: useVueValidTemplateRoot
 description: Learn more about useVueValidTemplateRoot
 ---
 
-> **caution**: This rule is part of the [nursery](/linter/#nursery) group. This means that it is experimental and the behavior can change at any time.
-
 ## Summary
 - Rule available since: `v2.3.11`
-- Diagnostic Category: [`lint/nursery/useVueValidTemplateRoot`](/reference/diagnostics#diagnostic-category)
+- Diagnostic Category: [`lint/correctness/useVueValidTemplateRoot`](/reference/diagnostics#diagnostic-category)
+- This rule is **recommended**, meaning it is enabled by default.
 - This rule has an [**unsafe**](/linter/#unsafe-fixes) fix.
-- The default severity of this rule is [**information**](/reference/diagnostics#information).
+- The default severity of this rule is [**error**](/reference/diagnostics#error).
 - This rule belongs to the following domains:
   - [`vue`](/linter/domains#vue)
 - Sources: 
@@ -23,7 +22,7 @@ description: Learn more about useVueValidTemplateRoot
 {
 	"linter": {
 		"rules": {
-			"nursery": {
+			"correctness": {
 				"useVueValidTemplateRoot": "error"
 			}
 		}
@@ -69,5 +68,5 @@ the element must contain content.
 - [Disable a rule](/linter/#disable-a-rule)
 - [Configure the code fix](/linter#configure-the-code-fix)
 - [Rule options](/linter/#rule-options)
-- [Source Code (Edit this Page)](https://github.com/biomejs/biome/blob/main/crates/biome_html_analyze/src/lint/nursery/use_vue_valid_template_root.rs)
-- [Test Cases](https://github.com/biomejs/biome/blob/main/crates/biome_html_analyze/tests/specs/nursery/useVueValidTemplateRoot)
+- [Source Code (Edit this Page)](https://github.com/biomejs/biome/blob/main/crates/biome_html_analyze/src/lint/correctness/use_vue_valid_template_root.rs)
+- [Test Cases](https://github.com/biomejs/biome/blob/main/crates/biome_html_analyze/tests/specs/correctness/useVueValidTemplateRoot)

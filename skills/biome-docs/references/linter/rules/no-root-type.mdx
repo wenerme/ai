@@ -6,11 +6,10 @@ title: noRootType
 description: Learn more about noRootType
 ---
 
-> **caution**: This rule is part of the [nursery](/linter/#nursery) group. This means that it is experimental and the behavior can change at any time.
-
 ## Summary
 - Rule available since: `v2.3.12`
-- Diagnostic Category: [`lint/nursery/noRootType`](/reference/diagnostics#diagnostic-category)
+- Diagnostic Category: [`lint/style/noRootType`](/reference/diagnostics#diagnostic-category)
+- This rule isn't recommended, so you need to enable it.
 - This rule doesn't have a fix.
 - The default severity of this rule is [**information**](/reference/diagnostics#information).
 - Sources: 
@@ -21,7 +20,7 @@ description: Learn more about noRootType
 {
 	"linter": {
 		"rules": {
-			"nursery": {
+			"style": {
 				"noRootType": "error"
 			}
 		}
@@ -42,7 +41,7 @@ Prevent the usage of certain root types (e.g. `mutation` and/or `subscription`)
 {
 	"linter": {
 		"rules": {
-			"nursery": {
+			"style": {
 				"noRootType": {
 					"options": {
 						"disallow": [
@@ -86,7 +85,7 @@ Default `[]`
 {
 	"linter": {
 		"rules": {
-			"nursery": {
+			"style": {
 				"noRootType": {
 					"options": {
 						"disallow": [
@@ -114,5 +113,5 @@ type Subscription {
 - [Disable a rule](/linter/#disable-a-rule)
 - [Configure the code fix](/linter#configure-the-code-fix)
 - [Rule options](/linter/#rule-options)
-- [Source Code (Edit this Page)](https://github.com/biomejs/biome/blob/main/crates/biome_graphql_analyze/src/lint/nursery/no_root_type.rs)
-- [Test Cases](https://github.com/biomejs/biome/blob/main/crates/biome_graphql_analyze/tests/specs/nursery/noRootType)
+- [Source Code (Edit this Page)](https://github.com/biomejs/biome/blob/main/crates/biome_graphql_analyze/src/lint/style/no_root_type.rs)
+- [Test Cases](https://github.com/biomejs/biome/blob/main/crates/biome_graphql_analyze/tests/specs/style/noRootType)

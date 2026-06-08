@@ -6,13 +6,12 @@ title: useVueValidVElseIf
 description: Learn more about useVueValidVElseIf
 ---
 
-> **caution**: This rule is part of the [nursery](/linter/#nursery) group. This means that it is experimental and the behavior can change at any time.
-
 ## Summary
 - Rule available since: `v2.3.6`
-- Diagnostic Category: [`lint/nursery/useVueValidVElseIf`](/reference/diagnostics#diagnostic-category)
+- Diagnostic Category: [`lint/correctness/useVueValidVElseIf`](/reference/diagnostics#diagnostic-category)
+- This rule is **recommended**, meaning it is enabled by default.
 - This rule doesn't have a fix.
-- The default severity of this rule is [**information**](/reference/diagnostics#information).
+- The default severity of this rule is [**error**](/reference/diagnostics#error).
 - This rule belongs to the following domains:
   - [`vue`](/linter/domains#vue)
 - Sources: 
@@ -23,7 +22,7 @@ description: Learn more about useVueValidVElseIf
 {
 	"linter": {
 		"rules": {
-			"nursery": {
+			"correctness": {
 				"useVueValidVElseIf": "error"
 			}
 		}
@@ -87,5 +86,5 @@ Biome flags these cases:
 - [Disable a rule](/linter/#disable-a-rule)
 - [Configure the code fix](/linter#configure-the-code-fix)
 - [Rule options](/linter/#rule-options)
-- [Source Code (Edit this Page)](https://github.com/biomejs/biome/blob/main/crates/biome_html_analyze/src/lint/nursery/use_vue_valid_v_else_if.rs)
-- [Test Cases](https://github.com/biomejs/biome/blob/main/crates/biome_html_analyze/tests/specs/nursery/useVueValidVElseIf)
+- [Source Code (Edit this Page)](https://github.com/biomejs/biome/blob/main/crates/biome_html_analyze/src/lint/correctness/use_vue_valid_v_else_if.rs)
+- [Test Cases](https://github.com/biomejs/biome/blob/main/crates/biome_html_analyze/tests/specs/correctness/useVueValidVElseIf)

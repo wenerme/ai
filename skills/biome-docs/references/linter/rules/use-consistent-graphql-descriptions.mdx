@@ -6,11 +6,10 @@ title: useConsistentGraphqlDescriptions
 description: Learn more about useConsistentGraphqlDescriptions
 ---
 
-> **caution**: This rule is part of the [nursery](/linter/#nursery) group. This means that it is experimental and the behavior can change at any time.
-
 ## Summary
 - Rule available since: `v2.3.6`
-- Diagnostic Category: [`lint/nursery/useConsistentGraphqlDescriptions`](/reference/diagnostics#diagnostic-category)
+- Diagnostic Category: [`lint/style/useConsistentGraphqlDescriptions`](/reference/diagnostics#diagnostic-category)
+- This rule isn't recommended, so you need to enable it.
 - This rule doesn't have a fix.
 - The default severity of this rule is [**information**](/reference/diagnostics#information).
 - Sources: 
@@ -21,7 +20,7 @@ description: Learn more about useConsistentGraphqlDescriptions
 {
 	"linter": {
 		"rules": {
-			"nursery": {
+			"style": {
 				"useConsistentGraphqlDescriptions": "error"
 			}
 		}
@@ -45,7 +44,7 @@ enum EnumValue {
 }
 ```
 
-<pre class="language-text"><code class="language-text">code-block.graphql:2:3 <a href="https://biomejs.dev/linter/rules/use-consistent-graphql-descriptions">lint/nursery/useConsistentGraphqlDescriptions</a> ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━  <strong><span style="color: lightgreen;">ℹ</span></strong> <span style="color: lightgreen;">Unexpected inline description style.</span>      <strong>1 │ </strong>enum EnumValue &#123;  <strong><span style="color: Tomato;">&gt;</span></strong> <strong>2 │ </strong>  &quot;this is a description&quot;   <strong>   │ </strong>  <strong><span style="color: Tomato;">^</span></strong><strong><span style="color: Tomato;">^</span></strong><strong><span style="color: Tomato;">^</span></strong><strong><span style="color: Tomato;">^</span></strong><strong><span style="color: Tomato;">^</span></strong><strong><span style="color: Tomato;">^</span></strong><strong><span style="color: Tomato;">^</span></strong><strong><span style="color: Tomato;">^</span></strong><strong><span style="color: Tomato;">^</span></strong><strong><span style="color: Tomato;">^</span></strong><strong><span style="color: Tomato;">^</span></strong><strong><span style="color: Tomato;">^</span></strong><strong><span style="color: Tomato;">^</span></strong><strong><span style="color: Tomato;">^</span></strong><strong><span style="color: Tomato;">^</span></strong><strong><span style="color: Tomato;">^</span></strong><strong><span style="color: Tomato;">^</span></strong><strong><span style="color: Tomato;">^</span></strong><strong><span style="color: Tomato;">^</span></strong><strong><span style="color: Tomato;">^</span></strong><strong><span style="color: Tomato;">^</span></strong><strong><span style="color: Tomato;">^</span></strong><strong><span style="color: Tomato;">^</span></strong>    <strong>3 │ </strong>  DEFAULT    <strong>4 │ </strong>&#125;    <strong><span style="color: lightgreen;">ℹ</span></strong> <span style="color: lightgreen;">To stay consistent within the project, write the description block style.</span>    <strong><span style="color: lightgreen;">ℹ</span></strong> <span style="color: lightgreen;">This rule belongs to the nursery group, which means it is not yet stable and may change in the future. Visit </span><span style="color: lightgreen;"><a href="https://biomejs.dev/linter/#nursery">https://biomejs.dev/linter/#nursery</a></span><span style="color: lightgreen;"> for more information.</span>  </code></pre>
+<pre class="language-text"><code class="language-text">code-block.graphql:2:3 <a href="https://biomejs.dev/linter/rules/use-consistent-graphql-descriptions">lint/style/useConsistentGraphqlDescriptions</a> ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━  <strong><span style="color: lightgreen;">ℹ</span></strong> <span style="color: lightgreen;">Unexpected inline description style.</span>      <strong>1 │ </strong>enum EnumValue &#123;  <strong><span style="color: Tomato;">&gt;</span></strong> <strong>2 │ </strong>  &quot;this is a description&quot;   <strong>   │ </strong>  <strong><span style="color: Tomato;">^</span></strong><strong><span style="color: Tomato;">^</span></strong><strong><span style="color: Tomato;">^</span></strong><strong><span style="color: Tomato;">^</span></strong><strong><span style="color: Tomato;">^</span></strong><strong><span style="color: Tomato;">^</span></strong><strong><span style="color: Tomato;">^</span></strong><strong><span style="color: Tomato;">^</span></strong><strong><span style="color: Tomato;">^</span></strong><strong><span style="color: Tomato;">^</span></strong><strong><span style="color: Tomato;">^</span></strong><strong><span style="color: Tomato;">^</span></strong><strong><span style="color: Tomato;">^</span></strong><strong><span style="color: Tomato;">^</span></strong><strong><span style="color: Tomato;">^</span></strong><strong><span style="color: Tomato;">^</span></strong><strong><span style="color: Tomato;">^</span></strong><strong><span style="color: Tomato;">^</span></strong><strong><span style="color: Tomato;">^</span></strong><strong><span style="color: Tomato;">^</span></strong><strong><span style="color: Tomato;">^</span></strong><strong><span style="color: Tomato;">^</span></strong><strong><span style="color: Tomato;">^</span></strong>    <strong>3 │ </strong>  DEFAULT    <strong>4 │ </strong>&#125;    <strong><span style="color: lightgreen;">ℹ</span></strong> <span style="color: lightgreen;">To stay consistent within the project, write the description block style.</span>  </code></pre>
 
 #### Valid
 
@@ -73,7 +72,7 @@ Default `"block"`
 {
 	"linter": {
 		"rules": {
-			"nursery": {
+			"style": {
 				"useConsistentGraphqlDescriptions": {
 					"options": {
 						"style": "inline"
@@ -102,5 +101,5 @@ enum EnumValue {
 - [Disable a rule](/linter/#disable-a-rule)
 - [Configure the code fix](/linter#configure-the-code-fix)
 - [Rule options](/linter/#rule-options)
-- [Source Code (Edit this Page)](https://github.com/biomejs/biome/blob/main/crates/biome_graphql_analyze/src/lint/nursery/use_consistent_graphql_descriptions.rs)
-- [Test Cases](https://github.com/biomejs/biome/blob/main/crates/biome_graphql_analyze/tests/specs/nursery/useConsistentGraphqlDescriptions)
+- [Source Code (Edit this Page)](https://github.com/biomejs/biome/blob/main/crates/biome_graphql_analyze/src/lint/style/use_consistent_graphql_descriptions.rs)
+- [Test Cases](https://github.com/biomejs/biome/blob/main/crates/biome_graphql_analyze/tests/specs/style/useConsistentGraphqlDescriptions)

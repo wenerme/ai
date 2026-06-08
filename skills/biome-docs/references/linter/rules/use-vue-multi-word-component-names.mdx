@@ -6,13 +6,12 @@ title: useVueMultiWordComponentNames
 description: Learn more about useVueMultiWordComponentNames
 ---
 
-> **caution**: This rule is part of the [nursery](/linter/#nursery) group. This means that it is experimental and the behavior can change at any time.
-
 ## Summary
 - Rule available since: `v2.2.3`
-- Diagnostic Category: [`lint/nursery/useVueMultiWordComponentNames`](/reference/diagnostics#diagnostic-category)
+- Diagnostic Category: [`lint/style/useVueMultiWordComponentNames`](/reference/diagnostics#diagnostic-category)
+- This rule is **recommended**, meaning it is enabled by default.
 - This rule doesn't have a fix.
-- The default severity of this rule is [**error**](/reference/diagnostics#error).
+- The default severity of this rule is [**information**](/reference/diagnostics#information).
 - This rule belongs to the following domains:
   - [`vue`](/linter/domains#vue)
 - Sources: 
@@ -23,7 +22,7 @@ description: Learn more about useVueMultiWordComponentNames
 {
 	"linter": {
 		"rules": {
-			"nursery": {
+			"style": {
 				"useVueMultiWordComponentNames": "error"
 			}
 		}
@@ -60,7 +59,7 @@ export default {
 </script>
 ```
 
-<pre class="language-text"><code class="language-text">code-block.vue:2:9 <a href="https://biomejs.dev/linter/rules/use-vue-multi-word-component-names">lint/nursery/useVueMultiWordComponentNames</a> ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━  <strong><span style="color: Tomato;">✖</span></strong> <span style="color: Tomato;">This Component's name </span><span style="color: Tomato;"><strong>&quot;Foo&quot;</strong></span><span style="color: Tomato;"> only contains one word.</span>      <strong>1 │ </strong>export default &#123;  <strong><span style="color: Tomato;">&gt;</span></strong> <strong>2 │ </strong>  name: &quot;Foo&quot;   <strong>   │ </strong>        <strong><span style="color: Tomato;">^</span></strong><strong><span style="color: Tomato;">^</span></strong><strong><span style="color: Tomato;">^</span></strong><strong><span style="color: Tomato;">^</span></strong><strong><span style="color: Tomato;">^</span></strong>    <strong>3 │ </strong>&#125;;    <strong>4 │ </strong>    <strong><span style="color: lightgreen;">ℹ</span></strong> <span style="color: lightgreen;">Single-word component names can collide with HTML elements and are less descriptive.</span>    <strong><span style="color: lightgreen;">ℹ</span></strong> <span style="color: lightgreen;">Rename the component to have 2 or more words (e.g. &quot;FooItem&quot;, or &quot;BarView&quot;).</span>    <strong><span style="color: lightgreen;">ℹ</span></strong> <span style="color: lightgreen;">This rule belongs to the nursery group, which means it is not yet stable and may change in the future. Visit </span><span style="color: lightgreen;"><a href="https://biomejs.dev/linter/#nursery">https://biomejs.dev/linter/#nursery</a></span><span style="color: lightgreen;"> for more information.</span>  </code></pre>
+<pre class="language-text"><code class="language-text">code-block.vue:2:9 <a href="https://biomejs.dev/linter/rules/use-vue-multi-word-component-names">lint/style/useVueMultiWordComponentNames</a> ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━  <strong><span style="color: lightgreen;">ℹ</span></strong> <span style="color: lightgreen;">This Component's name </span><span style="color: lightgreen;"><strong>&quot;Foo&quot;</strong></span><span style="color: lightgreen;"> only contains one word.</span>      <strong>1 │ </strong>export default &#123;  <strong><span style="color: Tomato;">&gt;</span></strong> <strong>2 │ </strong>  name: &quot;Foo&quot;   <strong>   │ </strong>        <strong><span style="color: Tomato;">^</span></strong><strong><span style="color: Tomato;">^</span></strong><strong><span style="color: Tomato;">^</span></strong><strong><span style="color: Tomato;">^</span></strong><strong><span style="color: Tomato;">^</span></strong>    <strong>3 │ </strong>&#125;;    <strong>4 │ </strong>    <strong><span style="color: lightgreen;">ℹ</span></strong> <span style="color: lightgreen;">Single-word component names can collide with HTML elements and are less descriptive.</span>    <strong><span style="color: lightgreen;">ℹ</span></strong> <span style="color: lightgreen;">Rename the component to have 2 or more words (e.g. &quot;FooItem&quot;, or &quot;BarView&quot;).</span>  </code></pre>
 
 ```js
 import { defineComponent } from "vue";
@@ -69,7 +68,7 @@ export default defineComponent({
 });
 ```
 
-<pre class="language-text"><code class="language-text">code-block.js:3:9 <a href="https://biomejs.dev/linter/rules/use-vue-multi-word-component-names">lint/nursery/useVueMultiWordComponentNames</a> ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━  <strong><span style="color: Tomato;">✖</span></strong> <span style="color: Tomato;">This Component's name </span><span style="color: Tomato;"><strong>&quot;Header&quot;</strong></span><span style="color: Tomato;"> only contains one word.</span>      <strong>1 │ </strong>import &#123; defineComponent &#125; from &quot;vue&quot;;    <strong>2 │ </strong>export default defineComponent(&#123;  <strong><span style="color: Tomato;">&gt;</span></strong> <strong>3 │ </strong>  name: &quot;Header&quot;   <strong>   │ </strong>        <strong><span style="color: Tomato;">^</span></strong><strong><span style="color: Tomato;">^</span></strong><strong><span style="color: Tomato;">^</span></strong><strong><span style="color: Tomato;">^</span></strong><strong><span style="color: Tomato;">^</span></strong><strong><span style="color: Tomato;">^</span></strong><strong><span style="color: Tomato;">^</span></strong><strong><span style="color: Tomato;">^</span></strong>    <strong>4 │ </strong>&#125;);    <strong>5 │ </strong>    <strong><span style="color: lightgreen;">ℹ</span></strong> <span style="color: lightgreen;">Single-word component names can collide with HTML elements and are less descriptive.</span>    <strong><span style="color: lightgreen;">ℹ</span></strong> <span style="color: lightgreen;">Rename the component to have 2 or more words (e.g. &quot;FooItem&quot;, or &quot;BarView&quot;).</span>    <strong><span style="color: lightgreen;">ℹ</span></strong> <span style="color: lightgreen;">This rule belongs to the nursery group, which means it is not yet stable and may change in the future. Visit </span><span style="color: lightgreen;"><a href="https://biomejs.dev/linter/#nursery">https://biomejs.dev/linter/#nursery</a></span><span style="color: lightgreen;"> for more information.</span>  </code></pre>
+<pre class="language-text"><code class="language-text">code-block.js:3:9 <a href="https://biomejs.dev/linter/rules/use-vue-multi-word-component-names">lint/style/useVueMultiWordComponentNames</a> ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━  <strong><span style="color: lightgreen;">ℹ</span></strong> <span style="color: lightgreen;">This Component's name </span><span style="color: lightgreen;"><strong>&quot;Header&quot;</strong></span><span style="color: lightgreen;"> only contains one word.</span>      <strong>1 │ </strong>import &#123; defineComponent &#125; from &quot;vue&quot;;    <strong>2 │ </strong>export default defineComponent(&#123;  <strong><span style="color: Tomato;">&gt;</span></strong> <strong>3 │ </strong>  name: &quot;Header&quot;   <strong>   │ </strong>        <strong><span style="color: Tomato;">^</span></strong><strong><span style="color: Tomato;">^</span></strong><strong><span style="color: Tomato;">^</span></strong><strong><span style="color: Tomato;">^</span></strong><strong><span style="color: Tomato;">^</span></strong><strong><span style="color: Tomato;">^</span></strong><strong><span style="color: Tomato;">^</span></strong><strong><span style="color: Tomato;">^</span></strong>    <strong>4 │ </strong>&#125;);    <strong>5 │ </strong>    <strong><span style="color: lightgreen;">ℹ</span></strong> <span style="color: lightgreen;">Single-word component names can collide with HTML elements and are less descriptive.</span>    <strong><span style="color: lightgreen;">ℹ</span></strong> <span style="color: lightgreen;">Rename the component to have 2 or more words (e.g. &quot;FooItem&quot;, or &quot;BarView&quot;).</span>  </code></pre>
 
 ```js
 import { createApp } from "vue";
@@ -78,7 +77,7 @@ createApp({
 }).mount("#app");
 ```
 
-<pre class="language-text"><code class="language-text">code-block.js:3:9 <a href="https://biomejs.dev/linter/rules/use-vue-multi-word-component-names">lint/nursery/useVueMultiWordComponentNames</a> ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━  <strong><span style="color: Tomato;">✖</span></strong> <span style="color: Tomato;">This Component's name </span><span style="color: Tomato;"><strong>&quot;Widget&quot;</strong></span><span style="color: Tomato;"> only contains one word.</span>      <strong>1 │ </strong>import &#123; createApp &#125; from &quot;vue&quot;;    <strong>2 │ </strong>createApp(&#123;  <strong><span style="color: Tomato;">&gt;</span></strong> <strong>3 │ </strong>  name: &quot;Widget&quot;   <strong>   │ </strong>        <strong><span style="color: Tomato;">^</span></strong><strong><span style="color: Tomato;">^</span></strong><strong><span style="color: Tomato;">^</span></strong><strong><span style="color: Tomato;">^</span></strong><strong><span style="color: Tomato;">^</span></strong><strong><span style="color: Tomato;">^</span></strong><strong><span style="color: Tomato;">^</span></strong><strong><span style="color: Tomato;">^</span></strong>    <strong>4 │ </strong>&#125;).mount(&quot;#app&quot;);    <strong>5 │ </strong>    <strong><span style="color: lightgreen;">ℹ</span></strong> <span style="color: lightgreen;">Single-word component names can collide with HTML elements and are less descriptive.</span>    <strong><span style="color: lightgreen;">ℹ</span></strong> <span style="color: lightgreen;">Rename the component to have 2 or more words (e.g. &quot;FooItem&quot;, or &quot;BarView&quot;).</span>    <strong><span style="color: lightgreen;">ℹ</span></strong> <span style="color: lightgreen;">This rule belongs to the nursery group, which means it is not yet stable and may change in the future. Visit </span><span style="color: lightgreen;"><a href="https://biomejs.dev/linter/#nursery">https://biomejs.dev/linter/#nursery</a></span><span style="color: lightgreen;"> for more information.</span>  </code></pre>
+<pre class="language-text"><code class="language-text">code-block.js:3:9 <a href="https://biomejs.dev/linter/rules/use-vue-multi-word-component-names">lint/style/useVueMultiWordComponentNames</a> ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━  <strong><span style="color: lightgreen;">ℹ</span></strong> <span style="color: lightgreen;">This Component's name </span><span style="color: lightgreen;"><strong>&quot;Widget&quot;</strong></span><span style="color: lightgreen;"> only contains one word.</span>      <strong>1 │ </strong>import &#123; createApp &#125; from &quot;vue&quot;;    <strong>2 │ </strong>createApp(&#123;  <strong><span style="color: Tomato;">&gt;</span></strong> <strong>3 │ </strong>  name: &quot;Widget&quot;   <strong>   │ </strong>        <strong><span style="color: Tomato;">^</span></strong><strong><span style="color: Tomato;">^</span></strong><strong><span style="color: Tomato;">^</span></strong><strong><span style="color: Tomato;">^</span></strong><strong><span style="color: Tomato;">^</span></strong><strong><span style="color: Tomato;">^</span></strong><strong><span style="color: Tomato;">^</span></strong><strong><span style="color: Tomato;">^</span></strong>    <strong>4 │ </strong>&#125;).mount(&quot;#app&quot;);    <strong>5 │ </strong>    <strong><span style="color: lightgreen;">ℹ</span></strong> <span style="color: lightgreen;">Single-word component names can collide with HTML elements and are less descriptive.</span>    <strong><span style="color: lightgreen;">ℹ</span></strong> <span style="color: lightgreen;">Rename the component to have 2 or more words (e.g. &quot;FooItem&quot;, or &quot;BarView&quot;).</span>  </code></pre>
 
 ### Valid
 
@@ -116,7 +115,7 @@ Additional single-word component names to ignore (case-insensitive). The rule al
 {
 	"linter": {
 		"rules": {
-			"nursery": {
+			"style": {
 				"useVueMultiWordComponentNames": {
 					"options": {
 						"ignores": [
@@ -146,5 +145,5 @@ export default {
 - [Disable a rule](/linter/#disable-a-rule)
 - [Configure the code fix](/linter#configure-the-code-fix)
 - [Rule options](/linter/#rule-options)
-- [Source Code (Edit this Page)](https://github.com/biomejs/biome/blob/main/crates/biome_js_analyze/src/lint/nursery/use_vue_multi_word_component_names.rs)
-- [Test Cases](https://github.com/biomejs/biome/blob/main/crates/biome_js_analyze/tests/specs/nursery/useVueMultiWordComponentNames)
+- [Source Code (Edit this Page)](https://github.com/biomejs/biome/blob/main/crates/biome_js_analyze/src/lint/style/use_vue_multi_word_component_names.rs)
+- [Test Cases](https://github.com/biomejs/biome/blob/main/crates/biome_js_analyze/tests/specs/style/useVueMultiWordComponentNames)

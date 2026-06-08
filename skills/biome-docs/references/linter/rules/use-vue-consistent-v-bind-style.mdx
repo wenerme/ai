@@ -6,11 +6,10 @@ title: useVueConsistentVBindStyle
 description: Learn more about useVueConsistentVBindStyle
 ---
 
-> **caution**: This rule is part of the [nursery](/linter/#nursery) group. This means that it is experimental and the behavior can change at any time.
-
 ## Summary
 - Rule available since: `v2.3.11`
-- Diagnostic Category: [`lint/nursery/useVueConsistentVBindStyle`](/reference/diagnostics#diagnostic-category)
+- Diagnostic Category: [`lint/style/useVueConsistentVBindStyle`](/reference/diagnostics#diagnostic-category)
+- This rule is **recommended**, meaning it is enabled by default.
 - This rule has an [**unsafe**](/linter/#unsafe-fixes) fix.
 - The default severity of this rule is [**information**](/reference/diagnostics#information).
 - This rule belongs to the following domains:
@@ -23,7 +22,7 @@ description: Learn more about useVueConsistentVBindStyle
 {
 	"linter": {
 		"rules": {
-			"nursery": {
+			"style": {
 				"useVueConsistentVBindStyle": "error"
 			}
 		}
@@ -48,6 +47,7 @@ Enforce a consistent style for `v-bind` in Vue templates.
 
 ```vue
 <div :foo="bar" />
+<div v-bind="props" />
 ```
 
 ## Options
@@ -60,7 +60,7 @@ Configures the preferred directive style. Default: `"shorthand"`.
 {
 	"linter": {
 		"rules": {
-			"nursery": {
+			"style": {
 				"useVueConsistentVBindStyle": {
 					"options": {
 						"style": "longhand"
@@ -92,5 +92,5 @@ Configures the preferred directive style. Default: `"shorthand"`.
 - [Disable a rule](/linter/#disable-a-rule)
 - [Configure the code fix](/linter#configure-the-code-fix)
 - [Rule options](/linter/#rule-options)
-- [Source Code (Edit this Page)](https://github.com/biomejs/biome/blob/main/crates/biome_html_analyze/src/lint/nursery/use_vue_consistent_v_bind_style.rs)
-- [Test Cases](https://github.com/biomejs/biome/blob/main/crates/biome_html_analyze/tests/specs/nursery/useVueConsistentVBindStyle)
+- [Source Code (Edit this Page)](https://github.com/biomejs/biome/blob/main/crates/biome_html_analyze/src/lint/style/use_vue_consistent_v_bind_style.rs)
+- [Test Cases](https://github.com/biomejs/biome/blob/main/crates/biome_html_analyze/tests/specs/style/useVueConsistentVBindStyle)

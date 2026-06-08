@@ -100,7 +100,7 @@ The response includes the `model` field showing which coding model was actually 
 ```json
 {
   "id": "gen-...",
-  "model": "anthropic/claude-opus-4.7",
+  "model": "anthropic/claude-opus-4.8",
   "choices": [
     {
       "message": {
@@ -125,6 +125,80 @@ The response includes the `model` field showing which coding model was actually 
 4. **Runtime fallback**: If the primary's endpoints are unavailable due to transient provider errors or rate limits, the request cascades through the same-tier fallbacks. Only when the entire tier is missing from the catalog does the router step into a neighboring tier.
 5. **Request forwarding**: Your request is forwarded to the selected model.
 
+## Session Stickiness
+
+The Pareto Router pins both the selected **model** and **provider** so that subsequent requests in the same conversation route to the same place. This ensures consistent behavior within a conversation and maximizes [prompt cache](/docs/guides/best-practices/prompt-caching) hits.
+
+Stickiness applies at two levels:
+
+* **Implicit (automatic)**: OpenRouter derives a conversation fingerprint from your messages (hashing the first system message and first user message). Once the provider reports prompt cache usage, the model and provider are pinned for that conversation. No configuration needed.
+* **Explicit (`session_id`)**: When you include a `session_id`, stickiness kicks in on the first successful response — even before cache usage is observed. This is recommended for multi-turn coding sessions and agent workflows where you want consistent routing from the start.
+
+In both cases, the cache expires after **5 minutes** of inactivity. Each successful request resets the timer. If the cached provider returns an error, the cache is not updated, allowing the next request to be re-routed.
+
+For full details on how sticky routing works, cache key granularity, and the `x-session-id` header, see [Provider Sticky Routing](/docs/guides/best-practices/prompt-caching#provider-sticky-routing).
+
+### Example with `session_id`
+
+```typescript title="TypeScript SDK"
+const completion = await openRouter.chat.send({
+  model: 'openrouter/pareto-code',
+  session_id: 'my-coding-session-123',
+  plugins: [
+    {
+      id: 'pareto-router',
+      min_coding_score: 0.8,
+    },
+  ],
+  messages: [
+    {
+      role: 'user',
+      content: 'Write a Python function that merges two sorted lists.',
+    },
+  ],
+});
+
+// Subsequent requests with the same session_id will use the same model and provider
+const followUp = await openRouter.chat.send({
+  model: 'openrouter/pareto-code',
+  session_id: 'my-coding-session-123',
+  plugins: [
+    {
+      id: 'pareto-router',
+      min_coding_score: 0.8,
+    },
+  ],
+  messages: [
+    { role: 'user', content: 'Write a Python function that merges two sorted lists.' },
+    { role: 'assistant', content: completion.choices[0].message.content ?? '' },
+    { role: 'user', content: 'Now add type hints and docstrings.' },
+  ],
+});
+```
+
+```bash title="cURL"
+curl https://openrouter.ai/api/v1/chat/completions \
+  -H "Authorization: Bearer $OPENROUTER_API_KEY" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "model": "openrouter/pareto-code",
+    "session_id": "my-coding-session-123",
+    "plugins": [
+      {
+        "id": "pareto-router",
+        "min_coding_score": 0.8
+      }
+    ],
+    "messages": [
+      {"role": "user", "content": "Write a Python function that merges two sorted lists."}
+    ]
+  }'
+```
+
+### Why It Matters for the Pareto Router
+
+The Pareto Router selects a model based on coding score and cost — different requests could resolve to different models as the shortlist evolves. Session stickiness pins the **model selection** — not just the provider — so your multi-turn coding session stays on the same model throughout. This prevents mid-conversation model switches that could lead to inconsistent code style or lost prompt cache.
+
 ## Pricing
 
 The Pareto Router itself adds no fee. You pay only for the underlying model that handles the request. Because model selection varies across the shortlist, per-request cost will vary too. Use a lower `min_coding_score` when cost is the primary concern.
@@ -132,7 +206,7 @@ The Pareto Router itself adds no fee. You pay only for the underlying model that
 ## Limitations
 
 * **Coding only**: `openrouter/pareto-code` is tuned for coding tasks. For other use cases, use a different router or choose a specific model.
-* **Model selection may change over time**: For a given `min_coding_score`, the same model is selected deterministically (sorted by price). However, the selected model may change when the underlying shortlist is updated (e.g. new models are added, benchmarks shift, or the percentile bands rebucket as the AA field evolves). Within a conversation, [provider sticky routing](/docs/guides/best-practices/prompt-caching#provider-sticky-routing) keeps your requests on the same provider endpoint to maximize cache hits.
+* **Model selection may change over time**: For a given `min_coding_score`, the same model is selected deterministically (sorted by price). However, the selected model may change when the underlying shortlist is updated (e.g. new models are added, benchmarks shift, or the percentile bands rebucket as the AA field evolves). Within a conversation, [session stickiness](#session-stickiness) keeps your requests on the same model and provider to maximize cache hits.
 * **Coding score only**: `min_coding_score` is the only router parameter. You can't directly cap cost or latency per request.
 
 ## Related

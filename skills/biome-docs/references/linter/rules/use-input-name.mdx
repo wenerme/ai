@@ -6,11 +6,10 @@ title: useInputName
 description: Learn more about useInputName
 ---
 
-> **caution**: This rule is part of the [nursery](/linter/#nursery) group. This means that it is experimental and the behavior can change at any time.
-
 ## Summary
 - Rule available since: `v2.3.14`
-- Diagnostic Category: [`lint/nursery/useInputName`](/reference/diagnostics#diagnostic-category)
+- Diagnostic Category: [`lint/style/useInputName`](/reference/diagnostics#diagnostic-category)
+- This rule isn't recommended, so you need to enable it.
 - This rule doesn't have a fix.
 - The default severity of this rule is [**information**](/reference/diagnostics#information).
 - Sources: 
@@ -21,7 +20,7 @@ description: Learn more about useInputName
 {
 	"linter": {
 		"rules": {
-			"nursery": {
+			"style": {
 				"useInputName": "error"
 			}
 		}
@@ -44,7 +43,7 @@ type Mutation {
 }
 ```
 
-<pre class="language-text"><code class="language-text">code-block.graphql:2:14 <a href="https://biomejs.dev/linter/rules/use-input-name">lint/nursery/useInputName</a> ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━  <strong><span style="color: lightgreen;">ℹ</span></strong> <span style="color: lightgreen;">Unexpected input name, expected the input name &quot;message&quot; to be named &quot;input&quot;.</span>      <strong>1 │ </strong>type Mutation &#123;  <strong><span style="color: Tomato;">&gt;</span></strong> <strong>2 │ </strong>  SetMessage(message: InputMessage): String   <strong>   │ </strong>             <strong><span style="color: Tomato;">^</span></strong><strong><span style="color: Tomato;">^</span></strong><strong><span style="color: Tomato;">^</span></strong><strong><span style="color: Tomato;">^</span></strong><strong><span style="color: Tomato;">^</span></strong><strong><span style="color: Tomato;">^</span></strong><strong><span style="color: Tomato;">^</span></strong><strong><span style="color: Tomato;">^</span></strong><strong><span style="color: Tomato;">^</span></strong><strong><span style="color: Tomato;">^</span></strong><strong><span style="color: Tomato;">^</span></strong><strong><span style="color: Tomato;">^</span></strong><strong><span style="color: Tomato;">^</span></strong><strong><span style="color: Tomato;">^</span></strong><strong><span style="color: Tomato;">^</span></strong><strong><span style="color: Tomato;">^</span></strong><strong><span style="color: Tomato;">^</span></strong><strong><span style="color: Tomato;">^</span></strong><strong><span style="color: Tomato;">^</span></strong><strong><span style="color: Tomato;">^</span></strong><strong><span style="color: Tomato;">^</span></strong>    <strong>3 │ </strong>&#125;    <strong>4 │ </strong>    <strong><span style="color: lightgreen;">ℹ</span></strong> <span style="color: lightgreen;">Using the same name for all input parameters will make your schemas easier to consume and more predictable.</span>    <strong><span style="color: lightgreen;">ℹ</span></strong> <span style="color: lightgreen;">This rule belongs to the nursery group, which means it is not yet stable and may change in the future. Visit </span><span style="color: lightgreen;"><a href="https://biomejs.dev/linter/#nursery">https://biomejs.dev/linter/#nursery</a></span><span style="color: lightgreen;"> for more information.</span>  </code></pre>
+<pre class="language-text"><code class="language-text">code-block.graphql:2:14 <a href="https://biomejs.dev/linter/rules/use-input-name">lint/style/useInputName</a> ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━  <strong><span style="color: lightgreen;">ℹ</span></strong> <span style="color: lightgreen;">Unexpected input name, expected the input name &quot;message&quot; to be named &quot;input&quot;.</span>      <strong>1 │ </strong>type Mutation &#123;  <strong><span style="color: Tomato;">&gt;</span></strong> <strong>2 │ </strong>  SetMessage(message: InputMessage): String   <strong>   │ </strong>             <strong><span style="color: Tomato;">^</span></strong><strong><span style="color: Tomato;">^</span></strong><strong><span style="color: Tomato;">^</span></strong><strong><span style="color: Tomato;">^</span></strong><strong><span style="color: Tomato;">^</span></strong><strong><span style="color: Tomato;">^</span></strong><strong><span style="color: Tomato;">^</span></strong><strong><span style="color: Tomato;">^</span></strong><strong><span style="color: Tomato;">^</span></strong><strong><span style="color: Tomato;">^</span></strong><strong><span style="color: Tomato;">^</span></strong><strong><span style="color: Tomato;">^</span></strong><strong><span style="color: Tomato;">^</span></strong><strong><span style="color: Tomato;">^</span></strong><strong><span style="color: Tomato;">^</span></strong><strong><span style="color: Tomato;">^</span></strong><strong><span style="color: Tomato;">^</span></strong><strong><span style="color: Tomato;">^</span></strong><strong><span style="color: Tomato;">^</span></strong><strong><span style="color: Tomato;">^</span></strong><strong><span style="color: Tomato;">^</span></strong>    <strong>3 │ </strong>&#125;    <strong>4 │ </strong>    <strong><span style="color: lightgreen;">ℹ</span></strong> <span style="color: lightgreen;">Using the same name for all input parameters will make your schemas easier to consume and more predictable.</span>  </code></pre>
 
 ### Valid
 
@@ -68,7 +67,7 @@ Default `"off"`
 {
 	"linter": {
 		"rules": {
-			"nursery": {
+			"style": {
 				"useInputName": {
 					"options": {
 						"checkInputType": "loose"
@@ -105,7 +104,7 @@ type Mutation {
 {
 	"linter": {
 		"rules": {
-			"nursery": {
+			"style": {
 				"useInputName": {
 					"options": {
 						"checkInputType": "strict"
@@ -145,5 +144,5 @@ type Mutation {
 - [Disable a rule](/linter/#disable-a-rule)
 - [Configure the code fix](/linter#configure-the-code-fix)
 - [Rule options](/linter/#rule-options)
-- [Source Code (Edit this Page)](https://github.com/biomejs/biome/blob/main/crates/biome_graphql_analyze/src/lint/nursery/use_input_name.rs)
-- [Test Cases](https://github.com/biomejs/biome/blob/main/crates/biome_graphql_analyze/tests/specs/nursery/useInputName)
+- [Source Code (Edit this Page)](https://github.com/biomejs/biome/blob/main/crates/biome_graphql_analyze/src/lint/style/use_input_name.rs)
+- [Test Cases](https://github.com/biomejs/biome/blob/main/crates/biome_graphql_analyze/tests/specs/style/useInputName)

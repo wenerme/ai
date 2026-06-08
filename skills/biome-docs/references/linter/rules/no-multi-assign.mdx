@@ -6,11 +6,10 @@ title: noMultiAssign
 description: Learn more about noMultiAssign
 ---
 
-> **caution**: This rule is part of the [nursery](/linter/#nursery) group. This means that it is experimental and the behavior can change at any time.
-
 ## Summary
 - Rule available since: `v2.3.11`
-- Diagnostic Category: [`lint/nursery/noMultiAssign`](/reference/diagnostics#diagnostic-category)
+- Diagnostic Category: [`lint/style/noMultiAssign`](/reference/diagnostics#diagnostic-category)
+- This rule isn't recommended, so you need to enable it.
 - This rule doesn't have a fix.
 - The default severity of this rule is [**information**](/reference/diagnostics#information).
 - Sources: 
@@ -21,7 +20,7 @@ description: Learn more about noMultiAssign
 {
 	"linter": {
 		"rules": {
-			"nursery": {
+			"style": {
 				"noMultiAssign": "error"
 			}
 		}
@@ -43,7 +42,7 @@ be difficult to read.
 const foo = bar = "baz";
 ```
 
-<pre class="language-text"><code class="language-text">code-block.js:1:7 <a href="https://biomejs.dev/linter/rules/no-multi-assign">lint/nursery/noMultiAssign</a> ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━  <strong><span style="color: lightgreen;">ℹ</span></strong> <span style="color: lightgreen;">Unexpected chained assignment.</span>    <strong><span style="color: Tomato;">&gt;</span></strong> <strong>1 │ </strong>const foo = bar = &quot;baz&quot;;   <strong>   │ </strong>      <strong><span style="color: Tomato;">^</span></strong><strong><span style="color: Tomato;">^</span></strong><strong><span style="color: Tomato;">^</span></strong><strong><span style="color: Tomato;">^</span></strong><strong><span style="color: Tomato;">^</span></strong><strong><span style="color: Tomato;">^</span></strong><strong><span style="color: Tomato;">^</span></strong><strong><span style="color: Tomato;">^</span></strong><strong><span style="color: Tomato;">^</span></strong><strong><span style="color: Tomato;">^</span></strong><strong><span style="color: Tomato;">^</span></strong><strong><span style="color: Tomato;">^</span></strong><strong><span style="color: Tomato;">^</span></strong><strong><span style="color: Tomato;">^</span></strong><strong><span style="color: Tomato;">^</span></strong><strong><span style="color: Tomato;">^</span></strong><strong><span style="color: Tomato;">^</span></strong>    <strong>2 │ </strong>    <strong><span style="color: lightgreen;">ℹ</span></strong> <span style="color: lightgreen;">Variables with chained assignments in declarations may cause unintended implicit globals or unexpected scoping.</span>    <strong><span style="color: lightgreen;">ℹ</span></strong> <span style="color: lightgreen;">Split into separate assignments.</span>    <strong><span style="color: lightgreen;">ℹ</span></strong> <span style="color: lightgreen;">This rule belongs to the nursery group, which means it is not yet stable and may change in the future. Visit </span><span style="color: lightgreen;"><a href="https://biomejs.dev/linter/#nursery">https://biomejs.dev/linter/#nursery</a></span><span style="color: lightgreen;"> for more information.</span>  </code></pre>
+<pre class="language-text"><code class="language-text">code-block.js:1:7 <a href="https://biomejs.dev/linter/rules/no-multi-assign">lint/style/noMultiAssign</a> ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━  <strong><span style="color: lightgreen;">ℹ</span></strong> <span style="color: lightgreen;">Unexpected chained assignment.</span>    <strong><span style="color: Tomato;">&gt;</span></strong> <strong>1 │ </strong>const foo = bar = &quot;baz&quot;;   <strong>   │ </strong>      <strong><span style="color: Tomato;">^</span></strong><strong><span style="color: Tomato;">^</span></strong><strong><span style="color: Tomato;">^</span></strong><strong><span style="color: Tomato;">^</span></strong><strong><span style="color: Tomato;">^</span></strong><strong><span style="color: Tomato;">^</span></strong><strong><span style="color: Tomato;">^</span></strong><strong><span style="color: Tomato;">^</span></strong><strong><span style="color: Tomato;">^</span></strong><strong><span style="color: Tomato;">^</span></strong><strong><span style="color: Tomato;">^</span></strong><strong><span style="color: Tomato;">^</span></strong><strong><span style="color: Tomato;">^</span></strong><strong><span style="color: Tomato;">^</span></strong><strong><span style="color: Tomato;">^</span></strong><strong><span style="color: Tomato;">^</span></strong><strong><span style="color: Tomato;">^</span></strong>    <strong>2 │ </strong>    <strong><span style="color: lightgreen;">ℹ</span></strong> <span style="color: lightgreen;">Variables with chained assignments in declarations may cause unintended implicit globals or unexpected scoping.</span>    <strong><span style="color: lightgreen;">ℹ</span></strong> <span style="color: lightgreen;">Split into separate assignments.</span>  </code></pre>
 
 ### Valid
 
@@ -57,5 +56,5 @@ const bar = "baz";
 - [Disable a rule](/linter/#disable-a-rule)
 - [Configure the code fix](/linter#configure-the-code-fix)
 - [Rule options](/linter/#rule-options)
-- [Source Code (Edit this Page)](https://github.com/biomejs/biome/blob/main/crates/biome_js_analyze/src/lint/nursery/no_multi_assign.rs)
-- [Test Cases](https://github.com/biomejs/biome/blob/main/crates/biome_js_analyze/tests/specs/nursery/noMultiAssign)
+- [Source Code (Edit this Page)](https://github.com/biomejs/biome/blob/main/crates/biome_js_analyze/src/lint/style/no_multi_assign.rs)
+- [Test Cases](https://github.com/biomejs/biome/blob/main/crates/biome_js_analyze/tests/specs/style/noMultiAssign)

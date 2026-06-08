@@ -6,13 +6,12 @@ title: useConsistentEnumValueType
 description: Learn more about useConsistentEnumValueType
 ---
 
-> **caution**: This rule is part of the [nursery](/linter/#nursery) group. This means that it is experimental and the behavior can change at any time.
-
 > **note**: This rule belongs to the types domain. This means that its activation will activate the Biome Scanner to scan the files of your project, and enable the type inference engine. Read more about it in the [documentation page](/linter/domains#types)
 
 ## Summary
 - Rule available since: `v2.3.13`
-- Diagnostic Category: [`lint/nursery/useConsistentEnumValueType`](/reference/diagnostics#diagnostic-category)
+- Diagnostic Category: [`lint/style/useConsistentEnumValueType`](/reference/diagnostics#diagnostic-category)
+- This rule isn't recommended, so you need to enable it.
 - This rule doesn't have a fix.
 - The default severity of this rule is [**information**](/reference/diagnostics#information).
 - This rule belongs to the following domains:
@@ -25,7 +24,7 @@ description: Learn more about useConsistentEnumValueType
 {
 	"linter": {
 		"rules": {
-			"nursery": {
+			"style": {
 				"useConsistentEnumValueType": "error"
 			}
 		}
@@ -52,7 +51,7 @@ enum Status {
 }
 ```
 
-<pre class="language-text"><code class="language-text">code-block.ts:3:3 <a href="https://biomejs.dev/linter/rules/use-consistent-enum-value-type">lint/nursery/useConsistentEnumValueType</a> ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━  <strong><span style="color: lightgreen;">ℹ</span></strong> <span style="color: lightgreen;">Inconsistent enum value type.</span>      <strong>1 │ </strong>enum Status &#123;    <strong>2 │ </strong>  Unknown,  <strong><span style="color: Tomato;">&gt;</span></strong> <strong>3 │ </strong>  Closed = 1,   <strong>   │ </strong>  <strong><span style="color: Tomato;">^</span></strong><strong><span style="color: Tomato;">^</span></strong><strong><span style="color: Tomato;">^</span></strong><strong><span style="color: Tomato;">^</span></strong><strong><span style="color: Tomato;">^</span></strong><strong><span style="color: Tomato;">^</span></strong><strong><span style="color: Tomato;">^</span></strong><strong><span style="color: Tomato;">^</span></strong><strong><span style="color: Tomato;">^</span></strong><strong><span style="color: Tomato;">^</span></strong>    <strong>4 │ </strong>  Open = 'open',    <strong>5 │ </strong>&#125;    <strong><span style="color: lightgreen;">ℹ</span></strong> <span style="color: lightgreen;">Another inconsistent enum value type.</span>      <strong>2 │ </strong>  Unknown,    <strong>3 │ </strong>  Closed = 1,  <strong><span style="color: Tomato;">&gt;</span></strong> <strong>4 │ </strong>  Open = 'open',   <strong>   │ </strong>  <strong><span style="color: Tomato;">^</span></strong><strong><span style="color: Tomato;">^</span></strong><strong><span style="color: Tomato;">^</span></strong><strong><span style="color: Tomato;">^</span></strong><strong><span style="color: Tomato;">^</span></strong><strong><span style="color: Tomato;">^</span></strong><strong><span style="color: Tomato;">^</span></strong><strong><span style="color: Tomato;">^</span></strong><strong><span style="color: Tomato;">^</span></strong><strong><span style="color: Tomato;">^</span></strong><strong><span style="color: Tomato;">^</span></strong><strong><span style="color: Tomato;">^</span></strong><strong><span style="color: Tomato;">^</span></strong>    <strong>5 │ </strong>&#125;    <strong>6 │ </strong>    <strong><span style="color: lightgreen;">ℹ</span></strong> <span style="color: lightgreen;">Mixing number and string enums can be confusing. Make sure to use a consistent value type within your enum.</span>    <strong><span style="color: lightgreen;">ℹ</span></strong> <span style="color: lightgreen;">This rule belongs to the nursery group, which means it is not yet stable and may change in the future. Visit </span><span style="color: lightgreen;"><a href="https://biomejs.dev/linter/#nursery">https://biomejs.dev/linter/#nursery</a></span><span style="color: lightgreen;"> for more information.</span>  </code></pre>
+<pre class="language-text"><code class="language-text">code-block.ts:3:3 <a href="https://biomejs.dev/linter/rules/use-consistent-enum-value-type">lint/style/useConsistentEnumValueType</a> ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━  <strong><span style="color: lightgreen;">ℹ</span></strong> <span style="color: lightgreen;">Inconsistent enum value type.</span>      <strong>1 │ </strong>enum Status &#123;    <strong>2 │ </strong>  Unknown,  <strong><span style="color: Tomato;">&gt;</span></strong> <strong>3 │ </strong>  Closed = 1,   <strong>   │ </strong>  <strong><span style="color: Tomato;">^</span></strong><strong><span style="color: Tomato;">^</span></strong><strong><span style="color: Tomato;">^</span></strong><strong><span style="color: Tomato;">^</span></strong><strong><span style="color: Tomato;">^</span></strong><strong><span style="color: Tomato;">^</span></strong><strong><span style="color: Tomato;">^</span></strong><strong><span style="color: Tomato;">^</span></strong><strong><span style="color: Tomato;">^</span></strong><strong><span style="color: Tomato;">^</span></strong>    <strong>4 │ </strong>  Open = 'open',    <strong>5 │ </strong>&#125;    <strong><span style="color: lightgreen;">ℹ</span></strong> <span style="color: lightgreen;">Another inconsistent enum value type.</span>      <strong>2 │ </strong>  Unknown,    <strong>3 │ </strong>  Closed = 1,  <strong><span style="color: Tomato;">&gt;</span></strong> <strong>4 │ </strong>  Open = 'open',   <strong>   │ </strong>  <strong><span style="color: Tomato;">^</span></strong><strong><span style="color: Tomato;">^</span></strong><strong><span style="color: Tomato;">^</span></strong><strong><span style="color: Tomato;">^</span></strong><strong><span style="color: Tomato;">^</span></strong><strong><span style="color: Tomato;">^</span></strong><strong><span style="color: Tomato;">^</span></strong><strong><span style="color: Tomato;">^</span></strong><strong><span style="color: Tomato;">^</span></strong><strong><span style="color: Tomato;">^</span></strong><strong><span style="color: Tomato;">^</span></strong><strong><span style="color: Tomato;">^</span></strong><strong><span style="color: Tomato;">^</span></strong>    <strong>5 │ </strong>&#125;    <strong>6 │ </strong>    <strong><span style="color: lightgreen;">ℹ</span></strong> <span style="color: lightgreen;">Mixing number and string enums can be confusing. Make sure to use a consistent value type within your enum.</span>  </code></pre>
 
 ### Valid
 
@@ -85,5 +84,5 @@ enum Status {
 - [Disable a rule](/linter/#disable-a-rule)
 - [Configure the code fix](/linter#configure-the-code-fix)
 - [Rule options](/linter/#rule-options)
-- [Source Code (Edit this Page)](https://github.com/biomejs/biome/blob/main/crates/biome_js_analyze/src/lint/nursery/use_consistent_enum_value_type.rs)
-- [Test Cases](https://github.com/biomejs/biome/blob/main/crates/biome_js_analyze/tests/specs/nursery/useConsistentEnumValueType)
+- [Source Code (Edit this Page)](https://github.com/biomejs/biome/blob/main/crates/biome_js_analyze/src/lint/style/use_consistent_enum_value_type.rs)
+- [Test Cases](https://github.com/biomejs/biome/blob/main/crates/biome_js_analyze/tests/specs/style/useConsistentEnumValueType)

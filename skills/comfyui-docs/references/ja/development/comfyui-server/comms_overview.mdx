@@ -13,7 +13,7 @@ ComfyUI を起動すると、自動的に HTTP サーバーが `http://127.0.0.1
 
 ```bash
 # ブラウザを開かずに実行
-python main.py --headless
+python main.py --disable-auto-launch
 ```
 
 ```bash
@@ -26,10 +26,13 @@ python main.py --port 8288
 python main.py --listen 0.0.0.0
 ```
 
-  全起動オプションの一覧は `python main.py --help` を実行してください。[インストールガイド](/ja/installation/manual_install#basic-usage)も参照。
+  全起動オプションの一覧は `python main.py --help` を実行するか、[起動オプションリファレンス](/ja/development/comfyui-server/startup-flags)を参照してください。
 
 ## このセクションの主要ページ
 
+  
+    main.py のすべてのコマンドライン起動オプションの完全リファレンス。
+  
   
     ワークフロー送信、ファイルアップロード、ステータス確認用の HTTP エンドポイント。
   

@@ -13,7 +13,7 @@ ComfyUI 默认作为 HTTP 服务器在本地运行。你可以通过编程方式
 
 ```bash
 # 不打开浏览器运行
-python main.py --headless
+python main.py --disable-auto-launch
 ```
 
 ```bash
@@ -26,10 +26,13 @@ python main.py --port 8288
 python main.py --listen 0.0.0.0
 ```
 
-  查看完整启动参数请运行 `python main.py --help`，或参阅[安装指南](/zh/installation/manual_install#basic-usage)。
+  查看完整启动参数请运行 `python main.py --help`，或参阅[启动参数参考](/zh/development/comfyui-server/startup-flags)。
 
 ## 本部分的关键页面
 
+  
+    main.py 全部命令行启动参数完整参考。
+  
   
     可用的 HTTP 端点：提交工作流、上传文件、查询状态。
   
