@@ -1,6 +1,6 @@
 ---
 title: Compliance standards
-description: Cipher suite compliance with FIPS 140-2, PCI DSS, and other standards.
+description: Cipher suite compliance with FIPS 140-3, PCI DSS, and other standards.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 
@@ -30,9 +30,9 @@ Cipher suites list
 
 If you are customizing cipher suites via API, refer to [Steps and API examples](https://developers.cloudflare.com/ssl/edge-certificates/additional-options/cipher-suites/customize-cipher-suites/api/#steps-and-api-examples) for a snippet you can copy with the formatted array.
 
-## FIPS-140-2
+## FIPS-140-3
 
-Recommended cipher suites for compliance with the [Federal Information Processing Standard (140-2) ↗](https://csrc.nist.gov/pubs/fips/140-2/upd2/final). Used to approve cryptographic modules.
+Recommended cipher suites for compliance with the [Federal Information Processing Standard (140-3) ↗](https://csrc.nist.gov/pubs/fips/140-3/final). Used to approve cryptographic modules.
 
 Cipher suites list
 

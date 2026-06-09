@@ -3,8 +3,6 @@ title: "ContextWindowsManual - ComfyUI Built-in Node Documentation"
 description: "Complete documentation for the ContextWindowsManual node in ComfyUI. Learn its inputs, outputs, parameters and usage."
 mode: wide
 ---
-> このドキュメントは AI によって生成されました。エラーを見つけた場合や改善のご提案がある場合は、ぜひ貢献してください！ [GitHub で編集](https://github.com/Comfy-Org/embedded-docs/blob/main/comfyui_embedded_docs/docs/ContextWindowsManual/ja.md)
-
 以下が翻訳結果です。
 
 ## 概要
@@ -12,20 +10,20 @@ Context Windows (Manual) ノードを使用すると、サンプリング中に�
 
 ## 入力
 
-| パラメータ | データ型 | 必須 | 範囲 | 説明 |
-|-----------|-----------|----------|-------|-------------|
-| `モデル` | MODEL | はい | - | サンプリング中にコンテキストウィンドウを適用するモデル。 |
-| `コンテキスト長` | INT | いいえ | 1+ | コンテキストウィンドウの長さ（デフォルト: 16）。 |
-| `コンテキストオーバーラップ` | INT | いいえ | 0+ | コンテキストウィンドウのオーバーラップ（デフォルト: 4）。 |
-| `コンテキストスケジュール` | COMBO | いいえ | `STATIC_STANDARD``UNIFORM_STANDARD``UNIFORM_LOOPED``BATCHED` | コンテキストウィンドウのストライド。 |
-| `コンテキストストライド` | INT | いいえ | 1+ | コンテキストウィンドウのストライド。uniformスケジュールにのみ適用されます（デフォルト: 1）。 |
-| `closed_loop` | BOOLEAN | いいえ | - | コンテキストウィンドウのループを閉じるかどうか。loopedスケジュールにのみ適用されます（デフォルト: False）。 |
-| `fuse_method` | COMBO | いいえ | `PYRAMID``LIST_STATIC` | コンテキストウィンドウを融合するために使用する方法（デフォルト: PYRAMID）。 |
-| `dim` | INT | いいえ | 0-5 | コンテキストウィンドウを適用する次元（デフォルト: 0）。 |
-| `フリーノイズ` | BOOLEAN | いいえ | - | FreeNoiseノイズシャッフルを適用するかどうか。ウィンドウのブレンドを改善します（デフォルト: False）。 |
-| `cond_retain_index_list` | STRING | いいえ | - | 各ウィンドウのコンディショニングテンソルに保持する潜在インデックスのリスト。例えば、これを'0'に設定すると、各ウィンドウで初期開始画像が使用されます（デフォルト: ""）。 |
-| `split_conds_to_windows` | BOOLEAN | いいえ | - | ConditionCombineによって作成された複数のコンディショニングを、リージョンインデックスに基づいて各ウィンドウに分割するかどうか（デフォルト: False）。 |
-| `causal_window_fix` | BOOLEAN | いいえ | - | 0以外のインデックスを持つコンテキストウィンドウに因果修正フレームを追加するかどうか（デフォルト: True）。 |
+| パラメータ | 説明 | データ型 | 必須 | 範囲 |
+| --- | --- | --- | --- | --- |
+| `モデル` | サンプリング中にコンテキストウィンドウを適用するモデル。 | MODEL | はい | - |
+| `コンテキスト長` | コンテキストウィンドウの長さ（デフォルト: 16）。 | INT | いいえ | 1+ |
+| `コンテキストオーバーラップ` | コンテキストウィンドウのオーバーラップ（デフォルト: 4）。 | INT | いいえ | 0+ |
+| `コンテキストスケジュール` | コンテキストウィンドウのストライド。 | COMBO | いいえ | `STATIC_STANDARD``UNIFORM_STANDARD``UNIFORM_LOOPED``BATCHED` |
+| `コンテキストストライド` | コンテキストウィンドウのストライド。uniformスケジュールにのみ適用されます（デフォルト: 1）。 | INT | いいえ | 1+ |
+| `closed_loop` | コンテキストウィンドウのループを閉じるかどうか。loopedスケジュールにのみ適用されます（デフォルト: False）。 | BOOLEAN | いいえ | - |
+| `fuse_method` | コンテキストウィンドウを融合するために使用する方法（デフォルト: PYRAMID）。 | COMBO | いいえ | `PYRAMID``LIST_STATIC` |
+| `dim` | コンテキストウィンドウを適用する次元（デフォルト: 0）。 | INT | いいえ | 0-5 |
+| `フリーノイズ` | FreeNoiseノイズシャッフルを適用するかどうか。ウィンドウのブレンドを改善します（デフォルト: False）。 | BOOLEAN | いいえ | - |
+| `cond_retain_index_list` | 各ウィンドウのコンディショニングテンソルに保持する潜在インデックスのリスト。例えば、これを'0'に設定すると、各ウィンドウで初期開始画像が使用されます（デフォルト: ""）。 | STRING | いいえ | - |
+| `split_conds_to_windows` | ConditionCombineによって作成された複数のコンディショニングを、リージョンインデックスに基づいて各ウィンドウに分割するかどうか（デフォルト: False）。 | BOOLEAN | いいえ | - |
+| `causal_window_fix` | 0以外のインデックスを持つコンテキストウィンドウに因果修正フレームを追加するかどうか（デフォルト: True）。 | BOOLEAN | いいえ | - |
 
 **パラメータ制約:**
 
@@ -36,9 +34,11 @@ Context Windows (Manual) ノードを使用すると、サンプリング中に�
 
 ## 出力
 
-| 出力名 | データ型 | 説明 |
-|-------------|-----------|-------------|
-| `モデル` | MODEL | サンプリング中にコンテキストウィンドウが適用されたモデル。 |
+| 出力名 | 説明 | データ型 |
+| --- | --- | --- |
+| `モデル` | サンプリング中にコンテキストウィンドウが適用されたモデル。 | MODEL |
+
+> このドキュメントは AI によって生成されました。エラーを見つけた場合や改善のご提案がある場合は、ぜひ貢献してください！ [GitHub で編集](https://github.com/Comfy-Org/embedded-docs/blob/main/comfyui_embedded_docs/docs/ContextWindowsManual/ja.md)
 
 ---
 **Source fingerprint (SHA-256):** `b05ddda0ba38588305e6f733cd218c8b462268c39d16226ca961d09054187261`

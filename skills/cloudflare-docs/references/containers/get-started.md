@@ -120,26 +120,12 @@ You can confirm this behavior by reading the output of each request.
 
 Now that you've deployed your first container, let's explain what is happening in your Worker's code, in your configuration file, in your container's code, and how requests are routed.
 
-## Each Container is backed by its own Durable Object
-
-Incoming requests are initially handled by the Worker, then passed to a container-enabled [Durable Object](https://developers.cloudflare.com/durable-objects). To simplify and reduce boilerplate code, Cloudflare provides a [Container class ↗](https://github.com/cloudflare/containers) as part of the `@cloudflare/containers` NPM package.
-
-You don't have to be familiar with Durable Objects to use Containers, but it may be helpful to understand the basics.
-
-Each Durable Object runs alongside an individual container instance, manages starting and stopping it, and can interact with the container through its ports. Containers will likely run near the Worker instance requesting them, but not necessarily. Refer to ["How Locations are Selected"](https://developers.cloudflare.com/containers/platform-details/#how-are-locations-are-selected)for details.
-
-In a simple app, the Durable Object may just boot the container and proxy requests to it.
-
-In a more complex app, having container-enabled Durable Objects allows you to route requests to individual stateful container instances, manage the container lifecycle, pass in custom starting commands and environment variables to containers, run hooks on container status changes, and more.
-
-See the [documentation for Durable Object container methods](https://developers.cloudflare.com/durable-objects/api/container/) and the[Container class repository ↗](https://github.com/cloudflare/containers) for more details.
-
 ### Configuration
 
 Your [Wrangler configuration file](https://developers.cloudflare.com/workers/wrangler/configuration/) defines the configuration for both your Worker and your container:
 
-* [  wrangler.jsonc ](#tab-panel-5583)
-* [  wrangler.toml ](#tab-panel-5584)
+* [  wrangler.jsonc ](#tab-panel-7332)
+* [  wrangler.toml ](#tab-panel-7333)
 
 JSONC
 
@@ -311,7 +297,9 @@ This defines basic configuration for the container:
 * `envVars` sets environment variables that will be passed to the container when it starts.
 * `onStart`, `onStop`, and `onError` are hooks that run when the container starts, stops, or errors, respectively.
 
-See the [Container class documentation](https://developers.cloudflare.com/containers/container-class/) for more details and configuration options.
+The `Container` class itself extends [DurableObject](https://developers.cloudflare.com/durable-objects/), so your subclass has access to the full Durable Object API. The Durable Object handles routing, lifecycle, and persistent state, while the container process runs your image inside a Linux VM. This means you can use [this.ctx.storage](https://developers.cloudflare.com/durable-objects/api/sqlite-storage-api/) to persist data that survives container restarts and resides close to the container itself.
+
+Refer to the [Container class reference](https://developers.cloudflare.com/containers/container-class/) and the [low-level Durable Object container API](https://developers.cloudflare.com/durable-objects/api/container/) for more details.
 
 #### Routing to Containers
 

@@ -3,28 +3,26 @@ title: "MeshyImageToModelNode - ComfyUI Built-in Node Documentation"
 description: "Complete documentation for the MeshyImageToModelNode node in ComfyUI. Learn its inputs, outputs, parameters and usage."
 mode: wide
 ---
-> このドキュメントは AI によって生成されました。エラーを見つけた場合や改善のご提案がある場合は、ぜひ貢献してください！ [GitHub で編集](https://github.com/Comfy-Org/embedded-docs/blob/main/comfyui_embedded_docs/docs/MeshyImageToModelNode/ja.md)
-
 以下が翻訳結果です。
 
 Meshy: Image to Model ノードは、Meshy API を使用して、1枚の入力画像から3Dモデルを生成します。画像をアップロードし、処理タスクを送信し、生成された3Dモデルファイル（GLBおよびFBX）と参照用のタスクIDを返します。
 
 ## 入力
 
-| パラメータ | データ型 | 必須 | 範囲 | 説明 |
-|-----------|-----------|----------|-------|-------------|
-| `model` | COMBO | はい | `"latest"` | 生成に使用するAIモデルのバージョンを指定します。 |
-| `image` | IMAGE | はい | - | 3Dモデルに変換する入力画像です。 |
-| `should_remesh` | DYNAMIC COMBO | はい | `"true"``"false"` | 生成されたメッシュを処理するかどうかを指定します。`"false"` に設定すると、未処理の三角形メッシュが返されます。 |
-| `topology` | COMBO | いいえ* | `"triangle"``"quad"` | リメッシュ後のモデルの目標ポリゴントポロジーです。この入力は、`should_remesh` が `"true"` に設定されている場合のみ使用可能です。 |
-| `target_polycount` | INT | いいえ* | 100 - 300000 | リメッシュ後のモデルの目標ポリゴン数です。この入力は、`should_remesh` が `"true"` に設定されている場合のみ使用可能です。デフォルト値は300000です。 |
-| `symmetry_mode` | COMBO | はい | `"auto"``"on"``"off"` | 生成された3Dモデルに適用する対称性を制御します。 |
-| `should_texture` | DYNAMIC COMBO | はい | `"true"``"false"` | モデルにテクスチャを生成するかどうかを指定します。`"false"` に設定すると、テクスチャフェーズをスキップし、テクスチャのないメッシュが返されます。 |
-| `enable_pbr` | BOOLEAN | いいえ* | - | `should_texture` が `"true"` の場合、このオプションはベースカラーに加えてPBRマップ（メタリック、ラフネス、法線）を生成します。デフォルト値は `False` です。 |
-| `texture_prompt` | STRING | いいえ* | - | テクスチャ処理をガイドするテキストプロンプトです（最大600文字）。この入力は、`should_texture` が `"true"` に設定されている場合のみ使用可能です。`texture_image` と同時に使用することはできません。 |
-| `texture_image` | IMAGE | いいえ* | - | テクスチャ処理をガイドする画像です。この入力は、`should_texture` が `"true"` に設定されている場合のみ使用可能です。`texture_prompt` と同時に使用することはできません。 |
-| `pose_mode` | COMBO | はい | `""` (空)`"A-pose"``"T-pose"` | 生成されたモデルのポーズモードを指定します。これは高度なパラメータです。 |
-| `seed` | INT | はい | 0 - 2147483647 | 生成プロセスのシード値です。シード値に関わらず、結果は非決定的です。デフォルト値は0です。 |
+| パラメータ | 説明 | データ型 | 必須 | 範囲 |
+| --- | --- | --- | --- | --- |
+| `model` | 生成に使用するAIモデルのバージョンを指定します。 | COMBO | はい | `"latest"` |
+| `image` | 3Dモデルに変換する入力画像です。 | IMAGE | はい | - |
+| `should_remesh` | 生成されたメッシュを処理するかどうかを指定します。`"false"` に設定すると、未処理の三角形メッシュが返されます。 | DYNAMIC COMBO | はい | `"true"``"false"` |
+| `topology` | リメッシュ後のモデルの目標ポリゴントポロジーです。この入力は、`should_remesh` が `"true"` に設定されている場合のみ使用可能です。 | COMBO | いいえ* | `"triangle"``"quad"` |
+| `target_polycount` | リメッシュ後のモデルの目標ポリゴン数です。この入力は、`should_remesh` が `"true"` に設定されている場合のみ使用可能です。デフォルト値は300000です。 | INT | いいえ* | 100 - 300000 |
+| `symmetry_mode` | 生成された3Dモデルに適用する対称性を制御します。 | COMBO | はい | `"auto"``"on"``"off"` |
+| `should_texture` | モデルにテクスチャを生成するかどうかを指定します。`"false"` に設定すると、テクスチャフェーズをスキップし、テクスチャのないメッシュが返されます。 | DYNAMIC COMBO | はい | `"true"``"false"` |
+| `enable_pbr` | `should_texture` が `"true"` の場合、このオプションはベースカラーに加えてPBRマップ（メタリック、ラフネス、法線）を生成します。デフォルト値は `False` です。 | BOOLEAN | いいえ* | - |
+| `texture_prompt` | テクスチャ処理をガイドするテキストプロンプトです（最大600文字）。この入力は、`should_texture` が `"true"` に設定されている場合のみ使用可能です。`texture_image` と同時に使用することはできません。 | STRING | いいえ* | - |
+| `texture_image` | テクスチャ処理をガイドする画像です。この入力は、`should_texture` が `"true"` に設定されている場合のみ使用可能です。`texture_prompt` と同時に使用することはできません。 | IMAGE | いいえ* | - |
+| `pose_mode` | 生成されたモデルのポーズモードを指定します。これは高度なパラメータです。 | COMBO | はい | `""` (空)`"A-pose"``"T-pose"` |
+| `seed` | 生成プロセスのシード値です。シード値に関わらず、結果は非決定的です。デフォルト値は0です。 | INT | はい | 0 - 2147483647 |
 
 **パラメータ制約に関する注意:**
 
@@ -34,12 +32,14 @@ Meshy: Image to Model ノードは、Meshy API を使用して、1枚の入力�
 
 ## 出力
 
-| 出力名 | データ型 | 説明 |
-|-------------|-----------|-------------|
-| `meshy_task_id` | STRING | 生成されたGLBモデルのファイル名です（後方互換性のために維持されています）。 |
-| `GLB` | MESHY_TASK_ID | Meshy APIタスクの一意の識別子であり、参照やトラブルシューティングに使用できます。 |
-| `FBX` | FILE3DGLB | GLBファイル形式で生成された3Dモデルです。 |
-| `FBX` | FILE3DFBX | FBXファイル形式で生成された3Dモデルです。 |
+| 出力名 | 説明 | データ型 |
+| --- | --- | --- |
+| `meshy_task_id` | 生成されたGLBモデルのファイル名です（後方互換性のために維持されています）。 | STRING |
+| `GLB` | Meshy APIタスクの一意の識別子であり、参照やトラブルシューティングに使用できます。 | MESHY_TASK_ID |
+| `FBX` | GLBファイル形式で生成された3Dモデルです。 | FILE3DGLB |
+| `FBX` | FBXファイル形式で生成された3Dモデルです。 | FILE3DFBX |
+
+> このドキュメントは AI によって生成されました。エラーを見つけた場合や改善のご提案がある場合は、ぜひ貢献してください！ [GitHub で編集](https://github.com/Comfy-Org/embedded-docs/blob/main/comfyui_embedded_docs/docs/MeshyImageToModelNode/ja.md)
 
 ---
 **Source fingerprint (SHA-256):** `134d9250d8b447bbbd2905f827e81b67f491ba355ebb93d4d256324b644100a2`

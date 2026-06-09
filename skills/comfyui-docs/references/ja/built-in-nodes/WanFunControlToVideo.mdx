@@ -3,8 +3,6 @@ title: "WanFunControlToVideo - ComfyUI Built-in Node Documentation"
 description: "Complete documentation for the WanFunControlToVideo node in ComfyUI. Learn its inputs, outputs, parameters and usage."
 mode: wide
 ---
-> このドキュメントは AI によって生成されました。エラーを見つけた場合や改善のご提案がある場合は、ぜひ貢献してください！ [GitHub で編集](https://github.com/Comfy-Org/embedded-docs/blob/main/comfyui_embedded_docs/docs/WanFunControlToVideo/ja.md)
-
 このノードは、動画生成のためのAlibaba Wan Fun Controlモデルをサポートするために追加されました。[このコミット](https://github.com/comfyanonymous/ComfyUI/commit/3661c833bcc41b788a7c9f0e7bc48524f8ee5f82)の後に追加されています。
 
 - **目的:** Wan 2.1 Fun Controlモデルを使用して、動画生成に必要な条件付け情報を準備します。
@@ -17,23 +15,25 @@ ComfyUIノード階層におけるこのノードの位置は、動画生成パ�
 
 ## 入力
 
-| パラメータ名 | 必須 | データ型 | 説明 | デフォルト値 |
-|:------------|:----|:--------|:-------------------------------------------------------------|:-----------|
-| positive | はい | CONDITIONING | 標準的なComfyUIのポジティブ条件付けデータで、通常は「CLIP Text Encode」ノードから取得します。ポジティブプロンプトは、生成される動画に対してユーザーが想定する内容、主題、芸術スタイルを記述します。 | N/A |
-| negative | はい | CONDITIONING | 標準的なComfyUIのネガティブ条件付けデータで、通常は「CLIP Text Encode」ノードによって生成されます。ネガティブプロンプトは、生成される動画でユーザーが避けたい要素、スタイル、またはアーティファクトを指定します。 | N/A |
-| vae | はい | VAE | Wan 2.1 Funモデルファミリーと互換性のあるVAE（変分オートエンコーダ）モデルが必要です。画像/動画データのエンコードとデコードに使用されます。 | N/A |
-| width | はい | INT | 出力動画フレームの希望する幅（ピクセル単位）。デフォルト値は832、最小値は16、最大値はnodes.MAX_RESOLUTIONによって決定され、ステップサイズは16です。 | 832 |
-| height | はい | INT | 出力動画フレームの希望する高さ（ピクセル単位）。デフォルト値は480、最小値は16、最大値はnodes.MAX_RESOLUTIONによって決定され、ステップサイズは16です。 | 480 |
-| length | はい | INT | 生成される動画の総フレーム数。デフォルト値は81、最小値は1、最大値はnodes.MAX_RESOLUTIONによって決定され、ステップサイズは4です。 | 81 |
-| batch_size | はい | INT | 1回のバッチで生成される動画の数。デフォルト値は1、最小値は1、最大値は4096です。 | 1 |
-| clip_vision_output | いいえ | CLIP_VISION_OUTPUT | （オプション）CLIPビジョンモデルによって抽出された視覚的特徴。視覚的なスタイルと内容のガイダンスを可能にします。 | None |
-| start_image | いいえ | IMAGE | （オプション）生成される動画の開始部分に影響を与える初期画像。 | None |
-| control_video | いいえ | IMAGE | （オプション）ユーザーが前処理済みのControlNet参照動画を提供できるようにします。この動画は、生成される動画の動きや潜在的な構造を導きます。 | None |
+| パラメータ名 | 説明 | 必須 | データ型 | デフォルト値 |
+| --- | --- | --- | --- | --- |
+| positive | 標準的なComfyUIのポジティブ条件付けデータで、通常は「CLIP Text Encode」ノードから取得します。ポジティブプロンプトは、生成される動画に対してユーザーが想定する内容、主題、芸術スタイルを記述します。 | はい | CONDITIONING | N/A |
+| negative | 標準的なComfyUIのネガティブ条件付けデータで、通常は「CLIP Text Encode」ノードによって生成されます。ネガティブプロンプトは、生成される動画でユーザーが避けたい要素、スタイル、またはアーティファクトを指定します。 | はい | CONDITIONING | N/A |
+| vae | Wan 2.1 Funモデルファミリーと互換性のあるVAE（変分オートエンコーダ）モデルが必要です。画像/動画データのエンコードとデコードに使用されます。 | はい | VAE | N/A |
+| width | 出力動画フレームの希望する幅（ピクセル単位）。デフォルト値は832、最小値は16、最大値はnodes.MAX_RESOLUTIONによって決定され、ステップサイズは16です。 | はい | INT | 832 |
+| height | 出力動画フレームの希望する高さ（ピクセル単位）。デフォルト値は480、最小値は16、最大値はnodes.MAX_RESOLUTIONによって決定され、ステップサイズは16です。 | はい | INT | 480 |
+| length | 生成される動画の総フレーム数。デフォルト値は81、最小値は1、最大値はnodes.MAX_RESOLUTIONによって決定され、ステップサイズは4です。 | はい | INT | 81 |
+| batch_size | 1回のバッチで生成される動画の数。デフォルト値は1、最小値は1、最大値は4096です。 | はい | INT | 1 |
+| clip_vision_output | （オプション）CLIPビジョンモデルによって抽出された視覚的特徴。視覚的なスタイルと内容のガイダンスを可能にします。 | いいえ | CLIP_VISION_OUTPUT | None |
+| start_image | （オプション）生成される動画の開始部分に影響を与える初期画像。 | いいえ | IMAGE | None |
+| control_video | （オプション）ユーザーが前処理済みのControlNet参照動画を提供できるようにします。この動画は、生成される動画の動きや潜在的な構造を導きます。 | いいえ | IMAGE | None |
 
 ## 出力
 
-| パラメータ名 | データ型 | 説明 |
-|:------------|:--------|:-------------------------------------------------------------|
-| positive | CONDITIONING | エンコードされたstart_imageとcontrol_videoを含む、拡張されたポジティブ条件付けデータを提供します。 |
-| negative | CONDITIONING | 同じconcat_latent_imageを含む、同様に拡張されたネガティブ条件付けデータを提供します。 |
-| latent | LATENT | キー「samples」を持つ空の潜在テンソルを含む辞書。 |
+| パラメータ名 | 説明 | データ型 |
+| --- | --- | --- |
+| positive | エンコードされたstart_imageとcontrol_videoを含む、拡張されたポジティブ条件付けデータを提供します。 | CONDITIONING |
+| negative | 同じconcat_latent_imageを含む、同様に拡張されたネガティブ条件付けデータを提供します。 | CONDITIONING |
+| latent | キー「samples」を持つ空の潜在テンソルを含む辞書。 | LATENT |
+
+> このドキュメントは AI によって生成されました。エラーを見つけた場合や改善のご提案がある場合は、ぜひ貢献してください！ [GitHub で編集](https://github.com/Comfy-Org/embedded-docs/blob/main/comfyui_embedded_docs/docs/WanFunControlToVideo/ja.md)

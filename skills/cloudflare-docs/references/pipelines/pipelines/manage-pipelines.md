@@ -147,13 +147,13 @@ FROM my_stream
 
 ### Wrangler CLI
 
-To view a specific pipeline, run the [pipelines get](https://developers.cloudflare.com/workers/wrangler/commands/pipelines/#pipelines-get) command:
+To view a specific pipeline, run the [pipelines get](https://developers.cloudflare.com/workers/wrangler/commands/pipelines/#pipelines-get) command with either the pipeline ID or pipeline name:
 
 Terminal window
 
 ```
 
-npx wrangler pipelines get <PIPELINE_ID>
+npx wrangler pipelines get <PIPELINE_NAME_OR_ID>
 
 
 ```

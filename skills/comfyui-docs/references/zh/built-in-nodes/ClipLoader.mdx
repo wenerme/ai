@@ -3,17 +3,15 @@ title: "CLIPLoader - ComfyUI Built-in Node Documentation"
 description: "Complete documentation for the CLIPLoader node in ComfyUI. Learn its inputs, outputs, parameters and usage."
 mode: wide
 ---
-> 本文档由 AI 生成。如果您发现任何错误或有改进建议，欢迎贡献！ [在 GitHub 上编辑](https://github.com/Comfy-Org/embedded-docs/blob/main/comfyui_embedded_docs/docs/CLIPLoader/zh.md)
-
 CLIPLoader 节点用于从文件加载文本编码器模型（CLIP、T5 或类似模型），使其可供其他需要将文本提示转换为数值表示的节点使用。该节点支持多种模型架构，每种架构需要特定的编码器类型。
 
 ## 输入
 
-| 参数 | 数据类型 | 是否必需 | 取值范围 | 描述 |
-|-----------|-----------|----------|-------|-------------|
-| `CLIP名称` | STRING | 是 | `text_encoders` 文件夹中找到的文件列表 | 要加载的文本编码器模型文件名。该文件必须位于 `ComfyUI/models/text_encoders/` 或 `ComfyUI/models/clip/` 目录中。 |
-| `类型` | STRING | 是 | `"stable_diffusion"``"stable_cascade"``"sd3"``"stable_audio"``"mochi"``"ltxv"``"pixart"``"cosmos"``"lumina2"``"wan"``"hidream"``"chroma"``"ace"``"omnigen2"``"qwen_image"``"hunyuan_image"``"flux2"``"ovis"``"longcat_image"``"cogvideox"` | 所加载模型的架构类型。这决定了使用哪个具体的编码器变体。默认值为 `"stable_diffusion"`。 |
-| `设备` | STRING | 否 | `"default"``"cpu"` | 加载模型的目标设备。`"default"` 在可用时使用 GPU，而 `"cpu"` 强制使用 CPU 加载。这是一个高级选项（默认值：`"default"`）。 |
+| 参数 | 描述 | 数据类型 | 是否必需 | 取值范围 |
+| --- | --- | --- | --- | --- |
+| `CLIP名称` | 要加载的文本编码器模型文件名。该文件必须位于 `ComfyUI/models/text_encoders/` 或 `ComfyUI/models/clip/` 目录中。 | STRING | 是 | `text_encoders` 文件夹中找到的文件列表 |
+| `类型` | 所加载模型的架构类型。这决定了使用哪个具体的编码器变体。默认值为 `"stable_diffusion"`。 | STRING | 是 | `"stable_diffusion"``"stable_cascade"``"sd3"``"stable_audio"``"mochi"``"ltxv"``"pixart"``"cosmos"``"lumina2"``"wan"``"hidream"``"chroma"``"ace"``"omnigen2"``"qwen_image"``"hunyuan_image"``"flux2"``"ovis"``"longcat_image"``"cogvideox"` |
+| `设备` | 加载模型的目标设备。`"default"` 在可用时使用 GPU，而 `"cpu"` 强制使用 CPU 加载。这是一个高级选项（默认值：`"default"`）。 | STRING | 否 | `"default"``"cpu"` |
 
 ### 支持的编码器类型映射
 
@@ -35,9 +33,11 @@ CLIPLoader 节点用于从文件加载文本编码器模型（CLIP、T5 或类�
 
 ## 输出
 
-| 输出名称 | 数据类型 | 描述 |
-|-------------|-----------|-------------|
-| `clip` | CLIP | 已加载的文本编码器模型，可连接到其他节点进行文本编码和条件控制。 |
+| 输出名称 | 描述 | 数据类型 |
+| --- | --- | --- |
+| `clip` | 已加载的文本编码器模型，可连接到其他节点进行文本编码和条件控制。 | CLIP |
+
+> 本文档由 AI 生成。如果您发现任何错误或有改进建议，欢迎贡献！ [在 GitHub 上编辑](https://github.com/Comfy-Org/embedded-docs/blob/main/comfyui_embedded_docs/docs/CLIPLoader/zh.md)
 
 ---
 **Source fingerprint (SHA-256):** `1051bfe5570dff81719682cb09938bae4c03e94e0e72f7a2be84867cccb48017`

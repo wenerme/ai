@@ -16,52 +16,62 @@ RealtimeKit generates AI-powered meeting summaries from transcript data.
 
 Note
 
-[Transcription](https://developers.cloudflare.com/realtime/realtimekit/ai/transcription/) must be enabled to use summarization.
+Summarization requires a transcript. To generate summaries automatically when a meeting ends, turn on [real-time transcription](https://developers.cloudflare.com/realtime/realtimekit/ai/transcription/#real-time-transcription) or [post-meeting transcription](https://developers.cloudflare.com/realtime/realtimekit/ai/transcription/#post-meeting-transcription), and set `summarize_on_end: true`. With post-meeting transcription, RealtimeKit generates the summary after the transcript is available.
 
-## Enable summarization
+## Turn on summarization
 
-Set `summarize_on_end: true` when [creating a meeting](https://developers.cloudflare.com/realtime/realtimekit/concepts/meeting/):
+Set `summarize_on_end: true` when [creating a meeting](https://developers.cloudflare.com/api/resources/realtime%5Fkit/subresources/meetings/methods/create/). For post-meeting summaries, also set `transcribe_on_end: true` so RealtimeKit generates the summary automatically after the transcript is available:
+
+Terminal window
 
 ```
 
-{
+curl -X POST "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/realtime/kit/$APP_ID/meetings" \
 
-  "title": "Product Review",
+  -H "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
 
-  "ai_config": {
+  -H "Content-Type: application/json" \
 
-    "transcription": {
+  -d '{
 
-      "language": "en-US"
+    "title": "Product Review",
 
-    },
+    "transcribe_on_end": true,
 
-    "summarization": {
+    "summarize_on_end": true,
 
-      "word_limit": 500,
+    "ai_config": {
 
-      "text_format": "markdown",
+      "transcription": {
 
-      "summary_type": "team_meeting"
+        "language": "en-US"
+
+      },
+
+      "summarization": {
+
+        "word_limit": 500,
+
+        "text_format": "markdown",
+
+        "summary_type": "team_meeting"
+
+      }
 
     }
 
-  },
-
-  "summarize_on_end": true
-
-}
+  }'
 
 
 ```
 
 ## Configuration
 
-| Option        | Type   | Default     | Description                            |
-| ------------- | ------ | ----------- | -------------------------------------- |
-| word\_limit   | number | 300         | Summary length (150-1000 words)        |
-| text\_format  | string | plain\_text | Output format: plain\_text or markdown |
-| summary\_type | string | general     | Meeting context for tailored summaries |
+| Option        | Type   | Default  | Description                            |
+| ------------- | ------ | -------- | -------------------------------------- |
+| word\_limit   | number | 500      | Summary length (150-1000 words)        |
+| text\_format  | string | markdown | Output format: plain\_text or markdown |
+| summary\_type | string | general  | Meeting context for tailored summaries |
 
 ### Summary types
 
@@ -83,7 +93,7 @@ Choose a type that matches your meeting for better results:
 
 ### Webhook
 
-Configure `meeting.summary` event in [webhooks](https://developers.cloudflare.com/api/resources/realtime%5Fkit/subresources/webhooks/):
+Configure the `meeting.summary` event in [RealtimeKit webhooks](https://developers.cloudflare.com/realtime/realtimekit/webhooks/#meetingsummary) to receive the summary download URL when it is ready:
 
 ```
 
@@ -91,13 +101,25 @@ Configure `meeting.summary` event in [webhooks](https://developers.cloudflare.co
 
   "event": "meeting.summary",
 
-  "meetingId": "meeting-123",
+  "meeting": {
 
-  "sessionId": "session-456",
+    "id": "bbb8940e-1b97-402a-97d6-2708b7feca41",
 
-  "summaryDownloadUrl": "https://...",
+    "sessionId": "05e57591-d89e-45c9-ae44-08dc1eaad0e0",
 
-  "summaryDownloadUrlExpiry": "2024-08-14T10:15:30.000Z"
+    "organizedBy": {
+
+      "id": "c94c437b-592a-4a39-b9e2-47ef1451e43b",
+
+      "name": "Example organization"
+
+    }
+
+  },
+
+  "summaryDownloadUrl": "https://example.com/summary.txt",
+
+  "summaryDownloadUrlExpiry": "2026-06-10T10:30:00.000Z"
 
 }
 
@@ -114,24 +136,24 @@ Terminal window
 
 ```
 
-curl -X GET "https://api.cloudflare.com/client/v4/accounts/{account_id}/realtime/kit/{app_id}/sessions/{session_id}/summary" \
+curl -X GET "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/realtime/kit/$APP_ID/sessions/$SESSION_ID/summary" \
 
-  -H "Authorization: Bearer {api_token}"
+  -H "Authorization: Bearer $CLOUDFLARE_API_TOKEN"
 
 
 ```
 
 #### Trigger manually
 
-Generate a summary after the meeting if `summarize_on_end` was not set. Refer to [Generate summary of transcripts for the session](https://developers.cloudflare.com/api/resources/realtime%5Fkit/subresources/sessions/methods/generate%5Fsummary%5Fof%5Ftranscripts/).
+Use the [Generate summary of transcripts for the session](https://developers.cloudflare.com/api/resources/realtime%5Fkit/subresources/sessions/methods/generate%5Fsummary%5Fof%5Ftranscripts/) API if `summarize_on_end` was not set and you want to generate a summary manually after the transcript is available.
 
 Terminal window
 
 ```
 
-curl -X POST "https://api.cloudflare.com/client/v4/accounts/{account_id}/realtime/kit/{app_id}/sessions/{session_id}/summary" \
+curl -X POST "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/realtime/kit/$APP_ID/sessions/$SESSION_ID/summary" \
 
-  -H "Authorization: Bearer {api_token}"
+  -H "Authorization: Bearer $CLOUDFLARE_API_TOKEN"
 
 
 ```
@@ -147,6 +169,7 @@ With `text_format: "markdown"` and `summary_type: "team_meeting"`:
 
 ### Key Discussion Points
 
+
 - Reviewed Q4 roadmap priorities
 
 - Discussed deployment timeline for v2.0
@@ -155,6 +178,7 @@ With `text_format: "markdown"` and `summary_type: "team_meeting"`:
 
 
 ### Action Items
+
 
 - @alice: Update design specs by Friday
 
@@ -165,6 +189,7 @@ With `text_format: "markdown"` and `summary_type: "team_meeting"`:
 
 ### Decisions Made
 
+
 - Approved moving forward with Kubernetes migration
 
 - Delayed analytics dashboard to next sprint
@@ -174,7 +199,7 @@ With `text_format: "markdown"` and `summary_type: "team_meeting"`:
 
 ## Retention
 
-Summaries are stored for **7 days** from meeting ends.
+Summaries are stored for **7 days** after the meeting ends.
 
 ```json
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/realtime/","name":"Realtime"}},{"@type":"ListItem","position":3,"item":{"@id":"/realtime/realtimekit/","name":"RealtimeKit"}},{"@type":"ListItem","position":4,"item":{"@id":"/realtime/realtimekit/ai/","name":"AI"}},{"@type":"ListItem","position":5,"item":{"@id":"/realtime/realtimekit/ai/summary/","name":"Summary"}}]}

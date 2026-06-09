@@ -3,17 +3,15 @@ title: "HitPawVideoEnhance - ComfyUI Built-in Node Documentation"
 description: "Complete documentation for the HitPawVideoEnhance node in ComfyUI. Learn its inputs, outputs, parameters and usage."
 mode: wide
 ---
-> This documentation was AI-generated. If you find any errors or have suggestions for improvement, please feel free to contribute! [Edit on GitHub](https://github.com/Comfy-Org/embedded-docs/blob/main/comfyui_embedded_docs/docs/HitPawVideoEnhance/en.md)
-
 The HitPaw Video Enhance node uses an external API to improve the quality of videos. It upscales low-resolution videos to a higher resolution, removes visual artifacts, and reduces noise. The processing cost is calculated per second of the input video.
 
 ## Inputs
 
-| Parameter | Data Type | Required | Range | Description |
-|-----------|-----------|----------|-------|-------------|
-| `model` | DYNAMIC COMBO | Yes | `"Portrait Restore Model (1x)"``"Portrait Restore Model (2x)"``"General Restore Model (1x)"``"General Restore Model (2x)"``"General Restore Model (4x)"``"Ultra HD Model (2x)"``"Generative Model (1x)"` | The AI model to use for video enhancement. Selecting a model reveals a nested `resolution` parameter. The available models and their supported resolutions vary. |
-| `model.resolution` | COMBO | Yes | For `"Generative Model (1x)"`: `"original"``"720p"``"1080p"``"2K/QHD"``"4K/UHD"`For all other models: `"original"``"720p"``"1080p"``"2K/QHD"``"4K/UHD"``"8K"` | The target resolution for the enhanced video. The `"8K"` option is only available for models other than `"Generative Model (1x)"`. |
-| `video` | VIDEO | Yes | N/A | The input video file to be enhanced. |
+| Parameter | Description | Data Type | Required | Range |
+| --- | --- | --- | --- | --- |
+| `model` | The AI model to use for video enhancement. Selecting a model reveals a nested `resolution` parameter. The available models and their supported resolutions vary. | DYNAMIC COMBO | Yes | `"Portrait Restore Model (1x)"``"Portrait Restore Model (2x)"``"General Restore Model (1x)"``"General Restore Model (2x)"``"General Restore Model (4x)"``"Ultra HD Model (2x)"``"Generative Model (1x)"` |
+| `model.resolution` | The target resolution for the enhanced video. The `"8K"` option is only available for models other than `"Generative Model (1x)"`. | COMBO | Yes | For `"Generative Model (1x)"`: `"original"``"720p"``"1080p"``"2K/QHD"``"4K/UHD"`For all other models: `"original"``"720p"``"1080p"``"2K/QHD"``"4K/UHD"``"8K"` |
+| `video` | The input video file to be enhanced. | VIDEO | Yes | N/A |
 
 **Constraints:**
 
@@ -22,9 +20,11 @@ The HitPaw Video Enhance node uses an external API to improve the quality of vid
 
 ## Outputs
 
-| Output Name | Data Type | Description |
-|-------------|-----------|-------------|
-| `video` | VIDEO | The enhanced video file. |
+| Output Name | Description | Data Type |
+| --- | --- | --- |
+| `video` | The enhanced video file. | VIDEO |
+
+> This documentation was AI-generated. If you find any errors or have suggestions for improvement, please feel free to contribute! [Edit on GitHub](https://github.com/Comfy-Org/embedded-docs/blob/main/comfyui_embedded_docs/docs/HitPawVideoEnhance/en.md)
 
 ---
 **Source fingerprint (SHA-256):** `49291b3c610d32cf60fb4786333cb7e3d18c9de39c15577dabbd9f27bc9eac75`

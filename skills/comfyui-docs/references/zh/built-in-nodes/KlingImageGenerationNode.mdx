@@ -3,24 +3,22 @@ title: "KlingImageGenerationNode - ComfyUI Built-in Node Documentation"
 description: "Complete documentation for the KlingImageGenerationNode node in ComfyUI. Learn its inputs, outputs, parameters and usage."
 mode: wide
 ---
-> 本文档由 AI 生成。如果您发现任何错误或有改进建议，欢迎贡献！ [在 GitHub 上编辑](https://github.com/Comfy-Org/embedded-docs/blob/main/comfyui_embedded_docs/docs/KlingImageGenerationNode/zh.md)
-
 Kling 图像生成节点可根据文本提示生成图像，并支持使用参考图像进行引导。该节点基于文本描述和参考设置创建一张或多张图像，然后将生成的图像作为输出返回。
 
 ## 输入
 
-| 参数 | 数据类型 | 是否必填 | 取值范围 | 描述 |
-|-----------|-----------|----------|-------|-------------|
-| `提示词` | STRING | 是 | - | 正向文本提示 |
-| `负面提示词` | STRING | 是 | - | 反向文本提示 |
-| `图像类型` | COMBO | 是 | `"subject_reference"``"style_reference"` | 图像参考类型选择（高级）。当提供参考图像时必填。 |
-| `图像参考强度` | FLOAT | 是 | 0.0 - 1.0 | 用户上传图像的参考强度（默认值：0.5，高级） |
-| `主体参考强度` | FLOAT | 是 | 0.0 - 1.0 | 主体参考相似度（默认值：0.45，高级） |
-| `模型` | COMBO | 是 | `"kling-v3"``"kling-v2"``"kling-v1-5"` | 图像生成模型选择（默认值："kling-v3"） |
-| `宽高比` | COMBO | 是 | `"16:9"``"9:16"``"1:1"``"4:3"``"3:4"``"21:9"``"9:21"` | 生成图像的宽高比（默认值："16:9"） |
-| `图像数量` | INT | 是 | 1 - 9 | 生成图像数量（默认值：1） |
-| `图像` | IMAGE | 否 | - | 可选的参考图像 |
-| `种子` | INT | 否 | 0 - 2147483647 | 种子控制节点是否应重新运行；无论种子如何，结果均非确定性（默认值：0） |
+| 参数 | 描述 | 数据类型 | 是否必填 | 取值范围 |
+| --- | --- | --- | --- | --- |
+| `提示词` | 正向文本提示 | STRING | 是 | - |
+| `负面提示词` | 反向文本提示 | STRING | 是 | - |
+| `图像类型` | 图像参考类型选择（高级）。当提供参考图像时必填。 | COMBO | 是 | `"subject_reference"``"style_reference"` |
+| `图像参考强度` | 用户上传图像的参考强度（默认值：0.5，高级） | FLOAT | 是 | 0.0 - 1.0 |
+| `主体参考强度` | 主体参考相似度（默认值：0.45，高级） | FLOAT | 是 | 0.0 - 1.0 |
+| `模型` | 图像生成模型选择（默认值："kling-v3"） | COMBO | 是 | `"kling-v3"``"kling-v2"``"kling-v1-5"` |
+| `宽高比` | 生成图像的宽高比（默认值："16:9"） | COMBO | 是 | `"16:9"``"9:16"``"1:1"``"4:3"``"3:4"``"21:9"``"9:21"` |
+| `图像数量` | 生成图像数量（默认值：1） | INT | 是 | 1 - 9 |
+| `图像` | 可选的参考图像 | IMAGE | 否 | - |
+| `种子` | 种子控制节点是否应重新运行；无论种子如何，结果均非确定性（默认值：0） | INT | 否 | 0 - 2147483647 |
 
 **参数约束：**
 
@@ -31,9 +29,11 @@ Kling 图像生成节点可根据文本提示生成图像，并支持使用参�
 
 ## 输出
 
-| 输出名称 | 数据类型 | 描述 |
-|-------------|-----------|-------------|
-| `output` | IMAGE | 基于输入参数生成的图像 |
+| 输出名称 | 描述 | 数据类型 |
+| --- | --- | --- |
+| `output` | 基于输入参数生成的图像 | IMAGE |
+
+> 本文档由 AI 生成。如果您发现任何错误或有改进建议，欢迎贡献！ [在 GitHub 上编辑](https://github.com/Comfy-Org/embedded-docs/blob/main/comfyui_embedded_docs/docs/KlingImageGenerationNode/zh.md)
 
 ---
 **Source fingerprint (SHA-256):** `f25164f4007b1f62285e76519238b5061b63597e1a06365acf93d4289063bd3a`

@@ -96,7 +96,7 @@ On inference endpoints (`/chat/completions`, `/responses`, `/messages`), a reque
 }
 ```
 
-When you opt in to [router metadata](/docs/features/router-metadata) via the `X-OpenRouter-Experimental-Metadata: enabled` header, the 403 response also includes the full `openrouter_metadata` object with routing context and a `pipeline` array detailing the guardrail stages that ran:
+When you opt in to [router metadata](/docs/features/router-metadata) via the `X-OpenRouter-Metadata: enabled` header, the 403 response also includes the full `openrouter_metadata` object with routing context and a `pipeline` array detailing the guardrail stages that ran:
 
 ```json
 {

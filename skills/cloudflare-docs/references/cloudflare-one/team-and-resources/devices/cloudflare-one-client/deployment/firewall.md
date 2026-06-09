@@ -20,9 +20,12 @@ The Cloudflare One Client connects to Cloudflare via a standard HTTPS connection
 
 * IPv4 API endpoints: `162.159.137.105` and `162.159.138.105`
 * IPv6 API endpoints: `2606:4700:7::a29f:8969` and `2606:4700:7::a29f:8a69`
-* SNIs: `zero-trust-client.cloudflareclient.com` and `notifications.cloudflareclient.com`
+* SNIs for Cloudflare One Client version 2026.6.0 and later: `api.devices.cloudflare.com`
+* SNIs for versions earlier than 2026.6.0: `zero-trust-client.cloudflareclient.com` and `notifications.cloudflareclient.com`
 
-Even though `zero-trust-client.cloudflareclient.com` and `notifications.cloudflareclient.com` may resolve to different IP addresses, the Cloudflare One Client overrides the resolved IPs with the IPs listed above. To avoid connectivity issues, ensure that the above IPs are permitted through your firewall.
+Cloudflare One Client version 2026.6.0 and later uses `api.devices.cloudflare.com`. Versions earlier than 2026.6.0 use `zero-trust-client.cloudflareclient.com` and `notifications.cloudflareclient.com`.
+
+These domains may resolve to different IP addresses. The Cloudflare One Client overrides the resolved IPs with the IPs listed above. To avoid connectivity issues, allow those IPs through your firewall.
 
 FedRAMP High requirements
 

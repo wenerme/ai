@@ -3,8 +3,6 @@ title: "KlingOmniProEditVideoNode - ComfyUI Built-in Node Documentation"
 description: "Complete documentation for the KlingOmniProEditVideoNode node in ComfyUI. Learn its inputs, outputs, parameters and usage."
 mode: wide
 ---
-> このドキュメントは AI によって生成されました。エラーを見つけた場合や改善のご提案がある場合は、ぜひ貢献してください！ [GitHub で編集](https://github.com/Comfy-Org/embedded-docs/blob/main/comfyui_embedded_docs/docs/KlingOmniProEditVideoNode/ja.md)
-
 以下が翻訳結果です。
 
 ## 概要
@@ -12,15 +10,15 @@ Kling Omni Edit Video (Pro) ノードは、AI モデルを使用して、テキ�
 
 ## 入力
 
-| パラメータ | データ型 | 必須 | 範囲 | 説明 |
-|-----------|-----------|----------|-------|-------------|
-| `モデル名` | COMBO | はい | `"kling-v3-omni"``"kling-video-o1"` | 動画編集に使用する AI モデル（デフォルト: `"kling-v3-omni"`）。 |
-| `プロンプト` | STRING | はい | | 動画の内容を説明するテキストプロンプト。肯定的な説明と否定的な説明の両方を含めることができます。 |
-| `ビデオ` | VIDEO | はい | | 編集する動画。出力動画の長さは同じになります。 |
-| `元の音声を保持` | BOOLEAN | はい | | 入力動画の元の音声を出力に保持するかどうかを決定します（デフォルト: True）。 |
-| `参照画像` | IMAGE | いいえ | | 最大4枚までの追加の参照画像。 |
-| `解像度` | COMBO | いいえ | `"1080p"``"720p"` | 出力動画の解像度（デフォルト: `"1080p"`）。 |
-| `シード` | INT | いいえ | 0 ～ 2147483647 | シードはノードを再実行するかどうかを制御します。シードに関係なく結果は非決定的です（デフォルト: 0）。 |
+| パラメータ | 説明 | データ型 | 必須 | 範囲 |
+| --- | --- | --- | --- | --- |
+| `モデル名` | 動画編集に使用する AI モデル（デフォルト: `"kling-v3-omni"`）。 | COMBO | はい | `"kling-v3-omni"``"kling-video-o1"` |
+| `プロンプト` | 動画の内容を説明するテキストプロンプト。肯定的な説明と否定的な説明の両方を含めることができます。 | STRING | はい |  |
+| `ビデオ` | 編集する動画。出力動画の長さは同じになります。 | VIDEO | はい |  |
+| `元の音声を保持` | 入力動画の元の音声を出力に保持するかどうかを決定します（デフォルト: True）。 | BOOLEAN | はい |  |
+| `参照画像` | 最大4枚までの追加の参照画像。 | IMAGE | いいえ |  |
+| `解像度` | 出力動画の解像度（デフォルト: `"1080p"`）。 | COMBO | いいえ | `"1080p"``"720p"` |
+| `シード` | シードはノードを再実行するかどうかを制御します。シードに関係なく結果は非決定的です（デフォルト: 0）。 | INT | いいえ | 0 ～ 2147483647 |
 
 **制約と制限事項：**
 
@@ -33,9 +31,11 @@ Kling Omni Edit Video (Pro) ノードは、AI モデルを使用して、テキ�
 
 ## 出力
 
-| 出力名 | データ型 | 説明 |
-|-------------|-----------|-------------|
-| `ビデオ` | VIDEO | AI モデルによって生成された編集済み動画。 |
+| 出力名 | 説明 | データ型 |
+| --- | --- | --- |
+| `ビデオ` | AI モデルによって生成された編集済み動画。 | VIDEO |
+
+> このドキュメントは AI によって生成されました。エラーを見つけた場合や改善のご提案がある場合は、ぜひ貢献してください！ [GitHub で編集](https://github.com/Comfy-Org/embedded-docs/blob/main/comfyui_embedded_docs/docs/KlingOmniProEditVideoNode/ja.md)
 
 ---
 **Source fingerprint (SHA-256):** `ddc3fdc8c97cdcdd34f16a0916b13ffe6adeb46e58e2933516c9a6aef7c36730`

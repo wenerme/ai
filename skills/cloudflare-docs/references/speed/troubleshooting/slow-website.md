@@ -22,8 +22,8 @@ Before troubleshooting performance, confirm that your traffic is actually going 
 
 Every response served through Cloudflare includes a `cf-ray` header. Check for this header:
 
-* [ bash ](#tab-panel-9997)
-* [ PowerShell ](#tab-panel-9998)
+* [ bash ](#tab-panel-10010)
+* [ PowerShell ](#tab-panel-10011)
 
 Terminal window
 
@@ -49,8 +49,8 @@ If you see a `cf-ray` header (for example, `cf-ray: 8a1b2c3d4e5f6g7h-SJC`), your
 
 Your domain must resolve to Cloudflare IP addresses for traffic to be proxied:
 
-* [ bash ](#tab-panel-9999)
-* [ PowerShell ](#tab-panel-10000)
+* [ bash ](#tab-panel-10012)
+* [ PowerShell ](#tab-panel-10013)
 
 Terminal window
 
@@ -199,8 +199,8 @@ For detailed timing metrics on specific requests, use command-line tools to meas
 
 ### Basic performance test
 
-* [ bash ](#tab-panel-10001)
-* [ PowerShell ](#tab-panel-10002)
+* [ bash ](#tab-panel-10014)
+* [ PowerShell ](#tab-panel-10015)
 
 Terminal window
 
@@ -295,8 +295,8 @@ Uncached content must travel from the visitor to Cloudflare, then to your origin
 
 Check the cache status of a specific asset:
 
-* [ bash ](#tab-panel-10003)
-* [ PowerShell ](#tab-panel-10004)
+* [ bash ](#tab-panel-10016)
+* [ PowerShell ](#tab-panel-10017)
 
 Terminal window
 
@@ -391,8 +391,8 @@ Poor results indicate issues with your local network or ISP.
 
 MTR combines traceroute and ping to show latency and packet loss at each network hop.
 
-* [ macOS/Linux ](#tab-panel-10005)
-* [ Windows ](#tab-panel-10006)
+* [ macOS/Linux ](#tab-panel-10018)
+* [ Windows ](#tab-panel-10019)
 
 Terminal window
 
@@ -438,8 +438,8 @@ How requests are routed to Cloudflare data centers can significantly impact perf
 
 Add `/cdn-cgi/trace` to your domain to see which Cloudflare data center is serving your requests:
 
-* [ bash ](#tab-panel-10007)
-* [ PowerShell ](#tab-panel-10008)
+* [ bash ](#tab-panel-10020)
+* [ PowerShell ](#tab-panel-10021)
 
 Terminal window
 

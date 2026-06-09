@@ -45,8 +45,8 @@ await sandbox.mountBucket(
 * `mountPath` \- Local filesystem path to mount at (e.g., `"/data"`)
 * `options` (optional) - Mount configuration (see [MountBucketOptions](#mountbucketoptions))
 
-* [  JavaScript ](#tab-panel-8080)
-* [  TypeScript ](#tab-panel-8081)
+* [  JavaScript ](#tab-panel-9641)
+* [  TypeScript ](#tab-panel-9642)
 
 JavaScript
 
@@ -192,8 +192,8 @@ await sandbox.unmountBucket(mountPath: string): Promise<void>
 
 * `mountPath` \- Path where the bucket is mounted (e.g., `"/data"`)
 
-* [  JavaScript ](#tab-panel-8078)
-* [  TypeScript ](#tab-panel-8079)
+* [  JavaScript ](#tab-panel-9639)
+* [  TypeScript ](#tab-panel-9640)
 
 JavaScript
 
@@ -251,6 +251,8 @@ interface RemoteMountBucketOptions {
 
   credentials?: BucketCredentials;
 
+  credentialProxy?: boolean;
+
   readOnly?: boolean;
 
   s3fsOptions?: string[];
@@ -305,6 +307,7 @@ type MountBucketOptions =
    * Supports `prefix` and `readOnly`
 * **Remote endpoint mount** \- Set `endpoint` to mount any S3-compatible provider  
    * Supports explicit `credentials` or environment variable auto-detection  
+   * Set `credentialProxy: true` to keep credentials out of the container (egress interception)  
    * Supports `provider`, `prefix`, `readOnly`, and `s3fsOptions`
 
 **Field details**:
@@ -321,6 +324,11 @@ type MountBucketOptions =
 * `credentials` (remote endpoint mode only) - API credentials  
    * Contains `accessKeyId` and `secretAccessKey`  
    * If not provided, uses environment variables
+* `credentialProxy` (remote endpoint mode only) - Route S3 requests through the Durable Object for signing  
+   * When `true`, credentials are never written to the container's disk. The Durable Object intercepts and re-signs all outbound S3 requests at the network layer before forwarding them upstream.  
+   * Supports [AWS SigV4 ↗](https://docs.aws.amazon.com/AmazonS3/latest/API/sig-v4-authenticating-requests.html) signing for S3-compatible endpoints (including R2) and HMAC signing for Google Cloud Storage  
+   * Requires `ContainerProxy` to be exported from your Worker entrypoint  
+   * Default: `false` (backwards compatibility — recommended to set to `true`; will become the default in a future version)
 * `readOnly` (optional) - Mount in read-only mode  
    * Default: `false`
 * `prefix` (optional) - Subdirectory within the bucket to mount  

@@ -1604,121 +1604,18 @@ When using Anthropic models (Claude), you can request specific beta features by 
 
 #### Supported Beta Features
 
-| Feature                     | Header Value                             | Description                                                                                                                                         |
-| --------------------------- | ---------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Fine-Grained Tool Streaming | `fine-grained-tool-streaming-2025-05-14` | Enables more granular streaming events during tool calls, providing real-time updates as tool arguments are being generated                         |
-| Interleaved Thinking        | `interleaved-thinking-2025-05-14`        | Allows Claude's thinking/reasoning to be interleaved with regular output, rather than appearing as a single block                                   |
-| Structured Outputs          | `structured-outputs-2025-11-13`          | Enables the strict tool use feature for supported Claude models, validating tool parameters against your schema to ensure correctly-typed arguments |
+| Feature              | Header Value                      | Description                                                                                                                                         |
+| -------------------- | --------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Interleaved Thinking | `interleaved-thinking-2025-05-14` | Allows Claude's thinking/reasoning to be interleaved with regular output, rather than appearing as a single block                                   |
+| Structured Outputs   | `structured-outputs-2025-11-13`   | Enables the strict tool use feature for supported Claude models, validating tool parameters against your schema to ensure correctly-typed arguments |
 
-OpenRouter manages some Anthropic beta features automatically:
+OpenRouter manages some Anthropic features automatically:
 
 * **Prompt caching and extended context** are enabled based on model capabilities
-* **Structured outputs for JSON schema response format** (`response_format.type: "json_schema"`) - the header is automatically applied
+* **Structured outputs for JSON schema response format** (`response_format.type: "json_schema"`) — the header is automatically applied
+* **Fine-grained tool streaming** — for every streamed request (`stream: true`) that includes user-defined tools, OpenRouter sets `eager_input_streaming: true` on each tool so Anthropic emits tool arguments as a sequence of incremental chunks rather than buffering them. This matches the streaming behavior already exposed by other providers. See [Anthropic's fine-grained tool streaming docs](https://platform.claude.com/docs/en/agents-and-tools/tool-use/fine-grained-tool-streaming) for details.
 
 For **strict tool use** (`strict: true` on tools), you must explicitly pass the `structured-outputs-2025-11-13` header. Without this header, OpenRouter will strip the `strict` field and route normally.
-
-#### Example: Enabling Fine-Grained Tool Streaming
-
-```typescript title="TypeScript SDK"
-import { OpenRouter } from '@openrouter/sdk';
-
-const openRouter = new OpenRouter({
-  apiKey: '<OPENROUTER_API_KEY>',
-});
-
-const completion = await openRouter.chat.send(
-  {
-    model: 'anthropic/claude-sonnet-4.5',
-    messages: [{ role: 'user', content: 'What is the weather in Tokyo?' }],
-    tools: [
-      {
-        type: 'function',
-        function: {
-          name: 'get_weather',
-          description: 'Get the current weather for a location',
-          parameters: {
-            type: 'object',
-            properties: {
-              location: { type: 'string' },
-            },
-            required: ['location'],
-          },
-        },
-      },
-    ],
-    stream: true,
-  },
-  {
-    headers: {
-      'x-anthropic-beta': 'fine-grained-tool-streaming-2025-05-14',
-    },
-  },
-);
-```
-
-```typescript title="TypeScript (fetch)"
-fetch('https://openrouter.ai/api/v1/chat/completions', {
-  method: 'POST',
-  headers: {
-    'Authorization': 'Bearer <OPENROUTER_API_KEY>',
-    'Content-Type': 'application/json',
-    'x-anthropic-beta': 'fine-grained-tool-streaming-2025-05-14',
-  },
-  body: JSON.stringify({
-    model: 'anthropic/claude-sonnet-4.5',
-    messages: [{ role: 'user', content: 'What is the weather in Tokyo?' }],
-    tools: [
-      {
-        type: 'function',
-        function: {
-          name: 'get_weather',
-          description: 'Get the current weather for a location',
-          parameters: {
-            type: 'object',
-            properties: {
-              location: { type: 'string' },
-            },
-            required: ['location'],
-          },
-        },
-      },
-    ],
-    stream: true,
-  }),
-});
-```
-
-```python title="Python"
-import requests
-
-headers = {
-  'Authorization': 'Bearer <OPENROUTER_API_KEY>',
-  'Content-Type': 'application/json',
-  'x-anthropic-beta': 'fine-grained-tool-streaming-2025-05-14',
-}
-
-response = requests.post('https://openrouter.ai/api/v1/chat/completions', headers=headers, json={
-  'model': 'anthropic/claude-sonnet-4.5',
-  'messages': [{ 'role': 'user', 'content': 'What is the weather in Tokyo?' }],
-  'tools': [
-    {
-      'type': 'function',
-      'function': {
-        'name': 'get_weather',
-        'description': 'Get the current weather for a location',
-        'parameters': {
-          'type': 'object',
-          'properties': {
-            'location': { 'type': 'string' },
-          },
-          'required': ['location'],
-        },
-      },
-    },
-  ],
-  'stream': True,
-})
-```
 
 #### Example: Enabling Interleaved Thinking
 
@@ -1780,7 +1677,7 @@ response = requests.post('https://openrouter.ai/api/v1/chat/completions', header
 You can enable multiple beta features by separating them with commas:
 
 ```bash
-x-anthropic-beta: fine-grained-tool-streaming-2025-05-14,interleaved-thinking-2025-05-14
+x-anthropic-beta: interleaved-thinking-2025-05-14,structured-outputs-2025-11-13
 ```
 
 Beta features are experimental and may change or be deprecated by Anthropic. Check [Anthropic's documentation](https://docs.anthropic.com/en/api/beta-features) for the latest information on available beta features.

@@ -385,6 +385,7 @@ components:
         - Together
         - Upstage
         - Venice
+        - Wafer
         - WandB
         - Xiaomi
         - xAI

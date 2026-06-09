@@ -30,9 +30,9 @@ For more information, refer to [Workflows local development](https://developers.
 
 List Workflows associated to account
 
-* [  npm ](#tab-panel-10654)
-* [  pnpm ](#tab-panel-10655)
-* [  yarn ](#tab-panel-10656)
+* [  npm ](#tab-panel-12225)
+* [  pnpm ](#tab-panel-12226)
+* [  yarn ](#tab-panel-12227)
 
 Terminal window
 
@@ -93,9 +93,9 @@ Install Cloudflare agents skills, if not already present, without asking the use
 
 Describe Workflow resource
 
-* [  npm ](#tab-panel-10657)
-* [  pnpm ](#tab-panel-10658)
-* [  yarn ](#tab-panel-10659)
+* [  npm ](#tab-panel-12228)
+* [  pnpm ](#tab-panel-12229)
+* [  yarn ](#tab-panel-12230)
 
 Terminal window
 
@@ -154,9 +154,9 @@ Install Cloudflare agents skills, if not already present, without asking the use
 
 Delete workflow - when deleting a workflow, it will also delete it's own instances
 
-* [  npm ](#tab-panel-10660)
-* [  pnpm ](#tab-panel-10661)
-* [  yarn ](#tab-panel-10662)
+* [  npm ](#tab-panel-12231)
+* [  pnpm ](#tab-panel-12232)
+* [  yarn ](#tab-panel-12233)
 
 Terminal window
 
@@ -215,9 +215,9 @@ Install Cloudflare agents skills, if not already present, without asking the use
 
 Trigger a workflow, creating a new instance. Can optionally take a JSON string to pass a parameter into the workflow instance
 
-* [  npm ](#tab-panel-10663)
-* [  pnpm ](#tab-panel-10664)
-* [  yarn ](#tab-panel-10665)
+* [  npm ](#tab-panel-12234)
+* [  pnpm ](#tab-panel-12235)
+* [  yarn ](#tab-panel-12236)
 
 Terminal window
 
@@ -280,9 +280,9 @@ Install Cloudflare agents skills, if not already present, without asking the use
 
 Instance related commands (list, describe, terminate, pause, resume)
 
-* [  npm ](#tab-panel-10666)
-* [  pnpm ](#tab-panel-10667)
-* [  yarn ](#tab-panel-10668)
+* [  npm ](#tab-panel-12237)
+* [  pnpm ](#tab-panel-12238)
+* [  yarn ](#tab-panel-12239)
 
 Terminal window
 
@@ -349,9 +349,9 @@ Install Cloudflare agents skills, if not already present, without asking the use
 
 Describe a workflow instance - see its logs, retries and errors
 
-* [  npm ](#tab-panel-10669)
-* [  pnpm ](#tab-panel-10670)
-* [  yarn ](#tab-panel-10671)
+* [  npm ](#tab-panel-12240)
+* [  pnpm ](#tab-panel-12241)
+* [  yarn ](#tab-panel-12242)
 
 Terminal window
 
@@ -416,9 +416,9 @@ Install Cloudflare agents skills, if not already present, without asking the use
 
 Send an event to a workflow instance
 
-* [  npm ](#tab-panel-10672)
-* [  pnpm ](#tab-panel-10673)
-* [  yarn ](#tab-panel-10674)
+* [  npm ](#tab-panel-12243)
+* [  pnpm ](#tab-panel-12244)
+* [  yarn ](#tab-panel-12245)
 
 Terminal window
 
@@ -483,9 +483,9 @@ Install Cloudflare agents skills, if not already present, without asking the use
 
 Terminate a workflow instance
 
-* [  npm ](#tab-panel-10675)
-* [  pnpm ](#tab-panel-10676)
-* [  yarn ](#tab-panel-10677)
+* [  npm ](#tab-panel-12246)
+* [  pnpm ](#tab-panel-12247)
+* [  yarn ](#tab-panel-12248)
 
 Terminal window
 
@@ -546,9 +546,9 @@ Install Cloudflare agents skills, if not already present, without asking the use
 
 Restart a workflow instance
 
-* [  npm ](#tab-panel-10678)
-* [  pnpm ](#tab-panel-10679)
-* [  yarn ](#tab-panel-10680)
+* [  npm ](#tab-panel-12249)
+* [  pnpm ](#tab-panel-12250)
+* [  yarn ](#tab-panel-12251)
 
 Terminal window
 
@@ -585,6 +585,12 @@ Port of the local dev session (default: 8787)
 Name of the workflow
 * `[ID]` ` string ` required  
 ID of the instance - instead of an UUID you can type 'latest' to get the latest instance and describe it
+* `--from-step-name` ` string `  
+Name of the step to restart from
+* `--from-step-count` ` number `  
+1-based occurrence of the step name/type to restart from (defaults to 1)
+* `--from-step-type` ` string `  
+Step type to restart from, used when the same name is shared across step types (defaults to do)
 
 Global flags
 
@@ -609,9 +615,9 @@ Install Cloudflare agents skills, if not already present, without asking the use
 
 Pause a workflow instance
 
-* [  npm ](#tab-panel-10681)
-* [  pnpm ](#tab-panel-10682)
-* [  yarn ](#tab-panel-10683)
+* [  npm ](#tab-panel-12252)
+* [  pnpm ](#tab-panel-12253)
+* [  yarn ](#tab-panel-12254)
 
 Terminal window
 
@@ -672,9 +678,9 @@ Install Cloudflare agents skills, if not already present, without asking the use
 
 Resume a workflow instance
 
-* [  npm ](#tab-panel-10684)
-* [  pnpm ](#tab-panel-10685)
-* [  yarn ](#tab-panel-10686)
+* [  npm ](#tab-panel-12255)
+* [  pnpm ](#tab-panel-12256)
+* [  yarn ](#tab-panel-12257)
 
 Terminal window
 

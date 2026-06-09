@@ -112,6 +112,14 @@ If the tunnel does not appear in ChatGPT, verify that the tunnel is associated w
 - Tunnel access follows the existing organization and workspace context instead of introducing a separate public ingress path.
 - `tunnel-client` supports enterprise networking requirements such as outbound proxies, custom CA bundles, control-plane client certificates, and MCP-side `mTLS`.
 
+### Logging boundaries
+
+Secure MCP Tunnel separates tunnel transport from app-level product logging:
+
+- Tunnel control-plane auth, long-poll / response traffic, and individual tunnel transport requests are not emitted as ChatGPT Compliance Platform app events by the tunnel path.
+- Tunnel metadata changes are exposed through the API Platform [Audit logs](https://developers.openai.com/api/reference/resources/admin/subresources/organization/subresources/audit_logs) surface as `tunnel.created`, `tunnel.updated`, and `tunnel.deleted`.
+- When ChatGPT reaches a custom app through Secure MCP Tunnel, the tunnel remains only the transport path. Normal app-level compliance logging still applies on the app path, including app invocation logs and app auth lifecycle logs such as `APP_AUTH_LOG` when the app is linked or unlinked.
+
 ## Advanced: allowlisted HTTP callouts
 
 Secure MCP Tunnel can also support narrowly scoped HTTP callouts from supported agent or API flows into a customer network. `tunnel-client` includes an embedded MCP server, Harpoon, that exposes configured HTTP targets by label and lets callers invoke them through the tunnel with bounded request/response limits.

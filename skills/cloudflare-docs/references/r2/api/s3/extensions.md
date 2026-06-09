@@ -66,12 +66,6 @@ This is only useful if you are creating buckets on demand because you do not kno
 
 Add a `cf-create-bucket-if-missing` header with the value `true` to implicitly create the bucket if it does not exist yet. Refer to [Auto-creating buckets on upload](#auto-creating-buckets-on-upload) for a more detailed explanation of when to add this header.
 
-## PutObject
-
-### Conditional operations in `PutObject`
-
-`PutObject` supports [conditional uploads ↗](https://developer.mozilla.org/en-US/docs/Web/HTTP/Conditional%5Frequests) via the [If-Match ↗](https://developer.mozilla.org/en-US/docs/Web/HTTP/Reference/Headers/If-Match), [If-None-Match ↗](https://developer.mozilla.org/en-US/docs/Web/HTTP/Reference/Headers/If-None-Match), [If-Modified-Since ↗](https://developer.mozilla.org/en-US/docs/Web/HTTP/Reference/Headers/If-Modified-Since), and [If-Unmodified-Since ↗](https://developer.mozilla.org/en-US/docs/Web/HTTP/Reference/Headers/If-Unmodified-Since) headers. These headers will cause the `PutObject` operation to be rejected with `412 PreconditionFailed` error codes when the preceding state of the object that is being written to does not match the specified conditions.
-
 ## CopyObject
 
 ### MERGE metadata directive

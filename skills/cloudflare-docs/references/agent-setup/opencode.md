@@ -59,7 +59,7 @@ opencode
 5. **Try a prompt**  
 For example:  
 ```  
-Configure caching rules and cache TTLs to reduce origin load for my e-commerce store.  
+Set up WAF rules to block SQL injection and XSS attacks on my application.  
 ```
 
 ## Cloudflare platform access

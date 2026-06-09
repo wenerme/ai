@@ -3,24 +3,22 @@ title: "HunyuanImageToVideo - ComfyUI Built-in Node Documentation"
 description: "Complete documentation for the HunyuanImageToVideo node in ComfyUI. Learn its inputs, outputs, parameters and usage."
 mode: wide
 ---
-> このドキュメントは AI によって生成されました。エラーを見つけた場合や改善のご提案がある場合は、ぜひ貢献してください！ [GitHub で編集](https://github.com/Comfy-Org/embedded-docs/blob/main/comfyui_embedded_docs/docs/HunyuanImageToVideo/ja.md)
-
 このドキュメントは AI が生成しました。誤りや改善の提案がありましたら、ぜひご協力ください！ [GitHub で編集する](https://github.com/Comfy-Org/embedded-docs/blob/main/comfyui_embedded_docs/docs/HunyuanImageToVideo/en.md)
 
 HunyuanImageToVideo ノードは、Hunyuan ビデオモデルを使用して画像をビデオの潜在表現に変換します。このノードは、条件付け入力とオプションの開始画像を受け取り、ビデオ生成モデルでさらに処理できるビデオ潜在表現を生成します。開始画像がビデオ生成プロセスに与える影響を制御するために、異なるガイダンスタイプをサポートしています。
 
 ## 入力
 
-| パラメータ | データ型 | 必須 | 範囲 | 説明 |
-|-----------|-----------|----------|-------|-------------|
-| `ポジティブ` | CONDITIONING | はい | - | ビデオ生成をガイドするためのポジティブ条件付け入力 |
-| `vae` | VAE | はい | - | 画像を潜在空間にエンコードするために使用されるVAEモデル |
-| `幅` | INT | はい | 16 ～ MAX_RESOLUTION | 出力ビデオの幅（ピクセル単位）（デフォルト：848、ステップ：16） |
-| `高さ` | INT | はい | 16 ～ MAX_RESOLUTION | 出力ビデオの高さ（ピクセル単位）（デフォルト：480、ステップ：16） |
-| `長さ` | INT | はい | 1 ～ MAX_RESOLUTION | 出力ビデオのフレーム数（デフォルト：53、ステップ：4） |
-| `バッチサイズ` | INT | はい | 1 ～ 4096 | 同時に生成するビデオの数（デフォルト：1） |
-| `ガイダンスタイプ` | COMBO | はい | "v1 (concat)""v2 (replace)""custom" | 開始画像をビデオ生成に組み込む方法（デフォルト："v1 (concat)"） |
-| `開始画像` | IMAGE | いいえ | - | ビデオ生成を初期化するためのオプションの開始画像 |
+| パラメータ | 説明 | データ型 | 必須 | 範囲 |
+| --- | --- | --- | --- | --- |
+| `ポジティブ` | ビデオ生成をガイドするためのポジティブ条件付け入力 | CONDITIONING | はい | - |
+| `vae` | 画像を潜在空間にエンコードするために使用されるVAEモデル | VAE | はい | - |
+| `幅` | 出力ビデオの幅（ピクセル単位）（デフォルト：848、ステップ：16） | INT | はい | 16 ～ MAX_RESOLUTION |
+| `高さ` | 出力ビデオの高さ（ピクセル単位）（デフォルト：480、ステップ：16） | INT | はい | 16 ～ MAX_RESOLUTION |
+| `長さ` | 出力ビデオのフレーム数（デフォルト：53、ステップ：4） | INT | はい | 1 ～ MAX_RESOLUTION |
+| `バッチサイズ` | 同時に生成するビデオの数（デフォルト：1） | INT | はい | 1 ～ 4096 |
+| `ガイダンスタイプ` | 開始画像をビデオ生成に組み込む方法（デフォルト："v1 (concat)"） | COMBO | はい | "v1 (concat)""v2 (replace)""custom" |
+| `開始画像` | ビデオ生成を初期化するためのオプションの開始画像 | IMAGE | いいえ | - |
 
 **注記：** `start_image` が指定された場合、ノードは選択された `guidance_type` に基づいて異なるガイダンス方法を使用します。
 
@@ -30,10 +28,12 @@ HunyuanImageToVideo ノードは、Hunyuan ビデオモデルを使用して画�
 
 ## 出力
 
-| 出力名 | データ型 | 説明 |
-|-------------|-----------|-------------|
-| `潜在` | CONDITIONING | `開始画像` が指定された場合に画像ガイダンスが適用された、変更されたポジティブ条件付け |
-| `latent` | LATENT | ビデオ生成モデルによるさらなる処理の準備ができたビデオ潜在表現 |
+| 出力名 | 説明 | データ型 |
+| --- | --- | --- |
+| `潜在` | `開始画像` が指定された場合に画像ガイダンスが適用された、変更されたポジティブ条件付け | CONDITIONING |
+| `latent` | ビデオ生成モデルによるさらなる処理の準備ができたビデオ潜在表現 | LATENT |
+
+> このドキュメントは AI によって生成されました。エラーを見つけた場合や改善のご提案がある場合は、ぜひ貢献してください！ [GitHub で編集](https://github.com/Comfy-Org/embedded-docs/blob/main/comfyui_embedded_docs/docs/HunyuanImageToVideo/ja.md)
 
 ---
 **Source fingerprint (SHA-256):** `e55e935b7955b28b04014359c544a230c51ee91e21170be1ae4f50705d3e7bba`

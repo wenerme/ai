@@ -69,6 +69,8 @@ DLP supports reporting and scanning the following file types:
 
 DLP will scan the text contained in text, Microsoft Office, and PDF files.
 
+Refer to the [OCR documentation](https://developers.cloudflare.com/cloudflare-one/data-loss-prevention/dlp-settings/#optical-character-recognition-ocr) for supported image format information.
+
 Note
 
 ZIP files can be recursively compressed a maximum of 10 times.

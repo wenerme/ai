@@ -33,6 +33,7 @@ glab mr checkout
 
 ```plaintext
   -b, --branch string            Check out merge request with name <branch>.
+  -f, --force                    Reset local branch to remote when they have diverged. Refuses if working tree has changes that would be lost.
   -u, --set-upstream-to string   Set tracking of checked-out branch to [REMOTE/]BRANCH.
 ```
 

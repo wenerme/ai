@@ -3,25 +3,23 @@ title: "WanReferenceVideoApi - ComfyUI Built-in Node Documentation"
 description: "Complete documentation for the WanReferenceVideoApi node in ComfyUI. Learn its inputs, outputs, parameters and usage."
 mode: wide
 ---
-> 本文档由 AI 生成。如果您发现任何错误或有改进建议，欢迎贡献！ [在 GitHub 上编辑](https://github.com/Comfy-Org/embedded-docs/blob/main/comfyui_embedded_docs/docs/WanReferenceVideoApi/zh.md)
-
 此文档由 AI 生成。如发现任何错误或有改进建议，欢迎随时贡献！[在 GitHub 上编辑](https://github.com/Comfy-Org/embedded-docs/blob/main/comfyui_embedded_docs/docs/WanReferenceVideoApi/en.md)
 
 Wan 参考视频节点利用一个或多个输入参考视频的视觉外观和语音，结合文本提示，生成新的视频。它在根据您的描述创建新内容的同时，保持与参考素材中角色的一致性。
 
 ## 输入
 
-| 参数 | 数据类型 | 是否必填 | 取值范围 | 描述 |
-|-----------|-----------|----------|-------|-------------|
-| `模型` | COMBO | 是 | `"wan2.6-r2v"` | 用于视频生成的特定 AI 模型。 |
-| `提示词` | STRING | 是 | - | 对新视频元素和视觉特征的描述。支持英文和中文。使用 `character1` 和 `character2` 等标识符来指代参考视频中的角色。 |
-| `反向提示词` | STRING | 否 | - | 对生成视频中应避免的元素或特征的描述。 |
-| `参考视频` | AUTOGROW | 是 | - | 用作角色外观和语音参考的视频输入列表。您必须至少提供一个视频。每个视频可被赋予一个名称，如 `character1`、`character2` 或 `character3`。 |
-| `尺寸` | COMBO | 是 | `"720p: 1:1 (960x960)"``"720p: 16:9 (1280x720)"``"720p: 9:16 (720x1280)"``"720p: 4:3 (1088x832)"``"720p: 3:4 (832x1088)"``"1080p: 1:1 (1440x1440)"``"1080p: 16:9 (1920x1080)"``"1080p: 9:16 (1080x1920)"``"1080p: 4:3 (1632x1248)"``"1080p: 3:4 (1248x1632)"` | 输出视频的分辨率和宽高比。 |
-| `时长` | INT | 是 | 5 到 10 | 生成视频的长度，以秒为单位。该值必须是 5 的倍数（默认值：5）。 |
-| `种子` | INT | 否 | 0 到 2147483647 | 用于可重现结果的随机种子值。值为 0 将生成随机种子。 |
-| `镜头类型` | COMBO | 是 | `"single"``"multi"` | 指定生成的视频是单个连续镜头，还是包含多个带切换的镜头。 |
-| `水印` | BOOLEAN | 否 | - | 启用后，将在最终视频中添加 AI 生成的水印（默认值：False）。 |
+| 参数 | 描述 | 数据类型 | 是否必填 | 取值范围 |
+| --- | --- | --- | --- | --- |
+| `模型` | 用于视频生成的特定 AI 模型。 | COMBO | 是 | `"wan2.6-r2v"` |
+| `提示词` | 对新视频元素和视觉特征的描述。支持英文和中文。使用 `character1` 和 `character2` 等标识符来指代参考视频中的角色。 | STRING | 是 | - |
+| `反向提示词` | 对生成视频中应避免的元素或特征的描述。 | STRING | 否 | - |
+| `参考视频` | 用作角色外观和语音参考的视频输入列表。您必须至少提供一个视频。每个视频可被赋予一个名称，如 `character1`、`character2` 或 `character3`。 | AUTOGROW | 是 | - |
+| `尺寸` | 输出视频的分辨率和宽高比。 | COMBO | 是 | `"720p: 1:1 (960x960)"``"720p: 16:9 (1280x720)"``"720p: 9:16 (720x1280)"``"720p: 4:3 (1088x832)"``"720p: 3:4 (832x1088)"``"1080p: 1:1 (1440x1440)"``"1080p: 16:9 (1920x1080)"``"1080p: 9:16 (1080x1920)"``"1080p: 4:3 (1632x1248)"``"1080p: 3:4 (1248x1632)"` |
+| `时长` | 生成视频的长度，以秒为单位。该值必须是 5 的倍数（默认值：5）。 | INT | 是 | 5 到 10 |
+| `种子` | 用于可重现结果的随机种子值。值为 0 将生成随机种子。 | INT | 否 | 0 到 2147483647 |
+| `镜头类型` | 指定生成的视频是单个连续镜头，还是包含多个带切换的镜头。 | COMBO | 是 | `"single"``"multi"` |
+| `水印` | 启用后，将在最终视频中添加 AI 生成的水印（默认值：False）。 | BOOLEAN | 否 | - |
 
 **约束条件：**
 
@@ -30,9 +28,11 @@ Wan 参考视频节点利用一个或多个输入参考视频的视觉外观和�
 
 ## 输出
 
-| 输出名称 | 数据类型 | 描述 |
-|-------------|-----------|-------------|
-| `output` | VIDEO | 新生成的视频文件。 |
+| 输出名称 | 描述 | 数据类型 |
+| --- | --- | --- |
+| `output` | 新生成的视频文件。 | VIDEO |
+
+> 本文档由 AI 生成。如果您发现任何错误或有改进建议，欢迎贡献！ [在 GitHub 上编辑](https://github.com/Comfy-Org/embedded-docs/blob/main/comfyui_embedded_docs/docs/WanReferenceVideoApi/zh.md)
 
 ---
 **Source fingerprint (SHA-256):** `ed29f0bd3a1b30a81c94896976c4f9ff7bf5d0bcafaba66d70be61fce1418962`

@@ -159,6 +159,7 @@ components:
         - together
         - upstage
         - venice
+        - wafer
         - wandb
         - xai
         - xiaomi

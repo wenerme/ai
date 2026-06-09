@@ -63,7 +63,7 @@ The input query.
 
 `model` ` string ` optional
 
-The text-generation model that is used to generate the response for the query. For a list of valid options, check the AI Search Generation model Settings. Defaults to the generation model selected in the AI Search Settings.
+The text-generation model used to generate the response for the query. For a list of valid options, check the AI Search generation model settings. Defaults to the generation model selected in the AI Search settings.
 
 ---
 

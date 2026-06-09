@@ -1,9 +1,9 @@
 {
   "admin-setup.md": {
     "url": "https://code.claude.com/docs/en/admin-setup",
-    "lastModified": "Sat, 06 Jun 2026 00:31:06 GMT",
-    "size": 18130,
-    "updatedAt": "2026-06-06T00:31:06.467Z"
+    "lastModified": "Tue, 09 Jun 2026 00:26:17 GMT",
+    "size": 18235,
+    "updatedAt": "2026-06-09T00:26:17.011Z"
   },
   "agent-teams.md": {
     "url": "https://code.claude.com/docs/en/agent-teams",
@@ -61,9 +61,9 @@
   },
   "changelog.md": {
     "url": "https://raw.githubusercontent.com/anthropics/claude-code/main/CHANGELOG.md",
-    "etag": "W/\"c16ccd9f2a6a508733d64214f0b262f9aab91fc78a9e6281527835f44db3c84e\"",
-    "size": 362182,
-    "updatedAt": "2026-06-07T00:32:00.172Z"
+    "etag": "W/\"2e2fa44dfa74c9f91013c1976ab77c147ca691835c4228f54036f3df414d983d\"",
+    "size": 366221,
+    "updatedAt": "2026-06-09T00:28:08.092Z"
   },
   "channels.md": {
     "url": "https://code.claude.com/docs/en/channels",
@@ -157,9 +157,9 @@
   },
   "data-usage.md": {
     "url": "https://code.claude.com/docs/en/data-usage",
-    "lastModified": "Fri, 15 May 2026 22:36:38 GMT",
-    "size": 16275,
-    "updatedAt": "2026-05-16T00:22:30.763Z"
+    "lastModified": "Tue, 09 Jun 2026 00:27:04 GMT",
+    "size": 16322,
+    "updatedAt": "2026-06-09T00:27:04.538Z"
   },
   "debug-your-config.md": {
     "url": "https://code.claude.com/docs/en/debug-your-config",
@@ -619,8 +619,8 @@
   },
   "zero-data-retention.md": {
     "url": "https://code.claude.com/docs/en/zero-data-retention",
-    "lastModified": "Sat, 02 May 2026 21:10:05 GMT",
-    "size": 6355,
-    "updatedAt": "2026-05-03T00:21:01.319Z"
+    "lastModified": "Tue, 09 Jun 2026 00:28:07 GMT",
+    "size": 6837,
+    "updatedAt": "2026-06-09T00:28:07.977Z"
   }
 }

@@ -105,6 +105,7 @@ components:
         - Enfer
         - GoPomelo
         - HuggingFace
+        - Hyperbolic
         - Hyperbolic 2
         - InoCloud
         - Kluster
@@ -162,7 +163,6 @@ components:
         - Google
         - Google AI Studio
         - Groq
-        - Hyperbolic
         - Inception
         - Inceptron
         - InferenceNet
@@ -206,6 +206,7 @@ components:
         - Together
         - Upstage
         - Venice
+        - Wafer
         - WandB
         - Xiaomi
         - xAI
@@ -237,9 +238,8 @@ components:
           description: Name of the provider
         status:
           type:
-            - number
+            - integer
             - 'null'
-          format: double
           description: HTTP status code from the provider
       required:
         - status

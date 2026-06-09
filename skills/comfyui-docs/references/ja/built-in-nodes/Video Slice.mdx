@@ -3,8 +3,6 @@ title: "Video Slice - ComfyUI Built-in Node Documentation"
 description: "Complete documentation for the Video Slice node in ComfyUI. Learn its inputs, outputs, parameters and usage."
 mode: wide
 ---
-> このドキュメントは AI によって生成されました。エラーを見つけた場合や改善のご提案がある場合は、ぜひ貢献してください！ [GitHub で編集](https://github.com/Comfy-Org/embedded-docs/blob/main/comfyui_embedded_docs/docs/Video Slice/ja.md)
-
 以下は、指定されたルールに従って翻訳した日本語版ドキュメントです。
 
 ---
@@ -13,18 +11,20 @@ Video Slice ノードを使用すると、動画から特定のセグメント�
 
 ## 入力
 
-| パラメータ | データ型 | 必須 | 範囲 | 説明 |
-|-----------|-----------|----------|-------|-------------|
-| `ビデオ` | VIDEO | はい | - | スライスする入力動画です。 |
-| `開始時間` | FLOAT | いいえ | -1e5 ～ 1e5 | 開始時間（秒単位、デフォルト：0.0）。 |
-| `時間` | FLOAT | いいえ | 0.0 以上 | 長さ（秒単位）。0 の場合は無制限（デフォルト：0.0）。 |
-| `厳密な時間` | BOOLEAN | いいえ | - | True の場合、指定された長さが取得できないときにエラーが発生します（デフォルト：False）。 |
+| パラメータ | 説明 | データ型 | 必須 | 範囲 |
+| --- | --- | --- | --- | --- |
+| `ビデオ` | スライスする入力動画です。 | VIDEO | はい | - |
+| `開始時間` | 開始時間（秒単位、デフォルト：0.0）。 | FLOAT | いいえ | -1e5 ～ 1e5 |
+| `時間` | 長さ（秒単位）。0 の場合は無制限（デフォルト：0.0）。 | FLOAT | いいえ | 0.0 以上 |
+| `厳密な時間` | True の場合、指定された長さが取得できないときにエラーが発生します（デフォルト：False）。 | BOOLEAN | いいえ | - |
 
 ## 出力
 
-| 出力名 | データ型 | 説明 |
-|-------------|-----------|-------------|
-| `ビデオ` | VIDEO | トリミングされた動画セグメントです。 |
+| 出力名 | 説明 | データ型 |
+| --- | --- | --- |
+| `ビデオ` | トリミングされた動画セグメントです。 | VIDEO |
+
+> このドキュメントは AI によって生成されました。エラーを見つけた場合や改善のご提案がある場合は、ぜひ貢献してください！ [GitHub で編集](https://github.com/Comfy-Org/embedded-docs/blob/main/comfyui_embedded_docs/docs/Video Slice/ja.md)
 
 ---
 **Source fingerprint (SHA-256):** `5e3e3e69931a25183eb01b7b87ec12cbf9f5a748781993dcbeec7a6d5f7260c1`

@@ -1,6 +1,6 @@
 ---
-title: Apache Trino
-description: Connect Apache Trino to R2 Data Catalog using the Iceberg REST catalog connector.
+title: Trino
+description: Connect Trino to R2 Data Catalog using the Iceberg REST catalog connector.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
@@ -10,11 +10,11 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 [Skip to content](#%5Ftop) 
 
-# Apache Trino
+# Trino
 
-**Last reviewed:**  8 months ago 
+**Last reviewed:**  9 months ago 
 
-Below is an example of using [Apache Trino ↗](https://trino.io/) to connect to R2 Data Catalog. For more information on connecting to R2 Data Catalog with Trino, refer to [Trino documentation ↗](https://trino.io/docs/current/connector/iceberg.html).
+Below is an example of using [Trino ↗](https://trino.io/) to connect to R2 Data Catalog. For more information on connecting to R2 Data Catalog with Trino, refer to [Trino documentation ↗](https://trino.io/docs/current/connector/iceberg.html).
 
 ## Prerequisites
 
@@ -121,5 +121,5 @@ SELECT * FROM r2.example_schema.yearly_clicks;
 ```
 
 ```json
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/r2/","name":"R2"}},{"@type":"ListItem","position":3,"item":{"@id":"/r2/data-catalog/","name":"R2 Data Catalog"}},{"@type":"ListItem","position":4,"item":{"@id":"/r2/data-catalog/config-examples/","name":"Connect to Iceberg engines"}},{"@type":"ListItem","position":5,"item":{"@id":"/r2/data-catalog/config-examples/trino/","name":"Apache Trino"}}]}
+{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/r2/","name":"R2"}},{"@type":"ListItem","position":3,"item":{"@id":"/r2/data-catalog/","name":"R2 Data Catalog"}},{"@type":"ListItem","position":4,"item":{"@id":"/r2/data-catalog/config-examples/","name":"Connect to Iceberg engines"}},{"@type":"ListItem","position":5,"item":{"@id":"/r2/data-catalog/config-examples/trino/","name":"Trino"}}]}
 ```

@@ -3,8 +3,6 @@ title: "ExtendIntermediateSigmas - ComfyUI Built-in Node Documentation"
 description: "Complete documentation for the ExtendIntermediateSigmas node in ComfyUI. Learn its inputs, outputs, parameters and usage."
 mode: wide
 ---
-> このドキュメントは AI によって生成されました。エラーを見つけた場合や改善のご提案がある場合は、ぜひ貢献してください！ [GitHub で編集](https://github.com/Comfy-Org/embedded-docs/blob/main/comfyui_embedded_docs/docs/ExtendIntermediateSigmas/ja.md)
-
 以下が翻訳結果です。
 
 ---
@@ -13,21 +11,23 @@ ExtendIntermediateSigmas ノードは、既存のシグマ値のシーケンス�
 
 ## 入力
 
-| パラメータ | データ型 | 必須 | 範囲 | 説明 |
-|-----------|-----------|----------|-------|-------------|
-| `sigmas` | SIGMAS | はい | - | 中間値で拡張する入力シグマシーケンス |
-| `ステップ数` | INT | はい | 1 ～ 100 | 既存のシグマ間に挿入する中間ステップ数（デフォルト: 2） |
-| `開始シグマ` | FLOAT | はい | -1.0 ～ 20000.0 | 拡張の上限シグマ境界 – この値以下のシグマのみを拡張します（デフォルト: -1.0、これは無限大を意味します） |
-| `終了シグマ` | FLOAT | はい | 0.0 ～ 20000.0 | 拡張の下限シグマ境界 – この値以上のシグマのみを拡張します（デフォルト: 12.0） |
-| `間隔` | COMBO | はい | `"linear"``"cosine"``"sine"` | 中間シグマ値の間隔を決める補間方法（デフォルト: "linear"） |
+| パラメータ | 説明 | データ型 | 必須 | 範囲 |
+| --- | --- | --- | --- | --- |
+| `sigmas` | 中間値で拡張する入力シグマシーケンス | SIGMAS | はい | - |
+| `ステップ数` | 既存のシグマ間に挿入する中間ステップ数（デフォルト: 2） | INT | はい | 1 ～ 100 |
+| `開始シグマ` | 拡張の上限シグマ境界 – この値以下のシグマのみを拡張します（デフォルト: -1.0、これは無限大を意味します） | FLOAT | はい | -1.0 ～ 20000.0 |
+| `終了シグマ` | 拡張の下限シグマ境界 – この値以上のシグマのみを拡張します（デフォルト: 12.0） | FLOAT | はい | 0.0 ～ 20000.0 |
+| `間隔` | 中間シグマ値の間隔を決める補間方法（デフォルト: "linear"） | COMBO | はい | `"linear"``"cosine"``"sine"` |
 
 **注:** このノードは、現在のシグマが `start_at_sigma` 以下かつ `end_at_sigma` 以上である既存のシグマペアの間にのみ中間シグマを挿入します。`start_at_sigma` が -1.0 に設定されている場合は無限大として扱われ、`end_at_sigma` の下限境界のみが適用されます。
 
 ## 出力
 
-| 出力名 | データ型 | 説明 |
-|-------------|-----------|-------------|
-| `sigmas` | SIGMAS | 追加の中間値が挿入された拡張シグマシーケンス |
+| 出力名 | 説明 | データ型 |
+| --- | --- | --- |
+| `sigmas` | 追加の中間値が挿入された拡張シグマシーケンス | SIGMAS |
+
+> このドキュメントは AI によって生成されました。エラーを見つけた場合や改善のご提案がある場合は、ぜひ貢献してください！ [GitHub で編集](https://github.com/Comfy-Org/embedded-docs/blob/main/comfyui_embedded_docs/docs/ExtendIntermediateSigmas/ja.md)
 
 ---
 **Source fingerprint (SHA-256):** `f51ed433fc38365334ff8e4072174dc04982a8a00770d07f544320a6863577c4`

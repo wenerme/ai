@@ -28,7 +28,7 @@ lint:
 ```
 
 If no recipe makes sense as the default recipe, you can use
-`default-list`<sup>master</sup> to list the available recipes instead:
+`default-list`<sup>1.52.0</sup> to list the available recipes instead:
 
 ```just
 set default-list := true

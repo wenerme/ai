@@ -3,20 +3,18 @@ title: "GrokVideoExtendNode - ComfyUI Built-in Node Documentation"
 description: "Complete documentation for the GrokVideoExtendNode node in ComfyUI. Learn its inputs, outputs, parameters and usage."
 mode: wide
 ---
-> 本文档由 AI 生成。如果您发现任何错误或有改进建议，欢迎贡献！ [在 GitHub 上编辑](https://github.com/Comfy-Org/embedded-docs/blob/main/comfyui_embedded_docs/docs/GrokVideoExtendNode/zh.md)
-
 ## 概述
 
 Grok 视频扩展节点使用 AI 模型为现有视频创建无缝延续。您提供一段短视频和描述接下来应发生什么的文本提示，该节点将生成一段接续原视频的新视频片段。
 
 ## 输入
 
-| 参数 | 数据类型 | 是否必填 | 取值范围 | 描述 |
-|-----------|-----------|----------|-------|-------------|
-| `提示词` | STRING | 是 | 不适用 | 描述视频接下来应发生什么的文本说明。 |
-| `视频` | VIDEO | 是 | 不适用 | 要扩展的源视频。MP4 格式，时长 2-15 秒。 |
-| `模型` | COMBO | 是 | `"grok-imagine-video"` | 用于视频扩展的模型。选中后，会显示一个嵌套的 `duration` 参数。 |
-| `种子` | INT | 否 | 0 到 2147483647 | 用于确定节点是否应重新运行的种子；实际结果与种子无关，具有非确定性（默认值：0）。 |
+| 参数 | 描述 | 数据类型 | 是否必填 | 取值范围 |
+| --- | --- | --- | --- | --- |
+| `提示词` | 描述视频接下来应发生什么的文本说明。 | STRING | 是 | 不适用 |
+| `视频` | 要扩展的源视频。MP4 格式，时长 2-15 秒。 | VIDEO | 是 | 不适用 |
+| `模型` | 用于视频扩展的模型。选中后，会显示一个嵌套的 `duration` 参数。 | COMBO | 是 | `"grok-imagine-video"` |
+| `种子` | 用于确定节点是否应重新运行的种子；实际结果与种子无关，具有非确定性（默认值：0）。 | INT | 否 | 0 到 2147483647 |
 
 **参数约束：**
 *   `video` 输入必须是时长在 2 到 15 秒之间的 MP4 文件，且文件大小不能超过 50MB。
@@ -25,9 +23,11 @@ Grok 视频扩展节点使用 AI 模型为现有视频创建无缝延续。您�
 
 ## 输出
 
-| 输出名称 | 数据类型 | 描述 |
-|-------------|-----------|-------------|
-| `output` | VIDEO | 新生成的视频扩展片段。 |
+| 输出名称 | 描述 | 数据类型 |
+| --- | --- | --- |
+| `output` | 新生成的视频扩展片段。 | VIDEO |
+
+> 本文档由 AI 生成。如果您发现任何错误或有改进建议，欢迎贡献！ [在 GitHub 上编辑](https://github.com/Comfy-Org/embedded-docs/blob/main/comfyui_embedded_docs/docs/GrokVideoExtendNode/zh.md)
 
 ---
 **Source fingerprint (SHA-256):** `a33383be0eb6857538a75e1b901ee58df0153dfeaf95a7ee19933d651b745b5f`

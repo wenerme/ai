@@ -58,7 +58,7 @@ AI Search APIs are available at two base paths:
 | /accounts/{account\_id}/ai-search/instances/{id}/                        | Operates on a specific instance                                                                              |
 | /accounts/{account\_id}/ai-search/namespaces/{namespace}/instances/{id}/ | Operates on instances within a [namespace](https://developers.cloudflare.com/ai-search/concepts/namespaces/) |
 
-The below operations are the same for both paths. For the namespace-scoped API, refer to the [Namespace API reference](https://developers.cloudflare.com/api/resources/ai%5Fsearch/subresources/namespaces/).
+The following operations are the same for both paths. For the namespace-scoped API, refer to the [Namespace API reference](https://developers.cloudflare.com/api/resources/ai%5Fsearch/subresources/namespaces/).
 
 ### Search
 

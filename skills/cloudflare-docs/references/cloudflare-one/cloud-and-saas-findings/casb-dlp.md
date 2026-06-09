@@ -51,9 +51,9 @@ Your DLP profile is now ready to use with CASB.
 1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** \> **Data loss prevention** \> **Profiles**.
 2. Select **Create profile**.
 3. Enter a name and optional description for the profile.
-4. Add new or existing detection entries to the profile.  
-Add a custom entry  
-   1. Select **Add custom entry**.  
+4. Add detection entries to the profile.  
+Create a custom entry  
+   1. Select **Create custom entry**.  
    2. Choose the type of detection entry you want to create and configure its values.  
    For information on supported detection entry types, refer to [Configure detection entries](https://developers.cloudflare.com/cloudflare-one/data-loss-prevention/detection-entries/configure-detection-entries/).  
    3. To save the detection entry, select **Done**.  
@@ -61,10 +61,10 @@ Add existing entries
 Existing entries include [predefined](https://developers.cloudflare.com/cloudflare-one/data-loss-prevention/detection-entries/predefined-detection-entries/) and [user-defined](https://developers.cloudflare.com/cloudflare-one/data-loss-prevention/detection-entries/configure-detection-entries/) detection entries that you manage from the Detection entries section.  
    1. Select **Add existing entries**.  
    2. Choose which entries you want to add, then select **Confirm**.  
-   3. To save the detection entry, select **Done**.
+   3. To finish, select **Done**.
 5. (Optional) Add data classes to include reusable classification rules.  
-   1. Select **Add data classes**.  
-   2. Choose the data classes you want to add, then select **Confirm**.
+   * Select **Add data classes**  
+   * Choose the data classes you want to add, then select **Confirm**
 6. (Optional) Use labels as match criteria for the profile.  
    * Select a sensitivity schema and minimum sensitivity level.  
    * Select a data tag group and one or more data tags.  
@@ -80,9 +80,9 @@ For more information, refer to [Configure a DLP profile](https://developers.clou
 
 ### Add a new integration
 
-1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** \> **Integrations** \> **Cloud & Saas**.
+1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** \> **Integrations** \> **Cloud & SaaS**.
 2. Select **Add integration** and choose a [supported integration](#supported-integrations).
-3. During the setup process, you will be prompted to select DLP profiles for the integration.
+3. During the setup process, you are prompted to select DLP profiles for the integration.
 4. Select **Save integration**.
 
 CASB will scan every publicly accessible file in the integration for text that matches the DLP profile. The initial scan may take up to a few hours to complete.
@@ -110,6 +110,7 @@ If you add a DLP profile to an existing integration, CASB only scans files modif
 
 DLP in CASB will only scan:
 
+* [Text-based files](https://developers.cloudflare.com/cloudflare-one/data-loss-prevention/#supported-file-types) such as documents, spreadsheets, and PDFs. Images are not supported.
 * Files less than or equal to 100 MB in size.
 * Java and R source code files that are at least 5 KB. Smaller files in these languages are skipped.
 

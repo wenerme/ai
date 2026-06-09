@@ -1,6 +1,6 @@
 ---
 title: Integration profiles
-description: How Integration profiles works in Cloudflare One.
+description: How integration profiles work in Cloudflare One.
 image: https://developers.cloudflare.com/zt-preview.png
 ---
 
@@ -16,7 +16,7 @@ Note
 
 Integration profiles require [Cloudflare CASB](https://developers.cloudflare.com/cloudflare-one/integrations/cloud-and-saas/).
 
-Integration profiles let you use data classifications from a third-party platform (such as Microsoft Purview sensitivity labels) directly in Cloudflare DLP. Instead of recreating classification rules in Cloudflare, DLP retrieves them from the third-party platform and populates them as detection entries in a DLP profile. You can then enable the entries you want and create a DLP policy to allow or block matching data.
+Integration profiles let you use data classifications from a third-party platform (such as Microsoft Purview sensitivity labels) directly in Cloudflare DLP. Instead of recreating classification rules yourself, Cloudflare retrieves them from the third-party platform and populates them as [detection entries](https://developers.cloudflare.com/cloudflare-one/data-loss-prevention/detection-entries/configure-detection-entries/) in a DLP profile. You can then enable the entries you want and create a DLP policy to allow or block matching data.
 
 Detection entries in integration profiles are managed by the third-party platform. You cannot manually add, edit, or delete these entries within Cloudflare DLP.
 
@@ -32,13 +32,13 @@ To ensure DLP will detect and filter all sensitive data, use only [MIP top-level
 
 ### Setup
 
-To add MIP sensitivity labels to a DLP Profile, integrate your Microsoft account with [Cloudflare CASB](https://developers.cloudflare.com/cloudflare-one/integrations/cloud-and-saas/microsoft-365/). A new integration profile will appear under **Data loss prevention** \> **DLP profiles**. The profile is named **MIP Sensitivity Labels** followed by the name of the CASB integration.
+To add MIP sensitivity labels to a DLP profile, integrate your Microsoft account with [Cloudflare CASB](https://developers.cloudflare.com/cloudflare-one/integrations/cloud-and-saas/microsoft-365/). A new integration profile will appear under **Zero Trust** \> **Data loss prevention** \> **Profiles**. The profile is named **MIP Sensitivity Labels** followed by the name of the CASB integration.
 
 MIP sensitivity labels can also be added to a [custom DLP profile](https://developers.cloudflare.com/cloudflare-one/data-loss-prevention/dlp-profiles/#build-a-custom-profile) as an existing entry.
 
 ### Syncing
 
-Allow 24 hours for label additions and edits in your Microsoft account to propagate to Cloudflare DLP. Deletions in your Microsoft account will not delete entries in your Cloudflare DLP Profile.
+Allow 24 hours for label additions and edits in your Microsoft account to propagate to Cloudflare DLP. Deletions in your Microsoft account will not delete entries in your Cloudflare DLP profile.
 
 ```json
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/cloudflare-one/","name":"Cloudflare One"}},{"@type":"ListItem","position":3,"item":{"@id":"/cloudflare-one/data-loss-prevention/","name":"Data loss prevention"}},{"@type":"ListItem","position":4,"item":{"@id":"/cloudflare-one/data-loss-prevention/dlp-profiles/","name":"DLP profiles"}},{"@type":"ListItem","position":5,"item":{"@id":"/cloudflare-one/data-loss-prevention/dlp-profiles/integration-profiles/","name":"Integration profiles"}}]}

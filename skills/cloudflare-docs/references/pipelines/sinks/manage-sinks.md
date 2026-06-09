@@ -68,13 +68,13 @@ npx wrangler pipelines setup
 
 ### Wrangler CLI
 
-To view a specific sink, run the [pipelines sinks get](https://developers.cloudflare.com/workers/wrangler/commands/pipelines/#pipelines-sinks-get) command:
+To view a specific sink, run the [pipelines sinks get](https://developers.cloudflare.com/workers/wrangler/commands/pipelines/#pipelines-sinks-get) command with either the sink ID or sink name:
 
 Terminal window
 
 ```
 
-npx wrangler pipelines sinks get <SINK_ID>
+npx wrangler pipelines sinks get <SINK_NAME_OR_ID>
 
 
 ```

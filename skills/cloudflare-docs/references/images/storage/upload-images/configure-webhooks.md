@@ -12,6 +12,10 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 # Configure webhooks
 
+Note
+
+This feature is only available if your account has at least one zone with a pro plan or above. For more information, refer to our [plans ↗](https://www.cloudflare.com/plans/).
+
 You can set up webhooks to receive notifications about your upload workflow. This will send an HTTP POST request to a specified endpoint when an image either successfully uploads or fails to upload.
 
 Currently, webhooks are supported only for [direct creator uploads](https://developers.cloudflare.com/images/storage/upload-images/direct-creator-upload/).

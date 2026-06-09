@@ -5,21 +5,19 @@
 
 # Router Metadata
 
-Router metadata is **experimental**. The `openrouter_metadata` response shape is unstable: fields and pipeline stage types may be **added, renamed, removed, or change semantics at any time**, without a deprecation cycle. Do not pin production tooling to specific field names or values yet.
-
 OpenRouter's router runs every request through a multi-stage pipeline: it picks a provider, may compress context, may run guardrails, may invoke server-side tools, and may retry against fallbacks. By default, none of that is visible on the response.
 
 Router metadata is a **per-request opt-in** that adds an `openrouter_metadata` field to successful responses, capturing exactly what the router did. It's intended for debugging routing decisions, attributing latency or cost, and auditing pipeline behavior.
 
 ## Enabling Router Metadata
 
-Opt in by sending the `X-OpenRouter-Experimental-Metadata` request header with the value `enabled`:
+Opt in by sending the `X-OpenRouter-Metadata` request header with the value `enabled`:
 
 ```bash title="cURL"
 curl https://openrouter.ai/api/v1/chat/completions \
   -H "Authorization: Bearer {{API_KEY_REF}}" \
   -H "Content-Type: application/json" \
-  -H "X-OpenRouter-Experimental-Metadata: enabled" \
+  -H "X-OpenRouter-Metadata: enabled" \
   -d '{
     "model": "openai/gpt-4o-mini",
     "messages": [{ "role": "user", "content": "Hello" }]
@@ -32,7 +30,7 @@ const response = await fetch('https://openrouter.ai/api/v1/chat/completions', {
   headers: {
     Authorization: `Bearer {{API_KEY_REF}}`,
     'Content-Type': 'application/json',
-    'X-OpenRouter-Experimental-Metadata': 'enabled',
+    'X-OpenRouter-Metadata': 'enabled',
   },
   body: JSON.stringify({
     model: 'openai/gpt-4o-mini',
@@ -49,7 +47,7 @@ response = requests.post(
     headers={
         'Authorization': f'Bearer {{API_KEY_REF}}',
         'Content-Type': 'application/json',
-        'X-OpenRouter-Experimental-Metadata': 'enabled',
+        'X-OpenRouter-Metadata': 'enabled',
     },
     json={
         'model': 'openai/gpt-4o-mini',
@@ -131,7 +129,7 @@ When opted in, successful responses include an `openrouter_metadata` object alon
 | Field       | Type                | Description                                                                                                               |
 | ----------- | ------------------- | ------------------------------------------------------------------------------------------------------------------------- |
 | `requested` | `string`            | The model slug (or alias) the client sent. May differ from the provider/model that actually served the request.           |
-| `strategy`  | `string`            | Routing strategy used: `direct`, `auto`, `free`, `latest`, `alias`, `fallback`, `pareto`, `bodybuilder`.                  |
+| `strategy`  | `string`            | Routing strategy used: `direct`, `auto`, `free`, `latest`, `alias`, `fallback`, `pareto`, `bodybuilder`, `fusion`.        |
 | `region`    | `string \| null`    | Edge region that handled the request, when available.                                                                     |
 | `summary`   | `string`            | Human-readable one-liner describing the routing decision (e.g. candidate count, selected provider).                       |
 | `attempt`   | `integer`           | 1-indexed attempt number that succeeded. Greater than 1 means earlier attempts failed and fell back.                      |
@@ -165,7 +163,7 @@ Cache hits never include `openrouter_metadata`. Both streaming and non-streaming
 
 ## Error Responses
 
-Opt-in error responses surface `openrouter_metadata` at the **top level** of the error envelope, mirroring the success-path placement (sibling of `error` rather than nested inside it). This applies to all four routes — Chat Completions, Messages, Responses, and legacy Completions — and to both streaming and non-streaming requests. The same opt-in rules apply: send `X-OpenRouter-Experimental-Metadata: enabled` and the snapshot is included on failure; omit it and it isn't.
+Opt-in error responses surface `openrouter_metadata` at the **top level** of the error envelope, mirroring the success-path placement (sibling of `error` rather than nested inside it). This applies to all four routes — Chat Completions, Messages, Responses, and legacy Completions — and to both streaming and non-streaming requests. The same opt-in rules apply: send `X-OpenRouter-Metadata: enabled` and the snapshot is included on failure; omit it and it isn't.
 
 ### No Providers Available (404)
 
@@ -249,8 +247,8 @@ A few things to know:
 
 ## Stability
 
-Router metadata is **experimental**. The `openrouter_metadata` response shape is unstable — fields and pipeline stage types may be added, renamed, removed, or change semantics at any time, without a deprecation cycle. Treat the payload as best-effort debugging telemetry, not as a stable contract.
+The `openrouter_metadata` response shape is additive — new optional fields and pipeline stage types may appear without a deprecation cycle, but existing fields are stable. Decode permissively (ignore unknown fields and stage types) and your integration will be forward-compatible.
 
-The `X-OpenRouter-Experimental-Metadata` opt-in header is the supported way to enable the feature, but the header name and accepted values may also change while the feature is experimental.
+### Legacy Header
 
-If you consume the field in code, decode it permissively (treat unknown fields and stage types as opaque) and be prepared to update on every release.
+The previous header name `X-OpenRouter-Experimental-Metadata` is still accepted for backward compatibility. We recommend migrating to `X-OpenRouter-Metadata` at your convenience.

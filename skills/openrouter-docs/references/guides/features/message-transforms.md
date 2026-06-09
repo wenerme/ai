@@ -27,4 +27,6 @@ The compression will then attempt to fit your content within the chosen model's 
 length will default to using context compression. To disable this, pass
 `plugins: [{"id": "context-compression", "enabled": false}]` in the request body.
 
+Context compression is automatically skipped for [image-generation models](/docs/guides/overview/multimodal/image-generation) that only output images (no text output). This preserves reference images in image-to-image requests — compression would otherwise truncate multipart message content and drop input `image_url` parts. Multimodal models that output both text and images (e.g., Gemini, gpt-image) still use compression since they have real text context windows.
+
 The middle of the prompt is compressed because [LLMs pay less attention](https://arxiv.org/abs/2307.03172) to the middle of sequences.

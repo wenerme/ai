@@ -34,6 +34,7 @@ The following destinations are currently available:
 * [New Relic](/docs/guides/features/broadcast/newrelic)
 * [OpenTelemetry Collector](/docs/guides/features/broadcast/otel-collector)
 * [PostHog](/docs/guides/features/broadcast/posthog)
+* [Raindrop](/docs/guides/features/broadcast/raindrop)
 * [Ramp](/docs/guides/features/broadcast/ramp)
 * [S3 / S3-Compatible](/docs/guides/features/broadcast/s3)
 * [Sentry](/docs/guides/features/broadcast/sentry)
@@ -205,6 +206,7 @@ Each observability platform may recognize different metadata keys. See the desti
 * [OpenTelemetry Collector](/docs/guides/features/broadcast/otel-collector#custom-metadata) - Supports OTLP span attributes for any backend
 * [Webhook](/docs/guides/features/broadcast/webhook#custom-metadata) - Custom metadata in OTLP JSON payload
 * [PostHog](/docs/guides/features/broadcast/posthog#custom-metadata) - Supports event properties for LLM analytics
+* [Raindrop](/docs/guides/features/broadcast/raindrop#custom-metadata) - Supports custom event properties for AI observability
 * [Ramp](/docs/guides/features/broadcast/ramp#custom-metadata) - Supports OTLP span attributes for AI cost tracking
 * [Snowflake](/docs/guides/features/broadcast/snowflake#custom-metadata) - Queryable via VARIANT column functions
 * [ClickHouse](/docs/guides/features/broadcast/clickhouse#custom-metadata) - Queryable via JSONExtract functions
@@ -266,6 +268,7 @@ Step-by-step guides for configuring specific observability destinations:
 * [New Relic](/docs/guides/features/broadcast/newrelic) - Full-stack observability platform
 * [OpenTelemetry Collector](/docs/guides/features/broadcast/otel-collector) - Send traces to any OTLP-compatible backend
 * [PostHog](/docs/guides/features/broadcast/posthog) - Product analytics with LLM tracking
+* [Raindrop](/docs/guides/features/broadcast/raindrop) - AI observability and monitoring
 * [Ramp](/docs/guides/features/broadcast/ramp) - AI usage tracking and cost management
 * [S3 / S3-Compatible](/docs/guides/features/broadcast/s3) - Store traces in S3, R2, or compatible storage
 * [Sentry](/docs/guides/features/broadcast/sentry) - Application monitoring and error tracking

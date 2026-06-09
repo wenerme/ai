@@ -540,6 +540,10 @@ components:
           type: object
           additionalProperties:
             description: Any type
+        wafer:
+          type: object
+          additionalProperties:
+            description: Any type
         wandb:
           type: object
           additionalProperties:

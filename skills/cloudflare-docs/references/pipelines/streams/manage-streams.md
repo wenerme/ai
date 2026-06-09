@@ -181,13 +181,13 @@ Events that do not match the defined schema are accepted during ingestion but wi
 
 ### Wrangler CLI
 
-To view a specific stream, run the [pipelines streams get](https://developers.cloudflare.com/workers/wrangler/commands/pipelines/#pipelines-streams-get) command:
+To view a specific stream, run the [pipelines streams get](https://developers.cloudflare.com/workers/wrangler/commands/pipelines/#pipelines-streams-get) command with either the stream ID or stream name:
 
 Terminal window
 
 ```
 
-npx wrangler pipelines streams get <STREAM_ID>
+npx wrangler pipelines streams get <STREAM_NAME_OR_ID>
 
 
 ```

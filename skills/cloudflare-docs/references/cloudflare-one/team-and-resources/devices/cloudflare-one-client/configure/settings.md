@@ -68,8 +68,8 @@ The user will have an unlimited amount of time to activate their code.
 
 To activate the override code on a user device:
 
-* [ Version 2026.2+ ](#tab-panel-6857)
-* [ Version 2026.1 and earlier ](#tab-panel-6858)
+* [ Version 2026.2+ ](#tab-panel-6947)
+* [ Version 2026.1 and earlier ](#tab-panel-6948)
 
 1. Open the Cloudflare One Client and go to **Settings**.
 2. In **Temporarily disconnect Cloudflare One Client**, select **Enter admin code**.
@@ -252,7 +252,7 @@ Configures the protocol used to route IP traffic from the device to Cloudflare G
 **Value**:
 
 * **WireGuard**: Establishes a [WireGuard ↗](https://www.wireguard.com/) connection to Cloudflare. The Cloudflare One Client will encrypt traffic using a non-FIPs compliant cipher suite, `TLS_CHACHA20_POLY1305_SHA256`. When switching from MASQUE to WireGuard, users may lose Internet connectivity if their Wi-Fi network blocks the [ports and IPs](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/deployment/firewall/#warp-ingress-ip) required for WireGuard to function.
-* **MASQUE**: (default) Establishes an HTTP/3 connection to Cloudflare. The Cloudflare One Client will encrypt traffic using TLS 1.3 and a [FIPS 140-2 ↗](https://csrc.nist.gov/pubs/fips/140-2/upd2/final) compliant cipher suite, `TLS_AES_256_GCM_SHA384`. [Assign a unique IP address to each device](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/settings/#assign-a-unique-ip-address-to-each-device) is enabled by default for devices with MASQUE enabled.
+* **MASQUE**: (default) Establishes an HTTP/3 connection to Cloudflare. The Cloudflare One Client will encrypt traffic using TLS 1.3 and a [FIPS 140-3 ↗](https://csrc.nist.gov/pubs/fips/140-3/final) compliant cipher suite, `TLS_AES_256_GCM_SHA384`. [Assign a unique IP address to each device](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/settings/#assign-a-unique-ip-address-to-each-device) is enabled by default for devices with MASQUE enabled.
 
 For more details on WireGuard versus MASQUE, refer to our [blog post ↗](https://blog.cloudflare.com/zero-trust-warp-with-a-masque).
 
@@ -402,9 +402,9 @@ Enabling this setting comes with two major consequences:
 
 To turn on local network access in the Cloudflare One Client:
 
-* [ Windows and macOS ](#tab-panel-6859)
-* [ Linux ](#tab-panel-6860)
-* [ Android and ChromeOS ](#tab-panel-6861)
+* [ Windows and macOS ](#tab-panel-6949)
+* [ Linux ](#tab-panel-6950)
+* [ Android and ChromeOS ](#tab-panel-6951)
 
 1. Open the Cloudflare One Client and go to **Settings**.
 2. In **Temporarily access local network resources**, select **Access resources**.

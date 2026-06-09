@@ -135,7 +135,7 @@ When a guardrail's runtime checks block a request — for example a content filt
 }
 ```
 
-If you opt in to [router metadata](/docs/features/router-metadata) via the `X-OpenRouter-Experimental-Metadata: enabled` header, the 403 response also includes the full `openrouter_metadata` object with routing context and a `pipeline` array showing every guardrail stage that ran:
+If you opt in to [router metadata](/docs/features/router-metadata) via the `X-OpenRouter-Metadata: enabled` header, the 403 response also includes the full `openrouter_metadata` object with routing context and a `pipeline` array showing every guardrail stage that ran:
 
 ```json
 {

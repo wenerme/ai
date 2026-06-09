@@ -3,23 +3,21 @@ title: "Vidu2ReferenceVideoNode - ComfyUI Built-in Node Documentation"
 description: "Complete documentation for the Vidu2ReferenceVideoNode node in ComfyUI. Learn its inputs, outputs, parameters and usage."
 mode: wide
 ---
-> 本文档由 AI 生成。如果您发现任何错误或有改进建议，欢迎贡献！ [在 GitHub 上编辑](https://github.com/Comfy-Org/embedded-docs/blob/main/comfyui_embedded_docs/docs/Vidu2ReferenceVideoNode/zh.md)
-
 Vidu2 参考图生成视频节点可根据文本提示和多张参考图像创建视频。您可以定义最多七个主体，每个主体拥有独立的参考图像集，并在提示中使用 `@subject{subject_id}` 引用它们。该节点可生成具有可配置时长、宽高比和运动幅度的视频。
 
 ## 输入
 
-| 参数 | 数据类型 | 必填 | 范围 | 描述 |
-|-----------|-----------|----------|-------|-------------|
-| `model` | COMBO | 是 | `"viduq2"` | 用于视频生成的 AI 模型。 |
-| `subjects` | AUTOGROW | 是 | 不适用 | 为每个主体提供最多 3 张参考图像（所有主体合计最多 7 张图像）。在提示中通过 `@subject{subject_id}` 引用它们。 |
-| `prompt` | STRING | 是 | 不适用 | 用于指导视频生成的文本描述。当启用 `audio` 参数时，视频将包含基于此提示生成的语音和背景音乐。 |
-| `audio` | BOOLEAN | 否 | 不适用 | 启用后，视频将包含基于提示生成的语音和背景音乐（默认值：`False`）。 |
-| `duration` | INT | 否 | 1 至 10 | 生成视频的时长，单位为秒（默认值：`5`）。 |
-| `seed` | INT | 否 | 0 至 2147483647 | 用于控制生成随机性的数值，以实现可重复的结果（默认值：`1`）。 |
-| `aspect_ratio` | COMBO | 否 | `"16:9"``"9:16"``"4:3"``"3:4"``"1:1"` | 视频帧的形状。 |
-| `resolution` | COMBO | 否 | `"720p"``"1080p"` | 输出视频的像素分辨率。 |
-| `movement_amplitude` | COMBO | 否 | `"auto"``"small"``"medium"``"large"` | 控制画面中物体的运动幅度。 |
+| 参数 | 描述 | 数据类型 | 必填 | 范围 |
+| --- | --- | --- | --- | --- |
+| `model` | 用于视频生成的 AI 模型。 | COMBO | 是 | `"viduq2"` |
+| `subjects` | 为每个主体提供最多 3 张参考图像（所有主体合计最多 7 张图像）。在提示中通过 `@subject{subject_id}` 引用它们。 | AUTOGROW | 是 | 不适用 |
+| `prompt` | 用于指导视频生成的文本描述。当启用 `audio` 参数时，视频将包含基于此提示生成的语音和背景音乐。 | STRING | 是 | 不适用 |
+| `audio` | 启用后，视频将包含基于提示生成的语音和背景音乐（默认值：`False`）。 | BOOLEAN | 否 | 不适用 |
+| `duration` | 生成视频的时长，单位为秒（默认值：`5`）。 | INT | 否 | 1 至 10 |
+| `seed` | 用于控制生成随机性的数值，以实现可重复的结果（默认值：`1`）。 | INT | 否 | 0 至 2147483647 |
+| `aspect_ratio` | 视频帧的形状。 | COMBO | 否 | `"16:9"``"9:16"``"4:3"``"3:4"``"1:1"` |
+| `resolution` | 输出视频的像素分辨率。 | COMBO | 否 | `"720p"``"1080p"` |
+| `movement_amplitude` | 控制画面中物体的运动幅度。 | COMBO | 否 | `"auto"``"small"``"medium"``"large"` |
 
 **约束条件：**
 
@@ -31,9 +29,11 @@ Vidu2 参考图生成视频节点可根据文本提示和多张参考图像创�
 
 ## 输出
 
-| 输出名称 | 数据类型 | 描述 |
-|-------------|-----------|-------------|
-| `output` | VIDEO | 生成的视频文件。 |
+| 输出名称 | 描述 | 数据类型 |
+| --- | --- | --- |
+| `output` | 生成的视频文件。 | VIDEO |
+
+> 本文档由 AI 生成。如果您发现任何错误或有改进建议，欢迎贡献！ [在 GitHub 上编辑](https://github.com/Comfy-Org/embedded-docs/blob/main/comfyui_embedded_docs/docs/Vidu2ReferenceVideoNode/zh.md)
 
 ---
 **Source fingerprint (SHA-256):** `3e02b05a0e374442a6ca4ce6a3dbc182b4059e19b5ed7dfc2794e036de7beffd`

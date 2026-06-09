@@ -3,8 +3,6 @@ title: "KlingLipSyncAudioToVideoNode - ComfyUI Built-in Node Documentation"
 description: "Complete documentation for the KlingLipSyncAudioToVideoNode node in ComfyUI. Learn its inputs, outputs, parameters and usage."
 mode: wide
 ---
-> このドキュメントは AI によって生成されました。エラーを見つけた場合や改善のご提案がある場合は、ぜひ貢献してください！ [GitHub で編集](https://github.com/Comfy-Org/embedded-docs/blob/main/comfyui_embedded_docs/docs/KlingLipSyncAudioToVideoNode/ja.md)
-
 以下が翻訳結果です。
 
 ## 概要
@@ -12,11 +10,11 @@ Kling リップシンク音声動画ノードは、動画ファイル内の口�
 
 ## 入力
 
-| パラメータ | データ型 | 必須 | 範囲 | 説明 |
-|-----------|-----------|----------|-------|-------------|
-| `動画` | VIDEO | はい | - | リップシンク対象の顔が含まれる動画ファイル |
-| `音声` | AUDIO | はい | - | 動画と同期する音声が含まれる音声ファイル |
-| `音声言語` | COMBO | はい | `"en"``"zh"``"es"``"fr"``"de"``"it"``"pt"``"pl"``"tr"``"ru"``"nl"``"cs"``"ar"``"ja"``"hu"``"ko"` | 音声ファイル内の音声の言語（デフォルト: "en"） |
+| パラメータ | 説明 | データ型 | 必須 | 範囲 |
+| --- | --- | --- | --- | --- |
+| `動画` | リップシンク対象の顔が含まれる動画ファイル | VIDEO | はい | - |
+| `音声` | 動画と同期する音声が含まれる音声ファイル | AUDIO | はい | - |
+| `音声言語` | 音声ファイル内の音声の言語（デフォルト: "en"） | COMBO | はい | `"en"``"zh"``"es"``"fr"``"de"``"it"``"pt"``"pl"``"tr"``"ru"``"nl"``"cs"``"ar"``"ja"``"hu"``"ko"` |
 
 **重要な制約事項：**
 
@@ -29,11 +27,13 @@ Kling リップシンク音声動画ノードは、動画ファイル内の口�
 
 ## 出力
 
-| 出力名 | データ型 | 説明 |
-|-------------|-----------|-------------|
-| `動画ID` | VIDEO | 口の動きがリップシンクされた処理済み動画 |
-| `再生時間` | STRING | 処理済み動画の一意識別子 |
-| `duration` | STRING | 処理済み動画の長さ |
+| 出力名 | 説明 | データ型 |
+| --- | --- | --- |
+| `動画ID` | 口の動きがリップシンクされた処理済み動画 | VIDEO |
+| `再生時間` | 処理済み動画の一意識別子 | STRING |
+| `duration` | 処理済み動画の長さ | STRING |
+
+> このドキュメントは AI によって生成されました。エラーを見つけた場合や改善のご提案がある場合は、ぜひ貢献してください！ [GitHub で編集](https://github.com/Comfy-Org/embedded-docs/blob/main/comfyui_embedded_docs/docs/KlingLipSyncAudioToVideoNode/ja.md)
 
 ---
 **Source fingerprint (SHA-256):** `92b8a7a4f9508632155a5f69707ffc4a14f2f44c04e4d01bf46476a972465592`

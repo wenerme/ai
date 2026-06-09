@@ -20,7 +20,7 @@ foo:
 | `allow-duplicate-recipes` | boolean | `false` | Allow recipes appearing later in a `justfile` to override earlier recipes with the same name. |
 | `allow-duplicate-variables` | boolean | `false` | Allow variables appearing later in a `justfile` to override earlier variables with the same name. |
 | `default-list` | boolean | `false` | List recipes instead of running the default recipe. |
-| `default-script`<sup>master</sup> | boolean | `false` | Default recipes to script instead of linewise. |
+| `default-script`<sup>1.52.0</sup> | boolean | `false` | Default recipes to script instead of shell. |
 | `dotenv-filename` | string | - | Load a `.env` file with a custom name, if present. |
 | `dotenv-load` | boolean | `false` | Load a `.env` file, if present. |
 | `dotenv-override` | boolean | `false` | Override existing environment variables with values from the `.env` file. |
@@ -215,8 +215,8 @@ evaluated.
 #### Positional Arguments
 
 If `positional-arguments` is `true`, recipe arguments will be passed as
-positional arguments to commands. For linewise recipes, argument `$0` will be
-the name of the recipe.
+positional arguments to commands. For shell recipes, argument `$0` will be the
+name of the recipe.
 
 For example, running this recipe:
 

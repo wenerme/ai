@@ -427,7 +427,7 @@ For ZDR organizations, OpenAI enforces `store: false` automatically. When a requ
 There are two minor, but notable, differences in how functions are defined between Chat Completions and Responses.
 
 1. In Chat Completions, function definitions are externally tagged. In Responses, they are internally tagged.
-2. In Chat Completions, functions are non-strict by default. In Responses, function schemas are normalized into strict mode by default. To keep non-strict, best-effort function calling in Responses, explicitly set `strict: false`.
+2. In Chat Completions, functions are non-strict by default. In Responses, omitting `strict` attempts strict mode; if the schema cannot be made compatible, Responses falls back to non-strict, best-effort function calling and returns the resolved tool with `strict: false`. To keep non-strict behavior in Responses explicitly, set `strict: false`.
 
 The Responses API function example on the right is functionally equivalent to the Chat Completions example on the left.
 

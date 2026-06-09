@@ -36,8 +36,8 @@ By default, migrations are created in the `migrations/` folder in your Worker pr
 
 This location and table name can be customized in your Wrangler file, inside the D1 binding.
 
-* [  wrangler.jsonc ](#tab-panel-5397)
-* [  wrangler.toml ](#tab-panel-5398)
+* [  wrangler.jsonc ](#tab-panel-7401)
+* [  wrangler.toml ](#tab-panel-7402)
 
 JSONC
 
@@ -59,7 +59,9 @@ JSONC
 
       "migrations_table": "<d1_migrations>", // Customize this value to change your applied migrations table name
 
-      "migrations_dir": "<FOLDER_NAME>" // Specify your custom migration directory
+      "migrations_dir": "<FOLDER_NAME>", // Specify your custom migration directory
+
+      "migrations_pattern": "<GLOB>" // Optional: discover migrations using a glob pattern (see below)
 
     }
 
@@ -88,8 +90,75 @@ migrations_table = "<d1_migrations>"
 
 migrations_dir = "<FOLDER_NAME>"
 
+migrations_pattern = "<GLOB>"
+
 
 ```
+
+## Nested migration layouts
+
+By default, `wrangler d1 migrations apply` looks for top-level `.sql` files inside `migrations_dir`. If you use an ORM such as [Drizzle ↗](https://orm.drizzle.team/) that writes each migration as its own subdirectory (for example, `migrations/0001_init/migration.sql`), set `migrations_pattern` to the glob that matches your layout:
+
+* [  wrangler.jsonc ](#tab-panel-7403)
+* [  wrangler.toml ](#tab-panel-7404)
+
+JSONC
+
+```
+
+{
+
+  "d1_databases": [
+
+    {
+
+      "binding": "DB",
+
+      "database_name": "my-database",
+
+      "database_id": "<UUID>",
+
+      "migrations_dir": "migrations",
+
+      "migrations_pattern": "migrations/*/migration.sql"
+
+    }
+
+  ]
+
+}
+
+
+```
+
+TOML
+
+```
+
+[[d1_databases]]
+
+binding = "DB"
+
+database_name = "my-database"
+
+database_id = "<UUID>"
+
+migrations_dir = "migrations"
+
+migrations_pattern = "migrations/*/migration.sql"
+
+
+```
+
+Rules for `migrations_pattern`:
+
+* When set, `migrations_dir` must also be set.
+* The pattern must start with whatever `migrations_dir` is set to.
+* Each migration's name is recorded in the migrations table as the path relative to `migrations_dir` (for example, `0001_init/migration.sql`). This keeps the table portable across machines.
+
+The pattern is a standard glob — `*` matches one path segment, `**` matches any number of segments. `migrations/**/*.sql` will pick up arbitrarily deep `.sql` files.
+
+`wrangler d1 migrations create` only writes top-level files inside `migrations_dir`, so if your `migrations_pattern` only matches nested files (as with the Drizzle layout), generate new migrations using your ORM's command (for example, `drizzle-kit generate`) instead.
 
 ## Foreign key constraints
 

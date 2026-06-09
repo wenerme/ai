@@ -36,11 +36,13 @@ paths:
           required: true
           schema:
             type: string
-        - name: X-OpenRouter-Experimental-Metadata
+        - name: X-OpenRouter-Metadata
           in: header
           description: >-
             Opt-in to surface routing metadata on the response under
-            `openrouter_metadata`. Defaults to `disabled`.
+            `openrouter_metadata`. Defaults to `disabled`. The legacy header
+            `X-OpenRouter-Experimental-Metadata` is also accepted for backward
+            compatibility.
           required: false
           schema:
             $ref: '#/components/schemas/MetadataLevel'
@@ -67,9 +69,9 @@ paths:
           description: >-
             Forbidden - Authentication successful but insufficient permissions,
             or a guardrail blocked the request. When guardrails block and the
-            `X-OpenRouter-Experimental-Metadata: enabled` header is present, the
-            response includes `openrouter_metadata` with full routing context
-            and a `pipeline` array containing guardrail stage details.
+            `X-OpenRouter-Metadata: enabled` header is present, the response
+            includes `openrouter_metadata` with full routing context and a
+            `pipeline` array containing guardrail stage details.
           content:
             application/json:
               schema:
@@ -1620,6 +1622,7 @@ components:
         - Together
         - Upstage
         - Venice
+        - Wafer
         - WandB
         - Xiaomi
         - xAI
@@ -4371,7 +4374,7 @@ payload = {
     "max_tokens": 1024
 }
 headers = {
-    "X-OpenRouter-Experimental-Metadata": "enabled",
+    "X-OpenRouter-Metadata": "enabled",
     "Authorization": "Bearer <token>",
     "Content-Type": "application/json"
 }
@@ -4386,7 +4389,7 @@ const url = 'https://openrouter.ai/api/v1/messages';
 const options = {
   method: 'POST',
   headers: {
-    'X-OpenRouter-Experimental-Metadata': 'enabled',
+    'X-OpenRouter-Metadata': 'enabled',
     Authorization: 'Bearer <token>',
     'Content-Type': 'application/json'
   },
@@ -4420,7 +4423,7 @@ func main() {
 
 	req, _ := http.NewRequest("POST", url, payload)
 
-	req.Header.Add("X-OpenRouter-Experimental-Metadata", "enabled")
+	req.Header.Add("X-OpenRouter-Metadata", "enabled")
 	req.Header.Add("Authorization", "Bearer <token>")
 	req.Header.Add("Content-Type", "application/json")
 
@@ -4445,7 +4448,7 @@ http = Net::HTTP.new(url.host, url.port)
 http.use_ssl = true
 
 request = Net::HTTP::Post.new(url)
-request["X-OpenRouter-Experimental-Metadata"] = 'enabled'
+request["X-OpenRouter-Metadata"] = 'enabled'
 request["Authorization"] = 'Bearer <token>'
 request["Content-Type"] = 'application/json'
 request.body = "{\n  \"messages\": [\n    {\n      \"content\": \"Hello, how are you?\",\n      \"role\": \"user\"\n    }\n  ],\n  \"model\": \"anthropic/claude-sonnet-4\",\n  \"max_tokens\": 1024\n}"
@@ -4459,7 +4462,7 @@ import com.mashape.unirest.http.HttpResponse;
 import com.mashape.unirest.http.Unirest;
 
 HttpResponse<String> response = Unirest.post("https://openrouter.ai/api/v1/messages")
-  .header("X-OpenRouter-Experimental-Metadata", "enabled")
+  .header("X-OpenRouter-Metadata", "enabled")
   .header("Authorization", "Bearer <token>")
   .header("Content-Type", "application/json")
   .body("{\n  \"messages\": [\n    {\n      \"content\": \"Hello, how are you?\",\n      \"role\": \"user\"\n    }\n  ],\n  \"model\": \"anthropic/claude-sonnet-4\",\n  \"max_tokens\": 1024\n}")
@@ -4486,7 +4489,7 @@ $response = $client->request('POST', 'https://openrouter.ai/api/v1/messages', [
   'headers' => [
     'Authorization' => 'Bearer <token>',
     'Content-Type' => 'application/json',
-    'X-OpenRouter-Experimental-Metadata' => 'enabled',
+    'X-OpenRouter-Metadata' => 'enabled',
   ],
 ]);
 
@@ -4498,7 +4501,7 @@ using RestSharp;
 
 var client = new RestClient("https://openrouter.ai/api/v1/messages");
 var request = new RestRequest(Method.POST);
-request.AddHeader("X-OpenRouter-Experimental-Metadata", "enabled");
+request.AddHeader("X-OpenRouter-Metadata", "enabled");
 request.AddHeader("Authorization", "Bearer <token>");
 request.AddHeader("Content-Type", "application/json");
 request.AddParameter("application/json", "{\n  \"messages\": [\n    {\n      \"content\": \"Hello, how are you?\",\n      \"role\": \"user\"\n    }\n  ],\n  \"model\": \"anthropic/claude-sonnet-4\",\n  \"max_tokens\": 1024\n}", ParameterType.RequestBody);
@@ -4509,7 +4512,7 @@ IRestResponse response = client.Execute(request);
 import Foundation
 
 let headers = [
-  "X-OpenRouter-Experimental-Metadata": "enabled",
+  "X-OpenRouter-Metadata": "enabled",
   "Authorization": "Bearer <token>",
   "Content-Type": "application/json"
 ]

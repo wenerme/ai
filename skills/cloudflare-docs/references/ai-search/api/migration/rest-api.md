@@ -23,7 +23,7 @@ The legacy AutoRAG API endpoints under `/autorag/rags/` have been replaced by ne
 | Chat completions | /ai-search/instances/{name}/chat/completions | [API reference](https://developers.cloudflare.com/api/resources/ai%5Fsearch/subresources/instances/methods/chat%5Fcompletions/) |
 | Search           | /ai-search/instances/{name}/search           | [API reference](https://developers.cloudflare.com/api/resources/ai%5Fsearch/subresources/instances/methods/search/)             |
 
-The new API also includes endpoints for [instance management](https://developers.cloudflare.com/ai-search/api/instances/rest-api/), [items](https://developers.cloudflare.com/ai-search/api/items/rest-api/), and [namespace-level search](https://developers.cloudflare.com/ai-search/api/search/rest-api/#namespace-level) that are not available in the legacy API. For the legacy endpoints, refer to the [AutoRAG API reference](https://developers.cloudflare.com/api/resources/autorag/).
+The new API also includes endpoints for [instance management](https://developers.cloudflare.com/ai-search/api/instances/rest-api/), [items](https://developers.cloudflare.com/ai-search/api/items/rest-api/), and [namespace-level search](https://developers.cloudflare.com/ai-search/api/search/rest-api/#cross-instance-search-and-chat) that are not available in the legacy API. For the legacy endpoints, refer to the [AutoRAG API reference](https://developers.cloudflare.com/api/resources/autorag/).
 
 ## Chat completions
 

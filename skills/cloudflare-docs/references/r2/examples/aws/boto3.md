@@ -12,40 +12,12 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 # boto3
 
-**Last reviewed:**  about 4 years ago 
+**Last reviewed:**  about 24 hours ago 
 
 You must [generate an Access Key](https://developers.cloudflare.com/r2/api/tokens/) before getting started. All examples will utilize `access_key_id` and `access_key_secret` variables which represent the **Access Key ID** and **Secret Access Key** values you generated.
 
   
-You must configure [boto3 ↗](https://boto3.amazonaws.com/v1/documentation/api/latest/index.html) to use a preconstructed `endpoint_url` value. This can be done through any `boto3` usage that accepts connection arguments; for example:
-
-Python
-
-```
-
-import boto3
-
-
-s3 = boto3.resource('s3',
-
-  # Provide your Cloudflare account ID
-
-  endpoint_url = 'https://<ACCOUNT_ID>.r2.cloudflarestorage.com',
-
-  # Retrieve your S3 API credentials for your R2 bucket via API tokens (see: https://developers.cloudflare.com/r2/api/tokens)
-
-  aws_access_key_id = '<ACCESS_KEY_ID>',
-
-  aws_secret_access_key = '<SECRET_ACCESS_KEY>'
-
-)
-
-
-```
-
-You may, however, omit the `aws_access_key_id` and `aws_secret_access_key ` arguments and allow `boto3` to rely on the `AWS_ACCESS_KEY_ID` and `AWS_SECRET_ACCESS_KEY` [environment variables ↗](https://boto3.amazonaws.com/v1/documentation/api/latest/guide/configuration.html#using-environment-variables) instead.
-
-An example script may look like the following:
+Configure [boto3 ↗](https://boto3.amazonaws.com/v1/documentation/api/latest/index.html) to use your R2 endpoint:
 
 Python
 
@@ -58,41 +30,56 @@ s3 = boto3.client(
 
     service_name="s3",
 
-    # Provide your Cloudflare account ID
+    endpoint_url="https://<ACCOUNT_ID>.r2.cloudflarestorage.com",
 
-    endpoint_url='https://<ACCOUNT_ID>.r2.cloudflarestorage.com',
+    aws_access_key_id="<ACCESS_KEY_ID>",
 
-    # Retrieve your S3 API credentials for your R2 bucket via API tokens (see: https://developers.cloudflare.com/r2/api/tokens)
+    aws_secret_access_key="<SECRET_ACCESS_KEY>",
 
-    aws_access_key_id='<ACCESS_KEY_ID>',
-
-    aws_secret_access_key='<SECRET_ACCESS_KEY>',
-
-    region_name="auto", # Required by SDK but not used by R2
+    region_name="auto",
 
 )
 
 
-# Get object information
+```
 
-object_information = s3.head_object(Bucket='my-bucket', Key='dog.png')
+You can omit `aws_access_key_id` and `aws_secret_access_key` if you set the `AWS_ACCESS_KEY_ID` and `AWS_SECRET_ACCESS_KEY` [environment variables ↗](https://boto3.amazonaws.com/v1/documentation/api/latest/guide/configuration.html#using-environment-variables).
+
+Common operations using the client:
+
+Python
+
+```
+
+# Get object metadata
+
+s3.head_object(Bucket="my-bucket", Key="dog.png")
 
 
-# Upload/Update single file
+# Get object
 
-s3.upload_fileobj(io.BytesIO(file_content), 'my-bucket', 'dog.png')
+response = s3.get_object(Bucket="my-bucket", Key="dog.png")
+
+
+# Upload single file
+
+with open("./dog.png", "rb") as f:
+
+    s3.upload_fileobj(f, "my-bucket", "dog.png")
 
 
 # Delete object
 
-s3.delete_object(Bucket='my-bucket', Key='dog.png')
+s3.delete_object(Bucket="my-bucket", Key="dog.png")
 
 
 ```
 
-## Generate presigned URLs
+## Optimizing upload performance
 
-You can also generate presigned links that can be used to share public read or write access to a bucket temporarily.
+For large objects (multi-GB files such as training data or video), `upload_fileobj` can become a throughput bottleneck. Its internal thread pool is limited by Python's [GIL ↗](https://en.wikipedia.org/wiki/Global%5Finterpreter%5Flock), and increasing `max_concurrency` via `TransferConfig` gives diminishing returns beyond \~10 threads.
+
+Use the low-level multipart API with `ThreadPoolExecutor` instead:
 
 Python
 
@@ -100,68 +87,167 @@ Python
 
 import boto3
 
+import math
+
+import os
+
+from concurrent.futures import ThreadPoolExecutor
+
 
 s3 = boto3.client(
 
     service_name="s3",
 
-    # Provide your Cloudflare account ID
+    endpoint_url="https://<ACCOUNT_ID>.r2.cloudflarestorage.com",
 
-    endpoint_url='https://<ACCOUNT_ID>.r2.cloudflarestorage.com',
+    aws_access_key_id="<ACCESS_KEY_ID>",
 
-    # Retrieve your S3 API credentials for your R2 bucket via API tokens (see: https://developers.cloudflare.com/r2/api/tokens)
+    aws_secret_access_key="<SECRET_ACCESS_KEY>",
 
-    aws_access_key_id='<ACCESS_KEY_ID>',
-
-    aws_secret_access_key='<SECRET_ACCESS_KEY>',
-
-    region_name="auto", # Required by SDK but not used by R2
+    region_name="auto",
 
 )
 
+
+bucket = "my-bucket"
+
+key = "large-file.bin"
+
+file_path = "./large-file.bin"
+
+part_size = 16 * 1024 * 1024  # 16 MiB per part
+
+max_workers = 10
+
+
+# Step 1: Create the multipart upload
+
+upload_id = None
+
+mpu = s3.create_multipart_upload(Bucket=bucket, Key=key)
+
+upload_id = mpu["UploadId"]
+
+
+def upload_part(part_number, data):
+
+    response = s3.upload_part(
+
+        Bucket=bucket,
+
+        Key=key,
+
+        UploadId=upload_id,
+
+        PartNumber=part_number,
+
+        Body=data,
+
+    )
+
+    return {"PartNumber": part_number, "ETag": response["ETag"]}
+
+
+try:
+
+    file_size = os.path.getsize(file_path)
+
+    part_count = math.ceil(file_size / part_size)
+
+
+    # Step 2: Upload parts in parallel
+
+    with ThreadPoolExecutor(max_workers=max_workers) as pool:
+
+        futures = []
+
+        with open(file_path, "rb") as f:
+
+            for i in range(part_count):
+
+                data = f.read(part_size)
+
+                futures.append(pool.submit(upload_part, i + 1, data))
+
+
+        parts = [future.result() for future in futures]
+
+
+    # Step 3: Complete the upload
+
+    s3.complete_multipart_upload(
+
+        Bucket=bucket,
+
+        Key=key,
+
+        UploadId=upload_id,
+
+        MultipartUpload={"Parts": parts},
+
+    )
+
+    print("Multipart upload complete.")
+
+except Exception:
+
+    if upload_id:
+
+        try:
+
+            s3.abort_multipart_upload(Bucket=bucket, Key=key, UploadId=upload_id)
+
+        except Exception:
+
+            pass
+
+    raise
+
+
+```
+
+For more on multipart uploads including part size limits and lifecycle management, refer to [Upload objects](https://developers.cloudflare.com/r2/objects/upload-objects/).
+
+## Generate presigned URLs
+
+Generate presigned links to share temporary public read or write access to a bucket.
+
+Python
+
+```
 
 # Generate presigned URL for reading (GET)
 
-# The ExpiresIn parameter determines how long the presigned link is valid (in seconds)
-
 get_url = s3.generate_presigned_url(
 
-    'get_object',
+    "get_object",
 
-    Params={'Bucket': 'my-bucket', 'Key': 'dog.png'},
+    Params={"Bucket": "my-bucket", "Key": "dog.png"},
 
-    ExpiresIn=3600  # Valid for 1 hour
+    ExpiresIn=3600,  # Valid for 1 hour
 
 )
-
-
-print(get_url)
 
 
 # Generate presigned URL for writing (PUT)
 
-# Specify ContentType to restrict uploads to a specific file type
-
 put_url = s3.generate_presigned_url(
 
-    'put_object',
+    "put_object",
 
     Params={
 
-        'Bucket': 'my-bucket',
+        "Bucket": "my-bucket",
 
-        'Key': 'dog.png',
+        "Key": "dog.png",
 
-        'ContentType': 'image/png'
+        "ContentType": "image/png",
 
     },
 
-    ExpiresIn=3600
+    ExpiresIn=3600,
 
 )
-
-
-print(put_url)
 
 
 ```
@@ -175,7 +261,7 @@ https://<ACCOUNT_ID>.r2.cloudflarestorage.com/my-bucket/dog.png?X-Amz-Algorithm=
 
 ```
 
-You can use the link generated by the `put_object` example to upload to the specified bucket and key, until the presigned link expires. When using a presigned URL with `ContentType`, the client must include a matching `Content-Type` header in the request.
+Upload using the presigned PUT URL. When using a presigned URL with `ContentType`, the client must include a matching `Content-Type` header:
 
 Terminal window
 
@@ -226,25 +312,21 @@ Python
 
 ```
 
-# Generate a presigned URL with Content-Type restriction
-
-# The upload will only succeed if the client sends Content-Type: image/png
-
 put_url = s3.generate_presigned_url(
 
-    'put_object',
+    "put_object",
 
     Params={
 
-        'Bucket': 'my-bucket',
+        "Bucket": "my-bucket",
 
-        'Key': 'dog.png',
+        "Key": "dog.png",
 
-        'ContentType': 'image/png'
+        "ContentType": "image/png",
 
     },
 
-    ExpiresIn=3600
+    ExpiresIn=3600,
 
 )
 

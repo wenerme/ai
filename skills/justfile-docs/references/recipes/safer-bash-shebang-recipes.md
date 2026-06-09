@@ -12,8 +12,8 @@ foo:
 ```
 
 It isn't strictly necessary, but `set -euxo pipefail` turns on a few useful
-features that make `bash` shebang recipes behave more like normal, linewise
-`just` recipes:
+features that make `bash` shebang recipes behave more like normal, shell `just`
+recipes:
 
 - `set -e` makes `bash` exit if a command fails.
 
@@ -22,7 +22,7 @@ features that make `bash` shebang recipes behave more like normal, linewise
 - `set -x` makes `bash` print each script line before it's run.
 
 - `set -o pipefail` makes `bash` exit if a command in a pipeline fails. This is
-  `bash`-specific, so isn't turned on in normal linewise `just` recipes.
+  `bash`-specific, so isn't turned on in normal shell `just` recipes.
 
 Together, these avoid a lot of shell scripting gotchas.
 

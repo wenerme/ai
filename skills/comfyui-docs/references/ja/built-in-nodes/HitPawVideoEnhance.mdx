@@ -3,8 +3,6 @@ title: "HitPawVideoEnhance - ComfyUI Built-in Node Documentation"
 description: "Complete documentation for the HitPawVideoEnhance node in ComfyUI. Learn its inputs, outputs, parameters and usage."
 mode: wide
 ---
-> このドキュメントは AI によって生成されました。エラーを見つけた場合や改善のご提案がある場合は、ぜひ貢献してください！ [GitHub で編集](https://github.com/Comfy-Org/embedded-docs/blob/main/comfyui_embedded_docs/docs/HitPawVideoEnhance/ja.md)
-
 以下が翻訳結果です。
 
 ---
@@ -13,11 +11,11 @@ HitPaw Video Enhance ノードは、外部APIを使用して動画の品質を�
 
 ## 入力
 
-| パラメータ | データ型 | 必須 | 範囲 | 説明 |
-|-----------|-----------|----------|-------|-------------|
-| `モデル` | DYNAMIC COMBO | はい | 複数のオプションから選択可能 | 動画の画質向上に使用するAIモデルです。モデルを選択すると、ネストされた `resolution` パラメータが表示されます。利用可能なモデルとその対応解像度は異なります。 |
-| `model.resolution` | COMBO | はい | `"original"``"720p"``"1080p"``"2k/qhd"``"4k/uhd"``"8k"` | 画質向上後の動画の目標解像度です。選択した `モデル` によっては、一部のオプションが利用できない場合があります。 |
-| `動画` | VIDEO | はい | なし | 画質を向上させる入力動画ファイルです。 |
+| パラメータ | 説明 | データ型 | 必須 | 範囲 |
+| --- | --- | --- | --- | --- |
+| `モデル` | 動画の画質向上に使用するAIモデルです。モデルを選択すると、ネストされた `resolution` パラメータが表示されます。利用可能なモデルとその対応解像度は異なります。 | DYNAMIC COMBO | はい | 複数のオプションから選択可能 |
+| `model.resolution` | 画質向上後の動画の目標解像度です。選択した `モデル` によっては、一部のオプションが利用できない場合があります。 | COMBO | はい | `"original"``"720p"``"1080p"``"2k/qhd"``"4k/uhd"``"8k"` |
+| `動画` | 画質を向上させる入力動画ファイルです。 | VIDEO | はい | なし |
 
 **制約事項：**
 
@@ -26,9 +24,11 @@ HitPaw Video Enhance ノードは、外部APIを使用して動画の品質を�
 
 ## 出力
 
-| 出力名 | データ型 | 説明 |
-|-------------|-----------|-------------|
-| `動画` | VIDEO | 画質が向上した動画ファイルです。 |
+| 出力名 | 説明 | データ型 |
+| --- | --- | --- |
+| `動画` | 画質が向上した動画ファイルです。 | VIDEO |
+
+> このドキュメントは AI によって生成されました。エラーを見つけた場合や改善のご提案がある場合は、ぜひ貢献してください！ [GitHub で編集](https://github.com/Comfy-Org/embedded-docs/blob/main/comfyui_embedded_docs/docs/HitPawVideoEnhance/ja.md)
 
 ---
 **Source fingerprint (SHA-256):** `0f329cbf61784474ee5b97a92d28a3e2383dc40e208f8a8317f3c4f60b43e5b2`

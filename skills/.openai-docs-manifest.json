@@ -498,10 +498,10 @@
   "openai-docs/guides/function-calling.md": {
     "url": "https://developers.openai.com/api/docs/guides/function-calling.md",
     "skill": "openai-docs",
-    "etag": "W/\"286333f3590f4759640220d2e804dcbd\"",
-    "lastModified": "Wed, 15 Apr 2026 00:21:53 GMT",
-    "size": 29320,
-    "updatedAt": "2026-04-15T00:24:11.023Z"
+    "etag": "W/\"84752b471a4deb62f5946d2343b40160\"",
+    "lastModified": "Mon, 08 Jun 2026 23:59:31 GMT",
+    "size": 29384,
+    "updatedAt": "2026-06-09T00:35:18.484Z"
   },
   "openai-docs/guides/graders.md": {
     "url": "https://developers.openai.com/api/docs/guides/graders.md",
@@ -554,10 +554,10 @@
   "openai-docs/guides/migrate-to-responses.md": {
     "url": "https://developers.openai.com/api/docs/guides/migrate-to-responses.md",
     "skill": "openai-docs",
-    "etag": "W/\"28a0f82624c84fc355a082e9a1418881\"",
-    "lastModified": "Fri, 05 Jun 2026 00:34:14 GMT",
-    "size": 28619,
-    "updatedAt": "2026-06-05T00:43:16.117Z"
+    "etag": "W/\"26b842a3ccaf8bdc16845c5f4ae92494\"",
+    "lastModified": "Tue, 09 Jun 2026 00:35:20 GMT",
+    "size": 28735,
+    "updatedAt": "2026-06-09T00:35:20.337Z"
   },
   "openai-docs/guides/model-optimization.md": {
     "url": "https://developers.openai.com/api/docs/guides/model-optimization.md",
@@ -874,10 +874,10 @@
   "openai-docs/guides/secure-mcp-tunnels.md": {
     "url": "https://developers.openai.com/api/docs/guides/secure-mcp-tunnels.md",
     "skill": "openai-docs",
-    "etag": "W/\"88dd7caded71539fca2cb43b3d204fdf\"",
-    "lastModified": "Fri, 22 May 2026 00:31:59 GMT",
-    "size": 11397,
-    "updatedAt": "2026-05-22T00:33:47.619Z"
+    "etag": "W/\"db007cfa12673f8b0543bc64dea521cc\"",
+    "lastModified": "Tue, 09 Jun 2026 00:35:34 GMT",
+    "size": 12225,
+    "updatedAt": "2026-06-09T00:35:34.536Z"
   },
   "openai-docs/guides/speech-to-text.md": {
     "url": "https://developers.openai.com/api/docs/guides/speech-to-text.md",
@@ -1098,10 +1098,10 @@
   "openai-docs/guides/workload-identity-federation.md": {
     "url": "https://developers.openai.com/api/docs/guides/workload-identity-federation.md",
     "skill": "openai-docs",
-    "etag": "W/\"1f5eda94a54cc12abf386223937b5144\"",
-    "lastModified": "Thu, 28 May 2026 00:33:42 GMT",
-    "size": 11943,
-    "updatedAt": "2026-05-28T00:33:42.916Z"
+    "etag": "W/\"6d8ffe7f4a0095b5645cf0e9c0c17ee9\"",
+    "lastModified": "Tue, 09 Jun 2026 00:35:43 GMT",
+    "size": 11971,
+    "updatedAt": "2026-06-09T00:35:43.737Z"
   },
   "openai-docs/guides/workload-identity-federation/aws.md": {
     "url": "https://developers.openai.com/api/docs/guides/workload-identity-federation/aws.md",
@@ -1142,6 +1142,14 @@
     "lastModified": "Thu, 28 May 2026 00:33:44 GMT",
     "size": 18187,
     "updatedAt": "2026-05-28T00:33:44.609Z"
+  },
+  "openai-docs/guides/workload-identity-federation/spiffe.md": {
+    "url": "https://developers.openai.com/api/docs/guides/workload-identity-federation/spiffe.md",
+    "skill": "openai-docs",
+    "etag": "W/\"5b927a6be963cb3a81c6017afa5de134\"",
+    "lastModified": "Tue, 09 Jun 2026 00:35:45 GMT",
+    "size": 11953,
+    "updatedAt": "2026-06-09T00:35:45.912Z"
   },
   "openai-docs/guides/your-data.md": {
     "url": "https://developers.openai.com/api/docs/guides/your-data.md",

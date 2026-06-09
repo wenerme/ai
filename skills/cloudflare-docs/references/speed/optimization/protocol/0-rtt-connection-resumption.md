@@ -30,8 +30,8 @@ For more information on 0-RTT, including its functionality and potential limitat
 
 By default, 0-RTT Connection Resumption is not enabled on your Cloudflare application.
 
-* [ Dashboard ](#tab-panel-7887)
-* [ API ](#tab-panel-7888)
+* [ Dashboard ](#tab-panel-10002)
+* [ API ](#tab-panel-10003)
 
 To enable 0-RTT Connection Resumption in the dashboard:
 

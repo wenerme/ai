@@ -14,14 +14,14 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 ## Description
 
-When using a [Container-enabled Durable Object](https://developers.cloudflare.com/containers), you can access the Durable Object's associated container via the `container` object which is on the `ctx` property. This allows you to start, stop, and interact with the container.
+Each [container](https://developers.cloudflare.com/containers/) is managed by a Durable Object. The [Container class](https://developers.cloudflare.com/containers/container-class/) from `@cloudflare/containers` extends `DurableObject` and handles lifecycle management, port readiness, and sleep timeouts for you. The Durable Object manages routing, persistent state, and lifecycle hooks, while the container process runs your image inside a Linux VM.
 
-Note
+The low-level API documented on this page is available on `this.ctx.container` inside any Durable Object class that has a container binding. Use it when you need direct control over the container process or cannot use the `Container` class.
 
-It is likely preferable to use the official `Container` class, which provides helper methods and a more idiomatic API for working with containers on top of Durable Objects.
+Because the `Container` class extends `DurableObject`, you also have access to [SQLite storage](https://developers.cloudflare.com/durable-objects/api/sqlite-storage-api/) via `this.ctx.storage`, [alarms](https://developers.cloudflare.com/durable-objects/api/alarms/), and all other Durable Object APIs.
 
-* [  JavaScript ](#tab-panel-5668)
-* [  TypeScript ](#tab-panel-5669)
+* [  JavaScript ](#tab-panel-7674)
+* [  TypeScript ](#tab-panel-7675)
 
 index.js
 
@@ -385,8 +385,11 @@ this.ctx.container.interceptOutboundHttps("*", worker);
 
 ## Related resources
 
-* [Containers](https://developers.cloudflare.com/containers)
-* [Get Started With Containers](https://developers.cloudflare.com/containers/get-started)
+* [Container class reference](https://developers.cloudflare.com/containers/container-class/) — the recommended high-level API built on top of this interface
+* [Containers overview](https://developers.cloudflare.com/containers/)
+* [Get started with Containers](https://developers.cloudflare.com/containers/get-started/)
+* [SQLite storage API](https://developers.cloudflare.com/durable-objects/api/sqlite-storage-api/) — persist state across container restarts
+* [Durable Objects](https://developers.cloudflare.com/durable-objects/) — the underlying platform that powers Containers
 
 ```json
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/durable-objects/","name":"Durable Objects"}},{"@type":"ListItem","position":3,"item":{"@id":"/durable-objects/api/","name":"Workers Binding API"}},{"@type":"ListItem","position":4,"item":{"@id":"/durable-objects/api/container/","name":"Durable Object Container"}}]}

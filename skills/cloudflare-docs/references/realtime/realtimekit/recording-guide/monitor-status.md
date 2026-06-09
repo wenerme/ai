@@ -18,7 +18,7 @@ The recording of a meeting can have the following states:
 
 | Name      | Description                                                                                                                                                                                                                                                |
 | --------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| INVOKED   | Our backend servers have received the recording request, and the master is looking for a ready worker to assign the recording job.                                                                                                                         |
+| INVOKED   | RealtimeKit backend servers have received the recording request, and the master is looking for a ready worker to assign the recording job.                                                                                                                 |
 | RECORDING | The meeting is currently being recorded by a worker; note that this will also hold true if the meeting is being live streamed.                                                                                                                             |
 | UPLOADING | The recording has been stopped and the file is being uploaded to the cloud storage. If you have not specified storage details, then the files will be uploaded only to RealtimeKit's server. Any RTMP and livestreaming link will also stop at this stage. |
 | UPLOADED  | The recording file upload is complete and the status webhook is also triggered.                                                                                                                                                                            |
@@ -30,7 +30,36 @@ There are two ways you can track what state a recording is in or view more detai
 
 ### Using the `recording.statusUpdate` webhook
 
-RealtimeKit sends out a `recording.statusUpdate` webhook each time the recording transitions between states during its lifecycle. Configure webhooks in your RealtimeKit app to receive these notifications.
+RealtimeKit sends a `recording.statusUpdate` webhook when the recording transitions between states during its lifecycle. Add `recording.statusUpdate` to your webhook's `events` array to receive these notifications.
+
+Terminal window
+
+```
+
+curl --request POST "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/realtime/kit/$APP_ID/webhooks" \
+
+  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+
+  --header "Content-Type: application/json" \
+
+  --data '{
+
+    "name": "Recording status webhook",
+
+    "url": "https://example.com/webhook",
+
+    "events": ["recording.statusUpdate"],
+
+    "enabled": true
+
+  }'
+
+
+```
+
+The webhook payload includes the current recording status, recording metadata, and associated meeting details. When the status is `UPLOADED`, the payload can include `downloadUrl`, `audioDownloadUrl`, and `downloadUrlExpiry` fields for accessing the uploaded files.
+
+For setup, signature verification, retry behavior, and a full payload example, refer to [RealtimeKit webhooks](https://developers.cloudflare.com/realtime/realtimekit/webhooks/#recordingstatusupdate).
 
 ### By polling HTTP APIs
 

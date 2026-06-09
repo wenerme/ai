@@ -32,8 +32,8 @@ This setting is for connection between the user and Cloudflare. HTTP/3 connectio
 
 HTTP/3 is available to all plans (though it does require an [SSL certificate at Cloudflare’s edge network](https://developers.cloudflare.com/ssl/get-started/)).
 
-* [ Dashboard ](#tab-panel-8377)
-* [ API ](#tab-panel-8378)
+* [ Dashboard ](#tab-panel-10008)
+* [ API ](#tab-panel-10009)
 
 To enable **HTTP/3** in the dashboard:
 

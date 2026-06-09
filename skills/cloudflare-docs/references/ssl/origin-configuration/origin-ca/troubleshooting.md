@@ -68,16 +68,6 @@ Make sure that the user creating the certificate has access to the API. You can 
 * The default setting for the account is specified in the card **Enable API Access**.
 * Specific user API Access (which can override the default setting) is presented after selecting the user in the list of members.
 
-## Origin Server page displays origin certificates for another zone in the account
-
-### Cause
-
-This is a known issue where, when the Origin Server page is opened for different zones in sequence, it displays the certificates from the first zone.
-
-### Solution
-
-Refresh the page in your browser to get the correct origin certificates list for current zone.
-
 ```json
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/ssl/","name":"SSL/TLS"}},{"@type":"ListItem","position":3,"item":{"@id":"/ssl/origin-configuration/","name":"Origin server"}},{"@type":"ListItem","position":4,"item":{"@id":"/ssl/origin-configuration/origin-ca/","name":"Cloudflare origin CA"}},{"@type":"ListItem","position":5,"item":{"@id":"/ssl/origin-configuration/origin-ca/troubleshooting/","name":"Troubleshooting Cloudflare origin CA"}}]}
 ```

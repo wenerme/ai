@@ -1,6 +1,6 @@
 ### Sigils
 
-Commands in linewise recipes may be prefixed with any combination of the sigils
+Commands in shell recipes may be prefixed with any combination of the sigils
 `-`, `@`, and `?`.
 
 The `@` sigil toggles command echoing:

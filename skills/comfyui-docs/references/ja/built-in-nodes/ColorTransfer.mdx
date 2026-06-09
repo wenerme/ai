@@ -3,21 +3,19 @@ title: "ColorTransfer - ComfyUI Built-in Node Documentation"
 description: "Complete documentation for the ColorTransfer node in ComfyUI. Learn its inputs, outputs, parameters and usage."
 mode: wide
 ---
-> このドキュメントは AI によって生成されました。エラーを見つけた場合や改善のご提案がある場合は、ぜひ貢献してください！ [GitHub で編集](https://github.com/Comfy-Org/embedded-docs/blob/main/comfyui_embedded_docs/docs/ColorTransfer/ja.md)
-
 ## 概要
 
 ColorTransferノードは、ターゲット画像のカラーパレットを調整し、参照画像の色に合わせます。輝度、コントラスト、色相分布などの色特性を、参照画像からターゲット画像へ分析・転送するために、異なる数学的アルゴリズムを使用します。これは、複数の画像間で視覚的な一貫性を生み出したり、特定のカラーグレードを適用する際に有用です。
 
 ## 入力
 
-| パラメータ | データ型 | 必須 | 範囲 | 説明 |
-|-----------|-----------|----------|-------|-------------|
-| `image_target` | IMAGE | はい | - | カラー変換を適用する画像 |
-| `image_ref` | IMAGE | はい | - | 色を合わせるための参照画像 |
-| `method` | COMBO | はい | `"reinhard_lab"``"mkl_lab"``"histogram"` | 使用するカラー転送アルゴリズム |
-| `source_stats` | DYNAMICCOMBO | はい | `"per_frame"``"uniform"``"target_frame"` | ソース（ターゲット）画像から色統計を計算する方法を指定します |
-| `strength` | FLOAT | はい | 0.0 ～ 10.0 | カラー転送効果の強度。1.0で完全な変換を適用し、0.0で元の画像を返します。デフォルト：1.0 |
+| パラメータ | 説明 | データ型 | 必須 | 範囲 |
+| --- | --- | --- | --- | --- |
+| `image_target` | カラー変換を適用する画像 | IMAGE | はい | - |
+| `image_ref` | 色を合わせるための参照画像 | IMAGE | はい | - |
+| `method` | 使用するカラー転送アルゴリズム | COMBO | はい | `"reinhard_lab"``"mkl_lab"``"histogram"` |
+| `source_stats` | ソース（ターゲット）画像から色統計を計算する方法を指定します | DYNAMICCOMBO | はい | `"per_frame"``"uniform"``"target_frame"` |
+| `strength` | カラー転送効果の強度。1.0で完全な変換を適用し、0.0で元の画像を返します。デフォルト：1.0 | FLOAT | はい | 0.0 ～ 10.0 |
 
 **パラメータの詳細：**
 *   **`source_stats` のオプション：**
@@ -33,9 +31,11 @@ ColorTransferノードは、ターゲット画像のカラーパレットを調�
 
 ## 出力
 
-| 出力名 | データ型 | 説明 |
-|-------------|-----------|-------------|
-| `image` | IMAGE | カラー転送が適用された結果の画像 |
+| 出力名 | 説明 | データ型 |
+| --- | --- | --- |
+| `image` | カラー転送が適用された結果の画像 | IMAGE |
+
+> このドキュメントは AI によって生成されました。エラーを見つけた場合や改善のご提案がある場合は、ぜひ貢献してください！ [GitHub で編集](https://github.com/Comfy-Org/embedded-docs/blob/main/comfyui_embedded_docs/docs/ColorTransfer/ja.md)
 
 ---
 **Source fingerprint (SHA-256):** `93a8447def4d2263a8a859c0474de694e6567dc6d32377032c2ddae2420bb10c`

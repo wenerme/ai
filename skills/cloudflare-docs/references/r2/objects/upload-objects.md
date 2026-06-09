@@ -53,8 +53,8 @@ Use R2 [bindings](https://developers.cloudflare.com/workers/runtime-apis/binding
 
 Use `put()` to upload an object in a single request. This is the simplest approach for small to medium objects.
 
-* [  JavaScript ](#tab-panel-6980)
-* [  TypeScript ](#tab-panel-6981)
+* [  JavaScript ](#tab-panel-9249)
+* [  TypeScript ](#tab-panel-9250)
 
 JavaScript
 
@@ -134,7 +134,11 @@ export default {
 
       if (object === null) {
 
-        return new Response("Precondition failed or upload returned null", { status: 412 });
+        return new Response("Precondition failed or upload returned null", {
+
+          status: 412,
+
+        });
 
       }
 
@@ -166,8 +170,8 @@ export default {
 
 Use `createMultipartUpload()` and `resumeMultipartUpload()` for large files or when you need to upload parts in parallel. Each part must be at least 5 MiB (except the last part).
 
-* [  JavaScript ](#tab-panel-6982)
-* [  TypeScript ](#tab-panel-6983)
+* [  JavaScript ](#tab-panel-9251)
+* [  TypeScript ](#tab-panel-9252)
 
 JavaScript
 
@@ -295,8 +299,8 @@ export default {
 
 In most cases, the multipart state (the `uploadId` and uploaded part ETags) is tracked by the client sending requests to your Worker. The following example exposes an HTTP API that a client application can call to create, upload parts for, and complete a multipart upload:
 
-* [  JavaScript ](#tab-panel-6986)
-* [  TypeScript ](#tab-panel-6987)
+* [  JavaScript ](#tab-panel-9255)
+* [  TypeScript ](#tab-panel-9256)
 
 JavaScript
 
@@ -490,7 +494,11 @@ export default {
 
         if (!uploadId || !partNumber || !request.body) {
 
-          return new Response("Missing uploadId, partNumber, or body", { status: 400 });
+          return new Response("Missing uploadId, partNumber, or body", {
+
+            status: 400,
+
+          });
 
         }
 
@@ -594,8 +602,8 @@ For the complete Workers API reference, refer to [Workers API reference](https:/
 
 When you need clients (browsers, mobile apps) to upload directly to R2 without proxying through your Worker, generate a presigned URL server-side and hand it to the client:
 
-* [  JavaScript ](#tab-panel-6984)
-* [  TypeScript ](#tab-panel-6985)
+* [  JavaScript ](#tab-panel-9253)
+* [  TypeScript ](#tab-panel-9254)
 
 JavaScript
 
@@ -686,13 +694,11 @@ export default {
     url.searchParams.set("X-Amz-Expires", "3600");
 
 
-    const signed = await r2.sign(
+    const signed = await r2.sign(new Request(url, { method: "PUT" }), {
 
-      new Request(url, { method: "PUT" }),
+      aws: { signQuery: true },
 
-      { aws: { signQuery: true } },
-
-    );
+    });
 
 
     // Return the signed URL to the client — they can PUT directly to R2
@@ -714,9 +720,9 @@ Use S3-compatible SDKs to upload objects. You will need your [account ID](https:
 
 ### Single upload
 
-* [  TypeScript ](#tab-panel-6968)
-* [  JavaScript ](#tab-panel-6969)
-* [  Python ](#tab-panel-6970)
+* [  TypeScript ](#tab-panel-9237)
+* [  JavaScript ](#tab-panel-9238)
+* [  Python ](#tab-panel-9239)
 
 TypeScript
 
@@ -867,9 +873,9 @@ Most S3 SDKs handle multipart uploads automatically when the file exceeds a conf
 
 The SDK splits the file and uploads parts in parallel.
 
-* [  TypeScript ](#tab-panel-6971)
-* [  JavaScript ](#tab-panel-6972)
-* [  Python ](#tab-panel-6973)
+* [  TypeScript ](#tab-panel-9240)
+* [  JavaScript ](#tab-panel-9241)
+* [  Python ](#tab-panel-9242)
 
 TypeScript
 
@@ -1017,7 +1023,9 @@ s3 = boto3.client(
 )
 
 
-# upload_file automatically uses multipart for large files
+# upload_file automatically uses multipart for large files.
+
+# For better throughput with large objects, use the manual multipart example below.
 
 s3.upload_file(
 
@@ -1036,9 +1044,9 @@ s3.upload_file(
 
 Use the low-level API when you need full control over part sizes or upload order.
 
-* [  TypeScript ](#tab-panel-6974)
-* [  JavaScript ](#tab-panel-6975)
-* [  Python ](#tab-panel-6976)
+* [  TypeScript ](#tab-panel-9243)
+* [  JavaScript ](#tab-panel-9244)
+* [  Python ](#tab-panel-9245)
 
 TypeScript
 
@@ -1334,6 +1342,8 @@ import math
 
 import os
 
+from concurrent.futures import ThreadPoolExecutor
+
 
 s3 = boto3.client(
 
@@ -1356,14 +1366,37 @@ key = "large-file.bin"
 
 file_path = "./large-file.bin"
 
-part_size = 10 * 1024 * 1024  # 10 MiB per part
+part_size = 16 * 1024 * 1024  # 16 MiB per part
+
+max_workers = 10  # Number of parallel upload threads
 
 
 # Step 1: Create the multipart upload
 
+upload_id = None
+
 mpu = s3.create_multipart_upload(Bucket=bucket, Key=key)
 
 upload_id = mpu["UploadId"]
+
+
+def upload_part(part_number, data):
+
+    response = s3.upload_part(
+
+        Bucket=bucket,
+
+        Key=key,
+
+        UploadId=upload_id,
+
+        PartNumber=part_number,
+
+        Body=data,
+
+    )
+
+    return {"PartNumber": part_number, "ETag": response["ETag"]}
 
 
 try:
@@ -1372,32 +1405,23 @@ try:
 
     part_count = math.ceil(file_size / part_size)
 
-    parts = []
+
+    # Step 2: Upload parts in parallel
+
+    with ThreadPoolExecutor(max_workers=max_workers) as pool:
+
+        futures = []
+
+        with open(file_path, "rb") as f:
+
+            for i in range(part_count):
+
+                data = f.read(part_size)
+
+                futures.append(pool.submit(upload_part, i + 1, data))
 
 
-    # Step 2: Upload each part
-
-    with open(file_path, "rb") as f:
-
-        for i in range(part_count):
-
-            data = f.read(part_size)
-
-            response = s3.upload_part(
-
-                Bucket=bucket,
-
-                Key=key,
-
-                UploadId=upload_id,
-
-                PartNumber=i + 1,
-
-                Body=data,
-
-            )
-
-            parts.append({"PartNumber": i + 1, "ETag": response["ETag"]})
+        parts = [future.result() for future in futures]
 
 
     # Step 3: Complete the upload
@@ -1420,13 +1444,15 @@ except Exception:
 
     # Abort on failure to clean up incomplete parts
 
-    try:
+    if upload_id:
 
-        s3.abort_multipart_upload(Bucket=bucket, Key=key, UploadId=upload_id)
+        try:
 
-    except Exception:
+            s3.abort_multipart_upload(Bucket=bucket, Key=key, UploadId=upload_id)
 
-        pass  # Best-effort cleanup — the original error is more important
+        except Exception:
+
+            pass  # Best-effort cleanup — the original error is more important
 
     raise
 
@@ -1437,9 +1463,9 @@ except Exception:
 
 For client-side uploads where users upload directly to R2 without going through your server, generate a presigned PUT URL. Your server creates the URL and the client uploads to it — no API credentials are exposed to the client.
 
-* [  TypeScript ](#tab-panel-6977)
-* [  JavaScript ](#tab-panel-6978)
-* [  Python ](#tab-panel-6979)
+* [  TypeScript ](#tab-panel-9246)
+* [  JavaScript ](#tab-panel-9247)
+* [  Python ](#tab-panel-9248)
 
 TypeScript
 
@@ -1642,7 +1668,7 @@ Note
 
 Wrangler supports uploading files up to 315 MB and only allows one object at a time. For large files or bulk uploads, use [rclone](https://developers.cloudflare.com/r2/examples/rclone/) or another [S3-compatible](https://developers.cloudflare.com/r2/api/s3/) tool.
 
-Use [Wrangler](https://developers.cloudflare.com/workers/wrangler/install-and-update/) to upload objects. Run the [r2 object put command](https://developers.cloudflare.com/workers/wrangler/commands/r2/#r2-object-put):
+Use [Wrangler](https://developers.cloudflare.com/workers/wrangler/install-and-update/) to upload objects. Run the [r2 object put command](https://developers.cloudflare.com/workers/wrangler/commands/#r2-object-put):
 
 Terminal window
 

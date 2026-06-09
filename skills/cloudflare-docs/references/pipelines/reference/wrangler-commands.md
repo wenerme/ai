@@ -16,9 +16,9 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 Interactive setup for a complete pipeline
 
-* [  npm ](#tab-panel-7357)
-* [  pnpm ](#tab-panel-7358)
-* [  yarn ](#tab-panel-7359)
+* [  npm ](#tab-panel-8903)
+* [  pnpm ](#tab-panel-8904)
+* [  yarn ](#tab-panel-8905)
 
 Terminal window
 
@@ -73,9 +73,9 @@ Install Cloudflare agents skills, if not already present, without asking the use
 
 Create a new pipeline
 
-* [  npm ](#tab-panel-7360)
-* [  pnpm ](#tab-panel-7361)
-* [  yarn ](#tab-panel-7362)
+* [  npm ](#tab-panel-8906)
+* [  pnpm ](#tab-panel-8907)
+* [  yarn ](#tab-panel-8908)
 
 Terminal window
 
@@ -134,9 +134,9 @@ Install Cloudflare agents skills, if not already present, without asking the use
 
 List all pipelines
 
-* [  npm ](#tab-panel-7363)
-* [  pnpm ](#tab-panel-7364)
-* [  yarn ](#tab-panel-7365)
+* [  npm ](#tab-panel-8909)
+* [  pnpm ](#tab-panel-8910)
+* [  yarn ](#tab-panel-8911)
 
 Terminal window
 
@@ -195,9 +195,9 @@ Install Cloudflare agents skills, if not already present, without asking the use
 
 Get details about a specific pipeline
 
-* [  npm ](#tab-panel-7366)
-* [  pnpm ](#tab-panel-7367)
-* [  yarn ](#tab-panel-7368)
+* [  npm ](#tab-panel-8912)
+* [  pnpm ](#tab-panel-8913)
+* [  yarn ](#tab-panel-8914)
 
 Terminal window
 
@@ -227,7 +227,7 @@ yarn wrangler pipelines get [PIPELINE]
 ```
 
 * `[PIPELINE]` ` string ` required  
-The ID of the pipeline to retrieve
+The ID or name of the pipeline to retrieve
 * `--json` ` boolean ` default: false  
 Output in JSON format
 
@@ -254,9 +254,9 @@ Install Cloudflare agents skills, if not already present, without asking the use
 
 Update a pipeline configuration (legacy pipelines only)
 
-* [  npm ](#tab-panel-7369)
-* [  pnpm ](#tab-panel-7370)
-* [  yarn ](#tab-panel-7371)
+* [  npm ](#tab-panel-8915)
+* [  pnpm ](#tab-panel-8916)
+* [  yarn ](#tab-panel-8917)
 
 Terminal window
 
@@ -335,9 +335,9 @@ Install Cloudflare agents skills, if not already present, without asking the use
 
 Delete a pipeline
 
-* [  npm ](#tab-panel-7372)
-* [  pnpm ](#tab-panel-7373)
-* [  yarn ](#tab-panel-7374)
+* [  npm ](#tab-panel-8918)
+* [  pnpm ](#tab-panel-8919)
+* [  yarn ](#tab-panel-8920)
 
 Terminal window
 
@@ -394,9 +394,9 @@ Install Cloudflare agents skills, if not already present, without asking the use
 
 Create a new stream
 
-* [  npm ](#tab-panel-7375)
-* [  pnpm ](#tab-panel-7376)
-* [  yarn ](#tab-panel-7377)
+* [  npm ](#tab-panel-8921)
+* [  pnpm ](#tab-panel-8922)
+* [  yarn ](#tab-panel-8923)
 
 Terminal window
 
@@ -459,9 +459,9 @@ Install Cloudflare agents skills, if not already present, without asking the use
 
 List all streams
 
-* [  npm ](#tab-panel-7378)
-* [  pnpm ](#tab-panel-7379)
-* [  yarn ](#tab-panel-7380)
+* [  npm ](#tab-panel-8924)
+* [  pnpm ](#tab-panel-8925)
+* [  yarn ](#tab-panel-8926)
 
 Terminal window
 
@@ -522,9 +522,9 @@ Install Cloudflare agents skills, if not already present, without asking the use
 
 Get details about a specific stream
 
-* [  npm ](#tab-panel-7381)
-* [  pnpm ](#tab-panel-7382)
-* [  yarn ](#tab-panel-7383)
+* [  npm ](#tab-panel-8927)
+* [  pnpm ](#tab-panel-8928)
+* [  yarn ](#tab-panel-8929)
 
 Terminal window
 
@@ -554,7 +554,7 @@ yarn wrangler pipelines streams get [STREAM]
 ```
 
 * `[STREAM]` ` string ` required  
-The ID of the stream to retrieve
+The ID or name of the stream to retrieve
 * `--json` ` boolean ` default: false  
 Output in JSON format
 
@@ -581,9 +581,9 @@ Install Cloudflare agents skills, if not already present, without asking the use
 
 Delete a stream
 
-* [  npm ](#tab-panel-7384)
-* [  pnpm ](#tab-panel-7385)
-* [  yarn ](#tab-panel-7386)
+* [  npm ](#tab-panel-8930)
+* [  pnpm ](#tab-panel-8931)
+* [  yarn ](#tab-panel-8932)
 
 Terminal window
 
@@ -613,7 +613,7 @@ yarn wrangler pipelines streams delete [STREAM]
 ```
 
 * `[STREAM]` ` string ` required  
-The ID of the stream to delete
+The ID or name of the stream to delete
 * `--force` ` boolean ` alias: --y default: false  
 Skip confirmation
 
@@ -640,9 +640,9 @@ Install Cloudflare agents skills, if not already present, without asking the use
 
 Create a new sink
 
-* [  npm ](#tab-panel-7387)
-* [  pnpm ](#tab-panel-7388)
-* [  yarn ](#tab-panel-7389)
+* [  npm ](#tab-panel-8933)
+* [  pnpm ](#tab-panel-8934)
+* [  yarn ](#tab-panel-8935)
 
 Terminal window
 
@@ -725,9 +725,9 @@ Install Cloudflare agents skills, if not already present, without asking the use
 
 List all sinks
 
-* [  npm ](#tab-panel-7390)
-* [  pnpm ](#tab-panel-7391)
-* [  yarn ](#tab-panel-7392)
+* [  npm ](#tab-panel-8936)
+* [  pnpm ](#tab-panel-8937)
+* [  yarn ](#tab-panel-8938)
 
 Terminal window
 
@@ -788,9 +788,9 @@ Install Cloudflare agents skills, if not already present, without asking the use
 
 Get details about a specific sink
 
-* [  npm ](#tab-panel-7393)
-* [  pnpm ](#tab-panel-7394)
-* [  yarn ](#tab-panel-7395)
+* [  npm ](#tab-panel-8939)
+* [  pnpm ](#tab-panel-8940)
+* [  yarn ](#tab-panel-8941)
 
 Terminal window
 
@@ -820,7 +820,7 @@ yarn wrangler pipelines sinks get [SINK]
 ```
 
 * `[SINK]` ` string ` required  
-The ID of the sink to retrieve
+The ID or name of the sink to retrieve
 * `--json` ` boolean ` default: false  
 Output in JSON format
 
@@ -847,9 +847,9 @@ Install Cloudflare agents skills, if not already present, without asking the use
 
 Delete a sink
 
-* [  npm ](#tab-panel-7396)
-* [  pnpm ](#tab-panel-7397)
-* [  yarn ](#tab-panel-7398)
+* [  npm ](#tab-panel-8942)
+* [  pnpm ](#tab-panel-8943)
+* [  yarn ](#tab-panel-8944)
 
 Terminal window
 
@@ -879,7 +879,7 @@ yarn wrangler pipelines sinks delete [SINK]
 ```
 
 * `[SINK]` ` string ` required  
-The ID of the sink to delete
+The ID or name of the sink to delete
 * `--force` ` boolean ` alias: --y default: false  
 Skip confirmation
 

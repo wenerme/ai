@@ -50,17 +50,17 @@ For workloads requiring less than 1 vCPU, use the predefined instance types such
 
 If you need larger instance sizes or higher account-level limits, contact your account team, file a support ticket, or fill out [this form ↗](https://forms.gle/CscdaEGuw5Hb6H2s7).
 
-## Limits
+## Account limits
 
-The following limits currently apply:
+The following limits apply per account:
 
-| Feature                                             | Workers Paid                                   |
-| --------------------------------------------------- | ---------------------------------------------- |
-| Memory for all concurrent live Container instances  | 6TiB                                           |
-| vCPU for all concurrent live Container instances    | 1,500                                          |
-| TB Disk for all concurrent live Container instances | 30TB                                           |
-| Image size                                          | Same as [instance disk space](#instance-types) |
-| Total image storage per account                     | 50 GB [1](#user-content-fn-1)                  |
+| Resource                        | Limit                                          |
+| ------------------------------- | ---------------------------------------------- |
+| Concurrent memory               | 6 TiB                                          |
+| Concurrent vCPU                 | 1,500                                          |
+| Concurrent disk                 | 30 TB                                          |
+| Image size                      | Same as [instance disk space](#instance-types) |
+| Total image storage per account | 50 GB [1](#user-content-fn-1)                  |
 
 ## Footnotes
 

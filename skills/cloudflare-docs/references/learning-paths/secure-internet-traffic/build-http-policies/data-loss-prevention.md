@@ -32,9 +32,9 @@ Most predefined profiles match when any enabled detection entry matches. The **P
 1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** \> **Data loss prevention** \> **Profiles**.
 2. Select **Create profile**.
 3. Enter a name and optional description for the profile.
-4. Add new or existing detection entries to the profile.  
-Add a custom entry  
-   1. Select **Add custom entry**.  
+4. Add detection entries to the profile.  
+Create a custom entry  
+   1. Select **Create custom entry**.  
    2. Choose the type of detection entry you want to create and configure its values.  
    For information on supported detection entry types, refer to [Configure detection entries](https://developers.cloudflare.com/cloudflare-one/data-loss-prevention/detection-entries/configure-detection-entries/).  
    3. To save the detection entry, select **Done**.  
@@ -42,10 +42,10 @@ Add existing entries
 Existing entries include [predefined](https://developers.cloudflare.com/cloudflare-one/data-loss-prevention/detection-entries/predefined-detection-entries/) and [user-defined](https://developers.cloudflare.com/cloudflare-one/data-loss-prevention/detection-entries/configure-detection-entries/) detection entries that you manage from the Detection entries section.  
    1. Select **Add existing entries**.  
    2. Choose which entries you want to add, then select **Confirm**.  
-   3. To save the detection entry, select **Done**.
+   3. To finish, select **Done**.
 5. (Optional) Add data classes to include reusable classification rules.  
-   1. Select **Add data classes**.  
-   2. Choose the data classes you want to add, then select **Confirm**.
+   * Select **Add data classes**  
+   * Choose the data classes you want to add, then select **Confirm**
 6. (Optional) Use labels as match criteria for the profile.  
    * Select a sensitivity schema and minimum sensitivity level.  
    * Select a data tag group and one or more data tags.  
@@ -65,8 +65,8 @@ If your organization is most concerned about general data patterns that fit exis
 
 To help this better match the needs of your organization, you can also build a complex profile that matches data to both an existing library and a custom string detection or database. For example:
 
-* [ Dashboard ](#tab-panel-6400)
-* [ API ](#tab-panel-6401)
+* [ Dashboard ](#tab-panel-8650)
+* [ API ](#tab-panel-8651)
 
 | Selector    | Operator | Value                     | Logic | Action |
 | ----------- | -------- | ------------------------- | ----- | ------ |
@@ -120,8 +120,8 @@ To validate your regex, use [Rustexp ↗](https://rustexp.lpil.uk/).
 
 For example, you can use a custom expression to detect when your users share product SKUs in the format `CF1234-56789`:
 
-* [ Dashboard ](#tab-panel-6402)
-* [ API ](#tab-panel-6403)
+* [ Dashboard ](#tab-panel-8652)
+* [ API ](#tab-panel-8653)
 
 1. [Build a custom profile](#build-a-custom-profile) with the following custom entry:  
 | Detection entry name | Value                     |  
@@ -198,8 +198,8 @@ The best way to start applying data loss prevention to your traffic, minimize th
 
 Many organizations want to detect and log financial information egressing from user devices to critical SaaS applications. To limit the risk of false positives and to filter out logging noise, Cloudflare recommends building your first series of policies to specify both target data and target destination. For example, you can block financial information from being sent to AI chatbots, such as ChatGPT and Gemini:
 
-* [ Dashboard ](#tab-panel-6404)
-* [ API ](#tab-panel-6405)
+* [ Dashboard ](#tab-panel-8654)
+* [ API ](#tab-panel-8655)
 
 | Selector           | Operator | Value                     | Logic | Action |
 | ------------------ | -------- | ------------------------- | ----- | ------ |

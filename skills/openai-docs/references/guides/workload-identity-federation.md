@@ -22,7 +22,7 @@ Start with the guide that matches where your workload runs:
 <div className="my-4 w-full max-w-full overflow-hidden">
   </div>
 
-OpenAI supports OIDC-compatible JWT subject tokens in the documented configurations. If you need an OIDC provider that isn't listed, contact us.
+OpenAI supports OIDC-compatible JWT subject tokens in the documented configurations, including SPIFFE JWT-SVIDs. If you need an OIDC provider that isn't listed, contact us.
 
 Each provider guide shows how to issue and inspect a subject token on that platform, and how to configure the OpenAI SDK to exchange it for a short-lived OpenAI access token.
 

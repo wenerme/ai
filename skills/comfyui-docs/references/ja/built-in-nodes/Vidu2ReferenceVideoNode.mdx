@@ -3,25 +3,23 @@ title: "Vidu2ReferenceVideoNode - ComfyUI Built-in Node Documentation"
 description: "Complete documentation for the Vidu2ReferenceVideoNode node in ComfyUI. Learn its inputs, outputs, parameters and usage."
 mode: wide
 ---
-> このドキュメントは AI によって生成されました。エラーを見つけた場合や改善のご提案がある場合は、ぜひ貢献してください！ [GitHub で編集](https://github.com/Comfy-Org/embedded-docs/blob/main/comfyui_embedded_docs/docs/Vidu2ReferenceVideoNode/ja.md)
-
 このドキュメントはAI生成です。誤りや改善のご提案がございましたら、ぜひご協力ください！ [GitHubで編集](https://github.com/Comfy-Org/embedded-docs/blob/main/comfyui_embedded_docs/docs/Vidu2ReferenceVideoNode/en.md)
 
 Vidu2 参照動画生成ノードは、テキストプロンプトと複数の参照画像から動画を生成します。最大7つの被写体を定義でき、各被写体に独自の参照画像セットを設定できます。プロンプト内では `@subject{subject_id}` を使用して被写体を参照します。このノードは、再生時間、アスペクト比、動きの大きさを設定可能な動画を生成します。
 
 ## 入力
 
-| パラメータ | データ型 | 必須 | 範囲 | 説明 |
-|-----------|----------|------|------|------|
-| `model` | COMBO | はい | `"viduq2"` | 動画生成に使用するAIモデル。 |
-| `subjects` | AUTOGROW | はい | なし | 各被写体につき、最大3枚の参照画像を指定します（全被写体で合計7枚まで）。プロンプト内では `@subject{subject_id}` で参照します。 |
-| `prompt` | STRING | はい | なし | 動画生成をガイドするテキスト説明。`audio` パラメータが有効な場合、このプロンプトに基づいて生成された音声とBGMが動画に含まれます。 |
-| `audio` | BOOLEAN | いいえ | なし | 有効にすると、プロンプトに基づいて生成された音声とBGMが動画に含まれます（デフォルト: `False`）。 |
-| `duration` | INT | いいえ | 1～10 | 生成される動画の長さ（秒）（デフォルト: `5`）。 |
-| `seed` | INT | いいえ | 0～2147483647 | 生成のランダム性を制御し、再現可能な結果を得るための数値（デフォルト: `1`）。 |
-| `aspect_ratio` | COMBO | いいえ | `"16:9"``"9:16"``"4:3"``"3:4"``"1:1"` | 動画フレームの形状。 |
-| `resolution` | COMBO | いいえ | `"720p"``"1080p"` | 出力動画のピクセル解像度。 |
-| `movement_amplitude` | COMBO | いいえ | `"auto"``"small"``"medium"``"large"` | フレーム内のオブジェクトの動きの大きさを制御します。 |
+| パラメータ | 説明 | データ型 | 必須 | 範囲 |
+| --- | --- | --- | --- | --- |
+| `model` | 動画生成に使用するAIモデル。 | COMBO | はい | `"viduq2"` |
+| `subjects` | 各被写体につき、最大3枚の参照画像を指定します（全被写体で合計7枚まで）。プロンプト内では `@subject{subject_id}` で参照します。 | AUTOGROW | はい | なし |
+| `prompt` | 動画生成をガイドするテキスト説明。`audio` パラメータが有効な場合、このプロンプトに基づいて生成された音声とBGMが動画に含まれます。 | STRING | はい | なし |
+| `audio` | 有効にすると、プロンプトに基づいて生成された音声とBGMが動画に含まれます（デフォルト: `False`）。 | BOOLEAN | いいえ | なし |
+| `duration` | 生成される動画の長さ（秒）（デフォルト: `5`）。 | INT | いいえ | 1～10 |
+| `seed` | 生成のランダム性を制御し、再現可能な結果を得るための数値（デフォルト: `1`）。 | INT | いいえ | 0～2147483647 |
+| `aspect_ratio` | 動画フレームの形状。 | COMBO | いいえ | `"16:9"``"9:16"``"4:3"``"3:4"``"1:1"` |
+| `resolution` | 出力動画のピクセル解像度。 | COMBO | いいえ | `"720p"``"1080p"` |
+| `movement_amplitude` | フレーム内のオブジェクトの動きの大きさを制御します。 | COMBO | いいえ | `"auto"``"small"``"medium"``"large"` |
 
 **制約事項:**
 
@@ -33,9 +31,11 @@ Vidu2 参照動画生成ノードは、テキストプロンプトと複数の�
 
 ## 出力
 
-| 出力名 | データ型 | 説明 |
-|--------|----------|------|
-| `output` | VIDEO | 生成された動画ファイル。 |
+| 出力名 | 説明 | データ型 |
+| --- | --- | --- |
+| `output` | 生成された動画ファイル。 | VIDEO |
+
+> このドキュメントは AI によって生成されました。エラーを見つけた場合や改善のご提案がある場合は、ぜひ貢献してください！ [GitHub で編集](https://github.com/Comfy-Org/embedded-docs/blob/main/comfyui_embedded_docs/docs/Vidu2ReferenceVideoNode/ja.md)
 
 ---
 **Source fingerprint (SHA-256):** `3e02b05a0e374442a6ca4ce6a3dbc182b4059e19b5ed7dfc2794e036de7beffd`

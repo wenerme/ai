@@ -28,8 +28,8 @@ With Containers you can run:
 
 Container instances are spun up on-demand and controlled by code you write in your [Worker](https://developers.cloudflare.com/workers). Instead of chaining together API calls or writing Kubernetes operators, you just write JavaScript:
 
-* [ Worker Code ](#tab-panel-5611)
-* [ Worker Config ](#tab-panel-5612)
+* [ Worker Code ](#tab-panel-7280)
+* [ Worker Config ](#tab-panel-7281)
 
 JavaScript
 
@@ -68,8 +68,8 @@ export default {
 
 ```
 
-* [  wrangler.jsonc ](#tab-panel-5609)
-* [  wrangler.toml ](#tab-panel-5610)
+* [  wrangler.jsonc ](#tab-panel-7278)
+* [  wrangler.toml ](#tab-panel-7279)
 
 JSONC
 
@@ -83,7 +83,7 @@ JSONC
 
   // Set this to today's date
 
-  "compatibility_date": "2026-05-05",
+  "compatibility_date": "2026-06-08",
 
   "containers": [
 
@@ -142,7 +142,7 @@ main = "src/index.js"
 
 # Set this to today's date
 
-compatibility_date = "2026-05-05"
+compatibility_date = "2026-06-08"
 
 
 [[containers]]
@@ -199,6 +199,10 @@ Learn more about the commands to develop, build and push images, and deploy cont
 [Limits](https://developers.cloudflare.com/containers/platform-details/limits/) 
 
 Learn about what limits Containers have and how to work within them.
+
+[Durable Object Container API](https://developers.cloudflare.com/durable-objects/api/container/) 
+
+Low-level runtime API for starting, stopping, and communicating with the container process directly from a Durable Object.
 
 [SSH](https://developers.cloudflare.com/containers/ssh/) 
 

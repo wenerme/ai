@@ -19,14 +19,14 @@ RealtimeKit provides AI-powered features using Cloudflare's AI infrastructure to
 
 ## Available features
 
-| Feature                                                                                   | Description                                 |
-| ----------------------------------------------------------------------------------------- | ------------------------------------------- |
-| [Transcription](https://developers.cloudflare.com/realtime/realtimekit/ai/transcription/) | Real-time and end-of-meeting speech-to-text |
-| [Summary](https://developers.cloudflare.com/realtime/realtimekit/ai/summary/)             | AI-generated meeting summaries              |
+| Feature                                                                                   | Description                               |
+| ----------------------------------------------------------------------------------------- | ----------------------------------------- |
+| [Transcription](https://developers.cloudflare.com/realtime/realtimekit/ai/transcription/) | Real-time and post-meeting speech-to-text |
+| [Summary](https://developers.cloudflare.com/realtime/realtimekit/ai/summary/)             | AI-generated meeting summaries            |
 
 ## Quick start
 
-Enable end of meeting transcription when creating a meeting:
+Turn on post-meeting transcription and automatic summaries when creating a meeting:
 
 ```
 
@@ -36,11 +36,23 @@ Enable end of meeting transcription when creating a meeting:
 
   "transcribe_on_end": true,
 
+  "summarize_on_end": true,
+
   "ai_config": {
 
     "transcription": {
 
       "language": "en"
+
+    },
+
+    "summarization": {
+
+      "word_limit": 500,
+
+      "text_format": "markdown",
+
+      "summary_type": "team_meeting"
 
     }
 
@@ -51,13 +63,13 @@ Enable end of meeting transcription when creating a meeting:
 
 ```
 
-Use `transcribe_on_end` for end of meeting transcripts. Use `summarize_on_end` for AI-generated summaries. For real-time transcription, ensure participants have `transcription_enabled: true` in their [preset](https://developers.cloudflare.com/realtime/realtimekit/concepts/preset/).
+Use `transcribe_on_end` for post-meeting transcripts. Use `summarize_on_end` for AI-generated summaries. For real-time transcription, make sure participants have `transcription_enabled: true` in their [preset](https://developers.cloudflare.com/realtime/realtimekit/concepts/preset/).
 
 ## Storage and retention
 
 * Transcripts and summaries are stored for **7 days** after the meeting ends
 * Files are stored in R2 with presigned URLs for secure access
-* Delivered via [webhooks](https://developers.cloudflare.com/api/resources/realtime%5Fkit/subresources/webhooks/) or REST API
+* Delivered via [webhooks](https://developers.cloudflare.com/realtime/realtimekit/webhooks/) or REST API
 
 ```json
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/realtime/","name":"Realtime"}},{"@type":"ListItem","position":3,"item":{"@id":"/realtime/realtimekit/","name":"RealtimeKit"}},{"@type":"ListItem","position":4,"item":{"@id":"/realtime/realtimekit/ai/","name":"AI"}}]}

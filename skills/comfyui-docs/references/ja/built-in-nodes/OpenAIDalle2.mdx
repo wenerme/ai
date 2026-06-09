@@ -3,8 +3,6 @@ title: "OpenAIDalle2 - ComfyUI Built-in Node Documentation"
 description: "Complete documentation for the OpenAIDalle2 node in ComfyUI. Learn its inputs, outputs, parameters and usage."
 mode: wide
 ---
-> このドキュメントは AI によって生成されました。エラーを見つけた場合や改善のご提案がある場合は、ぜひ貢献してください！ [GitHub で編集](https://github.com/Comfy-Org/embedded-docs/blob/main/comfyui_embedded_docs/docs/OpenAIDalle2/ja.md)
-
 # OpenAIDalle2
 
 OpenAIのDALL·E 2エンドポイントを介して画像を同期的に生成します。
@@ -15,20 +13,22 @@ OpenAIのDALL·E 2エンドポイントを介して画像を同期的に生成�
 
 ## 入力
 
-| パラメータ | データ型 | 入力タイプ | デフォルト | 範囲 | 説明 |
-|-----------|-----------|------------|---------|-------|-------------|
-| `プロンプト` | STRING | 必須 | "" | - | DALL·E用のテキストプロンプト |
-| `シード` | INT | オプション | 0 | 0～2147483647 | バックエンドではまだ実装されていません |
-| `サイズ` | COMBO | オプション | "1024x1024" | "256x256", "512x512", "1024x1024" | 画像サイズ |
-| `生成数` | INT | オプション | 1 | 1～8 | 生成する画像の枚数 |
-| `画像` | IMAGE | オプション | None | - | 画像編集用のオプションの参照画像 |
-| `マスク` | MASK | オプション | None | - | インペインティング用のオプションのマスク（白い領域が置き換えられます） |
+| パラメータ | 説明 | データ型 | 入力タイプ | デフォルト | 範囲 |
+| --- | --- | --- | --- | --- | --- |
+| `プロンプト` | DALL·E用のテキストプロンプト | STRING | 必須 | "" | - |
+| `シード` | バックエンドではまだ実装されていません | INT | オプション | 0 | 0～2147483647 |
+| `サイズ` | 画像サイズ | COMBO | オプション | "1024x1024" | "256x256", "512x512", "1024x1024" |
+| `生成数` | 生成する画像の枚数 | INT | オプション | 1 | 1～8 |
+| `画像` | 画像編集用のオプションの参照画像 | IMAGE | オプション | None | - |
+| `マスク` | インペインティング用のオプションのマスク（白い領域が置き換えられます） | MASK | オプション | None | - |
 
 ## 出力
 
-| 出力名 | データ型 | 説明 |
-|-------------|-----------|-------------|
-| `IMAGE` | IMAGE | DALL·E 2から生成または編集された画像 |
+| 出力名 | 説明 | データ型 |
+| --- | --- | --- |
+| `IMAGE` | DALL·E 2から生成または編集された画像 | IMAGE |
+
+> このドキュメントは AI によって生成されました。エラーを見つけた場合や改善のご提案がある場合は、ぜひ貢献してください！ [GitHub で編集](https://github.com/Comfy-Org/embedded-docs/blob/main/comfyui_embedded_docs/docs/OpenAIDalle2/ja.md)
 
 ---
 **Source fingerprint (SHA-256):** `ad10b149ac28559ad18c09e0f071286509680603d953833106ad6a2d578f7efe`

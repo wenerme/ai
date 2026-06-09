@@ -59,7 +59,7 @@ test build
 ```
 
 If you'd like `just` to default to listing the recipes in the `justfile`, set
-`default-list`<sup>master</sup>:
+`default-list`<sup>1.52.0</sup>:
 
 ```just
 set default-list := true
@@ -70,7 +70,7 @@ enabled lists that module's recipes.
 
 You can also default to listing recipes this behavior by settting the
 environment variable `JUST_DEFAULT_LIST=true` or passing
-`--default-list`<sup>master</sup>.
+`--default-list`<sup>1.52.0</sup>.
 
 The heading text can be customized with `--list-heading`:
 
