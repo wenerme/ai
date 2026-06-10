@@ -27,8 +27,8 @@ let Codex inspect a project without editing it, while a write-capable profile
 can limit edits to selected workspace roots.
 
 Local permission profiles are supported on macOS, Linux, WSL, and native
-Windows. Platform-specific enforcement details and caveats are covered in
-[Security limitations](#security-limitations).
+Windows. See [Scope and enforcement](#scope-and-enforcement) for platform-specific
+details and caveats.
 
 For Codex cloud network settings, see [Internet Access](https://developers.openai.com/codex/cloud/internet-access).
 

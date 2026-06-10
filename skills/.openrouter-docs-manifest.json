@@ -591,8 +591,8 @@
   },
   "api/api-reference/responses/create-responses.md": {
     "url": "https://openrouter.ai/docs/api/api-reference/responses/create-responses.md",
-    "size": 233184,
-    "updatedAt": "2026-06-10T00:58:18.296Z"
+    "size": 242858,
+    "updatedAt": "2026-06-10T11:39:57.703Z"
   },
   "api/api-reference/o-auth/exchange-auth-code-for-api-key.md": {
     "url": "https://openrouter.ai/docs/api/api-reference/o-auth/exchange-auth-code-for-api-key.md",
@@ -646,8 +646,8 @@
   },
   "api/api-reference/chat/send-chat-completion-request.md": {
     "url": "https://openrouter.ai/docs/api/api-reference/chat/send-chat-completion-request.md",
-    "size": 117035,
-    "updatedAt": "2026-06-10T00:58:42.495Z"
+    "size": 119898,
+    "updatedAt": "2026-06-10T11:40:28.725Z"
   },
   "api/api-reference/credits/get-credits.md": {
     "url": "https://openrouter.ai/docs/api/api-reference/credits/get-credits.md",
@@ -786,8 +786,8 @@
   },
   "api/api-reference/anthropic-messages/create-messages.md": {
     "url": "https://openrouter.ai/docs/api/api-reference/anthropic-messages/create-messages.md",
-    "size": 145724,
-    "updatedAt": "2026-06-10T00:59:52.398Z"
+    "size": 148587,
+    "updatedAt": "2026-06-10T11:42:00.864Z"
   },
   "api/api-reference/models/get-models.md": {
     "url": "https://openrouter.ai/docs/api/api-reference/models/get-models.md",
@@ -836,18 +836,18 @@
   },
   "api/api-reference/presets/create-presets-chat-completions.md": {
     "url": "https://openrouter.ai/docs/api/api-reference/presets/create-presets-chat-completions.md",
-    "size": 100565,
-    "updatedAt": "2026-06-10T01:00:10.714Z"
+    "size": 103428,
+    "updatedAt": "2026-06-10T11:42:44.282Z"
   },
   "api/api-reference/presets/create-presets-messages.md": {
     "url": "https://openrouter.ai/docs/api/api-reference/presets/create-presets-messages.md",
-    "size": 109748,
-    "updatedAt": "2026-06-10T01:00:11.619Z"
+    "size": 112611,
+    "updatedAt": "2026-06-10T11:43:00.995Z"
   },
   "api/api-reference/presets/create-presets-responses.md": {
     "url": "https://openrouter.ai/docs/api/api-reference/presets/create-presets-responses.md",
-    "size": 169435,
-    "updatedAt": "2026-06-10T01:00:12.522Z"
+    "size": 175017,
+    "updatedAt": "2026-06-10T11:43:08.277Z"
   },
   "api/api-reference/providers/list-providers.md": {
     "url": "https://openrouter.ai/docs/api/api-reference/providers/list-providers.md",

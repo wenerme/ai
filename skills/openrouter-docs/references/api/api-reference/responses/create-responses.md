@@ -4838,6 +4838,162 @@ components:
         OpenRouter built-in server tool: validates V4A diff patches for file
         operations (create, update, delete). Restricted to the Responses API.
       title: ApplyPatchServerTool_OpenRouter
+    BashServerToolEngine:
+      type: string
+      enum:
+        - auto
+        - native
+        - openrouter
+      description: >-
+        Which bash engine to use. "openrouter" runs commands server-side in the
+        OpenRouter sandbox. "auto" (default) and "native" use native
+        passthrough, returning the tool call to your application to run
+        client-side; OpenRouter does not execute the commands.
+      title: BashServerToolEngine
+    BashServerToolEnvironment:
+      oneOf:
+        - type: object
+          properties:
+            type:
+              type: string
+              enum:
+                - container_auto
+              description: 'Discriminator value: container_auto'
+          required:
+            - type
+          description: An OpenRouter-managed, auto-provisioned ephemeral container.
+        - type: object
+          properties:
+            type:
+              type: string
+              enum:
+                - container_reference
+              description: 'Discriminator value: container_reference'
+            container_id:
+              type: string
+              description: >-
+                Identifier of an existing container to reuse (max 20
+                characters).
+          required:
+            - type
+            - container_id
+          description: Reference to a previously created container to reuse.
+      discriminator:
+        propertyName: type
+      description: Execution environment for the bash server tool.
+      title: BashServerToolEnvironment
+    SandboxSleepAfterSeconds:
+      type: integer
+      description: >-
+        How long (in seconds) the container stays warm after its last command
+        before sleeping, freeing its capacity slot. Idle-based: each command
+        renews the timer. Defaults to 900 (15 minutes); capped at 2592000 (30
+        days).
+      title: SandboxSleepAfterSeconds
+    BashServerToolConfig:
+      type: object
+      properties:
+        engine:
+          $ref: '#/components/schemas/BashServerToolEngine'
+        environment:
+          $ref: '#/components/schemas/BashServerToolEnvironment'
+        sleep_after_seconds:
+          $ref: '#/components/schemas/SandboxSleepAfterSeconds'
+      description: Configuration for the openrouter:bash server tool
+      title: BashServerToolConfig
+    BashServerToolType:
+      type: string
+      enum:
+        - openrouter:bash
+      title: BashServerToolType
+    BashServerTool:
+      type: object
+      properties:
+        parameters:
+          $ref: '#/components/schemas/BashServerToolConfig'
+        type:
+          $ref: '#/components/schemas/BashServerToolType'
+      required:
+        - type
+      description: >-
+        OpenRouter built-in server tool: runs shell commands server-side in a
+        sandboxed container
+      title: BashServerTool
+    ShellServerToolEngine:
+      type: string
+      enum:
+        - auto
+        - openrouter
+      description: >-
+        Which shell engine to use. "openrouter" runs commands server-side in the
+        OpenRouter sandbox. "auto" (default) keeps the provider's native hosted
+        shell when available (OpenAI); on other providers the call is routed to
+        the OpenRouter sandbox.
+      title: ShellServerToolEngine
+    ShellServerToolEnvironment:
+      oneOf:
+        - type: object
+          properties:
+            type:
+              type: string
+              enum:
+                - container_auto
+              description: 'Discriminator value: container_auto'
+          required:
+            - type
+          description: An OpenRouter-managed, auto-provisioned ephemeral container.
+        - type: object
+          properties:
+            type:
+              type: string
+              enum:
+                - container_reference
+              description: 'Discriminator value: container_reference'
+            container_id:
+              type: string
+              description: >-
+                Identifier of an existing container to reuse (max 20
+                characters).
+          required:
+            - type
+            - container_id
+          description: Reference to a previously created container to reuse.
+      discriminator:
+        propertyName: type
+      description: >-
+        Server-side execution environment for the shell tool. Only
+        container-backed environments are supported; "local" shells are not.
+      title: ShellServerToolEnvironment
+    ShellServerToolConfig:
+      type: object
+      properties:
+        engine:
+          $ref: '#/components/schemas/ShellServerToolEngine'
+        environment:
+          $ref: '#/components/schemas/ShellServerToolEnvironment'
+        sleep_after_seconds:
+          $ref: '#/components/schemas/SandboxSleepAfterSeconds'
+      description: Configuration for the openrouter:shell server tool
+      title: ShellServerToolConfig
+    ShellServerToolOpenRouterType:
+      type: string
+      enum:
+        - openrouter:shell
+      title: ShellServerToolOpenRouterType
+    ShellServerTool_OpenRouter:
+      type: object
+      properties:
+        parameters:
+          $ref: '#/components/schemas/ShellServerToolConfig'
+        type:
+          $ref: '#/components/schemas/ShellServerToolOpenRouterType'
+      required:
+        - type
+      description: >-
+        OpenRouter built-in server tool: runs shell commands server-side in a
+        sandboxed container (a sandbox-backed clone of OpenAI's hosted shell
+        tool)
+      title: ShellServerTool_OpenRouter
     ResponsesRequestToolsItems:
       oneOf:
         - $ref: '#/components/schemas/ResponsesRequestToolsItems0'
@@ -4862,6 +5018,8 @@ components:
         - $ref: '#/components/schemas/WebFetchServerTool'
         - $ref: '#/components/schemas/WebSearchServerTool_OpenRouter'
         - $ref: '#/components/schemas/ApplyPatchServerTool_OpenRouter'
+        - $ref: '#/components/schemas/BashServerTool'
+        - $ref: '#/components/schemas/ShellServerTool_OpenRouter'
       title: ResponsesRequestToolsItems
     TraceConfig:
       type: object
@@ -5911,6 +6069,94 @@ components:
       enum:
         - reasoning
       title: OutputReasoningItemType
+    OutputShellCallItemAction:
+      type: object
+      properties:
+        commands:
+          type: array
+          items:
+            type: string
+        max_output_length:
+          type:
+            - integer
+            - 'null'
+        timeout_ms:
+          type:
+            - integer
+            - 'null'
+      required:
+        - commands
+        - max_output_length
+        - timeout_ms
+      title: OutputShellCallItemAction
+    ShellCallStatus:
+      type: string
+      enum:
+        - in_progress
+        - completed
+        - incomplete
+      description: Status of a shell call or its output.
+      title: ShellCallStatus
+    OutputShellCallItemType:
+      type: string
+      enum:
+        - shell_call
+      title: OutputShellCallItemType
+    OutputShellCallOutputItemOutputItemsOutcomeOneOf0Type:
+      type: string
+      enum:
+        - exit
+      title: OutputShellCallOutputItemOutputItemsOutcomeOneOf0Type
+    OutputShellCallOutputItemOutputItemsOutcome0:
+      type: object
+      properties:
+        exit_code:
+          type: integer
+        type:
+          $ref: >-
+            #/components/schemas/OutputShellCallOutputItemOutputItemsOutcomeOneOf0Type
+      required:
+        - exit_code
+        - type
+      title: OutputShellCallOutputItemOutputItemsOutcome0
+    OutputShellCallOutputItemOutputItemsOutcomeOneOf1Type:
+      type: string
+      enum:
+        - timeout
+      title: OutputShellCallOutputItemOutputItemsOutcomeOneOf1Type
+    OutputShellCallOutputItemOutputItemsOutcome1:
+      type: object
+      properties:
+        type:
+          $ref: >-
+            #/components/schemas/OutputShellCallOutputItemOutputItemsOutcomeOneOf1Type
+      required:
+        - type
+      title: OutputShellCallOutputItemOutputItemsOutcome1
+    OutputShellCallOutputItemOutputItemsOutcome:
+      oneOf:
+        - $ref: '#/components/schemas/OutputShellCallOutputItemOutputItemsOutcome0'
+        - $ref: '#/components/schemas/OutputShellCallOutputItemOutputItemsOutcome1'
+      title: OutputShellCallOutputItemOutputItemsOutcome
+    OutputShellCallOutputItemOutputItems:
+      type: object
+      properties:
+        outcome:
+          $ref: '#/components/schemas/OutputShellCallOutputItemOutputItemsOutcome'
+        stderr:
+          type: string
+        stdout:
+          type: string
+      required:
+        - outcome
+        - stderr
+        - stdout
+      title: OutputShellCallOutputItemOutputItems
+    OutputShellCallOutputItemType:
+      type: string
+      enum:
+        - shell_call_output
+      title: OutputShellCallOutputItemType
     OutputItems:
       oneOf:
         - type: object
@@ -6510,6 +6756,54 @@ components:
             - id
             - summary
           description: An output item containing reasoning
+        - type: object
+          properties:
+            type:
+              $ref: '#/components/schemas/OutputShellCallItemType'
+            action:
+              $ref: '#/components/schemas/OutputShellCallItemAction'
+            call_id:
+              type: string
+            id:
+              type: string
+            status:
+              $ref: '#/components/schemas/ShellCallStatus'
+          required:
+            - type
+            - call_id
+            - id
+            - status
+          description: >-
+            A native `shell_call` output item matching OpenAI's Responses API
+            shape. Emitted for the sandbox-backed `shell` tool.
+        - type: object
+          properties:
+            type:
+              $ref: '#/components/schemas/OutputShellCallOutputItemType'
+            call_id:
+              type: string
+            id:
+              type: string
+            max_output_length:
+              type:
+                - integer
+                - 'null'
+            output:
+              type: array
+              items:
+                $ref: '#/components/schemas/OutputShellCallOutputItemOutputItems'
+            status:
+              $ref: '#/components/schemas/ShellCallStatus'
+          required:
+            - type
+            - call_id
+            - id
+            - output
+            - status
+          description: >-
+            A native `shell_call_output` item matching OpenAI's Responses API
+            shape. Carries per-command stdout, stderr, and the exit/timeout
+            outcome.
         - type: object
           properties:
             type:

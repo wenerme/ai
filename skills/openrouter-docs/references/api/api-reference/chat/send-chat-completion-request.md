@@ -2070,6 +2070,87 @@ components:
         model (any OpenRouter model) for guidance mid-generation and returns its
         response. The advisor may run as a sub-agent with its own tools.
       title: AdvisorServerTool_OpenRouter
+    BashServerToolEngine:
+      type: string
+      enum:
+        - auto
+        - native
+        - openrouter
+      description: >-
+        Which bash engine to use. "openrouter" runs commands server-side in the
+        OpenRouter sandbox. "auto" (default) and "native" use native
+        passthrough, returning the tool call to your application to run
+        client-side; OpenRouter does not execute the commands.
+      title: BashServerToolEngine
+    BashServerToolEnvironment:
+      oneOf:
+        - type: object
+          properties:
+            type:
+              type: string
+              enum:
+                - container_auto
+              description: 'Discriminator value: container_auto'
+          required:
+            - type
+          description: An OpenRouter-managed, auto-provisioned ephemeral container.
+        - type: object
+          properties:
+            type:
+              type: string
+              enum:
+                - container_reference
+              description: 'Discriminator value: container_reference'
+            container_id:
+              type: string
+              description: >-
+                Identifier of an existing container to reuse (max 20
+                characters).
+          required:
+            - type
+            - container_id
+          description: Reference to a previously created container to reuse.
+      discriminator:
+        propertyName: type
+      description: Execution environment for the bash server tool.
+      title: BashServerToolEnvironment
+    SandboxSleepAfterSeconds:
+      type: integer
+      description: >-
+        How long (in seconds) the container stays warm after its last command
+        before sleeping, freeing its capacity slot. Idle-based: each command
+        renews the timer. Defaults to 900 (15 minutes); capped at 2592000 (30
+        days).
+      title: SandboxSleepAfterSeconds
+    BashServerToolConfig:
+      type: object
+      properties:
+        engine:
+          $ref: '#/components/schemas/BashServerToolEngine'
+        environment:
+          $ref: '#/components/schemas/BashServerToolEnvironment'
+        sleep_after_seconds:
+          $ref: '#/components/schemas/SandboxSleepAfterSeconds'
+      description: Configuration for the openrouter:bash server tool
+      title: BashServerToolConfig
+    BashServerToolType:
+      type: string
+      enum:
+        - openrouter:bash
+      title: BashServerToolType
+    BashServerTool:
+      type: object
+      properties:
+        parameters:
+          $ref: '#/components/schemas/BashServerToolConfig'
+        type:
+          $ref: '#/components/schemas/BashServerToolType'
+      required:
+        - type
+      description: >-
+        OpenRouter built-in server tool: runs shell commands server-side in a
+        sandboxed container
+      title: BashServerTool
     DatetimeServerToolConfig:
       type: object
       properties:
@@ -2388,6 +2469,7 @@ components:
       oneOf:
         - $ref: '#/components/schemas/ChatFunctionTool0'
         - $ref: '#/components/schemas/AdvisorServerTool_OpenRouter'
+        - $ref: '#/components/schemas/BashServerTool'
         - $ref: '#/components/schemas/DatetimeServerTool'
         - $ref: '#/components/schemas/ImageGenerationServerTool_OpenRouter'
         - $ref: '#/components/schemas/ChatSearchModelsServerTool'

@@ -463,10 +463,10 @@ object.
 
 The [`GenerateContentConfig`](https://ai.google.dev/api/generate-content#v1beta.GenerationConfig)
 object also lets you override default generation parameters, such as
-[temperature](https://ai.google.dev/api/generate-content#v1beta.GenerationConfig).
+[`max_output_tokens`](https://ai.google.dev/api/generate-content#v1beta.GenerationConfig).
 
 > [!NOTE]
-> When using Gemini 3 models, we strongly recommend keeping the `temperature` at its default value of 1.0. Changing the temperature (setting it below 1.0) may lead to unexpected behavior, such as looping or degraded performance, particularly in complex mathematical or reasoning tasks.
+> The \`temperature\`, \`top_p\`, and \`top_k\` parameters control how the model generates responses. Although you can modify these parameters, we strongly recommend keeping them at their default values for Gemini 3.x models. Changing these parameters (for example, setting the temperature below 1.0) can cause unexpected behavior, such as looping or degraded performance, particularly in complex mathematical or reasoning tasks.
 
 ### Python
 
@@ -479,7 +479,7 @@ object also lets you override default generation parameters, such as
         model="gemini-3.5-flash",
         contents=["Explain how AI works"],
         config=types.GenerateContentConfig(
-            temperature=0.1
+            max_output_tokens=1000
         )
     )
     print(response.text)
@@ -495,7 +495,7 @@ object also lets you override default generation parameters, such as
         model: "gemini-3.5-flash",
         contents: "Explain how AI works",
         config: {
-          temperature: 0.1,
+          maxOutputTokens: 1000,
         },
       });
       console.log(response.text);
@@ -510,7 +510,7 @@ object also lets you override default generation parameters, such as
     import (
       "context"
       "fmt"
-      "os"
+      "log"
       "google.golang.org/genai"
     )
 
@@ -522,14 +522,8 @@ object also lets you override default generation parameters, such as
           log.Fatal(err)
       }
 
-      temp := float32(0.9)
-      topP := float32(0.5)
-      topK := float32(20.0)
-
       config := &genai.GenerateContentConfig{
-        Temperature:       &temp,
-        TopP:              &topP,
-        TopK:              &topK,
+        MaxOutputTokens:   1000,
         ResponseMIMEType:  "application/json",
       }
 
@@ -554,7 +548,7 @@ object also lets you override default generation parameters, such as
 
         Client client = new Client();
 
-        GenerateContentConfig config = GenerateContentConfig.builder().temperature(0.1f).build();
+        GenerateContentConfig config = GenerateContentConfig.builder().maxOutputTokens(1000).build();
 
         GenerateContentResponse response =
             client.models.generateContent("gemini-3.5-flash", "Explain how AI works", config);
@@ -583,9 +577,7 @@ object also lets you override default generation parameters, such as
           "stopSequences": [
             "Title"
           ],
-          "temperature": 1.0,
-          "topP": 0.8,
-          "topK": 10
+          "maxOutputTokens": 1000
         }
       }'
 
@@ -597,9 +589,7 @@ object also lets you override default generation parameters, such as
 
     function main() {
       const generationConfig = {
-        temperature: 1,
-        topP: 0.95,
-        topK: 40,
+        maxOutputTokens: 1000,
         responseFormat: { text: { mimeType: "text/plain" } },
       };
 

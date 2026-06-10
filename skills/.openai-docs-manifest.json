@@ -1154,10 +1154,10 @@
   "openai-docs/guides/your-data.md": {
     "url": "https://developers.openai.com/api/docs/guides/your-data.md",
     "skill": "openai-docs",
-    "etag": "W/\"2907ba7aef61dc15040233af05fc912c\"",
-    "lastModified": "Fri, 05 Jun 2026 00:34:31 GMT",
-    "size": 48231,
-    "updatedAt": "2026-06-05T00:43:33.744Z"
+    "etag": "W/\"80c17b9fe3f4466cacfb25c63af96829\"",
+    "lastModified": "Wed, 10 Jun 2026 10:23:13 GMT",
+    "size": 68673,
+    "updatedAt": "2026-06-10T11:22:19.648Z"
   },
   "openai-docs/libraries.md": {
     "url": "https://developers.openai.com/api/docs/libraries.md",
@@ -10234,10 +10234,10 @@
   "codex-docs/cli.md": {
     "url": "https://developers.openai.com/codex/cli.md",
     "skill": "codex-docs",
-    "etag": "W/\"e469e9b2964e7ee54260e0e3106cd4b5\"",
-    "lastModified": "Wed, 20 May 2026 21:12:13 GMT",
-    "size": 3074,
-    "updatedAt": "2026-05-21T00:43:27.144Z"
+    "etag": "W/\"3e8358556d69cb964228b2b014d533fa\"",
+    "lastModified": "Wed, 10 Jun 2026 09:54:41 GMT",
+    "size": 3078,
+    "updatedAt": "2026-06-10T11:27:59.386Z"
   },
   "codex-docs/cli/features.md": {
     "url": "https://developers.openai.com/codex/cli/features.md",
@@ -10458,10 +10458,10 @@
   "codex-docs/hooks.md": {
     "url": "https://developers.openai.com/codex/hooks.md",
     "skill": "codex-docs",
-    "etag": "W/\"03cd4654daca54405620556e01ef53f9\"",
-    "lastModified": "Fri, 22 May 2026 21:23:25 GMT",
-    "size": 30551,
-    "updatedAt": "2026-05-23T00:38:20.888Z"
+    "etag": "W/\"40c8e3284fbe48f98d548767409c0043\"",
+    "lastModified": "Wed, 10 Jun 2026 10:22:44 GMT",
+    "size": 30550,
+    "updatedAt": "2026-06-10T11:28:05.753Z"
   },
   "codex-docs/ide.md": {
     "url": "https://developers.openai.com/codex/ide.md",
@@ -10586,10 +10586,10 @@
   "codex-docs/permissions.md": {
     "url": "https://developers.openai.com/codex/permissions.md",
     "skill": "codex-docs",
-    "etag": "W/\"21a6f2d219b97a2f62ce063dc58f9e5a\"",
-    "lastModified": "Tue, 09 Jun 2026 23:57:49 GMT",
-    "size": 33817,
-    "updatedAt": "2026-06-10T00:48:18.634Z"
+    "etag": "W/\"2208b90232ab92762b49c82e232daa9b\"",
+    "lastModified": "Wed, 10 Jun 2026 10:28:27 GMT",
+    "size": 33800,
+    "updatedAt": "2026-06-10T11:28:10.127Z"
   },
   "codex-docs/plugins.md": {
     "url": "https://developers.openai.com/codex/plugins.md",
@@ -10986,10 +10986,10 @@
   "codex-docs/use-cases/follow-goals.md": {
     "url": "https://developers.openai.com/codex/use-cases/follow-goals.md",
     "skill": "codex-docs",
-    "etag": "W/\"53c522a7140a3dc4628d657f43a7940d\"",
-    "lastModified": "Fri, 22 May 2026 00:06:52 GMT",
-    "size": 4647,
-    "updatedAt": "2026-05-22T00:39:59.475Z"
+    "etag": "W/\"b4d27eb61663414e14bc9ac17a008fdd\"",
+    "lastModified": "Wed, 10 Jun 2026 10:27:01 GMT",
+    "size": 4660,
+    "updatedAt": "2026-06-10T11:28:25.902Z"
   },
   "codex-docs/use-cases/frontend-designs.md": {
     "url": "https://developers.openai.com/codex/use-cases/frontend-designs.md",
@@ -11090,10 +11090,10 @@
   "codex-docs/use-cases/make-granular-ui-changes.md": {
     "url": "https://developers.openai.com/codex/use-cases/make-granular-ui-changes.md",
     "skill": "codex-docs",
-    "etag": "W/\"8acf7dbed633d6cb7fc20d2d0f531dd6\"",
-    "lastModified": "Thu, 21 May 2026 00:43:57 GMT",
-    "size": 4277,
-    "updatedAt": "2026-05-21T00:43:57.968Z"
+    "etag": "W/\"ddcc417e443ccb83a75f639d9413a28c\"",
+    "lastModified": "Wed, 10 Jun 2026 10:27:01 GMT",
+    "size": 4258,
+    "updatedAt": "2026-06-10T11:28:29.734Z"
   },
   "codex-docs/use-cases/manage-your-inbox.md": {
     "url": "https://developers.openai.com/codex/use-cases/manage-your-inbox.md",
@@ -11242,18 +11242,18 @@
   "codex-docs/use-cases/user-stories-to-ui-mocks.md": {
     "url": "https://developers.openai.com/codex/use-cases/user-stories-to-ui-mocks.md",
     "skill": "codex-docs",
-    "etag": "W/\"cbb98590fee90bd4ea8236e98971ee67\"",
-    "lastModified": "Fri, 08 May 2026 00:35:33 GMT",
-    "size": 4027,
-    "updatedAt": "2026-05-08T00:35:33.887Z"
+    "etag": "W/\"dfa43c68d0a27e5d7fc5f4f715c8bf8a\"",
+    "lastModified": "Wed, 10 Jun 2026 10:27:01 GMT",
+    "size": 4035,
+    "updatedAt": "2026-06-10T11:28:35.286Z"
   },
   "codex-docs/use-cases/verified-operations-workflows.md": {
     "url": "https://developers.openai.com/codex/use-cases/verified-operations-workflows.md",
     "skill": "codex-docs",
-    "etag": "W/\"8dd9b06a7e78bfb25d13af997d118e9a\"",
-    "lastModified": "Fri, 08 May 2026 00:35:34 GMT",
-    "size": 3972,
-    "updatedAt": "2026-05-08T00:35:34.213Z"
+    "etag": "W/\"1bfb4b324130db1bebdcf30ef935885d\"",
+    "lastModified": "Wed, 10 Jun 2026 10:27:01 GMT",
+    "size": 3987,
+    "updatedAt": "2026-06-10T11:28:35.524Z"
   },
   "codex-docs/use-cases/zoom-meeting-follow-ups.md": {
     "url": "https://developers.openai.com/codex/use-cases/zoom-meeting-follow-ups.md",

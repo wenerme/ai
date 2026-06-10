@@ -35,7 +35,7 @@ If you're new to Codex, read the [best practices guide](https://developers.opena
 Run `codex` to start an interactive terminal UI (TUI) session.
 
   </BentoContent>
-  <BentoContent href="/codex/cli/features#models-reasoning">
+  <BentoContent href="/codex/cli/features#models-and-reasoning">
 
 ### Control model and reasoning
 

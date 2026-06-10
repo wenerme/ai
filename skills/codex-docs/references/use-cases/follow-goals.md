@@ -13,7 +13,7 @@ starterPrompt:
   body: /goal Complete [objective] without stopping until [verifiable end state].
 relatedLinks:
   - label: "`/goal` in CLI slash commands"
-    url: /codex/cli/slash-commands#set-a-goal-with-goal
+    url: /codex/cli/slash-commands#set-or-view-a-task-goal-with-goal
   - label: Codex workflows
     url: /codex/workflows
   - label: Run code migrations

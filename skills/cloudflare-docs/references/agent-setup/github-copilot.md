@@ -49,7 +49,7 @@ For VS Code, add to `.vscode/mcp.json`. For Copilot CLI, add to `~/.copilot/mcp-
 4. **Try a prompt**  
 Open Copilot Chat (**Ctrl+Shift+I**), switch to agent mode, and try a prompt — for example:  
 ```  
-Build a serverless AI inference endpoint on Workers AI with streaming responses.  
+Optimize my Worker to serve WebP images with responsive resizing using Cloudflare Images.  
 ```
 
 ## Cloudflare platform access

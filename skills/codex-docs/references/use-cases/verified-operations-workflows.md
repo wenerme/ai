@@ -82,7 +82,7 @@ Connect the tools you use to run the operation with [plugins](https://developers
 
 ## Require proof to verify the result
 
-A useful operations run includes an artifact that you or a teammate can inspect, such as a result CSV, a log file, a dashboard link, a screenshot, a PR check, or any other proof that the operation was successful. When using the Codex app, you can inspect this [artifact](https://developers.openai.com/codex/app/artifacts) directly in the artifact viewer after the run to verify the result.
+A useful operations run includes an artifact that you or a teammate can inspect, such as a result CSV, a log file, a dashboard link, a screenshot, a PR check, or any other proof that the operation was successful. When using the Codex app, you can inspect this [artifact](https://developers.openai.com/codex/app/features#artifact-viewer) directly in the artifact viewer after the run to verify the result.
 
 ## Turn the run into a reusable workflow
 

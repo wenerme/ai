@@ -1,5 +1,3 @@
-# Prompt design strategies
-
 *Prompt design* is the process of creating prompts, or natural language requests,
 that elicit accurate, high quality responses from a language model.
 
@@ -218,7 +216,7 @@ different models may differ. The most common parameters are the following:
    response is always selected.
 
    > [!NOTE]
-   > **Note:** When using Gemini 3 models, we strongly recommend keeping the `temperature` at its default value of 1.0. Changing the temperature (setting it below 1.0) may lead to unexpected behavior, such as looping or degraded performance, particularly in complex mathematical or reasoning tasks.
+   > **Note:** The \`temperature\`, \`top_p\`, and \`top_k\` parameters control how the model generates responses. Although you can modify these parameters, we strongly recommend keeping them at their default values for Gemini 3.x models. Changing these parameters (for example, setting the temperature below 1.0) can cause unexpected behavior, such as looping or degraded performance, particularly in complex mathematical or reasoning tasks.
 
 3. **`topK`:** The `topK` parameter changes how the model selects tokens for
    output. A `topK` of 1 means the selected token is the most probable among

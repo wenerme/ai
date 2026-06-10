@@ -342,7 +342,7 @@ You can improve your multimodal prompts by following these best practices:
   - **Tuning the sampling parameters:** Experiment with different temperature settings and top-k selections to adjust the model's creativity.
 
     > [!NOTE]
-    > When using Gemini 3 models, we strongly recommend keeping the `temperature` at its default value of 1.0. Changing the temperature (setting it below 1.0) may lead to unexpected behavior, such as looping or degraded performance, particularly in complex mathematical or reasoning tasks.
+    > The \`temperature\`, \`top_p\`, and \`top_k\` parameters control how the model generates responses. Although you can modify these parameters, we strongly recommend keeping them at their default values for Gemini 3.x models. Changing these parameters (for example, setting the temperature below 1.0) can cause unexpected behavior, such as looping or degraded performance, particularly in complex mathematical or reasoning tasks.
 
 ### Be specific in your instructions
 

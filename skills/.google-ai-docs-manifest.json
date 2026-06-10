@@ -80,8 +80,8 @@
   "google-ai-docs/text-generation.md": {
     "url": "https://ai.google.dev/gemini-api/docs/text-generation",
     "skill": "google-ai-docs",
-    "size": 37363,
-    "updatedAt": "2026-05-20T00:53:25.041Z"
+    "size": 37309,
+    "updatedAt": "2026-06-10T11:47:55.912Z"
   },
   "google-ai-docs/image-understanding.md": {
     "url": "https://ai.google.dev/gemini-api/docs/image-understanding",
@@ -116,8 +116,8 @@
   "google-ai-docs/function-calling.md": {
     "url": "https://ai.google.dev/gemini-api/docs/function-calling",
     "skill": "google-ai-docs",
-    "size": 80259,
-    "updatedAt": "2026-06-06T01:07:13.352Z"
+    "size": 80403,
+    "updatedAt": "2026-06-10T11:47:58.535Z"
   },
   "google-ai-docs/code-execution.md": {
     "url": "https://ai.google.dev/gemini-api/docs/code-execution",
@@ -140,8 +140,8 @@
   "google-ai-docs/prompting-strategies.md": {
     "url": "https://ai.google.dev/gemini-api/docs/prompting-strategies",
     "skill": "google-ai-docs",
-    "size": 36431,
-    "updatedAt": "2026-05-07T00:44:35.556Z"
+    "size": 36547,
+    "updatedAt": "2026-06-10T11:48:01.418Z"
   },
   "google-ai-docs/embeddings.md": {
     "url": "https://ai.google.dev/gemini-api/docs/embeddings",
@@ -170,8 +170,8 @@
   "google-ai-docs/files.md": {
     "url": "https://ai.google.dev/gemini-api/docs/files",
     "skill": "google-ai-docs",
-    "size": 28029,
-    "updatedAt": "2026-05-20T00:53:33.448Z"
+    "size": 28173,
+    "updatedAt": "2026-06-10T11:48:04.919Z"
   },
   "google-ai-docs/live.md": {
     "url": "https://ai.google.dev/gemini-api/docs/live",
@@ -380,8 +380,8 @@
   "google-ai-docs/billing.md": {
     "url": "https://ai.google.dev/gemini-api/docs/billing",
     "skill": "google-ai-docs",
-    "size": 34790,
-    "updatedAt": "2026-06-06T01:07:45.221Z"
+    "size": 34780,
+    "updatedAt": "2026-06-10T11:48:28.317Z"
   },
   "google-ai-docs/priority-inference.md": {
     "url": "https://ai.google.dev/gemini-api/docs/priority-inference",

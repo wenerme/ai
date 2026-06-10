@@ -203,7 +203,7 @@ Comfy에서 `큐 프롬프트` 버튼을 누르면 `app.graphToPrompt()` 메서�
 
 `prompt.output`는 그래프의 각 노드의 `node_id`에서 두 가지 속성을 가진 객체로 매핑됩니다.
 
-- `prompt.output[node_id].class_type`, 파이썬 코드에서 정의된 맞춤형 노드 클래스의 고유한 이름
+- `prompt.output[node_id].class_type`, 파이썬 코드에서 정의된 커스텀 노드 클래스의 고유한 이름
 - `prompt.output[node_id].inputs`, 각 입력(또는 위젯)의 값을 입력 이름에서 다음으로 매핑한 객체로 포함합니다:
     - 선택된 값이 위젯인 경우, 또는
     - 입력에 연결된 링크가 있는 경우 (`upstream_node_id`, `upstream_node_output_slot`)를 포함한 배열, 또는

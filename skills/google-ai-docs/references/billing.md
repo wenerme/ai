@@ -84,7 +84,7 @@ billing status actions you may need to take for a project display in the
 
 - "***Set up billing***" if the project doesn't have a billing account attached.
 - "***Set up Prepay*** " if the project does have a billing account attached, but is required to use a [Prepay](https://ai.google.dev/gemini-api/docs/billing#prepay) billing plan that needs to be set up.
-- "***No available credits***" if the billing account is required to purchase credits but the Prepay payments account isn't set up or the available credit balance is depleted.
+- "***No credits***" if the billing account is required to purchase credits but the Prepay payments account isn't set up or the available credit balance is depleted.
 
 Click any of the messages to proceed with the necessary actions.
 

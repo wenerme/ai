@@ -76,4 +76,4 @@ Do this until you are satisfied with the mock. The more scoped the changes are, 
 ## Move from mock to prototype
 
 Use the final mock image that you want Codex to implement. Re-attach this image in a new turn rather than continuing the conversation directly.
-You can then ask Codex to implement the mock – optionally using the [Build Web Apps plugin](https://developers.openai.com/codex/plugins/build-web-apps) if you're building a web app – to turn it into a working prototype:
+You can then ask Codex to implement the mock – optionally using the [Build Web Apps plugin](https://github.com/openai/plugins/tree/main/plugins/build-web-apps) if you're building a web app – to turn it into a working prototype:

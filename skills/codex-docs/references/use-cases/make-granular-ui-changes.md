@@ -56,8 +56,8 @@ Codex-Spark is our fastest model, optimized for near-instant, real-time coding i
 
 This works best as a tight loop: one visual note, one focused edit, one browser check, then the next note.
 
-You can use the [Codex Spark model](https://developers.openai.com/codex/models#gpt-53-codex-spark) for this
-  task. It is available on Pro plans.
+You can use the [Codex Spark model](https://developers.openai.com/codex/models) for this task. It is
+  available on Pro plans.
 
 ## Pick your model
 

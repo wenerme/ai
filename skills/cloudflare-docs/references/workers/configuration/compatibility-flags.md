@@ -26,8 +26,8 @@ Compatibility flags can be set in a Worker's [Wrangler configuration file](https
 
 This example enables the specific flag `formdata_parser_supports_files`, which is described [below](https://developers.cloudflare.com/workers/configuration/compatibility-flags/#formdata-parsing-supports-file). As of the specified date, `2021-09-14`, this particular flag was not yet enabled by default, but, by specifying it in `compatibility_flags`, we can enable it anyway. `compatibility_flags` can also be used to disable changes that became the default in the past.
 
-* [  wrangler.jsonc ](#tab-panel-10665)
-* [  wrangler.toml ](#tab-panel-10666)
+* [  wrangler.jsonc ](#tab-panel-11183)
+* [  wrangler.toml ](#tab-panel-11184)
 
 JSONC
 
@@ -83,8 +83,8 @@ A [growing subset](https://developers.cloudflare.com/workers/runtime-apis/nodejs
 
 To enable both built-in runtime APIs and polyfills for your Worker or Pages project, add the [nodejs\_compat](https://developers.cloudflare.com/workers/configuration/compatibility-flags/#nodejs-compatibility-flag) [compatibility flag](https://developers.cloudflare.com/workers/configuration/compatibility-flags/#nodejs-compatibility-flag) to your [Wrangler configuration file](https://developers.cloudflare.com/workers/wrangler/configuration/), and set your compatibility date to September 23rd, 2024 or later. This will enable [Node.js compatibility](https://developers.cloudflare.com/workers/runtime-apis/nodejs/) for your Workers project.
 
-* [  wrangler.jsonc ](#tab-panel-10669)
-* [  wrangler.toml ](#tab-panel-10670)
+* [  wrangler.jsonc ](#tab-panel-11187)
+* [  wrangler.toml ](#tab-panel-11188)
 
 JSONC
 
@@ -100,7 +100,7 @@ JSONC
 
   // Set this to today's date
 
-  "compatibility_date": "2026-06-02"
+  "compatibility_date": "2026-06-10"
 
 }
 
@@ -115,13 +115,13 @@ compatibility_flags = [ "nodejs_compat" ]
 
 # Set this to today's date
 
-compatibility_date = "2026-06-02"
+compatibility_date = "2026-06-10"
 
 
 ```
 
-* [  wrangler.jsonc ](#tab-panel-10663)
-* [  wrangler.toml ](#tab-panel-10664)
+* [  wrangler.jsonc ](#tab-panel-11181)
+* [  wrangler.toml ](#tab-panel-11182)
 
 JSONC
 
@@ -153,8 +153,8 @@ As additional Node.js APIs are added, they will be made available under the `nod
 
 The Node.js `AsyncLocalStorage` API is a particularly useful feature for Workers. To enable only the `AsyncLocalStorage` API, use the `nodejs_als` compatibility flag.
 
-* [  wrangler.jsonc ](#tab-panel-10667)
-* [  wrangler.toml ](#tab-panel-10668)
+* [  wrangler.jsonc ](#tab-panel-11185)
+* [  wrangler.toml ](#tab-panel-11186)
 
 JSONC
 
@@ -207,6 +207,15 @@ This flag is automatically enabled when the `remove_nodejs_compat_eol` flag is e
 When `remove_nodejs_compat_eol_v22` is enabled, APIs that reached end-of-life in Node.js 22.x are removed.
 
 This flag is automatically enabled when the `remove_nodejs_compat_eol` flag is enabled after 2027-04-30.
+
+### Throw On Not Implements TLS Options
+
+| **Default as of**   | 2026-06-16                                    |
+| ------------------- | --------------------------------------------- |
+| **Flag to enable**  | throw\_on\_not\_implemented\_tls\_options     |
+| **Flag to disable** | no\_throw\_on\_not\_implemented\_tls\_options |
+
+When enabled, passing unsupported TLS options (e.g. `checkServerIdentity`) to `tls.connect()` or `new TLSSocket()` throws `ERR_OPTION_NOT_IMPLEMENTED` instead of silently ignoring them
 
 ### Process .pth files for Python Workers
 

@@ -49,7 +49,7 @@ Inside Codex, run `/plugins`, then search for and install **Cloudflare**. This i
 4. **Try a prompt**  
 For example:  
 ```  
-Set up GitHub Actions to deploy this Worker to staging and production on Cloudflare.  
+Add bot protection and rate limiting to my login and checkout endpoints.  
 ```
 
 1. **Download Codex**  

@@ -1,7 +1,7 @@
 ---
 title: 'Language clients'
 description: 'Table of contents page for Language Clients.'
-keywords: ['Language clients', 'C++', 'Go', 'JavaScript', 'Java', 'Python', 'Rust']
+keywords: ['Language clients', 'C', 'C++', 'Go', 'JavaScript', 'Java', 'Python', 'Rust']
 doc_type: 'landing-page'
 ---
 
@@ -10,6 +10,7 @@ that ClickHouse offers.
 
 | Page                                                                    | Description                                                                      |
 |-------------------------------------------------------------------------|----------------------------------------------------------------------------------|
+| [C](/integrations/c)                                            | Header-only C client for the ClickHouse native protocol, designed for embedding. |
 | [C++](/interfaces/cpp)                                          | C++ Client Library and userver Asynchronous Framework                            |
 | [C#](/integrations/csharp)                                  | Learn how to connect your C# projects to ClickHouse.                         |
 | [Go](/integrations/go)                                          | Learn how to connect your Go projects to ClickHouse.                             |

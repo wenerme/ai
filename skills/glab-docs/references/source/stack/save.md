@@ -42,6 +42,7 @@ glab stack save . -m "added new file"
   -a, --all                  Automatically stage modified and deleted tracked files.
   -d, --description string   Description of the change.
   -m, --message string       Alias for the description flag.
+      --no-verify            Bypass the pre-commit and commit-msg hooks of git-commit(1).
 ```
 
 ## Options inherited from parent commands
