@@ -28,8 +28,8 @@ Recraft V4.1 generates art-directed images tuned for high aesthetics, with stron
 
 ## Usage
 
-* [ TypeScript ](#tab-panel-1284)
-* [ cURL ](#tab-panel-1285)
+* [ TypeScript ](#tab-panel-1554)
+* [ cURL ](#tab-panel-1555)
 
 TypeScript
 
@@ -73,8 +73,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 ```
 
-* [ Output ](#tab-panel-1282)
-* [ Raw response ](#tab-panel-1283)
+* [ Output ](#tab-panel-1552)
+* [ Raw response ](#tab-panel-1553)
 
 ![Simple Generation](https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/recraft__recraftv4-1/simple-generation.png) 
 
@@ -105,8 +105,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 **Scene Composition**  — Generate a complex compositional scene 
 
-* [ TypeScript ](#tab-panel-1288)
-* [ cURL ](#tab-panel-1289)
+* [ TypeScript ](#tab-panel-1558)
+* [ cURL ](#tab-panel-1559)
 
 TypeScript
 
@@ -154,8 +154,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 ```
 
-* [ Output ](#tab-panel-1286)
-* [ Raw response ](#tab-panel-1287)
+* [ Output ](#tab-panel-1556)
+* [ Raw response ](#tab-panel-1557)
 
 ![Scene Composition](https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/recraft__recraftv4-1/scene-composition.png) 
 
@@ -184,8 +184,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 **Custom Size**  — Specify output dimensions 
 
-* [ TypeScript ](#tab-panel-1292)
-* [ cURL ](#tab-panel-1293)
+* [ TypeScript ](#tab-panel-1562)
+* [ cURL ](#tab-panel-1563)
 
 TypeScript
 
@@ -237,8 +237,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 ```
 
-* [ Output ](#tab-panel-1290)
-* [ Raw response ](#tab-panel-1291)
+* [ Output ](#tab-panel-1560)
+* [ Raw response ](#tab-panel-1561)
 
 ![Custom Size](https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/recraft__recraftv4-1/custom-size.png) 
 
@@ -267,8 +267,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 **With Color Controls**  — Guide generation with specific brand colors 
 
-* [ TypeScript ](#tab-panel-1300)
-* [ cURL ](#tab-panel-1301)
+* [ TypeScript ](#tab-panel-1570)
+* [ cURL ](#tab-panel-1571)
 
 TypeScript
 
@@ -354,8 +354,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 ```
 
-* [ Output ](#tab-panel-1294)
-* [ Raw response ](#tab-panel-1295)
+* [ Output ](#tab-panel-1564)
+* [ Raw response ](#tab-panel-1565)
 
 ![With Color Controls](https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/recraft__recraftv4-1/with-color-controls.png) 
 
@@ -384,8 +384,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 **Background Color**  — Set a specific background color 
 
-* [ TypeScript ](#tab-panel-1298)
-* [ cURL ](#tab-panel-1299)
+* [ TypeScript ](#tab-panel-1568)
+* [ cURL ](#tab-panel-1569)
 
 TypeScript
 
@@ -457,8 +457,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 ```
 
-* [ Output ](#tab-panel-1296)
-* [ Raw response ](#tab-panel-1297)
+* [ Output ](#tab-panel-1566)
+* [ Raw response ](#tab-panel-1567)
 
 ![Background Color](https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/recraft__recraftv4-1/background-color.png) 
 
@@ -487,8 +487,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 ## Parameters
 
-* [ Input ](#tab-panel-1302)
-* [ Output ](#tab-panel-1303)
+* [ Input ](#tab-panel-1572)
+* [ Output ](#tab-panel-1573)
 
 ▶controls{}
 
@@ -516,9 +516,9 @@ image
 
 ## API Schemas (Raw)
 
-Input 
+Input [ ](https://developers.cloudflare.com/ai/models/recraft/recraftv4-1/schema-input.json "Open") [ ](https://developers.cloudflare.com/ai/models/recraft/recraftv4-1/schema-input.json "Download") 
 
-Output 
+Output [ ](https://developers.cloudflare.com/ai/models/recraft/recraftv4-1/schema-output.json "Open") [ ](https://developers.cloudflare.com/ai/models/recraft/recraftv4-1/schema-output.json "Download") 
 
 ```json
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/ai/","name":"AI"}},{"@type":"ListItem","position":3,"item":{"@id":"/ai/models/","name":"Models"}}]}

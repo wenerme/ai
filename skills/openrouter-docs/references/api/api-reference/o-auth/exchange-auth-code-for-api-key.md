@@ -86,6 +86,7 @@ paths:
                 - code
 servers:
   - url: https://openrouter.ai/api/v1
+    description: Production server
 components:
   schemas:
     AuthKeysPostRequestBodyContentApplicationJsonSchemaCodeChallengeMethod:
@@ -229,7 +230,30 @@ components:
 
 ```
 
-## SDK Code Examples
+## Examples
+
+
+
+**Request**
+
+```json
+{
+  "code": "auth_code_abc123def456",
+  "code_challenge_method": "S256",
+  "code_verifier": "dBjftJeZ4CVP-mB92K27uhbUJU1p1r_wW1gFWFOEjXk"
+}
+```
+
+**Response**
+
+```json
+{
+  "key": "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",
+  "user_id": "user_2yOPcMpKoQhcd4bVgSMlELRaIah"
+}
+```
+
+**SDK Code**
 
 ```python OAuth_exchangeAuthCodeForAPIKey_example
 import requests

@@ -60,6 +60,7 @@ paths:
                 $ref: '#/components/schemas/InternalServerResponse'
 servers:
   - url: https://openrouter.ai/api/v1
+    description: Production server
 components:
   schemas:
     ModelsCountResponseData:
@@ -164,7 +165,21 @@ components:
 
 ```
 
-## SDK Code Examples
+## Examples
+
+
+
+**Response**
+
+```json
+{
+  "data": {
+    "count": 150
+  }
+}
+```
+
+**SDK Code**
 
 ```python Models_listModelsCount_example
 import requests

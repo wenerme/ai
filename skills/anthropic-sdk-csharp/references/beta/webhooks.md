@@ -20,7 +20,7 @@
 
       - `required string ID`
 
-        ID of the resource that triggered the event.
+        ID of the session that triggered the event.
 
       - `required string OrganizationID`
 
@@ -32,7 +32,7 @@
 
       - `required string ID`
 
-        ID of the resource that triggered the event.
+        ID of the session that triggered the event.
 
       - `required string OrganizationID`
 
@@ -44,7 +44,7 @@
 
       - `required string ID`
 
-        ID of the resource that triggered the event.
+        ID of the session that triggered the event.
 
       - `required string OrganizationID`
 
@@ -56,7 +56,7 @@
 
       - `required string ID`
 
-        ID of the resource that triggered the event.
+        ID of the session that triggered the event.
 
       - `required string OrganizationID`
 
@@ -68,7 +68,7 @@
 
       - `required string ID`
 
-        ID of the resource that triggered the event.
+        ID of the session that triggered the event.
 
       - `required string OrganizationID`
 
@@ -80,7 +80,7 @@
 
       - `required string ID`
 
-        ID of the resource that triggered the event.
+        ID of the session that triggered the event.
 
       - `required string OrganizationID`
 
@@ -92,7 +92,7 @@
 
       - `required string ID`
 
-        ID of the resource that triggered the event.
+        ID of the session that triggered the event.
 
       - `required string OrganizationID`
 
@@ -104,7 +104,7 @@
 
       - `required string ID`
 
-        ID of the resource that triggered the event.
+        ID of the session that triggered the event.
 
       - `required string OrganizationID`
 
@@ -116,7 +116,7 @@
 
       - `required string ID`
 
-        ID of the resource that triggered the event.
+        ID of the session that triggered the event.
 
       - `required string OrganizationID`
 
@@ -128,7 +128,7 @@
 
       - `required string ID`
 
-        ID of the resource that triggered the event.
+        ID of the session that triggered the event.
 
       - `required string OrganizationID`
 
@@ -140,7 +140,7 @@
 
       - `required string ID`
 
-        ID of the resource that triggered the event.
+        ID of the session that triggered the event.
 
       - `required string OrganizationID`
 
@@ -152,9 +152,13 @@
 
       - `required string ID`
 
-        ID of the resource that triggered the event.
+        ID of the session that triggered the event.
 
       - `required string OrganizationID`
+
+      - `required string SessionThreadID`
+
+        ID of the session thread this event refers to.
 
       - `JsonElement Type "session.thread_created"constant`
 
@@ -164,9 +168,13 @@
 
       - `required string ID`
 
-        ID of the resource that triggered the event.
+        ID of the session that triggered the event.
 
       - `required string OrganizationID`
+
+      - `required string SessionThreadID`
+
+        ID of the session thread this event refers to.
 
       - `JsonElement Type "session.thread_idled"constant`
 
@@ -176,9 +184,13 @@
 
       - `required string ID`
 
-        ID of the resource that triggered the event.
+        ID of the session that triggered the event.
 
       - `required string OrganizationID`
+
+      - `required string SessionThreadID`
+
+        ID of the session thread this event refers to.
 
       - `JsonElement Type "session.thread_terminated"constant`
 
@@ -188,7 +200,7 @@
 
       - `required string ID`
 
-        ID of the resource that triggered the event.
+        ID of the session that triggered the event.
 
       - `required string OrganizationID`
 
@@ -200,7 +212,7 @@
 
       - `required string ID`
 
-        ID of the resource that triggered the event.
+        ID of the vault that triggered the event.
 
       - `required string OrganizationID`
 
@@ -212,7 +224,7 @@
 
       - `required string ID`
 
-        ID of the resource that triggered the event.
+        ID of the vault that triggered the event.
 
       - `required string OrganizationID`
 
@@ -224,7 +236,7 @@
 
       - `required string ID`
 
-        ID of the resource that triggered the event.
+        ID of the vault that triggered the event.
 
       - `required string OrganizationID`
 
@@ -236,7 +248,7 @@
 
       - `required string ID`
 
-        ID of the resource that triggered the event.
+        ID of the vault credential that triggered the event.
 
       - `required string OrganizationID`
 
@@ -252,7 +264,7 @@
 
       - `required string ID`
 
-        ID of the resource that triggered the event.
+        ID of the vault credential that triggered the event.
 
       - `required string OrganizationID`
 
@@ -268,7 +280,7 @@
 
       - `required string ID`
 
-        ID of the resource that triggered the event.
+        ID of the vault credential that triggered the event.
 
       - `required string OrganizationID`
 
@@ -284,7 +296,7 @@
 
       - `required string ID`
 
-        ID of the resource that triggered the event.
+        ID of the vault credential that triggered the event.
 
       - `required string OrganizationID`
 
@@ -308,7 +320,7 @@
 
     - `required string ID`
 
-      ID of the resource that triggered the event.
+      ID of the session that triggered the event.
 
     - `required string OrganizationID`
 
@@ -320,7 +332,7 @@
 
     - `required string ID`
 
-      ID of the resource that triggered the event.
+      ID of the session that triggered the event.
 
     - `required string OrganizationID`
 
@@ -332,7 +344,7 @@
 
     - `required string ID`
 
-      ID of the resource that triggered the event.
+      ID of the session that triggered the event.
 
     - `required string OrganizationID`
 
@@ -344,7 +356,7 @@
 
     - `required string ID`
 
-      ID of the resource that triggered the event.
+      ID of the session that triggered the event.
 
     - `required string OrganizationID`
 
@@ -356,7 +368,7 @@
 
     - `required string ID`
 
-      ID of the resource that triggered the event.
+      ID of the session that triggered the event.
 
     - `required string OrganizationID`
 
@@ -368,7 +380,7 @@
 
     - `required string ID`
 
-      ID of the resource that triggered the event.
+      ID of the session that triggered the event.
 
     - `required string OrganizationID`
 
@@ -380,7 +392,7 @@
 
     - `required string ID`
 
-      ID of the resource that triggered the event.
+      ID of the session that triggered the event.
 
     - `required string OrganizationID`
 
@@ -392,7 +404,7 @@
 
     - `required string ID`
 
-      ID of the resource that triggered the event.
+      ID of the session that triggered the event.
 
     - `required string OrganizationID`
 
@@ -404,7 +416,7 @@
 
     - `required string ID`
 
-      ID of the resource that triggered the event.
+      ID of the session that triggered the event.
 
     - `required string OrganizationID`
 
@@ -416,7 +428,7 @@
 
     - `required string ID`
 
-      ID of the resource that triggered the event.
+      ID of the session that triggered the event.
 
     - `required string OrganizationID`
 
@@ -428,7 +440,7 @@
 
     - `required string ID`
 
-      ID of the resource that triggered the event.
+      ID of the session that triggered the event.
 
     - `required string OrganizationID`
 
@@ -440,9 +452,13 @@
 
     - `required string ID`
 
-      ID of the resource that triggered the event.
+      ID of the session that triggered the event.
 
     - `required string OrganizationID`
+
+    - `required string SessionThreadID`
+
+      ID of the session thread this event refers to.
 
     - `JsonElement Type "session.thread_created"constant`
 
@@ -452,9 +468,13 @@
 
     - `required string ID`
 
-      ID of the resource that triggered the event.
+      ID of the session that triggered the event.
 
     - `required string OrganizationID`
+
+    - `required string SessionThreadID`
+
+      ID of the session thread this event refers to.
 
     - `JsonElement Type "session.thread_idled"constant`
 
@@ -464,9 +484,13 @@
 
     - `required string ID`
 
-      ID of the resource that triggered the event.
+      ID of the session that triggered the event.
 
     - `required string OrganizationID`
+
+    - `required string SessionThreadID`
+
+      ID of the session thread this event refers to.
 
     - `JsonElement Type "session.thread_terminated"constant`
 
@@ -476,7 +500,7 @@
 
     - `required string ID`
 
-      ID of the resource that triggered the event.
+      ID of the session that triggered the event.
 
     - `required string OrganizationID`
 
@@ -488,7 +512,7 @@
 
     - `required string ID`
 
-      ID of the resource that triggered the event.
+      ID of the vault that triggered the event.
 
     - `required string OrganizationID`
 
@@ -500,7 +524,7 @@
 
     - `required string ID`
 
-      ID of the resource that triggered the event.
+      ID of the vault that triggered the event.
 
     - `required string OrganizationID`
 
@@ -512,7 +536,7 @@
 
     - `required string ID`
 
-      ID of the resource that triggered the event.
+      ID of the vault that triggered the event.
 
     - `required string OrganizationID`
 
@@ -524,7 +548,7 @@
 
     - `required string ID`
 
-      ID of the resource that triggered the event.
+      ID of the vault credential that triggered the event.
 
     - `required string OrganizationID`
 
@@ -540,7 +564,7 @@
 
     - `required string ID`
 
-      ID of the resource that triggered the event.
+      ID of the vault credential that triggered the event.
 
     - `required string OrganizationID`
 
@@ -556,7 +580,7 @@
 
     - `required string ID`
 
-      ID of the resource that triggered the event.
+      ID of the vault credential that triggered the event.
 
     - `required string OrganizationID`
 
@@ -572,7 +596,7 @@
 
     - `required string ID`
 
-      ID of the resource that triggered the event.
+      ID of the vault credential that triggered the event.
 
     - `required string OrganizationID`
 
@@ -590,7 +614,7 @@
 
   - `required string ID`
 
-    ID of the resource that triggered the event.
+    ID of the session that triggered the event.
 
   - `required string OrganizationID`
 
@@ -604,7 +628,7 @@
 
   - `required string ID`
 
-    ID of the resource that triggered the event.
+    ID of the session that triggered the event.
 
   - `required string OrganizationID`
 
@@ -618,7 +642,7 @@
 
   - `required string ID`
 
-    ID of the resource that triggered the event.
+    ID of the session that triggered the event.
 
   - `required string OrganizationID`
 
@@ -632,7 +656,7 @@
 
   - `required string ID`
 
-    ID of the resource that triggered the event.
+    ID of the session that triggered the event.
 
   - `required string OrganizationID`
 
@@ -646,7 +670,7 @@
 
   - `required string ID`
 
-    ID of the resource that triggered the event.
+    ID of the session that triggered the event.
 
   - `required string OrganizationID`
 
@@ -660,7 +684,7 @@
 
   - `required string ID`
 
-    ID of the resource that triggered the event.
+    ID of the session that triggered the event.
 
   - `required string OrganizationID`
 
@@ -674,7 +698,7 @@
 
   - `required string ID`
 
-    ID of the resource that triggered the event.
+    ID of the session that triggered the event.
 
   - `required string OrganizationID`
 
@@ -688,7 +712,7 @@
 
   - `required string ID`
 
-    ID of the resource that triggered the event.
+    ID of the session that triggered the event.
 
   - `required string OrganizationID`
 
@@ -702,7 +726,7 @@
 
   - `required string ID`
 
-    ID of the resource that triggered the event.
+    ID of the session that triggered the event.
 
   - `required string OrganizationID`
 
@@ -716,7 +740,7 @@
 
   - `required string ID`
 
-    ID of the resource that triggered the event.
+    ID of the session that triggered the event.
 
   - `required string OrganizationID`
 
@@ -730,7 +754,7 @@
 
   - `required string ID`
 
-    ID of the resource that triggered the event.
+    ID of the session that triggered the event.
 
   - `required string OrganizationID`
 
@@ -744,7 +768,7 @@
 
   - `required string ID`
 
-    ID of the resource that triggered the event.
+    ID of the session that triggered the event.
 
   - `required string OrganizationID`
 
@@ -758,9 +782,13 @@
 
   - `required string ID`
 
-    ID of the resource that triggered the event.
+    ID of the session that triggered the event.
 
   - `required string OrganizationID`
+
+  - `required string SessionThreadID`
+
+    ID of the session thread this event refers to.
 
   - `JsonElement Type "session.thread_created"constant`
 
@@ -772,9 +800,13 @@
 
   - `required string ID`
 
-    ID of the resource that triggered the event.
+    ID of the session that triggered the event.
 
   - `required string OrganizationID`
+
+  - `required string SessionThreadID`
+
+    ID of the session thread this event refers to.
 
   - `JsonElement Type "session.thread_idled"constant`
 
@@ -786,9 +818,13 @@
 
   - `required string ID`
 
-    ID of the resource that triggered the event.
+    ID of the session that triggered the event.
 
   - `required string OrganizationID`
+
+  - `required string SessionThreadID`
+
+    ID of the session thread this event refers to.
 
   - `JsonElement Type "session.thread_terminated"constant`
 
@@ -800,7 +836,7 @@
 
   - `required string ID`
 
-    ID of the resource that triggered the event.
+    ID of the vault that triggered the event.
 
   - `required string OrganizationID`
 
@@ -814,7 +850,7 @@
 
   - `required string ID`
 
-    ID of the resource that triggered the event.
+    ID of the vault that triggered the event.
 
   - `required string OrganizationID`
 
@@ -828,7 +864,7 @@
 
   - `required string ID`
 
-    ID of the resource that triggered the event.
+    ID of the vault credential that triggered the event.
 
   - `required string OrganizationID`
 
@@ -846,7 +882,7 @@
 
   - `required string ID`
 
-    ID of the resource that triggered the event.
+    ID of the vault credential that triggered the event.
 
   - `required string OrganizationID`
 
@@ -864,7 +900,7 @@
 
   - `required string ID`
 
-    ID of the resource that triggered the event.
+    ID of the vault credential that triggered the event.
 
   - `required string OrganizationID`
 
@@ -882,7 +918,7 @@
 
   - `required string ID`
 
-    ID of the resource that triggered the event.
+    ID of the vault credential that triggered the event.
 
   - `required string OrganizationID`
 
@@ -900,7 +936,7 @@
 
   - `required string ID`
 
-    ID of the resource that triggered the event.
+    ID of the vault that triggered the event.
 
   - `required string OrganizationID`
 
@@ -926,7 +962,7 @@
 
       - `required string ID`
 
-        ID of the resource that triggered the event.
+        ID of the session that triggered the event.
 
       - `required string OrganizationID`
 
@@ -938,7 +974,7 @@
 
       - `required string ID`
 
-        ID of the resource that triggered the event.
+        ID of the session that triggered the event.
 
       - `required string OrganizationID`
 
@@ -950,7 +986,7 @@
 
       - `required string ID`
 
-        ID of the resource that triggered the event.
+        ID of the session that triggered the event.
 
       - `required string OrganizationID`
 
@@ -962,7 +998,7 @@
 
       - `required string ID`
 
-        ID of the resource that triggered the event.
+        ID of the session that triggered the event.
 
       - `required string OrganizationID`
 
@@ -974,7 +1010,7 @@
 
       - `required string ID`
 
-        ID of the resource that triggered the event.
+        ID of the session that triggered the event.
 
       - `required string OrganizationID`
 
@@ -986,7 +1022,7 @@
 
       - `required string ID`
 
-        ID of the resource that triggered the event.
+        ID of the session that triggered the event.
 
       - `required string OrganizationID`
 
@@ -998,7 +1034,7 @@
 
       - `required string ID`
 
-        ID of the resource that triggered the event.
+        ID of the session that triggered the event.
 
       - `required string OrganizationID`
 
@@ -1010,7 +1046,7 @@
 
       - `required string ID`
 
-        ID of the resource that triggered the event.
+        ID of the session that triggered the event.
 
       - `required string OrganizationID`
 
@@ -1022,7 +1058,7 @@
 
       - `required string ID`
 
-        ID of the resource that triggered the event.
+        ID of the session that triggered the event.
 
       - `required string OrganizationID`
 
@@ -1034,7 +1070,7 @@
 
       - `required string ID`
 
-        ID of the resource that triggered the event.
+        ID of the session that triggered the event.
 
       - `required string OrganizationID`
 
@@ -1046,7 +1082,7 @@
 
       - `required string ID`
 
-        ID of the resource that triggered the event.
+        ID of the session that triggered the event.
 
       - `required string OrganizationID`
 
@@ -1058,9 +1094,13 @@
 
       - `required string ID`
 
-        ID of the resource that triggered the event.
+        ID of the session that triggered the event.
 
       - `required string OrganizationID`
+
+      - `required string SessionThreadID`
+
+        ID of the session thread this event refers to.
 
       - `JsonElement Type "session.thread_created"constant`
 
@@ -1070,9 +1110,13 @@
 
       - `required string ID`
 
-        ID of the resource that triggered the event.
+        ID of the session that triggered the event.
 
       - `required string OrganizationID`
+
+      - `required string SessionThreadID`
+
+        ID of the session thread this event refers to.
 
       - `JsonElement Type "session.thread_idled"constant`
 
@@ -1082,9 +1126,13 @@
 
       - `required string ID`
 
-        ID of the resource that triggered the event.
+        ID of the session that triggered the event.
 
       - `required string OrganizationID`
+
+      - `required string SessionThreadID`
+
+        ID of the session thread this event refers to.
 
       - `JsonElement Type "session.thread_terminated"constant`
 
@@ -1094,7 +1142,7 @@
 
       - `required string ID`
 
-        ID of the resource that triggered the event.
+        ID of the session that triggered the event.
 
       - `required string OrganizationID`
 
@@ -1106,7 +1154,7 @@
 
       - `required string ID`
 
-        ID of the resource that triggered the event.
+        ID of the vault that triggered the event.
 
       - `required string OrganizationID`
 
@@ -1118,7 +1166,7 @@
 
       - `required string ID`
 
-        ID of the resource that triggered the event.
+        ID of the vault that triggered the event.
 
       - `required string OrganizationID`
 
@@ -1130,7 +1178,7 @@
 
       - `required string ID`
 
-        ID of the resource that triggered the event.
+        ID of the vault that triggered the event.
 
       - `required string OrganizationID`
 
@@ -1142,7 +1190,7 @@
 
       - `required string ID`
 
-        ID of the resource that triggered the event.
+        ID of the vault credential that triggered the event.
 
       - `required string OrganizationID`
 
@@ -1158,7 +1206,7 @@
 
       - `required string ID`
 
-        ID of the resource that triggered the event.
+        ID of the vault credential that triggered the event.
 
       - `required string OrganizationID`
 
@@ -1174,7 +1222,7 @@
 
       - `required string ID`
 
-        ID of the resource that triggered the event.
+        ID of the vault credential that triggered the event.
 
       - `required string OrganizationID`
 
@@ -1190,7 +1238,7 @@
 
       - `required string ID`
 
-        ID of the resource that triggered the event.
+        ID of the vault credential that triggered the event.
 
       - `required string OrganizationID`
 

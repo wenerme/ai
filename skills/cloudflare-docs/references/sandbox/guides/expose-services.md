@@ -16,9 +16,9 @@ Production requires custom domain
 
 Preview URLs require a custom domain with wildcard DNS routing in production. See [Production Deployment](https://developers.cloudflare.com/sandbox/guides/production-deployment/) for setup instructions.
 
-Alternative: quick tunnels
+Prefer `sandbox.tunnels` for public URLs
 
-If you only need a public URL for development or a `.workers.dev` deployment, [sandbox.tunnels](https://developers.cloudflare.com/sandbox/api/tunnels/) returns a `*.trycloudflare.com` URL without DNS setup. For production, follow this guide and use `exposePort()` with a custom domain.
+[sandbox.tunnels](https://developers.cloudflare.com/sandbox/api/tunnels/) is the recommended option for most public-URL use cases, including production. Quick tunnels give you a zero-config `*.trycloudflare.com` URL; named tunnels bind a stable `<name>.<your-zone>` hostname. Follow this guide when you specifically want the Worker itself to front the request (for example, to inject authentication or rewrite responses).
 
 This guide shows you how to expose services running in your sandbox to the internet via preview URLs.
 
@@ -36,8 +36,8 @@ Expose ports when you need to:
 
 The typical workflow is: start service → wait for ready → expose port → handle requests with `proxyToSandbox`.
 
-* [  JavaScript ](#tab-panel-8254)
-* [  TypeScript ](#tab-panel-8255)
+* [  JavaScript ](#tab-panel-10122)
+* [  TypeScript ](#tab-panel-10123)
 
 JavaScript
 
@@ -194,8 +194,8 @@ See [Sandbox options](https://developers.cloudflare.com/sandbox/configuration/sa
 
 For production deployments or when sharing URLs with users, use custom tokens to maintain consistent preview URLs across container restarts:
 
-* [  JavaScript ](#tab-panel-8236)
-* [  TypeScript ](#tab-panel-8237)
+* [  JavaScript ](#tab-panel-10104)
+* [  TypeScript ](#tab-panel-10105)
 
 JavaScript
 
@@ -298,8 +298,8 @@ return Response.json({
 
 When exposing multiple ports, use names to stay organized:
 
-* [  JavaScript ](#tab-panel-8252)
-* [  TypeScript ](#tab-panel-8253)
+* [  JavaScript ](#tab-panel-10120)
+* [  TypeScript ](#tab-panel-10121)
 
 JavaScript
 
@@ -409,8 +409,8 @@ console.log('- Frontend:', frontend.url);
 
 Always verify a service is ready before exposing. Use a simple delay for most cases:
 
-* [  JavaScript ](#tab-panel-8234)
-* [  TypeScript ](#tab-panel-8235)
+* [  JavaScript ](#tab-panel-10102)
+* [  TypeScript ](#tab-panel-10103)
 
 JavaScript
 
@@ -466,8 +466,8 @@ await sandbox.exposePort(8080, { hostname });
 
 For critical services, poll the health endpoint:
 
-* [  JavaScript ](#tab-panel-8248)
-* [  TypeScript ](#tab-panel-8249)
+* [  JavaScript ](#tab-panel-10116)
+* [  TypeScript ](#tab-panel-10117)
 
 JavaScript
 
@@ -547,8 +547,8 @@ await sandbox.exposePort(8080, { hostname });
 
 Expose multiple ports for full-stack applications:
 
-* [  JavaScript ](#tab-panel-8256)
-* [  TypeScript ](#tab-panel-8257)
+* [  JavaScript ](#tab-panel-10124)
+* [  TypeScript ](#tab-panel-10125)
 
 JavaScript
 
@@ -656,8 +656,8 @@ return Response.json({
 
 ### List currently exposed ports
 
-* [  JavaScript ](#tab-panel-8240)
-* [  TypeScript ](#tab-panel-8241)
+* [  JavaScript ](#tab-panel-10108)
+* [  TypeScript ](#tab-panel-10109)
 
 JavaScript
 
@@ -711,8 +711,8 @@ for (const port of ports) {
 
 ### Unexpose ports
 
-* [  JavaScript ](#tab-panel-8238)
-* [  TypeScript ](#tab-panel-8239)
+* [  JavaScript ](#tab-panel-10106)
+* [  TypeScript ](#tab-panel-10107)
 
 JavaScript
 
@@ -816,8 +816,8 @@ In production, all ports are available and controlled programmatically via `expo
 
 Port 3000 is used by the internal Bun server and cannot be exposed:
 
-* [  JavaScript ](#tab-panel-8244)
-* [  TypeScript ](#tab-panel-8245)
+* [  JavaScript ](#tab-panel-10112)
+* [  TypeScript ](#tab-panel-10113)
 
 JavaScript
 
@@ -869,8 +869,8 @@ await sandbox.exposePort(8080, { hostname });
 
 Wait for the service to start before exposing:
 
-* [  JavaScript ](#tab-panel-8242)
-* [  TypeScript ](#tab-panel-8243)
+* [  JavaScript ](#tab-panel-10110)
+* [  TypeScript ](#tab-panel-10111)
 
 JavaScript
 
@@ -912,8 +912,8 @@ await sandbox.exposePort(8080, { hostname });
 
 Check before exposing to avoid errors:
 
-* [  JavaScript ](#tab-panel-8250)
-* [  TypeScript ](#tab-panel-8251)
+* [  JavaScript ](#tab-panel-10118)
+* [  TypeScript ](#tab-panel-10119)
 
 JavaScript
 
@@ -963,8 +963,8 @@ if (!ports.some(p => p.port === 8080)) {
 
 **Solution**:
 
-* [  JavaScript ](#tab-panel-8246)
-* [  TypeScript ](#tab-panel-8247)
+* [  JavaScript ](#tab-panel-10114)
+* [  TypeScript ](#tab-panel-10115)
 
 JavaScript
 
@@ -1012,7 +1012,7 @@ See [Sandbox options - normalizeId](https://developers.cloudflare.com/sandbox/co
 * [Ports API reference](https://developers.cloudflare.com/sandbox/api/ports/) \- Complete port exposure API
 * [Background processes guide](https://developers.cloudflare.com/sandbox/guides/background-processes/) \- Managing services
 * [Execute commands guide](https://developers.cloudflare.com/sandbox/guides/execute-commands/) \- Starting services
-* [Tunnels API reference](https://developers.cloudflare.com/sandbox/api/tunnels/) \- Quick `*.trycloudflare.com` URLs as an alternative to `exposePort()`
+* [Tunnels API reference](https://developers.cloudflare.com/sandbox/api/tunnels/) \- Recommended alternative for most public-URL use cases (quick or named tunnels)
 
 ```json
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/sandbox/","name":"Sandbox SDK"}},{"@type":"ListItem","position":3,"item":{"@id":"/sandbox/guides/","name":"How-to guides"}},{"@type":"ListItem","position":4,"item":{"@id":"/sandbox/guides/expose-services/","name":"Expose services"}}]}

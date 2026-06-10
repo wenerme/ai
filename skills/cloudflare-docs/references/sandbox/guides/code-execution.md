@@ -34,8 +34,8 @@ Use `exec()` for **advanced or custom workflows**:
 
 Code contexts maintain state between executions:
 
-* [  JavaScript ](#tab-panel-7657)
-* [  TypeScript ](#tab-panel-7658)
+* [  JavaScript ](#tab-panel-10066)
+* [  TypeScript ](#tab-panel-10067)
 
 JavaScript
 
@@ -111,8 +111,8 @@ const jsContext = await sandbox.createCodeContext({
 
 ### Simple execution
 
-* [  JavaScript ](#tab-panel-7659)
-* [  TypeScript ](#tab-panel-7660)
+* [  JavaScript ](#tab-panel-10068)
+* [  TypeScript ](#tab-panel-10069)
 
 JavaScript
 
@@ -190,8 +190,8 @@ console.log('Success:', result.success);
 
 Variables and imports remain available between executions in the same context, as long as the container stays active:
 
-* [  JavaScript ](#tab-panel-7665)
-* [  TypeScript ](#tab-panel-7666)
+* [  JavaScript ](#tab-panel-10074)
+* [  TypeScript ](#tab-panel-10075)
 
 JavaScript
 
@@ -299,8 +299,8 @@ Context state is lost if the container restarts due to inactivity. For critical 
 
 The code interpreter returns multiple output formats:
 
-* [  JavaScript ](#tab-panel-7669)
-* [  TypeScript ](#tab-panel-7670)
+* [  JavaScript ](#tab-panel-10078)
+* [  TypeScript ](#tab-panel-10079)
 
 JavaScript
 
@@ -436,8 +436,8 @@ if (result.outputs.json) {
 
 For long-running code, stream output in real-time:
 
-* [  JavaScript ](#tab-panel-7667)
-* [  TypeScript ](#tab-panel-7668)
+* [  JavaScript ](#tab-panel-10076)
+* [  TypeScript ](#tab-panel-10077)
 
 JavaScript
 
@@ -563,8 +563,8 @@ print("Done!")
 
 Run LLM-generated code safely in a sandbox:
 
-* [  JavaScript ](#tab-panel-7671)
-* [  TypeScript ](#tab-panel-7672)
+* [  JavaScript ](#tab-panel-10080)
+* [  TypeScript ](#tab-panel-10081)
 
 JavaScript
 
@@ -694,8 +694,8 @@ console.log('Success:', result.success);
 
 ### List all contexts
 
-* [  JavaScript ](#tab-panel-7661)
-* [  TypeScript ](#tab-panel-7662)
+* [  JavaScript ](#tab-panel-10070)
+* [  TypeScript ](#tab-panel-10071)
 
 JavaScript
 
@@ -737,8 +737,8 @@ for (const ctx of contexts) {
 
 ### Delete contexts
 
-* [  JavaScript ](#tab-panel-7663)
-* [  TypeScript ](#tab-panel-7664)
+* [  JavaScript ](#tab-panel-10072)
+* [  TypeScript ](#tab-panel-10073)
 
 JavaScript
 

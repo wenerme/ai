@@ -99,6 +99,7 @@ paths:
               $ref: '#/components/schemas/SpeechRequest'
 servers:
   - url: https://openrouter.ai/api/v1
+    description: Production server
 components:
   schemas:
     ProviderOptions:
@@ -221,6 +222,10 @@ components:
           additionalProperties:
             description: Any type
         darkbloom:
+          type: object
+          additionalProperties:
+            description: Any type
+        decart:
           type: object
           additionalProperties:
             description: Any type
@@ -913,7 +918,23 @@ components:
 
 ```
 
-## SDK Code Examples
+## Examples
+
+
+
+**Request**
+
+```json
+{
+  "input": "Hello world",
+  "model": "elevenlabs/eleven-turbo-v2",
+  "voice": "alloy",
+  "response_format": "pcm",
+  "speed": 1
+}
+```
+
+**SDK Code**
 
 ```python
 import requests

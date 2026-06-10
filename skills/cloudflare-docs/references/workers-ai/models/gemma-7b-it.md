@@ -37,10 +37,10 @@ Try out this model with Workers AI LLM Playground. It does not require any setup
 
 ## Usage
 
-* [  Worker (Streaming) ](#tab-panel-4278)
-* [  TypeScript ](#tab-panel-4279)
-* [  Python ](#tab-panel-4280)
-* [  curl ](#tab-panel-4281)
+* [  Worker (Streaming) ](#tab-panel-4664)
+* [  TypeScript ](#tab-panel-4665)
+* [  Python ](#tab-panel-4666)
+* [  curl ](#tab-panel-4667)
 
 TypeScript
 
@@ -279,13 +279,13 @@ format
 
 ## API Schemas (Raw)
 
-Synchronous Input 
+ Synchronous Input [ ](https://developers.cloudflare.com/workers-ai/models/gemma-7b-it/sync-input.json "Open") [ ](https://developers.cloudflare.com/workers-ai/models/gemma-7b-it/sync-input.json "Download") 
 
-Synchronous Output 
+ Synchronous Output [ ](https://developers.cloudflare.com/workers-ai/models/gemma-7b-it/sync-output.json "Open") [ ](https://developers.cloudflare.com/workers-ai/models/gemma-7b-it/sync-output.json "Download") 
 
-Streaming Input 
+ Streaming Input [ ](https://developers.cloudflare.com/workers-ai/models/gemma-7b-it/streaming-input.json "Open") [ ](https://developers.cloudflare.com/workers-ai/models/gemma-7b-it/streaming-input.json "Download") 
 
-Streaming Output 
+ Streaming Output [ ](https://developers.cloudflare.com/workers-ai/models/gemma-7b-it/streaming-output.json "Open") [ ](https://developers.cloudflare.com/workers-ai/models/gemma-7b-it/streaming-output.json "Download") 
 
 ```json
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/workers-ai/","name":"Workers AI"}},{"@type":"ListItem","position":3,"item":{"@id":"/workers-ai/models/","name":"Models"}}]}

@@ -30,9 +30,9 @@ BAAI general embedding (Large) model that transforms any given text into a 1024-
 
 ## Usage
 
-* [  TypeScript ](#tab-panel-4193)
-* [  Python ](#tab-panel-4194)
-* [  curl ](#tab-panel-4195)
+* [  TypeScript ](#tab-panel-4579)
+* [  Python ](#tab-panel-4580)
+* [  curl ](#tab-panel-4581)
 
 ```
 
@@ -145,8 +145,8 @@ Workers AI also supports OpenAI compatible API endpoints for `/v1/chat/completio
 
 Synchronous — Send a request and receive a complete response 
 
-* [ Input ](#tab-panel-4196)
-* [ Output ](#tab-panel-4197)
+* [ Input ](#tab-panel-4582)
+* [ Output ](#tab-panel-4583)
 
 ▶text
 
@@ -170,8 +170,8 @@ pooling
 
 Batch — Send multiple requests in a single API call 
 
-* [ Input ](#tab-panel-4198)
-* [ Output ](#tab-panel-4199)
+* [ Input ](#tab-panel-4584)
+* [ Output ](#tab-panel-4585)
 
 ▶requests\[\]
 
@@ -191,13 +191,13 @@ pooling
 
 ## API Schemas (Raw)
 
-Synchronous Input 
+ Synchronous Input [ ](https://developers.cloudflare.com/workers-ai/models/bge-large-en-v1.5/sync-input.json "Open") [ ](https://developers.cloudflare.com/workers-ai/models/bge-large-en-v1.5/sync-input.json "Download") 
 
-Synchronous Output 
+ Synchronous Output [ ](https://developers.cloudflare.com/workers-ai/models/bge-large-en-v1.5/sync-output.json "Open") [ ](https://developers.cloudflare.com/workers-ai/models/bge-large-en-v1.5/sync-output.json "Download") 
 
-Batch Input 
+ Batch Input [ ](https://developers.cloudflare.com/workers-ai/models/bge-large-en-v1.5/batch-input.json "Open") [ ](https://developers.cloudflare.com/workers-ai/models/bge-large-en-v1.5/batch-input.json "Download") 
 
-Batch Output 
+ Batch Output [ ](https://developers.cloudflare.com/workers-ai/models/bge-large-en-v1.5/batch-output.json "Open") [ ](https://developers.cloudflare.com/workers-ai/models/bge-large-en-v1.5/batch-output.json "Download") 
 
 ```json
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/workers-ai/","name":"Workers AI"}},{"@type":"ListItem","position":3,"item":{"@id":"/workers-ai/models/","name":"Models"}}]}

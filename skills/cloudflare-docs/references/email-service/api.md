@@ -12,6 +12,8 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 # API reference
 
+API reference for sending and routing emails with Cloudflare Email Service. Use the REST API from any platform or the Workers binding directly from Cloudflare Workers.
+
 * [ Send emails ](https://developers.cloudflare.com/email-service/api/send-emails/)
 * [ Route emails ](https://developers.cloudflare.com/email-service/api/route-emails/)
 

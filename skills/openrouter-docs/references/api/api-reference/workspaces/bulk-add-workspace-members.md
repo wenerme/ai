@@ -87,6 +87,7 @@ paths:
               $ref: '#/components/schemas/BulkAddWorkspaceMembersRequest'
 servers:
   - url: https://openrouter.ai/api/v1
+    description: Production server
 components:
   schemas:
     BulkAddWorkspaceMembersRequest:
@@ -344,7 +345,39 @@ components:
 
 ```
 
-## SDK Code Examples
+## Examples
+
+
+
+**Request**
+
+```json
+{
+  "user_ids": [
+    "user_abc123",
+    "user_def456"
+  ]
+}
+```
+
+**Response**
+
+```json
+{
+  "added_count": 1,
+  "data": [
+    {
+      "created_at": "2025-08-24T10:30:00Z",
+      "id": "660e8400-e29b-41d4-a716-446655440000",
+      "role": "member",
+      "user_id": "user_abc123",
+      "workspace_id": "550e8400-e29b-41d4-a716-446655440000"
+    }
+  ]
+}
+```
+
+**SDK Code**
 
 ```python Workspaces_bulkAddWorkspaceMembers_example
 import requests

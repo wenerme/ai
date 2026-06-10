@@ -18,7 +18,7 @@ Cloudflare provides the following features for different [plans ↗](https://www
 
 ### Advanced nameservers
 
-**Link:** [Advanced nameservers](https://developers.cloudflare.com/dns/foundation-dns/advanced-nameservers/)
+**Link:**[Advanced nameservers](https://developers.cloudflare.com/dns/foundation-dns/advanced-nameservers/)
 
 **Feature availability**
 * **Free:** No
@@ -28,7 +28,7 @@ Cloudflare provides the following features for different [plans ↗](https://www
 
 ### CNAME flattening
 
-**Link:** [CNAME flattening](https://developers.cloudflare.com/dns/cname-flattening/)
+**Link:**[CNAME flattening](https://developers.cloudflare.com/dns/cname-flattening/)
 
 **Feature availability**
 * **Free:** Yes
@@ -47,7 +47,7 @@ Pro plans and above can customize
 
 ### Custom nameservers
 
-**Link:** [Custom nameservers](https://developers.cloudflare.com/dns/nameservers/custom-nameservers/)
+**Link:**[Custom nameservers](https://developers.cloudflare.com/dns/nameservers/custom-nameservers/)
 
 **Feature availability**
 * **Free:** No
@@ -57,7 +57,7 @@ Pro plans and above can customize
 
 ### DNS analytics
 
-**Link:** [DNS analytics](https://developers.cloudflare.com/dns/additional-options/analytics/)
+**Link:**[DNS analytics](https://developers.cloudflare.com/dns/additional-options/analytics/)
 
 **Feature availability**
 * **Free:** Yes
@@ -91,7 +91,7 @@ Pro plans and above can customize
 
 ### DNSSEC
 
-**Link:** [DNSSEC](https://developers.cloudflare.com/dns/dnssec/)
+**Link:**[DNSSEC](https://developers.cloudflare.com/dns/dnssec/)
 
 **Feature availability**
 * **Free:** Yes
@@ -101,7 +101,7 @@ Pro plans and above can customize
 
 ### DNS Firewall
 
-**Link:** [DNS Firewall](https://developers.cloudflare.com/dns/dns-firewall/)
+**Link:**[DNS Firewall](https://developers.cloudflare.com/dns/dns-firewall/)
 
 **Feature availability**
 * **Free:** No
@@ -123,7 +123,7 @@ Pro plans and above can customize
 
 ### Full zone setup
 
-**Link:** [Full zone setup](https://developers.cloudflare.com/dns/zone-setups/full-setup/)
+**Link:**[Full zone setup](https://developers.cloudflare.com/dns/zone-setups/full-setup/)
 
 **Feature availability**
 * **Free:** Yes
@@ -133,7 +133,7 @@ Pro plans and above can customize
 
 ### Partial zone setup
 
-**Link:** [Partial zone setup](https://developers.cloudflare.com/dns/zone-setups/partial-setup/)
+**Link:**[Partial zone setup](https://developers.cloudflare.com/dns/zone-setups/partial-setup/)
 
 **Feature availability**
 * **Free:** No
@@ -143,7 +143,7 @@ Pro plans and above can customize
 
 ### DNS records management
 
-**Link:** [DNS records management](https://developers.cloudflare.com/dns/manage-dns-records/)
+**Link:**[DNS records management](https://developers.cloudflare.com/dns/manage-dns-records/)
 
 **Feature availability**
 * **Free:** Yes
@@ -160,7 +160,7 @@ Pro plans and above can customize
 
 ### DNS record comments
 
-**Link:** [DNS record comments](https://developers.cloudflare.com/dns/manage-dns-records/reference/record-attributes/)
+**Link:**[DNS record comments](https://developers.cloudflare.com/dns/manage-dns-records/reference/record-attributes/)
 
 **Feature availability**
 * **Free:** Yes
@@ -182,7 +182,7 @@ Pro plans and above can customize
 
 ### DNS record tags
 
-**Link:** [DNS record tags](https://developers.cloudflare.com/dns/manage-dns-records/reference/record-attributes/)
+**Link:**[DNS record tags](https://developers.cloudflare.com/dns/manage-dns-records/reference/record-attributes/)
 
 **Feature availability**
 * **Free:** No
@@ -210,7 +210,7 @@ Pro plans and above can customize
 
 ### DNS zone transfers
 
-**Link:** [DNS zone transfers](https://developers.cloudflare.com/dns/zone-setups/zone-transfers/)
+**Link:**[DNS zone transfers](https://developers.cloudflare.com/dns/zone-setups/zone-transfers/)
 
 **Feature availability**
 * **Free:** No
@@ -220,7 +220,7 @@ Pro plans and above can customize
 
 ### Subdomain zone setup
 
-**Link:** [Subdomain zone setup](https://developers.cloudflare.com/dns/zone-setups/subdomain-setup/)
+**Link:**[Subdomain zone setup](https://developers.cloudflare.com/dns/zone-setups/subdomain-setup/)
 
 **Feature availability**
 * **Free:** No
@@ -230,7 +230,7 @@ Pro plans and above can customize
 
 ### Subdomain delegation
 
-**Link:** [Subdomain delegation](https://developers.cloudflare.com/dns/manage-dns-records/how-to/subdomains-outside-cloudflare/)
+**Link:**[Subdomain delegation](https://developers.cloudflare.com/dns/manage-dns-records/how-to/subdomains-outside-cloudflare/)
 
 **Feature availability**
 * **Free:** Yes
@@ -240,7 +240,7 @@ Pro plans and above can customize
 
 ### Reverse zones
 
-**Link:** [Reverse zones](https://developers.cloudflare.com/dns/additional-options/reverse-zones/)
+**Link:**[Reverse zones](https://developers.cloudflare.com/dns/additional-options/reverse-zones/)
 
 **Feature availability**
 * **Free:** Yes

@@ -28,8 +28,8 @@ Ultra-fast, cost-efficient text-to-speech with approximately 120ms latency and 1
 
 ## Usage
 
-* [ TypeScript ](#tab-panel-722)
-* [ cURL ](#tab-panel-723)
+* [ TypeScript ](#tab-panel-772)
+* [ cURL ](#tab-panel-773)
 
 TypeScript
 
@@ -93,8 +93,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 ```
 
-* [ Output ](#tab-panel-718)
-* [ Raw response ](#tab-panel-719)
+* [ Output ](#tab-panel-768)
+* [ Raw response ](#tab-panel-769)
 
 ```
 
@@ -123,8 +123,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 **Fast Speech**  — Speed up speech for quick playback 
 
-* [ TypeScript ](#tab-panel-726)
-* [ cURL ](#tab-panel-727)
+* [ TypeScript ](#tab-panel-776)
+* [ cURL ](#tab-panel-777)
 
 TypeScript
 
@@ -192,8 +192,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 ```
 
-* [ Output ](#tab-panel-720)
-* [ Raw response ](#tab-panel-721)
+* [ Output ](#tab-panel-770)
+* [ Raw response ](#tab-panel-771)
 
 ```
 
@@ -220,8 +220,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 **Low Latency**  — Minimize latency by disabling text normalization 
 
-* [ TypeScript ](#tab-panel-728)
-* [ cURL ](#tab-panel-729)
+* [ TypeScript ](#tab-panel-778)
+* [ cURL ](#tab-panel-779)
 
 TypeScript
 
@@ -289,8 +289,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 ```
 
-* [ Output ](#tab-panel-724)
-* [ Raw response ](#tab-panel-725)
+* [ Output ](#tab-panel-774)
+* [ Raw response ](#tab-panel-775)
 
 ```
 
@@ -317,8 +317,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 ## Parameters
 
-* [ Input ](#tab-panel-730)
-* [ Output ](#tab-panel-731)
+* [ Input ](#tab-panel-780)
+* [ Output ](#tab-panel-781)
 
 apply\_text\_normalization
 
@@ -362,9 +362,9 @@ audio
 
 ## API Schemas (Raw)
 
-Input 
+Input [ ](https://developers.cloudflare.com/ai/models/inworld/tts-1.5-mini/schema-input.json "Open") [ ](https://developers.cloudflare.com/ai/models/inworld/tts-1.5-mini/schema-input.json "Download") 
 
-Output 
+Output [ ](https://developers.cloudflare.com/ai/models/inworld/tts-1.5-mini/schema-output.json "Open") [ ](https://developers.cloudflare.com/ai/models/inworld/tts-1.5-mini/schema-output.json "Download") 
 
 ```json
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/ai/","name":"AI"}},{"@type":"ListItem","position":3,"item":{"@id":"/ai/models/","name":"Models"}}]}

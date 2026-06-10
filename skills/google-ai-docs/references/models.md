@@ -14,7 +14,9 @@ Stable](https://ai.google.dev/gemini-api/docs/models/gemini-3.1-flash-lite) [###
 Powerful, high-efficiency image generation and editing, optimized for speed and high-volume use cases.
 Stable](https://ai.google.dev/gemini-api/docs/models/gemini-3.1-flash-image) [### Nano Banana Pro
 State-of-the-art image generation and editing models for highly contextual native image creation.
-Stable](https://ai.google.dev/gemini-api/docs/models/gemini-3-pro-image) [### Gemini 3.1 Flash Live
+Stable](https://ai.google.dev/gemini-api/docs/models/gemini-3-pro-image) [### Gemini 3.5 Live Translate
+Low-latency, real-time speech to speech translation model that supports 70+ languages.
+New Preview](https://ai.google.dev/gemini-api/docs/models/gemini-3.5-live-translate-preview) [### Gemini 3.1 Flash Live
 High-quality, low-latency Live API model for real-time dialogue and voice-first AI applications.
 New Preview](https://ai.google.dev/gemini-api/docs/models/gemini-3.1-flash-live-preview) [### Gemini 3.1 Flash TTS
 Powerful, low-latency speech generation.

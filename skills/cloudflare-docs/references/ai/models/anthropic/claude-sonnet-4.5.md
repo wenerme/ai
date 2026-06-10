@@ -29,8 +29,8 @@ Claude Sonnet 4.5 is the best coding model to date, with significant improvement
 
 ## Usage
 
-* [ TypeScript ](#tab-panel-220)
-* [ cURL ](#tab-panel-221)
+* [ TypeScript ](#tab-panel-260)
+* [ cURL ](#tab-panel-261)
 
 TypeScript
 
@@ -88,8 +88,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/v1/
 
 ```
 
-* [ Output ](#tab-panel-224)
-* [ Raw response ](#tab-panel-225)
+* [ Output ](#tab-panel-264)
+* [ Raw response ](#tab-panel-265)
 
 # The Three Laws of Thermodynamics
 
@@ -160,8 +160,8 @@ As temperature approaches absolute zero (0 Kelvin or -273.15°C), the entropy of
 
 **With System Message**  — Using a system message to set context 
 
-* [ TypeScript ](#tab-panel-222)
-* [ cURL ](#tab-panel-223)
+* [ TypeScript ](#tab-panel-262)
+* [ cURL ](#tab-panel-263)
 
 TypeScript
 
@@ -227,8 +227,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/v1/
 
 ```
 
-* [ Output ](#tab-panel-228)
-* [ Raw response ](#tab-panel-229)
+* [ Output ](#tab-panel-268)
+* [ Raw response ](#tab-panel-269)
 
 # Reading a JSON File in Python
 
@@ -346,8 +346,8 @@ print(data)
 
 **Multi-turn Conversation**  — Continuing a conversation with context 
 
-* [ TypeScript ](#tab-panel-232)
-* [ cURL ](#tab-panel-233)
+* [ TypeScript ](#tab-panel-272)
+* [ cURL ](#tab-panel-273)
 
 TypeScript
 
@@ -443,8 +443,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/v1/
 
 ```
 
-* [ Output ](#tab-panel-234)
-* [ Raw response ](#tab-panel-235)
+* [ Output ](#tab-panel-274)
+* [ Raw response ](#tab-panel-275)
 
 Here are some great stops between San Francisco and Los Angeles:
 
@@ -521,8 +521,8 @@ What interests you most - beaches, nature, food, or historic sites? I can refine
 
 **Creative Writing**  — Higher temperature for creative output 
 
-* [ TypeScript ](#tab-panel-226)
-* [ cURL ](#tab-panel-227)
+* [ TypeScript ](#tab-panel-266)
+* [ cURL ](#tab-panel-267)
 
 TypeScript
 
@@ -594,8 +594,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/v1/
 
 ```
 
-* [ Output ](#tab-panel-236)
-* [ Raw response ](#tab-panel-237)
+* [ Output ](#tab-panel-276)
+* [ Raw response ](#tab-panel-277)
 
 # The Blue Feather
 
@@ -664,8 +664,8 @@ Then it started to hum.
 
 **Streaming Response**  — Enable streaming for real-time output 
 
-* [ TypeScript ](#tab-panel-230)
-* [ cURL ](#tab-panel-231)
+* [ TypeScript ](#tab-panel-270)
+* [ cURL ](#tab-panel-271)
 
 TypeScript
 
@@ -727,8 +727,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/v1/
 
 ```
 
-* [ Output ](#tab-panel-238)
-* [ Raw response ](#tab-panel-239)
+* [ Output ](#tab-panel-278)
+* [ Raw response ](#tab-panel-279)
 
 # Recursion Explained
 
@@ -1098,8 +1098,8 @@ Think of Russian nesting dolls:
 
 ## Parameters
 
-* [ Input ](#tab-panel-240)
-* [ Output ](#tab-panel-241)
+* [ Input ](#tab-panel-280)
+* [ Output ](#tab-panel-281)
 
 max\_tokens
 
@@ -1163,9 +1163,9 @@ type
 
 ## API Schemas (Raw)
 
-Input 
+Input [ ](https://developers.cloudflare.com/ai/models/anthropic/claude-sonnet-4.5/schema-input.json "Open") [ ](https://developers.cloudflare.com/ai/models/anthropic/claude-sonnet-4.5/schema-input.json "Download") 
 
-Output 
+Output [ ](https://developers.cloudflare.com/ai/models/anthropic/claude-sonnet-4.5/schema-output.json "Open") [ ](https://developers.cloudflare.com/ai/models/anthropic/claude-sonnet-4.5/schema-output.json "Download") 
 
 ```json
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/ai/","name":"AI"}},{"@type":"ListItem","position":3,"item":{"@id":"/ai/models/","name":"Models"}}]}

@@ -29,8 +29,8 @@ Google's fast multimodal Gemini 2.5 model with strong reasoning and a 1M token c
 
 ## Usage
 
-* [ TypeScript ](#tab-panel-418)
-* [ cURL ](#tab-panel-419)
+* [ TypeScript ](#tab-panel-468)
+* [ cURL ](#tab-panel-469)
 
 TypeScript
 
@@ -92,8 +92,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 ```
 
-* [ Output ](#tab-panel-424)
-* [ Raw response ](#tab-panel-425)
+* [ Output ](#tab-panel-474)
+* [ Raw response ](#tab-panel-475)
 
 The three laws of thermodynamics are fundamental principles that govern how energy is transferred and transformed in physical systems. They are:
 
@@ -202,8 +202,8 @@ These three laws are cornerstones of physics and chemistry, explaining a vast ra
 
 **With System Instruction**  — Using a system instruction to set context 
 
-* [ TypeScript ](#tab-panel-420)
-* [ cURL ](#tab-panel-421)
+* [ TypeScript ](#tab-panel-470)
+* [ cURL ](#tab-panel-471)
 
 TypeScript
 
@@ -297,8 +297,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 ```
 
-* [ Output ](#tab-panel-426)
-* [ Raw response ](#tab-panel-427)
+* [ Output ](#tab-panel-476)
+* [ Raw response ](#tab-panel-477)
 
 Reading a JSON (JavaScript Object Notation) file in Python is straightforward, thanks to the built-in `json` module.
 
@@ -530,8 +530,8 @@ When `json.load()` or `json.loads()` parses JSON, it converts JSON data types to
 
 **Multi-turn Conversation**  — Continuing a conversation with context 
 
-* [ TypeScript ](#tab-panel-428)
-* [ cURL ](#tab-panel-429)
+* [ TypeScript ](#tab-panel-478)
+* [ cURL ](#tab-panel-479)
 
 TypeScript
 
@@ -665,8 +665,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 ```
 
-* [ Output ](#tab-panel-430)
-* [ Raw response ](#tab-panel-431)
+* [ Output ](#tab-panel-480)
+* [ Raw response ](#tab-panel-481)
 
 Okay, you've got two main routes, each with its own character and fantastic stops
 
@@ -759,8 +759,8 @@ Okay, you've got two main routes, each with its own character and fantastic stop
 
 **Creative Writing**  — Higher temperature for creative output 
 
-* [ TypeScript ](#tab-panel-422)
-* [ cURL ](#tab-panel-423)
+* [ TypeScript ](#tab-panel-472)
+* [ cURL ](#tab-panel-473)
 
 TypeScript
 
@@ -846,8 +846,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 ```
 
-* [ Output ](#tab-panel-432)
-* [ Raw response ](#tab-panel-433)
+* [ Output ](#tab-panel-482)
+* [ Raw response ](#tab-panel-483)
 
 The rain had been a relentless drumbeat against
 
@@ -940,8 +940,8 @@ The rain had been a relentless drumbeat against
 
 ## Parameters
 
-* [ Input ](#tab-panel-434)
-* [ Output ](#tab-panel-435)
+* [ Input ](#tab-panel-484)
+* [ Output ](#tab-panel-485)
 
 ▶contents\[\]
 
@@ -981,9 +981,9 @@ modelVersion
 
 ## API Schemas (Raw)
 
-Input 
+Input [ ](https://developers.cloudflare.com/ai/models/google/gemini-2.5-flash/schema-input.json "Open") [ ](https://developers.cloudflare.com/ai/models/google/gemini-2.5-flash/schema-input.json "Download") 
 
-Output 
+Output [ ](https://developers.cloudflare.com/ai/models/google/gemini-2.5-flash/schema-output.json "Open") [ ](https://developers.cloudflare.com/ai/models/google/gemini-2.5-flash/schema-output.json "Download") 
 
 ```json
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/ai/","name":"AI"}},{"@type":"ListItem","position":3,"item":{"@id":"/ai/models/","name":"Models"}}]}

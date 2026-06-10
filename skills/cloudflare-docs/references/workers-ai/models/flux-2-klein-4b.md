@@ -28,8 +28,8 @@ FLUX.2 \[klein\] is an ultra-fast, distilled image model. It unifies image gener
 
 ## Usage
 
-* [  TypeScript ](#tab-panel-4252)
-* [  curl ](#tab-panel-4253)
+* [  TypeScript ](#tab-panel-4638)
+* [  curl ](#tab-panel-4639)
 
 ```
 
@@ -113,8 +113,8 @@ curl --request POST \
 
 ## Parameters
 
-* [ Input ](#tab-panel-4254)
-* [ Output ](#tab-panel-4255)
+* [ Input ](#tab-panel-4640)
+* [ Output ](#tab-panel-4641)
 
 ▶multipart{}
 
@@ -126,9 +126,9 @@ image
 
 ## API Schemas (Raw)
 
-Input 
+Input [ ](https://developers.cloudflare.com/workers-ai/models/flux-2-klein-4b/schema-input.json "Open") [ ](https://developers.cloudflare.com/workers-ai/models/flux-2-klein-4b/schema-input.json "Download") 
 
-Output 
+Output [ ](https://developers.cloudflare.com/workers-ai/models/flux-2-klein-4b/schema-output.json "Open") [ ](https://developers.cloudflare.com/workers-ai/models/flux-2-klein-4b/schema-output.json "Download") 
 
 ```json
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/workers-ai/","name":"Workers AI"}},{"@type":"ListItem","position":3,"item":{"@id":"/workers-ai/models/","name":"Models"}}]}

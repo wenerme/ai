@@ -30,8 +30,8 @@ Aura-2 is a context-aware text-to-speech (TTS) model that applies natural pacing
 
 ## Parameters
 
-* [ Input ](#tab-panel-4178)
-* [ Output ](#tab-panel-4179)
+* [ Input ](#tab-panel-4564)
+* [ Output ](#tab-panel-4565)
 
 speaker
 
@@ -61,9 +61,9 @@ The binding returns a `ReadableStream` with the audio in MPEG format (check the 
 
 ## API Schemas (Raw)
 
-Input 
+Input [ ](https://developers.cloudflare.com/workers-ai/models/aura-2-en/schema-input.json "Open") [ ](https://developers.cloudflare.com/workers-ai/models/aura-2-en/schema-input.json "Download") 
 
-Output 
+Output [ ](https://developers.cloudflare.com/workers-ai/models/aura-2-en/schema-output.json "Open") [ ](https://developers.cloudflare.com/workers-ai/models/aura-2-en/schema-output.json "Download") 
 
 ```json
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/workers-ai/","name":"Workers AI"}},{"@type":"ListItem","position":3,"item":{"@id":"/workers-ai/models/","name":"Models"}}]}

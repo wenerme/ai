@@ -58,8 +58,8 @@ If no language is specified, the model defaults to `en-US`. For best accuracy, e
 
 ## Usage
 
-* [  TypeScript ](#tab-panel-4467)
-* [  curl ](#tab-panel-4468)
+* [  TypeScript ](#tab-panel-4853)
+* [  curl ](#tab-panel-4854)
 
 ```
 
@@ -110,8 +110,8 @@ curl --request POST   --url 'https://api.cloudflare.com/client/v4/accounts/{ACCO
 
 ## Parameters
 
-* [ Input ](#tab-panel-4469)
-* [ Output ](#tab-panel-4470)
+* [ Input ](#tab-panel-4855)
+* [ Output ](#tab-panel-4856)
 
 ▶audio{}
 
@@ -263,9 +263,9 @@ utterance\_end\_ms
 
 ## API Schemas (Raw)
 
-Input 
+Input [ ](https://developers.cloudflare.com/workers-ai/models/nova-3/schema-input.json "Open") [ ](https://developers.cloudflare.com/workers-ai/models/nova-3/schema-input.json "Download") 
 
-Output 
+Output [ ](https://developers.cloudflare.com/workers-ai/models/nova-3/schema-output.json "Open") [ ](https://developers.cloudflare.com/workers-ai/models/nova-3/schema-output.json "Download") 
 
 ```json
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/workers-ai/","name":"Workers AI"}},{"@type":"ListItem","position":3,"item":{"@id":"/workers-ai/models/","name":"Models"}}]}

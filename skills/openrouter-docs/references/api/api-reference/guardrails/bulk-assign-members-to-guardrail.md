@@ -82,6 +82,7 @@ paths:
               $ref: '#/components/schemas/BulkAssignMembersRequest'
 servers:
   - url: https://openrouter.ai/api/v1
+    description: Production server
 components:
   schemas:
     BulkAssignMembersRequest:
@@ -260,7 +261,30 @@ components:
 
 ```
 
-## SDK Code Examples
+## Examples
+
+
+
+**Request**
+
+```json
+{
+  "member_user_ids": [
+    "user_abc123",
+    "user_def456"
+  ]
+}
+```
+
+**Response**
+
+```json
+{
+  "assigned_count": 2
+}
+```
+
+**SDK Code**
 
 ```python Guardrails_bulkAssignMembersToGuardrail_example
 import requests

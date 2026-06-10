@@ -1,6 +1,36 @@
 # Release process
 
-To release a new version of the CLI, you must:
+## Automated weekly release
+
+A new minor version is released automatically every Sunday by a pipeline
+schedule. You don't need to do anything for a normal weekly release.
+
+How it works:
+
+1. The **Weekly release** pipeline schedule runs every Sunday on `main` with the
+   CI/CD variable `RELEASE_SCHEDULE` set to `true`.
+1. The `tag-release` job (`.gitlab-ci.yml`) runs `scripts/release/create-release-tag.sh`, which:
+   - Finds the latest `vX.Y.Z` tag.
+   - Skips the release if there are no releasable commits since that tag (merge
+     commits don't count).
+   - Bumps the version based on the Conventional Commit types since that tag: a
+     `feat` bumps the minor version (`vX.Y.Z` → `vX.(Y+1).0`), otherwise it's a
+     patch release (`vX.Y.Z` → `vX.Y.(Z+1)`). Then creates an annotated tag
+     through the GitLab API using `glab`.
+1. Creating the tag triggers the normal tag-driven release pipeline (the `release`
+   job and the distribution jobs), exactly as a manual tag would.
+
+The schedule only runs `tag-release`; the heavy build/test jobs are skipped on it
+(see `.skip-on-release-schedule` in `.gitlab-ci.yml`) because the tag pipeline
+re-runs and gates the actual release. Other schedules, such as the daily `main`
+build, are unaffected.
+
+To release off-cycle (for example, a security release) or to control the version
+number, follow the manual process below.
+
+## Manual release
+
+To release a new version of the CLI manually, you must:
 
 1. Do a quick test of the CLI in your local development. At this stage, you are only verifying there is no complete failure of the CLI.
 1. To preview which commits will be included in a release, run this command:

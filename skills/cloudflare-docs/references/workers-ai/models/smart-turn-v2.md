@@ -28,8 +28,8 @@ An open source, community-driven, native audio turn detection model in 2nd versi
 
 ## Parameters
 
-* [ Input ](#tab-panel-4511)
-* [ Output ](#tab-panel-4512)
+* [ Input ](#tab-panel-4897)
+* [ Output ](#tab-panel-4898)
 
 ▶Option 1{}
 
@@ -49,9 +49,9 @@ probability
 
 ## API Schemas (Raw)
 
-Input 
+Input [ ](https://developers.cloudflare.com/workers-ai/models/smart-turn-v2/schema-input.json "Open") [ ](https://developers.cloudflare.com/workers-ai/models/smart-turn-v2/schema-input.json "Download") 
 
-Output 
+Output [ ](https://developers.cloudflare.com/workers-ai/models/smart-turn-v2/schema-output.json "Open") [ ](https://developers.cloudflare.com/workers-ai/models/smart-turn-v2/schema-output.json "Download") 
 
 ```json
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/workers-ai/","name":"Workers AI"}},{"@type":"ListItem","position":3,"item":{"@id":"/workers-ai/models/","name":"Models"}}]}

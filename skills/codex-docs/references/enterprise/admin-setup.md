@@ -185,6 +185,10 @@ These cloud-managed policies apply across Codex local surfaces when users sign i
 
 Use cloud-managed `requirements.toml` policies to enforce the guardrails you want for each group. The snippets below are examples you can adapt, not required settings.
 
+For Codex 0.138.0 or later, prefer `allowed_permission_profiles` with managed
+`default_permissions`. Use `allowed_sandbox_modes` only for legacy deployments
+that still configure `sandbox_mode`.
+
 <div class="max-w-1xl mx-auto py-1">
   <img src="https://developers.openai.com/images/codex/enterprise/example_policy.png"
     alt="Example managed requirements policy"
@@ -198,6 +202,19 @@ Example: limit web search, sandbox mode, and approvals for a standard local roll
 allowed_web_search_modes = ["disabled", "cached"]
 allowed_sandbox_modes = ["workspace-write"]
 allowed_approval_policies = ["on-request"]
+```
+
+Example: allow the standard permission profiles for an upgraded fleet:
+
+Permission-profile allowlists require Codex 0.138.0 or later. Use this example
+  only after every managed client runs a supporting release.
+
+```toml
+default_permissions = ":workspace"
+
+[allowed_permission_profiles]
+":read-only" = true
+":workspace" = true
 ```
 
 Example: disable Browser Use, the in-app browser, and Computer Use:

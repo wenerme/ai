@@ -107,6 +107,7 @@ paths:
               $ref: '#/components/schemas/MessagesRequest'
 servers:
   - url: https://openrouter.ai/api/v1
+    description: Production server
 components:
   schemas:
     MetadataLevel:
@@ -1246,6 +1247,71 @@ components:
           $ref: '#/components/schemas/PDFParserEngine'
       description: Options for PDF parsing.
       title: PDFParserOptions
+    ResponsesRequestPluginsItemsDiscriminatorMappingFusionToolsItemsParametersOneOf4Items:
+      oneOf:
+        - type: string
+        - type: number
+          format: double
+        - type: boolean
+        - description: Any type
+        - description: Any type
+      title: >-
+        ResponsesRequestPluginsItemsDiscriminatorMappingFusionToolsItemsParametersOneOf4Items
+    ResponsesRequestPluginsItemsDiscriminatorMappingFusionToolsItemsParameters4:
+      type: array
+      items:
+        $ref: >-
+          #/components/schemas/ResponsesRequestPluginsItemsDiscriminatorMappingFusionToolsItemsParametersOneOf4Items
+      title: >-
+        ResponsesRequestPluginsItemsDiscriminatorMappingFusionToolsItemsParameters4
+    ResponsesRequestPluginsItemsDiscriminatorMappingFusionToolsItemsParametersOneOf5:
+      oneOf:
+        - type: string
+        - type: number
+          format: double
+        - type: boolean
+        - description: Any type
+        - description: Any type
+      title: >-
+        ResponsesRequestPluginsItemsDiscriminatorMappingFusionToolsItemsParametersOneOf5
+    ResponsesRequestPluginsItemsDiscriminatorMappingFusionToolsItemsParameters5:
+      type: object
+      additionalProperties:
+        $ref: >-
+          #/components/schemas/ResponsesRequestPluginsItemsDiscriminatorMappingFusionToolsItemsParametersOneOf5
+      title: >-
+        ResponsesRequestPluginsItemsDiscriminatorMappingFusionToolsItemsParameters5
+    ResponsesRequestPluginsItemsDiscriminatorMappingFusionToolsItemsParameters:
+      oneOf:
+        - type: string
+        - type: number
+          format: double
+        - type: boolean
+        - description: Any type
+        - $ref: >-
+            #/components/schemas/ResponsesRequestPluginsItemsDiscriminatorMappingFusionToolsItemsParameters4
+        - $ref: >-
+            #/components/schemas/ResponsesRequestPluginsItemsDiscriminatorMappingFusionToolsItemsParameters5
+        - description: Any type
+      title: >-
+        ResponsesRequestPluginsItemsDiscriminatorMappingFusionToolsItemsParameters
+    ResponsesRequestPluginsItemsDiscriminatorMappingFusionToolsItems:
+      type: object
+      properties:
+        parameters:
+          type: object
+          additionalProperties:
+            $ref: >-
+              #/components/schemas/ResponsesRequestPluginsItemsDiscriminatorMappingFusionToolsItemsParameters
+          description: Optional configuration forwarded as the tool's `parameters` object.
+        type:
+          type: string
+          description: >-
+            Server tool type identifier (e.g. "openrouter:web_search",
+            "openrouter:web_fetch").
+      required:
+        - type
+      title: ResponsesRequestPluginsItemsDiscriminatorMappingFusionToolsItems
     WebSearchEngine:
       type: string
       enum:
@@ -1401,6 +1467,18 @@ components:
                 Slug of the model that performs both the judge step (with
                 web_search + web_fetch) and the final synthesis. When omitted,
                 defaults to the first model in the Quality preset.
+            tools:
+              type: array
+              items:
+                $ref: >-
+                  #/components/schemas/ResponsesRequestPluginsItemsDiscriminatorMappingFusionToolsItems
+              description: >-
+                Server tools available to panelist and judge inner calls. Each
+                entry uses the same `{ type, parameters? }` shorthand as the
+                outer Chat Completions request. When omitted, defaults to `[{
+                type: "openrouter:web_search" }, { type: "openrouter:web_fetch"
+                }]`. Pass an empty array to disable tools entirely (panelists
+                answer from parametric knowledge only).
           required:
             - id
           description: fusion variant
@@ -1568,6 +1646,7 @@ components:
         - Crucible
         - Crusoe
         - Darkbloom
+        - Decart
         - DeepInfra
         - DeepSeek
         - DekaLLM
@@ -4356,7 +4435,73 @@ components:
 
 ```
 
-## SDK Code Examples
+## Examples
+
+
+
+**Request**
+
+```json
+{
+  "messages": [
+    {
+      "content": "Hello, how are you?",
+      "role": "user"
+    }
+  ],
+  "model": "anthropic/claude-sonnet-4",
+  "max_tokens": 1024
+}
+```
+
+**Response**
+
+```json
+{
+  "container": {
+    "expires_at": "2026-04-08T00:00:00Z",
+    "id": "ctr_01abc"
+  },
+  "content": [
+    {
+      "type": "text",
+      "text": "I'm doing well, thank you for asking! How can I help you today?"
+    }
+  ],
+  "id": "msg_abc123",
+  "model": "anthropic/claude-sonnet-4",
+  "role": "assistant",
+  "stop_details": {
+    "category": "cyber",
+    "explanation": "The request was refused due to policy.",
+    "type": "refusal"
+  },
+  "stop_reason": "end_turn",
+  "stop_sequence": "string",
+  "type": "message",
+  "usage": {
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 0,
+      "ephemeral_5m_input_tokens": 100
+    },
+    "cache_creation_input_tokens": 1,
+    "cache_read_input_tokens": 1,
+    "inference_geo": "string",
+    "input_tokens": 12,
+    "output_tokens": 18,
+    "output_tokens_details": {
+      "thinking_tokens": 0
+    },
+    "server_tool_use": {
+      "web_fetch_requests": 0,
+      "web_search_requests": 1
+    },
+    "service_tier": "standard"
+  }
+}
+```
+
+**SDK Code**
 
 ```python Anthropic Messages_createMessages_example
 import requests

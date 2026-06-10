@@ -550,7 +550,7 @@ class MyAgent extends Agent {
 
 ### Email Handling
 
-Agents can receive and reply to emails using Cloudflare's [Email Routing](https://developers.cloudflare.com/email-routing/email-workers/).
+Agents can receive and reply to emails using Cloudflare's [Email Routing](https://developers.cloudflare.com/email-service/api/route-emails/email-handler/).
 
 TypeScript
 

@@ -29,8 +29,8 @@ Stable Diffusion is a latent text-to-image diffusion model capable of generating
 
 ## Usage
 
-* [  TypeScript ](#tab-panel-4517)
-* [  curl ](#tab-panel-4518)
+* [  TypeScript ](#tab-panel-4903)
+* [  curl ](#tab-panel-4904)
 
 ```
 
@@ -107,8 +107,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 ## Parameters
 
-* [ Input ](#tab-panel-4519)
-* [ Output ](#tab-panel-4520)
+* [ Input ](#tab-panel-4905)
+* [ Output ](#tab-panel-4906)
 
 prompt
 
@@ -158,9 +158,9 @@ The binding returns a `ReadableStream` with the output (check the model's output
 
 ## API Schemas (Raw)
 
-Input 
+Input [ ](https://developers.cloudflare.com/workers-ai/models/stable-diffusion-v1-5-img2img/schema-input.json "Open") [ ](https://developers.cloudflare.com/workers-ai/models/stable-diffusion-v1-5-img2img/schema-input.json "Download") 
 
-Output 
+Output [ ](https://developers.cloudflare.com/workers-ai/models/stable-diffusion-v1-5-img2img/schema-output.json "Open") [ ](https://developers.cloudflare.com/workers-ai/models/stable-diffusion-v1-5-img2img/schema-output.json "Download") 
 
 ```json
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/workers-ai/","name":"Workers AI"}},{"@type":"ListItem","position":3,"item":{"@id":"/workers-ai/models/","name":"Models"}}]}

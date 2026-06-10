@@ -74,6 +74,7 @@ paths:
               $ref: '#/components/schemas/CreateGuardrailRequest'
 servers:
   - url: https://openrouter.ai/api/v1
+    description: Production server
 components:
   schemas:
     ContentFilterBuiltinAction:
@@ -584,7 +585,64 @@ components:
 
 ```
 
-## SDK Code Examples
+## Examples
+
+
+
+**Request**
+
+```json
+{
+  "name": "My New Guardrail",
+  "allowed_models": null,
+  "allowed_providers": [
+    "openai",
+    "anthropic",
+    "deepseek"
+  ],
+  "description": "A guardrail for limiting API usage",
+  "enforce_zdr_anthropic": true,
+  "enforce_zdr_google": false,
+  "enforce_zdr_openai": true,
+  "enforce_zdr_other": false,
+  "ignored_models": null,
+  "ignored_providers": null,
+  "limit_usd": 50,
+  "reset_interval": "monthly"
+}
+```
+
+**Response**
+
+```json
+{
+  "data": {
+    "created_at": "2025-08-24T10:30:00Z",
+    "id": "550e8400-e29b-41d4-a716-446655440000",
+    "name": "My New Guardrail",
+    "workspace_id": "0df9e665-d932-5740-b2c7-b52af166bc11",
+    "allowed_models": null,
+    "allowed_providers": [
+      "openai",
+      "anthropic",
+      "google"
+    ],
+    "description": "A guardrail for limiting API usage",
+    "enforce_zdr_anthropic": true,
+    "enforce_zdr_google": false,
+    "enforce_zdr_openai": true,
+    "enforce_zdr_other": false,
+    "ignored_models": null,
+    "ignored_providers": null,
+    "limit_usd": 50,
+    "reset_interval": "monthly",
+    "updated_at": null,
+    "enforce_zdr": null
+  }
+}
+```
+
+**SDK Code**
 
 ```python Guardrails_createGuardrail_example
 import requests

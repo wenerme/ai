@@ -27,9 +27,9 @@ The Qwen3 Embedding model series is the latest proprietary model of the Qwen fam
 
 ## Usage
 
-* [  TypeScript ](#tab-panel-4498)
-* [  Python ](#tab-panel-4499)
-* [  curl ](#tab-panel-4500)
+* [  TypeScript ](#tab-panel-4884)
+* [  Python ](#tab-panel-4885)
+* [  curl ](#tab-panel-4886)
 
 ```
 
@@ -140,8 +140,8 @@ Workers AI also supports OpenAI compatible API endpoints for `/v1/chat/completio
 
 ## Parameters
 
-* [ Input ](#tab-panel-4501)
-* [ Output ](#tab-panel-4502)
+* [ Input ](#tab-panel-4887)
+* [ Output ](#tab-panel-4888)
 
 ▶queries
 
@@ -169,9 +169,9 @@ instruction
 
 ## API Schemas (Raw)
 
-Input 
+Input [ ](https://developers.cloudflare.com/workers-ai/models/qwen3-embedding-0.6b/schema-input.json "Open") [ ](https://developers.cloudflare.com/workers-ai/models/qwen3-embedding-0.6b/schema-input.json "Download") 
 
-Output 
+Output [ ](https://developers.cloudflare.com/workers-ai/models/qwen3-embedding-0.6b/schema-output.json "Open") [ ](https://developers.cloudflare.com/workers-ai/models/qwen3-embedding-0.6b/schema-output.json "Download") 
 
 ```json
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/workers-ai/","name":"Workers AI"}},{"@type":"ListItem","position":3,"item":{"@id":"/workers-ai/models/","name":"Models"}}]}

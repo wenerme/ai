@@ -230,7 +230,10 @@ If you are still running into concurrency limits you can [request a higher limit
 
 For [Quick Actions](https://developers.cloudflare.com/browser-run/quick-actions/) (except the [/crawl endpoint](https://developers.cloudflare.com/browser-run/quick-actions/crawl-endpoint/)), [Puppeteer](https://developers.cloudflare.com/browser-run/puppeteer/), [Playwright](https://developers.cloudflare.com/browser-run/playwright/), and [CDP](https://developers.cloudflare.com/browser-run/cdp/), Cloudflare processes content ephemerally and does not retain customer-submitted HTML or generated output (such as PDFs or screenshots) beyond what is required to perform the rendering operation. Once the response is returned, the content is immediately discarded from the rendering environment.
 
-The [/crawl endpoint](https://developers.cloudflare.com/browser-run/quick-actions/crawl-endpoint/) is an exception. Because crawl jobs run asynchronously, job results (including crawled page content in HTML, Markdown, or JSON format) are stored for 14 days after the job completes, after which the data is deleted. Crawl jobs have a maximum run time of seven days.
+There are two exceptions where data is retained beyond the session:
+
+* **Crawl endpoint**: The [/crawl Quick Actions endpoint](https://developers.cloudflare.com/browser-run/quick-actions/crawl-endpoint/) runs jobs asynchronously, so job results (including crawled page content in HTML, Markdown, or JSON format) are stored for 14 days after the job completes, after which the data is deleted. Crawl jobs have a maximum run time of seven days.
+* **Session recording**: Puppeteer, Playwright, and CDP sessions support an opt-in [session recording](https://developers.cloudflare.com/browser-run/features/session-recording/) feature. When enabled, DOM changes, mouse and keyboard events, and page navigation are captured as structured JSON events and retained for 30 days. Input field content is masked by default. Recordings are accessible through the [dashboard](https://developers.cloudflare.com/browser-run/features/session-recording/#view-recordings) and [API](https://developers.cloudflare.com/browser-run/features/session-recording/#retrieve-a-recording-via-api), and are automatically deleted after the retention period.
 
 ### Is there any temporary caching of submitted content?
 

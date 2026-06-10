@@ -14,7 +14,12 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 The `/scrape` endpoint extracts structured data from specific elements on a webpage, returning details such as element dimensions and inner HTML.
 
-You can use this endpoint in two ways. To use the REST API, [create a custom API Token](https://developers.cloudflare.com/fundamentals/api/get-started/create-token/) with `Browser Rendering - Edit` permission. To use the [Workers binding](https://developers.cloudflare.com/browser-run/reference/wrangler/#bindings) from a [Cloudflare Worker](https://developers.cloudflare.com/workers/), no API token is needed. For more information, refer to [Quick Actions — Before you begin](https://developers.cloudflare.com/browser-run/quick-actions/#before-you-begin).
+You can use this endpoint in two ways:
+
+* **REST API**: [Create a custom API Token](https://developers.cloudflare.com/fundamentals/api/get-started/create-token/) with `Browser Rendering - Edit` permission.
+* **Workers Bindings**: Call the endpoint directly from a [Cloudflare Worker](https://developers.cloudflare.com/workers/) using the [Workers Bindings](https://developers.cloudflare.com/browser-run/reference/wrangler/#bindings). No API token is needed.
+
+For more information, refer to [Quick Actions: Before you begin](https://developers.cloudflare.com/browser-run/quick-actions/#before-you-begin).
 
 ## Endpoint
 
@@ -41,9 +46,9 @@ You must provide either `url` or `elements`:
 
 ### Extract headings and links from a URL
 
-* [ curl ](#tab-panel-5844)
-* [ TypeScript SDK ](#tab-panel-5845)
-* [ Workers binding ](#tab-panel-5846)
+* [ curl ](#tab-panel-6702)
+* [ TypeScript SDK ](#tab-panel-6703)
+* [ Workers binding ](#tab-panel-6704)
 
 Go to `https://example.com` and extract metadata from all `h1` and `a` elements in the DOM.
 

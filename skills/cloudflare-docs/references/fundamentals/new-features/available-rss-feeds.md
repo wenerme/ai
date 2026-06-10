@@ -185,8 +185,6 @@ Included products
 [ Subscribe to RSS ](https://developers.cloudflare.com/changelog/rss/d1.xml)
 * [Durable Objects](https://developers.cloudflare.com/durable-objects/)  
 [ Subscribe to RSS ](https://developers.cloudflare.com/changelog/rss/durable-objects.xml)
-* [Email Routing](https://developers.cloudflare.com/email-routing/)  
-[ Subscribe to RSS ](https://developers.cloudflare.com/changelog/rss/email-routing.xml)
 * [Email Service](https://developers.cloudflare.com/email-service/)  
 [ Subscribe to RSS ](https://developers.cloudflare.com/changelog/rss/email-service.xml)
 * [Flagship](https://developers.cloudflare.com/flagship/)  

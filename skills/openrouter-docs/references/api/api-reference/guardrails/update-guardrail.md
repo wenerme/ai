@@ -81,6 +81,7 @@ paths:
               $ref: '#/components/schemas/UpdateGuardrailRequest'
 servers:
   - url: https://openrouter.ai/api/v1
+    description: Production server
 components:
   schemas:
     ContentFilterBuiltinAction:
@@ -583,7 +584,50 @@ components:
 
 ```
 
-## SDK Code Examples
+## Examples
+
+
+
+**Request**
+
+```json
+{
+  "description": "Updated description",
+  "limit_usd": 75,
+  "name": "Updated Guardrail Name",
+  "reset_interval": "weekly"
+}
+```
+
+**Response**
+
+```json
+{
+  "data": {
+    "created_at": "2025-08-24T10:30:00Z",
+    "id": "550e8400-e29b-41d4-a716-446655440000",
+    "name": "Updated Guardrail Name",
+    "workspace_id": "0df9e665-d932-5740-b2c7-b52af166bc11",
+    "allowed_models": null,
+    "allowed_providers": [
+      "openai"
+    ],
+    "description": "Updated description",
+    "enforce_zdr_anthropic": true,
+    "enforce_zdr_google": true,
+    "enforce_zdr_openai": true,
+    "enforce_zdr_other": true,
+    "ignored_models": null,
+    "ignored_providers": null,
+    "limit_usd": 75,
+    "reset_interval": "weekly",
+    "updated_at": "2025-08-24T16:00:00Z",
+    "enforce_zdr": null
+  }
+}
+```
+
+**SDK Code**
 
 ```python Guardrails_updateGuardrail_example
 import requests

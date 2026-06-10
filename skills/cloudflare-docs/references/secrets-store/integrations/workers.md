@@ -38,9 +38,9 @@ Note
 
 You may also add account secrets directly from the Workers settings on the dashboard. You can skip to [step 2](#via-dashboard) to do that.
 
-* [ Wrangler ](#tab-panel-7867)
-* [ Dashboard ](#tab-panel-7868)
-* [ API ](#tab-panel-7869)
+* [ Wrangler ](#tab-panel-10284)
+* [ Dashboard ](#tab-panel-10285)
+* [ API ](#tab-panel-10286)
 
 Use the [Wrangler command](https://developers.cloudflare.com/workers/wrangler/commands/secrets-store/#secrets-store-secret) `secrets-store secret create`.
 
@@ -156,8 +156,8 @@ To bind an account secret to your Worker, you must have one of the following [ro
    * `store_id`: the corresponding Secrets Store ID where your account secret was created.  
    * `secret_name`: the unique secret name, defined when your account secret was created.
 
-* [  wrangler.jsonc ](#tab-panel-7865)
-* [  wrangler.toml ](#tab-panel-7866)
+* [  wrangler.jsonc ](#tab-panel-10282)
+* [  wrangler.toml ](#tab-panel-10283)
 
 JSONC
 

@@ -5,15 +5,17 @@
 
 # Cursor
 
+The Cursor integration is currently in beta. Behavior may change as Cursor updates their client.
+
 ## What is Cursor?
 
-[Cursor](https://cursor.com) is an AI-powered code editor built on VS Code. It features an agent mode for autonomous coding, tab completions, inline edits, a CLI, and cloud agents — all backed by frontier models from OpenAI, Anthropic, Google, and more.
+[Cursor](https://cursor.com) is an AI-powered code editor built on VS Code. It features an agent mode for autonomous coding, tab completions, inline edits, a CLI, and cloud agents. Cursor ships its own in-house models (like [Composer](https://cursor.com/blog/composer)) alongside frontier models from OpenAI, Anthropic, Google, and more.
 
 By routing Cursor through OpenRouter, you get access to hundreds of models through a single API key, automatic provider failover, and centralized usage tracking.
 
 ## Quick Start
 
-Cursor supports OpenRouter through its **Override OpenAI Base URL** feature. This routes requests from Cursor's OpenAI provider slot through OpenRouter instead of directly to OpenAI.
+Cursor supports OpenRouter through its **Override OpenAI Base URL** feature. This routes requests from Cursor's OpenAI provider override through a dedicated OpenRouter endpoint that handles Cursor's request format natively.
 
 ### Step 1: Get Your OpenRouter API Key
 
@@ -31,29 +33,33 @@ Cursor supports OpenRouter through its **Override OpenAI Base URL** feature. Thi
    * Toggle on **Override OpenAI Base URL** and set it to:
 
      ```text
-     https://openrouter.ai/api/v1
+     https://openrouter.ai/api/v1/cursor
      ```
+
+The base URL must be `https://openrouter.ai/api/v1/cursor` (not `/api/v1`). This dedicated endpoint handles Cursor's request format correctly.
 
 ### Step 3: Add Models
 
-After connecting, add the models you want to use. In the **Models** section, click **+ Add model** and enter an OpenRouter model ID:
+After connecting, add the models you want to use. In the **Models** section, click **+ Add model** and enter an [OpenRouter model ID](https://openrouter.ai/models):
 
-* `~anthropic/claude-sonnet-latest`
-* `~google/gemini-flash-latest`
-* `~openai/gpt-mini-latest`
-* `~anthropic/claude-haiku-latest`
-
-You can find the exact model ID for each model on the [OpenRouter models page](https://openrouter.ai/models).
+* `~anthropic/claude-opus-latest`
+* `~openai/gpt-latest`
+* `~moonshotai/kimi-latest`
+* `deepseek/deepseek-v4-flash`
 
 ### Step 4: Select a Model
 
 Open the model picker in the chat or agent panel and select one of the models you added. Your requests will now route through OpenRouter.
 
+## How It Works
+
+OpenRouter exposes a dedicated Cursor endpoint at `/api/v1/cursor` that normalizes Cursor's request format into the standard OpenAI Chat Completions format before routing.
+
 ## Why Use OpenRouter with Cursor?
 
 ### Access to Hundreds of Models
 
-Cursor's built-in BYOK only supports a handful of providers (OpenAI, Anthropic, Google, Azure, AWS Bedrock). With OpenRouter, you can access models from DeepSeek, Meta, xAI, Mistral, Cohere, and many more — all through the single OpenAI provider slot.
+Cursor's built-in BYOK only supports a handful of providers. With OpenRouter, you get access to hundreds of models across dozens of providers, all through the single OpenAI provider override.
 
 ### Provider Failover
 
@@ -65,28 +71,22 @@ For teams, OpenRouter provides centralized budget management. Set spending limit
 
 ### Usage Visibility
 
-Track which models your team uses, monitor costs in real-time, and understand usage patterns — all from a single dashboard, regardless of the underlying provider.
+Track which models your team uses, monitor costs in real-time, and understand usage patterns from a single dashboard, regardless of the underlying provider. See the [Activity page](https://openrouter.ai/activity) for a breakdown by model, user, and cost.
 
-## Provider Routing
-
-You can control which upstream providers handle your requests by appending routing suffixes to model names or by configuring provider preferences in the [OpenRouter Playground](https://openrouter.ai/playground):
-
-* Append `:nitro` for throughput-optimized routing (e.g., `~anthropic/claude-sonnet-latest:nitro`)
-* Append `:floor` for cost-optimized routing
-
-For more routing options, see the [Provider Routing docs](/docs/guides/routing/provider-selection).
+You can also control which upstream providers handle your requests. See the [Provider Routing docs](/docs/guides/routing/provider-selection) for details on routing suffixes like `:nitro` and `:floor`.
 
 ## Limitations
 
-* **Tab completions** are not affected by BYOK settings — they always use Cursor's built-in models.
-* **Auto and Composer 2 modes** may not be routed through your API key — check [Cursor's docs](https://cursor.com/help/models-and-usage/api-keys) for current behavior.
-* Only models accessible via OpenRouter's OpenAI-compatible endpoint will work. Most chat and reasoning models are supported.
+* **Tab completions** are not affected by BYOK settings; they always use Cursor's built-in models.
+* **Auto and Composer 2 modes** may not be routed through your API key. Check [Cursor's docs](https://cursor.com/help/models-and-usage/api-keys) for current behavior.
+* Only models accessible via OpenRouter's [OpenAI-compatible endpoint](/docs/api/reference/overview#openapi-specification) will work. Most chat and reasoning models are supported.
 
 ## Troubleshooting
 
 * **"Invalid API key":** Make sure you're using your OpenRouter API key (starts with `sk-or-...`), not an OpenAI key.
-* **Model not found:** Ensure the model ID exactly matches the format on [openrouter.ai/models](https://openrouter.ai/models) (e.g., `~anthropic/claude-sonnet-latest`, not `claude-sonnet-latest`).
-* **Base URL:** Make sure the override URL is `https://openrouter.ai/api/v1` (with `/v1` at the end).
+* **Model not found:** Ensure the model ID exactly matches the format on [openrouter.ai/models](https://openrouter.ai/models). Router model aliases need the `~` prefix (e.g., `~anthropic/claude-sonnet-latest`, not `anthropic/claude-sonnet-latest`).
+* **Base URL:** The override URL must be `https://openrouter.ai/api/v1/cursor`. If you're using `https://openrouter.ai/api/v1` (without `/cursor`), tool calls and some request formats may not work correctly.
+* **Tool errors:** If you see unexpected tool call failures, double-check whether you're pointed at the `/cursor` endpoint. The dedicated endpoint handles Cursor's flat tool format; the generic `/v1` endpoint does not.
 
 ## Resources
 

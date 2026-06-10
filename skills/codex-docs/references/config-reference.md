@@ -1474,6 +1474,14 @@ requirements. See the security page for precedence details.
 Use `[features]` in `requirements.toml` to pin feature flags by the same
 canonical keys that `config.toml` uses. Omitted keys remain unconstrained.
 
+Managed permission-profile allowlists require Codex 0.138.0 or later. Codex
+0.137.0 and earlier ignore `allowed_permission_profiles` and managed
+`default_permissions`.
+
+Use `allowed_sandbox_modes` with `sandbox_mode`. For permission-profile
+deployments, use `allowed_permission_profiles` with managed
+`default_permissions`.
+
 <ConfigTable
   options={[
     {
@@ -1493,6 +1501,30 @@ canonical keys that `config.toml` uses. Omitted keys remain unconstrained.
       type: "string",
       description:
         "Managed Markdown policy instructions for automatic review. This takes precedence over local `[auto_review].policy`. Blank values are ignored.",
+    },
+    {
+      key: "allowed_permission_profiles",
+      type: "table<boolean>",
+      description:
+        "Complete list of allowed permission profiles. Profiles set to `true` are allowed. Profiles that are omitted or set to `false` are denied, including profiles added in future versions. When requirements sources are combined, entries are matched by profile name.",
+    },
+    {
+      key: "allowed_permission_profiles.<name>",
+      type: "boolean",
+      description:
+        "Allow or deny a built-in or custom permission profile defined in a loaded config or requirements source. An earlier requirements source can use `false` to turn off a profile allowed by a later source.",
+    },
+    {
+      key: "default_permissions",
+      type: "string",
+      description:
+        "Managed default permission profile. The profile must be allowed by `allowed_permission_profiles`. Set this explicitly for predictable behavior; if omitted, Codex defaults to `:workspace` only when both `:workspace` and `:read-only` are explicitly allowed.",
+    },
+    {
+      key: "permissions.<name>",
+      type: "table",
+      description:
+        "Admin-defined permission profile. The name can't start with `:`, use the reserved name `filesystem`, or duplicate a profile from a loaded config. Uses the same profile fields as `config.toml`; see the Permissions guide for the complete profile schema.",
     },
     {
       key: "allowed_sandbox_modes",

@@ -28,9 +28,9 @@ Different from embedding model, reranker uses question and document as input and
 
 ## Usage
 
-* [  TypeScript ](#tab-panel-4207)
-* [  Python ](#tab-panel-4208)
-* [  curl ](#tab-panel-4209)
+* [  TypeScript ](#tab-panel-4593)
+* [  Python ](#tab-panel-4594)
+* [  curl ](#tab-panel-4595)
 
 ```
 
@@ -134,8 +134,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 ## Parameters
 
-* [ Input ](#tab-panel-4210)
-* [ Output ](#tab-panel-4211)
+* [ Input ](#tab-panel-4596)
+* [ Output ](#tab-panel-4597)
 
 query
 
@@ -155,9 +155,9 @@ top\_k
 
 ## API Schemas (Raw)
 
-Input 
+Input [ ](https://developers.cloudflare.com/workers-ai/models/bge-reranker-base/schema-input.json "Open") [ ](https://developers.cloudflare.com/workers-ai/models/bge-reranker-base/schema-input.json "Download") 
 
-Output 
+Output [ ](https://developers.cloudflare.com/workers-ai/models/bge-reranker-base/schema-output.json "Open") [ ](https://developers.cloudflare.com/workers-ai/models/bge-reranker-base/schema-output.json "Download") 
 
 ```json
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/workers-ai/","name":"Workers AI"}},{"@type":"ListItem","position":3,"item":{"@id":"/workers-ai/models/","name":"Models"}}]}

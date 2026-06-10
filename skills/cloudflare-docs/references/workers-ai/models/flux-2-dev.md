@@ -28,8 +28,8 @@ FLUX.2 \[dev\] is an image model from Black Forest Labs where you can generate h
 
 ## Usage
 
-* [  TypeScript ](#tab-panel-4248)
-* [  curl ](#tab-panel-4249)
+* [  TypeScript ](#tab-panel-4634)
+* [  curl ](#tab-panel-4635)
 
 ```
 
@@ -113,8 +113,8 @@ curl --request POST \
 
 ## Parameters
 
-* [ Input ](#tab-panel-4250)
-* [ Output ](#tab-panel-4251)
+* [ Input ](#tab-panel-4636)
+* [ Output ](#tab-panel-4637)
 
 ▶multipart{}
 
@@ -126,9 +126,9 @@ image
 
 ## API Schemas (Raw)
 
-Input 
+Input [ ](https://developers.cloudflare.com/workers-ai/models/flux-2-dev/schema-input.json "Open") [ ](https://developers.cloudflare.com/workers-ai/models/flux-2-dev/schema-input.json "Download") 
 
-Output 
+Output [ ](https://developers.cloudflare.com/workers-ai/models/flux-2-dev/schema-output.json "Open") [ ](https://developers.cloudflare.com/workers-ai/models/flux-2-dev/schema-output.json "Download") 
 
 ```json
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/workers-ai/","name":"Workers AI"}},{"@type":"ListItem","position":3,"item":{"@id":"/workers-ai/models/","name":"Models"}}]}

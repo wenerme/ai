@@ -7,6 +7,12 @@ info: To determine the technical writer assigned to the Stage/Group associated w
 
 Get a variable for a project or group.
 
+## Synopsis
+
+Prints the value of a single variable by key. Use `--scope` to
+select a variable in a specific environment, or `--group` to read a
+group variable instead.
+
 ```plaintext
 glab variable get <key> [flags]
 ```

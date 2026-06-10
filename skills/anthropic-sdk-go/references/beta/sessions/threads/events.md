@@ -86,6 +86,10 @@ List Session Thread Events
 
       - `const AnthropicBetaThinkingTokenCount2026_05_13 AnthropicBeta = "thinking-token-count-2026-05-13"`
 
+      - `const AnthropicBetaServerSideFallback2026_06_01 AnthropicBeta = "server-side-fallback-2026-06-01"`
+
+      - `const AnthropicBetaFallbackCredit2026_06_01 AnthropicBeta = "fallback-credit-2026-06-01"`
+
 ### Returns
 
 - `type BetaManagedAgentsSessionEventUnion interface{…}`
@@ -952,6 +956,42 @@ List Session Thread Events
 
           - `const BetaManagedAgentsBillingErrorTypeBillingError BetaManagedAgentsBillingErrorType = "billing_error"`
 
+      - `type BetaManagedAgentsCredentialHostUnreachableError struct{…}`
+
+        An `environment_variable` credential's `auth.networking.allowed_hosts` includes a host the environment's network policy does not permit.
+
+        - `CredentialID string`
+
+          ID of the affected credential.
+
+        - `Message string`
+
+          Human-readable error description.
+
+        - `RetryStatus BetaManagedAgentsCredentialHostUnreachableErrorRetryStatusUnion`
+
+          What the client should do next in response to this error.
+
+          - `type BetaManagedAgentsRetryStatusRetrying struct{…}`
+
+            The server is retrying automatically. Client should wait; the same error type may fire again as retrying, then once as exhausted when the retry budget runs out.
+
+          - `type BetaManagedAgentsRetryStatusExhausted struct{…}`
+
+            This turn is dead; queued inputs are flushed and the session returns to idle. Client may send a new prompt.
+
+          - `type BetaManagedAgentsRetryStatusTerminal struct{…}`
+
+            The session encountered a terminal error and will transition to `terminated` state.
+
+        - `Type BetaManagedAgentsCredentialHostUnreachableErrorType`
+
+          - `const BetaManagedAgentsCredentialHostUnreachableErrorTypeCredentialHostUnreachableError BetaManagedAgentsCredentialHostUnreachableErrorType = "credential_host_unreachable_error"`
+
+        - `VaultID string`
+
+          ID of the vault containing the affected credential.
+
     - `ProcessedAt Time`
 
       A timestamp in RFC 3339 format
@@ -1518,6 +1558,10 @@ List Session Thread Events
 
             See [models](https://docs.anthropic.com/en/docs/models-overview) for additional details and options.
 
+            - `const BetaManagedAgentsModelClaudeFable5 BetaManagedAgentsModel = "claude-fable-5"`
+
+              Next generation of intelligence for the hardest knowledge work and coding problems
+
             - `const BetaManagedAgentsModelClaudeOpus4_8 BetaManagedAgentsModel = "claude-opus-4-8"`
 
               Frontier intelligence for long-running agents and coding
@@ -1746,19 +1790,13 @@ List Session Thread Events
 
                 JSON Schema for custom tool input parameters.
 
+                - `Type Object`
+
+                  - `const ObjectObject Object = "object"`
+
                 - `Properties map[string, any]`
 
-                  JSON Schema properties defining the tool's input parameters.
-
                 - `Required []string`
-
-                  List of required property names.
-
-                - `Type BetaManagedAgentsCustomToolInputSchemaType`
-
-                  Must be 'object' for tool input schemas.
-
-                  - `const BetaManagedAgentsCustomToolInputSchemaTypeObject BetaManagedAgentsCustomToolInputSchemaType = "object"`
 
               - `Name string`
 
@@ -1813,6 +1851,34 @@ List Session Thread Events
     - `Title string`
 
       The session's new title. Present only when the update changed it.
+
+  - `type BetaManagedAgentsSystemMessageEvent struct{…}`
+
+    A mid-conversation system message event. Carries system-role content that is appended to the session as a `role: "system"` turn.
+
+    - `ID string`
+
+      Unique identifier for this event.
+
+    - `Content []BetaManagedAgentsSystemContentBlock`
+
+      System content blocks. Text-only.
+
+      - `Text string`
+
+        The text content.
+
+      - `Type BetaManagedAgentsSystemContentBlockType`
+
+        - `const BetaManagedAgentsSystemContentBlockTypeText BetaManagedAgentsSystemContentBlockType = "text"`
+
+    - `Type BetaManagedAgentsSystemMessageEventType`
+
+      - `const BetaManagedAgentsSystemMessageEventTypeSystemMessage BetaManagedAgentsSystemMessageEventType = "system.message"`
+
+    - `ProcessedAt Time`
+
+      A timestamp in RFC 3339 format
 
 ### Example
 
@@ -1943,6 +2009,10 @@ Stream Session Thread Events
       - `const AnthropicBetaCacheDiagnosis2026_04_07 AnthropicBeta = "cache-diagnosis-2026-04-07"`
 
       - `const AnthropicBetaThinkingTokenCount2026_05_13 AnthropicBeta = "thinking-token-count-2026-05-13"`
+
+      - `const AnthropicBetaServerSideFallback2026_06_01 AnthropicBeta = "server-side-fallback-2026-06-01"`
+
+      - `const AnthropicBetaFallbackCredit2026_06_01 AnthropicBeta = "fallback-credit-2026-06-01"`
 
 ### Returns
 
@@ -2810,6 +2880,42 @@ Stream Session Thread Events
 
           - `const BetaManagedAgentsBillingErrorTypeBillingError BetaManagedAgentsBillingErrorType = "billing_error"`
 
+      - `type BetaManagedAgentsCredentialHostUnreachableError struct{…}`
+
+        An `environment_variable` credential's `auth.networking.allowed_hosts` includes a host the environment's network policy does not permit.
+
+        - `CredentialID string`
+
+          ID of the affected credential.
+
+        - `Message string`
+
+          Human-readable error description.
+
+        - `RetryStatus BetaManagedAgentsCredentialHostUnreachableErrorRetryStatusUnion`
+
+          What the client should do next in response to this error.
+
+          - `type BetaManagedAgentsRetryStatusRetrying struct{…}`
+
+            The server is retrying automatically. Client should wait; the same error type may fire again as retrying, then once as exhausted when the retry budget runs out.
+
+          - `type BetaManagedAgentsRetryStatusExhausted struct{…}`
+
+            This turn is dead; queued inputs are flushed and the session returns to idle. Client may send a new prompt.
+
+          - `type BetaManagedAgentsRetryStatusTerminal struct{…}`
+
+            The session encountered a terminal error and will transition to `terminated` state.
+
+        - `Type BetaManagedAgentsCredentialHostUnreachableErrorType`
+
+          - `const BetaManagedAgentsCredentialHostUnreachableErrorTypeCredentialHostUnreachableError BetaManagedAgentsCredentialHostUnreachableErrorType = "credential_host_unreachable_error"`
+
+        - `VaultID string`
+
+          ID of the vault containing the affected credential.
+
     - `ProcessedAt Time`
 
       A timestamp in RFC 3339 format
@@ -3376,6 +3482,10 @@ Stream Session Thread Events
 
             See [models](https://docs.anthropic.com/en/docs/models-overview) for additional details and options.
 
+            - `const BetaManagedAgentsModelClaudeFable5 BetaManagedAgentsModel = "claude-fable-5"`
+
+              Next generation of intelligence for the hardest knowledge work and coding problems
+
             - `const BetaManagedAgentsModelClaudeOpus4_8 BetaManagedAgentsModel = "claude-opus-4-8"`
 
               Frontier intelligence for long-running agents and coding
@@ -3604,19 +3714,13 @@ Stream Session Thread Events
 
                 JSON Schema for custom tool input parameters.
 
+                - `Type Object`
+
+                  - `const ObjectObject Object = "object"`
+
                 - `Properties map[string, any]`
 
-                  JSON Schema properties defining the tool's input parameters.
-
                 - `Required []string`
-
-                  List of required property names.
-
-                - `Type BetaManagedAgentsCustomToolInputSchemaType`
-
-                  Must be 'object' for tool input schemas.
-
-                  - `const BetaManagedAgentsCustomToolInputSchemaTypeObject BetaManagedAgentsCustomToolInputSchemaType = "object"`
 
               - `Name string`
 
@@ -3671,6 +3775,34 @@ Stream Session Thread Events
     - `Title string`
 
       The session's new title. Present only when the update changed it.
+
+  - `type BetaManagedAgentsSystemMessageEvent struct{…}`
+
+    A mid-conversation system message event. Carries system-role content that is appended to the session as a `role: "system"` turn.
+
+    - `ID string`
+
+      Unique identifier for this event.
+
+    - `Content []BetaManagedAgentsSystemContentBlock`
+
+      System content blocks. Text-only.
+
+      - `Text string`
+
+        The text content.
+
+      - `Type BetaManagedAgentsSystemContentBlockType`
+
+        - `const BetaManagedAgentsSystemContentBlockTypeText BetaManagedAgentsSystemContentBlockType = "text"`
+
+    - `Type BetaManagedAgentsSystemMessageEventType`
+
+      - `const BetaManagedAgentsSystemMessageEventTypeSystemMessage BetaManagedAgentsSystemMessageEventType = "system.message"`
+
+    - `ProcessedAt Time`
+
+      A timestamp in RFC 3339 format
 
 ### Example
 

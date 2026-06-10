@@ -29,8 +29,8 @@ GPT-5.4 mini is a smaller, faster, and more cost-efficient version of GPT-5.4 fo
 
 ## Usage
 
-* [ TypeScript ](#tab-panel-982)
-* [ cURL ](#tab-panel-983)
+* [ TypeScript ](#tab-panel-1208)
+* [ cURL ](#tab-panel-1209)
 
 TypeScript
 
@@ -80,8 +80,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/v1/
 
 ```
 
-* [ Output ](#tab-panel-992)
-* [ Raw response ](#tab-panel-993)
+* [ Output ](#tab-panel-1218)
+* [ Raw response ](#tab-panel-1219)
 
 The three laws of thermodynamics are:
 
@@ -186,8 +186,8 @@ If you want, I can also give you a **very simple everyday analogy** for each law
 
 **With System Message**  — Using a system message to set context 
 
-* [ TypeScript ](#tab-panel-984)
-* [ cURL ](#tab-panel-985)
+* [ TypeScript ](#tab-panel-1210)
+* [ cURL ](#tab-panel-1211)
 
 TypeScript
 
@@ -255,8 +255,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/v1/
 
 ```
 
-* [ Output ](#tab-panel-994)
-* [ Raw response ](#tab-panel-995)
+* [ Output ](#tab-panel-1220)
+* [ Raw response ](#tab-panel-1221)
 
 Use Python’s built-in `json` module.
 
@@ -375,8 +375,8 @@ If you want, I can also show how to:
 
 **Multi-turn Conversation**  — Continuing a conversation with context 
 
-* [ TypeScript ](#tab-panel-988)
-* [ cURL ](#tab-panel-989)
+* [ TypeScript ](#tab-panel-1214)
+* [ cURL ](#tab-panel-1215)
 
 TypeScript
 
@@ -472,8 +472,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/v1/
 
 ```
 
-* [ Output ](#tab-panel-996)
-* [ Raw response ](#tab-panel-997)
+* [ Output ](#tab-panel-1222)
+* [ Raw response ](#tab-panel-1223)
 
 Absolutely — the San Francisco to Los Angeles drive has a lot of great stop options depending on whether you want the **fastest route** or the **most scenic one**.
 
@@ -630,8 +630,8 @@ If you want, I can also make you:
 
 **Creative Writing**  — Longer completion for creative output 
 
-* [ TypeScript ](#tab-panel-986)
-* [ cURL ](#tab-panel-987)
+* [ TypeScript ](#tab-panel-1212)
+* [ cURL ](#tab-panel-1213)
 
 TypeScript
 
@@ -699,8 +699,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/v1/
 
 ```
 
-* [ Output ](#tab-panel-998)
-* [ Raw response ](#tab-panel-999)
+* [ Output ](#tab-panel-1224)
+* [ Raw response ](#tab-panel-1225)
 
 The rain had been falling since midnight, soft and persistent, turning the city into a blur of sodium light and reflected secrets. Detective Mara Venn stood in the doorway of apartment 4B, one gloved hand resting against the frame, and looked down at the object gleaming on the floorboards.
 
@@ -807,8 +807,8 @@ And somehow, they had expected her to come.
 
 **Streaming Response**  — Enable streaming for real-time output 
 
-* [ TypeScript ](#tab-panel-990)
-* [ cURL ](#tab-panel-991)
+* [ TypeScript ](#tab-panel-1216)
+* [ cURL ](#tab-panel-1217)
 
 TypeScript
 
@@ -874,8 +874,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/v1/
 
 ```
 
-* [ Output ](#tab-panel-1000)
-* [ Raw response ](#tab-panel-1001)
+* [ Output ](#tab-panel-1226)
+* [ Raw response ](#tab-panel-1227)
 
 Recursion is when a function solves a problem by calling itself on a smaller version of the same problem.
 
@@ -10477,8 +10477,8 @@ Recursion is like solving a big problem by breaking it into smaller versions of 
 
 ## Parameters
 
-* [ Input ](#tab-panel-1002)
-* [ Output ](#tab-panel-1003)
+* [ Input ](#tab-panel-1228)
+* [ Output ](#tab-panel-1229)
 
 ▶audio{}
 
@@ -10562,9 +10562,9 @@ object
 
 ## API Schemas (Raw)
 
-Input 
+Input [ ](https://developers.cloudflare.com/ai/models/openai/gpt-5.4-mini/schema-input.json "Open") [ ](https://developers.cloudflare.com/ai/models/openai/gpt-5.4-mini/schema-input.json "Download") 
 
-Output 
+Output [ ](https://developers.cloudflare.com/ai/models/openai/gpt-5.4-mini/schema-output.json "Open") [ ](https://developers.cloudflare.com/ai/models/openai/gpt-5.4-mini/schema-output.json "Download") 
 
 ```json
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/ai/","name":"AI"}},{"@type":"ListItem","position":3,"item":{"@id":"/ai/models/","name":"Models"}}]}

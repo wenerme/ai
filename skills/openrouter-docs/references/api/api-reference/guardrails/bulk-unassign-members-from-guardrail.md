@@ -82,6 +82,7 @@ paths:
               $ref: '#/components/schemas/BulkUnassignMembersRequest'
 servers:
   - url: https://openrouter.ai/api/v1
+    description: Production server
 components:
   schemas:
     BulkUnassignMembersRequest:
@@ -260,7 +261,30 @@ components:
 
 ```
 
-## SDK Code Examples
+## Examples
+
+
+
+**Request**
+
+```json
+{
+  "member_user_ids": [
+    "user_abc123",
+    "user_def456"
+  ]
+}
+```
+
+**Response**
+
+```json
+{
+  "unassigned_count": 2
+}
+```
+
+**SDK Code**
 
 ```python Guardrails_bulkUnassignMembersFromGuardrail_example
 import requests

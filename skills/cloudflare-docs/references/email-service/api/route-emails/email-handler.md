@@ -24,13 +24,6 @@ TypeScript
 
 ```
 
-interface Env {
-
-  EMAIL: SendEmail;
-
-}
-
-
 export default {
 
   async email(message, env, ctx): Promise<void> {
@@ -81,9 +74,9 @@ interface ForwardableEmailMessage {
 
   setReject(reason: string): void;
 
-  forward(rcptTo: string, headers?: Headers): Promise<void>;
+  forward(rcptTo: string, headers?: Headers): Promise<EmailSendResult>;
 
-  reply(message: EmailMessage): Promise<void>;
+  reply(message: EmailMessage): Promise<EmailSendResult>;
 
 }
 
@@ -92,9 +85,8 @@ interface ForwardableEmailMessage {
 
 ### Properties
 
-* [ Basic properties ](#tab-panel-5911)
-* [ Reading content ](#tab-panel-5912)
-* [ Parse email content ](#tab-panel-5913)
+* [ Basic properties ](#tab-panel-8245)
+* [ Parse email content ](#tab-panel-8246)
 
 TypeScript
 
@@ -135,147 +127,27 @@ export default {
 
 ```
 
-TypeScript
-
-```
-
-export default {
-
-  async email(message, env, ctx): Promise<void> {
-
-    // Read raw email content
-
-    const reader = message.raw.getReader();
-
-    const chunks = [];
-
-
-    try {
-
-      while (true) {
-
-        const { done, value } = await reader.read();
-
-        if (done) break;
-
-        chunks.push(value);
-
-      }
-
-
-      // Convert to string
-
-      const decoder = new TextDecoder();
-
-      const rawContent = decoder.decode(
-
-        new Uint8Array(chunks.reduce((acc, chunk) => [...acc, ...chunk], [])),
-
-      );
-
-
-      console.log("Raw email content:", rawContent);
-
-    } finally {
-
-      reader.releaseLock();
-
-    }
-
-  },
-
-};
-
-
-```
+Use [postal-mime ↗](https://www.npmjs.com/package/postal-mime) to parse the MIME structure of an incoming email. The parser handles multipart boundaries, transfer encodings, and character sets correctly.
 
 TypeScript
 
 ```
 
-// Helper function to parse email content
-
-async function parseEmailContent(
-
-  message,
-
-): Promise<{ subject: string; textBody: string; htmlBody: string }> {
-
-  const reader = message.raw.getReader();
-
-  const chunks = [];
-
-
-  try {
-
-    while (true) {
-
-      const { done, value } = await reader.read();
-
-      if (done) break;
-
-      chunks.push(value);
-
-    }
-
-
-    const decoder = new TextDecoder();
-
-    const rawContent = decoder.decode(
-
-      new Uint8Array(chunks.reduce((acc, chunk) => [...acc, ...chunk], [])),
-
-    );
-
-
-    // Parse MIME content (simplified)
-
-    const subject = message.headers.get("subject") || "";
-
-    const textMatch = rawContent.match(
-
-      /Content-Type: text\/plain[\s\S]*?\n\n([\s\S]*?)(?=\n--|\nContent-Type|\n$)/,
-
-    );
-
-    const htmlMatch = rawContent.match(
-
-      /Content-Type: text\/html[\s\S]*?\n\n([\s\S]*?)(?=\n--|\nContent-Type|\n$)/,
-
-    );
-
-
-    return {
-
-      subject,
-
-      textBody: textMatch ? textMatch[1].trim() : "",
-
-      htmlBody: htmlMatch ? htmlMatch[1].trim() : "",
-
-    };
-
-  } finally {
-
-    reader.releaseLock();
-
-  }
-
-}
+import PostalMime from "postal-mime";
 
 
 export default {
 
   async email(message, env, ctx): Promise<void> {
 
-    const { subject, textBody, htmlBody } = await parseEmailContent(message);
+    const email = await PostalMime.parse(message.raw);
 
 
-    console.log(`Subject: ${subject}`);
+    console.log(`Subject: ${email.subject}`);
 
-    console.log(`Text: ${textBody}`);
+    console.log(`Text: ${email.text}`);
 
-    console.log(`HTML: ${htmlBody}`);
+    console.log(`HTML: ${email.html}`);
 
   },
 
@@ -290,9 +162,9 @@ export default {
 
 Forward incoming emails to verified destination addresses:
 
-* [ Simple forwarding ](#tab-panel-5914)
-* [ Conditional forwarding ](#tab-panel-5915)
-* [ Multiple forwarding ](#tab-panel-5916)
+* [ Simple forwarding ](#tab-panel-8247)
+* [ Conditional forwarding ](#tab-panel-8248)
+* [ Multiple forwarding ](#tab-panel-8249)
 
 TypeScript
 
@@ -304,7 +176,7 @@ export default {
 
     // Forward to a single address
 
-    await message.forward("team@company.com");
+    await message.forward("team@example.com");
 
   },
 
@@ -330,21 +202,21 @@ export default {
 
     if (recipient.includes("support@")) {
 
-      await message.forward("support-team@company.com");
+      await message.forward("support-team@example.com");
 
     } else if (recipient.includes("sales@")) {
 
-      await message.forward("sales-team@company.com");
+      await message.forward("sales-team@example.com");
 
     } else if (subject.toLowerCase().includes("urgent")) {
 
-      await message.forward("urgent@company.com");
+      await message.forward("urgent@example.com");
 
     } else {
 
       // Default routing
 
-      await message.forward("general@company.com");
+      await message.forward("general@example.com");
 
     }
 
@@ -372,17 +244,17 @@ export default {
 
       await Promise.all([
 
-        message.forward("security@company.com"),
+        message.forward("security@example.com"),
 
-        message.forward("admin@company.com"),
+        message.forward("admin@example.com"),
 
-        message.forward("ciso@company.com"),
+        message.forward("ciso@example.com"),
 
       ]);
 
     } else {
 
-      await message.forward("general@company.com");
+      await message.forward("general@example.com");
 
     }
 
@@ -395,7 +267,7 @@ export default {
 
 ### Forward with custom headers
 
-Add custom headers when forwarding:
+Add custom headers when forwarding. Only headers with an `X-` prefix can be added through `forward()`. Other headers are removed.
 
 TypeScript
 
@@ -420,7 +292,7 @@ export default {
 
     // Forward with custom headers
 
-    await message.forward("processed@company.com", customHeaders);
+    await message.forward("processed@example.com", customHeaders);
 
   },
 
@@ -431,20 +303,28 @@ export default {
 
 ### Reply to emails
 
-Send automatic replies using the Email Service binding:
+Send automatic replies with `message.reply()`. Replies built this way are threaded with the original message and pass through the same SMTP session, so they preserve the original `Message-ID` chain.
 
-* [ Simple auto-reply ](#tab-panel-5917)
-* [ Smart auto-reply ](#tab-panel-5918)
+Replies through the Workers API must satisfy the following requirements, otherwise `reply()` throws an exception:
+
+* The incoming email must have a valid DMARC result.
+* An email can only be replied to once per `EmailMessage` event.
+* The recipient in the reply must match the sender of the incoming email.
+* The outgoing sender domain must match the domain that received the email.
+* The reply is rejected if the incoming email has more than 100 entries in its `References` header, to prevent reply loops and abuse.
+
+The reply payload is an `EmailMessage` built from a raw MIME string. The examples below use [mimetext ↗](https://www.npmjs.com/package/mimetext) to build the MIME body. The `mimetext` package requires the [nodejs\_compat](https://developers.cloudflare.com/workers/runtime-apis/nodejs/) compatibility flag.
+
+* [ Simple auto-reply ](#tab-panel-8250)
+* [ Smart auto-reply ](#tab-panel-8251)
 
 TypeScript
 
 ```
 
-interface Env {
+import { EmailMessage } from "cloudflare:email";
 
-  EMAIL: SendEmail;
-
-}
+import { createMimeMessage } from "mimetext";
 
 
 export default {
@@ -453,35 +333,52 @@ export default {
 
     const subject = message.headers.get("subject") || "";
 
+    const messageId = message.headers.get("Message-ID");
 
-    // Send auto-reply
 
-    await env.EMAIL.send({
+    const reply = createMimeMessage();
 
-      to: message.from,
+    if (messageId) {
 
-      from: message.to, // Reply from the original recipient address
+      reply.setHeader("In-Reply-To", messageId);
 
-      subject: `Re: ${subject}`,
+      reply.setHeader("References", messageId);
 
-      html: `
+    }
 
-                <h1>Thank you for your message</h1>
+    reply.setSender(message.to);
 
-                <p>We have received your email and will respond shortly.</p>
+    reply.setRecipient(message.from);
 
-                <p>Original message received at: ${new Date().toISOString()}</p>
+    reply.setSubject(`Re: ${subject}`);
 
-            `,
+    reply.addMessage({
 
-      text: "Thank you for your message. We have received your email and will respond shortly.",
+      contentType: "text/plain",
+
+      data: "Thank you for your message. We have received your email and will respond shortly.",
+
+    });
+
+    reply.addMessage({
+
+      contentType: "text/html",
+
+      data: "<h1>Thank you for your message</h1><p>We have received your email and will respond shortly.</p>",
 
     });
 
 
+    await message.reply(
+
+      new EmailMessage(message.to, message.from, reply.asRaw()),
+
+    );
+
+
     // Also forward to human team
 
-    await message.forward("team@company.com");
+    await message.forward("team@example.com");
 
   },
 
@@ -494,6 +391,11 @@ TypeScript
 
 ```
 
+import { EmailMessage } from "cloudflare:email";
+
+import { createMimeMessage } from "mimetext";
+
+
 export default {
 
   async email(message, env, ctx): Promise<void> {
@@ -503,6 +405,8 @@ export default {
     const recipient = message.to;
 
     const subject = message.headers.get("subject") || "";
+
+    const messageId = message.headers.get("Message-ID");
 
 
     // Don't reply to automated emails
@@ -517,7 +421,7 @@ export default {
 
     ) {
 
-      await message.forward("team@company.com");
+      await message.forward("team@example.com");
 
       return;
 
@@ -526,14 +430,12 @@ export default {
 
     // Customized auto-reply based on recipient
 
-    let replyMessage = "";
-
-    let replySubject = `Re: ${subject}`;
+    let html = "";
 
 
     if (recipient.includes("support@")) {
 
-      replyMessage = `
+      html = `
 
                 <h1>Support Request Received</h1>
 
@@ -545,7 +447,7 @@ export default {
 
     } else if (recipient.includes("sales@")) {
 
-      replyMessage = `
+      html = `
 
                 <h1>Sales Inquiry Received</h1>
 
@@ -557,7 +459,7 @@ export default {
 
     } else {
 
-      replyMessage = `
+      html = `
 
                 <h1>Message Received</h1>
 
@@ -568,24 +470,39 @@ export default {
     }
 
 
-    await env.EMAIL.send({
+    const reply = createMimeMessage();
 
-      to: sender,
+    if (messageId) {
 
-      from: recipient,
+      reply.setHeader("In-Reply-To", messageId);
 
-      subject: replySubject,
+      reply.setHeader("References", messageId);
 
-      html: replyMessage,
+    }
 
-      text: replyMessage.replace(/<[^>]*>/g, ""), // Strip HTML for text version
+    reply.setSender(recipient);
+
+    reply.setRecipient(sender);
+
+    reply.setSubject(`Re: ${subject}`);
+
+    reply.addMessage({
+
+      contentType: "text/plain",
+
+      data: html.replace(/<[^>]*>/g, ""),
 
     });
+
+    reply.addMessage({ contentType: "text/html", data: html });
+
+
+    await message.reply(new EmailMessage(recipient, sender, reply.asRaw()));
 
 
     // Forward to appropriate team
 
-    await message.forward("team@company.com");
+    await message.forward("team@example.com");
 
   },
 
@@ -598,8 +515,8 @@ export default {
 
 Reject emails with a permanent SMTP error:
 
-* [ Simple rejection ](#tab-panel-5919)
-* [ Content-based rejection ](#tab-panel-5920)
+* [ Simple rejection ](#tab-panel-8252)
+* [ Content-based rejection ](#tab-panel-8253)
 
 TypeScript
 
@@ -630,7 +547,7 @@ export default {
 
     // Continue processing
 
-    await message.forward("inbox@company.com");
+    await message.forward("inbox@example.com");
 
   },
 
@@ -674,7 +591,7 @@ export default {
 
     if (message.rawSize > 25 * 1024 * 1024) {
 
-      // 25MB limit
+      // 25 MiB limit (inbound message size)
 
       message.setReject("Message too large");
 
@@ -685,7 +602,7 @@ export default {
 
     // Continue processing
 
-    await message.forward("inbox@company.com");
+    await message.forward("inbox@example.com");
 
   },
 
@@ -748,7 +665,7 @@ export default {
 
       try {
 
-        await message.forward("admin@company.com");
+        await message.forward("admin@example.com");
 
       } catch (fallbackError) {
 
@@ -776,15 +693,15 @@ async function processEmail(message, env) {
 
   if (recipient.includes("support@")) {
 
-    await message.forward("support@company.com");
+    await message.forward("support@example.com");
 
   } else if (recipient.includes("sales@")) {
 
-    await message.forward("sales@company.com");
+    await message.forward("sales@example.com");
 
   } else {
 
-    await message.forward("general@company.com");
+    await message.forward("general@example.com");
 
   }
 
@@ -793,11 +710,10 @@ async function processEmail(message, env) {
 
 ```
 
----
-
-**Next steps:**
+## Next steps
 
 * Test locally: [Email routing development](https://developers.cloudflare.com/email-service/local-development/routing/)
+* Manage rules and addresses programmatically with the [Email Routing REST API](https://developers.cloudflare.com/email-service/platform/email-routing-rest-api/)
 * Set up [email routing configuration](https://developers.cloudflare.com/email-service/configuration/email-routing-addresses/)
 * See [email routing examples](https://developers.cloudflare.com/email-service/examples/email-routing/) for advanced email processing
 * Learn about [spam filtering](https://developers.cloudflare.com/email-service/examples/email-routing/spam-filtering/) with Workers

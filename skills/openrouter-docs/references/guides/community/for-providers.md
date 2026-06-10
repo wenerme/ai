@@ -49,6 +49,7 @@ You must implement an endpoint that returns all models that should be served by 
       "deprecation_date": "2025-06-01T15:00:00Z", // ISO 8601 date or UTC hour
       "is_ready": true, // false to keep the model staged-but-hidden on OpenRouter
       "is_free": false, // true to mark as a free endpoint
+      "discount_to_user": 0, // fractional discount on user-facing pricing (0 = none)
       "openrouter": {
         "slug": "anthropic/claude-sonnet-4"
       },
@@ -106,6 +107,34 @@ Limitations:
 
 * Currently, OpenRouter supports up to 2 pricing tiers.
 * The `image` and `request` fields are only supported in the base tier (index 0) and will be ignored if included in other tiers.
+
+#### Discounts with `discount_to_user`
+
+To offer a discount on the prices users see and pay, include the optional `discount_to_user` field. It's a decimal fraction that OpenRouter applies to your displayed pricing:
+
+```text
+user price = base price × (1 - discount_to_user)
+```
+
+```json
+{
+  "id": "your-org/your-model",
+  "pricing": {
+    "prompt": "0.000008",
+    "completion": "0.000024"
+  },
+  "discount_to_user": 0.2
+}
+```
+
+Behavior:
+
+* `0.2` means users see and pay 20% less than your listed `pricing`. The example `completion` price of `0.000024` displays as `0.0000192`.
+* The discount applies to every priced SKU (prompt, completion, image, cache reads, and so on) and to both flat and tiered pricing.
+* `0`, an omitted field, or an absent field all mean no discount.
+* A negative value applies a markup instead of a discount, so `-0.1` shows prices 10% higher.
+
+Send `discount_to_user` as a number, not a string. Unlike the `pricing` fields, it isn't quoted.
 
 #### Deprecation Date
 

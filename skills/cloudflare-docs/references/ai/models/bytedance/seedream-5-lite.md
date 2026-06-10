@@ -27,8 +27,8 @@ Seedream 5 Lite is a lighter, faster version of the Seedream 5 family with multi
 
 ## Usage
 
-* [ TypeScript ](#tab-panel-396)
-* [ cURL ](#tab-panel-397)
+* [ TypeScript ](#tab-panel-436)
+* [ cURL ](#tab-panel-437)
 
 TypeScript
 
@@ -72,8 +72,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 ```
 
-* [ Output ](#tab-panel-398)
-* [ Raw response ](#tab-panel-399)
+* [ Output ](#tab-panel-438)
+* [ Raw response ](#tab-panel-439)
 
 ![Simple Generation](https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/bytedance__seedream-5-lite/simple-generation-0.jpeg) 
 
@@ -108,8 +108,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 **High Resolution PNG**  — 3K quality with PNG output 
 
-* [ TypeScript ](#tab-panel-402)
-* [ cURL ](#tab-panel-403)
+* [ TypeScript ](#tab-panel-442)
+* [ cURL ](#tab-panel-443)
 
 TypeScript
 
@@ -171,8 +171,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 ```
 
-* [ Output ](#tab-panel-400)
-* [ Raw response ](#tab-panel-401)
+* [ Output ](#tab-panel-440)
+* [ Raw response ](#tab-panel-441)
 
 ![High Resolution PNG](https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/bytedance__seedream-5-lite/high-resolution-png-0.png) 
 
@@ -205,8 +205,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 **Portrait Photo**  — JPEG output for photographs 
 
-* [ TypeScript ](#tab-panel-406)
-* [ cURL ](#tab-panel-407)
+* [ TypeScript ](#tab-panel-446)
+* [ cURL ](#tab-panel-447)
 
 TypeScript
 
@@ -268,8 +268,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 ```
 
-* [ Output ](#tab-panel-404)
-* [ Raw response ](#tab-panel-405)
+* [ Output ](#tab-panel-444)
+* [ Raw response ](#tab-panel-445)
 
 ![Portrait Photo](https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/bytedance__seedream-5-lite/portrait-photo-0.jpeg) 
 
@@ -302,8 +302,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 **Sequential Comic**  — Generate sequential comic panels 
 
-* [ TypeScript ](#tab-panel-410)
-* [ cURL ](#tab-panel-411)
+* [ TypeScript ](#tab-panel-450)
+* [ cURL ](#tab-panel-451)
 
 TypeScript
 
@@ -365,8 +365,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 ```
 
-* [ Output ](#tab-panel-408)
-* [ Raw response ](#tab-panel-409)
+* [ Output ](#tab-panel-448)
+* [ Raw response ](#tab-panel-449)
 
 ![Sequential Comic](https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/bytedance__seedream-5-lite/sequential-comic-0.jpeg) 
 
@@ -399,8 +399,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 **Image Variation**  — Create variation from reference 
 
-* [ TypeScript ](#tab-panel-414)
-* [ cURL ](#tab-panel-415)
+* [ TypeScript ](#tab-panel-454)
+* [ cURL ](#tab-panel-455)
 
 TypeScript
 
@@ -468,8 +468,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 ```
 
-* [ Output ](#tab-panel-412)
-* [ Raw response ](#tab-panel-413)
+* [ Output ](#tab-panel-452)
+* [ Raw response ](#tab-panel-453)
 
 ![Image Variation](https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/bytedance__seedream-5-lite/image-variation-0.jpeg) 
 
@@ -502,8 +502,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 ## Parameters
 
-* [ Input ](#tab-panel-416)
-* [ Output ](#tab-panel-417)
+* [ Input ](#tab-panel-456)
+* [ Output ](#tab-panel-457)
 
 aspect\_ratio
 
@@ -539,9 +539,9 @@ size
 
 ## API Schemas (Raw)
 
-Input 
+Input [ ](https://developers.cloudflare.com/ai/models/bytedance/seedream-5-lite/schema-input.json "Open") [ ](https://developers.cloudflare.com/ai/models/bytedance/seedream-5-lite/schema-input.json "Download") 
 
-Output 
+Output [ ](https://developers.cloudflare.com/ai/models/bytedance/seedream-5-lite/schema-output.json "Open") [ ](https://developers.cloudflare.com/ai/models/bytedance/seedream-5-lite/schema-output.json "Download") 
 
 ```json
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/ai/","name":"AI"}},{"@type":"ListItem","position":3,"item":{"@id":"/ai/models/","name":"Models"}}]}

@@ -35,8 +35,8 @@ npm install @cloudflare/think @cloudflare/ai-chat agents ai @cloudflare/shell zo
 
 ### Server
 
-* [  JavaScript ](#tab-panel-4976)
-* [  TypeScript ](#tab-panel-4977)
+* [  JavaScript ](#tab-panel-5382)
+* [  TypeScript ](#tab-panel-5383)
 
 JavaScript
 
@@ -132,8 +132,8 @@ That is it. Think handles the WebSocket chat protocol, message persistence, the 
 
 ### Client
 
-* [  JavaScript ](#tab-panel-4978)
-* [  TypeScript ](#tab-panel-4979)
+* [  JavaScript ](#tab-panel-5384)
+* [  TypeScript ](#tab-panel-5385)
 
 JavaScript
 
@@ -277,8 +277,8 @@ function Chat() {
 
 ### Configuration
 
-* [  wrangler.jsonc ](#tab-panel-4974)
-* [  wrangler.toml ](#tab-panel-4975)
+* [  wrangler.jsonc ](#tab-panel-5380)
+* [  wrangler.toml ](#tab-panel-5381)
 
 JSONC
 
@@ -290,7 +290,7 @@ JSONC
 
   // Set this to today's date
 
-  "compatibility_date": "2026-06-03",
+  "compatibility_date": "2026-06-10",
 
   "compatibility_flags": [
 
@@ -347,7 +347,7 @@ TOML
 
 # Set this to today's date
 
-compatibility_date = "2026-06-03"
+compatibility_date = "2026-06-10"
 
 compatibility_flags = ["nodejs_compat"]
 
@@ -427,7 +427,7 @@ Think has several ways to start or continue a turn. Choose based on who starts t
 
 Use `saveMessages()` when the caller owns the trigger and can wait for the turn to finish. Use [submitMessages()](https://developers.cloudflare.com/agents/harnesses/think/programmatic-submissions/) when timeout ambiguity would make retries unsafe.
 
-Use `chat()` for low-level parent-to-child streaming when your code owns forwarding, cancellation, and replay policy. Use [Agent tools](https://developers.cloudflare.com/agents/runtime/execution/agent-tools/) when a parent model or workflow delegates to a child agent and you want retained child runs, event replay, abort bridging, and UI drill-in.
+Use `chat()` for low-level parent-to-child streaming when your code owns forwarding, cancellation, and replay policy. Use [Agents as tools](https://developers.cloudflare.com/agents/runtime/execution/agent-tools/) when a parent model or workflow delegates to a child agent and you want retained child runs, event replay, abort bridging, and UI drill-in.
 
 Use [startFiber()](https://developers.cloudflare.com/agents/runtime/execution/durable-execution/#startfiber) outside Think when the durable unit is an application job around a turn: accepting a webhook once, restoring a serialized channel or thread target, posting a visible reply, or recording app-level recovery policy. Think submissions own conversation admission and turn serialization; managed fibers own external job acceptance, idempotent side effects, and application recovery.
 

@@ -28,8 +28,8 @@ AssemblyAI's Universal 3 Pro speech recognition model for high-accuracy transcri
 
 ## Usage
 
-* [ TypeScript ](#tab-panel-264)
-* [ cURL ](#tab-panel-265)
+* [ TypeScript ](#tab-panel-304)
+* [ cURL ](#tab-panel-305)
 
 TypeScript
 
@@ -73,8 +73,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 ```
 
-* [ Output ](#tab-panel-272)
-* [ Raw response ](#tab-panel-273)
+* [ Output ](#tab-panel-312)
+* [ Raw response ](#tab-panel-313)
 
 The sun rises in the east and sets in the west. This simple fact has been observed by humans for thousands of years.
 
@@ -439,8 +439,8 @@ The sun rises in the east and sets in the west. This simple fact has been observ
 
 **With Language Code**  — Transcribe with an explicit language code 
 
-* [ TypeScript ](#tab-panel-266)
-* [ cURL ](#tab-panel-267)
+* [ TypeScript ](#tab-panel-306)
+* [ cURL ](#tab-panel-307)
 
 TypeScript
 
@@ -486,8 +486,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 ```
 
-* [ Output ](#tab-panel-276)
-* [ Raw response ](#tab-panel-277)
+* [ Output ](#tab-panel-316)
+* [ Raw response ](#tab-panel-317)
 
 In the heart of the city, there is a large park where people go to relax and enjoy nature. The park has a beautiful pond with ducks and swans.
 
@@ -934,8 +934,8 @@ In the heart of the city, there is a large park where people go to relax and enj
 
 **With Key Terms**  — Improve accuracy for domain-specific vocabulary 
 
-* [ TypeScript ](#tab-panel-270)
-* [ cURL ](#tab-panel-271)
+* [ TypeScript ](#tab-panel-310)
+* [ cURL ](#tab-panel-311)
 
 TypeScript
 
@@ -997,8 +997,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 ```
 
-* [ Output ](#tab-panel-278)
-* [ Raw response ](#tab-panel-279)
+* [ Output ](#tab-panel-318)
+* [ Raw response ](#tab-panel-319)
 
 In the kitchen, the aroma of freshly baked bread filled the air. The loaves were golden brown and crusty on the outside and soft and warm on the inside.
 
@@ -1445,8 +1445,8 @@ In the kitchen, the aroma of freshly baked bread filled the air. The loaves were
 
 **Speaker Diarization**  — Identify different speakers in the audio 
 
-* [ TypeScript ](#tab-panel-268)
-* [ cURL ](#tab-panel-269)
+* [ TypeScript ](#tab-panel-308)
+* [ cURL ](#tab-panel-309)
 
 TypeScript
 
@@ -1492,8 +1492,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 ```
 
-* [ Output ](#tab-panel-274)
-* [ Raw response ](#tab-panel-275)
+* [ Output ](#tab-panel-314)
+* [ Raw response ](#tab-panel-315)
 
 The train chugged along the tracks, carrying passengers to their destinations. The rhythmic sound of the wheels on the rails was soothing.
 
@@ -1858,8 +1858,8 @@ The train chugged along the tracks, carrying passengers to their destinations. T
 
 ## Parameters
 
-* [ Input ](#tab-panel-280)
-* [ Output ](#tab-panel-281)
+* [ Input ](#tab-panel-320)
+* [ Output ](#tab-panel-321)
 
 audio\_end\_at
 
@@ -2011,9 +2011,9 @@ words
 
 ## API Schemas (Raw)
 
-Input 
+Input [ ](https://developers.cloudflare.com/ai/models/assemblyai/universal-3-pro/schema-input.json "Open") [ ](https://developers.cloudflare.com/ai/models/assemblyai/universal-3-pro/schema-input.json "Download") 
 
-Output 
+Output [ ](https://developers.cloudflare.com/ai/models/assemblyai/universal-3-pro/schema-output.json "Open") [ ](https://developers.cloudflare.com/ai/models/assemblyai/universal-3-pro/schema-output.json "Download") 
 
 ```json
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/ai/","name":"AI"}},{"@type":"ListItem","position":3,"item":{"@id":"/ai/models/","name":"Models"}}]}

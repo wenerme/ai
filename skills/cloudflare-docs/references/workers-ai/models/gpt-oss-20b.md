@@ -29,9 +29,9 @@ OpenAI's open-weight models designed for powerful reasoning, agentic tasks, and 
 
 ## Usage
 
-* [  TypeScript ](#tab-panel-4309)
-* [  Python ](#tab-panel-4310)
-* [  curl ](#tab-panel-4311)
+* [  TypeScript ](#tab-panel-4695)
+* [  Python ](#tab-panel-4696)
+* [  curl ](#tab-panel-4697)
 
 ```
 
@@ -120,8 +120,8 @@ This model supports three different API formats:
 
 Synchronous — Send a request and receive a complete response 
 
-* [ Input ](#tab-panel-4312)
-* [ Output ](#tab-panel-4313)
+* [ Input ](#tab-panel-4698)
+* [ Output ](#tab-panel-4699)
 
 Input format
 
@@ -199,8 +199,8 @@ response
 
 Streaming — Send a request with \`stream: true\` and receive server-sent events 
 
-* [ Input ](#tab-panel-4314)
-* [ Output ](#tab-panel-4315)
+* [ Input ](#tab-panel-4700)
+* [ Output ](#tab-panel-4701)
 
 Input format
 
@@ -286,8 +286,8 @@ format
 
 Batch — Send multiple requests in a single API call 
 
-* [ Input ](#tab-panel-4316)
-* [ Output ](#tab-panel-4317)
+* [ Input ](#tab-panel-4702)
+* [ Output ](#tab-panel-4703)
 
 ▶requests\[\]
 
@@ -307,17 +307,17 @@ response
 
 ## API Schemas (Raw)
 
-Synchronous Input 
+ Synchronous Input [ ](https://developers.cloudflare.com/workers-ai/models/gpt-oss-20b/sync-input.json "Open") [ ](https://developers.cloudflare.com/workers-ai/models/gpt-oss-20b/sync-input.json "Download") 
 
-Synchronous Output 
+ Synchronous Output [ ](https://developers.cloudflare.com/workers-ai/models/gpt-oss-20b/sync-output.json "Open") [ ](https://developers.cloudflare.com/workers-ai/models/gpt-oss-20b/sync-output.json "Download") 
 
-Streaming Input 
+ Streaming Input [ ](https://developers.cloudflare.com/workers-ai/models/gpt-oss-20b/streaming-input.json "Open") [ ](https://developers.cloudflare.com/workers-ai/models/gpt-oss-20b/streaming-input.json "Download") 
 
-Streaming Output 
+ Streaming Output [ ](https://developers.cloudflare.com/workers-ai/models/gpt-oss-20b/streaming-output.json "Open") [ ](https://developers.cloudflare.com/workers-ai/models/gpt-oss-20b/streaming-output.json "Download") 
 
-Batch Input 
+ Batch Input [ ](https://developers.cloudflare.com/workers-ai/models/gpt-oss-20b/batch-input.json "Open") [ ](https://developers.cloudflare.com/workers-ai/models/gpt-oss-20b/batch-input.json "Download") 
 
-Batch Output 
+ Batch Output [ ](https://developers.cloudflare.com/workers-ai/models/gpt-oss-20b/batch-output.json "Open") [ ](https://developers.cloudflare.com/workers-ai/models/gpt-oss-20b/batch-output.json "Download") 
 
 ```json
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/workers-ai/","name":"Workers AI"}},{"@type":"ListItem","position":3,"item":{"@id":"/workers-ai/models/","name":"Models"}}]}

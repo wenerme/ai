@@ -111,6 +111,7 @@ paths:
                   description: New name for the API key
 servers:
   - url: https://openrouter.ai/api/v1
+    description: Production server
 components:
   schemas:
     KeysHashPatchRequestBodyContentApplicationJsonSchemaLimitReset:
@@ -448,7 +449,53 @@ components:
 
 ```
 
-## SDK Code Examples
+## Examples
+
+
+
+**Request**
+
+```json
+{
+  "disabled": false,
+  "include_byok_in_limit": true,
+  "limit": 75,
+  "limit_reset": "daily",
+  "name": "Updated API Key Name"
+}
+```
+
+**Response**
+
+```json
+{
+  "data": {
+    "byok_usage": 17.38,
+    "byok_usage_daily": 17.38,
+    "byok_usage_monthly": 17.38,
+    "byok_usage_weekly": 17.38,
+    "created_at": "2025-08-24T10:30:00Z",
+    "creator_user_id": "user_2dHFtVWx2n56w6HkM0000000000",
+    "disabled": false,
+    "hash": "f01d52606dc8f0a8303a7b5cc3fa07109c2e346cec7c0a16b40de462992ce943",
+    "include_byok_in_limit": true,
+    "label": "Updated API Key Name",
+    "limit": 75,
+    "limit_remaining": 49.5,
+    "limit_reset": "daily",
+    "name": "Updated API Key Name",
+    "updated_at": "2025-08-24T16:00:00Z",
+    "usage": 25.5,
+    "usage_daily": 25.5,
+    "usage_monthly": 25.5,
+    "usage_weekly": 25.5,
+    "workspace_id": "0df9e665-d932-5740-b2c7-b52af166bc11",
+    "expires_at": null
+  }
+}
+```
+
+**SDK Code**
 
 ```python API Keys_updateKeys_example
 import requests

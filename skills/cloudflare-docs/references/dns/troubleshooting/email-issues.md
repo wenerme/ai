@@ -103,11 +103,11 @@ Cloudflare does not proxy email traffic (SMTP, port 25) by default. Unless you h
 
 ## Is Email Routing turned on?
 
-If [Email Routing](https://developers.cloudflare.com/email-routing/) is turned on, Cloudflare manages your MX records and may create additional DNS records automatically.
+If [Email Routing](https://developers.cloudflare.com/email-service/) is turned on, Cloudflare manages your MX records and may create additional DNS records automatically.
 
 [ Go to **Email Routing** ](https://dash.cloudflare.com/?to=/:account/:zone/email/routing) 
 
-If Email Routing is turned on but you use a different mail provider, the Email Routing MX records may conflict with your provider's records. You can [turn off Email Routing](https://developers.cloudflare.com/email-routing/setup/disable-email-routing/) to remove the managed records and configure your own.
+If Email Routing is turned on but you use a different mail provider, the Email Routing MX records may conflict with your provider's records. You can [turn off Email Routing](https://developers.cloudflare.com/email-service/configuration/domains/#remove-a-domain-from-email-routing) to remove the managed records and configure your own.
 
 ---
 

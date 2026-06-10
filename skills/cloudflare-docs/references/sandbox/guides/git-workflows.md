@@ -16,8 +16,8 @@ This guide shows you how to clone repositories, manage branches, and automate Gi
 
 ## Clone repositories
 
-* [  JavaScript ](#tab-panel-7755)
-* [  TypeScript ](#tab-panel-7756)
+* [  JavaScript ](#tab-panel-10164)
+* [  TypeScript ](#tab-panel-10165)
 
 JavaScript
 
@@ -111,8 +111,8 @@ await sandbox.gitCheckout('https://github.com/user/my-app', {
 
 Use a personal access token in the URL:
 
-* [  JavaScript ](#tab-panel-7745)
-* [  TypeScript ](#tab-panel-7746)
+* [  JavaScript ](#tab-panel-10154)
+* [  TypeScript ](#tab-panel-10155)
 
 JavaScript
 
@@ -150,8 +150,8 @@ Embedding a token in the URL passes the credential directly into the sandbox. Fo
 
 Clone a repository and run build steps:
 
-* [  JavaScript ](#tab-panel-7747)
-* [  TypeScript ](#tab-panel-7748)
+* [  JavaScript ](#tab-panel-10156)
+* [  TypeScript ](#tab-panel-10157)
 
 JavaScript
 
@@ -199,8 +199,8 @@ console.log('Build complete');
 
 ## Work with branches
 
-* [  JavaScript ](#tab-panel-7749)
-* [  TypeScript ](#tab-panel-7750)
+* [  JavaScript ](#tab-panel-10158)
+* [  TypeScript ](#tab-panel-10159)
 
 JavaScript
 
@@ -242,8 +242,8 @@ await sandbox.exec('cd repo && git checkout -b new-feature');
 
 ## Make changes and commit
 
-* [  JavaScript ](#tab-panel-7757)
-* [  TypeScript ](#tab-panel-7758)
+* [  JavaScript ](#tab-panel-10166)
+* [  TypeScript ](#tab-panel-10167)
 
 JavaScript
 
@@ -317,8 +317,8 @@ await sandbox.exec('cd repo && git commit -m "Update README"');
 
 Verify your token is set:
 
-* [  JavaScript ](#tab-panel-7753)
-* [  TypeScript ](#tab-panel-7754)
+* [  JavaScript ](#tab-panel-10162)
+* [  TypeScript ](#tab-panel-10163)
 
 JavaScript
 
@@ -360,8 +360,8 @@ await sandbox.gitCheckout(repoUrl);
 
 Use shallow clone:
 
-* [  JavaScript ](#tab-panel-7751)
-* [  TypeScript ](#tab-panel-7752)
+* [  JavaScript ](#tab-panel-10160)
+* [  TypeScript ](#tab-panel-10161)
 
 JavaScript
 

@@ -37,8 +37,8 @@ When using the Sandbox SDK from Workers or Durable Objects, you are subject to [
 
 Enable WebSocket transport to multiplex all SDK calls over a single persistent connection:
 
-* [  wrangler.jsonc ](#tab-panel-7859)
-* [  wrangler.toml ](#tab-panel-7860)
+* [  wrangler.jsonc ](#tab-panel-10276)
+* [  wrangler.toml ](#tab-panel-10277)
 
 JSONC
 

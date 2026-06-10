@@ -28,8 +28,8 @@ Phoenix 1.0 is a model by Leonardo.Ai that generates images with exceptional pro
 
 ## Usage
 
-* [  TypeScript ](#tab-panel-4475)
-* [  curl ](#tab-panel-4476)
+* [  TypeScript ](#tab-panel-4861)
+* [  curl ](#tab-panel-4862)
 
 ```
 
@@ -95,8 +95,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 ## Parameters
 
-* [ Input ](#tab-panel-4477)
-* [ Output ](#tab-panel-4478)
+* [ Input ](#tab-panel-4863)
+* [ Output ](#tab-panel-4864)
 
 prompt
 
@@ -130,9 +130,9 @@ The binding returns a `ReadableStream` with the output (check the model's output
 
 ## API Schemas (Raw)
 
-Input 
+Input [ ](https://developers.cloudflare.com/workers-ai/models/phoenix-1.0/schema-input.json "Open") [ ](https://developers.cloudflare.com/workers-ai/models/phoenix-1.0/schema-input.json "Download") 
 
-Output 
+Output [ ](https://developers.cloudflare.com/workers-ai/models/phoenix-1.0/schema-output.json "Open") [ ](https://developers.cloudflare.com/workers-ai/models/phoenix-1.0/schema-output.json "Download") 
 
 ```json
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/workers-ai/","name":"Workers AI"}},{"@type":"ListItem","position":3,"item":{"@id":"/workers-ai/models/","name":"Models"}}]}

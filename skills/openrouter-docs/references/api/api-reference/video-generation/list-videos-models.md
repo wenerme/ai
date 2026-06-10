@@ -56,6 +56,7 @@ paths:
                 $ref: '#/components/schemas/InternalServerResponse'
 servers:
   - url: https://openrouter.ai/api/v1
+    description: Production server
 components:
   schemas:
     VideoModelSupportedAspectRatiosItems:
@@ -317,7 +318,48 @@ components:
 
 ```
 
-## SDK Code Examples
+## Examples
+
+
+
+**Response**
+
+```json
+{
+  "data": [
+    {
+      "allowed_passthrough_parameters": [],
+      "canonical_slug": "google/veo-3.1",
+      "created": 1700000000,
+      "generate_audio": true,
+      "id": "google/veo-3.1",
+      "name": "Veo 3.1",
+      "seed": null,
+      "supported_aspect_ratios": [
+        "16:9"
+      ],
+      "supported_durations": [
+        5,
+        8
+      ],
+      "supported_frame_images": [
+        "first_frame",
+        "last_frame"
+      ],
+      "supported_resolutions": [
+        "720p"
+      ],
+      "supported_sizes": null,
+      "description": "Google video generation model",
+      "pricing_skus": {
+        "generate": "0.50"
+      }
+    }
+  ]
+}
+```
+
+**SDK Code**
 
 ```python Video Generation_listVideosModels_example
 import requests

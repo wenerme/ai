@@ -28,8 +28,8 @@ xAI's next-generation video generation model. Generates, edits, and extends vide
 
 ## Usage
 
-* [ TypeScript ](#tab-panel-1698)
-* [ cURL ](#tab-panel-1699)
+* [ TypeScript ](#tab-panel-1968)
+* [ cURL ](#tab-panel-1969)
 
 TypeScript
 
@@ -89,8 +89,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 ```
 
-* [ Output ](#tab-panel-1696)
-* [ Raw response ](#tab-panel-1697)
+* [ Output ](#tab-panel-1966)
+* [ Raw response ](#tab-panel-1967)
 
 ```
 
@@ -117,8 +117,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 ## Parameters
 
-* [ Input ](#tab-panel-1700)
-* [ Output ](#tab-panel-1701)
+* [ Input ](#tab-panel-1970)
+* [ Output ](#tab-panel-1971)
 
 \_operation
 
@@ -170,9 +170,9 @@ video
 
 ## API Schemas (Raw)
 
-Input 
+Input [ ](https://developers.cloudflare.com/ai/models/xai/grok-imagine-video-1.5-preview/schema-input.json "Open") [ ](https://developers.cloudflare.com/ai/models/xai/grok-imagine-video-1.5-preview/schema-input.json "Download") 
 
-Output 
+Output [ ](https://developers.cloudflare.com/ai/models/xai/grok-imagine-video-1.5-preview/schema-output.json "Open") [ ](https://developers.cloudflare.com/ai/models/xai/grok-imagine-video-1.5-preview/schema-output.json "Download") 
 
 ```json
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/ai/","name":"AI"}},{"@type":"ListItem","position":3,"item":{"@id":"/ai/models/","name":"Models"}}]}

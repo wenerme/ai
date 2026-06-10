@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 # Code interpreter with Workers AI
 
-**Last reviewed:**  3 months ago 
+**Last reviewed:**  4 months ago 
 
 Build a powerful code interpreter that gives the [gpt-oss model](https://developers.cloudflare.com/workers-ai/models/gpt-oss-120b/) on Workers AI the ability to execute Python code using the Cloudflare Sandbox SDK.
 
@@ -140,8 +140,8 @@ async function handleAIRequest(input: string, env: Env): Promise<string> {
 
 The template includes the proper Wrangler configuration:
 
-* [  wrangler.jsonc ](#tab-panel-7863)
-* [  wrangler.toml ](#tab-panel-7864)
+* [  wrangler.jsonc ](#tab-panel-10280)
+* [  wrangler.toml ](#tab-panel-10281)
 
 JSONC
 
@@ -155,7 +155,7 @@ JSONC
 
   // Set this to today's date
 
-  "compatibility_date": "2026-04-29",
+  "compatibility_date": "2026-06-10",
 
   "ai": {
 
@@ -212,7 +212,7 @@ main = "src/index.ts"
 
 # Set this to today's date
 
-compatibility_date = "2026-04-29"
+compatibility_date = "2026-06-10"
 
 
 [ai]

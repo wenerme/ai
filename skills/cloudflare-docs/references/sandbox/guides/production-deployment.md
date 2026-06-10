@@ -16,7 +16,7 @@ Only required for preview URLs
 
 This guide covers `exposePort()` in production. Custom domain setup is ONLY needed if you use `exposePort()` to expose services from sandboxes. If your application does not use `exposePort()`, you can deploy to `.workers.dev` without this configuration.
 
-For development or `.workers.dev` deployments that need public URLs, [sandbox.tunnels](https://developers.cloudflare.com/sandbox/api/tunnels/) is a zero-config alternative — we recommend `exposePort()` for production today; named tunnels for production are planned for a future release.
+For public URLs without custom-domain setup, [sandbox.tunnels](https://developers.cloudflare.com/sandbox/api/tunnels/) is an alternative: quick tunnels for development, named tunnels for stable hostnames in production.
 
 Deploy your Sandbox SDK application to production with preview URL support. Preview URLs require wildcard DNS routing because they generate unique subdomains for each exposed port: `https://8080-abc123.yourdomain.com`.
 
@@ -55,8 +55,8 @@ This routes all subdomains through Cloudflare's proxy. The IP address `192.0.2.0
 
 Add a wildcard route to your Wrangler configuration:
 
-* [  wrangler.jsonc ](#tab-panel-8372)
-* [  wrangler.toml ](#tab-panel-8373)
+* [  wrangler.jsonc ](#tab-panel-10242)
+* [  wrangler.toml ](#tab-panel-10243)
 
 JSONC
 
@@ -72,7 +72,7 @@ JSONC
 
   // Set this to today's date
 
-  "compatibility_date": "2026-05-26",
+  "compatibility_date": "2026-06-10",
 
   "routes": [
 
@@ -103,7 +103,7 @@ main = "src/index.ts"
 
 # Set this to today's date
 
-compatibility_date = "2026-05-26"
+compatibility_date = "2026-06-10"
 
 
 [[routes]]

@@ -20,8 +20,8 @@ The `watch()` method returns an SSE (Server-Sent Events) stream that you consume
 
 Start by watching a directory for any changes:
 
-* [  JavaScript ](#tab-panel-8065)
-* [  TypeScript ](#tab-panel-8066)
+* [  JavaScript ](#tab-panel-10126)
+* [  TypeScript ](#tab-panel-10127)
 
 JavaScript
 
@@ -94,8 +94,8 @@ Filesystem change events (`event.eventType`) include:
 
 Use `include` patterns to watch only specific file types:
 
-* [  JavaScript ](#tab-panel-8067)
-* [  TypeScript ](#tab-panel-8068)
+* [  JavaScript ](#tab-panel-10128)
+* [  TypeScript ](#tab-panel-10129)
 
 JavaScript
 
@@ -169,8 +169,8 @@ Common include patterns:
 
 Use `exclude` patterns to skip certain directories or files:
 
-* [  JavaScript ](#tab-panel-8069)
-* [  TypeScript ](#tab-panel-8070)
+* [  JavaScript ](#tab-panel-10130)
+* [  TypeScript ](#tab-panel-10131)
 
 JavaScript
 
@@ -238,8 +238,8 @@ The following patterns are excluded by default: `.git`, `node_modules`, `.DS_Sto
 
 Trigger builds automatically when source files are modified:
 
-* [  JavaScript ](#tab-panel-8081)
-* [  TypeScript ](#tab-panel-8082)
+* [  JavaScript ](#tab-panel-10142)
+* [  TypeScript ](#tab-panel-10143)
 
 JavaScript
 
@@ -377,8 +377,8 @@ for await (const event of parseSSEStream<FileWatchSSEEvent>(stream)) {
 
 Re-run tests when test files are modified:
 
-* [  JavaScript ](#tab-panel-8071)
-* [  TypeScript ](#tab-panel-8072)
+* [  JavaScript ](#tab-panel-10132)
+* [  TypeScript ](#tab-panel-10133)
 
 JavaScript
 
@@ -448,8 +448,8 @@ for await (const event of parseSSEStream<FileWatchSSEEvent>(stream)) {
 
 Re-index only changed files instead of rescanning an entire directory tree:
 
-* [  JavaScript ](#tab-panel-8075)
-* [  TypeScript ](#tab-panel-8076)
+* [  JavaScript ](#tab-panel-10136)
+* [  TypeScript ](#tab-panel-10137)
 
 JavaScript
 
@@ -553,8 +553,8 @@ for await (const event of parseSSEStream<FileWatchSSEEvent>(stream)) {
 
 Extract event processing into a reusable function that handles stream lifecycle:
 
-* [  JavaScript ](#tab-panel-8091)
-* [  TypeScript ](#tab-panel-8092)
+* [  JavaScript ](#tab-panel-10152)
+* [  TypeScript ](#tab-panel-10153)
 
 JavaScript
 
@@ -716,8 +716,8 @@ await watchFiles(
 
 Avoid excessive operations by collecting changes before processing:
 
-* [  JavaScript ](#tab-panel-8085)
-* [  TypeScript ](#tab-panel-8086)
+* [  JavaScript ](#tab-panel-10146)
+* [  TypeScript ](#tab-panel-10147)
 
 JavaScript
 
@@ -827,8 +827,8 @@ for await (const event of parseSSEStream<FileWatchSSEEvent>(stream)) {
 
 Watch only the top level of a directory, without descending into subdirectories:
 
-* [  JavaScript ](#tab-panel-8073)
-* [  TypeScript ](#tab-panel-8074)
+* [  JavaScript ](#tab-panel-10134)
+* [  TypeScript ](#tab-panel-10135)
 
 JavaScript
 
@@ -906,8 +906,8 @@ The stream ends naturally when the container sleeps or shuts down. There are two
 
 Pass an `AbortSignal` to `parseSSEStream`. Aborting the signal cancels the stream reader, which propagates cleanup to the server. This is the recommended approach when you need to cancel the watch from outside the consuming loop:
 
-* [  JavaScript ](#tab-panel-8079)
-* [  TypeScript ](#tab-panel-8080)
+* [  JavaScript ](#tab-panel-10140)
+* [  TypeScript ](#tab-panel-10141)
 
 JavaScript
 
@@ -987,8 +987,8 @@ console.log("Watch stopped");
 
 Breaking out of the `for await` loop also cancels the stream:
 
-* [  JavaScript ](#tab-panel-8087)
-* [  TypeScript ](#tab-panel-8088)
+* [  JavaScript ](#tab-panel-10148)
+* [  TypeScript ](#tab-panel-10149)
 
 JavaScript
 
@@ -1080,8 +1080,8 @@ Note
 
 `include` and `exclude` are mutually exclusive. Use one or the other, not both. If you need to watch specific file types while ignoring certain directories, use `include` patterns that match the files you want.
 
-* [  JavaScript ](#tab-panel-8083)
-* [  TypeScript ](#tab-panel-8084)
+* [  JavaScript ](#tab-panel-10144)
+* [  TypeScript ](#tab-panel-10145)
 
 JavaScript
 
@@ -1159,8 +1159,8 @@ for await (const event of parseSSEStream<FileWatchSSEEvent>(stream2)) {
 
 Errors in your event handler do not stop the watch stream. Wrap handler logic in `try...catch` to prevent unhandled exceptions:
 
-* [  JavaScript ](#tab-panel-8089)
-* [  TypeScript ](#tab-panel-8090)
+* [  JavaScript ](#tab-panel-10150)
+* [  TypeScript ](#tab-panel-10151)
 
 JavaScript
 
@@ -1260,8 +1260,8 @@ for await (const event of parseSSEStream<FileWatchSSEEvent>(stream)) {
 
 Watching a non-existent path returns an error. Verify the path exists before starting a watch:
 
-* [  JavaScript ](#tab-panel-8077)
-* [  TypeScript ](#tab-panel-8078)
+* [  JavaScript ](#tab-panel-10138)
+* [  TypeScript ](#tab-panel-10139)
 
 JavaScript
 

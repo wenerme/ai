@@ -99,8 +99,12 @@ paths:
                 documents:
                   type: array
                   items:
-                    type: string
-                  description: The list of documents to rerank
+                    $ref: >-
+                      #/components/schemas/RerankPostRequestBodyContentApplicationJsonSchemaDocumentsItems
+                  description: >-
+                    The list of documents to rerank. Documents may be plain
+                    strings, or structured objects with `text` and/or `image`
+                    for multimodal models.
                 model:
                   type: string
                   description: The rerank model to use
@@ -119,8 +123,33 @@ paths:
                 - query
 servers:
   - url: https://openrouter.ai/api/v1
+    description: Production server
 components:
   schemas:
+    RerankPostRequestBodyContentApplicationJsonSchemaDocumentsItems1:
+      type: object
+      properties:
+        image:
+          type: string
+          description: >-
+            An image associated with the document, as a remote URL (http/https)
+            or a base64-encoded data URI (data:image/...).
+        text:
+          type: string
+          description: The document text
+      description: >-
+        A structured document with optional text and/or image content. At least
+        one of `text` or `image` must be provided.
+      title: RerankPostRequestBodyContentApplicationJsonSchemaDocumentsItems1
+    RerankPostRequestBodyContentApplicationJsonSchemaDocumentsItems:
+      oneOf:
+        - type: string
+        - $ref: >-
+            #/components/schemas/RerankPostRequestBodyContentApplicationJsonSchemaDocumentsItems1
+      description: >-
+        A document to rerank. Either a plain string, or a structured object with
+        optional `text` and/or `image`.
+      title: RerankPostRequestBodyContentApplicationJsonSchemaDocumentsItems
     RerankPostRequestBodyContentApplicationJsonSchemaProviderDataCollection:
       type: string
       enum:
@@ -164,6 +193,7 @@ components:
         - Crucible
         - Crusoe
         - Darkbloom
+        - Decart
         - DeepInfra
         - DeepSeek
         - DekaLLM
@@ -533,12 +563,13 @@ components:
     RerankPostResponsesContentApplicationJsonSchemaResultsItemsDocument:
       type: object
       properties:
+        image:
+          type: string
+          description: The image (URL or data URI) from the original document
         text:
           type: string
           description: The document text
-      required:
-        - text
-      description: The document object containing the original text
+      description: The document object echoing the original input (text and/or image)
       title: RerankPostResponsesContentApplicationJsonSchemaResultsItemsDocument
     RerankPostResponsesContentApplicationJsonSchemaResultsItems:
       type: object
@@ -546,7 +577,7 @@ components:
         document:
           $ref: >-
             #/components/schemas/RerankPostResponsesContentApplicationJsonSchemaResultsItemsDocument
-          description: The document object containing the original text
+          description: The document object echoing the original input (text and/or image)
         index:
           type: integer
           description: Index of the document in the original input list
@@ -906,7 +937,47 @@ components:
 
 ```
 
-## SDK Code Examples
+## Examples
+
+
+
+**Request**
+
+```json
+{
+  "documents": [
+    "Paris is the capital of France.",
+    "Berlin is the capital of Germany."
+  ],
+  "model": "cohere/rerank-v3.5",
+  "query": "What is the capital of France?",
+  "top_n": 3
+}
+```
+
+**Response**
+
+```json
+{
+  "model": "cohere/rerank-v3.5",
+  "results": [
+    {
+      "document": {
+        "text": "Paris is the capital of France."
+      },
+      "index": 0,
+      "relevance_score": 0.98
+    }
+  ],
+  "id": "gen-rerank-1234567890-abc",
+  "usage": {
+    "search_units": 1,
+    "total_tokens": 150
+  }
+}
+```
+
+**SDK Code**
 
 ```python
 import requests

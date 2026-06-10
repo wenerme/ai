@@ -84,6 +84,7 @@ paths:
                 $ref: '#/components/schemas/InternalServerResponse'
 servers:
   - url: https://openrouter.ai/api/v1
+    description: Production server
 components:
   schemas:
     ModelsGetParametersCategory:
@@ -538,7 +539,63 @@ components:
 
 ```
 
-## SDK Code Examples
+## Examples
+
+
+
+**Response**
+
+```json
+{
+  "data": [
+    {
+      "architecture": {
+        "input_modalities": [
+          "text"
+        ],
+        "modality": "text->text",
+        "output_modalities": [
+          "text"
+        ],
+        "instruct_type": "chatml",
+        "tokenizer": "GPT"
+      },
+      "canonical_slug": "openai/gpt-4",
+      "context_length": 8192,
+      "created": 1692901234,
+      "default_parameters": null,
+      "id": "openai/gpt-4",
+      "links": {
+        "details": "/api/v1/models/openai/gpt-5.4/endpoints"
+      },
+      "name": "GPT-4",
+      "per_request_limits": null,
+      "pricing": {
+        "completion": "0.00006",
+        "prompt": "0.00003",
+        "image": "0",
+        "request": "0"
+      },
+      "supported_parameters": [
+        "temperature",
+        "top_p",
+        "max_tokens"
+      ],
+      "supported_voices": null,
+      "top_provider": {
+        "is_moderated": true,
+        "context_length": 8192,
+        "max_completion_tokens": 4096
+      },
+      "description": "GPT-4 is a large multimodal model that can solve difficult problems with greater accuracy.",
+      "expiration_date": null,
+      "knowledge_cutoff": null
+    }
+  ]
+}
+```
+
+**SDK Code**
 
 ```python Models_getModels_example
 import requests

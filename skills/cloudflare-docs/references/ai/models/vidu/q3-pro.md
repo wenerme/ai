@@ -28,8 +28,8 @@ Vidu Q3 Pro is a high-quality video generation model supporting text-to-video, i
 
 ## Usage
 
-* [ TypeScript ](#tab-panel-1520)
-* [ cURL ](#tab-panel-1521)
+* [ TypeScript ](#tab-panel-1790)
+* [ cURL ](#tab-panel-1791)
 
 TypeScript
 
@@ -85,8 +85,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 ```
 
-* [ Output ](#tab-panel-1518)
-* [ Raw response ](#tab-panel-1519)
+* [ Output ](#tab-panel-1788)
+* [ Raw response ](#tab-panel-1789)
 
 ```
 
@@ -115,8 +115,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 **Portrait Aspect Ratio**  — Vertical video for social media 
 
-* [ TypeScript ](#tab-panel-1526)
-* [ cURL ](#tab-panel-1527)
+* [ TypeScript ](#tab-panel-1796)
+* [ cURL ](#tab-panel-1797)
 
 TypeScript
 
@@ -178,8 +178,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 ```
 
-* [ Output ](#tab-panel-1522)
-* [ Raw response ](#tab-panel-1523)
+* [ Output ](#tab-panel-1792)
+* [ Raw response ](#tab-panel-1793)
 
 ```
 
@@ -206,8 +206,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 **Silent Video**  — Generate video without audio 
 
-* [ TypeScript ](#tab-panel-1530)
-* [ cURL ](#tab-panel-1531)
+* [ TypeScript ](#tab-panel-1800)
+* [ cURL ](#tab-panel-1801)
 
 TypeScript
 
@@ -267,8 +267,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 ```
 
-* [ Output ](#tab-panel-1524)
-* [ Raw response ](#tab-panel-1525)
+* [ Output ](#tab-panel-1794)
+* [ Raw response ](#tab-panel-1795)
 
 ```
 
@@ -295,8 +295,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 **Square Format**  — Square video for product demos or social posts 
 
-* [ TypeScript ](#tab-panel-1532)
-* [ cURL ](#tab-panel-1533)
+* [ TypeScript ](#tab-panel-1802)
+* [ cURL ](#tab-panel-1803)
 
 TypeScript
 
@@ -358,8 +358,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 ```
 
-* [ Output ](#tab-panel-1528)
-* [ Raw response ](#tab-panel-1529)
+* [ Output ](#tab-panel-1798)
+* [ Raw response ](#tab-panel-1799)
 
 ```
 
@@ -386,8 +386,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 ## Parameters
 
-* [ Input ](#tab-panel-1534)
-* [ Output ](#tab-panel-1535)
+* [ Input ](#tab-panel-1804)
+* [ Output ](#tab-panel-1805)
 
 aspect\_ratio
 
@@ -423,9 +423,9 @@ video
 
 ## API Schemas (Raw)
 
-Input 
+Input [ ](https://developers.cloudflare.com/ai/models/vidu/q3-pro/schema-input.json "Open") [ ](https://developers.cloudflare.com/ai/models/vidu/q3-pro/schema-input.json "Download") 
 
-Output 
+Output [ ](https://developers.cloudflare.com/ai/models/vidu/q3-pro/schema-output.json "Open") [ ](https://developers.cloudflare.com/ai/models/vidu/q3-pro/schema-output.json "Download") 
 
 ```json
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/ai/","name":"AI"}},{"@type":"ListItem","position":3,"item":{"@id":"/ai/models/","name":"Models"}}]}

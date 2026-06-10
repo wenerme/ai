@@ -116,6 +116,46 @@ Create Credential
 
         - `"static_bearer"StaticBearer`
 
+    - `class BetaManagedAgentsEnvironmentVariableCreateParams:`
+
+      Parameters for creating an environment variable credential.
+
+      - `required BetaManagedAgentsCredentialNetworkingParams Networking`
+
+        Outbound hosts the secret value is substituted on.
+
+        - `class BetaManagedAgentsUnrestrictedCredentialNetworkingParams:`
+
+          Substitute the secret on any host the session's Environment network policy permits egress to. The Environment's network policy is the only boundary on where the secret can reach.
+
+          - `required Type Type`
+
+            - `"unrestricted"Unrestricted`
+
+        - `class BetaManagedAgentsLimitedCredentialNetworkingParams:`
+
+          Substitute the secret only on requests to the listed hosts.
+
+          - `required IReadOnlyList<string> AllowedHosts`
+
+            Hostnames on which the secret will be substituted. Each entry is a bare hostname (`api.example.com`), an IPv4 address (`192.0.2.1`), or a `*.`-prefixed wildcard (`*.example.com`). URLs, ports, paths, and IPv6 addresses are not accepted. At most 16 entries.
+
+          - `required Type Type`
+
+            - `"limited"Limited`
+
+      - `required string SecretName`
+
+        Name of the environment variable. Immutable after create.
+
+      - `required string SecretValue`
+
+        Secret value. Write-only; never returned in responses.
+
+      - `required Type Type`
+
+        - `"environment_variable"EnvironmentVariable`
+
   - `string? displayName`
 
     Body param: Human-readable name for the credential. Up to 255 characters.
@@ -179,6 +219,10 @@ Create Credential
     - `"cache-diagnosis-2026-04-07"CacheDiagnosis2026_04_07`
 
     - `"thinking-token-count-2026-05-13"ThinkingTokenCount2026_05_13`
+
+    - `"server-side-fallback-2026-06-01"ServerSideFallback2026_06_01`
+
+    - `"fallback-credit-2026-06-01"FallbackCredit2026_06_01`
 
 ### Returns
 
@@ -273,6 +317,42 @@ Create Credential
       - `required Type Type`
 
         - `"static_bearer"StaticBearer`
+
+    - `class BetaManagedAgentsEnvironmentVariableAuthResponse:`
+
+      Environment variable credential details. The secret value is never returned.
+
+      - `required Networking Networking`
+
+        Outbound hosts the secret value is substituted on.
+
+        - `class BetaManagedAgentsUnrestrictedCredentialNetworkingResponse:`
+
+          The secret is substituted on any host the session's Environment network policy permits egress to.
+
+          - `required Type Type`
+
+            - `"unrestricted"Unrestricted`
+
+        - `class BetaManagedAgentsLimitedCredentialNetworkingResponse:`
+
+          The secret is substituted only on requests to the listed hosts.
+
+          - `required IReadOnlyList<string> AllowedHosts`
+
+            Hostnames on which the secret will be substituted. An entry matches the request host exactly; a `*.`-prefixed entry matches any subdomain of the named domain but not the domain itself.
+
+          - `required Type Type`
+
+            - `"limited"Limited`
+
+      - `required string SecretName`
+
+        Name of the environment variable.
+
+      - `required Type Type`
+
+        - `"environment_variable"EnvironmentVariable`
 
   - `required DateTimeOffset CreatedAt`
 
@@ -422,6 +502,10 @@ List Credentials
 
     - `"thinking-token-count-2026-05-13"ThinkingTokenCount2026_05_13`
 
+    - `"server-side-fallback-2026-06-01"ServerSideFallback2026_06_01`
+
+    - `"fallback-credit-2026-06-01"FallbackCredit2026_06_01`
+
 ### Returns
 
 - `class CredentialListPageResponse:`
@@ -519,6 +603,42 @@ List Credentials
         - `required Type Type`
 
           - `"static_bearer"StaticBearer`
+
+      - `class BetaManagedAgentsEnvironmentVariableAuthResponse:`
+
+        Environment variable credential details. The secret value is never returned.
+
+        - `required Networking Networking`
+
+          Outbound hosts the secret value is substituted on.
+
+          - `class BetaManagedAgentsUnrestrictedCredentialNetworkingResponse:`
+
+            The secret is substituted on any host the session's Environment network policy permits egress to.
+
+            - `required Type Type`
+
+              - `"unrestricted"Unrestricted`
+
+          - `class BetaManagedAgentsLimitedCredentialNetworkingResponse:`
+
+            The secret is substituted only on requests to the listed hosts.
+
+            - `required IReadOnlyList<string> AllowedHosts`
+
+              Hostnames on which the secret will be substituted. An entry matches the request host exactly; a `*.`-prefixed entry matches any subdomain of the named domain but not the domain itself.
+
+            - `required Type Type`
+
+              - `"limited"Limited`
+
+        - `required string SecretName`
+
+          Name of the environment variable.
+
+        - `required Type Type`
+
+          - `"environment_variable"EnvironmentVariable`
 
     - `required DateTimeOffset CreatedAt`
 
@@ -665,6 +785,10 @@ Get Credential
 
     - `"thinking-token-count-2026-05-13"ThinkingTokenCount2026_05_13`
 
+    - `"server-side-fallback-2026-06-01"ServerSideFallback2026_06_01`
+
+    - `"fallback-credit-2026-06-01"FallbackCredit2026_06_01`
+
 ### Returns
 
 - `class BetaManagedAgentsCredential:`
@@ -758,6 +882,42 @@ Get Credential
       - `required Type Type`
 
         - `"static_bearer"StaticBearer`
+
+    - `class BetaManagedAgentsEnvironmentVariableAuthResponse:`
+
+      Environment variable credential details. The secret value is never returned.
+
+      - `required Networking Networking`
+
+        Outbound hosts the secret value is substituted on.
+
+        - `class BetaManagedAgentsUnrestrictedCredentialNetworkingResponse:`
+
+          The secret is substituted on any host the session's Environment network policy permits egress to.
+
+          - `required Type Type`
+
+            - `"unrestricted"Unrestricted`
+
+        - `class BetaManagedAgentsLimitedCredentialNetworkingResponse:`
+
+          The secret is substituted only on requests to the listed hosts.
+
+          - `required IReadOnlyList<string> AllowedHosts`
+
+            Hostnames on which the secret will be substituted. An entry matches the request host exactly; a `*.`-prefixed entry matches any subdomain of the named domain but not the domain itself.
+
+          - `required Type Type`
+
+            - `"limited"Limited`
+
+      - `required string SecretName`
+
+        Name of the environment variable.
+
+      - `required Type Type`
+
+        - `"environment_variable"EnvironmentVariable`
 
   - `required DateTimeOffset CreatedAt`
 
@@ -910,6 +1070,42 @@ Update Credential
 
         Updated static bearer token value.
 
+    - `class BetaManagedAgentsEnvironmentVariableUpdateParams:`
+
+      Parameters for updating an environment variable credential. `secret_name` is immutable.
+
+      - `required Type Type`
+
+        - `"environment_variable"EnvironmentVariable`
+
+      - `BetaManagedAgentsCredentialNetworkingParams? Networking`
+
+        Updated networking scope. Full replacement.
+
+        - `class BetaManagedAgentsUnrestrictedCredentialNetworkingParams:`
+
+          Substitute the secret on any host the session's Environment network policy permits egress to. The Environment's network policy is the only boundary on where the secret can reach.
+
+          - `required Type Type`
+
+            - `"unrestricted"Unrestricted`
+
+        - `class BetaManagedAgentsLimitedCredentialNetworkingParams:`
+
+          Substitute the secret only on requests to the listed hosts.
+
+          - `required IReadOnlyList<string> AllowedHosts`
+
+            Hostnames on which the secret will be substituted. Each entry is a bare hostname (`api.example.com`), an IPv4 address (`192.0.2.1`), or a `*.`-prefixed wildcard (`*.example.com`). URLs, ports, paths, and IPv6 addresses are not accepted. At most 16 entries.
+
+          - `required Type Type`
+
+            - `"limited"Limited`
+
+      - `string? SecretValue`
+
+        Updated secret value.
+
   - `string? displayName`
 
     Body param: Updated human-readable name for the credential. 1-255 characters.
@@ -973,6 +1169,10 @@ Update Credential
     - `"cache-diagnosis-2026-04-07"CacheDiagnosis2026_04_07`
 
     - `"thinking-token-count-2026-05-13"ThinkingTokenCount2026_05_13`
+
+    - `"server-side-fallback-2026-06-01"ServerSideFallback2026_06_01`
+
+    - `"fallback-credit-2026-06-01"FallbackCredit2026_06_01`
 
 ### Returns
 
@@ -1067,6 +1267,42 @@ Update Credential
       - `required Type Type`
 
         - `"static_bearer"StaticBearer`
+
+    - `class BetaManagedAgentsEnvironmentVariableAuthResponse:`
+
+      Environment variable credential details. The secret value is never returned.
+
+      - `required Networking Networking`
+
+        Outbound hosts the secret value is substituted on.
+
+        - `class BetaManagedAgentsUnrestrictedCredentialNetworkingResponse:`
+
+          The secret is substituted on any host the session's Environment network policy permits egress to.
+
+          - `required Type Type`
+
+            - `"unrestricted"Unrestricted`
+
+        - `class BetaManagedAgentsLimitedCredentialNetworkingResponse:`
+
+          The secret is substituted only on requests to the listed hosts.
+
+          - `required IReadOnlyList<string> AllowedHosts`
+
+            Hostnames on which the secret will be substituted. An entry matches the request host exactly; a `*.`-prefixed entry matches any subdomain of the named domain but not the domain itself.
+
+          - `required Type Type`
+
+            - `"limited"Limited`
+
+      - `required string SecretName`
+
+        Name of the environment variable.
+
+      - `required Type Type`
+
+        - `"environment_variable"EnvironmentVariable`
 
   - `required DateTimeOffset CreatedAt`
 
@@ -1203,6 +1439,10 @@ Delete Credential
 
     - `"thinking-token-count-2026-05-13"ThinkingTokenCount2026_05_13`
 
+    - `"server-side-fallback-2026-06-01"ServerSideFallback2026_06_01`
+
+    - `"fallback-credit-2026-06-01"FallbackCredit2026_06_01`
+
 ### Returns
 
 - `class BetaManagedAgentsDeletedCredential:`
@@ -1316,6 +1556,10 @@ Archive Credential
 
     - `"thinking-token-count-2026-05-13"ThinkingTokenCount2026_05_13`
 
+    - `"server-side-fallback-2026-06-01"ServerSideFallback2026_06_01`
+
+    - `"fallback-credit-2026-06-01"FallbackCredit2026_06_01`
+
 ### Returns
 
 - `class BetaManagedAgentsCredential:`
@@ -1409,6 +1653,42 @@ Archive Credential
       - `required Type Type`
 
         - `"static_bearer"StaticBearer`
+
+    - `class BetaManagedAgentsEnvironmentVariableAuthResponse:`
+
+      Environment variable credential details. The secret value is never returned.
+
+      - `required Networking Networking`
+
+        Outbound hosts the secret value is substituted on.
+
+        - `class BetaManagedAgentsUnrestrictedCredentialNetworkingResponse:`
+
+          The secret is substituted on any host the session's Environment network policy permits egress to.
+
+          - `required Type Type`
+
+            - `"unrestricted"Unrestricted`
+
+        - `class BetaManagedAgentsLimitedCredentialNetworkingResponse:`
+
+          The secret is substituted only on requests to the listed hosts.
+
+          - `required IReadOnlyList<string> AllowedHosts`
+
+            Hostnames on which the secret will be substituted. An entry matches the request host exactly; a `*.`-prefixed entry matches any subdomain of the named domain but not the domain itself.
+
+          - `required Type Type`
+
+            - `"limited"Limited`
+
+      - `required string SecretName`
+
+        Name of the environment variable.
+
+      - `required Type Type`
+
+        - `"environment_variable"EnvironmentVariable`
 
   - `required DateTimeOffset CreatedAt`
 
@@ -1544,6 +1824,10 @@ Validate Credential
     - `"cache-diagnosis-2026-04-07"CacheDiagnosis2026_04_07`
 
     - `"thinking-token-count-2026-05-13"ThinkingTokenCount2026_05_13`
+
+    - `"server-side-fallback-2026-06-01"ServerSideFallback2026_06_01`
+
+    - `"fallback-credit-2026-06-01"FallbackCredit2026_06_01`
 
 ### Returns
 
@@ -1770,6 +2054,42 @@ Console.WriteLine(betaManagedAgentsCredentialValidation);
 
         - `"static_bearer"StaticBearer`
 
+    - `class BetaManagedAgentsEnvironmentVariableAuthResponse:`
+
+      Environment variable credential details. The secret value is never returned.
+
+      - `required Networking Networking`
+
+        Outbound hosts the secret value is substituted on.
+
+        - `class BetaManagedAgentsUnrestrictedCredentialNetworkingResponse:`
+
+          The secret is substituted on any host the session's Environment network policy permits egress to.
+
+          - `required Type Type`
+
+            - `"unrestricted"Unrestricted`
+
+        - `class BetaManagedAgentsLimitedCredentialNetworkingResponse:`
+
+          The secret is substituted only on requests to the listed hosts.
+
+          - `required IReadOnlyList<string> AllowedHosts`
+
+            Hostnames on which the secret will be substituted. An entry matches the request host exactly; a `*.`-prefixed entry matches any subdomain of the named domain but not the domain itself.
+
+          - `required Type Type`
+
+            - `"limited"Limited`
+
+      - `required string SecretName`
+
+        Name of the environment variable.
+
+      - `required Type Type`
+
+        - `"environment_variable"EnvironmentVariable`
+
   - `required DateTimeOffset CreatedAt`
 
     A timestamp in RFC 3339 format
@@ -1793,6 +2113,32 @@ Console.WriteLine(betaManagedAgentsCredentialValidation);
   - `string? DisplayName`
 
     Human-readable name for the credential.
+
+### Beta Managed Agents Credential Networking Params
+
+- `class BetaManagedAgentsCredentialNetworkingParams: A class that can be one of several variants.union`
+
+  Substitute the secret on any host the session's Environment network policy permits egress to. The Environment's network policy is the only boundary on where the secret can reach.
+
+  - `class BetaManagedAgentsUnrestrictedCredentialNetworkingParams:`
+
+    Substitute the secret on any host the session's Environment network policy permits egress to. The Environment's network policy is the only boundary on where the secret can reach.
+
+    - `required Type Type`
+
+      - `"unrestricted"Unrestricted`
+
+  - `class BetaManagedAgentsLimitedCredentialNetworkingParams:`
+
+    Substitute the secret only on requests to the listed hosts.
+
+    - `required IReadOnlyList<string> AllowedHosts`
+
+      Hostnames on which the secret will be substituted. Each entry is a bare hostname (`api.example.com`), an IPv4 address (`192.0.2.1`), or a `*.`-prefixed wildcard (`*.example.com`). URLs, ports, paths, and IPv6 addresses are not accepted. At most 16 entries.
+
+    - `required Type Type`
+
+      - `"limited"Limited`
 
 ### Beta Managed Agents Credential Validation
 
@@ -1903,6 +2249,152 @@ Console.WriteLine(betaManagedAgentsCredentialValidation);
   - `required Type Type`
 
     - `"vault_credential_deleted"VaultCredentialDeleted`
+
+### Beta Managed Agents Environment Variable Auth Response
+
+- `class BetaManagedAgentsEnvironmentVariableAuthResponse:`
+
+  Environment variable credential details. The secret value is never returned.
+
+  - `required Networking Networking`
+
+    Outbound hosts the secret value is substituted on.
+
+    - `class BetaManagedAgentsUnrestrictedCredentialNetworkingResponse:`
+
+      The secret is substituted on any host the session's Environment network policy permits egress to.
+
+      - `required Type Type`
+
+        - `"unrestricted"Unrestricted`
+
+    - `class BetaManagedAgentsLimitedCredentialNetworkingResponse:`
+
+      The secret is substituted only on requests to the listed hosts.
+
+      - `required IReadOnlyList<string> AllowedHosts`
+
+        Hostnames on which the secret will be substituted. An entry matches the request host exactly; a `*.`-prefixed entry matches any subdomain of the named domain but not the domain itself.
+
+      - `required Type Type`
+
+        - `"limited"Limited`
+
+  - `required string SecretName`
+
+    Name of the environment variable.
+
+  - `required Type Type`
+
+    - `"environment_variable"EnvironmentVariable`
+
+### Beta Managed Agents Environment Variable Create Params
+
+- `class BetaManagedAgentsEnvironmentVariableCreateParams:`
+
+  Parameters for creating an environment variable credential.
+
+  - `required BetaManagedAgentsCredentialNetworkingParams Networking`
+
+    Outbound hosts the secret value is substituted on.
+
+    - `class BetaManagedAgentsUnrestrictedCredentialNetworkingParams:`
+
+      Substitute the secret on any host the session's Environment network policy permits egress to. The Environment's network policy is the only boundary on where the secret can reach.
+
+      - `required Type Type`
+
+        - `"unrestricted"Unrestricted`
+
+    - `class BetaManagedAgentsLimitedCredentialNetworkingParams:`
+
+      Substitute the secret only on requests to the listed hosts.
+
+      - `required IReadOnlyList<string> AllowedHosts`
+
+        Hostnames on which the secret will be substituted. Each entry is a bare hostname (`api.example.com`), an IPv4 address (`192.0.2.1`), or a `*.`-prefixed wildcard (`*.example.com`). URLs, ports, paths, and IPv6 addresses are not accepted. At most 16 entries.
+
+      - `required Type Type`
+
+        - `"limited"Limited`
+
+  - `required string SecretName`
+
+    Name of the environment variable. Immutable after create.
+
+  - `required string SecretValue`
+
+    Secret value. Write-only; never returned in responses.
+
+  - `required Type Type`
+
+    - `"environment_variable"EnvironmentVariable`
+
+### Beta Managed Agents Environment Variable Update Params
+
+- `class BetaManagedAgentsEnvironmentVariableUpdateParams:`
+
+  Parameters for updating an environment variable credential. `secret_name` is immutable.
+
+  - `required Type Type`
+
+    - `"environment_variable"EnvironmentVariable`
+
+  - `BetaManagedAgentsCredentialNetworkingParams? Networking`
+
+    Updated networking scope. Full replacement.
+
+    - `class BetaManagedAgentsUnrestrictedCredentialNetworkingParams:`
+
+      Substitute the secret on any host the session's Environment network policy permits egress to. The Environment's network policy is the only boundary on where the secret can reach.
+
+      - `required Type Type`
+
+        - `"unrestricted"Unrestricted`
+
+    - `class BetaManagedAgentsLimitedCredentialNetworkingParams:`
+
+      Substitute the secret only on requests to the listed hosts.
+
+      - `required IReadOnlyList<string> AllowedHosts`
+
+        Hostnames on which the secret will be substituted. Each entry is a bare hostname (`api.example.com`), an IPv4 address (`192.0.2.1`), or a `*.`-prefixed wildcard (`*.example.com`). URLs, ports, paths, and IPv6 addresses are not accepted. At most 16 entries.
+
+      - `required Type Type`
+
+        - `"limited"Limited`
+
+  - `string? SecretValue`
+
+    Updated secret value.
+
+### Beta Managed Agents Limited Credential Networking Params
+
+- `class BetaManagedAgentsLimitedCredentialNetworkingParams:`
+
+  Substitute the secret only on requests to the listed hosts.
+
+  - `required IReadOnlyList<string> AllowedHosts`
+
+    Hostnames on which the secret will be substituted. Each entry is a bare hostname (`api.example.com`), an IPv4 address (`192.0.2.1`), or a `*.`-prefixed wildcard (`*.example.com`). URLs, ports, paths, and IPv6 addresses are not accepted. At most 16 entries.
+
+  - `required Type Type`
+
+    - `"limited"Limited`
+
+### Beta Managed Agents Limited Credential Networking Response
+
+- `class BetaManagedAgentsLimitedCredentialNetworkingResponse:`
+
+  The secret is substituted only on requests to the listed hosts.
+
+  - `required IReadOnlyList<string> AllowedHosts`
+
+    Hostnames on which the secret will be substituted. An entry matches the request host exactly; a `*.`-prefixed entry matches any subdomain of the named domain but not the domain itself.
+
+  - `required Type Type`
+
+    - `"limited"Limited`
 
 ### Beta Managed Agents MCP OAuth Auth Response
 
@@ -2495,3 +2987,23 @@ Console.WriteLine(betaManagedAgentsCredentialValidation);
   - `string? ClientSecret`
 
     Updated OAuth client secret.
+
+### Beta Managed Agents Unrestricted Credential Networking Params
+
+- `class BetaManagedAgentsUnrestrictedCredentialNetworkingParams:`
+
+  Substitute the secret on any host the session's Environment network policy permits egress to. The Environment's network policy is the only boundary on where the secret can reach.
+
+  - `required Type Type`
+
+    - `"unrestricted"Unrestricted`
+
+### Beta Managed Agents Unrestricted Credential Networking Response
+
+- `class BetaManagedAgentsUnrestrictedCredentialNetworkingResponse:`
+
+  The secret is substituted on any host the session's Environment network policy permits egress to.
+
+  - `required Type Type`
+
+    - `"unrestricted"Unrestricted`

@@ -37,10 +37,10 @@ Try out this model with Workers AI LLM Playground. It does not require any setup
 
 ## Usage
 
-* [  Worker (Streaming) ](#tab-panel-4268)
-* [  TypeScript ](#tab-panel-4269)
-* [  Python ](#tab-panel-4270)
-* [  curl ](#tab-panel-4271)
+* [  Worker (Streaming) ](#tab-panel-4654)
+* [  TypeScript ](#tab-panel-4655)
+* [  Python ](#tab-panel-4656)
+* [  curl ](#tab-panel-4657)
 
 TypeScript
 
@@ -199,8 +199,8 @@ Workers AI also supports OpenAI compatible API endpoints for `/v1/chat/completio
 
 Synchronous — Send a request and receive a complete response 
 
-* [ Input ](#tab-panel-4272)
-* [ Output ](#tab-panel-4273)
+* [ Input ](#tab-panel-4658)
+* [ Output ](#tab-panel-4659)
 
 Input format
 
@@ -378,8 +378,8 @@ service\_tier
 
 Streaming — Send a request with \`stream: true\` and receive server-sent events 
 
-* [ Input ](#tab-panel-4274)
-* [ Output ](#tab-panel-4275)
+* [ Input ](#tab-panel-4660)
+* [ Output ](#tab-panel-4661)
 
 Input format
 
@@ -537,8 +537,8 @@ format
 
 Batch — Send multiple requests in a single API call 
 
-* [ Input ](#tab-panel-4276)
-* [ Output ](#tab-panel-4277)
+* [ Input ](#tab-panel-4662)
+* [ Output ](#tab-panel-4663)
 
 ▶requests\[\]
 
@@ -578,17 +578,17 @@ service\_tier
 
 ## API Schemas (Raw)
 
-Synchronous Input 
+ Synchronous Input [ ](https://developers.cloudflare.com/workers-ai/models/gemma-4-26b-a4b-it/sync-input.json "Open") [ ](https://developers.cloudflare.com/workers-ai/models/gemma-4-26b-a4b-it/sync-input.json "Download") 
 
-Synchronous Output 
+ Synchronous Output [ ](https://developers.cloudflare.com/workers-ai/models/gemma-4-26b-a4b-it/sync-output.json "Open") [ ](https://developers.cloudflare.com/workers-ai/models/gemma-4-26b-a4b-it/sync-output.json "Download") 
 
-Streaming Input 
+ Streaming Input [ ](https://developers.cloudflare.com/workers-ai/models/gemma-4-26b-a4b-it/streaming-input.json "Open") [ ](https://developers.cloudflare.com/workers-ai/models/gemma-4-26b-a4b-it/streaming-input.json "Download") 
 
-Streaming Output 
+ Streaming Output [ ](https://developers.cloudflare.com/workers-ai/models/gemma-4-26b-a4b-it/streaming-output.json "Open") [ ](https://developers.cloudflare.com/workers-ai/models/gemma-4-26b-a4b-it/streaming-output.json "Download") 
 
-Batch Input 
+ Batch Input [ ](https://developers.cloudflare.com/workers-ai/models/gemma-4-26b-a4b-it/batch-input.json "Open") [ ](https://developers.cloudflare.com/workers-ai/models/gemma-4-26b-a4b-it/batch-input.json "Download") 
 
-Batch Output 
+ Batch Output [ ](https://developers.cloudflare.com/workers-ai/models/gemma-4-26b-a4b-it/batch-output.json "Open") [ ](https://developers.cloudflare.com/workers-ai/models/gemma-4-26b-a4b-it/batch-output.json "Download") 
 
 ```json
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/workers-ai/","name":"Workers AI"}},{"@type":"ListItem","position":3,"item":{"@id":"/workers-ai/models/","name":"Models"}}]}

@@ -29,8 +29,8 @@ Google's lightest and most cost-efficient Gemini model for high-throughput tasks
 
 ## Usage
 
-* [ TypeScript ](#tab-panel-490)
-* [ cURL ](#tab-panel-491)
+* [ TypeScript ](#tab-panel-540)
+* [ cURL ](#tab-panel-541)
 
 TypeScript
 
@@ -92,8 +92,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 ```
 
-* [ Output ](#tab-panel-496)
-* [ Raw response ](#tab-panel-497)
+* [ Output ](#tab-panel-546)
+* [ Raw response ](#tab-panel-547)
 
 The three laws of thermodynamics (plus the "zeroth" law, which was defined later) describe the fundamental rules governing energy, heat, and entropy in the universe.
 
@@ -212,8 +212,8 @@ As the temperature of a system approaches absolute zero (0 Kelvin), the entropy 
 
 **With System Instruction**  — Using a system instruction to set context 
 
-* [ TypeScript ](#tab-panel-492)
-* [ cURL ](#tab-panel-493)
+* [ TypeScript ](#tab-panel-542)
+* [ cURL ](#tab-panel-543)
 
 TypeScript
 
@@ -307,8 +307,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 ```
 
-* [ Output ](#tab-panel-498)
-* [ Raw response ](#tab-panel-499)
+* [ Output ](#tab-panel-548)
+* [ Raw response ](#tab-panel-549)
 
 To read a JSON file in Python, you use the built-in `json` module.
 
@@ -453,8 +453,8 @@ print(data["name"])  # Output: Alice
 
 **Multi-turn Conversation**  — Continuing a conversation with context 
 
-* [ TypeScript ](#tab-panel-500)
-* [ cURL ](#tab-panel-501)
+* [ TypeScript ](#tab-panel-550)
+* [ cURL ](#tab-panel-551)
 
 TypeScript
 
@@ -588,8 +588,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 ```
 
-* [ Output ](#tab-panel-502)
-* [ Raw response ](#tab-panel-503)
+* [ Output ](#tab-panel-552)
+* [ Raw response ](#tab-panel-553)
 
 To give you the best recommendations, it helps to know which route you plan to take. There are two primary ways to drive from San Francisco to Los Angeles:
 
@@ -713,8 +713,8 @@ To give you the best recommendations, it helps to know which route you plan to t
 
 **Creative Writing**  — Higher temperature for creative output 
 
-* [ TypeScript ](#tab-panel-494)
-* [ cURL ](#tab-panel-495)
+* [ TypeScript ](#tab-panel-544)
+* [ cURL ](#tab-panel-545)
 
 TypeScript
 
@@ -800,8 +800,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 ```
 
-* [ Output ](#tab-panel-504)
-* [ Raw response ](#tab-panel-505)
+* [ Output ](#tab-panel-554)
+* [ Raw response ](#tab-panel-555)
 
 The rain drummed a relentless, hollow rhythm against the skylight of the abandoned clock tower, but Elias Thorne didn’t hear it. He was too busy staring at the centerpiece of the crime scene.
 
@@ -898,8 +898,8 @@ But it was what sat inside the velvet lining that turned his blood to ice: a per
 
 ## Parameters
 
-* [ Input ](#tab-panel-506)
-* [ Output ](#tab-panel-507)
+* [ Input ](#tab-panel-556)
+* [ Output ](#tab-panel-557)
 
 ▶contents\[\]
 
@@ -939,9 +939,9 @@ modelVersion
 
 ## API Schemas (Raw)
 
-Input 
+Input [ ](https://developers.cloudflare.com/ai/models/google/gemini-3.1-flash-lite/schema-input.json "Open") [ ](https://developers.cloudflare.com/ai/models/google/gemini-3.1-flash-lite/schema-input.json "Download") 
 
-Output 
+Output [ ](https://developers.cloudflare.com/ai/models/google/gemini-3.1-flash-lite/schema-output.json "Open") [ ](https://developers.cloudflare.com/ai/models/google/gemini-3.1-flash-lite/schema-output.json "Download") 
 
 ```json
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/ai/","name":"AI"}},{"@type":"ListItem","position":3,"item":{"@id":"/ai/models/","name":"Models"}}]}

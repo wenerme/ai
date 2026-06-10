@@ -12,9 +12,13 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 # Configuration
 
+Configure domains, routing rules, subdomains, and MTA-STS for Cloudflare Email Service.
+
 * [ Domain configuration ](https://developers.cloudflare.com/email-service/configuration/domains/)
 * [ Email routing rules and addresses ](https://developers.cloudflare.com/email-service/configuration/email-routing-addresses/)
+* [ Subdomains ](https://developers.cloudflare.com/email-service/configuration/subdomains/)
 * [ Configure MTA-STS ](https://developers.cloudflare.com/email-service/configuration/mta-sts/)
+* [ Configure send bindings ](https://developers.cloudflare.com/email-service/configuration/send-bindings/)
 
 ```json
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/email-service/","name":"Email Service"}},{"@type":"ListItem","position":3,"item":{"@id":"/email-service/configuration/","name":"Configuration"}}]}

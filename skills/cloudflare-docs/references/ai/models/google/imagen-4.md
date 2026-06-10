@@ -28,8 +28,8 @@ Google's latest image generation model producing high-quality, photorealistic im
 
 ## Usage
 
-* [ TypeScript ](#tab-panel-546)
-* [ cURL ](#tab-panel-547)
+* [ TypeScript ](#tab-panel-596)
+* [ cURL ](#tab-panel-597)
 
 TypeScript
 
@@ -73,8 +73,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 ```
 
-* [ Output ](#tab-panel-544)
-* [ Raw response ](#tab-panel-545)
+* [ Output ](#tab-panel-594)
+* [ Raw response ](#tab-panel-595)
 
 ![Simple Generation](https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/google__imagen-4/simple-generation.png) 
 
@@ -105,8 +105,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 **Widescreen Landscape**  — Generate a widescreen landscape image 
 
-* [ TypeScript ](#tab-panel-550)
-* [ cURL ](#tab-panel-551)
+* [ TypeScript ](#tab-panel-600)
+* [ cURL ](#tab-panel-601)
 
 TypeScript
 
@@ -160,8 +160,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 ```
 
-* [ Output ](#tab-panel-548)
-* [ Raw response ](#tab-panel-549)
+* [ Output ](#tab-panel-598)
+* [ Raw response ](#tab-panel-599)
 
 ![Widescreen Landscape](https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/google__imagen-4/widescreen-landscape.png) 
 
@@ -190,8 +190,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 **Portrait Format**  — Vertical portrait-style image 
 
-* [ TypeScript ](#tab-panel-554)
-* [ cURL ](#tab-panel-555)
+* [ TypeScript ](#tab-panel-604)
+* [ cURL ](#tab-panel-605)
 
 TypeScript
 
@@ -243,8 +243,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 ```
 
-* [ Output ](#tab-panel-552)
-* [ Raw response ](#tab-panel-553)
+* [ Output ](#tab-panel-602)
+* [ Raw response ](#tab-panel-603)
 
 ![Portrait Format](https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/google__imagen-4/portrait-format.png) 
 
@@ -273,8 +273,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 **With People**  — Allow generation of adult people 
 
-* [ TypeScript ](#tab-panel-558)
-* [ cURL ](#tab-panel-559)
+* [ TypeScript ](#tab-panel-608)
+* [ cURL ](#tab-panel-609)
 
 TypeScript
 
@@ -326,8 +326,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 ```
 
-* [ Output ](#tab-panel-556)
-* [ Raw response ](#tab-panel-557)
+* [ Output ](#tab-panel-606)
+* [ Raw response ](#tab-panel-607)
 
 ![With People](https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/google__imagen-4/with-people.png) 
 
@@ -356,8 +356,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 **Product Photo**  — Square product photography 
 
-* [ TypeScript ](#tab-panel-562)
-* [ cURL ](#tab-panel-563)
+* [ TypeScript ](#tab-panel-612)
+* [ cURL ](#tab-panel-613)
 
 TypeScript
 
@@ -411,8 +411,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 ```
 
-* [ Output ](#tab-panel-560)
-* [ Raw response ](#tab-panel-561)
+* [ Output ](#tab-panel-610)
+* [ Raw response ](#tab-panel-611)
 
 ![Product Photo](https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/google__imagen-4/product-photo.png) 
 
@@ -441,8 +441,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 ## Parameters
 
-* [ Input ](#tab-panel-564)
-* [ Output ](#tab-panel-565)
+* [ Input ](#tab-panel-614)
+* [ Output ](#tab-panel-615)
 
 aspect\_ratio
 
@@ -462,9 +462,9 @@ image
 
 ## API Schemas (Raw)
 
-Input 
+Input [ ](https://developers.cloudflare.com/ai/models/google/imagen-4/schema-input.json "Open") [ ](https://developers.cloudflare.com/ai/models/google/imagen-4/schema-input.json "Download") 
 
-Output 
+Output [ ](https://developers.cloudflare.com/ai/models/google/imagen-4/schema-output.json "Open") [ ](https://developers.cloudflare.com/ai/models/google/imagen-4/schema-output.json "Download") 
 
 ```json
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/ai/","name":"AI"}},{"@type":"ListItem","position":3,"item":{"@id":"/ai/models/","name":"Models"}}]}

@@ -9,7 +9,6 @@ The tools/clients listed here use or include the mihomo core. We **do not direct
 |[clash-verge](https://github.com/MetaCubeX/clash-verge)|Unmaintained |
 |[clash-verge-rev](https://github.com/clash-verge-rev/clash-verge-rev)|Maintained |
 |[clash-nyanpasu](https://github.com/keiko233/clash-nyanpasu)|Maintained |
-|[ClashMetaForWindows_Mini](https://github.com/kogekiplay/ClashMetaForWindows_Mini)|Unmaintained |
 |[clashN](https://github.com/2dust/clashN)|Unmaintained |
 |[v2rayN](https://github.com/2dust/v2rayN)|Maintained |
 |[clashtui](https://github.com/JohanChane/clashtui)|Maintained |
@@ -18,7 +17,7 @@ The tools/clients listed here use or include the mihomo core. We **do not direct
 |[Pandora-Box](https://github.com/snakem982/Pandora-Box)|Maintained |
 |[ClashMi](https://github.com/KaringX/clashmi)|Maintained | Frontend is open-source; build is not reproducible |
 |[FlyClash](https://github.com/GtxFury/FlyClash)|Maintained |
-|[Koala Clash](https://github.com/coolcoala/clash-verge-rev-lite)|Maintained |
+|[Koala Clash](https://github.com/coolcoala/koala-clash)|Maintained |
 |[Stelliberty](https://github.com/Kindness-Kismet/Stelliberty)|Maintained |
 |[FlClashX](https://github.com/pluralplay/FlClashX)|Maintained |
 |[clash-xiaoy](https://github.com/aimy1/clash-xiaoy)|Maintained |
@@ -35,11 +34,12 @@ The tools/clients listed here use or include the mihomo core. We **do not direct
 |[clash-verge](https://github.com/MetaCubeX/clash-verge)|Unmaintained |
 |[clash-verge-rev](https://github.com/clash-verge-rev/clash-verge-rev)|Maintained |
 |[clash-nyanpasu](https://github.com/keiko233/clash-nyanpasu)|Maintained |
+|[clashtui](https://github.com/JohanChane/clashtui)|Maintained |
 |[GUI.for.Clash](https://github.com/GUI-for-Cores/GUI.for.Clash)|Maintained |
 |[FlClash](https://github.com/chen08209/FlClash)|Maintained |
 |[Pandora-Box](https://github.com/snakem982/Pandora-Box)|Maintained |
 |[ClashMi](https://github.com/KaringX/clashmi)|Maintained | Frontend is open-source; build is not reproducible |
-|[Koala Clash](https://github.com/coolcoala/clash-verge-rev-lite)|Maintained |
+|[Koala Clash](https://github.com/coolcoala/koala-clash)|Maintained |
 |[FlClashX](https://github.com/pluralplay/FlClashX)|Maintained |
 |[ClashMac](https://github.com/666OS/ClashMac)|Maintained | Closed-source; build is not reproducible |
 |[Bettbox](https://github.com/appshubcc/Bettbox)|Maintained |
@@ -60,7 +60,7 @@ The tools/clients listed here use or include the mihomo core. We **do not direct
 |[FlClash](https://github.com/chen08209/FlClash)|Maintained |
 |[Pandora-Box](https://github.com/snakem982/Pandora-Box)|Maintained |
 |[mihoro](https://github.com/spencerwooo/mihoro)|Maintained |
-|[Koala Clash](https://github.com/coolcoala/clash-verge-rev-lite)|Maintained |
+|[Koala Clash](https://github.com/coolcoala/koala-clash)|Maintained |
 |[FlClashX](https://github.com/pluralplay/FlClashX)|Maintained |
 |[ShellCrash](https://github.com/juewuy/ShellCrash)|Maintained |
 |[Bettbox](https://github.com/appshubcc/Bettbox)|Maintained |
@@ -86,6 +86,11 @@ The tools/clients listed here use or include the mihomo core. We **do not direct
 |Project | Maintenance Status | Notes |
 |:----|:----|:----|
 |[ClashMi](https://github.com/KaringX/clashmi)|Maintained | Frontend is open-source; build is not reproducible |
+|[Clash Lite](https://apps.apple.com/app/id6761357475)|Maintained | Closed-source |
+|[LinkClashX](https://apps.apple.com/app/id6757075299)|Maintained | Closed-source |
+|[ConnectNow](https://apps.apple.com/app/id6749354119)|Maintained | Closed-source |
+|[Everywhere](https://apps.apple.com/app/id6766003090)|Maintained | Closed-source |
+|[Nextin](https://apps.apple.com/app/id6754002454)|Maintained | Closed-source |
 
 ## Merlin (KoolCenter firmware/paldier SWRT firmware)
 
@@ -106,6 +111,7 @@ The tools/clients listed here use or include the mihomo core. We **do not direct
 |[ShellCrash](https://github.com/juewuy/ShellCrash)|Maintained |
 |[SSClash](https://github.com/zerolabnet/SSClash)|Maintained |
 |[ShadowSocksR Plus+](https://github.com/fw876/helloworld)|Maintained |
+|[openwrt-clashoo](https://github.com/kenzok8/openwrt-clashoo)|Maintained |
 
 ## Shell
 

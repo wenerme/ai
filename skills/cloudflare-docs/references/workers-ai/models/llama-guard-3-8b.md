@@ -34,9 +34,9 @@ Try out this model with Workers AI LLM Playground. It does not require any setup
 
 ## Usage
 
-* [  TypeScript ](#tab-panel-4423)
-* [  Python ](#tab-panel-4424)
-* [  curl ](#tab-panel-4425)
+* [  TypeScript ](#tab-panel-4809)
+* [  Python ](#tab-panel-4810)
+* [  curl ](#tab-panel-4811)
 
 ```
 
@@ -139,8 +139,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 ## Parameters
 
-* [ Input ](#tab-panel-4426)
-* [ Output ](#tab-panel-4427)
+* [ Input ](#tab-panel-4812)
+* [ Output ](#tab-panel-4813)
 
 ▶messages\[\]
 
@@ -168,9 +168,9 @@ temperature
 
 ## API Schemas (Raw)
 
-Input 
+Input [ ](https://developers.cloudflare.com/workers-ai/models/llama-guard-3-8b/schema-input.json "Open") [ ](https://developers.cloudflare.com/workers-ai/models/llama-guard-3-8b/schema-input.json "Download") 
 
-Output 
+Output [ ](https://developers.cloudflare.com/workers-ai/models/llama-guard-3-8b/schema-output.json "Open") [ ](https://developers.cloudflare.com/workers-ai/models/llama-guard-3-8b/schema-output.json "Download") 
 
 ```json
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/workers-ai/","name":"Workers AI"}},{"@type":"ListItem","position":3,"item":{"@id":"/workers-ai/models/","name":"Models"}}]}

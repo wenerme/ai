@@ -1,5 +1,3 @@
-# Abuse monitoring
-
 Google is committed to the responsible development and use of AI. To ensure the
 safety and integrity of the Gemini API, we have created these policy guidelines.
 By using the Gemini API, you agree to the following guidelines, the [Gemini API
@@ -44,7 +42,7 @@ If your use of Gemini doesn't align with our policies, we may take the following
 steps:
 
 - **Get in touch:** We may reach out to you through email to understand your use case and explore ways to bring your usage into compliance.
-- **Temporary usage limits:** We may limit your access to the Gemini API.
+- **Temporary usage limits:** We may limit your access to the Gemini API by adjusting rate limits or changing which model answers a specific request, for example.
 - **Temporary suspension:** We may temporarily pause your access to the Gemini API.
 - **Account closure:** As a last resort, and for serious violations, we may permanently close your access to the Gemini API and other Google services.
 

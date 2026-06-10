@@ -26,8 +26,8 @@ The SDK works with any S3-compatible object storage provider. Examples include C
 
 To mount an R2 bucket in production without passing credentials into the container, add an R2 binding and export `ContainerProxy` from your Worker entrypoint.
 
-* [  wrangler.jsonc ](#tab-panel-9883)
-* [  wrangler.toml ](#tab-panel-9884)
+* [  wrangler.jsonc ](#tab-panel-10188)
+* [  wrangler.toml ](#tab-panel-10189)
 
 JSONC
 
@@ -67,8 +67,8 @@ bucket_name = "my-r2-bucket"
 
 ```
 
-* [  JavaScript ](#tab-panel-9887)
-* [  TypeScript ](#tab-panel-9888)
+* [  JavaScript ](#tab-panel-10192)
+* [  TypeScript ](#tab-panel-10193)
 
 JavaScript
 
@@ -107,8 +107,8 @@ Mount S3-compatible buckets when you need:
 
 ## Mount an R2 bucket
 
-* [  JavaScript ](#tab-panel-9899)
-* [  TypeScript ](#tab-panel-9900)
+* [  JavaScript ](#tab-panel-10204)
+* [  TypeScript ](#tab-panel-10205)
 
 JavaScript
 
@@ -223,8 +223,8 @@ R2 credentials
 
 We also automatically detect `AWS_ACCESS_KEY_ID` and `AWS_SECRET_ACCESS_KEY` for compatibility with other S3-compatible providers.
 
-* [  JavaScript ](#tab-panel-9889)
-* [  TypeScript ](#tab-panel-9890)
+* [  JavaScript ](#tab-panel-10194)
+* [  TypeScript ](#tab-panel-10195)
 
 JavaScript
 
@@ -260,8 +260,8 @@ await sandbox.mountBucket('my-r2-bucket', '/data', {
 
 Pass credentials directly when needed:
 
-* [  JavaScript ](#tab-panel-9891)
-* [  TypeScript ](#tab-panel-9892)
+* [  JavaScript ](#tab-panel-10196)
+* [  TypeScript ](#tab-panel-10197)
 
 JavaScript
 
@@ -313,8 +313,8 @@ Set `credentialProxy: true` to keep credentials out of the container entirely. I
 
 This works with [AWS SigV4 ↗](https://docs.aws.amazon.com/AmazonS3/latest/API/sig-v4-authenticating-requests.html) signing for S3-compatible endpoints (including R2) and HMAC signing for Google Cloud Storage. It is recommended to set `credentialProxy: true` for all endpoint mounts. The option defaults to `false` for backwards compatibility and will become the default in a future version of the Sandbox SDK.
 
-* [  JavaScript ](#tab-panel-9893)
-* [  TypeScript ](#tab-panel-9894)
+* [  JavaScript ](#tab-panel-10198)
+* [  TypeScript ](#tab-panel-10199)
 
 JavaScript
 
@@ -386,8 +386,8 @@ export { ContainerProxy };
 
 Mount a specific subdirectory within a bucket using the `prefix` option. Only contents under the prefix are visible at the mount point:
 
-* [  JavaScript ](#tab-panel-9911)
-* [  TypeScript ](#tab-panel-9912)
+* [  JavaScript ](#tab-panel-10216)
+* [  TypeScript ](#tab-panel-10217)
 
 JavaScript
 
@@ -491,8 +491,8 @@ The `prefix` must start with `/` (for example, `/data` or `/logs/2024/`).
 
 Protect data by mounting buckets in read-only mode:
 
-* [  JavaScript ](#tab-panel-9895)
-* [  TypeScript ](#tab-panel-9896)
+* [  JavaScript ](#tab-panel-10200)
+* [  TypeScript ](#tab-panel-10201)
 
 JavaScript
 
@@ -544,8 +544,8 @@ await sandbox.writeFile('/data/new-file.txt', 'data');  // Error: Read-only file
 
 You can also mount R2 buckets during local development with `wrangler dev` by passing the `localBucket` option. Production R2 binding mounts and local `localBucket` mounts both avoid explicit credentials, but they are different execution paths. Production uses credential-less egress interception and overlays the target path. Local development uses periodic synchronization with the R2 binding.
 
-* [  JavaScript ](#tab-panel-9897)
-* [  TypeScript ](#tab-panel-9898)
+* [  JavaScript ](#tab-panel-10202)
+* [  TypeScript ](#tab-panel-10203)
 
 JavaScript
 
@@ -607,8 +607,8 @@ When `localBucket` is `true`, the SDK uses local R2 binding synchronization. Whe
 
 The `readOnly` and `prefix` options work the same way in local mode:
 
-* [  JavaScript ](#tab-panel-9903)
-* [  TypeScript ](#tab-panel-9904)
+* [  JavaScript ](#tab-panel-10208)
+* [  TypeScript ](#tab-panel-10209)
 
 JavaScript
 
@@ -680,8 +680,8 @@ These considerations apply to local development with `wrangler dev` only. In pro
 
 ## Unmount buckets
 
-* [  JavaScript ](#tab-panel-9901)
-* [  TypeScript ](#tab-panel-9902)
+* [  JavaScript ](#tab-panel-10206)
+* [  TypeScript ](#tab-panel-10207)
 
 JavaScript
 
@@ -735,8 +735,8 @@ The SDK supports any S3-compatible object storage. Here are examples for common 
 
 ### Amazon S3
 
-* [  JavaScript ](#tab-panel-9905)
-* [  TypeScript ](#tab-panel-9906)
+* [  JavaScript ](#tab-panel-10210)
+* [  TypeScript ](#tab-panel-10211)
 
 JavaScript
 
@@ -782,8 +782,8 @@ await sandbox.mountBucket('my-s3-bucket', '/data', {
 
 ### Google Cloud Storage
 
-* [  JavaScript ](#tab-panel-9907)
-* [  TypeScript ](#tab-panel-9908)
+* [  JavaScript ](#tab-panel-10212)
+* [  TypeScript ](#tab-panel-10213)
 
 JavaScript
 
@@ -835,8 +835,8 @@ Generate HMAC keys in GCS console under **Settings** \> **Interoperability**.
 
 For providers like Backblaze B2, MinIO, Wasabi, or others, use the standard mount pattern:
 
-* [  JavaScript ](#tab-panel-9909)
-* [  TypeScript ](#tab-panel-9910)
+* [  JavaScript ](#tab-panel-10214)
+* [  TypeScript ](#tab-panel-10215)
 
 JavaScript
 
@@ -890,8 +890,8 @@ For provider-specific configuration, see the [s3fs-fuse wiki ↗](https://github
 
 **Solution**: Ensure your Worker has an `r2_buckets` binding and that `mountBucket()` uses the binding name, not the bucket's dashboard name:
 
-* [  wrangler.jsonc ](#tab-panel-9885)
-* [  wrangler.toml ](#tab-panel-9886)
+* [  wrangler.jsonc ](#tab-panel-10190)
+* [  wrangler.toml ](#tab-panel-10191)
 
 JSONC
 
@@ -979,8 +979,8 @@ npx wrangler secret put AWS_SECRET_ACCESS_KEY
 
 Verify your binding or endpoint configuration:
 
-* [  JavaScript ](#tab-panel-9913)
-* [  TypeScript ](#tab-panel-9914)
+* [  JavaScript ](#tab-panel-10218)
+* [  TypeScript ](#tab-panel-10219)
 
 JavaScript
 
@@ -1026,8 +1026,8 @@ try {
 
 **Solution**: Unmount first or use a different path:
 
-* [  JavaScript ](#tab-panel-9915)
-* [  TypeScript ](#tab-panel-9916)
+* [  JavaScript ](#tab-panel-10220)
+* [  TypeScript ](#tab-panel-10221)
 
 JavaScript
 
@@ -1067,8 +1067,8 @@ File operations on mounted buckets are slower than local filesystem due to netwo
 
 **Solution**: Copy frequently accessed files locally:
 
-* [  JavaScript ](#tab-panel-9917)
-* [  TypeScript ](#tab-panel-9918)
+* [  JavaScript ](#tab-panel-10222)
+* [  TypeScript ](#tab-panel-10223)
 
 JavaScript
 

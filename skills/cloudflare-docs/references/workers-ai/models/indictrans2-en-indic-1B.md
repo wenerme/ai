@@ -26,9 +26,9 @@ IndicTrans2 is the first open-source transformer-based multilingual NMT model th
 
 ## Usage
 
-* [  TypeScript ](#tab-panel-4326)
-* [  Python ](#tab-panel-4327)
-* [  curl ](#tab-panel-4328)
+* [  TypeScript ](#tab-panel-4712)
+* [  Python ](#tab-panel-4713)
+* [  curl ](#tab-panel-4714)
 
 ```
 
@@ -120,8 +120,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 ## Parameters
 
-* [ Input ](#tab-panel-4329)
-* [ Output ](#tab-panel-4330)
+* [ Input ](#tab-panel-4715)
+* [ Output ](#tab-panel-4716)
 
 ▶text
 
@@ -137,9 +137,9 @@ target\_language
 
 ## API Schemas (Raw)
 
-Input 
+Input [ ](https://developers.cloudflare.com/workers-ai/models/indictrans2-en-indic-1B/schema-input.json "Open") [ ](https://developers.cloudflare.com/workers-ai/models/indictrans2-en-indic-1B/schema-input.json "Download") 
 
-Output 
+Output [ ](https://developers.cloudflare.com/workers-ai/models/indictrans2-en-indic-1B/schema-output.json "Open") [ ](https://developers.cloudflare.com/workers-ai/models/indictrans2-en-indic-1B/schema-output.json "Download") 
 
 ```json
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/workers-ai/","name":"Workers AI"}},{"@type":"ListItem","position":3,"item":{"@id":"/workers-ai/models/","name":"Models"}}]}

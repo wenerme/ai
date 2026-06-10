@@ -81,6 +81,7 @@ paths:
                 $ref: '#/components/schemas/InternalServerResponse'
 servers:
   - url: https://openrouter.ai/api/v1
+    description: Production server
 components:
   schemas:
     DeleteWorkspaceResponse:
@@ -287,7 +288,25 @@ components:
 
 ```
 
-## SDK Code Examples
+## Examples
+
+
+
+**Request**
+
+```json
+{}
+```
+
+**Response**
+
+```json
+{
+  "deleted": true
+}
+```
+
+**SDK Code**
 
 ```python Workspaces_deleteWorkspace_example
 import requests

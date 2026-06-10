@@ -18,11 +18,16 @@ Store and process incoming emails with comprehensive storage, queue processing, 
 
 ## Store emails in KV
 
-Store emails in KV namespace for later processing:
+Store emails in a KV namespace for later processing. This example uses [mimetext ↗](https://www.npmjs.com/package/mimetext) to build replies, which requires the [nodejs\_compat](https://developers.cloudflare.com/workers/runtime-apis/nodejs/) compatibility flag.
 
 TypeScript
 
 ```
+
+import { EmailMessage } from "cloudflare:email";
+
+import { createMimeMessage } from "mimetext";
+
 
 interface Env {
 
@@ -42,76 +47,48 @@ export default {
     const emailId = `email-${Date.now()}-${Math.random().toString(36).substr(2, 9)}`;
 
 
-    // Read email content
+    // Read email content as an ArrayBuffer, then decode to a string
 
-    const reader = message.raw.getReader();
+    const rawBuffer = await new Response(message.raw).arrayBuffer();
 
-    const chunks = [];
-
-
-    try {
-
-      while (true) {
-
-        const { done, value } = await reader.read();
-
-        if (done) break;
-
-        chunks.push(value);
-
-      }
+    const rawContent = new TextDecoder().decode(rawBuffer);
 
 
-      const decoder = new TextDecoder();
+    // Store email metadata and content
 
-      const rawContent = decoder.decode(
+    const emailData = {
 
-        new Uint8Array(chunks.reduce((acc, chunk) => [...acc, ...chunk], [])),
+      id: emailId,
 
-      );
+      from: message.from,
 
+      to: message.to,
 
-      // Store email metadata and content
+      subject: message.headers.get("subject"),
 
-      const emailData = {
+      timestamp: new Date().toISOString(),
 
-        id: emailId,
+      size: message.rawSize,
 
-        from: message.from,
+      rawContent: rawContent,
 
-        to: message.to,
+      processed: false,
 
-        subject: message.headers.get("subject"),
-
-        timestamp: new Date().toISOString(),
-
-        size: message.rawSize,
-
-        rawContent: rawContent,
-
-        processed: false,
-
-      };
+    };
 
 
-      await env.EMAILS.put(emailId, JSON.stringify(emailData));
+    await env.EMAILS.put(emailId, JSON.stringify(emailData));
 
 
-      // Process based on recipient
+    // Process based on recipient
 
-      if (message.to.includes("support@")) {
+    if (message.to.includes("support@")) {
 
-        await handleSupportEmail(message, env, emailId);
+      await handleSupportEmail(message, env, emailId);
 
-      } else {
+    } else {
 
-        await message.forward("general@company.com");
-
-      }
-
-    } finally {
-
-      reader.releaseLock();
+      await message.forward("general@example.com");
 
     }
 
@@ -151,17 +128,31 @@ async function handleSupportEmail(message, env, emailId) {
   await env.SUPPORT_TICKETS.put(ticketId, JSON.stringify(ticketData));
 
 
-  // Send auto-reply with ticket number
+  // Send threaded auto-reply with ticket number
 
-  await env.EMAIL.send({
+  const messageId = message.headers.get("Message-ID");
 
-    to: message.from,
+  const reply = createMimeMessage();
 
-    from: "support@company.com",
+  if (messageId) {
 
-    subject: `Support Ticket Created: ${ticketId}`,
+    reply.setHeader("In-Reply-To", messageId);
 
-    html: `
+    reply.setHeader("References", messageId);
+
+  }
+
+  reply.setSender(message.to);
+
+  reply.setRecipient(message.from);
+
+  reply.setSubject(`Support Ticket Created: ${ticketId}`);
+
+  reply.addMessage({
+
+    contentType: "text/html",
+
+    data: `
 
             <h1>Support Ticket Created</h1>
 
@@ -178,9 +169,16 @@ async function handleSupportEmail(message, env, emailId) {
   });
 
 
+  await message.reply(
+
+    new EmailMessage(message.to, message.from, reply.asRaw()),
+
+  );
+
+
   // Forward to support team
 
-  await message.forward("support-team@company.com");
+  await message.forward("support-team@example.com");
 
 }
 
@@ -189,11 +187,16 @@ async function handleSupportEmail(message, env, emailId) {
 
 ## Queue-based processing
 
-Process emails asynchronously using Cloudflare Queues:
+Process emails asynchronously using Cloudflare Queues. The `email()` handler sends a threaded acknowledgement with `message.reply()` and enqueues the message for later processing. The queue consumer runs in a separate invocation where the original `EmailMessage` is no longer available, so any follow-up emails it sends use `env.EMAIL.send()` instead.
 
 TypeScript
 
 ```
+
+import { EmailMessage } from "cloudflare:email";
+
+import { createMimeMessage } from "mimetext";
+
 
 interface Env {
 
@@ -204,6 +207,10 @@ interface Env {
   EMAIL_STORAGE: KVNamespace;
 
   EMAIL_ANALYTICS: AnalyticsEngine;
+
+  SUPPORT_TICKETS?: KVNamespace;
+
+  SALES_LEADS?: KVNamespace;
 
 }
 
@@ -236,117 +243,110 @@ export default {
     const emailId = `email-${Date.now()}-${Math.random().toString(36).substr(2, 9)}`;
 
 
-    // Store raw email content
+    // Read raw email content as an ArrayBuffer, then decode to a string
 
-    const reader = message.raw.getReader();
+    const rawBuffer = await new Response(message.raw).arrayBuffer();
 
-    const chunks = [];
-
-
-    try {
-
-      while (true) {
-
-        const { done, value } = await reader.read();
-
-        if (done) break;
-
-        chunks.push(value);
-
-      }
+    const rawContent = new TextDecoder().decode(rawBuffer);
 
 
-      const decoder = new TextDecoder();
+    // Store email with metadata
 
-      const rawContent = decoder.decode(
+    const emailData = {
 
-        new Uint8Array(chunks.reduce((acc, chunk) => [...acc, ...chunk], [])),
+      id: emailId,
 
-      );
+      from: message.from,
 
+      to: message.to,
 
-      // Store email with metadata
+      subject: message.headers.get("subject"),
 
-      const emailData = {
+      timestamp: new Date().toISOString(),
 
-        id: emailId,
+      size: message.rawSize,
 
-        from: message.from,
+      rawContent: rawContent,
 
-        to: message.to,
+      processed: false,
 
-        subject: message.headers.get("subject"),
+      status: "queued",
 
-        timestamp: new Date().toISOString(),
-
-        size: message.rawSize,
-
-        rawContent: rawContent,
-
-        processed: false,
-
-        status: "queued",
-
-      };
+    };
 
 
-      await env.EMAIL_STORAGE.put(emailId, JSON.stringify(emailData));
+    await env.EMAIL_STORAGE.put(emailId, JSON.stringify(emailData));
 
 
-      // Determine priority and category
+    // Determine priority and category
 
-      const priority = determinePriority(message);
+    const priority = determinePriority(message);
 
-      const category = determineCategory(message);
-
-
-      // Queue email for processing
-
-      const queueMessage: EmailQueueMessage = {
-
-        emailId,
-
-        from: message.from,
-
-        to: message.to,
-
-        subject: message.headers.get("subject") || "",
-
-        timestamp: new Date().toISOString(),
-
-        priority,
-
-        category,
-
-      };
+    const category = determineCategory(message);
 
 
-      await env.EMAIL_QUEUE.send(queueMessage, {
+    // Queue email for processing
 
-        delaySeconds: priority === "urgent" ? 0 : priority === "high" ? 5 : 30,
+    const queueMessage: EmailQueueMessage = {
 
-      });
+      emailId,
+
+      from: message.from,
+
+      to: message.to,
+
+      subject: message.headers.get("subject") || "",
+
+      timestamp: new Date().toISOString(),
+
+      priority,
+
+      category,
+
+    };
 
 
-      // Send immediate auto-reply
+    await env.EMAIL_QUEUE.send(queueMessage, {
 
-      await env.EMAIL.send({
+      delaySeconds: priority === "urgent" ? 0 : priority === "high" ? 5 : 30,
 
-        to: message.from,
+    });
 
-        from: message.to,
 
-        subject: `Re: ${message.headers.get("subject")}`,
+    // Send threaded immediate auto-reply
 
-        text: "Thank you for your message. It has been queued for processing.",
+    const messageId = message.headers.get("Message-ID");
 
-      });
+    const reply = createMimeMessage();
 
-    } finally {
+    if (messageId) {
 
-      reader.releaseLock();
+      reply.setHeader("In-Reply-To", messageId);
+
+      reply.setHeader("References", messageId);
 
     }
+
+    reply.setSender(message.to);
+
+    reply.setRecipient(message.from);
+
+    reply.setSubject(`Re: ${message.headers.get("subject")}`);
+
+    reply.addMessage({
+
+      contentType: "text/plain",
+
+      data: "Thank you for your message. It has been queued for processing.",
+
+    });
+
+
+    await message.reply(
+
+      new EmailMessage(message.to, message.from, reply.asRaw()),
+
+    );
 
   },
 
@@ -355,7 +355,7 @@ export default {
 
   async queue(batch, env, ctx): Promise<void> {
 
-    console.log(`📥 Processing ${batch.messages.length} queued emails`);
+    console.log(`Processing ${batch.messages.length} queued emails`);
 
 
     for (const message of batch.messages) {
@@ -367,7 +367,7 @@ export default {
 
         console.log(
 
-          `📧 Processing ${emailData.category} email from ${emailData.from}`,
+          `Processing ${emailData.category} email from ${emailData.from}`,
 
         );
 
@@ -634,7 +634,7 @@ async function processSupport(
 
     to: emailData.from,
 
-    from: "support@company.com",
+    from: "support@yourdomain.com",
 
     subject: `Support Ticket Created: ${ticketId}`,
 
@@ -717,7 +717,7 @@ async function processSales(
 
     to: emailData.from,
 
-    from: "sales@company.com",
+    from: "sales@yourdomain.com",
 
     subject: `Re: ${emailData.subject}`,
 
@@ -757,7 +757,7 @@ async function processBilling(
 
     to: emailData.from,
 
-    from: "billing@company.com",
+    from: "billing@yourdomain.com",
 
     subject: `Re: ${emailData.subject}`,
 
@@ -797,7 +797,7 @@ async function processGeneral(
 
     to: emailData.from,
 
-    from: "info@company.com",
+    from: "info@yourdomain.com",
 
     subject: `Re: ${emailData.subject}`,
 
@@ -809,7 +809,7 @@ async function processGeneral(
       We have received your message and will respond within 48 hours.
 
 
-      For urgent matters, please contact our support team at support@company.com.
+      For urgent matters, please contact our support team at support@yourdomain.com.
 
 
       Best regards,
@@ -828,9 +828,11 @@ async function processGeneral(
 
 ```
 
----
+## Next steps
 
-This email storage system provides comprehensive email processing with KV storage, queue-based processing, and automated responses for different email categories.
+* [Email handler](https://developers.cloudflare.com/email-service/api/route-emails/email-handler/) — reference for the `email()` handler and its actions.
+* [Spam filtering](https://developers.cloudflare.com/email-service/examples/email-routing/spam-filtering/) — block spam before storing or processing.
+* [Hard bounce handling](https://developers.cloudflare.com/email-service/examples/email-routing/hard-bounce-handling/) — detect and process bounce notifications.
 
 ```json
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/email-service/","name":"Email Service"}},{"@type":"ListItem","position":3,"item":{"@id":"/email-service/examples/","name":"Examples"}},{"@type":"ListItem","position":4,"item":{"@id":"/email-service/examples/email-routing/","name":"Email routing"}},{"@type":"ListItem","position":5,"item":{"@id":"/email-service/examples/email-routing/email-storage/","name":"Email storage and processing"}}]}

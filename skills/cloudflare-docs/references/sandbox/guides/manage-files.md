@@ -22,8 +22,8 @@ File operations support both absolute and relative paths:
 * `/tmp` \- Temporary files (may be cleared)
 * `/home` \- User home directory
 
-* [  JavaScript ](#tab-panel-8215)
-* [  TypeScript ](#tab-panel-8216)
+* [  JavaScript ](#tab-panel-10168)
+* [  TypeScript ](#tab-panel-10169)
 
 JavaScript
 
@@ -71,8 +71,8 @@ await session.writeFile('src/index.js', code);  // Writes to /workspace/my-proje
 
 ## Write files
 
-* [  JavaScript ](#tab-panel-8227)
-* [  TypeScript ](#tab-panel-8228)
+* [  JavaScript ](#tab-panel-10180)
+* [  TypeScript ](#tab-panel-10181)
 
 JavaScript
 
@@ -154,8 +154,8 @@ await sandbox.writeFile('/workspace/image.png', base64, { encoding: 'base64' });
 
 ## Read files
 
-* [  JavaScript ](#tab-panel-8221)
-* [  TypeScript ](#tab-panel-8222)
+* [  JavaScript ](#tab-panel-10174)
+* [  TypeScript ](#tab-panel-10175)
 
 JavaScript
 
@@ -229,8 +229,8 @@ For more details on the `rpc` transport please see the [Transport](https://devel
 
 ## Organize files
 
-* [  JavaScript ](#tab-panel-8219)
-* [  TypeScript ](#tab-panel-8220)
+* [  JavaScript ](#tab-panel-10172)
+* [  TypeScript ](#tab-panel-10173)
 
 JavaScript
 
@@ -292,8 +292,8 @@ await sandbox.deleteFile('/workspace/temp.txt');
 
 Write multiple files in parallel:
 
-* [  JavaScript ](#tab-panel-8223)
-* [  TypeScript ](#tab-panel-8224)
+* [  JavaScript ](#tab-panel-10176)
+* [  TypeScript ](#tab-panel-10177)
 
 JavaScript
 
@@ -353,8 +353,8 @@ await Promise.all(
 
 ## Check if file exists
 
-* [  JavaScript ](#tab-panel-8229)
-* [  TypeScript ](#tab-panel-8230)
+* [  JavaScript ](#tab-panel-10182)
+* [  TypeScript ](#tab-panel-10183)
 
 JavaScript
 
@@ -436,8 +436,8 @@ const sessionResult = await session.exists('/workspace/temp.txt');
 
 Create parent directories first:
 
-* [  JavaScript ](#tab-panel-8217)
-* [  TypeScript ](#tab-panel-8218)
+* [  JavaScript ](#tab-panel-10170)
+* [  TypeScript ](#tab-panel-10171)
 
 JavaScript
 
@@ -469,8 +469,8 @@ await sandbox.writeFile('/workspace/data/file.txt', content);
 
 Use `encoding: "none"` (with `rpc` transport) for binary files:
 
-* [  JavaScript ](#tab-panel-8225)
-* [  TypeScript ](#tab-panel-8226)
+* [  JavaScript ](#tab-panel-10178)
+* [  TypeScript ](#tab-panel-10179)
 
 JavaScript
 
@@ -514,8 +514,8 @@ const file = await sandbox.readFile('/workspace/image.png', {
 
 For older SDK versions or `http` transport:
 
-* [  JavaScript ](#tab-panel-8231)
-* [  TypeScript ](#tab-panel-8232)
+* [  JavaScript ](#tab-panel-10184)
+* [  TypeScript ](#tab-panel-10185)
 
 JavaScript
 
@@ -565,8 +565,8 @@ const file = await sandbox.readFile('/workspace/image.png', {
 
 When writing with `encoding: 'base64'`, content must contain only valid base64 characters:
 
-* [  JavaScript ](#tab-panel-8233)
-* [  TypeScript ](#tab-panel-8234)
+* [  JavaScript ](#tab-panel-10186)
+* [  TypeScript ](#tab-panel-10187)
 
 JavaScript
 

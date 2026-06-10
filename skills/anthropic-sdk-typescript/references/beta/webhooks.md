@@ -20,7 +20,7 @@
 
       - `id: string`
 
-        ID of the resource that triggered the event.
+        ID of the session that triggered the event.
 
       - `organization_id: string`
 
@@ -34,7 +34,7 @@
 
       - `id: string`
 
-        ID of the resource that triggered the event.
+        ID of the session that triggered the event.
 
       - `organization_id: string`
 
@@ -48,7 +48,7 @@
 
       - `id: string`
 
-        ID of the resource that triggered the event.
+        ID of the session that triggered the event.
 
       - `organization_id: string`
 
@@ -62,7 +62,7 @@
 
       - `id: string`
 
-        ID of the resource that triggered the event.
+        ID of the session that triggered the event.
 
       - `organization_id: string`
 
@@ -76,7 +76,7 @@
 
       - `id: string`
 
-        ID of the resource that triggered the event.
+        ID of the session that triggered the event.
 
       - `organization_id: string`
 
@@ -90,7 +90,7 @@
 
       - `id: string`
 
-        ID of the resource that triggered the event.
+        ID of the session that triggered the event.
 
       - `organization_id: string`
 
@@ -104,7 +104,7 @@
 
       - `id: string`
 
-        ID of the resource that triggered the event.
+        ID of the session that triggered the event.
 
       - `organization_id: string`
 
@@ -118,7 +118,7 @@
 
       - `id: string`
 
-        ID of the resource that triggered the event.
+        ID of the session that triggered the event.
 
       - `organization_id: string`
 
@@ -132,7 +132,7 @@
 
       - `id: string`
 
-        ID of the resource that triggered the event.
+        ID of the session that triggered the event.
 
       - `organization_id: string`
 
@@ -146,7 +146,7 @@
 
       - `id: string`
 
-        ID of the resource that triggered the event.
+        ID of the session that triggered the event.
 
       - `organization_id: string`
 
@@ -160,7 +160,7 @@
 
       - `id: string`
 
-        ID of the resource that triggered the event.
+        ID of the session that triggered the event.
 
       - `organization_id: string`
 
@@ -174,9 +174,13 @@
 
       - `id: string`
 
-        ID of the resource that triggered the event.
+        ID of the session that triggered the event.
 
       - `organization_id: string`
+
+      - `session_thread_id: string`
+
+        ID of the session thread this event refers to.
 
       - `type: "session.thread_created"`
 
@@ -188,9 +192,13 @@
 
       - `id: string`
 
-        ID of the resource that triggered the event.
+        ID of the session that triggered the event.
 
       - `organization_id: string`
+
+      - `session_thread_id: string`
+
+        ID of the session thread this event refers to.
 
       - `type: "session.thread_idled"`
 
@@ -202,9 +210,13 @@
 
       - `id: string`
 
-        ID of the resource that triggered the event.
+        ID of the session that triggered the event.
 
       - `organization_id: string`
+
+      - `session_thread_id: string`
+
+        ID of the session thread this event refers to.
 
       - `type: "session.thread_terminated"`
 
@@ -216,7 +228,7 @@
 
       - `id: string`
 
-        ID of the resource that triggered the event.
+        ID of the session that triggered the event.
 
       - `organization_id: string`
 
@@ -230,7 +242,7 @@
 
       - `id: string`
 
-        ID of the resource that triggered the event.
+        ID of the vault that triggered the event.
 
       - `organization_id: string`
 
@@ -244,7 +256,7 @@
 
       - `id: string`
 
-        ID of the resource that triggered the event.
+        ID of the vault that triggered the event.
 
       - `organization_id: string`
 
@@ -258,7 +270,7 @@
 
       - `id: string`
 
-        ID of the resource that triggered the event.
+        ID of the vault that triggered the event.
 
       - `organization_id: string`
 
@@ -272,7 +284,7 @@
 
       - `id: string`
 
-        ID of the resource that triggered the event.
+        ID of the vault credential that triggered the event.
 
       - `organization_id: string`
 
@@ -290,7 +302,7 @@
 
       - `id: string`
 
-        ID of the resource that triggered the event.
+        ID of the vault credential that triggered the event.
 
       - `organization_id: string`
 
@@ -308,7 +320,7 @@
 
       - `id: string`
 
-        ID of the resource that triggered the event.
+        ID of the vault credential that triggered the event.
 
       - `organization_id: string`
 
@@ -326,7 +338,7 @@
 
       - `id: string`
 
-        ID of the resource that triggered the event.
+        ID of the vault credential that triggered the event.
 
       - `organization_id: string`
 
@@ -354,7 +366,7 @@
 
     - `id: string`
 
-      ID of the resource that triggered the event.
+      ID of the session that triggered the event.
 
     - `organization_id: string`
 
@@ -368,7 +380,7 @@
 
     - `id: string`
 
-      ID of the resource that triggered the event.
+      ID of the session that triggered the event.
 
     - `organization_id: string`
 
@@ -382,7 +394,7 @@
 
     - `id: string`
 
-      ID of the resource that triggered the event.
+      ID of the session that triggered the event.
 
     - `organization_id: string`
 
@@ -396,7 +408,7 @@
 
     - `id: string`
 
-      ID of the resource that triggered the event.
+      ID of the session that triggered the event.
 
     - `organization_id: string`
 
@@ -410,7 +422,7 @@
 
     - `id: string`
 
-      ID of the resource that triggered the event.
+      ID of the session that triggered the event.
 
     - `organization_id: string`
 
@@ -424,7 +436,7 @@
 
     - `id: string`
 
-      ID of the resource that triggered the event.
+      ID of the session that triggered the event.
 
     - `organization_id: string`
 
@@ -438,7 +450,7 @@
 
     - `id: string`
 
-      ID of the resource that triggered the event.
+      ID of the session that triggered the event.
 
     - `organization_id: string`
 
@@ -452,7 +464,7 @@
 
     - `id: string`
 
-      ID of the resource that triggered the event.
+      ID of the session that triggered the event.
 
     - `organization_id: string`
 
@@ -466,7 +478,7 @@
 
     - `id: string`
 
-      ID of the resource that triggered the event.
+      ID of the session that triggered the event.
 
     - `organization_id: string`
 
@@ -480,7 +492,7 @@
 
     - `id: string`
 
-      ID of the resource that triggered the event.
+      ID of the session that triggered the event.
 
     - `organization_id: string`
 
@@ -494,7 +506,7 @@
 
     - `id: string`
 
-      ID of the resource that triggered the event.
+      ID of the session that triggered the event.
 
     - `organization_id: string`
 
@@ -508,9 +520,13 @@
 
     - `id: string`
 
-      ID of the resource that triggered the event.
+      ID of the session that triggered the event.
 
     - `organization_id: string`
+
+    - `session_thread_id: string`
+
+      ID of the session thread this event refers to.
 
     - `type: "session.thread_created"`
 
@@ -522,9 +538,13 @@
 
     - `id: string`
 
-      ID of the resource that triggered the event.
+      ID of the session that triggered the event.
 
     - `organization_id: string`
+
+    - `session_thread_id: string`
+
+      ID of the session thread this event refers to.
 
     - `type: "session.thread_idled"`
 
@@ -536,9 +556,13 @@
 
     - `id: string`
 
-      ID of the resource that triggered the event.
+      ID of the session that triggered the event.
 
     - `organization_id: string`
+
+    - `session_thread_id: string`
+
+      ID of the session thread this event refers to.
 
     - `type: "session.thread_terminated"`
 
@@ -550,7 +574,7 @@
 
     - `id: string`
 
-      ID of the resource that triggered the event.
+      ID of the session that triggered the event.
 
     - `organization_id: string`
 
@@ -564,7 +588,7 @@
 
     - `id: string`
 
-      ID of the resource that triggered the event.
+      ID of the vault that triggered the event.
 
     - `organization_id: string`
 
@@ -578,7 +602,7 @@
 
     - `id: string`
 
-      ID of the resource that triggered the event.
+      ID of the vault that triggered the event.
 
     - `organization_id: string`
 
@@ -592,7 +616,7 @@
 
     - `id: string`
 
-      ID of the resource that triggered the event.
+      ID of the vault that triggered the event.
 
     - `organization_id: string`
 
@@ -606,7 +630,7 @@
 
     - `id: string`
 
-      ID of the resource that triggered the event.
+      ID of the vault credential that triggered the event.
 
     - `organization_id: string`
 
@@ -624,7 +648,7 @@
 
     - `id: string`
 
-      ID of the resource that triggered the event.
+      ID of the vault credential that triggered the event.
 
     - `organization_id: string`
 
@@ -642,7 +666,7 @@
 
     - `id: string`
 
-      ID of the resource that triggered the event.
+      ID of the vault credential that triggered the event.
 
     - `organization_id: string`
 
@@ -660,7 +684,7 @@
 
     - `id: string`
 
-      ID of the resource that triggered the event.
+      ID of the vault credential that triggered the event.
 
     - `organization_id: string`
 
@@ -680,7 +704,7 @@
 
   - `id: string`
 
-    ID of the resource that triggered the event.
+    ID of the session that triggered the event.
 
   - `organization_id: string`
 
@@ -696,7 +720,7 @@
 
   - `id: string`
 
-    ID of the resource that triggered the event.
+    ID of the session that triggered the event.
 
   - `organization_id: string`
 
@@ -712,7 +736,7 @@
 
   - `id: string`
 
-    ID of the resource that triggered the event.
+    ID of the session that triggered the event.
 
   - `organization_id: string`
 
@@ -728,7 +752,7 @@
 
   - `id: string`
 
-    ID of the resource that triggered the event.
+    ID of the session that triggered the event.
 
   - `organization_id: string`
 
@@ -744,7 +768,7 @@
 
   - `id: string`
 
-    ID of the resource that triggered the event.
+    ID of the session that triggered the event.
 
   - `organization_id: string`
 
@@ -760,7 +784,7 @@
 
   - `id: string`
 
-    ID of the resource that triggered the event.
+    ID of the session that triggered the event.
 
   - `organization_id: string`
 
@@ -776,7 +800,7 @@
 
   - `id: string`
 
-    ID of the resource that triggered the event.
+    ID of the session that triggered the event.
 
   - `organization_id: string`
 
@@ -792,7 +816,7 @@
 
   - `id: string`
 
-    ID of the resource that triggered the event.
+    ID of the session that triggered the event.
 
   - `organization_id: string`
 
@@ -808,7 +832,7 @@
 
   - `id: string`
 
-    ID of the resource that triggered the event.
+    ID of the session that triggered the event.
 
   - `organization_id: string`
 
@@ -824,7 +848,7 @@
 
   - `id: string`
 
-    ID of the resource that triggered the event.
+    ID of the session that triggered the event.
 
   - `organization_id: string`
 
@@ -840,7 +864,7 @@
 
   - `id: string`
 
-    ID of the resource that triggered the event.
+    ID of the session that triggered the event.
 
   - `organization_id: string`
 
@@ -856,7 +880,7 @@
 
   - `id: string`
 
-    ID of the resource that triggered the event.
+    ID of the session that triggered the event.
 
   - `organization_id: string`
 
@@ -872,9 +896,13 @@
 
   - `id: string`
 
-    ID of the resource that triggered the event.
+    ID of the session that triggered the event.
 
   - `organization_id: string`
+
+  - `session_thread_id: string`
+
+    ID of the session thread this event refers to.
 
   - `type: "session.thread_created"`
 
@@ -888,9 +916,13 @@
 
   - `id: string`
 
-    ID of the resource that triggered the event.
+    ID of the session that triggered the event.
 
   - `organization_id: string`
+
+  - `session_thread_id: string`
+
+    ID of the session thread this event refers to.
 
   - `type: "session.thread_idled"`
 
@@ -904,9 +936,13 @@
 
   - `id: string`
 
-    ID of the resource that triggered the event.
+    ID of the session that triggered the event.
 
   - `organization_id: string`
+
+  - `session_thread_id: string`
+
+    ID of the session thread this event refers to.
 
   - `type: "session.thread_terminated"`
 
@@ -920,7 +956,7 @@
 
   - `id: string`
 
-    ID of the resource that triggered the event.
+    ID of the vault that triggered the event.
 
   - `organization_id: string`
 
@@ -936,7 +972,7 @@
 
   - `id: string`
 
-    ID of the resource that triggered the event.
+    ID of the vault that triggered the event.
 
   - `organization_id: string`
 
@@ -952,7 +988,7 @@
 
   - `id: string`
 
-    ID of the resource that triggered the event.
+    ID of the vault credential that triggered the event.
 
   - `organization_id: string`
 
@@ -972,7 +1008,7 @@
 
   - `id: string`
 
-    ID of the resource that triggered the event.
+    ID of the vault credential that triggered the event.
 
   - `organization_id: string`
 
@@ -992,7 +1028,7 @@
 
   - `id: string`
 
-    ID of the resource that triggered the event.
+    ID of the vault credential that triggered the event.
 
   - `organization_id: string`
 
@@ -1012,7 +1048,7 @@
 
   - `id: string`
 
-    ID of the resource that triggered the event.
+    ID of the vault credential that triggered the event.
 
   - `organization_id: string`
 
@@ -1032,7 +1068,7 @@
 
   - `id: string`
 
-    ID of the resource that triggered the event.
+    ID of the vault that triggered the event.
 
   - `organization_id: string`
 
@@ -1060,7 +1096,7 @@
 
       - `id: string`
 
-        ID of the resource that triggered the event.
+        ID of the session that triggered the event.
 
       - `organization_id: string`
 
@@ -1074,7 +1110,7 @@
 
       - `id: string`
 
-        ID of the resource that triggered the event.
+        ID of the session that triggered the event.
 
       - `organization_id: string`
 
@@ -1088,7 +1124,7 @@
 
       - `id: string`
 
-        ID of the resource that triggered the event.
+        ID of the session that triggered the event.
 
       - `organization_id: string`
 
@@ -1102,7 +1138,7 @@
 
       - `id: string`
 
-        ID of the resource that triggered the event.
+        ID of the session that triggered the event.
 
       - `organization_id: string`
 
@@ -1116,7 +1152,7 @@
 
       - `id: string`
 
-        ID of the resource that triggered the event.
+        ID of the session that triggered the event.
 
       - `organization_id: string`
 
@@ -1130,7 +1166,7 @@
 
       - `id: string`
 
-        ID of the resource that triggered the event.
+        ID of the session that triggered the event.
 
       - `organization_id: string`
 
@@ -1144,7 +1180,7 @@
 
       - `id: string`
 
-        ID of the resource that triggered the event.
+        ID of the session that triggered the event.
 
       - `organization_id: string`
 
@@ -1158,7 +1194,7 @@
 
       - `id: string`
 
-        ID of the resource that triggered the event.
+        ID of the session that triggered the event.
 
       - `organization_id: string`
 
@@ -1172,7 +1208,7 @@
 
       - `id: string`
 
-        ID of the resource that triggered the event.
+        ID of the session that triggered the event.
 
       - `organization_id: string`
 
@@ -1186,7 +1222,7 @@
 
       - `id: string`
 
-        ID of the resource that triggered the event.
+        ID of the session that triggered the event.
 
       - `organization_id: string`
 
@@ -1200,7 +1236,7 @@
 
       - `id: string`
 
-        ID of the resource that triggered the event.
+        ID of the session that triggered the event.
 
       - `organization_id: string`
 
@@ -1214,9 +1250,13 @@
 
       - `id: string`
 
-        ID of the resource that triggered the event.
+        ID of the session that triggered the event.
 
       - `organization_id: string`
+
+      - `session_thread_id: string`
+
+        ID of the session thread this event refers to.
 
       - `type: "session.thread_created"`
 
@@ -1228,9 +1268,13 @@
 
       - `id: string`
 
-        ID of the resource that triggered the event.
+        ID of the session that triggered the event.
 
       - `organization_id: string`
+
+      - `session_thread_id: string`
+
+        ID of the session thread this event refers to.
 
       - `type: "session.thread_idled"`
 
@@ -1242,9 +1286,13 @@
 
       - `id: string`
 
-        ID of the resource that triggered the event.
+        ID of the session that triggered the event.
 
       - `organization_id: string`
+
+      - `session_thread_id: string`
+
+        ID of the session thread this event refers to.
 
       - `type: "session.thread_terminated"`
 
@@ -1256,7 +1304,7 @@
 
       - `id: string`
 
-        ID of the resource that triggered the event.
+        ID of the session that triggered the event.
 
       - `organization_id: string`
 
@@ -1270,7 +1318,7 @@
 
       - `id: string`
 
-        ID of the resource that triggered the event.
+        ID of the vault that triggered the event.
 
       - `organization_id: string`
 
@@ -1284,7 +1332,7 @@
 
       - `id: string`
 
-        ID of the resource that triggered the event.
+        ID of the vault that triggered the event.
 
       - `organization_id: string`
 
@@ -1298,7 +1346,7 @@
 
       - `id: string`
 
-        ID of the resource that triggered the event.
+        ID of the vault that triggered the event.
 
       - `organization_id: string`
 
@@ -1312,7 +1360,7 @@
 
       - `id: string`
 
-        ID of the resource that triggered the event.
+        ID of the vault credential that triggered the event.
 
       - `organization_id: string`
 
@@ -1330,7 +1378,7 @@
 
       - `id: string`
 
-        ID of the resource that triggered the event.
+        ID of the vault credential that triggered the event.
 
       - `organization_id: string`
 
@@ -1348,7 +1396,7 @@
 
       - `id: string`
 
-        ID of the resource that triggered the event.
+        ID of the vault credential that triggered the event.
 
       - `organization_id: string`
 
@@ -1366,7 +1414,7 @@
 
       - `id: string`
 
-        ID of the resource that triggered the event.
+        ID of the vault credential that triggered the event.
 
       - `organization_id: string`
 

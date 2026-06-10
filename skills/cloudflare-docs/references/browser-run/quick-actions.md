@@ -14,8 +14,8 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 Quick Actions provide simple interfaces for common browser tasks like capturing screenshots, extracting HTML content, generating PDFs, and more. You can use Quick Actions in two ways:
 
-* REST API — HTTP endpoints for one-off requests or external integration
-* Workers binding — Call Quick Actions directly from a [Cloudflare Worker](https://developers.cloudflare.com/workers/) using `env.BROWSER.quickAction()`
+* **REST API**: HTTP endpoints for one-off requests or external integration.
+* **Workers Bindings**: Call Quick Actions directly from a [Cloudflare Worker](https://developers.cloudflare.com/workers/) using `env.BROWSER.quickAction()`.
 
 The following are the available options:
 

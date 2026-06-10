@@ -318,9 +318,9 @@ video
 
 ## API Schemas (Raw)
 
-Input 
+Input [ ](https://developers.cloudflare.com/ai/models/alibaba/hh1-t2v/schema-input.json "Open") [ ](https://developers.cloudflare.com/ai/models/alibaba/hh1-t2v/schema-input.json "Download") 
 
-Output 
+Output [ ](https://developers.cloudflare.com/ai/models/alibaba/hh1-t2v/schema-output.json "Open") [ ](https://developers.cloudflare.com/ai/models/alibaba/hh1-t2v/schema-output.json "Download") 
 
 ```json
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/ai/","name":"AI"}},{"@type":"ListItem","position":3,"item":{"@id":"/ai/models/","name":"Models"}}]}

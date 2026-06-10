@@ -29,8 +29,8 @@ Google's most capable Gemini 2.5 model with strong reasoning, thinking support, 
 
 ## Usage
 
-* [ TypeScript ](#tab-panel-454)
-* [ cURL ](#tab-panel-455)
+* [ TypeScript ](#tab-panel-504)
+* [ cURL ](#tab-panel-505)
 
 TypeScript
 
@@ -92,8 +92,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 ```
 
-* [ Output ](#tab-panel-460)
-* [ Raw response ](#tab-panel-461)
+* [ Output ](#tab-panel-510)
+* [ Raw response ](#tab-panel-511)
 
 Of course! The three laws of thermodynamics are fundamental principles in physics that describe the relationships between heat, energy, and work.
 
@@ -241,8 +241,8 @@ Before the three main laws, it's helpful to understand the **Zeroth Law**, which
 
 **With System Instruction**  — Using a system instruction to set context 
 
-* [ TypeScript ](#tab-panel-456)
-* [ cURL ](#tab-panel-457)
+* [ TypeScript ](#tab-panel-506)
+* [ cURL ](#tab-panel-507)
 
 TypeScript
 
@@ -336,8 +336,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 ```
 
-* [ Output ](#tab-panel-462)
-* [ Raw response ](#tab-panel-463)
+* [ Output ](#tab-panel-512)
+* [ Raw response ](#tab-panel-513)
 
 Of course! Reading a JSON file in Python is a common task, and the built-in `json` module makes it very straightforward.
 
@@ -588,8 +588,8 @@ print(data['city'])  # Output: New York
 
 **Multi-turn Conversation**  — Continuing a conversation with context 
 
-* [ TypeScript ](#tab-panel-464)
-* [ cURL ](#tab-panel-465)
+* [ TypeScript ](#tab-panel-514)
+* [ cURL ](#tab-panel-515)
 
 TypeScript
 
@@ -723,8 +723,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 ```
 
-* [ Output ](#tab-panel-466)
-* [ Raw response ](#tab-panel-467)
+* [ Output ](#tab-panel-516)
+* [ Raw response ](#tab-panel-517)
 
 Of course! The drive from San Francisco to Los Angeles offers two very different experiences, depending on
 
@@ -817,8 +817,8 @@ Of course! The drive from San Francisco to Los Angeles offers two very different
 
 **Creative Writing**  — Higher temperature for creative output 
 
-* [ TypeScript ](#tab-panel-458)
-* [ cURL ](#tab-panel-459)
+* [ TypeScript ](#tab-panel-508)
+* [ cURL ](#tab-panel-509)
 
 TypeScript
 
@@ -904,8 +904,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 ```
 
-* [ Output ](#tab-panel-468)
-* [ Raw response ](#tab-panel-469)
+* [ Output ](#tab-panel-518)
+* [ Raw response ](#tab-panel-519)
 
 The stale, metallic tang of blood was the first
 
@@ -998,8 +998,8 @@ The stale, metallic tang of blood was the first
 
 ## Parameters
 
-* [ Input ](#tab-panel-470)
-* [ Output ](#tab-panel-471)
+* [ Input ](#tab-panel-520)
+* [ Output ](#tab-panel-521)
 
 ▶contents\[\]
 
@@ -1039,9 +1039,9 @@ modelVersion
 
 ## API Schemas (Raw)
 
-Input 
+Input [ ](https://developers.cloudflare.com/ai/models/google/gemini-2.5-pro/schema-input.json "Open") [ ](https://developers.cloudflare.com/ai/models/google/gemini-2.5-pro/schema-input.json "Download") 
 
-Output 
+Output [ ](https://developers.cloudflare.com/ai/models/google/gemini-2.5-pro/schema-output.json "Open") [ ](https://developers.cloudflare.com/ai/models/google/gemini-2.5-pro/schema-output.json "Download") 
 
 ```json
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/ai/","name":"AI"}},{"@type":"ListItem","position":3,"item":{"@id":"/ai/models/","name":"Models"}}]}

@@ -27,8 +27,8 @@ Seedream 4.5 builds on 4.0 with multi-reference image support, batch generation,
 
 ## Usage
 
-* [ TypeScript ](#tab-panel-374)
-* [ cURL ](#tab-panel-375)
+* [ TypeScript ](#tab-panel-414)
+* [ cURL ](#tab-panel-415)
 
 TypeScript
 
@@ -72,8 +72,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 ```
 
-* [ Output ](#tab-panel-376)
-* [ Raw response ](#tab-panel-377)
+* [ Output ](#tab-panel-416)
+* [ Raw response ](#tab-panel-417)
 
 ![Simple Generation](https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/bytedance__seedream-4.5/simple-generation-0.jpeg) 
 
@@ -108,8 +108,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 **High Resolution**  — 4K quality image generation 
 
-* [ TypeScript ](#tab-panel-380)
-* [ cURL ](#tab-panel-381)
+* [ TypeScript ](#tab-panel-420)
+* [ cURL ](#tab-panel-421)
 
 TypeScript
 
@@ -167,8 +167,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 ```
 
-* [ Output ](#tab-panel-378)
-* [ Raw response ](#tab-panel-379)
+* [ Output ](#tab-panel-418)
+* [ Raw response ](#tab-panel-419)
 
 ![High Resolution](https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/bytedance__seedream-4.5/high-resolution-0.jpeg) 
 
@@ -201,8 +201,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 **Image-to-Image**  — Edit using reference images 
 
-* [ TypeScript ](#tab-panel-384)
-* [ cURL ](#tab-panel-385)
+* [ TypeScript ](#tab-panel-424)
+* [ cURL ](#tab-panel-425)
 
 TypeScript
 
@@ -266,8 +266,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 ```
 
-* [ Output ](#tab-panel-382)
-* [ Raw response ](#tab-panel-383)
+* [ Output ](#tab-panel-422)
+* [ Raw response ](#tab-panel-423)
 
 ![Image-to-Image](https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/bytedance__seedream-4.5/image-to-image-0.jpeg) 
 
@@ -300,8 +300,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 **Sequential Generation**  — Generate multiple related images 
 
-* [ TypeScript ](#tab-panel-388)
-* [ cURL ](#tab-panel-389)
+* [ TypeScript ](#tab-panel-428)
+* [ cURL ](#tab-panel-429)
 
 TypeScript
 
@@ -361,8 +361,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 ```
 
-* [ Output ](#tab-panel-386)
-* [ Raw response ](#tab-panel-387)
+* [ Output ](#tab-panel-426)
+* [ Raw response ](#tab-panel-427)
 
 ![Sequential Generation](https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/bytedance__seedream-4.5/sequential-generation-0.jpeg) 
 
@@ -395,8 +395,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 **Multi-Image Edit**  — Combine multiple reference images 
 
-* [ TypeScript ](#tab-panel-392)
-* [ cURL ](#tab-panel-393)
+* [ TypeScript ](#tab-panel-432)
+* [ cURL ](#tab-panel-433)
 
 TypeScript
 
@@ -464,8 +464,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 ```
 
-* [ Output ](#tab-panel-390)
-* [ Raw response ](#tab-panel-391)
+* [ Output ](#tab-panel-430)
+* [ Raw response ](#tab-panel-431)
 
 ![Multi-Image Edit](https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/bytedance__seedream-4.5/multi-image-edit-0.jpeg) 
 
@@ -498,8 +498,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 ## Parameters
 
-* [ Input ](#tab-panel-394)
-* [ Output ](#tab-panel-395)
+* [ Input ](#tab-panel-434)
+* [ Output ](#tab-panel-435)
 
 aspect\_ratio
 
@@ -535,9 +535,9 @@ size
 
 ## API Schemas (Raw)
 
-Input 
+Input [ ](https://developers.cloudflare.com/ai/models/bytedance/seedream-4.5/schema-input.json "Open") [ ](https://developers.cloudflare.com/ai/models/bytedance/seedream-4.5/schema-input.json "Download") 
 
-Output 
+Output [ ](https://developers.cloudflare.com/ai/models/bytedance/seedream-4.5/schema-output.json "Open") [ ](https://developers.cloudflare.com/ai/models/bytedance/seedream-4.5/schema-output.json "Download") 
 
 ```json
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/ai/","name":"AI"}},{"@type":"ListItem","position":3,"item":{"@id":"/ai/models/","name":"Models"}}]}

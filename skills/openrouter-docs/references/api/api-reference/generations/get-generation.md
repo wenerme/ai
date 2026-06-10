@@ -81,6 +81,7 @@ paths:
                 $ref: '#/components/schemas/BadGatewayResponse'
 servers:
   - url: https://openrouter.ai/api/v1
+    description: Production server
 components:
   schemas:
     GenerationResponseDataApiType:
@@ -95,6 +96,15 @@ components:
         - image
       description: Type of API used for the generation
       title: GenerationResponseDataApiType
+    GenerationResponseDataDataRegion:
+      type: string
+      enum:
+        - global
+        - europe
+      description: >-
+        The data region this generation was routed through. 'europe' for
+        EU-routed requests, 'global' otherwise.
+      title: GenerationResponseDataDataRegion
     ProviderResponseProviderName:
       type: string
       enum:
@@ -152,6 +162,7 @@ components:
         - Crucible
         - Crusoe
         - Darkbloom
+        - Decart
         - DeepInfra
         - DeepSeek
         - DekaLLM
@@ -272,6 +283,11 @@ components:
         created_at:
           type: string
           description: ISO 8601 timestamp of when the generation was created
+        data_region:
+          $ref: '#/components/schemas/GenerationResponseDataDataRegion'
+          description: >-
+            The data region this generation was routed through. 'europe' for
+            EU-routed requests, 'global' otherwise.
         external_user:
           type:
             - string
@@ -474,6 +490,7 @@ components:
         - cache_discount
         - cancelled
         - created_at
+        - data_region
         - external_user
         - finish_reason
         - generation_time
@@ -751,7 +768,63 @@ components:
 
 ```
 
-## SDK Code Examples
+## Examples
+
+
+
+**Response**
+
+```json
+{
+  "data": {
+    "api_type": "completions",
+    "app_id": 12345,
+    "cache_discount": null,
+    "cancelled": false,
+    "created_at": "2024-07-15T23:33:19.433273+00:00",
+    "data_region": "global",
+    "external_user": "user-123",
+    "finish_reason": "stop",
+    "generation_time": 1200,
+    "http_referer": "https://openrouter.ai/",
+    "id": "gen-3bhGkxlo4XFrqiabUM7NDtwDzWwG",
+    "is_byok": false,
+    "latency": 1250,
+    "model": "sao10k/l3-stheno-8b",
+    "moderation_latency": 50,
+    "native_finish_reason": "stop",
+    "native_tokens_cached": 3,
+    "native_tokens_completion": 25,
+    "native_tokens_completion_images": 0,
+    "native_tokens_prompt": 10,
+    "native_tokens_reasoning": 5,
+    "num_fetches": 0,
+    "num_input_audio_prompt": 0,
+    "num_media_completion": 0,
+    "num_media_prompt": 1,
+    "num_search_results": 5,
+    "origin": "https://openrouter.ai/",
+    "preset_id": "a9e8d400-592a-494f-908c-375efa66cafd",
+    "provider_name": "Infermatic",
+    "provider_responses": null,
+    "router": "openrouter/auto",
+    "service_tier": "priority",
+    "streamed": true,
+    "tokens_completion": 25,
+    "tokens_prompt": 10,
+    "total_cost": 0.0015,
+    "upstream_id": "chatcmpl-791bcf62-080e-4568-87d0-94c72e3b4946",
+    "upstream_inference_cost": 0.0012,
+    "usage": 0.0015,
+    "user_agent": "Mozilla/5.0",
+    "web_search_engine": "exa",
+    "request_id": "req-1727282430-aBcDeFgHiJkLmNoPqRsT",
+    "session_id": null
+  }
+}
+```
+
+**SDK Code**
 
 ```python Generations_getGeneration_example
 import requests

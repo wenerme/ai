@@ -325,8 +325,8 @@ cd hijack-alerts
 
 In your Wrangler file, change the default checking frequency (once per hour) to what you like. Here is an example of configuring the workers to run the script five minutes.
 
-* [  wrangler.jsonc ](#tab-panel-7301)
-* [  wrangler.toml ](#tab-panel-7302)
+* [  wrangler.jsonc ](#tab-panel-9691)
+* [  wrangler.toml ](#tab-panel-9692)
 
 JSONC
 
@@ -342,7 +342,7 @@ JSONC
 
   // Set this to today's date
 
-  "compatibility_date": "2026-04-29",
+  "compatibility_date": "2026-06-10",
 
   "triggers": {
 
@@ -371,7 +371,7 @@ main = "src/index.js"
 
 # Set this to today's date
 
-compatibility_date = "2026-04-29"
+compatibility_date = "2026-06-10"
 
 
 [triggers]
@@ -383,8 +383,8 @@ crons = [ "*/5 * * * *" ]
 
 In this example, we will also need to use Cloudflare KV to save the latest checked event IDs which allows us to know what events are new. Once you have created a KV, you can head back to the `wrangler.jsonc` file and add the following sections:
 
-* [  wrangler.jsonc ](#tab-panel-7299)
-* [  wrangler.toml ](#tab-panel-7300)
+* [  wrangler.jsonc ](#tab-panel-9689)
+* [  wrangler.toml ](#tab-panel-9690)
 
 JSONC
 
@@ -659,12 +659,12 @@ The last step is to deploy the application with command `npx wrangler deploy` an
 
 ### Send email alerts from Workers
 
-If you have [Email Routing](https://developers.cloudflare.com/email-routing/) enabled for your domain, you can also send email alerts directly from Workers. Refer to [Send emails from Workers](https://developers.cloudflare.com/email-routing/email-workers/send-email-workers/) to learn more.
+If you have [Email Routing](https://developers.cloudflare.com/email-service/) enabled for your domain, you can also send email alerts directly from Workers. Refer to [Send emails from Workers](https://developers.cloudflare.com/email-service/api/send-emails/workers-api/) to learn more.
 
 For this alert to work, you will need to configure the proper email bindings in the [Wrangler configuration file](https://developers.cloudflare.com/workers/wrangler/configuration/#email-bindings).
 
-* [  wrangler.jsonc ](#tab-panel-7303)
-* [  wrangler.toml ](#tab-panel-7304)
+* [  wrangler.jsonc ](#tab-panel-9693)
+* [  wrangler.toml ](#tab-panel-9694)
 
 JSONC
 

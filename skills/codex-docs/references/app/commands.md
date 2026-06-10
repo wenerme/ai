@@ -99,30 +99,37 @@ For guidance on writing effective goals, see [Goal mode](https://developers.open
 
 ## Deep links
 
-The Codex app registers the `codex://` URL scheme so links can open specific parts of the app directly.
+The Codex app registers the `codex://` URL scheme so links can open specific parts of the app directly. Encode query string values before adding them to a URL.
 
-### Common links
+### Supported links
 
-Use these links when you just need to open a common app destination. The sections below list the full reference by link type.
+Use these canonical forms when you create links. The sections below list the full reference by link type.
 
-| Deep link                     | Opens                                                            |
-| ----------------------------- | ---------------------------------------------------------------- |
-| `codex://threads/new`         | A new local thread.                                              |
-| `codex://threads/<thread-id>` | A local thread. `<thread-id>` must be the thread's session UUID. |
-| `codex://settings`            | Settings.                                                        |
-| `codex://skills`              | Skills.                                                          |
-| `codex://automations`         | Automations with the create flow open.                           |
+| Deep link                                                                   | Opens                                                            |
+| --------------------------------------------------------------------------- | ---------------------------------------------------------------- |
+| `codex://threads/new`                                                       | A new local thread.                                              |
+| `codex://new?<query>`                                                       | A new local thread with at least one new-thread query parameter. |
+| `codex://threads/<thread-id>`                                               | A local thread. `<thread-id>` must be the thread's session UUID. |
+| `codex://settings`                                                          | Settings.                                                        |
+| `codex://skills`                                                            | Skills.                                                          |
+| `codex://automations`                                                       | Automations with the create flow open.                           |
+| `codex://plugins/install/<plugin-name>?marketplace=<marketplace-name>`      | The install flow for a plugin from a known marketplace.          |
+| `codex://plugins/<plugin-id>`                                               | A plugin detail page.                                            |
+| `codex://plugins/<plugin-name>?marketplacePath=<absolute-marketplace-path>` | A local plugin detail page from a local marketplace.             |
+| `codex://pets/install?name=<pet-name>&imageUrl=<https-image-url>`           | The pet install flow.                                            |
 
 ### Threads
 
 Use these links when you need to open an existing local thread or start a new one.
 
-| Deep link                     | Opens                                                            |
-| ----------------------------- | ---------------------------------------------------------------- |
-| `codex://threads/<thread-id>` | A local thread. `<thread-id>` must be the thread's session UUID. |
-| `codex://threads/new`         | A new local thread.                                              |
+| Deep link                     | Opens                                                                                                          |
+| ----------------------------- | -------------------------------------------------------------------------------------------------------------- |
+| `codex://threads/<thread-id>` | A local thread. `<thread-id>` must be the thread's session UUID.                                               |
+| `codex://threads/new`         | A new local thread.                                                                                            |
+| `codex://threads/new?<query>` | A new local thread with optional query parameters.                                                             |
+| `codex://new?<query>`         | A new local thread. Include at least one of `prompt`, `path`, or `originUrl`; otherwise the link does nothing. |
 
-For `codex://threads/new`, add any of these query parameters as needed; you can combine them in the same URL.
+For `codex://threads/new` or `codex://new`, add any of these query parameters as needed; you can combine them in the same URL.
 
 | Query parameter              | Required | What it does                                                                                                                                                    |
 | ---------------------------- | -------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -143,6 +150,8 @@ Use these links when you need to open Settings or a specific settings page.
 | `codex://settings/computer-use/google-chrome` | Google Chrome settings for computer use. |
 | `codex://settings/connections`                | Remote connections settings.             |
 
+Unsupported `codex://settings/...` paths open the main Settings page.
+
 ### Skills
 
 Use these links when you need to open Skills.
@@ -161,7 +170,21 @@ Use these links when you need to open Automations.
 
 ### Plugins
 
-Plugin links use different forms depending on whether you are opening a plugin, installing from a marketplace, or working from a local `marketplace.json`. For plugin basics, see [Plugins](https://developers.openai.com/codex/plugins). For local or repo marketplace setup, see [Build plugins](https://developers.openai.com/codex/plugins/build#build-your-own-curated-plugin-list).
+Plugin links use different forms depending on whether you are installing from a marketplace, opening a plugin, or working from a local `marketplace.json`. For plugin basics, see [Plugins](https://developers.openai.com/codex/plugins). For local or repo marketplace setup, see [Build plugins](https://developers.openai.com/codex/plugins/build#build-your-own-curated-plugin-list).
+
+#### Plugin install
+
+Use this form to open the install flow for a plugin from a marketplace that Codex already knows about.
+
+| Deep link                                                              | Opens                                           |
+| ---------------------------------------------------------------------- | ----------------------------------------------- |
+| `codex://plugins/install/<plugin-name>?marketplace=<marketplace-name>` | The plugin detail or install flow for a plugin. |
+
+| Query parameter                  | Required | What it does                                                                    |
+| -------------------------------- | -------- | ------------------------------------------------------------------------------- |
+| `marketplace=<marketplace-name>` | Yes      | Identifies the marketplace. For an OpenAI-curated plugin, use `openai-curated`. |
+
+The install link accepts only the `marketplace` query parameter. If Codex cannot find the requested marketplace or plugin, it opens the Plugins page instead.
 
 #### Plugin detail
 

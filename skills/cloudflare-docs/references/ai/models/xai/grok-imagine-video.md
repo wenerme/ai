@@ -28,8 +28,8 @@ xAI's video generation model. Generates, edits, and extends videos from text and
 
 ## Usage
 
-* [ TypeScript ](#tab-panel-1686)
-* [ cURL ](#tab-panel-1687)
+* [ TypeScript ](#tab-panel-1956)
+* [ cURL ](#tab-panel-1957)
 
 TypeScript
 
@@ -89,8 +89,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 ```
 
-* [ Output ](#tab-panel-1682)
-* [ Raw response ](#tab-panel-1683)
+* [ Output ](#tab-panel-1952)
+* [ Raw response ](#tab-panel-1953)
 
 ```
 
@@ -119,8 +119,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 **Portrait Video**  — Vertical video for social media 
 
-* [ TypeScript ](#tab-panel-1690)
-* [ cURL ](#tab-panel-1691)
+* [ TypeScript ](#tab-panel-1960)
+* [ cURL ](#tab-panel-1961)
 
 TypeScript
 
@@ -180,8 +180,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 ```
 
-* [ Output ](#tab-panel-1684)
-* [ Raw response ](#tab-panel-1685)
+* [ Output ](#tab-panel-1954)
+* [ Raw response ](#tab-panel-1955)
 
 ```
 
@@ -208,8 +208,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 **Cinematic Landscape**  — Widescreen cinematic shot at extended duration 
 
-* [ TypeScript ](#tab-panel-1692)
-* [ cURL ](#tab-panel-1693)
+* [ TypeScript ](#tab-panel-1962)
+* [ cURL ](#tab-panel-1963)
 
 TypeScript
 
@@ -271,8 +271,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 ```
 
-* [ Output ](#tab-panel-1688)
-* [ Raw response ](#tab-panel-1689)
+* [ Output ](#tab-panel-1958)
+* [ Raw response ](#tab-panel-1959)
 
 ```
 
@@ -299,8 +299,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 ## Parameters
 
-* [ Input ](#tab-panel-1694)
-* [ Output ](#tab-panel-1695)
+* [ Input ](#tab-panel-1964)
+* [ Output ](#tab-panel-1965)
 
 \_operation
 
@@ -352,9 +352,9 @@ video
 
 ## API Schemas (Raw)
 
-Input 
+Input [ ](https://developers.cloudflare.com/ai/models/xai/grok-imagine-video/schema-input.json "Open") [ ](https://developers.cloudflare.com/ai/models/xai/grok-imagine-video/schema-input.json "Download") 
 
-Output 
+Output [ ](https://developers.cloudflare.com/ai/models/xai/grok-imagine-video/schema-output.json "Open") [ ](https://developers.cloudflare.com/ai/models/xai/grok-imagine-video/schema-output.json "Download") 
 
 ```json
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/ai/","name":"AI"}},{"@type":"ListItem","position":3,"item":{"@id":"/ai/models/","name":"Models"}}]}

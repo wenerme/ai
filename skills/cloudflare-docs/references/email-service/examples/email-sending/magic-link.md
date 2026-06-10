@@ -16,6 +16,48 @@ Implement passwordless authentication by sending secure, time-limited login link
 
 This example demonstrates how to send a magic link email for passwordless authentication using Cloudflare Email Service.
 
+Configure the email binding in your Wrangler configuration file:
+
+* [  wrangler.jsonc ](#tab-panel-8273)
+* [  wrangler.toml ](#tab-panel-8274)
+
+JSONC
+
+```
+
+{
+
+  "send_email": [{ "name": "EMAIL" }],
+
+  "vars": {
+
+    "DOMAIN": "yourdomain.com",
+
+  },
+
+}
+
+
+```
+
+TOML
+
+```
+
+[[send_email]]
+
+name = "EMAIL"
+
+
+[vars]
+
+DOMAIN = "yourdomain.com"
+
+
+```
+
+The Worker exposes a `POST /send-magic-link` route that validates the submitted email address, generates a single-use token, and emails the recipient a time-limited login link. The following code implements that handler.
+
 TypeScript
 
 ```
@@ -139,6 +181,12 @@ function isValidEmail(email: string): boolean {
 
 
 ```
+
+## Next steps
+
+* [User signup flow](https://developers.cloudflare.com/email-service/examples/email-sending/signup-flow/) — combine magic links with account verification.
+* [Send method](https://developers.cloudflare.com/email-service/api/send-emails/workers-api/) — full reference for the `send()` method.
+* [Email headers](https://developers.cloudflare.com/email-service/reference/headers/) — add tracking or list-management headers.
 
 ```json
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/email-service/","name":"Email Service"}},{"@type":"ListItem","position":3,"item":{"@id":"/email-service/examples/","name":"Examples"}},{"@type":"ListItem","position":4,"item":{"@id":"/email-service/examples/email-sending/","name":"Email sending"}},{"@type":"ListItem","position":5,"item":{"@id":"/email-service/examples/email-sending/magic-link/","name":"Magic link authentication"}}]}

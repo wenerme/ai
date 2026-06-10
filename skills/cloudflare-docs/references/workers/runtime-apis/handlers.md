@@ -34,7 +34,7 @@ export default {
 The following handlers are available within Workers:
 
 * [ Alarm Handler ](https://developers.cloudflare.com/durable-objects/api/alarms/)
-* [ Email Handler ](https://developers.cloudflare.com/email-routing/email-workers/runtime-api/)
+* [ Email Handler ](https://developers.cloudflare.com/email-service/api/route-emails/email-handler/)
 * [ Fetch Handler ](https://developers.cloudflare.com/workers/runtime-apis/handlers/fetch/)
 * [ Queue Handler ](https://developers.cloudflare.com/queues/configuration/javascript-apis/#consumer)
 * [ Scheduled Handler ](https://developers.cloudflare.com/workers/runtime-apis/handlers/scheduled/)

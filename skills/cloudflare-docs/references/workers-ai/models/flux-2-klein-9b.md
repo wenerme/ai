@@ -28,8 +28,8 @@ FLUX.2 \[klein\] 9B is an ultra-fast, distilled image model with enhanced qualit
 
 ## Usage
 
-* [  TypeScript ](#tab-panel-4256)
-* [  curl ](#tab-panel-4257)
+* [  TypeScript ](#tab-panel-4642)
+* [  curl ](#tab-panel-4643)
 
 ```
 
@@ -113,8 +113,8 @@ curl --request POST \
 
 ## Parameters
 
-* [ Input ](#tab-panel-4258)
-* [ Output ](#tab-panel-4259)
+* [ Input ](#tab-panel-4644)
+* [ Output ](#tab-panel-4645)
 
 ▶multipart{}
 
@@ -126,9 +126,9 @@ image
 
 ## API Schemas (Raw)
 
-Input 
+Input [ ](https://developers.cloudflare.com/workers-ai/models/flux-2-klein-9b/schema-input.json "Open") [ ](https://developers.cloudflare.com/workers-ai/models/flux-2-klein-9b/schema-input.json "Download") 
 
-Output 
+Output [ ](https://developers.cloudflare.com/workers-ai/models/flux-2-klein-9b/schema-output.json "Open") [ ](https://developers.cloudflare.com/workers-ai/models/flux-2-klein-9b/schema-output.json "Download") 
 
 ```json
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/workers-ai/","name":"Workers AI"}},{"@type":"ListItem","position":3,"item":{"@id":"/workers-ai/models/","name":"Models"}}]}

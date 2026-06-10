@@ -86,6 +86,7 @@ paths:
               $ref: '#/components/schemas/VideoGenerationRequest'
 servers:
   - url: https://openrouter.ai/api/v1
+    description: Production server
 components:
   schemas:
     VideoGenerationRequestAspectRatio:
@@ -332,6 +333,10 @@ components:
           additionalProperties:
             description: Any type
         darkbloom:
+          type: object
+          additionalProperties:
+            description: Any type
+        decart:
           type: object
           additionalProperties:
             description: Any type
@@ -1042,7 +1047,34 @@ components:
 
 ```
 
-## SDK Code Examples
+## Examples
+
+
+
+**Request**
+
+```json
+{
+  "model": "google/veo-3.1",
+  "prompt": "A serene mountain landscape at sunset",
+  "aspect_ratio": "16:9",
+  "duration": 8,
+  "resolution": "720p"
+}
+```
+
+**Response**
+
+```json
+{
+  "id": "job-abc123",
+  "polling_url": "/api/v1/videos/job-abc123",
+  "status": "pending",
+  "generation_id": "gen-xyz789"
+}
+```
+
+**SDK Code**
 
 ```python Video Generation_createVideos_example
 import requests

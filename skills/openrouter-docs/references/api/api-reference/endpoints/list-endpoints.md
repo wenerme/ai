@@ -63,6 +63,7 @@ paths:
                 $ref: '#/components/schemas/InternalServerResponse'
 servers:
   - url: https://openrouter.ai/api/v1
+    description: Production server
 components:
   schemas:
     InputModality:
@@ -268,6 +269,7 @@ components:
         - Crucible
         - Crusoe
         - Darkbloom
+        - Decart
         - DeepInfra
         - DeepSeek
         - DekaLLM
@@ -615,7 +617,36 @@ components:
 
 ```
 
-## SDK Code Examples
+## Examples
+
+
+
+**Response**
+
+```json
+{
+  "data": {
+    "architecture": {
+      "input_modalities": [
+        "text"
+      ],
+      "instruct_type": "chatml",
+      "modality": "text->text",
+      "output_modalities": [
+        "text"
+      ],
+      "tokenizer": "GPT"
+    },
+    "created": 1692901234,
+    "description": "GPT-4 is a large multimodal model.",
+    "endpoints": [],
+    "id": "openai/gpt-4",
+    "name": "GPT-4"
+  }
+}
+```
+
+**SDK Code**
 
 ```python Endpoints_listEndpoints_example
 import requests

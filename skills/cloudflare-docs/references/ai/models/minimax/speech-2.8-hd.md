@@ -28,8 +28,8 @@ MiniMax Speech 2.8 HD focuses on studio-grade audio generation with emotion cont
 
 ## Usage
 
-* [ TypeScript ](#tab-panel-848)
-* [ cURL ](#tab-panel-849)
+* [ TypeScript ](#tab-panel-898)
+* [ cURL ](#tab-panel-899)
 
 TypeScript
 
@@ -97,8 +97,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 ```
 
-* [ Output ](#tab-panel-844)
-* [ Raw response ](#tab-panel-845)
+* [ Output ](#tab-panel-894)
+* [ Raw response ](#tab-panel-895)
 
 ```
 
@@ -127,8 +127,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 **Custom Voice**  — Use a specific voice and adjust speed 
 
-* [ TypeScript ](#tab-panel-852)
-* [ cURL ](#tab-panel-853)
+* [ TypeScript ](#tab-panel-902)
+* [ cURL ](#tab-panel-903)
 
 TypeScript
 
@@ -196,8 +196,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 ```
 
-* [ Output ](#tab-panel-846)
-* [ Raw response ](#tab-panel-847)
+* [ Output ](#tab-panel-896)
+* [ Raw response ](#tab-panel-897)
 
 ```
 
@@ -224,8 +224,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 **With Emotion**  — Apply emotional tone to speech 
 
-* [ TypeScript ](#tab-panel-856)
-* [ cURL ](#tab-panel-857)
+* [ TypeScript ](#tab-panel-906)
+* [ cURL ](#tab-panel-907)
 
 TypeScript
 
@@ -297,8 +297,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 ```
 
-* [ Output ](#tab-panel-850)
-* [ Raw response ](#tab-panel-851)
+* [ Output ](#tab-panel-900)
+* [ Raw response ](#tab-panel-901)
 
 ```
 
@@ -325,8 +325,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 **High Sample Rate**  — Studio quality at 44.1kHz sample rate 
 
-* [ TypeScript ](#tab-panel-858)
-* [ cURL ](#tab-panel-859)
+* [ TypeScript ](#tab-panel-908)
+* [ cURL ](#tab-panel-909)
 
 TypeScript
 
@@ -398,8 +398,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 ```
 
-* [ Output ](#tab-panel-854)
-* [ Raw response ](#tab-panel-855)
+* [ Output ](#tab-panel-904)
+* [ Raw response ](#tab-panel-905)
 
 ```
 
@@ -426,8 +426,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 ## Parameters
 
-* [ Input ](#tab-panel-860)
-* [ Output ](#tab-panel-861)
+* [ Input ](#tab-panel-910)
+* [ Output ](#tab-panel-911)
 
 emotion
 
@@ -467,9 +467,9 @@ audio
 
 ## API Schemas (Raw)
 
-Input 
+Input [ ](https://developers.cloudflare.com/ai/models/minimax/speech-2.8-hd/schema-input.json "Open") [ ](https://developers.cloudflare.com/ai/models/minimax/speech-2.8-hd/schema-input.json "Download") 
 
-Output 
+Output [ ](https://developers.cloudflare.com/ai/models/minimax/speech-2.8-hd/schema-output.json "Open") [ ](https://developers.cloudflare.com/ai/models/minimax/speech-2.8-hd/schema-output.json "Download") 
 
 ```json
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/ai/","name":"AI"}},{"@type":"ListItem","position":3,"item":{"@id":"/ai/models/","name":"Models"}}]}

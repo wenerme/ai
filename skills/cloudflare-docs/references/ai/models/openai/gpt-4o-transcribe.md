@@ -28,8 +28,8 @@ A speech-to-text model that uses GPT-4o to transcribe audio with improved word e
 
 ## Usage
 
-* [ TypeScript ](#tab-panel-926)
-* [ cURL ](#tab-panel-927)
+* [ TypeScript ](#tab-panel-1042)
+* [ cURL ](#tab-panel-1043)
 
 TypeScript
 
@@ -73,8 +73,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 ```
 
-* [ Output ](#tab-panel-924)
-* [ Raw response ](#tab-panel-925)
+* [ Output ](#tab-panel-1040)
+* [ Raw response ](#tab-panel-1041)
 
 Hello
 
@@ -105,8 +105,8 @@ Hello
 
 **With Language Hint**  — Transcribe with a language hint for better accuracy 
 
-* [ TypeScript ](#tab-panel-930)
-* [ cURL ](#tab-panel-931)
+* [ TypeScript ](#tab-panel-1046)
+* [ cURL ](#tab-panel-1047)
 
 TypeScript
 
@@ -152,8 +152,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 ```
 
-* [ Output ](#tab-panel-928)
-* [ Raw response ](#tab-panel-929)
+* [ Output ](#tab-panel-1044)
+* [ Raw response ](#tab-panel-1045)
 
 Hello
 
@@ -182,8 +182,8 @@ Hello
 
 **Guided Transcription**  — Use a prompt to guide transcription style and context 
 
-* [ TypeScript ](#tab-panel-934)
-* [ cURL ](#tab-panel-935)
+* [ TypeScript ](#tab-panel-1050)
+* [ cURL ](#tab-panel-1051)
 
 TypeScript
 
@@ -239,8 +239,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 ```
 
-* [ Output ](#tab-panel-932)
-* [ Raw response ](#tab-panel-933)
+* [ Output ](#tab-panel-1048)
+* [ Raw response ](#tab-panel-1049)
 
 This is a technical discussion about Kubernetes and cloud-native architecture.
 
@@ -269,8 +269,8 @@ This is a technical discussion about Kubernetes and cloud-native architecture.
 
 **High Temperature**  — Higher temperature for more varied transcription 
 
-* [ TypeScript ](#tab-panel-938)
-* [ cURL ](#tab-panel-939)
+* [ TypeScript ](#tab-panel-1054)
+* [ cURL ](#tab-panel-1055)
 
 TypeScript
 
@@ -316,8 +316,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 ```
 
-* [ Output ](#tab-panel-936)
-* [ Raw response ](#tab-panel-937)
+* [ Output ](#tab-panel-1052)
+* [ Raw response ](#tab-panel-1053)
 
 Hello, world!
 
@@ -346,8 +346,8 @@ Hello, world!
 
 ## Parameters
 
-* [ Input ](#tab-panel-940)
-* [ Output ](#tab-panel-941)
+* [ Input ](#tab-panel-1056)
+* [ Output ](#tab-panel-1057)
 
 file
 
@@ -371,9 +371,9 @@ text
 
 ## API Schemas (Raw)
 
-Input 
+Input [ ](https://developers.cloudflare.com/ai/models/openai/gpt-4o-transcribe/schema-input.json "Open") [ ](https://developers.cloudflare.com/ai/models/openai/gpt-4o-transcribe/schema-input.json "Download") 
 
-Output 
+Output [ ](https://developers.cloudflare.com/ai/models/openai/gpt-4o-transcribe/schema-output.json "Open") [ ](https://developers.cloudflare.com/ai/models/openai/gpt-4o-transcribe/schema-output.json "Download") 
 
 ```json
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/ai/","name":"AI"}},{"@type":"ListItem","position":3,"item":{"@id":"/ai/models/","name":"Models"}}]}

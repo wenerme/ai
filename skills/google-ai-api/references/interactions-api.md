@@ -190,7 +190,7 @@ The agent to interact with.
 input [Content](https://ai.google.dev/api/interactions-api#Resource:Content) or array ([Content](https://ai.google.dev/api/interactions-api#Resource:Content)) or array ([Step](https://ai.google.dev/api/interactions-api#Resource:Step)) or string (required) The inputs for the interaction (common to both Model and Agent).
 system_instruction string (optional) System instruction for the interaction.
 tools array ([Tool](https://ai.google.dev/api/interactions-api#Resource:Tool)) (optional) A list of tool declarations the model may call during interaction.
-response_format [ResponseFormat](https://ai.google.dev/api/interactions-api#Resource:ResponseFormat) or [ResponseFormatList](https://ai.google.dev/api/interactions-api#Resource:ResponseFormatList) (optional) Enforces that the generated response is a JSON object that complies with the JSON schema specified in this field.
+response_format [ResponseFormat](https://ai.google.dev/api/interactions-api#Resource:ResponseFormat) or array ([ResponseFormat](https://ai.google.dev/api/interactions-api#Resource:ResponseFormat)) (optional) Enforces that the generated response is a JSON object that complies with the JSON schema specified in this field.
 stream boolean (optional) Input only. Whether the interaction will be streamed.
 store boolean (optional) Input only. Whether to store the response and request for later retrieval.
 background boolean (optional) Input only. Whether to run the model interaction in the background.
@@ -270,7 +270,13 @@ The configuration for speech interaction.
 voice string (optional) The voice of the speaker.
 language string (optional) The language of the speech.
 speaker string (optional) The speaker's name, it should match the speaker name given in the prompt.
-tool_choice [ToolChoiceConfig](https://ai.google.dev/api/interactions-api#Resource:ToolChoiceConfig) or [ToolChoiceType](https://ai.google.dev/api/interactions-api#Resource:ToolChoiceType) (optional) The tool choice configuration.
+presence_penalty number (optional) Penalizes tokens that have already appeared in the generated
+text. A positive value encourages the model to generate more diverse and
+less repetitive text. Valid values can range from \[-2.0, 2.0\].
+frequency_penalty number (optional) Penalizes tokens based on their frequency in the generated text.
+A positive value helps to reduce the repetition of words and phrases.
+Valid values can range from \[-2.0, 2.0\].
+tool_choice [ToolChoiceConfig](https://ai.google.dev/api/interactions-api#Resource:ToolChoiceConfig) or enum (string) (optional) The tool choice configuration.
 
 Possible
 values:
@@ -340,6 +346,93 @@ DynamicAgentConfig Configuration for dynamic agents.
 type object (required) No description provided.
 
 Always set to `"dynamic"`.
+FindRequest Request parameters specific to FIND sessions, used for discovering
+vulnerabilities in a codebase.
+request object (required) No description provided.
+
+Always set to `"find_request"`.
+source_files FileContent (optional) A list of source files to provide as context for the scan.
+Content of a single file in the codebase.
+
+#### Fields
+
+path string (optional) The relative path of the file from the project root.
+content string (optional) The UTF-8 encoded text content of the file.
+finding_id string (optional) The identifier of a specific finding to verify. This is primarily used in
+VERIFY mode to focus the agent's execution-based validation on a single
+vulnerability.
+description string (optional) Additional context or custom instructions provided by the user to guide
+the vulnerability analysis.
+session_id string (optional) Parameter for grouping multiple interactions that belong to
+the same CodeMender session.
+session_config SessionConfig (optional) Optional session-specific configurations to override default agent
+behavior.
+The configuration of CodeMender sessions.
+
+#### Fields
+
+pipeline_mode enum (string) (optional) The pipeline mode of a CodeMender session. It can only be used for a
+find session.
+
+Possible
+values:
+
+- `scan`
+
+  Fast scan using only the initial classifier.
+- `verify`
+
+  Performs classification followed by detailed investigation.
+topology string (optional) The cognitive architecture or "thinking" topology used by the agent
+(e.g. "default", "deep").
+max_rounds integer (optional) The maximum number of interaction rounds the agent is allowed to perform
+before reaching a timeout.
+FixRequest Request parameters specific to FIX sessions, used for generating and
+validating security patches.
+request object (required) No description provided.
+
+Always set to `"fix_request"`.
+source_files FileContent (optional) A list of source files providing context for the remediation. These files
+are typically the ones containing the identified vulnerability.
+Content of a single file in the codebase.
+
+#### Fields
+
+path string (optional) The relative path of the file from the project root.
+content string (optional) The UTF-8 encoded text content of the file.
+finding_id string (optional) The identifier of the specific security finding to be remediated. This ID
+maps to a previously discovered vulnerability.
+description string (optional) Additional context or custom instructions provided by the user to guide
+the patch generation process.
+session_id string (optional) Parameter for grouping multiple interactions that belong to
+the same CodeMender session.
+session_config SessionConfig (optional) Optional session-specific configurations to override default agent
+behavior.
+The configuration of CodeMender sessions.
+
+#### Fields
+
+pipeline_mode enum (string) (optional) The pipeline mode of a CodeMender session. It can only be used for a
+find session.
+
+Possible
+values:
+
+- `scan`
+
+  Fast scan using only the initial classifier.
+- `verify`
+
+  Performs classification followed by detailed investigation.
+topology string (optional) The cognitive architecture or "thinking" topology used by the agent
+(e.g. "default", "deep").
+max_rounds integer (optional) The maximum number of interaction rounds the agent is allowed to perform
+before reaching a timeout.
+cached_content string (optional) The name of the cached content used as context to serve the prediction.
+Note: only used in explicit caching, where users can have control over
+caching (e.g. what content to cache) and enjoy guaranteed cost savings.
+Format:
+\`projects/{project}/locations/{location}/cachedContents/{cachedContent}\`
 environment [EnvironmentConfig](https://ai.google.dev/api/interactions-api#Resource:EnvironmentConfig) or string (optional) The environment configuration for the interaction. Can be an object specifying remote environment sources or a string referencing an existing environment ID.
 previous_interaction_id string (optional) The ID of the previous interaction, if any.
 response_modalities ResponseModality (optional) The requested modalities of the response (TEXT, IMAGE, AUDIO).
@@ -1342,8 +1435,13 @@ user_metadata object (optional) Optional. The user metadata that will be returne
 webhooks.
 steps array ([Step](https://ai.google.dev/api/interactions-api#Resource:Step)) (optional) Required. Output only. The steps that make up the interaction.
 input [Content](https://ai.google.dev/api/interactions-api#Resource:Content) or array ([Content](https://ai.google.dev/api/interactions-api#Resource:Content)) or array ([Step](https://ai.google.dev/api/interactions-api#Resource:Step)) or string (optional) The input for the interaction.
-response_format [ResponseFormat](https://ai.google.dev/api/interactions-api#Resource:ResponseFormat) or [ResponseFormatList](https://ai.google.dev/api/interactions-api#Resource:ResponseFormatList) (optional) Enforces that the generated response is a JSON object that complies with the JSON schema specified in this field.
+response_format [ResponseFormat](https://ai.google.dev/api/interactions-api#Resource:ResponseFormat) or array ([ResponseFormat](https://ai.google.dev/api/interactions-api#Resource:ResponseFormat)) (optional) Enforces that the generated response is a JSON object that complies with the JSON schema specified in this field.
 environment [EnvironmentConfig](https://ai.google.dev/api/interactions-api#Resource:EnvironmentConfig) or string (optional) The environment configuration for the interaction. Can be an object specifying remote environment sources or a string referencing an existing environment ID.
+cached_content string (optional) The name of the cached content used as context to serve the prediction.
+Note: only used in explicit caching, where users can have control over
+caching (e.g. what content to cache) and enjoy guaranteed cost savings.
+Format:
+\`projects/{project}/locations/{location}/cachedContents/{cachedContent}\`
 agent_config object (optional) Configuration parameters for the agent interaction.
 
 #### Possible Types
@@ -1395,6 +1493,88 @@ DynamicAgentConfig Configuration for dynamic agents.
 type object (required) No description provided.
 
 Always set to `"dynamic"`.
+FindRequest Request parameters specific to FIND sessions, used for discovering
+vulnerabilities in a codebase.
+request object (required) No description provided.
+
+Always set to `"find_request"`.
+source_files FileContent (optional) A list of source files to provide as context for the scan.
+Content of a single file in the codebase.
+
+#### Fields
+
+path string (optional) The relative path of the file from the project root.
+content string (optional) The UTF-8 encoded text content of the file.
+finding_id string (optional) The identifier of a specific finding to verify. This is primarily used in
+VERIFY mode to focus the agent's execution-based validation on a single
+vulnerability.
+description string (optional) Additional context or custom instructions provided by the user to guide
+the vulnerability analysis.
+session_id string (optional) Parameter for grouping multiple interactions that belong to
+the same CodeMender session.
+session_config SessionConfig (optional) Optional session-specific configurations to override default agent
+behavior.
+The configuration of CodeMender sessions.
+
+#### Fields
+
+pipeline_mode enum (string) (optional) The pipeline mode of a CodeMender session. It can only be used for a
+find session.
+
+Possible
+values:
+
+- `scan`
+
+  Fast scan using only the initial classifier.
+- `verify`
+
+  Performs classification followed by detailed investigation.
+topology string (optional) The cognitive architecture or "thinking" topology used by the agent
+(e.g. "default", "deep").
+max_rounds integer (optional) The maximum number of interaction rounds the agent is allowed to perform
+before reaching a timeout.
+FixRequest Request parameters specific to FIX sessions, used for generating and
+validating security patches.
+request object (required) No description provided.
+
+Always set to `"fix_request"`.
+source_files FileContent (optional) A list of source files providing context for the remediation. These files
+are typically the ones containing the identified vulnerability.
+Content of a single file in the codebase.
+
+#### Fields
+
+path string (optional) The relative path of the file from the project root.
+content string (optional) The UTF-8 encoded text content of the file.
+finding_id string (optional) The identifier of the specific security finding to be remediated. This ID
+maps to a previously discovered vulnerability.
+description string (optional) Additional context or custom instructions provided by the user to guide
+the patch generation process.
+session_id string (optional) Parameter for grouping multiple interactions that belong to
+the same CodeMender session.
+session_config SessionConfig (optional) Optional session-specific configurations to override default agent
+behavior.
+The configuration of CodeMender sessions.
+
+#### Fields
+
+pipeline_mode enum (string) (optional) The pipeline mode of a CodeMender session. It can only be used for a
+find session.
+
+Possible
+values:
+
+- `scan`
+
+  Fast scan using only the initial classifier.
+- `verify`
+
+  Performs classification followed by detailed investigation.
+topology string (optional) The cognitive architecture or "thinking" topology used by the agent
+(e.g. "default", "deep").
+max_rounds integer (optional) The maximum number of interaction rounds the agent is allowed to perform
+before reaching a timeout.
 
 ### Examples
 
@@ -1836,7 +2016,7 @@ The configuration for allowed tools.
 
 #### Fields
 
-mode [ToolChoiceType](https://ai.google.dev/api/interactions-api#Resource:ToolChoiceType) (optional) The mode of the tool choice.
+mode enum (string) (optional) The mode of the tool choice.
 
 Possible
 values:
@@ -1987,7 +2167,7 @@ metadata StreamMetadata (optional) Optional metadata accompanying ANY streamed e
 
 #### Fields
 
-usage Usage (optional) No description provided.
+total_usage Usage (optional) No description provided.
 Statistics on the interaction request's token usage.
 
 #### Fields
@@ -2218,7 +2398,7 @@ metadata StreamMetadata (optional) Optional metadata accompanying ANY streamed e
 
 #### Fields
 
-usage Usage (optional) No description provided.
+total_usage Usage (optional) No description provided.
 Statistics on the interaction request's token usage.
 
 #### Fields
@@ -2448,7 +2628,7 @@ metadata StreamMetadata (optional) Optional metadata accompanying ANY streamed e
 
 #### Fields
 
-usage Usage (optional) No description provided.
+total_usage Usage (optional) No description provided.
 Statistics on the interaction request's token usage.
 
 #### Fields
@@ -2705,7 +2885,7 @@ metadata StreamMetadata (optional) Optional metadata accompanying ANY streamed e
 
 #### Fields
 
-usage Usage (optional) No description provided.
+total_usage Usage (optional) No description provided.
 Statistics on the interaction request's token usage.
 
 #### Fields
@@ -3058,7 +3238,7 @@ Always set to `"function_result"`.
 name string (optional) No description provided.
 is_error boolean (optional) No description provided.
 call_id string (required) Required. ID to match the ID from the function call block.
-result array ([Content](https://ai.google.dev/api/interactions-api#Resource:Content)) or array ([FunctionResultSubcontent](https://ai.google.dev/api/interactions-api#Resource:FunctionResultSubcontent)) or string (required) No description provided.
+result array ([Content](https://ai.google.dev/api/interactions-api#Resource:Content)) or array ([ImageContent](https://ai.google.dev/api/interactions-api#Resource:ImageContent) or [TextContent](https://ai.google.dev/api/interactions-api#Resource:TextContent)) or string (required) No description provided.
 GoogleMapsCallDelta <br />
 
 type object (required) No description provided.
@@ -3211,7 +3391,7 @@ type object (required) No description provided.
 Always set to `"mcp_server_tool_result"`.
 name string (optional) No description provided.
 server_name string (optional) No description provided.
-result array ([Content](https://ai.google.dev/api/interactions-api#Resource:Content)) or array ([FunctionResultSubcontent](https://ai.google.dev/api/interactions-api#Resource:FunctionResultSubcontent)) or string (required) No description provided.
+result array ([Content](https://ai.google.dev/api/interactions-api#Resource:Content)) or array ([ImageContent](https://ai.google.dev/api/interactions-api#Resource:ImageContent) or [TextContent](https://ai.google.dev/api/interactions-api#Resource:TextContent)) or string (required) No description provided.
 TextAnnotationDelta <br />
 
 type object (required) No description provided.
@@ -3408,7 +3588,7 @@ metadata StreamMetadata (optional) Optional metadata accompanying ANY streamed e
 
 #### Fields
 
-usage Usage (optional) No description provided.
+total_usage Usage (optional) No description provided.
 Statistics on the interaction request's token usage.
 
 #### Fields
@@ -3639,7 +3819,7 @@ metadata StreamMetadata (optional) Optional metadata accompanying ANY streamed e
 
 #### Fields
 
-usage Usage (optional) No description provided.
+total_usage Usage (optional) No description provided.
 Statistics on the interaction request's token usage.
 
 #### Fields
@@ -3869,7 +4049,7 @@ metadata StreamMetadata (optional) Optional metadata accompanying ANY streamed e
 
 #### Fields
 
-usage Usage (optional) No description provided.
+total_usage Usage (optional) No description provided.
 Statistics on the interaction request's token usage.
 
 #### Fields
@@ -4378,27 +4558,6 @@ mime_type is application/json.
 }
 ```
 
-### ResponseFormatList
-
-<br />
-
-#### Type
-
-Must be an array of [ResponseFormat](https://ai.google.dev/api/interactions-api#Resource:ResponseFormat).
-
-### Examples
-
-### Example
-
-```bash
-[
-  {
-    "type": "text",
-    "mime_type": "application/json"
-  }
-]
-```
-
 ### Step
 
 A step in the interaction.
@@ -4460,7 +4619,7 @@ Always set to `"function_result"`.
 name string (optional) The name of the tool that was called.
 is_error boolean (optional) Whether the tool call resulted in an error.
 call_id string (required) Required. ID to match the ID from the function call block.
-result array ([Content](https://ai.google.dev/api/interactions-api#Resource:Content)) or array ([FunctionResultSubcontent](https://ai.google.dev/api/interactions-api#Resource:FunctionResultSubcontent)) or string (required) The result of the tool call.
+result array ([Content](https://ai.google.dev/api/interactions-api#Resource:Content)) or array ([ImageContent](https://ai.google.dev/api/interactions-api#Resource:ImageContent) or [TextContent](https://ai.google.dev/api/interactions-api#Resource:TextContent)) or string (required) The result of the tool call.
 GoogleMapsCallStep Google Maps call step.
 type object (required) No description provided.
 
@@ -4556,7 +4715,7 @@ Always set to `"mcp_server_tool_result"`.
 name string (optional) Name of the tool which is called for this specific tool call.
 server_name string (optional) The name of the used MCP server.
 call_id string (required) Required. ID to match the ID from the function call block.
-result array ([Content](https://ai.google.dev/api/interactions-api#Resource:Content)) or array ([FunctionResultSubcontent](https://ai.google.dev/api/interactions-api#Resource:FunctionResultSubcontent)) or object (required) The output from the MCP server call. Can be simple text or rich content.
+result array ([Content](https://ai.google.dev/api/interactions-api#Resource:Content)) or array ([ImageContent](https://ai.google.dev/api/interactions-api#Resource:ImageContent) or [TextContent](https://ai.google.dev/api/interactions-api#Resource:TextContent)) or object (required) The output from the MCP server call. Can be simple text or rich content.
 ModelOutputStep Output generated by the model.
 type object (required) No description provided.
 
@@ -5126,15 +5285,80 @@ string Turns all network off.
 
   Turns all network off.
 
-### FunctionResultSubcontent
+### Examples
 
-<br />
+### Example
 
-### Possible Types
+```bash
+{
+  "allowlist": [
+    {
+      "domain": "github.com",
+      "transform": [
+        {
+          "Authorization": "Bearer your-token"
+        }
+      ]
+    },
+    {
+      "domain": "*.googleapis.com"
+    }
+  ]
+}
+```
 
-Polymorphic discriminator: `type`
-ImageContent An image content block.
-type object (required) No description provided.
+### ToolChoiceConfig
+
+The tool choice configuration containing allowed tools.
+
+#### Fields
+
+allowed_tools AllowedTools (optional) The allowed tools.
+The configuration for allowed tools.
+
+#### Fields
+
+mode enum (string) (optional) The mode of the tool choice.
+
+Possible
+values:
+
+- `auto`
+
+  Auto tool choice.
+- `any`
+
+  Any tool choice.
+- `none`
+
+  No tool choice.
+- `validated`
+
+  Validated tool choice.
+tools array (string) (optional) The names of the allowed tools.
+
+### Examples
+
+### Example
+
+```bash
+{
+  "allowed_tools": {
+    "mode": "any",
+    "tools": [
+      "my_tool"
+    ]
+  }
+}
+```
+
+### ImageContent
+
+An image content block.
+
+#### Fields
+
+type object (optional) No description provided.
 
 Always set to `"image"`.
 data string (optional) The image content.
@@ -5202,11 +5426,29 @@ values:
 - `ultra_high`
 
   Ultra high resolution.
-TextContent A text content block.
-type object (required) No description provided.
+
+### Examples
+
+### Image
+
+```bash
+{
+  "type": "image",
+  "data": "BASE64_ENCODED_IMAGE",
+  "mime_type": "image/png"
+}
+```
+
+### TextContent
+
+A text content block.
+
+#### Fields
+
+type object (optional) No description provided.
 
 Always set to `"text"`.
-text string (required) Required. The text content.
+text string (optional) Required. The text content.
 annotations Annotation (optional) Citation information for model-generated content.
 Citation information for model-generated content.
 
@@ -5261,70 +5503,11 @@ end_index integer (optional) End of the attributed segment, exclusive.
 
 ### Examples
 
-### Image
-
-```json
-{
-  "type": "image",
-  "data": "BASE64_ENCODED_IMAGE",
-  "mime_type": "image/png"
-}
-```
-
 ### Text
 
-```json
+```bash
 {
   "type": "text",
   "text": "Hello, how are you?"
 }
 ```
-
-### ToolChoiceConfig
-
-The tool choice configuration containing allowed tools.
-
-#### Fields
-
-allowed_tools AllowedTools (optional) The allowed tools.
-The configuration for allowed tools.
-
-#### Fields
-
-mode [ToolChoiceType](https://ai.google.dev/api/interactions-api#Resource:ToolChoiceType) (optional) The mode of the tool choice.
-
-Possible
-values:
-
-- `auto`
-
-  Auto tool choice.
-- `any`
-
-  Any tool choice.
-- `none`
-
-  No tool choice.
-- `validated`
-
-  Validated tool choice.
-tools array (string) (optional) The names of the allowed tools.
-
-### ToolChoiceType
-
-<br />
-
-#### Possible values
-
-- `auto`
-
-  Auto tool choice.
-- `any`
-
-  Any tool choice.
-- `none`
-
-  No tool choice.
-- `validated`
-
-  Validated tool choice.

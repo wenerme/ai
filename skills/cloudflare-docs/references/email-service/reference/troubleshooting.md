@@ -1,6 +1,6 @@
 ---
-title: Troubleshoot SPF, DKIM and DMARC
-description: Diagnose and fix SPF, DKIM, and DMARC authentication issues for Email Service delivery.
+title: Troubleshooting
+description: Diagnose and fix delivery, authentication, and local development issues for Email Service.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
@@ -10,7 +10,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 [Skip to content](#%5Ftop) 
 
-# Troubleshoot SPF, DKIM and DMARC
+# Troubleshooting
 
 Email authentication is critical for successful email delivery. This guide helps you troubleshoot common SPF, DKIM, and DMARC issues with Email Service.
 
@@ -27,6 +27,11 @@ Having multiple SPF records on your domain is not allowed and will prevent Email
 4. Ensure you have the correct SPF records:  
    * For **Email Routing** (root domain): `v=spf1 include:_spf.mx.cloudflare.net ~all`  
    * For **Email Sending** (`cf-bounce` subdomain): `v=spf1 include:_spf.mx.cloudflare.net ~all`
+
+If you are unsure which SPF record is the correct one to keep, you can remove all of them and let Cloudflare regenerate the required records:
+
+1. In **DNS** \> **Records**, delete every TXT record starting with `v=spf1` on the affected name.
+2. Go to **Compute** \> **Email Service** and re-onboard or re-enable the affected service. Cloudflare adds the correct SPF record back automatically.
 
 ### Missing SPF record
 
@@ -253,5 +258,5 @@ If you continue to experience authentication issues:
    * SPF, DKIM, and DMARC record configurations
 
 ```json
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/email-service/","name":"Email Service"}},{"@type":"ListItem","position":3,"item":{"@id":"/email-service/reference/","name":"Reference"}},{"@type":"ListItem","position":4,"item":{"@id":"/email-service/reference/troubleshooting/","name":"Troubleshoot SPF, DKIM and DMARC"}}]}
+{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/email-service/","name":"Email Service"}},{"@type":"ListItem","position":3,"item":{"@id":"/email-service/reference/","name":"Reference"}},{"@type":"ListItem","position":4,"item":{"@id":"/email-service/reference/troubleshooting/","name":"Troubleshooting"}}]}
 ```

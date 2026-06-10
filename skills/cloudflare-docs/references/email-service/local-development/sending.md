@@ -33,8 +33,8 @@ Use a Node version manager like [Volta ↗](https://volta.sh/) or [nvm ↗](http
 
 Configure your Wrangler file with the email binding:
 
-* [  wrangler.jsonc ](#tab-panel-5951)
-* [  wrangler.toml ](#tab-panel-5952)
+* [  wrangler.jsonc ](#tab-panel-8304)
+* [  wrangler.toml ](#tab-panel-8305)
 
 JSONC
 
@@ -42,21 +42,13 @@ JSONC
 
 {
 
-  "$schema": "./node_modules/wrangler/config-schema.json",
-
   "name": "email-sending-worker",
 
-  "compatibility_date": "2024-01-01",
+  // Set this to today's date
 
-  "send_email": [
+  "compatibility_date": "2026-06-10",
 
-    {
-
-      "name": "EMAIL"
-
-    }
-
-  ]
+  "send_email": [{ "name": "EMAIL" }],
 
 }
 
@@ -69,7 +61,9 @@ TOML
 
 name = "email-sending-worker"
 
-compatibility_date = "2024-01-01"
+# Set this to today's date
+
+compatibility_date = "2026-06-10"
 
 
 [[send_email]]
@@ -85,8 +79,8 @@ Using [remote bindings](https://developers.cloudflare.com/workers/development-te
 
 Set `remote: true` on the email binding in your Wrangler configuration:
 
-* [  wrangler.jsonc ](#tab-panel-5953)
-* [  wrangler.toml ](#tab-panel-5954)
+* [  wrangler.jsonc ](#tab-panel-8306)
+* [  wrangler.toml ](#tab-panel-8307)
 
 JSONC
 
@@ -94,13 +88,11 @@ JSONC
 
 {
 
-  "$schema": "./node_modules/wrangler/config-schema.json",
-
   "name": "email-sending-worker",
 
   // Set this to today's date
 
-  "compatibility_date": "2026-04-29",
+  "compatibility_date": "2026-06-10",
 
   "send_email": [
 
@@ -108,11 +100,11 @@ JSONC
 
       "name": "EMAIL",
 
-      "remote": true
+      "remote": true,
 
-    }
+    },
 
-  ]
+  ],
 
 }
 
@@ -127,7 +119,7 @@ name = "email-sending-worker"
 
 # Set this to today's date
 
-compatibility_date = "2026-04-29"
+compatibility_date = "2026-06-10"
 
 
 [[send_email]]
@@ -171,7 +163,7 @@ export default {
       const emailData = await request.json();
 
 
-      console.log("📤 Sending email:", {
+      console.log("Sending email:", {
 
         to: emailData.to,
 

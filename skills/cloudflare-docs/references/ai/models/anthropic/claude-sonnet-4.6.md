@@ -29,8 +29,8 @@ Claude Sonnet 4.6 is Anthropic's latest balanced model offering strong coding, r
 
 ## Usage
 
-* [ TypeScript ](#tab-panel-242)
-* [ cURL ](#tab-panel-243)
+* [ TypeScript ](#tab-panel-282)
+* [ cURL ](#tab-panel-283)
 
 TypeScript
 
@@ -88,8 +88,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/v1/
 
 ```
 
-* [ Output ](#tab-panel-246)
-* [ Raw response ](#tab-panel-247)
+* [ Output ](#tab-panel-286)
+* [ Raw response ](#tab-panel-287)
 
 There are actually **four laws of thermodynamics** (numbered 0–3), but the three *main* ones most commonly referenced are:
 
@@ -167,8 +167,8 @@ Would you like a deeper explanation of any of these?
 
 **With System Message**  — Using a system message to set context 
 
-* [ TypeScript ](#tab-panel-244)
-* [ cURL ](#tab-panel-245)
+* [ TypeScript ](#tab-panel-284)
+* [ cURL ](#tab-panel-285)
 
 TypeScript
 
@@ -234,8 +234,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/v1/
 
 ```
 
-* [ Output ](#tab-panel-250)
-* [ Raw response ](#tab-panel-251)
+* [ Output ](#tab-panel-290)
+* [ Raw response ](#tab-panel-291)
 
 ## Reading a JSON File in Python
 
@@ -378,8 +378,8 @@ The `json` module is built into Python, so **no installation is needed**.
 
 **Multi-turn Conversation**  — Continuing a conversation with context 
 
-* [ TypeScript ](#tab-panel-254)
-* [ cURL ](#tab-panel-255)
+* [ TypeScript ](#tab-panel-294)
+* [ cURL ](#tab-panel-295)
 
 TypeScript
 
@@ -475,8 +475,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/v1/
 
 ```
 
-* [ Output ](#tab-panel-256)
-* [ Raw response ](#tab-panel-257)
+* [ Output ](#tab-panel-296)
+* [ Raw response ](#tab-panel-297)
 
 Here are some great stops depending on which route you take:
 
@@ -555,8 +555,8 @@ Here are some great stops depending on which route you take:
 
 **Creative Writing**  — Higher temperature for creative output 
 
-* [ TypeScript ](#tab-panel-248)
-* [ cURL ](#tab-panel-249)
+* [ TypeScript ](#tab-panel-288)
+* [ cURL ](#tab-panel-289)
 
 TypeScript
 
@@ -628,8 +628,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/v1/
 
 ```
 
-* [ Output ](#tab-panel-258)
-* [ Raw response ](#tab-panel-259)
+* [ Output ](#tab-panel-298)
+* [ Raw response ](#tab-panel-299)
 
 # The Smell of Lavender
 
@@ -708,8 +708,8 @@ Then she circled it twice.
 
 **Streaming Response**  — Enable streaming for real-time output 
 
-* [ TypeScript ](#tab-panel-252)
-* [ cURL ](#tab-panel-253)
+* [ TypeScript ](#tab-panel-292)
+* [ cURL ](#tab-panel-293)
 
 TypeScript
 
@@ -771,8 +771,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/v1/
 
 ```
 
-* [ Output ](#tab-panel-260)
-* [ Raw response ](#tab-panel-261)
+* [ Output ](#tab-panel-300)
+* [ Raw response ](#tab-panel-301)
 
 # Recursion
 
@@ -1372,8 +1372,8 @@ Both solve the same problem — recursion is often **more readable** for natural
 
 ## Parameters
 
-* [ Input ](#tab-panel-262)
-* [ Output ](#tab-panel-263)
+* [ Input ](#tab-panel-302)
+* [ Output ](#tab-panel-303)
 
 max\_tokens
 
@@ -1437,9 +1437,9 @@ type
 
 ## API Schemas (Raw)
 
-Input 
+Input [ ](https://developers.cloudflare.com/ai/models/anthropic/claude-sonnet-4.6/schema-input.json "Open") [ ](https://developers.cloudflare.com/ai/models/anthropic/claude-sonnet-4.6/schema-input.json "Download") 
 
-Output 
+Output [ ](https://developers.cloudflare.com/ai/models/anthropic/claude-sonnet-4.6/schema-output.json "Open") [ ](https://developers.cloudflare.com/ai/models/anthropic/claude-sonnet-4.6/schema-output.json "Download") 
 
 ```json
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/ai/","name":"AI"}},{"@type":"ListItem","position":3,"item":{"@id":"/ai/models/","name":"Models"}}]}

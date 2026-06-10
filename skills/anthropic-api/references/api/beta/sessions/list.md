@@ -30,6 +30,10 @@ List Sessions
 
   Return sessions created at or before this time (inclusive).
 
+- `deployment_id: optional string`
+
+  Filter sessions created by this deployment ID.
+
 - `include_archived: optional boolean`
 
   When true, includes archived sessions. Default: false (exclude archived).
@@ -52,7 +56,7 @@ List Sessions
 
 - `page: optional string`
 
-  Opaque pagination cursor from a previous response's next_page.
+  Opaque pagination cursor from a previous response.
 
 - `statuses: optional array of "rescheduling" or "running" or "idle" or "terminated"`
 
@@ -74,7 +78,7 @@ List Sessions
 
   - `string`
 
-  - `"message-batches-2024-09-24" or "prompt-caching-2024-07-31" or "computer-use-2024-10-22" or 23 more`
+  - `"message-batches-2024-09-24" or "prompt-caching-2024-07-31" or "computer-use-2024-10-22" or 25 more`
 
     - `"message-batches-2024-09-24"`
 
@@ -128,6 +132,10 @@ List Sessions
 
     - `"thinking-token-count-2026-05-13"`
 
+    - `"server-side-fallback-2026-06-01"`
+
+    - `"fallback-credit-2026-06-01"`
+
 ### Returns
 
 - `data: optional array of BetaManagedAgentsSession`
@@ -164,11 +172,15 @@ List Sessions
 
         See [models](https://docs.anthropic.com/en/docs/models-overview) for additional details and options.
 
-        - `"claude-opus-4-8" or "claude-opus-4-7" or "claude-opus-4-6" or 7 more`
+        - `"claude-fable-5" or "claude-opus-4-8" or "claude-opus-4-7" or 8 more`
 
           The model that will power your agent.
 
           See [models](https://docs.anthropic.com/en/docs/models-overview) for additional details and options.
+
+          - `"claude-fable-5"`
+
+            Next generation of intelligence for the hardest knowledge work and coding problems
 
           - `"claude-opus-4-8"`
 
@@ -398,19 +410,13 @@ List Sessions
 
               JSON Schema for custom tool input parameters.
 
-              - `properties: optional map[unknown]`
-
-                JSON Schema properties defining the tool's input parameters.
-
-              - `required: optional array of string`
-
-                List of required property names.
-
-              - `type: optional "object"`
-
-                Must be 'object' for tool input schemas.
+              - `type: "object"`
 
                 - `"object"`
+
+              - `properties: optional map[unknown]`
+
+              - `required: optional array of string`
 
             - `name: string`
 
@@ -668,6 +674,10 @@ List Sessions
 
     Vault IDs attached to the session at creation. Empty when no vaults were supplied.
 
+  - `deployment_id: optional string`
+
+    Deployment ID when the session was created from a deployment reference. Null otherwise.
+
 - `next_page: optional string`
 
   Opaque cursor for the next page. Null when no more results.
@@ -846,7 +856,8 @@ curl https://api.anthropic.com/v1/sessions \
       },
       "vault_ids": [
         "vlt_011CZkZDLs7fYzm1hXNPeRjv"
-      ]
+      ],
+      "deployment_id": "deployment_id"
     }
   ],
   "next_page": "page_MjAyNS0wNS0xNFQwMDowMDowMFo="

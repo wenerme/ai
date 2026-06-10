@@ -14,16 +14,16 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 Send transactional emails and route incoming emails to Workers or email addresses
 
- Available on Workers Paid plan 
+Cloudflare Email Service provides powerful email capabilities:
+
+* **Email Sending** Beta for outbound transactional emails  
+ Available on Workers Paid plan
+* **Email Routing** for handling incoming emails with Workers or routing to email addresses  
+ Available on Free and Paid plans
 
 Note
 
-Cloudflare Email Service is currently in beta. Features and APIs may change before general availability.
-
-Cloudflare Email Service provides powerful email capabilities:
-
-* **Email Sending** for outbound transactional emails
-* **Email Routing** for handling incoming emails with Workers or routing to email addresses
+Sending to [verified destination addresses](https://developers.cloudflare.com/email-service/configuration/email-routing-addresses/#destination-addresses) in your account is free on all plans, even when only Email Routing is configured.
 
 Together, these two features make it possible for you to send and receive emails from your applications. For example, you can use Email Service for:
 
@@ -33,42 +33,24 @@ Together, these two features make it possible for you to send and receive emails
 * Custom email addresses (support@, contact@, orders@)
 * Emails as a mode of interaction for agents, such as send an email to create an issue in ticket tracking
 
-Access Email Service using the [REST API](https://developers.cloudflare.com/email-service/api/send-emails/rest-api/) from any platform, or directly from Cloudflare Workers using [bindings](https://developers.cloudflare.com/email-service/api/send-emails/workers-api/):
+Access Email Service directly from Cloudflare Workers using [bindings](https://developers.cloudflare.com/email-service/api/send-emails/workers-api/), from any platform using the [REST API](https://developers.cloudflare.com/email-service/api/send-emails/rest-api/), or over [authenticated SMTP](https://developers.cloudflare.com/email-service/api/send-emails/smtp/):
 
-* [ REST API (curl) ](#tab-panel-5908)
-* [ index.ts (Workers) ](#tab-panel-5909)
-* [ wrangler.jsonc ](#tab-panel-5910)
+* [ Workers ](#tab-panel-8242)
+* [ API ](#tab-panel-8243)
+* [ SMTP ](#tab-panel-8244)
 
-Terminal window
-
-```
-
-curl "https://api.cloudflare.com/client/v4/accounts/{account_id}/email/sending/send" \
-
-  --header "Authorization: Bearer <API_TOKEN>" \
-
-  --header "Content-Type: application/json" \
-
-  --data '{
-
-    "to": "user@example.com",
-
-    "from": "welcome@yourdomain.com",
-
-    "subject": "Welcome to our service!",
-
-    "html": "<h1>Welcome!</h1><p>Thanks for signing up.</p>",
-
-    "text": "Welcome! Thanks for signing up."
-
-  }'
-
-
-```
+Send emails with the `EMAIL` binding and handle incoming emails with the `email()` handler in `src/index.ts`:
 
 TypeScript
 
 ```
+
+interface Env {
+
+  EMAIL: SendEmail;
+
+}
+
 
 export default {
 
@@ -88,50 +70,51 @@ export default {
 
       html: "<h1>Welcome!</h1><p>Thanks for signing up.</p>",
 
-      text: "Welcome! Thanks for signing up."
+      text: "Welcome! Thanks for signing up.",
 
     });
 
 
-      return new Response("Email sent successfully");
+    return new Response("Email sent successfully");
 
-    },
-
-
-    // Handle incoming emails (Email Routing)
-
-    async email(message, env, ctx): Promise<void> {
-
-      // Forward to support team
-
-      if (message.to.includes("support@yourdomain.com")) {
-
-        await message.forward("team@yourdomain.com");
-
-      }
+  },
 
 
-      // Send auto-reply
+  // Handle incoming emails (Email Routing)
 
-      await env.EMAIL.send({
+  async email(message, env, ctx): Promise<void> {
 
-        to: message.from,
+    // Forward to support team
 
-        from: "noreply@yourdomain.com",
+    if (message.to.includes("support@yourdomain.com")) {
 
-        subject: "We received your message",
-
-        html: "<h1>Thank you!</h1><p>We'll get back to you soon.</p>"
-
-      });
+      await message.forward("team@yourdomain.com");
 
     }
 
 
-} satisfies ExportedHandler<{ EMAIL: SendEmail }>;
+    // Send auto-reply
+
+    await env.EMAIL.send({
+
+      to: message.from,
+
+      from: "noreply@yourdomain.com",
+
+      subject: "We received your message",
+
+      html: "<h1>Thank you!</h1><p>We'll get back to you soon.</p>",
+
+    });
+
+  },
+
+} satisfies ExportedHandler<Env>;
 
 
 ```
+
+Add the bindings to your Wrangler configuration file:
 
 JSONC
 
@@ -145,7 +128,7 @@ JSONC
 
   "main": "src/index.ts",
 
-  "compatibility_date": "2024-01-01",
+  "compatibility_date": "$today",
 
 
   // Email sending
@@ -178,7 +161,69 @@ JSONC
 
 ```
 
-See the full [API reference](https://developers.cloudflare.com/email-service/api/send-emails/) for the REST API and Workers binding.
+Terminal window
+
+```
+
+curl "https://api.cloudflare.com/client/v4/accounts/{account_id}/email/sending/send" \
+
+  --header "Authorization: Bearer <API_TOKEN>" \
+
+  --header "Content-Type: application/json" \
+
+  --data '{
+
+    "to": "user@example.com",
+
+    "from": "welcome@yourdomain.com",
+
+    "subject": "Welcome to our service!",
+
+    "html": "<h1>Welcome!</h1><p>Thanks for signing up.</p>",
+
+    "text": "Welcome! Thanks for signing up."
+
+  }'
+
+
+```
+
+Cloudflare also provides official SDKs for the REST API: [Node](https://developers.cloudflare.com/api/node/), [Python](https://developers.cloudflare.com/api/python/), and [Go](https://developers.cloudflare.com/api/go/).
+
+Terminal window
+
+```
+
+cat > mail.txt <<EOF
+
+From: welcome@yourdomain.com
+
+To: user@example.com
+
+Subject: Welcome to our service!
+
+
+Thanks for signing up.
+
+EOF
+
+
+curl --ssl-reqd \
+
+  --url "smtps://smtp.mx.cloudflare.net:465" \
+
+  --user "api_token:<API_TOKEN>" \
+
+  --mail-from "welcome@yourdomain.com" \
+
+  --mail-rcpt "user@example.com" \
+
+  --upload-file mail.txt
+
+
+```
+
+See the full [API reference](https://developers.cloudflare.com/email-service/api/send-emails/) for the REST API, Workers binding, and SMTP.
 
 [ Get started ](https://developers.cloudflare.com/email-service/get-started/) 
 
@@ -212,7 +257,7 @@ Monitor email performance with comprehensive metrics and alerting.
 
 ###  API 
 
-Send and route emails using the [REST API](https://developers.cloudflare.com/email-service/api/send-emails/rest-api/) or [Workers binding](https://developers.cloudflare.com/email-service/api/send-emails/workers-api/).
+Send and route emails using the [REST API](https://developers.cloudflare.com/email-service/api/send-emails/rest-api/), [Workers binding](https://developers.cloudflare.com/email-service/api/send-emails/workers-api/), or[SMTP](https://developers.cloudflare.com/email-service/api/send-emails/smtp/).
 
 [ Use API ](https://developers.cloudflare.com/email-service/api/) 
 
@@ -234,7 +279,7 @@ Store and analyze custom email metrics with Workers Analytics Engine.
 
 ---
 
-### More resources
+## More resources
 
 [Platform limits](https://developers.cloudflare.com/email-service/platform/limits/) 
 
@@ -248,7 +293,7 @@ Understand Email Service pricing and plans.
 
 Explore practical examples and implementation patterns.
 
-[Discord](https://discord.com/channels/595317990191398933/893253103695065128) 
+[Discord](https://discord.cloudflare.com) 
 
 Ask questions and discuss Email Service with other developers.
 

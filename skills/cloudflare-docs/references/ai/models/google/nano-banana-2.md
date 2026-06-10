@@ -28,8 +28,8 @@ Google's second-generation image generation model with improved quality and spee
 
 ## Usage
 
-* [ TypeScript ](#tab-panel-590)
-* [ cURL ](#tab-panel-591)
+* [ TypeScript ](#tab-panel-640)
+* [ cURL ](#tab-panel-641)
 
 TypeScript
 
@@ -83,8 +83,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 ```
 
-* [ Output ](#tab-panel-588)
-* [ Raw response ](#tab-panel-589)
+* [ Output ](#tab-panel-638)
+* [ Raw response ](#tab-panel-639)
 
 ![Futuristic City](https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/google__nano-banana-2/futuristic-city.png) 
 
@@ -115,8 +115,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 **Abstract Art**  — Modern abstract expressionist painting 
 
-* [ TypeScript ](#tab-panel-594)
-* [ cURL ](#tab-panel-595)
+* [ TypeScript ](#tab-panel-644)
+* [ cURL ](#tab-panel-645)
 
 TypeScript
 
@@ -174,8 +174,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 ```
 
-* [ Output ](#tab-panel-592)
-* [ Raw response ](#tab-panel-593)
+* [ Output ](#tab-panel-642)
+* [ Raw response ](#tab-panel-643)
 
 ![Abstract Art](https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/google__nano-banana-2/abstract-art.png) 
 
@@ -204,8 +204,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 **With Google Search**  — Use web search grounding for current events 
 
-* [ TypeScript ](#tab-panel-598)
-* [ cURL ](#tab-panel-599)
+* [ TypeScript ](#tab-panel-648)
+* [ cURL ](#tab-panel-649)
 
 TypeScript
 
@@ -261,8 +261,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 ```
 
-* [ Output ](#tab-panel-596)
-* [ Raw response ](#tab-panel-597)
+* [ Output ](#tab-panel-646)
+* [ Raw response ](#tab-panel-647)
 
 ![With Google Search](https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/google__nano-banana-2/with-google-search.png) 
 
@@ -291,8 +291,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 **High Resolution Portrait**  — 4K portrait with specific aspect ratio 
 
-* [ TypeScript ](#tab-panel-602)
-* [ cURL ](#tab-panel-603)
+* [ TypeScript ](#tab-panel-652)
+* [ cURL ](#tab-panel-653)
 
 TypeScript
 
@@ -354,8 +354,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 ```
 
-* [ Output ](#tab-panel-600)
-* [ Raw response ](#tab-panel-601)
+* [ Output ](#tab-panel-650)
+* [ Raw response ](#tab-panel-651)
 
 ![High Resolution Portrait](https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/google__nano-banana-2/high-resolution-portrait.jpg) 
 
@@ -384,8 +384,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 ## Parameters
 
-* [ Input ](#tab-panel-604)
-* [ Output ](#tab-panel-605)
+* [ Input ](#tab-panel-654)
+* [ Output ](#tab-panel-655)
 
 aspect\_ratio
 
@@ -421,9 +421,9 @@ image
 
 ## API Schemas (Raw)
 
-Input 
+Input [ ](https://developers.cloudflare.com/ai/models/google/nano-banana-2/schema-input.json "Open") [ ](https://developers.cloudflare.com/ai/models/google/nano-banana-2/schema-input.json "Download") 
 
-Output 
+Output [ ](https://developers.cloudflare.com/ai/models/google/nano-banana-2/schema-output.json "Open") [ ](https://developers.cloudflare.com/ai/models/google/nano-banana-2/schema-output.json "Download") 
 
 ```json
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/ai/","name":"AI"}},{"@type":"ListItem","position":3,"item":{"@id":"/ai/models/","name":"Models"}}]}

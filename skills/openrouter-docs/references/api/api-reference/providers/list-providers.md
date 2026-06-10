@@ -45,6 +45,7 @@ paths:
                 $ref: '#/components/schemas/InternalServerResponse'
 servers:
   - url: https://openrouter.ai/api/v1
+    description: Production server
 components:
   schemas:
     ProvidersGetResponsesContentApplicationJsonSchemaDataItemsDatacentersItems:
@@ -656,7 +657,32 @@ components:
 
 ```
 
-## SDK Code Examples
+## Examples
+
+
+
+**Response**
+
+```json
+{
+  "data": [
+    {
+      "name": "OpenAI",
+      "privacy_policy_url": "https://openai.com/privacy",
+      "slug": "openai",
+      "datacenters": [
+        "US",
+        "IE"
+      ],
+      "headquarters": "US",
+      "status_page_url": "https://status.openai.com",
+      "terms_of_service_url": "https://openai.com/terms"
+    }
+  ]
+}
+```
+
+**SDK Code**
 
 ```python Providers_listProviders_example
 import requests

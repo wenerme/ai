@@ -111,6 +111,7 @@ paths:
                 - callback_url
 servers:
   - url: https://openrouter.ai/api/v1
+    description: Production server
 components:
   schemas:
     AuthKeysCodePostRequestBodyContentApplicationJsonSchemaCodeChallengeMethod:
@@ -315,7 +316,34 @@ components:
 
 ```
 
-## SDK Code Examples
+## Examples
+
+
+
+**Request**
+
+```json
+{
+  "callback_url": "https://myapp.com/auth/callback",
+  "code_challenge": "E9Melhoa2OwvFrEMTJguCHaoeK1t8URWbuGJSstw-cM",
+  "code_challenge_method": "S256",
+  "limit": 100
+}
+```
+
+**Response**
+
+```json
+{
+  "data": {
+    "app_id": 12345,
+    "created_at": "2025-08-24T10:30:00Z",
+    "id": "auth_code_xyz789"
+  }
+}
+```
+
+**SDK Code**
 
 ```python OAuth_createAuthKeysCode_example
 import requests

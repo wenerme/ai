@@ -51,8 +51,8 @@ For durable, multi-step processes, use [Cloudflare Workflows](https://developers
 
 ### Basic pattern
 
-* [  JavaScript ](#tab-panel-4800)
-* [  TypeScript ](#tab-panel-4801)
+* [  JavaScript ](#tab-panel-5186)
+* [  TypeScript ](#tab-panel-5187)
 
 JavaScript
 
@@ -229,8 +229,8 @@ export class ExpenseWorkflow extends AgentWorkflow<
 
 The agent provides methods to approve or reject waiting workflows:
 
-* [  JavaScript ](#tab-panel-4804)
-* [  TypeScript ](#tab-panel-4805)
+* [  JavaScript ](#tab-panel-5190)
+* [  TypeScript ](#tab-panel-5191)
 
 JavaScript
 
@@ -502,8 +502,8 @@ export class ExpenseAgent extends Agent<Env, ExpenseState> {
 
 Set timeouts to prevent workflows from waiting indefinitely:
 
-* [  JavaScript ](#tab-panel-4794)
-* [  TypeScript ](#tab-panel-4795)
+* [  JavaScript ](#tab-panel-5180)
+* [  TypeScript ](#tab-panel-5181)
 
 JavaScript
 
@@ -557,8 +557,8 @@ if (!approval) {
 
 Use `schedule()` to set up escalation reminders:
 
-* [  JavaScript ](#tab-panel-4796)
-* [  TypeScript ](#tab-panel-4797)
+* [  JavaScript ](#tab-panel-5182)
+* [  TypeScript ](#tab-panel-5183)
 
 JavaScript
 
@@ -714,8 +714,8 @@ class ExpenseAgent extends Agent<Env, ExpenseState> {
 
 Use `this.sql` to maintain an immutable audit trail:
 
-* [  JavaScript ](#tab-panel-4798)
-* [  TypeScript ](#tab-panel-4799)
+* [  JavaScript ](#tab-panel-5184)
+* [  TypeScript ](#tab-panel-5185)
 
 JavaScript
 
@@ -863,8 +863,8 @@ class ExpenseAgent extends Agent<Env, ExpenseState> {
 
 ### Configuration
 
-* [  wrangler.jsonc ](#tab-panel-4792)
-* [  wrangler.toml ](#tab-panel-4793)
+* [  wrangler.jsonc ](#tab-panel-5178)
+* [  wrangler.toml ](#tab-panel-5179)
 
 JSONC
 
@@ -878,7 +878,7 @@ JSONC
 
   // Set this to today's date
 
-  "compatibility_date": "2026-06-03",
+  "compatibility_date": "2026-06-10",
 
   "compatibility_flags": ["nodejs_compat"],
 
@@ -919,7 +919,7 @@ main = "src/index.ts"
 
 # Set this to today's date
 
-compatibility_date = "2026-06-03"
+compatibility_date = "2026-06-10"
 
 compatibility_flags = [ "nodejs_compat" ]
 
@@ -955,8 +955,8 @@ When building MCP servers with `McpAgent`, you can request additional user input
 
 ### Basic pattern
 
-* [  JavaScript ](#tab-panel-4806)
-* [  TypeScript ](#tab-panel-4807)
+* [  JavaScript ](#tab-panel-5192)
+* [  TypeScript ](#tab-panel-5193)
 
 JavaScript
 
@@ -1316,8 +1316,8 @@ function PendingApprovals() {
 
 For sensitive operations requiring multiple approvers:
 
-* [  JavaScript ](#tab-panel-4802)
-* [  TypeScript ](#tab-panel-4803)
+* [  JavaScript ](#tab-panel-5188)
+* [  TypeScript ](#tab-panel-5189)
 
 JavaScript
 
@@ -1482,7 +1482,7 @@ class MultiApprovalAgent extends Agent<Env, State> {
 
 [ MCP servers ](https://developers.cloudflare.com/agents/model-context-protocol/apis/agent-api/) Build MCP agents with elicitation. 
 
-[ Email notifications ](https://developers.cloudflare.com/email-routing/email-workers/send-email-workers/) Send notifications for pending approvals. 
+[ Email notifications ](https://developers.cloudflare.com/email-service/api/send-emails/workers-api/) Send notifications for pending approvals. 
 
 [ Schedule tasks ](https://developers.cloudflare.com/agents/runtime/execution/schedule-tasks/) Implement approval timeouts with schedules. 
 

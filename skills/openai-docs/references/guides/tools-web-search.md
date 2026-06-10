@@ -11,6 +11,7 @@ import {
 import {
   customUserLocationExampleCoarse,
   customUserLocationExampleCoarseChat,
+  imageSearchResultsExample,
   listSourcesExample,
   returnTokenBudgetExample,
   searchContextSize,
@@ -134,6 +135,48 @@ Domain filtering in web search lets you limit results to a specific set of domai
 
 To view all URLs retrieved during a web search, use the `sources` field. Unlike inline citations, which show only the most relevant references, sources returns the complete list of URLs the model consulted when forming its response.
 The number of sources is often greater than the number of citations. Real-time third-party feeds are also surfaced here and are labeled as `oai-sports`, `oai-weather`, or `oai-finance`. The sources field is available with both the `web_search` and `web_search_preview` tools.
+
+## Image search results
+
+Web search can return image results alongside regular text results. Use image search when your application needs current or web-grounded visuals, such as product photos, landmarks, places, events, or visual references.
+
+To use image search, set `search_content_types` to include `image`. Add `text` when you also want supporting text results that help the model summarize, rank, or explain the retrieved images.
+
+Use `image_settings` to control image-specific behavior:
+
+- `max_results`: Request a positive number of image results.
+- `caption`: Ask for short image descriptions when available.
+
+To inspect raw image results, include `web_search_call.results` in the request and read `web_search_call.results[]` from the response. Image results are returned separately from the assistant message, so parse the `web_search_call` item directly when your application needs the URLs or metadata.
+
+Each `image_result` includes:
+
+- `image_url`: The canonical image URL for the result.
+- `source_website_url`: The page where the image was found.
+- `thumbnail_url`: A thumbnail URL when available.
+- `caption`: A short caption or description when available.
+
+```json
+{
+  "output": [
+    {
+      "type": "web_search_call",
+      "status": "completed",
+      "results": [
+        {
+          "type": "image_result",
+          "image_url": "https://cdn.example/golden-gate-sunset.jpg",
+          "thumbnail_url": "https://cdn.example/golden-gate-sunset-thumb.jpg",
+          "source_website_url": "https://example.com/source-page",
+          "caption": "Golden Gate Bridge at sunset"
+        }
+      ]
+    }
+  ]
+}
+```
+
+
 
 ## User location
 

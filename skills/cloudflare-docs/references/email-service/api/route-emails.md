@@ -14,6 +14,8 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 API reference for routing incoming emails with Cloudflare Email Service using the email() handler and email routing Workers.
 
+Reference for processing incoming emails with the `email()` handler in Cloudflare Workers.
+
 * [ Workers API ](https://developers.cloudflare.com/email-service/api/route-emails/email-handler/)
 
 ```json

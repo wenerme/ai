@@ -98,6 +98,7 @@ paths:
               $ref: '#/components/schemas/STTRequest'
 servers:
   - url: https://openrouter.ai/api/v1
+    description: Production server
 components:
   schemas:
     STTInputAudio:
@@ -236,6 +237,10 @@ components:
           additionalProperties:
             description: Any type
         darkbloom:
+          type: object
+          additionalProperties:
+            description: Any type
+        decart:
           type: object
           additionalProperties:
             description: Any type
@@ -951,7 +956,39 @@ components:
 
 ```
 
-## SDK Code Examples
+## Examples
+
+
+
+**Request**
+
+```json
+{
+  "input_audio": {
+    "data": "UklGRiQA...",
+    "format": "wav"
+  },
+  "model": "openai/whisper-large-v3",
+  "language": "en"
+}
+```
+
+**Response**
+
+```json
+{
+  "text": "Hello, this is a test of OpenAI speech-to-text transcription.",
+  "usage": {
+    "cost": 0.000508,
+    "input_tokens": 83,
+    "output_tokens": 30,
+    "seconds": 9.2,
+    "total_tokens": 113
+  }
+}
+```
+
+**SDK Code**
 
 ```python STT_createAudioTranscriptions_example
 import requests

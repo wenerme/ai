@@ -29,8 +29,8 @@ Gemini 3 Flash is Google's fast multimodal model with frontier intelligence, sup
 
 ## Usage
 
-* [ TypeScript ](#tab-panel-472)
-* [ cURL ](#tab-panel-473)
+* [ TypeScript ](#tab-panel-522)
+* [ cURL ](#tab-panel-523)
 
 TypeScript
 
@@ -92,8 +92,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 ```
 
-* [ Output ](#tab-panel-478)
-* [ Raw response ](#tab-panel-479)
+* [ Output ](#tab-panel-528)
+* [ Raw response ](#tab-panel-529)
 
 While there are actually four laws of thermodynamics (numbered 0 through 3), the "Three Laws" usually refer to the following fundamental principles that govern how energy, heat, and matter behave:
 
@@ -224,8 +224,8 @@ Scientists often use a cynical "gambling" analogy to remember the laws:
 
 **With System Instruction**  — Using a system instruction to set context 
 
-* [ TypeScript ](#tab-panel-474)
-* [ cURL ](#tab-panel-475)
+* [ TypeScript ](#tab-panel-524)
+* [ cURL ](#tab-panel-525)
 
 TypeScript
 
@@ -319,8 +319,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 ```
 
-* [ Output ](#tab-panel-482)
-* [ Raw response ](#tab-panel-483)
+* [ Output ](#tab-panel-532)
+* [ Raw response ](#tab-panel-533)
 
 To read a JSON file in Python, you use the built-in **`json`** module.
 
@@ -475,8 +475,8 @@ print(data)
 
 **Multi-turn Conversation**  — Continuing a conversation with context 
 
-* [ TypeScript ](#tab-panel-480)
-* [ cURL ](#tab-panel-481)
+* [ TypeScript ](#tab-panel-530)
+* [ cURL ](#tab-panel-531)
 
 TypeScript
 
@@ -610,8 +610,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 ```
 
-* [ Output ](#tab-panel-484)
-* [ Raw response ](#tab-panel-485)
+* [ Output ](#tab-panel-534)
+* [ Raw response ](#tab-panel-535)
 
 To give you the best recommendations, it helps to know how much time you have. The drive can
 
@@ -706,8 +706,8 @@ To give you the best recommendations, it helps to know how much time you have. T
 
 **Creative Writing**  — Higher temperature for creative output 
 
-* [ TypeScript ](#tab-panel-476)
-* [ cURL ](#tab-panel-477)
+* [ TypeScript ](#tab-panel-526)
+* [ cURL ](#tab-panel-527)
 
 TypeScript
 
@@ -793,8 +793,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 ```
 
-* [ Output ](#tab-panel-486)
-* [ Raw response ](#tab-panel-487)
+* [ Output ](#tab-panel-536)
+* [ Raw response ](#tab-panel-537)
 
 The yellow police tape hummed in the drafty
 
@@ -889,8 +889,8 @@ The yellow police tape hummed in the drafty
 
 ## Parameters
 
-* [ Input ](#tab-panel-488)
-* [ Output ](#tab-panel-489)
+* [ Input ](#tab-panel-538)
+* [ Output ](#tab-panel-539)
 
 ▶contents\[\]
 
@@ -930,9 +930,9 @@ modelVersion
 
 ## API Schemas (Raw)
 
-Input 
+Input [ ](https://developers.cloudflare.com/ai/models/google/gemini-3-flash/schema-input.json "Open") [ ](https://developers.cloudflare.com/ai/models/google/gemini-3-flash/schema-input.json "Download") 
 
-Output 
+Output [ ](https://developers.cloudflare.com/ai/models/google/gemini-3-flash/schema-output.json "Open") [ ](https://developers.cloudflare.com/ai/models/google/gemini-3-flash/schema-output.json "Download") 
 
 ```json
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/ai/","name":"AI"}},{"@type":"ListItem","position":3,"item":{"@id":"/ai/models/","name":"Models"}}]}

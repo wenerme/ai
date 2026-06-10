@@ -77,6 +77,7 @@ paths:
                 $ref: '#/components/schemas/InternalServerResponse'
 servers:
   - url: https://openrouter.ai/api/v1
+    description: Production server
 components:
   schemas:
     ContentFilterBuiltinAction:
@@ -384,7 +385,40 @@ components:
 
 ```
 
-## SDK Code Examples
+## Examples
+
+
+
+**Response**
+
+```json
+{
+  "data": [
+    {
+      "created_at": "2025-08-24T10:30:00Z",
+      "id": "550e8400-e29b-41d4-a716-446655440000",
+      "name": "Production Guardrail",
+      "workspace_id": "0df9e665-d932-5740-b2c7-b52af166bc11",
+      "allowed_models": null,
+      "allowed_providers": [
+        "openai",
+        "anthropic",
+        "google"
+      ],
+      "description": "Guardrail for production environment",
+      "ignored_models": null,
+      "ignored_providers": null,
+      "limit_usd": 100,
+      "reset_interval": "monthly",
+      "updated_at": "2025-08-24T15:45:00Z",
+      "enforce_zdr": false
+    }
+  ],
+  "total_count": 1
+}
+```
+
+**SDK Code**
 
 ```python Guardrails_listGuardrails_example
 import requests

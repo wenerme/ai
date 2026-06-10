@@ -12,18 +12,11 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 # REST API
 
-The REST API allows you to send emails from any application using standard HTTP requests. Use it from any backend, serverless function, or CI/CD pipeline — no Cloudflare Workers binding is required.
+The REST API allows you to send emails from any application using a standard HTTP request to `POST /accounts/{account_id}/email/sending/send`. Use it from any backend, serverless function, or CI/CD pipeline — no Cloudflare Workers binding is required.
 
-For the full OpenAPI specification, refer to the [Email Sending API reference ↗](https://developers.cloudflare.com/api/resources/email%5Fsending/methods/send).
+For the full OpenAPI specification, refer to the [Email Sending API reference](https://developers.cloudflare.com/api/resources/email%5Fsending/methods/send/).
 
-## Endpoint
-
-```
-
-POST https://api.cloudflare.com/client/v4/accounts/{account_id}/email/sending/send
-
-
-```
+Cloudflare also provides official SDKs for the REST API: [Node](https://developers.cloudflare.com/api/node/), [Python](https://developers.cloudflare.com/api/python/), and [Go](https://developers.cloudflare.com/api/go/).
 
 ## Authentication
 
@@ -37,12 +30,6 @@ Authorization: Bearer <API_TOKEN>
 ```
 
 ## Send an email
-
-* [ Simple email ](#tab-panel-7379)
-* [ Multiple recipients ](#tab-panel-7380)
-* [ With CC and BCC ](#tab-panel-7381)
-* [ Named recipients ](#tab-panel-7382)
-* [ Mixed recipients ](#tab-panel-7383)
 
 Terminal window
 
@@ -71,125 +58,7 @@ curl "https://api.cloudflare.com/client/v4/accounts/{account_id}/email/sending/s
 
 ```
 
-Terminal window
-
-```
-
-curl "https://api.cloudflare.com/client/v4/accounts/{account_id}/email/sending/send" \
-
-  --header "Authorization: Bearer <API_TOKEN>" \
-
-  --header "Content-Type: application/json" \
-
-  --data '{
-
-    "to": ["user1@example.com", "user2@example.com"],
-
-    "from": { "address": "newsletter@yourdomain.com", "name": "Newsletter Team" },
-
-    "subject": "Monthly Newsletter",
-
-    "html": "<h1>This month'\''s updates</h1>",
-
-    "text": "This month'\''s updates"
-
-  }'
-
-
-```
-
-Terminal window
-
-```
-
-curl "https://api.cloudflare.com/client/v4/accounts/{account_id}/email/sending/send" \
-
-  --header "Authorization: Bearer <API_TOKEN>" \
-
-  --header "Content-Type: application/json" \
-
-  --data '{
-
-    "to": "customer@example.com",
-
-    "cc": ["manager@company.com"],
-
-    "bcc": ["archive@company.com"],
-
-    "from": "orders@yourdomain.com",
-
-    "reply_to": "support@yourdomain.com",
-
-    "subject": "Order Confirmation #12345",
-
-    "html": "<h1>Your order is confirmed</h1>",
-
-    "text": "Your order is confirmed"
-
-  }'
-
-
-```
-
-Terminal window
-
-```
-
-curl "https://api.cloudflare.com/client/v4/accounts/{account_id}/email/sending/send" \
-
-  --header "Authorization: Bearer <API_TOKEN>" \
-
-  --header "Content-Type: application/json" \
-
-  --data '{
-
-    "to": { "address": "jane@example.com", "name": "Jane Doe" },
-
-    "from": { "address": "support@example.com", "name": "Support Team" },
-
-    "subject": "Welcome!",
-
-    "html": "<h1>Thanks for joining!</h1>",
-
-    "text": "Thanks for joining!"
-
-  }'
-
-
-```
-
-Terminal window
-
-```
-
-curl "https://api.cloudflare.com/client/v4/accounts/{account_id}/email/sending/send" \
-
-  --header "Authorization: Bearer <API_TOKEN>" \
-
-  --header "Content-Type: application/json" \
-
-  --data '{
-
-    "to": [
-
-      "plain@example.com",
-
-      { "address": "jane@example.com", "name": "Jane Doe" }
-
-    ],
-
-    "from": "support@yourdomain.com",
-
-    "subject": "Team update",
-
-    "html": "<h1>Monthly update</h1>",
-
-    "text": "Monthly update"
-
-  }'
-
-
-```
+For multiple recipients, CC/BCC, and named addresses, see [Specify recipients](https://developers.cloudflare.com/email-service/examples/email-sending/recipients/).
 
 ## Attachments
 
@@ -235,6 +104,8 @@ curl "https://api.cloudflare.com/client/v4/accounts/{account_id}/email/sending/s
 
 
 ```
+
+For inline images and file uploads, see [Email attachments](https://developers.cloudflare.com/email-service/examples/email-sending/email-attachments/).
 
 ## Custom headers
 
@@ -308,6 +179,10 @@ A successful response returns the delivery status for each recipient:
 * `permanent_bounces` \- Email addresses that permanently bounced
 * `queued` \- Email addresses for which delivery was queued for later
 
+Workers binding vs REST API responses
+
+The REST API returns recipient-grouped delivery status. The [Workers binding](https://developers.cloudflare.com/email-service/api/send-emails/workers-api/) returns a single `messageId` per `send()` call instead.
+
 ## Error handling
 
 The REST API returns standard Cloudflare API error responses. A failed request returns an `errors` array with numeric error codes and machine-readable messages:
@@ -339,17 +214,24 @@ The REST API returns standard Cloudflare API error responses. A failed request r
 
 ```
 
-Common REST API error codes:
+REST API error codes:
 
-| HTTP Status | Code  | Message                                       | Description                            |
-| ----------- | ----- | --------------------------------------------- | -------------------------------------- |
-| 400         | 10001 | email.sending.error.invalid\_request\_schema  | Invalid request format                 |
-| 400         | 10200 | email.sending.error.email.invalid             | Invalid email content                  |
-| 400         | 10201 | email.sending.error.email.no\_content\_length | Missing content length                 |
-| 400         | 10202 | email.sending.error.email.too\_big            | Email exceeds size limit               |
-| 403         | 10203 | email.sending.error.email.sending\_disabled   | Sending disabled for this zone/account |
-| 429         | 10004 | email.sending.error.throttled                 | Rate limit exceeded                    |
-| 500         | 10002 | email.sending.error.internal\_server          | Internal server error                  |
+| HTTP Status | Code  | Message                                             | Description                                    |
+| ----------- | ----- | --------------------------------------------------- | ---------------------------------------------- |
+| 400         | 10001 | email.sending.error.invalid\_request\_schema        | Invalid request format                         |
+| 400         | 10200 | email.sending.error.email.too\_big                  | Email exceeds size limit                       |
+| 400         | 10201 | email.sending.error.email.no\_content\_length       | Missing content length                         |
+| 400         | 10202 | email.sending.error.email.invalid                   | Invalid email content                          |
+| 401         | 10101 | email.sending.error.authentication.unauthorized     | Missing or invalid API token                   |
+| 401         | 10103 | email.sending.error.authentication.bad\_token\_type | Wrong token type for this endpoint             |
+| 403         | 10102 | email.sending.error.authentication.forbidden        | Token lacks permission to send                 |
+| 403         | 10105 | email.sending.error.authentication.not\_entitled    | Account not entitled to use Email Sending      |
+| 403         | 10203 | email.sending.error.email.sending\_disabled         | Sending disabled for this zone or account      |
+| 404         | 10000 | email.sending.error.not\_found                      | Resource not found                             |
+| 429         | 10004 | email.sending.error.throttled                       | Rate limit exceeded                            |
+| 500         | 10002 | email.sending.error.internal\_server                | Internal server error                          |
+| 500         | 10003 | email.sending.error.not\_implemented                | Operation not implemented                      |
+| 503         | 10100 | email.sending.error.authentication.upstream         | Authentication service temporarily unavailable |
 
 Workers binding vs REST API errors
 
@@ -357,8 +239,9 @@ The REST API returns standard Cloudflare API numeric error codes, while the [Wor
 
 ## Next steps
 
-* Refer to the [Email Sending API reference ↗](https://developers.cloudflare.com/api/resources/email%5Fsending/methods/send) for the full request and response schemas.
+* Refer to the [Email Sending API reference](https://developers.cloudflare.com/api/resources/email%5Fsending/methods/send/) for the full request and response schemas.
 * See the [Workers API](https://developers.cloudflare.com/email-service/api/send-emails/workers-api/) for sending emails directly from Cloudflare Workers using bindings.
+* See [SMTP](https://developers.cloudflare.com/email-service/api/send-emails/smtp/) for sending from any SMTP-capable application or mail client.
 * Review [email headers](https://developers.cloudflare.com/email-service/reference/headers/) for threading, list management, and custom tracking headers.
 
 ```json

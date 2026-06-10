@@ -14,17 +14,21 @@ Create Agent
 
   Model identifier. Accepts the [model string](https://platform.claude.com/docs/en/about-claude/models/overview#latest-models-comparison), e.g. `claude-opus-4-6`, or a `model_config` object for additional configuration control
 
-  - `BetaManagedAgentsModel = :"claude-opus-4-8" | :"claude-opus-4-7" | :"claude-opus-4-6" | 7 more | String`
+  - `BetaManagedAgentsModel = :"claude-fable-5" | :"claude-opus-4-8" | :"claude-opus-4-7" | 8 more | String`
 
     The model that will power your agent.
 
     See [models](https://docs.anthropic.com/en/docs/models-overview) for additional details and options.
 
-    - `BetaManagedAgentsModel = :"claude-opus-4-8" | :"claude-opus-4-7" | :"claude-opus-4-6" | 7 more`
+    - `BetaManagedAgentsModel = :"claude-fable-5" | :"claude-opus-4-8" | :"claude-opus-4-7" | 8 more`
 
       The model that will power your agent.
 
       See [models](https://docs.anthropic.com/en/docs/models-overview) for additional details and options.
+
+      - `:"claude-fable-5"`
+
+        Next generation of intelligence for the hardest knowledge work and coding problems
 
       - `:"claude-opus-4-8"`
 
@@ -88,11 +92,11 @@ Create Agent
 
 - `name: String`
 
-  Human-readable name for the agent. 1-256 characters.
+  Human-readable name for the agent.
 
 - `description: String`
 
-  Description of what the agent does. Up to 2048 characters.
+  Description of what the agent does.
 
 - `mcp_servers: Array[BetaManagedAgentsURLMCPServerParams]`
 
@@ -154,7 +158,7 @@ Create Agent
 
 - `skills: Array[BetaManagedAgentsSkillParams]`
 
-  Skills available to the agent. Maximum 20.
+  Skills available to the agent.
 
   - `class BetaManagedAgentsAnthropicSkillParams`
 
@@ -190,7 +194,7 @@ Create Agent
 
 - `system_: String`
 
-  System prompt for the agent. Up to 100,000 characters.
+  System prompt for the agent.
 
 - `tools: Array[BetaManagedAgentsAgentToolset20260401Params | BetaManagedAgentsMCPToolsetParams | BetaManagedAgentsCustomToolParams]`
 
@@ -340,19 +344,13 @@ Create Agent
 
       JSON Schema for custom tool input parameters.
 
-      - `properties: Hash[Symbol, untyped]`
-
-        JSON Schema properties defining the tool's input parameters.
-
-      - `required: Array[String]`
-
-        List of required property names.
-
       - `type: :object`
 
-        Must be 'object' for tool input schemas.
-
         - `:object`
+
+      - `properties: Hash[Symbol, untyped]`
+
+      - `required: Array[String]`
 
     - `name: String`
 
@@ -368,7 +366,7 @@ Create Agent
 
   - `String = String`
 
-  - `AnthropicBeta = :"message-batches-2024-09-24" | :"prompt-caching-2024-07-31" | :"computer-use-2024-10-22" | 23 more`
+  - `AnthropicBeta = :"message-batches-2024-09-24" | :"prompt-caching-2024-07-31" | :"computer-use-2024-10-22" | 25 more`
 
     - `:"message-batches-2024-09-24"`
 
@@ -422,6 +420,10 @@ Create Agent
 
     - `:"thinking-token-count-2026-05-13"`
 
+    - `:"server-side-fallback-2026-06-01"`
+
+    - `:"fallback-credit-2026-06-01"`
+
 ### Returns
 
 - `class BetaManagedAgentsAgent`
@@ -462,11 +464,15 @@ Create Agent
 
       See [models](https://docs.anthropic.com/en/docs/models-overview) for additional details and options.
 
-      - `BetaManagedAgentsModel = :"claude-opus-4-8" | :"claude-opus-4-7" | :"claude-opus-4-6" | 7 more`
+      - `BetaManagedAgentsModel = :"claude-fable-5" | :"claude-opus-4-8" | :"claude-opus-4-7" | 8 more`
 
         The model that will power your agent.
 
         See [models](https://docs.anthropic.com/en/docs/models-overview) for additional details and options.
+
+        - `:"claude-fable-5"`
+
+          Next generation of intelligence for the hardest knowledge work and coding problems
 
         - `:"claude-opus-4-8"`
 
@@ -692,19 +698,13 @@ Create Agent
 
         JSON Schema for custom tool input parameters.
 
-        - `properties: Hash[Symbol, untyped]`
-
-          JSON Schema properties defining the tool's input parameters.
-
-        - `required: Array[String]`
-
-          List of required property names.
-
         - `type: :object`
 
-          Must be 'object' for tool input schemas.
-
           - `:object`
+
+        - `properties: Hash[Symbol, untyped]`
+
+        - `required: Array[String]`
 
       - `name: String`
 
@@ -844,7 +844,7 @@ List Agents
 
   - `String = String`
 
-  - `AnthropicBeta = :"message-batches-2024-09-24" | :"prompt-caching-2024-07-31" | :"computer-use-2024-10-22" | 23 more`
+  - `AnthropicBeta = :"message-batches-2024-09-24" | :"prompt-caching-2024-07-31" | :"computer-use-2024-10-22" | 25 more`
 
     - `:"message-batches-2024-09-24"`
 
@@ -898,6 +898,10 @@ List Agents
 
     - `:"thinking-token-count-2026-05-13"`
 
+    - `:"server-side-fallback-2026-06-01"`
+
+    - `:"fallback-credit-2026-06-01"`
+
 ### Returns
 
 - `class BetaManagedAgentsAgent`
@@ -938,11 +942,15 @@ List Agents
 
       See [models](https://docs.anthropic.com/en/docs/models-overview) for additional details and options.
 
-      - `BetaManagedAgentsModel = :"claude-opus-4-8" | :"claude-opus-4-7" | :"claude-opus-4-6" | 7 more`
+      - `BetaManagedAgentsModel = :"claude-fable-5" | :"claude-opus-4-8" | :"claude-opus-4-7" | 8 more`
 
         The model that will power your agent.
 
         See [models](https://docs.anthropic.com/en/docs/models-overview) for additional details and options.
+
+        - `:"claude-fable-5"`
+
+          Next generation of intelligence for the hardest knowledge work and coding problems
 
         - `:"claude-opus-4-8"`
 
@@ -1168,19 +1176,13 @@ List Agents
 
         JSON Schema for custom tool input parameters.
 
-        - `properties: Hash[Symbol, untyped]`
-
-          JSON Schema properties defining the tool's input parameters.
-
-        - `required: Array[String]`
-
-          List of required property names.
-
         - `type: :object`
 
-          Must be 'object' for tool input schemas.
-
           - `:object`
+
+        - `properties: Hash[Symbol, untyped]`
+
+        - `required: Array[String]`
 
       - `name: String`
 
@@ -1311,7 +1313,7 @@ Get Agent
 
   - `String = String`
 
-  - `AnthropicBeta = :"message-batches-2024-09-24" | :"prompt-caching-2024-07-31" | :"computer-use-2024-10-22" | 23 more`
+  - `AnthropicBeta = :"message-batches-2024-09-24" | :"prompt-caching-2024-07-31" | :"computer-use-2024-10-22" | 25 more`
 
     - `:"message-batches-2024-09-24"`
 
@@ -1365,6 +1367,10 @@ Get Agent
 
     - `:"thinking-token-count-2026-05-13"`
 
+    - `:"server-side-fallback-2026-06-01"`
+
+    - `:"fallback-credit-2026-06-01"`
+
 ### Returns
 
 - `class BetaManagedAgentsAgent`
@@ -1405,11 +1411,15 @@ Get Agent
 
       See [models](https://docs.anthropic.com/en/docs/models-overview) for additional details and options.
 
-      - `BetaManagedAgentsModel = :"claude-opus-4-8" | :"claude-opus-4-7" | :"claude-opus-4-6" | 7 more`
+      - `BetaManagedAgentsModel = :"claude-fable-5" | :"claude-opus-4-8" | :"claude-opus-4-7" | 8 more`
 
         The model that will power your agent.
 
         See [models](https://docs.anthropic.com/en/docs/models-overview) for additional details and options.
+
+        - `:"claude-fable-5"`
+
+          Next generation of intelligence for the hardest knowledge work and coding problems
 
         - `:"claude-opus-4-8"`
 
@@ -1635,19 +1645,13 @@ Get Agent
 
         JSON Schema for custom tool input parameters.
 
-        - `properties: Hash[Symbol, untyped]`
-
-          JSON Schema properties defining the tool's input parameters.
-
-        - `required: Array[String]`
-
-          List of required property names.
-
         - `type: :object`
 
-          Must be 'object' for tool input schemas.
-
           - `:object`
+
+        - `properties: Hash[Symbol, untyped]`
+
+        - `required: Array[String]`
 
       - `name: String`
 
@@ -1769,7 +1773,7 @@ Update Agent
 
 - `description: String`
 
-  Description. Up to 2048 characters. Omit to preserve; send empty string or null to clear.
+  Description. Omit to preserve; send empty string or null to clear.
 
 - `mcp_servers: Array[BetaManagedAgentsURLMCPServerParams]`
 
@@ -1795,17 +1799,21 @@ Update Agent
 
   Model identifier. Accepts the [model string](https://platform.claude.com/docs/en/about-claude/models/overview#latest-models-comparison), e.g. `claude-opus-4-6`, or a `model_config` object for additional configuration control. Omit to preserve. Cannot be cleared.
 
-  - `BetaManagedAgentsModel = :"claude-opus-4-8" | :"claude-opus-4-7" | :"claude-opus-4-6" | 7 more | String`
+  - `BetaManagedAgentsModel = :"claude-fable-5" | :"claude-opus-4-8" | :"claude-opus-4-7" | 8 more | String`
 
     The model that will power your agent.
 
     See [models](https://docs.anthropic.com/en/docs/models-overview) for additional details and options.
 
-    - `BetaManagedAgentsModel = :"claude-opus-4-8" | :"claude-opus-4-7" | :"claude-opus-4-6" | 7 more`
+    - `BetaManagedAgentsModel = :"claude-fable-5" | :"claude-opus-4-8" | :"claude-opus-4-7" | 8 more`
 
       The model that will power your agent.
 
       See [models](https://docs.anthropic.com/en/docs/models-overview) for additional details and options.
+
+      - `:"claude-fable-5"`
+
+        Next generation of intelligence for the hardest knowledge work and coding problems
 
       - `:"claude-opus-4-8"`
 
@@ -1907,11 +1915,11 @@ Update Agent
 
 - `name: String`
 
-  Human-readable name. 1-256 characters. Omit to preserve. Cannot be cleared.
+  Human-readable name. Must be non-empty. Omit to preserve. Cannot be cleared.
 
 - `skills: Array[BetaManagedAgentsSkillParams]`
 
-  Skills. Full replacement. Omit to preserve; send empty array or null to clear. Maximum 20.
+  Skills. Full replacement. Omit to preserve; send empty array or null to clear.
 
   - `class BetaManagedAgentsAnthropicSkillParams`
 
@@ -1947,7 +1955,7 @@ Update Agent
 
 - `system_: String`
 
-  System prompt. Up to 100,000 characters. Omit to preserve; send empty string or null to clear.
+  System prompt. Omit to preserve; send empty string or null to clear.
 
 - `tools: Array[BetaManagedAgentsAgentToolset20260401Params | BetaManagedAgentsMCPToolsetParams | BetaManagedAgentsCustomToolParams]`
 
@@ -2097,19 +2105,13 @@ Update Agent
 
       JSON Schema for custom tool input parameters.
 
-      - `properties: Hash[Symbol, untyped]`
-
-        JSON Schema properties defining the tool's input parameters.
-
-      - `required: Array[String]`
-
-        List of required property names.
-
       - `type: :object`
 
-        Must be 'object' for tool input schemas.
-
         - `:object`
+
+      - `properties: Hash[Symbol, untyped]`
+
+      - `required: Array[String]`
 
     - `name: String`
 
@@ -2125,7 +2127,7 @@ Update Agent
 
   - `String = String`
 
-  - `AnthropicBeta = :"message-batches-2024-09-24" | :"prompt-caching-2024-07-31" | :"computer-use-2024-10-22" | 23 more`
+  - `AnthropicBeta = :"message-batches-2024-09-24" | :"prompt-caching-2024-07-31" | :"computer-use-2024-10-22" | 25 more`
 
     - `:"message-batches-2024-09-24"`
 
@@ -2179,6 +2181,10 @@ Update Agent
 
     - `:"thinking-token-count-2026-05-13"`
 
+    - `:"server-side-fallback-2026-06-01"`
+
+    - `:"fallback-credit-2026-06-01"`
+
 ### Returns
 
 - `class BetaManagedAgentsAgent`
@@ -2219,11 +2225,15 @@ Update Agent
 
       See [models](https://docs.anthropic.com/en/docs/models-overview) for additional details and options.
 
-      - `BetaManagedAgentsModel = :"claude-opus-4-8" | :"claude-opus-4-7" | :"claude-opus-4-6" | 7 more`
+      - `BetaManagedAgentsModel = :"claude-fable-5" | :"claude-opus-4-8" | :"claude-opus-4-7" | 8 more`
 
         The model that will power your agent.
 
         See [models](https://docs.anthropic.com/en/docs/models-overview) for additional details and options.
+
+        - `:"claude-fable-5"`
+
+          Next generation of intelligence for the hardest knowledge work and coding problems
 
         - `:"claude-opus-4-8"`
 
@@ -2449,19 +2459,13 @@ Update Agent
 
         JSON Schema for custom tool input parameters.
 
-        - `properties: Hash[Symbol, untyped]`
-
-          JSON Schema properties defining the tool's input parameters.
-
-        - `required: Array[String]`
-
-          List of required property names.
-
         - `type: :object`
 
-          Must be 'object' for tool input schemas.
-
           - `:object`
+
+        - `properties: Hash[Symbol, untyped]`
+
+        - `required: Array[String]`
 
       - `name: String`
 
@@ -2583,7 +2587,7 @@ Archive Agent
 
   - `String = String`
 
-  - `AnthropicBeta = :"message-batches-2024-09-24" | :"prompt-caching-2024-07-31" | :"computer-use-2024-10-22" | 23 more`
+  - `AnthropicBeta = :"message-batches-2024-09-24" | :"prompt-caching-2024-07-31" | :"computer-use-2024-10-22" | 25 more`
 
     - `:"message-batches-2024-09-24"`
 
@@ -2637,6 +2641,10 @@ Archive Agent
 
     - `:"thinking-token-count-2026-05-13"`
 
+    - `:"server-side-fallback-2026-06-01"`
+
+    - `:"fallback-credit-2026-06-01"`
+
 ### Returns
 
 - `class BetaManagedAgentsAgent`
@@ -2677,11 +2685,15 @@ Archive Agent
 
       See [models](https://docs.anthropic.com/en/docs/models-overview) for additional details and options.
 
-      - `BetaManagedAgentsModel = :"claude-opus-4-8" | :"claude-opus-4-7" | :"claude-opus-4-6" | 7 more`
+      - `BetaManagedAgentsModel = :"claude-fable-5" | :"claude-opus-4-8" | :"claude-opus-4-7" | 8 more`
 
         The model that will power your agent.
 
         See [models](https://docs.anthropic.com/en/docs/models-overview) for additional details and options.
+
+        - `:"claude-fable-5"`
+
+          Next generation of intelligence for the hardest knowledge work and coding problems
 
         - `:"claude-opus-4-8"`
 
@@ -2907,19 +2919,13 @@ Archive Agent
 
         JSON Schema for custom tool input parameters.
 
-        - `properties: Hash[Symbol, untyped]`
-
-          JSON Schema properties defining the tool's input parameters.
-
-        - `required: Array[String]`
-
-          List of required property names.
-
         - `type: :object`
 
-          Must be 'object' for tool input schemas.
-
           - `:object`
+
+        - `properties: Hash[Symbol, untyped]`
+
+        - `required: Array[String]`
 
       - `name: String`
 
@@ -3065,11 +3071,15 @@ puts(beta_managed_agents_agent)
 
       See [models](https://docs.anthropic.com/en/docs/models-overview) for additional details and options.
 
-      - `BetaManagedAgentsModel = :"claude-opus-4-8" | :"claude-opus-4-7" | :"claude-opus-4-6" | 7 more`
+      - `BetaManagedAgentsModel = :"claude-fable-5" | :"claude-opus-4-8" | :"claude-opus-4-7" | 8 more`
 
         The model that will power your agent.
 
         See [models](https://docs.anthropic.com/en/docs/models-overview) for additional details and options.
+
+        - `:"claude-fable-5"`
+
+          Next generation of intelligence for the hardest knowledge work and coding problems
 
         - `:"claude-opus-4-8"`
 
@@ -3295,19 +3305,13 @@ puts(beta_managed_agents_agent)
 
         JSON Schema for custom tool input parameters.
 
-        - `properties: Hash[Symbol, untyped]`
-
-          JSON Schema properties defining the tool's input parameters.
-
-        - `required: Array[String]`
-
-          List of required property names.
-
         - `type: :object`
 
-          Must be 'object' for tool input schemas.
-
           - `:object`
+
+        - `properties: Hash[Symbol, untyped]`
+
+        - `required: Array[String]`
 
       - `name: String`
 
@@ -3857,19 +3861,13 @@ puts(beta_managed_agents_agent)
 
     JSON Schema for custom tool input parameters.
 
-    - `properties: Hash[Symbol, untyped]`
-
-      JSON Schema properties defining the tool's input parameters.
-
-    - `required: Array[String]`
-
-      List of required property names.
-
     - `type: :object`
 
-      Must be 'object' for tool input schemas.
-
       - `:object`
+
+    - `properties: Hash[Symbol, untyped]`
+
+    - `required: Array[String]`
 
   - `name: String`
 
@@ -3883,19 +3881,13 @@ puts(beta_managed_agents_agent)
 
   JSON Schema for custom tool input parameters.
 
-  - `properties: Hash[Symbol, untyped]`
-
-    JSON Schema properties defining the tool's input parameters.
-
-  - `required: Array[String]`
-
-    List of required property names.
-
   - `type: :object`
 
-    Must be 'object' for tool input schemas.
-
     - `:object`
+
+  - `properties: Hash[Symbol, untyped]`
+
+  - `required: Array[String]`
 
 ### Beta Managed Agents Custom Tool Params
 
@@ -3911,19 +3903,13 @@ puts(beta_managed_agents_agent)
 
     JSON Schema for custom tool input parameters.
 
-    - `properties: Hash[Symbol, untyped]`
-
-      JSON Schema properties defining the tool's input parameters.
-
-    - `required: Array[String]`
-
-      List of required property names.
-
     - `type: :object`
 
-      Must be 'object' for tool input schemas.
-
       - `:object`
+
+    - `properties: Hash[Symbol, untyped]`
+
+    - `required: Array[String]`
 
   - `name: String`
 
@@ -4191,17 +4177,21 @@ puts(beta_managed_agents_agent)
 
 ### Beta Managed Agents Model
 
-- `BetaManagedAgentsModel = :"claude-opus-4-8" | :"claude-opus-4-7" | :"claude-opus-4-6" | 7 more | String`
+- `BetaManagedAgentsModel = :"claude-fable-5" | :"claude-opus-4-8" | :"claude-opus-4-7" | 8 more | String`
 
   The model that will power your agent.
 
   See [models](https://docs.anthropic.com/en/docs/models-overview) for additional details and options.
 
-  - `BetaManagedAgentsModel = :"claude-opus-4-8" | :"claude-opus-4-7" | :"claude-opus-4-6" | 7 more`
+  - `BetaManagedAgentsModel = :"claude-fable-5" | :"claude-opus-4-8" | :"claude-opus-4-7" | 8 more`
 
     The model that will power your agent.
 
     See [models](https://docs.anthropic.com/en/docs/models-overview) for additional details and options.
+
+    - `:"claude-fable-5"`
+
+      Next generation of intelligence for the hardest knowledge work and coding problems
 
     - `:"claude-opus-4-8"`
 
@@ -4257,11 +4247,15 @@ puts(beta_managed_agents_agent)
 
     See [models](https://docs.anthropic.com/en/docs/models-overview) for additional details and options.
 
-    - `BetaManagedAgentsModel = :"claude-opus-4-8" | :"claude-opus-4-7" | :"claude-opus-4-6" | 7 more`
+    - `BetaManagedAgentsModel = :"claude-fable-5" | :"claude-opus-4-8" | :"claude-opus-4-7" | 8 more`
 
       The model that will power your agent.
 
       See [models](https://docs.anthropic.com/en/docs/models-overview) for additional details and options.
+
+      - `:"claude-fable-5"`
+
+        Next generation of intelligence for the hardest knowledge work and coding problems
 
       - `:"claude-opus-4-8"`
 
@@ -4325,11 +4319,15 @@ puts(beta_managed_agents_agent)
 
     See [models](https://docs.anthropic.com/en/docs/models-overview) for additional details and options.
 
-    - `BetaManagedAgentsModel = :"claude-opus-4-8" | :"claude-opus-4-7" | :"claude-opus-4-6" | 7 more`
+    - `BetaManagedAgentsModel = :"claude-fable-5" | :"claude-opus-4-8" | :"claude-opus-4-7" | 8 more`
 
       The model that will power your agent.
 
       See [models](https://docs.anthropic.com/en/docs/models-overview) for additional details and options.
+
+      - `:"claude-fable-5"`
+
+        Next generation of intelligence for the hardest knowledge work and coding problems
 
       - `:"claude-opus-4-8"`
 
@@ -4483,11 +4481,15 @@ puts(beta_managed_agents_agent)
 
       See [models](https://docs.anthropic.com/en/docs/models-overview) for additional details and options.
 
-      - `BetaManagedAgentsModel = :"claude-opus-4-8" | :"claude-opus-4-7" | :"claude-opus-4-6" | 7 more`
+      - `BetaManagedAgentsModel = :"claude-fable-5" | :"claude-opus-4-8" | :"claude-opus-4-7" | 8 more`
 
         The model that will power your agent.
 
         See [models](https://docs.anthropic.com/en/docs/models-overview) for additional details and options.
+
+        - `:"claude-fable-5"`
+
+          Next generation of intelligence for the hardest knowledge work and coding problems
 
         - `:"claude-opus-4-8"`
 
@@ -4693,19 +4695,13 @@ puts(beta_managed_agents_agent)
 
         JSON Schema for custom tool input parameters.
 
-        - `properties: Hash[Symbol, untyped]`
-
-          JSON Schema properties defining the tool's input parameters.
-
-        - `required: Array[String]`
-
-          List of required property names.
-
         - `type: :object`
 
-          Must be 'object' for tool input schemas.
-
           - `:object`
+
+        - `properties: Hash[Symbol, untyped]`
+
+        - `required: Array[String]`
 
       - `name: String`
 
@@ -4803,7 +4799,7 @@ List Agent Versions
 
   - `String = String`
 
-  - `AnthropicBeta = :"message-batches-2024-09-24" | :"prompt-caching-2024-07-31" | :"computer-use-2024-10-22" | 23 more`
+  - `AnthropicBeta = :"message-batches-2024-09-24" | :"prompt-caching-2024-07-31" | :"computer-use-2024-10-22" | 25 more`
 
     - `:"message-batches-2024-09-24"`
 
@@ -4857,6 +4853,10 @@ List Agent Versions
 
     - `:"thinking-token-count-2026-05-13"`
 
+    - `:"server-side-fallback-2026-06-01"`
+
+    - `:"fallback-credit-2026-06-01"`
+
 ### Returns
 
 - `class BetaManagedAgentsAgent`
@@ -4897,11 +4897,15 @@ List Agent Versions
 
       See [models](https://docs.anthropic.com/en/docs/models-overview) for additional details and options.
 
-      - `BetaManagedAgentsModel = :"claude-opus-4-8" | :"claude-opus-4-7" | :"claude-opus-4-6" | 7 more`
+      - `BetaManagedAgentsModel = :"claude-fable-5" | :"claude-opus-4-8" | :"claude-opus-4-7" | 8 more`
 
         The model that will power your agent.
 
         See [models](https://docs.anthropic.com/en/docs/models-overview) for additional details and options.
+
+        - `:"claude-fable-5"`
+
+          Next generation of intelligence for the hardest knowledge work and coding problems
 
         - `:"claude-opus-4-8"`
 
@@ -5127,19 +5131,13 @@ List Agent Versions
 
         JSON Schema for custom tool input parameters.
 
-        - `properties: Hash[Symbol, untyped]`
-
-          JSON Schema properties defining the tool's input parameters.
-
-        - `required: Array[String]`
-
-          List of required property names.
-
         - `type: :object`
 
-          Must be 'object' for tool input schemas.
-
           - `:object`
+
+        - `properties: Hash[Symbol, untyped]`
+
+        - `required: Array[String]`
 
       - `name: String`
 

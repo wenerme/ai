@@ -219,7 +219,7 @@ And finally, deploy this update with `npm run deploy`.
 
 * [Storing API keys and tokens with Secrets](https://developers.cloudflare.com/workers/configuration/secrets/).
 * [Transferring your domain to Cloudflare](https://developers.cloudflare.com/registrar/get-started/transfer-domain-to-cloudflare/).
-* [Send emails from Workers](https://developers.cloudflare.com/email-routing/email-workers/send-email-workers/)
+* [Send emails from Workers](https://developers.cloudflare.com/email-service/api/send-emails/workers-api/)
 
 ```json
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/workers/","name":"Workers"}},{"@type":"ListItem","position":3,"item":{"@id":"/workers/tutorials/","name":"Tutorials"}},{"@type":"ListItem","position":4,"item":{"@id":"/workers/tutorials/send-emails-with-resend/","name":"Send Emails With Resend"}}]}

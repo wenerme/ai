@@ -70,12 +70,12 @@ class SimpleSpamFilter implements SpamFilter {
 
     "inheritance",
 
-    "lottery"
+    "lottery",
 
   ];
 
 
-  private trustedDomains = ["company.com", "trusted-partner.com", "vendor.net"];
+  private trustedDomains = ["example.com", "trusted-partner.com", "vendor.net"];
 
 
   async checkSpam(
@@ -148,7 +148,13 @@ class SimpleSpamFilter implements SpamFilter {
 
     // Check for suspicious sender patterns
 
-    if (sender.includes("noreply") && subject.toLowerCase().includes("urgent")) {
+    if (
+
+      sender.includes("noreply") &&
+
+      subject.toLowerCase().includes("urgent")
+
+    ) {
 
       score += 2;
 
@@ -193,13 +199,13 @@ export default {
 
       blobs: [
 
-        'spam_check_completed',
+        "spam_check_completed",
 
         message.from,
 
         message.to,
 
-        spamCheck.isSpam ? 'spam' : 'legitimate'
+        spamCheck.isSpam ? "spam" : "legitimate",
 
       ],
 
@@ -209,7 +215,7 @@ export default {
 
         spamCheck.score,
 
-        Date.now() - startTime
+        Date.now() - startTime,
 
       ],
 
@@ -217,16 +223,20 @@ export default {
 
         `spam_detected:${spamCheck.isSpam}`,
 
-        `score_range:${getScoreRange(spamCheck.score)}`
+        `score_range:${getScoreRange(spamCheck.score)}`,
 
-      ]
+      ],
 
     });
 
 
     if (spamCheck.isSpam) {
 
-      console.log(`🚫 Rejected spam email from ${message.from}: ${spamCheck.reasons.join(", ")}`);
+      console.log(
+
+        `Rejected spam email from ${message.from}: ${spamCheck.reasons.join(", ")}`,
+
+      );
 
       message.setReject(`Message rejected: ${spamCheck.reasons[0]}`);
 
@@ -246,7 +256,7 @@ export default {
     headers.set("X-Spam-Check-Time", (Date.now() - startTime).toString());
 
 
-    await message.forward("inbox@company.com", headers);
+    await message.forward("inbox@example.com", headers);
 
   },
 
@@ -255,13 +265,13 @@ export default {
 
 function getScoreRange(score: number): string {
 
-  if (score < 0) return 'trusted';
+  if (score < 0) return "trusted";
 
-  if (score === 0) return 'neutral';
+  if (score === 0) return "neutral";
 
-  if (score === 1) return 'suspicious';
+  if (score === 1) return "suspicious";
 
-  return 'spam';
+  return "spam";
 
 }
 
@@ -270,7 +280,13 @@ function getScoreRange(score: number): string {
 
 ## Advanced spam detection with AI
 
-For more sophisticated spam detection, you can enhance the basic filter using [Workers AI](https://developers.cloudflare.com/workers-ai) to analyze email content with machine learning models. This approach can identify subtle spam patterns that keyword-based filters might miss.
+For more sophisticated spam detection, you can enhance the basic filter using [Workers AI](https://developers.cloudflare.com/workers-ai/) to analyze email content with machine learning models. This approach can identify subtle spam patterns that keyword-based filters might miss.
+
+## Next steps
+
+* [Email handler](https://developers.cloudflare.com/email-service/api/route-emails/email-handler/) — reference for `setReject()` and `forward()` actions used here.
+* [Hard bounce handling](https://developers.cloudflare.com/email-service/examples/email-routing/hard-bounce-handling/) — detect bounce notifications that often originate from spam infrastructure.
+* [Email storage and processing](https://developers.cloudflare.com/email-service/examples/email-routing/email-storage/) — log filtered emails to KV for later review.
 
 ```json
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/email-service/","name":"Email Service"}},{"@type":"ListItem","position":3,"item":{"@id":"/email-service/examples/","name":"Examples"}},{"@type":"ListItem","position":4,"item":{"@id":"/email-service/examples/email-routing/","name":"Email routing"}},{"@type":"ListItem","position":5,"item":{"@id":"/email-service/examples/email-routing/spam-filtering/","name":"Spam filtering"}}]}

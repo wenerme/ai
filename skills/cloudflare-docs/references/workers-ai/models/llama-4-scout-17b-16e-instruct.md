@@ -37,10 +37,10 @@ Try out this model with Workers AI LLM Playground. It does not require any setup
 
 ## Usage
 
-* [  Worker (Streaming) ](#tab-panel-4413)
-* [  TypeScript ](#tab-panel-4414)
-* [  Python ](#tab-panel-4415)
-* [  curl ](#tab-panel-4416)
+* [  Worker (Streaming) ](#tab-panel-4799)
+* [  TypeScript ](#tab-panel-4800)
+* [  Python ](#tab-panel-4801)
+* [  curl ](#tab-panel-4802)
 
 TypeScript
 
@@ -199,8 +199,8 @@ Workers AI also supports OpenAI compatible API endpoints for `/v1/chat/completio
 
 Synchronous — Send a request and receive a complete response 
 
-* [ Input ](#tab-panel-4417)
-* [ Output ](#tab-panel-4418)
+* [ Input ](#tab-panel-4803)
+* [ Output ](#tab-panel-4804)
 
 prompt
 
@@ -268,8 +268,8 @@ response
 
 Streaming — Send a request with \`stream: true\` and receive server-sent events 
 
-* [ Input ](#tab-panel-4419)
-* [ Output ](#tab-panel-4420)
+* [ Input ](#tab-panel-4805)
+* [ Output ](#tab-panel-4806)
 
 prompt
 
@@ -337,8 +337,8 @@ format
 
 Batch — Send multiple requests in a single API call 
 
-* [ Input ](#tab-panel-4421)
-* [ Output ](#tab-panel-4422)
+* [ Input ](#tab-panel-4807)
+* [ Output ](#tab-panel-4808)
 
 ▶requests\[\]
 
@@ -358,17 +358,17 @@ response
 
 ## API Schemas (Raw)
 
-Synchronous Input 
+ Synchronous Input [ ](https://developers.cloudflare.com/workers-ai/models/llama-4-scout-17b-16e-instruct/sync-input.json "Open") [ ](https://developers.cloudflare.com/workers-ai/models/llama-4-scout-17b-16e-instruct/sync-input.json "Download") 
 
-Synchronous Output 
+ Synchronous Output [ ](https://developers.cloudflare.com/workers-ai/models/llama-4-scout-17b-16e-instruct/sync-output.json "Open") [ ](https://developers.cloudflare.com/workers-ai/models/llama-4-scout-17b-16e-instruct/sync-output.json "Download") 
 
-Streaming Input 
+ Streaming Input [ ](https://developers.cloudflare.com/workers-ai/models/llama-4-scout-17b-16e-instruct/streaming-input.json "Open") [ ](https://developers.cloudflare.com/workers-ai/models/llama-4-scout-17b-16e-instruct/streaming-input.json "Download") 
 
-Streaming Output 
+ Streaming Output [ ](https://developers.cloudflare.com/workers-ai/models/llama-4-scout-17b-16e-instruct/streaming-output.json "Open") [ ](https://developers.cloudflare.com/workers-ai/models/llama-4-scout-17b-16e-instruct/streaming-output.json "Download") 
 
-Batch Input 
+ Batch Input [ ](https://developers.cloudflare.com/workers-ai/models/llama-4-scout-17b-16e-instruct/batch-input.json "Open") [ ](https://developers.cloudflare.com/workers-ai/models/llama-4-scout-17b-16e-instruct/batch-input.json "Download") 
 
-Batch Output 
+ Batch Output [ ](https://developers.cloudflare.com/workers-ai/models/llama-4-scout-17b-16e-instruct/batch-output.json "Open") [ ](https://developers.cloudflare.com/workers-ai/models/llama-4-scout-17b-16e-instruct/batch-output.json "Download") 
 
 ```json
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/workers-ai/","name":"Workers AI"}},{"@type":"ListItem","position":3,"item":{"@id":"/workers-ai/models/","name":"Models"}}]}

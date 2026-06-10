@@ -124,6 +124,7 @@ paths:
                 - model
 servers:
   - url: https://openrouter.ai/api/v1
+    description: Production server
 components:
   schemas:
     EmbeddingsPostRequestBodyContentApplicationJsonSchemaEncodingFormat:
@@ -331,6 +332,7 @@ components:
         - Crucible
         - Crusoe
         - Darkbloom
+        - Decart
         - DeepInfra
         - DeepSeek
         - DekaLLM
@@ -1116,7 +1118,45 @@ components:
 
 ```
 
-## SDK Code Examples
+## Examples
+
+
+
+**Request**
+
+```json
+{
+  "input": "The quick brown fox jumps over the lazy dog",
+  "model": "openai/text-embedding-3-small",
+  "dimensions": 1536
+}
+```
+
+**Response**
+
+```json
+{
+  "data": [
+    {
+      "embedding": [
+        0.0023064255,
+        -0.009327292,
+        0.015797347
+      ],
+      "object": "embedding",
+      "index": 0
+    }
+  ],
+  "model": "openai/text-embedding-3-small",
+  "object": "list",
+  "usage": {
+    "prompt_tokens": 8,
+    "total_tokens": 8
+  }
+}
+```
+
+**SDK Code**
 
 ```python
 import requests

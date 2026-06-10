@@ -1,162 +1,130 @@
-To use the Gemini API, you need an API key. This page outlines how to create and
-manage your keys in Google AI Studio as well as how to set up your environment
-to use them in your code.
+To use the Gemini API, you must authenticate your requests. You can
+authenticate using a standard or authorization API key.
 
 [Create or view a Gemini API Key](https://aistudio.google.com/app/apikey)
 
-## API Keys
+## API key types: Standard versus Authorization
 
-You can create and manage all your Gemini API Keys from the
-[Google AI Studio](https://aistudio.google.com/app/apikey) **API Keys** page.
+API keys provide access to the Gemini API, but their security characteristics
+differ. The Gemini API is transitioning from standard API keys to authorization
+keys to improve security:
 
-Once you have an API key, you have the following options to connect to the
-Gemini API:
+- **Standard API keys**: Associate requests with a Google Cloud project for billing and quota purposes. Standard keys don't identify a caller, which limits the granularity of permissions and access control they can support.
+- **Authorization (auth) keys**: Bound directly to a Google Cloud service account. When you use an authorization key, your requests are processed under the identity of that bound service account, enabling granular access control. Authorization keys are restricted to the Generative Language API (Gemini API) by default and provide fast-acting leaked key enforcement that quickly stops the usage of leaked keys detected by our systems.
 
-- [Setting your API key as an environment variable](https://ai.google.dev/gemini-api/docs/api-key#set-api-env-var)
-- [Providing your API key explicitly](https://ai.google.dev/gemini-api/docs/api-key#provide-api-key-explicitly)
+To ensure secure usage, Gemini API will move from Standard keys to Auth keys:
 
-For initial testing, you can hard code an API key, but this should only be
-temporary since it's not secure. You can find examples for hard coding the API
-key in [Providing API key explicitly](https://ai.google.dev/gemini-api/docs/api-key#provide-api-key-explicitly) section.
-
-## Google Cloud projects
-
-[Google Cloud projects](https://cloud.google.com/resource-manager/docs/creating-managing-projects)
-are fundamental to using Google Cloud services (such as the Gemini API),
-managing billing, and controlling collaborators and permissions. Google AI
-Studio provides a lightweight interface to your Google Cloud projects.
-
-If you don't have
-any projects created yet, you must either create a new project or import one
-from Google Cloud into Google AI Studio. The **Projects** page in Google AI
-Studio will display all keys that have sufficient permission to use the Gemini
-API. Refer to the [import projects](https://ai.google.dev/gemini-api/docs/api-key#import-projects) section for instructions.
-
-### Default project
-
-For new users, after accepting Terms of Service, Google AI Studio creates a
-default Google Cloud Project and API Key, for ease of use. You can rename this
-project in Google AI Studio by navigating to **Projects** view in the
-**Dashboard** , clicking the 3 dots settings button next to a project and
-choosing **Rename project**. Existing users, or users who already have Google
-Cloud Accounts won't have a default project created.
-
-## Import projects
-
-Each Gemini API key is associated with a Google Cloud project. By default,
-Google AI Studio does not show all of your Cloud Projects. You must import the
-projects you want by searching for the name or project ID in the
-**Import Projects** dialog. To view a complete list of projects you have access
-to, visit the Cloud Console.
-
-If you don't have any projects imported yet, follow these steps to import a
-Google Cloud project and create a key:
-
-1. Go to [Google AI Studio](https://aistudio.google.com).
-2. Open the **Dashboard** from the left side panel.
-3. Select **Projects**.
-4. Select the **Import projects** button in the **Projects** page.
-5. Search for and select the Google Cloud project you want to import and select the **Import** button.
-
-Once a project is imported, go to the **API Keys** page from the **Dashboard**
-menu and create an API key in the project you just imported.
+- **Auth keys default**: All new API keys created in Google AI Studio are automatically created as auth keys.
+- **On June 19, 2026** : The Gemini API will reject requests from **unrestricted standard keys**. Standard API keys that have explicit restrictions applied will continue to work. This restriction prevents the unauthorized use of keys that might be shared publicly or linked to other services.
+- **On September 2026** : the Gemini API will reject requests from **Standard
+  keys** . You must [migrate to an auth keys](https://ai.google.dev/gemini-api/docs/api-key#migrate-to-auth-key) before this date to avoid service interruption. Make sure to migrate to auth keys before September 2026.
 
 > [!NOTE]
-> **Note:** For existing users, the keys are pre-populated in the imports pane based on the last 30-days of activity in AI Studio.
+> **Note:** Requests authenticated by authorization keys are not recorded in Google Cloud service account usage metrics.
 
-## Limitations
+## Managing API keys in Google AI Studio
 
-The following are limitations of managing API keys and Google Cloud projects in
-Google AI Studio.
+You can manage your projects and keys directly in [Google AI Studio](https://aistudio.google.com/app/apikey).
 
-- You can create a maximum of 10 project at a time from the Google AI Studio **Projects** page.
-- You can name and rename projects and keys.
-- The **API keys** and **Projects** pages display a maximum of 100 keys and 50 projects.
-- Only API keys that have no restrictions, or are restricted to the Generative Language API are displayed.
+### Google Cloud projects
 
-For additional management access to your projects, including modifying and
-restricting API keys, visit the
-[Google Cloud Console credentials page](https://console.cloud.google.com/apis/credentials).
-In the Cloud Console, you can select your project, click an existing API key,
-and then restrict it to the **Generative Language API**.
+Every Gemini API key is associated with a [Google Cloud project](https://cloud.google.com/resource-manager/docs/creating-managing-projects).
+Google Cloud projects manage billing, collaborators, and permissions. Google AI
+Studio provides a lightweight interface to access these projects.
 
-## Setting the API key as an environment variable
+- **Default project** : If you are a new user, Google AI Studio automatically creates a default Google Cloud project and API key after you accept the Terms of Service. You can rename this project by navigating to the **Projects** view in your dashboard.
+- **Existing projects**: If you already have a Google Cloud account, AI Studio does not create a default project. Instead, you must import your existing projects.
 
-If you set the environment variable `GEMINI_API_KEY` or `GOOGLE_API_KEY`, the
-API key will automatically be picked up by the client when using one of the
-[Gemini API libraries](https://ai.google.dev/gemini-api/docs/libraries). It's recommended that you
-set only one of those variables, but if both are set, `GOOGLE_API_KEY` takes
-precedence.
+### Importing projects
 
-If you're using the REST API, or JavaScript on the browser, you will need to
-provide the API key explicitly.
+By default, Google AI Studio does not display all of your Google Cloud
+projects. You must import the projects you want to use:
 
-Here is how you can set your API key locally as the environment variable
-`GEMINI_API_KEY` with different operating systems.
+1. Go to [Google AI Studio](https://aistudio.google.com).
+2. Open the **Dashboard** from the left panel and select **Projects**.
+3. Click the **Import projects** button.
+4. Search for and select the Google Cloud project you want to import, then click **Import**.
+5. Once imported, navigate to the **API Keys** page in the dashboard to create a key in that project.
+
+### Troubleshooting key creation permissions
+
+If the **Create API key** button is unavailable and displays the message:
+*"You do not have permission to create a key in this project"*, you lack the
+required IAM permissions.
+
+Ask your Google Cloud project or organization administrator to grant you a role
+containing the following permissions (such as Project Editor):
+
+- `resourcemanager.projects.get`: Allows AI Studio to verify the project.
+- `apikeys.keys.create`: Allows key generation.
+- `serviceusage.services.enable`: Ensures the Generative Language API is enabled.
+- `iam.serviceAccounts.create`: Required to create the linked service account.
+- `iam.serviceAccountApiKeyBindings.create`: Binds the service account to the API key.
+
+If you cannot get administrative access, you can create a new Google Cloud
+project that is not associated with an organization to generate your keys.
+
+## Setting up your environment
+
+Once you have a key, configure your environment to use it securely in your
+applications.
+
+### Use environment variables (Recommended)
+
+Set the environment variable `GEMINI_API_KEY` or `GOOGLE_API_KEY`. The Gemini
+API client libraries automatically detect and use these variables. If both are
+set, `GOOGLE_API_KEY` takes precedence.
+
+Select your operating system to set the variable:
 
 ### Linux/macOS - Bash
 
-Bash is a common Linux and macOS terminal configuration. You can check if
-you have a configuration file for it by running the following command:
+Verify if you have a bash configuration file:
 
     ~/.bashrc
 
-If the response is "No such file or directory", you will need to create this
-file and open it by running the following commands, or use `zsh`:
+If not, create one and open it:
 
-    touch ~/.bashrc
-    open ~/.bashrc
+    touch ~/.bashrc && open ~/.bashrc
 
-Next, you need to set your API key by adding the following export command:
+Add the export command at the end of the file:
 
     export GEMINI_API_KEY=<YOUR_API_KEY_HERE>
 
-After saving the file, apply the changes by running:
+Save the file, then apply the changes:
 
     source ~/.bashrc
 
 ### macOS - Zsh
 
-Zsh is a common Linux and macOS terminal configuration. You can check if
-you have a configuration file for it by running the following command:
+Verify if you have a zsh configuration file:
 
     ~/.zshrc
 
-If the response is "No such file or directory", you will need to create this
-file and open it by running the following commands, or use `bash`:
+If not, create one and open it:
 
-    touch ~/.zshrc
-    open ~/.zshrc
+    touch ~/.zshrc && open ~/.zshrc
 
-Next, you need to set your API key by adding the following export command:
+Add the export command:
 
     export GEMINI_API_KEY=<YOUR_API_KEY_HERE>
 
-After saving the file, apply the changes by running:
+Save the file, then apply the changes:
 
     source ~/.zshrc
 
 ### Windows
 
-1. Search for "Environment Variables" in the search bar.
-2. Choose to modify **System Settings**. You may have to confirm you want to do this.
-3. In the system settings dialog, click the button labeled **Environment
-   Variables**.
-4. Under either **User variables** (for the current user) or **System
-   variables** (applies to all users who use the machine), click **New...**
-5. Specify the variable name as `GEMINI_API_KEY`. Specify your Gemini API Key as the variable value.
-6. Click **OK** to apply the changes.
-7. Open a new terminal session (cmd or Powershell) to get the new variable.
+1. Search for "Environment Variables" in the Windows search bar.
+2. Click **Environment Variables** in the System Properties dialog.
+3. Under **User variables** or **System variables** , click **New...**.
+4. Set the variable name to `GEMINI_API_KEY` and the value to your API key.
+5. Click **OK** to save. Open a new terminal session to load the variable.
 
-## Providing the API key explicitly
+### Provide the API key explicitly in code
 
-In some cases, you may want to explicitly provide an API key. For example:
-
-- You're doing a simple API call and prefer hard coding the API key.
-- You want explicit control without having to rely on automatic discovery of environment variables by the Gemini API libraries
-- You're using an environment where environment variables are not supported (e.g web) or you are making REST calls.
-
-Below are examples for how you can provide an API key explicitly:
+You can pass the API key explicitly when initializing the client. Only do this
+if you cannot use environment variables.
 
 ### Python
 
@@ -165,7 +133,8 @@ Below are examples for how you can provide an API key explicitly:
     client = genai.Client(api_key="YOUR_API_KEY")
 
     response = client.models.generate_content(
-        model="gemini-3.5-flash", contents="Explain how AI works in a few words"
+        model="gemini-3.5-flash",
+        contents="Explain how AI works in a few words"
     )
     print(response.text)
 
@@ -241,11 +210,7 @@ Below are examples for how you can provide an API key explicitly:
 
 ### REST
 
-    curl "https://generativelanguage.googleapis.com/v1beta/models/gemini-3.5-flash:generateContent" \
-      -H 'Content-Type: application/json' \
-      -H "x-goog-api-key: YOUR_API_KEY" \
-      -X POST \
-      -d '{
+    curl "https://generativelanguage.googleapis.com/v1beta/models/gemini-3.5-flash:generateContent"       -H 'Content-Type: application/json'       -H "x-goog-api-key: YOUR_API_KEY"       -X POST       -d '{
         "contents": [
           {
             "parts": [
@@ -257,125 +222,102 @@ Below are examples for how you can provide an API key explicitly:
         ]
       }'
 
-## Keep your API key secure
+## Security and secret management
 
-Treat your Gemini API key like a password. If compromised, others can use your
-project's quota, incur charges (if billing is enabled), and access your
-private data, such as files.
+Treat your Gemini API key like a password. If compromised, others can consume
+your project's quota, incur unexpected billing charges, and access private
+resources.
 
 ### Critical security rules
 
-- **Keep keys confidential**: API keys for Gemini may access sensitive data your
-  application depends upon.
+- **Keep keys confidential**: Never check API keys into source control systems like Git.
+- **Never expose keys client-side in production**: Do not hardcode API keys directly in web or mobile apps. Keys compiled in client-side code can be extracted by users. To secure client-side apps, run a backend proxy server to make the actual API calls.
 
-  - **Never commit API keys to source control.** Do not check your API key into version control systems like Git.
+### Secret management best practices
 
-  - **Never expose API keys on the client-side.** Do not use your API key directly
-    in web or mobile apps in production. Keys in client-side code
-    (including our JavaScript/TypeScript libraries and REST calls) can be
-    extracted.
+- **Environment variables**: Read keys from environment variables rather than configuration files.
+- **Secret Manager** : For production, store your keys in a secure secret store such as [Google Cloud Secret Manager](https://cloud.google.com/secret-manager).
+- **Billing alerts**: Set up billing alerts in the Google Cloud Console to notify you if usage or costs spike.
 
-- **Restrict access**: Restrict API key usage to specific IP addresses, HTTP
-  referrers, or Android/iOS apps where possible.
+### Leak response checklist
 
-- **Restrict usage**: Enable only the necessary APIs for each key.
+If you suspect your API key has been leaked:
 
-- **Perform regular audits**: Regularly audit your API keys and rotate them
-  periodically.
+1. **Generate a new key**: Create a replacement key in Google AI Studio or the Cloud Console.
+2. **Update your application**: Deploy your code using the new key.
+3. **Disable or delete the compromised key**: Disable the leaked key in the Cloud Console once the new key is verified. Do not delete the old key until the new key is fully active to avoid application downtime.
+4. **Audit usage**: Check billing logs and API usage in the Google Cloud Console to identify unauthorized activity.
 
-### Best practices
+## Restricting and securing your keys
 
-- **Use server-side calls with API keys** The most secure way to use your API
-  key is to call the Gemini API from a server-side application where the key
-  can be kept confidential.
+Adding restrictions to your API keys minimizes the potential damage if a key is
+compromised.
 
-- **Use ephemeral tokens for client-side access (Live API only):** For direct
-  client-side access to the Live API, you can use ephemeral tokens. They come with
-  lower security risks and can be suitable for production use. Review
-  [ephemeral tokens](https://ai.google.dev/gemini-api/docs/ephemeral-tokens) guide for more
-  information.
+### Apply request origin restrictions
 
-- **Consider adding restrictions to your key:** You can limit a key's permissions
-  by adding [API key restrictions](https://cloud.google.com/api-keys/docs/add-restrictions-api-keys#add-api-restrictions).
-  This minimizes the potential damage if the key is ever leaked.
+Origin restrictions limit which IP addresses, websites, or applications can use
+your key.
 
-For some general best practices, you can also review this
-[support article](https://support.google.com/googleapi/answer/6310037).
+1. Go to the [Google Cloud Console Credentials page](https://console.cloud.google.com/apis/credentials).
+2. Select your project, and click the name of the API key you want to restrict.
+3. Under **Application restrictions** , select **IP addresses** (or the appropriate restriction type for your environment).
+4. Specify the allowed IP addresses or ranges, then click **Save**.
 
-## Secure unrestricted API keys
+### Securing unrestricted standard API keys
 
-API keys that are unrestricted are vulnerable to bad actors and unauthorized
-use. Starting June 19, 2026, to improve security, the Gemini API will
-discontinue support for unrestricted traffic keys.
+To continue using the Gemini API after June 19, 2026, you must secure any
+unrestricted keys.
 
-**This means that your Gemini API requests will fail if you don't take action.**
+#### Restrict the key to the Gemini API only via AI Studio
 
-To continue using the Gemini API without interruption, secure your traffic keys
-by adding restrictions in
-[AI Studio](https://aistudio.google.com/api-keys).
+If you only use the key for the Gemini API, secure it directly in AI Studio:
 
-In [aistudio.google.com/api-keys](https://aistudio.google.com/api-keys), you
-will see a banner to notify you when API keys are unrestricted. You can see
-which keys are unrestricted, and service usage in the past 90 days.
+1. On the **API Keys** page in [Google AI Studio](https://aistudio.google.com/api-keys), locate keys marked with the **Unrestricted** label.
+2. Hover over the label and click **Add restrictions** in the dialog.
+3. Select **Restrict to Gemini API only**.
+4. Click **Restrict key** to confirm.
+
+#### Restrict the key for other services via Google Cloud Console
+
+If the key is shared with other Google APIs (not recommended), restrict it in
+the Cloud Console. **Note: Gemini API requests using this key will fail after
+these restrictions are applied.**
+
+1. Visit the [Google Cloud Console Credentials page](https://console.cloud.google.com/apis/credentials).
+2. Select the project and the API key.
+3. Under **API restrictions** , select **Restrict key**.
+4. From the drop-down, select the APIs you want this key to access. Do not select the **Generative Language API**.
+5. Click **Save**. Create a separate, restricted key in AI Studio to continue using the Gemini API.
+
+### Blocked dormant keys
+
+Starting May 7, 2026, the Gemini API blocks unrestricted API keys that have
+been dormant for an extended period. These keys show a **Blocked** tag in AI
+Studio. You must generate a new key or use an existing restricted key to
+continue.
+
+## Migrate to an auth key
+
+Follow these steps to create a new auth API key and update your applications:
+
+1. Go to the [AI Studio API Keys page](https://aistudio.google.com/api-keys).
+2. Check the **Key Type** column to identify any keys listed as **Standard**.
+3. Click **Create API key** to generate a new key. All new keys created in AI Studio are automatically created as auth keys.
+4. Copy the new auth API key.
+5. Update your application code, environment variables, and any deployment configurations to use the new auth API key.
+6. Test your application to confirm it works correctly with the new key.
+7. Once verified, delete or revoke your old traffic key to prevent misuse.
 
 > [!NOTE]
-> **Note:** If you don't see keys, you may need to import your Cloud projects into AI Studio. Refer to the [import projects](https://ai.google.dev/gemini-api/docs/api-key#import-projects) section for instructions.
+> **Note:** If you don't see your keys, you may need to import your Cloud projects into AI Studio. Refer to the [import projects](https://ai.google.dev/gemini-api/docs/api-key#import-projects) section for instructions.
 
-For unrestricted keys, you need to choose one of the following:
+## Limitations
 
-- Use the key for Gemini API only.
-- Use the key for non-Gemini API use.
+Google AI Studio imposes the following project and key management limitations:
 
-### Restrict the key to Gemini API only
+- You can create a maximum of 10 projects at a time from the Google AI Studio **Projects** page.
+- The **API keys** and **Projects** pages display a maximum of 100 keys and 50 projects.
+- Only API keys that are unrestricted or restricted specifically to the Generative Language API (Gemini API) are displayed.
 
-If you want to restrict the key to Gemini API only, secure your key in
-[AI Studio](https://aistudio.google.com/api-keys) by clicking the
-**Restrict to Gemini API** button.
-
-### Restrict the key for non-Gemini API use
-
-If you want to restrict the key for non-Gemini API use:
-
-1. Visit the [Google Cloud Console credentials page](https://console.cloud.google.com/apis/credentials).
-2. Ensure the project is selected correctly.
-3. Select an API key.
-4. Expand the **API restrictions** dropdown, and apply service restrictions to the API key.
-
-> [!IMPORTANT]
-> **Important:** Using this key for the Gemini API will fail after restrictions are applied. You will need to create a new key and replace it in your production code to continue using the Gemini API.
-
-If you'd like to modify keys with existing or newly added restrictions, visit
-the
-[Google Cloud Console](https://console.cloud.google.com/apis/credentials).
-
-## Blocked keys
-
-Starting May 7, 2026, the Gemini API will block unrestricted API keys
-that have been dormant for an extended period of time. These users will see an
-**Blocked** tag for their key on
-[aistudio.google.com/api-keys](https://aistudio.google.com/api-keys) and will
-need to generate a new key or use an alternative restricted key to continue using the Gemini API.
-
-## Troubleshooting API key creation
-
-In Google AI Studio, the **Create API key** button may appear unavailable, with
-the message: "*You do not have permission to create a key in this project*".
-
-This occurs when you lack the necessary permissions within the
-project to generate a new key:
-
-- **`resourcemanager.projects.get`**: Allows AI Studio to verify the project's existence.
-- **`apikeys.keys.create`**: Allows for the generation of the API key itself.
-- **`serviceusage.services.enable`**: Required to ensure the Gemini API is active on the project.
-- **`iam.serviceAccounts.create`** : Every new API key now requires a linked [service account](https://docs.cloud.google.com/docs/authentication/api-keys#api-keys-bound-sa), generated at API key creation.
-- **`iam.serviceAccountApiKeyBindings.create`**: Required to bind the newly created service account to the API key.
-
-To fix your permissions, ask your project admin, or your organization's
-admin if the project belongs to an [organization](https://docs.cloud.google.com/iam/docs/granting-changing-revoking-access),
-to grant you a role with the permissions listed above (such as Project Editor or
-a custom role).
-
-If you do not have administrative access to a project, you can create
-a new project that is not associated with an organization to generate your keys.
-
-For a complete list of IAM permissions required for all Google AI Studio features (such as viewing usage, rate limits, or billing), see the [AI Studio troubleshooting guide](https://ai.google.dev/gemini-api/docs/troubleshoot-ai-studio#iam-permissions).
+For advanced project management or to modify keys with other restrictions, use
+the [Google Cloud Console credentials page](https://console.cloud.google.com/apis/credentials).

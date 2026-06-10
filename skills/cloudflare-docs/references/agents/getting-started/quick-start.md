@@ -102,8 +102,8 @@ Open [http://localhost:5173 ↗](http://localhost:5173) to see your agent in act
 
 Build a simple counter agent from scratch. Replace `src/server.ts`:
 
-* [  JavaScript ](#tab-panel-4972)
-* [  TypeScript ](#tab-panel-4973)
+* [  JavaScript ](#tab-panel-5358)
+* [  TypeScript ](#tab-panel-5359)
 
 JavaScript
 
@@ -263,8 +263,8 @@ export default {
 
 Update `wrangler.jsonc` to register the agent:
 
-* [  wrangler.jsonc ](#tab-panel-4964)
-* [  wrangler.toml ](#tab-panel-4965)
+* [  wrangler.jsonc ](#tab-panel-5354)
+* [  wrangler.toml ](#tab-panel-5355)
 
 JSONC
 
@@ -278,7 +278,7 @@ JSONC
 
   // Set this to today's date
 
-  "compatibility_date": "2026-06-03",
+  "compatibility_date": "2026-06-10",
 
   "compatibility_flags": ["nodejs_compat"],
 
@@ -325,7 +325,7 @@ main = "src/server.ts"
 
 # Set this to today's date
 
-compatibility_date = "2026-06-03"
+compatibility_date = "2026-06-10"
 
 compatibility_flags = [ "nodejs_compat" ]
 
@@ -345,6 +345,13 @@ new_sqlite_classes = [ "CounterAgent" ]
 
 
 ```
+
+**Key points:**
+
+* `name` in bindings becomes the property on `env` (for example, `env.CounterAgent`)
+* `class_name` must exactly match your exported class name
+* `new_sqlite_classes` enables SQLite storage for state persistence
+* `nodejs_compat` flag is required for the agents package
 
 ## Connect from React
 
@@ -419,7 +426,7 @@ Key points:
 * `onStateUpdate` fires whenever the agent's state changes
 * `agent.stub.methodName()` calls methods marked with `@callable()` on your agent
 
-## What just happened?
+## How it works
 
 When you clicked the button:
 
@@ -446,8 +453,8 @@ flowchart LR
 
 If you are not using React:
 
-* [  JavaScript ](#tab-panel-4968)
-* [  TypeScript ](#tab-panel-4969)
+* [  JavaScript ](#tab-panel-5356)
+* [  TypeScript ](#tab-panel-5357)
 
 JavaScript
 
@@ -524,30 +531,507 @@ npm run deploy
 
 Your agent is now live on Cloudflare's global network, running close to your users.
 
+## Common integration patterns
+
+### Agents behind authentication
+
+Check auth before routing to agents:
+
+* [  JavaScript ](#tab-panel-5370)
+* [  TypeScript ](#tab-panel-5371)
+
+JavaScript
+
+```
+
+export default {
+
+  async fetch(request, env) {
+
+    // Check auth for agent routes
+
+    if (request.url.includes("/agents/")) {
+
+      const authResult = await checkAuth(request, env);
+
+      if (!authResult.valid) {
+
+        return new Response("Unauthorized", { status: 401 });
+
+      }
+
+    }
+
+
+    const agentResponse = await routeAgentRequest(request, env);
+
+    if (agentResponse) return agentResponse;
+
+
+    // ... rest of routing
+
+  },
+
+};
+
+
+```
+
+TypeScript
+
+```
+
+export default {
+
+  async fetch(request: Request, env: Env) {
+
+    // Check auth for agent routes
+
+    if (request.url.includes("/agents/")) {
+
+      const authResult = await checkAuth(request, env);
+
+      if (!authResult.valid) {
+
+        return new Response("Unauthorized", { status: 401 });
+
+      }
+
+    }
+
+
+    const agentResponse = await routeAgentRequest(request, env);
+
+    if (agentResponse) return agentResponse;
+
+
+    // ... rest of routing
+
+  },
+
+} satisfies ExportedHandler<Env>;
+
+
+```
+
+### Custom agent path prefix
+
+By default, agents are routed at `/agents/{agent-name}/{instance-name}`. You can customize this:
+
+* [  JavaScript ](#tab-panel-5364)
+* [  TypeScript ](#tab-panel-5365)
+
+JavaScript
+
+```
+
+import { routeAgentRequest } from "agents";
+
+
+const agentResponse = await routeAgentRequest(request, env, {
+
+  prefix: "/api/agents", // Now routes at /api/agents/{agent-name}/{instance-name}
+
+});
+
+
+```
+
+TypeScript
+
+```
+
+import { routeAgentRequest } from "agents";
+
+
+const agentResponse = await routeAgentRequest(request, env, {
+
+  prefix: "/api/agents", // Now routes at /api/agents/{agent-name}/{instance-name}
+
+});
+
+
+```
+
+Refer to [Routing](https://developers.cloudflare.com/agents/runtime/communication/routing/) for more options including CORS, custom instance naming, and location hints.
+
+### Accessing agents from server code
+
+You can interact with agents directly from your Worker code:
+
+* [  JavaScript ](#tab-panel-5374)
+* [  TypeScript ](#tab-panel-5375)
+
+JavaScript
+
+```
+
+import { getAgentByName } from "agents";
+
+
+export default {
+
+  async fetch(request, env) {
+
+    if (request.url.endsWith("/api/increment")) {
+
+      // Get a specific agent instance
+
+      const counter = await getAgentByName(env.CounterAgent, "shared-counter");
+
+      const newCount = await counter.increment();
+
+      return Response.json({ count: newCount });
+
+    }
+
+    // ...
+
+  },
+
+};
+
+
+```
+
+TypeScript
+
+```
+
+import { getAgentByName } from "agents";
+
+
+export default {
+
+  async fetch(request: Request, env: Env) {
+
+    if (request.url.endsWith("/api/increment")) {
+
+      // Get a specific agent instance
+
+      const counter = await getAgentByName(env.CounterAgent, "shared-counter");
+
+      const newCount = await counter.increment();
+
+      return Response.json({ count: newCount });
+
+    }
+
+    // ...
+
+  },
+
+} satisfies ExportedHandler<Env>;
+
+
+```
+
+### Adding multiple agents
+
+Add more agents by extending the configuration:
+
+* [  JavaScript ](#tab-panel-5368)
+* [  TypeScript ](#tab-panel-5369)
+
+JavaScript
+
+```
+
+// src/agents/chat.ts
+
+export class Chat extends Agent {
+
+  // ...
+
+}
+
+
+// src/agents/scheduler.ts
+
+export class Scheduler extends Agent {
+
+  // ...
+
+}
+
+
+```
+
+TypeScript
+
+```
+
+// src/agents/chat.ts
+
+export class Chat extends Agent {
+
+  // ...
+
+}
+
+
+// src/agents/scheduler.ts
+
+export class Scheduler extends Agent {
+
+  // ...
+
+}
+
+
+```
+
+Update the Wrangler configuration file:
+
+* [  wrangler.jsonc ](#tab-panel-5360)
+* [  wrangler.toml ](#tab-panel-5361)
+
+JSONC
+
+```
+
+{
+
+  "$schema": "./node_modules/wrangler/config-schema.json",
+
+  "durable_objects": {
+
+    "bindings": [
+
+      {
+
+        "name": "CounterAgent",
+
+        "class_name": "CounterAgent"
+
+      },
+
+      {
+
+        "name": "Chat",
+
+        "class_name": "Chat"
+
+      },
+
+      {
+
+        "name": "Scheduler",
+
+        "class_name": "Scheduler"
+
+      }
+
+    ]
+
+  },
+
+  "migrations": [
+
+    {
+
+      "tag": "v1",
+
+      "new_sqlite_classes": [
+
+        "CounterAgent",
+
+        "Chat",
+
+        "Scheduler"
+
+      ]
+
+    }
+
+  ]
+
+}
+
+
+```
+
+TOML
+
+```
+
+[[durable_objects.bindings]]
+
+name = "CounterAgent"
+
+class_name = "CounterAgent"
+
+
+[[durable_objects.bindings]]
+
+name = "Chat"
+
+class_name = "Chat"
+
+
+[[durable_objects.bindings]]
+
+name = "Scheduler"
+
+class_name = "Scheduler"
+
+
+[[migrations]]
+
+tag = "v1"
+
+new_sqlite_classes = ["CounterAgent", "Chat", "Scheduler"]
+
+
+```
+
+Export all agents from your entry point:
+
+* [  JavaScript ](#tab-panel-5366)
+* [  TypeScript ](#tab-panel-5367)
+
+JavaScript
+
+```
+
+export { CounterAgent } from "./agents/counter";
+
+export { Chat } from "./agents/chat";
+
+export { Scheduler } from "./agents/scheduler";
+
+
+```
+
+TypeScript
+
+```
+
+export { CounterAgent } from "./agents/counter";
+
+export { Chat } from "./agents/chat";
+
+export { Scheduler } from "./agents/scheduler";
+
+
+```
+
 ## Troubleshooting
 
-### "Agent not found" or 404 errors
+### Agent not found, or 404 errors
 
-Make sure:
+1. **Check the export** \- Agent class must be exported from your main entry point.
+2. **Check the binding** \- `class_name` in the Wrangler configuration file must exactly match the exported class name.
+3. **Check the route** \- Default route is `/agents/{'{agent-name}'}/{'{instance-name}'}`. Agent name in client matches the class name (case-insensitive).
 
-1. Agent class is exported from your server file
-2. `wrangler.jsonc` has the binding and migration
-3. Agent name in client matches the class name (case-insensitive)
+### No such Durable Object class error
 
-### State not syncing
+Add the migration to the Wrangler configuration file:
+
+* [  wrangler.jsonc ](#tab-panel-5362)
+* [  wrangler.toml ](#tab-panel-5363)
+
+JSONC
+
+```
+
+{
+
+  "$schema": "./node_modules/wrangler/config-schema.json",
+
+  "migrations": [
+
+    {
+
+      "tag": "v1",
+
+      "new_sqlite_classes": [
+
+        "YourAgentClass"
+
+      ]
+
+    }
+
+  ]
+
+}
+
+
+```
+
+TOML
+
+```
+
+[[migrations]]
+
+tag = "v1"
+
+new_sqlite_classes = ["YourAgentClass"]
+
+
+```
+
+### WebSocket connection fails
+
+Ensure your routing passes the response unchanged:
+
+* [  JavaScript ](#tab-panel-5372)
+* [  TypeScript ](#tab-panel-5373)
+
+JavaScript
+
+```
+
+// Correct - return the response directly
+
+const agentResponse = await routeAgentRequest(request, env);
+
+if (agentResponse) return agentResponse;
+
+
+// Wrong - this breaks WebSocket connections
+
+if (agentResponse) return new Response(agentResponse.body);
+
+
+```
+
+TypeScript
+
+```
+
+// Correct - return the response directly
+
+const agentResponse = await routeAgentRequest(request, env);
+
+if (agentResponse) return agentResponse;
+
+
+// Wrong - this breaks WebSocket connections
+
+if (agentResponse) return new Response(agentResponse.body);
+
+
+```
+
+### State not persisting
 
 Check that:
 
-1. You are calling `this.setState()`, not mutating `this.state` directly
-2. The `onStateUpdate` callback is wired up in your client
-3. WebSocket connection is established (check browser dev tools)
+1. You are calling `this.setState()`, not mutating `this.state` directly.
+2. The agent class is in `new_sqlite_classes` in migrations.
+3. You are connecting to the same agent instance name.
+4. The `onStateUpdate` callback is wired up in your client.
+5. WebSocket connection is established (check browser dev tools).
 
 ### "Method X is not callable" errors
 
 Make sure your methods are decorated with `@callable()`:
 
-* [  JavaScript ](#tab-panel-4966)
-* [  TypeScript ](#tab-panel-4967)
+* [  JavaScript ](#tab-panel-5376)
+* [  TypeScript ](#tab-panel-5377)
 
 JavaScript
 
@@ -597,8 +1081,8 @@ export class MyAgent extends Agent {
 
 Add the agent and state type parameters:
 
-* [  JavaScript ](#tab-panel-4970)
-* [  TypeScript ](#tab-panel-4971)
+* [  JavaScript ](#tab-panel-5378)
+* [  TypeScript ](#tab-panel-5379)
 
 JavaScript
 
@@ -679,7 +1163,7 @@ Do not set `"experimentalDecorators": true` in your `tsconfig.json`. The Agents 
 
 Now that you have a working agent, explore these topics:
 
-### Common patterns
+### Common next steps
 
 | Learn how to             | Refer to                                                                                        |
 | ------------------------ | ----------------------------------------------------------------------------------------------- |
@@ -698,6 +1182,10 @@ Now that you have a working agent, explore these topics:
 [ Callable methods ](https://developers.cloudflare.com/agents/runtime/lifecycle/callable-methods/) Expose methods to clients with @callable(). 
 
 [ Schedule tasks ](https://developers.cloudflare.com/agents/runtime/execution/schedule-tasks/) Run tasks on a delay, schedule, or cron. 
+
+[ Agent class internals ](https://developers.cloudflare.com/agents/runtime/lifecycle/agent-class/) Full lifecycle and methods reference. 
+
+[ Agents API ](https://developers.cloudflare.com/agents/runtime/agents-api/) Complete API reference for the Agents SDK. 
 
 ```json
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/agents/","name":"Agents"}},{"@type":"ListItem","position":3,"item":{"@id":"/agents/getting-started/","name":"Getting started"}},{"@type":"ListItem","position":4,"item":{"@id":"/agents/getting-started/quick-start/","name":"Quick start"}}]}

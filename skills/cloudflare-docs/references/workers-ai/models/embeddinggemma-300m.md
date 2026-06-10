@@ -22,9 +22,9 @@ EmbeddingGemma is a 300M parameter, state-of-the-art for its size, open embeddin
 
 ## Usage
 
-* [  TypeScript ](#tab-panel-4236)
-* [  Python ](#tab-panel-4237)
-* [  curl ](#tab-panel-4238)
+* [  TypeScript ](#tab-panel-4622)
+* [  Python ](#tab-panel-4623)
+* [  curl ](#tab-panel-4624)
 
 ```
 
@@ -135,8 +135,8 @@ Workers AI also supports OpenAI compatible API endpoints for `/v1/chat/completio
 
 ## Parameters
 
-* [ Input ](#tab-panel-4239)
-* [ Output ](#tab-panel-4240)
+* [ Input ](#tab-panel-4625)
+* [ Output ](#tab-panel-4626)
 
 ▶text
 
@@ -152,9 +152,9 @@ Workers AI also supports OpenAI compatible API endpoints for `/v1/chat/completio
 
 ## API Schemas (Raw)
 
-Input 
+Input [ ](https://developers.cloudflare.com/workers-ai/models/embeddinggemma-300m/schema-input.json "Open") [ ](https://developers.cloudflare.com/workers-ai/models/embeddinggemma-300m/schema-input.json "Download") 
 
-Output 
+Output [ ](https://developers.cloudflare.com/workers-ai/models/embeddinggemma-300m/schema-output.json "Open") [ ](https://developers.cloudflare.com/workers-ai/models/embeddinggemma-300m/schema-output.json "Download") 
 
 ```json
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/workers-ai/","name":"Workers AI"}},{"@type":"ListItem","position":3,"item":{"@id":"/workers-ai/models/","name":"Models"}}]}

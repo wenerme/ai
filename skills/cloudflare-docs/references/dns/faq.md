@@ -156,6 +156,10 @@ For more DNS records
 
 If you are an Enterprise customer and require more DNS records, contact your account team. Cloudflare can support millions of DNS records on a single zone.
 
+DNS records that other Cloudflare services create on your behalf — for example, the `TXT` and `MX` records added by [Email Routing](https://developers.cloudflare.com/email-service/) — also count toward this limit. To avoid disrupting those services, they are enforced against your record limit with a small buffer, so a zone may occasionally hold slightly more records than its limit would otherwise allow.
+
+To create new records yourself through the dashboard or API, your zone must still be within its record limit.
+
 ### How long does it take for a DNS change I made to push out?
 
 By default, any changes or additions you make to your Cloudflare zone file will take effect globally within 5 minutes, usually much less.

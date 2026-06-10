@@ -12,10 +12,12 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 # Concepts
 
+Core concepts behind how Cloudflare Email Service handles deliverability, authentication, and the email lifecycle.
+
 * [ Email lifecycle ](https://developers.cloudflare.com/email-service/concepts/email-lifecycle/)
 * [ Email deliverability ](https://developers.cloudflare.com/email-service/concepts/deliverability/)
 * [ Email authentication ](https://developers.cloudflare.com/email-service/concepts/email-authentication/)
-* [ Suppressions lists ](https://developers.cloudflare.com/email-service/concepts/suppressions/)
+* [ Suppression lists ](https://developers.cloudflare.com/email-service/concepts/suppressions/)
 
 ```json
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/email-service/","name":"Email Service"}},{"@type":"ListItem","position":3,"item":{"@id":"/email-service/concepts/","name":"Concepts"}}]}

@@ -28,8 +28,8 @@ Google's video generation model capable of producing high-quality videos with op
 
 ## Usage
 
-* [ TypeScript ](#tab-panel-628)
-* [ cURL ](#tab-panel-629)
+* [ TypeScript ](#tab-panel-678)
+* [ cURL ](#tab-panel-679)
 
 TypeScript
 
@@ -93,8 +93,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 ```
 
-* [ Output ](#tab-panel-624)
-* [ Raw response ](#tab-panel-625)
+* [ Output ](#tab-panel-674)
+* [ Raw response ](#tab-panel-675)
 
 ```
 
@@ -123,8 +123,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 **Cinematic Scene**  — Widescreen cinematic video in 1080p 
 
-* [ TypeScript ](#tab-panel-632)
-* [ cURL ](#tab-panel-633)
+* [ TypeScript ](#tab-panel-682)
+* [ cURL ](#tab-panel-683)
 
 TypeScript
 
@@ -190,8 +190,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 ```
 
-* [ Output ](#tab-panel-626)
-* [ Raw response ](#tab-panel-627)
+* [ Output ](#tab-panel-676)
+* [ Raw response ](#tab-panel-677)
 
 ```
 
@@ -218,8 +218,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 **Vertical Video**  — Portrait orientation for social media 
 
-* [ TypeScript ](#tab-panel-636)
-* [ cURL ](#tab-panel-637)
+* [ TypeScript ](#tab-panel-686)
+* [ cURL ](#tab-panel-687)
 
 TypeScript
 
@@ -283,8 +283,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 ```
 
-* [ Output ](#tab-panel-630)
-* [ Raw response ](#tab-panel-631)
+* [ Output ](#tab-panel-680)
+* [ Raw response ](#tab-panel-681)
 
 ```
 
@@ -311,8 +311,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 **Short Format**  — Short video for social media posts 
 
-* [ TypeScript ](#tab-panel-640)
-* [ cURL ](#tab-panel-641)
+* [ TypeScript ](#tab-panel-690)
+* [ cURL ](#tab-panel-691)
 
 TypeScript
 
@@ -376,8 +376,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 ```
 
-* [ Output ](#tab-panel-634)
-* [ Raw response ](#tab-panel-635)
+* [ Output ](#tab-panel-684)
+* [ Raw response ](#tab-panel-685)
 
 ```
 
@@ -404,8 +404,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 **Silent Video**  — Video without audio generation 
 
-* [ TypeScript ](#tab-panel-642)
-* [ cURL ](#tab-panel-643)
+* [ TypeScript ](#tab-panel-692)
+* [ cURL ](#tab-panel-693)
 
 TypeScript
 
@@ -469,8 +469,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 ```
 
-* [ Output ](#tab-panel-638)
-* [ Raw response ](#tab-panel-639)
+* [ Output ](#tab-panel-688)
+* [ Raw response ](#tab-panel-689)
 
 ```
 
@@ -497,8 +497,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 ## Parameters
 
-* [ Input ](#tab-panel-644)
-* [ Output ](#tab-panel-645)
+* [ Input ](#tab-panel-694)
+* [ Output ](#tab-panel-695)
 
 aspect\_ratio
 
@@ -530,9 +530,9 @@ video
 
 ## API Schemas (Raw)
 
-Input 
+Input [ ](https://developers.cloudflare.com/ai/models/google/veo-3/schema-input.json "Open") [ ](https://developers.cloudflare.com/ai/models/google/veo-3/schema-input.json "Download") 
 
-Output 
+Output [ ](https://developers.cloudflare.com/ai/models/google/veo-3/schema-output.json "Open") [ ](https://developers.cloudflare.com/ai/models/google/veo-3/schema-output.json "Download") 
 
 ```json
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/ai/","name":"AI"}},{"@type":"ListItem","position":3,"item":{"@id":"/ai/models/","name":"Models"}}]}

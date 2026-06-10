@@ -151,7 +151,7 @@ Cloudflare Workers provides automatic tracing instrumentation **out of the box**
 
 * `cloudflare.jsrpc.method`
 
-#### [Email Handler](https://developers.cloudflare.com/email-routing/email-workers/runtime-api/)
+#### [Email Handler](https://developers.cloudflare.com/email-service/api/route-emails/email-handler/)
 
 * `cloudflare.email.from`
 * `cloudflare.email.to`
@@ -542,13 +542,13 @@ The legacy KV-backed API allows you to modify embedded storage within a Durable 
 
 ---
 
-### [Email](https://developers.cloudflare.com/email-routing/)
+### [Email](https://developers.cloudflare.com/email-service/)
 
-#### [reply\_email](https://developers.cloudflare.com/email-routing/email-workers/reply-email-workers/)
+#### [reply\_email](https://developers.cloudflare.com/email-service/api/route-emails/email-handler/#reply-to-emails)
 
-#### [forward\_email](https://developers.cloudflare.com/email-routing/email-workers/runtime-api/)
+#### [forward\_email](https://developers.cloudflare.com/email-service/api/route-emails/email-handler/)
 
-#### [send\_email](https://developers.cloudflare.com/email-routing/email-workers/send-email-workers/)
+#### [send\_email](https://developers.cloudflare.com/email-service/api/send-emails/workers-api/)
 
 ---
 

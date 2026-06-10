@@ -35,10 +35,10 @@ Try out this model with Workers AI LLM Playground. It does not require any setup
 
 ## Usage
 
-* [  Worker (Streaming) ](#tab-panel-4336)
-* [  TypeScript ](#tab-panel-4337)
-* [  Python ](#tab-panel-4338)
-* [  curl ](#tab-panel-4339)
+* [  Worker (Streaming) ](#tab-panel-4682)
+* [  TypeScript ](#tab-panel-4683)
+* [  Python ](#tab-panel-4684)
+* [  curl ](#tab-panel-4685)
 
 TypeScript
 
@@ -377,13 +377,13 @@ format
 
 ## API Schemas (Raw)
 
-Synchronous Input 
+ Synchronous Input [ ](https://developers.cloudflare.com/workers-ai/models/glm-4.7-flash/sync-input.json "Open") [ ](https://developers.cloudflare.com/workers-ai/models/glm-4.7-flash/sync-input.json "Download") 
 
-Synchronous Output 
+ Synchronous Output [ ](https://developers.cloudflare.com/workers-ai/models/glm-4.7-flash/sync-output.json "Open") [ ](https://developers.cloudflare.com/workers-ai/models/glm-4.7-flash/sync-output.json "Download") 
 
-Streaming Input 
+ Streaming Input [ ](https://developers.cloudflare.com/workers-ai/models/glm-4.7-flash/streaming-input.json "Open") [ ](https://developers.cloudflare.com/workers-ai/models/glm-4.7-flash/streaming-input.json "Download") 
 
-Streaming Output 
+ Streaming Output [ ](https://developers.cloudflare.com/workers-ai/models/glm-4.7-flash/streaming-output.json "Open") [ ](https://developers.cloudflare.com/workers-ai/models/glm-4.7-flash/streaming-output.json "Download") 
 
 ```json
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/workers-ai/","name":"Workers AI"}},{"@type":"ListItem","position":3,"item":{"@id":"/workers-ai/models/","name":"Models"}}]}

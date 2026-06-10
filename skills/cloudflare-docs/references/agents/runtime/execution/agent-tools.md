@@ -1,5 +1,5 @@
 ---
-title: Agent tools
+title: Agents as tools
 description: Run Think and AIChatAgent sub-agents as retained, streaming tools from a parent agent.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
@@ -10,13 +10,13 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 [Skip to content](#%5Ftop) 
 
-# Agent tools
+# Agents as tools
 
-Agent tools let one chat agent dispatch another chat-capable sub-agent as part of its work. The child is a real sub-agent with its own Durable Object storage, messages, tools, resumable stream, and drill-in URL. The parent keeps a small run registry so clients can render the child timeline, replay it after refresh, and clean it up later.
+Agents as tools let one chat agent dispatch another chat-capable sub-agent as part of its work. The child is a real sub-agent with its own Durable Object storage, messages, tools, resumable stream, and drill-in URL. The parent keeps a small run registry so clients can render the child timeline, replay it after refresh, and clean it up later.
 
-Agent tools support `@cloudflare/think` agents and `AIChatAgent` subclasses. `AIChatAgent` children run headlessly through `saveMessages()`, so they should use server-side tools. Browser-provided client tools are not available during an agent-tool turn unless you model that interaction as server-side state or a separate parent-mediated workflow.
+Agents as tools support `@cloudflare/think` agents and `AIChatAgent` subclasses. `AIChatAgent` children run headlessly through `saveMessages()`, so they should use server-side tools. Browser-provided client tools are not available during an agent-tool turn unless you model that interaction as server-side state or a separate parent-mediated workflow.
 
-## Agent tools vs sub-agent RPC
+## Agents as tools vs sub-agent RPC
 
 Use `subAgent(...).chat()` when parent code needs direct streaming RPC to a specific child and your code owns forwarding, cancellation, and replay policy.
 
@@ -26,8 +26,8 @@ Use `agentTool()` or `runAgentTool()` when a parent model or workflow delegates 
 
 Use `agentTool()` when the parent model should decide when to call the helper.
 
-* [  JavaScript ](#tab-panel-5540)
-* [  TypeScript ](#tab-panel-5541)
+* [  JavaScript ](#tab-panel-5846)
+* [  TypeScript ](#tab-panel-5847)
 
 JavaScript
 
@@ -133,8 +133,8 @@ export class Assistant extends Think<Env> {
 
 The child can also be an `AIChatAgent`:
 
-* [  JavaScript ](#tab-panel-5544)
-* [  TypeScript ](#tab-panel-5545)
+* [  JavaScript ](#tab-panel-5850)
+* [  TypeScript ](#tab-panel-5851)
 
 JavaScript
 
@@ -352,8 +352,8 @@ For Think children that do workflow-style work without user-facing assistant tex
 
 Persist any structured output before the child turn finishes, because `getAgentToolOutput()` is read as soon as `saveMessages()` resolves. Keep `getAgentToolSummary()` concise for display; the full structured value is stored separately as the tool output.
 
-* [  JavaScript ](#tab-panel-5532)
-* [  TypeScript ](#tab-panel-5533)
+* [  JavaScript ](#tab-panel-5838)
+* [  TypeScript ](#tab-panel-5839)
 
 JavaScript
 
@@ -419,8 +419,8 @@ export class Extractor extends Think<Env> {
 
 Use `runAgentTool()` for deterministic workflows, scheduled work, HTTP handlers, or fan-out code.
 
-* [  JavaScript ](#tab-panel-5536)
-* [  TypeScript ](#tab-panel-5537)
+* [  JavaScript ](#tab-panel-5842)
+* [  TypeScript ](#tab-panel-5843)
 
 JavaScript
 
@@ -490,8 +490,8 @@ const [a, b] = await Promise.allSettled([
 
 `useAgentToolEvents()` is a headless hook. It subscribes to the existing parent connection, deduplicates replay/live races, applies child `UIMessageChunk` bodies to message parts, and groups sibling runs by parent tool call ID.
 
-* [  JavaScript ](#tab-panel-5542)
-* [  TypeScript ](#tab-panel-5543)
+* [  JavaScript ](#tab-panel-5848)
+* [  TypeScript ](#tab-panel-5849)
 
 JavaScript
 
@@ -567,10 +567,10 @@ Imperative runs without a parent tool call are available as `agentTools.unboundR
 
 ## Drill in and gate access
 
-Agent tools are normal sub-agents. Connect to a retained child through the parent route:
+Agents as tools are normal sub-agents. Connect to a retained child through the parent route:
 
-* [  JavaScript ](#tab-panel-5530)
-* [  TypeScript ](#tab-panel-5531)
+* [  JavaScript ](#tab-panel-5836)
+* [  TypeScript ](#tab-panel-5837)
 
 JavaScript
 
@@ -629,8 +629,8 @@ override async onBeforeSubAgent(_request, child) {
 
 Runs and child facets are retained by default for refresh, drill-in, and later inspection. Delete them explicitly when clearing chat history or applying your own retention policy:
 
-* [  JavaScript ](#tab-panel-5534)
-* [  TypeScript ](#tab-panel-5535)
+* [  JavaScript ](#tab-panel-5840)
+* [  TypeScript ](#tab-panel-5841)
 
 JavaScript
 
@@ -689,8 +689,8 @@ A hung child can never block recovery forever. The no-progress budget bounds a s
 
 Monitor parent reconciliation through the `agentTool` observability channel:
 
-* [  JavaScript ](#tab-panel-5538)
-* [  TypeScript ](#tab-panel-5539)
+* [  JavaScript ](#tab-panel-5844)
+* [  TypeScript ](#tab-panel-5845)
 
 JavaScript
 
@@ -745,5 +745,5 @@ Raw `diagnostics_channel` subscribers should use the channel name `agents:agent_
 [ Chat agents ](https://developers.cloudflare.com/agents/communication-channels/chat/chat-agents/) Build AI chat interfaces with AIChatAgent and useAgentChat. 
 
 ```json
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/agents/","name":"Agents"}},{"@type":"ListItem","position":3,"item":{"@id":"/agents/runtime/","name":"Runtime"}},{"@type":"ListItem","position":4,"item":{"@id":"/agents/runtime/execution/","name":"Execution"}},{"@type":"ListItem","position":5,"item":{"@id":"/agents/runtime/execution/agent-tools/","name":"Agent tools"}}]}
+{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/agents/","name":"Agents"}},{"@type":"ListItem","position":3,"item":{"@id":"/agents/runtime/","name":"Runtime"}},{"@type":"ListItem","position":4,"item":{"@id":"/agents/runtime/execution/","name":"Execution"}},{"@type":"ListItem","position":5,"item":{"@id":"/agents/runtime/execution/agent-tools/","name":"Agents as tools"}}]}
 ```

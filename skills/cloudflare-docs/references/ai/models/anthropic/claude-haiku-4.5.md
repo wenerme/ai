@@ -29,8 +29,8 @@ Claude Haiku 4.5 delivers similar levels of coding performance at one-third the 
 
 ## Usage
 
-* [ TypeScript ](#tab-panel-112)
-* [ cURL ](#tab-panel-113)
+* [ TypeScript ](#tab-panel-130)
+* [ cURL ](#tab-panel-131)
 
 TypeScript
 
@@ -88,8 +88,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/v1/
 
 ```
 
-* [ Output ](#tab-panel-116)
-* [ Raw response ](#tab-panel-117)
+* [ Output ](#tab-panel-134)
+* [ Raw response ](#tab-panel-135)
 
 # The Three Laws of Thermodynamics
 
@@ -159,8 +159,8 @@ These laws form the foundation of thermodynamics and explain why perpetual motio
 
 **With System Message**  — Using a system message to set context 
 
-* [ TypeScript ](#tab-panel-114)
-* [ cURL ](#tab-panel-115)
+* [ TypeScript ](#tab-panel-132)
+* [ cURL ](#tab-panel-133)
 
 TypeScript
 
@@ -226,8 +226,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/v1/
 
 ```
 
-* [ Output ](#tab-panel-120)
-* [ Raw response ](#tab-panel-121)
+* [ Output ](#tab-panel-138)
+* [ Raw response ](#tab-panel-139)
 
 # Reading a JSON File in Python
 
@@ -355,8 +355,8 @@ The `with` statement is recommended because it automatically closes the file whe
 
 **Multi-turn Conversation**  — Continuing a conversation with context 
 
-* [ TypeScript ](#tab-panel-124)
-* [ cURL ](#tab-panel-125)
+* [ TypeScript ](#tab-panel-142)
+* [ cURL ](#tab-panel-143)
 
 TypeScript
 
@@ -452,8 +452,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/v1/
 
 ```
 
-* [ Output ](#tab-panel-126)
-* [ Raw response ](#tab-panel-127)
+* [ Output ](#tab-panel-144)
+* [ Raw response ](#tab-panel-145)
 
 # Good Stops on the SF to LA Route
 
@@ -529,8 +529,8 @@ What's your timeline? Are you interested in nature, wine, food, or something els
 
 **Creative Writing**  — Higher temperature for creative output 
 
-* [ TypeScript ](#tab-panel-118)
-* [ cURL ](#tab-panel-119)
+* [ TypeScript ](#tab-panel-136)
+* [ cURL ](#tab-panel-137)
 
 TypeScript
 
@@ -602,8 +602,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/v1/
 
 ```
 
-* [ Output ](#tab-panel-128)
-* [ Raw response ](#tab-panel-129)
+* [ Output ](#tab-panel-146)
+* [ Raw response ](#tab-panel-147)
 
 # The Photograph
 
@@ -676,8 +676,8 @@ It was a warning.
 
 **Streaming Response**  — Enable streaming for real-time output 
 
-* [ TypeScript ](#tab-panel-122)
-* [ cURL ](#tab-panel-123)
+* [ TypeScript ](#tab-panel-140)
+* [ cURL ](#tab-panel-141)
 
 TypeScript
 
@@ -739,8 +739,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/v1/
 
 ```
 
-* [ Output ](#tab-panel-130)
-* [ Raw response ](#tab-panel-131)
+* [ Output ](#tab-panel-148)
+* [ Raw response ](#tab-panel-149)
 
 # Recursion Explained
 
@@ -1178,8 +1178,8 @@ Recursion is elegant but always ensure you have a clear base case!
 
 ## Parameters
 
-* [ Input ](#tab-panel-132)
-* [ Output ](#tab-panel-133)
+* [ Input ](#tab-panel-150)
+* [ Output ](#tab-panel-151)
 
 max\_tokens
 
@@ -1243,9 +1243,9 @@ type
 
 ## API Schemas (Raw)
 
-Input 
+Input [ ](https://developers.cloudflare.com/ai/models/anthropic/claude-haiku-4.5/schema-input.json "Open") [ ](https://developers.cloudflare.com/ai/models/anthropic/claude-haiku-4.5/schema-input.json "Download") 
 
-Output 
+Output [ ](https://developers.cloudflare.com/ai/models/anthropic/claude-haiku-4.5/schema-output.json "Open") [ ](https://developers.cloudflare.com/ai/models/anthropic/claude-haiku-4.5/schema-output.json "Download") 
 
 ```json
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/ai/","name":"AI"}},{"@type":"ListItem","position":3,"item":{"@id":"/ai/models/","name":"Models"}}]}

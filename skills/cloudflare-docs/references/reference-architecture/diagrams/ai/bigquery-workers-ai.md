@@ -48,7 +48,7 @@ Figure 2: Ingesting Google BigQuery Data into Workers AI (cron-triggered)
    * To [Workers KV](https://developers.cloudflare.com/kv/) if the output of your data will be stored and consumed in a key/value fashion.  
    * If you prefer to save the data fetched from BigQuery and Workers AI into objects (such as images, files, JSONs), you can use [R2](https://developers.cloudflare.com/r2/), our egress-free object storage to do so.
 6. You can set up an integration so a system or a user gets notified whenever a new result is available or if an error occurs. It's also worth mentioning that Workers by themselves can already provide additional [observability](https://developers.cloudflare.com/workers/observability/).  
-   * Sending an email with all the data retrieved and generated in the previous step is possible using [Email Routing](https://developers.cloudflare.com/email-routing/email-workers/send-email-workers/).  
+   * Sending an email with all the data retrieved and generated in the previous step is possible using [Email Routing](https://developers.cloudflare.com/email-service/api/send-emails/workers-api/).  
    * Since Workers allows you to issue HTTP requests, you can notify a webhook or API endpoint once the process finishes or if there's an error.
 
 ## Related resources
@@ -57,7 +57,7 @@ Figure 2: Ingesting Google BigQuery Data into Workers AI (cron-triggered)
 * [Workers AI: Get Started](https://developers.cloudflare.com/workers-ai/get-started/workers-wrangler/)
 * [Workers: Secrets](https://developers.cloudflare.com/workers/configuration/secrets/)
 * [Workers: Cron Triggers](https://developers.cloudflare.com/workers/runtime-apis/handlers/scheduled/)
-* [Email Routing](https://developers.cloudflare.com/email-routing/email-workers/send-email-workers/)
+* [Email Routing](https://developers.cloudflare.com/email-service/api/send-emails/workers-api/)
 * [Create a GCP service account ↗](https://cloud.google.com/iam/docs/service-accounts-create#iam-service-accounts-create-console)
 * [Create a GCP service account key ↗](https://cloud.google.com/iam/docs/keys-create-delete#iam-service-account-keys-create-console)
 * [Retrieval Augmented Generation (RAG) Reference Architecture](https://developers.cloudflare.com/reference-architecture/diagrams/ai/ai-rag/)

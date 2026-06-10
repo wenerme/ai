@@ -29,8 +29,8 @@ Lucid Origin from Leonardo.AI is their most adaptable and prompt-responsive mode
 
 ## Usage
 
-* [  TypeScript ](#tab-panel-4430)
-* [  curl ](#tab-panel-4431)
+* [  TypeScript ](#tab-panel-4816)
+* [  curl ](#tab-panel-4817)
 
 ```
 
@@ -96,8 +96,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 ## Parameters
 
-* [ Input ](#tab-panel-4432)
-* [ Output ](#tab-panel-4433)
+* [ Input ](#tab-panel-4818)
+* [ Output ](#tab-panel-4819)
 
 prompt
 
@@ -133,9 +133,9 @@ image
 
 ## API Schemas (Raw)
 
-Input 
+Input [ ](https://developers.cloudflare.com/workers-ai/models/lucid-origin/schema-input.json "Open") [ ](https://developers.cloudflare.com/workers-ai/models/lucid-origin/schema-input.json "Download") 
 
-Output 
+Output [ ](https://developers.cloudflare.com/workers-ai/models/lucid-origin/schema-output.json "Open") [ ](https://developers.cloudflare.com/workers-ai/models/lucid-origin/schema-output.json "Download") 
 
 ```json
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/workers-ai/","name":"Workers AI"}},{"@type":"ListItem","position":3,"item":{"@id":"/workers-ai/models/","name":"Models"}}]}

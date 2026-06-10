@@ -28,8 +28,8 @@ MiniMax's music generation model that creates full-length songs with vocals from
 
 ## Usage
 
-* [ TypeScript ](#tab-panel-824)
-* [ cURL ](#tab-panel-825)
+* [ TypeScript ](#tab-panel-874)
+* [ cURL ](#tab-panel-875)
 
 TypeScript
 
@@ -85,8 +85,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 ```
 
-* [ Output ](#tab-panel-822)
-* [ Raw response ](#tab-panel-823)
+* [ Output ](#tab-panel-872)
+* [ Raw response ](#tab-panel-873)
 
 ```
 
@@ -115,8 +115,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 **With Lyrics**  — Generate a song with custom lyrics 
 
-* [ TypeScript ](#tab-panel-830)
-* [ cURL ](#tab-panel-831)
+* [ TypeScript ](#tab-panel-880)
+* [ cURL ](#tab-panel-881)
 
 TypeScript
 
@@ -178,8 +178,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 ```
 
-* [ Output ](#tab-panel-826)
-* [ Raw response ](#tab-panel-827)
+* [ Output ](#tab-panel-876)
+* [ Raw response ](#tab-panel-877)
 
 ```
 
@@ -206,8 +206,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 **Instrumental**  — Generate instrumental music without vocals 
 
-* [ TypeScript ](#tab-panel-832)
-* [ cURL ](#tab-panel-833)
+* [ TypeScript ](#tab-panel-882)
+* [ cURL ](#tab-panel-883)
 
 TypeScript
 
@@ -263,8 +263,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 ```
 
-* [ Output ](#tab-panel-828)
-* [ Raw response ](#tab-panel-829)
+* [ Output ](#tab-panel-878)
+* [ Raw response ](#tab-panel-879)
 
 ```
 
@@ -291,8 +291,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 **High Quality Audio**  — Specify audio format and sample rate 
 
-* [ TypeScript ](#tab-panel-838)
-* [ cURL ](#tab-panel-839)
+* [ TypeScript ](#tab-panel-888)
+* [ cURL ](#tab-panel-889)
 
 TypeScript
 
@@ -356,8 +356,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 ```
 
-* [ Output ](#tab-panel-834)
-* [ Raw response ](#tab-panel-835)
+* [ Output ](#tab-panel-884)
+* [ Raw response ](#tab-panel-885)
 
 ```
 
@@ -384,8 +384,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 **Auto-Generated Lyrics**  — Let the model generate lyrics from the prompt 
 
-* [ TypeScript ](#tab-panel-840)
-* [ cURL ](#tab-panel-841)
+* [ TypeScript ](#tab-panel-890)
+* [ cURL ](#tab-panel-891)
 
 TypeScript
 
@@ -441,8 +441,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 ```
 
-* [ Output ](#tab-panel-836)
-* [ Raw response ](#tab-panel-837)
+* [ Output ](#tab-panel-886)
+* [ Raw response ](#tab-panel-887)
 
 ```
 
@@ -469,8 +469,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 ## Parameters
 
-* [ Input ](#tab-panel-842)
-* [ Output ](#tab-panel-843)
+* [ Input ](#tab-panel-892)
+* [ Output ](#tab-panel-893)
 
 ▶bitrate
 
@@ -506,9 +506,9 @@ audio
 
 ## API Schemas (Raw)
 
-Input 
+Input [ ](https://developers.cloudflare.com/ai/models/minimax/music-2.6/schema-input.json "Open") [ ](https://developers.cloudflare.com/ai/models/minimax/music-2.6/schema-input.json "Download") 
 
-Output 
+Output [ ](https://developers.cloudflare.com/ai/models/minimax/music-2.6/schema-output.json "Open") [ ](https://developers.cloudflare.com/ai/models/minimax/music-2.6/schema-output.json "Download") 
 
 ```json
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/ai/","name":"AI"}},{"@type":"ListItem","position":3,"item":{"@id":"/ai/models/","name":"Models"}}]}

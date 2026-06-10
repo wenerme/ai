@@ -28,8 +28,8 @@ RunwayML's video generation model supporting both text-to-video and image-to-vid
 
 ## Usage
 
-* [ TypeScript ](#tab-panel-1490)
-* [ cURL ](#tab-panel-1491)
+* [ TypeScript ](#tab-panel-1760)
+* [ cURL ](#tab-panel-1761)
 
 TypeScript
 
@@ -85,8 +85,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 ```
 
-* [ Output ](#tab-panel-1488)
-* [ Raw response ](#tab-panel-1489)
+* [ Output ](#tab-panel-1758)
+* [ Raw response ](#tab-panel-1759)
 
 ```
 
@@ -115,8 +115,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 **Portrait Video**  — Vertical video for social media 
 
-* [ TypeScript ](#tab-panel-1494)
-* [ cURL ](#tab-panel-1495)
+* [ TypeScript ](#tab-panel-1764)
+* [ cURL ](#tab-panel-1765)
 
 TypeScript
 
@@ -174,8 +174,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 ```
 
-* [ Output ](#tab-panel-1492)
-* [ Raw response ](#tab-panel-1493)
+* [ Output ](#tab-panel-1762)
+* [ Raw response ](#tab-panel-1763)
 
 ```
 
@@ -202,8 +202,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 **Nature Close-up**  — Close-up wildlife shot in 16:9 
 
-* [ TypeScript ](#tab-panel-1498)
-* [ cURL ](#tab-panel-1499)
+* [ TypeScript ](#tab-panel-1768)
+* [ cURL ](#tab-panel-1769)
 
 TypeScript
 
@@ -261,8 +261,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 ```
 
-* [ Output ](#tab-panel-1496)
-* [ Raw response ](#tab-panel-1497)
+* [ Output ](#tab-panel-1766)
+* [ Raw response ](#tab-panel-1767)
 
 ```
 
@@ -289,8 +289,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 **Cinematic Scene**  — Longer duration cinematic video 
 
-* [ TypeScript ](#tab-panel-1502)
-* [ cURL ](#tab-panel-1503)
+* [ TypeScript ](#tab-panel-1772)
+* [ cURL ](#tab-panel-1773)
 
 TypeScript
 
@@ -348,8 +348,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 ```
 
-* [ Output ](#tab-panel-1500)
-* [ Raw response ](#tab-panel-1501)
+* [ Output ](#tab-panel-1770)
+* [ Raw response ](#tab-panel-1771)
 
 ```
 
@@ -376,8 +376,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 **Image-to-Video**  — Animate an existing image 
 
-* [ TypeScript ](#tab-panel-1508)
-* [ cURL ](#tab-panel-1509)
+* [ TypeScript ](#tab-panel-1778)
+* [ cURL ](#tab-panel-1779)
 
 TypeScript
 
@@ -439,8 +439,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 ```
 
-* [ Output ](#tab-panel-1504)
-* [ Raw response ](#tab-panel-1505)
+* [ Output ](#tab-panel-1774)
+* [ Raw response ](#tab-panel-1775)
 
 ```
 
@@ -467,8 +467,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 **Reproducible Generation**  — Use seed for consistent results 
 
-* [ TypeScript ](#tab-panel-1512)
-* [ cURL ](#tab-panel-1513)
+* [ TypeScript ](#tab-panel-1782)
+* [ cURL ](#tab-panel-1783)
 
 TypeScript
 
@@ -528,8 +528,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 ```
 
-* [ Output ](#tab-panel-1506)
-* [ Raw response ](#tab-panel-1507)
+* [ Output ](#tab-panel-1776)
+* [ Raw response ](#tab-panel-1777)
 
 ```
 
@@ -556,8 +556,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 **With Content Moderation**  — Adjust content moderation settings 
 
-* [ TypeScript ](#tab-panel-1514)
-* [ cURL ](#tab-panel-1515)
+* [ TypeScript ](#tab-panel-1784)
+* [ cURL ](#tab-panel-1785)
 
 TypeScript
 
@@ -621,8 +621,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 ```
 
-* [ Output ](#tab-panel-1510)
-* [ Raw response ](#tab-panel-1511)
+* [ Output ](#tab-panel-1780)
+* [ Raw response ](#tab-panel-1781)
 
 ```
 
@@ -649,8 +649,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 ## Parameters
 
-* [ Input ](#tab-panel-1516)
-* [ Output ](#tab-panel-1517)
+* [ Input ](#tab-panel-1786)
+* [ Output ](#tab-panel-1787)
 
 ▶content\_moderation{}
 
@@ -682,9 +682,9 @@ video
 
 ## API Schemas (Raw)
 
-Input 
+Input [ ](https://developers.cloudflare.com/ai/models/runwayml/gen-4.5/schema-input.json "Open") [ ](https://developers.cloudflare.com/ai/models/runwayml/gen-4.5/schema-input.json "Download") 
 
-Output 
+Output [ ](https://developers.cloudflare.com/ai/models/runwayml/gen-4.5/schema-output.json "Open") [ ](https://developers.cloudflare.com/ai/models/runwayml/gen-4.5/schema-output.json "Download") 
 
 ```json
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/ai/","name":"AI"}},{"@type":"ListItem","position":3,"item":{"@id":"/ai/models/","name":"Models"}}]}

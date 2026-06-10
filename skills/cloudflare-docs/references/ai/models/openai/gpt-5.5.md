@@ -29,8 +29,8 @@ GPT-5.5 is OpenAI's flagship model with strong coding, reasoning, and multimodal
 
 ## Usage
 
-* [ TypeScript ](#tab-panel-1048)
-* [ cURL ](#tab-panel-1049)
+* [ TypeScript ](#tab-panel-1274)
+* [ cURL ](#tab-panel-1275)
 
 TypeScript
 
@@ -80,8 +80,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/v1/
 
 ```
 
-* [ Output ](#tab-panel-1058)
-* [ Raw response ](#tab-panel-1059)
+* [ Output ](#tab-panel-1284)
+* [ Raw response ](#tab-panel-1285)
 
 The **three laws of thermodynamics** are:
 
@@ -188,8 +188,8 @@ There is also a **Zeroth Law**, which says that if two systems are each in therm
 
 **With System Message**  — Using a system message to set context 
 
-* [ TypeScript ](#tab-panel-1050)
-* [ cURL ](#tab-panel-1051)
+* [ TypeScript ](#tab-panel-1276)
+* [ cURL ](#tab-panel-1277)
 
 TypeScript
 
@@ -257,8 +257,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/v1/
 
 ```
 
-* [ Output ](#tab-panel-1060)
-* [ Raw response ](#tab-panel-1061)
+* [ Output ](#tab-panel-1286)
+* [ Raw response ](#tab-panel-1287)
 
 You can read a JSON file in Python using the built-in `json` module.
 
@@ -399,8 +399,8 @@ print(data["name"])
 
 **Multi-turn Conversation**  — Continuing a conversation with context 
 
-* [ TypeScript ](#tab-panel-1054)
-* [ cURL ](#tab-panel-1055)
+* [ TypeScript ](#tab-panel-1280)
+* [ cURL ](#tab-panel-1281)
 
 TypeScript
 
@@ -496,8 +496,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/v1/
 
 ```
 
-* [ Output ](#tab-panel-1062)
-* [ Raw response ](#tab-panel-1063)
+* [ Output ](#tab-panel-1288)
+* [ Raw response ](#tab-panel-1289)
 
 Absolutely — the best stops depend on whether you take the **scenic coastal route** or the **faster inland route**.
 
@@ -627,8 +627,8 @@ Also, check current road conditions for **Highway 1 near Big Sur**, since closur
 
 **Creative Writing**  — Longer completion for creative output 
 
-* [ TypeScript ](#tab-panel-1052)
-* [ cURL ](#tab-panel-1053)
+* [ TypeScript ](#tab-panel-1278)
+* [ cURL ](#tab-panel-1279)
 
 TypeScript
 
@@ -696,8 +696,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/v1/
 
 ```
 
-* [ Output ](#tab-panel-1064)
-* [ Raw response ](#tab-panel-1065)
+* [ Output ](#tab-panel-1290)
+* [ Raw response ](#tab-panel-1291)
 
 Detective Mara Venn found the clue inside the grandfather clock, though the clock had not worked in twenty years.
 
@@ -798,8 +798,8 @@ Inside the vial was a single human tooth, etched with three tiny words in gold:
 
 **Streaming Response**  — Enable streaming for real-time output 
 
-* [ TypeScript ](#tab-panel-1056)
-* [ cURL ](#tab-panel-1057)
+* [ TypeScript ](#tab-panel-1282)
+* [ cURL ](#tab-panel-1283)
 
 TypeScript
 
@@ -865,8 +865,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/v1/
 
 ```
 
-* [ Output ](#tab-panel-1066)
-* [ Raw response ](#tab-panel-1067)
+* [ Output ](#tab-panel-1292)
+* [ Raw response ](#tab-panel-1293)
 
 Recursion is when a function solves a problem by calling itself with a smaller or simpler version of the same problem.
 
@@ -9593,8 +9593,8 @@ So, recursion is like breaking a problem into smaller versions of itself until r
 
 ## Parameters
 
-* [ Input ](#tab-panel-1068)
-* [ Output ](#tab-panel-1069)
+* [ Input ](#tab-panel-1294)
+* [ Output ](#tab-panel-1295)
 
 ▶audio{}
 
@@ -9678,9 +9678,9 @@ object
 
 ## API Schemas (Raw)
 
-Input 
+Input [ ](https://developers.cloudflare.com/ai/models/openai/gpt-5.5/schema-input.json "Open") [ ](https://developers.cloudflare.com/ai/models/openai/gpt-5.5/schema-input.json "Download") 
 
-Output 
+Output [ ](https://developers.cloudflare.com/ai/models/openai/gpt-5.5/schema-output.json "Open") [ ](https://developers.cloudflare.com/ai/models/openai/gpt-5.5/schema-output.json "Download") 
 
 ```json
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/ai/","name":"AI"}},{"@type":"ListItem","position":3,"item":{"@id":"/ai/models/","name":"Models"}}]}

@@ -151,6 +151,7 @@ paths:
                 $ref: '#/components/schemas/InternalServerResponse'
 servers:
   - url: https://openrouter.ai/api/v1
+    description: Production server
 components:
   schemas:
     RankingsDailyItem:
@@ -387,7 +388,41 @@ components:
 
 ```
 
-## SDK Code Examples
+## Examples
+
+
+
+**Response**
+
+```json
+{
+  "data": [
+    {
+      "date": "2026-05-11",
+      "model_permaslug": "openai/gpt-4o-2024-05-13",
+      "total_tokens": "12345678"
+    },
+    {
+      "date": "2026-05-11",
+      "model_permaslug": "anthropic/claude-3.5-sonnet-20241022",
+      "total_tokens": "9876543"
+    },
+    {
+      "date": "2026-05-11",
+      "model_permaslug": "other",
+      "total_tokens": "4321098"
+    }
+  ],
+  "meta": {
+    "as_of": "2026-05-12T02:00:00Z",
+    "end_date": "2026-05-11",
+    "start_date": "2026-04-12",
+    "version": "v1"
+  }
+}
+```
+
+**SDK Code**
 
 ```python Datasets_getRankingsDaily_example
 import requests

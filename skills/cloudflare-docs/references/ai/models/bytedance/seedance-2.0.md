@@ -27,8 +27,8 @@ ByteDance's next-generation video model with a unified multimodal architecture. 
 
 ## Usage
 
-* [ TypeScript ](#tab-panel-328)
-* [ cURL ](#tab-panel-329)
+* [ TypeScript ](#tab-panel-368)
+* [ cURL ](#tab-panel-369)
 
 TypeScript
 
@@ -88,8 +88,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 ```
 
-* [ Output ](#tab-panel-324)
-* [ Raw response ](#tab-panel-325)
+* [ Output ](#tab-panel-364)
+* [ Raw response ](#tab-panel-365)
 
 ```
 
@@ -118,8 +118,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 **High Resolution Cinematic**  — Cinematic video in 1080p 
 
-* [ TypeScript ](#tab-panel-332)
-* [ cURL ](#tab-panel-333)
+* [ TypeScript ](#tab-panel-372)
+* [ cURL ](#tab-panel-373)
 
 TypeScript
 
@@ -181,8 +181,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 ```
 
-* [ Output ](#tab-panel-326)
-* [ Raw response ](#tab-panel-327)
+* [ Output ](#tab-panel-366)
+* [ Raw response ](#tab-panel-367)
 
 ```
 
@@ -209,8 +209,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 **Image to Video**  — Generate video from a reference image 
 
-* [ TypeScript ](#tab-panel-336)
-* [ cURL ](#tab-panel-337)
+* [ TypeScript ](#tab-panel-376)
+* [ cURL ](#tab-panel-377)
 
 TypeScript
 
@@ -276,8 +276,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 ```
 
-* [ Output ](#tab-panel-330)
-* [ Raw response ](#tab-panel-331)
+* [ Output ](#tab-panel-370)
+* [ Raw response ](#tab-panel-371)
 
 ```
 
@@ -304,8 +304,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 **Portrait Video**  — Vertical video for social media 
 
-* [ TypeScript ](#tab-panel-338)
-* [ cURL ](#tab-panel-339)
+* [ TypeScript ](#tab-panel-378)
+* [ cURL ](#tab-panel-379)
 
 TypeScript
 
@@ -365,8 +365,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 ```
 
-* [ Output ](#tab-panel-334)
-* [ Raw response ](#tab-panel-335)
+* [ Output ](#tab-panel-374)
+* [ Raw response ](#tab-panel-375)
 
 ```
 
@@ -393,8 +393,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 ## Parameters
 
-* [ Input ](#tab-panel-340)
-* [ Output ](#tab-panel-341)
+* [ Input ](#tab-panel-380)
+* [ Output ](#tab-panel-381)
 
 aspect\_ratio
 
@@ -454,9 +454,9 @@ video
 
 ## API Schemas (Raw)
 
-Input 
+Input [ ](https://developers.cloudflare.com/ai/models/bytedance/seedance-2.0/schema-input.json "Open") [ ](https://developers.cloudflare.com/ai/models/bytedance/seedance-2.0/schema-input.json "Download") 
 
-Output 
+Output [ ](https://developers.cloudflare.com/ai/models/bytedance/seedance-2.0/schema-output.json "Open") [ ](https://developers.cloudflare.com/ai/models/bytedance/seedance-2.0/schema-output.json "Download") 
 
 ```json
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/ai/","name":"AI"}},{"@type":"ListItem","position":3,"item":{"@id":"/ai/models/","name":"Models"}}]}

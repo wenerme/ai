@@ -71,6 +71,7 @@ paths:
                 $ref: '#/components/schemas/InternalServerResponse'
 servers:
   - url: https://openrouter.ai/api/v1
+    description: Production server
 components:
   schemas:
     DeleteBYOKKeyResponse:
@@ -203,7 +204,25 @@ components:
 
 ```
 
-## SDK Code Examples
+## Examples
+
+
+
+**Request**
+
+```json
+{}
+```
+
+**Response**
+
+```json
+{
+  "deleted": true
+}
+```
+
+**SDK Code**
 
 ```python BYOK_deleteBYOKKey_example
 import requests

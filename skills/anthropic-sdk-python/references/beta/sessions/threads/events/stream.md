@@ -18,7 +18,7 @@ Stream Session Thread Events
 
   - `str`
 
-  - `Literal["message-batches-2024-09-24", "prompt-caching-2024-07-31", "computer-use-2024-10-22", 23 more]`
+  - `Literal["message-batches-2024-09-24", "prompt-caching-2024-07-31", "computer-use-2024-10-22", 25 more]`
 
     - `"message-batches-2024-09-24"`
 
@@ -71,6 +71,10 @@ Stream Session Thread Events
     - `"cache-diagnosis-2026-04-07"`
 
     - `"thinking-token-count-2026-05-13"`
+
+    - `"server-side-fallback-2026-06-01"`
+
+    - `"fallback-credit-2026-06-01"`
 
 ### Returns
 
@@ -938,6 +942,42 @@ Stream Session Thread Events
 
           - `"billing_error"`
 
+      - `class BetaManagedAgentsCredentialHostUnreachableError: …`
+
+        An `environment_variable` credential's `auth.networking.allowed_hosts` includes a host the environment's network policy does not permit.
+
+        - `credential_id: str`
+
+          ID of the affected credential.
+
+        - `message: str`
+
+          Human-readable error description.
+
+        - `retry_status: RetryStatus`
+
+          What the client should do next in response to this error.
+
+          - `class BetaManagedAgentsRetryStatusRetrying: …`
+
+            The server is retrying automatically. Client should wait; the same error type may fire again as retrying, then once as exhausted when the retry budget runs out.
+
+          - `class BetaManagedAgentsRetryStatusExhausted: …`
+
+            This turn is dead; queued inputs are flushed and the session returns to idle. Client may send a new prompt.
+
+          - `class BetaManagedAgentsRetryStatusTerminal: …`
+
+            The session encountered a terminal error and will transition to `terminated` state.
+
+        - `type: Literal["credential_host_unreachable_error"]`
+
+          - `"credential_host_unreachable_error"`
+
+        - `vault_id: str`
+
+          ID of the vault containing the affected credential.
+
     - `processed_at: datetime`
 
       A timestamp in RFC 3339 format
@@ -1498,12 +1538,13 @@ Stream Session Thread Events
 
           See [models](https://docs.anthropic.com/en/docs/models-overview) for additional details and options.
 
-          - `Literal["claude-opus-4-8", "claude-opus-4-7", "claude-opus-4-6", 7 more]`
+          - `Literal["claude-fable-5", "claude-opus-4-8", "claude-opus-4-7", 8 more]`
 
             The model that will power your agent.
 
             See [models](https://docs.anthropic.com/en/docs/models-overview) for additional details and options.
 
+            - `claude-fable-5` - Next generation of intelligence for the hardest knowledge work and coding problems
             - `claude-opus-4-8` - Frontier intelligence for long-running agents and coding
             - `claude-opus-4-7` - Frontier intelligence for long-running agents and coding
             - `claude-opus-4-6` - Most intelligent model for building agents and coding
@@ -1514,6 +1555,10 @@ Stream Session Thread Events
             - `claude-opus-4-5-20251101` - Premium model combining maximum intelligence with practical performance
             - `claude-sonnet-4-5` - High-performance model for agents and coding
             - `claude-sonnet-4-5-20250929` - High-performance model for agents and coding
+
+            - `"claude-fable-5"`
+
+              Next generation of intelligence for the hardest knowledge work and coding problems
 
             - `"claude-opus-4-8"`
 
@@ -1743,19 +1788,13 @@ Stream Session Thread Events
 
                 JSON Schema for custom tool input parameters.
 
-                - `properties: Optional[Dict[str, object]]`
-
-                  JSON Schema properties defining the tool's input parameters.
-
-                - `required: Optional[List[str]]`
-
-                  List of required property names.
-
-                - `type: Optional[Literal["object"]]`
-
-                  Must be 'object' for tool input schemas.
+                - `type: Literal["object"]`
 
                   - `"object"`
+
+                - `properties: Optional[Dict[str, object]]`
+
+                - `required: Optional[List[str]]`
 
               - `name: str`
 
@@ -1810,6 +1849,34 @@ Stream Session Thread Events
     - `title: Optional[str]`
 
       The session's new title. Present only when the update changed it.
+
+  - `class BetaManagedAgentsSystemMessageEvent: …`
+
+    A mid-conversation system message event. Carries system-role content that is appended to the session as a `role: "system"` turn.
+
+    - `id: str`
+
+      Unique identifier for this event.
+
+    - `content: List[BetaManagedAgentsSystemContentBlock]`
+
+      System content blocks. Text-only.
+
+      - `text: str`
+
+        The text content.
+
+      - `type: Literal["text"]`
+
+        - `"text"`
+
+    - `type: Literal["system.message"]`
+
+      - `"system.message"`
+
+    - `processed_at: Optional[datetime]`
+
+      A timestamp in RFC 3339 format
 
 ### Example
 

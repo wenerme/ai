@@ -33,10 +33,10 @@ Try out this model with Workers AI LLM Playground. It does not require any setup
 
 ## Usage
 
-* [  Worker (Streaming) ](#tab-panel-4383)
-* [  TypeScript ](#tab-panel-4384)
-* [  Python ](#tab-panel-4385)
-* [  curl ](#tab-panel-4386)
+* [  Worker (Streaming) ](#tab-panel-4769)
+* [  TypeScript ](#tab-panel-4770)
+* [  Python ](#tab-panel-4771)
+* [  curl ](#tab-panel-4772)
 
 TypeScript
 
@@ -275,13 +275,13 @@ type
 
 ## API Schemas (Raw)
 
-Synchronous Input 
+ Synchronous Input [ ](https://developers.cloudflare.com/workers-ai/models/llama-3.1-8b-instruct-fast/sync-input.json "Open") [ ](https://developers.cloudflare.com/workers-ai/models/llama-3.1-8b-instruct-fast/sync-input.json "Download") 
 
-Synchronous Output 
+ Synchronous Output [ ](https://developers.cloudflare.com/workers-ai/models/llama-3.1-8b-instruct-fast/sync-output.json "Open") [ ](https://developers.cloudflare.com/workers-ai/models/llama-3.1-8b-instruct-fast/sync-output.json "Download") 
 
-Streaming Input 
+ Streaming Input [ ](https://developers.cloudflare.com/workers-ai/models/llama-3.1-8b-instruct-fast/streaming-input.json "Open") [ ](https://developers.cloudflare.com/workers-ai/models/llama-3.1-8b-instruct-fast/streaming-input.json "Download") 
 
-Streaming Output 
+ Streaming Output [ ](https://developers.cloudflare.com/workers-ai/models/llama-3.1-8b-instruct-fast/streaming-output.json "Open") [ ](https://developers.cloudflare.com/workers-ai/models/llama-3.1-8b-instruct-fast/streaming-output.json "Download") 
 
 ```json
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/workers-ai/","name":"Workers AI"}},{"@type":"ListItem","position":3,"item":{"@id":"/workers-ai/models/","name":"Models"}}]}

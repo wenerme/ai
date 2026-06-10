@@ -84,6 +84,7 @@ paths:
                 $ref: '#/components/schemas/BadGatewayResponse'
 servers:
   - url: https://openrouter.ai/api/v1
+    description: Production server
 components:
   schemas:
     BadRequestResponseErrorData:
@@ -279,7 +280,11 @@ components:
 
 ```
 
-## SDK Code Examples
+## Examples
+
+
+
+**SDK Code**
 
 ```python
 import requests

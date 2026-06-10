@@ -29,8 +29,8 @@ Claude Sonnet 4 delivers superior coding and reasoning while responding more pre
 
 ## Usage
 
-* [ TypeScript ](#tab-panel-198)
-* [ cURL ](#tab-panel-199)
+* [ TypeScript ](#tab-panel-238)
+* [ cURL ](#tab-panel-239)
 
 TypeScript
 
@@ -88,8 +88,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/v1/
 
 ```
 
-* [ Output ](#tab-panel-202)
-* [ Raw response ](#tab-panel-203)
+* [ Output ](#tab-panel-242)
+* [ Raw response ](#tab-panel-243)
 
 The three laws of thermodynamics are fundamental principles that govern energy and heat:
 
@@ -165,8 +165,8 @@ The three laws of thermodynamics are fundamental principles that govern energy a
 
 **With System Message**  — Using a system message to set context 
 
-* [ TypeScript ](#tab-panel-200)
-* [ cURL ](#tab-panel-201)
+* [ TypeScript ](#tab-panel-240)
+* [ cURL ](#tab-panel-241)
 
 TypeScript
 
@@ -232,8 +232,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/v1/
 
 ```
 
-* [ Output ](#tab-panel-206)
-* [ Raw response ](#tab-panel-207)
+* [ Output ](#tab-panel-246)
+* [ Raw response ](#tab-panel-247)
 
 Here are several ways to read a JSON file in Python:
 
@@ -367,8 +367,8 @@ with open('example.json', 'r') as file:
 
 **Multi-turn Conversation**  — Continuing a conversation with context 
 
-* [ TypeScript ](#tab-panel-210)
-* [ cURL ](#tab-panel-211)
+* [ TypeScript ](#tab-panel-250)
+* [ cURL ](#tab-panel-251)
 
 TypeScript
 
@@ -464,8 +464,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/v1/
 
 ```
 
-* [ Output ](#tab-panel-212)
-* [ Raw response ](#tab-panel-213)
+* [ Output ](#tab-panel-252)
+* [ Raw response ](#tab-panel-253)
 
 Here are some great stops along the SF to LA route:
 
@@ -539,8 +539,8 @@ What type of experience are you looking for - scenic beauty, food, wine, or quic
 
 **Creative Writing**  — Higher temperature for creative output 
 
-* [ TypeScript ](#tab-panel-204)
-* [ cURL ](#tab-panel-205)
+* [ TypeScript ](#tab-panel-244)
+* [ cURL ](#tab-panel-245)
 
 TypeScript
 
@@ -612,8 +612,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/v1/
 
 ```
 
-* [ Output ](#tab-panel-214)
-* [ Raw response ](#tab-panel-215)
+* [ Output ](#tab-panel-254)
+* [ Raw response ](#tab-panel-255)
 
 Detective Sarah Chen crouched beside the mahogany desk, her latex gloves squeaking against the wood as she carefully lifted what appeared to be an ordinary paper clip. But this one was different—twisted into an intricate knot that seemed to defy the laws of physics, its metal curves flowing impossibly through themselves like a three-dimensional puzzle.
 
@@ -676,8 +676,8 @@ Sarah felt a chill run down her spine as she realized the paper clip was warm to
 
 **Streaming Response**  — Enable streaming for real-time output 
 
-* [ TypeScript ](#tab-panel-208)
-* [ cURL ](#tab-panel-209)
+* [ TypeScript ](#tab-panel-248)
+* [ cURL ](#tab-panel-249)
 
 TypeScript
 
@@ -739,8 +739,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/v1/
 
 ```
 
-* [ Output ](#tab-panel-216)
-* [ Raw response ](#tab-panel-217)
+* [ Output ](#tab-panel-256)
+* [ Raw response ](#tab-panel-257)
 
 # Recursion Explained
 
@@ -1173,8 +1173,8 @@ Think of **Russian nesting dolls**: To see what's inside, you open one doll, the
 
 ## Parameters
 
-* [ Input ](#tab-panel-218)
-* [ Output ](#tab-panel-219)
+* [ Input ](#tab-panel-258)
+* [ Output ](#tab-panel-259)
 
 max\_tokens
 
@@ -1238,9 +1238,9 @@ type
 
 ## API Schemas (Raw)
 
-Input 
+Input [ ](https://developers.cloudflare.com/ai/models/anthropic/claude-sonnet-4/schema-input.json "Open") [ ](https://developers.cloudflare.com/ai/models/anthropic/claude-sonnet-4/schema-input.json "Download") 
 
-Output 
+Output [ ](https://developers.cloudflare.com/ai/models/anthropic/claude-sonnet-4/schema-output.json "Open") [ ](https://developers.cloudflare.com/ai/models/anthropic/claude-sonnet-4/schema-output.json "Download") 
 
 ```json
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/ai/","name":"AI"}},{"@type":"ListItem","position":3,"item":{"@id":"/ai/models/","name":"Models"}}]}

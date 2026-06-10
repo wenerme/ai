@@ -36,10 +36,10 @@ Try out this model with Workers AI LLM Playground. It does not require any setup
 
 ## Usage
 
-* [  Worker (Streaming) ](#tab-panel-4488)
-* [  TypeScript ](#tab-panel-4489)
-* [  Python ](#tab-panel-4490)
-* [  curl ](#tab-panel-4491)
+* [  Worker (Streaming) ](#tab-panel-4874)
+* [  TypeScript ](#tab-panel-4875)
+* [  Python ](#tab-panel-4876)
+* [  curl ](#tab-panel-4877)
 
 TypeScript
 
@@ -198,8 +198,8 @@ Workers AI also supports OpenAI compatible API endpoints for `/v1/chat/completio
 
 Synchronous — Send a request and receive a complete response 
 
-* [ Input ](#tab-panel-4492)
-* [ Output ](#tab-panel-4493)
+* [ Input ](#tab-panel-4878)
+* [ Output ](#tab-panel-4879)
 
 prompt
 
@@ -283,8 +283,8 @@ prompt\_logprobs{}
 
 Streaming — Send a request with \`stream: true\` and receive server-sent events 
 
-* [ Input ](#tab-panel-4494)
-* [ Output ](#tab-panel-4495)
+* [ Input ](#tab-panel-4880)
+* [ Output ](#tab-panel-4881)
 
 prompt
 
@@ -352,8 +352,8 @@ format
 
 Batch — Send multiple requests in a single API call 
 
-* [ Input ](#tab-panel-4496)
-* [ Output ](#tab-panel-4497)
+* [ Input ](#tab-panel-4882)
+* [ Output ](#tab-panel-4883)
 
 ▶requests\[\]
 
@@ -389,17 +389,17 @@ prompt\_logprobs{}
 
 ## API Schemas (Raw)
 
-Synchronous Input 
+ Synchronous Input [ ](https://developers.cloudflare.com/workers-ai/models/qwen3-30b-a3b-fp8/sync-input.json "Open") [ ](https://developers.cloudflare.com/workers-ai/models/qwen3-30b-a3b-fp8/sync-input.json "Download") 
 
-Synchronous Output 
+ Synchronous Output [ ](https://developers.cloudflare.com/workers-ai/models/qwen3-30b-a3b-fp8/sync-output.json "Open") [ ](https://developers.cloudflare.com/workers-ai/models/qwen3-30b-a3b-fp8/sync-output.json "Download") 
 
-Streaming Input 
+ Streaming Input [ ](https://developers.cloudflare.com/workers-ai/models/qwen3-30b-a3b-fp8/streaming-input.json "Open") [ ](https://developers.cloudflare.com/workers-ai/models/qwen3-30b-a3b-fp8/streaming-input.json "Download") 
 
-Streaming Output 
+ Streaming Output [ ](https://developers.cloudflare.com/workers-ai/models/qwen3-30b-a3b-fp8/streaming-output.json "Open") [ ](https://developers.cloudflare.com/workers-ai/models/qwen3-30b-a3b-fp8/streaming-output.json "Download") 
 
-Batch Input 
+ Batch Input [ ](https://developers.cloudflare.com/workers-ai/models/qwen3-30b-a3b-fp8/batch-input.json "Open") [ ](https://developers.cloudflare.com/workers-ai/models/qwen3-30b-a3b-fp8/batch-input.json "Download") 
 
-Batch Output 
+ Batch Output [ ](https://developers.cloudflare.com/workers-ai/models/qwen3-30b-a3b-fp8/batch-output.json "Open") [ ](https://developers.cloudflare.com/workers-ai/models/qwen3-30b-a3b-fp8/batch-output.json "Download") 
 
 ```json
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/workers-ai/","name":"Workers AI"}},{"@type":"ListItem","position":3,"item":{"@id":"/workers-ai/models/","name":"Models"}}]}

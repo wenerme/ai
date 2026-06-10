@@ -156,8 +156,8 @@ function generateRandomAudio() {
 
 ## Parameters
 
-* [ Input ](#tab-panel-4241)
-* [ Output ](#tab-panel-4242)
+* [ Input ](#tab-panel-4627)
+* [ Output ](#tab-panel-4628)
 
 encoding
 
@@ -229,9 +229,9 @@ end\_of\_turn\_confidence
 
 ## API Schemas (Raw)
 
-Input 
+Input [ ](https://developers.cloudflare.com/workers-ai/models/flux/schema-input.json "Open") [ ](https://developers.cloudflare.com/workers-ai/models/flux/schema-input.json "Download") 
 
-Output 
+Output [ ](https://developers.cloudflare.com/workers-ai/models/flux/schema-output.json "Open") [ ](https://developers.cloudflare.com/workers-ai/models/flux/schema-output.json "Download") 
 
 ```json
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/workers-ai/","name":"Workers AI"}},{"@type":"ListItem","position":3,"item":{"@id":"/workers-ai/models/","name":"Models"}}]}

@@ -16,9 +16,9 @@ Production requires custom domain
 
 Preview URLs require a custom domain with wildcard DNS routing in production. See [Production Deployment](https://developers.cloudflare.com/sandbox/guides/production-deployment/).
 
-Alternative: quick tunnels
+Prefer `sandbox.tunnels` for public URLs
 
-For quick development or `.workers.dev` deployments, consider [sandbox.tunnels](https://developers.cloudflare.com/sandbox/api/tunnels/), which returns `*.trycloudflare.com` URLs without DNS setup. `exposePort()` remains the recommended option for production.
+For most public-URL use cases — development, `.workers.dev` deployments, and production traffic — [sandbox.tunnels](https://developers.cloudflare.com/sandbox/api/tunnels/) is the recommended option. Use named tunnels for stable hostnames on a zone you control, or quick tunnels for zero-config `*.trycloudflare.com` URLs. `exposePort()` is appropriate when you want the Worker itself to front the request (for example, to inject authentication, rewrite responses, or call sandbox-only RPC methods on the same hostname).
 
 Expose services running in your sandbox via public preview URLs. See [Preview URLs concept](https://developers.cloudflare.com/sandbox/concepts/preview-urls/) for details.
 
@@ -46,8 +46,8 @@ proxyToSandbox(request: Request, env: Env): Promise<Response | null>
 
 The function inspects the request hostname to determine whether it matches the subdomain pattern of an exposed port (for example, `8080-sandbox-id-token.yourdomain.com`). If it matches, `proxyToSandbox()` proxies the request to the correct Durable Object, and the sandbox service handles it. Both HTTP and WebSocket upgrade requests are supported.
 
-* [  JavaScript ](#tab-panel-8060)
-* [  TypeScript ](#tab-panel-8061)
+* [  JavaScript ](#tab-panel-9924)
+* [  TypeScript ](#tab-panel-9925)
 
 JavaScript
 
@@ -150,8 +150,8 @@ const response = await sandbox.exposePort(port: number, options: ExposePortOptio
 
 **Returns**: `Promise<ExposePortResponse>` with `port`, `url` (preview URL), `name`
 
-* [  JavaScript ](#tab-panel-8068)
-* [  TypeScript ](#tab-panel-8069)
+* [  JavaScript ](#tab-panel-9932)
+* [  TypeScript ](#tab-panel-9933)
 
 JavaScript
 
@@ -317,8 +317,8 @@ Custom tokens enable consistent preview URLs across container restarts and deplo
 * Only lowercase letters (a-z), numbers (0-9), hyphens (-), and underscores (\_)
 * Must be unique per sandbox (cannot reuse tokens across different ports)
 
-* [  JavaScript ](#tab-panel-8062)
-* [  TypeScript ](#tab-panel-8063)
+* [  JavaScript ](#tab-panel-9926)
+* [  TypeScript ](#tab-panel-9927)
 
 JavaScript
 
@@ -402,8 +402,8 @@ const isValid = await sandbox.validatePortToken(port: number, token: string): Pr
 
 **Returns**: `Promise<boolean>` \- `true` if token is valid for the port, `false` otherwise
 
-* [  JavaScript ](#tab-panel-8066)
-* [  TypeScript ](#tab-panel-8067)
+* [  JavaScript ](#tab-panel-9930)
+* [  TypeScript ](#tab-panel-9931)
 
 JavaScript
 
@@ -526,8 +526,8 @@ await sandbox.unexposePort(port: number): Promise<void>
 
 * `port` \- Port number to unexpose
 
-* [  JavaScript ](#tab-panel-8056)
-* [  TypeScript ](#tab-panel-8057)
+* [  JavaScript ](#tab-panel-9920)
+* [  TypeScript ](#tab-panel-9921)
 
 JavaScript
 
@@ -562,8 +562,8 @@ const response = await sandbox.getExposedPorts(): Promise<GetExposedPortsRespons
 
 **Returns**: `Promise<GetExposedPortsResponse>` with `ports` array (containing `port`, `url`, `name`)
 
-* [  JavaScript ](#tab-panel-8058)
-* [  TypeScript ](#tab-panel-8059)
+* [  JavaScript ](#tab-panel-9922)
+* [  TypeScript ](#tab-panel-9923)
 
 JavaScript
 
@@ -624,8 +624,8 @@ const response = await sandbox.wsConnect(request: Request, port: number): Promis
 
 **Returns**: `Promise<Response>` \- WebSocket response establishing the connection
 
-* [  JavaScript ](#tab-panel-8064)
-* [  TypeScript ](#tab-panel-8065)
+* [  JavaScript ](#tab-panel-9928)
+* [  TypeScript ](#tab-panel-9929)
 
 JavaScript
 

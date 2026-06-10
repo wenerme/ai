@@ -87,6 +87,7 @@ paths:
               $ref: '#/components/schemas/BulkRemoveWorkspaceMembersRequest'
 servers:
   - url: https://openrouter.ai/api/v1
+    description: Production server
 components:
   schemas:
     BulkRemoveWorkspaceMembersRequest:
@@ -302,7 +303,30 @@ components:
 
 ```
 
-## SDK Code Examples
+## Examples
+
+
+
+**Request**
+
+```json
+{
+  "user_ids": [
+    "user_abc123",
+    "user_def456"
+  ]
+}
+```
+
+**Response**
+
+```json
+{
+  "removed_count": 2
+}
+```
+
+**SDK Code**
 
 ```python Workspaces_bulkRemoveWorkspaceMembers_example
 import requests

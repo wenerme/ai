@@ -111,8 +111,8 @@ The framework exports:
 
 Create a `ServiceConfig` for each external API you want to proxy. This example proxies a generic HTTP API that expects a Bearer token:
 
-* [  JavaScript ](#tab-panel-7833)
-* [  TypeScript ](#tab-panel-7834)
+* [  JavaScript ](#tab-panel-10250)
+* [  TypeScript ](#tab-panel-10251)
 
 JavaScript
 
@@ -198,8 +198,8 @@ The `transform` function receives the outgoing request and a context object cont
 
 Register your services with `createProxyHandler` and issue tokens to sandboxes using `createProxyToken`:
 
-* [  JavaScript ](#tab-panel-7835)
-* [  TypeScript ](#tab-panel-7836)
+* [  JavaScript ](#tab-panel-10252)
+* [  TypeScript ](#tab-panel-10253)
 
 JavaScript
 
@@ -444,8 +444,8 @@ The SDK then sends all requests to your Worker proxy, which validates the token 
 
 To proxy additional APIs, define another `ServiceConfig` and add it to `createProxyHandler`:
 
-* [  JavaScript ](#tab-panel-7831)
-* [  TypeScript ](#tab-panel-7832)
+* [  JavaScript ](#tab-panel-10248)
+* [  TypeScript ](#tab-panel-10249)
 
 JavaScript
 
@@ -535,8 +535,8 @@ The JWT is missing, expired, or signed with the wrong secret. Verify that:
 
 To issue a fresh token and pass it to the sandbox:
 
-* [  JavaScript ](#tab-panel-7827)
-* [  TypeScript ](#tab-panel-7828)
+* [  JavaScript ](#tab-panel-10244)
+* [  TypeScript ](#tab-panel-10245)
 
 JavaScript
 
@@ -584,8 +584,8 @@ The service name in the URL must match the key in the `services` object. A reque
 
 Log the request URL in `transform` to confirm the path is being rewritten correctly:
 
-* [  JavaScript ](#tab-panel-7829)
-* [  TypeScript ](#tab-panel-7830)
+* [  JavaScript ](#tab-panel-10246)
+* [  TypeScript ](#tab-panel-10247)
 
 JavaScript
 

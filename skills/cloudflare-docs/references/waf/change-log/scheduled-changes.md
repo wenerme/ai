@@ -14,14 +14,15 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 [ Subscribe to RSS ](https://developers.cloudflare.com/changelog/rss/waf.xml) 
 
-## 2026-05-11
+## 2026-06-09
 
   
-**WAF Release - Scheduled changes for 2026-05-18**   
+**WAF Release - Scheduled changes for 2026-06-15**   
 
-| Announcement Date | Release Date | Release Behavior | Legacy Rule ID | Rule ID     | Description                                     | Comments                                                                                                                                    |
-| ----------------- | ------------ | ---------------- | -------------- | ----------- | ----------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------- |
-| 2026-05-11        | 2026-05-18   | Disabled         | N/A            | ...9e9c068d | Sitecore - Cache Poisoning - CVE:CVE-2025-53693 | This is a new detection. This rule will be merged into the original rule "Remote Code Execution - Java Deserialization" (ID: ...7c5b669c  ) |
+| Announcement Date | Release Date | Release Behavior | Legacy Rule ID | Rule ID     | Description                           | Comments                 |
+| ----------------- | ------------ | ---------------- | -------------- | ----------- | ------------------------------------- | ------------------------ |
+| 2026-06-09        | 2026-06-15   | Log              | N/A            | ...b4c29bc6 | Ghost CMS - SQLi - CVE:CVE-2026-26980 | This is a new detection. |
+| 2026-06-09        | 2026-06-15   | Log              | N/A            | ...b56f403f | SQLi - Obfuscated Boolean - URI       | This is a new detection. |
 
 For other WAF updates, refer to the [changelog](https://developers.cloudflare.com/waf/change-log/changelog/).
 

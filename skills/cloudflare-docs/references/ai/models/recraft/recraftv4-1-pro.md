@@ -28,8 +28,8 @@ Recraft V4.1 Pro generates high-resolution, art-directed images at 2048px+ tuned
 
 ## Usage
 
-* [ TypeScript ](#tab-panel-1306)
-* [ cURL ](#tab-panel-1307)
+* [ TypeScript ](#tab-panel-1576)
+* [ cURL ](#tab-panel-1577)
 
 TypeScript
 
@@ -79,8 +79,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 ```
 
-* [ Output ](#tab-panel-1304)
-* [ Raw response ](#tab-panel-1305)
+* [ Output ](#tab-panel-1574)
+* [ Raw response ](#tab-panel-1575)
 
 ![Print-Ready Illustration](https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/recraft__recraftv4-1-pro/print-ready-illustration.png) 
 
@@ -111,8 +111,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 **Large Format Art**  — Large canvas digital art 
 
-* [ TypeScript ](#tab-panel-1310)
-* [ cURL ](#tab-panel-1311)
+* [ TypeScript ](#tab-panel-1580)
+* [ cURL ](#tab-panel-1581)
 
 TypeScript
 
@@ -166,8 +166,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 ```
 
-* [ Output ](#tab-panel-1308)
-* [ Raw response ](#tab-panel-1309)
+* [ Output ](#tab-panel-1578)
+* [ Raw response ](#tab-panel-1579)
 
 ![Large Format Art](https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/recraft__recraftv4-1-pro/large-format-art.png) 
 
@@ -196,8 +196,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 **Brand Asset**  — Professional brand asset with controlled colors 
 
-* [ TypeScript ](#tab-panel-1318)
-* [ cURL ](#tab-panel-1319)
+* [ TypeScript ](#tab-panel-1588)
+* [ cURL ](#tab-panel-1589)
 
 TypeScript
 
@@ -309,8 +309,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 ```
 
-* [ Output ](#tab-panel-1312)
-* [ Raw response ](#tab-panel-1313)
+* [ Output ](#tab-panel-1582)
+* [ Raw response ](#tab-panel-1583)
 
 ![Brand Asset](https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/recraft__recraftv4-1-pro/brand-asset.png) 
 
@@ -339,8 +339,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 **Editorial Illustration**  — Magazine-quality editorial illustration 
 
-* [ TypeScript ](#tab-panel-1316)
-* [ cURL ](#tab-panel-1317)
+* [ TypeScript ](#tab-panel-1586)
+* [ cURL ](#tab-panel-1587)
 
 TypeScript
 
@@ -390,8 +390,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 ```
 
-* [ Output ](#tab-panel-1314)
-* [ Raw response ](#tab-panel-1315)
+* [ Output ](#tab-panel-1584)
+* [ Raw response ](#tab-panel-1585)
 
 ![Editorial Illustration](https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/recraft__recraftv4-1-pro/editorial-illustration.png) 
 
@@ -420,8 +420,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 ## Parameters
 
-* [ Input ](#tab-panel-1320)
-* [ Output ](#tab-panel-1321)
+* [ Input ](#tab-panel-1590)
+* [ Output ](#tab-panel-1591)
 
 ▶controls{}
 
@@ -449,9 +449,9 @@ image
 
 ## API Schemas (Raw)
 
-Input 
+Input [ ](https://developers.cloudflare.com/ai/models/recraft/recraftv4-1-pro/schema-input.json "Open") [ ](https://developers.cloudflare.com/ai/models/recraft/recraftv4-1-pro/schema-input.json "Download") 
 
-Output 
+Output [ ](https://developers.cloudflare.com/ai/models/recraft/recraftv4-1-pro/schema-output.json "Open") [ ](https://developers.cloudflare.com/ai/models/recraft/recraftv4-1-pro/schema-output.json "Download") 
 
 ```json
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/ai/","name":"AI"}},{"@type":"ListItem","position":3,"item":{"@id":"/ai/models/","name":"Models"}}]}

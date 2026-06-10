@@ -63,6 +63,7 @@ paths:
                 $ref: '#/components/schemas/InternalServerResponse'
 servers:
   - url: https://openrouter.ai/api/v1
+    description: Production server
 components:
   schemas:
     CreditsGetResponsesContentApplicationJsonSchemaData:
@@ -209,7 +210,22 @@ components:
 
 ```
 
-## SDK Code Examples
+## Examples
+
+
+
+**Response**
+
+```json
+{
+  "data": {
+    "total_credits": 100.5,
+    "total_usage": 25.75
+  }
+}
+```
+
+**SDK Code**
 
 ```python Credits_getCredits_example
 import requests

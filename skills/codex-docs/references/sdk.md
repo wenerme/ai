@@ -70,7 +70,11 @@ To install the SDK run:
 pip install openai-codex
 ```
 
-Published SDK builds automatically use their pinned runtime. Pass `AppServerConfig(codex_bin=...)` only when you intentionally want to run against a specific local app-server binary.
+Published SDK builds automatically use their pinned runtime. Pass `CodexConfig(codex_bin=...)` only when you intentionally want to run against a specific local Codex executable.
+
+While the Python SDK is in beta, `pip install openai-codex` selects the latest
+published beta build. After a stable SDK release exists, use
+`pip install --pre openai-codex` to opt in to newer prerelease builds.
 
 ### Usage
 

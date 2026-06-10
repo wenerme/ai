@@ -74,8 +74,8 @@ export default {
 
 ## Parameters
 
-* [ Input ](#tab-panel-4428)
-* [ Output ](#tab-panel-4429)
+* [ Input ](#tab-panel-4814)
+* [ Output ](#tab-panel-4815)
 
 Option 1
 
@@ -93,9 +93,9 @@ description
 
 ## API Schemas (Raw)
 
-Input 
+Input [ ](https://developers.cloudflare.com/workers-ai/models/llava-1.5-7b-hf/schema-input.json "Open") [ ](https://developers.cloudflare.com/workers-ai/models/llava-1.5-7b-hf/schema-input.json "Download") 
 
-Output 
+Output [ ](https://developers.cloudflare.com/workers-ai/models/llava-1.5-7b-hf/schema-output.json "Open") [ ](https://developers.cloudflare.com/workers-ai/models/llava-1.5-7b-hf/schema-output.json "Download") 
 
 ```json
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/workers-ai/","name":"Workers AI"}},{"@type":"ListItem","position":3,"item":{"@id":"/workers-ai/models/","name":"Models"}}]}

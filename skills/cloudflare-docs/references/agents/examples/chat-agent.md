@@ -53,8 +53,8 @@ npm install agents @cloudflare/ai-chat ai workers-ai-provider zod
 
 Replace your `wrangler.jsonc` with:
 
-* [  wrangler.jsonc ](#tab-panel-4874)
-* [  wrangler.toml ](#tab-panel-4875)
+* [  wrangler.jsonc ](#tab-panel-5260)
+* [  wrangler.toml ](#tab-panel-5261)
 
 JSONC
 
@@ -68,7 +68,7 @@ JSONC
 
   // Set this to today's date
 
-  "compatibility_date": "2026-06-03",
+  "compatibility_date": "2026-06-10",
 
   "compatibility_flags": ["nodejs_compat"],
 
@@ -97,7 +97,7 @@ main = "src/server.ts"
 
 # Set this to today's date
 
-compatibility_date = "2026-06-03"
+compatibility_date = "2026-06-10"
 
 compatibility_flags = [ "nodejs_compat" ]
 
@@ -133,8 +133,8 @@ Key settings:
 
 Create `src/server.ts`. This is where your agent lives:
 
-* [  JavaScript ](#tab-panel-4876)
-* [  TypeScript ](#tab-panel-4877)
+* [  JavaScript ](#tab-panel-5262)
+* [  TypeScript ](#tab-panel-5263)
 
 JavaScript
 
@@ -250,9 +250,9 @@ export class ChatAgent extends AIChatAgent {
 
           inputSchema: z.object({
 
-            a: z.number().describe("First number"),
+            a: z.coerce.number().describe("First number"),
 
-            b: z.number().describe("Second number"),
+            b: z.coerce.number().describe("Second number"),
 
             operator: z
 
@@ -447,9 +447,9 @@ export class ChatAgent extends AIChatAgent {
 
           inputSchema: z.object({
 
-            a: z.number().describe("First number"),
+            a: z.coerce.number().describe("First number"),
 
-            b: z.number().describe("Second number"),
+            b: z.coerce.number().describe("Second number"),
 
             operator: z
 
@@ -542,8 +542,8 @@ export default {
 
 Create `src/client.tsx`:
 
-* [  JavaScript ](#tab-panel-4878)
-* [  TypeScript ](#tab-panel-4879)
+* [  JavaScript ](#tab-panel-5264)
+* [  TypeScript ](#tab-panel-5265)
 
 JavaScript
 
@@ -551,7 +551,7 @@ JavaScript
 
 import { useAgent } from "agents/react";
 
-import { useAgentChat } from "@cloudflare/ai-chat/react";
+import { useAgentChat, getToolApproval } from "@cloudflare/ai-chat/react";
 
 
 function Chat() {
@@ -625,7 +625,11 @@ function Chat() {
 
               // Render approval UI for tools that need confirmation
 
-              if (part.type === "tool" && part.state === "approval-required") {
+              if (part.state === "approval-requested") {
+
+                const approval = getToolApproval(part);
+
+                if (!approval) return null;
 
                 return (
 
@@ -645,7 +649,7 @@ function Chat() {
 
                         addToolApprovalResponse({
 
-                          id: part.toolCallId,
+                          id: approval.id,
 
                           approved: true,
 
@@ -665,7 +669,7 @@ function Chat() {
 
                         addToolApprovalResponse({
 
-                          id: part.toolCallId,
+                          id: approval.id,
 
                           approved: false,
 
@@ -688,7 +692,7 @@ function Chat() {
 
               // Show completed tool results
 
-              if (part.type === "tool" && part.state === "output-available") {
+              if (part.state === "output-available") {
 
                 return (
 
@@ -767,7 +771,7 @@ TypeScript
 
 import { useAgent } from "agents/react";
 
-import { useAgentChat } from "@cloudflare/ai-chat/react";
+import { useAgentChat, getToolApproval } from "@cloudflare/ai-chat/react";
 
 
 function Chat() {
@@ -831,13 +835,11 @@ function Chat() {
 
               // Render approval UI for tools that need confirmation
 
-              if (
+              if (part.state === "approval-requested") {
 
-                part.type === "tool" &&
+                const approval = getToolApproval(part);
 
-                part.state === "approval-required"
-
-              ) {
+                if (!approval) return null;
 
                 return (
 
@@ -857,7 +859,7 @@ function Chat() {
 
                         addToolApprovalResponse({
 
-                          id: part.toolCallId,
+                          id: approval.id,
 
                           approved: true,
 
@@ -877,7 +879,7 @@ function Chat() {
 
                         addToolApprovalResponse({
 
-                          id: part.toolCallId,
+                          id: approval.id,
 
                           approved: false,
 
@@ -900,13 +902,7 @@ function Chat() {
 
               // Show completed tool results
 
-              if (
-
-                part.type === "tool" &&
-
-                part.state === "output-available"
-
-              ) {
+              if (part.state === "output-available") {
 
                 return (
 

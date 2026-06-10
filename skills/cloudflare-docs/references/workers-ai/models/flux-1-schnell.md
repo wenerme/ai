@@ -27,9 +27,9 @@ FLUX.1 \[schnell\] is a 12 billion parameter rectified flow transformer capable 
 
 ## Usage
 
-* [  Worker (Data URI) ](#tab-panel-4243)
-* [  Worker (Image) ](#tab-panel-4244)
-* [  curl ](#tab-panel-4245)
+* [  Worker (Data URI) ](#tab-panel-4629)
+* [  Worker (Image) ](#tab-panel-4630)
+* [  curl ](#tab-panel-4631)
 
 TypeScript
 
@@ -132,8 +132,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 ## Parameters
 
-* [ Input ](#tab-panel-4246)
-* [ Output ](#tab-panel-4247)
+* [ Input ](#tab-panel-4632)
+* [ Output ](#tab-panel-4633)
 
 prompt
 
@@ -149,9 +149,9 @@ image
 
 ## API Schemas (Raw)
 
-Input 
+Input [ ](https://developers.cloudflare.com/workers-ai/models/flux-1-schnell/schema-input.json "Open") [ ](https://developers.cloudflare.com/workers-ai/models/flux-1-schnell/schema-input.json "Download") 
 
-Output 
+Output [ ](https://developers.cloudflare.com/workers-ai/models/flux-1-schnell/schema-output.json "Open") [ ](https://developers.cloudflare.com/workers-ai/models/flux-1-schnell/schema-output.json "Download") 
 
 ```json
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/workers-ai/","name":"Workers AI"}},{"@type":"ListItem","position":3,"item":{"@id":"/workers-ai/models/","name":"Models"}}]}

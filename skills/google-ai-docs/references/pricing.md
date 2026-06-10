@@ -95,6 +95,23 @@ superior search and grounding.
 queries to Google Search. You will be charged for each individual search query
 performed.
 
+## Gemini 3.5 Live Translate
+
+*`gemini-3.5-live-translate-preview`*
+
+
+[Try it in Google AI Studio](https://aistudio.google.com/prompts/new_chat?model=gemini-3.5-live-translate-preview)
+
+Our low-latency, real-time speech to speech translation model that supports 70+ languages.
+
+|   | Free Tier | Paid Tier, per 1M tokens in USD |
+|---|---|---|
+| Input price | Free of charge | $3.50 or $0.0053/min^\*^ (audio) |
+| Output price (including thinking tokens) | Free of charge | $21.00 or $0.0315/min^\*^ (audio) |
+| Used to improve our products | [Yes](https://ai.google.dev/gemini-api/terms) | [No](https://ai.google.dev/gemini-api/terms) |
+
+^\*^ Billing is based on total input and output audio token consumption, calculated at a rate of 25 tokens per second of audio, equating to an effective price of approximately $0.0368 per minute.
+
 ## Gemini 3.1 Flash-Lite
 
 *`gemini-3.1-flash-lite`*

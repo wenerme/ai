@@ -28,8 +28,8 @@ xAI's Grok Imagine image model. Generates and edits images from text and referen
 
 ## Usage
 
-* [ TypeScript ](#tab-panel-1648)
-* [ cURL ](#tab-panel-1649)
+* [ TypeScript ](#tab-panel-1918)
+* [ cURL ](#tab-panel-1919)
 
 TypeScript
 
@@ -73,8 +73,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 ```
 
-* [ Output ](#tab-panel-1646)
-* [ Raw response ](#tab-panel-1647)
+* [ Output ](#tab-panel-1916)
+* [ Raw response ](#tab-panel-1917)
 
 ![Simple Generation](https://examples.aig.cloudflare.com/xai/grok-imagine-image/simple-generation.jpeg) 
 
@@ -105,8 +105,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 **Custom Aspect Ratio**  — Portrait orientation render at 2K resolution 
 
-* [ TypeScript ](#tab-panel-1652)
-* [ cURL ](#tab-panel-1653)
+* [ TypeScript ](#tab-panel-1922)
+* [ cURL ](#tab-panel-1923)
 
 TypeScript
 
@@ -164,8 +164,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 ```
 
-* [ Output ](#tab-panel-1650)
-* [ Raw response ](#tab-panel-1651)
+* [ Output ](#tab-panel-1920)
+* [ Raw response ](#tab-panel-1921)
 
 ![Custom Aspect Ratio](https://examples.aig.cloudflare.com/xai/grok-imagine-image/custom-aspect-ratio.png) 
 
@@ -194,8 +194,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 **Cinematic Landscape**  — Widescreen landscape at 2K resolution 
 
-* [ TypeScript ](#tab-panel-1656)
-* [ cURL ](#tab-panel-1657)
+* [ TypeScript ](#tab-panel-1926)
+* [ cURL ](#tab-panel-1927)
 
 TypeScript
 
@@ -253,8 +253,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 ```
 
-* [ Output ](#tab-panel-1654)
-* [ Raw response ](#tab-panel-1655)
+* [ Output ](#tab-panel-1924)
+* [ Raw response ](#tab-panel-1925)
 
 ![Cinematic Landscape](https://examples.aig.cloudflare.com/xai/grok-imagine-image/cinematic-landscape.png) 
 
@@ -283,8 +283,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 ## Parameters
 
-* [ Input ](#tab-panel-1658)
-* [ Output ](#tab-panel-1659)
+* [ Input ](#tab-panel-1928)
+* [ Output ](#tab-panel-1929)
 
 aspect\_ratio
 
@@ -332,9 +332,9 @@ image
 
 ## API Schemas (Raw)
 
-Input 
+Input [ ](https://developers.cloudflare.com/ai/models/xai/grok-imagine-image/schema-input.json "Open") [ ](https://developers.cloudflare.com/ai/models/xai/grok-imagine-image/schema-input.json "Download") 
 
-Output 
+Output [ ](https://developers.cloudflare.com/ai/models/xai/grok-imagine-image/schema-output.json "Open") [ ](https://developers.cloudflare.com/ai/models/xai/grok-imagine-image/schema-output.json "Download") 
 
 ```json
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/ai/","name":"AI"}},{"@type":"ListItem","position":3,"item":{"@id":"/ai/models/","name":"Models"}}]}

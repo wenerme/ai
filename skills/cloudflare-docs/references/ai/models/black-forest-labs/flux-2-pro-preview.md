@@ -28,8 +28,8 @@ FLUX.2 \[pro\] Preview is Black Forest Labs' recommended default for production 
 
 ## Usage
 
-* [ TypeScript ](#tab-panel-312)
-* [ cURL ](#tab-panel-313)
+* [ TypeScript ](#tab-panel-352)
+* [ cURL ](#tab-panel-353)
 
 TypeScript
 
@@ -87,8 +87,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 ```
 
-* [ Output ](#tab-panel-310)
-* [ Raw response ](#tab-panel-311)
+* [ Output ](#tab-panel-350)
+* [ Raw response ](#tab-panel-351)
 
 ![Simple Prompt](https://examples.aig.cloudflare.com/black-forest-labs/flux-2-pro-preview/simple-prompt.jpeg) 
 
@@ -119,8 +119,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 **Multi-Reference Editing**  — Multi-reference editing — combine two reference images in a single composition 
 
-* [ TypeScript ](#tab-panel-318)
-* [ cURL ](#tab-panel-319)
+* [ TypeScript ](#tab-panel-358)
+* [ cURL ](#tab-panel-359)
 
 TypeScript
 
@@ -184,8 +184,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 ```
 
-* [ Output ](#tab-panel-314)
-* [ Raw response ](#tab-panel-315)
+* [ Output ](#tab-panel-354)
+* [ Raw response ](#tab-panel-355)
 
 ![Multi-Reference Editing](https://examples.aig.cloudflare.com/black-forest-labs/flux-2-pro-preview/multi-reference-editing.jpeg) 
 
@@ -214,8 +214,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 **Reproducible PNG Output**  — Seeded generation with PNG output for downstream editing pipelines 
 
-* [ TypeScript ](#tab-panel-320)
-* [ cURL ](#tab-panel-321)
+* [ TypeScript ](#tab-panel-360)
+* [ cURL ](#tab-panel-361)
 
 TypeScript
 
@@ -263,8 +263,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 ```
 
-* [ Output ](#tab-panel-316)
-* [ Raw response ](#tab-panel-317)
+* [ Output ](#tab-panel-356)
+* [ Raw response ](#tab-panel-357)
 
 ![Reproducible PNG Output](https://examples.aig.cloudflare.com/black-forest-labs/flux-2-pro-preview/reproducible-png-output.png) 
 
@@ -293,8 +293,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 ## Parameters
 
-* [ Input ](#tab-panel-322)
-* [ Output ](#tab-panel-323)
+* [ Input ](#tab-panel-362)
+* [ Output ](#tab-panel-363)
 
 height
 
@@ -330,9 +330,9 @@ image
 
 ## API Schemas (Raw)
 
-Input 
+Input [ ](https://developers.cloudflare.com/ai/models/black-forest-labs/flux-2-pro-preview/schema-input.json "Open") [ ](https://developers.cloudflare.com/ai/models/black-forest-labs/flux-2-pro-preview/schema-input.json "Download") 
 
-Output 
+Output [ ](https://developers.cloudflare.com/ai/models/black-forest-labs/flux-2-pro-preview/schema-output.json "Open") [ ](https://developers.cloudflare.com/ai/models/black-forest-labs/flux-2-pro-preview/schema-output.json "Download") 
 
 ```json
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/ai/","name":"AI"}},{"@type":"ListItem","position":3,"item":{"@id":"/ai/models/","name":"Models"}}]}

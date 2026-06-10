@@ -20,8 +20,8 @@ The sandbox makes a plain HTTP request to a virtual hostname (for example, `http
 
 Define an `outboundByHost` handler for each virtual hostname. The `env` argument gives you access to every binding declared in your Wrangler configuration.
 
-* [  JavaScript ](#tab-panel-7857)
-* [  TypeScript ](#tab-panel-7858)
+* [  JavaScript ](#tab-panel-10274)
+* [  TypeScript ](#tab-panel-10275)
 
 JavaScript
 
@@ -113,8 +113,8 @@ You can use `ctx.containerId` to apply different rules per sandbox instance — 
 
 The `ctx` argument exposes `containerId`, which lets you interact with the sandbox's own Durable Object from an outbound handler.
 
-* [  JavaScript ](#tab-panel-7855)
-* [  TypeScript ](#tab-panel-7856)
+* [  JavaScript ](#tab-panel-10272)
+* [  TypeScript ](#tab-panel-10273)
 
 JavaScript
 

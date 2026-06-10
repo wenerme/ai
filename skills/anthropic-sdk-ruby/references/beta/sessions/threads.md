@@ -26,7 +26,7 @@ List Session Threads
 
   - `String = String`
 
-  - `AnthropicBeta = :"message-batches-2024-09-24" | :"prompt-caching-2024-07-31" | :"computer-use-2024-10-22" | 23 more`
+  - `AnthropicBeta = :"message-batches-2024-09-24" | :"prompt-caching-2024-07-31" | :"computer-use-2024-10-22" | 25 more`
 
     - `:"message-batches-2024-09-24"`
 
@@ -80,6 +80,10 @@ List Session Threads
 
     - `:"thinking-token-count-2026-05-13"`
 
+    - `:"server-side-fallback-2026-06-01"`
+
+    - `:"fallback-credit-2026-06-01"`
+
 ### Returns
 
 - `class BetaManagedAgentsSessionThread`
@@ -118,11 +122,15 @@ List Session Threads
 
         See [models](https://docs.anthropic.com/en/docs/models-overview) for additional details and options.
 
-        - `BetaManagedAgentsModel = :"claude-opus-4-8" | :"claude-opus-4-7" | :"claude-opus-4-6" | 7 more`
+        - `BetaManagedAgentsModel = :"claude-fable-5" | :"claude-opus-4-8" | :"claude-opus-4-7" | 8 more`
 
           The model that will power your agent.
 
           See [models](https://docs.anthropic.com/en/docs/models-overview) for additional details and options.
+
+          - `:"claude-fable-5"`
+
+            Next generation of intelligence for the hardest knowledge work and coding problems
 
           - `:"claude-opus-4-8"`
 
@@ -328,19 +336,13 @@ List Session Threads
 
           JSON Schema for custom tool input parameters.
 
-          - `properties: Hash[Symbol, untyped]`
-
-            JSON Schema properties defining the tool's input parameters.
-
-          - `required: Array[String]`
-
-            List of required property names.
-
           - `type: :object`
 
-            Must be 'object' for tool input schemas.
-
             - `:object`
+
+          - `properties: Hash[Symbol, untyped]`
+
+          - `required: Array[String]`
 
         - `name: String`
 
@@ -546,7 +548,7 @@ Get Session Thread
 
   - `String = String`
 
-  - `AnthropicBeta = :"message-batches-2024-09-24" | :"prompt-caching-2024-07-31" | :"computer-use-2024-10-22" | 23 more`
+  - `AnthropicBeta = :"message-batches-2024-09-24" | :"prompt-caching-2024-07-31" | :"computer-use-2024-10-22" | 25 more`
 
     - `:"message-batches-2024-09-24"`
 
@@ -600,6 +602,10 @@ Get Session Thread
 
     - `:"thinking-token-count-2026-05-13"`
 
+    - `:"server-side-fallback-2026-06-01"`
+
+    - `:"fallback-credit-2026-06-01"`
+
 ### Returns
 
 - `class BetaManagedAgentsSessionThread`
@@ -638,11 +644,15 @@ Get Session Thread
 
         See [models](https://docs.anthropic.com/en/docs/models-overview) for additional details and options.
 
-        - `BetaManagedAgentsModel = :"claude-opus-4-8" | :"claude-opus-4-7" | :"claude-opus-4-6" | 7 more`
+        - `BetaManagedAgentsModel = :"claude-fable-5" | :"claude-opus-4-8" | :"claude-opus-4-7" | 8 more`
 
           The model that will power your agent.
 
           See [models](https://docs.anthropic.com/en/docs/models-overview) for additional details and options.
+
+          - `:"claude-fable-5"`
+
+            Next generation of intelligence for the hardest knowledge work and coding problems
 
           - `:"claude-opus-4-8"`
 
@@ -848,19 +858,13 @@ Get Session Thread
 
           JSON Schema for custom tool input parameters.
 
-          - `properties: Hash[Symbol, untyped]`
-
-            JSON Schema properties defining the tool's input parameters.
-
-          - `required: Array[String]`
-
-            List of required property names.
-
           - `type: :object`
 
-            Must be 'object' for tool input schemas.
-
             - `:object`
+
+          - `properties: Hash[Symbol, untyped]`
+
+          - `required: Array[String]`
 
         - `name: String`
 
@@ -1064,7 +1068,7 @@ Archive Session Thread
 
   - `String = String`
 
-  - `AnthropicBeta = :"message-batches-2024-09-24" | :"prompt-caching-2024-07-31" | :"computer-use-2024-10-22" | 23 more`
+  - `AnthropicBeta = :"message-batches-2024-09-24" | :"prompt-caching-2024-07-31" | :"computer-use-2024-10-22" | 25 more`
 
     - `:"message-batches-2024-09-24"`
 
@@ -1118,6 +1122,10 @@ Archive Session Thread
 
     - `:"thinking-token-count-2026-05-13"`
 
+    - `:"server-side-fallback-2026-06-01"`
+
+    - `:"fallback-credit-2026-06-01"`
+
 ### Returns
 
 - `class BetaManagedAgentsSessionThread`
@@ -1156,11 +1164,15 @@ Archive Session Thread
 
         See [models](https://docs.anthropic.com/en/docs/models-overview) for additional details and options.
 
-        - `BetaManagedAgentsModel = :"claude-opus-4-8" | :"claude-opus-4-7" | :"claude-opus-4-6" | 7 more`
+        - `BetaManagedAgentsModel = :"claude-fable-5" | :"claude-opus-4-8" | :"claude-opus-4-7" | 8 more`
 
           The model that will power your agent.
 
           See [models](https://docs.anthropic.com/en/docs/models-overview) for additional details and options.
+
+          - `:"claude-fable-5"`
+
+            Next generation of intelligence for the hardest knowledge work and coding problems
 
           - `:"claude-opus-4-8"`
 
@@ -1366,19 +1378,13 @@ Archive Session Thread
 
           JSON Schema for custom tool input parameters.
 
-          - `properties: Hash[Symbol, untyped]`
-
-            JSON Schema properties defining the tool's input parameters.
-
-          - `required: Array[String]`
-
-            List of required property names.
-
           - `type: :object`
 
-            Must be 'object' for tool input schemas.
-
             - `:object`
+
+          - `properties: Hash[Symbol, untyped]`
+
+          - `required: Array[String]`
 
         - `name: String`
 
@@ -1602,11 +1608,15 @@ puts(beta_managed_agents_session_thread)
 
         See [models](https://docs.anthropic.com/en/docs/models-overview) for additional details and options.
 
-        - `BetaManagedAgentsModel = :"claude-opus-4-8" | :"claude-opus-4-7" | :"claude-opus-4-6" | 7 more`
+        - `BetaManagedAgentsModel = :"claude-fable-5" | :"claude-opus-4-8" | :"claude-opus-4-7" | 8 more`
 
           The model that will power your agent.
 
           See [models](https://docs.anthropic.com/en/docs/models-overview) for additional details and options.
+
+          - `:"claude-fable-5"`
+
+            Next generation of intelligence for the hardest knowledge work and coding problems
 
           - `:"claude-opus-4-8"`
 
@@ -1812,19 +1822,13 @@ puts(beta_managed_agents_session_thread)
 
           JSON Schema for custom tool input parameters.
 
-          - `properties: Hash[Symbol, untyped]`
-
-            JSON Schema properties defining the tool's input parameters.
-
-          - `required: Array[String]`
-
-            List of required property names.
-
           - `type: :object`
 
-            Must be 'object' for tool input schemas.
-
             - `:object`
+
+          - `properties: Hash[Symbol, untyped]`
+
+          - `required: Array[String]`
 
         - `name: String`
 
@@ -1982,7 +1986,7 @@ puts(beta_managed_agents_session_thread)
 
 ### Beta Managed Agents Stream Session Thread Events
 
-- `BetaManagedAgentsStreamSessionThreadEvents = BetaManagedAgentsUserMessageEvent | BetaManagedAgentsUserInterruptEvent | BetaManagedAgentsUserToolConfirmationEvent | 30 more`
+- `BetaManagedAgentsStreamSessionThreadEvents = BetaManagedAgentsUserMessageEvent | BetaManagedAgentsUserInterruptEvent | BetaManagedAgentsUserToolConfirmationEvent | 31 more`
 
   Server-sent event in a single thread's stream.
 
@@ -2626,7 +2630,7 @@ puts(beta_managed_agents_session_thread)
 
       Unique identifier for this event.
 
-    - `error: BetaManagedAgentsUnknownError | BetaManagedAgentsModelOverloadedError | BetaManagedAgentsModelRateLimitedError | 4 more`
+    - `error: BetaManagedAgentsUnknownError | BetaManagedAgentsModelOverloadedError | BetaManagedAgentsModelRateLimitedError | 5 more`
 
       An unknown or unexpected error occurred during session execution. A fallback variant; clients that don't recognize a new error code can match on `retry_status` and `message` alone.
 
@@ -2845,6 +2849,42 @@ puts(beta_managed_agents_session_thread)
         - `type: :billing_error`
 
           - `:billing_error`
+
+      - `class BetaManagedAgentsCredentialHostUnreachableError`
+
+        An `environment_variable` credential's `auth.networking.allowed_hosts` includes a host the environment's network policy does not permit.
+
+        - `credential_id: String`
+
+          ID of the affected credential.
+
+        - `message: String`
+
+          Human-readable error description.
+
+        - `retry_status: BetaManagedAgentsRetryStatusRetrying | BetaManagedAgentsRetryStatusExhausted | BetaManagedAgentsRetryStatusTerminal`
+
+          What the client should do next in response to this error.
+
+          - `class BetaManagedAgentsRetryStatusRetrying`
+
+            The server is retrying automatically. Client should wait; the same error type may fire again as retrying, then once as exhausted when the retry budget runs out.
+
+          - `class BetaManagedAgentsRetryStatusExhausted`
+
+            This turn is dead; queued inputs are flushed and the session returns to idle. Client may send a new prompt.
+
+          - `class BetaManagedAgentsRetryStatusTerminal`
+
+            The session encountered a terminal error and will transition to `terminated` state.
+
+        - `type: :credential_host_unreachable_error`
+
+          - `:credential_host_unreachable_error`
+
+        - `vault_id: String`
+
+          ID of the vault containing the affected credential.
 
     - `processed_at: Time`
 
@@ -3406,11 +3446,15 @@ puts(beta_managed_agents_session_thread)
 
           See [models](https://docs.anthropic.com/en/docs/models-overview) for additional details and options.
 
-          - `BetaManagedAgentsModel = :"claude-opus-4-8" | :"claude-opus-4-7" | :"claude-opus-4-6" | 7 more`
+          - `BetaManagedAgentsModel = :"claude-fable-5" | :"claude-opus-4-8" | :"claude-opus-4-7" | 8 more`
 
             The model that will power your agent.
 
             See [models](https://docs.anthropic.com/en/docs/models-overview) for additional details and options.
+
+            - `:"claude-fable-5"`
+
+              Next generation of intelligence for the hardest knowledge work and coding problems
 
             - `:"claude-opus-4-8"`
 
@@ -3640,19 +3684,13 @@ puts(beta_managed_agents_session_thread)
 
                 JSON Schema for custom tool input parameters.
 
-                - `properties: Hash[Symbol, untyped]`
-
-                  JSON Schema properties defining the tool's input parameters.
-
-                - `required: Array[String]`
-
-                  List of required property names.
-
                 - `type: :object`
 
-                  Must be 'object' for tool input schemas.
-
                   - `:object`
+
+                - `properties: Hash[Symbol, untyped]`
+
+                - `required: Array[String]`
 
               - `name: String`
 
@@ -3708,6 +3746,34 @@ puts(beta_managed_agents_session_thread)
 
       The session's new title. Present only when the update changed it.
 
+  - `class BetaManagedAgentsSystemMessageEvent`
+
+    A mid-conversation system message event. Carries system-role content that is appended to the session as a `role: "system"` turn.
+
+    - `id: String`
+
+      Unique identifier for this event.
+
+    - `content: Array[BetaManagedAgentsSystemContentBlock]`
+
+      System content blocks. Text-only.
+
+      - `text: String`
+
+        The text content.
+
+      - `type: :text`
+
+        - `:text`
+
+    - `type: :"system.message"`
+
+      - `:"system.message"`
+
+    - `processed_at: Time`
+
+      A timestamp in RFC 3339 format
+
 # Events
 
 ## List Session Thread Events
@@ -3738,7 +3804,7 @@ List Session Thread Events
 
   - `String = String`
 
-  - `AnthropicBeta = :"message-batches-2024-09-24" | :"prompt-caching-2024-07-31" | :"computer-use-2024-10-22" | 23 more`
+  - `AnthropicBeta = :"message-batches-2024-09-24" | :"prompt-caching-2024-07-31" | :"computer-use-2024-10-22" | 25 more`
 
     - `:"message-batches-2024-09-24"`
 
@@ -3792,9 +3858,13 @@ List Session Thread Events
 
     - `:"thinking-token-count-2026-05-13"`
 
+    - `:"server-side-fallback-2026-06-01"`
+
+    - `:"fallback-credit-2026-06-01"`
+
 ### Returns
 
-- `BetaManagedAgentsSessionEvent = BetaManagedAgentsUserMessageEvent | BetaManagedAgentsUserInterruptEvent | BetaManagedAgentsUserToolConfirmationEvent | 30 more`
+- `BetaManagedAgentsSessionEvent = BetaManagedAgentsUserMessageEvent | BetaManagedAgentsUserInterruptEvent | BetaManagedAgentsUserToolConfirmationEvent | 31 more`
 
   Union type for all event types in a session.
 
@@ -4438,7 +4508,7 @@ List Session Thread Events
 
       Unique identifier for this event.
 
-    - `error: BetaManagedAgentsUnknownError | BetaManagedAgentsModelOverloadedError | BetaManagedAgentsModelRateLimitedError | 4 more`
+    - `error: BetaManagedAgentsUnknownError | BetaManagedAgentsModelOverloadedError | BetaManagedAgentsModelRateLimitedError | 5 more`
 
       An unknown or unexpected error occurred during session execution. A fallback variant; clients that don't recognize a new error code can match on `retry_status` and `message` alone.
 
@@ -4657,6 +4727,42 @@ List Session Thread Events
         - `type: :billing_error`
 
           - `:billing_error`
+
+      - `class BetaManagedAgentsCredentialHostUnreachableError`
+
+        An `environment_variable` credential's `auth.networking.allowed_hosts` includes a host the environment's network policy does not permit.
+
+        - `credential_id: String`
+
+          ID of the affected credential.
+
+        - `message: String`
+
+          Human-readable error description.
+
+        - `retry_status: BetaManagedAgentsRetryStatusRetrying | BetaManagedAgentsRetryStatusExhausted | BetaManagedAgentsRetryStatusTerminal`
+
+          What the client should do next in response to this error.
+
+          - `class BetaManagedAgentsRetryStatusRetrying`
+
+            The server is retrying automatically. Client should wait; the same error type may fire again as retrying, then once as exhausted when the retry budget runs out.
+
+          - `class BetaManagedAgentsRetryStatusExhausted`
+
+            This turn is dead; queued inputs are flushed and the session returns to idle. Client may send a new prompt.
+
+          - `class BetaManagedAgentsRetryStatusTerminal`
+
+            The session encountered a terminal error and will transition to `terminated` state.
+
+        - `type: :credential_host_unreachable_error`
+
+          - `:credential_host_unreachable_error`
+
+        - `vault_id: String`
+
+          ID of the vault containing the affected credential.
 
     - `processed_at: Time`
 
@@ -5218,11 +5324,15 @@ List Session Thread Events
 
           See [models](https://docs.anthropic.com/en/docs/models-overview) for additional details and options.
 
-          - `BetaManagedAgentsModel = :"claude-opus-4-8" | :"claude-opus-4-7" | :"claude-opus-4-6" | 7 more`
+          - `BetaManagedAgentsModel = :"claude-fable-5" | :"claude-opus-4-8" | :"claude-opus-4-7" | 8 more`
 
             The model that will power your agent.
 
             See [models](https://docs.anthropic.com/en/docs/models-overview) for additional details and options.
+
+            - `:"claude-fable-5"`
+
+              Next generation of intelligence for the hardest knowledge work and coding problems
 
             - `:"claude-opus-4-8"`
 
@@ -5452,19 +5562,13 @@ List Session Thread Events
 
                 JSON Schema for custom tool input parameters.
 
-                - `properties: Hash[Symbol, untyped]`
-
-                  JSON Schema properties defining the tool's input parameters.
-
-                - `required: Array[String]`
-
-                  List of required property names.
-
                 - `type: :object`
 
-                  Must be 'object' for tool input schemas.
-
                   - `:object`
+
+                - `properties: Hash[Symbol, untyped]`
+
+                - `required: Array[String]`
 
               - `name: String`
 
@@ -5519,6 +5623,34 @@ List Session Thread Events
     - `title: String`
 
       The session's new title. Present only when the update changed it.
+
+  - `class BetaManagedAgentsSystemMessageEvent`
+
+    A mid-conversation system message event. Carries system-role content that is appended to the session as a `role: "system"` turn.
+
+    - `id: String`
+
+      Unique identifier for this event.
+
+    - `content: Array[BetaManagedAgentsSystemContentBlock]`
+
+      System content blocks. Text-only.
+
+      - `text: String`
+
+        The text content.
+
+      - `type: :text`
+
+        - `:text`
+
+    - `type: :"system.message"`
+
+      - `:"system.message"`
+
+    - `processed_at: Time`
+
+      A timestamp in RFC 3339 format
 
 ### Example
 
@@ -5576,7 +5708,7 @@ Stream Session Thread Events
 
   - `String = String`
 
-  - `AnthropicBeta = :"message-batches-2024-09-24" | :"prompt-caching-2024-07-31" | :"computer-use-2024-10-22" | 23 more`
+  - `AnthropicBeta = :"message-batches-2024-09-24" | :"prompt-caching-2024-07-31" | :"computer-use-2024-10-22" | 25 more`
 
     - `:"message-batches-2024-09-24"`
 
@@ -5630,9 +5762,13 @@ Stream Session Thread Events
 
     - `:"thinking-token-count-2026-05-13"`
 
+    - `:"server-side-fallback-2026-06-01"`
+
+    - `:"fallback-credit-2026-06-01"`
+
 ### Returns
 
-- `BetaManagedAgentsStreamSessionThreadEvents = BetaManagedAgentsUserMessageEvent | BetaManagedAgentsUserInterruptEvent | BetaManagedAgentsUserToolConfirmationEvent | 30 more`
+- `BetaManagedAgentsStreamSessionThreadEvents = BetaManagedAgentsUserMessageEvent | BetaManagedAgentsUserInterruptEvent | BetaManagedAgentsUserToolConfirmationEvent | 31 more`
 
   Server-sent event in a single thread's stream.
 
@@ -6276,7 +6412,7 @@ Stream Session Thread Events
 
       Unique identifier for this event.
 
-    - `error: BetaManagedAgentsUnknownError | BetaManagedAgentsModelOverloadedError | BetaManagedAgentsModelRateLimitedError | 4 more`
+    - `error: BetaManagedAgentsUnknownError | BetaManagedAgentsModelOverloadedError | BetaManagedAgentsModelRateLimitedError | 5 more`
 
       An unknown or unexpected error occurred during session execution. A fallback variant; clients that don't recognize a new error code can match on `retry_status` and `message` alone.
 
@@ -6495,6 +6631,42 @@ Stream Session Thread Events
         - `type: :billing_error`
 
           - `:billing_error`
+
+      - `class BetaManagedAgentsCredentialHostUnreachableError`
+
+        An `environment_variable` credential's `auth.networking.allowed_hosts` includes a host the environment's network policy does not permit.
+
+        - `credential_id: String`
+
+          ID of the affected credential.
+
+        - `message: String`
+
+          Human-readable error description.
+
+        - `retry_status: BetaManagedAgentsRetryStatusRetrying | BetaManagedAgentsRetryStatusExhausted | BetaManagedAgentsRetryStatusTerminal`
+
+          What the client should do next in response to this error.
+
+          - `class BetaManagedAgentsRetryStatusRetrying`
+
+            The server is retrying automatically. Client should wait; the same error type may fire again as retrying, then once as exhausted when the retry budget runs out.
+
+          - `class BetaManagedAgentsRetryStatusExhausted`
+
+            This turn is dead; queued inputs are flushed and the session returns to idle. Client may send a new prompt.
+
+          - `class BetaManagedAgentsRetryStatusTerminal`
+
+            The session encountered a terminal error and will transition to `terminated` state.
+
+        - `type: :credential_host_unreachable_error`
+
+          - `:credential_host_unreachable_error`
+
+        - `vault_id: String`
+
+          ID of the vault containing the affected credential.
 
     - `processed_at: Time`
 
@@ -7056,11 +7228,15 @@ Stream Session Thread Events
 
           See [models](https://docs.anthropic.com/en/docs/models-overview) for additional details and options.
 
-          - `BetaManagedAgentsModel = :"claude-opus-4-8" | :"claude-opus-4-7" | :"claude-opus-4-6" | 7 more`
+          - `BetaManagedAgentsModel = :"claude-fable-5" | :"claude-opus-4-8" | :"claude-opus-4-7" | 8 more`
 
             The model that will power your agent.
 
             See [models](https://docs.anthropic.com/en/docs/models-overview) for additional details and options.
+
+            - `:"claude-fable-5"`
+
+              Next generation of intelligence for the hardest knowledge work and coding problems
 
             - `:"claude-opus-4-8"`
 
@@ -7290,19 +7466,13 @@ Stream Session Thread Events
 
                 JSON Schema for custom tool input parameters.
 
-                - `properties: Hash[Symbol, untyped]`
-
-                  JSON Schema properties defining the tool's input parameters.
-
-                - `required: Array[String]`
-
-                  List of required property names.
-
                 - `type: :object`
 
-                  Must be 'object' for tool input schemas.
-
                   - `:object`
+
+                - `properties: Hash[Symbol, untyped]`
+
+                - `required: Array[String]`
 
               - `name: String`
 
@@ -7357,6 +7527,34 @@ Stream Session Thread Events
     - `title: String`
 
       The session's new title. Present only when the update changed it.
+
+  - `class BetaManagedAgentsSystemMessageEvent`
+
+    A mid-conversation system message event. Carries system-role content that is appended to the session as a `role: "system"` turn.
+
+    - `id: String`
+
+      Unique identifier for this event.
+
+    - `content: Array[BetaManagedAgentsSystemContentBlock]`
+
+      System content blocks. Text-only.
+
+      - `text: String`
+
+        The text content.
+
+      - `type: :text`
+
+        - `:text`
+
+    - `type: :"system.message"`
+
+      - `:"system.message"`
+
+    - `processed_at: Time`
+
+      A timestamp in RFC 3339 format
 
 ### Example
 

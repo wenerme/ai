@@ -28,7 +28,7 @@ List Credentials
 
   - `str`
 
-  - `Literal["message-batches-2024-09-24", "prompt-caching-2024-07-31", "computer-use-2024-10-22", 23 more]`
+  - `Literal["message-batches-2024-09-24", "prompt-caching-2024-07-31", "computer-use-2024-10-22", 25 more]`
 
     - `"message-batches-2024-09-24"`
 
@@ -81,6 +81,10 @@ List Credentials
     - `"cache-diagnosis-2026-04-07"`
 
     - `"thinking-token-count-2026-05-13"`
+
+    - `"server-side-fallback-2026-06-01"`
+
+    - `"fallback-credit-2026-06-01"`
 
 ### Returns
 
@@ -175,6 +179,42 @@ List Credentials
       - `type: Literal["static_bearer"]`
 
         - `"static_bearer"`
+
+    - `class BetaManagedAgentsEnvironmentVariableAuthResponse: …`
+
+      Environment variable credential details. The secret value is never returned.
+
+      - `networking: Networking`
+
+        Outbound hosts the secret value is substituted on.
+
+        - `class BetaManagedAgentsUnrestrictedCredentialNetworkingResponse: …`
+
+          The secret is substituted on any host the session's Environment network policy permits egress to.
+
+          - `type: Literal["unrestricted"]`
+
+            - `"unrestricted"`
+
+        - `class BetaManagedAgentsLimitedCredentialNetworkingResponse: …`
+
+          The secret is substituted only on requests to the listed hosts.
+
+          - `allowed_hosts: List[str]`
+
+            Hostnames on which the secret will be substituted. An entry matches the request host exactly; a `*.`-prefixed entry matches any subdomain of the named domain but not the domain itself.
+
+          - `type: Literal["limited"]`
+
+            - `"limited"`
+
+      - `secret_name: str`
+
+        Name of the environment variable.
+
+      - `type: Literal["environment_variable"]`
+
+        - `"environment_variable"`
 
   - `created_at: datetime`
 

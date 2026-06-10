@@ -28,8 +28,8 @@ A faster version of Veo 3 optimized for lower latency video generation with audi
 
 ## Usage
 
-* [ TypeScript ](#tab-panel-650)
-* [ cURL ](#tab-panel-651)
+* [ TypeScript ](#tab-panel-700)
+* [ cURL ](#tab-panel-701)
 
 TypeScript
 
@@ -93,8 +93,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 ```
 
-* [ Output ](#tab-panel-646)
-* [ Raw response ](#tab-panel-647)
+* [ Output ](#tab-panel-696)
+* [ Raw response ](#tab-panel-697)
 
 ```
 
@@ -123,8 +123,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 **Social Media Clip**  — Quick vertical video for stories 
 
-* [ TypeScript ](#tab-panel-654)
-* [ cURL ](#tab-panel-655)
+* [ TypeScript ](#tab-panel-704)
+* [ cURL ](#tab-panel-705)
 
 TypeScript
 
@@ -188,8 +188,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 ```
 
-* [ Output ](#tab-panel-648)
-* [ Raw response ](#tab-panel-649)
+* [ Output ](#tab-panel-698)
+* [ Raw response ](#tab-panel-699)
 
 ```
 
@@ -216,8 +216,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 **Animated Loop**  — Short loopable animation 
 
-* [ TypeScript ](#tab-panel-658)
-* [ cURL ](#tab-panel-659)
+* [ TypeScript ](#tab-panel-708)
+* [ cURL ](#tab-panel-709)
 
 TypeScript
 
@@ -281,8 +281,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 ```
 
-* [ Output ](#tab-panel-652)
-* [ Raw response ](#tab-panel-653)
+* [ Output ](#tab-panel-702)
+* [ Raw response ](#tab-panel-703)
 
 ```
 
@@ -309,8 +309,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 **Product Shot**  — Quick product video preview 
 
-* [ TypeScript ](#tab-panel-660)
-* [ cURL ](#tab-panel-661)
+* [ TypeScript ](#tab-panel-710)
+* [ cURL ](#tab-panel-711)
 
 TypeScript
 
@@ -374,8 +374,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 ```
 
-* [ Output ](#tab-panel-656)
-* [ Raw response ](#tab-panel-657)
+* [ Output ](#tab-panel-706)
+* [ Raw response ](#tab-panel-707)
 
 ```
 
@@ -402,8 +402,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 ## Parameters
 
-* [ Input ](#tab-panel-662)
-* [ Output ](#tab-panel-663)
+* [ Input ](#tab-panel-712)
+* [ Output ](#tab-panel-713)
 
 aspect\_ratio
 
@@ -435,9 +435,9 @@ video
 
 ## API Schemas (Raw)
 
-Input 
+Input [ ](https://developers.cloudflare.com/ai/models/google/veo-3-fast/schema-input.json "Open") [ ](https://developers.cloudflare.com/ai/models/google/veo-3-fast/schema-input.json "Download") 
 
-Output 
+Output [ ](https://developers.cloudflare.com/ai/models/google/veo-3-fast/schema-output.json "Open") [ ](https://developers.cloudflare.com/ai/models/google/veo-3-fast/schema-output.json "Download") 
 
 ```json
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/ai/","name":"AI"}},{"@type":"ListItem","position":3,"item":{"@id":"/ai/models/","name":"Models"}}]}

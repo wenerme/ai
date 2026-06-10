@@ -76,8 +76,8 @@ export default {
 
 ## Parameters
 
-* [ Input ](#tab-panel-4533)
-* [ Output ](#tab-panel-4534)
+* [ Input ](#tab-panel-4919)
+* [ Output ](#tab-panel-4920)
 
 Option 1
 
@@ -95,9 +95,9 @@ description
 
 ## API Schemas (Raw)
 
-Input 
+Input [ ](https://developers.cloudflare.com/workers-ai/models/uform-gen2-qwen-500m/schema-input.json "Open") [ ](https://developers.cloudflare.com/workers-ai/models/uform-gen2-qwen-500m/schema-input.json "Download") 
 
-Output 
+Output [ ](https://developers.cloudflare.com/workers-ai/models/uform-gen2-qwen-500m/schema-output.json "Open") [ ](https://developers.cloudflare.com/workers-ai/models/uform-gen2-qwen-500m/schema-output.json "Download") 
 
 ```json
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/workers-ai/","name":"Workers AI"}},{"@type":"ListItem","position":3,"item":{"@id":"/workers-ai/models/","name":"Models"}}]}

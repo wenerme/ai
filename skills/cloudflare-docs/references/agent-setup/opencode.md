@@ -59,7 +59,7 @@ opencode
 5. **Try a prompt**  
 For example:  
 ```  
-Set up WAF rules to block SQL injection and XSS attacks on my application.  
+Build a serverless AI inference endpoint on Workers AI with streaming responses.  
 ```
 
 ## Cloudflare platform access

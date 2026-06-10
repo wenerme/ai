@@ -1,6 +1,6 @@
 ---
 title: Changelog
-description: Key Findings
+description: This release introduces new detections for a critical SQL injection vulnerability in Drupal installations utilizing PostgreSQL (CVE-2026-9082), alongside targeted protection for an unsafe deserialization flaw in the Mirasvit Cache Warmer extension (CVE-2026-45247). Additionally, this release includes coverage for a prototype pollution vector in Axios (CVE-2026-40175) and a new generic rule designed to identify and block sophisticated SQL Injection (SQLi) bypass attempts leveraging obfuscated boolean logic.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 
@@ -13,6 +13,32 @@ image: https://developers.cloudflare.com/core-services-preview.png
 # Changelog
 
 [ Subscribe to RSS ](https://developers.cloudflare.com/changelog/rss/waf.xml) 
+
+## 2026-06-09
+
+  
+**WAF Release - 2026-06-09**   
+
+This release introduces new detections for a critical SQL injection vulnerability in Drupal installations utilizing PostgreSQL (CVE-2026-9082), alongside targeted protection for an unsafe deserialization flaw in the Mirasvit Cache Warmer extension (CVE-2026-45247). Additionally, this release includes coverage for a prototype pollution vector in Axios (CVE-2026-40175) and a new generic rule designed to identify and block sophisticated SQL Injection (SQLi) bypass attempts leveraging obfuscated boolean logic.
+
+**Key Findings**
+
+* CVE-2026-9082: A database abstraction vulnerability affects Drupal sites configured with a PostgreSQL backend. Remote, unauthenticated attackers can exploit this flaw via crafted inputs to inject malicious SQL commands and access or manipulate backend data.
+* CVE-2026-45247: A PHP Object Injection vulnerability exists in the Mirasvit Cache Warmer extension for Magento and Adobe Commerce. This flaw stems from unsafe deserialization of untrusted user input, enabling unauthenticated attackers to execute arbitrary code on the hosting server.
+* CVE-2026-40175: A prototype pollution vulnerability affects the Axios HTTP client library. Attackers can exploit this to inject malicious properties into the global JavaScript object prototype, potentially causing application crashes (Denial of Service) or executing unauthorized code depending on the application structure.
+
+**Impact**
+
+Successful exploitation of these vulnerabilities could allow unauthenticated attackers to execute arbitrary code, manipulate database contents, or induce application crashes, leading to severe operational disruption or complete server compromise. These newly deployed signatures intercept these advanced malicious payloads at the edge before they can interact with vulnerable software configurations.
+
+| Ruleset                    | Rule ID     | Legacy Rule ID | Description                                                       | Previous Action | New Action | Comments                 |
+| -------------------------- | ----------- | -------------- | ----------------------------------------------------------------- | --------------- | ---------- | ------------------------ |
+| Cloudflare Managed Ruleset | ...387cf935 | N/A            | Axios - Prototype Pollution - CVE:CVE-2026-40175                  | Log             | Block      | This is a new detection. |
+| Cloudflare Managed Ruleset | ...417eb9e0 | N/A            | Drupal - PostgreSQL SQLi - CVE:CVE-2026-9082 - Body               | Log             | Block      | This is a new detection. |
+| Cloudflare Managed Ruleset | ...fd3857fd | N/A            | Drupal - PostgreSQL SQLi - CVE:CVE-2026-9082 - URI                | Log             | Block      | This is a new detection. |
+| Cloudflare Managed Ruleset | ...aee241d2 | N/A            | SQLi - Obfuscated Boolean - Body                                  | N/A             | Disabled   | This is a new detection. |
+| Cloudflare Managed Ruleset | ...d8620070 | N/A            | SQLi - Obfuscated Boolean - Headers                               | N/A             | Disabled   | This is a new detection. |
+| Cloudflare Managed Ruleset | ...e0be4d47 | N/A            | Mirasvit Cache Warmer - PHP Object Injection - CVE:CVE-2026-45247 | N/A             | Block      | This is a new detection. |
 
 ## 2026-05-20
 
@@ -579,27 +605,6 @@ This week's release focuses on improvements to existing detections to enhance co
 | Cloudflare Managed Ruleset | ...432ac90d | N/A            | SQLi - WaitFor Function - Beta                                    | Log             | Block      | This rule is merged into the original rule "SQLi - WaitFor Function" (ID: ...d5faba59  )                                    |
 | Cloudflare Managed Ruleset | ...596c741e | N/A            | SQLi - AND/OR Digit Operator Digit 2 - Beta                       | Log             | Block      | This rule is merged into the original rule "SQLi - AND/OR Digit Operator Digit" (ID: ...88d80772  )                         |
 | Cloudflare Managed Ruleset | ...03b2f3fe | N/A            | SQLi - Equation 2 - Beta                                          | Log             | Block      | This rule is merged into the original rule "SQLi - Equation" (ID: ...a72a6b3a  )                                            |
-
-## 2025-12-11
-
-  
-**WAF Release - 2025-12-11 - Emergency**   
-
-This emergency release introduces rules for CVE-2025-55183 and CVE-2025-55184, targeting server-side function exposure and resource-exhaustion patterns, respectively.
-
-**Key Findings**
-
-Added coverage for Leaking Server Functions (CVE-2025-55183) and React Function DoS detection (CVE-2025-55184).
-
-**Impact**
-
-These updates strengthen protection for server-function abuse techniques (CVE-2025-55183, CVE-2025-55184) that may expose internal logic or disrupt application availability.
-
-| Ruleset                    | Rule ID     | Legacy Rule ID | Description                                           | Previous Action | New Action | Comments                                                            |
-| -------------------------- | ----------- | -------------- | ----------------------------------------------------- | --------------- | ---------- | ------------------------------------------------------------------- |
-| Cloudflare Managed Ruleset | ...fefb4e9b | N/A            | React - Leaking Server Functions - CVE:CVE-2025-55183 | N/A             | Block      | This was labeled as Generic - Server Function Source Code Exposure. |
-| Cloudflare Free Ruleset    | ...251e86aa | N/A            | React - Leaking Server Functions - CVE:CVE-2025-55183 | N/A             | Block      | This was labeled as Generic - Server Function Source Code Exposure. |
-| Cloudflare Managed Ruleset | ...102ec699 | N/A            | React - DoS - CVE:CVE-2025-55184                      | N/A             | Disabled   | This was labeled as Generic – Server Function Resource Exhaustion.  |
 
 ```json
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/waf/","name":"WAF"}},{"@type":"ListItem","position":3,"item":{"@id":"/waf/change-log/","name":"WAF changelog overview"}},{"@type":"ListItem","position":4,"item":{"@id":"/waf/change-log/changelog/","name":"Changelog"}}]}

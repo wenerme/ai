@@ -126,6 +126,7 @@ paths:
                 - name
 servers:
   - url: https://openrouter.ai/api/v1
+    description: Production server
 components:
   schemas:
     KeysPostRequestBodyContentApplicationJsonSchemaLimitReset:
@@ -467,7 +468,54 @@ components:
 
 ```
 
-## SDK Code Examples
+## Examples
+
+
+
+**Request**
+
+```json
+{
+  "name": "Analytics Service Key",
+  "expires_at": "2029-11-30T23:59:59Z",
+  "include_byok_in_limit": false,
+  "limit": 100,
+  "limit_reset": "weekly"
+}
+```
+
+**Response**
+
+```json
+{
+  "data": {
+    "byok_usage": 12,
+    "byok_usage_daily": 1,
+    "byok_usage_monthly": 45,
+    "byok_usage_weekly": 10,
+    "created_at": "2024-06-15T09:00:00Z",
+    "creator_user_id": "user_7a9XvLq3pZ8bN1cD0000000000",
+    "disabled": false,
+    "hash": "a3f5b7c9d8e1f23456789abcdef0123456789abcdef0123456789abcdef0123",
+    "include_byok_in_limit": false,
+    "label": "sk-or-v1-analytics-1a2b3c",
+    "limit": 100,
+    "limit_remaining": 88,
+    "limit_reset": "weekly",
+    "name": "Analytics Service Key",
+    "updated_at": "2024-06-20T14:45:00Z",
+    "usage": 12,
+    "usage_daily": 1,
+    "usage_monthly": 50,
+    "usage_weekly": 12,
+    "workspace_id": "3f9e665d-d932-5740-b2c7-b52af166bc11",
+    "expires_at": "2029-11-30T23:59:59Z"
+  },
+  "key": "sk-or-v1-7b8c9d0e1f2a3b4c5d6e7f8091a2b3c4d5e6f7a8b9c0d1e2f3a4b5c6d7e8f9a0b"
+}
+```
+
+**SDK Code**
 
 ```python API Keys_createKeys_example
 import requests

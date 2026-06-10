@@ -29,8 +29,8 @@ Claude Opus 4.8 is Anthropic's most capable generally available model, with a st
 
 ## Usage
 
-* [ TypeScript ](#tab-panel-178)
-* [ cURL ](#tab-panel-179)
+* [ TypeScript ](#tab-panel-218)
+* [ cURL ](#tab-panel-219)
 
 TypeScript
 
@@ -88,8 +88,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/v1/
 
 ```
 
-* [ Output ](#tab-panel-182)
-* [ Raw response ](#tab-panel-183)
+* [ Output ](#tab-panel-222)
+* [ Raw response ](#tab-panel-223)
 
 # The Three Laws of Thermodynamics
 
@@ -177,8 +177,8 @@ Let me know if you'd like a deeper explanation of any of these!
 
 **With System Message**  — Using a system message to set context 
 
-* [ TypeScript ](#tab-panel-180)
-* [ cURL ](#tab-panel-181)
+* [ TypeScript ](#tab-panel-220)
+* [ cURL ](#tab-panel-221)
 
 TypeScript
 
@@ -240,8 +240,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/v1/
 
 ```
 
-* [ Output ](#tab-panel-184)
-* [ Raw response ](#tab-panel-185)
+* [ Output ](#tab-panel-224)
+* [ Raw response ](#tab-panel-225)
 
 # Reading a JSON File in Python
 
@@ -363,8 +363,8 @@ Let me know if you'd like help **writing** JSON or working with a specific data 
 
 **Multi-turn Conversation**  — Continuing a conversation with context 
 
-* [ TypeScript ](#tab-panel-188)
-* [ cURL ](#tab-panel-189)
+* [ TypeScript ](#tab-panel-228)
+* [ cURL ](#tab-panel-229)
 
 TypeScript
 
@@ -460,8 +460,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/v1/
 
 ```
 
-* [ Output ](#tab-panel-190)
-* [ Raw response ](#tab-panel-191)
+* [ Output ](#tab-panel-230)
+* [ Raw response ](#tab-panel-231)
 
 Here are some great stops along the way, depending on which route you take:
 
@@ -549,8 +549,8 @@ Let me know and I can help build an itinerary!
 
 **Creative Writing with Adaptive Thinking**  — Use adaptive thinking with high effort to steer creative output -- the recommended replacement for the deprecated \`temperature\` parameter. 
 
-* [ TypeScript ](#tab-panel-192)
-* [ cURL ](#tab-panel-193)
+* [ TypeScript ](#tab-panel-232)
+* [ cURL ](#tab-panel-233)
 
 TypeScript
 
@@ -634,8 +634,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/v1/
 
 ```
 
-* [ Output ](#tab-panel-194)
-* [ Raw response ](#tab-panel-195)
+* [ Output ](#tab-panel-234)
+* [ Raw response ](#tab-panel-235)
 
 Detective Mara Voss had seen blood spatter shaped like everything from constellations to corporate logos, but she'd never seen a crime scene that smelled like oranges.
 
@@ -708,8 +708,8 @@ The question was who had sat here, calm as a churchgoer, peeling an orange besid
 
 **Streaming Response**  — Enable streaming for real-time output 
 
-* [ TypeScript ](#tab-panel-186)
-* [ cURL ](#tab-panel-187)
+* [ TypeScript ](#tab-panel-226)
+* [ cURL ](#tab-panel-227)
 
 TypeScript
 
@@ -773,8 +773,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/v1/
 
 ## Parameters
 
-* [ Input ](#tab-panel-196)
-* [ Output ](#tab-panel-197)
+* [ Input ](#tab-panel-236)
+* [ Output ](#tab-panel-237)
 
 max\_tokens
 
@@ -826,9 +826,9 @@ type
 
 ## API Schemas (Raw)
 
-Input 
+Input [ ](https://developers.cloudflare.com/ai/models/anthropic/claude-opus-4.8/schema-input.json "Open") [ ](https://developers.cloudflare.com/ai/models/anthropic/claude-opus-4.8/schema-input.json "Download") 
 
-Output 
+Output [ ](https://developers.cloudflare.com/ai/models/anthropic/claude-opus-4.8/schema-output.json "Open") [ ](https://developers.cloudflare.com/ai/models/anthropic/claude-opus-4.8/schema-output.json "Download") 
 
 ```json
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/ai/","name":"AI"}},{"@type":"ListItem","position":3,"item":{"@id":"/ai/models/","name":"Models"}}]}

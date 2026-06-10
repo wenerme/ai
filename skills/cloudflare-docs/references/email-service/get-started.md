@@ -12,6 +12,11 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 # Getting started
 
+Set up Cloudflare Email Service to send transactional emails and route incoming messages.
+
+* [ Send emails ](https://developers.cloudflare.com/email-service/get-started/send-emails/)
+* [ Route emails ](https://developers.cloudflare.com/email-service/get-started/route-emails/)
+
 ```json
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/email-service/","name":"Email Service"}},{"@type":"ListItem","position":3,"item":{"@id":"/email-service/get-started/","name":"Getting started"}}]}
 ```

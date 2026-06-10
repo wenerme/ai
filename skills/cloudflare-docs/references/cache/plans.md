@@ -18,7 +18,7 @@ Cloudflare provides the following features for different [plans ↗](https://www
 
 ### Always Online
 
-**Link:** [Always Online](https://developers.cloudflare.com/cache/how-to/always-online/)
+**Link:**[Always Online](https://developers.cloudflare.com/cache/how-to/always-online/)
 
 **Feature availability**
 * **Free:** Yes
@@ -37,7 +37,7 @@ Available on all plans
 
 ### Browser Cache TTL
 
-**Link:** [Browser Cache TTL](https://developers.cloudflare.com/cache/how-to/edge-browser-cache-ttl/)
+**Link:**[Browser Cache TTL](https://developers.cloudflare.com/cache/how-to/edge-browser-cache-ttl/)
 
 **Feature availability**
 * **Free:** Yes
@@ -65,7 +65,7 @@ Available on all plans
 
 ### Cache analytics
 
-**Link:** [Cache analytics](https://developers.cloudflare.com/cache/performance-review/cache-analytics/)
+**Link:**[Cache analytics](https://developers.cloudflare.com/cache/performance-review/cache-analytics/)
 
 **Feature availability**
 * **Free:** No
@@ -81,7 +81,7 @@ Available on all plans
 
 ### Cache keys
 
-**Link:** [Cache keys](https://developers.cloudflare.com/cache/how-to/cache-keys/)
+**Link:**[Cache keys](https://developers.cloudflare.com/cache/how-to/cache-keys/)
 
 **Cache deception armor**
 * **Free:** Yes
@@ -139,7 +139,7 @@ Available on all plans
 
 ### Set caching level
 
-**Link:** [Set caching level](https://developers.cloudflare.com/cache/how-to/set-caching-levels/)
+**Link:**[Set caching level](https://developers.cloudflare.com/cache/how-to/set-caching-levels/)
 
 **Feature availability**
 * **Free:** Yes
@@ -149,7 +149,7 @@ Available on all plans
 
 ### Cache reserve
 
-**Link:** [Cache reserve](https://developers.cloudflare.com/cache/advanced-configuration/cache-reserve/)
+**Link:**[Cache reserve](https://developers.cloudflare.com/cache/advanced-configuration/cache-reserve/)
 
 **Feature availability**
 * **Free:** Paid add-on
@@ -159,7 +159,7 @@ Available on all plans
 
 ### Cache Rules
 
-**Link:** [Cache Rules](https://developers.cloudflare.com/cache/how-to/cache-rules/)
+**Link:**[Cache Rules](https://developers.cloudflare.com/cache/how-to/cache-rules/)
 
 **Feature availability**
 * **Free:** Yes
@@ -175,7 +175,7 @@ Available on all plans
 
 ### Cache by status code
 
-**Link:** [Cache by status code](https://developers.cloudflare.com/cache/how-to/configure-cache-status-code/)
+**Link:**[Cache by status code](https://developers.cloudflare.com/cache/how-to/configure-cache-status-code/)
 
 **Feature availability**
 * **Free:** No
@@ -185,7 +185,7 @@ Available on all plans
 
 ### Crawler Hints
 
-**Link:** [Crawler Hints](https://developers.cloudflare.com/cache/advanced-configuration/crawler-hints/)
+**Link:**[Crawler Hints](https://developers.cloudflare.com/cache/advanced-configuration/crawler-hints/)
 
 **Feature availability**
 * **Free:** Yes
@@ -195,7 +195,7 @@ Available on all plans
 
 ### CSAM Scanning Tool
 
-**Link:** [CSAM Scanning Tool](https://developers.cloudflare.com/cache/reference/csam-scanning/)
+**Link:**[CSAM Scanning Tool](https://developers.cloudflare.com/cache/reference/csam-scanning/)
 
 **Feature availability**
 * **Free:** Yes
@@ -205,7 +205,7 @@ Available on all plans
 
 ### Development mode
 
-**Link:** [Development mode](https://developers.cloudflare.com/cache/reference/development-mode/)
+**Link:**[Development mode](https://developers.cloudflare.com/cache/reference/development-mode/)
 
 **Feature availability**
 * **Free:** Yes
@@ -215,7 +215,7 @@ Available on all plans
 
 ### Edge Cache TTL
 
-**Link:** [Edge Cache TTL](https://developers.cloudflare.com/cache/how-to/edge-browser-cache-ttl/)
+**Link:**[Edge Cache TTL](https://developers.cloudflare.com/cache/how-to/edge-browser-cache-ttl/)
 
 **Feature availability**
 * **Free:** Yes
@@ -231,7 +231,7 @@ Available on all plans
 
 ### ETag Headers
 
-**Link:** [ETag Headers](https://developers.cloudflare.com/cache/reference/etag-headers/)
+**Link:**[ETag Headers](https://developers.cloudflare.com/cache/reference/etag-headers/)
 
 **Feature availability**
 * **Free:** Yes
@@ -241,7 +241,7 @@ Available on all plans
 
 ### Purge cache
 
-**Link:** [Purge cache](https://developers.cloudflare.com/cache/how-to/purge-cache/)
+**Link:**[Purge cache](https://developers.cloudflare.com/cache/how-to/purge-cache/)
 
 **Feature availability**
 * **Free:** Yes
@@ -257,7 +257,7 @@ Available on all plans
 
 ### Purge limits for hostname, tag, prefix URL, and purge everything.
 
-**Link:** [Purge limits for hostname, tag, prefix URL, and purge everything.](https://developers.cloudflare.com/cache/how-to/purge-cache/)
+**Link:**[Purge limits for hostname, tag, prefix URL, and purge everything.](https://developers.cloudflare.com/cache/how-to/purge-cache/)
 
 **Requests**
 
@@ -282,7 +282,7 @@ Available on all plans
 
 ### Single file purge
 
-**Link:** [Single file purge](https://developers.cloudflare.com/cache/how-to/purge-cache/purge-by-single-file/)
+**Link:**[Single file purge](https://developers.cloudflare.com/cache/how-to/purge-cache/purge-by-single-file/)
 
 **URLs**
 
@@ -301,7 +301,7 @@ Available on all plans
 
 ### Query string sort
 
-**Link:** [Query string sort](https://developers.cloudflare.com/cache/advanced-configuration/query-string-sort/)
+**Link:**[Query string sort](https://developers.cloudflare.com/cache/advanced-configuration/query-string-sort/)
 
 **Feature availability**
 * **Free:** No
@@ -311,7 +311,7 @@ Available on all plans
 
 ### Tiered cache
 
-**Link:** [Tiered cache](https://developers.cloudflare.com/cache/how-to/tiered-cache/)
+**Link:**[Tiered cache](https://developers.cloudflare.com/cache/how-to/tiered-cache/)
 
 **Tiered Cache**
 
@@ -348,7 +348,7 @@ Available on all plans
 
 ### Vary for images
 
-**Link:** [Vary for images](https://developers.cloudflare.com/cache/advanced-configuration/vary-for-images/)
+**Link:**[Vary for images](https://developers.cloudflare.com/cache/advanced-configuration/vary-for-images/)
 
 **Feature availability**
 * **Free:** No

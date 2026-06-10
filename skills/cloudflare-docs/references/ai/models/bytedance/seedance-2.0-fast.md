@@ -27,8 +27,8 @@ Faster variant of ByteDance's Seedance 2.0 video model. Trades some quality for 
 
 ## Usage
 
-* [ TypeScript ](#tab-panel-346)
-* [ cURL ](#tab-panel-347)
+* [ TypeScript ](#tab-panel-386)
+* [ cURL ](#tab-panel-387)
 
 TypeScript
 
@@ -88,8 +88,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 ```
 
-* [ Output ](#tab-panel-342)
-* [ Raw response ](#tab-panel-343)
+* [ Output ](#tab-panel-382)
+* [ Raw response ](#tab-panel-383)
 
 ```
 
@@ -118,8 +118,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 **Portrait Video**  — Vertical video for social media 
 
-* [ TypeScript ](#tab-panel-348)
-* [ cURL ](#tab-panel-349)
+* [ TypeScript ](#tab-panel-388)
+* [ cURL ](#tab-panel-389)
 
 TypeScript
 
@@ -179,8 +179,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 ```
 
-* [ Output ](#tab-panel-344)
-* [ Raw response ](#tab-panel-345)
+* [ Output ](#tab-panel-384)
+* [ Raw response ](#tab-panel-385)
 
 ```
 
@@ -207,8 +207,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 ## Parameters
 
-* [ Input ](#tab-panel-350)
-* [ Output ](#tab-panel-351)
+* [ Input ](#tab-panel-390)
+* [ Output ](#tab-panel-391)
 
 aspect\_ratio
 
@@ -268,9 +268,9 @@ video
 
 ## API Schemas (Raw)
 
-Input 
+Input [ ](https://developers.cloudflare.com/ai/models/bytedance/seedance-2.0-fast/schema-input.json "Open") [ ](https://developers.cloudflare.com/ai/models/bytedance/seedance-2.0-fast/schema-input.json "Download") 
 
-Output 
+Output [ ](https://developers.cloudflare.com/ai/models/bytedance/seedance-2.0-fast/schema-output.json "Open") [ ](https://developers.cloudflare.com/ai/models/bytedance/seedance-2.0-fast/schema-output.json "Download") 
 
 ```json
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/ai/","name":"AI"}},{"@type":"ListItem","position":3,"item":{"@id":"/ai/models/","name":"Models"}}]}

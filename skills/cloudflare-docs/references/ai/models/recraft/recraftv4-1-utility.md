@@ -28,8 +28,8 @@ Recraft V4.1 Utility is a general-purpose text-to-image model balancing quality 
 
 ## Usage
 
-* [ TypeScript ](#tab-panel-1342)
-* [ cURL ](#tab-panel-1343)
+* [ TypeScript ](#tab-panel-1612)
+* [ cURL ](#tab-panel-1613)
 
 TypeScript
 
@@ -73,8 +73,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 ```
 
-* [ Output ](#tab-panel-1340)
-* [ Raw response ](#tab-panel-1341)
+* [ Output ](#tab-panel-1610)
+* [ Raw response ](#tab-panel-1611)
 
 ![Simple Generation](https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/recraft__recraftv4-1-utility/simple-generation.png) 
 
@@ -105,8 +105,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 **Product Mockup**  — Generate a product concept image 
 
-* [ TypeScript ](#tab-panel-1346)
-* [ cURL ](#tab-panel-1347)
+* [ TypeScript ](#tab-panel-1616)
+* [ cURL ](#tab-panel-1617)
 
 TypeScript
 
@@ -150,8 +150,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 ```
 
-* [ Output ](#tab-panel-1344)
-* [ Raw response ](#tab-panel-1345)
+* [ Output ](#tab-panel-1614)
+* [ Raw response ](#tab-panel-1615)
 
 ![Product Mockup](https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/recraft__recraftv4-1-utility/product-mockup.png) 
 
@@ -180,8 +180,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 **Custom Size**  — Specify output dimensions 
 
-* [ TypeScript ](#tab-panel-1350)
-* [ cURL ](#tab-panel-1351)
+* [ TypeScript ](#tab-panel-1620)
+* [ cURL ](#tab-panel-1621)
 
 TypeScript
 
@@ -233,8 +233,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 ```
 
-* [ Output ](#tab-panel-1348)
-* [ Raw response ](#tab-panel-1349)
+* [ Output ](#tab-panel-1618)
+* [ Raw response ](#tab-panel-1619)
 
 ![Custom Size](https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/recraft__recraftv4-1-utility/custom-size.png) 
 
@@ -263,8 +263,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 **With Color Controls**  — Guide generation with specific colors 
 
-* [ TypeScript ](#tab-panel-1358)
-* [ cURL ](#tab-panel-1359)
+* [ TypeScript ](#tab-panel-1628)
+* [ cURL ](#tab-panel-1629)
 
 TypeScript
 
@@ -350,8 +350,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 ```
 
-* [ Output ](#tab-panel-1352)
-* [ Raw response ](#tab-panel-1353)
+* [ Output ](#tab-panel-1622)
+* [ Raw response ](#tab-panel-1623)
 
 ![With Color Controls](https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/recraft__recraftv4-1-utility/with-color-controls.png) 
 
@@ -380,8 +380,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 **Background Color**  — Set a specific background color 
 
-* [ TypeScript ](#tab-panel-1356)
-* [ cURL ](#tab-panel-1357)
+* [ TypeScript ](#tab-panel-1626)
+* [ cURL ](#tab-panel-1627)
 
 TypeScript
 
@@ -453,8 +453,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 ```
 
-* [ Output ](#tab-panel-1354)
-* [ Raw response ](#tab-panel-1355)
+* [ Output ](#tab-panel-1624)
+* [ Raw response ](#tab-panel-1625)
 
 ![Background Color](https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/recraft__recraftv4-1-utility/background-color.png) 
 
@@ -483,8 +483,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 ## Parameters
 
-* [ Input ](#tab-panel-1360)
-* [ Output ](#tab-panel-1361)
+* [ Input ](#tab-panel-1630)
+* [ Output ](#tab-panel-1631)
 
 ▶controls{}
 
@@ -512,9 +512,9 @@ image
 
 ## API Schemas (Raw)
 
-Input 
+Input [ ](https://developers.cloudflare.com/ai/models/recraft/recraftv4-1-utility/schema-input.json "Open") [ ](https://developers.cloudflare.com/ai/models/recraft/recraftv4-1-utility/schema-input.json "Download") 
 
-Output 
+Output [ ](https://developers.cloudflare.com/ai/models/recraft/recraftv4-1-utility/schema-output.json "Open") [ ](https://developers.cloudflare.com/ai/models/recraft/recraftv4-1-utility/schema-output.json "Download") 
 
 ```json
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/ai/","name":"AI"}},{"@type":"ListItem","position":3,"item":{"@id":"/ai/models/","name":"Models"}}]}

@@ -34,10 +34,10 @@ Try out this model with Workers AI LLM Playground. It does not require any setup
 
 ## Usage
 
-* [  Worker (Streaming) ](#tab-panel-4484)
-* [  TypeScript ](#tab-panel-4485)
-* [  Python ](#tab-panel-4486)
-* [  curl ](#tab-panel-4487)
+* [  Worker (Streaming) ](#tab-panel-4870)
+* [  TypeScript ](#tab-panel-4871)
+* [  Python ](#tab-panel-4872)
+* [  curl ](#tab-panel-4873)
 
 TypeScript
 
@@ -276,13 +276,13 @@ format
 
 ## API Schemas (Raw)
 
-Synchronous Input 
+ Synchronous Input [ ](https://developers.cloudflare.com/workers-ai/models/qwen2.5-coder-32b-instruct/sync-input.json "Open") [ ](https://developers.cloudflare.com/workers-ai/models/qwen2.5-coder-32b-instruct/sync-input.json "Download") 
 
-Synchronous Output 
+ Synchronous Output [ ](https://developers.cloudflare.com/workers-ai/models/qwen2.5-coder-32b-instruct/sync-output.json "Open") [ ](https://developers.cloudflare.com/workers-ai/models/qwen2.5-coder-32b-instruct/sync-output.json "Download") 
 
-Streaming Input 
+ Streaming Input [ ](https://developers.cloudflare.com/workers-ai/models/qwen2.5-coder-32b-instruct/streaming-input.json "Open") [ ](https://developers.cloudflare.com/workers-ai/models/qwen2.5-coder-32b-instruct/streaming-input.json "Download") 
 
-Streaming Output 
+ Streaming Output [ ](https://developers.cloudflare.com/workers-ai/models/qwen2.5-coder-32b-instruct/streaming-output.json "Open") [ ](https://developers.cloudflare.com/workers-ai/models/qwen2.5-coder-32b-instruct/streaming-output.json "Download") 
 
 ```json
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/workers-ai/","name":"Workers AI"}},{"@type":"ListItem","position":3,"item":{"@id":"/workers-ai/models/","name":"Models"}}]}

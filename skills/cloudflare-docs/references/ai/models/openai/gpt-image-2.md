@@ -28,8 +28,8 @@ OpenAI's next-generation image model that creates and edits images from text pro
 
 ## Usage
 
-* [ TypeScript ](#tab-panel-1116)
-* [ cURL ](#tab-panel-1117)
+* [ TypeScript ](#tab-panel-1342)
+* [ cURL ](#tab-panel-1343)
 
 TypeScript
 
@@ -73,8 +73,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 ```
 
-* [ Output ](#tab-panel-1114)
-* [ Raw response ](#tab-panel-1115)
+* [ Output ](#tab-panel-1340)
+* [ Raw response ](#tab-panel-1341)
 
 ![Simple Generation](https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/openai__gpt-image-2/simple-generation.png) 
 
@@ -105,8 +105,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 **High Quality**  — Generate a high-quality detailed image 
 
-* [ TypeScript ](#tab-panel-1120)
-* [ cURL ](#tab-panel-1121)
+* [ TypeScript ](#tab-panel-1346)
+* [ cURL ](#tab-panel-1347)
 
 TypeScript
 
@@ -160,8 +160,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 ```
 
-* [ Output ](#tab-panel-1118)
-* [ Raw response ](#tab-panel-1119)
+* [ Output ](#tab-panel-1344)
+* [ Raw response ](#tab-panel-1345)
 
 ![High Quality](https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/openai__gpt-image-2/high-quality.png) 
 
@@ -190,8 +190,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 **Custom Size**  — Generate a portrait-oriented image 
 
-* [ TypeScript ](#tab-panel-1124)
-* [ cURL ](#tab-panel-1125)
+* [ TypeScript ](#tab-panel-1350)
+* [ cURL ](#tab-panel-1351)
 
 TypeScript
 
@@ -243,8 +243,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 ```
 
-* [ Output ](#tab-panel-1122)
-* [ Raw response ](#tab-panel-1123)
+* [ Output ](#tab-panel-1348)
+* [ Raw response ](#tab-panel-1349)
 
 ![Custom Size](https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/openai__gpt-image-2/custom-size.png) 
 
@@ -273,8 +273,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 **WebP Output**  — Generate an image in WebP format for smaller file size 
 
-* [ TypeScript ](#tab-panel-1128)
-* [ cURL ](#tab-panel-1129)
+* [ TypeScript ](#tab-panel-1354)
+* [ cURL ](#tab-panel-1355)
 
 TypeScript
 
@@ -332,8 +332,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 ```
 
-* [ Output ](#tab-panel-1126)
-* [ Raw response ](#tab-panel-1127)
+* [ Output ](#tab-panel-1352)
+* [ Raw response ](#tab-panel-1353)
 
 ![WebP Output](https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/openai__gpt-image-2/webp-output.webp) 
 
@@ -362,8 +362,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 **Image Edit**  — Edit an existing image by providing it in the images array as base64 (a raw string or a data:image/{png|jpeg|webp};base64,... URI). This routes the call to OpenAI's /v1/images/edits endpoint. The example uses a tiny 32x32 smiley-face PNG - real inputs are the full base64 encoding of your source image. 
 
-* [ TypeScript ](#tab-panel-1134)
-* [ cURL ](#tab-panel-1135)
+* [ TypeScript ](#tab-panel-1360)
+* [ cURL ](#tab-panel-1361)
 
 TypeScript
 
@@ -425,8 +425,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 ```
 
-* [ Output ](#tab-panel-1130)
-* [ Raw response ](#tab-panel-1131)
+* [ Output ](#tab-panel-1356)
+* [ Raw response ](#tab-panel-1357)
 
 ![Image Edit](https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/openai__gpt-image-2/image-edit.png) 
 
@@ -455,8 +455,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 **Multi-Image Edit**  — Compose multiple input images by passing up to 16 base64 strings in the images array. The model blends the references; useful for combining subjects, styles, or reference shots. The example pairs a smiley-face PNG with a red ball PNG. 
 
-* [ TypeScript ](#tab-panel-1136)
-* [ cURL ](#tab-panel-1137)
+* [ TypeScript ](#tab-panel-1362)
+* [ cURL ](#tab-panel-1363)
 
 TypeScript
 
@@ -522,8 +522,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 ```
 
-* [ Output ](#tab-panel-1132)
-* [ Raw response ](#tab-panel-1133)
+* [ Output ](#tab-panel-1358)
+* [ Raw response ](#tab-panel-1359)
 
 ![Multi-Image Edit](https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/openai__gpt-image-2/multi-image-edit.png) 
 
@@ -552,8 +552,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 ## Parameters
 
-* [ Input ](#tab-panel-1138)
-* [ Output ](#tab-panel-1139)
+* [ Input ](#tab-panel-1364)
+* [ Output ](#tab-panel-1365)
 
 background
 
@@ -585,9 +585,9 @@ image
 
 ## API Schemas (Raw)
 
-Input 
+Input [ ](https://developers.cloudflare.com/ai/models/openai/gpt-image-2/schema-input.json "Open") [ ](https://developers.cloudflare.com/ai/models/openai/gpt-image-2/schema-input.json "Download") 
 
-Output 
+Output [ ](https://developers.cloudflare.com/ai/models/openai/gpt-image-2/schema-output.json "Open") [ ](https://developers.cloudflare.com/ai/models/openai/gpt-image-2/schema-output.json "Download") 
 
 ```json
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/ai/","name":"AI"}},{"@type":"ListItem","position":3,"item":{"@id":"/ai/models/","name":"Models"}}]}

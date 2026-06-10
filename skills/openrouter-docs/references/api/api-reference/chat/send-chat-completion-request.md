@@ -137,6 +137,7 @@ paths:
               $ref: '#/components/schemas/ChatRequest'
 servers:
   - url: https://openrouter.ai/api/v1
+    description: Production server
 components:
   schemas:
     MetadataLevel:
@@ -768,6 +769,71 @@ components:
           $ref: '#/components/schemas/PDFParserEngine'
       description: Options for PDF parsing.
       title: PDFParserOptions
+    ResponsesRequestPluginsItemsDiscriminatorMappingFusionToolsItemsParametersOneOf4Items:
+      oneOf:
+        - type: string
+        - type: number
+          format: double
+        - type: boolean
+        - description: Any type
+        - description: Any type
+      title: >-
+        ResponsesRequestPluginsItemsDiscriminatorMappingFusionToolsItemsParametersOneOf4Items
+    ResponsesRequestPluginsItemsDiscriminatorMappingFusionToolsItemsParameters4:
+      type: array
+      items:
+        $ref: >-
+          #/components/schemas/ResponsesRequestPluginsItemsDiscriminatorMappingFusionToolsItemsParametersOneOf4Items
+      title: >-
+        ResponsesRequestPluginsItemsDiscriminatorMappingFusionToolsItemsParameters4
+    ResponsesRequestPluginsItemsDiscriminatorMappingFusionToolsItemsParametersOneOf5:
+      oneOf:
+        - type: string
+        - type: number
+          format: double
+        - type: boolean
+        - description: Any type
+        - description: Any type
+      title: >-
+        ResponsesRequestPluginsItemsDiscriminatorMappingFusionToolsItemsParametersOneOf5
+    ResponsesRequestPluginsItemsDiscriminatorMappingFusionToolsItemsParameters5:
+      type: object
+      additionalProperties:
+        $ref: >-
+          #/components/schemas/ResponsesRequestPluginsItemsDiscriminatorMappingFusionToolsItemsParametersOneOf5
+      title: >-
+        ResponsesRequestPluginsItemsDiscriminatorMappingFusionToolsItemsParameters5
+    ResponsesRequestPluginsItemsDiscriminatorMappingFusionToolsItemsParameters:
+      oneOf:
+        - type: string
+        - type: number
+          format: double
+        - type: boolean
+        - description: Any type
+        - $ref: >-
+            #/components/schemas/ResponsesRequestPluginsItemsDiscriminatorMappingFusionToolsItemsParameters4
+        - $ref: >-
+            #/components/schemas/ResponsesRequestPluginsItemsDiscriminatorMappingFusionToolsItemsParameters5
+        - description: Any type
+      title: >-
+        ResponsesRequestPluginsItemsDiscriminatorMappingFusionToolsItemsParameters
+    ResponsesRequestPluginsItemsDiscriminatorMappingFusionToolsItems:
+      type: object
+      properties:
+        parameters:
+          type: object
+          additionalProperties:
+            $ref: >-
+              #/components/schemas/ResponsesRequestPluginsItemsDiscriminatorMappingFusionToolsItemsParameters
+          description: Optional configuration forwarded as the tool's `parameters` object.
+        type:
+          type: string
+          description: >-
+            Server tool type identifier (e.g. "openrouter:web_search",
+            "openrouter:web_fetch").
+      required:
+        - type
+      title: ResponsesRequestPluginsItemsDiscriminatorMappingFusionToolsItems
     WebSearchEngine:
       type: string
       enum:
@@ -923,6 +989,18 @@ components:
                 Slug of the model that performs both the judge step (with
                 web_search + web_fetch) and the final synthesis. When omitted,
                 defaults to the first model in the Quality preset.
+            tools:
+              type: array
+              items:
+                $ref: >-
+                  #/components/schemas/ResponsesRequestPluginsItemsDiscriminatorMappingFusionToolsItems
+              description: >-
+                Server tools available to panelist and judge inner calls. Each
+                entry uses the same `{ type, parameters? }` shorthand as the
+                outer Chat Completions request. When omitted, defaults to `[{
+                type: "openrouter:web_search" }, { type: "openrouter:web_fetch"
+                }]`. Pass an empty array to disable tools entirely (panelists
+                answer from parametric knowledge only).
           required:
             - id
           description: fusion variant
@@ -1090,6 +1168,7 @@ components:
         - Crucible
         - Crusoe
         - Darkbloom
+        - Decart
         - DeepInfra
         - DeepSeek
         - DekaLLM
@@ -3369,7 +3448,58 @@ components:
 
 ```
 
-## SDK Code Examples
+## Examples
+
+
+
+**Request**
+
+```json
+{
+  "messages": [
+    {
+      "role": "system",
+      "content": "You are a helpful assistant."
+    },
+    {
+      "role": "user",
+      "content": "What is the capital of France?"
+    }
+  ],
+  "max_tokens": 150,
+  "model": "openai/gpt-4",
+  "temperature": 0.7
+}
+```
+
+**Response**
+
+```json
+{
+  "choices": [
+    {
+      "finish_reason": "stop",
+      "index": 0,
+      "message": {
+        "content": "The capital of France is Paris.",
+        "role": "assistant"
+      }
+    }
+  ],
+  "created": 1677652288,
+  "id": "chatcmpl-123",
+  "model": "openai/gpt-4",
+  "object": "chat.completion",
+  "system_fingerprint": "fp_44709d6fcb",
+  "usage": {
+    "completion_tokens": 10,
+    "prompt_tokens": 25,
+    "total_tokens": 35
+  }
+}
+```
+
+**SDK Code**
 
 ```python Chat_sendChatCompletionRequest_example
 import requests

@@ -12,13 +12,13 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 # Email agent
 
-Agents can send and receive email with Cloudflare [Email Service](https://developers.cloudflare.com/email-routing/email-workers/). This guide shows how to send outbound email with the Workers binding, route inbound mail into Agents, and handle follow-up replies securely.
+Agents can send and receive email with Cloudflare [Email Service](https://developers.cloudflare.com/email-service/api/route-emails/email-handler/). This guide shows how to send outbound email with the Workers binding, route inbound mail into Agents, and handle follow-up replies securely.
 
 ## Prerequisites
 
 Before using email with Agents, you need:
 
-1. A domain onboarded to [Cloudflare Email Service](https://developers.cloudflare.com/email-routing/).
+1. A domain onboarded to [Cloudflare Email Service](https://developers.cloudflare.com/email-service/).
 2. A `send_email` binding in `wrangler.jsonc` for outbound email.
 3. An Email Service routing rule that sends inbound mail to your Worker.
 4. Optional: an `EMAIL_SECRET` secret if you want secure reply routing.
@@ -36,8 +36,8 @@ DNS changes usually complete within 5-15 minutes for domains using Cloudflare DN
 
 Add the email binding to your Worker:
 
-* [  wrangler.jsonc ](#tab-panel-4880)
-* [  wrangler.toml ](#tab-panel-4881)
+* [  wrangler.jsonc ](#tab-panel-5266)
+* [  wrangler.toml ](#tab-panel-5267)
 
 JSONC
 
@@ -81,8 +81,8 @@ The `remote = true` option lets you call the real Email Service API during local
 
 ## Quick start
 
-* [  JavaScript ](#tab-panel-4906)
-* [  TypeScript ](#tab-panel-4907)
+* [  JavaScript ](#tab-panel-5292)
+* [  TypeScript ](#tab-panel-5293)
 
 JavaScript
 
@@ -246,8 +246,8 @@ export default {
 
 `sendEmail()` sends outbound email through a `send_email` binding that you pass explicitly. It automatically injects agent routing headers (`X-Agent-Name`, `X-Agent-ID`) into every message, and optionally signs them with HMAC-SHA256 so that replies can be routed back to the same agent instance.
 
-* [  JavaScript ](#tab-panel-4890)
-* [  TypeScript ](#tab-panel-4891)
+* [  JavaScript ](#tab-panel-5276)
+* [  TypeScript ](#tab-panel-5277)
 
 JavaScript
 
@@ -339,8 +339,8 @@ For basic Email Service sending and receiving, `createAddressBasedEmailResolver(
 
 Recommended for inbound mail. Routes emails based on the recipient address.
 
-* [  JavaScript ](#tab-panel-4884)
-* [  TypeScript ](#tab-panel-4885)
+* [  JavaScript ](#tab-panel-5270)
+* [  TypeScript ](#tab-panel-5271)
 
 JavaScript
 
@@ -384,8 +384,8 @@ Agent class names in the recipient address are matched case-insensitively. Email
 
 For reply flows with signature verification. Verifies that incoming emails are authentic replies to your outbound emails, preventing attackers from routing emails to arbitrary agent instances.
 
-* [  JavaScript ](#tab-panel-4886)
-* [  TypeScript ](#tab-panel-4887)
+* [  JavaScript ](#tab-panel-5272)
+* [  TypeScript ](#tab-panel-5273)
 
 JavaScript
 
@@ -415,8 +415,8 @@ When your agent sends an email with `replyToEmail()` or `sendEmail()` and a `sec
 
 **Options:**
 
-* [  JavaScript ](#tab-panel-4892)
-* [  TypeScript ](#tab-panel-4893)
+* [  JavaScript ](#tab-panel-5278)
+* [  TypeScript ](#tab-panel-5279)
 
 JavaScript
 
@@ -476,8 +476,8 @@ const resolver = createSecureReplyEmailResolver(env.EMAIL_SECRET, {
 
 For single-instance routing. Routes all emails to a specific agent instance regardless of the recipient address.
 
-* [  JavaScript ](#tab-panel-4888)
-* [  TypeScript ](#tab-panel-4889)
+* [  JavaScript ](#tab-panel-5274)
+* [  TypeScript ](#tab-panel-5275)
 
 JavaScript
 
@@ -509,8 +509,8 @@ const resolver = createCatchAllEmailResolver("EmailAgent", "default");
 
 You can combine resolvers to handle different scenarios:
 
-* [  JavaScript ](#tab-panel-4904)
-* [  TypeScript ](#tab-panel-4905)
+* [  JavaScript ](#tab-panel-5290)
+* [  TypeScript ](#tab-panel-5291)
 
 JavaScript
 
@@ -658,8 +658,8 @@ type AgentEmail = {
 
 Use a library like [postal-mime ↗](https://www.npmjs.com/package/postal-mime) to parse the raw email:
 
-* [  JavaScript ](#tab-panel-4894)
-* [  TypeScript ](#tab-panel-4895)
+* [  JavaScript ](#tab-panel-5280)
+* [  TypeScript ](#tab-panel-5281)
 
 JavaScript
 
@@ -727,8 +727,8 @@ class MyAgent extends Agent {
 
 Use `isAutoReplyEmail()` to detect auto-reply emails and avoid mail loops:
 
-* [  JavaScript ](#tab-panel-4898)
-* [  TypeScript ](#tab-panel-4899)
+* [  JavaScript ](#tab-panel-5284)
+* [  TypeScript ](#tab-panel-5285)
 
 JavaScript
 
@@ -812,8 +812,8 @@ This checks for standard RFC 3834 headers (`Auto-Submitted`, `X-Auto-Response-Su
 
 Use `this.replyToEmail()` to send a reply through the inbound email's reply channel:
 
-* [  JavaScript ](#tab-panel-4900)
-* [  TypeScript ](#tab-panel-4901)
+* [  JavaScript ](#tab-panel-5286)
+* [  TypeScript ](#tab-panel-5287)
 
 JavaScript
 
@@ -893,8 +893,8 @@ class MyAgent extends Agent {
 
 `replyToEmail()` requires a live `AgentEmail` object, so it only works inside `onEmail()`. If you need to reply later — from a scheduled task, a callable method, or after a human-in-the-loop approval — store the sender info in state and use `sendEmail()`:
 
-* [  JavaScript ](#tab-panel-4912)
-* [  TypeScript ](#tab-panel-4913)
+* [  JavaScript ](#tab-panel-5298)
+* [  TypeScript ](#tab-panel-5299)
 
 JavaScript
 
@@ -1032,8 +1032,8 @@ The `inReplyTo` field sets the `In-Reply-To` header so mail clients thread the r
 
 ### Forwarding emails
 
-* [  JavaScript ](#tab-panel-4896)
-* [  TypeScript ](#tab-panel-4897)
+* [  JavaScript ](#tab-panel-5282)
+* [  TypeScript ](#tab-panel-5283)
 
 JavaScript
 
@@ -1071,8 +1071,8 @@ class MyAgent extends Agent {
 
 ### Rejecting emails
 
-* [  JavaScript ](#tab-panel-4902)
-* [  TypeScript ](#tab-panel-4903)
+* [  JavaScript ](#tab-panel-5288)
+* [  TypeScript ](#tab-panel-5289)
 
 JavaScript
 
@@ -1128,8 +1128,8 @@ class MyAgent extends Agent {
 
 When sending emails via `sendEmail()` or `replyToEmail()`, handle these common errors:
 
-* [  JavaScript ](#tab-panel-4914)
-* [  TypeScript ](#tab-panel-4915)
+* [  JavaScript ](#tab-panel-5300)
+* [  TypeScript ](#tab-panel-5301)
 
 JavaScript
 
@@ -1279,8 +1279,8 @@ When your agent sends emails and expects replies, use secure reply routing to pr
 ### Setup
 
 1. Add a secret to your Worker:  
-   * [  wrangler.jsonc ](#tab-panel-4882)  
-   * [  wrangler.toml ](#tab-panel-4883)  
+   * [  wrangler.jsonc ](#tab-panel-5268)  
+   * [  wrangler.toml ](#tab-panel-5269)  
 JSONC  
 ```  
 {  
@@ -1301,8 +1301,8 @@ Terminal window
 npx wrangler secret put EMAIL_SECRET  
 ```
 2. Use the combined resolver pattern:  
-   * [  JavaScript ](#tab-panel-4910)  
-   * [  TypeScript ](#tab-panel-4911)  
+   * [  JavaScript ](#tab-panel-5296)  
+   * [  TypeScript ](#tab-panel-5297)  
 JavaScript  
 ```  
 export default {  
@@ -1340,8 +1340,8 @@ export default {
 } satisfies ExportedHandler<Env>;  
 ```
 3. Sign outbound emails:  
-   * [  JavaScript ](#tab-panel-4908)  
-   * [  TypeScript ](#tab-panel-4909)  
+   * [  JavaScript ](#tab-panel-5294)  
+   * [  TypeScript ](#tab-panel-5295)  
 JavaScript  
 ```  
 class MyAgent extends Agent {  
@@ -1381,8 +1381,8 @@ When an email is routed via `createSecureReplyEmailResolver`, the `replyToEmail(
 
 Here is a complete Email Service agent that sends outbound mail and handles secure replies:
 
-* [  JavaScript ](#tab-panel-4916)
-* [  TypeScript ](#tab-panel-4917)
+* [  JavaScript ](#tab-panel-5302)
+* [  TypeScript ](#tab-panel-5303)
 
 JavaScript
 

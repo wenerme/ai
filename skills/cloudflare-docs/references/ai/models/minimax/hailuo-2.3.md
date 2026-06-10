@@ -28,8 +28,8 @@ A high-fidelity video generation model optimized for realistic human motion, cin
 
 ## Usage
 
-* [ TypeScript ](#tab-panel-756)
-* [ cURL ](#tab-panel-757)
+* [ TypeScript ](#tab-panel-806)
+* [ cURL ](#tab-panel-807)
 
 TypeScript
 
@@ -93,8 +93,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 ```
 
-* [ Output ](#tab-panel-754)
-* [ Raw response ](#tab-panel-755)
+* [ Output ](#tab-panel-804)
+* [ Raw response ](#tab-panel-805)
 
 ```
 
@@ -127,8 +127,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 **High Resolution**  — 1080P video for higher quality output 
 
-* [ TypeScript ](#tab-panel-760)
-* [ cURL ](#tab-panel-761)
+* [ TypeScript ](#tab-panel-810)
+* [ cURL ](#tab-panel-811)
 
 TypeScript
 
@@ -194,8 +194,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 ```
 
-* [ Output ](#tab-panel-758)
-* [ Raw response ](#tab-panel-759)
+* [ Output ](#tab-panel-808)
+* [ Raw response ](#tab-panel-809)
 
 ```
 
@@ -226,8 +226,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 **Image to Video**  — Animate a still image with I2V 
 
-* [ TypeScript ](#tab-panel-766)
-* [ cURL ](#tab-panel-767)
+* [ TypeScript ](#tab-panel-816)
+* [ cURL ](#tab-panel-817)
 
 TypeScript
 
@@ -297,8 +297,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 ```
 
-* [ Output ](#tab-panel-762)
-* [ Raw response ](#tab-panel-763)
+* [ Output ](#tab-panel-812)
+* [ Raw response ](#tab-panel-813)
 
 ```
 
@@ -329,8 +329,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 **Fast Processing**  — Enable fast pretreatment for quicker results 
 
-* [ TypeScript ](#tab-panel-768)
-* [ cURL ](#tab-panel-769)
+* [ TypeScript ](#tab-panel-818)
+* [ cURL ](#tab-panel-819)
 
 TypeScript
 
@@ -394,8 +394,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 ```
 
-* [ Output ](#tab-panel-764)
-* [ Raw response ](#tab-panel-765)
+* [ Output ](#tab-panel-814)
+* [ Raw response ](#tab-panel-815)
 
 ```
 
@@ -426,8 +426,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 ## Parameters
 
-* [ Input ](#tab-panel-770)
-* [ Output ](#tab-panel-771)
+* [ Input ](#tab-panel-820)
+* [ Output ](#tab-panel-821)
 
 ▶duration
 
@@ -467,9 +467,9 @@ video
 
 ## API Schemas (Raw)
 
-Input 
+Input [ ](https://developers.cloudflare.com/ai/models/minimax/hailuo-2.3/schema-input.json "Open") [ ](https://developers.cloudflare.com/ai/models/minimax/hailuo-2.3/schema-input.json "Download") 
 
-Output 
+Output [ ](https://developers.cloudflare.com/ai/models/minimax/hailuo-2.3/schema-output.json "Open") [ ](https://developers.cloudflare.com/ai/models/minimax/hailuo-2.3/schema-output.json "Download") 
 
 ```json
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/ai/","name":"AI"}},{"@type":"ListItem","position":3,"item":{"@id":"/ai/models/","name":"Models"}}]}

@@ -188,6 +188,26 @@ If you see the error `Failed to fetch user/group information from the identity`,
 * If you have more than 100 Okta groups, ensure you include the API token.
 * The request may be blocked by the [ThreatInsights feature ↗](https://help.okta.com/en/prod/Content/Topics/Security/threat-insight/ti-index.htm) within Okta.
 
+### Access login fails due to Okta Enhanced Dynamic Zone
+
+If Okta's [Enhanced Dynamic Zone ↗](https://help.okta.com/oie/en-us/content/topics/security/network/network-zones.htm) (`DefaultEnhancedDynamicZone`) is active with `ALL_ANONYMIZERS` enabled, Okta may block requests from Cloudflare IP addresses. This causes Access logins to fail with the error `Failed to fetch user/group information from the identity provider`.
+
+In the Okta system logs, this appears as:
+
+```
+
+Blocked request from IP: <BLOCKED_IP>, IPServiceCategory: WARP_VPN
+
+
+```
+
+This setting is configured in the Okta admin panel under **Security** \> **Network**.
+
+To resolve this, either:
+
+* [Unblock the false positives ↗](https://help.okta.com/oie/en-us/content/topics/security/network/unblock-false-positives.htm) by adding [Cloudflare's IP ranges ↗](https://www.cloudflare.com/ips/) to the **DefaultExemptIpZone** (IP exempt list) in Okta's network zone configuration.
+* Deactivate the `DefaultEnhancedDynamicZone` in Okta's network zone configuration.
+
 ```json
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/cloudflare-one/","name":"Cloudflare One"}},{"@type":"ListItem","position":3,"item":{"@id":"/cloudflare-one/integrations/","name":"Integrations"}},{"@type":"ListItem","position":4,"item":{"@id":"/cloudflare-one/integrations/identity-providers/","name":"Identity providers"}},{"@type":"ListItem","position":5,"item":{"@id":"/cloudflare-one/integrations/identity-providers/okta/","name":"Okta"}}]}
 ```

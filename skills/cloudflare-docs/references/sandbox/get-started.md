@@ -250,8 +250,8 @@ Your sandbox is now deployed and can execute code in isolated containers.
 
 Your `wrangler.jsonc` connects three pieces together:
 
-* [  wrangler.jsonc ](#tab-panel-8142)
-* [  wrangler.toml ](#tab-panel-8143)
+* [  wrangler.jsonc ](#tab-panel-10002)
+* [  wrangler.toml ](#tab-panel-10003)
 
 JSONC
 

@@ -18,7 +18,7 @@ When you host agents on Cloudflare, each agent session has a durable identity, l
 
 Deploy once and Cloudflare runs your agents across its global network, scaling to tens of millions of instances. No infrastructure to manage, no sessions to reconstruct, no state to externalize.
 
-[Chat](https://developers.cloudflare.com/agents/communication-channels/chat/)[Email](https://developers.cloudflare.com/agents/communication-channels/email/)[Voice](https://developers.cloudflare.com/agents/communication-channels/voice/)[Slack](https://developers.cloudflare.com/agents/communication-channels/slack/)[Webhook](https://developers.cloudflare.com/agents/communication-channels/webhooks/) 
+[ Chat ](https://developers.cloudflare.com/agents/communication-channels/chat/)[ Email ](https://developers.cloudflare.com/agents/communication-channels/email/)[ Voice ](https://developers.cloudflare.com/agents/communication-channels/voice/)[ Slack ](https://developers.cloudflare.com/agents/communication-channels/slack/)[ Webhook ](https://developers.cloudflare.com/agents/communication-channels/webhooks/) 
 
 Agent harness
 
@@ -34,7 +34,7 @@ Durable identity, state, connections, scheduling, and recovery.
 
 [State](https://developers.cloudflare.com/agents/runtime/lifecycle/state/)[Sessions](https://developers.cloudflare.com/agents/runtime/lifecycle/sessions/)[Routing](https://developers.cloudflare.com/agents/runtime/communication/routing/)[WebSockets](https://developers.cloudflare.com/agents/runtime/communication/websockets/)[Scheduling](https://developers.cloudflare.com/agents/runtime/execution/schedule-tasks/)[Fibers](https://developers.cloudflare.com/agents/runtime/execution/durable-execution/) 
 
-[Sandbox](https://developers.cloudflare.com/agents/tools/sandbox/)[MCP](https://developers.cloudflare.com/agents/tools/mcp/)[Browser](https://developers.cloudflare.com/agents/tools/browser/)[AI Search](https://developers.cloudflare.com/agents/tools/ai-search/)[Payments](https://developers.cloudflare.com/agents/tools/payments/) 
+[ Sandbox ](https://developers.cloudflare.com/agents/tools/sandbox/)[ MCP ](https://developers.cloudflare.com/agents/tools/mcp/)[ Browser ](https://developers.cloudflare.com/agents/tools/browser/)[ AI Search ](https://developers.cloudflare.com/agents/tools/ai-search/)[ Payments ](https://developers.cloudflare.com/agents/tools/payments/) 
 
 [ Observability Logs · metrics · traces ](https://developers.cloudflare.com/agents/runtime/operations/observability/) 
 

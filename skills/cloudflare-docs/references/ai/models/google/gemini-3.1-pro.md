@@ -29,8 +29,8 @@ Google's most intelligent Gemini model with improved reasoning, a medium thinkin
 
 ## Usage
 
-* [ TypeScript ](#tab-panel-526)
-* [ cURL ](#tab-panel-527)
+* [ TypeScript ](#tab-panel-576)
+* [ cURL ](#tab-panel-577)
 
 TypeScript
 
@@ -92,8 +92,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 ```
 
-* [ Output ](#tab-panel-532)
-* [ Raw response ](#tab-panel-533)
+* [ Output ](#tab-panel-582)
+* [ Raw response ](#tab-panel-583)
 
 The laws of thermodynamics are the fundamental principles that describe how energy moves and changes within the universe. While the prompt asks for the "three" laws, there are actually four (scientists later added a "Zeroth" law). 
 
@@ -221,8 +221,8 @@ A famous and humorous way physicists remember the laws of thermodynamics is by c
 
 **With System Instruction**  — Using a system instruction to set context 
 
-* [ TypeScript ](#tab-panel-528)
-* [ cURL ](#tab-panel-529)
+* [ TypeScript ](#tab-panel-578)
+* [ cURL ](#tab-panel-579)
 
 TypeScript
 
@@ -316,8 +316,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 ```
 
-* [ Output ](#tab-panel-536)
-* [ Raw response ](#tab-panel-537)
+* [ Output ](#tab-panel-586)
+* [ Raw response ](#tab-panel-587)
 
 To read a JSON file in Python, you can use the built-in `json` module. 
 
@@ -461,8 +461,8 @@ except json.JSONDecodeError:
 
 **Multi-turn Conversation**  — Continuing a conversation with context 
 
-* [ TypeScript ](#tab-panel-534)
-* [ cURL ](#tab-panel-535)
+* [ TypeScript ](#tab-panel-584)
+* [ cURL ](#tab-panel-585)
 
 TypeScript
 
@@ -596,8 +596,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 ```
 
-* [ Output ](#tab-panel-538)
-* [ Raw response ](#tab-panel-539)
+* [ Output ](#tab-panel-588)
+* [ Raw response ](#tab-panel-589)
 
 The best stops really depend on which route you decide to take! There are three
 
@@ -692,8 +692,8 @@ The best stops really depend on which route you decide to take! There are three
 
 **Creative Writing**  — Higher temperature for creative output 
 
-* [ TypeScript ](#tab-panel-530)
-* [ cURL ](#tab-panel-531)
+* [ TypeScript ](#tab-panel-580)
+* [ cURL ](#tab-panel-581)
 
 TypeScript
 
@@ -779,8 +779,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 ```
 
-* [ Output ](#tab-panel-540)
-* [ Raw response ](#tab-panel-541)
+* [ Output ](#tab-panel-590)
+* [ Raw response ](#tab-panel-591)
 
 The air in Elias Vance’s apartment smelled of stale copper
 
@@ -875,8 +875,8 @@ The air in Elias Vance’s apartment smelled of stale copper
 
 ## Parameters
 
-* [ Input ](#tab-panel-542)
-* [ Output ](#tab-panel-543)
+* [ Input ](#tab-panel-592)
+* [ Output ](#tab-panel-593)
 
 ▶contents\[\]
 
@@ -916,9 +916,9 @@ modelVersion
 
 ## API Schemas (Raw)
 
-Input 
+Input [ ](https://developers.cloudflare.com/ai/models/google/gemini-3.1-pro/schema-input.json "Open") [ ](https://developers.cloudflare.com/ai/models/google/gemini-3.1-pro/schema-input.json "Download") 
 
-Output 
+Output [ ](https://developers.cloudflare.com/ai/models/google/gemini-3.1-pro/schema-output.json "Open") [ ](https://developers.cloudflare.com/ai/models/google/gemini-3.1-pro/schema-output.json "Download") 
 
 ```json
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/ai/","name":"AI"}},{"@type":"ListItem","position":3,"item":{"@id":"/ai/models/","name":"Models"}}]}

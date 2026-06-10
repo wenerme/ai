@@ -229,7 +229,7 @@ const reader = socket.readable.getReader(); // This fails
 * Outbound TCP sockets to [Cloudflare IP ranges ↗](https://www.cloudflare.com/ips/) are blocked.
 * TCP sockets cannot be created in global scope and shared across requests. You should always create TCP sockets within a handler (ex: [fetch()](https://developers.cloudflare.com/workers/get-started/guide/#3-write-code), [scheduled()](https://developers.cloudflare.com/workers/runtime-apis/handlers/scheduled/), [queue()](https://developers.cloudflare.com/queues/configuration/javascript-apis/#consumer)) or [alarm()](https://developers.cloudflare.com/durable-objects/api/alarms/).
 * Each open TCP socket counts towards the maximum number of [open connections](https://developers.cloudflare.com/workers/platform/limits/#simultaneous-open-connections) that can be simultaneously open.
-* By default, Workers cannot create outbound TCP connections on port `25` to send email to SMTP mail servers. [Cloudflare Email Workers](https://developers.cloudflare.com/email-routing/email-workers/) provides APIs to process and forward email.
+* By default, Workers cannot create outbound TCP connections on port `25` to send email to SMTP mail servers. [Cloudflare Email Workers](https://developers.cloudflare.com/email-service/api/route-emails/email-handler/) provides APIs to process and forward email.
 * Support for handling inbound TCP connections is [coming soon ↗](https://blog.cloudflare.com/workers-tcp-socket-api-connect-databases/). Currently, it is not possible to make an inbound TCP connection to your Worker, for example, by using the `CONNECT` HTTP method.
 
 ## Troubleshooting
@@ -248,7 +248,7 @@ Your socket is connecting back to the Worker that initiated the outbound connect
 
 ### `Connections to port 25 are prohibited`
 
-Your socket is connecting to an address on port `25`. This is usually the port used for SMTP mail servers. Workers cannot create outbound connections on port `25`. Consider using [Cloudflare Email Workers](https://developers.cloudflare.com/email-routing/email-workers/) instead.
+Your socket is connecting to an address on port `25`. This is usually the port used for SMTP mail servers. Workers cannot create outbound connections on port `25`. Consider using [Cloudflare Email Workers](https://developers.cloudflare.com/email-service/api/route-emails/email-handler/) instead.
 
 ```json
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/workers/","name":"Workers"}},{"@type":"ListItem","position":3,"item":{"@id":"/workers/runtime-apis/","name":"Runtime APIs"}},{"@type":"ListItem","position":4,"item":{"@id":"/workers/runtime-apis/tcp-sockets/","name":"TCP sockets"}}]}

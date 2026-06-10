@@ -81,6 +81,7 @@ paths:
               $ref: '#/components/schemas/BulkAssignKeysRequest'
 servers:
   - url: https://openrouter.ai/api/v1
+    description: Production server
 components:
   schemas:
     BulkAssignKeysRequest:
@@ -259,7 +260,29 @@ components:
 
 ```
 
-## SDK Code Examples
+## Examples
+
+
+
+**Request**
+
+```json
+{
+  "key_hashes": [
+    "c56454edb818d6b14bc0d61c46025f1450b0f4012d12304ab40aacb519fcbc93"
+  ]
+}
+```
+
+**Response**
+
+```json
+{
+  "assigned_count": 3
+}
+```
+
+**SDK Code**
 
 ```python Guardrails_bulkAssignKeysToGuardrail_example
 import requests

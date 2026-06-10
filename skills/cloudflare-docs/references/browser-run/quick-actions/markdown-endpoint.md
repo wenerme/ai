@@ -14,7 +14,12 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 The `/markdown` endpoint retrieves a webpage's content and converts it into Markdown format. You can specify a URL and optional parameters to refine the extraction process.
 
-You can use this endpoint in two ways. To use the REST API, [create a custom API Token](https://developers.cloudflare.com/fundamentals/api/get-started/create-token/) with `Browser Rendering - Edit` permission. To use the [Workers binding](https://developers.cloudflare.com/browser-run/reference/wrangler/#bindings) from a [Cloudflare Worker](https://developers.cloudflare.com/workers/), no API token is needed. For more information, refer to [Quick Actions — Before you begin](https://developers.cloudflare.com/browser-run/quick-actions/#before-you-begin).
+You can use this endpoint in two ways:
+
+* **REST API**: [Create a custom API Token](https://developers.cloudflare.com/fundamentals/api/get-started/create-token/) with `Browser Rendering - Edit` permission.
+* **Workers Bindings**: Call the endpoint directly from a [Cloudflare Worker](https://developers.cloudflare.com/workers/) using the [Workers Bindings](https://developers.cloudflare.com/browser-run/reference/wrangler/#bindings). No API token is needed.
+
+For more information, refer to [Quick Actions: Before you begin](https://developers.cloudflare.com/browser-run/quick-actions/#before-you-begin).
 
 ## Endpoint
 
@@ -42,9 +47,9 @@ You must provide either `url` or `html`:
 
 ### Convert a URL to Markdown
 
-* [ curl ](#tab-panel-5838)
-* [ TypeScript SDK ](#tab-panel-5839)
-* [ Workers binding ](#tab-panel-5840)
+* [ curl ](#tab-panel-6696)
+* [ TypeScript SDK ](#tab-panel-6697)
+* [ Workers binding ](#tab-panel-6698)
 
 This example fetches the Markdown representation of a webpage.
 

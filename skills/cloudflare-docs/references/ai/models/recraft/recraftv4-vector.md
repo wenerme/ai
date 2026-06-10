@@ -28,8 +28,8 @@ Generate production-ready SVG vector graphics from text prompts with clean geome
 
 ## Usage
 
-* [ TypeScript ](#tab-panel-1472)
-* [ cURL ](#tab-panel-1473)
+* [ TypeScript ](#tab-panel-1742)
+* [ cURL ](#tab-panel-1743)
 
 TypeScript
 
@@ -73,8 +73,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 ```
 
-* [ Output ](#tab-panel-1470)
-* [ Raw response ](#tab-panel-1471)
+* [ Output ](#tab-panel-1740)
+* [ Raw response ](#tab-panel-1741)
 
 ![Simple Icon](https://examples.aig.cloudflare.com/recraft/recraftv4-vector/simple-icon.svg) 
 
@@ -105,8 +105,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 **App Icon**  — Mobile app icon in vector format 
 
-* [ TypeScript ](#tab-panel-1476)
-* [ cURL ](#tab-panel-1477)
+* [ TypeScript ](#tab-panel-1746)
+* [ cURL ](#tab-panel-1747)
 
 TypeScript
 
@@ -158,8 +158,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 ```
 
-* [ Output ](#tab-panel-1474)
-* [ Raw response ](#tab-panel-1475)
+* [ Output ](#tab-panel-1744)
+* [ Raw response ](#tab-panel-1745)
 
 ![App Icon](https://examples.aig.cloudflare.com/recraft/recraftv4-vector/app-icon.svg) 
 
@@ -188,8 +188,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 **Illustration**  — Vector illustration for web use 
 
-* [ TypeScript ](#tab-panel-1480)
-* [ cURL ](#tab-panel-1481)
+* [ TypeScript ](#tab-panel-1750)
+* [ cURL ](#tab-panel-1751)
 
 TypeScript
 
@@ -243,8 +243,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 ```
 
-* [ Output ](#tab-panel-1478)
-* [ Raw response ](#tab-panel-1479)
+* [ Output ](#tab-panel-1748)
+* [ Raw response ](#tab-panel-1749)
 
 ![Illustration](https://examples.aig.cloudflare.com/recraft/recraftv4-vector/illustration.svg) 
 
@@ -273,8 +273,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 **With Brand Colors**  — Vector with specific color palette 
 
-* [ TypeScript ](#tab-panel-1484)
-* [ cURL ](#tab-panel-1485)
+* [ TypeScript ](#tab-panel-1754)
+* [ cURL ](#tab-panel-1755)
 
 TypeScript
 
@@ -380,8 +380,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 ```
 
-* [ Output ](#tab-panel-1482)
-* [ Raw response ](#tab-panel-1483)
+* [ Output ](#tab-panel-1752)
+* [ Raw response ](#tab-panel-1753)
 
 ![With Brand Colors](https://examples.aig.cloudflare.com/recraft/recraftv4-vector/with-brand-colors.svg) 
 
@@ -410,8 +410,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 ## Parameters
 
-* [ Input ](#tab-panel-1486)
-* [ Output ](#tab-panel-1487)
+* [ Input ](#tab-panel-1756)
+* [ Output ](#tab-panel-1757)
 
 ▶controls{}
 
@@ -439,9 +439,9 @@ image
 
 ## API Schemas (Raw)
 
-Input 
+Input [ ](https://developers.cloudflare.com/ai/models/recraft/recraftv4-vector/schema-input.json "Open") [ ](https://developers.cloudflare.com/ai/models/recraft/recraftv4-vector/schema-input.json "Download") 
 
-Output 
+Output [ ](https://developers.cloudflare.com/ai/models/recraft/recraftv4-vector/schema-output.json "Open") [ ](https://developers.cloudflare.com/ai/models/recraft/recraftv4-vector/schema-output.json "Download") 
 
 ```json
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/ai/","name":"AI"}},{"@type":"ListItem","position":3,"item":{"@id":"/ai/models/","name":"Models"}}]}

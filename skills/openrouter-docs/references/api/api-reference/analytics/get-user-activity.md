@@ -97,6 +97,7 @@ paths:
                 $ref: '#/components/schemas/InternalServerResponse'
 servers:
   - url: https://openrouter.ai/api/v1
+    description: Production server
 components:
   schemas:
     ActivityItem:
@@ -354,7 +355,33 @@ components:
 
 ```
 
-## SDK Code Examples
+## Examples
+
+
+
+**Response**
+
+```json
+{
+  "data": [
+    {
+      "byok_usage_inference": 0.012,
+      "completion_tokens": 125,
+      "date": "2025-08-24",
+      "endpoint_id": "550e8400-e29b-41d4-a716-446655440000",
+      "model": "openai/gpt-4.1",
+      "model_permaslug": "openai/gpt-4.1-2025-04-14",
+      "prompt_tokens": 50,
+      "provider_name": "OpenAI",
+      "reasoning_tokens": 25,
+      "requests": 5,
+      "usage": 0.015
+    }
+  ]
+}
+```
+
+**SDK Code**
 
 ```python Analytics_getUserActivity_example
 import requests

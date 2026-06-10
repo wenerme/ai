@@ -28,8 +28,8 @@ Google's latest video generation model with improved quality, motion, and audio 
 
 ## Usage
 
-* [ TypeScript ](#tab-panel-668)
-* [ cURL ](#tab-panel-669)
+* [ TypeScript ](#tab-panel-718)
+* [ cURL ](#tab-panel-719)
 
 TypeScript
 
@@ -95,8 +95,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 ```
 
-* [ Output ](#tab-panel-664)
-* [ Raw response ](#tab-panel-665)
+* [ Output ](#tab-panel-714)
+* [ Raw response ](#tab-panel-715)
 
 ```
 
@@ -125,8 +125,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 **Urban Time-lapse**  — City life time-lapse video 
 
-* [ TypeScript ](#tab-panel-672)
-* [ cURL ](#tab-panel-673)
+* [ TypeScript ](#tab-panel-722)
+* [ cURL ](#tab-panel-723)
 
 TypeScript
 
@@ -192,8 +192,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 ```
 
-* [ Output ](#tab-panel-666)
-* [ Raw response ](#tab-panel-667)
+* [ Output ](#tab-panel-716)
+* [ Raw response ](#tab-panel-717)
 
 ```
 
@@ -220,8 +220,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 **Abstract Art**  — Abstract motion graphics 
 
-* [ TypeScript ](#tab-panel-676)
-* [ cURL ](#tab-panel-677)
+* [ TypeScript ](#tab-panel-726)
+* [ cURL ](#tab-panel-727)
 
 TypeScript
 
@@ -287,8 +287,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 ```
 
-* [ Output ](#tab-panel-670)
-* [ Raw response ](#tab-panel-671)
+* [ Output ](#tab-panel-720)
+* [ Raw response ](#tab-panel-721)
 
 ```
 
@@ -315,8 +315,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 **Food Video**  — Appetizing food footage 
 
-* [ TypeScript ](#tab-panel-678)
-* [ cURL ](#tab-panel-679)
+* [ TypeScript ](#tab-panel-728)
+* [ cURL ](#tab-panel-729)
 
 TypeScript
 
@@ -380,8 +380,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 ```
 
-* [ Output ](#tab-panel-674)
-* [ Raw response ](#tab-panel-675)
+* [ Output ](#tab-panel-724)
+* [ Raw response ](#tab-panel-725)
 
 ```
 
@@ -408,8 +408,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 ## Parameters
 
-* [ Input ](#tab-panel-680)
-* [ Output ](#tab-panel-681)
+* [ Input ](#tab-panel-730)
+* [ Output ](#tab-panel-731)
 
 aspect\_ratio
 
@@ -441,9 +441,9 @@ video
 
 ## API Schemas (Raw)
 
-Input 
+Input [ ](https://developers.cloudflare.com/ai/models/google/veo-3.1/schema-input.json "Open") [ ](https://developers.cloudflare.com/ai/models/google/veo-3.1/schema-input.json "Download") 
 
-Output 
+Output [ ](https://developers.cloudflare.com/ai/models/google/veo-3.1/schema-output.json "Open") [ ](https://developers.cloudflare.com/ai/models/google/veo-3.1/schema-output.json "Download") 
 
 ```json
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/ai/","name":"AI"}},{"@type":"ListItem","position":3,"item":{"@id":"/ai/models/","name":"Models"}}]}

@@ -65,6 +65,7 @@ paths:
                 $ref: '#/components/schemas/InternalServerResponse'
 servers:
   - url: https://openrouter.ai/api/v1
+    description: Production server
 components:
   schemas:
     VideoGenerationResponseStatus:
@@ -241,7 +242,28 @@ components:
 
 ```
 
-## SDK Code Examples
+## Examples
+
+
+
+**Response**
+
+```json
+{
+  "id": "job-abc123",
+  "polling_url": "/api/v1/videos/job-abc123",
+  "status": "completed",
+  "generation_id": "gen-xyz789",
+  "unsigned_urls": [
+    "https://storage.example.com/video.mp4"
+  ],
+  "usage": {
+    "cost": 0.5
+  }
+}
+```
+
+**SDK Code**
 
 ```python Video Generation_getVideos_example
 import requests

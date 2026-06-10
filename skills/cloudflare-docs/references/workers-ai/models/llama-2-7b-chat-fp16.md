@@ -36,10 +36,10 @@ Try out this model with Workers AI LLM Playground. It does not require any setup
 
 ## Usage
 
-* [  Worker (Streaming) ](#tab-panel-4351)
-* [  TypeScript ](#tab-panel-4352)
-* [  Python ](#tab-panel-4353)
-* [  curl ](#tab-panel-4354)
+* [  Worker (Streaming) ](#tab-panel-4737)
+* [  TypeScript ](#tab-panel-4738)
+* [  Python ](#tab-panel-4739)
+* [  curl ](#tab-panel-4740)
 
 TypeScript
 
@@ -278,13 +278,13 @@ format
 
 ## API Schemas (Raw)
 
-Synchronous Input 
+ Synchronous Input [ ](https://developers.cloudflare.com/workers-ai/models/llama-2-7b-chat-fp16/sync-input.json "Open") [ ](https://developers.cloudflare.com/workers-ai/models/llama-2-7b-chat-fp16/sync-input.json "Download") 
 
-Synchronous Output 
+ Synchronous Output [ ](https://developers.cloudflare.com/workers-ai/models/llama-2-7b-chat-fp16/sync-output.json "Open") [ ](https://developers.cloudflare.com/workers-ai/models/llama-2-7b-chat-fp16/sync-output.json "Download") 
 
-Streaming Input 
+ Streaming Input [ ](https://developers.cloudflare.com/workers-ai/models/llama-2-7b-chat-fp16/streaming-input.json "Open") [ ](https://developers.cloudflare.com/workers-ai/models/llama-2-7b-chat-fp16/streaming-input.json "Download") 
 
-Streaming Output 
+ Streaming Output [ ](https://developers.cloudflare.com/workers-ai/models/llama-2-7b-chat-fp16/streaming-output.json "Open") [ ](https://developers.cloudflare.com/workers-ai/models/llama-2-7b-chat-fp16/streaming-output.json "Download") 
 
 ```json
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/workers-ai/","name":"Workers AI"}},{"@type":"ListItem","position":3,"item":{"@id":"/workers-ai/models/","name":"Models"}}]}

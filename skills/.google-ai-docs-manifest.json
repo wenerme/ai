@@ -152,8 +152,8 @@
   "google-ai-docs/pricing.md": {
     "url": "https://ai.google.dev/gemini-api/docs/pricing",
     "skill": "google-ai-docs",
-    "size": 55021,
-    "updatedAt": "2026-06-03T01:16:20.148Z"
+    "size": 55857,
+    "updatedAt": "2026-06-10T01:03:49.372Z"
   },
   "google-ai-docs/rate-limits.md": {
     "url": "https://ai.google.dev/gemini-api/docs/rate-limits",
@@ -194,14 +194,14 @@
   "google-ai-api/interactions-api.md": {
     "url": "https://ai.google.dev/api/interactions-api",
     "skill": "google-ai-api",
-    "size": 139231,
-    "updatedAt": "2026-06-06T01:07:23.148Z"
+    "size": 146882,
+    "updatedAt": "2026-06-10T01:03:54.558Z"
   },
   "google-ai-docs/api-key.md": {
     "url": "https://ai.google.dev/gemini-api/docs/api-key",
     "skill": "google-ai-docs",
-    "size": 15075,
-    "updatedAt": "2026-05-30T00:53:40.449Z"
+    "size": 13336,
+    "updatedAt": "2026-06-10T01:03:54.962Z"
   },
   "google-ai-docs/music-generation.md": {
     "url": "https://ai.google.dev/gemini-api/docs/music-generation",
@@ -296,8 +296,8 @@
   "google-ai-docs/models.md": {
     "url": "https://ai.google.dev/gemini-api/docs/models",
     "skill": "google-ai-docs",
-    "size": 11088,
-    "updatedAt": "2026-06-02T00:53:01.917Z"
+    "size": 11299,
+    "updatedAt": "2026-06-10T01:04:05.935Z"
   },
   "google-ai-docs/thought-signatures.md": {
     "url": "https://ai.google.dev/gemini-api/docs/thought-signatures",
@@ -320,8 +320,8 @@
   "google-ai-docs/usage-policies.md": {
     "url": "https://ai.google.dev/gemini-api/docs/usage-policies",
     "skill": "google-ai-docs",
-    "size": 2941,
-    "updatedAt": "2026-05-07T00:44:52.817Z"
+    "size": 3010,
+    "updatedAt": "2026-06-10T01:04:07.574Z"
   },
   "google-ai-docs/tool-combination.md": {
     "url": "https://ai.google.dev/gemini-api/docs/tool-combination",

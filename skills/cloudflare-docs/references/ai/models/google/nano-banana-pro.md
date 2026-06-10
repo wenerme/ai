@@ -28,8 +28,8 @@ Google's higher-quality image generation model with improved detail and prompt a
 
 ## Usage
 
-* [ TypeScript ](#tab-panel-608)
-* [ cURL ](#tab-panel-609)
+* [ TypeScript ](#tab-panel-658)
+* [ cURL ](#tab-panel-659)
 
 TypeScript
 
@@ -87,8 +87,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 ```
 
-* [ Output ](#tab-panel-606)
-* [ Raw response ](#tab-panel-607)
+* [ Output ](#tab-panel-656)
+* [ Raw response ](#tab-panel-657)
 
 ![Product Photography](https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/google__nano-banana-pro/product-photography.png) 
 
@@ -119,8 +119,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 **Fantasy Illustration**  — Epic fantasy scene 
 
-* [ TypeScript ](#tab-panel-612)
-* [ cURL ](#tab-panel-613)
+* [ TypeScript ](#tab-panel-662)
+* [ cURL ](#tab-panel-663)
 
 TypeScript
 
@@ -178,8 +178,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 ```
 
-* [ Output ](#tab-panel-610)
-* [ Raw response ](#tab-panel-611)
+* [ Output ](#tab-panel-660)
+* [ Raw response ](#tab-panel-661)
 
 ![Fantasy Illustration](https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/google__nano-banana-pro/fantasy-illustration.png) 
 
@@ -208,8 +208,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 **Architectural Visualization**  — Modern architecture render 
 
-* [ TypeScript ](#tab-panel-618)
-* [ cURL ](#tab-panel-619)
+* [ TypeScript ](#tab-panel-668)
+* [ cURL ](#tab-panel-669)
 
 TypeScript
 
@@ -271,8 +271,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 ```
 
-* [ Output ](#tab-panel-614)
-* [ Raw response ](#tab-panel-615)
+* [ Output ](#tab-panel-664)
+* [ Raw response ](#tab-panel-665)
 
 ![Architectural Visualization](https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/google__nano-banana-pro/architectural-visualization.jpg) 
 
@@ -301,8 +301,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 **Character Design**  — Game character concept art 
 
-* [ TypeScript ](#tab-panel-620)
-* [ cURL ](#tab-panel-621)
+* [ TypeScript ](#tab-panel-670)
+* [ cURL ](#tab-panel-671)
 
 TypeScript
 
@@ -356,8 +356,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 ```
 
-* [ Output ](#tab-panel-616)
-* [ Raw response ](#tab-panel-617)
+* [ Output ](#tab-panel-666)
+* [ Raw response ](#tab-panel-667)
 
 ![Character Design](https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/google__nano-banana-pro/character-design.png) 
 
@@ -386,8 +386,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 ## Parameters
 
-* [ Input ](#tab-panel-622)
-* [ Output ](#tab-panel-623)
+* [ Input ](#tab-panel-672)
+* [ Output ](#tab-panel-673)
 
 aspect\_ratio
 
@@ -415,9 +415,9 @@ image
 
 ## API Schemas (Raw)
 
-Input 
+Input [ ](https://developers.cloudflare.com/ai/models/google/nano-banana-pro/schema-input.json "Open") [ ](https://developers.cloudflare.com/ai/models/google/nano-banana-pro/schema-input.json "Download") 
 
-Output 
+Output [ ](https://developers.cloudflare.com/ai/models/google/nano-banana-pro/schema-output.json "Open") [ ](https://developers.cloudflare.com/ai/models/google/nano-banana-pro/schema-output.json "Download") 
 
 ```json
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/ai/","name":"AI"}},{"@type":"ListItem","position":3,"item":{"@id":"/ai/models/","name":"Models"}}]}

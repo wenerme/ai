@@ -1,5 +1,5 @@
 ---
-title: Suppressions lists
+title: Suppression lists
 description: Manage Email Service suppression lists to prevent sending to invalid or complaining addresses.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
@@ -10,7 +10,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 [Skip to content](#%5Ftop) 
 
-# Suppressions lists
+# Suppression lists
 
 Manage email suppression lists to prevent emails from being sent to addresses that shouldn't receive them, protecting your sender reputation with automatic and manual suppression management.
 
@@ -40,5 +40,5 @@ Maintaining clean suppression lists is essential for optimal email delivery perf
 * Update email validation rules based on common issues
 
 ```json
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/email-service/","name":"Email Service"}},{"@type":"ListItem","position":3,"item":{"@id":"/email-service/concepts/","name":"Concepts"}},{"@type":"ListItem","position":4,"item":{"@id":"/email-service/concepts/suppressions/","name":"Suppressions lists"}}]}
+{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/email-service/","name":"Email Service"}},{"@type":"ListItem","position":3,"item":{"@id":"/email-service/concepts/","name":"Concepts"}},{"@type":"ListItem","position":4,"item":{"@id":"/email-service/concepts/suppressions/","name":"Suppression lists"}}]}
 ```

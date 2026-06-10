@@ -37,10 +37,10 @@ Try out this model with Workers AI LLM Playground. It does not require any setup
 
 ## Usage
 
-* [  Worker (Streaming) ](#tab-panel-4341)
-* [  TypeScript ](#tab-panel-4342)
-* [  Python ](#tab-panel-4343)
-* [  curl ](#tab-panel-4344)
+* [  Worker (Streaming) ](#tab-panel-4727)
+* [  TypeScript ](#tab-panel-4728)
+* [  Python ](#tab-panel-4729)
+* [  curl ](#tab-panel-4730)
 
 TypeScript
 
@@ -199,8 +199,8 @@ Workers AI also supports OpenAI compatible API endpoints for `/v1/chat/completio
 
 Synchronous — Send a request and receive a complete response 
 
-* [ Input ](#tab-panel-4345)
-* [ Output ](#tab-panel-4346)
+* [ Input ](#tab-panel-4731)
+* [ Output ](#tab-panel-4732)
 
 Input format
 
@@ -374,8 +374,8 @@ service\_tier
 
 Streaming — Send a request with \`stream: true\` and receive server-sent events 
 
-* [ Input ](#tab-panel-4347)
-* [ Output ](#tab-panel-4348)
+* [ Input ](#tab-panel-4733)
+* [ Output ](#tab-panel-4734)
 
 Input format
 
@@ -529,8 +529,8 @@ format
 
 Batch — Send multiple requests in a single API call 
 
-* [ Input ](#tab-panel-4349)
-* [ Output ](#tab-panel-4350)
+* [ Input ](#tab-panel-4735)
+* [ Output ](#tab-panel-4736)
 
 ▶requests\[\]
 
@@ -570,17 +570,17 @@ service\_tier
 
 ## API Schemas (Raw)
 
-Synchronous Input 
+ Synchronous Input [ ](https://developers.cloudflare.com/workers-ai/models/kimi-k2.6/sync-input.json "Open") [ ](https://developers.cloudflare.com/workers-ai/models/kimi-k2.6/sync-input.json "Download") 
 
-Synchronous Output 
+ Synchronous Output [ ](https://developers.cloudflare.com/workers-ai/models/kimi-k2.6/sync-output.json "Open") [ ](https://developers.cloudflare.com/workers-ai/models/kimi-k2.6/sync-output.json "Download") 
 
-Streaming Input 
+ Streaming Input [ ](https://developers.cloudflare.com/workers-ai/models/kimi-k2.6/streaming-input.json "Open") [ ](https://developers.cloudflare.com/workers-ai/models/kimi-k2.6/streaming-input.json "Download") 
 
-Streaming Output 
+ Streaming Output [ ](https://developers.cloudflare.com/workers-ai/models/kimi-k2.6/streaming-output.json "Open") [ ](https://developers.cloudflare.com/workers-ai/models/kimi-k2.6/streaming-output.json "Download") 
 
-Batch Input 
+ Batch Input [ ](https://developers.cloudflare.com/workers-ai/models/kimi-k2.6/batch-input.json "Open") [ ](https://developers.cloudflare.com/workers-ai/models/kimi-k2.6/batch-input.json "Download") 
 
-Batch Output 
+ Batch Output [ ](https://developers.cloudflare.com/workers-ai/models/kimi-k2.6/batch-output.json "Open") [ ](https://developers.cloudflare.com/workers-ai/models/kimi-k2.6/batch-output.json "Download") 
 
 ```json
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/workers-ai/","name":"Workers AI"}},{"@type":"ListItem","position":3,"item":{"@id":"/workers-ai/models/","name":"Models"}}]}

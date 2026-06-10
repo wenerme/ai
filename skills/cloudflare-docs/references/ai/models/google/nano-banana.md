@@ -28,8 +28,8 @@ Google's fast image generation model producing high-quality images from text pro
 
 ## Usage
 
-* [ TypeScript ](#tab-panel-568)
-* [ cURL ](#tab-panel-569)
+* [ TypeScript ](#tab-panel-618)
+* [ cURL ](#tab-panel-619)
 
 TypeScript
 
@@ -83,8 +83,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 ```
 
-* [ Output ](#tab-panel-566)
-* [ Raw response ](#tab-panel-567)
+* [ Output ](#tab-panel-616)
+* [ Raw response ](#tab-panel-617)
 
 ![Cozy Coffee Shop](https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/google__nano-banana/cozy-coffee-shop.png) 
 
@@ -115,8 +115,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 **Vintage Tokyo Poster**  — Retro travel poster style illustration 
 
-* [ TypeScript ](#tab-panel-572)
-* [ cURL ](#tab-panel-573)
+* [ TypeScript ](#tab-panel-622)
+* [ cURL ](#tab-panel-623)
 
 TypeScript
 
@@ -170,8 +170,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 ```
 
-* [ Output ](#tab-panel-570)
-* [ Raw response ](#tab-panel-571)
+* [ Output ](#tab-panel-620)
+* [ Raw response ](#tab-panel-621)
 
 ![Vintage Tokyo Poster](https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/google__nano-banana/vintage-tokyo-poster.png) 
 
@@ -200,8 +200,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 **Dewdrops Macro**  — Photorealistic macro photography 
 
-* [ TypeScript ](#tab-panel-576)
-* [ cURL ](#tab-panel-577)
+* [ TypeScript ](#tab-panel-626)
+* [ cURL ](#tab-panel-627)
 
 TypeScript
 
@@ -255,8 +255,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 ```
 
-* [ Output ](#tab-panel-574)
-* [ Raw response ](#tab-panel-575)
+* [ Output ](#tab-panel-624)
+* [ Raw response ](#tab-panel-625)
 
 ![Dewdrops Macro](https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/google__nano-banana/dewdrops-macro.png) 
 
@@ -285,8 +285,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 **Pixel Art Marketplace**  — Isometric pixel art scene 
 
-* [ TypeScript ](#tab-panel-580)
-* [ cURL ](#tab-panel-581)
+* [ TypeScript ](#tab-panel-630)
+* [ cURL ](#tab-panel-631)
 
 TypeScript
 
@@ -340,8 +340,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 ```
 
-* [ Output ](#tab-panel-578)
-* [ Raw response ](#tab-panel-579)
+* [ Output ](#tab-panel-628)
+* [ Raw response ](#tab-panel-629)
 
 ![Pixel Art Marketplace](https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/google__nano-banana/pixel-art-marketplace.png) 
 
@@ -370,8 +370,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 **High Resolution Landscape**  — Generate a high-resolution 4K landscape image 
 
-* [ TypeScript ](#tab-panel-584)
-* [ cURL ](#tab-panel-585)
+* [ TypeScript ](#tab-panel-634)
+* [ cURL ](#tab-panel-635)
 
 TypeScript
 
@@ -433,8 +433,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 ```
 
-* [ Output ](#tab-panel-582)
-* [ Raw response ](#tab-panel-583)
+* [ Output ](#tab-panel-632)
+* [ Raw response ](#tab-panel-633)
 
 ![High Resolution Landscape](https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/google__nano-banana/high-resolution-landscape.png) 
 
@@ -463,8 +463,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 ## Parameters
 
-* [ Input ](#tab-panel-586)
-* [ Output ](#tab-panel-587)
+* [ Input ](#tab-panel-636)
+* [ Output ](#tab-panel-637)
 
 aspect\_ratio
 
@@ -492,9 +492,9 @@ image
 
 ## API Schemas (Raw)
 
-Input 
+Input [ ](https://developers.cloudflare.com/ai/models/google/nano-banana/schema-input.json "Open") [ ](https://developers.cloudflare.com/ai/models/google/nano-banana/schema-input.json "Download") 
 
-Output 
+Output [ ](https://developers.cloudflare.com/ai/models/google/nano-banana/schema-output.json "Open") [ ](https://developers.cloudflare.com/ai/models/google/nano-banana/schema-output.json "Download") 
 
 ```json
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/ai/","name":"AI"}},{"@type":"ListItem","position":3,"item":{"@id":"/ai/models/","name":"Models"}}]}

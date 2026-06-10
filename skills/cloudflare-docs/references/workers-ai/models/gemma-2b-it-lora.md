@@ -34,10 +34,10 @@ Try out this model with Workers AI LLM Playground. It does not require any setup
 
 ## Usage
 
-* [  Worker (Streaming) ](#tab-panel-4260)
-* [  TypeScript ](#tab-panel-4261)
-* [  Python ](#tab-panel-4262)
-* [  curl ](#tab-panel-4263)
+* [  Worker (Streaming) ](#tab-panel-4646)
+* [  TypeScript ](#tab-panel-4647)
+* [  Python ](#tab-panel-4648)
+* [  curl ](#tab-panel-4649)
 
 TypeScript
 
@@ -276,13 +276,13 @@ format
 
 ## API Schemas (Raw)
 
-Synchronous Input 
+ Synchronous Input [ ](https://developers.cloudflare.com/workers-ai/models/gemma-2b-it-lora/sync-input.json "Open") [ ](https://developers.cloudflare.com/workers-ai/models/gemma-2b-it-lora/sync-input.json "Download") 
 
-Synchronous Output 
+ Synchronous Output [ ](https://developers.cloudflare.com/workers-ai/models/gemma-2b-it-lora/sync-output.json "Open") [ ](https://developers.cloudflare.com/workers-ai/models/gemma-2b-it-lora/sync-output.json "Download") 
 
-Streaming Input 
+ Streaming Input [ ](https://developers.cloudflare.com/workers-ai/models/gemma-2b-it-lora/streaming-input.json "Open") [ ](https://developers.cloudflare.com/workers-ai/models/gemma-2b-it-lora/streaming-input.json "Download") 
 
-Streaming Output 
+ Streaming Output [ ](https://developers.cloudflare.com/workers-ai/models/gemma-2b-it-lora/streaming-output.json "Open") [ ](https://developers.cloudflare.com/workers-ai/models/gemma-2b-it-lora/streaming-output.json "Download") 
 
 ```json
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/workers-ai/","name":"Workers AI"}},{"@type":"ListItem","position":3,"item":{"@id":"/workers-ai/models/","name":"Models"}}]}

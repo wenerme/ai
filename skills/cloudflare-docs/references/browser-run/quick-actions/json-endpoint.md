@@ -18,7 +18,12 @@ Note
 
 By default, the `/json` endpoint leverages [Workers AI](https://developers.cloudflare.com/workers-ai/) for data extraction using [@cf/meta/llama-3.3-70b-instruct-fp8-fast](https://developers.cloudflare.com/workers-ai/models/llama-3.3-70b-instruct-fp8-fast/). Using this endpoint incurs usage on Workers AI, which you can monitor in the [Workers AI Dashboard ↗](https://dash.cloudflare.com/?to=/:account/ai/workers-ai). To use a different model, refer to [Using a custom model (BYO API Key)](https://developers.cloudflare.com/browser-run/quick-actions/json-endpoint/#using-a-custom-model-byo-api-key).
 
-You can use this endpoint in two ways. To use the REST API, [create a custom API Token](https://developers.cloudflare.com/fundamentals/api/get-started/create-token/) with `Browser Rendering - Edit` permission. To use the [Workers binding](https://developers.cloudflare.com/browser-run/reference/wrangler/#bindings) from a [Cloudflare Worker](https://developers.cloudflare.com/workers/), no API token is needed. For more information, refer to [Quick Actions — Before you begin](https://developers.cloudflare.com/browser-run/quick-actions/#before-you-begin).
+You can use this endpoint in two ways:
+
+* **REST API**: [Create a custom API Token](https://developers.cloudflare.com/fundamentals/api/get-started/create-token/) with `Browser Rendering - Edit` permission.
+* **Workers Bindings**: Call the endpoint directly from a [Cloudflare Worker](https://developers.cloudflare.com/workers/) using the [Workers Bindings](https://developers.cloudflare.com/browser-run/reference/wrangler/#bindings). No API token is needed.
+
+For more information, refer to [Quick Actions: Before you begin](https://developers.cloudflare.com/browser-run/quick-actions/#before-you-begin).
 
 ## Endpoint
 
@@ -51,9 +56,9 @@ And at least one of:
 
 ### With a Prompt and JSON schema
 
-* [ curl ](#tab-panel-5832)
-* [ TypeScript SDK ](#tab-panel-5833)
-* [ Workers binding ](#tab-panel-5834)
+* [ curl ](#tab-panel-6690)
+* [ TypeScript SDK ](#tab-panel-6691)
+* [ Workers binding ](#tab-panel-6692)
 
 This example captures webpage data by providing both a prompt and a JSON schema. The prompt guides the extraction process, while the JSON schema defines the expected structure of the output.
 

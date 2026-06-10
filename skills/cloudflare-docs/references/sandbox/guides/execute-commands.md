@@ -30,8 +30,8 @@ For **web servers, databases, or services that need to keep running**, use `star
 
 Use `exec()` for simple commands that complete quickly:
 
-* [  JavaScript ](#tab-panel-7675)
-* [  TypeScript ](#tab-panel-7676)
+* [  JavaScript ](#tab-panel-10084)
+* [  TypeScript ](#tab-panel-10085)
 
 JavaScript
 
@@ -85,8 +85,8 @@ console.log(result.success);  // true
 
 When passing user input or dynamic values, avoid string interpolation to prevent injection attacks:
 
-* [  JavaScript ](#tab-panel-7677)
-* [  TypeScript ](#tab-panel-7678)
+* [  JavaScript ](#tab-panel-10086)
+* [  TypeScript ](#tab-panel-10087)
 
 JavaScript
 
@@ -149,8 +149,8 @@ Commands can fail in two ways:
 1. **Non-zero exit code** \- Command ran but failed (result.success === false)
 2. **Execution error** \- Command couldn't start (throws exception)
 
-* [  JavaScript ](#tab-panel-7691)
-* [  TypeScript ](#tab-panel-7692)
+* [  JavaScript ](#tab-panel-10100)
+* [  TypeScript ](#tab-panel-10101)
 
 JavaScript
 
@@ -257,8 +257,8 @@ try {
 
 The sandbox supports shell features like pipes, redirects, and chaining:
 
-* [  JavaScript ](#tab-panel-7681)
-* [  TypeScript ](#tab-panel-7682)
+* [  JavaScript ](#tab-panel-10090)
+* [  TypeScript ](#tab-panel-10091)
 
 JavaScript
 
@@ -308,8 +308,8 @@ await sandbox.exec('cd /workspace && npm install && npm test');
 
 ## Execute Python scripts
 
-* [  JavaScript ](#tab-panel-7689)
-* [  TypeScript ](#tab-panel-7690)
+* [  JavaScript ](#tab-panel-10098)
+* [  TypeScript ](#tab-panel-10099)
 
 JavaScript
 
@@ -379,8 +379,8 @@ Set a maximum execution time for commands to prevent long-running operations fro
 
 Pass `timeout` in the options to set a timeout for a single command:
 
-* [  JavaScript ](#tab-panel-7679)
-* [  TypeScript ](#tab-panel-7680)
+* [  JavaScript ](#tab-panel-10088)
+* [  TypeScript ](#tab-panel-10089)
 
 JavaScript
 
@@ -412,8 +412,8 @@ const result = await sandbox.exec('npm run build', {
 
 Set a default timeout for all commands in a session with `commandTimeoutMs`:
 
-* [  JavaScript ](#tab-panel-7685)
-* [  TypeScript ](#tab-panel-7686)
+* [  JavaScript ](#tab-panel-10094)
+* [  TypeScript ](#tab-panel-10095)
 
 JavaScript
 
@@ -495,8 +495,8 @@ When a command times out, the SDK raises an error and closes the connection. The
 
 Verify the command exists in the container:
 
-* [  JavaScript ](#tab-panel-7683)
-* [  TypeScript ](#tab-panel-7684)
+* [  JavaScript ](#tab-panel-10092)
+* [  TypeScript ](#tab-panel-10093)
 
 JavaScript
 
@@ -532,8 +532,8 @@ if (!check.success) {
 
 Use absolute paths or change directory:
 
-* [  JavaScript ](#tab-panel-7687)
-* [  TypeScript ](#tab-panel-7688)
+* [  JavaScript ](#tab-panel-10096)
+* [  TypeScript ](#tab-panel-10097)
 
 JavaScript
 

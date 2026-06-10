@@ -26,7 +26,7 @@ On every turn, Think merges tools from multiple sources. Later sources override 
 6. **MCP tools** — from connected MCP servers
 7. **Client tools** — from the browser (refer to [Client tools](https://developers.cloudflare.com/agents/harnesses/think/client-tools/))
 
-Tools belong to the agent running the turn. For parent-child orchestration, use [Agent tools](https://developers.cloudflare.com/agents/runtime/execution/agent-tools/) instead of passing one-off tools through `chat()`.
+Tools belong to the agent running the turn. For parent-child orchestration, use [Agents as tools](https://developers.cloudflare.com/agents/runtime/execution/agent-tools/) instead of passing one-off tools through `chat()`.
 
 ## Built-in workspace tools
 
@@ -49,8 +49,8 @@ To keep tool calls bounded, the Bash tool snapshots up to 1,000 workspace files 
 
 Disable the default Bash tool for conservative deployments:
 
-* [  JavaScript ](#tab-panel-5052)
-* [  TypeScript ](#tab-panel-5053)
+* [  JavaScript ](#tab-panel-5468)
+* [  TypeScript ](#tab-panel-5469)
 
 JavaScript
 
@@ -96,8 +96,8 @@ export class MyAgent extends Think<Env> {
 
 By default, the workspace stores everything in SQLite. For large files, override `workspace` to add R2 spillover:
 
-* [  JavaScript ](#tab-panel-5058)
-* [  TypeScript ](#tab-panel-5059)
+* [  JavaScript ](#tab-panel-5474)
+* [  TypeScript ](#tab-panel-5475)
 
 JavaScript
 
@@ -167,8 +167,8 @@ export class MyAgent extends Think<Env> {
 
 This requires an R2 bucket binding:
 
-* [  wrangler.jsonc ](#tab-panel-5048)
-* [  wrangler.toml ](#tab-panel-5049)
+* [  wrangler.jsonc ](#tab-panel-5464)
+* [  wrangler.toml ](#tab-panel-5465)
 
 JSONC
 
@@ -212,8 +212,8 @@ bucket_name = "agent-files"
 
 Override `getTools()` to add your own tools. These are standard AI SDK `tool()` definitions with Zod schemas:
 
-* [  JavaScript ](#tab-panel-5070)
-* [  TypeScript ](#tab-panel-5071)
+* [  JavaScript ](#tab-panel-5486)
+* [  TypeScript ](#tab-panel-5487)
 
 JavaScript
 
@@ -404,8 +404,8 @@ Think inherits MCP client support from the `Agent` base class. MCP tools from co
 
 Set `waitForMcpConnections` to ensure MCP servers are connected before inference runs:
 
-* [  JavaScript ](#tab-panel-5056)
-* [  TypeScript ](#tab-panel-5057)
+* [  JavaScript ](#tab-panel-5472)
+* [  TypeScript ](#tab-panel-5473)
 
 JavaScript
 
@@ -453,8 +453,8 @@ export class MyAgent extends Think<Env> {
 
 Add MCP servers programmatically or via `@callable` methods:
 
-* [  JavaScript ](#tab-panel-5064)
-* [  TypeScript ](#tab-panel-5065)
+* [  JavaScript ](#tab-panel-5480)
+* [  TypeScript ](#tab-panel-5481)
 
 JavaScript
 
@@ -545,8 +545,8 @@ npm install @cloudflare/codemode
 
 ```
 
-* [  JavaScript ](#tab-panel-5068)
-* [  TypeScript ](#tab-panel-5069)
+* [  JavaScript ](#tab-panel-5484)
+* [  TypeScript ](#tab-panel-5485)
 
 JavaScript
 
@@ -630,8 +630,8 @@ export class MyAgent extends Think<Env> {
 
 ```
 
-* [  wrangler.jsonc ](#tab-panel-5050)
-* [  wrangler.toml ](#tab-panel-5051)
+* [  wrangler.jsonc ](#tab-panel-5466)
+* [  wrangler.toml ](#tab-panel-5467)
 
 JSONC
 
@@ -669,8 +669,8 @@ binding = "LOADER"
 
 For richer filesystem access, pass a `state` backend:
 
-* [  JavaScript ](#tab-panel-5060)
-* [  TypeScript ](#tab-panel-5061)
+* [  JavaScript ](#tab-panel-5476)
+* [  TypeScript ](#tab-panel-5477)
 
 JavaScript
 
@@ -716,8 +716,8 @@ createExecuteTool({
 
 Give your agent access to the Chrome DevTools Protocol (CDP) for web page inspection, scraping, screenshots, and debugging. Requires `@cloudflare/codemode` and a Browser Run binding.
 
-* [  JavaScript ](#tab-panel-5072)
-* [  TypeScript ](#tab-panel-5073)
+* [  JavaScript ](#tab-panel-5488)
+* [  TypeScript ](#tab-panel-5489)
 
 JavaScript
 
@@ -797,8 +797,8 @@ export class MyAgent extends Think<Env> {
 
 ```
 
-* [  wrangler.jsonc ](#tab-panel-5054)
-* [  wrangler.toml ](#tab-panel-5055)
+* [  wrangler.jsonc ](#tab-panel-5470)
+* [  wrangler.toml ](#tab-panel-5471)
 
 JSONC
 
@@ -854,8 +854,8 @@ This adds two tools:
 
 For a custom Chrome endpoint, pass `cdpUrl` instead of `browser`:
 
-* [  JavaScript ](#tab-panel-5062)
-* [  TypeScript ](#tab-panel-5063)
+* [  JavaScript ](#tab-panel-5478)
+* [  TypeScript ](#tab-panel-5479)
 
 JavaScript
 
@@ -895,8 +895,8 @@ Extensions are dynamically loaded sandboxed Workers that add tools at runtime. T
 
 Extensions require a `worker_loaders` binding:
 
-* [  JavaScript ](#tab-panel-5066)
-* [  TypeScript ](#tab-panel-5067)
+* [  JavaScript ](#tab-panel-5482)
+* [  TypeScript ](#tab-panel-5483)
 
 JavaScript
 
@@ -948,8 +948,8 @@ export class MyAgent extends Think<Env> {
 
 Define extensions that load at startup:
 
-* [  JavaScript ](#tab-panel-5082)
-* [  TypeScript ](#tab-panel-5083)
+* [  JavaScript ](#tab-panel-5498)
+* [  TypeScript ](#tab-panel-5499)
 
 JavaScript
 
@@ -1079,8 +1079,8 @@ Extension tools are namespaced — a `math` extension with an `add` tool becomes
 
 Give the model `createExtensionTools` so it can load extensions dynamically:
 
-* [  JavaScript ](#tab-panel-5080)
-* [  TypeScript ](#tab-panel-5081)
+* [  JavaScript ](#tab-panel-5496)
+* [  TypeScript ](#tab-panel-5497)
 
 JavaScript
 
@@ -1202,8 +1202,8 @@ The context block is registered as `notes_scratchpad` (namespaced by extension n
 
 The individual tool factories are exported for use with custom storage backends:
 
-* [  JavaScript ](#tab-panel-5074)
-* [  TypeScript ](#tab-panel-5075)
+* [  JavaScript ](#tab-panel-5490)
+* [  TypeScript ](#tab-panel-5491)
 
 JavaScript
 
@@ -1261,8 +1261,8 @@ import {
 
 Implement the operations interface for your storage backend:
 
-* [  JavaScript ](#tab-panel-5076)
-* [  TypeScript ](#tab-panel-5077)
+* [  JavaScript ](#tab-panel-5492)
+* [  TypeScript ](#tab-panel-5493)
 
 JavaScript
 
@@ -1305,8 +1305,8 @@ const readTool = createReadTool({ ops: myReadOps });
 
 Or create the full set from a `Workspace`, optionally disabling the Bash tool:
 
-* [  JavaScript ](#tab-panel-5078)
-* [  TypeScript ](#tab-panel-5079)
+* [  JavaScript ](#tab-panel-5494)
+* [  TypeScript ](#tab-panel-5495)
 
 JavaScript
 

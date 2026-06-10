@@ -27,8 +27,8 @@ DEtection TRansformer (DETR) model trained end-to-end on COCO 2017 object detect
 
 ## Usage
 
-* [  TypeScript ](#tab-panel-4223)
-* [  curl ](#tab-panel-4224)
+* [  TypeScript ](#tab-panel-4609)
+* [  curl ](#tab-panel-4610)
 
 ```
 
@@ -90,8 +90,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 ## Parameters
 
-* [ Input ](#tab-panel-4225)
-* [ Output ](#tab-panel-4226)
+* [ Input ](#tab-panel-4611)
+* [ Output ](#tab-panel-4612)
 
 Option 1
 
@@ -121,9 +121,9 @@ items
 
 ## API Schemas (Raw)
 
-Input 
+Input [ ](https://developers.cloudflare.com/workers-ai/models/detr-resnet-50/schema-input.json "Open") [ ](https://developers.cloudflare.com/workers-ai/models/detr-resnet-50/schema-input.json "Download") 
 
-Output 
+Output [ ](https://developers.cloudflare.com/workers-ai/models/detr-resnet-50/schema-output.json "Open") [ ](https://developers.cloudflare.com/workers-ai/models/detr-resnet-50/schema-output.json "Download") 
 
 ```json
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/workers-ai/","name":"Workers AI"}},{"@type":"ListItem","position":3,"item":{"@id":"/workers-ai/models/","name":"Models"}}]}

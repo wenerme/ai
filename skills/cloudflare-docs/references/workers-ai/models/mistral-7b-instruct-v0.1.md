@@ -36,10 +36,10 @@ Try out this model with Workers AI LLM Playground. It does not require any setup
 
 ## Usage
 
-* [  Worker (Streaming) ](#tab-panel-4447)
-* [  TypeScript ](#tab-panel-4448)
-* [  Python ](#tab-panel-4449)
-* [  curl ](#tab-panel-4450)
+* [  Worker (Streaming) ](#tab-panel-4833)
+* [  TypeScript ](#tab-panel-4834)
+* [  Python ](#tab-panel-4835)
+* [  curl ](#tab-panel-4836)
 
 TypeScript
 
@@ -278,13 +278,13 @@ format
 
 ## API Schemas (Raw)
 
-Synchronous Input 
+ Synchronous Input [ ](https://developers.cloudflare.com/workers-ai/models/mistral-7b-instruct-v0.1/sync-input.json "Open") [ ](https://developers.cloudflare.com/workers-ai/models/mistral-7b-instruct-v0.1/sync-input.json "Download") 
 
-Synchronous Output 
+ Synchronous Output [ ](https://developers.cloudflare.com/workers-ai/models/mistral-7b-instruct-v0.1/sync-output.json "Open") [ ](https://developers.cloudflare.com/workers-ai/models/mistral-7b-instruct-v0.1/sync-output.json "Download") 
 
-Streaming Input 
+ Streaming Input [ ](https://developers.cloudflare.com/workers-ai/models/mistral-7b-instruct-v0.1/streaming-input.json "Open") [ ](https://developers.cloudflare.com/workers-ai/models/mistral-7b-instruct-v0.1/streaming-input.json "Download") 
 
-Streaming Output 
+ Streaming Output [ ](https://developers.cloudflare.com/workers-ai/models/mistral-7b-instruct-v0.1/streaming-output.json "Open") [ ](https://developers.cloudflare.com/workers-ai/models/mistral-7b-instruct-v0.1/streaming-output.json "Download") 
 
 ```json
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/workers-ai/","name":"Workers AI"}},{"@type":"ListItem","position":3,"item":{"@id":"/workers-ai/models/","name":"Models"}}]}

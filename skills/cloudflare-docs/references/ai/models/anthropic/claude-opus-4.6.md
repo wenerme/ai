@@ -29,8 +29,8 @@ Claude Opus 4.6 is Anthropic's flagship language model built for complex, multi-
 
 ## Usage
 
-* [ TypeScript ](#tab-panel-134)
-* [ cURL ](#tab-panel-135)
+* [ TypeScript ](#tab-panel-174)
+* [ cURL ](#tab-panel-175)
 
 TypeScript
 
@@ -88,8 +88,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/v1/
 
 ```
 
-* [ Output ](#tab-panel-138)
-* [ Raw response ](#tab-panel-139)
+* [ Output ](#tab-panel-178)
+* [ Raw response ](#tab-panel-179)
 
 # The Laws of Thermodynamics
 
@@ -164,8 +164,8 @@ Together, these laws govern how energy behaves in all physical and chemical proc
 
 **With System Message**  — Using a system message to set context 
 
-* [ TypeScript ](#tab-panel-136)
-* [ cURL ](#tab-panel-137)
+* [ TypeScript ](#tab-panel-176)
+* [ cURL ](#tab-panel-177)
 
 TypeScript
 
@@ -231,8 +231,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/v1/
 
 ```
 
-* [ Output ](#tab-panel-142)
-* [ Raw response ](#tab-panel-143)
+* [ Output ](#tab-panel-182)
+* [ Raw response ](#tab-panel-183)
 
 # Reading a JSON File in Python
 
@@ -374,8 +374,8 @@ with open('data.json', 'r', encoding='utf-8') as file:
 
 **Multi-turn Conversation**  — Continuing a conversation with context 
 
-* [ TypeScript ](#tab-panel-146)
-* [ cURL ](#tab-panel-147)
+* [ TypeScript ](#tab-panel-186)
+* [ cURL ](#tab-panel-187)
 
 TypeScript
 
@@ -471,8 +471,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/v1/
 
 ```
 
-* [ Output ](#tab-panel-148)
-* [ Raw response ](#tab-panel-149)
+* [ Output ](#tab-panel-188)
+* [ Raw response ](#tab-panel-189)
 
 # Great Stops Between SF & LA
 
@@ -553,8 +553,8 @@ This is the fastest route (~5-6 hours):
 
 **Creative Writing**  — Higher temperature for creative output 
 
-* [ TypeScript ](#tab-panel-140)
-* [ cURL ](#tab-panel-141)
+* [ TypeScript ](#tab-panel-180)
+* [ cURL ](#tab-panel-181)
 
 TypeScript
 
@@ -626,8 +626,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/v1/
 
 ```
 
-* [ Output ](#tab-panel-150)
-* [ Raw response ](#tab-panel-151)
+* [ Output ](#tab-panel-190)
+* [ Raw response ](#tab-panel-191)
 
 # The Orchid on the Windowsill
 
@@ -702,8 +702,8 @@ She read it again—not because she needed to, but because some part of her reco
 
 **Streaming Response**  — Enable streaming for real-time output 
 
-* [ TypeScript ](#tab-panel-144)
-* [ cURL ](#tab-panel-145)
+* [ TypeScript ](#tab-panel-184)
+* [ cURL ](#tab-panel-185)
 
 TypeScript
 
@@ -765,8 +765,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/v1/
 
 ```
 
-* [ Output ](#tab-panel-152)
-* [ Raw response ](#tab-panel-153)
+* [ Output ](#tab-panel-192)
+* [ Raw response ](#tab-panel-193)
 
 # Understanding Recursion
 
@@ -1306,8 +1306,8 @@ factorial(5)
 
 ## Parameters
 
-* [ Input ](#tab-panel-154)
-* [ Output ](#tab-panel-155)
+* [ Input ](#tab-panel-194)
+* [ Output ](#tab-panel-195)
 
 max\_tokens
 
@@ -1371,9 +1371,9 @@ type
 
 ## API Schemas (Raw)
 
-Input 
+Input [ ](https://developers.cloudflare.com/ai/models/anthropic/claude-opus-4.6/schema-input.json "Open") [ ](https://developers.cloudflare.com/ai/models/anthropic/claude-opus-4.6/schema-input.json "Download") 
 
-Output 
+Output [ ](https://developers.cloudflare.com/ai/models/anthropic/claude-opus-4.6/schema-output.json "Open") [ ](https://developers.cloudflare.com/ai/models/anthropic/claude-opus-4.6/schema-output.json "Download") 
 
 ```json
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/ai/","name":"AI"}},{"@type":"ListItem","position":3,"item":{"@id":"/ai/models/","name":"Models"}}]}

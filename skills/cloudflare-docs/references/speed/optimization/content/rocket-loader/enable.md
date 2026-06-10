@@ -14,8 +14,8 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 To enable or disable Rocket Loader, use the following instructions.
 
-* [ Dashboard ](#tab-panel-7882)
-* [ API ](#tab-panel-7883)
+* [ Dashboard ](#tab-panel-10299)
+* [ API ](#tab-panel-10300)
 
 To enable or disable **Rocket Loader** in the dashboard:
 

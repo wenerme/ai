@@ -7,6 +7,12 @@ info: To determine the technical writer assigned to the Stage/Group associated w
 
 Delete a variable for a project or group.
 
+## Synopsis
+
+Deletes a variable by key. Use `--scope` to target a
+variable in a specific environment, or `--group` to delete a group
+variable instead.
+
 ```plaintext
 glab variable delete <key> [flags]
 ```

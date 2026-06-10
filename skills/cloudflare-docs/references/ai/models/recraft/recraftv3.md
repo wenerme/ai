@@ -28,8 +28,8 @@ Recraft V3 is the previous-generation text-to-image model from Recraft, well-sui
 
 ## Usage
 
-* [ TypeScript ](#tab-panel-1240)
-* [ cURL ](#tab-panel-1241)
+* [ TypeScript ](#tab-panel-1510)
+* [ cURL ](#tab-panel-1511)
 
 TypeScript
 
@@ -73,8 +73,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 ```
 
-* [ Output ](#tab-panel-1238)
-* [ Raw response ](#tab-panel-1239)
+* [ Output ](#tab-panel-1508)
+* [ Raw response ](#tab-panel-1509)
 
 ![Simple Generation](https://examples.aig.cloudflare.com/recraft/recraftv3/simple-generation.png) 
 
@@ -105,8 +105,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 **Scene Composition**  — Generate a complex compositional scene 
 
-* [ TypeScript ](#tab-panel-1244)
-* [ cURL ](#tab-panel-1245)
+* [ TypeScript ](#tab-panel-1514)
+* [ cURL ](#tab-panel-1515)
 
 TypeScript
 
@@ -154,8 +154,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 ```
 
-* [ Output ](#tab-panel-1242)
-* [ Raw response ](#tab-panel-1243)
+* [ Output ](#tab-panel-1512)
+* [ Raw response ](#tab-panel-1513)
 
 ![Scene Composition](https://examples.aig.cloudflare.com/recraft/recraftv3/scene-composition.png) 
 
@@ -184,8 +184,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 **Custom Size**  — Specify output dimensions 
 
-* [ TypeScript ](#tab-panel-1248)
-* [ cURL ](#tab-panel-1249)
+* [ TypeScript ](#tab-panel-1518)
+* [ cURL ](#tab-panel-1519)
 
 TypeScript
 
@@ -237,8 +237,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 ```
 
-* [ Output ](#tab-panel-1246)
-* [ Raw response ](#tab-panel-1247)
+* [ Output ](#tab-panel-1516)
+* [ Raw response ](#tab-panel-1517)
 
 ![Custom Size](https://examples.aig.cloudflare.com/recraft/recraftv3/custom-size.png) 
 
@@ -267,8 +267,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 **With Color Controls**  — Guide generation with specific brand colors 
 
-* [ TypeScript ](#tab-panel-1256)
-* [ cURL ](#tab-panel-1257)
+* [ TypeScript ](#tab-panel-1526)
+* [ cURL ](#tab-panel-1527)
 
 TypeScript
 
@@ -354,8 +354,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 ```
 
-* [ Output ](#tab-panel-1250)
-* [ Raw response ](#tab-panel-1251)
+* [ Output ](#tab-panel-1520)
+* [ Raw response ](#tab-panel-1521)
 
 ![With Color Controls](https://examples.aig.cloudflare.com/recraft/recraftv3/with-color-controls.png) 
 
@@ -384,8 +384,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 **Background Color**  — Set a specific background color 
 
-* [ TypeScript ](#tab-panel-1254)
-* [ cURL ](#tab-panel-1255)
+* [ TypeScript ](#tab-panel-1524)
+* [ cURL ](#tab-panel-1525)
 
 TypeScript
 
@@ -457,8 +457,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 ```
 
-* [ Output ](#tab-panel-1252)
-* [ Raw response ](#tab-panel-1253)
+* [ Output ](#tab-panel-1522)
+* [ Raw response ](#tab-panel-1523)
 
 ![Background Color](https://examples.aig.cloudflare.com/recraft/recraftv3/background-color.png) 
 
@@ -487,8 +487,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 ## Parameters
 
-* [ Input ](#tab-panel-1258)
-* [ Output ](#tab-panel-1259)
+* [ Input ](#tab-panel-1528)
+* [ Output ](#tab-panel-1529)
 
 ▶controls{}
 
@@ -516,9 +516,9 @@ image
 
 ## API Schemas (Raw)
 
-Input 
+Input [ ](https://developers.cloudflare.com/ai/models/recraft/recraftv3/schema-input.json "Open") [ ](https://developers.cloudflare.com/ai/models/recraft/recraftv3/schema-input.json "Download") 
 
-Output 
+Output [ ](https://developers.cloudflare.com/ai/models/recraft/recraftv3/schema-output.json "Open") [ ](https://developers.cloudflare.com/ai/models/recraft/recraftv3/schema-output.json "Download") 
 
 ```json
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/ai/","name":"AI"}},{"@type":"ListItem","position":3,"item":{"@id":"/ai/models/","name":"Models"}}]}

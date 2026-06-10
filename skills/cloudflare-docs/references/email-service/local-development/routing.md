@@ -27,10 +27,10 @@ Use a Node version manager like [Volta ↗](https://volta.sh/) or [nvm ↗](http
 
 ## Configuration
 
-Configure your Wrangler file with the email binding:
+Configure your Wrangler file:
 
-* [  wrangler.jsonc ](#tab-panel-5949)
-* [  wrangler.toml ](#tab-panel-5950)
+* [  wrangler.jsonc ](#tab-panel-8302)
+* [  wrangler.toml ](#tab-panel-8303)
 
 JSONC
 
@@ -38,23 +38,11 @@ JSONC
 
 {
 
-  "$schema": "./node_modules/wrangler/config-schema.json",
-
   "name": "email-routing-worker",
 
   // Set this to today's date
 
-  "compatibility_date": "2026-04-29",
-
-  "send_email": [
-
-    {
-
-      "name": "EMAIL"
-
-    }
-
-  ]
+  "compatibility_date": "2026-06-10",
 
 }
 
@@ -69,12 +57,7 @@ name = "email-routing-worker"
 
 # Set this to today's date
 
-compatibility_date = "2026-04-29"
-
-
-[[send_email]]
-
-name = "EMAIL"
+compatibility_date = "2026-06-10"
 
 
 ```
@@ -85,7 +68,7 @@ JavaScript
 
 ```
 
-import * as PostalMime from 'postal-mime';
+import * as PostalMime from "postal-mime";
 
 
 export default {
@@ -101,7 +84,7 @@ export default {
     const email = await parser.parse(await rawEmail.arrayBuffer());
 
 
-    console.log('Received email:', {
+    console.log("Received email:", {
 
       from: message.from,
 
@@ -111,20 +94,20 @@ export default {
 
       text: email.text,
 
-      html: email.html
+      html: email.html,
 
     });
 
 
     // Route based on recipient
 
-    if (message.to.includes('support@')) {
+    if (message.to.includes("support@")) {
 
-      await message.forward('support-team@company.com');
+      await message.forward("support-team@example.com");
 
     } else {
 
-      await message.forward('general@company.com');
+      await message.forward("general@example.com");
 
     }
 

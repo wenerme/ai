@@ -62,8 +62,8 @@ export default {
 
 ## Parameters
 
-* [ Input ](#tab-panel-4441)
-* [ Output ](#tab-panel-4442)
+* [ Input ](#tab-panel-4827)
+* [ Output ](#tab-panel-4828)
 
 prompt
 
@@ -85,9 +85,9 @@ The generated audio in MP3 format
 
 ## API Schemas (Raw)
 
-Input 
+Input [ ](https://developers.cloudflare.com/workers-ai/models/melotts/schema-input.json "Open") [ ](https://developers.cloudflare.com/workers-ai/models/melotts/schema-input.json "Download") 
 
-Output 
+Output [ ](https://developers.cloudflare.com/workers-ai/models/melotts/schema-output.json "Open") [ ](https://developers.cloudflare.com/workers-ai/models/melotts/schema-output.json "Download") 
 
 ```json
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/workers-ai/","name":"Workers AI"}},{"@type":"ListItem","position":3,"item":{"@id":"/workers-ai/models/","name":"Models"}}]}

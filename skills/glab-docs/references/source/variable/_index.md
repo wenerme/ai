@@ -7,6 +7,13 @@ info: To determine the technical writer assigned to the Stage/Group associated w
 
 Manage variables for a GitLab project or group.
 
+## Synopsis
+
+Variables store configuration and secrets used by CI/CD pipelines.
+
+Each subcommand acts on the current project by default. Use
+`--group` to manage a group's variables instead.
+
 ## Aliases
 
 ```plaintext

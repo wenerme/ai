@@ -69,6 +69,10 @@ TXT _dmarc.yourdomain.com "v=DMARC1; p=quarantine; rua=mailto:dmarc@yourdomain.c
 
 ```
 
+Note
+
+If the `rua` mailto address is on a different domain than the DMARC record (common when using a DMARC aggregator), the receiving domain must publish a `_report._dmarc.yourdomain.com` TXT record to authorize reports. Refer to [RFC 7489 §7.1 ↗](https://datatracker.ietf.org/doc/html/rfc7489#section-7.1).
+
 **DMARC policies:**
 
 * `p=none` \- Monitor only (recommended to start)

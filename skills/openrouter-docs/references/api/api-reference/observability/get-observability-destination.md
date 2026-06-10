@@ -69,6 +69,7 @@ paths:
                 $ref: '#/components/schemas/InternalServerResponse'
 servers:
   - url: https://openrouter.ai/api/v1
+    description: Production server
 components:
   schemas:
     UpdateObservabilityDestinationResponseDataDiscriminatorMappingArizeConfig:
@@ -1859,7 +1860,36 @@ components:
 
 ```
 
-## SDK Code Examples
+## Examples
+
+
+
+**Response**
+
+```json
+{
+  "data": {
+    "type": "langfuse",
+    "api_key_hashes": null,
+    "config": {
+      "publicKey": "pk-l...EfGh",
+      "secretKey": "sk-l...AbCd",
+      "baseUrl": "https://us.cloud.langfuse.com"
+    },
+    "created_at": "2025-08-24T10:30:00Z",
+    "enabled": true,
+    "filter_rules": null,
+    "id": "99999999-aaaa-bbbb-cccc-dddddddddddd",
+    "name": "Production Langfuse",
+    "privacy_mode": false,
+    "sampling_rate": 1,
+    "updated_at": "2025-08-24T15:45:00Z",
+    "workspace_id": "550e8400-e29b-41d4-a716-446655440000"
+  }
+}
+```
+
+**SDK Code**
 
 ```python Observability_getObservabilityDestination_example
 import requests

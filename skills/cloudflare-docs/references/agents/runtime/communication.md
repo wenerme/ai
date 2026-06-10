@@ -14,6 +14,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 * [ Routing ](https://developers.cloudflare.com/agents/runtime/communication/routing/)
 * [ WebSockets ](https://developers.cloudflare.com/agents/runtime/communication/websockets/)
 * [ HTTP and Server-Sent Events ](https://developers.cloudflare.com/agents/runtime/communication/http-sse/)
+* [ Chat SDK ](https://developers.cloudflare.com/agents/runtime/communication/chat-sdk/)
 * [ Protocol messages ](https://developers.cloudflare.com/agents/runtime/communication/protocol-messages/)
 * [ Readonly connections ](https://developers.cloudflare.com/agents/runtime/communication/readonly-connections/)
 

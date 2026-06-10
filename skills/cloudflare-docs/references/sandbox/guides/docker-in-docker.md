@@ -86,8 +86,8 @@ This allows you to connect to the container, but it means each inner container h
 
 Once deployed, you can run Docker commands through the sandbox:
 
-* [  JavaScript ](#tab-panel-7673)
-* [  TypeScript ](#tab-panel-7674)
+* [  JavaScript ](#tab-panel-10082)
+* [  TypeScript ](#tab-panel-10083)
 
 JavaScript
 

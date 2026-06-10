@@ -400,6 +400,12 @@ Tools
           ),
         ],
         [
+          "Image Web search (all models)",
+          pricingHtml(
+            "$10.00 / 1k calls<br /><small>+ Search content tokens billed at model rates.</small>"
+          ),
+        ],
+        [
           pricingHtml(
             "Web search preview (reasoning models, including <code>gpt-5</code>, <code>o-series</code>)"
           ),

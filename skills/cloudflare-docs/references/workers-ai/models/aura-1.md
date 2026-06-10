@@ -30,8 +30,8 @@ Aura is a context-aware text-to-speech (TTS) model that applies natural pacing, 
 
 ## Usage
 
-* [  TypeScript ](#tab-panel-4174)
-* [  curl ](#tab-panel-4175)
+* [  TypeScript ](#tab-panel-4560)
+* [  curl ](#tab-panel-4561)
 
 ```
 
@@ -74,8 +74,8 @@ curl --request POST   --url 'https://api.cloudflare.com/client/v4/accounts/{ACCO
 
 ## Parameters
 
-* [ Input ](#tab-panel-4176)
-* [ Output ](#tab-panel-4177)
+* [ Input ](#tab-panel-4562)
+* [ Output ](#tab-panel-4563)
 
 speaker
 
@@ -105,9 +105,9 @@ The binding returns a `ReadableStream` with the audio in MPEG format (check the 
 
 ## API Schemas (Raw)
 
-Input 
+Input [ ](https://developers.cloudflare.com/workers-ai/models/aura-1/schema-input.json "Open") [ ](https://developers.cloudflare.com/workers-ai/models/aura-1/schema-input.json "Download") 
 
-Output 
+Output [ ](https://developers.cloudflare.com/workers-ai/models/aura-1/schema-output.json "Open") [ ](https://developers.cloudflare.com/workers-ai/models/aura-1/schema-output.json "Download") 
 
 ```json
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/workers-ai/","name":"Workers AI"}},{"@type":"ListItem","position":3,"item":{"@id":"/workers-ai/models/","name":"Models"}}]}

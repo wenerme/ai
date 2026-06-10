@@ -54,6 +54,7 @@ paths:
                 $ref: '#/components/schemas/InternalServerResponse'
 servers:
   - url: https://openrouter.ai/api/v1
+    description: Production server
 components:
   schemas:
     InputModality:
@@ -491,7 +492,59 @@ components:
 
 ```
 
-## SDK Code Examples
+## Examples
+
+
+
+**Response**
+
+```json
+{
+  "data": [
+    {
+      "architecture": {
+        "input_modalities": [
+          "text"
+        ],
+        "modality": "text->text",
+        "output_modalities": [
+          "embeddings"
+        ],
+        "instruct_type": null,
+        "tokenizer": "GPT"
+      },
+      "canonical_slug": "openai/text-embedding-3-small",
+      "context_length": 8192,
+      "created": 1692901234,
+      "default_parameters": null,
+      "id": "openai/text-embedding-3-small",
+      "links": {
+        "details": "/api/v1/models/openai/text-embedding-3-small/endpoints"
+      },
+      "name": "Text Embedding 3 Small",
+      "per_request_limits": null,
+      "pricing": {
+        "completion": "0",
+        "prompt": "0.00000002",
+        "image": "0",
+        "request": "0"
+      },
+      "supported_parameters": [],
+      "supported_voices": null,
+      "top_provider": {
+        "is_moderated": false,
+        "context_length": 8192,
+        "max_completion_tokens": null
+      },
+      "description": "OpenAI text embedding model optimized for performance.",
+      "expiration_date": null,
+      "knowledge_cutoff": null
+    }
+  ]
+}
+```
+
+**SDK Code**
 
 ```python Embeddings_listEmbeddingsModels_example
 import requests

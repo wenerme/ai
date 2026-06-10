@@ -28,8 +28,8 @@ OpenAI's high-definition text-to-speech model producing higher quality audio out
 
 ## Usage
 
-* [ TypeScript ](#tab-panel-1188)
-* [ cURL ](#tab-panel-1189)
+* [ TypeScript ](#tab-panel-1458)
+* [ cURL ](#tab-panel-1459)
 
 TypeScript
 
@@ -89,8 +89,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 ```
 
-* [ Output ](#tab-panel-1184)
-* [ Raw response ](#tab-panel-1185)
+* [ Output ](#tab-panel-1454)
+* [ Raw response ](#tab-panel-1455)
 
 ```
 
@@ -119,8 +119,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 **Storytelling**  — HD narration with the Fable voice 
 
-* [ TypeScript ](#tab-panel-1192)
-* [ cURL ](#tab-panel-1193)
+* [ TypeScript ](#tab-panel-1462)
+* [ cURL ](#tab-panel-1463)
 
 TypeScript
 
@@ -180,8 +180,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 ```
 
-* [ Output ](#tab-panel-1186)
-* [ Raw response ](#tab-panel-1187)
+* [ Output ](#tab-panel-1456)
+* [ Raw response ](#tab-panel-1457)
 
 ```
 
@@ -208,8 +208,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 **Podcast Style**  — Conversational podcast narration 
 
-* [ TypeScript ](#tab-panel-1196)
-* [ cURL ](#tab-panel-1197)
+* [ TypeScript ](#tab-panel-1466)
+* [ cURL ](#tab-panel-1467)
 
 TypeScript
 
@@ -269,8 +269,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 ```
 
-* [ Output ](#tab-panel-1190)
-* [ Raw response ](#tab-panel-1191)
+* [ Output ](#tab-panel-1460)
+* [ Raw response ](#tab-panel-1461)
 
 ```
 
@@ -297,8 +297,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 **Shimmer Voice**  — Bright and expressive voice 
 
-* [ TypeScript ](#tab-panel-1198)
-* [ cURL ](#tab-panel-1199)
+* [ TypeScript ](#tab-panel-1468)
+* [ cURL ](#tab-panel-1469)
 
 TypeScript
 
@@ -358,8 +358,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 ```
 
-* [ Output ](#tab-panel-1194)
-* [ Raw response ](#tab-panel-1195)
+* [ Output ](#tab-panel-1464)
+* [ Raw response ](#tab-panel-1465)
 
 ```
 
@@ -386,8 +386,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 ## Parameters
 
-* [ Input ](#tab-panel-1200)
-* [ Output ](#tab-panel-1201)
+* [ Input ](#tab-panel-1470)
+* [ Output ](#tab-panel-1471)
 
 response\_format
 
@@ -411,9 +411,9 @@ audio
 
 ## API Schemas (Raw)
 
-Input 
+Input [ ](https://developers.cloudflare.com/ai/models/openai/tts-1-hd/schema-input.json "Open") [ ](https://developers.cloudflare.com/ai/models/openai/tts-1-hd/schema-input.json "Download") 
 
-Output 
+Output [ ](https://developers.cloudflare.com/ai/models/openai/tts-1-hd/schema-output.json "Open") [ ](https://developers.cloudflare.com/ai/models/openai/tts-1-hd/schema-output.json "Download") 
 
 ```json
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/ai/","name":"AI"}},{"@type":"ListItem","position":3,"item":{"@id":"/ai/models/","name":"Models"}}]}

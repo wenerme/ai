@@ -27,9 +27,9 @@ Distilled BERT model that was finetuned on SST-2 for sentiment classification
 
 ## Usage
 
-* [  TypeScript ](#tab-panel-4227)
-* [  Python ](#tab-panel-4228)
-* [  curl ](#tab-panel-4229)
+* [  TypeScript ](#tab-panel-4613)
+* [  Python ](#tab-panel-4614)
+* [  curl ](#tab-panel-4615)
 
 ```
 
@@ -105,8 +105,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 ## Parameters
 
-* [ Input ](#tab-panel-4230)
-* [ Output ](#tab-panel-4231)
+* [ Input ](#tab-panel-4616)
+* [ Output ](#tab-panel-4617)
 
 text
 
@@ -130,9 +130,9 @@ items
 
 ## API Schemas (Raw)
 
-Input 
+Input [ ](https://developers.cloudflare.com/workers-ai/models/distilbert-sst-2-int8/schema-input.json "Open") [ ](https://developers.cloudflare.com/workers-ai/models/distilbert-sst-2-int8/schema-input.json "Download") 
 
-Output 
+Output [ ](https://developers.cloudflare.com/workers-ai/models/distilbert-sst-2-int8/schema-output.json "Open") [ ](https://developers.cloudflare.com/workers-ai/models/distilbert-sst-2-int8/schema-output.json "Download") 
 
 ```json
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/workers-ai/","name":"Workers AI"}},{"@type":"ListItem","position":3,"item":{"@id":"/workers-ai/models/","name":"Models"}}]}

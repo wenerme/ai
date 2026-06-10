@@ -34,7 +34,7 @@ As you have learned in previous sections, [Cloudflare Workers](https://developer
 
 **Email Routing**
 
-[Cloudflare Email Routing](https://developers.cloudflare.com/email-routing/) allows you to create custom email addresses for your domain and route incoming emails to your preferred mailbox. If you already have a website, refer to [Enable Email Routing](https://developers.cloudflare.com/email-routing/get-started/enable-email-routing/) to set up a custom email address for your site.
+[Cloudflare Email Routing](https://developers.cloudflare.com/email-service/) allows you to create custom email addresses for your domain and route incoming emails to your preferred mailbox. If you already have a website, refer to [Enable Email Routing](https://developers.cloudflare.com/email-service/get-started/route-emails/) to set up a custom email address for your site.
 
 ## Storage
 

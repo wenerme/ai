@@ -192,6 +192,10 @@ Create Session
 
     - `"thinking-token-count-2026-05-13"ThinkingTokenCount2026_05_13`
 
+    - `"server-side-fallback-2026-06-01"ServerSideFallback2026_06_01`
+
+    - `"fallback-credit-2026-06-01"FallbackCredit2026_06_01`
+
 ### Returns
 
 - `class BetaManagedAgentsSession:`
@@ -227,6 +231,10 @@ Create Session
         The model that will power your agent.
 
         See [models](https://docs.anthropic.com/en/docs/models-overview) for additional details and options.
+
+        - `"claude-fable-5"ClaudeFable5`
+
+          Next generation of intelligence for the hardest knowledge work and coding problems
 
         - `"claude-opus-4-8"ClaudeOpus4_8`
 
@@ -454,19 +462,11 @@ Create Session
 
               JSON Schema for custom tool input parameters.
 
+              - `JsonElement Type "object"constant`
+
               - `IReadOnlyDictionary<string, JsonElement>? Properties`
 
-                JSON Schema properties defining the tool's input parameters.
-
-              - `IReadOnlyList<string> Required`
-
-                List of required property names.
-
-              - `Type Type`
-
-                Must be 'object' for tool input schemas.
-
-                - `"object"Object`
+              - `IReadOnlyList<string>? Required`
 
             - `required string Name`
 
@@ -724,6 +724,10 @@ Create Session
 
     Vault IDs attached to the session at creation. Empty when no vaults were supplied.
 
+  - `string? DeploymentID`
+
+    Deployment ID when the session was created from a deployment reference. Null otherwise.
+
 ### Example
 
 ```csharp
@@ -901,6 +905,7 @@ Console.WriteLine(betaManagedAgentsSession);
   },
   "vault_ids": [
     "vlt_011CZkZDLs7fYzm1hXNPeRjv"
-  ]
+  ],
+  "deployment_id": "deployment_id"
 }
 ```

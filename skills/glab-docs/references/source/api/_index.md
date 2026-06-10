@@ -50,6 +50,9 @@ based on their format:
 - If the value starts with `@`, the rest of the value is interpreted as a
   filename to read the value from. Pass `-` to read from standard input.
 
+Neither `--field` nor `--raw-field` parses JSON arrays or objects;
+those values are sent as strings. To pass a JSON body literally, use `--input`.
+
 For GraphQL requests, all fields other than `query` and `operationName` are
 interpreted as GraphQL variables.
 
@@ -94,6 +97,11 @@ glab api projects/gitlab-com%2Fwww-gitlab-com/issues
 
 # Upload a file to a project wiki
 glab api --method POST projects/:fullpath/wikis/attachments --form "file=@./image.png" --form "branch=main"
+
+# Debug the HTTP request and response, including headers and body.
+# Use --input (here, piped from stdin) for JSON arrays or objects;
+# --field only converts scalars (bool, int, null, placeholders, @file).
+echo '{"allowed_to_push":[{"user_id":1}]}' | GLAB_DEBUG_HTTP=1 glab api -X PATCH "projects/:fullpath/protected_branches/main" --input -
 
 # Fetch all pages of issues
 glab api issues --paginate

@@ -28,8 +28,8 @@ FLUX.2 \[max\] is Black Forest Labs' highest-quality image model — top editing
 
 ## Usage
 
-* [ TypeScript ](#tab-panel-298)
-* [ cURL ](#tab-panel-299)
+* [ TypeScript ](#tab-panel-338)
+* [ cURL ](#tab-panel-339)
 
 TypeScript
 
@@ -87,8 +87,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 ```
 
-* [ Output ](#tab-panel-296)
-* [ Raw response ](#tab-panel-297)
+* [ Output ](#tab-panel-336)
+* [ Raw response ](#tab-panel-337)
 
 ![High Resolution Scene](https://examples.aig.cloudflare.com/black-forest-labs/flux-2-max/high-resolution-scene.jpeg) 
 
@@ -119,8 +119,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 **Hex Color Control**  — Exact color control via hex codes — useful for brand-consistent imagery 
 
-* [ TypeScript ](#tab-panel-302)
-* [ cURL ](#tab-panel-303)
+* [ TypeScript ](#tab-panel-342)
+* [ cURL ](#tab-panel-343)
 
 TypeScript
 
@@ -170,8 +170,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 ```
 
-* [ Output ](#tab-panel-300)
-* [ Raw response ](#tab-panel-301)
+* [ Output ](#tab-panel-340)
+* [ Raw response ](#tab-panel-341)
 
 ![Hex Color Control](https://examples.aig.cloudflare.com/black-forest-labs/flux-2-max/hex-color-control.jpeg) 
 
@@ -200,8 +200,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 **Image Editing**  — Single-reference image editing — relight or restage a product photo 
 
-* [ TypeScript ](#tab-panel-306)
-* [ cURL ](#tab-panel-307)
+* [ TypeScript ](#tab-panel-346)
+* [ cURL ](#tab-panel-347)
 
 TypeScript
 
@@ -261,8 +261,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 ```
 
-* [ Output ](#tab-panel-304)
-* [ Raw response ](#tab-panel-305)
+* [ Output ](#tab-panel-344)
+* [ Raw response ](#tab-panel-345)
 
 ![Image Editing](https://examples.aig.cloudflare.com/black-forest-labs/flux-2-max/image-editing.jpeg) 
 
@@ -291,8 +291,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 ## Parameters
 
-* [ Input ](#tab-panel-308)
-* [ Output ](#tab-panel-309)
+* [ Input ](#tab-panel-348)
+* [ Output ](#tab-panel-349)
 
 height
 
@@ -328,9 +328,9 @@ image
 
 ## API Schemas (Raw)
 
-Input 
+Input [ ](https://developers.cloudflare.com/ai/models/black-forest-labs/flux-2-max/schema-input.json "Open") [ ](https://developers.cloudflare.com/ai/models/black-forest-labs/flux-2-max/schema-input.json "Download") 
 
-Output 
+Output [ ](https://developers.cloudflare.com/ai/models/black-forest-labs/flux-2-max/schema-output.json "Open") [ ](https://developers.cloudflare.com/ai/models/black-forest-labs/flux-2-max/schema-output.json "Download") 
 
 ```json
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/ai/","name":"AI"}},{"@type":"ListItem","position":3,"item":{"@id":"/ai/models/","name":"Models"}}]}

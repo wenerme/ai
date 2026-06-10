@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 # Protect hybrid cloud networks with Cloudflare Magic Transit
 
-**Last reviewed:**  over 1 year ago 
+**Last reviewed:**  almost 2 years ago 
 
 ## Introduction
 

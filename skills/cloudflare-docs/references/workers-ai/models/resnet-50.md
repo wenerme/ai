@@ -27,8 +27,8 @@ Image Classification • Microsoft
 
 ## Usage
 
-* [  TypeScript ](#tab-panel-4507)
-* [  curl ](#tab-panel-4508)
+* [  TypeScript ](#tab-panel-4893)
+* [  curl ](#tab-panel-4894)
 
 ```
 
@@ -90,8 +90,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 ## Parameters
 
-* [ Input ](#tab-panel-4509)
-* [ Output ](#tab-panel-4510)
+* [ Input ](#tab-panel-4895)
+* [ Output ](#tab-panel-4896)
 
 Option 1
 
@@ -117,9 +117,9 @@ items
 
 ## API Schemas (Raw)
 
-Input 
+Input [ ](https://developers.cloudflare.com/workers-ai/models/resnet-50/schema-input.json "Open") [ ](https://developers.cloudflare.com/workers-ai/models/resnet-50/schema-input.json "Download") 
 
-Output 
+Output [ ](https://developers.cloudflare.com/workers-ai/models/resnet-50/schema-output.json "Open") [ ](https://developers.cloudflare.com/workers-ai/models/resnet-50/schema-output.json "Download") 
 
 ```json
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/workers-ai/","name":"Workers AI"}},{"@type":"ListItem","position":3,"item":{"@id":"/workers-ai/models/","name":"Models"}}]}

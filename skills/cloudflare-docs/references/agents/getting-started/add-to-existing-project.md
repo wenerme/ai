@@ -65,8 +65,8 @@ bun add agents hono-agents
 
 Create a new file for your agent (for example, `src/agents/counter.ts`):
 
-* [  JavaScript ](#tab-panel-4940)
-* [  TypeScript ](#tab-panel-4941)
+* [  JavaScript ](#tab-panel-5322)
+* [  TypeScript ](#tab-panel-5323)
 
 JavaScript
 
@@ -155,8 +155,8 @@ export class CounterAgent extends Agent<Env, CounterState> {
 
 Add the Durable Object binding and migration:
 
-* [  wrangler.jsonc ](#tab-panel-4930)
-* [  wrangler.toml ](#tab-panel-4931)
+* [  wrangler.jsonc ](#tab-panel-5314)
+* [  wrangler.toml ](#tab-panel-5315)
 
 JSONC
 
@@ -170,7 +170,7 @@ JSONC
 
   // Set this to today's date
 
-  "compatibility_date": "2026-06-03",
+  "compatibility_date": "2026-06-10",
 
   "compatibility_flags": ["nodejs_compat"],
 
@@ -219,7 +219,7 @@ main = "src/index.ts"
 
 # Set this to today's date
 
-compatibility_date = "2026-06-03"
+compatibility_date = "2026-06-10"
 
 compatibility_flags = [ "nodejs_compat" ]
 
@@ -285,8 +285,8 @@ If you have an existing `tsconfig.json` with custom settings, you can extend and
 
 **vite.config.ts** — add the `agents()` plugin (handles TC39 decorator transforms for Vite 8):
 
-* [  JavaScript ](#tab-panel-4934)
-* [  TypeScript ](#tab-panel-4935)
+* [  JavaScript ](#tab-panel-5318)
+* [  TypeScript ](#tab-panel-5319)
 
 JavaScript
 
@@ -340,8 +340,8 @@ For more details, refer to the [TypeScript configuration](https://developers.clo
 
 Your agent class must be exported from your main entry point. Update your `src/index.ts`:
 
-* [  JavaScript ](#tab-panel-4938)
-* [  TypeScript ](#tab-panel-4939)
+* [  JavaScript ](#tab-panel-5320)
+* [  TypeScript ](#tab-panel-5321)
 
 JavaScript
 
@@ -389,8 +389,8 @@ Choose the approach that matches your project structure:
 
 ### Plain Workers (fetch handler)
 
-* [  JavaScript ](#tab-panel-4946)
-* [  TypeScript ](#tab-panel-4947)
+* [  JavaScript ](#tab-panel-5326)
+* [  TypeScript ](#tab-panel-5327)
 
 JavaScript
 
@@ -474,8 +474,8 @@ export default {
 
 ### Hono
 
-* [  JavaScript ](#tab-panel-4942)
-* [  TypeScript ](#tab-panel-4943)
+* [  JavaScript ](#tab-panel-5324)
+* [  TypeScript ](#tab-panel-5325)
 
 JavaScript
 
@@ -539,8 +539,8 @@ export default app;
 
 If you are serving static assets alongside agents, static assets are served first by default. Your Worker code only runs for paths that do not match a static asset:
 
-* [  JavaScript ](#tab-panel-4948)
-* [  TypeScript ](#tab-panel-4949)
+* [  JavaScript ](#tab-panel-5328)
+* [  TypeScript ](#tab-panel-5329)
 
 JavaScript
 
@@ -612,8 +612,8 @@ export default {
 
 Configure assets in the Wrangler configuration file:
 
-* [  wrangler.jsonc ](#tab-panel-4928)
-* [  wrangler.toml ](#tab-panel-4929)
+* [  wrangler.jsonc ](#tab-panel-5316)
+* [  wrangler.toml ](#tab-panel-5317)
 
 JSONC
 
@@ -666,8 +666,8 @@ Refer to [Configuration](https://developers.cloudflare.com/agents/runtime/operat
 
 ### React
 
-* [  JavaScript ](#tab-panel-4956)
-* [  TypeScript ](#tab-panel-4957)
+* [  JavaScript ](#tab-panel-5332)
+* [  TypeScript ](#tab-panel-5333)
 
 JavaScript
 
@@ -755,10 +755,16 @@ function CounterWidget() {
 
 ```
 
+Key points:
+
+* `useAgent` connects to your agent via WebSocket
+* `onStateUpdate` fires whenever the agent's state changes
+* `agent.stub.methodName()` calls methods marked with `@callable()` on your agent
+
 ### Vanilla JavaScript
 
-* [  JavaScript ](#tab-panel-4952)
-* [  TypeScript ](#tab-panel-4953)
+* [  JavaScript ](#tab-panel-5330)
+* [  TypeScript ](#tab-panel-5331)
 
 JavaScript
 
@@ -818,167 +824,41 @@ document.getElementById("increment").onclick = () => agent.call("increment");
 
 ```
 
-## Adding multiple agents
+## How it works
 
-Add more agents by extending the configuration:
+When you clicked the button:
 
-* [  JavaScript ](#tab-panel-4950)
-* [  TypeScript ](#tab-panel-4951)
+1. **Client** called `agent.stub.increment()` over WebSocket
+2. **Agent** ran `increment()`, updated state with `setState()`
+3. **State** persisted to SQLite automatically
+4. **Broadcast** sent to all connected clients
+5. **React** updated via `onStateUpdate`
 
-JavaScript
+flowchart LR
+    A["Browser<br/>(React)"] <-->|WebSocket| B["Agent<br/>(Counter)"]
+    B --> C["SQLite<br/>(State)"]
 
-```
+### Key concepts
 
-// src/agents/chat.ts
+| Concept              | What it means                                                                                     |
+| -------------------- | ------------------------------------------------------------------------------------------------- |
+| **Agent instance**   | Each unique name gets its own agent. CounterAgent:user-123 is separate from CounterAgent:user-456 |
+| **Persistent state** | State survives restarts, deploys, and hibernation. It is stored in SQLite                         |
+| **Real-time sync**   | All clients connected to the same agent receive state updates instantly                           |
+| **Hibernation**      | When no clients are connected, the agent hibernates (no cost). It wakes on the next request       |
 
-export class Chat extends Agent {
+## Deploy to Cloudflare
 
-  // ...
-
-}
-
-
-// src/agents/scheduler.ts
-
-export class Scheduler extends Agent {
-
-  // ...
-
-}
-
+Terminal window
 
 ```
 
-TypeScript
-
-```
-
-// src/agents/chat.ts
-
-export class Chat extends Agent {
-
-  // ...
-
-}
-
-
-// src/agents/scheduler.ts
-
-export class Scheduler extends Agent {
-
-  // ...
-
-}
+npm run deploy
 
 
 ```
 
-Update the Wrangler configuration file:
-
-* [  wrangler.jsonc ](#tab-panel-4936)
-* [  wrangler.toml ](#tab-panel-4937)
-
-JSONC
-
-```
-
-{
-
-  "durable_objects": {
-
-    "bindings": [
-
-      { "name": "CounterAgent", "class_name": "CounterAgent" },
-
-      { "name": "Chat", "class_name": "Chat" },
-
-      { "name": "Scheduler", "class_name": "Scheduler" },
-
-    ],
-
-  },
-
-  "migrations": [
-
-    {
-
-      "tag": "v1",
-
-      "new_sqlite_classes": ["CounterAgent", "Chat", "Scheduler"],
-
-    },
-
-  ],
-
-}
-
-
-```
-
-TOML
-
-```
-
-[[durable_objects.bindings]]
-
-name = "CounterAgent"
-
-class_name = "CounterAgent"
-
-
-[[durable_objects.bindings]]
-
-name = "Chat"
-
-class_name = "Chat"
-
-
-[[durable_objects.bindings]]
-
-name = "Scheduler"
-
-class_name = "Scheduler"
-
-
-[[migrations]]
-
-tag = "v1"
-
-new_sqlite_classes = [ "CounterAgent", "Chat", "Scheduler" ]
-
-
-```
-
-Export all agents from your entry point:
-
-* [  JavaScript ](#tab-panel-4944)
-* [  TypeScript ](#tab-panel-4945)
-
-JavaScript
-
-```
-
-export { CounterAgent } from "./agents/counter";
-
-export { Chat } from "./agents/chat";
-
-export { Scheduler } from "./agents/scheduler";
-
-
-```
-
-TypeScript
-
-```
-
-export { CounterAgent } from "./agents/counter";
-
-export { Chat } from "./agents/chat";
-
-export { Scheduler } from "./agents/scheduler";
-
-
-```
+Your agent is now live on Cloudflare's global network, running close to your users.
 
 ## Common integration patterns
 
@@ -986,8 +866,8 @@ export { Scheduler } from "./agents/scheduler";
 
 Check auth before routing to agents:
 
-* [  JavaScript ](#tab-panel-4960)
-* [  TypeScript ](#tab-panel-4961)
+* [  JavaScript ](#tab-panel-5342)
+* [  TypeScript ](#tab-panel-5343)
 
 JavaScript
 
@@ -1067,8 +947,8 @@ export default {
 
 By default, agents are routed at `/agents/{agent-name}/{instance-name}`. You can customize this:
 
-* [  JavaScript ](#tab-panel-4954)
-* [  TypeScript ](#tab-panel-4955)
+* [  JavaScript ](#tab-panel-5334)
+* [  TypeScript ](#tab-panel-5335)
 
 JavaScript
 
@@ -1108,8 +988,8 @@ Refer to [Routing](https://developers.cloudflare.com/agents/runtime/communicatio
 
 You can interact with agents directly from your Worker code:
 
-* [  JavaScript ](#tab-panel-4962)
-* [  TypeScript ](#tab-panel-4963)
+* [  JavaScript ](#tab-panel-5346)
+* [  TypeScript ](#tab-panel-5347)
 
 JavaScript
 
@@ -1175,20 +1055,65 @@ export default {
 
 ```
 
-## Troubleshooting
+### Adding multiple agents
 
-### Agent not found, or 404 errors
+Add more agents by extending the configuration:
 
-1. **Check the export** \- Agent class must be exported from your main entry point.
-2. **Check the binding** \- `class_name` in the Wrangler configuration file must exactly match the exported class name.
-3. **Check the route** \- Default route is `/agents/{agent-name}/{instance-name}`.
+* [  JavaScript ](#tab-panel-5340)
+* [  TypeScript ](#tab-panel-5341)
 
-### No such Durable Object class error
+JavaScript
 
-Add the migration to the Wrangler configuration file:
+```
 
-* [  wrangler.jsonc ](#tab-panel-4932)
-* [  wrangler.toml ](#tab-panel-4933)
+// src/agents/chat.ts
+
+export class Chat extends Agent {
+
+  // ...
+
+}
+
+
+// src/agents/scheduler.ts
+
+export class Scheduler extends Agent {
+
+  // ...
+
+}
+
+
+```
+
+TypeScript
+
+```
+
+// src/agents/chat.ts
+
+export class Chat extends Agent {
+
+  // ...
+
+}
+
+
+// src/agents/scheduler.ts
+
+export class Scheduler extends Agent {
+
+  // ...
+
+}
+
+
+```
+
+Update the Wrangler configuration file:
+
+* [  wrangler.jsonc ](#tab-panel-5350)
+* [  wrangler.toml ](#tab-panel-5351)
 
 JSONC
 
@@ -1196,17 +1121,168 @@ JSONC
 
 {
 
+  "$schema": "./node_modules/wrangler/config-schema.json",
+
+  "durable_objects": {
+
+    "bindings": [
+
+      {
+
+        "name": "CounterAgent",
+
+        "class_name": "CounterAgent"
+
+      },
+
+      {
+
+        "name": "Chat",
+
+        "class_name": "Chat"
+
+      },
+
+      {
+
+        "name": "Scheduler",
+
+        "class_name": "Scheduler"
+
+      }
+
+    ]
+
+  },
+
   "migrations": [
 
     {
 
       "tag": "v1",
 
-      "new_sqlite_classes": ["YourAgentClass"],
+      "new_sqlite_classes": [
 
-    },
+        "CounterAgent",
 
-  ],
+        "Chat",
+
+        "Scheduler"
+
+      ]
+
+    }
+
+  ]
+
+}
+
+
+```
+
+TOML
+
+```
+
+[[durable_objects.bindings]]
+
+name = "CounterAgent"
+
+class_name = "CounterAgent"
+
+
+[[durable_objects.bindings]]
+
+name = "Chat"
+
+class_name = "Chat"
+
+
+[[durable_objects.bindings]]
+
+name = "Scheduler"
+
+class_name = "Scheduler"
+
+
+[[migrations]]
+
+tag = "v1"
+
+new_sqlite_classes = ["CounterAgent", "Chat", "Scheduler"]
+
+
+```
+
+Export all agents from your entry point:
+
+* [  JavaScript ](#tab-panel-5338)
+* [  TypeScript ](#tab-panel-5339)
+
+JavaScript
+
+```
+
+export { CounterAgent } from "./agents/counter";
+
+export { Chat } from "./agents/chat";
+
+export { Scheduler } from "./agents/scheduler";
+
+
+```
+
+TypeScript
+
+```
+
+export { CounterAgent } from "./agents/counter";
+
+export { Chat } from "./agents/chat";
+
+export { Scheduler } from "./agents/scheduler";
+
+
+```
+
+## Troubleshooting
+
+### Agent not found, or 404 errors
+
+1. **Check the export** \- Agent class must be exported from your main entry point.
+2. **Check the binding** \- `class_name` in the Wrangler configuration file must exactly match the exported class name.
+3. **Check the route** \- Default route is `/agents/{'{agent-name}'}/{'{instance-name}'}`. Agent name in client matches the class name (case-insensitive).
+
+### No such Durable Object class error
+
+Add the migration to the Wrangler configuration file:
+
+* [  wrangler.jsonc ](#tab-panel-5336)
+* [  wrangler.toml ](#tab-panel-5337)
+
+JSONC
+
+```
+
+{
+
+  "$schema": "./node_modules/wrangler/config-schema.json",
+
+  "migrations": [
+
+    {
+
+      "tag": "v1",
+
+      "new_sqlite_classes": [
+
+        "YourAgentClass"
+
+      ]
+
+    }
+
+  ]
 
 }
 
@@ -1221,7 +1297,7 @@ TOML
 
 tag = "v1"
 
-new_sqlite_classes = [ "YourAgentClass" ]
+new_sqlite_classes = ["YourAgentClass"]
 
 
 ```
@@ -1230,8 +1306,8 @@ new_sqlite_classes = [ "YourAgentClass" ]
 
 Ensure your routing passes the response unchanged:
 
-* [  JavaScript ](#tab-panel-4958)
-* [  TypeScript ](#tab-panel-4959)
+* [  JavaScript ](#tab-panel-5344)
+* [  TypeScript ](#tab-panel-5345)
 
 JavaScript
 
@@ -1273,15 +1349,168 @@ if (agentResponse) return new Response(agentResponse.body);
 
 Check that:
 
-1. You are using `this.setState()`, not mutating `this.state` directly.
+1. You are calling `this.setState()`, not mutating `this.state` directly.
 2. The agent class is in `new_sqlite_classes` in migrations.
 3. You are connecting to the same agent instance name.
+4. The `onStateUpdate` callback is wired up in your client.
+5. WebSocket connection is established (check browser dev tools).
+
+### "Method X is not callable" errors
+
+Make sure your methods are decorated with `@callable()`:
+
+* [  JavaScript ](#tab-panel-5348)
+* [  TypeScript ](#tab-panel-5349)
+
+JavaScript
+
+```
+
+import { Agent, callable } from "agents";
+
+
+export class MyAgent extends Agent {
+
+  @callable()
+
+  increment() {
+
+    // ...
+
+  }
+
+}
+
+
+```
+
+TypeScript
+
+```
+
+import { Agent, callable } from "agents";
+
+
+export class MyAgent extends Agent {
+
+  @callable()
+
+  increment() {
+
+    // ...
+
+  }
+
+}
+
+
+```
+
+### Type errors with `agent.stub`
+
+Add the agent and state type parameters:
+
+* [  JavaScript ](#tab-panel-5352)
+* [  TypeScript ](#tab-panel-5353)
+
+JavaScript
+
+```
+
+import { useAgent } from "agents/react";
+
+
+// Pass the agent and state types to useAgent
+
+const agent = useAgent({
+
+  agent: "CounterAgent",
+
+  onStateUpdate: (state) => setCount(state.count),
+
+});
+
+
+// Now agent.stub is fully typed
+
+agent.stub.increment();
+
+
+```
+
+TypeScript
+
+```
+
+import { useAgent } from "agents/react";
+
+import type { CounterAgent, CounterState } from "./server";
+
+
+// Pass the agent and state types to useAgent
+
+const agent = useAgent<CounterAgent, CounterState>({
+
+  agent: "CounterAgent",
+
+  onStateUpdate: (state) => setCount(state.count),
+
+});
+
+
+// Now agent.stub is fully typed
+
+agent.stub.increment();
+
+
+```
+
+### `SyntaxError: Invalid or unexpected token` with `@callable()`
+
+If your dev server fails with `SyntaxError: Invalid or unexpected token`, set `"target": "ES2021"` in your `tsconfig.json`. This ensures that Vite's esbuild transpiler downlevels TC39 decorators instead of passing them through as native syntax.
+
+```
+
+{
+
+  "compilerOptions": {
+
+    "target": "ES2021"
+
+  }
+
+}
+
+
+```
+
+Warning
+
+Do not set `"experimentalDecorators": true` in your `tsconfig.json`. The Agents SDK uses [TC39 standard decorators ↗](https://github.com/tc39/proposal-decorators), not TypeScript legacy decorators. Enabling `experimentalDecorators` applies an incompatible transform that silently breaks `@callable()` at runtime.
 
 ## Next steps
 
-[ State management ](https://developers.cloudflare.com/agents/runtime/lifecycle/state/) Manage and synchronize agent state. 
+Now that you have a working agent, explore these topics:
 
-[ Schedule tasks ](https://developers.cloudflare.com/agents/runtime/execution/schedule-tasks/) Background tasks and cron jobs. 
+### Common next steps
+
+| Learn how to             | Refer to                                                                                        |
+| ------------------------ | ----------------------------------------------------------------------------------------------- |
+| Add AI/LLM capabilities  | [Using AI models](https://developers.cloudflare.com/agents/runtime/operations/using-ai-models/) |
+| Expose tools via MCP     | [MCP servers](https://developers.cloudflare.com/agents/model-context-protocol/apis/agent-api/)  |
+| Run background tasks     | [Schedule tasks](https://developers.cloudflare.com/agents/runtime/execution/schedule-tasks/)    |
+| Handle emails            | [Email routing](https://developers.cloudflare.com/agents/communication-channels/email/)         |
+| Use Cloudflare Workflows | [Run Workflows](https://developers.cloudflare.com/agents/runtime/execution/run-workflows/)      |
+
+### Explore more
+
+[ State management ](https://developers.cloudflare.com/agents/runtime/lifecycle/state/) Deep dive into setState(), initialState, and onStateChanged(). 
+
+[ Client SDK ](https://developers.cloudflare.com/agents/communication-channels/chat/client-sdk/) Full useAgent and AgentClient API reference. 
+
+[ Callable methods ](https://developers.cloudflare.com/agents/runtime/lifecycle/callable-methods/) Expose methods to clients with @callable(). 
+
+[ Schedule tasks ](https://developers.cloudflare.com/agents/runtime/execution/schedule-tasks/) Run tasks on a delay, schedule, or cron. 
 
 [ Agent class internals ](https://developers.cloudflare.com/agents/runtime/lifecycle/agent-class/) Full lifecycle and methods reference. 
 

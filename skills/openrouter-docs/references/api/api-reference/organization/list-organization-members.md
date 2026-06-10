@@ -76,6 +76,7 @@ paths:
                 $ref: '#/components/schemas/InternalServerResponse'
 servers:
   - url: https://openrouter.ai/api/v1
+    description: Production server
 components:
   schemas:
     OrganizationMembersGetResponsesContentApplicationJsonSchemaDataItemsRole:
@@ -250,7 +251,28 @@ components:
 
 ```
 
-## SDK Code Examples
+## Examples
+
+
+
+**Response**
+
+```json
+{
+  "data": [
+    {
+      "email": "jane.doe@example.com",
+      "first_name": "Jane",
+      "id": "user_2dHFtVWx2n56w6HkM0000000000",
+      "last_name": "Doe",
+      "role": "org:admin"
+    }
+  ],
+  "total_count": 25
+}
+```
+
+**SDK Code**
 
 ```python Organization_listOrganizationMembers_example
 import requests

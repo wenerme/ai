@@ -16,10 +16,10 @@ The Workers API provides native email sending capabilities directly from your Cl
 
 ## Email binding
 
-Configure email bindings in your Wrangler configuration file to enable email sending:
+Configure a `send_email` binding in your Wrangler configuration file to enable email sending:
 
-* [  wrangler.jsonc ](#tab-panel-7392)
-* [  wrangler.toml ](#tab-panel-7393)
+* [  wrangler.jsonc ](#tab-panel-8254)
+* [  wrangler.toml ](#tab-panel-8255)
 
 JSONC
 
@@ -27,31 +27,7 @@ JSONC
 
 {
 
-  "$schema": "./node_modules/wrangler/config-schema.json",
-
-  "send_email": [
-
-    {
-
-      "name": "EMAIL"
-
-    },
-
-    {
-
-      "name": "RESTRICTED_EMAIL",
-
-      "allowed_sender_addresses": [
-
-        "noreply@yourdomain.com",
-
-        "support@yourdomain.com"
-
-      ]
-
-    }
-
-  ]
+  "send_email": [{ "name": "EMAIL" }],
 
 }
 
@@ -67,16 +43,9 @@ TOML
 name = "EMAIL"
 
 
-# Optional: restrict sender addresses for security
-
-[[send_email]]
-
-name = "RESTRICTED_EMAIL"
-
-allowed_sender_addresses = ["noreply@yourdomain.com", "support@yourdomain.com"]
-
-
 ```
+
+You can restrict which senders and recipients a binding may use. Refer to [Configure send bindings](https://developers.cloudflare.com/email-service/configuration/send-bindings/) for the available restriction attributes and examples.
 
 ## `send()` method
 
@@ -126,14 +95,20 @@ interface EmailMessageBuilder {
 
   attachments?: Attachment[];
 
-  headers?: { [key: string]: string }; // See /email-service/reference/headers/
+  // Custom headers. See /email-service/reference/headers/
+
+  headers?: { [key: string]: string };
+
+  // The combined number of addresses in `to`, `cc`, and `bcc` must not
+
+  // exceed 50. See /email-service/platform/limits/ for all limits.
 
 }
 
 
 interface Attachment {
 
-  content: string | ArrayBuffer; // Base64 string or binary content
+  content: string | ArrayBuffer | ArrayBufferView; // Base64 string or binary content
 
   filename: string;
 
@@ -160,129 +135,38 @@ interface EmailSendResult {
 
 ```
 
+Local development with binary attachments
+
+When using `wrangler dev` without [remote bindings](https://developers.cloudflare.com/workers/development-testing/#remote-bindings), `ArrayBuffer` and `ArrayBufferView` content in attachments cannot be serialized by the local simulator. Refer to [local development for email sending](https://developers.cloudflare.com/email-service/local-development/sending/#known-limitations).
+
 ### Basic usage
 
-* [ Simple email ](#tab-panel-7385)
-* [ Multiple recipients ](#tab-panel-7386)
-* [ With CC and BCC ](#tab-panel-7387)
-* [ Named recipients ](#tab-panel-7388)
-* [ Mixed recipients ](#tab-panel-7389)
-
-TypeScript
-
-```
-
-interface Env {
-
-  EMAIL: SendEmail;
-
-}
-
-
-```
-
-TypeScript
-
-```
-
-// Send to multiple recipients (max 50)
-
-const response = await env.EMAIL.send({
-
-  to: ["user1@example.com", "user2@example.com", "user3@example.com"],
-
-  from: { email: "newsletter@yourdomain.com", name: "Newsletter Team" },
-
-  subject: "Monthly Newsletter",
-
-  html: "<h1>This month's updates</h1>",
-
-  text: "This month's updates",
-
-});
-
-
-```
-
 TypeScript
 
 ```
 
 const response = await env.EMAIL.send({
 
-  to: "customer@example.com",
+  to: "recipient@example.com",
 
-  cc: ["manager@company.com"],
+  from: "welcome@yourdomain.com",
 
-  bcc: ["archive@company.com"],
+  subject: "Welcome to our service!",
 
-  from: "orders@yourdomain.com",
+  html: "<h1>Welcome!</h1><p>Thanks for signing up.</p>",
 
-  replyTo: "support@yourdomain.com",
-
-  subject: "Order Confirmation #12345",
-
-  html: "<h1>Your order is confirmed</h1>",
-
-  text: "Your order is confirmed",
+  text: "Welcome! Thanks for signing up.",
 
 });
 
 
 ```
 
-TypeScript
-
-```
-
-const response = await env.EMAIL.send({
-
-  to: { email: "jane@example.com", name: "Jane Doe" },
-
-  from: { email: "support@example.com", name: "Support Team" },
-
-  subject: "Welcome!",
-
-  html: "<h1>Thanks for joining!</h1>",
-
-  text: "Thanks for joining!",
-
-});
-
-
-```
-
-TypeScript
-
-```
-
-const response = await env.EMAIL.send({
-
-  to: [
-
-    "plain@example.com",
-
-    { email: "jane@example.com", name: "Jane Doe" },
-
-  ],
-
-  from: "support@yourdomain.com",
-
-  subject: "Team update",
-
-  html: "<h1>Monthly update</h1>",
-
-  text: "Monthly update",
-
-});
-
-
-```
+For multiple recipients, CC/BCC, and named addresses, see [Specify recipients](https://developers.cloudflare.com/email-service/examples/email-sending/recipients/).
 
 ### Attachments
 
-* [ PDF attachment ](#tab-panel-7390)
-* [ Inline image ](#tab-panel-7391)
+Send files by including base64-encoded content in the `attachments` array. The total message size must not exceed 5 MiB (including attachments).
 
 TypeScript
 
@@ -319,56 +203,11 @@ const response = await env.EMAIL.send({
 
 ```
 
-TypeScript
-
-```
-
-const response = await env.EMAIL.send({
-
-  to: "user@example.com",
-
-  from: "marketing@yourdomain.com",
-
-  subject: "Check out our new product!",
-
-  html: `
-
-    <h1>New Product Launch</h1>
-
-    <img src="cid:product-image" alt="New Product" />
-
-    <p>Check out our amazing new product!</p>
-
-  `,
-
-  attachments: [
-
-    {
-
-      content: "iVBORw0KGgoAAAANSUhEUgAA...", // Base64 image content
-
-      filename: "product.png",
-
-      type: "image/png",
-
-      disposition: "inline",
-
-      contentId: "product-image",
-
-    },
-
-  ],
-
-});
-
-
-```
+For inline images and file uploads, see [Email attachments](https://developers.cloudflare.com/email-service/examples/email-sending/email-attachments/).
 
 ## Error handling
 
 Handle email sending errors gracefully:
-
-* [ Single send errors ](#tab-panel-7384)
 
 TypeScript
 
@@ -496,17 +335,17 @@ The following error codes may be returned when sending emails:
 | E\_RATE\_LIMIT\_EXCEEDED          | Rate limit exceeded                       | Sending rate limit reached                                                                                                  |
 | E\_DAILY\_LIMIT\_EXCEEDED         | Daily limit exceeded                      | Daily sending quota reached                                                                                                 |
 | E\_INTERNAL\_SERVER\_ERROR        | Internal service error                    | Email Service temporarily unavailable                                                                                       |
-| E\_HEADER\_NOT\_ALLOWED           | Header not allowed                        | Header is platform-controlled or not on the [whitelist](https://developers.cloudflare.com/email-service/reference/headers/) |
+| E\_HEADER\_NOT\_ALLOWED           | Header not allowed                        | Header is platform-controlled or not on the [allowlist](https://developers.cloudflare.com/email-service/reference/headers/) |
 | E\_HEADER\_USE\_API\_FIELD        | Must use API field                        | Header like From must be set via the dedicated API field                                                                    |
 | E\_HEADER\_VALUE\_INVALID         | Header value invalid                      | Malformed value, empty, or incorrect format                                                                                 |
 | E\_HEADER\_VALUE\_TOO\_LONG       | Header value too long                     | Value exceeds 2,048 byte limit                                                                                              |
 | E\_HEADER\_NAME\_INVALID          | Header name invalid                       | Invalid characters or exceeds 100 byte limit                                                                                |
 | E\_HEADERS\_TOO\_LARGE            | Headers payload too large                 | Total custom headers exceed 16 KB limit                                                                                     |
-| E\_HEADERS\_TOO\_MANY             | Too many headers                          | More than 20 whitelisted (non-X) custom headers                                                                             |
+| E\_HEADERS\_TOO\_MANY             | Too many headers                          | More than 20 allowlisted (non-X) custom headers                                                                             |
 
 ## Legacy `EmailMessage` API
 
-The existing `EmailMessage` API remains supported for backward compatibility:
+The `EmailMessage` API remains supported for backward compatibility. Use it when you already have a raw [RFC 5322 ↗](https://datatracker.ietf.org/doc/html/rfc5322) MIME message to send. For new code, prefer the structured [send() method](#send-method) above.
 
 TypeScript
 
@@ -565,6 +404,7 @@ export default {
 ## Next steps
 
 * See the [REST API](https://developers.cloudflare.com/email-service/api/send-emails/rest-api/) for sending emails without Workers
+* See [SMTP](https://developers.cloudflare.com/email-service/api/send-emails/smtp/) for sending from any SMTP-capable application or mail client
 * See [practical examples](https://developers.cloudflare.com/email-service/examples/) of email sending patterns
 * Learn about [email routing](https://developers.cloudflare.com/email-service/api/route-emails/) for handling incoming emails
 * Explore [email authentication](https://developers.cloudflare.com/email-service/concepts/email-authentication/) for better deliverability

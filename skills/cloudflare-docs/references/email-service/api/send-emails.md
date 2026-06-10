@@ -14,8 +14,11 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 API reference for sending emails with Cloudflare Email Service using the Workers API or REST API.
 
+Reference for sending outbound emails using the Workers binding, the REST API, or SMTP.
+
 * [ Workers API ](https://developers.cloudflare.com/email-service/api/send-emails/workers-api/)
 * [ REST API ](https://developers.cloudflare.com/email-service/api/send-emails/rest-api/)
+* [ SMTP ](https://developers.cloudflare.com/email-service/api/send-emails/smtp/)
 
 ```json
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/email-service/","name":"Email Service"}},{"@type":"ListItem","position":3,"item":{"@id":"/email-service/api/","name":"API reference"}},{"@type":"ListItem","position":4,"item":{"@id":"/email-service/api/send-emails/","name":"Send emails"}}]}

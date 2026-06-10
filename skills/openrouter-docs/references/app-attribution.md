@@ -35,7 +35,7 @@ The `X-OpenRouter-Categories` header assigns your app to one or more marketplace
 
 #### Category Groups
 
-Categories are organized into groups for the [marketplace](/apps):
+Categories are organized into groups for the [marketplace](https://openrouter.ai/apps):
 
 **Coding** — Tools for software development:
 

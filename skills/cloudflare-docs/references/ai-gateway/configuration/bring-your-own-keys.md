@@ -31,6 +31,12 @@ The keys are stored securely with [Secrets Store](https://developers.cloudflare.
 
 ### Configure API keys
 
+You can configure BYOK from the dashboard or by using the API.
+
+#### Dashboard
+
+When you add a provider key from the dashboard, AI Gateway creates and names the Secrets Store secret automatically.
+
 1. Log into the [Cloudflare dashboard ↗](https://dash.cloudflare.com/) and select your account.
 2. Go to **AI** \> **AI Gateway**.
 3. Select your gateway or create a new one.
@@ -39,6 +45,30 @@ The keys are stored securely with [Secrets Store](https://developers.cloudflare.
 6. Select your AI provider from the dropdown.
 7. Enter your API key and optionally provide a description.
 8. Click **Save**.
+
+#### API
+
+If you use the API to configure BYOK, create the Secrets Store secret before you create the provider configuration. Name the secret with this format:
+
+```
+
+{gateway_id}_{provider_slug}_{alias}
+
+
+```
+
+For example, for gateway `my-gateway`, provider `anthropic`, and alias `default`, create the Secrets Store secret as:
+
+```
+
+my-gateway_anthropic_default
+
+
+```
+
+Then create the provider configuration with the same `provider_slug` and `alias` values.
+
+The `secret_id` returned by Secrets Store is not used by AI Gateway for runtime lookup, so API-created secrets must follow the naming convention.
 
 ### Update your applications
 

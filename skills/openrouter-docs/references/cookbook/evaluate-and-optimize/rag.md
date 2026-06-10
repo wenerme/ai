@@ -634,6 +634,87 @@ Reranking adds an extra API call, so it's worth understanding when it helps most
 * You need the lowest possible latency (rerank adds one additional API call)
 * You're building a prototype and want to keep the pipeline simple
 
+## Multimodal Rerank (Text + Images)
+
+Some rerank models accept images alongside text. Instead of passing plain strings, you pass document objects with an optional `text` field, an optional `image` field, or both. The `image` value can be a remote URL (`http`/`https`) or a base64-encoded data URI (`data:image/...`). At least one of `text` or `image` is required per document.
+
+This is useful when your knowledge base contains diagrams, screenshots, charts, or scanned pages where the visual content carries meaning the caption alone doesn't.
+
+```python title="Python"
+response = requests.post(
+    "https://openrouter.ai/api/v1/rerank",
+    headers={
+        "Authorization": f"Bearer {OPENROUTER_API_KEY}",
+        "Content-Type": "application/json",
+    },
+    json={
+        "model": "{{RERANK_MODEL}}",
+        "query": "How is AI improving the capabilities of robots?",
+        "documents": [
+            {"text": "AI enables robots to perceive, plan, and act autonomously."},
+            {"image": "https://example.com/robot-diagram.png"},
+            {
+                "text": "A robotic arm assembling components.",
+                "image": "https://example.com/robot-arm.png",
+            },
+        ],
+        "top_n": 2,
+    },
+)
+
+for r in response.json()["results"]:
+    print(f"  Score: {r['relevance_score']:.4f} | index: {r['index']}")
+```
+
+```typescript title="TypeScript (fetch)"
+const response = await fetch('https://openrouter.ai/api/v1/rerank', {
+  method: 'POST',
+  headers: {
+    'Authorization': `Bearer ${OPENROUTER_API_KEY}`,
+    'Content-Type': 'application/json',
+  },
+  body: JSON.stringify({
+    model: '{{RERANK_MODEL}}',
+    query: 'How is AI improving the capabilities of robots?',
+    documents: [
+      { text: 'AI enables robots to perceive, plan, and act autonomously.' },
+      { image: 'https://example.com/robot-diagram.png' },
+      {
+        text: 'A robotic arm assembling components.',
+        image: 'https://example.com/robot-arm.png',
+      },
+    ],
+    top_n: 2,
+  }),
+});
+
+const data = await response.json();
+for (const r of data.results) {
+  console.log(`  Score: ${r.relevance_score.toFixed(4)} | index: ${r.index}`);
+}
+```
+
+```shell title="Shell"
+curl https://openrouter.ai/api/v1/rerank \
+  -H "Content-Type: application/json" \
+  -H "Authorization: Bearer $OPENROUTER_API_KEY" \
+  -d '{
+    "model": "{{RERANK_MODEL}}",
+    "query": "How is AI improving the capabilities of robots?",
+    "documents": [
+      { "text": "AI enables robots to perceive, plan, and act autonomously." },
+      { "image": "https://example.com/robot-diagram.png" },
+      {
+        "text": "A robotic arm assembling components.",
+        "image": "https://example.com/robot-arm.png"
+      }
+    ],
+    "top_n": 2
+  }'
+```
+
+Text-only documents can still be passed as plain strings, so you can mix `"a plain string"` and `{ "image": "..." }` entries in the same `documents` array. Browse multimodal rerank models at [openrouter.ai/models?output\_modalities=rerank](https://openrouter.ai/models?fmt=cards\&output_modalities=rerank).
+
 ## Chunking Strategies
 
 How you split documents significantly affects retrieval quality:

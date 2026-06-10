@@ -14,7 +14,12 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 The `/crawl` endpoint scrapes content from a starting URL and follows links across the site, up to a configurable depth or page limit. Responses can be returned as HTML, Markdown, or JSON.
 
-You can use this endpoint in two ways. To use the REST API, [create a custom API Token](https://developers.cloudflare.com/fundamentals/api/get-started/create-token/) with `Browser Rendering - Edit` permission. To use the [Workers binding](https://developers.cloudflare.com/browser-run/reference/wrangler/#bindings) from a [Cloudflare Worker](https://developers.cloudflare.com/workers/), no API token is needed. For more information, refer to [Quick Actions — Before you begin](https://developers.cloudflare.com/browser-run/quick-actions/#before-you-begin).
+You can use this endpoint in two ways:
+
+* **REST API**: [Create a custom API Token](https://developers.cloudflare.com/fundamentals/api/get-started/create-token/) with `Browser Rendering - Edit` permission.
+* **Workers Bindings**: Call the endpoint directly from a [Cloudflare Worker](https://developers.cloudflare.com/workers/) using the [Workers Bindings](https://developers.cloudflare.com/browser-run/reference/wrangler/#bindings). No API token is needed.
+
+For more information, refer to [Quick Actions: Before you begin](https://developers.cloudflare.com/browser-run/quick-actions/#before-you-begin).
 
 ## Endpoint
 

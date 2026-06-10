@@ -28,8 +28,8 @@ xAI's Grok text-to-speech model. Generates high-fidelity spoken audio in 5 expre
 
 ## Usage
 
-* [ TypeScript ](#tab-panel-1724)
-* [ cURL ](#tab-panel-1725)
+* [ TypeScript ](#tab-panel-1994)
+* [ cURL ](#tab-panel-1995)
 
 TypeScript
 
@@ -75,8 +75,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 ```
 
-* [ Output ](#tab-panel-1722)
-* [ Raw response ](#tab-panel-1723)
+* [ Output ](#tab-panel-1992)
+* [ Raw response ](#tab-panel-1993)
 
 ```
 
@@ -105,8 +105,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 **Different Voice**  — Use the warm, conversational \`ara\` voice 
 
-* [ TypeScript ](#tab-panel-1728)
-* [ cURL ](#tab-panel-1729)
+* [ TypeScript ](#tab-panel-1998)
+* [ cURL ](#tab-panel-1999)
 
 TypeScript
 
@@ -154,8 +154,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 ```
 
-* [ Output ](#tab-panel-1726)
-* [ Raw response ](#tab-panel-1727)
+* [ Output ](#tab-panel-1996)
+* [ Raw response ](#tab-panel-1997)
 
 ```
 
@@ -182,8 +182,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 **High-Fidelity MP3**  — 44.1 kHz / 192 kbps MP3 for production use 
 
-* [ TypeScript ](#tab-panel-1736)
-* [ cURL ](#tab-panel-1737)
+* [ TypeScript ](#tab-panel-2006)
+* [ cURL ](#tab-panel-2007)
 
 TypeScript
 
@@ -251,8 +251,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 ```
 
-* [ Output ](#tab-panel-1730)
-* [ Raw response ](#tab-panel-1731)
+* [ Output ](#tab-panel-2000)
+* [ Raw response ](#tab-panel-2001)
 
 ```
 
@@ -279,8 +279,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 **Telephony (mulaw)**  — G.711 μ-law at 8 kHz for SIP / PSTN integration 
 
-* [ TypeScript ](#tab-panel-1742)
-* [ cURL ](#tab-panel-1743)
+* [ TypeScript ](#tab-panel-2012)
+* [ cURL ](#tab-panel-2013)
 
 TypeScript
 
@@ -346,8 +346,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 ```
 
-* [ Output ](#tab-panel-1732)
-* [ Raw response ](#tab-panel-1733)
+* [ Output ](#tab-panel-2002)
+* [ Raw response ](#tab-panel-2003)
 
 ```
 
@@ -374,8 +374,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 **Expressive Delivery**  — Inline speech tags for laughter, pauses, and whispers 
 
-* [ TypeScript ](#tab-panel-1738)
-* [ cURL ](#tab-panel-1739)
+* [ TypeScript ](#tab-panel-2008)
+* [ cURL ](#tab-panel-2009)
 
 TypeScript
 
@@ -431,8 +431,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 ```
 
-* [ Output ](#tab-panel-1734)
-* [ Raw response ](#tab-panel-1735)
+* [ Output ](#tab-panel-2004)
+* [ Raw response ](#tab-panel-2005)
 
 ```
 
@@ -459,8 +459,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 **Text Normalization**  — Convert written numbers and abbreviations to spoken form 
 
-* [ TypeScript ](#tab-panel-1744)
-* [ cURL ](#tab-panel-1745)
+* [ TypeScript ](#tab-panel-2014)
+* [ cURL ](#tab-panel-2015)
 
 TypeScript
 
@@ -520,8 +520,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 ```
 
-* [ Output ](#tab-panel-1740)
-* [ Raw response ](#tab-panel-1741)
+* [ Output ](#tab-panel-2010)
+* [ Raw response ](#tab-panel-2011)
 
 ```
 
@@ -548,12 +548,12 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 ## Parameters
 
-* [ Input ](#tab-panel-1746)
-* [ Output ](#tab-panel-1747)
+* [ Input ](#tab-panel-2016)
+* [ Output ](#tab-panel-2017)
 
 language
 
-`string`requiredBCP-47 language code (e.g. "en", "zh", "pt-BR") or "auto" for automatic language detection. Required — xAI returns 400 if omitted. Supported codes: auto, en, ar-EG, ar-SA, ar-AE, bn, zh, fr, de, hi, id, it, ja, ko, pt-BR, pt-PT, ru, es-MX, es-ES, tr, vi.
+`string`requiredBCP-47 language code (e.g. "en", "zh", "pt-BR") or "auto" for automatic language detection. Required for both REST and WebSocket modes. Supported codes: auto, en, ar-EG, ar-SA, ar-AE, bn, zh, fr, de, hi, id, it, ja, ko, pt-BR, pt-PT, ru, es-MX, es-ES, tr, vi.
 
 ▶optimize\_streaming\_latency
 
@@ -563,9 +563,13 @@ language
 
 `object`Output audio format. Defaults to MP3 at 24 kHz / 128 kbps when omitted.
 
+speed
+
+`number`maximum: 1.5minimum: 0.7Speech speed multiplier. 1.0 is normal speed. Range: 0.7 to 1.5\. Defaults to 1.0\. Only used in WebSocket mode.
+
 text
 
-`string`requiredmaxLength: 15000minLength: 1Text to convert to speech. Maximum 15,000 characters. Supports inline speech tags: \[pause\], \[laugh\], <whisper>…</whisper>, etc.
+`string`maxLength: 15000minLength: 1Text to convert to speech. Maximum 15,000 characters. Supports inline speech tags: \[pause\], \[laugh\], <whisper>…</whisper>, etc. Required for REST mode, mutually exclusive with websocket.
 
 text\_normalization
 
@@ -575,15 +579,19 @@ voice\_id
 
 `string`minLength: 1Voice for synthesis. Defaults to "eve". Built-in voices: eve (energetic), ara (warm), rex (confident), sal (balanced), leo (authoritative). Custom voice IDs from /v1/tts/voices are also accepted. Case-insensitive — "Eve", "EVE", and "eve" are equivalent.
 
+websocket
+
+`boolean`Enable WebSocket streaming for text-to-speech. When true, establishes a bidirectional WebSocket connection. Mutually exclusive with text.
+
 audio
 
 `string`Presigned R2 URL for the generated audio file. MIME type reflects the requested codec (audio/mpeg for mp3, audio/wav for wav, etc.).
 
 ## API Schemas (Raw)
 
-Input 
+Input [ ](https://developers.cloudflare.com/ai/models/xai/grok-tts/schema-input.json "Open") [ ](https://developers.cloudflare.com/ai/models/xai/grok-tts/schema-input.json "Download") 
 
-Output 
+Output [ ](https://developers.cloudflare.com/ai/models/xai/grok-tts/schema-output.json "Open") [ ](https://developers.cloudflare.com/ai/models/xai/grok-tts/schema-output.json "Download") 
 
 ```json
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/ai/","name":"AI"}},{"@type":"ListItem","position":3,"item":{"@id":"/ai/models/","name":"Models"}}]}

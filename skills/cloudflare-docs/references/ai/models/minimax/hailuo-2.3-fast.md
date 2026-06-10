@@ -28,8 +28,8 @@ A lower-latency version of Hailuo 2.3 that preserves core motion quality, visual
 
 ## Usage
 
-* [ TypeScript ](#tab-panel-776)
-* [ cURL ](#tab-panel-777)
+* [ TypeScript ](#tab-panel-826)
+* [ cURL ](#tab-panel-827)
 
 TypeScript
 
@@ -99,8 +99,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 ```
 
-* [ Output ](#tab-panel-772)
-* [ Raw response ](#tab-panel-773)
+* [ Output ](#tab-panel-822)
+* [ Raw response ](#tab-panel-823)
 
 ```
 
@@ -133,8 +133,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 **High Resolution I2V**  — Animate a photo in 1080P 
 
-* [ TypeScript ](#tab-panel-780)
-* [ cURL ](#tab-panel-781)
+* [ TypeScript ](#tab-panel-830)
+* [ cURL ](#tab-panel-831)
 
 TypeScript
 
@@ -204,8 +204,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 ```
 
-* [ Output ](#tab-panel-774)
-* [ Raw response ](#tab-panel-775)
+* [ Output ](#tab-panel-824)
+* [ Raw response ](#tab-panel-825)
 
 ```
 
@@ -236,8 +236,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 **Fast Processing**  — Quick I2V with fast pretreatment enabled 
 
-* [ TypeScript ](#tab-panel-782)
-* [ cURL ](#tab-panel-783)
+* [ TypeScript ](#tab-panel-832)
+* [ cURL ](#tab-panel-833)
 
 TypeScript
 
@@ -307,8 +307,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 ```
 
-* [ Output ](#tab-panel-778)
-* [ Raw response ](#tab-panel-779)
+* [ Output ](#tab-panel-828)
+* [ Raw response ](#tab-panel-829)
 
 ```
 
@@ -339,8 +339,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 ## Parameters
 
-* [ Input ](#tab-panel-784)
-* [ Output ](#tab-panel-785)
+* [ Input ](#tab-panel-834)
+* [ Output ](#tab-panel-835)
 
 ▶duration
 
@@ -380,9 +380,9 @@ video
 
 ## API Schemas (Raw)
 
-Input 
+Input [ ](https://developers.cloudflare.com/ai/models/minimax/hailuo-2.3-fast/schema-input.json "Open") [ ](https://developers.cloudflare.com/ai/models/minimax/hailuo-2.3-fast/schema-input.json "Download") 
 
-Output 
+Output [ ](https://developers.cloudflare.com/ai/models/minimax/hailuo-2.3-fast/schema-output.json "Open") [ ](https://developers.cloudflare.com/ai/models/minimax/hailuo-2.3-fast/schema-output.json "Download") 
 
 ```json
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/ai/","name":"AI"}},{"@type":"ListItem","position":3,"item":{"@id":"/ai/models/","name":"Models"}}]}

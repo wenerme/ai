@@ -27,8 +27,8 @@ Seedream 4.0 is ByteDance's image creation model that combines text-to-image gen
 
 ## Usage
 
-* [ TypeScript ](#tab-panel-354)
-* [ cURL ](#tab-panel-355)
+* [ TypeScript ](#tab-panel-394)
+* [ cURL ](#tab-panel-395)
 
 TypeScript
 
@@ -72,8 +72,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 ```
 
-* [ Output ](#tab-panel-352)
-* [ Raw response ](#tab-panel-353)
+* [ Output ](#tab-panel-392)
+* [ Raw response ](#tab-panel-393)
 
 ![Simple Generation](https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/bytedance__seedream-4.0/simple-generation.jpeg) 
 
@@ -104,8 +104,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 **High Resolution**  — 4K quality image generation 
 
-* [ TypeScript ](#tab-panel-358)
-* [ cURL ](#tab-panel-359)
+* [ TypeScript ](#tab-panel-398)
+* [ cURL ](#tab-panel-399)
 
 TypeScript
 
@@ -163,8 +163,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 ```
 
-* [ Output ](#tab-panel-356)
-* [ Raw response ](#tab-panel-357)
+* [ Output ](#tab-panel-396)
+* [ Raw response ](#tab-panel-397)
 
 ![High Resolution](https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/bytedance__seedream-4.0/high-resolution.jpeg) 
 
@@ -193,8 +193,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 **Widescreen Landscape**  — Cinematic aspect ratio image 
 
-* [ TypeScript ](#tab-panel-362)
-* [ cURL ](#tab-panel-363)
+* [ TypeScript ](#tab-panel-402)
+* [ cURL ](#tab-panel-403)
 
 TypeScript
 
@@ -252,8 +252,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 ```
 
-* [ Output ](#tab-panel-360)
-* [ Raw response ](#tab-panel-361)
+* [ Output ](#tab-panel-400)
+* [ Raw response ](#tab-panel-401)
 
 ![Widescreen Landscape](https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/bytedance__seedream-4.0/widescreen-landscape.jpeg) 
 
@@ -282,8 +282,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 **Portrait Format**  — Vertical image for portraits 
 
-* [ TypeScript ](#tab-panel-366)
-* [ cURL ](#tab-panel-367)
+* [ TypeScript ](#tab-panel-406)
+* [ cURL ](#tab-panel-407)
 
 TypeScript
 
@@ -339,8 +339,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 ```
 
-* [ Output ](#tab-panel-364)
-* [ Raw response ](#tab-panel-365)
+* [ Output ](#tab-panel-404)
+* [ Raw response ](#tab-panel-405)
 
 ![Portrait Format](https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/bytedance__seedream-4.0/portrait-format.jpeg) 
 
@@ -369,8 +369,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 **Detailed 4K**  — High-resolution detailed botanical illustration 
 
-* [ TypeScript ](#tab-panel-370)
-* [ cURL ](#tab-panel-371)
+* [ TypeScript ](#tab-panel-410)
+* [ cURL ](#tab-panel-411)
 
 TypeScript
 
@@ -426,8 +426,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 ```
 
-* [ Output ](#tab-panel-368)
-* [ Raw response ](#tab-panel-369)
+* [ Output ](#tab-panel-408)
+* [ Raw response ](#tab-panel-409)
 
 ![Detailed 4K](https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/bytedance__seedream-4.0/detailed-4k.jpeg) 
 
@@ -456,8 +456,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 ## Parameters
 
-* [ Input ](#tab-panel-372)
-* [ Output ](#tab-panel-373)
+* [ Input ](#tab-panel-412)
+* [ Output ](#tab-panel-413)
 
 aspect\_ratio
 
@@ -489,9 +489,9 @@ image
 
 ## API Schemas (Raw)
 
-Input 
+Input [ ](https://developers.cloudflare.com/ai/models/bytedance/seedream-4.0/schema-input.json "Open") [ ](https://developers.cloudflare.com/ai/models/bytedance/seedream-4.0/schema-input.json "Download") 
 
-Output 
+Output [ ](https://developers.cloudflare.com/ai/models/bytedance/seedream-4.0/schema-output.json "Open") [ ](https://developers.cloudflare.com/ai/models/bytedance/seedream-4.0/schema-output.json "Download") 
 
 ```json
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/ai/","name":"AI"}},{"@type":"ListItem","position":3,"item":{"@id":"/ai/models/","name":"Models"}}]}

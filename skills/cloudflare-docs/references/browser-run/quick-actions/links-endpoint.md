@@ -14,7 +14,12 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 The `/links` endpoint retrieves all links from a webpage. It can be used to extract all links from a page, including those that are hidden.
 
-You can use this endpoint in two ways. To use the REST API, [create a custom API Token](https://developers.cloudflare.com/fundamentals/api/get-started/create-token/) with `Browser Rendering - Edit` permission. To use the [Workers binding](https://developers.cloudflare.com/browser-run/reference/wrangler/#bindings) from a [Cloudflare Worker](https://developers.cloudflare.com/workers/), no API token is needed. For more information, refer to [Quick Actions — Before you begin](https://developers.cloudflare.com/browser-run/quick-actions/#before-you-begin).
+You can use this endpoint in two ways:
+
+* **REST API**: [Create a custom API Token](https://developers.cloudflare.com/fundamentals/api/get-started/create-token/) with `Browser Rendering - Edit` permission.
+* **Workers Bindings**: Call the endpoint directly from a [Cloudflare Worker](https://developers.cloudflare.com/workers/) using the [Workers Bindings](https://developers.cloudflare.com/browser-run/reference/wrangler/#bindings). No API token is needed.
+
+For more information, refer to [Quick Actions: Before you begin](https://developers.cloudflare.com/browser-run/quick-actions/#before-you-begin).
 
 ## Endpoint
 
@@ -42,9 +47,9 @@ You must provide either `url` or `html`:
 
 ### Get all links on a page
 
-* [ curl ](#tab-panel-5835)
-* [ TypeScript SDK ](#tab-panel-5836)
-* [ Workers binding ](#tab-panel-5837)
+* [ curl ](#tab-panel-6693)
+* [ TypeScript SDK ](#tab-panel-6694)
+* [ Workers binding ](#tab-panel-6695)
 
 This example grabs all links from the [Cloudflare Doc's homepage ↗](https://developers.cloudflare.com/). The response will be a JSON array containing the links found on the page.
 

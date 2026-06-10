@@ -81,6 +81,7 @@ paths:
                 $ref: '#/components/schemas/BadGatewayResponse'
 servers:
   - url: https://openrouter.ai/api/v1
+    description: Production server
 components:
   schemas:
     GenerationContentDataInput0:
@@ -382,7 +383,33 @@ components:
 
 ```
 
-## SDK Code Examples
+## Examples
+
+
+
+**Response**
+
+```json
+{
+  "data": {
+    "input": {
+      "prompt": "What is the meaning of life?",
+      "messages": [
+        {
+          "content": "What is the meaning of life?",
+          "role": "user"
+        }
+      ]
+    },
+    "output": {
+      "completion": "The meaning of life is a philosophical question...",
+      "reasoning": null
+    }
+  }
+}
+```
+
+**SDK Code**
 
 ```python Generations_listGenerationContent_example
 import requests

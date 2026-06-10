@@ -28,8 +28,8 @@ BART is a transformer encoder-encoder (seq2seq) model with a bidirectional (BERT
 
 ## Usage
 
-* [  TypeScript ](#tab-panel-4182)
-* [  curl ](#tab-panel-4183)
+* [  TypeScript ](#tab-panel-4568)
+* [  curl ](#tab-panel-4569)
 
 ```
 
@@ -82,8 +82,8 @@ curl https://api.cloudflare.com/client/v4/accounts/{cf_account_id}/ai/run/@cf/fa
 
 ## Parameters
 
-* [ Input ](#tab-panel-4184)
-* [ Output ](#tab-panel-4185)
+* [ Input ](#tab-panel-4570)
+* [ Output ](#tab-panel-4571)
 
 input\_text
 
@@ -99,9 +99,9 @@ summary
 
 ## API Schemas (Raw)
 
-Input 
+Input [ ](https://developers.cloudflare.com/workers-ai/models/bart-large-cnn/schema-input.json "Open") [ ](https://developers.cloudflare.com/workers-ai/models/bart-large-cnn/schema-input.json "Download") 
 
-Output 
+Output [ ](https://developers.cloudflare.com/workers-ai/models/bart-large-cnn/schema-output.json "Open") [ ](https://developers.cloudflare.com/workers-ai/models/bart-large-cnn/schema-output.json "Download") 
 
 ```json
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/workers-ai/","name":"Workers AI"}},{"@type":"ListItem","position":3,"item":{"@id":"/workers-ai/models/","name":"Models"}}]}

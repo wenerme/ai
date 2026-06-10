@@ -9,7 +9,6 @@
 |[clash-verge](https://github.com/MetaCubeX/clash-verge)|停止维护 |
 |[clash-verge-rev](https://github.com/clash-verge-rev/clash-verge-rev)|维护中 |
 |[clash-nyanpasu](https://github.com/keiko233/clash-nyanpasu)|维护中 |
-|[ClashMetaForWindows_Mini](https://github.com/kogekiplay/ClashMetaForWindows_Mini)|停止维护 |
 |[clashN](https://github.com/2dust/clashN)|停止维护 |
 |[v2rayN](https://github.com/2dust/v2rayN)|维护中 |
 |[clashtui](https://github.com/JohanChane/clashtui)|维护中 |
@@ -18,7 +17,7 @@
 |[Pandora-Box](https://github.com/snakem982/Pandora-Box)|维护中 |
 |[ClashMi](https://github.com/KaringX/clashmi)|维护中 | 前端开源，构建不可复现 |
 |[FlyClash](https://github.com/GtxFury/FlyClash)|维护中 |
-|[Koala Clash](https://github.com/coolcoala/clash-verge-rev-lite)|维护中 |
+|[Koala Clash](https://github.com/coolcoala/koala-clash)|维护中 |
 |[Stelliberty](https://github.com/Kindness-Kismet/Stelliberty)|维护中 |
 |[FlClashX](https://github.com/pluralplay/FlClashX)|维护中 |
 |[clash-xiaoy](https://github.com/aimy1/clash-xiaoy)|维护中 |
@@ -35,11 +34,12 @@
 |[clash-verge](https://github.com/MetaCubeX/clash-verge)|停止维护 |
 |[clash-verge-rev](https://github.com/clash-verge-rev/clash-verge-rev)|维护中 |
 |[clash-nyanpasu](https://github.com/keiko233/clash-nyanpasu)|维护中 |
+|[clashtui](https://github.com/JohanChane/clashtui)|维护中 |
 |[GUI.for.Clash](https://github.com/GUI-for-Cores/GUI.for.Clash)|维护中 |
 |[FlClash](https://github.com/chen08209/FlClash)|维护中 |
 |[Pandora-Box](https://github.com/snakem982/Pandora-Box)|维护中 |
 |[ClashMi](https://github.com/KaringX/clashmi)|维护中 | 前端开源，构建不可复现 |
-|[Koala Clash](https://github.com/coolcoala/clash-verge-rev-lite)|维护中 |
+|[Koala Clash](https://github.com/coolcoala/koala-clash)|维护中 |
 |[FlClashX](https://github.com/pluralplay/FlClashX)|维护中 |
 |[ClashMac](https://github.com/666OS/ClashMac)|维护中 | 不开源，构建不可复现 |
 |[Bettbox](https://github.com/appshubcc/Bettbox)|维护中 |
@@ -61,7 +61,7 @@
 |[FlClash](https://github.com/chen08209/FlClash)|维护中 |
 |[Pandora-Box](https://github.com/snakem982/Pandora-Box)|维护中 |
 |[mihoro](https://github.com/spencerwooo/mihoro)|维护中 |
-|[Koala Clash](https://github.com/coolcoala/clash-verge-rev-lite)|维护中 |
+|[Koala Clash](https://github.com/coolcoala/koala-clash)|维护中 |
 |[FlClashX](https://github.com/pluralplay/FlClashX)|维护中 |
 |[ShellCrash](https://github.com/juewuy/ShellCrash)|维护中 |
 |[Bettbox](https://github.com/appshubcc/Bettbox)|维护中 |
@@ -87,6 +87,11 @@
 |项目名称 | 维护状态 | 备注 |
 |:----|:----|:----|
 |[ClashMi](https://github.com/KaringX/clashmi)|维护中 | 前端开源，构建不可复现 |
+|[Clash Lite](https://apps.apple.com/app/id6761357475)|维护中 | 不开源 |
+|[LinkClashX](https://apps.apple.com/app/id6757075299)|维护中 | 不开源 |
+|[ConnectNow](https://apps.apple.com/app/id6749354119)|维护中 | 不开源 |
+|[Everywhere](https://apps.apple.com/app/id6766003090)|维护中 | 不开源 |
+|[Nextin](https://apps.apple.com/app/id6754002454)|维护中 | 不开源 |
 
 ## Merlin (KoolCenter 固件/paldier SWRT 固件)
 
@@ -107,6 +112,7 @@
 |[ShellCrash](https://github.com/juewuy/ShellCrash)|维护中 |
 |[SSClash](https://github.com/zerolabnet/SSClash)|维护中 |
 |[ShadowSocksR Plus+](https://github.com/fw876/helloworld)|维护中 |
+|[openwrt-clashoo](https://github.com/kenzok8/openwrt-clashoo)|维护中 |
 
 ## Shell
 

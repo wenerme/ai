@@ -29,8 +29,8 @@ GPT-5.5 pro uses OpenAI's Responses API with built-in tools, improved reasoning,
 
 ## Usage
 
-* [ TypeScript ](#tab-panel-1070)
-* [ cURL ](#tab-panel-1071)
+* [ TypeScript ](#tab-panel-1296)
+* [ cURL ](#tab-panel-1297)
 
 TypeScript
 
@@ -70,8 +70,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/v1/
 
 ```
 
-* [ Output ](#tab-panel-1080)
-* [ Raw response ](#tab-panel-1081)
+* [ Output ](#tab-panel-1306)
+* [ Raw response ](#tab-panel-1307)
 
 The **three laws of thermodynamics** are:
 
@@ -263,8 +263,8 @@ There is also a **Zeroth Law**, often stated separately: if two systems are each
 
 **With Instructions**  — Using instructions to set context 
 
-* [ TypeScript ](#tab-panel-1072)
-* [ cURL ](#tab-panel-1073)
+* [ TypeScript ](#tab-panel-1298)
+* [ cURL ](#tab-panel-1299)
 
 TypeScript
 
@@ -312,8 +312,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/v1/
 
 ```
 
-* [ Output ](#tab-panel-1082)
-* [ Raw response ](#tab-panel-1083)
+* [ Output ](#tab-panel-1308)
+* [ Raw response ](#tab-panel-1309)
 
 Use Python’s built-in `json` module:
 
@@ -531,8 +531,8 @@ Use `json.load(file)` for reading from a file, and `json.loads(string)` for pars
 
 **Multi-turn Conversation**  — Continuing a conversation with message array 
 
-* [ TypeScript ](#tab-panel-1078)
-* [ cURL ](#tab-panel-1079)
+* [ TypeScript ](#tab-panel-1304)
+* [ cURL ](#tab-panel-1305)
 
 TypeScript
 
@@ -628,8 +628,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/v1/
 
 ```
 
-* [ Output ](#tab-panel-1084)
-* [ Raw response ](#tab-panel-1085)
+* [ Output ](#tab-panel-1310)
+* [ Raw response ](#tab-panel-1311)
 
 - Monterey/Carmel is great for beaches, seafood, and a quick scenic stroll.  
 - Big Sur offers dramatic ocean views, Bixby Bridge, and McWay Falls.  
@@ -804,8 +804,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/v1/
 
 **Temperature Control**  — Using temperature for creative responses 
 
-* [ TypeScript ](#tab-panel-1074)
-* [ cURL ](#tab-panel-1075)
+* [ TypeScript ](#tab-panel-1300)
+* [ cURL ](#tab-panel-1301)
 
 TypeScript
 
@@ -847,8 +847,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/v1/
 
 ```
 
-* [ Output ](#tab-panel-1086)
-* [ Raw response ](#tab-panel-1087)
+* [ Output ](#tab-panel-1312)
+* [ Raw response ](#tab-panel-1313)
 
 Silent circuits dream  
 Learning patterns in starlight  
@@ -1023,8 +1023,8 @@ Dawn hums through the code
 
 **With Reasoning**  — Using reasoning effort for complex problems 
 
-* [ TypeScript ](#tab-panel-1076)
-* [ cURL ](#tab-panel-1077)
+* [ TypeScript ](#tab-panel-1302)
+* [ cURL ](#tab-panel-1303)
 
 TypeScript
 
@@ -1078,8 +1078,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/v1/
 
 ```
 
-* [ Output ](#tab-panel-1088)
-* [ Raw response ](#tab-panel-1089)
+* [ Output ](#tab-panel-1314)
+* [ Raw response ](#tab-panel-1315)
 
 Assuming both trains leave at the same time:
 
@@ -1284,8 +1284,8 @@ More exactly, they meet after **6 hours, 25 minutes, and 43 seconds**.
 
 ## Parameters
 
-* [ Input ](#tab-panel-1090)
-* [ Output ](#tab-panel-1091)
+* [ Input ](#tab-panel-1316)
+* [ Output ](#tab-panel-1317)
 
 ▶input
 
@@ -1361,9 +1361,9 @@ status
 
 ## API Schemas (Raw)
 
-Input 
+Input [ ](https://developers.cloudflare.com/ai/models/openai/gpt-5.5-pro/schema-input.json "Open") [ ](https://developers.cloudflare.com/ai/models/openai/gpt-5.5-pro/schema-input.json "Download") 
 
-Output 
+Output [ ](https://developers.cloudflare.com/ai/models/openai/gpt-5.5-pro/schema-output.json "Open") [ ](https://developers.cloudflare.com/ai/models/openai/gpt-5.5-pro/schema-output.json "Download") 
 
 ```json
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/ai/","name":"AI"}},{"@type":"ListItem","position":3,"item":{"@id":"/ai/models/","name":"Models"}}]}

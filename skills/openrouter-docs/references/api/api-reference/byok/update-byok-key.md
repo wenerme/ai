@@ -83,6 +83,7 @@ paths:
               $ref: '#/components/schemas/UpdateBYOKKeyRequest'
 servers:
   - url: https://openrouter.ai/api/v1
+    description: Production server
 components:
   schemas:
     UpdateBYOKKeyRequest:
@@ -153,6 +154,7 @@ components:
         - cohere
         - crusoe
         - darkbloom
+        - decart
         - deepinfra
         - deepseek
         - dekallm
@@ -459,7 +461,41 @@ components:
 
 ```
 
-## SDK Code Examples
+## Examples
+
+
+
+**Request**
+
+```json
+{
+  "disabled": false,
+  "name": "Updated OpenAI Key"
+}
+```
+
+**Response**
+
+```json
+{
+  "data": {
+    "allowed_api_key_hashes": null,
+    "allowed_models": null,
+    "allowed_user_ids": null,
+    "created_at": "2025-08-24T10:30:00Z",
+    "disabled": false,
+    "id": "11111111-2222-3333-4444-555555555555",
+    "is_fallback": false,
+    "label": "sk-...AbCd",
+    "provider": "openai",
+    "sort_order": 0,
+    "workspace_id": "550e8400-e29b-41d4-a716-446655440000",
+    "name": "Updated OpenAI Key"
+  }
+}
+```
+
+**SDK Code**
 
 ```python BYOK_updateBYOKKey_example
 import requests

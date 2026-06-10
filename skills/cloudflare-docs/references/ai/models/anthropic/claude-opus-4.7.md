@@ -29,8 +29,8 @@ Claude Opus 4.7 is Anthropic's most capable generally available model, with a st
 
 ## Usage
 
-* [ TypeScript ](#tab-panel-156)
-* [ cURL ](#tab-panel-157)
+* [ TypeScript ](#tab-panel-196)
+* [ cURL ](#tab-panel-197)
 
 TypeScript
 
@@ -88,8 +88,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/v1/
 
 ```
 
-* [ Output ](#tab-panel-160)
-* [ Raw response ](#tab-panel-161)
+* [ Output ](#tab-panel-200)
+* [ Raw response ](#tab-panel-201)
 
 # The Three Laws of Thermodynamics
 
@@ -161,8 +161,8 @@ Often mentioned alongside these: if two systems are each in thermal equilibrium 
 
 **With System Message**  — Using a system message to set context 
 
-* [ TypeScript ](#tab-panel-158)
-* [ cURL ](#tab-panel-159)
+* [ TypeScript ](#tab-panel-198)
+* [ cURL ](#tab-panel-199)
 
 TypeScript
 
@@ -224,8 +224,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/v1/
 
 ```
 
-* [ Output ](#tab-panel-162)
-* [ Raw response ](#tab-panel-163)
+* [ Output ](#tab-panel-202)
+* [ Raw response ](#tab-panel-203)
 
 # Reading a JSON File in Python
 
@@ -354,8 +354,8 @@ The `indent=4` argument makes the output nicely formatted. Let me know if you'd 
 
 **Multi-turn Conversation**  — Continuing a conversation with context 
 
-* [ TypeScript ](#tab-panel-166)
-* [ cURL ](#tab-panel-167)
+* [ TypeScript ](#tab-panel-206)
+* [ cURL ](#tab-panel-207)
 
 TypeScript
 
@@ -451,8 +451,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/v1/
 
 ```
 
-* [ Output ](#tab-panel-168)
-* [ Raw response ](#tab-panel-169)
+* [ Output ](#tab-panel-208)
+* [ Raw response ](#tab-panel-209)
 
 Great choice to explore along the way! Here are some popular stops, organized by route:
 
@@ -540,8 +540,8 @@ Let me know and I can build a more detailed itinerary!
 
 **Creative Writing with Adaptive Thinking**  — Use adaptive thinking with high effort to steer creative output -- the recommended replacement for the deprecated \`temperature\` parameter. 
 
-* [ TypeScript ](#tab-panel-170)
-* [ cURL ](#tab-panel-171)
+* [ TypeScript ](#tab-panel-210)
+* [ cURL ](#tab-panel-211)
 
 TypeScript
 
@@ -625,8 +625,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/v1/
 
 ```
 
-* [ Output ](#tab-panel-172)
-* [ Raw response ](#tab-panel-173)
+* [ Output ](#tab-panel-212)
+* [ Raw response ](#tab-panel-213)
 
 # The Wrong Kind of Silence
 
@@ -703,8 +703,8 @@ Seven grains. Facing north. On the desk of a man who drew maps for a living.
 
 **Streaming Response**  — Enable streaming for real-time output 
 
-* [ TypeScript ](#tab-panel-164)
-* [ cURL ](#tab-panel-165)
+* [ TypeScript ](#tab-panel-204)
+* [ cURL ](#tab-panel-205)
 
 TypeScript
 
@@ -766,8 +766,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/v1/
 
 ```
 
-* [ Output ](#tab-panel-174)
-* [ Raw response ](#tab-panel-175)
+* [ Output ](#tab-panel-214)
+* [ Raw response ](#tab-panel-215)
 
 # Recursion Explained
 
@@ -1329,8 +1329,8 @@ Recursion is elegant for problems that can be broken into **smaller versions of 
 
 ## Parameters
 
-* [ Input ](#tab-panel-176)
-* [ Output ](#tab-panel-177)
+* [ Input ](#tab-panel-216)
+* [ Output ](#tab-panel-217)
 
 max\_tokens
 
@@ -1382,9 +1382,9 @@ type
 
 ## API Schemas (Raw)
 
-Input 
+Input [ ](https://developers.cloudflare.com/ai/models/anthropic/claude-opus-4.7/schema-input.json "Open") [ ](https://developers.cloudflare.com/ai/models/anthropic/claude-opus-4.7/schema-input.json "Download") 
 
-Output 
+Output [ ](https://developers.cloudflare.com/ai/models/anthropic/claude-opus-4.7/schema-output.json "Open") [ ](https://developers.cloudflare.com/ai/models/anthropic/claude-opus-4.7/schema-output.json "Download") 
 
 ```json
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/ai/","name":"AI"}},{"@type":"ListItem","position":3,"item":{"@id":"/ai/models/","name":"Models"}}]}

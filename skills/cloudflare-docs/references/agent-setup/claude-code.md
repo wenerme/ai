@@ -47,7 +47,7 @@ In Claude Code, run these two slash commands. This installs Cloudflare Skills an
 4. **Try a prompt**  
 For example:  
 ```  
-Add a cron trigger to my Worker that processes a job queue every hour.  
+Set up rate limiting and WAF rules to block abuse on my public API.  
 ```
 
 ## Cloudflare platform access

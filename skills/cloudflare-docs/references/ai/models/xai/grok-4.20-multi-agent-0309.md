@@ -29,8 +29,8 @@ xAI's Grok 4.20 multi-agent model with a 2M-token context window. Multiple agent
 
 ## Usage
 
-* [ TypeScript ](#tab-panel-1602)
-* [ cURL ](#tab-panel-1603)
+* [ TypeScript ](#tab-panel-1872)
+* [ cURL ](#tab-panel-1873)
 
 TypeScript
 
@@ -70,8 +70,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/v1/
 
 ```
 
-* [ Output ](#tab-panel-1612)
-* [ Raw response ](#tab-panel-1613)
+* [ Output ](#tab-panel-1882)
+* [ Raw response ](#tab-panel-1883)
 
 **The three laws of thermodynamics** (often referred to as the first, second, and third) are fundamental principles in physics that govern energy, heat, work, and entropy in physical systems. There is also a foundational "zeroth law" that is logically prior but was formalized later, which is why it is numbered zero.
 
@@ -252,8 +252,8 @@ These laws form the foundation of classical thermodynamics, with wide applicatio
 
 **With Instructions**  — Using instructions to set the agent persona 
 
-* [ TypeScript ](#tab-panel-1604)
-* [ cURL ](#tab-panel-1605)
+* [ TypeScript ](#tab-panel-1874)
+* [ cURL ](#tab-panel-1875)
 
 TypeScript
 
@@ -303,8 +303,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/v1/
 
 ```
 
-* [ Output ](#tab-panel-1614)
-* [ Raw response ](#tab-panel-1615)
+* [ Output ](#tab-panel-1884)
+* [ Raw response ](#tab-panel-1885)
 
 The Moon appears larger near the horizon because of a perceptual illusion (not an optical one): the brain interprets the horizon as farther away than the zenith due to distance cues from terrain and the flattened-dome appearance of the sky, so it scales up the Moon's perceived size to match its unchanged angular diameter. High in the sky with no such references, the Moon looks comparatively smaller.
 
@@ -463,8 +463,8 @@ The Moon appears larger near the horizon because of a perceptual illusion (not a
 
 **Multi-turn Conversation**  — Continuing a conversation by passing typed input items 
 
-* [ TypeScript ](#tab-panel-1610)
-* [ cURL ](#tab-panel-1611)
+* [ TypeScript ](#tab-panel-1880)
+* [ cURL ](#tab-panel-1881)
 
 TypeScript
 
@@ -554,8 +554,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/v1/
 
 ```
 
-* [ Output ](#tab-panel-1616)
-* [ Raw response ](#tab-panel-1617)
+* [ Output ](#tab-panel-1886)
+* [ Raw response ](#tab-panel-1887)
 
 **Day 1:** Begin your Tokyo food journey by savoring fresh Edomae-style nigiri sushi at Tsukiji Outer Market, where skilled chefs pair perfectly seasoned rice with the day's freshest seafood straight from the market.  
 **Day 2:** Dive into a rich bowl of tonkotsu ramen in a bustling Shinjuku shop, featuring silky pork-bone broth, springy noodles, chashu pork, and a marinated egg for ultimate comfort.  
@@ -716,8 +716,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/v1/
 
 **Web Search**  — Letting the agent use xAI built-in web search to answer with current info 
 
-* [ TypeScript ](#tab-panel-1606)
-* [ cURL ](#tab-panel-1607)
+* [ TypeScript ](#tab-panel-1876)
+* [ cURL ](#tab-panel-1877)
 
 TypeScript
 
@@ -777,8 +777,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/v1/
 
 ```
 
-* [ Output ](#tab-panel-1620)
-* [ Raw response ](#tab-panel-1621)
+* [ Output ](#tab-panel-1890)
+* [ Raw response ](#tab-panel-1891)
 
 **Top xAI news stories this week (late April to early May 2026):**[[1]](https://techcrunch.com/2026/04/30/elon-musk-testifies-that-xai-trained-grok-on-openai-models/)[[2]](https://x.ai/news)
 
@@ -1215,8 +1215,8 @@ These reflect xAI’s rapid product iteration in voice/agent capabilities and mo
 
 **With Reasoning**  — Asking the agent to think harder before responding 
 
-* [ TypeScript ](#tab-panel-1608)
-* [ cURL ](#tab-panel-1609)
+* [ TypeScript ](#tab-panel-1878)
+* [ cURL ](#tab-panel-1879)
 
 TypeScript
 
@@ -1274,8 +1274,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/v1/
 
 ```
 
-* [ Output ](#tab-panel-1618)
-* [ Raw response ](#tab-panel-1619)
+* [ Output ](#tab-panel-1888)
+* [ Raw response ](#tab-panel-1889)
 
 The two trains are moving toward each other, so the distance between them closes at a combined rate of 60 + 80 = 140 mph.
 
@@ -1444,8 +1444,8 @@ To verify, in that time the first train travels 60 * (45/7) = 2700/7 ≈ 385.71 
 
 ## Parameters
 
-* [ Input ](#tab-panel-1622)
-* [ Output ](#tab-panel-1623)
+* [ Input ](#tab-panel-1892)
+* [ Output ](#tab-panel-1893)
 
 context\_management
 
@@ -1621,9 +1621,9 @@ user
 
 ## API Schemas (Raw)
 
-Input 
+Input [ ](https://developers.cloudflare.com/ai/models/xai/grok-4.20-multi-agent-0309/schema-input.json "Open") [ ](https://developers.cloudflare.com/ai/models/xai/grok-4.20-multi-agent-0309/schema-input.json "Download") 
 
-Output 
+Output [ ](https://developers.cloudflare.com/ai/models/xai/grok-4.20-multi-agent-0309/schema-output.json "Open") [ ](https://developers.cloudflare.com/ai/models/xai/grok-4.20-multi-agent-0309/schema-output.json "Download") 
 
 ```json
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/ai/","name":"AI"}},{"@type":"ListItem","position":3,"item":{"@id":"/ai/models/","name":"Models"}}]}

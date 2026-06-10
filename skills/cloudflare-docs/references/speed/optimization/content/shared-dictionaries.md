@@ -70,9 +70,9 @@ The work of creating dictionaries and compressing new responses against them hap
 
 ### 1\. Enable passthrough in Cloudflare
 
-* [ Dashboard ](#tab-panel-7702)
-* [ API ](#tab-panel-7703)
-* [ Terraform ](#tab-panel-7704)
+* [ Dashboard ](#tab-panel-10301)
+* [ API ](#tab-panel-10302)
+* [ Terraform ](#tab-panel-10303)
 
 To enable shared dictionaries in the dashboard:
 
