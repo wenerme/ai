@@ -82,6 +82,7 @@ API ユーザーは、前のジョブの完了を待たずに、複数のワー�
 
 | サブスクリプションティア | 同時ジョブ数 |
 |-------------------|-----------------|
+| Standard          | 1               |
 | Creator           | 3               |
 | Pro               | 5               |
 
@@ -156,7 +157,7 @@ async function main() {
     await Deno.readTextFile("workflow_api.json")
   );
 
-  # シードを変更してバリエーションを作成
+  // シードを変更してバリエーションを作成
   const seeds = [42, 123, 456];
   const workflows = seeds.map((seed) => {
     const wf = structuredClone(base);
@@ -164,16 +165,16 @@ async function main() {
     return wf;
   });
 
-  # すべてのワークフローを同時に送信
+  // すべてのワークフローを同時に送信
   const promptIds = await Promise.all(
     workflows.map((wf) => submitWorkflow(wf))
   );
 
   for (const pid of promptIds) {
-    console.log(`Job submitted: {pid}`);
+    console.log(`Job submitted: ${pid}`);
   }
 
-  # 各ジョブをポーリングまたは WebSocket で監視...
+  // 各ジョブをポーリングまたは WebSocket で監視...
 }
 
 main();

@@ -76,6 +76,7 @@ For older models that support both `in_memory` and `24h`, the default depends on
 }
 ```
 
+
 ## Requirements
 
 Caching is available for prompts containing 1024 tokens or more.

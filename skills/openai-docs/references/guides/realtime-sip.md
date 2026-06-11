@@ -72,6 +72,7 @@ curl -X POST "https://api.openai.com/v1/realtime/calls/$CALL_ID/accept" \
       }'
 ```
 
+
 The request path must include the `call_id` from the
 [`realtime.call.incoming`](https://developers.openai.com/api/docs/api-reference/webhook-events/realtime/call/incoming)
 webhook, and every request requires the `Authorization` header shown above. The

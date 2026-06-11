@@ -1,13 +1,5 @@
 # Voice agents
 
-import {
-  Bolt,
-  Cube,
-  Desktop,
-  Phone,
-} from "@components/react/oai/platform/ui/Icon.react";
-
-
 Voice agents turn the same agent concepts into spoken, low-latency interactions. The key design choice is deciding whether the model should work directly with live audio or whether your application should explicitly chain speech-to-text, text reasoning, and text-to-speech.
 
 ## Choose the right architecture

@@ -80,9 +80,9 @@ print(response.output_text)
 ```
 
 ```bash
-curl "https://bedrock-mantle.us-east-2.api.aws/openai/v1/responses" \\
-  -H "Content-Type: application/json" \\
-  -H "Authorization: Bearer $AWS_BEARER_TOKEN_BEDROCK" \\
+curl "https://bedrock-mantle.us-east-2.api.aws/openai/v1/responses" \
+  -H "Content-Type: application/json" \
+  -H "Authorization: Bearer $AWS_BEARER_TOKEN_BEDROCK" \
   -d '{
     "model": "openai.gpt-5.5",
     "input": "Write a haiku about cloud infrastructure."

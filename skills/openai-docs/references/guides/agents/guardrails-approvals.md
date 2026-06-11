@@ -142,7 +142,7 @@ const cancelOrder = tool({
   parameters: z.object({ orderId: z.number() }),
   needsApproval: true,
   async execute({ orderId }) {
-    return \`Cancelled order \${orderId}\`;
+    return `Cancelled order ${orderId}`;
   },
 });
 

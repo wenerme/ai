@@ -1,11 +1,5 @@
 # Remote connections
 
-import {
-  Desktop,
-  Storage,
-  Terminal,
-} from "@components/react/oai/platform/ui/Icon.react";
-
 Remote connections let you use Codex from another device or another machine.
 Use Codex in the ChatGPT mobile app to work with Codex on a connected Mac or
 Windows device, continue work from another supported Codex App device, or connect

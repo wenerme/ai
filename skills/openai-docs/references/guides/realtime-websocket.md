@@ -124,7 +124,7 @@ Realtime API sessions are managed using a combination of [client-sent events](ht
 Over a WebSocket, you will both send and receive JSON-serialized events as strings of text, as in this Node.js example below (the same principles apply for other WebSocket libraries):
 
 ```javascript
-
+import WebSocket from "ws";
 
 const url = "wss://api.openai.com/v1/realtime?model=gpt-realtime-2";
 const ws = new WebSocket(url, {
@@ -154,6 +154,7 @@ ws.on("message", function incoming(message) {
   console.log(JSON.parse(message.toString()));
 });
 ```
+
 
 The WebSocket interface is perhaps the lowest-level interface available to interact with a Realtime model, where you will be responsible for both sending and processing Base64-encoded audio chunks over the socket connection.
 

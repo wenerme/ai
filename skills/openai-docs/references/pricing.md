@@ -1,15 +1,5 @@
 # Pricing
 
-import {
-  GroupedPricingTable,
-  PricingTable,
-  pricingHtml,
-  pricingTooltipHeading,
-  TextTokenPricingTables,
-  withDataSharing,
-  withLegacy,
-} from "./pricing.jsx";
-
 <style
   is:global
   set:html={`

@@ -66,7 +66,7 @@ response = client.responses.create(
     tools=[{"type": "image_generation"}],
 )
 
-// Save the image to a file
+# Save the image to a file
 image_data = [
     output.result
     for output in response.output
@@ -80,9 +80,9 @@ if image_data:
 ```
 
 ```cli
-openai responses create \\
-  --model gpt-5.5 \\
-  --raw-output \\
+openai responses create \
+  --model gpt-5.5 \
+  --raw-output \
   --transform 'output.#(type=="image_generation_call").result' <<'YAML' | base64 --decode > cat_and_otter.png
 tools:
   - type: image_generation
@@ -189,9 +189,9 @@ Console.WriteLine(response.GetOutputText());
 ```
 
 ```bash
-curl https://api.openai.com/v1/responses \\
-  -H "Content-Type: application/json" \\
-  -H "Authorization: Bearer $OPENAI_API_KEY" \\
+curl https://api.openai.com/v1/responses \
+  -H "Content-Type: application/json" \
+  -H "Authorization: Bearer $OPENAI_API_KEY" \
   -d '{
     "model": "gpt-5.5",
     "input": [
@@ -210,9 +210,9 @@ curl https://api.openai.com/v1/responses \\
 ```
 
 ```cli
-openai responses create \\
-  --model gpt-5.5 \\
-  --raw-output \\
+openai responses create \
+  --model gpt-5.5 \
+  --raw-output \
   --transform 'output.#(type=="message").content.0.text' <<'YAML'
 input:
   - role: user
@@ -247,7 +247,7 @@ const response = await openai.responses.create({
                 { type: "input_text", text: "what's in this image?" },
                 {
                     type: "input_image",
-                    image_url: \`data:image/jpeg;base64,\${base64Image}\`,
+                    image_url: `data:image/jpeg;base64,${base64Image}`,
                 },
             ],
         },

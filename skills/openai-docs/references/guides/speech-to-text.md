@@ -64,19 +64,19 @@ print(transcription.text)
 ```
 
 ```cli
-openai audio:transcriptions create \\
-  --model gpt-4o-transcribe \\
-  --file /path/to/file/audio.mp3 \\
-  --raw-output \\
+openai audio:transcriptions create \
+  --model gpt-4o-transcribe \
+  --file /path/to/file/audio.mp3 \
+  --raw-output \
   --transform text
 ```
 
 ```bash
-curl --request POST \\
-  --url https://api.openai.com/v1/audio/transcriptions \\
-  --header "Authorization: Bearer $OPENAI_API_KEY" \\
-  --header 'Content-Type: multipart/form-data' \\
-  --form file=@/path/to/file/audio.mp3 \\
+curl --request POST \
+  --url https://api.openai.com/v1/audio/transcriptions \
+  --header "Authorization: Bearer $OPENAI_API_KEY" \
+  --header 'Content-Type: multipart/form-data' \
+  --form file=@/path/to/file/audio.mp3 \
   --form model=gpt-4o-transcribe
 ```
 
@@ -125,12 +125,12 @@ print(transcription.text)
 ```
 
 ```bash
-curl --request POST \\
-  --url https://api.openai.com/v1/audio/transcriptions \\
-  --header "Authorization: Bearer $OPENAI_API_KEY" \\
-  --header 'Content-Type: multipart/form-data' \\
-  --form file=@/path/to/file/speech.mp3 \\
-  --form model=gpt-4o-transcribe \\
+curl --request POST \
+  --url https://api.openai.com/v1/audio/transcriptions \
+  --header "Authorization: Bearer $OPENAI_API_KEY" \
+  --header 'Content-Type: multipart/form-data' \
+  --form file=@/path/to/file/speech.mp3 \
+  --form model=gpt-4o-transcribe \
   --form response_format=text
 ```
 
@@ -171,7 +171,7 @@ const transcript = await openai.audio.transcriptions.create({
 });
 
 for (const segment of transcript.segments) {
-  console.log(\`\${segment.speaker}: \${segment.text}\`, segment.start, segment.end);
+  console.log(`${segment.speaker}: ${segment.text}`, segment.start, segment.end);
 }
 ```
 
@@ -202,15 +202,15 @@ for segment in transcript.segments:
 ```
 
 ```bash
-curl --request POST \\
-  --url https://api.openai.com/v1/audio/transcriptions \\
-  --header "Authorization: Bearer $OPENAI_API_KEY" \\
-  --header 'Content-Type: multipart/form-data' \\
-  --form file=@/path/to/file/meeting.wav \\
-  --form model=gpt-4o-transcribe-diarize \\
-  --form response_format=diarized_json \\
-  --form chunking_strategy=auto \\
-  --form 'known_speaker_names[]=agent' \\
+curl --request POST \
+  --url https://api.openai.com/v1/audio/transcriptions \
+  --header "Authorization: Bearer $OPENAI_API_KEY" \
+  --header 'Content-Type: multipart/form-data' \
+  --form file=@/path/to/file/meeting.wav \
+  --form model=gpt-4o-transcribe-diarize \
+  --form response_format=diarized_json \
+  --form chunking_strategy=auto \
+  --form 'known_speaker_names[]=agent' \
   --form 'known_speaker_references[]=data:audio/wav;base64,AAA...'
 ```
 
@@ -255,12 +255,12 @@ print(translation.text)
 ```
 
 ```bash
-curl --request POST \\
-  --url https://api.openai.com/v1/audio/translations \\
-  --header "Authorization: Bearer $OPENAI_API_KEY" \\
-  --header 'Content-Type: multipart/form-data' \\
-  --form file=@/path/to/file/german.mp3 \\
-  --form model=whisper-1 \\
+curl --request POST \
+  --url https://api.openai.com/v1/audio/translations \
+  --header "Authorization: Bearer $OPENAI_API_KEY" \
+  --header 'Content-Type: multipart/form-data' \
+  --form file=@/path/to/file/german.mp3 \
+  --form model=whisper-1 \
 ```
 
 
@@ -321,12 +321,12 @@ print(transcription.words)
 ```
 
 ```bash
-curl https://api.openai.com/v1/audio/transcriptions \\
-  -H "Authorization: Bearer $OPENAI_API_KEY" \\
-  -H "Content-Type: multipart/form-data" \\
-  -F file="@/path/to/file/audio.mp3" \\
-  -F "timestamp_granularities[]=word" \\
-  -F model="whisper-1" \\
+curl https://api.openai.com/v1/audio/transcriptions \
+  -H "Authorization: Bearer $OPENAI_API_KEY" \
+  -H "Content-Type: multipart/form-data" \
+  -F file="@/path/to/file/audio.mp3" \
+  -F "timestamp_granularities[]=word" \
+  -F model="whisper-1" \
   -F response_format="verbose_json"
 ```
 
@@ -393,12 +393,12 @@ print(transcription.text)
 ```
 
 ```bash
-curl --request POST \\
-  --url https://api.openai.com/v1/audio/transcriptions \\
-  --header "Authorization: Bearer $OPENAI_API_KEY" \\
-  --header 'Content-Type: multipart/form-data' \\
-  --form file=@/path/to/file/speech.mp3 \\
-  --form model=gpt-4o-transcribe \\
+curl --request POST \
+  --url https://api.openai.com/v1/audio/transcriptions \
+  --header "Authorization: Bearer $OPENAI_API_KEY" \
+  --header 'Content-Type: multipart/form-data' \
+  --form file=@/path/to/file/speech.mp3 \
+  --form model=gpt-4o-transcribe \
   --form prompt="The following conversation is a lecture about the recent developments around OpenAI, GPT-4.5 and the future of AI."
 ```
 
@@ -475,12 +475,12 @@ for event in stream:
 ```
 
 ```bash
-curl --request POST \\
-  --url https://api.openai.com/v1/audio/transcriptions \\
-  --header "Authorization: Bearer $OPENAI_API_KEY" \\
-  --header 'Content-Type: multipart/form-data' \\
-  --form file=@example.wav \\
-  --form model=whisper-1 \\
+curl --request POST \
+  --url https://api.openai.com/v1/audio/transcriptions \
+  --header "Authorization: Bearer $OPENAI_API_KEY" \
+  --header 'Content-Type: multipart/form-data' \
+  --form file=@example.wav \
+  --form model=whisper-1 \
   # highlight-start
   --form stream=True
 ```
@@ -541,12 +541,12 @@ print(transcription.text)
 ```
 
 ```bash
-curl --request POST \\
-  --url https://api.openai.com/v1/audio/transcriptions \\
-  --header "Authorization: Bearer $OPENAI_API_KEY" \\
-  --header 'Content-Type: multipart/form-data' \\
-  --form file=@/path/to/file/speech.mp3 \\
-  --form model=whisper-1 \\
+curl --request POST \
+  --url https://api.openai.com/v1/audio/transcriptions \
+  --header "Authorization: Bearer $OPENAI_API_KEY" \
+  --header 'Content-Type: multipart/form-data' \
+  --form file=@/path/to/file/speech.mp3 \
+  --form model=whisper-1 \
   --form prompt="ZyntriQix, Digique Plus, CynapseFive, VortiQore V8, EchoNix Array, OrbitalLink Seven, DigiFractal Matrix, PULSE, RAPT, B.R.I.C.K., Q.U.A.R.T.Z., F.L.I.N.T."
 ```
 
@@ -562,7 +562,7 @@ We start by providing instructions for GPT-4 through the `system_prompt` variabl
 Post-processing
 
 ```javascript
-const systemPrompt = \`
+const systemPrompt = `
 You are a helpful assistant for the company ZyntriQix. Your task is 
 to correct any spelling discrepancies in the transcribed text. Make 
 sure that the names of the following products are spelled correctly: 
@@ -570,7 +570,7 @@ ZyntriQix, Digique Plus, CynapseFive, VortiQore V8, EchoNix Array,
 OrbitalLink Seven, DigiFractal Matrix, PULSE, RAPT, B.R.I.C.K., 
 Q.U.A.R.T.Z., F.L.I.N.T. Only add necessary punctuation such as 
 periods, commas, and capitalization, and use only the context provided.
-\`;
+`;
 
 const transcript = await transcribe(audioFile);
 const completion = await openai.chat.completions.create({

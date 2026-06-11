@@ -129,15 +129,15 @@ print(batch_input_file)
 ```
 
 ```bash
-curl https://api.openai.com/v1/files \\
-  -H "Authorization: Bearer $OPENAI_API_KEY" \\
-  -F purpose="batch" \\
+curl https://api.openai.com/v1/files \
+  -H "Authorization: Bearer $OPENAI_API_KEY" \
+  -F purpose="batch" \
   -F file="@batchinput.jsonl"
 ```
 
 ```cli
-openai files create \\
-  --file batchinput.jsonl \\
+openai files create \
+  --file batchinput.jsonl \
   --purpose batch
 ```
 
@@ -177,9 +177,9 @@ client.batches.create(
 ```
 
 ```bash
-curl https://api.openai.com/v1/batches \\
-  -H "Authorization: Bearer $OPENAI_API_KEY" \\
-  -H "Content-Type: application/json" \\
+curl https://api.openai.com/v1/batches \
+  -H "Authorization: Bearer $OPENAI_API_KEY" \
+  -H "Content-Type: application/json" \
   -d '{
     "input_file_id": "file-abc123",
     "endpoint": "/v1/chat/completions",
@@ -188,9 +188,9 @@ curl https://api.openai.com/v1/batches \\
 ```
 
 ```cli
-openai batches create \\
-  --input-file-id file-abc123 \\
-  --endpoint /v1/chat/completions \\
+openai batches create \
+  --input-file-id file-abc123 \
+  --endpoint /v1/chat/completions \
   --completion-window 24h
 ```
 
@@ -246,13 +246,13 @@ print(batch)
 ```
 
 ```bash
-curl https://api.openai.com/v1/batches/batch_abc123 \\
-  -H "Authorization: Bearer $OPENAI_API_KEY" \\
+curl https://api.openai.com/v1/batches/batch_abc123 \
+  -H "Authorization: Bearer $OPENAI_API_KEY" \
   -H "Content-Type: application/json"
 ```
 
 ```cli
-openai batches retrieve \\
+openai batches retrieve \
   --batch-id batch_abc123
 ```
 
@@ -295,13 +295,13 @@ print(file_response.text)
 ```
 
 ```bash
-curl https://api.openai.com/v1/files/file-xyz123/content \\
+curl https://api.openai.com/v1/files/file-xyz123/content \
   -H "Authorization: Bearer $OPENAI_API_KEY" > batch_output.jsonl
 ```
 
 ```cli
-openai files content \\
-  --file-id file-xyz123 \\
+openai files content \
+  --file-id file-xyz123 \
   --output batch_output.jsonl
 ```
 
@@ -344,14 +344,14 @@ client.batches.cancel("batch_abc123")
 ```
 
 ```bash
-curl https://api.openai.com/v1/batches/batch_abc123/cancel \\
-  -H "Authorization: Bearer $OPENAI_API_KEY" \\
-  -H "Content-Type: application/json" \\
+curl https://api.openai.com/v1/batches/batch_abc123/cancel \
+  -H "Authorization: Bearer $OPENAI_API_KEY" \
+  -H "Content-Type: application/json" \
   -X POST
 ```
 
 ```cli
-openai batches cancel \\
+openai batches cancel \
   --batch-id batch_abc123
 ```
 
@@ -381,13 +381,13 @@ client.batches.list(limit=10)
 ```
 
 ```bash
-curl https://api.openai.com/v1/batches?limit=10 \\
-  -H "Authorization: Bearer $OPENAI_API_KEY" \\
+curl https://api.openai.com/v1/batches?limit=10 \
+  -H "Authorization: Bearer $OPENAI_API_KEY" \
   -H "Content-Type: application/json"
 ```
 
 ```cli
-openai batches list \\
+openai batches list \
   --limit 10
 ```
 

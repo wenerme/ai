@@ -1,15 +1,5 @@
 # MCP and Connectors
 
-import {
-  CheckCircleFilled,
-  XCircle,
-} from "@components/react/oai/platform/ui/Icon.react";
-
-
-
-
-
-
 In addition to tools you make available to the model with [function calling](https://developers.openai.com/api/docs/guides/function-calling), you can give models new capabilities using **connectors** and **remote MCP servers**. These tools give the model the ability to connect to and control external services when needed to respond to a user's prompt. These tool calls can either be allowed automatically, or restricted with explicit approval required by you as the developer.
 
 - **Connectors** are OpenAI-maintained MCP wrappers for popular services like Google Workspace or Dropbox, like the connectors available in [ChatGPT](https://chatgpt.com).
@@ -38,9 +28,9 @@ Check out the examples below to see how remote MCP servers and connectors work t
     Using a remote MCP server in the Responses API
 
 ```bash
-curl https://api.openai.com/v1/responses \\ 
--H "Content-Type: application/json" \\ 
--H "Authorization: Bearer $OPENAI_API_KEY" \\ 
+curl https://api.openai.com/v1/responses \ 
+-H "Content-Type: application/json" \ 
+-H "Authorization: Bearer $OPENAI_API_KEY" \ 
 -d '{
   "model": "gpt-5.5",
     "tools": [
@@ -138,9 +128,9 @@ Console.WriteLine(response.GetOutputText());
     Using connectors in the Responses API
 
 ```bash
-curl https://api.openai.com/v1/responses \\
--H "Content-Type: application/json" \\
--H "Authorization: Bearer $OPENAI_API_KEY" \\
+curl https://api.openai.com/v1/responses \
+-H "Content-Type: application/json" \
+-H "Authorization: Bearer $OPENAI_API_KEY" \
 -d '{
     "model": "gpt-5.5",
     "tools": [
@@ -324,9 +314,9 @@ Some MCP servers can have dozens of tools, and exposing many tools to the model 
 Constrain allowed tools
 
 ```bash
-curl https://api.openai.com/v1/responses \\
--H "Content-Type: application/json" \\
--H "Authorization: Bearer $OPENAI_API_KEY" \\
+curl https://api.openai.com/v1/responses \
+-H "Content-Type: application/json" \
+-H "Authorization: Bearer $OPENAI_API_KEY" \
 -d '{
     "model": "gpt-5.5",
     "tools": [
@@ -448,9 +438,9 @@ You can then respond to this by creating a new Response object and appending an 
 Approving the use of tools in an API request
 
 ```bash
-curl https://api.openai.com/v1/responses \\
--H "Content-Type: application/json" \\
--H "Authorization: Bearer $OPENAI_API_KEY" \\
+curl https://api.openai.com/v1/responses \
+-H "Content-Type: application/json" \
+-H "Authorization: Bearer $OPENAI_API_KEY" \
 -d '{
     "model": "gpt-5.5",
     "tools": [
@@ -559,9 +549,9 @@ If and when you feel comfortable trusting a remote MCP server, you can choose to
 Never require approval for some tools
 
 ```bash
-curl https://api.openai.com/v1/responses \\
--H "Content-Type: application/json" \\
--H "Authorization: Bearer $OPENAI_API_KEY" \\
+curl https://api.openai.com/v1/responses \
+-H "Content-Type: application/json" \
+-H "Authorization: Bearer $OPENAI_API_KEY" \
 -d '{
     "model": "gpt-5.5",
     "tools": [
@@ -660,9 +650,9 @@ Unlike the [example MCP server we used above](https://dash.deno.com/playground/d
 Use Stripe MCP tool
 
 ```bash
-curl https://api.openai.com/v1/responses \\
--H "Content-Type: application/json" \\
--H "Authorization: Bearer $OPENAI_API_KEY" \\
+curl https://api.openai.com/v1/responses \
+-H "Content-Type: application/json" \
+-H "Authorization: Bearer $OPENAI_API_KEY" \
 -d '{
     "model": "gpt-5.5",
     "input": "Create a payment link for $20",
@@ -782,9 +772,9 @@ After authorizing the application with your Google account, you will come to "St
 Use the Google Calendar connector
 
 ```bash
-curl https://api.openai.com/v1/responses \\
-  -H "Content-Type: application/json" \\
-  -H "Authorization: Bearer $OPENAI_API_KEY" \\
+curl https://api.openai.com/v1/responses \
+  -H "Content-Type: application/json" \
+  -H "Authorization: Bearer $OPENAI_API_KEY" \
   -d '{
     "model": "gpt-5.5",
     "tools": [

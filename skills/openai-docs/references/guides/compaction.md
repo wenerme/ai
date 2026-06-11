@@ -78,6 +78,7 @@ while keep_going:
     )
 ```
 
+
 ## Standalone compact endpoint
 
 For explicit control, use the
@@ -121,7 +122,7 @@ long_input_items_array = [...]
 
 # 1) Compact the current window
 compacted = client.responses.compact(
-    model="gpt-5.4",
+    model="gpt-5.5",
     input=long_input_items_array,
 )
 
@@ -136,7 +137,7 @@ next_input = [
 ]
 
 next_response = client.responses.create(
-    model="gpt-5.4",
+    model="gpt-5.5",
     input=next_input,
     store=False,  # Keep the flow ZDR-friendly
 )

@@ -1,10 +1,5 @@
 # Configuring workload identity federation for AWS
 
-import {
-  awsOutboundWorkloadIdentitySdk,
-  awsWorkloadIdentitySdk,
-} from "./examples";
-
 Use AWS as a Workload Identity Provider in either of these scenarios:
 
 - **AWS outbound identity federation:** Exchange an AWS STS-issued OIDC JWT from `GetWebIdentityToken` for a short-lived OpenAI access token.

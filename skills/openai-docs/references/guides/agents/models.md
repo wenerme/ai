@@ -27,7 +27,7 @@ const generalAgent = new Agent({
 });
 
 const runner = new Runner({
-  model: "${latestMainlineModelSlug}",
+  model: "gpt-5.5",
 });
 
 await runner.run(fastAgent, "Summarize ticket 123.");
@@ -62,7 +62,7 @@ async def main() -> None:
     result = await Runner.run(
         general_agent,
         "Investigate the billing issue on account 456.",
-        run_config=RunConfig(model="${latestMainlineModelSlug}"),
+        run_config=RunConfig(model="gpt-5.5"),
     )
     print(result.final_output)
 

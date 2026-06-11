@@ -1,83 +1,5 @@
 # Structured model outputs
 
-import {
-  snippetRefusalsChatCompletionsApi,
-  snippetRefusalsResponsesApi,
-} from "./inline-examples";
-
-export const snippetRefusalApiResponseChatCompletionsApi = {
-  json: `
-{
-  "id": "chatcmpl-9nYAG9LPNonX8DAyrkwYfemr3C8HC",
-  "object": "chat.completion",
-  "created": 1721596428,
-  "model": "gpt-4o-2024-08-06",
-  "choices": [
-    {
-      "index": 0,
-      "message": {
-        "role": "assistant",
-        // highlight-start
-        "refusal": "I'm sorry, I cannot assist with that request."
-        // highlight-end
-      },
-      "logprobs": null,
-      "finish_reason": "stop"
-    }
-  ],
-  "usage": {
-    "prompt_tokens": 81,
-    "completion_tokens": 11,
-    "total_tokens": 92,
-    "completion_tokens_details": {
-      "reasoning_tokens": 0,
-      "accepted_prediction_tokens": 0,
-      "rejected_prediction_tokens": 0
-    }
-  },
-  "system_fingerprint": "fp_3407719c7f"
-}
-  `.trim(),
-};
-export const snippetRefusalApiResponseResponsesApi = {
-  json: `
-{
-  "id": "resp_1234567890",
-  "object": "response",
-  "created_at": 1721596428,
-  "status": "completed",
-  "completed_at": 1721596429,
-  "error": null,
-  "incomplete_details": null,
-  "input": [],
-  "instructions": null,
-  "max_output_tokens": null,
-  "model": "gpt-4o-2024-08-06",
-  "output": [{
-    "id": "msg_1234567890",
-    "type": "message",
-    "role": "assistant",
-    "content": [
-      // highlight-start
-      {
-        "type": "refusal",
-        "refusal": "I'm sorry, I cannot assist with that request."
-      }
-      // highlight-end
-    ]
-  }],
-  "usage": {
-    "input_tokens": 81,
-    "output_tokens": 11,
-    "total_tokens": 92,
-    "output_tokens_details": {
-      "reasoning_tokens": 0,
-    }
-  },
-}
-  `.trim(),
-};
-
 JSON is one of the most widely used formats in the world for applications to exchange data.
 
 Structured Outputs is a feature that ensures the model will always generate responses that adhere to your supplied [JSON Schema](https://json-schema.org/overview/what-is-jsonschema), so you don't need to worry about the model omitting a required key, or hallucinating an invalid enum value.
@@ -92,7 +14,7 @@ In addition to supporting JSON Schema in the REST API, the OpenAI SDKs for [Pyth
 
 ### Supported models
 
-Structured Outputs is available in our [latest large language models](https://developers.openai.com/api/docs/models), starting with GPT-4o. Older models like `gpt-4-turbo` and earlier may use [JSON mode](#json-mode) instead.
+Structured Outputs is available in our [latest large language models](https://developers.openai.com/api/docs/models), starting with GPT-4o. For new projects, start with [`gpt-5.5`](https://developers.openai.com/api/docs/models/gpt-5.5). Older models like `gpt-4-turbo` and earlier may use [JSON mode](#json-mode) instead.
 
 
 

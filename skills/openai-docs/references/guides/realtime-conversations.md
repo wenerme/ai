@@ -617,7 +617,7 @@ const event = {
     content: [
       {
         type: "input_image",
-        image_url: \`data:image/{format};base64,\${base64Image}\`,
+        image_url: `data:image/{format};base64,${base64Image}`,
       },
     ],
   },
@@ -661,10 +661,10 @@ When creating an out-of-band response, you will probably also want some way to i
 Create an out-of-band model response
 
 ```javascript
-const prompt = \`
+const prompt = `
 Analyze the conversation so far. If it is related to support, output
 "support". If it is related to sales, output "sales".
-\`;
+`;
 
 const event = {
   type: "response.create",
@@ -835,11 +835,11 @@ You can also insert responses into the default conversation, ignoring all other 
 Insert no-context model responses into the default conversation
 
 ```javascript
-const prompt = \`
+const prompt = `
 Say exactly the following:
 I'm a little teapot, short and stout!
 This is my handle, this is my spout!
-\`;
+`;
 
 const event = {
   type: "response.create",

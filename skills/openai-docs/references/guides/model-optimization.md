@@ -1,21 +1,5 @@
 # Model optimization
 
-import {
-  Report,
-  Code,
-  Tools,
-} from "@components/react/oai/platform/ui/Icon.react";
-import {
-  evalsIcon,
-  promptIcon,
-  fineTuneIcon,
-} from "./model-optimization-icons";
-
-
-
-
-
-
 LLM output is non-deterministic, and model behavior changes between model snapshots and families. Developers must constantly measure and tune the performance of LLM applications to ensure they're getting the best results. In this guide, we explore the techniques and OpenAI platform tools you can use to ensure high quality outputs from the model.
 
 This guide covers evals and fine-tuning workflows that are being moved into

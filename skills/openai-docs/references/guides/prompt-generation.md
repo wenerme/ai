@@ -1,16 +1,5 @@
 # Prompt generation
 
-import {
-  FUNCTION_META_SCHEMA,
-  FUNCTION_META_SCHEMA_PROMPT,
-  GENERAL_META_PROMPT,
-  GENERAL_META_PROMPT_EDIT,
-  META_SCHEMA,
-  META_SCHEMA_PROMPT,
-  REALTIME_META_PROMPT,
-  REALTIME_META_PROMPT_EDIT,
-} from "./prompts";
-
 The **Generate** button in the [Playground](https://platform.openai.com/chat/edit) lets you generate prompts, [functions](https://developers.openai.com/api/docs/guides/function-calling), and [schemas](https://developers.openai.com/api/docs/guides/structured-outputs#supported-schemas) from just a description of your task. This guide will walk through exactly how it works.
 
 ## Overview
@@ -30,64 +19,6 @@ We use specific meta-prompts for different output types, like audio, to ensure t
 
 ### Meta-prompts
 
-export const textMeta = {
-        python:`
-from openai import OpenAI
-
-client = OpenAI()
-
-META_PROMPT = """\n`+
-GENERAL_META_PROMPT + "\n" +`""".strip()
-
-def generate_prompt(task_or_prompt: str):
-completion = client.chat.completions.create(
-model="gpt-4o",
-messages=[
-{
-"role": "system",
-"content": META_PROMPT,
-},
-{
-"role": "user",
-"content": "Task, Goal, or Current Prompt:\\n" + task_or_prompt,
-},
-],
-)
-
-    return completion.choices[0].message.content
-
-`.trim(),
-};
-
-export const audioMeta = {
-        python:`
-from openai import OpenAI
-
-client = OpenAI()
-
-META_PROMPT = """\n`+
-REALTIME_META_PROMPT + "\n" +`""".strip()
-
-def generate_prompt(task_or_prompt: str):
-completion = client.chat.completions.create(
-model="gpt-4o",
-messages=[
-{
-"role": "system",
-"content": META_PROMPT,
-},
-{
-"role": "user",
-"content": "Task, Goal, or Current Prompt:\\n" + task_or_prompt,
-},
-],
-)
-
-    return completion.choices[0].message.content
-
-`.trim(),
-};
-
 
 
 <div data-content-switcher-pane data-value="text-out">
@@ -102,64 +33,6 @@ messages=[
 ### Prompt edits
 
 To edit prompts, we use a slightly modified meta-prompt. While direct edits are straightforward to apply, identifying necessary changes for more open-ended revisions can be challenging. To address this, we include a **reasoning section** at the beginning of the response. This section helps guide the model in determining what changes are needed by evaluating the existing prompt's clarity, chain-of-thought ordering, overall structure, and specificity, among other factors. The reasoning section makes suggestions for improvements and is then parsed out from the final response.
-
-export const textMetaEdits = {
-        python:`
-from openai import OpenAI
-
-client = OpenAI()
-
-META_PROMPT = """\n`+
-GENERAL_META_PROMPT_EDIT + "\n" +`""".strip()
-
-def generate_prompt(task_or_prompt: str):
-completion = client.chat.completions.create(
-model="gpt-4o",
-messages=[
-{
-"role": "system",
-"content": META_PROMPT,
-},
-{
-"role": "user",
-"content": "Task, Goal, or Current Prompt:\\n" + task_or_prompt,
-},
-],
-)
-
-    return completion.choices[0].message.content
-
-`.trim(),
-};
-
-export const audioMetaEdits = {
-        python:`
-from openai import OpenAI
-
-client = OpenAI()
-
-META_PROMPT = """\n`+
-REALTIME_META_PROMPT_EDIT + "\n" +`""".strip()
-
-def generate_prompt(task_or_prompt: str):
-completion = client.chat.completions.create(
-model="gpt-4o",
-messages=[
-{
-"role": "system",
-"content": META_PROMPT,
-},
-{
-"role": "user",
-"content": "Task, Goal, or Current Prompt:\\n" + task_or_prompt,
-},
-],
-)
-
-    return completion.choices[0].message.content
-
-`.trim(),
-};
 
 
 
@@ -223,76 +96,6 @@ The Realtime API
 ### Meta-schemas
 
 Each meta-schema has a corresponding prompt which includes few-shot examples. When combined with the reliability of Structured Outputs — even without strict mode — we were able to generate schemas.
-
-export const soMetaSchema = {
-        python:`
-from openai import OpenAI
-import json
-
-client = OpenAI()
-
-META_SCHEMA = ` +
-JSON.stringify(META_SCHEMA, null, 2).replaceAll("false", "False") + "\n" +
-
-`
-META_PROMPT = """\n` +
-META_SCHEMA_PROMPT + "\n" + `""".strip()
-
-def generate_schema(description: str):
-completion = client.chat.completions.create(
-model="gpt-5.4-mini",
-response_format={"type": "json_schema", "json_schema": META_SCHEMA},
-messages=[
-{
-"role": "system",
-"content": META_PROMPT,
-},
-{
-"role": "user",
-"content": "Description:\\n" + description,
-},
-],
-)
-
-    return json.loads(completion.choices[0].message.content)
-
-`.trim(),
-};
-
-export const soFunctionSchema = {
-        python:`
-from openai import OpenAI
-import json
-
-client = OpenAI()
-
-META_SCHEMA = ` +
-JSON.stringify(FUNCTION_META_SCHEMA, null, 2).replaceAll("false", "False") + "\n" +
-
-`
-META_PROMPT = """\n` +
-FUNCTION_META_SCHEMA_PROMPT + "\n" + `""".strip()
-
-def generate_function_schema(description: str):
-completion = client.chat.completions.create(
-model="gpt-5.4-mini",
-response_format={"type": "json_schema", "json_schema": META_SCHEMA},
-messages=[
-{
-"role": "system",
-"content": META_PROMPT,
-},
-{
-"role": "user",
-"content": "Description:\\n" + description,
-},
-],
-)
-
-    return json.loads(completion.choices[0].message.content)
-
-`.trim(),
-};
 
 
 

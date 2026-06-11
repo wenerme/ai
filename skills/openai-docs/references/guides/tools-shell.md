@@ -27,7 +27,7 @@ import OpenAI from "openai";
 const client = new OpenAI();
 
 const response = await client.responses.create({
-  model: "gpt-5.4",
+  model: "gpt-5.5",
   tools: [{ type: "shell", environment: { type: "container_auto" } }],
   input: [
     {
@@ -53,7 +53,7 @@ from openai import OpenAI
 client = OpenAI()
 
 response = client.responses.create(
-    model="gpt-5.4",
+    model="gpt-5.5",
     tools=[{"type": "shell", "environment": {"type": "container_auto"}}],
     input=[
         {
@@ -139,7 +139,7 @@ import OpenAI from "openai";
 const client = new OpenAI();
 
 const response = await client.responses.create({
-  model: "gpt-5.4",
+  model: "gpt-5.5",
   tools: [
     {
       type: "shell",
@@ -161,7 +161,7 @@ from openai import OpenAI
 client = OpenAI()
 
 response = client.responses.create(
-    model="gpt-5.4",
+    model="gpt-5.5",
     tools=[
         {
             "type": "shell",
@@ -236,7 +236,7 @@ import OpenAI from "openai";
 const client = new OpenAI();
 
 const response = await client.responses.create({
-  model: "gpt-5.4",
+  model: "gpt-5.5",
   tool_choice: "required",
   tools: [
     {
@@ -268,7 +268,7 @@ from openai import OpenAI
 client = OpenAI()
 
 response = client.responses.create(
-    model="gpt-5.4",
+    model="gpt-5.5",
     tool_choice="required",
     tools=[
         {
@@ -349,7 +349,7 @@ const container = await client.containers.create({
 });
 
 const response = await client.responses.create({
-  model: "gpt-5.4",
+  model: "gpt-5.5",
   tools: [
     {
       type: "shell",
@@ -366,7 +366,7 @@ const response = await client.responses.create({
         {
           type: "input_file",
           filename: "report.csv",
-          file_data: \`data:text/csv;base64,\${reportCsv}\`,
+          file_data: `data:text/csv;base64,${reportCsv}`,
         },
         {
           type: "input_text",
@@ -409,7 +409,7 @@ container = client.containers.create(
 )
 
 response = client.responses.create(
-    model="gpt-5.4",
+    model="gpt-5.5",
     tools=[
         {
             "type": "shell",
@@ -496,7 +496,7 @@ import OpenAI from "openai";
 const client = new OpenAI();
 
 const response = await client.responses.create({
-  model: "gpt-5.4",
+  model: "gpt-5.5",
   input: [
     {
       role: "user",
@@ -535,7 +535,7 @@ from openai import OpenAI
 client = OpenAI()
 
 response = client.responses.create(
-    model="gpt-5.4",
+    model="gpt-5.5",
     input=[
         {
             "role": "user",
@@ -580,7 +580,7 @@ import OpenAI from "openai";
 const client = new OpenAI();
 
 const response = await client.responses.create({
-  model: "gpt-5.4",
+  model: "gpt-5.5",
   previous_response_id: "resp_2a8e5c9174d63b0f18a4c572de9f64a1b3c76d508e12f9ab47",
   tools: [
     {
@@ -603,7 +603,7 @@ from openai import OpenAI
 client = OpenAI()
 
 response = client.responses.create(
-    model="gpt-5.4",
+    model="gpt-5.5",
     previous_response_id="resp_2a8e5c9174d63b0f18a4c572de9f64a1b3c76d508e12f9ab47",
     tools=[
         {
@@ -628,6 +628,22 @@ Hosted shell and local shell use the same output item types. Shell runs are repr
 - `shell_call`: commands requested by the model.
 - `shell_call_output`: command output and exit outcomes.
 
+Example shell_call item
+
+```json
+{
+  "type": "shell_call",
+  "call_id": "call_9d14ac6f2b73485e91c0f4da6e1b27c8",
+  "action": {
+    "commands": ["ls -l"],
+    "timeout_ms": 120000,
+    "max_output_length": 4096
+  },
+  "status": "in_progress"
+}
+```
+
+
 ## Local shell mode
 
 You can also run shell commands in your own local runtime by executing `shell_call` actions and sending `shell_call_output` back to the model.
@@ -639,6 +655,34 @@ When you receive `shell_call` output items:
 - Execute requested commands in your runtime.
 - Capture `stdout`, `stderr`, and outcome.
 - Return results as `shell_call_output` in the next request.
+
+Example shell_call_output payload
+
+```json
+{
+  "type": "shell_call_output",
+  "call_id": "call_3ef1b8c79a4d6520f9e3ab7d41c68f25",
+  "max_output_length": 4096,
+  "output": [
+    {
+      "stdout": "...",
+      "stderr": "...",
+      "outcome": {
+        "type": "exit",
+        "exit_code": 0
+      }
+    },
+    {
+      "stdout": "...",
+      "stderr": "...",
+      "outcome": {
+        "type": "timeout"
+      }
+    }
+  ]
+}
+```
+
 
 For legacy migration details, see the older [Local shell guide](https://developers.openai.com/api/docs/guides/tools-local-shell).
 

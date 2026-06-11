@@ -36,7 +36,7 @@ const agent = new Agent({
   name: "History tutor",
   instructions:
     "You answer history questions clearly and concisely.",
-  model: "${latestMainlineModelSlug}",
+  model: "gpt-5.5",
 });
 
 const result = await run(agent, "When did the Roman Empire fall?");
@@ -51,7 +51,7 @@ from agents import Agent, Runner
 agent = Agent(
     name="History tutor",
     instructions="You answer history questions clearly and concisely.",
-    model="${latestMainlineModelSlug}",
+    model="gpt-5.5",
 )
 
 

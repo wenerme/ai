@@ -20,8 +20,8 @@ When browser automation fails or behaves unexpectedly, it can be difficult to un
 
 Pass `recording: true` to `puppeteer.launch()` or `playwright.launch()`:
 
-* [ Puppeteer ](#tab-panel-4399)
-* [ Playwright ](#tab-panel-4400)
+* [ Puppeteer ](#tab-panel-6667)
+* [ Playwright ](#tab-panel-6668)
 
 TypeScript
 
@@ -163,9 +163,11 @@ The recording is only available after the browser session closes. CDP sessions t
 
 ## View recordings
 
-After a session closes, its recording is available in the Cloudflare dashboard under **Browser Run** \> **Runs**. Select a session to open the recording viewer, where you can scrub through the timeline and replay what happened during the session.
+After a session closes, its recording is available in the Cloudflare dashboard under **Browser Run** \> **Runs**. Select the recording icon next to a session to open the recording viewer, where you can scrub through the timeline and replay what happened during the session.
 
-[ Go to **Browser Run Logs** ](https://dash.cloudflare.com/?to=/:account/workers/browser-run/logs) 
+If a session opened multiple tabs, the recording viewer shows a tab selector dropdown in the top-right corner of the replay area. Use it to switch between the recorded tabs and view the activity for each one individually.
+
+[ Go to **Browser Run Runs** ](https://dash.cloudflare.com/?to=/:account/workers/browser-run/runs) 
 
 ## Retrieve a recording via API
 
@@ -194,7 +196,9 @@ A successful response looks similar to the following:
 
   "events": {
 
-    "target-1": []
+    "target-1": [],
+
+    "target-2": []
 
   }
 
@@ -203,9 +207,13 @@ A successful response looks similar to the following:
 
 ```
 
+The keys in `events` (such as `target-1`, `target-2`) are [CDP targets ↗](https://chromedevtools.github.io/devtools-protocol/tot/Target/). In the context of session recording, each target typically corresponds to a browser tab. A session that opened multiple tabs will have one target per tab, and each target's value is an independent rrweb event array for that tab.
+
 ## Replay a recording
 
-The `events` values in the API response are standard rrweb event arrays. You can pass them directly to [rrweb-player ↗](https://github.com/rrweb-io/rrweb/tree/master/packages/rrweb-player) to self-host a replay UI with a timeline scrubber and playback controls.
+Each value in `events` is a standard rrweb event array and can be passed directly to [rrweb-player ↗](https://github.com/rrweb-io/rrweb/tree/master/packages/rrweb-player) to self-host a replay UI with a timeline scrubber and playback controls.
+
+Tabs replay independently — to replay a multi-tab session, render one player per target, or build a UI that lets the user switch between targets (similar to the tab selector in the dashboard recording viewer).
 
 ## Limits
 

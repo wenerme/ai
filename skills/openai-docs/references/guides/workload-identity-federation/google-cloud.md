@@ -1,10 +1,5 @@
 # Configuring workload identity federation for Google Cloud
 
-import {
-  googleGkeWorkloadIdentitySdk,
-  googleWorkloadIdentitySdk,
-} from "./examples";
-
 Use Google Cloud as a Workload Identity Provider in either of these scenarios:
 
 - **Google workload identity:** Exchange a Google-signed OIDC token issued to an attached Google service account for a short-lived OpenAI access token.

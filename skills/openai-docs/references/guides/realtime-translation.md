@@ -1,13 +1,5 @@
 # Realtime translation
 
-import {
-  Bolt,
-  Cube,
-  Desktop,
-  Phone,
-} from "@components/react/oai/platform/ui/Icon.react";
-
-
 Realtime translation lets you stream source audio into a dedicated translation session and receive translated audio plus transcript deltas while the speaker is still talking. Use it for live interpretation, multilingual calls, broadcasts, meetings, lessons, and video rooms.
 
 Use [`gpt-realtime-translate`](https://developers.openai.com/api/docs/models/gpt-realtime-translate) when your application should translate what a human says. If you need an assistant that answers questions, calls tools, and manages a conversation, use [`gpt-realtime-2`](https://developers.openai.com/api/docs/models/gpt-realtime-2) with a standard Realtime session instead.
@@ -36,7 +28,94 @@ Use WebSockets when your server already receives raw audio, such as Twilio Media
 
 For browser apps, create a short-lived client secret on your server. Don't expose your standard API key in the browser.
 
+Create a translation client secret
+
+```javascript
+app.post("/session", async (req, res) => {
+  const language = req.body.targetLanguage ?? "es";
+
+  const response = await fetch(
+    "https://api.openai.com/v1/realtime/translations/client_secrets",
+    {
+      method: "POST",
+      headers: {
+        Authorization: `Bearer ${process.env.OPENAI_API_KEY}`,
+        "Content-Type": "application/json",
+        "OpenAI-Safety-Identifier": "hashed-user-id",
+      },
+      body: JSON.stringify({
+        session: {
+          model: "gpt-realtime-translate",
+          audio: {
+            output: { language },
+          },
+        },
+      }),
+    }
+  );
+
+  res.status(response.status).json(await response.json());
+});
+```
+
+
 In the browser, capture audio, create a peer connection, and post the SDP offer to the translation calls endpoint:
+
+Connect a browser translation call
+
+```javascript
+const { value: clientSecret } = await fetch("/session", {
+  method: "POST",
+  headers: { "Content-Type": "application/json" },
+  body: JSON.stringify({ targetLanguage: "es" }),
+}).then((response) => response.json());
+
+const sourceStream = await navigator.mediaDevices.getUserMedia({
+  audio: true,
+});
+
+const pc = new RTCPeerConnection();
+pc.addTrack(sourceStream.getAudioTracks()[0], sourceStream);
+
+const translatedAudio = new Audio();
+translatedAudio.autoplay = true;
+pc.ontrack = ({ streams }) => {
+  translatedAudio.srcObject = streams[0];
+};
+
+const events = pc.createDataChannel("oai-events");
+events.onmessage = ({ data }) => {
+  const event = JSON.parse(data);
+  if (event.type === "session.output_transcript.delta") {
+    subtitles.textContent += event.delta;
+  }
+};
+
+const offer = await pc.createOffer();
+await pc.setLocalDescription(offer);
+
+const sdpResponse = await fetch(
+  "https://api.openai.com/v1/realtime/translations/calls",
+  {
+    method: "POST",
+    headers: {
+      Authorization: `Bearer ${clientSecret}`,
+      "Content-Type": "application/sdp",
+    },
+    body: offer.sdp,
+  }
+);
+
+if (!sdpResponse.ok) {
+  throw new Error(await sdpResponse.text());
+}
+
+await pc.setRemoteDescription({
+  type: "answer",
+  sdp: await sdpResponse.text(),
+});
+```
+
 
 ## Create a WebSocket session
 
@@ -53,7 +132,7 @@ const ws = new WebSocket(
   "wss://api.openai.com/v1/realtime/translations?model=gpt-realtime-translate",
   {
     headers: {
-      Authorization: \`Bearer \${process.env.OPENAI_API_KEY}\`,
+      Authorization: `Bearer ${process.env.OPENAI_API_KEY}`,
       "OpenAI-Safety-Identifier": "hashed-user-id",
     },
   }

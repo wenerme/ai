@@ -1,12 +1,5 @@
 # Apply Patch
 
-import {
-  CheckCircleFilled,
-  XCircle,
-} from "@components/react/oai/platform/ui/Icon.react";
-
-
-
 The `apply_patch` tool lets GPT-5.1 create, update, and delete files in your codebase using structured diffs. Instead of just suggesting edits, the model emits patch operations that your application applies and then reports back on, enabling iterative, multi-step code editing workflows.
 
 ## When to use
@@ -47,11 +40,122 @@ At a high level, using `apply_patch` with the Responses API looks like this:
 
 **Step 1: Ask the model to plan and emit patches**
 
+Ask the model to plan and emit patches
+
+```python
+from openai import OpenAI
+
+client = OpenAI()
+
+# For brevity, we are including file context in the example input.
+# Most agentic use cases should instead equip the model with tools
+# for exploring file system state.
+RESPONSE_INPUT = """
+The user has the following files:
+<BEGIN_FILES>
+===== lib/fib.py
+def fib(n):
+    if n <= 1:
+        return n
+    return fib(n-1) + fib(n-2)
+
+===== run.py
+from lib.fib import fib
+
+def main():
+  print(fib(42))
+<END_FILES>
+
+You are a helpful coding assistant that should assist the user with whatever they
+ask.
+
+User query:
+Help me rename the fib() function to fibonacci()
+"""
+
+response = client.responses.create(
+    model="gpt-5.5",
+    input=RESPONSE_INPUT,
+    tools=[{"type": "apply_patch"}],
+)
+
+# response.output may contain multiple apply_patch_call entries, e.g.:
+# - update lib/fib.py
+# - update run.py
+patch_calls = [
+    item for item in response.output
+    if item["type"] == "apply_patch_call"
+]
+```
+
+
 **Example `apply_patch_call` object**
+
+Example apply_patch_call object
+
+```json
+{
+    "id": "apc_08f3d96c87a585390069118b594f7481a088b16cda7d9415fe",
+    "type": "apply_patch_call",
+    "status": "completed",
+    "call_id": "call_Rjsqzz96C5xzPb0jUWJFRTNW",
+    "operation": {
+        "type": "update_file",
+        "diff": "
+@@
+-def fib(n):
++def fibonacci(n):
+    if n <= 1:
+        return n
+-    return fib(n-1) + fib(n-2)                                                  +    return fibonacci(n-1) + fibonacci(n-2),
+",
+        "path": "lib/fib.py"
+    }
+}
+```
+
 
 **Step 2: Apply the patch and send results back**
 
+Apply the patch and return results
+
+```python
+from apply_patch_harness import apply_operation  # your implementation
+
+results = []
+for call in patch_calls:
+    op = call["operation"]
+    success, maybe_log_output = apply_operation(op)
+
+    results.append({
+        "type": "apply_patch_call_output",
+        "call_id": call["call_id"],
+        "status": "completed" if success else "failed",
+        "output": maybe_log_output,
+    })
+
+followup = client.responses.create(
+    model="gpt-5.5",
+    previous_response_id=response.id,
+    input=results,
+    tools=[{"type": "apply_patch"}],
+)
+```
+
+
 If a patch fails (for example, file not found), set `status: "failed"` and include a helpful `output` string so the model can recover:
+
+Report a failed apply_patch call
+
+```json
+{
+  "type": "apply_patch_call_output",
+  "call_id": "call_cNWm41dB3RyQcLNOVTIPBWZU",
+  "status": "failed",
+  "output": "Could not apply patch to lib/foo.py — file not found on disk"
+}
+```
+
 
 ## Apply patch operations
 
@@ -128,10 +232,32 @@ Use `status: "failed"` plus a clear `output` message to help the model recover.
 
 <div data-content-switcher-pane data-value="file-missing">
     <div class="hidden">File not found</div>
-    </div>
+    File not found error
+
+```json
+{
+  "type": "apply_patch_call_output",
+  "call_id": "call_abc",
+  "status": "failed",
+  "output": "Error: File not found at path 'lib/baz.py'"
+}
+```
+
+  </div>
   <div data-content-switcher-pane data-value="patch-conflict" hidden>
     <div class="hidden">Patch conflict</div>
-    </div>
+    Patch conflict error
+
+```json
+{
+  "type": "apply_patch_call_output",
+  "call_id": "call_abc",
+  "status": "failed",
+  "output": "Error: Invalid Context:\n@@ def fib(n):"
+}
+```
+
+  </div>
 
 
 

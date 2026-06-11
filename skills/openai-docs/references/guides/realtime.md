@@ -1,11 +1,5 @@
 # Realtime and audio
 
-import {
-  Cube,
-  Desktop,
-  Phone,
-} from "@components/react/oai/platform/ui/Icon.react";
-
 Start with the outcome you want to build. Realtime sessions are best for live audio that needs low latency. Request-based audio APIs are best for files, bounded requests, or generated speech that doesn't need a live session.
 
 ## Common use cases

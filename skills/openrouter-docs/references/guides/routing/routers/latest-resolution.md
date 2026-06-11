@@ -1,6 +1,5 @@
 > For clean Markdown of any page, append .md to the page URL.
 > For a complete documentation index, see https://openrouter.ai/docs/llms.txt.
-> For full documentation content, see https://openrouter.ai/docs/llms-full.txt.
 > For AI client integration (Claude Code, Cursor, etc.), connect to the MCP server at https://openrouter.ai/docs/_mcp/server.
 
 # Latest Model Resolution
@@ -9,7 +8,7 @@
 
 ## Overview
 
-When a model author ships a new version (for example Anthropic releasing `claude-opus-4.7`), OpenRouter automatically starts routing `~anthropic/claude-opus-latest` to it. Older code calling the alias keeps working — it just runs on the newest version.
+When a model author ships a new version (for example Anthropic releasing `claude-opus-4.8`), OpenRouter automatically starts routing `~anthropic/claude-opus-latest` to it. Older code calling the alias keeps working — it just runs on the newest version.
 
 This is ideal for:
 
@@ -107,7 +106,7 @@ The response's `model` field reflects the concrete model that actually served th
 ```json
 {
   "id": "gen-...",
-  "model": "anthropic/claude-opus-4.7",
+  "model": "anthropic/claude-opus-4.8",
   "choices": [
     {
       "message": {
@@ -131,7 +130,7 @@ Each `~author/family-latest` slug is mapped to a model family on OpenRouter. Whe
 1. **Slug recognition**: OpenRouter sees the `~` prefix and identifies which family the alias points to (for example `~anthropic/claude-opus-latest` → the Claude Opus family).
 2. **Target selection**: The newest visible model in that family is selected. When a new version ships, it takes over automatically, with no client changes required.
 3. **Request forwarding**: Your request is forwarded to the resolved model and routed across providers exactly as if you'd called that concrete slug directly.
-4. **Transparent reporting**: The response's `model` field reports the concrete model that served the request (for example `anthropic/claude-opus-4.7`), so you can always tell which version answered any given call.
+4. **Transparent reporting**: The response's `model` field reports the concrete model that served the request (for example `anthropic/claude-opus-4.8`), so you can always tell which version answered any given call.
 
 If a family has no eligible model available, the request returns an error rather than silently falling back to something unrelated.
 
@@ -163,7 +162,7 @@ When you need reproducibility, bypass latest resolution by calling the concrete 
 
 ```json
 {
-  "model": "anthropic/claude-opus-4.7"
+  "model": "anthropic/claude-opus-4.8"
 }
 ```
 

@@ -1,6 +1,6 @@
 > For clean Markdown of any page, append .md to the page URL.
 > For a complete documentation index, see https://openrouter.ai/docs/llms.txt.
-> For full documentation content, see https://openrouter.ai/docs/llms-full.txt.
+> For AI client integration (Claude Code, Cursor, etc.), connect to the MCP server at https://openrouter.ai/docs/_mcp/server.
 
 # Provider Logging
 
@@ -16,12 +16,10 @@ On your account settings page, you can set whether you would like to allow routi
 
 Wherever possible, OpenRouter works with providers to ensure that prompts will not be trained on, but there are exceptions. If you opt out of training in your account settings, OpenRouter will not route to providers that train. This setting has no bearing on OpenRouter's own policies and what we do with your prompts.
 
-<Tip title="Data Policy Filtering">
-  You can [restrict individual requests](/docs/guides/routing/provider-selection#requiring-providers-to-comply-with-data-policies)
-  to only use providers with a certain data policy.
+You can [restrict individual requests](/docs/guides/routing/provider-selection#requiring-providers-to-comply-with-data-policies)
+to only use providers with a certain data policy.
 
-  This is also available as an account-wide setting in [your privacy settings](https://openrouter.ai/settings/privacy).
-</Tip>
+This is also available as an account-wide setting in [your privacy settings](https://openrouter.ai/settings/privacy).
 
 ### Data Retention & Logging
 
@@ -29,14 +27,10 @@ Providers also have their own data retention policies, often for compliance reas
 
 The full terms of service for each provider are linked from the provider's page, and aggregated in the [documentation](/docs/guides/routing/provider-selection#terms-of-service).
 
-<ProviderDataRetentionTable />
-
 ## Enterprise EU in-region routing
 
 For enterprise customers, OpenRouter supports EU in-region routing. When enabled for your account, your prompts and completions are processed within the European Union and do not leave the EU. Use the base URL `https://eu.openrouter.ai` for API requests to keep traffic and data within Europe. This feature is only enabled for enterprise customers by request.
 
-<Info title="EU-only models list">
-  To see which models are available for EU in-region routing, call `/api/v1/models/user` through the EU domain. [Learn more](/docs/api/api-reference/models/list-models-user)
-</Info>
+To see which models are available for EU in-region routing, call `/api/v1/models/user` through the EU domain. [Learn more](/docs/api/api-reference/models/list-models-user)
 
 If you're interested, please contact our enterprise team at [https://openrouter.ai/enterprise/form](https://openrouter.ai/enterprise/form).

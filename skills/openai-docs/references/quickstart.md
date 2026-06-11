@@ -1,33 +1,5 @@
 # Developer quickstart
 
-import {
-  Assistant,
-  Camera,
-  ChatTripleDots,
-  Code,
-  Bolt,
-  Speed,
-  SquarePlus,
-} from "@components/react/oai/platform/ui/Icon.react";
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 The OpenAI API provides a simple interface to state-of-the-art AI [models](https://developers.openai.com/api/docs/models) for text generation, natural language processing, computer vision, and more. Get started by creating an API Key and running your first API call. Discover how to generate text, analyze images, build agents, and more.
 
 ## Create and export an API key

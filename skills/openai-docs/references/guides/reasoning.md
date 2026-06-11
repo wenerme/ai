@@ -1,18 +1,5 @@
 # Reasoning models
 
-import {
-  Question,
-  Storage,
-} from "@components/react/oai/platform/ui/Icon.react";
-
-
-
-
-
-
-
-
-
 **Reasoning models** like [GPT-5.5](https://developers.openai.com/api/docs/models/gpt-5.5) use internal reasoning tokens before producing a response. This helps the model plan, use tools effectively, inspect alternatives, recover from ambiguity, and solve harder multi-step tasks. Reasoning models work especially well for complex problem solving, coding, scientific reasoning, and multi-step agentic workflows. They're also the best models for [Codex CLI](https://github.com/openai/codex), our lightweight coding agent.
 
 Start with `gpt-5.5` for most reasoning workloads. If you need the highest-intelligence API option for more challenging problems that can tolerate more latency, use [`gpt-5.5-pro`](https://developers.openai.com/api/docs/models/gpt-5.5-pro). For lower cost, consider `gpt-5.4` and for lower cost and latency, consider `gpt-5.4-mini`.
@@ -33,13 +20,13 @@ import OpenAI from "openai";
 
 const openai = new OpenAI();
 
-const prompt = \`
+const prompt = `
 Write a bash script that takes a matrix represented as a string with 
 format '[1,2],[3,4],[5,6]' and prints the transpose in the same format.
-\`;
+`;
 
 const response = await openai.responses.create({
-    model: "${latestMainlineModelSlug}",
+    model: "gpt-5.5",
     reasoning: { effort: "low" },
     input: [
         {
@@ -63,7 +50,7 @@ format '[1,2],[3,4],[5,6]' and prints the transpose in the same format.
 """
 
 response = client.responses.create(
-    model="${latestMainlineModelSlug}",
+    model="gpt-5.5",
     reasoning={"effort": "low"},
     input=[
         {
@@ -77,16 +64,16 @@ print(response.output_text)
 ```
 
 ```bash
-curl https://api.openai.com/v1/responses \\
-  -H "Content-Type: application/json" \\
-  -H "Authorization: Bearer $OPENAI_API_KEY" \\
+curl https://api.openai.com/v1/responses \
+  -H "Content-Type: application/json" \
+  -H "Authorization: Bearer $OPENAI_API_KEY" \
   -d '{
-    "model": "${latestMainlineModelSlug}",
+    "model": "gpt-5.5",
     "reasoning": {"effort": "low"},
     "input": [
       {
         "role": "user",
-        "content": "Write a bash script that takes a matrix represented as a string with format \\"[1,2],[3,4],[5,6]\\" and prints the transpose in the same format."
+        "content": "Write a bash script that takes a matrix represented as a string with format \"[1,2],[3,4],[5,6]\" and prints the transpose in the same format."
       }
     ]
   }'
@@ -167,13 +154,13 @@ import OpenAI from "openai";
 
 const openai = new OpenAI();
 
-const prompt = \`
+const prompt = `
 Write a bash script that takes a matrix represented as a string with 
 format '[1,2],[3,4],[5,6]' and prints the transpose in the same format.
-\`;
+`;
 
 const response = await openai.responses.create({
-    model: "${latestMainlineModelSlug}",
+    model: "gpt-5.5",
     reasoning: { effort: "medium" },
     input: [
         {
@@ -208,7 +195,7 @@ format '[1,2],[3,4],[5,6]' and prints the transpose in the same format.
 """
 
 response = client.responses.create(
-    model="${latestMainlineModelSlug}",
+    model="gpt-5.5",
     reasoning={"effort": "medium"},
     input=[
         {
@@ -255,6 +242,7 @@ curl https://api.openai.com/v1/responses \
   }'
 ```
 
+
 Any reasoning items in the `output` array will now have an `encrypted_content` property, which will contain encrypted reasoning tokens that can be passed along with future conversation turns.
 
 ## Reasoning summaries
@@ -274,7 +262,7 @@ import OpenAI from "openai";
 const openai = new OpenAI();
 
 const response = await openai.responses.create({
-  model: "${latestMainlineModelSlug}",
+  model: "gpt-5.5",
   input: "What is the capital of France?",
   reasoning: {
     effort: "low",
@@ -290,7 +278,7 @@ from openai import OpenAI
 client = OpenAI()
 
 response = client.responses.create(
-    model="${latestMainlineModelSlug}",
+    model="gpt-5.5",
     input="What is the capital of France?",
     reasoning={
         "effort": "low",
@@ -302,11 +290,11 @@ print(response.output)
 ```
 
 ```bash
-curl https://api.openai.com/v1/responses \\
-  -H "Content-Type: application/json" \\
-  -H "Authorization: Bearer $OPENAI_API_KEY" \\
+curl https://api.openai.com/v1/responses \
+  -H "Content-Type: application/json" \
+  -H "Authorization: Bearer $OPENAI_API_KEY" \
   -d '{
-    "model": "${latestMainlineModelSlug}",
+    "model": "gpt-5.5",
     "input": "What is the capital of France?",
     "reasoning": {
         "effort": "low",

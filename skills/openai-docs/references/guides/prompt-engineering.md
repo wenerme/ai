@@ -97,9 +97,9 @@ print(response.output_text)
 ```
 
 ```bash
-curl "https://api.openai.com/v1/responses" \\
-    -H "Content-Type: application/json" \\
-    -H "Authorization: Bearer $OPENAI_API_KEY" \\
+curl "https://api.openai.com/v1/responses" \
+    -H "Content-Type: application/json" \
+    -H "Authorization: Bearer $OPENAI_API_KEY" \
     -d '{
         "model": "gpt-5.5",
         "reasoning": {"effort": "low"},
@@ -158,9 +158,9 @@ print(response.output_text)
 ```
 
 ```bash
-curl "https://api.openai.com/v1/responses" \\
-    -H "Content-Type: application/json" \\
-    -H "Authorization: Bearer $OPENAI_API_KEY" \\
+curl "https://api.openai.com/v1/responses" \
+    -H "Content-Type: application/json" \
+    -H "Authorization: Bearer $OPENAI_API_KEY" \
     -d '{
         "model": "gpt-5.5",
         "reasoning": {"effort": "low"},
@@ -236,7 +236,36 @@ Below is an example of using Markdown and XML tags to construct a `developer` me
 
 <div data-content-switcher-pane data-value="prompt">
     <div class="hidden">Example prompt</div>
-    </div>
+    A developer message for code generation
+
+```text
+# Identity
+
+You are coding assistant that helps enforce the use of snake case
+variables in JavaScript code, and writing code that will run in
+Internet Explorer version 6.
+
+# Instructions
+
+* When defining variables, use snake case names (e.g. my_variable)
+  instead of camel case names (e.g. myVariable).
+* To support old browsers, declare variables using the older
+  "var" keyword.
+* Do not give responses with Markdown formatting, just return
+  the code as requested.
+
+# Examples
+
+<user_query>
+How do I declare a string variable for a first name?
+</user_query>
+
+<assistant_response>
+var first_name = "Anna";
+</assistant_response>
+```
+
+  </div>
   <div data-content-switcher-pane data-value="code" hidden>
     <div class="hidden">API request</div>
     Send a prompt to generate code through the API
@@ -274,9 +303,9 @@ print(response.output_text)
 ```
 
 ```bash
-curl https://api.openai.com/v1/responses \\
-  -H "Authorization: Bearer $OPENAI_API_KEY" \\
-  -H "Content-Type: application/json" \\
+curl https://api.openai.com/v1/responses \
+  -H "Authorization: Bearer $OPENAI_API_KEY" \
+  -H "Content-Type: application/json" \
   -d '{
     "model": "gpt-5.5",
     "instructions": "'"$(< prompt.txt)"'",

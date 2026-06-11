@@ -54,9 +54,9 @@ You can provide file inputs by linking external URLs.
 Use an external file URL
 
 ```bash
-curl "https://api.openai.com/v1/responses" \\
-    -H "Content-Type: application/json" \\
-    -H "Authorization: Bearer $OPENAI_API_KEY" \\
+curl "https://api.openai.com/v1/responses" \
+    -H "Content-Type: application/json" \
+    -H "Authorization: Bearer $OPENAI_API_KEY" \
     -d '{
         "model": "gpt-5.5",
         "input": [
@@ -165,14 +165,14 @@ The following example uploads a file with the [Files API](https://developers.ope
 Upload a file
 
 ```bash
-curl https://api.openai.com/v1/files \\
-    -H "Authorization: Bearer $OPENAI_API_KEY" \\
-    -F purpose="user_data" \\
+curl https://api.openai.com/v1/files \
+    -H "Authorization: Bearer $OPENAI_API_KEY" \
+    -F purpose="user_data" \
     -F file="@draconomicon.pdf"
 
-curl "https://api.openai.com/v1/responses" \\
-    -H "Content-Type: application/json" \\
-    -H "Authorization: Bearer $OPENAI_API_KEY" \\
+curl "https://api.openai.com/v1/responses" \
+    -H "Content-Type: application/json" \
+    -H "Authorization: Bearer $OPENAI_API_KEY" \
     -d '{
         "model": "gpt-5.5",
         "input": [
@@ -290,9 +290,9 @@ You can also send file inputs as Base64-encoded file data.
 Send a Base64-encoded file
 
 ```bash
-curl "https://api.openai.com/v1/responses" \\
-    -H "Content-Type: application/json" \\
-    -H "Authorization: Bearer $OPENAI_API_KEY" \\
+curl "https://api.openai.com/v1/responses" \
+    -H "Content-Type: application/json" \
+    -H "Authorization: Bearer $OPENAI_API_KEY" \
     -d '{
         "model": "gpt-5.5",
         "input": [
@@ -331,7 +331,7 @@ const response = await client.responses.create({
                 {
                     type: "input_file",
                     filename: "draconomicon.pdf",
-                    file_data: \`data:application/pdf;base64,\${base64String}\`,
+                    file_data: `data:application/pdf;base64,${base64String}`,
                 },
                 {
                     type: "input_text",

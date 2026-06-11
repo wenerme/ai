@@ -1,6 +1,5 @@
 > For clean Markdown of any page, append .md to the page URL.
 > For a complete documentation index, see https://openrouter.ai/docs/llms.txt.
-> For full documentation content, see https://openrouter.ai/docs/llms-full.txt.
 > For AI client integration (Claude Code, Cursor, etc.), connect to the MCP server at https://openrouter.ai/docs/_mcp/server.
 
 # OAuth PKCE
@@ -57,9 +56,11 @@ const generatedCodeChallenge = await createSHA256CodeChallenge(codeVerifier);
 
 #### Localhost Apps
 
-If your app is a local-first app or otherwise doesn't have a public URL, it is recommended to test with `http://localhost:3000` as the callback and referrer URLs.
+Localhost callbacks are supported on **any port**. This is useful for CLI tools and local-first apps that bind to an arbitrary free OS port for the OAuth callback (e.g. `http://localhost:51423/callback`).
 
-When moving to production, replace the localhost/private referrer URL with a public GitHub repo or a link to your project website.
+Localhost apps are assigned a fixed title matching the host and port (e.g. `localhost:3000`) but will not appear in the OpenRouter marketplace or rankings. If you want a custom app name and marketplace presence, use a public URL as the callback instead.
+
+When moving to production, replace the localhost callback URL with a public URL (your project website or a GitHub repo link) to get full app attribution.
 
 ### Step 2: Exchange the code for a user-controlled API key
 

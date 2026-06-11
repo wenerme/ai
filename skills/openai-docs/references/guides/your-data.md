@@ -1,10 +1,5 @@
 # Data controls in the OpenAI platform
 
-import {
-  dataResidencyRegions,
-  dataResidencyServices,
-} from "./your-data-support";
-
 Understand how OpenAI uses your data, and how you can control it.
 
 Your data is your data. As of March 1, 2023, data sent to the OpenAI API is not used to train or improve OpenAI models (unless you explicitly opt in to share data with us).

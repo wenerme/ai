@@ -1,17 +1,5 @@
 # ChatKit
 
-import {
-  BookBookmark,
-  Code,
-  Cube,
-  Inpaint,
-  Globe,
-  Playground,
-  Sparkles,
-} from "@components/react/oai/platform/ui/Icon.react";
-
-
-
 ChatKit is the best way to build agentic chat experiences. Whether you’re building an internal knowledge base assistant, HR onboarding helper, research companion, shopping or scheduling assistant, troubleshooting bot, financial planning advisor, or support agent, ChatKit provides a customizable chat embed to handle all user experience details.
 
 Use ChatKit's embeddable UI widgets, customizable prompts, tool‑invocation support, file attachments, and chain‑of‑thought visualizations to build agents without reinventing the chat UI.

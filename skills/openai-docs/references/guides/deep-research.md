@@ -1,15 +1,5 @@
 # Deep research
 
-import {
-  deepResearchBasic,
-  deepResearchClarification,
-  deepResearchPromptEnrichment,
-  deepResearchRemoteMCP,
-} from "./deep-research-examples";
-
-
-
-
 The [`o3-deep-research`](https://developers.openai.com/api/docs/models/o3-deep-research) and [`o4-mini-deep-research`](https://developers.openai.com/api/docs/models/o4-mini-deep-research) models can find, analyze, and synthesize hundreds of sources to create a comprehensive report at the level of a research analyst. These models are optimized for browsing and data analysis, and can use [web search](https://developers.openai.com/api/docs/guides/tools-web-search), [remote MCP](https://developers.openai.com/api/docs/guides/tools-remote-mcp) servers, and [file search](https://developers.openai.com/api/docs/guides/tools-file-search) over internal [vector stores](https://developers.openai.com/api/docs/api-reference/vector-stores) to generate detailed reports, ideal for use cases like:
 
 - Legal or scientific research

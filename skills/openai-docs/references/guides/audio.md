@@ -138,9 +138,9 @@ with open("dog.wav", "wb") as f:
 ```
 
 ```bash
-curl "https://api.openai.com/v1/chat/completions" \\
-    -H "Content-Type: application/json" \\
-    -H "Authorization: Bearer $OPENAI_API_KEY" \\
+curl "https://api.openai.com/v1/chat/completions" \
+    -H "Content-Type: application/json" \
+    -H "Authorization: Bearer $OPENAI_API_KEY" \
     -d '{
       "model": "gpt-audio-1.5",
       "modalities": ["text", "audio"],
@@ -230,9 +230,9 @@ print(completion.choices[0].message)
 ```
 
 ```bash
-curl "https://api.openai.com/v1/chat/completions" \\
-    -H "Content-Type: application/json" \\
-    -H "Authorization: Bearer $OPENAI_API_KEY" \\
+curl "https://api.openai.com/v1/chat/completions" \
+    -H "Content-Type: application/json" \
+    -H "Authorization: Bearer $OPENAI_API_KEY" \
     -d '{
       "model": "gpt-audio-1.5",
       "modalities": ["text", "audio"],

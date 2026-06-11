@@ -1,21 +1,5 @@
 # Using tools
 
-import {
-  File,
-  Functions,
-  ImageSquare,
-  Code,
-} from "@components/react/oai/platform/ui/Icon.react";
-
-
-
-
-
-
-
-
-
-
 When generating model responses or building agents, you can extend capabilities using built‑in tools, function calling, tool search, and remote MCP servers. These enable the model to search the web, retrieve from your files, load deferred tool definitions at runtime, call your own functions, or access third‑party services. Only `gpt-5.4` and later models support `tool_search`.
 
 
@@ -89,9 +73,9 @@ Console.WriteLine(response.GetOutputText());
     Call a remote MCP server
 
 ```bash
-curl https://api.openai.com/v1/responses \\ 
--H "Content-Type: application/json" \\ 
--H "Authorization: Bearer $OPENAI_API_KEY" \\ 
+curl https://api.openai.com/v1/responses \ 
+-H "Content-Type: application/json" \ 
+-H "Authorization: Bearer $OPENAI_API_KEY" \ 
 -d '{
   "model": "gpt-5.5",
     "tools": [
@@ -304,7 +288,7 @@ const getWeatherTool = tool({
   description: "Get the weather for a given city.",
   parameters: z.object({ city: z.string() }),
   async execute({ city }) {
-    return \`The weather in \${city} is sunny.\`;
+    return `The weather in ${city} is sunny.`;
   },
 });
 ```

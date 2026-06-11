@@ -69,13 +69,13 @@ print("Video generation started:", video)
 ```
 
 ```bash
-curl -X POST "https://api.openai.com/v1/videos" \\
-  -H "Authorization: Bearer $OPENAI_API_KEY" \\
-  -H "Content-Type: multipart/form-data" \\
-  -F prompt="Wide tracking shot of a teal coupe driving through a desert highway, heat ripples visible, hard sun overhead." \\
-  -F model="sora-2-pro" \\
-  -F size="1280x720" \\
-  -F seconds="8" \\
+curl -X POST "https://api.openai.com/v1/videos" \
+  -H "Authorization: Bearer $OPENAI_API_KEY" \
+  -H "Content-Type: multipart/form-data" \
+  -F prompt="Wide tracking shot of a teal coupe driving through a desert highway, heat ripples visible, hard sun overhead." \
+  -F model="sora-2-pro" \
+  -F size="1280x720" \
+  -F seconds="8" \
 ```
 
 
@@ -251,13 +251,13 @@ while (video.status === 'in_progress' || video.status === 'queued') {
     const bar = '='.repeat(filledLength) + '-'.repeat(barLength - filledLength);
     const statusText = video.status === 'queued' ? 'Queued' : 'Processing';
 
-    process.stdout.write(\`\${statusText}: [\${bar}] \${progress.toFixed(1)}%\`);
+    process.stdout.write(`${statusText}: [${bar}] ${progress.toFixed(1)}%`);
 
     await new Promise((resolve) => setTimeout(resolve, 2000));
 }
 
 // Clear the progress line and show completion
-process.stdout.write('\\n');
+process.stdout.write('\n');
 
 if (video.status === 'failed') {
     console.error('Video generation failed');
@@ -279,8 +279,8 @@ console.log('Wrote video.mp4');
 ```
 
 ```bash
-curl -L "https://api.openai.com/v1/videos/video_abc123/content" \\
-  -H "Authorization: Bearer $OPENAI_API_KEY" \\
+curl -L "https://api.openai.com/v1/videos/video_abc123/content" \
+  -H "Authorization: Bearer $OPENAI_API_KEY" \
   --output video.mp4
 ```
 

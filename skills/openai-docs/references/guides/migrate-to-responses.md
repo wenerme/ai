@@ -1,14 +1,5 @@
 # Migrate to the Responses API
 
-import {
-  CheckCircleFilled,
-  XCircle,
-} from "@components/react/oai/platform/ui/Icon.react";
-
-
-
-
-
 The [Responses API](https://developers.openai.com/api/docs/api-reference/responses) is our new API primitive, an evolution of [Chat Completions](https://developers.openai.com/api/docs/api-reference/chat) which brings added simplicity and powerful agentic primitives to your integrations.
 
 **While Chat Completions remains supported, Responses is recommended for all new projects.**
@@ -100,20 +91,20 @@ INPUT='[
   { "role": "user", "content": "Hello!" }
 ]'
 
-curl -s https://api.openai.com/v1/chat/completions \\
-  -H "Content-Type: application/json" \\
-  -H "Authorization: Bearer $OPENAI_API_KEY" \\
+curl -s https://api.openai.com/v1/chat/completions \
+  -H "Content-Type: application/json" \
+  -H "Authorization: Bearer $OPENAI_API_KEY" \
   -d "{
-    \\"model\\": \\"gpt-5.5\\",
-    \\"messages\\": $INPUT
+    \"model\": \"gpt-5.5\",
+    \"messages\": $INPUT
   }"
 
-curl -s https://api.openai.com/v1/responses \\
-  -H "Content-Type: application/json" \\
-  -H "Authorization: Bearer $OPENAI_API_KEY" \\
+curl -s https://api.openai.com/v1/responses \
+  -H "Content-Type: application/json" \
+  -H "Authorization: Bearer $OPENAI_API_KEY" \
   -d "{
-    \\"model\\": \\"gpt-5.5\\",
-    \\"input\\": $INPUT
+    \"model\": \"gpt-5.5\",
+    \"input\": $INPUT
   }"
 ```
 
@@ -189,9 +180,9 @@ print(completion.choices[0].message.content)
 ```
 
 ```bash
-curl https://api.openai.com/v1/chat/completions \\
-  -H "Content-Type: application/json" \\
-  -H "Authorization: Bearer $OPENAI_API_KEY" \\
+curl https://api.openai.com/v1/chat/completions \
+  -H "Content-Type: application/json" \
+  -H "Authorization: Bearer $OPENAI_API_KEY" \
   -d '{
       "model": "gpt-5.5",
       "messages": [
@@ -235,9 +226,9 @@ print(response.output_text)
 ```
 
 ```bash
-curl https://api.openai.com/v1/responses \\
-  -H "Content-Type: application/json" \\
-  -H "Authorization: Bearer $OPENAI_API_KEY" \\
+curl https://api.openai.com/v1/responses \
+  -H "Content-Type: application/json" \
+  -H "Authorization: Bearer $OPENAI_API_KEY" \
   -d '{
       "model": "gpt-5.5",
       "instructions": "You are a helpful assistant.",
@@ -447,9 +438,9 @@ In the Responses API, Structured Outputs definitions have moved from `response_f
     Structured Outputs
 
 ```bash
-curl https://api.openai.com/v1/chat/completions \\
-  -H "Content-Type: application/json" \\
-  -H "Authorization: Bearer $OPENAI_API_KEY" \\
+curl https://api.openai.com/v1/chat/completions \
+  -H "Content-Type: application/json" \
+  -H "Authorization: Bearer $OPENAI_API_KEY" \
   -d '{
   "model": "gpt-5.5",
   "messages": [
@@ -575,9 +566,9 @@ const completion = await openai.chat.completions.create({
     Structured Outputs
 
 ```bash
-curl https://api.openai.com/v1/responses \\
-  -H "Content-Type: application/json" \\
-  -H "Authorization: Bearer $OPENAI_API_KEY" \\
+curl https://api.openai.com/v1/responses \
+  -H "Content-Type: application/json" \
+  -H "Authorization: Bearer $OPENAI_API_KEY" \
   -d '{
   "model": "gpt-5.5",
   "input": "Jane, 54 years old",
@@ -708,7 +699,7 @@ If your application has use cases that would benefit from OpenAI's native [tools
 ```javascript
 async function web_search(query) {
   const fetch = (await import('node-fetch')).default;
-  const res = await fetch(\`https://api.example.com/search?q=\${query}\`);
+  const res = await fetch(`https://api.example.com/search?q=${query}`);
   const data = await res.json();
   return data.results;
 }
@@ -761,9 +752,9 @@ completion = client.chat.completions.create(
 ```
 
 ```bash
-curl https://api.example.com/search \\
-  -G \\
-  --data-urlencode "q=your+search+term" \\
+curl https://api.example.com/search \
+  -G \
+  --data-urlencode "q=your+search+term" \
   --data-urlencode "key=$SEARCH_API_KEY"\
 ```
 
@@ -794,9 +785,9 @@ print(answer.output_text)
 ```
 
 ```bash
-curl https://api.openai.com/v1/responses \\
-  -H "Content-Type: application/json" \\
-  -H "Authorization: Bearer $OPENAI_API_KEY" \\
+curl https://api.openai.com/v1/responses \
+  -H "Content-Type: application/json" \
+  -H "Authorization: Bearer $OPENAI_API_KEY" \
   -d '{
     "model": "gpt-5.5",
     "input": "Who is the current president of France?",

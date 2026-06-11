@@ -242,10 +242,10 @@ workspace sharing when you want selected teammates to install a plugin from the
 Codex app.
 
 Workspace admins can disable plugin sharing from cloud-managed requirements by
-adding `plugin_sharing = false` to `requirements.toml`:
+adding `features.plugin_sharing = false` to `requirements.toml`:
 
 ```toml
-plugin_sharing = false
+features.plugin_sharing = false
 ```
 
 ### Marketplace metadata

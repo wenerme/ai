@@ -34,14 +34,14 @@ const getWeather = tool({
   description: "Return the weather for a given city.",
   parameters: z.object({ city: z.string() }),
   async execute({ city }) {
-    return \`The weather in \${city} is sunny.\`;
+    return `The weather in ${city} is sunny.`;
   },
 });
 
 const agent = new Agent({
   name: "Weather bot",
   instructions: "You are a helpful weather bot.",
-  model: "${latestMainlineModelSlug}",
+  model: "gpt-5.5",
   tools: [getWeather],
 });
 ```
@@ -59,7 +59,7 @@ def get_weather(city: str) -> str:
 agent = Agent(
     name="Weather bot",
     instructions="You are a helpful weather bot.",
-    model="${latestMainlineModelSlug}",
+    model="gpt-5.5",
     tools=[get_weather],
 )
 ```
@@ -155,7 +155,7 @@ const fetchUserAge = tool({
   description: "Return the age of the current user.",
   parameters: z.object({}),
   async execute(_args, runContext?: RunContext<UserInfo>) {
-    return \`User \${runContext?.context.name} is 47 years old\`;
+    return `User ${runContext?.context.name} is 47 years old`;
   },
 });
 

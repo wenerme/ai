@@ -60,24 +60,24 @@ with client.audio.speech.with_streaming_response.create(
 ```
 
 ```bash
-curl https://api.openai.com/v1/audio/speech \\
-  -H "Authorization: Bearer $OPENAI_API_KEY" \\
-  -H "Content-Type: application/json" \\
+curl https://api.openai.com/v1/audio/speech \
+  -H "Authorization: Bearer $OPENAI_API_KEY" \
+  -H "Content-Type: application/json" \
   -d '{
     "model": "gpt-4o-mini-tts",
     "input": "Today is a wonderful day to build something people love!",
     "voice": "coral",
     "instructions": "Speak in a cheerful and positive tone."
-  }' \\
+  }' \
   --output speech.mp3
 ```
 
 ```cli
-openai audio:speech create \\
-  --model gpt-4o-mini-tts \\
-  --voice coral \\
-  --instructions "Speak in a cheerful and positive tone." \\
-  --input "Today is a wonderful day to build something people love!" \\
+openai audio:speech create \
+  --model gpt-4o-mini-tts \
+  --voice coral \
+  --instructions "Speak in a cheerful and positive tone." \
+  --input "Today is a wonderful day to build something people love!" \
   --output speech.mp3
 ```
 
@@ -168,9 +168,9 @@ if __name__ == "__main__":
 ```
 
 ```bash
-curl https://api.openai.com/v1/audio/speech \\
-  -H "Authorization: Bearer $OPENAI_API_KEY" \\
-  -H "Content-Type: application/json" \\
+curl https://api.openai.com/v1/audio/speech \
+  -H "Authorization: Bearer $OPENAI_API_KEY" \
+  -H "Content-Type: application/json" \
   -d '{
     "model": "gpt-4o-mini-tts",
     "input": "Today is a wonderful day to build something people love!",

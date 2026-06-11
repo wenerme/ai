@@ -1568,7 +1568,7 @@ deployments, use `allowed_permission_profiles` with managed
         "When `true`, Codex skips user, project, session, and plugin hooks while still allowing managed hooks from `requirements.toml` and other managed config layers.",
     },
     {
-      key: "plugin_sharing",
+      key: "features.plugin_sharing",
       type: "boolean",
       description:
         "Set to `false` in cloud-managed `requirements.toml` to disable workspace sharing for locally built plugins.",

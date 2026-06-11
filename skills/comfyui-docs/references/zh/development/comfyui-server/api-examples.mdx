@@ -17,7 +17,7 @@ translationFrom: development/comfyui-server/api-examples.mdx
 
 源码：[`basic_api_example.py`](https://github.com/Comfy-Org/ComfyUI/blob/master/script_examples/basic_api_example.py)
 
-最简单的方式：提交工作流，不等待结果。适用于不需要即时输出的场景。
+最简单的方式：提交工作流，不等待结果。适用于提交后稍后检查输出的场景。
 
 ```python
 """basic_api_example.py — 仅通过 HTTP 提交工作流。"""
@@ -163,16 +163,29 @@ def get_images(ws, prompt):
     return output_images
 
 if __name__ == "__main__":
-    # 此处省略完整工作流 JSON，请参考方法一的示例
-    # prompt = json.loads(prompt_text)
-    # prompt["3"]["inputs"]["seed"] = 5
-    # prompt["6"]["inputs"]["text"] = "masterpiece best quality man"
+    prompt_text = """{
+        "3": { ... }, "4": { ... }, "5": { ... },
+        "6": { ... }, "7": { ... }, "8": { ... },
+        "9": { "class_type": "SaveImage", "inputs": { ... } }
+    }"""
+    prompt = json.loads(prompt_text)
+    prompt["3"]["inputs"]["seed"] = 5
+    prompt["6"]["inputs"]["text"] = "masterpiece best quality man"
 
-    # ws = websocket.WebSocket()
-    # ws.connect(f"ws://{SERVER_ADDRESS}/ws?clientId={client_id}")
-    # images = get_images(ws, prompt)
-    # ws.close()
-    pass
+    ws = websocket.WebSocket()
+    ws.connect(f"ws://{SERVER_ADDRESS}/ws?clientId={client_id}")
+    images = get_images(ws, prompt)
+    ws.close()
+
+    print(f"Got {len(images)} output node(s) with images.")
+
+    # 显示图片（需要 Pillow）：
+    # for node_id in images:
+    #     for image_data in images[node_id]:
+    #         from PIL import Image
+    #         import io
+    #         img = Image.open(io.BytesIO(image_data))
+    #         img.show()
 ```
 
   WebSocket 二进制帧中的生成过程预览图片可以解码用于实时预览（二进制格式参见[服务器消息](/zh/development/comfyui-server/comms_messages)页面）。
@@ -231,14 +244,30 @@ def get_images(ws, prompt):
     return output_images
 
 if __name__ == "__main__":
-    # prompt = json.loads(prompt_text)
-    # prompt["3"]["inputs"]["seed"] = 5
+    prompt_text = """{
+        "3": { "class_type": "KSampler", "inputs": { ... } },
+        ...
+        "save_image_websocket_node": {
+            "class_type": "SaveImageWebsocket",
+            "inputs": {"images": ["8", 0]}
+        }
+    }"""
+    prompt = json.loads(prompt_text)
+    prompt["3"]["inputs"]["seed"] = 5
 
-    # ws = websocket.WebSocket()
-    # ws.connect(f"ws://{SERVER_ADDRESS}/ws?clientId={client_id}")
-    # images = get_images(ws, prompt)
-    # ws.close()
-    pass
+    ws = websocket.WebSocket()
+    ws.connect(f"ws://{SERVER_ADDRESS}/ws?clientId={client_id}")
+    images = get_images(ws, prompt)
+    ws.close()
+
+    print(f"Received {len(images)} image(s) via WebSocket.")
+
+    # 显示（需要 Pillow）：
+    # for image_data in images.get("save_image_websocket_node", []):
+    #     from PIL import Image
+    #     import io
+    #     img = Image.open(io.BytesIO(image_data))
+    #     img.show()
 ```
 
   工作流必须使用 `class_type: "SaveImageWebsocket"`（内置节点）代替普通的 `SaveImage` 节点。
@@ -248,7 +277,7 @@ if __name__ == "__main__":
 ## 应该用哪种方法？
 
   
-    **发送即忘。** 适用于不需要立即获取输出的场景。
+    **发送即忘。** 适用于不需要立即获取输出，或稍后检查结果即可的场景。
   
   
     **推荐。** 等待完成，然后下载结果。简单性和可靠性之间最佳平衡。

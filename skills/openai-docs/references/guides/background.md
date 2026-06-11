@@ -1,6 +1,6 @@
 # Background mode
 
-Agents like [Codex](https://openai.com/index/introducing-codex/) and [Deep Research](https://openai.com/index/introducing-deep-research/) show that reasoning models can take several minutes to solve complex problems. Background mode enables you to execute long-running tasks on models like GPT-5.2 and GPT-5.2 pro reliably, without having to worry about timeouts or other connectivity issues.
+Agents like [Codex](https://openai.com/index/introducing-codex/) and [Deep Research](https://openai.com/index/introducing-deep-research/) show that reasoning models can take several minutes to solve complex problems. Background mode enables you to execute long-running tasks on models like GPT-5.2 and GPT-5.2 Pro reliably, without having to worry about timeouts or other connectivity issues.
 
 Background mode kicks off these tasks asynchronously, and developers can poll response objects to check status over time. To start response generation in the background, make an API request with `background` set to `true`:
 
@@ -13,11 +13,11 @@ Because background mode stores response data for roughly 10 minutes to enable
 Generate a response in the background
 
 ```bash
-curl https://api.openai.com/v1/responses \\
--H "Content-Type: application/json" \\
--H "Authorization: Bearer $OPENAI_API_KEY" \\
+curl https://api.openai.com/v1/responses \
+-H "Content-Type: application/json" \
+-H "Authorization: Bearer $OPENAI_API_KEY" \
 -d '{
-  "model": "gpt-5.4",
+  "model": "gpt-5.5",
   "input": "Write a very long novel about otters in space.",
   "background": true
 }'
@@ -28,7 +28,7 @@ import OpenAI from "openai";
 const client = new OpenAI();
 
 const resp = await client.responses.create({
-  model: "gpt-5.4",
+  model: "gpt-5.5",
   input: "Write a very long novel about otters in space.",
   background: true,
 });
@@ -42,7 +42,7 @@ from openai import OpenAI
 client = OpenAI()
 
 resp = client.responses.create(
-  model="gpt-5.4",
+  model="gpt-5.5",
   input="Write a very long novel about otters in space.",
   background=True,
 )
@@ -58,8 +58,8 @@ To check the status of background requests, use the GET endpoint for Responses. 
 Retrieve a response executing in the background
 
 ```bash
-curl https://api.openai.com/v1/responses/resp_123 \\
-  -H "Content-Type: application/json" \\
+curl https://api.openai.com/v1/responses/resp_123 \
+  -H "Content-Type: application/json" \
   -H "Authorization: Bearer $OPENAI_API_KEY"
 ```
 
@@ -68,7 +68,7 @@ import OpenAI from "openai";
 const client = new OpenAI();
 
 let resp = await client.responses.create({
-model: "gpt-5.4",
+model: "gpt-5.5",
 input: "Write a very long novel about otters in space.",
 background: true,
 });
@@ -79,7 +79,7 @@ await new Promise(resolve => setTimeout(resolve, 2000)); // wait 2 seconds
 resp = await client.responses.retrieve(resp.id);
 }
 
-console.log("Final status: " + resp.status + "\\nOutput:\\n" + resp.output_text);
+console.log("Final status: " + resp.status + "\nOutput:\n" + resp.output_text);
 ```
 
 ```python
@@ -89,7 +89,7 @@ from time import sleep
 client = OpenAI()
 
 resp = client.responses.create(
-  model="gpt-5.4",
+  model="gpt-5.5",
   input="Write a very long novel about otters in space.",
   background=True,
 )
@@ -99,7 +99,7 @@ while resp.status in {"queued", "in_progress"}:
   sleep(2)
   resp = client.responses.retrieve(resp.id)
 
-print(f"Final status: {resp.status}\\nOutput:\\n{resp.output_text}")
+print(f"Final status: {resp.status}\nOutput:\n{resp.output_text}")
 ```
 
 
@@ -110,8 +110,8 @@ You can also cancel an in-flight response like this:
 Cancel an ongoing response
 
 ```bash
-curl -X POST https://api.openai.com/v1/responses/resp_123/cancel \\
-  -H "Content-Type: application/json" \\
+curl -X POST https://api.openai.com/v1/responses/resp_123/cancel \
+  -H "Content-Type: application/json" \
   -H "Authorization: Bearer $OPENAI_API_KEY"
 ```
 
@@ -147,19 +147,19 @@ Currently, the time to first token you receive from a background response is
 Generate and stream a background response
 
 ```bash
-curl https://api.openai.com/v1/responses \\
--H "Content-Type: application/json" \\
--H "Authorization: Bearer $OPENAI_API_KEY" \\
+curl https://api.openai.com/v1/responses \
+-H "Content-Type: application/json" \
+-H "Authorization: Bearer $OPENAI_API_KEY" \
 -d '{
-  "model": "gpt-5.4",
+  "model": "gpt-5.5",
   "input": "Write a very long novel about otters in space.",
   "background": true,
   "stream": true
 }'
 
 // To resume:
-curl "https://api.openai.com/v1/responses/resp_123?stream=true&starting_after=42" \\
--H "Content-Type: application/json" \\
+curl "https://api.openai.com/v1/responses/resp_123?stream=true&starting_after=42" \
+-H "Content-Type: application/json" \
 -H "Authorization: Bearer $OPENAI_API_KEY"
 ```
 
@@ -168,7 +168,7 @@ import OpenAI from "openai";
 const client = new OpenAI();
 
 const stream = await client.responses.create({
-  model: "gpt-5.4",
+  model: "gpt-5.5",
   input: "Write a very long novel about otters in space.",
   background: true,
   stream: true,
@@ -192,7 +192,7 @@ client = OpenAI()
 
 # Fire off an async response but also start streaming immediately
 stream = client.responses.create(
-  model="gpt-5.4",
+  model="gpt-5.5",
   input="Write a very long novel about otters in space.",
   background=True,
   stream=True,

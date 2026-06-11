@@ -28,7 +28,7 @@ To create a realtime API session via the unified interface, you will need to bui
 Below is an example of a simple Node.js [express](https://expressjs.com/) server which creates a realtime API session:
 
 ```javascript
-
+import express from "express";
 
 const app = express();
 
@@ -67,6 +67,7 @@ app.post("/session", async (req, res) => {
 
 app.listen(3000);
 ```
+
 
 If your application assigns a [safety identifier](https://developers.openai.com/api/docs/guides/safety-best-practices#implement-safety-identifiers)
 for each end user, include it as the `OpenAI-Safety-Identifier` header in this
@@ -132,7 +133,7 @@ To create an ephemeral token to use on the client-side, you will need to build a
 Below is an example of a simple Node.js [express](https://expressjs.com/) server which mints an ephemeral API key using the REST API:
 
 ```javascript
-
+import express from "express";
 
 const app = express();
 
@@ -175,6 +176,7 @@ app.get("/token", async (req, res) => {
 
 app.listen(3000);
 ```
+
 
 You can create a server endpoint like this one on any platform that can send and receive HTTP requests. Just ensure that **you only use standard OpenAI API keys on the server, not in the browser.**
 

@@ -1,13 +1,5 @@
 # Code Interpreter
 
-import {
-  CheckCircleFilled,
-  XCircle,
-} from "@components/react/oai/platform/ui/Icon.react";
-
-
-
-
 The Code Interpreter tool allows models to write and run Python code in a sandboxed environment to solve complex problems in domains like data analysis, coding, and math. Use it for:
 
 - Processing files with diverse data and formatting
@@ -20,11 +12,11 @@ Here's an example of calling the [Responses API](https://developers.openai.com/a
 Use the Responses API with Code Interpreter
 
 ```bash
-curl https://api.openai.com/v1/responses \\
-  -H "Content-Type: application/json" \\
-  -H "Authorization: Bearer $OPENAI_API_KEY" \\
+curl https://api.openai.com/v1/responses \
+  -H "Content-Type: application/json" \
+  -H "Authorization: Bearer $OPENAI_API_KEY" \
   -d '{
-    "model": "gpt-4.1",
+    "model": "gpt-5.5",
     "tools": [{
       "type": "code_interpreter",
       "container": { "type": "auto", "memory_limit": "4g" }
@@ -38,13 +30,13 @@ curl https://api.openai.com/v1/responses \\
 import OpenAI from "openai";
 const client = new OpenAI();
 
-const instructions = \`
+const instructions = `
 You are a personal math tutor. When asked a math question,
 write and run code using the python tool to answer the question.
-\`;
+`;
 
 const resp = await client.responses.create({
-  model: "gpt-4.1",
+  model: "gpt-5.5",
   tools: [
     {
       type: "code_interpreter",
@@ -69,7 +61,7 @@ write and run code using the python tool to answer the question.
 """
 
 resp = client.responses.create(
-    model="gpt-4.1",
+    model="gpt-5.5",
     tools=[
         {
             "type": "code_interpreter",
@@ -101,20 +93,20 @@ There are two ways to create containers:
 Use explicit container creation
 
 ```bash
-curl https://api.openai.com/v1/containers \\
-  -H "Authorization: Bearer $OPENAI_API_KEY" \\
-  -H "Content-Type: application/json" \\
+curl https://api.openai.com/v1/containers \
+  -H "Authorization: Bearer $OPENAI_API_KEY" \
+  -H "Content-Type: application/json" \
   -d '{
         "name": "My Container",
         "memory_limit": "4g"
       }'
 
 # Use the returned container id in the next call:
-curl https://api.openai.com/v1/responses \\
-  -H "Authorization: Bearer $OPENAI_API_KEY" \\
-  -H "Content-Type: application/json" \\
+curl https://api.openai.com/v1/responses \
+  -H "Authorization: Bearer $OPENAI_API_KEY" \
+  -H "Content-Type: application/json" \
   -d '{
-    "model": "gpt-4.1",
+    "model": "gpt-5.5",
     "tools": [{
       "type": "code_interpreter",
       "container": "cntr_abc123"
@@ -131,7 +123,7 @@ client = OpenAI()
 container = client.containers.create(name="test-container", memory_limit="4g")
 
 response = client.responses.create(
-    model="gpt-4.1",
+    model="gpt-5.5",
     tools=[{
         "type": "code_interpreter",
         "container": container.id
@@ -150,7 +142,7 @@ const client = new OpenAI();
 const container = await client.containers.create({ name: "test-container", memory_limit: "4g" });
 
 const resp = await client.responses.create({
-    model: "gpt-4.1",
+    model: "gpt-5.5",
     tools: [
       {
         type: "code_interpreter",

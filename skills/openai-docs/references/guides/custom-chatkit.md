@@ -66,6 +66,7 @@ class MyChatKitServer(ChatKitServer):
         raise NotImplementedError()
 ```
 
+
 ### 3. Expose the endpoint
 
 Use your framework of choice to forward HTTP requests to the server instance. For
@@ -120,6 +121,7 @@ assistant_agent = Agent[AgentContext](
     tool_use_behavior=StopAtTools(stop_at_tool_names=[add_to_todo_list.name]),
 )
 ```
+
 
 ### 7. Use thread metadata and state
 

@@ -153,7 +153,7 @@ with open("./my-image.png", "wb") as file:
   `.trim(),
   "node.js": `
 
-
+import OpenAI from "openai";\n
 const openai = new OpenAI();\n
 async function main() {
   const response = await openai.files.content("file-abc123");\n

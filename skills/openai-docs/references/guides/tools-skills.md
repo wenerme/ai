@@ -12,6 +12,18 @@ A skill is a versioned bundle of files plus a `SKILL.md` manifest (front matter 
 
 Skills are compatible with the open [Agent Skills standard](https://agentskills.io/home).
 
+Example SKILL.md
+
+```markdown
+---
+name: basic-math
+description: Add or multiply numbers.
+---
+
+Use this skill when you need a quick sum or product of numbers.
+```
+
+
 ## Create a skill
 
 You can upload a directory as multipart form data or upload a `.zip` that contains a single top-level folder.
@@ -20,9 +32,28 @@ You can upload a directory as multipart form data or upload a `.zip` that contai
 
 Upload multiple `files[]` parts. Each part includes the path inside a single top-level folder.
 
+Create a skill (multipart)
+
+```bash
+curl -X POST 'https://api.openai.com/v1/skills' \
+  -H "Authorization: Bearer $OPENAI_API_KEY" \
+  -F 'files[]=@./basic_math/SKILL.md;filename=basic_math/SKILL.md;type=text/markdown' \
+  -F 'files[]=@./basic_math/calculate.py;filename=basic_math/calculate.py;type=text/plain'
+```
+
+
 ### Option 2: Zip upload
 
 Zip the top-level folder and upload the zip file.
+
+Create a skill (zip)
+
+```bash
+curl -X POST 'https://api.openai.com/v1/skills' \
+  -H "Authorization: Bearer $OPENAI_API_KEY" \
+  -F 'files=@./basic_math.zip;type=application/zip'
+```
+
 
 ## Use skills with hosted shell
 
@@ -36,7 +67,7 @@ import OpenAI from "openai";
 const client = new OpenAI();
 
 const response = await client.responses.create({
-  model: "gpt-5.4",
+  model: "gpt-5.5",
   tools: [
     {
       type: "shell",
@@ -61,7 +92,7 @@ from openai import OpenAI
 client = OpenAI()
 
 response = client.responses.create(
-    model="gpt-5.4",
+    model="gpt-5.5",
     tools=[
         {
             "type": "shell",
@@ -102,7 +133,7 @@ import OpenAI from "openai";
 const client = new OpenAI();
 
 const response = await client.responses.create({
-  model: "gpt-5.4",
+  model: "gpt-5.5",
   tools: [
     {
       type: "shell",
@@ -130,7 +161,7 @@ from openai import OpenAI
 client = OpenAI()
 
 response = client.responses.create(
-    model="gpt-5.4",
+    model="gpt-5.5",
     tools=[
         {
             "type": "shell",
@@ -187,7 +218,26 @@ It is very important to inspect any Skill used with the Responses API. Skills
 
 ### Create a new version
 
+Create a new skill version
+
+```bash
+curl -X POST 'https://api.openai.com/v1/skills/<skill_id>/versions' \
+  -H "Authorization: Bearer $OPENAI_API_KEY" \
+  -F 'files=@./geometry.zip;type=application/zip'
+```
+
+
 ### Set default version
+
+Set a skill's default version
+
+```bash
+curl -X POST 'https://api.openai.com/v1/skills/<skill_id>' \
+  -H "Content-Type: application/json" \
+  -H "Authorization: Bearer $OPENAI_API_KEY" \
+  -d '{"default_version": 2}'
+```
+
 
 ### Delete rules
 
@@ -199,9 +249,42 @@ It is very important to inspect any Skill used with the Responses API. Skills
 
 OpenAI maintains a set of first-party skills that can be referenced by id (for example, `openai-spreadsheets`).
 
+Reference a curated skill
+
+```json
+{ "type": "skill_reference", "skill_id": "openai-spreadsheets", "version": "latest" }
+```
+
+
 ## Inline skills
 
 If you don't want to create a hosted skill, you can inline a zip bundle (base64) in the environment's `skills` array.
+
+Inline a skill bundle
+
+```bash
+INLINE_ZIP=$(base64 -i ./basic_math.zip)
+
+curl -L 'https://api.openai.com/v1/containers' \
+  -H "Content-Type: application/json" \
+  -H "Authorization: Bearer $OPENAI_API_KEY" \
+  -d '{
+    "name": "inline-skill-container",
+    "skills": [
+      {
+        "type": "inline",
+        "name": "basic_math",
+        "description": "Add or multiply numbers.",
+        "source": {
+          "type": "base64",
+          "media_type": "application/zip",
+          "data": "'"$INLINE_ZIP"'"
+        }
+      }
+    ]
+  }'
+```
+
 
 ## Risks and safety
 

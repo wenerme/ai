@@ -279,22 +279,22 @@ const manifest = new Manifest({
   entries: {
     "account_brief.md": file({
       content:
-        "# Northwind Health\\n\\n" +
-        "- Segment: Mid-market healthcare analytics provider.\\n" +
-        "- Renewal date: 2026-04-15.\\n",
+        "# Northwind Health\n\n" +
+        "- Segment: Mid-market healthcare analytics provider.\n" +
+        "- Renewal date: 2026-04-15.\n",
     }),
     "implementation_risks.md": file({
       content:
-        "# Delivery risks\\n\\n" +
-        "- Security questionnaire is not complete.\\n" +
-        "- Procurement requires final legal language by April 1.\\n",
+        "# Delivery risks\n\n" +
+        "- Security questionnaire is not complete.\n" +
+        "- Procurement requires final legal language by April 1.\n",
     }),
   },
 });
 
 const agent = new SandboxAgent({
   name: "Renewal Packet Analyst",
-  model: "${latestMainlineModelSlug}",
+  model: "gpt-5.5",
   instructions:
     "Review the workspace before answering. Keep the response concise, " +
     "business-focused, and cite the file names that support each conclusion.",
@@ -329,16 +329,16 @@ manifest = Manifest(
     entries={
         "account_brief.md": File(
             content=(
-                b"# Northwind Health\\n\\n"
-                b"- Segment: Mid-market healthcare analytics provider.\\n"
-                b"- Renewal date: 2026-04-15.\\n"
+                b"# Northwind Health\n\n"
+                b"- Segment: Mid-market healthcare analytics provider.\n"
+                b"- Renewal date: 2026-04-15.\n"
             )
         ),
         "implementation_risks.md": File(
             content=(
-                b"# Delivery risks\\n\\n"
-                b"- Security questionnaire is not complete.\\n"
-                b"- Procurement requires final legal language by April 1.\\n"
+                b"# Delivery risks\n\n"
+                b"- Security questionnaire is not complete.\n"
+                b"- Procurement requires final legal language by April 1.\n"
             )
         ),
     }
@@ -346,7 +346,7 @@ manifest = Manifest(
 
 agent = SandboxAgent(
     name="Renewal Packet Analyst",
-    model="${latestMainlineModelSlug}",
+    model="gpt-5.5",
     instructions=(
         "Review the workspace before answering. Keep the response concise, "
         "business-focused, and cite the file names that support each conclusion."
@@ -392,7 +392,7 @@ import { DockerSandboxClient } from "@openai/agents/sandbox/local";
 
 const agent = new SandboxAgent({
   name: "Workspace reviewer",
-  model: "${latestMainlineModelSlug}",
+  model: "gpt-5.5",
   instructions: "Inspect the sandbox workspace before answering.",
 });
 
@@ -487,7 +487,7 @@ const client = new UnixLocalSandboxClient({
 });
 const agent = new SandboxAgent({
   name: "Workspace builder",
-  model: "${latestMainlineModelSlug}",
+  model: "gpt-5.5",
   instructions: "Inspect the sandbox workspace before answering.",
 });
 

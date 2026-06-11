@@ -1,13 +1,5 @@
 # Theming and customization in ChatKit
 
-import {
-  Inpaint,
-  Globe,
-  Playground,
-  Github,
-  Sparkles,
-} from "@components/react/oai/platform/ui/Icon.react";
-
 After following the [ChatKit quickstart](https://developers.openai.com/api/docs/guides/chatkit), learn how to change themes and add customization to your chat embed. Match your app’s aesthetic with light and dark themes, setting an accent color, controlling the density, and rounded corners.
 
 ## Overview

@@ -1,13 +1,5 @@
 # Assistants API tools
 
-import {
-  Code,
-  File,
-  Plugin,
-} from "@components/react/oai/platform/ui/Icon.react";
-
-
-
 ## Overview
 
 Assistants created using the Assistants API can be equipped with tools that allow them to perform more complex tasks or interact with your application.

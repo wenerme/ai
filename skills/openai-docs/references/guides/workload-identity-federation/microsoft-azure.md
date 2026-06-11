@@ -1,10 +1,5 @@
 # Configuring workload identity federation for Microsoft Azure
 
-import {
-  azureAksWorkloadIdentitySdk,
-  azureManagedIdentityWorkloadIdentitySdk,
-} from "./examples";
-
 Use Microsoft Azure as a Workload Identity Provider in either of these scenarios:
 
 - **Azure managed identity:** Exchange a Microsoft Entra ID access token issued for a managed identity for a short-lived OpenAI access token.

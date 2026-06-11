@@ -72,10 +72,10 @@ import OpenAI from "openai";
 import fs from "fs";
 const openai = new OpenAI();
 
-const prompt = \`
+const prompt = `
 A children's book drawing of a veterinarian using a stethoscope to 
 listen to the heartbeat of a baby otter.
-\`;
+`;
 
 const result = await openai.images.generate({
     model: "gpt-image-2",
@@ -112,20 +112,20 @@ with open("otter.png", "wb") as f:
 ```
 
 ```bash
-curl -X POST "https://api.openai.com/v1/images/generations" \\
-    -H "Authorization: Bearer $OPENAI_API_KEY" \\
-    -H "Content-type: application/json" \\
+curl -X POST "https://api.openai.com/v1/images/generations" \
+    -H "Authorization: Bearer $OPENAI_API_KEY" \
+    -H "Content-type: application/json" \
     -d '{
         "model": "gpt-image-2",
-        "prompt": "A children'\\''s book drawing of a veterinarian using a stethoscope to listen to the heartbeat of a baby otter."
+        "prompt": "A children'\''s book drawing of a veterinarian using a stethoscope to listen to the heartbeat of a baby otter."
     }' | jq -r '.data[0].b64_json' | base64 --decode > otter.png
 ```
 
 ```cli
-openai images generate \\
-  --model gpt-image-2 \\
-  --prompt "A children's book drawing of a veterinarian using a stethoscope to listen to the heartbeat of a baby otter." \\
-  --raw-output \\
+openai images generate \
+  --model gpt-image-2 \
+  --prompt "A children's book drawing of a veterinarian using a stethoscope to listen to the heartbeat of a baby otter." \
+  --raw-output \
   --transform 'data.0.b64_json' | base64 --decode > otter.png
 ```
 
@@ -531,7 +531,7 @@ const stream = await openai.responses.create({
 for await (const event of stream) {
   if (event.type === "response.image_generation_call.partial_image") {
     const idx = event.partial_image_index;
-    saveBase64Image(\`river-partial-\${idx}.png\`, event.partial_image_b64);
+    saveBase64Image(`river-partial-${idx}.png`, event.partial_image_b64);
   } else if (event.type === "response.completed") {
     const imageData = event.response.output
       .filter((output) => output.type === "image_generation_call")
@@ -602,7 +602,7 @@ for await (const event of stream) {
     const idx = event.partial_image_index;
     const imageBase64 = event.b64_json;
     const imageBuffer = Buffer.from(imageBase64, "base64");
-    fs.writeFileSync(\`river\${idx}.png\`, imageBuffer);
+    fs.writeFileSync(`river${idx}.png`, imageBuffer);
   }
 }
 ```
@@ -724,11 +724,11 @@ import OpenAI, { toFile } from "openai";
 
 const client = new OpenAI();
 
-const prompt = \`
+const prompt = `
 Generate a photorealistic image of a gift basket on a white background 
 labeled 'Relax & Unwind' with a ribbon and handwriting-like font, 
 containing all the items in the reference pictures.
-\`;
+`;
 
 const imageFiles = [
     "bath-bomb.png",
@@ -758,27 +758,27 @@ fs.writeFileSync("basket.png", image_bytes);
 ```
 
 ```bash
-curl -s -D >(grep -i x-request-id >&2) \\
-  -o >(jq -r '.data[0].b64_json' | base64 --decode > gift-basket.png) \\
-  -X POST "https://api.openai.com/v1/images/edits" \\
-  -H "Authorization: Bearer $OPENAI_API_KEY" \\
-  -F "model=gpt-image-2" \\
-  -F "image[]=@body-lotion.png" \\
-  -F "image[]=@bath-bomb.png" \\
-  -F "image[]=@incense-kit.png" \\
-  -F "image[]=@soap.png" \\
+curl -s -D >(grep -i x-request-id >&2) \
+  -o >(jq -r '.data[0].b64_json' | base64 --decode > gift-basket.png) \
+  -X POST "https://api.openai.com/v1/images/edits" \
+  -H "Authorization: Bearer $OPENAI_API_KEY" \
+  -F "model=gpt-image-2" \
+  -F "image[]=@body-lotion.png" \
+  -F "image[]=@bath-bomb.png" \
+  -F "image[]=@incense-kit.png" \
+  -F "image[]=@soap.png" \
   -F 'prompt=Generate a photorealistic image of a gift basket on a white background labeled "Relax & Unwind" with a ribbon and handwriting-like font, containing all the items in the reference pictures'
 ```
 
 ```cli
-openai images edit \\
-  --model gpt-image-2 \\
-  --image body-lotion.png \\
-  --image bath-bomb.png \\
-  --image incense-kit.png \\
-  --image soap.png \\
-  --prompt 'Generate a photorealistic image of a gift basket on a white background labeled "Relax & Unwind" with a ribbon and handwriting-like font, containing all the items in the reference pictures' \\
-  --raw-output \\
+openai images edit \
+  --model gpt-image-2 \
+  --image body-lotion.png \
+  --image bath-bomb.png \
+  --image incense-kit.png \
+  --image soap.png \
+  --prompt 'Generate a photorealistic image of a gift basket on a white background labeled "Relax & Unwind" with a ribbon and handwriting-like font, containing all the items in the reference pictures' \
+  --raw-output \
   --transform 'data.0.b64_json' | base64 --decode > gift-basket.png
 ```
 
@@ -962,23 +962,23 @@ fs.writeFileSync("lounge.png", image_bytes);
 ```
 
 ```bash
-curl -s -D >(grep -i x-request-id >&2) \\
-  -o >(jq -r '.data[0].b64_json' | base64 --decode > lounge.png) \\
-  -X POST "https://api.openai.com/v1/images/edits" \\
-  -H "Authorization: Bearer $OPENAI_API_KEY" \\
-  -F "model=gpt-image-2" \\
-  -F "mask=@mask.png" \\
-  -F "image[]=@sunlit_lounge.png" \\
+curl -s -D >(grep -i x-request-id >&2) \
+  -o >(jq -r '.data[0].b64_json' | base64 --decode > lounge.png) \
+  -X POST "https://api.openai.com/v1/images/edits" \
+  -H "Authorization: Bearer $OPENAI_API_KEY" \
+  -F "model=gpt-image-2" \
+  -F "mask=@mask.png" \
+  -F "image[]=@sunlit_lounge.png" \
   -F 'prompt=A sunlit indoor lounge area with a pool containing a flamingo'
 ```
 
 ```cli
-openai images edit \\
-  --model gpt-image-2 \\
-  --image sunlit_lounge.png \\
-  --mask mask.png \\
-  --prompt "A sunlit indoor lounge area with a pool containing a flamingo" \\
-  --raw-output \\
+openai images edit \
+  --model gpt-image-2 \
+  --image sunlit_lounge.png \
+  --mask mask.png \
+  --prompt "A sunlit indoor lounge area with a pool containing a flamingo" \
+  --raw-output \
   --transform 'data.0.b64_json' | base64 --decode > out.png
 ```
 

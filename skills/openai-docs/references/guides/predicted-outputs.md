@@ -27,7 +27,7 @@ Refactor a TypeScript class with a Predicted Output
 ```javascript
 import OpenAI from "openai";
 
-const code = \`
+const code = `
 class User {
   firstName: string = "";
   lastName: string = "";
@@ -35,14 +35,14 @@ class User {
 }
 
 export default User;
-\`.trim();
+`.trim();
 
 const openai = new OpenAI();
 
-const refactorPrompt = \`
+const refactorPrompt = `
 Replace the "username" property with an "email" property. Respond only 
 with code, and with no markdown formatting.
-\`;
+`;
 
 const completion = await openai.chat.completions.create({
   model: "gpt-4.1",
@@ -111,9 +111,9 @@ print(completion.choices[0].message.content)
 ```
 
 ```bash
-curl https://api.openai.com/v1/chat/completions \\
-  -H "Content-Type: application/json" \\
-  -H "Authorization: Bearer $OPENAI_API_KEY" \\
+curl https://api.openai.com/v1/chat/completions \
+  -H "Content-Type: application/json" \
+  -H "Authorization: Bearer $OPENAI_API_KEY" \
   -d '{
     "model": "gpt-4.1",
     "messages": [
@@ -174,7 +174,7 @@ Predicted Outputs with streaming
 ```javascript
 import OpenAI from "openai";
 
-const code = \`
+const code = `
 class User {
   firstName: string = "";
   lastName: string = "";
@@ -182,14 +182,14 @@ class User {
 }
 
 export default User;
-\`.trim();
+`.trim();
 
 const openai = new OpenAI();
 
-const refactorPrompt = \`
+const refactorPrompt = `
 Replace the "username" property with an "email" property. Respond only 
 with code, and with no markdown formatting.
-\`;
+`;
 
 const completion = await openai.chat.completions.create({
   model: "gpt-4.1",

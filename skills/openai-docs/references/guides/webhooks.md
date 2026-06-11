@@ -92,11 +92,11 @@ You can also trigger test events with sample data from the [webhook settings pag
 Generate a background response
 
 ```bash
-curl https://api.openai.com/v1/responses \\
--H "Content-Type: application/json" \\
--H "Authorization: Bearer $OPENAI_API_KEY" \\
+curl https://api.openai.com/v1/responses \
+-H "Content-Type: application/json" \
+-H "Authorization: Bearer $OPENAI_API_KEY" \
 -d '{
-  "model": "gpt-5.4",
+  "model": "gpt-5.5",
   "input": "Write a very long novel about otters in space.",
   "background": true
 }'
@@ -107,7 +107,7 @@ import OpenAI from "openai";
 const client = new OpenAI();
 
 const resp = await client.responses.create({
-  model: "gpt-5.4",
+  model: "gpt-5.5",
   input: "Write a very long novel about otters in space.",
   background: true,
 });
@@ -121,7 +121,7 @@ from openai import OpenAI
 client = OpenAI()
 
 resp = client.responses.create(
-  model="gpt-5.4",
+  model="gpt-5.5",
   input="Write a very long novel about otters in space.",
   background=True,
 )
@@ -229,7 +229,7 @@ wh.verify(webhook_payload, webhook_headers).expect("Webhook verification failed"
 
 ```php
 $webhook_secret = getenv("OPENAI_WEBHOOK_SECRET");
-$wh = new \\StandardWebhooks\\Webhook($webhook_secret);
+$wh = new \StandardWebhooks\Webhook($webhook_secret);
 $wh->verify($webhook_payload, $webhook_headers);
 ```
 

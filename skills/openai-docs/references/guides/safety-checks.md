@@ -1,70 +1,5 @@
 # Safety checks
 
-export const snippetExampleProvidingUserIdentifier = {
-  python: `
-from openai import OpenAI
-client = OpenAI()
-
-response = client.chat.completions.create(
-model="gpt-5.4-mini",
-messages=[
-{"role": "user", "content": "This is a test"}
-],
-safety_identifier="user_123456"
-)
-`.trim(),
-  curl: `
-curl https://api.openai.com/v1/chat/completions \\
--H "Content-Type: application/json" \\
--H "Authorization: Bearer $OPENAI_API_KEY" \\
--d '{
-"model": "gpt-5.4-mini",
-"messages": [
-{"role": "user", "content": "This is a test"}
-],
-"safety_identifier": "user_123456"
-}'
-`.trim(),
-};
-
-export const snippetExampleProvidingUserIdentifierResponses = {
-  python: `
-from openai import OpenAI
-client = OpenAI()
-
-response = client.responses.create(
-model="gpt-5.4-mini",
-input="This is a test",
-safety_identifier="user_123456",
-)
-`.trim(),
-  curl: `
-curl https://api.openai.com/v1/responses \\
--H "Content-Type: application/json" \\
--H "Authorization: Bearer $OPENAI_API_KEY" \\
--d '{
-"model": "gpt-5.4-mini",
-"input": "This is a test",
-"safety_identifier": "user_123456"
-}'
-`.trim(),
-};
-
-export const snippetExampleProvidingUserIdentifierRealtime = {
-  curl: `
-curl https://api.openai.com/v1/realtime/client_secrets \\
--H "Content-Type: application/json" \\
--H "Authorization: Bearer $OPENAI_API_KEY" \\
--H "OpenAI-Safety-Identifier: user_123456" \\
--d '{
-"session": {
-"type": "realtime",
-"model": "gpt-realtime-2"
-}
-}'
-`.trim(),
-};
-
 We run several types of evaluations on our models and how they're being used. This guide covers how we test for safety and what you can do to avoid violations.
 
 ## Safety classifiers for GPT-5 and forward
@@ -94,13 +29,80 @@ Safety identifiers do not carry over between APIs or sessions. If your applicati
 
 <div data-content-switcher-pane data-value="responses">
     <div class="hidden">Responses API</div>
-    </div>
+    Providing a safety identifier with the Responses API
+
+```python
+from openai import OpenAI
+client = OpenAI()
+
+response = client.responses.create(
+model="gpt-5.4-mini",
+input="This is a test",
+safety_identifier="user_123456",
+)
+```
+
+```bash
+curl https://api.openai.com/v1/responses \
+-H "Content-Type: application/json" \
+-H "Authorization: Bearer $OPENAI_API_KEY" \
+-d '{
+"model": "gpt-5.4-mini",
+"input": "This is a test",
+"safety_identifier": "user_123456"
+}'
+```
+
+  </div>
   <div data-content-switcher-pane data-value="chat" hidden>
     <div class="hidden">Chat Completions API</div>
-    </div>
+    Providing a safety identifier with the Chat Completions API
+
+```python
+from openai import OpenAI
+client = OpenAI()
+
+response = client.chat.completions.create(
+model="gpt-5.4-mini",
+messages=[
+{"role": "user", "content": "This is a test"}
+],
+safety_identifier="user_123456"
+)
+```
+
+```bash
+curl https://api.openai.com/v1/chat/completions \
+-H "Content-Type: application/json" \
+-H "Authorization: Bearer $OPENAI_API_KEY" \
+-d '{
+"model": "gpt-5.4-mini",
+"messages": [
+{"role": "user", "content": "This is a test"}
+],
+"safety_identifier": "user_123456"
+}'
+```
+
+  </div>
   <div data-content-switcher-pane data-value="realtime" hidden>
     <div class="hidden">Realtime API</div>
-    </div>
+    Providing a safety identifier with the Realtime API
+
+```bash
+curl https://api.openai.com/v1/realtime/client_secrets \
+-H "Content-Type: application/json" \
+-H "Authorization: Bearer $OPENAI_API_KEY" \
+-H "OpenAI-Safety-Identifier: user_123456" \
+-d '{
+"session": {
+"type": "realtime",
+"model": "gpt-realtime-2"
+}
+}'
+```
+
+  </div>
 
 
 

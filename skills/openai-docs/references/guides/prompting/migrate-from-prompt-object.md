@@ -47,9 +47,9 @@ response = client.responses.create(
 ```
 
 ```bash
-curl https://api.openai.com/v1/responses \\
-  -H "Content-Type: application/json" \\
-  -H "Authorization: Bearer $OPENAI_API_KEY" \\
+curl https://api.openai.com/v1/responses \
+  -H "Content-Type: application/json" \
+  -H "Authorization: Bearer $OPENAI_API_KEY" \
   -d '{
     "prompt": {
       "prompt_id": "pmpt_123",
@@ -73,7 +73,7 @@ import OpenAI from "openai";
 const client = new OpenAI();
 
 const response = await client.responses.create({
-  model: "gpt-5.1",
+  model: "gpt-5.5",
   input: [
     {
       role: "system",
@@ -97,7 +97,7 @@ from openai import OpenAI
 client = OpenAI()
 
 response = client.responses.create(
-    model="gpt-5.1",
+    model="gpt-5.5",
     input=[
         {
             "role": "system",
@@ -114,11 +114,11 @@ print(response.output_text)
 ```
 
 ```bash
-curl https://api.openai.com/v1/responses \\
-  -H "Content-Type: application/json" \\
-  -H "Authorization: Bearer $OPENAI_API_KEY" \\
+curl https://api.openai.com/v1/responses \
+  -H "Content-Type: application/json" \
+  -H "Authorization: Bearer $OPENAI_API_KEY" \
   -d '{
-    "model": "gpt-5.1",
+    "model": "gpt-5.5",
     "input": [
       {
         "role": "system",
@@ -169,13 +169,13 @@ function buildSupportPrompt({ customerName, issue }) {
     },
     {
       role: "user",
-      content: \`Customer name: \${customerName}. Issue: \${issue}. Write a response to the customer.\`,
+      content: `Customer name: ${customerName}. Issue: ${issue}. Write a response to the customer.`,
     },
   ];
 }
 
 const response = await client.responses.create({
-  model: "gpt-5.1",
+  model: "gpt-5.5",
   input: buildSupportPrompt({
     customerName: "Acme",
     issue: "billing question",
@@ -201,7 +201,7 @@ def build_support_prompt(customer_name, issue):
     ]
 
 response = client.responses.create(
-    model="gpt-5.1",
+    model="gpt-5.5",
     input=build_support_prompt(
         customer_name="Acme",
         issue="billing question",

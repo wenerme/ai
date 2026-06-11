@@ -1,14 +1,5 @@
 # Admin APIs
 
-import {
-  adminClientExamples,
-  auditLogExamples,
-  dataRetentionExamples,
-  inviteUserExamples,
-  modelPermissionsExamples,
-  spendAlertExamples,
-} from "./admin-apis-examples";
-
 Admin APIs let you automate organization management workflows such as user invitations, audit log review, project administration, API key management, spend alerts, data retention, and rate limit operations. Use them for back-office automation, security workflows, and operational tooling that should run outside the dashboard.
 
 For endpoint details, see the [Administration API reference](https://developers.openai.com/api/reference/administration/overview), including [Admin API keys](https://developers.openai.com/api/reference/resources/admin/subresources/organization/subresources/admin_api_keys), [Invites](https://developers.openai.com/api/reference/resources/admin/subresources/organization/subresources/invites), [Users](https://developers.openai.com/api/reference/resources/admin/subresources/organization/subresources/users), [Projects](https://developers.openai.com/api/reference/resources/admin/subresources/organization/subresources/projects), and [Audit logs](https://developers.openai.com/api/reference/resources/admin/subresources/organization/subresources/audit_logs).

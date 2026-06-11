@@ -352,7 +352,7 @@ const stream = await openai.responses.create({
 for await (const event of stream) {
   if (event.type === "response.image_generation_call.partial_image") {
     const idx = event.partial_image_index;
-    saveBase64Image(\`river-partial-\${idx}.png\`, event.partial_image_b64);
+    saveBase64Image(`river-partial-${idx}.png`, event.partial_image_b64);
   } else if (event.type === "response.completed") {
     const imageData = event.response.output
       .filter((output) => output.type === "image_generation_call")

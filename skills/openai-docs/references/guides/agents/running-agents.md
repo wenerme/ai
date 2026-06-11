@@ -172,7 +172,7 @@ for await (const event of stream) {
 }
 
 await stream.completed;
-console.log("\\nFinal:", stream.finalOutput);
+console.log("\nFinal:", stream.finalOutput);
 ```
 
 ```python
@@ -201,7 +201,7 @@ async def main() -> None:
         ):
             print(event.data.delta, end="", flush=True)
 
-    print(f"\\nFinal: {stream.final_output}")
+    print(f"\nFinal: {stream.final_output}")
 
 
 if __name__ == "__main__":

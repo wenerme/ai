@@ -147,7 +147,7 @@ const agent = new Agent({
 
 await withTrace("Joke workflow", async () => {
   const first = await run(agent, "Tell me a joke");
-  const second = await run(agent, \`Rate this joke: \${first.finalOutput}\`);
+  const second = await run(agent, `Rate this joke: ${first.finalOutput}`);
   console.log(first.finalOutput);
   console.log(second.finalOutput);
 });
