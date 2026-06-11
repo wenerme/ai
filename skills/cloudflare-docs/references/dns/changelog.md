@@ -14,6 +14,17 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 [ Subscribe to RSS ](https://developers.cloudflare.com/changelog/rss/dns.xml) 
 
+## 2026-06-10
+
+  
+**Account-level DNS records quota**   
+
+Cloudflare now enforces DNS records quotas at the account level for Enterprise accounts. Instead of a per-zone limit, these accounts have a quota on the total number of records across all of their zones, letting you distribute records across your zones however you like — regardless of each zone's plan. Public and internal zones are counted separately, each with a default quota of 1,000,000 records.
+
+Accounts without an account-level quota are unaffected: existing per-zone quotas behave exactly as before.
+
+For more details, refer to [DNS records quota](https://developers.cloudflare.com/dns/manage-dns-records/#dns-records-quota).
+
 ## 2026-05-20
 
   

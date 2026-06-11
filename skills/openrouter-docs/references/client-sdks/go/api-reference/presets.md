@@ -14,9 +14,136 @@ Presets endpoints
 
 ### Available Operations
 
+* [List](#list) - List presets
+* [Get](#get) - Get a preset
 * [CreatePresetsChatCompletions](#createpresetschatcompletions) - Create a preset from a chat-completions request body
 * [CreatePresetsMessages](#createpresetsmessages) - Create a preset from a messages request body
 * [CreatePresetsResponses](#createpresetsresponses) - Create a preset from a responses request body
+* [ListVersions](#listversions) - List versions of a preset
+* [GetVersion](#getversion) - Get a specific version of a preset
+
+## List
+
+Lists all presets for the authenticated user, ordered by most recently updated first.
+
+### Example Usage
+
+```go
+package main
+
+import(
+	"context"
+	"os"
+	openrouter "github.com/OpenRouterTeam/go-sdk"
+	"github.com/OpenRouterTeam/go-sdk/optionalnullable"
+	"log"
+)
+
+func main() {
+    ctx := context.Background()
+
+    s := openrouter.New(
+        openrouter.WithSecurity(os.Getenv("OPENROUTER_API_KEY")),
+    )
+
+    res, err := s.Presets.List(ctx, optionalnullable.From[int64](nil), nil)
+    if err != nil {
+        log.Fatal(err)
+    }
+    if res != nil {
+        for {
+            // handle items
+
+            res, err = res.Next()
+
+            if err != nil {
+                // handle error
+            }
+
+            if res == nil {
+                break
+            }
+        }
+    }
+}
+```
+
+### Parameters
+
+| Parameter | Type                                                                  | Required             | Description                                   | Example |
+| --------- | --------------------------------------------------------------------- | -------------------- | --------------------------------------------- | ------- |
+| `ctx`     | [context.Context](https://pkg.go.dev/context#Context)                 | :heavy\_check\_mark: | The context to use for the request.           |         |
+| `offset`  | optionalnullable.OptionalNullable\[`int64`]                           | :heavy\_minus\_sign: | Number of records to skip for pagination      | 0       |
+| `limit`   | `*int64`                                                              | :heavy\_minus\_sign: | Maximum number of records to return (max 100) | 50      |
+| `opts`    | \[][operations.Option](/docs/sdks/go/api-reference/operations/option) | :heavy\_minus\_sign: | The options for this request.                 |         |
+
+### Response
+
+**[\*operations.ListPresetsResponse](/docs/sdks/go/api-reference/operations/listpresetsresponse), error**
+
+### Errors
+
+| Error Type                            | Status Code | Content Type     |
+| ------------------------------------- | ----------- | ---------------- |
+| sdkerrors.BadRequestResponseError     | 400         | application/json |
+| sdkerrors.UnauthorizedResponseError   | 401         | application/json |
+| sdkerrors.InternalServerResponseError | 500         | application/json |
+| sdkerrors.APIError                    | 4XX, 5XX    | \*/\*            |
+
+## Get
+
+Retrieves a preset by its slug with its currently designated version inline.
+
+### Example Usage
+
+```go
+package main
+
+import(
+	"context"
+	"os"
+	openrouter "github.com/OpenRouterTeam/go-sdk"
+	"log"
+)
+
+func main() {
+    ctx := context.Background()
+
+    s := openrouter.New(
+        openrouter.WithSecurity(os.Getenv("OPENROUTER_API_KEY")),
+    )
+
+    res, err := s.Presets.Get(ctx, "my-preset")
+    if err != nil {
+        log.Fatal(err)
+    }
+    if res != nil {
+        // handle response
+    }
+}
+```
+
+### Parameters
+
+| Parameter | Type                                                                  | Required             | Description                           | Example   |
+| --------- | --------------------------------------------------------------------- | -------------------- | ------------------------------------- | --------- |
+| `ctx`     | [context.Context](https://pkg.go.dev/context#Context)                 | :heavy\_check\_mark: | The context to use for the request.   |           |
+| `slug`    | `string`                                                              | :heavy\_check\_mark: | URL-safe slug identifying the preset. | my-preset |
+| `opts`    | \[][operations.Option](/docs/sdks/go/api-reference/operations/option) | :heavy\_minus\_sign: | The options for this request.         |           |
+
+### Response
+
+**[\*components.GetPresetResponse](/docs/sdks/go/api-reference/models/getpresetresponse), error**
+
+### Errors
+
+| Error Type                            | Status Code | Content Type     |
+| ------------------------------------- | ----------- | ---------------- |
+| sdkerrors.BadRequestResponseError     | 400         | application/json |
+| sdkerrors.UnauthorizedResponseError   | 401         | application/json |
+| sdkerrors.NotFoundResponseError       | 404         | application/json |
+| sdkerrors.InternalServerResponseError | 500         | application/json |
+| sdkerrors.APIError                    | 4XX, 5XX    | \*/\*            |
 
 ## CreatePresetsChatCompletions
 
@@ -235,5 +362,131 @@ func main() {
 | sdkerrors.ForbiddenResponseError      | 403         | application/json |
 | sdkerrors.NotFoundResponseError       | 404         | application/json |
 | sdkerrors.ConflictResponseError       | 409         | application/json |
+| sdkerrors.InternalServerResponseError | 500         | application/json |
+| sdkerrors.APIError                    | 4XX, 5XX    | \*/\*            |
+
+## ListVersions
+
+Lists all versions of a preset, ordered by version number ascending (oldest first).
+
+### Example Usage
+
+```go
+package main
+
+import(
+	"context"
+	"os"
+	openrouter "github.com/OpenRouterTeam/go-sdk"
+	"github.com/OpenRouterTeam/go-sdk/optionalnullable"
+	"log"
+)
+
+func main() {
+    ctx := context.Background()
+
+    s := openrouter.New(
+        openrouter.WithSecurity(os.Getenv("OPENROUTER_API_KEY")),
+    )
+
+    res, err := s.Presets.ListVersions(ctx, "my-preset", optionalnullable.From[int64](nil), nil)
+    if err != nil {
+        log.Fatal(err)
+    }
+    if res != nil {
+        for {
+            // handle items
+
+            res, err = res.Next()
+
+            if err != nil {
+                // handle error
+            }
+
+            if res == nil {
+                break
+            }
+        }
+    }
+}
+```
+
+### Parameters
+
+| Parameter | Type                                                                  | Required             | Description                                   | Example   |
+| --------- | --------------------------------------------------------------------- | -------------------- | --------------------------------------------- | --------- |
+| `ctx`     | [context.Context](https://pkg.go.dev/context#Context)                 | :heavy\_check\_mark: | The context to use for the request.           |           |
+| `slug`    | `string`                                                              | :heavy\_check\_mark: | URL-safe slug identifying the preset.         | my-preset |
+| `offset`  | optionalnullable.OptionalNullable\[`int64`]                           | :heavy\_minus\_sign: | Number of records to skip for pagination      | 0         |
+| `limit`   | `*int64`                                                              | :heavy\_minus\_sign: | Maximum number of records to return (max 100) | 50        |
+| `opts`    | \[][operations.Option](/docs/sdks/go/api-reference/operations/option) | :heavy\_minus\_sign: | The options for this request.                 |           |
+
+### Response
+
+**[\*operations.ListPresetVersionsResponse](/docs/sdks/go/api-reference/operations/listpresetversionsresponse), error**
+
+### Errors
+
+| Error Type                            | Status Code | Content Type     |
+| ------------------------------------- | ----------- | ---------------- |
+| sdkerrors.BadRequestResponseError     | 400         | application/json |
+| sdkerrors.UnauthorizedResponseError   | 401         | application/json |
+| sdkerrors.NotFoundResponseError       | 404         | application/json |
+| sdkerrors.InternalServerResponseError | 500         | application/json |
+| sdkerrors.APIError                    | 4XX, 5XX    | \*/\*            |
+
+## GetVersion
+
+Retrieves a specific version of a preset by its slug and version number.
+
+### Example Usage
+
+```go
+package main
+
+import(
+	"context"
+	"os"
+	openrouter "github.com/OpenRouterTeam/go-sdk"
+	"log"
+)
+
+func main() {
+    ctx := context.Background()
+
+    s := openrouter.New(
+        openrouter.WithSecurity(os.Getenv("OPENROUTER_API_KEY")),
+    )
+
+    res, err := s.Presets.GetVersion(ctx, "my-preset", "1")
+    if err != nil {
+        log.Fatal(err)
+    }
+    if res != nil {
+        // handle response
+    }
+}
+```
+
+### Parameters
+
+| Parameter | Type                                                                  | Required             | Description                           | Example   |
+| --------- | --------------------------------------------------------------------- | -------------------- | ------------------------------------- | --------- |
+| `ctx`     | [context.Context](https://pkg.go.dev/context#Context)                 | :heavy\_check\_mark: | The context to use for the request.   |           |
+| `slug`    | `string`                                                              | :heavy\_check\_mark: | URL-safe slug identifying the preset. | my-preset |
+| `version` | `string`                                                              | :heavy\_check\_mark: | Version number of the preset.         | 1         |
+| `opts`    | \[][operations.Option](/docs/sdks/go/api-reference/operations/option) | :heavy\_minus\_sign: | The options for this request.         |           |
+
+### Response
+
+**[\*components.GetPresetVersionResponse](/docs/sdks/go/api-reference/models/getpresetversionresponse), error**
+
+### Errors
+
+| Error Type                            | Status Code | Content Type     |
+| ------------------------------------- | ----------- | ---------------- |
+| sdkerrors.BadRequestResponseError     | 400         | application/json |
+| sdkerrors.UnauthorizedResponseError   | 401         | application/json |
+| sdkerrors.NotFoundResponseError       | 404         | application/json |
 | sdkerrors.InternalServerResponseError | 500         | application/json |
 | sdkerrors.APIError                    | 4XX, 5XX    | \*/\*            |

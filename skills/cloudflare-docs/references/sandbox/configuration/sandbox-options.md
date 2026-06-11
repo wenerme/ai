@@ -36,8 +36,8 @@ Controls what happens when you call sandbox methods without an explicit `session
 
 Use `enableDefaultSession: true` for interactive or stateful workflows where commands should share working directory and exported variables. Use `enableDefaultSession: false` for stateless request handling where one call should not affect the next one. It is recommended to set this to `false` — default session support will be removed in a future version of the Sandbox SDK, and using `createSession()` explicitly is the preferred pattern going forward.
 
-* [  JavaScript ](#tab-panel-8120)
-* [  TypeScript ](#tab-panel-8121)
+* [  JavaScript ](#tab-panel-10012)
+* [  TypeScript ](#tab-panel-10013)
 
 JavaScript
 
@@ -125,8 +125,8 @@ Keep the container alive indefinitely by preventing automatic shutdown. When `tr
 
 The `keepAlive` flag persists across Durable Object hibernation and wakeup cycles. Once enabled, you do not need to re-set it after the sandbox wakes from hibernation.
 
-* [  JavaScript ](#tab-panel-8118)
-* [  TypeScript ](#tab-panel-8119)
+* [  JavaScript ](#tab-panel-10010)
+* [  TypeScript ](#tab-panel-10011)
 
 JavaScript
 
@@ -208,8 +208,8 @@ Bug fix in v0.2.17
 
 Prior to v0.2.17, the `sleepAfter` option passed to `getSandbox()` was ignored due to a timing issue. The option is now properly applied when creating sandbox instances.
 
-* [  JavaScript ](#tab-panel-8116)
-* [  TypeScript ](#tab-panel-8117)
+* [  JavaScript ](#tab-panel-10008)
+* [  TypeScript ](#tab-panel-10009)
 
 JavaScript
 
@@ -269,8 +269,8 @@ When `keepAlive: true` is set, `sleepAfter` is ignored and the sandbox never sle
 
 Configure timeouts for container startup operations.
 
-* [  JavaScript ](#tab-panel-8122)
-* [  TypeScript ](#tab-panel-8123)
+* [  JavaScript ](#tab-panel-10014)
+* [  TypeScript ](#tab-panel-10015)
 
 JavaScript
 
@@ -363,8 +363,8 @@ Control SDK logging for debugging and monitoring. Set these in your Worker's `wr
 * `SANDBOX_LOG_LEVEL` \- Minimum log level: `debug`, `info`, `warn`, `error`. **Default**: `info`
 * `SANDBOX_LOG_FORMAT` \- Output format: `json`, `pretty`. **Default**: `json`
 
-* [  wrangler.jsonc ](#tab-panel-8114)
-* [  wrangler.toml ](#tab-panel-8115)
+* [  wrangler.jsonc ](#tab-panel-10006)
+* [  wrangler.toml ](#tab-panel-10007)
 
 JSONC
 
@@ -412,8 +412,8 @@ Lowercase sandbox IDs when creating sandboxes. When `true`, the ID you provide i
 
 **Why this matters**: Preview URLs extract the sandbox ID from the hostname, which is always lowercase due to DNS case-insensitivity. Without normalization, a sandbox created with "MyProject-123" becomes unreachable via preview URL because the URL routing looks for "myproject-123" (different Durable Object).
 
-* [  JavaScript ](#tab-panel-8124)
-* [  TypeScript ](#tab-panel-8125)
+* [  JavaScript ](#tab-panel-10016)
+* [  TypeScript ](#tab-panel-10017)
 
 JavaScript
 

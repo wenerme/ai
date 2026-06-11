@@ -2760,7 +2760,8 @@ components:
         high=30,000); when omitted, Exa picks an adaptive size per query and
         document (typically ~2,000–4,000 characters per result). For Parallel,
         controls the total characters across all results; when omitted, Parallel
-        uses its own default size.
+        uses its own default size. Overridden by `max_characters` when both are
+        set.
       title: SearchQualityLevel
     WebSearchUserLocationServerToolType:
       type: string
@@ -2812,6 +2813,17 @@ components:
             Firecrawl, Parallel, Anthropic, and xAI. Not supported with OpenAI
             (silently ignored) or Perplexity. Cannot be used with
             allowed_domains.
+        max_characters:
+          type: integer
+          description: >-
+            Exact maximum number of characters of content per search result.
+            Applies to the Exa and Parallel engines; ignored with native
+            provider search and Firecrawl. For Exa, caps highlight content per
+            result. For Parallel, caps excerpt content per result (default 1,500
+            when omitted). When both `max_characters` and `search_context_size`
+            are set, `max_characters` takes precedence for both engines. When
+            omitted, falls back to `search_context_size` mapping (Exa) or engine
+            defaults (Parallel).
         max_results:
           type: integer
           description: >-

@@ -1,7 +1,7 @@
 To use the Gemini API, you must authenticate your requests. You can
 authenticate using a standard or authorization API key.
 
-[Create or view a Gemini API Key](https://aistudio.google.com/app/apikey)
+[Create or view a Gemini API Key](https://aistudio.google.com/apikey)
 
 ## API key types: Standard versus Authorization
 
@@ -24,7 +24,7 @@ To ensure secure usage, Gemini API will move from Standard keys to Auth keys:
 
 ## Managing API keys in Google AI Studio
 
-You can manage your projects and keys directly in [Google AI Studio](https://aistudio.google.com/app/apikey).
+You can manage your projects and keys directly in [Google AI Studio](https://aistudio.google.com/apikey).
 
 ### Google Cloud projects
 
@@ -276,6 +276,9 @@ If you only use the key for the Gemini API, secure it directly in AI Studio:
 2. Hover over the label and click **Add restrictions** in the dialog.
 3. Select **Restrict to Gemini API only**.
 4. Click **Restrict key** to confirm.
+
+> [!NOTE]
+> **Note:** To restrict an API key, you must have the `apikeys.keys.update` permission on the associated Google Cloud project. This permission is included in roles like **API Keys Admin** or **Editor**.
 
 #### Restrict the key for other services via Google Cloud Console
 

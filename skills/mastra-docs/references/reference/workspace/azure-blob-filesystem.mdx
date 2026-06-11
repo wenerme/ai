@@ -42,7 +42,7 @@ const agent = new Agent({
 
 ### Account key
 
-Use an account name and account key when you do not want to pass a full connection string:
+Use an account name and account key when you don't want to pass a full connection string:
 
 ```typescript
 import { AzureBlobFilesystem } from '@mastra/azure/blob'
@@ -252,7 +252,7 @@ const config = filesystem.getMountConfig()
 // { type: 'azure-blob', container: 'my-container', ... }
 ```
 
-> **note**: Azure Blob sandbox mounting depends on sandbox support for `azure-blob` mount configs. Use `filesystem` for direct workspace file operations when your sandbox provider does not support Azure Blob mounts.
+> **note**: Azure Blob sandbox mounting depends on sandbox support for `azure-blob` mount configs. Use `filesystem` for direct workspace file operations when your sandbox provider doesn't support Azure Blob mounts.
 
 ## Related
 

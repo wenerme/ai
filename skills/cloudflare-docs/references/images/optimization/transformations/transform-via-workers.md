@@ -1,6 +1,6 @@
 ---
-title: Transform via Workers
-description: Use Cloudflare Workers to programmatically resize, format, and optimize images with custom URL schemes.
+title: Transform via fetch
+description: Use cf.image options on a fetch() subrequest in a Worker to programmatically resize, format, and optimize remote images.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
@@ -10,9 +10,13 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 [Skip to content](#%5Ftop) 
 
-# Transform via Workers
+# Transform via fetch
 
-Using Workers to transform with a custom URL scheme gives you powerful programmatic control over every image request.
+Workers lets you optimize images with a custom URL scheme.
+
+You can set image optimization parameters on a `fetch()` subrequest in a Worker using the `cf.image` property. This is the same underlying mechanism as the [URL interface](https://developers.cloudflare.com/images/optimization/transformations/overview/#url-interface), but gives you programmatic control over every image request.
+
+To work with image bytes directly instead of URLs, use the [Images binding](https://developers.cloudflare.com/images/optimization/binding/).
 
 Here are a few examples of the flexibility that Workers give you:
 
@@ -303,5 +307,5 @@ Resized images are always cached. They are cached as additional variants under a
 If you use the `cacheKey` fetch option to unify the caches of multiple source URLs, do not include any resizing options in the `cacheKey`. Doing so will fragment the cache and hurt caching performance. The `cacheKey` should reference only the full-size source image URL, not any of its resized versions.
 
 ```json
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/images/","name":"Cloudflare Images"}},{"@type":"ListItem","position":3,"item":{"@id":"/images/optimization/","name":"Optimization"}},{"@type":"ListItem","position":4,"item":{"@id":"/images/optimization/transformations/","name":"Remote images (transformations)"}},{"@type":"ListItem","position":5,"item":{"@id":"/images/optimization/transformations/transform-via-workers/","name":"Transform via Workers"}}]}
+{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/images/","name":"Cloudflare Images"}},{"@type":"ListItem","position":3,"item":{"@id":"/images/optimization/","name":"Optimization"}},{"@type":"ListItem","position":4,"item":{"@id":"/images/optimization/transformations/","name":"Remote images (transformations)"}},{"@type":"ListItem","position":5,"item":{"@id":"/images/optimization/transformations/transform-via-workers/","name":"Transform via fetch"}}]}
 ```

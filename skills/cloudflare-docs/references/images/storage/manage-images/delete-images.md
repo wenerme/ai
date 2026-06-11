@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 # Delete images
 
-You can delete an image from the Cloudflare Images storage using the dashboard or the API.
+You can delete an image from the Cloudflare Images storage using the dashboard, the API, or from a Worker via the [Images binding](https://developers.cloudflare.com/images/storage/binding/#imageimageiddelete).
 
 ## Delete images via the Cloudflare dashboard
 

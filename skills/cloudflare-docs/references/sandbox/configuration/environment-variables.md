@@ -26,8 +26,8 @@ These environment variables configure how the Sandbox SDK behaves. Set these as 
 
 Controls the transport protocol for SDK-to-container communication. WebSocket transport multiplexes all operations over a single persistent connection, avoiding [subrequest limits](https://developers.cloudflare.com/workers/platform/limits/#subrequests) when performing many SDK operations per request.
 
-* [  wrangler.jsonc ](#tab-panel-7565)
-* [  wrangler.toml ](#tab-panel-7566)
+* [  wrangler.jsonc ](#tab-panel-10002)
+* [  wrangler.toml ](#tab-panel-10003)
 
 JSONC
 
@@ -69,8 +69,8 @@ Sets a global default timeout for every `exec()` call. When set, any command tha
 
 Per-command `timeout` on `exec()` and session-level `commandTimeoutMs` on [createSession()](https://developers.cloudflare.com/sandbox/api/sessions/#createsession) both override this value. For more details on timeout precedence, refer to [Execute commands - Timeouts](https://developers.cloudflare.com/sandbox/guides/execute-commands/#timeouts).
 
-* [  wrangler.jsonc ](#tab-panel-7567)
-* [  wrangler.toml ](#tab-panel-7568)
+* [  wrangler.jsonc ](#tab-panel-10004)
+* [  wrangler.toml ](#tab-panel-10005)
 
 JSONC
 

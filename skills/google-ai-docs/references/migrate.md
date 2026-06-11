@@ -159,7 +159,7 @@ distinct packages or patterns.
 ## Authentication
 
 Both legacy and new libraries authenticate using API keys. You can
-[create](https://aistudio.google.com/app/apikey) your API key in Google AI
+[create](https://aistudio.google.com/apikey) your API key in Google AI
 Studio.
 
 **Before**

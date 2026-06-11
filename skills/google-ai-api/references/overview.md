@@ -25,7 +25,7 @@ The Gemini API is organized around the following major endpoints:
 
 All requests to the Gemini API must include a `x-goog-api-key` header with your
 API key. Create one with a few clicks in [Google AI
-Studio](https://aistudio.google.com/app/apikey).
+Studio](https://aistudio.google.com/apikey).
 
 The following is an example request with the API key included in the header:
 

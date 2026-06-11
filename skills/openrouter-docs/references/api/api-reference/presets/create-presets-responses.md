@@ -1176,7 +1176,6 @@ components:
         type:
           $ref: '#/components/schemas/OutputWebSearchCallItemType'
       required:
-        - action
         - id
         - status
         - type
@@ -1719,6 +1718,45 @@ components:
         - type
       description: An openrouter:experimental__search_models server tool output item
       title: OutputSearchModelsServerToolItem
+    OutputAdvisorServerToolItem:
+      type: object
+      properties:
+        advice:
+          type: string
+          description: >-
+            The advisor model's response (the advice text returned to the
+            executor).
+        error:
+          type: string
+          description: Error message when the advisor call did not produce advice.
+        id:
+          type: string
+        instance_name:
+          type: string
+          description: >-
+            Provider-safe function name of the specific advisor instance that
+            produced this item (e.g. `openrouter_advisor__1`). Present only when
+            more than one advisor tool is configured; omitted for the default
+            single advisor. Echo this field back unchanged so the advisor's
+            cross-request memory stays namespaced to the correct instance. This
+            identity is positional: it is derived from the index of the advisor
+            entry in the request `tools` array, so clients must keep the order
+            of advisor tool entries stable across requests in a conversation.
+            Reordering or inserting advisor entries shifts these names and
+            causes each advisor's cross-request memory to be attributed to the
+            wrong instance.
+        model:
+          type: string
+          description: Slug of the advisor model that was consulted.
+        prompt:
+          type: string
+          description: The prompt the executor sent to the advisor.
+        status:
+          $ref: '#/components/schemas/ToolCallStatus'
+      required:
+        - status
+      description: An openrouter:advisor server tool output item
+      title: OutputAdvisorServerToolItem
     LocalShellCallItemActionType:
       type: string
       enum:
@@ -2230,6 +2268,7 @@ components:
         - $ref: '#/components/schemas/OutputMemoryServerToolItem'
         - $ref: '#/components/schemas/OutputMcpServerToolItem'
         - $ref: '#/components/schemas/OutputSearchModelsServerToolItem'
+        - $ref: '#/components/schemas/OutputAdvisorServerToolItem'
         - $ref: '#/components/schemas/LocalShellCallItem'
         - $ref: '#/components/schemas/LocalShellCallOutputItem'
         - $ref: '#/components/schemas/ShellCallItem'
@@ -4235,7 +4274,7 @@ components:
         and OpenRouter server tools (e.g. openrouter:web_search). The advisor
         tool may not list itself.
       title: AdvisorNestedTool
-    AdvisorProfile:
+    AdvisorServerToolConfig:
       type: object
       properties:
         forward_transcript:
@@ -4272,78 +4311,22 @@ components:
         name:
           type: string
           description: >-
-            Name of this advisor profile. The executor model passes this `name`
-            to the advisor tool to select the profile. Must be unique within the
-            `advisors` roster. Letters, digits, underscores, and dashes; 1–64
-            chars.
+            Optional name for this advisor. The model sees one tool per named
+            advisor (and one default for an unnamed entry). Names must be unique
+            across advisor entries. Letters, digits, spaces, underscores, and
+            dashes; trimmed; 1–64 chars.
         reasoning:
           $ref: '#/components/schemas/AdvisorReasoning'
-        temperature:
-          type: number
-          format: double
-          description: >-
-            Sampling temperature forwarded to the advisor call. When omitted,
-            the provider's default applies.
-        tools:
-          type: array
-          items:
-            $ref: '#/components/schemas/AdvisorNestedTool'
-          description: >-
-            Tools the advisor sub-agent may use while forming its advice. The
-            advisor runs as an agentic sub-agent over these tools, then returns
-            its text. Must not include the advisor tool itself.
-      required:
-        - name
-      description: >-
-        A named advisor profile. The executor model selects it by `name` and the
-        profile's config (model, instructions, etc.) takes precedence over the
-        request-wide advisor parameters for that call.
-      title: AdvisorProfile
-    AdvisorServerToolConfig:
-      type: object
-      properties:
-        advisors:
-          type: array
-          items:
-            $ref: '#/components/schemas/AdvisorProfile'
-          description: >-
-            Roster of named advisor profiles. When set, the executor model
-            selects one by passing its `name` to the advisor tool; the chosen
-            profile's config overrides the request-wide advisor parameters.
-            Profile names must be unique.
-        forward_transcript:
+        stream:
           type: boolean
           description: >-
-            When true, the full parent conversation is forwarded to the advisor
-            so it sees the same context the executor does (and the tool-call
-            `prompt`, if given, is appended as a final user turn). When false or
-            omitted, the advisor receives only the `prompt` the executor passes
-            in the tool call.
-        instructions:
-          type: string
-          description: >-
-            System instructions for the advisor sub-agent. When omitted, the
-            advisor responds with no system prompt of its own.
-        max_completion_tokens:
-          type: integer
-          description: >-
-            Maximum number of output tokens (including reasoning) the advisor
-            may produce. When omitted, the provider's default applies.
-        max_tool_calls:
-          type: integer
-          description: >-
-            Maximum number of tool-calling steps the advisor sub-agent may take
-            during its agentic loop. Capped at 25. Only relevant when the
-            advisor is given tools.
-        model:
-          type: string
-          description: >-
-            Slug of the advisor model to consult (any OpenRouter model). When
-            omitted, the executor can choose it via the tool call's `model`
-            argument; if neither is set, the model from the outer API request is
-            used. The advisor tool itself cannot be the advisor model.
-        reasoning:
-          $ref: '#/components/schemas/AdvisorReasoning'
+            When true, the advisor's advice streams incrementally as it is
+            produced. In the Responses API this emits
+            `response.output_text.delta` events targeting the advisor output
+            item; the final `advice` field is still set on the completed item.
+            Has no effect on the Chat Completions API (where the advice arrives
+            only as the final tool result). When false or omitted, the advice
+            arrives only as the final result.
         temperature:
           type: number
           format: double
@@ -4358,7 +4341,7 @@ components:
             Tools the advisor sub-agent may use while forming its advice. The
             advisor runs as an agentic sub-agent over these tools, then returns
             its text. Must not include the advisor tool itself.
-      description: Configuration for the openrouter:advisor server tool.
+      description: Configuration for one openrouter:advisor server tool entry.
       title: AdvisorServerToolConfig
     AdvisorServerToolOpenRouterType:
       type: string
@@ -4377,7 +4360,9 @@ components:
       description: >-
         OpenRouter built-in server tool: consults a higher-intelligence advisor
         model (any OpenRouter model) for guidance mid-generation and returns its
-        response. The advisor may run as a sub-agent with its own tools.
+        response. The advisor may run as a sub-agent with its own tools. Include
+        multiple entries to offer several named advisors; at most one entry may
+        omit `name` to act as the default advisor.
       title: AdvisorServerTool_OpenRouter
     DatetimeServerToolConfig:
       type: object
@@ -4656,7 +4641,8 @@ components:
         high=30,000); when omitted, Exa picks an adaptive size per query and
         document (typically ~2,000–4,000 characters per result). For Parallel,
         controls the total characters across all results; when omitted, Parallel
-        uses its own default size.
+        uses its own default size. Overridden by `max_characters` when both are
+        set.
       title: SearchQualityLevel
     WebSearchUserLocationServerToolType:
       type: string
@@ -4708,6 +4694,17 @@ components:
             Firecrawl, Parallel, Anthropic, and xAI. Not supported with OpenAI
             (silently ignored) or Perplexity. Cannot be used with
             allowed_domains.
+        max_characters:
+          type: integer
+          description: >-
+            Exact maximum number of characters of content per search result.
+            Applies to the Exa and Parallel engines; ignored with native
+            provider search and Firecrawl. For Exa, caps highlight content per
+            result. For Parallel, caps excerpt content per result (default 1,500
+            when omitted). When both `max_characters` and `search_context_size`
+            are set, `max_characters` takes precedence for both engines. When
+            omitted, falls back to `search_context_size` mapping (Exa) or engine
+            defaults (Parallel).
         max_results:
           type: integer
           description: >-
@@ -5142,6 +5139,14 @@ components:
             users. Maximum of 256 characters.
       description: Request schema for Responses endpoint
       title: ResponsesRequest
+    PresetStatus:
+      type: string
+      enum:
+        - active
+        - disabled
+        - archived
+      description: The status of a preset.
+      title: PresetStatus
     PresetDesignatedVersion:
       type: object
       properties:
@@ -5178,13 +5183,6 @@ components:
         A specific version of a preset, containing config and optional system
         prompt.
       title: PresetDesignatedVersion
-    PresetWithDesignatedVersionStatus:
-      type: string
-      enum:
-        - active
-        - disabled
-        - archived
-      title: PresetWithDesignatedVersionStatus
     PresetWithDesignatedVersion:
       type: object
       properties:
@@ -5198,8 +5196,6 @@ components:
           type:
             - string
             - 'null'
-        designated_version:
-          $ref: '#/components/schemas/PresetDesignatedVersion'
         designated_version_id:
           type:
             - string
@@ -5211,7 +5207,7 @@ components:
         slug:
           type: string
         status:
-          $ref: '#/components/schemas/PresetWithDesignatedVersionStatus'
+          $ref: '#/components/schemas/PresetStatus'
         status_updated_at:
           type:
             - string
@@ -5222,11 +5218,12 @@ components:
           type:
             - string
             - 'null'
+        designated_version:
+          $ref: '#/components/schemas/PresetDesignatedVersion'
       required:
         - created_at
         - creator_user_id
         - description
-        - designated_version
         - designated_version_id
         - id
         - name
@@ -5235,6 +5232,7 @@ components:
         - status_updated_at
         - updated_at
         - workspace_id
+        - designated_version
       description: A preset with its currently designated version.
       title: PresetWithDesignatedVersion
     CreatePresetFromInferenceResponse:
@@ -5498,6 +5496,14 @@ components:
     "created_at": "2026-04-20T10:00:00Z",
     "creator_user_id": "user_2dHFtVWx2n56w6HkM0000000000",
     "description": null,
+    "designated_version_id": "550e8400-e29b-41d4-a716-446655440000",
+    "id": "650e8400-e29b-41d4-a716-446655440001",
+    "name": "my-preset",
+    "slug": "my-preset",
+    "status": "active",
+    "status_updated_at": null,
+    "updated_at": "2026-04-20T10:00:00Z",
+    "workspace_id": "750e8400-e29b-41d4-a716-446655440002",
     "designated_version": {
       "config": {
         "model": "openai/gpt-5.4"
@@ -5509,15 +5515,7 @@ components:
       "system_prompt": "You are a helpful assistant.",
       "updated_at": "2026-04-20T10:00:00Z",
       "version": 1
-    },
-    "designated_version_id": "550e8400-e29b-41d4-a716-446655440000",
-    "id": "650e8400-e29b-41d4-a716-446655440001",
-    "name": "my-preset",
-    "slug": "my-preset",
-    "status": "active",
-    "status_updated_at": null,
-    "updated_at": "2026-04-20T10:00:00Z",
-    "workspace_id": "750e8400-e29b-41d4-a716-446655440002"
+    }
   }
 }
 ```

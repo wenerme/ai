@@ -141,6 +141,9 @@ To purchase credits, go to the [AI Studio Billing](https://aistudio.google.com/b
 The minimum purchase is $10. The maximum amount of credits you can prepay for is
 $5,000.
 
+> [!NOTE]
+> **Note:** Prepay users must [purchase Prepaid credits](https://ai.google.dev/gemini-api/docs/billing#buy-credits) before they can use any Google Cloud credits that are eligible for the Gemini API. Once you have an active Prepay credit balance, eligible Google Cloud credits are consumed before your Prepay credit balance. When your Prepay credit balance on the billing account hits $0, Google Cloud credits will no longer be consumed.
+
 #### Auto reload
 
 Auto-reload is an optional feature that automatically tops up your Prepay credit
@@ -425,6 +428,19 @@ No, starting March 2026, Gemini API usage costs are specifically excluded from
 the [$300 Google Cloud Free Trial](https://docs.cloud.google.com/free/docs/free-cloud-features#free-trial)
 program.
 
+### How do Google Cloud credits work with Prepay?
+
+Prepay users must first [purchase Prepaid credits](https://ai.google.dev/gemini-api/docs/billing#buy-credits) before any
+eligible Google Cloud credits can be applied to Gemini API usage. Once you have
+an active Prepay credit balance, Google Cloud credits that are eligible for the
+Gemini API are consumed before your Prepay credit balance. When your Prepay
+credit balance on the billing account hits $0, Google Cloud credits will no
+longer be consumed.
+
+Not all Google Cloud credits, such as the
+[Google Cloud Welcome credit](https://ai.google.dev/gemini-api/docs/billing#cloud-credits), can be used towards Gemini API
+and AI Studio.
+
 ### How is billing handled?
 
 Billing for the Gemini API is handled by the [Cloud billing](https://cloud.google.com/billing/docs/concepts) system. Learn about the
@@ -450,7 +466,7 @@ has billing enabled, which you can validate on the
 [Gemini API key page](https://aistudio.google.com/api-keys) if you see any
 projects marked as "Paid" under "Plan".
 
-### What is prepaid billing and who is required to use the prepaid billing model?
+### What is Prepaid billing and who is required to use the prepaid billing model?
 
 Prepaid billing allows users of Gemini API in AI Studio to pre-purchase credits.
 Starting Mar 23, 2026, new users to AI Studio might be required to be on the
@@ -480,7 +496,7 @@ purchases do not count toward this limit.
 
 ### Can I get a refund for my unused credits?
 
-All prepaid API credits expire after 1 year and cannot be refunded. Read the
+All Prepaid API credits expire after 1 year and cannot be refunded. Read the
 [refund policy for Prepay accounts](https://ai.google.dev/gemini-api/docs/billing#refunds).
 
 ### Do my prepaid credits expire?
@@ -532,7 +548,7 @@ for the Postpay billing plan, you can optionally choose to transition all your
 future Gemini API usage costs to a standard, consolidated Google Cloud
 [Postpay charging cycle](https://docs.cloud.google.com/billing/docs/how-to/billing-cycle#view-your-charging-cycle).
 
-### What happens to my prepaid credits if I switch to Postpay?
+### What happens to my Prepaid credits if I switch to Postpay?
 
 When you upgrade to [Postpay](https://ai.google.dev/gemini-api/docs/billing#postpay), Cloud Billing closes your Prepay
 payments account, turns off [auto-reload](https://ai.google.dev/gemini-api/docs/billing#auto-reload), and automatically
@@ -577,7 +593,7 @@ Learn more about delayed billing in the [Cloud Billing documentation](https://do
 ### If I use other Google Cloud services with costs that are subject to a Postpay charging cycle, what happens if I miss a payment?
 
 Missing a payment for other Google Cloud services can suspend your Gemini API
-access in AI Studio, **regardless of how many prepaid credits you have
+access in AI Studio, **regardless of how many Prepaid credits you have
 available**. AI Studio usage is powered by a Google Cloud Billing account, which
 can share both Prepay billing for AI Studio and Postpay billing for other Cloud
 services. An issue with your Postpay balance halts all services tied to that

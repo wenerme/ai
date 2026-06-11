@@ -20,7 +20,7 @@ There are several reasons to migrate your Workers to the ES modules format:
 
 1. Your Worker will run faster. With service workers, bindings are exposed as globals. This means that for every request, the Workers runtime must create a new JavaScript execution context, which adds overhead and time. Workers written using ES modules can reuse the same execution context across multiple requests.
 2. Implementing [Durable Objects](https://developers.cloudflare.com/durable-objects/) requires Workers that use ES modules.
-3. Bindings for [D1](https://developers.cloudflare.com/d1/), [Workers AI](https://developers.cloudflare.com/workers-ai/), [Vectorize](https://developers.cloudflare.com/vectorize/), [Workflows](https://developers.cloudflare.com/workflows/), and [Images](https://developers.cloudflare.com/images/optimization/transformations/bindings/) can only be used from Workers that use ES modules.
+3. Bindings for [D1](https://developers.cloudflare.com/d1/), [Workers AI](https://developers.cloudflare.com/workers-ai/), [Vectorize](https://developers.cloudflare.com/vectorize/), [Workflows](https://developers.cloudflare.com/workflows/), and [Images](https://developers.cloudflare.com/images/optimization/binding/) can only be used from Workers that use ES modules.
 4. You can [gradually deploy changes to your Worker](https://developers.cloudflare.com/workers/configuration/versions-and-deployments/gradual-deployments/) when you use the ES modules format.
 5. You can easily publish Workers using ES modules to `npm`, allowing you to import and reuse Workers within your codebase.
 
@@ -103,8 +103,8 @@ To understand bindings, refer the following `TODO` KV namespace binding example.
 2. Create a Worker.
 3. Find your Worker's [Wrangler configuration file](https://developers.cloudflare.com/workers/wrangler/configuration/) and add a KV namespace binding:
 
-* [  wrangler.jsonc ](#tab-panel-10717)
-* [  wrangler.toml ](#tab-panel-10718)
+* [  wrangler.jsonc ](#tab-panel-11677)
+* [  wrangler.toml ](#tab-panel-11678)
 
 JSONC
 
@@ -241,8 +241,8 @@ export { getTodos }
 
 Review the following example environment variable configuration in the [Wrangler configuration file](https://developers.cloudflare.com/workers/wrangler/configuration/):
 
-* [  wrangler.jsonc ](#tab-panel-10719)
-* [  wrangler.toml ](#tab-panel-10720)
+* [  wrangler.jsonc ](#tab-panel-11679)
+* [  wrangler.toml ](#tab-panel-11680)
 
 JSONC
 
@@ -329,8 +329,8 @@ export default {
 
 You can also import `env` from `cloudflare:workers` to access environment variables from anywhere in your code, including the top-level scope:
 
-* [  JavaScript ](#tab-panel-10721)
-* [  TypeScript ](#tab-panel-10722)
+* [  JavaScript ](#tab-panel-11681)
+* [  TypeScript ](#tab-panel-11682)
 
 JavaScript
 

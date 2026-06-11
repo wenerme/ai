@@ -14,6 +14,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 * [ Upload images ](https://developers.cloudflare.com/images/storage/upload-images/)
 * [ Manage hosted images ](https://developers.cloudflare.com/images/storage/manage-images/)
+* [ Manage hosted images with Workers ](https://developers.cloudflare.com/images/storage/binding/)
 
 ```json
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/images/","name":"Cloudflare Images"}},{"@type":"ListItem","position":3,"item":{"@id":"/images/storage/","name":"Storage"}}]}

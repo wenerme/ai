@@ -2738,7 +2738,8 @@ components:
         high=30,000); when omitted, Exa picks an adaptive size per query and
         document (typically ~2,000–4,000 characters per result). For Parallel,
         controls the total characters across all results; when omitted, Parallel
-        uses its own default size.
+        uses its own default size. Overridden by `max_characters` when both are
+        set.
       title: SearchQualityLevel
     WebSearchUserLocationServerToolType:
       type: string
@@ -2790,6 +2791,17 @@ components:
             Firecrawl, Parallel, Anthropic, and xAI. Not supported with OpenAI
             (silently ignored) or Perplexity. Cannot be used with
             allowed_domains.
+        max_characters:
+          type: integer
+          description: >-
+            Exact maximum number of characters of content per search result.
+            Applies to the Exa and Parallel engines; ignored with native
+            provider search and Firecrawl. For Exa, caps highlight content per
+            result. For Parallel, caps excerpt content per result (default 1,500
+            when omitted). When both `max_characters` and `search_context_size`
+            are set, `max_characters` takes precedence for both engines. When
+            omitted, falls back to `search_context_size` mapping (Exa) or engine
+            defaults (Parallel).
         max_results:
           type: integer
           description: >-
@@ -2962,6 +2974,14 @@ components:
         - model
       description: Request schema for Anthropic Messages API endpoint
       title: MessagesRequest
+    PresetStatus:
+      type: string
+      enum:
+        - active
+        - disabled
+        - archived
+      description: The status of a preset.
+      title: PresetStatus
     PresetDesignatedVersion:
       type: object
       properties:
@@ -2998,13 +3018,6 @@ components:
         A specific version of a preset, containing config and optional system
         prompt.
       title: PresetDesignatedVersion
-    PresetWithDesignatedVersionStatus:
-      type: string
-      enum:
-        - active
-        - disabled
-        - archived
-      title: PresetWithDesignatedVersionStatus
     PresetWithDesignatedVersion:
       type: object
       properties:
@@ -3018,8 +3031,6 @@ components:
           type:
             - string
             - 'null'
-        designated_version:
-          $ref: '#/components/schemas/PresetDesignatedVersion'
         designated_version_id:
           type:
             - string
@@ -3031,7 +3042,7 @@ components:
         slug:
           type: string
         status:
-          $ref: '#/components/schemas/PresetWithDesignatedVersionStatus'
+          $ref: '#/components/schemas/PresetStatus'
         status_updated_at:
           type:
             - string
@@ -3042,11 +3053,12 @@ components:
           type:
             - string
             - 'null'
+        designated_version:
+          $ref: '#/components/schemas/PresetDesignatedVersion'
       required:
         - created_at
         - creator_user_id
         - description
-        - designated_version
         - designated_version_id
         - id
         - name
@@ -3055,6 +3067,7 @@ components:
         - status_updated_at
         - updated_at
         - workspace_id
+        - designated_version
       description: A preset with its currently designated version.
       title: PresetWithDesignatedVersion
     CreatePresetFromInferenceResponse:
@@ -3324,6 +3337,14 @@ components:
     "created_at": "2026-04-20T10:00:00Z",
     "creator_user_id": "user_2dHFtVWx2n56w6HkM0000000000",
     "description": null,
+    "designated_version_id": "550e8400-e29b-41d4-a716-446655440000",
+    "id": "650e8400-e29b-41d4-a716-446655440001",
+    "name": "my-preset",
+    "slug": "my-preset",
+    "status": "active",
+    "status_updated_at": null,
+    "updated_at": "2026-04-20T10:00:00Z",
+    "workspace_id": "750e8400-e29b-41d4-a716-446655440002",
     "designated_version": {
       "config": {
         "max_tokens": 1024,
@@ -3336,15 +3357,7 @@ components:
       "system_prompt": "You are a helpful assistant.",
       "updated_at": "2026-04-20T10:00:00Z",
       "version": 1
-    },
-    "designated_version_id": "550e8400-e29b-41d4-a716-446655440000",
-    "id": "650e8400-e29b-41d4-a716-446655440001",
-    "name": "my-preset",
-    "slug": "my-preset",
-    "status": "active",
-    "status_updated_at": null,
-    "updated_at": "2026-04-20T10:00:00Z",
-    "workspace_id": "750e8400-e29b-41d4-a716-446655440002"
+    }
   }
 }
 ```

@@ -88,39 +88,44 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/v1/
 
 ```
 
-* [ Output ](#tab-panel-118)
-* [ Raw response ](#tab-panel-119)
+* [ Output ](#tab-panel-116)
+* [ Raw response ](#tab-panel-117)
 
 # The Three Laws of Thermodynamics
 
 ## First Law: Conservation of Energy
 Energy cannot be created or destroyed—only converted from one form to another. The total energy of an isolated system remains constant.
 
-**In practice:** When you burn fuel, the chemical energy isn't lost; it converts to heat, light, and mechanical energy.
+**Formula:** ΔU = Q − W (change in internal energy = heat added − work done by the system)
 
-Mathematically: ΔU = Q − W (the change in internal energy equals heat added minus work done by the system)
+**Example:** When you burn fuel in an engine, chemical energy converts to heat and mechanical work, but the total energy is conserved.
 
-## Second Law: Entropy Always Increases
-The entropy (disorder) of an isolated system always increases over time. Heat flows naturally from hot objects to cold objects, never the reverse, without external work.
+## Second Law: Entropy Increases
+The entropy (disorder) of an isolated system always increases over time. Heat flows spontaneously from hot objects to cold ones, never the reverse.
 
-**In practice:** This is why perpetual motion machines are impossible, why engines can never be 100% efficient, and why ice melts in a warm room rather than the room freezing.
+**Key implications:**
+- No heat engine can be 100% efficient
+- Natural processes are irreversible
+- It explains why time seems to have a direction ("arrow of time")
 
-## Third Law: Absolute Zero is Unattainable
+**Example:** An ice cube melts in warm water, but you'll never see warm water spontaneously form an ice cube.
+
+## Third Law: Absolute Zero
 As a system approaches absolute zero (0 Kelvin, or −273.15°C), its entropy approaches a minimum constant value. It's impossible to reach absolute zero in a finite number of steps.
 
-**In practice:** You can get incredibly close to absolute zero (scientists have reached billionths of a degree above it), but never actually reach it.
+**Example:** Scientists can get extremely close to absolute zero (billionths of a degree above), but never quite reach it.
 
 ---
 
-**Bonus — The Zeroth Law:** Added later but considered more fundamental: if two systems are each in thermal equilibrium with a third system, they're in equilibrium with each other. This is what makes temperature measurement meaningful.
+**Bonus — The Zeroth Law:** Added later but considered more fundamental: if two systems are each in thermal equilibrium with a third system, they're in equilibrium with each other. This is what makes thermometers work!
 
-A popular informal summary: *"You can't win, you can't break even, and you can't quit the game."*
+A popular summary: *"You can't win (1st), you can't break even (2nd), and you can't quit the game (3rd)."*
 
 ```
 
 {
 
-  "id": "msg_01R3mtPDk8nz2GtgZ4kaEV3h",
+  "id": "msg_01TEGjkVwYzfuHrCs5V1Q9de",
 
   "type": "message",
 
@@ -134,7 +139,7 @@ A popular informal summary: *"You can't win, you can't break even, and you can't
 
       "thinking": "",
 
-      "signature": "CAIS/wIKYggOGAIqQL2DImxiS8eomHBT27EP6Vq1yIKYk7FRawnvr1x+JIqaaG1HvobVpukDf+fT2jalSaimOBFM4xpQ9qid41A7FHwyDmNsYXVkZS1mYWJsZS01OAFCCHRoaW5raW5nEgwBC6HD8DwzUmOkyTQaDA5iwoIP4Sl4FtT7qiIwFuaXYp6DyWTfvs6Ahk5Q9ZPAmlRNmzJkLKAW4RQJezq8Es3Bch5pzRYS/RXbrv1LKsoBnj/bv7kwQDxJ9VF6P5YRlAja59MF3h7ILd/yMtP1eSQIMzxtZGUpg0Bg+8Yn2Z/iotpNB3+F1tGgLAv6wd2LZWAe0bAwoulFHOBYqGNQ0ZZELxm6B1y79x304TxxV/KOmpjhE9kXoxvxgv0WywAKR3qh4ERzJjaLA0w7WrhkGXnfOBnoGOCpENOhMBEI9NtbR+vtxn/H1LOeTz3wB1i/oXxG3ABrvfmZr2oa3dtP2W4WYiJtlQi5JtDcCf8EaPY95ay2uV0RjJAWsBgB"
+      "signature": "CAISqAIKYggOGAIqQOscSUEIqskVCTFKJ0i4W90Fia0m32aS+8j6gvpJQkVwCImYZvUlLT0ngohDiWPGx+uORrrkI5qUFGBXijU7UVkyDmNsYXVkZS1mYWJsZS01OAFCCHRoaW5raW5nEgwqVZaKUtMPjtT1ZB8aDHzMnpu8xeeshAEKESIwKiCTZBZGAysSVswoEkB20VfYeJeeMBAqcVEwop/ut0LXzwhnDUAEAYUg4kSv39yWKnTO/ICIz4jCyl7L4SMQd616l3PD2uCuyJRUtqnFLO40PxXgwz8fizzEJMSwFXcjTAkEOdo16C6bHJ7kahwYdjcrrvbQV8OFn0555bExOWsJYiTZVdRrO9XgzDVohWsByfew+FJU7cg/MhO5wA3FikOmOP01pBgB"
 
     },
 
@@ -142,7 +147,7 @@ A popular informal summary: *"You can't win, you can't break even, and you can't
 
       "type": "text",
 
-      "text": "# The Three Laws of Thermodynamics\n\n## First Law: Conservation of Energy\nEnergy cannot be created or destroyed—only converted from one form to another. The total energy of an isolated system remains constant.\n\n**In practice:** When you burn fuel, the chemical energy isn't lost; it converts to heat, light, and mechanical energy.\n\nMathematically: ΔU = Q − W (the change in internal energy equals heat added minus work done by the system)\n\n## Second Law: Entropy Always Increases\nThe entropy (disorder) of an isolated system always increases over time. Heat flows naturally from hot objects to cold objects, never the reverse, without external work.\n\n**In practice:** This is why perpetual motion machines are impossible, why engines can never be 100% efficient, and why ice melts in a warm room rather than the room freezing.\n\n## Third Law: Absolute Zero is Unattainable\nAs a system approaches absolute zero (0 Kelvin, or −273.15°C), its entropy approaches a minimum constant value. It's impossible to reach absolute zero in a finite number of steps.\n\n**In practice:** You can get incredibly close to absolute zero (scientists have reached billionths of a degree above it), but never actually reach it.\n\n---\n\n**Bonus — The Zeroth Law:** Added later but considered more fundamental: if two systems are each in thermal equilibrium with a third system, they're in equilibrium with each other. This is what makes temperature measurement meaningful.\n\nA popular informal summary: *\"You can't win, you can't break even, and you can't quit the game.\"*"
+      "text": "# The Three Laws of Thermodynamics\n\n## First Law: Conservation of Energy\nEnergy cannot be created or destroyed—only converted from one form to another. The total energy of an isolated system remains constant.\n\n**Formula:** ΔU = Q − W (change in internal energy = heat added − work done by the system)\n\n**Example:** When you burn fuel in an engine, chemical energy converts to heat and mechanical work, but the total energy is conserved.\n\n## Second Law: Entropy Increases\nThe entropy (disorder) of an isolated system always increases over time. Heat flows spontaneously from hot objects to cold ones, never the reverse.\n\n**Key implications:**\n- No heat engine can be 100% efficient\n- Natural processes are irreversible\n- It explains why time seems to have a direction (\"arrow of time\")\n\n**Example:** An ice cube melts in warm water, but you'll never see warm water spontaneously form an ice cube.\n\n## Third Law: Absolute Zero\nAs a system approaches absolute zero (0 Kelvin, or −273.15°C), its entropy approaches a minimum constant value. It's impossible to reach absolute zero in a finite number of steps.\n\n**Example:** Scientists can get extremely close to absolute zero (billionths of a degree above), but never quite reach it.\n\n---\n\n**Bonus — The Zeroth Law:** Added later but considered more fundamental: if two systems are each in thermal equilibrium with a third system, they're in equilibrium with each other. This is what makes thermometers work!\n\nA popular summary: *\"You can't win (1st), you can't break even (2nd), and you can't quit the game (3rd).\"*"
 
     }
 
@@ -156,7 +161,7 @@ A popular informal summary: *"You can't win, you can't break even, and you can't
 
     "input_tokens": 20,
 
-    "output_tokens": 576
+    "output_tokens": 577
 
   },
 
@@ -242,17 +247,17 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/v1/
 
 ```
 
-* [ Output ](#tab-panel-116)
-* [ Raw response ](#tab-panel-117)
+* [ Output ](#tab-panel-124)
+* [ Raw response ](#tab-panel-125)
 
 # Reading a JSON File in Python
 
-Use the built-in `json` module:
+Use the built-in `json` module with the `json.load()` function:
 
 ```python
 import json
 
-with open("data.json", "r") as file:
+with open("data.json", "r", encoding="utf-8") as file:
     data = json.load(file)
 
 print(data)
@@ -261,42 +266,33 @@ print(data)
 ## Key Points
 
 - **`json.load(file)`** — reads JSON from a *file object*
-- **`json.loads(string)`** — reads JSON from a *string* (note the "s")
+- **`json.loads(string)`** — parses JSON from a *string* (note the "s")
+- The `with` statement automatically closes the file when done
 
-## Example
+## Accessing the Data
 
-Given a file `data.json`:
-
-```json
-{
-    "name": "Alice",
-    "age": 30,
-    "languages": ["Python", "JavaScript"]
-}
-```
-
-You can access the data like a regular Python dictionary:
+JSON objects become Python dictionaries, and JSON arrays become lists:
 
 ```python
-import json
+# Given data.json:
+# {
+#   "name": "Alice",
+#   "age": 30,
+#   "hobbies": ["reading", "coding"]
+# }
 
-with open("data.json", "r") as file:
-    data = json.load(file)
-
-print(data["name"])         # Alice
-print(data["age"])          # 30
-print(data["languages"][0]) # Python
+print(data["name"])        # Alice
+print(data["age"])         # 30
+print(data["hobbies"][0])  # reading
 ```
 
 ## Handling Errors
-
-It's good practice to handle common issues:
 
 ```python
 import json
 
 try:
-    with open("data.json", "r") as file:
+    with open("data.json", "r", encoding="utf-8") as file:
         data = json.load(file)
 except FileNotFoundError:
     print("File not found.")
@@ -305,8 +301,6 @@ except json.JSONDecodeError as e:
 ```
 
 ## Type Conversions
-
-JSON types map to Python types automatically:
 
 | JSON | Python |
 |------|--------|
@@ -317,13 +311,13 @@ JSON types map to Python types automatically:
 | `true` / `false` | `True` / `False` |
 | `null` | `None` |
 
-That's it! For writing JSON, use `json.dump(data, file)` instead.
+That's all you need for most use cases. For very large files, consider streaming libraries like `ijson`.
 
 ```
 
 {
 
-  "id": "msg_01AoDTx5LghjgrjrHgPpkiui",
+  "id": "msg_013oB35i6D6cJW17UoavzSEs",
 
   "type": "message",
 
@@ -333,9 +327,19 @@ That's it! For writing JSON, use `json.dump(data, file)` instead.
 
     {
 
+      "type": "thinking",
+
+      "thinking": "",
+
+      "signature": "CAIS9wEKYggOGAIqQFeZ1YZ5RyQ9EbHCqt5fSx9vMAMrhvdbZ+CLKMjT6OXEkD0ktq1p+6St3xTcEVpxkyLpemCD799ZbfCwYd+hJ8wyDmNsYXVkZS1mYWJsZS01OAFCCHRoaW5raW5nEgzx2jYo+ujge2+SskIaDHjgiplZQMyTmf+LNyIwXid3ttbHyXFgieCEovuD3vs0EsVznHmbkYlIY9NyF+a/dx04UlNIrelymYxnEZX7KkPe1UpvY5zXlRmwx3hSBIEFA9FHalSXG7jipEwzoJeyxon8+/rF/zkHacZuq8melq/TmwNzVE4jNU6rDEuvJO0C4l9dGAE="
+
+    },
+
+    {
+
       "type": "text",
 
-      "text": "# Reading a JSON File in Python\n\nUse the built-in `json` module:\n\n```python\nimport json\n\nwith open(\"data.json\", \"r\") as file:\n    data = json.load(file)\n\nprint(data)\n```\n\n## Key Points\n\n- **`json.load(file)`** — reads JSON from a *file object*\n- **`json.loads(string)`** — reads JSON from a *string* (note the \"s\")\n\n## Example\n\nGiven a file `data.json`:\n\n```json\n{\n    \"name\": \"Alice\",\n    \"age\": 30,\n    \"languages\": [\"Python\", \"JavaScript\"]\n}\n```\n\nYou can access the data like a regular Python dictionary:\n\n```python\nimport json\n\nwith open(\"data.json\", \"r\") as file:\n    data = json.load(file)\n\nprint(data[\"name\"])         # Alice\nprint(data[\"age\"])          # 30\nprint(data[\"languages\"][0]) # Python\n```\n\n## Handling Errors\n\nIt's good practice to handle common issues:\n\n```python\nimport json\n\ntry:\n    with open(\"data.json\", \"r\") as file:\n        data = json.load(file)\nexcept FileNotFoundError:\n    print(\"File not found.\")\nexcept json.JSONDecodeError as e:\n    print(f\"Invalid JSON: {e}\")\n```\n\n## Type Conversions\n\nJSON types map to Python types automatically:\n\n| JSON | Python |\n|------|--------|\n| object | `dict` |\n| array | `list` |\n| string | `str` |\n| number | `int` / `float` |\n| `true` / `false` | `True` / `False` |\n| `null` | `None` |\n\nThat's it! For writing JSON, use `json.dump(data, file)` instead."
+      "text": "# Reading a JSON File in Python\n\nUse the built-in `json` module with the `json.load()` function:\n\n```python\nimport json\n\nwith open(\"data.json\", \"r\", encoding=\"utf-8\") as file:\n    data = json.load(file)\n\nprint(data)\n```\n\n## Key Points\n\n- **`json.load(file)`** — reads JSON from a *file object*\n- **`json.loads(string)`** — parses JSON from a *string* (note the \"s\")\n- The `with` statement automatically closes the file when done\n\n## Accessing the Data\n\nJSON objects become Python dictionaries, and JSON arrays become lists:\n\n```python\n# Given data.json:\n# {\n#   \"name\": \"Alice\",\n#   \"age\": 30,\n#   \"hobbies\": [\"reading\", \"coding\"]\n# }\n\nprint(data[\"name\"])        # Alice\nprint(data[\"age\"])         # 30\nprint(data[\"hobbies\"][0])  # reading\n```\n\n## Handling Errors\n\n```python\nimport json\n\ntry:\n    with open(\"data.json\", \"r\", encoding=\"utf-8\") as file:\n        data = json.load(file)\nexcept FileNotFoundError:\n    print(\"File not found.\")\nexcept json.JSONDecodeError as e:\n    print(f\"Invalid JSON: {e}\")\n```\n\n## Type Conversions\n\n| JSON | Python |\n|------|--------|\n| object | `dict` |\n| array | `list` |\n| string | `str` |\n| number | `int` / `float` |\n| `true` / `false` | `True` / `False` |\n| `null` | `None` |\n\nThat's all you need for most use cases. For very large files, consider streaming libraries like `ijson`."
 
     }
 
@@ -349,7 +353,7 @@ That's it! For writing JSON, use `json.dump(data, file)` instead.
 
     "input_tokens": 38,
 
-    "output_tokens": 513
+    "output_tokens": 537
 
   },
 
@@ -467,42 +471,44 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/v1/
 
 ```
 
-* [ Output ](#tab-panel-124)
-* [ Raw response ](#tab-panel-125)
+* [ Output ](#tab-panel-126)
+* [ Raw response ](#tab-panel-127)
 
-It depends on which route you take, so here are the highlights for each:
+Great question! Your stops depend a lot on which route you take, so let me break it down:
 
-## Highway 1 (Pacific Coast Highway) — Scenic Route
-This is the slowest but most beautiful option (10+ hours of driving, best split over 2+ days):
+## Highway 1 / Pacific Coast Highway (Scenic Route)
+This adds significant time (10+ hours of driving) but is one of the most beautiful drives in the world:
 
 - **Half Moon Bay** – Charming coastal town, great for breakfast
 - **Santa Cruz** – Beach boardwalk and surf culture
-- **Monterey & Carmel-by-the-Sea** – World-class aquarium, 17-Mile Drive
-- **Big Sur** – The crown jewel: Bixby Bridge, McWay Falls, dramatic cliffs
+- **Monterey & Carmel** – World-class aquarium, scenic 17-Mile Drive
+- **Big Sur** – Stunning cliffs, Bixby Bridge, McWay Falls, redwood hikes
 - **San Simeon** – Hearst Castle and elephant seal viewing at Piedras Blancas
 - **Morro Bay** – Iconic Morro Rock
-- **Pismo Beach** – Classic beach town
-- **Santa Barbara** – Beautiful Spanish architecture, wineries, great food
+- **Pismo Beach** – Classic beach town vibes
+- **Santa Barbara** – Beautiful Spanish architecture, wine country nearby
+- **Malibu** – Beaches and a great way to roll into LA
 
-## Highway 101 — Balanced Option (~7 hours)
-- **San Jose / Gilroy** – Garlic capital of the world
-- **Paso Robles** – Excellent wine country
-- **San Luis Obispo** – Cute college town, Madonna Inn (worth seeing even just for the bathrooms)
+## Highway 101 (Balanced Option, ~7-8 hours)
+- **San Jose** – Winchester Mystery House
+- **Gilroy** – Garlic capital (and outlet shopping)
+- **Paso Robles** – Excellent wine region
+- **San Luis Obispo** – Cute college town, Bubblegum Alley
 - **Solvang** – Quirky Danish village with bakeries and windmills
 - **Santa Barbara** – Same as above
 
-## I-5 — Fastest Route (~5.5 hours)
-Honestly, not much to see — it's mostly farmland. Harris Ranch is the classic food stop. Only take this if speed is the priority.
+## I-5 (Fastest, ~5-6 hours)
+Honestly, not much to see—mostly farmland. Best stop is **Harris Ranch** in Coalinga for a famous steak lunch.
 
-**My recommendation:** If you have the time, take Highway 1 at least through Big Sur, then cut over to 101. You get the best scenery without the full slow drive.
+**My suggestion:** If you have 2+ days, take Highway 1 and stay overnight in Monterey, Big Sur, or San Luis Obispo. If you only have one day, 101 gives you a nice mix of speed and scenery.
 
-How many days do you have for the trip? That'll help narrow down the best plan.
+How much time do you have for the trip? That'll help narrow down the best plan!
 
 ```
 
 {
 
-  "id": "msg_01EwEx2XTC5pNdoT7PtTuXLq",
+  "id": "msg_01JoMwDGJCvYbHtRYpMaaVCp",
 
   "type": "message",
 
@@ -516,7 +522,7 @@ How many days do you have for the trip? That'll help narrow down the best plan.
 
       "thinking": "",
 
-      "signature": "CAISoAIKYggOGAIqQMlO95DiOtXNyD9qv654AmEcC1ASdAHhzQTsttiIfxm3PqYaLMrHm18ZiQThkonfmq61YPDFu1G6pyMX0eaLSnQyDmNsYXVkZS1mYWJsZS01OAFCCHRoaW5raW5nEgyWam0aNaXTOFIOa5EaDMmDhR7yHWAr+COnviIw949Cqu4lKMTa8RYrcTgYgpsAP42lrDlRicsgtNdgAmWMWvuKUehGgIKEVQfhrS1CKmxdC9rpL8nQ92fa4nuPVoY2NU1QzAZCU+2WFapPArvpD8IwoP9oL7qTLE5Q8iU3HpX29l9p6cR+OVsB1z/RIpmDsQY6PQkvWG3qHC05f7zvc9VUdYaXEGBvw15wJh73m12yar0ydF5ZgvgWJcUYAQ=="
+      "signature": "CAISnQIKYggOGAIqQK/zBQqMA66bUkZi524Lt0j+w8Eutw4fEZezWpC3T8DkRpnoqnfcGJL1WYXiD+kMGT1/gHSAjBTaezw2E8x5XM8yDmNsYXVkZS1mYWJsZS01OAFCCHRoaW5raW5nEgzQCE8UtUZmIwbubiUaDJd3PUdinhPnsMTDyCIwM6zPNTJBliPRjAxg0rXfsMOgkpBJ2f4PsQF8Qx1/OOnBTzzeThC3LqMxwIvRLQNpKmnrVhJc59urfrUjH5w+2LZJMmRg0KiCqdpSRx65zmj0us3grXlxJ5+5KQkaZMILR038gQ1uVGAQ6IhEzj2LaC5fGMRuo9onFlGkksp3s+gb1jaNoo7hEgxzzD+1GPmhtahCBIrXsJUBctAYAQ=="
 
     },
 
@@ -524,7 +530,7 @@ How many days do you have for the trip? That'll help narrow down the best plan.
 
       "type": "text",
 
-      "text": "It depends on which route you take, so here are the highlights for each:\n\n## Highway 1 (Pacific Coast Highway) — Scenic Route\nThis is the slowest but most beautiful option (10+ hours of driving, best split over 2+ days):\n\n- **Half Moon Bay** – Charming coastal town, great for breakfast\n- **Santa Cruz** – Beach boardwalk and surf culture\n- **Monterey & Carmel-by-the-Sea** – World-class aquarium, 17-Mile Drive\n- **Big Sur** – The crown jewel: Bixby Bridge, McWay Falls, dramatic cliffs\n- **San Simeon** – Hearst Castle and elephant seal viewing at Piedras Blancas\n- **Morro Bay** – Iconic Morro Rock\n- **Pismo Beach** – Classic beach town\n- **Santa Barbara** – Beautiful Spanish architecture, wineries, great food\n\n## Highway 101 — Balanced Option (~7 hours)\n- **San Jose / Gilroy** – Garlic capital of the world\n- **Paso Robles** – Excellent wine country\n- **San Luis Obispo** – Cute college town, Madonna Inn (worth seeing even just for the bathrooms)\n- **Solvang** – Quirky Danish village with bakeries and windmills\n- **Santa Barbara** – Same as above\n\n## I-5 — Fastest Route (~5.5 hours)\nHonestly, not much to see — it's mostly farmland. Harris Ranch is the classic food stop. Only take this if speed is the priority.\n\n**My recommendation:** If you have the time, take Highway 1 at least through Big Sur, then cut over to 101. You get the best scenery without the full slow drive.\n\nHow many days do you have for the trip? That'll help narrow down the best plan."
+      "text": "Great question! Your stops depend a lot on which route you take, so let me break it down:\n\n## Highway 1 / Pacific Coast Highway (Scenic Route)\nThis adds significant time (10+ hours of driving) but is one of the most beautiful drives in the world:\n\n- **Half Moon Bay** – Charming coastal town, great for breakfast\n- **Santa Cruz** – Beach boardwalk and surf culture\n- **Monterey & Carmel** – World-class aquarium, scenic 17-Mile Drive\n- **Big Sur** – Stunning cliffs, Bixby Bridge, McWay Falls, redwood hikes\n- **San Simeon** – Hearst Castle and elephant seal viewing at Piedras Blancas\n- **Morro Bay** – Iconic Morro Rock\n- **Pismo Beach** – Classic beach town vibes\n- **Santa Barbara** – Beautiful Spanish architecture, wine country nearby\n- **Malibu** – Beaches and a great way to roll into LA\n\n## Highway 101 (Balanced Option, ~7-8 hours)\n- **San Jose** – Winchester Mystery House\n- **Gilroy** – Garlic capital (and outlet shopping)\n- **Paso Robles** – Excellent wine region\n- **San Luis Obispo** – Cute college town, Bubblegum Alley\n- **Solvang** – Quirky Danish village with bakeries and windmills\n- **Santa Barbara** – Same as above\n\n## I-5 (Fastest, ~5-6 hours)\nHonestly, not much to see—mostly farmland. Best stop is **Harris Ranch** in Coalinga for a famous steak lunch.\n\n**My suggestion:** If you have 2+ days, take Highway 1 and stay overnight in Monterey, Big Sur, or San Luis Obispo. If you only have one day, 101 gives you a nice mix of speed and scenery.\n\nHow much time do you have for the trip? That'll help narrow down the best plan!"
 
     }
 
@@ -538,7 +544,7 @@ How many days do you have for the trip? That'll help narrow down the best plan.
 
     "input_tokens": 103,
 
-    "output_tokens": 654
+    "output_tokens": 706
 
   },
 
@@ -644,32 +650,30 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/v1/
 
 ```
 
-* [ Output ](#tab-panel-126)
-* [ Raw response ](#tab-panel-127)
+* [ Output ](#tab-panel-128)
+* [ Raw response ](#tab-panel-129)
 
-**The Paper Bird**
+# The Paper Bird
 
-Detective Mara Voss had seen plenty of crime scenes in her fifteen years on the force, but never one this clean. The apartment looked staged, like a furniture showroom—not a fingerprint, not a stray hair, not so much as a coffee ring on the spotless kitchen counter. Even the victim, slumped peacefully in the armchair by the window, might have been napping if not for the medical examiner's grim verdict.
+Detective Mara Voss had worked homicide for eleven years, and in that time she'd catalogued every variety of crime scene debris: shell casings, cigarette butts, the sad confetti of torn receipts. But she had never found an origami crane perched in a dead man's open palm.
 
-She was about to call it a night when she noticed it: a tiny origami crane perched on the bookshelf, tucked between a dictionary and a dog-eared travel guide to Portugal.
+The victim—Gerald Fitch, fifty-three, accountant—lay sprawled across his kitchen floor as though he'd simply decided to stop standing. No wounds. No struggle. Just the crane, folded from heavy cream paper, balanced on his hand like it had landed there of its own accord.
 
-Mara pulled on a fresh glove and lifted the paper bird into the light. It was folded from a page of sheet music—she could see fragments of notes along the wings, a tempo marking creased into the tail. *Adagio*, it read. Slowly.
+"Don't touch it," she said, though the rookie behind her hadn't moved. She crouched, knees popping, and angled her flashlight at the paper bird. There—faint lines beneath the folds. Writing.
 
-She turned it over, and her breath caught. There, written in red ink along the underside of one wing, in handwriting so small she had to squint:
+She photographed it from six angles before lifting it with gloved fingers, and unfolded it wing by wing with the care of someone defusing a bomb. The creases gave up their secret slowly: a single sentence, written in tight, slanted script.
 
-*You're getting warmer.*
+*He counted everything except his sins.*
 
-Mara looked around the silent apartment, at the body, at the door, at the window overlooking the rain-slicked street below. Three weeks ago, at the Halloran scene, she'd found a paper boat. She'd dismissed it then.
+Mara read it three times. Then she looked back at Gerald Fitch's face—peaceful, almost smug, even in death—and felt the familiar cold prickle at the base of her skull. The one that told her this wasn't an ending.
 
-She wasn't dismissing it now.
-
-Someone wasn't just killing people. Someone was leaving her a trail—and they knew she'd follow it.
+It was an invitation.
 
 ```
 
 {
 
-  "id": "msg_01H7qU6WsJ1RdUUfb1FNUNp7",
+  "id": "msg_01VaGXWd9kdzHMepPnPHTTvG",
 
   "type": "message",
 
@@ -683,7 +687,7 @@ Someone wasn't just killing people. Someone was leaving her a trail—and they k
 
       "thinking": "",
 
-      "signature": "CAIS+wEKYggOGAIqQFPxfBka1NRNW1rIQ1wZpAc+gQlviFi+V9+jNugw6OMNaHWQbkv9DsCcDURrvCSV+wk2roKaFG5XBywGYrr3kSsyDmNsYXVkZS1mYWJsZS01OAFCCHRoaW5raW5nEgyvo+jcJw5HIqgiDckaDDibIrfcOLshI3L72iIwm4V5PsoEX2t4CwqglakI/jVY8nj+//Tqt58ZmNHeYLa1JmUtvKONuh6F+F/N6izKKkdS8odduilutWhqmvZLN01d+R7Wi7gc/WxNPUean4c11emjGfKjWxZdqD6e17G1tuRxg8kfAPlOrcoCDCdBKUqr7a9K8R7kyhgB"
+      "signature": "CAISxgIKYggOGAIqQCa14WJvO05NEThN13nBXzVEqA35Ki9nluIV0epwzd5nZM6Iyotcv9JA6vAh21iikvC/FNzJso0wR6JiUwir4ekyDmNsYXVkZS1mYWJsZS01OAFCCHRoaW5raW5nEgz1lKb9mdSCyv6XyPsaDNpKckL3pPM/5C9mkSIwNQrKl5lQs1F2p+1lxVtoAuthy8llMmyUgpy1coZQ4fmw3wlNJI98aNDajf9r3hGoKpEBiMAXur1Qp83FUupryf2Y2xHOMcH9MWev85QNIzNZapR30GC3aD1nTWv2a2cAUy9fZN+nEnPTstS8Wga900d1vDmhu42Yv+45MaE6Oa6syHzBO3+bSCZ/jioWSQxGhxw8jwGhR6DC6mp2iDYZGKpTExw7WftcL6mYpKgBus50atpeUCWXi7/IdHqDUkPRyb1LRxgB"
 
     },
 
@@ -691,7 +695,7 @@ Someone wasn't just killing people. Someone was leaving her a trail—and they k
 
       "type": "text",
 
-      "text": "**The Paper Bird**\n\nDetective Mara Voss had seen plenty of crime scenes in her fifteen years on the force, but never one this clean. The apartment looked staged, like a furniture showroom—not a fingerprint, not a stray hair, not so much as a coffee ring on the spotless kitchen counter. Even the victim, slumped peacefully in the armchair by the window, might have been napping if not for the medical examiner's grim verdict.\n\nShe was about to call it a night when she noticed it: a tiny origami crane perched on the bookshelf, tucked between a dictionary and a dog-eared travel guide to Portugal.\n\nMara pulled on a fresh glove and lifted the paper bird into the light. It was folded from a page of sheet music—she could see fragments of notes along the wings, a tempo marking creased into the tail. *Adagio*, it read. Slowly.\n\nShe turned it over, and her breath caught. There, written in red ink along the underside of one wing, in handwriting so small she had to squint:\n\n*You're getting warmer.*\n\nMara looked around the silent apartment, at the body, at the door, at the window overlooking the rain-slicked street below. Three weeks ago, at the Halloran scene, she'd found a paper boat. She'd dismissed it then.\n\nShe wasn't dismissing it now.\n\nSomeone wasn't just killing people. Someone was leaving her a trail—and they knew she'd follow it."
+      "text": "# The Paper Bird\n\nDetective Mara Voss had worked homicide for eleven years, and in that time she'd catalogued every variety of crime scene debris: shell casings, cigarette butts, the sad confetti of torn receipts. But she had never found an origami crane perched in a dead man's open palm.\n\nThe victim—Gerald Fitch, fifty-three, accountant—lay sprawled across his kitchen floor as though he'd simply decided to stop standing. No wounds. No struggle. Just the crane, folded from heavy cream paper, balanced on his hand like it had landed there of its own accord.\n\n\"Don't touch it,\" she said, though the rookie behind her hadn't moved. She crouched, knees popping, and angled her flashlight at the paper bird. There—faint lines beneath the folds. Writing.\n\nShe photographed it from six angles before lifting it with gloved fingers, and unfolded it wing by wing with the care of someone defusing a bomb. The creases gave up their secret slowly: a single sentence, written in tight, slanted script.\n\n*He counted everything except his sins.*\n\nMara read it three times. Then she looked back at Gerald Fitch's face—peaceful, almost smug, even in death—and felt the familiar cold prickle at the base of her skull. The one that told her this wasn't an ending.\n\nIt was an invitation."
 
     }
 
@@ -705,7 +709,7 @@ Someone wasn't just killing people. Someone was leaving her a trail—and they k
 
     "input_tokens": 26,
 
-    "output_tokens": 488
+    "output_tokens": 487
 
   },
 
@@ -724,10 +728,519 @@ Someone wasn't just killing people. Someone was leaving her a trail—and they k
 
 ```
 
+**Streaming Response**  — Enable streaming for real-time output 
+
+* [ TypeScript ](#tab-panel-118)
+* [ cURL ](#tab-panel-119)
+
+TypeScript
+
+```
+
+const response = await env.AI.run(
+
+  'anthropic/claude-fable-5',
+
+  {
+
+    max_tokens: 1024,
+
+    messages: [{ content: 'Explain the concept of recursion with a simple example.', role: 'user' }],
+
+    stream: true,
+
+  },
+
+)
+
+console.log(response)
+
+
+```
+
+Terminal window
+
+```
+
+curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/v1/messages \
+
+  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+
+  --header "Content-Type: application/json" \
+
+  --data '{
+
+  "model": "anthropic/claude-fable-5",
+
+  "max_tokens": 1024,
+
+  "messages": [
+
+    {
+
+      "content": "Explain the concept of recursion with a simple example.",
+
+      "role": "user"
+
+    }
+
+  ],
+
+  "stream": true
+
+}'
+
+
+```
+
+* [ Output ](#tab-panel-130)
+* [ Raw response ](#tab-panel-131)
+
+# Recursion
+
+**Recursion** is a programming concept where a function calls itself to solve a problem by breaking it down into smaller, similar subproblems.
+
+## Key Components
+
+Every recursive function needs two parts:
+
+1. **Base case** — a condition that stops the recursion (prevents infinite loops)
+2. **Recursive case** — where the function calls itself with a smaller/simpler input
+
+## Simple Example: Factorial
+
+The factorial of a number `n` (written `n!`) is the product of all positive integers up to `n`:
+
+- `5! = 5 × 4 × 3 × 2 × 1 = 120`
+
+Notice the pattern: `5! = 5 × 4!` — the problem contains a smaller version of itself. Perfect for recursion!
+
+```python
+def factorial(n):
+    if n <= 1:          # Base case
+        return 1
+    else:               # Recursive case
+        return n * factorial(n - 1)
+
+print(factorial(5))  # Output: 120
+```
+
+## How It Unfolds
+
+```
+factorial(5)
+= 5 × factorial(4)
+= 5 × 4 × factorial(3)
+= 5 × 4 × 3 × factorial(2)
+= 5 × 4 × 3 × 2 × factorial(1)
+= 5 × 4 × 3 × 2 × 1      ← base case reached
+= 120
+```
+
+The calls "stack up" until hitting the base case, then results are multiplied back up the chain.
+
+## An Intuitive Analogy
+
+Imagine you're in a movie theater line and want to know your position. Instead of counting everyone yourself, you ask the person in front of you, "What's your position?" They ask the person in front of them... until someone at the front says "I'm first!" (base case). Then each person adds 1 and passes the answer back.
+
+## When to Use Recursion
+
+Recursion shines for naturally recursive structures like:
+- Tree traversal
+- Directory/file systems
+- Divide-and-conquer algorithms (e.g., merge sort)
+
+⚠️ **Caution:** Without a proper base case, recursion runs forever and causes a *stack overflow*.
+
+```
+
+[
+
+  {
+
+    "type": "message_start",
+
+    "message": {
+
+      "model": "claude-fable-5",
+
+      "id": "msg_01Rwmx9xySGeaRDPFstZ7gMV",
+
+      "type": "message",
+
+      "role": "assistant",
+
+      "content": [],
+
+      "stop_reason": null,
+
+      "stop_sequence": null,
+
+      "stop_details": null,
+
+      "usage": {
+
+        "input_tokens": 22,
+
+        "cache_creation_input_tokens": 0,
+
+        "cache_read_input_tokens": 0,
+
+        "cache_creation": {
+
+          "ephemeral_5m_input_tokens": 0,
+
+          "ephemeral_1h_input_tokens": 0
+
+        },
+
+        "output_tokens": 1,
+
+        "service_tier": "standard",
+
+        "inference_geo": "global"
+
+      }
+
+    }
+
+  },
+
+  {
+
+    "type": "content_block_start",
+
+    "index": 0,
+
+    "content_block": {
+
+      "type": "text",
+
+      "text": ""
+
+    }
+
+  },
+
+  {
+
+    "type": "ping"
+
+  },
+
+  {
+
+    "type": "content_block_delta",
+
+    "index": 0,
+
+    "delta": {
+
+      "type": "text_delta",
+
+      "text": "#"
+
+    }
+
+  },
+
+  {
+
+    "type": "content_block_delta",
+
+    "index": 0,
+
+    "delta": {
+
+      "type": "text_delta",
+
+      "text": " Recursion\n\n**Recursion** is a programming concept where a function calls itself to solve a problem by breaking it down into smaller, similar subproblems"
+
+    }
+
+  },
+
+  {
+
+    "type": "content_block_delta",
+
+    "index": 0,
+
+    "delta": {
+
+      "type": "text_delta",
+
+      "text": ".\n\n## Key Components\n\nEvery recursive function needs two parts:\n\n1. **Base case** — a condition that stops the recursion (prevents infinite loops)\n2. **"
+
+    }
+
+  },
+
+  {
+
+    "type": "content_block_delta",
+
+    "index": 0,
+
+    "delta": {
+
+      "type": "text_delta",
+
+      "text": "Recursive case** — where the function calls itself with a smaller/simpler input\n\n## Simple Example: Factorial\n\nThe factorial of a number `"
+
+    }
+
+  },
+
+  {
+
+    "type": "content_block_delta",
+
+    "index": 0,
+
+    "delta": {
+
+      "type": "text_delta",
+
+      "text": "n` (written `n!`) is the product of all positive integers up to `n`:\n\n- `5! = 5 × 4 × 3 × 2 × 1 = 120`\n\nNotice"
+
+    }
+
+  },
+
+  {
+
+    "type": "content_block_delta",
+
+    "index": 0,
+
+    "delta": {
+
+      "type": "text_delta",
+
+      "text": " the pattern: `5! = 5 × 4!` — the problem contains a smaller version of itself."
+
+    }
+
+  },
+
+  {
+
+    "type": "content_block_delta",
+
+    "index": 0,
+
+    "delta": {
+
+      "type": "text_delta",
+
+      "text": " Perfect for recursion!\n\n```python\ndef factorial(n):\n    if n <= 1:          # Base case\n        return 1\n    else:               # Recursive case\n        "
+
+    }
+
+  },
+
+  {
+
+    "type": "content_block_delta",
+
+    "index": 0,
+
+    "delta": {
+
+      "type": "text_delta",
+
+      "text": "return n * factorial(n - 1)\n\nprint(factorial(5))  # Output: 120\n```\n\n## How It Unfolds\n\n```\nfactorial(5)\n= 5 × factorial("
+
+    }
+
+  },
+
+  {
+
+    "type": "content_block_delta",
+
+    "index": 0,
+
+    "delta": {
+
+      "type": "text_delta",
+
+      "text": "4)\n= 5 × 4 × factorial(3)\n= 5 × 4 × 3 × factorial(2)\n= 5 × 4 × 3 × 2 × factorial(1)\n="
+
+    }
+
+  },
+
+  {
+
+    "type": "content_block_delta",
+
+    "index": 0,
+
+    "delta": {
+
+      "type": "text_delta",
+
+      "text": " 5 × 4 × 3 × 2 × 1      ← base case reached\n= 120\n```\n\nThe calls \"stack up\" until h"
+
+    }
+
+  },
+
+  {
+
+    "type": "content_block_delta",
+
+    "index": 0,
+
+    "delta": {
+
+      "type": "text_delta",
+
+      "text": "itting the base case, then results are multiplied back up the chain.\n\n## An Intuitive Analogy\n\nImagine you're in"
+
+    }
+
+  },
+
+  {
+
+    "type": "content_block_delta",
+
+    "index": 0,
+
+    "delta": {
+
+      "type": "text_delta",
+
+      "text": " a movie theater line and want to know your position. Instead of counting everyone yourself, you ask the person in front of you,"
+
+    }
+
+  },
+
+  {
+
+    "type": "content_block_delta",
+
+    "index": 0,
+
+    "delta": {
+
+      "type": "text_delta",
+
+      "text": " \"What's your position?\" They ask the person in front of them... until someone at the front says \"I'm first!\" (base case). Then each person adds 1 and"
+
+    }
+
+  },
+
+  {
+
+    "type": "content_block_delta",
+
+    "index": 0,
+
+    "delta": {
+
+      "type": "text_delta",
+
+      "text": " passes the answer back.\n\n## When to Use Recursion\n\nRecursion shines for naturally recursive structures like"
+
+    }
+
+  },
+
+  {
+
+    "type": "content_block_delta",
+
+    "index": 0,
+
+    "delta": {
+
+      "type": "text_delta",
+
+      "text": ":\n- Tree traversal\n- Directory/file systems\n- Divide-and-conquer algorithms (e.g., merge sort)"
+
+    }
+
+  },
+
+  {
+
+    "type": "content_block_delta",
+
+    "index": 0,
+
+    "delta": {
+
+      "type": "text_delta",
+
+      "text": "\n\n⚠️ **Caution:** Without a proper base case, recursion runs forever and causes a *stack overflow*."
+
+    }
+
+  },
+
+  {
+
+    "type": "content_block_stop",
+
+    "index": 0
+
+  },
+
+  {
+
+    "type": "message_delta",
+
+    "delta": {
+
+      "stop_reason": "end_turn",
+
+      "stop_sequence": null,
+
+      "stop_details": null
+
+    },
+
+    "usage": {
+
+      "input_tokens": 22,
+
+      "cache_creation_input_tokens": 0,
+
+      "cache_read_input_tokens": 0,
+
+      "output_tokens": 689,
+
+      "output_tokens_details": {
+
+        "thinking_tokens": 0
+
+      }
+
+    }
+
+  },
+
+  {
+
+    "type": "message_stop"
+
+  }
+
+]
+
+
+```
+
 ## Parameters
 
-* [ Input ](#tab-panel-128)
-* [ Output ](#tab-panel-129)
+* [ Input ](#tab-panel-132)
+* [ Output ](#tab-panel-133)
 
 max\_tokens
 

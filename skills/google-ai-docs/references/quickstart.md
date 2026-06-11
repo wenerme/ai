@@ -12,7 +12,7 @@ To use the Gemini API, you need to have an API key to authenticate your requests
 
 Create one on AI Studio for free to get started:
 
-[Create a Gemini API Key](https://aistudio.google.com/app/apikey)
+[Create a Gemini API Key](https://aistudio.google.com/apikey)
 
 ## Install the Google GenAI SDK
 

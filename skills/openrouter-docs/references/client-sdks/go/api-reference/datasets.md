@@ -14,7 +14,98 @@ Datasets endpoints
 
 ### Available Operations
 
+* [GetAppRankings](#getapprankings) - Top apps by token usage
 * [GetRankingsDaily](#getrankingsdaily) - Daily token totals for top 50 models
+
+## GetAppRankings
+
+Returns the top public apps on OpenRouter ranked by token usage inside the requested
+date window, matching the public apps marketplace on openrouter.ai/apps. Token totals
+are `prompt_tokens + completion_tokens`; hidden and private apps are excluded and
+traffic from related app aliases is merged into the canonical visible app.
+
+`sort=popular` (default) ranks by total token volume inside the window.
+`sort=trending` ranks by absolute excess token growth: window volume minus the average
+volume of the three equal-length periods immediately preceding the window. Apps with
+no excess growth are omitted, so `trending` may return fewer than `limit` rows.
+
+Filter with `category` (marketplace category group, e.g. `coding`) or `subcategory`
+(e.g. `cli-agent`). Ranks are re-numbered 1..N after filtering. Page with `offset` —
+`rank` stays absolute, so the first row of `offset=50` is `rank: 51`.
+
+Authenticate with any valid OpenRouter API key (same key used for inference).
+Rate-limited to 30 requests/minute per key and 500 requests/day per account.
+
+When republishing or quoting this dataset, OpenRouter must be cited as:
+"Source: OpenRouter (openrouter.ai/apps), as of \{as\_of}."
+
+Token counts come from each upstream provider's own tokenizer, so a token attributed
+to one app is not directly comparable to a token attributed to another app whose
+traffic flows through a different provider.
+
+### Example Usage
+
+```go
+package main
+
+import(
+	"context"
+	"os"
+	openrouter "github.com/OpenRouterTeam/go-sdk"
+	"github.com/OpenRouterTeam/go-sdk/models/operations"
+	"log"
+)
+
+func main() {
+    ctx := context.Background()
+
+    s := openrouter.New(
+        openrouter.WithSecurity(os.Getenv("OPENROUTER_API_KEY")),
+    )
+
+    res, err := s.Datasets.GetAppRankings(ctx, &operations.GetAppRankingsRequest{})
+    if err != nil {
+        log.Fatal(err)
+    }
+    if res != nil {
+        for {
+            // handle items
+
+            res, err = res.Next()
+
+            if err != nil {
+                // handle error
+            }
+
+            if res == nil {
+                break
+            }
+        }
+    }
+}
+```
+
+### Parameters
+
+| Parameter | Type                                                                                             | Required             | Description                                |
+| --------- | ------------------------------------------------------------------------------------------------ | -------------------- | ------------------------------------------ |
+| `ctx`     | [context.Context](https://pkg.go.dev/context#Context)                                            | :heavy\_check\_mark: | The context to use for the request.        |
+| `request` | [operations.GetAppRankingsRequest](/docs/sdks/go/api-reference/operations/getapprankingsrequest) | :heavy\_check\_mark: | The request object to use for the request. |
+| `opts`    | \[][operations.Option](/docs/sdks/go/api-reference/operations/option)                            | :heavy\_minus\_sign: | The options for this request.              |
+
+### Response
+
+**[\*operations.GetAppRankingsResponse](/docs/sdks/go/api-reference/operations/getapprankingsresponse), error**
+
+### Errors
+
+| Error Type                             | Status Code | Content Type     |
+| -------------------------------------- | ----------- | ---------------- |
+| sdkerrors.BadRequestResponseError      | 400         | application/json |
+| sdkerrors.UnauthorizedResponseError    | 401         | application/json |
+| sdkerrors.TooManyRequestsResponseError | 429         | application/json |
+| sdkerrors.InternalServerResponseError  | 500         | application/json |
+| sdkerrors.APIError                     | 4XX, 5XX    | \*/\*            |
 
 ## GetRankingsDaily
 

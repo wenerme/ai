@@ -15,6 +15,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 * [ Features ](https://developers.cloudflare.com/images/optimization/features/)
 * [ Remote images (transformations) ](https://developers.cloudflare.com/images/optimization/transformations/)
 * [ Hosted images ](https://developers.cloudflare.com/images/optimization/hosted-images/)
+* [ Optimize with Workers ](https://developers.cloudflare.com/images/optimization/binding/)
 * [ Make responsive images ](https://developers.cloudflare.com/images/optimization/make-responsive-images/)
 
 ```json

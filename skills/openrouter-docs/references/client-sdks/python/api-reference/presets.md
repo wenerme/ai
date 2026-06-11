@@ -14,9 +14,111 @@ Presets endpoints
 
 ### Available Operations
 
+* [list](#list) - List presets
+* [get](#get) - Get a preset
 * [create\_presets\_chat\_completions](#create_presets_chat_completions) - Create a preset from a chat-completions request body
 * [create\_presets\_messages](#create_presets_messages) - Create a preset from a messages request body
 * [create\_presets\_responses](#create_presets_responses) - Create a preset from a responses request body
+* [list\_versions](#list_versions) - List versions of a preset
+* [get\_version](#get_version) - Get a specific version of a preset
+
+## list
+
+Lists all presets for the authenticated user, ordered by most recently updated first.
+
+### Example Usage
+
+```python
+from openrouter import OpenRouter
+import os
+
+with OpenRouter(
+    http_referer="<value>",
+    x_open_router_title="<value>",
+    x_open_router_categories="<value>",
+    api_key=os.getenv("OPENROUTER_API_KEY", ""),
+) as open_router:
+
+    res = open_router.presets.list()
+
+    while res is not None:
+        # Handle items
+
+        res = res.next()
+
+```
+
+### Parameters
+
+| Parameter                  | Type                                                               | Required             | Description                                                                                                                                                 | Example |
+| -------------------------- | ------------------------------------------------------------------ | -------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------- | ------- |
+| `http_referer`             | *Optional\[str]*                                                   | :heavy\_minus\_sign: | The app identifier should be your app's URL and is used as the primary identifier for rankings.<br />This is used to track API usage per application.<br /> |         |
+| `x_open_router_title`      | *Optional\[str]*                                                   | :heavy\_minus\_sign: | The app display name allows you to customize how your app appears in OpenRouter's dashboard.<br />                                                          |         |
+| `x_open_router_categories` | *Optional\[str]*                                                   | :heavy\_minus\_sign: | Comma-separated list of app categories (e.g. "cli-agent,cloud-agent"). Used for marketplace rankings.<br />                                                 |         |
+| `offset`                   | *Optional\[int]*                                                   | :heavy\_minus\_sign: | Number of records to skip for pagination                                                                                                                    | 0       |
+| `limit`                    | *Optional\[int]*                                                   | :heavy\_minus\_sign: | Maximum number of records to return (max 100)                                                                                                               | 50      |
+| `retries`                  | [Optional\[utils.RetryConfig\]](../../models/utils/retryconfig.md) | :heavy\_minus\_sign: | Configuration to override the default retry behavior of the client.                                                                                         |         |
+
+### Response
+
+**[operations.ListPresetsResponse](/docs/sdks/python/api-reference/operations/listpresetsresponse)**
+
+### Errors
+
+| Error Type                         | Status Code | Content Type     |
+| ---------------------------------- | ----------- | ---------------- |
+| errors.BadRequestResponseError     | 400         | application/json |
+| errors.UnauthorizedResponseError   | 401         | application/json |
+| errors.InternalServerResponseError | 500         | application/json |
+| errors.OpenRouterDefaultError      | 4XX, 5XX    | \*/\*            |
+
+## get
+
+Retrieves a preset by its slug with its currently designated version inline.
+
+### Example Usage
+
+```python
+from openrouter import OpenRouter
+import os
+
+with OpenRouter(
+    http_referer="<value>",
+    x_open_router_title="<value>",
+    x_open_router_categories="<value>",
+    api_key=os.getenv("OPENROUTER_API_KEY", ""),
+) as open_router:
+
+    res = open_router.presets.get(slug="my-preset")
+
+    # Handle response
+    print(res)
+
+```
+
+### Parameters
+
+| Parameter                  | Type                                                               | Required             | Description                                                                                                                                                 | Example   |
+| -------------------------- | ------------------------------------------------------------------ | -------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------- | --------- |
+| `slug`                     | *str*                                                              | :heavy\_check\_mark: | URL-safe slug identifying the preset.                                                                                                                       | my-preset |
+| `http_referer`             | *Optional\[str]*                                                   | :heavy\_minus\_sign: | The app identifier should be your app's URL and is used as the primary identifier for rankings.<br />This is used to track API usage per application.<br /> |           |
+| `x_open_router_title`      | *Optional\[str]*                                                   | :heavy\_minus\_sign: | The app display name allows you to customize how your app appears in OpenRouter's dashboard.<br />                                                          |           |
+| `x_open_router_categories` | *Optional\[str]*                                                   | :heavy\_minus\_sign: | Comma-separated list of app categories (e.g. "cli-agent,cloud-agent"). Used for marketplace rankings.<br />                                                 |           |
+| `retries`                  | [Optional\[utils.RetryConfig\]](../../models/utils/retryconfig.md) | :heavy\_minus\_sign: | Configuration to override the default retry behavior of the client.                                                                                         |           |
+
+### Response
+
+**[components.GetPresetResponse](/docs/sdks/python/api-reference/components/getpresetresponse)**
+
+### Errors
+
+| Error Type                         | Status Code | Content Type     |
+| ---------------------------------- | ----------- | ---------------- |
+| errors.BadRequestResponseError     | 400         | application/json |
+| errors.UnauthorizedResponseError   | 401         | application/json |
+| errors.NotFoundResponseError       | 404         | application/json |
+| errors.InternalServerResponseError | 500         | application/json |
+| errors.OpenRouterDefaultError      | 4XX, 5XX    | \*/\*            |
 
 ## create\_presets\_chat\_completions
 
@@ -273,5 +375,106 @@ with OpenRouter(
 | errors.ForbiddenResponseError      | 403         | application/json |
 | errors.NotFoundResponseError       | 404         | application/json |
 | errors.ConflictResponseError       | 409         | application/json |
+| errors.InternalServerResponseError | 500         | application/json |
+| errors.OpenRouterDefaultError      | 4XX, 5XX    | \*/\*            |
+
+## list\_versions
+
+Lists all versions of a preset, ordered by version number ascending (oldest first).
+
+### Example Usage
+
+```python
+from openrouter import OpenRouter
+import os
+
+with OpenRouter(
+    http_referer="<value>",
+    x_open_router_title="<value>",
+    x_open_router_categories="<value>",
+    api_key=os.getenv("OPENROUTER_API_KEY", ""),
+) as open_router:
+
+    res = open_router.presets.list_versions(slug="my-preset")
+
+    while res is not None:
+        # Handle items
+
+        res = res.next()
+
+```
+
+### Parameters
+
+| Parameter                  | Type                                                               | Required             | Description                                                                                                                                                 | Example   |
+| -------------------------- | ------------------------------------------------------------------ | -------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------- | --------- |
+| `slug`                     | *str*                                                              | :heavy\_check\_mark: | URL-safe slug identifying the preset.                                                                                                                       | my-preset |
+| `http_referer`             | *Optional\[str]*                                                   | :heavy\_minus\_sign: | The app identifier should be your app's URL and is used as the primary identifier for rankings.<br />This is used to track API usage per application.<br /> |           |
+| `x_open_router_title`      | *Optional\[str]*                                                   | :heavy\_minus\_sign: | The app display name allows you to customize how your app appears in OpenRouter's dashboard.<br />                                                          |           |
+| `x_open_router_categories` | *Optional\[str]*                                                   | :heavy\_minus\_sign: | Comma-separated list of app categories (e.g. "cli-agent,cloud-agent"). Used for marketplace rankings.<br />                                                 |           |
+| `offset`                   | *Optional\[int]*                                                   | :heavy\_minus\_sign: | Number of records to skip for pagination                                                                                                                    | 0         |
+| `limit`                    | *Optional\[int]*                                                   | :heavy\_minus\_sign: | Maximum number of records to return (max 100)                                                                                                               | 50        |
+| `retries`                  | [Optional\[utils.RetryConfig\]](../../models/utils/retryconfig.md) | :heavy\_minus\_sign: | Configuration to override the default retry behavior of the client.                                                                                         |           |
+
+### Response
+
+**[operations.ListPresetVersionsResponse](/docs/sdks/python/api-reference/operations/listpresetversionsresponse)**
+
+### Errors
+
+| Error Type                         | Status Code | Content Type     |
+| ---------------------------------- | ----------- | ---------------- |
+| errors.BadRequestResponseError     | 400         | application/json |
+| errors.UnauthorizedResponseError   | 401         | application/json |
+| errors.NotFoundResponseError       | 404         | application/json |
+| errors.InternalServerResponseError | 500         | application/json |
+| errors.OpenRouterDefaultError      | 4XX, 5XX    | \*/\*            |
+
+## get\_version
+
+Retrieves a specific version of a preset by its slug and version number.
+
+### Example Usage
+
+```python
+from openrouter import OpenRouter
+import os
+
+with OpenRouter(
+    http_referer="<value>",
+    x_open_router_title="<value>",
+    x_open_router_categories="<value>",
+    api_key=os.getenv("OPENROUTER_API_KEY", ""),
+) as open_router:
+
+    res = open_router.presets.get_version(slug="my-preset", version="1")
+
+    # Handle response
+    print(res)
+
+```
+
+### Parameters
+
+| Parameter                  | Type                                                               | Required             | Description                                                                                                                                                 | Example   |
+| -------------------------- | ------------------------------------------------------------------ | -------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------- | --------- |
+| `slug`                     | *str*                                                              | :heavy\_check\_mark: | URL-safe slug identifying the preset.                                                                                                                       | my-preset |
+| `version`                  | *str*                                                              | :heavy\_check\_mark: | Version number of the preset.                                                                                                                               | 1         |
+| `http_referer`             | *Optional\[str]*                                                   | :heavy\_minus\_sign: | The app identifier should be your app's URL and is used as the primary identifier for rankings.<br />This is used to track API usage per application.<br /> |           |
+| `x_open_router_title`      | *Optional\[str]*                                                   | :heavy\_minus\_sign: | The app display name allows you to customize how your app appears in OpenRouter's dashboard.<br />                                                          |           |
+| `x_open_router_categories` | *Optional\[str]*                                                   | :heavy\_minus\_sign: | Comma-separated list of app categories (e.g. "cli-agent,cloud-agent"). Used for marketplace rankings.<br />                                                 |           |
+| `retries`                  | [Optional\[utils.RetryConfig\]](../../models/utils/retryconfig.md) | :heavy\_minus\_sign: | Configuration to override the default retry behavior of the client.                                                                                         |           |
+
+### Response
+
+**[components.GetPresetVersionResponse](/docs/sdks/python/api-reference/components/getpresetversionresponse)**
+
+### Errors
+
+| Error Type                         | Status Code | Content Type     |
+| ---------------------------------- | ----------- | ---------------- |
+| errors.BadRequestResponseError     | 400         | application/json |
+| errors.UnauthorizedResponseError   | 401         | application/json |
+| errors.NotFoundResponseError       | 404         | application/json |
 | errors.InternalServerResponseError | 500         | application/json |
 | errors.OpenRouterDefaultError      | 4XX, 5XX    | \*/\*            |

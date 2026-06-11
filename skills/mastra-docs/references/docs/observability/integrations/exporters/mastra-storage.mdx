@@ -9,7 +9,7 @@ packages:
 
 The `MastraStorageExporter` persists traces to your configured storage backend, making them accessible through Studio. It requires no external services.
 
-> **note**: `MastraStorageExporter` was previously called `DefaultExporter`. The original `DefaultExporter` class is still exported from `@mastra/observability` for backward compatibility, but it is deprecated. New code should use `MastraStorageExporter`.
+> **note**: `MastraStorageExporter` was previously called `DefaultExporter`. The original `DefaultExporter` class is still exported from `@mastra/observability` for backward compatibility, but it's deprecated. New code should use `MastraStorageExporter`.
 
 :::warning[Production Observability]
 Observability data can quickly overwhelm general-purpose databases in production. For high-traffic applications, route the observability storage domain to [ClickHouse](/reference/storage/clickhouse) through [composite storage](/reference/storage/composite). See [Production Recommendations](#production-recommendations) for details.
@@ -186,11 +186,11 @@ The MastraStorageExporter includes robust error handling for production use:
 
 ## Dropped observability events
 
-`DefaultExporter` emits structured drop events when it cannot persist observability data. Register an exporter or bridge with `onDroppedEvent` to forward these drops to alerting or monitoring.
+`DefaultExporter` emits structured drop events when it can't persist observability data. Register an exporter or bridge with `onDroppedEvent` to forward these drops to alerting or monitoring.
 
-There are two drop reasons:
+For two reasons events are dropped:
 
-- `unsupported-storage`: The storage provider does not implement the signal type.
+- `unsupported-storage`: The storage provider doesn't implement the signal type.
 - `retry-exhausted`: The exporter retried a batch up to `maxRetries` times and then dropped it.
 
 The following example demonstrates forwarding drop details to a monitoring endpoint:

@@ -10202,10 +10202,10 @@
   "codex-docs/app/windows.md": {
     "url": "https://developers.openai.com/codex/app/windows.md",
     "skill": "codex-docs",
-    "etag": "W/\"0d3d778bcc75344289c387b817eb965d\"",
-    "lastModified": "Wed, 22 Apr 2026 00:17:44 GMT",
-    "size": 9965,
-    "updatedAt": "2026-04-22T00:28:09.912Z"
+    "etag": "W/\"0c19e19ac86182313349bc2f65881e93\"",
+    "lastModified": "Thu, 11 Jun 2026 00:26:46 GMT",
+    "size": 9792,
+    "updatedAt": "2026-06-11T00:54:07.856Z"
   },
   "codex-docs/app/worktrees.md": {
     "url": "https://developers.openai.com/codex/app/worktrees.md",
@@ -10610,10 +10610,10 @@
   "codex-docs/pricing.md": {
     "url": "https://developers.openai.com/codex/pricing.md",
     "skill": "codex-docs",
-    "etag": "W/\"e1b43338d8c3f13c8e700f9a7c8fc284\"",
-    "lastModified": "Thu, 04 Jun 2026 00:28:36 GMT",
-    "size": 48470,
-    "updatedAt": "2026-06-04T00:58:22.070Z"
+    "etag": "W/\"e0415be7feaae27094bf7d1806e6ada1\"",
+    "lastModified": "Wed, 10 Jun 2026 23:53:55 GMT",
+    "size": 46647,
+    "updatedAt": "2026-06-11T00:54:19.875Z"
   },
   "codex-docs/prompting.md": {
     "url": "https://developers.openai.com/codex/prompting.md",

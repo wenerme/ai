@@ -240,12 +240,6 @@ GPT-5.5 being a significantly more capable model.
             <td style="text-align:center">Not available</td>
             <td style="text-align:center">Not available</td>
           </tr>
-          <tr>
-            <td>GPT-5.3-Codex</td>
-            <td style="text-align:center">30-150</td>
-            <td style="text-align:center">10-60</td>
-            <td style="text-align:center">20-50</td>
-          </tr>
         </tbody>
         <tfoot>
           <tr>
@@ -308,12 +302,6 @@ GPT-5.5 being a significantly more capable model.
             <td style="text-align:center">300-1750</td>
             <td style="text-align:center">Not available</td>
             <td style="text-align:center">Not available</td>
-          </tr>
-          <tr>
-            <td>GPT-5.3-Codex</td>
-            <td style="text-align:center">150-750</td>
-            <td style="text-align:center">50-300</td>
-            <td style="text-align:center">100-250</td>
           </tr>
         </tbody>
         <tfoot>
@@ -378,12 +366,6 @@ GPT-5.5 being a significantly more capable model.
             <td style="text-align:center">Not available</td>
             <td style="text-align:center">Not available</td>
           </tr>
-          <tr>
-            <td>GPT-5.3-Codex</td>
-            <td style="text-align:center">600-3000</td>
-            <td style="text-align:center">200-1200</td>
-            <td style="text-align:center">400-1000</td>
-          </tr>
         </tbody>
         <tfoot>
           <tr>
@@ -447,12 +429,6 @@ GPT-5.5 being a significantly more capable model.
             <td style="text-align:center">Not available</td>
             <td style="text-align:center">Not available</td>
           </tr>
-          <tr>
-            <td>GPT-5.3-Codex</td>
-            <td style="text-align:center">30-150</td>
-            <td style="text-align:center">10-60</td>
-            <td style="text-align:center">20-50</td>
-          </tr>
         </tbody>
         <tfoot>
           <tr>
@@ -514,14 +490,6 @@ GPT-5.5 being a significantly more capable model.
           </tr>
           <tr>
             <td>GPT-5.4-mini</td>
-            <td style="text-align:center">
-              [Usage-based](https://platform.openai.com/docs/pricing)
-            </td>
-            <td style="text-align:center">Not available</td>
-            <td style="text-align:center">Not available</td>
-          </tr>
-          <tr>
-            <td>GPT-5.3-Codex</td>
             <td style="text-align:center">
               [Usage-based](https://platform.openai.com/docs/pricing)
             </td>
@@ -662,18 +630,6 @@ sales](https://chatgpt.com/contact-sales?utm_internal_source=openai_developers_c
         <td style="text-align:center">113 credits</td>
       </tr>
       <tr>
-        <td>GPT-5.3-Codex</td>
-        <td style="text-align:center">43.75 credits</td>
-        <td style="text-align:center">4.375 credits</td>
-        <td style="text-align:center">350 credits</td>
-      </tr>
-      <tr>
-        <td>GPT-5.2</td>
-        <td style="text-align:center">43.75 credits</td>
-        <td style="text-align:center">4.375 credits</td>
-        <td style="text-align:center">350 credits</td>
-      </tr>
-      <tr>
         <td>GPT-5.3-Codex-Spark</td>
         <td colspan="3" style="text-align:center">
           research preview
@@ -702,11 +658,6 @@ sales](https://chatgpt.com/contact-sales?utm_internal_source=openai_developers_c
         <td colspan="4" style="text-align:center">
           Fast mode consumes credits at a higher rate for supported models. See
           <a href="/codex/speed">Speed</a> for rates.
-        </td>
-      </tr>
-      <tr>
-        <td colspan="4" style="text-align:center">
-          Cloud tasks and code review run on GPT-5.3-Codex.
         </td>
       </tr>
     </tfoot>

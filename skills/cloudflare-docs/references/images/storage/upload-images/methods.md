@@ -18,6 +18,7 @@ If you have a [paid Images plan](https://developers.cloudflare.com/images/pricin
 
 * Upload directly through the dashboard. This is primarily used for one-off uploads.
 * Upload using API endpoints.
+* Upload from a Worker using the [Images binding](https://developers.cloudflare.com/images/storage/binding/).
 * Import images from S3 using Sourcing Kit.
 
 ---

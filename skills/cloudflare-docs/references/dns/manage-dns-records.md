@@ -43,7 +43,13 @@ Also, as this record is [proxied](https://developers.cloudflare.com/dns/proxy-st
 
 ## DNS records quota
 
-There is a limit to the number of records you can create on a single zone.
+Cloudflare limits the number of DNS records you can create. Depending on your plan, this limit is enforced either per zone or per account — not both.
+
+DNS records that other Cloudflare services create on your behalf also count toward your quota.
+
+### Per-zone quota
+
+By default, there is a limit to the number of records you can create on a single zone.
 
 * Free zones created before `2024-09-01 00:00:00 UTC`: 1,000
 * Free zones created on or after `2024-09-01 00:00:00 UTC`: 200
@@ -51,9 +57,19 @@ There is a limit to the number of records you can create on a single zone.
 * Business: 3,500
 * Enterprise: 3,500
 
+You can retrieve a zone's current quota (if applicable) and usage [via the API](https://developers.cloudflare.com/api/resources/dns/subresources/usage/subresources/zone/methods/get/).
+
+### Per-account quota
+
+Enterprise accounts have a quota on the total number of records across all of their zones, instead of the per-zone limit. This lets you distribute records across your zones however you like, regardless of each zone's plan.
+
+Public zones and [internal zones](https://developers.cloudflare.com/dns/internal-dns/) are counted separately, each with a default account quota of 1,000,000 records.
+
+You can retrieve your current account quota and usage [via the API](https://developers.cloudflare.com/api/resources/dns/subresources/usage/subresources/account/methods/get/).
+
 For more DNS records
 
-If you are an Enterprise customer and require more DNS records, contact your account team. Cloudflare can support millions of DNS records on a single zone.
+If you are an Enterprise customer and require a higher account quota, contact your account team. Cloudflare can support millions of DNS records.
 
 ## Resources
 

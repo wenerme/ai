@@ -31,7 +31,7 @@ Before notifying Cloudflare of an issue with your site, refer to the [Cloudflare
 
 ## Methods of contacting Cloudflare support
 
-As a Cloudflare customer, you can contact Cloudflare for support via the community portal or by opening a support case, live chat, or phone. Support options can vary depending on your plan.
+As a Cloudflare customer, you can contact Cloudflare for support via the community portal or by [opening a support case](#submit-a-support-case), live chat, or phone. Support options can vary depending on your plan.
 
 | Enterprise                                                                                                                                                                                                        | Business | Pro | Free        |                           |
 | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------- | --- | ----------- | ------------------------- |

@@ -16,8 +16,8 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 The minimum required configuration for using Sandbox SDK:
 
-* [  wrangler.jsonc ](#tab-panel-10000)
-* [  wrangler.toml ](#tab-panel-10001)
+* [  wrangler.jsonc ](#tab-panel-10032)
+* [  wrangler.toml ](#tab-panel-10033)
 
 JSONC
 
@@ -145,8 +145,8 @@ npx wrangler r2 bucket create my-backup-bucket
 
 ### 2\. Add the binding and environment variables
 
-* [  wrangler.jsonc ](#tab-panel-9994)
-* [  wrangler.toml ](#tab-panel-9995)
+* [  wrangler.jsonc ](#tab-panel-10026)
+* [  wrangler.toml ](#tab-panel-10027)
 
 JSONC
 
@@ -224,8 +224,8 @@ The SDK uses these credentials to generate presigned URLs that allow the contain
 
 **Solution**: Ensure your `wrangler.jsonc` includes the Durable Objects binding:
 
-* [  wrangler.jsonc ](#tab-panel-9996)
-* [  wrangler.toml ](#tab-panel-9997)
+* [  wrangler.jsonc ](#tab-panel-10028)
+* [  wrangler.toml ](#tab-panel-10029)
 
 JSONC
 
@@ -273,8 +273,8 @@ name = "Sandbox"
 
 **Solution**: Add migrations for the Sandbox class:
 
-* [  wrangler.jsonc ](#tab-panel-9998)
-* [  wrangler.toml ](#tab-panel-9999)
+* [  wrangler.jsonc ](#tab-panel-10030)
+* [  wrangler.toml ](#tab-panel-10031)
 
 JSONC
 

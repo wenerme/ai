@@ -12,13 +12,23 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 # Troubleshooting
 
-Taking into account the [steps involved in DCV](https://developers.cloudflare.com/ssl/edge-certificates/changing-dcv-method/dcv-flow/), some situations may interfere with certificate issuance and renewal.
-
-[Blocked validation URLs](#blocked-validation-url) or [misconfigured DNS settings](#dns-settings-and-records) might interfere with the certificate authority's ability to finish the validation process. In these situations, you may need to update your configuration at Cloudflare or at your authoritative DNS provider. Additionally, there can also be [errors on the CA side](#ca-errors).
+If your certificate is stuck in **Pending Validation** or failing to issue, the certificate authority (CA) may be unable to complete [domain control validation (DCV)](https://developers.cloudflare.com/ssl/edge-certificates/changing-dcv-method/dcv-flow/). This page helps you identify and resolve common DCV issues.
 
 Note
 
 If you are using the Cloudflare API, error messages are presented under the `validation_errors` parameter.
+
+## Quick checklist
+
+Use this checklist to identify common DCV issues:
+
+* [No rules blocking the validation URL](#blocked-validation-url) \- WAF rules, IP access rules, or Under Attack mode can block the CA
+* [No redirects on the validation path](#redirection) \- The `/.well-known/*` path must not redirect (especially HTTP to HTTPS in partial setups)
+* [DNS records are resolvable](#dns-settings-and-records) \- DNSSEC must be valid, and records must resolve from all locations
+* [CAA records allow the CA](#caa-records) \- CAA records must permit Cloudflare's partner CAs to issue certificates
+* [No CA-side errors](#ca-errors) \- Rate limits, policy blocks, or temporary CA issues
+
+---
 
 ## Blocked validation URL
 
@@ -35,7 +45,23 @@ Enabling [Always Use HTTPS](https://developers.cloudflare.com/ssl/edge-certifica
 
 In a [Partial (CNAME) setup](https://developers.cloudflare.com/ssl/edge-certificates/changing-dcv-method/#partial-dns-setup---action-sometimes-required) where you are managing the token on the origin side, please ensure that no redirection from HTTP to HTTPS occurs on the `/.well-known/*` path.
 
-When using [Redirect Rules](https://developers.cloudflare.com/rules/url-forwarding/single-redirects/) the `/.well-known/*` path should be excluded from redirections.
+When using [Redirect Rules](https://developers.cloudflare.com/rules/url-forwarding/single-redirects/), exclude the `/.well-known/*` path from redirections by adding a condition to your rule:
+
+```
+
+not starts_with(http.request.uri.path, "/.well-known/")
+
+
+```
+
+For example, if you have a rule that redirects all HTTP traffic to HTTPS, modify the rule expression to:
+
+```
+
+(http.request.scheme eq "http") and not starts_with(http.request.uri.path, "/.well-known/")
+
+
+```
 
 ## DNS settings and records
 
@@ -58,8 +84,8 @@ Consider the following when troubleshooting:
 
 You can check the CAA records by running the following command:
 
-* [ macOS and Linux ](#tab-panel-10045)
-* [ Windows ](#tab-panel-10046)
+* [ macOS and Linux ](#tab-panel-10395)
+* [ Windows ](#tab-panel-10396)
 
 Terminal window
 
@@ -79,7 +105,13 @@ Resolve-DnsName -Name example.com -Type CAA
 
 ```
 
-## CA errors
+## Certificate authority (CA) errors
+
+A [certificate authority (CA)](https://developers.cloudflare.com/ssl/reference/certificate-authorities/) is the organization that issues your SSL/TLS certificate. Cloudflare partners with multiple CAs to provide certificates for your domain.
+
+Note
+
+Selecting a different CA is only available with [Advanced Certificate Manager](https://developers.cloudflare.com/ssl/edge-certificates/advanced-certificate-manager/) or [SSL for SaaS](https://developers.cloudflare.com/cloudflare-for-platforms/cloudflare-for-saas/security/certificate-management/). [Universal SSL](https://developers.cloudflare.com/ssl/edge-certificates/universal-ssl/) customers cannot change the CA.
 
 ### Rate limiting
 
@@ -91,19 +123,49 @@ A certificate is considered a duplicate of an earlier certificate if it contains
 
 In this case, you can either wait for the rate limit window to end or choose a different certificate authority.
 
-### Multiple perspective CAA check error
+When you see `The authority has rate limited these domains. Please wait for the rate limit to expire or try another authority`, the certificate authority has temporarily blocked certificate issuance for your domain due to too many recent requests.
 
-The error `Certificate authority encountered a multiple perspective CAA check error, please ensure your DNS is configured to allow CAA queries` means that the CA was not able to resolve the CAA records related to your domain from specific geographic locations.
+Rate limit windows vary by CA:
 
-You can investigate for resolution error using the [ping.pe tool ↗](https://dig.ping.pe/). For example, for a [Google Trust Services](https://developers.cloudflare.com/ssl/reference/certificate-authorities/#google-trust-services) certificate encountering this issue, you can check for: `<hostname>:CAA:8.8.8.8`.
+* **Let's Encrypt**: 7 days for most rate limits (refer to [Let's Encrypt rate limits ↗](https://letsencrypt.org/docs/rate-limits/))
+* **Google Trust Services**: Varies by limit type (refer to [Google Trust Services documentation ↗](https://pki.goog/faq/))
 
-Read more from Certificate Authorities specific documentation: [SSL.com ↗](https://www.ssl.com/blogs/multi-perspective-issuance-corroboration-mpic-arrives/), [Let's Encrypt ↗](https://letsencrypt.org/2020/02/19/multi-perspective-validation), and [Google Trust Services ↗](https://pki.goog/faq/#faq-mpic).
+**Resolution**: Wait for the rate limit window to expire, or select a different CA.
+
+### CAA records block issuance
+
+The error `CAA records block issuance. Please remove all CAA records or add records for this authority` indicates that your domain's [CAA records](https://developers.cloudflare.com/ssl/edge-certificates/caa-records/) do not allow the selected certificate authority to issue certificates.
+
+**Resolution**: Either remove all CAA records from your domain, or add CAA records that explicitly allow [Cloudflare's partner certificate authorities](https://developers.cloudflare.com/ssl/reference/certificate-authorities/).
+
+### Multiple perspective validation errors
+
+Certificate authorities perform domain validation from multiple geographic locations to prevent certain attacks. You may encounter one of these errors:
+
+* `Certificate authority encountered a multiple perspective CAA check error, please ensure your DNS is configured to allow CAA queries from all geographic perspectives`
+* `Certificate authority was unable to verify domain ownership from multiple geographic locations (MPIC failure). Please ensure your DNS records are reachable from all geographic perspectives and try again.`
+
+**Resolution**: Ensure your DNS records (including CAA records) are consistently resolvable from all geographic locations. You can investigate resolution errors using the [ping.pe tool ↗](https://dig.ping.pe/). For example, for a [Google Trust Services](https://developers.cloudflare.com/ssl/reference/certificate-authorities/#google-trust-services) certificate, check: `<hostname>:CAA:8.8.8.8`.
+
+Read more from certificate authority documentation: [SSL.com ↗](https://www.ssl.com/blogs/multi-perspective-issuance-corroboration-mpic-arrives/), [Let's Encrypt ↗](https://letsencrypt.org/2020/02/19/multi-perspective-validation), and [Google Trust Services ↗](https://pki.goog/faq/#faq-mpic).
+
+### DNS lookup errors
+
+The error `the Certificate Authority had trouble performing a DNS lookup` indicates that the CA could not resolve your domain's DNS records. Common causes include SERVFAIL responses, NXDOMAIN, or DNSSEC validation failures.
+
+**Resolution**: Verify that your DNS records are correctly configured and resolvable. Use tools like [DNSViz ↗](https://dnsviz.net/) to check for DNSSEC issues, and ensure your authoritative nameservers are responding correctly.
+
+### Rejected identifier
+
+The error `The certificate authority will not issue for this domain. Please check your input or try another authority` means the CA has policies that prevent issuing certificates for your specific domain.
+
+**Resolution**: Verify that your domain name is correctly spelled and does not violate the CA's issuance policies. If the domain is valid, try selecting a different CA.
 
 ### Internal errors
 
-When the certificate authority finds an issue during the CA check portion of the [DCV flow](https://developers.cloudflare.com/ssl/edge-certificates/changing-dcv-method/dcv-flow/), you may see a `Internal error with Certificate Authority` message. In this case, either wait or try a different certificate authority.
+When you see `Internal error with Certificate Authority. Please check later`, the certificate authority encountered a temporary issue during validation.
 
-When the error states that the `certificate authority will not issue for this domain`, you can try a different certificate authority or contact the CA directly.
+**Resolution**: Wait a few minutes and retry. If the issue persists, try selecting a different CA. Cloudflare will automatically retry validation according to the [validation backoff schedule](https://developers.cloudflare.com/ssl/edge-certificates/changing-dcv-method/validation-backoff-schedule/).
 
 ```json
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/ssl/","name":"SSL/TLS"}},{"@type":"ListItem","position":3,"item":{"@id":"/ssl/edge-certificates/","name":"Edge certificates"}},{"@type":"ListItem","position":4,"item":{"@id":"/ssl/edge-certificates/changing-dcv-method/","name":"Domain control validation (DCV)"}},{"@type":"ListItem","position":5,"item":{"@id":"/ssl/edge-certificates/changing-dcv-method/troubleshooting/","name":"Troubleshooting"}}]}

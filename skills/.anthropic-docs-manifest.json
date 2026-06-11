@@ -14,10 +14,8 @@
   "anthropic-docs/build-with-claude/overview.md": {
     "url": "https://platform.claude.com/docs/en/build-with-claude/overview",
     "skill": "anthropic-docs",
-    "etag": "W/\"3789-19e70c36490\"",
-    "lastModified": "Thu, 28 May 2026 22:45:14 GMT",
-    "size": 14213,
-    "updatedAt": "2026-05-29T00:31:45.076Z"
+    "size": 15089,
+    "updatedAt": "2026-06-11T00:35:07.336Z"
   },
   "anthropic-docs/build-with-claude/working-with-messages.md": {
     "url": "https://platform.claude.com/docs/en/build-with-claude/working-with-messages",
@@ -34,26 +32,26 @@
   "anthropic-docs/build-with-claude/refusals-and-fallback.md": {
     "url": "https://platform.claude.com/docs/en/build-with-claude/refusals-and-fallback",
     "skill": "anthropic-docs",
-    "size": 38246,
-    "updatedAt": "2026-06-10T00:34:05.122Z"
+    "size": 38856,
+    "updatedAt": "2026-06-11T00:35:08.245Z"
   },
   "anthropic-docs/build-with-claude/fallback-credit.md": {
     "url": "https://platform.claude.com/docs/en/build-with-claude/fallback-credit",
     "skill": "anthropic-docs",
-    "size": 32980,
-    "updatedAt": "2026-06-10T00:34:05.451Z"
+    "size": 33171,
+    "updatedAt": "2026-06-11T00:35:08.549Z"
   },
   "anthropic-docs/build-with-claude/extended-thinking.md": {
     "url": "https://platform.claude.com/docs/en/build-with-claude/extended-thinking",
     "skill": "anthropic-docs",
-    "size": 138197,
-    "updatedAt": "2026-06-10T00:34:05.789Z"
+    "size": 138737,
+    "updatedAt": "2026-06-11T00:35:08.847Z"
   },
   "anthropic-docs/build-with-claude/adaptive-thinking.md": {
     "url": "https://platform.claude.com/docs/en/build-with-claude/adaptive-thinking",
     "skill": "anthropic-docs",
-    "size": 40375,
-    "updatedAt": "2026-06-10T00:34:06.096Z"
+    "size": 40612,
+    "updatedAt": "2026-06-11T00:35:09.473Z"
   },
   "anthropic-docs/build-with-claude/effort.md": {
     "url": "https://platform.claude.com/docs/en/build-with-claude/effort",
@@ -78,8 +76,8 @@
   "anthropic-docs/build-with-claude/structured-outputs.md": {
     "url": "https://platform.claude.com/docs/en/build-with-claude/structured-outputs",
     "skill": "anthropic-docs",
-    "size": 100983,
-    "updatedAt": "2026-06-09T00:28:11.625Z"
+    "size": 101049,
+    "updatedAt": "2026-06-11T00:35:10.887Z"
   },
   "anthropic-docs/build-with-claude/citations.md": {
     "url": "https://platform.claude.com/docs/en/build-with-claude/citations",
@@ -128,10 +126,8 @@
   "anthropic-docs/build-with-claude/embeddings.md": {
     "url": "https://platform.claude.com/docs/en/build-with-claude/embeddings",
     "skill": "anthropic-docs",
-    "etag": "W/\"4493-19e1979f2f8\"",
-    "lastModified": "Mon, 11 May 2026 23:58:03 GMT",
-    "size": 17545,
-    "updatedAt": "2026-05-12T00:25:19.267Z"
+    "size": 17552,
+    "updatedAt": "2026-06-11T00:35:18.740Z"
   },
   "anthropic-docs/agents-and-tools/tool-use/overview.md": {
     "url": "https://platform.claude.com/docs/en/agents-and-tools/tool-use/overview",
@@ -216,56 +212,44 @@
   "anthropic-docs/agents-and-tools/tool-use/troubleshooting-tool-use.md": {
     "url": "https://platform.claude.com/docs/en/agents-and-tools/tool-use/troubleshooting-tool-use",
     "skill": "anthropic-docs",
-    "etag": "W/\"13c1-19e8a4072a0\"",
-    "lastModified": "Tue, 02 Jun 2026 21:32:20 GMT",
-    "size": 5057,
-    "updatedAt": "2026-06-03T00:39:31.775Z"
+    "size": 5630,
+    "updatedAt": "2026-06-11T00:35:23.653Z"
   },
   "anthropic-docs/agents-and-tools/tool-use/web-search-tool.md": {
     "url": "https://platform.claude.com/docs/en/agents-and-tools/tool-use/web-search-tool",
     "skill": "anthropic-docs",
-    "etag": "W/\"5685-19e8a4072a0\"",
-    "lastModified": "Tue, 02 Jun 2026 21:32:20 GMT",
-    "size": 22143,
-    "updatedAt": "2026-06-03T00:39:32.057Z"
+    "size": 22176,
+    "updatedAt": "2026-06-11T00:35:23.939Z"
   },
   "anthropic-docs/agents-and-tools/tool-use/web-fetch-tool.md": {
     "url": "https://platform.claude.com/docs/en/agents-and-tools/tool-use/web-fetch-tool",
     "skill": "anthropic-docs",
-    "etag": "W/\"5ebe-19e8a4072a0\"",
-    "lastModified": "Tue, 02 Jun 2026 21:32:20 GMT",
-    "size": 24254,
-    "updatedAt": "2026-06-03T00:39:32.387Z"
+    "size": 24287,
+    "updatedAt": "2026-06-11T00:35:24.246Z"
   },
   "anthropic-docs/agents-and-tools/tool-use/code-execution-tool.md": {
     "url": "https://platform.claude.com/docs/en/agents-and-tools/tool-use/code-execution-tool",
     "skill": "anthropic-docs",
-    "etag": "W/\"db0f-19e9937a3c8\"",
-    "lastModified": "Fri, 05 Jun 2026 19:17:01 GMT",
-    "size": 56079,
-    "updatedAt": "2026-06-06T00:32:48.435Z"
+    "size": 56297,
+    "updatedAt": "2026-06-11T00:35:24.528Z"
   },
   "anthropic-docs/agents-and-tools/tool-use/advisor-tool.md": {
     "url": "https://platform.claude.com/docs/en/agents-and-tools/tool-use/advisor-tool",
     "skill": "anthropic-docs",
-    "size": 34764,
-    "updatedAt": "2026-06-10T00:34:14.278Z"
+    "size": 43979,
+    "updatedAt": "2026-06-11T00:35:24.804Z"
   },
   "anthropic-docs/agents-and-tools/tool-use/memory-tool.md": {
     "url": "https://platform.claude.com/docs/en/agents-and-tools/tool-use/memory-tool",
     "skill": "anthropic-docs",
-    "etag": "W/\"5c16-19e8a4072a0\"",
-    "lastModified": "Tue, 02 Jun 2026 21:32:20 GMT",
-    "size": 23574,
-    "updatedAt": "2026-06-03T00:39:33.196Z"
+    "size": 23588,
+    "updatedAt": "2026-06-11T00:35:25.105Z"
   },
   "anthropic-docs/agents-and-tools/tool-use/bash-tool.md": {
     "url": "https://platform.claude.com/docs/en/agents-and-tools/tool-use/bash-tool",
     "skill": "anthropic-docs",
-    "etag": "W/\"4327-19e4269f5c8\"",
-    "lastModified": "Tue, 19 May 2026 22:45:01 GMT",
-    "size": 17191,
-    "updatedAt": "2026-05-20T00:30:15.997Z"
+    "size": 17198,
+    "updatedAt": "2026-06-11T00:35:25.403Z"
   },
   "anthropic-docs/agents-and-tools/tool-use/computer-use-tool.md": {
     "url": "https://platform.claude.com/docs/en/agents-and-tools/tool-use/computer-use-tool",
@@ -310,18 +294,14 @@
   "anthropic-docs/agents-and-tools/tool-use/tool-search-tool.md": {
     "url": "https://platform.claude.com/docs/en/agents-and-tools/tool-use/tool-search-tool",
     "skill": "anthropic-docs",
-    "etag": "W/\"730c-19e8a4072a0\"",
-    "lastModified": "Tue, 02 Jun 2026 21:32:20 GMT",
-    "size": 29448,
-    "updatedAt": "2026-06-03T00:39:35.140Z"
+    "size": 29481,
+    "updatedAt": "2026-06-11T00:35:28.914Z"
   },
   "anthropic-docs/agents-and-tools/tool-use/programmatic-tool-calling.md": {
     "url": "https://platform.claude.com/docs/en/agents-and-tools/tool-use/programmatic-tool-calling",
     "skill": "anthropic-docs",
-    "etag": "W/\"c3a2-19e8a4072a0\"",
-    "lastModified": "Tue, 02 Jun 2026 21:32:20 GMT",
-    "size": 50080,
-    "updatedAt": "2026-06-03T00:39:35.460Z"
+    "size": 50154,
+    "updatedAt": "2026-06-11T00:35:29.247Z"
   },
   "anthropic-docs/agents-and-tools/tool-use/fine-grained-tool-streaming.md": {
     "url": "https://platform.claude.com/docs/en/agents-and-tools/tool-use/fine-grained-tool-streaming",
@@ -410,10 +390,8 @@
   "anthropic-docs/agents-and-tools/agent-skills/overview.md": {
     "url": "https://platform.claude.com/docs/en/agents-and-tools/agent-skills/overview",
     "skill": "anthropic-docs",
-    "etag": "W/\"4a25-19e1979f6e0\"",
-    "lastModified": "Mon, 11 May 2026 23:58:04 GMT",
-    "size": 18949,
-    "updatedAt": "2026-05-12T00:25:34.900Z"
+    "size": 18956,
+    "updatedAt": "2026-06-11T00:35:33.584Z"
   },
   "anthropic-docs/agents-and-tools/agent-skills/quickstart.md": {
     "url": "https://platform.claude.com/docs/en/agents-and-tools/agent-skills/quickstart",
@@ -424,10 +402,8 @@
   "anthropic-docs/agents-and-tools/agent-skills/best-practices.md": {
     "url": "https://platform.claude.com/docs/en/agents-and-tools/agent-skills/best-practices",
     "skill": "anthropic-docs",
-    "etag": "W/\"a19c-19d6f651608\"",
-    "lastModified": "Wed, 08 Apr 2026 23:19:49 GMT",
-    "size": 41230,
-    "updatedAt": "2026-04-09T00:12:24.208Z"
+    "size": 41251,
+    "updatedAt": "2026-06-11T00:35:38.634Z"
   },
   "anthropic-docs/agents-and-tools/agent-skills/enterprise.md": {
     "url": "https://platform.claude.com/docs/en/agents-and-tools/agent-skills/enterprise",
@@ -646,10 +622,8 @@
   "anthropic-docs/managed-agents/self-hosted-sandboxes.md": {
     "url": "https://platform.claude.com/docs/en/managed-agents/self-hosted-sandboxes",
     "skill": "anthropic-docs",
-    "etag": "W/\"aa97-19e8e97de10\"",
-    "lastModified": "Wed, 03 Jun 2026 17:46:18 GMT",
-    "size": 43671,
-    "updatedAt": "2026-06-04T00:43:51.347Z"
+    "size": 43947,
+    "updatedAt": "2026-06-11T00:35:49.943Z"
   },
   "anthropic-docs/managed-agents/self-hosted-sandboxes-security.md": {
     "url": "https://platform.claude.com/docs/en/managed-agents/self-hosted-sandboxes-security",
@@ -700,8 +674,8 @@
   "anthropic-docs/managed-agents/vaults.md": {
     "url": "https://platform.claude.com/docs/en/managed-agents/vaults",
     "skill": "anthropic-docs",
-    "size": 35370,
-    "updatedAt": "2026-06-10T00:34:33.504Z"
+    "size": 35226,
+    "updatedAt": "2026-06-11T00:35:52.024Z"
   },
   "anthropic-docs/managed-agents/github.md": {
     "url": "https://platform.claude.com/docs/en/managed-agents/github",
@@ -832,10 +806,8 @@
   "anthropic-docs/manage-claude/wif-providers/spiffe.md": {
     "url": "https://platform.claude.com/docs/en/manage-claude/wif-providers/spiffe",
     "skill": "anthropic-docs",
-    "etag": "W/\"6cec-19e09a55250\"",
-    "lastModified": "Fri, 08 May 2026 22:11:30 GMT",
-    "size": 27884,
-    "updatedAt": "2026-05-09T00:24:50.161Z"
+    "size": 27905,
+    "updatedAt": "2026-06-11T00:35:57.274Z"
   },
   "anthropic-docs/manage-claude/wif-providers/okta.md": {
     "url": "https://platform.claude.com/docs/en/manage-claude/wif-providers/okta",
@@ -878,8 +850,8 @@
   "anthropic-docs/manage-claude/api-and-data-retention.md": {
     "url": "https://platform.claude.com/docs/en/manage-claude/api-and-data-retention",
     "skill": "anthropic-docs",
-    "size": 25623,
-    "updatedAt": "2026-06-10T00:34:41.552Z"
+    "size": 26143,
+    "updatedAt": "2026-06-11T00:35:59.093Z"
   },
   "anthropic-docs/manage-claude/cmek.md": {
     "url": "https://platform.claude.com/docs/en/manage-claude/cmek",
@@ -928,10 +900,8 @@
   "anthropic-docs/manage-claude/compliance-activity-feed.md": {
     "url": "https://platform.claude.com/docs/en/manage-claude/compliance-activity-feed",
     "skill": "anthropic-docs",
-    "etag": "W/\"2958-19e4269f5c8\"",
-    "lastModified": "Tue, 19 May 2026 22:45:01 GMT",
-    "size": 10584,
-    "updatedAt": "2026-05-20T00:30:39.507Z"
+    "size": 10591,
+    "updatedAt": "2026-06-11T00:36:01.138Z"
   },
   "anthropic-docs/manage-claude/compliance-content-data.md": {
     "url": "https://platform.claude.com/docs/en/manage-claude/compliance-content-data",
@@ -952,10 +922,8 @@
   "anthropic-docs/manage-claude/compliance-integration-patterns.md": {
     "url": "https://platform.claude.com/docs/en/manage-claude/compliance-integration-patterns",
     "skill": "anthropic-docs",
-    "etag": "W/\"297d-19e3d402ec8\"",
-    "lastModified": "Mon, 18 May 2026 22:41:17 GMT",
-    "size": 10621,
-    "updatedAt": "2026-05-19T00:29:14.697Z"
+    "size": 10628,
+    "updatedAt": "2026-06-11T00:36:02.045Z"
   },
   "anthropic-docs/manage-claude/compliance-errors.md": {
     "url": "https://platform.claude.com/docs/en/manage-claude/compliance-errors",

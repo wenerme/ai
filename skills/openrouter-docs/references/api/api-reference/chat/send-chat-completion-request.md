@@ -1926,7 +1926,7 @@ components:
         and OpenRouter server tools (e.g. openrouter:web_search). The advisor
         tool may not list itself.
       title: AdvisorNestedTool
-    AdvisorProfile:
+    AdvisorServerToolConfig:
       type: object
       properties:
         forward_transcript:
@@ -1963,78 +1963,22 @@ components:
         name:
           type: string
           description: >-
-            Name of this advisor profile. The executor model passes this `name`
-            to the advisor tool to select the profile. Must be unique within the
-            `advisors` roster. Letters, digits, underscores, and dashes; 1–64
-            chars.
+            Optional name for this advisor. The model sees one tool per named
+            advisor (and one default for an unnamed entry). Names must be unique
+            across advisor entries. Letters, digits, spaces, underscores, and
+            dashes; trimmed; 1–64 chars.
         reasoning:
           $ref: '#/components/schemas/AdvisorReasoning'
-        temperature:
-          type: number
-          format: double
-          description: >-
-            Sampling temperature forwarded to the advisor call. When omitted,
-            the provider's default applies.
-        tools:
-          type: array
-          items:
-            $ref: '#/components/schemas/AdvisorNestedTool'
-          description: >-
-            Tools the advisor sub-agent may use while forming its advice. The
-            advisor runs as an agentic sub-agent over these tools, then returns
-            its text. Must not include the advisor tool itself.
-      required:
-        - name
-      description: >-
-        A named advisor profile. The executor model selects it by `name` and the
-        profile's config (model, instructions, etc.) takes precedence over the
-        request-wide advisor parameters for that call.
-      title: AdvisorProfile
-    AdvisorServerToolConfig:
-      type: object
-      properties:
-        advisors:
-          type: array
-          items:
-            $ref: '#/components/schemas/AdvisorProfile'
-          description: >-
-            Roster of named advisor profiles. When set, the executor model
-            selects one by passing its `name` to the advisor tool; the chosen
-            profile's config overrides the request-wide advisor parameters.
-            Profile names must be unique.
-        forward_transcript:
+        stream:
           type: boolean
           description: >-
-            When true, the full parent conversation is forwarded to the advisor
-            so it sees the same context the executor does (and the tool-call
-            `prompt`, if given, is appended as a final user turn). When false or
-            omitted, the advisor receives only the `prompt` the executor passes
-            in the tool call.
-        instructions:
-          type: string
-          description: >-
-            System instructions for the advisor sub-agent. When omitted, the
-            advisor responds with no system prompt of its own.
-        max_completion_tokens:
-          type: integer
-          description: >-
-            Maximum number of output tokens (including reasoning) the advisor
-            may produce. When omitted, the provider's default applies.
-        max_tool_calls:
-          type: integer
-          description: >-
-            Maximum number of tool-calling steps the advisor sub-agent may take
-            during its agentic loop. Capped at 25. Only relevant when the
-            advisor is given tools.
-        model:
-          type: string
-          description: >-
-            Slug of the advisor model to consult (any OpenRouter model). When
-            omitted, the executor can choose it via the tool call's `model`
-            argument; if neither is set, the model from the outer API request is
-            used. The advisor tool itself cannot be the advisor model.
-        reasoning:
-          $ref: '#/components/schemas/AdvisorReasoning'
+            When true, the advisor's advice streams incrementally as it is
+            produced. In the Responses API this emits
+            `response.output_text.delta` events targeting the advisor output
+            item; the final `advice` field is still set on the completed item.
+            Has no effect on the Chat Completions API (where the advice arrives
+            only as the final tool result). When false or omitted, the advice
+            arrives only as the final result.
         temperature:
           type: number
           format: double
@@ -2049,7 +1993,7 @@ components:
             Tools the advisor sub-agent may use while forming its advice. The
             advisor runs as an agentic sub-agent over these tools, then returns
             its text. Must not include the advisor tool itself.
-      description: Configuration for the openrouter:advisor server tool.
+      description: Configuration for one openrouter:advisor server tool entry.
       title: AdvisorServerToolConfig
     AdvisorServerToolOpenRouterType:
       type: string
@@ -2068,7 +2012,9 @@ components:
       description: >-
         OpenRouter built-in server tool: consults a higher-intelligence advisor
         model (any OpenRouter model) for guidance mid-generation and returns its
-        response. The advisor may run as a sub-agent with its own tools.
+        response. The advisor may run as a sub-agent with its own tools. Include
+        multiple entries to offer several named advisors; at most one entry may
+        omit `name` to act as the default advisor.
       title: AdvisorServerTool_OpenRouter
     BashServerToolEngine:
       type: string
@@ -2320,7 +2266,8 @@ components:
         high=30,000); when omitted, Exa picks an adaptive size per query and
         document (typically ~2,000–4,000 characters per result). For Parallel,
         controls the total characters across all results; when omitted, Parallel
-        uses its own default size.
+        uses its own default size. Overridden by `max_characters` when both are
+        set.
       title: SearchQualityLevel
     WebSearchUserLocationServerToolType:
       type: string
@@ -2372,6 +2319,17 @@ components:
             Firecrawl, Parallel, Anthropic, and xAI. Not supported with OpenAI
             (silently ignored) or Perplexity. Cannot be used with
             allowed_domains.
+        max_characters:
+          type: integer
+          description: >-
+            Exact maximum number of characters of content per search result.
+            Applies to the Exa and Parallel engines; ignored with native
+            provider search and Firecrawl. For Exa, caps highlight content per
+            result. For Parallel, caps excerpt content per result (default 1,500
+            when omitted). When both `max_characters` and `search_context_size`
+            are set, `max_characters` takes precedence for both engines. When
+            omitted, falls back to `search_context_size` mapping (Exa) or engine
+            defaults (Parallel).
         max_results:
           type: integer
           description: >-
@@ -2438,6 +2396,17 @@ components:
             Firecrawl, Parallel, Anthropic, and xAI. Not supported with OpenAI
             (silently ignored) or Perplexity. Cannot be used with
             allowed_domains.
+        max_characters:
+          type: integer
+          description: >-
+            Exact maximum number of characters of content per search result.
+            Applies to the Exa and Parallel engines; ignored with native
+            provider search and Firecrawl. For Exa, caps highlight content per
+            result. For Parallel, caps excerpt content per result (default 1,500
+            when omitted). When both `max_characters` and `search_context_size`
+            are set, `max_characters` takes precedence for both engines. When
+            omitted, falls back to `search_context_size` mapping (Exa) or engine
+            defaults (Parallel).
         max_results:
           type: integer
           description: >-

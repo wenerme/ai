@@ -100,8 +100,8 @@ HTTP transport is the default and requires no additional configuration.
 
 Enable RPC transport by adding `SANDBOX_TRANSPORT` to your Worker's `vars`:
 
-* [  wrangler.jsonc ](#tab-panel-7975)
-* [  wrangler.toml ](#tab-panel-7976)
+* [  wrangler.jsonc ](#tab-panel-10024)
+* [  wrangler.toml ](#tab-panel-10025)
 
 JSONC
 
@@ -115,7 +115,7 @@ JSONC
 
   // Set this to today's date
 
-  "compatibility_date": "2026-05-05",
+  "compatibility_date": "2026-06-10",
 
   "vars": {
 
@@ -166,7 +166,7 @@ main = "src/index.ts"
 
 # Set this to today's date
 
-compatibility_date = "2026-05-05"
+compatibility_date = "2026-06-10"
 
 
 [vars]
@@ -244,8 +244,8 @@ Using the `rpc` transport requires version 0.9.1 or newer. If you are using an o
 
 Add `SANDBOX_TRANSPORT` to your `wrangler.jsonc`:
 
-* [  wrangler.jsonc ](#tab-panel-7969)
-* [  wrangler.toml ](#tab-panel-7970)
+* [  wrangler.jsonc ](#tab-panel-10018)
+* [  wrangler.toml ](#tab-panel-10019)
 
 JSONC
 
@@ -290,8 +290,8 @@ npx wrangler deploy
 
 Remove the `SANDBOX_TRANSPORT` variable (or set it to `"http"`):
 
-* [  wrangler.jsonc ](#tab-panel-7971)
-* [  wrangler.toml ](#tab-panel-7972)
+* [  wrangler.jsonc ](#tab-panel-10020)
+* [  wrangler.toml ](#tab-panel-10021)
 
 JSONC
 
@@ -327,8 +327,8 @@ Using the `rpc` transport requires version 0.9.1 or newer. If you are using an o
 
 Set the `SANDBOX_TRANSPORT` variable to `"rpc"`:
 
-* [  wrangler.jsonc ](#tab-panel-7973)
-* [  wrangler.toml ](#tab-panel-7974)
+* [  wrangler.jsonc ](#tab-panel-10022)
+* [  wrangler.toml ](#tab-panel-10023)
 
 JSONC
 
