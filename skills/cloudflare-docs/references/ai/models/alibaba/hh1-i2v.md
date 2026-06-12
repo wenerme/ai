@@ -20,11 +20,12 @@ Image-to-Video • Alibaba
 
 Alibaba's HappyHorse 1.0 image-to-video model. Animates a reference image with an optional text prompt. Supports 720P and 1080P output with durations from 3 to 15 seconds.
 
-| Model Info        |                                                                                                                   |
-| ----------------- | ----------------------------------------------------------------------------------------------------------------- |
-| Terms and License | [link ↗](https://www.alibabacloud.com/help/en/legal)                                                              |
-| More information  | [link ↗](https://modelstudio.console.alibabacloud.com/)                                                           |
-| Pricing           | [View pricing in the Cloudflare dashboard ↗](https://dash.cloudflare.com/?to=/:account/ai/models/alibaba/hh1-i2v) |
+| Model Info          |                                                                                                                   |
+| ------------------- | ----------------------------------------------------------------------------------------------------------------- |
+| Terms and License   | [link ↗](https://www.alibabacloud.com/help/en/legal)                                                              |
+| More information    | [link ↗](https://modelstudio.console.alibabacloud.com/)                                                           |
+| Zero data retention | Yes                                                                                                               |
+| Pricing             | [View pricing in the Cloudflare dashboard ↗](https://dash.cloudflare.com/?to=/:account/ai/models/alibaba/hh1-i2v) |
 
 ## Usage
 

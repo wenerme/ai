@@ -46,10 +46,11 @@ as CI/CD jobs. Don't expose Codex execution in untrusted or public environments.
 
 ### Use Codex access tokens for enterprise automation
 
-In ChatGPT Enterprise workspaces, admins can allow permitted members to create
-Codex access tokens for trusted, non-interactive Codex local workflows. Use an
-access token when automation needs ChatGPT workspace access, ChatGPT-managed
-Codex entitlements, or enterprise workspace controls without a browser sign-in.
+In ChatGPT Enterprise workspaces, admins can grant the access token
+permission so permitted members can create Codex access tokens for trusted,
+non-interactive Codex local workflows. Use an access token when automation
+needs ChatGPT workspace access, ChatGPT-managed Codex entitlements, or
+enterprise workspace controls without a browser sign-in.
 
 Access tokens are intended for trusted scripts, schedulers, and private CI
 runners. For general OpenAI API calls, continue to use Platform API keys.

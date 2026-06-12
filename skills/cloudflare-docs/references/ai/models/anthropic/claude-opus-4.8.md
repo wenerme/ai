@@ -25,6 +25,7 @@ Claude Opus 4.8 is Anthropic's most capable generally available model, with a st
 | Context Window[ ↗](https://developers.cloudflare.com/workers-ai/glossary/) | 1,000,000 tokens                                                                                                            |
 | Terms and License                                                          | [link ↗](https://www.anthropic.com/legal/commercial-terms)                                                                  |
 | More information                                                           | [link ↗](https://www.anthropic.com/claude/opus)                                                                             |
+| Zero data retention                                                        | Yes                                                                                                                         |
 | Pricing                                                                    | [View pricing in the Cloudflare dashboard ↗](https://dash.cloudflare.com/?to=/:account/ai/models/anthropic/claude-opus-4.8) |
 
 ## Usage

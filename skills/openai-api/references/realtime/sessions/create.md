@@ -676,7 +676,7 @@ curl https://api.openai.com/v1/realtime/sessions \
       },
       "transcription": {
         "language": "language",
-        "model": "string",
+        "model": "whisper-1",
         "prompt": "prompt"
       },
       "turn_detection": {
@@ -700,7 +700,7 @@ curl https://api.openai.com/v1/realtime/sessions \
     "item.input_audio_transcription.logprobs"
   ],
   "instructions": "instructions",
-  "max_output_tokens": 0,
+  "max_output_tokens": "inf",
   "model": "model",
   "object": "object",
   "output_modalities": [

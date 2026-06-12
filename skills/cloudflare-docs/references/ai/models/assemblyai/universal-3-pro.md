@@ -20,16 +20,17 @@ Automatic Speech Recognition • AssemblyAI
 
 AssemblyAI's Universal 3 Pro speech recognition model for high-accuracy transcription.
 
-| Model Info        |                                                                                                                              |
-| ----------------- | ---------------------------------------------------------------------------------------------------------------------------- |
-| Terms and License | [link ↗](https://www.assemblyai.com/legal/terms-of-service)                                                                  |
-| More information  | [link ↗](https://www.assemblyai.com/)                                                                                        |
-| Pricing           | [View pricing in the Cloudflare dashboard ↗](https://dash.cloudflare.com/?to=/:account/ai/models/assemblyai/universal-3-pro) |
+| Model Info          |                                                                                                                              |
+| ------------------- | ---------------------------------------------------------------------------------------------------------------------------- |
+| Terms and License   | [link ↗](https://www.assemblyai.com/legal/terms-of-service)                                                                  |
+| More information    | [link ↗](https://www.assemblyai.com/)                                                                                        |
+| Zero data retention | Yes                                                                                                                          |
+| Pricing             | [View pricing in the Cloudflare dashboard ↗](https://dash.cloudflare.com/?to=/:account/ai/models/assemblyai/universal-3-pro) |
 
 ## Usage
 
-* [ TypeScript ](#tab-panel-304)
-* [ cURL ](#tab-panel-305)
+* [ TypeScript ](#tab-panel-310)
+* [ cURL ](#tab-panel-311)
 
 TypeScript
 
@@ -73,8 +74,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 ```
 
-* [ Output ](#tab-panel-312)
-* [ Raw response ](#tab-panel-313)
+* [ Output ](#tab-panel-318)
+* [ Raw response ](#tab-panel-319)
 
 The sun rises in the east and sets in the west. This simple fact has been observed by humans for thousands of years.
 
@@ -439,8 +440,8 @@ The sun rises in the east and sets in the west. This simple fact has been observ
 
 **With Language Code**  — Transcribe with an explicit language code 
 
-* [ TypeScript ](#tab-panel-306)
-* [ cURL ](#tab-panel-307)
+* [ TypeScript ](#tab-panel-312)
+* [ cURL ](#tab-panel-313)
 
 TypeScript
 
@@ -486,8 +487,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 ```
 
-* [ Output ](#tab-panel-316)
-* [ Raw response ](#tab-panel-317)
+* [ Output ](#tab-panel-322)
+* [ Raw response ](#tab-panel-323)
 
 In the heart of the city, there is a large park where people go to relax and enjoy nature. The park has a beautiful pond with ducks and swans.
 
@@ -934,8 +935,8 @@ In the heart of the city, there is a large park where people go to relax and enj
 
 **With Key Terms**  — Improve accuracy for domain-specific vocabulary 
 
-* [ TypeScript ](#tab-panel-310)
-* [ cURL ](#tab-panel-311)
+* [ TypeScript ](#tab-panel-316)
+* [ cURL ](#tab-panel-317)
 
 TypeScript
 
@@ -997,8 +998,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 ```
 
-* [ Output ](#tab-panel-318)
-* [ Raw response ](#tab-panel-319)
+* [ Output ](#tab-panel-324)
+* [ Raw response ](#tab-panel-325)
 
 In the kitchen, the aroma of freshly baked bread filled the air. The loaves were golden brown and crusty on the outside and soft and warm on the inside.
 
@@ -1445,8 +1446,8 @@ In the kitchen, the aroma of freshly baked bread filled the air. The loaves were
 
 **Speaker Diarization**  — Identify different speakers in the audio 
 
-* [ TypeScript ](#tab-panel-308)
-* [ cURL ](#tab-panel-309)
+* [ TypeScript ](#tab-panel-314)
+* [ cURL ](#tab-panel-315)
 
 TypeScript
 
@@ -1492,8 +1493,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 ```
 
-* [ Output ](#tab-panel-314)
-* [ Raw response ](#tab-panel-315)
+* [ Output ](#tab-panel-320)
+* [ Raw response ](#tab-panel-321)
 
 The train chugged along the tracks, carrying passengers to their destinations. The rhythmic sound of the wheels on the rails was soothing.
 
@@ -1858,8 +1859,8 @@ The train chugged along the tracks, carrying passengers to their destinations. T
 
 ## Parameters
 
-* [ Input ](#tab-panel-320)
-* [ Output ](#tab-panel-321)
+* [ Input ](#tab-panel-326)
+* [ Output ](#tab-panel-327)
 
 audio\_end\_at
 

@@ -59,7 +59,7 @@ Turn on **Allow members to use Codex Local**.
 
 This enables use of the Codex app, CLI, and IDE extension for allowed users.
 
-If members need programmatic Codex local workflows, also turn on **Allow members to use Codex access tokens** or grant the access token permission through a custom role. Workspace owners and admins can use **Access token expiration limit** to set the longest expiration members can choose for new tokens. For setup and permission details, see [Access tokens](https://developers.openai.com/codex/enterprise/access-tokens).
+If members need programmatic Codex local workflows, grant **Allow users to create access tokens** in the **Access tokens** section or through a custom role. Workspace owners and admins can use **Access token expiration limit** in the **Codex Local** section to set the longest expiration members can choose for new tokens. For setup and permission details, see [Access tokens](https://developers.openai.com/codex/enterprise/access-tokens).
 
 If the Codex Local toggle is off, users who attempt to use the Codex app, CLI, or IDE will see the following error: “403 - Unauthorized. Contact your ChatGPT administrator for access.”
 

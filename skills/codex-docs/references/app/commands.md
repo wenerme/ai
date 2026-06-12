@@ -61,6 +61,7 @@ Enabled skills also appear in the slash command list.
 | ------------- | -------------------------------------------------------------------------------------- |
 | `/feedback`   | Open the feedback dialog to submit feedback and optionally include logs.               |
 | `/goal`       | Set a persistent goal for Codex to work toward; use `/plan` first to shape it.         |
+| `/init`       | Generate an `AGENTS.md` scaffold for the current project.                              |
 | `/mcp`        | Open MCP status to view connected servers.                                             |
 | `/plan`       | Toggle plan mode for multi-step planning.                                              |
 | `/review`     | Start code review mode to review uncommitted changes or compare against a base branch. |
@@ -146,7 +147,7 @@ Use these links when you need to open Settings or a specific settings page.
 | Deep link                                     | Opens                                    |
 | --------------------------------------------- | ---------------------------------------- |
 | `codex://settings`                            | Settings.                                |
-| `codex://settings/browser-use`                | Browser use settings.                    |
+| `codex://settings/browser-use`                | Browser settings.                        |
 | `codex://settings/computer-use/google-chrome` | Google Chrome settings for computer use. |
 | `codex://settings/connections`                | Remote connections settings.             |
 

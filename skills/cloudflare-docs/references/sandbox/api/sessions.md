@@ -43,8 +43,8 @@ const session = await sandbox.createSession(options?: SessionOptions): Promise<E
 
 **Returns**: `Promise<ExecutionSession>` with all sandbox methods bound to this session
 
-* [  JavaScript ](#tab-panel-8082)
-* [  TypeScript ](#tab-panel-8083)
+* [  JavaScript ](#tab-panel-10008)
+* [  TypeScript ](#tab-panel-10009)
 
 JavaScript
 
@@ -197,8 +197,8 @@ const session = await sandbox.getSession(sessionId: string): Promise<ExecutionSe
 
 **Returns**: `Promise<ExecutionSession>` bound to the specified session
 
-* [  JavaScript ](#tab-panel-8076)
-* [  TypeScript ](#tab-panel-8077)
+* [  JavaScript ](#tab-panel-10002)
+* [  TypeScript ](#tab-panel-10003)
 
 JavaScript
 
@@ -269,8 +269,8 @@ const result = await sandbox.deleteSession(sessionId: string): Promise<SessionDe
 * `sessionId` \- ID of the deleted session
 * `timestamp` \- Deletion timestamp
 
-* [  JavaScript ](#tab-panel-8078)
-* [  TypeScript ](#tab-panel-8079)
+* [  JavaScript ](#tab-panel-10004)
+* [  TypeScript ](#tab-panel-10005)
 
 JavaScript
 
@@ -349,8 +349,8 @@ Warning
 
 Call `setEnvVars()` **before** any other sandbox operations to ensure environment variables are available from the start.
 
-* [  JavaScript ](#tab-panel-8080)
-* [  TypeScript ](#tab-panel-8081)
+* [  JavaScript ](#tab-panel-10006)
+* [  TypeScript ](#tab-panel-10007)
 
 JavaScript
 

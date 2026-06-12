@@ -20,16 +20,17 @@ Text-to-Image • Google
 
 Google's latest image generation model producing high-quality, photorealistic images from text prompts with support for multiple aspect ratios.
 
-| Model Info        |                                                                                                                   |
-| ----------------- | ----------------------------------------------------------------------------------------------------------------- |
-| Terms and License | [link ↗](https://ai.google.dev/gemini-api/terms)                                                                  |
-| More information  | [link ↗](https://deepmind.google/technologies/imagen/)                                                            |
-| Pricing           | [View pricing in the Cloudflare dashboard ↗](https://dash.cloudflare.com/?to=/:account/ai/models/google/imagen-4) |
+| Model Info          |                                                                                                                   |
+| ------------------- | ----------------------------------------------------------------------------------------------------------------- |
+| Terms and License   | [link ↗](https://ai.google.dev/gemini-api/terms)                                                                  |
+| More information    | [link ↗](https://deepmind.google/technologies/imagen/)                                                            |
+| Zero data retention | Yes                                                                                                               |
+| Pricing             | [View pricing in the Cloudflare dashboard ↗](https://dash.cloudflare.com/?to=/:account/ai/models/google/imagen-4) |
 
 ## Usage
 
-* [ TypeScript ](#tab-panel-596)
-* [ cURL ](#tab-panel-597)
+* [ TypeScript ](#tab-panel-606)
+* [ cURL ](#tab-panel-607)
 
 TypeScript
 
@@ -73,8 +74,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 ```
 
-* [ Output ](#tab-panel-594)
-* [ Raw response ](#tab-panel-595)
+* [ Output ](#tab-panel-604)
+* [ Raw response ](#tab-panel-605)
 
 ![Simple Generation](https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/google__imagen-4/simple-generation.png) 
 
@@ -105,8 +106,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 **Widescreen Landscape**  — Generate a widescreen landscape image 
 
-* [ TypeScript ](#tab-panel-600)
-* [ cURL ](#tab-panel-601)
+* [ TypeScript ](#tab-panel-610)
+* [ cURL ](#tab-panel-611)
 
 TypeScript
 
@@ -160,8 +161,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 ```
 
-* [ Output ](#tab-panel-598)
-* [ Raw response ](#tab-panel-599)
+* [ Output ](#tab-panel-608)
+* [ Raw response ](#tab-panel-609)
 
 ![Widescreen Landscape](https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/google__imagen-4/widescreen-landscape.png) 
 
@@ -190,8 +191,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 **Portrait Format**  — Vertical portrait-style image 
 
-* [ TypeScript ](#tab-panel-604)
-* [ cURL ](#tab-panel-605)
+* [ TypeScript ](#tab-panel-614)
+* [ cURL ](#tab-panel-615)
 
 TypeScript
 
@@ -243,8 +244,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 ```
 
-* [ Output ](#tab-panel-602)
-* [ Raw response ](#tab-panel-603)
+* [ Output ](#tab-panel-612)
+* [ Raw response ](#tab-panel-613)
 
 ![Portrait Format](https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/google__imagen-4/portrait-format.png) 
 
@@ -273,8 +274,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 **With People**  — Allow generation of adult people 
 
-* [ TypeScript ](#tab-panel-608)
-* [ cURL ](#tab-panel-609)
+* [ TypeScript ](#tab-panel-618)
+* [ cURL ](#tab-panel-619)
 
 TypeScript
 
@@ -326,8 +327,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 ```
 
-* [ Output ](#tab-panel-606)
-* [ Raw response ](#tab-panel-607)
+* [ Output ](#tab-panel-616)
+* [ Raw response ](#tab-panel-617)
 
 ![With People](https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/google__imagen-4/with-people.png) 
 
@@ -356,8 +357,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 **Product Photo**  — Square product photography 
 
-* [ TypeScript ](#tab-panel-612)
-* [ cURL ](#tab-panel-613)
+* [ TypeScript ](#tab-panel-622)
+* [ cURL ](#tab-panel-623)
 
 TypeScript
 
@@ -411,8 +412,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 ```
 
-* [ Output ](#tab-panel-610)
-* [ Raw response ](#tab-panel-611)
+* [ Output ](#tab-panel-620)
+* [ Raw response ](#tab-panel-621)
 
 ![Product Photo](https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/google__imagen-4/product-photo.png) 
 
@@ -441,8 +442,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 ## Parameters
 
-* [ Input ](#tab-panel-614)
-* [ Output ](#tab-panel-615)
+* [ Input ](#tab-panel-624)
+* [ Output ](#tab-panel-625)
 
 aspect\_ratio
 

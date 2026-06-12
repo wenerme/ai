@@ -20,11 +20,12 @@ Text-to-Image • Alibaba
 
 Alibaba's Wan 2.6 text-to-image model generating images from text prompts with optional negative prompts and customizable dimensions.
 
-| Model Info        |                                                                                                                         |
-| ----------------- | ----------------------------------------------------------------------------------------------------------------------- |
-| Terms and License | [link ↗](https://www.alibabacloud.com/help/en/legal)                                                                    |
-| More information  | [link ↗](https://wan.video/)                                                                                            |
-| Pricing           | [View pricing in the Cloudflare dashboard ↗](https://dash.cloudflare.com/?to=/:account/ai/models/alibaba/wan-2.6-image) |
+| Model Info          |                                                                                                                         |
+| ------------------- | ----------------------------------------------------------------------------------------------------------------------- |
+| Terms and License   | [link ↗](https://www.alibabacloud.com/help/en/legal)                                                                    |
+| More information    | [link ↗](https://wan.video/)                                                                                            |
+| Zero data retention | Yes                                                                                                                     |
+| Pricing             | [View pricing in the Cloudflare dashboard ↗](https://dash.cloudflare.com/?to=/:account/ai/models/alibaba/wan-2.6-image) |
 
 ## Usage
 

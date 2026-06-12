@@ -20,16 +20,17 @@ Text-to-Video • MiniMax
 
 A lower-latency version of Hailuo 2.3 that preserves core motion quality, visual consistency, and stylization while enabling faster iteration.
 
-| Model Info        |                                                                                                                           |
-| ----------------- | ------------------------------------------------------------------------------------------------------------------------- |
-| Terms and License | [link ↗](https://hailuoai.com/terms)                                                                                      |
-| More information  | [link ↗](https://hailuoai.com/)                                                                                           |
-| Pricing           | [View pricing in the Cloudflare dashboard ↗](https://dash.cloudflare.com/?to=/:account/ai/models/minimax/hailuo-2.3-fast) |
+| Model Info          |                                                                                                                           |
+| ------------------- | ------------------------------------------------------------------------------------------------------------------------- |
+| Terms and License   | [link ↗](https://hailuoai.com/terms)                                                                                      |
+| More information    | [link ↗](https://hailuoai.com/)                                                                                           |
+| Zero data retention | Yes                                                                                                                       |
+| Pricing             | [View pricing in the Cloudflare dashboard ↗](https://dash.cloudflare.com/?to=/:account/ai/models/minimax/hailuo-2.3-fast) |
 
 ## Usage
 
-* [ TypeScript ](#tab-panel-826)
-* [ cURL ](#tab-panel-827)
+* [ TypeScript ](#tab-panel-836)
+* [ cURL ](#tab-panel-837)
 
 TypeScript
 
@@ -99,8 +100,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 ```
 
-* [ Output ](#tab-panel-822)
-* [ Raw response ](#tab-panel-823)
+* [ Output ](#tab-panel-832)
+* [ Raw response ](#tab-panel-833)
 
 ```
 
@@ -133,8 +134,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 **High Resolution I2V**  — Animate a photo in 1080P 
 
-* [ TypeScript ](#tab-panel-830)
-* [ cURL ](#tab-panel-831)
+* [ TypeScript ](#tab-panel-840)
+* [ cURL ](#tab-panel-841)
 
 TypeScript
 
@@ -204,8 +205,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 ```
 
-* [ Output ](#tab-panel-824)
-* [ Raw response ](#tab-panel-825)
+* [ Output ](#tab-panel-834)
+* [ Raw response ](#tab-panel-835)
 
 ```
 
@@ -236,8 +237,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 **Fast Processing**  — Quick I2V with fast pretreatment enabled 
 
-* [ TypeScript ](#tab-panel-832)
-* [ cURL ](#tab-panel-833)
+* [ TypeScript ](#tab-panel-842)
+* [ cURL ](#tab-panel-843)
 
 TypeScript
 
@@ -307,8 +308,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 ```
 
-* [ Output ](#tab-panel-828)
-* [ Raw response ](#tab-panel-829)
+* [ Output ](#tab-panel-838)
+* [ Raw response ](#tab-panel-839)
 
 ```
 
@@ -339,8 +340,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 ## Parameters
 
-* [ Input ](#tab-panel-834)
-* [ Output ](#tab-panel-835)
+* [ Input ](#tab-panel-844)
+* [ Output ](#tab-panel-845)
 
 ▶duration
 

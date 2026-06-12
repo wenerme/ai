@@ -49,6 +49,7 @@ You must implement an endpoint that returns all models that should be served by 
       "is_ready": true, // false to keep the model staged-but-hidden on OpenRouter
       "is_free": false, // true to mark as a free endpoint
       "discount_to_user": 0, // fractional discount on user-facing pricing (0 = none)
+      "capacity_tpm": 1000000, // input tokens per minute capacity for this model (optional)
       "openrouter": {
         "slug": "anthropic/claude-sonnet-4"
       },
@@ -183,6 +184,21 @@ Behavior:
 * `is_free: true` marks the endpoint as a **free endpoint** (`:free` suffix).
 * Any upstream `pricing` sent alongside `is_free: true` is **ignored** — free endpoints always have zero cost.
 * `is_free: false` or an omitted field preserves the default behavior (standard paid variant).
+
+#### Capacity with `capacity_tpm`
+
+Report your per-model throughput capacity so OpenRouter can make better routing and capacity-planning decisions. The value is in **input tokens per minute**:
+
+```json
+{
+  "id": "your-org/your-model",
+  "capacity_tpm": 5000000
+}
+```
+
+* The value is an integer representing the input tokens per minute your infrastructure can process for this model (i.e. prompt/input throughput, not output generation).
+* Omitting the field or setting it to `null` leaves the capacity unknown (the default).
+* OpenRouter's provider monitor auto-applies capacity changes when they appear in your `/v1/models` response.
 
 ### 2. Auto Top Up or Invoicing
 

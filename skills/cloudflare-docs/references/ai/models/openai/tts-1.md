@@ -20,16 +20,17 @@ Text-to-Speech • OpenAI
 
 OpenAI's text-to-speech model optimized for real-time use with low latency.
 
-| Model Info        |                                                                                                                |
-| ----------------- | -------------------------------------------------------------------------------------------------------------- |
-| Terms and License | [link ↗](https://openai.com/policies/)                                                                         |
-| More information  | [link ↗](https://platform.openai.com/docs/guides/text-to-speech)                                               |
-| Pricing           | [View pricing in the Cloudflare dashboard ↗](https://dash.cloudflare.com/?to=/:account/ai/models/openai/tts-1) |
+| Model Info          |                                                                                                                |
+| ------------------- | -------------------------------------------------------------------------------------------------------------- |
+| Terms and License   | [link ↗](https://openai.com/policies/)                                                                         |
+| More information    | [link ↗](https://platform.openai.com/docs/guides/text-to-speech)                                               |
+| Zero data retention | Yes                                                                                                            |
+| Pricing             | [View pricing in the Cloudflare dashboard ↗](https://dash.cloudflare.com/?to=/:account/ai/models/openai/tts-1) |
 
 ## Usage
 
-* [ TypeScript ](#tab-panel-1436)
-* [ cURL ](#tab-panel-1437)
+* [ TypeScript ](#tab-panel-1446)
+* [ cURL ](#tab-panel-1447)
 
 TypeScript
 
@@ -89,8 +90,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 ```
 
-* [ Output ](#tab-panel-1432)
-* [ Raw response ](#tab-panel-1433)
+* [ Output ](#tab-panel-1442)
+* [ Raw response ](#tab-panel-1443)
 
 ```
 
@@ -119,8 +120,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 **Different Voice**  — Use the Nova voice for a different tone 
 
-* [ TypeScript ](#tab-panel-1440)
-* [ cURL ](#tab-panel-1441)
+* [ TypeScript ](#tab-panel-1450)
+* [ cURL ](#tab-panel-1451)
 
 TypeScript
 
@@ -180,8 +181,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 ```
 
-* [ Output ](#tab-panel-1434)
-* [ Raw response ](#tab-panel-1435)
+* [ Output ](#tab-panel-1444)
+* [ Raw response ](#tab-panel-1445)
 
 ```
 
@@ -208,8 +209,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 **Narration**  — Slower narration style with the Onyx voice 
 
-* [ TypeScript ](#tab-panel-1444)
-* [ cURL ](#tab-panel-1445)
+* [ TypeScript ](#tab-panel-1454)
+* [ cURL ](#tab-panel-1455)
 
 TypeScript
 
@@ -269,8 +270,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 ```
 
-* [ Output ](#tab-panel-1438)
-* [ Raw response ](#tab-panel-1439)
+* [ Output ](#tab-panel-1448)
+* [ Raw response ](#tab-panel-1449)
 
 ```
 
@@ -297,8 +298,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 **Echo Voice**  — Use the Echo voice for a deeper tone 
 
-* [ TypeScript ](#tab-panel-1448)
-* [ cURL ](#tab-panel-1449)
+* [ TypeScript ](#tab-panel-1458)
+* [ cURL ](#tab-panel-1459)
 
 TypeScript
 
@@ -358,8 +359,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 ```
 
-* [ Output ](#tab-panel-1442)
-* [ Raw response ](#tab-panel-1443)
+* [ Output ](#tab-panel-1452)
+* [ Raw response ](#tab-panel-1453)
 
 ```
 
@@ -386,8 +387,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 **Fast Playback**  — Speed up speech for quick listening 
 
-* [ TypeScript ](#tab-panel-1450)
-* [ cURL ](#tab-panel-1451)
+* [ TypeScript ](#tab-panel-1460)
+* [ cURL ](#tab-panel-1461)
 
 TypeScript
 
@@ -447,8 +448,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 ```
 
-* [ Output ](#tab-panel-1446)
-* [ Raw response ](#tab-panel-1447)
+* [ Output ](#tab-panel-1456)
+* [ Raw response ](#tab-panel-1457)
 
 ```
 
@@ -475,8 +476,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 ## Parameters
 
-* [ Input ](#tab-panel-1452)
-* [ Output ](#tab-panel-1453)
+* [ Input ](#tab-panel-1462)
+* [ Output ](#tab-panel-1463)
 
 response\_format
 

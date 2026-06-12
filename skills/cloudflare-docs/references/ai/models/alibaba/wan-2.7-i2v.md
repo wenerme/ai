@@ -20,11 +20,12 @@ Image-to-Video • Alibaba
 
 Alibaba's Wan 2.7 image-to-video model that generates videos from a reference image with optional text prompts. Supports 720P and 1080P output with durations from 2 to 15 seconds.
 
-| Model Info        |                                                                                                                       |
-| ----------------- | --------------------------------------------------------------------------------------------------------------------- |
-| Terms and License | [link ↗](https://www.alibabacloud.com/help/en/legal)                                                                  |
-| More information  | [link ↗](https://wan.video/)                                                                                          |
-| Pricing           | [View pricing in the Cloudflare dashboard ↗](https://dash.cloudflare.com/?to=/:account/ai/models/alibaba/wan-2.7-i2v) |
+| Model Info          |                                                                                                                       |
+| ------------------- | --------------------------------------------------------------------------------------------------------------------- |
+| Terms and License   | [link ↗](https://www.alibabacloud.com/help/en/legal)                                                                  |
+| More information    | [link ↗](https://wan.video/)                                                                                          |
+| Zero data retention | Yes                                                                                                                   |
+| Pricing             | [View pricing in the Cloudflare dashboard ↗](https://dash.cloudflare.com/?to=/:account/ai/models/alibaba/wan-2.7-i2v) |
 
 ## Usage
 

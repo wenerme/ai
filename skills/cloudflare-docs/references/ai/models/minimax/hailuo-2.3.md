@@ -20,16 +20,17 @@ Text-to-Video • MiniMax
 
 A high-fidelity video generation model optimized for realistic human motion, cinematic VFX, expressive characters, and strong prompt and style adherence across text-to-video and image-to-video workflows.
 
-| Model Info        |                                                                                                                      |
-| ----------------- | -------------------------------------------------------------------------------------------------------------------- |
-| Terms and License | [link ↗](https://hailuoai.com/terms)                                                                                 |
-| More information  | [link ↗](https://hailuoai.com/)                                                                                      |
-| Pricing           | [View pricing in the Cloudflare dashboard ↗](https://dash.cloudflare.com/?to=/:account/ai/models/minimax/hailuo-2.3) |
+| Model Info          |                                                                                                                      |
+| ------------------- | -------------------------------------------------------------------------------------------------------------------- |
+| Terms and License   | [link ↗](https://hailuoai.com/terms)                                                                                 |
+| More information    | [link ↗](https://hailuoai.com/)                                                                                      |
+| Zero data retention | Yes                                                                                                                  |
+| Pricing             | [View pricing in the Cloudflare dashboard ↗](https://dash.cloudflare.com/?to=/:account/ai/models/minimax/hailuo-2.3) |
 
 ## Usage
 
-* [ TypeScript ](#tab-panel-806)
-* [ cURL ](#tab-panel-807)
+* [ TypeScript ](#tab-panel-816)
+* [ cURL ](#tab-panel-817)
 
 TypeScript
 
@@ -93,8 +94,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 ```
 
-* [ Output ](#tab-panel-804)
-* [ Raw response ](#tab-panel-805)
+* [ Output ](#tab-panel-814)
+* [ Raw response ](#tab-panel-815)
 
 ```
 
@@ -127,8 +128,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 **High Resolution**  — 1080P video for higher quality output 
 
-* [ TypeScript ](#tab-panel-810)
-* [ cURL ](#tab-panel-811)
+* [ TypeScript ](#tab-panel-820)
+* [ cURL ](#tab-panel-821)
 
 TypeScript
 
@@ -194,8 +195,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 ```
 
-* [ Output ](#tab-panel-808)
-* [ Raw response ](#tab-panel-809)
+* [ Output ](#tab-panel-818)
+* [ Raw response ](#tab-panel-819)
 
 ```
 
@@ -226,8 +227,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 **Image to Video**  — Animate a still image with I2V 
 
-* [ TypeScript ](#tab-panel-816)
-* [ cURL ](#tab-panel-817)
+* [ TypeScript ](#tab-panel-826)
+* [ cURL ](#tab-panel-827)
 
 TypeScript
 
@@ -297,8 +298,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 ```
 
-* [ Output ](#tab-panel-812)
-* [ Raw response ](#tab-panel-813)
+* [ Output ](#tab-panel-822)
+* [ Raw response ](#tab-panel-823)
 
 ```
 
@@ -329,8 +330,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 **Fast Processing**  — Enable fast pretreatment for quicker results 
 
-* [ TypeScript ](#tab-panel-818)
-* [ cURL ](#tab-panel-819)
+* [ TypeScript ](#tab-panel-828)
+* [ cURL ](#tab-panel-829)
 
 TypeScript
 
@@ -394,8 +395,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 ```
 
-* [ Output ](#tab-panel-814)
-* [ Raw response ](#tab-panel-815)
+* [ Output ](#tab-panel-824)
+* [ Raw response ](#tab-panel-825)
 
 ```
 
@@ -426,8 +427,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 ## Parameters
 
-* [ Input ](#tab-panel-820)
-* [ Output ](#tab-panel-821)
+* [ Input ](#tab-panel-830)
+* [ Output ](#tab-panel-831)
 
 ▶duration
 

@@ -61,8 +61,8 @@ const tunnel = await sandbox.tunnels.get(
 
 Calling `get(port)` with different `options` on a port that already has a tunnel throws. Call [destroy(port)](#tunnelsdestroy) first.
 
-* [  JavaScript ](#tab-panel-9956)
-* [  TypeScript ](#tab-panel-9957)
+* [  JavaScript ](#tab-panel-10024)
+* [  TypeScript ](#tab-panel-10025)
 
 JavaScript
 
@@ -166,8 +166,8 @@ const tunnels = await sandbox.tunnels.list(): Promise<TunnelInfo[]>
 
 **Returns**: `Promise<TunnelInfo[]>` — an array of [TunnelInfo](#tunnelinfo) records. Empty when no tunnels are active.
 
-* [  JavaScript ](#tab-panel-9952)
-* [  TypeScript ](#tab-panel-9953)
+* [  JavaScript ](#tab-panel-10020)
+* [  TypeScript ](#tab-panel-10021)
 
 JavaScript
 
@@ -218,8 +218,8 @@ await sandbox.tunnels.destroy(portOrInfo: number | TunnelInfo): Promise<void>
 
 * `portOrInfo` — Either the port number or the `TunnelInfo` record returned by [get()](#tunnelsget).
 
-* [  JavaScript ](#tab-panel-9954)
-* [  TypeScript ](#tab-panel-9955)
+* [  JavaScript ](#tab-panel-10022)
+* [  TypeScript ](#tab-panel-10023)
 
 JavaScript
 
@@ -453,8 +453,8 @@ When inference fails, the SDK throws a clear error naming the variable to set.
 
 ### Example
 
-* [  JavaScript ](#tab-panel-9958)
-* [  TypeScript ](#tab-panel-9959)
+* [  JavaScript ](#tab-panel-10026)
+* [  TypeScript ](#tab-panel-10027)
 
 JavaScript
 

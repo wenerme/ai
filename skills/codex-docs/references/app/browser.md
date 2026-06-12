@@ -129,3 +129,46 @@ enough to review in one pass.
 
 For repository changes, use the [review pane](https://developers.openai.com/codex/app/review) to inspect the
 changes and leave comments.
+
+<section class="feature-grid">
+
+<div>
+
+## Developer mode
+
+Developer mode works with Browser use in Chrome and the Codex in-app browser.
+It gives Codex controlled access to the Chrome DevTools Protocol (CDP). Use it
+when you want Codex to profile JavaScript, inspect console output and network
+traffic, examine page state such as the DOM and applied styles, or diagnose an
+issue directly in the live browser.
+
+To enable it, open [**Settings > Browser**](codex://settings/browser-use) and,
+under **Developer mode**, turn on **Enable full CDP access**. If your
+organization has disabled this setting, you can't enable it locally.
+
+Full CDP access lets Codex inspect and control sensitive browser internals that
+may put your data at risk. Codex asks for explicit approval before it uses full
+CDP to inspect a website. Review the site, task, and requested access before you
+approve it.
+
+Use `@Browser` for the in-app browser. To use Developer mode in Chrome,
+[set up the Codex Chrome extension](https://developers.openai.com/codex/app/chrome-extension) and invoke
+`@Chrome`.
+
+For example:
+
+```text
+This app is slow. Use @Browser to capture a performance trace and inspect
+network traffic, then identify the bottleneck.
+```
+
+</div>
+
+<CodexScreenshot
+  alt="Codex app Browser settings showing Developer mode with full CDP access enabled"
+  lightSrc="/images/codex/app/browser-developer-mode-light.webp"
+  darkSrc="/images/codex/app/browser-developer-mode-dark.webp"
+  maxHeight="420px"
+/>
+
+</section>

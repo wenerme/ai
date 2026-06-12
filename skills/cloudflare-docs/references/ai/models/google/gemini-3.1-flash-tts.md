@@ -17,10 +17,15 @@ Text-to-Speech • Google
 
 `google/gemini-3.1-flash-tts` 
 
+| Model Info          |                                                                                                                               |
+| ------------------- | ----------------------------------------------------------------------------------------------------------------------------- |
+| Zero data retention | Yes                                                                                                                           |
+| Pricing             | [View pricing in the Cloudflare dashboard ↗](https://dash.cloudflare.com/?to=/:account/ai/models/google/gemini-3.1-flash-tts) |
+
 ## Usage
 
-* [ TypeScript ](#tab-panel-562)
-* [ cURL ](#tab-panel-563)
+* [ TypeScript ](#tab-panel-572)
+* [ cURL ](#tab-panel-573)
 
 TypeScript
 
@@ -64,8 +69,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 ```
 
-* [ Output ](#tab-panel-558)
-* [ Raw response ](#tab-panel-559)
+* [ Output ](#tab-panel-568)
+* [ Raw response ](#tab-panel-569)
 
 ```
 
@@ -88,8 +93,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 **Custom Voice**  — Generate speech with a specific voice 
 
-* [ TypeScript ](#tab-panel-566)
-* [ cURL ](#tab-panel-567)
+* [ TypeScript ](#tab-panel-576)
+* [ cURL ](#tab-panel-577)
 
 TypeScript
 
@@ -135,8 +140,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 ```
 
-* [ Output ](#tab-panel-560)
-* [ Raw response ](#tab-panel-561)
+* [ Output ](#tab-panel-570)
+* [ Raw response ](#tab-panel-571)
 
 ```
 
@@ -157,8 +162,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 **Longer Text**  — Convert longer text to speech 
 
-* [ TypeScript ](#tab-panel-570)
-* [ cURL ](#tab-panel-571)
+* [ TypeScript ](#tab-panel-580)
+* [ cURL ](#tab-panel-581)
 
 TypeScript
 
@@ -210,8 +215,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 ```
 
-* [ Output ](#tab-panel-564)
-* [ Raw response ](#tab-panel-565)
+* [ Output ](#tab-panel-574)
+* [ Raw response ](#tab-panel-575)
 
 ```
 
@@ -232,8 +237,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 **Narrative Voice**  — Generate speech with a narrative voice style 
 
-* [ TypeScript ](#tab-panel-572)
-* [ cURL ](#tab-panel-573)
+* [ TypeScript ](#tab-panel-582)
+* [ cURL ](#tab-panel-583)
 
 TypeScript
 
@@ -285,8 +290,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 ```
 
-* [ Output ](#tab-panel-568)
-* [ Raw response ](#tab-panel-569)
+* [ Output ](#tab-panel-578)
+* [ Raw response ](#tab-panel-579)
 
 ```
 
@@ -307,8 +312,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 ## Parameters
 
-* [ Input ](#tab-panel-574)
-* [ Output ](#tab-panel-575)
+* [ Input ](#tab-panel-584)
+* [ Output ](#tab-panel-585)
 
 maxOutputTokens
 

@@ -25,12 +25,13 @@ Claude Sonnet 4.5 is the best coding model to date, with significant improvement
 | Context Window[ ↗](https://developers.cloudflare.com/workers-ai/glossary/) | 200,000 tokens                                                                                                                |
 | Terms and License                                                          | [link ↗](https://www.anthropic.com/legal/commercial-terms)                                                                    |
 | More information                                                           | [link ↗](https://www.anthropic.com/claude/sonnet)                                                                             |
+| Zero data retention                                                        | Yes                                                                                                                           |
 | Pricing                                                                    | [View pricing in the Cloudflare dashboard ↗](https://dash.cloudflare.com/?to=/:account/ai/models/anthropic/claude-sonnet-4.5) |
 
 ## Usage
 
-* [ TypeScript ](#tab-panel-260)
-* [ cURL ](#tab-panel-261)
+* [ TypeScript ](#tab-panel-266)
+* [ cURL ](#tab-panel-267)
 
 TypeScript
 
@@ -88,8 +89,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/v1/
 
 ```
 
-* [ Output ](#tab-panel-264)
-* [ Raw response ](#tab-panel-265)
+* [ Output ](#tab-panel-270)
+* [ Raw response ](#tab-panel-271)
 
 # The Three Laws of Thermodynamics
 
@@ -160,8 +161,8 @@ As temperature approaches absolute zero (0 Kelvin or -273.15°C), the entropy of
 
 **With System Message**  — Using a system message to set context 
 
-* [ TypeScript ](#tab-panel-262)
-* [ cURL ](#tab-panel-263)
+* [ TypeScript ](#tab-panel-268)
+* [ cURL ](#tab-panel-269)
 
 TypeScript
 
@@ -227,8 +228,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/v1/
 
 ```
 
-* [ Output ](#tab-panel-268)
-* [ Raw response ](#tab-panel-269)
+* [ Output ](#tab-panel-274)
+* [ Raw response ](#tab-panel-275)
 
 # Reading a JSON File in Python
 
@@ -346,8 +347,8 @@ print(data)
 
 **Multi-turn Conversation**  — Continuing a conversation with context 
 
-* [ TypeScript ](#tab-panel-272)
-* [ cURL ](#tab-panel-273)
+* [ TypeScript ](#tab-panel-278)
+* [ cURL ](#tab-panel-279)
 
 TypeScript
 
@@ -443,8 +444,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/v1/
 
 ```
 
-* [ Output ](#tab-panel-274)
-* [ Raw response ](#tab-panel-275)
+* [ Output ](#tab-panel-280)
+* [ Raw response ](#tab-panel-281)
 
 Here are some great stops between San Francisco and Los Angeles:
 
@@ -521,8 +522,8 @@ What interests you most - beaches, nature, food, or historic sites? I can refine
 
 **Creative Writing**  — Higher temperature for creative output 
 
-* [ TypeScript ](#tab-panel-266)
-* [ cURL ](#tab-panel-267)
+* [ TypeScript ](#tab-panel-272)
+* [ cURL ](#tab-panel-273)
 
 TypeScript
 
@@ -594,8 +595,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/v1/
 
 ```
 
-* [ Output ](#tab-panel-276)
-* [ Raw response ](#tab-panel-277)
+* [ Output ](#tab-panel-282)
+* [ Raw response ](#tab-panel-283)
 
 # The Blue Feather
 
@@ -664,8 +665,8 @@ Then it started to hum.
 
 **Streaming Response**  — Enable streaming for real-time output 
 
-* [ TypeScript ](#tab-panel-270)
-* [ cURL ](#tab-panel-271)
+* [ TypeScript ](#tab-panel-276)
+* [ cURL ](#tab-panel-277)
 
 TypeScript
 
@@ -727,8 +728,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/v1/
 
 ```
 
-* [ Output ](#tab-panel-278)
-* [ Raw response ](#tab-panel-279)
+* [ Output ](#tab-panel-284)
+* [ Raw response ](#tab-panel-285)
 
 # Recursion Explained
 
@@ -1098,8 +1099,8 @@ Think of Russian nesting dolls:
 
 ## Parameters
 
-* [ Input ](#tab-panel-280)
-* [ Output ](#tab-panel-281)
+* [ Input ](#tab-panel-286)
+* [ Output ](#tab-panel-287)
 
 max\_tokens
 

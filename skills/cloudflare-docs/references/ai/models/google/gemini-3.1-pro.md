@@ -25,12 +25,13 @@ Google's most intelligent Gemini model with improved reasoning, a medium thinkin
 | Context Window[ ↗](https://developers.cloudflare.com/workers-ai/glossary/) | 1,000,000 tokens                                                                                                        |
 | Terms and License                                                          | [link ↗](https://ai.google.dev/gemini-api/terms)                                                                        |
 | More information                                                           | [link ↗](https://deepmind.google/technologies/gemini/)                                                                  |
+| Zero data retention                                                        | Yes                                                                                                                     |
 | Pricing                                                                    | [View pricing in the Cloudflare dashboard ↗](https://dash.cloudflare.com/?to=/:account/ai/models/google/gemini-3.1-pro) |
 
 ## Usage
 
-* [ TypeScript ](#tab-panel-576)
-* [ cURL ](#tab-panel-577)
+* [ TypeScript ](#tab-panel-586)
+* [ cURL ](#tab-panel-587)
 
 TypeScript
 
@@ -92,8 +93,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 ```
 
-* [ Output ](#tab-panel-582)
-* [ Raw response ](#tab-panel-583)
+* [ Output ](#tab-panel-592)
+* [ Raw response ](#tab-panel-593)
 
 The laws of thermodynamics are the fundamental principles that describe how energy moves and changes within the universe. While the prompt asks for the "three" laws, there are actually four (scientists later added a "Zeroth" law). 
 
@@ -221,8 +222,8 @@ A famous and humorous way physicists remember the laws of thermodynamics is by c
 
 **With System Instruction**  — Using a system instruction to set context 
 
-* [ TypeScript ](#tab-panel-578)
-* [ cURL ](#tab-panel-579)
+* [ TypeScript ](#tab-panel-588)
+* [ cURL ](#tab-panel-589)
 
 TypeScript
 
@@ -316,8 +317,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 ```
 
-* [ Output ](#tab-panel-586)
-* [ Raw response ](#tab-panel-587)
+* [ Output ](#tab-panel-596)
+* [ Raw response ](#tab-panel-597)
 
 To read a JSON file in Python, you can use the built-in `json` module. 
 
@@ -461,8 +462,8 @@ except json.JSONDecodeError:
 
 **Multi-turn Conversation**  — Continuing a conversation with context 
 
-* [ TypeScript ](#tab-panel-584)
-* [ cURL ](#tab-panel-585)
+* [ TypeScript ](#tab-panel-594)
+* [ cURL ](#tab-panel-595)
 
 TypeScript
 
@@ -596,8 +597,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 ```
 
-* [ Output ](#tab-panel-588)
-* [ Raw response ](#tab-panel-589)
+* [ Output ](#tab-panel-598)
+* [ Raw response ](#tab-panel-599)
 
 The best stops really depend on which route you decide to take! There are three
 
@@ -692,8 +693,8 @@ The best stops really depend on which route you decide to take! There are three
 
 **Creative Writing**  — Higher temperature for creative output 
 
-* [ TypeScript ](#tab-panel-580)
-* [ cURL ](#tab-panel-581)
+* [ TypeScript ](#tab-panel-590)
+* [ cURL ](#tab-panel-591)
 
 TypeScript
 
@@ -779,8 +780,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 ```
 
-* [ Output ](#tab-panel-590)
-* [ Raw response ](#tab-panel-591)
+* [ Output ](#tab-panel-600)
+* [ Raw response ](#tab-panel-601)
 
 The air in Elias Vance’s apartment smelled of stale copper
 
@@ -875,8 +876,8 @@ The air in Elias Vance’s apartment smelled of stale copper
 
 ## Parameters
 
-* [ Input ](#tab-panel-592)
-* [ Output ](#tab-panel-593)
+* [ Input ](#tab-panel-602)
+* [ Output ](#tab-panel-603)
 
 ▶contents\[\]
 

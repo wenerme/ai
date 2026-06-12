@@ -20,16 +20,17 @@ Text-to-Video • Google
 
 A faster version of Veo 3.1 optimized for lower latency while maintaining high-quality video and audio output.
 
-| Model Info        |                                                                                                                       |
-| ----------------- | --------------------------------------------------------------------------------------------------------------------- |
-| Terms and License | [link ↗](https://ai.google.dev/gemini-api/terms)                                                                      |
-| More information  | [link ↗](https://deepmind.google/technologies/veo/)                                                                   |
-| Pricing           | [View pricing in the Cloudflare dashboard ↗](https://dash.cloudflare.com/?to=/:account/ai/models/google/veo-3.1-fast) |
+| Model Info          |                                                                                                                       |
+| ------------------- | --------------------------------------------------------------------------------------------------------------------- |
+| Terms and License   | [link ↗](https://ai.google.dev/gemini-api/terms)                                                                      |
+| More information    | [link ↗](https://deepmind.google/technologies/veo/)                                                                   |
+| Zero data retention | Yes                                                                                                                   |
+| Pricing             | [View pricing in the Cloudflare dashboard ↗](https://dash.cloudflare.com/?to=/:account/ai/models/google/veo-3.1-fast) |
 
 ## Usage
 
-* [ TypeScript ](#tab-panel-736)
-* [ cURL ](#tab-panel-737)
+* [ TypeScript ](#tab-panel-746)
+* [ cURL ](#tab-panel-747)
 
 TypeScript
 
@@ -93,8 +94,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 ```
 
-* [ Output ](#tab-panel-732)
-* [ Raw response ](#tab-panel-733)
+* [ Output ](#tab-panel-742)
+* [ Raw response ](#tab-panel-743)
 
 ```
 
@@ -123,8 +124,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 **Social Content**  — Quick vertical video for social media 
 
-* [ TypeScript ](#tab-panel-740)
-* [ cURL ](#tab-panel-741)
+* [ TypeScript ](#tab-panel-750)
+* [ cURL ](#tab-panel-751)
 
 TypeScript
 
@@ -188,8 +189,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 ```
 
-* [ Output ](#tab-panel-734)
-* [ Raw response ](#tab-panel-735)
+* [ Output ](#tab-panel-744)
+* [ Raw response ](#tab-panel-745)
 
 ```
 
@@ -216,8 +217,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 **Motion Graphics**  — Quick animated graphics 
 
-* [ TypeScript ](#tab-panel-744)
-* [ cURL ](#tab-panel-745)
+* [ TypeScript ](#tab-panel-754)
+* [ cURL ](#tab-panel-755)
 
 TypeScript
 
@@ -281,8 +282,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 ```
 
-* [ Output ](#tab-panel-738)
-* [ Raw response ](#tab-panel-739)
+* [ Output ](#tab-panel-748)
+* [ Raw response ](#tab-panel-749)
 
 ```
 
@@ -309,8 +310,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 **Ambient Scene**  — Relaxing background video 
 
-* [ TypeScript ](#tab-panel-746)
-* [ cURL ](#tab-panel-747)
+* [ TypeScript ](#tab-panel-756)
+* [ cURL ](#tab-panel-757)
 
 TypeScript
 
@@ -374,8 +375,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 ```
 
-* [ Output ](#tab-panel-742)
-* [ Raw response ](#tab-panel-743)
+* [ Output ](#tab-panel-752)
+* [ Raw response ](#tab-panel-753)
 
 ```
 
@@ -402,8 +403,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 ## Parameters
 
-* [ Input ](#tab-panel-748)
-* [ Output ](#tab-panel-749)
+* [ Input ](#tab-panel-758)
+* [ Output ](#tab-panel-759)
 
 aspect\_ratio
 

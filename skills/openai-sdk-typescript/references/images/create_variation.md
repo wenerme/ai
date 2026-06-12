@@ -171,6 +171,7 @@ Creates a variation of a given image. This endpoint only supports `dall-e-2`.
 ### Example
 
 ```typescript
+import fs from 'fs';
 import OpenAI from 'openai';
 
 const client = new OpenAI({

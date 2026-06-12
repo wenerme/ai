@@ -332,6 +332,7 @@ storage limits.
 ### Example
 
 ```typescript
+import fs from 'fs';
 import OpenAI from 'openai';
 
 const client = new OpenAI({
@@ -626,7 +627,7 @@ Returns the contents of the specified file.
 
 ### Returns
 
-- `unnamed_schema_0 = Response`
+- `unnamed_schema_7 = Response`
 
 ### Example
 

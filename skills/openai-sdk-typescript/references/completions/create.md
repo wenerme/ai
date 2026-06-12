@@ -298,7 +298,10 @@ const client = new OpenAI({
   apiKey: process.env['OPENAI_API_KEY'], // This is the default and can be omitted
 });
 
-const completion = await client.completions.create({ model: 'string', prompt: 'This is a test.' });
+const completion = await client.completions.create({
+  model: 'gpt-3.5-turbo-instruct',
+  prompt: 'This is a test.',
+});
 
 console.log(completion);
 ```

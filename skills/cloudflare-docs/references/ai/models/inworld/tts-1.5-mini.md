@@ -20,16 +20,17 @@ Text-to-Speech • Inworld
 
 Ultra-fast, cost-efficient text-to-speech with approximately 120ms latency and 15-language support.
 
-| Model Info        |                                                                                                                        |
-| ----------------- | ---------------------------------------------------------------------------------------------------------------------- |
-| Terms and License | [link ↗](https://inworld.ai/terms)                                                                                     |
-| More information  | [link ↗](https://inworld.ai/)                                                                                          |
-| Pricing           | [View pricing in the Cloudflare dashboard ↗](https://dash.cloudflare.com/?to=/:account/ai/models/inworld/tts-1.5-mini) |
+| Model Info          |                                                                                                                        |
+| ------------------- | ---------------------------------------------------------------------------------------------------------------------- |
+| Terms and License   | [link ↗](https://inworld.ai/terms)                                                                                     |
+| More information    | [link ↗](https://inworld.ai/)                                                                                          |
+| Zero data retention | Yes                                                                                                                    |
+| Pricing             | [View pricing in the Cloudflare dashboard ↗](https://dash.cloudflare.com/?to=/:account/ai/models/inworld/tts-1.5-mini) |
 
 ## Usage
 
-* [ TypeScript ](#tab-panel-772)
-* [ cURL ](#tab-panel-773)
+* [ TypeScript ](#tab-panel-782)
+* [ cURL ](#tab-panel-783)
 
 TypeScript
 
@@ -93,8 +94,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 ```
 
-* [ Output ](#tab-panel-768)
-* [ Raw response ](#tab-panel-769)
+* [ Output ](#tab-panel-778)
+* [ Raw response ](#tab-panel-779)
 
 ```
 
@@ -123,8 +124,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 **Fast Speech**  — Speed up speech for quick playback 
 
-* [ TypeScript ](#tab-panel-776)
-* [ cURL ](#tab-panel-777)
+* [ TypeScript ](#tab-panel-786)
+* [ cURL ](#tab-panel-787)
 
 TypeScript
 
@@ -192,8 +193,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 ```
 
-* [ Output ](#tab-panel-770)
-* [ Raw response ](#tab-panel-771)
+* [ Output ](#tab-panel-780)
+* [ Raw response ](#tab-panel-781)
 
 ```
 
@@ -220,8 +221,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 **Low Latency**  — Minimize latency by disabling text normalization 
 
-* [ TypeScript ](#tab-panel-778)
-* [ cURL ](#tab-panel-779)
+* [ TypeScript ](#tab-panel-788)
+* [ cURL ](#tab-panel-789)
 
 TypeScript
 
@@ -289,8 +290,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 ```
 
-* [ Output ](#tab-panel-774)
-* [ Raw response ](#tab-panel-775)
+* [ Output ](#tab-panel-784)
+* [ Raw response ](#tab-panel-785)
 
 ```
 
@@ -317,8 +318,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 ## Parameters
 
-* [ Input ](#tab-panel-780)
-* [ Output ](#tab-panel-781)
+* [ Input ](#tab-panel-790)
+* [ Output ](#tab-panel-791)
 
 apply\_text\_normalization
 

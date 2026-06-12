@@ -13,9 +13,64 @@ Model information endpoints
 
 ### Available Operations
 
+* [Get](#get) - Get a model by its slug
 * [List](#list) - List all models and their properties
 * [Count](#count) - Get total count of available models
 * [ListForUser](#listforuser) - List models filtered by user provider preferences, privacy settings, and guardrails
+
+## Get
+
+Returns full details for a single model identified by its author and slug (e.g. openai/gpt-4). Supports variant suffixes (e.g. openai/gpt-4:free) and resolves known slug aliases.
+
+### Example Usage
+
+```go
+package main
+
+import(
+	"context"
+	"os"
+	openrouter "github.com/OpenRouterTeam/go-sdk"
+	"log"
+)
+
+func main() {
+    ctx := context.Background()
+
+    s := openrouter.New(
+        openrouter.WithSecurity(os.Getenv("OPENROUTER_API_KEY")),
+    )
+
+    res, err := s.Models.Get(ctx, "openai", "gpt-4")
+    if err != nil {
+        log.Fatal(err)
+    }
+    if res != nil {
+        // handle response
+    }
+}
+```
+
+### Parameters
+
+| Parameter | Type                                                                  | Required             | Description                                                                      | Example |
+| --------- | --------------------------------------------------------------------- | -------------------- | -------------------------------------------------------------------------------- | ------- |
+| `ctx`     | [context.Context](https://pkg.go.dev/context#Context)                 | :heavy\_check\_mark: | The context to use for the request.                                              |         |
+| `author`  | `string`                                                              | :heavy\_check\_mark: | The author/organization of the model                                             | openai  |
+| `slug`    | `string`                                                              | :heavy\_check\_mark: | The model slug, optionally including a variant suffix (e.g. gpt-4 or gpt-4:free) | gpt-4   |
+| `opts`    | \[][operations.Option](/docs/sdks/go/api-reference/operations/option) | :heavy\_minus\_sign: | The options for this request.                                                    |         |
+
+### Response
+
+**[\*components.ModelResponse](/docs/sdks/go/api-reference/models/modelresponse), error**
+
+### Errors
+
+| Error Type                            | Status Code | Content Type     |
+| ------------------------------------- | ----------- | ---------------- |
+| sdkerrors.NotFoundResponseError       | 404         | application/json |
+| sdkerrors.InternalServerResponseError | 500         | application/json |
+| sdkerrors.APIError                    | 4XX, 5XX    | \*/\*            |
 
 ## List
 

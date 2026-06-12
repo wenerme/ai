@@ -20,11 +20,12 @@ Text-to-Video • Alibaba
 
 Alibaba's HappyHorse 1.0 text-to-video model. Generates videos from a text prompt with configurable resolution, aspect ratio, and duration (3-15s).
 
-| Model Info        |                                                                                                                   |
-| ----------------- | ----------------------------------------------------------------------------------------------------------------- |
-| Terms and License | [link ↗](https://www.alibabacloud.com/help/en/legal)                                                              |
-| More information  | [link ↗](https://modelstudio.console.alibabacloud.com/)                                                           |
-| Pricing           | [View pricing in the Cloudflare dashboard ↗](https://dash.cloudflare.com/?to=/:account/ai/models/alibaba/hh1-t2v) |
+| Model Info          |                                                                                                                   |
+| ------------------- | ----------------------------------------------------------------------------------------------------------------- |
+| Terms and License   | [link ↗](https://www.alibabacloud.com/help/en/legal)                                                              |
+| More information    | [link ↗](https://modelstudio.console.alibabacloud.com/)                                                           |
+| Zero data retention | Yes                                                                                                               |
+| Pricing             | [View pricing in the Cloudflare dashboard ↗](https://dash.cloudflare.com/?to=/:account/ai/models/alibaba/hh1-t2v) |
 
 ## Usage
 

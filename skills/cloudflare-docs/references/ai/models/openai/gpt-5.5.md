@@ -25,12 +25,13 @@ GPT-5.5 is OpenAI's flagship model with strong coding, reasoning, and multimodal
 | Context Window[ ↗](https://developers.cloudflare.com/workers-ai/glossary/) | 1,000,000 tokens                                                                                                 |
 | Terms and License                                                          | [link ↗](https://openai.com/policies/)                                                                           |
 | More information                                                           | [link ↗](https://openai.com/)                                                                                    |
+| Zero data retention                                                        | Yes                                                                                                              |
 | Pricing                                                                    | [View pricing in the Cloudflare dashboard ↗](https://dash.cloudflare.com/?to=/:account/ai/models/openai/gpt-5.5) |
 
 ## Usage
 
-* [ TypeScript ](#tab-panel-1274)
-* [ cURL ](#tab-panel-1275)
+* [ TypeScript ](#tab-panel-1284)
+* [ cURL ](#tab-panel-1285)
 
 TypeScript
 
@@ -80,8 +81,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/v1/
 
 ```
 
-* [ Output ](#tab-panel-1284)
-* [ Raw response ](#tab-panel-1285)
+* [ Output ](#tab-panel-1294)
+* [ Raw response ](#tab-panel-1295)
 
 The **three laws of thermodynamics** are:
 
@@ -188,8 +189,8 @@ There is also a **Zeroth Law**, which says that if two systems are each in therm
 
 **With System Message**  — Using a system message to set context 
 
-* [ TypeScript ](#tab-panel-1276)
-* [ cURL ](#tab-panel-1277)
+* [ TypeScript ](#tab-panel-1286)
+* [ cURL ](#tab-panel-1287)
 
 TypeScript
 
@@ -257,8 +258,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/v1/
 
 ```
 
-* [ Output ](#tab-panel-1286)
-* [ Raw response ](#tab-panel-1287)
+* [ Output ](#tab-panel-1296)
+* [ Raw response ](#tab-panel-1297)
 
 You can read a JSON file in Python using the built-in `json` module.
 
@@ -399,8 +400,8 @@ print(data["name"])
 
 **Multi-turn Conversation**  — Continuing a conversation with context 
 
-* [ TypeScript ](#tab-panel-1280)
-* [ cURL ](#tab-panel-1281)
+* [ TypeScript ](#tab-panel-1290)
+* [ cURL ](#tab-panel-1291)
 
 TypeScript
 
@@ -496,8 +497,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/v1/
 
 ```
 
-* [ Output ](#tab-panel-1288)
-* [ Raw response ](#tab-panel-1289)
+* [ Output ](#tab-panel-1298)
+* [ Raw response ](#tab-panel-1299)
 
 Absolutely — the best stops depend on whether you take the **scenic coastal route** or the **faster inland route**.
 
@@ -627,8 +628,8 @@ Also, check current road conditions for **Highway 1 near Big Sur**, since closur
 
 **Creative Writing**  — Longer completion for creative output 
 
-* [ TypeScript ](#tab-panel-1278)
-* [ cURL ](#tab-panel-1279)
+* [ TypeScript ](#tab-panel-1288)
+* [ cURL ](#tab-panel-1289)
 
 TypeScript
 
@@ -696,8 +697,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/v1/
 
 ```
 
-* [ Output ](#tab-panel-1290)
-* [ Raw response ](#tab-panel-1291)
+* [ Output ](#tab-panel-1300)
+* [ Raw response ](#tab-panel-1301)
 
 Detective Mara Venn found the clue inside the grandfather clock, though the clock had not worked in twenty years.
 
@@ -798,8 +799,8 @@ Inside the vial was a single human tooth, etched with three tiny words in gold:
 
 **Streaming Response**  — Enable streaming for real-time output 
 
-* [ TypeScript ](#tab-panel-1282)
-* [ cURL ](#tab-panel-1283)
+* [ TypeScript ](#tab-panel-1292)
+* [ cURL ](#tab-panel-1293)
 
 TypeScript
 
@@ -865,8 +866,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/v1/
 
 ```
 
-* [ Output ](#tab-panel-1292)
-* [ Raw response ](#tab-panel-1293)
+* [ Output ](#tab-panel-1302)
+* [ Raw response ](#tab-panel-1303)
 
 Recursion is when a function solves a problem by calling itself with a smaller or simpler version of the same problem.
 
@@ -9593,8 +9594,8 @@ So, recursion is like breaking a problem into smaller versions of itself until r
 
 ## Parameters
 
-* [ Input ](#tab-panel-1294)
-* [ Output ](#tab-panel-1295)
+* [ Input ](#tab-panel-1304)
+* [ Output ](#tab-panel-1305)
 
 ▶audio{}
 

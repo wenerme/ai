@@ -20,8 +20,8 @@ Review [Namespaces](https://developers.cloudflare.com/artifacts/concepts/namespa
 
 Add the Artifacts binding to your Wrangler config file:
 
-* [  wrangler.jsonc ](#tab-panel-4734)
-* [  wrangler.toml ](#tab-panel-4735)
+* [  wrangler.jsonc ](#tab-panel-6573)
+* [  wrangler.toml ](#tab-panel-6574)
 
 JSONC
 
@@ -98,8 +98,8 @@ Use namespace methods on `env.ARTIFACTS` to create, list, inspect, import, or de
 
 `create()` returns repo metadata including `name`, `remote`, `defaultBranch`, and an initial token. Save these values if you need them later.
 
-* [  JavaScript ](#tab-panel-4740)
-* [  TypeScript ](#tab-panel-4741)
+* [  JavaScript ](#tab-panel-6579)
+* [  TypeScript ](#tab-panel-6580)
 
 JavaScript
 
@@ -177,8 +177,8 @@ async function createRepo(artifacts: Artifacts) {
 
 `get()` returns a handle to an existing repo. Use the handle to call async methods on the repo, such as `createToken()`, `listTokens()`, `revokeToken()`, and `fork()`.
 
-* [  JavaScript ](#tab-panel-4736)
-* [  TypeScript ](#tab-panel-4737)
+* [  JavaScript ](#tab-panel-6575)
+* [  TypeScript ](#tab-panel-6576)
 
 JavaScript
 
@@ -220,8 +220,8 @@ async function getRepoHandle(artifacts: Artifacts) {
 * `opts.cursor` ` Cursor ` optional
 * Returns ` Promise<ArtifactsRepoListResult> `
 
-* [  JavaScript ](#tab-panel-4744)
-* [  TypeScript ](#tab-panel-4745)
+* [  JavaScript ](#tab-panel-6583)
+* [  TypeScript ](#tab-panel-6584)
 
 JavaScript
 
@@ -295,8 +295,8 @@ Import a repository from an external git remote.
 
 `import()` returns repo metadata including `name`, `remote`, `defaultBranch`, and an initial token. Save the `remote` and `name` values if you need them later.
 
-* [  JavaScript ](#tab-panel-4750)
-* [  TypeScript ](#tab-panel-4751)
+* [  JavaScript ](#tab-panel-6589)
+* [  TypeScript ](#tab-panel-6590)
 
 JavaScript
 
@@ -383,8 +383,8 @@ async function importFromGitHub(artifacts: Artifacts) {
 * `name` ` RepoName ` required
 * Returns ` Promise<boolean> `
 
-* [  JavaScript ](#tab-panel-4738)
-* [  TypeScript ](#tab-panel-4739)
+* [  JavaScript ](#tab-panel-6577)
+* [  TypeScript ](#tab-panel-6578)
 
 JavaScript
 
@@ -422,8 +422,8 @@ Call `await artifacts.get(name)` to get a repo handle. Use the handle to call as
 * `ttl` ` number ` optional (seconds)
 * Returns ` Promise<ArtifactsCreateTokenResult> `
 
-* [  JavaScript ](#tab-panel-4742)
-* [  TypeScript ](#tab-panel-4743)
+* [  JavaScript ](#tab-panel-6581)
+* [  TypeScript ](#tab-panel-6582)
 
 JavaScript
 
@@ -461,8 +461,8 @@ Unlike `create()` and `import()`, `repo.createToken()` returns a structured resu
 
 * Returns ` Promise<ArtifactsTokenListResult> `
 
-* [  JavaScript ](#tab-panel-4748)
-* [  TypeScript ](#tab-panel-4749)
+* [  JavaScript ](#tab-panel-6587)
+* [  TypeScript ](#tab-panel-6588)
 
 JavaScript
 
@@ -515,8 +515,8 @@ async function listRepoTokens(artifacts: Artifacts) {
 * `tokenOrId` ` string ` required
 * Returns ` Promise<boolean> `
 
-* [  JavaScript ](#tab-panel-4746)
-* [  TypeScript ](#tab-panel-4747)
+* [  JavaScript ](#tab-panel-6585)
+* [  TypeScript ](#tab-panel-6586)
 
 JavaScript
 
@@ -558,8 +558,8 @@ async function revokeToken(artifacts: Artifacts, tokenOrId: string) {
 
 `fork()` returns metadata for the new repo. Save the `remote` and `name` values if you need them later.
 
-* [  JavaScript ](#tab-panel-4752)
-* [  TypeScript ](#tab-panel-4753)
+* [  JavaScript ](#tab-panel-6595)
+* [  TypeScript ](#tab-panel-6596)
 
 JavaScript
 
@@ -613,12 +613,132 @@ async function forkRepo(artifacts: Artifacts) {
 
 ```
 
+### `log(opts?)`
+
+* `opts.ref` ` string ` optional — Branch, tag, or commit hash.
+* `opts.limit` ` number ` optional
+* `opts.offset` ` number ` optional
+* Returns ` Promise<ArtifactsLogResult> `
+
+* [  JavaScript ](#tab-panel-6591)
+* [  TypeScript ](#tab-panel-6592)
+
+JavaScript
+
+```
+
+async function readCommitHistory(artifacts) {
+
+  const repo = await artifacts.get("starter-repo");
+
+  const history = await repo.log({ ref: "main", limit: 10 });
+
+  return history;
+
+}
+
+
+```
+
+TypeScript
+
+```
+
+async function readCommitHistory(artifacts: Artifacts) {
+
+  const repo = await artifacts.get("starter-repo");
+
+  const history = await repo.log({ ref: "main", limit: 10 });
+
+  return history;
+
+}
+
+
+```
+
+### `readCommit(hash)`
+
+* `hash` ` string ` required — Commit SHA-1 hash.
+* Returns ` Promise<ArtifactsCommit> `
+
+* [  JavaScript ](#tab-panel-6593)
+* [  TypeScript ](#tab-panel-6594)
+
+JavaScript
+
+```
+
+async function readCommit(artifacts, hash) {
+
+  const repo = await artifacts.get("starter-repo");
+
+  return repo.readCommit(hash);
+
+}
+
+
+```
+
+TypeScript
+
+```
+
+async function readCommit(artifacts: Artifacts, hash: string) {
+
+  const repo = await artifacts.get("starter-repo");
+
+  return repo.readCommit(hash);
+
+}
+
+
+```
+
+### `readTree(hash)`
+
+* `hash` ` string ` required — Tree SHA-1 hash.
+* Returns ` Promise<ArtifactsTree> `
+
+* [  JavaScript ](#tab-panel-6597)
+* [  TypeScript ](#tab-panel-6598)
+
+JavaScript
+
+```
+
+async function readTree(artifacts, hash) {
+
+  const repo = await artifacts.get("starter-repo");
+
+  return repo.readTree(hash);
+
+}
+
+
+```
+
+TypeScript
+
+```
+
+async function readTree(artifacts: Artifacts, hash: string) {
+
+  const repo = await artifacts.get("starter-repo");
+
+  return repo.readTree(hash);
+
+}
+
+
+```
+
 ## Worker example
 
 This example combines the binding methods in one Worker route.
 
-* [  JavaScript ](#tab-panel-4754)
-* [  TypeScript ](#tab-panel-4755)
+* [  JavaScript ](#tab-panel-6599)
+* [  TypeScript ](#tab-panel-6600)
 
 src/index.js
 

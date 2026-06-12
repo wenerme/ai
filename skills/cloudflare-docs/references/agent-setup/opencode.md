@@ -59,7 +59,7 @@ opencode
 5. **Try a prompt**  
 For example:  
 ```  
-Add bot protection and rate limiting to my login and checkout endpoints.  
+Configure caching rules and cache TTLs to reduce origin load for my e-commerce store.  
 ```
 
 ## Cloudflare platform access

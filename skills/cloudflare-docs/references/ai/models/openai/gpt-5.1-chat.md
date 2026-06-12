@@ -25,12 +25,13 @@ GPT-5.1 Chat is the chat-tuned variant of GPT-5.1, optimised for back-and-forth 
 | Context Window[ ↗](https://developers.cloudflare.com/workers-ai/glossary/) | 128,000 tokens                                                                                                        |
 | Terms and License                                                          | [link ↗](https://openai.com/policies/)                                                                                |
 | More information                                                           | [link ↗](https://openai.com/)                                                                                         |
+| Zero data retention                                                        | Yes                                                                                                                   |
 | Pricing                                                                    | [View pricing in the Cloudflare dashboard ↗](https://dash.cloudflare.com/?to=/:account/ai/models/openai/gpt-5.1-chat) |
 
 ## Usage
 
-* [ TypeScript ](#tab-panel-1164)
-* [ cURL ](#tab-panel-1165)
+* [ TypeScript ](#tab-panel-1174)
+* [ cURL ](#tab-panel-1175)
 
 TypeScript
 
@@ -80,8 +81,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/v1/
 
 ```
 
-* [ Output ](#tab-panel-1174)
-* [ Raw response ](#tab-panel-1175)
+* [ Output ](#tab-panel-1184)
+* [ Raw response ](#tab-panel-1185)
 
 The three laws of thermodynamics can be stated simply as:
 
@@ -181,8 +182,8 @@ If you want, I can also include the "zeroth" law for completeness.
 
 **With System Message**  — Using a system message to set context 
 
-* [ TypeScript ](#tab-panel-1166)
-* [ cURL ](#tab-panel-1167)
+* [ TypeScript ](#tab-panel-1176)
+* [ cURL ](#tab-panel-1177)
 
 TypeScript
 
@@ -250,8 +251,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/v1/
 
 ```
 
-* [ Output ](#tab-panel-1176)
-* [ Raw response ](#tab-panel-1177)
+* [ Output ](#tab-panel-1186)
+* [ Raw response ](#tab-panel-1187)
 
 The easiest way to read a JSON file in Python is to use the built‑in json module.
 
@@ -351,8 +352,8 @@ Notes:
 
 **Multi-turn Conversation**  — Continuing a conversation with context 
 
-* [ TypeScript ](#tab-panel-1170)
-* [ cURL ](#tab-panel-1171)
+* [ TypeScript ](#tab-panel-1180)
+* [ cURL ](#tab-panel-1181)
 
 TypeScript
 
@@ -448,8 +449,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/v1/
 
 ```
 
-* [ Output ](#tab-panel-1178)
-* [ Raw response ](#tab-panel-1179)
+* [ Output ](#tab-panel-1188)
+* [ Raw response ](#tab-panel-1189)
 
 Here are some great stops along the way from San Francisco to Los Angeles, depending on which route you choose:
 
@@ -559,8 +560,8 @@ If you tell me your preferred pace, interests (food, nature, beaches, wineries, 
 
 **Creative Writing**  — Longer completion for creative output 
 
-* [ TypeScript ](#tab-panel-1168)
-* [ cURL ](#tab-panel-1169)
+* [ TypeScript ](#tab-panel-1178)
+* [ cURL ](#tab-panel-1179)
 
 TypeScript
 
@@ -628,8 +629,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/v1/
 
 ```
 
-* [ Output ](#tab-panel-1180)
-* [ Raw response ](#tab-panel-1181)
+* [ Output ](#tab-panel-1190)
+* [ Raw response ](#tab-panel-1191)
 
 Detective Mara Lorne had seen her share of strange crime scenes, but none as quietly unsettling as the abandoned greenhouse on Cinder Street. The air was warm and sweet, thick with the scent of overgrown jasmine. Glass panes lay shattered underfoot like frozen puddles.
 
@@ -718,8 +719,8 @@ She crouched beside the body, careful not to disturb the latticework of vines th
 
 **Streaming Response**  — Enable streaming for real-time output 
 
-* [ TypeScript ](#tab-panel-1172)
-* [ cURL ](#tab-panel-1173)
+* [ TypeScript ](#tab-panel-1182)
+* [ cURL ](#tab-panel-1183)
 
 TypeScript
 
@@ -785,8 +786,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/v1/
 
 ```
 
-* [ Output ](#tab-panel-1182)
-* [ Raw response ](#tab-panel-1183)
+* [ Output ](#tab-panel-1192)
+* [ Raw response ](#tab-panel-1193)
 
 Recursion is a programming technique where a function calls itself to solve a smaller version of the same problem. It continues doing this until it reaches a simple stopping point called the base case.
 
@@ -6755,8 +6756,8 @@ This shows how a big task is broken into smaller tasks until it’s simple enoug
 
 ## Parameters
 
-* [ Input ](#tab-panel-1184)
-* [ Output ](#tab-panel-1185)
+* [ Input ](#tab-panel-1194)
+* [ Output ](#tab-panel-1195)
 
 ▶audio{}
 

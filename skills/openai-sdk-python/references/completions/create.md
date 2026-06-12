@@ -283,7 +283,7 @@ client = OpenAI(
     api_key=os.environ.get("OPENAI_API_KEY"),  # This is the default and can be omitted
 )
 for completion in client.completions.create(
-    model="string",
+    model="gpt-3.5-turbo-instruct",
     prompt="This is a test.",
 ):
   print(completion)

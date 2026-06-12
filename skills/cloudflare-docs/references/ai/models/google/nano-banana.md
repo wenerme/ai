@@ -20,16 +20,17 @@ Text-to-Image • Google
 
 Google's fast image generation model producing high-quality images from text prompts.
 
-| Model Info        |                                                                                                                      |
-| ----------------- | -------------------------------------------------------------------------------------------------------------------- |
-| Terms and License | [link ↗](https://ai.google.dev/gemini-api/terms)                                                                     |
-| More information  | [link ↗](https://deepmind.google/technologies/imagen/)                                                               |
-| Pricing           | [View pricing in the Cloudflare dashboard ↗](https://dash.cloudflare.com/?to=/:account/ai/models/google/nano-banana) |
+| Model Info          |                                                                                                                      |
+| ------------------- | -------------------------------------------------------------------------------------------------------------------- |
+| Terms and License   | [link ↗](https://ai.google.dev/gemini-api/terms)                                                                     |
+| More information    | [link ↗](https://deepmind.google/technologies/imagen/)                                                               |
+| Zero data retention | Yes                                                                                                                  |
+| Pricing             | [View pricing in the Cloudflare dashboard ↗](https://dash.cloudflare.com/?to=/:account/ai/models/google/nano-banana) |
 
 ## Usage
 
-* [ TypeScript ](#tab-panel-618)
-* [ cURL ](#tab-panel-619)
+* [ TypeScript ](#tab-panel-628)
+* [ cURL ](#tab-panel-629)
 
 TypeScript
 
@@ -83,8 +84,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 ```
 
-* [ Output ](#tab-panel-616)
-* [ Raw response ](#tab-panel-617)
+* [ Output ](#tab-panel-626)
+* [ Raw response ](#tab-panel-627)
 
 ![Cozy Coffee Shop](https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/google__nano-banana/cozy-coffee-shop.png) 
 
@@ -115,8 +116,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 **Vintage Tokyo Poster**  — Retro travel poster style illustration 
 
-* [ TypeScript ](#tab-panel-622)
-* [ cURL ](#tab-panel-623)
+* [ TypeScript ](#tab-panel-632)
+* [ cURL ](#tab-panel-633)
 
 TypeScript
 
@@ -170,8 +171,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 ```
 
-* [ Output ](#tab-panel-620)
-* [ Raw response ](#tab-panel-621)
+* [ Output ](#tab-panel-630)
+* [ Raw response ](#tab-panel-631)
 
 ![Vintage Tokyo Poster](https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/google__nano-banana/vintage-tokyo-poster.png) 
 
@@ -200,8 +201,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 **Dewdrops Macro**  — Photorealistic macro photography 
 
-* [ TypeScript ](#tab-panel-626)
-* [ cURL ](#tab-panel-627)
+* [ TypeScript ](#tab-panel-636)
+* [ cURL ](#tab-panel-637)
 
 TypeScript
 
@@ -255,8 +256,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 ```
 
-* [ Output ](#tab-panel-624)
-* [ Raw response ](#tab-panel-625)
+* [ Output ](#tab-panel-634)
+* [ Raw response ](#tab-panel-635)
 
 ![Dewdrops Macro](https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/google__nano-banana/dewdrops-macro.png) 
 
@@ -285,8 +286,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 **Pixel Art Marketplace**  — Isometric pixel art scene 
 
-* [ TypeScript ](#tab-panel-630)
-* [ cURL ](#tab-panel-631)
+* [ TypeScript ](#tab-panel-640)
+* [ cURL ](#tab-panel-641)
 
 TypeScript
 
@@ -340,8 +341,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 ```
 
-* [ Output ](#tab-panel-628)
-* [ Raw response ](#tab-panel-629)
+* [ Output ](#tab-panel-638)
+* [ Raw response ](#tab-panel-639)
 
 ![Pixel Art Marketplace](https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/google__nano-banana/pixel-art-marketplace.png) 
 
@@ -370,8 +371,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 **High Resolution Landscape**  — Generate a high-resolution 4K landscape image 
 
-* [ TypeScript ](#tab-panel-634)
-* [ cURL ](#tab-panel-635)
+* [ TypeScript ](#tab-panel-644)
+* [ cURL ](#tab-panel-645)
 
 TypeScript
 
@@ -433,8 +434,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 ```
 
-* [ Output ](#tab-panel-632)
-* [ Raw response ](#tab-panel-633)
+* [ Output ](#tab-panel-642)
+* [ Raw response ](#tab-panel-643)
 
 ![High Resolution Landscape](https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/google__nano-banana/high-resolution-landscape.png) 
 
@@ -463,8 +464,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 ## Parameters
 
-* [ Input ](#tab-panel-636)
-* [ Output ](#tab-panel-637)
+* [ Input ](#tab-panel-646)
+* [ Output ](#tab-panel-647)
 
 aspect\_ratio
 

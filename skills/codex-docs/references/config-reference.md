@@ -1604,6 +1604,18 @@ deployments, use `allowed_permission_profiles` with managed
         "Set to `false` in `requirements.toml` to disable Computer Use availability and related install or enablement flows.",
     },
     {
+      key: "computer_use",
+      type: "table",
+      description:
+        "Computer Use requirements enforced from `requirements.toml`.",
+    },
+    {
+      key: "computer_use.allow_locked_computer_use",
+      type: "boolean",
+      description:
+        "Set to `false` to prevent Computer Use from operating after a managed macOS device locks. If omitted, locked use remains unconstrained by requirements.",
+    },
+    {
       key: "experimental_network",
       type: "table",
       description:

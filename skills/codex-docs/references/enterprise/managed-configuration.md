@@ -302,6 +302,20 @@ Use the canonical feature keys from `config.toml`'s `[features]` table. Codex no
 If omitted, these features are allowed by policy, subject to normal client,
 platform, and rollout availability.
 
+### Restrict locked computer use
+
+To prevent [Computer Use](https://developers.openai.com/codex/app/computer-use#locked-use) from operating
+after a managed Mac locks, add this requirement:
+
+```toml
+[computer_use]
+allow_locked_computer_use = false
+```
+
+This requirement doesn't enable Computer Use. It only prevents locked use on
+macOS. If you omit it, locked use remains unconstrained by requirements and is
+still subject to normal product availability and the user's local setting.
+
 ### Configure automatic review policy
 
 Use `allowed_approvals_reviewers` to require or allow automatic review. Set it

@@ -242,7 +242,7 @@ curl https://api.openai.com/v1/realtime/transcription_sessions \
   "input_audio_format": "input_audio_format",
   "input_audio_transcription": {
     "language": "language",
-    "model": "string",
+    "model": "whisper-1",
     "prompt": "prompt"
   },
   "modalities": [

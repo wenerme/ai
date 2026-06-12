@@ -20,16 +20,17 @@ Text-to-Speech • MiniMax
 
 MiniMax Speech 2.8 Turbo turns text into natural, expressive speech with voice cloning, emotion control, and 40+ language support at faster speeds.
 
-| Model Info        |                                                                                                                            |
-| ----------------- | -------------------------------------------------------------------------------------------------------------------------- |
-| Terms and License | [link ↗](https://www.minimaxi.com/terms)                                                                                   |
-| More information  | [link ↗](https://www.minimaxi.com/)                                                                                        |
-| Pricing           | [View pricing in the Cloudflare dashboard ↗](https://dash.cloudflare.com/?to=/:account/ai/models/minimax/speech-2.8-turbo) |
+| Model Info          |                                                                                                                            |
+| ------------------- | -------------------------------------------------------------------------------------------------------------------------- |
+| Terms and License   | [link ↗](https://www.minimaxi.com/terms)                                                                                   |
+| More information    | [link ↗](https://www.minimaxi.com/)                                                                                        |
+| Zero data retention | Yes                                                                                                                        |
+| Pricing             | [View pricing in the Cloudflare dashboard ↗](https://dash.cloudflare.com/?to=/:account/ai/models/minimax/speech-2.8-turbo) |
 
 ## Usage
 
-* [ TypeScript ](#tab-panel-916)
-* [ cURL ](#tab-panel-917)
+* [ TypeScript ](#tab-panel-926)
+* [ cURL ](#tab-panel-927)
 
 TypeScript
 
@@ -97,8 +98,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 ```
 
-* [ Output ](#tab-panel-912)
-* [ Raw response ](#tab-panel-913)
+* [ Output ](#tab-panel-922)
+* [ Raw response ](#tab-panel-923)
 
 ```
 
@@ -127,8 +128,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 **Fast Narration**  — Speed up narration for quick playback 
 
-* [ TypeScript ](#tab-panel-920)
-* [ cURL ](#tab-panel-921)
+* [ TypeScript ](#tab-panel-930)
+* [ cURL ](#tab-panel-931)
 
 TypeScript
 
@@ -196,8 +197,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 ```
 
-* [ Output ](#tab-panel-914)
-* [ Raw response ](#tab-panel-915)
+* [ Output ](#tab-panel-924)
+* [ Raw response ](#tab-panel-925)
 
 ```
 
@@ -224,8 +225,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 **Calm Tone**  — Calm and steady speech for meditation or relaxation 
 
-* [ TypeScript ](#tab-panel-924)
-* [ cURL ](#tab-panel-925)
+* [ TypeScript ](#tab-panel-934)
+* [ cURL ](#tab-panel-935)
 
 TypeScript
 
@@ -297,8 +298,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 ```
 
-* [ Output ](#tab-panel-918)
-* [ Raw response ](#tab-panel-919)
+* [ Output ](#tab-panel-928)
+* [ Raw response ](#tab-panel-929)
 
 ```
 
@@ -325,8 +326,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 **Adjusted Pitch**  — Lower the pitch for a deeper voice 
 
-* [ TypeScript ](#tab-panel-926)
-* [ cURL ](#tab-panel-927)
+* [ TypeScript ](#tab-panel-936)
+* [ cURL ](#tab-panel-937)
 
 TypeScript
 
@@ -394,8 +395,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 ```
 
-* [ Output ](#tab-panel-922)
-* [ Raw response ](#tab-panel-923)
+* [ Output ](#tab-panel-932)
+* [ Raw response ](#tab-panel-933)
 
 ```
 
@@ -422,8 +423,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 ## Parameters
 
-* [ Input ](#tab-panel-928)
-* [ Output ](#tab-panel-929)
+* [ Input ](#tab-panel-938)
+* [ Output ](#tab-panel-939)
 
 emotion
 

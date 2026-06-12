@@ -25,12 +25,13 @@ Google's lightest and most cost-efficient Gemini model for high-throughput tasks
 | Context Window[ ↗](https://developers.cloudflare.com/workers-ai/glossary/) | 1,000,000 tokens                                                                                                               |
 | Terms and License                                                          | [link ↗](https://ai.google.dev/gemini-api/terms)                                                                               |
 | More information                                                           | [link ↗](https://deepmind.google/technologies/gemini/)                                                                         |
+| Zero data retention                                                        | Yes                                                                                                                            |
 | Pricing                                                                    | [View pricing in the Cloudflare dashboard ↗](https://dash.cloudflare.com/?to=/:account/ai/models/google/gemini-3.1-flash-lite) |
 
 ## Usage
 
-* [ TypeScript ](#tab-panel-540)
-* [ cURL ](#tab-panel-541)
+* [ TypeScript ](#tab-panel-550)
+* [ cURL ](#tab-panel-551)
 
 TypeScript
 
@@ -92,8 +93,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 ```
 
-* [ Output ](#tab-panel-546)
-* [ Raw response ](#tab-panel-547)
+* [ Output ](#tab-panel-556)
+* [ Raw response ](#tab-panel-557)
 
 The three laws of thermodynamics (plus the "zeroth" law, which was defined later) describe the fundamental rules governing energy, heat, and entropy in the universe.
 
@@ -212,8 +213,8 @@ As the temperature of a system approaches absolute zero (0 Kelvin), the entropy 
 
 **With System Instruction**  — Using a system instruction to set context 
 
-* [ TypeScript ](#tab-panel-542)
-* [ cURL ](#tab-panel-543)
+* [ TypeScript ](#tab-panel-552)
+* [ cURL ](#tab-panel-553)
 
 TypeScript
 
@@ -307,8 +308,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 ```
 
-* [ Output ](#tab-panel-548)
-* [ Raw response ](#tab-panel-549)
+* [ Output ](#tab-panel-558)
+* [ Raw response ](#tab-panel-559)
 
 To read a JSON file in Python, you use the built-in `json` module.
 
@@ -453,8 +454,8 @@ print(data["name"])  # Output: Alice
 
 **Multi-turn Conversation**  — Continuing a conversation with context 
 
-* [ TypeScript ](#tab-panel-550)
-* [ cURL ](#tab-panel-551)
+* [ TypeScript ](#tab-panel-560)
+* [ cURL ](#tab-panel-561)
 
 TypeScript
 
@@ -588,8 +589,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 ```
 
-* [ Output ](#tab-panel-552)
-* [ Raw response ](#tab-panel-553)
+* [ Output ](#tab-panel-562)
+* [ Raw response ](#tab-panel-563)
 
 To give you the best recommendations, it helps to know which route you plan to take. There are two primary ways to drive from San Francisco to Los Angeles:
 
@@ -713,8 +714,8 @@ To give you the best recommendations, it helps to know which route you plan to t
 
 **Creative Writing**  — Higher temperature for creative output 
 
-* [ TypeScript ](#tab-panel-544)
-* [ cURL ](#tab-panel-545)
+* [ TypeScript ](#tab-panel-554)
+* [ cURL ](#tab-panel-555)
 
 TypeScript
 
@@ -800,8 +801,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 ```
 
-* [ Output ](#tab-panel-554)
-* [ Raw response ](#tab-panel-555)
+* [ Output ](#tab-panel-564)
+* [ Raw response ](#tab-panel-565)
 
 The rain drummed a relentless, hollow rhythm against the skylight of the abandoned clock tower, but Elias Thorne didn’t hear it. He was too busy staring at the centerpiece of the crime scene.
 
@@ -898,8 +899,8 @@ But it was what sat inside the velvet lining that turned his blood to ice: a per
 
 ## Parameters
 
-* [ Input ](#tab-panel-556)
-* [ Output ](#tab-panel-557)
+* [ Input ](#tab-panel-566)
+* [ Output ](#tab-panel-567)
 
 ▶contents\[\]
 

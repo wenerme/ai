@@ -25,12 +25,13 @@ Claude Opus 4.6 is Anthropic's flagship language model built for complex, multi-
 | Context Window[ ↗](https://developers.cloudflare.com/workers-ai/glossary/) | 1,000,000 tokens                                                                                                            |
 | Terms and License                                                          | [link ↗](https://www.anthropic.com/legal/commercial-terms)                                                                  |
 | More information                                                           | [link ↗](https://www.anthropic.com/claude/opus)                                                                             |
+| Zero data retention                                                        | Yes                                                                                                                         |
 | Pricing                                                                    | [View pricing in the Cloudflare dashboard ↗](https://dash.cloudflare.com/?to=/:account/ai/models/anthropic/claude-opus-4.6) |
 
 ## Usage
 
-* [ TypeScript ](#tab-panel-174)
-* [ cURL ](#tab-panel-175)
+* [ TypeScript ](#tab-panel-178)
+* [ cURL ](#tab-panel-179)
 
 TypeScript
 
@@ -88,8 +89,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/v1/
 
 ```
 
-* [ Output ](#tab-panel-178)
-* [ Raw response ](#tab-panel-179)
+* [ Output ](#tab-panel-182)
+* [ Raw response ](#tab-panel-183)
 
 # The Laws of Thermodynamics
 
@@ -164,8 +165,8 @@ Together, these laws govern how energy behaves in all physical and chemical proc
 
 **With System Message**  — Using a system message to set context 
 
-* [ TypeScript ](#tab-panel-176)
-* [ cURL ](#tab-panel-177)
+* [ TypeScript ](#tab-panel-180)
+* [ cURL ](#tab-panel-181)
 
 TypeScript
 
@@ -231,8 +232,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/v1/
 
 ```
 
-* [ Output ](#tab-panel-182)
-* [ Raw response ](#tab-panel-183)
+* [ Output ](#tab-panel-186)
+* [ Raw response ](#tab-panel-187)
 
 # Reading a JSON File in Python
 
@@ -374,8 +375,8 @@ with open('data.json', 'r', encoding='utf-8') as file:
 
 **Multi-turn Conversation**  — Continuing a conversation with context 
 
-* [ TypeScript ](#tab-panel-186)
-* [ cURL ](#tab-panel-187)
+* [ TypeScript ](#tab-panel-190)
+* [ cURL ](#tab-panel-191)
 
 TypeScript
 
@@ -471,8 +472,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/v1/
 
 ```
 
-* [ Output ](#tab-panel-188)
-* [ Raw response ](#tab-panel-189)
+* [ Output ](#tab-panel-192)
+* [ Raw response ](#tab-panel-193)
 
 # Great Stops Between SF & LA
 
@@ -553,8 +554,8 @@ This is the fastest route (~5-6 hours):
 
 **Creative Writing**  — Higher temperature for creative output 
 
-* [ TypeScript ](#tab-panel-180)
-* [ cURL ](#tab-panel-181)
+* [ TypeScript ](#tab-panel-184)
+* [ cURL ](#tab-panel-185)
 
 TypeScript
 
@@ -626,8 +627,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/v1/
 
 ```
 
-* [ Output ](#tab-panel-190)
-* [ Raw response ](#tab-panel-191)
+* [ Output ](#tab-panel-194)
+* [ Raw response ](#tab-panel-195)
 
 # The Orchid on the Windowsill
 
@@ -702,8 +703,8 @@ She read it again—not because she needed to, but because some part of her reco
 
 **Streaming Response**  — Enable streaming for real-time output 
 
-* [ TypeScript ](#tab-panel-184)
-* [ cURL ](#tab-panel-185)
+* [ TypeScript ](#tab-panel-188)
+* [ cURL ](#tab-panel-189)
 
 TypeScript
 
@@ -765,8 +766,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/v1/
 
 ```
 
-* [ Output ](#tab-panel-192)
-* [ Raw response ](#tab-panel-193)
+* [ Output ](#tab-panel-196)
+* [ Raw response ](#tab-panel-197)
 
 # Understanding Recursion
 
@@ -1306,8 +1307,8 @@ factorial(5)
 
 ## Parameters
 
-* [ Input ](#tab-panel-194)
-* [ Output ](#tab-panel-195)
+* [ Input ](#tab-panel-198)
+* [ Output ](#tab-panel-199)
 
 max\_tokens
 

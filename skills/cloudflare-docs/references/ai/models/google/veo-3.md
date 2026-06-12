@@ -20,16 +20,17 @@ Text-to-Video • Google
 
 Google's video generation model capable of producing high-quality videos with optional audio from text prompts.
 
-| Model Info        |                                                                                                                |
-| ----------------- | -------------------------------------------------------------------------------------------------------------- |
-| Terms and License | [link ↗](https://ai.google.dev/gemini-api/terms)                                                               |
-| More information  | [link ↗](https://deepmind.google/technologies/veo/)                                                            |
-| Pricing           | [View pricing in the Cloudflare dashboard ↗](https://dash.cloudflare.com/?to=/:account/ai/models/google/veo-3) |
+| Model Info          |                                                                                                                |
+| ------------------- | -------------------------------------------------------------------------------------------------------------- |
+| Terms and License   | [link ↗](https://ai.google.dev/gemini-api/terms)                                                               |
+| More information    | [link ↗](https://deepmind.google/technologies/veo/)                                                            |
+| Zero data retention | Yes                                                                                                            |
+| Pricing             | [View pricing in the Cloudflare dashboard ↗](https://dash.cloudflare.com/?to=/:account/ai/models/google/veo-3) |
 
 ## Usage
 
-* [ TypeScript ](#tab-panel-678)
-* [ cURL ](#tab-panel-679)
+* [ TypeScript ](#tab-panel-688)
+* [ cURL ](#tab-panel-689)
 
 TypeScript
 
@@ -93,8 +94,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 ```
 
-* [ Output ](#tab-panel-674)
-* [ Raw response ](#tab-panel-675)
+* [ Output ](#tab-panel-684)
+* [ Raw response ](#tab-panel-685)
 
 ```
 
@@ -123,8 +124,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 **Cinematic Scene**  — Widescreen cinematic video in 1080p 
 
-* [ TypeScript ](#tab-panel-682)
-* [ cURL ](#tab-panel-683)
+* [ TypeScript ](#tab-panel-692)
+* [ cURL ](#tab-panel-693)
 
 TypeScript
 
@@ -190,8 +191,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 ```
 
-* [ Output ](#tab-panel-676)
-* [ Raw response ](#tab-panel-677)
+* [ Output ](#tab-panel-686)
+* [ Raw response ](#tab-panel-687)
 
 ```
 
@@ -218,8 +219,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 **Vertical Video**  — Portrait orientation for social media 
 
-* [ TypeScript ](#tab-panel-686)
-* [ cURL ](#tab-panel-687)
+* [ TypeScript ](#tab-panel-696)
+* [ cURL ](#tab-panel-697)
 
 TypeScript
 
@@ -283,8 +284,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 ```
 
-* [ Output ](#tab-panel-680)
-* [ Raw response ](#tab-panel-681)
+* [ Output ](#tab-panel-690)
+* [ Raw response ](#tab-panel-691)
 
 ```
 
@@ -311,8 +312,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 **Short Format**  — Short video for social media posts 
 
-* [ TypeScript ](#tab-panel-690)
-* [ cURL ](#tab-panel-691)
+* [ TypeScript ](#tab-panel-700)
+* [ cURL ](#tab-panel-701)
 
 TypeScript
 
@@ -376,8 +377,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 ```
 
-* [ Output ](#tab-panel-684)
-* [ Raw response ](#tab-panel-685)
+* [ Output ](#tab-panel-694)
+* [ Raw response ](#tab-panel-695)
 
 ```
 
@@ -404,8 +405,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 **Silent Video**  — Video without audio generation 
 
-* [ TypeScript ](#tab-panel-692)
-* [ cURL ](#tab-panel-693)
+* [ TypeScript ](#tab-panel-702)
+* [ cURL ](#tab-panel-703)
 
 TypeScript
 
@@ -469,8 +470,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 ```
 
-* [ Output ](#tab-panel-688)
-* [ Raw response ](#tab-panel-689)
+* [ Output ](#tab-panel-698)
+* [ Raw response ](#tab-panel-699)
 
 ```
 
@@ -497,8 +498,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 ## Parameters
 
-* [ Input ](#tab-panel-694)
-* [ Output ](#tab-panel-695)
+* [ Input ](#tab-panel-704)
+* [ Output ](#tab-panel-705)
 
 aspect\_ratio
 

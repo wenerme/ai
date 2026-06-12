@@ -240,6 +240,77 @@ components:
         - output_modalities
       description: Model architecture information
       title: ModelArchitecture
+    AABenchmarkEntry:
+      type: object
+      properties:
+        agentic_index:
+          type:
+            - number
+            - 'null'
+          format: double
+          description: Artificial Analysis Agentic Index score
+        coding_index:
+          type:
+            - number
+            - 'null'
+          format: double
+          description: Artificial Analysis Coding Index score
+        intelligence_index:
+          type:
+            - number
+            - 'null'
+          format: double
+          description: Artificial Analysis Intelligence Index score
+      required:
+        - agentic_index
+        - coding_index
+        - intelligence_index
+      description: Artificial Analysis benchmark index scores.
+      title: AABenchmarkEntry
+    DABenchmarkEntry:
+      type: object
+      properties:
+        arena:
+          type: string
+          description: Arena type (e.g. models, builders, agents)
+        category:
+          type: string
+          description: Category within the arena (e.g. website, gamedev, uicomponent)
+        elo:
+          type: number
+          format: double
+          description: ELO rating from head-to-head arena battles
+        rank:
+          type: integer
+          description: >-
+            Rank position within this arena+category among models available on
+            OpenRouter (1 = highest ELO)
+        win_rate:
+          type: number
+          format: double
+          description: Win rate percentage in arena battles
+      required:
+        - arena
+        - category
+        - elo
+        - rank
+        - win_rate
+      description: A single Design Arena benchmark entry for a specific arena+category
+      title: DABenchmarkEntry
+    ModelBenchmarks:
+      type: object
+      properties:
+        artificial_analysis:
+          $ref: '#/components/schemas/AABenchmarkEntry'
+        design_arena:
+          type: array
+          items:
+            $ref: '#/components/schemas/DABenchmarkEntry'
+          description: Design Arena ELO rankings across arena+category pairs.
+      description: >-
+        Third-party benchmark rankings for this model. Omitted when no benchmark
+        data is available.
+      title: ModelBenchmarks
     DefaultParameters:
       type: object
       properties:
@@ -395,6 +466,8 @@ components:
       properties:
         architecture:
           $ref: '#/components/schemas/ModelArchitecture'
+        benchmarks:
+          $ref: '#/components/schemas/ModelBenchmarks'
         canonical_slug:
           type: string
           description: Canonical slug for the model

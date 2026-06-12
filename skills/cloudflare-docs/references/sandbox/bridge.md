@@ -99,9 +99,9 @@ export SANDBOX_API_KEY=<your-token>
 
 ### Create a sandbox and run a command
 
-* [ curl ](#tab-panel-8100)
-* [ Node.js ](#tab-panel-8101)
-* [ Python ](#tab-panel-8102)
+* [ curl ](#tab-panel-10028)
+* [ Node.js ](#tab-panel-10029)
+* [ Python ](#tab-panel-10030)
 
 Terminal window
 
@@ -286,9 +286,9 @@ httpx.delete(f"{API_URL}/v1/sandbox/{sandbox_id}", headers=headers)
 
 ### Write and read files
 
-* [ curl ](#tab-panel-8103)
-* [ Node.js ](#tab-panel-8104)
-* [ Python ](#tab-panel-8105)
+* [ curl ](#tab-panel-10031)
+* [ Node.js ](#tab-panel-10032)
+* [ Python ](#tab-panel-10033)
 
 Terminal window
 

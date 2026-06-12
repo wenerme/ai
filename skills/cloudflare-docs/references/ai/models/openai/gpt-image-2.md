@@ -20,16 +20,17 @@ Text-to-Image • OpenAI
 
 OpenAI's next-generation image model that creates and edits images from text prompts, with support for multiple quality levels, sizes, and output formats. Note: transparent backgrounds are not supported — use openai/gpt-image-1.5 for transparent PNGs.
 
-| Model Info        |                                                                                                                      |
-| ----------------- | -------------------------------------------------------------------------------------------------------------------- |
-| Terms and License | [link ↗](https://openai.com/policies/)                                                                               |
-| More information  | [link ↗](https://openai.com/)                                                                                        |
-| Pricing           | [View pricing in the Cloudflare dashboard ↗](https://dash.cloudflare.com/?to=/:account/ai/models/openai/gpt-image-2) |
+| Model Info          |                                                                                                                      |
+| ------------------- | -------------------------------------------------------------------------------------------------------------------- |
+| Terms and License   | [link ↗](https://openai.com/policies/)                                                                               |
+| More information    | [link ↗](https://openai.com/)                                                                                        |
+| Zero data retention | Yes                                                                                                                  |
+| Pricing             | [View pricing in the Cloudflare dashboard ↗](https://dash.cloudflare.com/?to=/:account/ai/models/openai/gpt-image-2) |
 
 ## Usage
 
-* [ TypeScript ](#tab-panel-1342)
-* [ cURL ](#tab-panel-1343)
+* [ TypeScript ](#tab-panel-1352)
+* [ cURL ](#tab-panel-1353)
 
 TypeScript
 
@@ -73,8 +74,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 ```
 
-* [ Output ](#tab-panel-1340)
-* [ Raw response ](#tab-panel-1341)
+* [ Output ](#tab-panel-1350)
+* [ Raw response ](#tab-panel-1351)
 
 ![Simple Generation](https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/openai__gpt-image-2/simple-generation.png) 
 
@@ -105,8 +106,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 **High Quality**  — Generate a high-quality detailed image 
 
-* [ TypeScript ](#tab-panel-1346)
-* [ cURL ](#tab-panel-1347)
+* [ TypeScript ](#tab-panel-1356)
+* [ cURL ](#tab-panel-1357)
 
 TypeScript
 
@@ -160,8 +161,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 ```
 
-* [ Output ](#tab-panel-1344)
-* [ Raw response ](#tab-panel-1345)
+* [ Output ](#tab-panel-1354)
+* [ Raw response ](#tab-panel-1355)
 
 ![High Quality](https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/openai__gpt-image-2/high-quality.png) 
 
@@ -190,8 +191,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 **Custom Size**  — Generate a portrait-oriented image 
 
-* [ TypeScript ](#tab-panel-1350)
-* [ cURL ](#tab-panel-1351)
+* [ TypeScript ](#tab-panel-1360)
+* [ cURL ](#tab-panel-1361)
 
 TypeScript
 
@@ -243,8 +244,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 ```
 
-* [ Output ](#tab-panel-1348)
-* [ Raw response ](#tab-panel-1349)
+* [ Output ](#tab-panel-1358)
+* [ Raw response ](#tab-panel-1359)
 
 ![Custom Size](https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/openai__gpt-image-2/custom-size.png) 
 
@@ -273,8 +274,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 **WebP Output**  — Generate an image in WebP format for smaller file size 
 
-* [ TypeScript ](#tab-panel-1354)
-* [ cURL ](#tab-panel-1355)
+* [ TypeScript ](#tab-panel-1364)
+* [ cURL ](#tab-panel-1365)
 
 TypeScript
 
@@ -332,8 +333,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 ```
 
-* [ Output ](#tab-panel-1352)
-* [ Raw response ](#tab-panel-1353)
+* [ Output ](#tab-panel-1362)
+* [ Raw response ](#tab-panel-1363)
 
 ![WebP Output](https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/openai__gpt-image-2/webp-output.webp) 
 
@@ -362,8 +363,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 **Image Edit**  — Edit an existing image by providing it in the images array as base64 (a raw string or a data:image/{png|jpeg|webp};base64,... URI). This routes the call to OpenAI's /v1/images/edits endpoint. The example uses a tiny 32x32 smiley-face PNG - real inputs are the full base64 encoding of your source image. 
 
-* [ TypeScript ](#tab-panel-1360)
-* [ cURL ](#tab-panel-1361)
+* [ TypeScript ](#tab-panel-1370)
+* [ cURL ](#tab-panel-1371)
 
 TypeScript
 
@@ -425,8 +426,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 ```
 
-* [ Output ](#tab-panel-1356)
-* [ Raw response ](#tab-panel-1357)
+* [ Output ](#tab-panel-1366)
+* [ Raw response ](#tab-panel-1367)
 
 ![Image Edit](https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/openai__gpt-image-2/image-edit.png) 
 
@@ -455,8 +456,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 **Multi-Image Edit**  — Compose multiple input images by passing up to 16 base64 strings in the images array. The model blends the references; useful for combining subjects, styles, or reference shots. The example pairs a smiley-face PNG with a red ball PNG. 
 
-* [ TypeScript ](#tab-panel-1362)
-* [ cURL ](#tab-panel-1363)
+* [ TypeScript ](#tab-panel-1372)
+* [ cURL ](#tab-panel-1373)
 
 TypeScript
 
@@ -522,8 +523,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 ```
 
-* [ Output ](#tab-panel-1358)
-* [ Raw response ](#tab-panel-1359)
+* [ Output ](#tab-panel-1368)
+* [ Raw response ](#tab-panel-1369)
 
 ![Multi-Image Edit](https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/openai__gpt-image-2/multi-image-edit.png) 
 
@@ -552,8 +553,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 ## Parameters
 
-* [ Input ](#tab-panel-1364)
-* [ Output ](#tab-panel-1365)
+* [ Input ](#tab-panel-1374)
+* [ Output ](#tab-panel-1375)
 
 background
 

@@ -209,6 +209,8 @@ Included products
 [ Subscribe to RSS ](https://developers.cloudflare.com/changelog/rss/r2-sql.xml)
 * [Realtime](https://developers.cloudflare.com/realtime/)  
 [ Subscribe to RSS ](https://developers.cloudflare.com/changelog/rss/realtime.xml)
+* [Sandbox SDK](https://developers.cloudflare.com/sandbox/)  
+[ Subscribe to RSS ](https://developers.cloudflare.com/changelog/rss/sandbox.xml)
 * [Stream](https://developers.cloudflare.com/stream/)  
 [ Subscribe to RSS ](https://developers.cloudflare.com/changelog/rss/stream.xml)
 * [Vectorize](https://developers.cloudflare.com/vectorize/)  

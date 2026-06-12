@@ -25,12 +25,13 @@ Claude Haiku 4.5 delivers similar levels of coding performance at one-third the 
 | Context Window[ ↗](https://developers.cloudflare.com/workers-ai/glossary/) | 200,000 tokens                                                                                                               |
 | Terms and License                                                          | [link ↗](https://www.anthropic.com/legal/commercial-terms)                                                                   |
 | More information                                                           | [link ↗](https://www.anthropic.com/claude/haiku)                                                                             |
+| Zero data retention                                                        | Yes                                                                                                                          |
 | Pricing                                                                    | [View pricing in the Cloudflare dashboard ↗](https://dash.cloudflare.com/?to=/:account/ai/models/anthropic/claude-haiku-4.5) |
 
 ## Usage
 
-* [ TypeScript ](#tab-panel-130)
-* [ cURL ](#tab-panel-131)
+* [ TypeScript ](#tab-panel-134)
+* [ cURL ](#tab-panel-135)
 
 TypeScript
 
@@ -88,8 +89,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/v1/
 
 ```
 
-* [ Output ](#tab-panel-134)
-* [ Raw response ](#tab-panel-135)
+* [ Output ](#tab-panel-138)
+* [ Raw response ](#tab-panel-139)
 
 # The Three Laws of Thermodynamics
 
@@ -159,8 +160,8 @@ These laws form the foundation of thermodynamics and explain why perpetual motio
 
 **With System Message**  — Using a system message to set context 
 
-* [ TypeScript ](#tab-panel-132)
-* [ cURL ](#tab-panel-133)
+* [ TypeScript ](#tab-panel-136)
+* [ cURL ](#tab-panel-137)
 
 TypeScript
 
@@ -226,8 +227,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/v1/
 
 ```
 
-* [ Output ](#tab-panel-138)
-* [ Raw response ](#tab-panel-139)
+* [ Output ](#tab-panel-142)
+* [ Raw response ](#tab-panel-143)
 
 # Reading a JSON File in Python
 
@@ -355,8 +356,8 @@ The `with` statement is recommended because it automatically closes the file whe
 
 **Multi-turn Conversation**  — Continuing a conversation with context 
 
-* [ TypeScript ](#tab-panel-142)
-* [ cURL ](#tab-panel-143)
+* [ TypeScript ](#tab-panel-146)
+* [ cURL ](#tab-panel-147)
 
 TypeScript
 
@@ -452,8 +453,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/v1/
 
 ```
 
-* [ Output ](#tab-panel-144)
-* [ Raw response ](#tab-panel-145)
+* [ Output ](#tab-panel-148)
+* [ Raw response ](#tab-panel-149)
 
 # Good Stops on the SF to LA Route
 
@@ -529,8 +530,8 @@ What's your timeline? Are you interested in nature, wine, food, or something els
 
 **Creative Writing**  — Higher temperature for creative output 
 
-* [ TypeScript ](#tab-panel-136)
-* [ cURL ](#tab-panel-137)
+* [ TypeScript ](#tab-panel-140)
+* [ cURL ](#tab-panel-141)
 
 TypeScript
 
@@ -602,8 +603,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/v1/
 
 ```
 
-* [ Output ](#tab-panel-146)
-* [ Raw response ](#tab-panel-147)
+* [ Output ](#tab-panel-150)
+* [ Raw response ](#tab-panel-151)
 
 # The Photograph
 
@@ -676,8 +677,8 @@ It was a warning.
 
 **Streaming Response**  — Enable streaming for real-time output 
 
-* [ TypeScript ](#tab-panel-140)
-* [ cURL ](#tab-panel-141)
+* [ TypeScript ](#tab-panel-144)
+* [ cURL ](#tab-panel-145)
 
 TypeScript
 
@@ -739,8 +740,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/v1/
 
 ```
 
-* [ Output ](#tab-panel-148)
-* [ Raw response ](#tab-panel-149)
+* [ Output ](#tab-panel-152)
+* [ Raw response ](#tab-panel-153)
 
 # Recursion Explained
 
@@ -1178,8 +1179,8 @@ Recursion is elegant but always ensure you have a clear base case!
 
 ## Parameters
 
-* [ Input ](#tab-panel-150)
-* [ Output ](#tab-panel-151)
+* [ Input ](#tab-panel-154)
+* [ Output ](#tab-panel-155)
 
 max\_tokens
 

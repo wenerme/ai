@@ -50,8 +50,8 @@ To create your fallback origin:
 
 1. Designate that record as your fallback origin.
 
-* [ Dashboard ](#tab-panel-4796)
-* [ API ](#tab-panel-4797)
+* [ Dashboard ](#tab-panel-6861)
+* [ API ](#tab-panel-6862)
 
 1. In the Cloudflare dashboard, go to the **Custom Hostnames** page.  
 [ Go to **Custom Hostnames** ](https://dash.cloudflare.com/?to=/:account/:zone/ssl-tls/custom-hostnames)
@@ -107,19 +107,17 @@ Do not configure a custom hostname which matches the zone name. For example, if 
 
 To create a custom hostname:
 
-* [ Dashboard ](#tab-panel-4798)
-* [ API ](#tab-panel-4799)
+* [ Dashboard ](#tab-panel-6863)
+* [ API ](#tab-panel-6864)
 
 1. In the Cloudflare dashboard, go to the **Custom Hostnames** page.  
 [ Go to **Custom Hostnames** ](https://dash.cloudflare.com/?to=/:account/:zone/ssl-tls/custom-hostnames)
 2. Select **Add Custom Hostname**.
 3. Add your customer's hostname `app.customer.com` and set the relevant options, including:  
-   * The [minimum TLS version](https://developers.cloudflare.com/ssl/reference/protocols/).  
-   * Defining whether you want to use a certificate provided by Cloudflare or [upload a custom certificate](https://developers.cloudflare.com/cloudflare-for-platforms/cloudflare-for-saas/security/certificate-management/custom-certificates/uploading-certificates/).  
-   * Selecting the [certificate authority (CA)](https://developers.cloudflare.com/ssl/reference/certificate-authorities/) that will issue the certificate.  
-   * Choosing the [validation method](https://developers.cloudflare.com/cloudflare-for-platforms/cloudflare-for-saas/security/certificate-management/issue-and-validate/validate-certificates/).  
-   * Whether you want to **Enable wildcard**, which adds a `*.<custom-hostname>` SAN to the custom hostname certificate. For more details, refer to [Hostname priority](https://developers.cloudflare.com/ssl/reference/certificate-and-hostname-priority/#hostname-priority).  
-   * Choosing a value for [Custom origin server](https://developers.cloudflare.com/cloudflare-for-platforms/cloudflare-for-saas/start/advanced-settings/custom-origin/).
+   * Select the [minimum TLS version](https://developers.cloudflare.com/ssl/reference/protocols/).  
+   * Select the [validation method](https://developers.cloudflare.com/cloudflare-for-platforms/cloudflare-for-saas/security/certificate-management/issue-and-validate/validate-certificates/).  
+   * Define a [custom origin server](https://developers.cloudflare.com/cloudflare-for-platforms/cloudflare-for-saas/start/advanced-settings/custom-origin/).  
+   * Enterprise customers can also select the [certificate authority (CA)](https://developers.cloudflare.com/ssl/reference/certificate-authorities/), [upload a custom certificate](https://developers.cloudflare.com/cloudflare-for-platforms/cloudflare-for-saas/security/certificate-management/custom-certificates/uploading-certificates/), or enable wildcard, which adds a `*.<custom-hostname>` SAN to the custom hostname certificate. For more details, refer to [Hostname priority](https://developers.cloudflare.com/ssl/reference/certificate-and-hostname-priority/#hostname-priority) and [Plans](https://developers.cloudflare.com/cloudflare-for-platforms/cloudflare-for-saas/plans/).
 4. Select **Add Custom Hostname**.
 
 Default behavior
@@ -130,6 +128,7 @@ When you create a custom hostname:
 * If you do not specify the **Minimum TLS Version**, it defaults to the zone's Minimum TLS Version. You can still [edit this setting](https://developers.cloudflare.com/cloudflare-for-platforms/cloudflare-for-saas/security/certificate-management/enforce-mtls/#minimum-tls-version) after creation.
 
 1. To create a custom hostname using the API, use the [Create Custom Hostname](https://developers.cloudflare.com/api/resources/custom%5Fhostnames/methods/create/) endpoint.  
+   * Only Enterprise customers can use the `certificate_authority` parameter to specify a CA, the `custom_certificate`/`custom_cert_bundle` to upload a custom certificate, or `wildcard` to create a wildcard certificate. Refer to [Plans](https://developers.cloudflare.com/cloudflare-for-platforms/cloudflare-for-saas/plans/).  
    * You can leave the `certificate_authority` parameter empty to set it to "default CA". With this option, Cloudflare checks the CAA records before requesting the certificates, which helps ensure the certificates can be issued from the CA.
 2. For the newly created custom hostname, the `POST` response may not return the DCV validation token `validation_records`. It is recommended to make a second [GET command](https://developers.cloudflare.com/api/resources/custom%5Fhostnames/methods/list/) (with a delay) to retrieve these details.
 

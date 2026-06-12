@@ -25,12 +25,13 @@ GPT-5.5 pro uses OpenAI's Responses API with built-in tools, improved reasoning,
 | Context Window[ ↗](https://developers.cloudflare.com/workers-ai/glossary/) | 1,000,000 tokens                                                                                                     |
 | Terms and License                                                          | [link ↗](https://openai.com/policies/)                                                                               |
 | More information                                                           | [link ↗](https://openai.com/)                                                                                        |
+| Zero data retention                                                        | Yes                                                                                                                  |
 | Pricing                                                                    | [View pricing in the Cloudflare dashboard ↗](https://dash.cloudflare.com/?to=/:account/ai/models/openai/gpt-5.5-pro) |
 
 ## Usage
 
-* [ TypeScript ](#tab-panel-1296)
-* [ cURL ](#tab-panel-1297)
+* [ TypeScript ](#tab-panel-1306)
+* [ cURL ](#tab-panel-1307)
 
 TypeScript
 
@@ -70,8 +71,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/v1/
 
 ```
 
-* [ Output ](#tab-panel-1306)
-* [ Raw response ](#tab-panel-1307)
+* [ Output ](#tab-panel-1316)
+* [ Raw response ](#tab-panel-1317)
 
 The **three laws of thermodynamics** are:
 
@@ -263,8 +264,8 @@ There is also a **Zeroth Law**, often stated separately: if two systems are each
 
 **With Instructions**  — Using instructions to set context 
 
-* [ TypeScript ](#tab-panel-1298)
-* [ cURL ](#tab-panel-1299)
+* [ TypeScript ](#tab-panel-1308)
+* [ cURL ](#tab-panel-1309)
 
 TypeScript
 
@@ -312,8 +313,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/v1/
 
 ```
 
-* [ Output ](#tab-panel-1308)
-* [ Raw response ](#tab-panel-1309)
+* [ Output ](#tab-panel-1318)
+* [ Raw response ](#tab-panel-1319)
 
 Use Python’s built-in `json` module:
 
@@ -531,8 +532,8 @@ Use `json.load(file)` for reading from a file, and `json.loads(string)` for pars
 
 **Multi-turn Conversation**  — Continuing a conversation with message array 
 
-* [ TypeScript ](#tab-panel-1304)
-* [ cURL ](#tab-panel-1305)
+* [ TypeScript ](#tab-panel-1314)
+* [ cURL ](#tab-panel-1315)
 
 TypeScript
 
@@ -628,8 +629,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/v1/
 
 ```
 
-* [ Output ](#tab-panel-1310)
-* [ Raw response ](#tab-panel-1311)
+* [ Output ](#tab-panel-1320)
+* [ Raw response ](#tab-panel-1321)
 
 - Monterey/Carmel is great for beaches, seafood, and a quick scenic stroll.  
 - Big Sur offers dramatic ocean views, Bixby Bridge, and McWay Falls.  
@@ -804,8 +805,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/v1/
 
 **Temperature Control**  — Using temperature for creative responses 
 
-* [ TypeScript ](#tab-panel-1300)
-* [ cURL ](#tab-panel-1301)
+* [ TypeScript ](#tab-panel-1310)
+* [ cURL ](#tab-panel-1311)
 
 TypeScript
 
@@ -847,8 +848,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/v1/
 
 ```
 
-* [ Output ](#tab-panel-1312)
-* [ Raw response ](#tab-panel-1313)
+* [ Output ](#tab-panel-1322)
+* [ Raw response ](#tab-panel-1323)
 
 Silent circuits dream  
 Learning patterns in starlight  
@@ -1023,8 +1024,8 @@ Dawn hums through the code
 
 **With Reasoning**  — Using reasoning effort for complex problems 
 
-* [ TypeScript ](#tab-panel-1302)
-* [ cURL ](#tab-panel-1303)
+* [ TypeScript ](#tab-panel-1312)
+* [ cURL ](#tab-panel-1313)
 
 TypeScript
 
@@ -1078,8 +1079,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/v1/
 
 ```
 
-* [ Output ](#tab-panel-1314)
-* [ Raw response ](#tab-panel-1315)
+* [ Output ](#tab-panel-1324)
+* [ Raw response ](#tab-panel-1325)
 
 Assuming both trains leave at the same time:
 
@@ -1284,8 +1285,8 @@ More exactly, they meet after **6 hours, 25 minutes, and 43 seconds**.
 
 ## Parameters
 
-* [ Input ](#tab-panel-1316)
-* [ Output ](#tab-panel-1317)
+* [ Input ](#tab-panel-1326)
+* [ Output ](#tab-panel-1327)
 
 ▶input
 

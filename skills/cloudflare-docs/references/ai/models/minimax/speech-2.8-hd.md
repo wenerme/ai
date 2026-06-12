@@ -20,16 +20,17 @@ Text-to-Speech • MiniMax
 
 MiniMax Speech 2.8 HD focuses on studio-grade audio generation with emotion control, multilingual support (40+ languages), and voice cloning.
 
-| Model Info        |                                                                                                                         |
-| ----------------- | ----------------------------------------------------------------------------------------------------------------------- |
-| Terms and License | [link ↗](https://www.minimaxi.com/terms)                                                                                |
-| More information  | [link ↗](https://www.minimaxi.com/)                                                                                     |
-| Pricing           | [View pricing in the Cloudflare dashboard ↗](https://dash.cloudflare.com/?to=/:account/ai/models/minimax/speech-2.8-hd) |
+| Model Info          |                                                                                                                         |
+| ------------------- | ----------------------------------------------------------------------------------------------------------------------- |
+| Terms and License   | [link ↗](https://www.minimaxi.com/terms)                                                                                |
+| More information    | [link ↗](https://www.minimaxi.com/)                                                                                     |
+| Zero data retention | Yes                                                                                                                     |
+| Pricing             | [View pricing in the Cloudflare dashboard ↗](https://dash.cloudflare.com/?to=/:account/ai/models/minimax/speech-2.8-hd) |
 
 ## Usage
 
-* [ TypeScript ](#tab-panel-898)
-* [ cURL ](#tab-panel-899)
+* [ TypeScript ](#tab-panel-908)
+* [ cURL ](#tab-panel-909)
 
 TypeScript
 
@@ -97,8 +98,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 ```
 
-* [ Output ](#tab-panel-894)
-* [ Raw response ](#tab-panel-895)
+* [ Output ](#tab-panel-904)
+* [ Raw response ](#tab-panel-905)
 
 ```
 
@@ -127,8 +128,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 **Custom Voice**  — Use a specific voice and adjust speed 
 
-* [ TypeScript ](#tab-panel-902)
-* [ cURL ](#tab-panel-903)
+* [ TypeScript ](#tab-panel-912)
+* [ cURL ](#tab-panel-913)
 
 TypeScript
 
@@ -196,8 +197,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 ```
 
-* [ Output ](#tab-panel-896)
-* [ Raw response ](#tab-panel-897)
+* [ Output ](#tab-panel-906)
+* [ Raw response ](#tab-panel-907)
 
 ```
 
@@ -224,8 +225,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 **With Emotion**  — Apply emotional tone to speech 
 
-* [ TypeScript ](#tab-panel-906)
-* [ cURL ](#tab-panel-907)
+* [ TypeScript ](#tab-panel-916)
+* [ cURL ](#tab-panel-917)
 
 TypeScript
 
@@ -297,8 +298,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 ```
 
-* [ Output ](#tab-panel-900)
-* [ Raw response ](#tab-panel-901)
+* [ Output ](#tab-panel-910)
+* [ Raw response ](#tab-panel-911)
 
 ```
 
@@ -325,8 +326,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 **High Sample Rate**  — Studio quality at 44.1kHz sample rate 
 
-* [ TypeScript ](#tab-panel-908)
-* [ cURL ](#tab-panel-909)
+* [ TypeScript ](#tab-panel-918)
+* [ cURL ](#tab-panel-919)
 
 TypeScript
 
@@ -398,8 +399,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 ```
 
-* [ Output ](#tab-panel-904)
-* [ Raw response ](#tab-panel-905)
+* [ Output ](#tab-panel-914)
+* [ Raw response ](#tab-panel-915)
 
 ```
 
@@ -426,8 +427,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 ## Parameters
 
-* [ Input ](#tab-panel-910)
-* [ Output ](#tab-panel-911)
+* [ Input ](#tab-panel-920)
+* [ Output ](#tab-panel-921)
 
 emotion
 

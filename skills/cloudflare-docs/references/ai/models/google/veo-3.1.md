@@ -20,16 +20,17 @@ Text-to-Video • Google
 
 Google's latest video generation model with improved quality, motion, and audio generation.
 
-| Model Info        |                                                                                                                  |
-| ----------------- | ---------------------------------------------------------------------------------------------------------------- |
-| Terms and License | [link ↗](https://ai.google.dev/gemini-api/terms)                                                                 |
-| More information  | [link ↗](https://deepmind.google/technologies/veo/)                                                              |
-| Pricing           | [View pricing in the Cloudflare dashboard ↗](https://dash.cloudflare.com/?to=/:account/ai/models/google/veo-3.1) |
+| Model Info          |                                                                                                                  |
+| ------------------- | ---------------------------------------------------------------------------------------------------------------- |
+| Terms and License   | [link ↗](https://ai.google.dev/gemini-api/terms)                                                                 |
+| More information    | [link ↗](https://deepmind.google/technologies/veo/)                                                              |
+| Zero data retention | Yes                                                                                                              |
+| Pricing             | [View pricing in the Cloudflare dashboard ↗](https://dash.cloudflare.com/?to=/:account/ai/models/google/veo-3.1) |
 
 ## Usage
 
-* [ TypeScript ](#tab-panel-718)
-* [ cURL ](#tab-panel-719)
+* [ TypeScript ](#tab-panel-728)
+* [ cURL ](#tab-panel-729)
 
 TypeScript
 
@@ -95,8 +96,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 ```
 
-* [ Output ](#tab-panel-714)
-* [ Raw response ](#tab-panel-715)
+* [ Output ](#tab-panel-724)
+* [ Raw response ](#tab-panel-725)
 
 ```
 
@@ -125,8 +126,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 **Urban Time-lapse**  — City life time-lapse video 
 
-* [ TypeScript ](#tab-panel-722)
-* [ cURL ](#tab-panel-723)
+* [ TypeScript ](#tab-panel-732)
+* [ cURL ](#tab-panel-733)
 
 TypeScript
 
@@ -192,8 +193,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 ```
 
-* [ Output ](#tab-panel-716)
-* [ Raw response ](#tab-panel-717)
+* [ Output ](#tab-panel-726)
+* [ Raw response ](#tab-panel-727)
 
 ```
 
@@ -220,8 +221,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 **Abstract Art**  — Abstract motion graphics 
 
-* [ TypeScript ](#tab-panel-726)
-* [ cURL ](#tab-panel-727)
+* [ TypeScript ](#tab-panel-736)
+* [ cURL ](#tab-panel-737)
 
 TypeScript
 
@@ -287,8 +288,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 ```
 
-* [ Output ](#tab-panel-720)
-* [ Raw response ](#tab-panel-721)
+* [ Output ](#tab-panel-730)
+* [ Raw response ](#tab-panel-731)
 
 ```
 
@@ -315,8 +316,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 **Food Video**  — Appetizing food footage 
 
-* [ TypeScript ](#tab-panel-728)
-* [ cURL ](#tab-panel-729)
+* [ TypeScript ](#tab-panel-738)
+* [ cURL ](#tab-panel-739)
 
 TypeScript
 
@@ -380,8 +381,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 ```
 
-* [ Output ](#tab-panel-724)
-* [ Raw response ](#tab-panel-725)
+* [ Output ](#tab-panel-734)
+* [ Raw response ](#tab-panel-735)
 
 ```
 
@@ -408,8 +409,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 ## Parameters
 
-* [ Input ](#tab-panel-730)
-* [ Output ](#tab-panel-731)
+* [ Input ](#tab-panel-740)
+* [ Output ](#tab-panel-741)
 
 aspect\_ratio
 

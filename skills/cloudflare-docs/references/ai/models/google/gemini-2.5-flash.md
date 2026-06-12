@@ -25,12 +25,13 @@ Google's fast multimodal Gemini 2.5 model with strong reasoning and a 1M token c
 | Context Window[ ↗](https://developers.cloudflare.com/workers-ai/glossary/) | 1,000,000 tokens                                                                                                          |
 | Terms and License                                                          | [link ↗](https://ai.google.dev/gemini-api/terms)                                                                          |
 | More information                                                           | [link ↗](https://deepmind.google/technologies/gemini/)                                                                    |
+| Zero data retention                                                        | Yes                                                                                                                       |
 | Pricing                                                                    | [View pricing in the Cloudflare dashboard ↗](https://dash.cloudflare.com/?to=/:account/ai/models/google/gemini-2.5-flash) |
 
 ## Usage
 
-* [ TypeScript ](#tab-panel-468)
-* [ cURL ](#tab-panel-469)
+* [ TypeScript ](#tab-panel-478)
+* [ cURL ](#tab-panel-479)
 
 TypeScript
 
@@ -92,8 +93,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 ```
 
-* [ Output ](#tab-panel-474)
-* [ Raw response ](#tab-panel-475)
+* [ Output ](#tab-panel-484)
+* [ Raw response ](#tab-panel-485)
 
 The three laws of thermodynamics are fundamental principles that govern how energy is transferred and transformed in physical systems. They are:
 
@@ -202,8 +203,8 @@ These three laws are cornerstones of physics and chemistry, explaining a vast ra
 
 **With System Instruction**  — Using a system instruction to set context 
 
-* [ TypeScript ](#tab-panel-470)
-* [ cURL ](#tab-panel-471)
+* [ TypeScript ](#tab-panel-480)
+* [ cURL ](#tab-panel-481)
 
 TypeScript
 
@@ -297,8 +298,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 ```
 
-* [ Output ](#tab-panel-476)
-* [ Raw response ](#tab-panel-477)
+* [ Output ](#tab-panel-486)
+* [ Raw response ](#tab-panel-487)
 
 Reading a JSON (JavaScript Object Notation) file in Python is straightforward, thanks to the built-in `json` module.
 
@@ -530,8 +531,8 @@ When `json.load()` or `json.loads()` parses JSON, it converts JSON data types to
 
 **Multi-turn Conversation**  — Continuing a conversation with context 
 
-* [ TypeScript ](#tab-panel-478)
-* [ cURL ](#tab-panel-479)
+* [ TypeScript ](#tab-panel-488)
+* [ cURL ](#tab-panel-489)
 
 TypeScript
 
@@ -665,8 +666,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 ```
 
-* [ Output ](#tab-panel-480)
-* [ Raw response ](#tab-panel-481)
+* [ Output ](#tab-panel-490)
+* [ Raw response ](#tab-panel-491)
 
 Okay, you've got two main routes, each with its own character and fantastic stops
 
@@ -759,8 +760,8 @@ Okay, you've got two main routes, each with its own character and fantastic stop
 
 **Creative Writing**  — Higher temperature for creative output 
 
-* [ TypeScript ](#tab-panel-472)
-* [ cURL ](#tab-panel-473)
+* [ TypeScript ](#tab-panel-482)
+* [ cURL ](#tab-panel-483)
 
 TypeScript
 
@@ -846,8 +847,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 ```
 
-* [ Output ](#tab-panel-482)
-* [ Raw response ](#tab-panel-483)
+* [ Output ](#tab-panel-492)
+* [ Raw response ](#tab-panel-493)
 
 The rain had been a relentless drumbeat against
 
@@ -940,8 +941,8 @@ The rain had been a relentless drumbeat against
 
 ## Parameters
 
-* [ Input ](#tab-panel-484)
-* [ Output ](#tab-panel-485)
+* [ Input ](#tab-panel-494)
+* [ Output ](#tab-panel-495)
 
 ▶contents\[\]
 

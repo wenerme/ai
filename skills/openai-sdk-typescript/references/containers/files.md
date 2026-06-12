@@ -162,6 +162,7 @@ You can send either a multipart/form-data request with the raw file content, or 
 ### Example
 
 ```typescript
+import fs from 'fs';
 import OpenAI from 'openai';
 
 const client = new OpenAI({
@@ -417,7 +418,7 @@ Retrieve Container File Content
 
 ### Returns
 
-- `unnamed_schema_2 = Response`
+- `unnamed_schema_9 = Response`
 
 ### Example
 

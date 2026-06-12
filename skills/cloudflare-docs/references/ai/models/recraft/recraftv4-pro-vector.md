@@ -20,16 +20,17 @@ Text-to-Image • Recraft
 
 Generate detailed, production-ready SVG vector graphics from text prompts with fine geometry, scalable to any size for print and design work.
 
-| Model Info        |                                                                                                                                |
-| ----------------- | ------------------------------------------------------------------------------------------------------------------------------ |
-| Terms and License | [link ↗](https://www.recraft.ai/terms)                                                                                         |
-| More information  | [link ↗](https://www.recraft.ai/)                                                                                              |
-| Pricing           | [View pricing in the Cloudflare dashboard ↗](https://dash.cloudflare.com/?to=/:account/ai/models/recraft/recraftv4-pro-vector) |
+| Model Info          |                                                                                                                                |
+| ------------------- | ------------------------------------------------------------------------------------------------------------------------------ |
+| Terms and License   | [link ↗](https://www.recraft.ai/terms)                                                                                         |
+| More information    | [link ↗](https://www.recraft.ai/)                                                                                              |
+| Zero data retention | Yes                                                                                                                            |
+| Pricing             | [View pricing in the Cloudflare dashboard ↗](https://dash.cloudflare.com/?to=/:account/ai/models/recraft/recraftv4-pro-vector) |
 
 ## Usage
 
-* [ TypeScript ](#tab-panel-1724)
-* [ cURL ](#tab-panel-1725)
+* [ TypeScript ](#tab-panel-1734)
+* [ cURL ](#tab-panel-1735)
 
 TypeScript
 
@@ -73,8 +74,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 ```
 
-* [ Output ](#tab-panel-1722)
-* [ Raw response ](#tab-panel-1723)
+* [ Output ](#tab-panel-1732)
+* [ Raw response ](#tab-panel-1733)
 
 ![Logo Design](https://examples.aig.cloudflare.com/recraft/recraftv4-pro-vector/logo-design.svg) 
 
@@ -105,8 +106,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 **Icon Set**  — Generate a vector icon 
 
-* [ TypeScript ](#tab-panel-1728)
-* [ cURL ](#tab-panel-1729)
+* [ TypeScript ](#tab-panel-1738)
+* [ cURL ](#tab-panel-1739)
 
 TypeScript
 
@@ -158,8 +159,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 ```
 
-* [ Output ](#tab-panel-1726)
-* [ Raw response ](#tab-panel-1727)
+* [ Output ](#tab-panel-1736)
+* [ Raw response ](#tab-panel-1737)
 
 ![Icon Set](https://examples.aig.cloudflare.com/recraft/recraftv4-pro-vector/icon-set.svg) 
 
@@ -188,8 +189,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 **Print-Ready Vector**  — High-resolution vector for large-format print 
 
-* [ TypeScript ](#tab-panel-1732)
-* [ cURL ](#tab-panel-1733)
+* [ TypeScript ](#tab-panel-1742)
+* [ cURL ](#tab-panel-1743)
 
 TypeScript
 
@@ -243,8 +244,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 ```
 
-* [ Output ](#tab-panel-1730)
-* [ Raw response ](#tab-panel-1731)
+* [ Output ](#tab-panel-1740)
+* [ Raw response ](#tab-panel-1741)
 
 ![Print-Ready Vector](https://examples.aig.cloudflare.com/recraft/recraftv4-pro-vector/print-ready-vector.svg) 
 
@@ -273,8 +274,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 **Brand Illustration**  — Vector illustration with brand colors 
 
-* [ TypeScript ](#tab-panel-1736)
-* [ cURL ](#tab-panel-1737)
+* [ TypeScript ](#tab-panel-1746)
+* [ cURL ](#tab-panel-1747)
 
 TypeScript
 
@@ -374,8 +375,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 ```
 
-* [ Output ](#tab-panel-1734)
-* [ Raw response ](#tab-panel-1735)
+* [ Output ](#tab-panel-1744)
+* [ Raw response ](#tab-panel-1745)
 
 ![Brand Illustration](https://examples.aig.cloudflare.com/recraft/recraftv4-pro-vector/brand-illustration.svg) 
 
@@ -404,8 +405,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 ## Parameters
 
-* [ Input ](#tab-panel-1738)
-* [ Output ](#tab-panel-1739)
+* [ Input ](#tab-panel-1748)
+* [ Output ](#tab-panel-1749)
 
 ▶controls{}
 

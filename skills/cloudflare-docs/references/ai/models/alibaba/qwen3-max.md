@@ -20,11 +20,12 @@ Text Generation • Alibaba
 
 Alibaba's Qwen 3 Max is a large language model with strong coding, reasoning, and multilingual capabilities, served via DashScope's OpenAI-compatible endpoint.
 
-| Model Info        |                                                                                                                     |
-| ----------------- | ------------------------------------------------------------------------------------------------------------------- |
-| Terms and License | [link ↗](https://www.alibabacloud.com/help/en/legal)                                                                |
-| More information  | [link ↗](https://www.alibabacloud.com/en/solutions/generative-ai/qwen)                                              |
-| Pricing           | [View pricing in the Cloudflare dashboard ↗](https://dash.cloudflare.com/?to=/:account/ai/models/alibaba/qwen3-max) |
+| Model Info          |                                                                                                                     |
+| ------------------- | ------------------------------------------------------------------------------------------------------------------- |
+| Terms and License   | [link ↗](https://www.alibabacloud.com/help/en/legal)                                                                |
+| More information    | [link ↗](https://www.alibabacloud.com/en/solutions/generative-ai/qwen)                                              |
+| Zero data retention | Yes                                                                                                                 |
+| Pricing             | [View pricing in the Cloudflare dashboard ↗](https://dash.cloudflare.com/?to=/:account/ai/models/alibaba/qwen3-max) |
 
 ## Usage
 

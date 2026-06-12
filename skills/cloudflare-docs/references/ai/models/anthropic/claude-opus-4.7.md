@@ -25,12 +25,13 @@ Claude Opus 4.7 is Anthropic's most capable generally available model, with a st
 | Context Window[ ↗](https://developers.cloudflare.com/workers-ai/glossary/) | 1,000,000 tokens                                                                                                            |
 | Terms and License                                                          | [link ↗](https://www.anthropic.com/legal/commercial-terms)                                                                  |
 | More information                                                           | [link ↗](https://www.anthropic.com/claude/opus)                                                                             |
+| Zero data retention                                                        | Yes                                                                                                                         |
 | Pricing                                                                    | [View pricing in the Cloudflare dashboard ↗](https://dash.cloudflare.com/?to=/:account/ai/models/anthropic/claude-opus-4.7) |
 
 ## Usage
 
-* [ TypeScript ](#tab-panel-196)
-* [ cURL ](#tab-panel-197)
+* [ TypeScript ](#tab-panel-200)
+* [ cURL ](#tab-panel-201)
 
 TypeScript
 
@@ -88,8 +89,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/v1/
 
 ```
 
-* [ Output ](#tab-panel-200)
-* [ Raw response ](#tab-panel-201)
+* [ Output ](#tab-panel-204)
+* [ Raw response ](#tab-panel-205)
 
 # The Three Laws of Thermodynamics
 
@@ -161,8 +162,8 @@ Often mentioned alongside these: if two systems are each in thermal equilibrium 
 
 **With System Message**  — Using a system message to set context 
 
-* [ TypeScript ](#tab-panel-198)
-* [ cURL ](#tab-panel-199)
+* [ TypeScript ](#tab-panel-202)
+* [ cURL ](#tab-panel-203)
 
 TypeScript
 
@@ -224,8 +225,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/v1/
 
 ```
 
-* [ Output ](#tab-panel-202)
-* [ Raw response ](#tab-panel-203)
+* [ Output ](#tab-panel-206)
+* [ Raw response ](#tab-panel-207)
 
 # Reading a JSON File in Python
 
@@ -354,8 +355,8 @@ The `indent=4` argument makes the output nicely formatted. Let me know if you'd 
 
 **Multi-turn Conversation**  — Continuing a conversation with context 
 
-* [ TypeScript ](#tab-panel-206)
-* [ cURL ](#tab-panel-207)
+* [ TypeScript ](#tab-panel-210)
+* [ cURL ](#tab-panel-211)
 
 TypeScript
 
@@ -451,8 +452,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/v1/
 
 ```
 
-* [ Output ](#tab-panel-208)
-* [ Raw response ](#tab-panel-209)
+* [ Output ](#tab-panel-212)
+* [ Raw response ](#tab-panel-213)
 
 Great choice to explore along the way! Here are some popular stops, organized by route:
 
@@ -540,8 +541,8 @@ Let me know and I can build a more detailed itinerary!
 
 **Creative Writing with Adaptive Thinking**  — Use adaptive thinking with high effort to steer creative output -- the recommended replacement for the deprecated \`temperature\` parameter. 
 
-* [ TypeScript ](#tab-panel-210)
-* [ cURL ](#tab-panel-211)
+* [ TypeScript ](#tab-panel-214)
+* [ cURL ](#tab-panel-215)
 
 TypeScript
 
@@ -625,8 +626,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/v1/
 
 ```
 
-* [ Output ](#tab-panel-212)
-* [ Raw response ](#tab-panel-213)
+* [ Output ](#tab-panel-216)
+* [ Raw response ](#tab-panel-217)
 
 # The Wrong Kind of Silence
 
@@ -703,8 +704,8 @@ Seven grains. Facing north. On the desk of a man who drew maps for a living.
 
 **Streaming Response**  — Enable streaming for real-time output 
 
-* [ TypeScript ](#tab-panel-204)
-* [ cURL ](#tab-panel-205)
+* [ TypeScript ](#tab-panel-208)
+* [ cURL ](#tab-panel-209)
 
 TypeScript
 
@@ -766,8 +767,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/v1/
 
 ```
 
-* [ Output ](#tab-panel-214)
-* [ Raw response ](#tab-panel-215)
+* [ Output ](#tab-panel-218)
+* [ Raw response ](#tab-panel-219)
 
 # Recursion Explained
 
@@ -1329,8 +1330,8 @@ Recursion is elegant for problems that can be broken into **smaller versions of 
 
 ## Parameters
 
-* [ Input ](#tab-panel-216)
-* [ Output ](#tab-panel-217)
+* [ Input ](#tab-panel-220)
+* [ Output ](#tab-panel-221)
 
 max\_tokens
 

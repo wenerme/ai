@@ -25,12 +25,13 @@ GPT-5.4 pro uses OpenAI's Responses API with built-in tools, improved reasoning,
 | Context Window[ ↗](https://developers.cloudflare.com/workers-ai/glossary/) | 1,000,000 tokens                                                                                                     |
 | Terms and License                                                          | [link ↗](https://openai.com/policies/)                                                                               |
 | More information                                                           | [link ↗](https://openai.com/)                                                                                        |
+| Zero data retention                                                        | Yes                                                                                                                  |
 | Pricing                                                                    | [View pricing in the Cloudflare dashboard ↗](https://dash.cloudflare.com/?to=/:account/ai/models/openai/gpt-5.4-pro) |
 
 ## Usage
 
-* [ TypeScript ](#tab-panel-1252)
-* [ cURL ](#tab-panel-1253)
+* [ TypeScript ](#tab-panel-1262)
+* [ cURL ](#tab-panel-1263)
 
 TypeScript
 
@@ -70,8 +71,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/v1/
 
 ```
 
-* [ Output ](#tab-panel-1262)
-* [ Raw response ](#tab-panel-1263)
+* [ Output ](#tab-panel-1272)
+* [ Raw response ](#tab-panel-1273)
 
 The **three laws of thermodynamics** usually mean:
 
@@ -265,8 +266,8 @@ If you want, I can also give a **one-line intuitive version** of each law.
 
 **With Instructions**  — Using instructions to set context 
 
-* [ TypeScript ](#tab-panel-1254)
-* [ cURL ](#tab-panel-1255)
+* [ TypeScript ](#tab-panel-1264)
+* [ cURL ](#tab-panel-1265)
 
 TypeScript
 
@@ -314,8 +315,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/v1/
 
 ```
 
-* [ Output ](#tab-panel-1264)
-* [ Raw response ](#tab-panel-1265)
+* [ Output ](#tab-panel-1274)
+* [ Raw response ](#tab-panel-1275)
 
 Use Python’s built-in `json` module.
 
@@ -554,8 +555,8 @@ If you want, I can also show how to **write JSON back to a file**.
 
 **Multi-turn Conversation**  — Continuing a conversation with message array 
 
-* [ TypeScript ](#tab-panel-1260)
-* [ cURL ](#tab-panel-1261)
+* [ TypeScript ](#tab-panel-1270)
+* [ cURL ](#tab-panel-1271)
 
 TypeScript
 
@@ -651,8 +652,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/v1/
 
 ```
 
-* [ Output ](#tab-panel-1266)
-* [ Raw response ](#tab-panel-1267)
+* [ Output ](#tab-panel-1276)
+* [ Raw response ](#tab-panel-1277)
 
 - Monterey is great for the aquarium, Cannery Row, and ocean views.  
 - San Luis Obispo is a fun lunch stop with a charming downtown and Mission Plaza.  
@@ -827,8 +828,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/v1/
 
 **Temperature Control**  — Using temperature for creative responses 
 
-* [ TypeScript ](#tab-panel-1256)
-* [ cURL ](#tab-panel-1257)
+* [ TypeScript ](#tab-panel-1266)
+* [ cURL ](#tab-panel-1267)
 
 TypeScript
 
@@ -870,8 +871,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/v1/
 
 ```
 
-* [ Output ](#tab-panel-1268)
-* [ Raw response ](#tab-panel-1269)
+* [ Output ](#tab-panel-1278)
+* [ Raw response ](#tab-panel-1279)
 
 Silent circuits dream  
 Learning patterns in the dark  
@@ -1046,8 +1047,8 @@ Dawn wakes metal minds
 
 **With Reasoning**  — Using reasoning effort for complex problems 
 
-* [ TypeScript ](#tab-panel-1258)
-* [ cURL ](#tab-panel-1259)
+* [ TypeScript ](#tab-panel-1268)
+* [ cURL ](#tab-panel-1269)
 
 TypeScript
 
@@ -1101,8 +1102,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/v1/
 
 ```
 
-* [ Output ](#tab-panel-1270)
-* [ Raw response ](#tab-panel-1271)
+* [ Output ](#tab-panel-1280)
+* [ Raw response ](#tab-panel-1281)
 
 Step 1: Find their combined speed since they are moving toward each other.
 
@@ -1308,8 +1309,8 @@ Final answer: **The trains meet about 6 hours 26 minutes after they leave.**
 
 ## Parameters
 
-* [ Input ](#tab-panel-1272)
-* [ Output ](#tab-panel-1273)
+* [ Input ](#tab-panel-1282)
+* [ Output ](#tab-panel-1283)
 
 ▶input
 

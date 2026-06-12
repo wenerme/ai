@@ -42,6 +42,7 @@ glab stack amend . -m "refactored file into new files"
   -a, --all                  Automatically stage modified and deleted tracked files.
   -d, --description string   A description of the change.
   -m, --message string       Alias for the description flag.
+      --no-verify            Bypass the pre-commit and commit-msg hooks of git-commit(1).
 ```
 
 ## Options inherited from parent commands

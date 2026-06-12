@@ -25,12 +25,13 @@ Google's lightest and most cost-efficient Gemini 2.5 model for high-throughput t
 | Context Window[ ↗](https://developers.cloudflare.com/workers-ai/glossary/) | 1,000,000 tokens                                                                                                               |
 | Terms and License                                                          | [link ↗](https://ai.google.dev/gemini-api/terms)                                                                               |
 | More information                                                           | [link ↗](https://deepmind.google/technologies/gemini/)                                                                         |
+| Zero data retention                                                        | Yes                                                                                                                            |
 | Pricing                                                                    | [View pricing in the Cloudflare dashboard ↗](https://dash.cloudflare.com/?to=/:account/ai/models/google/gemini-2.5-flash-lite) |
 
 ## Usage
 
-* [ TypeScript ](#tab-panel-486)
-* [ cURL ](#tab-panel-487)
+* [ TypeScript ](#tab-panel-496)
+* [ cURL ](#tab-panel-497)
 
 TypeScript
 
@@ -92,8 +93,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 ```
 
-* [ Output ](#tab-panel-492)
-* [ Raw response ](#tab-panel-493)
+* [ Output ](#tab-panel-502)
+* [ Raw response ](#tab-panel-503)
 
 The three laws of thermodynamics are fundamental principles that describe the behavior of energy and matter. Here they are:
 
@@ -208,8 +209,8 @@ These three laws are fundamental to understanding how energy works in everything
 
 **With System Instruction**  — Using a system instruction to set context 
 
-* [ TypeScript ](#tab-panel-488)
-* [ cURL ](#tab-panel-489)
+* [ TypeScript ](#tab-panel-498)
+* [ cURL ](#tab-panel-499)
 
 TypeScript
 
@@ -303,8 +304,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 ```
 
-* [ Output ](#tab-panel-494)
-* [ Raw response ](#tab-panel-495)
+* [ Output ](#tab-panel-504)
+* [ Raw response ](#tab-panel-505)
 
 Reading a JSON file in Python is a straightforward process thanks to the built-in `json` module. Here's a breakdown of how to do it, along with explanations and examples:
 
@@ -527,8 +528,8 @@ By following these steps, you can effectively read and work with JSON data in yo
 
 **Multi-turn Conversation**  — Continuing a conversation with context 
 
-* [ TypeScript ](#tab-panel-496)
-* [ cURL ](#tab-panel-497)
+* [ TypeScript ](#tab-panel-506)
+* [ cURL ](#tab-panel-507)
 
 TypeScript
 
@@ -662,8 +663,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 ```
 
-* [ Output ](#tab-panel-498)
-* [ Raw response ](#tab-panel-499)
+* [ Output ](#tab-panel-508)
+* [ Raw response ](#tab-panel-509)
 
 Absolutely! The drive from San Francisco to Los Angeles offers a variety of stunning scenery and charming towns. Here are some of the most popular and highly recommended stops, depending on your interests and how much time you have:
 
@@ -779,8 +780,8 @@ This is the iconic drive for a reason! Expect breathtaking ocean views, dramatic
 
 **Creative Writing**  — Higher temperature for creative output 
 
-* [ TypeScript ](#tab-panel-490)
-* [ cURL ](#tab-panel-491)
+* [ TypeScript ](#tab-panel-500)
+* [ cURL ](#tab-panel-501)
 
 TypeScript
 
@@ -866,8 +867,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 ```
 
-* [ Output ](#tab-panel-500)
-* [ Raw response ](#tab-panel-501)
+* [ Output ](#tab-panel-510)
+* [ Raw response ](#tab-panel-511)
 
 The air in the cramped apartment hung thick with the scent of stale cigarettes and something vaguely floral, a cloying perfume that did little to mask the metallic tang of dried blood. Detective Miles Corbin, a man whose trench coat seemed permanently etched with the grime of a thousand city streets, surveyed the scene with weary eyes. Another Tuesday, another victim. But this one, a young woman named Clara Bellweather, had left behind more than just a messy end to her life.
 
@@ -962,8 +963,8 @@ Not just any feather, either. This one shimmered with an iridescent blues and gr
 
 ## Parameters
 
-* [ Input ](#tab-panel-502)
-* [ Output ](#tab-panel-503)
+* [ Input ](#tab-panel-512)
+* [ Output ](#tab-panel-513)
 
 ▶contents\[\]
 

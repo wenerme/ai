@@ -155,6 +155,25 @@
   </div>
 </ContentSwitcher>
 
+## Invite friends and coworkers
+
+Eligible users can send Codex invitations from the profile menu in the
+lower-left corner of the app. Choose **Invite a friend** on an eligible personal
+plan or **Invite a coworker** in an eligible Business workspace, enter the
+recipient's email address, and send the invitation.
+
+The invitation dialog shows the current reward, recipient requirements, invite
+limits, and when rewards expire for your plan or promotion. Personal and
+Business referral programs have separate rewards and eligibility rules.
+Referrals aren't currently available for ChatGPT Enterprise.
+
+From June 11 through June 24, 2026, eligible Plus and Pro users can invite up to
+three friends. When an eligible recipient sends their first Codex message, both
+people receive a banked rate-limit reset. Business referrals use separate
+shared-workspace credit rewards; review the
+[current terms](https://help.openai.com/en/articles/20001271) before you send an
+invitation.
+
 ## Frequently asked questions
 
 ### How much does Sites cost?
@@ -540,6 +559,10 @@ runs on specialized low-latency hardware, usage is governed by a separate usage
 limit that may adjust based on demand.
 
 ### What happens when you hit usage limits?
+
+We want you to be able to complete work already in progress. If you reach your
+usage limits during an active turn, the agent will be able to continue working
+on that turn, subject to fair use limits.
 
 ChatGPT Plus and Pro users who reach their usage limit can purchase additional
 credits to continue working without needing to upgrade their existing plan.
@@ -990,6 +1013,7 @@ tips to maximize your limits:
           {
             name: "Computer Use",
             href: "/codex/app/computer-use",
+            limitedFootnote: "region",
             availability: {
               plus: "limited",
               pro: "limited",

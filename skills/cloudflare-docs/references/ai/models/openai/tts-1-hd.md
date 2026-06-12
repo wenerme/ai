@@ -20,16 +20,17 @@ Text-to-Speech • OpenAI
 
 OpenAI's high-definition text-to-speech model producing higher quality audio output.
 
-| Model Info        |                                                                                                                   |
-| ----------------- | ----------------------------------------------------------------------------------------------------------------- |
-| Terms and License | [link ↗](https://openai.com/policies/)                                                                            |
-| More information  | [link ↗](https://platform.openai.com/docs/guides/text-to-speech)                                                  |
-| Pricing           | [View pricing in the Cloudflare dashboard ↗](https://dash.cloudflare.com/?to=/:account/ai/models/openai/tts-1-hd) |
+| Model Info          |                                                                                                                   |
+| ------------------- | ----------------------------------------------------------------------------------------------------------------- |
+| Terms and License   | [link ↗](https://openai.com/policies/)                                                                            |
+| More information    | [link ↗](https://platform.openai.com/docs/guides/text-to-speech)                                                  |
+| Zero data retention | Yes                                                                                                               |
+| Pricing             | [View pricing in the Cloudflare dashboard ↗](https://dash.cloudflare.com/?to=/:account/ai/models/openai/tts-1-hd) |
 
 ## Usage
 
-* [ TypeScript ](#tab-panel-1458)
-* [ cURL ](#tab-panel-1459)
+* [ TypeScript ](#tab-panel-1468)
+* [ cURL ](#tab-panel-1469)
 
 TypeScript
 
@@ -89,8 +90,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 ```
 
-* [ Output ](#tab-panel-1454)
-* [ Raw response ](#tab-panel-1455)
+* [ Output ](#tab-panel-1464)
+* [ Raw response ](#tab-panel-1465)
 
 ```
 
@@ -119,8 +120,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 **Storytelling**  — HD narration with the Fable voice 
 
-* [ TypeScript ](#tab-panel-1462)
-* [ cURL ](#tab-panel-1463)
+* [ TypeScript ](#tab-panel-1472)
+* [ cURL ](#tab-panel-1473)
 
 TypeScript
 
@@ -180,8 +181,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 ```
 
-* [ Output ](#tab-panel-1456)
-* [ Raw response ](#tab-panel-1457)
+* [ Output ](#tab-panel-1466)
+* [ Raw response ](#tab-panel-1467)
 
 ```
 
@@ -208,8 +209,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 **Podcast Style**  — Conversational podcast narration 
 
-* [ TypeScript ](#tab-panel-1466)
-* [ cURL ](#tab-panel-1467)
+* [ TypeScript ](#tab-panel-1476)
+* [ cURL ](#tab-panel-1477)
 
 TypeScript
 
@@ -269,8 +270,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 ```
 
-* [ Output ](#tab-panel-1460)
-* [ Raw response ](#tab-panel-1461)
+* [ Output ](#tab-panel-1470)
+* [ Raw response ](#tab-panel-1471)
 
 ```
 
@@ -297,8 +298,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 **Shimmer Voice**  — Bright and expressive voice 
 
-* [ TypeScript ](#tab-panel-1468)
-* [ cURL ](#tab-panel-1469)
+* [ TypeScript ](#tab-panel-1478)
+* [ cURL ](#tab-panel-1479)
 
 TypeScript
 
@@ -358,8 +359,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 ```
 
-* [ Output ](#tab-panel-1464)
-* [ Raw response ](#tab-panel-1465)
+* [ Output ](#tab-panel-1474)
+* [ Raw response ](#tab-panel-1475)
 
 ```
 
@@ -386,8 +387,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 ## Parameters
 
-* [ Input ](#tab-panel-1470)
-* [ Output ](#tab-panel-1471)
+* [ Input ](#tab-panel-1480)
+* [ Output ](#tab-panel-1481)
 
 response\_format
 

@@ -358,6 +358,17 @@ components:
           items:
             $ref: '#/components/schemas/MessagesRequestContextManagementEditsItems'
       title: MessagesRequestContextManagement
+    MessagesFallbackParam:
+      type: object
+      properties:
+        model:
+          type: string
+      required:
+        - model
+      description: >-
+        Fallback model to try when the primary model fails or refuses. Only the
+        `model` field is supported; per-attempt overrides are rejected.
+      title: MessagesFallbackParam
     AnthropicTextBlockParamCitationsItems:
       oneOf:
         - type: object
@@ -2911,6 +2922,17 @@ components:
           oneOf:
             - $ref: '#/components/schemas/MessagesRequestContextManagement'
             - type: 'null'
+        fallbacks:
+          type:
+            - array
+            - 'null'
+          items:
+            $ref: '#/components/schemas/MessagesFallbackParam'
+          description: >-
+            Fallback models to try if the primary model fails or refuses, in
+            order. Handled by OpenRouter multi-model routing rather than
+            Anthropic server-side fallbacks; cannot be combined with `models`.
+            Each entry accepts only `model`. Maximum of 3 entries.
         max_tokens:
           type: integer
         messages:
@@ -4144,6 +4166,8 @@ components:
           type: integer
         output_tokens:
           type: integer
+        model:
+          type: string
         type:
           $ref: '#/components/schemas/AnthropicMessageUsageIterationType'
       required:

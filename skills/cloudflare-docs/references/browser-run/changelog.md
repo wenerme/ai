@@ -16,6 +16,11 @@ This is a detailed changelog of every update to Browser Run (formerly Browser Re
 
 [ Subscribe to RSS ](https://developers.cloudflare.com/browser-run/changelog/index.xml)
 
+## 2026-06-11
+
+**New formats parameter for /snapshot**
+* The [/snapshot endpoint](https://developers.cloudflare.com/browser-run/quick-actions/snapshot/) now supports a `formats` parameter that lets you return multiple page formats in a single API call. Previously, `/snapshot` returned only HTML content and a screenshot. You can now also include Markdown and the accessibility tree in the same response. Refer to the [/snapshot documentation](https://developers.cloudflare.com/browser-run/quick-actions/snapshot/) for usage examples and accepted values.
+
 ## 2026-05-28
 
 **Use Quick Actions directly from Workers**

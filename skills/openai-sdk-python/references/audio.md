@@ -2171,8 +2171,8 @@ client = OpenAI(
 )
 speech = client.audio.speech.create(
     input="input",
-    model="string",
-    voice="string",
+    model="tts-1",
+    voice="alloy",
 )
 print(speech)
 content = speech.read()

@@ -20,16 +20,17 @@ Text-to-Image • OpenAI
 
 OpenAI's image generation model that creates and edits images from text prompts, supporting multiple quality levels and output sizes.
 
-| Model Info        |                                                                                                                        |
-| ----------------- | ---------------------------------------------------------------------------------------------------------------------- |
-| Terms and License | [link ↗](https://openai.com/policies/)                                                                                 |
-| More information  | [link ↗](https://openai.com/)                                                                                          |
-| Pricing           | [View pricing in the Cloudflare dashboard ↗](https://dash.cloudflare.com/?to=/:account/ai/models/openai/gpt-image-1.5) |
+| Model Info          |                                                                                                                        |
+| ------------------- | ---------------------------------------------------------------------------------------------------------------------- |
+| Terms and License   | [link ↗](https://openai.com/policies/)                                                                                 |
+| More information    | [link ↗](https://openai.com/)                                                                                          |
+| Zero data retention | Yes                                                                                                                    |
+| Pricing             | [View pricing in the Cloudflare dashboard ↗](https://dash.cloudflare.com/?to=/:account/ai/models/openai/gpt-image-1.5) |
 
 ## Usage
 
-* [ TypeScript ](#tab-panel-1320)
-* [ cURL ](#tab-panel-1321)
+* [ TypeScript ](#tab-panel-1330)
+* [ cURL ](#tab-panel-1331)
 
 TypeScript
 
@@ -73,8 +74,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 ```
 
-* [ Output ](#tab-panel-1318)
-* [ Raw response ](#tab-panel-1319)
+* [ Output ](#tab-panel-1328)
+* [ Raw response ](#tab-panel-1329)
 
 ![Simple Generation](https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/openai__gpt-image-1.5/simple-generation.png) 
 
@@ -105,8 +106,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 **High Quality**  — Generate a high-quality detailed image 
 
-* [ TypeScript ](#tab-panel-1324)
-* [ cURL ](#tab-panel-1325)
+* [ TypeScript ](#tab-panel-1334)
+* [ cURL ](#tab-panel-1335)
 
 TypeScript
 
@@ -160,8 +161,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 ```
 
-* [ Output ](#tab-panel-1322)
-* [ Raw response ](#tab-panel-1323)
+* [ Output ](#tab-panel-1332)
+* [ Raw response ](#tab-panel-1333)
 
 ![High Quality](https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/openai__gpt-image-1.5/high-quality.png) 
 
@@ -190,8 +191,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 **Low Quality Draft**  — Fast, rough draft for iteration 
 
-* [ TypeScript ](#tab-panel-1328)
-* [ cURL ](#tab-panel-1329)
+* [ TypeScript ](#tab-panel-1338)
+* [ cURL ](#tab-panel-1339)
 
 TypeScript
 
@@ -243,8 +244,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 ```
 
-* [ Output ](#tab-panel-1326)
-* [ Raw response ](#tab-panel-1327)
+* [ Output ](#tab-panel-1336)
+* [ Raw response ](#tab-panel-1337)
 
 ![Low Quality Draft](https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/openai__gpt-image-1.5/low-quality-draft.png) 
 
@@ -273,8 +274,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 **Medium Quality**  — Balanced quality for most uses 
 
-* [ TypeScript ](#tab-panel-1332)
-* [ cURL ](#tab-panel-1333)
+* [ TypeScript ](#tab-panel-1342)
+* [ cURL ](#tab-panel-1343)
 
 TypeScript
 
@@ -328,8 +329,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 ```
 
-* [ Output ](#tab-panel-1330)
-* [ Raw response ](#tab-panel-1331)
+* [ Output ](#tab-panel-1340)
+* [ Raw response ](#tab-panel-1341)
 
 ![Medium Quality](https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/openai__gpt-image-1.5/medium-quality.png) 
 
@@ -358,8 +359,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 **Auto Quality**  — Let the model pick an appropriate quality level 
 
-* [ TypeScript ](#tab-panel-1336)
-* [ cURL ](#tab-panel-1337)
+* [ TypeScript ](#tab-panel-1346)
+* [ cURL ](#tab-panel-1347)
 
 TypeScript
 
@@ -413,8 +414,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 ```
 
-* [ Output ](#tab-panel-1334)
-* [ Raw response ](#tab-panel-1335)
+* [ Output ](#tab-panel-1344)
+* [ Raw response ](#tab-panel-1345)
 
 ![Auto Quality](https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/openai__gpt-image-1.5/auto-quality.png) 
 
@@ -443,8 +444,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 ## Parameters
 
-* [ Input ](#tab-panel-1338)
-* [ Output ](#tab-panel-1339)
+* [ Input ](#tab-panel-1348)
+* [ Output ](#tab-panel-1349)
 
 ▶images\[\]
 

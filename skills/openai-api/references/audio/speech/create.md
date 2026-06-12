@@ -104,8 +104,8 @@ curl https://api.openai.com/v1/audio/speech \
     -H "Authorization: Bearer $OPENAI_API_KEY" \
     -d '{
           "input": "input",
-          "model": "string",
-          "voice": "string"
+          "model": "tts-1",
+          "voice": "alloy"
         }'
 ```
 

@@ -25,12 +25,13 @@ Google's most capable Gemini 2.5 model with strong reasoning, thinking support, 
 | Context Window[ ↗](https://developers.cloudflare.com/workers-ai/glossary/) | 1,000,000 tokens                                                                                                        |
 | Terms and License                                                          | [link ↗](https://ai.google.dev/gemini-api/terms)                                                                        |
 | More information                                                           | [link ↗](https://deepmind.google/technologies/gemini/)                                                                  |
+| Zero data retention                                                        | Yes                                                                                                                     |
 | Pricing                                                                    | [View pricing in the Cloudflare dashboard ↗](https://dash.cloudflare.com/?to=/:account/ai/models/google/gemini-2.5-pro) |
 
 ## Usage
 
-* [ TypeScript ](#tab-panel-504)
-* [ cURL ](#tab-panel-505)
+* [ TypeScript ](#tab-panel-514)
+* [ cURL ](#tab-panel-515)
 
 TypeScript
 
@@ -92,8 +93,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 ```
 
-* [ Output ](#tab-panel-510)
-* [ Raw response ](#tab-panel-511)
+* [ Output ](#tab-panel-520)
+* [ Raw response ](#tab-panel-521)
 
 Of course! The three laws of thermodynamics are fundamental principles in physics that describe the relationships between heat, energy, and work.
 
@@ -241,8 +242,8 @@ Before the three main laws, it's helpful to understand the **Zeroth Law**, which
 
 **With System Instruction**  — Using a system instruction to set context 
 
-* [ TypeScript ](#tab-panel-506)
-* [ cURL ](#tab-panel-507)
+* [ TypeScript ](#tab-panel-516)
+* [ cURL ](#tab-panel-517)
 
 TypeScript
 
@@ -336,8 +337,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 ```
 
-* [ Output ](#tab-panel-512)
-* [ Raw response ](#tab-panel-513)
+* [ Output ](#tab-panel-522)
+* [ Raw response ](#tab-panel-523)
 
 Of course! Reading a JSON file in Python is a common task, and the built-in `json` module makes it very straightforward.
 
@@ -588,8 +589,8 @@ print(data['city'])  # Output: New York
 
 **Multi-turn Conversation**  — Continuing a conversation with context 
 
-* [ TypeScript ](#tab-panel-514)
-* [ cURL ](#tab-panel-515)
+* [ TypeScript ](#tab-panel-524)
+* [ cURL ](#tab-panel-525)
 
 TypeScript
 
@@ -723,8 +724,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 ```
 
-* [ Output ](#tab-panel-516)
-* [ Raw response ](#tab-panel-517)
+* [ Output ](#tab-panel-526)
+* [ Raw response ](#tab-panel-527)
 
 Of course! The drive from San Francisco to Los Angeles offers two very different experiences, depending on
 
@@ -817,8 +818,8 @@ Of course! The drive from San Francisco to Los Angeles offers two very different
 
 **Creative Writing**  — Higher temperature for creative output 
 
-* [ TypeScript ](#tab-panel-508)
-* [ cURL ](#tab-panel-509)
+* [ TypeScript ](#tab-panel-518)
+* [ cURL ](#tab-panel-519)
 
 TypeScript
 
@@ -904,8 +905,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 ```
 
-* [ Output ](#tab-panel-518)
-* [ Raw response ](#tab-panel-519)
+* [ Output ](#tab-panel-528)
+* [ Raw response ](#tab-panel-529)
 
 The stale, metallic tang of blood was the first
 
@@ -998,8 +999,8 @@ The stale, metallic tang of blood was the first
 
 ## Parameters
 
-* [ Input ](#tab-panel-520)
-* [ Output ](#tab-panel-521)
+* [ Input ](#tab-panel-530)
+* [ Output ](#tab-panel-531)
 
 ▶contents\[\]
 

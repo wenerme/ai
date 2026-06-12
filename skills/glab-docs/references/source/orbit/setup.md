@@ -54,13 +54,13 @@ $ glab orbit setup --skip-skill --skip-local
 ## Options
 
 ```plaintext
-  -g, --global ~/.agents/skills/   Install the Orbit skill at user scope (~/.agents/skills/). (default false)
+  -g, --global ~/.agents/skills/   Install the Orbit skill at user scope (~/.agents/skills/).
       --hostname gitlab.com        GitLab hostname to verify. Defaults to the current repository's host or gitlab.com.
       --path <path>                Install the Orbit skill to the directory at <path>.
-      --skip-local                 Skip the local CLI binary install step. (default false)
-      --skip-skill                 Skip the agent-skill install step. (default false)
-      --upgrade                    Re-fetch the skill and update the local CLI binary in place. (default false)
-  -y, --yes                        Skip every confirmation prompt. (default false)
+      --skip-local                 Skip the local CLI binary install step.
+      --skip-skill                 Skip the agent-skill install step.
+      --upgrade                    Re-fetch the skill and update the local CLI binary in place.
+  -y, --yes                        Skip every confirmation prompt.
 ```
 
 ## Options inherited from parent commands

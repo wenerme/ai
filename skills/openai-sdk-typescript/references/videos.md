@@ -204,12 +204,12 @@ console.log(video.id);
     "message": "message"
   },
   "expires_at": 0,
-  "model": "string",
+  "model": "sora-2",
   "object": "video",
   "progress": 0,
   "prompt": "prompt",
   "remixed_from_video_id": "remixed_from_video_id",
-  "seconds": "string",
+  "seconds": "4",
   "size": "720x1280",
   "status": "queued"
 }
@@ -407,12 +407,12 @@ console.log(video.id);
     "message": "message"
   },
   "expires_at": 0,
-  "model": "string",
+  "model": "sora-2",
   "object": "video",
   "progress": 0,
   "prompt": "prompt",
   "remixed_from_video_id": "remixed_from_video_id",
-  "seconds": "string",
+  "seconds": "4",
   "size": "720x1280",
   "status": "queued"
 }
@@ -596,12 +596,12 @@ console.log(video.id);
     "message": "message"
   },
   "expires_at": 0,
-  "model": "string",
+  "model": "sora-2",
   "object": "video",
   "progress": 0,
   "prompt": "prompt",
   "remixed_from_video_id": "remixed_from_video_id",
-  "seconds": "string",
+  "seconds": "4",
   "size": "720x1280",
   "status": "queued"
 }
@@ -646,6 +646,7 @@ Create a character from an uploaded video.
 ### Example
 
 ```typescript
+import fs from 'fs';
 import OpenAI from 'openai';
 
 const client = new OpenAI({
@@ -887,12 +888,12 @@ for await (const video of client.videos.list()) {
         "message": "message"
       },
       "expires_at": 0,
-      "model": "string",
+      "model": "sora-2",
       "object": "video",
       "progress": 0,
       "prompt": "prompt",
       "remixed_from_video_id": "remixed_from_video_id",
-      "seconds": "string",
+      "seconds": "4",
       "size": "720x1280",
       "status": "queued"
     }
@@ -1079,12 +1080,12 @@ console.log(video.id);
     "message": "message"
   },
   "expires_at": 0,
-  "model": "string",
+  "model": "sora-2",
   "object": "video",
   "progress": 0,
   "prompt": "prompt",
   "remixed_from_video_id": "remixed_from_video_id",
-  "seconds": "string",
+  "seconds": "4",
   "size": "720x1280",
   "status": "queued"
 }
@@ -1322,12 +1323,12 @@ console.log(video.id);
     "message": "message"
   },
   "expires_at": 0,
-  "model": "string",
+  "model": "sora-2",
   "object": "video",
   "progress": 0,
   "prompt": "prompt",
   "remixed_from_video_id": "remixed_from_video_id",
-  "seconds": "string",
+  "seconds": "4",
   "size": "720x1280",
   "status": "queued"
 }

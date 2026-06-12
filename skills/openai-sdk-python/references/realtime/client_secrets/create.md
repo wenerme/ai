@@ -1847,7 +1847,7 @@ print(client_secret.expires_at)
         "transcription": {
           "delay": "minimal",
           "language": "language",
-          "model": "string",
+          "model": "whisper-1",
           "prompt": "prompt"
         },
         "turn_detection": {
@@ -1874,8 +1874,8 @@ print(client_secret.expires_at)
       "item.input_audio_transcription.logprobs"
     ],
     "instructions": "instructions",
-    "max_output_tokens": 0,
-    "model": "string",
+    "max_output_tokens": "inf",
+    "model": "gpt-realtime",
     "output_modalities": [
       "text"
     ],

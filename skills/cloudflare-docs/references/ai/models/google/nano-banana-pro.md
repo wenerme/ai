@@ -20,16 +20,17 @@ Text-to-Image • Google
 
 Google's higher-quality image generation model with improved detail and prompt adherence.
 
-| Model Info        |                                                                                                                          |
-| ----------------- | ------------------------------------------------------------------------------------------------------------------------ |
-| Terms and License | [link ↗](https://ai.google.dev/gemini-api/terms)                                                                         |
-| More information  | [link ↗](https://deepmind.google/technologies/imagen/)                                                                   |
-| Pricing           | [View pricing in the Cloudflare dashboard ↗](https://dash.cloudflare.com/?to=/:account/ai/models/google/nano-banana-pro) |
+| Model Info          |                                                                                                                          |
+| ------------------- | ------------------------------------------------------------------------------------------------------------------------ |
+| Terms and License   | [link ↗](https://ai.google.dev/gemini-api/terms)                                                                         |
+| More information    | [link ↗](https://deepmind.google/technologies/imagen/)                                                                   |
+| Zero data retention | Yes                                                                                                                      |
+| Pricing             | [View pricing in the Cloudflare dashboard ↗](https://dash.cloudflare.com/?to=/:account/ai/models/google/nano-banana-pro) |
 
 ## Usage
 
-* [ TypeScript ](#tab-panel-658)
-* [ cURL ](#tab-panel-659)
+* [ TypeScript ](#tab-panel-668)
+* [ cURL ](#tab-panel-669)
 
 TypeScript
 
@@ -87,8 +88,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 ```
 
-* [ Output ](#tab-panel-656)
-* [ Raw response ](#tab-panel-657)
+* [ Output ](#tab-panel-666)
+* [ Raw response ](#tab-panel-667)
 
 ![Product Photography](https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/google__nano-banana-pro/product-photography.png) 
 
@@ -119,8 +120,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 **Fantasy Illustration**  — Epic fantasy scene 
 
-* [ TypeScript ](#tab-panel-662)
-* [ cURL ](#tab-panel-663)
+* [ TypeScript ](#tab-panel-672)
+* [ cURL ](#tab-panel-673)
 
 TypeScript
 
@@ -178,8 +179,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 ```
 
-* [ Output ](#tab-panel-660)
-* [ Raw response ](#tab-panel-661)
+* [ Output ](#tab-panel-670)
+* [ Raw response ](#tab-panel-671)
 
 ![Fantasy Illustration](https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/google__nano-banana-pro/fantasy-illustration.png) 
 
@@ -208,8 +209,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 **Architectural Visualization**  — Modern architecture render 
 
-* [ TypeScript ](#tab-panel-668)
-* [ cURL ](#tab-panel-669)
+* [ TypeScript ](#tab-panel-678)
+* [ cURL ](#tab-panel-679)
 
 TypeScript
 
@@ -271,8 +272,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 ```
 
-* [ Output ](#tab-panel-664)
-* [ Raw response ](#tab-panel-665)
+* [ Output ](#tab-panel-674)
+* [ Raw response ](#tab-panel-675)
 
 ![Architectural Visualization](https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/google__nano-banana-pro/architectural-visualization.jpg) 
 
@@ -301,8 +302,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 **Character Design**  — Game character concept art 
 
-* [ TypeScript ](#tab-panel-670)
-* [ cURL ](#tab-panel-671)
+* [ TypeScript ](#tab-panel-680)
+* [ cURL ](#tab-panel-681)
 
 TypeScript
 
@@ -356,8 +357,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 ```
 
-* [ Output ](#tab-panel-666)
-* [ Raw response ](#tab-panel-667)
+* [ Output ](#tab-panel-676)
+* [ Raw response ](#tab-panel-677)
 
 ![Character Design](https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/google__nano-banana-pro/character-design.png) 
 
@@ -386,8 +387,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 ## Parameters
 
-* [ Input ](#tab-panel-672)
-* [ Output ](#tab-panel-673)
+* [ Input ](#tab-panel-682)
+* [ Output ](#tab-panel-683)
 
 aspect\_ratio
 

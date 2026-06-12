@@ -14,6 +14,7 @@ Datasets endpoints
 ### Available Operations
 
 * [get\_app\_rankings](#get_app_rankings) - Top apps by token usage
+* [get\_benchmarks\_design\_arena](#get_benchmarks_design_arena) - Design Arena Benchmark Rankings
 * [get\_rankings\_daily](#get_rankings_daily) - Daily token totals for top 50 models
 
 ## get\_app\_rankings
@@ -83,6 +84,56 @@ with OpenRouter(
 ### Response
 
 **[operations.GetAppRankingsResponse](/docs/sdks/python/api-reference/operations/getapprankingsresponse)**
+
+### Errors
+
+| Error Type                          | Status Code | Content Type     |
+| ----------------------------------- | ----------- | ---------------- |
+| errors.BadRequestResponseError      | 400         | application/json |
+| errors.UnauthorizedResponseError    | 401         | application/json |
+| errors.TooManyRequestsResponseError | 429         | application/json |
+| errors.InternalServerResponseError  | 500         | application/json |
+| errors.OpenRouterDefaultError       | 4XX, 5XX    | \*/\*            |
+
+## get\_benchmarks\_design\_arena
+
+Returns ELO ratings from head-to-head arena battles on Design Arena. Filterable by arena (models/builders/agents) and category. Includes OpenRouter pricing per model. Authenticate with any valid OpenRouter API key. Rate-limited to 30 requests/minute per key and 500 requests/day per account.
+
+### Example Usage
+
+```python
+from openrouter import OpenRouter
+import os
+
+with OpenRouter(
+    http_referer="<value>",
+    x_open_router_title="<value>",
+    x_open_router_categories="<value>",
+    api_key=os.getenv("OPENROUTER_API_KEY", ""),
+) as open_router:
+
+    res = open_router.datasets.get_benchmarks_design_arena(arena="models", max_results=20)
+
+    # Handle response
+    print(res)
+
+```
+
+### Parameters
+
+| Parameter                  | Type                                                               | Required             | Description                                                                                                                                                  | Example        |
+| -------------------------- | ------------------------------------------------------------------ | -------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------ | -------------- |
+| `http_referer`             | *Optional\[str]*                                                   | :heavy\_minus\_sign: | The app identifier should be your app's URL and is used as the primary identifier for rankings.<br />This is used to track API usage per application.<br />  |                |
+| `x_open_router_title`      | *Optional\[str]*                                                   | :heavy\_minus\_sign: | The app display name allows you to customize how your app appears in OpenRouter's dashboard.<br />                                                           |                |
+| `x_open_router_categories` | *Optional\[str]*                                                   | :heavy\_minus\_sign: | Comma-separated list of app categories (e.g. "cli-agent,cloud-agent"). Used for marketplace rankings.<br />                                                  |                |
+| `arena`                    | [Optional\[operations.Arena\]](../../operations/arena.md)          | :heavy\_minus\_sign: | Arena to query. Defaults to `models`.                                                                                                                        | models         |
+| `category`                 | *Optional\[str]*                                                   | :heavy\_minus\_sign: | Category within the arena (e.g. `codecategories`, `uicomponent`, `gamedev`, `3d`, `dataviz`, `image`, `video`, `svg`). When omitted, returns all categories. | codecategories |
+| `max_results`              | *Optional\[int]*                                                   | :heavy\_minus\_sign: | Max results to return: per category when no category filter is applied (1–100, default 50).                                                                  | 20             |
+| `retries`                  | [Optional\[utils.RetryConfig\]](../../models/utils/retryconfig.md) | :heavy\_minus\_sign: | Configuration to override the default retry behavior of the client.                                                                                          |                |
+
+### Response
+
+**[components.BenchmarksDAResponse](/docs/sdks/python/api-reference/components/benchmarksdaresponse)**
 
 ### Errors
 

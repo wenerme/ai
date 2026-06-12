@@ -473,6 +473,7 @@ format, or a stream of transcript events.
 ### Example
 
 ```typescript
+import fs from 'fs';
 import OpenAI from 'openai';
 
 const client = new OpenAI({
@@ -1924,6 +1925,7 @@ Translates audio into English.
 ### Example
 
 ```typescript
+import fs from 'fs';
 import OpenAI from 'openai';
 
 const client = new OpenAI({
@@ -2213,7 +2215,7 @@ Returns the audio file content, or a stream of audio events.
 
 ### Returns
 
-- `unnamed_schema_1 = Response`
+- `unnamed_schema_8 = Response`
 
 ### Example
 
@@ -2226,8 +2228,8 @@ const client = new OpenAI({
 
 const speech = await client.audio.speech.create({
   input: 'input',
-  model: 'string',
-  voice: 'string',
+  model: 'tts-1',
+  voice: 'alloy',
 });
 
 console.log(speech);

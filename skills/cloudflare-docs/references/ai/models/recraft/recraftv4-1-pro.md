@@ -20,16 +20,17 @@ Text-to-Image • Recraft
 
 Recraft V4.1 Pro generates high-resolution, art-directed images at 2048px+ tuned for high aesthetics, with strong composition, text rendering, and refined design taste. Built for print and production work.
 
-| Model Info        |                                                                                                                           |
-| ----------------- | ------------------------------------------------------------------------------------------------------------------------- |
-| Terms and License | [link ↗](https://www.recraft.ai/terms)                                                                                    |
-| More information  | [link ↗](https://www.recraft.ai/)                                                                                         |
-| Pricing           | [View pricing in the Cloudflare dashboard ↗](https://dash.cloudflare.com/?to=/:account/ai/models/recraft/recraftv4-1-pro) |
+| Model Info          |                                                                                                                           |
+| ------------------- | ------------------------------------------------------------------------------------------------------------------------- |
+| Terms and License   | [link ↗](https://www.recraft.ai/terms)                                                                                    |
+| More information    | [link ↗](https://www.recraft.ai/)                                                                                         |
+| Zero data retention | Yes                                                                                                                       |
+| Pricing             | [View pricing in the Cloudflare dashboard ↗](https://dash.cloudflare.com/?to=/:account/ai/models/recraft/recraftv4-1-pro) |
 
 ## Usage
 
-* [ TypeScript ](#tab-panel-1576)
-* [ cURL ](#tab-panel-1577)
+* [ TypeScript ](#tab-panel-1586)
+* [ cURL ](#tab-panel-1587)
 
 TypeScript
 
@@ -79,8 +80,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 ```
 
-* [ Output ](#tab-panel-1574)
-* [ Raw response ](#tab-panel-1575)
+* [ Output ](#tab-panel-1584)
+* [ Raw response ](#tab-panel-1585)
 
 ![Print-Ready Illustration](https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/recraft__recraftv4-1-pro/print-ready-illustration.png) 
 
@@ -111,8 +112,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 **Large Format Art**  — Large canvas digital art 
 
-* [ TypeScript ](#tab-panel-1580)
-* [ cURL ](#tab-panel-1581)
+* [ TypeScript ](#tab-panel-1590)
+* [ cURL ](#tab-panel-1591)
 
 TypeScript
 
@@ -166,8 +167,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 ```
 
-* [ Output ](#tab-panel-1578)
-* [ Raw response ](#tab-panel-1579)
+* [ Output ](#tab-panel-1588)
+* [ Raw response ](#tab-panel-1589)
 
 ![Large Format Art](https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/recraft__recraftv4-1-pro/large-format-art.png) 
 
@@ -196,8 +197,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 **Brand Asset**  — Professional brand asset with controlled colors 
 
-* [ TypeScript ](#tab-panel-1588)
-* [ cURL ](#tab-panel-1589)
+* [ TypeScript ](#tab-panel-1598)
+* [ cURL ](#tab-panel-1599)
 
 TypeScript
 
@@ -309,8 +310,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 ```
 
-* [ Output ](#tab-panel-1582)
-* [ Raw response ](#tab-panel-1583)
+* [ Output ](#tab-panel-1592)
+* [ Raw response ](#tab-panel-1593)
 
 ![Brand Asset](https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/recraft__recraftv4-1-pro/brand-asset.png) 
 
@@ -339,8 +340,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 **Editorial Illustration**  — Magazine-quality editorial illustration 
 
-* [ TypeScript ](#tab-panel-1586)
-* [ cURL ](#tab-panel-1587)
+* [ TypeScript ](#tab-panel-1596)
+* [ cURL ](#tab-panel-1597)
 
 TypeScript
 
@@ -390,8 +391,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 ```
 
-* [ Output ](#tab-panel-1584)
-* [ Raw response ](#tab-panel-1585)
+* [ Output ](#tab-panel-1594)
+* [ Raw response ](#tab-panel-1595)
 
 ![Editorial Illustration](https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/recraft__recraftv4-1-pro/editorial-illustration.png) 
 
@@ -420,8 +421,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 ## Parameters
 
-* [ Input ](#tab-panel-1590)
-* [ Output ](#tab-panel-1591)
+* [ Input ](#tab-panel-1600)
+* [ Output ](#tab-panel-1601)
 
 ▶controls{}
 

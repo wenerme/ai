@@ -163,12 +163,12 @@ for await (const video of client.videos.list()) {
         "message": "message"
       },
       "expires_at": 0,
-      "model": "string",
+      "model": "sora-2",
       "object": "video",
       "progress": 0,
       "prompt": "prompt",
       "remixed_from_video_id": "remixed_from_video_id",
-      "seconds": "string",
+      "seconds": "4",
       "size": "720x1280",
       "status": "queued"
     }

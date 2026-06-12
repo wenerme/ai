@@ -297,6 +297,7 @@ Creates an edited or extended image given one or more source images and a prompt
 ### Example
 
 ```typescript
+import fs from 'fs';
 import OpenAI from 'openai';
 
 const client = new OpenAI({

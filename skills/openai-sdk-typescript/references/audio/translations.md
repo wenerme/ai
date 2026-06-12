@@ -125,6 +125,7 @@ Translates audio into English.
 ### Example
 
 ```typescript
+import fs from 'fs';
 import OpenAI from 'openai';
 
 const client = new OpenAI({

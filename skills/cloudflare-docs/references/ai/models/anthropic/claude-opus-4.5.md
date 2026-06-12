@@ -25,12 +25,13 @@ Claude Opus 4.5 brings further reasoning, coding, and agentic improvements over 
 | Context Window[ ↗](https://developers.cloudflare.com/workers-ai/glossary/) | 200,000 tokens                                                                                                              |
 | Terms and License                                                          | [link ↗](https://www.anthropic.com/legal/commercial-terms)                                                                  |
 | More information                                                           | [link ↗](https://www.anthropic.com/claude/opus)                                                                             |
+| Zero data retention                                                        | Yes                                                                                                                         |
 | Pricing                                                                    | [View pricing in the Cloudflare dashboard ↗](https://dash.cloudflare.com/?to=/:account/ai/models/anthropic/claude-opus-4.5) |
 
 ## Usage
 
-* [ TypeScript ](#tab-panel-152)
-* [ cURL ](#tab-panel-153)
+* [ TypeScript ](#tab-panel-156)
+* [ cURL ](#tab-panel-157)
 
 TypeScript
 
@@ -88,8 +89,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/v1/
 
 ```
 
-* [ Output ](#tab-panel-156)
-* [ Raw response ](#tab-panel-157)
+* [ Output ](#tab-panel-160)
+* [ Raw response ](#tab-panel-161)
 
 The three laws of thermodynamics are:
 
@@ -154,8 +155,8 @@ There's also sometimes a **Zeroth Law** mentioned, which states that if two syst
 
 **With System Message**  — Using a system message to set context 
 
-* [ TypeScript ](#tab-panel-154)
-* [ cURL ](#tab-panel-155)
+* [ TypeScript ](#tab-panel-158)
+* [ cURL ](#tab-panel-159)
 
 TypeScript
 
@@ -221,8 +222,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/v1/
 
 ```
 
-* [ Output ](#tab-panel-160)
-* [ Raw response ](#tab-panel-161)
+* [ Output ](#tab-panel-164)
+* [ Raw response ](#tab-panel-165)
 
 # Reading JSON Files in Python
 
@@ -336,8 +337,8 @@ The result is typically a Python dictionary or list that you can work with norma
 
 **Multi-turn Conversation**  — Continuing a conversation with context 
 
-* [ TypeScript ](#tab-panel-164)
-* [ cURL ](#tab-panel-165)
+* [ TypeScript ](#tab-panel-168)
+* [ cURL ](#tab-panel-169)
 
 TypeScript
 
@@ -433,8 +434,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/v1/
 
 ```
 
-* [ Output ](#tab-panel-166)
-* [ Raw response ](#tab-panel-167)
+* [ Output ](#tab-panel-170)
+* [ Raw response ](#tab-panel-171)
 
 Here are some great stops depending on your route:
 
@@ -510,8 +511,8 @@ How much time do you have for the trip? That'll help me narrow down recommendati
 
 **Creative Writing**  — Higher temperature for creative output 
 
-* [ TypeScript ](#tab-panel-158)
-* [ cURL ](#tab-panel-159)
+* [ TypeScript ](#tab-panel-162)
+* [ cURL ](#tab-panel-163)
 
 TypeScript
 
@@ -583,8 +584,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/v1/
 
 ```
 
-* [ Output ](#tab-panel-168)
-* [ Raw response ](#tab-panel-169)
+* [ Output ](#tab-panel-172)
+* [ Raw response ](#tab-panel-173)
 
 # The Cartographer's Last Note
 
@@ -655,8 +656,8 @@ And below it, in handwriting that definitely wasn't the victim's: *You're early.
 
 **Streaming Response**  — Enable streaming for real-time output 
 
-* [ TypeScript ](#tab-panel-162)
-* [ cURL ](#tab-panel-163)
+* [ TypeScript ](#tab-panel-166)
+* [ cURL ](#tab-panel-167)
 
 TypeScript
 
@@ -718,8 +719,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/v1/
 
 ```
 
-* [ Output ](#tab-panel-170)
-* [ Raw response ](#tab-panel-171)
+* [ Output ](#tab-panel-174)
+* [ Raw response ](#tab-panel-175)
 
 # Understanding Recursion
 
@@ -1087,8 +1088,8 @@ Think of Russian nesting dolls 🪆 — you keep opening smaller dolls until you
 
 ## Parameters
 
-* [ Input ](#tab-panel-172)
-* [ Output ](#tab-panel-173)
+* [ Input ](#tab-panel-176)
+* [ Output ](#tab-panel-177)
 
 max\_tokens
 

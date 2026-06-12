@@ -20,16 +20,17 @@ Music Generation • MiniMax
 
 MiniMax's music generation model that creates full-length songs with vocals from text prompts and lyrics, or instrumental tracks. Supports BPM/key control and auto-generated lyrics.
 
-| Model Info        |                                                                                                                     |
-| ----------------- | ------------------------------------------------------------------------------------------------------------------- |
-| Terms and License | [link ↗](https://www.minimaxi.com/terms)                                                                            |
-| More information  | [link ↗](https://www.minimaxi.com/)                                                                                 |
-| Pricing           | [View pricing in the Cloudflare dashboard ↗](https://dash.cloudflare.com/?to=/:account/ai/models/minimax/music-2.6) |
+| Model Info          |                                                                                                                     |
+| ------------------- | ------------------------------------------------------------------------------------------------------------------- |
+| Terms and License   | [link ↗](https://www.minimaxi.com/terms)                                                                            |
+| More information    | [link ↗](https://www.minimaxi.com/)                                                                                 |
+| Zero data retention | Yes                                                                                                                 |
+| Pricing             | [View pricing in the Cloudflare dashboard ↗](https://dash.cloudflare.com/?to=/:account/ai/models/minimax/music-2.6) |
 
 ## Usage
 
-* [ TypeScript ](#tab-panel-874)
-* [ cURL ](#tab-panel-875)
+* [ TypeScript ](#tab-panel-884)
+* [ cURL ](#tab-panel-885)
 
 TypeScript
 
@@ -85,8 +86,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 ```
 
-* [ Output ](#tab-panel-872)
-* [ Raw response ](#tab-panel-873)
+* [ Output ](#tab-panel-882)
+* [ Raw response ](#tab-panel-883)
 
 ```
 
@@ -115,8 +116,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 **With Lyrics**  — Generate a song with custom lyrics 
 
-* [ TypeScript ](#tab-panel-880)
-* [ cURL ](#tab-panel-881)
+* [ TypeScript ](#tab-panel-890)
+* [ cURL ](#tab-panel-891)
 
 TypeScript
 
@@ -178,8 +179,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 ```
 
-* [ Output ](#tab-panel-876)
-* [ Raw response ](#tab-panel-877)
+* [ Output ](#tab-panel-886)
+* [ Raw response ](#tab-panel-887)
 
 ```
 
@@ -206,8 +207,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 **Instrumental**  — Generate instrumental music without vocals 
 
-* [ TypeScript ](#tab-panel-882)
-* [ cURL ](#tab-panel-883)
+* [ TypeScript ](#tab-panel-892)
+* [ cURL ](#tab-panel-893)
 
 TypeScript
 
@@ -263,8 +264,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 ```
 
-* [ Output ](#tab-panel-878)
-* [ Raw response ](#tab-panel-879)
+* [ Output ](#tab-panel-888)
+* [ Raw response ](#tab-panel-889)
 
 ```
 
@@ -291,8 +292,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 **High Quality Audio**  — Specify audio format and sample rate 
 
-* [ TypeScript ](#tab-panel-888)
-* [ cURL ](#tab-panel-889)
+* [ TypeScript ](#tab-panel-898)
+* [ cURL ](#tab-panel-899)
 
 TypeScript
 
@@ -356,8 +357,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 ```
 
-* [ Output ](#tab-panel-884)
-* [ Raw response ](#tab-panel-885)
+* [ Output ](#tab-panel-894)
+* [ Raw response ](#tab-panel-895)
 
 ```
 
@@ -384,8 +385,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 **Auto-Generated Lyrics**  — Let the model generate lyrics from the prompt 
 
-* [ TypeScript ](#tab-panel-890)
-* [ cURL ](#tab-panel-891)
+* [ TypeScript ](#tab-panel-900)
+* [ cURL ](#tab-panel-901)
 
 TypeScript
 
@@ -441,8 +442,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 ```
 
-* [ Output ](#tab-panel-886)
-* [ Raw response ](#tab-panel-887)
+* [ Output ](#tab-panel-896)
+* [ Raw response ](#tab-panel-897)
 
 ```
 
@@ -469,8 +470,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 ## Parameters
 
-* [ Input ](#tab-panel-892)
-* [ Output ](#tab-panel-893)
+* [ Input ](#tab-panel-902)
+* [ Output ](#tab-panel-903)
 
 ▶bitrate
 

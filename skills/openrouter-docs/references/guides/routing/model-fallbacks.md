@@ -92,6 +92,34 @@ By default, any error can trigger the use of a fallback model, including:
 
 Requests are priced using the model that was ultimately used, which will be returned in the `model` attribute of the response body.
 
+## Using with the Anthropic Messages API
+
+The Anthropic Messages API endpoint (`/api/v1/messages`) accepts the `fallbacks` parameter, matching the shape used by Anthropic's SDKs. Each entry names a fallback model to try in order, and the list maps to OpenRouter's `models` routing, so fallbacks trigger on the same errors listed above (rate limits, downtime, moderation refusals), not only on refusals.
+
+OpenRouter handles this fallback routing itself. The `fallbacks` parameter does not use Anthropic's server-side fallback feature.
+
+```typescript
+import Anthropic from '@anthropic-ai/sdk';
+
+const anthropic = new Anthropic({
+  baseURL: 'https://openrouter.ai/api',
+  apiKey: '<OPENROUTER_API_KEY>',
+});
+
+const message = await anthropic.beta.messages.create({
+  model: 'anthropic/claude-sonnet-4.5',
+  max_tokens: 1024,
+  fallbacks: [{ model: 'anthropic/claude-opus-4.1' }],
+  messages: [{ role: 'user', content: 'What is the meaning of life?' }],
+});
+```
+
+### Limitations
+
+* Each `fallbacks` entry accepts only the `model` field. Per-attempt overrides such as `max_tokens`, `thinking`, `speed`, or `output_config` are rejected with a 400 error.
+* `fallbacks` cannot be combined with the `models` parameter; sending both returns a 400 error.
+* `fallbacks` accepts at most 3 entries; longer lists return a 400 error.
+
 ## Using with OpenAI SDK
 
 To use the `models` array with the OpenAI SDK, include it in the `extra_body` parameter. In the example below, `~openai/gpt-latest` will be tried first, and the `models` array will be tried in order as fallbacks.

@@ -23,7 +23,7 @@ The following are the available options:
 * [ /screenshot - Capture screenshot ](https://developers.cloudflare.com/browser-run/quick-actions/screenshot-endpoint/)
 * [ /pdf - Render PDF ](https://developers.cloudflare.com/browser-run/quick-actions/pdf-endpoint/)
 * [ /markdown - Extract Markdown from a webpage ](https://developers.cloudflare.com/browser-run/quick-actions/markdown-endpoint/)
-* [ /snapshot - Take a webpage snapshot ](https://developers.cloudflare.com/browser-run/quick-actions/snapshot/)
+* [ /snapshot - Capture multiple page formats ](https://developers.cloudflare.com/browser-run/quick-actions/snapshot/)
 * [ /scrape - Scrape HTML elements ](https://developers.cloudflare.com/browser-run/quick-actions/scrape-endpoint/)
 * [ /json - Capture structured data using AI ](https://developers.cloudflare.com/browser-run/quick-actions/json-endpoint/)
 * [ /links - Retrieve links from a webpage ](https://developers.cloudflare.com/browser-run/quick-actions/links-endpoint/)

@@ -45,7 +45,7 @@ glab skills update --all
 ## Options
 
 ```plaintext
-      --all   Update every installed skill. (default false)
+      --all   Update every installed skill.
 ```
 
 ## Options inherited from parent commands

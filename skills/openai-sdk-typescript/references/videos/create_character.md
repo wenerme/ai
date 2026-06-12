@@ -37,6 +37,7 @@ Create a character from an uploaded video.
 ### Example
 
 ```typescript
+import fs from 'fs';
 import OpenAI from 'openai';
 
 const client = new OpenAI({

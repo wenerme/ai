@@ -18,6 +18,12 @@ details, such as your picture, display name, and username, and save a profile
 card with usage highlights. Sharing profile cards is available on consumer
 ChatGPT plans.
 
+Eligible users can also send Codex invitations from the profile menu. Choose
+**Invite a friend** on an eligible personal plan or **Invite a coworker** in an
+eligible Business workspace. See
+[Invite friends and coworkers](https://developers.openai.com/codex/pricing#invite-friends-and-coworkers) for
+current rewards, limits, and eligibility.
+
 ## Keyboard shortcuts
 
 Open **Keyboard Shortcuts** to review commands, change bindings, or reset custom
@@ -98,12 +104,20 @@ add your own. If a server requires OAuth, the app starts the auth flow. These se
 also apply to the Codex CLI and IDE extension because the MCP configuration lives in
 `config.toml`. See the [Model Context Protocol docs](https://developers.openai.com/codex/mcp) for details.
 
-## Browser use
+<a id="browser-use"></a>
+
+## Browser
 
 Use these settings to install or enable the bundled Browser plugin, set up the
 [Codex Chrome extension](https://developers.openai.com/codex/app/chrome-extension), and manage allowed and
 blocked websites. Codex asks before using a website unless you've allowed it.
 Removing a blocked site lets Codex ask again before using it in the browser.
+
+Under **Developer mode**, turn on **Enable full CDP access** to let Codex use
+the Chrome DevTools Protocol for performance profiling and deeper browser
+debugging. If your organization has disabled full CDP access, you can't enable
+it locally. See [Developer mode](https://developers.openai.com/codex/app/browser#developer-mode) for setup,
+risk, and approval details.
 
 See [In-app browser](https://developers.openai.com/codex/app/browser) for browser preview, comment, and
 browser use workflows.

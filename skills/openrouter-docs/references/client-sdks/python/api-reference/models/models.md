@@ -13,9 +13,57 @@ Model information endpoints
 
 ### Available Operations
 
+* [get](#get) - Get a model by its slug
 * [list](#list) - List all models and their properties
 * [count](#count) - Get total count of available models
 * [list\_for\_user](#list_for_user) - List models filtered by user provider preferences, privacy settings, and guardrails
+
+## get
+
+Returns full details for a single model identified by its author and slug (e.g. openai/gpt-4). Supports variant suffixes (e.g. openai/gpt-4:free) and resolves known slug aliases.
+
+### Example Usage
+
+```python
+from openrouter import OpenRouter
+import os
+
+with OpenRouter(
+    http_referer="<value>",
+    x_open_router_title="<value>",
+    x_open_router_categories="<value>",
+    api_key=os.getenv("OPENROUTER_API_KEY", ""),
+) as open_router:
+
+    res = open_router.models.get(author="openai", slug="gpt-4")
+
+    # Handle response
+    print(res)
+
+```
+
+### Parameters
+
+| Parameter                  | Type                                                               | Required             | Description                                                                                                                                                 | Example |
+| -------------------------- | ------------------------------------------------------------------ | -------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------- | ------- |
+| `author`                   | *str*                                                              | :heavy\_check\_mark: | The author/organization of the model                                                                                                                        | openai  |
+| `slug`                     | *str*                                                              | :heavy\_check\_mark: | The model slug, optionally including a variant suffix (e.g. gpt-4 or gpt-4:free)                                                                            | gpt-4   |
+| `http_referer`             | *Optional\[str]*                                                   | :heavy\_minus\_sign: | The app identifier should be your app's URL and is used as the primary identifier for rankings.<br />This is used to track API usage per application.<br /> |         |
+| `x_open_router_title`      | *Optional\[str]*                                                   | :heavy\_minus\_sign: | The app display name allows you to customize how your app appears in OpenRouter's dashboard.<br />                                                          |         |
+| `x_open_router_categories` | *Optional\[str]*                                                   | :heavy\_minus\_sign: | Comma-separated list of app categories (e.g. "cli-agent,cloud-agent"). Used for marketplace rankings.<br />                                                 |         |
+| `retries`                  | [Optional\[utils.RetryConfig\]](../../models/utils/retryconfig.md) | :heavy\_minus\_sign: | Configuration to override the default retry behavior of the client.                                                                                         |         |
+
+### Response
+
+**[components.ModelResponse](/docs/sdks/python/api-reference/components/modelresponse)**
+
+### Errors
+
+| Error Type                         | Status Code | Content Type     |
+| ---------------------------------- | ----------- | ---------------- |
+| errors.NotFoundResponseError       | 404         | application/json |
+| errors.InternalServerResponseError | 500         | application/json |
+| errors.OpenRouterDefaultError      | 4XX, 5XX    | \*/\*            |
 
 ## list
 

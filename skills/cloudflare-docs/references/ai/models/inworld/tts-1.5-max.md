@@ -20,16 +20,17 @@ Text-to-Speech • Inworld
 
 Highest-quality text-to-speech with under 200ms latency, emotion control, and 15-language support.
 
-| Model Info        |                                                                                                                       |
-| ----------------- | --------------------------------------------------------------------------------------------------------------------- |
-| Terms and License | [link ↗](https://inworld.ai/terms)                                                                                    |
-| More information  | [link ↗](https://inworld.ai/)                                                                                         |
-| Pricing           | [View pricing in the Cloudflare dashboard ↗](https://dash.cloudflare.com/?to=/:account/ai/models/inworld/tts-1.5-max) |
+| Model Info          |                                                                                                                       |
+| ------------------- | --------------------------------------------------------------------------------------------------------------------- |
+| Terms and License   | [link ↗](https://inworld.ai/terms)                                                                                    |
+| More information    | [link ↗](https://inworld.ai/)                                                                                         |
+| Zero data retention | Yes                                                                                                                   |
+| Pricing             | [View pricing in the Cloudflare dashboard ↗](https://dash.cloudflare.com/?to=/:account/ai/models/inworld/tts-1.5-max) |
 
 ## Usage
 
-* [ TypeScript ](#tab-panel-754)
-* [ cURL ](#tab-panel-755)
+* [ TypeScript ](#tab-panel-764)
+* [ cURL ](#tab-panel-765)
 
 TypeScript
 
@@ -93,8 +94,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 ```
 
-* [ Output ](#tab-panel-750)
-* [ Raw response ](#tab-panel-751)
+* [ Output ](#tab-panel-760)
+* [ Raw response ](#tab-panel-761)
 
 ```
 
@@ -123,8 +124,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 **Slow Narration**  — Slower speech for narration 
 
-* [ TypeScript ](#tab-panel-758)
-* [ cURL ](#tab-panel-759)
+* [ TypeScript ](#tab-panel-768)
+* [ cURL ](#tab-panel-769)
 
 TypeScript
 
@@ -192,8 +193,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 ```
 
-* [ Output ](#tab-panel-752)
-* [ Raw response ](#tab-panel-753)
+* [ Output ](#tab-panel-762)
+* [ Raw response ](#tab-panel-763)
 
 ```
 
@@ -220,8 +221,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 **High Quality Audio**  — Higher sample rate for studio quality 
 
-* [ TypeScript ](#tab-panel-762)
-* [ cURL ](#tab-panel-763)
+* [ TypeScript ](#tab-panel-772)
+* [ cURL ](#tab-panel-773)
 
 TypeScript
 
@@ -289,8 +290,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 ```
 
-* [ Output ](#tab-panel-756)
-* [ Raw response ](#tab-panel-757)
+* [ Output ](#tab-panel-766)
+* [ Raw response ](#tab-panel-767)
 
 ```
 
@@ -317,8 +318,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 **With Text Normalization**  — Expand numbers and abbreviations before synthesis 
 
-* [ TypeScript ](#tab-panel-764)
-* [ cURL ](#tab-panel-765)
+* [ TypeScript ](#tab-panel-774)
+* [ cURL ](#tab-panel-775)
 
 TypeScript
 
@@ -386,8 +387,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 ```
 
-* [ Output ](#tab-panel-760)
-* [ Raw response ](#tab-panel-761)
+* [ Output ](#tab-panel-770)
+* [ Raw response ](#tab-panel-771)
 
 ```
 
@@ -414,8 +415,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 ## Parameters
 
-* [ Input ](#tab-panel-766)
-* [ Output ](#tab-panel-767)
+* [ Input ](#tab-panel-776)
+* [ Output ](#tab-panel-777)
 
 apply\_text\_normalization
 

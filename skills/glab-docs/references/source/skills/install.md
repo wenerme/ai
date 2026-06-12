@@ -61,8 +61,8 @@ glab skills install --force
 ## Options
 
 ```plaintext
-  -f, --force         Overwrite existing skill files. (default false)
-  -g, --global        Install skills at user scope (~/.agents/skills/). (default false)
+  -f, --force         Overwrite existing skill files.
+  -g, --global        Install skills at user scope (~/.agents/skills/).
       --path string   Install skills to the directory at <path>.
 ```
 

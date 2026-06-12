@@ -25,12 +25,13 @@ Claude Sonnet 4 delivers superior coding and reasoning while responding more pre
 | Context Window[ ↗](https://developers.cloudflare.com/workers-ai/glossary/) | 200,000 tokens                                                                                                              |
 | Terms and License                                                          | [link ↗](https://www.anthropic.com/legal/commercial-terms)                                                                  |
 | More information                                                           | [link ↗](https://www.anthropic.com/claude/sonnet)                                                                           |
+| Zero data retention                                                        | Yes                                                                                                                         |
 | Pricing                                                                    | [View pricing in the Cloudflare dashboard ↗](https://dash.cloudflare.com/?to=/:account/ai/models/anthropic/claude-sonnet-4) |
 
 ## Usage
 
-* [ TypeScript ](#tab-panel-238)
-* [ cURL ](#tab-panel-239)
+* [ TypeScript ](#tab-panel-244)
+* [ cURL ](#tab-panel-245)
 
 TypeScript
 
@@ -88,8 +89,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/v1/
 
 ```
 
-* [ Output ](#tab-panel-242)
-* [ Raw response ](#tab-panel-243)
+* [ Output ](#tab-panel-248)
+* [ Raw response ](#tab-panel-249)
 
 The three laws of thermodynamics are fundamental principles that govern energy and heat:
 
@@ -165,8 +166,8 @@ The three laws of thermodynamics are fundamental principles that govern energy a
 
 **With System Message**  — Using a system message to set context 
 
-* [ TypeScript ](#tab-panel-240)
-* [ cURL ](#tab-panel-241)
+* [ TypeScript ](#tab-panel-246)
+* [ cURL ](#tab-panel-247)
 
 TypeScript
 
@@ -232,8 +233,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/v1/
 
 ```
 
-* [ Output ](#tab-panel-246)
-* [ Raw response ](#tab-panel-247)
+* [ Output ](#tab-panel-252)
+* [ Raw response ](#tab-panel-253)
 
 Here are several ways to read a JSON file in Python:
 
@@ -367,8 +368,8 @@ with open('example.json', 'r') as file:
 
 **Multi-turn Conversation**  — Continuing a conversation with context 
 
-* [ TypeScript ](#tab-panel-250)
-* [ cURL ](#tab-panel-251)
+* [ TypeScript ](#tab-panel-256)
+* [ cURL ](#tab-panel-257)
 
 TypeScript
 
@@ -464,8 +465,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/v1/
 
 ```
 
-* [ Output ](#tab-panel-252)
-* [ Raw response ](#tab-panel-253)
+* [ Output ](#tab-panel-258)
+* [ Raw response ](#tab-panel-259)
 
 Here are some great stops along the SF to LA route:
 
@@ -539,8 +540,8 @@ What type of experience are you looking for - scenic beauty, food, wine, or quic
 
 **Creative Writing**  — Higher temperature for creative output 
 
-* [ TypeScript ](#tab-panel-244)
-* [ cURL ](#tab-panel-245)
+* [ TypeScript ](#tab-panel-250)
+* [ cURL ](#tab-panel-251)
 
 TypeScript
 
@@ -612,8 +613,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/v1/
 
 ```
 
-* [ Output ](#tab-panel-254)
-* [ Raw response ](#tab-panel-255)
+* [ Output ](#tab-panel-260)
+* [ Raw response ](#tab-panel-261)
 
 Detective Sarah Chen crouched beside the mahogany desk, her latex gloves squeaking against the wood as she carefully lifted what appeared to be an ordinary paper clip. But this one was different—twisted into an intricate knot that seemed to defy the laws of physics, its metal curves flowing impossibly through themselves like a three-dimensional puzzle.
 
@@ -676,8 +677,8 @@ Sarah felt a chill run down her spine as she realized the paper clip was warm to
 
 **Streaming Response**  — Enable streaming for real-time output 
 
-* [ TypeScript ](#tab-panel-248)
-* [ cURL ](#tab-panel-249)
+* [ TypeScript ](#tab-panel-254)
+* [ cURL ](#tab-panel-255)
 
 TypeScript
 
@@ -739,8 +740,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/v1/
 
 ```
 
-* [ Output ](#tab-panel-256)
-* [ Raw response ](#tab-panel-257)
+* [ Output ](#tab-panel-262)
+* [ Raw response ](#tab-panel-263)
 
 # Recursion Explained
 
@@ -1173,8 +1174,8 @@ Think of **Russian nesting dolls**: To see what's inside, you open one doll, the
 
 ## Parameters
 
-* [ Input ](#tab-panel-258)
-* [ Output ](#tab-panel-259)
+* [ Input ](#tab-panel-264)
+* [ Output ](#tab-panel-265)
 
 max\_tokens
 

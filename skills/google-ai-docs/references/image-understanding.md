@@ -626,6 +626,161 @@ your original image size.
     print("Image size: ", width, height)
     print("Bounding boxes:", converted_bounding_boxes)
 
+### JavaScript
+
+    import { GoogleGenAI } from "@google/genai";
+    import * as fs from "node:fs";
+
+    const ai = new GoogleGenAI({});
+    const base64ImageFile = fs.readFileSync("/path/to/image.png", {
+      encoding: "base64",
+    });
+
+    const response = await ai.models.generateContent({
+      model: "gemini-3.5-flash",
+      contents: [
+        {
+          inlineData: {
+            mimeType: "image/png",
+            data: base64ImageFile,
+          },
+        },
+        "Detect the all of the prominent items in the image. The box_2d should be [ymin, xmin, ymax, xmax] normalized to 0-1000."
+      ],
+      config: {
+        responseMimeType: "application/json",
+      },
+    });
+
+    const boundingBoxes = JSON.parse(response.text);
+    console.log(boundingBoxes);
+    // To convert normalized coordinates to absolute pixels:
+    // const absY1 = (boundingBoxes[0].box_2d[0] / 1000) * imageHeight;
+    // const absX1 = (boundingBoxes[0].box_2d[1] / 1000) * imageWidth;
+
+### Go
+
+    package main
+
+    import (
+        "context"
+        "encoding/json"
+        "fmt"
+        "image"
+        _ "image/png" // Register PNG decoder
+        "log"
+        "os"
+
+        "google.golang.org/genai"
+    )
+
+    type BoundingBox struct {
+        Box2D []int  `json:"box_2d"`
+        Label string `json:"label"`
+    }
+
+    func main() {
+        ctx := context.Background()
+        client, err := genai.NewClient(ctx, nil)
+        if err != nil {
+            log.Fatal(err)
+        }
+
+        imagePath := "/path/to/image.png"
+
+        // Open the image to get dimensions
+        file, err := os.Open(imagePath)
+        if err != nil {
+            log.Fatal(err)
+        }
+        defer file.Close()
+
+        imgConfig, _, err := image.DecodeConfig(file)
+        if err != nil {
+            log.Fatal(err)
+        }
+        width := imgConfig.Width
+        height := imgConfig.Height
+
+        // Read image bytes
+        imageBytes, err := os.ReadFile(imagePath)
+        if err != nil {
+            log.Fatal(err)
+        }
+
+        prompt := "Detect the all of the prominent items in the image. The box_2d should be [ymin, xmin, ymax, xmax] normalized to 0-1000."
+
+        parts := []*genai.Part{
+            genai.NewPartFromBytes(imageBytes, "image/png"),
+            genai.NewPartFromText(prompt),
+        }
+
+        contents := []*genai.Content{
+            genai.NewContentFromParts(parts, genai.RoleUser),
+        }
+
+        config := &genai.GenerateContentConfig{
+            ResponseMIMEType: "application/json",
+        }
+
+        result, err := client.Models.GenerateContent(
+            ctx,
+            "gemini-3.5-flash",
+            contents,
+            config,
+        )
+        if err != nil {
+            log.Fatal(err)
+        }
+
+        var boundingBoxes []BoundingBox
+        err = json.Unmarshal([]byte(result.Text()), &boundingBoxes)
+        if err != nil {
+            log.Fatal(err)
+        }
+
+        fmt.Printf("Image size: %d %d
+    ", width, height)
+        fmt.Println("Bounding boxes:")
+        for _, box := range boundingBoxes {
+            if len(box.Box2D) == 4 {
+                absY1 := int(float64(box.Box2D[0]) / 1000.0 * float64(height))
+                absX1 := int(float64(box.Box2D[1]) / 1000.0 * float64(width))
+                absY2 := int(float64(box.Box2D[2]) / 1000.0 * float64(height))
+                absX2 := int(float64(box.Box2D[3]) / 1000.0 * float64(width))
+                fmt.Printf("- %s: [%d, %d, %d, %d]
+    ", box.Label, absX1, absY1, absX2, absY2)
+            }
+        }
+    }
+
+### REST
+
+    IMG_PATH="/path/to/image.png"
+
+    if [[ "$(base64 --version 2>&1)" = *"FreeBSD"* ]]; then
+      B64FLAGS="--input"
+    else
+      B64FLAGS="-w0"
+    fi
+
+    curl "https://generativelanguage.googleapis.com/v1beta/models/gemini-3.5-flash:generateContent"       -H "x-goog-api-key: $GEMINI_API_KEY"       -H 'Content-Type: application/json'       -X POST       -d '{
+        "contents": [{
+          "parts":[
+            {
+              "inline_data": {
+                "mime_type":"image/png",
+                "data": "'"$(base64 $B64FLAGS $IMG_PATH)"'"
+              }
+            },
+            {"text": "Detect the all of the prominent items in the image. The box_2d should be [ymin, xmin, ymax, xmax] normalized to 0-1000."}
+          ]
+        }],
+        "generationConfig": {
+          "responseMimeType": "application/json"
+        }
+      }' 2> /dev/null
+
 > [!NOTE]
 > **Note:** The model also supports generating bounding boxes based on custom instructions, such as: "Show bounding boxes of all green objects in this image". It also support custom labels like "label the items with the allergens they can contain".
 

@@ -435,6 +435,7 @@ format, or a stream of transcript events.
 ### Example
 
 ```typescript
+import fs from 'fs';
 import OpenAI from 'openai';
 
 const client = new OpenAI({

@@ -55,10 +55,10 @@ glab repo prune --merged
 ## Options
 
 ```plaintext
-      --dry-run           Preview branches that would be deleted without deleting them. (default false)
+      --dry-run           Preview branches that would be deleted without deleting them.
   -e, --exclude strings   Branch name or glob pattern to exclude. Comma-separated or repeated.
-      --merged            Use 'git branch --merged' instead of querying GitLab. Detects fast-forward merges only. (default false)
-  -y, --yes               Skip the confirmation prompt. (default false)
+      --merged            Use 'git branch --merged' instead of querying GitLab. Detects fast-forward merges only.
+  -y, --yes               Skip the confirmation prompt.
 ```
 
 ## Options inherited from parent commands

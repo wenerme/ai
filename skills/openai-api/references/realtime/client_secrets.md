@@ -1868,7 +1868,7 @@ curl https://api.openai.com/v1/realtime/client_secrets \
         },
         "transcription": {
           "language": "language",
-          "model": "string",
+          "model": "whisper-1",
           "prompt": "prompt"
         },
         "turn_detection": {
@@ -1895,8 +1895,8 @@ curl https://api.openai.com/v1/realtime/client_secrets \
       "item.input_audio_transcription.logprobs"
     ],
     "instructions": "instructions",
-    "max_output_tokens": 0,
-    "model": "string",
+    "max_output_tokens": "inf",
+    "model": "gpt-realtime",
     "output_modalities": [
       "text"
     ],

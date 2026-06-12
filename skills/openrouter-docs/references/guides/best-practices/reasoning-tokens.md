@@ -788,9 +788,20 @@ effort\_ratio is 0.95 for xhigh effort, 0.8 for high effort, 0.5 for medium effo
 
 **Important**: `max_tokens` must be strictly higher than the reasoning budget to ensure there are tokens available for the final response after thinking.
 
-Please note that reasoning tokens are counted as output tokens for billing
-purposes. Using reasoning tokens will increase your token usage but can
-significantly improve the quality of model responses.
+Reasoning tokens are counted as output tokens for billing purposes. Using
+reasoning tokens will increase your token usage but can significantly improve
+the quality of model responses.
+
+#### Summarized Thinking
+
+For Claude models that support the `thinking.display` field, OpenRouter defaults to **summarized thinking** (`thinking.display: 'summarized'`), so you don't lose the reasoning trace on newer models where Anthropic omits the thinking by default.
+
+The `display` setting only controls the visible thinking trace in the response. The model consumes the same number of tokens either way, and usage is billed based on the tokens the model actually generates. Because the visible summary is condensed, it may contain fewer tokens than the reasoning token count reported in `usage`.
+
+If you're using the Anthropic Messages API format directly, you can control this with `thinking.display`:
+
+* **`'summarized'`** (default): A condensed summary of the reasoning is returned
+* **`'omitted'`**: No thinking trace is returned
 
 #### Example: Streaming with Anthropic Reasoning Tokens
 

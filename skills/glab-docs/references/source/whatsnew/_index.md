@@ -40,7 +40,7 @@ glab whatsnew --since v1.80.0
 ## Options
 
 ```plaintext
-      --latest         Show release notes for the latest published release only. (default false)
+      --latest         Show release notes for the latest published release only.
       --since string   Show release notes for every release newer than this version.
 ```
 

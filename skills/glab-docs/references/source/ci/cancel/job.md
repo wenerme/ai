@@ -46,7 +46,7 @@ glab ci cancel job 1504182795 --force
 
 ```plaintext
       --dry-run   Show which jobs would be canceled, without canceling them.
-  -f, --force     Force-cancel the job, even if it runs in a protected environment. (default false)
+  -f, --force     Force-cancel the job, even if it runs in a protected environment.
 ```
 
 ## Options inherited from parent commands

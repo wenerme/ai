@@ -48,6 +48,70 @@ Filter models by the API parameters they support. For example, to find models th
 curl "https://openrouter.ai/api/v1/models?supported_parameters=tools"
 ```
 
+### `sort`
+
+Sort models server-side before they're returned. Accepts one of the following values:
+
+| Value                    | Description                                                                                      |
+| ------------------------ | ------------------------------------------------------------------------------------------------ |
+| `pricing-low-to-high`    | Cheapest models first (weighted average of prompt, completion, request, and web\_search pricing) |
+| `pricing-high-to-low`    | Most expensive models first                                                                      |
+| `context-high-to-low`    | Largest context window first                                                                     |
+| `throughput-high-to-low` | Highest tokens/second first (p50 throughput from routing heuristics)                             |
+| `latency-low-to-high`    | Lowest time-to-first-token first (p50 latency)                                                   |
+| `most-popular`           | Most tokens processed in the last week                                                           |
+| `top-weekly`             | Same as `most-popular`                                                                           |
+| `newest`                 | Most recently added to OpenRouter                                                                |
+
+Models without data for the requested sort dimension (e.g. no pricing, no throughput heuristics) sort last. Omitting `sort` preserves the default ordering (backward compatible).
+
+```bash
+# Cheapest models first
+curl "https://openrouter.ai/api/v1/models?sort=pricing-low-to-high"
+
+# Newest models
+curl "https://openrouter.ai/api/v1/models?sort=newest"
+
+# Combine with filters
+curl "https://openrouter.ai/api/v1/models?sort=throughput-high-to-low&supported_parameters=tools"
+```
+
+## Single Model Lookup
+
+Look up a single model's full details without fetching the entire list:
+
+```
+GET /api/v1/model/{author}/{slug}
+```
+
+The endpoint resolves aliases automatically. For example, `anthropic/claude-3-5-sonnet` redirects to the canonical `anthropic/claude-3.5-sonnet` and returns its data.
+
+Variant suffixes are also supported — append `:free`, `:thinking`, etc. to the slug:
+
+```bash
+# Look up a specific model
+curl "https://openrouter.ai/api/v1/model/openai/gpt-4o"
+
+# Aliases resolve automatically
+curl "https://openrouter.ai/api/v1/model/anthropic/claude-3-5-sonnet"
+
+# Variant suffixes
+curl "https://openrouter.ai/api/v1/model/openai/gpt-4:free"
+```
+
+Returns `404` if the model doesn't exist and isn't an alias for another model. The response shape wraps the same Model object used in the list endpoint:
+
+```json
+{
+  "data": {
+    "id": "openai/gpt-4o",
+    "name": "GPT-4o",
+    "pricing": { "prompt": "0.0000025", "completion": "0.00001", ... },
+    ...
+  }
+}
+```
+
 ## Models API Standard
 
 Our [Models API](/docs/api/api-reference/models/get-models) makes the most important information about all LLMs freely available as soon as we confirm it.
@@ -85,6 +149,7 @@ Each model in the `data` array contains the following standardized fields:
 | `supported_parameters` | `string[]`                                    | Array of supported API parameters for this model                                       |
 | `default_parameters`   | `object \| null`                              | Default parameter values for this model (null if none)                                 |
 | `expiration_date`      | `string \| null`                              | Deprecation date for the model endpoint (null if not deprecated)                       |
+| `benchmarks`           | `Benchmarks \| undefined`                     | Third-party benchmark rankings (omitted when no data is available)                     |
 
 #### Architecture Object
 
@@ -122,6 +187,31 @@ All pricing values are in USD per token/request/unit. A value of `"0"` indicates
   "max_completion_tokens": number, // Maximum tokens in response
   "is_moderated": boolean         // Whether content moderation is applied
 }
+```
+
+#### Benchmarks Object
+
+Present only on models that have been evaluated in third-party benchmarks. Currently includes [Design Arena](https://designarena.org) rankings.
+
+```typescript
+{
+  "design_arena": [
+    {
+      "arena": string,    // Arena type (e.g. "models", "builders", "agents")
+      "category": string, // Category within the arena (e.g. "website", "gamedev")
+      "elo": number,      // ELO rating from head-to-head arena battles
+      "win_rate": number,  // Win rate percentage
+      "rank": number      // Rank within this arena+category (1 = highest ELO)
+    }
+  ]
+}
+```
+
+Rankings are computed among models listed on OpenRouter, not the full external leaderboard. Models without benchmark data omit the `benchmarks` field entirely.
+
+```bash
+# Find models with benchmark data
+curl -s "https://openrouter.ai/api/v1/models" | jq '.data[] | select(.benchmarks) | {id, benchmarks}'
 ```
 
 #### Supported Parameters

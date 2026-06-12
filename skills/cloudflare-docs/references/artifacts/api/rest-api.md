@@ -36,7 +36,9 @@ Authorization: Bearer $CLOUDFLARE_API_TOKEN
 
 ```
 
-All routes below are relative to this base URL.
+Route paths below are shown relative to `/accounts/$ACCOUNT_ID`. Curl examples use `ARTIFACTS_BASE_URL` or `ARTIFACTS_ACCOUNT_BASE_URL` to keep commands shorter.
+
+Token types
 
 Cloudflare API tokens authenticate REST control-plane routes. Repo tokens authenticate Git operations against the returned `remote` URL.
 
@@ -56,10 +58,58 @@ export CLOUDFLARE_API_TOKEN="<YOUR_API_TOKEN>"
 
 export ARTIFACTS_BASE_URL="https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/artifacts/namespaces/$ARTIFACTS_NAMESPACE"
 
+export ARTIFACTS_ACCOUNT_BASE_URL="https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/artifacts"
+
 
 ```
 
-All responses use the standard Cloudflare v4 envelope.
+All JSON responses use the standard Cloudflare v4 envelope:
+
+```
+
+{
+
+  "result": {},
+
+  "success": true,
+
+  "errors": [],
+
+  "messages": []
+
+}
+
+
+```
+
+Successful blob, file, and raw responses return file bytes directly instead of JSON. For example, `GET /artifacts/namespaces/:namespace/repos/:name/file?ref=main&path=README.md` returns the contents of `README.md` with `Content-Type: application/octet-stream`. Error responses still use the standard envelope:
+
+```
+
+{
+
+  "result": null,
+
+  "success": false,
+
+  "errors": [
+
+    {
+
+      "code": 10200,
+
+      "message": "File not found"
+
+    }
+
+  ],
+
+  "messages": []
+
+}
+
+
+```
 
 Returned repo tokens are secrets. Do not log them or store them in long-lived remotes unless your workflow requires it.
 
@@ -204,11 +254,45 @@ export interface TokenInfo {
 
 ```
 
+## Namespaces
+
+### List namespaces
+
+Route: `GET /artifacts/namespaces?limit=&cursor=`
+
+Use the account-level base URL.
+
+Terminal window
+
+```
+
+curl "$ARTIFACTS_ACCOUNT_BASE_URL/namespaces?limit=20" \
+
+  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN"
+
+
+```
+
+### Get a namespace
+
+Route: `GET /artifacts/namespaces/:namespace`
+
+Terminal window
+
+```
+
+curl "$ARTIFACTS_ACCOUNT_BASE_URL/namespaces/$ARTIFACTS_NAMESPACE" \
+
+  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN"
+
+
+```
+
 ## Repos
 
 ### Create a repo
 
-Route: `POST /repos`
+Route: `POST /artifacts/namespaces/:namespace/repos`
 
 Request body:
 
@@ -318,7 +402,7 @@ Create, fork, and import responses return the token string only. The token encod
 
 ### List repos
 
-Route: `GET /repos?limit=&cursor=&search=&sort=&direction=`
+Route: `GET /artifacts/namespaces/:namespace/repos?limit=&cursor=&search=&sort=&direction=`
 
 Query parameters:
 
@@ -420,7 +504,7 @@ curl "$ARTIFACTS_BASE_URL/repos?limit=20&sort=updated_at&direction=desc" \
 
 ### Get a repo
 
-Route: `GET /repos/:name`
+Route: `GET /artifacts/namespaces/:namespace/repos/:name`
 
 Response type:
 
@@ -485,7 +569,7 @@ curl "$ARTIFACTS_BASE_URL/repos/$ARTIFACTS_REPO" \
 
 ### Delete a repo
 
-Route: `DELETE /repos/:name`
+Route: `DELETE /artifacts/namespaces/:namespace/repos/:name`
 
 This route returns `202 Accepted`.
 
@@ -541,7 +625,7 @@ curl --request DELETE "$ARTIFACTS_BASE_URL/repos/$ARTIFACTS_REPO" \
 
 ### Fork a repo
 
-Route: `POST /repos/:name/fork`
+Route: `POST /artifacts/namespaces/:namespace/repos/:name/fork`
 
 Request body:
 
@@ -641,7 +725,7 @@ curl --request POST "$ARTIFACTS_BASE_URL/repos/$ARTIFACTS_REPO/fork" \
 
 ### Import a public HTTPS remote
 
-Route: `POST /repos/:name/import`
+Route: `POST /artifacts/namespaces/:namespace/repos/:name/import`
 
 Request body:
 
@@ -732,13 +816,113 @@ curl --request POST "$ARTIFACTS_BASE_URL/repos/react-mirror/import" \
 
 If a repo exists but is still importing or forking, this route can return `409 Conflict` with a retriable error message.
 
+## Repo content
+
+These routes read Git objects and files from an existing repo. Object routes use immutable Git SHA-1 hashes. File routes resolve a path at a branch, tag, or commit hash.
+
+### Read commit history
+
+Route: `GET /artifacts/namespaces/:namespace/repos/:name/log?ref=&limit=&offset=`
+
+Terminal window
+
+```
+
+curl "$ARTIFACTS_BASE_URL/repos/$ARTIFACTS_REPO/log?ref=main&limit=10" \
+
+  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN"
+
+
+```
+
+### Read a commit
+
+Route: `GET /artifacts/namespaces/:namespace/repos/:name/commit/:hash`
+
+Terminal window
+
+```
+
+curl "$ARTIFACTS_BASE_URL/repos/$ARTIFACTS_REPO/commit/$COMMIT_HASH" \
+
+  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN"
+
+
+```
+
+### Read a tree
+
+Route: `GET /artifacts/namespaces/:namespace/repos/:name/tree/:hash`
+
+Terminal window
+
+```
+
+curl "$ARTIFACTS_BASE_URL/repos/$ARTIFACTS_REPO/tree/$TREE_HASH" \
+
+  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN"
+
+
+```
+
+### Read a blob
+
+Route: `GET /artifacts/namespaces/:namespace/repos/:name/blob/:hash`
+
+Returns raw blob bytes.
+
+Terminal window
+
+```
+
+curl "$ARTIFACTS_BASE_URL/repos/$ARTIFACTS_REPO/blob/$BLOB_HASH" \
+
+  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN"
+
+
+```
+
+### Read a file
+
+Route: `GET /artifacts/namespaces/:namespace/repos/:name/file?ref=&path=`
+
+Returns raw file bytes as `application/octet-stream`.
+
+Terminal window
+
+```
+
+curl "$ARTIFACTS_BASE_URL/repos/$ARTIFACTS_REPO/file?ref=main&path=README.md" \
+
+  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN"
+
+
+```
+
+### Read a raw file
+
+Route: `GET /artifacts/namespaces/:namespace/repos/:name/raw/:ref/:path`
+
+Returns file bytes with a sniffed `Content-Type`.
+
+Terminal window
+
+```
+
+curl "$ARTIFACTS_BASE_URL/repos/$ARTIFACTS_REPO/raw/main/README.md" \
+
+  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN"
+
+
+```
+
 ## Tokens
 
 These tokens are for Git routes. They do not authenticate REST API requests.
 
 ### List tokens for a repo
 
-Route: `GET /repos/:name/tokens?state=&per_page=&page=`
+Route: `GET /artifacts/namespaces/:namespace/repos/:name/tokens?state=&per_page=&page=`
 
 Query parameters:
 
@@ -787,7 +971,7 @@ curl "$ARTIFACTS_BASE_URL/repos/$ARTIFACTS_REPO/tokens?state=all&per_page=30&pag
 
     {
 
-      "id": "tok_123",
+      "id": "0123456789abcdef",
 
       "scope": "read",
 
@@ -828,7 +1012,7 @@ curl "$ARTIFACTS_BASE_URL/repos/$ARTIFACTS_REPO/tokens?state=all&per_page=30&pag
 
 ### Create a token
 
-Route: `POST /tokens`
+Route: `POST /artifacts/namespaces/:namespace/tokens`
 
 Request body:
 
@@ -900,7 +1084,7 @@ curl --request POST "$ARTIFACTS_BASE_URL/tokens" \
 
   "result": {
 
-    "id": "tok_123",
+    "id": "0123456789abcdef",
 
     "plaintext": "art_v1_0123456789abcdef0123456789abcdef01234567?expires=1760000000",
 
@@ -923,7 +1107,7 @@ curl --request POST "$ARTIFACTS_BASE_URL/tokens" \
 
 ### Revoke a token
 
-Route: `DELETE /tokens/:id`
+Route: `DELETE /artifacts/namespaces/:namespace/tokens/:id`
 
 Response type:
 
@@ -947,7 +1131,7 @@ Terminal window
 
 ```
 
-curl --request DELETE "$ARTIFACTS_BASE_URL/tokens/tok_123" \
+curl --request DELETE "$ARTIFACTS_BASE_URL/tokens/0123456789abcdef" \
 
   --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN"
 
@@ -960,7 +1144,7 @@ curl --request DELETE "$ARTIFACTS_BASE_URL/tokens/tok_123" \
 
   "result": {
 
-    "id": "tok_123"
+    "id": "0123456789abcdef"
 
   },
 

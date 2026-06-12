@@ -212,8 +212,8 @@ You can attach a rollback handler to `step.do()` to implement saga-style compens
 
 A failed step with rollback options can also participate in rollback alongside any completed steps which have a rollback handler registered. For example, if a steps throws a `NonRetryableError` after registering rollback, its rollback handler runs with `output` set to `undefined`.
 
-* [  JavaScript ](#tab-panel-12445)
-* [  TypeScript ](#tab-panel-12446)
+* [  JavaScript ](#tab-panel-12839)
+* [  TypeScript ](#tab-panel-12840)
 
 JavaScript
 
@@ -349,7 +349,6 @@ Rollback handlers receive:
 
 * `error` \- the error that caused the Workflow to fail.
 * `output` \- the value returned by the forward step, or `undefined` if the step failed before returning
-* `stepName` \- the fully-qualified step name, including its count suffix.
 
 You can use `rollbackConfig` to control retry behavior for the rollback handler. Throw a `NonRetryableError` from the rollback handler to stop retrying it immediately.
 

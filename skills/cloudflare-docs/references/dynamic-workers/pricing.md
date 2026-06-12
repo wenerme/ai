@@ -24,11 +24,11 @@ Dynamic Workers are currently only available on the [Workers Paid plan](https://
 
 ¹ Uses [Workers Standard rates](https://developers.cloudflare.com/workers/platform/pricing/#workers) and will appear as part of your existing Workers bill, not as separate Dynamic Workers charges.
 
-Pricing availability
+Billing
 
-Starting May 26, 2026, you will be billed for the number of Dynamic Workers created daily. Pricing information is shared in advance so you can estimate future costs.
+Starting May 26, 2026, Dynamic Workers created daily are billed as part of Dynamic Workers pricing.
 
-Dynamic Workers requests and CPU time are already billed as part of your Workers plan — they count toward your Workers requests and CPU usage.
+Dynamic Workers requests and CPU time are also billed as part of your Workers plan. They count toward your Workers requests and CPU usage.
 
 ## Dynamic Workers created daily
 
@@ -44,6 +44,70 @@ You are billed for each unique Dynamic Worker created in a day. A Dynamic Worker
 Note
 
 If your application sends multiple requests to the same Worker, use `.get()` with a stable ID to avoid being billed for multiple creations.
+
+## View Dynamic Workers usage
+
+To view the number of billable Dynamic Workers invoked during your billing period, go to **Workers & Pages** \> **Overview** in the [Cloudflare dashboard ↗](https://dash.cloudflare.com/).
+
+Dynamic Workers usage data only goes back to June 1, 2026.
+
+You can also query this count through the [GraphQL Analytics API](https://developers.cloudflare.com/analytics/graphql-api/) by using `workersInvocationsByOwnerAndScriptGroups` and selecting `distinctDynamicWorkerCount`:
+
+```
+
+query getDynamicWorkersCount(
+
+  $accountTag: string!
+
+  $filter: AccountWorkersInvocationsByOwnerAndScriptGroupsFilter_InputObject
+
+) {
+
+  viewer {
+
+    accounts(filter: { accountTag: $accountTag }) {
+
+      workersInvocationsByOwnerAndScriptGroups(limit: 10000, filter: $filter) {
+
+        uniq {
+
+          distinctDynamicWorkerCount
+
+        }
+
+      }
+
+    }
+
+  }
+
+}
+
+
+```
+
+Use variables to set the account and billing-period date range:
+
+```
+
+{
+
+  "accountTag": "<ACCOUNT_ID>",
+
+  "filter": {
+
+    "date_geq": "2026-06-01",
+
+    "date_leq": "2026-06-30"
+
+  }
+
+}
+
+
+```
+
+The `distinctDynamicWorkerCount` field returns the unique Dynamic Workers count for the selected period.
 
 ## Requests
 

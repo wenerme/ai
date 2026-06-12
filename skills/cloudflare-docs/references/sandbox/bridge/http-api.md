@@ -224,8 +224,8 @@ The WebSocket carries binary frames for terminal I/O and JSON text frames for co
 
 The warm pool pre-starts sandbox containers so new sessions boot instantly. Configure it with environment variables in `wrangler.jsonc`:
 
-* [  wrangler.jsonc ](#tab-panel-8106)
-* [  wrangler.toml ](#tab-panel-8107)
+* [  wrangler.jsonc ](#tab-panel-10034)
+* [  wrangler.toml ](#tab-panel-10035)
 
 JSONC
 

@@ -49,6 +49,7 @@ It is possible to add multiple Parts in parallel. You can decide the intended or
 ### Example
 
 ```typescript
+import fs from 'fs';
 import OpenAI from 'openai';
 
 const client = new OpenAI({

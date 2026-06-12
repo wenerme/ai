@@ -25,12 +25,13 @@ Gemini 3 Flash is Google's fast multimodal model with frontier intelligence, sup
 | Context Window[ ↗](https://developers.cloudflare.com/workers-ai/glossary/) | 1,000,000 tokens                                                                                                        |
 | Terms and License                                                          | [link ↗](https://ai.google.dev/gemini-api/terms)                                                                        |
 | More information                                                           | [link ↗](https://deepmind.google/technologies/gemini/)                                                                  |
+| Zero data retention                                                        | Yes                                                                                                                     |
 | Pricing                                                                    | [View pricing in the Cloudflare dashboard ↗](https://dash.cloudflare.com/?to=/:account/ai/models/google/gemini-3-flash) |
 
 ## Usage
 
-* [ TypeScript ](#tab-panel-522)
-* [ cURL ](#tab-panel-523)
+* [ TypeScript ](#tab-panel-532)
+* [ cURL ](#tab-panel-533)
 
 TypeScript
 
@@ -92,8 +93,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 ```
 
-* [ Output ](#tab-panel-528)
-* [ Raw response ](#tab-panel-529)
+* [ Output ](#tab-panel-538)
+* [ Raw response ](#tab-panel-539)
 
 While there are actually four laws of thermodynamics (numbered 0 through 3), the "Three Laws" usually refer to the following fundamental principles that govern how energy, heat, and matter behave:
 
@@ -224,8 +225,8 @@ Scientists often use a cynical "gambling" analogy to remember the laws:
 
 **With System Instruction**  — Using a system instruction to set context 
 
-* [ TypeScript ](#tab-panel-524)
-* [ cURL ](#tab-panel-525)
+* [ TypeScript ](#tab-panel-534)
+* [ cURL ](#tab-panel-535)
 
 TypeScript
 
@@ -319,8 +320,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 ```
 
-* [ Output ](#tab-panel-532)
-* [ Raw response ](#tab-panel-533)
+* [ Output ](#tab-panel-542)
+* [ Raw response ](#tab-panel-543)
 
 To read a JSON file in Python, you use the built-in **`json`** module.
 
@@ -475,8 +476,8 @@ print(data)
 
 **Multi-turn Conversation**  — Continuing a conversation with context 
 
-* [ TypeScript ](#tab-panel-530)
-* [ cURL ](#tab-panel-531)
+* [ TypeScript ](#tab-panel-540)
+* [ cURL ](#tab-panel-541)
 
 TypeScript
 
@@ -610,8 +611,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 ```
 
-* [ Output ](#tab-panel-534)
-* [ Raw response ](#tab-panel-535)
+* [ Output ](#tab-panel-544)
+* [ Raw response ](#tab-panel-545)
 
 To give you the best recommendations, it helps to know how much time you have. The drive can
 
@@ -706,8 +707,8 @@ To give you the best recommendations, it helps to know how much time you have. T
 
 **Creative Writing**  — Higher temperature for creative output 
 
-* [ TypeScript ](#tab-panel-526)
-* [ cURL ](#tab-panel-527)
+* [ TypeScript ](#tab-panel-536)
+* [ cURL ](#tab-panel-537)
 
 TypeScript
 
@@ -793,8 +794,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 ```
 
-* [ Output ](#tab-panel-536)
-* [ Raw response ](#tab-panel-537)
+* [ Output ](#tab-panel-546)
+* [ Raw response ](#tab-panel-547)
 
 The yellow police tape hummed in the drafty
 
@@ -889,8 +890,8 @@ The yellow police tape hummed in the drafty
 
 ## Parameters
 
-* [ Input ](#tab-panel-538)
-* [ Output ](#tab-panel-539)
+* [ Input ](#tab-panel-548)
+* [ Output ](#tab-panel-549)
 
 ▶contents\[\]
 

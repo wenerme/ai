@@ -20,16 +20,17 @@ Text-to-Video • Vidu
 
 Vidu Q3 Pro is a high-quality video generation model supporting text-to-video, image-to-video, and start/end-frame-to-video workflows with audio and up to 16-second clips.
 
-| Model Info        |                                                                                                               |
-| ----------------- | ------------------------------------------------------------------------------------------------------------- |
-| Terms and License | [link ↗](https://www.vidu.com/terms)                                                                          |
-| More information  | [link ↗](https://www.vidu.com/)                                                                               |
-| Pricing           | [View pricing in the Cloudflare dashboard ↗](https://dash.cloudflare.com/?to=/:account/ai/models/vidu/q3-pro) |
+| Model Info          |                                                                                                               |
+| ------------------- | ------------------------------------------------------------------------------------------------------------- |
+| Terms and License   | [link ↗](https://www.vidu.com/terms)                                                                          |
+| More information    | [link ↗](https://www.vidu.com/)                                                                               |
+| Zero data retention | Yes                                                                                                           |
+| Pricing             | [View pricing in the Cloudflare dashboard ↗](https://dash.cloudflare.com/?to=/:account/ai/models/vidu/q3-pro) |
 
 ## Usage
 
-* [ TypeScript ](#tab-panel-1790)
-* [ cURL ](#tab-panel-1791)
+* [ TypeScript ](#tab-panel-1800)
+* [ cURL ](#tab-panel-1801)
 
 TypeScript
 
@@ -85,8 +86,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 ```
 
-* [ Output ](#tab-panel-1788)
-* [ Raw response ](#tab-panel-1789)
+* [ Output ](#tab-panel-1798)
+* [ Raw response ](#tab-panel-1799)
 
 ```
 
@@ -115,8 +116,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 **Portrait Aspect Ratio**  — Vertical video for social media 
 
-* [ TypeScript ](#tab-panel-1796)
-* [ cURL ](#tab-panel-1797)
+* [ TypeScript ](#tab-panel-1806)
+* [ cURL ](#tab-panel-1807)
 
 TypeScript
 
@@ -178,8 +179,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 ```
 
-* [ Output ](#tab-panel-1792)
-* [ Raw response ](#tab-panel-1793)
+* [ Output ](#tab-panel-1802)
+* [ Raw response ](#tab-panel-1803)
 
 ```
 
@@ -206,8 +207,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 **Silent Video**  — Generate video without audio 
 
-* [ TypeScript ](#tab-panel-1800)
-* [ cURL ](#tab-panel-1801)
+* [ TypeScript ](#tab-panel-1810)
+* [ cURL ](#tab-panel-1811)
 
 TypeScript
 
@@ -267,8 +268,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 ```
 
-* [ Output ](#tab-panel-1794)
-* [ Raw response ](#tab-panel-1795)
+* [ Output ](#tab-panel-1804)
+* [ Raw response ](#tab-panel-1805)
 
 ```
 
@@ -295,8 +296,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 **Square Format**  — Square video for product demos or social posts 
 
-* [ TypeScript ](#tab-panel-1802)
-* [ cURL ](#tab-panel-1803)
+* [ TypeScript ](#tab-panel-1812)
+* [ cURL ](#tab-panel-1813)
 
 TypeScript
 
@@ -358,8 +359,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 ```
 
-* [ Output ](#tab-panel-1798)
-* [ Raw response ](#tab-panel-1799)
+* [ Output ](#tab-panel-1808)
+* [ Raw response ](#tab-panel-1809)
 
 ```
 
@@ -386,8 +387,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 ## Parameters
 
-* [ Input ](#tab-panel-1804)
-* [ Output ](#tab-panel-1805)
+* [ Input ](#tab-panel-1814)
+* [ Output ](#tab-panel-1815)
 
 aspect\_ratio
 
