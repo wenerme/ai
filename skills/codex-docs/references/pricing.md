@@ -169,8 +169,9 @@ Referrals aren't currently available for ChatGPT Enterprise.
 
 From June 11 through June 24, 2026, eligible Plus and Pro users can invite up to
 three friends. When an eligible recipient sends their first Codex message, both
-people receive a banked rate-limit reset. Business referrals use separate
-shared-workspace credit rewards; review the
+people receive a banked rate-limit reset. Banked rate-limit resets are usable for
+30 days after they are granted. Business referrals use separate shared-workspace
+credit rewards; review the
 [current terms](https://help.openai.com/en/articles/20001271) before you send an
 invitation.
 

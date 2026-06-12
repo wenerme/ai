@@ -22,7 +22,7 @@ With RealtimeKit, you can expect:
 
 Experience the product:
 
-[ Try A Demo Meeting ](https://demo.realtime.cloudflare.com) [ Build using Examples ](https://github.com/cloudflare/realtimekit-web-examples) [ RealtimeKit Dashboard ](https://dash.cloudflare.com/?to=/:account/realtime/kit) 
+[ Try A Demo Meeting ](https://examples.realtime.cloudflare.com/) [ Build using Examples ](https://github.com/cloudflare/realtimekit-web-examples) [ RealtimeKit Dashboard ](https://dash.cloudflare.com/?to=/:account/realtime/kit) 
 
 ## Build with RealtimeKit
 

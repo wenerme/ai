@@ -29,9 +29,10 @@ foo:
 | `export` | boolean | `false` | Export all variables as environment variables. |
 | `fallback` | boolean | `false` | Search `justfile` in parent directory if the first recipe on the command line is not found. |
 | `ignore-comments` | boolean | `false` | Ignore recipe lines beginning with `#`. |
-| `no-exit-message`<sup>1.39.0</sup> | boolean | `false` | Don't print exit messages if recipes fail. |
 | `lazy`<sup>1.47.0</sup> | boolean | `false` | Don't evaluate unused variables. |
+| `lists`<sup>master</sup> | boolean | `false` | Values may be lists of strings instead of strings. Currently unstable. |
 | `no-cd`<sup>1.51.0</sup> | boolean | `false` | Don't change directory when executing recipes by recipe attribute. |
+| `no-exit-message`<sup>1.39.0</sup> | boolean | `false` | Don't print exit messages if recipes fail. |
 | `positional-arguments` | boolean | `false` | Pass positional arguments. |
 | `quiet` | boolean | `false` | Disable echoing recipe lines before executing. |
 | `script-interpreter`<sup>1.33.0</sup> | `[COMMAND, ARGS…]` | `['sh', '-eu']` | Set command used to invoke recipes with empty `[script]` attribute. |
@@ -211,6 +212,39 @@ bar:
 Because `just` cannot determine when exported variables are used, assignments
 with `export` and assignments in a module with `set export` will always be
 evaluated.
+
+#### Lists
+
+The `lists` setting<sup>master</sup> allows values that are lists of strings.
+It is currently unstable and very likely to change in backwards incompatible
+ways.
+
+Currently, the only place that lists of strings are produced are variadic
+recipe parameters. Without `set lists`, they are joined into a single
+space-separated string.
+
+In most places, there is no difference in behavior between a list and
+space-separated string.
+
+The only exceptions are the `quote()` and `absolute_path()` functions, which
+apply to each list element individually:
+
+```just
+set unstable
+set lists
+
+@foo *args:
+  printf '%s\n' {{ quote(args) }}
+```
+
+```console
+$ just foo bar 'baz bob'
+bar
+baz bob
+```
+
+The return value of `quote(args)` is `'bar' 'baz bob'`, instead of
+`'bar baz bob'`, as would be the case without `set lists`.
 
 #### Positional Arguments
 

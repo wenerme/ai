@@ -47,7 +47,7 @@ In Claude Code, run these two slash commands. This installs Cloudflare Skills an
 4. **Try a prompt**  
 For example:  
 ```  
-Set up GitHub Actions to deploy this Worker to staging and production on Cloudflare.  
+Set up WAF rules to block SQL injection and XSS attacks on my application.  
 ```
 
 ## Cloudflare platform access

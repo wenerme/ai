@@ -874,10 +874,10 @@
   "openai-docs/guides/secure-mcp-tunnels.md": {
     "url": "https://developers.openai.com/api/docs/guides/secure-mcp-tunnels.md",
     "skill": "openai-docs",
-    "etag": "W/\"db007cfa12673f8b0543bc64dea521cc\"",
-    "lastModified": "Tue, 09 Jun 2026 00:35:34 GMT",
-    "size": 12225,
-    "updatedAt": "2026-06-09T00:35:34.536Z"
+    "etag": "W/\"2bafd11be85f8ea5ee9490f594639d76\"",
+    "lastModified": "Fri, 12 Jun 2026 11:24:47 GMT",
+    "size": 13923,
+    "updatedAt": "2026-06-12T11:24:47.735Z"
   },
   "openai-docs/guides/speech-to-text.md": {
     "url": "https://developers.openai.com/api/docs/guides/speech-to-text.md",
@@ -10610,10 +10610,10 @@
   "codex-docs/pricing.md": {
     "url": "https://developers.openai.com/codex/pricing.md",
     "skill": "codex-docs",
-    "etag": "W/\"d630ba8aa83956abbc76d8f2bee18b78\"",
-    "lastModified": "Fri, 12 Jun 2026 00:47:50 GMT",
-    "size": 47859,
-    "updatedAt": "2026-06-12T00:48:48.616Z"
+    "etag": "W/\"c1a67433e941d241f7d42ee363a9f75c\"",
+    "lastModified": "Fri, 12 Jun 2026 06:49:53 GMT",
+    "size": 47931,
+    "updatedAt": "2026-06-12T11:30:53.346Z"
   },
   "codex-docs/prompting.md": {
     "url": "https://developers.openai.com/codex/prompting.md",

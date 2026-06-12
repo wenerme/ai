@@ -14,7 +14,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 Note
 
-If you haven't already, we recommend trying out our [demo app ↗](https://demo.realtime.cloudflare.com/meeting?demo=Default) to get a feel for what RealtimeKit can do.
+If you have not already, we recommend trying out our [demo app ↗](https://examples.realtime.cloudflare.com/meeting?demo=Default) to get a feel for what RealtimeKit can do.
 
 ### Offerings
 

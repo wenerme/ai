@@ -618,6 +618,7 @@ And the following unique queues:
 - `REVERSE_PROXY_TRUSTED_PROXIES`: **127.0.0.0/8,::1/128**: List of IP addresses and networks separated by comma of trusted proxy servers. Use `*` to trust all.
 - `X_FRAME_OPTIONS`: **SAMEORIGIN**: Set the `X-Frame-Options` header value for all HTTP responses. Set to `unset` to not send the header. Previously located in `[cors]`.
 - `X_CONTENT_TYPE_OPTIONS`: **nosniff**: Set the `X-Content-Type-Options` header value for all HTTP responses. Set to `unset` to not send the header.
+- `CONTENT_SECURITY_POLICY_GENERAL`: **_empty_**: The value of the general Content-Security-Policy for most web pages. Leave it empty to apply the default policy, or set it to "unset" to disable Content-Security-Polic.
 - `DISABLE_GIT_HOOKS`: **true**: Set to `false` to enable users with Git Hook privilege to create custom Git Hooks.
 
   :::warning

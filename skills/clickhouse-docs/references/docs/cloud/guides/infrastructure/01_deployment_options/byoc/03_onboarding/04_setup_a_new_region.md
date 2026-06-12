@@ -5,7 +5,7 @@ description: 'Deploy additional BYOC infrastructure in new regions or accounts'
 doc_type: 'reference'
 ---
 
-After completing the initial onboarding, you may wish to deploy additional BYOC infrastructure in a different region or in another AWS account or GCP project.
+After completing the initial onboarding, you may wish to deploy additional BYOC infrastructure in a different region or in another AWS account, GCP project, or Azure subscription.
 
 To add a new BYOC deployment:
 
@@ -14,7 +14,7 @@ To add a new BYOC deployment:
 
 <Image img={byoc_new_infra_1} size="lg" alt="BYOC infra page" />
 
-2. Select "Add new account" or "Add new infrastructure" and follow the guided interface to complete the setup process.
+1. Select "Add new infrastructure" and follow the guided interface to complete the setup process.
 
 <Image img={byoc_new_infra_2} size="lg" alt="BYOC infra page" />
 

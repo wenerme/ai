@@ -88,8 +88,8 @@ You must create an AI binding for your Worker to connect to Workers AI. [Binding
 
 To bind Workers AI to your Worker, add the following to the end of your Wrangler file:
 
-* [  wrangler.jsonc ](#tab-panel-7305)
-* [  wrangler.toml ](#tab-panel-7306)
+* [  wrangler.jsonc ](#tab-panel-9763)
+* [  wrangler.toml ](#tab-panel-9764)
 
 JSONC
 
@@ -125,8 +125,8 @@ Your binding is [available in your Worker code](https://developers.cloudflare.co
 
 Update the `index.ts` file in your `hello-agent` application directory with the following code:
 
-* [  JavaScript ](#tab-panel-7307)
-* [  TypeScript ](#tab-panel-7308)
+* [  JavaScript ](#tab-panel-9765)
+* [  TypeScript ](#tab-panel-9766)
 
 index.js
 
@@ -653,15 +653,15 @@ https://hello-agent.<YOUR_SUBDOMAIN>.workers.dev
 
 ## 6\. Generate a RealtimeKit token
 
-Finally, to invoke the worker, we need to generate a RealtimeKit token from the [dashboard ↗](https://dash.realtime.cloudflare.com/dashboard):
+Finally, to invoke the worker, we need to generate a RealtimeKit token from the [dashboard ↗](https://dash.cloudflare.com/?to=/:account/realtime/kit):
 
-1. Go to the `Meetings` tab and click on `Create Meeting`:
-![Meetings Tab](https://developers.cloudflare.com/_astro/create-meeting.Bb-QE-kr_ZK6Lqz.webp) 
-1. Click on `Join` next to the meeting and generate the RealtimeKit link. This contains the `meetingId` (`bbbb2fac-953c-4239-9ba8-75ba912d76fc`) and the `authToken` to be passed in the final step:
+1. Select the app you want to use for the agent, go to the **Meetings** tab, and select **Create Meeting**:
+![Meetings Tab](https://developers.cloudflare.com/_astro/create-meeting.NrK9GaKq_1uizFk.webp) 
+1. Select the **Join** icon next to the meeting and generate the RealtimeKit link. This contains the `meetingId` (`bbb...`) and the `authToken` to be passed in the final step:
 
-`https://demo.realtime.cloudflare.com/v2/meeting?id=bbbb2fac-953c-4239-9ba8-75ba912d76fc&authToken=ey...`
+`https://examples.realtime.cloudflare.com/meeting/?id=bbb...&theme=preset&authToken=ey...`
 
-![Join Flow](https://developers.cloudflare.com/_astro/join-meeting.BktFJKMb_24O415.webp) 
+![Join Flow](https://developers.cloudflare.com/_astro/join-meeting.XIPElFG5_Z2gCgU5.webp) 
 1. Repeat the same `Join` flow to join the meeting yourself before adding in the Agent
 
 Finally, invoke the worker to make the agent join a meeting:

@@ -115,6 +115,28 @@ GitLab instance.
 - [`glab whatsnew`](whatsnew/_index.md)
 - [`glab work-items`](work-items/_index.md)
 
+## Troubleshooting
+
+When working with `glab`, you might encounter the following issues.
+
+### Error: `invalid_client` during OAuth login
+
+When authenticating with an OAuth application, `glab auth login` might fail with an error:
+
+```plaintext
+Oauth2: "invalid_client" "Client authentication failed due to unknown client, no client authentication included, or unsupported authentication method.".
+```
+
+This happens when the OAuth application has the **Confidential** option enabled. `glab` is a
+public client and cannot keep a client secret, so it authenticates without one. Confidential
+applications require a client secret, which causes GitLab to reject the request.
+
+To resolve this issue, edit your OAuth application and clear the **Confidential** checkbox.
+
+After saving the change, run `glab auth login` again. For the full list of required application
+settings, see the [OAuth (GitLab Self-Managed, GitLab Dedicated)](https://gitlab.com/gitlab-org/cli#oauth-gitlab-self-managed-gitlab-dedicated)
+section in the main README.
+
 ## Report issues
 
 Open an issue in the [`gitlab-org/cli` repository](https://gitlab.com/gitlab-org/cli/issues/new)

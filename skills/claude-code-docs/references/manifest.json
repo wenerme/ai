@@ -67,9 +67,9 @@
   },
   "changelog.md": {
     "url": "https://raw.githubusercontent.com/anthropics/claude-code/main/CHANGELOG.md",
-    "etag": "W/\"5fbcf0589a423ffc6813a4e4183439748ea5c5bdf85296250b8f0b533dd3a4f8\"",
-    "size": 371296,
-    "updatedAt": "2026-06-11T11:32:36.501Z"
+    "etag": "W/\"c510713742383c0339e7a38124ac9880262bc322c37ed6b34b7a251b498d2c99\"",
+    "size": 373414,
+    "updatedAt": "2026-06-12T11:17:19.429Z"
   },
   "channels.md": {
     "url": "https://code.claude.com/docs/en/channels",
@@ -307,9 +307,9 @@
   },
   "jetbrains.md": {
     "url": "https://code.claude.com/docs/en/jetbrains",
-    "lastModified": "Mon, 18 May 2026 23:33:13 GMT",
-    "size": 7260,
-    "updatedAt": "2026-05-19T00:28:24.464Z"
+    "lastModified": "Fri, 12 Jun 2026 11:16:34 GMT",
+    "size": 7508,
+    "updatedAt": "2026-06-12T11:16:34.190Z"
   },
   "keybindings.md": {
     "url": "https://code.claude.com/docs/en/keybindings",
@@ -595,9 +595,9 @@
   },
   "vs-code.md": {
     "url": "https://code.claude.com/docs/en/vs-code",
-    "lastModified": "Fri, 12 Jun 2026 00:35:10 GMT",
-    "size": 41945,
-    "updatedAt": "2026-06-12T00:35:10.228Z"
+    "lastModified": "Fri, 12 Jun 2026 11:17:08 GMT",
+    "size": 42158,
+    "updatedAt": "2026-06-12T11:17:08.917Z"
   },
   "web-quickstart.md": {
     "url": "https://code.claude.com/docs/en/web-quickstart",
