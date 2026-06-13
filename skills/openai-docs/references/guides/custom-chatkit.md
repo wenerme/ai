@@ -86,6 +86,7 @@ async def chatkit_endpoint(request: Request):
     return Response(content=result.json, media_type="application/json")
 ```
 
+
 ### 4. Establish data store contract
 
 Implement `chatkit.store.Store` to persist threads, messages, and files using your
@@ -165,6 +166,7 @@ async def respond(
     ):
         yield event
 ```
+
 
 ChatKit ships with a wide set of widget nodes (cards, lists, forms, text, buttons, and
 more). See [widgets guide on GitHub](https://github.com/openai/chatkit-python/blob/main/docs/widgets.md) for all components, props, and

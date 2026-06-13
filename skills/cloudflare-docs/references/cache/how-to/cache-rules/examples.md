@@ -18,6 +18,7 @@ In the following sections, you can find common cache rules examples.
 * [ Bypass Cache on Cookie ](https://developers.cloudflare.com/cache/how-to/cache-rules/examples/bypass-cache-on-cookie/)
 * [ Cache by Device Type ](https://developers.cloudflare.com/cache/how-to/cache-rules/examples/cache-device-type/)
 * [ Cache Deception Armor ](https://developers.cloudflare.com/cache/how-to/cache-rules/examples/cache-deception-armor/)
+* [ Cache everything for hostnames in a list ](https://developers.cloudflare.com/cache/how-to/cache-rules/examples/cache-by-hostname-list/)
 * [ Cache Everything while ignoring query strings ](https://developers.cloudflare.com/cache/how-to/cache-rules/examples/cache-everything-ignore-query-strings/)
 * [ Cache Level (Cache Everything) ](https://developers.cloudflare.com/cache/how-to/cache-rules/examples/cache-everything/)
 * [ Cache TTL by status code ](https://developers.cloudflare.com/cache/how-to/cache-rules/examples/cache-ttl-by-status-code/)

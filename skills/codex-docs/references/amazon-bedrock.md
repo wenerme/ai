@@ -573,7 +573,10 @@ Fast Mode isn't available with Amazon Bedrock. Fast Mode uses priority
     id="codex-plan-plugin-limits"
     className="not-prose mt-1 text-sm text-secondary"
   >
-    <sup>†</sup> Some first party plugins are not available.
+    <sup>†</sup> Local plugin bundles are supported when their capabilities do
+    not require ChatGPT authentication. OpenAI-curated plugin discovery and
+    features that depend on app connectors or cloud-hosted sharing aren't
+    available.
   </div>
 </ToggleSection>
 

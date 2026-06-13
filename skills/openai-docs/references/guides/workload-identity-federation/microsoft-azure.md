@@ -116,7 +116,440 @@ Configure your OpenAI SDK client to request an Azure managed identity token from
 
 Set `OPENAI_WIF_AUDIENCE` to the Microsoft Entra Application ID URI configured as the Workload Identity Provider audience. The SDK requests a managed identity token for that audience, exchanges it for an OpenAI-issued access token, and uses the OpenAI token to authenticate API requests.
 
-</div>
+Authenticate from an Azure managed identity token
+
+```typescript
+import OpenAI from "openai";
+import type { SubjectTokenProvider } from "openai/auth";
+
+const imdsEndpoint = "http://169.254.169.254/metadata/identity/oauth2/token";
+
+const identityProviderId = process.env.OPENAI_IDENTITY_PROVIDER_ID;
+const serviceAccountId = process.env.OPENAI_SERVICE_ACCOUNT_ID;
+const audience = process.env.OPENAI_WIF_AUDIENCE;
+
+if (!identityProviderId || !serviceAccountId || !audience) {
+  throw new Error(
+    "Set OPENAI_IDENTITY_PROVIDER_ID, OPENAI_SERVICE_ACCOUNT_ID, and OPENAI_WIF_AUDIENCE"
+  );
+}
+
+function azureManagedIdentityTokenProvider(resource: string): SubjectTokenProvider {
+  return {
+    tokenType: "jwt",
+    getToken: async () => {
+      const url = new URL(imdsEndpoint);
+      url.searchParams.set("api-version", "2018-02-01");
+      url.searchParams.set("resource", resource);
+
+      const clientId = process.env.AZURE_CLIENT_ID;
+      if (clientId) {
+        url.searchParams.set("client_id", clientId);
+      }
+
+      const response = await fetch(url, {
+        headers: { Metadata: "true" },
+      });
+
+      if (!response.ok) {
+        throw new Error(
+          `Azure IMDS token request failed with status ${response.status}.`
+        );
+      }
+
+      const body = (await response.json()) as { access_token?: string };
+      if (!body.access_token) {
+        throw new Error("Azure IMDS did not return an access token.");
+      }
+
+      return body.access_token;
+    },
+  };
+}
+
+const client = new OpenAI({
+  workloadIdentity: {
+    identityProviderId,
+    serviceAccountId,
+    provider: azureManagedIdentityTokenProvider(audience),
+  },
+});
+
+const response = await client.responses.create({
+  model: "gpt-5.4-mini",
+  input: "Say hello from Azure managed identity workload identity federation.",
+});
+
+console.log(response.output_text);
+```
+
+```python
+import json
+import os
+from urllib.parse import urlencode
+from urllib.request import Request, urlopen
+
+from openai import OpenAI
+from openai.auth import SubjectTokenProvider
+
+IMDS_ENDPOINT = "http://169.254.169.254/metadata/identity/oauth2/token"
+
+
+def azure_managed_identity_token_provider(resource: str) -> SubjectTokenProvider:
+    def get_token() -> str:
+        params = {
+            "api-version": "2018-02-01",
+            "resource": resource,
+        }
+
+        client_id = os.environ.get("AZURE_CLIENT_ID")
+        if client_id:
+            params["client_id"] = client_id
+
+        request = Request(
+            f"{IMDS_ENDPOINT}?{urlencode(params)}",
+            headers={"Metadata": "true"},
+        )
+
+        with urlopen(request, timeout=10) as response:
+            body = json.loads(response.read().decode("utf-8"))
+
+        token = body.get("access_token", "")
+        if not token:
+            raise RuntimeError("Azure IMDS did not return an access token.")
+        return token
+
+    return {"token_type": "jwt", "get_token": get_token}
+
+client = OpenAI(
+    workload_identity={
+        "identity_provider_id": os.environ["OPENAI_IDENTITY_PROVIDER_ID"],
+        "service_account_id": os.environ["OPENAI_SERVICE_ACCOUNT_ID"],
+        "provider": azure_managed_identity_token_provider(
+            os.environ["OPENAI_WIF_AUDIENCE"]
+        ),
+    },
+)
+
+response = client.responses.create(
+    model="gpt-5.4-mini",
+    input="Say hello from Azure managed identity workload identity federation.",
+)
+
+print(response.output_text)
+```
+
+```go
+package main
+
+import (
+	"context"
+	"encoding/json"
+	"fmt"
+	"log"
+	"net/http"
+	"net/url"
+	"os"
+
+	"github.com/openai/openai-go/v3"
+	"github.com/openai/openai-go/v3/auth"
+	"github.com/openai/openai-go/v3/option"
+	"github.com/openai/openai-go/v3/responses"
+)
+
+const azureIMDSEndpoint = "http://169.254.169.254/metadata/identity/oauth2/token"
+
+type azureManagedIdentityTokenProvider struct {
+	resource string
+}
+
+func (p azureManagedIdentityTokenProvider) TokenType() auth.SubjectTokenType {
+	return auth.SubjectTokenTypeJWT
+}
+
+func (p azureManagedIdentityTokenProvider) GetToken(ctx context.Context, httpClient auth.HTTPDoer) (string, error) {
+	values := url.Values{}
+	values.Set("api-version", "2018-02-01")
+	values.Set("resource", p.resource)
+	if clientID := os.Getenv("AZURE_CLIENT_ID"); clientID != "" {
+		values.Set("client_id", clientID)
+	}
+
+	req, err := http.NewRequestWithContext(ctx, http.MethodGet, azureIMDSEndpoint+"?"+values.Encode(), nil)
+	if err != nil {
+		return "", &auth.SubjectTokenProviderError{
+			Provider: "azure-managed-identity",
+			Message:  "failed to build Azure IMDS token request",
+			Cause:    err,
+		}
+	}
+	req.Header.Set("Metadata", "true")
+
+	resp, err := httpClient.Do(req)
+	if err != nil {
+		return "", &auth.SubjectTokenProviderError{
+			Provider: "azure-managed-identity",
+			Message:  "failed to request Azure managed identity token",
+			Cause:    err,
+		}
+	}
+	defer resp.Body.Close()
+
+	if resp.StatusCode < 200 || resp.StatusCode >= 300 {
+		return "", &auth.SubjectTokenProviderError{
+			Provider: "azure-managed-identity",
+			Message:  fmt.Sprintf("Azure IMDS token request failed with status %d", resp.StatusCode),
+		}
+	}
+
+	var body struct {
+		AccessToken string `json:"access_token"`
+	}
+	if err := json.NewDecoder(resp.Body).Decode(&body); err != nil {
+		return "", &auth.SubjectTokenProviderError{
+			Provider: "azure-managed-identity",
+			Message:  "failed to decode Azure IMDS token response",
+			Cause:    err,
+		}
+	}
+	if body.AccessToken == "" {
+		return "", &auth.SubjectTokenProviderError{
+			Provider: "azure-managed-identity",
+			Message:  "Azure IMDS did not return an access token",
+		}
+	}
+
+	return body.AccessToken, nil
+}
+
+func main() {
+	audience := os.Getenv("OPENAI_WIF_AUDIENCE")
+	if audience == "" {
+		log.Fatal("Set OPENAI_WIF_AUDIENCE")
+	}
+
+	client := openai.NewClient(
+		option.WithWorkloadIdentity(auth.WorkloadIdentity{
+			IdentityProviderID: os.Getenv("OPENAI_IDENTITY_PROVIDER_ID"),
+			ServiceAccountID:   os.Getenv("OPENAI_SERVICE_ACCOUNT_ID"),
+			Provider: azureManagedIdentityTokenProvider{
+				resource: audience,
+			},
+		}),
+	)
+
+	response, err := client.Responses.New(context.Background(), responses.ResponseNewParams{
+		Model: openai.ChatModelGPT4_1Mini,
+		Input: responses.ResponseNewParamsInputUnion{
+			OfString: openai.String("Say hello from Azure managed identity workload identity federation."),
+		},
+	})
+	if err != nil {
+		log.Fatal(err)
+	}
+
+	fmt.Println(response.OutputText())
+}
+```
+
+```java
+import com.fasterxml.jackson.databind.JsonNode;
+import com.fasterxml.jackson.databind.json.JsonMapper;
+import com.openai.auth.SubjectTokenProvider;
+import com.openai.auth.SubjectTokenType;
+import com.openai.auth.WorkloadIdentity;
+import com.openai.client.OpenAIClient;
+import com.openai.client.okhttp.OpenAIOkHttpClient;
+import com.openai.core.http.HttpClient;
+import com.openai.errors.SubjectTokenProviderException;
+import com.openai.models.ChatModel;
+import com.openai.models.responses.ResponseCreateParams;
+import java.net.URI;
+import java.net.URLEncoder;
+import java.net.http.HttpRequest;
+import java.net.http.HttpResponse;
+import java.nio.charset.StandardCharsets;
+import java.util.concurrent.CompletableFuture;
+
+public final class AzureManagedIdentityWorkloadIdentityExample {
+    private static final String IMDS_ENDPOINT =
+            "http://169.254.169.254/metadata/identity/oauth2/token";
+
+    private AzureManagedIdentityWorkloadIdentityExample() {}
+
+    static final class AzureManagedIdentityTokenProvider implements SubjectTokenProvider {
+        private final String resource;
+
+        AzureManagedIdentityTokenProvider(String resource) {
+            this.resource = resource;
+        }
+
+        @Override
+        public SubjectTokenType tokenType() {
+            return SubjectTokenType.JWT;
+        }
+
+        @Override
+        public String getToken(HttpClient httpClient, JsonMapper jsonMapper) {
+            try {
+                String query = "api-version=2018-02-01&resource="
+                        + URLEncoder.encode(resource, StandardCharsets.UTF_8);
+                String clientId = System.getenv("AZURE_CLIENT_ID");
+                if (clientId != null && !clientId.isEmpty()) {
+                    query += "&client_id="
+                            + URLEncoder.encode(clientId, StandardCharsets.UTF_8);
+                }
+
+                HttpRequest request = HttpRequest.newBuilder()
+                        .uri(URI.create(IMDS_ENDPOINT + "?" + query))
+                        .header("Metadata", "true")
+                        .GET()
+                        .build();
+
+                HttpResponse<String> response = java.net.http.HttpClient.newHttpClient()
+                        .send(request, HttpResponse.BodyHandlers.ofString());
+                if (response.statusCode() < 200 || response.statusCode() >= 300) {
+                    throw new SubjectTokenProviderException(
+                            "azure-managed-identity",
+                            "Azure IMDS token request failed with status "
+                                    + response.statusCode(),
+                            null);
+                }
+
+                JsonNode body = jsonMapper.readTree(response.body());
+                String token = body.path("access_token").asText();
+                if (token.isEmpty()) {
+                    throw new SubjectTokenProviderException(
+                            "azure-managed-identity",
+                            "Azure IMDS did not return an access token",
+                            null);
+                }
+
+                return token;
+            } catch (SubjectTokenProviderException e) {
+                throw e;
+            } catch (Exception e) {
+                throw new SubjectTokenProviderException(
+                        "azure-managed-identity",
+                        "failed to request Azure managed identity token",
+                        e);
+            }
+        }
+
+        @Override
+        public CompletableFuture<String> getTokenAsync(
+                HttpClient httpClient, JsonMapper jsonMapper) {
+            return CompletableFuture.supplyAsync(() -> getToken(httpClient, jsonMapper));
+        }
+    }
+
+    public static void main(String[] args) {
+        WorkloadIdentity workloadIdentity = WorkloadIdentity.builder()
+                .identityProviderId(System.getenv("OPENAI_IDENTITY_PROVIDER_ID"))
+                .serviceAccountId(System.getenv("OPENAI_SERVICE_ACCOUNT_ID"))
+                .provider(new AzureManagedIdentityTokenProvider(
+                        System.getenv("OPENAI_WIF_AUDIENCE")))
+                .build();
+
+        OpenAIClient client = OpenAIOkHttpClient.builder()
+                .workloadIdentity(workloadIdentity)
+                .build();
+
+        ResponseCreateParams params = ResponseCreateParams.builder()
+                .model(ChatModel.GPT_4_1_MINI)
+                .input("Say hello from Azure managed identity workload identity federation.")
+                .build();
+
+        client.responses().create(params).output().stream()
+                .flatMap(item -> item.message().stream())
+                .flatMap(message -> message.content().stream())
+                .flatMap(content -> content.outputText().stream())
+                .forEach(outputText -> System.out.println(outputText.text()));
+    }
+}
+```
+
+```ruby
+require "json"
+require "net/http"
+require "openai"
+require "uri"
+
+class AzureManagedIdentityTokenProvider
+  include OpenAI::Auth::SubjectTokenProvider
+
+  IMDS_ENDPOINT = "http://169.254.169.254/metadata/identity/oauth2/token"
+
+  def initialize(resource:)
+    @resource = resource
+  end
+
+  def token_type
+    OpenAI::Auth::TokenType::JWT
+  end
+
+  def get_token
+    uri = URI(IMDS_ENDPOINT)
+    params = {
+      "api-version" => "2018-02-01",
+      "resource" => @resource
+    }
+    params["client_id"] = ENV["AZURE_CLIENT_ID"] if ENV["AZURE_CLIENT_ID"]
+    uri.query = URI.encode_www_form(params)
+
+    request = Net::HTTP::Get.new(uri)
+    request["Metadata"] = "true"
+
+    response = Net::HTTP.start(uri.hostname, uri.port, read_timeout: 10) do |http|
+      http.request(request)
+    end
+
+    unless response.is_a?(Net::HTTPSuccess)
+      raise OpenAI::Errors::SubjectTokenProviderError.new(
+        message: "Azure IMDS token request failed with status #{response.code}",
+        provider: "azure-managed-identity"
+      )
+    end
+
+    token = JSON.parse(response.body).fetch("access_token", "")
+    if token.empty?
+      raise OpenAI::Errors::SubjectTokenProviderError.new(
+        message: "Azure IMDS did not return an access token",
+        provider: "azure-managed-identity"
+      )
+    end
+    token
+  rescue JSON::ParserError, SystemCallError => e
+    raise OpenAI::Errors::SubjectTokenProviderError.new(
+      message: "Failed to request Azure managed identity token: #{e.message}",
+      provider: "azure-managed-identity",
+      cause: e
+    )
+  end
+end
+
+provider = AzureManagedIdentityTokenProvider.new(
+  resource: ENV.fetch("OPENAI_WIF_AUDIENCE")
+)
+
+workload_identity = OpenAI::Auth::WorkloadIdentity.new(
+  identity_provider_id: ENV.fetch("OPENAI_IDENTITY_PROVIDER_ID"),
+  service_account_id: ENV.fetch("OPENAI_SERVICE_ACCOUNT_ID"),
+  provider: provider
+)
+
+client = OpenAI::Client.new(workload_identity: workload_identity)
+
+response = client.responses.create(
+  model: "gpt-5.4-mini",
+  input: "Say hello from Azure managed identity workload identity federation."
+)
+
+puts(response.output_text)
+```
+
+
+  </div>
 
   <div data-content-switcher-pane data-value="aks" hidden>
 
@@ -271,7 +704,298 @@ Use the mounted token path, such as `/var/run/secrets/tokens/token`, as the subj
 
 The following examples initialize an OpenAI client with a custom subject token provider. The provider reads the projected AKS service account token from the mounted file path and uses it as the subject token for workload identity federation.
 
-</div>
+Authenticate from an AKS projected service account token
+
+```typescript
+import { readFile } from "node:fs/promises";
+import OpenAI from "openai";
+import type { SubjectTokenProvider } from "openai/auth";
+
+const tokenPath = "/var/run/secrets/tokens/token";
+const identityProviderId = process.env.OPENAI_IDENTITY_PROVIDER_ID;
+const serviceAccountId = process.env.OPENAI_SERVICE_ACCOUNT_ID;
+
+if (!identityProviderId || !serviceAccountId) {
+  throw new Error("Set OPENAI_IDENTITY_PROVIDER_ID and OPENAI_SERVICE_ACCOUNT_ID");
+}
+
+function mountedAksServiceAccountTokenProvider(path: string): SubjectTokenProvider {
+  return {
+    tokenType: "jwt",
+    getToken: async () => {
+      const token = (await readFile(path, "utf8")).trim();
+      if (!token) {
+        throw new Error("The mounted AKS service account token file is empty.");
+      }
+      return token;
+    },
+  };
+}
+
+const client = new OpenAI({
+  workloadIdentity: {
+    identityProviderId,
+    serviceAccountId,
+    provider: mountedAksServiceAccountTokenProvider(tokenPath),
+  },
+});
+
+const response = await client.responses.create({
+  model: "gpt-5.4-mini",
+  input: "Say hello from AKS workload identity federation.",
+});
+
+console.log(response.output_text);
+```
+
+```python
+import os
+from pathlib import Path
+
+from openai import OpenAI
+from openai.auth import SubjectTokenProvider
+
+TOKEN_PATH = "/var/run/secrets/tokens/token"
+
+
+def mounted_aks_service_account_token_provider(token_path: str) -> SubjectTokenProvider:
+    def get_token() -> str:
+        token = Path(token_path).read_text().strip()
+        if not token:
+            raise RuntimeError("The mounted AKS service account token file is empty.")
+        return token
+
+    return {"token_type": "jwt", "get_token": get_token}
+
+
+client = OpenAI(
+    workload_identity={
+        "identity_provider_id": os.environ["OPENAI_IDENTITY_PROVIDER_ID"],
+        "service_account_id": os.environ["OPENAI_SERVICE_ACCOUNT_ID"],
+        "provider": mounted_aks_service_account_token_provider(TOKEN_PATH),
+    },
+)
+
+response = client.responses.create(
+    model="gpt-5.4-mini",
+    input="Say hello from AKS workload identity federation.",
+)
+
+print(response.output_text)
+```
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"log"
+	"os"
+	"strings"
+
+	"github.com/openai/openai-go/v3"
+	"github.com/openai/openai-go/v3/auth"
+	"github.com/openai/openai-go/v3/option"
+	"github.com/openai/openai-go/v3/responses"
+)
+
+const tokenPath = "/var/run/secrets/tokens/token"
+
+type mountedAksServiceAccountTokenProvider struct {
+	path string
+}
+
+func (p mountedAksServiceAccountTokenProvider) TokenType() auth.SubjectTokenType {
+	return auth.SubjectTokenTypeJWT
+}
+
+func (p mountedAksServiceAccountTokenProvider) GetToken(_ context.Context, _ auth.HTTPDoer) (string, error) {
+	data, err := os.ReadFile(p.path)
+	if err != nil {
+		return "", &auth.SubjectTokenProviderError{
+			Provider: "azure-aks",
+			Message:  "failed to read mounted AKS service account token",
+			Cause:    err,
+		}
+	}
+
+	token := strings.TrimSpace(string(data))
+	if token == "" {
+		return "", &auth.SubjectTokenProviderError{
+			Provider: "azure-aks",
+			Message:  "mounted AKS service account token is empty",
+		}
+	}
+
+	return token, nil
+}
+
+func main() {
+	client := openai.NewClient(
+		option.WithWorkloadIdentity(auth.WorkloadIdentity{
+			IdentityProviderID: os.Getenv("OPENAI_IDENTITY_PROVIDER_ID"),
+			ServiceAccountID:   os.Getenv("OPENAI_SERVICE_ACCOUNT_ID"),
+			Provider: mountedAksServiceAccountTokenProvider{
+				path: tokenPath,
+			},
+		}),
+	)
+
+	response, err := client.Responses.New(context.Background(), responses.ResponseNewParams{
+		Model: openai.ChatModelGPT4_1Mini,
+		Input: responses.ResponseNewParamsInputUnion{
+			OfString: openai.String("Say hello from AKS workload identity federation."),
+		},
+	})
+	if err != nil {
+		log.Fatal(err)
+	}
+
+	fmt.Println(response.OutputText())
+}
+```
+
+```java
+import com.fasterxml.jackson.databind.json.JsonMapper;
+import com.openai.auth.SubjectTokenProvider;
+import com.openai.auth.SubjectTokenType;
+import com.openai.auth.WorkloadIdentity;
+import com.openai.client.OpenAIClient;
+import com.openai.client.okhttp.OpenAIOkHttpClient;
+import com.openai.core.http.HttpClient;
+import com.openai.errors.SubjectTokenProviderException;
+import com.openai.models.ChatModel;
+import com.openai.models.responses.ResponseCreateParams;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.util.concurrent.CompletableFuture;
+
+public final class AzureAksWorkloadIdentityExample {
+    private static final String TOKEN_PATH = "/var/run/secrets/tokens/token";
+
+    private AzureAksWorkloadIdentityExample() {}
+
+    static final class MountedAksServiceAccountTokenProvider implements SubjectTokenProvider {
+        private final Path tokenPath;
+
+        MountedAksServiceAccountTokenProvider(String tokenPath) {
+            this.tokenPath = Path.of(tokenPath);
+        }
+
+        @Override
+        public SubjectTokenType tokenType() {
+            return SubjectTokenType.JWT;
+        }
+
+        @Override
+        public String getToken(HttpClient httpClient, JsonMapper jsonMapper) {
+            String token;
+            try {
+                token = Files.readString(tokenPath).trim();
+            } catch (Exception e) {
+                throw new SubjectTokenProviderException(
+                        "azure-aks",
+                        "failed to read mounted AKS service account token",
+                        e);
+            }
+
+            if (token.isEmpty()) {
+                throw new SubjectTokenProviderException(
+                        "azure-aks",
+                        "mounted AKS service account token is empty",
+                        null);
+            }
+
+            return token;
+        }
+
+        @Override
+        public CompletableFuture<String> getTokenAsync(
+                HttpClient httpClient, JsonMapper jsonMapper) {
+            return CompletableFuture.supplyAsync(() -> getToken(httpClient, jsonMapper));
+        }
+    }
+
+    public static void main(String[] args) {
+        WorkloadIdentity workloadIdentity = WorkloadIdentity.builder()
+                .identityProviderId(System.getenv("OPENAI_IDENTITY_PROVIDER_ID"))
+                .serviceAccountId(System.getenv("OPENAI_SERVICE_ACCOUNT_ID"))
+                .provider(new MountedAksServiceAccountTokenProvider(TOKEN_PATH))
+                .build();
+
+        OpenAIClient client = OpenAIOkHttpClient.builder()
+                .workloadIdentity(workloadIdentity)
+                .build();
+
+        ResponseCreateParams params = ResponseCreateParams.builder()
+                .model(ChatModel.GPT_4_1_MINI)
+                .input("Say hello from AKS workload identity federation.")
+                .build();
+
+        client.responses().create(params).output().stream()
+                .flatMap(item -> item.message().stream())
+                .flatMap(message -> message.content().stream())
+                .flatMap(content -> content.outputText().stream())
+                .forEach(outputText -> System.out.println(outputText.text()));
+    }
+}
+```
+
+```ruby
+require "openai"
+
+TOKEN_PATH = "/var/run/secrets/tokens/token"
+
+class MountedAksServiceAccountTokenProvider
+  include OpenAI::Auth::SubjectTokenProvider
+
+  def initialize(token_path:)
+    @token_path = token_path
+  end
+
+  def token_type
+    OpenAI::Auth::TokenType::JWT
+  end
+
+  def get_token
+    token = File.read(@token_path).strip
+    if token.empty?
+      raise OpenAI::Errors::SubjectTokenProviderError.new(
+        message: "Mounted AKS service account token is empty",
+        provider: "azure-aks"
+      )
+    end
+    token
+  rescue SystemCallError => e
+    raise OpenAI::Errors::SubjectTokenProviderError.new(
+      message: "Failed to read mounted AKS service account token: #{e.message}",
+      provider: "azure-aks",
+      cause: e
+    )
+  end
+end
+
+provider = MountedAksServiceAccountTokenProvider.new(token_path: TOKEN_PATH)
+
+workload_identity = OpenAI::Auth::WorkloadIdentity.new(
+  identity_provider_id: ENV.fetch("OPENAI_IDENTITY_PROVIDER_ID"),
+  service_account_id: ENV.fetch("OPENAI_SERVICE_ACCOUNT_ID"),
+  provider: provider
+)
+
+client = OpenAI::Client.new(workload_identity: workload_identity)
+
+response = client.responses.create(
+  model: "gpt-5.4-mini",
+  input: "Say hello from AKS workload identity federation."
+)
+
+puts(response.output_text)
+```
+
+
+  </div>
 
 
 

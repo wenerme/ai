@@ -62,7 +62,10 @@ Anthropic パートナーノードは、Anthropic 公開 API と同じ USD ベ�
 | :---------------------------- | :----------------------------------------- | :----------- | :-------- |
 | Bria Image Edit              | endpoint: v2/image/edit, model: fibo      | 8.44 / 実行  | Image    |
 | Bria Image Remove Background | endpoint: v2/image/edit/remove_background | 3.8 / 実行   | Image    |
-| Bria Video Remove Background | endpoint: v2/video/edit/remove_background | 29.54 / 秒 | Video    |
+| Bria Video Remove Background | endpoint: v2/video/edit/remove_background | 0.89 / 秒 | Video    |
+| Bria Video Green Screen     | endpoint: v2/video/edit/green_screen     | 0.89 / 秒 | Video    |
+| Bria Video Replace Background | endpoint: v2/video/edit/replace_background | 0.89 / 秒 | Video    |
+| Bria Transparent Video Background | endpoint: v2/video/edit/remove_background | 0.89 / 秒 | Video    |
 
 ## ByteDance
 
@@ -684,7 +687,20 @@ UI では品質（`low` / `medium` / `high`）ごとに概算の **米ドルレ�
 
 | 製品名 | 構成 | クレジット | カテゴリ |
 | :--- | :--- | :--- | :--- |
-| Recraft All Products | NA            | 0.21 / 実行 | Image    |
+| Recraft Create Style      | endpoint: v2/style/create                                       | 8.44 / 回   | Image    |
+| Recraft Text to Image      | endpoint: v2/auto/text-to-image                                   | 8.44 / 回   | Image    |
+| Recraft Image to Image     | endpoint: v2/auto/image-to-image                                 | 8.44 / 回   | Image    |
+| Recraft Inpainting         | endpoint: v2/auto/inpainting                                    | 8.44 / 回   | Image    |
+| Recraft Text to Vector     | endpoint: v2/auto/text-to-vector                                 | 16.88 / 回  | Image    |
+| Recraft Vectorize Image    | endpoint: v2/auto/vectorize-image                                | 2.11 / 回   | Image    |
+| Recraft Replace Background | endpoint: v2/image/replace-background                            | 8.44 / 回   | Image    |
+| Recraft Remove Background  | endpoint: v2/image/remove-background                             | 2.11 / 回   | Image    |
+| Recraft Crisp Upscale      | endpoint: v2/image/crisp-upscale                                 | 0.84 / 回   | Image    |
+| Recraft Creative Upscale   | endpoint: v2/image/creative-upscale                              | 52.75 / 回  | Image    |
+| Recraft V4 Text to Image   | model: recraftv4                                                 | 8.44 / 回   | Image    |
+| Recraft V4 Text to Image   | model: recraftv4_pro                                             | 52.75 / 回  | Image    |
+| Recraft V4 Text to Vector  | model: recraftv4                                                 | 16.88 / 回  | Image    |
+| Recraft V4 Text to Vector  | model: recraftv4_pro                                             | 63.30 / 回  | Image    |
 
 ## Reve
 
@@ -721,7 +737,8 @@ UI では品質（`low` / `medium` / `high`）ごとに概算の **米ドルレ�
 | :--- | :--- | :--- | :--- |
 | prod-v1-Runway Video Generation Product | model: gen3a_turbo | 15.09 / 秒 | Video    |
 | prod-v1-Runway Video Generation Product | model: gen4_turbo  | 10.55 / 秒 | Video    |
-| RunwayML Image Generation Product       | model: gen4_image  | 24.14 / 実行 | Image    |
+| RunwayML Image Generation Product       | model: gen4_image     | 24.14 / 回   | Image    |
+| Runway First & Last Frame Generation Product | model: gen4_turbo | 15.09 / 秒 | Video    |
 
 ## Sonilo
 

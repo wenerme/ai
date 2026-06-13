@@ -73,10 +73,181 @@ Start with hosted tool search if the candidate tools are already known when
 
 Hosted tool search is the simplest path when you already know the full inventory of [functions](https://developers.openai.com/api/docs/guides/function-calling#defining-functions), [namespaces](https://developers.openai.com/api/docs/guides/function-calling#defining-namespaces), or [MCP servers](https://developers.openai.com/api/docs/guides/tools-connectors-mcp) you want the model to search. You declare them up front, add `{"type": "tool_search"}`, and let the API decide what to load.
 
+Configure hosted tool search
+
+```python
+from openai import OpenAI
+
+client = OpenAI()
+
+crm_namespace = {
+    "type": "namespace",
+    "name": "crm",
+    "description": "CRM tools for customer lookup and order management.",
+    "tools": [
+        {
+            "type": "function",
+            "name": "get_customer_profile",
+            "description": "Fetch a customer profile by customer ID.",
+            "parameters": {
+                "type": "object",
+                "properties": {
+                    "customer_id": {"type": "string"},
+                },
+                "required": ["customer_id"],
+                "additionalProperties": False,
+            },
+        },
+        {
+            "type": "function",
+            "name": "list_open_orders",
+            "description": "List open orders for a customer ID.",
+            # highlight-start:subtle
+            "defer_loading": True,
+            # highlight-end
+            "parameters": {
+                "type": "object",
+                "properties": {
+                    "customer_id": {"type": "string"},
+                },
+                "required": ["customer_id"],
+                "additionalProperties": False,
+            },
+        },
+    ],
+}
+
+response = client.responses.create(
+    model="gpt-5.5",
+    input="List open orders for customer CUST-12345.",
+    tools=[
+        crm_namespace,
+        # highlight-start:subtle
+        {"type": "tool_search"},
+        # highlight-end
+    ],
+    parallel_tool_calls=False,
+)
+
+print(response.output)
+```
+
+```javascript
+import OpenAI from "openai";
+
+const client = new OpenAI();
+
+const crmNamespace = {
+  type: "namespace",
+  name: "crm",
+  description: "CRM tools for customer lookup and order management.",
+  tools: [
+    {
+      type: "function",
+      name: "get_customer_profile",
+      description: "Fetch a customer profile by customer ID.",
+      parameters: {
+        type: "object",
+        properties: {
+          customer_id: { type: "string" },
+        },
+        required: ["customer_id"],
+        additionalProperties: false,
+      },
+    },
+    {
+      type: "function",
+      name: "list_open_orders",
+      description: "List open orders for a customer ID.",
+      // highlight-start:subtle
+      defer_loading: true,
+      // highlight-end
+      parameters: {
+        type: "object",
+        properties: {
+          customer_id: { type: "string" },
+        },
+        required: ["customer_id"],
+        additionalProperties: false,
+      },
+    },
+  ],
+};
+
+const response = await client.responses.create({
+  model: "gpt-5.5",
+  input: "List open orders for customer CUST-12345.",
+  // highlight-start:subtle
+  tools: [crmNamespace, { type: "tool_search" }],
+  // highlight-end
+  parallel_tool_calls: false,
+});
+
+console.log(response.output);
+```
+
+
 If the model decides it needs a deferred tool, the response includes two additional output items before the eventual function call:
 
 - `tool_search_call`, which records the hosted search step.
 - `tool_search_output`, which contains the loaded subset that becomes callable.
+
+Hosted tool search response
+
+```json
+[
+  {
+    // highlight-start:subtle
+    "type": "tool_search_call",
+    // highlight-end
+    "execution": "server",
+    "call_id": null,
+    "status": "completed",
+    "arguments": {
+      "paths": ["crm"]
+    }
+  },
+  {
+    // highlight-start:subtle
+    "type": "tool_search_output",
+    // highlight-end
+    "execution": "server",
+    "call_id": null,
+    "status": "completed",
+    "tools": [
+      {
+        "type": "namespace",
+        "name": "crm",
+        "description": "CRM tools for customer lookup and order management.",
+        "tools": [
+          {
+            "type": "function",
+            "name": "list_open_orders",
+            "description": "List open orders for a customer ID.",
+            "defer_loading": true,
+            "parameters": {
+              "type": "object",
+              "properties": {
+                "customer_id": { "type": "string" }
+              },
+              "required": ["customer_id"],
+              "additionalProperties": false
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "type": "function_call",
+    "name": "list_open_orders",
+    "namespace": "crm",
+    "call_id": "call_abc123",
+    "arguments": "{\"customer_id\":\"CUST-12345\"}"
+  }
+]
+```
+
 
 In hosted mode, `execution` is set to `server` and `call_id` is set to `null`.
 
@@ -88,11 +259,216 @@ Client-executed tool search gives your application full control over how tool di
 
 Configure the `tool_search` tool with `execution: "client"` and a schema for the search arguments your application expects:
 
+Configure client-executed tool search
+
+```python
+from openai import OpenAI
+
+client = OpenAI()
+
+first_response = client.responses.create(
+    model="gpt-5.5",
+    input="Find the shipping ETA tool first, then use it for order_42.",
+    tools=[
+        {
+            "type": "tool_search",
+            # highlight-start:subtle
+            "execution": "client",
+            # highlight-end
+            "description": "Find the project-specific tools needed to continue the task.",
+            "parameters": {
+                "type": "object",
+                "properties": {
+                    "goal": {"type": "string"},
+                },
+                "required": ["goal"],
+                "additionalProperties": False,
+            },
+        }
+    ],
+    parallel_tool_calls=False,
+)
+
+search_call = next(
+    item for item in first_response.output if item.type == "tool_search_call"
+)
+
+loaded_tools = [
+    {
+        "type": "function",
+        "name": "get_shipping_eta",
+        "description": "Look up shipping ETA details for an order.",
+        "defer_loading": True,
+        "parameters": {
+            "type": "object",
+            "properties": {
+                "order_id": {"type": "string"},
+            },
+            "required": ["order_id"],
+            "additionalProperties": False,
+        },
+    }
+]
+
+second_response = client.responses.create(
+    model="gpt-5.5",
+    input=[
+        *first_response.output,
+        {
+            # highlight-start:subtle
+            "type": "tool_search_output",
+            # highlight-end
+            "execution": "client",
+            "call_id": search_call.call_id,
+            "status": "completed",
+            # highlight-start:subtle
+            "tools": loaded_tools,
+            # highlight-end
+        },
+    ],
+)
+
+print(second_response.output)
+```
+
+```javascript
+import OpenAI from "openai";
+
+const client = new OpenAI();
+
+const firstResponse = await client.responses.create({
+  model: "gpt-5.5",
+  input: "Find the shipping ETA tool first, then use it for order_42.",
+  tools: [
+    {
+      type: "tool_search",
+      // highlight-start:subtle
+      execution: "client",
+      // highlight-end
+      description: "Find the project-specific tools needed to continue the task.",
+      parameters: {
+        type: "object",
+        properties: {
+          goal: { type: "string" },
+        },
+        required: ["goal"],
+        additionalProperties: false,
+      },
+    },
+  ],
+  parallel_tool_calls: false,
+});
+
+const searchCall = firstResponse.output.find(
+  (item) => item.type === "tool_search_call",
+);
+
+const loadedTools = [
+  {
+    type: "function",
+    name: "get_shipping_eta",
+    description: "Look up shipping ETA details for an order.",
+    defer_loading: true,
+    parameters: {
+      type: "object",
+      properties: {
+        order_id: { type: "string" },
+      },
+      required: ["order_id"],
+      additionalProperties: false,
+    },
+  },
+];
+
+const secondResponse = await client.responses.create({
+  model: "gpt-5.5",
+  input: [
+    ...firstResponse.output,
+    {
+      // highlight-start:subtle
+      type: "tool_search_output",
+      // highlight-end
+      execution: "client",
+      call_id: searchCall.call_id,
+      status: "completed",
+      // highlight-start:subtle
+      tools: loadedTools,
+      // highlight-end
+    },
+  ],
+});
+
+console.log(secondResponse.output);
+```
+
+
 On the first turn, the model emits a `tool_search_call` and stops there:
+
+Client tool search call
+
+```json
+[
+  {
+    "type": "tool_search_call",
+    "execution": "client",
+    "call_id": "call_abc123",
+    "status": "completed",
+    "arguments": {
+      "goal": "Find the shipping ETA tool for order_42."
+    }
+  }
+]
+```
+
 
 Your application then performs the search and returns a `tool_search_output` with the tools it wants to load:
 
+Return tool_search_output
+
+```json
+[
+  {
+    "type": "tool_search_output",
+    "execution": "client",
+    "call_id": "call_abc123",
+    "status": "completed",
+    "tools": [
+      {
+        "type": "function",
+        "name": "get_shipping_eta",
+        "description": "Look up shipping ETA details for an order.",
+        "defer_loading": true,
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "order_id": { "type": "string" }
+          },
+          "required": ["order_id"],
+          "additionalProperties": false
+        }
+      }
+    ]
+  }
+]
+```
+
+
 On the next turn, the loaded tool is callable like a normal function:
+
+Loaded function call
+
+```json
+[
+  {
+    "type": "function_call",
+    "name": "get_shipping_eta",
+    "namespace": "get_shipping_eta",
+    "call_id": "call_xyz456",
+    "arguments": "{\"order_id\":\"order_42\"}"
+  }
+]
+```
+
 
 In client mode, `execution` is set to `client` and `call_id` is defined. Echo the same `call_id` from the `tool_search_call` in your `tool_search_output`.
 

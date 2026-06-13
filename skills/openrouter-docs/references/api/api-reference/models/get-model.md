@@ -244,6 +244,8 @@ components:
           items:
             $ref: '#/components/schemas/DABenchmarkEntry'
           description: Design Arena ELO rankings across arena+category pairs.
+      required:
+        - design_arena
       description: >-
         Third-party benchmark rankings for this model. Omitted when no benchmark
         data is available.

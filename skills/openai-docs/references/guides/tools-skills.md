@@ -61,6 +61,28 @@ To mount skills in a hosted shell environment, attach them via `tools[].environm
 
 Use skills in hosted shell
 
+```bash
+curl -L 'https://api.openai.com/v1/responses' \
+  -H "Content-Type: application/json" \
+  -H "Authorization: Bearer $OPENAI_API_KEY" \
+  -d '{
+    "model": "gpt-5.5",
+    "tools": [
+      {
+        "type": "shell",
+        "environment": {
+          "type": "container_auto",
+          "skills": [
+            { "type": "skill_reference", "skill_id": "<skill_id>" },
+            { "type": "skill_reference", "skill_id": "<skill_id>", "version": 2 }
+          ]
+        }
+      }
+    ],
+    "input": "Use the skills to add 144 and 377, then compute triangle area with base 9 height 13."
+  }'
+```
+
 ```javascript
 import OpenAI from "openai";
 
@@ -126,6 +148,31 @@ Skills also work with local shell mode, but local shell and hosted shell do not 
 Use the [Shell guide](https://developers.openai.com/api/docs/guides/tools-shell) for local shell execution details.
 
 Use skills in local shell mode
+
+```bash
+curl -L 'https://api.openai.com/v1/responses' \
+  -H "Content-Type: application/json" \
+  -H "Authorization: Bearer $OPENAI_API_KEY" \
+  -d '{
+    "model": "gpt-5.5",
+    "tools": [
+      {
+        "type": "shell",
+        "environment": {
+          "type": "local",
+          "skills": [
+            {
+              "name": "csv-insights",
+              "description": "Summarize CSV files and produce a markdown report.",
+              "path": "<path-to-skill-folder>"
+            }
+          ]
+        }
+      }
+    ],
+    "input": "Use the csv-insights skill and run locally to summarize today\'s CSV reports in this repo."
+  }'
+```
 
 ```javascript
 import OpenAI from "openai";

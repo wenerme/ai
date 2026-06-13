@@ -258,10 +258,10 @@ ControlNet関連のワークフローを初めて使用する場合、制御用�
 **InpaintモデルのControlNet使用手順**
 [Inpaintワークフロー]
 
-Inpaintモデルでは、[マスクエディター](/interface/maskeditor)を使用してマスクを描画し、それを入力制御条件として使用します。
+Inpaintモデルでは、[マスクエディター](/ja/interface/maskeditor)を使用してマスクを描画し、それを入力制御条件として使用します。
 
 1. `ModelPatchLoader`が`qwen_image_inpaint_diffsynth_controlnet.safetensors`を正しく読み込んでいることを確認してください
-2. 画像をアップロードし、[マスクエディター](/interface/maskeditor)でマスクを描画します。対応する`Load Image`ノードの`mask`出力を`QwenImageDiffsynthControlnet`の`mask`入力に接続することで、適切なマスクが読み込まれることを保証してください
+2. 画像をアップロードし、[マスクエディター](/ja/interface/maskeditor)でマスクを描画します。対応する`Load Image`ノードの`mask`出力を`QwenImageDiffsynthControlnet`の`mask`入力に接続することで、適切なマスクが読み込まれることを保証してください
 3. `Ctrl-B`ショートカットを使用して、ワークフロー内の元のCannyノードをバイパスモードに設定し、Cannyノードによる処理を無効化します
 4. `CLIP Text Encoder`で、マスク領域を変更したい内容を入力してください
 5. 必要に応じて、`QwenImageDiffsynthControlnet`ノードの`strength`を調整して、対応する制御強度を制御できます

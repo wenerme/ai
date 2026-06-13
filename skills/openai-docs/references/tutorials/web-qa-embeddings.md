@@ -79,6 +79,7 @@ class HyperlinkParser(HTMLParser):
             self.hyperlinks.append(attrs["href"])
 ```
 
+
 The next function takes a URL as an argument, opens the URL, and reads the HTML content. Then, it returns all the hyperlinks found on that page.
 
 ```python
@@ -106,6 +107,7 @@ def get_hyperlinks(url):
 
     return parser.hyperlinks
 ```
+
 
 The goal is to crawl through and index only the content that lives under the OpenAI domain. For this purpose, a function that calls the `get_hyperlinks` function but filters out any URLs that are not part of the specified domain is needed.
 
@@ -139,6 +141,7 @@ def get_domain_hyperlinks(local_domain, url):
     # Return the list of hyperlinks that are within the same domain
     return list(set(clean_links))
 ```
+
 
 The `crawl` function is the final step in the web scraping task setup. It keeps track of the visited URLs to avoid repeating the same page, which might be linked across multiple pages on a site. It also extracts the raw text from a page without the HTML tags, and writes the text content into a local .txt file specific to the page.
 
@@ -196,6 +199,7 @@ def crawl(url):
 crawl(full_url)
 ```
 
+
 The last line of the above example runs the crawler which goes through all the accessible links and turns those pages into text files. This will take a few minutes to run depending on the size and complexity of your site.
 
 ## Building an embeddings index
@@ -226,6 +230,7 @@ def remove_newlines(serie):
     serie = serie.str.replace('  ', ' ')
     return serie
 ```
+
 
 Converting the text to CSV requires looping through the text files in the text directory created earlier. After opening each file, remove the extra spacing and append the modified text to a list. Then, add the text with the new lines removed to an empty Pandas data frame and write the data frame to a CSV file.
 
@@ -259,6 +264,7 @@ df.to_csv('processed/scraped.csv')
 df.head()
 ```
 
+
 Tokenization is the next step after saving the raw text into a CSV file. This process splits the input text into tokens by breaking down the sentences and words. A visual demonstration of this can be seen by [checking out our Tokenizer](https://platform.openai.com/tokenizer) in the docs.
 
 > A helpful rule of thumb is that one token generally corresponds to ~4 characters of text for common English text. This translates to roughly ¾ of a word (so 100 tokens ~= 75 words).
@@ -281,6 +287,7 @@ df['n_tokens'] = df.text.apply(lambda x: len(tokenizer.encode(x)))
 df.n_tokens.hist()
 ```
 
+
 <div className="sandbox-preview">
   <div className="sandbox-screenshot">
     <img src="https://cdn.openai.com/API/docs/images/tutorials/web-qa/embeddings-initial-histrogram.png"
@@ -293,7 +300,7 @@ df.n_tokens.hist()
 
 The newest embeddings model can handle inputs with up to 8191 input tokens so most of the rows would not need any chunking, but this may not be the case for every subpage scraped so the next code chunk will split the longer lines into smaller chunks.
 
-```Python
+```python
 max_tokens = 500
 
 # Function to split the text into chunks of a maximum number of tokens
@@ -350,6 +357,7 @@ for row in df.iterrows():
         shortened.append( row[1]['text'] )
 ```
 
+
 Visualizing the updated histogram again can help to confirm if the rows were successfully split into shortened sections.
 
 ```python
@@ -357,6 +365,7 @@ df = pd.DataFrame(shortened, columns = ['text'])
 df['n_tokens'] = df.text.apply(lambda x: len(tokenizer.encode(x)))
 df.n_tokens.hist()
 ```
+
 
 <div className="sandbox-preview">
   <div className="sandbox-screenshot">
@@ -382,6 +391,7 @@ df['embeddings'] = df.text.apply(lambda x: client.embeddings.create(input=x, eng
 df.to_csv('processed/embeddings.csv')
 df.head()
 ```
+
 
 This should take about 3-5 minutes but after you will have your embeddings ready to use!
 
@@ -415,6 +425,7 @@ df['embeddings'] = df['embeddings'].apply(eval).apply(np.array)
 
 df.head()
 ```
+
 
 The question needs to be converted to an embedding with a simple function, now that the data is ready. This is important because the search with embeddings compares the vector of numbers (which was the conversion of the raw text) using cosine distance. The vectors are likely related and might be the answer to the question if they are close in cosine distance. The OpenAI python package has a built in `distances_from_embeddings` function which is useful here.
 
@@ -452,6 +463,7 @@ def create_context(
     # Return the context
     return "\n\n###\n\n".join(returns)
 ```
+
 
 The text was broken up into smaller sets of tokens, so looping through in ascending order and continuing to add the text is a critical step to ensure a full answer. The max_len can also be modified to something smaller, if more content than desired is returned.
 
@@ -504,6 +516,7 @@ def answer_question(
         return ""
 ```
 
+
 It is done! A working Q/A system that has the knowledge embedded from the OpenAI website is now ready. A few quick tests can be done to see the quality of the output:
 
 ```python
@@ -513,6 +526,7 @@ answer_question(df, question="What is our newest embeddings model?")
 
 answer_question(df, question="What is ChatGPT?")
 ```
+
 
 The responses will look something like the following:
 

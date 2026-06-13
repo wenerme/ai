@@ -127,6 +127,7 @@ df['ada_embedding'] = df.combined.apply(lambda x: get_embedding(x, model='text-e
 df.to_csv('output/embedded_1k_reviews.csv', index=False)
 ```
 
+
 To load the data from a saved file, you can run the following:
 
 ```python
@@ -135,6 +136,7 @@ import pandas as pd
 df = pd.read_csv('output/embedded_1k_reviews.csv')
 df['ada_embedding'] = df.ada_embedding.apply(eval).apply(np.array)
 ```
+
 
 Reducing embedding dimensions
 
@@ -172,6 +174,7 @@ norm_dim = normalize_l2(cut_dim)
 print(norm_dim)
 ```
 
+
 Dynamically changing the dimensions enables very flexible usage. For example, when using a vector data store that only supports embeddings up to 1024 dimensions long, developers can now still use our best embedding model `text-embedding-3-large` and specify a value of 1024 for the `dimensions` API parameter, which will shorten the embedding down from 3072 dimensions, trading off some accuracy in exchange for the smaller vector size.
 
 Question answering using embeddings-based search
@@ -205,6 +208,7 @@ response = client.chat.completions.create(
 print(response.choices[0].message.content)
 ```
 
+
 Text search using embeddings
 
 <p>
@@ -225,6 +229,7 @@ def search_reviews(df, product_description, n=3, pprint=True):
 
 res = search_reviews(df, 'delicious beans', n=3)
 ```
+
 
 Code search using embeddings
 
@@ -251,6 +256,7 @@ def search_functions(df, code_query, n=3, pprint=True, n_lines=7):
 
 res = search_functions(df, 'Completions API tests', n=3)
 ```
+
 
 Recommendations using embeddings
 
@@ -284,6 +290,7 @@ def recommendations_from_strings(
     indices_of_nearest_neighbors = indices_of_nearest_neighbors_from_distances(distances)
     return indices_of_nearest_neighbors
 ```
+
 
 Data visualization in 2D
 
@@ -327,6 +334,7 @@ plt.scatter(x, y, c=color_indices, cmap=colormap, alpha=0.3)
 plt.title("Amazon ratings visualized in language using t-SNE")
 ```
 
+
 Embedding as a text feature encoder for ML algorithms
 
 <p>
@@ -351,6 +359,7 @@ X_train, X_test, y_train, y_test = train_test_split(
 )
 ```
 
+
 #### Regression using the embedding features
 
 Embeddings present an elegant way of predicting a numerical value. In this example we predict the reviewer’s star rating, based on the text of their review. Because the semantic information contained within embeddings is high, the prediction is decent even with very few reviews.
@@ -364,6 +373,7 @@ rfr = RandomForestRegressor(n_estimators=100)
 rfr.fit(X_train, y_train)
 preds = rfr.predict(X_test)
 ```
+
 
 Classification using the embedding features
 
@@ -384,6 +394,7 @@ clf = RandomForestClassifier(n_estimators=100)
 clf.fit(X_train, y_train)
 preds = clf.predict(X_test)
 ```
+
 
 Zero-shot classification
 
@@ -409,6 +420,7 @@ def label_score(review_embedding, label_embeddings):
 prediction = 'positive' if label_score('Sample Review', label_embeddings) > 0 else 'negative'
 ```
 
+
 Obtaining user and product embeddings for cold-start recommendation
 
 <p>
@@ -424,6 +436,7 @@ We evaluate the usefulness of these embeddings on a separate test set, where we 
 user_embeddings = df.groupby('UserId').ada_embedding.apply(np.mean)
 prod_embeddings = df.groupby('ProductId').ada_embedding.apply(np.mean)
 ```
+
 
 Clustering
 
@@ -448,6 +461,7 @@ kmeans.fit(matrix)
 df['Cluster'] = kmeans.labels_
 ```
 
+
 ## FAQ
 
 ### How can I tell how many tokens a string has before I embed it?
@@ -467,6 +481,7 @@ def num_tokens_from_string(string: str, encoding_name: str) -> int:
 
 num_tokens_from_string("tiktoken is great!", "cl100k_base")
 ```
+
 
 For third-generation embedding models like `text-embedding-3-small`, use the `cl100k_base` encoding.
 

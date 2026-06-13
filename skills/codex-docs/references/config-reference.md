@@ -1521,6 +1521,18 @@ deployments, use `allowed_permission_profiles` with managed
         "Managed default permission profile. The profile must be allowed by `allowed_permission_profiles`. Set this explicitly for predictable behavior; if omitted, Codex defaults to `:workspace` only when both `:workspace` and `:read-only` are explicitly allowed.",
     },
     {
+      key: "enforce_residency",
+      type: "string",
+      description:
+        "Require Codex service traffic to use a supported data residency. Currently accepts `us`.",
+    },
+    {
+      key: "permissions",
+      type: "table",
+      description:
+        "Admin-defined permission profiles keyed by profile name. Uses the same profile fields as `config.toml`.",
+    },
+    {
       key: "permissions.<name>",
       type: "table",
       description:
@@ -1530,6 +1542,11 @@ deployments, use `allowed_permission_profiles` with managed
       key: "allowed_sandbox_modes",
       type: "array<string>",
       description: "Allowed values for `sandbox_mode`.",
+    },
+    {
+      key: "windows",
+      type: "table",
+      description: "Native Windows sandbox requirements.",
     },
     {
       key: "windows.allowed_sandbox_implementations",
@@ -1568,6 +1585,12 @@ deployments, use `allowed_permission_profiles` with managed
         "When `true`, Codex skips user, project, session, and plugin hooks while still allowing managed hooks from `requirements.toml` and other managed config layers.",
     },
     {
+      key: "allow_appshots",
+      type: "boolean",
+      description:
+        "Set to `false` to disable Appshots for managed users. If omitted, Appshots remain unconstrained by requirements and follow normal product availability.",
+    },
+    {
       key: "features.plugin_sharing",
       type: "boolean",
       description:
@@ -1586,6 +1609,12 @@ deployments, use `allowed_permission_profiles` with managed
         "Require a specific canonical feature key to stay enabled or disabled.",
     },
     {
+      key: "features.apps",
+      type: "boolean",
+      description:
+        "Pin Apps integration availability on or off for managed users.",
+    },
+    {
       key: "features.in_app_browser",
       type: "boolean",
       description:
@@ -1598,10 +1627,55 @@ deployments, use `allowed_permission_profiles` with managed
         "Set to `false` in `requirements.toml` to disable Browser Use and Browser Agent availability.",
     },
     {
+      key: "features.browser_use_external",
+      type: "boolean",
+      description:
+        "Set to `false` in `requirements.toml` to disable external-browser Browser Use availability.",
+    },
+    {
+      key: "features.browser_use_full_cdp_access",
+      type: "boolean",
+      description:
+        "Set to `false` in `requirements.toml` to prevent users from enabling full Chrome DevTools Protocol access in Browser Developer mode. If omitted, normal product availability applies.",
+    },
+    {
+      key: "features.fast_mode",
+      type: "boolean",
+      description:
+        "Pin the canonical `fast_mode` feature on or off for managed users.",
+    },
+    {
+      key: "features.guardian_approval",
+      type: "boolean",
+      description:
+        "Pin Guardian approval availability on or off for managed users.",
+    },
+    {
+      key: "features.memories",
+      type: "boolean",
+      description: "Pin Memories availability on or off for managed users.",
+    },
+    {
+      key: "features.multi_agent",
+      type: "boolean",
+      description: "Pin multi-agent availability on or off for managed users.",
+    },
+    {
+      key: "features.plugins",
+      type: "boolean",
+      description: "Pin plugin availability on or off for managed users.",
+    },
+    {
       key: "features.computer_use",
       type: "boolean",
       description:
         "Set to `false` in `requirements.toml` to disable Computer Use availability and related install or enablement flows.",
+    },
+    {
+      key: "features.workspace_dependencies",
+      type: "boolean",
+      description:
+        "Pin bundled workspace-dependency runtime availability on or off for managed users.",
     },
     {
       key: "computer_use",
@@ -1758,6 +1832,41 @@ deployments, use `allowed_permission_profiles` with managed
       type: "string",
       description:
         "Allow an MCP streamable HTTP server when its `mcp_servers.<id>.url` matches this URL.",
+    },
+    {
+      key: "plugins",
+      type: "table",
+      description:
+        "Plugin-specific MCP server allowlists keyed by plugin identifier.",
+    },
+    {
+      key: "plugins.<plugin>.mcp_servers.<server>.identity.command",
+      type: "string",
+      description:
+        "Allow a plugin's stdio MCP server when its configured command matches this value.",
+    },
+    {
+      key: "plugins.<plugin>.mcp_servers.<server>.identity.url",
+      type: "string",
+      description:
+        "Allow a plugin's streamable HTTP MCP server when its configured URL matches this value.",
+    },
+    {
+      key: "apps",
+      type: "table",
+      description:
+        "Managed app requirements keyed by app identifier. Requirements can disable an app or constrain approval behavior for individual tools.",
+    },
+    {
+      key: "apps.<id>.enabled",
+      type: "boolean",
+      description:
+        "Set to `false` to disable an app. A disabled requirement remains restrictive when multiple requirements sources are merged.",
+    },
+    {
+      key: "apps.<id>.tools.<tool>.approval_mode",
+      type: "auto | prompt | approve",
+      description: "Set the managed approval mode for one app tool.",
     },
     {
       key: "rules",

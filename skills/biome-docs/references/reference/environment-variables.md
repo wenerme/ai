@@ -5,6 +5,10 @@ description: A list of the environment variables available via Biome
 ---
 A list of the environment variables available via Biome.
 
+## `BIOME_DISTRIBUTION`
+
+ Override the detected distribution channel of Biome. Acceptable values: npm, homebrew or standalone
+
 ## `BIOME_LOG_PATH`
 
  The directory where the logs of the Biome Daemon are stored.

@@ -94,6 +94,7 @@ curl -X POST "https://api.openai.com/v1/realtime/calls/$CALL_ID/reject" \
   -d '{"status_code": 486}'
 ```
 
+
 If no status code is supplied the API uses `603 Decline` by default. A
 successful request responds with `200 OK` after OpenAI delivers the SIP
 response.
@@ -126,7 +127,7 @@ track progress. See [Webhooks and server-side controls](https://developers.opena
 for more information.
 
 ```javascript
-
+import WebSocket from "ws";
 
 const callId = "rtc_u1_9c6574da8b8a41a18da9308f4ad974ce";
 const ws = new WebSocket(`wss://api.openai.com/v1/realtime?call_id=${callId}`, {
@@ -144,6 +145,7 @@ ws.on("open", () => {
 });
 ```
 
+
 ## Redirect the call
 
 Transfer an active call using the
@@ -158,6 +160,7 @@ curl -X POST "https://api.openai.com/v1/realtime/calls/$CALL_ID/refer" \
   -d '{"target_uri": "tel:+14155550123"}'
 ```
 
+
 OpenAI returns `200 OK` once the REFER is relayed to your SIP provider. The
 downstream system handles the rest of the call flow for the caller.
 
@@ -171,6 +174,7 @@ terminate both SIP and WebRTC realtime sessions.
 curl -X POST "https://api.openai.com/v1/realtime/calls/$CALL_ID/hangup" \
   -H "Authorization: Bearer $OPENAI_API_KEY"
 ```
+
 
 The API responds with `200 OK` when it starts tearing down the call.
 

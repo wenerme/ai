@@ -32,6 +32,8 @@ Per-namespace analytics for Durable Objects are available in the Cloudflare dash
 
 You can optionally select a time window to query. This defaults to the last 24 hours.
 
+You can also filter the charts to a single Durable Object by entering its [ID](https://developers.cloudflare.com/durable-objects/api/id/) or [name](https://developers.cloudflare.com/durable-objects/api/id/#name) and selecting a match. Clear the filter to return to namespace-level metrics.
+
 ## View logs
 
 You can view Durable Object logs from the Cloudflare dashboard. Logs are aggregated by the script name and the Durable Object class name.
@@ -39,8 +41,8 @@ You can view Durable Object logs from the Cloudflare dashboard. Logs are aggrega
 To start using Durable Object logging:
 
 1. Enable Durable Object logging in the Wrangler configuration file of the Worker that defines your Durable Object class:  
-   * [  wrangler.jsonc ](#tab-panel-5856)  
-   * [  wrangler.toml ](#tab-panel-5857)  
+   * [  wrangler.jsonc ](#tab-panel-8234)  
+   * [  wrangler.toml ](#tab-panel-8235)  
 JSONC  
 ```  
 {  

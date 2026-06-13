@@ -14,6 +14,17 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 [ Subscribe to RSS ](https://developers.cloudflare.com/changelog/rss/ai-gateway.xml) 
 
+## 2026-06-12
+
+  
+**View the user agent of requests in AI Gateway logs**   
+
+AI Gateway logs now capture the user agent of the client that made each request, making it easier to identify which SDK, library, or application sent the traffic flowing through your gateway. For example, you can tell apart requests coming from `openai-python` versus a custom application or a Cloudflare Worker.
+
+The user agent appears alongside the other details in each log entry, and you can filter logs by user agent (equals, does not equal, or contains) in the dashboard.
+
+For more information, refer to [Logging](https://developers.cloudflare.com/ai-gateway/observability/logging/).
+
 ## 2026-06-05
 
   
@@ -479,7 +490,7 @@ curl -X POST https://gateway.ai.cloudflare.com/v1/ACCOUNT_TAG/GATEWAY/cerebras/c
   
 **AI Gateway Introduces New Worker Binding Methods**   
 
-We have released new [Workers bindings API methods](https://developers.cloudflare.com/ai-gateway/integrations/worker-binding-methods/), allowing you to connect Workers applications to AI Gateway directly. These methods simplify how Workers calls AI services behind your AI Gateway configurations, removing the need to use the REST API and manually authenticate.
+We have released new [Workers bindings API methods](https://developers.cloudflare.com/ai-gateway/usage/worker-binding-methods/), allowing you to connect Workers applications to AI Gateway directly. These methods simplify how Workers calls AI services behind your AI Gateway configurations, removing the need to use the REST API and manually authenticate.
 
 To add an AI binding to your Worker, include the following in your [Wrangler configuration file](https://developers.cloudflare.com/workers/wrangler/configuration/):
 

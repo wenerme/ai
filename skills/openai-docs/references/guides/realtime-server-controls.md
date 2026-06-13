@@ -22,6 +22,7 @@ const sdpResponse = await fetch(baseUrl, {
 });
 ```
 
+
 2. The fetch response will contain a `Location` header that has a unique call ID that can be used on the server to establish a WebSocket connection to that same Realtime session.
 
 ```javascript
@@ -31,11 +32,12 @@ const callId = location?.split("/").pop();
 console.log(callId);
 ```
 
+
 3. On a server, you can then [listen for events and configure the session](https://developers.openai.com/api/docs/guides/realtime-conversations) just as you would from a typical Realtime API WebSocket connection, using that call ID with the URL
    `wss://api.openai.com/v1/realtime?call_id=rtc_xxxxx`, as shown below:
 
 ```javascript
-
+import WebSocket from "ws";
 const callId = "rtc_u1_9c6574da8b8a41a18da9308f4ad974ce";
 
 // Connect to a WebSocket for the in-progress call
@@ -66,6 +68,7 @@ ws.on("message", function incoming(message) {
   console.log(JSON.parse(message.toString()));
 });
 ```
+
 
 In this way, you are able to add tools, monitor sessions, and carry out business logic on the server instead of needing to configure those actions on the client.
 

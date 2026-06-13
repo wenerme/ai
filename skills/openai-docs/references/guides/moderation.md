@@ -23,6 +23,58 @@ The model still generates normally. Review the moderation results before you sho
 
 Set `moderation.model` when you create a response:
 
+Generate a response with moderation scores
+
+```python
+from openai import OpenAI
+client = OpenAI()
+
+response = client.responses.create(
+    model="gpt-5.5",
+    input=[
+        {
+            "role": "user",
+            "content": (
+                "A user asks for instructions to make a harmful weapon. "
+                "Draft a brief refusal and offer a safer alternative."
+            ),
+        }
+    ],
+    moderation={"model": "omni-moderation-latest"},
+)
+
+input_moderation = response.moderation.input
+output_moderation = response.moderation.output
+
+print(input_moderation.flagged)
+print(output_moderation.flagged)
+```
+
+```javascript
+import OpenAI from "openai";
+
+const client = new OpenAI();
+
+const response = await client.responses.create({
+  model: "gpt-5.5",
+  input: [
+    {
+      role: "user",
+      content:
+        "A user asks for instructions to make a harmful weapon. Draft a brief refusal and offer a safer alternative.",
+    },
+  ],
+  moderation: { model: "omni-moderation-latest" },
+});
+
+const inputModeration = response.moderation.input;
+const outputModeration = response.moderation.output;
+
+console.log(inputModeration.flagged);
+console.log(outputModeration.flagged);
+```
+
+
 The Responses API returns an input `moderation_result` object at `response.moderation.input` and an output `moderation_result` object at `response.moderation.output`.
 
 

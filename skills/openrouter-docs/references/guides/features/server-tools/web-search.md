@@ -106,16 +106,16 @@ The web search tool accepts optional `parameters` to customize search behavior:
 }
 ```
 
-| Parameter             | Type      | Default | Description                                                                                                                                                                                                                                                                                                                                                                 |
-| --------------------- | --------- | ------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `engine`              | string    | `auto`  | Search engine to use: `auto`, `native`, `exa`, `firecrawl`, or `parallel`                                                                                                                                                                                                                                                                                                   |
-| `max_results`         | integer   | 5       | Maximum results per search call (1–25). Applies to Exa, Firecrawl, and Parallel engines; ignored with native provider search                                                                                                                                                                                                                                                |
-| `max_total_results`   | integer   | —       | Maximum total results across all search calls in a single request. Useful for controlling cost and context size in agentic loops                                                                                                                                                                                                                                            |
-| `search_context_size` | string    | —       | How much context to retrieve: `low`, `medium`, or `high`. For Exa, pins a fixed per-result character cap (5K/15K/30K); when omitted, Exa picks adaptively (\~2-4K per result). For Parallel, controls total characters across all results (defaults to `medium`). Ignored with native provider search and Firecrawl. Overridden by `max_characters` when both are set       |
-| `max_characters`      | integer   | —       | Exact maximum characters of content per result (1–100,000). Applies to Exa and Parallel engines; ignored with native provider search and Firecrawl. For Exa, caps highlight content per result. For Parallel, caps excerpt content per result (default 1,500 when omitted). When both `max_characters` and `search_context_size` are set, `max_characters` takes precedence |
-| `user_location`       | object    | —       | Approximate user location for location-biased results. Currently only supported by native provider search; ignored with Exa, Firecrawl, and Parallel (see below)                                                                                                                                                                                                            |
-| `allowed_domains`     | string\[] | —       | Limit results to these domains. Supported by Exa, Firecrawl, Parallel, and most native providers (see [domain filtering](#domain-filtering))                                                                                                                                                                                                                                |
-| `excluded_domains`    | string\[] | —       | Exclude results from these domains. Supported by Exa, Firecrawl, Parallel, and some native providers (see [domain filtering](#domain-filtering))                                                                                                                                                                                                                            |
+| Parameter             | Type      | Default | Description                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            |
+| --------------------- | --------- | ------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `engine`              | string    | `auto`  | Search engine to use: `auto`, `native`, `exa`, `firecrawl`, `parallel`, or `perplexity`                                                                                                                                                                                                                                                                                                                                                                                                                |
+| `max_results`         | integer   | 5       | Maximum results per search call (1–25). Applies to Exa, Firecrawl, Parallel, and Perplexity engines; ignored with native provider search                                                                                                                                                                                                                                                                                                                                                               |
+| `max_total_results`   | integer   | —       | Maximum total results across all search calls in a single request. Useful for controlling cost and context size in agentic loops                                                                                                                                                                                                                                                                                                                                                                       |
+| `search_context_size` | string    | —       | How much context to retrieve: `low`, `medium`, or `high`. For Exa, pins a fixed per-result character cap (5K/15K/30K); when omitted, Exa picks adaptively (\~2-4K per result). For Parallel, controls total characters across all results (defaults to `medium`). For Perplexity, maps directly to the Search API's native `search_context_size` parameter. Ignored with native provider search and Firecrawl. Overridden by `max_characters` when both are set                                        |
+| `max_characters`      | integer   | —       | Exact maximum characters of content per result (1–100,000). Applies to Exa, Parallel, and Perplexity engines; ignored with native provider search and Firecrawl. For Exa, caps highlight content per result. For Parallel, caps excerpt content per result (default 1,500 when omitted). For Perplexity, converted to a token budget via `max_tokens_per_page` and trimmed to the exact character cap. When both `max_characters` and `search_context_size` are set, `max_characters` takes precedence |
+| `user_location`       | object    | —       | Approximate user location for location-biased results. Currently only supported by native provider search; ignored with Exa, Firecrawl, Parallel, and Perplexity (see below)                                                                                                                                                                                                                                                                                                                           |
+| `allowed_domains`     | string\[] | —       | Limit results to these domains. Supported by Exa, Firecrawl, Parallel, Perplexity, and most native providers (see [domain filtering](#domain-filtering))                                                                                                                                                                                                                                                                                                                                               |
+| `excluded_domains`    | string\[] | —       | Exclude results from these domains. Supported by Exa, Firecrawl, Parallel, Perplexity, and some native providers (see [domain filtering](#domain-filtering))                                                                                                                                                                                                                                                                                                                                           |
 
 ### User Location
 
@@ -138,6 +138,18 @@ Pass an approximate user location to bias search results geographically:
 
 All fields within `user_location` are optional.
 
+## Native Search Providers
+
+When `engine` is `"auto"` (the default) or `"native"`, OpenRouter uses the provider's built-in search for supported models. The following providers have native web search:
+
+* **[OpenAI](https://platform.openai.com/docs/guides/tools/web-search)** — most recent GPT and o-series models
+* **[Anthropic](https://docs.claude.com/en/docs/agents-and-tools/tool-use/web-search-tool)** — Claude models with tool use support
+* **[Google](https://ai.google.dev/gemini-api/docs/grounding)** — Gemini models via Google Search grounding
+* **[xAI](https://docs.x.ai/docs/guides/web-search)** — Grok models (includes both web search and X search)
+* **[Perplexity](https://docs.perplexity.ai/api-reference/chat-completions-post)** — all Perplexity models (search is core to their API)
+
+You can check whether a specific model supports native search on its [model page](https://openrouter.ai/models) — look for the "Web Search" capability badge. For models without native search, set `engine` to one of the other supported options ([Exa](https://exa.ai), [Firecrawl](https://firecrawl.dev), [Parallel](https://parallel.ai), or [Perplexity](https://docs.perplexity.ai)) — or leave it as `"auto"` to default to Exa.
+
 ## Engine Selection
 
 The web search server tool supports multiple search engines:
@@ -147,19 +159,22 @@ The web search server tool supports multiple search engines:
 * **`exa`**: Uses [Exa](https://exa.ai)'s search API, which combines keyword and embeddings-based search. Returns Exa [highlights](https://docs.exa.ai/reference/contents-retrieval-with-exa-api#highlights) — excerpts drawn from each page that are most relevant to the search query — rather than truncated page text. See the [Exa](#exa) section below.
 * **`firecrawl`**: Uses [Firecrawl](https://firecrawl.dev)'s search API (BYOK — bring your own key)
 * **`parallel`**: Uses [Parallel](https://parallel.ai)'s search API
+* **`perplexity`**: Uses the [Perplexity](https://docs.perplexity.ai/api-reference/search-post) Search API for ranked web results with domain filtering, context size control, and `max_characters` support
 
 ### Engine Capabilities
 
-| Feature                  | Exa         | Firecrawl       | Parallel    | Native             |
-| ------------------------ | ----------- | --------------- | ----------- | ------------------ |
-| **Domain filtering**     | Yes         | Yes             | Yes         | Varies by provider |
-| **Context size control** | Yes\*       | No              | Yes\*\*     | No                 |
-| **API key**              | Server-side | BYOK (your key) | Server-side | Provider-handled   |
+| Feature                  | Exa         | Firecrawl       | Parallel    | Perplexity  | Native             |
+| ------------------------ | ----------- | --------------- | ----------- | ----------- | ------------------ |
+| **Domain filtering**     | Yes         | Yes             | Yes         | Yes\*\*\*   | Varies by provider |
+| **Context size control** | Yes\*       | No              | Yes\*\*     | Yes         | No                 |
+| **API key**              | Server-side | BYOK (your key) | Server-side | Server-side | Provider-handled   |
 
 <small>
   *\* Exa: limit applies **per result***
 
   *\*\* Parallel: limit applies as a **total across all results***
+
+  *\*\*\* Perplexity: `allowed_domains` and `excluded_domains` are mutually exclusive — when both are provided, `allowed_domains` takes precedence*
 </small>
 
 ### Exa
@@ -174,7 +189,7 @@ By default, Exa selects an adaptive highlight size per query and document — ty
 * `medium` — 15,000 characters per result
 * `high` — 30,000 characters per result
 
-**Exact value via `max_characters`** — pass any integer (1–100,000) to set a precise per-result content budget. Supported by both Exa and Parallel. When both `max_characters` and `search_context_size` are set, `max_characters` takes precedence.
+**Exact value via `max_characters`** — pass any integer (1–100,000) to set a precise per-result content budget. Supported by Exa, Parallel, and Perplexity. When both `max_characters` and `search_context_size` are set, `max_characters` takes precedence.
 
 ```json
 {
@@ -210,6 +225,10 @@ Firecrawl searches use your Firecrawl credits directly — no additional charge 
 
 [Parallel](https://parallel.ai) supports domain filtering and context size control (`search_context_size`), and uses OpenRouter credits at \$0.005 per request. Includes up to 10 results in a request, then \$0.001 per additional result.
 
+### Perplexity
+
+[Perplexity](https://docs.perplexity.ai/api-reference/search-post) returns ranked web results (titles, URLs, snippets) without LLM synthesis. It supports domain filtering (`allowed_domains` / `excluded_domains`, mutually exclusive), `search_context_size`, and `max_characters`. Uses OpenRouter credits at \$0.005 per request.
+
 ## Domain Filtering
 
 Restrict which domains appear in search results using `allowed_domains` and `excluded_domains`:
@@ -224,15 +243,16 @@ Restrict which domains appear in search results using `allowed_domains` and `exc
 }
 ```
 
-| Engine                  | `allowed_domains` | `excluded_domains` | Notes                               |
-| ----------------------- | :---------------: | :----------------: | ----------------------------------- |
-| **Exa**                 |        Yes        |         Yes        | Both can be used simultaneously     |
-| **Parallel**            |        Yes        |         Yes        | Mutually exclusive                  |
-| **Firecrawl**           |        Yes        |         Yes        | Mutually exclusive                  |
-| **Native (Anthropic)**  |        Yes        |         Yes        | Mutually exclusive                  |
-| **Native (OpenAI)**     |        Yes        |         No         | `excluded_domains` silently ignored |
-| **Native (xAI)**        |        Yes        |         Yes        | Mutually exclusive                  |
-| **Native (Perplexity)** |         No        |         No         | Not supported via server tool path  |
+| Engine                 | `allowed_domains` | `excluded_domains` | Notes                                                                                                                      |
+| ---------------------- | :---------------: | :----------------: | -------------------------------------------------------------------------------------------------------------------------- |
+| **Exa**                |        Yes        |         Yes        | Both can be used simultaneously                                                                                            |
+| **Parallel**           |        Yes        |         Yes        | Mutually exclusive                                                                                                         |
+| **Firecrawl**          |        Yes        |         Yes        | Mutually exclusive                                                                                                         |
+| **Perplexity**         |        Yes        |         Yes        | Mutually exclusive (when both provided, `allowed_domains` wins)                                                            |
+| **Native (Anthropic)** |        Yes        |         Yes        | Mutually exclusive                                                                                                         |
+| **Native (OpenAI)**    |        Yes        |         No         | `excluded_domains` silently ignored                                                                                        |
+| **Native (Google)**    |         No        |         No         | Not supported. With `engine: "auto"`, falls back to Exa when filters are set. With `engine: "native"`, returns a 400 error |
+| **Native (xAI)**       |        Yes        |         Yes        | Mutually exclusive                                                                                                         |
 
 ## Controlling Total Results
 
@@ -316,12 +336,13 @@ The `web_search_requests` field counts the total number of search queries the mo
 
 ## Pricing
 
-| Engine        | Pricing                                                                                                                                                                                                                                                                                                                                      |
-| ------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| **Exa**       | \$0.005 per request using OpenRouter credits. Includes up to 10 results, then \$0.001 per additional result                                                                                                                                                                                                                                  |
-| **Parallel**  | \$0.005 per request using OpenRouter credits. Includes up to 10 results in a request, then \$0.001 per additional result                                                                                                                                                                                                                     |
-| **Firecrawl** | Uses your Firecrawl credits directly — no OpenRouter charge                                                                                                                                                                                                                                                                                  |
-| **Native**    | Passed through from the provider ([OpenAI](https://platform.openai.com/docs/pricing#built-in-tools), [Anthropic](https://docs.claude.com/en/docs/agents-and-tools/tool-use/web-search-tool#usage-and-pricing), [Perplexity](https://docs.perplexity.ai/getting-started/pricing), [xAI](https://docs.x.ai/docs/models#tool-invocation-costs)) |
+| Engine         | Pricing                                                                                                                                                                                                                                                                                                                                                                               |
+| -------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **Exa**        | \$0.005 per request using OpenRouter credits. Includes up to 10 results, then \$0.001 per additional result                                                                                                                                                                                                                                                                           |
+| **Parallel**   | \$0.005 per request using OpenRouter credits. Includes up to 10 results in a request, then \$0.001 per additional result                                                                                                                                                                                                                                                              |
+| **Perplexity** | \$0.005 per request using OpenRouter credits                                                                                                                                                                                                                                                                                                                                          |
+| **Firecrawl**  | Uses your Firecrawl credits directly — no OpenRouter charge                                                                                                                                                                                                                                                                                                                           |
+| **Native**     | Passed through from the provider ([OpenAI](https://platform.openai.com/docs/pricing#built-in-tools), [Anthropic](https://docs.claude.com/en/docs/agents-and-tools/tool-use/web-search-tool#usage-and-pricing), [Google](https://ai.google.dev/pricing), [Perplexity](https://docs.perplexity.ai/getting-started/pricing), [xAI](https://docs.x.ai/docs/models#tool-invocation-costs)) |
 
 All pricing is in addition to standard LLM token costs for processing the search result content.
 
@@ -331,16 +352,16 @@ The [web search plugin](/docs/guides/features/plugins/web-search) (`plugins: [{ 
 
 The key differences:
 
-|                           | Web Search Plugin (deprecated)   | Web Search Server Tool                       |
-| ------------------------- | -------------------------------- | -------------------------------------------- |
-| **How to enable**         | `plugins: [{ id: "web" }]`       | `tools: [{ type: "openrouter:web_search" }]` |
-| **Who decides to search** | Always searches once             | Model decides when/whether to search         |
-| **Call frequency**        | Once per request                 | 0 to N times per request                     |
-| **Engine options**        | Native, Exa, Firecrawl, Parallel | Auto, Native, Exa, Firecrawl, Parallel       |
-| **Domain filtering**      | Yes (Exa, Parallel, some native) | Yes (Exa, Parallel, most native)             |
-| **Context size control**  | Via `web_search_options`         | Via `search_context_size` parameter          |
-| **Total results cap**     | No                               | Yes (`max_total_results`)                    |
-| **Pricing**               | Varies by engine                 | Varies by engine (same rates)                |
+|                           | Web Search Plugin (deprecated)               | Web Search Server Tool                             |
+| ------------------------- | -------------------------------------------- | -------------------------------------------------- |
+| **How to enable**         | `plugins: [{ id: "web" }]`                   | `tools: [{ type: "openrouter:web_search" }]`       |
+| **Who decides to search** | Always searches once                         | Model decides when/whether to search               |
+| **Call frequency**        | Once per request                             | 0 to N times per request                           |
+| **Engine options**        | Native, Exa, Firecrawl, Parallel, Perplexity | Auto, Native, Exa, Firecrawl, Parallel, Perplexity |
+| **Domain filtering**      | Yes (Exa, Parallel, Perplexity, some native) | Yes (Exa, Parallel, Perplexity, most native)       |
+| **Context size control**  | Via `web_search_options`                     | Via `search_context_size` parameter                |
+| **Total results cap**     | No                                           | Yes (`max_total_results`)                          |
+| **Pricing**               | Varies by engine                             | Varies by engine (same rates)                      |
 
 ### Migration example
 

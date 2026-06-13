@@ -217,11 +217,12 @@ default_permissions = ":workspace"
 ":workspace" = true
 ```
 
-Example: disable Browser Use, the in-app browser, and Computer Use:
+Example: constrain Browser Use, the in-app browser, and Computer Use:
 
 ```toml
 [features]
 browser_use = false
+browser_use_full_cdp_access = false
 in_app_browser = false
 computer_use = false
 ```

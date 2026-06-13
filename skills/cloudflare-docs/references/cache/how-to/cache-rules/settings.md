@@ -56,10 +56,16 @@ The operators available for Cache Rule expressions are:
 * does not end with
 * is in
 * is not in
+* is in list
+* is not in list
 
 Note
 
 Not all operators are available for every selected field.
+
+Note
+
+The **is in list** and **is not in list** operators are available for the Hostname field on Enterprise plans. They allow you to match requests against [custom lists](https://developers.cloudflare.com/waf/tools/lists/custom-lists/) — for example, a hostname list containing all the domains you want to apply a particular caching configuration to. Refer to [Use lists in expressions](https://developers.cloudflare.com/waf/tools/lists/use-in-expressions/) for details on using lists in rule expressions.
 
 ## Cache eligibility
 

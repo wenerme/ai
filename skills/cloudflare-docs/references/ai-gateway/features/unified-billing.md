@@ -82,7 +82,7 @@ const resp = await env.AI.run(
 
 ```
 
-Refer to the [binding reference](https://developers.cloudflare.com/ai-gateway/integrations/worker-binding-methods/) for the full API surface.
+Refer to the [binding reference](https://developers.cloudflare.com/ai-gateway/usage/worker-binding-methods/) for the full API surface.
 
 ### HTTP API
 
@@ -152,8 +152,8 @@ If ZDR is enabled for a provider that does not support it, AI Gateway falls back
 
 #### Default configuration
 
-* [ Dashboard ](#tab-panel-5973)
-* [ API ](#tab-panel-5974)
+* [ Dashboard ](#tab-panel-6406)
+* [ API ](#tab-panel-6407)
 
 To set ZDR as the default for Unified Billing in the dashboard:
 

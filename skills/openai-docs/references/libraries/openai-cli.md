@@ -162,6 +162,7 @@ input: |
 YAML
 ```
 
+
 Output:
 
 ```text
@@ -285,6 +286,7 @@ YAML
 done
 ```
 
+
 This keeps the model response structured while producing one JSON object per line for later shell steps.
 
 ### Web search
@@ -344,6 +346,7 @@ input:
 YAML
 ```
 
+
 Output:
 
 ```text
@@ -369,6 +372,7 @@ openai images generate \
   --transform 'data.0.b64_json' | base64 --decode > hero.png
 printf 'wrote hero.png\n'
 ```
+
 
 Output:
 
@@ -396,6 +400,7 @@ openai images edit \
 printf 'wrote hero-edited.png\n'
 ```
 
+
 Output:
 
 ```text
@@ -417,6 +422,7 @@ openai audio:speech create \
   --input "The OpenAI CLI can call the API from ordinary shell scripts." \
   --output speech.mp3
 ```
+
 
 Output:
 
@@ -441,6 +447,7 @@ openai audio:speech create \
   --output reminder.mp3
 ```
 
+
 ## Transcription
 
 Print plain transcript text for shell pipelines:
@@ -454,6 +461,7 @@ openai audio:transcriptions create \
   --transform text \
   --raw-output
 ```
+
 
 Output:
 
@@ -483,6 +491,7 @@ openai audio:transcriptions create \
   --format json
 ```
 
+
 Output:
 
 ```json
@@ -510,6 +519,7 @@ openai audio:transcriptions create \
   --response-format diarized_json \
   --format json
 ```
+
 
 Output:
 
@@ -561,6 +571,7 @@ openai admin:organization:projects:service-accounts create \
 jq -r '.api_key.value | "OPENAI_API_KEY=\(.)"' \
   service-account.json > .env
 ```
+
 
 Output:
 

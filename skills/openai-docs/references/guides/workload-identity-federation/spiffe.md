@@ -161,6 +161,297 @@ The SDK samples below assume your SPIFFE integration refreshes a JWT-SVID and wr
 
 Set `OPENAI_IDENTITY_PROVIDER_ID` and `OPENAI_SERVICE_ACCOUNT_ID` in the workload environment. The token file contains the external subject token. `OPENAI_IDENTITY_PROVIDER_ID` identifies the OpenAI Workload Identity Provider, and `OPENAI_SERVICE_ACCOUNT_ID` identifies the target OpenAI service account. OpenAI then finds a matching mapping for that provider and service account based on the token claims.
 
+Authenticate from a SPIFFE JWT-SVID
+
+```typescript
+import { readFile } from "node:fs/promises";
+import OpenAI from "openai";
+import type { SubjectTokenProvider } from "openai/auth";
+
+const tokenPath = "/var/run/spiffe/openai.jwt";
+const identityProviderId = process.env.OPENAI_IDENTITY_PROVIDER_ID;
+const serviceAccountId = process.env.OPENAI_SERVICE_ACCOUNT_ID;
+
+if (!identityProviderId || !serviceAccountId) {
+  throw new Error("Set OPENAI_IDENTITY_PROVIDER_ID and OPENAI_SERVICE_ACCOUNT_ID");
+}
+
+function spiffeJwtSvidProvider(path: string): SubjectTokenProvider {
+  return {
+    tokenType: "jwt",
+    getToken: async () => {
+      const token = (await readFile(path, "utf8")).trim();
+      if (!token) {
+        throw new Error("The SPIFFE JWT-SVID file is empty.");
+      }
+      return token;
+    },
+  };
+}
+
+const client = new OpenAI({
+  workloadIdentity: {
+    identityProviderId,
+    serviceAccountId,
+    provider: spiffeJwtSvidProvider(tokenPath),
+  },
+});
+
+const response = await client.responses.create({
+  model: "gpt-5.4-mini",
+  input: "Say hello from SPIFFE workload identity federation.",
+});
+
+console.log(response.output_text);
+```
+
+```python
+import os
+from pathlib import Path
+
+from openai import OpenAI
+from openai.auth import SubjectTokenProvider
+
+TOKEN_PATH = "/var/run/spiffe/openai.jwt"
+
+
+def spiffe_jwt_svid_provider(token_path: str) -> SubjectTokenProvider:
+    def get_token() -> str:
+        token = Path(token_path).read_text().strip()
+        if not token:
+            raise RuntimeError("The SPIFFE JWT-SVID file is empty.")
+        return token
+
+    return {"token_type": "jwt", "get_token": get_token}
+
+
+client = OpenAI(
+    workload_identity={
+        "identity_provider_id": os.environ["OPENAI_IDENTITY_PROVIDER_ID"],
+        "service_account_id": os.environ["OPENAI_SERVICE_ACCOUNT_ID"],
+        "provider": spiffe_jwt_svid_provider(TOKEN_PATH),
+    },
+)
+
+response = client.responses.create(
+    model="gpt-5.4-mini",
+    input="Say hello from SPIFFE workload identity federation.",
+)
+
+print(response.output_text)
+```
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"log"
+	"os"
+	"strings"
+
+	"github.com/openai/openai-go/v3"
+	"github.com/openai/openai-go/v3/auth"
+	"github.com/openai/openai-go/v3/option"
+	"github.com/openai/openai-go/v3/responses"
+)
+
+const tokenPath = "/var/run/spiffe/openai.jwt"
+
+type spiffeJWTSVIDProvider struct {
+	path string
+}
+
+func (p spiffeJWTSVIDProvider) TokenType() auth.SubjectTokenType {
+	return auth.SubjectTokenTypeJWT
+}
+
+func (p spiffeJWTSVIDProvider) GetToken(ctx context.Context, _ auth.HTTPDoer) (string, error) {
+	data, err := os.ReadFile(p.path)
+	if err != nil {
+		return "", &auth.SubjectTokenProviderError{
+			Provider: "spiffe",
+			Message:  "failed to read SPIFFE JWT-SVID",
+			Cause:    err,
+		}
+	}
+
+	token := strings.TrimSpace(string(data))
+	if token == "" {
+		return "", &auth.SubjectTokenProviderError{
+			Provider: "spiffe",
+			Message:  "SPIFFE JWT-SVID file is empty",
+		}
+	}
+
+	return token, nil
+}
+
+func main() {
+	client := openai.NewClient(
+		option.WithWorkloadIdentity(auth.WorkloadIdentity{
+			IdentityProviderID: os.Getenv("OPENAI_IDENTITY_PROVIDER_ID"),
+			ServiceAccountID:   os.Getenv("OPENAI_SERVICE_ACCOUNT_ID"),
+			Provider: spiffeJWTSVIDProvider{
+				path: tokenPath,
+			},
+		}),
+	)
+
+	response, err := client.Responses.New(context.Background(), responses.ResponseNewParams{
+		Model: openai.ChatModelGPT4_1Mini,
+		Input: responses.ResponseNewParamsInputUnion{
+			OfString: openai.String("Say hello from SPIFFE workload identity federation."),
+		},
+	})
+	if err != nil {
+		log.Fatal(err)
+	}
+
+	fmt.Println(response.OutputText())
+}
+```
+
+```java
+import com.fasterxml.jackson.databind.json.JsonMapper;
+import com.openai.auth.SubjectTokenProvider;
+import com.openai.auth.SubjectTokenType;
+import com.openai.auth.WorkloadIdentity;
+import com.openai.client.OpenAIClient;
+import com.openai.client.okhttp.OpenAIOkHttpClient;
+import com.openai.core.http.HttpClient;
+import com.openai.errors.SubjectTokenProviderException;
+import com.openai.models.ChatModel;
+import com.openai.models.responses.ResponseCreateParams;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.util.concurrent.CompletableFuture;
+
+public final class SpiffeWorkloadIdentityExample {
+    private static final String TOKEN_PATH = "/var/run/spiffe/openai.jwt";
+
+    private SpiffeWorkloadIdentityExample() {}
+
+    static final class SpiffeJwtSvidProvider implements SubjectTokenProvider {
+        private final Path tokenPath;
+
+        SpiffeJwtSvidProvider(String tokenPath) {
+            this.tokenPath = Path.of(tokenPath);
+        }
+
+        @Override
+        public SubjectTokenType tokenType() {
+            return SubjectTokenType.JWT;
+        }
+
+        @Override
+        public String getToken(HttpClient httpClient, JsonMapper jsonMapper) {
+            String token;
+            try {
+                token = Files.readString(tokenPath).trim();
+            } catch (Exception e) {
+                throw new SubjectTokenProviderException(
+                        "spiffe",
+                        "failed to read SPIFFE JWT-SVID",
+                        e);
+            }
+
+            if (token.isEmpty()) {
+                throw new SubjectTokenProviderException(
+                        "spiffe",
+                        "SPIFFE JWT-SVID file is empty",
+                        null);
+            }
+
+            return token;
+        }
+
+        @Override
+        public CompletableFuture<String> getTokenAsync(
+                HttpClient httpClient, JsonMapper jsonMapper) {
+            return CompletableFuture.supplyAsync(() -> getToken(httpClient, jsonMapper));
+        }
+    }
+
+    public static void main(String[] args) {
+        WorkloadIdentity workloadIdentity = WorkloadIdentity.builder()
+                .identityProviderId(System.getenv("OPENAI_IDENTITY_PROVIDER_ID"))
+                .serviceAccountId(System.getenv("OPENAI_SERVICE_ACCOUNT_ID"))
+                .provider(new SpiffeJwtSvidProvider(TOKEN_PATH))
+                .build();
+
+        OpenAIClient client = OpenAIOkHttpClient.builder()
+                .workloadIdentity(workloadIdentity)
+                .build();
+
+        ResponseCreateParams params = ResponseCreateParams.builder()
+                .model(ChatModel.GPT_4_1_MINI)
+                .input("Say hello from SPIFFE workload identity federation.")
+                .build();
+
+        client.responses().create(params).output().stream()
+                .flatMap(item -> item.message().stream())
+                .flatMap(message -> message.content().stream())
+                .flatMap(content -> content.outputText().stream())
+                .forEach(outputText -> System.out.println(outputText.text()));
+    }
+}
+```
+
+```ruby
+require "openai"
+
+TOKEN_PATH = "/var/run/spiffe/openai.jwt"
+
+class SpiffeJWTSVIDProvider
+  include OpenAI::Auth::SubjectTokenProvider
+
+  def initialize(token_path:)
+    @token_path = token_path
+  end
+
+  def token_type
+    OpenAI::Auth::TokenType::JWT
+  end
+
+  def get_token
+    token = File.read(@token_path).strip
+    if token.empty?
+      raise OpenAI::Errors::SubjectTokenProviderError.new(
+        message: "SPIFFE JWT-SVID file is empty",
+        provider: "spiffe"
+      )
+    end
+    token
+  rescue SystemCallError => e
+    raise OpenAI::Errors::SubjectTokenProviderError.new(
+      message: "Failed to read SPIFFE JWT-SVID: #{e.message}",
+      provider: "spiffe",
+      cause: e
+    )
+  end
+end
+
+provider = SpiffeJWTSVIDProvider.new(token_path: TOKEN_PATH)
+
+workload_identity = OpenAI::Auth::WorkloadIdentity.new(
+  identity_provider_id: ENV.fetch("OPENAI_IDENTITY_PROVIDER_ID"),
+  service_account_id: ENV.fetch("OPENAI_SERVICE_ACCOUNT_ID"),
+  provider: provider
+)
+
+client = OpenAI::Client.new(workload_identity: workload_identity)
+
+response = client.responses.create(
+  model: "gpt-5.4-mini",
+  input: "Say hello from SPIFFE workload identity federation."
+)
+
+puts(response.output_text)
+```
+
+
 ## SPIFFE best practices
 
 - Use JWT-SVIDs for OpenAI workload identity federation. X.509-SVIDs are useful for mutual TLS but aren't accepted by the OpenAI token exchange endpoint.

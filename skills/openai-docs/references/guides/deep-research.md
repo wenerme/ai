@@ -8,6 +8,110 @@ The [`o3-deep-research`](https://developers.openai.com/api/docs/models/o3-deep-r
 
 To use deep research, use the [Responses API](https://developers.openai.com/api/docs/api-reference/responses) with the model set to `o3-deep-research` or `o4-mini-deep-research`. You must include at least one data source: web search, remote MCP servers, or file search with vector stores. You can also include the [code interpreter](https://developers.openai.com/api/docs/guides/tools-code-interpreter) tool to allow the model to perform complex analysis by writing code.
 
+Kick off a deep research task
+
+```python
+from openai import OpenAI
+client = OpenAI(timeout=3600)
+
+input_text = """
+Research the economic impact of semaglutide on global healthcare systems.
+Do:
+- Include specific figures, trends, statistics, and measurable outcomes.
+- Prioritize reliable, up-to-date sources: peer-reviewed research, health
+  organizations (e.g., WHO, CDC), regulatory agencies, or pharmaceutical
+  earnings reports.
+- Include inline citations and return all source metadata.
+
+Be analytical, avoid generalities, and ensure that each section supports
+data-backed reasoning that could inform healthcare policy or financial modeling.
+"""
+
+response = client.responses.create(
+    model="o3-deep-research",
+    input=input_text,
+    background=True,
+    tools=[
+        {"type": "web_search_preview"},
+        {
+            "type": "file_search",
+            "vector_store_ids": [
+                "vs_68870b8868b88191894165101435eef6",
+                "vs_12345abcde6789fghijk101112131415"
+            ]
+        },
+        {
+            "type": "code_interpreter",
+            "container": {"type": "auto"}
+        },
+    ],
+)
+
+
+print(response.output_text)
+```
+
+```javascript
+import OpenAI from "openai";
+const openai = new OpenAI({ timeout: 3600 * 1000 });
+
+
+const input = `
+Research the economic impact of semaglutide on global healthcare systems.
+Do:
+- Include specific figures, trends, statistics, and measurable outcomes.
+- Prioritize reliable, up-to-date sources: peer-reviewed research, health
+  organizations (e.g., WHO, CDC), regulatory agencies, or pharmaceutical
+  earnings reports.
+- Include inline citations and return all source metadata.
+
+Be analytical, avoid generalities, and ensure that each section supports
+data-backed reasoning that could inform healthcare policy or financial modeling.
+`;
+
+const response = await openai.responses.create({
+  model: "o3-deep-research",
+  input,
+  background: true,
+  tools: [
+    { type: "web_search_preview" },
+    {
+      type: "file_search",
+      vector_store_ids: [
+        "vs_68870b8868b88191894165101435eef6",
+        "vs_12345abcde6789fghijk101112131415"
+      ],
+    },
+    { type: "code_interpreter", container: { type: "auto" } },
+  ],
+});
+
+console.log(response);
+```
+
+```bash
+curl https://api.openai.com/v1/responses \
+  -H "Authorization: Bearer $OPENAI_API_KEY" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "model": "o3-deep-research",
+    "input": "Research the economic impact of semaglutide on global healthcare systems. Include specific figures, trends, statistics, and measurable outcomes. Prioritize reliable, up-to-date sources: peer-reviewed research, health organizations (e.g., WHO, CDC), regulatory agencies, or pharmaceutical earnings reports. Include inline citations and return all source metadata. Be analytical, avoid generalities, and ensure that each section supports data-backed reasoning that could inform healthcare policy or financial modeling.",
+    "background": true,
+    "tools": [
+      { "type": "web_search_preview" },
+      {
+        "type": "file_search",
+        "vector_store_ids": [
+          "vs_68870b8868b88191894165101435eef6",
+          "vs_12345abcde6789fghijk101112131415"
+        ]
+      },
+      { "type": "code_interpreter", "container": { "type": "auto" } }
+    ]
+  }'
+```
+
+
 Deep research requests can take a long time, so we recommend running them in [background mode](https://developers.openai.com/api/docs/guides/background). You can configure a [webhook](https://developers.openai.com/api/docs/guides/webhooks) that will be notified when a background request is complete. Background mode retains response data for roughly 10 minutes so that polling works reliably, which makes it incompatible with Zero Data Retention (ZDR) requirements. We continue to accept `background=true` on ZDR credentials for legacy reasons, but you should leave it off if you require ZDR. Modified Abuse Monitoring (MAM) projects can safely use background mode.
 
 ### Output structure
@@ -80,6 +184,250 @@ If you've used Deep Research in ChatGPT, you may have noticed that it asks follo
 
 Deep research via the Responses API does not include a clarification or prompt rewriting step. As a developer, you can configure this processing step to rewrite the user prompt or ask a set of clarifying questions, since the model expects fully-formed prompts up front and will not ask for additional context or fill in missing information; it simply starts researching based on the input it receives. These steps are optional: if you have a sufficiently detailed prompt, there's no need to clarify or rewrite it. Below we include an examples of asking clarifying questions and rewriting the prompt before passing it to the deep research models.
 
+Asking clarifying questions using a faster, smaller model
+
+```python
+from openai import OpenAI
+client = OpenAI()
+
+instructions = """
+You are talking to a user who is asking for a research task to be conducted. Your job is to gather more information from the user to successfully complete the task.
+
+GUIDELINES:
+- Be concise while gathering all necessary information**
+- Make sure to gather all the information needed to carry out the research task in a concise, well-structured manner.
+- Use bullet points or numbered lists if appropriate for clarity.
+- Don't ask for unnecessary information, or information that the user has already provided.
+
+IMPORTANT: Do NOT conduct any research yourself, just gather information that will be given to a researcher to conduct the research task.
+"""
+
+input_text = "Research surfboards for me. I'm interested in ...";
+
+response = client.responses.create(
+  model="gpt-5.5",
+  input=input_text,
+  instructions=instructions,
+)
+
+print(response.output_text)
+```
+
+```javascript
+import OpenAI from "openai";
+const openai = new OpenAI();
+
+const instructions = `
+You are talking to a user who is asking for a research task to be conducted. Your job is to gather more information from the user to successfully complete the task.
+
+GUIDELINES:
+- Be concise while gathering all necessary information**
+- Make sure to gather all the information needed to carry out the research task in a concise, well-structured manner.
+- Use bullet points or numbered lists if appropriate for clarity.
+- Don't ask for unnecessary information, or information that the user has already provided.
+
+IMPORTANT: Do NOT conduct any research yourself, just gather information that will be given to a researcher to conduct the research task.
+`;
+
+const input = "Research surfboards for me. I'm interested in ...";
+
+const response = await openai.responses.create({
+model: "gpt-5.5",
+input,
+instructions,
+});
+
+console.log(response.output_text);
+```
+
+```bash
+curl https://api.openai.com/v1/responses \
+-H "Authorization: Bearer $OPENAI_API_KEY" \
+-H "Content-Type: application/json" \
+-d '{
+  "model": "gpt-5.5",
+  "input": "Research surfboards for me. Im interested in ...",
+  "instructions": "You are talking to a user who is asking for a research task to be conducted. Your job is to gather more information from the user to successfully complete the task. GUIDELINES: - Be concise while gathering all necessary information** - Make sure to gather all the information needed to carry out the research task in a concise, well-structured manner. - Use bullet points or numbered lists if appropriate for clarity. - Don't ask for unnecessary information, or information that the user has already provided. IMPORTANT: Do NOT conduct any research yourself, just gather information that will be given to a researcher to conduct the research task."
+}'
+```
+
+
+Enrich a user prompt using a faster, smaller model
+
+```python
+from openai import OpenAI
+client = OpenAI()
+
+instructions = """
+You will be given a research task by a user. Your job is to produce a set of
+instructions for a researcher that will complete the task. Do NOT complete the
+task yourself, just provide instructions on how to complete it.
+
+GUIDELINES:
+1. **Maximize Specificity and Detail**
+- Include all known user preferences and explicitly list key attributes or
+  dimensions to consider.
+- It is of utmost importance that all details from the user are included in
+  the instructions.
+
+2. **Fill in Unstated But Necessary Dimensions as Open-Ended**
+- If certain attributes are essential for a meaningful output but the user
+  has not provided them, explicitly state that they are open-ended or default
+  to no specific constraint.
+
+3. **Avoid Unwarranted Assumptions**
+- If the user has not provided a particular detail, do not invent one.
+- Instead, state the lack of specification and guide the researcher to treat
+  it as flexible or accept all possible options.
+
+4. **Use the First Person**
+- Phrase the request from the perspective of the user.
+
+5. **Tables**
+- If you determine that including a table will help illustrate, organize, or
+  enhance the information in the research output, you must explicitly request
+  that the researcher provide them.
+
+Examples:
+- Product Comparison (Consumer): When comparing different smartphone models,
+  request a table listing each model's features, price, and consumer ratings
+  side-by-side.
+- Project Tracking (Work): When outlining project deliverables, create a table
+  showing tasks, deadlines, responsible team members, and status updates.
+- Budget Planning (Consumer): When creating a personal or household budget,
+  request a table detailing income sources, monthly expenses, and savings goals.
+- Competitor Analysis (Work): When evaluating competitor products, request a
+  table with key metrics, such as market share, pricing, and main differentiators.
+
+6. **Headers and Formatting**
+- You should include the expected output format in the prompt.
+- If the user is asking for content that would be best returned in a
+  structured format (e.g. a report, plan, etc.), ask the researcher to format
+  as a report with the appropriate headers and formatting that ensures clarity
+  and structure.
+
+7. **Language**
+- If the user input is in a language other than English, tell the researcher
+  to respond in this language, unless the user query explicitly asks for the
+  response in a different language.
+
+8. **Sources**
+- If specific sources should be prioritized, specify them in the prompt.
+- For product and travel research, prefer linking directly to official or
+  primary websites (e.g., official brand sites, manufacturer pages, or
+  reputable e-commerce platforms like Amazon for user reviews) rather than
+  aggregator sites or SEO-heavy blogs.
+- For academic or scientific queries, prefer linking directly to the original
+  paper or official journal publication rather than survey papers or secondary
+  summaries.
+- If the query is in a specific language, prioritize sources published in that
+  language.
+"""
+
+input_text = "Research surfboards for me. I'm interested in ..."
+
+response = client.responses.create(
+    model="gpt-5.5",
+    input=input_text,
+    instructions=instructions,
+)
+
+print(response.output_text)
+```
+
+```javascript
+import OpenAI from "openai";
+const openai = new OpenAI();
+
+const instructions = `
+You will be given a research task by a user. Your job is to produce a set of
+instructions for a researcher that will complete the task. Do NOT complete the
+task yourself, just provide instructions on how to complete it.
+
+GUIDELINES:
+1. **Maximize Specificity and Detail**
+- Include all known user preferences and explicitly list key attributes or
+  dimensions to consider.
+- It is of utmost importance that all details from the user are included in
+  the instructions.
+
+2. **Fill in Unstated But Necessary Dimensions as Open-Ended**
+- If certain attributes are essential for a meaningful output but the user
+  has not provided them, explicitly state that they are open-ended or default
+  to no specific constraint.
+
+3. **Avoid Unwarranted Assumptions**
+- If the user has not provided a particular detail, do not invent one.
+- Instead, state the lack of specification and guide the researcher to treat
+  it as flexible or accept all possible options.
+
+4. **Use the First Person**
+- Phrase the request from the perspective of the user.
+
+5. **Tables**
+- If you determine that including a table will help illustrate, organize, or
+  enhance the information in the research output, you must explicitly request
+  that the researcher provide them.
+
+Examples:
+- Product Comparison (Consumer): When comparing different smartphone models,
+  request a table listing each model's features, price, and consumer ratings
+  side-by-side.
+- Project Tracking (Work): When outlining project deliverables, create a table
+  showing tasks, deadlines, responsible team members, and status updates.
+- Budget Planning (Consumer): When creating a personal or household budget,
+  request a table detailing income sources, monthly expenses, and savings goals.
+- Competitor Analysis (Work): When evaluating competitor products, request a
+  table with key metrics, such as market share, pricing, and main differentiators.
+
+6. **Headers and Formatting**
+- You should include the expected output format in the prompt.
+- If the user is asking for content that would be best returned in a
+  structured format (e.g. a report, plan, etc.), ask the researcher to format
+  as a report with the appropriate headers and formatting that ensures clarity
+  and structure.
+
+7. **Language**
+- If the user input is in a language other than English, tell the researcher
+  to respond in this language, unless the user query explicitly asks for the
+  response in a different language.
+
+8. **Sources**
+- If specific sources should be prioritized, specify them in the prompt.
+- For product and travel research, prefer linking directly to official or
+  primary websites (e.g., official brand sites, manufacturer pages, or
+  reputable e-commerce platforms like Amazon for user reviews) rather than
+  aggregator sites or SEO-heavy blogs.
+- For academic or scientific queries, prefer linking directly to the original
+  paper or official journal publication rather than survey papers or secondary
+  summaries.
+- If the query is in a specific language, prioritize sources published in that
+  language.
+`;
+
+const input = "Research surfboards for me. I'm interested in ...";
+
+const response = await openai.responses.create({
+  model: "gpt-5.5",
+  input,
+  instructions,
+});
+
+console.log(response.output_text);
+```
+
+```bash
+curl https://api.openai.com/v1/responses \
+  -H "Authorization: Bearer $OPENAI_API_KEY" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "model": "gpt-5.5",
+    "input": "Research surfboards for me. Im interested in ...",
+    "instructions": "You are a helpful assistant that generates a prompt for a deep research task. Examine the users prompt and generate a set of clarifying questions that will help the deep research model generate a better response."
+  }'
+```
+
+
 ## Research with your own data
 
 Deep research models are designed to access both public and private data sources, but they require a specific setup for private or internal data. By default, these models can access information on the public internet via the [web search tool](https://developers.openai.com/api/docs/guides/tools-web-search). To give the model access to your own data, you have several options:
@@ -113,6 +461,82 @@ To integrate with a deep research model, your MCP server must provide:
 For more details on the required schemas, how to build a compatible MCP server, and an example of a compatible MCP server, see our [deep research MCP guide](https://developers.openai.com/api/docs/mcp).
 
 Lastly, in deep research, the approval mode for MCP tools must have `require_approval` set to `never`—since both the search and fetch actions are read-only the human-in-the-loop reviews add lesser value and are currently unsupported.
+
+Remote MCP server configuration for deep research
+
+```bash
+curl https://api.openai.com/v1/responses \
+  -H "Content-Type: application/json" \
+  -H "Authorization: Bearer $OPENAI_API_KEY" \
+  -d '{
+  "model": "o3-deep-research",
+  "tools": [
+    {
+      "type": "mcp",
+      "server_label": "mycompany_mcp_server",
+      "server_url": "https://mycompany.com/mcp",
+      "require_approval": "never"
+    }
+  ],
+  "input": "What similarities are in the notes for our closed/lost Salesforce opportunities?"
+}'
+```
+
+```javascript
+import OpenAI from "openai";
+const client = new OpenAI();
+
+const instructions = "<deep research instructions...>";
+
+const resp = await client.responses.create({
+  model: "o3-deep-research",
+  background: true,
+  reasoning: {
+    summary: "auto",
+  },
+  tools: [
+    {
+      type: "mcp",
+      server_label: "mycompany_mcp_server",
+      server_url: "https://mycompany.com/mcp",
+      require_approval: "never",
+    },
+  ],
+  instructions,
+  input: "What similarities are in the notes for our closed/lost Salesforce opportunities?",
+});
+
+console.log(resp.output_text);
+```
+
+```python
+from openai import OpenAI
+
+client = OpenAI()
+
+instructions = "<deep research instructions...>"
+
+resp = client.responses.create(
+    model="o3-deep-research",
+    background=True,
+    reasoning={
+        "summary": "auto",
+    },
+    tools=[
+        {
+            "type": "mcp",
+            "server_label": "mycompany_mcp_server",
+            "server_url": "https://mycompany.com/mcp",
+            "require_approval": "never",
+        },
+    ],
+    instructions=instructions,
+    input="What similarities are in the notes for our closed/lost Salesforce opportunities?",
+)
+
+print(resp.output_text)
+```
+
 
 [
 

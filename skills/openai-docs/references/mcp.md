@@ -339,6 +339,7 @@ if __name__ == "__main__":
     main()
 ```
 
+
 Replit setup
 
 On Replit, you will need to configure two environment variables in the "Secrets" UI:
@@ -413,6 +414,7 @@ curl https://api.openai.com/v1/responses \
   ]
 }'
 ```
+
 
 ### Handle authentication
 

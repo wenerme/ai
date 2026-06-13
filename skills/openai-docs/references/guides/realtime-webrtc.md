@@ -116,6 +116,7 @@ const answer = {
 await pc.setRemoteDescription(answer);
 ```
 
+
 ### Connecting using an ephemeral token
 
 The process for initializing a WebRTC connection using an ephemeral API key is as follows (assuming a web browser client):
@@ -232,6 +233,7 @@ const answer = {
 await pc.setRemoteDescription(answer);
 ```
 
+
 ## Sending and receiving events
 
 Realtime API sessions are managed using a combination of [client-sent events](https://developers.openai.com/api/docs/api-reference/realtime_client_events/session) emitted by you as the developer, and [server-sent events](https://developers.openai.com/api/docs/api-reference/realtime_server_events/error) created by the Realtime API to indicate session lifecycle events.
@@ -266,6 +268,7 @@ const event = {
 };
 dc.send(JSON.stringify(event));
 ```
+
 
 To learn more about managing Realtime conversations, refer to the [Realtime conversations guide](https://developers.openai.com/api/docs/guides/realtime-conversations).
 

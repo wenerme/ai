@@ -20,8 +20,8 @@ For a step-by-step setup guide, refer to [Set up Workers AI with AI Gateway](htt
 
 Add an AI binding to your [Wrangler configuration file](https://developers.cloudflare.com/workers/wrangler/configuration/):
 
-* [  wrangler.jsonc ](#tab-panel-4519)
-* [  wrangler.toml ](#tab-panel-4520)
+* [  wrangler.jsonc ](#tab-panel-6446)
+* [  wrangler.toml ](#tab-panel-6447)
 
 JSONC
 
@@ -61,8 +61,8 @@ Runs an inference request through AI Gateway. Accepts Workers AI models (`@cf/` 
 
 **Workers AI model:**
 
-* [  JavaScript ](#tab-panel-4521)
-* [  TypeScript ](#tab-panel-4522)
+* [  JavaScript ](#tab-panel-6448)
+* [  TypeScript ](#tab-panel-6449)
 
 JavaScript
 
@@ -124,8 +124,8 @@ const resp = await env.AI.run(
 
 **Third-party model:**
 
-* [  JavaScript ](#tab-panel-4523)
-* [  TypeScript ](#tab-panel-4524)
+* [  JavaScript ](#tab-panel-6450)
+* [  TypeScript ](#tab-panel-6451)
 
 JavaScript
 
@@ -359,5 +359,5 @@ const anthropic = createAnthropic({
 ```
 
 ```json
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/ai-gateway/","name":"AI Gateway"}},{"@type":"ListItem","position":3,"item":{"@id":"/ai-gateway/integrations/","name":"Integrations"}},{"@type":"ListItem","position":4,"item":{"@id":"/ai-gateway/integrations/worker-binding-methods/","name":"Workers Bindings"}}]}
+{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/ai-gateway/","name":"AI Gateway"}},{"@type":"ListItem","position":3,"item":{"@id":"/ai-gateway/usage/","name":"Using AI Gateway"}},{"@type":"ListItem","position":4,"item":{"@id":"/ai-gateway/usage/worker-binding-methods/","name":"Workers Bindings"}}]}
 ```

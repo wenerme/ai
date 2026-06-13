@@ -27,8 +27,8 @@ If you run your own OAuth server behind an Access application and rely on your o
 
 ## Enable managed OAuth on a self-hosted application
 
-* [ Dashboard ](#tab-panel-5035)
-* [ API ](#tab-panel-5036)
+* [ Dashboard ](#tab-panel-6959)
+* [ API ](#tab-panel-6960)
 
 1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** \> **Access controls** \> **Applications**.
 2. Find the application you want to configure, then select the three dots on the right > **Edit**.
@@ -69,8 +69,8 @@ To test, open an RFC 8707-compliant OAuth client and make a request to your appl
 
 Managed OAuth is available on [MCP server portals](https://developers.cloudflare.com/cloudflare-one/access-controls/ai-controls/mcp-portals/) and is the mechanism that allows MCP clients to authenticate users through the portal without a browser cookie flow.
 
-* [ Dashboard ](#tab-panel-5037)
-* [ API ](#tab-panel-5038)
+* [ Dashboard ](#tab-panel-6961)
+* [ API ](#tab-panel-6962)
 
 1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** \> **Access controls** \> **AI controls**.
 2. Find the portal you want to configure, then select the three dots on the right > **Edit**.
@@ -109,8 +109,8 @@ To test, open an MCP client and [connect to the MCP portal](https://developers.c
 
 ## Managed OAuth settings
 
-* [ Dashboard ](#tab-panel-5039)
-* [ API ](#tab-panel-5040)
+* [ Dashboard ](#tab-panel-6963)
+* [ API ](#tab-panel-6964)
 
 Configure these settings in the **Advanced settings** tab of your [self-hosted app](#enable-managed-oauth-on-a-self-hosted-application) or [MCP server portal](#enable-managed-oauth-on-an-mcp-server-portal).
 
@@ -119,6 +119,16 @@ Configure these settings in the **Advanced settings** tab of your [self-hosted a
 * **Allowed redirect URIs**: Redirect URIs allowed for dynamically registered clients (for example, `https://playground.ai.cloudflare.com/*`). The URL must use `https`. Paths may end in `/*` to match all sub-paths.
 * **Grant session duration**: How long the OAuth refresh token remains valid.
 * **Access token lifetime**: How long an OIDC Access token can be used to authenticate with your application. Cloudflare recommends configuring a short **Access token lifetime** (default 15 minutes) in conjunction with a longer **Grant session duration**. When the access token expires, Cloudflare uses the refresh token to issue a new one after re-evaluating the user against your Access policies. When the refresh token expires, the user must re-authenticate with the identity provider.
+
+Recommended configuration for CLI and agent use cases
+
+For CLI tools, AI agents, and other non-browser clients, set a short access token lifetime (5–15 minutes) with a longer grant session duration (1–2 weeks). With this configuration:
+
+* The client refreshes tokens silently in the background using the refresh token — no user interaction required.
+* Access policies are re-evaluated on each token refresh, maintaining continuous identity verification.
+* The user only sees the authorization prompt when the grant session (refresh token) expires.
+
+For example, with a 15-minute access token and a 2-week grant session, a user authenticates once via the browser and then works uninterrupted for up to two weeks before needing to re-authenticate.
 
 Configure these settings via the `oauth_configuration` object on the [Access applications](https://developers.cloudflare.com/api/resources/zero%5Ftrust/subresources/access/subresources/applications/methods/update/) endpoint.
 
@@ -182,6 +192,24 @@ https://<your-app-domain>/.well-known/oauth-authorization-server
 This endpoint conforms to [RFC 8414 ↗](https://datatracker.ietf.org/doc/html/rfc8414) and [RFC 9728 ↗](https://datatracker.ietf.org/doc/html/rfc9728) and returns the authorization and token endpoint URLs for the application.
 2. The client initiates an authorization code flow. It opens the user's browser to the Access authorization endpoint, where the user logs in to their IdP as usual.
 3. Access issues an OAuth access token to the client. The client uses this token in subsequent requests to the protected application.
+
+### Token format
+
+Managed OAuth issues **opaque** access tokens (for example, `oauth:CvNoo...`), not JSON Web Tokens (JWTs). This is by design — the OAuth flow gives clients the ability to make requests on a user's behalf without exposing identity information to the client.
+
+When a client presents an opaque token to your application, Cloudflare resolves the token into the user's identity on the backend and forwards a signed assertion to your origin. From your origin's perspective, the request looks the same as a browser-authenticated request.
+
+Because the token is opaque, the client cannot decode it or forward it directly as a JWT to other applications. To make authenticated requests to downstream Access applications, use the [Linked App Token](https://developers.cloudflare.com/cloudflare-one/access-controls/applications/linked-app-token/) pattern — your origin reads the `Cf-Access-Jwt-Assertion` header and forwards it to downstream apps as `Cf-Access-Token`.
+
+### Multi-domain applications
+
+If your Access application is configured with [multiple domains](https://developers.cloudflare.com/cloudflare-one/access-controls/applications/http-apps/authorization-cookie/#multi-domain-applications), an OAuth token obtained through any one domain is valid for all domains in the same application. The user authenticates once and can use the same token to access all domains without additional prompts.
+
+This is useful when you have multiple internal services that share a common trust boundary. Instead of configuring separate Access applications with [Linked App Token](https://developers.cloudflare.com/cloudflare-one/access-controls/applications/linked-app-token/) policies, you can add all domains to a single application and authenticate once via Managed OAuth.
+
+Note
+
+Consolidating domains into a single Access application means all domains share the same Access policies. If you need per-domain policy separation, use separate applications with the [Linked App Token](https://developers.cloudflare.com/cloudflare-one/access-controls/applications/linked-app-token/) pattern instead.
 
 ## Managed OAuth vs service tokens
 

@@ -1,198 +1,5 @@
 # Assistants Code Interpreter
 
-export const snippetEnablingCodeInterpreter = {
-  python: `
-assistant = client.beta.assistants.create(
-  instructions="You are a personal math tutor. When asked a math question, write and run code to answer the question.",
-  model="gpt-4o",
-  tools=[{"type": "code_interpreter"}]
-)
-  `.trim(),
-  "node.js": `
-const assistant = await openai.beta.assistants.create({
-  instructions: "You are a personal math tutor. When asked a math question, write and run code to answer the question.",
-  model: "gpt-4o",
-  tools: [{"type": "code_interpreter"}]
-});
-  `.trim(),
-  curl: `
-curl https://api.openai.com/v1/assistants \\
-  -u :$OPENAI_API_KEY \\
-  -H 'Content-Type: application/json' \\
-  -H 'OpenAI-Beta: assistants=v2' \\
-  -d '{
-    "instructions": "You are a personal math tutor. When asked a math question, write and run code to answer the question.",
-    "tools": [
-      { "type": "code_interpreter" }
-    ],
-    "model": "gpt-4o"
-  }'
-  `.trim(),
-};
-
-export const snippetPassingFilesAssistant = {
-  python: `
-# Upload a file with an "assistants" purpose
-file = client.files.create(
-  file=open("mydata.csv", "rb"),
-  purpose='assistants'
-)\n
-# Create an assistant using the file ID
-assistant = client.beta.assistants.create(
-  instructions="You are a personal math tutor. When asked a math question, write and run code to answer the question.",
-  model="gpt-4o",
-  tools=[{"type": "code_interpreter"}],
-  tool_resources={
-    "code_interpreter": {
-      "file_ids": [file.id]
-    }
-  }
-)
-  `.trim(),
-  "node.js": `
-// Upload a file with an "assistants" purpose
-const file = await openai.files.create({
-  file: fs.createReadStream("mydata.csv"),
-  purpose: "assistants",
-});\n
-// Create an assistant using the file ID
-const assistant = await openai.beta.assistants.create({
-  instructions: "You are a personal math tutor. When asked a math question, write and run code to answer the question.",
-  model: "gpt-4o",
-  tools: [{"type": "code_interpreter"}],
-  tool_resources: {
-    "code_interpreter": {
-      "file_ids": [file.id]
-    }
-  }
-});
-  `.trim(),
-  curl: `
-# Upload a file with an "assistants" purpose
-curl https://api.openai.com/v1/files \\
-  -H "Authorization: Bearer $OPENAI_API_KEY" \\
-  -F purpose="assistants" \\
-  -F file="@/path/to/mydata.csv"\n
-# Create an assistant using the file ID
-curl https://api.openai.com/v1/assistants \\
-  -u :$OPENAI_API_KEY \\
-  -H 'Content-Type: application/json' \\
-  -H 'OpenAI-Beta: assistants=v2' \\
-  -d '{
-    "instructions": "You are a personal math tutor. When asked a math question, write and run code to answer the question.",
-    "tools": [{"type": "code_interpreter"}],
-    "model": "gpt-4o",
-    "tool_resources": {
-      "code_interpreter": {
-        "file_ids": ["file-BK7bzQj3FfZFXr7DbL6xJwfo"]
-      }
-    }
-  }'
-  `.trim(),
-};
-
-export const snippetPassingFilesThread = {
-  python: `
-thread = client.beta.threads.create(
-  messages=[
-    {
-      "role": "user",
-      "content": "I need to solve the equation \`3x + 11 = 14\`. Can you help me?",
-      "attachments": [
-        {
-          "file_id": file.id,
-          "tools": [{"type": "code_interpreter"}]
-        }
-      ]
-    }
-  ]
-)
-  `.trim(),
-  "node.js": `
-const thread = await openai.beta.threads.create({
-  messages: [
-    {
-      "role": "user",
-      "content": "I need to solve the equation \`3x + 11 = 14\`. Can you help me?",
-      "attachments": [
-        {
-          file_id: file.id,
-          tools: [{type: "code_interpreter"}]
-        }
-      ]
-    }
-  ]
-});
-  `.trim(),
-  curl: `
-curl https://api.openai.com/v1/threads/thread_abc123/messages \\
-  -u :$OPENAI_API_KEY \\
-  -H 'Content-Type: application/json' \\
-  -H 'OpenAI-Beta: assistants=v2' \\
-  -d '{
-    "role": "user",
-    "content": "I need to solve the equation \`3x + 11 = 14\`. Can you help me?",
-    "attachments": [
-      {
-        "file_id": "file-ACq8OjcLQm2eIG0BvRM4z5qX",
-        "tools": [{"type": "code_interpreter"}]
-      }
-    ]
-  }'
-  `.trim(),
-};
-
-export const snippetReadingImages = {
-  python: `
-from openai import OpenAI\n
-client = OpenAI()\n
-image_data = client.files.content("file-abc123")
-image_data_bytes = image_data.read()\n
-with open("./my-image.png", "wb") as file:
-    file.write(image_data_bytes)
-  `.trim(),
-  "node.js": `
-
-import OpenAI from "openai";\n
-const openai = new OpenAI();\n
-async function main() {
-  const response = await openai.files.content("file-abc123");\n
-  // Extract the binary data from the Response object
-  const image_data = await response.arrayBuffer();\n
-  // Convert the binary data to a Buffer
-  const image_data_buffer = Buffer.from(image_data);\n
-  // Save the image to a specific location
-  fs.writeFileSync("./my-image.png", image_data_buffer);
-}\n
-main();
-  `.trim(),
-  curl: `
-curl https://api.openai.com/v1/files/file-abc123/content \\
-  -H "Authorization: Bearer $OPENAI_API_KEY" \\
-  --output image.png
-  `.trim(),
-};
-
-export const snippetInputOutputLogs = {
-  python: `
-run_steps = client.beta.threads.runs.steps.list(
-  thread_id=thread.id,
-  run_id=run.id
-)
-  `.trim(),
-  "node.js": `
-const runSteps = await openai.beta.threads.runs.steps.list(
-  thread.id,
-  run.id
-);
-  `.trim(),
-  curl: `
-curl https://api.openai.com/v1/threads/thread_abc123/runs/RUN_ID/steps \\
-  -H "Authorization: Bearer $OPENAI_API_KEY" \\
-  -H "OpenAI-Beta: assistants=v2" \\
-  `.trim(),
-};
-
 ## Overview
 
 Code Interpreter allows Assistants to write and run Python code in a sandboxed execution environment. This tool can process files with diverse data and formatting, and generate files with data and images of graphs. Code Interpreter allows your Assistant to run code iteratively to solve challenging code and math problems. When your Assistant writes code that fails to run, it can iterate on this code by attempting to run different code until the code execution succeeds.
@@ -207,13 +14,161 @@ Code Interpreter is charged at $0.03 per session. If your Assistant calls Code I
 
 Pass `code_interpreter` in the `tools` parameter of the Assistant object to enable Code Interpreter:
 
+```python
+assistant = client.beta.assistants.create(
+  instructions="You are a personal math tutor. When asked a math question, write and run code to answer the question.",
+  model="gpt-4o",
+  tools=[{"type": "code_interpreter"}]
+)
+```
+
+```javascript
+const assistant = await openai.beta.assistants.create({
+  instructions: "You are a personal math tutor. When asked a math question, write and run code to answer the question.",
+  model: "gpt-4o",
+  tools: [{"type": "code_interpreter"}]
+});
+```
+
+```bash
+curl https://api.openai.com/v1/assistants \
+  -u :$OPENAI_API_KEY \
+  -H 'Content-Type: application/json' \
+  -H 'OpenAI-Beta: assistants=v2' \
+  -d '{
+    "instructions": "You are a personal math tutor. When asked a math question, write and run code to answer the question.",
+    "tools": [
+      { "type": "code_interpreter" }
+    ],
+    "model": "gpt-4o"
+  }'
+```
+
+
 The model then decides when to invoke Code Interpreter in a Run based on the nature of the user request. This behavior can be promoted by prompting in the Assistant's `instructions` (e.g., “write code to solve this problem”).
 
 ### Passing files to Code Interpreter
 
 Files that are passed at the Assistant level are accessible by all Runs with this Assistant:
 
+```python
+# Upload a file with an "assistants" purpose
+file = client.files.create(
+  file=open("mydata.csv", "rb"),
+  purpose='assistants'
+)
+
+# Create an assistant using the file ID
+assistant = client.beta.assistants.create(
+  instructions="You are a personal math tutor. When asked a math question, write and run code to answer the question.",
+  model="gpt-4o",
+  tools=[{"type": "code_interpreter"}],
+  tool_resources={
+    "code_interpreter": {
+      "file_ids": [file.id]
+    }
+  }
+)
+```
+
+```javascript
+// Upload a file with an "assistants" purpose
+const file = await openai.files.create({
+  file: fs.createReadStream("mydata.csv"),
+  purpose: "assistants",
+});
+
+// Create an assistant using the file ID
+const assistant = await openai.beta.assistants.create({
+  instructions: "You are a personal math tutor. When asked a math question, write and run code to answer the question.",
+  model: "gpt-4o",
+  tools: [{"type": "code_interpreter"}],
+  tool_resources: {
+    "code_interpreter": {
+      "file_ids": [file.id]
+    }
+  }
+});
+```
+
+```bash
+# Upload a file with an "assistants" purpose
+curl https://api.openai.com/v1/files \
+  -H "Authorization: Bearer $OPENAI_API_KEY" \
+  -F purpose="assistants" \
+  -F file="@/path/to/mydata.csv"
+
+# Create an assistant using the file ID
+curl https://api.openai.com/v1/assistants \
+  -u :$OPENAI_API_KEY \
+  -H 'Content-Type: application/json' \
+  -H 'OpenAI-Beta: assistants=v2' \
+  -d '{
+    "instructions": "You are a personal math tutor. When asked a math question, write and run code to answer the question.",
+    "tools": [{"type": "code_interpreter"}],
+    "model": "gpt-4o",
+    "tool_resources": {
+      "code_interpreter": {
+        "file_ids": ["file-BK7bzQj3FfZFXr7DbL6xJwfo"]
+      }
+    }
+  }'
+```
+
+
 Files can also be passed at the Thread level. These files are only accessible in the specific Thread. Upload the File using the [File upload](https://developers.openai.com/api/docs/api-reference/files/create) endpoint and then pass the File ID as part of the Message creation request:
+
+```python
+thread = client.beta.threads.create(
+  messages=[
+    {
+      "role": "user",
+      "content": "I need to solve the equation `3x + 11 = 14`. Can you help me?",
+      "attachments": [
+        {
+          "file_id": file.id,
+          "tools": [{"type": "code_interpreter"}]
+        }
+      ]
+    }
+  ]
+)
+```
+
+```javascript
+const thread = await openai.beta.threads.create({
+  messages: [
+    {
+      "role": "user",
+      "content": "I need to solve the equation `3x + 11 = 14`. Can you help me?",
+      "attachments": [
+        {
+          file_id: file.id,
+          tools: [{type: "code_interpreter"}]
+        }
+      ]
+    }
+  ]
+});
+```
+
+```bash
+curl https://api.openai.com/v1/threads/thread_abc123/messages \
+  -u :$OPENAI_API_KEY \
+  -H 'Content-Type: application/json' \
+  -H 'OpenAI-Beta: assistants=v2' \
+  -d '{
+    "role": "user",
+    "content": "I need to solve the equation `3x + 11 = 14`. Can you help me?",
+    "attachments": [
+      {
+        "file_id": "file-ACq8OjcLQm2eIG0BvRM4z5qX",
+        "tools": [{"type": "code_interpreter"}]
+      }
+    ]
+  }'
+```
+
 
 Files have a maximum size of 512 MB. Code Interpreter supports a variety of file formats including `.csv`, `.pdf`, `.json` and many more. More details on the file extensions (and their corresponding MIME-types) supported can be found in the [Supported files](#supported-files) section below.
 
@@ -247,6 +202,47 @@ When Code Interpreter generates an image, you can look up and download this file
 
 The file content can then be downloaded by passing the file ID to the Files API:
 
+```python
+from openai import OpenAI
+
+client = OpenAI()
+
+image_data = client.files.content("file-abc123")
+image_data_bytes = image_data.read()
+
+with open("./my-image.png", "wb") as file:
+    file.write(image_data_bytes)
+```
+
+```javascript
+import fs from "fs";
+import OpenAI from "openai";
+
+const openai = new OpenAI();
+
+async function main() {
+  const response = await openai.files.content("file-abc123");
+
+  // Extract the binary data from the Response object
+  const image_data = await response.arrayBuffer();
+
+  // Convert the binary data to a Buffer
+  const image_data_buffer = Buffer.from(image_data);
+
+  // Save the image to a specific location
+  fs.writeFileSync("./my-image.png", image_data_buffer);
+}
+
+main();
+```
+
+```bash
+curl https://api.openai.com/v1/files/file-abc123/content \
+  -H "Authorization: Bearer $OPENAI_API_KEY" \
+  --output image.png
+```
+
+
 When Code Interpreter references a file path (e.g., ”Download this csv file”), file paths are listed as annotations. You can convert these annotations into links to download the file:
 
 ```json
@@ -277,6 +273,27 @@ When Code Interpreter references a file path (e.g., ”Download this csv file”
 ### Input and output logs of Code Interpreter
 
 By listing the steps of a Run that called Code Interpreter, you can inspect the code `input` and `outputs` logs of Code Interpreter:
+
+```python
+run_steps = client.beta.threads.runs.steps.list(
+  thread_id=thread.id,
+  run_id=run.id
+)
+```
+
+```javascript
+const runSteps = await openai.beta.threads.runs.steps.list(
+  thread.id,
+  run.id
+);
+```
+
+```bash
+curl https://api.openai.com/v1/threads/thread_abc123/runs/RUN_ID/steps \
+  -H "Authorization: Bearer $OPENAI_API_KEY" \
+  -H "OpenAI-Beta: assistants=v2" \
+```
+
 
 ```bash
 {

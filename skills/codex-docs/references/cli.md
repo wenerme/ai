@@ -39,7 +39,7 @@ Run `codex` to start an interactive terminal UI (TUI) session.
 
 ### Control model and reasoning
 
-Use `/model` to switch between GPT-5.4, GPT-5.3-Codex, and other available models, or adjust reasoning levels.
+Use `/model` to switch between available models or adjust reasoning levels.
 
   </BentoContent>
   <BentoContent href="/codex/cli/features#image-inputs">

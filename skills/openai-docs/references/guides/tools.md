@@ -64,7 +64,120 @@ Console.WriteLine(response.GetOutputText());
   </div>
   <div data-content-switcher-pane data-value="tool-search" hidden>
     <div class="hidden">Tool search</div>
-    </div>
+    Load deferred tools at runtime
+
+```python
+from openai import OpenAI
+
+client = OpenAI()
+
+crm_namespace = {
+    "type": "namespace",
+    "name": "crm",
+    "description": "CRM tools for customer lookup and order management.",
+    "tools": [
+        {
+            "type": "function",
+            "name": "get_customer_profile",
+            "description": "Fetch a customer profile by customer ID.",
+            "parameters": {
+                "type": "object",
+                "properties": {
+                    "customer_id": {"type": "string"},
+                },
+                "required": ["customer_id"],
+                "additionalProperties": False,
+            },
+        },
+        {
+            "type": "function",
+            "name": "list_open_orders",
+            "description": "List open orders for a customer ID.",
+            # highlight-start:subtle
+            "defer_loading": True,
+            # highlight-end
+            "parameters": {
+                "type": "object",
+                "properties": {
+                    "customer_id": {"type": "string"},
+                },
+                "required": ["customer_id"],
+                "additionalProperties": False,
+            },
+        },
+    ],
+}
+
+response = client.responses.create(
+    model="gpt-5.5",
+    input="List open orders for customer CUST-12345.",
+    tools=[
+        crm_namespace,
+        # highlight-start:subtle
+        {"type": "tool_search"},
+        # highlight-end
+    ],
+    parallel_tool_calls=False,
+)
+
+print(response.output)
+```
+
+```javascript
+import OpenAI from "openai";
+
+const client = new OpenAI();
+
+const crmNamespace = {
+  type: "namespace",
+  name: "crm",
+  description: "CRM tools for customer lookup and order management.",
+  tools: [
+    {
+      type: "function",
+      name: "get_customer_profile",
+      description: "Fetch a customer profile by customer ID.",
+      parameters: {
+        type: "object",
+        properties: {
+          customer_id: { type: "string" },
+        },
+        required: ["customer_id"],
+        additionalProperties: false,
+      },
+    },
+    {
+      type: "function",
+      name: "list_open_orders",
+      description: "List open orders for a customer ID.",
+      // highlight-start:subtle
+      defer_loading: true,
+      // highlight-end
+      parameters: {
+        type: "object",
+        properties: {
+          customer_id: { type: "string" },
+        },
+        required: ["customer_id"],
+        additionalProperties: false,
+      },
+    },
+  ],
+};
+
+const response = await client.responses.create({
+  model: "gpt-5.5",
+  input: "List open orders for customer CUST-12345.",
+  // highlight-start:subtle
+  tools: [crmNamespace, { type: "tool_search" }],
+  // highlight-end
+  parallel_tool_calls: false,
+});
+
+console.log(response.output);
+```
+
+  </div>
   <div data-content-switcher-pane data-value="function-calling" hidden>
     <div class="hidden">Function calling</div>
     </div>

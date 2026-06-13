@@ -33,7 +33,7 @@ Using web search will incur extra costs, even with free models. See the [pricing
 }
 ```
 
-The web search plugin is powered by native search for Anthropic, OpenAI, Perplexity, and xAI models.
+The web search plugin is powered by native search for Anthropic, Google, OpenAI, Perplexity, and xAI models. See the [server tools web search docs](/docs/guides/features/server-tools/web-search#native-search-providers) for the full list of supported model families per provider.
 
 For xAI models, the web search plugin enables both Web Search and X Search.
 
@@ -74,7 +74,7 @@ The maximum results allowed by the web plugin and the prompt used to attach them
   "plugins": [
     {
       "id": "web",
-      "engine": "exa", // Optional: "native", "exa", "firecrawl", "parallel", or undefined
+      "engine": "exa", // Optional: "native", "exa", "firecrawl", "parallel", "perplexity", or undefined
       "max_results": 1, // Defaults to 5
       "search_prompt": "Some relevant web results:", // See default below
       "include_domains": ["example.com", "*.substack.com"], // Optional
@@ -114,18 +114,20 @@ Both fields accept an array of domain strings. You can use wildcards (`*.substac
 
 ### Engine Compatibility
 
-| Engine        | `include_domains` | `exclude_domains` | Notes                                           |
-| ------------- | :---------------: | :---------------: | ----------------------------------------------- |
-| **Exa**       |        Yes        |        Yes        | Both can be used simultaneously                 |
-| **Parallel**  |        Yes        |        Yes        | Either can be used, they are mutually exclusive |
-| **Native**    |       Varies      |       Varies      | See provider notes below                        |
-| **Firecrawl** |        Yes        |        Yes        | Mutually exclusive (cannot use both at once)    |
+| Engine         | `include_domains` | `exclude_domains` | Notes                                                           |
+| -------------- | :---------------: | :---------------: | --------------------------------------------------------------- |
+| **Exa**        |        Yes        |        Yes        | Both can be used simultaneously                                 |
+| **Parallel**   |        Yes        |        Yes        | Either can be used, they are mutually exclusive                 |
+| **Perplexity** |        Yes        |        Yes        | Mutually exclusive (when both provided, `include_domains` wins) |
+| **Native**     |       Varies      |       Varies      | See provider notes below                                        |
+| **Firecrawl**  |        Yes        |        Yes        | Mutually exclusive (cannot use both at once)                    |
 
 ### Native Provider Behavior
 
 When using native search, domain filter support depends on the provider:
 
 * **Anthropic**: Supports both `include_domains` and `exclude_domains`, but they are mutually exclusive — you cannot use both at once
+* **Google**: Domain filtering is not supported. With the default engine (auto), OpenRouter falls back to Exa when filters are set. With `"engine": "native"`, returns a 400 error
 * **OpenAI**: Supports `include_domains` only; `exclude_domains` is silently ignored
 * **xAI**: Supports both, but they are mutually exclusive with a maximum of 5 domains each
 
@@ -180,13 +182,14 @@ The web search plugin supports the following options for the `engine` parameter:
 * **`exa`**: Uses Exa's search API for web results
 * **`firecrawl`**: Uses [Firecrawl](https://firecrawl.dev)'s search API
 * **`parallel`**: Uses [Parallel](https://parallel.ai)'s search API for web results
+* **`perplexity`**: Uses the [Perplexity](https://docs.perplexity.ai/api-reference/search-post) Search API for ranked web results
 * **`undefined` (not specified)**: Uses native search if available for the provider, otherwise falls back to Exa
 
 ### Default Behavior
 
 When the `engine` parameter is not specified:
 
-* **Native search is used by default** for OpenAI, Anthropic, Perplexity, and xAI models that support it
+* **Native search is used by default** for OpenAI, Anthropic, Google, Perplexity, and xAI models that support it
 * **Exa search is used** for all other models or when native search is not supported
 
 When you explicitly specify `"engine": "native"`, it will always attempt to use the provider's native search, even if the model doesn't support it (which may result in an error).
@@ -270,6 +273,7 @@ Firecrawl supports `include_domains` and `exclude_domains`, but they are mutuall
 * **Native search**: Pricing is passed through directly from the provider (see provider-specific pricing info below)
 * **Exa search**: Uses OpenRouter credits at \$0.005 per request. Includes up to 10 results, then \$0.001 per additional result
 * **Parallel search**: Uses OpenRouter credits at \$0.005 per request. Includes up to 10 results in a request, then \$0.001 per additional result
+* **Perplexity search**: Uses OpenRouter credits at \$0.005 per request
 * **Firecrawl search**: Uses your Firecrawl credits directly, refill at [Firecrawl.dev](https://www.firecrawl.dev)
 
 ## Pricing
@@ -313,6 +317,7 @@ Refer to each provider's documentation for their native web search pricing info:
 
 * [OpenAI Pricing](https://platform.openai.com/docs/pricing#built-in-tools)
 * [Anthropic Pricing](https://docs.claude.com/en/docs/agents-and-tools/tool-use/web-search-tool#usage-and-pricing)
+* [Google Pricing](https://ai.google.dev/pricing)
 * [Perplexity Pricing](https://docs.perplexity.ai/getting-started/pricing)
 * [xAI Pricing](https://docs.x.ai/docs/models#tool-invocation-costs)
 

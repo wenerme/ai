@@ -159,6 +159,451 @@ Store `OPENAI_WIF_AUDIENCE`, `OPENAI_IDENTITY_PROVIDER_ID`, and `OPENAI_SERVICE_
 
 The following examples initialize an OpenAI client with a custom subject token provider. The provider requests a GitHub OIDC token for the configured audience and uses it as the subject token for workload identity federation.
 
+Authenticate from a GitHub Actions OIDC token
+
+```typescript
+import OpenAI from "openai";
+import type { SubjectTokenProvider } from "openai/auth";
+
+const identityProviderId = process.env.OPENAI_IDENTITY_PROVIDER_ID;
+const serviceAccountId = process.env.OPENAI_SERVICE_ACCOUNT_ID;
+const audience = process.env.OPENAI_WIF_AUDIENCE;
+const requestURL = process.env.ACTIONS_ID_TOKEN_REQUEST_URL;
+const requestToken = process.env.ACTIONS_ID_TOKEN_REQUEST_TOKEN;
+
+if (
+  !identityProviderId ||
+  !serviceAccountId ||
+  !audience ||
+  !requestURL ||
+  !requestToken
+) {
+  throw new Error(
+    "Set OPENAI_IDENTITY_PROVIDER_ID, OPENAI_SERVICE_ACCOUNT_ID, OPENAI_WIF_AUDIENCE, and run inside GitHub Actions with id-token: write"
+  );
+}
+
+function githubActionsOIDCTokenProvider(
+  requestURL: string,
+  requestToken: string,
+  audience: string
+): SubjectTokenProvider {
+  return {
+    tokenType: "jwt",
+    getToken: async () => {
+      const url = new URL(requestURL);
+      url.searchParams.set("audience", audience);
+
+      const response = await fetch(url, {
+        headers: { Authorization: `bearer ${requestToken}` },
+      });
+
+      if (!response.ok) {
+        throw new Error(
+          `Failed to request GitHub OIDC token: ${response.status} ${response.statusText}`
+        );
+      }
+
+      const body = (await response.json()) as { value?: string };
+      if (!body.value) {
+        throw new Error("GitHub OIDC token response did not include a value.");
+      }
+
+      return body.value;
+    },
+  };
+}
+
+const client = new OpenAI({
+  workloadIdentity: {
+    identityProviderId,
+    serviceAccountId,
+    provider: githubActionsOIDCTokenProvider(requestURL, requestToken, audience),
+  },
+});
+
+const response = await client.responses.create({
+  model: "gpt-5.4-mini",
+  input: "Say hello from GitHub Actions workload identity federation.",
+});
+
+console.log(response.output_text);
+```
+
+```python
+import json
+import os
+import urllib.parse
+import urllib.request
+
+from openai import OpenAI
+from openai.auth import SubjectTokenProvider
+
+
+def github_actions_oidc_token_provider(audience: str) -> SubjectTokenProvider:
+    request_url = os.environ["ACTIONS_ID_TOKEN_REQUEST_URL"]
+    request_token = os.environ["ACTIONS_ID_TOKEN_REQUEST_TOKEN"]
+
+    def get_token() -> str:
+        parsed_url = urllib.parse.urlparse(request_url)
+        query = dict(urllib.parse.parse_qsl(parsed_url.query, keep_blank_values=True))
+        query["audience"] = audience
+        url = urllib.parse.urlunparse(
+            parsed_url._replace(query=urllib.parse.urlencode(query))
+        )
+
+        request = urllib.request.Request(
+            url,
+            headers={"Authorization": f"bearer {request_token}"},
+        )
+        with urllib.request.urlopen(request) as response:
+            payload = json.loads(response.read().decode("utf-8"))
+
+        token = payload.get("value")
+        if not token:
+            raise RuntimeError("GitHub OIDC token response did not include a value.")
+        return token
+
+    return {"token_type": "jwt", "get_token": get_token}
+
+
+client = OpenAI(
+    workload_identity={
+        "identity_provider_id": os.environ["OPENAI_IDENTITY_PROVIDER_ID"],
+        "service_account_id": os.environ["OPENAI_SERVICE_ACCOUNT_ID"],
+        "provider": github_actions_oidc_token_provider(
+            os.environ["OPENAI_WIF_AUDIENCE"]
+        ),
+    },
+)
+
+response = client.responses.create(
+    model="gpt-5.4-mini",
+    input="Say hello from GitHub Actions workload identity federation.",
+)
+
+print(response.output_text)
+```
+
+```go
+package main
+
+import (
+	"context"
+	"encoding/json"
+	"fmt"
+	"log"
+	"net/http"
+	"net/url"
+	"os"
+
+	"github.com/openai/openai-go/v3"
+	"github.com/openai/openai-go/v3/auth"
+	"github.com/openai/openai-go/v3/option"
+	"github.com/openai/openai-go/v3/responses"
+)
+
+type githubActionsOIDCTokenProvider struct {
+	requestURL   string
+	requestToken string
+	audience     string
+}
+
+func (p githubActionsOIDCTokenProvider) TokenType() auth.SubjectTokenType {
+	return auth.SubjectTokenTypeJWT
+}
+
+func (p githubActionsOIDCTokenProvider) GetToken(ctx context.Context, httpClient auth.HTTPDoer) (string, error) {
+	if httpClient == nil {
+		httpClient = http.DefaultClient
+	}
+
+	oidcURL, err := url.Parse(p.requestURL)
+	if err != nil {
+		return "", &auth.SubjectTokenProviderError{
+			Provider: "github-actions",
+			Message:  "failed to parse GitHub OIDC request URL",
+			Cause:    err,
+		}
+	}
+	query := oidcURL.Query()
+	query.Set("audience", p.audience)
+	oidcURL.RawQuery = query.Encode()
+
+	req, err := http.NewRequestWithContext(ctx, http.MethodGet, oidcURL.String(), nil)
+	if err != nil {
+		return "", &auth.SubjectTokenProviderError{
+			Provider: "github-actions",
+			Message:  "failed to create GitHub OIDC token request",
+			Cause:    err,
+		}
+	}
+	req.Header.Set("Authorization", "bearer "+p.requestToken)
+
+	resp, err := httpClient.Do(req)
+	if err != nil {
+		return "", &auth.SubjectTokenProviderError{
+			Provider: "github-actions",
+			Message:  "failed to request GitHub OIDC token",
+			Cause:    err,
+		}
+	}
+	defer resp.Body.Close()
+
+	if resp.StatusCode < 200 || resp.StatusCode >= 300 {
+		return "", &auth.SubjectTokenProviderError{
+			Provider: "github-actions",
+			Message:  fmt.Sprintf("GitHub OIDC token request failed with status %s", resp.Status),
+		}
+	}
+
+	var body struct {
+		Value string `json:"value"`
+	}
+	if err := json.NewDecoder(resp.Body).Decode(&body); err != nil {
+		return "", &auth.SubjectTokenProviderError{
+			Provider: "github-actions",
+			Message:  "failed to decode GitHub OIDC token response",
+			Cause:    err,
+		}
+	}
+	if body.Value == "" {
+		return "", &auth.SubjectTokenProviderError{
+			Provider: "github-actions",
+			Message:  "GitHub OIDC token response did not include a value",
+		}
+	}
+
+	return body.Value, nil
+}
+
+func main() {
+	client := openai.NewClient(
+		option.WithWorkloadIdentity(auth.WorkloadIdentity{
+			IdentityProviderID: os.Getenv("OPENAI_IDENTITY_PROVIDER_ID"),
+			ServiceAccountID:   os.Getenv("OPENAI_SERVICE_ACCOUNT_ID"),
+			Provider: githubActionsOIDCTokenProvider{
+				requestURL:   os.Getenv("ACTIONS_ID_TOKEN_REQUEST_URL"),
+				requestToken: os.Getenv("ACTIONS_ID_TOKEN_REQUEST_TOKEN"),
+				audience:     os.Getenv("OPENAI_WIF_AUDIENCE"),
+			},
+		}),
+	)
+
+	response, err := client.Responses.New(context.Background(), responses.ResponseNewParams{
+		Model: openai.ChatModelGPT4_1Mini,
+		Input: responses.ResponseNewParamsInputUnion{
+			OfString: openai.String("Say hello from GitHub Actions workload identity federation."),
+		},
+	})
+	if err != nil {
+		log.Fatal(err)
+	}
+
+	fmt.Println(response.OutputText())
+}
+```
+
+```java
+import com.fasterxml.jackson.databind.JsonNode;
+import com.fasterxml.jackson.databind.json.JsonMapper;
+import com.openai.auth.SubjectTokenProvider;
+import com.openai.errors.SubjectTokenProviderException;
+import com.openai.auth.SubjectTokenType;
+import com.openai.auth.WorkloadIdentity;
+import com.openai.client.OpenAIClient;
+import com.openai.client.okhttp.OpenAIOkHttpClient;
+import com.openai.models.ChatModel;
+import com.openai.models.responses.ResponseCreateParams;
+import java.net.URI;
+import java.net.URLEncoder;
+import java.net.http.HttpRequest;
+import java.net.http.HttpResponse;
+import java.nio.charset.StandardCharsets;
+import java.util.concurrent.CompletableFuture;
+
+public final class GitHubActionsWorkloadIdentityExample {
+    private GitHubActionsWorkloadIdentityExample() {}
+
+    static final class GitHubActionsOidcTokenProvider implements SubjectTokenProvider {
+        private final String requestUrl;
+        private final String requestToken;
+        private final String audience;
+
+        GitHubActionsOidcTokenProvider(String requestUrl, String requestToken, String audience) {
+            this.requestUrl = requestUrl;
+            this.requestToken = requestToken;
+            this.audience = audience;
+        }
+
+        @Override
+        public SubjectTokenType tokenType() {
+            return SubjectTokenType.JWT;
+        }
+
+        @Override
+        public String getToken(
+                com.openai.core.http.HttpClient httpClient, JsonMapper jsonMapper) {
+            try {
+                String separator = requestUrl.contains("?") ? "&" : "?";
+                URI uri = URI.create(
+                        requestUrl
+                                + separator
+                                + "audience="
+                                + URLEncoder.encode(audience, StandardCharsets.UTF_8));
+
+                HttpRequest request = HttpRequest.newBuilder(uri)
+                        .header("Authorization", "bearer " + requestToken)
+                        .GET()
+                        .build();
+
+                HttpResponse<String> response = java.net.http.HttpClient.newHttpClient()
+                        .send(request, HttpResponse.BodyHandlers.ofString());
+
+                if (response.statusCode() < 200 || response.statusCode() >= 300) {
+                    throw new SubjectTokenProviderException(
+                            "github-actions",
+                            "GitHub OIDC token request failed with status "
+                                    + response.statusCode(),
+                            null);
+                }
+
+                JsonNode payload = jsonMapper.readTree(response.body());
+                String token = payload.path("value").asText("");
+                if (token.isEmpty()) {
+                    throw new SubjectTokenProviderException(
+                            "github-actions",
+                            "GitHub OIDC token response did not include a value",
+                            null);
+                }
+
+                return token;
+            } catch (SubjectTokenProviderException e) {
+                throw e;
+            } catch (Exception e) {
+                throw new SubjectTokenProviderException(
+                        "github-actions",
+                        "failed to request GitHub OIDC token",
+                        e);
+            }
+        }
+
+        @Override
+        public CompletableFuture<String> getTokenAsync(
+                com.openai.core.http.HttpClient httpClient, JsonMapper jsonMapper) {
+            return CompletableFuture.supplyAsync(() -> getToken(httpClient, jsonMapper));
+        }
+    }
+
+    public static void main(String[] args) {
+        WorkloadIdentity workloadIdentity = WorkloadIdentity.builder()
+                .identityProviderId(System.getenv("OPENAI_IDENTITY_PROVIDER_ID"))
+                .serviceAccountId(System.getenv("OPENAI_SERVICE_ACCOUNT_ID"))
+                .provider(new GitHubActionsOidcTokenProvider(
+                        System.getenv("ACTIONS_ID_TOKEN_REQUEST_URL"),
+                        System.getenv("ACTIONS_ID_TOKEN_REQUEST_TOKEN"),
+                        System.getenv("OPENAI_WIF_AUDIENCE")))
+                .build();
+
+        OpenAIClient client = OpenAIOkHttpClient.builder()
+                .workloadIdentity(workloadIdentity)
+                .build();
+
+        ResponseCreateParams params = ResponseCreateParams.builder()
+                .model(ChatModel.GPT_4_1_MINI)
+                .input("Say hello from GitHub Actions workload identity federation.")
+                .build();
+
+        client.responses().create(params).output().stream()
+                .flatMap(item -> item.message().stream())
+                .flatMap(message -> message.content().stream())
+                .flatMap(content -> content.outputText().stream())
+                .forEach(outputText -> System.out.println(outputText.text()));
+    }
+}
+```
+
+```ruby
+require "json"
+require "net/http"
+require "openai"
+require "uri"
+
+class GitHubActionsOIDCTokenProvider
+  include OpenAI::Auth::SubjectTokenProvider
+
+  def initialize(request_url:, request_token:, audience:)
+    @request_url = request_url
+    @request_token = request_token
+    @audience = audience
+  end
+
+  def token_type
+    OpenAI::Auth::TokenType::JWT
+  end
+
+  def get_token
+    uri = URI(@request_url)
+    params = URI.decode_www_form(uri.query || "")
+    params.reject! { |key, _| key == "audience" }
+    params << ["audience", @audience]
+    uri.query = URI.encode_www_form(params)
+
+    request = Net::HTTP::Get.new(uri)
+    request["Authorization"] = "bearer #{@request_token}"
+
+    response = Net::HTTP.start(uri.hostname, uri.port, use_ssl: uri.scheme == "https") do |http|
+      http.request(request)
+    end
+
+    unless response.is_a?(Net::HTTPSuccess)
+      raise OpenAI::Errors::SubjectTokenProviderError.new(
+        message: "GitHub OIDC token request failed with status #{response.code}",
+        provider: "github-actions"
+      )
+    end
+
+    token = JSON.parse(response.body).fetch("value", "").to_s
+    if token.empty?
+      raise OpenAI::Errors::SubjectTokenProviderError.new(
+        message: "GitHub OIDC token response did not include a value",
+        provider: "github-actions"
+      )
+    end
+
+    token
+  rescue JSON::ParserError, SystemCallError => e
+    raise OpenAI::Errors::SubjectTokenProviderError.new(
+      message: "Failed to request GitHub OIDC token: #{e.message}",
+      provider: "github-actions",
+      cause: e
+    )
+  end
+end
+
+provider = GitHubActionsOIDCTokenProvider.new(
+  request_url: ENV.fetch("ACTIONS_ID_TOKEN_REQUEST_URL"),
+  request_token: ENV.fetch("ACTIONS_ID_TOKEN_REQUEST_TOKEN"),
+  audience: ENV.fetch("OPENAI_WIF_AUDIENCE")
+)
+
+workload_identity = OpenAI::Auth::WorkloadIdentity.new(
+  identity_provider_id: ENV.fetch("OPENAI_IDENTITY_PROVIDER_ID"),
+  service_account_id: ENV.fetch("OPENAI_SERVICE_ACCOUNT_ID"),
+  provider: provider
+)
+
+client = OpenAI::Client.new(workload_identity: workload_identity)
+
+response = client.responses.create(
+  model: "gpt-5.4-mini",
+  input: "Say hello from GitHub Actions workload identity federation."
+)
+
+puts(response.output_text)
+```
+
+
 ## GitHub Actions best practices
 
 - Use environment protections for production deployments. Require approvals or branch restrictions before workflows can access production OpenAI resources.

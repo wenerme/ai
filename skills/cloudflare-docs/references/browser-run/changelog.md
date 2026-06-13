@@ -16,6 +16,11 @@ This is a detailed changelog of every update to Browser Run (formerly Browser Re
 
 [ Subscribe to RSS ](https://developers.cloudflare.com/browser-run/changelog/index.xml)
 
+## 2026-06-12
+
+**New tutorial: Pre-render pages for crawlers**
+* Added a new tutorial on how to [pre-render JavaScript-heavy pages](https://developers.cloudflare.com/browser-run/how-to/pre-render-pages/) using Browser Run and a Worker. The tutorial covers building a pre-rendering endpoint that calls the [/content Quick Action](https://developers.cloudflare.com/browser-run/quick-actions/content-endpoint/) to render pages in managed headless Chrome and return crawler-ready HTML for search crawlers, social preview bots, AI indexing jobs, or partner integrations.
+
 ## 2026-06-11
 
 **New formats parameter for /snapshot**

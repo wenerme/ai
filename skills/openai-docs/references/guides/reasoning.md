@@ -350,6 +350,65 @@ Missing or dropped `phase` can cause preambles to be treated as final answers in
 
 ### Round-trip assistant phase values
 
+Round-trip assistant phase values
+
+```javascript
+import OpenAI from "openai";
+const client = new OpenAI();
+
+const response = await client.responses.create({
+  model: "gpt-5.5",
+  input: [
+    {
+      role: "assistant",
+      phase: "commentary",
+      content:
+        "I’ll inspect the logs and then summarize root cause and remediation.",
+    },
+    {
+      role: "assistant",
+      phase: "final_answer",
+      content: "Root cause: cache invalidation race.",
+    },
+    {
+      role: "user",
+      content: "Great—now give me a rollout-safe fix plan.",
+    },
+  ],
+});
+
+console.log(response.output_text);
+```
+
+```python
+from openai import OpenAI
+
+client = OpenAI()
+
+response = client.responses.create(
+    model="gpt-5.5",
+    input=[
+        {
+            "role": "assistant",
+            "phase": "commentary",
+            "content": "I’ll inspect the logs and then summarize root cause and remediation.",
+        },
+        {
+            "role": "assistant",
+            "phase": "final_answer",
+            "content": "Root cause: cache invalidation race.",
+        },
+        {
+            "role": "user",
+            "content": "Great—now give me a rollout-safe fix plan.",
+        },
+    ],
+)
+
+print(response.output_text)
+```
+
+
 ## Advice on prompting
 
 There are some differences to consider when prompting a reasoning model. Reasoning-capable GPT-5 models usually work best when you give them a clear goal, strong constraints, and an explicit output contract without prescribing every intermediate step.

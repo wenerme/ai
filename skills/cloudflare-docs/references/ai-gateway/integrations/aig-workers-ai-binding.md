@@ -75,8 +75,8 @@ You must create an AI binding for your Worker to connect to Workers AI. Bindings
 
 To bind Workers AI to your Worker, add the following to the end of your [Wrangler configuration file](https://developers.cloudflare.com/workers/wrangler/configuration/):
 
-* [  wrangler.jsonc ](#tab-panel-4373)
-* [  wrangler.toml ](#tab-panel-4374)
+* [  wrangler.jsonc ](#tab-panel-6410)
+* [  wrangler.toml ](#tab-panel-6411)
 
 JSONC
 
@@ -252,7 +252,7 @@ By completing this tutorial, you have created a Worker, connected it to Workers 
 
 ## Next steps
 
-* [Workers bindings](https://developers.cloudflare.com/ai-gateway/integrations/worker-binding-methods/) — Call third-party models, access gateway methods, and integrate with AI SDKs.
+* [Workers bindings](https://developers.cloudflare.com/ai-gateway/usage/worker-binding-methods/) — Call third-party models, access gateway methods, and integrate with AI SDKs.
 
 ```json
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/ai-gateway/","name":"AI Gateway"}},{"@type":"ListItem","position":3,"item":{"@id":"/ai-gateway/integrations/","name":"Integrations"}},{"@type":"ListItem","position":4,"item":{"@id":"/ai-gateway/integrations/aig-workers-ai-binding/","name":"Set up Workers AI with AI Gateway"}}]}

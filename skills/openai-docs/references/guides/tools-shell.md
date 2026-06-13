@@ -21,6 +21,28 @@ Use `container_auto` when you want OpenAI to provision and manage a container fo
 
 Shell tool with container_auto
 
+```bash
+curl -L 'https://api.openai.com/v1/responses' \
+  -H "Content-Type: application/json" \
+  -H "Authorization: Bearer $OPENAI_API_KEY" \
+  -d '{
+    "model": "gpt-5.5",
+    "tools": [
+      { "type": "shell", "environment": { "type": "container_auto" } }
+    ],
+    "input": [
+      {
+        "type": "message",
+        "role": "user",
+        "content": [
+          { "type": "input_text", "text": "Execute: ls -lah /mnt/data && python --version && node --version" }
+        ]
+      }
+    ],
+    "tool_choice": "auto"
+  }'
+```
+
 ```javascript
 import OpenAI from "openai";
 
@@ -100,6 +122,17 @@ If you need a long-running environment for iterative workflows, create a contain
 
 Create a reusable container
 
+```bash
+curl -L 'https://api.openai.com/v1/containers' \
+  -H "Content-Type: application/json" \
+  -H "Authorization: Bearer $OPENAI_API_KEY" \
+  -d '{
+    "name": "analysis-container",
+    "memory_limit": "1g",
+    "expires_after": { "anchor": "last_active_at", "minutes": 20 }
+  }'
+```
+
 ```javascript
 import OpenAI from "openai";
 
@@ -132,6 +165,25 @@ print(container.id)
 ### 2. Reference the container in Responses
 
 Use shell with container_reference
+
+```bash
+curl -L 'https://api.openai.com/v1/responses' \
+  -H "Content-Type: application/json" \
+  -H "Authorization: Bearer $OPENAI_API_KEY" \
+  -d '{
+    "model": "gpt-5.5",
+    "tools": [
+      {
+        "type": "shell",
+        "environment": {
+          "type": "container_reference",
+          "container_id": "cntr_08f3d96c87a585390069118b594f7481a088b16cda7d9415fe"
+        }
+      }
+    ],
+    "input": "List files in the container and show disk usage."
+  }'
+```
 
 ```javascript
 import OpenAI from "openai";
@@ -186,6 +238,19 @@ Use the [Skills guide](https://developers.openai.com/api/docs/guides/tools-skill
 
 Create a container with attached skills
 
+```bash
+curl -L 'https://api.openai.com/v1/containers' \
+  -H "Content-Type: application/json" \
+  -H "Authorization: Bearer $OPENAI_API_KEY" \
+  -d '{
+    "name": "skill-container",
+    "skills": [
+      { "type": "skill_reference", "skill_id": "skill_4db6f1a2c9e73508b41f9da06e2c7b5f" },
+      { "type": "skill_reference", "skill_id": "openai-spreadsheets", "version": "latest" }
+    ]
+  }'
+```
+
 ```javascript
 import OpenAI from "openai";
 
@@ -229,6 +294,34 @@ To enable it:
 2. You must explicitly set `network_policy` on the container environment in your request.
 
 Shell tool with network allowlist
+
+```bash
+curl -L 'https://api.openai.com/v1/responses' \
+  -H "Authorization: Bearer $OPENAI_API_KEY" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "model": "gpt-5.5",
+    "tool_choice": "required",
+    "tools": [
+      {
+        "type": "shell",
+        "environment": {
+          "type": "container_auto",
+          "network_policy": {
+            "type": "allowlist",
+            "allowed_domains": ["pypi.org", "files.pythonhosted.org", "github.com"]
+          }
+        }
+      }
+    ],
+    "input": [
+      {
+        "role": "user",
+        "content": "In the container, pip install httpx beautifulsoup4, fetch release pages, and write /mnt/data/release_digest.md."
+      }
+    ]
+  }'
+```
 
 ```javascript
 import OpenAI from "openai";
@@ -322,6 +415,64 @@ Hosted shell can produce downloadable files. Use the same container/files APIs a
 If you want to keep content and files ephemeral within the hosted lifecycle, you can inline files in the request and mount inline skills in the container.
 
 Use inline files and inline skills
+
+```bash
+INLINE_ZIP=$(base64 -i ./csv_insights.zip)
+REPORT_CSV=$(base64 -i ./report.csv)
+
+CONTAINER_ID=$(
+  curl -sL 'https://api.openai.com/v1/containers' \
+    -H "Content-Type: application/json" \
+    -H "Authorization: Bearer $OPENAI_API_KEY" \
+    -d '{
+      "name": "inline-skill-container",
+      "skills": [
+        {
+          "type": "inline",
+          "name": "csv-insights",
+          "description": "Summarize CSV files and produce a markdown report.",
+          "source": {
+            "type": "base64",
+            "media_type": "application/zip",
+            "data": "'"$INLINE_ZIP"'"
+          }
+        }
+      ]
+    }' | jq -r '.id'
+)
+
+curl -L 'https://api.openai.com/v1/responses' \
+  -H "Content-Type: application/json" \
+  -H "Authorization: Bearer $OPENAI_API_KEY" \
+  -d '{
+    "model": "gpt-5.5",
+    "tools": [
+      {
+        "type": "shell",
+        "environment": {
+          "type": "container_reference",
+          "container_id": "'"$CONTAINER_ID"'"
+        }
+      }
+    ],
+    "input": [
+      {
+        "role": "user",
+        "content": [
+          {
+            "type": "input_file",
+            "filename": "report.csv",
+            "file_data": "data:text/csv;base64,'"${REPORT_CSV}"'"
+          },
+          {
+            "type": "input_text",
+            "text": "Use the csv-insights skill to summarize report.csv."
+          }
+        ]
+      }
+    ]
+  }'
+```
 
 ```javascript
 import fs from "fs";
@@ -449,6 +600,11 @@ You can explicitly delete the container when the work is done instead of waiting
 
 Delete a container
 
+```bash
+curl -L -X DELETE 'https://api.openai.com/v1/containers/container_id' \
+  -H "Authorization: Bearer $OPENAI_API_KEY"
+```
+
 ```javascript
 import OpenAI from "openai";
 
@@ -489,6 +645,41 @@ At runtime:
 This lets the assistant call protected services while reducing leakage risk.
 
 Shell tool with domain_secrets
+
+```bash
+curl -L 'https://api.openai.com/v1/responses' \
+  -H "Authorization: Bearer $OPENAI_API_KEY" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "model": "gpt-5.5",
+    "input": [
+      {
+        "role": "user",
+        "content": "Use curl to call https://httpbin.org/headers with header Authorization: Bearer $API_KEY. Tell me what you see in the final text response."
+      }
+    ],
+    "tool_choice": "required",
+    "tools": [
+      {
+        "type": "shell",
+        "environment": {
+          "type": "container_auto",
+          "network_policy": {
+            "type": "allowlist",
+            "allowed_domains": ["httpbin.org"],
+            "domain_secrets": [
+              {
+                "domain": "httpbin.org",
+                "name": "API_KEY",
+                "value": "debug-secret-123"
+              }
+            ]
+          }
+        }
+      }
+    ]
+  }'
+```
 
 ```javascript
 import OpenAI from "openai";
@@ -574,6 +765,26 @@ To continue work in the same hosted environment, reuse the container and pass `p
 
 Continue a shell workflow
 
+```bash
+curl -L 'https://api.openai.com/v1/responses' \
+  -H "Content-Type: application/json" \
+  -H "Authorization: Bearer $OPENAI_API_KEY" \
+  -d '{
+    "model": "gpt-5.5",
+    "previous_response_id": "resp_2a8e5c9174d63b0f18a4c572de9f64a1b3c76d508e12f9ab47",
+    "tools": [
+      {
+        "type": "shell",
+        "environment": {
+          "type": "container_reference",
+          "container_id": "cntr_f19c2b51e4a06793d82d54a7be0fc9154d3361ab28ce7f6041"
+        }
+      }
+    ],
+    "input": "Read /mnt/data/top5.csv and report the top candidate."
+  }'
+```
+
 ```javascript
 import OpenAI from "openai";
 
@@ -650,11 +861,117 @@ You can also run shell commands in your own local runtime by executing `shell_ca
 
 Use this mode when you need full control over execution environment, filesystem access, or existing internal tooling.
 
+Local shell request
+
+```bash
+curl -L 'https://api.openai.com/v1/responses' \
+  -H "Content-Type: application/json" \
+  -H "Authorization: Bearer $OPENAI_API_KEY" \
+  -d '{
+    "model": "gpt-5.5",
+    "instructions": "The local bash shell environment is on Mac.",
+    "input": "find me the largest pdf file in ~/Documents",
+    "tools": [{ "type": "shell", "environment": { "type": "local" } }]
+  }'
+```
+
+```python
+from openai import OpenAI
+
+client = OpenAI()
+
+response = client.responses.create(
+    model="gpt-5.5",
+    instructions="The local bash shell environment is on Mac.",
+    input="find me the largest pdf file in ~/Documents",
+    tools=[{"type": "shell", "environment": {"type": "local"}}],
+)
+
+print(response)
+```
+
+```javascript
+import OpenAI from "openai";
+
+const client = new OpenAI();
+
+const response = await client.responses.create({
+    model: "gpt-5.5",
+    instructions: "The local bash shell environment is on Mac.",
+    input: "find me the largest pdf file in ~/Documents",
+    tools: [{ type: "shell", environment: { type: "local" } }],
+});
+
+console.log(response);
+```
+
+
 When you receive `shell_call` output items:
 
 - Execute requested commands in your runtime.
 - Capture `stdout`, `stderr`, and outcome.
 - Return results as `shell_call_output` in the next request.
+
+Local shell executor example
+
+```python
+@dataclass
+class CmdResult:
+    stdout: str
+    stderr: str
+    exit_code: int | None
+    timed_out: bool
+
+class ShellExecutor:
+    def __init__(self, default_timeout: float = 60):
+        self.default_timeout = default_timeout
+
+    def run(self, cmd: str, timeout: float | None = None) -> CmdResult:
+        t = timeout or self.default_timeout
+        p = subprocess.Popen(
+            cmd,
+            shell=True,
+            stdout=subprocess.PIPE,
+            stderr=subprocess.PIPE,
+            text=True,
+        )
+        try:
+            out, err = p.communicate(timeout=t)
+            return CmdResult(out, err, p.returncode, False)
+        except subprocess.TimeoutExpired:
+            p.kill()
+            out, err = p.communicate()
+            return CmdResult(out, err, p.returncode, True)
+```
+
+```javascript
+import { exec } from "node:child_process/promises";
+
+class ShellExecutor {
+    constructor(defaultTimeoutMs = 60_000) {
+        this.defaultTimeoutMs = defaultTimeoutMs;
+    }
+
+    async run(cmd, timeoutMs) {
+        const timeout = timeoutMs ?? this.defaultTimeoutMs;
+
+        try {
+            const { stdout, stderr } = await exec(cmd, { timeout });
+            return { stdout, stderr, exitCode: 0, timedOut: false };
+        } catch (error) {
+            const timedOut = Boolean(error?.killed) && error?.signal === "SIGTERM";
+            const exitCode = timedOut ? null : error?.code ?? null;
+            return {
+                stdout: error?.stdout ?? "",
+                stderr: error?.stderr ?? String(error),
+                exitCode,
+                timedOut,
+            };
+        }
+    }
+}
+```
+
 
 Example shell_call_output payload
 
@@ -689,6 +1006,115 @@ For legacy migration details, see the older [Local shell guide](https://develope
 ## Use local shell with Agents SDK
 
 If you are using the [Agents SDK](https://developers.openai.com/api/docs/guides/tools#usage-in-the-agents-sdk), you can pass your own shell executor implementation to the shell tool helper.
+
+Use local shell with Agents SDK
+
+```javascript
+import {
+  Agent,
+  run,
+  withTrace,
+  Shell,
+  ShellAction,
+  ShellResult,
+  shellTool,
+} from "@openai/agents";
+
+class LocalShell implements Shell {
+  async run(action: ShellAction): Promise<ShellResult> {
+    return {
+      output: [
+        {
+          stdout: "Shell is not available. Needs to be implemented first.",
+          stderr: "",
+          outcome: {
+            type: "exit",
+            exitCode: 1,
+          },
+        },
+      ],
+      maxOutputLength: action.maxOutputLength,
+    };
+  }
+}
+
+const shell = new LocalShell();
+
+const agent = new Agent({
+  name: "Shell Assistant",
+  model: "gpt-5.5",
+  instructions:
+    "You can execute shell commands to inspect the repository. Keep responses concise and include command output when helpful.",
+  tools: [
+    shellTool({
+      shell,
+      needsApproval: true,
+      onApproval: async (_ctx, _approvalItem) => {
+        return { approve: true };
+      },
+    }),
+  ],
+});
+
+await withTrace("shell-tool-example", async () => {
+  const result = await run(agent, "Show the Node.js version.");
+  console.log(`\nFinal response:\n${result.finalOutput}`);
+});
+```
+
+```python
+from agents import (
+    Agent,
+    Runner,
+    ShellCallOutcome,
+    ShellCommandOutput,
+    ShellCommandRequest,
+    ShellResult,
+    ShellTool,
+)
+
+
+class LocalShell:
+    async def __call__(self, request: ShellCommandRequest) -> ShellResult:
+        action = request.data.action
+        return ShellResult(
+            output=[
+                ShellCommandOutput(
+                    command="(not executed)",
+                    stdout="Shell is not available. Needs to be implemented first.",
+                    stderr="",
+                    outcome=ShellCallOutcome(type="exit", exit_code=1),
+                )
+            ],
+            max_output_length=action.max_output_length,
+        )
+
+
+shell_tool = ShellTool(
+    executor=LocalShell(),
+    needs_approval=True,
+    on_approval=lambda _ctx, _approval_item: {"approve": True},
+)
+
+agent = Agent(
+    name="Shell Assistant",
+    model="gpt-5.5",
+    instructions="You can execute shell commands to inspect the repository. Keep responses concise and include command output when helpful.",
+    tools=[shell_tool],
+)
+
+
+async def main():
+    result = await Runner.run(agent, input="Show the Node.js version.")
+    print(f"\nFinal response:\n{result.final_output}")
+
+
+if __name__ == "__main__":
+    import asyncio
+
+    asyncio.run(main())
+```
+
 
 You can find working examples in the SDK repositories.
 

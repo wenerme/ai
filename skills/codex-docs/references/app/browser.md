@@ -144,7 +144,9 @@ issue directly in the live browser.
 
 To enable it, open [**Settings > Browser**](codex://settings/browser-use) and,
 under **Developer mode**, turn on **Enable full CDP access**. If your
-organization has disabled this setting, you can't enable it locally.
+organization has disabled this setting, you can't enable it locally. Admins can
+set `browser_use_full_cdp_access = false` under `[features]` in
+[`requirements.toml`](https://developers.openai.com/codex/enterprise/managed-configuration#pin-feature-flags).
 
 Full CDP access lets Codex inspect and control sensitive browser internals that
 may put your data at risk. Codex asks for explicit approval before it uses full

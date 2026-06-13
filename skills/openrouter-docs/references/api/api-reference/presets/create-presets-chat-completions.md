@@ -788,6 +788,7 @@ components:
         - exa
         - firecrawl
         - parallel
+        - perplexity
       description: The search engine to use for web search.
       title: WebSearchEngine
     WebSearchPluginId:
@@ -1859,10 +1860,6 @@ components:
     AdvisorNestedTool:
       type: object
       properties:
-        function:
-          type: object
-          additionalProperties:
-            description: Any type
         parameters:
           type: object
           additionalProperties:
@@ -1872,8 +1869,9 @@ components:
       required:
         - type
       description: >-
-        A tool made available to the advisor sub-agent. Accepts function tools
-        and OpenRouter server tools (e.g. openrouter:web_search). The advisor
+        A tool made available to the advisor sub-agent. Only OpenRouter server
+        tools (e.g. openrouter:web_search) are supported; function tools are
+        rejected because the advisor has no way to execute them. The advisor
         tool may not list itself.
       title: AdvisorNestedTool
     AdvisorServerToolConfig:
@@ -1942,7 +1940,9 @@ components:
           description: >-
             Tools the advisor sub-agent may use while forming its advice. The
             advisor runs as an agentic sub-agent over these tools, then returns
-            its text. Must not include the advisor tool itself.
+            its text. Only OpenRouter server tools are supported — function
+            tools are rejected — and the list must not include the advisor tool
+            itself.
       description: Configuration for one openrouter:advisor server tool entry.
       title: AdvisorServerToolConfig
     AdvisorServerToolOpenRouterType:
@@ -2128,6 +2128,117 @@ components:
         OpenRouter built-in server tool: searches and filters AI models
         available on OpenRouter
       title: ChatSearchModelsServerTool
+    SubagentReasoningEffort:
+      type: string
+      enum:
+        - xhigh
+        - high
+        - medium
+        - low
+        - minimal
+        - none
+      description: Reasoning effort level for the subagent call.
+      title: SubagentReasoningEffort
+    SubagentReasoning:
+      type: object
+      properties:
+        effort:
+          $ref: '#/components/schemas/SubagentReasoningEffort'
+          description: Reasoning effort level for the subagent call.
+        max_tokens:
+          type: integer
+          description: >-
+            Maximum number of reasoning tokens the subagent may use. Accepted
+            and validated but not yet forwarded to the subagent call.
+      description: >-
+        Reasoning configuration forwarded to the subagent call. Use this to
+        control reasoning effort and token budget for models that support
+        extended thinking.
+      title: SubagentReasoning
+    SubagentNestedTool:
+      type: object
+      properties:
+        parameters:
+          type: object
+          additionalProperties:
+            description: Any type
+        type:
+          type: string
+      required:
+        - type
+      description: >-
+        A tool made available to the subagent. Only OpenRouter server tools
+        (e.g. openrouter:web_search) are supported; function tools are rejected
+        because the worker has no way to execute them. The subagent tool may not
+        list itself.
+      title: SubagentNestedTool
+    SubagentServerToolConfig:
+      type: object
+      properties:
+        instructions:
+          type: string
+          description: >-
+            System instructions for the subagent. When omitted, the subagent
+            responds with no system prompt of its own.
+        max_completion_tokens:
+          type: integer
+          description: >-
+            Maximum number of output tokens (including reasoning) the subagent
+            may produce. When omitted, the provider's default applies.
+        max_tool_calls:
+          type: integer
+          description: >-
+            Maximum number of tool-calling steps the subagent may take during
+            its agentic loop. Capped at 25. Only relevant when the subagent is
+            given tools. Accepted and validated but not yet enforced on the
+            subagent call.
+        model:
+          type: string
+          description: >-
+            Slug of the model that executes delegated tasks (any OpenRouter
+            model). Typically a smaller, cheaper, faster model than the one
+            delegating. When omitted, the model from the outer API request is
+            used. The subagent tool itself cannot be the subagent model.
+        reasoning:
+          $ref: '#/components/schemas/SubagentReasoning'
+        temperature:
+          type: number
+          format: double
+          description: >-
+            Sampling temperature forwarded to the subagent call. When omitted,
+            the provider's default applies.
+        tools:
+          type: array
+          items:
+            $ref: '#/components/schemas/SubagentNestedTool'
+          description: >-
+            Tools the subagent may use while executing a delegated task. The
+            subagent runs as an agentic sub-agent over these tools, then returns
+            its outcome. Only OpenRouter server tools are supported — function
+            tools are rejected — and the list must not include the subagent tool
+            itself.
+      description: Configuration for the openrouter:subagent server tool.
+      title: SubagentServerToolConfig
+    SubagentServerToolOpenRouterType:
+      type: string
+      enum:
+        - openrouter:subagent
+      title: SubagentServerToolOpenRouterType
+    SubagentServerTool_OpenRouter:
+      type: object
+      properties:
+        parameters:
+          $ref: '#/components/schemas/SubagentServerToolConfig'
+        type:
+          $ref: '#/components/schemas/SubagentServerToolOpenRouterType'
+      required:
+        - type
+      description: >-
+        OpenRouter built-in server tool: delegates self-contained tasks to a
+        smaller, cheaper, faster worker model (any OpenRouter model)
+        mid-generation and returns its outcome. The worker may run as a
+        sub-agent with its own tools.
+      title: SubagentServerTool_OpenRouter
     WebFetchEngineEnum:
       type: string
       enum:
@@ -2192,16 +2303,18 @@ components:
     WebSearchEngineEnum:
       type: string
       enum:
-        - auto
         - native
         - exa
         - parallel
         - firecrawl
+        - perplexity
+        - auto
       description: >-
         Which search engine to use. "auto" (default) uses native if the provider
         supports it, otherwise Exa. "native" forces the provider's built-in
         search. "exa" forces the Exa search API. "firecrawl" uses Firecrawl
-        (requires BYOK). "parallel" uses the Parallel search API.
+        (requires BYOK). "parallel" uses the Parallel search API. "perplexity"
+        uses the Perplexity Search API (raw ranked results).
       title: WebSearchEngineEnum
     SearchQualityLevel:
       type: string
@@ -2210,14 +2323,15 @@ components:
         - medium
         - high
       description: >-
-        How much context to retrieve per result. Applies to Exa and Parallel
-        engines; ignored with native provider search and Firecrawl. For Exa,
-        pins a fixed per-result character cap (low=5,000, medium=15,000,
-        high=30,000); when omitted, Exa picks an adaptive size per query and
-        document (typically ~2,000–4,000 characters per result). For Parallel,
-        controls the total characters across all results; when omitted, Parallel
-        uses its own default size. Overridden by `max_characters` when both are
-        set.
+        How much context to retrieve per result. Applies to Exa, Parallel, and
+        Perplexity engines; ignored with native provider search and Firecrawl.
+        For Exa, pins a fixed per-result character cap (low=5,000,
+        medium=15,000, high=30,000); when omitted, Exa picks an adaptive size
+        per query and document (typically ~2,000–4,000 characters per result).
+        For Parallel, controls the total characters across all results; when
+        omitted, Parallel uses its own default size. For Perplexity, maps
+        directly to the Search API's native search_context_size parameter.
+        Overridden by `max_characters` when both are set.
       title: SearchQualityLevel
     WebSearchUserLocationServerToolType:
       type: string
@@ -2256,8 +2370,8 @@ components:
             type: string
           description: >-
             Limit search results to these domains. Supported by Exa, Firecrawl,
-            Parallel, and most native providers (Anthropic, OpenAI, xAI). Not
-            supported with Perplexity. Cannot be used with excluded_domains.
+            Parallel, Perplexity, and most native providers (Anthropic, OpenAI,
+            xAI). Cannot be used with excluded_domains.
         engine:
           $ref: '#/components/schemas/WebSearchEngineEnum'
         excluded_domains:
@@ -2266,26 +2380,27 @@ components:
             type: string
           description: >-
             Exclude search results from these domains. Supported by Exa,
-            Firecrawl, Parallel, Anthropic, and xAI. Not supported with OpenAI
-            (silently ignored) or Perplexity. Cannot be used with
-            allowed_domains.
+            Firecrawl, Parallel, Perplexity, Anthropic, and xAI. Not supported
+            with OpenAI (silently ignored). Cannot be used with allowed_domains.
         max_characters:
           type: integer
           description: >-
             Exact maximum number of characters of content per search result.
-            Applies to the Exa and Parallel engines; ignored with native
-            provider search and Firecrawl. For Exa, caps highlight content per
-            result. For Parallel, caps excerpt content per result (default 1,500
-            when omitted). When both `max_characters` and `search_context_size`
-            are set, `max_characters` takes precedence for both engines. When
-            omitted, falls back to `search_context_size` mapping (Exa) or engine
-            defaults (Parallel).
+            Applies to the Exa, Parallel, and Perplexity engines; ignored with
+            native provider search and Firecrawl. For Exa, caps highlight
+            content per result. For Parallel, caps excerpt content per result
+            (default 1,500 when omitted). For Perplexity, maps to the native
+            `max_tokens_per_page` parameter (converted from characters to
+            tokens) and trims the response to the exact character cap. When both
+            `max_characters` and `search_context_size` are set, `max_characters`
+            takes precedence. When omitted, falls back to `search_context_size`
+            mapping (Exa) or engine defaults (Parallel, Perplexity).
         max_results:
           type: integer
           description: >-
             Maximum number of search results to return per search call. Defaults
-            to 5. Applies to Exa, Firecrawl, and Parallel engines; ignored with
-            native provider search.
+            to 5. Applies to Exa, Firecrawl, Parallel, and Perplexity engines;
+            ignored with native provider search.
         max_total_results:
           type: integer
           description: >-
@@ -2333,8 +2448,8 @@ components:
             type: string
           description: >-
             Limit search results to these domains. Supported by Exa, Firecrawl,
-            Parallel, and most native providers (Anthropic, OpenAI, xAI). Not
-            supported with Perplexity. Cannot be used with excluded_domains.
+            Parallel, Perplexity, and most native providers (Anthropic, OpenAI,
+            xAI). Cannot be used with excluded_domains.
         engine:
           $ref: '#/components/schemas/WebSearchEngineEnum'
         excluded_domains:
@@ -2343,26 +2458,27 @@ components:
             type: string
           description: >-
             Exclude search results from these domains. Supported by Exa,
-            Firecrawl, Parallel, Anthropic, and xAI. Not supported with OpenAI
-            (silently ignored) or Perplexity. Cannot be used with
-            allowed_domains.
+            Firecrawl, Parallel, Perplexity, Anthropic, and xAI. Not supported
+            with OpenAI (silently ignored). Cannot be used with allowed_domains.
         max_characters:
           type: integer
           description: >-
             Exact maximum number of characters of content per search result.
-            Applies to the Exa and Parallel engines; ignored with native
-            provider search and Firecrawl. For Exa, caps highlight content per
-            result. For Parallel, caps excerpt content per result (default 1,500
-            when omitted). When both `max_characters` and `search_context_size`
-            are set, `max_characters` takes precedence for both engines. When
-            omitted, falls back to `search_context_size` mapping (Exa) or engine
-            defaults (Parallel).
+            Applies to the Exa, Parallel, and Perplexity engines; ignored with
+            native provider search and Firecrawl. For Exa, caps highlight
+            content per result. For Parallel, caps excerpt content per result
+            (default 1,500 when omitted). For Perplexity, maps to the native
+            `max_tokens_per_page` parameter (converted from characters to
+            tokens) and trims the response to the exact character cap. When both
+            `max_characters` and `search_context_size` are set, `max_characters`
+            takes precedence. When omitted, falls back to `search_context_size`
+            mapping (Exa) or engine defaults (Parallel, Perplexity).
         max_results:
           type: integer
           description: >-
             Maximum number of search results to return per search call. Defaults
-            to 5. Applies to Exa, Firecrawl, and Parallel engines; ignored with
-            native provider search.
+            to 5. Applies to Exa, Firecrawl, Parallel, and Perplexity engines;
+            ignored with native provider search.
         max_total_results:
           type: integer
           description: >-
@@ -2392,6 +2508,7 @@ components:
         - $ref: '#/components/schemas/DatetimeServerTool'
         - $ref: '#/components/schemas/ImageGenerationServerTool_OpenRouter'
         - $ref: '#/components/schemas/ChatSearchModelsServerTool'
+        - $ref: '#/components/schemas/SubagentServerTool_OpenRouter'
         - $ref: '#/components/schemas/WebFetchServerTool'
         - $ref: '#/components/schemas/OpenRouterWebSearchServerTool'
         - $ref: '#/components/schemas/ChatWebSearchShorthand'

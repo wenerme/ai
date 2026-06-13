@@ -111,7 +111,7 @@ Pass an optional `parameters` object on the tool entry:
 | ----------------------- | ---------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | `name`                  | None (default advisor) | Optional name for this advisor. The model sees one tool per named advisor (plus one default for an entry with no `name`). Names must be unique across entries. Letters, digits, spaces, underscores, and dashes; trimmed; 1–64 chars. See [Multiple advisors](#multiple-advisors). |
 | `model`                 | Outer request model    | The advisor model to consult (any OpenRouter model). See [Choosing the advisor model](#choosing-the-advisor-model).                                                                                                                                                                |
-| `tools`                 | None                   | Tools made available to the advisor sub-agent (function tools and OpenRouter server tools such as `openrouter:web_search`). The advisor may not list itself.                                                                                                                       |
+| `tools`                 | None                   | Tools made available to the advisor sub-agent. Only OpenRouter server tools (such as `openrouter:web_search`) are supported; function tools are rejected with a `400` because the advisor has no way to execute them. The advisor may not list itself.                             |
 | `instructions`          | None                   | System instructions for the advisor sub-agent.                                                                                                                                                                                                                                     |
 | `forward_transcript`    | `false`                | When `true`, the full parent conversation is forwarded to the advisor (and the tool-call `prompt`, if given, is appended as a final user turn). When `false`, the advisor sees only the `prompt`.                                                                                  |
 | `stream`                | `false`                | When `true`, the advice streams incrementally as it is produced (Responses API only). See [Streaming advice](#streaming-advice).                                                                                                                                                   |
@@ -280,6 +280,8 @@ Notes on the native shape:
 ## Sub-agent tools
 
 When you pass `tools`, the advisor runs as an agentic sub-agent over them before producing its advice — for example, giving the advisor `openrouter:web_search` lets it ground its guidance in fresh sources. The advisor's tool use happens inside the tool call; only its final text is returned to your model.
+
+Nested tools must be OpenRouter server tools (for example `openrouter:web_search` or `openrouter:web_fetch`). Function tools (`{ "type": "function" }`) are rejected with a `400`: the advisor call has no client-side executor, so a function tool call could never be fulfilled.
 
 ## Recursion protection
 

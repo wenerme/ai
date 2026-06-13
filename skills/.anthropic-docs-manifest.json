@@ -614,8 +614,8 @@
   "anthropic-docs/managed-agents/self-hosted-sandboxes.md": {
     "url": "https://platform.claude.com/docs/en/managed-agents/self-hosted-sandboxes",
     "skill": "anthropic-docs",
-    "size": 43663,
-    "updatedAt": "2026-06-12T00:35:49.782Z"
+    "size": 43790,
+    "updatedAt": "2026-06-13T00:36:38.474Z"
   },
   "anthropic-docs/managed-agents/self-hosted-sandboxes-security.md": {
     "url": "https://platform.claude.com/docs/en/managed-agents/self-hosted-sandboxes-security",
@@ -772,14 +772,14 @@
   "anthropic-docs/manage-claude/wif-providers/azure.md": {
     "url": "https://platform.claude.com/docs/en/manage-claude/wif-providers/azure",
     "skill": "anthropic-docs",
-    "size": 37301,
-    "updatedAt": "2026-06-12T11:17:55.629Z"
+    "size": 37617,
+    "updatedAt": "2026-06-13T00:36:46.537Z"
   },
   "anthropic-docs/manage-claude/wif-providers/github-actions.md": {
     "url": "https://platform.claude.com/docs/en/manage-claude/wif-providers/github-actions",
     "skill": "anthropic-docs",
-    "size": 13791,
-    "updatedAt": "2026-06-12T00:35:58.515Z"
+    "size": 13793,
+    "updatedAt": "2026-06-13T00:36:46.845Z"
   },
   "anthropic-docs/manage-claude/wif-providers/kubernetes.md": {
     "url": "https://platform.claude.com/docs/en/manage-claude/wif-providers/kubernetes",

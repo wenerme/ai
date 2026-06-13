@@ -14,6 +14,11 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 [ Subscribe to RSS ](https://developers.cloudflare.com/workers-ai/changelog/index.xml)
 
+## 2026-06-12
+
+**Moonshot AI Kimi K2.7 Code now available on Workers AI**
+* [@cf/moonshotai/kimi-k2.7-code](https://developers.cloudflare.com/workers-ai/models/kimi-k2.7-code/) now available on Workers AI. A frontier-scale 1T parameter MoE model optimized for coding, with a 262.1k context window, vision, multi-turn tool calling, and reasoning. Read [changelog](https://developers.cloudflare.com/changelog/post/2026-06-12-kimi-k2-7-code-workers-ai/) to get started.
+
 ## 2026-05-08
 
 **Planned model deprecations**

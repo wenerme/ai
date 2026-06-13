@@ -1,7 +1,18 @@
 # Assistants File Search
 
-export const snippetStep1 = {
-  python: `
+## Overview
+
+File Search augments the Assistant with knowledge from outside its model, such as proprietary product information or documents provided by your users. OpenAI automatically parses and chunks your documents, creates and stores the embeddings, and use both vector and keyword search to retrieve relevant content to answer user queries.
+
+## Quickstart
+
+In this example, we’ll create an assistant that can help answer questions about companies’ financial statements.
+
+### Step 1: Create a new Assistant with File Search Enabled
+
+Create a new assistant with `file_search` enabled in the `tools` parameter of the Assistant.
+
+```python
 from openai import OpenAI
 
 client = OpenAI()
@@ -12,9 +23,10 @@ instructions="You are an expert financial analyst. Use you knowledge base to ans
 model="gpt-4o",
 tools=[{"type": "file_search"}],
 )
-`.trim(),
-  "node.js": `
+```
 
+```javascript
+import OpenAI from "openai";
 const openai = new OpenAI();
 
 async function main() {
@@ -27,23 +39,32 @@ tools: [{ type: "file_search" }],
 }
 
 main();
-`.trim(),
-  curl: `
-curl https://api.openai.com/v1/assistants \\
--H "Content-Type: application/json" \\
--H "Authorization: Bearer $OPENAI_API_KEY" \\
--H "OpenAI-Beta: assistants=v2" \\
+```
+
+```bash
+curl https://api.openai.com/v1/assistants \
+-H "Content-Type: application/json" \
+-H "Authorization: Bearer $OPENAI_API_KEY" \
+-H "OpenAI-Beta: assistants=v2" \
 -d '{
 "name": "Financial Analyst Assistant",
 "instructions": "You are an expert financial analyst. Use you knowledge base to answer questions about audited financial statements.",
 "tools": [{"type": "file_search"}],
 "model": "gpt-4o"
 }'
-`.trim(),
-};
+```
 
-export const snippetStep2 = {
-  python: `
+
+Once the `file_search` tool is enabled, the model decides when to retrieve content based on user messages.
+
+### Step 2: Upload files and add them to a Vector Store
+
+To access your files, the `file_search` tool uses the Vector Store object.
+Upload your files and create a Vector Store to contain them.
+Once the Vector Store is created, you should poll its status until all files are out of the `in_progress` state to
+ensure that all content has finished processing. The SDK provides helpers to uploading and polling in one shot.
+
+```python
 # Create a vector store called "Financial Statements"
 vector_store = client.vector_stores.create(name="Financial Statements")
 
@@ -64,8 +85,9 @@ vector_store_id=vector_store.id, files=file_streams
 
 print(file_batch.status)
 print(file_batch.file_counts)
-`.trim(),
-  "node.js": `
+```
+
+```javascript
 const fileStreams = ["edgar/goog-10k.pdf", "edgar/brka-10k.txt"].map((path) =>
 fs.createReadStream(path),
 );
@@ -76,25 +98,34 @@ name: "Financial Statement",
 });
 
 await openai.vectorStores.fileBatches.uploadAndPoll(vectorStore.id, fileStreams)
-`.trim(),
-};
+```
 
-export const snippetStep3 = {
-  python: `
+
+### Step 3: Update the assistant to use the new Vector Store
+
+To make the files accessible to your assistant, update the assistant’s `tool_resources` with the new `vector_store` id.
+
+```python
 assistant = client.beta.assistants.update(
   assistant_id=assistant.id,
   tool_resources={"file_search": {"vector_store_ids": [vector_store.id]}},
 )
-  `.trim(),
-  "node.js": `
+```
+
+```javascript
 await openai.beta.assistants.update(assistant.id, {
   tool_resources: { file_search: { vector_store_ids: [vectorStore.id] } },
 });
-  `.trim(),
-};
+```
 
-export const snippetStep4 = {
-  python: `
+
+### Step 4: Create a thread
+
+You can also attach files as Message attachments on your thread. Doing so will create another `vector_store` associated with the thread, or, if there is already a vector store attached to this thread, attach the new files to the existing thread vector store. When you create a Run on this thread, the file search tool will query both the `vector_store` from your assistant and the `vector_store` on the thread.
+
+In this example, the user attached a copy of Apple’s latest 10-K filing.
+
+```python
 # Upload the user provided file to OpenAI
 message_file = client.files.create(
   file=open("edgar/aapl-10k.pdf", "rb"), purpose="assistants"
@@ -117,8 +148,9 @@ messages=[
 # The thread now has a vector store with that file in its tool resources.
 
 print(thread.tool_resources.file_search)
-`.trim(),
-  "node.js": `
+```
+
+```javascript
 // A user wants to attach a file to a specific message, let's upload it.
 const aapl10k = await openai.files.create({
 file: fs.createReadStream("edgar/aapl-10k.pdf"),
@@ -139,11 +171,20 @@ attachments: [{ file_id: aapl10k.id, tools: [{ type: "file_search" }] }],
 
 // The thread now has a vector store in its tool resources.
 console.log(thread.tool_resources?.file_search);
-`.trim(),
-};
+```
 
-export const snippetStep5WithStreaming = {
-  python: `
+
+Vector stores created using message attachments have a default expiration policy of 7 days after they were last active (defined as the last time the vector store was part of a run). This default exists to help you manage your vector storage costs. You can override these expiration policies at any time. Learn more [here](#managing-costs-with-expiration-policies).
+
+### Step 5: Create a run and check the output
+
+Now, create a Run and observe that the model uses the File Search tool to provide a response to the user’s question.
+
+
+
+<div data-content-switcher-pane data-value="streaming">
+    <div class="hidden">With streaming</div>
+    ```python
 from typing_extensions import override
 from openai import AssistantEventHandler, OpenAI
 
@@ -152,11 +193,11 @@ client = OpenAI()
 class EventHandler(AssistantEventHandler):
 @override
 def on_text_created(self, text) -> None:
-print(f"\\nassistant > ", end="", flush=True)
+print(f"\nassistant > ", end="", flush=True)
 
     @override
     def on_tool_call_created(self, tool_call):
-        print(f"\\nassistant > {tool_call.type}\\n", flush=True)
+        print(f"\nassistant > {tool_call.type}\n", flush=True)
 
     @override
     def on_message_done(self, message) -> None:
@@ -173,7 +214,7 @@ print(f"\\nassistant > ", end="", flush=True)
                 citations.append(f"[{index}] {cited_file.filename}")
 
         print(message_content.value)
-        print("\\n".join(citations))
+        print("\n".join(citations))
 
 # Then, we use the stream SDK helper
 
@@ -188,8 +229,9 @@ instructions="Please address the user as Jane Doe. The user has a premium accoun
 event_handler=EventHandler(),
 ) as stream:
 stream.until_done()
-`.trim(),
-  "node.js": `
+```
+
+```javascript
 const stream = openai.beta.threads.runs
 .stream(thread.id, {
 assistant_id: assistant.id,
@@ -214,14 +256,14 @@ const citations: string[] = [];
       }
 
       console.log(text.value);
-      console.log(citations.join("\\n"));
+      console.log(citations.join("\n"));
     }
+```
 
-`.trim(),
-};
-
-export const snippetStep5WithoutStreaming = {
-  python: `
+  </div>
+  <div data-content-switcher-pane data-value="without-streaming" hidden>
+    <div class="hidden">Without streaming</div>
+    ```python
 # Use the create and poll SDK helper to create a run and poll the status of
 # the run until it's in a terminal state.
 
@@ -241,9 +283,10 @@ cited_file = client.files.retrieve(file_citation.file_id)
 citations.append(f"[{index}] {cited_file.filename}")
 
 print(message_content.value)
-print("\\n".join(citations))
-`.trim(),
-  "node.js": `
+print("\n".join(citations))
+```
+
+```javascript
 const run = await openai.beta.threads.runs.createAndPoll(thread.id, {
 assistant_id: assistant.id,
 });
@@ -270,272 +313,11 @@ index++;
 }
 
 console.log(text.value);
-console.log(citations.join("\\n"));
+console.log(citations.join("\n"));
 }
-`.trim(),
-};
+```
 
-export const snippetCreatingVectorStores = {
-  python: `
-vector_store = client.vector_stores.create(
-  name="Product Documentation",
-  file_ids=['file_1', 'file_2', 'file_3', 'file_4', 'file_5']
-)
-  `.trim(),
-  "node.js": `
-const vectorStore = await openai.vectorStores.create({
-  name: "Product Documentation",
-  file_ids: ['file_1', 'file_2', 'file_3', 'file_4', 'file_5']
-});
-  `.trim(),
-};
-
-export const snippetVectorStoresAddFile = {
-  python: `
-file = client.vector_stores.files.create_and_poll(
-  vector_store_id="vs_abc123",
-  file_id="file-abc123"
-)
-  `.trim(),
-  "node.js": `
-const file = await openai.vectorStores.files.createAndPoll(
-  "vs_abc123",
-  { file_id: "file-abc123" }
-);
-  `.trim(),
-};
-
-export const snippetVectorStoresAddBatch = {
-  python: `
-batch = client.vector_stores.file_batches.create_and_poll(
-  vector_store_id="vs_abc123",
-  files=[
-    {
-      "file_id": "file_1",
-      "attributes": {"category": "finance"}
-    },
-    {
-      "file_id": "file_2",
-      "chunking_strategy": {
-        "type": "static",
-        "max_chunk_size_tokens": 1000,
-        "chunk_overlap_tokens": 200
-      }
-    }
-  ]
-)
-  `.trim(),
-  "node.js": `
-const batch = await openai.vectorStores.fileBatches.createAndPoll(
-  "vs_abc123",
-  {
-    files: [
-      {
-        file_id: "file_1",
-        attributes: { category: "finance" },
-      },
-      {
-        file_id: "file_2",
-        chunking_strategy: {
-          type: "static",
-          max_chunk_size_tokens: 1000,
-          chunk_overlap_tokens: 200,
-        },
-      },
-    ],
-  },
-);
-  `.trim(),
-};
-
-export const snippetAttachingVectorStores = {
-  python: `
-assistant = client.beta.assistants.create(
-  instructions="You are a helpful product support assistant and you answer questions based on the files provided to you.",
-  model="gpt-4o",
-  tools=[{"type": "file_search"}],
-  tool_resources={
-    "file_search": {
-      "vector_store_ids": ["vs_1"]
-    }
-  }
-)
-
-thread = client.beta.threads.create(
-messages=[ { "role": "user", "content": "How do I cancel my subscription?"} ],
-tool_resources={
-"file_search": {
-"vector_store_ids": ["vs_2"]
-}
-}
-)
-`.trim(),
-  "node.js": `
-const assistant = await openai.beta.assistants.create({
-instructions: "You are a helpful product support assistant and you answer questions based on the files provided to you.",
-model: "gpt-4o",
-tools: [{"type": "file_search"}],
-tool_resources: {
-"file_search": {
-"vector_store_ids": ["vs_1"]
-}
-}
-});
-
-const thread = await openai.beta.threads.create({
-messages: [ { role: "user", content: "How do I cancel my subscription?"} ],
-tool_resources: {
-"file_search": {
-"vector_store_ids": ["vs_2"]
-}
-}
-});
-`.trim(),
-};
-
-export const snippetFileSearchChunks = {
-  python: `
-from openai import OpenAI
-client = OpenAI()
-
-run_step = client.beta.threads.runs.steps.retrieve(
-thread_id="thread_abc123",
-run_id="run_abc123",
-step_id="step_abc123",
-include=["step_details.tool_calls[*].file_search.results[*].content"]
-)
-
-print(run_step)
-`.trim(),
-  "node.js": `
-
-const openai = new OpenAI();
-
-const runStep = await openai.beta.threads.runs.steps.retrieve(
-"thread_abc123",
-"run_abc123",
-"step_abc123",
-{
-include: ["step_details.tool_calls[*].file_search.results[*].content"]
-}
-);
-
-console.log(runStep);
-`.trim(),
-  curl: `
-curl -g https://api.openai.com/v1/threads/thread_abc123/runs/run_abc123/steps/step_abc123?include[]=step_details.tool_calls[*].file_search.results[*].content \\
--H "Authorization: Bearer $OPENAI_API_KEY" \\
--H "Content-Type: application/json" \\
--H "OpenAI-Beta: assistants=v2"
-`.trim(),
-};
-
-export const snippetExpiration = {
-  python: `
-vector_store = client.vector_stores.create_and_poll(
-  name="Product Documentation",
-  file_ids=['file_1', 'file_2', 'file_3', 'file_4', 'file_5'],
-  expires_after={
-    "anchor": "last_active_at",
-    "days": 7
-  }
-)
-  `.trim(),
-  "node.js": `
-let vectorStore = await openai.vectorStores.create({
-  name: "rag-store",
-  file_ids: ['file_1', 'file_2', 'file_3', 'file_4', 'file_5'],
-  expires_after: {
-    anchor: "last_active_at",
-    days: 7
-  }
-});
-  `.trim(),
-};
-
-export const snippetRecreatingVectorStore = {
-  python: `
-all_files = list(client.vector_stores.files.list("vs_expired"))
-
-vector_store = client.vector_stores.create(name="rag-store")
-client.beta.threads.update(
-"thread_abc123",
-tool_resources={"file_search": {"vector_store_ids": [vector_store.id]}},
-)
-
-for file_batch in chunked(all_files, 100):
-client.vector_stores.file_batches.create_and_poll(
-vector_store_id=vector_store.id, file_ids=[file.id for file in file_batch]
-)
-`.trim(),
-  "node.js": `
-const fileIds = [];
-for await (const file of openai.vectorStores.files.list(
-"vs_toWTk90YblRLCkbE2xSVoJlF",
-)) {
-fileIds.push(file.id);
-}
-
-const vectorStore = await openai.vectorStores.create({
-name: "rag-store",
-});
-await openai.beta.threads.update("thread_abcd", {
-tool_resources: { file_search: { vector_store_ids: [vectorStore.id] } },
-});
-
-for (const fileBatch of \_.chunk(fileIds, 100)) {
-await openai.vectorStores.fileBatches.create(vectorStore.id, {
-file_ids: fileBatch,
-});
-}
-`.trim(),
-};
-
-## Overview
-
-File Search augments the Assistant with knowledge from outside its model, such as proprietary product information or documents provided by your users. OpenAI automatically parses and chunks your documents, creates and stores the embeddings, and use both vector and keyword search to retrieve relevant content to answer user queries.
-
-## Quickstart
-
-In this example, we’ll create an assistant that can help answer questions about companies’ financial statements.
-
-### Step 1: Create a new Assistant with File Search Enabled
-
-Create a new assistant with `file_search` enabled in the `tools` parameter of the Assistant.
-
-Once the `file_search` tool is enabled, the model decides when to retrieve content based on user messages.
-
-### Step 2: Upload files and add them to a Vector Store
-
-To access your files, the `file_search` tool uses the Vector Store object.
-Upload your files and create a Vector Store to contain them.
-Once the Vector Store is created, you should poll its status until all files are out of the `in_progress` state to
-ensure that all content has finished processing. The SDK provides helpers to uploading and polling in one shot.
-
-### Step 3: Update the assistant to use the new Vector Store
-
-To make the files accessible to your assistant, update the assistant’s `tool_resources` with the new `vector_store` id.
-
-### Step 4: Create a thread
-
-You can also attach files as Message attachments on your thread. Doing so will create another `vector_store` associated with the thread, or, if there is already a vector store attached to this thread, attach the new files to the existing thread vector store. When you create a Run on this thread, the file search tool will query both the `vector_store` from your assistant and the `vector_store` on the thread.
-
-In this example, the user attached a copy of Apple’s latest 10-K filing.
-
-Vector stores created using message attachments have a default expiration policy of 7 days after they were last active (defined as the last time the vector store was part of a run). This default exists to help you manage your vector storage costs. You can override these expiration policies at any time. Learn more [here](#managing-costs-with-expiration-policies).
-
-### Step 5: Create a run and check the output
-
-Now, create a Run and observe that the model uses the File Search tool to provide a response to the user’s question.
-
-
-
-<div data-content-switcher-pane data-value="streaming">
-    <div class="hidden">With streaming</div>
-    </div>
-  <div data-content-switcher-pane data-value="without-streaming" hidden>
-    <div class="hidden">Without streaming</div>
-    </div>
+  </div>
 
 
 
@@ -580,17 +362,90 @@ Vector Store objects give the File Search tool the ability to search your files.
 
 You can create a vector store and add files to it in a single API call:
 
+```python
+vector_store = client.vector_stores.create(
+  name="Product Documentation",
+  file_ids=['file_1', 'file_2', 'file_3', 'file_4', 'file_5']
+)
+```
+
+```javascript
+const vectorStore = await openai.vectorStores.create({
+  name: "Product Documentation",
+  file_ids: ['file_1', 'file_2', 'file_3', 'file_4', 'file_5']
+});
+```
+
+
 Adding files to vector stores is an async operation. To ensure the operation is complete, we recommend that you use the 'create and poll' helpers in our official SDKs. If you're not using the SDKs, you can retrieve the `vector_store` object and monitor its [`file_counts`](https://developers.openai.com/api/docs/api-reference/vector-stores/object#vector-stores/object-file_counts) property to see the result of the file ingestion operation.
 
 Files can also be added to a vector store after it's created by [creating vector store files](https://developers.openai.com/api/docs/api-reference/vector-stores/createFile).
 
 Adding files is rate limited per vector store ID. Requests to `/vector_stores/{vector_store_id}/files` and `/vector_stores/{vector_store_id}/file_batches` share a per-vector-store limit of 300 requests per minute.
 
+```python
+file = client.vector_stores.files.create_and_poll(
+  vector_store_id="vs_abc123",
+  file_id="file-abc123"
+)
+```
+
+```javascript
+const file = await openai.vectorStores.files.createAndPoll(
+  "vs_abc123",
+  { file_id: "file-abc123" }
+);
+```
+
+
 Alternatively, you can add several files to a vector store by [creating batches](https://developers.openai.com/api/docs/api-reference/vector-stores/createBatch) of up to 500 files.
 
 Batch creation accepts either a simple list of `file_ids` or a `files` array made up of objects with a `file_id` plus optional `attributes` and `chunking_strategy`. Use `files` when you need per-file metadata or chunking settings, and note that `file_ids` and `files` are mutually exclusive in a single request.
 
 For high-throughput ingestion into one vector store, prefer file batches whenever possible to reduce request volume and improve latency.
+
+```python
+batch = client.vector_stores.file_batches.create_and_poll(
+  vector_store_id="vs_abc123",
+  files=[
+    {
+      "file_id": "file_1",
+      "attributes": {"category": "finance"}
+    },
+    {
+      "file_id": "file_2",
+      "chunking_strategy": {
+        "type": "static",
+        "max_chunk_size_tokens": 1000,
+        "chunk_overlap_tokens": 200
+      }
+    }
+  ]
+)
+```
+
+```javascript
+const batch = await openai.vectorStores.fileBatches.createAndPoll(
+  "vs_abc123",
+  {
+    files: [
+      {
+        file_id: "file_1",
+        attributes: { category: "finance" },
+      },
+      {
+        file_id: "file_2",
+        chunking_strategy: {
+          type: "static",
+          max_chunk_size_tokens: 1000,
+          chunk_overlap_tokens: 200,
+        },
+      },
+    ],
+  },
+);
+```
+
 
 Similarly, these files can be removed from a vector store by either:
 
@@ -604,6 +459,51 @@ File Search supports a variety of file formats including `.pdf`, `.md`, and `.do
 #### Attaching vector stores
 
 You can attach vector stores to your Assistant or Thread using the `tool_resources` parameter.
+
+```python
+assistant = client.beta.assistants.create(
+  instructions="You are a helpful product support assistant and you answer questions based on the files provided to you.",
+  model="gpt-4o",
+  tools=[{"type": "file_search"}],
+  tool_resources={
+    "file_search": {
+      "vector_store_ids": ["vs_1"]
+    }
+  }
+)
+
+thread = client.beta.threads.create(
+messages=[ { "role": "user", "content": "How do I cancel my subscription?"} ],
+tool_resources={
+"file_search": {
+"vector_store_ids": ["vs_2"]
+}
+}
+)
+```
+
+```javascript
+const assistant = await openai.beta.assistants.create({
+instructions: "You are a helpful product support assistant and you answer questions based on the files provided to you.",
+model: "gpt-4o",
+tools: [{"type": "file_search"}],
+tool_resources: {
+"file_search": {
+"vector_store_ids": ["vs_1"]
+}
+}
+});
+
+const thread = await openai.beta.threads.create({
+messages: [ { role: "user", content: "How do I cancel my subscription?"} ],
+tool_resources: {
+"file_search": {
+"vector_store_ids": ["vs_2"]
+}
+}
+});
+```
+
 
 You can also attach a vector store to Threads or Assistants after they're created by updating them with the right `tool_resources`.
 
@@ -646,6 +546,46 @@ By default, the file search tool will return all search results to the model tha
 
 The first step in improving the quality of your file search results is inspecting the current behavior of your assistant. Most often, this will involve investigating responses from your assistant that are not not performing well. You can get [granular information about a past run step](https://developers.openai.com/api/docs/api-reference/run-steps/getRunStep) using the REST API, specifically using the `include` query parameter to get the file chunks that are being used to generate results.
 
+Include file search results in response when creating a run
+
+```python
+from openai import OpenAI
+client = OpenAI()
+
+run_step = client.beta.threads.runs.steps.retrieve(
+thread_id="thread_abc123",
+run_id="run_abc123",
+step_id="step_abc123",
+include=["step_details.tool_calls[*].file_search.results[*].content"]
+)
+
+print(run_step)
+```
+
+```javascript
+import OpenAI from "openai";
+const openai = new OpenAI();
+
+const runStep = await openai.beta.threads.runs.steps.retrieve(
+"thread_abc123",
+"run_abc123",
+"step_abc123",
+{
+include: ["step_details.tool_calls[*].file_search.results[*].content"]
+}
+);
+
+console.log(runStep);
+```
+
+```bash
+curl -g https://api.openai.com/v1/threads/thread_abc123/runs/run_abc123/steps/step_abc123?include[]=step_details.tool_calls[*].file_search.results[*].content \
+-H "Authorization: Bearer $OPENAI_API_KEY" \
+-H "Content-Type: application/json" \
+-H "OpenAI-Beta: assistants=v2"
+```
+
+
 You can then log and inspect the search results used during the run step, and determine whether or not they are consistently relevant to the responses your assistant should generate.
 
 **Configure ranking options**
@@ -669,11 +609,72 @@ You first GB is free and beyond that, usage is billed at $0.10/GB/day of vector 
 
 In order to help you manage the costs associated with these `vector_store` objects, we have added support for expiration policies in the `vector_store` object. You can set these policies when creating or updating the `vector_store` object.
 
+```python
+vector_store = client.vector_stores.create_and_poll(
+  name="Product Documentation",
+  file_ids=['file_1', 'file_2', 'file_3', 'file_4', 'file_5'],
+  expires_after={
+    "anchor": "last_active_at",
+    "days": 7
+  }
+)
+```
+
+```javascript
+let vectorStore = await openai.vectorStores.create({
+  name: "rag-store",
+  file_ids: ['file_1', 'file_2', 'file_3', 'file_4', 'file_5'],
+  expires_after: {
+    anchor: "last_active_at",
+    days: 7
+  }
+});
+```
+
+
 **Thread vector stores have default expiration policies**
 
 Vector stores created using thread helpers (like [`tool_resources.file_search.vector_stores`](https://developers.openai.com/api/docs/api-reference/threads/createThread#threads-createthread-tool_resources) in Threads or [message.attachments](https://developers.openai.com/api/docs/api-reference/messages/createMessage#messages-createmessage-attachments) in Messages) have a default expiration policy of 7 days after they were last active (defined as the last time the vector store was part of a run).
 
 When a vector store expires, runs on that thread will fail. To fix this, you can simply recreate a new `vector_store` with the same files and reattach it to the thread.
+
+```python
+all_files = list(client.vector_stores.files.list("vs_expired"))
+
+vector_store = client.vector_stores.create(name="rag-store")
+client.beta.threads.update(
+"thread_abc123",
+tool_resources={"file_search": {"vector_store_ids": [vector_store.id]}},
+)
+
+for file_batch in chunked(all_files, 100):
+client.vector_stores.file_batches.create_and_poll(
+vector_store_id=vector_store.id, file_ids=[file.id for file in file_batch]
+)
+```
+
+```javascript
+const fileIds = [];
+for await (const file of openai.vectorStores.files.list(
+"vs_toWTk90YblRLCkbE2xSVoJlF",
+)) {
+fileIds.push(file.id);
+}
+
+const vectorStore = await openai.vectorStores.create({
+name: "rag-store",
+});
+await openai.beta.threads.update("thread_abcd", {
+tool_resources: { file_search: { vector_store_ids: [vectorStore.id] } },
+});
+
+for (const fileBatch of _.chunk(fileIds, 100)) {
+await openai.vectorStores.fileBatches.create(vectorStore.id, {
+file_ids: fileBatch,
+});
+}
+```
+
 
 ## Supported files
 

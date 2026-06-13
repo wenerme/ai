@@ -21,19 +21,353 @@ The token counting API handles all of these. Use the same payload you would send
 
 ## Count tokens in basic messages
 
+Simple text input
+
+```python
+from openai import OpenAI
+
+client = OpenAI()
+
+response = client.responses.input_tokens.count(
+    model="gpt-5.5",
+    input="Tell me a joke."
+)
+print(response.input_tokens)
+```
+
+```javascript
+import OpenAI from "openai";
+
+const client = new OpenAI();
+
+const response = await client.responses.input_tokens.count({
+  model: "gpt-5.5",
+  input: "Tell me a joke.",
+});
+
+console.log(response.input_tokens);
+```
+
+```bash
+curl https://api.openai.com/v1/responses/input_tokens \
+  -H "Authorization: Bearer $OPENAI_API_KEY" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "model": "gpt-5.5",
+    "input": "Tell me a joke."
+  }'
+```
+
+```cli
+openai responses:input-tokens count \
+  --model gpt-5.5 \
+  --input "Tell me a joke." \
+  --raw-output \
+  --transform input_tokens
+```
+
+
 ## Count tokens in conversations
 
+Multi-turn conversation
+
+```python
+from openai import OpenAI
+
+client = OpenAI()
+
+response = client.responses.input_tokens.count(
+    model="gpt-5.5",
+    input=[
+        {"role": "user", "content": "What is 2 + 2?"},
+        {"role": "assistant", "content": "2 + 2 equals 4."},
+        {"role": "user", "content": "What about 3 + 3?"},
+    ],
+)
+print(response.input_tokens)
+```
+
+```javascript
+import OpenAI from "openai";
+
+const client = new OpenAI();
+
+const response = await client.responses.input_tokens.count({
+  model: "gpt-5.5",
+  input: [
+    { role: "user", content: "What is 2 + 2?" },
+    { role: "assistant", content: "2 + 2 equals 4." },
+    { role: "user", content: "What about 3 + 3?" },
+  ],
+});
+
+console.log(response.input_tokens);
+```
+
+```bash
+curl https://api.openai.com/v1/responses/input_tokens \
+  -H "Authorization: Bearer $OPENAI_API_KEY" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "model": "gpt-5.5",
+    "input": [
+      {"role": "user", "content": "What is 2 + 2?"},
+      {"role": "assistant", "content": "2 + 2 equals 4."},
+      {"role": "user", "content": "What about 3 + 3?"}
+    ]
+  }'
+```
+
+```cli
+openai responses:input-tokens count \
+  --raw-output \
+  --transform input_tokens <<'YAML'
+model: gpt-5.5
+input:
+  - role: user
+    content: What is 2 + 2?
+  - role: assistant
+    content: 2 + 2 equals 4.
+  - role: user
+    content: What about 3 + 3?
+YAML
+```
+
+
 ## Count tokens with instructions
+
+Input with system instructions
+
+```python
+from openai import OpenAI
+
+client = OpenAI()
+
+response = client.responses.input_tokens.count(
+    model="gpt-5.5",
+    instructions="You are a helpful assistant that explains concepts simply.",
+    input="Explain quantum computing in one sentence.",
+)
+print(response.input_tokens)
+```
+
+```javascript
+import OpenAI from "openai";
+
+const client = new OpenAI();
+
+const response = await client.responses.input_tokens.count({
+  model: "gpt-5.5",
+  instructions:
+    "You are a helpful assistant that explains concepts simply.",
+  input: "Explain quantum computing in one sentence.",
+});
+
+console.log(response.input_tokens);
+```
+
+```bash
+curl https://api.openai.com/v1/responses/input_tokens \
+  -H "Authorization: Bearer $OPENAI_API_KEY" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "model": "gpt-5.5",
+    "instructions": "You are a helpful assistant that explains concepts simply.",
+    "input": "Explain quantum computing in one sentence."
+  }'
+```
+
+```cli
+openai responses:input-tokens count \
+  --raw-output \
+  --transform input_tokens <<'YAML'
+model: gpt-5.5
+instructions: You are a helpful assistant that explains concepts simply.
+input: Explain quantum computing in one sentence.
+YAML
+```
+
 
 ## Count tokens with images
 
 Images consume tokens based on size and detail level. The token counting API returns the exact count—no guesswork.
+
+Input with an image
+
+```python
+from openai import OpenAI
+
+client = OpenAI()
+
+# Use file_id from uploaded file, or image_url for a URL
+response = client.responses.input_tokens.count(
+    model="gpt-5.5",
+    input=[
+        {
+            "role": "user",
+            "content": [
+                {"type": "input_image", "image_url": "https://example.com/chart.png"},
+                {"type": "input_text", "text": "Summarize this chart."},
+            ],
+        }
+    ],
+)
+print(response.input_tokens)
+```
+
+```javascript
+import OpenAI from "openai";
+
+const client = new OpenAI();
+
+const response = await client.responses.input_tokens.count({
+  model: "gpt-5.5",
+  input: [
+    {
+      role: "user",
+      content: [
+        {
+          type: "input_image",
+          image_url: "https://example.com/chart.png",
+        },
+        { type: "input_text", text: "Summarize this chart." },
+      ],
+    },
+  ],
+});
+
+console.log(response.input_tokens);
+```
+
+```bash
+curl https://api.openai.com/v1/responses/input_tokens \
+  -H "Authorization: Bearer $OPENAI_API_KEY" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "model": "gpt-5.5",
+    "input": [{
+      "role": "user",
+      "content": [
+        {"type": "input_image", "image_url": "https://example.com/chart.png"},
+        {"type": "input_text", "text": "Summarize this chart."}
+      ]
+    }]
+  }'
+```
+
+```cli
+openai responses:input-tokens count \
+  --raw-output \
+  --transform input_tokens <<'YAML'
+model: gpt-5.5
+input:
+  - role: user
+    content:
+      - type: input_image
+        image_url: https://example.com/chart.png
+      - type: input_text
+        text: Summarize this chart.
+YAML
+```
+
 
 You can use `file_id` (from the [Files API](https://developers.openai.com/api/docs/api-reference/files)) or `image_url` (a URL or base64 data URL). See [images and vision](https://developers.openai.com/api/docs/guides/images-vision) for details.
 
 ## Count tokens with tools
 
 Tool definitions (function schemas, MCP servers, etc.) add tokens to the context. Count them together with your input:
+
+Input with function tools
+
+```python
+from openai import OpenAI
+
+client = OpenAI()
+
+response = client.responses.input_tokens.count(
+    model="gpt-5.5",
+    tools=[
+        {
+            "type": "function",
+            "name": "get_weather",
+            "description": "Get the current weather in a location",
+            "parameters": {
+                "type": "object",
+                "properties": {"location": {"type": "string"}},
+                "required": ["location"],
+            },
+        }
+    ],
+    input="What is the weather in San Francisco?",
+)
+print(response.input_tokens)
+```
+
+```javascript
+import OpenAI from "openai";
+
+const client = new OpenAI();
+
+const response = await client.responses.input_tokens.count({
+  model: "gpt-5.5",
+  tools: [
+    {
+      type: "function",
+      name: "get_weather",
+      description: "Get the current weather in a location",
+      parameters: {
+        type: "object",
+        properties: { location: { type: "string" } },
+        required: ["location"],
+      },
+    },
+  ],
+  input: "What is the weather in San Francisco?",
+});
+
+console.log(response.input_tokens);
+```
+
+```bash
+curl https://api.openai.com/v1/responses/input_tokens \
+  -H "Authorization: Bearer $OPENAI_API_KEY" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "model": "gpt-5.5",
+    "tools": [{
+      "type": "function",
+      "name": "get_weather",
+      "description": "Get the current weather in a location",
+      "parameters": {
+        "type": "object",
+        "properties": {"location": {"type": "string"}},
+        "required": ["location"]
+      }
+    }],
+    "input": "What is the weather in San Francisco?"
+  }'
+```
+
+```cli
+openai responses:input-tokens count \
+  --raw-output \
+  --transform input_tokens <<'YAML'
+model: gpt-5.5
+tools:
+  - type: function
+    name: get_weather
+    description: Get the current weather in a location
+    parameters:
+      type: object
+      properties:
+        location:
+          type: string
+      required:
+        - location
+input: What is the weather in San Francisco?
+YAML
+```
+
 
 ## Count tokens with files
 

@@ -194,6 +194,119 @@ When using the `apply_patch` tool, you don’t provide an input schema; the mode
 
 Alternatively, you can use the [Agents SDK](https://developers.openai.com/api/docs/guides/tools#usage-in-the-agents-sdk) to use the apply patch tool. You'll still have to implement the harness that handles the actual file operations but you can use the `applyDiff` function to handle the diff processing.
 
+Use the apply patch tool with the Agents SDK
+
+```javascript
+import { applyDiff, Agent, run, applyPatchTool, Editor } from "@openai/agents";
+
+class WorkspaceEditor implements Editor {
+  async createFile(operation) {
+    // convert the diff to the file content
+    const content = applyDiff("", operation.diff, "create");
+    // write the file content to the file system
+    return { status: "completed", output: `Created ${operation.path}` };
+  }
+
+  async updateFile(operation) {
+    // read the file content from the file system
+    const current = "";
+    // convert the diff to the new file content
+    const newContent = applyDiff(current, operation.diff);
+    // write the updated file content to the file system
+    return { status: "completed", output: `Updated ${operation.path}` };
+  }
+
+  async deleteFile(operation) {
+    // delete the file from the file system
+    return { status: "completed", output: `Deleted ${operation.path}` };
+  }
+}
+
+const editor = new WorkspaceEditor();
+
+const agent = new Agent({
+  name: "Patch Assistant",
+  model: "gpt-5.5",
+  instructions: "You can edit files inside the /tmp directory using the apply_patch tool.",
+  tools: [
+    applyPatchTool({
+      editor,
+      // could also be a function for you to determine if approval is needed
+      needsApproval: true,
+      onApproval: async (_ctx, _approvalItem) => {
+        // create your own approval logic
+        return { approve: true };
+      },
+    }),
+  ],
+});
+
+const result = await run(
+  agent,
+  "Create tasks.md with a shopping checklist of 5 entries."
+);
+
+console.log(`\nFinal response:\n${result.finalOutput}`);
+```
+
+```python
+from agents import Agent, ApplyPatchTool, Runner, apply_diff
+
+
+class WorkspaceEditor:
+    async def create_file(self, operation):
+        # convert the diff to the file content
+        content = apply_diff("", operation.diff, create=True)
+        # write the file content to the file system
+        return {"status": "completed", "output": f"Created {operation.path}"}
+
+    async def update_file(self, operation):
+        # read the file content from the file system
+        current = ""
+        # convert the diff to the new file content
+        new_content = apply_diff(current, operation.diff)
+        # write the updated file content to the file system
+        return {"status": "completed", "output": f"Updated {operation.path}"}
+
+    async def delete_file(self, operation):
+        # delete the file from the file system
+        return {"status": "completed", "output": f"Deleted {operation.path}"}
+
+
+editor = WorkspaceEditor()
+
+agent = Agent(
+    name="Patch Assistant",
+    model="gpt-5.5",
+    instructions="You can edit files inside the /tmp directory using the apply_patch tool.",
+    tools=[
+        ApplyPatchTool(
+            editor=editor,
+            # could also be a function for you to determine if approval is needed
+            needs_approval=True,
+            # Implement your own approval logic
+            on_approval=lambda _ctx, _approval_item: {"approve": True},
+        ),
+    ],
+)
+
+
+async def main():
+    result = await Runner.run(
+        agent,
+        input="Create tasks.md with a shopping checklist of 5 entries.",
+    )
+
+    print(f"\nFinal response:\n{result.final_output}")
+
+
+if __name__ == "__main__":
+    import asyncio
+
+    asyncio.run(main())
+```
+
+
 You can find full working examples on GitHub.
 
 <a

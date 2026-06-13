@@ -103,6 +103,7 @@ ws.send(
 );
 ```
 
+
 If you disable turn detection, commit the buffer when you want transcription to begin:
 
 ```javascript
@@ -112,6 +113,7 @@ ws.send(
   })
 );
 ```
+
 
 For models that support server VAD, the session commits audio automatically when it detects a turn boundary.
 
@@ -132,6 +134,7 @@ ws.on("message", (data) => {
   }
 });
 ```
+
 
 A delta event contains newly available transcript text:
 

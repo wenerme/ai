@@ -25,22 +25,10 @@ in your terminal.
 
 <div data-content-switcher-pane data-value="macOS">
     <div class="hidden">macOS / Linux</div>
-    Export an environment variable on macOS or Linux systems
-
-```bash
-export OPENAI_API_KEY="your_api_key_here"
-```
-
-  </div>
+    </div>
   <div data-content-switcher-pane data-value="windows" hidden>
     <div class="hidden">Windows</div>
-    Export an environment variable in PowerShell
-
-```bash
-setx OPENAI_API_KEY "your_api_key_here"
-```
-
-  </div>
+    </div>
 
 
 

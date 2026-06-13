@@ -84,15 +84,15 @@ allowed_approval_policies = ["untrusted", "on-request"]
 allowed_sandbox_modes = ["read-only", "workspace-write"]
 ```
 
-### Disable AppShots
+### Disable Appshots
 
-To disable AppShots for managed users, set the top-level `allow_appshots` requirement:
+To disable Appshots for managed users, set the top-level `allow_appshots` requirement:
 
 ```toml
 allow_appshots = false
 ```
 
-Codex treats only `allow_appshots = false` as disabling AppShots. If the key is omitted, AppShots remains unconstrained by requirements and uses normal product availability checks. App-server clients that read effective requirements through `configRequirements/read` receive the same restriction as `allowAppshots`; an omitted or `null` `allowAppshots` value does not disable AppShots.
+Codex treats only `allow_appshots = false` as disabling Appshots. If the key is omitted, Appshots remain unconstrained by requirements and use normal product availability checks. App-server clients that read effective requirements through `configRequirements/read` receive the same restriction as `allowAppshots`; an omitted or `null` `allowAppshots` value doesn't disable Appshots.
 
 ### Control available permission profiles
 
@@ -109,7 +109,7 @@ Use the permission-profile examples below only after every managed client runs a
 supporting release. Don't deploy managed custom profiles until the fleet upgrade
 is complete.
 
-When the table is present, it is the complete list of allowed profiles. Profiles
+When the table is present, it's the complete list of allowed profiles. Profiles
 set to `true` are allowed. Profiles that are omitted or set to `false` are
 denied, including built-ins added in future Codex versions.
 
@@ -201,7 +201,7 @@ System requirements:
 ":workspace" = true  # Not honored because cloud requirements set this to false.
 ```
 
-Set `default_permissions` explicitly to an allowed profile. If it is omitted,
+Set `default_permissions` explicitly to an allowed profile. If it's omitted,
 Codex defaults to `:workspace` only when both `:workspace` and `:read-only` are
 explicitly allowed. When `allowed_permission_profiles` is absent, managed
 requirements don't restrict which profile names users can select. Every entry
@@ -248,7 +248,7 @@ For example, `allowed_web_search_modes = ["cached"]` prevents live web search ev
 Use `[experimental_network]` in `requirements.toml` when administrators should
 define network access requirements centrally. These requirements are separate
 from the user `features.network_proxy` toggle: they can configure sandboxed
-networking without that feature flag, but they do not grant command network
+networking without that feature flag, but they don't grant command network
 access when the active sandbox keeps networking off.
 
 ```toml
@@ -267,8 +267,8 @@ experimental_network.denied_domains = [
 
 Use `experimental_network.managed_allowed_domains_only = true` only when you
 also define administrator-owned `allowed_domains` and want that allowlist to be
-exclusive. If it is `true` without managed allow rules, user-added domain allow
-rules do not remain effective.
+exclusive. If it's `true` without managed allow rules, user-added domain allow
+rules don't remain effective.
 
 The domain syntax, local/private destination rules, deny-over-allow behavior,
 and DNS rebinding limitations are the same as the sandboxed networking behavior
@@ -286,6 +286,7 @@ unified_exec = false
 
 # Disable specific Codex feature surfaces when needed.
 browser_use = false
+browser_use_full_cdp_access = false
 in_app_browser = false
 computer_use = false
 ```
@@ -296,6 +297,8 @@ Use the canonical feature keys from `config.toml`'s `[features]` table. Codex no
 
 - `in_app_browser = false` disables the in-app browser pane.
 - `browser_use = false` disables Browser Use and Browser Agent availability.
+- `browser_use_full_cdp_access = false` prevents users from enabling full CDP
+  access in Browser Developer mode.
 - `computer_use = false` disables Computer Use availability and related
   install or setup flows.
 

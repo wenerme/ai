@@ -70,6 +70,7 @@ The Price in Tokens column is equivalent to the Price in Neurons column - the di
 | @cf/nvidia/nemotron-3-120b-a12b              | $0.500 per M input tokens  $1.500 per M output tokens                                   | 45455 neurons per M input tokens  136364 neurons per M output tokens                                          |
 | @cf/moonshotai/kimi-k2.5                     | $0.600 per M input tokens  $0.100 per M cached input tokens  $3.000 per M output tokens | 54545 neurons per M input tokens  9091 neurons per M cached input tokens  272727 neurons per M output tokens  |
 | @cf/moonshotai/kimi-k2.6                     | $0.950 per M input tokens  $0.160 per M cached input tokens  $4.000 per M output tokens | 86364 neurons per M input tokens  14545 neurons per M cached input tokens  363636 neurons per M output tokens |
+| @cf/moonshotai/kimi-k2.7-code                | $0.950 per M input tokens  $0.190 per M cached input tokens  $4.000 per M output tokens | 86364 neurons per M input tokens  17273 neurons per M cached input tokens  363636 neurons per M output tokens |
 | @cf/google/gemma-4-26b-a4b-it                | $0.100 per M input tokens  $0.300 per M output tokens                                   | 9091 neurons per M input tokens  27273 neurons per M output tokens                                            |
 
 ## Embeddings model pricing

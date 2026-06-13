@@ -58,8 +58,8 @@ Implicit execution mode
 
 By default, sandbox methods that do not specify a `sessionId` run in the sandbox's default session and preserve shell state between calls. It is recommended to set `enableDefaultSession` to `false` to ensure operations run in isolation. The `createSession()` API exists when sessions are required. Default sessions will be removed in a future version of the Sandbox SDK.
 
-* [  JavaScript ](#tab-panel-8056)
-* [  TypeScript ](#tab-panel-8057)
+* [  JavaScript ](#tab-panel-10006)
+* [  TypeScript ](#tab-panel-10007)
 
 JavaScript
 
@@ -134,8 +134,8 @@ await sandbox.setKeepAlive(keepAlive: boolean): Promise<void>
 
 When enabled, the sandbox automatically sends heartbeat pings every 30 seconds to prevent container eviction. When disabled, the sandbox returns to normal sleep behavior based on the `sleepAfter` configuration.
 
-* [  JavaScript ](#tab-panel-8058)
-* [  TypeScript ](#tab-panel-8059)
+* [  JavaScript ](#tab-panel-10008)
+* [  TypeScript ](#tab-panel-10009)
 
 JavaScript
 
@@ -209,8 +209,8 @@ Immediately terminates the container and permanently deletes all state:
 * All sessions (including the default session)
 * Network connections and exposed ports
 
-* [  JavaScript ](#tab-panel-8060)
-* [  TypeScript ](#tab-panel-8061)
+* [  JavaScript ](#tab-panel-10010)
+* [  TypeScript ](#tab-panel-10011)
 
 JavaScript
 

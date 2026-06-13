@@ -49,7 +49,7 @@ Add the Cloudflare API and docs servers to `~/.codeium/windsurf/mcp_config.json`
 4. **Try a prompt**  
 Open Cascade and try a prompt — for example:  
 ```  
-Deploy a globally distributed REST API on Workers with automatic scaling and zero cold starts.  
+Connect my Worker to an existing Postgres database using Hyperdrive for connection pooling.  
 ```
 
 ## Cloudflare platform access

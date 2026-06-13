@@ -366,6 +366,7 @@ response_format = dict(
 )
 ```
 
+
 ### Create a job with the API
 
 Configuring a job with the API has a lot of moving parts, so many users prefer to configure them in the [fine-tuning dashboard UI](https://platform.openai.com/finetune). However, here's a complete API request to kick off a fine-tune job with all the configuration we've set up in this guide so far:
@@ -436,6 +437,7 @@ curl https://api.openai.com/v1/fine_tuning/jobs \
   }
 }'
 ```
+
 
 This request returns a [fine-tuning job object](https://developers.openai.com/api/docs/api-reference/fine-tuning/object), which includes a job `id`. Use this ID to monitor the progress of your job and retrieve the fine-tuned model when the job is complete.
 

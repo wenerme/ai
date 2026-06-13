@@ -35,7 +35,7 @@ client and select the AWS Region and model ID for your deployment:
 
 - Instantiate `BedrockOpenAI` instead of the default `OpenAI` client. The client
   derives the regional Mantle base URL from the AWS Region.
-- For the initial `openai.gpt-5.5` deployment, use `us-east-2`. This resolves to
+- This guide's examples use `us-east-2`, which resolves to
   `https://bedrock-mantle.us-east-2.api.aws/openai/v1`.
 - Use a Bedrock model ID with the `openai.` prefix, such as
   `openai.gpt-5.5`.
@@ -148,8 +148,8 @@ Region](https://docs.aws.amazon.com/bedrock/latest/userguide/models-region-compa
 before rollout.
 
 Amazon Bedrock provides Responses API-compatible inference for supported OpenAI
-models in supported AWS Regions in the United States. AWS manages authentication,
-account access, procurement, and billing.
+models in supported AWS Regions. AWS manages authentication, account access,
+procurement, and billing.
 
 AWS Regions are physical deployment locations, which differ from OpenAI data
 residency jurisdictions. Teams with residency requirements should evaluate the
@@ -162,7 +162,7 @@ through the OpenAI API. This table describes intended feature availability for
 the initial Amazon Bedrock offering. It excludes transient availability and
 service status.
 
-The information below represents feature availability as of June 1, 2026.
+The information below represents feature availability as of June 8, 2026.
   Model and Region availability can also change. For the latest information, see
   the [AWS documentation for OpenAI models in Amazon
   Bedrock](https://docs.aws.amazon.com/bedrock/latest/userguide/model-cards-openai.html)
@@ -179,6 +179,7 @@ The information below represents feature availability as of June 1, 2026.
 | Function calling          | Available                 | Available                              |
 | Streaming responses       | Available                 | Available                              |
 | WebSocket connections     | Available                 | Not available                          |
+| Context window            | Model-dependent           | 272,000 tokens for GPT-5.4 and GPT-5.5 |
 | Reasoning effort          | Available                 | Available                              |
 | Prompt caching            | Available                 | Available                              |
 | Custom tools              | Available                 | Available                              |
@@ -194,6 +195,10 @@ The information below represents feature availability as of June 1, 2026.
 Client-side `tool_search` is distinct from hosted tools and remote MCP server
 support. Hosted tools run through OpenAI-operated service infrastructure and
 are unavailable in the initial Amazon Bedrock offering.
+
+GPT-5.4 and GPT-5.5 have a 272,000-token context window on Amazon Bedrock.
+Amazon Bedrock rejects requests that exceed this limit. See the AWS model cards
+for current model-specific limits.
 
 Treat feature parity as workload-specific. If your application depends on a
 specific tool, response mode, or service tier, test that behavior through

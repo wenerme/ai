@@ -69,6 +69,90 @@ paths:
           required: false
           schema:
             type: string
+        - name: q
+          in: query
+          description: Free-text search by model name or slug.
+          required: false
+          schema:
+            type: string
+        - name: input_modalities
+          in: query
+          description: >-
+            Filter models by input modality. Comma-separated list of: text,
+            image, audio, file.
+          required: false
+          schema:
+            type: string
+        - name: context
+          in: query
+          description: >-
+            Minimum context length (tokens). Models with smaller context are
+            excluded.
+          required: false
+          schema:
+            type: integer
+        - name: min_price
+          in: query
+          description: Minimum prompt price in $/M tokens.
+          required: false
+          schema:
+            type: number
+            format: double
+        - name: max_price
+          in: query
+          description: Maximum prompt price in $/M tokens.
+          required: false
+          schema:
+            type: number
+            format: double
+        - name: arch
+          in: query
+          description: >-
+            Filter models by architecture/model family (e.g. GPT, Claude,
+            Gemini, Llama).
+          required: false
+          schema:
+            type: string
+        - name: model_authors
+          in: query
+          description: >-
+            Filter models by the organization that created the model.
+            Comma-separated list of author slugs.
+          required: false
+          schema:
+            type: string
+        - name: providers
+          in: query
+          description: >-
+            Filter models by hosting provider. Comma-separated list of provider
+            names.
+          required: false
+          schema:
+            type: string
+        - name: distillable
+          in: query
+          description: >-
+            Filter by distillation capability. "true" returns only distillable
+            models, "false" excludes them.
+          required: false
+          schema:
+            $ref: '#/components/schemas/ModelsGetParametersDistillable'
+        - name: zdr
+          in: query
+          description: >-
+            When set to "true", return only models with zero data retention
+            endpoints.
+          required: false
+          schema:
+            $ref: '#/components/schemas/ModelsGetParametersZdr'
+        - name: region
+          in: query
+          description: >-
+            Filter to models with endpoints in the given data region. Currently
+            only "eu" is supported.
+          required: false
+          schema:
+            $ref: '#/components/schemas/ModelsGetParametersRegion'
         - name: Authorization
           in: header
           description: API key as bearer token in Authorization header
@@ -136,6 +220,31 @@ components:
         top-weekly (tokens processed in the last week), newest (creation date).
         When omitted, the existing default ordering is preserved.
       title: ModelsGetParametersSort
+    ModelsGetParametersDistillable:
+      type: string
+      enum:
+        - 'true'
+        - 'false'
+      description: >-
+        Filter by distillation capability. "true" returns only distillable
+        models, "false" excludes them.
+      title: ModelsGetParametersDistillable
+    ModelsGetParametersZdr:
+      type: string
+      enum:
+        - 'true'
+      description: >-
+        When set to "true", return only models with zero data retention
+        endpoints.
+      title: ModelsGetParametersZdr
+    ModelsGetParametersRegion:
+      type: string
+      enum:
+        - eu
+      description: >-
+        Filter to models with endpoints in the given data region. Currently only
+        "eu" is supported.
+      title: ModelsGetParametersRegion
     InputModality:
       type: string
       enum:
@@ -307,6 +416,8 @@ components:
           items:
             $ref: '#/components/schemas/DABenchmarkEntry'
           description: Design Arena ELO rankings across arena+category pairs.
+      required:
+        - design_arena
       description: >-
         Third-party benchmark rankings for this model. Omitted when no benchmark
         data is available.

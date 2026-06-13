@@ -423,7 +423,7 @@ For more details on these options, refer to [Request handling](https://developer
 ## Related resources
 
 * [Unified Billing](https://developers.cloudflare.com/ai-gateway/features/unified-billing/) — load credits and manage spend limits.
-* [Workers AI binding](https://developers.cloudflare.com/ai-gateway/integrations/worker-binding-methods/) — call models from within a Cloudflare Worker using `env.AI.run()`.
+* [Workers AI binding](https://developers.cloudflare.com/ai-gateway/usage/worker-binding-methods/) — call models from within a Cloudflare Worker using `env.AI.run()`.
 * [Model catalog](https://developers.cloudflare.com/ai/models/) — browse models supported by the REST API.
 
 ```json

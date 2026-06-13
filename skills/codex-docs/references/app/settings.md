@@ -117,7 +117,7 @@ Under **Developer mode**, turn on **Enable full CDP access** to let Codex use
 the Chrome DevTools Protocol for performance profiling and deeper browser
 debugging. If your organization has disabled full CDP access, you can't enable
 it locally. See [Developer mode](https://developers.openai.com/codex/app/browser#developer-mode) for setup,
-risk, and approval details.
+risk, approval details, and the administrator requirement.
 
 See [In-app browser](https://developers.openai.com/codex/app/browser) for browser preview, comment, and
 browser use workflows.

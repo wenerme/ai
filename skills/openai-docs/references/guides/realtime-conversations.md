@@ -305,6 +305,7 @@ const ms = await navigator.mediaDevices.getUserMedia({
 pc.addTrack(ms.getTracks()[0]);
 ```
 
+
 The snippet above enables simple interaction with the Realtime API, but there's much more that can be done. For more examples of different kinds of user interfaces, check out the [WebRTC samples](https://github.com/webrtc/samples) repository. Live demos of these samples can also be [found here](https://webrtc.github.io/samples/).
 
 Using [media captures and streams](https://developer.mozilla.org/en-US/docs/Web/API/Media_Capture_and_Streams_API) in the browser enables you to do things like mute and unmute microphones, select which device to collect input from, and more.
@@ -1049,6 +1050,7 @@ const event = {
 
 dataChannel.send(JSON.stringify(event));
 ```
+
 
 This unsuccessful event sent from the client will emit an error event like the following:
 

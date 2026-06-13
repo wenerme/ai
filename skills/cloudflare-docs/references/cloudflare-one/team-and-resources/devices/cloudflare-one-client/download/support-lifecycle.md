@@ -109,6 +109,7 @@ As of December 2025, the following versions of Ubuntu are supported:
 
 | Ubuntu version                      | Supported until |
 | ----------------------------------- | --------------- |
+| Ubuntu 26.04 (Resolute Raccoon)     | April 2031      |
 | Ubuntu 25.10 (Questing Quokka)      | July 2026       |
 | Ubuntu 25.04 (Plucky Puffin)        | January 2026    |
 | Ubuntu 24.04 LTSC (Noble Numbat)    | April 2029      |

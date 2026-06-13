@@ -155,7 +155,354 @@ Configure your OpenAI SDK client to request an AWS-issued OIDC token from AWS ST
 
 Set `OPENAI_WIF_AUDIENCE` to the same audience configured on the OpenAI Workload Identity Provider. The subject token provider calls AWS STS `GetWebIdentityToken` with that audience, returns the AWS-issued JWT as the subject token, and the OpenAI SDK exchanges it for an OpenAI-issued access token.
 
-</div>
+Authenticate from an AWS-issued OIDC token
+
+```typescript
+import { GetWebIdentityTokenCommand, STSClient } from "@aws-sdk/client-sts";
+import OpenAI from "openai";
+import type { SubjectTokenProvider } from "openai/auth";
+
+const identityProviderId = process.env.OPENAI_IDENTITY_PROVIDER_ID;
+const serviceAccountId = process.env.OPENAI_SERVICE_ACCOUNT_ID;
+const audience = process.env.OPENAI_WIF_AUDIENCE;
+const awsRegion = process.env.AWS_REGION;
+
+if (!identityProviderId || !serviceAccountId || !audience || !awsRegion) {
+  throw new Error(
+    "Set OPENAI_IDENTITY_PROVIDER_ID, OPENAI_SERVICE_ACCOUNT_ID, OPENAI_WIF_AUDIENCE, and AWS_REGION"
+  );
+}
+
+const sts = new STSClient({ region: awsRegion });
+
+function awsOutboundWebIdentityTokenProvider(): SubjectTokenProvider {
+  return {
+    tokenType: "jwt",
+    getToken: async () => {
+      const response = await sts.send(
+        new GetWebIdentityTokenCommand({
+          Audience: [audience],
+          SigningAlgorithm: "ES384",
+          DurationSeconds: 300,
+        })
+      );
+
+      if (!response.WebIdentityToken) {
+        throw new Error("AWS STS did not return a web identity token.");
+      }
+
+      return response.WebIdentityToken;
+    },
+  };
+}
+
+const client = new OpenAI({
+  workloadIdentity: {
+    identityProviderId,
+    serviceAccountId,
+    provider: awsOutboundWebIdentityTokenProvider(),
+  },
+});
+
+const response = await client.responses.create({
+  model: "gpt-5.4-mini",
+  input: "Say hello from AWS outbound workload identity federation.",
+});
+
+console.log(response.output_text);
+```
+
+```python
+import os
+
+import boto3
+from openai import OpenAI
+from openai.auth import SubjectTokenProvider
+
+
+def aws_outbound_web_identity_token_provider(audience: str) -> SubjectTokenProvider:
+    sts = boto3.client("sts", region_name=os.environ["AWS_REGION"])
+
+    def get_token() -> str:
+        response = sts.get_web_identity_token(
+            Audience=[audience],
+            SigningAlgorithm="ES384",
+            DurationSeconds=300,
+        )
+        token = response.get("WebIdentityToken", "")
+        if not token:
+            raise RuntimeError("AWS STS did not return a web identity token.")
+        return token
+
+    return {"token_type": "jwt", "get_token": get_token}
+
+
+client = OpenAI(
+    workload_identity={
+        "identity_provider_id": os.environ["OPENAI_IDENTITY_PROVIDER_ID"],
+        "service_account_id": os.environ["OPENAI_SERVICE_ACCOUNT_ID"],
+        "provider": aws_outbound_web_identity_token_provider(
+            os.environ["OPENAI_WIF_AUDIENCE"]
+        ),
+    },
+)
+
+response = client.responses.create(
+    model="gpt-5.4-mini",
+    input="Say hello from AWS outbound workload identity federation.",
+)
+
+print(response.output_text)
+```
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"log"
+	"os"
+
+	awssdk "github.com/aws/aws-sdk-go-v2/aws"
+	"github.com/aws/aws-sdk-go-v2/config"
+	"github.com/aws/aws-sdk-go-v2/service/sts"
+	"github.com/openai/openai-go/v3"
+	"github.com/openai/openai-go/v3/auth"
+	"github.com/openai/openai-go/v3/option"
+	"github.com/openai/openai-go/v3/responses"
+)
+
+type awsOutboundWebIdentityTokenProvider struct {
+	client   *sts.Client
+	audience string
+}
+
+func (p awsOutboundWebIdentityTokenProvider) TokenType() auth.SubjectTokenType {
+	return auth.SubjectTokenTypeJWT
+}
+
+func (p awsOutboundWebIdentityTokenProvider) GetToken(ctx context.Context, _ auth.HTTPDoer) (string, error) {
+	output, err := p.client.GetWebIdentityToken(ctx, &sts.GetWebIdentityTokenInput{
+		Audience:         []string{p.audience},
+		DurationSeconds:  awssdk.Int32(300),
+		SigningAlgorithm: awssdk.String("ES384"),
+	})
+	if err != nil {
+		return "", &auth.SubjectTokenProviderError{
+			Provider: "aws-outbound",
+			Message:  "failed to request AWS web identity token",
+			Cause:    err,
+		}
+	}
+
+	token := awssdk.ToString(output.WebIdentityToken)
+	if token == "" {
+		return "", &auth.SubjectTokenProviderError{
+			Provider: "aws-outbound",
+			Message:  "AWS STS did not return a web identity token",
+		}
+	}
+
+	return token, nil
+}
+
+func main() {
+	ctx := context.Background()
+	audience := os.Getenv("OPENAI_WIF_AUDIENCE")
+	if audience == "" {
+		log.Fatal("Set OPENAI_WIF_AUDIENCE")
+	}
+
+	cfg, err := config.LoadDefaultConfig(ctx)
+	if err != nil {
+		log.Fatal(err)
+	}
+
+	client := openai.NewClient(
+		option.WithWorkloadIdentity(auth.WorkloadIdentity{
+			IdentityProviderID: os.Getenv("OPENAI_IDENTITY_PROVIDER_ID"),
+			ServiceAccountID:   os.Getenv("OPENAI_SERVICE_ACCOUNT_ID"),
+			Provider: awsOutboundWebIdentityTokenProvider{
+				client:   sts.NewFromConfig(cfg),
+				audience: audience,
+			},
+		}),
+	)
+
+	response, err := client.Responses.New(ctx, responses.ResponseNewParams{
+		Model: openai.ChatModelGPT4_1Mini,
+		Input: responses.ResponseNewParamsInputUnion{
+			OfString: openai.String("Say hello from AWS outbound workload identity federation."),
+		},
+	})
+	if err != nil {
+		log.Fatal(err)
+	}
+
+	fmt.Println(response.OutputText())
+}
+```
+
+```java
+import com.fasterxml.jackson.databind.json.JsonMapper;
+import com.openai.auth.SubjectTokenProvider;
+import com.openai.auth.SubjectTokenType;
+import com.openai.auth.WorkloadIdentity;
+import com.openai.client.OpenAIClient;
+import com.openai.client.okhttp.OpenAIOkHttpClient;
+import com.openai.core.http.HttpClient;
+import com.openai.errors.SubjectTokenProviderException;
+import com.openai.models.ChatModel;
+import com.openai.models.responses.ResponseCreateParams;
+import java.util.concurrent.CompletableFuture;
+import software.amazon.awssdk.regions.Region;
+import software.amazon.awssdk.services.sts.StsClient;
+import software.amazon.awssdk.services.sts.model.GetWebIdentityTokenRequest;
+
+public final class AwsOutboundWorkloadIdentityExample {
+    private AwsOutboundWorkloadIdentityExample() {}
+
+    static final class AwsOutboundWebIdentityTokenProvider implements SubjectTokenProvider {
+        private final StsClient stsClient;
+        private final String audience;
+
+        AwsOutboundWebIdentityTokenProvider(StsClient stsClient, String audience) {
+            this.stsClient = stsClient;
+            this.audience = audience;
+        }
+
+        @Override
+        public SubjectTokenType tokenType() {
+            return SubjectTokenType.JWT;
+        }
+
+        @Override
+        public String getToken(HttpClient httpClient, JsonMapper jsonMapper) {
+            try {
+                String token = stsClient.getWebIdentityToken(GetWebIdentityTokenRequest.builder()
+                        .audience(audience)
+                        .durationSeconds(300)
+                        .signingAlgorithm("ES384")
+                        .build()).webIdentityToken();
+
+                if (token == null || token.isEmpty()) {
+                    throw new SubjectTokenProviderException(
+                            "aws-outbound",
+                            "AWS STS did not return a web identity token",
+                            null);
+                }
+
+                return token;
+            } catch (SubjectTokenProviderException e) {
+                throw e;
+            } catch (Exception e) {
+                throw new SubjectTokenProviderException(
+                        "aws-outbound",
+                        "failed to request AWS web identity token",
+                        e);
+            }
+        }
+
+        @Override
+        public CompletableFuture<String> getTokenAsync(
+                HttpClient httpClient, JsonMapper jsonMapper) {
+            return CompletableFuture.supplyAsync(() -> getToken(httpClient, jsonMapper));
+        }
+    }
+
+    public static void main(String[] args) {
+        String audience = System.getenv("OPENAI_WIF_AUDIENCE");
+        StsClient stsClient = StsClient.builder()
+                .region(Region.of(System.getenv("AWS_REGION")))
+                .build();
+
+        WorkloadIdentity workloadIdentity = WorkloadIdentity.builder()
+                .identityProviderId(System.getenv("OPENAI_IDENTITY_PROVIDER_ID"))
+                .serviceAccountId(System.getenv("OPENAI_SERVICE_ACCOUNT_ID"))
+                .provider(new AwsOutboundWebIdentityTokenProvider(stsClient, audience))
+                .build();
+
+        OpenAIClient client = OpenAIOkHttpClient.builder()
+                .workloadIdentity(workloadIdentity)
+                .build();
+
+        ResponseCreateParams params = ResponseCreateParams.builder()
+                .model(ChatModel.GPT_4_1_MINI)
+                .input("Say hello from AWS outbound workload identity federation.")
+                .build();
+
+        client.responses().create(params).output().stream()
+                .flatMap(item -> item.message().stream())
+                .flatMap(message -> message.content().stream())
+                .flatMap(content -> content.outputText().stream())
+                .forEach(outputText -> System.out.println(outputText.text()));
+    }
+}
+```
+
+```ruby
+require "aws-sdk-sts"
+require "openai"
+
+class AwsOutboundWebIdentityTokenProvider
+  include OpenAI::Auth::SubjectTokenProvider
+
+  def initialize(audience:, sts_client:)
+    @audience = audience
+    @sts_client = sts_client
+  end
+
+  def token_type
+    OpenAI::Auth::TokenType::JWT
+  end
+
+  def get_token
+    response = @sts_client.get_web_identity_token(
+      audience: [@audience],
+      signing_algorithm: "ES384",
+      duration_seconds: 300
+    )
+    token = response.web_identity_token.to_s
+    if token.empty?
+      raise OpenAI::Errors::SubjectTokenProviderError.new(
+        message: "AWS STS did not return a web identity token",
+        provider: "aws-outbound"
+      )
+    end
+    token
+  rescue Aws::STS::Errors::ServiceError => e
+    raise OpenAI::Errors::SubjectTokenProviderError.new(
+      message: "Failed to request AWS web identity token: #{e.message}",
+      provider: "aws-outbound",
+      cause: e
+    )
+  end
+end
+
+provider = AwsOutboundWebIdentityTokenProvider.new(
+  audience: ENV.fetch("OPENAI_WIF_AUDIENCE"),
+  sts_client: Aws::STS::Client.new(region: ENV.fetch("AWS_REGION"))
+)
+
+workload_identity = OpenAI::Auth::WorkloadIdentity.new(
+  identity_provider_id: ENV.fetch("OPENAI_IDENTITY_PROVIDER_ID"),
+  service_account_id: ENV.fetch("OPENAI_SERVICE_ACCOUNT_ID"),
+  provider: provider
+)
+
+client = OpenAI::Client.new(workload_identity: workload_identity)
+
+response = client.responses.create(
+  model: "gpt-5.4-mini",
+  input: "Say hello from AWS outbound workload identity federation."
+)
+
+puts(response.output_text)
+```
+
+
+  </div>
 
   <div data-content-switcher-pane data-value="eks" hidden>
 
@@ -295,7 +642,298 @@ Use the mounted token path, such as `/var/run/secrets/tokens/token`, as the subj
 
 The following examples initialize an OpenAI client with a custom subject token provider. The provider reads the projected EKS service account token from the mounted file path and uses it as the subject token for workload identity federation.
 
-</div>
+Authenticate from an EKS projected service account token
+
+```typescript
+import { readFile } from "node:fs/promises";
+import OpenAI from "openai";
+import type { SubjectTokenProvider } from "openai/auth";
+
+const tokenPath = "/var/run/secrets/tokens/token";
+const identityProviderId = process.env.OPENAI_IDENTITY_PROVIDER_ID;
+const serviceAccountId = process.env.OPENAI_SERVICE_ACCOUNT_ID;
+
+if (!identityProviderId || !serviceAccountId) {
+  throw new Error("Set OPENAI_IDENTITY_PROVIDER_ID and OPENAI_SERVICE_ACCOUNT_ID");
+}
+
+function mountedEksServiceAccountTokenProvider(path: string): SubjectTokenProvider {
+  return {
+    tokenType: "jwt",
+    getToken: async () => {
+      const token = (await readFile(path, "utf8")).trim();
+      if (!token) {
+        throw new Error("The mounted EKS service account token file is empty.");
+      }
+      return token;
+    },
+  };
+}
+
+const client = new OpenAI({
+  workloadIdentity: {
+    identityProviderId,
+    serviceAccountId,
+    provider: mountedEksServiceAccountTokenProvider(tokenPath),
+  },
+});
+
+const response = await client.responses.create({
+  model: "gpt-5.4-mini",
+  input: "Say hello from AWS workload identity federation.",
+});
+
+console.log(response.output_text);
+```
+
+```python
+import os
+from pathlib import Path
+
+from openai import OpenAI
+from openai.auth import SubjectTokenProvider
+
+TOKEN_PATH = "/var/run/secrets/tokens/token"
+
+
+def mounted_eks_service_account_token_provider(token_path: str) -> SubjectTokenProvider:
+    def get_token() -> str:
+        token = Path(token_path).read_text().strip()
+        if not token:
+            raise RuntimeError("The mounted EKS service account token file is empty.")
+        return token
+
+    return {"token_type": "jwt", "get_token": get_token}
+
+
+client = OpenAI(
+    workload_identity={
+        "identity_provider_id": os.environ["OPENAI_IDENTITY_PROVIDER_ID"],
+        "service_account_id": os.environ["OPENAI_SERVICE_ACCOUNT_ID"],
+        "provider": mounted_eks_service_account_token_provider(TOKEN_PATH),
+    },
+)
+
+response = client.responses.create(
+    model="gpt-5.4-mini",
+    input="Say hello from AWS workload identity federation.",
+)
+
+print(response.output_text)
+```
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"log"
+	"os"
+	"strings"
+
+	"github.com/openai/openai-go/v3"
+	"github.com/openai/openai-go/v3/auth"
+	"github.com/openai/openai-go/v3/option"
+	"github.com/openai/openai-go/v3/responses"
+)
+
+const tokenPath = "/var/run/secrets/tokens/token"
+
+type mountedEksServiceAccountTokenProvider struct {
+	path string
+}
+
+func (p mountedEksServiceAccountTokenProvider) TokenType() auth.SubjectTokenType {
+	return auth.SubjectTokenTypeJWT
+}
+
+func (p mountedEksServiceAccountTokenProvider) GetToken(_ context.Context, _ auth.HTTPDoer) (string, error) {
+	data, err := os.ReadFile(p.path)
+	if err != nil {
+		return "", &auth.SubjectTokenProviderError{
+			Provider: "aws-eks",
+			Message:  "failed to read mounted EKS service account token",
+			Cause:    err,
+		}
+	}
+
+	token := strings.TrimSpace(string(data))
+	if token == "" {
+		return "", &auth.SubjectTokenProviderError{
+			Provider: "aws-eks",
+			Message:  "mounted EKS service account token is empty",
+		}
+	}
+
+	return token, nil
+}
+
+func main() {
+	client := openai.NewClient(
+		option.WithWorkloadIdentity(auth.WorkloadIdentity{
+			IdentityProviderID: os.Getenv("OPENAI_IDENTITY_PROVIDER_ID"),
+			ServiceAccountID:   os.Getenv("OPENAI_SERVICE_ACCOUNT_ID"),
+			Provider: mountedEksServiceAccountTokenProvider{
+				path: tokenPath,
+			},
+		}),
+	)
+
+	response, err := client.Responses.New(context.Background(), responses.ResponseNewParams{
+		Model: openai.ChatModelGPT4_1Mini,
+		Input: responses.ResponseNewParamsInputUnion{
+			OfString: openai.String("Say hello from AWS workload identity federation."),
+		},
+	})
+	if err != nil {
+		log.Fatal(err)
+	}
+
+	fmt.Println(response.OutputText())
+}
+```
+
+```java
+import com.fasterxml.jackson.databind.json.JsonMapper;
+import com.openai.auth.SubjectTokenProvider;
+import com.openai.auth.SubjectTokenType;
+import com.openai.auth.WorkloadIdentity;
+import com.openai.client.OpenAIClient;
+import com.openai.client.okhttp.OpenAIOkHttpClient;
+import com.openai.core.http.HttpClient;
+import com.openai.errors.SubjectTokenProviderException;
+import com.openai.models.ChatModel;
+import com.openai.models.responses.ResponseCreateParams;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.util.concurrent.CompletableFuture;
+
+public final class AwsEksWorkloadIdentityExample {
+    private static final String TOKEN_PATH = "/var/run/secrets/tokens/token";
+
+    private AwsEksWorkloadIdentityExample() {}
+
+    static final class MountedEksServiceAccountTokenProvider implements SubjectTokenProvider {
+        private final Path tokenPath;
+
+        MountedEksServiceAccountTokenProvider(String tokenPath) {
+            this.tokenPath = Path.of(tokenPath);
+        }
+
+        @Override
+        public SubjectTokenType tokenType() {
+            return SubjectTokenType.JWT;
+        }
+
+        @Override
+        public String getToken(HttpClient httpClient, JsonMapper jsonMapper) {
+            String token;
+            try {
+                token = Files.readString(tokenPath).trim();
+            } catch (Exception e) {
+                throw new SubjectTokenProviderException(
+                        "aws-eks",
+                        "failed to read mounted EKS service account token",
+                        e);
+            }
+
+            if (token.isEmpty()) {
+                throw new SubjectTokenProviderException(
+                        "aws-eks",
+                        "mounted EKS service account token is empty",
+                        null);
+            }
+
+            return token;
+        }
+
+        @Override
+        public CompletableFuture<String> getTokenAsync(
+                HttpClient httpClient, JsonMapper jsonMapper) {
+            return CompletableFuture.supplyAsync(() -> getToken(httpClient, jsonMapper));
+        }
+    }
+
+    public static void main(String[] args) {
+        WorkloadIdentity workloadIdentity = WorkloadIdentity.builder()
+                .identityProviderId(System.getenv("OPENAI_IDENTITY_PROVIDER_ID"))
+                .serviceAccountId(System.getenv("OPENAI_SERVICE_ACCOUNT_ID"))
+                .provider(new MountedEksServiceAccountTokenProvider(TOKEN_PATH))
+                .build();
+
+        OpenAIClient client = OpenAIOkHttpClient.builder()
+                .workloadIdentity(workloadIdentity)
+                .build();
+
+        ResponseCreateParams params = ResponseCreateParams.builder()
+                .model(ChatModel.GPT_4_1_MINI)
+                .input("Say hello from AWS workload identity federation.")
+                .build();
+
+        client.responses().create(params).output().stream()
+                .flatMap(item -> item.message().stream())
+                .flatMap(message -> message.content().stream())
+                .flatMap(content -> content.outputText().stream())
+                .forEach(outputText -> System.out.println(outputText.text()));
+    }
+}
+```
+
+```ruby
+require "openai"
+
+TOKEN_PATH = "/var/run/secrets/tokens/token"
+
+class MountedEksServiceAccountTokenProvider
+  include OpenAI::Auth::SubjectTokenProvider
+
+  def initialize(token_path:)
+    @token_path = token_path
+  end
+
+  def token_type
+    OpenAI::Auth::TokenType::JWT
+  end
+
+  def get_token
+    token = File.read(@token_path).strip
+    if token.empty?
+      raise OpenAI::Errors::SubjectTokenProviderError.new(
+        message: "Mounted EKS service account token is empty",
+        provider: "aws-eks"
+      )
+    end
+    token
+  rescue SystemCallError => e
+    raise OpenAI::Errors::SubjectTokenProviderError.new(
+      message: "Failed to read mounted EKS service account token: #{e.message}",
+      provider: "aws-eks",
+      cause: e
+    )
+  end
+end
+
+provider = MountedEksServiceAccountTokenProvider.new(token_path: TOKEN_PATH)
+
+workload_identity = OpenAI::Auth::WorkloadIdentity.new(
+  identity_provider_id: ENV.fetch("OPENAI_IDENTITY_PROVIDER_ID"),
+  service_account_id: ENV.fetch("OPENAI_SERVICE_ACCOUNT_ID"),
+  provider: provider
+)
+
+client = OpenAI::Client.new(workload_identity: workload_identity)
+
+response = client.responses.create(
+  model: "gpt-5.4-mini",
+  input: "Say hello from AWS workload identity federation."
+)
+
+puts(response.output_text)
+```
+
+
+  </div>
 
 
 

@@ -37,6 +37,55 @@ simple rewrite. Use `medium` or `high` when the model needs to diagnose a
 problem, compare options, write a plan, or reason through code. Reserve `xhigh`
 for cases where your evals show the extra latency is worth it.
 
+Tune reasoning effort for the task
+
+```javascript
+import OpenAI from "openai";
+
+const openai = new OpenAI();
+
+const prompt = [
+  "Our CI job started failing after a dependency bump.",
+  "",
+  "Error:",
+  "TypeError: Timeout.__init__() got an unexpected keyword argument 'connect'",
+  "",
+  "Identify the likeliest root cause and the smallest safe fix.",
+].join("\n");
+
+const response = await openai.responses.create({
+  model: "gpt-5.5",
+  reasoning: { effort: "high" },
+  input: prompt,
+});
+
+console.log(response.output_text);
+```
+
+```python
+from openai import OpenAI
+
+client = OpenAI()
+
+prompt = """
+Our CI job started failing after a dependency bump.
+
+Error:
+TypeError: Timeout.__init__() got an unexpected keyword argument 'connect'
+
+Identify the likeliest root cause and the smallest safe fix.
+"""
+
+response = client.responses.create(
+    model="gpt-5.5",
+    reasoning={"effort": "high"},
+    input=prompt,
+)
+
+print(response.output_text)
+```
+
+
 ## Set up `text.verbosity`
 
 `text.verbosity` is the main lever for balancing brevity against completeness.
@@ -47,6 +96,51 @@ generates less and returns output faster.
 
 For coding, `medium` and `high` tend to produce longer, more organized output
 with clearer structure. `low` keeps the answer tighter and more minimal.
+
+Set lower verbosity for compact output
+
+```javascript
+import OpenAI from "openai";
+
+const openai = new OpenAI();
+
+const incident = [
+  "Summarize this incident for the next on-call engineer.",
+  "- checkout latency spiked from 220 ms to 4.8 s",
+  "- only us-east-1 was affected",
+  "- rollback is complete",
+  "- likely trigger: cache stampede after deploy",
+].join("\n");
+
+const response = await openai.responses.create({
+  model: "gpt-5.5",
+  text: { verbosity: "low" },
+  input: incident,
+});
+
+console.log(response.output_text);
+```
+
+```python
+from openai import OpenAI
+
+client = OpenAI()
+
+response = client.responses.create(
+    model="gpt-5.5",
+    text={"verbosity": "low"},
+    input="""
+    Summarize this incident for the next on-call engineer.
+    - checkout latency spiked from 220 ms to 4.8 s
+    - only us-east-1 was affected
+    - rollback is complete
+    - likely trigger: cache stampede after deploy
+    """,
+)
+
+print(response.output_text)
+```
+
 
 ## Set up the assistant `phase` parameter
 
@@ -98,6 +192,114 @@ for optimal token efficiency and model performance.
 Keep namespace descriptions short and discriminative. Put the detailed
 instructions inside the deferred tool definitions. Avoid making one giant
 namespace for everything.
+
+Use hosted tool search with deferred tools
+
+```javascript
+import OpenAI from "openai";
+
+const openai = new OpenAI();
+
+const billingLookupInvoice = {
+  type: "function",
+  name: "billing.lookup_invoice",
+  description: "Look up invoice state, taxes, credits, and payment attempts.",
+  parameters: {
+    type: "object",
+    properties: {
+      invoice_id: { type: "string" },
+    },
+    required: ["invoice_id"],
+    additionalProperties: false,
+  },
+  strict: true,
+  defer_loading: true,
+};
+
+const crmGetAccount = {
+  type: "function",
+  name: "crm.get_account",
+  description: "Fetch account owner, plan, health, and payment history.",
+  parameters: {
+    type: "object",
+    properties: {
+      account_id: { type: "string" },
+    },
+    required: ["account_id"],
+    additionalProperties: false,
+  },
+  strict: true,
+  defer_loading: true,
+};
+
+const response = await openai.responses.create({
+  model: "gpt-5.5",
+  input:
+    "Find the right billing tool and explain why invoice INV-1043 still " +
+    "shows overdue after a payment yesterday.",
+  tools: [
+    { type: "tool_search" },
+    billingLookupInvoice,
+    crmGetAccount,
+  ],
+});
+
+console.log(response.output_text);
+```
+
+```python
+from openai import OpenAI
+
+client = OpenAI()
+
+billing_lookup_invoice = {
+    "type": "function",
+    "name": "billing.lookup_invoice",
+    "description": "Look up invoice state, taxes, credits, and payment attempts.",
+    "parameters": {
+        "type": "object",
+        "properties": {
+            "invoice_id": {"type": "string"},
+        },
+        "required": ["invoice_id"],
+        "additionalProperties": False,
+    },
+    "strict": True,
+    "defer_loading": True,
+}
+
+crm_get_account = {
+    "type": "function",
+    "name": "crm.get_account",
+    "description": "Fetch account owner, plan, health, and payment history.",
+    "parameters": {
+        "type": "object",
+        "properties": {
+            "account_id": {"type": "string"},
+        },
+        "required": ["account_id"],
+        "additionalProperties": False,
+    },
+    "strict": True,
+    "defer_loading": True,
+}
+
+response = client.responses.create(
+    model="gpt-5.5",
+    input=(
+        "Find the right billing tool and explain why invoice INV-1043 still "
+        "shows overdue after a payment yesterday."
+    ),
+    tools=[
+        {"type": "tool_search"},
+        billing_lookup_invoice,
+        crm_get_account,
+    ],
+)
+
+print(response.output_text)
+```
+
 
 ## Leverage built-in tools
 
@@ -157,6 +359,74 @@ There are two ways to leverage compaction:
 state that helps the model continue. Pass it forward as-is, then add the next
 user message.
 
+Continue from compacted response state
+
+```javascript
+import OpenAI from "openai";
+
+const openai = new OpenAI();
+
+// Full window collected from a long debugging session:
+// user messages, assistant outputs, tool calls, and tool outputs.
+const longWindow = sessionItems;
+
+const compacted = await openai.responses.compact({
+  model: "gpt-5.5",
+  input: longWindow,
+});
+
+const nextResponse = await openai.responses.create({
+  model: "gpt-5.5",
+  store: false,
+  input: [
+    ...compacted.output, // Use compact output as-is.
+    {
+      type: "message",
+      role: "user",
+      content:
+        "We found the bad cache invalidation path. Write the fix plan " +
+        "and the verification checklist.",
+    },
+  ],
+});
+
+console.log(nextResponse.output_text);
+```
+
+```python
+from openai import OpenAI
+
+client = OpenAI()
+
+# Full window collected from a long debugging session:
+# user messages, assistant outputs, tool calls, and tool outputs.
+long_window = session_items
+
+compacted = client.responses.compact(
+    model="gpt-5.5",
+    input=long_window,
+)
+
+next_response = client.responses.create(
+    model="gpt-5.5",
+    store=False,
+    input=[
+        *compacted.output,  # Use compact output as-is.
+        {
+            "type": "message",
+            "role": "user",
+            "content": (
+                "We found the bad cache invalidation path. Write the fix plan "
+                "and the verification checklist."
+            ),
+        },
+    ],
+)
+
+print(next_response.output_text)
+```
+
+
 ## Use `prompt_cache_key`
 
 [Prompt caching](https://developers.openai.com/api/docs/guides/prompt-caching) automatically reduces latency
@@ -172,6 +442,51 @@ much traffic to one prefix-key pair. If one prefix and `prompt_cache_key`
 combination exceeds about 15 requests per minute, requests may overflow to
 additional machines and reduce cache effectiveness.
 
+Route related requests to the same prompt cache
+
+```javascript
+import OpenAI from "openai";
+
+const openai = new OpenAI();
+
+const instructions = [
+  "You are the support agent for Acme.",
+  "Follow the Acme support policy and escalation rubric.",
+  "Use the same tone, safety rules, and tool plan for each ticket.",
+].join("\n");
+
+const response = await openai.responses.create({
+  model: "gpt-5.5",
+  prompt_cache_key: "tenant-acme-support-agent",
+  instructions,
+  input: "Summarize the current escalation for the on-call lead.",
+});
+
+console.log(response.output_text);
+```
+
+```python
+from openai import OpenAI
+
+client = OpenAI()
+
+instructions = """
+You are the support agent for Acme.
+Follow the Acme support policy and escalation rubric.
+Use the same tone, safety rules, and tool plan for each ticket.
+"""
+
+response = client.responses.create(
+    model="gpt-5.5",
+    prompt_cache_key="tenant-acme-support-agent",
+    instructions=instructions,
+    input="Summarize the current escalation for the on-call lead.",
+)
+
+print(response.output_text)
+```
+
+
 ## Use `reasoning.encrypted_content`
 
 Always round-trip reasoning items. This helps the model by allowing it to work
@@ -186,6 +501,69 @@ into the next request. Your app does not need to understand that value. It just
 keeps the reasoning item exactly as returned and sends it back during the next
 turn, so the model can use it to continue the workflow.
 
+Pass encrypted reasoning between stateless turns
+
+```javascript
+import OpenAI from "openai";
+
+const openai = new OpenAI();
+
+const first = await openai.responses.create({
+  model: "gpt-5.5",
+  store: false,
+  reasoning: { effort: "medium" },
+  include: ["reasoning.encrypted_content"],
+  input: "Investigate why invoice INV-1043 has mismatched tax totals.",
+});
+
+const second = await openai.responses.create({
+  model: "gpt-5.5",
+  store: false,
+  reasoning: { effort: "medium" },
+  include: ["reasoning.encrypted_content"],
+  input: [
+    ...first.output,
+    {
+      role: "user",
+      content: "Now write the customer-facing explanation in plain English.",
+    },
+  ],
+});
+
+console.log(second.output_text);
+```
+
+```python
+from openai import OpenAI
+
+client = OpenAI()
+
+first = client.responses.create(
+    model="gpt-5.5",
+    store=False,
+    reasoning={"effort": "medium"},
+    include=["reasoning.encrypted_content"],
+    input="Investigate why invoice INV-1043 has mismatched tax totals.",
+)
+
+second = client.responses.create(
+    model="gpt-5.5",
+    store=False,
+    reasoning={"effort": "medium"},
+    include=["reasoning.encrypted_content"],
+    input=[
+        *first.output,
+        {
+            "role": "user",
+            "content": "Now write the customer-facing explanation in plain English.",
+        },
+    ],
+)
+
+print(second.output_text)
+```
+
+
 ## Use `background=True`
 
 Use [`background=True`](https://developers.openai.com/api/docs/guides/background) for requests that may take
@@ -195,6 +573,67 @@ canceled. Use it for large analyses, long tool runs, or work that needs status
 and retry behavior.
 
 `background=True` **requires `store=True`**.
+
+Run and poll a background response
+
+```javascript
+import OpenAI from "openai";
+
+const openai = new OpenAI();
+
+let job = await openai.responses.create({
+  model: "gpt-5.5",
+  background: true,
+  store: true,
+  input: "Analyze this large log bundle and cluster the primary failure modes.",
+  tools: [
+    {
+      type: "code_interpreter",
+      container: {
+        type: "auto",
+        file_ids: [logBundleFileId],
+      },
+    },
+  ],
+});
+
+while (["queued", "in_progress"].includes(job.status)) {
+  await new Promise((resolve) => setTimeout(resolve, 2000));
+  job = await openai.responses.retrieve(job.id);
+}
+
+console.log(job.output_text);
+```
+
+```python
+from openai import OpenAI
+import time
+
+client = OpenAI()
+
+job = client.responses.create(
+    model="gpt-5.5",
+    background=True,
+    store=True,
+    input="Analyze this large log bundle and cluster the primary failure modes.",
+    tools=[
+        {
+            "type": "code_interpreter",
+            "container": {
+                "type": "auto",
+                "file_ids": [log_bundle_file_id],
+            },
+        }
+    ],
+)
+
+while job.status in {"queued", "in_progress"}:
+    time.sleep(2)
+    job = client.responses.retrieve(job.id)
+
+print(job.output_text)
+```
+
 
 You can combine it with `stream=True` for progress events, but the first event
 may take longer than a normal request.
@@ -236,6 +675,96 @@ only stored in memory.
 
 The default Python sample uses `websocket-client` (`pip install
 websocket-client`). The JavaScript sample uses `ws` (`npm install ws`).
+
+Start a Responses API WebSocket session
+
+```javascript
+import OpenAI from "openai";
+import WebSocket from "ws";
+
+const openai = new OpenAI();
+
+const ws = new WebSocket("wss://api.openai.com/v1/responses", {
+  headers: {
+    Authorization: "Bearer " + openai.apiKey,
+  },
+});
+
+ws.on("open", () => {
+  ws.send(
+    JSON.stringify({
+      type: "response.create",
+      model: "gpt-5.5",
+      store: false,
+      input: [
+        {
+          type: "message",
+          role: "user",
+          content: [
+            {
+              type: "input_text",
+              text:
+                "Find the flaky test in this run, call the tools you need, " +
+                "and keep going until you can explain the root cause.",
+            },
+          ],
+        },
+      ],
+      tools: [testLogTool, codeSearchTool],
+    })
+  );
+});
+
+ws.on("message", (data) => {
+  const firstEvent = JSON.parse(data.toString());
+  console.log(firstEvent.type);
+});
+```
+
+```python
+from openai import OpenAI
+from websocket import create_connection
+import json
+
+client = OpenAI()
+
+ws = create_connection(
+    "wss://api.openai.com/v1/responses",
+    header=[f"Authorization: Bearer {client.api_key}"],
+)
+
+# Same request body you would send to client.responses.create(...).
+ws.send(
+    json.dumps(
+        {
+            "type": "response.create",
+            "model": "gpt-5.5",
+            "store": False,
+            "input": [
+                {
+                    "type": "message",
+                    "role": "user",
+                    "content": [
+                        {
+                            "type": "input_text",
+                            "text": (
+                                "Find the flaky test in this run, call the tools "
+                                "you need, and keep going until you can explain "
+                                "the root cause."
+                            ),
+                        }
+                    ],
+                }
+            ],
+            "tools": [test_log_tool, code_search_tool],
+        }
+    )
+)
+
+first_event = json.loads(ws.recv())
+print(first_event["type"])
+```
+
 
 ## Final takeaway
 

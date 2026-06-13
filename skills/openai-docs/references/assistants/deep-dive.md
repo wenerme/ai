@@ -1,28 +1,49 @@
 # Assistants API deep dive
 
-export const snippetFileCreate = {
-  python: `
+## Overview
+
+Don't start a new integration on the Assistants API. We've announced plans to deprecate it soon, as the Responses API now provides the same features and a more elegant integration.
+
+There are several concepts involved in building an app with the Assistants API, covered below in case it helps with your [migration to Responses](https://developers.openai.com/api/docs/guides/assistants/migration).
+
+## Creating assistants
+
+We recommend using OpenAI's <a href="/api/docs/models">latest models</a> with
+  the Assistants API for best results and maximum compatibility with tools.
+
+To get started, creating an Assistant only requires specifying the `model` to use. But you can further customize the behavior of the Assistant:
+
+1. Use the `instructions` parameter to guide the personality of the Assistant and define its goals. Instructions are similar to system messages in the Chat Completions API.
+2. Use the `tools` parameter to give the Assistant access to up to 128 tools. You can give it access to OpenAI built-in tools like `code_interpreter` and `file_search`, or call a third-party tools via a `function` calling.
+3. Use the `tool_resources` parameter to give the tools like `code_interpreter` and `file_search` access to files. Files are uploaded using the `File` [upload endpoint](https://developers.openai.com/api/docs/api-reference/files/create) and must have the `purpose` set to `assistants` to be used with this API.
+
+For example, to create an Assistant that can create data visualization based on a `.csv` file, first upload a file.
+
+```python
 file = client.files.create(
   file=open("revenue-forecast.csv", "rb"),
   purpose='assistants'
 )
-  `.trim(),
-  "node.js": `
+```
+
+```javascript
 const file = await openai.files.create({
   file: fs.createReadStream("revenue-forecast.csv"),
   purpose: "assistants",
 });
-  `.trim(),
-  curl: `
-curl https://api.openai.com/v1/files \\
-  -H "Authorization: Bearer $OPENAI_API_KEY" \\
-  -F purpose="assistants" \\
-  -F file="@revenue-forecast.csv"
-  `.trim(),
-};
+```
 
-export const snippetAssistantCreation = {
-  python: `
+```bash
+curl https://api.openai.com/v1/files \
+  -H "Authorization: Bearer $OPENAI_API_KEY" \
+  -F purpose="assistants" \
+  -F file="@revenue-forecast.csv"
+```
+
+
+Then, create the Assistant with the `code_interpreter` tool enabled and provide the file as a resource to the tool.
+
+```python
 assistant = client.beta.assistants.create(
   name="Data visualizer",
   description="You are great at creating beautiful data visualizations. You analyze data present in .csv files, understand trends, and come up with data visualizations relevant to those trends. You also share a brief text summary of the trends observed.",
@@ -34,8 +55,9 @@ assistant = client.beta.assistants.create(
     }
   }
 )
-  `.trim(),
-  "node.js": `
+```
+
+```javascript
 const assistant = await openai.beta.assistants.create({
   name: "Data visualizer",
   description: "You are great at creating beautiful data visualizations. You analyze data present in .csv files, understand trends, and come up with data visualizations relevant to those trends. You also share a brief text summary of the trends observed.",
@@ -47,12 +69,13 @@ const assistant = await openai.beta.assistants.create({
     }
   }
 });
-  `.trim(),
-  curl: `
-curl https://api.openai.com/v1/assistants \\
-  -H "Authorization: Bearer $OPENAI_API_KEY" \\
-  -H "Content-Type: application/json" \\
-  -H "OpenAI-Beta: assistants=v2" \\
+```
+
+```bash
+curl https://api.openai.com/v1/assistants \
+  -H "Authorization: Bearer $OPENAI_API_KEY" \
+  -H "Content-Type: application/json" \
+  -H "OpenAI-Beta: assistants=v2" \
   -d '{
     "name": "Data visualizer",
     "description": "You are great at creating beautiful data visualizations. You analyze data present in .csv files, understand trends, and come up with data visualizations relevant to those trends. You also share a brief text summary of the trends observed.",
@@ -64,11 +87,20 @@ curl https://api.openai.com/v1/assistants \\
       }
     }
   }'
-  `.trim(),
-};
+```
 
-export const snippetThreadCreation = {
-  python: `
+
+You can attach a maximum of 20 files to `code_interpreter` and 10,000 files to `file_search` (using `vector_store` [objects](https://developers.openai.com/api/docs/api-reference/vector-stores/object)). For vector stores created starting in November 2025, the `file_search` limit is 100,000,000 files.
+
+Each file can be at most 512 MB in size and have a maximum of 5,000,000 tokens. By default, each project can store up to 2.5 TB of files total. There is no organization-wide storage limit. You can reach out to our support team to increase this limit.
+
+## Managing Threads and Messages
+
+Threads and Messages represent a conversation session between an Assistant and a user. There is a limit of 100,000 Messages per Thread. Once the size of the Messages exceeds the context window of the model, the Thread will attempt to smartly truncate messages, before fully dropping the ones it considers the least important.
+
+You can create a Thread with an initial list of Messages like this:
+
+```python
 thread = client.beta.threads.create(
   messages=[
     {
@@ -83,8 +115,9 @@ thread = client.beta.threads.create(
     }
   ]
 )
-  `.trim(),
-  "node.js": `
+```
+
+```javascript
 const thread = await openai.beta.threads.create({
   messages: [
     {
@@ -99,12 +132,13 @@ const thread = await openai.beta.threads.create({
     }
   ]
 });
-  `.trim(),
-  curl: `
-curl https://api.openai.com/v1/threads \\
-  -H "Authorization: Bearer $OPENAI_API_KEY" \\
-  -H "Content-Type: application/json" \\
-  -H "OpenAI-Beta: assistants=v2" \\
+```
+
+```bash
+curl https://api.openai.com/v1/threads \
+  -H "Authorization: Bearer $OPENAI_API_KEY" \
+  -H "Content-Type: application/json" \
+  -H "OpenAI-Beta: assistants=v2" \
   -d '{
     "messages": [
       {
@@ -119,11 +153,18 @@ curl https://api.openai.com/v1/threads \\
       }
     ]
   }'
-  `.trim(),
-};
+```
 
-export const snippetImageCreation = {
-  python: `
+
+Messages can contain text, images, or file attachment. Message `attachments` are helper methods that add files to a thread's `tool_resources`. You can also choose to add files to the `thread.tool_resources` directly.
+
+### Creating image input content
+
+Message content can contain either external image URLs or File IDs uploaded via the [File API](https://developers.openai.com/api/docs/api-reference/files/create). Only [models](https://developers.openai.com/api/docs/models) with Vision support can accept image input. Supported image content types include png, jpg, gif, and webp. When creating image files, pass `purpose="vision"` to allow you to later download and display the input content. Projects are limited to 2.5 TB total file storage, and there is no organization-wide storage limit. Please contact us to request a limit increase.
+
+Tools cannot access image content unless specified. To pass image files to Code Interpreter, add the file ID in the message `attachments` list to allow the tool to read and analyze the input. Image URLs cannot be downloaded in Code Interpreter today.
+
+```python
 file = client.files.create(
   file=open("myimage.png", "rb"),
   purpose="vision"
@@ -149,9 +190,10 @@ thread = client.beta.threads.create(
     }
   ]
 )
-  `.trim(),
-  "node.js": `
+```
 
+```javascript
+import fs from "fs";
 const file = await openai.files.create({
   file: fs.createReadStream("myimage.png"),
   purpose: "vision",
@@ -177,20 +219,21 @@ const thread = await openai.beta.threads.create({
     }
   ]
 });
-  `.trim(),
-  curl: `
+```
+
+```bash
 # Upload a file with an "vision" purpose
-curl https://api.openai.com/v1/files \\
-  -H "Authorization: Bearer $OPENAI_API_KEY" \\
-  -F purpose="vision" \\
+curl https://api.openai.com/v1/files \
+  -H "Authorization: Bearer $OPENAI_API_KEY" \
+  -F purpose="vision" \
   -F file="@/path/to/myimage.png"
 
 ## Pass the file ID in the content
 
-curl https://api.openai.com/v1/threads \\
--H "Authorization: Bearer $OPENAI_API_KEY" \\
--H "Content-Type: application/json" \\
--H "OpenAI-Beta: assistants=v2" \\
+curl https://api.openai.com/v1/threads \
+-H "Authorization: Bearer $OPENAI_API_KEY" \
+-H "Content-Type: application/json" \
+-H "OpenAI-Beta: assistants=v2" \
 -d '{
 "messages": [
 {
@@ -212,11 +255,17 @@ curl https://api.openai.com/v1/threads \\
 }
 ]
 }'
-`.trim(),
-};
+```
 
-export const snippetLowHighFidelity = {
-  python: `
+
+#### Low or high fidelity image understanding
+
+By controlling the `detail` parameter, which has three options, `low`, `high`, or `auto`, you have control over how the model processes the image and generates its textual understanding.
+
+- `low` will enable the "low res" mode. The model will receive a low-res 512px x 512px version of the image, and represent the image with a budget of 85 tokens. This allows the API to return faster responses and consume fewer input tokens for use cases that do not require high detail.
+- `high` will enable "high res" mode, which first allows the model to see the low res image and then creates detailed crops of input images based on the input image size. Use the [pricing calculator](https://openai.com/api/pricing/) to see token counts for various image sizes.
+
+```python
 thread = client.beta.threads.create(
   messages=[
     {
@@ -237,8 +286,9 @@ thread = client.beta.threads.create(
     }
   ]
 )
-  `.trim(),
-  "node.js": `
+```
+
+```javascript
 const thread = await openai.beta.threads.create({
   messages: [
     {
@@ -259,12 +309,13 @@ const thread = await openai.beta.threads.create({
     }
   ]
 });
-  `.trim(),
-  curl: `
-curl https://api.openai.com/v1/threads \\
-  -H "Authorization: Bearer $OPENAI_API_KEY" \\
-  -H "Content-Type: application/json" \\
-  -H "OpenAI-Beta: assistants=v2" \\
+```
+
+```bash
+curl https://api.openai.com/v1/threads \
+  -H "Authorization: Bearer $OPENAI_API_KEY" \
+  -H "Content-Type: application/json" \
+  -H "OpenAI-Beta: assistants=v2" \
   -d '{
     "messages": [
       {
@@ -285,147 +336,8 @@ curl https://api.openai.com/v1/threads \\
       }
     ]
   }'
-  `.trim(),
-};
+```
 
-export const snippetMessageAnnotations = {
-  python: `
-# Retrieve the message object
-message = client.beta.threads.messages.retrieve(
-  thread_id="...",
-  message_id="..."
-)
-
-# Extract the message content
-
-message_content = message.content[0].text
-annotations = message_content.annotations
-citations = []
-
-# Iterate over the annotations and add footnotes
-
-for index, annotation in enumerate(annotations): # Replace the text with a footnote
-message_content.value = message_content.value.replace(annotation.text, f' [{index}]')
-
-    # Gather citations based on annotation attributes
-    if (file_citation := getattr(annotation, 'file_citation', None)):
-        cited_file = client.files.retrieve(file_citation.file_id)
-        citations.append(f'[{index}] {file_citation.quote} from {cited_file.filename}')
-    elif (file_path := getattr(annotation, 'file_path', None)):
-        cited_file = client.files.retrieve(file_path.file_id)
-        citations.append(f'[{index}] Click <here> to download {cited_file.filename}')
-        # Note: File download functionality not implemented above for brevity
-
-# Add footnotes to the end of the message before displaying to user
-
-message_content.value += '\\n' + '\\n'.join(citations)
-`.trim(),
-};
-
-export const snippetRunCreate = {
-  python: `
-run = client.beta.threads.runs.create(
-  thread_id=thread.id,
-  assistant_id=assistant.id
-)
-  `.trim(),
-  "node.js": `
-const run = await openai.beta.threads.runs.create(
-  thread.id,
-  { assistant_id: assistant.id }
-);
-  `.trim(),
-  curl: `
-curl https://api.openai.com/v1/threads/THREAD_ID/runs \\
-  -H "Authorization: Bearer $OPENAI_API_KEY" \\
-  -H "Content-Type: application/json" \\
-  -H "OpenAI-Beta: assistants=v2" \\
-  -d '{
-    "assistant_id": "asst_ToSF7Gb04YMj8AMMm50ZLLtY"
-  }'
-  `.trim(),
-};
-
-export const snippetRunOverride = {
-  python: `
-run = client.beta.threads.runs.create(
-  thread_id=thread.id,
-  assistant_id=assistant.id,
-  model="gpt-4o",
-  instructions="New instructions that override the Assistant instructions",
-  tools=[{"type": "code_interpreter"}, {"type": "file_search"}]
-)
-  `.trim(),
-  "node.js": `
-const run = await openai.beta.threads.runs.create(
-  thread.id,
-  {
-    assistant_id: assistant.id,
-    model: "gpt-4o",
-    instructions: "New instructions that override the Assistant instructions",
-    tools: [{"type": "code_interpreter"}, {"type": "file_search"}]
-  }
-);
-  `.trim(),
-  curl: `
-curl https://api.openai.com/v1/threads/THREAD_ID/runs \\
-  -H "Authorization: Bearer $OPENAI_API_KEY" \\
-  -H "Content-Type: application/json" \\
-  -H "OpenAI-Beta: assistants=v2" \\
-  -d '{
-    "assistant_id": "ASSISTANT_ID",
-    "model": "gpt-4o",
-    "instructions": "New instructions that override the Assistant instructions",
-    "tools": [{"type": "code_interpreter"}, {"type": "file_search"}]
-  }'
-  `.trim(),
-};
-
-## Overview
-
-Don't start a new integration on the Assistants API. We've announced plans to deprecate it soon, as the Responses API now provides the same features and a more elegant integration.
-
-There are several concepts involved in building an app with the Assistants API, covered below in case it helps with your [migration to Responses](https://developers.openai.com/api/docs/guides/assistants/migration).
-
-## Creating assistants
-
-We recommend using OpenAI's <a href="/api/docs/models">latest models</a> with
-  the Assistants API for best results and maximum compatibility with tools.
-
-To get started, creating an Assistant only requires specifying the `model` to use. But you can further customize the behavior of the Assistant:
-
-1. Use the `instructions` parameter to guide the personality of the Assistant and define its goals. Instructions are similar to system messages in the Chat Completions API.
-2. Use the `tools` parameter to give the Assistant access to up to 128 tools. You can give it access to OpenAI built-in tools like `code_interpreter` and `file_search`, or call a third-party tools via a `function` calling.
-3. Use the `tool_resources` parameter to give the tools like `code_interpreter` and `file_search` access to files. Files are uploaded using the `File` [upload endpoint](https://developers.openai.com/api/docs/api-reference/files/create) and must have the `purpose` set to `assistants` to be used with this API.
-
-For example, to create an Assistant that can create data visualization based on a `.csv` file, first upload a file.
-
-Then, create the Assistant with the `code_interpreter` tool enabled and provide the file as a resource to the tool.
-
-You can attach a maximum of 20 files to `code_interpreter` and 10,000 files to `file_search` (using `vector_store` [objects](https://developers.openai.com/api/docs/api-reference/vector-stores/object)). For vector stores created starting in November 2025, the `file_search` limit is 100,000,000 files.
-
-Each file can be at most 512 MB in size and have a maximum of 5,000,000 tokens. By default, each project can store up to 2.5 TB of files total. There is no organization-wide storage limit. You can reach out to our support team to increase this limit.
-
-## Managing Threads and Messages
-
-Threads and Messages represent a conversation session between an Assistant and a user. There is a limit of 100,000 Messages per Thread. Once the size of the Messages exceeds the context window of the model, the Thread will attempt to smartly truncate messages, before fully dropping the ones it considers the least important.
-
-You can create a Thread with an initial list of Messages like this:
-
-Messages can contain text, images, or file attachment. Message `attachments` are helper methods that add files to a thread's `tool_resources`. You can also choose to add files to the `thread.tool_resources` directly.
-
-### Creating image input content
-
-Message content can contain either external image URLs or File IDs uploaded via the [File API](https://developers.openai.com/api/docs/api-reference/files/create). Only [models](https://developers.openai.com/api/docs/models) with Vision support can accept image input. Supported image content types include png, jpg, gif, and webp. When creating image files, pass `purpose="vision"` to allow you to later download and display the input content. Projects are limited to 2.5 TB total file storage, and there is no organization-wide storage limit. Please contact us to request a limit increase.
-
-Tools cannot access image content unless specified. To pass image files to Code Interpreter, add the file ID in the message `attachments` list to allow the tool to read and analyze the input. Image URLs cannot be downloaded in Code Interpreter today.
-
-#### Low or high fidelity image understanding
-
-By controlling the `detail` parameter, which has three options, `low`, `high`, or `auto`, you have control over how the model processes the image and generates its textual understanding.
-
-- `low` will enable the "low res" mode. The model will receive a low-res 512px x 512px version of the image, and represent the image with a budget of 85 tokens. This allows the API to return faster responses and consume fewer input tokens for use cases that do not require high detail.
-- `high` will enable "high res" mode, which first allows the model to see the low res image and then creates detailed crops of input images based on the input image size. Use the [pricing calculator](https://openai.com/api/pricing/) to see token counts for various image sizes.
 
 ### Context window management
 
@@ -460,11 +372,105 @@ There are two types of Annotations:
 
 When annotations are present in the Message object, you'll see illegible model-generated substrings in the text that you should replace with the annotations. These strings may look something like `【13†source】` or `sandbox:/mnt/data/file.csv`. Here’s an example python code snippet that replaces these strings with the annotations.
 
+```python
+# Retrieve the message object
+message = client.beta.threads.messages.retrieve(
+  thread_id="...",
+  message_id="..."
+)
+
+# Extract the message content
+
+message_content = message.content[0].text
+annotations = message_content.annotations
+citations = []
+
+# Iterate over the annotations and add footnotes
+
+for index, annotation in enumerate(annotations): # Replace the text with a footnote
+message_content.value = message_content.value.replace(annotation.text, f' [{index}]')
+
+    # Gather citations based on annotation attributes
+    if (file_citation := getattr(annotation, 'file_citation', None)):
+        cited_file = client.files.retrieve(file_citation.file_id)
+        citations.append(f'[{index}] {file_citation.quote} from {cited_file.filename}')
+    elif (file_path := getattr(annotation, 'file_path', None)):
+        cited_file = client.files.retrieve(file_path.file_id)
+        citations.append(f'[{index}] Click <here> to download {cited_file.filename}')
+        # Note: File download functionality not implemented above for brevity
+
+# Add footnotes to the end of the message before displaying to user
+
+message_content.value += '\n' + '\n'.join(citations)
+```
+
+
 ## Runs and Run Steps
 
 When you have all the context you need from your user in the Thread, you can run the Thread with an Assistant of your choice.
 
+```python
+run = client.beta.threads.runs.create(
+  thread_id=thread.id,
+  assistant_id=assistant.id
+)
+```
+
+```javascript
+const run = await openai.beta.threads.runs.create(
+  thread.id,
+  { assistant_id: assistant.id }
+);
+```
+
+```bash
+curl https://api.openai.com/v1/threads/THREAD_ID/runs \
+  -H "Authorization: Bearer $OPENAI_API_KEY" \
+  -H "Content-Type: application/json" \
+  -H "OpenAI-Beta: assistants=v2" \
+  -d '{
+    "assistant_id": "asst_ToSF7Gb04YMj8AMMm50ZLLtY"
+  }'
+```
+
+
 By default, a Run will use the `model` and `tools` configuration specified in Assistant object, but you can override most of these when creating the Run for added flexibility:
+
+```python
+run = client.beta.threads.runs.create(
+  thread_id=thread.id,
+  assistant_id=assistant.id,
+  model="gpt-4o",
+  instructions="New instructions that override the Assistant instructions",
+  tools=[{"type": "code_interpreter"}, {"type": "file_search"}]
+)
+```
+
+```javascript
+const run = await openai.beta.threads.runs.create(
+  thread.id,
+  {
+    assistant_id: assistant.id,
+    model: "gpt-4o",
+    instructions: "New instructions that override the Assistant instructions",
+    tools: [{"type": "code_interpreter"}, {"type": "file_search"}]
+  }
+);
+```
+
+```bash
+curl https://api.openai.com/v1/threads/THREAD_ID/runs \
+  -H "Authorization: Bearer $OPENAI_API_KEY" \
+  -H "Content-Type: application/json" \
+  -H "OpenAI-Beta: assistants=v2" \
+  -d '{
+    "assistant_id": "ASSISTANT_ID",
+    "model": "gpt-4o",
+    "instructions": "New instructions that override the Assistant instructions",
+    "tools": [{"type": "code_interpreter"}, {"type": "file_search"}]
+  }'
+```
+
 
 Note: `tool_resources` associated with the Assistant cannot be overridden during Run creation. You must use the [modify Assistant](https://developers.openai.com/api/docs/api-reference/assistants/modifyAssistant) endpoint to do this.
 

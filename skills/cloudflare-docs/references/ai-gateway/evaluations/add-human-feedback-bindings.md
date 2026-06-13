@@ -54,7 +54,7 @@ Let the user interact with or evaluate the AI response. This interaction will in
 
 ## 2\. Send Human Feedback
 
-Use the [patchLog()](https://developers.cloudflare.com/ai-gateway/integrations/worker-binding-methods/#patchlog) method to provide feedback for the AI evaluation.
+Use the [patchLog()](https://developers.cloudflare.com/ai-gateway/usage/worker-binding-methods/#patchlog) method to provide feedback for the AI evaluation.
 
 JavaScript
 
