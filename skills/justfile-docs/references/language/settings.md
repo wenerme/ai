@@ -222,6 +222,10 @@ section documents changes in behavior when `set lists` is enabled.
 Variadic recipe parameters are lists of strings instead of single
 space-separated strings.
 
+Lists literals are written `[a, b, c]` and are flattened, since lists may only
+contain strings and not other lists. For example, `[["a", "b"], [], "c"]`
+evaluates to `["a", "b", "c"]`.
+
 The following functions apply to each list element individually:
 
 - `absolute_path()`
@@ -232,8 +236,20 @@ The following functions apply to each list element individually:
 `append()` and `prepend()` do not split elements on whitespace and error if the
 first argument is not a single-element list.
 
+The canonical boolean true value is the string `"true"`, and the canonical
+boolean false value is the empty list `[]`. All values other than the empty
+list are truthy, including `''`.
+
+The functions `is_dependency()`, `path_exists()`, and `semver_matches()` return
+the canonical booleans.
+
+`which()` function the empty list when no executable is found.
+
 Each argument to a dependency binds to exactly one parameter, and supplying
 extra arguments to a variadic dependency is an error.
+
+Dependencies may be invoked once per element of a list with
+`*(recipe *argument)`.
 
 A parameter evaluates to the default when the argument is an empty list.
 
@@ -288,6 +304,24 @@ first=one two
 second=bob
 $1=one
 $2=two
+```
+
+A mapped dependency is invoked once per element of its starred argument:
+
+```just
+set unstable
+set lists
+
+build target *platform: *(compile target *platform)
+
+@compile target platform:
+  echo compiling {{ target }} for {{ platform }}…
+```
+
+```console
+$ just build x86 foo bar
+compiling foo for x86…
+compiling bar for x86…
 ```
 
 #### Positional Arguments

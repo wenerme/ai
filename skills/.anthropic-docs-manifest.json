@@ -802,10 +802,8 @@
   "anthropic-docs/manage-claude/usage-cost-api.md": {
     "url": "https://platform.claude.com/docs/en/manage-claude/usage-cost-api",
     "skill": "anthropic-docs",
-    "etag": "W/\"358a-19e70c36490\"",
-    "lastModified": "Thu, 28 May 2026 22:45:14 GMT",
-    "size": 13700,
-    "updatedAt": "2026-05-29T00:32:17.062Z"
+    "size": 15073,
+    "updatedAt": "2026-06-13T10:48:54.724Z"
   },
   "anthropic-docs/manage-claude/rate-limits-api.md": {
     "url": "https://platform.claude.com/docs/en/manage-claude/rate-limits-api",
@@ -815,13 +813,17 @@
     "size": 8194,
     "updatedAt": "2026-05-29T00:32:17.359Z"
   },
+  "anthropic-docs/manage-claude/analytics-api.md": {
+    "url": "https://platform.claude.com/docs/en/manage-claude/analytics-api",
+    "skill": "anthropic-docs",
+    "size": 7303,
+    "updatedAt": "2026-06-13T10:48:55.793Z"
+  },
   "anthropic-docs/manage-claude/claude-code-analytics-api.md": {
     "url": "https://platform.claude.com/docs/en/manage-claude/claude-code-analytics-api",
     "skill": "anthropic-docs",
-    "etag": "W/\"2e67-19e1979f2f8\"",
-    "lastModified": "Mon, 11 May 2026 23:58:03 GMT",
-    "size": 11875,
-    "updatedAt": "2026-05-12T00:25:49.602Z"
+    "size": 12197,
+    "updatedAt": "2026-06-13T10:48:56.115Z"
   },
   "anthropic-docs/manage-claude/data-residency.md": {
     "url": "https://platform.claude.com/docs/en/manage-claude/data-residency",
@@ -878,8 +880,8 @@
   "anthropic-docs/manage-claude/compliance-api-access.md": {
     "url": "https://platform.claude.com/docs/en/manage-claude/compliance-api-access",
     "skill": "anthropic-docs",
-    "size": 12958,
-    "updatedAt": "2026-06-12T00:36:03.147Z"
+    "size": 12900,
+    "updatedAt": "2026-06-13T10:48:59.102Z"
   },
   "anthropic-docs/manage-claude/compliance-activity-feed.md": {
     "url": "https://platform.claude.com/docs/en/manage-claude/compliance-activity-feed",

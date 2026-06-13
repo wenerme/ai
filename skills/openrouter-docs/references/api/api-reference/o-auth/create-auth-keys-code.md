@@ -54,6 +54,12 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/UnauthorizedResponse'
+        '403':
+          description: Forbidden - Authentication successful but insufficient permissions
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ForbiddenResponse'
         '409':
           description: Conflict - Resource conflict or concurrent modification
           content:
@@ -107,6 +113,10 @@ paths:
                   description: >-
                     Optional credit limit reset interval. When set, the credit
                     limit resets on this interval.
+                workspace_id:
+                  type: string
+                  format: uuid
+                  description: Optional workspace ID to associate the API key with
               required:
                 - callback_url
 servers:
@@ -234,6 +244,43 @@ components:
         - error
       description: Unauthorized - Authentication required or invalid credentials
       title: UnauthorizedResponse
+    ForbiddenResponseErrorData:
+      type: object
+      properties:
+        code:
+          type: integer
+        message:
+          type: string
+        metadata:
+          type:
+            - object
+            - 'null'
+          additionalProperties:
+            description: Any type
+      required:
+        - code
+        - message
+      description: Error data for ForbiddenResponse
+      title: ForbiddenResponseErrorData
+    ForbiddenResponse:
+      type: object
+      properties:
+        error:
+          $ref: '#/components/schemas/ForbiddenResponseErrorData'
+        openrouter_metadata:
+          type:
+            - object
+            - 'null'
+          additionalProperties:
+            description: Any type
+        user_id:
+          type:
+            - string
+            - 'null'
+      required:
+        - error
+      description: Forbidden - Authentication successful but insufficient permissions
+      title: ForbiddenResponse
     ConflictResponseErrorData:
       type: object
       properties:

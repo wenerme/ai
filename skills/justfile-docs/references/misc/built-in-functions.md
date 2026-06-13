@@ -101,15 +101,6 @@ $ just
 - `env_var(key)` — Deprecated alias for `env(key)`.
 - `env_var_or_default(key, default)` — Deprecated alias for `env(key, default)`.
 
-A default can be substituted for an empty environment variable value with the
-`||` operator, currently unstable:
-
-```just
-set unstable
-
-foo := env('FOO', '') || 'DEFAULT_VALUE'
-```
-
 #### Executables
 
 - `require(name)`<sup>1.39.0</sup> — Search directories in the `PATH`

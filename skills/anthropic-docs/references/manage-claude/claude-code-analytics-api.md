@@ -28,6 +28,10 @@ This API enables you to better monitor, analyze, and optimize your Claude Code a
 **Claude Platform on AWS:** The Claude Code Analytics API is not currently available. View Claude Code usage on the **Usage** page in the Claude Console instead.
 </Note>
 
+<Note>
+**Claude Enterprise organizations:** Claude Code activity for claude.ai users is reported by the Claude Enterprise Analytics API, which uses an Analytics API key instead of an Admin API key. See [Analytics APIs](/docs/en/manage-claude/analytics-api) to find which API and key type your organization needs.
+</Note>
+
 ## Quick start
 
 Get your organization's Claude Code analytics for a specific day:
@@ -128,7 +132,7 @@ Breakdown of tool action acceptance and rejection rates by tool type:
 
 #### Model breakdown
 For each Claude model used:
-- **model**: Claude model identifier (e.g., `claude-opus-4-7`)
+- **model**: Claude model identifier (e.g., `claude-opus-4-8`)
 - **tokens.input/output**: Input and output token counts for this model
 - **tokens.cache_read/cache_creation**: Cache-related token usage for this model
 - **estimated_cost.amount**: Estimated cost in cents USD for this model
@@ -179,7 +183,7 @@ The API returns data in the following format:
       },
       "model_breakdown": [
         {
-          "model": "claude-opus-4-7",
+          "model": "claude-opus-4-8",
           "tokens": {
             "input": 100000,
             "output": 35000,

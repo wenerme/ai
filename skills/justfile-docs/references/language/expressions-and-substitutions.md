@@ -31,25 +31,27 @@ foobar := 'foo' + 'bar'
 
 #### Logical Operators
 
-The logical operators `&&` and `||` can be used to coalesce string
-values<sup>1.37.0</sup>, similar to Python's `and` and `or`. These operators
-consider the empty string `''` to be false, and all other strings to be true.
+The logical operators `&&` and `||` can be used to coalesce
+values<sup>1.37.0</sup>, similar to Python's `and` and `or`. The only false
+value is the empty list `[]`; every other value, including the empty string
+`''`, is true.
 
-These operators are currently unstable.
+These operators require `set lists`<sup>master</sup>, which is currently
+unstable.
 
-The `&&` operator returns the empty string if the left-hand argument is the
-empty string, otherwise it returns the right-hand argument:
+The `&&` operator returns the empty list if the left-hand argument is false,
+otherwise it returns the right-hand argument:
 
 ```justfile
-foo := '' && 'goodbye'      # ''
+foo := [] && 'goodbye'      # []
 bar := 'hello' && 'goodbye' # 'goodbye'
 ```
 
-The `||` operator returns the left-hand argument if it is non-empty, otherwise
-it returns the right-hand argument:
+The `||` operator returns the left-hand argument if it is true, otherwise it
+returns the right-hand argument:
 
 ```justfile
-foo := '' || 'goodbye'      # 'goodbye'
+foo := [] || 'goodbye'      # 'goodbye'
 bar := 'hello' || 'goodbye' # 'hello'
 ```
 

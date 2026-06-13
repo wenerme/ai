@@ -606,8 +606,8 @@
   },
   "api/api-reference/o-auth/create-auth-keys-code.md": {
     "url": "https://openrouter.ai/docs/api/api-reference/o-auth/create-auth-keys-code.md",
-    "size": 15310,
-    "updatedAt": "2026-06-11T11:53:35.767Z"
+    "size": 16672,
+    "updatedAt": "2026-06-13T11:10:20.840Z"
   },
   "api/api-reference/speech/create-audio-speech.md": {
     "url": "https://openrouter.ai/docs/api/api-reference/speech/create-audio-speech.md",
@@ -1076,8 +1076,8 @@
   },
   "client-sdks/typescript/api-reference/oauth.md": {
     "url": "https://openrouter.ai/docs/client-sdks/typescript/api-reference/oauth.md",
-    "size": 9459,
-    "updatedAt": "2026-06-11T12:04:39.222Z"
+    "size": 9531,
+    "updatedAt": "2026-06-13T11:15:11.168Z"
   },
   "client-sdks/typescript/api-reference/observability.md": {
     "url": "https://openrouter.ai/docs/client-sdks/typescript/api-reference/observability.md",
@@ -1201,8 +1201,8 @@
   },
   "client-sdks/python/api-reference/oauth.md": {
     "url": "https://openrouter.ai/docs/client-sdks/python/api-reference/oauth.md",
-    "size": 12074,
-    "updatedAt": "2026-06-11T12:06:03.621Z"
+    "size": 12551,
+    "updatedAt": "2026-06-13T11:17:20.996Z"
   },
   "client-sdks/python/api-reference/observability.md": {
     "url": "https://openrouter.ai/docs/client-sdks/python/api-reference/observability.md",
@@ -1321,8 +1321,8 @@
   },
   "client-sdks/go/api-reference/oauth.md": {
     "url": "https://openrouter.ai/docs/client-sdks/go/api-reference/oauth.md",
-    "size": 5796,
-    "updatedAt": "2026-06-11T12:08:27.356Z"
+    "size": 5871,
+    "updatedAt": "2026-06-13T11:19:00.583Z"
   },
   "client-sdks/go/api-reference/observability.md": {
     "url": "https://openrouter.ai/docs/client-sdks/go/api-reference/observability.md",

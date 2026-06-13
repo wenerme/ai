@@ -103,6 +103,7 @@ with OpenRouter(
 | `key_label`                | *Optional\[str]*                                                                                                          | :heavy\_minus\_sign: | Optional custom label for the API key. Defaults to the app name if not provided.                                                                            | My Custom Key                                                      |
 | `limit`                    | *Optional\[float]*                                                                                                        | :heavy\_minus\_sign: | Credit limit for the API key to be created                                                                                                                  | 100                                                                |
 | `usage_limit_type`         | [Optional\[operations.UsageLimitType\]](../../operations/usagelimittype.md)                                               | :heavy\_minus\_sign: | Optional credit limit reset interval. When set, the credit limit resets on this interval.                                                                   | monthly                                                            |
+| `workspace_id`             | *Optional\[str]*                                                                                                          | :heavy\_minus\_sign: | Optional workspace ID to associate the API key with                                                                                                         |                                                                    |
 | `retries`                  | [Optional\[utils.RetryConfig\]](../../models/utils/retryconfig.md)                                                        | :heavy\_minus\_sign: | Configuration to override the default retry behavior of the client.                                                                                         |                                                                    |
 
 ### Response
@@ -115,6 +116,7 @@ with OpenRouter(
 | ---------------------------------- | ----------- | ---------------- |
 | errors.BadRequestResponseError     | 400         | application/json |
 | errors.UnauthorizedResponseError   | 401         | application/json |
+| errors.ForbiddenResponseError      | 403         | application/json |
 | errors.ConflictResponseError       | 409         | application/json |
 | errors.InternalServerResponseError | 500         | application/json |
 | errors.OpenRouterDefaultError      | 4XX, 5XX    | \*/\*            |
