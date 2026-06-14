@@ -31,7 +31,7 @@ then the config file (app.ini) should exists in the "custom/conf" directory of y
 Some package vendors might use "/etc/gitea" to store the config file, while some others don't.
 
 You could manually find the config file (app.ini) by checking Gitea's startup logs
-or reading the Gitea Web's Site Administrator -> Confugiraton Summary.
+or reading the Gitea Web's Site Administrator -> Configuration Summary.
 
 If you are using some isolated enviroments like container (docker),
 the path you see usually is not what it is in the host's filesystem.
