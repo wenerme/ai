@@ -222,9 +222,9 @@ section documents changes in behavior when `set lists` is enabled.
 Variadic recipe parameters are lists of strings instead of single
 space-separated strings.
 
-Lists literals are written `[a, b, c]` and are flattened, since lists may only
-contain strings and not other lists. For example, `[["a", "b"], [], "c"]`
-evaluates to `["a", "b", "c"]`.
+List literals are written `[a, b, c]`. List literals flatten their arguments,
+lists may only contain strings and not other lists. For example,
+`[["a", "b"], [], "c"]` evaluates to `["a", "b", "c"]`.
 
 The following functions apply to each list element individually:
 
@@ -240,10 +240,20 @@ The canonical boolean true value is the string `"true"`, and the canonical
 boolean false value is the empty list `[]`. All values other than the empty
 list are truthy, including `''`.
 
+A `bool(value)` function is available for converting to the canonical boolean
+values. It returns `[]` when `value` is `""` `"0"` `"false"`, or `[]`, and
+`"true"` when `value` is `"1"` or `"true"`. All other values are an error. It
+can be used to parse booleans passed as arguments or environment variables.
+
+A `show(value)` function is available for converting `value` into a string
+containing its literal representation. Brackets are used for empty and
+multi-element lists, e.g., `"[]"` and `"["foo", "bar"]"`, but not
+single-element lists, e.g., `"foo"`.
+
 The functions `is_dependency()`, `path_exists()`, and `semver_matches()` return
 the canonical booleans.
 
-`which()` function the empty list when no executable is found.
+`which()` returns the empty list when no executable is found.
 
 Each argument to a dependency binds to exactly one parameter, and supplying
 extra arguments to a variadic dependency is an error.
@@ -258,6 +268,22 @@ Passing an empty list to a non-`*` parameter without a default is an error.
 When `positional-arguments` is set, list arguments are space-joined unless they
 are variadic, in which case they are passed as one positional argument per
 element.
+
+The condition of an `if` or `assert()` may be any expression, which is
+evaluated for truthiness.
+
+The `else` of an `if` may be omitted, in which case the `if` evaluates to `[]`
+when its condition is false.
+
+The comparison operators `==`, `!=`, `=~`, and `!~` may be used anywhere, not
+just in `if` and `assert()`, and evaluate to `"true"` or `[]`.
+
+Values may be negated with `!`. `!expression` evaluates to `"true"` if
+`expression` is `[]`, otherwise it evaluates to `[]`.
+
+The `[arg]` `flag` attribute, makes the parameter a flag which does not take a
+value on the command line. For example, with `[arg(foo, long, flag)]`, `foo`
+will be `"true"` when `--foo` is passed, and `[]` otherwise.
 
 ##### Examples
 
@@ -306,12 +332,14 @@ $1=one
 $2=two
 ```
 
-A mapped dependency is invoked once per element of its starred argument:
+A mapped dependency is invoked once per element of its starred argument, with
+`[parallel]` to run them in parallel:
 
 ```just
 set unstable
 set lists
 
+[parallel]
 build target *platform: *(compile target *platform)
 
 @compile target platform:
@@ -322,6 +350,16 @@ build target *platform: *(compile target *platform)
 $ just build x86 foo bar
 compiling foo for x86…
 compiling bar for x86…
+```
+
+The canonical false value `[]` is recommended as a default for options:
+
+```just
+set unstable
+set lists
+
+#[arg(bar, long)]
+foo bar=[]:
 ```
 
 #### Positional Arguments
