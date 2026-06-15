@@ -10503,6 +10503,14 @@
     "size": 1744,
     "updatedAt": "2026-05-22T00:39:44.077Z"
   },
+  "codex-docs/import.md": {
+    "url": "https://developers.openai.com/codex/import.md",
+    "skill": "codex-docs",
+    "etag": "W/\"debac54b356df4d46b16e9c696028618\"",
+    "lastModified": "Sun, 14 Jun 2026 16:27:38 GMT",
+    "size": 4639,
+    "updatedAt": "2026-06-15T00:47:43.484Z"
+  },
   "codex-docs/integrations/github.md": {
     "url": "https://developers.openai.com/codex/integrations/github.md",
     "skill": "codex-docs",
@@ -10558,14 +10566,6 @@
     "lastModified": "Mon, 20 Apr 2026 19:20:14 GMT",
     "size": 7644,
     "updatedAt": "2026-04-21T00:29:11.443Z"
-  },
-  "codex-docs/migrate.md": {
-    "url": "https://developers.openai.com/codex/migrate.md",
-    "skill": "codex-docs",
-    "etag": "W/\"99960340af186c9c1b1d30789d543376\"",
-    "lastModified": "Tue, 05 May 2026 10:46:11 GMT",
-    "size": 4490,
-    "updatedAt": "2026-05-05T10:46:11.764Z"
   },
   "codex-docs/models.md": {
     "url": "https://developers.openai.com/codex/models.md",
