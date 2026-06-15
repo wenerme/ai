@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 # OpenAI GPT function calling with JavaScript and Cloudflare Workers
 
-**Last reviewed:**  almost 3 years ago 
+**Last reviewed:**  about 3 years ago 
 
 In this tutorial, you will build a project that leverages [OpenAI's function calling ↗](https://platform.openai.com/docs/guides/function-calling) feature, available in OpenAI's latest Chat Completions API models.
 

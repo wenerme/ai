@@ -220,13 +220,12 @@ It is currently unstable and will change in backwards incompatible ways. This
 section documents changes in behavior when `set lists` is enabled.
 
 Lists may be used in many contexts, and their behavior in many of those
-contexts has not yet been decided. Using a list in those contexts, such as in
-an interpolation, with `+` or `/`, or with many functions, is an error. The
-`join_list()` function can be used to convert a list into a space-separated
-string for use in these contexts. Feedback on how lists should behave in these
-contexts, and on lists in general, is most welcome. Feel free to open an issue
-or leave a comment in the
-[`set lists` tracking issue](https://github.com/casey/just/issues/3377).
+contexts has not yet been decided. Using a list in those contexts, such as with
+`+` or `/`, or with many functions, is an error. The `join_list()` function can
+be used to convert a list into a space-separated string for use in these
+contexts. Feedback on how lists should behave in these contexts, and on lists
+in general, is most welcome. Feel free to open an issue or leave a comment in
+the [`set lists` tracking issue](https://github.com/casey/just/issues/3377).
 
 Variadic recipe parameters are lists of strings instead of single
 space-separated strings.
@@ -234,6 +233,24 @@ space-separated strings.
 List literals are written `[a, b, c]`. List literals flatten their arguments,
 lists may only contain strings and not other lists. For example,
 `[["a", "b"], [], "c"]` evaluates to `["a", "b", "c"]`.
+
+Lists in recipe and `f`-string interpolations are joined with spaces into a
+single string.
+
+In `[env(variable, value)]` if `value` is `[]`, `variable` is not set.
+Otherwise it is set to `value` joined with spaces.
+
+The `script-interpreter`, `shell`, and `windows-shell` settings flatten their
+elements like list literals.
+
+The `--dotenv-filename` and `--dotenv-path` options may be passed multiple
+times, and the `dotenv-filename` and `dotenv-path` settings accept lists, in
+which case multiple environment files may be loaded. The values of
+`dotenv-path` are tried first. If none are found the current directory is
+searched for the names in `dotenv-filename`, followed by its ancestors,
+stopping in the first directory that contains any of them and loading all
+matching files in that directory. If multiple environment files are loaded,
+variables in files later in list take precedence over earlier ones.
 
 The following functions apply to each list element individually:
 
@@ -304,6 +321,9 @@ Values may be negated with `!`. `!expression` evaluates to `"true"` if
 The `[arg]` `flag` attribute, makes the parameter a flag which does not take a
 value on the command line. For example, with `[arg(foo, long, flag)]`, `foo`
 will be `"true"` when `--foo` is passed, and `[]` otherwise.
+
+Message values in `assert(condition, message)` and `[confirm(message)]` are
+space-joined for display.
 
 ##### Examples
 

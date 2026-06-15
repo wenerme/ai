@@ -33,8 +33,9 @@ If your Worker only forwards subrequest responses to the client verbatim without
 
 The worker can create a `Response` object using a `ReadableStream` as the body. Any data provided through the`ReadableStream` will be streamed to the client as it becomes available.
 
-* [  Module Worker ](#tab-panel-10865)
-* [  Service Worker ](#tab-panel-10866)
+* [  Module Worker ](#tab-panel-11915)
+* [  Service Worker ](#tab-panel-11916)
+* [  Python ](#tab-panel-11917)
 
 JavaScript
 
@@ -91,10 +92,34 @@ async function fetchAndStream(request) {
 
 ```
 
+Python
+
+```
+
+from workers import WorkerEntrypoint, Response, fetch
+
+
+class Default(WorkerEntrypoint):
+
+    async def fetch(self, request):
+
+        # Fetch from origin server.
+
+        response = await fetch(request)
+
+
+        # Stream the response body to the client.
+
+        return Response(response.body, headers=response.headers)
+
+
+```
+
 A [TransformStream](https://developers.cloudflare.com/workers/runtime-apis/streams/transformstream/) and the [ReadableStream.pipeTo()](https://developers.cloudflare.com/workers/runtime-apis/streams/readablestream/#methods) method can be used to modify the response body as it is being streamed:
 
-* [  Module Worker ](#tab-panel-10867)
-* [  Service Worker ](#tab-panel-10868)
+* [  Module Worker ](#tab-panel-11918)
+* [  Service Worker ](#tab-panel-11919)
+* [  Python ](#tab-panel-11920)
 
 JavaScript
 
@@ -179,6 +204,48 @@ async function fetchAndStream(request) {
   return new Response(readable, response);
 
 }
+
+
+```
+
+Python
+
+```
+
+from workers import WorkerEntrypoint, Response
+
+from js import ReadableStream, TextEncoder
+
+from pyodide.ffi import create_proxy, to_js
+
+import asyncio
+
+
+class Default(WorkerEntrypoint):
+
+    async def fetch(self, request):
+
+        enc = TextEncoder.new()
+
+
+        async def start(controller):
+
+            for i in range(5):
+
+                controller.enqueue(enc.encode(f"chunk {i}\n"))
+
+                await asyncio.sleep(0.1)
+
+            controller.close()
+
+
+        stream = ReadableStream.new(
+
+            to_js({"start": create_proxy(start)})
+
+        )
+
+        return Response(stream, headers={"Content-Type": "text/plain"})
 
 
 ```

@@ -33,9 +33,9 @@ curl "http://localhost:8787/cdn-cgi/handler/scheduled?format=json"
 
 ## Syntax
 
-* [  JavaScript ](#tab-panel-11266)
-* [  TypeScript ](#tab-panel-11267)
-* [  Python ](#tab-panel-11268)
+* [  JavaScript ](#tab-panel-11843)
+* [  TypeScript ](#tab-panel-11844)
+* [  Python ](#tab-panel-11845)
 
 JavaScript
 
@@ -114,8 +114,8 @@ class Default(WorkerEntrypoint):
 
 When you configure multiple [Cron Triggers](https://developers.cloudflare.com/workers/configuration/cron-triggers/) for a single Worker, each trigger invokes the same `scheduled()` handler. Use `controller.cron` to distinguish which schedule fired and run different logic for each.
 
-* [  wrangler.jsonc ](#tab-panel-11271)
-* [  wrangler.toml ](#tab-panel-11272)
+* [  wrangler.jsonc ](#tab-panel-11849)
+* [  wrangler.toml ](#tab-panel-11850)
 
 JSONC
 
@@ -145,8 +145,9 @@ crons = [ "*/5 * * * *", "0 0 * * *" ]
 
 ```
 
-* [  JavaScript ](#tab-panel-11269)
-* [  TypeScript ](#tab-panel-11270)
+* [  JavaScript ](#tab-panel-11846)
+* [  TypeScript ](#tab-panel-11847)
+* [  Python ](#tab-panel-11848)
 
 JavaScript
 
@@ -214,6 +215,30 @@ export default {
   },
 
 } satisfies ExportedHandler<Env>;
+
+
+```
+
+Python
+
+```
+
+from workers import WorkerEntrypoint, fetch
+
+from datetime import datetime, timezone
+
+
+class Default(WorkerEntrypoint):
+
+    async def scheduled(self, controller, env, ctx):
+
+        if controller.cron == "*/5 * * * *":
+
+            await fetch("https://example.com/api/sync")
+
+        elif controller.cron == "0 0 * * *":
+
+            await env.MY_KV.put("last-cleanup", datetime.now(timezone.utc).isoformat())
 
 
 ```

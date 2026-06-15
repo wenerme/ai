@@ -22,6 +22,9 @@ To configure a Tail Worker, refer to [Tail Workers documentation](https://develo
 
 ## Syntax
 
+* [  JavaScript ](#tab-panel-11851)
+* [  Python ](#tab-panel-11852)
+
 JavaScript
 
 ```
@@ -41,6 +44,24 @@ export default {
   }
 
 }
+
+
+```
+
+Python
+
+```
+
+from workers import WorkerEntrypoint, fetch
+
+import json
+
+
+class Default(WorkerEntrypoint):
+
+    async def tail(self, events, env, ctx):
+
+        await fetch("<YOUR_ENDPOINT>", method="POST", body=json.dumps(events))
 
 
 ```

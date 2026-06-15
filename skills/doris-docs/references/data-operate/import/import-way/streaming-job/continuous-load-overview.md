@@ -41,6 +41,8 @@ Continuous load supports the following data sources and sync modes:
 | PostgreSQL  | 14, 15, 16, 17     | [PostgreSQL CDC with SQL Mapping](./continuous-load-postgresql-table.md) | [PostgreSQL CDC with Auto Table Creation](./continuous-load-postgresql-database.md) | [Amazon RDS PostgreSQL](./prerequisites/amazon-rds-postgresql.md) · [Amazon Aurora PostgreSQL](./prerequisites/amazon-aurora-postgresql.md) |
 | S3          | -                  | [S3 Continuous Load](./continuous-load-s3.md)                     | -                                                                       | -                                                                                                                                         |
 
+For how upstream column types map to Doris types, see [Data Type Mapping](./data-type-mapping.md).
+
 ## How to Choose a Sync Method
 
 SQL Mapping Sync and Auto Table Creation Sync are two continuous load methods with **completely different underlying mechanisms**, not a difference in "number of tables." **Auto Table Creation Sync also supports syncing only a single table through `include_tables`**, so the choice should be based on capability requirements.
@@ -184,7 +186,22 @@ DROP JOB WHERE jobName = <job_name>;
 
 | Parameter    | Default | Description                                            |
 | ------------ | ------- | ------------------------------------------------------ |
-| max_interval | 10s     | Idle scheduling interval when the upstream has no new data. |
+| max_interval | 10      | Idle scheduling interval in seconds when the upstream has no new data. Only an integer (number of seconds) is accepted, e.g. `10`; a unit suffix such as `10s` is not supported. Must be >= 1. |
+
+## Limitations
+
+Sync scope, automatic table creation, and semantic guarantees (exactly-once / at-least-once) are described in [Capability Comparison](#capability-comparison). This section only lists the constraints and behaviors that are **not supported**.
+
+### Primary Key Tables
+
+Only upstream tables **with a primary key** can be synchronized (both sync methods). The corresponding Doris table is a **Unique Key** table — auto-created as such in Auto Table Creation Sync, or created by you in SQL Mapping Sync. Tables without a primary key are not supported.
+
+### Schema Change (DDL)
+
+DDL sync applies **only to Auto Table Creation Sync**; SQL Mapping (TVF) does not sync any DDL.
+
+- **PostgreSQL** (supported since 4.1): only `ADD COLUMN` and `DROP COLUMN` are synced. **Column type changes, `RENAME COLUMN`, and constraint / index / partition changes are NOT synced** — apply them manually in Doris.
+- **MySQL**: upstream DDL is **not synced yet** — adjust the Doris table schema manually.
 
 ## FAQ
 

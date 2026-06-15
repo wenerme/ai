@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 # Use Queues from Durable Objects
 
-**Last reviewed:**  over 2 years ago 
+**Last reviewed:**  almost 3 years ago 
 
 Publish to a queue from within a Durable Object.
 
@@ -26,8 +26,8 @@ Prerequisites:
 
 Configure your Wrangler file as follows:
 
-* [  wrangler.jsonc ](#tab-panel-6993)
-* [  wrangler.toml ](#tab-panel-6994)
+* [  wrangler.jsonc ](#tab-panel-9471)
+* [  wrangler.toml ](#tab-panel-9472)
 
 JSONC
 

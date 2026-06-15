@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 # Handle form submissions with Airtable
 
-**Last reviewed:**  almost 3 years ago 
+**Last reviewed:**  about 3 years ago 
 
 In this tutorial, you will use [Cloudflare Workers](https://developers.cloudflare.com/workers/) and [Airtable ↗](https://airtable.com) to persist form submissions from a front-end user interface. Airtable is a free-to-use spreadsheet solution that has an approachable API for developers. Workers will handle incoming form submissions and use Airtable's [REST API ↗](https://airtable.com/api) to asynchronously persist the data in an Airtable base (Airtable's term for a spreadsheet) for later reference.
 
@@ -379,8 +379,8 @@ To make an authenticated request to Airtable, you need to provide four constants
 
 Add a `vars` table at the end of your Wrangler file:
 
-* [  wrangler.jsonc ](#tab-panel-10005)
-* [  wrangler.toml ](#tab-panel-10006)
+* [  wrangler.jsonc ](#tab-panel-12041)
+* [  wrangler.toml ](#tab-panel-12042)
 
 JSONC
 
@@ -396,7 +396,7 @@ JSONC
 
   // Set this to today's date
 
-  "compatibility_date": "2026-05-21",
+  "compatibility_date": "2026-06-15",
 
   "vars": {
 
@@ -423,7 +423,7 @@ main = "src/index.js"
 
 # Set this to today's date
 
-compatibility_date = "2026-05-21"
+compatibility_date = "2026-06-15"
 
 
 [vars]

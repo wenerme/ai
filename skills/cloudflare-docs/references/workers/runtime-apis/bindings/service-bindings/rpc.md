@@ -28,8 +28,8 @@ For example, the following Worker implements the public method `add(a, b)`:
 
 For example, if Worker B implements the public method `add(a, b)`:
 
-* [  wrangler.jsonc ](#tab-panel-10771)
-* [  wrangler.toml ](#tab-panel-10772)
+* [  wrangler.jsonc ](#tab-panel-11818)
+* [  wrangler.toml ](#tab-panel-11819)
 
 JSONC
 
@@ -61,9 +61,9 @@ main = "./src/workerB.js"
 
 ```
 
-* [  JavaScript ](#tab-panel-10778)
-* [  TypeScript ](#tab-panel-10779)
-* [  Python ](#tab-panel-10780)
+* [  JavaScript ](#tab-panel-11825)
+* [  TypeScript ](#tab-panel-11826)
+* [  Python ](#tab-panel-11827)
 
 JavaScript
 
@@ -142,8 +142,8 @@ class Default(WorkerEntrypoint):
 
 Worker A can declare a [binding](https://developers.cloudflare.com/workers/runtime-apis/bindings) to Worker B:
 
-* [  wrangler.jsonc ](#tab-panel-10773)
-* [  wrangler.toml ](#tab-panel-10774)
+* [  wrangler.jsonc ](#tab-panel-11820)
+* [  wrangler.toml ](#tab-panel-11821)
 
 JSONC
 
@@ -196,9 +196,9 @@ service = "worker_b"
 
 Making it possible for Worker A to call the `add()` method from Worker B:
 
-* [  JavaScript ](#tab-panel-10775)
-* [  TypeScript ](#tab-panel-10776)
-* [  Python ](#tab-panel-10777)
+* [  JavaScript ](#tab-panel-11822)
+* [  TypeScript ](#tab-panel-11823)
+* [  Python ](#tab-panel-11824)
 
 JavaScript
 
@@ -262,6 +262,9 @@ You do not need to learn, implement, or think about special protocols to use the
 
 To provide RPC methods from your Worker, you must extend the `WorkerEntrypoint` class, as shown in the example below:
 
+* [  JavaScript ](#tab-panel-11798)
+* [  Python ](#tab-panel-11799)
+
 JavaScript
 
 ```
@@ -278,6 +281,22 @@ export default class extends WorkerEntrypoint {
 
 ```
 
+Python
+
+```
+
+from workers import WorkerEntrypoint
+
+
+class Default(WorkerEntrypoint):
+
+    async def add(self, a, b):
+
+        return a + b
+
+
+```
+
 A new instance of the class is created every time the Worker is called. Note that even though the Worker is implemented as a class, it is still stateless — the class instance only lasts for the duration of the invocation. If you need to persist or coordinate state in Workers, you should use [Durable Objects](https://developers.cloudflare.com/durable-objects).
 
 ### Bindings (`env`)
@@ -286,8 +305,8 @@ The [env](https://developers.cloudflare.com/workers/runtime-apis/bindings) objec
 
 For example, a Worker that declares a binding to the [environment variable](https://developers.cloudflare.com/workers/configuration/environment-variables/) `GREETING`:
 
-* [  wrangler.jsonc ](#tab-panel-10761)
-* [  wrangler.toml ](#tab-panel-10762)
+* [  wrangler.jsonc ](#tab-panel-11808)
+* [  wrangler.toml ](#tab-panel-11809)
 
 JSONC
 
@@ -328,6 +347,9 @@ GREETING = "Hello"
 
 Can access it by calling `this.env.GREETING`:
 
+* [  JavaScript ](#tab-panel-11800)
+* [  Python ](#tab-panel-11801)
+
 JavaScript
 
 ```
@@ -351,6 +373,27 @@ export default class extends WorkerEntrypoint {
 
 ```
 
+Python
+
+```
+
+from workers import WorkerEntrypoint, Response
+
+
+class Default(WorkerEntrypoint):
+
+    async def fetch(self, request):
+
+        return Response("Hello from my-worker")
+
+
+    async def greet(self, name):
+
+        return self.env.GREETING + name
+
+
+```
+
 You can use any type of [binding](https://developers.cloudflare.com/workers/runtime-apis/bindings) this way.
 
 ### Lifecycle methods (`ctx`)
@@ -358,6 +401,9 @@ You can use any type of [binding](https://developers.cloudflare.com/workers/runt
 The [ctx](https://developers.cloudflare.com/workers/runtime-apis/context) object is exposed as a class property of the `WorkerEntrypoint` class.
 
 For example, you can extend the lifetime of the invocation context by calling the `waitUntil()` method:
+
+* [  JavaScript ](#tab-panel-11802)
+* [  Python ](#tab-panel-11803)
 
 JavaScript
 
@@ -395,12 +441,46 @@ export default class extends WorkerEntrypoint {
 
 ```
 
+Python
+
+```
+
+from workers import WorkerEntrypoint, Response
+
+
+class Default(WorkerEntrypoint):
+
+    async def fetch(self, request):
+
+        return Response("Hello from my-worker")
+
+
+    async def signup(self, email, name):
+
+        # _send_event() will continue running, even after this method returns a value to the caller
+
+        self.ctx.waitUntil(self._send_event("signup", email))
+
+        # Perform any other work
+
+        return "Success"
+
+
+    async def _send_event(self, event_name, email):
+
+        # ...
+
+        pass
+
+
+```
+
 ### Fetching static assets
 
 If your Worker has a [static assets binding](https://developers.cloudflare.com/workers/static-assets/binding/), you can call `this.env.ASSETS.fetch()` from within an RPC method. Since RPC methods do not receive a `request` parameter, construct a `Request` or URL with any hostname — the hostname is ignored by the assets binding, only the pathname matters:
 
-* [  JavaScript ](#tab-panel-10769)
-* [  TypeScript ](#tab-panel-10770)
+* [  JavaScript ](#tab-panel-11816)
+* [  TypeScript ](#tab-panel-11817)
 
 JavaScript
 
@@ -448,8 +528,8 @@ export class ImageWorker extends WorkerEntrypoint {
 
 The caller can then invoke this method via RPC:
 
-* [  JavaScript ](#tab-panel-10765)
-* [  TypeScript ](#tab-panel-10766)
+* [  JavaScript ](#tab-panel-11812)
+* [  TypeScript ](#tab-panel-11813)
 
 JavaScript
 
@@ -479,8 +559,8 @@ You can also export any number of named `WorkerEntrypoint` classes from within a
 
 You can use this to group multiple pieces of compute together. For example, you might create a distinct `WorkerEntrypoint` for each permission role in your application, and use these to provide role-specific RPC methods:
 
-* [  wrangler.jsonc ](#tab-panel-10763)
-* [  wrangler.toml ](#tab-panel-10764)
+* [  wrangler.jsonc ](#tab-panel-11810)
+* [  wrangler.toml ](#tab-panel-11811)
 
 JSONC
 
@@ -530,6 +610,9 @@ database_id = "<unique-ID-for-your-database>"
 
 
 ```
+
+* [  JavaScript ](#tab-panel-11804)
+* [  Python ](#tab-panel-11805)
 
 JavaScript
 
@@ -611,10 +694,50 @@ export default class extends WorkerEntrypoint {
 
 ```
 
+Python
+
+```
+
+from workers import WorkerEntrypoint, Response
+
+
+class AdminEntrypoint(WorkerEntrypoint):
+
+    async def create_user(self, username):
+
+        await self.env.D1.prepare("INSERT INTO users (username) VALUES (?)").bind(username).run()
+
+
+    async def delete_user(self, username):
+
+        await self.env.D1.prepare("DELETE FROM users WHERE username = ?").bind(username).run()
+
+
+class UserEntrypoint(WorkerEntrypoint):
+
+    async def get_tasks(self, user_id):
+
+        return await self.env.D1.prepare("SELECT title FROM tasks WHERE user_id = ?").bind(user_id).run()
+
+
+    async def create_task(self, user_id, title):
+
+        await self.env.D1.prepare("INSERT INTO tasks (user_id, title) VALUES (?, ?)").bind(user_id, title).run()
+
+
+class Default(WorkerEntrypoint):
+
+    async def fetch(self, request):
+
+        return Response("Hello from my to do app")
+
+
+```
+
 You can then declare a Service binding directly to `AdminEntrypoint` in another Worker:
 
-* [  wrangler.jsonc ](#tab-panel-10767)
-* [  wrangler.toml ](#tab-panel-10768)
+* [  wrangler.jsonc ](#tab-panel-11814)
+* [  wrangler.toml ](#tab-panel-11815)
 
 JSONC
 
@@ -665,6 +788,9 @@ entrypoint = "AdminEntrypoint"
 
 ```
 
+* [  JavaScript ](#tab-panel-11806)
+* [  Python ](#tab-panel-11807)
+
 JavaScript
 
 ```
@@ -680,6 +806,24 @@ export default {
   },
 
 };
+
+
+```
+
+Python
+
+```
+
+from workers import WorkerEntrypoint, Response
+
+
+class Default(WorkerEntrypoint):
+
+    async def fetch(self, request):
+
+        await self.env.ADMIN.create_user("aNewUser")
+
+        return Response("Hello from admin app")
 
 
 ```

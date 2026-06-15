@@ -14,11 +14,11 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 View tutorials to help you get started with Durable Objects.
 
-| Name                                                                                                                                             | Last Updated     | Difficulty   |
-| ------------------------------------------------------------------------------------------------------------------------------------------------ | ---------------- | ------------ |
-| [Build a seat booking app with SQLite in Durable Objects](https://developers.cloudflare.com/durable-objects/tutorials/build-a-seat-booking-app/) | over 1 year ago  | Intermediate |
-| [Deploy a Browser Run Worker with Durable Objects](https://developers.cloudflare.com/browser-run/how-to/browser-run-with-do/)                    | over 2 years ago | Beginner     |
-| [Deploy a real-time chat application](https://developers.cloudflare.com/workers/tutorials/deploy-a-realtime-chat-app/)                           | over 2 years ago | Intermediate |
+| Name                                                                                                                                             | Last Updated       | Difficulty   |
+| ------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------ | ------------ |
+| [Build a seat booking app with SQLite in Durable Objects](https://developers.cloudflare.com/durable-objects/tutorials/build-a-seat-booking-app/) | over 1 year ago    | Intermediate |
+| [Deploy a Browser Run Worker with Durable Objects](https://developers.cloudflare.com/browser-run/how-to/browser-run-with-do/)                    | over 2 years ago   | Beginner     |
+| [Deploy a real-time chat application](https://developers.cloudflare.com/workers/tutorials/deploy-a-realtime-chat-app/)                           | almost 3 years ago | Intermediate |
 
 ```json
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/durable-objects/","name":"Durable Objects"}},{"@type":"ListItem","position":3,"item":{"@id":"/durable-objects/tutorials/","name":"Tutorials"}}]}

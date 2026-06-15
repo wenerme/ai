@@ -23,6 +23,7 @@ Cloudflare provides the following detections:
 * [ Malicious uploads detection ](https://developers.cloudflare.com/waf/detections/malicious-uploads/)
 * [ AI Security for Apps ](https://developers.cloudflare.com/waf/detections/ai-security-for-apps/)
 * [ Bot score ](https://developers.cloudflare.com/bots/concepts/bot-score/)
+* [ Threat intelligence ](https://developers.cloudflare.com/waf/detections/threat-intelligence/)
 
 ## Availability
 
@@ -42,8 +43,8 @@ For more information on bot score, refer to [Bot scores](https://developers.clou
 
 To turn on a traffic detection:
 
-* [  New dashboard ](#tab-panel-10217)
-* [ Old dashboard ](#tab-panel-10218)
+* [  New dashboard ](#tab-panel-11018)
+* [ Old dashboard ](#tab-panel-11019)
 
 1. In the Cloudflare dashboard, go to the Security **Settings** page.  
 [ Go to **Settings** ](https://dash.cloudflare.com/?to=/:account/:zone/security/settings)

@@ -14,9 +14,9 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 The `DurableObject` base class is an abstract class which all Durable Objects inherit from. This base class provides a set of optional methods, frequently referred to as handler methods, which can respond to events, for example a `webSocketMessage` when using the [WebSocket Hibernation API](https://developers.cloudflare.com/durable-objects/best-practices/websockets/#durable-objects-hibernation-websocket-api). To provide a concrete example, here is a Durable Object `MyDurableObject` which extends `DurableObject` and implements the fetch handler to return "Hello, World!" to the calling Worker.
 
-* [  JavaScript ](#tab-panel-5665)
-* [  TypeScript ](#tab-panel-5666)
-* [  Python ](#tab-panel-5667)
+* [  JavaScript ](#tab-panel-8027)
+* [  TypeScript ](#tab-panel-8028)
+* [  Python ](#tab-panel-8029)
 
 JavaScript
 
@@ -105,8 +105,9 @@ class MyDurableObject(DurableObject):
 
 #### Example
 
-* [  JavaScript ](#tab-panel-5655)
-* [  TypeScript ](#tab-panel-5656)
+* [  JavaScript ](#tab-panel-8030)
+* [  TypeScript ](#tab-panel-8031)
+* [  Python ](#tab-panel-8032)
 
 JavaScript
 
@@ -158,6 +159,30 @@ export class MyDurableObject extends DurableObject<Env> {
 
 ```
 
+Python
+
+```
+
+from workers import DurableObject, Response
+
+from urllib.parse import urlparse
+
+
+class MyDurableObject(DurableObject):
+
+    async def fetch(self, request):
+
+        path = urlparse(request.url).path
+
+        if path == "/hello":
+
+            return Response("Hello, World!")
+
+        return Response("Not found", status=404)
+
+
+```
+
 ### `alarm`
 
 * `` alarm(alarmInfo? ` AlarmInvocationInfo `) ``: ` void ` | ` Promise<void> `  
@@ -178,8 +203,9 @@ export class MyDurableObject extends DurableObject<Env> {
 
 #### Example
 
-* [  JavaScript ](#tab-panel-5657)
-* [  TypeScript ](#tab-panel-5658)
+* [  JavaScript ](#tab-panel-8033)
+* [  TypeScript ](#tab-panel-8034)
+* [  Python ](#tab-panel-8035)
 
 JavaScript
 
@@ -227,6 +253,26 @@ export class MyDurableObject extends DurableObject<Env> {
 
 ```
 
+Python
+
+```
+
+from workers import DurableObject
+
+
+class MyDurableObject(DurableObject):
+
+    async def alarm(self, alarm_info=None):
+
+        if alarm_info and alarm_info.isRetry:
+
+            print(f"Alarm retry attempt {alarm_info.retryCount}")
+
+        await self.process_scheduled_task()
+
+
+```
+
 ### `webSocketMessage`
 
 * `` webSocketMessage(ws ` WebSocket `, message ` string | ArrayBuffer `) ``: ` void ` | ` Promise<void> `\- Called by the system when an accepted WebSocket receives a message. - This method is not called for WebSocket control frames. The system will respond to an incoming [WebSocket protocol ping ↗](https://www.rfc-editor.org/rfc/rfc6455#section-5.5.2)automatically without interrupting hibernation.  
@@ -243,8 +289,9 @@ export class MyDurableObject extends DurableObject<Env> {
 
 #### Example
 
-* [  JavaScript ](#tab-panel-5659)
-* [  TypeScript ](#tab-panel-5660)
+* [  JavaScript ](#tab-panel-8036)
+* [  TypeScript ](#tab-panel-8037)
+* [  Python ](#tab-panel-8038)
 
 JavaScript
 
@@ -296,6 +343,28 @@ export class MyDurableObject extends DurableObject<Env> {
 
 ```
 
+Python
+
+```
+
+from workers import DurableObject
+
+
+class MyDurableObject(DurableObject):
+
+    async def webSocketMessage(self, ws, message):
+
+        if isinstance(message, str):
+
+            ws.send(f"Received: {message}")
+
+        else:
+
+            ws.send(f"Received {len(message)} bytes")
+
+
+```
+
 ### `webSocketClose`
 
 * `` webSocketClose(ws ` WebSocket `, code ` number `, reason ` string `, wasClean ` boolean `) ``: ` void ` | ` Promise<void> `\- Called by the system when a WebSocket connection is closed.  
@@ -316,8 +385,9 @@ export class MyDurableObject extends DurableObject<Env> {
 
 #### Example
 
-* [  JavaScript ](#tab-panel-5663)
-* [  TypeScript ](#tab-panel-5664)
+* [  JavaScript ](#tab-panel-8042)
+* [  TypeScript ](#tab-panel-8043)
+* [  Python ](#tab-panel-8044)
 
 JavaScript
 
@@ -369,6 +439,24 @@ export class MyDurableObject extends DurableObject<Env> {
 
 ```
 
+Python
+
+```
+
+from workers import DurableObject
+
+
+class MyDurableObject(DurableObject):
+
+    async def webSocketClose(self, ws, code, reason, was_clean):
+
+        ws.close(code, reason)
+
+        print(f"WebSocket closed: code={code}, reason={reason}")
+
+
+```
+
 ### `webSocketError`
 
 * `` webSocketError(ws ` WebSocket `, error ` unknown `) ``: ` void ` | ` Promise<void> `\- Called by the system when a non-disconnection error occurs on a WebSocket connection. - This method can be `async`.
@@ -384,8 +472,9 @@ export class MyDurableObject extends DurableObject<Env> {
 
 #### Example
 
-* [  JavaScript ](#tab-panel-5661)
-* [  TypeScript ](#tab-panel-5662)
+* [  JavaScript ](#tab-panel-8039)
+* [  TypeScript ](#tab-panel-8040)
+* [  Python ](#tab-panel-8041)
 
 JavaScript
 
@@ -421,6 +510,22 @@ export class MyDurableObject extends DurableObject<Env> {
   }
 
 }
+
+
+```
+
+Python
+
+```
+
+from workers import DurableObject
+
+
+class MyDurableObject(DurableObject):
+
+    async def webSocketError(self, ws, error):
+
+        print(f"WebSocket error: {error}")
 
 
 ```

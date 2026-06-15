@@ -20,6 +20,9 @@ Process incoming emails using the `email()` handler in your Cloudflare Workers. 
 
 Add the `email` handler function to your Worker's exported handlers:
 
+* [  TypeScript ](#tab-panel-8322)
+* [  Python ](#tab-panel-8323)
+
 TypeScript
 
 ```
@@ -35,6 +38,22 @@ export default {
   },
 
 } satisfies ExportedHandler<Env>;
+
+
+```
+
+Python
+
+```
+
+from workers import WorkerEntrypoint
+
+
+class Default(WorkerEntrypoint):
+
+    async def email(self, message, env, ctx):
+
+        await message.forward("destination@example.com")
 
 
 ```
@@ -85,8 +104,8 @@ interface ForwardableEmailMessage {
 
 ### Properties
 
-* [ Basic properties ](#tab-panel-8245)
-* [ Parse email content ](#tab-panel-8246)
+* [ Basic properties ](#tab-panel-8324)
+* [ Parse email content ](#tab-panel-8325)
 
 TypeScript
 
@@ -162,9 +181,9 @@ export default {
 
 Forward incoming emails to verified destination addresses:
 
-* [ Simple forwarding ](#tab-panel-8247)
-* [ Conditional forwarding ](#tab-panel-8248)
-* [ Multiple forwarding ](#tab-panel-8249)
+* [ Simple forwarding ](#tab-panel-8326)
+* [ Conditional forwarding ](#tab-panel-8327)
+* [ Multiple forwarding ](#tab-panel-8328)
 
 TypeScript
 
@@ -315,8 +334,8 @@ Replies through the Workers API must satisfy the following requirements, otherwi
 
 The reply payload is an `EmailMessage` built from a raw MIME string. The examples below use [mimetext ↗](https://www.npmjs.com/package/mimetext) to build the MIME body. The `mimetext` package requires the [nodejs\_compat](https://developers.cloudflare.com/workers/runtime-apis/nodejs/) compatibility flag.
 
-* [ Simple auto-reply ](#tab-panel-8250)
-* [ Smart auto-reply ](#tab-panel-8251)
+* [ Simple auto-reply ](#tab-panel-8329)
+* [ Smart auto-reply ](#tab-panel-8330)
 
 TypeScript
 
@@ -515,8 +534,8 @@ export default {
 
 Reject emails with a permanent SMTP error:
 
-* [ Simple rejection ](#tab-panel-8252)
-* [ Content-based rejection ](#tab-panel-8253)
+* [ Simple rejection ](#tab-panel-8331)
+* [ Content-based rejection ](#tab-panel-8332)
 
 TypeScript
 

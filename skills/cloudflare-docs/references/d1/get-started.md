@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 # Getting started
 
-**Last reviewed:**  8 months ago 
+**Last reviewed:**  10 months ago 
 
 This guide instructs you through:
 
@@ -49,8 +49,8 @@ Use a Node version manager like [Volta ↗](https://volta.sh/) or [nvm ↗](http
 
 Create a new Worker as the means to query your database.
 
-* [ CLI ](#tab-panel-5386)
-* [ Dashboard ](#tab-panel-5387)
+* [ CLI ](#tab-panel-7756)
+* [ Dashboard ](#tab-panel-7757)
 
 1. Create a new project named `d1-tutorial` by running:  
  npm  yarn  pnpm  
@@ -105,8 +105,8 @@ A D1 database is conceptually similar to many other SQL databases: a database ma
 
 To create your first D1 database:
 
-* [ CLI ](#tab-panel-5376)
-* [ Dashboard ](#tab-panel-5377)
+* [ CLI ](#tab-panel-7746)
+* [ Dashboard ](#tab-panel-7747)
 
 1. Change into the directory you just created for your Workers project:  
 Terminal window  
@@ -159,8 +159,8 @@ You must create a binding for your Worker to connect to your D1 database. [Bindi
 
 To bind your D1 database to your Worker:
 
-* [ CLI ](#tab-panel-5393)
-* [ Dashboard ](#tab-panel-5394)
+* [ CLI ](#tab-panel-7763)
+* [ Dashboard ](#tab-panel-7764)
 
 You can automatically add the binding to your Wrangler configuration file when you run the `wrangler d1 create` command (step 3 of [2\. Create a database](https://developers.cloudflare.com/d1/get-started/#2-create-a-database)).
 
@@ -168,8 +168,8 @@ But if you wish to add the binding manually, follow the steps below:
 
 1. Copy the lines obtained from step 2 of [2\. Create a database](https://developers.cloudflare.com/d1/get-started/#2-create-a-database) from your terminal.
 2. Add them to the end of your Wrangler file.  
-   * [  wrangler.jsonc ](#tab-panel-5388)  
-   * [  wrangler.toml ](#tab-panel-5389)  
+   * [  wrangler.jsonc ](#tab-panel-7758)  
+   * [  wrangler.toml ](#tab-panel-7759)  
 JSONC  
 ```  
 {  
@@ -214,8 +214,8 @@ You create bindings by adding them to the Worker you have created.
 
 ### Populate your D1 database
 
-* [ CLI ](#tab-panel-5382)
-* [ Dashboard ](#tab-panel-5383)
+* [ CLI ](#tab-panel-7754)
+* [ Dashboard ](#tab-panel-7755)
 
 After correctly preparing your [Wrangler configuration file](https://developers.cloudflare.com/workers/wrangler/configuration/), set up your database. Create a `schema.sql` file using the SQL syntax below to initialize your database.
 
@@ -280,15 +280,15 @@ INSERT INTO Customers (CustomerID, CompanyName, ContactName) VALUES (1, 'Alfreds
 
 After you have set up your database, run an SQL query from within your Worker.
 
-* [ CLI ](#tab-panel-5395)
-* [ Dashboard ](#tab-panel-5396)
+* [ CLI ](#tab-panel-7765)
+* [ Dashboard ](#tab-panel-7766)
 
 1. Navigate to your `d1-tutorial` Worker and open the `index.ts` file. The `index.ts` file is where you configure your Worker's interactions with D1.
 2. Clear the content of `index.ts`.
 3. Paste the following code snippet into your `index.ts` file:  
-   * [  JavaScript ](#tab-panel-5390)  
-   * [  TypeScript ](#tab-panel-5391)  
-   * [  Python ](#tab-panel-5392)  
+   * [  JavaScript ](#tab-panel-7760)  
+   * [  TypeScript ](#tab-panel-7761)  
+   * [  Python ](#tab-panel-7762)  
 index.js  
 ```  
 export default {  
@@ -397,8 +397,8 @@ export default {
 
 Deploy your application on Cloudflare's global network.
 
-* [ CLI ](#tab-panel-5384)
-* [ Dashboard ](#tab-panel-5385)
+* [ CLI ](#tab-panel-7752)
+* [ Dashboard ](#tab-panel-7753)
 
 To deploy your Worker to production using Wrangler, you must first repeat the [database configuration](https://developers.cloudflare.com/d1/get-started/#populate-your-d1-database) steps after replacing the `--local` flag with the `--remote` flag to give your Worker data to read. This creates the database tables and imports the data into the production version of your database.
 
@@ -500,8 +500,8 @@ You can only develop locally if you are using Wrangler. You cannot develop local
 
 To delete your database:
 
-* [ CLI ](#tab-panel-5378)
-* [ Dashboard ](#tab-panel-5379)
+* [ CLI ](#tab-panel-7748)
+* [ Dashboard ](#tab-panel-7749)
 
 Run:
 
@@ -527,8 +527,8 @@ Note that deleting your D1 database will stop your application from functioning 
 
 If you want to delete your Worker:
 
-* [ CLI ](#tab-panel-5380)
-* [ Dashboard ](#tab-panel-5381)
+* [ CLI ](#tab-panel-7750)
+* [ Dashboard ](#tab-panel-7751)
 
 Run:
 
