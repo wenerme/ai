@@ -96,6 +96,10 @@ Terminal window
 
 ```
 
+# Run `wrangler whoami` to get your account ID to replace $CLOUDFLARE_ACCOUNT_ID,
+
+# and `wrangler auth token` to get an auth token to replace $CLOUDFLARE_API_TOKEN.
+
 curl -X POST "https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/v1/chat/completions" \
 
   --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
@@ -177,6 +181,10 @@ Use the `cf-aig-zdr` header to override the gateway default for a single Unified
 Unified Billing request with ZDR
 
 ```
+
+# Run `wrangler whoami` to get your account ID to replace $CLOUDFLARE_ACCOUNT_ID,
+
+# and `wrangler auth token` to get an auth token to replace $CLOUDFLARE_API_TOKEN.
 
 curl -X POST "https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/v1/chat/completions" \
 

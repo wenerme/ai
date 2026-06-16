@@ -16,6 +16,7 @@ image: https://developers.cloudflare.com/core-services-preview.png
 * [ iCloud Custom Email Domains ](https://developers.cloudflare.com/registrar/account-options/icloud-domains/)
 * [ Move a Cloudflare Registrar domain registration between accounts ](https://developers.cloudflare.com/registrar/account-options/inter-account-transfer/)
 * [ Registrant contact updates ](https://developers.cloudflare.com/registrar/account-options/domain-contact-updates/)
+* [ Domain ownership certificate ](https://developers.cloudflare.com/registrar/account-options/domain-ownership-certificate/)
 * [ Renew domains ](https://developers.cloudflare.com/registrar/account-options/renew-domains/)
 * [ Transfer domain out from Cloudflare ](https://developers.cloudflare.com/registrar/account-options/transfer-out-from-cloudflare/)
 * [ WHOIS redaction ](https://developers.cloudflare.com/registrar/account-options/whois-redaction/)

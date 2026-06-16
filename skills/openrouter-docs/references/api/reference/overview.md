@@ -318,7 +318,7 @@ type ResponseUsage = {
   is_byok?: boolean;
   /** Detailed cost breakdown (optional) */
   cost_details?: {
-    upstream_inference_cost?: number;             // Only shown for BYOK requests
+    upstream_inference_cost?: number;
     upstream_inference_prompt_cost: number;
     upstream_inference_completions_cost: number;
   };

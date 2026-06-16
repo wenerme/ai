@@ -25,8 +25,8 @@ This tutorial guides you through creating your first AI Gateway using Workers AI
 
 Then, create a new AI Gateway.
 
-* [ Dashboard ](#tab-panel-4587)
-* [ API ](#tab-panel-4588)
+* [ Dashboard ](#tab-panel-6426)
+* [ API ](#tab-panel-6427)
 
 [ Go to **AI Gateway** ](https://dash.cloudflare.com/?to=/:account/ai/ai-gateway)
 1. Log into the [Cloudflare dashboard ↗](https://dash.cloudflare.com/) and select your account.
@@ -55,6 +55,8 @@ To set up an AI Gateway using the API:
 3. Send a request using the [REST API](https://developers.cloudflare.com/ai-gateway/usage/rest-api/). Replace `$CLOUDFLARE_ACCOUNT_ID` and `$CLOUDFLARE_API_TOKEN` with your actual account ID and API token:  
 Terminal window  
 ```  
+# Run `wrangler whoami` to get your account ID to replace $CLOUDFLARE_ACCOUNT_ID,  
+# and `wrangler auth token` to get an auth token to replace $CLOUDFLARE_API_TOKEN.  
 curl -X POST "https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/v1/chat/completions" \  
   --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \  
   --header "cf-aig-gateway-id: default" \  

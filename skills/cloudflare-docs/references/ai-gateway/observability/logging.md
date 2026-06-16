@@ -45,6 +45,10 @@ Terminal window
 
 ```
 
+# Run `wrangler whoami` to get your account ID to replace $CLOUDFLARE_ACCOUNT_ID,
+
+# and `wrangler auth token` to get an auth token to replace $CLOUDFLARE_API_TOKEN.
+
 curl -X POST "https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/v1/chat/completions" \
 
   --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
@@ -90,6 +94,10 @@ In the example below, we use `cf-aig-collect-log-payload` to skip storing the re
 Terminal window
 
 ```
+
+# Run `wrangler whoami` to get your account ID to replace $CLOUDFLARE_ACCOUNT_ID,
+
+# and `wrangler auth token` to get an auth token to replace $CLOUDFLARE_API_TOKEN.
 
 curl -X POST "https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/v1/chat/completions" \
 

@@ -56,6 +56,10 @@ Terminal window
 
 ```
 
+# Run `wrangler whoami` to get your account ID to replace $CLOUDFLARE_ACCOUNT_ID,
+
+# and `wrangler auth token` to get an auth token to replace $CLOUDFLARE_API_TOKEN.
+
 curl -X POST "https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run" \
 
   --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
@@ -97,6 +101,10 @@ Terminal window
 
 ```
 
+# Run `wrangler whoami` to get your account ID to replace $CLOUDFLARE_ACCOUNT_ID,
+
+# and `wrangler auth token` to get an auth token to replace $CLOUDFLARE_API_TOKEN.
+
 curl -X POST "https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run" \
 
   --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
@@ -136,6 +144,10 @@ Terminal window
 
 ```
 
+# Run `wrangler whoami` to get your account ID to replace $CLOUDFLARE_ACCOUNT_ID,
+
+# and `wrangler auth token` to get an auth token to replace $CLOUDFLARE_API_TOKEN.
+
 curl -X POST "https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run/@cf/moonshotai/kimi-k2.6" \
 
   --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
@@ -168,6 +180,10 @@ Uses the standard OpenAI chat completions format. The `model` field uses the sam
 Terminal window
 
 ```
+
+# Run `wrangler whoami` to get your account ID to replace $CLOUDFLARE_ACCOUNT_ID,
+
+# and `wrangler auth token` to get an auth token to replace $CLOUDFLARE_API_TOKEN.
 
 curl -X POST "https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/v1/chat/completions" \
 
@@ -280,6 +296,10 @@ Terminal window
 
 ```
 
+# Run `wrangler whoami` to get your account ID to replace $CLOUDFLARE_ACCOUNT_ID,
+
+# and `wrangler auth token` to get an auth token to replace $CLOUDFLARE_API_TOKEN.
+
 curl -X POST "https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/v1/messages" \
 
   --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
@@ -347,6 +367,10 @@ By default, third-party model requests route through your account's default AI G
 Terminal window
 
 ```
+
+# Run `wrangler whoami` to get your account ID to replace $CLOUDFLARE_ACCOUNT_ID,
+
+# and `wrangler auth token` to get an auth token to replace $CLOUDFLARE_API_TOKEN.
 
 curl -X POST "https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/v1/chat/completions" \
 

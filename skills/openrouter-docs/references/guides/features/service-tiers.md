@@ -137,7 +137,7 @@ The following providers support `flex` and `priority` service tiers for select m
 * **Google Vertex**
 * **Google AI Studio**
 
-The response's `service_tier` field reports which tier was actually used. Possible response values are `default`, `flex`, `priority`, or `null` when no service tier is available from upstream. Note that OpenRouter normalizes provider-equivalent base tier labels, such as Google's `standard`, to `default`.
+The response's `service_tier` field reports which tier was actually used. Possible response values are `default`, `flex`, `priority`, or `null` when no service tier is available from upstream. Note that OpenRouter normalizes provider-equivalent base tier labels, such as Google's `standard`, to `default` — except in the Anthropic Messages API, which preserves `standard` to match Anthropic's spec (see [API Response Differences](#api-response-differences) below).
 
 Provider documentation:
 
@@ -152,3 +152,7 @@ The API response includes a `service_tier` field that indicates which capacity t
 * **Chat Completions API** (`/api/v1/chat/completions`): `service_tier` is returned at the **top level** of the response object, matching OpenAI's native format.
 * **Responses API** (`/api/v1/responses`): `service_tier` is returned at the **top level** of the response object, matching OpenAI's native format.
 * **Messages API** (`/api/v1/messages`): `service_tier` is returned inside the **`usage` object**, matching Anthropic's native format.
+
+#### `service_tier` value in the Messages API
+
+Anthropic's spec uses `standard` rather than the OpenAI-style `default` as the base tier label. So the Messages API returns `service_tier: "standard"` where the Chat Completions and Responses APIs return `"default"`. Other tier values are returned unchanged.

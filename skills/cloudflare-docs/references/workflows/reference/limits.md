@@ -43,7 +43,7 @@ Workflows cannot be deployed to Workers for Platforms namespaces, as Workflows d
 
 Need a higher limit?
 
-To request an adjustment to a limit, complete the [Limit Increase Request Form ↗](https://forms.gle/ukpeZVLWLnKeixDu7). If the limit can be increased, Cloudflare will contact you with next steps.
+To request an adjustment to a limit, complete the [Limit Increase Request Form ↗](https://forms.gle/eX6pXvit1wBv77Yw5). If the limit can be increased, Cloudflare will contact you with next steps.
 
 In JavaScript Workflows, if you need to persist large binary output from a step, return a `ReadableStream<Uint8Array>`. Streamed outputs still count toward the per-instance storage limit, so store very large or long-lived artifacts in external storage such as [R2](https://developers.cloudflare.com/r2/) and return a reference when appropriate.
 
@@ -138,6 +138,13 @@ On [Workers Paid](https://developers.cloudflare.com/workers/platform/pricing/#wo
 
 After that budget is used, the instance yields and enters the normal concurrency queue. It resumes when a concurrency slot is available. The instance does not fail, time out, or terminate because it used this cron concurrency budget.
 
+The following limits apply to Workflow `schedules`:
+
+| Limit                                                      | Value          |
+| ---------------------------------------------------------- | -------------- |
+| Maximum number of schedules (cron expressions) per account | 100            |
+| Maximum length of a cron expression                        | 256 characters |
+
 ### Increasing Workflow step limits
 
 Each Workflow instance supports 10,000 steps by default, but this can be increased up to 25,000 steps in your Wrangler configuration. Refer to [Workflow step limits](https://developers.cloudflare.com/workflows/build/workers-api/#workflow-step-limits) for more information.
@@ -159,8 +166,8 @@ This will appear as `exceededCpu` in [wrangler tail](https://developers.cloudfla
 
 By default, the maximum CPU time per Workflow invocation is set to 30 seconds, but can be increased for all invocations associated with a Workflow definition by setting `limits.cpu_ms` in your Wrangler configuration:
 
-* [  wrangler.jsonc ](#tab-panel-12341)
-* [  wrangler.toml ](#tab-panel-12342)
+* [  wrangler.jsonc ](#tab-panel-12929)
+* [  wrangler.toml ](#tab-panel-12930)
 
 JSONC
 
@@ -213,8 +220,8 @@ This will appear as `exceededResources` in [Workers metrics](https://developers.
 
 By default, the maximum number of subrequests per Workflow instance is 10,000 on Workers Paid plans, but this can be increased up to 10 million by setting `limits.subrequests` in your Wrangler configuration:
 
-* [  wrangler.jsonc ](#tab-panel-12343)
-* [  wrangler.toml ](#tab-panel-12344)
+* [  wrangler.jsonc ](#tab-panel-12931)
+* [  wrangler.toml ](#tab-panel-12932)
 
 JSONC
 

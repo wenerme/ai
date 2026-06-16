@@ -44,6 +44,10 @@ Terminal window
 
 ```
 
+# Run `wrangler whoami` to get your account ID to replace $CLOUDFLARE_ACCOUNT_ID,
+
+# and `wrangler auth token` to get an auth token to replace $CLOUDFLARE_API_TOKEN.
+
 curl -X POST "https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/v1/chat/completions" \
 
   --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
@@ -61,8 +65,8 @@ curl -X POST "https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_
 
 To include custom metadata in your request using the OpenAI SDK:
 
-* [  JavaScript ](#tab-panel-4527)
-* [  TypeScript ](#tab-panel-4528)
+* [  JavaScript ](#tab-panel-6420)
+* [  TypeScript ](#tab-panel-6421)
 
 JavaScript
 
@@ -222,22 +226,32 @@ JavaScript
 
 export default {
 
- async fetch(request, env, ctx) {
+  async fetch(request, env, ctx) {
 
-   const aiResp = await env.AI.run(
+    const aiResp = await env.AI.run(
 
-       '@cf/mistral/mistral-7b-instruct-v0.1',
+      "@cf/mistral/mistral-7b-instruct-v0.1",
 
-       { prompt: 'What should I eat for lunch?' },
+      { prompt: "What should I eat for lunch?" },
 
-       { gateway: { id: 'gateway_id', metadata: { "team": "AI", "user": 12345, "test": true} } }
+      {
 
-   );
+        gateway: {
+
+          id: "gateway_id",
+
+          metadata: { team: "AI", user: 12345, test: true },
+
+        },
+
+      },
+
+    );
 
 
-   return new Response(aiResp);
+    return new Response(aiResp);
 
- },
+  },
 
 };
 

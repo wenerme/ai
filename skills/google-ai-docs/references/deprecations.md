@@ -58,10 +58,10 @@ Already-shutdown models are indicated with gray backgrounds.
 
 | **Model** | **Release date** | **Shutdown date** | **Recommended replacement** |
 |---|---|---|---|
-| `gemini-2.0-flash` | February 5, 2025 | June 1, 2026 | `gemini-2.5-flash` |
-| `gemini-2.0-flash-001` | February 5, 2025 | June 1, 2026 | `gemini-2.5-flash` |
-| `gemini-2.0-flash-lite` | February 25, 2025 | June 1, 2026 | `gemini-2.5-flash-lite` |
-| `gemini-2.0-flash-lite-001` | February 25, 2025 | June 1, 2026 | `gemini-2.5-flash-lite` |
+| `gemini-2.0-flash` | February 5, 2025 | June 1, 2026 | `gemini-3.5-flash` |
+| `gemini-2.0-flash-001` | February 5, 2025 | June 1, 2026 | `gemini-3.5-flash` |
+| `gemini-2.0-flash-lite` | February 25, 2025 | June 1, 2026 | `gemini-3.1-flash-lite` |
+| `gemini-2.0-flash-lite-001` | February 25, 2025 | June 1, 2026 | `gemini-3.1-flash-lite` |
 | Preview models ||||
 | `gemini-2.0-flash-preview-image-generation` | May 7, 2025 | November 14, 2025 | `gemini-2.5-flash-image` |
 | `gemini-2.0-flash-lite-preview` | February 5, 2025 | December 9, 2025 | `gemini-2.5-flash-lite` |
@@ -102,9 +102,9 @@ Already-shutdown models are indicated with gray backgrounds.
 
 | **Model** | **Release date** | **Shutdown date** | **Recommended replacement** |
 |---|---|---|---|
-| `imagen-4.0-generate-001` | June 24, 2025 | June 24, 2026 | `gemini-3-pro-image-preview` or `gemini-2.5-flash-image` |
-| `imagen-4.0-ultra-generate-001` | June 24, 2025 | June 24, 2026 | `gemini-3-pro-image-preview` or `gemini-2.5-flash-image` |
-| `imagen-4.0-fast-generate-001` | June 24, 2025 | June 24, 2026 | `gemini-3-pro-image-preview` or `gemini-2.5-flash-image` |
+| `imagen-4.0-generate-001` | June 24, 2025 | August 17, 2026 | `gemini-3.1-flash-image` |
+| `imagen-4.0-ultra-generate-001` | June 24, 2025 | August 17, 2026 | `gemini-3.1-flash-image` |
+| `imagen-4.0-fast-generate-001` | June 24, 2025 | August 17, 2026 | `gemini-3.1-flash-image` |
 | `imagen-3.0-generate-002` | February 6, 2025 | November 10, 2025 | `imagen-4.0-generate-001` |
 | Preview models ||||
 | `imagen-4.0-generate-preview-06-06` | June 24, 2025 | February 17, 2026 | `imagen-4.0-generate-001` |
@@ -114,9 +114,9 @@ Already-shutdown models are indicated with gray backgrounds.
 
 | **Model** | **Release date** | **Shutdown date** | **Recommended replacement** |
 |---|---|---|---|
-| `veo-3.0-generate-001` | September 9, 2025 | Coming soon | `veo-3.1-generate-preview` |
-| `veo-3.0-fast-generate-001` | September 9, 2025 | Coming soon | `veo-3.1-lite-generate-preview` |
-| `veo-2.0-generate-001` | April 9, 2025 | Coming soon | `veo-3.1-generate-preview` |
+| `veo-3.0-generate-001` | September 9, 2025 | June 30, 2026 | `veo-3.1-generate-preview` or the GA models on the [Gemini Enterprise Agent Platform](https://docs.cloud.google.com/gemini-enterprise-agent-platform/models/veo/3-1-generate) |
+| `veo-3.0-fast-generate-001` | September 9, 2025 | June 30, 2026 | `veo-3.1-fast-generate-preview` or the GA models on the [Gemini Enterprise Agent Platform](https://docs.cloud.google.com/gemini-enterprise-agent-platform/models/veo/3-1-generate) |
+| `veo-2.0-generate-001` | April 9, 2025 | June 30, 2026 | `veo-3.1-generate-preview` or the GA models on the [Gemini Enterprise Agent Platform](https://docs.cloud.google.com/gemini-enterprise-agent-platform/models/veo/3-1-generate) |
 | Preview models ||||
 | `veo-3.1-lite-generate-preview` | March 31, 2026 | No shutdown date announced |   |
 | `veo-3.1-generate-preview` | October 15, 2025 | No shutdown date announced |   |

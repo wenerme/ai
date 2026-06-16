@@ -874,6 +874,8 @@ components:
     URLCitation:
       type: object
       properties:
+        content:
+          type: string
         end_index:
           type: integer
         start_index:
@@ -1769,6 +1771,157 @@ components:
         - type
       description: An openrouter:experimental__search_models server tool output item
       title: OutputSearchModelsServerToolItem
+    FusionAnalysisResultContradictionsItemsStancesItems:
+      type: object
+      properties:
+        model:
+          type: string
+        stance:
+          type: string
+      required:
+        - model
+        - stance
+      title: FusionAnalysisResultContradictionsItemsStancesItems
+    FusionAnalysisResultContradictionsItems:
+      type: object
+      properties:
+        stances:
+          type: array
+          items:
+            $ref: >-
+              #/components/schemas/FusionAnalysisResultContradictionsItemsStancesItems
+        topic:
+          type: string
+      required:
+        - stances
+        - topic
+      title: FusionAnalysisResultContradictionsItems
+    FusionAnalysisResultPartialCoverageItems:
+      type: object
+      properties:
+        models:
+          type: array
+          items:
+            type: string
+        point:
+          type: string
+      required:
+        - models
+        - point
+      title: FusionAnalysisResultPartialCoverageItems
+    FusionAnalysisResultUniqueInsightsItems:
+      type: object
+      properties:
+        insight:
+          type: string
+        model:
+          type: string
+      required:
+        - insight
+        - model
+      title: FusionAnalysisResultUniqueInsightsItems
+    FusionAnalysisResult:
+      type: object
+      properties:
+        blind_spots:
+          type: array
+          items:
+            type: string
+        consensus:
+          type: array
+          items:
+            type: string
+        contradictions:
+          type: array
+          items:
+            $ref: '#/components/schemas/FusionAnalysisResultContradictionsItems'
+        partial_coverage:
+          type: array
+          items:
+            $ref: '#/components/schemas/FusionAnalysisResultPartialCoverageItems'
+        unique_insights:
+          type: array
+          items:
+            $ref: '#/components/schemas/FusionAnalysisResultUniqueInsightsItems'
+      required:
+        - blind_spots
+        - consensus
+        - contradictions
+        - partial_coverage
+        - unique_insights
+      description: Structured analysis produced by the fusion judge model.
+      title: FusionAnalysisResult
+    OutputItemsDiscriminatorMappingOpenrouterFusionFailedModelsItems:
+      type: object
+      properties:
+        error:
+          type: string
+          description: Error message describing why the model failed.
+        model:
+          type: string
+          description: Slug of the analysis model that failed.
+        status_code:
+          type: integer
+          description: >-
+            HTTP status code from the upstream response, when available (e.g.
+            402, 429).
+      required:
+        - error
+        - model
+      title: OutputItemsDiscriminatorMappingOpenrouterFusionFailedModelsItems
+    OutputItemsDiscriminatorMappingOpenrouterFusionResponsesItems:
+      type: object
+      properties:
+        content:
+          type: string
+        model:
+          type: string
+      required:
+        - model
+      title: OutputItemsDiscriminatorMappingOpenrouterFusionResponsesItems
+    OutputFusionServerToolItem:
+      type: object
+      properties:
+        analysis:
+          $ref: '#/components/schemas/FusionAnalysisResult'
+        error:
+          type: string
+          description: >-
+            Error message when the fusion run did not produce an analysis
+            result.
+        failed_models:
+          type: array
+          items:
+            $ref: >-
+              #/components/schemas/OutputItemsDiscriminatorMappingOpenrouterFusionFailedModelsItems
+          description: >-
+            Models that were requested as part of the analysis panel but did not
+            produce a response. Present when at least one requested analysis
+            model failed. The fusion result is still usable but was produced
+            from a degraded panel.
+        failure_reason:
+          type: string
+          description: >-
+            Typed failure reason when the fusion run failed. Possible values
+            include: all_panels_failed, insufficient_credits, rate_limited,
+            judge_not_valid_json, judge_schema_mismatch, judge_upstream_error,
+            judge_empty_completion.
+        id:
+          type: string
+        responses:
+          type: array
+          items:
+            $ref: >-
+              #/components/schemas/OutputItemsDiscriminatorMappingOpenrouterFusionResponsesItems
+          description: >-
+            Analysis models that produced a response in this fusion run, with
+            each model's full panel content.
+        status:
+          $ref: '#/components/schemas/ToolCallStatus'
+      required:
+        - status
+      description: An openrouter:fusion server tool output item
+      title: OutputFusionServerToolItem
     OutputAdvisorServerToolItem:
       type: object
       properties:
@@ -2355,6 +2508,7 @@ components:
         - $ref: '#/components/schemas/OutputMemoryServerToolItem'
         - $ref: '#/components/schemas/OutputMcpServerToolItem'
         - $ref: '#/components/schemas/OutputSearchModelsServerToolItem'
+        - $ref: '#/components/schemas/OutputFusionServerToolItem'
         - $ref: '#/components/schemas/OutputAdvisorServerToolItem'
         - $ref: '#/components/schemas/OutputSubagentServerToolItem'
         - $ref: '#/components/schemas/LocalShellCallItem'
@@ -2429,6 +2583,17 @@ components:
           $ref: '#/components/schemas/PDFParserEngine'
       description: Options for PDF parsing.
       title: PDFParserOptions
+    ResponsesRequestPluginsItemsDiscriminatorMappingFusionPreset:
+      type: string
+      enum:
+        - general-high
+        - general-budget
+      description: >-
+        A curated OpenRouter fusion preset (slugs follow `<task>-<tier>`, e.g.
+        `general-high`). Expands server-side into the preset's analysis_models
+        panel and judge model, so callers never name individual models.
+        Explicitly provided `analysis_models` / `model` take precedence.
+      title: ResponsesRequestPluginsItemsDiscriminatorMappingFusionPreset
     ResponsesRequestPluginsItemsDiscriminatorMappingFusionToolsItemsParametersOneOf4Items:
       oneOf:
         - type: string
@@ -2650,6 +2815,15 @@ components:
                 Slug of the model that performs both the judge step (with
                 web_search + web_fetch) and the final synthesis. When omitted,
                 defaults to the first model in the Quality preset.
+            preset:
+              $ref: >-
+                #/components/schemas/ResponsesRequestPluginsItemsDiscriminatorMappingFusionPreset
+              description: >-
+                A curated OpenRouter fusion preset (slugs follow
+                `<task>-<tier>`, e.g. `general-high`). Expands server-side into
+                the preset's analysis_models panel and judge model, so callers
+                never name individual models. Explicitly provided
+                `analysis_models` / `model` take precedence.
             tools:
               type: array
               items:
@@ -6084,114 +6258,6 @@ components:
       enum:
         - message
       title: OutputMessageItemType
-    FusionAnalysisResultContradictionsItemsStancesItems:
-      type: object
-      properties:
-        model:
-          type: string
-        stance:
-          type: string
-      required:
-        - model
-        - stance
-      title: FusionAnalysisResultContradictionsItemsStancesItems
-    FusionAnalysisResultContradictionsItems:
-      type: object
-      properties:
-        stances:
-          type: array
-          items:
-            $ref: >-
-              #/components/schemas/FusionAnalysisResultContradictionsItemsStancesItems
-        topic:
-          type: string
-      required:
-        - stances
-        - topic
-      title: FusionAnalysisResultContradictionsItems
-    FusionAnalysisResultPartialCoverageItems:
-      type: object
-      properties:
-        models:
-          type: array
-          items:
-            type: string
-        point:
-          type: string
-      required:
-        - models
-        - point
-      title: FusionAnalysisResultPartialCoverageItems
-    FusionAnalysisResultUniqueInsightsItems:
-      type: object
-      properties:
-        insight:
-          type: string
-        model:
-          type: string
-      required:
-        - insight
-        - model
-      title: FusionAnalysisResultUniqueInsightsItems
-    FusionAnalysisResult:
-      type: object
-      properties:
-        blind_spots:
-          type: array
-          items:
-            type: string
-        consensus:
-          type: array
-          items:
-            type: string
-        contradictions:
-          type: array
-          items:
-            $ref: '#/components/schemas/FusionAnalysisResultContradictionsItems'
-        partial_coverage:
-          type: array
-          items:
-            $ref: '#/components/schemas/FusionAnalysisResultPartialCoverageItems'
-        unique_insights:
-          type: array
-          items:
-            $ref: '#/components/schemas/FusionAnalysisResultUniqueInsightsItems'
-      required:
-        - blind_spots
-        - consensus
-        - contradictions
-        - partial_coverage
-        - unique_insights
-      description: Structured analysis produced by the fusion judge model.
-      title: FusionAnalysisResult
-    OutputItemsDiscriminatorMappingOpenrouterFusionFailedModelsItems:
-      type: object
-      properties:
-        error:
-          type: string
-          description: Error message describing why the model failed.
-        model:
-          type: string
-          description: Slug of the analysis model that failed.
-        status_code:
-          type: integer
-          description: >-
-            HTTP status code from the upstream response, when available (e.g.
-            402, 429).
-      required:
-        - error
-        - model
-      title: OutputItemsDiscriminatorMappingOpenrouterFusionFailedModelsItems
-    OutputItemsDiscriminatorMappingOpenrouterFusionResponsesItems:
-      type: object
-      properties:
-        content:
-          type: string
-        model:
-          type: string
-      required:
-        - model
-      title: OutputItemsDiscriminatorMappingOpenrouterFusionResponsesItems
     OutputReasoningItemStatus0:
       type: string
       enum:

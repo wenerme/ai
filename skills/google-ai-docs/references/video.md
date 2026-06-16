@@ -2146,7 +2146,7 @@ details.
 | Limits | **Text input** 1,024 tokens **Output video** 1 |
 | Latest update | March 2026 |
 
-### Veo 3
+### Veo 3 (Deprecated)
 
 | Property | Description |
 |---|---|
@@ -2155,7 +2155,7 @@ details.
 | Limits | **Text input** 1,024 tokens **Output video** 1 |
 | Latest update | July 2025 |
 
-### Veo 3 Fast
+### Veo 3 Fast (Deprecated)
 
 | Property | Description |
 |---|---|
@@ -2164,7 +2164,7 @@ details.
 | Limits | **Text input** 1,024 tokens **Output video** 1 |
 | Latest update | July 2025 |
 
-### Veo 2
+### Veo 2 (Deprecated)
 
 | Property | Description |
 |---|---|
@@ -2173,7 +2173,7 @@ details.
 | Limits | **Text input** N/A **Image input** Any image resolution and aspect ratio up to 20MB file size **Output video** Up to 2 |
 | Latest update | April 2025 |
 
-### Veo 2
+### Veo 2 (Deprecated)
 
 | Property | Description |
 |---|---|

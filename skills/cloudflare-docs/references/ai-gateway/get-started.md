@@ -31,6 +31,10 @@ Terminal window
 
 ```
 
+# Run `wrangler auth token` to get an auth token to replace $CLOUDFLARE_API_TOKEN,
+
+# and `wrangler whoami` to replace $CLOUDFLARE_ACCOUNT_ID.
+
 curl -X POST "https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/v1/chat/completions" \
 
   --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
@@ -68,8 +72,8 @@ Create a gateway manually
 
 You can also create gateways manually with a custom name and configuration through the dashboard or API.
 
-* [ Dashboard ](#tab-panel-4567)
-* [ API ](#tab-panel-4568)
+* [ Dashboard ](#tab-panel-6408)
+* [ API ](#tab-panel-6409)
 
 [ Go to **AI Gateway** ](https://dash.cloudflare.com/?to=/:account/ai/ai-gateway)
 1. Log into the [Cloudflare dashboard ↗](https://dash.cloudflare.com/) and select your account.
@@ -103,6 +107,10 @@ Call any model — whether hosted on Cloudflare or by a third-party provider —
 Terminal window
 
 ```
+
+# Run `wrangler whoami` to get your account ID to replace $CLOUDFLARE_ACCOUNT_ID,
+
+# and `wrangler auth token` to get an auth token to replace $CLOUDFLARE_API_TOKEN.
 
 curl -X POST "https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/v1/chat/completions" \
 

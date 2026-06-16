@@ -137,9 +137,10 @@ Context window lengths are found on the [model reference page](https://developer
 ### Controlling costs
 
 To manage costs with reasoning models, you can limit the total number of tokens the
-model generates (including both reasoning and final output tokens) by using the
+model generates, including reasoning tokens, visible output tokens, and non-visible
+formatting tokens, by using the
 [`max_output_tokens`](https://developers.openai.com/api/docs/api-reference/responses/create#responses-create-max_output_tokens)
-parameter.
+parameter. See [output token counts](https://developers.openai.com/api/docs/guides/token-counting#understand-output-token-counts) for details about how generated tokens are reflected in usage and output limits.
 
 ### Allocating space for reasoning
 

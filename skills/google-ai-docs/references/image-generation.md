@@ -3057,14 +3057,12 @@ Choose the model best suited for your specific use case.
 
 ### When to use Imagen
 
+> [!WARNING]
+> Imagen models are deprecated and will be shut down on August 17, 2026. We recommend using Nano Banana models for all image generation tasks.
+
 In addition to using Gemini's built-in image generation capabilities, you can
 also access [Imagen](https://ai.google.dev/gemini-api/docs/imagen), our specialized image generation
-model, through the Gemini API.
-
-Imagen 4 should be your go-to model when starting to generate images
-with Imagen. Choose Imagen 4 Ultra for advanced
-use-cases or when you need the best image quality (note that can only generate
-one image at a time).
+model, through the Gemini API. Plan to migrate before the shutdown date.
 
 ## What's next
 

@@ -828,6 +828,9 @@ limits.
 
 [Try it in Google AI Studio](https://aistudio.google.com/generate-image)
 
+> [!WARNING]
+> **Warning:** Imagen 4 models (\`imagen-4.0-generate-001\`, \`imagen-4.0-ultra-generate-001\`, \`imagen-4.0-fast-generate-001\`) are [deprecated](https://ai.google.dev/gemini-api/docs/deprecations) and will be shut down on August 17, 2026; migrate to [Gemini 2.5 Flash Image](https://ai.google.dev/gemini-api/docs/pricing#gemini-2.5-flash) to avoid service disruption.
+
 Our latest image generation model, with significantly better text rendering and
 better overall image quality.
 
@@ -871,6 +874,9 @@ limits.
 
 [Try Veo 3](https://deepmind.google/models/veo/)
 
+> [!WARNING]
+> **Warning:** Veo 3 models (\`veo-3.0-generate-001\`, \`veo-3.0-fast-generate-001\`) are [deprecated](https://ai.google.dev/gemini-api/docs/deprecations) and will be shut down on June 30, 2026; migrate to [Veo 3.1 Preview](https://ai.google.dev/gemini-api/docs/pricing#veo-3.1) or the GA models available through the [Gemini Enterprise Agent Platform](https://docs.cloud.google.com/gemini-enterprise-agent-platform/models/veo/3-1-generate) to avoid service disruption.
+
 Our stable video generation model, available to developers on the
 paid tier of the Gemini API.
 
@@ -889,6 +895,9 @@ paid tier of the Gemini API.
 
 
 [Try the API](https://ai.google.dev/gemini-api/docs/video)
+
+> [!WARNING]
+> **Warning:** Veo 2 (\`veo-2.0-generate-001\`) is [deprecated](https://ai.google.dev/gemini-api/docs/deprecations) and will be shut down on June 30, 2026; migrate to [Veo 3.1 Preview](https://ai.google.dev/gemini-api/docs/pricing#veo-3.1) or the GA models available through the [Gemini Enterprise Agent Platform](https://docs.cloud.google.com/gemini-enterprise-agent-platform/models/veo/3-1-generate) to avoid service disruption.
 
 Our state-of-the-art video generation model, available to developers on the
 paid tier of the Gemini API.

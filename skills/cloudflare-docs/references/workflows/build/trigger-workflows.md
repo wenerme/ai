@@ -37,8 +37,8 @@ New to Workflows? Start with the [Workflows tutorial](https://developers.cloudfl
 
 To bind to a Workflow from your Workers code, you need to define a [binding](https://developers.cloudflare.com/workers/wrangler/configuration/) to a specific Workflow. For example, to bind to the Workflow defined in the [get started guide](https://developers.cloudflare.com/workflows/get-started/guide/), you would configure the [Wrangler configuration file](https://developers.cloudflare.com/workers/wrangler/configuration/) with the below:
 
-* [  wrangler.jsonc ](#tab-panel-12447)
-* [  wrangler.toml ](#tab-panel-12448)
+* [  wrangler.jsonc ](#tab-panel-12891)
+* [  wrangler.toml ](#tab-panel-12892)
 
 JSONC
 
@@ -54,7 +54,7 @@ JSONC
 
   // Set this to today's date
 
-  "compatibility_date": "2026-06-06",
+  "compatibility_date": "2026-06-15",
 
   "workflows": [
 
@@ -97,7 +97,7 @@ main = "src/index.ts"
 
 # Set this to today's date
 
-compatibility_date = "2026-06-06"
+compatibility_date = "2026-06-15"
 
 
 [[workflows]]
@@ -115,10 +115,10 @@ The `binding = "MY_WORKFLOW"` line defines the JavaScript variable that our Work
 
 ### Schedule a Workflow directly
 
-If you want to create Workflow instances on a recurring interval, add a `schedules` array to the Workflow binding in your Wrangler configuration:
+If you want to create Workflow instances on a recurring interval, add a `schedules` array (up to 100 cron expressions per account) to the Workflow binding in your Wrangler configuration:
 
-* [  wrangler.jsonc ](#tab-panel-12449)
-* [  wrangler.toml ](#tab-panel-12450)
+* [  wrangler.jsonc ](#tab-panel-12893)
+* [  wrangler.toml ](#tab-panel-12894)
 
 JSONC
 
@@ -134,7 +134,7 @@ JSONC
 
   // Set this to today's date
 
-  "compatibility_date": "2026-06-06",
+  "compatibility_date": "2026-06-15",
 
   "workflows": [
 
@@ -169,7 +169,7 @@ main = "src/index.ts"
 
 # Set this to today's date
 
-compatibility_date = "2026-06-06"
+compatibility_date = "2026-06-15"
 
 
 [[workflows]]
@@ -430,8 +430,8 @@ To restart an instance from a specific step instead of the beginning, refer to [
 
 You can create a new Workflow instance from within a step of another Workflow. The parent Workflow will not block waiting for the child Workflow to complete — it continues execution immediately after the child instance is successfully created.
 
-* [  JavaScript ](#tab-panel-12451)
-* [  TypeScript ](#tab-panel-12452)
+* [  JavaScript ](#tab-panel-12895)
+* [  TypeScript ](#tab-panel-12896)
 
 JavaScript
 

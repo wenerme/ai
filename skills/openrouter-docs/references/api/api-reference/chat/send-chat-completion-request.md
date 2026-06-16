@@ -768,6 +768,17 @@ components:
           $ref: '#/components/schemas/PDFParserEngine'
       description: Options for PDF parsing.
       title: PDFParserOptions
+    ResponsesRequestPluginsItemsDiscriminatorMappingFusionPreset:
+      type: string
+      enum:
+        - general-high
+        - general-budget
+      description: >-
+        A curated OpenRouter fusion preset (slugs follow `<task>-<tier>`, e.g.
+        `general-high`). Expands server-side into the preset's analysis_models
+        panel and judge model, so callers never name individual models.
+        Explicitly provided `analysis_models` / `model` take precedence.
+      title: ResponsesRequestPluginsItemsDiscriminatorMappingFusionPreset
     ResponsesRequestPluginsItemsDiscriminatorMappingFusionToolsItemsParametersOneOf4Items:
       oneOf:
         - type: string
@@ -989,6 +1000,15 @@ components:
                 Slug of the model that performs both the judge step (with
                 web_search + web_fetch) and the final synthesis. When omitted,
                 defaults to the first model in the Quality preset.
+            preset:
+              $ref: >-
+                #/components/schemas/ResponsesRequestPluginsItemsDiscriminatorMappingFusionPreset
+              description: >-
+                A curated OpenRouter fusion preset (slugs follow
+                `<task>-<tier>`, e.g. `general-high`). Expands server-side into
+                the preset's analysis_models panel and judge model, so callers
+                never name individual models. Explicitly provided
+                `analysis_models` / `model` take precedence.
             tools:
               type: array
               items:

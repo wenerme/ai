@@ -50,12 +50,37 @@ flowchart LR
 
 | Field             | Default                                                                                             | Description                                                                                                                                                                                                                                  |
 | ----------------- | --------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `preset`          | *none*                                                                                              | A curated OpenRouter preset slug (e.g. `general-high`) that expands into a panel + judge, so you don't have to name models. Explicit `analysis_models` / `model` override it. See [Presets](#presets).                                       |
 | `analysis_models` | Quality preset (`~anthropic/claude-opus-latest`, `~openai/gpt-latest`, `~google/gemini-pro-latest`) | Models that form the panel. Each runs in parallel with `openrouter:web_search` and `openrouter:web_fetch`. 1–8 models allowed.                                                                                                               |
 | `model`           | First model in the Quality preset (`~anthropic/claude-opus-latest`)                                 | The judge model that produces the structured analysis. With `model: "openrouter/fusion"`, this also becomes the model that writes your final answer; when you attach the plugin to your own model instead, the judge defaults to that model. |
 | `max_tool_calls`  | `8`                                                                                                 | Max tool-calling steps each panel model and the judge may take in their `openrouter:web_search` / `openrouter:web_fetch` loop before they must return text. Range 1–16.                                                                      |
 | `enabled`         | `true`                                                                                              | Set to `false` to bypass fusion for a single request.                                                                                                                                                                                        |
 
 When you send `model: "openrouter/fusion"` without a plugin config, the defaults match the **Quality** preset on the [Fusion lab](/labs/fusion).
+
+### Presets
+
+Don't want to pick models? Reference a curated preset by slug with `preset` —
+the panel and judge are chosen for you:
+
+```json
+{
+  "model": "openrouter/fusion",
+  "plugins": [{ "id": "fusion", "preset": "general-budget" }]
+}
+```
+
+Slugs follow `<task>-<tier>`: `task` is what you're optimizing the panel for,
+and `tier` is the quality/cost tradeoff (`high` = strongest models, `budget` =
+cheaper and faster). These mirror the presets shown in the
+[Fusion lab](/labs/fusion) UI.
+
+| Preset           | For                            |
+| ---------------- | ------------------------------ |
+| `general-high`   | The strongest all-round panel. |
+| `general-budget` | A fast, low-cost panel.        |
+
+Explicit `analysis_models` or `model` always take precedence over a preset.
 
 ## Two entry points, one pipeline
 

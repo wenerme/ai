@@ -55,8 +55,6 @@ The usage response includes detailed cost information:
 * `cost`: The total amount charged to your account
 * `cost_details.upstream_inference_cost`: The actual cost charged by the upstream AI provider
 
-**Note:** The `upstream_inference_cost` field only applies to BYOK (Bring Your Own Key) requests.
-
 ## Benefits
 
 1. **Efficiency**: Get usage information without making separate API calls
@@ -81,6 +79,8 @@ To use this method:
 3. Use that ID to fetch usage information via the `/generation` endpoint
 
 For more details on this approach, see the [Get a Generation](/docs/api-reference/get-a-generation) documentation.
+
+When obtaining usage information via generation ID, the `upstream_inference_cost` field is only available for BYOK (Bring Your Own Key) requests. For all other requests it will be 0 or null.
 
 ## Examples
 

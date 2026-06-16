@@ -40,7 +40,7 @@ While ClickStack offers its own language SDKs with enhanced telemetry and featur
 
 ## Securing with API key {#securing-api-key}
 
-:::Not required for Managed ClickStack
+> **note**: Not required for Managed ClickStack
 The API key isn't required for managed ClickStack.
 
 In order to send data to ClickStack via the OTel collector, SDKs will need to specify an ingestion API key. This can either be set using an `init` function in the SDK or an `OTEL_EXPORTER_OTLP_HEADERS` environment variable:

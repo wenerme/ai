@@ -18,7 +18,6 @@ Use this page as the step-by-step rollout guide. For detailed policy, configurat
 Codex supports ChatGPT Enterprise security features, including:
 
 - No training on enterprise data
-- Zero data retention for the App, CLI, and IDE (code stays in the developer environment)
 - Residency and retention that follow ChatGPT Enterprise policies
 - Granular user access controls
 - Data encryption at rest (AES-256) and in transit (TLS 1.2+)

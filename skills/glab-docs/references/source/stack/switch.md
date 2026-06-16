@@ -10,7 +10,7 @@ Switch between stacks. (EXPERIMENTAL)
 ## Synopsis
 
 Switch between stacks to work on another stack created with "glab stack create".
-To see the list of all stacks, check the `.git/stacked/` directory.
+When stack-name is omitted, choose from the list of all stacks.
 
 This feature is an experiment and is not ready for production use.
 It might be unstable or removed at any time.
@@ -18,12 +18,16 @@ For more information, see
 <https://docs.gitlab.com/policy/development_stages_support/>.
 
 ```plaintext
-glab stack switch <stack-name> [flags]
+glab stack switch [stack-name] [flags]
 ```
 
 ## Examples
 
 ```console
+# Interactively pick from the list of available stacks.
+glab stack switch
+
+# Switch to a specific stack by name.
 glab stack switch <stack-name>
 ```
 

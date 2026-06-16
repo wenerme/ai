@@ -77,7 +77,7 @@ docker run -e CLICKHOUSE_ENDPOINT=${CLICKHOUSE_ENDPOINT} -e CLICKHOUSE_USER=defa
 > **note**: Image Name Update
 ClickStack images are now published as `clickhouse/clickstack-*` (previously `docker.hyperdx.io/hyperdx/*`).
 
-The target ClickHouse instance is configured via the environment variables `CLICKHOUSE_ENDPOINT`, `CLICKHOUSE_USERNAME`, and `CLICKHOUSE_PASSWORD`. The `CLICKHOUSE_ENDPOINT` should be the full ClickHouse Cloud HTTP endpoint, including the protocol and port—for example, `https://99rr6dm6v3.us-central1.gcp.clickhouse.cloud:8443`.
+The target ClickHouse instance is configured via the environment variables `CLICKHOUSE_ENDPOINT`, `CLICKHOUSE_USER`, and `CLICKHOUSE_PASSWORD`. The `CLICKHOUSE_ENDPOINT` should be the full ClickHouse Cloud HTTP endpoint, including the protocol and port—for example, `https://99rr6dm6v3.us-central1.gcp.clickhouse.cloud:8443`.
 
 For details on retrieving your Managed ClickStack credentials, see [here](/cloud/guides/sql-console/gather-connection-details).
 
@@ -88,7 +88,7 @@ You should use a user with the [appropriate credentials](/use-cases/observabilit
 
 #### Configuring Managed ClickStack instance {#configuring-managed-clickstack}
 
-The OpenTelemetry collector can be configured to use a Managed ClickStack instance via the environment variables `CLICKHOUSE_ENDPOINT`, `CLICKHOUSE_USERNAME` and `CLICKHOUSE_PASSWORD`. How these are set depends on your deployment method:
+The OpenTelemetry collector can be configured to use a Managed ClickStack instance via the environment variables `CLICKHOUSE_ENDPOINT`, `CLICKHOUSE_USER` and `CLICKHOUSE_PASSWORD`. How these are set depends on your deployment method:
 
 Override the relevant entries under `extraEnvs` in your `values.yaml`, then upgrade the release:
 
@@ -211,7 +211,7 @@ The `OPAMP_SERVER_URL` should point to your HyperDX deployment - for example, `h
 > **note**: Exposing and connecting to the OpAMP port
 For the collector to connect to the OpAMP port it must be exposed by the HyperDX container e.g. `-p 4320:4320`. For local testing, OSX users can then set `OPAMP_SERVER_URL=http://host.docker.internal:4320`. Linux users can start the collector container with `--network=host`.
 
-The target ClickHouse instance is configured via the environment variables `CLICKHOUSE_ENDPOINT`, `CLICKHOUSE_USERNAME`, and `CLICKHOUSE_PASSWORD`. The `CLICKHOUSE_ENDPOINT` should be the full ClickHouse HTTP endpoint, including the protocol and port—for example, `http://localhost:8123`.
+The target ClickHouse instance is configured via the environment variables `CLICKHOUSE_ENDPOINT`, `CLICKHOUSE_USER`, and `CLICKHOUSE_PASSWORD`. The `CLICKHOUSE_ENDPOINT` should be the full ClickHouse HTTP endpoint, including the protocol and port—for example, `http://localhost:8123`.
 
 **These environment variables can be used with any of the docker distributions which include the connector.**
 
@@ -222,7 +222,7 @@ You should use a user with the [appropriate credentials](/use-cases/observabilit
 
 #### Configuring ClickHouse instance {#configuring-clickhouse-instance}
 
-The OpenTelemetry collector can be configured to use a ClickHouse instance via the environment variables `OPAMP_SERVER_URL`, `CLICKHOUSE_ENDPOINT`, `CLICKHOUSE_USERNAME` and `CLICKHOUSE_PASSWORD`. How these are set depends on your deployment method:
+The OpenTelemetry collector can be configured to use a ClickHouse instance via the environment variables `OPAMP_SERVER_URL`, `CLICKHOUSE_ENDPOINT`, `CLICKHOUSE_USER` and `CLICKHOUSE_PASSWORD`. How these are set depends on your deployment method:
 
 Override the relevant entries under `extraEnvs` in your `values.yaml`, then upgrade the release:
 

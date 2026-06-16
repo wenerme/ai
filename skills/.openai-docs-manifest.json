@@ -122,10 +122,10 @@
   "openai-docs/deprecations.md": {
     "url": "https://developers.openai.com/api/docs/deprecations.md",
     "skill": "openai-docs",
-    "etag": "W/\"42d98f5272c2e77ff0ac9066b9d9837f\"",
-    "lastModified": "Thu, 04 Jun 2026 00:49:57 GMT",
-    "size": 33107,
-    "updatedAt": "2026-06-04T00:49:57.891Z"
+    "etag": "W/\"09c95b9e3281611c7cb2a1f947391fe1\"",
+    "lastModified": "Tue, 16 Jun 2026 00:46:34 GMT",
+    "size": 33868,
+    "updatedAt": "2026-06-16T00:46:34.736Z"
   },
   "openai-docs/gpts/release-notes.md": {
     "url": "https://developers.openai.com/api/docs/gpts/release-notes.md",
@@ -802,10 +802,10 @@
   "openai-docs/guides/reasoning.md": {
     "url": "https://developers.openai.com/api/docs/guides/reasoning.md",
     "skill": "openai-docs",
-    "etag": "W/\"3e4a225a656ef6fe3e2932d459e3a8d8\"",
-    "lastModified": "Sat, 13 Jun 2026 00:37:22 GMT",
-    "size": 21035,
-    "updatedAt": "2026-06-13T00:44:06.137Z"
+    "etag": "W/\"d8db122a39970bf2b73cccda91f6a82b\"",
+    "lastModified": "Tue, 16 Jun 2026 00:46:58 GMT",
+    "size": 21271,
+    "updatedAt": "2026-06-16T00:46:58.245Z"
   },
   "openai-docs/guides/red-teaming.md": {
     "url": "https://developers.openai.com/api/docs/guides/red-teaming.md",
@@ -930,10 +930,10 @@
   "openai-docs/guides/token-counting.md": {
     "url": "https://developers.openai.com/api/docs/guides/token-counting.md",
     "skill": "openai-docs",
-    "etag": "W/\"4aac4d1da004c870f254f1ac1b8fdf9c\"",
-    "lastModified": "Sat, 13 Jun 2026 00:37:25 GMT",
-    "size": 9813,
-    "updatedAt": "2026-06-13T00:44:10.086Z"
+    "etag": "W/\"e6d6e0ef38fc1cc5a8a26e94bbc36deb\"",
+    "lastModified": "Tue, 16 Jun 2026 00:47:02 GMT",
+    "size": 11102,
+    "updatedAt": "2026-06-16T00:47:02.679Z"
   },
   "openai-docs/guides/tools-apply-patch.md": {
     "url": "https://developers.openai.com/api/docs/guides/tools-apply-patch.md",
@@ -10378,10 +10378,10 @@
   "codex-docs/enterprise/admin-setup.md": {
     "url": "https://developers.openai.com/codex/enterprise/admin-setup.md",
     "skill": "codex-docs",
-    "etag": "W/\"a85f876cd4e02a8873689cf94c98f0ea\"",
-    "lastModified": "Sat, 13 Jun 2026 00:20:54 GMT",
-    "size": 24675,
-    "updatedAt": "2026-06-13T00:51:34.176Z"
+    "etag": "W/\"60f4f75739d4184e84ad3ed6b1c1ddfd\"",
+    "lastModified": "Tue, 16 Jun 2026 00:46:41 GMT",
+    "size": 24585,
+    "updatedAt": "2026-06-16T00:52:46.960Z"
   },
   "codex-docs/enterprise/governance.md": {
     "url": "https://developers.openai.com/codex/enterprise/governance.md",

@@ -28,8 +28,11 @@ All errors follow this structure:
 
 The API uses the following error codes:
 
-| Code                  | Description               | Equivalent HTTP Status |
-| --------------------- | ------------------------- | ---------------------- |
-| `invalid_prompt`      | Request validation failed | 400                    |
-| `rate_limit_exceeded` | Too many requests         | 429                    |
-| `server_error`        | Internal server error     | 500+                   |
+| Code                             | Description                                                                                | Equivalent HTTP Status |
+| -------------------------------- | ------------------------------------------------------------------------------------------ | ---------------------- |
+| `invalid_prompt`                 | Request or prompt validation failed (context length exceeded, invalid request fields)      | 400                    |
+| `rate_limit_exceeded`            | Too many requests                                                                          | 429                    |
+| `image_content_policy_violation` | Input or output flagged by a content filter                                                | 400                    |
+| `server_error`                   | Internal server error, authentication failure, provider overloaded/unavailable, or timeout | 500+                   |
+
+These codes are a reduced mapping of the [internal typed error codes](/docs/api/reference/errors#typed-error-codes). Multiple internal error types collapse into each Responses API code — for example, `context_length_exceeded` and `invalid_request` both surface as `invalid_prompt` here.

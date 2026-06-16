@@ -14,6 +14,17 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 [ Subscribe to RSS ](https://developers.cloudflare.com/realtime/sfu/changelog/index.xml)
 
+## 2026-06-10
+
+**DataChannels subscriber acknowledgment gate (waitForAck)**
+
+DataChannels now support an opt-in subscriber acknowledgment gate. When a subscriber pulls a remote DataChannel with `waitForAck: true`, the SFU holds delivery to that subscriber until it sends its first message (the acknowledgment). This avoids losing the first messages before the subscriber is ready to handle them.
+
+* Opt-in per subscriber; defaults to `false`, so existing behavior is unchanged.
+* The acknowledgment is consumed by the SFU and is not forwarded, so the channel stays unidirectional.
+* Send the acknowledgment within 15 seconds of creating the remote DataChannel.
+* Docs: [DataChannels](https://developers.cloudflare.com/realtime/sfu/datachannels/), [Limits, timeouts and quotas](https://developers.cloudflare.com/realtime/sfu/limits/)
+
 ## 2025-11-21
 
 **WebSocket adapter video (JPEG) support**

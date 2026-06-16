@@ -114,7 +114,7 @@ High-efficiency, low-cost, developer-first video generation, editing, and cinema
 
 State-of-the-art native image generation and editing designed for fast, creative workflows.
 
-### [Imagen 4](https://ai.google.dev/gemini-api/docs/models/imagen)
+### [Imagen 4 Deprecated](https://ai.google.dev/gemini-api/docs/models/imagen)
 
 Text-to-image model yet, featuring fast and ultra-fast generation and exceptional clarity up to 2K resolution.
 

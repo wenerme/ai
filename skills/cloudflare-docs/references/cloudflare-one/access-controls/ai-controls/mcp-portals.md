@@ -191,7 +191,9 @@ To create an MCP server portal:
 5. [Add MCP servers](#add-an-mcp-server) to the portal.
 6. (Optional) Under **MCP servers**, [configure the tools and prompts](#manage-tools-and-prompts) available through the portal.
 7. (Optional) Configure **Require user auth** for servers that support OAuth: - `Enabled`: (default) User will be prompted to utilize their own login credentials to establish a connection with the MCP server. - `Disabled`: Users who are connected to the portal will automatically have access to the MCP server via its [admin credential](#reauthenticate-the-mcp-server).
-8. Add [Access policies](https://developers.cloudflare.com/cloudflare-one/access-controls/policies/) to define the users who can connect to the portal URL.
+8. Add [Access policies](https://developers.cloudflare.com/cloudflare-one/access-controls/policies/) to define the users who can connect to the portal URL.  
+Warning  
+MCP server portal applications do not enforce [independent MFA](https://developers.cloudflare.com/cloudflare-one/access-controls/policies/mfa-requirements/#independent-mfa), [purpose justification](https://developers.cloudflare.com/cloudflare-one/access-controls/policies/require-purpose-justification/), or [temporary authentication](https://developers.cloudflare.com/cloudflare-one/access-controls/policies/temporary-auth/). Refer to [Policy limitations](#policy-limitations) for details.
 9. Select **Add an MCP server portal**.
 10. (Optional) [Customize the login experience](#customize-login-settings) for the portal.
 
@@ -307,8 +309,8 @@ If no alias is set, the portal uses the original name and description from the u
 
 #### Set aliases in the dashboard
 
-* [ Portal-level alias ](#tab-panel-6575)
-* [ Server-level alias ](#tab-panel-6576)
+* [ Portal-level alias ](#tab-panel-6943)
+* [ Server-level alias ](#tab-panel-6944)
 
 To set an alias that applies to a specific portal:
 
@@ -735,8 +737,8 @@ For more information on building with code mode, refer to the [code mode SDK ref
 
 To turn off code mode for a portal:
 
-* [ Dashboard ](#tab-panel-6577)
-* [ API ](#tab-panel-6578)
+* [ Dashboard ](#tab-panel-6945)
+* [ API ](#tab-panel-6946)
 
 1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** \> **Access controls** \> **AI controls**.
 2. Find the portal you want to configure, then select the three dots > **Edit**.
@@ -1101,6 +1103,16 @@ MCP server portals have the following known limitations:
 * **Some MCP servers block proxy-based clients.** Certain MCP servers reject requests from proxy-based clients like MCP server portals, returning a `403` error on the registration endpoint. These servers are not compatible with MCP server portals until those providers add Cloudflare as a supported MCP client.
 * **Not all MCP servers support OAuth dynamic client registration.** MCP servers that do not support [OAuth dynamic client registration ↗](https://modelcontextprotocol.io/specification/2025-11-25/basic/authorization#dynamic-client-registration) cannot use the portal's OAuth authentication flow. For these servers, select **Custom Headers** as the authentication method and provide static credentials (for example, API keys or personal access tokens) instead.
 * **Admin OAuth tokens can expire silently.** The admin credential used to [authenticate an MCP server](#reauthenticate-the-mcp-server) is subject to the upstream provider's token expiration policy. When the token expires, the server status changes to **Error** or **Sync Required** and the server will not appear in the portal for end users. Admins are not notified when this happens. Periodically check the [server status](#server-status) and [reauthenticate](#reauthenticate-the-mcp-server) servers that show an error.
+
+## Policy limitations
+
+MCP server portals use a dedicated Access application type that does not support the following Access policy features:
+
+* **[Independent MFA](https://developers.cloudflare.com/cloudflare-one/access-controls/policies/mfa-requirements/#independent-mfa)** — Portals do not prompt users for a second factor through Cloudflare Access. Users who connect to a portal will not be challenged for MFA, even if independent MFA is required globally or configured on a matching policy. To enforce MFA for MCP portal users, require MFA at your identity provider.
+* **[Purpose justification](https://developers.cloudflare.com/cloudflare-one/access-controls/policies/require-purpose-justification/)** — Portals do not display a purpose justification screen. The `purpose_justification_required` and `purpose_justification_prompt` policy settings have no effect on portal sessions.
+* **[Temporary authentication](https://developers.cloudflare.com/cloudflare-one/access-controls/policies/temporary-auth/)** — Portals do not trigger the approval workflow for temporary authentication policies. Users are not prompted to request access, and approvers do not receive approval requests for portal logins.
+
+These limitations apply to the portal application itself. Other Access policy selectors (such as Emails, Groups, IdP groups, country, and device posture) work as expected.
 
 ## Troubleshooting
 

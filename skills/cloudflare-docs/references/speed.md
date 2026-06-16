@@ -28,6 +28,12 @@ Use Observatory to conduct tests with both synthetic and real user data to ident
 
 [ Use Observatory ](https://developers.cloudflare.com/speed/observatory/) 
 
+###  Origin Analytics 
+
+See how your origin server responds to Cloudflare. Identify slow endpoints, monitor response times, and diagnose errors.
+
+[ Use Origin Analytics ](https://developers.cloudflare.com/speed/origin-analytics/) 
+
 ###  Settings 
 
 Get recommendations of Cloudflare products and settings to improve your website’s performance.

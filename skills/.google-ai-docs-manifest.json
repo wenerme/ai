@@ -98,8 +98,8 @@
   "google-ai-docs/video.md": {
     "url": "https://ai.google.dev/gemini-api/docs/video",
     "skill": "google-ai-docs",
-    "size": 93894,
-    "updatedAt": "2026-06-06T01:07:11.687Z"
+    "size": 93946,
+    "updatedAt": "2026-06-16T00:54:55.503Z"
   },
   "google-ai-docs/document-processing.md": {
     "url": "https://ai.google.dev/gemini-api/docs/document-processing",
@@ -152,8 +152,8 @@
   "google-ai-docs/pricing.md": {
     "url": "https://ai.google.dev/gemini-api/docs/pricing",
     "skill": "google-ai-docs",
-    "size": 55857,
-    "updatedAt": "2026-06-10T01:03:49.372Z"
+    "size": 57170,
+    "updatedAt": "2026-06-16T00:55:00.928Z"
   },
   "google-ai-docs/rate-limits.md": {
     "url": "https://ai.google.dev/gemini-api/docs/rate-limits",
@@ -182,8 +182,8 @@
   "google-ai-docs/imagen.md": {
     "url": "https://ai.google.dev/gemini-api/docs/imagen",
     "skill": "google-ai-docs",
-    "size": 29997,
-    "updatedAt": "2026-05-21T11:23:06.567Z"
+    "size": 30804,
+    "updatedAt": "2026-06-16T00:55:03.813Z"
   },
   "google-ai-docs/batch-mode.md": {
     "url": "https://ai.google.dev/gemini-api/docs/batch-mode",
@@ -290,14 +290,14 @@
   "google-ai-docs/image-generation.md": {
     "url": "https://ai.google.dev/gemini-api/docs/image-generation",
     "skill": "google-ai-docs",
-    "size": 120580,
-    "updatedAt": "2026-05-30T00:53:52.042Z"
+    "size": 120560,
+    "updatedAt": "2026-06-16T00:55:17.184Z"
   },
   "google-ai-docs/models.md": {
     "url": "https://ai.google.dev/gemini-api/docs/models",
     "skill": "google-ai-docs",
-    "size": 11299,
-    "updatedAt": "2026-06-10T01:04:05.935Z"
+    "size": 11310,
+    "updatedAt": "2026-06-16T00:55:17.594Z"
   },
   "google-ai-docs/thought-signatures.md": {
     "url": "https://ai.google.dev/gemini-api/docs/thought-signatures",
@@ -350,8 +350,8 @@
   "google-ai-docs/deprecations.md": {
     "url": "https://ai.google.dev/gemini-api/docs/deprecations",
     "skill": "google-ai-docs",
-    "size": 8126,
-    "updatedAt": "2026-05-30T00:53:58.454Z"
+    "size": 8483,
+    "updatedAt": "2026-06-16T00:55:23.016Z"
   },
   "google-ai-docs/deep-research.md": {
     "url": "https://ai.google.dev/gemini-api/docs/deep-research",

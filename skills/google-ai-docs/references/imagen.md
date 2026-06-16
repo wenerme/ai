@@ -1,6 +1,7 @@
-# Generate images using Imagen
-
 <br />
+
+> [!WARNING]
+> This model is [deprecated](https://ai.google.dev/gemini-api/docs/deprecations) and will be shut down on August 17, 2026; migrate to Nano Banana for image generation.
 
 > [!IMPORTANT]
 > We have updated our [Terms of Service](https://ai.google.dev/gemini-api/terms).
@@ -13,6 +14,20 @@ variants, see the [Model versions](https://ai.google.dev/gemini-api/docs/imagen#
 > [!NOTE]
 > **Note:** You can also generate images with Gemini's built-in multimodal capabilities. See the [Image generation
 > guide](https://ai.google.dev/gemini-api/docs/image-generation) for details.
+
+## Migration to Nano Banana
+
+Imagen models are deprecated and will shut down on August 17, 2026. We recommend
+migrating to Nano Banana for your image generation needs.
+
+Migration involves the following changes:
+
+- **Model name** : Use `gemini-2.5-flash-image` instead of Imagen model names.
+- **Method** : Use `client.models.generate_content` instead of `client.models.generate_images`.
+- **Response handling**: Nano Banana returns content parts, which may include image data, instead of a specific image response object.
+
+See the [Image generation guide](https://ai.google.dev/gemini-api/docs/image-generation) for more
+details and examples.
 
 ## Generate images using the Imagen models
 
@@ -511,7 +526,7 @@ Model: `imagen-4.0-generate-001`
 
 ## Model versions
 
-### Imagen 4
+### Imagen 4 (Deprecated)
 
 | Property | Description |
 |---|---|

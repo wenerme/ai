@@ -32,6 +32,19 @@ We use the term "legacy" to refer to models and endpoints that no longer receive
 
 Upcoming deprecations are listed below, with the most recent announcements at the top.
 
+### 2026-06-11: GPT-5 and o3 model deprecations
+
+On June 11, 2026, we notified developers using older GPT-5 and o3 model snapshots of their deprecation and removal from the API on December 11, 2026.
+
+| Shutdown date | Model / system          | Recommended replacement |
+| ------------- | ----------------------- | ----------------------- |
+| Dec 11, 2026  | `gpt-5-2025-08-07`      | `gpt-5.5`               |
+| Dec 11, 2026  | `gpt-5-mini-2025-08-07` | `gpt-5.4-mini`          |
+| Dec 11, 2026  | `gpt-5-nano-2025-08-07` | `gpt-5.4-nano`          |
+| Dec 11, 2026  | `gpt-5-pro-2025-10-06`  | `gpt-5.5-pro`           |
+| Dec 11, 2026  | `o3-2025-04-16`         | `gpt-5.5`               |
+| Dec 11, 2026  | `o3-pro-2025-06-10`     | `gpt-5.5-pro`           |
+
 ### 2026-06-03: Reusable prompts
 
 On June 3, 2026, we notified developers using reusable prompts in the dashboard and API that reusable prompt objects are being deprecated.

@@ -28,8 +28,8 @@ This configuration benefits use cases with limited prompt options. For example, 
 
 ## Default configuration
 
-* [ Dashboard ](#tab-panel-4507)
-* [ API ](#tab-panel-4508)
+* [ Dashboard ](#tab-panel-6402)
+* [ API ](#tab-panel-6403)
 
 To set the default caching configuration in the dashboard:
 
@@ -91,6 +91,10 @@ Request skipping the cache
 
 ```
 
+# Run `wrangler whoami` to get your account ID to replace $CLOUDFLARE_ACCOUNT_ID,
+
+# and `wrangler auth token` to get an auth token to replace $CLOUDFLARE_API_TOKEN.
+
 curl -X POST "https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/v1/chat/completions" \
 
   --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
@@ -132,6 +136,10 @@ Request to be cached for an hour
 
 ```
 
+# Run `wrangler whoami` to get your account ID to replace $CLOUDFLARE_ACCOUNT_ID,
+
+# and `wrangler auth token` to get an auth token to replace $CLOUDFLARE_API_TOKEN.
+
 curl -X POST "https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/v1/chat/completions" \
 
   --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
@@ -172,6 +180,10 @@ As an example, when submitting a request to OpenAI, include the header in the fo
 Request with custom cache key
 
 ```
+
+# Run `wrangler whoami` to get your account ID to replace $CLOUDFLARE_ACCOUNT_ID,
+
+# and `wrangler auth token` to get an auth token to replace $CLOUDFLARE_API_TOKEN.
 
 curl -X POST "https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/v1/chat/completions" \
 

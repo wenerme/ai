@@ -46,8 +46,8 @@ To create an API token:
 
 ## Create a custom provider
 
-* [ API ](#tab-panel-4111)
-* [ Dashboard ](#tab-panel-4112)
+* [ API ](#tab-panel-6388)
+* [ Dashboard ](#tab-panel-6389)
 
 To create a new custom provider using the API:
 
@@ -57,6 +57,10 @@ To create a new custom provider using the API:
 Create Custom Provider
 
 ```
+
+# Run `wrangler whoami` to get your account ID to replace $CLOUDFLARE_ACCOUNT_ID,
+
+# and `wrangler auth token` to get an auth token to replace $CLOUDFLARE_API_TOKEN.
 
 curl -X POST "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/ai-gateway/custom-providers" \
 
@@ -160,14 +164,18 @@ To create a new custom provider using the dashboard:
 
 ## List custom providers
 
-* [ API ](#tab-panel-4113)
-* [ Dashboard ](#tab-panel-4114)
+* [ API ](#tab-panel-6390)
+* [ Dashboard ](#tab-panel-6391)
 
 Retrieve all custom providers with optional filtering and pagination:
 
 List all providers
 
 ```
+
+# Run `wrangler whoami` to get your account ID to replace $CLOUDFLARE_ACCOUNT_ID,
+
+# and `wrangler auth token` to get an auth token to replace $CLOUDFLARE_API_TOKEN.
 
 curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/ai-gateway/custom-providers" \
 
@@ -193,6 +201,10 @@ Terminal window
 
 ```
 
+# Run `wrangler whoami` to get your account ID to replace $CLOUDFLARE_ACCOUNT_ID,
+
+# and `wrangler auth token` to get an auth token to replace $CLOUDFLARE_API_TOKEN.
+
 curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/ai-gateway/custom-providers?enable=true" \
 
   -H "Authorization: Bearer $CLOUDFLARE_API_TOKEN"
@@ -205,6 +217,10 @@ Search for specific providers:
 Terminal window
 
 ```
+
+# Run `wrangler whoami` to get your account ID to replace $CLOUDFLARE_ACCOUNT_ID,
+
+# and `wrangler auth token` to get an auth token to replace $CLOUDFLARE_API_TOKEN.
 
 curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/ai-gateway/custom-providers?search=custom" \
 
@@ -268,13 +284,17 @@ To view all your custom providers:
 
 ## Get a specific custom provider
 
-* [ API ](#tab-panel-4110)
+* [ API ](#tab-panel-6387)
 
 Retrieve details for a specific custom provider by its ID:
 
 Get provider by ID
 
 ```
+
+# Run `wrangler whoami` to get your account ID to replace $CLOUDFLARE_ACCOUNT_ID,
+
+# and `wrangler auth token` to get an auth token to replace $CLOUDFLARE_API_TOKEN.
 
 curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/ai-gateway/custom-providers/{provider_id}" \
 
@@ -332,14 +352,18 @@ curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/ai-gateway/custo
 
 ## Update a custom provider
 
-* [ API ](#tab-panel-4115)
-* [ Dashboard ](#tab-panel-4116)
+* [ API ](#tab-panel-6392)
+* [ Dashboard ](#tab-panel-6393)
 
 Update an existing custom provider. All fields are optional - only include the fields you want to change:
 
 Update provider
 
 ```
+
+# Run `wrangler whoami` to get your account ID to replace $CLOUDFLARE_ACCOUNT_ID,
+
+# and `wrangler auth token` to get an auth token to replace $CLOUDFLARE_API_TOKEN.
 
 curl -X PATCH "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/ai-gateway/custom-providers/{provider_id}" \
 
@@ -380,6 +404,10 @@ Terminal window
 
 ```
 
+# Run `wrangler whoami` to get your account ID to replace $CLOUDFLARE_ACCOUNT_ID,
+
+# and `wrangler auth token` to get an auth token to replace $CLOUDFLARE_API_TOKEN.
+
 curl -X PATCH "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/ai-gateway/custom-providers/{provider_id}" \
 
   -H "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
@@ -396,6 +424,10 @@ Update provider URL:
 Terminal window
 
 ```
+
+# Run `wrangler whoami` to get your account ID to replace $CLOUDFLARE_ACCOUNT_ID,
+
+# and `wrangler auth token` to get an auth token to replace $CLOUDFLARE_API_TOKEN.
 
 curl -X PATCH "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/ai-gateway/custom-providers/{provider_id}" \
 
@@ -422,14 +454,18 @@ To update an existing custom provider:
 
 ## Delete a custom provider
 
-* [ API ](#tab-panel-4117)
-* [ Dashboard ](#tab-panel-4118)
+* [ API ](#tab-panel-6394)
+* [ Dashboard ](#tab-panel-6395)
 
 Delete a custom provider:
 
 Delete provider
 
 ```
+
+# Run `wrangler whoami` to get your account ID to replace $CLOUDFLARE_ACCOUNT_ID,
+
+# and `wrangler auth token` to get an auth token to replace $CLOUDFLARE_API_TOKEN.
 
 curl -X DELETE "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/ai-gateway/custom-providers/{provider_id}" \
 
@@ -524,6 +560,8 @@ Request using custom provider via Unified API
 
 ```
 
+# Run `wrangler auth token` to get an auth token to replace $CF_AIG_TOKEN for use with the API.
+
 curl https://gateway.ai.cloudflare.com/v1/{account_id}/{gateway_id}/compat/chat/completions \
 
   -H "Authorization: Bearer $PROVIDER_API_KEY" \
@@ -550,6 +588,8 @@ The provider-specific endpoint gives you full control over the upstream path. Ev
 Direct provider endpoint
 
 ```
+
+# Run `wrangler auth token` to get an auth token to replace $CF_AIG_TOKEN for use with the API.
 
 curl https://gateway.ai.cloudflare.com/v1/{account_id}/{gateway_id}/custom-some-provider/v1/chat/completions \
 

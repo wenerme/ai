@@ -1,6 +1,6 @@
 ---
 title: Changelog
-description: This release introduces new detections for a critical SQL injection vulnerability in Drupal installations utilizing PostgreSQL (CVE-2026-9082), alongside targeted protection for an unsafe deserialization flaw in the Mirasvit Cache Warmer extension (CVE-2026-45247). Additionally, this release includes coverage for a prototype pollution vector in Axios (CVE-2026-40175) and a new generic rule designed to identify and block sophisticated SQL Injection (SQLi) bypass attempts leveraging obfuscated boolean logic.
+description: You can now match incoming requests against Cloudforce One threat intelligence in your WAF rules. A new detection looks up the client IP address of each request against the threat intelligence database. If the IP was involved in threat activity in the past seven days, Cloudflare populates cf.intel.ip.* fields that you can use in custom rules and rate limiting rules.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 
@@ -13,6 +13,34 @@ image: https://developers.cloudflare.com/core-services-preview.png
 # Changelog
 
 [ Subscribe to RSS ](https://developers.cloudflare.com/changelog/rss/waf.xml) 
+
+## 2026-06-15
+
+  
+**Use Cloudforce One threat intelligence in WAF rules**   
+
+You can now match incoming requests against Cloudforce One threat intelligence in your WAF rules. A new detection looks up the client IP address of each request against the threat intelligence database. If the IP was involved in threat activity in the past seven days, Cloudflare populates `cf.intel.ip.*` fields that you can use in [custom rules](https://developers.cloudflare.com/waf/custom-rules/) and [rate limiting rules](https://developers.cloudflare.com/waf/rate-limiting-rules/).
+
+The detection populates the following fields. Use the [any()](https://developers.cloudflare.com/ruleset-engine/rules-language/functions/#any) function with the `[*]` wildcard to match array values:
+
+* `cf.intel.ip.datasets` — the dataset that flagged the IP address (`ddos` or `waf`).
+* `cf.intel.ip.target_industries` — industries the IP address has targeted.
+* `cf.intel.ip.attacker_names` — known threat actors associated with the IP address.
+* `cf.intel.ip.attacker_countries` — source countries of the threat activity.
+* `cf.intel.ip.target_countries` — countries the IP address has targeted.
+
+For example, the following custom rule expression blocks requests from IP addresses associated with DDoS activity that have targeted France:
+
+```
+
+any(cf.intel.ip.target_countries[*] == "FR") and any(cf.intel.ip.datasets[*] == "ddos")
+
+
+```
+
+These fields work with the Cloudflare API and Terraform. Matches are logged in [Security Analytics](https://developers.cloudflare.com/waf/analytics/security-analytics/).
+
+The threat intelligence detection is available to customers with an active [Cloudforce One](https://developers.cloudflare.com/security-center/cloudforce-one/) subscription. For more information, refer to [Threat intelligence](https://developers.cloudflare.com/waf/detections/threat-intelligence/).
 
 ## 2026-06-09
 
@@ -582,29 +610,6 @@ This week's release focuses on improvements to existing detections to enhance co
 | -------------------------- | ----------- | -------------- | ---------------------------------- | --------------- | ---------- | -------------------------------------------------------------------------------------------- |
 | Cloudflare Managed Ruleset | ...48a1841a | N/A            | SQLi - AND/OR MAKE\_SET/ELT - Beta | Log             | Block      | This rule is merged into the original rule "SQLi - AND/OR MAKE\_SET/ELT" (ID: ...252d3934  ) |
 | Cloudflare Managed Ruleset | ...9e553ad3 | N/A            | SQLi - Benchmark Function - Beta   | Log             | Block      | This rule is merged into the original rule "SQLi - Benchmark Function" (ID: ...2ebc44ad  )   |
-
-## 2025-12-18
-
-  
-**WAF Release - 2025-12-18**   
-
-This week's release focuses on improvements to existing detections to enhance coverage.
-
-**Key Findings**
-
-* Existing rule enhancements have been deployed to improve detection resilience against broad classes of web attacks and strengthen behavioral coverage.
-
-| Ruleset                    | Rule ID     | Legacy Rule ID | Description                                                       | Previous Action | New Action | Comments                                                                                                                    |
-| -------------------------- | ----------- | -------------- | ----------------------------------------------------------------- | --------------- | ---------- | --------------------------------------------------------------------------------------------------------------------------- |
-| Cloudflare Managed Ruleset | ...be5ec20c | N/A            | Atlassian Confluence - Code Injection - CVE:CVE-2021-26084 - Beta | Log             | Block      | This rule is merged into the original rule "Atlassian Confluence - Code Injection - CVE:CVE-2021-26084" (ID: ...69e0b97a  ) |
-| Cloudflare Managed Ruleset | ...0d9206e3 | N/A            | PostgreSQL - SQLi - Copy - Beta                                   | Log             | Block      | This rule is merged into the original rule "PostgreSQL - SQLi - COPY" (ID: ...e7265a4e  )                                   |
-| Cloudflare Managed Ruleset | ...0cd00ba7 | N/A            | Generic Rules - Command Execution - Body                          | Log             | Disabled   | This is a new detection.                                                                                                    |
-| Cloudflare Managed Ruleset | ...cd679ad4 | N/A            | Generic Rules - Command Execution - Header                        | Log             | Disabled   | This is a new detection.                                                                                                    |
-| Cloudflare Managed Ruleset | ...fd181fb3 | N/A            | Generic Rules - Command Execution - URI                           | Log             | Disabled   | This is a new detection.                                                                                                    |
-| Cloudflare Managed Ruleset | ...7a95bc3a | N/A            | SQLi - Tautology - URI - Beta                                     | Log             | Block      | This rule is merged into the original rule "SQLi - Tautology - URI" (ID: ...b3de2e0a  )                                     |
-| Cloudflare Managed Ruleset | ...432ac90d | N/A            | SQLi - WaitFor Function - Beta                                    | Log             | Block      | This rule is merged into the original rule "SQLi - WaitFor Function" (ID: ...d5faba59  )                                    |
-| Cloudflare Managed Ruleset | ...596c741e | N/A            | SQLi - AND/OR Digit Operator Digit 2 - Beta                       | Log             | Block      | This rule is merged into the original rule "SQLi - AND/OR Digit Operator Digit" (ID: ...88d80772  )                         |
-| Cloudflare Managed Ruleset | ...03b2f3fe | N/A            | SQLi - Equation 2 - Beta                                          | Log             | Block      | This rule is merged into the original rule "SQLi - Equation" (ID: ...a72a6b3a  )                                            |
 
 ```json
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/waf/","name":"WAF"}},{"@type":"ListItem","position":3,"item":{"@id":"/waf/change-log/","name":"WAF changelog overview"}},{"@type":"ListItem","position":4,"item":{"@id":"/waf/change-log/changelog/","name":"Changelog"}}]}
