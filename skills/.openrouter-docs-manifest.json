@@ -81,8 +81,8 @@
   },
   "faq.md": {
     "url": "https://openrouter.ai/docs/faq.md",
-    "size": 14135,
-    "updatedAt": "2026-06-11T11:48:42.216Z"
+    "size": 14341,
+    "updatedAt": "2026-06-16T12:02:07.175Z"
   },
   "guides/overview/report-feedback.md": {
     "url": "https://openrouter.ai/docs/guides/overview/report-feedback.md",
@@ -611,13 +611,13 @@
   },
   "api/api-reference/speech/create-audio-speech.md": {
     "url": "https://openrouter.ai/docs/api/api-reference/speech/create-audio-speech.md",
-    "size": 29888,
-    "updatedAt": "2026-06-11T11:53:42.335Z"
+    "size": 29931,
+    "updatedAt": "2026-06-16T12:09:35.179Z"
   },
   "api/api-reference/transcriptions/create-audio-transcriptions.md": {
     "url": "https://openrouter.ai/docs/api/api-reference/transcriptions/create-audio-transcriptions.md",
-    "size": 31747,
-    "updatedAt": "2026-06-11T11:53:45.191Z"
+    "size": 31790,
+    "updatedAt": "2026-06-16T12:09:36.097Z"
   },
   "api/api-reference/analytics/get-user-activity.md": {
     "url": "https://openrouter.ai/docs/api/api-reference/analytics/get-user-activity.md",
@@ -941,8 +941,8 @@
   },
   "api/api-reference/video-generation/create-videos.md": {
     "url": "https://openrouter.ai/docs/api/api-reference/video-generation/create-videos.md",
-    "size": 34983,
-    "updatedAt": "2026-06-11T11:57:44.577Z"
+    "size": 35026,
+    "updatedAt": "2026-06-16T12:14:22.779Z"
   },
   "api/api-reference/video-generation/get-videos.md": {
     "url": "https://openrouter.ai/docs/api/api-reference/video-generation/get-videos.md",

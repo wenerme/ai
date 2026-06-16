@@ -45,11 +45,11 @@ on inference pricing (however we do charge a [fee](/docs/faq#pricing-and-fees) w
 
 ## Pricing and Fees
 
-OpenRouter charges a {getTotalFeeString('stripe', null)} fee when you purchase credits. We pass through
+OpenRouter charges a {getTotalFeeString({ type: 'stripe', platformFeeOverride: null, topUpPlatformFeeFraction: null, coinbaseTopUpPlatformFeeFraction: null })} fee when you purchase credits. We pass through
 the pricing of the underlying model providers without any markup, so you pay
 the same rate as you would directly with the provider.
 
-Crypto payments are charged a fee of {getTotalFeeString('coinbase', null)}.
+Crypto payments are charged a fee of {getTotalFeeString({ type: 'coinbase', platformFeeOverride: null, topUpPlatformFeeFraction: null, coinbaseTopUpPlatformFeeFraction: null })}.
 
 Yes, if you choose to use your own provider API keys (Bring Your Own Key -
 BYOK), the first {toHumanNumber(BYOK_FEE_MONTHLY_REQUEST_THRESHOLD)} BYOK

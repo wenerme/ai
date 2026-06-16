@@ -49,7 +49,7 @@ Add the Cloudflare API and docs servers to `~/.codeium/windsurf/mcp_config.json`
 4. **Try a prompt**  
 Open Cascade and try a prompt — for example:  
 ```  
-Set up a KV namespace for edge-cached session storage in my Worker.  
+Set up WAF rules to block SQL injection and XSS attacks on my application.  
 ```
 
 ## Cloudflare platform access

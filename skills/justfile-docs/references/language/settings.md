@@ -302,8 +302,9 @@ variables in files later in list take precedence over earlier ones.
 ##### Attributes
 
 The `[arg]` `flag` attribute makes the parameter a flag which does not take a
-value on the command line. For example, with `[arg(foo, long, flag)]`, `foo`
-will be `"true"` when `--foo` is passed, and `[]` otherwise.
+value on the command line. For example, with `[arg('foo', long, flag)]`, `foo`
+will be `"true"` when `--foo` is passed, and `[]` otherwise. Flag parameters may
+not have a default.
 
 In `[env(variable, value)]` if `value` is `[]`, `variable` is not set.
 Otherwise it is set to `value` joined with spaces.
@@ -313,7 +314,7 @@ Otherwise it is set to `value` joined with spaces.
 - `absolute_path()` - Applies to each list element individually.
 - `append()` - Applies to each list element individually and does not split
   elements on whitespace.
-- `assert(condition)` - Evalutes to `condition`.
+- `assert(condition, message)` - Evaluates to `condition`.
 - `bool(value)` Converts `value` to the canonical boolean values. Returns `[]`
   when `value` is `""` `"0"` `"false"`, or `[]`, and `"true"` when `value` is
   `"1"` or `"true"`. All other values are an error. Can be used to parse
@@ -411,7 +412,7 @@ The canonical false value `[]` is recommended as a default for options:
 set unstable
 set lists
 
-#[arg(bar, long)]
+[arg('bar', long)]
 foo bar=[]:
 ```
 

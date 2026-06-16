@@ -14,15 +14,14 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 [ Subscribe to RSS ](https://developers.cloudflare.com/changelog/rss/waf.xml) 
 
-## 2026-06-09
+## 2026-06-15
 
   
-**WAF Release - Scheduled changes for 2026-06-15**   
+**WAF Release - Scheduled changes for 2026-06-22**   
 
-| Announcement Date | Release Date | Release Behavior | Legacy Rule ID | Rule ID     | Description                           | Comments                 |
-| ----------------- | ------------ | ---------------- | -------------- | ----------- | ------------------------------------- | ------------------------ |
-| 2026-06-09        | 2026-06-15   | Log              | N/A            | ...b4c29bc6 | Ghost CMS - SQLi - CVE:CVE-2026-26980 | This is a new detection. |
-| 2026-06-09        | 2026-06-15   | Log              | N/A            | ...b56f403f | SQLi - Obfuscated Boolean - URI       | This is a new detection. |
+| Announcement Date | Release Date | Release Behavior | Legacy Rule ID | Rule ID     | Description                                            | Comments                 |
+| ----------------- | ------------ | ---------------- | -------------- | ----------- | ------------------------------------------------------ | ------------------------ |
+| 2026-06-15        | 2026-06-22   | Log              | N/A            | ...242fdf83 | Ivanti Sentry - Command Injection - CVE:CVE-2026-10520 | This is a new detection. |
 
 For other WAF updates, refer to the [changelog](https://developers.cloudflare.com/waf/change-log/changelog/).
 

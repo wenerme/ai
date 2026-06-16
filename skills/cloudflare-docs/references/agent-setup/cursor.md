@@ -36,7 +36,7 @@ In Cursor, run the following command or install from the [Cursor Marketplace ↗
 3. **Try a prompt**  
 For example:  
 ```  
-Create a Logpush job to stream Workers analytics to my data warehouse.  
+Build a multi-tenant SaaS backend where each customer gets an isolated D1 database.  
 ```
 
 ## Cloudflare platform access

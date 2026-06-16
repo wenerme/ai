@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 # Programmable Platforms
 
-**Last reviewed:**  about 1 year ago 
+**Last reviewed:**  over 1 year ago 
 
 ## Introduction
 

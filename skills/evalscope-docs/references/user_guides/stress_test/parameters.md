@@ -31,7 +31,7 @@ Execute `evalscope perf --help` to get a full parameter description.
 |-----------|------|-------------|---------|
 | `--parallel` | `list[int]` | Number of concurrent requestsCan input multiple values separated by spaces | `1` |
 | `--number` | `list[int]` | Total number of requests to be sentCan input multiple values (must correspond one-to-one with `parallel`) | `1000` |
-| `--rate` | `float` | Request generation rate (requests/second)• `-1`: No rate limit; all requests are generated immediately and placed in the queue• `> 0`: Requests are generated following a Poisson arrival model — the inter-arrival interval follows an exponential distribution with mean `1/rate`, resulting in an **average** of `rate` requests per second | `-1` |
+| `--rate` | `float` | Request scheduling rate (requests/second)• `-1`: No rate pacing; in the default closed-loop mode, requests are scheduled as fast as possible, but the number of in-flight HTTP requests is still capped by `--parallel`, so requests are not all sent to the server at once• `> 0`: Requests are scheduled following a Poisson arrival model — the inter-arrival interval follows an exponential distribution with mean `1/rate`, resulting in an **average** of `rate` scheduled requests per second | `-1` |
 | `--log-every-n-query` | `int` | Log every N queries | `100` |
 | `--stream` | `bool` | Whether to use SSE stream outputMust be enabled to measure TTFT (Time to First Token) metric | `True` |
 | `--sleep-interval` | `int` | Sleep time between each performance test (seconds)Helps avoid overloading the server | `5` |
@@ -44,7 +44,7 @@ Execute `evalscope perf --help` to get a full parameter description.
 
 | | Closed-loop (default) | Open-loop (`--open-loop`) |
 |---|---|---|
-| **`--rate`** | Controls enqueue rate (`-1` = unlimited; `R` = Poisson-arrival mean) | Controls dispatch rate; **must be > 0**; accepts multiple values (e.g. `5 10 20`), each driving one independent run |
+| **`--rate`** | Controls request scheduling rate (`-1` = no pacing, but still bounded by the `--parallel` concurrency cap; `R` = Poisson-arrival mean) | Controls dispatch rate; **must be > 0**; accepts multiple values (e.g. `5 10 20`), each driving one independent run |
 | **`--number`** | Total requests per run; must match `--parallel` in length | Total requests per run; must match `--rate` in **length** |
 | **`--parallel`** | Max in-flight requests; each worker waits for a response before sending the next (**backpressure**) | **Ignored**; concurrency is unbounded (INF); requests are fired on schedule without waiting for responses |
 | **Use case** | Measure latency and throughput under controlled concurrency | Simulate realistic traffic (arrivals independent of service time); sweep throughput-latency curve across multiple rates |

@@ -49,7 +49,7 @@ Inside Codex, run `/plugins`, then search for and install **Cloudflare**. This i
 4. **Try a prompt**  
 For example:  
 ```  
-Set up AI Gateway to route requests across OpenAI and Workers AI with automatic fallback and cost tracking.  
+Create a Logpush job to stream Workers analytics to my data warehouse.  
 ```
 
 1. **Download Codex**  

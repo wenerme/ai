@@ -42,6 +42,22 @@ These fields work with the Cloudflare API and Terraform. Matches are logged in [
 
 The threat intelligence detection is available to customers with an active [Cloudforce One](https://developers.cloudflare.com/security-center/cloudforce-one/) subscription. For more information, refer to [Threat intelligence](https://developers.cloudflare.com/waf/detections/threat-intelligence/).
 
+## 2026-06-15
+
+  
+**WAF Release - 2026-06-15**   
+
+This week's release introduces new managed protection to address a critical SQL injection vulnerability in Ghost CMS (CVE-2026-26980) and a new generic rule designed to identify and block sophisticated SQL Injection (SQLi) bypass attempts leveraging obfuscated boolean logic. These rules protect affected installations from unauthorized data exfiltration at the network edge.
+
+**Key Findings**
+
+* CVE-2026-26980: A blind SQL injection vulnerability in the Ghost CMS Content API (versions 3.24.0 to 6.19.0) allows unauthenticated remote attackers to inject malicious SQL commands via query parameters due to improper input validation.
+
+| Ruleset                    | Rule ID     | Legacy Rule ID | Description                           | Previous Action | New Action | Comments                 |
+| -------------------------- | ----------- | -------------- | ------------------------------------- | --------------- | ---------- | ------------------------ |
+| Cloudflare Managed Ruleset | ...b4c29bc6 | N/A            | Ghost CMS - SQLi - CVE:CVE-2026-26980 | Log             | Block      | This is a new detection. |
+| Cloudflare Managed Ruleset | ...b56f403f | N/A            | SQLi - Obfuscated Boolean - URI       | Log             | Disabled   | This is a new detection. |
+
 ## 2026-06-09
 
   
@@ -594,22 +610,6 @@ This week's release focuses on improvements to existing detections to enhance co
 | -------------------------- | ----------- | -------------- | ----------------------------- | --------------- | ---------- | --------------------------------------------------------------------------------------- |
 | Cloudflare Managed Ruleset | ...ad7dad3e | N/A            | SQLi - String Function - Beta | Log             | Block      | This rule is merged into the original rule "SQLi - String Function" (ID: ...d32b798c  ) |
 | Cloudflare Managed Ruleset | ...9e553ad3 | N/A            | SQLi - Sub Query - Beta       | Log             | Block      | This rule is merged into the original rule "SQLi - Sub Query" (ID: ...743e66b1  )       |
-
-## 2026-01-12
-
-  
-**WAF Release - 2026-01-12**   
-
-This week's release focuses on improvements to existing detections to enhance coverage.
-
-**Key Findings**
-
-* Existing rule enhancements have been deployed to improve detection resilience against SQL Injection.
-
-| Ruleset                    | Rule ID     | Legacy Rule ID | Description                        | Previous Action | New Action | Comments                                                                                     |
-| -------------------------- | ----------- | -------------- | ---------------------------------- | --------------- | ---------- | -------------------------------------------------------------------------------------------- |
-| Cloudflare Managed Ruleset | ...48a1841a | N/A            | SQLi - AND/OR MAKE\_SET/ELT - Beta | Log             | Block      | This rule is merged into the original rule "SQLi - AND/OR MAKE\_SET/ELT" (ID: ...252d3934  ) |
-| Cloudflare Managed Ruleset | ...9e553ad3 | N/A            | SQLi - Benchmark Function - Beta   | Log             | Block      | This rule is merged into the original rule "SQLi - Benchmark Function" (ID: ...2ebc44ad  )   |
 
 ```json
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/waf/","name":"WAF"}},{"@type":"ListItem","position":3,"item":{"@id":"/waf/change-log/","name":"WAF changelog overview"}},{"@type":"ListItem","position":4,"item":{"@id":"/waf/change-log/changelog/","name":"Changelog"}}]}
