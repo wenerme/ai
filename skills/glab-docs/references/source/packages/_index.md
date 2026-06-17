@@ -31,3 +31,4 @@ arbitrary files identified by a package name, version, and file name.
 ## Subcommands
 
 - [`list`](list.md)
+- [`upload`](upload.md)

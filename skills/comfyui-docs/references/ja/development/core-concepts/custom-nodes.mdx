@@ -58,8 +58,8 @@ Git がインストールされている場合、以下のような出力が表�
 
 まだインストールされていない場合は、[git-scm.com](https://git-scm.com/) を訪れて対応するインストールパッケージをダウンロードしてください。Linux ユーザーは [git-scm.com/downloads/linux](https://git-scm.com/downloads/linux) を参照してインストール手順を確認してください。
 
-ComfyUI Desktop バージョンの場合、以下のように Desktop ターミナルを使用してインストールを完了できます。
-[ComfyUI Desktop ターミナル]
+Comfy Desktop バージョンの場合、以下のように Desktop ターミナルを使用してインストールを完了できます。
+[Comfy Desktop ターミナル]
 
 Git のインストールを完了した後、カスタムノードのリポジトリアドレスが必要です。ここでは ComfyUI-Manager リポジトリアドレスを例として使用します：
 
@@ -141,10 +141,10 @@ python_embeded\python.exe -m pip install -r ComfyUI\custom_nodes\ComfyUI-Manager
 ```
 もちろん、ComfyUI-Manager を実際にインストールしたカスタムノードの名前に置き換えることができますが、対応するノードディレクトリに `requirements.txt` ファイルが存在することを確認してください。
 
-ComfyUI Desktop はインストールプロセス中にすでに ComfyUI-Manager とその依存関係がインストールされているため、このガイドはカスタムノードインストールの例として ComfyUI Manager を使用していますが、実際にはデスクトップバージョンで ComfyUI Manager の依存関係インストールを実行する必要はありません。
+Comfy Desktop はインストールプロセス中にすでに ComfyUI-Manager とその依存関係がインストールされているため、このガイドはカスタムノードインストールの例として ComfyUI Manager を使用していますが、実際にはデスクトップバージョンで ComfyUI Manager の依存関係インストールを実行する必要はありません。
 予期しない問題がない限り、カスタムノードをインストールするために ComfyUI Manager の使用を推奨します。そうすれば、依存関係を手動でインストールする必要はありません。
 
-[ComfyUI Desktop ターミナル]
+[Comfy Desktop ターミナル]
  
 次に、以下のコマンドを使用して対応するプラグインの依存関係をインストールします：
 
@@ -153,7 +153,7 @@ pip install -r .\custom_nodes\<corresponding_custom_node_name>\requirements.txt
 ```
 以下に示すように、これは ComfyUI-Hunyuan3Dwrapper の依存関係インストールです：
 
-[ComfyUI Desktop 依存関係インストール]
+[Comfy Desktop 依存関係インストール]
 
 カスタム Python 環境を持つユーザーの場合、`pip install -r requirements.txt` を使用して依存関係のインストールを完了することを推奨します。
 
