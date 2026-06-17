@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 # Workers Binding API
 
-VPC bindings provide a `fetch()` API for accessing private services from your Worker through Cloudflare Tunnel. Both [VPC Services](https://developers.cloudflare.com/workers-vpc/configuration/vpc-services/) and [VPC Networks](https://developers.cloudflare.com/workers-vpc/configuration/vpc-networks/) expose the same `fetch()` method — the difference is in routing scope.
+VPC bindings provide APIs for accessing private services from your Worker. Both [VPC Services](https://developers.cloudflare.com/workers-vpc/configuration/vpc-services/) and [VPC Networks](https://developers.cloudflare.com/workers-vpc/configuration/vpc-networks/) expose a `fetch()` method for HTTP traffic. VPC Networks also expose a `connect()` method for raw TCP connections. The difference between binding types is in routing scope, not in API surface.
 
 Note
 
@@ -29,11 +29,11 @@ A VPC Service binding routes requests to a specific pre-registered host and port
 
 ### VPC Network
 
-A VPC Network binding grants access to any service reachable through the bound Cloudflare Tunnel or through Cloudflare Mesh — including subnet and hostname routes announced through Cloudflare Tunnel or Mesh, and destinations connected through Cloudflare WAN on-ramps (GRE, IPsec, or CNI). The URL passed to `fetch()` determines the actual destination — hostname or IP address and port.
+A VPC Network binding grants access to any service reachable through the bound Cloudflare Tunnel or through Cloudflare Mesh — including subnet and hostname routes announced through Cloudflare Tunnel or Mesh, and destinations connected through Cloudflare WAN on-ramps (GRE, IPsec, or CNI). The URL passed to `fetch()` or the address passed to `connect()` determines the actual destination — hostname or IP address and port.
 
 ## fetch()
 
-Makes an HTTP request to the private service through the bound Cloudflare Tunnel or Cloudflare Mesh.
+Makes an HTTP request to the private service through the bound Cloudflare Tunnel or Cloudflare Mesh. Available on both VPC Service and VPC Network bindings.
 
 JavaScript
 
@@ -187,6 +187,97 @@ export default {
 
 ```
 
+## connect()
+
+Opens a raw TCP connection to a private destination through the bound Cloudflare Tunnel or Cloudflare Mesh. Available on VPC Network bindings only.
+
+JavaScript
+
+```
+
+const socket = await env.MY_BINDING.connect(address);
+
+
+```
+
+### Parameters
+
+* `address` (string | SocketAddress) — The destination to connect to. Pass a string in `"host:port"` format (for example, `"10.0.1.50:6379"`) or a [SocketAddress](https://developers.cloudflare.com/workers/runtime-apis/tcp-sockets/#socketaddress/) object with `hostname` and `port`.
+
+### Return value
+
+Returns a `Promise<Socket>` that resolves to a [Socket](https://developers.cloudflare.com/workers/runtime-apis/tcp-sockets/#socket/) with `readable` and `writable` streams. If `connect()` cannot establish the connection, it throws an exception.
+
+Note
+
+`connect()` over VPC Networks currently supports plaintext TCP only.
+
+### Examples
+
+#### Connect to a private Redis instance
+
+JavaScript
+
+```
+
+export default {
+
+  async fetch(request, env) {
+
+    const socket = await env.MY_BINDING.connect("10.0.1.50:6379");
+
+
+    const writer = socket.writable.getWriter();
+
+    await writer.write(new TextEncoder().encode("PING\r\n"));
+
+    await writer.close();
+
+
+    return new Response(socket.readable);
+
+  },
+
+};
+
+
+```
+
+#### Connect using a SocketAddress object
+
+JavaScript
+
+```
+
+export default {
+
+  async fetch(request, env) {
+
+    const socket = await env.MY_BINDING.connect({
+
+      hostname: "10.0.1.50",
+
+      port: 6379,
+
+    });
+
+
+    const writer = socket.writable.getWriter();
+
+    await writer.write(new TextEncoder().encode("PING\r\n"));
+
+    await writer.close();
+
+
+    return new Response(socket.readable);
+
+  },
+
+};
+
+
+```
+
 ## Required roles
 
 To bind a VPC Service or VPC Network in a Worker, your user needs `Connectivity Directory Bind` (or `Connectivity Directory Admin`). Binding directly to a Cloudflare Tunnel through a VPC Network binding requires `Connectivity Directory Admin`. For role definitions, refer to [Roles](https://developers.cloudflare.com/fundamentals/manage-members/roles/#account-scoped-roles).
@@ -198,5 +289,6 @@ To bind a VPC Service or VPC Network in a Worker, your user needs `Connectivity 
 * Refer to [usage examples](https://developers.cloudflare.com/workers-vpc/examples/)
 
 ```json
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers-vpc/api/#page","headline":"Workers Binding API · Cloudflare Workers VPC","description":"API reference for VPC Service and VPC Network bindings in Workers.","url":"https://developers.cloudflare.com/workers-vpc/api/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-06-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/workers-vpc/","name":"Workers VPC"}},{"@type":"ListItem","position":3,"item":{"@id":"/workers-vpc/api/","name":"Workers Binding API"}}]}
 ```

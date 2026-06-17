@@ -21,10 +21,10 @@ Send transactional emails over Cloudflare Email Service [authenticated SMTP](htt
 * A domain onboarded for [Email Sending](https://developers.cloudflare.com/email-service/configuration/domains/).
 * A [Cloudflare API token](https://developers.cloudflare.com/fundamentals/api/get-started/create-token/) with the **Email Sending: Edit** permission. Set it as `CF_API_TOKEN` in your environment. The token is used as the SMTP password; the username is the literal string `api_token`.
 
-* [ curl ](#tab-panel-8289)
-* [ Node.js (Nodemailer) ](#tab-panel-8290)
-* [ Python (smtplib) ](#tab-panel-8291)
-* [ PHP (PHPMailer) ](#tab-panel-8292)
+* [ curl ](#tab-panel-8510)
+* [ Node.js (Nodemailer) ](#tab-panel-8511)
+* [ Python (smtplib) ](#tab-panel-8512)
+* [ PHP (PHPMailer) ](#tab-panel-8513)
 
 ### Send an email
 
@@ -343,5 +343,6 @@ $mail->send();
 * [Limits](https://developers.cloudflare.com/email-service/platform/limits/) — account, message, and session limits.
 
 ```json
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/email-service/examples/email-sending/smtp/#page","headline":"Send email over SMTP · Cloudflare Email Service docs","description":"Send transactional emails through Cloudflare Email Service authenticated SMTP from curl, Node.js, Python, or PHP.","url":"https://developers.cloudflare.com/email-service/examples/email-sending/smtp/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-06-09","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/email-service/","name":"Email Service"}},{"@type":"ListItem","position":3,"item":{"@id":"/email-service/examples/","name":"Examples"}},{"@type":"ListItem","position":4,"item":{"@id":"/email-service/examples/email-sending/","name":"Email sending"}},{"@type":"ListItem","position":5,"item":{"@id":"/email-service/examples/email-sending/smtp/","name":"Send email over SMTP"}}]}
 ```

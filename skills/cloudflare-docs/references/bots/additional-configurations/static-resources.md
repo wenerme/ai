@@ -22,8 +22,8 @@ If you enable static resource protection, you may block good bots — like mail 
 
 To enable this feature as a Pro or Business customer or an Enterprise customer without Bot Management:
 
-* [  New dashboard ](#tab-panel-4369)
-* [ Old dashboard ](#tab-panel-4370)
+* [  New dashboard ](#tab-panel-6832)
+* [ Old dashboard ](#tab-panel-6833)
 
 1. In the Cloudflare dashboard, go to the **Security Settings** page.  
 [ Go to **Settings** ](https://dash.cloudflare.com/?to=/:account/:zone/security/settings)
@@ -55,5 +55,6 @@ Static resources are files with the following extensions:
 Additionally, the `/.well-known/` URL path and all elements in it are considered a static resource, regardless of the file extension.
 
 ```json
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/bots/additional-configurations/static-resources/#page","headline":"Static resource protection · Cloudflare bot solutions docs","description":"Extend bot protection to static resources like images, CSS, and JavaScript files.","url":"https://developers.cloudflare.com/bots/additional-configurations/static-resources/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/bots/","name":"Bots"}},{"@type":"ListItem","position":3,"item":{"@id":"/bots/additional-configurations/","name":"Additional configurations"}},{"@type":"ListItem","position":4,"item":{"@id":"/bots/additional-configurations/static-resources/","name":"Static resource protection"}}]}
 ```

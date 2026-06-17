@@ -65,8 +65,8 @@ curl -X POST "https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_
 
 To include custom metadata in your request using the OpenAI SDK:
 
-* [  JavaScript ](#tab-panel-6420)
-* [  TypeScript ](#tab-panel-6421)
+* [  JavaScript ](#tab-panel-6560)
+* [  TypeScript ](#tab-panel-6561)
 
 JavaScript
 
@@ -259,5 +259,6 @@ export default {
 ```
 
 ```json
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai-gateway/observability/custom-metadata/#page","headline":"Custom metadata · Cloudflare AI Gateway docs","description":"Tag AI Gateway requests with custom metadata such as user IDs to improve log filtering and analysis.","url":"https://developers.cloudflare.com/ai-gateway/observability/custom-metadata/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-06-15","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/ai-gateway/","name":"AI Gateway"}},{"@type":"ListItem","position":3,"item":{"@id":"/ai-gateway/observability/","name":"Observability"}},{"@type":"ListItem","position":4,"item":{"@id":"/ai-gateway/observability/custom-metadata/","name":"Custom metadata"}}]}
 ```

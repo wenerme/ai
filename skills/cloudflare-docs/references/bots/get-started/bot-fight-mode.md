@@ -37,8 +37,8 @@ If you are using several app security features like custom rules, Managed Rules,
 
 To start using Bot Fight Mode:
 
-* [  New dashboard ](#tab-panel-4179)
-* [ Old dashboard ](#tab-panel-4180)
+* [  New dashboard ](#tab-panel-6838)
+* [ Old dashboard ](#tab-panel-6839)
 
 1. In the Cloudflare dashboard, go to the **Security Settings** page.  
 [ Go to **Settings** ](https://dash.cloudflare.com/?to=/:account/:zone/security/settings)
@@ -65,8 +65,8 @@ If you find that **Bot Fight Mode** is causing problems with your application tr
 
 To disable Bot Fight Mode:
 
-* [  New dashboard ](#tab-panel-4177)
-* [ Old dashboard ](#tab-panel-4178)
+* [  New dashboard ](#tab-panel-6836)
+* [ Old dashboard ](#tab-panel-6837)
 
 1. In the Cloudflare dashboard, go to the **Security Settings** page.  
 [ Go to **Settings** ](https://dash.cloudflare.com/?to=/:account/:zone/security/settings)
@@ -122,5 +122,6 @@ Warning
 JavaScript Detections is not supported with `nonce` set via `<meta>` tags.
 
 ```json
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/bots/get-started/bot-fight-mode/#page","headline":"Get started with Bot Fight Mode · Cloudflare bot solutions docs","description":"Turn on Bot Fight Mode to challenge requests matching bot patterns on Free plans.","url":"https://developers.cloudflare.com/bots/get-started/bot-fight-mode/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-30","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/bots/","name":"Bots"}},{"@type":"ListItem","position":3,"item":{"@id":"/bots/get-started/","name":"Get started with Cloudflare bot solutions"}},{"@type":"ListItem","position":4,"item":{"@id":"/bots/get-started/bot-fight-mode/","name":"Bot Fight Mode"}}]}
 ```

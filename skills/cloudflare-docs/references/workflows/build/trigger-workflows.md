@@ -37,8 +37,8 @@ New to Workflows? Start with the [Workflows tutorial](https://developers.cloudfl
 
 To bind to a Workflow from your Workers code, you need to define a [binding](https://developers.cloudflare.com/workers/wrangler/configuration/) to a specific Workflow. For example, to bind to the Workflow defined in the [get started guide](https://developers.cloudflare.com/workflows/get-started/guide/), you would configure the [Wrangler configuration file](https://developers.cloudflare.com/workers/wrangler/configuration/) with the below:
 
-* [  wrangler.jsonc ](#tab-panel-12891)
-* [  wrangler.toml ](#tab-panel-12892)
+* [  wrangler.jsonc ](#tab-panel-13037)
+* [  wrangler.toml ](#tab-panel-13038)
 
 JSONC
 
@@ -54,7 +54,7 @@ JSONC
 
   // Set this to today's date
 
-  "compatibility_date": "2026-06-15",
+  "compatibility_date": "2026-06-17",
 
   "workflows": [
 
@@ -97,7 +97,7 @@ main = "src/index.ts"
 
 # Set this to today's date
 
-compatibility_date = "2026-06-15"
+compatibility_date = "2026-06-17"
 
 
 [[workflows]]
@@ -117,8 +117,8 @@ The `binding = "MY_WORKFLOW"` line defines the JavaScript variable that our Work
 
 If you want to create Workflow instances on a recurring interval, add a `schedules` array (up to 100 cron expressions per account) to the Workflow binding in your Wrangler configuration:
 
-* [  wrangler.jsonc ](#tab-panel-12893)
-* [  wrangler.toml ](#tab-panel-12894)
+* [  wrangler.jsonc ](#tab-panel-13039)
+* [  wrangler.toml ](#tab-panel-13040)
 
 JSONC
 
@@ -134,7 +134,7 @@ JSONC
 
   // Set this to today's date
 
-  "compatibility_date": "2026-06-15",
+  "compatibility_date": "2026-06-17",
 
   "workflows": [
 
@@ -169,7 +169,7 @@ main = "src/index.ts"
 
 # Set this to today's date
 
-compatibility_date = "2026-06-15"
+compatibility_date = "2026-06-17"
 
 
 [[workflows]]
@@ -430,8 +430,8 @@ To restart an instance from a specific step instead of the beginning, refer to [
 
 You can create a new Workflow instance from within a step of another Workflow. The parent Workflow will not block waiting for the child Workflow to complete — it continues execution immediately after the child instance is successfully created.
 
-* [  JavaScript ](#tab-panel-12895)
-* [  TypeScript ](#tab-panel-12896)
+* [  JavaScript ](#tab-panel-13041)
+* [  TypeScript ](#tab-panel-13042)
 
 JavaScript
 
@@ -546,5 +546,6 @@ Refer to the [Workflows REST API documentation](https://developers.cloudflare.co
 Refer to the [CLI quick start](https://developers.cloudflare.com/workflows/get-started/guide/) to learn more about how to manage and trigger Workflows via the command-line.
 
 ```json
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workflows/build/trigger-workflows/#page","headline":"Trigger Workflows · Cloudflare Workflows docs","description":"Trigger Workflows from Workers bindings, the REST API, or the Wrangler CLI.","url":"https://developers.cloudflare.com/workflows/build/trigger-workflows/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-06-15","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Bindings"]}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/workflows/","name":"Workflows"}},{"@type":"ListItem","position":3,"item":{"@id":"/workflows/build/","name":"Build with Workflows"}},{"@type":"ListItem","position":4,"item":{"@id":"/workflows/build/trigger-workflows/","name":"Trigger Workflows"}}]}
 ```

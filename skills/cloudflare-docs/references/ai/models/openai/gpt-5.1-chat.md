@@ -6846,5 +6846,6 @@ Input [ ](https://developers.cloudflare.com/ai/models/openai/gpt-5.1-chat/schema
 Output [ ](https://developers.cloudflare.com/ai/models/openai/gpt-5.1-chat/schema-output.json "Open") [ ](https://developers.cloudflare.com/ai/models/openai/gpt-5.1-chat/schema-output.json "Download") 
 
 ```json
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai/models/openai/gpt-5.1-chat/#page","headline":"GPT-5.1 Chat (OpenAI) · Cloudflare AI docs · Cloudflare AI docs","description":"GPT-5.1 Chat is the chat-tuned variant of GPT-5.1, optimised for back-and-forth conversation and instruction following.","url":"https://developers.cloudflare.com/ai/models/openai/gpt-5.1-chat/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/ai/","name":"AI"}},{"@type":"ListItem","position":3,"item":{"@id":"/ai/models/","name":"Models"}}]}
 ```

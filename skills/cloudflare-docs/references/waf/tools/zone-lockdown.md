@@ -38,9 +38,9 @@ The number of available zone lockdown rules depends on your Cloudflare plan.
 
 ## Create a zone lockdown rule
 
-* [  New dashboard ](#tab-panel-10099)
-* [ Old dashboard ](#tab-panel-10100)
-* [ API ](#tab-panel-10101)
+* [  New dashboard ](#tab-panel-11276)
+* [ Old dashboard ](#tab-panel-11277)
+* [ API ](#tab-panel-11278)
 
 Note
 
@@ -193,5 +193,6 @@ A visitor from an unauthorized IP will get the following error when there is a m
 * [Allow Health Checks to bypass Zone Lockdown](https://developers.cloudflare.com/health-checks/how-to/zone-lockdown/)
 
 ```json
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/waf/tools/zone-lockdown/#page","headline":"Zone Lockdown · Cloudflare Web Application Firewall (WAF) docs","description":"Restrict access to specific URLs by allowlisted IP addresses.","url":"https://developers.cloudflare.com/waf/tools/zone-lockdown/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/waf/","name":"WAF"}},{"@type":"ListItem","position":3,"item":{"@id":"/waf/tools/","name":"Additional tools"}},{"@type":"ListItem","position":4,"item":{"@id":"/waf/tools/zone-lockdown/","name":"Zone Lockdown"}}]}
 ```

@@ -28,8 +28,8 @@ With TLS decryption turned off, Gateway can only inspect and apply HTTP policies
 
 ## Enable TLS decryption
 
-* [ Dashboard ](#tab-panel-6498)
-* [ Terraform (v5) ](#tab-panel-6499)
+* [ Dashboard ](#tab-panel-9116)
+* [ Terraform (v5) ](#tab-panel-9117)
 
 1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** \> **Traffic policies** \> **Traffic settings**.
 2. In **Proxy and inspection**, turn on **Inspect HTTPS requests with TLS decryption**.
@@ -69,5 +69,6 @@ MDM deployments
 Many customers [deploy the Cloudflare One Client](https://developers.cloudflare.com/learning-paths/replace-vpn/connect-devices/) onto devices in production using an MDM tool like JAMF or Intune. Cloudflare has the ability to deploy a root certificate along with the device, but this could be more consistently and holistically configured within the MDM, where other certificates are presumably managed, trusted, and stored.
 
 ```json
+{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/learning-paths/replace-vpn/configure-device-agent/enable-tls-decryption/#page","headline":"Enable TLS decryption (optional) · Cloudflare Learning Paths","description":"Inspect encrypted traffic with TLS decryption.","url":"https://developers.cloudflare.com/learning-paths/replace-vpn/configure-device-agent/enable-tls-decryption/","inLanguage":"en","image":"https://developers.cloudflare.com/cf-twitter-card.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/learning-paths/","name":"Learning Paths"}},{"@type":"ListItem","position":3,"item":{"@id":"/learning-paths/replace-vpn/configure-device-agent/","name":"Configure the device agent"}},{"@type":"ListItem","position":4,"item":{"@id":"/learning-paths/replace-vpn/configure-device-agent/enable-tls-decryption/","name":"Enable TLS decryption (optional)"}}]}
 ```

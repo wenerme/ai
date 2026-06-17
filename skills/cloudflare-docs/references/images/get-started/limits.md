@@ -57,6 +57,10 @@ When serving animations, we recommend using video formats like MP4 and WebM for 
 
 To optimize remote videos, you can use [media transformations ↗](https://developers.cloudflare.com/stream/transform-videos/).
 
+### Limits for the Images binding
+
+When optimizing with the [Images binding](https://developers.cloudflare.com/images/optimization/binding/), the maximum input size for `.input()` is 20 MB.
+
 ## Supported formats
 
 ### Input formats
@@ -118,5 +122,6 @@ The `svg-hush` tool filters SVGs and removes potentially risky features, such as
 * **References to cross-origin resources.** We stop third parties from tracking who is viewing the image.
 
 ```json
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/images/get-started/limits/#page","headline":"Limits and formats · Cloudflare Images docs","description":"Supported file formats, size limits, and dimension constraints for Cloudflare Images.","url":"https://developers.cloudflare.com/images/get-started/limits/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-06-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/images/","name":"Cloudflare Images"}},{"@type":"ListItem","position":3,"item":{"@id":"/images/get-started/","name":"Get started"}},{"@type":"ListItem","position":4,"item":{"@id":"/images/get-started/limits/","name":"Limits and formats"}}]}
 ```

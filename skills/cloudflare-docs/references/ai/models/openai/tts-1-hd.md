@@ -417,5 +417,6 @@ Input [ ](https://developers.cloudflare.com/ai/models/openai/tts-1-hd/schema-inp
 Output [ ](https://developers.cloudflare.com/ai/models/openai/tts-1-hd/schema-output.json "Open") [ ](https://developers.cloudflare.com/ai/models/openai/tts-1-hd/schema-output.json "Download") 
 
 ```json
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai/models/openai/tts-1-hd/#page","headline":"TTS-1 HD (OpenAI) · Cloudflare AI docs · Cloudflare AI docs","description":"OpenAI's high-definition text-to-speech model producing higher quality audio output.","url":"https://developers.cloudflare.com/ai/models/openai/tts-1-hd/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/ai/","name":"AI"}},{"@type":"ListItem","position":3,"item":{"@id":"/ai/models/","name":"Models"}}]}
 ```

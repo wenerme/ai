@@ -41,5 +41,6 @@ Free customers have RUM enabled automatically, with EU traffic excluded, and can
 [ Run test ](https://developers.cloudflare.com/speed/observatory/run-speed-test/) 
 
 ```json
+{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/speed/observatory/#page","headline":"Observatory (beta) · Cloudflare Speed docs","description":"Test and monitor your website performance with Cloudflare Observatory.","url":"https://developers.cloudflare.com/speed/observatory/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-06-15","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/speed/","name":"Speed"}},{"@type":"ListItem","position":3,"item":{"@id":"/speed/observatory/","name":"Observatory (beta)"}}]}
 ```

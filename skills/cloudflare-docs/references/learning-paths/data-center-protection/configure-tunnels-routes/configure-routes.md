@@ -28,8 +28,8 @@ Cloudflare uses anycast to route traffic. Anycast is a network addressing and ro
 
 ### Create a static route
 
-* [ Dashboard ](#tab-panel-6425)
-* [ API ](#tab-panel-6426)
+* [ Dashboard ](#tab-panel-9045)
+* [ API ](#tab-panel-9046)
 
 1. Go to **Routes** page.
 [ Go to **Routes** ](https://dash.cloudflare.com/?to=/:account/magic-networks/routes)
@@ -182,8 +182,8 @@ curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/magic/routes" \
 
 ### Edit a static route
 
-* [ Dashboard ](#tab-panel-6427)
-* [ API ](#tab-panel-6428)
+* [ Dashboard ](#tab-panel-9047)
+* [ API ](#tab-panel-9048)
 
 1. From the **Routes** tab, locate the route to modify.
 2. Select the three dots next to it > **Edit**.
@@ -325,8 +325,8 @@ curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/magic/routes/$RO
 
 ### Delete static route
 
-* [ Dashboard ](#tab-panel-6423)
-* [ API ](#tab-panel-6424)
+* [ Dashboard ](#tab-panel-9043)
+* [ API ](#tab-panel-9044)
 
 1. From the **Routes** tab, locate the static route to delete.
 2. Select the three dots next to it > **Delete**.
@@ -524,5 +524,6 @@ MD5 authentication is not a valid security mechanism. The MD5 key is not treated
 When MD5 is enabled, you cannot use Telnet to test BGP connectivity (Telnet does not support TCP MD5 authentication).
 
 ```json
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/learning-paths/data-center-protection/configure-tunnels-routes/configure-routes/#page","headline":"Configure routes · Cloudflare Learning Paths","description":"Set up Magic Transit static routes.","url":"https://developers.cloudflare.com/learning-paths/data-center-protection/configure-tunnels-routes/configure-routes/","inLanguage":"en","image":"https://developers.cloudflare.com/cf-twitter-card.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/learning-paths/","name":"Learning Paths"}},{"@type":"ListItem","position":3,"item":{"@id":"/learning-paths/data-center-protection/configure-tunnels-routes/","name":"Configure tunnels and routes"}},{"@type":"ListItem","position":4,"item":{"@id":"/learning-paths/data-center-protection/configure-tunnels-routes/configure-routes/","name":"Configure routes"}}]}
 ```

@@ -22,10 +22,10 @@ If you want to get started quickly, click on the button below.
 
 This creates a repository in your GitHub account and deploys the application to Cloudflare Workers.
 
-* [  JavaScript ](#tab-panel-10477)
-* [  TypeScript ](#tab-panel-10478)
-* [  Python ](#tab-panel-10479)
-* [  Hono ](#tab-panel-10480)
+* [  JavaScript ](#tab-panel-11656)
+* [  TypeScript ](#tab-panel-11657)
+* [  Python ](#tab-panel-11658)
+* [  Hono ](#tab-panel-11659)
 
 JavaScript
 
@@ -385,5 +385,6 @@ export default app;
 ```
 
 ```json
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/examples/debugging-logs/#page","headline":"Debugging logs · Cloudflare Workers docs","description":"Send debugging information in an errored response to a logging service.","url":"https://developers.cloudflare.com/workers/examples/debugging-logs/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Debugging","JavaScript","TypeScript","Python"]}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/workers/","name":"Workers"}},{"@type":"ListItem","position":3,"item":{"@id":"/workers/examples/","name":"Examples"}},{"@type":"ListItem","position":4,"item":{"@id":"/workers/examples/debugging-logs/","name":"Debugging logs"}}]}
 ```

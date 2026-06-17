@@ -143,5 +143,6 @@ If a jurisdiction is configured, read replicas are only created within the juris
 Refer to [D1 read replication](https://developers.cloudflare.com/d1/best-practices/read-replication/) for more information.
 
 ```json
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/d1/configuration/data-location/#page","headline":"Data location · Cloudflare D1 docs","description":"Control where D1 stores your data by setting location hints or jurisdiction constraints.","url":"https://developers.cloudflare.com/d1/configuration/data-location/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/d1/","name":"D1"}},{"@type":"ListItem","position":3,"item":{"@id":"/d1/configuration/","name":"Configuration"}},{"@type":"ListItem","position":4,"item":{"@id":"/d1/configuration/data-location/","name":"Data location"}}]}
 ```

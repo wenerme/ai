@@ -59,8 +59,8 @@ When automatic configuration runs, the following files may be created or modifie
 
 A new Wrangler configuration file is created with settings appropriate for your framework:
 
-* [  wrangler.jsonc ](#tab-panel-10603)
-* [  wrangler.toml ](#tab-panel-10604)
+* [  wrangler.jsonc ](#tab-panel-11782)
+* [  wrangler.toml ](#tab-panel-11783)
 
 JSONC
 
@@ -76,7 +76,7 @@ JSONC
 
   // Set this to today's date
 
-  "compatibility_date": "2026-05-28",
+  "compatibility_date": "2026-06-17",
 
   "compatibility_flags": ["nodejs_compat"],
 
@@ -111,7 +111,7 @@ main = "dist/_worker.js/index.js"
 
 # Set this to today's date
 
-compatibility_date = "2026-05-28"
+compatibility_date = "2026-06-17"
 
 compatibility_flags = [ "nodejs_compat" ]
 
@@ -313,5 +313,6 @@ Support for monorepos and npm/yarn/pnpm workspaces is currently limited. Wrangle
 If you encounter issues, report them in the [Wrangler GitHub repository ↗](https://github.com/cloudflare/workers-sdk/issues/new/choose).
 
 ```json
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/framework-guides/automatic-configuration/#page","headline":"Deploy an existing project · Cloudflare Workers docs","description":"Learn how Wrangler automatically detects and configures your project for Cloudflare Workers.","url":"https://developers.cloudflare.com/workers/framework-guides/automatic-configuration/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/workers/","name":"Workers"}},{"@type":"ListItem","position":3,"item":{"@id":"/workers/framework-guides/","name":"Framework guides"}},{"@type":"ListItem","position":4,"item":{"@id":"/workers/framework-guides/automatic-configuration/","name":"Deploy an existing project"}}]}
 ```

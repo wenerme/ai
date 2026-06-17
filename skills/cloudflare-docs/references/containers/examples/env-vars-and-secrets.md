@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 # Env Vars and Secrets
 
-**Last reviewed:**  10 months ago 
+**Last reviewed:**  12 months ago 
 
 Pass in environment variables and secrets to your container
 
@@ -115,8 +115,8 @@ For full details on how to create secrets, see the [Workers Secrets documentatio
 
 Next, we need to add bindings to access our secrets, KV values, and environment variables in Wrangler configuration.
 
-* [  wrangler.jsonc ](#tab-panel-5322)
-* [  wrangler.toml ](#tab-panel-5323)
+* [  wrangler.jsonc ](#tab-panel-7834)
+* [  wrangler.toml ](#tab-panel-7835)
 
 JSONC
 
@@ -445,5 +445,6 @@ export default {
 Finally, you can also set build-time environment variables that are only available when building the container image via the `image_vars` field in the Wrangler configuration.
 
 ```json
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/containers/examples/env-vars-and-secrets/#page","headline":"Env Vars and Secrets · Cloudflare Containers docs","description":"Pass in environment variables and secrets to your container","url":"https://developers.cloudflare.com/containers/examples/env-vars-and-secrets/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/containers/","name":"Containers"}},{"@type":"ListItem","position":3,"item":{"@id":"/containers/examples/","name":"Examples"}},{"@type":"ListItem","position":4,"item":{"@id":"/containers/examples/env-vars-and-secrets/","name":"Env Vars and Secrets"}}]}
 ```

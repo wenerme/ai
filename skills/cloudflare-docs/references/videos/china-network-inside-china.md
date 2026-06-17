@@ -89,3 +89,7 @@ Watch our video on China Express to learn more.
 Thus, the China network solutions sound like something that will help you reach out to our
 
 sales team to learn more.
+
+```json
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/videos/china-network-inside-china/#page","headline":"China network - How to speed up your web traffic inside mainland China | Cloudflare Docs","description":"In this video, Jess Liu walks us through the main features of Cloudflares China Network. They cover how the China Network works, including integrated caching, in-country China name servers, and compliance with ICP regulations. They also briefly discuss Cloudflare's CDN Global Acceleration (formerly China Express), an option for accelerating dynamic content that cannot be cached.","url":"https://developers.cloudflare.com/videos/china-network-inside-china/","inLanguage":"en","image":"https://developers.cloudflare.com/cf-twitter-card.png","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+```

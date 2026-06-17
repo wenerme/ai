@@ -40,6 +40,7 @@ Each workspace has independent settings for:
 * **Plugins** — Configure default plugin behavior for API requests in each workspace.
 * **Observability** — Connect different observability integrations per workspace, or send traces from all workspaces to the same platform.
 * **Members** — Control which team members have access to each workspace.
+* **[Budgets](/docs/guides/features/workspaces/workspace-budgets)** — Set daily, weekly, monthly, or lifetime spending limits per workspace.
 
 Account-level settings like billing, activity, logs, management keys, and privacy policies apply globally across all workspaces.
 

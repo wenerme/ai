@@ -58,8 +58,8 @@ postgres://USERNAME:PASSWORD@HOSTNAME_OR_IP_ADDRESS:PORT/database_name
 
 Most database providers will provide a connection string you can directly copy-and-paste directly into Hyperdrive.
 
-* [ Dashboard ](#tab-panel-10360)
-* [ Wrangler CLI ](#tab-panel-10361)
+* [ Dashboard ](#tab-panel-11537)
+* [ Wrangler CLI ](#tab-panel-11538)
 
 To create a Hyperdrive configuration with the Cloudflare dashboard:
 
@@ -77,8 +77,8 @@ Terminal window
 npx wrangler hyperdrive create <NAME_OF_HYPERDRIVE_CONFIG> --connection-string="postgres://user:password@HOSTNAME_OR_IP_ADDRESS:PORT/database_name"  
 ```
 2. This command outputs a binding for the [Wrangler configuration file](https://developers.cloudflare.com/workers/wrangler/configuration/):  
-   * [  wrangler.jsonc ](#tab-panel-10358)  
-   * [  wrangler.toml ](#tab-panel-10359)  
+   * [  wrangler.jsonc ](#tab-panel-11535)  
+   * [  wrangler.toml ](#tab-panel-11536)  
 JSONC  
 ```  
 {  
@@ -86,7 +86,7 @@ JSONC
   "name": "hyperdrive-example",  
   "main": "src/index.ts",  
   // Set this to today's date  
-  "compatibility_date": "2026-05-28",  
+  "compatibility_date": "2026-06-17",  
   "compatibility_flags": [  
     "nodejs_compat"  
   ],  
@@ -105,7 +105,7 @@ TOML
 name = "hyperdrive-example"  
 main = "src/index.ts"  
 # Set this to today's date  
-compatibility_date = "2026-05-28"  
+compatibility_date = "2026-06-17"  
 compatibility_flags = [ "nodejs_compat" ]  
 [[hyperdrive]]  
 binding = "HYPERDRIVE"  
@@ -164,8 +164,8 @@ bun add -d @types/pg
 
 Add the required Node.js compatibility flags and Hyperdrive binding to your `wrangler.jsonc` file:
 
-* [  wrangler.jsonc ](#tab-panel-10362)
-* [  wrangler.toml ](#tab-panel-10363)
+* [  wrangler.jsonc ](#tab-panel-11539)
+* [  wrangler.toml ](#tab-panel-11540)
 
 JSONC
 
@@ -183,7 +183,7 @@ JSONC
 
   // Set this to today's date
 
-  "compatibility_date": "2026-05-28",
+  "compatibility_date": "2026-06-17",
 
   "hyperdrive": [
 
@@ -210,7 +210,7 @@ compatibility_flags = [ "nodejs_compat" ]
 
 # Set this to today's date
 
-compatibility_date = "2026-05-28"
+compatibility_date = "2026-06-17"
 
 
 [[hyperdrive]]
@@ -299,5 +299,6 @@ export default {
 * Understand more about other [storage options](https://developers.cloudflare.com/workers/platform/storage-options/) available to Cloudflare Workers.
 
 ```json
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/databases/third-party-integrations/xata/#page","headline":"Xata · Cloudflare Workers docs","description":"Connect Cloudflare Workers to a Xata PostgreSQL database using Hyperdrive.","url":"https://developers.cloudflare.com/workers/databases/third-party-integrations/xata/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/workers/","name":"Workers"}},{"@type":"ListItem","position":3,"item":{"@id":"/workers/databases/","name":"Databases"}},{"@type":"ListItem","position":4,"item":{"@id":"/workers/databases/third-party-integrations/","name":"3rd Party Integrations"}},{"@type":"ListItem","position":5,"item":{"@id":"/workers/databases/third-party-integrations/xata/","name":"Xata"}}]}
 ```

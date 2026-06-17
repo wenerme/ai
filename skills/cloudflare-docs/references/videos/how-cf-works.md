@@ -13,3 +13,7 @@ image: https://developers.cloudflare.com/cf-twitter-card.png
 # Understand how Cloudflare works
 
 Learn how Cloudflare makes the Internet safer, faster, and more reliable for everyone through the connectivity cloud.
+
+```json
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/videos/how-cf-works/#page","headline":"Understand how Cloudflare works | Cloudflare Docs","description":"Learn how Cloudflare makes the Internet safer, faster, and more reliable for everyone through the connectivity cloud.","url":"https://developers.cloudflare.com/videos/how-cf-works/","inLanguage":"en","image":"https://developers.cloudflare.com/cf-twitter-card.png","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+```

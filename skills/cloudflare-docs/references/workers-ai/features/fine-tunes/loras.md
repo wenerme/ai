@@ -239,8 +239,8 @@ curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/ai/finetunes" \
 
 To make inference requests and apply the LoRA adapter, you will need your model and finetune `name` or `id`. You should use the chat template that your LoRA was trained on, but you can try running it with `raw: true` and the messages template like below.
 
-* [ workers ai sdk ](#tab-panel-10116)
-* [ rest api ](#tab-panel-10117)
+* [ workers ai sdk ](#tab-panel-11293)
+* [ rest api ](#tab-panel-11294)
 
 JavaScript
 
@@ -287,5 +287,6 @@ curl https://api.cloudflare.com/client/v4/accounts/{ACCOUNT_ID}/ai/run/@cf/mistr
 ```
 
 ```json
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers-ai/features/fine-tunes/loras/#page","headline":"Fine-tuned inference with LoRA adapters · Cloudflare Workers AI docs","description":"Upload and use LoRA adapters to get fine-tuned inference on Workers AI.","url":"https://developers.cloudflare.com/workers-ai/features/fine-tunes/loras/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/workers-ai/","name":"Workers AI"}},{"@type":"ListItem","position":3,"item":{"@id":"/workers-ai/features/","name":"Features"}},{"@type":"ListItem","position":4,"item":{"@id":"/workers-ai/features/fine-tunes/","name":"Fine-tunes"}},{"@type":"ListItem","position":5,"item":{"@id":"/workers-ai/features/fine-tunes/loras/","name":"Using LoRA adapters"}}]}
 ```

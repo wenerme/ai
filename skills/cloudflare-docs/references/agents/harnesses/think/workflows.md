@@ -38,8 +38,8 @@ import { ThinkWorkflow } from "@cloudflare/think/workflows";
 
 Extend `ThinkWorkflow` and call `step.prompt()` inside `run()`:
 
-* [  JavaScript ](#tab-panel-5086)
-* [  TypeScript ](#tab-panel-5087)
+* [  JavaScript ](#tab-panel-5693)
+* [  TypeScript ](#tab-panel-5694)
 
 JavaScript
 
@@ -143,8 +143,8 @@ export class TriageWorkflow extends ThinkWorkflow<TriageAgent, Params> {
 
 Start the Workflow from inside your Think Agent with `runWorkflow()`:
 
-* [  JavaScript ](#tab-panel-5084)
-* [  TypeScript ](#tab-panel-5085)
+* [  JavaScript ](#tab-panel-5691)
+* [  TypeScript ](#tab-panel-5692)
 
 JavaScript
 
@@ -226,9 +226,16 @@ await this.sendWorkflowEvent("TRIAGE_WORKFLOW", workflowId, {
 
 ```
 
-`step.prompt()` accepts a prompt string and a Zod object schema. The schema is converted to JSON Schema before the Workflow calls the Agent, then Think reconstructs the AI SDK structured output configuration for the turn. When the Workflow resumes, the payload is validated again with the original Zod schema before the typed value is returned.
+`step.prompt()` accepts a prompt string and a Zod object schema. The schema is converted to JSON Schema before the Workflow calls the Agent. Think then runs a full agentic turn: the Agent may use its tools across multiple steps and returns the structured result by calling an internal `final_answer` tool whose arguments match the schema. This uses ordinary tool calling rather than a streaming `response_format`, so it works across every provider Think supports — including Workers AI, which rejects JSON Schema responses on streaming requests. When the Workflow resumes, the payload is validated again with the original Zod schema before the typed value is returned.
 
-Unsupported Zod features that cannot be represented as JSON Schema fail while creating the prompt step. Think does not silently repair invalid model output. If the model or provider cannot produce valid output, the submission reaches a terminal error state and `step.prompt()` throws.
+Unsupported Zod features that cannot be represented as JSON Schema fail while creating the prompt step. Think does not silently repair invalid model output. If the model does not produce a valid `final_answer` call, the submission reaches a terminal error state and `step.prompt()` throws.
+
+### Behavior notes
+
+* **The Agent may use its tools first.** A `step.prompt()` turn is a full agentic turn: the Agent can call its own tools across multiple steps and then call the final-answer tool. Allow at least `maxSteps: 2` if you expect the Agent to use a tool before answering — with `maxSteps: 1` it is forced to answer on the first step and cannot call any other tool.
+* **Tool use is forced during a structured turn.** To guarantee the Agent terminates with a structured answer (rather than replying in plain text), Think sets `toolChoice` for the turn. Do not override `toolChoice` from `beforeTurn` on a `step.prompt()` turn — doing so can prevent the Agent from calling the final-answer tool, which makes the prompt fail.
+* **`think_final_answer` is reserved.** Think injects an internal `think_final_answer` tool to carry the structured result. This name (and any `think_final_answer_*` variant) is reserved; its call and result are stripped from the persisted conversation, so the transcript and later turns do not see Think's internal plumbing.
+* **The model must support streaming tool calls.** Think streams every turn, so `step.prompt()` works only with models that reliably emit a forced tool call while streaming. Strong tool-callers (for example OpenAI `gpt-4o-mini`, Anthropic `claude-haiku-4-5`, and Workers AI `@cf/moonshotai/kimi-k2.6`) are verified to work. Some models honor a forced `toolChoice` only on non-streaming requests and will reply in plain text and stop while streaming — for example Workers AI `@cf/meta/llama-3.3-70b-instruct-fp8-fast`. With those models the turn ends without a `think_final_answer` call and `step.prompt()` fails (`Model ended the turn without calling the think_final_answer tool`); use a model with working streaming tool calls instead.
 
 ## How it runs
 
@@ -339,5 +346,6 @@ Use [startFiber()](https://developers.cloudflare.com/agents/runtime/execution/du
 Use Workflows when the process has multiple deterministic steps, long waits, or human approval.
 
 ```json
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/agents/harnesses/think/workflows/#page","headline":"Workflows · Cloudflare Agents docs","description":"Run a durable model-driven reasoning step inside a Cloudflare Workflow with ThinkWorkflow and step.prompt(), including structured output and timeouts.","url":"https://developers.cloudflare.com/agents/harnesses/think/workflows/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-06-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/agents/","name":"Agents"}},{"@type":"ListItem","position":3,"item":{"@id":"/agents/harnesses/","name":"Harnesses"}},{"@type":"ListItem","position":4,"item":{"@id":"/agents/harnesses/think/","name":"Think"}},{"@type":"ListItem","position":5,"item":{"@id":"/agents/harnesses/think/workflows/","name":"Workflows"}}]}
 ```

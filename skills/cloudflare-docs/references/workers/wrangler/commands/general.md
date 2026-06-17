@@ -18,9 +18,9 @@ General Wrangler commands for authentication, telemetry, and shell completions.
 
 Open the Cloudflare developer documentation in your default browser.
 
-* [  npm ](#tab-panel-10183)
-* [  pnpm ](#tab-panel-10184)
-* [  yarn ](#tab-panel-10185)
+* [  npm ](#tab-panel-12331)
+* [  pnpm ](#tab-panel-12332)
+* [  yarn ](#tab-panel-12333)
 
 Terminal window
 
@@ -292,9 +292,9 @@ The following global flags work on every command:
 
 🕵️ Retrieve your user information
 
-* [  npm ](#tab-panel-10186)
-* [  pnpm ](#tab-panel-10187)
-* [  yarn ](#tab-panel-10188)
+* [  npm ](#tab-panel-12334)
+* [  pnpm ](#tab-panel-12335)
+* [  yarn ](#tab-panel-12336)
 
 Terminal window
 
@@ -419,10 +419,10 @@ wrangler complete <SHELL>
 
 Generate and add the completion script to your shell configuration file:
 
-* [ Bash ](#tab-panel-10179)
-* [ Zsh ](#tab-panel-10180)
-* [ Fish ](#tab-panel-10181)
-* [ PowerShell ](#tab-panel-10182)
+* [ Bash ](#tab-panel-12327)
+* [ Zsh ](#tab-panel-12328)
+* [ Fish ](#tab-panel-12329)
+* [ PowerShell ](#tab-panel-12330)
 
 Terminal window
 
@@ -493,5 +493,6 @@ The following global flags work on every command:
    * Run as if Wrangler was started in the specified directory instead of the current working directory.
 
 ```json
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/wrangler/commands/general/#page","headline":"General commands · Cloudflare Workers docs","description":"General Wrangler commands for authentication, telemetry, and shell completions.","url":"https://developers.cloudflare.com/workers/wrangler/commands/general/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/workers/","name":"Workers"}},{"@type":"ListItem","position":3,"item":{"@id":"/workers/wrangler/","name":"Wrangler"}},{"@type":"ListItem","position":4,"item":{"@id":"/workers/wrangler/commands/","name":"Commands"}},{"@type":"ListItem","position":5,"item":{"@id":"/workers/wrangler/commands/general/","name":"General commands"}}]}
 ```

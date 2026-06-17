@@ -85,5 +85,6 @@ wrangler vectorize list-vectors my-index --count=1000 --cursor="<cursor-from-res
 ```
 
 ```json
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/vectorize/best-practices/list-vectors/#page","headline":"List vectors · Cloudflare Vectorize docs","description":"Enumerate vector identifiers in a Vectorize index using paginated list operations.","url":"https://developers.cloudflare.com/vectorize/best-practices/list-vectors/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/vectorize/","name":"Vectorize"}},{"@type":"ListItem","position":3,"item":{"@id":"/vectorize/best-practices/","name":"Best practices"}},{"@type":"ListItem","position":4,"item":{"@id":"/vectorize/best-practices/list-vectors/","name":"List vectors"}}]}
 ```

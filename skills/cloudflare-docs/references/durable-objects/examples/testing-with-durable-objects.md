@@ -22,9 +22,9 @@ Use the [@cloudflare/vitest-pool-workers ↗](https://www.npmjs.com/package/@clo
 
 Install Vitest and the Workers Vitest integration as dev dependencies:
 
-* [ npm ](#tab-panel-6287)
-* [ pnpm ](#tab-panel-6288)
-* [ yarn ](#tab-panel-6289)
+* [ npm ](#tab-panel-8332)
+* [ pnpm ](#tab-panel-8333)
+* [ yarn ](#tab-panel-8334)
 
 Terminal window
 
@@ -57,8 +57,8 @@ yarn add -D vitest@^4.1.0 @cloudflare/vitest-pool-workers
 
 This example tests a simple counter Durable Object with SQLite storage:
 
-* [  JavaScript ](#tab-panel-6302)
-* [  TypeScript ](#tab-panel-6303)
+* [  JavaScript ](#tab-panel-8347)
+* [  TypeScript ](#tab-panel-8348)
 
 src/index.js
 
@@ -323,8 +323,8 @@ export default defineConfig({
 
 Make sure your Wrangler configuration includes the Durable Object binding and SQLite migration:
 
-* [  wrangler.jsonc ](#tab-panel-6290)
-* [  wrangler.toml ](#tab-panel-6291)
+* [  wrangler.jsonc ](#tab-panel-8335)
+* [  wrangler.toml ](#tab-panel-8336)
 
 JSONC
 
@@ -338,7 +338,7 @@ JSONC
 
   // Set this to today's date
 
-  "compatibility_date": "2026-05-27",
+  "compatibility_date": "2026-06-17",
 
   "durable_objects": {
 
@@ -371,7 +371,7 @@ main = "src/index.ts"
 
 # Set this to today's date
 
-compatibility_date = "2026-05-27"
+compatibility_date = "2026-06-17"
 
 
 [[durable_objects.bindings]]
@@ -438,8 +438,8 @@ declare module "cloudflare:workers" {
 
 You can get a stub to a Durable Object directly from the `env` object provided by `cloudflare:workers`:
 
-* [  JavaScript ](#tab-panel-6300)
-* [  TypeScript ](#tab-panel-6301)
+* [  JavaScript ](#tab-panel-8345)
+* [  TypeScript ](#tab-panel-8346)
 
 test/counter.test.js
 
@@ -649,8 +649,8 @@ describe("Counter Durable Object", () => {
 
 Use `exports.default.fetch()` to test your Worker's HTTP handler, which routes requests to Durable Objects:
 
-* [  JavaScript ](#tab-panel-6304)
-* [  TypeScript ](#tab-panel-6305)
+* [  JavaScript ](#tab-panel-8349)
+* [  TypeScript ](#tab-panel-8350)
 
 test/integration.test.js
 
@@ -852,8 +852,8 @@ describe("Counter Worker integration", () => {
 
 Use `runInDurableObject()` to access instance properties and storage directly. This is useful for verifying internal state or testing private methods:
 
-* [  JavaScript ](#tab-panel-6298)
-* [  TypeScript ](#tab-panel-6299)
+* [  JavaScript ](#tab-panel-8343)
+* [  TypeScript ](#tab-panel-8344)
 
 test/direct-access.test.js
 
@@ -1039,8 +1039,8 @@ describe("Direct Durable Object access", () => {
 
 SQLite-backed Durable Objects work seamlessly in tests. The SQL API is available when your Durable Object class is configured with `new_sqlite_classes` in your Wrangler configuration:
 
-* [  JavaScript ](#tab-panel-6294)
-* [  TypeScript ](#tab-panel-6295)
+* [  JavaScript ](#tab-panel-8339)
+* [  TypeScript ](#tab-panel-8340)
 
 test/sqlite.test.js
 
@@ -1174,8 +1174,8 @@ describe("SQLite in Durable Objects", () => {
 
 Use `runDurableObjectAlarm()` to immediately trigger a scheduled alarm without waiting for the timer. This allows you to test alarm handlers synchronously:
 
-* [  JavaScript ](#tab-panel-6296)
-* [  TypeScript ](#tab-panel-6297)
+* [  JavaScript ](#tab-panel-8341)
+* [  TypeScript ](#tab-panel-8342)
 
 test/alarm.test.js
 
@@ -1319,8 +1319,8 @@ describe("Durable Object alarms", () => {
 
 To test alarms, add an `alarm()` method to your Durable Object:
 
-* [  JavaScript ](#tab-panel-6292)
-* [  TypeScript ](#tab-panel-6293)
+* [  JavaScript ](#tab-panel-8337)
+* [  TypeScript ](#tab-panel-8338)
 
 src/index.js
 
@@ -1427,5 +1427,6 @@ Or add a script to your `package.json`:
 * [RPC testing recipe ↗](https://github.com/cloudflare/workers-sdk/tree/main/fixtures/vitest-pool-workers-examples/rpc) \- Testing JSRPC with Durable Objects
 
 ```json
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/durable-objects/examples/testing-with-durable-objects/#page","headline":"Testing Durable Objects · Cloudflare Durable Objects docs","description":"Write tests for Durable Objects using the Workers Vitest integration.","url":"https://developers.cloudflare.com/durable-objects/examples/testing-with-durable-objects/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-05-27","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/durable-objects/","name":"Durable Objects"}},{"@type":"ListItem","position":3,"item":{"@id":"/durable-objects/examples/","name":"Examples"}},{"@type":"ListItem","position":4,"item":{"@id":"/durable-objects/examples/testing-with-durable-objects/","name":"Testing Durable Objects"}}]}
 ```

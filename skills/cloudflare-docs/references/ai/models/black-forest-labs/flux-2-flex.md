@@ -28,8 +28,8 @@ FLUX.2 \[flex\] is Black Forest Labs' fine-grained control variant of FLUX.2 —
 
 ## Usage
 
-* [ TypeScript ](#tab-panel-324)
-* [ cURL ](#tab-panel-325)
+* [ TypeScript ](#tab-panel-330)
+* [ cURL ](#tab-panel-331)
 
 TypeScript
 
@@ -79,8 +79,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 ```
 
-* [ Output ](#tab-panel-322)
-* [ Raw response ](#tab-panel-323)
+* [ Output ](#tab-panel-328)
+* [ Raw response ](#tab-panel-329)
 
 ![Typography & Design](https://examples.aig.cloudflare.com/black-forest-labs/flux-2-flex/typography-design.jpeg) 
 
@@ -111,8 +111,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 **High Detail Generation**  — Crank steps and guidance for maximum detail when latency is not the priority 
 
-* [ TypeScript ](#tab-panel-328)
-* [ cURL ](#tab-panel-329)
+* [ TypeScript ](#tab-panel-334)
+* [ cURL ](#tab-panel-335)
 
 TypeScript
 
@@ -168,8 +168,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 ```
 
-* [ Output ](#tab-panel-326)
-* [ Raw response ](#tab-panel-327)
+* [ Output ](#tab-panel-332)
+* [ Raw response ](#tab-panel-333)
 
 ![High Detail Generation](https://examples.aig.cloudflare.com/black-forest-labs/flux-2-flex/high-detail-generation.jpeg) 
 
@@ -198,8 +198,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 **Fast Draft**  — Fast draft with prompt upsampling disabled — preserves the literal prompt 
 
-* [ TypeScript ](#tab-panel-332)
-* [ cURL ](#tab-panel-333)
+* [ TypeScript ](#tab-panel-338)
+* [ cURL ](#tab-panel-339)
 
 TypeScript
 
@@ -247,8 +247,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 ```
 
-* [ Output ](#tab-panel-330)
-* [ Raw response ](#tab-panel-331)
+* [ Output ](#tab-panel-336)
+* [ Raw response ](#tab-panel-337)
 
 ![Fast Draft](https://examples.aig.cloudflare.com/black-forest-labs/flux-2-flex/fast-draft.jpeg) 
 
@@ -277,8 +277,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 ## Parameters
 
-* [ Input ](#tab-panel-334)
-* [ Output ](#tab-panel-335)
+* [ Input ](#tab-panel-340)
+* [ Output ](#tab-panel-341)
 
 guidance
 
@@ -331,5 +331,6 @@ Input [ ](https://developers.cloudflare.com/ai/models/black-forest-labs/flux-2-f
 Output [ ](https://developers.cloudflare.com/ai/models/black-forest-labs/flux-2-flex/schema-output.json "Open") [ ](https://developers.cloudflare.com/ai/models/black-forest-labs/flux-2-flex/schema-output.json "Download") 
 
 ```json
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai/models/black-forest-labs/flux-2-flex/#page","headline":"FLUX.2 [flex] (Black Forest Labs) · Cloudflare AI docs · Cloudflare AI docs","description":"FLUX.2 \\[flex] is Black Forest Labs' fine-grained control variant of FLUX.2 — exposes tunable inference steps, guidance, and prompt upsampling for typography-heavy and production workflows.","url":"https://developers.cloudflare.com/ai/models/black-forest-labs/flux-2-flex/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/ai/","name":"AI"}},{"@type":"ListItem","position":3,"item":{"@id":"/ai/models/","name":"Models"}}]}
 ```

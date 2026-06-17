@@ -200,7 +200,7 @@ spark.sql("""
 Apache Iceberg uses a layered metadata structure to manage table data efficiently. Here are the key components and file structure:
 
 * **metadata.json**: Top-level JSON file pointing to the current snapshot
-* **snapshot-**\*: Immutable table state for a given point in time
+* **snapshot-\***: Immutable table state for a given point in time
 * **manifest-list-\*.avro**: An Avro file listing all manifest files for a given snapshot
 * **manifest-file-\*.avro**: An Avro file tracking data files and their statistics
 * **data-\*.parquet**: Parquet files containing actual table data
@@ -289,5 +289,6 @@ R2 Data Catalog can automate [rewriting data files](https://developers.cloudflar
 1. Time travel available until `expire_snapshots` is called [↩](#user-content-fnref-1)
 
 ```json
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/r2/data-catalog/deleting-data/#page","headline":"Deleting data · Cloudflare R2 docs","description":"How to properly delete data from R2 Data Catalog","url":"https://developers.cloudflare.com/r2/data-catalog/deleting-data/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-05-12","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/r2/","name":"R2"}},{"@type":"ListItem","position":3,"item":{"@id":"/r2/data-catalog/","name":"R2 Data Catalog"}},{"@type":"ListItem","position":4,"item":{"@id":"/r2/data-catalog/deleting-data/","name":"Deleting data"}}]}
 ```

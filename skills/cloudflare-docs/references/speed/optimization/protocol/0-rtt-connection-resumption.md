@@ -30,8 +30,8 @@ For more information on 0-RTT, including its functionality and potential limitat
 
 By default, 0-RTT Connection Resumption is not enabled on your Cloudflare application.
 
-* [ Dashboard ](#tab-panel-10002)
-* [ API ](#tab-panel-10003)
+* [ Dashboard ](#tab-panel-10550)
+* [ API ](#tab-panel-10551)
 
 To enable 0-RTT Connection Resumption in the dashboard:
 
@@ -46,5 +46,6 @@ Note
 The 0-RTT Connection Resumption is only established between the client and Cloudflare. It does not extend to the origin server.
 
 ```json
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/speed/optimization/protocol/0-rtt-connection-resumption/#page","headline":"0-RTT Connection Resumption · Cloudflare Speed docs","description":"Resume TLS connections faster with zero round-trip time.","url":"https://developers.cloudflare.com/speed/optimization/protocol/0-rtt-connection-resumption/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/speed/","name":"Speed"}},{"@type":"ListItem","position":3,"item":{"@id":"/speed/optimization/","name":"Settings"}},{"@type":"ListItem","position":4,"item":{"@id":"/speed/optimization/protocol/","name":"Protocol optimization"}},{"@type":"ListItem","position":5,"item":{"@id":"/speed/optimization/protocol/0-rtt-connection-resumption/","name":"0-RTT Connection Resumption"}}]}
 ```

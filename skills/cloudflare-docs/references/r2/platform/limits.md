@@ -18,7 +18,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 | Number of objects per bucket                                                    | Unlimited                                                            |
 | Maximum number of buckets per account                                           | 1,000,000                                                            |
 | Maximum rate of bucket management operations per bucket [1](#user-content-fn-1) | 50 per second                                                        |
-| Number of custom domains per bucket                                             | 50                                                                   |
+| Number of custom domains per bucket                                             | 100                                                                  |
 | Object key length                                                               | 1,024 bytes                                                          |
 | Object metadata size                                                            | 8,192 bytes                                                          |
 | Object size                                                                     | 5 TiB per object [2](#user-content-fn-2)                             |
@@ -30,7 +30,7 @@ Limits specified in MiB (mebibyte), GiB (gibibyte), or TiB (tebibyte) are storag
 
 Need a higher limit?
 
-To request an adjustment to a limit, complete the [Limit Increase Request Form ↗](https://forms.gle/ukpeZVLWLnKeixDu7). If the limit can be increased, Cloudflare will contact you with next steps.
+To request an adjustment to a limit, complete the [Limit Increase Request Form ↗](https://forms.gle/eX6pXvit1wBv77Yw5). If the limit can be increased, Cloudflare will contact you with next steps.
 
 ## Rate limiting on managed public buckets through `r2.dev`
 
@@ -56,5 +56,6 @@ For high-throughput object operations, use the [S3-compatible API](https://devel
 5. Concurrent writes to the same object name (key) at a higher rate return HTTP 429 (rate limited) responses. [↩](#user-content-fnref-5)
 
 ```json
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/r2/platform/limits/#page","headline":"Limits · Cloudflare R2 docs","description":"Account, bucket, and object limits for Cloudflare R2 storage.","url":"https://developers.cloudflare.com/r2/platform/limits/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-06-08","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/r2/","name":"R2"}},{"@type":"ListItem","position":3,"item":{"@id":"/r2/platform/","name":"Platform"}},{"@type":"ListItem","position":4,"item":{"@id":"/r2/platform/limits/","name":"Limits"}}]}
 ```

@@ -21,8 +21,8 @@ The specific configuration steps can vary depending on your infrastructure and s
 1. [Create a tunnel](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/get-started/create-remote-tunnel/#1-create-a-tunnel) to connect your data center to Cloudflare.
 2. Create a [virtual network](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/private-net/cloudflared/tunnel-virtual-networks/) and assign it to the tunnel you configured in the previous step.
 
-* [ Dashboard ](#tab-panel-7179)
-* [ cli ](#tab-panel-7180)
+* [ Dashboard ](#tab-panel-9333)
+* [ cli ](#tab-panel-9334)
 
 To create a virtual network:
 
@@ -81,5 +81,6 @@ Spectrum limitations
 If you will use the load balancer with [Spectrum](https://developers.cloudflare.com/spectrum/), consider the applicable [limitations](https://developers.cloudflare.com/load-balancing/additional-options/spectrum/#limitations) on load balancing and monitoring options.
 
 ```json
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/load-balancing/private-network/public-to-tunnel/#page","headline":"Set up Private Network Load Balancing for Public traffic to Tunnel · Cloudflare Load Balancing docs","description":"Load balance public traffic to private origins via Tunnel.","url":"https://developers.cloudflare.com/load-balancing/private-network/public-to-tunnel/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-30","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Private networks"]}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/load-balancing/","name":"Load Balancing"}},{"@type":"ListItem","position":3,"item":{"@id":"/load-balancing/private-network/","name":"Private Network Load Balancing"}},{"@type":"ListItem","position":4,"item":{"@id":"/load-balancing/private-network/public-to-tunnel/","name":"Set up Private Network Load Balancing for Public traffic to Tunnel"}}]}
 ```

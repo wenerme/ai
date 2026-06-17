@@ -120,8 +120,8 @@ exec bun dist/index.js
 
 **Connect from your Worker:**
 
-* [  JavaScript ](#tab-panel-10266)
-* [  TypeScript ](#tab-panel-10267)
+* [  JavaScript ](#tab-panel-10507)
+* [  TypeScript ](#tab-panel-10508)
 
 JavaScript
 
@@ -207,8 +207,8 @@ ws.send('Hello!'); // Receives: "Echo: Hello!"
 
 Get a public URL for your WebSocket server:
 
-* [  JavaScript ](#tab-panel-10268)
-* [  TypeScript ](#tab-panel-10269)
+* [  JavaScript ](#tab-panel-10509)
+* [  TypeScript ](#tab-panel-10510)
 
 JavaScript
 
@@ -345,8 +345,8 @@ ws.send('Hello!'); // Receives: "Echo: Hello!"
 
 Your Worker can connect to a WebSocket service to get real-time data, even when the incoming request isn't a WebSocket:
 
-* [  JavaScript ](#tab-panel-10270)
-* [  TypeScript ](#tab-panel-10271)
+* [  JavaScript ](#tab-panel-10511)
+* [  TypeScript ](#tab-panel-10512)
 
 JavaScript
 
@@ -528,8 +528,8 @@ This pattern is useful when you need streaming data from sandbox services but wa
 
 Verify request has WebSocket headers:
 
-* [  JavaScript ](#tab-panel-10264)
-* [  TypeScript ](#tab-panel-10265)
+* [  JavaScript ](#tab-panel-10505)
+* [  TypeScript ](#tab-panel-10506)
 
 JavaScript
 
@@ -590,5 +590,6 @@ Port exposure in Dockerfile is only required for local development. In productio
 * [Background processes guide](https://developers.cloudflare.com/sandbox/guides/background-processes/) \- Managing long-running services
 
 ```json
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/sandbox/guides/websocket-connections/#page","headline":"WebSocket connections · Cloudflare Sandbox SDK docs","description":"Connect to WebSocket servers running in sandboxes.","url":"https://developers.cloudflare.com/sandbox/guides/websocket-connections/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-05-26","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/sandbox/","name":"Sandbox SDK"}},{"@type":"ListItem","position":3,"item":{"@id":"/sandbox/guides/","name":"How-to guides"}},{"@type":"ListItem","position":4,"item":{"@id":"/sandbox/guides/websocket-connections/","name":"WebSocket connections"}}]}
 ```

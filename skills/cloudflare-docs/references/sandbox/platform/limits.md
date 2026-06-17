@@ -37,8 +37,8 @@ When using the Sandbox SDK from Workers or Durable Objects, you are subject to [
 
 Enable WebSocket transport to multiplex all SDK calls over a single persistent connection:
 
-* [  wrangler.jsonc ](#tab-panel-10276)
-* [  wrangler.toml ](#tab-panel-10277)
+* [  wrangler.jsonc ](#tab-panel-10517)
+* [  wrangler.toml ](#tab-panel-10518)
 
 JSONC
 
@@ -86,5 +86,6 @@ To work within these limits:
 * **Use WebSocket transport for high-frequency operations** \- Enable `SANDBOX_TRANSPORT=websocket` to avoid subrequest limits when making many SDK calls per request
 
 ```json
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/sandbox/platform/limits/#page","headline":"Limits · Cloudflare Sandbox SDK docs","description":"Resource limits for Sandbox SDK including vCPU, memory, disk, and container constraints.","url":"https://developers.cloudflare.com/sandbox/platform/limits/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/sandbox/","name":"Sandbox SDK"}},{"@type":"ListItem","position":3,"item":{"@id":"/sandbox/platform/","name":"Platform"}},{"@type":"ListItem","position":4,"item":{"@id":"/sandbox/platform/limits/","name":"Limits"}}]}
 ```

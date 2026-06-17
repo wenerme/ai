@@ -28,8 +28,8 @@ Because you can [configure MFA at the application and policy level](https://deve
 
 Before you can [enforce independent MFA on applications and policies](https://developers.cloudflare.com/cloudflare-one/access-controls/policies/mfa-requirements/#independent-mfa), you must turn on independent MFA at the organization level.
 
-* [ Dashboard ](#tab-panel-6563)
-* [ API ](#tab-panel-6564)
+* [ Dashboard ](#tab-panel-7071)
+* [ API ](#tab-panel-7072)
 
 1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** \> **Access controls** \> **Access settings**.
 2. Under **Allow multi-factor authentication (MFA)**, select the [MFA methods](#supported-mfa-methods) you want to allow in your organization.
@@ -97,8 +97,8 @@ Some authenticators do not send an AAGUID during WebAuthn registration, such as 
 
 AAGUIDs are managed using [Lists](https://developers.cloudflare.com/cloudflare-one/reusable-components/lists/). Create a list of type **AAGUID**, then reference the list in your organization's MFA configuration.
 
-* [ Dashboard ](#tab-panel-6561)
-* [ API ](#tab-panel-6562)
+* [ Dashboard ](#tab-panel-7069)
+* [ API ](#tab-panel-7070)
 
 1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** \> **Resources** \> **Lists**.
 2. Select **Create new list**.
@@ -156,8 +156,8 @@ You can look up AAGUIDs for common authenticators in the [FIDO Alliance Metadata
 
 ### 2\. Assign an AAGUID list to your organization
 
-* [ Dashboard ](#tab-panel-6567)
-* [ API ](#tab-panel-6568)
+* [ Dashboard ](#tab-panel-7075)
+* [ API ](#tab-panel-7076)
 
 1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** \> **Access controls** \> **Access settings**.
 2. Under **Allow multi-factor authentication (MFA)**, go to **Limit MFA to specific authentication methods**.
@@ -228,8 +228,8 @@ Access ignores AMR values that do not map to a supported authenticator type (for
 
 ### Turn on AMR matching
 
-* [ Dashboard ](#tab-panel-6569)
-* [ API ](#tab-panel-6570)
+* [ Dashboard ](#tab-panel-7077)
+* [ API ](#tab-panel-7078)
 
 1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** \> **Access controls** \> **Access settings**.
 2. Under **Allow multi-factor authentication (MFA)**, turn on **Use identity provider MFA**.
@@ -295,8 +295,8 @@ Turning off independent MFA removes MFA protection on all Access applications. B
 
 To turn off independent MFA for the organization:
 
-* [ Dashboard ](#tab-panel-6565)
-* [ API ](#tab-panel-6566)
+* [ Dashboard ](#tab-panel-7073)
+* [ API ](#tab-panel-7074)
 
 1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** \> **Access controls** \> **Access settings**.
 2. Under **Allow multi-factor authentication (MFA)**, turn off **Apply global MFA settings by default**.
@@ -406,8 +406,8 @@ To view a user's enrolled authenticators:
 
 If a user is locked out or you need to revoke an authenticator for security reasons, you can delete it from the dashboard or API.
 
-* [ Dashboard ](#tab-panel-6559)
-* [ API ](#tab-panel-6560)
+* [ Dashboard ](#tab-panel-7067)
+* [ API ](#tab-panel-7068)
 
 1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** \> **Team & Resources** \> **Users**.
 2. Select the user whose authenticator you want to delete.
@@ -452,5 +452,6 @@ To prevent lockouts, users should enroll multiple authenticators (for example, a
 * [Enforce MFA on applications and policies](https://developers.cloudflare.com/cloudflare-one/access-controls/policies/mfa-requirements/)
 
 ```json
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/access-controls/access-settings/independent-mfa/#page","headline":"Independent MFA · Cloudflare One docs","description":"Independent MFA in Access.","url":"https://developers.cloudflare.com/cloudflare-one/access-controls/access-settings/independent-mfa/","inLanguage":"en","image":"https://developers.cloudflare.com/zt-preview.png","dateModified":"2026-06-05","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Authentication"]}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/cloudflare-one/","name":"Cloudflare One"}},{"@type":"ListItem","position":3,"item":{"@id":"/cloudflare-one/access-controls/","name":"Access controls"}},{"@type":"ListItem","position":4,"item":{"@id":"/cloudflare-one/access-controls/access-settings/","name":"Access settings"}},{"@type":"ListItem","position":5,"item":{"@id":"/cloudflare-one/access-controls/access-settings/independent-mfa/","name":"Independent MFA"}}]}
 ```

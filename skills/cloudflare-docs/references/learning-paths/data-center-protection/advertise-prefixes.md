@@ -28,5 +28,6 @@ Also, when using [Cloudflare Network Interconnect](https://developers.cloudflare
 MSS clamps are used to backhaul data from the data center where traffic is ingested (close to the end user) to the facility with the CNI link.
 
 ```json
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/learning-paths/data-center-protection/advertise-prefixes/#page","headline":"Advertise prefixes · Cloudflare Learning Paths","description":"Advertise IP prefixes via Magic Transit.","url":"https://developers.cloudflare.com/learning-paths/data-center-protection/advertise-prefixes/","inLanguage":"en","image":"https://developers.cloudflare.com/cf-twitter-card.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/learning-paths/","name":"Learning Paths"}},{"@type":"ListItem","position":3,"item":{"@id":"/learning-paths/data-center-protection/advertise-prefixes/","name":"Advertise prefixes"}}]}
 ```

@@ -30,8 +30,8 @@ Webhook events are subscription-only. Your endpoint receives only the events inc
 
 Your webhook endpoint must accept JSON `POST` requests. The endpoint can handle multiple event types by switching on the `event` field in the request body.
 
-* [  JavaScript ](#tab-panel-9411)
-* [  TypeScript ](#tab-panel-9412)
+* [  JavaScript ](#tab-panel-9953)
+* [  TypeScript ](#tab-panel-9954)
 
 src/index.js
 
@@ -251,8 +251,8 @@ The response includes a PEM-encoded public key:
 
 Verify `rtk-signature` against the raw request body. Do not reserialize parsed JSON before verification because changes in whitespace or key order can change the signed bytes.
 
-* [  JavaScript ](#tab-panel-9413)
-* [  TypeScript ](#tab-panel-9414)
+* [  JavaScript ](#tab-panel-9955)
+* [  TypeScript ](#tab-panel-9956)
 
 src/index.js
 
@@ -981,5 +981,6 @@ Livestream statuses include `LIVE`, `OFFLINE`, and `IDLE`.
 ```
 
 ```json
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/realtime/realtimekit/webhooks/#page","headline":"Webhooks · Cloudflare Realtime docs","description":"Receive RealtimeKit events in your application through signed HTTP callbacks.","url":"https://developers.cloudflare.com/realtime/realtimekit/webhooks/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-06-12","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/realtime/","name":"Realtime"}},{"@type":"ListItem","position":3,"item":{"@id":"/realtime/realtimekit/","name":"RealtimeKit"}},{"@type":"ListItem","position":4,"item":{"@id":"/realtime/realtimekit/webhooks/","name":"Webhooks"}}]}
 ```

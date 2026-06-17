@@ -27,8 +27,8 @@ To learn more about how Local Domain Fallback works, refer to [How the Cloudflar
 
 To add a domain to the Local Domain Fallback list:
 
-* [ Dashboard ](#tab-panel-6477)
-* [ Terraform (v5) ](#tab-panel-6478)
+* [ Dashboard ](#tab-panel-9273)
+* [ Terraform (v5) ](#tab-panel-9274)
 
 1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** \> **Team & Resources** \> **Devices** \> **Device profiles** \> **General profiles**.
 2. Locate the [device profile](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/device-profiles/) you would like to view or modify and select **Configure**.
@@ -144,8 +144,8 @@ Resolver policies do not automatically update when you change the virtual networ
 
 To create a resolver policy:
 
-* [ Dashboard ](#tab-panel-6475)
-* [ Terraform (v5) ](#tab-panel-6476)
+* [ Dashboard ](#tab-panel-9271)
+* [ Terraform (v5) ](#tab-panel-9272)
 
 1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** \> **Traffic policies** \> **Resolver policies**.
 2. Select **Add a policy**.
@@ -204,5 +204,6 @@ When a user's query matches a resolver policy, Gateway will send the query to yo
 Gateway will cache the fastest resolver for use in subsequent queries. Resolver priority is cached on a per user basis for each data center.
 
 ```json
+{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/learning-paths/secure-internet-traffic/configure-device-agent/private-dns/#page","headline":"Resolve private DNS · Cloudflare Learning Paths","description":"Set up private DNS resolution.","url":"https://developers.cloudflare.com/learning-paths/secure-internet-traffic/configure-device-agent/private-dns/","inLanguage":"en","image":"https://developers.cloudflare.com/cf-twitter-card.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/learning-paths/","name":"Learning Paths"}},{"@type":"ListItem","position":3,"item":{"@id":"/learning-paths/secure-internet-traffic/configure-device-agent/","name":"Configure the device agent"}},{"@type":"ListItem","position":4,"item":{"@id":"/learning-paths/secure-internet-traffic/configure-device-agent/private-dns/","name":"Resolve private DNS"}}]}
 ```

@@ -22,11 +22,11 @@ If you want to get started quickly, click on the button below.
 
 This creates a repository in your GitHub account and deploys the application to Cloudflare Workers.
 
-* [  JavaScript ](#tab-panel-10442)
-* [  TypeScript ](#tab-panel-10443)
-* [  Hono ](#tab-panel-10444)
-* [  Python ](#tab-panel-10445)
-* [  Rust ](#tab-panel-10446)
+* [  JavaScript ](#tab-panel-11621)
+* [  TypeScript ](#tab-panel-11622)
+* [  Hono ](#tab-panel-11623)
+* [  Python ](#tab-panel-11624)
+* [  Rust ](#tab-panel-11625)
 
 JavaScript
 
@@ -382,9 +382,9 @@ fetch(event.request, { cf: { cacheKey: "some-string" } });
 
 Normally, Cloudflare computes the cache key for a request based on the request's URL. Sometimes, though, you may like different URLs to be treated as if they were the same for caching purposes. For example, if your website content is hosted from both Amazon S3 and Google Cloud Storage - you have the same content in both places, and you can use a Worker to randomly balance between the two. However, you do not want to end up caching two copies of your content. You could utilize custom cache keys to cache based on the original request URL rather than the subrequest URL:
 
-* [  JavaScript ](#tab-panel-10447)
-* [  TypeScript ](#tab-panel-10448)
-* [  Hono ](#tab-panel-10449)
+* [  JavaScript ](#tab-panel-11626)
+* [  TypeScript ](#tab-panel-11627)
+* [  Hono ](#tab-panel-11628)
 
 JavaScript
 
@@ -543,8 +543,8 @@ Using custom cache keys and overrides based on response code, you can write a Wo
 
 The following example demonstrates how you might use this to cache requests for streaming media assets:
 
-* [  Module Worker ](#tab-panel-10450)
-* [  Service Worker ](#tab-panel-10451)
+* [  Module Worker ](#tab-panel-11629)
+* [  Service Worker ](#tab-panel-11630)
 
 index.js
 
@@ -980,5 +980,6 @@ fetch(request, { cache: 'no-cache'});
 ```
 
 ```json
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/examples/cache-using-fetch/#page","headline":"Cache using fetch · Cloudflare Workers docs","description":"Determine how to cache a resource by setting TTLs, custom cache keys, and cache headers in a fetch request.","url":"https://developers.cloudflare.com/workers/examples/cache-using-fetch/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Caching","Middleware","JavaScript","TypeScript","Python","Rust"]}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/workers/","name":"Workers"}},{"@type":"ListItem","position":3,"item":{"@id":"/workers/examples/","name":"Examples"}},{"@type":"ListItem","position":4,"item":{"@id":"/workers/examples/cache-using-fetch/","name":"Cache using fetch"}}]}
 ```

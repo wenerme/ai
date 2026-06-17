@@ -1,0 +1,71 @@
+---
+title: '`glab container-registry tag delete`'
+stage: Create
+group: Code Review
+info: To determine the technical writer assigned to the Stage/Group associated with this page, see <https://handbook.gitlab.com/handbook/product/ux/technical-writing/#assignments>
+---
+
+Delete container registry tags.
+
+## Synopsis
+
+Delete one container registry tag by name, or delete matching tags in
+bulk by filter.
+
+Deleting a single tag is synchronous. Bulk deletion is scheduled
+asynchronously by GitLab; matching tags may remain visible until the
+background deletion job has completed.
+
+To bulk delete tags, omit <tag-name> and provide at least one bulk
+deletion flag: --name-regex-delete, --name-regex-keep, --keep-n, or
+--older-than.
+
+The repository ID must belong to the selected project. Use -R/--repo
+to specify the owning project when running this command outside that
+project's Git checkout.
+
+```plaintext
+glab container-registry tag delete <repository-id> [<tag-name>] [flags]
+```
+
+## Aliases
+
+```plaintext
+del
+```
+
+## Examples
+
+```console
+# Delete a container registry tag with a confirmation prompt
+glab container-registry tag delete 123 latest
+
+# Skip the confirmation prompt
+glab container-registry tag delete 123 latest --yes
+
+# Schedule tags matching a regular expression for deletion
+glab container-registry tag delete 123 --name-regex-delete '^release-.*' --yes
+
+# Schedule old tags for deletion, but keep the 10 most recent matching tags
+glab container-registry tag delete 123 --name-regex-delete '.*' --keep-n 10 --older-than 30d --yes
+
+# Delete a container registry tag in another project
+glab container-registry tag delete 123 latest -R gitlab-org/cli
+```
+
+## Options
+
+```plaintext
+      --keep-n int                 Keep the latest N matching tags. Bulk deletion only; scheduled asynchronously.
+      --name-regex-delete string   Regular expression for tag names to delete. Bulk deletion only; scheduled asynchronously.
+      --name-regex-keep string     Regular expression for tag names to keep. Bulk deletion only; scheduled asynchronously.
+      --older-than string          Delete tags older than the given duration, such as 7d or 1month. Bulk deletion only; scheduled asynchronously.
+  -y, --yes                        Skip the confirmation prompt.
+```
+
+## Options inherited from parent commands
+
+```plaintext
+  -h, --help          Show help for this command.
+  -R, --repo string   Select another repository. You can use either OWNER/REPO or GROUP/NAMESPACE/REPO. The full URL or Git URL is also accepted.
+```

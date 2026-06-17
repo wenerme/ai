@@ -24,11 +24,11 @@ This creates a repository in your GitHub account and deploys the application to 
 
 ## Redirect all requests to one URL
 
-* [  JavaScript ](#tab-panel-11586)
-* [  TypeScript ](#tab-panel-11587)
-* [  Python ](#tab-panel-11588)
-* [  Rust ](#tab-panel-11589)
-* [  Hono ](#tab-panel-11590)
+* [  JavaScript ](#tab-panel-11726)
+* [  TypeScript ](#tab-panel-11727)
+* [  Python ](#tab-panel-11728)
+* [  Rust ](#tab-panel-11729)
+* [  Hono ](#tab-panel-11730)
 
 JavaScript
 
@@ -51,7 +51,7 @@ export default {
 
 ```
 
-[Run Worker in Playground](https://workers.cloudflare.com/playground#LYVwNgLglgDghgJwgegGYHsHALQBM4RwDcABAEbogB2+CAngLzbPYZb6HbW5QDGU2AAwBWAOzDhAZgCcANkmjJARgBcLFm2Ac4XGnwEjxUuQuUBYAFABhdFQgBTO9gAiUAM4x0bqNFsqSmngExCRUcMD2DABEUDT2AB4AdABWblGkqFBgjuGRMXFJqVGWNnaOENgAKnQw9v5wMDBgfARQtsjJcABucG68CLAQANTA6Ljg9paWCZ5IJLj2qHDgECQA3hYkJL10VLwB9hC8ABYAFAj2AI4g9m4QAJTrm1skvLZ387fQYb5UAKoAJQAMiQGCQoscIBAYG4VMhkAlwk17Ik3sB0s8tm8qB87gQQG4bAtQSRJIIlERMSQLhAQAgqCQAbdPDiURceBdeBBTgs7rFWrZAUCADQkPG0wljez3SlbAC+woscqIlnUzE02l0PH4QjEEhk8kUShKtgcTlcHi8PjaVH8gW0pDCEWiEUI2nSASyOWdUTIYHQZGK1lN5SqNTq20azV4AqoHTctimFjWUWAcFiAH1RuNslEVPkFoU0nLVWqNcEtfpdUYDaYlMxLEA)
+[Run Worker in Playground](https://workers.cloudflare.com/playground#LYVwNgLglgDghgJwgegGYHsHALQBM4RwDcABAEbogB2+CAngLzbPYZb6HbW5QDGU2AAwBOQQDZhAJgAswgOySArAA4AXCxZtgHOFxp8BI8VNkKVAWABQAYXRUIAU3vYAIlADOMdO6jQ7qki08AmISKjhgBwYAIigaBwAPADoAK3do0lQoMCcIqNj45LToq1t7JwhsABU6GAcAuBgYMD4CKDtkFLgANzh3XgRYCABqYHRccAcrK0SvJBJcB1Q4cAgSAG9LEhI+uipeQIcIXgALAAoEBwBHEAd3CABKDa3tkl47e4W76HC-KgBVABKABkSAwSNEThAIDB3KpkMhEhFmg4ku9gBkXtt3lRPvcCCB3LZFmCSABmQQARiIWJIlwgIAQVBIgLuXlxqMuPEuvAgZ0W9zibTsQOBABoSPiGUTxg4HjTtgBfMWWRVEKwaZhaHR6Hj8ISiCQyeRKZSlOyOZxuTzeXztKgBII6UjhSIxSKEHQZQLZXJu6JkMDoMglGwWirVWr1HZNFq8YVUTruOzTSzraLAOBxAD6YwmOWiqgKiyK6UVGs12pCuoMBuMxrMymYViAA)
 
 TypeScript
 
@@ -142,11 +142,11 @@ export default app;
 
 ## Redirect requests from one domain to another
 
-* [  JavaScript ](#tab-panel-11581)
-* [  TypeScript ](#tab-panel-11582)
-* [  Python ](#tab-panel-11583)
-* [  Rust ](#tab-panel-11584)
-* [  Hono ](#tab-panel-11585)
+* [  JavaScript ](#tab-panel-11721)
+* [  TypeScript ](#tab-panel-11722)
+* [  Python ](#tab-panel-11723)
+* [  Rust ](#tab-panel-11724)
+* [  Hono ](#tab-panel-11725)
 
 JavaScript
 
@@ -311,5 +311,6 @@ export default app;
 ```
 
 ```json
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/examples/redirect/#page","headline":"Redirect · Cloudflare Workers docs","description":"Redirect requests from one URL to another or from one set of URLs to another set.","url":"https://developers.cloudflare.com/workers/examples/redirect/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Middleware","Redirects","JavaScript","TypeScript","Python","Rust"]}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/workers/","name":"Workers"}},{"@type":"ListItem","position":3,"item":{"@id":"/workers/examples/","name":"Examples"}},{"@type":"ListItem","position":4,"item":{"@id":"/workers/examples/redirect/","name":"Redirect"}}]}
 ```

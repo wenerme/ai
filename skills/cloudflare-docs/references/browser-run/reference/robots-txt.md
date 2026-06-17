@@ -14,13 +14,19 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 This page provides general guidance on configuring `robots.txt` and sitemaps for websites you plan to access with Browser Run.
 
+robots.txt is advisory, not enforceable
+
+The `robots.txt` standard is a voluntary protocol. Only well-behaved bots choose to follow it. Any client can send any User-Agent string, so `robots.txt` rules that target a specific User-Agent cannot prevent a spoofed or malicious client from accessing your site. To enforce access restrictions, use server-side controls such as a web application firewall (WAF), request header validation, or authentication.
+
+To verify that a request originated from Cloudflare Browser Run specifically, use the cryptographic [Web Bot Auth](https://developers.cloudflare.com/browser-run/reference/automatic-request-headers/#about-web-bot-auth) signatures or the [non-configurable headers](https://developers.cloudflare.com/browser-run/reference/automatic-request-headers/#non-configurable-headers) that Cloudflare attaches to every Browser Run request. You can also create [WAF rules](https://developers.cloudflare.com/browser-run/faq/#can-i-allowlist-browser-run-on-my-own-website) using the [bot detection IDs](https://developers.cloudflare.com/browser-run/reference/automatic-request-headers/#bot-detection) to allow or block Browser Run traffic.
+
 ## Identifying Browser Run requests
 
 Requests can be identified by the [automatic headers](https://developers.cloudflare.com/browser-run/reference/automatic-request-headers/) that Cloudflare attaches:
 
-* [User-Agent](https://developers.cloudflare.com/browser-run/reference/automatic-request-headers/#user-agent) — Each Browser Run method has a different default User-Agent, which you can use to write targeted `robots.txt` rules
-* `cf-brapi-request-id` — Unique identifier for Quick Actions requests
-* `Signature-agent` — Pointer to Cloudflare's bot verification keys
+* [User-Agent](https://developers.cloudflare.com/browser-run/reference/automatic-request-headers/#user-agent): Each Browser Run method has a different default User-Agent, which you can use to write targeted `robots.txt` rules
+* `cf-brapi-request-id`: Unique identifier for Quick Actions requests
+* `Signature-agent`: Pointer to Cloudflare's bot verification keys
 
 To allow or block Browser Run traffic using WAF rules instead of `robots.txt`, use the [bot detection IDs](https://developers.cloudflare.com/browser-run/reference/automatic-request-headers/#bot-detection) on the automatic request headers page.
 
@@ -246,5 +252,6 @@ Browser Run periodically refetches sitemaps to keep content fresh. Serve your si
 * [Automatic request headers](https://developers.cloudflare.com/browser-run/reference/automatic-request-headers/) — User-Agent strings and non-configurable headers used by Browser Run
 
 ```json
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/browser-run/reference/robots-txt/#page","headline":"robots.txt and sitemaps · Cloudflare Browser Run docs","description":"Configure robots.txt rules and sitemaps to control how Browser Run accesses your website.","url":"https://developers.cloudflare.com/browser-run/reference/robots-txt/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-06-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/browser-run/","name":"Browser Run"}},{"@type":"ListItem","position":3,"item":{"@id":"/browser-run/reference/","name":"Reference"}},{"@type":"ListItem","position":4,"item":{"@id":"/browser-run/reference/robots-txt/","name":"robots.txt and sitemaps"}}]}
 ```

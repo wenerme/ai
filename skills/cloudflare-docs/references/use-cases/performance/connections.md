@@ -42,5 +42,6 @@ Preload assets before the HTML response arrives. [Learn more about Early Hints](
 3. [Enable Early Hints](https://developers.cloudflare.com/speed/optimization/content/early-hints/)
 
 ```json
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/use-cases/performance/connections/#page","headline":"Accelerate connections · Cloudflare use cases","description":"Reduce latency with Argo Smart Routing, HTTP/3, and Early Hints asset preloading.","url":"https://developers.cloudflare.com/use-cases/performance/connections/","inLanguage":"en","image":"https://developers.cloudflare.com/cf-twitter-card.png","dateModified":"2026-04-24","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/use-cases/","name":"Use cases"}},{"@type":"ListItem","position":3,"item":{"@id":"/use-cases/performance/","name":"Performance"}},{"@type":"ListItem","position":4,"item":{"@id":"/use-cases/performance/connections/","name":"Accelerate connections"}}]}
 ```

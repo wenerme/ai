@@ -46,5 +46,6 @@ You can download a JSON file containing metadata and configuration for all your 
 After your browser finishes downloading the ZIP file, expand it to access the JSON with the information about your cloud resources.
 
 ```json
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/multi-cloud-networking/manage-resources/#page","headline":"Manage resources · Cloudflare Multi-Cloud Networking docs","description":"Manage cloud on-ramp resources and connections.","url":"https://developers.cloudflare.com/multi-cloud-networking/manage-resources/","inLanguage":"en","image":"https://developers.cloudflare.com/zt-preview.png","dateModified":"2026-04-17","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/multi-cloud-networking/","name":"Multi-Cloud Networking"}},{"@type":"ListItem","position":3,"item":{"@id":"/multi-cloud-networking/manage-resources/","name":"Manage resources"}}]}
 ```

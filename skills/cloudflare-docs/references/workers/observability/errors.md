@@ -374,8 +374,8 @@ A Worker can make HTTP requests to any HTTP service on the public Internet. You 
 
 When using an external logging strategy, remember that floating promises (promises that are neither `await`ed, `return`ed, nor passed to `ctx.waitUntil()`) may be canceled when the Worker invocation completes. A Worker invocation has not completed while it is still streaming a response body to the client. To run logging after the response is complete, pass the request promise to [ctx.waitUntil()](https://developers.cloudflare.com/workers/runtime-apis/context/#waituntil). For example:
 
-* [  Module Worker ](#tab-panel-11127)
-* [  Service Worker ](#tab-panel-11128)
+* [  Module Worker ](#tab-panel-11836)
+* [  Service Worker ](#tab-panel-11837)
 
 JavaScript
 
@@ -461,10 +461,12 @@ Configure the [Wasm Coredump Service ↗](https://github.com/cloudflare/wasm-cor
 
 ## Go to origin on error
 
-By using [event.passThroughOnException](https://developers.cloudflare.com/workers/runtime-apis/context/#passthroughonexception), a Workers application will forward requests to your origin if an exception is thrown during the Worker's execution. This allows you to add logging, tracking, or other features with Workers, without degrading your application's functionality.
+By using [passThroughOnException()](https://developers.cloudflare.com/workers/runtime-apis/context/#passthroughonexception), a Workers application can forward requests to your origin if an exception is thrown during the Worker's execution. This allows you to add logging, tracking, or other features with Workers, without degrading your application's functionality.
 
-* [  Module Worker ](#tab-panel-11129)
-* [  Service Worker ](#tab-panel-11130)
+`ctx.passThroughOnException()` forwards requests for unhandled exceptions in your Worker code, not for errors from the origin `fetch()`. When proxying requests to an origin, wrap `fetch(request)` in `try...catch` and return a `5xx` response on failure. If the origin `fetch()` throws after consuming the request body, `passThroughOnException()` cannot replay the body.
+
+* [  Module Worker ](#tab-panel-11838)
+* [  Service Worker ](#tab-panel-11839)
 
 JavaScript
 
@@ -524,5 +526,6 @@ async function handleRequest(request) {
 * [RPC error handling](https://developers.cloudflare.com/workers/runtime-apis/rpc/error-handling/) \- Learn how to handle errors from remote-procedure calls.
 
 ```json
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/observability/errors/#page","headline":"Errors and exceptions · Cloudflare Workers docs","description":"Review Workers errors and exceptions.","url":"https://developers.cloudflare.com/workers/observability/errors/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-06-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/workers/","name":"Workers"}},{"@type":"ListItem","position":3,"item":{"@id":"/workers/observability/","name":"Observability"}},{"@type":"ListItem","position":4,"item":{"@id":"/workers/observability/errors/","name":"Errors and exceptions"}}]}
 ```

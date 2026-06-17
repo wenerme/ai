@@ -173,8 +173,8 @@ If your website does not have a `robots.txt` file, Cloudflare creates a new file
 
 To implement a `robots.txt` file on your domain:
 
-* [  New dashboard ](#tab-panel-4785)
-* [ Old dashboard ](#tab-panel-4786)
+* [  New dashboard ](#tab-panel-6828)
+* [ Old dashboard ](#tab-panel-6829)
 
 1. In the Cloudflare dashboard, go to the **Security Settings** page.  
 [ Go to **Settings** ](https://dash.cloudflare.com/?to=/:account/:zone/security/settings)
@@ -263,5 +263,6 @@ Google Search Console may occasionally report `Syntax not understood` for Conten
 Managed `robots.txt` for AI crawlers is available on all plans.
 
 ```json
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/bots/additional-configurations/managed-robots-txt/#page","headline":"robots.txt setting · Cloudflare bot solutions docs","description":"Manage a robots.txt file to direct AI bot operators on content scraping permissions.","url":"https://developers.cloudflare.com/bots/additional-configurations/managed-robots-txt/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-05-05","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["AI"]}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/bots/","name":"Bots"}},{"@type":"ListItem","position":3,"item":{"@id":"/bots/additional-configurations/","name":"Additional configurations"}},{"@type":"ListItem","position":4,"item":{"@id":"/bots/additional-configurations/managed-robots-txt/","name":"robots.txt setting"}}]}
 ```

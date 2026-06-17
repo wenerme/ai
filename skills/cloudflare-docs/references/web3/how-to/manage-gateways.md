@@ -16,8 +16,8 @@ A Cloudflare Web3 gateway provides HTTP-accessible interfaces to various Web3 ne
 
 ## Create a gateway
 
-* [ Dashboard ](#tab-panel-10112)
-* [ API ](#tab-panel-10113)
+* [ Dashboard ](#tab-panel-11289)
+* [ API ](#tab-panel-11290)
 
 To create a gateway using the dashboard:
 
@@ -118,8 +118,8 @@ Once you have [created a gateway](#create-a-gateway), you can only edit the **Ga
 
 If you need to edit other fields, [delete the gateway](#delete-a-gateway) and create a new one.
 
-* [ Dashboard ](#tab-panel-10104)
-* [ API ](#tab-panel-10105)
+* [ Dashboard ](#tab-panel-11281)
+* [ API ](#tab-panel-11282)
 
 To edit a gateway using the dashboard:
 
@@ -137,8 +137,8 @@ To edit specific settings for a gateway, use a [PATCH](https://developers.cloudf
 
 When your gateway is stuck in an **Error** [status](https://developers.cloudflare.com/web3/reference/gateway-status/), you should try refreshing the gateway, which attempts to re-create the associated DNS records for the hostname.
 
-* [ Dashboard ](#tab-panel-10106)
-* [ API ](#tab-panel-10107)
+* [ Dashboard ](#tab-panel-11283)
+* [ API ](#tab-panel-11284)
 
 To refresh a gateway using the dashboard:
 
@@ -160,8 +160,8 @@ You have the ability to block access to one or more:
 * IPFS content paths (`/ipfs/QmYwAPJzv5CZsnA625s3Xf2nemtYgPpHdWEz79ojWnPbdG/readme`)
 * IPNS content paths (`/ipns/example.com`)
 
-* [ Dashboard ](#tab-panel-10108)
-* [ API ](#tab-panel-10109)
+* [ Dashboard ](#tab-panel-11285)
+* [ API ](#tab-panel-11286)
 
 To add an item to the blocklist using the dashboard:
 
@@ -183,8 +183,8 @@ To add a blocklist item using the API, send a [POST](https://developers.cloudfla
 
 When you delete a gateway, Cloudflare will automatically remove all associated hostname DNS records. This action will impact your traffic and cannot be undone.
 
-* [ Dashboard ](#tab-panel-10110)
-* [ API ](#tab-panel-10111)
+* [ Dashboard ](#tab-panel-11287)
+* [ API ](#tab-panel-11288)
 
 To delete a gateway using the dashboard:
 
@@ -196,5 +196,6 @@ To delete a gateway using the dashboard:
 To delete a gateway using the API, send a [DELETE](https://developers.cloudflare.com/api/resources/web3/subresources/hostnames/methods/delete/) request.
 
 ```json
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/web3/how-to/manage-gateways/#page","headline":"Manage gateways · Cloudflare Web3 docs","description":"Create, edit, and delete Web3 gateways.","url":"https://developers.cloudflare.com/web3/how-to/manage-gateways/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/web3/","name":"Web3"}},{"@type":"ListItem","position":3,"item":{"@id":"/web3/how-to/","name":"How to"}},{"@type":"ListItem","position":4,"item":{"@id":"/web3/how-to/manage-gateways/","name":"Manage gateways"}}]}
 ```

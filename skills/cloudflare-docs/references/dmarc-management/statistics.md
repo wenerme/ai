@@ -33,5 +33,6 @@ You also have access to information about all third parties, and can drill down 
 5. Find a source you want to inspect further, and select the three dots in front of it > **Details** to learn more about that third party.
 
 ```json
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/dmarc-management/statistics/#page","headline":"Review DMARC statistics · Cloudflare DMARC Management docs","description":"Review whether emails sent on your behalf passed DMARC, SPF, and DKIM checks.","url":"https://developers.cloudflare.com/dmarc-management/statistics/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-05-05","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["DNS"]}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/dmarc-management/","name":"DMARC Management"}},{"@type":"ListItem","position":3,"item":{"@id":"/dmarc-management/statistics/","name":"Statistics and details"}}]}
 ```

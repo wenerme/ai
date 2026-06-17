@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 # Route to private services from Workers
 
-**Last reviewed:**  7 months ago 
+**Last reviewed:**  8 months ago 
 
 This example shows how to use Workers VPC to create a centralized gateway that routes requests based on URL paths, provides authentication and rate limiting, and load balances across internal services.
 
@@ -60,8 +60,8 @@ Note the service IDs returned for the next step.
 
 Update your Wrangler configuration file:
 
-* [  wrangler.jsonc ](#tab-panel-10176)
-* [  wrangler.toml ](#tab-panel-10177)
+* [  wrangler.jsonc ](#tab-panel-11353)
+* [  wrangler.toml ](#tab-panel-11354)
 
 JSONC
 
@@ -77,7 +77,7 @@ JSONC
 
   // Set this to today's date
 
-  "compatibility_date": "2026-05-28",
+  "compatibility_date": "2026-06-17",
 
   "vpc_services": [
 
@@ -116,7 +116,7 @@ main = "src/index.js"
 
 # Set this to today's date
 
-compatibility_date = "2026-05-28"
+compatibility_date = "2026-06-17"
 
 
 [[vpc_services]]
@@ -213,5 +213,6 @@ curl https://api-gateway.workers.dev/api/orders
 * Explore [other examples](https://developers.cloudflare.com/workers-vpc/examples/)
 
 ```json
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers-vpc/examples/route-across-private-services/#page","headline":"Route to private services from Workers · Cloudflare Workers VPC","description":"Build a Worker gateway that routes and load balances across multiple private VPC Services.","url":"https://developers.cloudflare.com/workers-vpc/examples/route-across-private-services/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-22","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/workers-vpc/","name":"Workers VPC"}},{"@type":"ListItem","position":3,"item":{"@id":"/workers-vpc/examples/","name":"Examples"}},{"@type":"ListItem","position":4,"item":{"@id":"/workers-vpc/examples/route-across-private-services/","name":"Route to private services from Workers"}}]}
 ```

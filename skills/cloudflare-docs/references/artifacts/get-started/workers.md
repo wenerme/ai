@@ -64,8 +64,8 @@ cd artifacts-worker
 
 Open your Wrangler config file and add the Artifacts binding:
 
-* [  wrangler.jsonc ](#tab-panel-4799)
-* [  wrangler.toml ](#tab-panel-4800)
+* [  wrangler.jsonc ](#tab-panel-6806)
+* [  wrangler.toml ](#tab-panel-6807)
 
 JSONC
 
@@ -81,7 +81,7 @@ JSONC
 
   // Set this to today's date
 
-  "compatibility_date": "2026-05-21",
+  "compatibility_date": "2026-06-17",
 
   "artifacts": [
 
@@ -110,7 +110,7 @@ main = "src/index.ts"
 
 # Set this to today's date
 
-compatibility_date = "2026-05-21"
+compatibility_date = "2026-06-17"
 
 
 [[artifacts]]
@@ -148,8 +148,8 @@ Wrangler adds an `Artifacts` type to your generated `worker-configuration.d.ts` 
 
 Replace `src/index.ts` with the following code:
 
-* [  JavaScript ](#tab-panel-4801)
-* [  TypeScript ](#tab-panel-4802)
+* [  JavaScript ](#tab-panel-6808)
+* [  TypeScript ](#tab-panel-6809)
 
 src/index.js
 
@@ -287,8 +287,8 @@ pnpm wrangler dev
 
 Then, open a second terminal and send a request to your Worker to create a new Artifacts repo:
 
-* [ Manual ](#tab-panel-4797)
-* [ jq ](#tab-panel-4798)
+* [ Manual ](#tab-panel-6804)
+* [ jq ](#tab-panel-6805)
 
 Terminal window
 
@@ -473,5 +473,6 @@ Wrangler prints your `workers.dev` URL. Use the same `curl` request against that
 [ Git protocol ](https://developers.cloudflare.com/artifacts/api/git-protocol/) Use standard git-over-HTTPS remotes with either URL-based auth or \`http.extraHeader\`. 
 
 ```json
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/artifacts/get-started/workers/#page","headline":"Get started - Workers · Cloudflare Artifacts docs","description":"Create an Artifacts repo from a Worker.","url":"https://developers.cloudflare.com/artifacts/get-started/workers/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-05-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/artifacts/","name":"Artifacts"}},{"@type":"ListItem","position":3,"item":{"@id":"/artifacts/get-started/","name":"Get started"}},{"@type":"ListItem","position":4,"item":{"@id":"/artifacts/get-started/workers/","name":"Workers"}}]}
 ```

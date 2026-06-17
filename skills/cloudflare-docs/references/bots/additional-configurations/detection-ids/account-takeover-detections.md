@@ -34,8 +34,8 @@ Cloudflare's [Managed Challenge](https://developers.cloudflare.com/cloudflare-ch
 
 To access account takeover detections:
 
-* [  New dashboard ](#tab-panel-4779)
-* [ Old dashboard ](#tab-panel-4780)
+* [  New dashboard ](#tab-panel-6822)
+* [ Old dashboard ](#tab-panel-6823)
 
 1. In the Cloudflare dashboard, go to the **Security rules** page.  
 [ Go to **Security rules** ](https://dash.cloudflare.com/?to=/:account/:zone/security/security-rules)
@@ -64,8 +64,8 @@ Rate limiting rules can limit the number of logins from a particular IP, JA4 fin
 
 To use rate limiting rules with account takeover detections:
 
-* [  New dashboard ](#tab-panel-4781)
-* [ Old dashboard ](#tab-panel-4782)
+* [  New dashboard ](#tab-panel-6824)
+* [ Old dashboard ](#tab-panel-6825)
 
 1. In the Cloudflare dashboard, go to the **Security rules** page.  
 [ Go to **Security rules** ](https://dash.cloudflare.com/?to=/:account/:zone/security/security-rules)
@@ -84,5 +84,6 @@ Enhanced with leaked credential detections
 The rule can be enhanced with Leaked Credential Checks. Refer to the [WAF documentation](https://developers.cloudflare.com/waf/detections/leaked-credentials/) for more information on how to include leaked credentials and account takeover detections in a rate limiting rule.
 
 ```json
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/bots/additional-configurations/detection-ids/account-takeover-detections/#page","headline":"Account takeover detections · Cloudflare bot solutions docs","description":"Detection IDs for identifying and mitigating automated account takeover attacks.","url":"https://developers.cloudflare.com/bots/additional-configurations/detection-ids/account-takeover-detections/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-05-05","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Account takeover"]}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/bots/","name":"Bots"}},{"@type":"ListItem","position":3,"item":{"@id":"/bots/additional-configurations/","name":"Additional configurations"}},{"@type":"ListItem","position":4,"item":{"@id":"/bots/additional-configurations/detection-ids/","name":"Detection IDs"}},{"@type":"ListItem","position":5,"item":{"@id":"/bots/additional-configurations/detection-ids/account-takeover-detections/","name":"Account takeover detections"}}]}
 ```

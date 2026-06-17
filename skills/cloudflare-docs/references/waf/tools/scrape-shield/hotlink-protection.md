@@ -26,9 +26,9 @@ Hotlink protection has no impact on crawling, but it will prevent the images fro
 
 ## Enable Hotlink Protection
 
-* [  New dashboard ](#tab-panel-10093)
-* [ Old dashboard ](#tab-panel-10094)
-* [ API ](#tab-panel-10095)
+* [  New dashboard ](#tab-panel-11270)
+* [ Old dashboard ](#tab-panel-11271)
+* [ API ](#tab-panel-11272)
 
 To enable **Hotlink Protection** in the dashboard:
 
@@ -77,5 +77,6 @@ Some examples of URLs that will not be checked for hotlinking:
 * `http://example.com/images/main-site/hotlink-ok/pic.jpg`
 
 ```json
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/waf/tools/scrape-shield/hotlink-protection/#page","headline":"Hotlink Protection · Cloudflare Web Application Firewall (WAF) docs","description":"Prevent other sites from linking to your hosted images.","url":"https://developers.cloudflare.com/waf/tools/scrape-shield/hotlink-protection/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/waf/","name":"WAF"}},{"@type":"ListItem","position":3,"item":{"@id":"/waf/tools/","name":"Additional tools"}},{"@type":"ListItem","position":4,"item":{"@id":"/waf/tools/scrape-shield/","name":"Scrape Shield"}},{"@type":"ListItem","position":5,"item":{"@id":"/waf/tools/scrape-shield/hotlink-protection/","name":"Hotlink Protection"}}]}
 ```

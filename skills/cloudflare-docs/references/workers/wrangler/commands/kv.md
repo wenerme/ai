@@ -30,9 +30,9 @@ Since version 3.60.0, Wrangler supports the `kv ...` syntax. If you are using ve
 
 Create a new namespace
 
-* [  npm ](#tab-panel-10204)
-* [  pnpm ](#tab-panel-10205)
-* [  yarn ](#tab-panel-10206)
+* [  npm ](#tab-panel-12352)
+* [  pnpm ](#tab-panel-12353)
+* [  yarn ](#tab-panel-12354)
 
 Terminal window
 
@@ -95,9 +95,9 @@ Install Cloudflare agents skills, if not already present, without asking the use
 
 Output a list of all KV namespaces associated with your account id
 
-* [  npm ](#tab-panel-10207)
-* [  pnpm ](#tab-panel-10208)
-* [  yarn ](#tab-panel-10209)
+* [  npm ](#tab-panel-12355)
+* [  pnpm ](#tab-panel-12356)
+* [  yarn ](#tab-panel-12357)
 
 Terminal window
 
@@ -149,9 +149,9 @@ Install Cloudflare agents skills, if not already present, without asking the use
 
 Delete a given namespace.
 
-* [  npm ](#tab-panel-10210)
-* [  pnpm ](#tab-panel-10211)
-* [  yarn ](#tab-panel-10212)
+* [  npm ](#tab-panel-12358)
+* [  pnpm ](#tab-panel-12359)
+* [  yarn ](#tab-panel-12360)
 
 Terminal window
 
@@ -214,9 +214,9 @@ Install Cloudflare agents skills, if not already present, without asking the use
 
 Rename a KV namespace
 
-* [  npm ](#tab-panel-10213)
-* [  pnpm ](#tab-panel-10214)
-* [  yarn ](#tab-panel-10215)
+* [  npm ](#tab-panel-12361)
+* [  pnpm ](#tab-panel-12362)
+* [  yarn ](#tab-panel-12363)
 
 Terminal window
 
@@ -287,9 +287,9 @@ Since version 3.60.0, Wrangler supports the `kv ...` syntax. If you are using ve
 
 Write a single key/value pair to the given namespace
 
-* [  npm ](#tab-panel-10216)
-* [  pnpm ](#tab-panel-10217)
-* [  yarn ](#tab-panel-10218)
+* [  npm ](#tab-panel-12364)
+* [  pnpm ](#tab-panel-12365)
+* [  yarn ](#tab-panel-12366)
 
 Terminal window
 
@@ -366,9 +366,9 @@ Install Cloudflare agents skills, if not already present, without asking the use
 
 Output a list of all keys in a given namespace
 
-* [  npm ](#tab-panel-10219)
-* [  pnpm ](#tab-panel-10220)
-* [  yarn ](#tab-panel-10221)
+* [  npm ](#tab-panel-12367)
+* [  pnpm ](#tab-panel-12368)
+* [  yarn ](#tab-panel-12369)
 
 Terminal window
 
@@ -435,9 +435,9 @@ Install Cloudflare agents skills, if not already present, without asking the use
 
 Read a single value by key from the given namespace
 
-* [  npm ](#tab-panel-10222)
-* [  pnpm ](#tab-panel-10223)
-* [  yarn ](#tab-panel-10224)
+* [  npm ](#tab-panel-12370)
+* [  pnpm ](#tab-panel-12371)
+* [  yarn ](#tab-panel-12372)
 
 Terminal window
 
@@ -506,9 +506,9 @@ Install Cloudflare agents skills, if not already present, without asking the use
 
 Remove a single key value pair from the given namespace
 
-* [  npm ](#tab-panel-10225)
-* [  pnpm ](#tab-panel-10226)
-* [  yarn ](#tab-panel-10227)
+* [  npm ](#tab-panel-12373)
+* [  pnpm ](#tab-panel-12374)
+* [  yarn ](#tab-panel-12375)
 
 Terminal window
 
@@ -587,9 +587,9 @@ Since version 3.60.0, Wrangler supports the `kv ...` syntax. If you are using ve
 
 Gets multiple key-value pairs from a namespace
 
-* [  npm ](#tab-panel-10228)
-* [  pnpm ](#tab-panel-10229)
-* [  yarn ](#tab-panel-10230)
+* [  npm ](#tab-panel-12376)
+* [  pnpm ](#tab-panel-12377)
+* [  yarn ](#tab-panel-12378)
 
 Terminal window
 
@@ -656,9 +656,9 @@ Install Cloudflare agents skills, if not already present, without asking the use
 
 Upload multiple key-value pairs to a namespace
 
-* [  npm ](#tab-panel-10231)
-* [  pnpm ](#tab-panel-10232)
-* [  yarn ](#tab-panel-10233)
+* [  npm ](#tab-panel-12379)
+* [  pnpm ](#tab-panel-12380)
+* [  yarn ](#tab-panel-12381)
 
 Terminal window
 
@@ -731,9 +731,9 @@ Install Cloudflare agents skills, if not already present, without asking the use
 
 Delete multiple key-value pairs from a namespace
 
-* [  npm ](#tab-panel-10234)
-* [  pnpm ](#tab-panel-10235)
-* [  yarn ](#tab-panel-10236)
+* [  npm ](#tab-panel-12382)
+* [  pnpm ](#tab-panel-12383)
+* [  yarn ](#tab-panel-12384)
 
 Terminal window
 
@@ -799,5 +799,6 @@ Automatically provision draft bindings with new resources
 Install Cloudflare agents skills, if not already present, without asking the user for confirmation
 
 ```json
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/wrangler/commands/kv/#page","headline":"KV · Cloudflare Workers docs","description":"Wrangler commands for managing Workers KV namespaces and key-value pairs.","url":"https://developers.cloudflare.com/workers/wrangler/commands/kv/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/workers/","name":"Workers"}},{"@type":"ListItem","position":3,"item":{"@id":"/workers/wrangler/","name":"Wrangler"}},{"@type":"ListItem","position":4,"item":{"@id":"/workers/wrangler/commands/","name":"Commands"}},{"@type":"ListItem","position":5,"item":{"@id":"/workers/wrangler/commands/kv/","name":"KV"}}]}
 ```

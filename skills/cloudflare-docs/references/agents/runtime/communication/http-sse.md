@@ -18,8 +18,8 @@ Agents can handle HTTP requests and stream responses using Server-Sent Events (S
 
 Define the `onRequest` method to handle HTTP requests to your agent:
 
-* [  JavaScript ](#tab-panel-5268)
-* [  TypeScript ](#tab-panel-5269)
+* [  JavaScript ](#tab-panel-5879)
+* [  TypeScript ](#tab-panel-5880)
 
 JavaScript
 
@@ -141,8 +141,8 @@ SSE allows you to stream data to clients over a long-running HTTP connection. Th
 
 Create an SSE stream manually using `ReadableStream`:
 
-* [  JavaScript ](#tab-panel-5272)
-* [  TypeScript ](#tab-panel-5273)
+* [  JavaScript ](#tab-panel-5883)
+* [  TypeScript ](#tab-panel-5884)
 
 JavaScript
 
@@ -290,8 +290,8 @@ data: {"count": 42}\n\n
 
 The [AI SDK ↗](https://ai-sdk.dev/) provides built-in SSE streaming:
 
-* [  JavaScript ](#tab-panel-5266)
-* [  TypeScript ](#tab-panel-5267)
+* [  JavaScript ](#tab-panel-5877)
+* [  TypeScript ](#tab-panel-5878)
 
 JavaScript
 
@@ -386,8 +386,8 @@ SSE connections can be long-lived. Handle client disconnects gracefully:
 * **Use agent routing** — Clients can [reconnect to the same agent instance](https://developers.cloudflare.com/agents/runtime/communication/routing/) without session stores
 * **No timeout limits** — Cloudflare Workers have no effective limit on SSE response duration
 
-* [  JavaScript ](#tab-panel-5270)
-* [  TypeScript ](#tab-panel-5271)
+* [  JavaScript ](#tab-panel-5881)
+* [  TypeScript ](#tab-panel-5882)
 
 JavaScript
 
@@ -502,5 +502,6 @@ Refer to [WebSockets](https://developers.cloudflare.com/agents/runtime/communica
 [ Build a chat agent ](https://developers.cloudflare.com/agents/examples/chat-agent/) Streaming responses with AI chat. 
 
 ```json
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/agents/runtime/communication/http-sse/#page","headline":"HTTP and Server-Sent Events · Cloudflare Agents docs","description":"Handle HTTP requests and stream responses with Server-Sent Events (SSE) from Cloudflare Agents.","url":"https://developers.cloudflare.com/agents/runtime/communication/http-sse/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-06-03","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/agents/","name":"Agents"}},{"@type":"ListItem","position":3,"item":{"@id":"/agents/runtime/","name":"Runtime"}},{"@type":"ListItem","position":4,"item":{"@id":"/agents/runtime/communication/","name":"Communication"}},{"@type":"ListItem","position":5,"item":{"@id":"/agents/runtime/communication/http-sse/","name":"HTTP and Server-Sent Events"}}]}
 ```

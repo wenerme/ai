@@ -28,8 +28,8 @@ The recommended procedure to enable IP geolocation information is to [enable the
 
 If you only want the request header for the visitor's country, you can enable **IP Geolocation**.
 
-* [ Dashboard ](#tab-panel-7218)
-* [ API ](#tab-panel-7219)
+* [ Dashboard ](#tab-panel-9372)
+* [ API ](#tab-panel-9373)
 
 To enable **IP Geolocation** in the dashboard:
 
@@ -52,5 +52,6 @@ If you find an IP address with a location that you believe is incorrect, fill in
 If the data is confirmed, Cloudflare will make the necessary changes, which should be reflected within 48 hours.
 
 ```json
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/network/ip-geolocation/#page","headline":"IP geolocation · Cloudflare Network settings docs","description":"Add visitor country information via the CF-IPCountry header.","url":"https://developers.cloudflare.com/network/ip-geolocation/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Geolocation"]}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/network/","name":"Network"}},{"@type":"ListItem","position":3,"item":{"@id":"/network/ip-geolocation/","name":"IP geolocation"}}]}
 ```

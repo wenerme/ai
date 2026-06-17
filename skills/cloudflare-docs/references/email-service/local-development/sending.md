@@ -33,8 +33,8 @@ Use a Node version manager like [Volta ↗](https://volta.sh/) or [nvm ↗](http
 
 Configure your Wrangler file with the email binding:
 
-* [  wrangler.jsonc ](#tab-panel-8304)
-* [  wrangler.toml ](#tab-panel-8305)
+* [  wrangler.jsonc ](#tab-panel-8525)
+* [  wrangler.toml ](#tab-panel-8526)
 
 JSONC
 
@@ -46,7 +46,7 @@ JSONC
 
   // Set this to today's date
 
-  "compatibility_date": "2026-06-10",
+  "compatibility_date": "2026-06-17",
 
   "send_email": [{ "name": "EMAIL" }],
 
@@ -63,7 +63,7 @@ name = "email-sending-worker"
 
 # Set this to today's date
 
-compatibility_date = "2026-06-10"
+compatibility_date = "2026-06-17"
 
 
 [[send_email]]
@@ -79,8 +79,8 @@ Using [remote bindings](https://developers.cloudflare.com/workers/development-te
 
 Set `remote: true` on the email binding in your Wrangler configuration:
 
-* [  wrangler.jsonc ](#tab-panel-8306)
-* [  wrangler.toml ](#tab-panel-8307)
+* [  wrangler.jsonc ](#tab-panel-8527)
+* [  wrangler.toml ](#tab-panel-8528)
 
 JSONC
 
@@ -92,7 +92,7 @@ JSONC
 
   // Set this to today's date
 
-  "compatibility_date": "2026-06-10",
+  "compatibility_date": "2026-06-17",
 
   "send_email": [
 
@@ -119,7 +119,7 @@ name = "email-sending-worker"
 
 # Set this to today's date
 
-compatibility_date = "2026-06-10"
+compatibility_date = "2026-06-17"
 
 
 [[send_email]]
@@ -309,5 +309,6 @@ This limitation only affects local development — `ArrayBuffer` content works c
 * See advanced patterns: [Email sending examples](https://developers.cloudflare.com/email-service/examples/email-sending/)
 
 ```json
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/email-service/local-development/sending/#page","headline":"Email sending · Cloudflare Email Service docs","description":"Test Email Service sending Workers locally using wrangler dev with simulated email delivery.","url":"https://developers.cloudflare.com/email-service/local-development/sending/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-06-09","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/email-service/","name":"Email Service"}},{"@type":"ListItem","position":3,"item":{"@id":"/email-service/local-development/","name":"Local development"}},{"@type":"ListItem","position":4,"item":{"@id":"/email-service/local-development/sending/","name":"Email sending"}}]}
 ```

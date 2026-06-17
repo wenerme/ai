@@ -204,9 +204,9 @@ Most projects will have existing build and development scripts, as well as some 
 
 We recommend you commit your generated types file for use in CI. You can run `wrangler types` before other CI commands, as it should not take more than a few seconds. For example:
 
-* [ npm ](#tab-panel-10651)
-* [ yarn ](#tab-panel-10652)
-* [ pnpm ](#tab-panel-10653)
+* [ npm ](#tab-panel-11830)
+* [ yarn ](#tab-panel-11831)
+* [ pnpm ](#tab-panel-11832)
 
 YAML
 
@@ -249,9 +249,9 @@ YAML
 
 Alternatively, if you commit your generated types file and want to verify it stays up-to-date in CI, you can use the `--check` flag:
 
-* [ npm ](#tab-panel-10654)
-* [ yarn ](#tab-panel-10655)
-* [ pnpm ](#tab-panel-10656)
+* [ npm ](#tab-panel-11833)
+* [ yarn ](#tab-panel-11834)
+* [ pnpm ](#tab-panel-11835)
 
 YAML
 
@@ -302,5 +302,6 @@ This fails the CI job if the committed types file is out-of-date, prompting deve
 * [TypeScript Examples](https://developers.cloudflare.com/workers/examples/?languages=TypeScript)
 
 ```json
+{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/workers/languages/typescript/#page","headline":"Write Cloudflare Workers in TypeScript · Cloudflare Workers docs","description":"Use TypeScript with fully typed APIs to build Cloudflare Workers.","url":"https://developers.cloudflare.com/workers/languages/typescript/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/workers/","name":"Workers"}},{"@type":"ListItem","position":3,"item":{"@id":"/workers/languages/","name":"Languages"}},{"@type":"ListItem","position":4,"item":{"@id":"/workers/languages/typescript/","name":"TypeScript"}}]}
 ```

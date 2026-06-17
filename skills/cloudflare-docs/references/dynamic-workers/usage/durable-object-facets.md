@@ -32,8 +32,8 @@ The supervisor's database and the facet's database are stored together as part o
 
 Your Worker needs two things: a Durable Object class with a SQLite storage backend, and a Worker Loader binding.
 
-* [  wrangler.jsonc ](#tab-panel-5896)
-* [  wrangler.toml ](#tab-panel-5897)
+* [  wrangler.jsonc ](#tab-panel-8439)
+* [  wrangler.toml ](#tab-panel-8440)
 
 JSONC
 
@@ -45,7 +45,7 @@ JSONC
 
   // Set this to today's date
 
-  "compatibility_date": "2026-04-29",
+  "compatibility_date": "2026-06-17",
 
   "main": "src/index.ts",
 
@@ -86,7 +86,7 @@ TOML
 
 # Set this to today's date
 
-compatibility_date = "2026-04-29"
+compatibility_date = "2026-06-17"
 
 main = "src/index.ts"
 
@@ -111,8 +111,8 @@ The following example shows a supervisor Durable Object (`AppRunner`) that loads
 
 The dynamic code is a simple counter app that tracks how many requests it has received, using its own SQLite-backed storage. In a real application, this code would come from an AI agent or user upload rather than a static string.
 
-* [  JavaScript ](#tab-panel-5898)
-* [  TypeScript ](#tab-panel-5899)
+* [  JavaScript ](#tab-panel-8441)
+* [  TypeScript ](#tab-panel-8442)
 
 JavaScript
 
@@ -446,5 +446,6 @@ This isolation means you do not need to trust the dynamic code with your supervi
 In production, you would typically store the dynamic code itself in the supervisor's database and load it in the `#loadDynamicWorker()` method. This keeps the code paired with the Durable Object instance that manages it.
 
 ```json
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/dynamic-workers/usage/durable-object-facets/#page","headline":"Durable Object Facets · Cloudflare Dynamic Workers docs","description":"Run dynamically-loaded code with isolated persistent storage.","url":"https://developers.cloudflare.com/dynamic-workers/usage/durable-object-facets/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/dynamic-workers/","name":"Dynamic Workers"}},{"@type":"ListItem","position":3,"item":{"@id":"/dynamic-workers/usage/","name":"Usage"}},{"@type":"ListItem","position":4,"item":{"@id":"/dynamic-workers/usage/durable-object-facets/","name":"Durable Object Facets"}}]}
 ```

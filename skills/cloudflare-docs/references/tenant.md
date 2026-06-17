@@ -26,5 +26,6 @@ As you dive into the Tenant API, take advantage of the following resources:
 * [Reference topics](https://developers.cloudflare.com/tenant/reference/) contains detailed information about the Tenant API, including a list of available zone and account-level subscriptions.
 
 ```json
+{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/tenant/#page","headline":"Overview · Cloudflare Tenant docs","description":"Provision and manage Cloudflare accounts and services for customers using the Tenant API.","url":"https://developers.cloudflare.com/tenant/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/tenant/","name":"Tenant"}}]}
 ```

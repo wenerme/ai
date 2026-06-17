@@ -43,8 +43,8 @@ This guide covers how to configure [Slack ↗](https://slack.com/help/articles/2
 
 ## 3\. Add a SAML SSO provider to Slack
 
-* [ business+ plan ](#tab-panel-5043)
-* [ enterprise grid plan ](#tab-panel-5044)
+* [ business+ plan ](#tab-panel-7109)
+* [ enterprise grid plan ](#tab-panel-7110)
 
 1. In Slack, go to **Settings & administrations** \> **Workspace settings** \> **Authentication**.
 2. Select **Configure**.
@@ -76,5 +76,6 @@ This guide covers how to configure [Slack ↗](https://slack.com/help/articles/2
 8. If all works well, select **Turn on SSO** or **Add SSO**.
 
 ```json
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/access-controls/applications/http-apps/saas-apps/slack-saas/#page","headline":"Slack · Cloudflare One docs","description":"Integrate Slack with Access.","url":"https://developers.cloudflare.com/cloudflare-one/access-controls/applications/http-apps/saas-apps/slack-saas/","inLanguage":"en","image":"https://developers.cloudflare.com/zt-preview.png","dateModified":"2026-05-06","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["SAML","Slack"]}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/cloudflare-one/","name":"Cloudflare One"}},{"@type":"ListItem","position":3,"item":{"@id":"/cloudflare-one/access-controls/","name":"Access controls"}},{"@type":"ListItem","position":4,"item":{"@id":"/cloudflare-one/access-controls/applications/","name":"Applications"}},{"@type":"ListItem","position":5,"item":{"@id":"/cloudflare-one/access-controls/applications/http-apps/","name":"Add web applications"}},{"@type":"ListItem","position":6,"item":{"@id":"/cloudflare-one/access-controls/applications/http-apps/saas-apps/","name":"SaaS applications"}},{"@type":"ListItem","position":7,"item":{"@id":"/cloudflare-one/access-controls/applications/http-apps/saas-apps/slack-saas/","name":"Slack"}}]}
 ```

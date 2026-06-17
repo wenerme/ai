@@ -51,8 +51,8 @@ Terraform assumes that it has complete control over account and zone rulesets. I
 
 This example configures the [HTTP DDoS Attack Protection](https://developers.cloudflare.com/ddos-protection/managed-rulesets/http/) managed ruleset for a zone using Terraform.
 
-* [ Terraform (v5) ](#tab-panel-10065)
-* [ Terraform (v4) ](#tab-panel-10066)
+* [ Terraform (v5) ](#tab-panel-10928)
+* [ Terraform (v4) ](#tab-panel-10929)
 
 Required API token permissions
 
@@ -245,8 +245,8 @@ Important
 * Only Magic Transit and Spectrum customers on an Enterprise plan can configure this managed ruleset using overrides.
 * This managed ruleset only supports overrides at the account level.
 
-* [ Terraform (v5) ](#tab-panel-10067)
-* [ Terraform (v4) ](#tab-panel-10068)
+* [ Terraform (v5) ](#tab-panel-10930)
+* [ Terraform (v4) ](#tab-panel-10931)
 
 Required API token permissions
 
@@ -383,8 +383,8 @@ Important considerations
 * Since rules are evaluated in order and the first one to match the conditions of both the expression and the sensitivity level will get applied, take care when editing and reordering existing rules. Changing a rule from Block to Log may allow attack traffic to reach your web property.
 * Overrides will not affect read-only rules in the managed ruleset.
 
-* [ Terraform (v5) ](#tab-panel-10069)
-* [ Terraform (v4) ](#tab-panel-10070)
+* [ Terraform (v5) ](#tab-panel-10932)
+* [ Terraform (v4) ](#tab-panel-10933)
 
 Required API token permissions
 
@@ -725,5 +725,6 @@ resource "cloudflare_ruleset" "zone_level_http_ddos_config" {
 ```
 
 ```json
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/terraform/additional-configurations/ddos-managed-rulesets/#page","headline":"DDoS managed rulesets configuration using Terraform · Cloudflare Terraform docs","description":"Configure Cloudflare DDoS managed rulesets at the zone or account level using Terraform.","url":"https://developers.cloudflare.com/terraform/additional-configurations/ddos-managed-rulesets/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-29","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/terraform/","name":"Terraform"}},{"@type":"ListItem","position":3,"item":{"@id":"/terraform/additional-configurations/","name":"Additional configurations"}},{"@type":"ListItem","position":4,"item":{"@id":"/terraform/additional-configurations/ddos-managed-rulesets/","name":"DDoS managed rulesets configuration using Terraform"}}]}
 ```

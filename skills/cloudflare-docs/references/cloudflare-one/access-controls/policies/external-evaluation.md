@@ -57,8 +57,8 @@ The command will output the binding name and KV namespace ID, for example
    * `[[kv_namespaces]]`: Add the output generated in the previous step.  
    * `<TEAM_NAME>`: your Cloudflare One team name.
 
-* [  wrangler.jsonc ](#tab-panel-5099)
-* [  wrangler.toml ](#tab-panel-5100)
+* [  wrangler.jsonc ](#tab-panel-7165)
+* [  wrangler.toml ](#tab-panel-7166)
 
 JSONC
 
@@ -74,7 +74,7 @@ JSONC
 
   // Set this to today's date
 
-  "compatibility_date": "2026-05-18",
+  "compatibility_date": "2026-06-17",
 
   "main": "index.js",
 
@@ -115,7 +115,7 @@ workers_dev = true
 
 # Set this to today's date
 
-compatibility_date = "2026-05-18"
+compatibility_date = "2026-06-17"
 
 main = "index.js"
 
@@ -222,5 +222,6 @@ Access checks the outgoing JWT for all of the following criteria:
 If any condition fails, the External Evaluation rule evaluates to false.
 
 ```json
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/access-controls/policies/external-evaluation/#page","headline":"External Evaluation rules · Cloudflare One docs","description":"External Evaluation rules in Access.","url":"https://developers.cloudflare.com/cloudflare-one/access-controls/policies/external-evaluation/","inLanguage":"en","image":"https://developers.cloudflare.com/zt-preview.png","dateModified":"2026-05-06","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["JavaScript","JSON web token (JWT)"]}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/cloudflare-one/","name":"Cloudflare One"}},{"@type":"ListItem","position":3,"item":{"@id":"/cloudflare-one/access-controls/","name":"Access controls"}},{"@type":"ListItem","position":4,"item":{"@id":"/cloudflare-one/access-controls/policies/","name":"Policies"}},{"@type":"ListItem","position":5,"item":{"@id":"/cloudflare-one/access-controls/policies/external-evaluation/","name":"External Evaluation rules"}}]}
 ```

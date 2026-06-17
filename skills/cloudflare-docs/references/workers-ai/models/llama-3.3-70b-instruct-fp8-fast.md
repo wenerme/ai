@@ -36,10 +36,10 @@ Try out this model with Workers AI LLM Playground. It does not require any setup
 
 ## Usage
 
-* [  Worker (Streaming) ](#tab-panel-4789)
-* [  TypeScript ](#tab-panel-4790)
-* [  Python ](#tab-panel-4791)
-* [  curl ](#tab-panel-4792)
+* [  Worker (Streaming) ](#tab-panel-4970)
+* [  TypeScript ](#tab-panel-4971)
+* [  Python ](#tab-panel-4972)
+* [  curl ](#tab-panel-4973)
 
 TypeScript
 
@@ -198,8 +198,8 @@ Workers AI also supports OpenAI compatible API endpoints for `/v1/chat/completio
 
 Synchronous — Send a request and receive a complete response 
 
-* [ Input ](#tab-panel-4793)
-* [ Output ](#tab-panel-4794)
+* [ Input ](#tab-panel-4974)
+* [ Output ](#tab-panel-4975)
 
 prompt
 
@@ -267,8 +267,8 @@ response
 
 Streaming — Send a request with \`stream: true\` and receive server-sent events 
 
-* [ Input ](#tab-panel-4795)
-* [ Output ](#tab-panel-4796)
+* [ Input ](#tab-panel-4976)
+* [ Output ](#tab-panel-4977)
 
 prompt
 
@@ -336,8 +336,8 @@ format
 
 Batch — Send multiple requests in a single API call 
 
-* [ Input ](#tab-panel-4797)
-* [ Output ](#tab-panel-4798)
+* [ Input ](#tab-panel-4978)
+* [ Output ](#tab-panel-4979)
 
 ▶requests\[\]
 
@@ -370,5 +370,6 @@ response
  Batch Output [ ](https://developers.cloudflare.com/workers-ai/models/llama-3.3-70b-instruct-fp8-fast/batch-output.json "Open") [ ](https://developers.cloudflare.com/workers-ai/models/llama-3.3-70b-instruct-fp8-fast/batch-output.json "Download") 
 
 ```json
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers-ai/models/llama-3.3-70b-instruct-fp8-fast/#page","headline":"llama-3.3-70b-instruct-fp8-fast (Meta) · Cloudflare AI docs · Cloudflare Workers AI docs","description":"Llama 3.3 70B quantized to fp8 precision, optimized to be faster.","url":"https://developers.cloudflare.com/workers-ai/models/llama-3.3-70b-instruct-fp8-fast/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/workers-ai/","name":"Workers AI"}},{"@type":"ListItem","position":3,"item":{"@id":"/workers-ai/models/","name":"Models"}}]}
 ```

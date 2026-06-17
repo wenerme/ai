@@ -20,8 +20,8 @@ Note
 
 AI Search supports [bringing your own models natively](https://developers.cloudflare.com/ai-search/configuration/models/). You can attach provider keys through AI Gateway and select third-party models directly in your AI Search settings. The example below still works, but the recommended approach is to configure your external model through AI Gateway.
 
-* [  JavaScript ](#tab-panel-4582)
-* [  TypeScript ](#tab-panel-4583)
+* [  JavaScript ](#tab-panel-6621)
+* [  TypeScript ](#tab-panel-6622)
 
 JavaScript
 
@@ -201,5 +201,6 @@ export default {
 ```
 
 ```json
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai-search/how-to/bring-your-own-generation-model/#page","headline":"Bring your own generation model · Cloudflare AI Search docs","description":"Use AI Search for retrieval while generating responses with an external model like OpenAI.","url":"https://developers.cloudflare.com/ai-search/how-to/bring-your-own-generation-model/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-20","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["AI"]}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/ai-search/","name":"AI Search"}},{"@type":"ListItem","position":3,"item":{"@id":"/ai-search/how-to/","name":"How to"}},{"@type":"ListItem","position":4,"item":{"@id":"/ai-search/how-to/bring-your-own-generation-model/","name":"Bring your own generation model"}}]}
 ```

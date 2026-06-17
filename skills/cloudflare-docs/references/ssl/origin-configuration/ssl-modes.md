@@ -130,8 +130,8 @@ To use Custom SSL/TLS, select the custom option (if you prefer to manually set t
 
 ## Update your encryption mode
 
-* [ Dashboard ](#tab-panel-10089)
-* [ API ](#tab-panel-10090)
+* [ Dashboard ](#tab-panel-10650)
+* [ API ](#tab-panel-10651)
 
 To change your encryption mode in the dashboard:
 
@@ -146,5 +146,6 @@ Note
 To use this feature on specific hostnames - instead of across your entire zone - use a [configuration rule](https://developers.cloudflare.com/rules/configuration-rules/).
 
 ```json
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ssl/origin-configuration/ssl-modes/#page","headline":"Encryption modes · Cloudflare SSL/TLS docs","description":"Encryption modes allow you to control how Cloudflare connects to your origin web server and how certificates presented by your origin are validated.","url":"https://developers.cloudflare.com/ssl/origin-configuration/ssl-modes/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/ssl/","name":"SSL/TLS"}},{"@type":"ListItem","position":3,"item":{"@id":"/ssl/origin-configuration/","name":"Origin server"}},{"@type":"ListItem","position":4,"item":{"@id":"/ssl/origin-configuration/ssl-modes/","name":"Encryption modes"}}]}
 ```

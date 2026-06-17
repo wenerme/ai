@@ -116,8 +116,8 @@ Replace `my-data-bucket` with your R2 bucket name. Create the bucket first in th
 
 Replace `src/index.ts` with code that mounts R2 and processes data:
 
-* [  JavaScript ](#tab-panel-10278)
-* [  TypeScript ](#tab-panel-10279)
+* [  JavaScript ](#tab-panel-10519)
+* [  TypeScript ](#tab-panel-10520)
 
 JavaScript
 
@@ -607,5 +607,6 @@ In this tutorial, you built a data pipeline that demonstrates filesystem persist
 * [Sandboxes concept](https://developers.cloudflare.com/sandbox/concepts/sandboxes/) \- Understanding sandbox lifecycle
 
 ```json
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/sandbox/tutorials/persistent-storage/#page","headline":"Data persistence with R2 · Cloudflare Sandbox SDK docs","description":"Mount R2 buckets as local filesystem paths to persist data across sandbox lifecycles.","url":"https://developers.cloudflare.com/sandbox/tutorials/persistent-storage/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-05-11","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/sandbox/","name":"Sandbox SDK"}},{"@type":"ListItem","position":3,"item":{"@id":"/sandbox/tutorials/","name":"Tutorials"}},{"@type":"ListItem","position":4,"item":{"@id":"/sandbox/tutorials/persistent-storage/","name":"Data persistence with R2"}}]}
 ```

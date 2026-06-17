@@ -53,8 +53,8 @@ For details, refer to [How Cloudflare calculates Tunnel health alerts](https://d
 
 ## Set up Tunnel Health Alerts
 
-* [ Dashboard ](#tab-panel-6431)
-* [ API ](#tab-panel-6432)
+* [ Dashboard ](#tab-panel-9051)
+* [ API ](#tab-panel-9052)
 
 1. Go to the **Notifications** page.  
 [ Go to **Notifications** ](https://dash.cloudflare.com/?to=/:account/notifications)
@@ -255,5 +255,6 @@ Cloudflare also recommends that you enable the following account notifications f
 Refer to [Cloudflare Notifications](https://developers.cloudflare.com/notifications/) for more information on how to enable these notifications.
 
 ```json
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/learning-paths/data-center-protection/enable-notifications/#page","headline":"Enable Notifications · Cloudflare Learning Paths","description":"Learn about enable notifications in this guide.","url":"https://developers.cloudflare.com/learning-paths/data-center-protection/enable-notifications/","inLanguage":"en","image":"https://developers.cloudflare.com/cf-twitter-card.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/learning-paths/","name":"Learning Paths"}},{"@type":"ListItem","position":3,"item":{"@id":"/learning-paths/data-center-protection/enable-notifications/","name":"Enable Notifications"}}]}
 ```

@@ -69,8 +69,8 @@ What you get by default:
 * **Visibility.** Worker egress shows up in Gateway [DNS](https://developers.cloudflare.com/cloudflare-one/traffic-policies/dns-policies/), [HTTP](https://developers.cloudflare.com/cloudflare-one/traffic-policies/http-policies/), and [Network](https://developers.cloudflare.com/cloudflare-one/traffic-policies/network-policies/) logs alongside your other traffic, so you can audit what your Workers are calling and when.
 * **Enforcement.** Any existing Gateway policy whose selectors match a Worker request will apply — including allow / block lists, DNS category filtering, and HTTP destination rules. If you have already blocked a category for your workforce, your Workers inherit that block.
 
-* [  wrangler.jsonc ](#tab-panel-7008)
-* [  wrangler.toml ](#tab-panel-7009)
+* [  wrangler.jsonc ](#tab-panel-7174)
+* [  wrangler.toml ](#tab-panel-7175)
 
 JSONC
 
@@ -112,8 +112,8 @@ remote = true
 
 ```
 
-* [  JavaScript ](#tab-panel-7010)
-* [  TypeScript ](#tab-panel-7011)
+* [  JavaScript ](#tab-panel-7176)
+* [  TypeScript ](#tab-panel-7177)
 
 JavaScript
 
@@ -4830,8 +4830,8 @@ Zero Trust Dashboard will automatically accept your user-level preferences for s
 
 ![Zero Trust dashboard supports dark mode](https://developers.cloudflare.com/_astro/dark-mode.DfLeS20d_Z2kTwNR.webp) 
 
-* [ Zero Trust Dashboard ](#tab-panel-7006)
-* [ Core Dashboard ](#tab-panel-7007)
+* [ Zero Trust Dashboard ](#tab-panel-7172)
+* [ Core Dashboard ](#tab-panel-7173)
 
 To update your view preference in the Zero Trust dashboard:
 
@@ -5508,5 +5508,6 @@ Older product updates
 * [Cloudflare One Client](https://developers.cloudflare.com/changelog/cloudflare-one-client/)
 
 ```json
+{"@context":"https://schema.org","@type":"BlogPosting","@id":"https://developers.cloudflare.com/cloudflare-one/changelog/#page","headline":"Changelog · Cloudflare One docs","description":"Review recent changes to Cloudflare One.","url":"https://developers.cloudflare.com/cloudflare-one/changelog/","inLanguage":"en","image":"https://developers.cloudflare.com/zt-preview.png","dateModified":"2026-04-17","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/cloudflare-one/","name":"Cloudflare One"}},{"@type":"ListItem","position":3,"item":{"@id":"/cloudflare-one/changelog/","name":"Changelog"}}]}
 ```

@@ -205,8 +205,8 @@ You now have a D1 database in your Cloudflare account with a binding to your Clo
 
 Copy the last part of the command output and paste it into your Wrangler file. It should look similar to this:
 
-* [  wrangler.jsonc ](#tab-panel-7285)
-* [  wrangler.toml ](#tab-panel-7286)
+* [  wrangler.jsonc ](#tab-panel-7937)
+* [  wrangler.toml ](#tab-panel-7938)
 
 JSONC
 
@@ -222,7 +222,7 @@ JSONC
 
   // Set this to today's date
 
-  "compatibility_date": "2026-06-03",
+  "compatibility_date": "2026-06-17",
 
   "compatibility_flags": [
 
@@ -267,7 +267,7 @@ main = "src/index.ts"
 
 # Set this to today's date
 
-compatibility_date = "2026-06-03"
+compatibility_date = "2026-06-17"
 
 compatibility_flags = [ "nodejs_compat" ]
 
@@ -344,8 +344,8 @@ model User {
 
 Now, run the following command in your terminal to generate the SQL statement that creates a `User` table equivalent to the `User` model above:
 
-* [ Prisma (v7) ](#tab-panel-7283)
-* [ Prisma (v6) ](#tab-panel-7284)
+* [ Prisma (v7) ](#tab-panel-7935)
+* [ Prisma (v6) ](#tab-panel-7936)
 
 Terminal window
 
@@ -483,8 +483,8 @@ To query your database from the Worker using Prisma ORM, you need to:
 
 Open `src/index.ts` and replace the entire content with the following:
 
-* [  JavaScript ](#tab-panel-7287)
-* [  TypeScript ](#tab-panel-7288)
+* [  JavaScript ](#tab-panel-7939)
+* [  TypeScript ](#tab-panel-7940)
 
 JavaScript
 
@@ -621,5 +621,6 @@ By finishing this tutorial, you have deployed a Cloudflare Worker using D1 as a 
 * [Developer Experience Redefined: Prisma & Cloudflare Lead the Way to Data DX ↗](https://www.prisma.io/blog/cloudflare-partnership-qerefgvwirjq).
 
 ```json
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/d1/tutorials/d1-and-prisma-orm/#page","headline":"Query D1 using Prisma ORM · Cloudflare D1 docs","description":"This tutorial shows you how to set up and deploy a Cloudflare Worker that is accessing a D1 database from scratch.","url":"https://developers.cloudflare.com/d1/tutorials/d1-and-prisma-orm/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-03-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["TypeScript","SQL"]}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/d1/","name":"D1"}},{"@type":"ListItem","position":3,"item":{"@id":"/d1/tutorials/","name":"Tutorials"}},{"@type":"ListItem","position":4,"item":{"@id":"/d1/tutorials/d1-and-prisma-orm/","name":"Query D1 using Prisma ORM"}}]}
 ```

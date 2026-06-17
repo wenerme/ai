@@ -63,8 +63,8 @@ Most dynamic advertisement operations require that you supply the Cloudflare ID 
 
 ## Obtain prefix IDs
 
-* [ Dashboard ](#tab-panel-4461)
-* [ API ](#tab-panel-4462)
+* [ Dashboard ](#tab-panel-6945)
+* [ API ](#tab-panel-6946)
 
 1. Log in to your [Cloudflare dashboard ↗](https://dash.cloudflare.com/) and select your account.
 2. Go to **IP Addresses** \> **BYOIP Prefixes**.
@@ -74,5 +74,6 @@ Most dynamic advertisement operations require that you supply the Cloudflare ID 
 To obtain prefix IDs using the API, refer to the [list prefixes](https://developers.cloudflare.com/api/resources/addressing/subresources/prefixes/methods/list/) operation in the Cloudflare API.
 
 ```json
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/byoip/concepts/dynamic-advertisement/best-practices/#page","headline":"Best practices for dynamic advertisement · Cloudflare BYOIP docs","description":"Best practices for managing dynamic IP prefix advertisement.","url":"https://developers.cloudflare.com/byoip/concepts/dynamic-advertisement/best-practices/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/byoip/","name":"BYOIP"}},{"@type":"ListItem","position":3,"item":{"@id":"/byoip/concepts/","name":"Concepts"}},{"@type":"ListItem","position":4,"item":{"@id":"/byoip/concepts/dynamic-advertisement/","name":"Dynamic advertisement"}},{"@type":"ListItem","position":5,"item":{"@id":"/byoip/concepts/dynamic-advertisement/best-practices/","name":"Best practices"}}]}
 ```

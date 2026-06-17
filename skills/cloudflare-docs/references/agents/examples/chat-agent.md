@@ -53,8 +53,8 @@ npm install agents @cloudflare/ai-chat ai workers-ai-provider zod
 
 Replace your `wrangler.jsonc` with:
 
-* [  wrangler.jsonc ](#tab-panel-5260)
-* [  wrangler.toml ](#tab-panel-5261)
+* [  wrangler.jsonc ](#tab-panel-5443)
+* [  wrangler.toml ](#tab-panel-5444)
 
 JSONC
 
@@ -68,7 +68,7 @@ JSONC
 
   // Set this to today's date
 
-  "compatibility_date": "2026-06-10",
+  "compatibility_date": "2026-06-17",
 
   "compatibility_flags": ["nodejs_compat"],
 
@@ -97,7 +97,7 @@ main = "src/server.ts"
 
 # Set this to today's date
 
-compatibility_date = "2026-06-10"
+compatibility_date = "2026-06-17"
 
 compatibility_flags = [ "nodejs_compat" ]
 
@@ -133,8 +133,8 @@ Key settings:
 
 Create `src/server.ts`. This is where your agent lives:
 
-* [  JavaScript ](#tab-panel-5262)
-* [  TypeScript ](#tab-panel-5263)
+* [  JavaScript ](#tab-panel-5445)
+* [  TypeScript ](#tab-panel-5446)
 
 JavaScript
 
@@ -542,8 +542,8 @@ export default {
 
 Create `src/client.tsx`:
 
-* [  JavaScript ](#tab-panel-5264)
-* [  TypeScript ](#tab-panel-5265)
+* [  JavaScript ](#tab-panel-5447)
+* [  TypeScript ](#tab-panel-5448)
 
 JavaScript
 
@@ -1043,5 +1043,6 @@ Your chat agent has:
 [ Human-in-the-loop ](https://developers.cloudflare.com/agents/concepts/agentic-patterns/human-in-the-loop/) Deeper patterns for approval flows and manual intervention. 
 
 ```json
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/agents/examples/chat-agent/#page","headline":"Chat agent · Cloudflare Agents docs","description":"Build a streaming AI chat agent with tools using Workers AI — no API keys required.","url":"https://developers.cloudflare.com/agents/examples/chat-agent/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-06-09","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/agents/","name":"Agents"}},{"@type":"ListItem","position":3,"item":{"@id":"/agents/examples/","name":"Examples"}},{"@type":"ListItem","position":4,"item":{"@id":"/agents/examples/chat-agent/","name":"Chat agent"}}]}
 ```

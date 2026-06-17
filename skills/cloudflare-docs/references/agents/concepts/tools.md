@@ -26,7 +26,7 @@ Cloudflare Agents support several tool patterns. Choose the smallest one that fi
 | Client-side tools | The tool needs browser APIs such as geolocation, clipboard, or local storage              | [Chat agents](https://developers.cloudflare.com/agents/communication-channels/chat/chat-agents/#client-side-tools) |
 | Human approvals   | The tool is sensitive and needs a user decision before it runs                            | [Human-in-the-loop](https://developers.cloudflare.com/agents/concepts/agentic-patterns/human-in-the-loop/)         |
 | MCP tools         | You want to expose or consume tools through the Model Context Protocol                    | [Model Context Protocol](https://developers.cloudflare.com/agents/model-context-protocol/)                         |
-| Agent tools       | You want a chat agent to run another chat-capable sub-agent as a retained, streaming tool | [Agent tools](https://developers.cloudflare.com/agents/runtime/execution/agent-tools/)                             |
+| Agents as tools   | You want a chat agent to run another chat-capable sub-agent as a retained, streaming tool | [Agents as tools](https://developers.cloudflare.com/agents/runtime/execution/agent-tools/)                         |
 
 ### Understanding tools
 
@@ -64,5 +64,6 @@ Tools that handle data transformation and analysis are essential for many AI wor
 * Data validation
 
 ```json
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/agents/concepts/tools/#page","headline":"Tools · Cloudflare Agents docs","description":"Define and use tools in Cloudflare Agents to interact with external APIs, process data, and perform actions.","url":"https://developers.cloudflare.com/agents/concepts/tools/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-06-09","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/agents/","name":"Agents"}},{"@type":"ListItem","position":3,"item":{"@id":"/agents/concepts/","name":"Concepts"}},{"@type":"ListItem","position":4,"item":{"@id":"/agents/concepts/tools/","name":"Tools"}}]}
 ```

@@ -36,5 +36,6 @@ Stream logs from Cloudflare products to external destinations. [Learn more about
 2. [Configure Logpush](https://developers.cloudflare.com/logs/logpush/)
 
 ```json
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/use-cases/saas/usage-analytics/#page","headline":"Observe customer usage and billing · Cloudflare use cases","description":"Track usage across tenants for billing, optimization, and insights.","url":"https://developers.cloudflare.com/use-cases/saas/usage-analytics/","inLanguage":"en","image":"https://developers.cloudflare.com/cf-twitter-card.png","dateModified":"2026-04-24","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/use-cases/","name":"Use cases"}},{"@type":"ListItem","position":3,"item":{"@id":"/use-cases/saas/","name":"SaaS platforms"}},{"@type":"ListItem","position":4,"item":{"@id":"/use-cases/saas/usage-analytics/","name":"Observe customer usage and billing"}}]}
 ```

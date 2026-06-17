@@ -166,7 +166,7 @@ assembly / assemblyMergeStrategy := {
 }
 
 
-// For Java  17 Compatability
+// For Java  17 Compatibility
 
 Compile / javacOptions ++= Seq("--release", "17")
 
@@ -218,14 +218,14 @@ To run the application, you will use `spark-submit`. Below is an example shell s
 
 # parts of the JVM which have been modularized and made internal).
 
-JAVA_17_COMPATABILITY="--add-opens=java.base/sun.nio.ch=ALL-UNNAMED --add-opens=java.base/java.nio=ALL-UNNAMED --add-opens=java.base/java.lang=ALL-UNNAMED --add-opens=java.base/java.util=ALL-UNNAMED --add-opens=java.base/java.util.concurrent=ALL-UNNAMED"
+JAVA_17_COMPATIBILITY="--add-opens=java.base/sun.nio.ch=ALL-UNNAMED --add-opens=java.base/java.nio=ALL-UNNAMED --add-opens=java.base/java.lang=ALL-UNNAMED --add-opens=java.base/java.util=ALL-UNNAMED --add-opens=java.base/java.util.concurrent=ALL-UNNAMED"
 
 
 spark-submit \
 
---conf "spark.driver.extraJavaOptions=$JAVA_17_COMPATABILITY" \
+--conf "spark.driver.extraJavaOptions=$JAVA_17_COMPATIBILITY" \
 
---conf "spark.executor.extraJavaOptions=$JAVA_17_COMPATABILITY" \
+--conf "spark.executor.extraJavaOptions=$JAVA_17_COMPATIBILITY" \
 
 --class com.example.R2DataCatalogDemo target/scala-2.12/R2DataCatalogDemo-assembly-1.0.jar
 
@@ -287,5 +287,6 @@ Terminal window
 ```
 
 ```json
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/r2/data-catalog/config-examples/spark-scala/#page","headline":"Spark (Scala) · Cloudflare R2 docs","description":"Build a Scala Spark application that connects to R2 Data Catalog for Iceberg table operations.","url":"https://developers.cloudflare.com/r2/data-catalog/config-examples/spark-scala/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-06-05","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/r2/","name":"R2"}},{"@type":"ListItem","position":3,"item":{"@id":"/r2/data-catalog/","name":"R2 Data Catalog"}},{"@type":"ListItem","position":4,"item":{"@id":"/r2/data-catalog/config-examples/","name":"Connect to Iceberg engines"}},{"@type":"ListItem","position":5,"item":{"@id":"/r2/data-catalog/config-examples/spark-scala/","name":"Spark (Scala)"}}]}
 ```

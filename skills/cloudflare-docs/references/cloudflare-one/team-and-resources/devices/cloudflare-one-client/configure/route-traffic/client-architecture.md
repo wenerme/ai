@@ -84,9 +84,9 @@ R -- No --> G[Cloudflare Gateway]
 
 You can verify that the operating system is using the Cloudflare One Client's local DNS proxy:
 
-* [ macOS ](#tab-panel-5354)
-* [ Windows ](#tab-panel-5355)
-* [ Linux ](#tab-panel-5356)
+* [ macOS ](#tab-panel-7438)
+* [ Windows ](#tab-panel-7439)
+* [ Linux ](#tab-panel-7440)
 
 On macOS, open a terminal window and run `scutil --dns`. The DNS servers should be set to the Cloudflare One Client's local DNS proxy IPs.
 
@@ -235,9 +235,9 @@ Virtual interfaces allow the operating system to logically subdivide a physical 
 
 To view a list of all network interfaces on the operating system:
 
-* [ Windows ](#tab-panel-5360)
-* [ macOS ](#tab-panel-5361)
-* [ Linux ](#tab-panel-5362)
+* [ Windows ](#tab-panel-7444)
+* [ macOS ](#tab-panel-7445)
+* [ Linux ](#tab-panel-7446)
 
 On Windows, run `ipconfig`. When the Cloudflare One Client is turned on, you will see an adapter called `CloudflareWARP` with your device IP.
 
@@ -357,9 +357,9 @@ The Cloudflare One Client edits the system routing table to control what IP traf
 
 You can verify that the routing table matches your Split Tunnel rules:
 
-* [ macOS ](#tab-panel-5357)
-* [ Windows ](#tab-panel-5358)
-* [ Linux ](#tab-panel-5359)
+* [ macOS ](#tab-panel-7441)
+* [ Windows ](#tab-panel-7442)
+* [ Linux ](#tab-panel-7443)
 
 To view the entire routing table on macOS, run `netstat -r`.
 
@@ -522,5 +522,6 @@ On iOS and Android/ChromeOS, the Cloudflare One Agent installs itself as a VPN c
 Note that ChromeOS runs the Android app in a virtual machine, rather than running a native Chrome app.
 
 ```json
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/route-traffic/client-architecture/#page","headline":"Client architecture · Cloudflare One docs","description":"Explore how the Cloudflare One Client routes DNS and IP traffic to apply your Zero Trust policies.","url":"https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/route-traffic/client-architecture/","inLanguage":"en","image":"https://developers.cloudflare.com/zt-preview.png","dateModified":"2026-04-17","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Wireguard"]}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/cloudflare-one/","name":"Cloudflare One"}},{"@type":"ListItem","position":3,"item":{"@id":"/cloudflare-one/team-and-resources/","name":"Team and resources"}},{"@type":"ListItem","position":4,"item":{"@id":"/cloudflare-one/team-and-resources/devices/","name":"Devices"}},{"@type":"ListItem","position":5,"item":{"@id":"/cloudflare-one/team-and-resources/devices/cloudflare-one-client/","name":"Cloudflare One Client"}},{"@type":"ListItem","position":6,"item":{"@id":"/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/","name":"Configure the Cloudflare One Client"}},{"@type":"ListItem","position":7,"item":{"@id":"/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/route-traffic/","name":"Route traffic"}},{"@type":"ListItem","position":8,"item":{"@id":"/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/route-traffic/client-architecture/","name":"Client architecture"}}]}
 ```

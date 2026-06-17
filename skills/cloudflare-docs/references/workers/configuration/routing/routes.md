@@ -61,8 +61,8 @@ Before you set up a route, make sure you have a DNS record set up for the [domai
 
 To configure a route using your [Wrangler configuration file](https://developers.cloudflare.com/workers/wrangler/configuration/), refer to the following example.
 
-* [  wrangler.jsonc ](#tab-panel-10538)
-* [  wrangler.toml ](#tab-panel-10539)
+* [  wrangler.jsonc ](#tab-panel-11483)
+* [  wrangler.toml ](#tab-panel-11484)
 
 JSONC
 
@@ -125,8 +125,8 @@ Add the `zone_name` or `zone_id` option after each route. The `zone_name` and `z
 
 To add multiple routes:
 
-* [  wrangler.jsonc ](#tab-panel-10540)
-* [  wrangler.toml ](#tab-panel-10541)
+* [  wrangler.jsonc ](#tab-panel-11485)
+* [  wrangler.toml ](#tab-panel-11486)
 
 JSONC
 
@@ -282,5 +282,6 @@ Warning
 If you have previously used the Cloudflare dashboard to add an `AAAA` record for `myname` to `example.com`, pointing to `100::` (the [reserved IPv6 discard prefix ↗](https://tools.ietf.org/html/rfc6666)), Cloudflare recommends creating a [Custom Domain](https://developers.cloudflare.com/workers/configuration/routing/custom-domains/) pointing to your Worker instead.
 
 ```json
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/configuration/routing/routes/#page","headline":"Routes · Cloudflare Workers docs","description":"Map URL patterns to Cloudflare Workers to run your code on matching requests.","url":"https://developers.cloudflare.com/workers/configuration/routing/routes/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-06-01","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/workers/","name":"Workers"}},{"@type":"ListItem","position":3,"item":{"@id":"/workers/configuration/","name":"Configuration"}},{"@type":"ListItem","position":4,"item":{"@id":"/workers/configuration/routing/","name":"Routes and domains"}},{"@type":"ListItem","position":5,"item":{"@id":"/workers/configuration/routing/routes/","name":"Routes"}}]}
 ```

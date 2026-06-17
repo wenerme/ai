@@ -96,8 +96,8 @@ The `env` attribute on the `WorkerEntrypoint` can be used to access[environment 
 
 For example, let us try setting and using an environment variable in a Python Worker. First, add the environment variable to your Worker's [Wrangler configuration file](https://developers.cloudflare.com/workers/wrangler/configuration/):
 
-* [  wrangler.jsonc ](#tab-panel-10645)
-* [  wrangler.toml ](#tab-panel-10646)
+* [  wrangler.jsonc ](#tab-panel-11824)
+* [  wrangler.toml ](#tab-panel-11825)
 
 JSONC
 
@@ -119,7 +119,7 @@ JSONC
 
   // Set this to today's date
 
-  "compatibility_date": "2026-05-28",
+  "compatibility_date": "2026-06-17",
 
   "vars": {
 
@@ -146,7 +146,7 @@ compatibility_flags = [ "python_workers" ]
 
 # Set this to today's date
 
-compatibility_date = "2026-05-28"
+compatibility_date = "2026-06-17"
 
 
 [vars]
@@ -272,5 +272,6 @@ uv lock --upgrade-package workers-py
 * Learn about Python Workers' [foreign function interface (FFI)](https://developers.cloudflare.com/workers/languages/python/ffi), and how to use it to work with [bindings](https://developers.cloudflare.com/workers/runtime-apis/bindings) and [Runtime APIs](https://developers.cloudflare.com/workers/runtime-apis/).
 
 ```json
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/languages/python/basics/#page","headline":"Learn the basics of Python Workers · Cloudflare Workers docs","description":"Learn the basics of Python Workers","url":"https://developers.cloudflare.com/workers/languages/python/basics/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/workers/","name":"Workers"}},{"@type":"ListItem","position":3,"item":{"@id":"/workers/languages/","name":"Languages"}},{"@type":"ListItem","position":4,"item":{"@id":"/workers/languages/python/","name":"Python Workers"}},{"@type":"ListItem","position":5,"item":{"@id":"/workers/languages/python/basics/","name":"The Basics"}}]}
 ```

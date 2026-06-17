@@ -20,8 +20,8 @@ DLP not inspecting or blocking content is the most common issue reported. If you
 
 To turn on TLS decryption:
 
-* [ Dashboard ](#tab-panel-6678)
-* [ Terraform (v5) ](#tab-panel-6679)
+* [ Dashboard ](#tab-panel-7186)
+* [ Terraform (v5) ](#tab-panel-7187)
 
 1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** \> **Traffic policies** \> **Traffic settings**.
 2. In **Proxy and inspection**, turn on **Inspect HTTPS requests with TLS decryption**.
@@ -95,5 +95,6 @@ If you cannot use the _DLP Profile_ selector when creating an HTTP policy or are
 2. Permissions issue. You may not have the required administrative privileges to configure DLP settings. Check with your Cloudflare account administrator.
 
 ```json
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/data-loss-prevention/troubleshoot-dlp/#page","headline":"Troubleshoot DLP · Cloudflare One docs","description":"Troubleshoot common DLP issues in Cloudflare One.","url":"https://developers.cloudflare.com/cloudflare-one/data-loss-prevention/troubleshoot-dlp/","inLanguage":"en","image":"https://developers.cloudflare.com/zt-preview.png","dateModified":"2026-06-08","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Debugging"]}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/cloudflare-one/","name":"Cloudflare One"}},{"@type":"ListItem","position":3,"item":{"@id":"/cloudflare-one/data-loss-prevention/","name":"Data loss prevention"}},{"@type":"ListItem","position":4,"item":{"@id":"/cloudflare-one/data-loss-prevention/troubleshoot-dlp/","name":"Troubleshoot DLP"}}]}
 ```

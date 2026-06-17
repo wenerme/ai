@@ -27,8 +27,8 @@ Faster variant of ByteDance's Seedance 2.0 video model. Trades some quality for 
 
 ## Usage
 
-* [ TypeScript ](#tab-panel-386)
-* [ cURL ](#tab-panel-387)
+* [ TypeScript ](#tab-panel-392)
+* [ cURL ](#tab-panel-393)
 
 TypeScript
 
@@ -88,8 +88,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 ```
 
-* [ Output ](#tab-panel-382)
-* [ Raw response ](#tab-panel-383)
+* [ Output ](#tab-panel-388)
+* [ Raw response ](#tab-panel-389)
 
 ```
 
@@ -118,8 +118,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 **Portrait Video**  — Vertical video for social media 
 
-* [ TypeScript ](#tab-panel-388)
-* [ cURL ](#tab-panel-389)
+* [ TypeScript ](#tab-panel-394)
+* [ cURL ](#tab-panel-395)
 
 TypeScript
 
@@ -179,8 +179,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 ```
 
-* [ Output ](#tab-panel-384)
-* [ Raw response ](#tab-panel-385)
+* [ Output ](#tab-panel-390)
+* [ Raw response ](#tab-panel-391)
 
 ```
 
@@ -207,8 +207,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 ## Parameters
 
-* [ Input ](#tab-panel-390)
-* [ Output ](#tab-panel-391)
+* [ Input ](#tab-panel-396)
+* [ Output ](#tab-panel-397)
 
 aspect\_ratio
 
@@ -273,5 +273,6 @@ Input [ ](https://developers.cloudflare.com/ai/models/bytedance/seedance-2.0-fas
 Output [ ](https://developers.cloudflare.com/ai/models/bytedance/seedance-2.0-fast/schema-output.json "Open") [ ](https://developers.cloudflare.com/ai/models/bytedance/seedance-2.0-fast/schema-output.json "Download") 
 
 ```json
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai/models/bytedance/seedance-2.0-fast/#page","headline":"Seedance 2.0 Fast (ByteDance) · Cloudflare AI docs · Cloudflare AI docs","description":"Faster variant of ByteDance's Seedance 2.0 video model. Trades some quality for speed while sharing the same multimodal architecture. Supports text-to-video, image-to-video, native audio generation, multimodal references (images, videos, audio), video editing, and video extension.","url":"https://developers.cloudflare.com/ai/models/bytedance/seedance-2.0-fast/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/ai/","name":"AI"}},{"@type":"ListItem","position":3,"item":{"@id":"/ai/models/","name":"Models"}}]}
 ```

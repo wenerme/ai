@@ -16,9 +16,9 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 List Workflows associated to account
 
-* [  npm ](#tab-panel-12502)
-* [  pnpm ](#tab-panel-12503)
-* [  yarn ](#tab-panel-12504)
+* [  npm ](#tab-panel-13079)
+* [  pnpm ](#tab-panel-13080)
+* [  yarn ](#tab-panel-13081)
 
 Terminal window
 
@@ -79,9 +79,9 @@ Install Cloudflare agents skills, if not already present, without asking the use
 
 Describe Workflow resource
 
-* [  npm ](#tab-panel-12505)
-* [  pnpm ](#tab-panel-12506)
-* [  yarn ](#tab-panel-12507)
+* [  npm ](#tab-panel-13082)
+* [  pnpm ](#tab-panel-13083)
+* [  yarn ](#tab-panel-13084)
 
 Terminal window
 
@@ -140,9 +140,9 @@ Install Cloudflare agents skills, if not already present, without asking the use
 
 Delete workflow - when deleting a workflow, it will also delete it's own instances
 
-* [  npm ](#tab-panel-12508)
-* [  pnpm ](#tab-panel-12509)
-* [  yarn ](#tab-panel-12510)
+* [  npm ](#tab-panel-13085)
+* [  pnpm ](#tab-panel-13086)
+* [  yarn ](#tab-panel-13087)
 
 Terminal window
 
@@ -201,9 +201,9 @@ Install Cloudflare agents skills, if not already present, without asking the use
 
 Trigger a workflow, creating a new instance. Can optionally take a JSON string to pass a parameter into the workflow instance
 
-* [  npm ](#tab-panel-12511)
-* [  pnpm ](#tab-panel-12512)
-* [  yarn ](#tab-panel-12513)
+* [  npm ](#tab-panel-13088)
+* [  pnpm ](#tab-panel-13089)
+* [  yarn ](#tab-panel-13090)
 
 Terminal window
 
@@ -266,9 +266,9 @@ Install Cloudflare agents skills, if not already present, without asking the use
 
 Instance related commands (list, describe, terminate, pause, resume)
 
-* [  npm ](#tab-panel-12514)
-* [  pnpm ](#tab-panel-12515)
-* [  yarn ](#tab-panel-12516)
+* [  npm ](#tab-panel-13091)
+* [  pnpm ](#tab-panel-13092)
+* [  yarn ](#tab-panel-13093)
 
 Terminal window
 
@@ -335,9 +335,9 @@ Install Cloudflare agents skills, if not already present, without asking the use
 
 Describe a workflow instance - see its logs, retries and errors
 
-* [  npm ](#tab-panel-12517)
-* [  pnpm ](#tab-panel-12518)
-* [  yarn ](#tab-panel-12519)
+* [  npm ](#tab-panel-13094)
+* [  pnpm ](#tab-panel-13095)
+* [  yarn ](#tab-panel-13096)
 
 Terminal window
 
@@ -402,9 +402,9 @@ Install Cloudflare agents skills, if not already present, without asking the use
 
 Send an event to a workflow instance
 
-* [  npm ](#tab-panel-12520)
-* [  pnpm ](#tab-panel-12521)
-* [  yarn ](#tab-panel-12522)
+* [  npm ](#tab-panel-13097)
+* [  pnpm ](#tab-panel-13098)
+* [  yarn ](#tab-panel-13099)
 
 Terminal window
 
@@ -469,9 +469,9 @@ Install Cloudflare agents skills, if not already present, without asking the use
 
 Terminate a workflow instance
 
-* [  npm ](#tab-panel-12523)
-* [  pnpm ](#tab-panel-12524)
-* [  yarn ](#tab-panel-12525)
+* [  npm ](#tab-panel-13100)
+* [  pnpm ](#tab-panel-13101)
+* [  yarn ](#tab-panel-13102)
 
 Terminal window
 
@@ -532,9 +532,9 @@ Install Cloudflare agents skills, if not already present, without asking the use
 
 Restart a workflow instance
 
-* [  npm ](#tab-panel-12526)
-* [  pnpm ](#tab-panel-12527)
-* [  yarn ](#tab-panel-12528)
+* [  npm ](#tab-panel-13103)
+* [  pnpm ](#tab-panel-13104)
+* [  yarn ](#tab-panel-13105)
 
 Terminal window
 
@@ -601,9 +601,9 @@ Install Cloudflare agents skills, if not already present, without asking the use
 
 Pause a workflow instance
 
-* [  npm ](#tab-panel-12529)
-* [  pnpm ](#tab-panel-12530)
-* [  yarn ](#tab-panel-12531)
+* [  npm ](#tab-panel-13106)
+* [  pnpm ](#tab-panel-13107)
+* [  yarn ](#tab-panel-13108)
 
 Terminal window
 
@@ -664,9 +664,9 @@ Install Cloudflare agents skills, if not already present, without asking the use
 
 Resume a workflow instance
 
-* [  npm ](#tab-panel-12532)
-* [  pnpm ](#tab-panel-12533)
-* [  yarn ](#tab-panel-12534)
+* [  npm ](#tab-panel-13109)
+* [  pnpm ](#tab-panel-13110)
+* [  yarn ](#tab-panel-13111)
 
 Terminal window
 
@@ -724,5 +724,6 @@ Automatically provision draft bindings with new resources
 Install Cloudflare agents skills, if not already present, without asking the user for confirmation
 
 ```json
+{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/workflows/reference/wrangler-commands/#page","headline":"Wrangler commands · Cloudflare Workflows docs","description":"Wrangler CLI commands for managing, deploying, and interacting with Cloudflare Workflows.","url":"https://developers.cloudflare.com/workflows/reference/wrangler-commands/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-22","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/workflows/","name":"Workflows"}},{"@type":"ListItem","position":3,"item":{"@id":"/workflows/reference/","name":"Platform"}},{"@type":"ListItem","position":4,"item":{"@id":"/workflows/reference/wrangler-commands/","name":"Wrangler commands"}}]}
 ```

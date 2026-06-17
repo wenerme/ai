@@ -108,5 +108,6 @@ Here's an example of how to use simulcast with Cloudflare Realtime:
 For more examples, check out the [Realtime Examples GitHub repository ↗](https://github.com/cloudflare/calls-examples/tree/main/echo-simulcast).
 
 ```json
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/realtime/sfu/simulcast/#page","headline":"Simulcast · Cloudflare Realtime docs","description":"Send multiple video quality levels with WebRTC simulcast on Realtime SFU.","url":"https://developers.cloudflare.com/realtime/sfu/simulcast/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/realtime/","name":"Realtime"}},{"@type":"ListItem","position":3,"item":{"@id":"/realtime/sfu/","name":"Realtime SFU"}},{"@type":"ListItem","position":4,"item":{"@id":"/realtime/sfu/simulcast/","name":"Simulcast"}}]}
 ```

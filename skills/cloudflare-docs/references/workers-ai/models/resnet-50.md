@@ -27,8 +27,8 @@ Image Classification • Microsoft
 
 ## Usage
 
-* [  TypeScript ](#tab-panel-4893)
-* [  curl ](#tab-panel-4894)
+* [  TypeScript ](#tab-panel-5074)
+* [  curl ](#tab-panel-5075)
 
 ```
 
@@ -90,8 +90,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 ## Parameters
 
-* [ Input ](#tab-panel-4895)
-* [ Output ](#tab-panel-4896)
+* [ Input ](#tab-panel-5076)
+* [ Output ](#tab-panel-5077)
 
 Option 1
 
@@ -122,5 +122,6 @@ Input [ ](https://developers.cloudflare.com/workers-ai/models/resnet-50/schema-i
 Output [ ](https://developers.cloudflare.com/workers-ai/models/resnet-50/schema-output.json "Open") [ ](https://developers.cloudflare.com/workers-ai/models/resnet-50/schema-output.json "Download") 
 
 ```json
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers-ai/models/resnet-50/#page","headline":"resnet-50 (Microsoft) · Cloudflare AI docs · Cloudflare Workers AI docs","description":"50 layers deep image classification CNN trained on more than 1M images from ImageNet","url":"https://developers.cloudflare.com/workers-ai/models/resnet-50/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/workers-ai/","name":"Workers AI"}},{"@type":"ListItem","position":3,"item":{"@id":"/workers-ai/models/","name":"Models"}}]}
 ```

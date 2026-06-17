@@ -18,7 +18,7 @@ This guide shows you how to use the [Workers Builds REST API](https://developers
 
 ### 1\. Create an API token with the correct permissions
 
-To use the Builds API, you need an API token to authenticate your requests. The Builds API requires a **user-scoped** API token, account-scoped tokens are not supported and will return "Invalid token" errors.
+To use the Builds API, you need an API token to authenticate your requests. The Builds API requires a **user-scoped** API token. Account-scoped tokens are not supported and will return "Invalid token" errors.
 
 Create your token at [dash.cloudflare.com/profile/api-tokens ↗](https://dash.cloudflare.com/profile/api-tokens) with the following permissions:
 
@@ -788,5 +788,6 @@ For other build errors, refer to [Troubleshooting builds](https://developers.clo
 * [Create API token](https://developers.cloudflare.com/fundamentals/api/get-started/create-token/) \- How to create tokens with the correct permissions
 
 ```json
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/ci-cd/builds/api-reference/#page","headline":"Builds API reference · Cloudflare Workers docs","description":"Learn how to programmatically trigger builds, manage triggers, and monitor your Workers Builds using the API.","url":"https://developers.cloudflare.com/workers/ci-cd/builds/api-reference/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-05-29","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/workers/","name":"Workers"}},{"@type":"ListItem","position":3,"item":{"@id":"/workers/ci-cd/","name":"CI/CD"}},{"@type":"ListItem","position":4,"item":{"@id":"/workers/ci-cd/builds/","name":"Builds"}},{"@type":"ListItem","position":5,"item":{"@id":"/workers/ci-cd/builds/api-reference/","name":"Builds API reference"}}]}
 ```

@@ -67,5 +67,6 @@ This creates a struct with fields `c0`, `c1`, `c2` containing the user ID, event
 Struct fields can be accessed via `.` notation, for example `event_data.c0` for the user ID.
 
 ```json
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/pipelines/sql-reference/sql-data-types/#page","headline":"SQL data types · Cloudflare Pipelines Docs","description":"Supported data types in Cloudflare Pipelines SQL","url":"https://developers.cloudflare.com/pipelines/sql-reference/sql-data-types/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/pipelines/","name":"Pipelines"}},{"@type":"ListItem","position":3,"item":{"@id":"/pipelines/sql-reference/","name":"SQL reference"}},{"@type":"ListItem","position":4,"item":{"@id":"/pipelines/sql-reference/sql-data-types/","name":"SQL data types"}}]}
 ```

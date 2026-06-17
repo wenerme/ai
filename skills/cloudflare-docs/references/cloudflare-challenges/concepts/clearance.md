@@ -121,5 +121,6 @@ The `cf_clearance` cookie cannot exceed the maximum size of 4096 bytes.
 5. Select **Update**.
 
 ```json
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-challenges/concepts/clearance/#page","headline":"Clearance · Cloudflare challenges docs","description":"How cf\\_clearance cookies prove a visitor passed a Cloudflare challenge.","url":"https://developers.cloudflare.com/cloudflare-challenges/concepts/clearance/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-05-06","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Cookies"]}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/cloudflare-challenges/","name":"Challenges"}},{"@type":"ListItem","position":3,"item":{"@id":"/cloudflare-challenges/concepts/","name":"Concepts"}},{"@type":"ListItem","position":4,"item":{"@id":"/cloudflare-challenges/concepts/clearance/","name":"Clearance"}}]}
 ```

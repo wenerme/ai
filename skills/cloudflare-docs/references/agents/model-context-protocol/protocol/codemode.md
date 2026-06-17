@@ -1,6 +1,6 @@
 ---
 title: Codemode
-description: Let LLMs write and execute JavaScript to orchestrate multiple tool calls in a secure sandbox using Codemode.
+description: Let LLMs use external systems by writing TypeScript in a secure sandbox, backed by a durable runtime with discovery, approvals, and reusable snippets.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
@@ -14,24 +14,55 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 Beta 
 
-Codemode lets LLMs write and execute code that orchestrates your tools, instead of calling them one at a time. Inspired by [CodeAct ↗](https://machinelearning.apple.com/research/codeact), it works because LLMs are better at writing code than making individual tool calls — they have seen millions of lines of real-world code but only contrived tool-calling examples.
+Codemode lets a model use external systems by **writing TypeScript** instead of making individual tool calls. The model gets one tool — `codemode({ code })` — that executes its code in a sandboxed Worker. Inside the sandbox, every integration you configure is available as a typed global, and a four-method platform SDK handles discovery, side effects, and reuse.
 
-The `@cloudflare/codemode` package generates TypeScript type definitions from your tools, gives the LLM a single "write code" tool, and executes the generated JavaScript in a secure, isolated Worker sandbox.
+TypeScript
+
+```
+
+// The developer configures one tool:
+
+const runtime = createCodemodeRuntime({ ctx, executor, connectors });
+
+const tools = { codemode: runtime.tool() };
+
+
+// The model writes code against typed globals:
+
+const matches = await codemode.search("pull request");
+
+const docs = await codemode.describe(matches.results[0].path);
+
+const prs = await github.list_pull_requests({
+
+  owner: "cloudflare",
+
+  repo: "agents",
+
+});
+
+
+```
 
 Warning
 
 Codemode is experimental and may have breaking changes in future releases. Use with caution in production.
 
-## When to use Codemode
+## Why use Codemode
 
-Codemode is most useful when the LLM needs to:
+* **Tool descriptions do not scale.** The classic approach generates types for every tool and puts them all in the tool description. Ten tools is fine; a GitHub MCP server plus a Stripe spec plus an internal API is thousands of prompt tokens the model pays for on every request, mostly for tools it will not call. Codemode moves discovery _inside the sandbox_: `codemode.search` and `codemode.describe` return results into the running code, not into the context window. The model pulls exactly the type information it needs, when it needs it.
+* **Models are better at code than at tool protocols.** Filtering, joining, retrying, and looping over pages each cost a round trip through the model in tool-call style. In code it is just code: one sandbox run can do what would otherwise take a dozen tool calls.
+* **Real work needs durable state.** Creating issues, sending messages, and merging pull requests need human approval, an audit trail, and sometimes an undo. Those concerns have one home — the runtime — instead of being rebuilt per app. The model's code pauses at an approval-required call and continues after approval as if nothing happened.
 
-* **Chain multiple tool calls** with logic between them (conditionals, loops, error handling)
-* **Compose results** from different tools before returning
-* **Work with MCP servers** that expose many fine-grained operations
-* **Perform multi-step workflows** that would require many round-trips with standard tool calling
+## The pieces
 
-For simple, single tool calls, standard AI SDK tool calling is simpler and sufficient.
+| Piece          | What it is                                                                                                                           | State                                          |
+| -------------- | ------------------------------------------------------------------------------------------------------------------------------------ | ---------------------------------------------- |
+| **Executor**   | Runs a block of code once in an isolated sandbox (DynamicWorkerExecutor on Workers, IframeSandboxExecutor in the browser).           | None — deliberately stateless and replaceable. |
+| **Connectors** | Classes that bridge an external service (MCP server, OpenAPI spec, AI SDK toolset, or anything custom) into the sandbox as a global. | Own their connection and credentials.          |
+| **Runtime**    | The handle you hold onto: runtime.tool() for the model, pending/approve/reject/rollback for your app, and a durable log behind it.   | Durable — survives hibernation.                |
+
+The sandbox has **no network access**. Model code cannot `fetch`; every effect goes through a connector (which routes through the runtime's log) or through `codemode.step`.
 
 ## Installation
 
@@ -44,66 +75,29 @@ npm install @cloudflare/codemode
 
 ```
 
-If you use `@cloudflare/codemode/ai`, also install the `ai` and `zod` peer dependencies:
+## Configure Codemode
 
-Terminal window
+### 1\. Add the Vite plugin
 
-```
+The plugin discovers connector files and wires up the Worker exports the runtime needs:
 
-npm install ai zod
-
-
-```
-
-## Quick start
-
-### 1\. Define your tools
-
-Use the standard AI SDK `tool()` function:
-
-* [  JavaScript ](#tab-panel-5222)
-* [  TypeScript ](#tab-panel-5223)
+* [  JavaScript ](#tab-panel-5821)
+* [  TypeScript ](#tab-panel-5822)
 
 JavaScript
 
 ```
 
-import { tool } from "ai";
+// vite.config.ts
 
-import { z } from "zod";
+import codemode from "@cloudflare/codemode/vite";
+
+import agents from "agents/vite";
+
+import { cloudflare } from "@cloudflare/vite-plugin";
 
 
-const tools = {
-
-  getWeather: tool({
-
-    description: "Get weather for a location",
-
-    inputSchema: z.object({ location: z.string() }),
-
-    execute: async ({ location }) => `Weather in ${location}: 72°F, sunny`,
-
-  }),
-
-  sendEmail: tool({
-
-    description: "Send an email",
-
-    inputSchema: z.object({
-
-      to: z.string(),
-
-      subject: z.string(),
-
-      body: z.string(),
-
-    }),
-
-    execute: async ({ to, subject, body }) => `Email sent to ${to}`,
-
-  }),
-
-};
+export default { plugins: [agents(), codemode(), cloudflare()] };
 
 
 ```
@@ -112,187 +106,24 @@ TypeScript
 
 ```
 
-import { tool } from "ai";
+// vite.config.ts
 
-import { z } from "zod";
+import codemode from "@cloudflare/codemode/vite";
+
+import agents from "agents/vite";
+
+import { cloudflare } from "@cloudflare/vite-plugin";
 
 
-const tools = {
-
-  getWeather: tool({
-
-    description: "Get weather for a location",
-
-    inputSchema: z.object({ location: z.string() }),
-
-    execute: async ({ location }) => `Weather in ${location}: 72°F, sunny`,
-
-  }),
-
-  sendEmail: tool({
-
-    description: "Send an email",
-
-    inputSchema: z.object({
-
-      to: z.string(),
-
-      subject: z.string(),
-
-      body: z.string(),
-
-    }),
-
-    execute: async ({ to, subject, body }) => `Email sent to ${to}`,
-
-  }),
-
-};
+export default { plugins: [agents(), codemode(), cloudflare()] };
 
 
 ```
 
-### 2\. Create the codemode tool
+Add a `worker_loaders` binding to your `wrangler.jsonc`:
 
-`createCodeTool` takes your tools and an executor, and returns a single AI SDK tool:
-
-* [  JavaScript ](#tab-panel-5214)
-* [  TypeScript ](#tab-panel-5215)
-
-JavaScript
-
-```
-
-import { createCodeTool } from "@cloudflare/codemode/ai";
-
-import { DynamicWorkerExecutor } from "@cloudflare/codemode";
-
-
-const executor = new DynamicWorkerExecutor({
-
-  loader: env.LOADER,
-
-});
-
-
-const codemode = createCodeTool({ tools, executor });
-
-
-```
-
-TypeScript
-
-```
-
-import { createCodeTool } from "@cloudflare/codemode/ai";
-
-import { DynamicWorkerExecutor } from "@cloudflare/codemode";
-
-
-const executor = new DynamicWorkerExecutor({
-
-  loader: env.LOADER,
-
-});
-
-
-const codemode = createCodeTool({ tools, executor });
-
-
-```
-
-### 3\. Use with streamText
-
-Pass the codemode tool to `streamText` or `generateText` like any other tool. You choose the model:
-
-* [  JavaScript ](#tab-panel-5218)
-* [  TypeScript ](#tab-panel-5219)
-
-JavaScript
-
-```
-
-import { streamText } from "ai";
-
-
-const result = streamText({
-
-  model,
-
-  system: "You are a helpful assistant.",
-
-  messages,
-
-  tools: { codemode },
-
-});
-
-
-```
-
-TypeScript
-
-```
-
-import { streamText } from "ai";
-
-
-const result = streamText({
-
-  model,
-
-  system: "You are a helpful assistant.",
-
-  messages,
-
-  tools: { codemode },
-
-});
-
-
-```
-
-When the LLM decides to use codemode, it writes an async arrow function like:
-
-JavaScript
-
-```
-
-async () => {
-
-  const weather = await codemode.getWeather({ location: "London" });
-
-  if (weather.includes("sunny")) {
-
-    await codemode.sendEmail({
-
-      to: "team@example.com",
-
-      subject: "Nice day!",
-
-      body: `It's ${weather}`,
-
-    });
-
-  }
-
-  return { weather, notified: true };
-
-};
-
-
-```
-
-The code runs in an isolated Worker sandbox, tool calls are dispatched back to the host via Workers RPC, and the result is returned to the LLM.
-
-## Configuration
-
-### Wrangler bindings
-
-Add a `worker_loaders` binding to your `wrangler.jsonc`. This is the only binding required:
-
-* [  wrangler.jsonc ](#tab-panel-5212)
-* [  wrangler.toml ](#tab-panel-5213)
+* [  wrangler.jsonc ](#tab-panel-5819)
+* [  wrangler.toml ](#tab-panel-5820)
 
 JSONC
 
@@ -300,23 +131,9 @@ JSONC
 
 {
 
-  "$schema": "./node_modules/wrangler/config-schema.json",
+  "compatibility_flags": ["nodejs_compat"],
 
-  "worker_loaders": [
-
-    {
-
-      "binding": "LOADER"
-
-    }
-
-  ],
-
-  "compatibility_flags": [
-
-    "nodejs_compat"
-
-  ]
+  "worker_loaders": [{ "binding": "LOADER" }]
 
 }
 
@@ -327,121 +144,67 @@ TOML
 
 ```
 
-worker_loaders = [{ binding = "LOADER" }]
+compatibility_flags = [ "nodejs_compat" ]
 
-compatibility_flags = ["nodejs_compat"]
+
+[[worker_loaders]]
+
+binding = "LOADER"
 
 
 ```
 
-## How it works
+### 2\. Write a connector
 
-1. `createCodeTool` generates TypeScript type definitions from your tools and builds a description the LLM can read.
-2. The LLM writes an async arrow function that calls `codemode.toolName(args)`.
-3. The code is normalized via AST parsing (acorn) and sent to the executor.
-4. `DynamicWorkerExecutor` spins up an isolated Worker via `WorkerLoader`.
-5. Inside the sandbox, a `Proxy` intercepts `codemode.*` calls and routes them back to the host via Workers RPC (`ToolDispatcher extends RpcTarget`).
-6. Console output (`console.log`, `console.warn`, `console.error`) is captured and returned in the result.
+Write a class per service, in a `*.codemode.ts` file. Mark only the tools that need a human; everything else executes immediately:
 
-### Network isolation
-
-External `fetch()` and `connect()` are blocked by default — enforced at the Workers runtime level via `globalOutbound: null`. Sandboxed code can only interact with the host through `codemode.*` tool calls.
-
-To allow controlled outbound access, pass a `Fetcher`:
-
-* [  JavaScript ](#tab-panel-5216)
-* [  TypeScript ](#tab-panel-5217)
+* [  JavaScript ](#tab-panel-5833)
+* [  TypeScript ](#tab-panel-5834)
 
 JavaScript
 
 ```
 
-const executor = new DynamicWorkerExecutor({
+// github.codemode.ts
 
-  loader: env.LOADER,
-
-  globalOutbound: null, // default — fully isolated
-
-  // globalOutbound: env.MY_OUTBOUND_SERVICE  // route through a Fetcher
-
-});
+import { McpConnector } from "@cloudflare/codemode";
 
 
-```
+export class GithubConnector extends McpConnector {
 
-TypeScript
-
-```
-
-const executor = new DynamicWorkerExecutor({
-
-  loader: env.LOADER,
-
-  globalOutbound: null, // default — fully isolated
-
-  // globalOutbound: env.MY_OUTBOUND_SERVICE  // route through a Fetcher
-
-});
+  conn;
 
 
-```
+  constructor(ctx, env, conn) {
 
-## Using with an Agent
+    super(ctx, env);
 
-The typical pattern is to create the executor and codemode tool inside an Agent's message handler:
+    this.conn = conn;
 
-* [  JavaScript ](#tab-panel-5234)
-* [  TypeScript ](#tab-panel-5235)
-
-JavaScript
-
-```
-
-import { Agent } from "agents";
-
-import { createCodeTool } from "@cloudflare/codemode/ai";
-
-import { DynamicWorkerExecutor } from "@cloudflare/codemode";
-
-import { streamText, convertToModelMessages, stepCountIs } from "ai";
+  }
 
 
-export class MyAgent extends Agent {
+  name() {
 
-  async onChatMessage() {
+    return "github";
 
-    const executor = new DynamicWorkerExecutor({
+  }
 
-      loader: this.env.LOADER,
+  instructions() {
 
-    });
+    return "Use for GitHub repositories, issues, and pull requests.";
 
+  }
 
-    const codemode = createCodeTool({
+  createConnection() {
 
-      tools: myTools,
+    return this.conn;
 
-      executor,
+  }
 
-    });
+  tool(name, t) {
 
-
-    const result = streamText({
-
-      model,
-
-      system: "You are a helpful assistant.",
-
-      messages: await convertToModelMessages(this.state.messages),
-
-      tools: { codemode },
-
-      stopWhen: stepCountIs(10),
-
-    });
-
-
-    // Stream response back to client...
+    return name === "create_issue" ? { ...t, requiresApproval: true } : t;
 
   }
 
@@ -454,250 +217,407 @@ TypeScript
 
 ```
 
-import { Agent } from "agents";
-
-import { createCodeTool } from "@cloudflare/codemode/ai";
-
-import { DynamicWorkerExecutor } from "@cloudflare/codemode";
-
-import { streamText, convertToModelMessages, stepCountIs } from "ai";
-
-
-export class MyAgent extends Agent<Env, State> {
-
-  async onChatMessage() {
-
-    const executor = new DynamicWorkerExecutor({
-
-      loader: this.env.LOADER,
-
-    });
-
-
-    const codemode = createCodeTool({
-
-      tools: myTools,
-
-      executor,
-
-    });
-
-
-    const result = streamText({
-
-      model,
-
-      system: "You are a helpful assistant.",
-
-      messages: await convertToModelMessages(this.state.messages),
-
-      tools: { codemode },
-
-      stopWhen: stepCountIs(10),
-
-    });
-
-
-    // Stream response back to client...
-
-  }
-
-}
-
-
-```
-
-### With MCP tools
-
-MCP tools work the same way — merge them into the tool set:
-
-* [  JavaScript ](#tab-panel-5220)
-* [  TypeScript ](#tab-panel-5221)
-
-JavaScript
-
-```
-
-const codemode = createCodeTool({
-
-  tools: {
-
-    ...myTools,
-
-    ...this.mcp.getAITools(),
-
-  },
-
-  executor,
-
-});
-
-
-```
-
-TypeScript
-
-```
-
-const codemode = createCodeTool({
-
-  tools: {
-
-    ...myTools,
-
-    ...this.mcp.getAITools(),
-
-  },
-
-  executor,
-
-});
-
-
-```
-
-Tool names with hyphens or dots (common in MCP) are automatically sanitized to valid JavaScript identifiers (for example, `my-server.list-items` becomes `my_server_list_items`).
-
-### Browser executor with dynamic client tools
-
-If your tools live in the browser instead of the Agent, build codemode from those browser-side functions and register it with your client tool layer. This keeps the server generic while running generated code in an iframe sandbox on the page.
-
-**Server:**
-
-* [  JavaScript ](#tab-panel-5228)
-* [  TypeScript ](#tab-panel-5229)
-
-JavaScript
-
-```
-
-import { AIChatAgent, createToolsFromClientSchemas } from "@cloudflare/ai-chat";
-
-import { convertToModelMessages, stepCountIs, streamText } from "ai";
-
-
-export class BrowserCodemodeAgent extends AIChatAgent {
-
-  async onChatMessage(_onFinish, options) {
-
-    const result = streamText({
-
-      model: this.env.MODEL,
-
-      messages: await convertToModelMessages(this.messages),
-
-      tools: createToolsFromClientSchemas(options?.clientTools),
-
-      stopWhen: stepCountIs(10),
-
-    });
-
-
-    return result.toUIMessageStreamResponse();
-
-  }
-
-}
-
-
-```
-
-TypeScript
-
-```
-
-import { AIChatAgent, createToolsFromClientSchemas } from "@cloudflare/ai-chat";
-
-import { convertToModelMessages, stepCountIs, streamText } from "ai";
-
-
-export class BrowserCodemodeAgent extends AIChatAgent<Env> {
-
-  async onChatMessage(_onFinish, options) {
-
-    const result = streamText({
-
-      model: this.env.MODEL,
-
-      messages: await convertToModelMessages(this.messages),
-
-      tools: createToolsFromClientSchemas(options?.clientTools),
-
-      stopWhen: stepCountIs(10),
-
-    });
-
-
-    return result.toUIMessageStreamResponse();
-
-  }
-
-}
-
-
-```
-
-**Client:**
-
-* [  JavaScript ](#tab-panel-5238)
-* [  TypeScript ](#tab-panel-5239)
-
-JavaScript
-
-```
-
-import { useAgent } from "agents/react";
-
-import { useAgentChat } from "@cloudflare/ai-chat/react";
+// github.codemode.ts
 
 import {
 
-  IframeSandboxExecutor,
+  McpConnector,
 
-  createBrowserCodeTool,
+  type McpConnectionLike,
 
-} from "@cloudflare/codemode/browser";
+  type ConnectorTool,
 
-
-const codemode = createBrowserCodeTool({
-
-  tools: {
-
-    getPageTitle: {
-
-      description: "Get the current page title",
-
-      inputSchema: { type: "object", properties: {}, required: [] },
-
-      execute: async () => ({ title: document.title }),
-
-    },
-
-  },
-
-  executor: new IframeSandboxExecutor(),
-
-});
+} from "@cloudflare/codemode";
 
 
-const agent = useAgent({ agent: "BrowserCodemodeAgent" });
+export class GithubConnector extends McpConnector<Env> {
 
-const tools = {
+  private conn: McpConnectionLike;
 
-  codemode: {
 
-    description: codemode.description,
+  constructor(ctx: ExecutionContext, env: Env, conn: McpConnectionLike) {
 
-    parameters: codemode.inputSchema,
+    super(ctx, env);
 
-    execute: codemode.execute,
+    this.conn = conn;
 
-  },
+  }
+
+
+  name() {
+
+    return "github";
+
+  }
+
+  protected instructions() {
+
+    return "Use for GitHub repositories, issues, and pull requests.";
+
+  }
+
+  protected createConnection() {
+
+    return this.conn;
+
+  }
+
+  protected tool(name: string, t: ConnectorTool): ConnectorTool {
+
+    return name === "create_issue" ? { ...t, requiresApproval: true } : t;
+
+  }
+
+}
+
+
+```
+
+### 3\. Create a runtime in your agent
+
+Create a runtime and hand the model `runtime.tool()`. Approval handling is two `@callable` methods:
+
+* [  JavaScript ](#tab-panel-5837)
+* [  TypeScript ](#tab-panel-5838)
+
+JavaScript
+
+```
+
+// server.ts
+
+import {
+
+  createCodemodeRuntime,
+
+  DynamicWorkerExecutor,
+
+} from "@cloudflare/codemode";
+
+import { GithubConnector } from "./github.codemode" with { type: "connectors" };
+
+
+export class Chat extends AIChatAgent {
+
+  codemode() {
+
+    const conn = this.mcp.mcpConnections[this.githubServerId];
+
+    return createCodemodeRuntime({
+
+      ctx: this.ctx,
+
+      executor: new DynamicWorkerExecutor({ loader: this.env.LOADER }),
+
+      connectors: [new GithubConnector(this.ctx, this.env, conn)],
+
+    });
+
+  }
+
+
+  async onChatMessage() {
+
+    return streamText({
+
+      model,
+
+      messages: await convertToModelMessages(this.messages),
+
+      tools: { codemode: this.codemode().tool() },
+
+    });
+
+  }
+
+
+  @callable()
+
+  listPending() {
+
+    return this.codemode().pending();
+
+  }
+
+
+  @callable()
+
+  approve(executionId) {
+
+    return this.codemode().approve({ executionId });
+
+  }
+
+}
+
+
+```
+
+TypeScript
+
+```
+
+// server.ts
+
+import {
+
+  createCodemodeRuntime,
+
+  DynamicWorkerExecutor,
+
+} from "@cloudflare/codemode";
+
+import { GithubConnector } from "./github.codemode" with { type: "connectors" };
+
+
+export class Chat extends AIChatAgent<Env> {
+
+  codemode() {
+
+    const conn = this.mcp.mcpConnections[this.githubServerId];
+
+    return createCodemodeRuntime({
+
+      ctx: this.ctx,
+
+      executor: new DynamicWorkerExecutor({ loader: this.env.LOADER }),
+
+      connectors: [
+
+        new GithubConnector(
+
+          this.ctx as unknown as ExecutionContext,
+
+          this.env,
+
+          conn,
+
+        ),
+
+      ],
+
+    });
+
+  }
+
+
+  async onChatMessage() {
+
+    return streamText({
+
+      model,
+
+      messages: await convertToModelMessages(this.messages),
+
+      tools: { codemode: this.codemode().tool() },
+
+    });
+
+  }
+
+
+  @callable()
+
+  listPending() {
+
+    return this.codemode().pending();
+
+  }
+
+
+  @callable()
+
+  approve(executionId?: string) {
+
+    return this.codemode().approve({ executionId });
+
+  }
+
+}
+
+
+```
+
+That is the whole developer surface: a connector class, `createCodemodeRuntime`, and the runtime handle. The handle is the control plane — `tool()` for the model, `pending()`/`approve()`/`reject()`/`rollback()` for approvals, `executions()` for the audit trail, and `saveSnippet()`/`snippets()`/`deleteSnippet()` for curating what the model gets to reuse.
+
+## What the model writes
+
+The sandbox SDK is four methods — discover, learn, do once, reuse — plus one global per connector:
+
+TypeScript
+
+```
+
+async () => {
+
+  // Discover: ranked search over connector methods and saved snippets.
+
+  const matches = await codemode.search("open pull requests");
+
+
+  // Learn: TypeScript docs for one method — fetched on demand, not pre-dumped.
+
+  const docs = await codemode.describe(matches.results[0].path);
+
+
+  // Act: connector methods are typed globals.
+
+  const prs = await github.list_pull_requests({
+
+    owner: "cloudflare",
+
+    repo: "agents",
+
+    state: "open",
+
+  });
+
+
+  // Do once: anything nondeterministic goes in a step so replay is exact.
+
+  const stamp = await codemode.step("now", () => Date.now());
+
+
+  return { count: prs.length, stamp };
 
 };
 
 
-const { messages, sendMessage } = useAgentChat({ agent, tools });
+```
+
+Once the developer promotes a run with `runtime.saveSnippet("open-prs")`, the model finds it via `codemode.search` and re-runs it by name with `codemode.run("open-prs", { owner, repo })`.
+
+| Sandbox method             | Purpose                                                                   |
+| -------------------------- | ------------------------------------------------------------------------- |
+| codemode.search(query)     | Ranked search across connector methods and saved snippets.                |
+| codemode.describe(target)  | TypeScript docs for a connector, method, or snippet — fetched on demand.  |
+| codemode.step(name, fn)    | Run a side-effectful or nondeterministic closure once; replay its result. |
+| codemode.run(name, input?) | Run a snippet the developer saved.                                        |
+
+When the code hits an approval-required method (`github.create_issue`), the run pauses and the tool returns `{ status: "paused", executionId, pending }`. After `runtime.approve({ executionId })`, the same code re-runs: completed calls replay from the durable log, the approved action executes for real, and the script continues — the model never writes pause/resume logic.
+
+## How the code runs: abort and replay
+
+`runtime.tool()` builds the sandbox per run: it spawns the durable runtime facet on your agent's Durable Object, exposes each connector as an RPC-backed global, injects the `codemode` SDK, and hands the code to the executor. Every connector call routes through the runtime first — to replay it, execute it, or pause — so the durable log is always the source of truth.
+
+When the model's code runs, every tool call is recorded in a durable log:
+
+1. **Read** (no annotation) executes, and the result is recorded in the log.
+2. An **approval-required action** is recorded as `pending`, and the run **aborts**.
+3. On **continue**, the same code re-runs. Every call already in the log is served from it (a no-op replay — reads return their recorded result, applied actions return theirs). The newly-approved action executes for real. The run proceeds to the next pause or to completion.
+
+```
+
+run 1:  search() ──exec──> "results"        [logged: applied]
+
+        list_prs() ──exec──> [pr1, pr2]      [logged: applied]
+
+        create_issue() ──PAUSE──             [logged: pending]
+
+        ✗ run aborts
+
+
+user approves
+
+
+run 2:  search() ──replay──> "results"       (from log, no re-exec)
+
+        list_prs() ──replay──> [pr1, pr2]     (from log, no re-exec)
+
+        create_issue() ──exec──> { number }   (approved, runs for real)
+
+        post_comment() ──exec──> ok            (continues)
+
+        ✓ run completes
+
+
+```
+
+### Determinism requirement
+
+Replay only works if the code is **deterministic up to tool calls**. The Nth tool call on run 1 must be the Nth tool call on run 2, with the same arguments. If the code branches on `Math.random()` or `Date.now()` in a way that changes which tools it calls — or passes nondeterministic values as arguments to an approval-gated action — replay diverges. The runtime detects this, records the execution as failed, and the tool returns an error result rather than throwing. To make nondeterministic work replay-safe, wrap it in `codemode.step(name, fn)` so the value is captured once and replayed identically.
+
+Note
+
+**Issue tool calls sequentially.** The replay cursor assigns each call its sequence number when the call reaches the host, so `await a(); await b();` is stable across runs but `await Promise.all([a(), b()])` is not. Await connector calls one at a time in any run that might pause for approval.
+
+## Connectors
+
+Connectors are class-based integrations that bridge external services into the sandbox. Each connector extends `WorkerEntrypoint`, making it serializable, RPC-callable, and available as `ctx.exports.ConnectorName`. A connector answers three questions: what global name the model uses (`name`), what guidance the model gets (`instructions`), and what tools exist (`tools`).
+
+* [  JavaScript ](#tab-panel-5835)
+* [  TypeScript ](#tab-panel-5836)
+
+JavaScript
+
+```
+
+import { CodemodeConnector } from "@cloudflare/codemode";
+
+
+export class MyConnector extends CodemodeConnector {
+
+  name() {
+
+    return "myService";
+
+  }
+
+
+  instructions() {
+
+    return "Use for interacting with My Service.";
+
+  }
+
+
+  tools() {
+
+    return {
+
+      listItems: {
+
+        description: "List all items.",
+
+        inputSchema: {
+
+          type: "object",
+
+          properties: { limit: { type: "number" } },
+
+        },
+
+        execute: (args) => this.env.MY_SERVICE.list(args),
+
+      },
+
+      createItem: {
+
+        description: "Create an item.",
+
+        inputSchema: {
+
+          type: "object",
+
+          properties: { title: { type: "string" } },
+
+          required: ["title"],
+
+        },
+
+        requiresApproval: true,
+
+        execute: (args) => this.env.MY_SERVICE.create(args),
+
+        revert: (_args, result) => this.env.MY_SERVICE.delete(result.id),
+
+      },
+
+    };
+
+  }
+
+}
 
 
 ```
@@ -706,89 +626,139 @@ TypeScript
 
 ```
 
-import { useAgent } from "agents/react";
-
-import { useAgentChat, type AITool } from "@cloudflare/ai-chat/react";
-
-import {
-
-  IframeSandboxExecutor,
-
-  createBrowserCodeTool,
-
-} from "@cloudflare/codemode/browser";
+import { CodemodeConnector } from "@cloudflare/codemode";
 
 
-const codemode = createBrowserCodeTool({
+export class MyConnector extends CodemodeConnector<Env> {
 
-  tools: {
+  name() {
 
-    getPageTitle: {
+    return "myService";
 
-      description: "Get the current page title",
-
-      inputSchema: { type: "object", properties: {}, required: [] },
-
-      execute: async () => ({ title: document.title }),
-
-    },
-
-  },
-
-  executor: new IframeSandboxExecutor(),
-
-});
+  }
 
 
-const agent = useAgent({ agent: "BrowserCodemodeAgent" });
+  protected instructions() {
 
-const tools: Record<string, AITool> = {
+    return "Use for interacting with My Service.";
 
-  codemode: {
+  }
 
-    description: codemode.description,
 
-    parameters: codemode.inputSchema,
+  protected tools() {
 
-    execute: codemode.execute,
+    return {
 
-  },
+      listItems: {
+
+        description: "List all items.",
+
+        inputSchema: {
+
+          type: "object",
+
+          properties: { limit: { type: "number" } },
+
+        },
+
+        execute: (args) => this.env.MY_SERVICE.list(args),
+
+      },
+
+      createItem: {
+
+        description: "Create an item.",
+
+        inputSchema: {
+
+          type: "object",
+
+          properties: { title: { type: "string" } },
+
+          required: ["title"],
+
+        },
+
+        requiresApproval: true,
+
+        execute: (args) => this.env.MY_SERVICE.create(args),
+
+        revert: (_args, result) => this.env.MY_SERVICE.delete(result.id),
+
+      },
+
+    };
+
+  }
+
+}
+
+
+```
+
+Each tool carries its own documentation, schema, approval requirement, execution, and optional revert — everything about a tool lives in one place:
+
+TypeScript
+
+```
+
+type ConnectorTool = {
+
+  description?: string;
+
+  inputSchema?: JSONSchema7; // Defaults to an open object.
+
+  outputSchema?: JSONSchema7;
+
+  requiresApproval?: boolean; // Omit to execute immediately.
+
+  execute: (
+
+    args: unknown,
+
+    ctx?: { executionId: string },
+
+  ) => Promise<unknown> | unknown;
+
+  revert?: (
+
+    args: unknown,
+
+    result: unknown,
+
+    ctx?: { executionId: string },
+
+  ) => Promise<void> | void;
 
 };
 
 
-const { messages, sendMessage } = useAgentChat({ agent, tools });
-
-
 ```
 
-This pattern is useful when the browser owns the tool surface at runtime, the page exposes client-side capabilities that only the browser can run, or you want codemode's typed code-generation prompt without routing tool execution through the server.
+AI SDK tools are shape-compatible — an existing `ToolSet` can be returned from `tools()` directly.
 
-If you need approval-gated tools, use the standard `needsApproval` and `useAgentChat` approval flow described in [Human in the Loop](https://developers.cloudflare.com/agents/concepts/agentic-patterns/human-in-the-loop/). Codemode excludes tools with `needsApproval` instead of pausing execution for approval.
+### Built-in connector bases
 
-## MCP server wrappers
+| Base class        | Wraps           | What you implement                                                      |
+| ----------------- | --------------- | ----------------------------------------------------------------------- |
+| CodemodeConnector | Anything custom | name(), tools(), and optionally instructions().                         |
+| McpConnector      | An MCP server   | createConnection(); decorate derived tools with the tool(name, t) hook. |
+| OpenApiConnector  | An OpenAPI spec | spec() (the document) and request() (an authenticated request).         |
 
-The `@cloudflare/codemode/mcp` export provides two functions that wrap MCP servers with Code Mode.
+`McpConnector` turns each MCP tool into one entry in the tools record (executing through `connection.client.callTool()`), so the sandbox sees `github.list_pull_requests({ owner, repo, state })`. `OpenApiConnector` reads the spec once, host-side, and derives one typed tool per operation, so the model calls operations directly — `stripe.CreatePaymentIntent({ amount, currency })` — at zero prompt-token cost.
 
-### `codeMcpServer`
+### File convention
 
-Wraps an existing MCP server with a single `code` tool. Each upstream tool becomes a typed `codemode.*` method inside the sandbox:
+Connector files use the `*.codemode.ts` extension. The Vite plugin discovers them and auto-exports the classes from the Worker entry. Import them with the `type: "connectors"` attribute:
 
-* [  JavaScript ](#tab-panel-5224)
-* [  TypeScript ](#tab-panel-5225)
+* [  JavaScript ](#tab-panel-5823)
+* [  TypeScript ](#tab-panel-5824)
 
 JavaScript
 
 ```
 
-import { codeMcpServer } from "@cloudflare/codemode/mcp";
-
-import { DynamicWorkerExecutor } from "@cloudflare/codemode";
-
-
-const executor = new DynamicWorkerExecutor({ loader: env.LOADER });
-
-const server = await codeMcpServer({ server: upstreamMcp, executor });
+import { GithubConnector } from "./github.codemode" with { type: "connectors" };
 
 
 ```
@@ -797,59 +767,180 @@ TypeScript
 
 ```
 
-import { codeMcpServer } from "@cloudflare/codemode/mcp";
-
-import { DynamicWorkerExecutor } from "@cloudflare/codemode";
-
-
-const executor = new DynamicWorkerExecutor({ loader: env.LOADER });
-
-const server = await codeMcpServer({ server: upstreamMcp, executor });
+import { GithubConnector } from "./github.codemode" with { type: "connectors" };
 
 
 ```
 
-### `openApiMcpServer`
+### Per-execution resources
 
-Creates an MCP server with `search` and `execute` tools from an OpenAPI spec. All `$ref` pointers are resolved before being passed to the sandbox, and the host-side `request` handler keeps authentication out of the sandbox:
+Some connectors own a resource that must live for the lifetime of one run — a browser/CDP session, a database transaction, a temporary workspace. `execute(args, ctx)` receives a stable `executionId` (use it to lazily acquire or reconnect to the resource), and `disposeExecution(executionId, status)` is called when the run reaches a **terminal** state so you can tear the resource down. `disposeExecution` is deliberately **not** called when a run pauses for approval — a paused run may resume, so a resource scoped to the whole run must survive the pause. Implementations must be idempotent, hold no instance memory (read from durable storage keyed by `executionId`), and never throw.
 
-* [  JavaScript ](#tab-panel-5236)
-* [  TypeScript ](#tab-panel-5237)
+## Approvals
+
+A tool with `requiresApproval: true` pauses the run when the model's code calls it (the run aborts), the action is recorded as pending, and the user is asked to approve. On approval the execution **continues via replay**.
+
+```
+
+Model calls codemode({ code }) where code calls github.create_issue(...)
+
+  → runtime logs calls; create_issue requires approval → run pauses
+
+  → tool returns { status: "paused", executionId, pending: [...] }
+
+
+Agent shows the pending action to the user. User approves.
+
+
+Agent calls runtime.approve({ executionId })
+
+  → runtime replays the log, runs create_issue for real, continues
+
+  → returns { status: "completed", result } (or pauses again at the next action)
+
+
+```
+
+Execution outcomes are returned, not thrown — a sandbox error or a replay divergence comes back as `{ status: "error" }` (and is recorded on the execution), so the agent loop is never broken by an exception:
+
+TypeScript
+
+```
+
+type ProxyToolOutput =
+
+  | {
+
+      status: "completed";
+
+      executionId: string;
+
+      result: unknown;
+
+      logs?: string[];
+
+    }
+
+  | { status: "paused"; executionId: string; pending: PendingAction[] }
+
+  | { status: "error"; executionId: string; error: string; logs?: string[] };
+
+
+```
+
+Drive resolution through the runtime handle, wired to `@callable` agent methods so the client UI can approve or reject:
+
+* [  JavaScript ](#tab-panel-5829)
+* [  TypeScript ](#tab-panel-5830)
 
 JavaScript
 
 ```
 
-import { openApiMcpServer } from "@cloudflare/codemode/mcp";
-
-import { DynamicWorkerExecutor } from "@cloudflare/codemode";
+const runtime = createCodemodeRuntime({ ctx: this.ctx, connectors, executor });
 
 
-const executor = new DynamicWorkerExecutor({ loader: env.LOADER });
+// List actions awaiting approval. With no executionId this aggregates across
 
-const server = openApiMcpServer({
+// every paused run, so concurrent approvals all show up.
 
-  spec: openApiSpec,
+await runtime.pending();
 
-  executor,
 
-  request: async ({ method, path, query, body }) => {
+// Approve the pending action(s) and continue.
 
-    // Runs on the host — add auth headers here
+await runtime.approve({ executionId });
 
-    const res = await fetch(`https://api.example.com${path}`, {
 
-      method,
+// Reject — ends the execution. Does NOT undo actions already applied earlier
 
-      headers: { Authorization: `Bearer ${token}` },
+// in the same run; call rollback() for that.
 
-      body: body ? JSON.stringify(body) : undefined,
+await runtime.reject({ seq, executionId });
 
-    });
 
-    return res.json();
+// Roll back applied actions in reverse order via each tool's revert().
 
-  },
+await runtime.rollback({ executionId });
+
+
+```
+
+TypeScript
+
+```
+
+const runtime = createCodemodeRuntime({ ctx: this.ctx, connectors, executor });
+
+
+// List actions awaiting approval. With no executionId this aggregates across
+
+// every paused run, so concurrent approvals all show up.
+
+await runtime.pending();
+
+
+// Approve the pending action(s) and continue.
+
+await runtime.approve({ executionId });
+
+
+// Reject — ends the execution. Does NOT undo actions already applied earlier
+
+// in the same run; call rollback() for that.
+
+await runtime.reject({ seq, executionId });
+
+
+// Roll back applied actions in reverse order via each tool's revert().
+
+await runtime.rollback({ executionId });
+
+
+```
+
+Note
+
+`approve()` is a safe no-op on a run that is no longer paused. Approval UIs are racy — the run may have completed, been rejected, or been rolled back between rendering the queue and the click. In that case `approve()` returns `{ status: "error", ... }` and changes nothing. Treat that outcome as "this run already moved on, refresh the queue", not as an execution failure.
+
+Rollback walks the log backward and calls the `revert` of **every** applied action that has one — independent of `requiresApproval`. Tools without a `revert` are skipped, as are reads.
+
+## Snippets
+
+A **snippet** is a saved sandbox script — a reusable pattern that already ran and worked. Snippets are durable: they live on the runtime facet, are addressable by name, and accumulate over time. Connectors provide raw capability; snippets are recipes that worked. The split is deliberate — the model writes and reuses scripts, and the developer decides which ones are worth keeping.
+
+* [  JavaScript ](#tab-panel-5831)
+* [  TypeScript ](#tab-panel-5832)
+
+JavaScript
+
+```
+
+// 1. The model writes and runs a script (one execution).
+
+const prs = await github.list_pull_requests({ owner, repo, state: "open" });
+
+
+// 2. The developer reviews the run and promotes it — for example from a @callable.
+
+const runs = await runtime.executions(); // Newest first.
+
+await runtime.saveSnippet("list-open-prs", {
+
+  executionId: runs[0].id, // Defaults to the current execution.
+
+  description: "List open pull requests for a repository.",
+
+});
+
+
+// 3. The model finds it via codemode.search and runs it by name.
+
+const saved = await codemode.run("list-open-prs", {
+
+  owner: "cloudflare",
+
+  repo: "agents",
 
 });
 
@@ -860,137 +951,87 @@ TypeScript
 
 ```
 
-import { openApiMcpServer } from "@cloudflare/codemode/mcp";
+// 1. The model writes and runs a script (one execution).
 
-import { DynamicWorkerExecutor } from "@cloudflare/codemode";
+const prs = await github.list_pull_requests({ owner, repo, state: "open" });
 
 
-const executor = new DynamicWorkerExecutor({ loader: env.LOADER });
+// 2. The developer reviews the run and promotes it — for example from a @callable.
 
-const server = openApiMcpServer({
+const runs = await runtime.executions(); // Newest first.
 
-  spec: openApiSpec,
+await runtime.saveSnippet("list-open-prs", {
 
-  executor,
+  executionId: runs[0].id, // Defaults to the current execution.
 
-  request: async ({ method, path, query, body }) => {
+  description: "List open pull requests for a repository.",
 
-    // Runs on the host — add auth headers here
+});
 
-    const res = await fetch(`https://api.example.com${path}`, {
 
-      method,
+// 3. The model finds it via codemode.search and runs it by name.
 
-      headers: { Authorization: `Bearer ${token}` },
+const saved = await codemode.run("list-open-prs", {
 
-      body: body ? JSON.stringify(body) : undefined,
+  owner: "cloudflare",
 
-    });
-
-    return res.json();
-
-  },
+  repo: "agents",
 
 });
 
 
 ```
 
-## The Executor interface
+Each snippet records the connector names its source execution ran with. `codemode.run(name)` checks them against the runtime's current connector set and returns a clear error — naming the missing connector — instead of failing partway through the script. This lets a runtime gain or lose connectors without orphaning its snippets.
 
-The `Executor` interface is deliberately minimal — implement it to run code in any sandbox:
+## Runtime handle reference
 
-TypeScript
+`createCodemodeRuntime({ ctx, executor, connectors, name?, maxExecutions?, transformResult? })` returns the handle that owns the executor and connectors for the current request. `CodemodeRuntime` is the Durable Object facet behind that handle; it owns the durable state — the tool-call log, pending approvals, and snippets.
 
-```
+| Handle method                                    | Purpose                                                                            |
+| ------------------------------------------------ | ---------------------------------------------------------------------------------- |
+| runtime.tool(options?)                           | The single model-facing AI SDK tool, codemode({ code }).                           |
+| runtime.pending(executionId?)                    | Actions awaiting approval — drives approval UIs; no id aggregates all paused runs. |
+| runtime.approve({ executionId })                 | Approve the pending action and continue via replay.                                |
+| runtime.reject({ seq, executionId })             | Reject a pending action; ends the execution.                                       |
+| runtime.rollback({ executionId })                | Revert applied actions in reverse order via each tool's revert.                    |
+| runtime.expirePaused({ maxAgeMs? })              | Expire stale awaiting-approval runs and reclaim their resources (default 24 h).    |
+| runtime.executions(limit?)                       | All executions, newest first — the audit trail for developer UIs.                  |
+| runtime.deleteExecution(id) / pruneExecutions(n) | Drop one execution, or keep only the newest N terminal ones.                       |
+| runtime.saveSnippet(name, opts?)                 | Promote an execution's script to a reusable snippet.                               |
+| runtime.snippets() / runtime.deleteSnippet(name) | List or remove saved snippets.                                                     |
 
-interface Executor {
+### Retention
 
-  execute(
+Terminal executions (completed or errored) are auto-pruned as new runs begin, keeping the newest `maxExecutions` (default 50). Running and paused executions are never pruned — an awaiting-approval run is always resumable. Because paused runs are exempt from pruning, call `runtime.expirePaused({ maxAgeMs })` from a recurring alarm or scheduled task to mark stale paused runs `rejected` and reclaim their per-execution connector resources.
 
-    code: string,
+### Shaping results
 
-    fns: Record<string, (...args: unknown[]) => Promise<unknown>>,
+A run's final result can be large enough to crowd the model's context. Pass `transformResult` to reshape the **model-facing** result of a completed run — most often to truncate it. It runs after the raw result is recorded, so the audit trail keeps the full value while the model sees the shaped one:
 
-  ): Promise<ExecuteResult>;
-
-}
-
-
-interface ExecuteResult {
-
-  result: unknown;
-
-  error?: string;
-
-  logs?: string[];
-
-}
-
-
-```
-
-`DynamicWorkerExecutor` is the built-in Cloudflare Workers implementation. You can build your own for Node VM, QuickJS, containers, or any other sandbox.
-
-## API reference
-
-### `createCodeTool(options)`
-
-Returns an AI SDK compatible `Tool`.
-
-| Option      | Type                       | Default        | Description                                                  |
-| ----------- | -------------------------- | -------------- | ------------------------------------------------------------ |
-| tools       | ToolSet \| ToolDescriptors | required       | Your tools (AI SDK tool() or raw descriptors)                |
-| executor    | Executor                   | required       | Where to run the generated code                              |
-| description | string                     | auto-generated | Custom tool description. Use \\{\\{types\\}\\} for type defs |
-
-### `DynamicWorkerExecutor`
-
-Executes code in an isolated Cloudflare Worker via `WorkerLoader`.
-
-| Option         | Type                   | Default  | Description                                                                         |
-| -------------- | ---------------------- | -------- | ----------------------------------------------------------------------------------- |
-| loader         | WorkerLoader           | required | Worker Loader binding from env.LOADER                                               |
-| timeout        | number                 | 30000    | Execution timeout in ms                                                             |
-| globalOutbound | Fetcher \| null        | null     | Network access control. null \= blocked, Fetcher \= routed                          |
-| modules        | Record<string, string> | —        | Custom ES modules available in the sandbox. Keys are specifiers, values are source. |
-
-Code and tool names are normalized and sanitized internally — you do not need to call `normalizeCode()` or `sanitizeToolName()` before passing them to `execute()`.
-
-### `IframeSandboxExecutor`
-
-Executes code in a sandboxed browser iframe. Import it from `@cloudflare/codemode/browser`.
-
-| Option  | Type   | Default                                                       | Description                                                              |
-| ------- | ------ | ------------------------------------------------------------- | ------------------------------------------------------------------------ |
-| timeout | number | 30000                                                         | Execution timeout in ms. Cannot preempt tight synchronous browser loops. |
-| csp     | string | default-src 'none'; script-src 'unsafe-inline' 'unsafe-eval'; | Content Security Policy applied to the sandbox iframe document.          |
-
-### `generateTypes(tools)`
-
-Generates TypeScript type definitions from your tools. Used internally by `createCodeTool` but exported for custom use (for example, displaying types in a frontend).
-
-* [  JavaScript ](#tab-panel-5230)
-* [  TypeScript ](#tab-panel-5231)
+* [  JavaScript ](#tab-panel-5827)
+* [  TypeScript ](#tab-panel-5828)
 
 JavaScript
 
 ```
 
-import { generateTypes } from "@cloudflare/codemode/ai";
+import { createCodemodeRuntime, truncateResult } from "@cloudflare/codemode";
 
 
-const types = generateTypes(myTools);
+const runtime = createCodemodeRuntime({
 
-// Returns:
+  ctx,
 
-// type CreateProjectInput = { name: string; description?: string }
+  executor,
 
-// declare const codemode: {
+  connectors,
 
-//   createProject: (input: CreateProjectInput) => Promise<unknown>;
+  // Cap response size; small structured results pass through unchanged.
 
-// }
+  transformResult: (result) => truncateResult(result),
+
+});
 
 
 ```
@@ -999,72 +1040,46 @@ TypeScript
 
 ```
 
-import { generateTypes } from "@cloudflare/codemode/ai";
+import { createCodemodeRuntime, truncateResult } from "@cloudflare/codemode";
 
 
-const types = generateTypes(myTools);
+const runtime = createCodemodeRuntime({
 
-// Returns:
+  ctx,
 
-// type CreateProjectInput = { name: string; description?: string }
+  executor,
 
-// declare const codemode: {
+  connectors,
 
-//   createProject: (input: CreateProjectInput) => Promise<unknown>;
+  // Cap response size; small structured results pass through unchanged.
 
-// }
+  transformResult: (result) => truncateResult(result),
+
+});
 
 
 ```
 
-For JSON Schema inputs that do not depend on the AI SDK, use the main entry point:
+### Runtime identity
 
-* [  JavaScript ](#tab-panel-5226)
-* [  TypeScript ](#tab-panel-5227)
+The runtime facet's identity is an explicit `name` (default `"default"`). The connector set is data, not identity: adding, removing, or renaming a connector does not address a different runtime, so executions and snippets survive connector changes. Use distinct names when two runtimes should not share history (for example, two unrelated tools on the same agent).
+
+## Vite plugin
+
+Connectors extend `WorkerEntrypoint` and must be exported from the Worker entry module to be reachable over Workers RPC, and the `CodemodeRuntime` facet class must be exported for facet spawning. The `@cloudflare/codemode/vite` plugin derives this from the `*.codemode.ts` file convention instead of hand-maintained wrangler configuration. It discovers `*.codemode.{ts,js,tsx,jsx}` files in `src/`, resolves `with { type: "connectors" }` imports through a virtual module, and appends the required re-exports to your Worker entry:
+
+* [  JavaScript ](#tab-panel-5825)
+* [  TypeScript ](#tab-panel-5826)
 
 JavaScript
 
 ```
 
-import { generateTypesFromJsonSchema } from "@cloudflare/codemode";
+// Auto-generated by @cloudflare/codemode/vite
 
+export { CodemodeRuntime } from "@cloudflare/codemode";
 
-const types = generateTypesFromJsonSchema(jsonSchemaToolDescriptors);
-
-
-```
-
-TypeScript
-
-```
-
-import { generateTypesFromJsonSchema } from "@cloudflare/codemode";
-
-
-const types = generateTypesFromJsonSchema(jsonSchemaToolDescriptors);
-
-
-```
-
-### `sanitizeToolName(name)`
-
-Converts tool names into valid JavaScript identifiers.
-
-* [  JavaScript ](#tab-panel-5232)
-* [  TypeScript ](#tab-panel-5233)
-
-JavaScript
-
-```
-
-import { sanitizeToolName } from "@cloudflare/codemode";
-
-
-sanitizeToolName("get-weather"); // "get_weather"
-
-sanitizeToolName("3d-render"); // "_3d_render"
-
-sanitizeToolName("delete"); // "delete_"
+export * from "/abs/path/to/github.codemode.ts";
 
 
 ```
@@ -1073,42 +1088,41 @@ TypeScript
 
 ```
 
-import { sanitizeToolName } from "@cloudflare/codemode";
+// Auto-generated by @cloudflare/codemode/vite
 
+export { CodemodeRuntime } from "@cloudflare/codemode";
 
-sanitizeToolName("get-weather"); // "get_weather"
-
-sanitizeToolName("3d-render"); // "_3d_render"
-
-sanitizeToolName("delete"); // "delete_"
+export * from "/abs/path/to/github.codemode.ts";
 
 
 ```
+
+For import attributes to work, your `tsconfig.json` needs `"module": "esnext"` (the `agents/tsconfig` base sets the rest).
 
 ## Security considerations
 
 * Code runs in **isolated Worker sandboxes** — each execution gets its own Worker instance.
-* External network access (`fetch`, `connect`) is **blocked by default** at the runtime level.
-* Tool calls are dispatched via Workers RPC, not network requests.
-* Execution has a configurable **timeout** (default 30 seconds).
-* Console output is captured separately and does not leak to the host.
-* Browser iframe execution runs in a sandboxed iframe with a restrictive CSP by default. It uses nonce-scoped internal messages, but its timeout cannot preempt tight synchronous loops like `while (true) {}` because those block the browser event loop.
+* External network access (`fetch`, `connect`) is **blocked by default** at the runtime level. Every effect goes through a connector or `codemode.step`.
+* Connector calls are dispatched via Workers RPC, not network requests.
+* Any single recorded value (an argument or result) is capped at 1 MB serialized; an oversized value fails the run with a model-actionable error rather than silently truncating replay data.
+* Mark only the tools that need a human with `requiresApproval: true`; everything else executes immediately and is recorded for audit.
 
 ## Current limitations
 
-* **Tool approval (`needsApproval`) is not supported yet.** Codemode excludes approval-required tools instead of pausing execution for approval. Use those tools through standard AI SDK tool calling instead.
-* Requires Cloudflare Workers environment for `DynamicWorkerExecutor`.
-* Limited to JavaScript execution.
+* Requires a Cloudflare Workers environment for `DynamicWorkerExecutor`.
+* Connector calls must be issued sequentially in any run that might pause for approval (no `Promise.all`).
+* Limited to JavaScript and TypeScript execution.
 * LLM code quality depends on prompt engineering and model capability.
 
 ## Related resources
 
-[ Codemode example ](https://github.com/cloudflare/agents/tree/main/examples/codemode) Full working example — a project management assistant using codemode with SQLite. 
+[ Codemode connectors example ](https://github.com/cloudflare/agents/tree/main/examples/codemode-connectors) The connector playground — MCP, OpenAPI, and custom connectors with in-sandbox approvals. 
 
-[ Using AI Models ](https://developers.cloudflare.com/agents/runtime/operations/using-ai-models/) Use AI models with your Agent. 
+[ Using AI models ](https://developers.cloudflare.com/agents/runtime/operations/using-ai-models/) Use AI models with your Agent. 
 
-[ MCP Client ](https://developers.cloudflare.com/agents/model-context-protocol/apis/client-api/) Connect to MCP servers and use their tools with codemode. 
+[ MCP client ](https://developers.cloudflare.com/agents/model-context-protocol/apis/client-api/) Connect to MCP servers and expose their tools as codemode connectors. 
 
 ```json
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/agents/model-context-protocol/protocol/codemode/#page","headline":"Codemode · Cloudflare Agents docs","description":"Let LLMs use external systems by writing TypeScript in a secure sandbox, backed by a durable runtime with discovery, approvals, and reusable snippets.","url":"https://developers.cloudflare.com/agents/model-context-protocol/protocol/codemode/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-06-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["AI"]}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/agents/","name":"Agents"}},{"@type":"ListItem","position":3,"item":{"@id":"/agents/model-context-protocol/","name":"Model Context Protocol (MCP)"}},{"@type":"ListItem","position":4,"item":{"@id":"/agents/model-context-protocol/protocol/","name":"Protocol"}},{"@type":"ListItem","position":5,"item":{"@id":"/agents/model-context-protocol/protocol/codemode/","name":"Codemode"}}]}
 ```

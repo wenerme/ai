@@ -16,7 +16,7 @@ View tutorials to help you get started with Workers AI.
 
 | Name                                                                                                                                                                                   | Last Updated       | Difficulty   |
 | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------ | ------------ |
-| [Code interpreter with Workers AI](https://developers.cloudflare.com/sandbox/tutorials/workers-ai-code-interpreter/)                                                                   | 4 months ago       | Intermediate |
+| [Code interpreter with Workers AI](https://developers.cloudflare.com/sandbox/tutorials/workers-ai-code-interpreter/)                                                                   | 5 months ago       | Intermediate |
 | [Whisper-large-v3-turbo with Cloudflare Workers AI](https://developers.cloudflare.com/workers-ai/guides/tutorials/build-a-workers-ai-whisper-with-chunking/)                           | about 1 year ago   | Beginner     |
 | [Llama 3.2 11B Vision Instruct model on Cloudflare Workers AI](https://developers.cloudflare.com/workers-ai/guides/tutorials/llama-vision-tutorial/)                                   | over 1 year ago    | Beginner     |
 | [Store and Catalog AI Generated Images with R2 (Part 3)](https://developers.cloudflare.com/workers-ai/guides/tutorials/image-generation-playground/image-generator-store-and-catalog/) | over 1 year ago    | Beginner     |
@@ -32,5 +32,6 @@ View tutorials to help you get started with Workers AI.
 | [Choose the Right Text Generation Model](https://developers.cloudflare.com/workers-ai/guides/tutorials/how-to-choose-the-right-text-generation-model/)                                 | over 2 years ago   | Beginner     |
 
 ```json
+{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/workers-ai/guides/tutorials/#page","headline":"Tutorials · Cloudflare Workers AI docs","description":"Step-by-step Workers AI tutorials for building AI-powered applications on Cloudflare.","url":"https://developers.cloudflare.com/workers-ai/guides/tutorials/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-05-19","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["AI"]}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/workers-ai/","name":"Workers AI"}},{"@type":"ListItem","position":3,"item":{"@id":"/workers-ai/guides/","name":"Guides"}},{"@type":"ListItem","position":4,"item":{"@id":"/workers-ai/guides/tutorials/","name":"Tutorials"}}]}
 ```

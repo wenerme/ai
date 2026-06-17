@@ -147,9 +147,9 @@ JSONC
 
 Any S3-compatible client that supports session tokens will accept R2 temporary credentials. Pass all three values (access key ID, secret access key, session token) using the client's standard credential fields.
 
-* [ JavaScript ](#tab-panel-7092)
-* [ Python ](#tab-panel-7093)
-* [ Environment variables ](#tab-panel-7094)
+* [ JavaScript ](#tab-panel-9723)
+* [ Python ](#tab-panel-9724)
+* [ Environment variables ](#tab-panel-9725)
 
 TypeScript
 
@@ -240,5 +240,6 @@ Treat temporary credentials as bearer tokens. Anyone in possession of all three 
 [ Error codes ](https://developers.cloudflare.com/r2/api/error-codes/) Authentication and authorization error codes returned by R2. 
 
 ```json
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/r2/api/s3/temporary-credentials/#page","headline":"Temporary credentials · Cloudflare R2 docs","description":"Learn about temporary credentials in r2.","url":"https://developers.cloudflare.com/r2/api/s3/temporary-credentials/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-24","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/r2/","name":"R2"}},{"@type":"ListItem","position":3,"item":{"@id":"/r2/api/","name":"API"}},{"@type":"ListItem","position":4,"item":{"@id":"/r2/api/s3/","name":"S3"}},{"@type":"ListItem","position":5,"item":{"@id":"/r2/api/s3/temporary-credentials/","name":"Temporary credentials"}}]}
 ```

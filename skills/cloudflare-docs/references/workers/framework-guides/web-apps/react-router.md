@@ -257,8 +257,8 @@ export default {
 
 Configure it in your Wrangler configuration file:
 
-* [  wrangler.jsonc ](#tab-panel-10619)
-* [  wrangler.toml ](#tab-panel-10620)
+* [  wrangler.jsonc ](#tab-panel-11798)
+* [  wrangler.toml ](#tab-panel-11799)
 
 JSONC
 
@@ -324,5 +324,6 @@ With bindings, your application can be fully integrated with the Cloudflare Deve
 [ Bindings ](https://developers.cloudflare.com/workers/runtime-apis/bindings/) Access to compute, storage, AI and more. 
 
 ```json
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/framework-guides/web-apps/react-router/#page","headline":"React Router (formerly Remix) · Cloudflare Workers docs","description":"Create a React Router application and deploy it to Cloudflare Workers","url":"https://developers.cloudflare.com/workers/framework-guides/web-apps/react-router/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["full-stack"]}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/workers/","name":"Workers"}},{"@type":"ListItem","position":3,"item":{"@id":"/workers/framework-guides/","name":"Framework guides"}},{"@type":"ListItem","position":4,"item":{"@id":"/workers/framework-guides/web-apps/","name":"Web applications"}},{"@type":"ListItem","position":5,"item":{"@id":"/workers/framework-guides/web-apps/react-router/","name":"React Router (formerly Remix)"}}]}
 ```

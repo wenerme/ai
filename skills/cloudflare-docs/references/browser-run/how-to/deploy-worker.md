@@ -98,8 +98,8 @@ Configure your `browser-worker` project's [Wrangler configuration file](https://
 
 Update your [Wrangler configuration file](https://developers.cloudflare.com/workers/wrangler/configuration/) with the Browser Run API binding and the KV namespaces you created:
 
-* [  wrangler.jsonc ](#tab-panel-4411)
-* [  wrangler.toml ](#tab-panel-4412)
+* [  wrangler.jsonc ](#tab-panel-6880)
+* [  wrangler.toml ](#tab-panel-6881)
 
 JSONC
 
@@ -115,7 +115,7 @@ JSONC
 
   // Set this to today's date
 
-  "compatibility_date": "2026-04-29",
+  "compatibility_date": "2026-06-17",
 
   "compatibility_flags": ["nodejs_compat"],
 
@@ -156,7 +156,7 @@ main = "src/index.js"
 
 # Set this to today's date
 
-compatibility_date = "2026-04-29"
+compatibility_date = "2026-06-17"
 
 compatibility_flags = [ "nodejs_compat" ]
 
@@ -179,8 +179,8 @@ preview_id = "e1f8b68b68d24381b57071445f96e623"
 
 #### 5\. Code
 
-* [  JavaScript ](#tab-panel-4409)
-* [  TypeScript ](#tab-panel-4410)
+* [  JavaScript ](#tab-panel-6878)
+* [  TypeScript ](#tab-panel-6879)
 
 Update `src/index.js` with your Worker code:
 
@@ -363,5 +363,6 @@ To take your first screenshot, go to the following URL:
 * Other [Puppeteer examples ↗](https://github.com/cloudflare/puppeteer/tree/main/examples)
 
 ```json
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/browser-run/how-to/deploy-worker/#page","headline":"Deploy a Browser Run Worker · Cloudflare Browser Run docs","description":"Create and deploy a Cloudflare Worker that uses Browser Run to take screenshots from web pages.","url":"https://developers.cloudflare.com/browser-run/how-to/deploy-worker/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/browser-run/","name":"Browser Run"}},{"@type":"ListItem","position":3,"item":{"@id":"/browser-run/how-to/","name":"Tutorials"}},{"@type":"ListItem","position":4,"item":{"@id":"/browser-run/how-to/deploy-worker/","name":"Deploy a Browser Run Worker"}}]}
 ```

@@ -27,8 +27,8 @@ ByteDance's next-generation video model with a unified multimodal architecture. 
 
 ## Usage
 
-* [ TypeScript ](#tab-panel-368)
-* [ cURL ](#tab-panel-369)
+* [ TypeScript ](#tab-panel-374)
+* [ cURL ](#tab-panel-375)
 
 TypeScript
 
@@ -88,8 +88,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 ```
 
-* [ Output ](#tab-panel-364)
-* [ Raw response ](#tab-panel-365)
+* [ Output ](#tab-panel-370)
+* [ Raw response ](#tab-panel-371)
 
 ```
 
@@ -118,8 +118,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 **High Resolution Cinematic**  — Cinematic video in 1080p 
 
-* [ TypeScript ](#tab-panel-372)
-* [ cURL ](#tab-panel-373)
+* [ TypeScript ](#tab-panel-378)
+* [ cURL ](#tab-panel-379)
 
 TypeScript
 
@@ -181,8 +181,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 ```
 
-* [ Output ](#tab-panel-366)
-* [ Raw response ](#tab-panel-367)
+* [ Output ](#tab-panel-372)
+* [ Raw response ](#tab-panel-373)
 
 ```
 
@@ -209,8 +209,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 **Image to Video**  — Generate video from a reference image 
 
-* [ TypeScript ](#tab-panel-376)
-* [ cURL ](#tab-panel-377)
+* [ TypeScript ](#tab-panel-382)
+* [ cURL ](#tab-panel-383)
 
 TypeScript
 
@@ -276,8 +276,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 ```
 
-* [ Output ](#tab-panel-370)
-* [ Raw response ](#tab-panel-371)
+* [ Output ](#tab-panel-376)
+* [ Raw response ](#tab-panel-377)
 
 ```
 
@@ -304,8 +304,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 **Portrait Video**  — Vertical video for social media 
 
-* [ TypeScript ](#tab-panel-378)
-* [ cURL ](#tab-panel-379)
+* [ TypeScript ](#tab-panel-384)
+* [ cURL ](#tab-panel-385)
 
 TypeScript
 
@@ -365,8 +365,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 ```
 
-* [ Output ](#tab-panel-374)
-* [ Raw response ](#tab-panel-375)
+* [ Output ](#tab-panel-380)
+* [ Raw response ](#tab-panel-381)
 
 ```
 
@@ -393,8 +393,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 ## Parameters
 
-* [ Input ](#tab-panel-380)
-* [ Output ](#tab-panel-381)
+* [ Input ](#tab-panel-386)
+* [ Output ](#tab-panel-387)
 
 aspect\_ratio
 
@@ -459,5 +459,6 @@ Input [ ](https://developers.cloudflare.com/ai/models/bytedance/seedance-2.0/sch
 Output [ ](https://developers.cloudflare.com/ai/models/bytedance/seedance-2.0/schema-output.json "Open") [ ](https://developers.cloudflare.com/ai/models/bytedance/seedance-2.0/schema-output.json "Download") 
 
 ```json
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai/models/bytedance/seedance-2.0/#page","headline":"Seedance 2.0 (ByteDance) · Cloudflare AI docs · Cloudflare AI docs","description":"ByteDance's next-generation video model with a unified multimodal architecture. Generates high-quality video with synchronized audio from text, images, video clips, and audio inputs. Supports multimodal references (up to 9 images, 3 videos, 3 audio files), native audio generation, video editing, video extension, intelligent duration, and adaptive aspect ratio.","url":"https://developers.cloudflare.com/ai/models/bytedance/seedance-2.0/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/ai/","name":"AI"}},{"@type":"ListItem","position":3,"item":{"@id":"/ai/models/","name":"Models"}}]}
 ```

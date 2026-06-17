@@ -104,10 +104,10 @@ Then the token is valid and the `is_timed_hmac_valid_v0()` function returns `tru
 
 The following examples show how you could generate tokens at your origin server for the path validated using the custom rule described in the previous section:
 
-* [  Python 3.8 ](#tab-panel-10211)
-* [  Python 2.7 ](#tab-panel-10212)
-* [  PHP ](#tab-panel-10213)
-* [ Workers ](#tab-panel-10214)
+* [  Python 3.8 ](#tab-panel-11154)
+* [  Python 2.7 ](#tab-panel-11155)
+* [  PHP ](#tab-panel-11156)
+* [ Workers ](#tab-panel-11157)
 
 Python
 
@@ -287,5 +287,6 @@ The first two URI paths can use the same HMAC signature because they share the s
 The third URI path needs a different HMAC signature, since the prefix is different.
 
 ```json
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/waf/custom-rules/use-cases/configure-token-authentication/#page","headline":"Configure token authentication · Cloudflare Web Application Firewall (WAF) docs","description":"Configure token-based authentication with custom rules.","url":"https://developers.cloudflare.com/waf/custom-rules/use-cases/configure-token-authentication/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-05-05","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Authentication","Python"]}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/waf/","name":"WAF"}},{"@type":"ListItem","position":3,"item":{"@id":"/waf/custom-rules/","name":"Custom rules"}},{"@type":"ListItem","position":4,"item":{"@id":"/waf/custom-rules/use-cases/","name":"Common use cases"}},{"@type":"ListItem","position":5,"item":{"@id":"/waf/custom-rules/use-cases/configure-token-authentication/","name":"Configure token authentication"}}]}
 ```

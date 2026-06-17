@@ -34,5 +34,6 @@ Refer to the resources below to configure policies to ensure that you can assign
 * [ User Groups ](https://developers.cloudflare.com/fundamentals/manage-members/user-groups/)
 
 ```json
+{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/fundamentals/manage-members/#page","headline":"Members and permissions · Cloudflare Fundamentals docs","description":"Add members to your Cloudflare account and assign roles, scopes, and policies to control their access.","url":"https://developers.cloudflare.com/fundamentals/manage-members/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-20","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/fundamentals/","name":"Cloudflare Fundamentals"}},{"@type":"ListItem","position":3,"item":{"@id":"/fundamentals/manage-members/","name":"Members and permissions"}}]}
 ```

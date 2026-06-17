@@ -18,8 +18,8 @@ When running `wrangler deploy`, if you set the `image` attribute in your [Wrangl
 
 Just provide the path to your Dockerfile:
 
-* [  wrangler.jsonc ](#tab-panel-5330)
-* [  wrangler.toml ](#tab-panel-5331)
+* [  wrangler.jsonc ](#tab-panel-7842)
+* [  wrangler.toml ](#tab-panel-7843)
 
 JSONC
 
@@ -77,8 +77,8 @@ To use a public Docker Hub image, set `image` to a fully qualified Docker Hub im
 
 For example:
 
-* [  wrangler.jsonc ](#tab-panel-5332)
-* [  wrangler.toml ](#tab-panel-5333)
+* [  wrangler.jsonc ](#tab-panel-7844)
+* [  wrangler.toml ](#tab-panel-7845)
 
 JSONC
 
@@ -266,8 +266,8 @@ printf '%s' "$AWS_SECRET_ACCESS_KEY" | npx wrangler containers registries config
 
 After you configure the registry, use the fully qualified Amazon ECR image reference in your Wrangler configuration:
 
-* [  wrangler.jsonc ](#tab-panel-5334)
-* [  wrangler.toml ](#tab-panel-5335)
+* [  wrangler.jsonc ](#tab-panel-7846)
+* [  wrangler.toml ](#tab-panel-7847)
 
 JSONC
 
@@ -350,8 +350,8 @@ pnpm wrangler containers build -p -t <TAG> .
 
 This will output an image registry URI that you can then use in your Wrangler configuration:
 
-* [  wrangler.jsonc ](#tab-panel-5336)
-* [  wrangler.toml ](#tab-panel-5337)
+* [  wrangler.jsonc ](#tab-panel-7848)
+* [  wrangler.toml ](#tab-panel-7849)
 
 JSONC
 
@@ -404,5 +404,6 @@ Images are limited in size by available disk of the configured [instance type](h
 Delete images with `wrangler containers images delete` to free up space, but reverting a Worker to a previous version that uses a deleted image will then error.
 
 ```json
+{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/containers/platform-details/image-management/#page","headline":"Image Management · Cloudflare Containers docs","description":"Learn how to use Cloudflare Registry, Docker Hub, and Amazon ECR images with Containers.","url":"https://developers.cloudflare.com/containers/platform-details/image-management/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/containers/","name":"Containers"}},{"@type":"ListItem","position":3,"item":{"@id":"/containers/platform-details/","name":"Platform Reference"}},{"@type":"ListItem","position":4,"item":{"@id":"/containers/platform-details/image-management/","name":"Image Management"}}]}
 ```

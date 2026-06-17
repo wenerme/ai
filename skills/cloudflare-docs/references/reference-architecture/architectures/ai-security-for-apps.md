@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 # AI Security for Apps Reference Architecture
 
-**Last reviewed:**  2 months ago 
+**Last reviewed:**  3 months ago 
 
 ## Abstract
 
@@ -238,5 +238,6 @@ AI Security for Apps complements WAF providing the same operational model and ca
 * [Video: Cloudflare AI Security Suite: Protect AI-powered apps with AI Security for Apps ↗](https://www.youtube.com/watch?v=LoGaySHVGu8)
 
 ```json
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/reference-architecture/architectures/ai-security-for-apps/#page","headline":"AI Security for Apps Reference Architecture · Cloudflare Reference Architecture docs","description":"This article highlights how Cloudflare's AI Security for Apps complements Cloudflare WAF by providing an AI protection layer for detecting and mitigating threats to AI-powered applications.","url":"https://developers.cloudflare.com/reference-architecture/architectures/ai-security-for-apps/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-03-06","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/reference-architecture/","name":"Reference Architecture"}},{"@type":"ListItem","position":3,"item":{"@id":"/reference-architecture/architectures/","name":"Reference Architectures"}},{"@type":"ListItem","position":4,"item":{"@id":"/reference-architecture/architectures/ai-security-for-apps/","name":"AI Security for Apps Reference Architecture"}}]}
 ```

@@ -30,5 +30,6 @@ Reference architecture documents and diagrams are designed to provide a foundati
 * [ Understanding Email Security Deployments ](https://developers.cloudflare.com/reference-architecture/architectures/email-security-deployments/)
 
 ```json
+{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/reference-architecture/architectures/#page","headline":"Reference Architectures · Cloudflare Reference Architecture docs","description":"Browse Cloudflare reference architecture documents.","url":"https://developers.cloudflare.com/reference-architecture/architectures/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-24","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/reference-architecture/","name":"Reference Architecture"}},{"@type":"ListItem","position":3,"item":{"@id":"/reference-architecture/architectures/","name":"Reference Architectures"}}]}
 ```

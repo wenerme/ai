@@ -36,8 +36,8 @@ You can define variables in the Wrangler configuration file of your Worker proje
 
 To bind Images to your Worker, add the following to the end of your Wrangler configuration file:
 
-* [  wrangler.jsonc ](#tab-panel-8631)
-* [  wrangler.toml ](#tab-panel-8632)
+* [  wrangler.jsonc ](#tab-panel-8840)
+* [  wrangler.toml ](#tab-panel-8841)
 
 JSONC
 
@@ -77,12 +77,12 @@ Responses from the Images binding are not automatically cached. Workers lets you
 
 ### `.input(stream)`
 
-Creates an optimization handle for an image. All operations begin with this method. Accepts image bytes from any source, including [Images](https://developers.cloudflare.com/images/storage/upload-images/methods/), [R2](https://developers.cloudflare.com/r2/), a `fetch()` response, or a request body.
+Creates an optimization handle for an image. All operations begin with this method. Accepts image bytes up to 20 MB from any source, including [Images](https://developers.cloudflare.com/images/storage/upload-images/methods/), [R2](https://developers.cloudflare.com/r2/), a `fetch()` response, or a request body.
 
 Returns a handle that you can use to chain `.transform()`, `.draw()`, and `.output()` calls.
 
-* [  JavaScript ](#tab-panel-8637)
-* [  TypeScript ](#tab-panel-8638)
+* [  JavaScript ](#tab-panel-8846)
+* [  TypeScript ](#tab-panel-8847)
 
 JavaScript
 
@@ -156,8 +156,8 @@ For the full list of parameters, refer to [Features](https://developers.cloudfla
 
 The example below shows how you can resize an image that is [stored in Images](https://developers.cloudflare.com/images/storage/binding/) by getting the image bytes:
 
-* [  JavaScript ](#tab-panel-8633)
-* [  TypeScript ](#tab-panel-8634)
+* [  JavaScript ](#tab-panel-8842)
+* [  TypeScript ](#tab-panel-8843)
 
 JavaScript
 
@@ -219,7 +219,7 @@ Draws an overlay image over another image.
 
 The overlay can be a stream of image bytes or another `.input()` chain. You can pass a child `.transform()` function inside this method to resize or manipulate the overlay before drawing it.
 
-Accepts `opacity`, `repeat`, and a side (`left`, `right`, `top`, `bottom`). For the full list of draw options and examples, refer to [Draw overlays and watermarks](https://developers.cloudflare.com/images/optimization/transformations/draw-overlays/#options).
+Accepts `opacity`, `repeat`, a side (`left`, `right`, `top`, `bottom`), and `composite`. For the full list of draw options and examples, refer to [Draw overlays and watermarks](https://developers.cloudflare.com/images/optimization/draw-overlays/#options).
 
 ### `.output(options)`
 
@@ -231,8 +231,8 @@ Accepts the following options:
 * `quality` — Specifies the output [quality](https://developers.cloudflare.com/images/optimization/features/#quality--q) of an image for JPEG, WebP, and AVIF formats, expressed as a fixed value or perceptual quality level.
 * `anim` — Specifies whether to [preserve animation frames](https://developers.cloudflare.com/images/optimization/features/#anim) from input files. Set `anim:false` to convert animations to still images.
 
-* [  JavaScript ](#tab-panel-8635)
-* [  TypeScript ](#tab-panel-8636)
+* [  JavaScript ](#tab-panel-8844)
+* [  TypeScript ](#tab-panel-8845)
 
 JavaScript
 
@@ -318,5 +318,6 @@ npx wrangler dev --remote
 When testing with the [Workers Vitest integration](https://developers.cloudflare.com/workers/testing/vitest-integration/), the low-fidelity offline version is used by default, to avoid hitting the Cloudflare API in tests.
 
 ```json
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/images/optimization/binding/#page","headline":"Optimize with Workers · Cloudflare Images docs","description":"Use the Images binding to optimize, resize, and manipulate images directly in a Worker from any source.","url":"https://developers.cloudflare.com/images/optimization/binding/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-06-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/images/","name":"Cloudflare Images"}},{"@type":"ListItem","position":3,"item":{"@id":"/images/optimization/","name":"Optimization"}},{"@type":"ListItem","position":4,"item":{"@id":"/images/optimization/binding/","name":"Optimize with Workers"}}]}
 ```

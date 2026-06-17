@@ -27,5 +27,6 @@ An event is a structured record of something happening in your Cloudflare accoun
 [ Events & schemas ](https://developers.cloudflare.com/queues/event-subscriptions/events-schemas/) Explore available event types and their corresponding data schemas. 
 
 ```json
+{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/queues/event-subscriptions/#page","headline":"Event subscriptions overview · Cloudflare Queues docs","description":"Subscribe to events from Cloudflare services to build custom workflows, integrations, and logic with Workers.","url":"https://developers.cloudflare.com/queues/event-subscriptions/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/queues/","name":"Queues"}},{"@type":"ListItem","position":3,"item":{"@id":"/queues/event-subscriptions/","name":"Event subscriptions"}}]}
 ```

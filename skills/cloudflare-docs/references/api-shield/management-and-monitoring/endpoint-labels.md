@@ -181,8 +181,8 @@ You can export per-request Web Assets data to your storage or SIEM system of cho
 
 ## Create a label
 
-* [  New dashboard ](#tab-panel-4680)
-* [ Old dashboard ](#tab-panel-4681)
+* [  New dashboard ](#tab-panel-6681)
+* [ Old dashboard ](#tab-panel-6682)
 
 1. In the Cloudflare dashboard, go to the **Security Settings** page.  
 [ Go to **Settings** ](https://dash.cloudflare.com/?to=/:account/:zone/security/settings)
@@ -222,8 +222,8 @@ Alternatively, you can create a user-defined label via Endpoint Management in AP
 
 ## Apply a label to an individual endpoint
 
-* [  New dashboard ](#tab-panel-4682)
-* [ Old dashboard ](#tab-panel-4683)
+* [  New dashboard ](#tab-panel-6683)
+* [ Old dashboard ](#tab-panel-6684)
 
 1. In the Cloudflare dashboard, go to the **Web assets** page.  
 [ Go to **Web assets** ](https://dash.cloudflare.com/?to=/:account/:zone/security/web-assets)
@@ -241,8 +241,8 @@ Alternatively, you can create a user-defined label via Endpoint Management in AP
 
 ## Bulk apply labels to multiple endpoints
 
-* [  New dashboard ](#tab-panel-4678)
-* [ Old dashboard ](#tab-panel-4679)
+* [  New dashboard ](#tab-panel-6679)
+* [ Old dashboard ](#tab-panel-6680)
 
 1. In the Cloudflare dashboard, go to the **Security Settings** page.  
 [ Go to **Settings** ](https://dash.cloudflare.com/?to=/:account/:zone/security/settings)
@@ -263,5 +263,6 @@ Alternatively, you can create a user-defined label via Endpoint Management in AP
 Endpoint labeling is available to all customers.
 
 ```json
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/api-shield/management-and-monitoring/endpoint-labels/#page","headline":"Endpoint labeling service · Cloudflare API Shield docs","description":"Organize API endpoints and address vulnerabilities with managed and custom labels.","url":"https://developers.cloudflare.com/api-shield/management-and-monitoring/endpoint-labels/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-05-22","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["GraphQL"]}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/api-shield/","name":"API Shield"}},{"@type":"ListItem","position":3,"item":{"@id":"/api-shield/management-and-monitoring/","name":"Management and Monitoring"}},{"@type":"ListItem","position":4,"item":{"@id":"/api-shield/management-and-monitoring/endpoint-labels/","name":"Endpoint labeling service"}}]}
 ```

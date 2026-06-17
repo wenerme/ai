@@ -50,6 +50,13 @@ Cloudflare will also crawl your site in other, specific situations:
    * _User-Agent_: `Cloudflare Custom Hostname Verification`  
    * _Triggered when_: You choose to validate a custom hostname with an [HTTP ownership token](https://developers.cloudflare.com/cloudflare-for-platforms/cloudflare-for-saas/domain-support/hostname-validation/pre-validation/#http-tokens).
 
+## Developer product crawlers
+
+[Browser Run](https://developers.cloudflare.com/browser-run/) is a Cloudflare developer product that can crawl third-party websites on behalf of Cloudflare customers. Unlike the crawlers in the Crawling situations section, it does not crawl your site as part of a Cloudflare service you have enabled. It is used by developers building applications with Cloudflare's platform.
+
+The [**Browser Run /crawl endpoint**](https://developers.cloudflare.com/browser-run/quick-actions/crawl-endpoint/) uses a _User-Agent_ of `CloudflareBrowserRenderingCrawler/1.0`. For non-configurable headers, bot detection IDs, and cryptographic verification methods you can use to identify or block Browser Run traffic, refer to [Automatic request headers](https://developers.cloudflare.com/browser-run/reference/automatic-request-headers/).
+
 ```json
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/fundamentals/reference/cloudflare-site-crawling/#page","headline":"Cloudflare crawlers · Cloudflare Fundamentals docs","description":"Review the user agents and situations in which Cloudflare crawls or makes HTTP requests to your site.","url":"https://developers.cloudflare.com/fundamentals/reference/cloudflare-site-crawling/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-06-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/fundamentals/","name":"Cloudflare Fundamentals"}},{"@type":"ListItem","position":3,"item":{"@id":"/fundamentals/reference/","name":"Reference"}},{"@type":"ListItem","position":4,"item":{"@id":"/fundamentals/reference/cloudflare-site-crawling/","name":"Cloudflare crawlers"}}]}
 ```

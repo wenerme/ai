@@ -438,8 +438,8 @@ Your i18n tool built on Cloudflare Pages is complete and it is time to deploy it
 
 To deploy your application to a `*.pages.dev` subdomain, you need to specify a directory of static assets to serve, configure the `pages_build_output_dir` in your project’s Wrangler file and set the value to `./public`:
 
-* [  wrangler.jsonc ](#tab-panel-7289)
-* [  wrangler.toml ](#tab-panel-7290)
+* [  wrangler.jsonc ](#tab-panel-9443)
+* [  wrangler.toml ](#tab-panel-9444)
 
 JSONC
 
@@ -455,7 +455,7 @@ JSONC
 
   // Set this to today's date
 
-  "compatibility_date": "2026-05-18"
+  "compatibility_date": "2026-06-17"
 
 }
 
@@ -474,7 +474,7 @@ pages_build_output_dir = "./public"
 
 # Set this to today's date
 
-compatibility_date = "2026-05-18"
+compatibility_date = "2026-06-17"
 
 
 ```
@@ -514,5 +514,6 @@ In this tutorial, you built and deployed an i18n tool using `HTMLRewriter`. To r
 If you want to get started building your own projects, review the existing list of [Quickstart templates](https://developers.cloudflare.com/workers/get-started/quickstarts/).
 
 ```json
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/pages/tutorials/localize-a-website/#page","headline":"Localize a website with HTMLRewriter · Cloudflare Pages docs","description":"This tutorial uses the HTMLRewriter functionality in the Cloudflare Workers platform to overlay an i18n layer, automatically translating the site based on the user's language.","url":"https://developers.cloudflare.com/pages/tutorials/localize-a-website/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["JavaScript"]}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/pages/","name":"Pages"}},{"@type":"ListItem","position":3,"item":{"@id":"/pages/tutorials/","name":"Tutorials"}},{"@type":"ListItem","position":4,"item":{"@id":"/pages/tutorials/localize-a-website/","name":"Localize a website with HTMLRewriter"}}]}
 ```

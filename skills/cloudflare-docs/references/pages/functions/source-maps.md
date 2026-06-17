@@ -26,8 +26,8 @@ Support for uploading source maps for Pages is available now in open beta. Minim
 
 To enable source maps, provide the `--upload-source-maps` flag to [wrangler pages deploy](https://developers.cloudflare.com/workers/wrangler/commands/general/#deploy) or add the following to your Pages application's [Wrangler configuration file](https://developers.cloudflare.com/pages/functions/wrangler-configuration/) if you are using the Pages build environment:
 
-* [  wrangler.jsonc ](#tab-panel-6802)
-* [  wrangler.toml ](#tab-panel-6803)
+* [  wrangler.jsonc ](#tab-panel-9422)
+* [  wrangler.toml ](#tab-panel-9423)
 
 JSONC
 
@@ -74,5 +74,6 @@ The source map is retrieved after your Pages Function invocation completes — i
 * [Real-time logs](https://developers.cloudflare.com/pages/functions/debugging-and-logging/) \- Learn how to capture Pages logs in real-time.
 
 ```json
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/pages/functions/source-maps/#page","headline":"Source maps and stack traces · Cloudflare Pages docs","description":"Adding source maps and generating stack traces for Pages.","url":"https://developers.cloudflare.com/pages/functions/source-maps/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/pages/","name":"Pages"}},{"@type":"ListItem","position":3,"item":{"@id":"/pages/functions/","name":"Functions"}},{"@type":"ListItem","position":4,"item":{"@id":"/pages/functions/source-maps/","name":"Source maps and stack traces"}}]}
 ```

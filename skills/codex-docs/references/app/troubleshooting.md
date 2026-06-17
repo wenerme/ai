@@ -39,12 +39,13 @@ section.
 
 ### Code doesn't run on a worktree
 
-Worktrees are created in a different directory and only inherit the files that
-are checked into Git. Depending on how you manage dependencies and tooling
-for your project you might have to run some setup scripts on your worktree using a
-[local environment](https://developers.openai.com/codex/app/local-environments). Alternatively you can check out
-the changes in your regular local project. Check out the
-[worktrees documentation](https://developers.openai.com/codex/app/worktrees) to learn more.
+Worktrees are created in a different directory and inherit files checked into
+Git by default. Depending on how you manage dependencies and tooling for your
+project, you might have to run setup scripts on your worktree using a
+[local environment](https://developers.openai.com/codex/app/local-environments) or copy ignored setup files
+with [`.worktreeinclude`](https://developers.openai.com/codex/app/worktrees#copy-ignored-local-files-into-managed-worktrees).
+Alternatively, you can check out the changes in your regular local project. See
+the [worktrees documentation](https://developers.openai.com/codex/app/worktrees) to learn more.
 
 ### App doesn't pick up a teammate's shared local environment
 

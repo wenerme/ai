@@ -18,10 +18,10 @@ WAF content scanning is available to customers on an Enterprise plan with a paid
 
 ## 1\. Turn on the detection
 
-* [  New dashboard ](#tab-panel-10009)
-* [ Old dashboard ](#tab-panel-10010)
-* [ API ](#tab-panel-10011)
-* [ Terraform ](#tab-panel-10012)
+* [  New dashboard ](#tab-panel-11184)
+* [ Old dashboard ](#tab-panel-11185)
+* [ API ](#tab-panel-11186)
+* [ Terraform ](#tab-panel-11187)
 
 1. In the Cloudflare dashboard, go to the Security **Settings** page.  
 [ Go to **Settings** ](https://dash.cloudflare.com/?to=/:account/:zone/security/settings)
@@ -132,10 +132,10 @@ For additional examples, refer to [Example rules](https://developers.cloudflare.
 
 To check uploaded content in a way that is not covered by the default configuration, add a [custom scan expression](https://developers.cloudflare.com/waf/detections/malicious-uploads/#custom-scan-expressions).
 
-* [  New dashboard ](#tab-panel-10013)
-* [ Old dashboard ](#tab-panel-10014)
-* [ API ](#tab-panel-10015)
-* [ Terraform ](#tab-panel-10016)
+* [  New dashboard ](#tab-panel-11188)
+* [ Old dashboard ](#tab-panel-11189)
+* [ API ](#tab-panel-11190)
+* [ Terraform ](#tab-panel-11191)
 
 1. In the Cloudflare dashboard, go to the Security **Settings** page.  
 [ Go to **Settings** ](https://dash.cloudflare.com/?to=/:account/:zone/security/settings)
@@ -216,5 +216,6 @@ resource "cloudflare_content_scanning_expression" "my_custom_scan_expression" {
 For more information, refer to [Custom scan expressions](https://developers.cloudflare.com/waf/detections/malicious-uploads/#custom-scan-expressions).
 
 ```json
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/waf/detections/malicious-uploads/get-started/#page","headline":"Get started with malicious uploads detection · Cloudflare Web Application Firewall (WAF) docs","description":"Enable malicious upload detection for file upload endpoints.","url":"https://developers.cloudflare.com/waf/detections/malicious-uploads/get-started/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/waf/","name":"WAF"}},{"@type":"ListItem","position":3,"item":{"@id":"/waf/detections/","name":"Traffic detections"}},{"@type":"ListItem","position":4,"item":{"@id":"/waf/detections/malicious-uploads/","name":"Malicious uploads detection"}},{"@type":"ListItem","position":5,"item":{"@id":"/waf/detections/malicious-uploads/get-started/","name":"Get started"}}]}
 ```

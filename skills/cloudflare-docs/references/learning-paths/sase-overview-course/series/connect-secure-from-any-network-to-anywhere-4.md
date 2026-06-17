@@ -12,8 +12,8 @@ image: https://developers.cloudflare.com/cf-twitter-card.png
 
 # Connect and secure from any network to anywhere
 
-* [ Watch this episode ](#tab-panel-6524)
-* [ Series overview ](#tab-panel-6525)
+* [ Watch this episode ](#tab-panel-9142)
+* [ Series overview ](#tab-panel-9143)
 
 Build your new corporate network with Cloudflare, connecting any network into our modern SASE platform and secure applications, users, devices and your company data. In this video you will learn all the different methods of connecting networks to Cloudflare and what services can be used to improve security and performance.
 
@@ -51,5 +51,6 @@ If you want to dive into detail about using Cloudflare to modernize your corpora
 [ Watch Episode 5: Protect your users from Internet risks ](https://developers.cloudflare.com/learning-paths/sase-overview-course/series/protect-users-from-internet-risks-5/) In this video, we will explore how Cloudflare's Secure Web Gateway (SWG) helps keep users and devices safe by filtering and inspecting Internet traffic in real time. 
 
 ```json
+{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/learning-paths/sase-overview-course/series/connect-secure-from-any-network-to-anywhere-4/#page","headline":"Connect and secure from any network to anywhere · Cloudflare Learning Paths","description":"Connect networks securely with Cloudflare SASE.","url":"https://developers.cloudflare.com/learning-paths/sase-overview-course/series/connect-secure-from-any-network-to-anywhere-4/","inLanguage":"en","image":"https://developers.cloudflare.com/cf-twitter-card.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/learning-paths/","name":"Learning Paths"}},{"@type":"ListItem","position":3,"item":{"@id":"/learning-paths/sase-overview-course/series/","name":"Overview"}},{"@type":"ListItem","position":4,"item":{"@id":"/learning-paths/sase-overview-course/series/connect-secure-from-any-network-to-anywhere-4/","name":"Connect and secure from any network to anywhere"}}]}
 ```

@@ -36,7 +36,7 @@ values<sup>1.37.0</sup>, similar to Python's `and` and `or`. The only false
 value is the empty list `[]`; every other value, including the empty string
 `''`, is true.
 
-These operators require `set lists`<sup>master</sup>, which is currently
+These operators require `set lists`<sup>1.53.0</sup>, which is currently
 unstable.
 
 The `&&` operator returns the empty list if the left-hand argument is false,

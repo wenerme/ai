@@ -102,8 +102,8 @@ Open [http://localhost:5173 ↗](http://localhost:5173) to see your agent in act
 
 Build a simple counter agent from scratch. Replace `src/server.ts`:
 
-* [  JavaScript ](#tab-panel-5358)
-* [  TypeScript ](#tab-panel-5359)
+* [  JavaScript ](#tab-panel-5541)
+* [  TypeScript ](#tab-panel-5542)
 
 JavaScript
 
@@ -263,8 +263,8 @@ export default {
 
 Update `wrangler.jsonc` to register the agent:
 
-* [  wrangler.jsonc ](#tab-panel-5354)
-* [  wrangler.toml ](#tab-panel-5355)
+* [  wrangler.jsonc ](#tab-panel-5537)
+* [  wrangler.toml ](#tab-panel-5538)
 
 JSONC
 
@@ -278,7 +278,7 @@ JSONC
 
   // Set this to today's date
 
-  "compatibility_date": "2026-06-10",
+  "compatibility_date": "2026-06-17",
 
   "compatibility_flags": ["nodejs_compat"],
 
@@ -325,7 +325,7 @@ main = "src/server.ts"
 
 # Set this to today's date
 
-compatibility_date = "2026-06-10"
+compatibility_date = "2026-06-17"
 
 compatibility_flags = [ "nodejs_compat" ]
 
@@ -453,8 +453,8 @@ flowchart LR
 
 If you are not using React:
 
-* [  JavaScript ](#tab-panel-5356)
-* [  TypeScript ](#tab-panel-5357)
+* [  JavaScript ](#tab-panel-5539)
+* [  TypeScript ](#tab-panel-5540)
 
 JavaScript
 
@@ -537,8 +537,8 @@ Your agent is now live on Cloudflare's global network, running close to your use
 
 Check auth before routing to agents:
 
-* [  JavaScript ](#tab-panel-5370)
-* [  TypeScript ](#tab-panel-5371)
+* [  JavaScript ](#tab-panel-5553)
+* [  TypeScript ](#tab-panel-5554)
 
 JavaScript
 
@@ -618,8 +618,8 @@ export default {
 
 By default, agents are routed at `/agents/{agent-name}/{instance-name}`. You can customize this:
 
-* [  JavaScript ](#tab-panel-5364)
-* [  TypeScript ](#tab-panel-5365)
+* [  JavaScript ](#tab-panel-5547)
+* [  TypeScript ](#tab-panel-5548)
 
 JavaScript
 
@@ -659,8 +659,8 @@ Refer to [Routing](https://developers.cloudflare.com/agents/runtime/communicatio
 
 You can interact with agents directly from your Worker code:
 
-* [  JavaScript ](#tab-panel-5374)
-* [  TypeScript ](#tab-panel-5375)
+* [  JavaScript ](#tab-panel-5557)
+* [  TypeScript ](#tab-panel-5558)
 
 JavaScript
 
@@ -730,8 +730,8 @@ export default {
 
 Add more agents by extending the configuration:
 
-* [  JavaScript ](#tab-panel-5368)
-* [  TypeScript ](#tab-panel-5369)
+* [  JavaScript ](#tab-panel-5551)
+* [  TypeScript ](#tab-panel-5552)
 
 JavaScript
 
@@ -783,8 +783,8 @@ export class Scheduler extends Agent {
 
 Update the Wrangler configuration file:
 
-* [  wrangler.jsonc ](#tab-panel-5360)
-* [  wrangler.toml ](#tab-panel-5361)
+* [  wrangler.jsonc ](#tab-panel-5543)
+* [  wrangler.toml ](#tab-panel-5544)
 
 JSONC
 
@@ -887,8 +887,8 @@ new_sqlite_classes = ["CounterAgent", "Chat", "Scheduler"]
 
 Export all agents from your entry point:
 
-* [  JavaScript ](#tab-panel-5366)
-* [  TypeScript ](#tab-panel-5367)
+* [  JavaScript ](#tab-panel-5549)
+* [  TypeScript ](#tab-panel-5550)
 
 JavaScript
 
@@ -928,8 +928,8 @@ export { Scheduler } from "./agents/scheduler";
 
 Add the migration to the Wrangler configuration file:
 
-* [  wrangler.jsonc ](#tab-panel-5362)
-* [  wrangler.toml ](#tab-panel-5363)
+* [  wrangler.jsonc ](#tab-panel-5545)
+* [  wrangler.toml ](#tab-panel-5546)
 
 JSONC
 
@@ -977,8 +977,8 @@ new_sqlite_classes = ["YourAgentClass"]
 
 Ensure your routing passes the response unchanged:
 
-* [  JavaScript ](#tab-panel-5372)
-* [  TypeScript ](#tab-panel-5373)
+* [  JavaScript ](#tab-panel-5555)
+* [  TypeScript ](#tab-panel-5556)
 
 JavaScript
 
@@ -1030,8 +1030,8 @@ Check that:
 
 Make sure your methods are decorated with `@callable()`:
 
-* [  JavaScript ](#tab-panel-5376)
-* [  TypeScript ](#tab-panel-5377)
+* [  JavaScript ](#tab-panel-5559)
+* [  TypeScript ](#tab-panel-5560)
 
 JavaScript
 
@@ -1081,8 +1081,8 @@ export class MyAgent extends Agent {
 
 Add the agent and state type parameters:
 
-* [  JavaScript ](#tab-panel-5378)
-* [  TypeScript ](#tab-panel-5379)
+* [  JavaScript ](#tab-panel-5561)
+* [  TypeScript ](#tab-panel-5562)
 
 JavaScript
 
@@ -1188,5 +1188,6 @@ Now that you have a working agent, explore these topics:
 [ Agents API ](https://developers.cloudflare.com/agents/runtime/agents-api/) Complete API reference for the Agents SDK. 
 
 ```json
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/agents/getting-started/quick-start/#page","headline":"Quick start · Cloudflare Agents docs","description":"Build your first agent in 10 minutes — a counter with persistent state that syncs to a React frontend in real-time.","url":"https://developers.cloudflare.com/agents/getting-started/quick-start/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-06-09","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/agents/","name":"Agents"}},{"@type":"ListItem","position":3,"item":{"@id":"/agents/getting-started/","name":"Getting started"}},{"@type":"ListItem","position":4,"item":{"@id":"/agents/getting-started/quick-start/","name":"Quick start"}}]}
 ```

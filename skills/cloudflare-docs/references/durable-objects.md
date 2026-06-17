@@ -108,5 +108,6 @@ Connect with the Workers community on Discord to ask questions, show what you ar
 Follow @CloudflareDev on Twitter to learn about product announcements, and what is new in Cloudflare Developer Platform.
 
 ```json
+{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/durable-objects/#page","headline":"Overview · Cloudflare Durable Objects docs","description":"Build stateful serverless applications with Durable Objects, including AI agents, real-time chat, and collaborative apps.","url":"https://developers.cloudflare.com/durable-objects/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/durable-objects/","name":"Durable Objects"}}]}
 ```

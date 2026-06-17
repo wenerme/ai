@@ -25,5 +25,6 @@ Learn how to complete different configuration options to customize your cache be
 * [ Tiered Cache ](https://developers.cloudflare.com/cache/how-to/tiered-cache/)
 
 ```json
+{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/cache/how-to/#page","headline":"Cache configuration · Cloudflare Cache (CDN) docs","description":"Configure caching with rules, purge, TTL, and tiered cache.","url":"https://developers.cloudflare.com/cache/how-to/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/cache/","name":"Cache / CDN"}},{"@type":"ListItem","position":3,"item":{"@id":"/cache/how-to/","name":"Cache configuration"}}]}
 ```

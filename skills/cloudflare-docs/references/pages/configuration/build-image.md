@@ -22,9 +22,9 @@ In the following tables, review the preinstalled versions for languages and tool
 
 ### Languages and runtime
 
-* [ v3 ](#tab-panel-6762)
-* [ v2 ](#tab-panel-6763)
-* [ v1 ](#tab-panel-6764)
+* [ v3 ](#tab-panel-9382)
+* [ v2 ](#tab-panel-9383)
+* [ v1 ](#tab-panel-9384)
 
 | Tool        | Default version | Supported versions | Environment variable | File                         |
 | ----------- | --------------- | ------------------ | -------------------- | ---------------------------- |
@@ -62,9 +62,9 @@ Under Supported versions, "Any version" refers to support for all versions of th
 
 ### Tools
 
-* [ v3 ](#tab-panel-6765)
-* [ v2 ](#tab-panel-6766)
-* [ v1 ](#tab-panel-6767)
+* [ v3 ](#tab-panel-9385)
+* [ v2 ](#tab-panel-9386)
+* [ v1 ](#tab-panel-9387)
 
 | Tool                   | Default version | Supported versions               | Environment variable          |
 | ---------------------- | --------------- | -------------------------------- | ----------------------------- |
@@ -192,9 +192,9 @@ The following features are not currently supported when using the v3 build syste
 
 Cloudflare Pages builds are run in a [gVisor ↗](https://gvisor.dev/docs/) container.
 
-* [ v3 ](#tab-panel-6768)
-* [ v2 ](#tab-panel-6769)
-* [ v1 ](#tab-panel-6770)
+* [ v3 ](#tab-panel-9388)
+* [ v2 ](#tab-panel-9389)
+* [ v1 ](#tab-panel-9390)
 
 | **Build environment** | Ubuntu 22.04.2 |
 | --------------------- | -------------- |
@@ -245,5 +245,6 @@ To avoid unexpected build failures:
 * **Pin specific versions** of critical preinstalled software by [overriding default versions](https://developers.cloudflare.com/pages/configuration/build-image/#override-default-versions)
 
 ```json
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/pages/configuration/build-image/#page","headline":"Build image · Cloudflare Pages docs","description":"Review supported languages, tools, and environment variables in the Cloudflare Pages build image.","url":"https://developers.cloudflare.com/pages/configuration/build-image/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/pages/","name":"Pages"}},{"@type":"ListItem","position":3,"item":{"@id":"/pages/configuration/","name":"Configuration"}},{"@type":"ListItem","position":4,"item":{"@id":"/pages/configuration/build-image/","name":"Build image"}}]}
 ```

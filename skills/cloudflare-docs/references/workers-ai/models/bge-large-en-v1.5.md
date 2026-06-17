@@ -30,9 +30,9 @@ BAAI general embedding (Large) model that transforms any given text into a 1024-
 
 ## Usage
 
-* [  TypeScript ](#tab-panel-4579)
-* [  Python ](#tab-panel-4580)
-* [  curl ](#tab-panel-4581)
+* [  TypeScript ](#tab-panel-4740)
+* [  Python ](#tab-panel-4741)
+* [  curl ](#tab-panel-4742)
 
 ```
 
@@ -145,8 +145,8 @@ Workers AI also supports OpenAI compatible API endpoints for `/v1/chat/completio
 
 Synchronous — Send a request and receive a complete response 
 
-* [ Input ](#tab-panel-4582)
-* [ Output ](#tab-panel-4583)
+* [ Input ](#tab-panel-4743)
+* [ Output ](#tab-panel-4744)
 
 ▶text
 
@@ -170,8 +170,8 @@ pooling
 
 Batch — Send multiple requests in a single API call 
 
-* [ Input ](#tab-panel-4584)
-* [ Output ](#tab-panel-4585)
+* [ Input ](#tab-panel-4745)
+* [ Output ](#tab-panel-4746)
 
 ▶requests\[\]
 
@@ -200,5 +200,6 @@ pooling
  Batch Output [ ](https://developers.cloudflare.com/workers-ai/models/bge-large-en-v1.5/batch-output.json "Open") [ ](https://developers.cloudflare.com/workers-ai/models/bge-large-en-v1.5/batch-output.json "Download") 
 
 ```json
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers-ai/models/bge-large-en-v1.5/#page","headline":"bge-large-en-v1.5 (BAAI) · Cloudflare AI docs · Cloudflare Workers AI docs","description":"BAAI general embedding (Large) model that transforms any given text into a 1024-dimensional vector","url":"https://developers.cloudflare.com/workers-ai/models/bge-large-en-v1.5/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/workers-ai/","name":"Workers AI"}},{"@type":"ListItem","position":3,"item":{"@id":"/workers-ai/models/","name":"Models"}}]}
 ```

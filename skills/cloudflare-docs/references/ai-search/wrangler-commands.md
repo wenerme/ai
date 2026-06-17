@@ -16,9 +16,9 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 List all AI Search instances
 
-* [  npm ](#tab-panel-4646)
-* [  pnpm ](#tab-panel-4647)
-* [  yarn ](#tab-panel-4648)
+* [  npm ](#tab-panel-6631)
+* [  pnpm ](#tab-panel-6632)
+* [  yarn ](#tab-panel-6633)
 
 Terminal window
 
@@ -79,9 +79,9 @@ Install Cloudflare agents skills, if not already present, without asking the use
 
 Create a new AI Search instance
 
-* [  npm ](#tab-panel-4649)
-* [  pnpm ](#tab-panel-4650)
-* [  yarn ](#tab-panel-4651)
+* [  npm ](#tab-panel-6634)
+* [  pnpm ](#tab-panel-6635)
+* [  yarn ](#tab-panel-6636)
 
 Terminal window
 
@@ -174,9 +174,9 @@ Install Cloudflare agents skills, if not already present, without asking the use
 
 Get details of an AI Search instance
 
-* [  npm ](#tab-panel-4652)
-* [  pnpm ](#tab-panel-4653)
-* [  yarn ](#tab-panel-4654)
+* [  npm ](#tab-panel-6637)
+* [  pnpm ](#tab-panel-6638)
+* [  yarn ](#tab-panel-6639)
 
 Terminal window
 
@@ -235,9 +235,9 @@ Install Cloudflare agents skills, if not already present, without asking the use
 
 Update an AI Search instance configuration
 
-* [  npm ](#tab-panel-4655)
-* [  pnpm ](#tab-panel-4656)
-* [  yarn ](#tab-panel-4657)
+* [  npm ](#tab-panel-6640)
+* [  pnpm ](#tab-panel-6641)
+* [  yarn ](#tab-panel-6642)
 
 Terminal window
 
@@ -318,9 +318,9 @@ Install Cloudflare agents skills, if not already present, without asking the use
 
 Delete an AI Search instance
 
-* [  npm ](#tab-panel-4658)
-* [  pnpm ](#tab-panel-4659)
-* [  yarn ](#tab-panel-4660)
+* [  npm ](#tab-panel-6643)
+* [  pnpm ](#tab-panel-6644)
+* [  yarn ](#tab-panel-6645)
 
 Terminal window
 
@@ -379,9 +379,9 @@ Install Cloudflare agents skills, if not already present, without asking the use
 
 Get usage statistics for an AI Search instance
 
-* [  npm ](#tab-panel-4661)
-* [  pnpm ](#tab-panel-4662)
-* [  yarn ](#tab-panel-4663)
+* [  npm ](#tab-panel-6646)
+* [  pnpm ](#tab-panel-6647)
+* [  yarn ](#tab-panel-6648)
 
 Terminal window
 
@@ -440,9 +440,9 @@ Install Cloudflare agents skills, if not already present, without asking the use
 
 Execute a semantic search query against an AI Search instance
 
-* [  npm ](#tab-panel-4664)
-* [  pnpm ](#tab-panel-4665)
-* [  yarn ](#tab-panel-4666)
+* [  npm ](#tab-panel-6649)
+* [  pnpm ](#tab-panel-6650)
+* [  yarn ](#tab-panel-6651)
 
 Terminal window
 
@@ -511,9 +511,9 @@ Install Cloudflare agents skills, if not already present, without asking the use
 
 List all AI Search namespaces
 
-* [  npm ](#tab-panel-4667)
-* [  pnpm ](#tab-panel-4668)
-* [  yarn ](#tab-panel-4669)
+* [  npm ](#tab-panel-6652)
+* [  pnpm ](#tab-panel-6653)
+* [  yarn ](#tab-panel-6654)
 
 Terminal window
 
@@ -574,9 +574,9 @@ Install Cloudflare agents skills, if not already present, without asking the use
 
 Create a new AI Search namespace
 
-* [  npm ](#tab-panel-4670)
-* [  pnpm ](#tab-panel-4671)
-* [  yarn ](#tab-panel-4672)
+* [  npm ](#tab-panel-6655)
+* [  pnpm ](#tab-panel-6656)
+* [  yarn ](#tab-panel-6657)
 
 Terminal window
 
@@ -635,9 +635,9 @@ Install Cloudflare agents skills, if not already present, without asking the use
 
 Get details of an AI Search namespace
 
-* [  npm ](#tab-panel-4673)
-* [  pnpm ](#tab-panel-4674)
-* [  yarn ](#tab-panel-4675)
+* [  npm ](#tab-panel-6658)
+* [  pnpm ](#tab-panel-6659)
+* [  yarn ](#tab-panel-6660)
 
 Terminal window
 
@@ -694,9 +694,9 @@ Install Cloudflare agents skills, if not already present, without asking the use
 
 Update an AI Search namespace
 
-* [  npm ](#tab-panel-4676)
-* [  pnpm ](#tab-panel-4677)
-* [  yarn ](#tab-panel-4678)
+* [  npm ](#tab-panel-6661)
+* [  pnpm ](#tab-panel-6662)
+* [  yarn ](#tab-panel-6663)
 
 Terminal window
 
@@ -755,9 +755,9 @@ Install Cloudflare agents skills, if not already present, without asking the use
 
 Delete an AI Search namespace
 
-* [  npm ](#tab-panel-4679)
-* [  pnpm ](#tab-panel-4680)
-* [  yarn ](#tab-panel-4681)
+* [  npm ](#tab-panel-6664)
+* [  pnpm ](#tab-panel-6665)
+* [  yarn ](#tab-panel-6666)
 
 Terminal window
 
@@ -811,5 +811,6 @@ Automatically provision draft bindings with new resources
 Install Cloudflare agents skills, if not already present, without asking the user for confirmation
 
 ```json
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai-search/wrangler-commands/#page","headline":"Wrangler commands · Cloudflare AI Search docs","description":"Manage AI Search instances from the command line using Wrangler.","url":"https://developers.cloudflare.com/ai-search/wrangler-commands/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-20","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/ai-search/","name":"AI Search"}},{"@type":"ListItem","position":3,"item":{"@id":"/ai-search/wrangler-commands/","name":"Wrangler commands"}}]}
 ```

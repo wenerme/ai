@@ -37,8 +37,8 @@ Zero Trust will indicate if a certificate is ready for use in inspection based o
 
 To generate a new Cloudflare root certificate for your Zero Trust organization:
 
-* [ Dashboard ](#tab-panel-5425)
-* [ API ](#tab-panel-5426)
+* [ Dashboard ](#tab-panel-7515)
+* [ API ](#tab-panel-7516)
 
 1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** \> **Traffic policies** \> **Traffic settings**.
 2. Select **Certificates**.
@@ -77,8 +77,8 @@ Once a certificate is generated in or uploaded to Zero Trust, you need to activa
 
 To activate your root certificate:
 
-* [ Dashboard ](#tab-panel-5427)
-* [ API ](#tab-panel-5428)
+* [ Dashboard ](#tab-panel-7517)
+* [ API ](#tab-panel-7518)
 
 1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** \> **Traffic policies** \> **Traffic settings**.
 2. Select **Certificates**.
@@ -104,8 +104,8 @@ The status of the certificate will change to **Pending** while it deploys. Once 
 
 Once you deploy and install your certificate, you can turn it on for use in inspection:
 
-* [ Dashboard ](#tab-panel-5429)
-* [ API ](#tab-panel-5430)
+* [ Dashboard ](#tab-panel-7519)
+* [ API ](#tab-panel-7520)
 
 1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** \> **Traffic policies** \> **Traffic settings**.
 2. Select **Certificates**.
@@ -146,5 +146,6 @@ curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/gateway/configur
 You can set multiple certificates to **Available**, but you can only turn on one certificate for use in inspection at a time. Setting a certificate as **In-Use** will set any other in-use certificates as **Available** only and prevent them from being used for inspection until turned on again.
 
 ```json
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/user-side-certificates/#page","headline":"User-side certificates · Cloudflare One docs","description":"Set up User-side certificates for Zero Trust.","url":"https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/user-side-certificates/","inLanguage":"en","image":"https://developers.cloudflare.com/zt-preview.png","dateModified":"2026-05-01","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["TLS"]}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/cloudflare-one/","name":"Cloudflare One"}},{"@type":"ListItem","position":3,"item":{"@id":"/cloudflare-one/team-and-resources/","name":"Team and resources"}},{"@type":"ListItem","position":4,"item":{"@id":"/cloudflare-one/team-and-resources/devices/","name":"Devices"}},{"@type":"ListItem","position":5,"item":{"@id":"/cloudflare-one/team-and-resources/devices/user-side-certificates/","name":"User-side certificates"}}]}
 ```

@@ -73,13 +73,13 @@ A Pulumi program is code written in a [supported programming language ↗](https
 
 To create a program, select your language of choice and run the `pulumi` command:
 
-* [  JavaScript ](#tab-panel-9379)
-* [  TypeScript ](#tab-panel-9380)
-* [  Python ](#tab-panel-9381)
-* [ go ](#tab-panel-9382)
-* [ Java ](#tab-panel-9383)
-* [ .NET ](#tab-panel-9384)
-* [ YAML ](#tab-panel-9385)
+* [  JavaScript ](#tab-panel-9523)
+* [  TypeScript ](#tab-panel-9524)
+* [  Python ](#tab-panel-9525)
+* [ go ](#tab-panel-9526)
+* [ Java ](#tab-panel-9527)
+* [ .NET ](#tab-panel-9528)
+* [ YAML ](#tab-panel-9529)
 
 Terminal window
 
@@ -233,13 +233,13 @@ You need to install the Cloudflare package for your language of choice in order 
 
 Install the Cloudflare package by running the following command:
 
-* [  JavaScript ](#tab-panel-9386)
-* [  TypeScript ](#tab-panel-9387)
-* [  Python ](#tab-panel-9388)
-* [ go ](#tab-panel-9389)
-* [ Java ](#tab-panel-9390)
-* [ .NET ](#tab-panel-9391)
-* [ YAML ](#tab-panel-9392)
+* [  JavaScript ](#tab-panel-9530)
+* [  TypeScript ](#tab-panel-9531)
+* [  Python ](#tab-panel-9532)
+* [ go ](#tab-panel-9533)
+* [ Java ](#tab-panel-9534)
+* [ .NET ](#tab-panel-9535)
+* [ YAML ](#tab-panel-9536)
 
 Terminal window
 
@@ -379,13 +379,13 @@ The [Workers Script resource ↗](https://www.pulumi.com/registry/packages/cloud
 
 Replace the contents of your entrypoint file with the following:
 
-* [  JavaScript ](#tab-panel-9393)
-* [  TypeScript ](#tab-panel-9394)
-* [  Python ](#tab-panel-9395)
-* [ go ](#tab-panel-9396)
-* [ Java ](#tab-panel-9397)
-* [ .NET ](#tab-panel-9398)
-* [ YAML ](#tab-panel-9399)
+* [  JavaScript ](#tab-panel-9537)
+* [  TypeScript ](#tab-panel-9538)
+* [  Python ](#tab-panel-9539)
+* [ go ](#tab-panel-9540)
+* [ Java ](#tab-panel-9541)
+* [ .NET ](#tab-panel-9542)
+* [ YAML ](#tab-panel-9543)
 
 **Filename: `index.js`**
 
@@ -775,13 +775,13 @@ You will now add a [Workers Route resource ↗](https://www.pulumi.com/registry/
 
 Add the following code snippet to your entrypoint file **after** the Worker script resource:
 
-* [  JavaScript ](#tab-panel-9400)
-* [  TypeScript ](#tab-panel-9401)
-* [  Python ](#tab-panel-9402)
-* [ go ](#tab-panel-9403)
-* [ Java ](#tab-panel-9404)
-* [ .NET ](#tab-panel-9405)
-* [ YAML ](#tab-panel-9406)
+* [  JavaScript ](#tab-panel-9544)
+* [  TypeScript ](#tab-panel-9545)
+* [  Python ](#tab-panel-9546)
+* [ go ](#tab-panel-9547)
+* [ Java ](#tab-panel-9548)
+* [ .NET ](#tab-panel-9549)
+* [ YAML ](#tab-panel-9550)
 
 **Filename: `index.js`**
 
@@ -1014,13 +1014,13 @@ You will now add a DNS [Record resource ↗](https://www.pulumi.com/registry/pac
 
 Add the following code snippet to your entrypoint file **after** the Route resource:
 
-* [  JavaScript ](#tab-panel-9407)
-* [  TypeScript ](#tab-panel-9408)
-* [  Python ](#tab-panel-9409)
-* [ go ](#tab-panel-9410)
-* [ Java ](#tab-panel-9411)
-* [ .NET ](#tab-panel-9412)
-* [ YAML ](#tab-panel-9413)
+* [  JavaScript ](#tab-panel-9551)
+* [  TypeScript ](#tab-panel-9552)
+* [  Python ](#tab-panel-9553)
+* [ go ](#tab-panel-9554)
+* [ Java ](#tab-panel-9555)
+* [ .NET ](#tab-panel-9556)
+* [ YAML ](#tab-panel-9557)
 
 **Filename: `index.js`**
 
@@ -1228,13 +1228,13 @@ You may need to use `http` instead depending on your domain settings.
 
 Confirm all your changes match the full solution below:
 
-* [  JavaScript ](#tab-panel-9414)
-* [  TypeScript ](#tab-panel-9415)
-* [  Python ](#tab-panel-9416)
-* [ go ](#tab-panel-9417)
-* [ Java ](#tab-panel-9418)
-* [ .NET ](#tab-panel-9419)
-* [ YAML ](#tab-panel-9420)
+* [  JavaScript ](#tab-panel-9558)
+* [  TypeScript ](#tab-panel-9559)
+* [  Python ](#tab-panel-9560)
+* [ go ](#tab-panel-9561)
+* [ Java ](#tab-panel-9562)
+* [ .NET ](#tab-panel-9563)
+* [ YAML ](#tab-panel-9564)
 
 **Filename: `index.js`**
 
@@ -2006,5 +2006,6 @@ pulumi stack rm dev
 Visit the [Cloudflare package documentation ↗](https://www.pulumi.com/docs/reference/pkg/cloudflare/) to explore other resources you can define with Pulumi and Cloudflare.
 
 ```json
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/pulumi/tutorial/hello-world/#page","headline":"Deploy a Worker · Pulumi docs","description":"In this tutorial, you will follow step-by-step instructions to deploy a Hello World application using Cloudflare Workers and Pulumi infrastructure as code (IaC).","url":"https://developers.cloudflare.com/pulumi/tutorial/hello-world/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2025-10-13","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["JavaScript","TypeScript","Python","Go","Java",".NET","YAML"]}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/pulumi/","name":"Pulumi"}},{"@type":"ListItem","position":3,"item":{"@id":"/pulumi/tutorial/","name":"Tutorials"}},{"@type":"ListItem","position":4,"item":{"@id":"/pulumi/tutorial/hello-world/","name":"Deploy a Worker"}}]}
 ```

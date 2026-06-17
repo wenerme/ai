@@ -30,8 +30,8 @@ For **web servers, databases, or services that need to keep running**, use `star
 
 Use `exec()` for simple commands that complete quickly:
 
-* [  JavaScript ](#tab-panel-10084)
-* [  TypeScript ](#tab-panel-10085)
+* [  JavaScript ](#tab-panel-10325)
+* [  TypeScript ](#tab-panel-10326)
 
 JavaScript
 
@@ -85,8 +85,8 @@ console.log(result.success);  // true
 
 When passing user input or dynamic values, avoid string interpolation to prevent injection attacks:
 
-* [  JavaScript ](#tab-panel-10086)
-* [  TypeScript ](#tab-panel-10087)
+* [  JavaScript ](#tab-panel-10327)
+* [  TypeScript ](#tab-panel-10328)
 
 JavaScript
 
@@ -149,8 +149,8 @@ Commands can fail in two ways:
 1. **Non-zero exit code** \- Command ran but failed (result.success === false)
 2. **Execution error** \- Command couldn't start (throws exception)
 
-* [  JavaScript ](#tab-panel-10100)
-* [  TypeScript ](#tab-panel-10101)
+* [  JavaScript ](#tab-panel-10341)
+* [  TypeScript ](#tab-panel-10342)
 
 JavaScript
 
@@ -257,8 +257,8 @@ try {
 
 The sandbox supports shell features like pipes, redirects, and chaining:
 
-* [  JavaScript ](#tab-panel-10090)
-* [  TypeScript ](#tab-panel-10091)
+* [  JavaScript ](#tab-panel-10331)
+* [  TypeScript ](#tab-panel-10332)
 
 JavaScript
 
@@ -308,8 +308,8 @@ await sandbox.exec('cd /workspace && npm install && npm test');
 
 ## Execute Python scripts
 
-* [  JavaScript ](#tab-panel-10098)
-* [  TypeScript ](#tab-panel-10099)
+* [  JavaScript ](#tab-panel-10339)
+* [  TypeScript ](#tab-panel-10340)
 
 JavaScript
 
@@ -379,8 +379,8 @@ Set a maximum execution time for commands to prevent long-running operations fro
 
 Pass `timeout` in the options to set a timeout for a single command:
 
-* [  JavaScript ](#tab-panel-10088)
-* [  TypeScript ](#tab-panel-10089)
+* [  JavaScript ](#tab-panel-10329)
+* [  TypeScript ](#tab-panel-10330)
 
 JavaScript
 
@@ -412,8 +412,8 @@ const result = await sandbox.exec('npm run build', {
 
 Set a default timeout for all commands in a session with `commandTimeoutMs`:
 
-* [  JavaScript ](#tab-panel-10094)
-* [  TypeScript ](#tab-panel-10095)
+* [  JavaScript ](#tab-panel-10335)
+* [  TypeScript ](#tab-panel-10336)
 
 JavaScript
 
@@ -495,8 +495,8 @@ When a command times out, the SDK raises an error and closes the connection. The
 
 Verify the command exists in the container:
 
-* [  JavaScript ](#tab-panel-10092)
-* [  TypeScript ](#tab-panel-10093)
+* [  JavaScript ](#tab-panel-10333)
+* [  TypeScript ](#tab-panel-10334)
 
 JavaScript
 
@@ -532,8 +532,8 @@ if (!check.success) {
 
 Use absolute paths or change directory:
 
-* [  JavaScript ](#tab-panel-10096)
-* [  TypeScript ](#tab-panel-10097)
+* [  JavaScript ](#tab-panel-10337)
+* [  TypeScript ](#tab-panel-10338)
 
 JavaScript
 
@@ -575,5 +575,6 @@ await sandbox.exec('cd /workspace/my-app && python script.py');
 * [Code Interpreter guide](https://developers.cloudflare.com/sandbox/guides/code-execution/) \- Higher-level code execution
 
 ```json
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/sandbox/guides/execute-commands/#page","headline":"Execute commands · Cloudflare Sandbox SDK docs","description":"Run commands with streaming output, error handling, and shell access.","url":"https://developers.cloudflare.com/sandbox/guides/execute-commands/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/sandbox/","name":"Sandbox SDK"}},{"@type":"ListItem","position":3,"item":{"@id":"/sandbox/guides/","name":"How-to guides"}},{"@type":"ListItem","position":4,"item":{"@id":"/sandbox/guides/execute-commands/","name":"Execute commands"}}]}
 ```

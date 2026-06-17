@@ -30,8 +30,8 @@ For Cloudflare to start prefetching URLs, you will need to [enable the feature](
 
 ### Enable Prefetch URLs
 
-* [ Dashboard ](#tab-panel-10297)
-* [ API ](#tab-panel-10298)
+* [ Dashboard ](#tab-panel-10540)
+* [ API ](#tab-panel-10541)
 
 To enable **Prefetch URLs** in the dashboard:
 
@@ -84,5 +84,6 @@ The prefetch files limits are the following:
 * Prefetch is not compatible with the custom cache key configuration. For more information, refer to [Cache Key limitations](https://developers.cloudflare.com/cache/how-to/cache-keys/#limitations).
 
 ```json
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/speed/optimization/content/prefetch-urls/#page","headline":"Prefetch URLs · Cloudflare Speed docs","description":"Prefetch URLs to load resources before visitors request them.","url":"https://developers.cloudflare.com/speed/optimization/content/prefetch-urls/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-17","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Caching"]}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/speed/","name":"Speed"}},{"@type":"ListItem","position":3,"item":{"@id":"/speed/optimization/","name":"Settings"}},{"@type":"ListItem","position":4,"item":{"@id":"/speed/optimization/content/","name":"Content optimizations"}},{"@type":"ListItem","position":5,"item":{"@id":"/speed/optimization/content/prefetch-urls/","name":"Prefetch URLs"}}]}
 ```

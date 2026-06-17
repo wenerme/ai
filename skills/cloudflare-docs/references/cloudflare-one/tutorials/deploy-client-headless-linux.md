@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/zt-preview.png
 
 # Deploy the Cloudflare One Client on headless Linux machines
 
-**Last reviewed:**  8 months ago 
+**Last reviewed:**  9 months ago 
 
 This tutorial explains how to deploy the [Cloudflare One Client](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/) on Linux devices using a service token and an installation script. This deployment workflow is designed for headless servers - that is, servers which do not have access to a browser for identity provider logins - and for situations where you want to fully automate the onboarding process. Because devices will not register through an identity provider, [identity-based policies](https://developers.cloudflare.com/cloudflare-one/traffic-policies/identity-selectors/) and logging will be unavailable.
 
@@ -30,9 +30,9 @@ Fully automated deployments rely on a service token to enroll the Cloudflare One
 
 To create a service token:
 
-* [ Dashboard ](#tab-panel-5625)
-* [ API ](#tab-panel-5626)
-* [ Terraform (v5) ](#tab-panel-5627)
+* [ Dashboard ](#tab-panel-7715)
+* [ API ](#tab-panel-7716)
+* [ Terraform (v5) ](#tab-panel-7717)
 
 1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** \> **Access controls** \> **Service credentials** \> **Service Tokens**.
 2. Select **Create Service Token**.
@@ -212,5 +212,6 @@ sudo ./install_warp.sh
 The Cloudflare One Client is now deployed with the configuration parameters stored in `/var/lib/cloudflare-warp/mdm.xml`. Assuming [auto\_connect](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/deployment/mdm-deployment/parameters/#auto%5Fconnect) is configured, the Cloudflare One Client will automatically connect to your Zero Trust organization. Once connected, the device will appear in the [Cloudflare dashboard ↗](https://dash.cloudflare.com/) under **Zero Trust** \> **Team & Resources** \> **Devices** with the email `non_identity@<team-name>.cloudflareaccess.com`.
 
 ```json
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/tutorials/deploy-client-headless-linux/#page","headline":"Deploy the Cloudflare One Client on headless Linux machines · Cloudflare One docs","description":"This tutorial explains how to deploy the Cloudflare One Client on headless Linux devices using a service token and an installation script.","url":"https://developers.cloudflare.com/cloudflare-one/tutorials/deploy-client-headless-linux/","inLanguage":"en","image":"https://developers.cloudflare.com/zt-preview.png","dateModified":"2026-04-30","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Linux"]}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/cloudflare-one/","name":"Cloudflare One"}},{"@type":"ListItem","position":3,"item":{"@id":"/cloudflare-one/tutorials/","name":"Tutorials"}},{"@type":"ListItem","position":4,"item":{"@id":"/cloudflare-one/tutorials/deploy-client-headless-linux/","name":"Deploy the Cloudflare One Client on headless Linux machines"}}]}
 ```

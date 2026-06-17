@@ -12,8 +12,8 @@ image: https://developers.cloudflare.com/cf-twitter-card.png
 
 # Deploy your video call app
 
-* [ Watch this episode ](#tab-panel-6437)
-* [ Series overview ](#tab-panel-6438)
+* [ Watch this episode ](#tab-panel-9055)
+* [ Series overview ](#tab-panel-9056)
 
 We are almost done with the project, and in this final episode, we add the finishing touches, such as learning how to handle call disconnections, wiring up essential media controls like muting/unmuting and video toggling, and integrating a TURN server to ensure reliable connections even behind firewalls. By the end of this video, your app will be fully functional and ready for deployment.
 
@@ -43,5 +43,6 @@ For additional resources on learning Durable Objects with Cloudflare, refer to t
 [ Watch Episode 7: Deploy your video call app ](https://developers.cloudflare.com/learning-paths/durable-objects-course/series/deploy-your-video-call-app-7/) In this final episode, we configure the remaining functionalities. By the end, your app will be fully functional and ready for deployment. 
 
 ```json
+{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/learning-paths/durable-objects-course/series/deploy-your-video-call-app-7/#page","headline":"Deploy your video call app · Cloudflare Learning Paths","description":"Deploy the completed video call application.","url":"https://developers.cloudflare.com/learning-paths/durable-objects-course/series/deploy-your-video-call-app-7/","inLanguage":"en","image":"https://developers.cloudflare.com/cf-twitter-card.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/learning-paths/","name":"Learning Paths"}},{"@type":"ListItem","position":3,"item":{"@id":"/learning-paths/durable-objects-course/series/","name":"Overview"}},{"@type":"ListItem","position":4,"item":{"@id":"/learning-paths/durable-objects-course/series/deploy-your-video-call-app-7/","name":"Deploy your video call app"}}]}
 ```

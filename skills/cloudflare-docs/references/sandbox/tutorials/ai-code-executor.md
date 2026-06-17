@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 # Build an AI code executor
 
-**Last reviewed:**  7 months ago 
+**Last reviewed:**  8 months ago 
 
 Build an AI-powered code execution system using Sandbox SDK and Claude. Turn natural language questions into Python code, execute it securely, and return results.
 
@@ -405,5 +405,6 @@ You created an AI code execution system that:
 * [workers-ai-provider package ↗](https://github.com/cloudflare/ai/tree/main/packages/workers-ai-provider) \- Official Workers AI integration
 
 ```json
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/sandbox/tutorials/ai-code-executor/#page","headline":"Build an AI code executor · Cloudflare Sandbox SDK docs","description":"Use Claude to generate Python code from natural language and execute it securely in sandboxes.","url":"https://developers.cloudflare.com/sandbox/tutorials/ai-code-executor/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-05-05","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/sandbox/","name":"Sandbox SDK"}},{"@type":"ListItem","position":3,"item":{"@id":"/sandbox/tutorials/","name":"Tutorials"}},{"@type":"ListItem","position":4,"item":{"@id":"/sandbox/tutorials/ai-code-executor/","name":"Build an AI code executor"}}]}
 ```

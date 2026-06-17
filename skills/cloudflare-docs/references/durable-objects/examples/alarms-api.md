@@ -22,8 +22,8 @@ When a request is received and no alarm is set, it sets an alarm for 10 seconds 
 
 If no new requests are received, no further alarms will be set until the next request arrives.
 
-* [  JavaScript ](#tab-panel-5787)
-* [  Python ](#tab-panel-5788)
+* [  JavaScript ](#tab-panel-8312)
+* [  Python ](#tab-panel-8313)
 
 JavaScript
 
@@ -220,8 +220,8 @@ The `alarm()` handler will be called once every 10 seconds. If an unexpected err
 
 Finally, configure your Wrangler file to include a Durable Object [binding](https://developers.cloudflare.com/durable-objects/get-started/#4-configure-durable-object-bindings) and [migration](https://developers.cloudflare.com/durable-objects/reference/durable-objects-migrations/) based on the namespace and class name chosen previously.
 
-* [  wrangler.jsonc ](#tab-panel-5789)
-* [  wrangler.toml ](#tab-panel-5790)
+* [  wrangler.jsonc ](#tab-panel-8314)
+* [  wrangler.toml ](#tab-panel-8315)
 
 JSONC
 
@@ -300,5 +300,6 @@ new_sqlite_classes = [ "Batcher" ]
 ```
 
 ```json
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/durable-objects/examples/alarms-api/#page","headline":"Use the Alarms API · Cloudflare Durable Objects docs","description":"Use the Durable Objects Alarms API to batch requests to a Durable Object.","url":"https://developers.cloudflare.com/durable-objects/examples/alarms-api/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/durable-objects/","name":"Durable Objects"}},{"@type":"ListItem","position":3,"item":{"@id":"/durable-objects/examples/","name":"Examples"}},{"@type":"ListItem","position":4,"item":{"@id":"/durable-objects/examples/alarms-api/","name":"Use the Alarms API"}}]}
 ```

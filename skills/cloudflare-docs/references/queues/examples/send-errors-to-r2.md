@@ -18,8 +18,8 @@ Example of how to use Queues to batch data and store it in an R2 bucket.
 
 The following Worker will catch JavaScript errors and send them to a queue. The same Worker will receive those errors in batches and store them to a log file in an R2 bucket.
 
-* [  wrangler.jsonc ](#tab-panel-6991)
-* [  wrangler.toml ](#tab-panel-6992)
+* [  wrangler.jsonc ](#tab-panel-9613)
+* [  wrangler.toml ](#tab-panel-9614)
 
 JSONC
 
@@ -197,5 +197,6 @@ function doRequest(request: Request): Response {
 ```
 
 ```json
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/queues/examples/send-errors-to-r2/#page","headline":"Cloudflare Queues - Queues & R2 · Cloudflare Queues docs","description":"Example of how to use Queues to batch data and store it in an R2 bucket.","url":"https://developers.cloudflare.com/queues/examples/send-errors-to-r2/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/queues/","name":"Queues"}},{"@type":"ListItem","position":3,"item":{"@id":"/queues/examples/","name":"Examples"}},{"@type":"ListItem","position":4,"item":{"@id":"/queues/examples/send-errors-to-r2/","name":"Use Queues to store data in R2"}}]}
 ```

@@ -22,8 +22,8 @@ Learn how to:
 
 Enabling the catalog on a bucket turns on the REST catalog interface and provides a **Catalog URI** and **Warehouse name** required by Iceberg clients. Once enabled, you can create and manage Iceberg tables in that bucket.
 
-* [ Dashboard ](#tab-panel-8605)
-* [ Wrangler CLI ](#tab-panel-8606)
+* [ Dashboard ](#tab-panel-9743)
+* [ Wrangler CLI ](#tab-panel-9744)
 
 1. In the Cloudflare dashboard, go to the **R2 Data Catalog** page.  
 [ Go to **R2 Data Catalog** ](https://dash.cloudflare.com/?to=/:account/data-catalog/overview)
@@ -50,8 +50,8 @@ After enabling, Wrangler will return your catalog URI and warehouse name.
 
 When you disable the catalog on a bucket, it immediately stops serving requests from the catalog interface. Any Iceberg table references stored in that catalog become inaccessible until you re-enable it.
 
-* [ Dashboard ](#tab-panel-8607)
-* [ Wrangler CLI ](#tab-panel-8608)
+* [ Dashboard ](#tab-panel-9745)
+* [ Wrangler CLI ](#tab-panel-9746)
 
 1. In the Cloudflare dashboard, go to the **R2 Data Catalog** page.  
 [ Go to **R2 Data Catalog** ](https://dash.cloudflare.com/?to=/:account/data-catalog/overview)
@@ -80,8 +80,8 @@ Table maintenance operations such as compaction and snapshot expiration require 
 
 Refer to [Authenticate your Iceberg engine](#authenticate-your-iceberg-engine) for details on creating a token with the required permissions.
 
-* [ Dashboard ](#tab-panel-8615)
-* [ Wrangler CLI ](#tab-panel-8616)
+* [ Dashboard ](#tab-panel-9753)
+* [ Wrangler CLI ](#tab-panel-9754)
 
 1. In the Cloudflare dashboard, go to the **R2 Data Catalog** page.  
 [ Go to **R2 Data Catalog** ](https://dash.cloudflare.com/?to=/:account/data-catalog/overview)
@@ -124,8 +124,8 @@ Once enabled, compaction applies retroactively to all existing tables (for catal
 
 Disabling compaction will prevent the process from running for all tables (catalog level) or a specific table (table level). You can re-enable it at any time.
 
-* [ Dashboard ](#tab-panel-8609)
-* [ Wrangler CLI ](#tab-panel-8610)
+* [ Dashboard ](#tab-panel-9747)
+* [ Wrangler CLI ](#tab-panel-9748)
 
 1. In the Cloudflare dashboard, go to the **R2 Data Catalog** page.  
 [ Go to **R2 Data Catalog** ](https://dash.cloudflare.com/?to=/:account/data-catalog/overview)
@@ -160,8 +160,8 @@ Snapshot expiration automatically removes old table snapshots and any unreferenc
 * **Max snapshot age** \- Snapshots older than this duration are expired. Specify a value followed by a unit (`d` for days, `h` for hours, `m` for minutes, `s` for seconds). For example, `7d` expires snapshots older than 7 days.
 * **Min snapshots to keep** \- The minimum number of snapshots to retain, regardless of age.
 
-* [ Dashboard ](#tab-panel-8611)
-* [ Wrangler CLI ](#tab-panel-8612)
+* [ Dashboard ](#tab-panel-9749)
+* [ Wrangler CLI ](#tab-panel-9750)
 
 1. In the Cloudflare dashboard, go to the **R2 Data Catalog** page.  
 [ Go to **R2 Data Catalog** ](https://dash.cloudflare.com/?to=/:account/data-catalog/overview)
@@ -208,8 +208,8 @@ npx wrangler r2 bucket catalog snapshot-expiration enable <BUCKET_NAME> <NAMESPA
 
 Disabling snapshot expiration prevents the process from running for all tables (catalog level) or a specific table (table level). You can re-enable snapshot expiration at any time.
 
-* [ Dashboard ](#tab-panel-8613)
-* [ Wrangler CLI ](#tab-panel-8614)
+* [ Dashboard ](#tab-panel-9751)
+* [ Wrangler CLI ](#tab-panel-9752)
 
 1. In the Cloudflare dashboard, go to the **R2 Data Catalog** page.  
 [ Go to **R2 Data Catalog** ](https://dash.cloudflare.com/?to=/:account/data-catalog/overview)
@@ -327,5 +327,6 @@ npx wrangler r2 bucket catalog local-uploads enable <R2_Data_Catalog_BUCKET_NAME
 [ Connect to Iceberg engines ](https://developers.cloudflare.com/r2/data-catalog/config-examples/) Find detailed setup instructions for Apache Spark and other common query engines. 
 
 ```json
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/r2/data-catalog/manage-catalogs/#page","headline":"Manage catalogs · Cloudflare R2 docs","description":"Understand how to manage Iceberg REST catalogs associated with R2 buckets","url":"https://developers.cloudflare.com/r2/data-catalog/manage-catalogs/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-05-29","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/r2/","name":"R2"}},{"@type":"ListItem","position":3,"item":{"@id":"/r2/data-catalog/","name":"R2 Data Catalog"}},{"@type":"ListItem","position":4,"item":{"@id":"/r2/data-catalog/manage-catalogs/","name":"Manage catalogs"}}]}
 ```

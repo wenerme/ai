@@ -18,8 +18,8 @@ Worker version ID, version tag and timestamp of when the version was created are
 
 To use the version metadata binding, update your Worker's Wrangler file:
 
-* [  wrangler.jsonc ](#tab-panel-10783)
-* [  wrangler.toml ](#tab-panel-10784)
+* [  wrangler.jsonc ](#tab-panel-11978)
+* [  wrangler.toml ](#tab-panel-11979)
 
 JSONC
 
@@ -53,8 +53,8 @@ binding = "CF_VERSION_METADATA"
 
 An example of how to access the version ID and version tag from within a Worker to send events to [Workers Analytics Engine](https://developers.cloudflare.com/analytics/analytics-engine/):
 
-* [  JavaScript ](#tab-panel-10781)
-* [  TypeScript ](#tab-panel-10782)
+* [  JavaScript ](#tab-panel-11976)
+* [  TypeScript ](#tab-panel-11977)
 
 JavaScript
 
@@ -124,5 +124,6 @@ export default {
 ```
 
 ```json
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/runtime-apis/bindings/version-metadata/#page","headline":"Version metadata binding · Cloudflare Workers docs","description":"Exposes Worker version metadata (versionID and versionTag). These fields can be added to events emitted from the Worker to send to downstream observability systems.","url":"https://developers.cloudflare.com/workers/runtime-apis/bindings/version-metadata/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/workers/","name":"Workers"}},{"@type":"ListItem","position":3,"item":{"@id":"/workers/runtime-apis/","name":"Runtime APIs"}},{"@type":"ListItem","position":4,"item":{"@id":"/workers/runtime-apis/bindings/","name":"Bindings (env)"}},{"@type":"ListItem","position":5,"item":{"@id":"/workers/runtime-apis/bindings/version-metadata/","name":"Version metadata"}}]}
 ```

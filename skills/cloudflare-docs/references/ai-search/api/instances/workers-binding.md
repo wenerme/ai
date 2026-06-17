@@ -25,8 +25,8 @@ To use AI Search with Workers, you must create an AI Search binding. You create 
 
 Access all instances within a [namespace](https://developers.cloudflare.com/ai-search/concepts/namespaces/). You can get, create, list, and delete instances at runtime.
 
-* [  wrangler.jsonc ](#tab-panel-4171)
-* [  wrangler.toml ](#tab-panel-4172)
+* [  wrangler.jsonc ](#tab-panel-6594)
+* [  wrangler.toml ](#tab-panel-6595)
 
 JSONC
 
@@ -81,8 +81,8 @@ namespace = "my-namespace"
 
 Bind directly to a single instance in the `default` namespace. Use this when you know which instance you need at deploy time.
 
-* [  wrangler.jsonc ](#tab-panel-4173)
-* [  wrangler.toml ](#tab-panel-4174)
+* [  wrangler.jsonc ](#tab-panel-6596)
+* [  wrangler.toml ](#tab-panel-6597)
 
 JSONC
 
@@ -672,5 +672,6 @@ JSONC
 ```
 
 ```json
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai-search/api/instances/workers-binding/#page","headline":"Workers binding · Cloudflare AI Search docs","description":"Manage AI Search instances from a Cloudflare Worker using the Instances Workers binding.","url":"https://developers.cloudflare.com/ai-search/api/instances/workers-binding/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-20","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/ai-search/","name":"AI Search"}},{"@type":"ListItem","position":3,"item":{"@id":"/ai-search/api/","name":"API"}},{"@type":"ListItem","position":4,"item":{"@id":"/ai-search/api/instances/","name":"Instances"}},{"@type":"ListItem","position":5,"item":{"@id":"/ai-search/api/instances/workers-binding/","name":"Workers binding"}}]}
 ```

@@ -12,7 +12,7 @@ Retrieve a single organization API key
 
 ### Returns
 
-- `AdminAPIKey object { id, created_at, object, 4 more }`
+- `AdminAPIKey object { id, created_at, expires_at, 5 more }`
 
   Represents an individual Admin API key in an org.
 
@@ -23,6 +23,10 @@ Retrieve a single organization API key
   - `created_at: number`
 
     The Unix timestamp (in seconds) of when the API key was created
+
+  - `expires_at: number`
+
+    The Unix timestamp (in seconds) of when the API key expires
 
   - `object: "organization.admin_api_key"`
 
@@ -81,6 +85,7 @@ curl https://api.openai.com/v1/organization/admin_api_keys/$KEY_ID \
 {
   "id": "key_abc",
   "created_at": 1711471533,
+  "expires_at": 1714063533,
   "object": "organization.admin_api_key",
   "owner": {
     "id": "sa_456",

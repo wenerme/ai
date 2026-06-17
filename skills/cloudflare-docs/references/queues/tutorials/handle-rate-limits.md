@@ -103,8 +103,8 @@ Created queue rate-limit-queue.
 
 In your Wrangler file, add the following:
 
-* [  wrangler.jsonc ](#tab-panel-7537)
-* [  wrangler.toml ](#tab-panel-7538)
+* [  wrangler.jsonc ](#tab-panel-9691)
+* [  wrangler.toml ](#tab-panel-9692)
 
 JSONC
 
@@ -177,8 +177,8 @@ It is important to include the `max_batch_size` of two to the consumer queue is 
 
 Your final Wrangler file should look similar to the example below.
 
-* [  wrangler.jsonc ](#tab-panel-7539)
-* [  wrangler.toml ](#tab-panel-7540)
+* [  wrangler.jsonc ](#tab-panel-9693)
+* [  wrangler.toml ](#tab-panel-9694)
 
 JSONC
 
@@ -194,7 +194,7 @@ JSONC
 
   // Set this to today's date
 
-  "compatibility_date": "2026-05-18",
+  "compatibility_date": "2026-06-17",
 
   "compatibility_flags": [
 
@@ -251,7 +251,7 @@ main = "src/index.ts"
 
 # Set this to today's date
 
-compatibility_date = "2026-05-18"
+compatibility_date = "2026-06-17"
 
 compatibility_flags = [ "nodejs_compat" ]
 
@@ -777,5 +777,6 @@ Refer to the [GitHub repository ↗](https://github.com/harshil1712/queues-rate-
 * [Resend ↗](https://resend.com/docs/)
 
 ```json
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/queues/tutorials/handle-rate-limits/#page","headline":"Cloudflare Queues - Queues & Rate Limits · Cloudflare Queues docs","description":"Example of how to use Queues to handle rate limits of external APIs.","url":"https://developers.cloudflare.com/queues/tutorials/handle-rate-limits/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-02-08","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["TypeScript"]}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/queues/","name":"Queues"}},{"@type":"ListItem","position":3,"item":{"@id":"/queues/tutorials/","name":"Tutorials"}},{"@type":"ListItem","position":4,"item":{"@id":"/queues/tutorials/handle-rate-limits/","name":"Handle rate limits of external APIs"}}]}
 ```

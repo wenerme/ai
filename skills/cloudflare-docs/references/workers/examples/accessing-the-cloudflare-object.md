@@ -22,10 +22,10 @@ If you want to get started quickly, click on the button below.
 
 This creates a repository in your GitHub account and deploys the application to Cloudflare Workers.
 
-* [  JavaScript ](#tab-panel-10394)
-* [  TypeScript ](#tab-panel-10395)
-* [  Hono ](#tab-panel-10396)
-* [  Python ](#tab-panel-10397)
+* [  JavaScript ](#tab-panel-11573)
+* [  TypeScript ](#tab-panel-11574)
+* [  Hono ](#tab-panel-11575)
+* [  Python ](#tab-panel-11576)
 
 JavaScript
 
@@ -162,5 +162,6 @@ class Default(WorkerEntrypoint):
 ```
 
 ```json
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/examples/accessing-the-cloudflare-object/#page","headline":"Accessing the Cloudflare Object · Cloudflare Workers docs","description":"Access custom Cloudflare properties and control how Cloudflare features are applied to every request.","url":"https://developers.cloudflare.com/workers/examples/accessing-the-cloudflare-object/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["JavaScript","TypeScript","Python"]}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/workers/","name":"Workers"}},{"@type":"ListItem","position":3,"item":{"@id":"/workers/examples/","name":"Examples"}},{"@type":"ListItem","position":4,"item":{"@id":"/workers/examples/accessing-the-cloudflare-object/","name":"Accessing the Cloudflare Object"}}]}
 ```

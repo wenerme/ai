@@ -17,5 +17,6 @@ Cloudflare Registrar offers several advantages over other [registrars ↗](https
 You can buy your domain from Cloudflare Registrar or from a third party. Even when you buy it from a third party, you can manage your domain with Cloudflare to benefit from all the features Cloudflare offers.
 
 ```json
+{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/registrar/about/#page","headline":"What is a registrar · Cloudflare Registrar docs","description":"Learn how Cloudflare Firewall Rules work.","url":"https://developers.cloudflare.com/registrar/about/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-24","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/registrar/","name":"Registrar"}},{"@type":"ListItem","position":3,"item":{"@id":"/registrar/about/","name":"About"}}]}
 ```

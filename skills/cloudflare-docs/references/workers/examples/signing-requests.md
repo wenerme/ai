@@ -33,10 +33,10 @@ The following Worker will:
 * For request URLs beginning with `/generate/`, replace `/generate/` with `/`, sign the resulting path with its timestamp, and return the full, signed URL in the response body.
 * For all other request URLs, verify the signed URL and allow the request through.
 
-* [  JavaScript ](#tab-panel-10574)
-* [  TypeScript ](#tab-panel-10575)
-* [  Hono ](#tab-panel-10576)
-* [  Python ](#tab-panel-10577)
+* [  JavaScript ](#tab-panel-11753)
+* [  TypeScript ](#tab-panel-11754)
+* [  Hono ](#tab-panel-11755)
+* [  Python ](#tab-panel-11756)
 
 JavaScript
 
@@ -784,5 +784,6 @@ class Default(WorkerEntrypoint):
 The provided example code for signing requests is compatible with the [is\_timed\_hmac\_valid\_v0()](https://developers.cloudflare.com/ruleset-engine/rules-language/functions/#hmac-validation) Rules language function. This means that you can verify requests signed by the Worker script using a [custom rule](https://developers.cloudflare.com/waf/custom-rules/use-cases/configure-token-authentication/#option-2-configure-using-custom-rules).
 
 ```json
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/examples/signing-requests/#page","headline":"Sign requests · Cloudflare Workers docs","description":"Verify a signed request using the HMAC and SHA-256 algorithms or return a 403.","url":"https://developers.cloudflare.com/workers/examples/signing-requests/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Security","WebCrypto","JavaScript","TypeScript","Python"]}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/workers/","name":"Workers"}},{"@type":"ListItem","position":3,"item":{"@id":"/workers/examples/","name":"Examples"}},{"@type":"ListItem","position":4,"item":{"@id":"/workers/examples/signing-requests/","name":"Sign requests"}}]}
 ```

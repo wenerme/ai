@@ -30,8 +30,8 @@ If you are using [Smart Placement](https://developers.cloudflare.com/workers/con
 
 If you need to always run your Worker script before serving static assets (for example, you wish to log requests, perform some authentication checks, use [HTMLRewriter](https://developers.cloudflare.com/workers/runtime-apis/html-rewriter/), or otherwise transform assets before serving), set `run_worker_first` to `true`:
 
-* [  wrangler.jsonc ](#tab-panel-10003)
-* [  wrangler.toml ](#tab-panel-10004)
+* [  wrangler.jsonc ](#tab-panel-12151)
+* [  wrangler.toml ](#tab-panel-12152)
 
 JSONC
 
@@ -43,7 +43,7 @@ JSONC
 
   // Set this to today's date
 
-  "compatibility_date": "2026-05-27",
+  "compatibility_date": "2026-06-17",
 
   "main": "./worker/index.ts",
 
@@ -70,7 +70,7 @@ name = "my-worker"
 
 # Set this to today's date
 
-compatibility_date = "2026-05-27"
+compatibility_date = "2026-06-17"
 
 main = "./worker/index.ts"
 
@@ -86,8 +86,8 @@ run_worker_first = true
 
 ```
 
-* [  JavaScript ](#tab-panel-10007)
-* [  TypeScript ](#tab-panel-10008)
+* [  JavaScript ](#tab-panel-12155)
+* [  TypeScript ](#tab-panel-12156)
 
 ./worker/index.js
 
@@ -195,8 +195,8 @@ export default class extends WorkerEntrypoint<Env> {
 
 You can also configure selective Worker-first routing using an array of route patterns, often paired with the [single-page-application setting](https://developers.cloudflare.com/workers/static-assets/routing/single-page-application/#advanced-routing-control). This allows you to run the Worker first only for specific routes while letting other requests follow the default asset-first behavior:
 
-* [  wrangler.jsonc ](#tab-panel-10005)
-* [  wrangler.toml ](#tab-panel-10006)
+* [  wrangler.jsonc ](#tab-panel-12153)
+* [  wrangler.toml ](#tab-panel-12154)
 
 JSONC
 
@@ -208,7 +208,7 @@ JSONC
 
   // Set this to today's date
 
-  "compatibility_date": "2026-05-27",
+  "compatibility_date": "2026-06-17",
 
   "main": "./worker/index.ts",
 
@@ -237,7 +237,7 @@ name = "my-worker"
 
 # Set this to today's date
 
-compatibility_date = "2026-05-27"
+compatibility_date = "2026-06-17"
 
 main = "./worker/index.ts"
 
@@ -255,8 +255,8 @@ run_worker_first = [ "/oauth/callback" ]
 
 ```
 
-* [  JavaScript ](#tab-panel-10009)
-* [  TypeScript ](#tab-panel-10010)
+* [  JavaScript ](#tab-panel-12157)
+* [  TypeScript ](#tab-panel-12158)
 
 ./worker/index.js
 
@@ -355,5 +355,6 @@ export default class extends WorkerEntrypoint<Env> {
 ```
 
 ```json
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/static-assets/routing/worker-script/#page","headline":"Worker script · Cloudflare Workers docs","description":"How the presence of a Worker script influences static asset routing and the related configuration options.","url":"https://developers.cloudflare.com/workers/static-assets/routing/worker-script/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/workers/","name":"Workers"}},{"@type":"ListItem","position":3,"item":{"@id":"/workers/static-assets/","name":"Static Assets"}},{"@type":"ListItem","position":4,"item":{"@id":"/workers/static-assets/routing/","name":"Routing"}},{"@type":"ListItem","position":5,"item":{"@id":"/workers/static-assets/routing/worker-script/","name":"Worker script"}}]}
 ```

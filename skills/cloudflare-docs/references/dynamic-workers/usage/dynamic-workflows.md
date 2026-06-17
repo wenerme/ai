@@ -76,8 +76,8 @@ Your Worker Loader needs two [bindings](https://developers.cloudflare.com/worker
 * A **Worker Loader** binding (`LOADER`) to load Dynamic Workers at runtime.
 * A **Workflow binding** (`WORKFLOWS`) that points to the `DynamicWorkflow` class. This is the entrypoint the Workflows engine uses to route each instance to the correct Dynamic Worker.
 
-* [  wrangler.jsonc ](#tab-panel-5704)
-* [  wrangler.toml ](#tab-panel-5705)
+* [  wrangler.jsonc ](#tab-panel-8443)
+* [  wrangler.toml ](#tab-panel-8444)
 
 JSONC
 
@@ -93,7 +93,7 @@ JSONC
 
   // Set this to today's date
 
-  "compatibility_date": "2026-05-01",
+  "compatibility_date": "2026-06-17",
 
   "worker_loaders": [
 
@@ -134,7 +134,7 @@ main = "src/index.ts"
 
 # Set this to today's date
 
-compatibility_date = "2026-05-01"
+compatibility_date = "2026-06-17"
 
 
 [[worker_loaders]]
@@ -164,8 +164,8 @@ Note
 
 You must re-export `DynamicWorkflowBinding` from your Worker Loader. The Cloudflare runtime needs this export to build the wrapped binding that Dynamic Workers use. If you forget this line, you will get a runtime error when a Dynamic Worker tries to create a Workflow instance.
 
-* [  JavaScript ](#tab-panel-5708)
-* [  TypeScript ](#tab-panel-5709)
+* [  JavaScript ](#tab-panel-8447)
+* [  TypeScript ](#tab-panel-8448)
 
 JavaScript
 
@@ -340,8 +340,8 @@ Warning
 
 Do not put secrets in the metadata you pass to `wrapWorkflowBinding` (for example, API keys or tokens). The Workflows engine persists the metadata in the event payload, and Dynamic Worker code can read it back via `instance.status()`. Use metadata for routing information like tenant IDs, not for sensitive data.
 
-* [  JavaScript ](#tab-panel-5706)
-* [  TypeScript ](#tab-panel-5707)
+* [  JavaScript ](#tab-panel-8445)
+* [  TypeScript ](#tab-panel-8446)
 
 JavaScript
 
@@ -466,5 +466,6 @@ curl "http://localhost:8787/api/status?instanceId=YOUR_INSTANCE_ID"
 * [Bindings with Dynamic Workers](https://developers.cloudflare.com/dynamic-workers/usage/bindings/)
 
 ```json
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/dynamic-workers/usage/dynamic-workflows/#page","headline":"Dynamic Workflows · Cloudflare Dynamic Workers docs","description":"Run different Workflow logic for each user or tenant by combining Workflows with Dynamic Workers.","url":"https://developers.cloudflare.com/dynamic-workers/usage/dynamic-workflows/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-05-01","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/dynamic-workers/","name":"Dynamic Workers"}},{"@type":"ListItem","position":3,"item":{"@id":"/dynamic-workers/usage/","name":"Usage"}},{"@type":"ListItem","position":4,"item":{"@id":"/dynamic-workers/usage/dynamic-workflows/","name":"Dynamic Workflows"}}]}
 ```

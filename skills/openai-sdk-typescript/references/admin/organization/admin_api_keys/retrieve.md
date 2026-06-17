@@ -26,6 +26,10 @@ Retrieve a single organization API key
 
     The Unix timestamp (in seconds) of when the API key was created
 
+  - `expires_at: number | null`
+
+    The Unix timestamp (in seconds) of when the API key expires
+
   - `object: "organization.admin_api_key"`
 
     The object type, which is always `organization.admin_api_key`
@@ -90,6 +94,7 @@ console.log(adminAPIKey.id);
 {
   "id": "key_abc",
   "created_at": 1711471533,
+  "expires_at": 1714063533,
   "object": "organization.admin_api_key",
   "owner": {
     "id": "sa_456",

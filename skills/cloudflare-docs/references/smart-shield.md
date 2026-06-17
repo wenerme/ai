@@ -43,5 +43,6 @@ Cache stores copies of frequently accessed content (such as images, videos, or w
 Observatory uses synthetic tests and real user data to assess the performance of your website, producing different metrics and insights. Cloudflare then uses this analysis to recommend optimizations that best address your performance issues.
 
 ```json
+{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/smart-shield/#page","headline":"Overview · Cloudflare Smart Shield docs","description":"Use Smart Shield to protect your origin server, improve content availability, and reduce network latency.","url":"https://developers.cloudflare.com/smart-shield/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-06-01","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/smart-shield/","name":"Smart Shield"}}]}
 ```

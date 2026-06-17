@@ -61,5 +61,6 @@ Magic Cloud Networking supports Google Cloud Platform.
 The Magic Cloud Networking closed beta release is available, with the managed cloud on-ramps feature.
 
 ```json
+{"@context":"https://schema.org","@type":"BlogPosting","@id":"https://developers.cloudflare.com/multi-cloud-networking/changelog/#page","headline":"Changelog · Cloudflare Multi-Cloud Networking docs","description":"Review recent changes to Cloudflare One Multi-Cloud Networking (formerly Magic Cloud Networking) (beta).","url":"https://developers.cloudflare.com/multi-cloud-networking/changelog/","inLanguage":"en","image":"https://developers.cloudflare.com/zt-preview.png","dateModified":"2026-04-17","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/multi-cloud-networking/","name":"Multi-Cloud Networking"}},{"@type":"ListItem","position":3,"item":{"@id":"/multi-cloud-networking/changelog/","name":"Changelog"}}]}
 ```

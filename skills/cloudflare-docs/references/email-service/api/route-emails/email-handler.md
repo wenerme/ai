@@ -20,8 +20,8 @@ Process incoming emails using the `email()` handler in your Cloudflare Workers. 
 
 Add the `email` handler function to your Worker's exported handlers:
 
-* [  TypeScript ](#tab-panel-8322)
-* [  Python ](#tab-panel-8323)
+* [  TypeScript ](#tab-panel-8464)
+* [  Python ](#tab-panel-8465)
 
 TypeScript
 
@@ -104,8 +104,8 @@ interface ForwardableEmailMessage {
 
 ### Properties
 
-* [ Basic properties ](#tab-panel-8324)
-* [ Parse email content ](#tab-panel-8325)
+* [ Basic properties ](#tab-panel-8466)
+* [ Parse email content ](#tab-panel-8467)
 
 TypeScript
 
@@ -181,9 +181,9 @@ export default {
 
 Forward incoming emails to verified destination addresses:
 
-* [ Simple forwarding ](#tab-panel-8326)
-* [ Conditional forwarding ](#tab-panel-8327)
-* [ Multiple forwarding ](#tab-panel-8328)
+* [ Simple forwarding ](#tab-panel-8468)
+* [ Conditional forwarding ](#tab-panel-8469)
+* [ Multiple forwarding ](#tab-panel-8470)
 
 TypeScript
 
@@ -334,8 +334,8 @@ Replies through the Workers API must satisfy the following requirements, otherwi
 
 The reply payload is an `EmailMessage` built from a raw MIME string. The examples below use [mimetext ↗](https://www.npmjs.com/package/mimetext) to build the MIME body. The `mimetext` package requires the [nodejs\_compat](https://developers.cloudflare.com/workers/runtime-apis/nodejs/) compatibility flag.
 
-* [ Simple auto-reply ](#tab-panel-8329)
-* [ Smart auto-reply ](#tab-panel-8330)
+* [ Simple auto-reply ](#tab-panel-8471)
+* [ Smart auto-reply ](#tab-panel-8472)
 
 TypeScript
 
@@ -534,8 +534,8 @@ export default {
 
 Reject emails with a permanent SMTP error:
 
-* [ Simple rejection ](#tab-panel-8331)
-* [ Content-based rejection ](#tab-panel-8332)
+* [ Simple rejection ](#tab-panel-8473)
+* [ Content-based rejection ](#tab-panel-8474)
 
 TypeScript
 
@@ -738,5 +738,6 @@ async function processEmail(message, env) {
 * Learn about [spam filtering](https://developers.cloudflare.com/email-service/examples/email-routing/spam-filtering/) with Workers
 
 ```json
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/email-service/api/route-emails/email-handler/#page","headline":"Workers API · Cloudflare Email Service docs","description":"Process incoming emails with the email() handler in Cloudflare Workers to forward, reply, or reject messages.","url":"https://developers.cloudflare.com/email-service/api/route-emails/email-handler/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-06-15","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/email-service/","name":"Email Service"}},{"@type":"ListItem","position":3,"item":{"@id":"/email-service/api/","name":"API reference"}},{"@type":"ListItem","position":4,"item":{"@id":"/email-service/api/route-emails/","name":"Route emails"}},{"@type":"ListItem","position":5,"item":{"@id":"/email-service/api/route-emails/email-handler/","name":"Workers API"}}]}
 ```

@@ -18,13 +18,13 @@ Inside a Cloudflare Worker, you can pass the Flagship [binding](https://develope
 
 ## Setup
 
-* [ With binding ](#tab-panel-5991)
-* [ With app ID ](#tab-panel-5992)
+* [ With binding ](#tab-panel-8565)
+* [ With app ID ](#tab-panel-8566)
 
 Pass the Flagship binding directly to the provider. This is the recommended approach inside a Worker.
 
-* [  JavaScript ](#tab-panel-5989)
-* [  TypeScript ](#tab-panel-5990)
+* [  JavaScript ](#tab-panel-8563)
+* [  TypeScript ](#tab-panel-8564)
 
 JavaScript
 
@@ -128,8 +128,8 @@ export default {
 
 Use an app ID, account ID, and an API token when running outside of a Worker (for example, in Node.js). The provider makes HTTP requests to the Flagship evaluation endpoint. Generate an [API token](https://developers.cloudflare.com/fundamentals/api/get-started/create-token/) from your Cloudflare account with Flagship read permissions.
 
-* [  JavaScript ](#tab-panel-5985)
-* [  TypeScript ](#tab-panel-5986)
+* [  JavaScript ](#tab-panel-8559)
+* [  TypeScript ](#tab-panel-8560)
 
 JavaScript
 
@@ -224,8 +224,8 @@ OpenFeature uses an evaluation context to pass user attributes to the flag provi
 
 Pass additional attributes alongside `targetingKey` to match [targeting rules](https://developers.cloudflare.com/flagship/targeting/). For example, you can include `plan`, `country`, or any custom attribute your rules reference.
 
-* [  JavaScript ](#tab-panel-5981)
-* [  TypeScript ](#tab-panel-5982)
+* [  JavaScript ](#tab-panel-8555)
+* [  TypeScript ](#tab-panel-8556)
 
 JavaScript
 
@@ -268,8 +268,8 @@ The SDK ships with two hooks that you can attach to the OpenFeature client.
 * **LoggingHook** — Logs structured information for every evaluation.
 * **TelemetryHook** — Captures timing and event data for observability.
 
-* [  JavaScript ](#tab-panel-5983)
-* [  TypeScript ](#tab-panel-5984)
+* [  JavaScript ](#tab-panel-8557)
+* [  TypeScript ](#tab-panel-8558)
 
 JavaScript
 
@@ -299,8 +299,8 @@ OpenFeature.addHooks(new LoggingHook(), new TelemetryHook());
 
 If you use another OpenFeature-compatible provider (for example, LaunchDarkly or Flagsmith), switch to Flagship by replacing the provider initialization. No changes are needed at evaluation call sites.
 
-* [  JavaScript ](#tab-panel-5987)
-* [  TypeScript ](#tab-panel-5988)
+* [  JavaScript ](#tab-panel-8561)
+* [  TypeScript ](#tab-panel-8562)
 
 JavaScript
 
@@ -367,5 +367,6 @@ await OpenFeature.setProviderAndWait(
 ```
 
 ```json
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/flagship/sdk/server-provider/#page","headline":"Server provider · Cloudflare Flagship docs","description":"Set up the FlagshipServerProvider to evaluate feature flags from Workers, Node.js, or other server-side JavaScript runtimes using OpenFeature.","url":"https://developers.cloudflare.com/flagship/sdk/server-provider/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/flagship/","name":"Flagship"}},{"@type":"ListItem","position":3,"item":{"@id":"/flagship/sdk/","name":"OpenFeature SDK"}},{"@type":"ListItem","position":4,"item":{"@id":"/flagship/sdk/server-provider/","name":"Server provider"}}]}
 ```

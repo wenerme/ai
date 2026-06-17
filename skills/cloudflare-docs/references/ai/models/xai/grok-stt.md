@@ -28,8 +28,8 @@ xAI's Grok speech-to-text model. Transcribes audio files into text across 25 lan
 
 ## Usage
 
-* [ TypeScript ](#tab-panel-1972)
-* [ cURL ](#tab-panel-1973)
+* [ TypeScript ](#tab-panel-1982)
+* [ cURL ](#tab-panel-1983)
 
 TypeScript
 
@@ -73,8 +73,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 ```
 
-* [ Output ](#tab-panel-1982)
-* [ Raw response ](#tab-panel-1983)
+* [ Output ](#tab-panel-1992)
+* [ Raw response ](#tab-panel-1993)
 
 How old is the Brooklyn Bridge?
 
@@ -173,8 +173,8 @@ How old is the Brooklyn Bridge?
 
 **With Language and Formatting**  — Enable Inverse Text Normalization so spoken numbers become digits 
 
-* [ TypeScript ](#tab-panel-1974)
-* [ cURL ](#tab-panel-1975)
+* [ TypeScript ](#tab-panel-1984)
+* [ cURL ](#tab-panel-1985)
 
 TypeScript
 
@@ -230,8 +230,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 ```
 
-* [ Output ](#tab-panel-1984)
-* [ Raw response ](#tab-panel-1985)
+* [ Output ](#tab-panel-1994)
+* [ Raw response ](#tab-panel-1995)
 
 How old is the Brooklyn Bridge?
 
@@ -328,8 +328,8 @@ How old is the Brooklyn Bridge?
 
 **Speaker Diarization with Key Terms**  — Identify speakers and bias transcription toward proper nouns 
 
-* [ TypeScript ](#tab-panel-1978)
-* [ cURL ](#tab-panel-1979)
+* [ TypeScript ](#tab-panel-1988)
+* [ cURL ](#tab-panel-1989)
 
 TypeScript
 
@@ -395,8 +395,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 ```
 
-* [ Output ](#tab-panel-1988)
-* [ Raw response ](#tab-panel-1989)
+* [ Output ](#tab-panel-1998)
+* [ Raw response ](#tab-panel-1999)
 
 How old is the Brooklyn Bridge?
 
@@ -505,8 +505,8 @@ How old is the Brooklyn Bridge?
 
 **Filler Words Preserved**  — Keep filler words (uh, um, er) in the transcript instead of removing them 
 
-* [ TypeScript ](#tab-panel-1976)
-* [ cURL ](#tab-panel-1977)
+* [ TypeScript ](#tab-panel-1986)
+* [ cURL ](#tab-panel-1987)
 
 TypeScript
 
@@ -562,8 +562,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 ```
 
-* [ Output ](#tab-panel-1986)
-* [ Raw response ](#tab-panel-1987)
+* [ Output ](#tab-panel-1996)
+* [ Raw response ](#tab-panel-1997)
 
 How old is the Brooklyn Bridge?
 
@@ -660,8 +660,8 @@ How old is the Brooklyn Bridge?
 
 **Data URI Upload**  — Pass the audio file directly as a base64 data URI (mutually exclusive with \`url\`) 
 
-* [ TypeScript ](#tab-panel-1980)
-* [ cURL ](#tab-panel-1981)
+* [ TypeScript ](#tab-panel-1990)
+* [ cURL ](#tab-panel-1991)
 
 TypeScript
 
@@ -734,8 +734,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 ## Parameters
 
-* [ Input ](#tab-panel-1990)
-* [ Output ](#tab-panel-1991)
+* [ Input ](#tab-panel-2000)
+* [ Output ](#tab-panel-2001)
 
 audio\_format
 
@@ -812,5 +812,6 @@ Input [ ](https://developers.cloudflare.com/ai/models/xai/grok-stt/schema-input.
 Output [ ](https://developers.cloudflare.com/ai/models/xai/grok-stt/schema-output.json "Open") [ ](https://developers.cloudflare.com/ai/models/xai/grok-stt/schema-output.json "Download") 
 
 ```json
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai/models/xai/grok-stt/#page","headline":"Grok STT (xAI) · Cloudflare AI docs · Cloudflare AI docs","description":"xAI's Grok speech-to-text model. Transcribes audio files into text across 25 languages with word-level timestamps, multichannel transcription, speaker diarization, and key-term biasing.","url":"https://developers.cloudflare.com/ai/models/xai/grok-stt/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/ai/","name":"AI"}},{"@type":"ListItem","position":3,"item":{"@id":"/ai/models/","name":"Models"}}]}
 ```

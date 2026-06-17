@@ -34,10 +34,10 @@ Try out this model with Workers AI LLM Playground. It does not require any setup
 
 ## Usage
 
-* [  Worker (Streaming) ](#tab-panel-4785)
-* [  TypeScript ](#tab-panel-4786)
-* [  Python ](#tab-panel-4787)
-* [  curl ](#tab-panel-4788)
+* [  Worker (Streaming) ](#tab-panel-4966)
+* [  TypeScript ](#tab-panel-4967)
+* [  Python ](#tab-panel-4968)
+* [  curl ](#tab-panel-4969)
 
 TypeScript
 
@@ -285,5 +285,6 @@ format
  Streaming Output [ ](https://developers.cloudflare.com/workers-ai/models/llama-3.2-3b-instruct/streaming-output.json "Open") [ ](https://developers.cloudflare.com/workers-ai/models/llama-3.2-3b-instruct/streaming-output.json "Download") 
 
 ```json
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers-ai/models/llama-3.2-3b-instruct/#page","headline":"llama-3.2-3b-instruct (Meta) · Cloudflare AI docs · Cloudflare Workers AI docs","description":"The Llama 3.2 instruction-tuned text only models are optimized for multilingual dialogue use cases, including agentic retrieval and summarization tasks.","url":"https://developers.cloudflare.com/workers-ai/models/llama-3.2-3b-instruct/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/workers-ai/","name":"Workers AI"}},{"@type":"ListItem","position":3,"item":{"@id":"/workers-ai/models/","name":"Models"}}]}
 ```

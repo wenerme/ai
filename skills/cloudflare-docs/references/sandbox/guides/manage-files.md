@@ -22,8 +22,8 @@ File operations support both absolute and relative paths:
 * `/tmp` \- Temporary files (may be cleared)
 * `/home` \- User home directory
 
-* [  JavaScript ](#tab-panel-10168)
-* [  TypeScript ](#tab-panel-10169)
+* [  JavaScript ](#tab-panel-10409)
+* [  TypeScript ](#tab-panel-10410)
 
 JavaScript
 
@@ -71,8 +71,8 @@ await session.writeFile('src/index.js', code);  // Writes to /workspace/my-proje
 
 ## Write files
 
-* [  JavaScript ](#tab-panel-10180)
-* [  TypeScript ](#tab-panel-10181)
+* [  JavaScript ](#tab-panel-10421)
+* [  TypeScript ](#tab-panel-10422)
 
 JavaScript
 
@@ -154,8 +154,8 @@ await sandbox.writeFile('/workspace/image.png', base64, { encoding: 'base64' });
 
 ## Read files
 
-* [  JavaScript ](#tab-panel-10174)
-* [  TypeScript ](#tab-panel-10175)
+* [  JavaScript ](#tab-panel-10415)
+* [  TypeScript ](#tab-panel-10416)
 
 JavaScript
 
@@ -229,8 +229,8 @@ For more details on the `rpc` transport please see the [Transport](https://devel
 
 ## Organize files
 
-* [  JavaScript ](#tab-panel-10172)
-* [  TypeScript ](#tab-panel-10173)
+* [  JavaScript ](#tab-panel-10413)
+* [  TypeScript ](#tab-panel-10414)
 
 JavaScript
 
@@ -292,8 +292,8 @@ await sandbox.deleteFile('/workspace/temp.txt');
 
 Write multiple files in parallel:
 
-* [  JavaScript ](#tab-panel-10176)
-* [  TypeScript ](#tab-panel-10177)
+* [  JavaScript ](#tab-panel-10417)
+* [  TypeScript ](#tab-panel-10418)
 
 JavaScript
 
@@ -353,8 +353,8 @@ await Promise.all(
 
 ## Check if file exists
 
-* [  JavaScript ](#tab-panel-10182)
-* [  TypeScript ](#tab-panel-10183)
+* [  JavaScript ](#tab-panel-10423)
+* [  TypeScript ](#tab-panel-10424)
 
 JavaScript
 
@@ -436,8 +436,8 @@ const sessionResult = await session.exists('/workspace/temp.txt');
 
 Create parent directories first:
 
-* [  JavaScript ](#tab-panel-10170)
-* [  TypeScript ](#tab-panel-10171)
+* [  JavaScript ](#tab-panel-10411)
+* [  TypeScript ](#tab-panel-10412)
 
 JavaScript
 
@@ -469,8 +469,8 @@ await sandbox.writeFile('/workspace/data/file.txt', content);
 
 Use `encoding: "none"` (with `rpc` transport) for binary files:
 
-* [  JavaScript ](#tab-panel-10178)
-* [  TypeScript ](#tab-panel-10179)
+* [  JavaScript ](#tab-panel-10419)
+* [  TypeScript ](#tab-panel-10420)
 
 JavaScript
 
@@ -514,8 +514,8 @@ const file = await sandbox.readFile('/workspace/image.png', {
 
 For older SDK versions or `http` transport:
 
-* [  JavaScript ](#tab-panel-10184)
-* [  TypeScript ](#tab-panel-10185)
+* [  JavaScript ](#tab-panel-10425)
+* [  TypeScript ](#tab-panel-10426)
 
 JavaScript
 
@@ -565,8 +565,8 @@ const file = await sandbox.readFile('/workspace/image.png', {
 
 When writing with `encoding: 'base64'`, content must contain only valid base64 characters:
 
-* [  JavaScript ](#tab-panel-10186)
-* [  TypeScript ](#tab-panel-10187)
+* [  JavaScript ](#tab-panel-10427)
+* [  TypeScript ](#tab-panel-10428)
 
 JavaScript
 
@@ -634,5 +634,6 @@ try {
 * [Code Interpreter guide](https://developers.cloudflare.com/sandbox/guides/code-execution/) \- Generate and execute code files
 
 ```json
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/sandbox/guides/manage-files/#page","headline":"Manage files · Cloudflare Sandbox SDK docs","description":"Read, write, organize, and synchronize files in the sandbox.","url":"https://developers.cloudflare.com/sandbox/guides/manage-files/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-05-13","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/sandbox/","name":"Sandbox SDK"}},{"@type":"ListItem","position":3,"item":{"@id":"/sandbox/guides/","name":"How-to guides"}},{"@type":"ListItem","position":4,"item":{"@id":"/sandbox/guides/manage-files/","name":"Manage files"}}]}
 ```

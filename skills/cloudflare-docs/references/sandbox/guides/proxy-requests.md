@@ -111,8 +111,8 @@ The framework exports:
 
 Create a `ServiceConfig` for each external API you want to proxy. This example proxies a generic HTTP API that expects a Bearer token:
 
-* [  JavaScript ](#tab-panel-10250)
-* [  TypeScript ](#tab-panel-10251)
+* [  JavaScript ](#tab-panel-10491)
+* [  TypeScript ](#tab-panel-10492)
 
 JavaScript
 
@@ -198,8 +198,8 @@ The `transform` function receives the outgoing request and a context object cont
 
 Register your services with `createProxyHandler` and issue tokens to sandboxes using `createProxyToken`:
 
-* [  JavaScript ](#tab-panel-10252)
-* [  TypeScript ](#tab-panel-10253)
+* [  JavaScript ](#tab-panel-10493)
+* [  TypeScript ](#tab-panel-10494)
 
 JavaScript
 
@@ -444,8 +444,8 @@ The SDK then sends all requests to your Worker proxy, which validates the token 
 
 To proxy additional APIs, define another `ServiceConfig` and add it to `createProxyHandler`:
 
-* [  JavaScript ](#tab-panel-10248)
-* [  TypeScript ](#tab-panel-10249)
+* [  JavaScript ](#tab-panel-10489)
+* [  TypeScript ](#tab-panel-10490)
 
 JavaScript
 
@@ -535,8 +535,8 @@ The JWT is missing, expired, or signed with the wrong secret. Verify that:
 
 To issue a fresh token and pass it to the sandbox:
 
-* [  JavaScript ](#tab-panel-10244)
-* [  TypeScript ](#tab-panel-10245)
+* [  JavaScript ](#tab-panel-10485)
+* [  TypeScript ](#tab-panel-10486)
 
 JavaScript
 
@@ -584,8 +584,8 @@ The service name in the URL must match the key in the `services` object. A reque
 
 Log the request URL in `transform` to confirm the path is being rewritten correctly:
 
-* [  JavaScript ](#tab-panel-10246)
-* [  TypeScript ](#tab-panel-10247)
+* [  JavaScript ](#tab-panel-10487)
+* [  TypeScript ](#tab-panel-10488)
 
 JavaScript
 
@@ -629,5 +629,6 @@ transform: async (req, ctx) => {
 * [Environment variables](https://developers.cloudflare.com/sandbox/configuration/environment-variables/) — simpler alternative for lower-risk credentials
 
 ```json
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/sandbox/guides/proxy-requests/#page","headline":"Proxy requests to external APIs · Cloudflare Sandbox SDK docs","description":"Keep credentials secure by routing sandbox requests through a Worker proxy that injects authentication at request time.","url":"https://developers.cloudflare.com/sandbox/guides/proxy-requests/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/sandbox/","name":"Sandbox SDK"}},{"@type":"ListItem","position":3,"item":{"@id":"/sandbox/guides/","name":"How-to guides"}},{"@type":"ListItem","position":4,"item":{"@id":"/sandbox/guides/proxy-requests/","name":"Proxy requests to external APIs"}}]}
 ```

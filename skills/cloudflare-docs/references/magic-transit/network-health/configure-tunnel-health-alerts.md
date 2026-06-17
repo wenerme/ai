@@ -53,8 +53,8 @@ For details, refer to [How Cloudflare calculates Tunnel health alerts](https://d
 
 ## Set up Tunnel Health Alerts
 
-* [ Dashboard ](#tab-panel-6746)
-* [ API ](#tab-panel-6747)
+* [ Dashboard ](#tab-panel-9368)
+* [ API ](#tab-panel-9369)
 
 1. Go to the **Notifications** page.  
 [ Go to **Notifications** ](https://dash.cloudflare.com/?to=/:account/notifications)
@@ -244,5 +244,6 @@ To test whether a specific alert sensitivity level works for your use case:
 3. The time it takes for Cloudflare to send you an alert depends on the sensitivity you chose for your alerts.
 
 ```json
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/magic-transit/network-health/configure-tunnel-health-alerts/#page","headline":"Configure tunnel health alerts · Cloudflare Magic Transit docs","description":"Set up and configure tunnel health alerts","url":"https://developers.cloudflare.com/magic-transit/network-health/configure-tunnel-health-alerts/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-17","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/magic-transit/","name":"Magic Transit"}},{"@type":"ListItem","position":3,"item":{"@id":"/magic-transit/network-health/","name":"Network health"}},{"@type":"ListItem","position":4,"item":{"@id":"/magic-transit/network-health/configure-tunnel-health-alerts/","name":"Configure tunnel health alerts"}}]}
 ```

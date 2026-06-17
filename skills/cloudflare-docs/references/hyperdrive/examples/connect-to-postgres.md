@@ -37,8 +37,8 @@ npx wrangler hyperdrive create my-first-hyperdrive --connection-string="postgres
 
 The command above will output the ID of your Hyperdrive, which you will need to set in the [Wrangler configuration file](https://developers.cloudflare.com/workers/wrangler/configuration/) for your Workers project:
 
-* [  wrangler.jsonc ](#tab-panel-6107)
-* [  wrangler.toml ](#tab-panel-6108)
+* [  wrangler.jsonc ](#tab-panel-8703)
+* [  wrangler.toml ](#tab-panel-8704)
 
 JSONC
 
@@ -56,7 +56,7 @@ JSONC
 
   // Set this to today's date
 
-  "compatibility_date": "2026-04-29",
+  "compatibility_date": "2026-06-17",
 
   "hyperdrive": [
 
@@ -83,7 +83,7 @@ compatibility_flags = [ "nodejs_compat" ]
 
 # Set this to today's date
 
-compatibility_date = "2026-04-29"
+compatibility_date = "2026-06-17"
 
 
 [[hyperdrive]]
@@ -125,8 +125,8 @@ Recommended driver
 
 To enable both built-in runtime APIs and polyfills for your Worker or Pages project, add the [nodejs\_compat](https://developers.cloudflare.com/workers/configuration/compatibility-flags/#nodejs-compatibility-flag) [compatibility flag](https://developers.cloudflare.com/workers/configuration/compatibility-flags/#nodejs-compatibility-flag) to your [Wrangler configuration file](https://developers.cloudflare.com/workers/wrangler/configuration/), and set your compatibility date to September 23rd, 2024 or later. This will enable [Node.js compatibility](https://developers.cloudflare.com/workers/runtime-apis/nodejs/) for your Workers project.
 
-* [  wrangler.jsonc ](#tab-panel-6105)
-* [  wrangler.toml ](#tab-panel-6106)
+* [  wrangler.jsonc ](#tab-panel-8701)
+* [  wrangler.toml ](#tab-panel-8702)
 
 JSONC
 
@@ -142,7 +142,7 @@ JSONC
 
   // Set this to today's date
 
-  "compatibility_date": "2026-04-29"
+  "compatibility_date": "2026-06-17"
 
 }
 
@@ -157,7 +157,7 @@ compatibility_flags = [ "nodejs_compat" ]
 
 # Set this to today's date
 
-compatibility_date = "2026-04-29"
+compatibility_date = "2026-06-17"
 
 
 ```
@@ -218,8 +218,8 @@ bun add -d @types/pg
 
 Add the required Node.js compatibility flags and Hyperdrive binding to your `wrangler.jsonc` file:
 
-* [  wrangler.jsonc ](#tab-panel-6109)
-* [  wrangler.toml ](#tab-panel-6110)
+* [  wrangler.jsonc ](#tab-panel-8705)
+* [  wrangler.toml ](#tab-panel-8706)
 
 JSONC
 
@@ -237,7 +237,7 @@ JSONC
 
   // Set this to today's date
 
-  "compatibility_date": "2026-04-29",
+  "compatibility_date": "2026-06-17",
 
   "hyperdrive": [
 
@@ -264,7 +264,7 @@ compatibility_flags = [ "nodejs_compat" ]
 
 # Set this to today's date
 
-compatibility_date = "2026-04-29"
+compatibility_date = "2026-06-17"
 
 
 [[hyperdrive]]
@@ -374,8 +374,8 @@ The minimum version of `postgres-js` required for Hyperdrive is `3.4.5`.
 
 Add the required Node.js compatibility flags and Hyperdrive binding to your `wrangler.jsonc` file:
 
-* [  wrangler.jsonc ](#tab-panel-6111)
-* [  wrangler.toml ](#tab-panel-6112)
+* [  wrangler.jsonc ](#tab-panel-8707)
+* [  wrangler.toml ](#tab-panel-8708)
 
 JSONC
 
@@ -393,7 +393,7 @@ JSONC
 
   // Set this to today's date
 
-  "compatibility_date": "2026-04-29",
+  "compatibility_date": "2026-06-17",
 
   "hyperdrive": [
 
@@ -420,7 +420,7 @@ compatibility_flags = [ "nodejs_compat" ]
 
 # Set this to today's date
 
-compatibility_date = "2026-04-29"
+compatibility_date = "2026-06-17"
 
 
 [[hyperdrive]]
@@ -520,5 +520,6 @@ To identify active connections to your Postgres database server from Hyperdrive:
 * Understand the [protocols supported by Workers](https://developers.cloudflare.com/workers/reference/protocols/).
 
 ```json
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/hyperdrive/examples/connect-to-postgres/#page","headline":"Connect to PostgreSQL · Cloudflare Hyperdrive docs","description":"Use Hyperdrive to connect to PostgreSQL and PostgreSQL-compatible databases from Cloudflare Workers.","url":"https://developers.cloudflare.com/hyperdrive/examples/connect-to-postgres/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/hyperdrive/","name":"Hyperdrive"}},{"@type":"ListItem","position":3,"item":{"@id":"/hyperdrive/examples/","name":"Examples"}},{"@type":"ListItem","position":4,"item":{"@id":"/hyperdrive/examples/connect-to-postgres/","name":"Connect to PostgreSQL"}}]}
 ```

@@ -38,8 +38,8 @@ const response = await sandbox.terminal(request: Request, options?: PtyOptions):
 
 **Returns**: `Promise<Response>` — WebSocket upgrade response
 
-* [  JavaScript ](#tab-panel-10014)
-* [  TypeScript ](#tab-panel-10015)
+* [  JavaScript ](#tab-panel-10185)
+* [  TypeScript ](#tab-panel-10186)
 
 JavaScript
 
@@ -65,8 +65,8 @@ return await sandbox.terminal(request, { cols: 120, rows: 30 });
 
 Works with both [default and explicitly created sessions](https://developers.cloudflare.com/sandbox/concepts/sessions/):
 
-* [  JavaScript ](#tab-panel-10016)
-* [  TypeScript ](#tab-panel-10017)
+* [  JavaScript ](#tab-panel-10187)
+* [  TypeScript ](#tab-panel-10188)
 
 JavaScript
 
@@ -131,8 +131,8 @@ const addon = new SandboxAddon(options: SandboxAddonOptions);
 * `reconnect` \- Enable automatic reconnection with exponential backoff (default: `true`)
 * `onStateChange(state, error?)` \- Callback for connection state changes
 
-* [  JavaScript ](#tab-panel-10018)
-* [  TypeScript ](#tab-panel-10019)
+* [  JavaScript ](#tab-panel-10189)
+* [  TypeScript ](#tab-panel-10190)
 
 JavaScript
 
@@ -372,5 +372,6 @@ interface SandboxAddonOptions {
 * [Commands API](https://developers.cloudflare.com/sandbox/api/commands/) — Non-interactive command execution
 
 ```json
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/sandbox/api/terminal/#page","headline":"Terminal · Cloudflare Sandbox SDK docs","description":"Connect browser-based terminal UIs to sandbox shells via WebSocket.","url":"https://developers.cloudflare.com/sandbox/api/terminal/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/sandbox/","name":"Sandbox SDK"}},{"@type":"ListItem","position":3,"item":{"@id":"/sandbox/api/","name":"API reference"}},{"@type":"ListItem","position":4,"item":{"@id":"/sandbox/api/terminal/","name":"Terminal"}}]}
 ```

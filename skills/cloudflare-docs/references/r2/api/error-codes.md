@@ -73,7 +73,7 @@ For the **S3-compatible API**, errors are returned as XML in the response body:
 | 10005      | InvalidBucketName | 400         | Bucket name does not meet naming requirements.              | Bucket names must be 3-63 chars, lowercase alphanumeric and hyphens, start/end with alphanumeric.       |
 | 10006      | NoSuchBucket      | 404         | The specified bucket does not exist.                        | Verify the bucket name is correct and the bucket exists in your account.                                |
 | 10008      | BucketNotEmpty    | 409         | Cannot delete bucket that contains objects.                 | Delete all objects in the bucket before deleting the bucket.                                            |
-| 10009      | TooManyBuckets    | 400         | Account bucket limit exceeded (default: 1,000,000 buckets). | Request a limit increase via the [Limits Increase Request Form ↗](https://forms.gle/ukpeZVLWLnKeixDu7). |
+| 10009      | TooManyBuckets    | 400         | Account bucket limit exceeded (default: 1,000,000 buckets). | Request a limit increase via the [Limits Increase Request Form ↗](https://forms.gle/eX6pXvit1wBv77Yw5). |
 | 10073      | BucketConflict    | 409         | Bucket name already exists.                                 | Choose a different bucket name. Bucket names must be unique within your account.                        |
 
 ### Object errors
@@ -116,5 +116,6 @@ For the **S3-compatible API**, errors are returned as XML in the response body:
 | 10058      | TooManyRequests    | 429         | Rate limit exceeded. Often caused by multiple concurrent requests to the same object key (limit: 1 write/second per key). | Check if multiple clients are accessing the same object key. See [R2 limits](https://developers.cloudflare.com/r2/platform/limits/). |
 
 ```json
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/r2/api/error-codes/#page","headline":"Error codes · Cloudflare R2 docs","description":"Reference of R2 error codes returned by the Workers API and S3-compatible API.","url":"https://developers.cloudflare.com/r2/api/error-codes/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-06-09","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/r2/","name":"R2"}},{"@type":"ListItem","position":3,"item":{"@id":"/r2/api/","name":"API"}},{"@type":"ListItem","position":4,"item":{"@id":"/r2/api/error-codes/","name":"Error codes"}}]}
 ```

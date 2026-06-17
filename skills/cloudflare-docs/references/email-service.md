@@ -35,9 +35,9 @@ Together, these two features make it possible for you to send and receive emails
 
 Access Email Service directly from Cloudflare Workers using [bindings](https://developers.cloudflare.com/email-service/api/send-emails/workers-api/), from any platform using the [REST API](https://developers.cloudflare.com/email-service/api/send-emails/rest-api/), or over [authenticated SMTP](https://developers.cloudflare.com/email-service/api/send-emails/smtp/):
 
-* [ Workers ](#tab-panel-8242)
-* [ API ](#tab-panel-8243)
-* [ SMTP ](#tab-panel-8244)
+* [ Workers ](#tab-panel-8461)
+* [ API ](#tab-panel-8462)
+* [ SMTP ](#tab-panel-8463)
 
 Send emails with the `EMAIL` binding and handle incoming emails with the `email()` handler in `src/index.ts`:
 
@@ -302,5 +302,6 @@ Ask questions and discuss Email Service with other developers.
 Follow product announcements and developer updates.
 
 ```json
+{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/email-service/#page","headline":"Cloudflare Email Service · Cloudflare Email Service docs","description":"Send transactional emails and route incoming emails to Workers or email addresses with Cloudflare Email Service.","url":"https://developers.cloudflare.com/email-service/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-06-09","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/email-service/","name":"Email Service"}}]}
 ```

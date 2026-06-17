@@ -61,8 +61,8 @@ Durable Objects are Worker scripts, and have the same [per invocation CPU limits
 
 By default, the maximum CPU time per Durable Objects invocation (HTTP request, WebSocket message, or Alarm) is set to 30 seconds, but can be increased for all Durable Objects associated with a Durable Object definition by setting `limits.cpu_ms` in your Wrangler configuration:
 
-* [  wrangler.jsonc ](#tab-panel-5884)
-* [  wrangler.toml ](#tab-panel-5885)
+* [  wrangler.jsonc ](#tab-panel-8409)
+* [  wrangler.toml ](#tab-panel-8410)
 
 JSONC
 
@@ -151,5 +151,6 @@ try {
 You can use `$workers.durableObjectId` to identify the specific Durable Object instance that generated the log entry.
 
 ```json
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/durable-objects/reference/faq/#page","headline":"FAQs · Cloudflare Durable Objects docs","description":"Frequently asked questions about Durable Objects pricing, limits, and metrics.","url":"https://developers.cloudflare.com/durable-objects/reference/faq/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/durable-objects/","name":"Durable Objects"}},{"@type":"ListItem","position":3,"item":{"@id":"/durable-objects/reference/","name":"Reference"}},{"@type":"ListItem","position":4,"item":{"@id":"/durable-objects/reference/faq/","name":"FAQs"}}]}
 ```

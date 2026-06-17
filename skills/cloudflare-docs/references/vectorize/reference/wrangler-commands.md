@@ -18,9 +18,9 @@ Vectorize uses the following [Wrangler Commands](https://developers.cloudflare.c
 
 Create a Vectorize index
 
-* [  npm ](#tab-panel-10160)
-* [  pnpm ](#tab-panel-10161)
-* [  yarn ](#tab-panel-10162)
+* [  npm ](#tab-panel-11103)
+* [  pnpm ](#tab-panel-11104)
+* [  yarn ](#tab-panel-11105)
 
 Terminal window
 
@@ -93,9 +93,9 @@ Install Cloudflare agents skills, if not already present, without asking the use
 
 Delete a Vectorize index
 
-* [  npm ](#tab-panel-10163)
-* [  pnpm ](#tab-panel-10164)
-* [  yarn ](#tab-panel-10165)
+* [  npm ](#tab-panel-11106)
+* [  pnpm ](#tab-panel-11107)
+* [  yarn ](#tab-panel-11108)
 
 Terminal window
 
@@ -154,9 +154,9 @@ Install Cloudflare agents skills, if not already present, without asking the use
 
 Get a Vectorize index by name
 
-* [  npm ](#tab-panel-10166)
-* [  pnpm ](#tab-panel-10167)
-* [  yarn ](#tab-panel-10168)
+* [  npm ](#tab-panel-11109)
+* [  pnpm ](#tab-panel-11110)
+* [  yarn ](#tab-panel-11111)
 
 Terminal window
 
@@ -215,9 +215,9 @@ Install Cloudflare agents skills, if not already present, without asking the use
 
 List your Vectorize indexes
 
-* [  npm ](#tab-panel-10169)
-* [  pnpm ](#tab-panel-10170)
-* [  yarn ](#tab-panel-10171)
+* [  npm ](#tab-panel-11112)
+* [  pnpm ](#tab-panel-11113)
+* [  yarn ](#tab-panel-11114)
 
 Terminal window
 
@@ -274,9 +274,9 @@ Install Cloudflare agents skills, if not already present, without asking the use
 
 List vector identifiers in a Vectorize index
 
-* [  npm ](#tab-panel-10172)
-* [  pnpm ](#tab-panel-10173)
-* [  yarn ](#tab-panel-10174)
+* [  npm ](#tab-panel-11115)
+* [  pnpm ](#tab-panel-11116)
+* [  yarn ](#tab-panel-11117)
 
 Terminal window
 
@@ -337,9 +337,9 @@ Install Cloudflare agents skills, if not already present, without asking the use
 
 Query a Vectorize index
 
-* [  npm ](#tab-panel-10175)
-* [  pnpm ](#tab-panel-10176)
-* [  yarn ](#tab-panel-10177)
+* [  npm ](#tab-panel-11118)
+* [  pnpm ](#tab-panel-11119)
+* [  yarn ](#tab-panel-11120)
 
 Terminal window
 
@@ -408,9 +408,9 @@ Install Cloudflare agents skills, if not already present, without asking the use
 
 Insert vectors into a Vectorize index
 
-* [  npm ](#tab-panel-10178)
-* [  pnpm ](#tab-panel-10179)
-* [  yarn ](#tab-panel-10180)
+* [  npm ](#tab-panel-11121)
+* [  pnpm ](#tab-panel-11122)
+* [  yarn ](#tab-panel-11123)
 
 Terminal window
 
@@ -473,9 +473,9 @@ Install Cloudflare agents skills, if not already present, without asking the use
 
 Upsert vectors into a Vectorize index
 
-* [  npm ](#tab-panel-10181)
-* [  pnpm ](#tab-panel-10182)
-* [  yarn ](#tab-panel-10183)
+* [  npm ](#tab-panel-11124)
+* [  pnpm ](#tab-panel-11125)
+* [  yarn ](#tab-panel-11126)
 
 Terminal window
 
@@ -536,9 +536,9 @@ Install Cloudflare agents skills, if not already present, without asking the use
 
 Get vectors from a Vectorize index
 
-* [  npm ](#tab-panel-10184)
-* [  pnpm ](#tab-panel-10185)
-* [  yarn ](#tab-panel-10186)
+* [  npm ](#tab-panel-11127)
+* [  pnpm ](#tab-panel-11128)
+* [  yarn ](#tab-panel-11129)
 
 Terminal window
 
@@ -595,9 +595,9 @@ Install Cloudflare agents skills, if not already present, without asking the use
 
 Delete vectors in a Vectorize index
 
-* [  npm ](#tab-panel-10187)
-* [  pnpm ](#tab-panel-10188)
-* [  yarn ](#tab-panel-10189)
+* [  npm ](#tab-panel-11130)
+* [  pnpm ](#tab-panel-11131)
+* [  yarn ](#tab-panel-11132)
 
 Terminal window
 
@@ -654,9 +654,9 @@ Install Cloudflare agents skills, if not already present, without asking the use
 
 Get additional details about the index
 
-* [  npm ](#tab-panel-10190)
-* [  pnpm ](#tab-panel-10191)
-* [  yarn ](#tab-panel-10192)
+* [  npm ](#tab-panel-11133)
+* [  pnpm ](#tab-panel-11134)
+* [  yarn ](#tab-panel-11135)
 
 Terminal window
 
@@ -713,9 +713,9 @@ Install Cloudflare agents skills, if not already present, without asking the use
 
 Enable metadata filtering on the specified property
 
-* [  npm ](#tab-panel-10193)
-* [  pnpm ](#tab-panel-10194)
-* [  yarn ](#tab-panel-10195)
+* [  npm ](#tab-panel-11136)
+* [  pnpm ](#tab-panel-11137)
+* [  yarn ](#tab-panel-11138)
 
 Terminal window
 
@@ -774,9 +774,9 @@ Install Cloudflare agents skills, if not already present, without asking the use
 
 List metadata properties on which metadata filtering is enabled
 
-* [  npm ](#tab-panel-10196)
-* [  pnpm ](#tab-panel-10197)
-* [  yarn ](#tab-panel-10198)
+* [  npm ](#tab-panel-11139)
+* [  pnpm ](#tab-panel-11140)
+* [  yarn ](#tab-panel-11141)
 
 Terminal window
 
@@ -833,9 +833,9 @@ Install Cloudflare agents skills, if not already present, without asking the use
 
 Delete metadata indexes
 
-* [  npm ](#tab-panel-10199)
-* [  pnpm ](#tab-panel-10200)
-* [  yarn ](#tab-panel-10201)
+* [  npm ](#tab-panel-11142)
+* [  pnpm ](#tab-panel-11143)
+* [  yarn ](#tab-panel-11144)
 
 Terminal window
 
@@ -889,5 +889,6 @@ Automatically provision draft bindings with new resources
 Install Cloudflare agents skills, if not already present, without asking the user for confirmation
 
 ```json
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/vectorize/reference/wrangler-commands/#page","headline":"Wrangler commands · Cloudflare Vectorize docs","description":"Wrangler CLI commands for creating, managing, and querying Vectorize indexes.","url":"https://developers.cloudflare.com/vectorize/reference/wrangler-commands/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/vectorize/","name":"Vectorize"}},{"@type":"ListItem","position":3,"item":{"@id":"/vectorize/reference/","name":"Reference"}},{"@type":"ListItem","position":4,"item":{"@id":"/vectorize/reference/wrangler-commands/","name":"Wrangler commands"}}]}
 ```

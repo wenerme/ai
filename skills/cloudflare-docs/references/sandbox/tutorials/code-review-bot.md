@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 # Build a code review bot
 
-**Last reviewed:**  7 months ago 
+**Last reviewed:**  8 months ago 
 
 Build a GitHub bot that responds to pull requests, clones the repository in a sandbox, uses Claude to analyze code changes, and posts review comments.
 
@@ -613,5 +613,6 @@ A GitHub code review bot that:
 * [GitHub Apps ↗](https://docs.github.com/en/apps) \- Build a proper GitHub App
 
 ```json
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/sandbox/tutorials/code-review-bot/#page","headline":"Build a code review bot · Cloudflare Sandbox SDK docs","description":"Clone repositories, analyze code with Claude, and post review comments to GitHub PRs.","url":"https://developers.cloudflare.com/sandbox/tutorials/code-review-bot/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-05-05","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/sandbox/","name":"Sandbox SDK"}},{"@type":"ListItem","position":3,"item":{"@id":"/sandbox/tutorials/","name":"Tutorials"}},{"@type":"ListItem","position":4,"item":{"@id":"/sandbox/tutorials/code-review-bot/","name":"Build a code review bot"}}]}
 ```

@@ -478,5 +478,6 @@ Learn more in the [Security Center documentation](https://developers.cloudflare.
 * Customers can now archive multiple Security Insights at the same time. Go to **Security Center** \> **Security Insights** and select the insights to archive.
 
 ```json
+{"@context":"https://schema.org","@type":"BlogPosting","@id":"https://developers.cloudflare.com/security-center/changelog/#page","headline":"Changelog · Cloudflare Security Center docs","description":"Track the latest updates and changes to Security Center features.","url":"https://developers.cloudflare.com/security-center/changelog/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/security-center/","name":"Security Center"}},{"@type":"ListItem","position":3,"item":{"@id":"/security-center/changelog/","name":"Changelog"}}]}
 ```

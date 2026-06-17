@@ -24,9 +24,9 @@ Worker-to-Worker `fetch` requests are possible with [Service bindings](https://d
 
 ## Syntax
 
-* [  Module Worker ](#tab-panel-10793)
-* [  Service Worker ](#tab-panel-10794)
-* [  Python Worker ](#tab-panel-10795)
+* [  Module Worker ](#tab-panel-11988)
+* [  Service Worker ](#tab-panel-11989)
+* [  Python Worker ](#tab-panel-11990)
 
 JavaScript
 
@@ -183,5 +183,6 @@ export default {
 * [Fetch API in a partial setup](https://developers.cloudflare.com/workers/platform/known-issues/#fetch-api-in-cname-setup)
 
 ```json
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/runtime-apis/fetch/#page","headline":"Fetch · Cloudflare Workers docs","description":"An interface for asynchronously fetching resources via HTTP requests inside of a Worker.","url":"https://developers.cloudflare.com/workers/runtime-apis/fetch/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/workers/","name":"Workers"}},{"@type":"ListItem","position":3,"item":{"@id":"/workers/runtime-apis/","name":"Runtime APIs"}},{"@type":"ListItem","position":4,"item":{"@id":"/workers/runtime-apis/fetch/","name":"Fetch"}}]}
 ```

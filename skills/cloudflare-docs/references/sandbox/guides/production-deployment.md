@@ -55,8 +55,8 @@ This routes all subdomains through Cloudflare's proxy. The IP address `192.0.2.0
 
 Add a wildcard route to your Wrangler configuration:
 
-* [  wrangler.jsonc ](#tab-panel-10242)
-* [  wrangler.toml ](#tab-panel-10243)
+* [  wrangler.jsonc ](#tab-panel-10483)
+* [  wrangler.toml ](#tab-panel-10484)
 
 JSONC
 
@@ -72,7 +72,7 @@ JSONC
 
   // Set this to today's date
 
-  "compatibility_date": "2026-06-10",
+  "compatibility_date": "2026-06-17",
 
   "routes": [
 
@@ -103,7 +103,7 @@ main = "src/index.ts"
 
 # Set this to today's date
 
-compatibility_date = "2026-06-10"
+compatibility_date = "2026-06-17"
 
 
 [[routes]]
@@ -177,5 +177,6 @@ For detailed troubleshooting, see the [Workers routing documentation](https://de
 * [Cloudflare DNS](https://developers.cloudflare.com/dns/) \- DNS management
 
 ```json
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/sandbox/guides/production-deployment/#page","headline":"Deploy to production · Cloudflare Sandbox SDK docs","description":"Set up custom domains for preview URLs in production.","url":"https://developers.cloudflare.com/sandbox/guides/production-deployment/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-06-09","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/sandbox/","name":"Sandbox SDK"}},{"@type":"ListItem","position":3,"item":{"@id":"/sandbox/guides/","name":"How-to guides"}},{"@type":"ListItem","position":4,"item":{"@id":"/sandbox/guides/production-deployment/","name":"Deploy to production"}}]}
 ```

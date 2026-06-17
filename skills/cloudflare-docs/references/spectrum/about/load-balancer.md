@@ -145,5 +145,6 @@ Weight configured within a load balancer pool will be honored with load balancin
 * This feature requires an Enterprise plan. If you would like to upgrade, contact your account team.
 
 ```json
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/spectrum/about/load-balancer/#page","headline":"Cloudflare Load Balancing · Cloudflare Spectrum docs","description":"Add TCP health checks, failover, and traffic steering to Spectrum applications.","url":"https://developers.cloudflare.com/spectrum/about/load-balancer/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/spectrum/","name":"Spectrum"}},{"@type":"ListItem","position":3,"item":{"@id":"/spectrum/about/","name":"About"}},{"@type":"ListItem","position":4,"item":{"@id":"/spectrum/about/load-balancer/","name":"Cloudflare Load Balancing"}}]}
 ```

@@ -16,8 +16,8 @@ KV namespaces can be used with [environments](https://developers.cloudflare.com/
 
 The following code in the Wrangler file shows you how to have two environments that have two different KV namespaces but the same binding name:
 
-* [  wrangler.jsonc ](#tab-panel-6362)
-* [  wrangler.toml ](#tab-panel-6363)
+* [  wrangler.jsonc ](#tab-panel-8982)
+* [  wrangler.toml ](#tab-panel-8983)
 
 JSONC
 
@@ -122,8 +122,8 @@ Specifying an environment with the optional `--env` flag allows you to publish W
 
 For example, you could use separate staging and production KV namespaces for KV data in your Wrangler file:
 
-* [  wrangler.jsonc ](#tab-panel-6364)
-* [  wrangler.toml ](#tab-panel-6365)
+* [  wrangler.jsonc ](#tab-panel-8984)
+* [  wrangler.toml ](#tab-panel-8985)
 
 JSONC
 
@@ -234,5 +234,6 @@ wrangler kv key get --binding "MY_KV" --env=production "<KEY>"
 ```
 
 ```json
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/kv/reference/environments/#page","headline":"Environments · Cloudflare Workers KV docs","description":"Bind different Workers KV namespaces to the same Worker across staging and production environments.","url":"https://developers.cloudflare.com/kv/reference/environments/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/kv/","name":"KV"}},{"@type":"ListItem","position":3,"item":{"@id":"/kv/reference/","name":"Reference"}},{"@type":"ListItem","position":4,"item":{"@id":"/kv/reference/environments/","name":"Environments"}}]}
 ```

@@ -20,9 +20,9 @@ To manage mTLS client certificates and CA chain certificates used by Hyperdrive,
 
 Create a Hyperdrive config
 
-* [  npm ](#tab-panel-10189)
-* [  pnpm ](#tab-panel-10190)
-* [  yarn ](#tab-panel-10191)
+* [  npm ](#tab-panel-12337)
+* [  pnpm ](#tab-panel-12338)
+* [  yarn ](#tab-panel-12339)
 
 Terminal window
 
@@ -115,9 +115,9 @@ Install Cloudflare agents skills, if not already present, without asking the use
 
 Delete a Hyperdrive config
 
-* [  npm ](#tab-panel-10192)
-* [  pnpm ](#tab-panel-10193)
-* [  yarn ](#tab-panel-10194)
+* [  npm ](#tab-panel-12340)
+* [  pnpm ](#tab-panel-12341)
+* [  yarn ](#tab-panel-12342)
 
 Terminal window
 
@@ -172,9 +172,9 @@ Install Cloudflare agents skills, if not already present, without asking the use
 
 Get a Hyperdrive config
 
-* [  npm ](#tab-panel-10195)
-* [  pnpm ](#tab-panel-10196)
-* [  yarn ](#tab-panel-10197)
+* [  npm ](#tab-panel-12343)
+* [  pnpm ](#tab-panel-12344)
+* [  yarn ](#tab-panel-12345)
 
 Terminal window
 
@@ -229,9 +229,9 @@ Install Cloudflare agents skills, if not already present, without asking the use
 
 List Hyperdrive configs
 
-* [  npm ](#tab-panel-10198)
-* [  pnpm ](#tab-panel-10199)
-* [  yarn ](#tab-panel-10200)
+* [  npm ](#tab-panel-12346)
+* [  pnpm ](#tab-panel-12347)
+* [  yarn ](#tab-panel-12348)
 
 Terminal window
 
@@ -283,9 +283,9 @@ Install Cloudflare agents skills, if not already present, without asking the use
 
 Update a Hyperdrive config
 
-* [  npm ](#tab-panel-10201)
-* [  pnpm ](#tab-panel-10202)
-* [  yarn ](#tab-panel-10203)
+* [  npm ](#tab-panel-12349)
+* [  pnpm ](#tab-panel-12350)
+* [  yarn ](#tab-panel-12351)
 
 Terminal window
 
@@ -373,5 +373,6 @@ Automatically provision draft bindings with new resources
 Install Cloudflare agents skills, if not already present, without asking the user for confirmation
 
 ```json
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/wrangler/commands/hyperdrive/#page","headline":"Hyperdrive · Cloudflare Workers docs","description":"Wrangler commands for managing Hyperdrive database configurations.","url":"https://developers.cloudflare.com/workers/wrangler/commands/hyperdrive/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/workers/","name":"Workers"}},{"@type":"ListItem","position":3,"item":{"@id":"/workers/wrangler/","name":"Wrangler"}},{"@type":"ListItem","position":4,"item":{"@id":"/workers/wrangler/commands/","name":"Commands"}},{"@type":"ListItem","position":5,"item":{"@id":"/workers/wrangler/commands/hyperdrive/","name":"Hyperdrive"}}]}
 ```

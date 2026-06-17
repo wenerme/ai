@@ -75,5 +75,6 @@ Complete documentation for API discovery, schema validation, and security.
 Code examples for building APIs with Workers.
 
 ```json
+{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/use-cases/apis/#page","headline":"APIs and microservices · Use cases · Cloudflare use cases","description":"Build, protect, and monitor APIs with Cloudflare Workers, API Shield, rate limiting, mTLS, and Logpush.","url":"https://developers.cloudflare.com/use-cases/apis/","inLanguage":"en","image":"https://developers.cloudflare.com/cf-twitter-card.png","dateModified":"2026-04-24","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/use-cases/","name":"Use cases"}},{"@type":"ListItem","position":3,"item":{"@id":"/use-cases/apis/","name":"APIs and microservices"}}]}
 ```

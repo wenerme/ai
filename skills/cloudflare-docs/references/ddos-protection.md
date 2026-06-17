@@ -90,5 +90,6 @@ A network security and performance solution that offers DDoS protection, traffic
 Get automatic protection from vulnerabilities and the flexibility to create custom rules.
 
 ```json
+{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/ddos-protection/#page","headline":"Overview · Cloudflare DDoS Protection docs","description":"Detect and mitigate DDoS attacks automatically across all Cloudflare plans.","url":"https://developers.cloudflare.com/ddos-protection/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-15","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/ddos-protection/","name":"DDoS Protection"}}]}
 ```

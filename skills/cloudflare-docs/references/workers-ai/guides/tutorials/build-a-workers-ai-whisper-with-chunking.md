@@ -79,8 +79,8 @@ You must create an AI binding for your Worker to connect to Workers AI. [Binding
 
 To bind Workers AI to your Worker, add the following to the end of your Wrangler configuration file:
 
-* [  wrangler.jsonc ](#tab-panel-10146)
-* [  wrangler.toml ](#tab-panel-10147)
+* [  wrangler.jsonc ](#tab-panel-11323)
+* [  wrangler.toml ](#tab-panel-11324)
 
 JSONC
 
@@ -116,8 +116,8 @@ Your binding is [available in your Worker code](https://developers.cloudflare.co
 
 In your wrangler file, add or update the following settings to enable Node.js APIs and polyfills (with a compatibility date of 2024‑09‑23 or later):
 
-* [  wrangler.jsonc ](#tab-panel-10148)
-* [  wrangler.toml ](#tab-panel-10149)
+* [  wrangler.jsonc ](#tab-panel-11325)
+* [  wrangler.toml ](#tab-panel-11326)
 
 JSONC
 
@@ -133,7 +133,7 @@ JSONC
 
   // Set this to today's date
 
-  "compatibility_date": "2026-05-28"
+  "compatibility_date": "2026-06-17"
 
 }
 
@@ -148,7 +148,7 @@ compatibility_flags = [ "nodejs_compat" ]
 
 # Set this to today's date
 
-compatibility_date = "2026-05-28"
+compatibility_date = "2026-06-17"
 
 
 ```
@@ -422,5 +422,6 @@ This is the transcript of the audio...
 ```
 
 ```json
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers-ai/guides/tutorials/build-a-workers-ai-whisper-with-chunking/#page","headline":"Whisper-large-v3-turbo with Cloudflare Workers AI · Cloudflare Workers AI docs","description":"Learn how to transcribe large audio files using Workers AI.","url":"https://developers.cloudflare.com/workers-ai/guides/tutorials/build-a-workers-ai-whisper-with-chunking/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["AI"]}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/workers-ai/","name":"Workers AI"}},{"@type":"ListItem","position":3,"item":{"@id":"/workers-ai/guides/","name":"Guides"}},{"@type":"ListItem","position":4,"item":{"@id":"/workers-ai/guides/tutorials/","name":"Tutorials"}},{"@type":"ListItem","position":5,"item":{"@id":"/workers-ai/guides/tutorials/build-a-workers-ai-whisper-with-chunking/","name":"Whisper-large-v3-turbo with Cloudflare Workers AI"}}]}
 ```

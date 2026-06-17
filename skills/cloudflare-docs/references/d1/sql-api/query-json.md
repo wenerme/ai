@@ -303,5 +303,6 @@ const resp = await stmt.bind(
 This would only update rows in your `users` table where the `id` matches one of the three provided.
 
 ```json
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/d1/sql-api/query-json/#page","headline":"Query JSON · Cloudflare D1 docs","description":"Extract, insert, and manipulate JSON data stored in D1 using built-in SQLite JSON functions.","url":"https://developers.cloudflare.com/d1/sql-api/query-json/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["JSON"]}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/d1/","name":"D1"}},{"@type":"ListItem","position":3,"item":{"@id":"/d1/sql-api/","name":"SQL API"}},{"@type":"ListItem","position":4,"item":{"@id":"/d1/sql-api/query-json/","name":"Query JSON"}}]}
 ```

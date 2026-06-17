@@ -20,8 +20,8 @@ Review the following environments flow:
 
 1. Create a Worker, named `my-worker` for example.
 2. Create an environment, for example `dev`, in the Worker's [Wrangler configuration file](https://developers.cloudflare.com/workers/wrangler/configuration/), by adding a `[env.<ENV_NAME>]` section.  
-   * [  wrangler.jsonc ](#tab-panel-11729)  
-   * [  wrangler.toml ](#tab-panel-11730)  
+   * [  wrangler.jsonc ](#tab-panel-12929)  
+   * [  wrangler.toml ](#tab-panel-12930)  
 JSONC  
 ```  
 {  
@@ -40,8 +40,8 @@ name = "my-worker"
 "<ENV_NAME>" = { }  
 ```
 3. You can configure the `dev` environment with different values to the top-level environment. Refer [here](https://developers.cloudflare.com/workers/wrangler/configuration/#environments) for how different options are inherited - or not inherited - between environments. For example, to set a different route for a Worker in the `dev` environment:  
-   * [  wrangler.jsonc ](#tab-panel-11731)  
-   * [  wrangler.toml ](#tab-panel-11732)  
+   * [  wrangler.jsonc ](#tab-panel-12931)  
+   * [  wrangler.toml ](#tab-panel-12932)  
 JSONC  
 ```  
 {  
@@ -76,8 +76,8 @@ For example, [bindings](https://developers.cloudflare.com/workers/runtime-apis/b
 
 Review the following example Wrangler file:
 
-* [  wrangler.jsonc ](#tab-panel-11739)
-* [  wrangler.toml ](#tab-panel-11740)
+* [  wrangler.jsonc ](#tab-panel-12939)
+* [  wrangler.toml ](#tab-panel-12940)
 
 JSONC
 
@@ -177,8 +177,8 @@ id = "<KV_NAMESPACE_ID_PRODUCTION>"
 
 To use a [service binding](https://developers.cloudflare.com/workers/wrangler/configuration/#service-bindings) that targets a Worker in a specific environment, you need to append the environment name to the target Worker name in the `service` field. This should be in the format `<worker-name>-<environment-name>`. In the example below, we have two Workers, both with a `staging` environment. `worker-b` has a service binding to `worker-a`. Note how the `service` field in the `staging` environment points to `worker-a-staging`, whereas the top-level service binding points to `worker-a`.
 
-* [  wrangler.jsonc ](#tab-panel-11733)
-* [  wrangler.toml ](#tab-panel-11734)
+* [  wrangler.jsonc ](#tab-panel-12933)
+* [  wrangler.toml ](#tab-panel-12934)
 
 JSONC
 
@@ -236,8 +236,8 @@ FOO = "<staging-var>"
 
 ```
 
-* [  wrangler.jsonc ](#tab-panel-11737)
-* [  wrangler.toml ](#tab-panel-11738)
+* [  wrangler.jsonc ](#tab-panel-12937)
+* [  wrangler.toml ](#tab-panel-12938)
 
 JSONC
 
@@ -368,8 +368,8 @@ It is possible to control how `.env` files are loaded in local development by se
 
 The following Wrangler file adds two environments, `[env.staging]` and `[env.production]`, to the Wrangler file. If you are deploying to a [Custom Domain](https://developers.cloudflare.com/workers/configuration/routing/custom-domains/) or [route](https://developers.cloudflare.com/workers/configuration/routing/routes/), you must provide a [route or routes key](https://developers.cloudflare.com/workers/wrangler/configuration/) for each environment.
 
-* [  wrangler.jsonc ](#tab-panel-11741)
-* [  wrangler.toml ](#tab-panel-11742)
+* [  wrangler.jsonc ](#tab-panel-12941)
+* [  wrangler.toml ](#tab-panel-12942)
 
 JSONC
 
@@ -557,8 +557,8 @@ export default {
 
 To deploy your code to your `*.workers.dev` subdomain, include `workers_dev = true` in the desired environment. Your Wrangler file may look like this:
 
-* [  wrangler.jsonc ](#tab-panel-11735)
-* [  wrangler.toml ](#tab-panel-11736)
+* [  wrangler.jsonc ](#tab-panel-12935)
+* [  wrangler.toml ](#tab-panel-12936)
 
 JSONC
 
@@ -652,5 +652,6 @@ Warning
 When you create a Worker via an environment, Cloudflare automatically creates an SSL certification for it. SSL certifications are discoverable and a matter of public record. Be careful when naming your environments that they do not contain sensitive information, such as, `migrating-service-from-company1-to-company2` or `company1-acquisition-load-test`.
 
 ```json
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/wrangler/environments/#page","headline":"Environments · Cloudflare Workers docs","description":"Use environments to create different configurations for the same Worker application.","url":"https://developers.cloudflare.com/workers/wrangler/environments/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/workers/","name":"Workers"}},{"@type":"ListItem","position":3,"item":{"@id":"/workers/wrangler/","name":"Wrangler"}},{"@type":"ListItem","position":4,"item":{"@id":"/workers/wrangler/environments/","name":"Environments"}}]}
 ```

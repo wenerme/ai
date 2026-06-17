@@ -44,8 +44,8 @@ After updating the Cloudflare One Client, monitor the issue to see if it recurs.
 
 #### Via the device
 
-* [ Version 2026.2+ ](#tab-panel-4994)
-* [ Version 2026.1 and earlier ](#tab-panel-4995)
+* [ Version 2026.2+ ](#tab-panel-7700)
+* [ Version 2026.1 and earlier ](#tab-panel-7701)
 
 1. Open the Cloudflare One Client on your desktop.
 2. Select **About**.
@@ -208,9 +208,9 @@ Collect client diagnostic logs on your desktop using the `warp-diag` CLI.
 
 To view client logs on desktop devices:
 
-* [ macOS ](#tab-panel-4998)
-* [ Windows ](#tab-panel-4999)
-* [ Linux ](#tab-panel-5000)
+* [ macOS ](#tab-panel-7704)
+* [ Windows ](#tab-panel-7705)
+* [ Linux ](#tab-panel-7706)
 
 1. Open a Terminal window.
 2. Run the `warp-diag` tool:  
@@ -633,8 +633,8 @@ Both methods update the client with the latest configuration.
 
 **Option A: Disconnect and reconnect the client**
 
-* [ Version 2026.2+ ](#tab-panel-4996)
-* [ Version 2026.1 and earlier ](#tab-panel-4997)
+* [ Version 2026.2+ ](#tab-panel-7702)
+* [ Version 2026.1 and earlier ](#tab-panel-7703)
 
 1. On the end user device, open the Cloudflare One Client and select **Disconnect**.
 
@@ -662,8 +662,8 @@ The client will fetch new settings when it reconnects.
 
 To reset the encryption keys on an end user's desktop:
 
-* [ Version 2026.2+ ](#tab-panel-5001)
-* [ Version 2026.1 and earlier ](#tab-panel-5002)
+* [ Version 2026.2+ ](#tab-panel-7707)
+* [ Version 2026.1 and earlier ](#tab-panel-7708)
 
 1. Open the Cloudflare One Client on your device.
 2. Go to **Connectivity** \> **Encryption keys**
@@ -702,5 +702,6 @@ For more information, refer to the full Cloudflare One Client documentation.
 [ Cloudflare One Client troubleshooting ❯ ](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/troubleshooting/) 
 
 ```json
+{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/cloudflare-one/troubleshooting/warp-client/#page","headline":"Cloudflare One Client · Cloudflare One docs","description":"Cloudflare One Client for Zero Trust.","url":"https://developers.cloudflare.com/cloudflare-one/troubleshooting/warp-client/","inLanguage":"en","image":"https://developers.cloudflare.com/zt-preview.png","dateModified":"2026-04-17","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/cloudflare-one/","name":"Cloudflare One"}},{"@type":"ListItem","position":3,"item":{"@id":"/cloudflare-one/troubleshooting/","name":"Troubleshooting"}},{"@type":"ListItem","position":4,"item":{"@id":"/cloudflare-one/troubleshooting/warp-client/","name":"Cloudflare One Client"}}]}
 ```

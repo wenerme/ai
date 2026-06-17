@@ -34,6 +34,10 @@ List organization API keys
 
     The Unix timestamp (in seconds) of when the API key was created
 
+  - `expires_at: number`
+
+    The Unix timestamp (in seconds) of when the API key expires
+
   - `object: "organization.admin_api_key"`
 
     The object type, which is always `organization.admin_api_key`
@@ -103,6 +107,7 @@ curl https://api.openai.com/v1/organization/admin_api_keys \
     {
       "id": "key_abc",
       "created_at": 1711471533,
+      "expires_at": 1714063533,
       "object": "organization.admin_api_key",
       "owner": {
         "id": "sa_456",
@@ -144,6 +149,7 @@ curl https://api.openai.com/v1/organization/admin_api_keys?after=key_abc&limit=2
       "name": "Main Admin Key",
       "redacted_value": "sk-admin...def",
       "created_at": 1711471533,
+      "expires_at": 1714063533,
       "last_used_at": 1711471534,
       "owner": {
         "type": "service_account",

@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 # Optimize mobile viewing
 
-**Last reviewed:**  10 months ago 
+**Last reviewed:**  12 months ago 
 
 You can use lazy loading to optimize the images on your webpages for mobile viewing. This helps address common challenges of mobile viewing, like slow network connections or weak processing capabilities.
 
@@ -60,5 +60,6 @@ Example of modifying the `loading` attribute of your `<img>` tags to be `"eager"
 ```
 
 ```json
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/images/tutorials/optimize-mobile-viewing/#page","headline":"Optimize mobile viewing · Cloudflare Images docs","description":"Lazy loading is an easy way to optimize the images on your webpages for mobile devices, with faster page load times and lower costs.","url":"https://developers.cloudflare.com/images/tutorials/optimize-mobile-viewing/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-05-05","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/images/","name":"Cloudflare Images"}},{"@type":"ListItem","position":3,"item":{"@id":"/images/tutorials/","name":"Tutorials"}},{"@type":"ListItem","position":4,"item":{"@id":"/images/tutorials/optimize-mobile-viewing/","name":"Optimize mobile viewing"}}]}
 ```

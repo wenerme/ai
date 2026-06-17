@@ -88,5 +88,6 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 | FETCH\_CANCEL               | No      | [draft-ietf-moq-transport-07 ↗](https://datatracker.ietf.org/doc/html/draft-ietf-moq-transport-07) |
 
 ```json
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/moq/feature-matrix/#page","headline":"MoQ Feature Matrix · Cloudflare MoQ docs","url":"https://developers.cloudflare.com/moq/feature-matrix/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-05-26","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/moq/","name":"MoQ"}},{"@type":"ListItem","position":3,"item":{"@id":"/moq/feature-matrix/","name":"MoQ Feature Matrix"}}]}
 ```

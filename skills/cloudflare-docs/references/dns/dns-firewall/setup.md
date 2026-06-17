@@ -24,8 +24,8 @@ Prior to setting up DNS Firewall, you need:
 
 ### Create a DNS Firewall cluster
 
-* [ Dashboard ](#tab-panel-5551)
-* [ API ](#tab-panel-5552)
+* [ Dashboard ](#tab-panel-8065)
+* [ API ](#tab-panel-8066)
 
 1. In the Cloudflare dashboard, go to the **DNS Firewall Clusters** page.  
 [ Go to **Clusters** ](https://dash.cloudflare.com/?to=/:account/dns-firewall/clusters)
@@ -69,5 +69,6 @@ When you use the API, you can also specify other parameters, such as rate limit 
 To configure rate limiting and other options for already existing clusters, use the [Update DNS Firewall Cluster](https://developers.cloudflare.com/api/resources/dns%5Ffirewall/methods/edit/) endpoint.
 
 ```json
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/dns/dns-firewall/setup/#page","headline":"Set up DNS Firewall · Cloudflare DNS docs","description":"Set up DNS Firewall to protect upstream nameservers from DDoS attacks and reduce load by caching DNS responses.","url":"https://developers.cloudflare.com/dns/dns-firewall/setup/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-15","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/dns/","name":"DNS"}},{"@type":"ListItem","position":3,"item":{"@id":"/dns/dns-firewall/","name":"DNS Firewall"}},{"@type":"ListItem","position":4,"item":{"@id":"/dns/dns-firewall/setup/","name":"Setup"}}]}
 ```

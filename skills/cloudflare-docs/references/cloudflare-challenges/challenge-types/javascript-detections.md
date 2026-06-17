@@ -49,8 +49,8 @@ For Bot Fight Mode customers, [JavaScript Detections](https://developers.cloudfl
 
 For Super Bot Fight Mode and Bot Management for Enterprise customers, [JavaScript Detections](https://developers.cloudflare.com/cloudflare-challenges/challenge-types/javascript-detections/) is optional.
 
-* [  New dashboard ](#tab-panel-4943)
-* [ Old dashboard ](#tab-panel-4944)
+* [  New dashboard ](#tab-panel-7007)
+* [ Old dashboard ](#tab-panel-7008)
 
 1. In the Cloudflare dashboard, go to the **Security Settings** page.  
 [ Go to **Settings** ](https://dash.cloudflare.com/?to=/:account/:zone/security/settings)
@@ -81,8 +81,8 @@ When adding this field to WAF custom rules, it is used on endpoints expecting br
 
 The `cf.bot_management.js_detection.passed` field should never be used in a WAF custom rule that matches a visitor's first request to a site. It is necessary to have at least one HTML request before Cloudflare can inject JavaScript detection.
 
-* [ WAF rule example ](#tab-panel-4941)
-* [ Workers example ](#tab-panel-4942)
+* [ WAF rule example ](#tab-panel-7005)
+* [ Workers example ](#tab-panel-7006)
 
 ```
 
@@ -203,5 +203,6 @@ If the origin response includes a `Cache-Control: no-transform` directive, Cloud
 To use JavaScript Detections, remove the `no-transform` directive from `Cache-Control` response headers on pages where you want JavaScript Detections to run. For more information, refer to [Cache-Control directives](https://developers.cloudflare.com/cache/concepts/cache-control/#interaction-with-other-cloudflare-features).
 
 ```json
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-challenges/challenge-types/javascript-detections/#page","headline":"JavaScript Detections · Cloudflare challenges docs","description":"Client-side JavaScript challenges that run on every request to identify automated traffic.","url":"https://developers.cloudflare.com/cloudflare-challenges/challenge-types/javascript-detections/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-05-05","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["JavaScript","CSP"]}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/cloudflare-challenges/","name":"Challenges"}},{"@type":"ListItem","position":3,"item":{"@id":"/cloudflare-challenges/challenge-types/","name":"Available Challenges"}},{"@type":"ListItem","position":4,"item":{"@id":"/cloudflare-challenges/challenge-types/javascript-detections/","name":"JavaScript Detections"}}]}
 ```

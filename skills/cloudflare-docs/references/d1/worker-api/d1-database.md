@@ -14,8 +14,8 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 To interact with your D1 database from your Worker, you need to access it through the environment bindings provided to the Worker (`env`).
 
-* [  JavaScript ](#tab-panel-5429)
-* [  Python ](#tab-panel-5430)
+* [  JavaScript ](#tab-panel-7943)
+* [  Python ](#tab-panel-7944)
 
 JavaScript
 
@@ -56,8 +56,8 @@ A D1 binding has the type `D1Database`, and supports a number of methods, as lis
 
 Prepares a query statement to be later executed.
 
-* [  JavaScript ](#tab-panel-5431)
-* [  Python ](#tab-panel-5432)
+* [  JavaScript ](#tab-panel-7945)
+* [  Python ](#tab-panel-7946)
 
 JavaScript
 
@@ -96,8 +96,8 @@ stmt = self.env.DB.prepare("SELECT * FROM Customers WHERE CompanyName = ?").bind
 You can use the `bind` method to dynamically bind a value into the query statement, as shown below.
 
 * Example of a static statement without using `bind`:  
-   * [  JavaScript ](#tab-panel-5433)  
-   * [  Python ](#tab-panel-5434)  
+   * [  JavaScript ](#tab-panel-7947)  
+   * [  Python ](#tab-panel-7948)  
 JavaScript  
 ```  
 const stmt = db  
@@ -108,8 +108,8 @@ Python
 stmt = db.prepare("SELECT * FROM Customers WHERE CompanyName = 'Alfreds Futterkiste' AND CustomerId = 1")  
 ```
 * Example of an ordered statement using `bind`:  
-   * [  JavaScript ](#tab-panel-5435)  
-   * [  Python ](#tab-panel-5436)  
+   * [  JavaScript ](#tab-panel-7949)  
+   * [  Python ](#tab-panel-7950)  
 JavaScript  
 ```  
 const stmt = db  
@@ -131,8 +131,8 @@ Batched statements are [SQL transactions ↗](https://www.sqlite.org/lang%5Ftran
 
 To send batch statements, provide `D1Database::batch` a list of prepared statements and get the results in the same order.
 
-* [  JavaScript ](#tab-panel-5437)
-* [  Python ](#tab-panel-5438)
+* [  JavaScript ](#tab-panel-7951)
+* [  Python ](#tab-panel-7952)
 
 JavaScript
 
@@ -192,8 +192,8 @@ batch_result = await self.env.DB.batch(to_js([
 
 Example of return values
 
-* [  JavaScript ](#tab-panel-5439)
-* [  Python ](#tab-panel-5440)
+* [  JavaScript ](#tab-panel-7953)
+* [  Python ](#tab-panel-7954)
 
 JavaScript
 
@@ -341,8 +341,8 @@ return Response.json(stmt)
 
 ```
 
-* [  JavaScript ](#tab-panel-5441)
-* [  Python ](#tab-panel-5442)
+* [  JavaScript ](#tab-panel-7955)
+* [  Python ](#tab-panel-7956)
 
 JavaScript
 
@@ -384,8 +384,8 @@ print(stmt[1].results.to_py())
 #### Guidance
 
 * You can construct batches reusing the same prepared statement:  
-   * [  JavaScript ](#tab-panel-5443)  
-   * [  Python ](#tab-panel-5444)  
+   * [  JavaScript ](#tab-panel-7957)  
+   * [  Python ](#tab-panel-7958)  
 JavaScript  
 ```  
 const companyName1 = `Bs Beverages`;  
@@ -415,8 +415,8 @@ return Response.json(batch_result)
 
 Executes one or more queries directly without prepared statements or parameter bindings.
 
-* [  JavaScript ](#tab-panel-5445)
-* [  Python ](#tab-panel-5446)
+* [  JavaScript ](#tab-panel-7959)
+* [  Python ](#tab-panel-7960)
 
 JavaScript
 
@@ -450,8 +450,8 @@ return_value = await self.env.DB.exec('SELECT * FROM Customers WHERE CompanyName
 
 Example of return values
 
-* [  JavaScript ](#tab-panel-5447)
-* [  Python ](#tab-panel-5448)
+* [  JavaScript ](#tab-panel-7961)
+* [  Python ](#tab-panel-7962)
 
 JavaScript
 
@@ -506,8 +506,8 @@ This API only works on databases created during D1's alpha period. Check which v
 
 Dumps the entire D1 database to an SQLite compatible file inside an ArrayBuffer.
 
-* [  JavaScript ](#tab-panel-5449)
-* [  Python ](#tab-panel-5450)
+* [  JavaScript ](#tab-panel-7963)
+* [  Python ](#tab-panel-7964)
 
 JavaScript
 
@@ -556,8 +556,8 @@ return Response(dump, status=200, headers={"Content-Type": "application/octet-st
 
 Starts a D1 session which maintains sequential consistency among queries executed on the returned `D1DatabaseSession` object.
 
-* [  JavaScript ](#tab-panel-5451)
-* [  Python ](#tab-panel-5452)
+* [  JavaScript ](#tab-panel-7965)
+* [  Python ](#tab-panel-7966)
 
 JavaScript
 
@@ -607,8 +607,8 @@ session = self.env.DB.withSession("<parameter>")
 
 Retrieves the latest `bookmark` from the D1 Session.
 
-* [  JavaScript ](#tab-panel-5453)
-* [  Python ](#tab-panel-5454)
+* [  JavaScript ](#tab-panel-7967)
+* [  Python ](#tab-panel-7968)
 
 JavaScript
 
@@ -666,5 +666,6 @@ This method is equivalent to [D1Database::prepare](https://developers.cloudflare
 This method is equivalent to [D1Database::batch](https://developers.cloudflare.com/d1/worker-api/d1-database/#batch).
 
 ```json
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/d1/worker-api/d1-database/#page","headline":"D1 Database · Cloudflare D1 docs","description":"Use the D1Database binding to prepare statements, execute queries, batch operations, and dump a D1 database from a Worker.","url":"https://developers.cloudflare.com/d1/worker-api/d1-database/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/d1/","name":"D1"}},{"@type":"ListItem","position":3,"item":{"@id":"/d1/worker-api/","name":"Workers Binding API"}},{"@type":"ListItem","position":4,"item":{"@id":"/d1/worker-api/d1-database/","name":"D1 Database"}}]}
 ```

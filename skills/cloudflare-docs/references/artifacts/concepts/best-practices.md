@@ -40,8 +40,8 @@ Include stable identifiers in the repo name, such as the agent name, session ID,
 
 This example creates a unique repo name before creating the repo.
 
-* [  JavaScript ](#tab-panel-4321)
-* [  TypeScript ](#tab-panel-4322)
+* [  JavaScript ](#tab-panel-6784)
+* [  TypeScript ](#tab-panel-6785)
 
 src/index.js
 
@@ -100,8 +100,8 @@ This keeps your starting point consistent and makes downstream diffs easier to r
 
 This example forks a reviewed baseline repo into a session-specific repo.
 
-* [  JavaScript ](#tab-panel-4323)
-* [  TypeScript ](#tab-panel-4324)
+* [  JavaScript ](#tab-panel-6786)
+* [  TypeScript ](#tab-panel-6787)
 
 src/index.js
 
@@ -186,8 +186,8 @@ This example uses the [Workers binding](https://developers.cloudflare.com/artifa
 
 Assume the caller is already authenticated and authorized before this route returns a token.
 
-* [  JavaScript ](#tab-panel-4325)
-* [  TypeScript ](#tab-panel-4326)
+* [  JavaScript ](#tab-panel-6788)
+* [  TypeScript ](#tab-panel-6789)
 
 src/index.js
 
@@ -316,5 +316,6 @@ Do not keep every repo in one default namespace once usage grows. Split namespac
 When one namespace becomes hot, shard new repos into additional namespaces instead of continuing to grow a single shared namespace.
 
 ```json
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/artifacts/concepts/best-practices/#page","headline":"Best practices for Artifacts · Cloudflare Artifacts docs","description":"Use repo, token, metadata, and namespace patterns.","url":"https://developers.cloudflare.com/artifacts/concepts/best-practices/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-25","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/artifacts/","name":"Artifacts"}},{"@type":"ListItem","position":3,"item":{"@id":"/artifacts/concepts/","name":"Concepts"}},{"@type":"ListItem","position":4,"item":{"@id":"/artifacts/concepts/best-practices/","name":"Best practices for Artifacts"}}]}
 ```

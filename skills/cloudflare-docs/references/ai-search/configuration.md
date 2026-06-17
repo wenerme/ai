@@ -58,5 +58,6 @@ You can customize how your AI Search instance indexes your data, retrieves resul
 | [Reranking model](https://developers.cloudflare.com/ai-search/configuration/models/)       | yes                     | Model used to reorder results by semantic relevance |
 
 ```json
+{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/ai-search/configuration/#page","headline":"Configuration · Cloudflare AI Search docs","description":"Customize how your AI Search instance indexes data, retrieves results, and generates responses.","url":"https://developers.cloudflare.com/ai-search/configuration/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-20","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/ai-search/","name":"AI Search"}},{"@type":"ListItem","position":3,"item":{"@id":"/ai-search/configuration/","name":"Configuration"}}]}
 ```

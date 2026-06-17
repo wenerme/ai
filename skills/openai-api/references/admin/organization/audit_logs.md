@@ -44,7 +44,7 @@ List user actions and configuration changes within this organization.
 
     Return only events whose `effective_at` (Unix seconds) is less than or equal to this value.
 
-- `event_types: optional array of "api_key.created" or "api_key.updated" or "api_key.deleted" or 54 more`
+- `event_types: optional array of "api_key.created" or "api_key.updated" or "api_key.deleted" or 56 more`
 
   Return only events with a `type` in one of these values. For example, `project.created`. For all options, see the documentation for the [audit log object](/docs/api-reference/audit-logs/object).
 
@@ -146,6 +146,10 @@ List user actions and configuration changes within this organization.
 
   - `"role.assignment.deleted"`
 
+  - `"role.bound_to_resource"`
+
+  - `"role.unbound_from_resource"`
+
   - `"scim.enabled"`
 
   - `"scim.disabled"`
@@ -172,11 +176,15 @@ List user actions and configuration changes within this organization.
 
 - `resource_ids: optional array of string`
 
-  Return only events performed on these targets. For example, a project ID updated.
+  Return only events performed on these targets. For example, a project ID updated. For ChatGPT connector role events, use the workspace connector resource ID shown in `details.id`, such as `<workspace_id>__<connector_id>`.
+
+- `tenant_only: optional boolean`
+
+  Return only tenant-scoped events associated with this organization. Required for tenant-scoped events such as `role.bound_to_resource` and `role.unbound_from_resource`. When `true`, all supplied event types must be tenant-scoped.
 
 ### Returns
 
-- `data: array of object { id, effective_at, type, 55 more }`
+- `data: array of object { id, effective_at, type, 57 more }`
 
   - `id: string`
 
@@ -186,7 +194,7 @@ List user actions and configuration changes within this organization.
 
     The Unix timestamp (in seconds) of the event.
 
-  - `type: "api_key.created" or "api_key.updated" or "api_key.deleted" or 54 more`
+  - `type: "api_key.created" or "api_key.updated" or "api_key.deleted" or 56 more`
 
     The event type.
 
@@ -287,6 +295,10 @@ List user actions and configuration changes within this organization.
     - `"role.assignment.created"`
 
     - `"role.assignment.deleted"`
+
+    - `"role.bound_to_resource"`
+
+    - `"role.unbound_from_resource"`
 
     - `"scim.enabled"`
 
@@ -908,6 +920,60 @@ List user actions and configuration changes within this organization.
 
       The type of resource the role assignment was scoped to.
 
+  - `"role.bound_to_resource": optional object { id, connector_id, connector_name, 7 more }`
+
+    The details for events with this `type`.
+
+    - `id: optional string`
+
+      The ID of the resource the role was bound to. ChatGPT workspace connector resources use `<workspace_id>__<connector_id>`.
+
+    - `connector_id: optional string`
+
+      The connector ID for a ChatGPT workspace connector resource.
+
+    - `connector_name: optional string`
+
+      The connector display name for a ChatGPT workspace connector resource, or the connector ID when the display name could not be resolved.
+
+    - `enabled: optional boolean`
+
+      Whether the connector is enabled for the role.
+
+    - `permissions: optional array of string`
+
+      The permissions granted to the role for the resource.
+
+    - `resource_id: optional string`
+
+      The ID of the resource the role was bound to.
+
+    - `resource_type: optional string`
+
+      The type of resource the role was bound to.
+
+    - `role_id: optional string`
+
+      The ID of the role that was bound to the resource.
+
+    - `source: optional "role_toggle" or "role_connector_update" or "role_delete" or 2 more`
+
+      The connector role mutation path that produced the event.
+
+      - `"role_toggle"`
+
+      - `"role_connector_update"`
+
+      - `"role_delete"`
+
+      - `"workspace_permissions"`
+
+      - `"connector_publish"`
+
+    - `workspace_id: optional string`
+
+      The workspace ID for a ChatGPT workspace connector resource.
+
   - `"role.created": optional object { id, permissions, resource_id, 2 more }`
 
     The details for events with this `type`.
@@ -939,6 +1005,60 @@ List user actions and configuration changes within this organization.
     - `id: optional string`
 
       The role ID.
+
+  - `"role.unbound_from_resource": optional object { id, connector_id, connector_name, 7 more }`
+
+    The details for events with this `type`.
+
+    - `id: optional string`
+
+      The ID of the resource the role was unbound from. ChatGPT workspace connector resources use `<workspace_id>__<connector_id>`.
+
+    - `connector_id: optional string`
+
+      The connector ID for a ChatGPT workspace connector resource.
+
+    - `connector_name: optional string`
+
+      The connector display name for a ChatGPT workspace connector resource, or the connector ID when the display name could not be resolved.
+
+    - `enabled: optional boolean`
+
+      Whether the connector is enabled for the role.
+
+    - `permissions: optional array of string`
+
+      The permissions remaining for the role after the change.
+
+    - `resource_id: optional string`
+
+      The ID of the resource the role was unbound from.
+
+    - `resource_type: optional string`
+
+      The type of resource the role was unbound from.
+
+    - `role_id: optional string`
+
+      The ID of the role that was unbound from the resource.
+
+    - `source: optional "role_toggle" or "role_connector_update" or "role_delete" or 2 more`
+
+      The connector role mutation path that produced the event.
+
+      - `"role_toggle"`
+
+      - `"role_connector_update"`
+
+      - `"role_delete"`
+
+      - `"workspace_permissions"`
+
+      - `"connector_publish"`
+
+    - `workspace_id: optional string`
+
+      The workspace ID for a ChatGPT workspace connector resource.
 
   - `"role.updated": optional object { id, changes_requested }`
 
@@ -1413,6 +1533,20 @@ curl https://api.openai.com/v1/organization/audit_logs \
         "resource_id": "resource_id",
         "resource_type": "resource_type"
       },
+      "role.bound_to_resource": {
+        "id": "id",
+        "connector_id": "connector_id",
+        "connector_name": "connector_name",
+        "enabled": true,
+        "permissions": [
+          "string"
+        ],
+        "resource_id": "resource_id",
+        "resource_type": "resource_type",
+        "role_id": "role_id",
+        "source": "role_toggle",
+        "workspace_id": "workspace_id"
+      },
       "role.created": {
         "id": "id",
         "permissions": [
@@ -1424,6 +1558,20 @@ curl https://api.openai.com/v1/organization/audit_logs \
       },
       "role.deleted": {
         "id": "id"
+      },
+      "role.unbound_from_resource": {
+        "id": "id",
+        "connector_id": "connector_id",
+        "connector_name": "connector_name",
+        "enabled": true,
+        "permissions": [
+          "string"
+        ],
+        "resource_id": "resource_id",
+        "resource_type": "resource_type",
+        "role_id": "role_id",
+        "source": "role_toggle",
+        "workspace_id": "workspace_id"
       },
       "role.updated": {
         "id": "id",
@@ -1590,7 +1738,7 @@ curl https://api.openai.com/v1/organization/audit_logs \
 
 ### Audit Log List Response
 
-- `AuditLogListResponse object { id, effective_at, type, 55 more }`
+- `AuditLogListResponse object { id, effective_at, type, 57 more }`
 
   A log of a user action or configuration change within this organization.
 
@@ -1602,7 +1750,7 @@ curl https://api.openai.com/v1/organization/audit_logs \
 
     The Unix timestamp (in seconds) of the event.
 
-  - `type: "api_key.created" or "api_key.updated" or "api_key.deleted" or 54 more`
+  - `type: "api_key.created" or "api_key.updated" or "api_key.deleted" or 56 more`
 
     The event type.
 
@@ -1703,6 +1851,10 @@ curl https://api.openai.com/v1/organization/audit_logs \
     - `"role.assignment.created"`
 
     - `"role.assignment.deleted"`
+
+    - `"role.bound_to_resource"`
+
+    - `"role.unbound_from_resource"`
 
     - `"scim.enabled"`
 
@@ -2324,6 +2476,60 @@ curl https://api.openai.com/v1/organization/audit_logs \
 
       The type of resource the role assignment was scoped to.
 
+  - `"role.bound_to_resource": optional object { id, connector_id, connector_name, 7 more }`
+
+    The details for events with this `type`.
+
+    - `id: optional string`
+
+      The ID of the resource the role was bound to. ChatGPT workspace connector resources use `<workspace_id>__<connector_id>`.
+
+    - `connector_id: optional string`
+
+      The connector ID for a ChatGPT workspace connector resource.
+
+    - `connector_name: optional string`
+
+      The connector display name for a ChatGPT workspace connector resource, or the connector ID when the display name could not be resolved.
+
+    - `enabled: optional boolean`
+
+      Whether the connector is enabled for the role.
+
+    - `permissions: optional array of string`
+
+      The permissions granted to the role for the resource.
+
+    - `resource_id: optional string`
+
+      The ID of the resource the role was bound to.
+
+    - `resource_type: optional string`
+
+      The type of resource the role was bound to.
+
+    - `role_id: optional string`
+
+      The ID of the role that was bound to the resource.
+
+    - `source: optional "role_toggle" or "role_connector_update" or "role_delete" or 2 more`
+
+      The connector role mutation path that produced the event.
+
+      - `"role_toggle"`
+
+      - `"role_connector_update"`
+
+      - `"role_delete"`
+
+      - `"workspace_permissions"`
+
+      - `"connector_publish"`
+
+    - `workspace_id: optional string`
+
+      The workspace ID for a ChatGPT workspace connector resource.
+
   - `"role.created": optional object { id, permissions, resource_id, 2 more }`
 
     The details for events with this `type`.
@@ -2355,6 +2561,60 @@ curl https://api.openai.com/v1/organization/audit_logs \
     - `id: optional string`
 
       The role ID.
+
+  - `"role.unbound_from_resource": optional object { id, connector_id, connector_name, 7 more }`
+
+    The details for events with this `type`.
+
+    - `id: optional string`
+
+      The ID of the resource the role was unbound from. ChatGPT workspace connector resources use `<workspace_id>__<connector_id>`.
+
+    - `connector_id: optional string`
+
+      The connector ID for a ChatGPT workspace connector resource.
+
+    - `connector_name: optional string`
+
+      The connector display name for a ChatGPT workspace connector resource, or the connector ID when the display name could not be resolved.
+
+    - `enabled: optional boolean`
+
+      Whether the connector is enabled for the role.
+
+    - `permissions: optional array of string`
+
+      The permissions remaining for the role after the change.
+
+    - `resource_id: optional string`
+
+      The ID of the resource the role was unbound from.
+
+    - `resource_type: optional string`
+
+      The type of resource the role was unbound from.
+
+    - `role_id: optional string`
+
+      The ID of the role that was unbound from the resource.
+
+    - `source: optional "role_toggle" or "role_connector_update" or "role_delete" or 2 more`
+
+      The connector role mutation path that produced the event.
+
+      - `"role_toggle"`
+
+      - `"role_connector_update"`
+
+      - `"role_delete"`
+
+      - `"workspace_permissions"`
+
+      - `"connector_publish"`
+
+    - `workspace_id: optional string`
+
+      The workspace ID for a ChatGPT workspace connector resource.
 
   - `"role.updated": optional object { id, changes_requested }`
 

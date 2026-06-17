@@ -149,3 +149,7 @@ services from your China based offices.
 Magic WAN global acceleration is your go to solution.
 
 Thanks for watching. You can reach out to our sales team to learn more.
+
+```json
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/videos/china-network-acceleration/#page","headline":"China network - CDN global acceleration for Mainland China | Cloudflare Docs","description":"In this video, Jess Liu discusses Cloudflares CDN Global Acceleration (formerly China Express), including solutions for high latency on dynamic content, accelerating API calls, accessing Cloudflare One services like WARP and Magic WAN from within mainland China, and securely connecting private enterprise networks.","url":"https://developers.cloudflare.com/videos/china-network-acceleration/","inLanguage":"en","image":"https://developers.cloudflare.com/cf-twitter-card.png","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+```

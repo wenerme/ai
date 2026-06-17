@@ -27,8 +27,8 @@ Use Cloudflare's image optimization capabilities through:
 
 Cloudflare uses a different URL structure depending on whether you are optimizing a [remote](https://developers.cloudflare.com/images/optimization/transformations/overview/) or a [hosted](https://developers.cloudflare.com/images/optimization/hosted-images/serve-uploaded-images/) image:
 
-* [ Remote image (transformation) ](#tab-panel-8688)
-* [ Hosted image ](#tab-panel-8689)
+* [ Remote image (transformation) ](#tab-panel-8899)
+* [ Hosted image ](#tab-panel-8900)
 
 When optimizing images outside of Images, the default transformation URL uses the following structure:
 
@@ -91,8 +91,8 @@ This setting is recommended when enlarging images or processing arbitrary user-u
 | --------------------------------------------------------------------------------- | -------------------------------------------------------------------------------- |
 | **Original**                                                                      | anim=false                                                                       |
 
-* [ URL format ](#tab-panel-8642)
-* [ Workers ](#tab-panel-8643)
+* [ URL format ](#tab-panel-8851)
+* [ Workers ](#tab-panel-8852)
 
 ```
 
@@ -126,8 +126,8 @@ The background color is visible in images with transparent pixels, including ima
 | --------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------- |
 | **Original**1080 x 720                                                            | **Output**1080 x 900                                                                           |
 
-* [ URL format ](#tab-panel-8644)
-* [ Workers ](#tab-panel-8645)
+* [ URL format ](#tab-panel-8853)
+* [ Workers ](#tab-panel-8854)
 
 ```
 
@@ -161,8 +161,8 @@ This parameter should not be used to reliably obscure image content when optimiz
 | --------------------------------------------------------------------------------- | -------------------------------------------------------------------------------- |
 | **Original**                                                                      | blur=50                                                                          |
 
-* [ URL format ](#tab-panel-8646)
-* [ Workers ](#tab-panel-8647)
+* [ URL format ](#tab-panel-8855)
+* [ Workers ](#tab-panel-8856)
 
 ```
 
@@ -196,7 +196,7 @@ Accepts the following properties:
 
 The border is applied after the image has been resized. The border width automatically scales with the [dpr](https://developers.cloudflare.com/images/optimization/features#dpr) parameter to ensure sharpness on high-resolution screens.
 
-* [ Workers ](#tab-panel-8639)
+* [ Workers ](#tab-panel-8848)
 
 JavaScript
 
@@ -221,8 +221,8 @@ Adjusts the image's overall luminance using a multiplier.
 | --------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------ |
 | **Original**                                                                      | brightness=0.5                                                                                 | brightness=2                                                                               |
 
-* [ URL format ](#tab-panel-8648)
-* [ Workers ](#tab-panel-8649)
+* [ URL format ](#tab-panel-8857)
+* [ Workers ](#tab-panel-8858)
 
 ```
 
@@ -248,8 +248,8 @@ The `compression=fast` option prioritizes encoding speed over output quality and
 
 This option is not recommended, except in unusual circumstances like resizing uncacheable, dynamically-generated images.
 
-* [ URL format ](#tab-panel-8650)
-* [ Workers ](#tab-panel-8651)
+* [ URL format ](#tab-panel-8859)
+* [ Workers ](#tab-panel-8860)
 
 ```
 
@@ -279,8 +279,8 @@ Adjusts the image's overall difference between the darkest and lightest parts us
 | --------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------ | -------------------------------------------------------------------------------------- |
 | **Original**                                                                      | contrast=0.5                                                                               | contrast=2                                                                             |
 
-* [ URL format ](#tab-panel-8652)
-* [ Workers ](#tab-panel-8653)
+* [ URL format ](#tab-panel-8861)
+* [ Workers ](#tab-panel-8862)
 
 ```
 
@@ -310,8 +310,8 @@ The `dpr` parameter can be used with `srcset` to [serve responsive images](https
 | ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------- |
 | width=300,height=200,dpr=1                                                   | width=300,height=200,dpr=2                                                   |
 
-* [ URL format ](#tab-panel-8654)
-* [ Workers ](#tab-panel-8655)
+* [ URL format ](#tab-panel-8863)
+* [ Workers ](#tab-panel-8864)
 
 ```
 
@@ -335,18 +335,19 @@ Specifies how the image is fit to the target area.
 
 Fit is performed after setting the [width](#width) and [height](#height) dimensions of the image.
 
-| Option               | Result                                                      | Match original aspect ratio | Upscales |
-| -------------------- | ----------------------------------------------------------- | --------------------------- | -------- |
-| scale-down (default) | Show entire image without cropping or upscaling             | Yes                         | No       |
-| contain              | Show entire image without cropping                          | Yes                         | Yes      |
-| cover                | Fill the entire requested area, cropping if needed          | No                          | Yes      |
-| crop                 | Fill the entire requested area, but never upscales          | No                          | No       |
-| aspect-crop          | Crop to match the target aspect ratio, but never upscales   | No                          | No       |
-| pad                  | Fit within the target area, adding space for remaining area | Yes                         | Yes      |
-| squeeze              | Scale to exact dimensions, distorting if needed             | No                          | Yes      |
+| Option               | Result                                                        | Match original aspect ratio | Upscales |
+| -------------------- | ------------------------------------------------------------- | --------------------------- | -------- |
+| scale-down (default) | Show entire image without cropping or upscaling               | Yes                         | No       |
+| contain              | Show entire image without cropping                            | Yes                         | Yes      |
+| cover                | Fill the entire requested area, cropping if needed            | No                          | Yes      |
+| crop                 | Fill the entire requested area, but never upscales            | No                          | No       |
+| aspect-crop          | Crop to match the target aspect ratio, but never upscales     | No                          | No       |
+| pad                  | Fit within the target area, adding space for remaining area   | Yes                         | Yes      |
+| squeeze              | Scale to exact dimensions, distorting if needed               | No                          | Yes      |
+| scale-up             | Upscales while showing the entire image, but never downscales | Yes                         | Yes      |
 
-* [ URL format ](#tab-panel-8656)
-* [ Workers ](#tab-panel-8657)
+* [ URL format ](#tab-panel-8865)
+* [ Workers ](#tab-panel-8866)
 
 ```
 
@@ -384,13 +385,15 @@ Resizes the image to be as large as possible within the target `width` and `heig
 
 When the original image is larger than the target area, it downscales to fit the target area (like `scale-down`).
 
-When smaller, it upscales instead, which may reduce image quality. To avoid upscaling, use `scale-down`.
+When smaller, it upscales instead (like `scale-up`). Works with the [upscale](#upscale) parameter to control the algorithm for enlarging an image. To avoid upscaling, use `scale-down`.
 
 #### `cover`
 
 Fills the entire target area, shrinking or enlarging the image if needed. The output area always matches the requested `width` and `height` dimensions exactly.
 
 When the original and target aspect ratios differ, the image is resized to cover the full target area and any overflow is cropped. Use the [gravity](#gravity) parameter to control which part of the image is preserved during cropping.
+
+Works with the [upscale](#upscale) parameter to control the algorithm for enlarging an image.
 
 In the example below, the 1080×720 image is first resized to 750×500 (matching the requested height) to fit the target area, then cropped from the left and right edges to its final 500x500 dimensions.
 
@@ -450,6 +453,14 @@ When the original and target aspect ratios differ, the image will be distorted t
 | --------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------- |
 | **Original**1080 x 1080                                                           | **Output**1080 x 540                                                                          |
 
+#### `scale-up`
+
+Resizes the image to fit within the specified dimensions while preserving its original aspect ratio, but never downscales the image. This is the inverse of `scale-down`.
+
+When the original image is larger than the target area, it is returned at its original dimensions.
+
+When the original image is smaller than the target area, it is enlarged to fit within the target dimensions. Use the [upscale](#upscale) parameter to control the algorithm used for upscaling images — set `upscale=generate` for AI-powered upscaling or `upscale=interpolate` (default) for bicubic interpolation.
+
 ### `flip`
 
 Flips the image horizontally, vertically, or both.
@@ -466,8 +477,8 @@ Flip can be used with the `rotate` parameter to set the orientation of the image
 | --------------------------------------------------------------------------------- | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ |
 | **Original**                                                                      | flip=h                                                                         | flip=v                                                                         |
 
-* [ URL format ](#tab-panel-8658)
-* [ Workers ](#tab-panel-8659)
+* [ URL format ](#tab-panel-8867)
+* [ Workers ](#tab-panel-8868)
 
 ```
 
@@ -498,8 +509,8 @@ Accepts the following values:
 * `baseline-jpeg` — Transcode the image in baseline sequential JPEG format. It should be used in cases when target devices do not support progressive JPEG or other modern file formats.
 * `json` — Outputs information about the image as a JSON object. This contains data such as image size (before and after resizing), the source image's MIME type, and file size.
 
-* [ URL format ](#tab-panel-8660)
-* [ Workers ](#tab-panel-8661)
+* [ URL format ](#tab-panel-8869)
+* [ Workers ](#tab-panel-8870)
 
 ```
 
@@ -558,8 +569,8 @@ Adjusts the exposure of an image using a multiplier. Gamma controls the midtone 
 | --------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------ | -------------------------------------------------------------------------------- |
 | **Original**                                                                      | gamma=0.5                                                                            | gamma=2                                                                          |
 
-* [ URL format ](#tab-panel-8662)
-* [ Workers ](#tab-panel-8663)
+* [ URL format ](#tab-panel-8871)
+* [ Workers ](#tab-panel-8872)
 
 ```
 
@@ -583,8 +594,8 @@ Specifies how the image should be cropped when used with `fit=cover` and `fit=cr
 
 Accepts `auto`, `face`, a side (`left`, `right`, `top`, `bottom`), and relative coordinates (`XxY`).
 
-* [ URL format ](#tab-panel-8664)
-* [ Workers ](#tab-panel-8665)
+* [ URL format ](#tab-panel-8873)
+* [ Workers ](#tab-panel-8874)
 
 ```
 
@@ -675,8 +686,8 @@ Sets the height of the output image in pixels using a positive integer value. By
 
 When `height` is set, the exact behavior depends on the `fit` parameter.
 
-* [ URL format ](#tab-panel-8666)
-* [ Workers ](#tab-panel-8667)
+* [ URL format ](#tab-panel-8875)
+* [ Workers ](#tab-panel-8876)
 
 ```
 
@@ -712,8 +723,8 @@ Accepts the following values:
 * `keep` — Preserves most of EXIF metadata, including GPS location, if present.
 * `none` — Discards all invisible EXIF metadata.
 
-* [ URL format ](#tab-panel-8668)
-* [ Workers ](#tab-panel-8669)
+* [ URL format ](#tab-panel-8877)
+* [ Workers ](#tab-panel-8878)
 
 ```
 
@@ -743,7 +754,7 @@ This option works only if the image is in the same zone (subdomains are accepted
 
 This may be useful in cases where an image requires user authentication and the image cannot be fetched anonymously via Workers. However, this option is not recommended if the source image is very large.
 
-* [ URL format ](#tab-panel-8640)
+* [ URL format ](#tab-panel-8849)
 
 ```
 
@@ -761,8 +772,8 @@ Specifies the output quality of an image for JPEG, WebP, and AVIF formats, expre
 
 When the output format is PNG, an explicit `quality` setting allows the use of PNG8 (palette) variant of the format.
 
-* [ URL format ](#tab-panel-8670)
-* [ Workers ](#tab-panel-8671)
+* [ URL format ](#tab-panel-8879)
+* [ Workers ](#tab-panel-8880)
 
 ```
 
@@ -796,8 +807,8 @@ Rotation is performed before resizing; `width` and `height` options will refer t
 | --------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------- |
 | **Original**                                                                      | rotate=180                                                                             |
 
-* [ URL format ](#tab-panel-8672)
-* [ Workers ](#tab-panel-8673)
+* [ URL format ](#tab-panel-8881)
+* [ Workers ](#tab-panel-8882)
 
 ```
 
@@ -828,8 +839,8 @@ Adjusts the color saturation of an image using a multiplier.
 | --------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------ |
 | **Original**                                                                      | saturation=0                                                                               | saturation=2                                                                               |
 
-* [ URL format ](#tab-panel-8674)
-* [ Workers ](#tab-panel-8675)
+* [ URL format ](#tab-panel-8883)
+* [ Workers ](#tab-panel-8884)
 
 ```
 
@@ -857,8 +868,8 @@ This feature uses an open-source model called BiRefNet through [Workers AI](http
 | --------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------ |
 | **Original**                                                                      | segment=foreground                                                                                     |
 
-* [ URL format ](#tab-panel-8676)
-* [ Workers ](#tab-panel-8677)
+* [ URL format ](#tab-panel-8885)
+* [ Workers ](#tab-panel-8886)
 
 ```
 
@@ -884,8 +895,8 @@ Applies a sharpening filter to enhance edge definition in an image. Accepts a de
 | --------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------ |
 | **Original**                                                                      | sharpen=5                                                                            |
 
-* [ URL format ](#tab-panel-8678)
-* [ Workers ](#tab-panel-8679)
+* [ URL format ](#tab-panel-8887)
+* [ Workers ](#tab-panel-8888)
 
 ```
 
@@ -927,7 +938,7 @@ accept-ch: rtt, save-data, ect, downlink
 * [ect ↗](https://developer.mozilla.org/en-US/docs/Web/HTTP/Reference/Headers/ECT): Value is one of `slow-2g|2g|3g`.
 * [downlink ↗](https://developer.mozilla.org/en-US/docs/Web/HTTP/Reference/Headers/Downlink): Less than 5Mbps.
 
-* [ URL format ](#tab-panel-8641)
+* [ URL format ](#tab-panel-8850)
 
 ```
 
@@ -969,8 +980,8 @@ Trim can also be applied to a specific side using the following parameters:
 * `trim.height` — Sets the height of the image from the top edge, then trims everything below.
 * `trim.width` — Sets the width of the image from the left edge, then trims everything to the right.
 
-* [ URL format ](#tab-panel-8680)
-* [ Workers ](#tab-panel-8681)
+* [ URL format ](#tab-panel-8889)
+* [ Workers ](#tab-panel-8890)
 
 ```
 
@@ -1011,6 +1022,40 @@ cf: {image: {trim: {top: 0.1, right: 0.1, bottom: 0.1, left: 0.1}}}
 
 ```
 
+### `upscale`
+
+Controls the algorithm used when an image needs to be enlarged. This parameter works with any [fit](#fit) mode that upscales, such as [contain](#contain), [cover](#cover), and [scale-up](#scale-up). It has no effect when `fit=scale-down` or when the target dimensions are smaller than the source.
+
+Accepts the following values:
+
+* `interpolate` (default) — Uses bicubic interpolation, which may reduce image quality. This is the default behavior when `upscale` is not specified.
+* `generate` — Uses AI upscaling ([ESRGAN ↗](https://github.com/xinntao/ESRGAN)) to produce sharper, more detailed results when enlarging images.
+
+When `upscale=generate` is specified, the AI model runs a single pass at the nearest supported scale (2x or 4x), then adjusts to the exact target dimensions. Scale factors beyond 4x are handled with AI upscaling to 4x, then bicubic interpolation for the remainder.
+
+Note
+
+`upscale=generate` has higher latency than `upscale=interpolate` due to GPU inference. Results are cached following the same [caching rules](https://developers.cloudflare.com/images/optimization/features/#caching) as other optimizations.
+
+* [ URL format ](#tab-panel-8891)
+* [ Workers ](#tab-panel-8892)
+
+```
+
+upscale=generate
+
+
+```
+
+JavaScript
+
+```
+
+cf: {image: {upscale: "generate"}}
+
+
+```
+
 ### `width` | `w`
 
 Sets the width of the output image in pixels using a positive integer value. By default, Cloudflare uses the original width of the input image.
@@ -1022,8 +1067,8 @@ Accepts the following values:
 * A number in pixels (for example, `250`).
 * `auto` — Automatically serves the image in the most optimal width based on available information about the browser and device. Accepts `wbreakpoints` (client hints), `wmobile` (user-agent detection), and `wdesktop` (user-agent detection) as sub-parameters.
 
-* [ URL format ](#tab-panel-8682)
-* [ Workers ](#tab-panel-8683)
+* [ URL format ](#tab-panel-8893)
+* [ Workers ](#tab-panel-8894)
 
 ```
 
@@ -1059,8 +1104,8 @@ When optimizing remote images with `width=auto`, each unique width counts as a s
 
 To learn how `width=auto` works, refer to our guide on [serving responsive images](https://developers.cloudflare.com/images/optimization/make-responsive-images/).
 
-* [ URL format ](#tab-panel-8684)
-* [ Workers ](#tab-panel-8685)
+* [ URL format ](#tab-panel-8895)
+* [ Workers ](#tab-panel-8896)
 
 ```
 
@@ -1084,8 +1129,8 @@ cf: {image: {wbreakpoints: "320;768;960;1920"}}
 
 Specifies how closely the image is cropped toward detected faces when combined with the `gravity=face` option. Accepts a valid range between `0.0` (includes as much of the background as possible) and `1.0` (crops the image as closely to the face as possible). The default is `0`.
 
-* [ URL format ](#tab-panel-8686)
-* [ Workers ](#tab-panel-8687)
+* [ URL format ](#tab-panel-8897)
+* [ Workers ](#tab-panel-8898)
 
 ```
 
@@ -1128,5 +1173,6 @@ Optimized images follow the same caching rules as the original image they were r
 Cloudflare does not support purging optimized images individually. URLs starting with `/cdn-cgi/` cannot be purged. However, purging of the original image's URL will also purge all of its optimized versions.
 
 ```json
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/images/optimization/features/#page","headline":"Features · Cloudflare Images docs","description":"Available Cloudflare Images optimization parameters for resizing, cropping, format conversion, and visual effects.","url":"https://developers.cloudflare.com/images/optimization/features/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-06-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/images/","name":"Cloudflare Images"}},{"@type":"ListItem","position":3,"item":{"@id":"/images/optimization/","name":"Optimization"}},{"@type":"ListItem","position":4,"item":{"@id":"/images/optimization/features/","name":"Features"}}]}
 ```

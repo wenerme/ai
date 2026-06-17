@@ -46,8 +46,8 @@ When you format a CSV file for upload:
 
 To upload the list to the Cloudflare dashboard:
 
-* [ Dashboard ](#tab-panel-6665)
-* [ Terraform (v5) ](#tab-panel-6666)
+* [ Dashboard ](#tab-panel-9285)
+* [ Terraform (v5) ](#tab-panel-9286)
 
 1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** \> **Reusable components** \> **Lists**.
 2. Select **Upload CSV**.
@@ -78,9 +78,9 @@ You can now use this list in the policy builder by choosing the _in list_ operat
 
 ## Create a list manually
 
-* [ Dashboard ](#tab-panel-6667)
-* [ API ](#tab-panel-6668)
-* [ Terraform (v5) ](#tab-panel-6669)
+* [ Dashboard ](#tab-panel-9287)
+* [ API ](#tab-panel-9288)
+* [ Terraform (v5) ](#tab-panel-9289)
 
 1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** \> **Reusable components** \> **Lists**.
 2. Select **Create manual list**.
@@ -172,5 +172,6 @@ Create lists in advance
 Before moving on to create security policies, we recommend you create lists for your known domains, hosts, and IP addresses.
 
 ```json
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/learning-paths/secure-internet-traffic/understand-policies/create-list/#page","headline":"Create a list of IPs or domains · Cloudflare Learning Paths","description":"Build reusable IP and domain lists.","url":"https://developers.cloudflare.com/learning-paths/secure-internet-traffic/understand-policies/create-list/","inLanguage":"en","image":"https://developers.cloudflare.com/cf-twitter-card.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/learning-paths/","name":"Learning Paths"}},{"@type":"ListItem","position":3,"item":{"@id":"/learning-paths/secure-internet-traffic/understand-policies/","name":"Understand and streamline policy creation"}},{"@type":"ListItem","position":4,"item":{"@id":"/learning-paths/secure-internet-traffic/understand-policies/create-list/","name":"Create a list of IPs or domains"}}]}
 ```

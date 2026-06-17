@@ -23,8 +23,8 @@ The Cloudflare One Client offers two different split tunnel modes:
 
 To change your Split Tunnels mode:
 
-* [ Dashboard ](#tab-panel-6479)
-* [ Terraform (v5) ](#tab-panel-6480)
+* [ Dashboard ](#tab-panel-9275)
+* [ Terraform (v5) ](#tab-panel-9276)
 
 1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** \> **Team & Resources** \> **Devices** \> **Device profiles** \> **General profiles**.
 2. Locate the [device profile](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/device-profiles/) you would like to modify and select **Configure**.
@@ -75,16 +75,16 @@ All clients with this device profile will now switch to the new mode and its def
 
 ## Add a route
 
-* [ Dashboard ](#tab-panel-6483)
-* [ Terraform (v5) ](#tab-panel-6484)
+* [ Dashboard ](#tab-panel-9279)
+* [ Terraform (v5) ](#tab-panel-9280)
 
 1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** \> **Team & Resources** \> **Devices** \> **Device profiles** \> **General profiles**.
 2. Locate the [device profile](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/device-profiles/) you would like to modify and select **Configure**.
 3. Under **Split Tunnels**, check whether your [Split Tunnels mode](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/route-traffic/split-tunnels/#change-split-tunnels-mode) is set to **Exclude** or **Include**.
 4. Select **Manage**.
 5. You can exclude or include routes based on either their IP address or domain. When possible we recommend adding an IP address instead of a domain. To learn about the consequences of adding a domain, refer to [Domain-based Split Tunnels](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/route-traffic/split-tunnels/#domain-based-split-tunnels).  
-   * [ Add an IP ](#tab-panel-6481)  
-   * [ Add a domain ](#tab-panel-6482)  
+   * [ Add an IP ](#tab-panel-9277)  
+   * [ Add a domain ](#tab-panel-9278)  
 To add an IP address to Split Tunnels:  
    1. Select _IP Address_.  
    2. Enter the IP address or CIDR you want to exclude or include.  
@@ -198,5 +198,6 @@ It may take up to 10 minutes for newly updated settings to propagate to devices.
 We recommend keeping the Split Tunnels list short, as each entry takes time for the client to parse. In particular, domains are slower to action than IP addresses because they require on-the-fly IP lookups and routing table / local firewall changes. A shorter list will also make it easier to understand and debug your configuration. For information on device profile limits, refer to [Account limits](https://developers.cloudflare.com/cloudflare-one/account-limits/#warp).
 
 ```json
+{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/learning-paths/secure-internet-traffic/configure-device-agent/split-tunnel-settings/#page","headline":"Define Split Tunnel settings · Cloudflare Learning Paths","description":"Configure split tunnel routing rules.","url":"https://developers.cloudflare.com/learning-paths/secure-internet-traffic/configure-device-agent/split-tunnel-settings/","inLanguage":"en","image":"https://developers.cloudflare.com/cf-twitter-card.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/learning-paths/","name":"Learning Paths"}},{"@type":"ListItem","position":3,"item":{"@id":"/learning-paths/secure-internet-traffic/configure-device-agent/","name":"Configure the device agent"}},{"@type":"ListItem","position":4,"item":{"@id":"/learning-paths/secure-internet-traffic/configure-device-agent/split-tunnel-settings/","name":"Define Split Tunnel settings"}}]}
 ```

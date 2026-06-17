@@ -26,5 +26,6 @@ Refer to [Runtime APIs](https://developers.cloudflare.com/workers/runtime-apis/)
 * [Examples](https://developers.cloudflare.com/workers/examples/?languages=JavaScript)
 
 ```json
+{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/workers/languages/javascript/#page","headline":"JavaScript · Cloudflare Workers docs","description":"Write Cloudflare Workers using JavaScript standards and web platform APIs.","url":"https://developers.cloudflare.com/workers/languages/javascript/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/workers/","name":"Workers"}},{"@type":"ListItem","position":3,"item":{"@id":"/workers/languages/","name":"Languages"}},{"@type":"ListItem","position":4,"item":{"@id":"/workers/languages/javascript/","name":"JavaScript"}}]}
 ```

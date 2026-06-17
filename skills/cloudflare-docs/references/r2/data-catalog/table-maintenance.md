@@ -170,5 +170,6 @@ These are generic recommendations, make sure to consider:
 * Minimum target file size for compaction is 64 MB and maximum is 512 MB.
 
 ```json
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/r2/data-catalog/table-maintenance/#page","headline":"Table maintenance · Cloudflare R2 docs","description":"Learn how R2 Data Catalog automates table maintenance","url":"https://developers.cloudflare.com/r2/data-catalog/table-maintenance/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-22","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/r2/","name":"R2"}},{"@type":"ListItem","position":3,"item":{"@id":"/r2/data-catalog/","name":"R2 Data Catalog"}},{"@type":"ListItem","position":4,"item":{"@id":"/r2/data-catalog/table-maintenance/","name":"Table maintenance"}}]}
 ```

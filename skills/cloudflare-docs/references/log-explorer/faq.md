@@ -105,5 +105,6 @@ This operation will stop Log Explorer's renewal.
 2. In the **Subscriptions** tab, find the Log Explorer subscription and select **Cancel**.
 
 ```json
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/log-explorer/faq/#page","headline":"FAQ · Cloudflare Log Explorer docs","description":"Find answers to common questions about Log Explorer.","url":"https://developers.cloudflare.com/log-explorer/faq/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/log-explorer/","name":"Log Explorer"}},{"@type":"ListItem","position":3,"item":{"@id":"/log-explorer/faq/","name":"FAQ"}}]}
 ```

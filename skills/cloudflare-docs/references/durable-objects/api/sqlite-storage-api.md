@@ -56,9 +56,9 @@ Durable Objects gain access to Storage API via the `DurableObjectStorage` interf
 
 The following code snippet shows you how to store and retrieve data using the Durable Object Storage API.
 
-* [  JavaScript ](#tab-panel-7118)
-* [  TypeScript ](#tab-panel-7119)
-* [  Python ](#tab-panel-7120)
+* [  JavaScript ](#tab-panel-8213)
+* [  TypeScript ](#tab-panel-8214)
+* [  Python ](#tab-panel-8215)
 
 JavaScript
 
@@ -156,8 +156,8 @@ The `SqlStorage` interface encapsulates methods that modify the SQLite database 
 
 For example, using `sql.exec()` a user can create a table and insert rows.
 
-* [  TypeScript ](#tab-panel-7110)
-* [  Python ](#tab-panel-7111)
+* [  TypeScript ](#tab-panel-8205)
+* [  Python ](#tab-panel-8206)
 
 TypeScript
 
@@ -321,8 +321,8 @@ const rows = cursor.toArray();
    * Returned Iterator supports `next()` and `toArray()` methods above.  
    * Returned cursor and `raw()` iterator iterate over the same query results and can be combined. For example:
 
-* [  TypeScript ](#tab-panel-7112)
-* [  Python ](#tab-panel-7113)
+* [  TypeScript ](#tab-panel-8207)
+* [  Python ](#tab-panel-8208)
 
 TypeScript
 
@@ -606,8 +606,8 @@ TypeScript
 
 The current SQLite database size in bytes.
 
-* [  TypeScript ](#tab-panel-7114)
-* [  Python ](#tab-panel-7115)
+* [  TypeScript ](#tab-panel-8209)
+* [  Python ](#tab-panel-8210)
 
 TypeScript
 
@@ -653,8 +653,8 @@ The PITR API represents points in time using 'bookmarks'. A bookmark is a mostly
 
 This method returns a special bookmark representing the point in time immediately before the recovery takes place (even though that point in time is still technically in the future). Thus, after the recovery completes, it can be undone by performing a second recovery to this bookmark.
 
-* [  TypeScript ](#tab-panel-7116)
-* [  Python ](#tab-panel-7117)
+* [  TypeScript ](#tab-panel-8211)
+* [  Python ](#tab-panel-8212)
 
 TypeScript
 
@@ -889,5 +889,6 @@ If `setAlarm()` is called with a time equal to or before `Date.now()`, the alarm
 * [WebSockets API](https://developers.cloudflare.com/durable-objects/best-practices/websockets/)
 
 ```json
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/durable-objects/api/sqlite-storage-api/#page","headline":"SQLite-backed Durable Object Storage · Cloudflare Durable Objects docs","description":"API reference for SQLite-backed Durable Object storage, including the SQL API and key-value methods.","url":"https://developers.cloudflare.com/durable-objects/api/sqlite-storage-api/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-05-27","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/durable-objects/","name":"Durable Objects"}},{"@type":"ListItem","position":3,"item":{"@id":"/durable-objects/api/","name":"Workers Binding API"}},{"@type":"ListItem","position":4,"item":{"@id":"/durable-objects/api/sqlite-storage-api/","name":"SQLite-backed Durable Object Storage"}}]}
 ```

@@ -19,5 +19,6 @@ There are many other ways to use 1.1.1.1 beyond the traditional set up in operat
 * [ DNS over Tor ](https://developers.cloudflare.com/1.1.1.1/additional-options/dns-over-tor/)
 
 ```json
+{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/1.1.1.1/additional-options/#page","headline":"Other ways to use 1.1.1.1 | Cloudflare Docs","description":"Other ways to use 1.1.1.1 including Discord, Tor, and Google Sheets.","url":"https://developers.cloudflare.com/1.1.1.1/additional-options/","inLanguage":"en","image":"https://developers.cloudflare.com/cf-twitter-card.png","dateModified":"2026-04-29","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/1.1.1.1/","name":"1.1.1.1 (DNS Resolver)"}},{"@type":"ListItem","position":3,"item":{"@id":"/1.1.1.1/additional-options/","name":"Other ways to use 1.1.1.1"}}]}
 ```

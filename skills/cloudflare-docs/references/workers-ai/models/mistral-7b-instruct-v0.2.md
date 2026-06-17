@@ -36,10 +36,10 @@ Try out this model with Workers AI LLM Playground. It does not require any setup
 
 ## Usage
 
-* [  Worker (Streaming) ](#tab-panel-4837)
-* [  TypeScript ](#tab-panel-4838)
-* [  Python ](#tab-panel-4839)
-* [  curl ](#tab-panel-4840)
+* [  Worker (Streaming) ](#tab-panel-5018)
+* [  TypeScript ](#tab-panel-5019)
+* [  Python ](#tab-panel-5020)
+* [  curl ](#tab-panel-5021)
 
 TypeScript
 
@@ -287,5 +287,6 @@ format
  Streaming Output [ ](https://developers.cloudflare.com/workers-ai/models/mistral-7b-instruct-v0.2/streaming-output.json "Open") [ ](https://developers.cloudflare.com/workers-ai/models/mistral-7b-instruct-v0.2/streaming-output.json "Download") 
 
 ```json
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers-ai/models/mistral-7b-instruct-v0.2/#page","headline":"mistral-7b-instruct-v0.2 (MistralAI) · Cloudflare AI docs · Cloudflare Workers AI docs","description":"The Mistral-7B-Instruct-v0.2 Large Language Model (LLM) is an instruct fine-tuned version of the Mistral-7B-v0.2. Mistral-7B-v0.2 has the following changes compared to Mistral-7B-v0.1: 32k context window (vs 8k context in v0.1), rope-theta = 1e6, and no Sliding-Window Attention.","url":"https://developers.cloudflare.com/workers-ai/models/mistral-7b-instruct-v0.2/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/workers-ai/","name":"Workers AI"}},{"@type":"ListItem","position":3,"item":{"@id":"/workers-ai/models/","name":"Models"}}]}
 ```

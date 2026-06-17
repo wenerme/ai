@@ -26,8 +26,8 @@ Compatibility flags can be set in a Worker's [Wrangler configuration file](https
 
 This example enables the specific flag `formdata_parser_supports_files`, which is described [below](https://developers.cloudflare.com/workers/configuration/compatibility-flags/#formdata-parsing-supports-file). As of the specified date, `2021-09-14`, this particular flag was not yet enabled by default, but, by specifying it in `compatibility_flags`, we can enable it anyway. `compatibility_flags` can also be used to disable changes that became the default in the past.
 
-* [  wrangler.jsonc ](#tab-panel-11183)
-* [  wrangler.toml ](#tab-panel-11184)
+* [  wrangler.jsonc ](#tab-panel-11434)
+* [  wrangler.toml ](#tab-panel-11435)
 
 JSONC
 
@@ -83,8 +83,8 @@ A [growing subset](https://developers.cloudflare.com/workers/runtime-apis/nodejs
 
 To enable both built-in runtime APIs and polyfills for your Worker or Pages project, add the [nodejs\_compat](https://developers.cloudflare.com/workers/configuration/compatibility-flags/#nodejs-compatibility-flag) [compatibility flag](https://developers.cloudflare.com/workers/configuration/compatibility-flags/#nodejs-compatibility-flag) to your [Wrangler configuration file](https://developers.cloudflare.com/workers/wrangler/configuration/), and set your compatibility date to September 23rd, 2024 or later. This will enable [Node.js compatibility](https://developers.cloudflare.com/workers/runtime-apis/nodejs/) for your Workers project.
 
-* [  wrangler.jsonc ](#tab-panel-11187)
-* [  wrangler.toml ](#tab-panel-11188)
+* [  wrangler.jsonc ](#tab-panel-11438)
+* [  wrangler.toml ](#tab-panel-11439)
 
 JSONC
 
@@ -100,7 +100,7 @@ JSONC
 
   // Set this to today's date
 
-  "compatibility_date": "2026-06-10"
+  "compatibility_date": "2026-06-17"
 
 }
 
@@ -115,13 +115,13 @@ compatibility_flags = [ "nodejs_compat" ]
 
 # Set this to today's date
 
-compatibility_date = "2026-06-10"
+compatibility_date = "2026-06-17"
 
 
 ```
 
-* [  wrangler.jsonc ](#tab-panel-11181)
-* [  wrangler.toml ](#tab-panel-11182)
+* [  wrangler.jsonc ](#tab-panel-11432)
+* [  wrangler.toml ](#tab-panel-11433)
 
 JSONC
 
@@ -153,8 +153,8 @@ As additional Node.js APIs are added, they will be made available under the `nod
 
 The Node.js `AsyncLocalStorage` API is a particularly useful feature for Workers. To enable only the `AsyncLocalStorage` API, use the `nodejs_als` compatibility flag.
 
-* [  wrangler.jsonc ](#tab-panel-11185)
-* [  wrangler.toml ](#tab-panel-11186)
+* [  wrangler.jsonc ](#tab-panel-11436)
+* [  wrangler.toml ](#tab-panel-11437)
 
 JSONC
 
@@ -2150,5 +2150,6 @@ HTML5 does not recognize XML self-closing tag syntax. For example, `<script src=
 `HTMLRewriter` was designed to parse standard HTML5, not ESI. However, it would be useful to be able to implement some parts of ESI using `HTMLRewriter`. To that end, this compatibility flag causes `HTMLRewriter` to treat `<esi:include>` and `<esi:comment>` as void tags, so that they can be parsed and handled properly.
 
 ```json
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/configuration/compatibility-flags/#page","headline":"Compatibility flags · Cloudflare Workers docs","description":"Opt into a specific features of the Workers runtime for your Workers project.","url":"https://developers.cloudflare.com/workers/configuration/compatibility-flags/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/workers/","name":"Workers"}},{"@type":"ListItem","position":3,"item":{"@id":"/workers/configuration/","name":"Configuration"}},{"@type":"ListItem","position":4,"item":{"@id":"/workers/configuration/compatibility-flags/","name":"Compatibility flags"}}]}
 ```

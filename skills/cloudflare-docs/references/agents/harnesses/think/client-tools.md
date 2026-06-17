@@ -18,8 +18,8 @@ Think supports tools that execute in the browser. The client sends serializable 
 
 For dynamic client-side tools, pass `tools` to `useAgentChat`. Tools with an `execute` function are registered with the server as client-executed tools:
 
-* [  JavaScript ](#tab-panel-5096)
-* [  TypeScript ](#tab-panel-5097)
+* [  JavaScript ](#tab-panel-5575)
+* [  TypeScript ](#tab-panel-5576)
 
 JavaScript
 
@@ -115,12 +115,103 @@ Client tools are tools without an `execute` function on the server — they only
 
 For most apps, prefer defining tools on the server and using `onToolCall` for browser-only execution. The `tools` option is most useful for SDKs or platforms where the browser decides the available tool surface at runtime.
 
+## Client tools over the sub-agent RPC `chat()` path
+
+When a parent agent delegates to a Think sub-agent over RPC with `chat()` (rather than the browser WebSocket), there is no WebSocket to carry `clientTools` or to send tool results back. Pass them through `ChatOptions` instead:
+
+* [  JavaScript ](#tab-panel-5571)
+* [  TypeScript ](#tab-panel-5572)
+
+JavaScript
+
+```
+
+await child.chat(message, callback, {
+
+  signal,
+
+  clientTools: [
+
+    {
+
+      name: "get_user_timezone",
+
+      description: "Get the caller's timezone",
+
+      parameters: { type: "object" },
+
+    },
+
+  ],
+
+  onClientToolCall: async ({ toolName, input }) => {
+
+    // Run the client tool wherever the parent can — return its output.
+
+    return runClientTool(toolName, input);
+
+  },
+
+});
+
+
+```
+
+TypeScript
+
+```
+
+await child.chat(message, callback, {
+
+  signal,
+
+  clientTools: [
+
+    {
+
+      name: "get_user_timezone",
+
+      description: "Get the caller's timezone",
+
+      parameters: { type: "object" },
+
+    },
+
+  ],
+
+  onClientToolCall: async ({ toolName, input }) => {
+
+    // Run the client tool wherever the parent can — return its output.
+
+    return runClientTool(toolName, input);
+
+  },
+
+});
+
+
+```
+
+* `clientTools` registers the tool schemas for the turn, exactly like the WebSocket `clientTools` field.
+* `onClientToolCall` executes a client-tool call and returns its output. The model can call a client tool, receive the result, and continue — all within the single `chat()` call.
+
+If you omit `onClientToolCall`, the tools are registered but have no result: the model's call is surfaced through the stream callback and the turn ends with a dangling tool call (the RPC stream callback has no inbound result channel of its own). Supply `onClientToolCall` whenever you want the round trip to complete.
+
+### Behavior notes
+
+* **Recovery:** the schemas and `onClientToolCall` executor are per-turn only and are never persisted (the executor is a live RPC reference that dies with the isolate, and unlike the WebSocket path there is no client to replay a `tool-result` after an eviction). If an eviction interrupts the turn while a client-tool call is mid-flight, chat recovery errors the orphaned call (treating it like a server tool) and the model proceeds. To re-run cleanly, the parent re-invokes `chat()` with the `clientTools` and `onClientToolCall` again.
+* **Errors:** if `onClientToolCall` throws, the failure is surfaced to the model as a tool error (`output-error`) and the turn continues — it does not crash the turn.
+* **Serialization:** the value returned from `onClientToolCall` becomes the tool output, so it must be JSON-serializable (it travels back over RPC and into the model context).
+* **No approval gate:** RPC client tools execute immediately through `onClientToolCall`. The WebSocket approval flow (`needsApproval`) does not apply on this path — gate execution inside your executor if you need it.
+* **Name precedence:** client tools are merged after server tools, so a client tool that shares a name with a server tool (for example a workspace tool) overrides it for that turn — the same as the WebSocket path.
+* **Abort:** aborting the turn via `signal` stops the loop, but an in-flight `onClientToolCall` is not itself cancelled; the turn ends after the current call resolves.
+
 ## Approval flow
 
 Handle browser-side tool execution on the client with `onToolCall`:
 
-* [  JavaScript ](#tab-panel-5094)
-* [  TypeScript ](#tab-panel-5095)
+* [  JavaScript ](#tab-panel-5573)
+* [  TypeScript ](#tab-panel-5574)
 
 JavaScript
 
@@ -208,8 +299,8 @@ The `messageConcurrency` property controls how overlapping user submits behave w
 | "drop"                                        | Ignore overlapping submits entirely. Messages are not persisted.                                                                    |
 | { strategy: "debounce", debounceMs?: number } | Trailing-edge latest with a quiet window (default 750ms).                                                                           |
 
-* [  JavaScript ](#tab-panel-5092)
-* [  TypeScript ](#tab-panel-5093)
+* [  JavaScript ](#tab-panel-5569)
+* [  TypeScript ](#tab-panel-5570)
 
 JavaScript
 
@@ -264,5 +355,6 @@ Think broadcasts streaming responses to all connected WebSocket clients. When mu
 Programmatic `chat()` turns and `clearMessages()` also broadcast message updates to connected `useAgentChat` clients, so browser clients stay in sync without reconnecting.
 
 ```json
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/agents/harnesses/think/client-tools/#page","headline":"Client tools · Cloudflare Agents docs","description":"Browser-side tools, approval flows, auto-continuation, message concurrency, and multi-tab broadcast for Think agents.","url":"https://developers.cloudflare.com/agents/harnesses/think/client-tools/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-06-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/agents/","name":"Agents"}},{"@type":"ListItem","position":3,"item":{"@id":"/agents/harnesses/","name":"Harnesses"}},{"@type":"ListItem","position":4,"item":{"@id":"/agents/harnesses/think/","name":"Think"}},{"@type":"ListItem","position":5,"item":{"@id":"/agents/harnesses/think/client-tools/","name":"Client tools"}}]}
 ```

@@ -16,8 +16,8 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 The minimum required configuration for using Sandbox SDK:
 
-* [  wrangler.jsonc ](#tab-panel-10032)
-* [  wrangler.toml ](#tab-panel-10033)
+* [  wrangler.jsonc ](#tab-panel-10239)
+* [  wrangler.toml ](#tab-panel-10240)
 
 JSONC
 
@@ -31,7 +31,7 @@ JSONC
 
   // Set this to today's date
 
-  "compatibility_date": "2026-06-10",
+  "compatibility_date": "2026-06-17",
 
   "compatibility_flags": ["nodejs_compat"],
 
@@ -90,7 +90,7 @@ main = "src/index.ts"
 
 # Set this to today's date
 
-compatibility_date = "2026-06-10"
+compatibility_date = "2026-06-17"
 
 compatibility_flags = [ "nodejs_compat" ]
 
@@ -145,8 +145,8 @@ npx wrangler r2 bucket create my-backup-bucket
 
 ### 2\. Add the binding and environment variables
 
-* [  wrangler.jsonc ](#tab-panel-10026)
-* [  wrangler.toml ](#tab-panel-10027)
+* [  wrangler.jsonc ](#tab-panel-10233)
+* [  wrangler.toml ](#tab-panel-10234)
 
 JSONC
 
@@ -224,8 +224,8 @@ The SDK uses these credentials to generate presigned URLs that allow the contain
 
 **Solution**: Ensure your `wrangler.jsonc` includes the Durable Objects binding:
 
-* [  wrangler.jsonc ](#tab-panel-10028)
-* [  wrangler.toml ](#tab-panel-10029)
+* [  wrangler.jsonc ](#tab-panel-10235)
+* [  wrangler.toml ](#tab-panel-10236)
 
 JSONC
 
@@ -273,8 +273,8 @@ name = "Sandbox"
 
 **Solution**: Add migrations for the Sandbox class:
 
-* [  wrangler.jsonc ](#tab-panel-10030)
-* [  wrangler.toml ](#tab-panel-10031)
+* [  wrangler.jsonc ](#tab-panel-10237)
+* [  wrangler.toml ](#tab-panel-10238)
 
 JSONC
 
@@ -322,5 +322,6 @@ tag = "v1"
 * [Get Started guide](https://developers.cloudflare.com/sandbox/get-started/) \- Initial setup walkthrough
 
 ```json
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/sandbox/configuration/wrangler/#page","headline":"Wrangler configuration · Cloudflare Sandbox SDK docs","description":"Set up Wrangler bindings, Durable Objects, and container settings for Sandbox SDK.","url":"https://developers.cloudflare.com/sandbox/configuration/wrangler/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/sandbox/","name":"Sandbox SDK"}},{"@type":"ListItem","position":3,"item":{"@id":"/sandbox/configuration/","name":"Configuration"}},{"@type":"ListItem","position":4,"item":{"@id":"/sandbox/configuration/wrangler/","name":"Wrangler configuration"}}]}
 ```

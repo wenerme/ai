@@ -55,8 +55,8 @@ For complete documentation, refer to [Workers API](https://developers.cloudflare
 
 Use S3-compatible SDKs to delete objects. You'll need your [account ID](https://developers.cloudflare.com/fundamentals/account/find-account-and-zone-ids/) and [R2 API token](https://developers.cloudflare.com/r2/api/tokens/).
 
-* [ JavaScript ](#tab-panel-6964)
-* [ Python ](#tab-panel-6965)
+* [ JavaScript ](#tab-panel-9779)
+* [ Python ](#tab-panel-9780)
 
 TypeScript
 
@@ -160,5 +160,6 @@ wrangler r2 object delete test-bucket/image.png
 [ Object lifecycles ](https://developers.cloudflare.com/r2/buckets/object-lifecycles/) Automatically expire objects after a specified period. 
 
 ```json
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/r2/objects/delete-objects/#page","headline":"Delete objects · Cloudflare R2 docs","description":"Delete individual objects or folders from an R2 bucket.","url":"https://developers.cloudflare.com/r2/objects/delete-objects/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-30","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/r2/","name":"R2"}},{"@type":"ListItem","position":3,"item":{"@id":"/r2/objects/","name":"Objects"}},{"@type":"ListItem","position":4,"item":{"@id":"/r2/objects/delete-objects/","name":"Delete objects"}}]}
 ```

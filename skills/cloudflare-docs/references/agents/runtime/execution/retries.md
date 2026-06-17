@@ -27,8 +27,8 @@ Transient failures are common when calling external APIs, interacting with other
 
 Use `this.retry()` to retry any async operation:
 
-* [  JavaScript ](#tab-panel-5460)
-* [  TypeScript ](#tab-panel-5461)
+* [  JavaScript ](#tab-panel-6059)
+* [  TypeScript ](#tab-panel-6060)
 
 JavaScript
 
@@ -131,8 +131,8 @@ async retry<T>(
 
 **Basic retry:**
 
-* [  JavaScript ](#tab-panel-5456)
-* [  TypeScript ](#tab-panel-5457)
+* [  JavaScript ](#tab-panel-6055)
+* [  TypeScript ](#tab-panel-6056)
 
 JavaScript
 
@@ -154,8 +154,8 @@ const data = await this.retry(() => fetch("https://api.example.com/data"));
 
 **Custom retry options:**
 
-* [  JavaScript ](#tab-panel-5462)
-* [  TypeScript ](#tab-panel-5463)
+* [  JavaScript ](#tab-panel-6061)
+* [  TypeScript ](#tab-panel-6062)
 
 JavaScript
 
@@ -221,8 +221,8 @@ const data = await this.retry(
 
 **Using the attempt number:**
 
-* [  JavaScript ](#tab-panel-5458)
-* [  TypeScript ](#tab-panel-5459)
+* [  JavaScript ](#tab-panel-6057)
+* [  TypeScript ](#tab-panel-6058)
 
 JavaScript
 
@@ -258,8 +258,8 @@ const result = await this.retry(async (attempt) => {
 
 Use `shouldRetry` to stop retrying on specific errors. The predicate receives both the error and the next attempt number:
 
-* [  JavaScript ](#tab-panel-5468)
-* [  TypeScript ](#tab-panel-5469)
+* [  JavaScript ](#tab-panel-6067)
+* [  TypeScript ](#tab-panel-6068)
 
 JavaScript
 
@@ -347,8 +347,8 @@ const data = await this.retry(
 
 Pass retry options when creating a schedule:
 
-* [  JavaScript ](#tab-panel-5484)
-* [  TypeScript ](#tab-panel-5485)
+* [  JavaScript ](#tab-panel-6083)
+* [  TypeScript ](#tab-panel-6084)
 
 JavaScript
 
@@ -536,8 +536,8 @@ If the callback throws, it is retried according to the retry options. If all att
 
 Pass retry options when adding a task to the queue:
 
-* [  JavaScript ](#tab-panel-5472)
-* [  TypeScript ](#tab-panel-5473)
+* [  JavaScript ](#tab-panel-6071)
+* [  TypeScript ](#tab-panel-6072)
 
 JavaScript
 
@@ -617,8 +617,8 @@ If the callback throws, it is retried before the task is dequeued. After all att
 
 Retry options are validated eagerly when you call `this.retry()`, `queue()`, `schedule()`, or `scheduleEvery()`. Invalid options throw immediately instead of failing later at execution time:
 
-* [  JavaScript ](#tab-panel-5478)
-* [  TypeScript ](#tab-panel-5479)
+* [  JavaScript ](#tab-panel-6077)
+* [  TypeScript ](#tab-panel-6078)
 
 JavaScript
 
@@ -738,8 +738,8 @@ These defaults apply to `this.retry()`, `queue()`, `schedule()`, and `scheduleEv
 
 Override the defaults for your entire agent via `static options`:
 
-* [  JavaScript ](#tab-panel-5464)
-* [  TypeScript ](#tab-panel-5465)
+* [  JavaScript ](#tab-panel-6063)
+* [  TypeScript ](#tab-panel-6064)
 
 JavaScript
 
@@ -777,8 +777,8 @@ class MyAgent extends Agent {
 
 You only need to specify the fields you want to change — unset fields fall back to the built-in defaults:
 
-* [  JavaScript ](#tab-panel-5466)
-* [  TypeScript ](#tab-panel-5467)
+* [  JavaScript ](#tab-panel-6065)
+* [  TypeScript ](#tab-panel-6066)
 
 JavaScript
 
@@ -820,8 +820,8 @@ class MyAgent extends Agent {
 
 Class-level defaults are used as fallbacks when a call site does not specify retry options. Per-call-site options always take priority:
 
-* [  JavaScript ](#tab-panel-5470)
-* [  TypeScript ](#tab-panel-5471)
+* [  JavaScript ](#tab-panel-6069)
+* [  TypeScript ](#tab-panel-6070)
 
 JavaScript
 
@@ -857,8 +857,8 @@ await this.retry(() => fetch(url), { maxAttempts: 2 });
 
 To disable retries for a specific task, set `maxAttempts: 1`:
 
-* [  JavaScript ](#tab-panel-5476)
-* [  TypeScript ](#tab-panel-5477)
+* [  JavaScript ](#tab-panel-6075)
+* [  TypeScript ](#tab-panel-6076)
 
 JavaScript
 
@@ -968,8 +968,8 @@ With `maxAttempts: 5` and `baseDelayMs: 500`:
 
 When adding an MCP server, you can configure retry options for connection and reconnection attempts:
 
-* [  JavaScript ](#tab-panel-5474)
-* [  TypeScript ](#tab-panel-5475)
+* [  JavaScript ](#tab-panel-6073)
+* [  TypeScript ](#tab-panel-6074)
 
 JavaScript
 
@@ -1008,8 +1008,8 @@ Default: 3 attempts, 500ms base delay, 5s max delay.
 
 ### Retry with logging
 
-* [  JavaScript ](#tab-panel-5482)
-* [  TypeScript ](#tab-panel-5483)
+* [  JavaScript ](#tab-panel-6081)
+* [  TypeScript ](#tab-panel-6082)
 
 JavaScript
 
@@ -1107,8 +1107,8 @@ class MyAgent extends Agent {
 
 ### Retry with fallback
 
-* [  JavaScript ](#tab-panel-5480)
-* [  TypeScript ](#tab-panel-5481)
+* [  JavaScript ](#tab-panel-6079)
+* [  TypeScript ](#tab-panel-6080)
 
 JavaScript
 
@@ -1192,8 +1192,8 @@ class MyAgent extends Agent {
 
 For operations that might take a long time to recover (minutes or hours), combine `this.retry()` for immediate retries with `this.schedule()` for delayed retries:
 
-* [  JavaScript ](#tab-panel-5486)
-* [  TypeScript ](#tab-panel-5487)
+* [  JavaScript ](#tab-panel-6085)
+* [  TypeScript ](#tab-panel-6086)
 
 JavaScript
 
@@ -1326,5 +1326,6 @@ class MyAgent extends Agent {
 [ Run Workflows ](https://developers.cloudflare.com/agents/runtime/execution/run-workflows/) Durable multi-step processing with automatic retries. 
 
 ```json
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/agents/runtime/execution/retries/#page","headline":"Retries · Cloudflare Agents docs","description":"Retry failed operations with exponential backoff and jitter using the built-in retry system in the Agents SDK.","url":"https://developers.cloudflare.com/agents/runtime/execution/retries/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-06-03","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/agents/","name":"Agents"}},{"@type":"ListItem","position":3,"item":{"@id":"/agents/runtime/","name":"Runtime"}},{"@type":"ListItem","position":4,"item":{"@id":"/agents/runtime/execution/","name":"Execution"}},{"@type":"ListItem","position":5,"item":{"@id":"/agents/runtime/execution/retries/","name":"Retries"}}]}
 ```

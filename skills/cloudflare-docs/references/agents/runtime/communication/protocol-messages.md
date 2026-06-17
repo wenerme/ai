@@ -38,8 +38,8 @@ For these connections, you can suppress protocol messages while keeping everythi
 
 Override `shouldSendProtocolMessages` to control which connections receive protocol messages. Return `false` to suppress them.
 
-* [  JavaScript ](#tab-panel-5274)
-* [  TypeScript ](#tab-panel-5275)
+* [  JavaScript ](#tab-panel-5885)
+* [  TypeScript ](#tab-panel-5886)
 
 JavaScript
 
@@ -101,8 +101,8 @@ This hook runs during `onConnect`, before any messages are sent. When it returns
 
 You can also check the WebSocket subprotocol header, which is the standard way to negotiate protocols over WebSocket:
 
-* [  JavaScript ](#tab-panel-5276)
-* [  TypeScript ](#tab-panel-5277)
+* [  JavaScript ](#tab-panel-5887)
+* [  TypeScript ](#tab-panel-5888)
 
 JavaScript
 
@@ -156,8 +156,8 @@ export class MqttAgent extends Agent<Env, State> {
 
 Use `isConnectionProtocolEnabled` to check whether a connection has protocol messages enabled:
 
-* [  JavaScript ](#tab-panel-5278)
-* [  TypeScript ](#tab-panel-5279)
+* [  JavaScript ](#tab-panel-5889)
+* [  TypeScript ](#tab-panel-5890)
 
 JavaScript
 
@@ -238,8 +238,8 @@ The following table shows what still works when protocol messages are suppressed
 
 A connection can be both readonly and protocol-suppressed. This is useful for binary devices that should observe but not modify state:
 
-* [  JavaScript ](#tab-panel-5280)
-* [  TypeScript ](#tab-panel-5281)
+* [  JavaScript ](#tab-panel-5891)
+* [  TypeScript ](#tab-panel-5892)
 
 JavaScript
 
@@ -395,5 +395,6 @@ Unlike [readonly](https://developers.cloudflare.com/agents/runtime/communication
 * [MCP Client API](https://developers.cloudflare.com/agents/model-context-protocol/apis/client-api/)
 
 ```json
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/agents/runtime/communication/protocol-messages/#page","headline":"Protocol messages · Cloudflare Agents docs","description":"Control the identity, state, and MCP protocol messages sent to WebSocket clients on Agent connect.","url":"https://developers.cloudflare.com/agents/runtime/communication/protocol-messages/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-06-03","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/agents/","name":"Agents"}},{"@type":"ListItem","position":3,"item":{"@id":"/agents/runtime/","name":"Runtime"}},{"@type":"ListItem","position":4,"item":{"@id":"/agents/runtime/communication/","name":"Communication"}},{"@type":"ListItem","position":5,"item":{"@id":"/agents/runtime/communication/protocol-messages/","name":"Protocol messages"}}]}
 ```

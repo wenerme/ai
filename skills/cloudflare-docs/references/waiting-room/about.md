@@ -49,5 +49,6 @@ The Waiting Room state is updated with global information every few seconds. We 
 For even more details about the architecture and why we made these decisions, refer to our [deep-dive technical blog ↗](https://blog.cloudflare.com/how-waiting-room-queues).
 
 ```json
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/waiting-room/about/#page","headline":"About · Cloudflare Waiting Room docs","description":"How Cloudflare Waiting Room queues visitors during traffic surges.","url":"https://developers.cloudflare.com/waiting-room/about/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/waiting-room/","name":"Waiting Room"}},{"@type":"ListItem","position":3,"item":{"@id":"/waiting-room/about/","name":"About"}}]}
 ```

@@ -46,8 +46,8 @@ When you deploy your project, Cloudflare deploys both your Worker code and your 
 
 The **assets directory** specified in your [Wrangler configuration file](https://developers.cloudflare.com/workers/wrangler/configuration/#assets) is central to this design. During deployment, Wrangler automatically uploads the files from this directory to Cloudflare's infrastructure. Once deployed, requests for these assets are routed efficiently to locations closest to your users.
 
-* [  wrangler.jsonc ](#tab-panel-10875)
-* [  wrangler.toml ](#tab-panel-10876)
+* [  wrangler.jsonc ](#tab-panel-12075)
+* [  wrangler.toml ](#tab-panel-12076)
 
 JSONC
 
@@ -63,7 +63,7 @@ JSONC
 
   // Set this to today's date
 
-  "compatibility_date": "2026-05-28",
+  "compatibility_date": "2026-06-17",
 
   "assets": {
 
@@ -90,7 +90,7 @@ main = "src/index.js"
 
 # Set this to today's date
 
-compatibility_date = "2026-05-28"
+compatibility_date = "2026-06-17"
 
 
 [assets]
@@ -108,8 +108,8 @@ If you are using the [Cloudflare Vite plugin](https://developers.cloudflare.com/
 
 By adding an [**assets binding**](https://developers.cloudflare.com/workers/static-assets/binding/#binding), you can directly fetch and serve assets within your Worker code.
 
-* [  JavaScript ](#tab-panel-10871)
-* [  Python ](#tab-panel-10872)
+* [  JavaScript ](#tab-panel-12071)
+* [  Python ](#tab-panel-12072)
 
 JavaScript
 
@@ -181,8 +181,8 @@ The default behavior for requests which don't match a static asset can be change
 * [not\_found\_handling = "single-page-application"](https://developers.cloudflare.com/workers/static-assets/routing/single-page-application/): Sets your application to return a `200 OK` response with `index.html` for requests which don't match a static asset. Use this if you have a Single Page Application. We recommend pairing this with selective routing using `run_worker_first` for [advanced routing control](https://developers.cloudflare.com/workers/static-assets/routing/single-page-application/#advanced-routing-control).
 * [not\_found\_handling = "404-page"](https://developers.cloudflare.com/workers/static-assets/routing/static-site-generation/#custom-404-pages): Sets your application to return a `404 Not Found` response with the nearest `404.html` for requests which don't match a static asset.
 
-* [  wrangler.jsonc ](#tab-panel-10873)
-* [  wrangler.toml ](#tab-panel-10874)
+* [  wrangler.jsonc ](#tab-panel-12073)
+* [  wrangler.toml ](#tab-panel-12074)
 
 JSONC
 
@@ -220,8 +220,8 @@ If you want the Worker code to execute before serving assets, you can use the `r
 
 **Invoking your Worker script on specific paths:**
 
-* [  wrangler.jsonc ](#tab-panel-10877)
-* [  wrangler.toml ](#tab-panel-10878)
+* [  wrangler.jsonc ](#tab-panel-12077)
+* [  wrangler.toml ](#tab-panel-12078)
 
 JSONC
 
@@ -233,7 +233,7 @@ JSONC
 
   // Set this to today's date
 
-  "compatibility_date": "2026-05-28",
+  "compatibility_date": "2026-06-17",
 
   "main": "./src/index.ts",
 
@@ -262,7 +262,7 @@ name = "my-spa-worker"
 
 # Set this to today's date
 
-compatibility_date = "2026-05-28"
+compatibility_date = "2026-06-17"
 
 main = "./src/index.ts"
 
@@ -302,5 +302,6 @@ Cloudflare provides automatic caching for static assets across its network, ensu
 [ Billing and limitations ](https://developers.cloudflare.com/workers/static-assets/billing-and-limitations/) Learn more about how requests are billed, current limitations, and troubleshooting. 
 
 ```json
+{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/workers/static-assets/#page","headline":"Static Assets · Cloudflare Workers docs","description":"Create full-stack applications deployed to Cloudflare Workers.","url":"https://developers.cloudflare.com/workers/static-assets/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/workers/","name":"Workers"}},{"@type":"ListItem","position":3,"item":{"@id":"/workers/static-assets/","name":"Static Assets"}}]}
 ```

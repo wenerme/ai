@@ -189,5 +189,6 @@ Even though this is not common, in certain scenarios TURN allocations may be dis
 Cloudflare Realtime will immediately stop billing and recording usage for analytics. After a short delay, the connection will be disconnected.
 
 ```json
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/realtime/turn/faq/#page","headline":"FAQ · Cloudflare Realtime docs","description":"Frequently asked questions about Cloudflare Realtime TURN pricing, credentials, and usage.","url":"https://developers.cloudflare.com/realtime/turn/faq/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-05-27","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/realtime/","name":"Realtime"}},{"@type":"ListItem","position":3,"item":{"@id":"/realtime/turn/","name":"TURN Service"}},{"@type":"ListItem","position":4,"item":{"@id":"/realtime/turn/faq/","name":"FAQ"}}]}
 ```

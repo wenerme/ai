@@ -41,8 +41,8 @@ Use `saveMessages()` when the caller can wait for the model turn to finish.
 
 Use `submitMessages()` with Think when the caller needs a fast durable receipt, idempotent retry, and later status inspection. This is useful for webhook handlers, RPC callers, and parent Workers with strict timeout limits:
 
-* [  JavaScript ](#tab-panel-4566)
-* [  TypeScript ](#tab-panel-4567)
+* [  JavaScript ](#tab-panel-5133)
+* [  TypeScript ](#tab-panel-5134)
 
 JavaScript
 
@@ -152,8 +152,8 @@ Always call `waitUntilStable()` before reading `this.messages` or calling `saveM
 
 It returns `true` when stable, or `false` if the timeout expires before a pending interaction resolves. If nothing is pending, it returns immediately.
 
-* [  JavaScript ](#tab-panel-4564)
-* [  TypeScript ](#tab-panel-4565)
+* [  JavaScript ](#tab-panel-5131)
+* [  TypeScript ](#tab-panel-5132)
 
 JavaScript
 
@@ -209,8 +209,8 @@ Without this guard, you risk reading stale messages or overlapping with an in-fl
 
 A daily digest agent that summarizes activity every morning. Cron schedules are idempotent by default, so calling `schedule()` in `onStart` is safe — it does not create duplicates across Durable Object restarts.
 
-* [  JavaScript ](#tab-panel-4572)
-* [  TypeScript ](#tab-panel-4573)
+* [  JavaScript ](#tab-panel-5139)
+* [  TypeScript ](#tab-panel-5140)
 
 JavaScript
 
@@ -644,8 +644,8 @@ async addBackgroundContext(data: string) {
 
 ### Broadcasting state
 
-* [  JavaScript ](#tab-panel-4568)
-* [  TypeScript ](#tab-panel-4569)
+* [  JavaScript ](#tab-panel-5135)
+* [  TypeScript ](#tab-panel-5136)
 
 JavaScript
 
@@ -953,8 +953,8 @@ The `messageConcurrency` setting on `AIChatAgent` controls how overlapping user 
 
 Pass an `AbortSignal` when the same Durable Object starts and controls the turn:
 
-* [  JavaScript ](#tab-panel-4570)
-* [  TypeScript ](#tab-panel-4571)
+* [  JavaScript ](#tab-panel-5137)
+* [  TypeScript ](#tab-panel-5138)
 
 JavaScript
 
@@ -1057,5 +1057,6 @@ Use `cancelFiber(fiberId)` when the durable unit was accepted with `startFiber()
 [ Email routing ](https://developers.cloudflare.com/agents/communication-channels/email/) Handle inbound emails in your agent. 
 
 ```json
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/agents/communication-channels/chat/autonomous-responses/#page","headline":"Autonomous responses · Cloudflare Agents docs","description":"Send server-initiated messages and trigger LLM responses from Cloudflare Agents without user action.","url":"https://developers.cloudflare.com/agents/communication-channels/chat/autonomous-responses/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-06-03","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/agents/","name":"Agents"}},{"@type":"ListItem","position":3,"item":{"@id":"/agents/communication-channels/","name":"Communication channels"}},{"@type":"ListItem","position":4,"item":{"@id":"/agents/communication-channels/chat/","name":"Chat"}},{"@type":"ListItem","position":5,"item":{"@id":"/agents/communication-channels/chat/autonomous-responses/","name":"Autonomous responses"}}]}
 ```

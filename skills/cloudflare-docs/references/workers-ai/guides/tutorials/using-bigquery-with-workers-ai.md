@@ -768,8 +768,8 @@ formattedResults = formattedResults?.map((formattedResult, i) => {
 
 Uncomment the following lines from the Wrangler file in your project:
 
-* [  wrangler.jsonc ](#tab-panel-10152)
-* [  wrangler.toml ](#tab-panel-10153)
+* [  wrangler.jsonc ](#tab-panel-11329)
+* [  wrangler.toml ](#tab-panel-11330)
 
 JSONC
 
@@ -1219,5 +1219,6 @@ A use case to ingest data from other sources, like you did in this tutorial, is 
 To learn more about what other AI models you can use at Cloudflare, please visit the [Workers AI](https://developers.cloudflare.com/workers-ai) section of our docs.
 
 ```json
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers-ai/guides/tutorials/using-bigquery-with-workers-ai/#page","headline":"Using BigQuery with Workers AI · Cloudflare Workers AI docs","description":"Learn how to ingest data stored outside of Cloudflare as an input to Workers AI models.","url":"https://developers.cloudflare.com/workers-ai/guides/tutorials/using-bigquery-with-workers-ai/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-01-29","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["AI","JavaScript"]}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/workers-ai/","name":"Workers AI"}},{"@type":"ListItem","position":3,"item":{"@id":"/workers-ai/guides/","name":"Guides"}},{"@type":"ListItem","position":4,"item":{"@id":"/workers-ai/guides/tutorials/","name":"Tutorials"}},{"@type":"ListItem","position":5,"item":{"@id":"/workers-ai/guides/tutorials/using-bigquery-with-workers-ai/","name":"Using BigQuery with Workers AI"}}]}
 ```

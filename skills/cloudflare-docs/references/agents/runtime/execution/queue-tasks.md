@@ -75,8 +75,8 @@ async queue<T>(
 
 **Example:**
 
-* [  JavaScript ](#tab-panel-5446)
-* [  TypeScript ](#tab-panel-5447)
+* [  JavaScript ](#tab-panel-6045)
+* [  TypeScript ](#tab-panel-6046)
 
 JavaScript
 
@@ -171,8 +171,8 @@ dequeue(id: string): void
 
 **Example:**
 
-* [  JavaScript ](#tab-panel-5436)
-* [  TypeScript ](#tab-panel-5437)
+* [  JavaScript ](#tab-panel-6035)
+* [  TypeScript ](#tab-panel-6036)
 
 JavaScript
 
@@ -211,8 +211,8 @@ dequeueAll(): void
 
 **Example:**
 
-* [  JavaScript ](#tab-panel-5438)
-* [  TypeScript ](#tab-panel-5439)
+* [  JavaScript ](#tab-panel-6037)
+* [  TypeScript ](#tab-panel-6038)
 
 JavaScript
 
@@ -255,8 +255,8 @@ dequeueAllByCallback(callback: string): void
 
 **Example:**
 
-* [  JavaScript ](#tab-panel-5440)
-* [  TypeScript ](#tab-panel-5441)
+* [  JavaScript ](#tab-panel-6039)
+* [  TypeScript ](#tab-panel-6040)
 
 JavaScript
 
@@ -303,8 +303,8 @@ The payload is automatically parsed from JSON before being returned.
 
 **Example:**
 
-* [  JavaScript ](#tab-panel-5444)
-* [  TypeScript ](#tab-panel-5445)
+* [  JavaScript ](#tab-panel-6043)
+* [  TypeScript ](#tab-panel-6044)
 
 JavaScript
 
@@ -364,8 +364,8 @@ This method fetches all queue items and filters them in memory by parsing each p
 
 **Example:**
 
-* [  JavaScript ](#tab-panel-5442)
-* [  TypeScript ](#tab-panel-5443)
+* [  JavaScript ](#tab-panel-6041)
+* [  TypeScript ](#tab-panel-6042)
 
 JavaScript
 
@@ -414,8 +414,8 @@ async callbackMethod(payload: unknown, queueItem: QueueItem): Promise<void>
 
 **Example:**
 
-* [  JavaScript ](#tab-panel-5450)
-* [  TypeScript ](#tab-panel-5451)
+* [  JavaScript ](#tab-panel-6049)
+* [  TypeScript ](#tab-panel-6050)
 
 JavaScript
 
@@ -513,8 +513,8 @@ class MyAgent extends Agent {
 
 ### Background processing
 
-* [  JavaScript ](#tab-panel-5448)
-* [  TypeScript ](#tab-panel-5449)
+* [  JavaScript ](#tab-panel-6047)
+* [  TypeScript ](#tab-panel-6048)
 
 JavaScript
 
@@ -592,8 +592,8 @@ class DataProcessor extends Agent {
 
 ### Batch operations
 
-* [  JavaScript ](#tab-panel-5452)
-* [  TypeScript ](#tab-panel-5453)
+* [  JavaScript ](#tab-panel-6051)
+* [  TypeScript ](#tab-panel-6052)
 
 JavaScript
 
@@ -691,8 +691,8 @@ class BatchProcessor extends Agent {
 
 Use the built-in `retry` option instead of manual re-queue logic. When a callback throws, the task is automatically retried with exponential backoff:
 
-* [  JavaScript ](#tab-panel-5454)
-* [  TypeScript ](#tab-panel-5455)
+* [  JavaScript ](#tab-panel-6053)
+* [  TypeScript ](#tab-panel-6054)
 
 JavaScript
 
@@ -842,5 +842,6 @@ Use **queue** when you want tasks to execute as soon as possible in order. Use [
 [ Run Workflows ](https://developers.cloudflare.com/agents/runtime/execution/run-workflows/) Durable multi-step background processing. 
 
 ```json
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/agents/runtime/execution/queue-tasks/#page","headline":"Queue tasks · Cloudflare Agents docs","description":"Add background tasks to a built-in FIFO queue for asynchronous processing within Cloudflare Agents.","url":"https://developers.cloudflare.com/agents/runtime/execution/queue-tasks/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-06-03","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/agents/","name":"Agents"}},{"@type":"ListItem","position":3,"item":{"@id":"/agents/runtime/","name":"Runtime"}},{"@type":"ListItem","position":4,"item":{"@id":"/agents/runtime/execution/","name":"Execution"}},{"@type":"ListItem","position":5,"item":{"@id":"/agents/runtime/execution/queue-tasks/","name":"Queue tasks"}}]}
 ```

@@ -47,9 +47,9 @@ You must provide either `url` or `html`:
 
 ### Get all links on a page
 
-* [ curl ](#tab-panel-6693)
-* [ TypeScript SDK ](#tab-panel-6694)
-* [ Workers binding ](#tab-panel-6695)
+* [ curl ](#tab-panel-6904)
+* [ TypeScript SDK ](#tab-panel-6905)
+* [ Workers binding ](#tab-panel-6906)
 
 This example grabs all links from the [Cloudflare Doc's homepage ↗](https://developers.cloudflare.com/). The response will be a JSON array containing the links found on the page.
 
@@ -208,7 +208,7 @@ curl -X POST 'https://api.cloudflare.com/client/v4/accounts/<accountId>/browser-
 
     "https://x.com/cloudflare",
 
-    "http://discord.cloudflare.com/",
+    "https://discord.cloudflare.com/",
 
     "https://www.youtube.com/cloudflare",
 
@@ -452,7 +452,7 @@ curl -X POST 'https://api.cloudflare.com/client/v4/accounts/<accountId>/browser-
 
     "https://x.com/cloudflare",
 
-    "http://discord.cloudflare.com/",
+    "https://discord.cloudflare.com/",
 
     "https://www.youtube.com/cloudflare",
 
@@ -536,5 +536,6 @@ The `userAgent` parameter does not bypass bot protection. Requests from Browser 
 If you have questions or encounter an error, see the [Browser Run FAQ and troubleshooting guide](https://developers.cloudflare.com/browser-run/faq/).
 
 ```json
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/browser-run/quick-actions/links-endpoint/#page","headline":"/links - Retrieve links from a webpage · Cloudflare Browser Run docs","description":"Extract all links from a webpage, including hidden ones, using the Browser Run /links endpoint.","url":"https://developers.cloudflare.com/browser-run/quick-actions/links-endpoint/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-06-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/browser-run/","name":"Browser Run"}},{"@type":"ListItem","position":3,"item":{"@id":"/browser-run/quick-actions/","name":"Quick Actions"}},{"@type":"ListItem","position":4,"item":{"@id":"/browser-run/quick-actions/links-endpoint/","name":"/links - Retrieve links from a webpage"}}]}
 ```

@@ -23,8 +23,8 @@ You can configure a notification for [code change alerts](https://developers.clo
 When you receive such a notification:
 
 1. Go to the client-side resources page:  
-   * [  New dashboard ](#tab-panel-4491)  
-   * [ Old dashboard ](#tab-panel-4492)  
+   * [  New dashboard ](#tab-panel-6975)  
+   * [ Old dashboard ](#tab-panel-6976)  
    1. In the Cloudflare dashboard, go to the **Web assets** page.  
    [ Go to **Web assets** ](https://dash.cloudflare.com/?to=/:account/:zone/security/web-assets)  
    2. Select the **Client-side resources** tab.  
@@ -33,5 +33,6 @@ When you receive such a notification:
 2. Check the details of each changed script and validate if it is an expected change.
 
 ```json
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/client-side-security/detection/review-changed-scripts/#page","headline":"Review changed scripts · Client-side security docs","description":"Learn how to review scripts on your domain after receiving a code change alert.","url":"https://developers.cloudflare.com/client-side-security/detection/review-changed-scripts/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/client-side-security/","name":"Client-side security"}},{"@type":"ListItem","position":3,"item":{"@id":"/client-side-security/detection/","name":"Detection"}},{"@type":"ListItem","position":4,"item":{"@id":"/client-side-security/detection/review-changed-scripts/","name":"Review changed scripts"}}]}
 ```

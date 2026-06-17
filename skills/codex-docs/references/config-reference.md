@@ -1591,6 +1591,12 @@ deployments, use `allowed_permission_profiles` with managed
         "Set to `false` to disable Appshots for managed users. If omitted, Appshots remain unconstrained by requirements and follow normal product availability.",
     },
     {
+      key: "allow_remote_control",
+      type: "boolean",
+      description:
+        "Set to `false` to disable device remote control for managed users. If omitted, device remote control remains unconstrained by requirements and follows normal product availability.",
+    },
+    {
       key: "features.plugin_sharing",
       type: "boolean",
       description:

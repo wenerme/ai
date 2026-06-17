@@ -18,8 +18,8 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 A bucket stores your objects in R2\. To create a new R2 bucket:
 
-* [ Wrangler CLI ](#tab-panel-7142)
-* [ Dashboard ](#tab-panel-7143)
+* [ Wrangler CLI ](#tab-panel-9775)
+* [ Dashboard ](#tab-panel-9776)
 
 1. Log in to your Cloudflare account:  
 Terminal window  
@@ -65,8 +65,8 @@ Terminal window
 cd r2-worker  
 ```
 3. Add an R2 binding to your Wrangler configuration file. Replace `my-bucket` with your bucket name:  
-   * [  wrangler.jsonc ](#tab-panel-7144)  
-   * [  wrangler.toml ](#tab-panel-7145)  
+   * [  wrangler.jsonc ](#tab-panel-9777)  
+   * [  wrangler.toml ](#tab-panel-9778)  
 JSONC  
 ```  
 {  
@@ -94,8 +94,8 @@ npx wrangler types
 
 Use the binding to interact with your bucket. This example stores and retrieves objects based on the URL path:
 
-* [ JavaScript ](#tab-panel-7140)
-* [ TypeScript ](#tab-panel-7141)
+* [ JavaScript ](#tab-panel-9773)
+* [ TypeScript ](#tab-panel-9774)
 
 src/index.js
 
@@ -236,5 +236,6 @@ Refer to the [Workers R2 API documentation](https://developers.cloudflare.com/r2
 [ Object lifecycles ](https://developers.cloudflare.com/r2/buckets/object-lifecycles/) Set up lifecycle rules to automatically delete old objects. 
 
 ```json
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/r2/get-started/workers-api/#page","headline":"Workers API · Cloudflare R2 docs","description":"Use R2 from Cloudflare Workers with the Workers API.","url":"https://developers.cloudflare.com/r2/get-started/workers-api/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/r2/","name":"R2"}},{"@type":"ListItem","position":3,"item":{"@id":"/r2/get-started/","name":"Get started"}},{"@type":"ListItem","position":4,"item":{"@id":"/r2/get-started/workers-api/","name":"Workers API"}}]}
 ```

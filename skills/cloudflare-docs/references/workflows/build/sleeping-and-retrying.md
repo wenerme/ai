@@ -212,8 +212,8 @@ You can attach a rollback handler to `step.do()` to implement saga-style compens
 
 A failed step with rollback options can also participate in rollback alongside any completed steps which have a rollback handler registered. For example, if a steps throws a `NonRetryableError` after registering rollback, its rollback handler runs with `output` set to `undefined`.
 
-* [  JavaScript ](#tab-panel-12839)
-* [  TypeScript ](#tab-panel-12840)
+* [  JavaScript ](#tab-panel-13035)
+* [  TypeScript ](#tab-panel-13036)
 
 JavaScript
 
@@ -411,5 +411,6 @@ await step.do('next-task', async() => {
 ```
 
 ```json
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workflows/build/sleeping-and-retrying/#page","headline":"Sleeping and retrying · Cloudflare Workflows docs","description":"Configure sleep durations and retry logic for Workflows steps, including relative and absolute sleep timers.","url":"https://developers.cloudflare.com/workflows/build/sleeping-and-retrying/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-06-11","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/workflows/","name":"Workflows"}},{"@type":"ListItem","position":3,"item":{"@id":"/workflows/build/","name":"Build with Workflows"}},{"@type":"ListItem","position":4,"item":{"@id":"/workflows/build/sleeping-and-retrying/","name":"Sleeping and retrying"}}]}
 ```

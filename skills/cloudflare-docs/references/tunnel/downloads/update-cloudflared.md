@@ -18,12 +18,12 @@ Updates will cause `cloudflared` to restart which will impact traffic currently 
 
 Refer to the following commands to update `cloudflared` for a remotely-managed tunnel or a locally-managed tunnel. Locally-managed tunnels must be set up to [run as a service](https://developers.cloudflare.com/tunnel/other-tunnel-types/local-management/as-a-service/) for the following commands to execute successfully.
 
-* [ Windows ](#tab-panel-10051)
-* [ macOS ](#tab-panel-10052)
-* [ Debian ](#tab-panel-10053)
-* [ Red Hat ](#tab-panel-10054)
-* [ Docker ](#tab-panel-10055)
-* [ Other ](#tab-panel-10056)
+* [ Windows ](#tab-panel-10988)
+* [ macOS ](#tab-panel-10989)
+* [ Debian ](#tab-panel-10990)
+* [ Red Hat ](#tab-panel-10991)
+* [ Docker ](#tab-panel-10992)
+* [ Other ](#tab-panel-10993)
 
 Run the following command:
 
@@ -249,5 +249,6 @@ sc.exe start <unique-name>
 ```
 
 ```json
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/tunnel/downloads/update-cloudflared/#page","headline":"Update cloudflared · Cloudflare Docs","description":"Update cloudflared to the latest version.","url":"https://developers.cloudflare.com/tunnel/downloads/update-cloudflared/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-05-07","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Docker"]}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/tunnel/","name":"Cloudflare Tunnel"}},{"@type":"ListItem","position":3,"item":{"@id":"/tunnel/downloads/","name":"Downloads"}},{"@type":"ListItem","position":4,"item":{"@id":"/tunnel/downloads/update-cloudflared/","name":"Update cloudflared"}}]}
 ```

@@ -22,9 +22,9 @@ If you want to get started quickly, click on the button below.
 
 This creates a repository in your GitHub account and deploys the application to Cloudflare Workers.
 
-* [  JavaScript ](#tab-panel-11591)
-* [  TypeScript ](#tab-panel-11592)
-* [  Python ](#tab-panel-11593)
+* [  JavaScript ](#tab-panel-11731)
+* [  TypeScript ](#tab-panel-11732)
+* [  Python ](#tab-panel-11733)
 
 JavaScript
 
@@ -63,7 +63,7 @@ export default {
 
 ```
 
-[Run Worker in Playground](https://workers.cloudflare.com/playground#LYVwNgLglgDghgJwgegGYHsHALQBM4RwDcABAEbogB2+CAngLzbPYZb6HbW5QDGU2AAyCAjGIBsAZgDsggCzSArAC4WLNsA5wuNPgOFiRU2QsUBYAFABhdFQgBTO9gAiUAM4x0bqNFvKSGngExCRUcMD2DABEUDT2AB4AdABWblGkqFBgjuGRMXFJqVGWNnaOENgAKnQw9v5wMDBgfARQtsjJcABucG68CLAQANTA6Ljg9paWCZ5IJLj2qHDgECQA3hYkJL10VLwB9hC8ABYAFAj2AI4g9m4QAJTrm1sB1Ly+VCQAsofHYwBy6AgAEEwGB0AB3ey4c5XG53R4bF4vC4QEAIT5UewQkgAJVuniobnspwABj8IH9cCQACRrC7XW4QRIRSljAC+oSB2zBkOhiVJABonsjkXcCCA3P45IJFILnqKSMd7HAFggpSLFS9QeCIf4ogBxACilSi8q1JHZ5tF7PuRAVlodyGQJAA8lQwHQSMbKiQGfCIG4SBDMABrYM+Y4kSnuEgwBDoeJ0RIOqCoEiwxl3Fm-MYkACEDAYJENJqij1R6M+FKpgJBvKhMP9TLtDsrGIORzOpOOEAgMClzoS4Sa9kSvHQwFJra2Vos7KIljUzA0Wh0PH4QlEEhk8iUJVsDicrg8Xh8bSo-kCWlIYQi0VZquC6QCWRy96iZHBZGK1kP5SqGo6m2Rpml4Vp2lSWwpgsNYomAOBYgAfVGcZsiiZR8gWQo0nZJdl1XYJ1z0LdDGMPdFGYSwgA)
+[Run Worker in Playground](https://workers.cloudflare.com/playground#LYVwNgLglgDghgJwgegGYHsHALQBM4RwDcABAEbogB2+CAngLzbPYZb6HbW5QDGU2AAwAmACxiAbAA5RATmEBGYQC4WLNsA5wuNPgJHjR0uYuEBYAFABhdFQgBTO9gAiUAM4x0bqNFvKSGngExCRUcMD2DABEUDT2AB4AdABWblGkqFBgjuGRMXFJqVGWNnaOENgAKnQw9v5wMDBgfARQtsjJcABucG68CLAQANTA6Ljg9paWCZ5IJLj2qHDgECQA3hYkJL10VLwB9hC8ABYAFAj2AI4g9m4QAJTrm1sB1Ly+VCQAsofHYwBy6AgAEEwGB0AB3ey4c5XG53R4bF4vC4QEAIT5UewQkgAJVuniobnspwABj8IH9cCQACRrC7XW4QRIRSljAC+oSB2zBkOhiVJABonsjkXcCCA3P5RIIAKyC56ikjHexwBYIKUipUvUHgiH+KIAcQAopUogrtSR2RbRez7kRFVbHchkCQAPJUMB0EgmyokBnwiBuEgQzAAaxDPmOJEp7hIMAQ6HidESjqgqBIsMZdxZvzGJAAhAwGCQjaaoo9UejPhSqYCQbyoTCA0z7Y6qxiDkczqTjhAIDApS6EuEmvZErx0MBSW2ttaLOyiJY1MwNFodDx+EIxJIZPIlCVbA4nK4PF4fG0qP5AlpSGEItFWWrgukAlkcg+omRwWRitYj+UVQ1HU2yNM0vCtO0qS2FMFhrFEwBwLEAD6ozjNkUTKPkCyFGk7LLiua7BBuejboYxj7sIzCWEAA)
 
 TypeScript
 
@@ -135,5 +135,6 @@ class Default(WorkerEntrypoint):
 ```
 
 ```json
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/examples/respond-with-another-site/#page","headline":"Respond with another site · Cloudflare Workers docs","description":"Respond to the Worker request with the response from another website (example.com in this example).","url":"https://developers.cloudflare.com/workers/examples/respond-with-another-site/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Middleware","JavaScript","TypeScript","Python"]}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/workers/","name":"Workers"}},{"@type":"ListItem","position":3,"item":{"@id":"/workers/examples/","name":"Examples"}},{"@type":"ListItem","position":4,"item":{"@id":"/workers/examples/respond-with-another-site/","name":"Respond with another site"}}]}
 ```

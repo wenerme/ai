@@ -12,8 +12,8 @@ image: https://developers.cloudflare.com/cf-twitter-card.png
 
 # Build the app frontend and UI
 
-* [ Watch this episode ](#tab-panel-6435)
-* [ Series overview ](#tab-panel-6436)
+* [ Watch this episode ](#tab-panel-9053)
+* [ Series overview ](#tab-panel-9054)
 
 In this video, we set up the frontend starter code (the starter code is located in the Veet GitHub repository), connect to Durable Objects using a call room ID, and display a local video preview.
 
@@ -43,5 +43,6 @@ For additional resources on learning Durable Objects with Cloudflare, refer to t
 [ Watch Episode 7: Deploy your video call app ](https://developers.cloudflare.com/learning-paths/durable-objects-course/series/deploy-your-video-call-app-7/) In this final episode, we configure the remaining functionalities. By the end, your app will be fully functional and ready for deployment. 
 
 ```json
+{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/learning-paths/durable-objects-course/series/build-the-app-frontend-5/#page","headline":"Build the app frontend and UI · Cloudflare Learning Paths","description":"Set up the video call frontend interface.","url":"https://developers.cloudflare.com/learning-paths/durable-objects-course/series/build-the-app-frontend-5/","inLanguage":"en","image":"https://developers.cloudflare.com/cf-twitter-card.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/learning-paths/","name":"Learning Paths"}},{"@type":"ListItem","position":3,"item":{"@id":"/learning-paths/durable-objects-course/series/","name":"Overview"}},{"@type":"ListItem","position":4,"item":{"@id":"/learning-paths/durable-objects-course/series/build-the-app-frontend-5/","name":"Build the app frontend and UI"}}]}
 ```

@@ -18,9 +18,9 @@ This page lists the configuration flags for the `cloudflared tunnel run` command
 
 Remotely-managed tunnels run as a service on your OS. To add run parameters to the tunnel service file:
 
-* [ Linux ](#tab-panel-10036)
-* [ macOS ](#tab-panel-10037)
-* [ Windows ](#tab-panel-10038)
+* [ Linux ](#tab-panel-10973)
+* [ macOS ](#tab-panel-10974)
+* [ Windows ](#tab-panel-10975)
 
 On Linux, Cloudflare Tunnel installs itself as a system service using `systemctl`. By default, the service will be named `cloudflared.service`. To configure your tunnel on Linux:
 
@@ -330,5 +330,6 @@ For remotely-managed tunnels only. Requires `2025.4.0` or later.
 Associates the `cloudflared` instance with a specific tunnel using a file which contains the token.
 
 ```json
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/tunnel/advanced/run-parameters/#page","headline":"Run parameters · Cloudflare Docs","description":"Command-line flags for running cloudflared tunnel.","url":"https://developers.cloudflare.com/tunnel/advanced/run-parameters/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-05-05","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["CLI"]}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/tunnel/","name":"Cloudflare Tunnel"}},{"@type":"ListItem","position":3,"item":{"@id":"/tunnel/advanced/","name":"Advanced"}},{"@type":"ListItem","position":4,"item":{"@id":"/tunnel/advanced/run-parameters/","name":"Run parameters"}}]}
 ```

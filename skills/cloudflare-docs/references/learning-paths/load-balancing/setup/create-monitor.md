@@ -16,8 +16,8 @@ Instead of starting on your production domain, you likely should create a load b
 
 Starting with a test domain allows you to verify everything is working correctly before routing production traffic.
 
-* [ Dashboard ](#tab-panel-6955)
-* [ API ](#tab-panel-6956)
+* [ Dashboard ](#tab-panel-9069)
+* [ API ](#tab-panel-9070)
 
 **Set up the monitor**
 
@@ -240,5 +240,6 @@ Example monitor configuration
 | Expected Code(s) | 200       |
 
 ```json
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/learning-paths/load-balancing/setup/create-monitor/#page","headline":"Create monitor · Cloudflare Learning Paths","description":"Learn about create monitor in this guide.","url":"https://developers.cloudflare.com/learning-paths/load-balancing/setup/create-monitor/","inLanguage":"en","image":"https://developers.cloudflare.com/cf-twitter-card.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/learning-paths/","name":"Learning Paths"}},{"@type":"ListItem","position":3,"item":{"@id":"/learning-paths/load-balancing/setup/","name":"Setup"}},{"@type":"ListItem","position":4,"item":{"@id":"/learning-paths/load-balancing/setup/create-monitor/","name":"Create monitor"}}]}
 ```

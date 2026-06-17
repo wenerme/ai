@@ -38,8 +38,8 @@ If you disable Universal SSL, you may experience errors with the following scena
 
 Before you disable Universal SSL/TLS, make sure you have [uploaded a custom certificate](https://developers.cloudflare.com/ssl/edge-certificates/custom-certificates/) or purchased [Advanced Certificate Manager](https://developers.cloudflare.com/ssl/edge-certificates/advanced-certificate-manager/) to protect your domain.
 
-* [ Dashboard ](#tab-panel-10053)
-* [ API ](#tab-panel-10054)
+* [ Dashboard ](#tab-panel-10614)
+* [ API ](#tab-panel-10615)
 
 To disable Universal SSL in the dashboard:
 
@@ -53,8 +53,8 @@ To disable Universal SSL with the Cloudflare API, send a [PATCH](https://develop
 
 ## Re-enable Universal SSL
 
-* [ Dashboard ](#tab-panel-10055)
-* [ API ](#tab-panel-10056)
+* [ Dashboard ](#tab-panel-10616)
+* [ API ](#tab-panel-10617)
 
 To re-enable Universal SSL in the dashboard:
 
@@ -65,5 +65,6 @@ To re-enable Universal SSL in the dashboard:
 To re-enable Universal SSL with the Cloudflare API, send a [PATCH](https://developers.cloudflare.com/api/resources/ssl/subresources/universal/subresources/settings/methods/edit/) request and include the `"enabled": true` parameter.
 
 ```json
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ssl/edge-certificates/universal-ssl/disable-universal-ssl/#page","headline":"Disable Universal SSL certificates · Cloudflare SSL/TLS docs","description":"Turn off Universal SSL certificates for your domain.","url":"https://developers.cloudflare.com/ssl/edge-certificates/universal-ssl/disable-universal-ssl/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/ssl/","name":"SSL/TLS"}},{"@type":"ListItem","position":3,"item":{"@id":"/ssl/edge-certificates/","name":"Edge certificates"}},{"@type":"ListItem","position":4,"item":{"@id":"/ssl/edge-certificates/universal-ssl/","name":"Universal SSL"}},{"@type":"ListItem","position":5,"item":{"@id":"/ssl/edge-certificates/universal-ssl/disable-universal-ssl/","name":"Disable Universal SSL certificates"}}]}
 ```

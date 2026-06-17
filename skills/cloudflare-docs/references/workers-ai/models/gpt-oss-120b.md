@@ -29,9 +29,9 @@ OpenAI's open-weight models designed for powerful reasoning, agentic tasks, and 
 
 ## Usage
 
-* [  TypeScript ](#tab-panel-4686)
-* [  Python ](#tab-panel-4687)
-* [  curl ](#tab-panel-4688)
+* [  TypeScript ](#tab-panel-4857)
+* [  Python ](#tab-panel-4858)
+* [  curl ](#tab-panel-4859)
 
 ```
 
@@ -120,8 +120,8 @@ This model supports three different API formats:
 
 Synchronous — Send a request and receive a complete response 
 
-* [ Input ](#tab-panel-4689)
-* [ Output ](#tab-panel-4690)
+* [ Input ](#tab-panel-4860)
+* [ Output ](#tab-panel-4861)
 
 Input format
 
@@ -199,8 +199,8 @@ response
 
 Streaming — Send a request with \`stream: true\` and receive server-sent events 
 
-* [ Input ](#tab-panel-4691)
-* [ Output ](#tab-panel-4692)
+* [ Input ](#tab-panel-4862)
+* [ Output ](#tab-panel-4863)
 
 Input format
 
@@ -286,8 +286,8 @@ format
 
 Batch — Send multiple requests in a single API call 
 
-* [ Input ](#tab-panel-4693)
-* [ Output ](#tab-panel-4694)
+* [ Input ](#tab-panel-4864)
+* [ Output ](#tab-panel-4865)
 
 ▶requests\[\]
 
@@ -320,5 +320,6 @@ response
  Batch Output [ ](https://developers.cloudflare.com/workers-ai/models/gpt-oss-120b/batch-output.json "Open") [ ](https://developers.cloudflare.com/workers-ai/models/gpt-oss-120b/batch-output.json "Download") 
 
 ```json
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers-ai/models/gpt-oss-120b/#page","headline":"gpt-oss-120b (OpenAI) · Cloudflare AI docs · Cloudflare Workers AI docs","description":"OpenAI's open-weight models designed for powerful reasoning, agentic tasks, and versatile developer use cases – gpt-oss-120b is for production, general purpose, high reasoning use-cases.","url":"https://developers.cloudflare.com/workers-ai/models/gpt-oss-120b/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/workers-ai/","name":"Workers AI"}},{"@type":"ListItem","position":3,"item":{"@id":"/workers-ai/models/","name":"Models"}}]}
 ```

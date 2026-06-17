@@ -247,8 +247,8 @@ To wrap up a test suite, call `await worker.stop()` in an `afterAll` function.
 
 #### Single Worker example
 
-* [  JavaScript ](#tab-panel-10003)
-* [  TypeScript ](#tab-panel-10004)
+* [  JavaScript ](#tab-panel-12225)
+* [  TypeScript ](#tab-panel-12226)
 
 JavaScript
 
@@ -348,8 +348,8 @@ You can test Workers that call other Workers. In the below example, we refer to 
 
 If you shut down the child Worker prematurely, the parent Worker will not know the child Worker exists and your tests will fail.
 
-* [  JavaScript ](#tab-panel-10005)
-* [  TypeScript ](#tab-panel-10006)
+* [  JavaScript ](#tab-panel-12227)
+* [  TypeScript ](#tab-panel-12228)
 
 JavaScript
 
@@ -556,8 +556,8 @@ const platform = await getPlatformProxy(options);
 
 The `getPlatformProxy` function uses bindings found in the [Wrangler configuration file](https://developers.cloudflare.com/workers/wrangler/configuration/). For example, if you have an [environment variable](https://developers.cloudflare.com/workers/configuration/environment-variables/#add-environment-variables-via-wrangler) configuration set up in the Wrangler configuration file:
 
-* [  wrangler.jsonc ](#tab-panel-10007)
-* [  wrangler.toml ](#tab-panel-10008)
+* [  wrangler.jsonc ](#tab-panel-12229)
+* [  wrangler.toml ](#tab-panel-12230)
 
 JSONC
 
@@ -635,8 +635,8 @@ Using Workers AI always accesses your Cloudflare account in order to run AI mode
 * [Durable Object bindings](https://developers.cloudflare.com/durable-objects/api/)  
    * To use a Durable Object binding with `getPlatformProxy`, always specify a [script\_name](https://developers.cloudflare.com/workers/wrangler/configuration/#durable-objects).  
    For example, you might have the following binding in a Wrangler configuration file read by `getPlatformProxy`.  
-         * [  wrangler.jsonc ](#tab-panel-10011)  
-         * [  wrangler.toml ](#tab-panel-10012)  
+         * [  wrangler.jsonc ](#tab-panel-12233)  
+         * [  wrangler.toml ](#tab-panel-12234)  
    JSONC  
    ```  
    {  
@@ -672,8 +672,8 @@ Using Workers AI always accesses your Cloudflare account in order to run AI mode
    };  
    ```  
    That Worker also needs a Wrangler configuration file that looks like this:  
-         * [  wrangler.jsonc ](#tab-panel-10009)  
-         * [  wrangler.toml ](#tab-panel-10010)  
+         * [  wrangler.jsonc ](#tab-panel-12231)  
+         * [  wrangler.toml ](#tab-panel-12232)  
    JSONC  
    ```  
    {  
@@ -714,5 +714,6 @@ Using Workers AI always accesses your Cloudflare account in order to run AI mode
    ```
 
 ```json
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/wrangler/api/#page","headline":"API · Cloudflare Workers docs","description":"A set of programmatic APIs that can be integrated with local Cloudflare Workers-related workflows.","url":"https://developers.cloudflare.com/workers/wrangler/api/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-30","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/workers/","name":"Workers"}},{"@type":"ListItem","position":3,"item":{"@id":"/workers/wrangler/","name":"Wrangler"}},{"@type":"ListItem","position":4,"item":{"@id":"/workers/wrangler/api/","name":"API"}}]}
 ```

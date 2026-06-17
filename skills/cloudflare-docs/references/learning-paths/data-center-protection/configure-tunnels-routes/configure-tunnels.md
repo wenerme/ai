@@ -69,8 +69,8 @@ Warning
 
 Cloudflare Network Firewall rules apply to Internet Control Message Protocol (ICMP) traffic. If you enable Cloudflare Network Firewall, ensure your rules allow ICMP traffic sourced from Cloudflare public IPs. Otherwise, health checks will fail. Refer to [Cloudflare Network Firewall rules](https://developers.cloudflare.com/cloudflare-network-firewall/about/ruleset-logic/#cloudflare-network-firewall-rules-and-magic-transit-endpoint-health-checks) for more information.
 
-* [ Dashboard ](#tab-panel-6953)
-* [ API ](#tab-panel-6954)
+* [ Dashboard ](#tab-panel-9049)
+* [ API ](#tab-panel-9050)
 
 1. Go to **Connectors** page.
 [ Go to **Connectors** ](https://dash.cloudflare.com/?to=/:account/magic-networks/connections)
@@ -543,5 +543,6 @@ If you experience issues with your tunnels:
 * For IPsec tunnel establishment issues, refer to [Troubleshoot with IPsec logs](https://developers.cloudflare.com/magic-transit/troubleshooting/ipsec-troubleshoot/).
 
 ```json
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/learning-paths/data-center-protection/configure-tunnels-routes/configure-tunnels/#page","headline":"Configure tunnels · Cloudflare Learning Paths","description":"Create GRE or IPsec tunnels for Magic Transit.","url":"https://developers.cloudflare.com/learning-paths/data-center-protection/configure-tunnels-routes/configure-tunnels/","inLanguage":"en","image":"https://developers.cloudflare.com/cf-twitter-card.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/learning-paths/","name":"Learning Paths"}},{"@type":"ListItem","position":3,"item":{"@id":"/learning-paths/data-center-protection/configure-tunnels-routes/","name":"Configure tunnels and routes"}},{"@type":"ListItem","position":4,"item":{"@id":"/learning-paths/data-center-protection/configure-tunnels-routes/configure-tunnels/","name":"Configure tunnels"}}]}
 ```

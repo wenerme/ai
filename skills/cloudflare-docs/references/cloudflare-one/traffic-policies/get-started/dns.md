@@ -58,8 +58,8 @@ To confirm that your device's DNS queries are flowing through Gateway:
 
 A DNS policy has two parts: a **traffic condition** that defines which queries to match (for example, all queries to gambling sites) and an **action** that defines what to do with matching queries (for example, block them). To create a new DNS policy:
 
-* [ Dashboard ](#tab-panel-5514)
-* [ API ](#tab-panel-5515)
+* [ Dashboard ](#tab-panel-7604)
+* [ API ](#tab-panel-7605)
 
 1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** \> **Traffic policies** \> **Firewall policies**.
 2. In the **DNS** tab, select **Add a policy**.
@@ -111,5 +111,6 @@ For more information, refer to [DNS policies](https://developers.cloudflare.com/
 Once your first policy is active, refer to [common DNS policies](https://developers.cloudflare.com/cloudflare-one/traffic-policies/dns-policies/common-policies) for other policies you may want to add. Common additions include blocking specific content categories (such as social media or streaming), enabling SafeSearch on search engines, and restricting DNS queries so devices can only use resolvers that you have approved.
 
 ```json
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/traffic-policies/get-started/dns/#page","headline":"Set up DNS filtering · Cloudflare One docs","description":"DNS filtering in Gateway.","url":"https://developers.cloudflare.com/cloudflare-one/traffic-policies/get-started/dns/","inLanguage":"en","image":"https://developers.cloudflare.com/zt-preview.png","dateModified":"2026-04-22","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["DNS"]}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/cloudflare-one/","name":"Cloudflare One"}},{"@type":"ListItem","position":3,"item":{"@id":"/cloudflare-one/traffic-policies/","name":"Traffic policies"}},{"@type":"ListItem","position":4,"item":{"@id":"/cloudflare-one/traffic-policies/get-started/","name":"Get started"}},{"@type":"ListItem","position":5,"item":{"@id":"/cloudflare-one/traffic-policies/get-started/dns/","name":"DNS filtering"}}]}
 ```

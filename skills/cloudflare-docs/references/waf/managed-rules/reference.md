@@ -18,5 +18,6 @@ image: https://developers.cloudflare.com/core-services-preview.png
 * [ Cloudflare Sensitive Data Detection ](https://developers.cloudflare.com/waf/managed-rules/reference/sensitive-data-detection/)
 
 ```json
+{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/waf/managed-rules/reference/#page","headline":"Rulesets reference · Cloudflare Web Application Firewall (WAF) docs","description":"Reference for WAF managed rulesets including OWASP and Cloudflare rules.","url":"https://developers.cloudflare.com/waf/managed-rules/reference/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/waf/","name":"WAF"}},{"@type":"ListItem","position":3,"item":{"@id":"/waf/managed-rules/","name":"Managed Rules"}},{"@type":"ListItem","position":4,"item":{"@id":"/waf/managed-rules/reference/","name":"Rulesets reference"}}]}
 ```

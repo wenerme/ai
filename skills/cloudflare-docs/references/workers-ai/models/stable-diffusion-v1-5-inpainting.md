@@ -29,8 +29,8 @@ Stable Diffusion Inpainting is a latent text-to-image diffusion model capable of
 
 ## Usage
 
-* [  TypeScript ](#tab-panel-4907)
-* [  curl ](#tab-panel-4908)
+* [  TypeScript ](#tab-panel-5088)
+* [  curl ](#tab-panel-5089)
 
 ```
 
@@ -120,8 +120,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 ## Parameters
 
-* [ Input ](#tab-panel-4909)
-* [ Output ](#tab-panel-4910)
+* [ Input ](#tab-panel-5090)
+* [ Output ](#tab-panel-5091)
 
 prompt
 
@@ -176,5 +176,6 @@ Input [ ](https://developers.cloudflare.com/workers-ai/models/stable-diffusion-v
 Output [ ](https://developers.cloudflare.com/workers-ai/models/stable-diffusion-v1-5-inpainting/schema-output.json "Open") [ ](https://developers.cloudflare.com/workers-ai/models/stable-diffusion-v1-5-inpainting/schema-output.json "Download") 
 
 ```json
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers-ai/models/stable-diffusion-v1-5-inpainting/#page","headline":"stable-diffusion-v1-5-inpainting (RunwayML) · Cloudflare AI docs · Cloudflare Workers AI docs","description":"Stable Diffusion Inpainting is a latent text-to-image diffusion model capable of generating photo-realistic images given any text input, with the extra capability of inpainting the pictures by using a mask.","url":"https://developers.cloudflare.com/workers-ai/models/stable-diffusion-v1-5-inpainting/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/workers-ai/","name":"Workers AI"}},{"@type":"ListItem","position":3,"item":{"@id":"/workers-ai/models/","name":"Models"}}]}
 ```

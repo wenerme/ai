@@ -22,8 +22,8 @@ The Python Workers platform leverages [FFI ↗](https://en.wikipedia.org/wiki/Fo
 
 From the configuration perspective, enabling Python Workflows requires adding the `python_workflows` compatibility flag to your Wrangler configuration file.
 
-* [  wrangler.jsonc ](#tab-panel-10493)
-* [  wrangler.toml ](#tab-panel-10494)
+* [  wrangler.jsonc ](#tab-panel-13073)
+* [  wrangler.toml ](#tab-panel-13074)
 
 JSONC
 
@@ -39,7 +39,7 @@ JSONC
 
   // Set this to today's date
 
-  "compatibility_date": "2026-05-04",
+  "compatibility_date": "2026-06-17",
 
   "compatibility_flags": ["python_workflows", "python_workers"],
 
@@ -80,7 +80,7 @@ main = "src/index.py"
 
 # Set this to today's date
 
-compatibility_date = "2026-05-04"
+compatibility_date = "2026-06-17"
 
 compatibility_flags = [ "python_workflows", "python_workers" ]
 
@@ -286,5 +286,6 @@ Refer to the [Workflows REST API documentation](https://developers.cloudflare.co
 Refer to the [CLI quick start](https://developers.cloudflare.com/workflows/get-started/guide/) to learn more about how to manage and trigger Workflows via the command-line.
 
 ```json
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workflows/python/bindings/#page","headline":"Interact with a Workflow · Cloudflare Workflows docs","description":"Trigger and manage Workflows from Python Workers using FFI bindings to Cloudflare resources.","url":"https://developers.cloudflare.com/workflows/python/bindings/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-22","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/workflows/","name":"Workflows"}},{"@type":"ListItem","position":3,"item":{"@id":"/workflows/python/","name":"Python Workflows SDK"}},{"@type":"ListItem","position":4,"item":{"@id":"/workflows/python/bindings/","name":"Interact with a Workflow"}}]}
 ```

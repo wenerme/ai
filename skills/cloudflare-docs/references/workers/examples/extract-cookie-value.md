@@ -22,10 +22,10 @@ If you want to get started quickly, click on the button below.
 
 This creates a repository in your GitHub account and deploys the application to Cloudflare Workers.
 
-* [  JavaScript ](#tab-panel-10481)
-* [  TypeScript ](#tab-panel-10482)
-* [  Python ](#tab-panel-10483)
-* [  Hono ](#tab-panel-10484)
+* [  JavaScript ](#tab-panel-11660)
+* [  TypeScript ](#tab-panel-11661)
+* [  Python ](#tab-panel-11662)
+* [  Hono ](#tab-panel-11663)
 
 JavaScript
 
@@ -176,5 +176,6 @@ This example requires the npm package [cookie ↗](https://www.npmjs.com/package
 The Hono example uses the built-in cookie utilities provided by Hono, so no external dependencies are needed for that implementation.
 
 ```json
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/examples/extract-cookie-value/#page","headline":"Cookie parsing · Cloudflare Workers docs","description":"Given the cookie name, get the value of a cookie. You can also use cookies for A/B testing.","url":"https://developers.cloudflare.com/workers/examples/extract-cookie-value/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Headers","JavaScript","TypeScript","Python"]}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/workers/","name":"Workers"}},{"@type":"ListItem","position":3,"item":{"@id":"/workers/examples/","name":"Examples"}},{"@type":"ListItem","position":4,"item":{"@id":"/workers/examples/extract-cookie-value/","name":"Cookie parsing"}}]}
 ```

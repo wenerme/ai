@@ -22,8 +22,8 @@ To manage account members, you must have a role of **Super Administrator** and h
 
 To manage account members, you must have a role of **Super Administrator** and have a [verified email address](https://developers.cloudflare.com/fundamentals/user-profiles/verify-email-address/).
 
-* [ Dashboard ](#tab-panel-8473)
-* [ API ](#tab-panel-8474)
+* [ Dashboard ](#tab-panel-9019)
+* [ API ](#tab-panel-9020)
 
 To view members using the dashboard:
 
@@ -37,8 +37,8 @@ To view members using the API, send a [GET request](https://developers.cloudflar
 
 To manage account members, you must have a role of **Super Administrator** and have a [verified email address](https://developers.cloudflare.com/fundamentals/user-profiles/verify-email-address/).
 
-* [ Dashboard ](#tab-panel-8475)
-* [ API ](#tab-panel-8476)
+* [ Dashboard ](#tab-panel-9021)
+* [ API ](#tab-panel-9022)
 
 To add a member to your account:
 
@@ -62,8 +62,8 @@ To add a member using the API, send a [POST request](https://developers.cloudfla
 
 To manage account members, you must have a role of **Super Administrator** and have a [verified email address](https://developers.cloudflare.com/fundamentals/user-profiles/verify-email-address/).
 
-* [ Dashboard ](#tab-panel-8477)
-* [ API ](#tab-panel-8478)
+* [ Dashboard ](#tab-panel-9023)
+* [ API ](#tab-panel-9024)
 
 To edit member permissions using the dashboard:
 
@@ -130,8 +130,8 @@ If you invited a member to your account but they cannot find the invitation or t
 
 To manage account members, you must have a role of **Super Administrator** and have a [verified email address](https://developers.cloudflare.com/fundamentals/user-profiles/verify-email-address/).
 
-* [ Dashboard ](#tab-panel-8479)
-* [ API ](#tab-panel-8480)
+* [ Dashboard ](#tab-panel-9025)
+* [ API ](#tab-panel-9026)
 
 To revoke a member's access to your account:
 
@@ -144,5 +144,6 @@ To revoke a member's access to your account:
 To revoke a member's access to your account using the API, send a [DELETE request](https://developers.cloudflare.com/api/resources/accounts/subresources/members/methods/delete/).
 
 ```json
+{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/learning-paths/application-security/account-security/add-other-members/#page","headline":"Add and manage other members · Cloudflare Learning Paths","description":"Add, edit, and manage Cloudflare account members.","url":"https://developers.cloudflare.com/learning-paths/application-security/account-security/add-other-members/","inLanguage":"en","image":"https://developers.cloudflare.com/cf-twitter-card.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/learning-paths/","name":"Learning Paths"}},{"@type":"ListItem","position":3,"item":{"@id":"/learning-paths/application-security/account-security/","name":"Account security"}},{"@type":"ListItem","position":4,"item":{"@id":"/learning-paths/application-security/account-security/add-other-members/","name":"Add and manage other members"}}]}
 ```

@@ -99,8 +99,8 @@ When preparing your certificate and private key for upload, be sure to remove an
 
 You can upload a single root certificate or a full certificate chain. When uploading a certificate chain via the dashboard, API, or Terraform, concatenate the root certificate and any intermediate certificates in PEM format, with the root certificate first.
 
-* [ Dashboard ](#tab-panel-5431)
-* [ API ](#tab-panel-5432)
+* [ Dashboard ](#tab-panel-7521)
+* [ API ](#tab-panel-7522)
 
 1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** \> **Traffic policies** \> **Traffic settings** \> **Certificates**.
 2. Select **Upload certificate**.
@@ -250,5 +250,6 @@ If Gateway returns an **HTTP Response Code: 526** after deploying a custom certi
 Python 3.13 and later enable `ssl.VERIFY_X509_STRICT` by default, which requires CA certificates to comply with [RFC 5280 ↗](https://datatracker.ietf.org/doc/html/rfc5280). If your BYOPKI certificate was generated without the `keyUsage` and `basicConstraints` extensions, Python HTTPS requests will fail when the Cloudflare One Client is active. To resolve the issue, [generate a new custom root CA](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/user-side-certificates/custom-certificate/#generate-a-custom-root-ca) and upload it to Cloudflare.
 
 ```json
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/user-side-certificates/custom-certificate/#page","headline":"Deploy custom certificate · Cloudflare One docs","description":"Configure the Cloudflare One Client to use a custom root certificate instead of the Cloudflare certificate.","url":"https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/user-side-certificates/custom-certificate/","inLanguage":"en","image":"https://developers.cloudflare.com/zt-preview.png","dateModified":"2026-05-01","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["TLS","Python"]}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/cloudflare-one/","name":"Cloudflare One"}},{"@type":"ListItem","position":3,"item":{"@id":"/cloudflare-one/team-and-resources/","name":"Team and resources"}},{"@type":"ListItem","position":4,"item":{"@id":"/cloudflare-one/team-and-resources/devices/","name":"Devices"}},{"@type":"ListItem","position":5,"item":{"@id":"/cloudflare-one/team-and-resources/devices/user-side-certificates/","name":"User-side certificates"}},{"@type":"ListItem","position":6,"item":{"@id":"/cloudflare-one/team-and-resources/devices/user-side-certificates/custom-certificate/","name":"Deploy custom certificate"}}]}
 ```

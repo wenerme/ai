@@ -40,8 +40,8 @@ A Transaction Signature (TSIG) authenticates communication between a primary and
 Note  
 The TSIG names configured at your primary and secondary DNS providers have to be exactly the same. Any differences in TSIG names will cause zone transfers to fail.  
 While optional, this step is highly recommended.  
-   * [ Dashboard ](#tab-panel-7613)  
-   * [ API ](#tab-panel-7614)  
+   * [ Dashboard ](#tab-panel-8125)  
+   * [ API ](#tab-panel-8126)  
 To create a TSIG using the dashboard:  
    1. In the Cloudflare dashboard, go to the account **Settings** page.  
    [ Go to **Configurations** ](https://dash.cloudflare.com/?to=/:account/configurations)  
@@ -54,8 +54,8 @@ To create a TSIG using the dashboard:
    5. Select **Create**.  
 To create a TSIG using the API, send a [POST](https://developers.cloudflare.com/api/resources/dns/subresources/zone%5Ftransfers/subresources/tsigs/methods/create/) request.
 3. Create a peer server.  
-   * [ Dashboard ](#tab-panel-7611)  
-   * [ API ](#tab-panel-7612)  
+   * [ Dashboard ](#tab-panel-8123)  
+   * [ API ](#tab-panel-8124)  
 To create a peer server using the dashboard:  
    1. In the Cloudflare dashboard, go to the account **Settings** page.  
    [ Go to **Configurations** ](https://dash.cloudflare.com/?to=/:account/configurations)  
@@ -82,5 +82,6 @@ To create a peer DNS server using the API, send a [POST request](https://develop
 8. At your domain registrar (or parent zone), [update your nameservers](https://developers.cloudflare.com/dns/nameservers/update-nameservers/) to include the `secondary.cloudflare.com` nameservers.
 
 ```json
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/dns/zone-setups/conversions/convert-full-to-secondary/#page","headline":"Convert full setup to secondary setup · Cloudflare DNS docs","description":"If you initially configured a full setup you can later convert your zone to use incoming zone transfers (Cloudflare as secondary).","url":"https://developers.cloudflare.com/dns/zone-setups/conversions/convert-full-to-secondary/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-06-05","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/dns/","name":"DNS"}},{"@type":"ListItem","position":3,"item":{"@id":"/dns/zone-setups/","name":"DNS setups"}},{"@type":"ListItem","position":4,"item":{"@id":"/dns/zone-setups/conversions/","name":"DNS setup conversions"}},{"@type":"ListItem","position":5,"item":{"@id":"/dns/zone-setups/conversions/convert-full-to-secondary/","name":"Convert full setup to secondary setup"}}]}
 ```

@@ -46,5 +46,6 @@ R2 supports multiple access methods, so you can choose the one that fits your us
 [ CLI ](https://developers.cloudflare.com/r2/get-started/cli/) Use R2 from the command line. 
 
 ```json
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/r2/get-started/#page","headline":"Get started · Cloudflare R2 docs","description":"Create your first R2 bucket and store objects using the dashboard, S3-compatible tools, or Workers.","url":"https://developers.cloudflare.com/r2/get-started/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/r2/","name":"R2"}},{"@type":"ListItem","position":3,"item":{"@id":"/r2/get-started/","name":"Get started"}}]}
 ```

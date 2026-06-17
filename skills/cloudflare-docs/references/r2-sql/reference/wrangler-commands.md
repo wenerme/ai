@@ -20,9 +20,9 @@ R2 SQL is currently in open beta. Report R2 SQL bugs in [GitHub ↗](https://git
 
 Execute SQL query against R2 Data Catalog
 
-* [  npm ](#tab-panel-7617)
-* [  pnpm ](#tab-panel-7618)
-* [  yarn ](#tab-panel-7619)
+* [  npm ](#tab-panel-9709)
+* [  pnpm ](#tab-panel-9710)
+* [  yarn ](#tab-panel-9711)
 
 Terminal window
 
@@ -76,5 +76,6 @@ Automatically provision draft bindings with new resources
 Install Cloudflare agents skills, if not already present, without asking the user for confirmation
 
 ```json
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/r2-sql/reference/wrangler-commands/#page","headline":"Wrangler commands · R2 SQL docs","description":"Wrangler CLI commands for querying data with R2 SQL.","url":"https://developers.cloudflare.com/r2-sql/reference/wrangler-commands/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/r2-sql/","name":"R2 SQL"}},{"@type":"ListItem","position":3,"item":{"@id":"/r2-sql/reference/","name":"Reference"}},{"@type":"ListItem","position":4,"item":{"@id":"/r2-sql/reference/wrangler-commands/","name":"Wrangler commands"}}]}
 ```

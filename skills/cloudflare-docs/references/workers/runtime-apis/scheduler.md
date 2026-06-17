@@ -52,8 +52,8 @@ A `Promise<void>` that resolves after `delay` milliseconds. If an `AbortSignal` 
 
 Use `scheduler.wait()` to pause execution for a specified duration.
 
-* [  JavaScript ](#tab-panel-10859)
-* [  TypeScript ](#tab-panel-10860)
+* [  JavaScript ](#tab-panel-12057)
+* [  TypeScript ](#tab-panel-12058)
 
 JavaScript
 
@@ -101,8 +101,8 @@ export default {
 
 Use `scheduler.wait()` to implement a delay between retry attempts. This example uses exponential backoff with jitter.
 
-* [  JavaScript ](#tab-panel-10863)
-* [  TypeScript ](#tab-panel-10864)
+* [  JavaScript ](#tab-panel-12061)
+* [  TypeScript ](#tab-panel-12062)
 
 JavaScript
 
@@ -226,8 +226,8 @@ export default {
 
 Use an [AbortController](https://developers.cloudflare.com/workers/runtime-apis/web-standards/#abortcontroller-and-abortsignal) to cancel a pending wait.
 
-* [  JavaScript ](#tab-panel-10861)
-* [  TypeScript ](#tab-panel-10862)
+* [  JavaScript ](#tab-panel-12059)
+* [  TypeScript ](#tab-panel-12060)
 
 JavaScript
 
@@ -319,5 +319,6 @@ export default {
 * [WICG Scheduling APIs proposal ↗](https://github.com/WICG/scheduling-apis) — the specification this API is based on
 
 ```json
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/runtime-apis/scheduler/#page","headline":"Scheduler · Cloudflare Workers docs","description":"Use the scheduler.wait() API to delay execution in Workers.","url":"https://developers.cloudflare.com/workers/runtime-apis/scheduler/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/workers/","name":"Workers"}},{"@type":"ListItem","position":3,"item":{"@id":"/workers/runtime-apis/","name":"Runtime APIs"}},{"@type":"ListItem","position":4,"item":{"@id":"/workers/runtime-apis/scheduler/","name":"Scheduler"}}]}
 ```

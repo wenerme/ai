@@ -45,8 +45,8 @@ Set the base URL to your gateway's Anthropic endpoint, pass your Anthropic API k
 
 Replace `<ACCOUNT_ID>`, `<GATEWAY_ID>`, `<ANTHROPIC_API_KEY>`, and `<CF_AIG_TOKEN>` with your values.
 
-* [ macOS / Linux ](#tab-panel-6412)
-* [ Windows (PowerShell) ](#tab-panel-6413)
+* [ macOS / Linux ](#tab-panel-6552)
+* [ Windows (PowerShell) ](#tab-panel-6553)
 
 Terminal window
 
@@ -93,8 +93,8 @@ Set the provider environment variables. GitHub Copilot CLI reads these on startu
 
 Replace `<ACCOUNT_ID>` with your Cloudflare account ID and `<CF_API_TOKEN>` with your Cloudflare API token. Set `COPILOT_MODEL` to any supported model in `provider/model` format.
 
-* [ macOS / Linux ](#tab-panel-6414)
-* [ Windows (PowerShell) ](#tab-panel-6415)
+* [ macOS / Linux ](#tab-panel-6554)
+* [ Windows (PowerShell) ](#tab-panel-6555)
 
 Terminal window
 
@@ -165,5 +165,6 @@ After you configure an agent, confirm that traffic reaches AI Gateway.
 For more information on logs, refer to [Logging](https://developers.cloudflare.com/ai-gateway/observability/logging/).
 
 ```json
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai-gateway/integrations/coding-agents/#page","headline":"Coding agents · Cloudflare AI Gateway docs","description":"Configure coding agents such as Claude Code and GitHub Copilot CLI to route through AI Gateway for observability, caching, rate limiting, and cost tracking.","url":"https://developers.cloudflare.com/ai-gateway/integrations/coding-agents/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-06-15","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/ai-gateway/","name":"AI Gateway"}},{"@type":"ListItem","position":3,"item":{"@id":"/ai-gateway/integrations/","name":"Integrations"}},{"@type":"ListItem","position":4,"item":{"@id":"/ai-gateway/integrations/coding-agents/","name":"Coding agents"}}]}
 ```

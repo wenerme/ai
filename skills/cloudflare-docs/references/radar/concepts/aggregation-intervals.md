@@ -26,5 +26,6 @@ For example, when requesting one day of data, the default aggregation interval i
 | 1w                   | One week frequency.   |
 
 ```json
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/radar/concepts/aggregation-intervals/#page","headline":"Aggregation intervals · Cloudflare Radar docs","description":"Configure Cloudflare Radar aggregation intervals to control the frequency of returned data, from 15 minutes to one week.","url":"https://developers.cloudflare.com/radar/concepts/aggregation-intervals/","inLanguage":"en","image":"https://developers.cloudflare.com/cf-twitter-card.png","dateModified":"2026-04-20","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/radar/","name":"Radar"}},{"@type":"ListItem","position":3,"item":{"@id":"/radar/concepts/","name":"Concepts"}},{"@type":"ListItem","position":4,"item":{"@id":"/radar/concepts/aggregation-intervals/","name":"Aggregation intervals"}}]}
 ```

@@ -12,9 +12,9 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 # Configure Managed Transforms
 
-* [ Dashboard ](#tab-panel-7424)
-* [ API ](#tab-panel-7425)
-* [ Terraform ](#tab-panel-7426)
+* [ Dashboard ](#tab-panel-10060)
+* [ API ](#tab-panel-10061)
+* [ Terraform ](#tab-panel-10062)
 
 1. In the Cloudflare dashboard, go to the Rules **Settings** page.  
 [ Go to **Settings** ](https://dash.cloudflare.com/?to=/:account/:zone/rules/settings)
@@ -417,8 +417,8 @@ curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/managed_headers" \
 
 ```
 
-* [ Terraform (v5) ](#tab-panel-7422)
-* [ Terraform (v4) ](#tab-panel-7423)
+* [ Terraform (v5) ](#tab-panel-10058)
+* [ Terraform (v4) ](#tab-panel-10059)
 
 Required API token permissions
 
@@ -490,5 +490,6 @@ resource "cloudflare_managed_headers" "tf_example" {
 Make sure you include the Managed Transforms you are updating in the correct object (`managed_request_headers` or `managed_response_headers`).
 
 ```json
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/rules/transform/managed-transforms/configure/#page","headline":"Configure Managed Transforms · Cloudflare Rules docs","description":"Learn how to configure Managed Transforms.","url":"https://developers.cloudflare.com/rules/transform/managed-transforms/configure/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-29","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/rules/","name":"Rules"}},{"@type":"ListItem","position":3,"item":{"@id":"/rules/transform/","name":"Transform Rules"}},{"@type":"ListItem","position":4,"item":{"@id":"/rules/transform/managed-transforms/","name":"Managed Transforms"}},{"@type":"ListItem","position":5,"item":{"@id":"/rules/transform/managed-transforms/configure/","name":"Configure Managed Transforms"}}]}
 ```

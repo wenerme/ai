@@ -1,5 +1,5 @@
 ---
-title: Events &#38; schemas
+title: Events &amp; schemas
 description: Reference of available event sources and their schemas for Queues event subscriptions.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
@@ -1931,5 +1931,6 @@ All events include these common fields:
 | payload                      | object | The event-specific data containing details about what happened |
 
 ```json
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/queues/event-subscriptions/events-schemas/#page","headline":"Events & schemas · Cloudflare Queues docs","description":"Reference of available event sources and their schemas for Queues event subscriptions.","url":"https://developers.cloudflare.com/queues/event-subscriptions/events-schemas/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-05-19","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/queues/","name":"Queues"}},{"@type":"ListItem","position":3,"item":{"@id":"/queues/event-subscriptions/","name":"Event subscriptions"}},{"@type":"ListItem","position":4,"item":{"@id":"/queues/event-subscriptions/events-schemas/","name":"Events & schemas"}}]}
 ```

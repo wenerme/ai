@@ -43,8 +43,8 @@ For more information on bot score, refer to [Bot scores](https://developers.clou
 
 To turn on a traffic detection:
 
-* [  New dashboard ](#tab-panel-11018)
-* [ Old dashboard ](#tab-panel-11019)
+* [  New dashboard ](#tab-panel-11160)
+* [ Old dashboard ](#tab-panel-11161)
 
 1. In the Cloudflare dashboard, go to the Security **Settings** page.  
 [ Go to **Settings** ](https://dash.cloudflare.com/?to=/:account/:zone/security/settings)
@@ -67,5 +67,6 @@ Notes
 For more information on detection versus mitigation, refer to [Concepts](https://developers.cloudflare.com/waf/concepts/#detection-versus-mitigation).
 
 ```json
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/waf/detections/#page","headline":"Traffic detections · Cloudflare Web Application Firewall (WAF) docs","description":"Traffic detection signals including attack scores, bot scores, and leaked credentials.","url":"https://developers.cloudflare.com/waf/detections/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/waf/","name":"WAF"}},{"@type":"ListItem","position":3,"item":{"@id":"/waf/detections/","name":"Traffic detections"}}]}
 ```

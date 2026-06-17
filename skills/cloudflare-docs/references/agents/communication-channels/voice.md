@@ -50,8 +50,8 @@ npm install @cloudflare/voice agents
 
 ### Server
 
-* [  JavaScript ](#tab-panel-4728)
-* [  TypeScript ](#tab-panel-4729)
+* [  JavaScript ](#tab-panel-5295)
+* [  TypeScript ](#tab-panel-5296)
 
 JavaScript
 
@@ -202,8 +202,8 @@ function VoiceUI() {
 
 ### Wrangler configuration
 
-* [  wrangler.jsonc ](#tab-panel-4718)
-* [  wrangler.toml ](#tab-panel-4719)
+* [  wrangler.jsonc ](#tab-panel-5285)
+* [  wrangler.toml ](#tab-panel-5286)
 
 JSONC
 
@@ -324,8 +324,8 @@ Set providers as class properties. Class field initializers run after `super()`,
 | transcriber | Transcriber | Yes      | Continuous per-call STT provider |
 | tts         | TTSProvider | Yes      | Text-to-speech                   |
 
-* [  JavaScript ](#tab-panel-4720)
-* [  TypeScript ](#tab-panel-4721)
+* [  JavaScript ](#tab-panel-5287)
+* [  TypeScript ](#tab-panel-5288)
 
 JavaScript
 
@@ -371,8 +371,8 @@ export class MyAgent extends VoiceAgent<Env> {
 
 For runtime model switching (for example, a Flux vs Nova 3 dropdown), override `createTranscriber`:
 
-* [  JavaScript ](#tab-panel-4722)
-* [  TypeScript ](#tab-panel-4723)
+* [  JavaScript ](#tab-panel-5289)
+* [  TypeScript ](#tab-panel-5290)
 
 JavaScript
 
@@ -422,8 +422,8 @@ Return a `string`, `AsyncIterable<string>`, or `ReadableStream` for streaming re
 
 **Simple response:**
 
-* [  JavaScript ](#tab-panel-4724)
-* [  TypeScript ](#tab-panel-4725)
+* [  JavaScript ](#tab-panel-5291)
+* [  TypeScript ](#tab-panel-5292)
 
 JavaScript
 
@@ -471,8 +471,8 @@ export class MyAgent extends VoiceAgent<Env> {
 
 **Streaming response (recommended for LLM):**
 
-* [  JavaScript ](#tab-panel-4742)
-* [  TypeScript ](#tab-panel-4743)
+* [  JavaScript ](#tab-panel-5309)
+* [  TypeScript ](#tab-panel-5310)
 
 JavaScript
 
@@ -611,8 +611,8 @@ Intercept and transform data at each pipeline stage. Return `null` to skip the c
 | beforeSynthesize(text, connection)       | Text before TTS | Yes       |
 | afterSynthesize(audio, text, connection) | Audio after TTS | Yes       |
 
-* [  JavaScript ](#tab-panel-4732)
-* [  TypeScript ](#tab-panel-4733)
+* [  JavaScript ](#tab-panel-5301)
+* [  TypeScript ](#tab-panel-5302)
 
 JavaScript
 
@@ -710,8 +710,8 @@ export class MyAgent extends VoiceAgent<Env> {
 
 Pass options to `withVoice()` as the second argument:
 
-* [  JavaScript ](#tab-panel-4726)
-* [  TypeScript ](#tab-panel-4727)
+* [  JavaScript ](#tab-panel-5293)
+* [  TypeScript ](#tab-panel-5294)
 
 JavaScript
 
@@ -757,8 +757,8 @@ const VoiceAgent = withVoice(Agent, {
 
 `withVoiceInput(Agent)` adds STT-only voice input — no TTS, no LLM, no response generation. Use this for dictation, search-by-voice, or any UI where you need speech-to-text without a conversational agent.
 
-* [  JavaScript ](#tab-panel-4730)
-* [  TypeScript ](#tab-panel-4731)
+* [  JavaScript ](#tab-panel-5299)
+* [  TypeScript ](#tab-panel-5300)
 
 JavaScript
 
@@ -842,6 +842,9 @@ Wraps `VoiceClient` for `withVoice` agents. Manages connection, mic capture, pla
 import { useVoiceAgent } from "@cloudflare/voice/react";
 
 
+const selectedSpeakerId = "default";
+
+
 const {
 
   status, // "idle" | "listening" | "thinking" | "speaking"
@@ -859,6 +862,8 @@ const {
   connected, // boolean — WebSocket connected
 
   error, // string | null
+
+  outputDeviceError, // string | null — non-fatal speaker routing issue
 
   startCall, // () => Promise<void>
 
@@ -880,6 +885,8 @@ const {
 
   host: window.location.host,
 
+  outputDeviceId: selectedSpeakerId, // Optional audiooutput device ID
+
   enabled: true,
 
 });
@@ -890,6 +897,51 @@ const {
 Use `enabled: false` when the app must wait for async connection prerequisites, such as a user-scoped capability token. While disabled, the hook does not create or connect a `VoiceClient`, returns the idle disconnected state, and action callbacks such as `startCall()`, `sendText()`, and `sendJSON()` are safe no-ops.
 
 When `enabled` changes to `true`, the hook connects with the current options. The first enable is treated as an initial connection, so `onReconnect` only fires for later connection identity changes while the hook remains enabled.
+
+#### Output device selection
+
+Pass `outputDeviceId` to route assistant playback to a selected speaker when the browser supports `HTMLMediaElement.setSinkId()`:
+
+* [  JavaScript ](#tab-panel-5297)
+* [  TypeScript ](#tab-panel-5298)
+
+JavaScript
+
+```
+
+const [outputDeviceId, setOutputDeviceId] = useState("default");
+
+
+const voice = useVoiceAgent({
+
+  agent: "MyAgent",
+
+  outputDeviceId,
+
+});
+
+
+```
+
+TypeScript
+
+```
+
+const [outputDeviceId, setOutputDeviceId] = useState("default");
+
+
+const voice = useVoiceAgent({
+
+  agent: "MyAgent",
+
+  outputDeviceId,
+
+});
+
+
+```
+
+Use a `MediaDeviceInfo.deviceId` from `navigator.mediaDevices.enumerateDevices()` where `kind === "audiooutput"`. `"default"` and `undefined` use the system default output. Browsers without sink selection support continue playing through the default output and set `outputDeviceError` when a non-default output is requested. Device labels may be blank until the user grants microphone permission, so refresh device lists after `startCall()` if you show a speaker picker.
 
 #### Tuning options
 
@@ -970,8 +1022,8 @@ function Dictation() {
 
 Framework-agnostic client for environments without React.
 
-* [  JavaScript ](#tab-panel-4744)
-* [  TypeScript ](#tab-panel-4745)
+* [  JavaScript ](#tab-panel-5313)
+* [  TypeScript ](#tab-panel-5314)
 
 JavaScript
 
@@ -1007,6 +1059,11 @@ client.addEventListener("error", (err) => {
 client.connect();
 
 await client.startCall();
+
+
+// Switch assistant playback without reconnecting the call.
+
+await client.setOutputDevice(selectedSpeakerId);
 
 
 // Later:
@@ -1054,6 +1111,11 @@ client.connect();
 await client.startCall();
 
 
+// Switch assistant playback without reconnecting the call.
+
+await client.setOutputDevice(selectedSpeakerId);
+
+
 // Later:
 
 client.endCall();
@@ -1075,6 +1137,7 @@ client.disconnect();
 | connectionchange  | boolean               | WebSocket connected/disconnected      |
 | mutechange        | boolean               | Mute state changed                    |
 | error             | string \| null        | Error occurred                        |
+| outputdeviceerror | string \| null        | Non-fatal speaker routing issue       |
 | custommessage     | unknown               | Non-voice message from server         |
 
 ### Advanced options
@@ -1084,6 +1147,7 @@ client.disconnect();
 | transport       | VoiceTransport   | Custom transport (default: WebSocket via PartySocket) |
 | audioInput      | VoiceAudioInput  | Custom mic capture (default: built-in AudioWorklet)   |
 | preferredFormat | VoiceAudioFormat | Hint for server audio format (advisory only)          |
+| outputDeviceId  | string           | Preferred audiooutput device for assistant playback   |
 
 ## Providers
 
@@ -1097,8 +1161,8 @@ No API keys required — use your Workers AI binding:
 | WorkersAINova3STT | Continuous STT | @cf/deepgram/nova-3 | withVoiceInput  |
 | WorkersAITTS      | TTS            | @cf/deepgram/aura-1 | Both            |
 
-* [  JavaScript ](#tab-panel-4746)
-* [  TypeScript ](#tab-panel-4747)
+* [  JavaScript ](#tab-panel-5315)
+* [  TypeScript ](#tab-panel-5316)
 
 JavaScript
 
@@ -1226,8 +1290,8 @@ export class CustomAgent extends VoiceAgent<Env> {
 
 **ElevenLabs TTS:**
 
-* [  JavaScript ](#tab-panel-4734)
-* [  TypeScript ](#tab-panel-4735)
+* [  JavaScript ](#tab-panel-5303)
+* [  TypeScript ](#tab-panel-5304)
 
 JavaScript
 
@@ -1279,8 +1343,8 @@ export class MyAgent extends VoiceAgent<Env> {
 
 **Deepgram STT:**
 
-* [  JavaScript ](#tab-panel-4736)
-* [  TypeScript ](#tab-panel-4737)
+* [  JavaScript ](#tab-panel-5305)
+* [  TypeScript ](#tab-panel-5306)
 
 JavaScript
 
@@ -1374,8 +1438,8 @@ Send and receive application-level JSON messages alongside voice protocol messag
 
 **Server:**
 
-* [  JavaScript ](#tab-panel-4740)
-* [  TypeScript ](#tab-panel-4741)
+* [  JavaScript ](#tab-panel-5311)
+* [  TypeScript ](#tab-panel-5312)
 
 JavaScript
 
@@ -1450,8 +1514,8 @@ useEffect(() => {
 
 Use `beforeCallStart` to restrict who can start a call. This example enforces single-speaker — only one connection can be the active speaker at a time:
 
-* [  JavaScript ](#tab-panel-4748)
-* [  TypeScript ](#tab-panel-4749)
+* [  JavaScript ](#tab-panel-5317)
+* [  TypeScript ](#tab-panel-5318)
 
 JavaScript
 
@@ -1565,8 +1629,8 @@ const { metrics } = useVoiceAgent({ agent: "MyAgent" });
 
 `withVoice` automatically persists conversation messages to SQLite. Access history in your `onTurn` via `context.messages`, or directly:
 
-* [  JavaScript ](#tab-panel-4738)
-* [  TypeScript ](#tab-panel-4739)
+* [  JavaScript ](#tab-panel-5307)
+* [  TypeScript ](#tab-panel-5308)
 
 JavaScript
 
@@ -1595,5 +1659,6 @@ this.saveMessage("assistant", "Welcome! How can I help?");
 History survives Durable Object restarts and client reconnections. Voice agents use `keepAlive` to prevent eviction during active calls.
 
 ```json
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/agents/communication-channels/voice/#page","headline":"Voice · Cloudflare Agents docs","description":"Build real-time voice agents with speech-to-text, text-to-speech, and conversation persistence over WebSocket.","url":"https://developers.cloudflare.com/agents/communication-channels/voice/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-06-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/agents/","name":"Agents"}},{"@type":"ListItem","position":3,"item":{"@id":"/agents/communication-channels/","name":"Communication channels"}},{"@type":"ListItem","position":4,"item":{"@id":"/agents/communication-channels/voice/","name":"Voice"}}]}
 ```

@@ -39,9 +39,9 @@ Chapters
 
 To view client logs on desktop devices:
 
-* [ macOS ](#tab-panel-5447)
-* [ Windows ](#tab-panel-5448)
-* [ Linux ](#tab-panel-5449)
+* [ macOS ](#tab-panel-7499)
+* [ Windows ](#tab-panel-7500)
+* [ Linux ](#tab-panel-7501)
 
 1. Open a Terminal window.
 2. Run the `warp-diag` tool:  
@@ -285,8 +285,8 @@ The Cloudflare One Client does not provide an official method to configure loggi
 
 To view client logs on mobile devices:
 
-* [ iOS ](#tab-panel-5445)
-* [ Android/ChromeOS ](#tab-panel-5446)
+* [ iOS ](#tab-panel-7497)
+* [ Android/ChromeOS ](#tab-panel-7498)
 
 1. Open the Cloudflare One Agent app.
 2. Go to **Settings** \> **Advanced** \> **Diagnostics**.
@@ -334,5 +334,6 @@ The `warp-debugging-info-<date>-<time>.zip` archive contains the following files
 | <connection\_id>.sqlog   | QUIC protocol event logs used to debug MASQUE/HTTP3 tunnel connections.                                                                                                                   |
 
 ```json
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/troubleshooting/diagnostic-logs/#page","headline":"Diagnostic logs · Cloudflare One docs","description":"Reference information for Diagnostic logs in Zero Trust.","url":"https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/troubleshooting/diagnostic-logs/","inLanguage":"en","image":"https://developers.cloudflare.com/zt-preview.png","dateModified":"2026-05-22","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Debugging","Video"]}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/cloudflare-one/","name":"Cloudflare One"}},{"@type":"ListItem","position":3,"item":{"@id":"/cloudflare-one/team-and-resources/","name":"Team and resources"}},{"@type":"ListItem","position":4,"item":{"@id":"/cloudflare-one/team-and-resources/devices/","name":"Devices"}},{"@type":"ListItem","position":5,"item":{"@id":"/cloudflare-one/team-and-resources/devices/cloudflare-one-client/","name":"Cloudflare One Client"}},{"@type":"ListItem","position":6,"item":{"@id":"/cloudflare-one/team-and-resources/devices/cloudflare-one-client/troubleshooting/","name":"Troubleshoot the Cloudflare One Client"}},{"@type":"ListItem","position":7,"item":{"@id":"/cloudflare-one/team-and-resources/devices/cloudflare-one-client/troubleshooting/diagnostic-logs/","name":"Diagnostic logs"}}]}
 ```

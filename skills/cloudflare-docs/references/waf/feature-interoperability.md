@@ -130,8 +130,8 @@ When security features interfere with legitimate traffic, use the following step
 
 Use [Security Events](https://developers.cloudflare.com/waf/analytics/security-events/) to identify the feature that blocked a request:
 
-* [  New dashboard ](#tab-panel-10019)
-* [ Old dashboard ](#tab-panel-10020)
+* [  New dashboard ](#tab-panel-11196)
+* [ Old dashboard ](#tab-panel-11197)
 
 1. In the Cloudflare dashboard, go to the **Analytics** page.  
 [ Go to **Analytics** ](https://dash.cloudflare.com/?to=/:account/:zone/security/analytics)
@@ -157,8 +157,8 @@ For more information, refer to [Handle false positives from Bot Fight Mode or Su
 
 Create a custom rule with the _Skip_ action to bypass SBFM for the affected traffic:
 
-* [  New dashboard ](#tab-panel-10021)
-* [ Old dashboard ](#tab-panel-10022)
+* [  New dashboard ](#tab-panel-11198)
+* [ Old dashboard ](#tab-panel-11199)
 
 1. In the Cloudflare dashboard, go to the **Security rules** page.  
 [ Go to **Security rules** ](https://dash.cloudflare.com/?to=/:account/:zone/security/security-rules)
@@ -188,5 +188,6 @@ If a managed rule blocks legitimate traffic:
 For detailed guidance, refer to [Troubleshoot managed rules](https://developers.cloudflare.com/waf/managed-rules/troubleshooting/).
 
 ```json
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/waf/feature-interoperability/#page","headline":"Security features interoperability · Cloudflare Web Application Firewall (WAF) docs","description":"How Cloudflare security features interact and execute in order.","url":"https://developers.cloudflare.com/waf/feature-interoperability/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/waf/","name":"WAF"}},{"@type":"ListItem","position":3,"item":{"@id":"/waf/feature-interoperability/","name":"Security features interoperability"}}]}
 ```

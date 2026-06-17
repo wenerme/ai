@@ -13,3 +13,7 @@ image: https://developers.cloudflare.com/cf-twitter-card.png
 # Configure Full encryption mode
 
 In this video, learn how to configure your site to use Full encryption mode.
+
+```json
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/videos/full-ssl-encryption/#page","headline":"Configure Full encryption mode | Cloudflare Docs","description":"In this video, learn how to configure your site to use Full encryption mode.","url":"https://developers.cloudflare.com/videos/full-ssl-encryption/","inLanguage":"en","image":"https://developers.cloudflare.com/cf-twitter-card.png","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+```

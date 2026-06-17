@@ -51,5 +51,6 @@ If you are using Google Tag Manager (GTM), you can disable SPA tracking by passi
 ```
 
 ```json
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/web-analytics/get-started/web-analytics-spa/#page","headline":"Web Analytics for Single Page Applications (SPAs) · Cloudflare Web Analytics docs","description":"Configure Web Analytics for single-page applications.","url":"https://developers.cloudflare.com/web-analytics/get-started/web-analytics-spa/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-17","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["SPA"]}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/web-analytics/","name":"Cloudflare Web Analytics"}},{"@type":"ListItem","position":3,"item":{"@id":"/web-analytics/get-started/","name":"Get started"}},{"@type":"ListItem","position":4,"item":{"@id":"/web-analytics/get-started/web-analytics-spa/","name":"Web Analytics for SPAs"}}]}
 ```

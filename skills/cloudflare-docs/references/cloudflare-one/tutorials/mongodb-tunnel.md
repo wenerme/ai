@@ -14,7 +14,7 @@ image: https://developers.cloudflare.com/zt-preview.png
 
 **Last reviewed:**  over 5 years ago 
 
-You can build Zero Trust rules to secure connections to MongoDB deployments using Cloudflare Access and Cloudflare Tunnel. Cloudflare Tunnel requires a lightweight daemon, `cloudflared`, running alongisde the deployment and as on the client side.
+You can build Zero Trust rules to secure connections to MongoDB deployments using Cloudflare Access and Cloudflare Tunnel. Cloudflare Tunnel requires a lightweight daemon, `cloudflared`, running alongside the deployment and as on the client side.
 
 In this tutorial, a client running `cloudflared` connects over SSH to a MongoDB deployment running on Kubernetes. The deployment example is structured to connect [Compass ↗](https://www.mongodb.com/products/compass) to the MongoDB instance. The MongoDB Kubernetes deployment runs both the MongoDB database service and `cloudflared` as a ingress service that operates like a jump host.
 
@@ -529,5 +529,6 @@ This is a one-time step. When you next attempt to make an SSH connection to the 
 You can then set MongoDB Compass to connect to `localhost:27000`.
 
 ```json
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/tutorials/mongodb-tunnel/#page","headline":"MongoDB SSH · Cloudflare One docs","description":"You can build Zero Trust rules to secure connections to MongoDB deployments using Cloudflare Access and Cloudflared Tunnel.","url":"https://developers.cloudflare.com/cloudflare-one/tutorials/mongodb-tunnel/","inLanguage":"en","image":"https://developers.cloudflare.com/zt-preview.png","dateModified":"2026-06-05","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["MongoDB","SSH","Kubernetes"]}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/cloudflare-one/","name":"Cloudflare One"}},{"@type":"ListItem","position":3,"item":{"@id":"/cloudflare-one/tutorials/","name":"Tutorials"}},{"@type":"ListItem","position":4,"item":{"@id":"/cloudflare-one/tutorials/mongodb-tunnel/","name":"MongoDB SSH"}}]}
 ```

@@ -140,8 +140,8 @@ Older Wrangler versions will default to Preview URLs being enabled.
 
 To toggle Preview URLs for a Worker, include any of the following in your Worker's Wrangler file:
 
-* [  wrangler.jsonc ](#tab-panel-10296)
-* [  wrangler.toml ](#tab-panel-10297)
+* [  wrangler.jsonc ](#tab-panel-11473)
+* [  wrangler.toml ](#tab-panel-11474)
 
 JSONC
 
@@ -165,8 +165,8 @@ preview_urls = true
 
 ```
 
-* [  wrangler.jsonc ](#tab-panel-10298)
-* [  wrangler.toml ](#tab-panel-10299)
+* [  wrangler.jsonc ](#tab-panel-11475)
+* [  wrangler.toml ](#tab-panel-11476)
 
 JSONC
 
@@ -204,5 +204,6 @@ If you enable or disable Preview URLs in the Cloudflare dashboard, but do not up
 * You cannot view logs for Preview URLs today, this includes Workers Logs, Wrangler tail and Logpush.
 
 ```json
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/configuration/previews/#page","headline":"Preview URLs · Cloudflare Workers docs","description":"Preview URLs allow you to preview new versions of your project without deploying it to production.","url":"https://developers.cloudflare.com/workers/configuration/previews/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-05-11","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/workers/","name":"Workers"}},{"@type":"ListItem","position":3,"item":{"@id":"/workers/configuration/","name":"Configuration"}},{"@type":"ListItem","position":4,"item":{"@id":"/workers/configuration/previews/","name":"Preview URLs"}}]}
 ```

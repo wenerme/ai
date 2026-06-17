@@ -419,5 +419,6 @@ If you are not seeing any historical data for your waiting room, one or more of 
 * Your waiting room was not enabled for the time period you are inspecting.
 
 ```json
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/waiting-room/waiting-room-analytics/#page","headline":"Waiting Room Analytics · Cloudflare Waiting Room docs","description":"View waiting room queue depth, wait times, and visitor analytics.","url":"https://developers.cloudflare.com/waiting-room/waiting-room-analytics/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-17","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Analytics","GraphQL"]}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/waiting-room/","name":"Waiting Room"}},{"@type":"ListItem","position":3,"item":{"@id":"/waiting-room/waiting-room-analytics/","name":"Waiting Room Analytics"}}]}
 ```

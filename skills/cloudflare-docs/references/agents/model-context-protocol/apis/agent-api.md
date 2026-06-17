@@ -14,8 +14,8 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 When you build MCP Servers on Cloudflare, you extend the [McpAgent class ↗](https://github.com/cloudflare/agents/blob/main/packages/agents/src/mcp.ts), from the Agents SDK:
 
-* [  JavaScript ](#tab-panel-5096)
-* [  TypeScript ](#tab-panel-5097)
+* [  JavaScript ](#tab-panel-5703)
+* [  TypeScript ](#tab-panel-5704)
 
 JavaScript
 
@@ -126,8 +126,8 @@ You can use the APIs below in order to do so.
 
 The `McpAgent.serve()` static method creates a Worker handler that routes requests to your MCP server:
 
-* [  JavaScript ](#tab-panel-5098)
-* [  TypeScript ](#tab-panel-5099)
+* [  JavaScript ](#tab-panel-5705)
+* [  TypeScript ](#tab-panel-5706)
 
 JavaScript
 
@@ -207,8 +207,8 @@ This is the simplest way to deploy an MCP server — about 15 lines of code. The
 
 When using the [OAuth Provider Library ↗](https://github.com/cloudflare/workers-oauth-provider), pass your MCP server to `apiHandlers`:
 
-* [  JavaScript ](#tab-panel-5090)
-* [  TypeScript ](#tab-panel-5091)
+* [  JavaScript ](#tab-panel-5697)
+* [  TypeScript ](#tab-panel-5698)
 
 JavaScript
 
@@ -262,8 +262,8 @@ export default new OAuthProvider({
 
 For GDPR and data residency compliance, specify a jurisdiction to ensure your MCP server instances run in specific regions:
 
-* [  JavaScript ](#tab-panel-5088)
-* [  TypeScript ](#tab-panel-5089)
+* [  JavaScript ](#tab-panel-5695)
+* [  TypeScript ](#tab-panel-5696)
 
 JavaScript
 
@@ -289,8 +289,8 @@ export default MyMCP.serve("/mcp", { jurisdiction: "eu" });
 
 With OAuth:
 
-* [  JavaScript ](#tab-panel-5094)
-* [  TypeScript ](#tab-panel-5095)
+* [  JavaScript ](#tab-panel-5701)
+* [  TypeScript ](#tab-panel-5702)
 
 JavaScript
 
@@ -353,8 +353,8 @@ Hibernation is enabled by default and requires no additional configuration.
 
 `DurableObjectEventStore` is exported from `agents/mcp` for stateful `WorkerTransport` callers that embed the transport inside an Agent or Durable Object:
 
-* [  JavaScript ](#tab-panel-5092)
-* [  TypeScript ](#tab-panel-5093)
+* [  JavaScript ](#tab-panel-5699)
+* [  TypeScript ](#tab-panel-5700)
 
 JavaScript
 
@@ -409,8 +409,8 @@ Currently, each client session is backed by an instance of the `McpAgent` class.
 
 For example, the following code implements an MCP server that remembers a counter value, and updates the counter when the `add` tool is called:
 
-* [  JavaScript ](#tab-panel-5102)
-* [  TypeScript ](#tab-panel-5103)
+* [  JavaScript ](#tab-panel-5709)
+* [  TypeScript ](#tab-panel-5710)
 
 JavaScript
 
@@ -617,8 +617,8 @@ Request structured input from the user during tool execution.
 
 **Returns:** `Promise<{ action: "accept" | "decline", content?: object }>`
 
-* [  JavaScript ](#tab-panel-5104)
-* [  TypeScript ](#tab-panel-5105)
+* [  JavaScript ](#tab-panel-5711)
+* [  TypeScript ](#tab-panel-5712)
 
 JavaScript
 
@@ -956,8 +956,8 @@ const schema = {
 
 ### Handling responses
 
-* [  JavaScript ](#tab-panel-5100)
-* [  TypeScript ](#tab-panel-5101)
+* [  JavaScript ](#tab-panel-5707)
+* [  TypeScript ](#tab-panel-5708)
 
 JavaScript
 
@@ -1052,5 +1052,6 @@ For more human-in-the-loop patterns including workflow-based approval, refer to 
 [ createMcpHandler ](https://developers.cloudflare.com/agents/model-context-protocol/apis/handler-api/) Build stateless MCP servers. 
 
 ```json
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/agents/model-context-protocol/apis/agent-api/#page","headline":"McpAgent · Cloudflare Agents docs","description":"Build stateful MCP servers on Cloudflare by extending the McpAgent class with persistent storage and agent capabilities.","url":"https://developers.cloudflare.com/agents/model-context-protocol/apis/agent-api/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-06-03","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["MCP"]}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/agents/","name":"Agents"}},{"@type":"ListItem","position":3,"item":{"@id":"/agents/model-context-protocol/","name":"Model Context Protocol (MCP)"}},{"@type":"ListItem","position":4,"item":{"@id":"/agents/model-context-protocol/apis/","name":"APIs"}},{"@type":"ListItem","position":5,"item":{"@id":"/agents/model-context-protocol/apis/agent-api/","name":"McpAgent"}}]}
 ```

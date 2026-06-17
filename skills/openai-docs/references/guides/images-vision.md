@@ -473,7 +473,17 @@ The `detail` parameter tells the model what level of detail to use when processi
 
 
 
-  Use the following guidance to choose a detail level:
+  ```plain
+{
+    "type": "input_image",
+    "image_url": "https://api.nga.gov/iiif/a2e6da57-3cd1-4235-b20e-95dcaefed6c8/full/!800,800/0/default.jpg",
+    "detail": "original"
+}
+```
+
+
+
+Use the following guidance to choose a detail level:
 
 | Detail level | Best for                                                                                                                                       |
 | ------------ | ---------------------------------------------------------------------------------------------------------------------------------------------- |

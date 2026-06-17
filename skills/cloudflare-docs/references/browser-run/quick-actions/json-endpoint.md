@@ -56,9 +56,9 @@ And at least one of:
 
 ### With a Prompt and JSON schema
 
-* [ curl ](#tab-panel-6690)
-* [ TypeScript SDK ](#tab-panel-6691)
-* [ Workers binding ](#tab-panel-6692)
+* [ curl ](#tab-panel-6901)
+* [ TypeScript SDK ](#tab-panel-6902)
+* [ Workers binding ](#tab-panel-6903)
 
 This example captures webpage data by providing both a prompt and a JSON schema. The prompt guides the extraction process, while the JSON schema defines the expected structure of the output.
 
@@ -789,5 +789,6 @@ The `userAgent` parameter does not bypass bot protection. Requests from Browser 
 If you have questions or encounter an error, see the [Browser Run FAQ and troubleshooting guide](https://developers.cloudflare.com/browser-run/faq/).
 
 ```json
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/browser-run/quick-actions/json-endpoint/#page","headline":"/json - Capture structured data using AI · Cloudflare Browser Run docs","description":"Extract structured JSON data from webpages using AI with the Browser Run /json endpoint.","url":"https://developers.cloudflare.com/browser-run/quick-actions/json-endpoint/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-05-28","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["JSON"]}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/browser-run/","name":"Browser Run"}},{"@type":"ListItem","position":3,"item":{"@id":"/browser-run/quick-actions/","name":"Quick Actions"}},{"@type":"ListItem","position":4,"item":{"@id":"/browser-run/quick-actions/json-endpoint/","name":"/json - Capture structured data using AI"}}]}
 ```

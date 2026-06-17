@@ -3470,6 +3470,18 @@ as input for the model's response.
   Configuration options for
   [reasoning models](https://platform.openai.com/docs/guides/reasoning).
 
+  - `context: Optional[Literal["auto", "current_turn", "all_turns"]]`
+
+    Controls which reasoning items are rendered back to the model on later turns.
+    When returned on a response, this is the effective reasoning context mode
+    used for the response.
+
+    - `"auto"`
+
+    - `"current_turn"`
+
+    - `"all_turns"`
+
   - `effort: Optional[ReasoningEffort]`
 
     Constrains effort on reasoning for
@@ -8744,6 +8756,18 @@ as input for the model's response.
     Configuration options for
     [reasoning models](https://platform.openai.com/docs/guides/reasoning).
 
+    - `context: Optional[Literal["auto", "current_turn", "all_turns"]]`
+
+      Controls which reasoning items are rendered back to the model on later turns.
+      When returned on a response, this is the effective reasoning context mode
+      used for the response.
+
+      - `"auto"`
+
+      - `"current_turn"`
+
+      - `"all_turns"`
+
     - `effort: Optional[ReasoningEffort]`
 
       Constrains effort on reasoning for
@@ -9136,6 +9160,7 @@ for response in client.responses.create():
   "prompt_cache_key": "prompt-cache-key-1234",
   "prompt_cache_retention": "in_memory",
   "reasoning": {
+    "context": "auto",
     "effort": "none",
     "generate_summary": "auto",
     "summary": "auto"
@@ -14796,6 +14821,18 @@ Retrieves a model response with the given ID.
     Configuration options for
     [reasoning models](https://platform.openai.com/docs/guides/reasoning).
 
+    - `context: Optional[Literal["auto", "current_turn", "all_turns"]]`
+
+      Controls which reasoning items are rendered back to the model on later turns.
+      When returned on a response, this is the effective reasoning context mode
+      used for the response.
+
+      - `"auto"`
+
+      - `"current_turn"`
+
+      - `"all_turns"`
+
     - `effort: Optional[ReasoningEffort]`
 
       Constrains effort on reasoning for
@@ -15190,6 +15227,7 @@ for response in client.responses.retrieve(
   "prompt_cache_key": "prompt-cache-key-1234",
   "prompt_cache_retention": "in_memory",
   "reasoning": {
+    "context": "auto",
     "effort": "none",
     "generate_summary": "auto",
     "summary": "auto"
@@ -20150,6 +20188,18 @@ the `background` parameter set to `true` can be cancelled.
     Configuration options for
     [reasoning models](https://platform.openai.com/docs/guides/reasoning).
 
+    - `context: Optional[Literal["auto", "current_turn", "all_turns"]]`
+
+      Controls which reasoning items are rendered back to the model on later turns.
+      When returned on a response, this is the effective reasoning context mode
+      used for the response.
+
+      - `"auto"`
+
+      - `"current_turn"`
+
+      - `"all_turns"`
+
     - `effort: Optional[ReasoningEffort]`
 
       Constrains effort on reasoning for
@@ -20544,6 +20594,7 @@ print(response.id)
   "prompt_cache_key": "prompt-cache-key-1234",
   "prompt_cache_retention": "in_memory",
   "reasoning": {
+    "context": "auto",
     "effort": "none",
     "generate_summary": "auto",
     "summary": "auto"
@@ -36187,6 +36238,18 @@ print(compacted_response)
     Configuration options for
     [reasoning models](https://platform.openai.com/docs/guides/reasoning).
 
+    - `context: Optional[Literal["auto", "current_turn", "all_turns"]]`
+
+      Controls which reasoning items are rendered back to the model on later turns.
+      When returned on a response, this is the effective reasoning context mode
+      used for the response.
+
+      - `"auto"`
+
+      - `"current_turn"`
+
+      - `"all_turns"`
+
     - `effort: Optional[ReasoningEffort]`
 
       Constrains effort on reasoning for
@@ -41677,6 +41740,18 @@ print(compacted_response)
 
       Configuration options for
       [reasoning models](https://platform.openai.com/docs/guides/reasoning).
+
+      - `context: Optional[Literal["auto", "current_turn", "all_turns"]]`
+
+        Controls which reasoning items are rendered back to the model on later turns.
+        When returned on a response, this is the effective reasoning context mode
+        used for the response.
+
+        - `"auto"`
+
+        - `"current_turn"`
+
+        - `"all_turns"`
 
       - `effort: Optional[ReasoningEffort]`
 
@@ -47919,6 +47994,18 @@ print(compacted_response)
       Configuration options for
       [reasoning models](https://platform.openai.com/docs/guides/reasoning).
 
+      - `context: Optional[Literal["auto", "current_turn", "all_turns"]]`
+
+        Controls which reasoning items are rendered back to the model on later turns.
+        When returned on a response, this is the effective reasoning context mode
+        used for the response.
+
+        - `"auto"`
+
+        - `"current_turn"`
+
+        - `"all_turns"`
+
       - `effort: Optional[ReasoningEffort]`
 
         Constrains effort on reasoning for
@@ -53309,6 +53396,18 @@ print(compacted_response)
 
       Configuration options for
       [reasoning models](https://platform.openai.com/docs/guides/reasoning).
+
+      - `context: Optional[Literal["auto", "current_turn", "all_turns"]]`
+
+        Controls which reasoning items are rendered back to the model on later turns.
+        When returned on a response, this is the effective reasoning context mode
+        used for the response.
+
+        - `"auto"`
+
+        - `"current_turn"`
+
+        - `"all_turns"`
 
       - `effort: Optional[ReasoningEffort]`
 
@@ -59447,6 +59546,18 @@ print(compacted_response)
       Configuration options for
       [reasoning models](https://platform.openai.com/docs/guides/reasoning).
 
+      - `context: Optional[Literal["auto", "current_turn", "all_turns"]]`
+
+        Controls which reasoning items are rendered back to the model on later turns.
+        When returned on a response, this is the effective reasoning context mode
+        used for the response.
+
+        - `"auto"`
+
+        - `"current_turn"`
+
+        - `"all_turns"`
+
       - `effort: Optional[ReasoningEffort]`
 
         Constrains effort on reasoning for
@@ -64541,6 +64652,18 @@ print(compacted_response)
 
       Configuration options for
       [reasoning models](https://platform.openai.com/docs/guides/reasoning).
+
+      - `context: Optional[Literal["auto", "current_turn", "all_turns"]]`
+
+        Controls which reasoning items are rendered back to the model on later turns.
+        When returned on a response, this is the effective reasoning context mode
+        used for the response.
+
+        - `"auto"`
+
+        - `"current_turn"`
+
+        - `"all_turns"`
 
       - `effort: Optional[ReasoningEffort]`
 
@@ -88644,6 +88767,18 @@ print(compacted_response)
       Configuration options for
       [reasoning models](https://platform.openai.com/docs/guides/reasoning).
 
+      - `context: Optional[Literal["auto", "current_turn", "all_turns"]]`
+
+        Controls which reasoning items are rendered back to the model on later turns.
+        When returned on a response, this is the effective reasoning context mode
+        used for the response.
+
+        - `"auto"`
+
+        - `"current_turn"`
+
+        - `"all_turns"`
+
       - `effort: Optional[ReasoningEffort]`
 
         Constrains effort on reasoning for
@@ -94251,6 +94386,18 @@ print(compacted_response)
 
         Configuration options for
         [reasoning models](https://platform.openai.com/docs/guides/reasoning).
+
+        - `context: Optional[Literal["auto", "current_turn", "all_turns"]]`
+
+          Controls which reasoning items are rendered back to the model on later turns.
+          When returned on a response, this is the effective reasoning context mode
+          used for the response.
+
+          - `"auto"`
+
+          - `"current_turn"`
+
+          - `"all_turns"`
 
         - `effort: Optional[ReasoningEffort]`
 
@@ -101616,6 +101763,18 @@ print(compacted_response)
     Configuration options for
     [reasoning models](https://platform.openai.com/docs/guides/reasoning).
 
+    - `context: Optional[Literal["auto", "current_turn", "all_turns"]]`
+
+      Controls which reasoning items are rendered back to the model on later turns.
+      When returned on a response, this is the effective reasoning context mode
+      used for the response.
+
+      - `"auto"`
+
+      - `"current_turn"`
+
+      - `"all_turns"`
+
     - `effort: Optional[ReasoningEffort]`
 
       Constrains effort on reasoning for
@@ -107079,6 +107238,18 @@ print(compacted_response)
 
         Configuration options for
         [reasoning models](https://platform.openai.com/docs/guides/reasoning).
+
+        - `context: Optional[Literal["auto", "current_turn", "all_turns"]]`
+
+          Controls which reasoning items are rendered back to the model on later turns.
+          When returned on a response, this is the effective reasoning context mode
+          used for the response.
+
+          - `"auto"`
+
+          - `"current_turn"`
+
+          - `"all_turns"`
 
         - `effort: Optional[ReasoningEffort]`
 
@@ -119099,6 +119270,18 @@ Returns an object with `object` set to `response.input_tokens` and an `input_tok
 - `reasoning: Optional[Reasoning]`
 
   **gpt-5 and o-series models only** Configuration options for [reasoning models](https://platform.openai.com/docs/guides/reasoning).
+
+  - `context: Optional[Literal["auto", "current_turn", "all_turns"]]`
+
+    Controls which reasoning items are rendered back to the model on later turns.
+    When returned on a response, this is the effective reasoning context mode
+    used for the response.
+
+    - `"auto"`
+
+    - `"current_turn"`
+
+    - `"all_turns"`
 
   - `effort: Optional[ReasoningEffort]`
 

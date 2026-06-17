@@ -28,8 +28,8 @@ FLUX.2 \[dev\] is an image model from Black Forest Labs where you can generate h
 
 ## Usage
 
-* [  TypeScript ](#tab-panel-4634)
-* [  curl ](#tab-panel-4635)
+* [  TypeScript ](#tab-panel-4795)
+* [  curl ](#tab-panel-4796)
 
 ```
 
@@ -113,8 +113,8 @@ curl --request POST \
 
 ## Parameters
 
-* [ Input ](#tab-panel-4636)
-* [ Output ](#tab-panel-4637)
+* [ Input ](#tab-panel-4797)
+* [ Output ](#tab-panel-4798)
 
 ▶multipart{}
 
@@ -131,5 +131,6 @@ Input [ ](https://developers.cloudflare.com/workers-ai/models/flux-2-dev/schema-
 Output [ ](https://developers.cloudflare.com/workers-ai/models/flux-2-dev/schema-output.json "Open") [ ](https://developers.cloudflare.com/workers-ai/models/flux-2-dev/schema-output.json "Download") 
 
 ```json
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers-ai/models/flux-2-dev/#page","headline":"flux-2-dev (Black Forest Labs) · Cloudflare AI docs · Cloudflare Workers AI docs","description":"FLUX.2 \\[dev] is an image model from Black Forest Labs where you can generate highly realistic and detailed images, with multi-reference support.","url":"https://developers.cloudflare.com/workers-ai/models/flux-2-dev/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/workers-ai/","name":"Workers AI"}},{"@type":"ListItem","position":3,"item":{"@id":"/workers-ai/models/","name":"Models"}}]}
 ```

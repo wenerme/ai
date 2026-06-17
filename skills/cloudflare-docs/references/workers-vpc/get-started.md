@@ -100,8 +100,8 @@ For comprehensive tunnel configuration, monitoring, and management, refer to the
 
 Now that your tunnel is running, create a VPC Service that Workers can use to access your internal resources:
 
-* [ Dashboard ](#tab-panel-10178)
-* [ Wrangler CLI ](#tab-panel-10179)
+* [ Dashboard ](#tab-panel-11355)
+* [ Wrangler CLI ](#tab-panel-11356)
 
 1. Navigate to the [Workers VPC dashboard ↗](https://dash.cloudflare.com/?to=/:account/workers/vpc) and select the **VPC Services** tab.
 2. Select **Create** to create a new VPC Service.
@@ -176,8 +176,8 @@ If you encounter permission errors, refer to [Required roles](https://developers
 
 Add the VPC Service binding to your Wrangler configuration file:
 
-* [  wrangler.jsonc ](#tab-panel-10180)
-* [  wrangler.toml ](#tab-panel-10181)
+* [  wrangler.jsonc ](#tab-panel-11357)
+* [  wrangler.toml ](#tab-panel-11358)
 
 JSONC
 
@@ -193,7 +193,7 @@ JSONC
 
   // Set this to today's date
 
-  "compatibility_date": "2026-05-28",
+  "compatibility_date": "2026-06-17",
 
   "vpc_services": [
 
@@ -224,7 +224,7 @@ main = "src/index.ts"
 
 # Set this to today's date
 
-compatibility_date = "2026-05-28"
+compatibility_date = "2026-06-17"
 
 
 [[vpc_services]]
@@ -329,5 +329,6 @@ Your Worker is now deployed and can access your private network resources secure
 * Check out [examples](https://developers.cloudflare.com/workers-vpc/examples/) for common use cases
 
 ```json
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers-vpc/get-started/#page","headline":"Get started · Cloudflare Workers VPC","description":"Create your first Workers VPC Service and connect a Worker to your private network.","url":"https://developers.cloudflare.com/workers-vpc/get-started/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-30","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/workers-vpc/","name":"Workers VPC"}},{"@type":"ListItem","position":3,"item":{"@id":"/workers-vpc/get-started/","name":"Get started"}}]}
 ```

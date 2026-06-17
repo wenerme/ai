@@ -3448,6 +3448,18 @@ as input for the model's response.
   Configuration options for
   [reasoning models](https://platform.openai.com/docs/guides/reasoning).
 
+  - `context: Optional[Literal["auto", "current_turn", "all_turns"]]`
+
+    Controls which reasoning items are rendered back to the model on later turns.
+    When returned on a response, this is the effective reasoning context mode
+    used for the response.
+
+    - `"auto"`
+
+    - `"current_turn"`
+
+    - `"all_turns"`
+
   - `effort: Optional[ReasoningEffort]`
 
     Constrains effort on reasoning for
@@ -8722,6 +8734,18 @@ as input for the model's response.
     Configuration options for
     [reasoning models](https://platform.openai.com/docs/guides/reasoning).
 
+    - `context: Optional[Literal["auto", "current_turn", "all_turns"]]`
+
+      Controls which reasoning items are rendered back to the model on later turns.
+      When returned on a response, this is the effective reasoning context mode
+      used for the response.
+
+      - `"auto"`
+
+      - `"current_turn"`
+
+      - `"all_turns"`
+
     - `effort: Optional[ReasoningEffort]`
 
       Constrains effort on reasoning for
@@ -9114,6 +9138,7 @@ for response in client.responses.create():
   "prompt_cache_key": "prompt-cache-key-1234",
   "prompt_cache_retention": "in_memory",
   "reasoning": {
+    "context": "auto",
     "effort": "none",
     "generate_summary": "auto",
     "summary": "auto"

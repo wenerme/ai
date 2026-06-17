@@ -20,8 +20,8 @@ Only one collection of static assets can be configured in each Worker.
 
 The folder of static assets to be served. For many frameworks, this is the `./public/`, `./dist/`, or `./build/` folder.
 
-* [  wrangler.jsonc ](#tab-panel-10881)
-* [  wrangler.toml ](#tab-panel-10882)
+* [  wrangler.jsonc ](#tab-panel-12081)
+* [  wrangler.toml ](#tab-panel-12082)
 
 JSONC
 
@@ -35,7 +35,7 @@ JSONC
 
   // Set this to today's date
 
-  "compatibility_date": "2026-05-28",
+  "compatibility_date": "2026-06-17",
 
   "assets": {
 
@@ -58,7 +58,7 @@ name = "my-worker"
 
 # Set this to today's date
 
-compatibility_date = "2026-05-28"
+compatibility_date = "2026-06-17"
 
 
 [assets]
@@ -97,8 +97,8 @@ Now Wrangler will not upload these files as client-side assets when deploying th
 
 Controls whether to invoke the Worker script regardless of a request which would have otherwise matched an asset. `run_worker_first = false` (default) will serve any static asset matching a request, while `run_worker_first = true` will unconditionally [invoke your Worker script](https://developers.cloudflare.com/workers/static-assets/routing/worker-script/#run-your-worker-script-first).
 
-* [  wrangler.jsonc ](#tab-panel-10883)
-* [  wrangler.toml ](#tab-panel-10884)
+* [  wrangler.jsonc ](#tab-panel-12083)
+* [  wrangler.toml ](#tab-panel-12084)
 
 JSONC
 
@@ -112,7 +112,7 @@ JSONC
 
   // Set this to today's date
 
-  "compatibility_date": "2026-05-28",
+  "compatibility_date": "2026-06-17",
 
   "main": "src/index.ts",
 
@@ -145,7 +145,7 @@ name = "my-worker"
 
 # Set this to today's date
 
-compatibility_date = "2026-05-28"
+compatibility_date = "2026-06-17"
 
 main = "src/index.ts"
 
@@ -171,8 +171,8 @@ The order in which the patterns are listed is not significant.
 
 `run_worker_first` is often paired with the [not\_found\_handling = "single-page-application" setting](https://developers.cloudflare.com/workers/static-assets/routing/single-page-application/#advanced-routing-control):
 
-* [  wrangler.jsonc ](#tab-panel-10885)
-* [  wrangler.toml ](#tab-panel-10886)
+* [  wrangler.jsonc ](#tab-panel-12085)
+* [  wrangler.toml ](#tab-panel-12086)
 
 JSONC
 
@@ -184,7 +184,7 @@ JSONC
 
   // Set this to today's date
 
-  "compatibility_date": "2026-05-28",
+  "compatibility_date": "2026-06-17",
 
   "main": "./src/index.ts",
 
@@ -213,7 +213,7 @@ name = "my-spa-worker"
 
 # Set this to today's date
 
-compatibility_date = "2026-05-28"
+compatibility_date = "2026-06-17"
 
 main = "./src/index.ts"
 
@@ -239,8 +239,8 @@ Common uses for `run_worker_first` include authentication checks, A/B testing, a
 
 Configuring the optional [binding](https://developers.cloudflare.com/workers/runtime-apis/bindings) gives you access to the collection of assets from within your Worker script.
 
-* [  wrangler.jsonc ](#tab-panel-10887)
-* [  wrangler.toml ](#tab-panel-10888)
+* [  wrangler.jsonc ](#tab-panel-12087)
+* [  wrangler.toml ](#tab-panel-12088)
 
 JSONC
 
@@ -256,7 +256,7 @@ JSONC
 
   // Set this to today's date
 
-  "compatibility_date": "2026-05-28",
+  "compatibility_date": "2026-06-17",
 
   "assets": {
 
@@ -283,7 +283,7 @@ main = "./src/index.js"
 
 # Set this to today's date
 
-compatibility_date = "2026-05-28"
+compatibility_date = "2026-06-17"
 
 
 [assets]
@@ -319,8 +319,8 @@ If you need to fetch assets from within an [RPC method](https://developers.cloud
 
 Take the following example that configures a Worker script to return a response under all requests headed for `/api/`. Otherwise, the Worker script will pass the incoming request through to the asset binding. In this case, because a Worker script is only invoked when the requested route has not matched any static assets, this will always evaluate [not\_found\_handling](https://developers.cloudflare.com/workers/static-assets/#routing-behavior) behavior.
 
-* [  JavaScript ](#tab-panel-10879)
-* [  TypeScript ](#tab-panel-10880)
+* [  JavaScript ](#tab-panel-12079)
+* [  TypeScript ](#tab-panel-12080)
 
 JavaScript
 
@@ -416,5 +416,6 @@ Use Smart Placement with `run_worker_first=false` (or not specifying it) when pr
 This will not impact the [default routing behavior](https://developers.cloudflare.com/workers/static-assets/#routing-behavior).
 
 ```json
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/static-assets/binding/#page","headline":"Configuration and Bindings · Cloudflare Workers docs","description":"Details on how to configure Workers static assets and its binding.","url":"https://developers.cloudflare.com/workers/static-assets/binding/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Bindings"]}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/workers/","name":"Workers"}},{"@type":"ListItem","position":3,"item":{"@id":"/workers/static-assets/","name":"Static Assets"}},{"@type":"ListItem","position":4,"item":{"@id":"/workers/static-assets/binding/","name":"Configuration and Bindings"}}]}
 ```

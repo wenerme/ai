@@ -29,9 +29,9 @@ Deploy to Cloudflare buttons simplify the deployment of a Workers application by
 
 Deploy to Cloudflare buttons can be embedded anywhere developers might want to launch your project. To add a Deploy to Cloudflare button, copy the following snippet and replace the Git repository URL with your project's URL. You can also optionally specify a subdirectory.
 
-* [ Markdown ](#tab-panel-10698)
-* [ HTML ](#tab-panel-10699)
-* [ URL ](#tab-panel-10700)
+* [ Markdown ](#tab-panel-11883)
+* [ HTML ](#tab-panel-11884)
+* [ URL ](#tab-panel-11885)
 
 ```
 
@@ -73,8 +73,8 @@ Cloudflare will read the Wrangler configuration file of your source repo to dete
 
 [Worker environment variables](https://developers.cloudflare.com/workers/configuration/environment-variables/) can be defined in your Wrangler configuration file as normal:
 
-* [  wrangler.jsonc ](#tab-panel-10701)
-* [  wrangler.toml ](#tab-panel-10702)
+* [  wrangler.jsonc ](#tab-panel-11886)
+* [  wrangler.toml ](#tab-panel-11887)
 
 JSONC
 
@@ -88,7 +88,7 @@ JSONC
 
   // Set this to today's date
 
-  "compatibility_date": "2026-05-28",
+  "compatibility_date": "2026-06-17",
 
   "vars": {
 
@@ -111,7 +111,7 @@ main = "./src/index.ts"
 
 # Set this to today's date
 
-compatibility_date = "2026-05-28"
+compatibility_date = "2026-06-17"
 
 
 [vars]
@@ -134,8 +134,8 @@ COOKIE_SIGNING_KEY=my-secret # comment
 
 [Secrets Store](https://developers.cloudflare.com/secrets-store/) secrets can be configured in the Wrangler configuration file as normal:
 
-* [  wrangler.jsonc ](#tab-panel-10703)
-* [  wrangler.toml ](#tab-panel-10704)
+* [  wrangler.jsonc ](#tab-panel-11888)
+* [  wrangler.toml ](#tab-panel-11889)
 
 JSONC
 
@@ -149,7 +149,7 @@ JSONC
 
   // Set this to today's date
 
-  "compatibility_date": "2026-05-28",
+  "compatibility_date": "2026-06-17",
 
   "secrets_store_secrets": [
 
@@ -180,7 +180,7 @@ main = "./src/index.ts"
 
 # Set this to today's date
 
-compatibility_date = "2026-05-28"
+compatibility_date = "2026-06-17"
 
 
 [[secrets_store_secrets]]
@@ -270,5 +270,6 @@ package.json
 * **Private repositories**: Repositories must be public in order for others to successfully use your Deploy to Cloudflare button.
 
 ```json
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/platform/deploy-buttons/#page","headline":"Deploy to Cloudflare buttons · Cloudflare Workers docs","description":"Set up a Deploy to Cloudflare button","url":"https://developers.cloudflare.com/workers/platform/deploy-buttons/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/workers/","name":"Workers"}},{"@type":"ListItem","position":3,"item":{"@id":"/workers/platform/","name":"Platform"}},{"@type":"ListItem","position":4,"item":{"@id":"/workers/platform/deploy-buttons/","name":"Deploy to Cloudflare buttons"}}]}
 ```

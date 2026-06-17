@@ -34,10 +34,10 @@ Try out this model with Workers AI LLM Playground. It does not require any setup
 
 ## Usage
 
-* [  Worker (Streaming) ](#tab-panel-4741)
-* [  TypeScript ](#tab-panel-4742)
-* [  Python ](#tab-panel-4743)
-* [  curl ](#tab-panel-4744)
+* [  Worker (Streaming) ](#tab-panel-4922)
+* [  TypeScript ](#tab-panel-4923)
+* [  Python ](#tab-panel-4924)
+* [  curl ](#tab-panel-4925)
 
 TypeScript
 
@@ -285,5 +285,6 @@ format
  Streaming Output [ ](https://developers.cloudflare.com/workers-ai/models/llama-2-7b-chat-hf-lora/streaming-output.json "Open") [ ](https://developers.cloudflare.com/workers-ai/models/llama-2-7b-chat-hf-lora/streaming-output.json "Download") 
 
 ```json
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers-ai/models/llama-2-7b-chat-hf-lora/#page","headline":"llama-2-7b-chat-hf-lora (Meta) · Cloudflare AI docs · Cloudflare Workers AI docs","description":"This is a Llama2 base model that Cloudflare dedicated for inference with LoRA adapters. Llama 2 is a collection of pretrained and fine-tuned generative text models ranging in scale from 7 billion to 70 billion parameters. This is the repository for the 7B fine-tuned model, optimized for dialogue use cases and converted for the Hugging Face Transformers format.","url":"https://developers.cloudflare.com/workers-ai/models/llama-2-7b-chat-hf-lora/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/workers-ai/","name":"Workers AI"}},{"@type":"ListItem","position":3,"item":{"@id":"/workers-ai/models/","name":"Models"}}]}
 ```

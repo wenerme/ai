@@ -3131,6 +3131,18 @@ Returns an object with `object` set to `response.input_tokens` and an `input_tok
 
   **gpt-5 and o-series models only** Configuration options for [reasoning models](https://platform.openai.com/docs/guides/reasoning).
 
+  - `context: Optional[Literal["auto", "current_turn", "all_turns"]]`
+
+    Controls which reasoning items are rendered back to the model on later turns.
+    When returned on a response, this is the effective reasoning context mode
+    used for the response.
+
+    - `"auto"`
+
+    - `"current_turn"`
+
+    - `"all_turns"`
+
   - `effort: Optional[ReasoningEffort]`
 
     Constrains effort on reasoning for

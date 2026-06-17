@@ -71,5 +71,6 @@ To remove a resolved or inaccurate insight from your dashboard, [archive the ins
 For more information on available operations for Security Insights, refer to [Review Security Insights](https://developers.cloudflare.com/security/security-insights/review-insights/).
 
 ```json
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/security/security-insights/#page","headline":"Security Insights · Security dashboard docs","description":"Scan your account for misconfigurations and potential security risks across all domains.","url":"https://developers.cloudflare.com/security/security-insights/","inLanguage":"en","image":"https://developers.cloudflare.com/cf-twitter-card.png","dateModified":"2026-05-05","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/security/","name":"Security dashboard"}},{"@type":"ListItem","position":3,"item":{"@id":"/security/security-insights/","name":"Security Insights"}}]}
 ```

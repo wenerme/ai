@@ -19,8 +19,8 @@ For more details about load balancers, refer to [Load balancers](https://develop
 
 ## Create a load balancer
 
-* [ Dashboard ](#tab-panel-6697)
-* [ API ](#tab-panel-6698)
+* [ Dashboard ](#tab-panel-9319)
+* [ API ](#tab-panel-9320)
 
 To create a Public or a Private load balancer in the dashboard:
 
@@ -268,8 +268,8 @@ Sharing load balancers across sites is only supported if the target zone is on a
 
 ## Edit a load balancer
 
-* [ Dashboard ](#tab-panel-6693)
-* [ API ](#tab-panel-6694)
+* [ Dashboard ](#tab-panel-9315)
+* [ API ](#tab-panel-9316)
 
 To edit a load balancer in the dashboard:
 
@@ -288,8 +288,8 @@ To update specific settings without having to resubmit the entire configuration,
 
 If you delete or disable a load balancer, your endpoint's response to requests will depend on your [existing DNS records](https://developers.cloudflare.com/load-balancing/load-balancers/dns-records/#disabling-a-load-balancer).
 
-* [ Dashboard ](#tab-panel-6695)
-* [ API ](#tab-panel-6696)
+* [ Dashboard ](#tab-panel-9317)
+* [ API ](#tab-panel-9318)
 
 To delete a load balancer in the dashboard:
 
@@ -328,5 +328,6 @@ Evaluate [load balancing analytics](https://developers.cloudflare.com/load-balan
 Refer to [Cloudflare Notifications](https://developers.cloudflare.com/notifications/get-started/) for more information on how to set up an alert.
 
 ```json
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/load-balancing/load-balancers/create-load-balancer/#page","headline":"Manage load balancers · Cloudflare Load Balancing docs","description":"Learn how to set up and maintain load balancers.","url":"https://developers.cloudflare.com/load-balancing/load-balancers/create-load-balancer/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/load-balancing/","name":"Load Balancing"}},{"@type":"ListItem","position":3,"item":{"@id":"/load-balancing/load-balancers/","name":"Load balancers"}},{"@type":"ListItem","position":4,"item":{"@id":"/load-balancing/load-balancers/create-load-balancer/","name":"Manage load balancers"}}]}
 ```

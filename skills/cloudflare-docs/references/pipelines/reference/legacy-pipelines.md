@@ -42,5 +42,6 @@ npx wrangler pipelines setup
 For detailed guidance, refer to the [getting started guide](https://developers.cloudflare.com/pipelines/getting-started/).
 
 ```json
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/pipelines/reference/legacy-pipelines/#page","headline":"Legacy pipelines · Cloudflare Pipelines Docs","description":"Migration guide for pipelines created before September 2025 to the new Pipelines architecture.","url":"https://developers.cloudflare.com/pipelines/reference/legacy-pipelines/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/pipelines/","name":"Pipelines"}},{"@type":"ListItem","position":3,"item":{"@id":"/pipelines/reference/","name":"Reference"}},{"@type":"ListItem","position":4,"item":{"@id":"/pipelines/reference/legacy-pipelines/","name":"Legacy pipelines"}}]}
 ```

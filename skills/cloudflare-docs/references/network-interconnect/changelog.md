@@ -65,5 +65,6 @@ Customers can exchange routes dynamically with their Magic virtual network overl
 Customers can now see all available Direct CNI locations when searching for a Cloudflare site in the Interconnects interface.
 
 ```json
+{"@context":"https://schema.org","@type":"BlogPosting","@id":"https://developers.cloudflare.com/network-interconnect/changelog/#page","headline":"Changelog · Cloudflare Network Interconnect docs","description":"Review recent changes to Cloudflare Network Interconnect.","url":"https://developers.cloudflare.com/network-interconnect/changelog/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-17","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/network-interconnect/","name":"Network Interconnect"}},{"@type":"ListItem","position":3,"item":{"@id":"/network-interconnect/changelog/","name":"Changelog"}}]}
 ```

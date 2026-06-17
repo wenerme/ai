@@ -20,8 +20,8 @@ The sandbox makes a plain HTTP request to a virtual hostname (for example, `http
 
 Define an `outboundByHost` handler for each virtual hostname. The `env` argument gives you access to every binding declared in your Wrangler configuration.
 
-* [  JavaScript ](#tab-panel-10274)
-* [  TypeScript ](#tab-panel-10275)
+* [  JavaScript ](#tab-panel-10515)
+* [  TypeScript ](#tab-panel-10516)
 
 JavaScript
 
@@ -113,8 +113,8 @@ You can use `ctx.containerId` to apply different rules per sandbox instance — 
 
 The `ctx` argument exposes `containerId`, which lets you interact with the sandbox's own Durable Object from an outbound handler.
 
-* [  JavaScript ](#tab-panel-10272)
-* [  TypeScript ](#tab-panel-10273)
+* [  JavaScript ](#tab-panel-10513)
+* [  TypeScript ](#tab-panel-10514)
 
 JavaScript
 
@@ -183,5 +183,6 @@ MySandbox.outboundByHost = {
 * [Environment variables](https://developers.cloudflare.com/sandbox/configuration/environment-variables/) — Configure secrets and environment variables
 
 ```json
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/sandbox/guides/workers-connections/#page","headline":"Connect to Workers bindings · Cloudflare Sandbox SDK docs","description":"Access KV, R2, Durable Objects, and other bindings from a sandbox.","url":"https://developers.cloudflare.com/sandbox/guides/workers-connections/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/sandbox/","name":"Sandbox SDK"}},{"@type":"ListItem","position":3,"item":{"@id":"/sandbox/guides/","name":"How-to guides"}},{"@type":"ListItem","position":4,"item":{"@id":"/sandbox/guides/workers-connections/","name":"Connect to Workers bindings"}}]}
 ```

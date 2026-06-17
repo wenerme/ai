@@ -35,8 +35,8 @@ Using the Wrangler configuration file to configure your Pages project allows you
 
 ## Example Wrangler file
 
-* [  wrangler.jsonc ](#tab-panel-6809)
-* [  wrangler.toml ](#tab-panel-6810)
+* [  wrangler.jsonc ](#tab-panel-9431)
+* [  wrangler.toml ](#tab-panel-9432)
 
 JSONC
 
@@ -141,8 +141,8 @@ Before you could use the Wrangler configuration file to define your preview and 
 
 If you have been using a Wrangler configuration file for local development, you may already have a file in your Pages project that looks like this:
 
-* [  wrangler.jsonc ](#tab-panel-6805)
-* [  wrangler.toml ](#tab-panel-6806)
+* [  wrangler.jsonc ](#tab-panel-9427)
+* [  wrangler.toml ](#tab-panel-9428)
 
 JSONC
 
@@ -197,9 +197,9 @@ You can continue to use your Wrangler file for local development without migrati
 
 If you have an existing Pages project with configuration set up via the Cloudflare dashboard and do not have an existing Wrangler file in your Project, run the `wrangler pages download config` command in your Pages project directory. The `wrangler pages download config` command will download your existing Cloudflare dashboard configuration and generate a valid Wrangler file in your Pages project directory.
 
-* [ npm ](#tab-panel-6802)
-* [ yarn ](#tab-panel-6803)
-* [ pnpm ](#tab-panel-6804)
+* [ npm ](#tab-panel-9424)
+* [ yarn ](#tab-panel-9425)
+* [ pnpm ](#tab-panel-9426)
 
 Terminal window
 
@@ -255,8 +255,8 @@ With a Wrangler configuration file, you can quickly set configuration across you
 
 The Wrangler configuration file applies locally when using `wrangler pages dev`. This means that you can test out configuration changes quickly without a need to login to the Cloudflare dashboard. Refer to the following config file for an example:
 
-* [  wrangler.jsonc ](#tab-panel-6807)
-* [  wrangler.toml ](#tab-panel-6808)
+* [  wrangler.jsonc ](#tab-panel-9429)
+* [  wrangler.toml ](#tab-panel-9430)
 
 JSONC
 
@@ -272,7 +272,7 @@ JSONC
 
   // Set this to today's date
 
-  "compatibility_date": "2026-04-29",
+  "compatibility_date": "2026-06-17",
 
   "compatibility_flags": [
 
@@ -309,7 +309,7 @@ pages_build_output_dir = "./dist"
 
 # Set this to today's date
 
-compatibility_date = "2026-04-29"
+compatibility_date = "2026-06-17"
 
 compatibility_flags = [ "nodejs_compat" ]
 
@@ -375,8 +375,8 @@ Unlike [Workers Environments](https://developers.cloudflare.com/workers/wrangler
 
 Refer to the following Wrangler configuration file for an example of how to override preview deployment configuration:
 
-* [  wrangler.jsonc ](#tab-panel-6811)
-* [  wrangler.toml ](#tab-panel-6812)
+* [  wrangler.jsonc ](#tab-panel-9433)
+* [  wrangler.toml ](#tab-panel-9434)
 
 JSONC
 
@@ -480,8 +480,8 @@ If you deployed this file via `wrangler pages deploy`, `name`, `pages_build_outp
 
 If you wanted to have configuration values apply to local and preview, but override production, your file would look like this:
 
-* [  wrangler.jsonc ](#tab-panel-6815)
-* [  wrangler.toml ](#tab-panel-6816)
+* [  wrangler.jsonc ](#tab-panel-9437)
+* [  wrangler.toml ](#tab-panel-9438)
 
 JSONC
 
@@ -583,8 +583,8 @@ API_KEY = "8901234bfgd"
 
 You can always be explicit and override both preview and production:
 
-* [  wrangler.jsonc ](#tab-panel-6817)
-* [  wrangler.toml ](#tab-panel-6818)
+* [  wrangler.jsonc ](#tab-panel-9439)
+* [  wrangler.toml ](#tab-panel-9440)
 
 JSONC
 
@@ -745,8 +745,8 @@ Non-inheritable keys are configurable at the top-level, but, if any one non-inhe
 
 For example, this configuration will not work:
 
-* [  wrangler.jsonc ](#tab-panel-6813)
-* [  wrangler.toml ](#tab-panel-6814)
+* [  wrangler.jsonc ](#tab-panel-9435)
+* [  wrangler.toml ](#tab-panel-9436)
 
 JSONC
 
@@ -977,5 +977,6 @@ When used in your Pages Functions projects, your Wrangler file is the source of 
 If you decide that you do not want to use a Wrangler configuration file for configuration, you can safely delete it and create a new deployment. Configuration values from your last deployment will still apply and you will be able to edit them from the dashboard.
 
 ```json
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/pages/functions/wrangler-configuration/#page","headline":"Configuration · Cloudflare Pages docs","description":"Configure Pages Functions settings using a Wrangler configuration file or the Cloudflare dashboard.","url":"https://developers.cloudflare.com/pages/functions/wrangler-configuration/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/pages/","name":"Pages"}},{"@type":"ListItem","position":3,"item":{"@id":"/pages/functions/","name":"Functions"}},{"@type":"ListItem","position":4,"item":{"@id":"/pages/functions/wrangler-configuration/","name":"Configuration"}}]}
 ```

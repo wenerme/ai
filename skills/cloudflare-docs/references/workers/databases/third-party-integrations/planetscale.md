@@ -20,8 +20,8 @@ You can connect to PlanetScale using [Hyperdrive](https://developers.cloudflare.
 
 Hyperdrive can provide lower latencies because it performs the database connection setup and connection pooling across Cloudflare's network. Hyperdrive supports native database drivers, libraries, and ORMs, and is included in all [Workers plans](https://developers.cloudflare.com/hyperdrive/platform/pricing/). Learn more about Hyperdrive in [How Hyperdrive Works](https://developers.cloudflare.com/hyperdrive/concepts/how-hyperdrive-works/).
 
-* [ Hyperdrive (recommended) ](#tab-panel-10348)
-* [ PlanetScale serverless driver ](#tab-panel-10349)
+* [ Hyperdrive (recommended) ](#tab-panel-11525)
+* [ PlanetScale serverless driver ](#tab-panel-11526)
 
 To connect to PlanetScale using [Hyperdrive](https://developers.cloudflare.com/hyperdrive), follow these steps:
 
@@ -100,8 +100,8 @@ Hyperdrive will attempt to connect to your database with the provided credential
 
 This command outputs a binding for the [Wrangler configuration file](https://developers.cloudflare.com/workers/wrangler/configuration/):
 
-* [  wrangler.jsonc ](#tab-panel-10344)
-* [  wrangler.toml ](#tab-panel-10345)
+* [  wrangler.jsonc ](#tab-panel-11521)
+* [  wrangler.toml ](#tab-panel-11522)
 
 JSONC
 
@@ -117,7 +117,7 @@ JSONC
 
   // Set this to today's date
 
-  "compatibility_date": "2026-05-28",
+  "compatibility_date": "2026-06-17",
 
   "compatibility_flags": [
 
@@ -156,7 +156,7 @@ main = "src/index.ts"
 
 # Set this to today's date
 
-compatibility_date = "2026-05-28"
+compatibility_date = "2026-06-17"
 
 compatibility_flags = [ "nodejs_compat" ]
 
@@ -198,8 +198,8 @@ Note
 
 Add the required Node.js compatibility flags and Hyperdrive binding to your `wrangler.jsonc` file:
 
-* [  wrangler.jsonc ](#tab-panel-10346)
-* [  wrangler.toml ](#tab-panel-10347)
+* [  wrangler.jsonc ](#tab-panel-11523)
+* [  wrangler.toml ](#tab-panel-11524)
 
 JSONC
 
@@ -217,7 +217,7 @@ JSONC
 
   // Set this to today's date
 
-  "compatibility_date": "2026-05-28",
+  "compatibility_date": "2026-06-17",
 
   "hyperdrive": [
 
@@ -244,7 +244,7 @@ compatibility_flags = [ "nodejs_compat" ]
 
 # Set this to today's date
 
-compatibility_date = "2026-05-28"
+compatibility_date = "2026-06-17"
 
 
 [[hyperdrive]]
@@ -420,5 +420,6 @@ export default {
 To learn more about PlanetScale, refer to [PlanetScale's official documentation ↗](https://docs.planetscale.com/).
 
 ```json
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/databases/third-party-integrations/planetscale/#page","headline":"PlanetScale · Cloudflare Workers docs","description":"Connect Cloudflare Workers to a PlanetScale MySQL-compatible database using Hyperdrive or the PlanetScale serverless driver.","url":"https://developers.cloudflare.com/workers/databases/third-party-integrations/planetscale/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/workers/","name":"Workers"}},{"@type":"ListItem","position":3,"item":{"@id":"/workers/databases/","name":"Databases"}},{"@type":"ListItem","position":4,"item":{"@id":"/workers/databases/third-party-integrations/","name":"3rd Party Integrations"}},{"@type":"ListItem","position":5,"item":{"@id":"/workers/databases/third-party-integrations/planetscale/","name":"PlanetScale"}}]}
 ```

@@ -46,8 +46,8 @@ proxyToSandbox(request: Request, env: Env): Promise<Response | null>
 
 The function inspects the request hostname to determine whether it matches the subdomain pattern of an exposed port (for example, `8080-sandbox-id-token.yourdomain.com`). If it matches, `proxyToSandbox()` proxies the request to the correct Durable Object, and the sandbox service handles it. Both HTTP and WebSocket upgrade requests are supported.
 
-* [  JavaScript ](#tab-panel-10016)
-* [  TypeScript ](#tab-panel-10017)
+* [  JavaScript ](#tab-panel-10163)
+* [  TypeScript ](#tab-panel-10164)
 
 JavaScript
 
@@ -150,8 +150,8 @@ const response = await sandbox.exposePort(port: number, options: ExposePortOptio
 
 **Returns**: `Promise<ExposePortResponse>` with `port`, `url` (preview URL), `name`
 
-* [  JavaScript ](#tab-panel-10024)
-* [  TypeScript ](#tab-panel-10025)
+* [  JavaScript ](#tab-panel-10171)
+* [  TypeScript ](#tab-panel-10172)
 
 JavaScript
 
@@ -317,8 +317,8 @@ Custom tokens enable consistent preview URLs across container restarts and deplo
 * Only lowercase letters (a-z), numbers (0-9), hyphens (-), and underscores (\_)
 * Must be unique per sandbox (cannot reuse tokens across different ports)
 
-* [  JavaScript ](#tab-panel-10018)
-* [  TypeScript ](#tab-panel-10019)
+* [  JavaScript ](#tab-panel-10165)
+* [  TypeScript ](#tab-panel-10166)
 
 JavaScript
 
@@ -402,8 +402,8 @@ const isValid = await sandbox.validatePortToken(port: number, token: string): Pr
 
 **Returns**: `Promise<boolean>` \- `true` if token is valid for the port, `false` otherwise
 
-* [  JavaScript ](#tab-panel-10022)
-* [  TypeScript ](#tab-panel-10023)
+* [  JavaScript ](#tab-panel-10169)
+* [  TypeScript ](#tab-panel-10170)
 
 JavaScript
 
@@ -526,8 +526,8 @@ await sandbox.unexposePort(port: number): Promise<void>
 
 * `port` \- Port number to unexpose
 
-* [  JavaScript ](#tab-panel-10012)
-* [  TypeScript ](#tab-panel-10013)
+* [  JavaScript ](#tab-panel-10159)
+* [  TypeScript ](#tab-panel-10160)
 
 JavaScript
 
@@ -562,8 +562,8 @@ const response = await sandbox.getExposedPorts(): Promise<GetExposedPortsRespons
 
 **Returns**: `Promise<GetExposedPortsResponse>` with `ports` array (containing `port`, `url`, `name`)
 
-* [  JavaScript ](#tab-panel-10014)
-* [  TypeScript ](#tab-panel-10015)
+* [  JavaScript ](#tab-panel-10161)
+* [  TypeScript ](#tab-panel-10162)
 
 JavaScript
 
@@ -624,8 +624,8 @@ const response = await sandbox.wsConnect(request: Request, port: number): Promis
 
 **Returns**: `Promise<Response>` \- WebSocket response establishing the connection
 
-* [  JavaScript ](#tab-panel-10020)
-* [  TypeScript ](#tab-panel-10021)
+* [  JavaScript ](#tab-panel-10167)
+* [  TypeScript ](#tab-panel-10168)
 
 JavaScript
 
@@ -704,5 +704,6 @@ export default {
 ```
 
 ```json
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/sandbox/api/ports/#page","headline":"Ports · Cloudflare Sandbox SDK docs","description":"Expose sandbox services via public preview URLs using the Sandbox SDK ports API.","url":"https://developers.cloudflare.com/sandbox/api/ports/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-06-09","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/sandbox/","name":"Sandbox SDK"}},{"@type":"ListItem","position":3,"item":{"@id":"/sandbox/api/","name":"API reference"}},{"@type":"ListItem","position":4,"item":{"@id":"/sandbox/api/ports/","name":"Ports"}}]}
 ```

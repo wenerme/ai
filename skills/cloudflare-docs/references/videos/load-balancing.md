@@ -30,3 +30,7 @@ Chapters
  **Step 5 - Add Custom Rules (Optional)** 02m24s
 * ![Review and deploy](https://customer-1mwganm1ma0xgnmj.cloudflarestream.com/ce39fdf599aed3661f60e8f780761808/thumbnails/thumbnail.jpg?fit=crop&time=159s)  
  **Review and deploy** 02m39s
+
+```json
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/videos/load-balancing/#page","headline":"How to set up a load balancer | Cloudflare Docs","description":"Unexpected traffic spikes can crash your website, but Cloudflare Load Balancing helps keep your apps online and fast. In this step-by-step tutorial, learn how to create a public load balancer in just five steps - select a hostname, add an origin pool, attach a health monitor, choose a traffic steering method, and configure custom rules. We'll also explain the difference between public and private load balancers and guide you through using session affinity, fallback pools, and proxy modes.","url":"https://developers.cloudflare.com/videos/load-balancing/","inLanguage":"en","image":"https://developers.cloudflare.com/cf-twitter-card.png","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+```

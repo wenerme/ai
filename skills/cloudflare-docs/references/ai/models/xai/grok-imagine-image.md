@@ -28,8 +28,8 @@ xAI's Grok Imagine image model. Generates and edits images from text and referen
 
 ## Usage
 
-* [ TypeScript ](#tab-panel-1918)
-* [ cURL ](#tab-panel-1919)
+* [ TypeScript ](#tab-panel-1928)
+* [ cURL ](#tab-panel-1929)
 
 TypeScript
 
@@ -73,8 +73,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 ```
 
-* [ Output ](#tab-panel-1916)
-* [ Raw response ](#tab-panel-1917)
+* [ Output ](#tab-panel-1926)
+* [ Raw response ](#tab-panel-1927)
 
 ![Simple Generation](https://examples.aig.cloudflare.com/xai/grok-imagine-image/simple-generation.jpeg) 
 
@@ -105,8 +105,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 **Custom Aspect Ratio**  — Portrait orientation render at 2K resolution 
 
-* [ TypeScript ](#tab-panel-1922)
-* [ cURL ](#tab-panel-1923)
+* [ TypeScript ](#tab-panel-1932)
+* [ cURL ](#tab-panel-1933)
 
 TypeScript
 
@@ -164,8 +164,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 ```
 
-* [ Output ](#tab-panel-1920)
-* [ Raw response ](#tab-panel-1921)
+* [ Output ](#tab-panel-1930)
+* [ Raw response ](#tab-panel-1931)
 
 ![Custom Aspect Ratio](https://examples.aig.cloudflare.com/xai/grok-imagine-image/custom-aspect-ratio.png) 
 
@@ -194,8 +194,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 **Cinematic Landscape**  — Widescreen landscape at 2K resolution 
 
-* [ TypeScript ](#tab-panel-1926)
-* [ cURL ](#tab-panel-1927)
+* [ TypeScript ](#tab-panel-1936)
+* [ cURL ](#tab-panel-1937)
 
 TypeScript
 
@@ -253,8 +253,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 ```
 
-* [ Output ](#tab-panel-1924)
-* [ Raw response ](#tab-panel-1925)
+* [ Output ](#tab-panel-1934)
+* [ Raw response ](#tab-panel-1935)
 
 ![Cinematic Landscape](https://examples.aig.cloudflare.com/xai/grok-imagine-image/cinematic-landscape.png) 
 
@@ -283,8 +283,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 ## Parameters
 
-* [ Input ](#tab-panel-1928)
-* [ Output ](#tab-panel-1929)
+* [ Input ](#tab-panel-1938)
+* [ Output ](#tab-panel-1939)
 
 aspect\_ratio
 
@@ -337,5 +337,6 @@ Input [ ](https://developers.cloudflare.com/ai/models/xai/grok-imagine-image/sch
 Output [ ](https://developers.cloudflare.com/ai/models/xai/grok-imagine-image/schema-output.json "Open") [ ](https://developers.cloudflare.com/ai/models/xai/grok-imagine-image/schema-output.json "Download") 
 
 ```json
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai/models/xai/grok-imagine-image/#page","headline":"Grok Imagine Image (xAI) · Cloudflare AI docs · Cloudflare AI docs","description":"xAI's Grok Imagine image model. Generates and edits images from text and reference-image inputs with configurable aspect ratio and resolution.","url":"https://developers.cloudflare.com/ai/models/xai/grok-imagine-image/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/ai/","name":"AI"}},{"@type":"ListItem","position":3,"item":{"@id":"/ai/models/","name":"Models"}}]}
 ```

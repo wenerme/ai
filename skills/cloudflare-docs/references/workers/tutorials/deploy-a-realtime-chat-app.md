@@ -69,8 +69,8 @@ To deploy your application to a custom domain using Wrangler, open your project'
 
 To configure a route in your Wrangler configuration file, add the following to your environment:
 
-* [  wrangler.jsonc ](#tab-panel-12025)
-* [  wrangler.toml ](#tab-panel-12026)
+* [  wrangler.jsonc ](#tab-panel-12173)
+* [  wrangler.toml ](#tab-panel-12174)
 
 JSONC
 
@@ -112,8 +112,8 @@ If you have specified your zone ID in the environment of your Wrangler configura
 
 To configure a subdomain in your Wrangler configuration file, add the following to your environment:
 
-* [  wrangler.jsonc ](#tab-panel-12027)
-* [  wrangler.toml ](#tab-panel-12028)
+* [  wrangler.jsonc ](#tab-panel-12175)
+* [  wrangler.toml ](#tab-panel-12176)
 
 JSONC
 
@@ -164,8 +164,8 @@ To test your live application:
 
 To uninstall your chat application, modify your Wrangler file to remove the `durable_objects` bindings and add a `deleted_classes` migration:
 
-* [  wrangler.jsonc ](#tab-panel-12029)
-* [  wrangler.toml ](#tab-panel-12030)
+* [  wrangler.jsonc ](#tab-panel-12177)
+* [  wrangler.toml ](#tab-panel-12178)
 
 JSONC
 
@@ -263,5 +263,6 @@ Continue building with other Cloudflare Workers tutorials below.
 * [Build a QR code generator](https://developers.cloudflare.com/workers/tutorials/build-a-qr-code-generator/)
 
 ```json
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/tutorials/deploy-a-realtime-chat-app/#page","headline":"Deploy a real-time chat application · Cloudflare Workers docs","description":"This tutorial shows how to deploy a serverless, real-time chat application. The chat application uses a Durable Object to control each chat room.","url":"https://developers.cloudflare.com/workers/tutorials/deploy-a-realtime-chat-app/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-01-29","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["JavaScript"]}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/workers/","name":"Workers"}},{"@type":"ListItem","position":3,"item":{"@id":"/workers/tutorials/","name":"Tutorials"}},{"@type":"ListItem","position":4,"item":{"@id":"/workers/tutorials/deploy-a-realtime-chat-app/","name":"Deploy a real-time chat application"}}]}
 ```

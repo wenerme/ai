@@ -18,8 +18,8 @@ Note
 
 For additional context on creating a waiting room, refer to [Get started](https://developers.cloudflare.com/waiting-room/get-started/).
 
-* [ Dashboard ](#tab-panel-10102)
-* [ API ](#tab-panel-10103)
+* [ Dashboard ](#tab-panel-11279)
+* [ API ](#tab-panel-11280)
 
 1. Within your application, go to **Traffic** \> **Waiting Room**.
 2. Select **Create**.
@@ -158,5 +158,6 @@ Response
 ```
 
 ```json
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/waiting-room/how-to/create-waiting-room/#page","headline":"Create a waiting room · Cloudflare Waiting Room docs","description":"Create a new waiting room in the dashboard or via API.","url":"https://developers.cloudflare.com/waiting-room/how-to/create-waiting-room/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/waiting-room/","name":"Waiting Room"}},{"@type":"ListItem","position":3,"item":{"@id":"/waiting-room/how-to/","name":"How to"}},{"@type":"ListItem","position":4,"item":{"@id":"/waiting-room/how-to/create-waiting-room/","name":"Create a waiting room"}}]}
 ```

@@ -90,8 +90,8 @@ During local development, your Worker code interacts with these bindings using t
 
 ### Example configuration
 
-* [  wrangler.jsonc ](#tab-panel-11326)
-* [  wrangler.toml ](#tab-panel-11327)
+* [  wrangler.jsonc ](#tab-panel-11545)
+* [  wrangler.toml ](#tab-panel-11546)
 
 JSONC
 
@@ -103,7 +103,7 @@ JSONC
 
   // Set this to today's date
 
-  "compatibility_date": "2026-06-10",
+  "compatibility_date": "2026-06-17",
 
 
   "r2_buckets": [
@@ -133,7 +133,7 @@ name = "my-worker"
 
 # Set this to today's date
 
-compatibility_date = "2026-06-10"
+compatibility_date = "2026-06-17"
 
 
 [[r2_buckets]]
@@ -155,8 +155,8 @@ Remote Bindings work well together with [Workers Environments](https://developer
 
 **For example:**
 
-* [  wrangler.jsonc ](#tab-panel-11338)
-* [  wrangler.toml ](#tab-panel-11339)
+* [  wrangler.jsonc ](#tab-panel-11557)
+* [  wrangler.toml ](#tab-panel-11558)
 
 JSONC
 
@@ -168,7 +168,7 @@ JSONC
 
   // Set this to today's date
 
-  "compatibility_date": "2026-06-10",
+  "compatibility_date": "2026-06-17",
 
 
   "env": {
@@ -222,7 +222,7 @@ name = "my-worker"
 
 # Set this to today's date
 
-compatibility_date = "2026-06-10"
+compatibility_date = "2026-06-17"
 
 
 [[env.production.r2_buckets]]
@@ -258,8 +258,8 @@ The following bindings are recommended to have `remote: true` in your Wrangler c
 
 To interact with a real headless browser for rendering. There is no current local simulation for Browser Run.
 
-* [  wrangler.jsonc ](#tab-panel-11324)
-* [  wrangler.toml ](#tab-panel-11325)
+* [  wrangler.jsonc ](#tab-panel-11543)
+* [  wrangler.toml ](#tab-panel-11544)
 
 JSONC
 
@@ -297,8 +297,8 @@ remote = true
 
 To utilize actual AI models deployed on Cloudflare's network for inference. There is no current local simulation for Workers AI.
 
-* [  wrangler.jsonc ](#tab-panel-11328)
-* [  wrangler.toml ](#tab-panel-11329)
+* [  wrangler.jsonc ](#tab-panel-11547)
+* [  wrangler.toml ](#tab-panel-11548)
 
 JSONC
 
@@ -336,8 +336,8 @@ remote = true
 
 To connect to your production Vectorize indexes for accurate vector search and similarity operations. There is no current local simulation for Vectorize.
 
-* [  wrangler.jsonc ](#tab-panel-11330)
-* [  wrangler.toml ](#tab-panel-11331)
+* [  wrangler.jsonc ](#tab-panel-11549)
+* [  wrangler.toml ](#tab-panel-11550)
 
 JSONC
 
@@ -383,8 +383,8 @@ remote = true
 
 To verify that the certificate exchange and validation process work as expected. There is no current local simulation for mTLS bindings.
 
-* [  wrangler.jsonc ](#tab-panel-11334)
-* [  wrangler.toml ](#tab-panel-11335)
+* [  wrangler.jsonc ](#tab-panel-11553)
+* [  wrangler.toml ](#tab-panel-11554)
 
 JSONC
 
@@ -430,8 +430,8 @@ remote = true
 
 To connect to a high-fidelity version of the Images API, and verify that all transformations work as expected. Local simulation for Cloudflare Images is [limited with only a subset of features](https://developers.cloudflare.com/images/optimization/binding/#interact-with-your-images-binding-locally).
 
-* [  wrangler.jsonc ](#tab-panel-11332)
-* [  wrangler.toml ](#tab-panel-11333)
+* [  wrangler.jsonc ](#tab-panel-11551)
+* [  wrangler.toml ](#tab-panel-11552)
 
 JSONC
 
@@ -475,8 +475,8 @@ If a Workers AI binding has `remote` set to `false`, Cloudflare will **produce a
 
 Workers for Platforms users can configure `remote: true` in dispatch namespace binding definitions:
 
-* [  wrangler.jsonc ](#tab-panel-11336)
-* [  wrangler.toml ](#tab-panel-11337)
+* [  wrangler.jsonc ](#tab-panel-11555)
+* [  wrangler.toml ](#tab-panel-11556)
 
 JSONC
 
@@ -639,8 +639,8 @@ The function:
 
 Here's a basic example of using Miniflare with `maybeStartOrUpdateRemoteProxySession` to provide a local dev session with remote bindings. This example uses a single hardcoded KV binding.
 
-* [  JavaScript ](#tab-panel-11340)
-* [  TypeScript ](#tab-panel-11341)
+* [  JavaScript ](#tab-panel-11559)
+* [  TypeScript ](#tab-panel-11560)
 
 JavaScript
 
@@ -854,5 +854,6 @@ When using remote development, all bindings automatically connect to their remot
 * When you run a remote development session using the `--remote` flag, a limit of 50 [routes](https://developers.cloudflare.com/workers/configuration/routing/routes/) per zone is enforced. Learn more in[ Workers platform limits](https://developers.cloudflare.com/workers/platform/limits/#routes-and-domains-when-using-wrangler-dev---remote).
 
 ```json
+{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/workers/development-testing/#page","headline":"Development & testing · Cloudflare Workers docs","description":"Develop and test your Workers locally.","url":"https://developers.cloudflare.com/workers/development-testing/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-06-10","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/workers/","name":"Workers"}},{"@type":"ListItem","position":3,"item":{"@id":"/workers/development-testing/","name":"Development & testing"}}]}
 ```

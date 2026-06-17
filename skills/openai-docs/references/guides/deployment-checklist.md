@@ -152,7 +152,29 @@ updates, pre-tool-call notes, and other in-between messages. Use
 
 The assistant might say something like:
 
+Assistant commentary message
+
+```json
+{
+  "role": "assistant",
+  "phase": "commentary",
+  "content": "I'm checking the logs and comparing them to the last successful deploy."
+}
+```
+
+
 That is not the answer. It is a progress note. Later, the assistant might say:
+
+Assistant final answer message
+
+```json
+{
+  "role": "assistant",
+  "phase": "final_answer",
+  "content": "The deploy failed because the migration referenced a column that does not exist in production."
+}
+```
+
 
 This is useful in long-running or tool-heavy workflows where the assistant may
 produce visible progress updates before it finishes. When you send that history

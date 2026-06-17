@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 # Stream large JSON
 
-**Last reviewed:**  5 months ago 
+**Last reviewed:**  6 months ago 
 
 Parse and transform large JSON request and response bodies using streaming.
 
@@ -35,8 +35,8 @@ npm install @streamparser/json-whatwg
 
 This example parses a large JSON request body and extracts specific fields without loading the entire payload into memory.
 
-* [  TypeScript ](#tab-panel-10586)
-* [  JavaScript ](#tab-panel-10587)
+* [  TypeScript ](#tab-panel-11765)
+* [  JavaScript ](#tab-panel-11766)
 
 TypeScript
 
@@ -150,8 +150,8 @@ export default {
 
 This example fetches a large JSON response from an upstream API, transforms specific fields, and streams the modified response to the client.
 
-* [  TypeScript ](#tab-panel-10588)
-* [  JavaScript ](#tab-panel-10589)
+* [  TypeScript ](#tab-panel-11767)
+* [  JavaScript ](#tab-panel-11768)
 
 TypeScript
 
@@ -342,5 +342,6 @@ export default {
 * [@streamparser/json-whatwg ↗](https://www.npmjs.com/package/@streamparser/json-whatwg) \- Streaming JSON parser documentation
 
 ```json
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/examples/streaming-json/#page","headline":"Stream large JSON · Cloudflare Workers docs","description":"Parse and transform large JSON request and response bodies using streaming.","url":"https://developers.cloudflare.com/workers/examples/streaming-json/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Middleware","JSON","JavaScript","TypeScript"]}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/workers/","name":"Workers"}},{"@type":"ListItem","position":3,"item":{"@id":"/workers/examples/","name":"Examples"}},{"@type":"ListItem","position":4,"item":{"@id":"/workers/examples/streaming-json/","name":"Stream large JSON"}}]}
 ```

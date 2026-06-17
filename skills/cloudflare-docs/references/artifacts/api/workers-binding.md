@@ -20,8 +20,8 @@ Review [Namespaces](https://developers.cloudflare.com/artifacts/concepts/namespa
 
 Add the Artifacts binding to your Wrangler config file:
 
-* [  wrangler.jsonc ](#tab-panel-6573)
-* [  wrangler.toml ](#tab-panel-6574)
+* [  wrangler.jsonc ](#tab-panel-6735)
+* [  wrangler.toml ](#tab-panel-6736)
 
 JSONC
 
@@ -98,8 +98,8 @@ Use namespace methods on `env.ARTIFACTS` to create, list, inspect, import, or de
 
 `create()` returns repo metadata including `name`, `remote`, `defaultBranch`, and an initial token. Save these values if you need them later.
 
-* [  JavaScript ](#tab-panel-6579)
-* [  TypeScript ](#tab-panel-6580)
+* [  JavaScript ](#tab-panel-6741)
+* [  TypeScript ](#tab-panel-6742)
 
 JavaScript
 
@@ -177,8 +177,8 @@ async function createRepo(artifacts: Artifacts) {
 
 `get()` returns a handle to an existing repo. Use the handle to call async methods on the repo, such as `createToken()`, `listTokens()`, `revokeToken()`, and `fork()`.
 
-* [  JavaScript ](#tab-panel-6575)
-* [  TypeScript ](#tab-panel-6576)
+* [  JavaScript ](#tab-panel-6737)
+* [  TypeScript ](#tab-panel-6738)
 
 JavaScript
 
@@ -220,8 +220,8 @@ async function getRepoHandle(artifacts: Artifacts) {
 * `opts.cursor` ` Cursor ` optional
 * Returns ` Promise<ArtifactsRepoListResult> `
 
-* [  JavaScript ](#tab-panel-6583)
-* [  TypeScript ](#tab-panel-6584)
+* [  JavaScript ](#tab-panel-6745)
+* [  TypeScript ](#tab-panel-6746)
 
 JavaScript
 
@@ -295,8 +295,8 @@ Import a repository from an external git remote.
 
 `import()` returns repo metadata including `name`, `remote`, `defaultBranch`, and an initial token. Save the `remote` and `name` values if you need them later.
 
-* [  JavaScript ](#tab-panel-6589)
-* [  TypeScript ](#tab-panel-6590)
+* [  JavaScript ](#tab-panel-6751)
+* [  TypeScript ](#tab-panel-6752)
 
 JavaScript
 
@@ -383,8 +383,8 @@ async function importFromGitHub(artifacts: Artifacts) {
 * `name` ` RepoName ` required
 * Returns ` Promise<boolean> `
 
-* [  JavaScript ](#tab-panel-6577)
-* [  TypeScript ](#tab-panel-6578)
+* [  JavaScript ](#tab-panel-6739)
+* [  TypeScript ](#tab-panel-6740)
 
 JavaScript
 
@@ -422,8 +422,8 @@ Call `await artifacts.get(name)` to get a repo handle. Use the handle to call as
 * `ttl` ` number ` optional (seconds)
 * Returns ` Promise<ArtifactsCreateTokenResult> `
 
-* [  JavaScript ](#tab-panel-6581)
-* [  TypeScript ](#tab-panel-6582)
+* [  JavaScript ](#tab-panel-6743)
+* [  TypeScript ](#tab-panel-6744)
 
 JavaScript
 
@@ -461,8 +461,8 @@ Unlike `create()` and `import()`, `repo.createToken()` returns a structured resu
 
 * Returns ` Promise<ArtifactsTokenListResult> `
 
-* [  JavaScript ](#tab-panel-6587)
-* [  TypeScript ](#tab-panel-6588)
+* [  JavaScript ](#tab-panel-6749)
+* [  TypeScript ](#tab-panel-6750)
 
 JavaScript
 
@@ -515,8 +515,8 @@ async function listRepoTokens(artifacts: Artifacts) {
 * `tokenOrId` ` string ` required
 * Returns ` Promise<boolean> `
 
-* [  JavaScript ](#tab-panel-6585)
-* [  TypeScript ](#tab-panel-6586)
+* [  JavaScript ](#tab-panel-6747)
+* [  TypeScript ](#tab-panel-6748)
 
 JavaScript
 
@@ -558,8 +558,8 @@ async function revokeToken(artifacts: Artifacts, tokenOrId: string) {
 
 `fork()` returns metadata for the new repo. Save the `remote` and `name` values if you need them later.
 
-* [  JavaScript ](#tab-panel-6595)
-* [  TypeScript ](#tab-panel-6596)
+* [  JavaScript ](#tab-panel-6757)
+* [  TypeScript ](#tab-panel-6758)
 
 JavaScript
 
@@ -620,8 +620,8 @@ async function forkRepo(artifacts: Artifacts) {
 * `opts.offset` ` number ` optional
 * Returns ` Promise<ArtifactsLogResult> `
 
-* [  JavaScript ](#tab-panel-6591)
-* [  TypeScript ](#tab-panel-6592)
+* [  JavaScript ](#tab-panel-6753)
+* [  TypeScript ](#tab-panel-6754)
 
 JavaScript
 
@@ -662,8 +662,8 @@ async function readCommitHistory(artifacts: Artifacts) {
 * `hash` ` string ` required — Commit SHA-1 hash.
 * Returns ` Promise<ArtifactsCommit> `
 
-* [  JavaScript ](#tab-panel-6593)
-* [  TypeScript ](#tab-panel-6594)
+* [  JavaScript ](#tab-panel-6755)
+* [  TypeScript ](#tab-panel-6756)
 
 JavaScript
 
@@ -700,8 +700,8 @@ async function readCommit(artifacts: Artifacts, hash: string) {
 * `hash` ` string ` required — Tree SHA-1 hash.
 * Returns ` Promise<ArtifactsTree> `
 
-* [  JavaScript ](#tab-panel-6597)
-* [  TypeScript ](#tab-panel-6598)
+* [  JavaScript ](#tab-panel-6759)
+* [  TypeScript ](#tab-panel-6760)
 
 JavaScript
 
@@ -737,8 +737,8 @@ async function readTree(artifacts: Artifacts, hash: string) {
 
 This example combines the binding methods in one Worker route.
 
-* [  JavaScript ](#tab-panel-6599)
-* [  TypeScript ](#tab-panel-6600)
+* [  JavaScript ](#tab-panel-6761)
+* [  TypeScript ](#tab-panel-6762)
 
 src/index.js
 
@@ -868,5 +868,6 @@ Run `npx wrangler types` in your own project and treat the generated `worker-con
 [ Git protocol ](https://developers.cloudflare.com/artifacts/api/git-protocol/) Use repo remotes and tokens with standard git-over-HTTPS clients. 
 
 ```json
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/artifacts/api/workers-binding/#page","headline":"Workers binding · Artifacts · Cloudflare Artifacts docs","description":"Call Artifacts from a Worker binding.","url":"https://developers.cloudflare.com/artifacts/api/workers-binding/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-06-11","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/artifacts/","name":"Artifacts"}},{"@type":"ListItem","position":3,"item":{"@id":"/artifacts/api/","name":"API"}},{"@type":"ListItem","position":4,"item":{"@id":"/artifacts/api/workers-binding/","name":"Workers binding"}}]}
 ```

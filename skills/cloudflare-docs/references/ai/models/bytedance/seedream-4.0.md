@@ -27,8 +27,8 @@ Seedream 4.0 is ByteDance's image creation model that combines text-to-image gen
 
 ## Usage
 
-* [ TypeScript ](#tab-panel-394)
-* [ cURL ](#tab-panel-395)
+* [ TypeScript ](#tab-panel-400)
+* [ cURL ](#tab-panel-401)
 
 TypeScript
 
@@ -72,8 +72,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 ```
 
-* [ Output ](#tab-panel-392)
-* [ Raw response ](#tab-panel-393)
+* [ Output ](#tab-panel-398)
+* [ Raw response ](#tab-panel-399)
 
 ![Simple Generation](https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/bytedance__seedream-4.0/simple-generation.jpeg) 
 
@@ -104,8 +104,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 **High Resolution**  — 4K quality image generation 
 
-* [ TypeScript ](#tab-panel-398)
-* [ cURL ](#tab-panel-399)
+* [ TypeScript ](#tab-panel-404)
+* [ cURL ](#tab-panel-405)
 
 TypeScript
 
@@ -163,8 +163,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 ```
 
-* [ Output ](#tab-panel-396)
-* [ Raw response ](#tab-panel-397)
+* [ Output ](#tab-panel-402)
+* [ Raw response ](#tab-panel-403)
 
 ![High Resolution](https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/bytedance__seedream-4.0/high-resolution.jpeg) 
 
@@ -193,8 +193,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 **Widescreen Landscape**  — Cinematic aspect ratio image 
 
-* [ TypeScript ](#tab-panel-402)
-* [ cURL ](#tab-panel-403)
+* [ TypeScript ](#tab-panel-408)
+* [ cURL ](#tab-panel-409)
 
 TypeScript
 
@@ -252,8 +252,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 ```
 
-* [ Output ](#tab-panel-400)
-* [ Raw response ](#tab-panel-401)
+* [ Output ](#tab-panel-406)
+* [ Raw response ](#tab-panel-407)
 
 ![Widescreen Landscape](https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/bytedance__seedream-4.0/widescreen-landscape.jpeg) 
 
@@ -282,8 +282,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 **Portrait Format**  — Vertical image for portraits 
 
-* [ TypeScript ](#tab-panel-406)
-* [ cURL ](#tab-panel-407)
+* [ TypeScript ](#tab-panel-412)
+* [ cURL ](#tab-panel-413)
 
 TypeScript
 
@@ -339,8 +339,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 ```
 
-* [ Output ](#tab-panel-404)
-* [ Raw response ](#tab-panel-405)
+* [ Output ](#tab-panel-410)
+* [ Raw response ](#tab-panel-411)
 
 ![Portrait Format](https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/bytedance__seedream-4.0/portrait-format.jpeg) 
 
@@ -369,8 +369,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 **Detailed 4K**  — High-resolution detailed botanical illustration 
 
-* [ TypeScript ](#tab-panel-410)
-* [ cURL ](#tab-panel-411)
+* [ TypeScript ](#tab-panel-416)
+* [ cURL ](#tab-panel-417)
 
 TypeScript
 
@@ -426,8 +426,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 ```
 
-* [ Output ](#tab-panel-408)
-* [ Raw response ](#tab-panel-409)
+* [ Output ](#tab-panel-414)
+* [ Raw response ](#tab-panel-415)
 
 ![Detailed 4K](https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/bytedance__seedream-4.0/detailed-4k.jpeg) 
 
@@ -456,8 +456,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 ## Parameters
 
-* [ Input ](#tab-panel-412)
-* [ Output ](#tab-panel-413)
+* [ Input ](#tab-panel-418)
+* [ Output ](#tab-panel-419)
 
 aspect\_ratio
 
@@ -494,5 +494,6 @@ Input [ ](https://developers.cloudflare.com/ai/models/bytedance/seedream-4.0/sch
 Output [ ](https://developers.cloudflare.com/ai/models/bytedance/seedream-4.0/schema-output.json "Open") [ ](https://developers.cloudflare.com/ai/models/bytedance/seedream-4.0/schema-output.json "Download") 
 
 ```json
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai/models/bytedance/seedream-4.0/#page","headline":"Seedream 4.0 (ByteDance) · Cloudflare AI docs · Cloudflare AI docs","description":"Seedream 4.0 is ByteDance's image creation model that combines text-to-image generation and image editing into a single architecture, offering fast, high-resolution output up to 4K.","url":"https://developers.cloudflare.com/ai/models/bytedance/seedream-4.0/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/ai/","name":"AI"}},{"@type":"ListItem","position":3,"item":{"@id":"/ai/models/","name":"Models"}}]}
 ```

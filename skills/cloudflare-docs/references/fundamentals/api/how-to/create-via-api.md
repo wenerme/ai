@@ -230,8 +230,8 @@ Each parameter in the `in` and `not_in` objects must be in CIDR notation. For ex
 
 Combine the previous information to create a token as in the following example:
 
-* [ Account token ](#tab-panel-5993)
-* [ User token ](#tab-panel-5994)
+* [ Account token ](#tab-panel-8567)
+* [ User token ](#tab-panel-8568)
 
 Terminal window
 
@@ -483,5 +483,6 @@ curl "https://api.cloudflare.com/client/v4/user/tokens" \
 ```
 
 ```json
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/fundamentals/api/how-to/create-via-api/#page","headline":"Create tokens via API · Cloudflare Fundamentals docs","description":"Learn how to create API tokens via Cloudflare's API. Follow steps to define access policies, set restrictions, and generate tokens securely.","url":"https://developers.cloudflare.com/fundamentals/api/how-to/create-via-api/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-20","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/fundamentals/","name":"Cloudflare Fundamentals"}},{"@type":"ListItem","position":3,"item":{"@id":"/fundamentals/api/","name":"Cloudflare's API"}},{"@type":"ListItem","position":4,"item":{"@id":"/fundamentals/api/how-to/","name":"How to"}},{"@type":"ListItem","position":5,"item":{"@id":"/fundamentals/api/how-to/create-via-api/","name":"Create tokens via API"}}]}
 ```

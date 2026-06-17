@@ -54,8 +54,8 @@ Terraform assumes that it has complete control over account and zone rulesets. I
 
 The following example deploys two managed rulesets to the zone with ID `<ZONE_ID>` using Terraform, using a `cloudflare_ruleset` resource with two rules that execute the managed rulesets.
 
-* [ Terraform (v5) ](#tab-panel-10025)
-* [ Terraform (v4) ](#tab-panel-10026)
+* [ Terraform (v5) ](#tab-panel-10962)
+* [ Terraform (v4) ](#tab-panel-10963)
 
 Required API token permissions
 
@@ -203,8 +203,8 @@ Notes
 
 The following example deploys two managed rulesets to the account with ID `<ACCOUNT_ID>` using Terraform, using a `cloudflare_ruleset` resource with two rules that execute the managed rulesets for two hostnames belonging to Enterprise zones.
 
-* [ Terraform (v5) ](#tab-panel-10027)
-* [ Terraform (v4) ](#tab-panel-10028)
+* [ Terraform (v5) ](#tab-panel-10964)
+* [ Terraform (v4) ](#tab-panel-10965)
 
 Required API token permissions
 
@@ -349,8 +349,8 @@ The following example adds two [exceptions](https://developers.cloudflare.com/wa
 
 Add the two exceptions to the `cloudflare_ruleset` resource before the rule that deploys the Cloudflare Managed Ruleset:
 
-* [ Terraform (v5) ](#tab-panel-10017)
-* [ Terraform (v4) ](#tab-panel-10018)
+* [ Terraform (v5) ](#tab-panel-10954)
+* [ Terraform (v4) ](#tab-panel-10955)
 
 ```
 
@@ -537,8 +537,8 @@ Ruleset overrides and tag overrides apply to both existing and _future_ rules in
 
 The following configuration includes the three overrides in the rule that executes the Cloudflare Managed Ruleset:
 
-* [ Terraform (v5) ](#tab-panel-10019)
-* [ Terraform (v4) ](#tab-panel-10020)
+* [ Terraform (v5) ](#tab-panel-10956)
+* [ Terraform (v4) ](#tab-panel-10957)
 
 ```
 
@@ -676,8 +676,8 @@ This example enables [payload logging](https://developers.cloudflare.com/waf/man
 
 Building upon the rule that deploys the Cloudflare Managed Ruleset, the following rule configuration adds the `matched_data` object with the public key used to encrypt the payload:
 
-* [ Terraform (v5) ](#tab-panel-10021)
-* [ Terraform (v4) ](#tab-panel-10022)
+* [ Terraform (v5) ](#tab-panel-10958)
+* [ Terraform (v4) ](#tab-panel-10959)
 
 ```
 
@@ -770,8 +770,8 @@ The following example rule of a `cloudflare_ruleset` Terraform resource performs
 * Sets the score threshold to `60` (_Low_).
 * Sets the ruleset action to `log`.
 
-* [ Terraform (v5) ](#tab-panel-10023)
-* [ Terraform (v4) ](#tab-panel-10024)
+* [ Terraform (v5) ](#tab-panel-10960)
+* [ Terraform (v4) ](#tab-panel-10961)
 
 ```
 
@@ -912,5 +912,6 @@ The following example rule of a `cloudflare_ruleset` Terraform resource performs
 ```
 
 ```json
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/terraform/additional-configurations/waf-managed-rulesets/#page","headline":"WAF Managed Rules configuration using Terraform · Cloudflare Terraform docs","description":"Deploy and configure Cloudflare WAF Managed Rules at the zone or account level using Terraform.","url":"https://developers.cloudflare.com/terraform/additional-configurations/waf-managed-rulesets/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-29","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/terraform/","name":"Terraform"}},{"@type":"ListItem","position":3,"item":{"@id":"/terraform/additional-configurations/","name":"Additional configurations"}},{"@type":"ListItem","position":4,"item":{"@id":"/terraform/additional-configurations/waf-managed-rulesets/","name":"WAF Managed Rules configuration using Terraform"}}]}
 ```

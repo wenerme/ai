@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 # Connect to a PostgreSQL database with Cloudflare Workers
 
-**Last reviewed:**  11 months ago 
+**Last reviewed:**  12 months ago 
 
 In this tutorial, you will learn how to create a Cloudflare Workers application and connect it to a PostgreSQL database using [TCP Sockets](https://developers.cloudflare.com/workers/runtime-apis/tcp-sockets/) and [Hyperdrive](https://developers.cloudflare.com/hyperdrive/). The Workers application you create in this tutorial will interact with a product database inside of PostgreSQL.
 
@@ -72,8 +72,8 @@ cd postgres-tutorial
 
 To enable both built-in runtime APIs and polyfills for your Worker or Pages project, add the [nodejs\_compat](https://developers.cloudflare.com/workers/configuration/compatibility-flags/#nodejs-compatibility-flag) [compatibility flag](https://developers.cloudflare.com/workers/configuration/compatibility-flags/#nodejs-compatibility-flag) to your [Wrangler configuration file](https://developers.cloudflare.com/workers/wrangler/configuration/), and set your compatibility date to September 23rd, 2024 or later. This will enable [Node.js compatibility](https://developers.cloudflare.com/workers/runtime-apis/nodejs/) for your Workers project.
 
-* [  wrangler.jsonc ](#tab-panel-10017)
-* [  wrangler.toml ](#tab-panel-10018)
+* [  wrangler.jsonc ](#tab-panel-12201)
+* [  wrangler.toml ](#tab-panel-12202)
 
 JSONC
 
@@ -89,7 +89,7 @@ JSONC
 
   // Set this to today's date
 
-  "compatibility_date": "2026-05-21"
+  "compatibility_date": "2026-06-17"
 
 }
 
@@ -104,7 +104,7 @@ compatibility_flags = [ "nodejs_compat" ]
 
 # Set this to today's date
 
-compatibility_date = "2026-05-21"
+compatibility_date = "2026-06-17"
 
 
 ```
@@ -214,8 +214,8 @@ DB_URL="<ENTER YOUR POSTGRESQL CONNECTION STRING>"
 
 Configure each database parameter as an [environment variable](https://developers.cloudflare.com/workers/configuration/environment-variables/) via the [Cloudflare dashboard](https://developers.cloudflare.com/workers/configuration/environment-variables/#add-environment-variables-via-the-dashboard) or in your Wrangler file. Refer to an example of a Wrangler file configuration:
 
-* [  wrangler.jsonc ](#tab-panel-10013)
-* [  wrangler.toml ](#tab-panel-10014)
+* [  wrangler.jsonc ](#tab-panel-12197)
+* [  wrangler.toml ](#tab-panel-12198)
 
 JSONC
 
@@ -605,8 +605,8 @@ npx wrangler hyperdrive create <NAME_OF_HYPERDRIVE_CONFIG> --connection-string="
 
 This command outputs the Hyperdrive configuration `id` that will be used for your Hyperdrive [binding](https://developers.cloudflare.com/workers/runtime-apis/bindings/). Set up your binding by specifying the `id` in the Wrangler file.
 
-* [  wrangler.jsonc ](#tab-panel-10015)
-* [  wrangler.toml ](#tab-panel-10016)
+* [  wrangler.jsonc ](#tab-panel-12199)
+* [  wrangler.toml ](#tab-panel-12200)
 
 JSONC
 
@@ -622,7 +622,7 @@ JSONC
 
   // Set this to today's date
 
-  "compatibility_date": "2026-05-21",
+  "compatibility_date": "2026-06-17",
 
   "compatibility_flags": [
 
@@ -661,7 +661,7 @@ main = "src/index.ts"
 
 # Set this to today's date
 
-compatibility_date = "2026-05-21"
+compatibility_date = "2026-06-17"
 
 compatibility_flags = [ "nodejs_compat" ]
 
@@ -733,5 +733,6 @@ To build more with databases and Workers, refer to [Tutorials](https://developer
 If you have any questions, need assistance, or would like to share your project, join the Cloudflare Developer community on [Discord ↗](https://discord.cloudflare.com) to connect with fellow developers and the Cloudflare team.
 
 ```json
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/tutorials/postgres/#page","headline":"Connect to a PostgreSQL database with Cloudflare Workers · Cloudflare Workers docs","description":"This tutorial explains how to connect to a Postgres database with Cloudflare Workers. The Workers application you create in this tutorial will interact with a product database inside of Postgres.","url":"https://developers.cloudflare.com/workers/tutorials/postgres/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-03-20","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["PostgreSQL","TypeScript","SQL"]}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/workers/","name":"Workers"}},{"@type":"ListItem","position":3,"item":{"@id":"/workers/tutorials/","name":"Tutorials"}},{"@type":"ListItem","position":4,"item":{"@id":"/workers/tutorials/postgres/","name":"Connect to a PostgreSQL database with Cloudflare Workers"}}]}
 ```

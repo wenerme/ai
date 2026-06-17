@@ -47,5 +47,6 @@ This table outlines the Firewall Rules features and entitlements available with 
 * [Cloudflare Rules language](https://developers.cloudflare.com/ruleset-engine/rules-language/)
 
 ```json
+{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/firewall/#page","headline":"Cloudflare Firewall Rules (deprecated) · Cloudflare Firewall Rules (deprecated) docs","description":"Create rules to inspect and act on incoming HTTP traffic.","url":"https://developers.cloudflare.com/firewall/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-24","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/firewall/","name":"Firewall Rules (deprecated)"}}]}
 ```

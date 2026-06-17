@@ -1,0 +1,48 @@
+---
+title: '`glab container-registry`'
+stage: Create
+group: Code Review
+info: To determine the technical writer assigned to the Stage/Group associated with this page, see <https://handbook.gitlab.com/handbook/product/ux/technical-writing/#assignments>
+---
+
+Work with GitLab container registries.
+
+## Synopsis
+
+List and manage GitLab container registry repositories and tags.
+
+## Aliases
+
+```plaintext
+cr
+```
+
+## Examples
+
+```console
+# List container registry repositories for the current project
+glab container-registry repository list
+
+# List tags for a container registry repository
+glab container-registry tag list 123
+
+# Delete a container registry tag
+glab container-registry tag delete 123 latest
+```
+
+## Options
+
+```plaintext
+  -R, --repo string   Select another repository. You can use either OWNER/REPO or GROUP/NAMESPACE/REPO. The full URL or Git URL is also accepted.
+```
+
+## Options inherited from parent commands
+
+```plaintext
+  -h, --help   Show help for this command.
+```
+
+## Subcommands
+
+- [`repository`](repository/_index.md)
+- [`tag`](tag/_index.md)

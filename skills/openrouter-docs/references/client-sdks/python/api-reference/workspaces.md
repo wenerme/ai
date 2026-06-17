@@ -18,6 +18,9 @@ Workspaces endpoints
 * [delete](#delete) - Delete a workspace
 * [get](#get) - Get a workspace
 * [update](#update) - Update a workspace
+* [list\_budgets](#list_budgets) - List workspace budgets
+* [delete\_budget](#delete_budget) - Delete a workspace budget
+* [set\_budget](#set_budget) - Create or update a workspace budget
 * [bulk\_add\_members](#bulk_add_members) - Bulk add members to a workspace
 * [bulk\_remove\_members](#bulk_remove_members) - Bulk remove members from a workspace
 
@@ -280,6 +283,151 @@ with OpenRouter(
 | errors.BadRequestResponseError     | 400         | application/json |
 | errors.UnauthorizedResponseError   | 401         | application/json |
 | errors.ForbiddenResponseError      | 403         | application/json |
+| errors.NotFoundResponseError       | 404         | application/json |
+| errors.InternalServerResponseError | 500         | application/json |
+| errors.OpenRouterDefaultError      | 4XX, 5XX    | \*/\*            |
+
+## list\_budgets
+
+List all budgets configured for a workspace. [Management key](/docs/guides/overview/auth/management-api-keys) required.
+
+### Example Usage
+
+```python
+from openrouter import OpenRouter
+import os
+
+with OpenRouter(
+    http_referer="<value>",
+    x_open_router_title="<value>",
+    x_open_router_categories="<value>",
+    api_key=os.getenv("OPENROUTER_API_KEY", ""),
+) as open_router:
+
+    res = open_router.workspaces.list_budgets(id="production")
+
+    # Handle response
+    print(res)
+
+```
+
+### Parameters
+
+| Parameter                  | Type                                                               | Required             | Description                                                                                                                                                 | Example    |
+| -------------------------- | ------------------------------------------------------------------ | -------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------- |
+| `id`                       | *str*                                                              | :heavy\_check\_mark: | The workspace ID (UUID) or slug                                                                                                                             | production |
+| `http_referer`             | *Optional\[str]*                                                   | :heavy\_minus\_sign: | The app identifier should be your app's URL and is used as the primary identifier for rankings.<br />This is used to track API usage per application.<br /> |            |
+| `x_open_router_title`      | *Optional\[str]*                                                   | :heavy\_minus\_sign: | The app display name allows you to customize how your app appears in OpenRouter's dashboard.<br />                                                          |            |
+| `x_open_router_categories` | *Optional\[str]*                                                   | :heavy\_minus\_sign: | Comma-separated list of app categories (e.g. "cli-agent,cloud-agent"). Used for marketplace rankings.<br />                                                 |            |
+| `retries`                  | [Optional\[utils.RetryConfig\]](../../models/utils/retryconfig.md) | :heavy\_minus\_sign: | Configuration to override the default retry behavior of the client.                                                                                         |            |
+
+### Response
+
+**[components.ListWorkspaceBudgetsResponse](/docs/sdks/python/api-reference/components/listworkspacebudgetsresponse)**
+
+### Errors
+
+| Error Type                         | Status Code | Content Type     |
+| ---------------------------------- | ----------- | ---------------- |
+| errors.UnauthorizedResponseError   | 401         | application/json |
+| errors.NotFoundResponseError       | 404         | application/json |
+| errors.InternalServerResponseError | 500         | application/json |
+| errors.OpenRouterDefaultError      | 4XX, 5XX    | \*/\*            |
+
+## delete\_budget
+
+Remove the budget for a given interval. [Management key](/docs/guides/overview/auth/management-api-keys) required.
+
+### Example Usage
+
+```python
+from openrouter import OpenRouter
+import os
+
+with OpenRouter(
+    http_referer="<value>",
+    x_open_router_title="<value>",
+    x_open_router_categories="<value>",
+    api_key=os.getenv("OPENROUTER_API_KEY", ""),
+) as open_router:
+
+    res = open_router.workspaces.delete_budget(id="production", interval="monthly")
+
+    # Handle response
+    print(res)
+
+```
+
+### Parameters
+
+| Parameter                  | Type                                                                                                     | Required             | Description                                                                                                                                                 | Example    |
+| -------------------------- | -------------------------------------------------------------------------------------------------------- | -------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------- |
+| `id`                       | *str*                                                                                                    | :heavy\_check\_mark: | The workspace ID (UUID) or slug                                                                                                                             | production |
+| `interval`                 | [components.WorkspaceBudgetInterval](/docs/sdks/python/api-reference/components/workspacebudgetinterval) | :heavy\_check\_mark: | Budget reset interval. Use "lifetime" for a one-time budget that never resets.                                                                              | monthly    |
+| `http_referer`             | *Optional\[str]*                                                                                         | :heavy\_minus\_sign: | The app identifier should be your app's URL and is used as the primary identifier for rankings.<br />This is used to track API usage per application.<br /> |            |
+| `x_open_router_title`      | *Optional\[str]*                                                                                         | :heavy\_minus\_sign: | The app display name allows you to customize how your app appears in OpenRouter's dashboard.<br />                                                          |            |
+| `x_open_router_categories` | *Optional\[str]*                                                                                         | :heavy\_minus\_sign: | Comma-separated list of app categories (e.g. "cli-agent,cloud-agent"). Used for marketplace rankings.<br />                                                 |            |
+| `retries`                  | [Optional\[utils.RetryConfig\]](../../models/utils/retryconfig.md)                                       | :heavy\_minus\_sign: | Configuration to override the default retry behavior of the client.                                                                                         |            |
+
+### Response
+
+**[components.DeleteWorkspaceBudgetResponse](/docs/sdks/python/api-reference/components/deleteworkspacebudgetresponse)**
+
+### Errors
+
+| Error Type                         | Status Code | Content Type     |
+| ---------------------------------- | ----------- | ---------------- |
+| errors.UnauthorizedResponseError   | 401         | application/json |
+| errors.NotFoundResponseError       | 404         | application/json |
+| errors.InternalServerResponseError | 500         | application/json |
+| errors.OpenRouterDefaultError      | 4XX, 5XX    | \*/\*            |
+
+## set\_budget
+
+Create or update the budget for a given interval. Budget limits must strictly decrease as the interval narrows (lifetime > monthly > weekly > daily). [Management key](/docs/guides/overview/auth/management-api-keys) required.
+
+### Example Usage
+
+```python
+from openrouter import OpenRouter
+import os
+
+with OpenRouter(
+    http_referer="<value>",
+    x_open_router_title="<value>",
+    x_open_router_categories="<value>",
+    api_key=os.getenv("OPENROUTER_API_KEY", ""),
+) as open_router:
+
+    res = open_router.workspaces.set_budget(id="production", interval="monthly", limit_usd=100)
+
+    # Handle response
+    print(res)
+
+```
+
+### Parameters
+
+| Parameter                  | Type                                                                                                     | Required             | Description                                                                                                                                                 | Example    |
+| -------------------------- | -------------------------------------------------------------------------------------------------------- | -------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------- |
+| `id`                       | *str*                                                                                                    | :heavy\_check\_mark: | The workspace ID (UUID) or slug                                                                                                                             | production |
+| `interval`                 | [components.WorkspaceBudgetInterval](/docs/sdks/python/api-reference/components/workspacebudgetinterval) | :heavy\_check\_mark: | Budget reset interval. Use "lifetime" for a one-time budget that never resets.                                                                              | monthly    |
+| `limit_usd`                | *float*                                                                                                  | :heavy\_check\_mark: | Spending limit in USD. Must be greater than 0.                                                                                                              | 100        |
+| `http_referer`             | *Optional\[str]*                                                                                         | :heavy\_minus\_sign: | The app identifier should be your app's URL and is used as the primary identifier for rankings.<br />This is used to track API usage per application.<br /> |            |
+| `x_open_router_title`      | *Optional\[str]*                                                                                         | :heavy\_minus\_sign: | The app display name allows you to customize how your app appears in OpenRouter's dashboard.<br />                                                          |            |
+| `x_open_router_categories` | *Optional\[str]*                                                                                         | :heavy\_minus\_sign: | Comma-separated list of app categories (e.g. "cli-agent,cloud-agent"). Used for marketplace rankings.<br />                                                 |            |
+| `retries`                  | [Optional\[utils.RetryConfig\]](../../models/utils/retryconfig.md)                                       | :heavy\_minus\_sign: | Configuration to override the default retry behavior of the client.                                                                                         |            |
+
+### Response
+
+**[components.UpsertWorkspaceBudgetResponse](/docs/sdks/python/api-reference/components/upsertworkspacebudgetresponse)**
+
+### Errors
+
+| Error Type                         | Status Code | Content Type     |
+| ---------------------------------- | ----------- | ---------------- |
+| errors.BadRequestResponseError     | 400         | application/json |
+| errors.UnauthorizedResponseError   | 401         | application/json |
 | errors.NotFoundResponseError       | 404         | application/json |
 | errors.InternalServerResponseError | 500         | application/json |
 | errors.OpenRouterDefaultError      | 4XX, 5XX    | \*/\*            |

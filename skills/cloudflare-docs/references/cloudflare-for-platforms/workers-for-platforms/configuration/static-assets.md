@@ -334,8 +334,8 @@ If you prefer a CLI-based approach and your platform setup allows direct publish
 
 Create or update your [Wrangler configuration file](https://developers.cloudflare.com/workers/wrangler/configuration/) to specify where Wrangler should look for static files:
 
-* [  wrangler.jsonc ](#tab-panel-4551)
-* [  wrangler.toml ](#tab-panel-4552)
+* [  wrangler.jsonc ](#tab-panel-7035)
+* [  wrangler.toml ](#tab-panel-7036)
 
 JSONC
 
@@ -351,7 +351,7 @@ JSONC
 
   // Set this to today's date
 
-  "compatibility_date": "2026-04-29",
+  "compatibility_date": "2026-06-17",
 
   "assets": {
 
@@ -378,7 +378,7 @@ main = "./src/index.js"
 
 # Set this to today's date
 
-compatibility_date = "2026-04-29"
+compatibility_date = "2026-06-17"
 
 
 [assets]
@@ -432,5 +432,6 @@ npx wrangler deploy --name <USER_WORKER_NAME> --dispatch-namespace <NAMESPACE_NA
 Wrangler will automatically detect your static files, bundle them, and upload them to Cloudflare along with your Worker code.
 
 ```json
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-for-platforms/workers-for-platforms/configuration/static-assets/#page","headline":"Static assets · Cloudflare for Platforms docs","description":"Host static assets on Cloudflare's global network and deliver faster load times worldwide with Workers for Platforms.","url":"https://developers.cloudflare.com/cloudflare-for-platforms/workers-for-platforms/configuration/static-assets/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/cloudflare-for-platforms/","name":"Cloudflare for Platforms"}},{"@type":"ListItem","position":3,"item":{"@id":"/cloudflare-for-platforms/workers-for-platforms/","name":"Workers for Platforms"}},{"@type":"ListItem","position":4,"item":{"@id":"/cloudflare-for-platforms/workers-for-platforms/configuration/","name":"Configuration"}},{"@type":"ListItem","position":5,"item":{"@id":"/cloudflare-for-platforms/workers-for-platforms/configuration/static-assets/","name":"Static assets"}}]}
 ```

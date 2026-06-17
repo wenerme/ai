@@ -30,8 +30,8 @@ To manage account members, you must have a role of **Super Administrator** and h
 
 To manage account members, you must have a role of **Super Administrator** and have a [verified email address](https://developers.cloudflare.com/fundamentals/user-profiles/verify-email-address/).
 
-* [ Dashboard ](#tab-panel-8067)
-* [ API ](#tab-panel-8068)
+* [ Dashboard ](#tab-panel-8591)
+* [ API ](#tab-panel-8592)
 
 To view members using the dashboard:
 
@@ -45,8 +45,8 @@ To view members using the API, send a [GET request](https://developers.cloudflar
 
 To manage account members, you must have a role of **Super Administrator** and have a [verified email address](https://developers.cloudflare.com/fundamentals/user-profiles/verify-email-address/).
 
-* [ Dashboard ](#tab-panel-8069)
-* [ API ](#tab-panel-8070)
+* [ Dashboard ](#tab-panel-8593)
+* [ API ](#tab-panel-8594)
 
 To add a member to your account:
 
@@ -70,8 +70,8 @@ To add a member using the API, send a [POST request](https://developers.cloudfla
 
 To manage account members, you must have a role of **Super Administrator** and have a [verified email address](https://developers.cloudflare.com/fundamentals/user-profiles/verify-email-address/).
 
-* [ Dashboard ](#tab-panel-8071)
-* [ API ](#tab-panel-8072)
+* [ Dashboard ](#tab-panel-8595)
+* [ API ](#tab-panel-8596)
 
 To edit member permissions using the dashboard:
 
@@ -138,8 +138,8 @@ If you invited a member to your account but they cannot find the invitation or t
 
 To manage account members, you must have a role of **Super Administrator** and have a [verified email address](https://developers.cloudflare.com/fundamentals/user-profiles/verify-email-address/).
 
-* [ Dashboard ](#tab-panel-8073)
-* [ API ](#tab-panel-8074)
+* [ Dashboard ](#tab-panel-8597)
+* [ API ](#tab-panel-8598)
 
 To revoke a member's access to your account:
 
@@ -162,5 +162,6 @@ If you are a Super Administrator for an account that has existing domains and yo
 You can delete your user as a Super Administrator, but you cannot delete your account. Other Super Administrators will continue to have access to the appropriate privileges to manage the account, including billing information.
 
 ```json
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/fundamentals/manage-members/manage/#page","headline":"Manage account members · Cloudflare Fundamentals docs","description":"Add, edit, and remove Cloudflare account members and their permission policies.","url":"https://developers.cloudflare.com/fundamentals/manage-members/manage/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-20","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/fundamentals/","name":"Cloudflare Fundamentals"}},{"@type":"ListItem","position":3,"item":{"@id":"/fundamentals/manage-members/","name":"Members and permissions"}},{"@type":"ListItem","position":4,"item":{"@id":"/fundamentals/manage-members/manage/","name":"Manage"}}]}
 ```

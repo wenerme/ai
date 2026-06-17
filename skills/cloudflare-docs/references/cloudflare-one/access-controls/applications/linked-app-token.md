@@ -37,8 +37,8 @@ accTitle: Self-hosted to self-hosted linked app token flow
 
 Create a policy on Application B (the downstream application that will receive forwarded requests):
 
-* [ Dashboard ](#tab-panel-6969)
-* [ API ](#tab-panel-6970)
+* [ Dashboard ](#tab-panel-7111)
+* [ API ](#tab-panel-7112)
 
 1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** \> **Access controls** \> **Applications**.
 2. Select Application B and select **Edit**.
@@ -137,8 +137,8 @@ accTitle: SaaS to self-hosted linked app token flow
 
 Create a policy on the self-hosted application (Application B):
 
-* [ Dashboard ](#tab-panel-6971)
-* [ API ](#tab-panel-6972)
+* [ Dashboard ](#tab-panel-7113)
+* [ API ](#tab-panel-7114)
 
 1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** \> **Access controls** \> **Applications**.
 2. Select the self-hosted app (Application B) and select **Edit**.
@@ -226,5 +226,6 @@ The end-to-end flow is:
 * When the upstream application uses [Managed OAuth](https://developers.cloudflare.com/cloudflare-one/access-controls/applications/http-apps/managed-oauth/), the client receives an [opaque access token](https://developers.cloudflare.com/cloudflare-one/access-controls/applications/http-apps/managed-oauth/#token-format), not a JWT. The client cannot forward this token directly to downstream applications as a `Cf-Access-Token` header. Instead, the upstream application's origin must read the `Cf-Access-Jwt-Assertion` header (which contains the resolved JWT) and forward it as `Cf-Access-Token` to the downstream application. If you want clients to access multiple endpoints without a proxy, consider using a [multi-domain Access application](https://developers.cloudflare.com/cloudflare-one/access-controls/applications/http-apps/managed-oauth/#multi-domain-applications) instead.
 
 ```json
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/access-controls/applications/linked-app-token/#page","headline":"Linked App Token · Cloudflare One docs","description":"Forward Access JWTs between linked applications.","url":"https://developers.cloudflare.com/cloudflare-one/access-controls/applications/linked-app-token/","inLanguage":"en","image":"https://developers.cloudflare.com/zt-preview.png","dateModified":"2026-04-24","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/cloudflare-one/","name":"Cloudflare One"}},{"@type":"ListItem","position":3,"item":{"@id":"/cloudflare-one/access-controls/","name":"Access controls"}},{"@type":"ListItem","position":4,"item":{"@id":"/cloudflare-one/access-controls/applications/","name":"Applications"}},{"@type":"ListItem","position":5,"item":{"@id":"/cloudflare-one/access-controls/applications/linked-app-token/","name":"Linked App Token"}}]}
 ```

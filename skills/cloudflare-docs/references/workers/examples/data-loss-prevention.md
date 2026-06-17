@@ -22,10 +22,10 @@ If you want to get started quickly, click on the button below.
 
 This creates a repository in your GitHub account and deploys the application to Cloudflare Workers.
 
-* [  JavaScript ](#tab-panel-10473)
-* [  TypeScript ](#tab-panel-10474)
-* [  Python ](#tab-panel-10475)
-* [  Hono ](#tab-panel-10476)
+* [  JavaScript ](#tab-panel-11652)
+* [  TypeScript ](#tab-panel-11653)
+* [  Python ](#tab-panel-11654)
+* [  Hono ](#tab-panel-11655)
 
 JavaScript
 
@@ -564,5 +564,6 @@ export default app;
 ```
 
 ```json
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/examples/data-loss-prevention/#page","headline":"Data loss prevention · Cloudflare Workers docs","description":"Protect sensitive data to prevent data loss, and send alerts to a webhooks server in the event of a data breach.","url":"https://developers.cloudflare.com/workers/examples/data-loss-prevention/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Security","JavaScript","TypeScript","Python"]}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/workers/","name":"Workers"}},{"@type":"ListItem","position":3,"item":{"@id":"/workers/examples/","name":"Examples"}},{"@type":"ListItem","position":4,"item":{"@id":"/workers/examples/data-loss-prevention/","name":"Data loss prevention"}}]}
 ```

@@ -33,8 +33,8 @@ Some applications and networking implementations require specific custom headers
 4. Select **Edit code**.
 5. Input the following Worker:
 
-* [  JavaScript ](#tab-panel-5619)
-* [  TypeScript ](#tab-panel-5620)
+* [  JavaScript ](#tab-panel-7709)
+* [  TypeScript ](#tab-panel-7710)
 
 JavaScript
 
@@ -122,5 +122,6 @@ Example custom header
 ```
 
 ```json
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/tutorials/access-workers/#page","headline":"Create custom headers for Cloudflare Access-protected origins with Workers · Cloudflare One docs","description":"This tutorial covers how to use a Cloudflare Worker to add custom headers to traffic. The headers will be sent to origin services protected by Cloudflare Access.","url":"https://developers.cloudflare.com/cloudflare-one/tutorials/access-workers/","inLanguage":"en","image":"https://developers.cloudflare.com/zt-preview.png","dateModified":"2026-01-28","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["JavaScript"]}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/cloudflare-one/","name":"Cloudflare One"}},{"@type":"ListItem","position":3,"item":{"@id":"/cloudflare-one/tutorials/","name":"Tutorials"}},{"@type":"ListItem","position":4,"item":{"@id":"/cloudflare-one/tutorials/access-workers/","name":"Create custom headers for Cloudflare Access-protected origins with Workers"}}]}
 ```

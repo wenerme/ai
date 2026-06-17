@@ -67,5 +67,6 @@ Cloudflare's global DNS platform provides speed and resilience. DNS customers al
 Compare available Cloudflare plans.
 
 ```json
+{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/spectrum/#page","headline":"Cloudflare Spectrum · Cloudflare Spectrum docs","description":"Proxy and protect TCP and UDP applications with Cloudflare Spectrum.","url":"https://developers.cloudflare.com/spectrum/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/spectrum/","name":"Spectrum"}}]}
 ```

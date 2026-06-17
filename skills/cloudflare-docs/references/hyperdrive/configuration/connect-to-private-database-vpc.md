@@ -56,8 +56,8 @@ For full tunnel documentation, refer to [Cloudflare Tunnel for Workers VPC](http
 
 Create a VPC Service of type `tcp` that points to your database. Set the `--app-protocol` flag to `postgresql` or `mysql` so that Hyperdrive can optimize connections.
 
-* [ PostgreSQL ](#tab-panel-5866)
-* [ MySQL ](#tab-panel-5867)
+* [ PostgreSQL ](#tab-panel-8644)
+* [ MySQL ](#tab-panel-8645)
 
 Terminal window
 
@@ -150,8 +150,8 @@ For the full list of verification modes, refer to [TLS certificate verification 
 
 Use the `--service-id` flag to point Hyperdrive at the VPC Service you created. When you use `--service-id`, you do not provide `--origin-host`, `--origin-port`, or `--connection-string`. Hyperdrive routes traffic through the VPC Service instead.
 
-* [ PostgreSQL ](#tab-panel-5868)
-* [ MySQL ](#tab-panel-5869)
+* [ PostgreSQL ](#tab-panel-8646)
+* [ MySQL ](#tab-panel-8647)
 
 Terminal window
 
@@ -209,8 +209,8 @@ You must create a binding in your [Wrangler configuration file](https://develope
 
 To bind your Hyperdrive configuration to your Worker, add the following to the end of your Wrangler file:
 
-* [  wrangler.jsonc ](#tab-panel-5870)
-* [  wrangler.toml ](#tab-panel-5871)
+* [  wrangler.jsonc ](#tab-panel-8648)
+* [  wrangler.toml ](#tab-panel-8649)
 
 JSONC
 
@@ -256,8 +256,8 @@ Specifically:
 
 If you wish to use a local database during development, you can add a `localConnectionString` to your Hyperdrive configuration with the connection string of your database:
 
-* [  wrangler.jsonc ](#tab-panel-5872)
-* [  wrangler.toml ](#tab-panel-5873)
+* [  wrangler.jsonc ](#tab-panel-8650)
+* [  wrangler.toml ](#tab-panel-8651)
 
 JSONC
 
@@ -305,8 +305,8 @@ Learn more about setting up [Hyperdrive for local development](https://developer
 
 ## 5\. Query the database
 
-* [ PostgreSQL ](#tab-panel-5878)
-* [ MySQL ](#tab-panel-5879)
+* [ PostgreSQL ](#tab-panel-8656)
+* [ MySQL ](#tab-panel-8657)
 
 Use [node-postgres ↗](https://node-postgres.com/) (`pg`) to send a test query.
 
@@ -356,8 +356,8 @@ bun add -d @types/pg
 
 Add the required Node.js compatibility flags and Hyperdrive binding to your `wrangler.jsonc` file:
 
-* [  wrangler.jsonc ](#tab-panel-5874)
-* [  wrangler.toml ](#tab-panel-5875)
+* [  wrangler.jsonc ](#tab-panel-8652)
+* [  wrangler.toml ](#tab-panel-8653)
 
 JSONC
 
@@ -375,7 +375,7 @@ JSONC
 
   // Set this to today's date
 
-  "compatibility_date": "2026-04-30",
+  "compatibility_date": "2026-06-17",
 
   "hyperdrive": [
 
@@ -402,7 +402,7 @@ compatibility_flags = [ "nodejs_compat" ]
 
 # Set this to today's date
 
-compatibility_date = "2026-04-30"
+compatibility_date = "2026-06-17"
 
 
 [[hyperdrive]]
@@ -525,8 +525,8 @@ Note
 
 Add the required Node.js compatibility flags and Hyperdrive binding to your `wrangler.jsonc` file:
 
-* [  wrangler.jsonc ](#tab-panel-5876)
-* [  wrangler.toml ](#tab-panel-5877)
+* [  wrangler.jsonc ](#tab-panel-8654)
+* [  wrangler.toml ](#tab-panel-8655)
 
 JSONC
 
@@ -544,7 +544,7 @@ JSONC
 
   // Set this to today's date
 
-  "compatibility_date": "2026-04-30",
+  "compatibility_date": "2026-06-17",
 
   "hyperdrive": [
 
@@ -571,7 +571,7 @@ compatibility_flags = [ "nodejs_compat" ]
 
 # Set this to today's date
 
-compatibility_date = "2026-04-30"
+compatibility_date = "2026-06-17"
 
 
 [[hyperdrive]]
@@ -680,5 +680,6 @@ If you receive a list of tables from your database when you access your deployed
 * [Troubleshoot common issues](https://developers.cloudflare.com/hyperdrive/observability/troubleshooting/) when connecting a database to Hyperdrive.
 
 ```json
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/hyperdrive/configuration/connect-to-private-database-vpc/#page","headline":"Connect to a private database using Workers VPC (Recommended) · Cloudflare Hyperdrive docs","description":"Workers VPC provides a way to connect Hyperdrive to a private database without configuring Cloudflare Access applications or service tokens. Instead, you create a TCP VPC Service that points to your database and pass its service ID to Hyperdrive.","url":"https://developers.cloudflare.com/hyperdrive/configuration/connect-to-private-database-vpc/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-30","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/hyperdrive/","name":"Hyperdrive"}},{"@type":"ListItem","position":3,"item":{"@id":"/hyperdrive/configuration/","name":"Configuration"}},{"@type":"ListItem","position":4,"item":{"@id":"/hyperdrive/configuration/connect-to-private-database-vpc/","name":"Connect to a private database using Workers VPC (Recommended)"}}]}
 ```

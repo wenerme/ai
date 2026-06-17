@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 # Designing a distributed web performance architecture
 
-**Last reviewed:**  2 months ago 
+**Last reviewed:**  3 months ago 
 
 ## Introduction
 
@@ -168,5 +168,6 @@ While Cloudflare provides internal metrics, external (third-party) tools are vit
 * [Treo.sh ↗](https://treo.sh/sitespeed): Fast, historical visualization of Chrome User Experience Report (CrUX) data.
 
 ```json
+{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/reference-architecture/diagrams/content-delivery/distributed-web-performance-architecture/#page","headline":"Designing a distributed web performance architecture · Cloudflare Reference Architecture docs","description":"A prescriptive pattern for building a Cloudflare-based L7 performance architecture that reduces latency, raises cache efficiency, and improves Core Web Vitals.","url":"https://developers.cloudflare.com/reference-architecture/diagrams/content-delivery/distributed-web-performance-architecture/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/reference-architecture/","name":"Reference Architecture"}},{"@type":"ListItem","position":3,"item":{"@id":"/reference-architecture/diagrams/","name":"Reference Architecture Diagrams"}},{"@type":"ListItem","position":4,"item":{"@id":"/reference-architecture/diagrams/content-delivery/","name":"Content Delivery"}},{"@type":"ListItem","position":5,"item":{"@id":"/reference-architecture/diagrams/content-delivery/distributed-web-performance-architecture/","name":"Designing a distributed web performance architecture"}}]}
 ```

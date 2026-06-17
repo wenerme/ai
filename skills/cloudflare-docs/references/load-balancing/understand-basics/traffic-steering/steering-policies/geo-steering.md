@@ -32,8 +32,8 @@ Warning
 
 If you add a pool to a region, you cannot [delete this pool](https://developers.cloudflare.com/load-balancing/pools/create-pool/#delete-a-pool) until you remove it from the **Geo steering** configuration. The configuration is **not** automatically removed when you change to a different **Traffic Steering** method.
 
-* [ Dashboard ](#tab-panel-7183)
-* [ API ](#tab-panel-7184)
+* [ Dashboard ](#tab-panel-9337)
+* [ API ](#tab-panel-9338)
 
 When [creating or editing a load balancer](https://developers.cloudflare.com/load-balancing/load-balancers/create-load-balancer/):
 
@@ -112,8 +112,8 @@ If you only define `WNAM`, then traffic from the East Coast will be routed to th
 
 ### Country steering
 
-* [ Dashboard ](#tab-panel-7185)
-* [ API ](#tab-panel-7186)
+* [ Dashboard ](#tab-panel-9339)
+* [ API ](#tab-panel-9340)
 
 When [creating or editing a load balancer](https://developers.cloudflare.com/load-balancing/load-balancers/create-load-balancer/):
 
@@ -148,5 +148,6 @@ PoP steering is only available to Enterprise customers and only accessible via t
 A fallback pool will be used if there is only one pool in the same region and it is unavailable. If there are multiple pools in the same region, the order of the pools will be respected. For example, if the first pool is unavailable, the second pool will be used.
 
 ```json
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/load-balancing/understand-basics/traffic-steering/steering-policies/geo-steering/#page","headline":"Geo steering · Cloudflare Load Balancing docs","description":"Route traffic to pools based on visitor geographic location.","url":"https://developers.cloudflare.com/load-balancing/understand-basics/traffic-steering/steering-policies/geo-steering/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-17","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Geolocation"]}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/load-balancing/","name":"Load Balancing"}},{"@type":"ListItem","position":3,"item":{"@id":"/load-balancing/understand-basics/","name":"Concepts"}},{"@type":"ListItem","position":4,"item":{"@id":"/load-balancing/understand-basics/traffic-steering/","name":"Traffic steering"}},{"@type":"ListItem","position":5,"item":{"@id":"/load-balancing/understand-basics/traffic-steering/steering-policies/","name":"Global traffic steering"}},{"@type":"ListItem","position":6,"item":{"@id":"/load-balancing/understand-basics/traffic-steering/steering-policies/geo-steering/","name":"Geo"}}]}
 ```

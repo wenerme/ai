@@ -18,8 +18,8 @@ The Workers API provides native email sending capabilities directly from your Cl
 
 Configure a `send_email` binding in your Wrangler configuration file to enable email sending:
 
-* [  wrangler.jsonc ](#tab-panel-8254)
-* [  wrangler.toml ](#tab-panel-8255)
+* [  wrangler.jsonc ](#tab-panel-8475)
+* [  wrangler.toml ](#tab-panel-8476)
 
 JSONC
 
@@ -410,5 +410,6 @@ export default {
 * Explore [email authentication](https://developers.cloudflare.com/email-service/concepts/email-authentication/) for better deliverability
 
 ```json
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/email-service/api/send-emails/workers-api/#page","headline":"Workers API · Cloudflare Email Service docs","description":"Send emails directly from Cloudflare Workers using the Email Service binding and send() method.","url":"https://developers.cloudflare.com/email-service/api/send-emails/workers-api/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-06-09","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/email-service/","name":"Email Service"}},{"@type":"ListItem","position":3,"item":{"@id":"/email-service/api/","name":"API reference"}},{"@type":"ListItem","position":4,"item":{"@id":"/email-service/api/send-emails/","name":"Send emails"}},{"@type":"ListItem","position":5,"item":{"@id":"/email-service/api/send-emails/workers-api/","name":"Workers API"}}]}
 ```

@@ -38,7 +38,7 @@ You can deploy NLWeb on your website directly through the AI Search dashboard:
 6. Go to the **Settings** for the instance
 7. Find **NLWeb Worker** and select "Enable AI Search for your website".
 
-Once complete, AI Search will deploy an NLWeb Worker for you that enables you to use the NLWeb API Endpoints.
+Once complete, AI Search will deploy an NLWeb Worker for you that enables you to use the NLWeb API endpoints.
 
 ## What this template includes
 
@@ -59,7 +59,7 @@ Your deployed Worker provides two endpoints:
 
 These endpoints give both people and agents structured access to your content.
 
-## Using It on Your Website
+## Using it on your website
 
 You can use the embeddable snippet to add a search UI directly into your website. For example:
 
@@ -123,5 +123,6 @@ The simplest way to apply changes or updates is to redeploy the Worker template:
 Now you can use this Worker as the new NLWeb endpoint for your website.
 
 ```json
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai-search/how-to/nlweb/#page","headline":"NLWeb · Cloudflare AI Search docs","description":"Deploy NLWeb with AI Search to enable conversational natural language queries on your website.","url":"https://developers.cloudflare.com/ai-search/how-to/nlweb/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-06-08","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/ai-search/","name":"AI Search"}},{"@type":"ListItem","position":3,"item":{"@id":"/ai-search/how-to/","name":"How to"}},{"@type":"ListItem","position":4,"item":{"@id":"/ai-search/how-to/nlweb/","name":"NLWeb"}}]}
 ```

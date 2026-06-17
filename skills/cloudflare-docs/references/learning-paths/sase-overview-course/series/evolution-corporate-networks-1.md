@@ -12,8 +12,8 @@ image: https://developers.cloudflare.com/cf-twitter-card.png
 
 # The evolution of corporate networks
 
-* [ Watch this episode ](#tab-panel-6526)
-* [ Series overview ](#tab-panel-6527)
+* [ Watch this episode ](#tab-panel-9144)
+* [ Series overview ](#tab-panel-9145)
 
 In this video, we discuss Cloudflare One, our Secure Access Service Edge (SASE) platform and how it has been designed to revolutionize the corporate network and enable companies with their Zero Trust strategy. Legacy network design is struggling to address today's challenges of security, performance and monitoring needs. Many IT teams are trying to evolve their corporate network with point solutions and finding the lack of integration and performance an issue.
 
@@ -52,5 +52,6 @@ If you want to dive into detail about modernizing your corporate network with Cl
 [ Watch Episode 5: Protect your users from Internet risks ](https://developers.cloudflare.com/learning-paths/sase-overview-course/series/protect-users-from-internet-risks-5/) In this video, we will explore how Cloudflare's Secure Web Gateway (SWG) helps keep users and devices safe by filtering and inspecting Internet traffic in real time. 
 
 ```json
+{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/learning-paths/sase-overview-course/series/evolution-corporate-networks-1/#page","headline":"The evolution of corporate networks · Cloudflare Learning Paths","description":"Explore how corporate networks have evolved.","url":"https://developers.cloudflare.com/learning-paths/sase-overview-course/series/evolution-corporate-networks-1/","inLanguage":"en","image":"https://developers.cloudflare.com/cf-twitter-card.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/learning-paths/","name":"Learning Paths"}},{"@type":"ListItem","position":3,"item":{"@id":"/learning-paths/sase-overview-course/series/","name":"Overview"}},{"@type":"ListItem","position":4,"item":{"@id":"/learning-paths/sase-overview-course/series/evolution-corporate-networks-1/","name":"The evolution of corporate networks"}}]}
 ```

@@ -28,8 +28,8 @@ With Containers you can run:
 
 Container instances are spun up on-demand and controlled by code you write in your [Worker](https://developers.cloudflare.com/workers). Instead of chaining together API calls or writing Kubernetes operators, you just write JavaScript:
 
-* [ Worker Code ](#tab-panel-7280)
-* [ Worker Config ](#tab-panel-7281)
+* [ Worker Code ](#tab-panel-7788)
+* [ Worker Config ](#tab-panel-7789)
 
 JavaScript
 
@@ -68,8 +68,8 @@ export default {
 
 ```
 
-* [  wrangler.jsonc ](#tab-panel-7278)
-* [  wrangler.toml ](#tab-panel-7279)
+* [  wrangler.jsonc ](#tab-panel-7786)
+* [  wrangler.toml ](#tab-panel-7787)
 
 JSONC
 
@@ -83,7 +83,7 @@ JSONC
 
   // Set this to today's date
 
-  "compatibility_date": "2026-06-08",
+  "compatibility_date": "2026-06-17",
 
   "containers": [
 
@@ -142,7 +142,7 @@ main = "src/index.js"
 
 # Set this to today's date
 
-compatibility_date = "2026-06-08"
+compatibility_date = "2026-06-17"
 
 
 [[containers]]
@@ -213,5 +213,6 @@ Connect to running Container instances with SSH through Wrangler.
 Connect with other users of Containers on Discord. Ask questions, show what you are building, and discuss the platform with other developers.
 
 ```json
+{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/containers/#page","headline":"Overview · Cloudflare Containers docs","description":"Run serverless containers alongside Workers to handle resource-intensive workloads, custom runtimes, and existing container images on Cloudflare.","url":"https://developers.cloudflare.com/containers/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-06-08","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/containers/","name":"Containers"}}]}
 ```

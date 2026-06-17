@@ -222,5 +222,6 @@ If your traceroute fails at the first hop (the first network device after your c
 * [Diagnostic tool ↗](https://one.one.one.one/help/)
 
 ```json
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/1.1.1.1/troubleshooting/#page","headline":"Troubleshooting DNS Resolver","description":"Learn how to diagnose and report issues with Cloudflare's DNS Resolver","url":"https://developers.cloudflare.com/1.1.1.1/troubleshooting/","inLanguage":"en","image":"https://developers.cloudflare.com/cf-twitter-card.png","dateModified":"2026-05-06","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Debugging","CLI"]}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/1.1.1.1/","name":"1.1.1.1 (DNS Resolver)"}},{"@type":"ListItem","position":3,"item":{"@id":"/1.1.1.1/troubleshooting/","name":"Troubleshooting"}}]}
 ```

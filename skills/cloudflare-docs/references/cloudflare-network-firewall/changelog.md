@@ -118,5 +118,6 @@ The dashboard now displays the order number of custom rules, and improved drag a
 Customers who create a rule in a disabled mode will see the rule as **Log (rule disabled)**.
 
 ```json
+{"@context":"https://schema.org","@type":"BlogPosting","@id":"https://developers.cloudflare.com/cloudflare-network-firewall/changelog/#page","headline":"Changelog · Cloudflare Network Firewall docs","description":"Track updates and changes to Network Firewall features.","url":"https://developers.cloudflare.com/cloudflare-network-firewall/changelog/","inLanguage":"en","image":"https://developers.cloudflare.com/zt-preview.png","dateModified":"2026-04-17","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/cloudflare-network-firewall/","name":"Cloudflare Network Firewall"}},{"@type":"ListItem","position":3,"item":{"@id":"/cloudflare-network-firewall/changelog/","name":"Changelog"}}]}
 ```

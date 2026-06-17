@@ -26,11 +26,11 @@ For example, you can use Workers KV for:
 
 Access your Workers KV namespace from Cloudflare Workers using [Workers Bindings](https://developers.cloudflare.com/workers/runtime-apis/bindings/) or from your external application using the REST API:
 
-* [ Workers Binding API ](#tab-panel-6321)
-* [ REST API ](#tab-panel-6322)
+* [ Workers Binding API ](#tab-panel-8941)
+* [ REST API ](#tab-panel-8942)
 
-* [ index.ts ](#tab-panel-6317)
-* [ wrangler.jsonc ](#tab-panel-6318)
+* [ index.ts ](#tab-panel-8937)
+* [ wrangler.jsonc ](#tab-panel-8938)
 
 TypeScript
 
@@ -120,8 +120,8 @@ export default {
 
 See the full [Workers KV binding API reference](https://developers.cloudflare.com/kv/api/read-key-value-pairs/).
 
-* [ cURL ](#tab-panel-6319)
-* [ TypeScript ](#tab-panel-6320)
+* [ cURL ](#tab-panel-8939)
+* [ TypeScript ](#tab-panel-8940)
 
 ```
 
@@ -261,5 +261,6 @@ Built on SQLite, D1 is Cloudflare’s first queryable relational database. Creat
  Learn about product announcements, new tutorials, and what is new in Cloudflare Developer Platform.
 
 ```json
+{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/kv/#page","headline":"Cloudflare Workers KV · Cloudflare Workers KV docs","description":"Workers KV is a global, low-latency, key-value data store for building dynamic and performant APIs and websites.","url":"https://developers.cloudflare.com/kv/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/kv/","name":"KV"}}]}
 ```

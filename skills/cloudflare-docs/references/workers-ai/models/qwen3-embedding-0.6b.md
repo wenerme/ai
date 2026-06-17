@@ -27,9 +27,9 @@ The Qwen3 Embedding model series is the latest proprietary model of the Qwen fam
 
 ## Usage
 
-* [  TypeScript ](#tab-panel-4884)
-* [  Python ](#tab-panel-4885)
-* [  curl ](#tab-panel-4886)
+* [  TypeScript ](#tab-panel-5065)
+* [  Python ](#tab-panel-5066)
+* [  curl ](#tab-panel-5067)
 
 ```
 
@@ -140,8 +140,8 @@ Workers AI also supports OpenAI compatible API endpoints for `/v1/chat/completio
 
 ## Parameters
 
-* [ Input ](#tab-panel-4887)
-* [ Output ](#tab-panel-4888)
+* [ Input ](#tab-panel-5068)
+* [ Output ](#tab-panel-5069)
 
 ▶queries
 
@@ -174,5 +174,6 @@ Input [ ](https://developers.cloudflare.com/workers-ai/models/qwen3-embedding-0.
 Output [ ](https://developers.cloudflare.com/workers-ai/models/qwen3-embedding-0.6b/schema-output.json "Open") [ ](https://developers.cloudflare.com/workers-ai/models/qwen3-embedding-0.6b/schema-output.json "Download") 
 
 ```json
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers-ai/models/qwen3-embedding-0.6b/#page","headline":"qwen3-embedding-0.6b (Qwen) · Cloudflare AI docs · Cloudflare Workers AI docs","description":"The Qwen3 Embedding model series is the latest proprietary model of the Qwen family, specifically designed for text embedding and ranking tasks.","url":"https://developers.cloudflare.com/workers-ai/models/qwen3-embedding-0.6b/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/workers-ai/","name":"Workers AI"}},{"@type":"ListItem","position":3,"item":{"@id":"/workers-ai/models/","name":"Models"}}]}
 ```

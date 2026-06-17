@@ -147,7 +147,17 @@ components:
           format: double
         - $ref: >-
             #/components/schemas/AnalyticsQueryPostRequestBodyContentApplicationJsonSchemaFiltersItemsValue2
-      description: Filter value (scalar or array depending on operator)
+      description: >-
+        Filter value (scalar or array depending on operator). Several dimensions
+        are enriched in responses (returned as human-readable labels), but
+        filters must use the underlying ID: `api_key_id` — numeric ID (from
+        generation metadata) or key hash (64-char hex from GET /api/v1/keys,
+        resolved server-side); `user` — Clerk user ID (e.g. "user_abc123"), not
+        the display name; `workspace` — workspace UUID, not the workspace name;
+        `app` — numeric app ID, not the app title; `model` — permaslug (e.g.
+        "openai/gpt-4o"), not the display name. Other dimensions (provider,
+        origin, country, etc.) are not enriched and accept the value as
+        returned.
       title: >-
         AnalyticsQueryPostRequestBodyContentApplicationJsonSchemaFiltersItemsValue
     AnalyticsQueryPostRequestBodyContentApplicationJsonSchemaFiltersItems:
@@ -155,14 +165,26 @@ components:
       properties:
         field:
           type: string
-          description: Dimension to filter on
+          description: >-
+            Dimension to filter on. Use the /meta endpoint for available
+            dimensions.
         operator:
           type: string
           description: Filter operator
         value:
           $ref: >-
             #/components/schemas/AnalyticsQueryPostRequestBodyContentApplicationJsonSchemaFiltersItemsValue
-          description: Filter value (scalar or array depending on operator)
+          description: >-
+            Filter value (scalar or array depending on operator). Several
+            dimensions are enriched in responses (returned as human-readable
+            labels), but filters must use the underlying ID: `api_key_id` —
+            numeric ID (from generation metadata) or key hash (64-char hex from
+            GET /api/v1/keys, resolved server-side); `user` — Clerk user ID
+            (e.g. "user_abc123"), not the display name; `workspace` — workspace
+            UUID, not the workspace name; `app` — numeric app ID, not the app
+            title; `model` — permaslug (e.g. "openai/gpt-4o"), not the display
+            name. Other dimensions (provider, origin, country, etc.) are not
+            enriched and accept the value as returned.
       required:
         - field
         - operator
@@ -235,6 +257,14 @@ components:
         metadata:
           $ref: >-
             #/components/schemas/AnalyticsQueryPostResponsesContentApplicationJsonSchemaDataMetadata
+        warnings:
+          type: array
+          items:
+            type: string
+          description: >-
+            Warnings about filter resolution issues (e.g. unresolvable
+            api_key_id hashes). The query still runs normally; these inform the
+            caller that some filter values could not be resolved.
       required:
         - data
         - metadata

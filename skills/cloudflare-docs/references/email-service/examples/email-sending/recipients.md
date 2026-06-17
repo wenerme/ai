@@ -18,9 +18,9 @@ Email Service lets you specify recipients in several ways — multiple recipient
 
 ## Multiple recipients
 
-* [ Workers ](#tab-panel-8275)
-* [ API ](#tab-panel-8276)
-* [ SMTP ](#tab-panel-8277)
+* [ Workers ](#tab-panel-8496)
+* [ API ](#tab-panel-8497)
+* [ SMTP ](#tab-panel-8498)
 
 TypeScript
 
@@ -109,9 +109,9 @@ curl --ssl-reqd \
 
 ## CC and BCC
 
-* [ Workers ](#tab-panel-8278)
-* [ API ](#tab-panel-8279)
-* [ SMTP ](#tab-panel-8280)
+* [ Workers ](#tab-panel-8499)
+* [ API ](#tab-panel-8500)
+* [ SMTP ](#tab-panel-8501)
 
 TypeScript
 
@@ -220,9 +220,9 @@ curl --ssl-reqd \
 
 Provide a display name alongside the address for the sender and recipients.
 
-* [ Workers ](#tab-panel-8281)
-* [ API ](#tab-panel-8282)
-* [ SMTP ](#tab-panel-8283)
+* [ Workers ](#tab-panel-8502)
+* [ API ](#tab-panel-8503)
+* [ SMTP ](#tab-panel-8504)
 
 TypeScript
 
@@ -311,9 +311,9 @@ curl --ssl-reqd \
 
 Combine plain addresses and named addresses in the same `to` field.
 
-* [ Workers ](#tab-panel-8284)
-* [ API ](#tab-panel-8285)
-* [ SMTP ](#tab-panel-8286)
+* [ Workers ](#tab-panel-8505)
+* [ API ](#tab-panel-8506)
+* [ SMTP ](#tab-panel-8507)
 
 TypeScript
 
@@ -412,5 +412,6 @@ curl --ssl-reqd \
 * [Email attachments](https://developers.cloudflare.com/email-service/examples/email-sending/email-attachments/) — send PDFs, inline images, and uploads.
 
 ```json
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/email-service/examples/email-sending/recipients/#page","headline":"Specify recipients · Cloudflare Email Service docs","description":"Send to multiple recipients, CC and BCC, and named addresses using the Workers binding, REST API, or SMTP.","url":"https://developers.cloudflare.com/email-service/examples/email-sending/recipients/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-06-09","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/email-service/","name":"Email Service"}},{"@type":"ListItem","position":3,"item":{"@id":"/email-service/examples/","name":"Examples"}},{"@type":"ListItem","position":4,"item":{"@id":"/email-service/examples/email-sending/","name":"Email sending"}},{"@type":"ListItem","position":5,"item":{"@id":"/email-service/examples/email-sending/recipients/","name":"Specify recipients"}}]}
 ```

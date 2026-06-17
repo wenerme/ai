@@ -1,8 +1,7 @@
 # Computer Use
 
-In the Codex app, computer use is available on macOS and Windows, except in
-  the European Economic Area, the United Kingdom, and Switzerland at launch.
-  Install the Computer Use plugin. On macOS, grant Screen Recording and
+In supported regions, computer use in the Codex app is available on macOS and
+  Windows. Install the Computer Use plugin. On macOS, grant Screen Recording and
   Accessibility permissions when prompted.
 
 With computer use, Codex can see and operate graphical user interfaces on macOS

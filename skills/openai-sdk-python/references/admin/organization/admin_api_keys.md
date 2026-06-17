@@ -40,6 +40,10 @@ List organization API keys
 
     The Unix timestamp (in seconds) of when the API key was created
 
+  - `expires_at: Optional[int]`
+
+    The Unix timestamp (in seconds) of when the API key expires
+
   - `object: Literal["organization.admin_api_key"]`
 
     The object type, which is always `organization.admin_api_key`
@@ -106,6 +110,7 @@ print(page.id)
     {
       "id": "key_abc",
       "created_at": 1711471533,
+      "expires_at": 1714063533,
       "object": "organization.admin_api_key",
       "owner": {
         "id": "sa_456",
@@ -139,6 +144,10 @@ Create an organization admin API key
 
 - `name: str`
 
+- `expires_in_seconds: Optional[int]`
+
+  The number of seconds until the API key expires. Omit this field for a key that does not expire.
+
 ### Returns
 
 - `class AdminAPIKeyCreateResponse: …`
@@ -170,6 +179,7 @@ print(admin_api_key)
 {
   "id": "key_abc",
   "created_at": 1711471533,
+  "expires_at": 1714063533,
   "object": "organization.admin_api_key",
   "owner": {
     "id": "sa_456",
@@ -213,6 +223,10 @@ Retrieve a single organization API key
   - `created_at: int`
 
     The Unix timestamp (in seconds) of when the API key was created
+
+  - `expires_at: Optional[int]`
+
+    The Unix timestamp (in seconds) of when the API key expires
 
   - `object: Literal["organization.admin_api_key"]`
 
@@ -279,6 +293,7 @@ print(admin_api_key.id)
 {
   "id": "key_abc",
   "created_at": 1711471533,
+  "expires_at": 1714063533,
   "object": "organization.admin_api_key",
   "owner": {
     "id": "sa_456",
@@ -360,6 +375,10 @@ print(admin_api_key.id)
   - `created_at: int`
 
     The Unix timestamp (in seconds) of when the API key was created
+
+  - `expires_at: Optional[int]`
+
+    The Unix timestamp (in seconds) of when the API key expires
 
   - `object: Literal["organization.admin_api_key"]`
 

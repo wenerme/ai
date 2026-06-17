@@ -49,8 +49,8 @@ If you are upgrading from Bot Fight Mode to Super Bot Fight Mode, you must disab
 
 To start using Super Bot Fight Mode:
 
-* [  New dashboard ](#tab-panel-4187)
-* [ Old dashboard ](#tab-panel-4188)
+* [  New dashboard ](#tab-panel-6846)
+* [ Old dashboard ](#tab-panel-6847)
 
 1. In the Cloudflare dashboard, go to the **Security Settings** page.  
 [ Go to **Settings** ](https://dash.cloudflare.com/?to=/:account/:zone/security/settings)
@@ -88,8 +88,8 @@ If you find that **Super Bot Fight Mode** is causing problems with your applicat
 
 To disable Super Bot Fight Mode:
 
-* [  New dashboard ](#tab-panel-4185)
-* [ Old dashboard ](#tab-panel-4186)
+* [  New dashboard ](#tab-panel-6844)
+* [ Old dashboard ](#tab-panel-6845)
 
 1. In the Cloudflare dashboard, go to the **Security Settings** page.  
 [ Go to **Settings** ](https://dash.cloudflare.com/?to=/:account/:zone/security/settings)
@@ -145,5 +145,6 @@ Change notice for Super Bot Fight Mode rulesets
 Updating Super Bot Fight Mode rules via the Rulesets API is no longer supported and may cause unexpected behavior if you do so.
 
 ```json
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/bots/get-started/super-bot-fight-mode/#page","headline":"Get started with Super Bot Fight Mode · Cloudflare bot solutions docs","description":"Configure Super Bot Fight Mode to challenge or block bots on Pro, Business, and Enterprise plans.","url":"https://developers.cloudflare.com/bots/get-started/super-bot-fight-mode/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-30","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/bots/","name":"Bots"}},{"@type":"ListItem","position":3,"item":{"@id":"/bots/get-started/","name":"Get started with Cloudflare bot solutions"}},{"@type":"ListItem","position":4,"item":{"@id":"/bots/get-started/super-bot-fight-mode/","name":"Super Bot Fight Mode"}}]}
 ```

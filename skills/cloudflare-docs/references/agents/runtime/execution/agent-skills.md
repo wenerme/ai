@@ -24,8 +24,8 @@ The skills engine lives in `agents/skills` and is framework-agnostic, so any age
 
 Bundled skills are usually imported with the Agents Vite plugin:
 
-* [  JavaScript ](#tab-panel-5406)
-* [  TypeScript ](#tab-panel-5407)
+* [  JavaScript ](#tab-panel-6017)
+* [  TypeScript ](#tab-panel-6018)
 
 JavaScript
 
@@ -153,8 +153,8 @@ Skills are not always-on system prompt text. Use `getSystemPrompt()` or a Sessio
 
 Script execution is opt-in and requires a Worker Loader binding:
 
-* [  wrangler.jsonc ](#tab-panel-5400)
-* [  wrangler.toml ](#tab-panel-5401)
+* [  wrangler.jsonc ](#tab-panel-6011)
+* [  wrangler.toml ](#tab-panel-6012)
 
 JSONC
 
@@ -184,8 +184,8 @@ binding = "LOADER"
 
 JavaScript and TypeScript scripts are function-style:
 
-* [  JavaScript ](#tab-panel-5402)
-* [  TypeScript ](#tab-panel-5403)
+* [  JavaScript ](#tab-panel-6013)
+* [  TypeScript ](#tab-panel-6014)
 
 JavaScript
 
@@ -238,8 +238,8 @@ Passing `workspaceInstance` gives scripts read-only workspace access by default.
 
 ## Example
 
-* [  JavaScript ](#tab-panel-5404)
-* [  TypeScript ](#tab-panel-5405)
+* [  JavaScript ](#tab-panel-6015)
+* [  TypeScript ](#tab-panel-6016)
 
 JavaScript
 
@@ -289,5 +289,6 @@ Refer to the [agent-skills example ↗](https://github.com/cloudflare/agents/tre
 * [Think tools](https://developers.cloudflare.com/agents/harnesses/think/tools/) — how skill tools merge with workspace, custom, MCP, and client tools
 
 ```json
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/agents/runtime/execution/agent-skills/#page","headline":"Agent Skills · Cloudflare Agents docs","description":"Give an agent a catalog of on-demand instructions, resources, and scripts with agents/skills, activated by the model only when a task matches.","url":"https://developers.cloudflare.com/agents/runtime/execution/agent-skills/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-06-03","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/agents/","name":"Agents"}},{"@type":"ListItem","position":3,"item":{"@id":"/agents/runtime/","name":"Runtime"}},{"@type":"ListItem","position":4,"item":{"@id":"/agents/runtime/execution/","name":"Execution"}},{"@type":"ListItem","position":5,"item":{"@id":"/agents/runtime/execution/agent-skills/","name":"Agent Skills"}}]}
 ```

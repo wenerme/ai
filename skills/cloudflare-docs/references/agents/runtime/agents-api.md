@@ -122,11 +122,11 @@ flowchart TD
 | **Context**           | getCurrentAgent()                                                                    | [getCurrentAgent()](https://developers.cloudflare.com/agents/runtime/lifecycle/get-current-agent/)     |
 | **Observability**     | subscribe(), diagnostics channels, Tail Workers                                      | [Observability](https://developers.cloudflare.com/agents/runtime/operations/observability/)            |
 | **Sub-agents**        | subAgent(), abortSubAgent(), deleteSubAgent()                                        | [Sub-agents](https://developers.cloudflare.com/agents/runtime/execution/sub-agents/)                   |
-| **Agent tools**       | runAgentTool(), clearAgentToolRuns(), hasAgentToolRun()                              | [Agent tools](https://developers.cloudflare.com/agents/runtime/execution/agent-tools/)                 |
+| **Agents as tools**   | runAgentTool(), clearAgentToolRuns(), hasAgentToolRun()                              | [Agents as tools](https://developers.cloudflare.com/agents/runtime/execution/agent-tools/)             |
 | **Agent Skills**      | skills registry, bundled skill sources, script runners                               | [Agent Skills](https://developers.cloudflare.com/agents/runtime/execution/agent-skills/)               |
 | **Sessions**          | Session.create(), context blocks, compaction, search                                 | [Sessions](https://developers.cloudflare.com/agents/runtime/lifecycle/sessions/)                       |
 | **Think**             | Think base class, workspace tools, lifecycle hooks, extensions                       | [Think](https://developers.cloudflare.com/agents/harnesses/think/)                                     |
-| **Chat SDK**          | createChatSdkState(), ChatSdkStateAgent                                              | [Chat SDK](https://developers.cloudflare.com/agents/runtime/execution/chat-sdk/)                       |
+| **Chat SDK**          | createChatSdkState(), ChatSdkStateAgent                                              | [Chat SDK](https://developers.cloudflare.com/agents/runtime/communication/chat-sdk/)                   |
 
 ## SQL API
 
@@ -163,7 +163,7 @@ For state that needs to sync with clients, use the [State API](https://developer
 | **HTTP client**       | agentFetch()         | [Client SDK](https://developers.cloudflare.com/agents/communication-channels/chat/client-sdk/#http-requests-with-agentfetch) |
 | **React hook**        | useAgent()           | [Client SDK](https://developers.cloudflare.com/agents/communication-channels/chat/client-sdk/#react)                         |
 | **Chat hook**         | useAgentChat()       | [Client SDK](https://developers.cloudflare.com/agents/communication-channels/chat/client-sdk/)                               |
-| **Agent tool events** | useAgentToolEvents() | [Agent tools](https://developers.cloudflare.com/agents/runtime/execution/agent-tools/#render-child-timelines-in-react)       |
+| **Agent tool events** | useAgentToolEvents() | [Agents as tools](https://developers.cloudflare.com/agents/runtime/execution/agent-tools/#render-child-timelines-in-react)   |
 
 Module-level helper exports include `agentTool()` from `agents/agent-tools`, which converts a Think or `AIChatAgent` subclass into an AI SDK tool definition.
 
@@ -289,5 +289,6 @@ Refer to [Routing](https://developers.cloudflare.com/agents/runtime/communicatio
 [ Build a chat agent ](https://developers.cloudflare.com/agents/examples/chat-agent/) Build AI applications with AIChatAgent. 
 
 ```json
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/agents/runtime/agents-api/#page","headline":"Agents API · Cloudflare Agents docs","description":"Reference for the Agent base class, lifecycle hooks, SQL storage, and error handling in the Agents SDK.","url":"https://developers.cloudflare.com/agents/runtime/agents-api/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-06-09","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/agents/","name":"Agents"}},{"@type":"ListItem","position":3,"item":{"@id":"/agents/runtime/","name":"Runtime"}},{"@type":"ListItem","position":4,"item":{"@id":"/agents/runtime/agents-api/","name":"Agents API"}}]}
 ```

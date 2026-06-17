@@ -71,11 +71,11 @@ To ensure a successful validation, the visitor must initiate the request and sub
 
 ## Basic validation examples
 
-* [  JavaScript ](#tab-panel-10085)
-* [  PHP ](#tab-panel-10086)
-* [  Python ](#tab-panel-10087)
-* [  Java ](#tab-panel-10088)
-* [  C# ](#tab-panel-10089)
+* [  JavaScript ](#tab-panel-11022)
+* [  PHP ](#tab-panel-11023)
+* [  Python ](#tab-panel-11024)
+* [  Java ](#tab-panel-11025)
+* [  C# ](#tab-panel-11026)
 
 #### JSON
 
@@ -902,8 +902,8 @@ if (result.valid) {
 
 ## API response format
 
-* [ Successful response ](#tab-panel-10090)
-* [ Failed response ](#tab-panel-10091)
+* [ Successful response ](#tab-panel-11027)
+* [ Failed response ](#tab-panel-11028)
 
 Example
 
@@ -1203,5 +1203,6 @@ Refer to [Testing](https://developers.cloudflare.com/turnstile/troubleshooting/t
 * Rate limit to protect against validation flooding.
 
 ```json
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/turnstile/get-started/server-side-validation/#page","headline":"Validate the token · Cloudflare Turnstile docs","description":"Validate Turnstile tokens on your server with the siteverify API.","url":"https://developers.cloudflare.com/turnstile/get-started/server-side-validation/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-05-05","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["REST API"]}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/turnstile/","name":"Turnstile"}},{"@type":"ListItem","position":3,"item":{"@id":"/turnstile/get-started/","name":"Get started"}},{"@type":"ListItem","position":4,"item":{"@id":"/turnstile/get-started/server-side-validation/","name":"Validate the token"}}]}
 ```

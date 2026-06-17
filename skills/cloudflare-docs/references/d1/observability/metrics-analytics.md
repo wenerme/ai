@@ -122,7 +122,7 @@ query D1ObservabilitySampleQuery(
 
 ```
 
-[Run in GraphQL API Explorer](https://graphql.cloudflare.com/explorer?query=I4VwpgTgngBAIgRgPICMDOkBuBDFBLAGzwBcoBlbAWwAcCwBFcaACgCgYYASbAYx4HsQAO2IAVbAHMAXDDTEIeIRICE7LnOwRiMuNmJg1nMEIAmOvQY6cTe3NgwBJM7PmKJrAJQwA3msx4wAHdIHzUOXgFhYjRmADNCfQgZbxgIwRFxaS40qMyYAF8vXw4SmBMEAEEhbAIoYjweNAqbanrMMABxCEFqGLDSmCJKEhkEAAYJsf7S+IJE5LKLAH0JMGAZTg0tABpF-SW6da5jE12bYjtHZ2tbFHswJwLpkv4IE0gAISgZAG1zsCWcAAomQAMIAXWeRWeHDQIEooQGAwgYGwJkYkACaBhJUCCn0GIUYGxSI4+RxJjwlGMaDw-CEaERpI4-xxLNu9ycOPJSJ5JT55PyQA&variables=N4IghgxhD2CuB2AXAKmA5iAXCAggYTwHkBVAOWQH0BJAERABoQBnRMAJ0SxACYAGbgGwBaXsICMAVgYgApvAAmXPoJHiB0+WFYAjMExlVF2AEoBRAAoAZfKYoB1KsgAS1OgF8gA)
+[Run in GraphQL API Explorer](https://graphql.cloudflare.com/explorer?query=I4VwpgTgngBAIgRgPICMDOkBuBDFBLAGzwBcoBlbAWwAcCwBFcaACgCgYYASbAYx4HsQAO2IAVbAHMAXDDTEIeIRICE7LnOwRiMuNmJg1nMEIAmOvQY6cTe3NgwBJM7PmKJrAJQwA3msx4wAHdIHzUOXgFhYjRmADNCfQgZbxgIwRFxaS40qMyYAF8vXw4SmBMEAEEhbAIoYjweNAqbanrMMABxCEFqGLDSmCJKEhkEAAYJsf7S+IJE5LKLAH0JMGAZTg0tABpF-SW6da5jE12bYjtHZ2tbFHswJwLpkv4IE0gAISgZAG1zsCWcAAomQAMIAXWeRWeHDQIEooQGAwgYGwJkYkACaBhJUCCn0GIUYGxSI4+RxJjwlGMaDw-CEaERpI4-xxLNu9ycOPJSJ5JT55PyQA&variables=N4IghgxhD2CuB2AXAKmA5iAXCAggYTwHkBVAOWQH0BJAERABoQBnRMAJ0SxACYAGbgGwBaXsICMAhiACm8ACZc+gkeIDsUuWFYAjME2lUF2AEoBRAAoAZfKYoB1KsgAS1OgF8gA)
 
 To query both the average `queryBatchTimeMs` and the 90th percentile `queryBatchTimeMs` per database:
 
@@ -179,7 +179,7 @@ query D1ObservabilitySampleQuery2(
 
 ```
 
-[Run in GraphQL API Explorer](https://graphql.cloudflare.com/explorer?query=I4VwpgTgngBAIgRgPICMDOkBuBDFBLAGzwBcoBlbAWwAcCwBFcaAJgAoAoGGAEmwGM+AexAA7YgBVsAcwBcMNMQh4RUgISceC7BGJy42YmA3cwIgCZ6DRrtzMHc2DAEkL8xcqnsAlDADeGzDwwAHdIPw0ufiFRYjRWADNCQwg5Xxgo4TFJWR4MmJcYAF8ffy4ymDMEAEERbAIoYjw+NCq7akbMMABxCGFqOIjymCJKEjkEAAYpicHyxIJk1IqrAH0pMGA5bi0dABplwxW6TZ5TM327YgdnV1t7FEcwAsLZssEIM0gAISg5AG1LmAVnAAKJkADCAF1XiVXlxQNgxIQwGhwkMhqBIFAvgY+AALcR4ShgACyaAACgBOGborgvWkVImmNB4QQiVGlBkHaxcy7XJ5mOFFV70sqil6FIA&variables=N4IghgxhD2CuB2AXAKmA5iAXCAggYTwHkBVAOWQH0BJAERABoQBnRMAJ0SxACYAGbgGwBaXsICMAVgYgApvAAmXPoJHiB0+WFYAjMExlVF2AEoBRAAoAZfKYoB1KsgAS1OgF8gA)
+[Run in GraphQL API Explorer](https://graphql.cloudflare.com/explorer?query=I4VwpgTgngBAIgRgPICMDOkBuBDFBLAGzwBcoBlbAWwAcCwBFcaAJgAoAoGGAEmwGM+AexAA7YgBVsAcwBcMNMQh4RUgISceC7BGJy42YmA3cwIgCZ6DRrtzMHc2DAEkL8xcqnsAlDADeGzDwwAHdIPw0ufiFRYjRWADNCQwg5Xxgo4TFJWR4MmJcYAF8ffy4ymDMEAEERbAIoYjw+NCq7akbMMABxCGFqOIjymCJKEjkEAAYpicHyxIJk1IqrAH0pMGA5bi0dABplwxW6TZ5TM327YgdnV1t7FEcwAsLZssEIM0gAISg5AG1LmAVnAAKJkADCAF1XiVXlxQNgxIQwGhwkMhqBIFAvgY+AALcR4ShgACyaAACgBOGborgvWkVImmNB4QQiVGlBkHaxcy7XJ5mOFFV70sqil6FIA&variables=N4IghgxhD2CuB2AXAKmA5iAXCAggYTwHkBVAOWQH0BJAERABoQBnRMAJ0SxACYAGbgGwBaXsICMAhiACm8ACZc+gkeIDsUuWFYAjME2lUF2AEoBRAAoAZfKYoB1KsgAS1OgF8gA)
 
 To query your account-wide `readQueries` and `writeQueries`:
 
@@ -228,7 +228,7 @@ query D1ObservabilitySampleQuery3(
 
 ```
 
-[Run in GraphQL API Explorer](https://graphql.cloudflare.com/explorer?query=I4VwpgTgngBAIgRgPICMDOkBuBDFBLAGzwBcoBlbAWwAcCwBFcaAZgAoAoGGAEmwGM+AexAA7YgBVsAcwBcMNMQh4RUgISceC7BGJy42YmA3cwIgCZ6DRrtzMHc2DAEkL8xcqnsAlDADeGzDwwAHdIPw0ufiFRYjRWADNCQwg5Xxgo4TFJWR4MmOyYAF8ffy4ymDMEAEERbAIoYjw+NCq7akbMMABxCGFqOIjymCJKEjkEAAYpicHyxIJk1IqrAH0pMGA5bi0dABplwxW6TZ5TM327YgdnV1t7FEcwFyLZmBLXrjQQSnChoYgwNgzIxIEE0B8ysElIYQUowOC-lxCq9keVUS9CkA&variables=N4IghgxhD2CuB2AXAKmA5iAXCAggYTwHkBVAOWQH0BJAERABoQBnRMAJ0SxACYAGbgGwBaXsICMAVgYgApvAAmXPoJHiB0+WFYAjMExlVF2AEoBRAAoAZfKYoB1KsgAS1OgF8gA)
+[Run in GraphQL API Explorer](https://graphql.cloudflare.com/explorer?query=I4VwpgTgngBAIgRgPICMDOkBuBDFBLAGzwBcoBlbAWwAcCwBFcaAZgAoAoGGAEmwGM+AexAA7YgBVsAcwBcMNMQh4RUgISceC7BGJy42YmA3cwIgCZ6DRrtzMHc2DAEkL8xcqnsAlDADeGzDwwAHdIPw0ufiFRYjRWADNCQwg5Xxgo4TFJWR4MmOyYAF8ffy4ymDMEAEERbAIoYjw+NCq7akbMMABxCGFqOIjymCJKEjkEAAYpicHyxIJk1IqrAH0pMGA5bi0dABplwxW6TZ5TM327YgdnV1t7FEcwFyLZmBLXrjQQSnChoYgwNgzIxIEE0B8ysElIYQUowOC-lxCq9keVUS9CkA&variables=N4IghgxhD2CuB2AXAKmA5iAXCAggYTwHkBVAOWQH0BJAERABoQBnRMAJ0SxACYAGbgGwBaXsICMAhiACm8ACZc+gkeIDsUuWFYAjME2lUF2AEoBRAAoAZfKYoB1KsgAS1OgF8gA)
 
 ## Query `insights`
 
@@ -558,5 +558,6 @@ The quantity `queryEfficiency` measures how efficient your query was. It is calc
 Generally, you should try to get `queryEfficiency` as close to `1` as possible. Refer to [Use indexes](https://developers.cloudflare.com/d1/best-practices/use-indexes/) for more information on efficient querying.
 
 ```json
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/d1/observability/metrics-analytics/#page","headline":"Metrics and analytics · Cloudflare D1 docs","description":"Inspect D1 query volume, latency, and storage size via the dashboard or GraphQL Analytics API.","url":"https://developers.cloudflare.com/d1/observability/metrics-analytics/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/d1/","name":"D1"}},{"@type":"ListItem","position":3,"item":{"@id":"/d1/observability/","name":"Observability"}},{"@type":"ListItem","position":4,"item":{"@id":"/d1/observability/metrics-analytics/","name":"Metrics and analytics"}}]}
 ```

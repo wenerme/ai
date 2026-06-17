@@ -193,7 +193,7 @@ To create an MCP server portal:
 7. (Optional) Configure **Require user auth** for servers that support OAuth: - `Enabled`: (default) User will be prompted to utilize their own login credentials to establish a connection with the MCP server. - `Disabled`: Users who are connected to the portal will automatically have access to the MCP server via its [admin credential](#reauthenticate-the-mcp-server).
 8. Add [Access policies](https://developers.cloudflare.com/cloudflare-one/access-controls/policies/) to define the users who can connect to the portal URL.  
 Warning  
-MCP server portal applications do not enforce [independent MFA](https://developers.cloudflare.com/cloudflare-one/access-controls/policies/mfa-requirements/#independent-mfa), [purpose justification](https://developers.cloudflare.com/cloudflare-one/access-controls/policies/require-purpose-justification/), or [temporary authentication](https://developers.cloudflare.com/cloudflare-one/access-controls/policies/temporary-auth/). Refer to [Policy limitations](#policy-limitations) for details.
+[Independent MFA](https://developers.cloudflare.com/cloudflare-one/access-controls/policies/mfa-requirements/#independent-mfa), [purpose justification](https://developers.cloudflare.com/cloudflare-one/access-controls/policies/require-purpose-justification/), and [temporary authentication](https://developers.cloudflare.com/cloudflare-one/access-controls/policies/temporary-auth/) will not be enforced for MCP servers that are authorized through an MCP portal. For example, if independent MFA is enabled on a policy assigned to a server, users will not be prompted to perform MFA to authorize the server after authenticating to the portal. Refer to [Policy limitations](#policy-limitations) for details.
 9. Select **Add an MCP server portal**.
 10. (Optional) [Customize the login experience](#customize-login-settings) for the portal.
 
@@ -309,8 +309,8 @@ If no alias is set, the portal uses the original name and description from the u
 
 #### Set aliases in the dashboard
 
-* [ Portal-level alias ](#tab-panel-6943)
-* [ Server-level alias ](#tab-panel-6944)
+* [ Portal-level alias ](#tab-panel-7083)
+* [ Server-level alias ](#tab-panel-7084)
 
 To set an alias that applies to a specific portal:
 
@@ -737,8 +737,8 @@ For more information on building with code mode, refer to the [code mode SDK ref
 
 To turn off code mode for a portal:
 
-* [ Dashboard ](#tab-panel-6945)
-* [ API ](#tab-panel-6946)
+* [ Dashboard ](#tab-panel-7085)
+* [ API ](#tab-panel-7086)
 
 1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** \> **Access controls** \> **AI controls**.
 2. Find the portal you want to configure, then select the three dots > **Edit**.
@@ -1106,13 +1106,15 @@ MCP server portals have the following known limitations:
 
 ## Policy limitations
 
-MCP server portals use a dedicated Access application type that does not support the following Access policy features:
+MCP servers use a dedicated Access application type (_mcp_) that does not support the following Access policy features when the server is through a portal.
 
-* **[Independent MFA](https://developers.cloudflare.com/cloudflare-one/access-controls/policies/mfa-requirements/#independent-mfa)** — Portals do not prompt users for a second factor through Cloudflare Access. Users who connect to a portal will not be challenged for MFA, even if independent MFA is required globally or configured on a matching policy. To enforce MFA for MCP portal users, require MFA at your identity provider.
-* **[Purpose justification](https://developers.cloudflare.com/cloudflare-one/access-controls/policies/require-purpose-justification/)** — Portals do not display a purpose justification screen. The `purpose_justification_required` and `purpose_justification_prompt` policy settings have no effect on portal sessions.
-* **[Temporary authentication](https://developers.cloudflare.com/cloudflare-one/access-controls/policies/temporary-auth/)** — Portals do not trigger the approval workflow for temporary authentication policies. Users are not prompted to request access, and approvers do not receive approval requests for portal logins.
+* **[Independent MFA](https://developers.cloudflare.com/cloudflare-one/access-controls/policies/mfa-requirements/#independent-mfa)** — Users will not be prompted to perform MFA through Cloudflare Access when authorizing a server, regardless of whether MFA global enforcement is enabled or whether an MFA policy is assigned to the server.
+* **[Purpose justification](https://developers.cloudflare.com/cloudflare-one/access-controls/policies/require-purpose-justification/)** — Users will not be prompted to provide a purpose justification when authorizing a server.
+* **[Temporary authentication](https://developers.cloudflare.com/cloudflare-one/access-controls/policies/temporary-auth/)** — Users will not be prompted to request access and approvers will not receive approval requests when a user authorizes a server.
 
-These limitations apply to the portal application itself. Other Access policy selectors (such as Emails, Groups, IdP groups, country, and device posture) work as expected.
+These limitations only apply to servers that are being authorized through a portal. Access policy selectors such as Emails, Groups, Country, and Device Posture Checks will be enforced.
+
+Independent MFA, purpose justification, and temporary authentication will be enforced for servers that are not authorized through a portal.
 
 ## Troubleshooting
 
@@ -1182,5 +1184,6 @@ The portal homepage displays your Access organization name and branding. If the 
 2. Update your team name. The change will take effect the next time a user visits the portal homepage.
 
 ```json
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/access-controls/ai-controls/mcp-portals/#page","headline":"MCP server portals · Cloudflare One docs","description":"MCP server portals in Access.","url":"https://developers.cloudflare.com/cloudflare-one/access-controls/ai-controls/mcp-portals/","inLanguage":"en","image":"https://developers.cloudflare.com/zt-preview.png","dateModified":"2026-06-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["MCP"]}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/cloudflare-one/","name":"Cloudflare One"}},{"@type":"ListItem","position":3,"item":{"@id":"/cloudflare-one/access-controls/","name":"Access controls"}},{"@type":"ListItem","position":4,"item":{"@id":"/cloudflare-one/access-controls/ai-controls/","name":"AI controls"}},{"@type":"ListItem","position":5,"item":{"@id":"/cloudflare-one/access-controls/ai-controls/mcp-portals/","name":"MCP server portals"}}]}
 ```

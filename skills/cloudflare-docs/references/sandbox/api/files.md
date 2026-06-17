@@ -36,8 +36,8 @@ await sandbox.writeFile(path: string, content: string, options?: WriteFileOption
 * `options` (optional):  
    * `encoding` \- File encoding (`"utf-8"` or `"base64"`, default: `"utf-8"`)
 
-* [  JavaScript ](#tab-panel-7935)
-* [  TypeScript ](#tab-panel-7936)
+* [  JavaScript ](#tab-panel-10117)
+* [  TypeScript ](#tab-panel-10118)
 
 JavaScript
 
@@ -113,8 +113,8 @@ Encoding
 
 The `"none"` encoding property was added in 0.10.1 and aims to improve support for streaming binary data. When `encoding: "none"` is provided the `content` field will be a `ReadableStream<Uint8Array>`. It is only supported with the [RPC transport](https://developers.cloudflare.com/sandbox/configuration/transport/).
 
-* [  JavaScript ](#tab-panel-7949)
-* [  TypeScript ](#tab-panel-7950)
+* [  JavaScript ](#tab-panel-10131)
+* [  TypeScript ](#tab-panel-10132)
 
 JavaScript
 
@@ -239,8 +239,8 @@ const result = await sandbox.exists(path: string): Promise<FileExistsResult>
 
 **Returns**: `Promise<FileExistsResult>` with `exists` boolean
 
-* [  JavaScript ](#tab-panel-7945)
-* [  TypeScript ](#tab-panel-7946)
+* [  JavaScript ](#tab-panel-10127)
+* [  TypeScript ](#tab-panel-10128)
 
 JavaScript
 
@@ -321,8 +321,8 @@ await sandbox.mkdir(path: string, options?: MkdirOptions): Promise<void>
 * `options` (optional):  
    * `recursive` \- Create parent directories if needed (default: `false`)
 
-* [  JavaScript ](#tab-panel-7939)
-* [  TypeScript ](#tab-panel-7940)
+* [  JavaScript ](#tab-panel-10121)
+* [  TypeScript ](#tab-panel-10122)
 
 JavaScript
 
@@ -369,8 +369,8 @@ await sandbox.deleteFile(path: string): Promise<void>
 
 * `path` \- Absolute path to the file
 
-* [  JavaScript ](#tab-panel-7937)
-* [  TypeScript ](#tab-panel-7938)
+* [  JavaScript ](#tab-panel-10119)
+* [  TypeScript ](#tab-panel-10120)
 
 JavaScript
 
@@ -408,8 +408,8 @@ await sandbox.renameFile(oldPath: string, newPath: string): Promise<void>
 * `oldPath` \- Current file path
 * `newPath` \- New file path
 
-* [  JavaScript ](#tab-panel-7941)
-* [  TypeScript ](#tab-panel-7942)
+* [  JavaScript ](#tab-panel-10123)
+* [  TypeScript ](#tab-panel-10124)
 
 JavaScript
 
@@ -447,8 +447,8 @@ await sandbox.moveFile(sourcePath: string, destinationPath: string): Promise<voi
 * `sourcePath` \- Current file path
 * `destinationPath` \- Destination path
 
-* [  JavaScript ](#tab-panel-7943)
-* [  TypeScript ](#tab-panel-7944)
+* [  JavaScript ](#tab-panel-10125)
+* [  TypeScript ](#tab-panel-10126)
 
 JavaScript
 
@@ -489,8 +489,8 @@ await sandbox.gitCheckout(repoUrl: string, options?: GitCheckoutOptions): Promis
    * `targetDir` \- Directory to clone into (default: `/workspace/{repoName}`)  
    * `depth` \- Clone depth for shallow clones (e.g., `1` for latest commit only)
 
-* [  JavaScript ](#tab-panel-7947)
-* [  TypeScript ](#tab-panel-7948)
+* [  JavaScript ](#tab-panel-10129)
+* [  TypeScript ](#tab-panel-10130)
 
 JavaScript
 
@@ -556,5 +556,6 @@ await sandbox.gitCheckout('https://github.com/facebook/react', {
 * [Commands API](https://developers.cloudflare.com/sandbox/api/commands/) \- Execute commands
 
 ```json
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/sandbox/api/files/#page","headline":"Files · Cloudflare Sandbox SDK docs","description":"Read, write, and manage files in the Sandbox SDK filesystem.","url":"https://developers.cloudflare.com/sandbox/api/files/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-05-13","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/sandbox/","name":"Sandbox SDK"}},{"@type":"ListItem","position":3,"item":{"@id":"/sandbox/api/","name":"API reference"}},{"@type":"ListItem","position":4,"item":{"@id":"/sandbox/api/files/","name":"Files"}}]}
 ```

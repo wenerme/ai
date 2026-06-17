@@ -564,8 +564,8 @@ resource "cloudflare_worker_version" "my_worker_version" {
 
 This example uses the [cloudflare-typescript ↗](https://github.com/cloudflare/cloudflare-typescript) SDK which provides convenient access to the Cloudflare REST API from server-side JavaScript or TypeScript.
 
-* [  JavaScript ](#tab-panel-10709)
-* [  TypeScript ](#tab-panel-10710)
+* [  JavaScript ](#tab-panel-11894)
+* [  TypeScript ](#tab-panel-11895)
 
 JavaScript
 
@@ -1174,8 +1174,8 @@ Warning
 
 This API is in beta. See the multipart/form-data API below for the stable API.
 
-* [ ES Module ](#tab-panel-10705)
-* [ Python ](#tab-panel-10706)
+* [ ES Module ](#tab-panel-11890)
+* [ Python ](#tab-panel-11891)
 
 Terminal window
 
@@ -1490,8 +1490,8 @@ echo "\nDeployment ID: $deployment_id\n"
 
 This API uses [multipart/form-data ↗](https://developer.mozilla.org/en-US/docs/Web/HTTP/Reference/Methods/POST) to upload a Worker and will implicitly create a version and deployment. The above API is recommended for direct management of versions and deployments.
 
-* [ Workers ](#tab-panel-10707)
-* [ Workers for Platforms ](#tab-panel-10708)
+* [ Workers ](#tab-panel-11892)
+* [ Workers for Platforms ](#tab-panel-11893)
 
 Terminal window
 
@@ -1846,5 +1846,6 @@ resource "cloudflare_worker_version" "content_base64_example" {
 ```
 
 ```json
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/platform/infrastructure-as-code/#page","headline":"Infrastructure as Code (IaC) · Cloudflare Workers docs","description":"Deploy and manage Cloudflare Workers using Terraform, Pulumi, and the Cloudflare API SDKs.","url":"https://developers.cloudflare.com/workers/platform/infrastructure-as-code/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/workers/","name":"Workers"}},{"@type":"ListItem","position":3,"item":{"@id":"/workers/platform/","name":"Platform"}},{"@type":"ListItem","position":4,"item":{"@id":"/workers/platform/infrastructure-as-code/","name":"Infrastructure as Code (IaC)"}}]}
 ```

@@ -116,9 +116,9 @@ You will need to note the token down: it will only be displayed once.
 
 To pull a message, make a HTTP POST request to the [Queues REST API](https://developers.cloudflare.com/api/resources/queues/subresources/messages/methods/pull/) with a JSON-encoded body that optionally specifies a `visibility_timeout` and a `batch_size`, or an empty JSON object (`{}`):
 
-* [  JavaScript ](#tab-panel-9055)
-* [  TypeScript ](#tab-panel-9056)
-* [  Python ](#tab-panel-9057)
+* [  JavaScript ](#tab-panel-9605)
+* [  TypeScript ](#tab-panel-9606)
+* [  Python ](#tab-panel-9607)
 
 index.js
 
@@ -327,9 +327,9 @@ Messages pulled by a consumer need to be either acknowledged or marked for retry
 
 To acknowledge and/or mark messages to be retried, make a HTTP `POST` request to `/ack` endpoint of your queue per the [Queues REST API](https://developers.cloudflare.com/api/resources/queues/subresources/messages/methods/ack/) by providing an array of `lease_id` objects to acknowledge and/or retry:
 
-* [  JavaScript ](#tab-panel-9058)
-* [  TypeScript ](#tab-panel-9059)
-* [  Python ](#tab-panel-9060)
+* [  JavaScript ](#tab-panel-9608)
+* [  TypeScript ](#tab-panel-9609)
+* [  Python ](#tab-panel-9610)
 
 index.js
 
@@ -526,5 +526,6 @@ Your consumer will need to decode the `json` and `bytes` types before operating 
 * Understand [what limit apply](https://developers.cloudflare.com/queues/platform/limits/) when consuming and writing to a queue.
 
 ```json
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/queues/configuration/pull-consumers/#page","headline":"Cloudflare Queues - Pull consumers · Cloudflare Queues docs","description":"Pull messages from a Cloudflare Queue over HTTP from any environment or language.","url":"https://developers.cloudflare.com/queues/configuration/pull-consumers/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-06-05","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/queues/","name":"Queues"}},{"@type":"ListItem","position":3,"item":{"@id":"/queues/configuration/","name":"Configuration"}},{"@type":"ListItem","position":4,"item":{"@id":"/queues/configuration/pull-consumers/","name":"Pull consumers"}}]}
 ```

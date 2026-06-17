@@ -95,5 +95,6 @@ Older compatibility behavior supports explicit dependency lists with `depends=[.
 This pattern is useful for diamond shaped workflows, where a step depends on two or more other steps that can run concurrently.
 
 ```json
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workflows/python/dag/#page","headline":"DAG Workflows · Cloudflare Workflows docs","description":"Define directed acyclic graph (DAG) Workflows in Python with declarative step dependencies.","url":"https://developers.cloudflare.com/workflows/python/dag/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-22","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/workflows/","name":"Workflows"}},{"@type":"ListItem","position":3,"item":{"@id":"/workflows/python/","name":"Python Workflows SDK"}},{"@type":"ListItem","position":4,"item":{"@id":"/workflows/python/dag/","name":"DAG Workflows"}}]}
 ```

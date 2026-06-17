@@ -39,8 +39,8 @@ This command adds/update the following files:
    * `tsconfig.json`: Added if not already there to support writing the Worker in TypeScript.  
    * `src/index.ts`: A basic Cloudflare Worker, written in TypeScript.
 2. Add your site's build/output directory to the Wrangler file:  
-   * [  wrangler.jsonc ](#tab-panel-10322)  
-   * [  wrangler.toml ](#tab-panel-10323)  
+   * [  wrangler.jsonc ](#tab-panel-11499)  
+   * [  wrangler.toml ](#tab-panel-11500)  
 JSONC  
 ```  
 {  
@@ -66,8 +66,8 @@ npm i -D @cloudflare/kv-asset-handler
 ```
 4. Replace the contents of `src/index.ts` with the following code snippet:
 
-* [  Module Worker ](#tab-panel-10320)
-* [  Service Worker ](#tab-panel-10321)
+* [  Module Worker ](#tab-panel-11497)
+* [  Service Worker ](#tab-panel-11498)
 
 JavaScript
 
@@ -180,8 +180,8 @@ Terminal window
 npx wrangler deploy  
 ```
 2. Deploy your site to a [custom domain](https://developers.cloudflare.com/workers/configuration/routing/custom-domains/) that you own and have already attached as a Cloudflare zone. Add a `route` property to the Wrangler file.  
-   * [  wrangler.jsonc ](#tab-panel-10324)  
-   * [  wrangler.toml ](#tab-panel-10325)  
+   * [  wrangler.jsonc ](#tab-panel-11501)  
+   * [  wrangler.toml ](#tab-panel-11502)  
 JSONC  
 ```  
 {  
@@ -198,5 +198,6 @@ Refer to the documentation on [Routes](https://developers.cloudflare.com/workers
 Learn more about [configuring your project](https://developers.cloudflare.com/workers/wrangler/configuration/).
 
 ```json
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/static-assets/#page","headline":"Start from existing · Cloudflare Workers docs","description":"Deploy an existing static site project to Cloudflare using Workers Sites.","url":"https://developers.cloudflare.com/workers/static-assets/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/workers/","name":"Workers"}},{"@type":"ListItem","position":3,"item":{"@id":"/workers/configuration/","name":"Configuration"}},{"@type":"ListItem","position":4,"item":{"@id":"/workers/configuration/sites/","name":"Workers Sites"}},{"@type":"ListItem","position":5,"item":{"@id":"/workers/configuration/sites/start-from-existing/","name":"Start from existing"}}]}
 ```

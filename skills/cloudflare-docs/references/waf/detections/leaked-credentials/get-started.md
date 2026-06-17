@@ -16,10 +16,10 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 On Free plans, the leaked credentials detection is enabled by default, and no action is required. On paid plans, you can turn on the detection in the Cloudflare dashboard, via API, or using Terraform.
 
-* [  New dashboard ](#tab-panel-10009)
-* [ Old dashboard ](#tab-panel-10010)
-* [ API ](#tab-panel-10011)
-* [ Terraform ](#tab-panel-10012)
+* [  New dashboard ](#tab-panel-11178)
+* [ Old dashboard ](#tab-panel-11179)
+* [ API ](#tab-panel-11180)
+* [ Terraform ](#tab-panel-11181)
 
 1. In the Cloudflare dashboard, go to the Security **Settings** page.  
 [ Go to **Settings** ](https://dash.cloudflare.com/?to=/:account/:zone/security/settings)
@@ -148,10 +148,10 @@ Only available for Enterprise customers.
 
 To check for leaked credentials in a way that is not covered by the default configuration, add a [custom detection location](https://developers.cloudflare.com/waf/detections/leaked-credentials/#custom-detection-locations).
 
-* [  New dashboard ](#tab-panel-10005)
-* [ Old dashboard ](#tab-panel-10006)
-* [ API ](#tab-panel-10007)
-* [ Terraform ](#tab-panel-10008)
+* [  New dashboard ](#tab-panel-11174)
+* [ Old dashboard ](#tab-panel-11175)
+* [ API ](#tab-panel-11176)
+* [ Terraform ](#tab-panel-11177)
 
 1. In the Cloudflare dashboard, go to the Security **Settings** page.  
 [ Go to **Settings** ](https://dash.cloudflare.com/?to=/:account/:zone/security/settings)
@@ -273,5 +273,6 @@ Test credentials for users on paid plans (will not work on Free plans):
 Cloudflare considers these specific credentials as having been previously leaked. Use them in your tests to check the behavior of your current configuration.
 
 ```json
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/waf/detections/leaked-credentials/get-started/#page","headline":"Get started with leaked credentials detection · Cloudflare Web Application Firewall (WAF) docs","description":"Enable leaked credentials detection and configure custom or managed detections.","url":"https://developers.cloudflare.com/waf/detections/leaked-credentials/get-started/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-05-05","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Account takeover","Authentication"]}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/waf/","name":"WAF"}},{"@type":"ListItem","position":3,"item":{"@id":"/waf/detections/","name":"Traffic detections"}},{"@type":"ListItem","position":4,"item":{"@id":"/waf/detections/leaked-credentials/","name":"Leaked credentials detection"}},{"@type":"ListItem","position":5,"item":{"@id":"/waf/detections/leaked-credentials/get-started/","name":"Get started"}}]}
 ```

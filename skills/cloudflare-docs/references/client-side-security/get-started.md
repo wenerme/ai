@@ -16,8 +16,8 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 To enable client-side resource monitoring:
 
-* [  New dashboard ](#tab-panel-4499)
-* [ Old dashboard ](#tab-panel-4500)
+* [  New dashboard ](#tab-panel-6983)
+* [ Old dashboard ](#tab-panel-6984)
 
 1. In the Cloudflare dashboard, go to the Security **Settings** page.  
 [ Go to **Settings** ](https://dash.cloudflare.com/?to=/:account/:zone/security/settings)
@@ -38,8 +38,8 @@ When you enable client-side resource monitoring, it may take a while to get the 
 To review the scripts detected by Cloudflare:
 
 1. Go to the client-side resources page:  
-   * [  New dashboard ](#tab-panel-4497)  
-   * [ Old dashboard ](#tab-panel-4498)  
+   * [  New dashboard ](#tab-panel-6981)  
+   * [ Old dashboard ](#tab-panel-6982)  
    1. In the Cloudflare dashboard, go to the **Web assets** page.  
    [ Go to **Web assets** ](https://dash.cloudflare.com/?to=/:account/:zone/security/web-assets)  
    2. Select the **Client-side resources** tab.  
@@ -84,8 +84,8 @@ Note
 
 Only available to customers with Client-Side Security Advanced.
 
-* [  New dashboard ](#tab-panel-4503)
-* [ Old dashboard ](#tab-panel-4504)
+* [  New dashboard ](#tab-panel-6987)
+* [ Old dashboard ](#tab-panel-6988)
 
 1. In the Cloudflare dashboard, go to the **Security rules** page.  
 [ Go to **Security rules** ](https://dash.cloudflare.com/?to=/:account/:zone/security/security-rules)
@@ -119,8 +119,8 @@ Resources not covered by the content security rule you created will be reported 
 
 To view rule violation information:
 
-* [  New dashboard ](#tab-panel-4501)
-* [ Old dashboard ](#tab-panel-4502)
+* [  New dashboard ](#tab-panel-6985)
+* [ Old dashboard ](#tab-panel-6986)
 
 1. In the Cloudflare dashboard, go to the **Security rules** page.  
 [ Go to **Security rules** ](https://dash.cloudflare.com/?to=/:account/:zone/security/security-rules)
@@ -146,5 +146,6 @@ When you use the [_Allow_ action](https://developers.cloudflare.com/client-side-
 1. A positive security model is one that defines what is allowed and rejects everything else. In contrast, a negative security model defines what will be rejected and accepts the rest. [↩](#user-content-fnref-1)
 
 ```json
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/client-side-security/get-started/#page","headline":"Get started with client-side security · Client-side security docs","description":"Learn how to get started with Cloudflare's client-side security.","url":"https://developers.cloudflare.com/client-side-security/get-started/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/client-side-security/","name":"Client-side security"}},{"@type":"ListItem","position":3,"item":{"@id":"/client-side-security/get-started/","name":"Get started with client-side security"}}]}
 ```

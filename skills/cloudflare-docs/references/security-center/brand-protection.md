@@ -119,9 +119,10 @@ When reviewing a matched domain, you have two paths to action depending on where
 2. Go to **Monitor Strings** and select a query to view its matched domains.
 3. Next to the domain you want to take action on, click **Generate C&D Letter**.
 4. Choose a template. You can select from three default templates or from your own saved templates:  
-   * **Exact Match**: A formal demand for identical trademark infringements.  
-   * **Similar Match**: A standard notice optimized for typosquatting.  
-   * **Friendly Tone**: An amicable initial outreach for potential unintentional infringements.
+   * **Registrant - Exact Match**: A cease and desist letter direct to a registrant of a domain that is an exact match to the protected trademark.  
+   * **Registrant - Similar Match**: A cease and desist letter directed to a registrant of a domain that is confusingly similar to the protected trademark (1-character distance).  
+   * **Registrar - Trademark Infringement**: A letter directed to a domain registrar regarding trademark infringement by their registrant.  
+   * **Registrar - Trademark Infringement & Phishing**: A letter directed to a domain registrar regarding trademark infringement and phishing by their registrant.
 5. Review and edit the pre-filled letter. The system auto-populates recipient data from WHOIS records.
 6. Click **Download** to save the finalized PDF.
 
@@ -250,5 +251,6 @@ Manage your notifications in the **All notifications** tab. You can disable, edi
 * You may only use the Brand Protection search tools to search for domains that may be attempting to impersonate your brand or a brand that has authorized you to conduct such search on its behalf.
 
 ```json
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/security-center/brand-protection/#page","headline":"Brand Protection · Cloudflare Security Center docs","description":"Detect phishing domains and impersonation attempts targeting your brand.","url":"https://developers.cloudflare.com/security-center/brand-protection/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-06-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Phishing","AI"]}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/security-center/","name":"Security Center"}},{"@type":"ListItem","position":3,"item":{"@id":"/security-center/brand-protection/","name":"Brand Protection"}}]}
 ```

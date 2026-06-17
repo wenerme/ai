@@ -18,8 +18,8 @@ A remotely-managed tunnel only requires a token to run. Anyone with the token ca
 
 To get the token for a remotely-managed tunnel:
 
-* [ Dashboard ](#tab-panel-10039)
-* [ API ](#tab-panel-10040)
+* [ Dashboard ](#tab-panel-10976)
+* [ API ](#tab-panel-10977)
 
 1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Networking** \> **Tunnels**.  
 [ Go to **Tunnels** ](https://dash.cloudflare.com/?to=/:account/tunnels)
@@ -90,5 +90,6 @@ curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/cfd_tunnel/$TUNN
 Then reinstall the `cloudflared` service on all replicas using the new token.
 
 ```json
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/tunnel/advanced/tunnel-tokens/#page","headline":"Tunnel tokens · Cloudflare Docs","description":"Manage tunnel authentication tokens for remote and local tunnels.","url":"https://developers.cloudflare.com/tunnel/advanced/tunnel-tokens/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-05-05","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Authentication"]}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/tunnel/","name":"Cloudflare Tunnel"}},{"@type":"ListItem","position":3,"item":{"@id":"/tunnel/advanced/","name":"Advanced"}},{"@type":"ListItem","position":4,"item":{"@id":"/tunnel/advanced/tunnel-tokens/","name":"Tunnel tokens"}}]}
 ```

@@ -97,12 +97,12 @@ These steps are also at the [Cloudflare package repository ↗](https://pkg.clou
 
 #### Debian/Ubuntu packages
 
-* [ Debian 13 (Trixie) ](#tab-panel-10057)
-* [ Debian 12 (Bookworm) ](#tab-panel-10058)
-* [ Debian 11 (Bullseye) ](#tab-panel-10059)
-* [ Ubuntu 24.04 (Noble) ](#tab-panel-10060)
-* [ Ubuntu 22.04 (Jammy) ](#tab-panel-10061)
-* [ Ubuntu 20.04 (Focal) ](#tab-panel-10062)
+* [ Debian 13 (Trixie) ](#tab-panel-10618)
+* [ Debian 12 (Bookworm) ](#tab-panel-10619)
+* [ Debian 11 (Bullseye) ](#tab-panel-10620)
+* [ Ubuntu 24.04 (Noble) ](#tab-panel-10621)
+* [ Ubuntu 22.04 (Jammy) ](#tab-panel-10622)
+* [ Ubuntu 20.04 (Focal) ](#tab-panel-10623)
 
 Terminal window
 
@@ -210,10 +210,10 @@ sudo apt-get update && sudo apt-get install gokeyless
 
 Gokeyless uses CGO for PKCS#11/HSM support, which creates glibc dependencies. Use the repository that matches your distribution.
 
-* [ RHEL 9 / CentOS Stream 9 ](#tab-panel-10063)
-* [ Amazon Linux 2023 ](#tab-panel-10064)
-* [ RHEL 8 / CentOS 8 ](#tab-panel-10065)
-* [ Amazon Linux 2 ](#tab-panel-10066)
+* [ RHEL 9 / CentOS Stream 9 ](#tab-panel-10624)
+* [ Amazon Linux 2023 ](#tab-panel-10625)
+* [ RHEL 8 / CentOS 8 ](#tab-panel-10626)
+* [ Amazon Linux 2 ](#tab-panel-10627)
 
 Terminal window
 
@@ -303,5 +303,6 @@ To activate, restart your keyless instance:
 If this command fails, try troubleshooting by [checking the logs](https://developers.cloudflare.com/ssl/keyless-ssl/troubleshooting/).
 
 ```json
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ssl/keyless-ssl/configuration/cloudflare-tunnel/#page","headline":"Cloudflare Tunnel setup - Keyless SSL · Cloudflare SSL/TLS docs","description":"Deploy Keyless SSL with Cloudflare Tunnel for private connectivity.","url":"https://developers.cloudflare.com/ssl/keyless-ssl/configuration/cloudflare-tunnel/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-05-05","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Integration"]}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/ssl/","name":"SSL/TLS"}},{"@type":"ListItem","position":3,"item":{"@id":"/ssl/keyless-ssl/","name":"Keyless SSL"}},{"@type":"ListItem","position":4,"item":{"@id":"/ssl/keyless-ssl/configuration/","name":"Get started"}},{"@type":"ListItem","position":5,"item":{"@id":"/ssl/keyless-ssl/configuration/cloudflare-tunnel/","name":"Cloudflare Tunnel"}}]}
 ```

@@ -20,8 +20,8 @@ This guide covers security best practices for MCP servers that act as OAuth prox
 
 Cloudflare's [workers-oauth-provider ↗](https://github.com/cloudflare/workers-oauth-provider) handles token management, client registration, and access token validation:
 
-* [  JavaScript ](#tab-panel-5200)
-* [  TypeScript ](#tab-panel-5201)
+* [  JavaScript ](#tab-panel-5807)
+* [  TypeScript ](#tab-panel-5808)
 
 JavaScript
 
@@ -87,8 +87,8 @@ When your MCP server proxies to third-party OAuth providers, you must implement 
 
 Without CSRF protection, attackers can trick users into approving malicious OAuth clients. Use a random token stored in a secure cookie:
 
-* [  JavaScript ](#tab-panel-5204)
-* [  TypeScript ](#tab-panel-5205)
+* [  JavaScript ](#tab-panel-5811)
+* [  TypeScript ](#tab-panel-5812)
 
 JavaScript
 
@@ -211,8 +211,8 @@ Include the token as a hidden field in your consent form:
 
 User-controlled content (client names, logos, URIs) can execute malicious scripts if not sanitized:
 
-* [  JavaScript ](#tab-panel-5208)
-* [  TypeScript ](#tab-panel-5209)
+* [  JavaScript ](#tab-panel-5815)
+* [  TypeScript ](#tab-panel-5816)
 
 JavaScript
 
@@ -332,8 +332,8 @@ const logoUrl = sanitizeText(sanitizeUrl(client.logoUri));
 
 CSP headers instruct browsers to block dangerous content:
 
-* [  JavaScript ](#tab-panel-5206)
-* [  TypeScript ](#tab-panel-5207)
+* [  JavaScript ](#tab-panel-5813)
+* [  TypeScript ](#tab-panel-5814)
 
 JavaScript
 
@@ -435,8 +435,8 @@ function buildSecurityHeaders(setCookie: string, nonce?: string): HeadersInit {
 
 Between the consent dialog and the OAuth callback, you need to ensure it is the same user. Use a state token stored in KV with a short expiration:
 
-* [  JavaScript ](#tab-panel-5210)
-* [  TypeScript ](#tab-panel-5211)
+* [  JavaScript ](#tab-panel-5817)
+* [  TypeScript ](#tab-panel-5818)
 
 JavaScript
 
@@ -655,8 +655,8 @@ __Host-APPROVED_CLIENTS_GOOGLE
 
 Maintain a registry of approved client IDs per user to avoid showing the consent dialog repeatedly:
 
-* [  JavaScript ](#tab-panel-5202)
-* [  TypeScript ](#tab-panel-5203)
+* [  JavaScript ](#tab-panel-5809)
+* [  TypeScript ](#tab-panel-5810)
 
 JavaScript
 
@@ -742,5 +742,6 @@ When reading the cookie, verify the HMAC signature before trusting the data. If 
 [ MCP security best practices ](https://modelcontextprotocol.io/specification/draft/basic/security%5Fbest%5Fpractices) Official MCP specification security guide. 
 
 ```json
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/agents/model-context-protocol/guides/securing-mcp-server/#page","headline":"Securing MCP servers · Cloudflare Agents docs","description":"Secure your MCP servers with OAuth 2.1, token validation, and scope-based access control on Cloudflare.","url":"https://developers.cloudflare.com/agents/model-context-protocol/guides/securing-mcp-server/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-06-03","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["MCP"]}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/agents/","name":"Agents"}},{"@type":"ListItem","position":3,"item":{"@id":"/agents/model-context-protocol/","name":"Model Context Protocol (MCP)"}},{"@type":"ListItem","position":4,"item":{"@id":"/agents/model-context-protocol/guides/","name":"Guides"}},{"@type":"ListItem","position":5,"item":{"@id":"/agents/model-context-protocol/guides/securing-mcp-server/","name":"Securing MCP servers"}}]}
 ```

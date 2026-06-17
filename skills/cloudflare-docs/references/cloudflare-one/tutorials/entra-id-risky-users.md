@@ -80,15 +80,15 @@ cd risky-users
    * `<ACCOUNT_ID>`: your Cloudflare [account ID](https://developers.cloudflare.com/fundamentals/account/find-account-and-zone-ids/).  
    * `<TENANT_ID>`: your Entra ID **Directory (tenant) ID**, obtained when [setting up Entra ID as an identity provider](#1-set-up-entra-id-as-an-identity-provider).  
    * `<CLIENT_ID>`: your Entra ID **Application (client) ID**, obtained when [setting up Entra ID as an identity provider](#1-set-up-entra-id-as-an-identity-provider).  
-   * [  wrangler.jsonc ](#tab-panel-5640)  
-   * [  wrangler.toml ](#tab-panel-5641)  
+   * [  wrangler.jsonc ](#tab-panel-7730)  
+   * [  wrangler.toml ](#tab-panel-7731)  
 JSONC  
 ```  
 {  
   "$schema": "./node_modules/wrangler/config-schema.json",  
   "name": "risky-users",  
   // Set this to today's date  
-  "compatibility_date": "2026-05-18",  
+  "compatibility_date": "2026-06-17",  
   "main": "src/index.js",  
   "workers_dev": false,  
   "account_id": "<ACCOUNT-ID>",  
@@ -106,7 +106,7 @@ TOML
 "$schema" = "./node_modules/wrangler/config-schema.json"  
 name = "risky-users"  
 # Set this to today's date  
-compatibility_date = "2026-05-18"  
+compatibility_date = "2026-06-17"  
 main = "src/index.js"  
 workers_dev = false  
 account_id = "<ACCOUNT-ID>"  
@@ -175,5 +175,6 @@ Finally, create a [Gateway HTTP policy](https://developers.cloudflare.com/cloudf
 To test the policy, refer to the Microsoft documentation for [simulating risky detections ↗](https://learn.microsoft.com/entra/id-protection/howto-identity-protection-simulate-risk).
 
 ```json
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/tutorials/entra-id-risky-users/#page","headline":"Isolate risky Entra ID users · Cloudflare One docs","description":"Microsoft Entra ID (formerly Azure Active Directory) calculates a user's risk level based on the probability that their account has been compromised. With Cloudflare Zero Trust, you can synchronize the Entra ID risky users list with Cloudflare Access and apply more stringent Zero Trust policies to users at higher risk.","url":"https://developers.cloudflare.com/cloudflare-one/tutorials/entra-id-risky-users/","inLanguage":"en","image":"https://developers.cloudflare.com/zt-preview.png","dateModified":"2026-04-17","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Microsoft Entra ID","SCIM"]}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/cloudflare-one/","name":"Cloudflare One"}},{"@type":"ListItem","position":3,"item":{"@id":"/cloudflare-one/tutorials/","name":"Tutorials"}},{"@type":"ListItem","position":4,"item":{"@id":"/cloudflare-one/tutorials/entra-id-risky-users/","name":"Isolate risky Entra ID users"}}]}
 ```

@@ -99,5 +99,6 @@ Since the value for Consent Mode may change per user or session, it is recommend
 Consent Mode v1 and v2 are both supported by Google Analytics 4 and Google Ads.
 
 ```json
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/zaraz/advanced/google-consent-mode/#page","headline":"Google Consent Mode · Cloudflare Zaraz docs","description":"Integrate Google Consent Mode with Zaraz consent management.","url":"https://developers.cloudflare.com/zaraz/advanced/google-consent-mode/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/zaraz/","name":"Zaraz"}},{"@type":"ListItem","position":3,"item":{"@id":"/zaraz/advanced/","name":"Advanced options"}},{"@type":"ListItem","position":4,"item":{"@id":"/zaraz/advanced/google-consent-mode/","name":"Google Consent Mode"}}]}
 ```

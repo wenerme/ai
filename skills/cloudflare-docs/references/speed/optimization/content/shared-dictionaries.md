@@ -70,9 +70,9 @@ The work of creating dictionaries and compressing new responses against them hap
 
 ### 1\. Enable passthrough in Cloudflare
 
-* [ Dashboard ](#tab-panel-10301)
-* [ API ](#tab-panel-10302)
-* [ Terraform ](#tab-panel-10303)
+* [ Dashboard ](#tab-panel-10544)
+* [ API ](#tab-panel-10545)
+* [ Terraform ](#tab-panel-10546)
 
 To enable shared dictionaries in the dashboard:
 
@@ -210,5 +210,6 @@ You can also use [canicompress.com ↗](https://canicompress.com/) to confirm yo
 * **Same-origin only.** Per [RFC 9842, Section 9.3.1 ↗](https://www.rfc-editor.org/rfc/rfc9842.html#section-9.3.1), dictionaries are scoped to the response origin. Cross-origin dictionary use is not supported.
 
 ```json
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/speed/optimization/content/shared-dictionaries/#page","headline":"Shared dictionaries · Cloudflare Speed docs","description":"Shared dictionaries reduce repeat-visitor transfer size by compressing each response against a version the browser already has cached.","url":"https://developers.cloudflare.com/speed/optimization/content/shared-dictionaries/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-30","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/speed/","name":"Speed"}},{"@type":"ListItem","position":3,"item":{"@id":"/speed/optimization/","name":"Settings"}},{"@type":"ListItem","position":4,"item":{"@id":"/speed/optimization/content/","name":"Content optimizations"}},{"@type":"ListItem","position":5,"item":{"@id":"/speed/optimization/content/shared-dictionaries/","name":"Shared dictionaries"}}]}
 ```

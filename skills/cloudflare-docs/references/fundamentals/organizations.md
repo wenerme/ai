@@ -36,5 +36,6 @@ Cloudflare Organizations is currently in public beta.
 * [ Limitations ](https://developers.cloudflare.com/fundamentals/organizations/limitations/)
 
 ```json
+{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/fundamentals/organizations/#page","headline":"Organizations · Cloudflare Fundamentals docs","description":"Manage multiple Cloudflare accounts from a single organization with centralized access control and audit logs.","url":"https://developers.cloudflare.com/fundamentals/organizations/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-28","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/fundamentals/","name":"Cloudflare Fundamentals"}},{"@type":"ListItem","position":3,"item":{"@id":"/fundamentals/organizations/","name":"Organizations"}}]}
 ```

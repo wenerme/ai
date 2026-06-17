@@ -152,5 +152,6 @@ Depending on what tools you are loading using Zaraz, the body of the response co
 You do not have to process the information above, but some tools might depend on this to work properly. You can start using the HTTP Events API without processing the information in the table above, and adjust accordingly later.
 
 ```json
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/zaraz/http-events-api/#page","headline":"HTTP Events API · Cloudflare Zaraz docs","description":"Send server-side events to Zaraz with the HTTP Events API.","url":"https://developers.cloudflare.com/zaraz/http-events-api/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/zaraz/","name":"Zaraz"}},{"@type":"ListItem","position":3,"item":{"@id":"/zaraz/http-events-api/","name":"HTTP Events API"}}]}
 ```

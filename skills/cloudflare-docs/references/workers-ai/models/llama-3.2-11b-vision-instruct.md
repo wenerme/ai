@@ -55,10 +55,10 @@ Try out this model with Workers AI LLM Playground. It does not require any setup
 
 ## Usage
 
-* [  Worker (Streaming) ](#tab-panel-4777)
-* [  TypeScript ](#tab-panel-4778)
-* [  Python ](#tab-panel-4779)
-* [  curl ](#tab-panel-4780)
+* [  Worker (Streaming) ](#tab-panel-4958)
+* [  TypeScript ](#tab-panel-4959)
+* [  Python ](#tab-panel-4960)
+* [  curl ](#tab-panel-4961)
 
 TypeScript
 
@@ -306,5 +306,6 @@ format
  Streaming Output [ ](https://developers.cloudflare.com/workers-ai/models/llama-3.2-11b-vision-instruct/streaming-output.json "Open") [ ](https://developers.cloudflare.com/workers-ai/models/llama-3.2-11b-vision-instruct/streaming-output.json "Download") 
 
 ```json
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers-ai/models/llama-3.2-11b-vision-instruct/#page","headline":"llama-3.2-11b-vision-instruct (Meta) · Cloudflare AI docs · Cloudflare Workers AI docs","description":"The Llama 3.2-Vision instruction-tuned models are optimized for visual recognition, image reasoning, captioning, and answering general questions about an image.","url":"https://developers.cloudflare.com/workers-ai/models/llama-3.2-11b-vision-instruct/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/workers-ai/","name":"Workers AI"}},{"@type":"ListItem","position":3,"item":{"@id":"/workers-ai/models/","name":"Models"}}]}
 ```

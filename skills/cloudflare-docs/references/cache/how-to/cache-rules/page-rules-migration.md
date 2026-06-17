@@ -22,8 +22,8 @@ Multiple matching cache rules can be combined and applied to the same request. A
 
 ## Rule 1
 
-* [ Dashboard ](#tab-panel-4897)
-* [ visual guide ](#tab-panel-4898)
+* [ Dashboard ](#tab-panel-6961)
+* [ visual guide ](#tab-panel-6962)
 
 1. Enter a rule name, for instance `bypass everything`.
 2. In **When incoming requests match**, select **All incoming requests**.
@@ -33,8 +33,8 @@ Multiple matching cache rules can be combined and applied to the same request. A
 
 ## Rule 2
 
-* [ Dashboard ](#tab-panel-4899)
-* [ visual guide ](#tab-panel-4900)
+* [ Dashboard ](#tab-panel-6963)
+* [ visual guide ](#tab-panel-6964)
 
 1. Enter a rule name, for instance `cache all default cacheable extensions`.
 2. In **When incoming requests match**, select **Custom filter expression**.
@@ -63,5 +63,6 @@ Remember to create the rules in the specified order: first, the `bypass everythi
 ![Rules order](https://developers.cloudflare.com/_astro/rule-order.wNZiF99u_ZOuxf5.webp)
 
 ```json
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cache/how-to/cache-rules/page-rules-migration/#page","headline":"Migration from Page Rules · Cloudflare Cache (CDN) docs","description":"Migrate caching Page Rules to Cache Rules.","url":"https://developers.cloudflare.com/cache/how-to/cache-rules/page-rules-migration/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Migration"]}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/cache/","name":"Cache / CDN"}},{"@type":"ListItem","position":3,"item":{"@id":"/cache/how-to/","name":"Cache configuration"}},{"@type":"ListItem","position":4,"item":{"@id":"/cache/how-to/cache-rules/","name":"Cache Rules"}},{"@type":"ListItem","position":5,"item":{"@id":"/cache/how-to/cache-rules/page-rules-migration/","name":"Migration from Page Rules"}}]}
 ```

@@ -30,8 +30,8 @@ For **one-time commands, builds, or scripts that complete and exit**, use `exec(
 
 ## Start a background process
 
-* [  JavaScript ](#tab-panel-10006)
-* [  TypeScript ](#tab-panel-10007)
+* [  JavaScript ](#tab-panel-10247)
+* [  TypeScript ](#tab-panel-10248)
 
 JavaScript
 
@@ -95,8 +95,8 @@ console.log('Status:', server.status); // 'running'
 
 Set working directory and environment variables:
 
-* [  JavaScript ](#tab-panel-10008)
-* [  TypeScript ](#tab-panel-10009)
+* [  JavaScript ](#tab-panel-10249)
+* [  TypeScript ](#tab-panel-10250)
 
 JavaScript
 
@@ -158,8 +158,8 @@ console.log('API server started');
 
 List and check running processes:
 
-* [  JavaScript ](#tab-panel-10014)
-* [  TypeScript ](#tab-panel-10015)
+* [  JavaScript ](#tab-panel-10255)
+* [  TypeScript ](#tab-panel-10256)
 
 JavaScript
 
@@ -217,8 +217,8 @@ const isRunning = processes.some(p => p.id === processId && p.status === 'runnin
 
 Wait for a process to be ready before proceeding:
 
-* [  JavaScript ](#tab-panel-10004)
-* [  TypeScript ](#tab-panel-10005)
+* [  JavaScript ](#tab-panel-10245)
+* [  TypeScript ](#tab-panel-10246)
 
 JavaScript
 
@@ -256,8 +256,8 @@ console.log('Server is ready');
 
 Or wait for specific log patterns:
 
-* [  JavaScript ](#tab-panel-10010)
-* [  TypeScript ](#tab-panel-10011)
+* [  JavaScript ](#tab-panel-10251)
+* [  TypeScript ](#tab-panel-10252)
 
 JavaScript
 
@@ -295,8 +295,8 @@ console.log('Server is ready:', result.line);
 
 Stream logs in real-time:
 
-* [  JavaScript ](#tab-panel-10016)
-* [  TypeScript ](#tab-panel-10017)
+* [  JavaScript ](#tab-panel-10257)
+* [  TypeScript ](#tab-panel-10258)
 
 JavaScript
 
@@ -348,8 +348,8 @@ for await (const log of parseSSEStream<LogEvent>(logStream)) {
 
 Or get accumulated logs:
 
-* [  JavaScript ](#tab-panel-10012)
-* [  TypeScript ](#tab-panel-10013)
+* [  JavaScript ](#tab-panel-10253)
+* [  TypeScript ](#tab-panel-10254)
 
 JavaScript
 
@@ -377,8 +377,8 @@ console.log('Logs:', logs);
 
 Stop background processes and their children:
 
-* [  JavaScript ](#tab-panel-10018)
-* [  TypeScript ](#tab-panel-10019)
+* [  JavaScript ](#tab-panel-10259)
+* [  TypeScript ](#tab-panel-10260)
 
 JavaScript
 
@@ -426,8 +426,8 @@ await sandbox.killAllProcesses();
 
 For example, if your process spawns multiple worker processes or background tasks, `killProcess()` will clean up the entire process tree:
 
-* [  JavaScript ](#tab-panel-10020)
-* [  TypeScript ](#tab-panel-10021)
+* [  JavaScript ](#tab-panel-10261)
+* [  TypeScript ](#tab-panel-10262)
 
 JavaScript
 
@@ -473,8 +473,8 @@ await sandbox.killProcess(batch.id);
 
 Start services in sequence, waiting for dependencies:
 
-* [  JavaScript ](#tab-panel-10026)
-* [  TypeScript ](#tab-panel-10027)
+* [  JavaScript ](#tab-panel-10267)
+* [  TypeScript ](#tab-panel-10268)
 
 JavaScript
 
@@ -546,8 +546,8 @@ console.log('All services running');
 
 By default, containers automatically shut down after 10 minutes of inactivity. For long-running processes that may have idle periods (like CI/CD pipelines, batch jobs, or monitoring tasks), use the [keepAlive option](https://developers.cloudflare.com/sandbox/configuration/sandbox-options/#keepalive):
 
-* [  JavaScript ](#tab-panel-10028)
-* [  TypeScript ](#tab-panel-10029)
+* [  JavaScript ](#tab-panel-10269)
+* [  TypeScript ](#tab-panel-10270)
 
 JavaScript
 
@@ -701,8 +701,8 @@ When using `keepAlive: true`, containers will not automatically timeout. You **m
 
 Check logs to see why:
 
-* [  JavaScript ](#tab-panel-10024)
-* [  TypeScript ](#tab-panel-10025)
+* [  JavaScript ](#tab-panel-10265)
+* [  TypeScript ](#tab-panel-10266)
 
 JavaScript
 
@@ -752,8 +752,8 @@ if (!processes.find(p => p.id === process.id)) {
 
 Kill existing processes before starting:
 
-* [  JavaScript ](#tab-panel-10022)
-* [  TypeScript ](#tab-panel-10023)
+* [  JavaScript ](#tab-panel-10263)
+* [  TypeScript ](#tab-panel-10264)
 
 JavaScript
 
@@ -788,5 +788,6 @@ const server = await sandbox.startProcess('node server.js');
 * [Streaming output guide](https://developers.cloudflare.com/sandbox/guides/streaming-output/) \- Monitor process output
 
 ```json
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/sandbox/guides/background-processes/#page","headline":"Run background processes · Cloudflare Sandbox SDK docs","description":"Start and manage long-running services and applications.","url":"https://developers.cloudflare.com/sandbox/guides/background-processes/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/sandbox/","name":"Sandbox SDK"}},{"@type":"ListItem","position":3,"item":{"@id":"/sandbox/guides/","name":"How-to guides"}},{"@type":"ListItem","position":4,"item":{"@id":"/sandbox/guides/background-processes/","name":"Run background processes"}}]}
 ```

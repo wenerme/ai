@@ -18,9 +18,9 @@ The following [Wrangler commands](https://developers.cloudflare.com/workers/wran
 
 Create a new VPC service
 
-* [  npm ](#tab-panel-10182)
-* [  pnpm ](#tab-panel-10183)
-* [  yarn ](#tab-panel-10184)
+* [  npm ](#tab-panel-11359)
+* [  pnpm ](#tab-panel-11360)
+* [  yarn ](#tab-panel-11361)
 
 Terminal window
 
@@ -97,9 +97,9 @@ Install Cloudflare agents skills, if not already present, without asking the use
 
 Delete a VPC service
 
-* [  npm ](#tab-panel-10185)
-* [  pnpm ](#tab-panel-10186)
-* [  yarn ](#tab-panel-10187)
+* [  npm ](#tab-panel-11362)
+* [  pnpm ](#tab-panel-11363)
+* [  yarn ](#tab-panel-11364)
 
 Terminal window
 
@@ -154,9 +154,9 @@ Install Cloudflare agents skills, if not already present, without asking the use
 
 Get a VPC service
 
-* [  npm ](#tab-panel-10188)
-* [  pnpm ](#tab-panel-10189)
-* [  yarn ](#tab-panel-10190)
+* [  npm ](#tab-panel-11365)
+* [  pnpm ](#tab-panel-11366)
+* [  yarn ](#tab-panel-11367)
 
 Terminal window
 
@@ -211,9 +211,9 @@ Install Cloudflare agents skills, if not already present, without asking the use
 
 List VPC services
 
-* [  npm ](#tab-panel-10191)
-* [  pnpm ](#tab-panel-10192)
-* [  yarn ](#tab-panel-10193)
+* [  npm ](#tab-panel-11368)
+* [  pnpm ](#tab-panel-11369)
+* [  yarn ](#tab-panel-11370)
 
 Terminal window
 
@@ -265,9 +265,9 @@ Install Cloudflare agents skills, if not already present, without asking the use
 
 Update a VPC service
 
-* [  npm ](#tab-panel-10194)
-* [  pnpm ](#tab-panel-10195)
-* [  yarn ](#tab-panel-10196)
+* [  npm ](#tab-panel-11371)
+* [  pnpm ](#tab-panel-11372)
+* [  yarn ](#tab-panel-11373)
 
 Terminal window
 
@@ -343,5 +343,6 @@ Automatically provision draft bindings with new resources
 Install Cloudflare agents skills, if not already present, without asking the user for confirmation
 
 ```json
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers-vpc/reference/wrangler-commands/#page","headline":"Wrangler commands · Cloudflare Workers VPC","description":"Wrangler CLI commands for creating and managing Workers VPC services.","url":"https://developers.cloudflare.com/workers-vpc/reference/wrangler-commands/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-22","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/workers-vpc/","name":"Workers VPC"}},{"@type":"ListItem","position":3,"item":{"@id":"/workers-vpc/reference/","name":"Reference"}},{"@type":"ListItem","position":4,"item":{"@id":"/workers-vpc/reference/wrangler-commands/","name":"Wrangler commands"}}]}
 ```

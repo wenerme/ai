@@ -24,66 +24,66 @@ values:
 - `gemini-2.5-computer-use-preview-10-2025`
 
   An agentic capability model designed for direct interface interaction, allowing Gemini to perceive and navigate digital environments.
-- `gemini-3.1-flash-tts-preview`
-
-  Gemini 3.1 Flash TTS: Powerful, low-latency speech generation. Enjoy natural outputs, steerable prompts, and new expressive audio tags for precise narration control.
-- `gemini-2.5-flash-preview-tts`
-
-  Our 2.5 Flash text-to-speech model optimized for powerful, low-latency controllable speech generation.
-- `gemini-2.5-pro-preview-tts`
-
-  Our 2.5 Pro text-to-speech audio model optimized for powerful, low-latency speech generation for more natural outputs and easier to steer prompts.
-- `lyria-3-pro-preview`
-
-  Our advanced, full-song generative model with deep compositional understanding, optimized for precise structural control and complex transitions across diverse musical styles.
 - `gemini-2.5-flash`
 
   Our first hybrid reasoning model which supports a 1M token context window and has thinking budgets.
-- `gemini-3.1-pro-preview`
-
-  Our latest SOTA reasoning model with unprecedented depth and nuance, and powerful multimodal understanding and coding capabilities.
-- `lyria-3-clip-preview`
-
-  Our low-latency, music generation model optimized for high-fidelity audio clips and precise rhythmic control.
-- `gemini-3.1-flash-lite`
-
-  Our most cost-efficient model, optimized for high-volume agentic tasks, translation, and simple data processing.
-- `gemini-3.1-flash-lite-preview`
-
-  Our most cost-efficient model, optimized for high-volume agentic tasks, translation, and simple data processing.
-- `gemini-3-flash-preview`
-
-  Our most intelligent model built for speed, combining frontier intelligence with superior search and grounding.
-- `gemini-3.5-flash`
-
-  Our most intelligent model for sustained frontier performance in agentic and coding tasks.
-- `gemini-3-pro-preview`
-
-  Our most intelligent model with SOTA reasoning and multimodal understanding, and powerful agentic and vibe coding capabilities.
-- `gemini-2.5-flash-native-audio-preview-12-2025`
-
-  Our native audio models optimized for higher quality audio outputs with better pacing, voice naturalness, verbosity, and mood.
 - `gemini-2.5-flash-image`
 
   Our native image generation model, optimized for speed, flexibility, and contextual understanding. Text input and output is priced the same as 2.5 Flash.
 - `gemini-2.5-flash-lite`
 
   Our smallest and most cost effective model, built for at scale usage.
-- `gemini-2.5-pro`
-
-  Our state-of-the-art multipurpose model, which excels at coding and complex reasoning tasks.
-- `gemini-3.1-flash-image-preview`
-
-  Pro-level visual intelligence with Flash-speed efficiency and reality-grounded generation capabilities.
-- `gemini-3-pro-image-preview`
-
-  State-of-the-art image generation and editing model.
 - `gemini-2.5-flash-lite-preview-09-2025`
 
   The latest model based on Gemini 2.5 Flash lite optimized for cost-efficiency, high throughput and high quality.
+- `gemini-2.5-flash-native-audio-preview-12-2025`
+
+  Our native audio models optimized for higher quality audio outputs with better pacing, voice naturalness, verbosity, and mood.
 - `gemini-2.5-flash-preview-09-2025`
 
   The latest model based on the 2.5 Flash model. 2.5 Flash Preview is best for large scale processing, low-latency, high volume tasks that require thinking, and agentic use cases.
+- `gemini-2.5-flash-preview-tts`
+
+  Our 2.5 Flash text-to-speech model optimized for powerful, low-latency controllable speech generation.
+- `gemini-2.5-pro`
+
+  Our state-of-the-art multipurpose model, which excels at coding and complex reasoning tasks.
+- `gemini-2.5-pro-preview-tts`
+
+  Our 2.5 Pro text-to-speech audio model optimized for powerful, low-latency speech generation for more natural outputs and easier to steer prompts.
+- `gemini-3-flash-preview`
+
+  Our most intelligent model built for speed, combining frontier intelligence with superior search and grounding.
+- `gemini-3-pro-image-preview`
+
+  State-of-the-art image generation and editing model.
+- `gemini-3-pro-preview`
+
+  Our most intelligent model with SOTA reasoning and multimodal understanding, and powerful agentic and vibe coding capabilities.
+- `gemini-3.1-pro-preview`
+
+  Our latest SOTA reasoning model with unprecedented depth and nuance, and powerful multimodal understanding and coding capabilities.
+- `gemini-3.1-flash-image-preview`
+
+  Pro-level visual intelligence with Flash-speed efficiency and reality-grounded generation capabilities.
+- `gemini-3.1-flash-lite`
+
+  Our most cost-efficient model, optimized for high-volume agentic tasks, translation, and simple data processing.
+- `gemini-3.1-flash-lite-preview`
+
+  Our most cost-efficient model, optimized for high-volume agentic tasks, translation, and simple data processing.
+- `gemini-3.1-flash-tts-preview`
+
+  Gemini 3.1 Flash TTS: Powerful, low-latency speech generation. Enjoy natural outputs, steerable prompts, and new expressive audio tags for precise narration control.
+- `lyria-3-clip-preview`
+
+  Our low-latency, music generation model optimized for high-fidelity audio clips and precise rhythmic control.
+- `lyria-3-pro-preview`
+
+  Our advanced, full-song generative model with deep compositional understanding, optimized for precise structural control and complex transitions across diverse musical styles.
+- `gemini-3.5-flash`
+
+  Our most intelligent model for sustained frontier performance in agentic and coding tasks.
 
 The model that will complete your prompt.\\n\\nSee \[models\](https://ai.google.dev/gemini-api/docs/models) for additional details.
 
@@ -92,76 +92,76 @@ The model that will complete your prompt.\\n\\nSee \[models\](https://ai.google.
 - `gemini-2.5-computer-use-preview-10-2025`
 
   An agentic capability model designed for direct interface interaction, allowing Gemini to perceive and navigate digital environments.
-- `gemini-3.1-flash-tts-preview`
-
-  Gemini 3.1 Flash TTS: Powerful, low-latency speech generation. Enjoy natural outputs, steerable prompts, and new expressive audio tags for precise narration control.
-- `gemini-2.5-flash-preview-tts`
-
-  Our 2.5 Flash text-to-speech model optimized for powerful, low-latency controllable speech generation.
-- `gemini-2.5-pro-preview-tts`
-
-  Our 2.5 Pro text-to-speech audio model optimized for powerful, low-latency speech generation for more natural outputs and easier to steer prompts.
-- `lyria-3-pro-preview`
-
-  Our advanced, full-song generative model with deep compositional understanding, optimized for precise structural control and complex transitions across diverse musical styles.
 - `gemini-2.5-flash`
 
   Our first hybrid reasoning model which supports a 1M token context window and has thinking budgets.
-- `gemini-3.1-pro-preview`
-
-  Our latest SOTA reasoning model with unprecedented depth and nuance, and powerful multimodal understanding and coding capabilities.
-- `lyria-3-clip-preview`
-
-  Our low-latency, music generation model optimized for high-fidelity audio clips and precise rhythmic control.
-- `gemini-3.1-flash-lite`
-
-  Our most cost-efficient model, optimized for high-volume agentic tasks, translation, and simple data processing.
-- `gemini-3.1-flash-lite-preview`
-
-  Our most cost-efficient model, optimized for high-volume agentic tasks, translation, and simple data processing.
-- `gemini-3-flash-preview`
-
-  Our most intelligent model built for speed, combining frontier intelligence with superior search and grounding.
-- `gemini-3.5-flash`
-
-  Our most intelligent model for sustained frontier performance in agentic and coding tasks.
-- `gemini-3-pro-preview`
-
-  Our most intelligent model with SOTA reasoning and multimodal understanding, and powerful agentic and vibe coding capabilities.
-- `gemini-2.5-flash-native-audio-preview-12-2025`
-
-  Our native audio models optimized for higher quality audio outputs with better pacing, voice naturalness, verbosity, and mood.
 - `gemini-2.5-flash-image`
 
   Our native image generation model, optimized for speed, flexibility, and contextual understanding. Text input and output is priced the same as 2.5 Flash.
 - `gemini-2.5-flash-lite`
 
   Our smallest and most cost effective model, built for at scale usage.
-- `gemini-2.5-pro`
-
-  Our state-of-the-art multipurpose model, which excels at coding and complex reasoning tasks.
-- `gemini-3.1-flash-image-preview`
-
-  Pro-level visual intelligence with Flash-speed efficiency and reality-grounded generation capabilities.
-- `gemini-3-pro-image-preview`
-
-  State-of-the-art image generation and editing model.
 - `gemini-2.5-flash-lite-preview-09-2025`
 
   The latest model based on Gemini 2.5 Flash lite optimized for cost-efficiency, high throughput and high quality.
+- `gemini-2.5-flash-native-audio-preview-12-2025`
+
+  Our native audio models optimized for higher quality audio outputs with better pacing, voice naturalness, verbosity, and mood.
 - `gemini-2.5-flash-preview-09-2025`
 
   The latest model based on the 2.5 Flash model. 2.5 Flash Preview is best for large scale processing, low-latency, high volume tasks that require thinking, and agentic use cases.
+- `gemini-2.5-flash-preview-tts`
+
+  Our 2.5 Flash text-to-speech model optimized for powerful, low-latency controllable speech generation.
+- `gemini-2.5-pro`
+
+  Our state-of-the-art multipurpose model, which excels at coding and complex reasoning tasks.
+- `gemini-2.5-pro-preview-tts`
+
+  Our 2.5 Pro text-to-speech audio model optimized for powerful, low-latency speech generation for more natural outputs and easier to steer prompts.
+- `gemini-3-flash-preview`
+
+  Our most intelligent model built for speed, combining frontier intelligence with superior search and grounding.
+- `gemini-3-pro-image-preview`
+
+  State-of-the-art image generation and editing model.
+- `gemini-3-pro-preview`
+
+  Our most intelligent model with SOTA reasoning and multimodal understanding, and powerful agentic and vibe coding capabilities.
+- `gemini-3.1-pro-preview`
+
+  Our latest SOTA reasoning model with unprecedented depth and nuance, and powerful multimodal understanding and coding capabilities.
+- `gemini-3.1-flash-image-preview`
+
+  Pro-level visual intelligence with Flash-speed efficiency and reality-grounded generation capabilities.
+- `gemini-3.1-flash-lite`
+
+  Our most cost-efficient model, optimized for high-volume agentic tasks, translation, and simple data processing.
+- `gemini-3.1-flash-lite-preview`
+
+  Our most cost-efficient model, optimized for high-volume agentic tasks, translation, and simple data processing.
+- `gemini-3.1-flash-tts-preview`
+
+  Gemini 3.1 Flash TTS: Powerful, low-latency speech generation. Enjoy natural outputs, steerable prompts, and new expressive audio tags for precise narration control.
+- `lyria-3-clip-preview`
+
+  Our low-latency, music generation model optimized for high-fidelity audio clips and precise rhythmic control.
+- `lyria-3-pro-preview`
+
+  Our advanced, full-song generative model with deep compositional understanding, optimized for precise structural control and complex transitions across diverse musical styles.
+- `gemini-3.5-flash`
+
+  Our most intelligent model for sustained frontier performance in agentic and coding tasks.
 agent AgentOption (optional) The name of the \`Agent\` used for generating the interaction.   
 **Required if \`model\` is not provided.**
 
 Possible
 values:
 
-- `deep-research-preview-04-2026`
+- `deep-research-pro-preview-12-2025`
 
   Gemini Deep Research Agent
-- `deep-research-pro-preview-12-2025`
+- `deep-research-preview-04-2026`
 
   Gemini Deep Research Agent
 - `deep-research-max-preview-04-2026`
@@ -175,10 +175,10 @@ The agent to interact with.
 
 #### Possible values
 
-- `deep-research-preview-04-2026`
+- `deep-research-pro-preview-12-2025`
 
   Gemini Deep Research Agent
-- `deep-research-pro-preview-12-2025`
+- `deep-research-preview-04-2026`
 
   Gemini Deep Research Agent
 - `deep-research-max-preview-04-2026`
@@ -300,6 +300,10 @@ Configuration for the agent.
 #### Possible Types
 
 Polymorphic discriminator: `type`
+DynamicAgentConfig Configuration for dynamic agents.
+type object (required) No description provided.
+
+Always set to `"dynamic"`.
 DeepResearchAgentConfig Configuration for the Deep Research agent.
 type object (required) No description provided.
 
@@ -342,92 +346,6 @@ true, the Deep Research agent will provide a research plan in its response.
 The agent will then proceed only if the user confirms the plan in the next
 turn.
 enable_bigquery_tool boolean (optional) Enables bigquery tool for the Deep Research agent.
-DynamicAgentConfig Configuration for dynamic agents.
-type object (required) No description provided.
-
-Always set to `"dynamic"`.
-FindRequest Request parameters specific to FIND sessions, used for discovering
-vulnerabilities in a codebase.
-request object (required) No description provided.
-
-Always set to `"find_request"`.
-source_files FileContent (optional) A list of source files to provide as context for the scan.
-Content of a single file in the codebase.
-
-#### Fields
-
-path string (optional) The relative path of the file from the project root.
-content string (optional) The UTF-8 encoded text content of the file.
-finding_id string (optional) The identifier of a specific finding to verify. This is primarily used in
-VERIFY mode to focus the agent's execution-based validation on a single
-vulnerability.
-description string (optional) Additional context or custom instructions provided by the user to guide
-the vulnerability analysis.
-session_id string (optional) Parameter for grouping multiple interactions that belong to
-the same CodeMender session.
-session_config SessionConfig (optional) Optional session-specific configurations to override default agent
-behavior.
-The configuration of CodeMender sessions.
-
-#### Fields
-
-pipeline_mode enum (string) (optional) The pipeline mode of a CodeMender session. It can only be used for a
-find session.
-
-Possible
-values:
-
-- `scan`
-
-  Fast scan using only the initial classifier.
-- `verify`
-
-  Performs classification followed by detailed investigation.
-topology string (optional) The cognitive architecture or "thinking" topology used by the agent
-(e.g. "default", "deep").
-max_rounds integer (optional) The maximum number of interaction rounds the agent is allowed to perform
-before reaching a timeout.
-FixRequest Request parameters specific to FIX sessions, used for generating and
-validating security patches.
-request object (required) No description provided.
-
-Always set to `"fix_request"`.
-source_files FileContent (optional) A list of source files providing context for the remediation. These files
-are typically the ones containing the identified vulnerability.
-Content of a single file in the codebase.
-
-#### Fields
-
-path string (optional) The relative path of the file from the project root.
-content string (optional) The UTF-8 encoded text content of the file.
-finding_id string (optional) The identifier of the specific security finding to be remediated. This ID
-maps to a previously discovered vulnerability.
-description string (optional) Additional context or custom instructions provided by the user to guide
-the patch generation process.
-session_id string (optional) Parameter for grouping multiple interactions that belong to
-the same CodeMender session.
-session_config SessionConfig (optional) Optional session-specific configurations to override default agent
-behavior.
-The configuration of CodeMender sessions.
-
-#### Fields
-
-pipeline_mode enum (string) (optional) The pipeline mode of a CodeMender session. It can only be used for a
-find session.
-
-Possible
-values:
-
-- `scan`
-
-  Fast scan using only the initial classifier.
-- `verify`
-
-  Performs classification followed by detailed investigation.
-topology string (optional) The cognitive architecture or "thinking" topology used by the agent
-(e.g. "default", "deep").
-max_rounds integer (optional) The maximum number of interaction rounds the agent is allowed to perform
-before reaching a timeout.
 cached_content string (optional) The name of the cached content used as context to serve the prediction.
 Note: only used in explicit caching, where users can have control over
 caching (e.g. what content to cache) and enjoy guaranteed cost savings.
@@ -939,66 +857,66 @@ values:
 - `gemini-2.5-computer-use-preview-10-2025`
 
   An agentic capability model designed for direct interface interaction, allowing Gemini to perceive and navigate digital environments.
-- `gemini-3.1-flash-tts-preview`
-
-  Gemini 3.1 Flash TTS: Powerful, low-latency speech generation. Enjoy natural outputs, steerable prompts, and new expressive audio tags for precise narration control.
-- `gemini-2.5-flash-preview-tts`
-
-  Our 2.5 Flash text-to-speech model optimized for powerful, low-latency controllable speech generation.
-- `gemini-2.5-pro-preview-tts`
-
-  Our 2.5 Pro text-to-speech audio model optimized for powerful, low-latency speech generation for more natural outputs and easier to steer prompts.
-- `lyria-3-pro-preview`
-
-  Our advanced, full-song generative model with deep compositional understanding, optimized for precise structural control and complex transitions across diverse musical styles.
 - `gemini-2.5-flash`
 
   Our first hybrid reasoning model which supports a 1M token context window and has thinking budgets.
-- `gemini-3.1-pro-preview`
-
-  Our latest SOTA reasoning model with unprecedented depth and nuance, and powerful multimodal understanding and coding capabilities.
-- `lyria-3-clip-preview`
-
-  Our low-latency, music generation model optimized for high-fidelity audio clips and precise rhythmic control.
-- `gemini-3.1-flash-lite`
-
-  Our most cost-efficient model, optimized for high-volume agentic tasks, translation, and simple data processing.
-- `gemini-3.1-flash-lite-preview`
-
-  Our most cost-efficient model, optimized for high-volume agentic tasks, translation, and simple data processing.
-- `gemini-3-flash-preview`
-
-  Our most intelligent model built for speed, combining frontier intelligence with superior search and grounding.
-- `gemini-3.5-flash`
-
-  Our most intelligent model for sustained frontier performance in agentic and coding tasks.
-- `gemini-3-pro-preview`
-
-  Our most intelligent model with SOTA reasoning and multimodal understanding, and powerful agentic and vibe coding capabilities.
-- `gemini-2.5-flash-native-audio-preview-12-2025`
-
-  Our native audio models optimized for higher quality audio outputs with better pacing, voice naturalness, verbosity, and mood.
 - `gemini-2.5-flash-image`
 
   Our native image generation model, optimized for speed, flexibility, and contextual understanding. Text input and output is priced the same as 2.5 Flash.
 - `gemini-2.5-flash-lite`
 
   Our smallest and most cost effective model, built for at scale usage.
-- `gemini-2.5-pro`
-
-  Our state-of-the-art multipurpose model, which excels at coding and complex reasoning tasks.
-- `gemini-3.1-flash-image-preview`
-
-  Pro-level visual intelligence with Flash-speed efficiency and reality-grounded generation capabilities.
-- `gemini-3-pro-image-preview`
-
-  State-of-the-art image generation and editing model.
 - `gemini-2.5-flash-lite-preview-09-2025`
 
   The latest model based on Gemini 2.5 Flash lite optimized for cost-efficiency, high throughput and high quality.
+- `gemini-2.5-flash-native-audio-preview-12-2025`
+
+  Our native audio models optimized for higher quality audio outputs with better pacing, voice naturalness, verbosity, and mood.
 - `gemini-2.5-flash-preview-09-2025`
 
   The latest model based on the 2.5 Flash model. 2.5 Flash Preview is best for large scale processing, low-latency, high volume tasks that require thinking, and agentic use cases.
+- `gemini-2.5-flash-preview-tts`
+
+  Our 2.5 Flash text-to-speech model optimized for powerful, low-latency controllable speech generation.
+- `gemini-2.5-pro`
+
+  Our state-of-the-art multipurpose model, which excels at coding and complex reasoning tasks.
+- `gemini-2.5-pro-preview-tts`
+
+  Our 2.5 Pro text-to-speech audio model optimized for powerful, low-latency speech generation for more natural outputs and easier to steer prompts.
+- `gemini-3-flash-preview`
+
+  Our most intelligent model built for speed, combining frontier intelligence with superior search and grounding.
+- `gemini-3-pro-image-preview`
+
+  State-of-the-art image generation and editing model.
+- `gemini-3-pro-preview`
+
+  Our most intelligent model with SOTA reasoning and multimodal understanding, and powerful agentic and vibe coding capabilities.
+- `gemini-3.1-pro-preview`
+
+  Our latest SOTA reasoning model with unprecedented depth and nuance, and powerful multimodal understanding and coding capabilities.
+- `gemini-3.1-flash-image-preview`
+
+  Pro-level visual intelligence with Flash-speed efficiency and reality-grounded generation capabilities.
+- `gemini-3.1-flash-lite`
+
+  Our most cost-efficient model, optimized for high-volume agentic tasks, translation, and simple data processing.
+- `gemini-3.1-flash-lite-preview`
+
+  Our most cost-efficient model, optimized for high-volume agentic tasks, translation, and simple data processing.
+- `gemini-3.1-flash-tts-preview`
+
+  Gemini 3.1 Flash TTS: Powerful, low-latency speech generation. Enjoy natural outputs, steerable prompts, and new expressive audio tags for precise narration control.
+- `lyria-3-clip-preview`
+
+  Our low-latency, music generation model optimized for high-fidelity audio clips and precise rhythmic control.
+- `lyria-3-pro-preview`
+
+  Our advanced, full-song generative model with deep compositional understanding, optimized for precise structural control and complex transitions across diverse musical styles.
+- `gemini-3.5-flash`
+
+  Our most intelligent model for sustained frontier performance in agentic and coding tasks.
 
 The model that will complete your prompt.\\n\\nSee \[models\](https://ai.google.dev/gemini-api/docs/models) for additional details.
 
@@ -1007,75 +925,75 @@ The model that will complete your prompt.\\n\\nSee \[models\](https://ai.google.
 - `gemini-2.5-computer-use-preview-10-2025`
 
   An agentic capability model designed for direct interface interaction, allowing Gemini to perceive and navigate digital environments.
-- `gemini-3.1-flash-tts-preview`
-
-  Gemini 3.1 Flash TTS: Powerful, low-latency speech generation. Enjoy natural outputs, steerable prompts, and new expressive audio tags for precise narration control.
-- `gemini-2.5-flash-preview-tts`
-
-  Our 2.5 Flash text-to-speech model optimized for powerful, low-latency controllable speech generation.
-- `gemini-2.5-pro-preview-tts`
-
-  Our 2.5 Pro text-to-speech audio model optimized for powerful, low-latency speech generation for more natural outputs and easier to steer prompts.
-- `lyria-3-pro-preview`
-
-  Our advanced, full-song generative model with deep compositional understanding, optimized for precise structural control and complex transitions across diverse musical styles.
 - `gemini-2.5-flash`
 
   Our first hybrid reasoning model which supports a 1M token context window and has thinking budgets.
-- `gemini-3.1-pro-preview`
-
-  Our latest SOTA reasoning model with unprecedented depth and nuance, and powerful multimodal understanding and coding capabilities.
-- `lyria-3-clip-preview`
-
-  Our low-latency, music generation model optimized for high-fidelity audio clips and precise rhythmic control.
-- `gemini-3.1-flash-lite`
-
-  Our most cost-efficient model, optimized for high-volume agentic tasks, translation, and simple data processing.
-- `gemini-3.1-flash-lite-preview`
-
-  Our most cost-efficient model, optimized for high-volume agentic tasks, translation, and simple data processing.
-- `gemini-3-flash-preview`
-
-  Our most intelligent model built for speed, combining frontier intelligence with superior search and grounding.
-- `gemini-3.5-flash`
-
-  Our most intelligent model for sustained frontier performance in agentic and coding tasks.
-- `gemini-3-pro-preview`
-
-  Our most intelligent model with SOTA reasoning and multimodal understanding, and powerful agentic and vibe coding capabilities.
-- `gemini-2.5-flash-native-audio-preview-12-2025`
-
-  Our native audio models optimized for higher quality audio outputs with better pacing, voice naturalness, verbosity, and mood.
 - `gemini-2.5-flash-image`
 
   Our native image generation model, optimized for speed, flexibility, and contextual understanding. Text input and output is priced the same as 2.5 Flash.
 - `gemini-2.5-flash-lite`
 
   Our smallest and most cost effective model, built for at scale usage.
-- `gemini-2.5-pro`
-
-  Our state-of-the-art multipurpose model, which excels at coding and complex reasoning tasks.
-- `gemini-3.1-flash-image-preview`
-
-  Pro-level visual intelligence with Flash-speed efficiency and reality-grounded generation capabilities.
-- `gemini-3-pro-image-preview`
-
-  State-of-the-art image generation and editing model.
 - `gemini-2.5-flash-lite-preview-09-2025`
 
   The latest model based on Gemini 2.5 Flash lite optimized for cost-efficiency, high throughput and high quality.
+- `gemini-2.5-flash-native-audio-preview-12-2025`
+
+  Our native audio models optimized for higher quality audio outputs with better pacing, voice naturalness, verbosity, and mood.
 - `gemini-2.5-flash-preview-09-2025`
 
   The latest model based on the 2.5 Flash model. 2.5 Flash Preview is best for large scale processing, low-latency, high volume tasks that require thinking, and agentic use cases.
+- `gemini-2.5-flash-preview-tts`
+
+  Our 2.5 Flash text-to-speech model optimized for powerful, low-latency controllable speech generation.
+- `gemini-2.5-pro`
+
+  Our state-of-the-art multipurpose model, which excels at coding and complex reasoning tasks.
+- `gemini-2.5-pro-preview-tts`
+
+  Our 2.5 Pro text-to-speech audio model optimized for powerful, low-latency speech generation for more natural outputs and easier to steer prompts.
+- `gemini-3-flash-preview`
+
+  Our most intelligent model built for speed, combining frontier intelligence with superior search and grounding.
+- `gemini-3-pro-image-preview`
+
+  State-of-the-art image generation and editing model.
+- `gemini-3-pro-preview`
+
+  Our most intelligent model with SOTA reasoning and multimodal understanding, and powerful agentic and vibe coding capabilities.
+- `gemini-3.1-pro-preview`
+
+  Our latest SOTA reasoning model with unprecedented depth and nuance, and powerful multimodal understanding and coding capabilities.
+- `gemini-3.1-flash-image-preview`
+
+  Pro-level visual intelligence with Flash-speed efficiency and reality-grounded generation capabilities.
+- `gemini-3.1-flash-lite`
+
+  Our most cost-efficient model, optimized for high-volume agentic tasks, translation, and simple data processing.
+- `gemini-3.1-flash-lite-preview`
+
+  Our most cost-efficient model, optimized for high-volume agentic tasks, translation, and simple data processing.
+- `gemini-3.1-flash-tts-preview`
+
+  Gemini 3.1 Flash TTS: Powerful, low-latency speech generation. Enjoy natural outputs, steerable prompts, and new expressive audio tags for precise narration control.
+- `lyria-3-clip-preview`
+
+  Our low-latency, music generation model optimized for high-fidelity audio clips and precise rhythmic control.
+- `lyria-3-pro-preview`
+
+  Our advanced, full-song generative model with deep compositional understanding, optimized for precise structural control and complex transitions across diverse musical styles.
+- `gemini-3.5-flash`
+
+  Our most intelligent model for sustained frontier performance in agentic and coding tasks.
 agent AgentOption (optional) The name of the \`Agent\` used for generating the interaction.
 
 Possible
 values:
 
-- `deep-research-preview-04-2026`
+- `deep-research-pro-preview-12-2025`
 
   Gemini Deep Research Agent
-- `deep-research-pro-preview-12-2025`
+- `deep-research-preview-04-2026`
 
   Gemini Deep Research Agent
 - `deep-research-max-preview-04-2026`
@@ -1089,10 +1007,10 @@ The agent to interact with.
 
 #### Possible values
 
-- `deep-research-preview-04-2026`
+- `deep-research-pro-preview-12-2025`
 
   Gemini Deep Research Agent
-- `deep-research-pro-preview-12-2025`
+- `deep-research-preview-04-2026`
 
   Gemini Deep Research Agent
 - `deep-research-max-preview-04-2026`
@@ -1447,6 +1365,10 @@ agent_config object (optional) Configuration parameters for the agent interactio
 #### Possible Types
 
 Polymorphic discriminator: `type`
+DynamicAgentConfig Configuration for dynamic agents.
+type object (required) No description provided.
+
+Always set to `"dynamic"`.
 DeepResearchAgentConfig Configuration for the Deep Research agent.
 type object (required) No description provided.
 
@@ -1489,92 +1411,6 @@ true, the Deep Research agent will provide a research plan in its response.
 The agent will then proceed only if the user confirms the plan in the next
 turn.
 enable_bigquery_tool boolean (optional) Enables bigquery tool for the Deep Research agent.
-DynamicAgentConfig Configuration for dynamic agents.
-type object (required) No description provided.
-
-Always set to `"dynamic"`.
-FindRequest Request parameters specific to FIND sessions, used for discovering
-vulnerabilities in a codebase.
-request object (required) No description provided.
-
-Always set to `"find_request"`.
-source_files FileContent (optional) A list of source files to provide as context for the scan.
-Content of a single file in the codebase.
-
-#### Fields
-
-path string (optional) The relative path of the file from the project root.
-content string (optional) The UTF-8 encoded text content of the file.
-finding_id string (optional) The identifier of a specific finding to verify. This is primarily used in
-VERIFY mode to focus the agent's execution-based validation on a single
-vulnerability.
-description string (optional) Additional context or custom instructions provided by the user to guide
-the vulnerability analysis.
-session_id string (optional) Parameter for grouping multiple interactions that belong to
-the same CodeMender session.
-session_config SessionConfig (optional) Optional session-specific configurations to override default agent
-behavior.
-The configuration of CodeMender sessions.
-
-#### Fields
-
-pipeline_mode enum (string) (optional) The pipeline mode of a CodeMender session. It can only be used for a
-find session.
-
-Possible
-values:
-
-- `scan`
-
-  Fast scan using only the initial classifier.
-- `verify`
-
-  Performs classification followed by detailed investigation.
-topology string (optional) The cognitive architecture or "thinking" topology used by the agent
-(e.g. "default", "deep").
-max_rounds integer (optional) The maximum number of interaction rounds the agent is allowed to perform
-before reaching a timeout.
-FixRequest Request parameters specific to FIX sessions, used for generating and
-validating security patches.
-request object (required) No description provided.
-
-Always set to `"fix_request"`.
-source_files FileContent (optional) A list of source files providing context for the remediation. These files
-are typically the ones containing the identified vulnerability.
-Content of a single file in the codebase.
-
-#### Fields
-
-path string (optional) The relative path of the file from the project root.
-content string (optional) The UTF-8 encoded text content of the file.
-finding_id string (optional) The identifier of the specific security finding to be remediated. This ID
-maps to a previously discovered vulnerability.
-description string (optional) Additional context or custom instructions provided by the user to guide
-the patch generation process.
-session_id string (optional) Parameter for grouping multiple interactions that belong to
-the same CodeMender session.
-session_config SessionConfig (optional) Optional session-specific configurations to override default agent
-behavior.
-The configuration of CodeMender sessions.
-
-#### Fields
-
-pipeline_mode enum (string) (optional) The pipeline mode of a CodeMender session. It can only be used for a
-find session.
-
-Possible
-values:
-
-- `scan`
-
-  Fast scan using only the initial classifier.
-- `verify`
-
-  Performs classification followed by detailed investigation.
-topology string (optional) The cognitive architecture or "thinking" topology used by the agent
-(e.g. "default", "deep").
-max_rounds integer (optional) The maximum number of interaction rounds the agent is allowed to perform
-before reaching a timeout.
 
 ### Examples
 
@@ -1625,72 +1461,62 @@ The content of the response.
 ### Possible Types
 
 Polymorphic discriminator: `type`
-AudioContent An audio content block.
+TextContent A text content block.
 type object (required) No description provided.
 
-Always set to `"audio"`.
-data string (optional) The audio content.
-uri string (optional) The URI of the audio.
-mime_type enum (string) (optional) The mime type of the audio.
+Always set to `"text"`.
+text string (required) Required. The text content.
+annotations Annotation (optional) Citation information for model-generated content.
+Citation information for model-generated content.
 
-Possible
-values:
+#### Possible Types
 
-- `audio/wav`
-
-  WAV audio format
-- `audio/mp3`
-
-  MP3 audio format
-- `audio/aiff`
-
-  AIFF audio format
-- `audio/aac`
-
-  AAC audio format
-- `audio/ogg`
-
-  OGG audio format
-- `audio/flac`
-
-  FLAC audio format
-- `audio/mpeg`
-
-  MPEG audio format
-- `audio/m4a`
-
-  M4A audio format
-- `audio/l16`
-
-  L16 audio format
-- `audio/opus`
-
-  OPUS audio format
-- `audio/alaw`
-
-  ALAW audio format
-- `audio/mulaw`
-
-  MULAW audio format
-channels integer (optional) The number of audio channels.
-sample_rate integer (optional) The sample rate of the audio.
-DocumentContent A document content block.
+Polymorphic discriminator: `type`
+UrlCitation A URL citation annotation.
 type object (required) No description provided.
 
-Always set to `"document"`.
-data string (optional) The document content.
-uri string (optional) The URI of the document.
-mime_type enum (string) (optional) The mime type of the document.
+Always set to `"url_citation"`.
+url string (optional) The URL.
+title string (optional) The title of the URL.
+start_index integer (optional) Start of segment of the response that is attributed to this source.
 
-Possible
-values:
+Index indicates the start of the segment, measured in bytes.
+end_index integer (optional) End of the attributed segment, exclusive.
+FileCitation A file citation annotation.
+type object (required) No description provided.
 
-- `application/pdf`
+Always set to `"file_citation"`.
+document_uri string (optional) The URI of the file.
+file_name string (optional) The name of the file.
+source string (optional) Source attributed for a portion of the text.
+custom_metadata object (optional) User provided metadata about the retrieved context.
+page_number integer (optional) Page number of the cited document, if applicable.
+media_id string (optional) Media ID in-case of image citations, if applicable.
+start_index integer (optional) Start of segment of the response that is attributed to this source.
 
-  PDF document format
-- `text/csv`
+Index indicates the start of the segment, measured in bytes.
+end_index integer (optional) End of the attributed segment, exclusive.
+PlaceCitation A place citation annotation.
+type object (required) No description provided.
 
-  CSV document format
+Always set to `"place_citation"`.
+place_id string (optional) The ID of the place, in \`places/{place_id}\` format.
+name string (optional) Title of the place.
+url string (optional) URI reference of the place.
+review_snippets ReviewSnippet (optional) Snippets of reviews that are used to generate answers about the
+features of a given place in Google Maps.
+Encapsulates a snippet of a user review that answers a question about
+the features of a specific place in Google Maps.
+
+#### Fields
+
+title string (optional) Title of the review.
+url string (optional) A link that corresponds to the user review on Google Maps.
+review_id string (optional) The ID of the review snippet.
+start_index integer (optional) Start of segment of the response that is attributed to this source.
+
+Index indicates the start of the segment, measured in bytes.
+end_index integer (optional) End of the attributed segment, exclusive.
 ImageContent An image content block.
 type object (required) No description provided.
 
@@ -1760,62 +1586,72 @@ values:
 - `ultra_high`
 
   Ultra high resolution.
-TextContent A text content block.
+AudioContent An audio content block.
 type object (required) No description provided.
 
-Always set to `"text"`.
-text string (required) Required. The text content.
-annotations Annotation (optional) Citation information for model-generated content.
-Citation information for model-generated content.
+Always set to `"audio"`.
+data string (optional) The audio content.
+uri string (optional) The URI of the audio.
+mime_type enum (string) (optional) The mime type of the audio.
 
-#### Possible Types
+Possible
+values:
 
-Polymorphic discriminator: `type`
-FileCitation A file citation annotation.
+- `audio/wav`
+
+  WAV audio format
+- `audio/mp3`
+
+  MP3 audio format
+- `audio/aiff`
+
+  AIFF audio format
+- `audio/aac`
+
+  AAC audio format
+- `audio/ogg`
+
+  OGG audio format
+- `audio/flac`
+
+  FLAC audio format
+- `audio/mpeg`
+
+  MPEG audio format
+- `audio/m4a`
+
+  M4A audio format
+- `audio/l16`
+
+  L16 audio format
+- `audio/opus`
+
+  OPUS audio format
+- `audio/alaw`
+
+  ALAW audio format
+- `audio/mulaw`
+
+  MULAW audio format
+channels integer (optional) The number of audio channels.
+sample_rate integer (optional) The sample rate of the audio.
+DocumentContent A document content block.
 type object (required) No description provided.
 
-Always set to `"file_citation"`.
-document_uri string (optional) The URI of the file.
-file_name string (optional) The name of the file.
-source string (optional) Source attributed for a portion of the text.
-custom_metadata object (optional) User provided metadata about the retrieved context.
-page_number integer (optional) Page number of the cited document, if applicable.
-media_id string (optional) Media ID in-case of image citations, if applicable.
-start_index integer (optional) Start of segment of the response that is attributed to this source.
+Always set to `"document"`.
+data string (optional) The document content.
+uri string (optional) The URI of the document.
+mime_type enum (string) (optional) The mime type of the document.
 
-Index indicates the start of the segment, measured in bytes.
-end_index integer (optional) End of the attributed segment, exclusive.
-PlaceCitation A place citation annotation.
-type object (required) No description provided.
+Possible
+values:
 
-Always set to `"place_citation"`.
-place_id string (optional) The ID of the place, in \`places/{place_id}\` format.
-name string (optional) Title of the place.
-url string (optional) URI reference of the place.
-review_snippets ReviewSnippet (optional) Snippets of reviews that are used to generate answers about the
-features of a given place in Google Maps.
-Encapsulates a snippet of a user review that answers a question about
-the features of a specific place in Google Maps.
+- `application/pdf`
 
-#### Fields
+  PDF document format
+- `text/csv`
 
-title string (optional) Title of the review.
-url string (optional) A link that corresponds to the user review on Google Maps.
-review_id string (optional) The ID of the review snippet.
-start_index integer (optional) Start of segment of the response that is attributed to this source.
-
-Index indicates the start of the segment, measured in bytes.
-end_index integer (optional) End of the attributed segment, exclusive.
-UrlCitation A URL citation annotation.
-type object (required) No description provided.
-
-Always set to `"url_citation"`.
-url string (optional) The URL.
-title string (optional) The title of the URL.
-start_index integer (optional) Start of segment of the response that is attributed to this source.
-
-Index indicates the start of the segment, measured in bytes.
-end_index integer (optional) End of the attributed segment, exclusive.
+  CSV document format
 VideoContent A video content block.
 type object (required) No description provided.
 
@@ -1891,6 +1727,25 @@ values:
 
 ### Examples
 
+### Text
+
+```json
+{
+  "type": "text",
+  "text": "Hello, how are you?"
+}
+```
+
+### Image
+
+```json
+{
+  "type": "image",
+  "data": "BASE64_ENCODED_IMAGE",
+  "mime_type": "image/png"
+}
+```
+
 ### Audio
 
 ```json
@@ -1911,25 +1766,6 @@ values:
 }
 ```
 
-### Image
-
-```json
-{
-  "type": "image",
-  "data": "BASE64_ENCODED_IMAGE",
-  "mime_type": "image/png"
-}
-```
-
-### Text
-
-```json
-{
-  "type": "text",
-  "text": "Hello, how are you?"
-}
-```
-
 ### Video
 
 ```json
@@ -1946,10 +1782,21 @@ A tool that can be used by the model.
 ### Possible Types
 
 Polymorphic discriminator: `type`
+Function A tool that can be used by the model.
+type object (required) No description provided.
+
+Always set to `"function"`.
+name string (optional) The name of the function.
+description string (optional) A description of the function.
+parameters object (optional) The JSON Schema for the function's parameters.
 CodeExecution A tool that can be used by the model to execute code.
 type object (required) No description provided.
 
 Always set to `"code_execution"`.
+UrlContext A tool that can be used by the model to fetch URL context.
+type object (required) No description provided.
+
+Always set to `"url_context"`.
 ComputerUse A tool that can be used by the model to interact with the computer.
 type object (required) No description provided.
 
@@ -1962,47 +1809,15 @@ values:
 - `browser`
 
   Operates in a web browser.
+- `mobile`
+
+  Operates in a mobile environment.
+- `desktop`
+
+  Operates in a desktop environment.
 excluded_predefined_functions array (string) (optional) The list of predefined functions that are excluded from the model call.
-FileSearch A tool that can be used by the model to search files.
-type object (required) No description provided.
-
-Always set to `"file_search"`.
-file_search_store_names array (string) (optional) The file search store names to search.
-top_k integer (optional) The number of semantic retrieval chunks to retrieve.
-metadata_filter string (optional) Metadata filter to apply to the semantic retrieval documents and chunks.
-Function A tool that can be used by the model.
-type object (required) No description provided.
-
-Always set to `"function"`.
-name string (optional) The name of the function.
-description string (optional) A description of the function.
-parameters object (optional) The JSON Schema for the function's parameters.
-GoogleMaps A tool that can be used by the model to call Google Maps.
-type object (required) No description provided.
-
-Always set to `"google_maps"`.
-enable_widget boolean (optional) Whether to return a widget context token in the tool call result of the
-response.
-latitude number (optional) The latitude of the user's location.
-longitude number (optional) The longitude of the user's location.
-GoogleSearch A tool that can be used by the model to search Google.
-type object (required) No description provided.
-
-Always set to `"google_search"`.
-search_types array (enum (string)) (optional) The types of search grounding to enable.
-
-Possible
-values:
-
-- `web_search`
-
-  Setting this field enables web search. Only text results are returned.
-- `image_search`
-
-  Setting this field enables image search. Image bytes are returned.
-- `enterprise_web_search`
-
-  Setting this field enables enterprise web search.
+enable_prompt_injection_detection boolean (optional) Whether enable the prompt injection detection check on computer-use
+request.
 McpServer A MCPServer is a server that can be called by the model to perform actions.
 type object (required) No description provided.
 
@@ -2034,6 +1849,39 @@ values:
 
   Validated tool choice.
 tools array (string) (optional) The names of the allowed tools.
+GoogleSearch A tool that can be used by the model to search Google.
+type object (required) No description provided.
+
+Always set to `"google_search"`.
+search_types array (enum (string)) (optional) The types of search grounding to enable.
+
+Possible
+values:
+
+- `web_search`
+
+  Setting this field enables web search. Only text results are returned.
+- `image_search`
+
+  Setting this field enables image search. Image bytes are returned.
+- `enterprise_web_search`
+
+  Setting this field enables enterprise web search.
+FileSearch A tool that can be used by the model to search files.
+type object (required) No description provided.
+
+Always set to `"file_search"`.
+file_search_store_names array (string) (optional) The file search store names to search.
+top_k integer (optional) The number of semantic retrieval chunks to retrieve.
+metadata_filter string (optional) Metadata filter to apply to the semantic retrieval documents and chunks.
+GoogleMaps A tool that can be used by the model to call Google Maps.
+type object (required) No description provided.
+
+Always set to `"google_maps"`.
+enable_widget boolean (optional) Whether to return a widget context token in the tool call result of the
+response.
+latitude number (optional) The latitude of the user's location.
+longitude number (optional) The longitude of the user's location.
 Retrieval A tool that can be used by the model to retrieve files.
 type object (required) No description provided.
 
@@ -2098,48 +1946,44 @@ threshold.
 metadata_filter string (optional) Optional. String for metadata filtering.
 ranking Ranking (optional) Optional. Config for ranking and reranking.
 Config for ranking and reranking.
-UrlContext A tool that can be used by the model to fetch URL context.
-type object (required) No description provided.
-
-Always set to `"url_context"`.
 
 ### Examples
-
-### CodeExecution
-
-<iframe src="https:///frame/api/interactions-api_a2bd1e03c31299e539505550d6ed1850439811d5727ce06231de0a42c345257a.frame" class="framebox inherit-locale " allow="clipboard-write https://" allowfullscreen is-upgraded></iframe>
-
-### ComputerUse
-
-<iframe src="https:///frame/api/interactions-api_6a3fb91cf8770fd2b668ec6269e8968fc17e2df7a50d4005f68ded26fb829ab9.frame" class="framebox inherit-locale " allow="clipboard-write https://" allowfullscreen is-upgraded></iframe>
-
-### FileSearch
-
-<iframe src="https:///frame/api/interactions-api_6e3c5c705244cb360c2c008e9f1c24f5206f39d9ee74701c793492379981d61f.frame" class="framebox inherit-locale " allow="clipboard-write https://" allowfullscreen is-upgraded></iframe>
 
 ### Function
 
 <iframe src="https:///frame/api/interactions-api_0a6381f4cffe2dc59a56a64244d52be8e858f7dd6f17f2a8c5f9d7a1ea561371.frame" class="framebox inherit-locale " allow="clipboard-write https://" allowfullscreen is-upgraded></iframe>
 
-### GoogleMaps
+### CodeExecution
 
-<iframe src="https:///frame/api/interactions-api_639b871738010ddc9946e54bb46ef8890623289feeefeaa2bf4296c317a74ca2.frame" class="framebox inherit-locale " allow="clipboard-write https://" allowfullscreen is-upgraded></iframe>
+<iframe src="https:///frame/api/interactions-api_a2bd1e03c31299e539505550d6ed1850439811d5727ce06231de0a42c345257a.frame" class="framebox inherit-locale " allow="clipboard-write https://" allowfullscreen is-upgraded></iframe>
 
-### GoogleSearch
+### UrlContext
 
-<iframe src="https:///frame/api/interactions-api_244c3923aa8f2f5224b1a239850f5e404d7abfdca7160c56400c8f296c05bb82.frame" class="framebox inherit-locale " allow="clipboard-write https://" allowfullscreen is-upgraded></iframe>
+<iframe src="https:///frame/api/interactions-api_0c0201b2282186dc9b05eaf38f3f2d088e543cdb1a7f7555f263e57dd57e7e10.frame" class="framebox inherit-locale " allow="clipboard-write https://" allowfullscreen is-upgraded></iframe>
+
+### ComputerUse
+
+<iframe src="https:///frame/api/interactions-api_6a3fb91cf8770fd2b668ec6269e8968fc17e2df7a50d4005f68ded26fb829ab9.frame" class="framebox inherit-locale " allow="clipboard-write https://" allowfullscreen is-upgraded></iframe>
 
 ### McpServer
 
 <iframe src="https:///frame/api/interactions-api_30abb3c4809edc7bf616b3b270e797cd5b5096dca0c6eb3a5e0b1f0aa22cd2e4.frame" class="framebox inherit-locale " allow="clipboard-write https://" allowfullscreen is-upgraded></iframe>
 
+### GoogleSearch
+
+<iframe src="https:///frame/api/interactions-api_244c3923aa8f2f5224b1a239850f5e404d7abfdca7160c56400c8f296c05bb82.frame" class="framebox inherit-locale " allow="clipboard-write https://" allowfullscreen is-upgraded></iframe>
+
+### FileSearch
+
+<iframe src="https:///frame/api/interactions-api_6e3c5c705244cb360c2c008e9f1c24f5206f39d9ee74701c793492379981d61f.frame" class="framebox inherit-locale " allow="clipboard-write https://" allowfullscreen is-upgraded></iframe>
+
+### GoogleMaps
+
+<iframe src="https:///frame/api/interactions-api_639b871738010ddc9946e54bb46ef8890623289feeefeaa2bf4296c317a74ca2.frame" class="framebox inherit-locale " allow="clipboard-write https://" allowfullscreen is-upgraded></iframe>
+
 ### Retrieval
 
 No examples available for this type.
-
-### UrlContext
-
-<iframe src="https:///frame/api/interactions-api_0c0201b2282186dc9b05eaf38f3f2d088e543cdb1a7f7555f263e57dd57e7e10.frame" class="framebox inherit-locale " allow="clipboard-write https://" allowfullscreen is-upgraded></iframe>
 
 ### InteractionSseEvent
 
@@ -2148,18 +1992,12 @@ No examples available for this type.
 ### Possible Types
 
 Polymorphic discriminator: `event_type`
-ErrorEvent <br />
+InteractionCreatedEvent <br />
 
 event_type object (required) No description provided.
 
-Always set to `"error"`.
-error Error (optional) No description provided.
-Error message from an interaction.
-
-#### Fields
-
-code string (optional) A URI that identifies the error type.
-message string (optional) A human-readable error message.
+Always set to `"interaction.created"`.
+interaction [Interaction](https://ai.google.dev/api/interactions-api#Resource:Interaction) (required) No description provided.
 event_id string (optional) The event_id token to be used to resume the interaction stream, from
 this event.
 metadata StreamMetadata (optional) Optional metadata accompanying ANY streamed event.
@@ -2391,236 +2229,6 @@ event_type object (required) No description provided.
 Always set to `"interaction.completed"`.
 interaction [Interaction](https://ai.google.dev/api/interactions-api#Resource:Interaction) (required) Required. The completed interaction with empty outputs to reduce the payload size.
 Use the preceding ContentDelta events for the actual output.
-event_id string (optional) The event_id token to be used to resume the interaction stream, from
-this event.
-metadata StreamMetadata (optional) Optional metadata accompanying ANY streamed event.
-<br />
-
-#### Fields
-
-total_usage Usage (optional) No description provided.
-Statistics on the interaction request's token usage.
-
-#### Fields
-
-total_input_tokens integer (optional) Number of tokens in the prompt (context).
-input_tokens_by_modality ModalityTokens (optional) A breakdown of input token usage by modality.
-The token count for a single response modality.
-
-#### Fields
-
-modality ResponseModality (optional) The modality associated with the token count.
-
-Possible
-values:
-
-- `text`
-
-  Indicates the model should return text.
-- `image`
-
-  Indicates the model should return images.
-- `audio`
-
-  Indicates the model should return audio.
-- `video`
-
-  Indicates the model should return video.
-- `document`
-
-  Indicates the model should return documents.
-
-<br />
-
-#### Possible values
-
-- `text`
-
-  Indicates the model should return text.
-- `image`
-
-  Indicates the model should return images.
-- `audio`
-
-  Indicates the model should return audio.
-- `video`
-
-  Indicates the model should return video.
-- `document`
-
-  Indicates the model should return documents.
-tokens integer (optional) Number of tokens for the modality.
-total_cached_tokens integer (optional) Number of tokens in the cached part of the prompt (the cached content).
-cached_tokens_by_modality ModalityTokens (optional) A breakdown of cached token usage by modality.
-The token count for a single response modality.
-
-#### Fields
-
-modality ResponseModality (optional) The modality associated with the token count.
-
-Possible
-values:
-
-- `text`
-
-  Indicates the model should return text.
-- `image`
-
-  Indicates the model should return images.
-- `audio`
-
-  Indicates the model should return audio.
-- `video`
-
-  Indicates the model should return video.
-- `document`
-
-  Indicates the model should return documents.
-
-<br />
-
-#### Possible values
-
-- `text`
-
-  Indicates the model should return text.
-- `image`
-
-  Indicates the model should return images.
-- `audio`
-
-  Indicates the model should return audio.
-- `video`
-
-  Indicates the model should return video.
-- `document`
-
-  Indicates the model should return documents.
-tokens integer (optional) Number of tokens for the modality.
-total_output_tokens integer (optional) Total number of tokens across all the generated responses.
-output_tokens_by_modality ModalityTokens (optional) A breakdown of output token usage by modality.
-The token count for a single response modality.
-
-#### Fields
-
-modality ResponseModality (optional) The modality associated with the token count.
-
-Possible
-values:
-
-- `text`
-
-  Indicates the model should return text.
-- `image`
-
-  Indicates the model should return images.
-- `audio`
-
-  Indicates the model should return audio.
-- `video`
-
-  Indicates the model should return video.
-- `document`
-
-  Indicates the model should return documents.
-
-<br />
-
-#### Possible values
-
-- `text`
-
-  Indicates the model should return text.
-- `image`
-
-  Indicates the model should return images.
-- `audio`
-
-  Indicates the model should return audio.
-- `video`
-
-  Indicates the model should return video.
-- `document`
-
-  Indicates the model should return documents.
-tokens integer (optional) Number of tokens for the modality.
-total_tool_use_tokens integer (optional) Number of tokens present in tool-use prompt(s).
-tool_use_tokens_by_modality ModalityTokens (optional) A breakdown of tool-use token usage by modality.
-The token count for a single response modality.
-
-#### Fields
-
-modality ResponseModality (optional) The modality associated with the token count.
-
-Possible
-values:
-
-- `text`
-
-  Indicates the model should return text.
-- `image`
-
-  Indicates the model should return images.
-- `audio`
-
-  Indicates the model should return audio.
-- `video`
-
-  Indicates the model should return video.
-- `document`
-
-  Indicates the model should return documents.
-
-<br />
-
-#### Possible values
-
-- `text`
-
-  Indicates the model should return text.
-- `image`
-
-  Indicates the model should return images.
-- `audio`
-
-  Indicates the model should return audio.
-- `video`
-
-  Indicates the model should return video.
-- `document`
-
-  Indicates the model should return documents.
-tokens integer (optional) Number of tokens for the modality.
-total_thought_tokens integer (optional) Number of tokens of thoughts for thinking models.
-total_tokens integer (optional) Total token count for the interaction request (prompt + responses + other
-internal tokens).
-grounding_tool_count GroundingToolCount (optional) Grounding tool count.
-The number of grounding tool counts.
-
-#### Fields
-
-type enum (string) (optional) The grounding tool type associated with the count.
-
-Possible
-values:
-
-- `google_search`
-
-  Grounding with Google Web Search and Image Search, \& Web Grounding
-  for Enterprise.
-- `google_maps`
-
-  Grounding with Google Maps.
-- `retrieval`
-
-  Grounding with customer's data, for example, VertexAISearch.
-count integer (optional) The number of grounding tool counts.
-InteractionCreatedEvent <br />
-
-event_type object (required) No description provided.
-
-Always set to `"interaction.created"`.
-interaction [Interaction](https://ai.google.dev/api/interactions-api#Resource:Interaction) (required) No description provided.
 event_id string (optional) The event_id token to be used to resume the interaction stream, from
 this event.
 metadata StreamMetadata (optional) Optional metadata accompanying ANY streamed event.
@@ -3102,485 +2710,18 @@ values:
 
   Grounding with customer's data, for example, VertexAISearch.
 count integer (optional) The number of grounding tool counts.
-StepDelta <br />
+ErrorEvent <br />
 
 event_type object (required) No description provided.
 
-Always set to `"step.delta"`.
-index integer (required) No description provided.
-delta StepDeltaData (required) No description provided.
-<br />
-
-#### Possible Types
-
-Polymorphic discriminator: `type`
-ArgumentsDelta <br />
-
-type object (required) No description provided.
-
-Always set to `"arguments_delta"`.
-arguments string (optional) No description provided.
-AudioDelta <br />
-
-type object (required) No description provided.
-
-Always set to `"audio"`.
-data string (optional) No description provided.
-uri string (optional) No description provided.
-mime_type enum (string) (optional) No description provided.
-
-Possible
-values:
-
-- `audio/wav`
-
-  WAV audio format
-- `audio/mp3`
-
-  MP3 audio format
-- `audio/aiff`
-
-  AIFF audio format
-- `audio/aac`
-
-  AAC audio format
-- `audio/ogg`
-
-  OGG audio format
-- `audio/flac`
-
-  FLAC audio format
-- `audio/mpeg`
-
-  MPEG audio format
-- `audio/m4a`
-
-  M4A audio format
-- `audio/l16`
-
-  L16 audio format
-- `audio/opus`
-
-  OPUS audio format
-- `audio/alaw`
-
-  ALAW audio format
-- `audio/mulaw`
-
-  MULAW audio format
-sample_rate integer (optional) The sample rate of the audio.
-channels integer (optional) The number of audio channels.
-CodeExecutionCallDelta <br />
-
-type object (required) No description provided.
-
-Always set to `"code_execution_call"`.
-arguments CodeExecutionCallArguments (required) No description provided.
-The arguments to pass to the code execution.
+Always set to `"error"`.
+error Error (optional) No description provided.
+Error message from an interaction.
 
 #### Fields
 
-language enum (string) (optional) Programming language of the \`code\`.
-
-Possible
-values:
-
-- `python`
-
-  Python \>= 3.10, with numpy and simpy available.
-code string (optional) The code to be executed.
-signature string (optional) A signature hash for backend validation.
-CodeExecutionResultDelta <br />
-
-type object (required) No description provided.
-
-Always set to `"code_execution_result"`.
-result string (required) No description provided.
-is_error boolean (optional) No description provided.
-signature string (optional) A signature hash for backend validation.
-DocumentDelta <br />
-
-type object (required) No description provided.
-
-Always set to `"document"`.
-data string (optional) No description provided.
-uri string (optional) No description provided.
-mime_type enum (string) (optional) No description provided.
-
-Possible
-values:
-
-- `application/pdf`
-
-  PDF document format
-- `text/csv`
-
-  CSV document format
-FileSearchCallDelta <br />
-
-type object (required) No description provided.
-
-Always set to `"file_search_call"`.
-signature string (optional) A signature hash for backend validation.
-FileSearchResultDelta <br />
-
-type object (required) No description provided.
-
-Always set to `"file_search_result"`.
-result FileSearchResult (required) No description provided.
-The result of the File Search.
-signature string (optional) A signature hash for backend validation.
-FunctionResultDelta <br />
-
-type object (required) No description provided.
-
-Always set to `"function_result"`.
-name string (optional) No description provided.
-is_error boolean (optional) No description provided.
-call_id string (required) Required. ID to match the ID from the function call block.
-result array ([Content](https://ai.google.dev/api/interactions-api#Resource:Content)) or array ([ImageContent](https://ai.google.dev/api/interactions-api#Resource:ImageContent) or [TextContent](https://ai.google.dev/api/interactions-api#Resource:TextContent)) or string (required) No description provided.
-GoogleMapsCallDelta <br />
-
-type object (required) No description provided.
-
-Always set to `"google_maps_call"`.
-arguments GoogleMapsCallArguments (optional) The arguments to pass to the Google Maps tool.
-The arguments to pass to the Google Maps tool.
-
-#### Fields
-
-queries array (string) (optional) The queries to be executed.
-signature string (optional) A signature hash for backend validation.
-GoogleMapsResultDelta <br />
-
-type object (required) No description provided.
-
-Always set to `"google_maps_result"`.
-result GoogleMapsResult (optional) The results of the Google Maps.
-The result of the Google Maps.
-
-#### Fields
-
-places Places (optional) The places that were found.
-<br />
-
-#### Fields
-
-place_id string (optional) The ID of the place, in \`places/{place_id}\` format.
-name string (optional) Title of the place.
-url string (optional) URI reference of the place.
-review_snippets ReviewSnippet (optional) Snippets of reviews that are used to generate answers about the
-features of a given place in Google Maps.
-Encapsulates a snippet of a user review that answers a question about
-the features of a specific place in Google Maps.
-
-#### Fields
-
-title string (optional) Title of the review.
-url string (optional) A link that corresponds to the user review on Google Maps.
-review_id string (optional) The ID of the review snippet.
-widget_context_token string (optional) Resource name of the Google Maps widget context token.
-signature string (optional) A signature hash for backend validation.
-GoogleSearchCallDelta <br />
-
-type object (required) No description provided.
-
-Always set to `"google_search_call"`.
-arguments GoogleSearchCallArguments (required) No description provided.
-The arguments to pass to Google Search.
-
-#### Fields
-
-queries array (string) (optional) Web search queries for the following-up web search.
-signature string (optional) A signature hash for backend validation.
-GoogleSearchResultDelta <br />
-
-type object (required) No description provided.
-
-Always set to `"google_search_result"`.
-result GoogleSearchResult (required) No description provided.
-The result of the Google Search.
-
-#### Fields
-
-search_suggestions string (optional) Web content snippet that can be embedded in a web page or an app webview.
-is_error boolean (optional) No description provided.
-signature string (optional) A signature hash for backend validation.
-ImageDelta <br />
-
-type object (required) No description provided.
-
-Always set to `"image"`.
-data string (optional) No description provided.
-uri string (optional) No description provided.
-mime_type enum (string) (optional) No description provided.
-
-Possible
-values:
-
-- `image/png`
-
-  PNG image format
-- `image/jpeg`
-
-  JPEG image format
-- `image/webp`
-
-  WebP image format
-- `image/heic`
-
-  HEIC image format
-- `image/heif`
-
-  HEIF image format
-- `image/gif`
-
-  GIF image format
-- `image/bmp`
-
-  BMP image format
-- `image/tiff`
-
-  TIFF image format
-resolution MediaResolution (optional) The resolution of the media.
-
-Possible
-values:
-
-- `low`
-
-  Low resolution.
-- `medium`
-
-  Medium resolution.
-- `high`
-
-  High resolution.
-- `ultra_high`
-
-  Ultra high resolution.
-
-<br />
-
-#### Possible values
-
-- `low`
-
-  Low resolution.
-- `medium`
-
-  Medium resolution.
-- `high`
-
-  High resolution.
-- `ultra_high`
-
-  Ultra high resolution.
-McpServerToolCallDelta <br />
-
-type object (required) No description provided.
-
-Always set to `"mcp_server_tool_call"`.
-name string (required) No description provided.
-server_name string (required) No description provided.
-arguments object (required) No description provided.
-McpServerToolResultDelta <br />
-
-type object (required) No description provided.
-
-Always set to `"mcp_server_tool_result"`.
-name string (optional) No description provided.
-server_name string (optional) No description provided.
-result array ([Content](https://ai.google.dev/api/interactions-api#Resource:Content)) or array ([ImageContent](https://ai.google.dev/api/interactions-api#Resource:ImageContent) or [TextContent](https://ai.google.dev/api/interactions-api#Resource:TextContent)) or string (required) No description provided.
-TextAnnotationDelta <br />
-
-type object (required) No description provided.
-
-Always set to `"text_annotation_delta"`.
-annotations Annotation (optional) Citation information for model-generated content.
-Citation information for model-generated content.
-
-#### Possible Types
-
-Polymorphic discriminator: `type`
-FileCitation A file citation annotation.
-type object (required) No description provided.
-
-Always set to `"file_citation"`.
-document_uri string (optional) The URI of the file.
-file_name string (optional) The name of the file.
-source string (optional) Source attributed for a portion of the text.
-custom_metadata object (optional) User provided metadata about the retrieved context.
-page_number integer (optional) Page number of the cited document, if applicable.
-media_id string (optional) Media ID in-case of image citations, if applicable.
-start_index integer (optional) Start of segment of the response that is attributed to this source.
-
-Index indicates the start of the segment, measured in bytes.
-end_index integer (optional) End of the attributed segment, exclusive.
-PlaceCitation A place citation annotation.
-type object (required) No description provided.
-
-Always set to `"place_citation"`.
-place_id string (optional) The ID of the place, in \`places/{place_id}\` format.
-name string (optional) Title of the place.
-url string (optional) URI reference of the place.
-review_snippets ReviewSnippet (optional) Snippets of reviews that are used to generate answers about the
-features of a given place in Google Maps.
-Encapsulates a snippet of a user review that answers a question about
-the features of a specific place in Google Maps.
-
-#### Fields
-
-title string (optional) Title of the review.
-url string (optional) A link that corresponds to the user review on Google Maps.
-review_id string (optional) The ID of the review snippet.
-start_index integer (optional) Start of segment of the response that is attributed to this source.
-
-Index indicates the start of the segment, measured in bytes.
-end_index integer (optional) End of the attributed segment, exclusive.
-UrlCitation A URL citation annotation.
-type object (required) No description provided.
-
-Always set to `"url_citation"`.
-url string (optional) The URL.
-title string (optional) The title of the URL.
-start_index integer (optional) Start of segment of the response that is attributed to this source.
-
-Index indicates the start of the segment, measured in bytes.
-end_index integer (optional) End of the attributed segment, exclusive.
-TextDelta <br />
-
-type object (required) No description provided.
-
-Always set to `"text"`.
-text string (required) No description provided.
-ThoughtSignatureDelta <br />
-
-type object (required) No description provided.
-
-Always set to `"thought_signature"`.
-signature string (optional) Signature to match the backend source to be part of the generation.
-ThoughtSummaryDelta <br />
-
-type object (required) No description provided.
-
-Always set to `"thought_summary"`.
-content [Content](https://ai.google.dev/api/interactions-api#Resource:Content) (optional) A new summary item to be added to the thought.
-UrlContextCallDelta <br />
-
-type object (required) No description provided.
-
-Always set to `"url_context_call"`.
-arguments UrlContextCallArguments (required) No description provided.
-The arguments to pass to the URL context.
-
-#### Fields
-
-urls array (string) (optional) The URLs to fetch.
-signature string (optional) A signature hash for backend validation.
-UrlContextResultDelta <br />
-
-type object (required) No description provided.
-
-Always set to `"url_context_result"`.
-result UrlContextResult (required) No description provided.
-The result of the URL context.
-
-#### Fields
-
-url string (optional) The URL that was fetched.
-status enum (string) (optional) The status of the URL retrieval.
-
-Possible
-values:
-
-- `success`
-
-  Url retrieval is successful.
-- `error`
-
-  Url retrieval is failed due to error.
-- `paywall`
-
-  Url retrieval is failed because the content is behind paywall.
-- `unsafe`
-
-  Url retrieval is failed because the content is unsafe.
-is_error boolean (optional) No description provided.
-signature string (optional) A signature hash for backend validation.
-VideoDelta <br />
-
-type object (required) No description provided.
-
-Always set to `"video"`.
-data string (optional) No description provided.
-uri string (optional) No description provided.
-mime_type enum (string) (optional) No description provided.
-
-Possible
-values:
-
-- `video/mp4`
-
-  MP4 video format
-- `video/mpeg`
-
-  MPEG video format
-- `video/mpg`
-
-  MPG video format
-- `video/mov`
-
-  MOV video format
-- `video/avi`
-
-  AVI video format
-- `video/x-flv`
-
-  FLV video format
-- `video/webm`
-
-  WebM video format
-- `video/wmv`
-
-  WMV video format
-- `video/3gpp`
-
-  3GPP video format
-resolution MediaResolution (optional) The resolution of the media.
-
-Possible
-values:
-
-- `low`
-
-  Low resolution.
-- `medium`
-
-  Medium resolution.
-- `high`
-
-  High resolution.
-- `ultra_high`
-
-  Ultra high resolution.
-
-<br />
-
-#### Possible values
-
-- `low`
-
-  Low resolution.
-- `medium`
-
-  Medium resolution.
-- `high`
-
-  High resolution.
-- `ultra_high`
-
-  Ultra high resolution.
+code string (optional) A URI that identifies the error type.
+message string (optional) A human-readable error message.
 event_id string (optional) The event_id token to be used to resume the interaction stream, from
 this event.
 metadata StreamMetadata (optional) Optional metadata accompanying ANY streamed event.
@@ -3812,6 +2953,709 @@ event_type object (required) No description provided.
 Always set to `"step.start"`.
 index integer (required) No description provided.
 step [Step](https://ai.google.dev/api/interactions-api#Resource:Step) (required) No description provided.
+event_id string (optional) The event_id token to be used to resume the interaction stream, from
+this event.
+metadata StreamMetadata (optional) Optional metadata accompanying ANY streamed event.
+<br />
+
+#### Fields
+
+total_usage Usage (optional) No description provided.
+Statistics on the interaction request's token usage.
+
+#### Fields
+
+total_input_tokens integer (optional) Number of tokens in the prompt (context).
+input_tokens_by_modality ModalityTokens (optional) A breakdown of input token usage by modality.
+The token count for a single response modality.
+
+#### Fields
+
+modality ResponseModality (optional) The modality associated with the token count.
+
+Possible
+values:
+
+- `text`
+
+  Indicates the model should return text.
+- `image`
+
+  Indicates the model should return images.
+- `audio`
+
+  Indicates the model should return audio.
+- `video`
+
+  Indicates the model should return video.
+- `document`
+
+  Indicates the model should return documents.
+
+<br />
+
+#### Possible values
+
+- `text`
+
+  Indicates the model should return text.
+- `image`
+
+  Indicates the model should return images.
+- `audio`
+
+  Indicates the model should return audio.
+- `video`
+
+  Indicates the model should return video.
+- `document`
+
+  Indicates the model should return documents.
+tokens integer (optional) Number of tokens for the modality.
+total_cached_tokens integer (optional) Number of tokens in the cached part of the prompt (the cached content).
+cached_tokens_by_modality ModalityTokens (optional) A breakdown of cached token usage by modality.
+The token count for a single response modality.
+
+#### Fields
+
+modality ResponseModality (optional) The modality associated with the token count.
+
+Possible
+values:
+
+- `text`
+
+  Indicates the model should return text.
+- `image`
+
+  Indicates the model should return images.
+- `audio`
+
+  Indicates the model should return audio.
+- `video`
+
+  Indicates the model should return video.
+- `document`
+
+  Indicates the model should return documents.
+
+<br />
+
+#### Possible values
+
+- `text`
+
+  Indicates the model should return text.
+- `image`
+
+  Indicates the model should return images.
+- `audio`
+
+  Indicates the model should return audio.
+- `video`
+
+  Indicates the model should return video.
+- `document`
+
+  Indicates the model should return documents.
+tokens integer (optional) Number of tokens for the modality.
+total_output_tokens integer (optional) Total number of tokens across all the generated responses.
+output_tokens_by_modality ModalityTokens (optional) A breakdown of output token usage by modality.
+The token count for a single response modality.
+
+#### Fields
+
+modality ResponseModality (optional) The modality associated with the token count.
+
+Possible
+values:
+
+- `text`
+
+  Indicates the model should return text.
+- `image`
+
+  Indicates the model should return images.
+- `audio`
+
+  Indicates the model should return audio.
+- `video`
+
+  Indicates the model should return video.
+- `document`
+
+  Indicates the model should return documents.
+
+<br />
+
+#### Possible values
+
+- `text`
+
+  Indicates the model should return text.
+- `image`
+
+  Indicates the model should return images.
+- `audio`
+
+  Indicates the model should return audio.
+- `video`
+
+  Indicates the model should return video.
+- `document`
+
+  Indicates the model should return documents.
+tokens integer (optional) Number of tokens for the modality.
+total_tool_use_tokens integer (optional) Number of tokens present in tool-use prompt(s).
+tool_use_tokens_by_modality ModalityTokens (optional) A breakdown of tool-use token usage by modality.
+The token count for a single response modality.
+
+#### Fields
+
+modality ResponseModality (optional) The modality associated with the token count.
+
+Possible
+values:
+
+- `text`
+
+  Indicates the model should return text.
+- `image`
+
+  Indicates the model should return images.
+- `audio`
+
+  Indicates the model should return audio.
+- `video`
+
+  Indicates the model should return video.
+- `document`
+
+  Indicates the model should return documents.
+
+<br />
+
+#### Possible values
+
+- `text`
+
+  Indicates the model should return text.
+- `image`
+
+  Indicates the model should return images.
+- `audio`
+
+  Indicates the model should return audio.
+- `video`
+
+  Indicates the model should return video.
+- `document`
+
+  Indicates the model should return documents.
+tokens integer (optional) Number of tokens for the modality.
+total_thought_tokens integer (optional) Number of tokens of thoughts for thinking models.
+total_tokens integer (optional) Total token count for the interaction request (prompt + responses + other
+internal tokens).
+grounding_tool_count GroundingToolCount (optional) Grounding tool count.
+The number of grounding tool counts.
+
+#### Fields
+
+type enum (string) (optional) The grounding tool type associated with the count.
+
+Possible
+values:
+
+- `google_search`
+
+  Grounding with Google Web Search and Image Search, \& Web Grounding
+  for Enterprise.
+- `google_maps`
+
+  Grounding with Google Maps.
+- `retrieval`
+
+  Grounding with customer's data, for example, VertexAISearch.
+count integer (optional) The number of grounding tool counts.
+StepDelta <br />
+
+event_type object (required) No description provided.
+
+Always set to `"step.delta"`.
+index integer (required) No description provided.
+delta StepDeltaData (required) No description provided.
+<br />
+
+#### Possible Types
+
+Polymorphic discriminator: `type`
+TextDelta <br />
+
+type object (required) No description provided.
+
+Always set to `"text"`.
+text string (required) No description provided.
+ImageDelta <br />
+
+type object (required) No description provided.
+
+Always set to `"image"`.
+data string (optional) No description provided.
+uri string (optional) No description provided.
+mime_type enum (string) (optional) No description provided.
+
+Possible
+values:
+
+- `image/png`
+
+  PNG image format
+- `image/jpeg`
+
+  JPEG image format
+- `image/webp`
+
+  WebP image format
+- `image/heic`
+
+  HEIC image format
+- `image/heif`
+
+  HEIF image format
+- `image/gif`
+
+  GIF image format
+- `image/bmp`
+
+  BMP image format
+- `image/tiff`
+
+  TIFF image format
+resolution MediaResolution (optional) The resolution of the media.
+
+Possible
+values:
+
+- `low`
+
+  Low resolution.
+- `medium`
+
+  Medium resolution.
+- `high`
+
+  High resolution.
+- `ultra_high`
+
+  Ultra high resolution.
+
+<br />
+
+#### Possible values
+
+- `low`
+
+  Low resolution.
+- `medium`
+
+  Medium resolution.
+- `high`
+
+  High resolution.
+- `ultra_high`
+
+  Ultra high resolution.
+AudioDelta <br />
+
+type object (required) No description provided.
+
+Always set to `"audio"`.
+data string (optional) No description provided.
+uri string (optional) No description provided.
+mime_type enum (string) (optional) No description provided.
+
+Possible
+values:
+
+- `audio/wav`
+
+  WAV audio format
+- `audio/mp3`
+
+  MP3 audio format
+- `audio/aiff`
+
+  AIFF audio format
+- `audio/aac`
+
+  AAC audio format
+- `audio/ogg`
+
+  OGG audio format
+- `audio/flac`
+
+  FLAC audio format
+- `audio/mpeg`
+
+  MPEG audio format
+- `audio/m4a`
+
+  M4A audio format
+- `audio/l16`
+
+  L16 audio format
+- `audio/opus`
+
+  OPUS audio format
+- `audio/alaw`
+
+  ALAW audio format
+- `audio/mulaw`
+
+  MULAW audio format
+sample_rate integer (optional) The sample rate of the audio.
+channels integer (optional) The number of audio channels.
+DocumentDelta <br />
+
+type object (required) No description provided.
+
+Always set to `"document"`.
+data string (optional) No description provided.
+uri string (optional) No description provided.
+mime_type enum (string) (optional) No description provided.
+
+Possible
+values:
+
+- `application/pdf`
+
+  PDF document format
+- `text/csv`
+
+  CSV document format
+VideoDelta <br />
+
+type object (required) No description provided.
+
+Always set to `"video"`.
+data string (optional) No description provided.
+uri string (optional) No description provided.
+mime_type enum (string) (optional) No description provided.
+
+Possible
+values:
+
+- `video/mp4`
+
+  MP4 video format
+- `video/mpeg`
+
+  MPEG video format
+- `video/mpg`
+
+  MPG video format
+- `video/mov`
+
+  MOV video format
+- `video/avi`
+
+  AVI video format
+- `video/x-flv`
+
+  FLV video format
+- `video/webm`
+
+  WebM video format
+- `video/wmv`
+
+  WMV video format
+- `video/3gpp`
+
+  3GPP video format
+resolution MediaResolution (optional) The resolution of the media.
+
+Possible
+values:
+
+- `low`
+
+  Low resolution.
+- `medium`
+
+  Medium resolution.
+- `high`
+
+  High resolution.
+- `ultra_high`
+
+  Ultra high resolution.
+
+<br />
+
+#### Possible values
+
+- `low`
+
+  Low resolution.
+- `medium`
+
+  Medium resolution.
+- `high`
+
+  High resolution.
+- `ultra_high`
+
+  Ultra high resolution.
+ThoughtSummaryDelta <br />
+
+type object (required) No description provided.
+
+Always set to `"thought_summary"`.
+content [Content](https://ai.google.dev/api/interactions-api#Resource:Content) (optional) A new summary item to be added to the thought.
+ThoughtSignatureDelta <br />
+
+type object (required) No description provided.
+
+Always set to `"thought_signature"`.
+signature string (optional) Signature to match the backend source to be part of the generation.
+TextAnnotationDelta <br />
+
+type object (required) No description provided.
+
+Always set to `"text_annotation_delta"`.
+annotations Annotation (optional) Citation information for model-generated content.
+Citation information for model-generated content.
+
+#### Possible Types
+
+Polymorphic discriminator: `type`
+UrlCitation A URL citation annotation.
+type object (required) No description provided.
+
+Always set to `"url_citation"`.
+url string (optional) The URL.
+title string (optional) The title of the URL.
+start_index integer (optional) Start of segment of the response that is attributed to this source.
+
+Index indicates the start of the segment, measured in bytes.
+end_index integer (optional) End of the attributed segment, exclusive.
+FileCitation A file citation annotation.
+type object (required) No description provided.
+
+Always set to `"file_citation"`.
+document_uri string (optional) The URI of the file.
+file_name string (optional) The name of the file.
+source string (optional) Source attributed for a portion of the text.
+custom_metadata object (optional) User provided metadata about the retrieved context.
+page_number integer (optional) Page number of the cited document, if applicable.
+media_id string (optional) Media ID in-case of image citations, if applicable.
+start_index integer (optional) Start of segment of the response that is attributed to this source.
+
+Index indicates the start of the segment, measured in bytes.
+end_index integer (optional) End of the attributed segment, exclusive.
+PlaceCitation A place citation annotation.
+type object (required) No description provided.
+
+Always set to `"place_citation"`.
+place_id string (optional) The ID of the place, in \`places/{place_id}\` format.
+name string (optional) Title of the place.
+url string (optional) URI reference of the place.
+review_snippets ReviewSnippet (optional) Snippets of reviews that are used to generate answers about the
+features of a given place in Google Maps.
+Encapsulates a snippet of a user review that answers a question about
+the features of a specific place in Google Maps.
+
+#### Fields
+
+title string (optional) Title of the review.
+url string (optional) A link that corresponds to the user review on Google Maps.
+review_id string (optional) The ID of the review snippet.
+start_index integer (optional) Start of segment of the response that is attributed to this source.
+
+Index indicates the start of the segment, measured in bytes.
+end_index integer (optional) End of the attributed segment, exclusive.
+ArgumentsDelta <br />
+
+type object (required) No description provided.
+
+Always set to `"arguments_delta"`.
+arguments string (optional) No description provided.
+CodeExecutionCallDelta <br />
+
+type object (required) No description provided.
+
+Always set to `"code_execution_call"`.
+arguments CodeExecutionCallArguments (required) No description provided.
+The arguments to pass to the code execution.
+
+#### Fields
+
+language enum (string) (optional) Programming language of the \`code\`.
+
+Possible
+values:
+
+- `python`
+
+  Python \>= 3.10, with numpy and simpy available.
+code string (optional) The code to be executed.
+signature string (optional) A signature hash for backend validation.
+UrlContextCallDelta <br />
+
+type object (required) No description provided.
+
+Always set to `"url_context_call"`.
+arguments UrlContextCallArguments (required) No description provided.
+The arguments to pass to the URL context.
+
+#### Fields
+
+urls array (string) (optional) The URLs to fetch.
+signature string (optional) A signature hash for backend validation.
+GoogleSearchCallDelta <br />
+
+type object (required) No description provided.
+
+Always set to `"google_search_call"`.
+arguments GoogleSearchCallArguments (required) No description provided.
+The arguments to pass to Google Search.
+
+#### Fields
+
+queries array (string) (optional) Web search queries for the following-up web search.
+signature string (optional) A signature hash for backend validation.
+McpServerToolCallDelta <br />
+
+type object (required) No description provided.
+
+Always set to `"mcp_server_tool_call"`.
+name string (required) No description provided.
+server_name string (required) No description provided.
+arguments object (required) No description provided.
+FileSearchCallDelta <br />
+
+type object (required) No description provided.
+
+Always set to `"file_search_call"`.
+signature string (optional) A signature hash for backend validation.
+GoogleMapsCallDelta <br />
+
+type object (required) No description provided.
+
+Always set to `"google_maps_call"`.
+arguments GoogleMapsCallArguments (optional) The arguments to pass to the Google Maps tool.
+The arguments to pass to the Google Maps tool.
+
+#### Fields
+
+queries array (string) (optional) The queries to be executed.
+signature string (optional) A signature hash for backend validation.
+CodeExecutionResultDelta <br />
+
+type object (required) No description provided.
+
+Always set to `"code_execution_result"`.
+result string (required) No description provided.
+is_error boolean (optional) No description provided.
+signature string (optional) A signature hash for backend validation.
+UrlContextResultDelta <br />
+
+type object (required) No description provided.
+
+Always set to `"url_context_result"`.
+result UrlContextResult (required) No description provided.
+The result of the URL context.
+
+#### Fields
+
+url string (optional) The URL that was fetched.
+status enum (string) (optional) The status of the URL retrieval.
+
+Possible
+values:
+
+- `success`
+
+  Url retrieval is successful.
+- `error`
+
+  Url retrieval is failed due to error.
+- `paywall`
+
+  Url retrieval is failed because the content is behind paywall.
+- `unsafe`
+
+  Url retrieval is failed because the content is unsafe.
+is_error boolean (optional) No description provided.
+signature string (optional) A signature hash for backend validation.
+GoogleSearchResultDelta <br />
+
+type object (required) No description provided.
+
+Always set to `"google_search_result"`.
+result GoogleSearchResult (required) No description provided.
+The result of the Google Search.
+
+#### Fields
+
+search_suggestions string (optional) Web content snippet that can be embedded in a web page or an app webview.
+is_error boolean (optional) No description provided.
+signature string (optional) A signature hash for backend validation.
+McpServerToolResultDelta <br />
+
+type object (required) No description provided.
+
+Always set to `"mcp_server_tool_result"`.
+name string (optional) No description provided.
+server_name string (optional) No description provided.
+result array ([ImageContent](https://ai.google.dev/api/interactions-api#Resource:ImageContent) or [TextContent](https://ai.google.dev/api/interactions-api#Resource:TextContent)) or object or string (required) No description provided.
+FileSearchResultDelta <br />
+
+type object (required) No description provided.
+
+Always set to `"file_search_result"`.
+result FileSearchResult (required) No description provided.
+The result of the File Search.
+signature string (optional) A signature hash for backend validation.
+GoogleMapsResultDelta <br />
+
+type object (required) No description provided.
+
+Always set to `"google_maps_result"`.
+result GoogleMapsResult (optional) The results of the Google Maps.
+The result of the Google Maps.
+
+#### Fields
+
+places Places (optional) The places that were found.
+<br />
+
+#### Fields
+
+place_id string (optional) The ID of the place, in \`places/{place_id}\` format.
+name string (optional) Title of the place.
+url string (optional) URI reference of the place.
+review_snippets ReviewSnippet (optional) Snippets of reviews that are used to generate answers about the
+features of a given place in Google Maps.
+Encapsulates a snippet of a user review that answers a question about
+the features of a specific place in Google Maps.
+
+#### Fields
+
+title string (optional) Title of the review.
+url string (optional) A link that corresponds to the user review on Google Maps.
+review_id string (optional) The ID of the review snippet.
+widget_context_token string (optional) Resource name of the Google Maps widget context token.
+signature string (optional) A signature hash for backend validation.
+FunctionResultDelta <br />
+
+type object (required) No description provided.
+
+Always set to `"function_result"`.
+name string (optional) No description provided.
+is_error boolean (optional) No description provided.
+call_id string (required) Required. ID to match the ID from the function call block.
+result array ([ImageContent](https://ai.google.dev/api/interactions-api#Resource:ImageContent) or [TextContent](https://ai.google.dev/api/interactions-api#Resource:TextContent)) or object or string (required) No description provided.
 event_id string (optional) The event_id token to be used to resume the interaction stream, from
 this event.
 metadata StreamMetadata (optional) Optional metadata accompanying ANY streamed event.
@@ -4269,15 +4113,19 @@ count integer (optional) The number of grounding tool counts.
 
 ### Examples
 
-### Error Event
+### Interaction Created
 
 ```json
 {
-  "event_type": "error",
-  "error": {
-    "message": "Failed to get completed interaction: Result not found.",
-    "code": "not_found"
-  }
+  "event_type": "interaction.created",
+  "interaction": {
+    "id": "v1_ChdXS0l4YWZXTk9xbk0xZThQczhEcmlROBIXV0tJeGFmV05PcW5NMWU4UHM4RHJpUTg",
+    "model": "gemini-3.5-flash",
+    "status": "in_progress",
+    "created": "2025-12-04T15:01:45Z",
+    "updated": "2025-12-04T15:01:45Z"
+  },
+  "event_id": "evt_123"
 }
 ```
 
@@ -4297,22 +4145,6 @@ count integer (optional) The number of grounding tool counts.
 }
 ```
 
-### Interaction Created
-
-```json
-{
-  "event_type": "interaction.created",
-  "interaction": {
-    "id": "v1_ChdXS0l4YWZXTk9xbk0xZThQczhEcmlROBIXV0tJeGFmV05PcW5NMWU4UHM4RHJpUTg",
-    "model": "gemini-3.5-flash",
-    "status": "in_progress",
-    "created": "2025-12-04T15:01:45Z",
-    "updated": "2025-12-04T15:01:45Z"
-  },
-  "event_id": "evt_123"
-}
-```
-
 ### Interaction Status Update
 
 ```json
@@ -4323,15 +4155,14 @@ count integer (optional) The number of grounding tool counts.
 }
 ```
 
-### Step Delta
+### Error Event
 
 ```json
 {
-  "event_type": "step.delta",
-  "index": 0,
-  "delta": {
-    "type": "text",
-    "text": "Hello"
+  "event_type": "error",
+  "error": {
+    "message": "Failed to get completed interaction: Result not found.",
+    "code": "not_found"
   }
 }
 ```
@@ -4344,6 +4175,19 @@ count integer (optional) The number of grounding tool counts.
   "index": 0,
   "step": {
     "type": "model_output"
+  }
+}
+```
+
+### Step Delta
+
+```json
+{
+  "event_type": "step.delta",
+  "index": 0,
+  "delta": {
+    "type": "text",
+    "text": "Hello"
   }
 }
 ```
@@ -4404,6 +4248,23 @@ values:
 sample_rate integer (optional) Sample rate in Hz.
 bit_rate integer (optional) Bit rate in bits per second (bps). Only applicable for compressed formats
 (MP3, Opus).
+TextResponseFormat Configuration for text output format.
+type object (required) No description provided.
+
+Always set to `"text"`.
+mime_type enum (string) (optional) The MIME type of the text output.
+
+Possible
+values:
+
+- `application/json`
+
+  JSON output format.
+- `text/plain`
+
+  Plain text output format.
+schema object (optional) The JSON schema that the output should conform to. Only applicable when
+mime_type is application/json.
 ImageResponseFormat Configuration for image output format.
 type object (required) No description provided.
 
@@ -4491,23 +4352,6 @@ values:
 - `4K`
 
   4K image size.
-TextResponseFormat Configuration for text output format.
-type object (required) No description provided.
-
-Always set to `"text"`.
-mime_type enum (string) (optional) The MIME type of the text output.
-
-Possible
-values:
-
-- `application/json`
-
-  JSON output format.
-- `text/plain`
-
-  Plain text output format.
-schema object (optional) The JSON schema that the output should conform to. Only applicable when
-mime_type is application/json.
 
 ### Examples
 
@@ -4517,17 +4361,6 @@ mime_type is application/json.
 {
   "type": "audio",
   "sample_rate": 24000
-}
-```
-
-### Image Output
-
-```json
-{
-  "type": "image",
-  "mime_type": "image/jpeg",
-  "aspect_ratio": "16:9",
-  "image_size": "1K"
 }
 ```
 
@@ -4558,6 +4391,17 @@ mime_type is application/json.
 }
 ```
 
+### Image Output
+
+```json
+{
+  "type": "image",
+  "mime_type": "image/jpeg",
+  "aspect_ratio": "16:9",
+  "image_size": "1K"
+}
+```
+
 ### Step
 
 A step in the interaction.
@@ -4565,157 +4409,11 @@ A step in the interaction.
 ### Possible Types
 
 Polymorphic discriminator: `type`
-CodeExecutionCallStep Code execution call step.
+UserInputStep Input provided by the user.
+content array ([Content](https://ai.google.dev/api/interactions-api#Resource:Content)) (optional) No description provided.
 type object (required) No description provided.
 
-Always set to `"code_execution_call"`.
-arguments CodeExecutionCallStepArguments (required) Required. The arguments to pass to the code execution.
-The arguments to pass to the code execution.
-
-#### Fields
-
-language enum (string) (optional) Programming language of the \`code\`.
-
-Possible
-values:
-
-- `python`
-
-  Python \>= 3.10, with numpy and simpy available.
-code string (optional) The code to be executed.
-id string (required) Required. A unique ID for this specific tool call.
-signature string (optional) A signature hash for backend validation.
-CodeExecutionResultStep Code execution result step.
-type object (required) No description provided.
-
-Always set to `"code_execution_result"`.
-result string (required) Required. The output of the code execution.
-is_error boolean (optional) Whether the code execution resulted in an error.
-call_id string (required) Required. ID to match the ID from the function call block.
-signature string (optional) A signature hash for backend validation.
-FileSearchCallStep File Search call step.
-type object (required) No description provided.
-
-Always set to `"file_search_call"`.
-id string (required) Required. A unique ID for this specific tool call.
-signature string (optional) A signature hash for backend validation.
-FileSearchResultStep File Search result step.
-type object (required) No description provided.
-
-Always set to `"file_search_result"`.
-call_id string (required) Required. ID to match the ID from the function call block.
-signature string (optional) A signature hash for backend validation.
-FunctionCallStep A function tool call step.
-type object (required) No description provided.
-
-Always set to `"function_call"`.
-name string (required) Required. The name of the tool to call.
-arguments object (required) Required. The arguments to pass to the function.
-id string (required) Required. A unique ID for this specific tool call.
-FunctionResultStep Result of a function tool call.
-type object (required) No description provided.
-
-Always set to `"function_result"`.
-name string (optional) The name of the tool that was called.
-is_error boolean (optional) Whether the tool call resulted in an error.
-call_id string (required) Required. ID to match the ID from the function call block.
-result array ([Content](https://ai.google.dev/api/interactions-api#Resource:Content)) or array ([ImageContent](https://ai.google.dev/api/interactions-api#Resource:ImageContent) or [TextContent](https://ai.google.dev/api/interactions-api#Resource:TextContent)) or string (required) The result of the tool call.
-GoogleMapsCallStep Google Maps call step.
-type object (required) No description provided.
-
-Always set to `"google_maps_call"`.
-arguments GoogleMapsCallStepArguments (optional) The arguments to pass to the Google Maps tool.
-The arguments to pass to the Google Maps tool.
-
-#### Fields
-
-queries array (string) (optional) The queries to be executed.
-id string (required) Required. A unique ID for this specific tool call.
-signature string (optional) A signature hash for backend validation.
-GoogleMapsResultStep Google Maps result step.
-type object (required) No description provided.
-
-Always set to `"google_maps_result"`.
-result GoogleMapsResultItem (required) No description provided.
-The result of the Google Maps.
-
-#### Fields
-
-places GoogleMapsResultPlaces (optional) No description provided.
-<br />
-
-#### Fields
-
-place_id string (optional) No description provided.
-name string (optional) No description provided.
-url string (optional) No description provided.
-review_snippets ReviewSnippet (optional) No description provided.
-Encapsulates a snippet of a user review that answers a question about
-the features of a specific place in Google Maps.
-
-#### Fields
-
-title string (optional) Title of the review.
-url string (optional) A link that corresponds to the user review on Google Maps.
-review_id string (optional) The ID of the review snippet.
-widget_context_token string (optional) No description provided.
-call_id string (required) Required. ID to match the ID from the function call block.
-signature string (optional) A signature hash for backend validation.
-GoogleSearchCallStep Google Search call step.
-type object (required) No description provided.
-
-Always set to `"google_search_call"`.
-arguments GoogleSearchCallStepArguments (required) Required. The arguments to pass to Google Search.
-The arguments to pass to Google Search.
-
-#### Fields
-
-queries array (string) (optional) Web search queries for the following-up web search.
-search_type enum (string) (optional) The type of search grounding enabled.
-
-Possible
-values:
-
-- `web_search`
-
-  Setting this field enables web search. Only text results are returned.
-- `image_search`
-
-  Setting this field enables image search. Image bytes are returned.
-- `enterprise_web_search`
-
-  Setting this field enables enterprise web search.
-id string (required) Required. A unique ID for this specific tool call.
-signature string (optional) A signature hash for backend validation.
-GoogleSearchResultStep Google Search result step.
-type object (required) No description provided.
-
-Always set to `"google_search_result"`.
-result GoogleSearchResultItem (required) Required. The results of the Google Search.
-The result of the Google Search.
-
-#### Fields
-
-search_suggestions string (optional) Web content snippet that can be embedded in a web page or an app webview.
-is_error boolean (optional) Whether the Google Search resulted in an error.
-call_id string (required) Required. ID to match the ID from the function call block.
-signature string (optional) A signature hash for backend validation.
-McpServerToolCallStep MCPServer tool call step.
-type object (required) No description provided.
-
-Always set to `"mcp_server_tool_call"`.
-name string (required) Required. The name of the tool which was called.
-server_name string (required) Required. The name of the used MCP server.
-arguments object (required) Required. The JSON object of arguments for the function.
-id string (required) Required. A unique ID for this specific tool call.
-McpServerToolResultStep MCPServer tool result step.
-type object (required) No description provided.
-
-Always set to `"mcp_server_tool_result"`.
-name string (optional) Name of the tool which is called for this specific tool call.
-server_name string (optional) The name of the used MCP server.
-call_id string (required) Required. ID to match the ID from the function call block.
-result array ([Content](https://ai.google.dev/api/interactions-api#Resource:Content)) or array ([ImageContent](https://ai.google.dev/api/interactions-api#Resource:ImageContent) or [TextContent](https://ai.google.dev/api/interactions-api#Resource:TextContent)) or object (required) The output from the MCP server call. Can be simple text or rich content.
+Always set to `"user_input"`.
 ModelOutputStep Output generated by the model.
 type object (required) No description provided.
 
@@ -4732,6 +4430,62 @@ summary ThoughtSummaryContent (optional) A summary of the thought.
 #### Possible Types
 
 Polymorphic discriminator: `type`
+TextContent A text content block.
+type object (required) No description provided.
+
+Always set to `"text"`.
+text string (required) Required. The text content.
+annotations Annotation (optional) Citation information for model-generated content.
+Citation information for model-generated content.
+
+#### Possible Types
+
+Polymorphic discriminator: `type`
+UrlCitation A URL citation annotation.
+type object (required) No description provided.
+
+Always set to `"url_citation"`.
+url string (optional) The URL.
+title string (optional) The title of the URL.
+start_index integer (optional) Start of segment of the response that is attributed to this source.
+
+Index indicates the start of the segment, measured in bytes.
+end_index integer (optional) End of the attributed segment, exclusive.
+FileCitation A file citation annotation.
+type object (required) No description provided.
+
+Always set to `"file_citation"`.
+document_uri string (optional) The URI of the file.
+file_name string (optional) The name of the file.
+source string (optional) Source attributed for a portion of the text.
+custom_metadata object (optional) User provided metadata about the retrieved context.
+page_number integer (optional) Page number of the cited document, if applicable.
+media_id string (optional) Media ID in-case of image citations, if applicable.
+start_index integer (optional) Start of segment of the response that is attributed to this source.
+
+Index indicates the start of the segment, measured in bytes.
+end_index integer (optional) End of the attributed segment, exclusive.
+PlaceCitation A place citation annotation.
+type object (required) No description provided.
+
+Always set to `"place_citation"`.
+place_id string (optional) The ID of the place, in \`places/{place_id}\` format.
+name string (optional) Title of the place.
+url string (optional) URI reference of the place.
+review_snippets ReviewSnippet (optional) Snippets of reviews that are used to generate answers about the
+features of a given place in Google Maps.
+Encapsulates a snippet of a user review that answers a question about
+the features of a specific place in Google Maps.
+
+#### Fields
+
+title string (optional) Title of the review.
+url string (optional) A link that corresponds to the user review on Google Maps.
+review_id string (optional) The ID of the review snippet.
+start_index integer (optional) Start of segment of the response that is attributed to this source.
+
+Index indicates the start of the segment, measured in bytes.
+end_index integer (optional) End of the attributed segment, exclusive.
 ImageContent An image content block.
 type object (required) No description provided.
 
@@ -4801,62 +4555,33 @@ values:
 - `ultra_high`
 
   Ultra high resolution.
-TextContent A text content block.
+FunctionCallStep A function tool call step.
 type object (required) No description provided.
 
-Always set to `"text"`.
-text string (required) Required. The text content.
-annotations Annotation (optional) Citation information for model-generated content.
-Citation information for model-generated content.
-
-#### Possible Types
-
-Polymorphic discriminator: `type`
-FileCitation A file citation annotation.
+Always set to `"function_call"`.
+name string (required) Required. The name of the tool to call.
+arguments object (required) Required. The arguments to pass to the function.
+id string (required) Required. A unique ID for this specific tool call.
+CodeExecutionCallStep Code execution call step.
 type object (required) No description provided.
 
-Always set to `"file_citation"`.
-document_uri string (optional) The URI of the file.
-file_name string (optional) The name of the file.
-source string (optional) Source attributed for a portion of the text.
-custom_metadata object (optional) User provided metadata about the retrieved context.
-page_number integer (optional) Page number of the cited document, if applicable.
-media_id string (optional) Media ID in-case of image citations, if applicable.
-start_index integer (optional) Start of segment of the response that is attributed to this source.
-
-Index indicates the start of the segment, measured in bytes.
-end_index integer (optional) End of the attributed segment, exclusive.
-PlaceCitation A place citation annotation.
-type object (required) No description provided.
-
-Always set to `"place_citation"`.
-place_id string (optional) The ID of the place, in \`places/{place_id}\` format.
-name string (optional) Title of the place.
-url string (optional) URI reference of the place.
-review_snippets ReviewSnippet (optional) Snippets of reviews that are used to generate answers about the
-features of a given place in Google Maps.
-Encapsulates a snippet of a user review that answers a question about
-the features of a specific place in Google Maps.
+Always set to `"code_execution_call"`.
+arguments CodeExecutionCallStepArguments (required) Required. The arguments to pass to the code execution.
+The arguments to pass to the code execution.
 
 #### Fields
 
-title string (optional) Title of the review.
-url string (optional) A link that corresponds to the user review on Google Maps.
-review_id string (optional) The ID of the review snippet.
-start_index integer (optional) Start of segment of the response that is attributed to this source.
+language enum (string) (optional) Programming language of the \`code\`.
 
-Index indicates the start of the segment, measured in bytes.
-end_index integer (optional) End of the attributed segment, exclusive.
-UrlCitation A URL citation annotation.
-type object (required) No description provided.
+Possible
+values:
 
-Always set to `"url_citation"`.
-url string (optional) The URL.
-title string (optional) The title of the URL.
-start_index integer (optional) Start of segment of the response that is attributed to this source.
+- `python`
 
-Index indicates the start of the segment, measured in bytes.
-end_index integer (optional) End of the attributed segment, exclusive.
+  Python \>= 3.10, with numpy and simpy available.
+code string (optional) The code to be executed.
+id string (required) Required. A unique ID for this specific tool call.
+signature string (optional) A signature hash for backend validation.
 UrlContextCallStep URL context call step.
 type object (required) No description provided.
 
@@ -4868,6 +4593,74 @@ The arguments to pass to the URL context.
 
 urls array (string) (optional) The URLs to fetch.
 id string (required) Required. A unique ID for this specific tool call.
+signature string (optional) A signature hash for backend validation.
+McpServerToolCallStep MCPServer tool call step.
+type object (required) No description provided.
+
+Always set to `"mcp_server_tool_call"`.
+name string (required) Required. The name of the tool which was called.
+server_name string (required) Required. The name of the used MCP server.
+arguments object (required) Required. The JSON object of arguments for the function.
+id string (required) Required. A unique ID for this specific tool call.
+GoogleSearchCallStep Google Search call step.
+type object (required) No description provided.
+
+Always set to `"google_search_call"`.
+arguments GoogleSearchCallStepArguments (required) Required. The arguments to pass to Google Search.
+The arguments to pass to Google Search.
+
+#### Fields
+
+queries array (string) (optional) Web search queries for the following-up web search.
+search_type enum (string) (optional) The type of search grounding enabled.
+
+Possible
+values:
+
+- `web_search`
+
+  Setting this field enables web search. Only text results are returned.
+- `image_search`
+
+  Setting this field enables image search. Image bytes are returned.
+- `enterprise_web_search`
+
+  Setting this field enables enterprise web search.
+id string (required) Required. A unique ID for this specific tool call.
+signature string (optional) A signature hash for backend validation.
+FileSearchCallStep File Search call step.
+type object (required) No description provided.
+
+Always set to `"file_search_call"`.
+id string (required) Required. A unique ID for this specific tool call.
+signature string (optional) A signature hash for backend validation.
+GoogleMapsCallStep Google Maps call step.
+type object (required) No description provided.
+
+Always set to `"google_maps_call"`.
+arguments GoogleMapsCallStepArguments (optional) The arguments to pass to the Google Maps tool.
+The arguments to pass to the Google Maps tool.
+
+#### Fields
+
+queries array (string) (optional) The queries to be executed.
+id string (required) Required. A unique ID for this specific tool call.
+signature string (optional) A signature hash for backend validation.
+FunctionResultStep Result of a function tool call.
+type object (required) No description provided.
+
+Always set to `"function_result"`.
+name string (optional) The name of the tool that was called.
+is_error boolean (optional) Whether the tool call resulted in an error.
+call_id string (required) Required. ID to match the ID from the function call block.
+result array ([ImageContent](https://ai.google.dev/api/interactions-api#Resource:ImageContent) or [TextContent](https://ai.google.dev/api/interactions-api#Resource:TextContent)) or object or string (required) The result of the tool call.
+CodeExecutionResultStep Code execution result step.
+type object (required) No description provided.
+
+Always set to `"code_execution_result"`.
+result string (required) Required. The output of the code execution.
+is_error boolean (optional) Whether the code execution resulted in an error.
+call_id string (required) Required. ID to match the ID from the function call block.
 signature string (optional) A signature hash for backend validation.
 UrlContextResultStep URL context result step.
 type object (required) No description provided.
@@ -4899,164 +4692,76 @@ values:
 is_error boolean (optional) Whether the URL context resulted in an error.
 call_id string (required) Required. ID to match the ID from the function call block.
 signature string (optional) A signature hash for backend validation.
-UserInputStep Input provided by the user.
-content array ([Content](https://ai.google.dev/api/interactions-api#Resource:Content)) (optional) No description provided.
+GoogleSearchResultStep Google Search result step.
 type object (required) No description provided.
 
-Always set to `"user_input"`.
+Always set to `"google_search_result"`.
+result GoogleSearchResultItem (required) Required. The results of the Google Search.
+The result of the Google Search.
+
+#### Fields
+
+search_suggestions string (optional) Web content snippet that can be embedded in a web page or an app webview.
+is_error boolean (optional) Whether the Google Search resulted in an error.
+call_id string (required) Required. ID to match the ID from the function call block.
+signature string (optional) A signature hash for backend validation.
+McpServerToolResultStep MCPServer tool result step.
+type object (required) No description provided.
+
+Always set to `"mcp_server_tool_result"`.
+name string (optional) Name of the tool which is called for this specific tool call.
+server_name string (optional) The name of the used MCP server.
+call_id string (required) Required. ID to match the ID from the function call block.
+result array ([ImageContent](https://ai.google.dev/api/interactions-api#Resource:ImageContent) or [TextContent](https://ai.google.dev/api/interactions-api#Resource:TextContent)) or object or string (required) The output from the MCP server call. Can be simple text or rich content.
+FileSearchResultStep File Search result step.
+type object (required) No description provided.
+
+Always set to `"file_search_result"`.
+call_id string (required) Required. ID to match the ID from the function call block.
+signature string (optional) A signature hash for backend validation.
+GoogleMapsResultStep Google Maps result step.
+type object (required) No description provided.
+
+Always set to `"google_maps_result"`.
+result GoogleMapsResultItem (required) No description provided.
+The result of the Google Maps.
+
+#### Fields
+
+places GoogleMapsResultPlaces (optional) No description provided.
+<br />
+
+#### Fields
+
+place_id string (optional) No description provided.
+name string (optional) No description provided.
+url string (optional) No description provided.
+review_snippets ReviewSnippet (optional) No description provided.
+Encapsulates a snippet of a user review that answers a question about
+the features of a specific place in Google Maps.
+
+#### Fields
+
+title string (optional) Title of the review.
+url string (optional) A link that corresponds to the user review on Google Maps.
+review_id string (optional) The ID of the review snippet.
+widget_context_token string (optional) No description provided.
+call_id string (required) Required. ID to match the ID from the function call block.
+signature string (optional) A signature hash for backend validation.
 
 ### Examples
 
-### CodeExecutionCallStep
+### UserInputStep
 
 ```json
 {
-  "type": "code_execution_call",
-  "id": "code_call_71021",
-  "arguments": {
-    "code": "print(sum(range(1, 11)))"
-  }
-}
-```
-
-### CodeExecutionResultStep
-
-```json
-{
-  "type": "code_execution_result",
-  "call_id": "code_call_71021",
-  "result": "55\n"
-}
-```
-
-### FileSearchCallStep
-
-```json
-{
-  "type": "file_search_call",
-  "id": "file_call_88192"
-}
-```
-
-### FileSearchResultStep
-
-```json
-{
-  "type": "file_search_result",
-  "call_id": "file_call_88192"
-}
-```
-
-### FunctionCallStep
-
-```json
-{
-  "type": "function_call",
-  "id": "call_98231",
-  "name": "get_weather",
-  "arguments": {
-    "location": "Boston, MA"
-  }
-}
-```
-
-### FunctionResultStep
-
-```json
-{
-  "type": "function_result",
-  "call_id": "call_98231",
-  "name": "get_weather",
-  "result": [
+  "type": "user_input",
+  "content": [
     {
       "type": "text",
-      "text": "{\"weather\":\"sunny\"}"
+      "text": "What is the capital of France?"
     }
   ]
-}
-```
-
-### GoogleMapsCallStep
-
-```json
-{
-  "type": "google_maps_call",
-  "id": "maps_call_39201",
-  "arguments": {
-    "latitude": 37.7749,
-    "longitude": -122.4194
-  }
-}
-```
-
-### GoogleMapsResultStep
-
-```json
-{
-  "type": "google_maps_result",
-  "call_id": "maps_call_39201",
-  "result": [
-    {
-      "place_id": "ChIJIQBpAG2ahYAR9R7bNdTLg8M",
-      "name": "Golden Gate Park",
-      "rating": 4.8
-    }
-  ]
-}
-```
-
-### GoogleSearchCallStep
-
-```json
-{
-  "type": "google_search_call",
-  "id": "search_call_19201",
-  "arguments": {
-    "query": "Who won the men's 100m in Paris 2024?"
-  }
-}
-```
-
-### GoogleSearchResultStep
-
-```json
-{
-  "type": "google_search_result",
-  "call_id": "search_call_19201",
-  "result": [
-    {
-      "title": "Paris 2024 Olympics: Noah Lyles wins men's 100m gold",
-      "url": "https://olympics.com/en/news/paris-2024-noah-lyles-wins-mens-100m-gold",
-      "snippet": "American Noah Lyles won the Olympic men's 100m gold medal in a photo finish."
-    }
-  ]
-}
-```
-
-### McpServerToolCallStep
-
-```json
-{
-  "type": "mcp_server_tool_call",
-  "id": "mcp_call_29012",
-  "name": "calculate_tax",
-  "server_name": "financial_mcp_server",
-  "arguments": {
-    "income": 120000,
-    "state": "CA"
-  }
-}
-```
-
-### McpServerToolResultStep
-
-```json
-{
-  "type": "mcp_server_tool_result",
-  "call_id": "mcp_call_29012",
-  "result": {
-    "tax_due": 32400
-  }
 }
 ```
 
@@ -5089,6 +4794,31 @@ Always set to `"user_input"`.
 }
 ```
 
+### FunctionCallStep
+
+```json
+{
+  "type": "function_call",
+  "id": "call_98231",
+  "name": "get_weather",
+  "arguments": {
+    "location": "Boston, MA"
+  }
+}
+```
+
+### CodeExecutionCallStep
+
+```json
+{
+  "type": "code_execution_call",
+  "id": "code_call_71021",
+  "arguments": {
+    "code": "print(sum(range(1, 11)))"
+  }
+}
+```
+
 ### UrlContextCallStep
 
 ```json
@@ -5100,6 +4830,81 @@ Always set to `"user_input"`.
       "https://www.example.com"
     ]
   }
+}
+```
+
+### McpServerToolCallStep
+
+```json
+{
+  "type": "mcp_server_tool_call",
+  "id": "mcp_call_29012",
+  "name": "calculate_tax",
+  "server_name": "financial_mcp_server",
+  "arguments": {
+    "income": 120000,
+    "state": "CA"
+  }
+}
+```
+
+### GoogleSearchCallStep
+
+```json
+{
+  "type": "google_search_call",
+  "id": "search_call_19201",
+  "arguments": {
+    "query": "Who won the men's 100m in Paris 2024?"
+  }
+}
+```
+
+### FileSearchCallStep
+
+```json
+{
+  "type": "file_search_call",
+  "id": "file_call_88192"
+}
+```
+
+### GoogleMapsCallStep
+
+```json
+{
+  "type": "google_maps_call",
+  "id": "maps_call_39201",
+  "arguments": {
+    "latitude": 37.7749,
+    "longitude": -122.4194
+  }
+}
+```
+
+### FunctionResultStep
+
+```json
+{
+  "type": "function_result",
+  "call_id": "call_98231",
+  "name": "get_weather",
+  "result": [
+    {
+      "type": "text",
+      "text": "{\"weather\":\"sunny\"}"
+    }
+  ]
+}
+```
+
+### CodeExecutionResultStep
+
+```json
+{
+  "type": "code_execution_result",
+  "call_id": "code_call_71021",
+  "result": "55\n"
 }
 ```
 
@@ -5119,15 +4924,54 @@ Always set to `"user_input"`.
 }
 ```
 
-### UserInputStep
+### GoogleSearchResultStep
 
 ```json
 {
-  "type": "user_input",
-  "content": [
+  "type": "google_search_result",
+  "call_id": "search_call_19201",
+  "result": [
     {
-      "type": "text",
-      "text": "What is the capital of France?"
+      "title": "Paris 2024 Olympics: Noah Lyles wins men's 100m gold",
+      "url": "https://olympics.com/en/news/paris-2024-noah-lyles-wins-mens-100m-gold",
+      "snippet": "American Noah Lyles won the Olympic men's 100m gold medal in a photo finish."
+    }
+  ]
+}
+```
+
+### McpServerToolResultStep
+
+```json
+{
+  "type": "mcp_server_tool_result",
+  "call_id": "mcp_call_29012",
+  "result": {
+    "tax_due": 32400
+  }
+}
+```
+
+### FileSearchResultStep
+
+```json
+{
+  "type": "file_search_result",
+  "call_id": "file_call_88192"
+}
+```
+
+### GoogleMapsResultStep
+
+```json
+{
+  "type": "google_maps_result",
+  "call_id": "maps_call_39201",
+  "result": [
+    {
+      "place_id": "ChIJIQBpAG2ahYAR9R7bNdTLg8M",
+      "name": "Golden Gate Park",
+      "rating": 4.8
     }
   ]
 }
@@ -5455,6 +5299,16 @@ Citation information for model-generated content.
 #### Possible Types
 
 Polymorphic discriminator: `type`
+UrlCitation A URL citation annotation.
+type object (required) No description provided.
+
+Always set to `"url_citation"`.
+url string (optional) The URL.
+title string (optional) The title of the URL.
+start_index integer (optional) Start of segment of the response that is attributed to this source.
+
+Index indicates the start of the segment, measured in bytes.
+end_index integer (optional) End of the attributed segment, exclusive.
 FileCitation A file citation annotation.
 type object (required) No description provided.
 
@@ -5486,16 +5340,6 @@ the features of a specific place in Google Maps.
 title string (optional) Title of the review.
 url string (optional) A link that corresponds to the user review on Google Maps.
 review_id string (optional) The ID of the review snippet.
-start_index integer (optional) Start of segment of the response that is attributed to this source.
-
-Index indicates the start of the segment, measured in bytes.
-end_index integer (optional) End of the attributed segment, exclusive.
-UrlCitation A URL citation annotation.
-type object (required) No description provided.
-
-Always set to `"url_citation"`.
-url string (optional) The URL.
-title string (optional) The title of the URL.
 start_index integer (optional) Start of segment of the response that is attributed to this source.
 
 Index indicates the start of the segment, measured in bytes.

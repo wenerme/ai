@@ -36,8 +36,8 @@ To make sure you do not inadvertently block the **SSL/TLS Recommender**, review 
 
 Then, you can enable the SSL/TLS recommender.
 
-* [ Dashboard ](#tab-panel-10005)
-* [ API ](#tab-panel-10006)
+* [ Dashboard ](#tab-panel-10662)
+* [ API ](#tab-panel-10663)
 
 To enable SSL/TLS recommendations in the dashboard:
 
@@ -64,5 +64,6 @@ If so, it will send the application owner an email with the recommended option a
 If you do not receive an email, keep your current **SSL encryption mode**.
 
 ```json
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ssl/origin-configuration/ssl-tls-recommender/#page","headline":"SSL/TLS Recommender · Cloudflare SSL/TLS docs","description":"Get recommendations for the optimal SSL/TLS encryption mode.","url":"https://developers.cloudflare.com/ssl/origin-configuration/ssl-tls-recommender/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/ssl/","name":"SSL/TLS"}},{"@type":"ListItem","position":3,"item":{"@id":"/ssl/origin-configuration/","name":"Origin server"}},{"@type":"ListItem","position":4,"item":{"@id":"/ssl/origin-configuration/ssl-tls-recommender/","name":"SSL/TLS Recommender"}}]}
 ```

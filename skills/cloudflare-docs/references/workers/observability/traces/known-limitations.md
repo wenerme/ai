@@ -34,10 +34,6 @@ We are planning to add more detailed attributes on each span. You can find a com
 
 Your feedback on any missing information will help us prioritize additions and changes. Please comment on the [Workers tracing GitHub discussion ↗](https://github.com/cloudflare/workers-sdk/discussions/11062)if specific attributes would be helpful to use tracing effectively.
 
-### Support for custom spans and attributes
-
-Automatic instrumentation covers many platform interactions, but we know you need visibility into your own application logic too. We're working to support the [OpenTelemetry API ↗](https://www.npmjs.com/package/@opentelemetry/api) to make it easier for you to instrument custom spans within your application.
-
 ### Span and attribute names subject to change
 
 As Workers tracing is currently in beta, span names and attribute names are not yet finalized. We may refine these names during the beta period to improve clarity and align with OpenTelemetry semantic conventions. We recommend reviewing the [spans and attributes documentation](https://developers.cloudflare.com/workers/observability/traces/spans-and-attributes) periodically for updates.
@@ -48,5 +44,6 @@ As Workers tracing is currently in beta, span names and attribute names are not 
 * While a trace is in progress, the event will show `Trace in Progress` on the root span. Please wait a few moments for the full trace to become available
 
 ```json
+{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/workers/observability/traces/known-limitations/#page","headline":"Known limitations · Cloudflare Workers docs","description":"Workers tracing is currently in open beta. This page documents current limitations and any upcoming features on our roadmap.","url":"https://developers.cloudflare.com/workers/observability/traces/known-limitations/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-06-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/workers/","name":"Workers"}},{"@type":"ListItem","position":3,"item":{"@id":"/workers/observability/","name":"Observability"}},{"@type":"ListItem","position":4,"item":{"@id":"/workers/observability/traces/","name":"Traces"}},{"@type":"ListItem","position":5,"item":{"@id":"/workers/observability/traces/known-limitations/","name":"Known limitations"}}]}
 ```

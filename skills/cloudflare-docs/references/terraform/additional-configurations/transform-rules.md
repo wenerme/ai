@@ -48,8 +48,8 @@ Terraform assumes that it has complete control over account and zone rulesets. I
 
 The following example creates a URL rewrite rule that rewrites requests for `example.com/old-folder` to `example.com/new-folder`:
 
-* [ Terraform (v5) ](#tab-panel-10005)
-* [ Terraform (v4) ](#tab-panel-10006)
+* [ Terraform (v5) ](#tab-panel-10942)
+* [ Terraform (v4) ](#tab-panel-10943)
 
 Required API token permissions
 
@@ -167,8 +167,8 @@ The following configuration example performs the following adjustments to HTTP r
 * Adds a `my-header-2` header to the request with a dynamic value defined by an expression.
 * Deletes the `existing-header` header from the request, if it exists.
 
-* [ Terraform (v5) ](#tab-panel-10007)
-* [ Terraform (v4) ](#tab-panel-10008)
+* [ Terraform (v5) ](#tab-panel-10944)
+* [ Terraform (v4) ](#tab-panel-10945)
 
 Required API token permissions
 
@@ -319,8 +319,8 @@ The following configuration example performs the following adjustments to HTTP r
 * Adds a `my-header-2` header to the response with a dynamic value defined by an expression.
 * Deletes the `existing-header` header from the response, if it exists.
 
-* [ Terraform (v5) ](#tab-panel-10009)
-* [ Terraform (v4) ](#tab-panel-10010)
+* [ Terraform (v5) ](#tab-panel-10946)
+* [ Terraform (v4) ](#tab-panel-10947)
 
 Required API token permissions
 
@@ -465,8 +465,8 @@ For more information on modifying response headers, refer to [Response Header Tr
 
 ## Configure Managed Transforms
 
-* [ Terraform (v5) ](#tab-panel-10003)
-* [ Terraform (v4) ](#tab-panel-10004)
+* [ Terraform (v5) ](#tab-panel-10940)
+* [ Terraform (v4) ](#tab-panel-10941)
 
 Required API token permissions
 
@@ -540,5 +540,6 @@ Make sure you include the Managed Transforms you are updating in the correct obj
 For more information on Managed Transforms, refer to [Managed Transforms](https://developers.cloudflare.com/rules/transform/managed-transforms/).
 
 ```json
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/terraform/additional-configurations/transform-rules/#page","headline":"Transform Rules configuration using Terraform · Cloudflare Terraform docs","description":"Create URL rewrites, request header, and response header Transform Rules using Terraform.","url":"https://developers.cloudflare.com/terraform/additional-configurations/transform-rules/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-29","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/terraform/","name":"Terraform"}},{"@type":"ListItem","position":3,"item":{"@id":"/terraform/additional-configurations/","name":"Additional configurations"}},{"@type":"ListItem","position":4,"item":{"@id":"/terraform/additional-configurations/transform-rules/","name":"Transform Rules configuration using Terraform"}}]}
 ```

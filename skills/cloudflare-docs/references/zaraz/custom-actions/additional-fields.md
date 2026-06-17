@@ -46,5 +46,6 @@ Adding an additional field to the tool sets it as a default field for all of the
 The new field will now be attached to every action that belongs to the tool.
 
 ```json
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/zaraz/custom-actions/additional-fields/#page","headline":"Additional fields · Cloudflare Zaraz docs","description":"Additional fields available in Zaraz custom actions.","url":"https://developers.cloudflare.com/zaraz/custom-actions/additional-fields/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/zaraz/","name":"Zaraz"}},{"@type":"ListItem","position":3,"item":{"@id":"/zaraz/custom-actions/","name":"Custom actions"}},{"@type":"ListItem","position":4,"item":{"@id":"/zaraz/custom-actions/additional-fields/","name":"Additional fields"}}]}
 ```

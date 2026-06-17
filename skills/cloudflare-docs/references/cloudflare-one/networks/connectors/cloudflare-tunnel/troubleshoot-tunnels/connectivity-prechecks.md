@@ -61,9 +61,9 @@ First, you need to verify that your DNS resolver returns the expected IP address
 
 Depending on whether you are testing a global region or the US region, run one of the following commands:
 
-* [ Global region ](#tab-panel-5267)
-* [ US region ](#tab-panel-5268)
-* [ FedRAMP High region ](#tab-panel-5269)
+* [ Global region ](#tab-panel-7297)
+* [ US region ](#tab-panel-7298)
+* [ FedRAMP High region ](#tab-panel-7299)
 
 Terminal window
 
@@ -677,5 +677,6 @@ Avoid vague descriptions and include scenario, timestamps, and steps taken to tr
 Acme Corp attempted to establish a tunnel connection on October 30, 2025, at approximately 3:45 PM UTC. DNS resolution and TCP connectivity tests passed, but the `cloudflared` daemon logs showed `failed to sufficiently increase receive buffer size` errors. The tunnel diagnostic logs collected at 3:50 PM UTC are attached, along with the output from the DNS and network connectivity pre-checks.
 
 ```json
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/troubleshoot-tunnels/connectivity-prechecks/#page","headline":"Connectivity pre-checks · Cloudflare One docs","description":"Connectivity pre-checks in Zero Trust networking.","url":"https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/troubleshoot-tunnels/connectivity-prechecks/","inLanguage":"en","image":"https://developers.cloudflare.com/zt-preview.png","dateModified":"2026-05-27","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["QUIC","DNS"]}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/cloudflare-one/","name":"Cloudflare One"}},{"@type":"ListItem","position":3,"item":{"@id":"/cloudflare-one/networks/","name":"Networks"}},{"@type":"ListItem","position":4,"item":{"@id":"/cloudflare-one/networks/connectors/","name":"Connectors"}},{"@type":"ListItem","position":5,"item":{"@id":"/cloudflare-one/networks/connectors/cloudflare-tunnel/","name":"Cloudflare Tunnel"}},{"@type":"ListItem","position":6,"item":{"@id":"/cloudflare-one/networks/connectors/cloudflare-tunnel/troubleshoot-tunnels/","name":"Troubleshoot tunnels"}},{"@type":"ListItem","position":7,"item":{"@id":"/cloudflare-one/networks/connectors/cloudflare-tunnel/troubleshoot-tunnels/connectivity-prechecks/","name":"Connectivity pre-checks"}}]}
 ```

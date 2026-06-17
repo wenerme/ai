@@ -22,9 +22,9 @@ Warning
 
 WebSocket connections pin your Durable Object to memory, and so duration charges will be incurred so long as the WebSocket is connected (regardless of activity). To avoid duration charges during periods of inactivity, use the [WebSocket Hibernation API](https://developers.cloudflare.com/durable-objects/examples/websocket-hibernation-server/), which only charges for duration when JavaScript is actively executing.
 
-* [  JavaScript ](#tab-panel-6317)
-* [  TypeScript ](#tab-panel-6318)
-* [  Python ](#tab-panel-6319)
+* [  JavaScript ](#tab-panel-8362)
+* [  TypeScript ](#tab-panel-8363)
+* [  Python ](#tab-panel-8364)
 
 JavaScript
 
@@ -644,8 +644,8 @@ class WebSocketServer(DurableObject):
 
 Finally, configure your Wrangler file to include a Durable Object [binding](https://developers.cloudflare.com/durable-objects/get-started/#4-configure-durable-object-bindings) and [migration](https://developers.cloudflare.com/durable-objects/reference/durable-objects-migrations/) based on the namespace and class name chosen previously.
 
-* [  wrangler.jsonc ](#tab-panel-6315)
-* [  wrangler.toml ](#tab-panel-6316)
+* [  wrangler.jsonc ](#tab-panel-8360)
+* [  wrangler.toml ](#tab-panel-8361)
 
 JSONC
 
@@ -728,5 +728,6 @@ new_sqlite_classes = [ "WebSocketServer" ]
 * [Durable Objects: Edge Chat Demo ↗](https://github.com/cloudflare/workers-chat-demo).
 
 ```json
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/durable-objects/examples/websocket-server/#page","headline":"Build a WebSocket server · Cloudflare Durable Objects docs","description":"Build a WebSocket server using Durable Objects and Workers.","url":"https://developers.cloudflare.com/durable-objects/examples/websocket-server/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["WebSockets"]}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/durable-objects/","name":"Durable Objects"}},{"@type":"ListItem","position":3,"item":{"@id":"/durable-objects/examples/","name":"Examples"}},{"@type":"ListItem","position":4,"item":{"@id":"/durable-objects/examples/websocket-server/","name":"Build a WebSocket server"}}]}
 ```

@@ -36,10 +36,10 @@ Try out this model with Workers AI LLM Playground. It does not require any setup
 
 ## Usage
 
-* [  Worker (Streaming) ](#tab-panel-4708)
-* [  TypeScript ](#tab-panel-4709)
-* [  Python ](#tab-panel-4710)
-* [  curl ](#tab-panel-4711)
+* [  Worker (Streaming) ](#tab-panel-4879)
+* [  TypeScript ](#tab-panel-4880)
+* [  Python ](#tab-panel-4881)
+* [  curl ](#tab-panel-4882)
 
 TypeScript
 
@@ -287,5 +287,6 @@ format
  Streaming Output [ ](https://developers.cloudflare.com/workers-ai/models/hermes-2-pro-mistral-7b/streaming-output.json "Open") [ ](https://developers.cloudflare.com/workers-ai/models/hermes-2-pro-mistral-7b/streaming-output.json "Download") 
 
 ```json
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers-ai/models/hermes-2-pro-mistral-7b/#page","headline":"hermes-2-pro-mistral-7b (nousresearch) · Cloudflare AI docs · Cloudflare Workers AI docs","description":"Hermes 2 Pro on Mistral 7B is the new flagship 7B Hermes! Hermes 2 Pro is an upgraded, retrained version of Nous Hermes 2, consisting of an updated and cleaned version of the OpenHermes 2.5 Dataset, as well as a newly introduced Function Calling and JSON Mode dataset developed in-house.","url":"https://developers.cloudflare.com/workers-ai/models/hermes-2-pro-mistral-7b/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/workers-ai/","name":"Workers AI"}},{"@type":"ListItem","position":3,"item":{"@id":"/workers-ai/models/","name":"Models"}}]}
 ```

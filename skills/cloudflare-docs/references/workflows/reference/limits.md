@@ -166,8 +166,8 @@ This will appear as `exceededCpu` in [wrangler tail](https://developers.cloudfla
 
 By default, the maximum CPU time per Workflow invocation is set to 30 seconds, but can be increased for all invocations associated with a Workflow definition by setting `limits.cpu_ms` in your Wrangler configuration:
 
-* [  wrangler.jsonc ](#tab-panel-12929)
-* [  wrangler.toml ](#tab-panel-12930)
+* [  wrangler.jsonc ](#tab-panel-13075)
+* [  wrangler.toml ](#tab-panel-13076)
 
 JSONC
 
@@ -220,8 +220,8 @@ This will appear as `exceededResources` in [Workers metrics](https://developers.
 
 By default, the maximum number of subrequests per Workflow instance is 10,000 on Workers Paid plans, but this can be increased up to 10 million by setting `limits.subrequests` in your Wrangler configuration:
 
-* [  wrangler.jsonc ](#tab-panel-12931)
-* [  wrangler.toml ](#tab-panel-12932)
+* [  wrangler.jsonc ](#tab-panel-13077)
+* [  wrangler.toml ](#tab-panel-13078)
 
 JSONC
 
@@ -287,5 +287,6 @@ The following table summarizes the wall time limits for different types of Worke
 9. Match pattern: \_`^[a-zA-Z0-9_][a-zA-Z0-9-_]\*$`\_ [↩](#user-content-fnref-4) [↩2](#user-content-fnref-4-2)
 
 ```json
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workflows/reference/limits/#page","headline":"Limits · Cloudflare Workflows docs","description":"Limits for Cloudflare Workflows, including maximum steps, payload sizes, and instance concurrency.","url":"https://developers.cloudflare.com/workflows/reference/limits/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-06-15","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/workflows/","name":"Workflows"}},{"@type":"ListItem","position":3,"item":{"@id":"/workflows/reference/","name":"Platform"}},{"@type":"ListItem","position":4,"item":{"@id":"/workflows/reference/limits/","name":"Limits"}}]}
 ```

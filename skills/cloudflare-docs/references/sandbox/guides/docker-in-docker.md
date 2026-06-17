@@ -86,8 +86,8 @@ This allows you to connect to the container, but it means each inner container h
 
 Once deployed, you can run Docker commands through the sandbox:
 
-* [  JavaScript ](#tab-panel-10082)
-* [  TypeScript ](#tab-panel-10083)
+* [  JavaScript ](#tab-panel-10323)
+* [  TypeScript ](#tab-panel-10324)
 
 JavaScript
 
@@ -206,5 +206,6 @@ Docker-in-Docker in Cloudflare Containers has the following limitations:
 * [Background processes](https://developers.cloudflare.com/sandbox/guides/background-processes/) \- Manage long-running processes
 
 ```json
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/sandbox/guides/docker-in-docker/#page","headline":"Run Docker-in-Docker · Cloudflare Sandbox SDK docs","description":"Run Docker commands inside a sandbox container.","url":"https://developers.cloudflare.com/sandbox/guides/docker-in-docker/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/sandbox/","name":"Sandbox SDK"}},{"@type":"ListItem","position":3,"item":{"@id":"/sandbox/guides/","name":"How-to guides"}},{"@type":"ListItem","position":4,"item":{"@id":"/sandbox/guides/docker-in-docker/","name":"Run Docker-in-Docker"}}]}
 ```

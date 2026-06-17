@@ -26,8 +26,8 @@ After seven days, view your [Shadow IT SaaS Analytics](https://developers.cloudf
 
 To minimize the risk of [shadow IT](https://www.cloudflare.com/learning/access-management/what-is-shadow-it/), some organizations choose to limit their users' access to certain web-based tools and applications. For example, the following policy blocks known AI tools:
 
-* [ Dashboard ](#tab-panel-5569)
-* [ API ](#tab-panel-5570)
+* [ Dashboard ](#tab-panel-7659)
+* [ API ](#tab-panel-7660)
 
 | Selector    | Operator | Value                     | Action |
 | ----------- | -------- | ------------------------- | ------ |
@@ -76,8 +76,8 @@ curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/gateway/rules" \
 
 Configure access on a per user or group basis by adding [identity-based conditions](https://developers.cloudflare.com/cloudflare-one/traffic-policies/identity-selectors/) to your policies.
 
-* [ Dashboard ](#tab-panel-5567)
-* [ API ](#tab-panel-5568)
+* [ Dashboard ](#tab-panel-7657)
+* [ API ](#tab-panel-7658)
 
 | Selector         | Operator | Value         | Logic | Action |
 | ---------------- | -------- | ------------- | ----- | ------ |
@@ -127,9 +127,9 @@ Require devices to have certain software installed or other configuration attrib
 
 In the following example, you can use a list of [device serial numbers](https://developers.cloudflare.com/cloudflare-one/reusable-components/posture-checks/client-checks/corp-device/) to ensure users can only access an application if they connect with the Cloudflare One Client from a company device:
 
-* [ Dashboard ](#tab-panel-5591)
-* [ API ](#tab-panel-5592)
-* [ Terraform ](#tab-panel-5593)
+* [ Dashboard ](#tab-panel-7681)
+* [ API ](#tab-panel-7682)
+* [ Terraform ](#tab-panel-7683)
 
 | Selector                     | Operator | Value                   | Logic | Action |
 | ---------------------------- | -------- | ----------------------- | ----- | ------ |
@@ -212,8 +212,8 @@ Restrict user access to only the specific sites or applications configured in yo
 
 ### 1\. Allow HTTP and HTTPS traffic
 
-* [ Dashboard ](#tab-panel-5571)
-* [ API ](#tab-panel-5572)
+* [ Dashboard ](#tab-panel-7661)
+* [ API ](#tab-panel-7662)
 
 | Selector          | Operator | Value   | Logic | Action |
 | ----------------- | -------- | ------- | ----- | ------ |
@@ -259,8 +259,8 @@ curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/gateway/rules" \
 
 ### 2\. Block all other traffic
 
-* [ Dashboard ](#tab-panel-5573)
-* [ API ](#tab-panel-5574)
+* [ Dashboard ](#tab-panel-7663)
+* [ API ](#tab-panel-7664)
 
 | Selector | Operator | Value        | Action |
 | -------- | -------- | ------------ | ------ |
@@ -307,8 +307,8 @@ curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/gateway/rules" \
 
 If your organization blocks traffic by default with a Network policy and you want to [inspect HTTP traffic on all ports](https://developers.cloudflare.com/cloudflare-one/traffic-policies/network-policies/protocol-detection/#inspect-on-all-ports), you need to explicitly allow HTTP and TLS traffic to filter it.
 
-* [ Dashboard ](#tab-panel-5575)
-* [ API ](#tab-panel-5576)
+* [ Dashboard ](#tab-panel-7665)
+* [ API ](#tab-panel-7666)
 
 | Selector          | Operator | Value  | Logic | Action |
 | ----------------- | -------- | ------ | ----- | ------ |
@@ -362,8 +362,8 @@ When using [source IP proxy endpoints](https://developers.cloudflare.com/cloudfl
 
 #### 1\. Allow proxy endpoint traffic from specific source IPs
 
-* [ Dashboard ](#tab-panel-5577)
-* [ API ](#tab-panel-5578)
+* [ Dashboard ](#tab-panel-7667)
+* [ API ](#tab-panel-7668)
 
 | Selector       | Operator | Value            | Logic | Action |
 | -------------- | -------- | ---------------- | ----- | ------ |
@@ -412,8 +412,8 @@ Replace `<PROXY_ENDPOINT_ID>` with your proxy endpoint ID.
 
 #### 2\. Block all other proxy endpoint traffic to private network
 
-* [ Dashboard ](#tab-panel-5579)
-* [ API ](#tab-panel-5580)
+* [ Dashboard ](#tab-panel-7669)
+* [ API ](#tab-panel-7670)
 
 | Selector       | Operator | Value            | Logic | Action |
 | -------------- | -------- | ---------------- | ----- | ------ |
@@ -465,8 +465,8 @@ When using [authorization proxy endpoints](https://developers.cloudflare.com/clo
 
 #### 1\. Allow proxy endpoint traffic from specific source IPs
 
-* [ Dashboard ](#tab-panel-5581)
-* [ API ](#tab-panel-5582)
+* [ Dashboard ](#tab-panel-7671)
+* [ API ](#tab-panel-7672)
 
 | Selector       | Operator | Value            | Logic | Action |
 | -------------- | -------- | ---------------- | ----- | ------ |
@@ -515,8 +515,8 @@ Replace `<PROXY_ENDPOINT_ID>` with your proxy endpoint ID.
 
 #### 2\. Block all other proxy endpoint traffic to private network
 
-* [ Dashboard ](#tab-panel-5585)
-* [ API ](#tab-panel-5586)
+* [ Dashboard ](#tab-panel-7675)
+* [ API ](#tab-panel-7676)
 
 | Selector       | Operator | Value            | Logic | Action |
 | -------------- | -------- | ---------------- | ----- | ------ |
@@ -570,8 +570,8 @@ The following example consists of two policies: the first allows specific users 
 
 ### 1\. Allow company employees
 
-* [ Dashboard ](#tab-panel-5583)
-* [ API ](#tab-panel-5584)
+* [ Dashboard ](#tab-panel-7673)
+* [ API ](#tab-panel-7674)
 
 | Selector       | Operator      | Value           | Logic | Action |
 | -------------- | ------------- | --------------- | ----- | ------ |
@@ -617,8 +617,8 @@ curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/gateway/rules" \
 
 ### 2\. Block everyone else
 
-* [ Dashboard ](#tab-panel-5587)
-* [ API ](#tab-panel-5588)
+* [ Dashboard ](#tab-panel-7677)
+* [ API ](#tab-panel-7678)
 
 | Selector       | Operator | Value      | Action |
 | -------------- | -------- | ---------- | ------ |
@@ -665,8 +665,8 @@ curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/gateway/rules" \
 
 Override traffic directed toward a specific IP address with a different IP address.
 
-* [ Dashboard ](#tab-panel-5589)
-* [ API ](#tab-panel-5590)
+* [ Dashboard ](#tab-panel-7679)
+* [ API ](#tab-panel-7680)
 
 | Selector         | Operator | Value        | Logic | Action           |
 | ---------------- | -------- | ------------ | ----- | ---------------- |
@@ -731,5 +731,6 @@ curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/gateway/rules" \
 ```
 
 ```json
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/traffic-policies/network-policies/common-policies/#page","headline":"Common network policies · Cloudflare One docs","description":"Reference information for Common policies in Gateway.","url":"https://developers.cloudflare.com/cloudflare-one/traffic-policies/network-policies/common-policies/","inLanguage":"en","image":"https://developers.cloudflare.com/zt-preview.png","dateModified":"2026-04-17","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["REST API","Private networks","Posture"]}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/cloudflare-one/","name":"Cloudflare One"}},{"@type":"ListItem","position":3,"item":{"@id":"/cloudflare-one/traffic-policies/","name":"Traffic policies"}},{"@type":"ListItem","position":4,"item":{"@id":"/cloudflare-one/traffic-policies/network-policies/","name":"Network policies"}},{"@type":"ListItem","position":5,"item":{"@id":"/cloudflare-one/traffic-policies/network-policies/common-policies/","name":"Common policies"}}]}
 ```

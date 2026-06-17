@@ -1,5 +1,5 @@
 ---
-title: Zero Trust GitLab SSH &#38; HTTP
+title: Zero Trust GitLab SSH &amp; HTTP
 description: Learn how to add Zero Trust rules to a self-hosted instance of GitLab. This tutorial walks you through deploying GitLab in DigitalOcean.
 image: https://developers.cloudflare.com/zt-preview.png
 ---
@@ -456,5 +456,6 @@ cloudflared access login <your-git-access-url>
 Replace `<your-git-access-url>` with the Cloudflare Access-protected URL.
 
 ```json
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/tutorials/gitlab/#page","headline":"Zero Trust GitLab SSH & HTTP · Cloudflare One docs","description":"Learn how to add Zero Trust rules to a self-hosted instance of GitLab. This tutorial walks you through deploying GitLab in DigitalOcean.","url":"https://developers.cloudflare.com/cloudflare-one/tutorials/gitlab/","inLanguage":"en","image":"https://developers.cloudflare.com/zt-preview.png","dateModified":"2026-05-06","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["SSH"]}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/cloudflare-one/","name":"Cloudflare One"}},{"@type":"ListItem","position":3,"item":{"@id":"/cloudflare-one/tutorials/","name":"Tutorials"}},{"@type":"ListItem","position":4,"item":{"@id":"/cloudflare-one/tutorials/gitlab/","name":"Zero Trust GitLab SSH & HTTP"}}]}
 ```

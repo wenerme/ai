@@ -54,8 +54,8 @@ npm install agents @cloudflare/codemode ai zod
 
 Add the Browser Run (formerly Browser Rendering) and Worker Loader bindings to your wrangler configuration:
 
-* [  wrangler.jsonc ](#tab-panel-4856)
-* [  wrangler.toml ](#tab-panel-4857)
+* [  wrangler.jsonc ](#tab-panel-5425)
+* [  wrangler.toml ](#tab-panel-5426)
 
 JSONC
 
@@ -107,8 +107,8 @@ binding = "LOADER"
 
 ### 2\. Create browser tools
 
-* [  JavaScript ](#tab-panel-4860)
-* [  TypeScript ](#tab-panel-4861)
+* [  JavaScript ](#tab-panel-5429)
+* [  TypeScript ](#tab-panel-5430)
 
 JavaScript
 
@@ -152,8 +152,8 @@ To connect to a custom CDP endpoint instead of the Browser Run binding, pass `cd
 
 Pass browser tools alongside your other tools. The `model` can be any AI SDK provider — here using Workers AI:
 
-* [  JavaScript ](#tab-panel-4862)
-* [  TypeScript ](#tab-panel-4863)
+* [  JavaScript ](#tab-panel-5431)
+* [  TypeScript ](#tab-panel-5432)
 
 JavaScript
 
@@ -285,8 +285,8 @@ async () => {
 
 The typical pattern is to create browser tools inside an [AIChatAgent](https://developers.cloudflare.com/agents/communication-channels/chat/chat-agents/) message handler, which gives you message persistence and streaming:
 
-* [  JavaScript ](#tab-panel-4868)
-* [  TypeScript ](#tab-panel-4869)
+* [  JavaScript ](#tab-panel-5437)
+* [  TypeScript ](#tab-panel-5438)
 
 JavaScript
 
@@ -404,8 +404,8 @@ export class MyAgent extends AIChatAgent<Env> {
 
 For TanStack AI, use the `/tanstack-ai` export:
 
-* [  JavaScript ](#tab-panel-4864)
-* [  TypeScript ](#tab-panel-4865)
+* [  JavaScript ](#tab-panel-5433)
+* [  TypeScript ](#tab-panel-5434)
 
 JavaScript
 
@@ -529,8 +529,8 @@ Either `browser` or `cdpUrl` must be provided. When both are set, `cdpUrl` takes
 
 For custom integrations, import the building blocks directly:
 
-* [  JavaScript ](#tab-panel-4866)
-* [  TypeScript ](#tab-panel-4867)
+* [  JavaScript ](#tab-panel-5435)
+* [  TypeScript ](#tab-panel-5436)
 
 JavaScript
 
@@ -633,8 +633,8 @@ pnpm add -D @cloudflare/puppeteer
 bun add -d @cloudflare/puppeteer
 ```
 
-* [  JavaScript ](#tab-panel-4872)
-* [  TypeScript ](#tab-panel-4873)
+* [  JavaScript ](#tab-panel-5441)
+* [  TypeScript ](#tab-panel-5442)
 
 JavaScript
 
@@ -779,8 +779,8 @@ export class MyAgent extends Agent<Env> {
 
 Add the browser binding to your wrangler configuration:
 
-* [  wrangler.jsonc ](#tab-panel-4858)
-* [  wrangler.toml ](#tab-panel-4859)
+* [  wrangler.jsonc ](#tab-panel-5427)
+* [  wrangler.toml ](#tab-panel-5428)
 
 JSONC
 
@@ -858,8 +858,8 @@ pnpm add @cloudflare/puppeteer
 bun add @cloudflare/puppeteer
 ```
 
-* [  JavaScript ](#tab-panel-4870)
-* [  TypeScript ](#tab-panel-4871)
+* [  JavaScript ](#tab-panel-5439)
+* [  TypeScript ](#tab-panel-5440)
 
 JavaScript
 
@@ -937,5 +937,6 @@ export class MyAgent extends Agent<Env> {
 ```
 
 ```json
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/agents/examples/browser-agent/#page","headline":"Browser agent · Cloudflare Agents docs","description":"Build an agent that uses Browser Run tools to inspect pages, capture screenshots, scrape rendered content, and debug frontend issues.","url":"https://developers.cloudflare.com/agents/examples/browser-agent/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-06-03","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/agents/","name":"Agents"}},{"@type":"ListItem","position":3,"item":{"@id":"/agents/examples/","name":"Examples"}},{"@type":"ListItem","position":4,"item":{"@id":"/agents/examples/browser-agent/","name":"Browser agent"}}]}
 ```

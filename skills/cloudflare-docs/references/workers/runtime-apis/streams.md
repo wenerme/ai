@@ -33,9 +33,9 @@ If your Worker only forwards subrequest responses to the client verbatim without
 
 The worker can create a `Response` object using a `ReadableStream` as the body. Any data provided through the`ReadableStream` will be streamed to the client as it becomes available.
 
-* [  Module Worker ](#tab-panel-11915)
-* [  Service Worker ](#tab-panel-11916)
-* [  Python ](#tab-panel-11917)
+* [  Module Worker ](#tab-panel-12063)
+* [  Service Worker ](#tab-panel-12064)
+* [  Python ](#tab-panel-12065)
 
 JavaScript
 
@@ -117,9 +117,9 @@ class Default(WorkerEntrypoint):
 
 A [TransformStream](https://developers.cloudflare.com/workers/runtime-apis/streams/transformstream/) and the [ReadableStream.pipeTo()](https://developers.cloudflare.com/workers/runtime-apis/streams/readablestream/#methods) method can be used to modify the response body as it is being streamed:
 
-* [  Module Worker ](#tab-panel-11918)
-* [  Service Worker ](#tab-panel-11919)
-* [  Python ](#tab-panel-11920)
+* [  Module Worker ](#tab-panel-12066)
+* [  Service Worker ](#tab-panel-12067)
+* [  Python ](#tab-panel-12068)
 
 JavaScript
 
@@ -272,5 +272,6 @@ The Streams API is only available inside of the [Request context](https://develo
 * Write your Worker code in [ES modules syntax](https://developers.cloudflare.com/workers/reference/migrate-to-module-workers/) for an optimized experience.
 
 ```json
+{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/workers/runtime-apis/streams/#page","headline":"Streams - Runtime APIs · Cloudflare Workers docs","description":"A web standard API that allows JavaScript to programmatically access and process streams of data.","url":"https://developers.cloudflare.com/workers/runtime-apis/streams/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-06-15","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/workers/","name":"Workers"}},{"@type":"ListItem","position":3,"item":{"@id":"/workers/runtime-apis/","name":"Runtime APIs"}},{"@type":"ListItem","position":4,"item":{"@id":"/workers/runtime-apis/streams/","name":"Streams"}}]}
 ```

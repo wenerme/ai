@@ -59,9 +59,9 @@ You can acknowledge individual messages within a batch by explicitly acknowledgi
 
 To explicitly acknowledge a message as delivered, call the `ack()` method on the message.
 
-* [  JavaScript ](#tab-panel-6945)
-* [  TypeScript ](#tab-panel-6946)
-* [  Python ](#tab-panel-6947)
+* [  JavaScript ](#tab-panel-9567)
+* [  TypeScript ](#tab-panel-9568)
+* [  Python ](#tab-panel-9569)
 
 index.js
 
@@ -137,9 +137,9 @@ class Default(WorkerEntrypoint):
 
 You can also call `retry()` to explicitly force a message to be redelivered in a subsequent batch. This is referred to as "negative acknowledgement". This can be particularly useful when you want to process the rest of the messages in that batch without throwing an error that would force the entire batch to be redelivered.
 
-* [  JavaScript ](#tab-panel-6948)
-* [  TypeScript ](#tab-panel-6949)
-* [  Python ](#tab-panel-6950)
+* [  JavaScript ](#tab-panel-9570)
+* [  TypeScript ](#tab-panel-9571)
+* [  Python ](#tab-panel-9572)
 
 index.js
 
@@ -247,9 +247,9 @@ Configuring delivery and retry delays via the `wrangler` CLI or when [developing
 
 To delay a message or batch of messages when sending to a queue, you can provide a `delaySeconds` parameter when sending a message.
 
-* [  JavaScript ](#tab-panel-6951)
-* [  TypeScript ](#tab-panel-6952)
-* [  Python ](#tab-panel-6953)
+* [  JavaScript ](#tab-panel-9573)
+* [  TypeScript ](#tab-panel-9574)
+* [  Python ](#tab-panel-9575)
 
 index.js
 
@@ -339,9 +339,9 @@ When [consuming messages from a queue](https://developers.cloudflare.com/queues/
 
 To delay an individual message within a batch:
 
-* [  JavaScript ](#tab-panel-6954)
-* [  TypeScript ](#tab-panel-6955)
-* [  Python ](#tab-panel-6956)
+* [  JavaScript ](#tab-panel-9576)
+* [  TypeScript ](#tab-panel-9577)
+* [  Python ](#tab-panel-9578)
 
 index.js
 
@@ -417,9 +417,9 @@ class Default(WorkerEntrypoint):
 
 To delay a batch of messages:
 
-* [  JavaScript ](#tab-panel-6957)
-* [  TypeScript ](#tab-panel-6958)
-* [  Python ](#tab-panel-6959)
+* [  JavaScript ](#tab-panel-9579)
+* [  TypeScript ](#tab-panel-9580)
+* [  Python ](#tab-panel-9581)
 
 index.js
 
@@ -509,8 +509,8 @@ npx wrangler@latest queues consumer http add $QUEUE-NAME --retry-delay-secs=60
 
 Delays can also be configured in the [Wrangler configuration file](https://developers.cloudflare.com/workers/wrangler/configuration/#queues) with the `delivery_delay` setting for producers (when sending) and/or the `retry_delay` (when retrying) per-consumer:
 
-* [  wrangler.jsonc ](#tab-panel-6943)
-* [  wrangler.toml ](#tab-panel-6944)
+* [  wrangler.jsonc ](#tab-panel-9565)
+* [  wrangler.toml ](#tab-panel-9566)
 
 JSONC
 
@@ -595,9 +595,9 @@ Each message delivered to a consumer includes an `attempts` property that tracks
 
 For example, to generate an [exponential backoff ↗](https://en.wikipedia.org/wiki/Exponential%5Fbackoff) for a message, you can create a helper function that calculates this for you:
 
-* [  JavaScript ](#tab-panel-6960)
-* [  TypeScript ](#tab-panel-6961)
-* [  Python ](#tab-panel-6962)
+* [  JavaScript ](#tab-panel-9582)
+* [  TypeScript ](#tab-panel-9583)
+* [  Python ](#tab-panel-9584)
 
 index.js
 
@@ -644,9 +644,9 @@ def calculate_exponential_backoff(attempts, base_delay_seconds):
 
 In your consumer, you then pass the value of `msg.attempts` and your desired delay factor as the argument to `delaySeconds` when calling `retry()` on an individual message:
 
-* [  JavaScript ](#tab-panel-6963)
-* [  TypeScript ](#tab-panel-6964)
-* [  Python ](#tab-panel-6965)
+* [  JavaScript ](#tab-panel-9585)
+* [  TypeScript ](#tab-panel-9586)
+* [  Python ](#tab-panel-9587)
 
 index.js
 
@@ -762,5 +762,6 @@ class Default(WorkerEntrypoint):
 * Understand the [metrics available](https://developers.cloudflare.com/queues/observability/metrics/) for your queues, including backlog and delayed message counts.
 
 ```json
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/queues/configuration/batching-retries/#page","headline":"Batching, Retries and Delays · Cloudflare Queues docs","description":"Configure message batching, retry behavior, and delivery delays for Cloudflare Queues.","url":"https://developers.cloudflare.com/queues/configuration/batching-retries/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/queues/","name":"Queues"}},{"@type":"ListItem","position":3,"item":{"@id":"/queues/configuration/","name":"Configuration"}},{"@type":"ListItem","position":4,"item":{"@id":"/queues/configuration/batching-retries/","name":"Batching, Retries and Delays"}}]}
 ```

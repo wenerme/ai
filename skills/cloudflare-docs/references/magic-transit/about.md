@@ -56,5 +56,6 @@ Cloudflare's China Network does not yet support Magic Transit.
 For detailed information on Magic Transit architecture, refer to the [Reference section](https://developers.cloudflare.com/magic-transit/reference/).
 
 ```json
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/magic-transit/about/#page","headline":"About Magic Transit · Cloudflare Magic Transit docs","description":"How Magic Transit protects your network with BGP and GRE/IPsec tunnels.","url":"https://developers.cloudflare.com/magic-transit/about/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-17","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/magic-transit/","name":"Magic Transit"}},{"@type":"ListItem","position":3,"item":{"@id":"/magic-transit/about/","name":"About"}}]}
 ```

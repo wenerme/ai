@@ -144,5 +144,6 @@ resource "aws_s3_bucket_lifecycle_configuration" "default" {
 You can then use `terraform plan` to view the changes and `terraform apply` to apply changes.
 
 ```json
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/r2/examples/terraform-aws/#page","headline":"Terraform (AWS) · Cloudflare R2 docs","description":"Configure R2 buckets and objects with Terraform using the AWS provider.","url":"https://developers.cloudflare.com/r2/examples/terraform-aws/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/r2/","name":"R2"}},{"@type":"ListItem","position":3,"item":{"@id":"/r2/examples/","name":"Examples"}},{"@type":"ListItem","position":4,"item":{"@id":"/r2/examples/terraform-aws/","name":"Terraform (AWS)"}}]}
 ```

@@ -30,8 +30,8 @@ Aura is a context-aware text-to-speech (TTS) model that applies natural pacing, 
 
 ## Usage
 
-* [  TypeScript ](#tab-panel-4560)
-* [  curl ](#tab-panel-4561)
+* [  TypeScript ](#tab-panel-4721)
+* [  curl ](#tab-panel-4722)
 
 ```
 
@@ -74,8 +74,8 @@ curl --request POST   --url 'https://api.cloudflare.com/client/v4/accounts/{ACCO
 
 ## Parameters
 
-* [ Input ](#tab-panel-4562)
-* [ Output ](#tab-panel-4563)
+* [ Input ](#tab-panel-4723)
+* [ Output ](#tab-panel-4724)
 
 speaker
 
@@ -110,5 +110,6 @@ Input [ ](https://developers.cloudflare.com/workers-ai/models/aura-1/schema-inpu
 Output [ ](https://developers.cloudflare.com/workers-ai/models/aura-1/schema-output.json "Open") [ ](https://developers.cloudflare.com/workers-ai/models/aura-1/schema-output.json "Download") 
 
 ```json
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers-ai/models/aura-1/#page","headline":"aura-1 (Deepgram) · Cloudflare AI docs · Cloudflare Workers AI docs","description":"Aura is a context-aware text-to-speech (TTS) model that applies natural pacing, expressiveness, and fillers based on the context of the provided text. The quality of your text input directly impacts the naturalness of the audio output.","url":"https://developers.cloudflare.com/workers-ai/models/aura-1/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/workers-ai/","name":"Workers AI"}},{"@type":"ListItem","position":3,"item":{"@id":"/workers-ai/models/","name":"Models"}}]}
 ```

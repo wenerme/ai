@@ -303,9 +303,9 @@ The following global flags work on every command:
 
 🪄 Setup a project to work on Cloudflare
 
-* [  npm ](#tab-panel-12162)
-* [  pnpm ](#tab-panel-12163)
-* [  yarn ](#tab-panel-12164)
+* [  npm ](#tab-panel-12739)
+* [  pnpm ](#tab-panel-12740)
+* [  yarn ](#tab-panel-12741)
 
 Terminal window
 
@@ -374,9 +374,9 @@ This action creates a new [version](https://developers.cloudflare.com/workers/co
 
 Create or update a secret for a Worker
 
-* [  npm ](#tab-panel-12165)
-* [  pnpm ](#tab-panel-12166)
-* [  yarn ](#tab-panel-12167)
+* [  npm ](#tab-panel-12742)
+* [  pnpm ](#tab-panel-12743)
+* [  yarn ](#tab-panel-12744)
 
 Terminal window
 
@@ -466,9 +466,9 @@ echo "-----BEGIN PRIVATE KEY-----\nM...==\n-----END PRIVATE KEY-----\n" | wrangl
 
 Delete a secret from a Worker
 
-* [  npm ](#tab-panel-12168)
-* [  pnpm ](#tab-panel-12169)
-* [  yarn ](#tab-panel-12170)
+* [  npm ](#tab-panel-12745)
+* [  pnpm ](#tab-panel-12746)
+* [  yarn ](#tab-panel-12747)
 
 Terminal window
 
@@ -525,9 +525,9 @@ Install Cloudflare agents skills, if not already present, without asking the use
 
 List all secrets for a Worker
 
-* [  npm ](#tab-panel-12171)
-* [  pnpm ](#tab-panel-12172)
-* [  yarn ](#tab-panel-12173)
+* [  npm ](#tab-panel-12748)
+* [  pnpm ](#tab-panel-12749)
+* [  yarn ](#tab-panel-12750)
 
 Terminal window
 
@@ -614,9 +614,9 @@ npx wrangler secret list
 
 Create, update, or delete multiple secrets for a Worker in a single request, with up to 100 secrets per command.
 
-* [  npm ](#tab-panel-12174)
-* [  pnpm ](#tab-panel-12175)
-* [  yarn ](#tab-panel-12176)
+* [  npm ](#tab-panel-12751)
+* [  pnpm ](#tab-panel-12752)
+* [  yarn ](#tab-panel-12753)
 
 Terminal window
 
@@ -725,9 +725,9 @@ Finished processing secrets file:
 
 🦚 Start a log tailing session for a Worker
 
-* [  npm ](#tab-panel-12177)
-* [  pnpm ](#tab-panel-12178)
-* [  yarn ](#tab-panel-12179)
+* [  npm ](#tab-panel-12754)
+* [  pnpm ](#tab-panel-12755)
+* [  yarn ](#tab-panel-12756)
 
 Terminal window
 
@@ -816,9 +816,9 @@ The minimum required wrangler version to use these commands is 3.40.0\. For vers
 
 Upload a new [version](https://developers.cloudflare.com/workers/configuration/versions-and-deployments/#versions) of your Worker that is not deployed immediately.
 
-* [  npm ](#tab-panel-12180)
-* [  pnpm ](#tab-panel-12181)
-* [  yarn ](#tab-panel-12182)
+* [  npm ](#tab-panel-12757)
+* [  pnpm ](#tab-panel-12758)
+* [  yarn ](#tab-panel-12759)
 
 Terminal window
 
@@ -917,9 +917,9 @@ Install Cloudflare agents skills, if not already present, without asking the use
 
 Deploy a previously created [version](https://developers.cloudflare.com/workers/configuration/versions-and-deployments/#versions) of your Worker all at once or create a [gradual deployment](https://developers.cloudflare.com/workers/configuration/versions-and-deployments/gradual-deployments/) to incrementally shift traffic to a new version by following an interactive prompt.
 
-* [  npm ](#tab-panel-12183)
-* [  pnpm ](#tab-panel-12184)
-* [  yarn ](#tab-panel-12185)
+* [  npm ](#tab-panel-12760)
+* [  pnpm ](#tab-panel-12761)
+* [  yarn ](#tab-panel-12762)
 
 Terminal window
 
@@ -956,6 +956,8 @@ Worker Version ID(s) to deploy
 Percentage of traffic to split between Worker Version(s) (0-100)
 * `[VERSION-SPECS]` ` string `  
 Shorthand notation to deploy Worker Version(s) \[<version-id>@<percentage>..\]. Omitted percentages share the remaining traffic.
+* `--version-tag` ` string `  
+Worker Version tag(s) to deploy, resolved to a Version ID against the deployable versions. Supports the shorthand notation \[<version-tag>@<percentage>..\].
 * `--message` ` string `  
 Description of this deployment (optional)
 * `--yes` ` boolean ` alias: --y default: false  
@@ -992,9 +994,9 @@ For example:`wrangler versions deploy 095f00a7-23a7-43b7-a227-e4c97cab5f22@10% 1
 
 Retrieve details for the 10 most recent versions. Details include `Version ID`, `Created on`, `Author`, `Source`, and optionally, `Tag` or `Message`.
 
-* [  npm ](#tab-panel-12186)
-* [  pnpm ](#tab-panel-12187)
-* [  yarn ](#tab-panel-12188)
+* [  npm ](#tab-panel-12763)
+* [  pnpm ](#tab-panel-12764)
+* [  yarn ](#tab-panel-12765)
 
 Terminal window
 
@@ -1051,9 +1053,9 @@ Install Cloudflare agents skills, if not already present, without asking the use
 
 View the details of a specific version of your Worker
 
-* [  npm ](#tab-panel-12189)
-* [  pnpm ](#tab-panel-12190)
-* [  yarn ](#tab-panel-12191)
+* [  npm ](#tab-panel-12766)
+* [  pnpm ](#tab-panel-12767)
+* [  yarn ](#tab-panel-12768)
 
 Terminal window
 
@@ -1112,9 +1114,9 @@ Install Cloudflare agents skills, if not already present, without asking the use
 
 Create or update a secret variable for a Worker
 
-* [  npm ](#tab-panel-12192)
-* [  pnpm ](#tab-panel-12193)
-* [  yarn ](#tab-panel-12194)
+* [  npm ](#tab-panel-12769)
+* [  pnpm ](#tab-panel-12770)
+* [  yarn ](#tab-panel-12771)
 
 Terminal window
 
@@ -1175,9 +1177,9 @@ Install Cloudflare agents skills, if not already present, without asking the use
 
 Delete a secret variable from a Worker
 
-* [  npm ](#tab-panel-12195)
-* [  pnpm ](#tab-panel-12196)
-* [  yarn ](#tab-panel-12197)
+* [  npm ](#tab-panel-12772)
+* [  pnpm ](#tab-panel-12773)
+* [  yarn ](#tab-panel-12774)
 
 Terminal window
 
@@ -1238,9 +1240,9 @@ Install Cloudflare agents skills, if not already present, without asking the use
 
 Create or update a secret variable for a Worker
 
-* [  npm ](#tab-panel-12198)
-* [  pnpm ](#tab-panel-12199)
-* [  yarn ](#tab-panel-12200)
+* [  npm ](#tab-panel-12775)
+* [  pnpm ](#tab-panel-12776)
+* [  yarn ](#tab-panel-12777)
 
 Terminal window
 
@@ -1312,9 +1314,9 @@ Experimental
 
 Apply changes to triggers (Routes or domains and Cron Triggers) when using `wrangler versions upload`
 
-* [  npm ](#tab-panel-12201)
-* [  pnpm ](#tab-panel-12202)
-* [  yarn ](#tab-panel-12203)
+* [  npm ](#tab-panel-12778)
+* [  pnpm ](#tab-panel-12779)
+* [  yarn ](#tab-panel-12780)
 
 Terminal window
 
@@ -1385,9 +1387,9 @@ The minimum required wrangler version to use these commands is 3.40.0\. For vers
 
 Displays the 10 most recent deployments of your Worker
 
-* [  npm ](#tab-panel-12204)
-* [  pnpm ](#tab-panel-12205)
-* [  yarn ](#tab-panel-12206)
+* [  npm ](#tab-panel-12781)
+* [  pnpm ](#tab-panel-12782)
+* [  yarn ](#tab-panel-12783)
 
 Terminal window
 
@@ -1444,9 +1446,9 @@ Install Cloudflare agents skills, if not already present, without asking the use
 
 View the current state of your production
 
-* [  npm ](#tab-panel-12207)
-* [  pnpm ](#tab-panel-12208)
-* [  yarn ](#tab-panel-12209)
+* [  npm ](#tab-panel-12784)
+* [  pnpm ](#tab-panel-12785)
+* [  yarn ](#tab-panel-12786)
 
 Terminal window
 
@@ -1626,5 +1628,6 @@ The following global flags work on every command:
    * Run as if Wrangler was started in the specified directory instead of the current working directory.
 
 ```json
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/wrangler/commands/workers/#page","headline":"Workers · Cloudflare Workers docs","description":"Wrangler commands for creating, developing, deploying, and managing Workers.","url":"https://developers.cloudflare.com/workers/wrangler/commands/workers/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-06-03","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/workers/","name":"Workers"}},{"@type":"ListItem","position":3,"item":{"@id":"/workers/wrangler/","name":"Wrangler"}},{"@type":"ListItem","position":4,"item":{"@id":"/workers/wrangler/commands/","name":"Commands"}},{"@type":"ListItem","position":5,"item":{"@id":"/workers/wrangler/commands/workers/","name":"Workers"}}]}
 ```

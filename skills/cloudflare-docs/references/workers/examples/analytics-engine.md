@@ -24,8 +24,8 @@ Unlike logs, Analytics Engine is designed for aggregated queries over high-cardi
 
 Add an Analytics Engine dataset binding to your Wrangler configuration file. The dataset is created automatically when you first write to it.
 
-* [  wrangler.jsonc ](#tab-panel-10406)
-* [  wrangler.toml ](#tab-panel-10407)
+* [  wrangler.jsonc ](#tab-panel-11585)
+* [  wrangler.toml ](#tab-panel-11586)
 
 JSONC
 
@@ -65,8 +65,8 @@ dataset = "my_dataset"
 
 ## Write data points
 
-* [  JavaScript ](#tab-panel-10408)
-* [  TypeScript ](#tab-panel-10409)
+* [  JavaScript ](#tab-panel-11587)
+* [  TypeScript ](#tab-panel-11588)
 
 JavaScript
 
@@ -229,5 +229,6 @@ curl "https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/analy
 * [Grafana integration](https://developers.cloudflare.com/analytics/analytics-engine/grafana/) \- Visualize Analytics Engine data in Grafana.
 
 ```json
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/examples/analytics-engine/#page","headline":"Write to Analytics Engine · Cloudflare Workers docs","description":"Write custom analytics events to Workers Analytics Engine for high-cardinality, time-series data.","url":"https://developers.cloudflare.com/workers/examples/analytics-engine/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/workers/","name":"Workers"}},{"@type":"ListItem","position":3,"item":{"@id":"/workers/examples/","name":"Examples"}},{"@type":"ListItem","position":4,"item":{"@id":"/workers/examples/analytics-engine/","name":"Write to Analytics Engine"}}]}
 ```

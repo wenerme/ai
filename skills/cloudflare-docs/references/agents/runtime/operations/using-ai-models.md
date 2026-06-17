@@ -26,8 +26,8 @@ Agents can call AI models on their own — autonomously — and can handle long-
 
 Modern reasoning models can take some time to both generate a response _and_ stream the response back to the client. Instead of buffering the entire response, you can stream it back over [WebSockets](https://developers.cloudflare.com/agents/runtime/communication/websockets/).
 
-* [  JavaScript ](#tab-panel-5882)
-* [  TypeScript ](#tab-panel-5883)
+* [  JavaScript ](#tab-panel-6481)
+* [  TypeScript ](#tab-panel-6482)
 
 src/index.js
 
@@ -184,8 +184,8 @@ You can use [any of the models available in Workers AI](https://developers.cloud
 
 Workers AI supports streaming responses by setting `stream: true`. Use streaming to avoid buffering and delaying responses, especially for larger models or reasoning models.
 
-* [  JavaScript ](#tab-panel-5876)
-* [  TypeScript ](#tab-panel-5877)
+* [  JavaScript ](#tab-panel-6475)
+* [  TypeScript ](#tab-panel-6476)
 
 src/index.js
 
@@ -274,8 +274,8 @@ export class MyAgent extends Agent<Env> {
 
 Your Wrangler configuration needs an `ai` binding:
 
-* [  wrangler.jsonc ](#tab-panel-5870)
-* [  wrangler.toml ](#tab-panel-5871)
+* [  wrangler.jsonc ](#tab-panel-6469)
+* [  wrangler.toml ](#tab-panel-6470)
 
 JSONC
 
@@ -309,8 +309,8 @@ binding = "AI"
 
 You can use [AI Gateway](https://developers.cloudflare.com/ai-gateway/) directly from an Agent by specifying a [gateway configuration](https://developers.cloudflare.com/ai-gateway/usage/providers/workersai/) when calling the AI binding. Model routing lets you route requests across providers based on availability, rate limits, or cost budgets.
 
-* [  JavaScript ](#tab-panel-5880)
-* [  TypeScript ](#tab-panel-5881)
+* [  JavaScript ](#tab-panel-6479)
+* [  TypeScript ](#tab-panel-6480)
 
 src/index.js
 
@@ -415,8 +415,8 @@ export class MyAgent extends Agent<Env> {
 
 The `ai` binding in your Wrangler configuration is shared across both Workers AI and AI Gateway.
 
-* [  wrangler.jsonc ](#tab-panel-5872)
-* [  wrangler.toml ](#tab-panel-5873)
+* [  wrangler.jsonc ](#tab-panel-6471)
+* [  wrangler.toml ](#tab-panel-6472)
 
 JSONC
 
@@ -470,8 +470,8 @@ pnpm add ai workers-ai-provider
 bun add ai workers-ai-provider
 ```
 
-* [  JavaScript ](#tab-panel-5878)
-* [  TypeScript ](#tab-panel-5879)
+* [  JavaScript ](#tab-panel-6477)
+* [  TypeScript ](#tab-panel-6478)
 
 src/index.js
 
@@ -570,8 +570,8 @@ pnpm add ai @ai-sdk/openai
 bun add ai @ai-sdk/openai
 ```
 
-* [  JavaScript ](#tab-panel-5874)
-* [  TypeScript ](#tab-panel-5875)
+* [  JavaScript ](#tab-panel-6473)
+* [  TypeScript ](#tab-panel-6474)
 
 src/index.js
 
@@ -645,8 +645,8 @@ Agents can call models across any service that supports the OpenAI API. For exam
 
 Agents can stream responses back over HTTP using Server-Sent Events (SSE) from within an `onRequest` handler, or by using the native [WebSocket API](https://developers.cloudflare.com/agents/runtime/communication/websockets/) to stream responses back to a client.
 
-* [  JavaScript ](#tab-panel-5884)
-* [  TypeScript ](#tab-panel-5885)
+* [  JavaScript ](#tab-panel-6483)
+* [  TypeScript ](#tab-panel-6484)
 
 src/index.js
 
@@ -797,5 +797,6 @@ export class MyAgent extends Agent {
 ```
 
 ```json
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/agents/runtime/operations/using-ai-models/#page","headline":"Using AI Models · Cloudflare Agents docs","description":"Call AI models from Workers AI, OpenAI, Anthropic, Google Gemini, or any provider within Cloudflare Agents.","url":"https://developers.cloudflare.com/agents/runtime/operations/using-ai-models/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-06-03","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["AI"]}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/agents/","name":"Agents"}},{"@type":"ListItem","position":3,"item":{"@id":"/agents/runtime/","name":"Runtime"}},{"@type":"ListItem","position":4,"item":{"@id":"/agents/runtime/operations/","name":"Operations"}},{"@type":"ListItem","position":5,"item":{"@id":"/agents/runtime/operations/using-ai-models/","name":"Using AI Models"}}]}
 ```

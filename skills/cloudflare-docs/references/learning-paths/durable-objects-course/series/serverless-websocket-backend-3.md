@@ -12,8 +12,8 @@ image: https://developers.cloudflare.com/cf-twitter-card.png
 
 # Create a serverless websocket 'backend'
 
-* [ Watch this episode ](#tab-panel-6445)
-* [ Series overview ](#tab-panel-6446)
+* [ Watch this episode ](#tab-panel-9063)
+* [ Series overview ](#tab-panel-9064)
 
 In this video, we'll create a WebSocket backend using serverless technology, making the process simpler than ever before. You'll learn how to create your first Durable Object, set up a WebSocket server to coordinate connections, and keep track of connected clients.
 
@@ -43,5 +43,6 @@ For additional resources on learning Durable Objects with Cloudflare, refer to t
 [ Watch Episode 7: Deploy your video call app ](https://developers.cloudflare.com/learning-paths/durable-objects-course/series/deploy-your-video-call-app-7/) In this final episode, we configure the remaining functionalities. By the end, your app will be fully functional and ready for deployment. 
 
 ```json
+{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/learning-paths/durable-objects-course/series/serverless-websocket-backend-3/#page","headline":"Create a serverless websocket 'backend' · Cloudflare Learning Paths","description":"Learn about create a serverless websocket backend in this guide.","url":"https://developers.cloudflare.com/learning-paths/durable-objects-course/series/serverless-websocket-backend-3/","inLanguage":"en","image":"https://developers.cloudflare.com/cf-twitter-card.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/learning-paths/","name":"Learning Paths"}},{"@type":"ListItem","position":3,"item":{"@id":"/learning-paths/durable-objects-course/series/","name":"Overview"}},{"@type":"ListItem","position":4,"item":{"@id":"/learning-paths/durable-objects-course/series/serverless-websocket-backend-3/","name":"Create a serverless websocket 'backend'"}}]}
 ```

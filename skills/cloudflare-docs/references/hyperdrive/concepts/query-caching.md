@@ -22,8 +22,8 @@ Besides determining the difference between a `SELECT` and an `INSERT`, Hyperdriv
 
 For example, a read query that populates the front page of a news site would be cached:
 
-* [ PostgreSQL ](#tab-panel-6042)
-* [ MySQL ](#tab-panel-6043)
+* [ PostgreSQL ](#tab-panel-8624)
+* [ MySQL ](#tab-panel-8625)
 
 ```
 
@@ -49,8 +49,8 @@ ORDER BY published_time DESC LIMIT 50
 
 Mutating queries (including `INSERT`, `UPSERT`, or `CREATE TABLE`) and queries that use functions designated as [volatile ↗](https://www.postgresql.org/docs/current/xfunc-volatility.html) or [stable ↗](https://www.postgresql.org/docs/current/xfunc-volatility.html) by PostgreSQL are not cached:
 
-* [ PostgreSQL ](#tab-panel-6044)
-* [ MySQL ](#tab-panel-6045)
+* [ PostgreSQL ](#tab-panel-8626)
+* [ MySQL ](#tab-panel-8627)
 
 ```
 
@@ -158,8 +158,8 @@ You can also configure multiple Hyperdrive connections from a single application
 
 For example, using database drivers:
 
-* [ PostgreSQL ](#tab-panel-6046)
-* [ MySQL ](#tab-panel-6047)
+* [ PostgreSQL ](#tab-panel-8628)
+* [ MySQL ](#tab-panel-8629)
 
 index.ts
 
@@ -237,8 +237,8 @@ export default {
 
 The Wrangler configuration remains the same both for PostgreSQL and MySQL.
 
-* [  wrangler.jsonc ](#tab-panel-6048)
-* [  wrangler.toml ](#tab-panel-6049)
+* [  wrangler.jsonc ](#tab-panel-8630)
+* [  wrangler.toml ](#tab-panel-8631)
 
 JSONC
 
@@ -298,5 +298,6 @@ id = "<YOUR_HYPERDRIVE_CACHE_DISABLED_CONFIGURATION_ID>"
 * For troubleshooting guidance, refer to [Troubleshoot and debug](https://developers.cloudflare.com/hyperdrive/observability/troubleshooting/).
 
 ```json
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/hyperdrive/concepts/query-caching/#page","headline":"Query caching · Cloudflare Hyperdrive docs","description":"Hyperdrive automatically caches read queries to reduce database load and improve performance.","url":"https://developers.cloudflare.com/hyperdrive/concepts/query-caching/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/hyperdrive/","name":"Hyperdrive"}},{"@type":"ListItem","position":3,"item":{"@id":"/hyperdrive/concepts/","name":"Concepts"}},{"@type":"ListItem","position":4,"item":{"@id":"/hyperdrive/concepts/query-caching/","name":"Query caching"}}]}
 ```

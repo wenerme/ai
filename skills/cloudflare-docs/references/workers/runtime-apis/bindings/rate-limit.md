@@ -31,8 +31,8 @@ You must use version 4.36.0 or later of the [Wrangler CLI](https://developers.cl
 
 First, add a [binding](https://developers.cloudflare.com/workers/runtime-apis/bindings) to your Worker that gives it access to the Rate Limiting API:
 
-* [  wrangler.jsonc ](#tab-panel-10747)
-* [  wrangler.toml ](#tab-panel-10748)
+* [  wrangler.jsonc ](#tab-panel-11932)
+* [  wrangler.toml ](#tab-panel-11933)
 
 JSONC
 
@@ -102,8 +102,8 @@ namespace_id = "1001"
 
 This binding makes the `MY_RATE_LIMITER` binding available, which provides a `limit()` method:
 
-* [  JavaScript ](#tab-panel-10743)
-* [  TypeScript ](#tab-panel-10744)
+* [  JavaScript ](#tab-panel-11928)
+* [  TypeScript ](#tab-panel-11929)
 
 JavaScript
 
@@ -179,8 +179,8 @@ You can define and configure multiple rate limiting configurations per Worker, w
 
 For example, here is how you can define two rate limiting configurations for free and paid tier users:
 
-* [  wrangler.jsonc ](#tab-panel-10749)
-* [  wrangler.toml ](#tab-panel-10750)
+* [  wrangler.jsonc ](#tab-panel-11934)
+* [  wrangler.toml ](#tab-panel-11935)
 
 JSONC
 
@@ -291,8 +291,8 @@ If you do not want to share rate limit state between bindings, use a unique `nam
 
 For example, to apply a rate limit of 1500 requests per minute, you would define a rate limiting configuration as follows:
 
-* [  wrangler.jsonc ](#tab-panel-10745)
-* [  wrangler.toml ](#tab-panel-10746)
+* [  wrangler.jsonc ](#tab-panel-11930)
+* [  wrangler.toml ](#tab-panel-11931)
 
 JSONC
 
@@ -423,5 +423,6 @@ Rate limiting bindings are not currently visible in the Cloudflare dashboard. To
 * [hono-cf-rate-limit ↗](https://github.com/bytaesu/hono-cf-rate-limit) — Middleware for Hono applications that applies rate limiting in Cloudflare Workers, powered by Wrangler’s built-in features.
 
 ```json
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/runtime-apis/bindings/rate-limit/#page","headline":"Rate Limiting · Cloudflare Workers docs","description":"Define rate limits and interact with them directly from your Cloudflare Worker","url":"https://developers.cloudflare.com/workers/runtime-apis/bindings/rate-limit/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/workers/","name":"Workers"}},{"@type":"ListItem","position":3,"item":{"@id":"/workers/runtime-apis/","name":"Runtime APIs"}},{"@type":"ListItem","position":4,"item":{"@id":"/workers/runtime-apis/bindings/","name":"Bindings (env)"}},{"@type":"ListItem","position":5,"item":{"@id":"/workers/runtime-apis/bindings/rate-limit/","name":"Rate Limiting"}}]}
 ```

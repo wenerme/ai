@@ -37,8 +37,8 @@ Once you [create a new certificate](https://developers.cloudflare.com/ssl/edge-c
 
 These tokens can be fetched through the API or the dashboard when the certificates are in a [pending validation](https://developers.cloudflare.com/ssl/reference/certificate-statuses/#new-certificates) state during custom hostname creation or during certificate renewals.
 
-* [ API ](#tab-panel-10043)
-* [ Dashboard ](#tab-panel-10044)
+* [ API ](#tab-panel-10604)
+* [ Dashboard ](#tab-panel-10605)
 
 You can access these tokens using the API with the [GET request](https://developers.cloudflare.com/api/resources/ssl/subresources/certificate%5Fpacks/methods/get/) and including `status=pending_validation` as a request parameter.
 
@@ -151,5 +151,6 @@ If any one of the conditions is not met, the certificate renewal falls back to y
 Cloudflare generates renewal tokens 30 days before certificate expiration.
 
 ```json
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ssl/edge-certificates/changing-dcv-method/methods/txt/#page","headline":"TXT method — Domain Control Validation — SSL/TLS · Cloudflare SSL/TLS docs","description":"Validate domain control with a TXT DNS record.","url":"https://developers.cloudflare.com/ssl/edge-certificates/changing-dcv-method/methods/txt/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/ssl/","name":"SSL/TLS"}},{"@type":"ListItem","position":3,"item":{"@id":"/ssl/edge-certificates/","name":"Edge certificates"}},{"@type":"ListItem","position":4,"item":{"@id":"/ssl/edge-certificates/changing-dcv-method/","name":"Domain control validation (DCV)"}},{"@type":"ListItem","position":5,"item":{"@id":"/ssl/edge-certificates/changing-dcv-method/methods/","name":"Methods"}},{"@type":"ListItem","position":6,"item":{"@id":"/ssl/edge-certificates/changing-dcv-method/methods/txt/","name":"TXT"}}]}
 ```

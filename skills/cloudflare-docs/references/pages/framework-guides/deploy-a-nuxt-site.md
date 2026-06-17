@@ -198,8 +198,8 @@ In Nuxt, add server-side code via [Server Routes and Middleware ↗](https://nux
 
 The following code block shows an example of accessing a KV namespace in Nuxt.
 
-* [  JavaScript ](#tab-panel-7240)
-* [  TypeScript ](#tab-panel-7241)
+* [  JavaScript ](#tab-panel-9394)
+* [  TypeScript ](#tab-panel-9395)
 
 JavaScript
 
@@ -246,5 +246,6 @@ export default defineEventHandler(({ context }) => {
 By completing this guide, you have successfully deployed your Nuxt site to Cloudflare Pages. To get started with other frameworks, [refer to the list of Framework guides](https://developers.cloudflare.com/pages/framework-guides/).
 
 ```json
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/pages/framework-guides/deploy-a-nuxt-site/#page","headline":"Nuxt · Cloudflare Pages docs","description":"Web framework making Vue.js-based development simple and powerful.","url":"https://developers.cloudflare.com/pages/framework-guides/deploy-a-nuxt-site/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-05-19","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/pages/","name":"Pages"}},{"@type":"ListItem","position":3,"item":{"@id":"/pages/framework-guides/","name":"Framework guides"}},{"@type":"ListItem","position":4,"item":{"@id":"/pages/framework-guides/deploy-a-nuxt-site/","name":"Nuxt"}}]}
 ```

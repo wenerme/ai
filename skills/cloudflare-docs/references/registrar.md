@@ -49,5 +49,6 @@ Cloudflare Registrar offers one-click DNSSEC activation. DNSSEC secures DNS reco
 When you use Cloudflare DNS, all DNS queries for your domain are answered by Cloudflare’s global anycast network. This network delivers performance and global availability.
 
 ```json
+{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/registrar/#page","headline":"Overview · Cloudflare Registrar docs","description":"Register and manage domains at cost with Cloudflare.","url":"https://developers.cloudflare.com/registrar/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-24","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/registrar/","name":"Registrar"}}]}
 ```

@@ -64,5 +64,6 @@ Note
 If you change the queueing method from FIFO > Random > FIFO, users will be ordered by their original entry time.
 
 ```json
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/waiting-room/reference/queueing-methods/#page","headline":"Queueing method · Cloudflare Waiting Room docs","description":"Queueing methods including FIFO, random, and passthrough.","url":"https://developers.cloudflare.com/waiting-room/reference/queueing-methods/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/waiting-room/","name":"Waiting Room"}},{"@type":"ListItem","position":3,"item":{"@id":"/waiting-room/reference/","name":"Reference"}},{"@type":"ListItem","position":4,"item":{"@id":"/waiting-room/reference/queueing-methods/","name":"Queueing method"}}]}
 ```

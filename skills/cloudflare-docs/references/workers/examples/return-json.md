@@ -22,11 +22,11 @@ If you want to get started quickly, click on the button below.
 
 This creates a repository in your GitHub account and deploys the application to Cloudflare Workers.
 
-* [  JavaScript ](#tab-panel-11599)
-* [  TypeScript ](#tab-panel-11600)
-* [  Python ](#tab-panel-11601)
-* [  Rust ](#tab-panel-11602)
-* [  Hono ](#tab-panel-11603)
+* [  JavaScript ](#tab-panel-11739)
+* [  TypeScript ](#tab-panel-11740)
+* [  Python ](#tab-panel-11741)
+* [  Rust ](#tab-panel-11742)
+* [  Hono ](#tab-panel-11743)
 
 JavaScript
 
@@ -52,7 +52,7 @@ export default {
 
 ```
 
-[Run Worker in Playground](https://workers.cloudflare.com/playground#LYVwNgLglgDghgJwgegGYHsHALQBM4RwDcABAEbogB2+CAngLzbPYZb6HbW5QDGU2AAwBGAGyCAHOIBMATgCs8gCwAuFizbAOcLjT4CR4qYLmKlAWABQAYXRUIAU3vYAIlADOMdO6jQ7Kkk08AmISKjhgBwYAIigaBwAPADoAK3do0lQoMCcIqNj45LToq1t7JwhsABU6GAcAuBgYMD4CKDtkFLgANzh3XgRYCABqYHRccAcrK0SvJBJcB1Q4cAgSAG9LEhI+uipeQIcIXgALAAoEBwBHEAd3CABKDa3tkl47e4WQkgZn19eTg4wGB0AFogB3TBgXDRAA0L22AF8iJYESRLhAQAgqCQAEp3LxUdwOVLuOxnbQPFFI+HIqzqZiabS6Hj8IRiSQyBTKUp2RzONyeby+dpUAJBbSkcKRGKRQjaDKBbK5GXRMggsglGx8irVWr1HZNFq8NodNJ2aaWdbRYBwOIAfTGExy0RUBUWRXSiPpDKZIRZ+nZRi5ZmYViAA)
+[Run Worker in Playground](https://workers.cloudflare.com/playground#LYVwNgLglgDghgJwgegGYHsHALQBM4RwDcABAEbogB2+CAngLzbPYZb6HbW5QDGU2AAwB2EQGZRADkkA2MQBYAXCxZtgHOFxp8BI8VNkKAsACgAwuioQAplewARKAGcY6J1GiXFJNXgLESKjhgawYAIigaawAPADoAKycw0lQoMFtg0IiouMSw0wsrWwhsABU6GGtvOBgYMD4CKEtkeLgANzgnXgRYCABqYHRccGtTUxjXJBJca1Q4cAgSAG8TEhJOuipeH2sIXgALAAoEawBHEGsnCABKZdW1kl5LK+n-EgY7h4f96zAwdG8YQA7pgwLgwgAae5rAC+RBM0JIJwgIAQVBIACVLq4qE5rAknJZDhprvDYVC4aYVMw1BotDx+EJRMIJIJpHJ5AVLDY7I4XG4PE0qN5fBpSEEQuEQoQNMkfGkMpKwmR-mR8uZucUyhUqutavVeI1molLGMTEswsA4JEAPqDYbpMKKbIzXJJGFU6m0-z0nRM-RswzyZimIA)
 
 TypeScript
 
@@ -163,5 +163,6 @@ export default app;
 ```
 
 ```json
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/examples/return-json/#page","headline":"Return JSON · Cloudflare Workers docs","description":"Return JSON directly from a Worker script, useful for building APIs and middleware.","url":"https://developers.cloudflare.com/workers/examples/return-json/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["JSON","JavaScript","TypeScript","Python","Rust"]}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/workers/","name":"Workers"}},{"@type":"ListItem","position":3,"item":{"@id":"/workers/examples/","name":"Examples"}},{"@type":"ListItem","position":4,"item":{"@id":"/workers/examples/return-json/","name":"Return JSON"}}]}
 ```

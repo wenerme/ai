@@ -62,8 +62,8 @@ See [Debugging](https://developers.cloudflare.com/workers/vite-plugin/reference/
 * `tunnel` ` boolean | { name?: string; autoStart?: boolean } ` optional  
 Expose your local dev server over a [Cloudflare Tunnel](https://developers.cloudflare.com/tunnel/).  
 Provide an object to configure a named tunnel or control whether the tunnel starts automatically. Press `t + Enter` to start or close the tunnel. Set `tunnel.autoStart` to `true` if you want the tunnel to open when Vite starts.  
-   * [  JavaScript ](#tab-panel-10025)  
-   * [  TypeScript ](#tab-panel-10026)  
+   * [  JavaScript ](#tab-panel-12209)  
+   * [  TypeScript ](#tab-panel-12210)  
 vite.config.js  
 ```  
 import { defineConfig } from "vite";  
@@ -112,5 +112,6 @@ The `childEnvironments` option is for supporting React Server Components via [@v
 See [Vite Environments](https://developers.cloudflare.com/workers/vite-plugin/reference/vite-environments/) for more information.
 
 ```json
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/vite-plugin/reference/api/#page","headline":"API · Cloudflare Workers docs","description":"Vite plugin API","url":"https://developers.cloudflare.com/workers/vite-plugin/reference/api/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-05-18","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/workers/","name":"Workers"}},{"@type":"ListItem","position":3,"item":{"@id":"/workers/vite-plugin/","name":"Vite plugin"}},{"@type":"ListItem","position":4,"item":{"@id":"/workers/vite-plugin/reference/","name":"Reference"}},{"@type":"ListItem","position":5,"item":{"@id":"/workers/vite-plugin/reference/api/","name":"API"}}]}
 ```

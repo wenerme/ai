@@ -29,8 +29,8 @@ The MCP client uses a built-in `DurableObjectOAuthClientProvider` to manage OAut
 
 When connecting to an OAuth-protected server, check if `authUrl` is returned. If present, redirect your user to complete authorization:
 
-* [  JavaScript ](#tab-panel-5190)
-* [  TypeScript ](#tab-panel-5191)
+* [  JavaScript ](#tab-panel-5797)
+* [  TypeScript ](#tab-panel-5798)
 
 JavaScript
 
@@ -142,8 +142,8 @@ After OAuth completes, the provider redirects back to your Agent's callback URL.
 
 Redirect users back to your application after OAuth completes:
 
-* [  JavaScript ](#tab-panel-5186)
-* [  TypeScript ](#tab-panel-5187)
+* [  JavaScript ](#tab-panel-5793)
+* [  TypeScript ](#tab-panel-5794)
 
 JavaScript
 
@@ -197,8 +197,8 @@ Users return to `/dashboard` on success or `/auth-error?error=<message>` on fail
 
 If you opened OAuth in a popup, close it automatically when complete:
 
-* [  JavaScript ](#tab-panel-5188)
-* [  TypeScript ](#tab-panel-5189)
+* [  JavaScript ](#tab-panel-5795)
+* [  TypeScript ](#tab-panel-5796)
 
 JavaScript
 
@@ -276,8 +276,8 @@ Your main application can detect the popup closing and refresh the connection st
 
 Use the `useAgent` hook for real-time updates via WebSocket:
 
-* [  JavaScript ](#tab-panel-5194)
-* [  TypeScript ](#tab-panel-5195)
+* [  JavaScript ](#tab-panel-5801)
+* [  TypeScript ](#tab-panel-5802)
 
 JavaScript
 
@@ -447,8 +447,8 @@ The `onMcpUpdate` callback fires automatically when MCP state changes — no pol
 
 Poll the connection status via an endpoint:
 
-* [  JavaScript ](#tab-panel-5192)
-* [  TypeScript ](#tab-panel-5193)
+* [  JavaScript ](#tab-panel-5799)
+* [  TypeScript ](#tab-panel-5800)
 
 JavaScript
 
@@ -570,8 +570,8 @@ Connection states flow: `authenticating` (needs OAuth) → `connecting` (complet
 
 When OAuth fails, the connection state becomes `"failed"` and the error message is stored in the `server.error` field. Display this error in your UI and allow users to retry:
 
-* [  JavaScript ](#tab-panel-5196)
-* [  TypeScript ](#tab-panel-5197)
+* [  JavaScript ](#tab-panel-5803)
+* [  TypeScript ](#tab-panel-5804)
 
 JavaScript
 
@@ -812,8 +812,8 @@ Failed connections remain in state until removed with `removeMcpServer(serverId)
 
 This example demonstrates a complete OAuth integration with Cloudflare Observability. Users connect, authorize in a popup window, and the connection becomes available. Errors are automatically stored in the connection state for display in your UI.
 
-* [  JavaScript ](#tab-panel-5198)
-* [  TypeScript ](#tab-panel-5199)
+* [  JavaScript ](#tab-panel-5805)
+* [  TypeScript ](#tab-panel-5806)
 
 JavaScript
 
@@ -1097,5 +1097,6 @@ export default {
 [ MCP Client API ](https://developers.cloudflare.com/agents/model-context-protocol/apis/client-api/) Complete API documentation for MCP clients. 
 
 ```json
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/agents/model-context-protocol/guides/oauth-mcp-client/#page","headline":"Handle OAuth with MCP servers · Cloudflare Agents docs","description":"Implement OAuth authentication flows in Cloudflare Agents to connect to protected MCP servers.","url":"https://developers.cloudflare.com/agents/model-context-protocol/guides/oauth-mcp-client/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-06-03","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["MCP"]}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/agents/","name":"Agents"}},{"@type":"ListItem","position":3,"item":{"@id":"/agents/model-context-protocol/","name":"Model Context Protocol (MCP)"}},{"@type":"ListItem","position":4,"item":{"@id":"/agents/model-context-protocol/guides/","name":"Guides"}},{"@type":"ListItem","position":5,"item":{"@id":"/agents/model-context-protocol/guides/oauth-mcp-client/","name":"Handle OAuth with MCP servers"}}]}
 ```

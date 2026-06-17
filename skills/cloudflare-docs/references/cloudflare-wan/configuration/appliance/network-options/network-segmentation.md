@@ -45,8 +45,8 @@ The following guide assumes you have already created a site and configured your 
 
 ## Create a policy
 
-* [ Dashboard ](#tab-panel-5256)
-* [ API ](#tab-panel-5257)
+* [ Dashboard ](#tab-panel-7766)
+* [ API ](#tab-panel-7767)
 
 Follow these steps to create a new LAN policy to segment your network. Only the fields marked **required** are mandatory.
 
@@ -266,8 +266,8 @@ The new policy will ensure that traffic between the specified LANs flows locally
 
 ## Edit a policy
 
-* [ Dashboard ](#tab-panel-5258)
-* [ API ](#tab-panel-5259)
+* [ Dashboard ](#tab-panel-7768)
+* [ API ](#tab-panel-7769)
 
 1. Go to the **Connectors** page.
 [ Go to **Connectors** ](https://dash.cloudflare.com/?to=/:account/magic-networks/connections)
@@ -422,8 +422,8 @@ curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/magic/sites/$SIT
 
 ## Delete a policy
 
-* [ Dashboard ](#tab-panel-5254)
-* [ API ](#tab-panel-5255)
+* [ Dashboard ](#tab-panel-7764)
+* [ API ](#tab-panel-7765)
 
 1. Go to the **Connectors** page.
 [ Go to **Connectors** ](https://dash.cloudflare.com/?to=/:account/magic-networks/connections)
@@ -463,5 +463,6 @@ curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/magic/sites/$SIT
 ```
 
 ```json
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-wan/configuration/appliance/network-options/network-segmentation/#page","headline":"Network segmentation · Cloudflare WAN docs","description":"Define policies to determine if traffic should flow between your LANs without leaving your local premises, or if traffic should be forwarded to Cloudflare for additional security configurations.","url":"https://developers.cloudflare.com/cloudflare-wan/configuration/appliance/network-options/network-segmentation/","inLanguage":"en","image":"https://developers.cloudflare.com/zt-preview.png","dateModified":"2026-04-17","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/cloudflare-wan/","name":"Cloudflare WAN"}},{"@type":"ListItem","position":3,"item":{"@id":"/cloudflare-wan/configuration/","name":"Configuration"}},{"@type":"ListItem","position":4,"item":{"@id":"/cloudflare-wan/configuration/appliance/","name":"Configure with Appliance"}},{"@type":"ListItem","position":5,"item":{"@id":"/cloudflare-wan/configuration/appliance/network-options/","name":"Network options"}},{"@type":"ListItem","position":6,"item":{"@id":"/cloudflare-wan/configuration/appliance/network-options/network-segmentation/","name":"Network segmentation"}}]}
 ```

@@ -42,7 +42,7 @@ Cloudflare's data centers may support one or more interconnect dataplanes. The d
 * **Dataplane v1**: A peering connection to a Cloudflare edge data center that supports Generic Routing Encapsulation (GRE) tunnels for connecting with the Cloudflare Virtual Network, with optional GRE-less delivery for Magic Transit Direct Server Return.
 * **Dataplane v2**: Is based on the Customer Connectivity Router (CCR), which is specifically designed for customer connectivity. It provides simplified routing without GRE tunneling and supports a 1,500-byte Maximum Transmission Unit (MTU) bidirectionally.
 
-When you review the [available locations](https://developers.cloudflare.com/network-interconnect/static/cni-locations-31-mar-2026.pdf) (PDF), you can see which dataplane version(s) are available.
+When you review the [available locations](https://developers.cloudflare.com/network-interconnect/static/cni-locations-05-may-2026.pdf) (PDF), you can see which dataplane version(s) are available.
 
 ## Product use cases
 
@@ -77,5 +77,6 @@ Magic Transit is a network security and performance solution that offers Distrib
 Improve security and performance for your entire corporate network, reducing cost and operation complexity.
 
 ```json
+{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/network-interconnect/#page","headline":"Overview · Cloudflare Network Interconnect docs","description":"Connect to Cloudflare with private network interconnects.","url":"https://developers.cloudflare.com/network-interconnect/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-05-06","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/network-interconnect/","name":"Network Interconnect"}}]}
 ```

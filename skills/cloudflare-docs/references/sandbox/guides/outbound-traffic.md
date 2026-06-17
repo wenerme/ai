@@ -26,8 +26,8 @@ Use them to:
 
 Use `enableInternet = false` to block public internet access by default:
 
-* [  JavaScript ](#tab-panel-10224)
-* [  TypeScript ](#tab-panel-10225)
+* [  JavaScript ](#tab-panel-10465)
+* [  TypeScript ](#tab-panel-10466)
 
 JavaScript
 
@@ -81,8 +81,8 @@ When `allowedHosts` is set, it becomes a deny-by-default allowlist. Any host or 
 
 By default, a Sandbox allows internet access, and you can set `deniedHosts` to disallow specific hosts or IPs:
 
-* [  JavaScript ](#tab-panel-10226)
-* [  TypeScript ](#tab-panel-10227)
+* [  JavaScript ](#tab-panel-10467)
+* [  TypeScript ](#tab-panel-10468)
 
 JavaScript
 
@@ -122,8 +122,8 @@ export class MySandbox extends Sandbox {
 
 You can also disable internet access by default, but allow specific hosts and IPs:
 
-* [  JavaScript ](#tab-panel-10228)
-* [  TypeScript ](#tab-panel-10229)
+* [  JavaScript ](#tab-panel-10469)
+* [  TypeScript ](#tab-panel-10470)
 
 JavaScript
 
@@ -181,8 +181,8 @@ Outbound handlers are programmable egress proxies that run on the same machine a
 
 Use `outbound` to intercept all outbound HTTP and HTTPS traffic:
 
-* [  JavaScript ](#tab-panel-10232)
-* [  TypeScript ](#tab-panel-10233)
+* [  JavaScript ](#tab-panel-10473)
+* [  TypeScript ](#tab-panel-10474)
 
 JavaScript
 
@@ -256,8 +256,8 @@ HTTP requests to the outbound handler remain secure because they run on the same
 
 Use `outboundByHost` to map specific domain names or IP addresses to handler functions:
 
-* [  JavaScript ](#tab-panel-10234)
-* [  TypeScript ](#tab-panel-10235)
+* [  JavaScript ](#tab-panel-10475)
+* [  TypeScript ](#tab-panel-10476)
 
 JavaScript
 
@@ -329,8 +329,8 @@ Calls to `http://my.worker` from the sandbox invoke the handler, which runs insi
 
 Because outbound handlers run in the Workers runtime — outside the sandbox — they can hold secrets that the sandbox itself never sees. The sandbox makes a plain HTTP request, and the handler attaches the credential before forwarding it to the upstream service.
 
-* [  JavaScript ](#tab-panel-10230)
-* [  TypeScript ](#tab-panel-10231)
+* [  JavaScript ](#tab-panel-10471)
+* [  TypeScript ](#tab-panel-10472)
 
 JavaScript
 
@@ -388,8 +388,8 @@ This is especially useful for agentic workloads where you cannot fully trust the
 
 Here, `ctx.containerId` looks up a per-instance key from KV:
 
-* [  JavaScript ](#tab-panel-10236)
-* [  TypeScript ](#tab-panel-10237)
+* [  JavaScript ](#tab-panel-10477)
+* [  TypeScript ](#tab-panel-10478)
 
 JavaScript
 
@@ -479,8 +479,8 @@ You can also manage runtime policy with `setOutboundByHosts()`, `setAllowedHosts
 
 This lets a trusted Worker hold credentials without exposing them to an untrusted sandbox:
 
-* [  JavaScript ](#tab-panel-10238)
-* [  TypeScript ](#tab-panel-10239)
+* [  JavaScript ](#tab-panel-10479)
+* [  TypeScript ](#tab-panel-10480)
 
 JavaScript
 
@@ -546,8 +546,8 @@ MySandbox.outboundHandlers = {
 
 Apply handlers to hosts programmatically from your Worker:
 
-* [  JavaScript ](#tab-panel-10240)
-* [  TypeScript ](#tab-panel-10241)
+* [  JavaScript ](#tab-panel-10481)
+* [  TypeScript ](#tab-panel-10482)
 
 JavaScript
 
@@ -640,5 +640,6 @@ Requests are evaluated in this order:
 * [Environment variables](https://developers.cloudflare.com/sandbox/configuration/environment-variables/) — Configure secrets and environment variables
 
 ```json
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/sandbox/guides/outbound-traffic/#page","headline":"Handle outbound traffic · Cloudflare Sandbox SDK docs","description":"Intercept and handle outbound HTTP from sandboxes using Workers.","url":"https://developers.cloudflare.com/sandbox/guides/outbound-traffic/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/sandbox/","name":"Sandbox SDK"}},{"@type":"ListItem","position":3,"item":{"@id":"/sandbox/guides/","name":"How-to guides"}},{"@type":"ListItem","position":4,"item":{"@id":"/sandbox/guides/outbound-traffic/","name":"Handle outbound traffic"}}]}
 ```

@@ -4848,6 +4848,18 @@ Retrieves a model response with the given ID.
     Configuration options for
     [reasoning models](https://platform.openai.com/docs/guides/reasoning).
 
+    - `context?: "auto" | "current_turn" | "all_turns" | null`
+
+      Controls which reasoning items are rendered back to the model on later turns.
+      When returned on a response, this is the effective reasoning context mode
+      used for the response.
+
+      - `"auto"`
+
+      - `"current_turn"`
+
+      - `"all_turns"`
+
     - `effort?: ReasoningEffort | null`
 
       Constrains effort on reasoning for
@@ -5241,6 +5253,7 @@ console.log(response.id);
   "prompt_cache_key": "prompt-cache-key-1234",
   "prompt_cache_retention": "in_memory",
   "reasoning": {
+    "context": "auto",
     "effort": "none",
     "generate_summary": "auto",
     "summary": "auto"

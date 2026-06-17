@@ -21,7 +21,7 @@ Public buckets can be set up in either of two ways:
 
 These options can be used independently. Enabling custom domains does not require enabling `r2.dev` access.
 
-To use features like WAF custom rules, caching, access controls, or bot management, you must configure your bucket behind a custom domain. These capabilities are not available when using the `r2.dev` development url.
+To use features like [WAF custom rules](https://developers.cloudflare.com/waf/custom-rules/), caching, access controls, or [Bot Management](https://developers.cloudflare.com/bots/get-started/bot-management/), you must configure your bucket behind a custom domain. These capabilities are not available when using the `r2.dev` development url.
 
 Note
 
@@ -147,5 +147,6 @@ To disable public access for your bucket:
 4. In **Disallow Public Access?**, type `disallow` to confirm and select **Disallow**.
 
 ```json
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/r2/buckets/public-buckets/#page","headline":"Public buckets · Cloudflare R2 docs","description":"Expose R2 bucket contents to the Internet via a custom domain or r2.dev subdomain.","url":"https://developers.cloudflare.com/r2/buckets/public-buckets/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-06-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/r2/","name":"R2"}},{"@type":"ListItem","position":3,"item":{"@id":"/r2/buckets/","name":"Buckets"}},{"@type":"ListItem","position":4,"item":{"@id":"/r2/buckets/public-buckets/","name":"Public buckets"}}]}
 ```

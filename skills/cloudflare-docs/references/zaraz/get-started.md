@@ -59,5 +59,6 @@ Users and companies have developed plugins that make using Zaraz easier on speci
 1. Some tools do not supported Automatic Actions, see the section about [Custom Actions](https://developers.cloudflare.com/zaraz/custom-actions) if the tool you are adding doesn't present Automatic Actions. [↩](#user-content-fnref-1)
 
 ```json
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/zaraz/get-started/#page","headline":"Get started · Cloudflare Zaraz docs","description":"Set up Cloudflare Zaraz to manage third-party tools from the dashboard.","url":"https://developers.cloudflare.com/zaraz/get-started/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/zaraz/","name":"Zaraz"}},{"@type":"ListItem","position":3,"item":{"@id":"/zaraz/get-started/","name":"Get started"}}]}
 ```

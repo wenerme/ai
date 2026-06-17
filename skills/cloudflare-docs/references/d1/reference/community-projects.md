@@ -104,5 +104,6 @@ Staff Directory is a demo project using D1, [HonoX ↗](https://github.com/honoj
 To report a bug or file feature requests for these community projects, create an issue directly on the project's repository.
 
 ```json
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/d1/reference/community-projects/#page","headline":"Community projects · Cloudflare D1 docs","description":"Explore community-built ORMs, query builders, and tools that integrate with D1.","url":"https://developers.cloudflare.com/d1/reference/community-projects/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/d1/","name":"D1"}},{"@type":"ListItem","position":3,"item":{"@id":"/d1/reference/","name":"Reference"}},{"@type":"ListItem","position":4,"item":{"@id":"/d1/reference/community-projects/","name":"Community projects"}}]}
 ```

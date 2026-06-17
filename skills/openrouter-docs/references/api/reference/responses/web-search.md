@@ -74,7 +74,7 @@ Configure web search behavior:
 | ----------------- | --------- | --------------------------------------------------------------------------------- |
 | `id`              | string    | **Required.** Must be "web"                                                       |
 | `engine`          | string    | Search engine: `"native"`, `"exa"`, `"firecrawl"`, `"parallel"`, or omit for auto |
-| `max_results`     | integer   | Maximum search results to retrieve (1-25, default 5)                              |
+| `max_results`     | integer   | Maximum search results to retrieve (1–25; 1–20 for Perplexity; default 5)         |
 | `include_domains` | string\[] | Restrict results to these domains (supports wildcards like `*.substack.com`)      |
 | `exclude_domains` | string\[] | Exclude results from these domains                                                |
 
@@ -282,7 +282,8 @@ Web search responses can include different annotation types:
   "type": "url_citation",
   "url": "https://example.com/article",
   "start_index": 0,
-  "end_index": 50
+  "end_index": 50,
+  "content": "Excerpt from the web page..."
 }
 ```
 

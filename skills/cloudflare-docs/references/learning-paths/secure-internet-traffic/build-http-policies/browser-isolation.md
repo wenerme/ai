@@ -28,8 +28,8 @@ As you have begun deploying Cloudflare Zero Trust, you may have started to visua
 
 You can control potential risk and shape user behavior without applying heavy-handed block policies by applying policies to isolate user traffic to applications that match your defined categories. You can then set additional parameters in the policy, such as the ability to restrict copy/paste and upload/download. Users can still access information in the tools -- if not use the tools to a lesser extent -- while you minimize the risk of data loss.
 
-* [ Dashboard ](#tab-panel-6396)
-* [ API ](#tab-panel-6397)
+* [ Dashboard ](#tab-panel-9192)
+* [ API ](#tab-panel-9193)
 
 1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** \> **Traffic policies** \> **Firewall policies**.
 2. In the **HTTP** tab, select **Add a policy**.
@@ -121,8 +121,8 @@ You can accomplish this by creating the following policies:
 
 In this context, if some traffic is unknown to your organization, Cloudflare will isolate it by default. Cloudflare will also prevent any malicious code from being executed client side, with additional controls available.
 
-* [ Dashboard ](#tab-panel-6394)
-* [ API ](#tab-panel-6395)
+* [ Dashboard ](#tab-panel-9190)
+* [ API ](#tab-panel-9191)
 
 * Allow known applications and websites:  
 | Selector | Operator | Value           | Action |  
@@ -310,5 +310,6 @@ flowchart TB
     end
 
 ```json
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/learning-paths/secure-internet-traffic/build-http-policies/browser-isolation/#page","headline":"Configure Browser Isolation · Cloudflare Learning Paths","description":"Set up Remote Browser Isolation.","url":"https://developers.cloudflare.com/learning-paths/secure-internet-traffic/build-http-policies/browser-isolation/","inLanguage":"en","image":"https://developers.cloudflare.com/cf-twitter-card.png","dateModified":"2026-05-01","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/learning-paths/","name":"Learning Paths"}},{"@type":"ListItem","position":3,"item":{"@id":"/learning-paths/secure-internet-traffic/build-http-policies/","name":"Build HTTP security policies"}},{"@type":"ListItem","position":4,"item":{"@id":"/learning-paths/secure-internet-traffic/build-http-policies/browser-isolation/","name":"Configure Browser Isolation"}}]}
 ```

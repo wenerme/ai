@@ -22,10 +22,10 @@ If you want to get started quickly, click on the button below.
 
 This creates a repository in your GitHub account and deploys the application to Cloudflare Workers.
 
-* [  JavaScript ](#tab-panel-10452)
-* [  TypeScript ](#tab-panel-10453)
-* [  Python ](#tab-panel-10454)
-* [  Hono ](#tab-panel-10455)
+* [  JavaScript ](#tab-panel-11631)
+* [  TypeScript ](#tab-panel-11632)
+* [  Python ](#tab-panel-11633)
+* [  Hono ](#tab-panel-11634)
 
 JavaScript
 
@@ -430,5 +430,6 @@ export default app;
 ```
 
 ```json
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/examples/conditional-response/#page","headline":"Conditional response · Cloudflare Workers docs","description":"Return a response based on the incoming request's URL, HTTP method, User Agent, IP address, ASN or device type.","url":"https://developers.cloudflare.com/workers/examples/conditional-response/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Middleware","JavaScript","TypeScript","Python"]}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/workers/","name":"Workers"}},{"@type":"ListItem","position":3,"item":{"@id":"/workers/examples/","name":"Examples"}},{"@type":"ListItem","position":4,"item":{"@id":"/workers/examples/conditional-response/","name":"Conditional response"}}]}
 ```

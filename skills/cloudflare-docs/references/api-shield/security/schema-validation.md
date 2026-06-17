@@ -40,8 +40,8 @@ To view the contents in your learned schema, refer to [Export a schema](https://
 
 ### Add validation by uploading a schema
 
-* [  New dashboard ](#tab-panel-6214)
-* [ Old dashboard ](#tab-panel-6215)
+* [  New dashboard ](#tab-panel-6709)
+* [ Old dashboard ](#tab-panel-6710)
 
 1. In the Cloudflare dashboard, go to the **Web Assets** page.  
 [ Go to **Web assets** ](https://dash.cloudflare.com/?to=/:account/:zone/security/web-assets)
@@ -64,8 +64,8 @@ Changes may take a few minutes to process depending on the number of added endpo
 
 ### Add validation by applying a learned schema to a single endpoint
 
-* [  New dashboard ](#tab-panel-6216)
-* [ Old dashboard ](#tab-panel-6217)
+* [  New dashboard ](#tab-panel-6711)
+* [ Old dashboard ](#tab-panel-6712)
 
 1. In the Cloudflare dashboard, go to the **Web Assets** page.  
 [ Go to **Web assets** ](https://dash.cloudflare.com/?to=/:account/:zone/security/web-assets)
@@ -84,8 +84,8 @@ Changes may take a few minutes to process depending on the number of added endpo
 
 At this time, learned schemas will not overwrite customer-uploaded schemas. If an endpoint is covered by a customer-uploaded schema and also appears in a learned schema, the **Changes** field is set to `Unaffected`.
 
-* [  New dashboard ](#tab-panel-6218)
-* [ Old dashboard ](#tab-panel-6219)
+* [  New dashboard ](#tab-panel-6713)
+* [ Old dashboard ](#tab-panel-6714)
 
 1. In the Cloudflare dashboard, go to the **Web Assets** page.  
 [ Go to **Web assets** ](https://dash.cloudflare.com/?to=/:account/:zone/security/web-assets)
@@ -116,8 +116,8 @@ By ensuring that all your endpoints in a schema are added to Endpoint Management
 
 To set up a fallthrough action:
 
-* [  New dashboard ](#tab-panel-6232)
-* [ Old dashboard ](#tab-panel-6233)
+* [  New dashboard ](#tab-panel-6727)
+* [ Old dashboard ](#tab-panel-6728)
 
 1. In the Cloudflare dashboard, go to the **Security rules** page.  
 [ Go to **Security rules** ](https://dash.cloudflare.com/?to=/:account/:zone/security/security-rules)
@@ -146,8 +146,8 @@ You can use the `cf.api_gateway.fallthrough_detected` field in your own custom r
 
 ### Change the action of an entire schema
 
-* [  New dashboard ](#tab-panel-6220)
-* [ Old dashboard ](#tab-panel-6221)
+* [  New dashboard ](#tab-panel-6715)
+* [ Old dashboard ](#tab-panel-6716)
 
 1. In the Cloudflare dashboard, go to the **Web Assets** page.  
 [ Go to **Web assets** ](https://dash.cloudflare.com/?to=/:account/:zone/security/web-assets)
@@ -176,8 +176,8 @@ Schema validation’s default action is visible on the main Schema validation pa
 
 To change the default action:
 
-* [  New dashboard ](#tab-panel-6222)
-* [ Old dashboard ](#tab-panel-6223)
+* [  New dashboard ](#tab-panel-6717)
+* [ Old dashboard ](#tab-panel-6718)
 
 1. In the Cloudflare dashboard, go to the **Security Settings** page.  
 [ Go to **Settings** ](https://dash.cloudflare.com/?to=/:account/:zone/security/settings)
@@ -203,8 +203,8 @@ This allows you to be stricter on blocking non-compliant requests on certain end
 
 To change the action on an individual endpoint:
 
-* [  New dashboard ](#tab-panel-6224)
-* [ Old dashboard ](#tab-panel-6225)
+* [  New dashboard ](#tab-panel-6719)
+* [ Old dashboard ](#tab-panel-6720)
 
 1. In the Cloudflare dashboard, go to the **Web Assets** page.  
 [ Go to **Web assets** ](https://dash.cloudflare.com/?to=/:account/:zone/security/web-assets)
@@ -226,8 +226,8 @@ You can disable Schema validation entirely for temporary troubleshooting. You ca
 
 To disable Schema validation without changing actions:
 
-* [  New dashboard ](#tab-panel-6226)
-* [ Old dashboard ](#tab-panel-6227)
+* [  New dashboard ](#tab-panel-6721)
+* [ Old dashboard ](#tab-panel-6722)
 
 1. In the Cloudflare dashboard, go to the **Web Assets** page.  
 [ Go to **Web assets** ](https://dash.cloudflare.com/?to=/:account/:zone/security/web-assets)
@@ -245,8 +245,8 @@ Your per-endpoint configurations will be saved when modifying the setting, so th
 
 ### View active schemas
 
-* [  New dashboard ](#tab-panel-6228)
-* [ Old dashboard ](#tab-panel-6229)
+* [  New dashboard ](#tab-panel-6723)
+* [ Old dashboard ](#tab-panel-6724)
 
 1. In the Cloudflare dashboard, go to the **Web Assets** page.  
 [ Go to **Web assets** ](https://dash.cloudflare.com/?to=/:account/:zone/security/web-assets)
@@ -271,8 +271,8 @@ Deleting the schema will remove validation from the currently associated endpoin
 
 To delete currently uploaded or learned schemas:
 
-* [  New dashboard ](#tab-panel-6230)
-* [ Old dashboard ](#tab-panel-6231)
+* [  New dashboard ](#tab-panel-6725)
+* [ Old dashboard ](#tab-panel-6726)
 
 1. In the Cloudflare dashboard, go to the **Web Assets** page.  
 [ Go to **Web assets** ](https://dash.cloudflare.com/?to=/:account/:zone/security/web-assets)
@@ -470,5 +470,6 @@ Schema validation is available for all customers. Refer to [Plans](https://devel
 [Schema learning](https://developers.cloudflare.com/api-shield/management-and-monitoring/endpoint-management/schema-learning/) is only available for customers subscribed to API Shield.
 
 ```json
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/api-shield/security/schema-validation/#page","headline":"Schema validation · Cloudflare API Shield docs","description":"Validate API requests against OpenAPI schemas to block malformed or unexpected traffic.","url":"https://developers.cloudflare.com/api-shield/security/schema-validation/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-06-05","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/api-shield/","name":"API Shield"}},{"@type":"ListItem","position":3,"item":{"@id":"/api-shield/security/","name":"Security"}},{"@type":"ListItem","position":4,"item":{"@id":"/api-shield/security/schema-validation/","name":"Schema validation"}}]}
 ```

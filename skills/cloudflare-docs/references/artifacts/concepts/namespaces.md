@@ -40,8 +40,8 @@ If you have not chosen a namespace strategy yet, use `default` in the examples t
 
 Use the same namespace name in your Wrangler binding:
 
-* [  wrangler.jsonc ](#tab-panel-4783)
-* [  wrangler.toml ](#tab-panel-4784)
+* [  wrangler.jsonc ](#tab-panel-6790)
+* [  wrangler.toml ](#tab-panel-6791)
 
 JSONC
 
@@ -103,5 +103,6 @@ Start with one namespace when you are learning the product. Add more namespaces 
 For more information, refer to [Best practices for Artifacts](https://developers.cloudflare.com/artifacts/concepts/best-practices/#partition-namespaces-deliberately).
 
 ```json
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/artifacts/concepts/namespaces/#page","headline":"Namespaces · Cloudflare Artifacts docs","description":"Organize repositories by environment or tenant.","url":"https://developers.cloudflare.com/artifacts/concepts/namespaces/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-05-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/artifacts/","name":"Artifacts"}},{"@type":"ListItem","position":3,"item":{"@id":"/artifacts/concepts/","name":"Concepts"}},{"@type":"ListItem","position":4,"item":{"@id":"/artifacts/concepts/namespaces/","name":"Namespaces"}}]}
 ```

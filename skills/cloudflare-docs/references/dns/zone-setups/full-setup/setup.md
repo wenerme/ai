@@ -23,8 +23,8 @@ Make sure that you:
 
 ## 1\. Add your domain to Cloudflare
 
-* [ Dashboard ](#tab-panel-5619)
-* [ API ](#tab-panel-5620)
+* [ Dashboard ](#tab-panel-8133)
+* [ API ](#tab-panel-8134)
 
 1. Log in to the [Cloudflare dashboard ↗](https://dash.cloudflare.com).  
 [ Go to **Domains** ](https://dash.cloudflare.com/?to=/:account/domains/overview)
@@ -128,8 +128,8 @@ If your domain is particularly sensitive to downtime, review our suggestions to 
 
 ### 3.1\. Get nameserver names
 
-* [ Dashboard ](#tab-panel-5617)
-* [ API ](#tab-panel-5618)
+* [ Dashboard ](#tab-panel-8131)
+* [ API ](#tab-panel-8132)
 
 Your assigned nameservers are displayed as part of the onboarding flow. If you need to find them once again, go the zone **Overview** page.
 
@@ -333,5 +333,6 @@ If you turned off DNSSEC before updating your nameservers, you can now [re-enabl
 1. A security feature that protects DNS records from spoofing [↩](#user-content-fnref-1)
 
 ```json
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/dns/zone-setups/full-setup/setup/#page","headline":"Change your nameservers (Full setup) · Cloudflare DNS docs","description":"If you want to use Cloudflare as your primary DNS provider and manage your DNS records, your domain should be using a full setup.","url":"https://developers.cloudflare.com/dns/zone-setups/full-setup/setup/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-05-05","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/dns/","name":"DNS"}},{"@type":"ListItem","position":3,"item":{"@id":"/dns/zone-setups/","name":"DNS setups"}},{"@type":"ListItem","position":4,"item":{"@id":"/dns/zone-setups/full-setup/","name":"Primary setup (Full)"}},{"@type":"ListItem","position":5,"item":{"@id":"/dns/zone-setups/full-setup/setup/","name":"Set up a primary zone (Full setup)"}}]}
 ```

@@ -18,8 +18,8 @@ The following sections describe how to configure Cloudflare Pages with Regional 
 
 To configure Regional Services for hostnames [proxied](https://developers.cloudflare.com/dns/proxy-status/) (meaning traffic routes through Cloudflare) through Cloudflare and ensure that processing of a Pages project occurs only in-region, follow these steps for the dashboard or API configuration:
 
-* [ Dashboard ](#tab-panel-5335)
-* [ API ](#tab-panel-5336)
+* [ Dashboard ](#tab-panel-8045)
+* [ API ](#tab-panel-8046)
 
 1. In the Cloudflare dashboard, go to the **Workers & Pages** page.  
 [ Go to **Workers & Pages** ](https://dash.cloudflare.com/?to=/:account/workers-and-pages)
@@ -51,5 +51,6 @@ Page [Functions](https://developers.cloudflare.com/pages/functions/) are impleme
 Refer to the [Pages documentation](https://developers.cloudflare.com/pages) for more information.
 
 ```json
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/data-localization/how-to/pages/#page","headline":"Pages · Cloudflare Data Localization Suite docs","description":"Configure Pages with Regional Services and Customer Metadata Boundary.","url":"https://developers.cloudflare.com/data-localization/how-to/pages/","inLanguage":"en","image":"https://developers.cloudflare.com/zt-preview.png","dateModified":"2026-04-30","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/data-localization/","name":"Data Localization Suite"}},{"@type":"ListItem","position":3,"item":{"@id":"/data-localization/how-to/","name":"Configuration guides"}},{"@type":"ListItem","position":4,"item":{"@id":"/data-localization/how-to/pages/","name":"Pages"}}]}
 ```

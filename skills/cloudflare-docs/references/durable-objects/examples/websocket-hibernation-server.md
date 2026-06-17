@@ -22,9 +22,9 @@ Note
 
 WebSocket Hibernation is unavailable for outgoing WebSocket use cases. Hibernation is only supported when the Durable Object acts as a server. For use cases where outgoing WebSockets are required, refer to [Write a WebSocket client](https://developers.cloudflare.com/workers/examples/websockets/#write-a-websocket-client).
 
-* [  JavaScript ](#tab-panel-6312)
-* [  TypeScript ](#tab-panel-6313)
-* [  Python ](#tab-panel-6314)
+* [  JavaScript ](#tab-panel-8357)
+* [  TypeScript ](#tab-panel-8358)
+* [  Python ](#tab-panel-8359)
 
 JavaScript
 
@@ -744,8 +744,8 @@ class WebSocketHibernationServer(DurableObject):
 
 Finally, configure your Wrangler file to include a Durable Object [binding](https://developers.cloudflare.com/durable-objects/get-started/#4-configure-durable-object-bindings) and [migration](https://developers.cloudflare.com/durable-objects/reference/durable-objects-migrations/) based on the namespace and class name chosen previously.
 
-* [  wrangler.jsonc ](#tab-panel-6310)
-* [  wrangler.toml ](#tab-panel-6311)
+* [  wrangler.jsonc ](#tab-panel-8355)
+* [  wrangler.toml ](#tab-panel-8356)
 
 JSONC
 
@@ -828,5 +828,6 @@ new_sqlite_classes = [ "WebSocketHibernationServer" ]
 * [Durable Objects: Edge Chat Demo with Hibernation ↗](https://github.com/cloudflare/workers-chat-demo/).
 
 ```json
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/durable-objects/examples/websocket-hibernation-server/#page","headline":"Build a WebSocket server with WebSocket Hibernation · Cloudflare Durable Objects docs","description":"Build a WebSocket server using WebSocket Hibernation on Durable Objects and Workers.","url":"https://developers.cloudflare.com/durable-objects/examples/websocket-hibernation-server/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["WebSockets"]}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/durable-objects/","name":"Durable Objects"}},{"@type":"ListItem","position":3,"item":{"@id":"/durable-objects/examples/","name":"Examples"}},{"@type":"ListItem","position":4,"item":{"@id":"/durable-objects/examples/websocket-hibernation-server/","name":"Build a WebSocket server with WebSocket Hibernation"}}]}
 ```

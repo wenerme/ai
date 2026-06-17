@@ -161,3 +161,7 @@ Cloudflare is an extension of yourinfrastructure,
 keeping your site safe and highly available.
 
 Get started with onboarding your domaintoday.
+
+```json
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/videos/onboard-domain-cf/#page","headline":"Onboard your domain to Cloudflare | Cloudflare Docs","description":"Learn how Cloudflare secures and accelerates your website using its global network and reverse proxy technology. In this video, we explain how connecting your domain to Cloudflare protects your origin server, enhances performance, and keeps your site online—even during attacks. You'll see how DNS, nameservers, and proxy status work together to route and safeguard traffic. Whether you're self-hosting or using serverless platforms like Cloudflare Workers, this guide helps you understand the onboarding process and why Cloudflare is essential for modern web infrastructure.","url":"https://developers.cloudflare.com/videos/onboard-domain-cf/","inLanguage":"en","image":"https://developers.cloudflare.com/cf-twitter-card.png","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+```

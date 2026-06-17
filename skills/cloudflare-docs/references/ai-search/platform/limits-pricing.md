@@ -1,5 +1,5 @@
 ---
-title: Limits &#38; pricing
+title: Limits &amp; pricing
 description: View AI Search usage limits and pricing details for Free and Paid Workers plans.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
@@ -68,5 +68,6 @@ The migration will begin on **June 3, 2026** and may take up to three days. No d
 You can identify which instance is still on legacy infrastructure in the dashboard under **AI** \> **AI Search**. If the instance does not have a **Built-in Storage** label, it will be migrated to the new infrastructure.
 
 ```json
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai-search/platform/limits-pricing/#page","headline":"Limits & pricing · Cloudflare AI Search docs","description":"View AI Search usage limits and pricing details for Free and Paid Workers plans.","url":"https://developers.cloudflare.com/ai-search/platform/limits-pricing/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-05-13","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/ai-search/","name":"AI Search"}},{"@type":"ListItem","position":3,"item":{"@id":"/ai-search/platform/","name":"Platform"}},{"@type":"ListItem","position":4,"item":{"@id":"/ai-search/platform/limits-pricing/","name":"Limits & pricing"}}]}
 ```

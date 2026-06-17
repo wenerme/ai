@@ -29,8 +29,8 @@ Hard bounces occur when an email cannot be delivered due to permanent reasons:
 
 Configure your worker to handle bounce notifications:
 
-* [  wrangler.jsonc ](#tab-panel-8269)
-* [  wrangler.toml ](#tab-panel-8270)
+* [  wrangler.jsonc ](#tab-panel-8490)
+* [  wrangler.toml ](#tab-panel-8491)
 
 JSONC
 
@@ -42,7 +42,7 @@ JSONC
 
   // Set this to today's date
 
-  "compatibility_date": "2026-06-10",
+  "compatibility_date": "2026-06-17",
 
   "send_email": [{ "name": "EMAIL" }],
 
@@ -71,7 +71,7 @@ name = "bounce-handler"
 
 # Set this to today's date
 
-compatibility_date = "2026-06-10"
+compatibility_date = "2026-06-17"
 
 
 [[send_email]]
@@ -480,5 +480,6 @@ export async function sendEmail(recipient, subject, content, env) {
 * Implement [spam filtering](https://developers.cloudflare.com/email-service/examples/email-routing/spam-filtering/) for incoming emails
 
 ```json
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/email-service/examples/email-routing/hard-bounce-handling/#page","headline":"Handle hard bounce emails · Cloudflare Email Service docs","description":"Detect and process hard bounce notifications in Email Service to maintain sender reputation.","url":"https://developers.cloudflare.com/email-service/examples/email-routing/hard-bounce-handling/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-06-09","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/email-service/","name":"Email Service"}},{"@type":"ListItem","position":3,"item":{"@id":"/email-service/examples/","name":"Examples"}},{"@type":"ListItem","position":4,"item":{"@id":"/email-service/examples/email-routing/","name":"Email routing"}},{"@type":"ListItem","position":5,"item":{"@id":"/email-service/examples/email-routing/hard-bounce-handling/","name":"Handle hard bounce emails"}}]}
 ```

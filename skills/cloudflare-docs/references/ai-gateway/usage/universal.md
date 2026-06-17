@@ -480,8 +480,8 @@ ws.on("message", function incoming(message) {
 
 ## Workers Binding example
 
-* [  wrangler.jsonc ](#tab-panel-4407)
-* [  wrangler.toml ](#tab-panel-4408)
+* [  wrangler.jsonc ](#tab-panel-6586)
+* [  wrangler.toml ](#tab-panel-6587)
 
 JSONC
 
@@ -674,5 +674,6 @@ curl https://gateway.ai.cloudflare.com/v1/{account_id}/{gateway_id} \
 ```
 
 ```json
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai-gateway/usage/universal/#page","headline":"Universal Endpoint (Deprecated) · Cloudflare AI Gateway docs","description":"Route requests to any AI provider through a single AI Gateway endpoint with support for fallbacks and retries.","url":"https://developers.cloudflare.com/ai-gateway/usage/universal/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-05-08","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/ai-gateway/","name":"AI Gateway"}},{"@type":"ListItem","position":3,"item":{"@id":"/ai-gateway/usage/","name":"Using AI Gateway"}},{"@type":"ListItem","position":4,"item":{"@id":"/ai-gateway/usage/universal/","name":"Universal Endpoint (Deprecated)"}}]}
 ```

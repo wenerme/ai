@@ -57,5 +57,6 @@ To change the **gRPC** setting in the dashboard:
 3. For **gRPC**, switch the toggle to **On**.
 
 ```json
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/network/grpc-connections/#page","headline":"gRPC connections · Cloudflare Network settings docs","description":"Protect gRPC APIs on proxied endpoints with Cloudflare.","url":"https://developers.cloudflare.com/network/grpc-connections/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/network/","name":"Network"}},{"@type":"ListItem","position":3,"item":{"@id":"/network/grpc-connections/","name":"gRPC connections"}}]}
 ```

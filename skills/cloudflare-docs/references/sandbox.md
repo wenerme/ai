@@ -22,12 +22,12 @@ Sandboxes are ideal for building AI agents that need to execute code, interactiv
 
 With Sandbox, you can execute Python scripts, run Node.js applications, analyze data, compile code, and perform complex computations — all with a simple TypeScript API and no infrastructure to manage.
 
-* [ Execute Commands ](#tab-panel-7431)
-* [ Code interpreter ](#tab-panel-7432)
-* [ File Operations ](#tab-panel-7433)
-* [ File watching ](#tab-panel-7434)
-* [ Terminal Access ](#tab-panel-7435)
-* [ WebSocket connections ](#tab-panel-7436)
+* [ Execute Commands ](#tab-panel-10067)
+* [ Code interpreter ](#tab-panel-10068)
+* [ File Operations ](#tab-panel-10069)
+* [ File watching ](#tab-panel-10070)
+* [ Terminal Access ](#tab-panel-10071)
+* [ WebSocket connections ](#tab-panel-10072)
 
 TypeScript
 
@@ -435,5 +435,6 @@ Learn about resource limits, quotas, and best practices for working within them.
 Connect with the community on Discord. Ask questions, share what you're building, and get help from other developers.
 
 ```json
+{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/sandbox/#page","headline":"Overview · Cloudflare Sandbox SDK docs","description":"Build secure, isolated code execution environments powered by Cloudflare Workers and Containers.","url":"https://developers.cloudflare.com/sandbox/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/sandbox/","name":"Sandbox SDK"}}]}
 ```

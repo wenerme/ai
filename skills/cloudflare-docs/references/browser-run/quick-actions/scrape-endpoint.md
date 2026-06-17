@@ -46,9 +46,9 @@ You must provide either `url` or `elements`:
 
 ### Extract headings and links from a URL
 
-* [ curl ](#tab-panel-6702)
-* [ TypeScript SDK ](#tab-panel-6703)
-* [ Workers binding ](#tab-panel-6704)
+* [ curl ](#tab-panel-6913)
+* [ TypeScript SDK ](#tab-panel-6914)
+* [ Workers binding ](#tab-panel-6915)
 
 Go to `https://example.com` and extract metadata from all `h1` and `a` elements in the DOM.
 
@@ -272,5 +272,6 @@ The `userAgent` parameter does not bypass bot protection. Requests from Browser 
 If you have questions or encounter an error, see the [Browser Run FAQ and troubleshooting guide](https://developers.cloudflare.com/browser-run/faq/).
 
 ```json
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/browser-run/quick-actions/scrape-endpoint/#page","headline":"/scrape - Scrape HTML elements · Cloudflare Browser Run docs","description":"Extract structured data from specific webpage elements using the Browser Run /scrape endpoint.","url":"https://developers.cloudflare.com/browser-run/quick-actions/scrape-endpoint/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-05-28","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/browser-run/","name":"Browser Run"}},{"@type":"ListItem","position":3,"item":{"@id":"/browser-run/quick-actions/","name":"Quick Actions"}},{"@type":"ListItem","position":4,"item":{"@id":"/browser-run/quick-actions/scrape-endpoint/","name":"/scrape - Scrape HTML elements"}}]}
 ```

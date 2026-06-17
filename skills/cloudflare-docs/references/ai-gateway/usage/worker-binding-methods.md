@@ -20,8 +20,8 @@ For a step-by-step setup guide, refer to [Set up Workers AI with AI Gateway](htt
 
 Add an AI binding to your [Wrangler configuration file](https://developers.cloudflare.com/workers/wrangler/configuration/):
 
-* [  wrangler.jsonc ](#tab-panel-6446)
-* [  wrangler.toml ](#tab-panel-6447)
+* [  wrangler.jsonc ](#tab-panel-6588)
+* [  wrangler.toml ](#tab-panel-6589)
 
 JSONC
 
@@ -61,8 +61,8 @@ Runs an inference request through AI Gateway. Accepts Workers AI models (`@cf/` 
 
 **Workers AI model:**
 
-* [  JavaScript ](#tab-panel-6448)
-* [  TypeScript ](#tab-panel-6449)
+* [  JavaScript ](#tab-panel-6590)
+* [  TypeScript ](#tab-panel-6591)
 
 JavaScript
 
@@ -124,8 +124,8 @@ const resp = await env.AI.run(
 
 **Third-party model:**
 
-* [  JavaScript ](#tab-panel-6450)
-* [  TypeScript ](#tab-panel-6451)
+* [  JavaScript ](#tab-panel-6592)
+* [  TypeScript ](#tab-panel-6593)
 
 JavaScript
 
@@ -359,5 +359,6 @@ const anthropic = createAnthropic({
 ```
 
 ```json
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai-gateway/usage/worker-binding-methods/#page","headline":"Workers Bindings · Cloudflare AI Gateway docs","description":"Reference for the AI binding with AI Gateway. Call Workers AI and third-party models with env.AI.run(), access log IDs, and use gateway methods for feedback, logging, and URLs.","url":"https://developers.cloudflare.com/ai-gateway/usage/worker-binding-methods/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-06-12","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["AI","Bindings"]}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/ai-gateway/","name":"AI Gateway"}},{"@type":"ListItem","position":3,"item":{"@id":"/ai-gateway/usage/","name":"Using AI Gateway"}},{"@type":"ListItem","position":4,"item":{"@id":"/ai-gateway/usage/worker-binding-methods/","name":"Workers Bindings"}}]}
 ```

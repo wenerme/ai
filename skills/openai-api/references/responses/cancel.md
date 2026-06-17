@@ -7723,6 +7723,18 @@ the `background` parameter set to `true` can be cancelled.
     Configuration options for
     [reasoning models](https://platform.openai.com/docs/guides/reasoning).
 
+    - `context: optional "auto" or "current_turn" or "all_turns"`
+
+      Controls which reasoning items are rendered back to the model on later turns.
+      When returned on a response, this is the effective reasoning context mode
+      used for the response.
+
+      - `"auto"`
+
+      - `"current_turn"`
+
+      - `"all_turns"`
+
     - `effort: optional ReasoningEffort`
 
       Constrains effort on reasoning for
@@ -8110,6 +8122,7 @@ curl https://api.openai.com/v1/responses/$RESPONSE_ID/cancel \
   "prompt_cache_key": "prompt-cache-key-1234",
   "prompt_cache_retention": "in_memory",
   "reasoning": {
+    "context": "auto",
     "effort": "none",
     "generate_summary": "auto",
     "summary": "auto"

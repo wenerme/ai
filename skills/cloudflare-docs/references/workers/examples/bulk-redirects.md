@@ -16,10 +16,10 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 Redirect requests to certain URLs based on a mapped object to the request's URL.
 
-* [  JavaScript ](#tab-panel-10426)
-* [  TypeScript ](#tab-panel-10427)
-* [  Python ](#tab-panel-10428)
-* [  Hono ](#tab-panel-10429)
+* [  JavaScript ](#tab-panel-11605)
+* [  TypeScript ](#tab-panel-11606)
+* [  Python ](#tab-panel-11607)
+* [  Hono ](#tab-panel-11608)
 
 JavaScript
 
@@ -233,5 +233,6 @@ export default app;
 ```
 
 ```json
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/examples/bulk-redirects/#page","headline":"Bulk redirects · Cloudflare Workers docs","description":"Redirect requests to certain URLs based on a mapped object to the request's URL.","url":"https://developers.cloudflare.com/workers/examples/bulk-redirects/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Middleware","Redirects","JavaScript","TypeScript","Python"]}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/workers/","name":"Workers"}},{"@type":"ListItem","position":3,"item":{"@id":"/workers/examples/","name":"Examples"}},{"@type":"ListItem","position":4,"item":{"@id":"/workers/examples/bulk-redirects/","name":"Bulk redirects"}}]}
 ```

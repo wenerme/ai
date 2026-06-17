@@ -33,5 +33,6 @@ The dashboard displays two different views for performance data:
    * A negative value indicates that requests from that location would not have benefited from Argo Smart Routing, so instead would have been routed directly.
 
 ```json
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/argo-smart-routing/analytics/#page","headline":"Analytics · Cloudflare Argo Smart Routing docs","description":"View latency improvements and response time data for Argo Smart Routing.","url":"https://developers.cloudflare.com/argo-smart-routing/analytics/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-05-05","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Analytics"]}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/argo-smart-routing/","name":"Argo Smart Routing"}},{"@type":"ListItem","position":3,"item":{"@id":"/argo-smart-routing/analytics/","name":"Analytics"}}]}
 ```

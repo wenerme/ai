@@ -41,5 +41,6 @@ Improve page load performance with built-in optimizations. [Learn more about Spe
 2. [Enable Polish](https://developers.cloudflare.com/images/polish/)
 
 ```json
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/use-cases/performance/image-optimization/#page","headline":"Optimize images · Cloudflare use cases","description":"Reduce page load times by compressing, resizing, and converting images to WebP and AVIF automatically.","url":"https://developers.cloudflare.com/use-cases/performance/image-optimization/","inLanguage":"en","image":"https://developers.cloudflare.com/cf-twitter-card.png","dateModified":"2026-04-24","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/use-cases/","name":"Use cases"}},{"@type":"ListItem","position":3,"item":{"@id":"/use-cases/performance/","name":"Performance"}},{"@type":"ListItem","position":4,"item":{"@id":"/use-cases/performance/image-optimization/","name":"Optimize images"}}]}
 ```

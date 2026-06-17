@@ -28,8 +28,8 @@ SDXL-Lightning is a lightning-fast text-to-image generation model. It can genera
 
 ## Usage
 
-* [  TypeScript ](#tab-panel-4915)
-* [  curl ](#tab-panel-4916)
+* [  TypeScript ](#tab-panel-5096)
+* [  curl ](#tab-panel-5097)
 
 ```
 
@@ -95,8 +95,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 ## Parameters
 
-* [ Input ](#tab-panel-4917)
-* [ Output ](#tab-panel-4918)
+* [ Input ](#tab-panel-5098)
+* [ Output ](#tab-panel-5099)
 
 prompt
 
@@ -151,5 +151,6 @@ Input [ ](https://developers.cloudflare.com/workers-ai/models/stable-diffusion-x
 Output [ ](https://developers.cloudflare.com/workers-ai/models/stable-diffusion-xl-lightning/schema-output.json "Open") [ ](https://developers.cloudflare.com/workers-ai/models/stable-diffusion-xl-lightning/schema-output.json "Download") 
 
 ```json
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers-ai/models/stable-diffusion-xl-lightning/#page","headline":"stable-diffusion-xl-lightning (ByteDance) · Cloudflare AI docs · Cloudflare Workers AI docs","description":"SDXL-Lightning is a lightning-fast text-to-image generation model. It can generate high-quality 1024px images in a few steps.","url":"https://developers.cloudflare.com/workers-ai/models/stable-diffusion-xl-lightning/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/workers-ai/","name":"Workers AI"}},{"@type":"ListItem","position":3,"item":{"@id":"/workers-ai/models/","name":"Models"}}]}
 ```

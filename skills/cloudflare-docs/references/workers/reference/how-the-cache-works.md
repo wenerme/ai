@@ -112,5 +112,6 @@ Cache API within Workers does not support tiered caching. Tiered Cache concentra
 * [Customize cache behavior with Workers](https://developers.cloudflare.com/cache/interaction-cloudflare-products/workers/)
 
 ```json
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/reference/how-the-cache-works/#page","headline":"How the Cache works · Cloudflare Workers docs","description":"How Workers interacts with the Cloudflare cache.","url":"https://developers.cloudflare.com/workers/reference/how-the-cache-works/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/workers/","name":"Workers"}},{"@type":"ListItem","position":3,"item":{"@id":"/workers/reference/","name":"Reference"}},{"@type":"ListItem","position":4,"item":{"@id":"/workers/reference/how-the-cache-works/","name":"How the Cache works"}}]}
 ```

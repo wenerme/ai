@@ -96,8 +96,8 @@ wrangler secret put VAPID_SUBJECT
 
 The agent has three responsibilities: store push subscriptions, schedule reminders, and send notifications when alarms fire.
 
-* [  JavaScript ](#tab-panel-4790)
-* [  TypeScript ](#tab-panel-4791)
+* [  JavaScript ](#tab-panel-5359)
+* [  TypeScript ](#tab-panel-5360)
 
 JavaScript
 
@@ -683,8 +683,8 @@ The client needs to: register the service worker, request notification permissio
 
 ### Register the service worker
 
-* [  JavaScript ](#tab-panel-4784)
-* [  TypeScript ](#tab-panel-4785)
+* [  JavaScript ](#tab-panel-5353)
+* [  TypeScript ](#tab-panel-5354)
 
 JavaScript
 
@@ -728,8 +728,8 @@ useEffect(() => {
 
 Fetch the VAPID public key from the agent, then subscribe through the Push API:
 
-* [  JavaScript ](#tab-panel-4788)
-* [  TypeScript ](#tab-panel-4789)
+* [  JavaScript ](#tab-panel-5357)
+* [  TypeScript ](#tab-panel-5358)
 
 JavaScript
 
@@ -859,8 +859,8 @@ async function subscribeToPush(
 
 With the subscription stored, creating a reminder is a single RPC call. The agent handles scheduling and delivery:
 
-* [  JavaScript ](#tab-panel-4782)
-* [  TypeScript ](#tab-panel-4783)
+* [  JavaScript ](#tab-panel-5351)
+* [  TypeScript ](#tab-panel-5352)
 
 JavaScript
 
@@ -958,8 +958,8 @@ A single user may subscribe from multiple browsers or devices. The agent stores 
 
 If the push service returns a 5xx error (temporary failure), you can retry using `this.schedule()` with a short delay:
 
-* [  JavaScript ](#tab-panel-4786)
-* [  TypeScript ](#tab-panel-4787)
+* [  JavaScript ](#tab-panel-5355)
+* [  TypeScript ](#tab-panel-5356)
 
 JavaScript
 
@@ -1030,5 +1030,6 @@ try {
 [ Callable methods ](https://developers.cloudflare.com/agents/runtime/lifecycle/callable-methods/) Expose agent methods as RPC endpoints. 
 
 ```json
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/agents/communication-channels/webhooks/push-notifications/#page","headline":"Push notifications · Cloudflare Agents docs","description":"Send browser push notifications from a Cloudflare Agent, even when the user has closed the tab.","url":"https://developers.cloudflare.com/agents/communication-channels/webhooks/push-notifications/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-06-03","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/agents/","name":"Agents"}},{"@type":"ListItem","position":3,"item":{"@id":"/agents/communication-channels/","name":"Communication channels"}},{"@type":"ListItem","position":4,"item":{"@id":"/agents/communication-channels/webhooks/","name":"Webhooks"}},{"@type":"ListItem","position":5,"item":{"@id":"/agents/communication-channels/webhooks/push-notifications/","name":"Push notifications"}}]}
 ```

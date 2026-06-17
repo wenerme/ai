@@ -33,8 +33,8 @@ When a user in a recipient account authenticates, the request is routed through 
 
 ## Share an IdP
 
-* [ Dashboard ](#tab-panel-6622)
-* [ API ](#tab-panel-6623)
+* [ Dashboard ](#tab-panel-7220)
+* [ API ](#tab-panel-7221)
 
 The dashboard combines grant creation and sharing into a single flow. If a federation grant already exists for the IdP, it will be reused; otherwise, one is created automatically.
 
@@ -143,8 +143,8 @@ Warning
 
 Deleting the federation grant immediately removes the IdP connection from all recipient accounts. Any Access policies in those accounts that reference the federated IdP will no longer match, which may lock users out. Verify that recipient accounts have alternative authentication methods before you stop sharing.
 
-* [ Dashboard ](#tab-panel-6620)
-* [ API ](#tab-panel-6621)
+* [ Dashboard ](#tab-panel-7218)
+* [ API ](#tab-panel-7219)
 
 The dashboard handles both grant and share deletion in a single flow.
 
@@ -191,5 +191,6 @@ curl "https://api.cloudflare.com/client/v4/accounts/%7Baccount_id%7D/shares/%7Bs
 * A source IdP cannot be deleted while it has a federation grant associated with it. Delete the grant first.
 
 ```json
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/integrations/identity-providers/idp-federation/#page","headline":"IdP federation · Cloudflare One docs","description":"Share an identity provider across multiple Cloudflare accounts in your organization using IdP federation.","url":"https://developers.cloudflare.com/cloudflare-one/integrations/identity-providers/idp-federation/","inLanguage":"en","image":"https://developers.cloudflare.com/zt-preview.png","dateModified":"2026-06-04","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["REST API"]}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/cloudflare-one/","name":"Cloudflare One"}},{"@type":"ListItem","position":3,"item":{"@id":"/cloudflare-one/integrations/","name":"Integrations"}},{"@type":"ListItem","position":4,"item":{"@id":"/cloudflare-one/integrations/identity-providers/","name":"Identity providers"}},{"@type":"ListItem","position":5,"item":{"@id":"/cloudflare-one/integrations/identity-providers/idp-federation/","name":"IdP federation"}}]}
 ```

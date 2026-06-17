@@ -112,5 +112,6 @@ Some third-party services validate the origin IP address of incoming API calls o
 If a third-party service requires IP-based validation and does not accept [Cloudflare's IP ranges ↗](https://www.cloudflare.com/ips/), set the record for that service to **DNS-only**.
 
 ```json
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/dns/proxy-status/use-cases/#page","headline":"Use cases · Cloudflare DNS docs","description":"Common scenarios for proxied and DNS-only records.","url":"https://developers.cloudflare.com/dns/proxy-status/use-cases/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/dns/","name":"DNS"}},{"@type":"ListItem","position":3,"item":{"@id":"/dns/proxy-status/","name":"Proxy status"}},{"@type":"ListItem","position":4,"item":{"@id":"/dns/proxy-status/use-cases/","name":"Use cases"}}]}
 ```

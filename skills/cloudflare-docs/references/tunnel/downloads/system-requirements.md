@@ -20,8 +20,8 @@ Run a `cloudflared` [replica](https://developers.cloudflare.com/tunnel/configura
 
 ## Port configuration
 
-* [ Linux ](#tab-panel-10049)
-* [ Windows ](#tab-panel-10050)
+* [ Linux ](#tab-panel-10986)
+* [ Windows ](#tab-panel-10987)
 
 To increase the number of ports available to `cloudflared` on Linux:
 
@@ -138,5 +138,6 @@ This calculator is for informational purposes only and all results are estimates
 To increase tunnel capacity, add identical hosts running `cloudflared` replicas.
 
 ```json
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/tunnel/downloads/system-requirements/#page","headline":"System requirements · Cloudflare Docs","description":"System requirements for running cloudflared.","url":"https://developers.cloudflare.com/tunnel/downloads/system-requirements/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/tunnel/","name":"Cloudflare Tunnel"}},{"@type":"ListItem","position":3,"item":{"@id":"/tunnel/downloads/","name":"Downloads"}},{"@type":"ListItem","position":4,"item":{"@id":"/tunnel/downloads/system-requirements/","name":"System requirements"}}]}
 ```

@@ -26,8 +26,8 @@ Hosted image operations require a [paid Images plan with storage](https://develo
 
 To bind Images to your Worker, add the following to your Wrangler configuration file:
 
-* [  wrangler.jsonc ](#tab-panel-8692)
-* [  wrangler.toml ](#tab-panel-8693)
+* [  wrangler.jsonc ](#tab-panel-8903)
+* [  wrangler.toml ](#tab-panel-8904)
 
 JSONC
 
@@ -119,8 +119,8 @@ Deletes an image. Returns `true` if the image was deleted or `false` if no image
 
 ### Upload an image from a request body
 
-* [  JavaScript ](#tab-panel-8694)
-* [  TypeScript ](#tab-panel-8695)
+* [  JavaScript ](#tab-panel-8905)
+* [  TypeScript ](#tab-panel-8906)
 
 JavaScript
 
@@ -196,8 +196,8 @@ export default {
 
 Set `encoding: "base64"` and the binding will decode the body for you before uploading.
 
-* [  JavaScript ](#tab-panel-8698)
-* [  TypeScript ](#tab-panel-8699)
+* [  JavaScript ](#tab-panel-8909)
+* [  TypeScript ](#tab-panel-8910)
 
 JavaScript
 
@@ -267,8 +267,8 @@ export default {
 
 ### List images with pagination
 
-* [  JavaScript ](#tab-panel-8702)
-* [  TypeScript ](#tab-panel-8703)
+* [  JavaScript ](#tab-panel-8913)
+* [  TypeScript ](#tab-panel-8914)
 
 JavaScript
 
@@ -338,8 +338,8 @@ export default {
 
 ### Get the details for a single image
 
-* [  JavaScript ](#tab-panel-8696)
-* [  TypeScript ](#tab-panel-8697)
+* [  JavaScript ](#tab-panel-8907)
+* [  TypeScript ](#tab-panel-8908)
 
 JavaScript
 
@@ -393,8 +393,8 @@ export default {
 
 ### Stream the original bytes for an image
 
-* [  JavaScript ](#tab-panel-8700)
-* [  TypeScript ](#tab-panel-8701)
+* [  JavaScript ](#tab-panel-8911)
+* [  TypeScript ](#tab-panel-8912)
 
 JavaScript
 
@@ -448,8 +448,8 @@ export default {
 
 ### Update image metadata
 
-* [  JavaScript ](#tab-panel-8704)
-* [  TypeScript ](#tab-panel-8705)
+* [  JavaScript ](#tab-panel-8915)
+* [  TypeScript ](#tab-panel-8916)
 
 JavaScript
 
@@ -499,8 +499,8 @@ export default {
 
 ### Delete an image
 
-* [  JavaScript ](#tab-panel-8706)
-* [  TypeScript ](#tab-panel-8707)
+* [  JavaScript ](#tab-panel-8917)
+* [  TypeScript ](#tab-panel-8918)
 
 JavaScript
 
@@ -552,8 +552,8 @@ export default {
 
 This example fetches an image from a remote URL, uploads it into your Images account, and returns the first variant URL.
 
-* [  JavaScript ](#tab-panel-8708)
-* [  TypeScript ](#tab-panel-8709)
+* [  JavaScript ](#tab-panel-8919)
+* [  TypeScript ](#tab-panel-8920)
 
 JavaScript
 
@@ -697,5 +697,6 @@ The mock is only suitable for local development. To exercise the real Images ser
 * [Manage hosted images](https://developers.cloudflare.com/images/storage/manage-images/) — Dashboard and API workflows for managing stored images.
 
 ```json
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/images/storage/binding/#page","headline":"Manage hosted images with Workers · Cloudflare Images docs","description":"Use the Images binding to upload, list, retrieve, update, and delete hosted images from a Worker.","url":"https://developers.cloudflare.com/images/storage/binding/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-06-10","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/images/","name":"Cloudflare Images"}},{"@type":"ListItem","position":3,"item":{"@id":"/images/storage/","name":"Storage"}},{"@type":"ListItem","position":4,"item":{"@id":"/images/storage/binding/","name":"Manage hosted images with Workers"}}]}
 ```

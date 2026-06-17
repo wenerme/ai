@@ -100,8 +100,8 @@ cloudflared tunnel --loglevel info --logfile cloudflared.log run <UUID>
 
 You can stream real-time logs from a running tunnel without SSH access to the server.
 
-* [ CLI ](#tab-panel-10057)
-* [ Dashboard ](#tab-panel-10058)
+* [ CLI ](#tab-panel-10994)
+* [ Dashboard ](#tab-panel-10995)
 
 The `cloudflared` daemon can stream logs from any tunnel in your account to the local command line. `cloudflared` must be installed on both your local machine and the origin server.
 
@@ -381,5 +381,6 @@ The `cloudflared-diag-YYYY-MM-DDThh-mm-ss.zip` archive contains the files listed
 1. If the log file is blank, you may need to [set \--loglevel to debug](#server-side-logs) when you start the tunnel. The `--loglevel` parameter is only required if you ran the tunnel from the CLI using a `cloudflared tunnel run` command. It is not necessary if the tunnel runs as a Linux/macOS service or runs in Docker/Kubernetes. [↩](#user-content-fnref-1)
 
 ```json
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/tunnel/monitoring/#page","headline":"Monitoring · Cloudflare Docs","description":"Monitor tunnel health, connectors, and connection status.","url":"https://developers.cloudflare.com/tunnel/monitoring/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-05-05","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Logging"]}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/tunnel/","name":"Cloudflare Tunnel"}},{"@type":"ListItem","position":3,"item":{"@id":"/tunnel/monitoring/","name":"Monitoring"}}]}
 ```

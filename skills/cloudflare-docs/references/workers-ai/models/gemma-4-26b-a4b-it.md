@@ -37,10 +37,10 @@ Try out this model with Workers AI LLM Playground. It does not require any setup
 
 ## Usage
 
-* [  Worker (Streaming) ](#tab-panel-4654)
-* [  TypeScript ](#tab-panel-4655)
-* [  Python ](#tab-panel-4656)
-* [  curl ](#tab-panel-4657)
+* [  Worker (Streaming) ](#tab-panel-4815)
+* [  TypeScript ](#tab-panel-4816)
+* [  Python ](#tab-panel-4817)
+* [  curl ](#tab-panel-4818)
 
 TypeScript
 
@@ -199,8 +199,8 @@ Workers AI also supports OpenAI compatible API endpoints for `/v1/chat/completio
 
 Synchronous — Send a request and receive a complete response 
 
-* [ Input ](#tab-panel-4658)
-* [ Output ](#tab-panel-4659)
+* [ Input ](#tab-panel-4819)
+* [ Output ](#tab-panel-4820)
 
 Input format
 
@@ -378,8 +378,8 @@ service\_tier
 
 Streaming — Send a request with \`stream: true\` and receive server-sent events 
 
-* [ Input ](#tab-panel-4660)
-* [ Output ](#tab-panel-4661)
+* [ Input ](#tab-panel-4821)
+* [ Output ](#tab-panel-4822)
 
 Input format
 
@@ -537,8 +537,8 @@ format
 
 Batch — Send multiple requests in a single API call 
 
-* [ Input ](#tab-panel-4662)
-* [ Output ](#tab-panel-4663)
+* [ Input ](#tab-panel-4823)
+* [ Output ](#tab-panel-4824)
 
 ▶requests\[\]
 
@@ -591,5 +591,6 @@ service\_tier
  Batch Output [ ](https://developers.cloudflare.com/workers-ai/models/gemma-4-26b-a4b-it/batch-output.json "Open") [ ](https://developers.cloudflare.com/workers-ai/models/gemma-4-26b-a4b-it/batch-output.json "Download") 
 
 ```json
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers-ai/models/gemma-4-26b-a4b-it/#page","headline":"gemma-4-26b-a4b-it (Google) · Cloudflare AI docs · Cloudflare Workers AI docs","description":"Gemma 4 is Google's most intelligent family of open models, built from Gemini 3 research to maximize intelligence-per-parameter.","url":"https://developers.cloudflare.com/workers-ai/models/gemma-4-26b-a4b-it/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/workers-ai/","name":"Workers AI"}},{"@type":"ListItem","position":3,"item":{"@id":"/workers-ai/models/","name":"Models"}}]}
 ```

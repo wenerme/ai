@@ -55,5 +55,6 @@ In every tool you want to use this trigger, add an action with this trigger [con
 For more information regarding the properties you can use with `zaraz.track()`, refer to [Properties reference](https://developers.cloudflare.com/zaraz/reference/properties-reference/).
 
 ```json
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/zaraz/web-api/track/#page","headline":"zaraz.track · Cloudflare Zaraz docs","description":"Send custom tracking events with the Zaraz Web API.","url":"https://developers.cloudflare.com/zaraz/web-api/track/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/zaraz/","name":"Zaraz"}},{"@type":"ListItem","position":3,"item":{"@id":"/zaraz/web-api/","name":"Web API"}},{"@type":"ListItem","position":4,"item":{"@id":"/zaraz/web-api/track/","name":"Track"}}]}
 ```

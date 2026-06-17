@@ -727,12 +727,29 @@ components:
         - type
         - url
       title: AnthropicUrlPdfSource
+    AnthropicFileDocumentSourceType:
+      type: string
+      enum:
+        - file
+      title: AnthropicFileDocumentSourceType
+    AnthropicFileDocumentSource:
+      type: object
+      properties:
+        file_id:
+          type: string
+        type:
+          $ref: '#/components/schemas/AnthropicFileDocumentSourceType'
+      required:
+        - file_id
+        - type
+      title: AnthropicFileDocumentSource
     AnthropicDocumentBlockParamSource:
       oneOf:
         - $ref: '#/components/schemas/AnthropicBase64PdfSource'
         - $ref: '#/components/schemas/AnthropicPlainTextSource'
         - $ref: '#/components/schemas/AnthropicDocumentBlockParamSource2'
         - $ref: '#/components/schemas/AnthropicUrlPdfSource'
+        - $ref: '#/components/schemas/AnthropicFileDocumentSource'
       title: AnthropicDocumentBlockParamSource
     AnthropicDocumentBlockParamType:
       type: string
@@ -2864,7 +2881,8 @@ components:
           description: >-
             Maximum number of search results to return per search call. Defaults
             to 5. Applies to Exa, Firecrawl, Parallel, and Perplexity engines;
-            ignored with native provider search.
+            ignored with native provider search. Perplexity supports a maximum
+            of 20; values above 20 are clamped.
         max_total_results:
           type: integer
           description: >-

@@ -62,8 +62,8 @@ This example adds a [custom rule](https://developers.cloudflare.com/waf/custom-r
 
 To use the [cf.waf.credential\_check.username\_and\_password\_leaked](https://developers.cloudflare.com/ruleset-engine/rules-language/fields/reference/cf.waf.credential%5Fcheck.username%5Fand%5Fpassword%5Fleaked/) field you must [enable leaked credentials detection](#enable-leaked-credentials-detection).
 
-* [ Terraform (v5) ](#tab-panel-10007)
-* [ Terraform (v4) ](#tab-panel-10008)
+* [ Terraform (v5) ](#tab-panel-11182)
+* [ Terraform (v4) ](#tab-panel-11183)
 
 Required API token permissions
 
@@ -142,5 +142,6 @@ resource "cloudflare_ruleset" "zone_custom_firewall_leaked_creds" {
 For additional Terraform configuration examples, refer to [WAF custom rules configuration using Terraform](https://developers.cloudflare.com/terraform/additional-configurations/waf-custom-rules/).
 
 ```json
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/waf/detections/leaked-credentials/terraform-examples/#page","headline":"Terraform configuration examples · Cloudflare Web Application Firewall (WAF) docs","description":"Terraform examples for managing and configuring leaked credentials detection.","url":"https://developers.cloudflare.com/waf/detections/leaked-credentials/terraform-examples/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-05-06","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Terraform"]}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/waf/","name":"WAF"}},{"@type":"ListItem","position":3,"item":{"@id":"/waf/detections/","name":"Traffic detections"}},{"@type":"ListItem","position":4,"item":{"@id":"/waf/detections/leaked-credentials/","name":"Leaked credentials detection"}},{"@type":"ListItem","position":5,"item":{"@id":"/waf/detections/leaked-credentials/terraform-examples/","name":"Terraform configuration examples"}}]}
 ```

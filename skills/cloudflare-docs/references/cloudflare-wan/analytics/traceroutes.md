@@ -31,5 +31,6 @@ You can access detailed data from the traceroute, including:
 * Standard deviation of latency
 
 ```json
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-wan/analytics/traceroutes/#page","headline":"Traceroutes · Cloudflare WAN docs","description":"Run traceroutes across your WAN network.","url":"https://developers.cloudflare.com/cloudflare-wan/analytics/traceroutes/","inLanguage":"en","image":"https://developers.cloudflare.com/zt-preview.png","dateModified":"2026-04-17","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/cloudflare-wan/","name":"Cloudflare WAN"}},{"@type":"ListItem","position":3,"item":{"@id":"/cloudflare-wan/analytics/","name":"Analytics"}},{"@type":"ListItem","position":4,"item":{"@id":"/cloudflare-wan/analytics/traceroutes/","name":"Traceroutes"}}]}
 ```

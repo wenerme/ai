@@ -25,8 +25,8 @@ When you bind to [Cloudflare Mesh](https://developers.cloudflare.com/cloudflare-
 
 Bind your Worker to Cloudflare Mesh using `network_id: "cf1:network"` in your Wrangler configuration:
 
-* [  wrangler.jsonc ](#tab-panel-10164)
-* [  wrangler.toml ](#tab-panel-10165)
+* [  wrangler.jsonc ](#tab-panel-11341)
+* [  wrangler.toml ](#tab-panel-11342)
 
 JSONC
 
@@ -42,7 +42,7 @@ JSONC
 
   // Set this to today's date
 
-  "compatibility_date": "2026-05-28",
+  "compatibility_date": "2026-06-17",
 
   "vpc_networks": [
 
@@ -75,7 +75,7 @@ main = "src/index.js"
 
 # Set this to today's date
 
-compatibility_date = "2026-05-28"
+compatibility_date = "2026-06-17"
 
 
 [[vpc_networks]]
@@ -99,11 +99,13 @@ index.js
 
 ```
 
-// Replace with the Mesh IP and port of your private service
+// You can target a Mesh node directly by its Mesh IP or any private IP
 
-const NODE_IP = "10.0.1.50";
+// on a subnet route behind the node
 
-const NODE_PORT = 8080;
+const SERVICE_IP = "10.0.1.50";
+
+const SERVICE_PORT = 8080;
 
 
 export default {
@@ -114,7 +116,7 @@ export default {
 
       const response = await env.MESH.fetch(
 
-        `http://${NODE_IP}:${NODE_PORT}/api/data`,
+        `http://${SERVICE_IP}:${SERVICE_PORT}/api/data`,
 
       );
 
@@ -135,7 +137,57 @@ export default {
 
 ```
 
-Unlike [VPC Services](https://developers.cloudflare.com/workers-vpc/configuration/vpc-services/), the URL you pass to `fetch()` determines the actual destination. You can reach any IP and port accessible through your Mesh network without creating separate bindings for each service.
+Unlike [VPC Services](https://developers.cloudflare.com/workers-vpc/configuration/vpc-services/), the URL you pass to `fetch()` or the address you pass to `connect()` determines the actual destination. You can reach any IP and port accessible through your Mesh network without creating separate bindings for each service.
+
+### TCP connections
+
+You can also use `connect()` to open raw TCP sockets to non-HTTP services through the same binding:
+
+index.js
+
+```
+
+// You can target a Mesh node directly by its Mesh IP or any private IP
+
+// on a subnet route behind the node
+
+const REDIS_IP = "10.0.1.50";
+
+const REDIS_PORT = 6379;
+
+
+export default {
+
+  async fetch(request, env, ctx) {
+
+    try {
+
+      const socket = await env.MESH.connect(`${REDIS_IP}:${REDIS_PORT}`);
+
+
+      const writer = socket.writable.getWriter();
+
+      await writer.write(new TextEncoder().encode("PING\r\n"));
+
+      await writer.close();
+
+
+      return new Response(socket.readable);
+
+    } catch (error) {
+
+      // connect() throws if the VPC Network cannot connect to the target
+
+      return new Response("Service unavailable", { status: 503 });
+
+    }
+
+  },
+
+};
+
+
+```
 
 ## 3\. Deploy and test
 
@@ -174,5 +226,6 @@ curl https://mesh-gateway.workers.dev/api/metrics
 * Explore [other examples](https://developers.cloudflare.com/workers-vpc/examples/)
 
 ```json
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers-vpc/examples/connect-to-cloudflare-mesh/#page","headline":"Connect Workers to Cloudflare Mesh · Cloudflare Workers VPC","description":"Use a VPC Network binding with Cloudflare Mesh to reach private services from a Worker.","url":"https://developers.cloudflare.com/workers-vpc/examples/connect-to-cloudflare-mesh/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-06-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/workers-vpc/","name":"Workers VPC"}},{"@type":"ListItem","position":3,"item":{"@id":"/workers-vpc/examples/","name":"Examples"}},{"@type":"ListItem","position":4,"item":{"@id":"/workers-vpc/examples/connect-to-cloudflare-mesh/","name":"Connect Workers to Cloudflare Mesh"}}]}
 ```

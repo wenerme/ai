@@ -54,8 +54,8 @@ Protect write-capable routes
 
 This example omits authentication so it can focus on the Git flow. In production, authorize the caller before creating repos or granting write capability.
 
-* [  JavaScript ](#tab-panel-4785)
-* [  TypeScript ](#tab-panel-4786)
+* [  JavaScript ](#tab-panel-6792)
+* [  TypeScript ](#tab-panel-6793)
 
 src/index.js
 
@@ -322,8 +322,8 @@ In-memory filesystem helper
 
 Use this helper with `isomorphic-git` in Workers when you need a short-lived working tree in memory.
 
-* [  JavaScript ](#tab-panel-4787)
-* [  TypeScript ](#tab-panel-4788)
+* [  JavaScript ](#tab-panel-6794)
+* [  TypeScript ](#tab-panel-6795)
 
 src/memory-fs.js
 
@@ -1097,5 +1097,6 @@ export class MemoryFS {
 ```
 
 ```json
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/artifacts/examples/isomorphic-git/#page","headline":"isomorphic-git · Cloudflare Artifacts docs","description":"Push commits to Artifacts repos from Workers.","url":"https://developers.cloudflare.com/artifacts/examples/isomorphic-git/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-05-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/artifacts/","name":"Artifacts"}},{"@type":"ListItem","position":3,"item":{"@id":"/artifacts/examples/","name":"Examples"}},{"@type":"ListItem","position":4,"item":{"@id":"/artifacts/examples/isomorphic-git/","name":"isomorphic-git"}}]}
 ```

@@ -16,7 +16,7 @@ Threshold billing is an automatic payment collection mechanism for Cloudflare's 
 
 ## How threshold billing works
 
-1. **Usage accumulates** \- As you use Cloudflare's usage-based products (R2, Stream, Images, Workers), charges accrue throughout your billing cycle across all these products combined.
+1. **Usage accumulates** \- As you use Cloudflare's usage-based products, charges accrue throughout your billing cycle across all these products combined.
 2. **Threshold reached** \- When your total accumulated usage charges reach the threshold, Cloudflare automatically generates a mid-cycle invoice.
 3. **Payment collected** \- Your payment method on file is charged for the threshold invoice amount.
 4. **One-time trigger** \- The threshold fires once per account. After a threshold invoice is generated, your account returns to standard end-of-cycle billing.
@@ -36,18 +36,13 @@ You will never be double-charged. The threshold invoice and end-of-cycle invoice
 
 ## Products subject to threshold billing
 
-Threshold billing applies to combined usage across the following products:
+Threshold billing applies to all Cloudflare products with usage-based pricing. This includes products such as [R2](https://developers.cloudflare.com/r2/), [Workers](https://developers.cloudflare.com/workers/), [Stream](https://developers.cloudflare.com/stream/), [Cloudflare Images](https://developers.cloudflare.com/images/), and any other product billed based on consumption.
 
-* [R2](https://developers.cloudflare.com/r2/)
-* [Stream](https://developers.cloudflare.com/stream/)
-* [Cloudflare Images](https://developers.cloudflare.com/images/)
-* [Workers](https://developers.cloudflare.com/workers/) (usage-based pricing)
-
-The threshold is based on your total combined usage across all of these products, not each product individually.
+The threshold is based on your total combined usage across all usage-based products, not each product individually.
 
 ## Who is affected
 
-Threshold billing applies to self-serve accounts using the products listed above.
+Threshold billing applies to self-serve accounts using any Cloudflare product with usage-based pricing.
 
 Note
 
@@ -80,7 +75,7 @@ Threshold invoices are labeled to distinguish them from regular end-of-cycle inv
 
 ### Why did I receive a mid-cycle charge?
 
-Your combined usage-based charges across R2, Stream, Images, and Workers reached the billing threshold before the end of your billing cycle. This is expected behavior for accounts with high usage.
+Your combined usage-based charges across Cloudflare's usage-based products reached the billing threshold before the end of your billing cycle. This is expected behavior for accounts with high usage.
 
 ### Will I be charged twice for the same usage?
 
@@ -103,5 +98,6 @@ Threshold invoices are triggered by usage. If you prefer not to receive mid-cycl
 If you believe there is an error with your threshold invoice, [contact Cloudflare support](https://developers.cloudflare.com/support/contacting-cloudflare-support/) with your invoice details.
 
 ```json
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/billing/threshold-billing/#page","headline":"Threshold billing · Cloudflare Billing docs","description":"Understand threshold-based billing for Cloudflare services.","url":"https://developers.cloudflare.com/billing/threshold-billing/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-06-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/billing/","name":"Billing"}},{"@type":"ListItem","position":3,"item":{"@id":"/billing/threshold-billing/","name":"Threshold billing"}}]}
 ```

@@ -108,5 +108,6 @@ After setting up AWS Firehose to send VPC flow logs to Network Flow, you can con
 1. The default view will be the analytics dashboard for Network Flow.
 
 ```json
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/network-flow/get-started/#page","headline":"Get started · Cloudflare Network Flow docs","description":"Set up Network Flow to monitor network traffic patterns.","url":"https://developers.cloudflare.com/network-flow/get-started/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-05-07","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["NetFlow","AWS"]}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/network-flow/","name":"Network Flow"}},{"@type":"ListItem","position":3,"item":{"@id":"/network-flow/get-started/","name":"Get started"}}]}
 ```

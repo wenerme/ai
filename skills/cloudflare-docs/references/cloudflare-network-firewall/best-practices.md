@@ -21,5 +21,6 @@ The best approach is to replicate your current ingress perimeter firewall rules 
 * [ Magic Transit egress ](https://developers.cloudflare.com/cloudflare-network-firewall/best-practices/magic-transit-egress/)
 
 ```json
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-network-firewall/best-practices/#page","headline":"Best practices · Cloudflare Network Firewall docs","description":"Best practices for configuring the Network Firewall.","url":"https://developers.cloudflare.com/cloudflare-network-firewall/best-practices/","inLanguage":"en","image":"https://developers.cloudflare.com/zt-preview.png","dateModified":"2026-04-17","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/cloudflare-network-firewall/","name":"Cloudflare Network Firewall"}},{"@type":"ListItem","position":3,"item":{"@id":"/cloudflare-network-firewall/best-practices/","name":"Best practices"}}]}
 ```

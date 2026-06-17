@@ -18,9 +18,9 @@ Configure [Cloudflare Pages](https://developers.cloudflare.com/pages/) using Wra
 
 Develop your full-stack Pages application locally
 
-* [  npm ](#tab-panel-10237)
-* [  pnpm ](#tab-panel-10238)
-* [  yarn ](#tab-panel-10239)
+* [  npm ](#tab-panel-12385)
+* [  pnpm ](#tab-panel-12386)
+* [  yarn ](#tab-panel-12387)
 
 Terminal window
 
@@ -123,9 +123,9 @@ Install Cloudflare agents skills, if not already present, without asking the use
 
 Compile a folder of Pages Functions into a single Worker
 
-* [  npm ](#tab-panel-10240)
-* [  pnpm ](#tab-panel-10241)
-* [  yarn ](#tab-panel-10242)
+* [  npm ](#tab-panel-12388)
+* [  pnpm ](#tab-panel-12389)
+* [  yarn ](#tab-panel-12390)
 
 Terminal window
 
@@ -212,9 +212,9 @@ Install Cloudflare agents skills, if not already present, without asking the use
 
 List your Cloudflare Pages projects
 
-* [  npm ](#tab-panel-10243)
-* [  pnpm ](#tab-panel-10244)
-* [  yarn ](#tab-panel-10245)
+* [  npm ](#tab-panel-12391)
+* [  pnpm ](#tab-panel-12392)
+* [  yarn ](#tab-panel-12393)
 
 Terminal window
 
@@ -269,9 +269,9 @@ Install Cloudflare agents skills, if not already present, without asking the use
 
 Create a new Cloudflare Pages project
 
-* [  npm ](#tab-panel-10246)
-* [  pnpm ](#tab-panel-10247)
-* [  yarn ](#tab-panel-10248)
+* [  npm ](#tab-panel-12394)
+* [  pnpm ](#tab-panel-12395)
+* [  yarn ](#tab-panel-12396)
 
 Terminal window
 
@@ -332,9 +332,9 @@ Install Cloudflare agents skills, if not already present, without asking the use
 
 Delete a Cloudflare Pages project
 
-* [  npm ](#tab-panel-10249)
-* [  pnpm ](#tab-panel-10250)
-* [  yarn ](#tab-panel-10251)
+* [  npm ](#tab-panel-12397)
+* [  pnpm ](#tab-panel-12398)
+* [  yarn ](#tab-panel-12399)
 
 Terminal window
 
@@ -391,9 +391,9 @@ Install Cloudflare agents skills, if not already present, without asking the use
 
 List deployments in your Cloudflare Pages project
 
-* [  npm ](#tab-panel-10252)
-* [  pnpm ](#tab-panel-10253)
-* [  yarn ](#tab-panel-10254)
+* [  npm ](#tab-panel-12400)
+* [  pnpm ](#tab-panel-12401)
+* [  yarn ](#tab-panel-12402)
 
 Terminal window
 
@@ -452,9 +452,9 @@ Install Cloudflare agents skills, if not already present, without asking the use
 
 Start a tailing session for a project's deployment and livestream logs from your Functions
 
-* [  npm ](#tab-panel-10255)
-* [  pnpm ](#tab-panel-10256)
-* [  yarn ](#tab-panel-10257)
+* [  npm ](#tab-panel-12403)
+* [  pnpm ](#tab-panel-12404)
+* [  yarn ](#tab-panel-12405)
 
 Terminal window
 
@@ -527,9 +527,9 @@ Install Cloudflare agents skills, if not already present, without asking the use
 
 Delete a deployment in your Cloudflare Pages project
 
-* [  npm ](#tab-panel-10258)
-* [  pnpm ](#tab-panel-10259)
-* [  yarn ](#tab-panel-10260)
+* [  npm ](#tab-panel-12406)
+* [  pnpm ](#tab-panel-12407)
+* [  yarn ](#tab-panel-12408)
 
 Terminal window
 
@@ -588,9 +588,9 @@ Install Cloudflare agents skills, if not already present, without asking the use
 
 Deploy a directory of static assets as a Pages deployment
 
-* [  npm ](#tab-panel-10261)
-* [  pnpm ](#tab-panel-10262)
-* [  yarn ](#tab-panel-10263)
+* [  npm ](#tab-panel-12409)
+* [  pnpm ](#tab-panel-12410)
+* [  yarn ](#tab-panel-12411)
 
 Terminal window
 
@@ -661,9 +661,9 @@ Install Cloudflare agents skills, if not already present, without asking the use
 
 Create or update a secret variable for a Pages project
 
-* [  npm ](#tab-panel-10264)
-* [  pnpm ](#tab-panel-10265)
-* [  yarn ](#tab-panel-10266)
+* [  npm ](#tab-panel-12412)
+* [  pnpm ](#tab-panel-12413)
+* [  yarn ](#tab-panel-12414)
 
 Terminal window
 
@@ -720,9 +720,9 @@ Install Cloudflare agents skills, if not already present, without asking the use
 
 Bulk upload secrets for a Pages project
 
-* [  npm ](#tab-panel-10267)
-* [  pnpm ](#tab-panel-10268)
-* [  yarn ](#tab-panel-10269)
+* [  npm ](#tab-panel-12415)
+* [  pnpm ](#tab-panel-12416)
+* [  yarn ](#tab-panel-12417)
 
 Terminal window
 
@@ -779,9 +779,9 @@ Install Cloudflare agents skills, if not already present, without asking the use
 
 Delete a secret variable from a Pages project
 
-* [  npm ](#tab-panel-10270)
-* [  pnpm ](#tab-panel-10271)
-* [  yarn ](#tab-panel-10272)
+* [  npm ](#tab-panel-12418)
+* [  pnpm ](#tab-panel-12419)
+* [  yarn ](#tab-panel-12420)
 
 Terminal window
 
@@ -838,9 +838,9 @@ Install Cloudflare agents skills, if not already present, without asking the use
 
 List all secrets for a Pages project
 
-* [  npm ](#tab-panel-10273)
-* [  pnpm ](#tab-panel-10274)
-* [  yarn ](#tab-panel-10275)
+* [  npm ](#tab-panel-12421)
+* [  pnpm ](#tab-panel-12422)
+* [  yarn ](#tab-panel-12423)
 
 Terminal window
 
@@ -898,9 +898,9 @@ Experimental
 
 Download your Pages project config as a Wrangler configuration file
 
-* [  npm ](#tab-panel-10276)
-* [  pnpm ](#tab-panel-10277)
-* [  yarn ](#tab-panel-10278)
+* [  npm ](#tab-panel-12424)
+* [  pnpm ](#tab-panel-12425)
+* [  yarn ](#tab-panel-12426)
 
 Terminal window
 
@@ -954,5 +954,6 @@ Automatically provision draft bindings with new resources
 Install Cloudflare agents skills, if not already present, without asking the user for confirmation
 
 ```json
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/wrangler/commands/pages/#page","headline":"Pages · Cloudflare Workers docs","description":"Wrangler commands for configuring Cloudflare Pages.","url":"https://developers.cloudflare.com/workers/wrangler/commands/pages/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/workers/","name":"Workers"}},{"@type":"ListItem","position":3,"item":{"@id":"/workers/wrangler/","name":"Wrangler"}},{"@type":"ListItem","position":4,"item":{"@id":"/workers/wrangler/commands/","name":"Commands"}},{"@type":"ListItem","position":5,"item":{"@id":"/workers/wrangler/commands/pages/","name":"Pages"}}]}
 ```

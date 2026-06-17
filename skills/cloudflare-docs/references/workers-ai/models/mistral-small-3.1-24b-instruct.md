@@ -34,10 +34,10 @@ Try out this model with Workers AI LLM Playground. It does not require any setup
 
 ## Usage
 
-* [  Worker (Streaming) ](#tab-panel-4845)
-* [  TypeScript ](#tab-panel-4846)
-* [  Python ](#tab-panel-4847)
-* [  curl ](#tab-panel-4848)
+* [  Worker (Streaming) ](#tab-panel-5026)
+* [  TypeScript ](#tab-panel-5027)
+* [  Python ](#tab-panel-5028)
+* [  curl ](#tab-panel-5029)
 
 TypeScript
 
@@ -285,5 +285,6 @@ format
  Streaming Output [ ](https://developers.cloudflare.com/workers-ai/models/mistral-small-3.1-24b-instruct/streaming-output.json "Open") [ ](https://developers.cloudflare.com/workers-ai/models/mistral-small-3.1-24b-instruct/streaming-output.json "Download") 
 
 ```json
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers-ai/models/mistral-small-3.1-24b-instruct/#page","headline":"mistral-small-3.1-24b-instruct (MistralAI) · Cloudflare AI docs · Cloudflare Workers AI docs","description":"Building upon Mistral Small 3 (2501), Mistral Small 3.1 (2503) adds state-of-the-art vision understanding and enhances long context capabilities up to 128k tokens without compromising text performance. With 24 billion parameters, this model achieves top-tier capabilities in both text and vision tasks.","url":"https://developers.cloudflare.com/workers-ai/models/mistral-small-3.1-24b-instruct/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/workers-ai/","name":"Workers AI"}},{"@type":"ListItem","position":3,"item":{"@id":"/workers-ai/models/","name":"Models"}}]}
 ```

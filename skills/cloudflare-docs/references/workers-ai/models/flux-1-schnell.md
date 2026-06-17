@@ -27,9 +27,9 @@ FLUX.1 \[schnell\] is a 12 billion parameter rectified flow transformer capable 
 
 ## Usage
 
-* [  Worker (Data URI) ](#tab-panel-4629)
-* [  Worker (Image) ](#tab-panel-4630)
-* [  curl ](#tab-panel-4631)
+* [  Worker (Data URI) ](#tab-panel-4790)
+* [  Worker (Image) ](#tab-panel-4791)
+* [  curl ](#tab-panel-4792)
 
 TypeScript
 
@@ -132,8 +132,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 ## Parameters
 
-* [ Input ](#tab-panel-4632)
-* [ Output ](#tab-panel-4633)
+* [ Input ](#tab-panel-4793)
+* [ Output ](#tab-panel-4794)
 
 prompt
 
@@ -154,5 +154,6 @@ Input [ ](https://developers.cloudflare.com/workers-ai/models/flux-1-schnell/sch
 Output [ ](https://developers.cloudflare.com/workers-ai/models/flux-1-schnell/schema-output.json "Open") [ ](https://developers.cloudflare.com/workers-ai/models/flux-1-schnell/schema-output.json "Download") 
 
 ```json
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers-ai/models/flux-1-schnell/#page","headline":"flux-1-schnell (Black Forest Labs) · Cloudflare AI docs · Cloudflare Workers AI docs","description":"FLUX.1 \\[schnell] is a 12 billion parameter rectified flow transformer capable of generating images from text descriptions.","url":"https://developers.cloudflare.com/workers-ai/models/flux-1-schnell/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/workers-ai/","name":"Workers AI"}},{"@type":"ListItem","position":3,"item":{"@id":"/workers-ai/models/","name":"Models"}}]}
 ```

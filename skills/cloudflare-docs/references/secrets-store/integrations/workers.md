@@ -38,9 +38,9 @@ Note
 
 You may also add account secrets directly from the Workers settings on the dashboard. You can skip to [step 2](#via-dashboard) to do that.
 
-* [ Wrangler ](#tab-panel-10284)
-* [ Dashboard ](#tab-panel-10285)
-* [ API ](#tab-panel-10286)
+* [ Wrangler ](#tab-panel-10525)
+* [ Dashboard ](#tab-panel-10526)
+* [ API ](#tab-panel-10527)
 
 Use the [Wrangler command](https://developers.cloudflare.com/workers/wrangler/commands/secrets-store/#secrets-store-secret) `secrets-store secret create`.
 
@@ -156,8 +156,8 @@ To bind an account secret to your Worker, you must have one of the following [ro
    * `store_id`: the corresponding Secrets Store ID where your account secret was created.  
    * `secret_name`: the unique secret name, defined when your account secret was created.
 
-* [  wrangler.jsonc ](#tab-panel-10282)
-* [  wrangler.toml ](#tab-panel-10283)
+* [  wrangler.jsonc ](#tab-panel-10523)
+* [  wrangler.toml ](#tab-panel-10524)
 
 JSONC
 
@@ -272,5 +272,6 @@ export default {
 ```
 
 ```json
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/secrets-store/integrations/workers/#page","headline":"Workers integration · Cloudflare Secrets Store docs","description":"Cloudflare Secrets Store is a secure, centralized location in which account-level secrets are stored and managed. The secrets are securely encrypted and stored across all Cloudflare data centers.","url":"https://developers.cloudflare.com/secrets-store/integrations/workers/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-05-05","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/secrets-store/","name":"Secrets Store"}},{"@type":"ListItem","position":3,"item":{"@id":"/secrets-store/integrations/","name":"Secrets Store integrations"}},{"@type":"ListItem","position":4,"item":{"@id":"/secrets-store/integrations/workers/","name":"Workers integration"}}]}
 ```

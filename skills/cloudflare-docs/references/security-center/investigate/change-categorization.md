@@ -80,5 +80,6 @@ curl https://api.cloudflare.com/client/v4/accounts/{account_id}/intel/miscategor
 ```
 
 ```json
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/security-center/investigate/change-categorization/#page","headline":"Change categorization · Cloudflare Security Center docs","description":"Request domain categorization changes via the dashboard, Radar, or the API.","url":"https://developers.cloudflare.com/security-center/investigate/change-categorization/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/security-center/","name":"Security Center"}},{"@type":"ListItem","position":3,"item":{"@id":"/security-center/investigate/","name":"Investigate"}},{"@type":"ListItem","position":4,"item":{"@id":"/security-center/investigate/change-categorization/","name":"Change categorization"}}]}
 ```

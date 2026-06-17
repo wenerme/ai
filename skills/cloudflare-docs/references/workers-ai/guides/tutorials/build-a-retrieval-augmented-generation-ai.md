@@ -109,8 +109,8 @@ If you have issues with this step or you do not have access to a browser interfa
 
 This example features the [@cf/meta/llama-3-8b-instruct model](https://developers.cloudflare.com/workers-ai/models/llama-3-8b-instruct/), which generates text.
 
-* [  wrangler.jsonc ](#tab-panel-10138)
-* [  wrangler.toml ](#tab-panel-10139)
+* [  wrangler.jsonc ](#tab-panel-11315)
+* [  wrangler.toml ](#tab-panel-11316)
 
 JSONC
 
@@ -218,8 +218,8 @@ npx wrangler vectorize create vector-index --dimensions=768 --metric=cosine
 
 Then, add the configuration details for your new Vectorize index to the [Wrangler configuration file](https://developers.cloudflare.com/workers/wrangler/configuration/):
 
-* [  wrangler.jsonc ](#tab-panel-10140)
-* [  wrangler.toml ](#tab-panel-10141)
+* [  wrangler.jsonc ](#tab-panel-11317)
+* [  wrangler.toml ](#tab-panel-11318)
 
 JSONC
 
@@ -276,8 +276,8 @@ npx wrangler d1 create database
 
 Then, paste the configuration details output from the previous command into the [Wrangler configuration file](https://developers.cloudflare.com/workers/wrangler/configuration/):
 
-* [  wrangler.jsonc ](#tab-panel-10142)
-* [  wrangler.toml ](#tab-panel-10143)
+* [  wrangler.jsonc ](#tab-panel-11319)
+* [  wrangler.toml ](#tab-panel-11320)
 
 JSONC
 
@@ -349,8 +349,8 @@ Before we begin creating notes, we will introduce a [Cloudflare Workflow](https:
 
 To begin, add a new `[[workflows]]` block to your [Wrangler configuration file](https://developers.cloudflare.com/workers/wrangler/configuration/):
 
-* [  wrangler.jsonc ](#tab-panel-10144)
-* [  wrangler.toml ](#tab-panel-10145)
+* [  wrangler.jsonc ](#tab-panel-11321)
+* [  wrangler.toml ](#tab-panel-11322)
 
 JSONC
 
@@ -1083,5 +1083,6 @@ To do more:
 * Set up [Wrangler](https://developers.cloudflare.com/workers/wrangler/install-and-update/) to programmatically create, test, and deploy your Worker projects.
 
 ```json
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers-ai/guides/tutorials/build-a-retrieval-augmented-generation-ai/#page","headline":"Build a Retrieval Augmented Generation (RAG) AI · Cloudflare Workers AI docs","description":"Build your first AI app with Cloudflare AI. This guide uses Workers AI, Vectorize, D1, and Cloudflare Workers.","url":"https://developers.cloudflare.com/workers-ai/guides/tutorials/build-a-retrieval-augmented-generation-ai/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-03-20","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["AI","Hono","JavaScript"]}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/workers-ai/","name":"Workers AI"}},{"@type":"ListItem","position":3,"item":{"@id":"/workers-ai/guides/","name":"Guides"}},{"@type":"ListItem","position":4,"item":{"@id":"/workers-ai/guides/tutorials/","name":"Tutorials"}},{"@type":"ListItem","position":5,"item":{"@id":"/workers-ai/guides/tutorials/build-a-retrieval-augmented-generation-ai/","name":"Build a Retrieval Augmented Generation (RAG) AI"}}]}
 ```

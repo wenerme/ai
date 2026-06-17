@@ -14,7 +14,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 Common questions about Cloudflare Email Service.
 
-## Limits and Usage
+## Limits and usage
 
 Sending limits exist to prevent abuse and spam and to ensure high deliverability for all users. If you need higher limits, you can request a limit increase by contacting support or reaching out in the [Cloudflare Developers Discord ↗](https://discord.cloudflare.com). If you exceed your limits, emails may be queued or rejected, and you will receive error responses with rate limit information.
 
@@ -37,5 +37,6 @@ Include:
 * Any relevant account information
 
 ```json
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/email-service/reference/faq/#page","headline":"FAQ · Cloudflare Email Service docs","description":"Common questions about Email Service limits, sender reputation, marketing email support, and abuse reporting.","url":"https://developers.cloudflare.com/email-service/reference/faq/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-06-09","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/email-service/","name":"Email Service"}},{"@type":"ListItem","position":3,"item":{"@id":"/email-service/reference/","name":"Reference"}},{"@type":"ListItem","position":4,"item":{"@id":"/email-service/reference/faq/","name":"FAQ"}}]}
 ```

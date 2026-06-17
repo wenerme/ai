@@ -20,8 +20,8 @@ When browser automation fails or behaves unexpectedly, it can be difficult to un
 
 Pass `recording: true` to `puppeteer.launch()` or `playwright.launch()`:
 
-* [ Puppeteer ](#tab-panel-6667)
-* [ Playwright ](#tab-panel-6668)
+* [ Puppeteer ](#tab-panel-6862)
+* [ Playwright ](#tab-panel-6863)
 
 TypeScript
 
@@ -235,5 +235,6 @@ Session recording uses [rrweb ↗](https://github.com/rrweb-io/rrweb), which rec
 * **Large or complex pages** — Pages with frequent DOM mutations (for example, pages with real-time data feeds or heavy animations) can generate a high volume of events, which increases the size of the recording.
 
 ```json
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/browser-run/features/session-recording/#page","headline":"Session recording · Cloudflare Browser Run docs","description":"Record and replay Browser Run sessions to visually debug browser automation scripts.","url":"https://developers.cloudflare.com/browser-run/features/session-recording/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-06-11","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/browser-run/","name":"Browser Run"}},{"@type":"ListItem","position":3,"item":{"@id":"/browser-run/features/","name":"Features"}},{"@type":"ListItem","position":4,"item":{"@id":"/browser-run/features/session-recording/","name":"Session recording"}}]}
 ```

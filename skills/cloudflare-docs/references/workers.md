@@ -115,5 +115,6 @@ Streamlined image infrastructure from a single API.
 Want to connect with the Workers community? [Join our Discord ↗](https://discord.cloudflare.com)
 
 ```json
+{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/workers/#page","headline":"Overview · Cloudflare Workers docs","description":"Build and deploy serverless applications across Cloudflare's global network with Workers.","url":"https://developers.cloudflare.com/workers/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/workers/","name":"Workers"}}]}
 ```

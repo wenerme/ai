@@ -33,8 +33,8 @@ You should note that the visible domain in the user interface remains unchanged,
 
 ## Enable Onion Routing
 
-* [ Dashboard ](#tab-panel-6756)
-* [ API ](#tab-panel-6757)
+* [ Dashboard ](#tab-panel-9376)
+* [ API ](#tab-panel-9377)
 
 To enable **Onion Routing** in the dashboard:
 
@@ -45,5 +45,6 @@ To enable **Onion Routing** in the dashboard:
 To enable **Onion Routing** with the API, send a [PATCH](https://developers.cloudflare.com/api/resources/zones/subresources/settings/methods/edit/) request with `opportunistic_onion` as the setting name in the URI path, and the `value` parameter set to `"on"`.
 
 ```json
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/network/onion-routing/#page","headline":"Onion Routing and Tor support · Cloudflare Network settings docs","description":"Serve content directly through the Tor network with Onion Routing.","url":"https://developers.cloudflare.com/network/onion-routing/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/network/","name":"Network"}},{"@type":"ListItem","position":3,"item":{"@id":"/network/onion-routing/","name":"Onion Routing and Tor support"}}]}
 ```

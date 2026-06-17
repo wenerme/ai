@@ -32,8 +32,8 @@ One of the most common use cases for egress policies is to ensure a consistent e
 
 We recommend building baseline egress policies that can cover a majority of your use cases without making policy management overly complex. If all of your users need to access a series of applications that all require a specific egress IP, you should build a policy explicit to those users (or to all of your users) to ensure that all of their traffic egresses using those egress IPs. For example, you can define specific egress IPs for users with access to financial data:
 
-* [ Dashboard ](#tab-panel-6568)
-* [ API ](#tab-panel-6569)
+* [ Dashboard ](#tab-panel-9188)
+* [ API ](#tab-panel-9189)
 
 | Selector         | Operator | Value           | Egress method                       |
 | ---------------- | -------- | --------------- | ----------------------------------- |
@@ -101,5 +101,6 @@ You may have use cases in which specific groups of your users may need to change
 For more information, refer to our [tutorial for user selectable egress IPs](https://developers.cloudflare.com/cloudflare-one/tutorials/user-selectable-egress-ips/).
 
 ```json
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/learning-paths/secure-internet-traffic/build-egress-policies/deploy-egress-ips/#page","headline":"Egress IP best practices · Cloudflare Learning Paths","description":"Deploy dedicated egress IPs effectively.","url":"https://developers.cloudflare.com/learning-paths/secure-internet-traffic/build-egress-policies/deploy-egress-ips/","inLanguage":"en","image":"https://developers.cloudflare.com/cf-twitter-card.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/learning-paths/","name":"Learning Paths"}},{"@type":"ListItem","position":3,"item":{"@id":"/learning-paths/secure-internet-traffic/build-egress-policies/","name":"Control traffic egress with source IP anchoring and allowlisting"}},{"@type":"ListItem","position":4,"item":{"@id":"/learning-paths/secure-internet-traffic/build-egress-policies/deploy-egress-ips/","name":"Egress IP best practices"}}]}
 ```

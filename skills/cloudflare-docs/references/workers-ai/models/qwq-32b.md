@@ -35,10 +35,10 @@ Try out this model with Workers AI LLM Playground. It does not require any setup
 
 ## Usage
 
-* [  Worker (Streaming) ](#tab-panel-4889)
-* [  TypeScript ](#tab-panel-4890)
-* [  Python ](#tab-panel-4891)
-* [  curl ](#tab-panel-4892)
+* [  Worker (Streaming) ](#tab-panel-5070)
+* [  TypeScript ](#tab-panel-5071)
+* [  Python ](#tab-panel-5072)
+* [  curl ](#tab-panel-5073)
 
 TypeScript
 
@@ -286,5 +286,6 @@ format
  Streaming Output [ ](https://developers.cloudflare.com/workers-ai/models/qwq-32b/streaming-output.json "Open") [ ](https://developers.cloudflare.com/workers-ai/models/qwq-32b/streaming-output.json "Download") 
 
 ```json
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers-ai/models/qwq-32b/#page","headline":"qwq-32b (Qwen) · Cloudflare AI docs · Cloudflare Workers AI docs","description":"QwQ is the reasoning model of the Qwen series. Compared with conventional instruction-tuned models, QwQ, which is capable of thinking and reasoning, can achieve significantly enhanced performance in downstream tasks, especially hard problems. QwQ-32B is the medium-sized reasoning model, which is capable of achieving competitive performance against state-of-the-art reasoning models, e.g., DeepSeek-R1, o1-mini.","url":"https://developers.cloudflare.com/workers-ai/models/qwq-32b/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/workers-ai/","name":"Workers AI"}},{"@type":"ListItem","position":3,"item":{"@id":"/workers-ai/models/","name":"Models"}}]}
 ```

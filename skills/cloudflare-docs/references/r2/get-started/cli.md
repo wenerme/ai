@@ -24,8 +24,8 @@ Manage R2 buckets and objects directly from your terminal. Use CLI tools to auto
 
 A bucket stores your objects in R2\. To create a new R2 bucket:
 
-* [ Wrangler CLI ](#tab-panel-7136)
-* [ Dashboard ](#tab-panel-7137)
+* [ Wrangler CLI ](#tab-panel-9767)
+* [ Dashboard ](#tab-panel-9768)
 
 1. Log in to your Cloudflare account:  
 Terminal window  
@@ -64,9 +64,9 @@ CLI tools that use the S3 API ([AWS CLI](https://developers.cloudflare.com/r2/ex
 
 ## 3\. Set up a CLI tool
 
-* [ Wrangler ](#tab-panel-7133)
-* [ rclone ](#tab-panel-7134)
-* [ AWS CLI ](#tab-panel-7135)
+* [ Wrangler ](#tab-panel-9764)
+* [ rclone ](#tab-panel-9765)
+* [ AWS CLI ](#tab-panel-9766)
 
 [Wrangler](https://developers.cloudflare.com/r2/reference/wrangler-commands/) is the Cloudflare Workers CLI. It authenticates with your Cloudflare account directly, so no API credentials needed.
 
@@ -134,9 +134,9 @@ echo 'Hello, R2!' > myfile.txt
 
 ```
 
-* [ Wrangler ](#tab-panel-7130)
-* [ rclone ](#tab-panel-7131)
-* [ AWS CLI ](#tab-panel-7132)
+* [ Wrangler ](#tab-panel-9761)
+* [ rclone ](#tab-panel-9762)
+* [ AWS CLI ](#tab-panel-9763)
 
 Terminal window
 
@@ -208,5 +208,6 @@ Refer to the [AWS CLI documentation](https://developers.cloudflare.com/r2/exampl
 [ Object lifecycles ](https://developers.cloudflare.com/r2/buckets/object-lifecycles/) Set up lifecycle rules to automatically delete old objects. 
 
 ```json
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/r2/get-started/cli/#page","headline":"CLI · Cloudflare R2 docs","description":"Use R2 from the command line with Wrangler, rclone, or AWS CLI.","url":"https://developers.cloudflare.com/r2/get-started/cli/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/r2/","name":"R2"}},{"@type":"ListItem","position":3,"item":{"@id":"/r2/get-started/","name":"Get started"}},{"@type":"ListItem","position":4,"item":{"@id":"/r2/get-started/cli/","name":"CLI"}}]}
 ```

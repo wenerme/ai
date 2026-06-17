@@ -26,8 +26,8 @@ The Agents SDK also includes the experimental `agents/experimental/webmcp` adapt
 
 Use `server.tool()` to register a tool on an `McpServer` instance. Each tool has a name, a description (used by the LLM to decide when to call it), an input schema defined with [Zod ↗](https://zod.dev), and a handler function.
 
-* [  JavaScript ](#tab-panel-5240)
-* [  TypeScript ](#tab-panel-5241)
+* [  JavaScript ](#tab-panel-5839)
+* [  TypeScript ](#tab-panel-5840)
 
 JavaScript
 
@@ -111,8 +111,8 @@ The tool handler receives the validated input and must return an object with a `
 
 Tool results are returned as an array of content parts. The most common type is `text`, but you can also return images and embedded resources.
 
-* [  JavaScript ](#tab-panel-5242)
-* [  TypeScript ](#tab-panel-5243)
+* [  JavaScript ](#tab-panel-5841)
+* [  TypeScript ](#tab-panel-5842)
 
 JavaScript
 
@@ -214,8 +214,8 @@ The `description` parameter is critical — it is what the LLM reads to decide w
 
 Tool inputs are defined as Zod schemas and validated automatically before the handler runs. Use Zod's `.describe()` method to give the LLM context about each parameter.
 
-* [  JavaScript ](#tab-panel-5246)
-* [  TypeScript ](#tab-panel-5247)
+* [  JavaScript ](#tab-panel-5845)
+* [  TypeScript ](#tab-panel-5846)
 
 JavaScript
 
@@ -327,8 +327,8 @@ server.tool(
 
 For stateless MCP servers, define tools inside a factory function and pass the server to [createMcpHandler](https://developers.cloudflare.com/agents/model-context-protocol/apis/handler-api/):
 
-* [  JavaScript ](#tab-panel-5244)
-* [  TypeScript ](#tab-panel-5245)
+* [  JavaScript ](#tab-panel-5843)
+* [  TypeScript ](#tab-panel-5844)
 
 JavaScript
 
@@ -420,8 +420,8 @@ export default {
 
 For stateful MCP servers, define tools in the `init()` method of an [McpAgent](https://developers.cloudflare.com/agents/model-context-protocol/apis/agent-api/). Tools have access to the agent instance via `this`, which means they can read and write state.
 
-* [  JavaScript ](#tab-panel-5248)
-* [  TypeScript ](#tab-panel-5249)
+* [  JavaScript ](#tab-panel-5847)
+* [  TypeScript ](#tab-panel-5848)
 
 JavaScript
 
@@ -532,5 +532,6 @@ export class MyMCP extends McpAgent {
 [ MCP authorization ](https://developers.cloudflare.com/agents/model-context-protocol/protocol/authorization/) Add OAuth authentication to your MCP server. 
 
 ```json
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/agents/model-context-protocol/protocol/tools/#page","headline":"Tools · Cloudflare Agents docs","description":"Define, register, and manage MCP tools that expose server-side functions for AI agents to call.","url":"https://developers.cloudflare.com/agents/model-context-protocol/protocol/tools/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-06-03","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["MCP"]}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/agents/","name":"Agents"}},{"@type":"ListItem","position":3,"item":{"@id":"/agents/model-context-protocol/","name":"Model Context Protocol (MCP)"}},{"@type":"ListItem","position":4,"item":{"@id":"/agents/model-context-protocol/protocol/","name":"Protocol"}},{"@type":"ListItem","position":5,"item":{"@id":"/agents/model-context-protocol/protocol/tools/","name":"Tools"}}]}
 ```

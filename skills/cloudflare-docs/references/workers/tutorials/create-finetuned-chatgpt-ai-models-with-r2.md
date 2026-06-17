@@ -110,8 +110,8 @@ A binding is how your Worker interacts with external resources such as the R2 bu
 
 To bind the R2 bucket to your Worker, add the following to your Wrangler file. Update the binding property to a valid JavaScript variable identifier. Replace `<YOUR_BUCKET_NAME>` with the name of the bucket you created in [step 2](#2-upload-a-fine-tune-document-to-r2):
 
-* [  wrangler.jsonc ](#tab-panel-11581)
-* [  wrangler.toml ](#tab-panel-11582)
+* [  wrangler.jsonc ](#tab-panel-12171)
+* [  wrangler.toml ](#tab-panel-12172)
 
 JSONC
 
@@ -474,5 +474,6 @@ To build more with Workers, refer to [Tutorials](https://developers.cloudflare.c
 If you have any questions, need assistance, or would like to share your project, join the Cloudflare Developer community on [Discord ↗](https://discord.cloudflare.com) to connect with other developers and the Cloudflare team.
 
 ```json
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/tutorials/create-finetuned-chatgpt-ai-models-with-r2/#page","headline":"Create a fine-tuned OpenAI model with R2 · Cloudflare Workers docs","description":"In this tutorial, you will use the OpenAI API and Cloudflare R2 to create a fine-tuned model.","url":"https://developers.cloudflare.com/workers/tutorials/create-finetuned-chatgpt-ai-models-with-r2/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-03-20","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["AI","Hono","TypeScript"]}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/workers/","name":"Workers"}},{"@type":"ListItem","position":3,"item":{"@id":"/workers/tutorials/","name":"Tutorials"}},{"@type":"ListItem","position":4,"item":{"@id":"/workers/tutorials/create-finetuned-chatgpt-ai-models-with-r2/","name":"Create a fine-tuned OpenAI model with R2"}}]}
 ```

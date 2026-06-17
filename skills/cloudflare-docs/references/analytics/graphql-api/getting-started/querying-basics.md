@@ -87,7 +87,7 @@ query ASingleDatasetExample($zoneTag: string, $start: Time, $end: Time) {
 
 ```
 
-[Run in GraphQL API Explorer](https://graphql.cloudflare.com/explorer?query=I4VwpgTgngBAggZQJYDsDmAbMARAhgF1wGcx8BRAD1wFsAHLACgBIAvAexTABVc0AuGEXwRUaADQwmQ3BHwCuSamAlMwKACbzFYAJQwA3gCgYMAG5IwAd0gHjJmO05EGAMyQZ8kAfocduvAVY-HjQYAF89I3t7NwgrXAwMMlM1fCI4dVxafCQUhjtokzcPLwMYTM8cpQB9NDlJaVkJCtJtao9AtXVwgsKMRSR6gCZe6LYIdUgAISgBAG0WqrBq7DIEAGEAXVGYSJ2TXABjHI598oJWpTOACzYhAUP+1IAlMFAwIQAJLi4ABU+7vgdmFeiCTCCwkA&variables=N4IgXg9gdgpgKgQwOYgFwgFoHkByBRAfQEkAREAGhAGcAXBAJxrRACYAGFgNgFo2eBGTnDYBmVAFYAnKgAsAdgwUQMKABNm7LrwFC20qbIUgAvkA)
+[Run in GraphQL API Explorer](https://graphql.cloudflare.com/explorer?query=I4VwpgTgngBAggZQJYDsDmAbMARAhgF1wGcx8BRAD1wFsAHLACgBIAvAexTABVc0AuGEXwRUaADQwmQ3BHwCuSamAlMwKACbzFYAJQwA3gCgYMAG5IwAd0gHjJmO05EGAMyQZ8kAfocduvAVY-HjQYAF89I3t7NwgrXAwMMlM1fCI4dVxafCQUhjtokzcPLwMYTM8cpQB9NDlJaVkJCtJtao9AtXVwgsKMRSR6gCZe6LYIdUgAISgBAG0WqrBq7DIEAGEAXVGYSJ2TXABjHI598oJWpTOACzYhAUP+1IAlMFAwIQAJLi4ABU+7vgdmFeiCTCCwkA&variables=N4IgXg9gdgpgKgQwOYgFwgFoHkByBRAfQEkAREAGhAGcAXBAJxrRACYAGFgNgFo2eBGTnH4AOVAFYWqfgBYMFEDCgATZuy68BAdjhs2EqbPkBfIA)
 
 In the query above, we have variable placeholders: $zoneTag, $start, and $end. We provide values for those placeholders alongside the query by placing them into`variables` field of the payload. Note that the examples below use the UTC timezone, indicated by the letter "Z".
 
@@ -234,7 +234,7 @@ query MultipleDatasetsExample(
 
 ```
 
-[Run in GraphQL API Explorer](https://graphql.cloudflare.com/explorer?query=I4VwpgTgngBAsiANgFwJYAdFgCIENm4DOYyhAogB64C2mYAFAFAwwAkAXgPYB2YAKrgDmALhiFkEVN0HM243BGSi+qamFmsw3ACbLV6lq1Ki8ydQEoYAb1kA3VGADuka7JZdehegDNUKSKJWMB78QqIcPKGCMAC+ljYsiTCIRMgAjAAMZLZaxjC+EE64iIjZuYQAgtq46Gg5TElJvv4QgTDVZmhqAPqCSnIEigA07fgk+t0o4VrasW6NiKqo-ZnzSZwQ2pAAQlCiANod4z3YZADKAMIAumsw8bcsuADGaDwPo5367wAWnOKiT0WuQASmBQGBxAAJPh8AAKkL+yFuMVuyE46AAzNgwPYnvwoOgIaJvshkOhQeDxJVqrVUDkAOIQTggdBed7NMytawfMDhUhzRqJRbUZaiVaClgbLYQXYHJ7M7jIbqnS43QX3CUweUgRXvbT6biEVA8QiuTUsLa43laoGK7FWvgEgwSlGC12Jd0omJAA&variables=N4IgXg9gdgpgKgQwOYgFwgFoHkByBRAfQEkAREAGhAGcAXBAJxrRACYAGFgNgFo2eBGTnDYBmVAFYAnKgAsAdgwUQMKABNm7LrwFC20qbIVKaVDRx59ugkAF8gA)
+[Run in GraphQL API Explorer](https://graphql.cloudflare.com/explorer?query=I4VwpgTgngBAsiANgFwJYAdFgCIENm4DOYyhAogB64C2mYAFAFAwwAkAXgPYB2YAKrgDmALhiFkEVN0HM243BGSi+qamFmsw3ACbLV6lq1Ki8ydQEoYAb1kA3VGADuka7JZdehegDNUKSKJWMB78QqIcPKGCMAC+ljYsiTCIRMgAjAAMZLZaxjC+EE64iIjZuYQAgtq46Gg5TElJvv4QgTDVZmhqAPqCSnIEigA07fgk+t0o4VrasW6NiKqo-ZnzSZwQ2pAAQlCiANod4z3YZADKAMIAumsw8bcsuADGaDwPo5367wAWnOKiT0WuQASmBQGBxAAJPh8AAKkL+yFuMVuyE46AAzNgwPYnvwoOgIaJvshkOhQeDxJVqrVUDkAOIQTggdBed7NMytawfMDhUhzRqJRbUZaiVaClgbLYQXYHJ7M7jIbqnS43QX3CUweUgRXvbT6biEVA8QiuTUsLa43laoGK7FWvgEgwSlGC12Jd0omJAA&variables=N4IgXg9gdgpgKgQwOYgFwgFoHkByBRAfQEkAREAGhAGcAXBAJxrRACYAGFgNgFo2eBGTnH4AOVAFYWqfgBYMFEDCgATZuy68BAdjhs2EqbPmUaVNRx59u-LSAC+QA)
 
 A set of variables for the query above
 
@@ -400,5 +400,6 @@ Here are some helpful articles about working with the Cloudflare Analytics API a
 * [How to pass variables in GraphiQL (Medium article with quick tips) ↗](https://medium.com/graphql-mastery/graphql-quick-tip-how-to-pass-variables-into-a-mutation-in-graphiql-23ecff4add57)
 
 ```json
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/analytics/graphql-api/getting-started/querying-basics/#page","headline":"Querying basics · Cloudflare Analytics docs","description":"Learn the basics of querying with Cloudflare's GraphQL API. Understand query structure, schema, and how to fetch data using GraphQL queries.","url":"https://developers.cloudflare.com/analytics/graphql-api/getting-started/querying-basics/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/analytics/","name":"Analytics"}},{"@type":"ListItem","position":3,"item":{"@id":"/analytics/graphql-api/","name":"GraphQL Analytics API"}},{"@type":"ListItem","position":4,"item":{"@id":"/analytics/graphql-api/getting-started/","name":"Get started"}},{"@type":"ListItem","position":5,"item":{"@id":"/analytics/graphql-api/getting-started/querying-basics/","name":"Querying basics"}}]}
 ```

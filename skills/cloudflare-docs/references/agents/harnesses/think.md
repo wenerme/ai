@@ -35,8 +35,8 @@ npm install @cloudflare/think @cloudflare/ai-chat agents ai @cloudflare/shell zo
 
 ### Server
 
-* [  JavaScript ](#tab-panel-5382)
-* [  TypeScript ](#tab-panel-5383)
+* [  JavaScript ](#tab-panel-5565)
+* [  TypeScript ](#tab-panel-5566)
 
 JavaScript
 
@@ -132,8 +132,8 @@ That is it. Think handles the WebSocket chat protocol, message persistence, the 
 
 ### Client
 
-* [  JavaScript ](#tab-panel-5384)
-* [  TypeScript ](#tab-panel-5385)
+* [  JavaScript ](#tab-panel-5567)
+* [  TypeScript ](#tab-panel-5568)
 
 JavaScript
 
@@ -277,8 +277,8 @@ function Chat() {
 
 ### Configuration
 
-* [  wrangler.jsonc ](#tab-panel-5380)
-* [  wrangler.toml ](#tab-panel-5381)
+* [  wrangler.jsonc ](#tab-panel-5563)
+* [  wrangler.toml ](#tab-panel-5564)
 
 JSONC
 
@@ -290,7 +290,7 @@ JSONC
 
   // Set this to today's date
 
-  "compatibility_date": "2026-06-10",
+  "compatibility_date": "2026-06-17",
 
   "compatibility_flags": [
 
@@ -347,7 +347,7 @@ TOML
 
 # Set this to today's date
 
-compatibility_date = "2026-06-10"
+compatibility_date = "2026-06-17"
 
 compatibility_flags = ["nodejs_compat"]
 
@@ -475,5 +475,6 @@ Think's design is inspired by [Pi ↗](https://pi.dev).
 * [Browse the web](https://developers.cloudflare.com/agents/tools/browser/) — full CDP helper API reference
 
 ```json
+{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/agents/harnesses/think/#page","headline":"Think · Cloudflare Agents docs","description":"Opinionated chat agent framework with built-in tools, persistent memory, lifecycle hooks, streaming, messengers, scheduled tasks, Workflows, and sub-agent RPC.","url":"https://developers.cloudflare.com/agents/harnesses/think/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-06-09","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["AI"]}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/agents/","name":"Agents"}},{"@type":"ListItem","position":3,"item":{"@id":"/agents/harnesses/","name":"Harnesses"}},{"@type":"ListItem","position":4,"item":{"@id":"/agents/harnesses/think/","name":"Think"}}]}
 ```

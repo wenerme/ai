@@ -24,8 +24,8 @@ By writing a Durable Object class which inherits from the built-in type `Durable
 
 All RPC calls are [asynchronous](https://developers.cloudflare.com/workers/runtime-apis/rpc/lifecycle/), accept and return [serializable types](https://developers.cloudflare.com/workers/runtime-apis/rpc/), and [propagate exceptions](https://developers.cloudflare.com/workers/runtime-apis/rpc/error-handling/) to the caller without a stack trace. Refer to [Workers RPC](https://developers.cloudflare.com/workers/runtime-apis/rpc/) for complete details.
 
-* [  JavaScript ](#tab-panel-6130)
-* [  TypeScript ](#tab-panel-6131)
+* [  JavaScript ](#tab-panel-8235)
+* [  TypeScript ](#tab-panel-8236)
 
 JavaScript
 
@@ -148,8 +148,8 @@ Refer to [Build a Counter](https://developers.cloudflare.com/durable-objects/exa
 
 If your project is stuck on a compatibility date before [2024-04-03](https://developers.cloudflare.com/workers/configuration/compatibility-flags/#durable-object-stubs-and-service-bindings-support-rpc), or has the need to send a [Request](https://developers.cloudflare.com/workers/runtime-apis/request/) object and return a `Response` object, then you should send requests to a Durable Object via the fetch handler.
 
-* [  JavaScript ](#tab-panel-6126)
-* [  TypeScript ](#tab-panel-6127)
+* [  JavaScript ](#tab-panel-8231)
+* [  TypeScript ](#tab-panel-8232)
 
 JavaScript
 
@@ -266,8 +266,8 @@ The `URL` associated with the [Request](https://developers.cloudflare.com/worker
 
 Without RPC, customers frequently construct requests which corresponded to private methods on the Durable Object and dispatch requests from the `fetch` handler. RPC is obviously more ergonomic in this example.
 
-* [  JavaScript ](#tab-panel-6128)
-* [  TypeScript ](#tab-panel-6129)
+* [  JavaScript ](#tab-panel-8233)
+* [  TypeScript ](#tab-panel-8234)
 
 JavaScript
 
@@ -459,5 +459,6 @@ export default {
 ```
 
 ```json
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/durable-objects/best-practices/create-durable-object-stubs-and-send-requests/#page","headline":"Invoke methods · Cloudflare Durable Objects docs","description":"Call RPC methods or send fetch requests to Durable Objects using stubs from a Worker.","url":"https://developers.cloudflare.com/durable-objects/best-practices/create-durable-object-stubs-and-send-requests/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["RPC"]}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/durable-objects/","name":"Durable Objects"}},{"@type":"ListItem","position":3,"item":{"@id":"/durable-objects/best-practices/","name":"Best practices"}},{"@type":"ListItem","position":4,"item":{"@id":"/durable-objects/best-practices/create-durable-object-stubs-and-send-requests/","name":"Invoke methods"}}]}
 ```

@@ -167,8 +167,8 @@ This example shows how to both set alarms with the `setAlarm(timestamp)` method 
 * If an unexpected error terminates the Durable Object, the `alarm()` handler may be re-instantiated on another machine.
 * Following a short delay, the `alarm()` handler will run from the beginning on the other machine.
 
-* [  JavaScript ](#tab-panel-5651)
-* [  Python ](#tab-panel-5652)
+* [  JavaScript ](#tab-panel-8165)
+* [  Python ](#tab-panel-8166)
 
 JavaScript
 
@@ -285,8 +285,8 @@ class AlarmExample(DurableObject):
 
 The following example shows how to use the `alarmInfo` property to identify if the alarm event has been attempted before.
 
-* [  JavaScript ](#tab-panel-5653)
-* [  Python ](#tab-panel-5654)
+* [  JavaScript ](#tab-panel-8167)
+* [  Python ](#tab-panel-8168)
 
 JavaScript
 
@@ -335,5 +335,6 @@ class MyDurableObject(DurableObject):
 * Review the [Storage API](https://developers.cloudflare.com/durable-objects/api/sqlite-storage-api/) documentation for Durable Objects.
 
 ```json
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/durable-objects/api/alarms/#page","headline":"Alarms · Cloudflare Durable Objects docs","description":"Schedule future wake-ups for Durable Objects using the Alarms API with guaranteed at-least-once execution.","url":"https://developers.cloudflare.com/durable-objects/api/alarms/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/durable-objects/","name":"Durable Objects"}},{"@type":"ListItem","position":3,"item":{"@id":"/durable-objects/api/","name":"Workers Binding API"}},{"@type":"ListItem","position":4,"item":{"@id":"/durable-objects/api/alarms/","name":"Alarms"}}]}
 ```

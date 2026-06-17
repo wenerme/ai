@@ -121,7 +121,7 @@ $ just
 
 - `which(name)`<sup>1.39.0</sup> — Search directories in the `PATH` environment
   variable for the executable `name` and return its full path, or the empty
-  list if not found. Requires `set lists`<sup>master</sup>.
+  list if not found. Requires `set lists`<sup>1.53.0</sup>.
 
   ```just
   set unstable
@@ -144,7 +144,7 @@ $ just
   run as a dependency of another recipe, rather than being run directly,
   otherwise returns the string `false`.
 
-- `recipe_name()`<sup>master</sup> - Returns the name of the current recipe.
+- `recipe_name()`<sup>1.53.0</sup> - Returns the name of the current recipe.
 
 #### Invocation Directory
 
@@ -340,7 +340,7 @@ which will halt execution.
 
 - `assert(CONDITION, EXPRESSION)`<sup>1.27.0</sup> - Error with message
   `EXPRESSION` if `CONDITION` is false. `EXPRESSION` may be
-  omitted<sup>master</sup>,
+  omitted<sup>1.53.0</sup>,
 - `error(message)` - Abort execution and report error `message` to user.
 
 #### UUID and Hash Generation

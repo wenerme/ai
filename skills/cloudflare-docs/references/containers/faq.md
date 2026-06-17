@@ -16,8 +16,8 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 To get logs in the Dashboard, including live tailing of logs, toggle `observability` to true in your Worker's wrangler config:
 
-* [  wrangler.jsonc ](#tab-panel-5326)
-* [  wrangler.toml ](#tab-panel-5327)
+* [  wrangler.jsonc ](#tab-panel-7838)
+* [  wrangler.toml ](#tab-panel-7839)
 
 JSONC
 
@@ -186,5 +186,6 @@ For a complete working example, see the [Docker-in-Docker Containers example ↗
 Refer to [Handle outbound traffic](https://developers.cloudflare.com/containers/platform-details/outbound-traffic/) for how to control outbound traffic and internet access.
 
 ```json
+{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/containers/faq/#page","headline":"Frequently Asked Questions · Cloudflare Containers docs","description":"Answers to common questions about Containers, including logging, scaling, cold starts, disk persistence, and rollouts.","url":"https://developers.cloudflare.com/containers/faq/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/containers/","name":"Containers"}},{"@type":"ListItem","position":3,"item":{"@id":"/containers/faq/","name":"Frequently Asked Questions"}}]}
 ```

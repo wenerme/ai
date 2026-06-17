@@ -6,11 +6,11 @@
 
 ## What's New
 
-GPT-5.4, GPT-5.4 Pro, and GPT-5.3 Codex introduce the
-`phase` field on
-assistant messages. This field is critical for multi-turn
-agentic workflows — it tells the model whether an assistant
-message is intermediate commentary or the final answer.
+GPT-5.3 Codex, GPT-5.4, GPT-5.4 Pro, GPT-5.5, and
+GPT-5.5 Pro all use the `phase` field on assistant
+messages. This field is critical for multi-turn agentic
+workflows — it tells the model whether an assistant message
+is intermediate commentary or the final answer.
 
 OpenRouter supports `phase` in the
 [Responses API](/docs/api/api-reference/responses/create-responses).
@@ -36,11 +36,11 @@ Do not add `phase` to user or system messages.
 
 ## Why It Matters
 
-For models like `gpt-5.3-codex`, `gpt-5.4`, and
-`gpt-5.4-pro`, correctly
-preserving `phase` on assistant messages is **required**
-for optimal performance. If `phase` metadata is dropped
-when reconstructing conversation history, significant
+For models like `gpt-5.3-codex`, `gpt-5.4`, `gpt-5.4-pro`,
+`gpt-5.5`, and `gpt-5.5-pro`, correctly preserving `phase`
+on assistant messages is **required** for optimal
+performance. If `phase` metadata is dropped when
+reconstructing conversation history, significant
 performance degradation can occur — including early
 stopping on longer-running tasks.
 
@@ -193,6 +193,8 @@ on assistant messages:
 
 | Model                  | `phase` Support                 |
 | ---------------------- | ------------------------------- |
+| `openai/gpt-5.5`       | Supported                       |
+| `openai/gpt-5.5-pro`   | Supported                       |
 | `openai/gpt-5.4`       | Supported                       |
 | `openai/gpt-5.4-pro`   | Supported                       |
 | `openai/gpt-5.3-codex` | Supported                       |
@@ -213,7 +215,8 @@ None. The `phase` field is additive:
 * Models that don't support `phase` silently ignore it
 * No changes are required unless you want to take
   advantage of improved multi-turn performance with
-  GPT-5.3 Codex, GPT-5.4, and GPT-5.4 Pro
+  GPT-5.3 Codex, GPT-5.4, GPT-5.4 Pro, GPT-5.5, and
+  GPT-5.5 Pro
 
 ## Resources
 

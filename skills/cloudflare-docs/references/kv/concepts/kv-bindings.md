@@ -30,8 +30,8 @@ To execute your Worker, define the binding.
 
 In the following example, the binding is called `TODO`. In the `kv_namespaces` portion of your Wrangler configuration file, add:
 
-* [  wrangler.jsonc ](#tab-panel-6791)
-* [  wrangler.toml ](#tab-panel-6792)
+* [  wrangler.jsonc ](#tab-panel-8943)
+* [  wrangler.toml ](#tab-panel-8944)
 
 JSONC
 
@@ -114,8 +114,8 @@ When you use Wrangler to develop locally with the `wrangler dev` command, Wrangl
 
 To have `wrangler dev` connect to your Workers KV namespace running on Cloudflare's global network, set `"remote" : true` in the KV binding configuration. Refer to the [remote bindings documentation](https://developers.cloudflare.com/workers/development-testing/#remote-bindings) for more information.
 
-* [  wrangler.jsonc ](#tab-panel-6793)
-* [  wrangler.toml ](#tab-panel-6794)
+* [  wrangler.jsonc ](#tab-panel-8945)
+* [  wrangler.toml ](#tab-panel-8946)
 
 JSONC
 
@@ -200,5 +200,6 @@ export class MyDurableObject extends DurableObject {
 ```
 
 ```json
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/kv/concepts/kv-bindings/#page","headline":"KV bindings · Cloudflare Workers KV docs","description":"KV bindings connect a Cloudflare Worker to a KV namespace for reading and writing data.","url":"https://developers.cloudflare.com/kv/concepts/kv-bindings/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Bindings"]}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/kv/","name":"KV"}},{"@type":"ListItem","position":3,"item":{"@id":"/kv/concepts/","name":"Key concepts"}},{"@type":"ListItem","position":4,"item":{"@id":"/kv/concepts/kv-bindings/","name":"KV bindings"}}]}
 ```

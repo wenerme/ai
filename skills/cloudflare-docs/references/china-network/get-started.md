@@ -39,5 +39,6 @@ After content vetting is complete, [add your domains to Cloudflare](https://deve
 For first-time enablement of a zone, it will take approximately 24-48 hours to fully onboard to China Network. Afterwards, you can enable and disable China Network within your Cloudflare dashboard.
 
 ```json
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/china-network/get-started/#page","headline":"Get started · Cloudflare China Network docs","description":"Set up the Cloudflare China Network package on your Enterprise plan.","url":"https://developers.cloudflare.com/china-network/get-started/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-17","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Compliance"]}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/china-network/","name":"China Network"}},{"@type":"ListItem","position":3,"item":{"@id":"/china-network/get-started/","name":"Get started"}}]}
 ```

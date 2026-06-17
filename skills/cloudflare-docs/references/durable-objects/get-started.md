@@ -116,9 +116,9 @@ If you do not use JavaScript or TypeScript, you will need a [shim ↗](https://d
 
 Your `MyDurableObject` class will have a constructor with two parameters. The first parameter, `ctx`, passed to the class constructor contains state specific to the Durable Object, including methods for accessing storage. The second parameter, `env`, contains any bindings you have associated with the Worker when you uploaded it.
 
-* [  JavaScript ](#tab-panel-5844)
-* [  TypeScript ](#tab-panel-5845)
-* [  Python ](#tab-panel-5846)
+* [  JavaScript ](#tab-panel-8369)
+* [  TypeScript ](#tab-panel-8370)
+* [  Python ](#tab-panel-8371)
 
 JavaScript
 
@@ -178,9 +178,9 @@ Workers communicate with a Durable Object using [remote-procedure call](https://
 
 Your file should now look like:
 
-* [  JavaScript ](#tab-panel-5850)
-* [  TypeScript ](#tab-panel-5851)
-* [  Python ](#tab-panel-5852)
+* [  JavaScript ](#tab-panel-8375)
+* [  TypeScript ](#tab-panel-8376)
+* [  Python ](#tab-panel-8377)
 
 JavaScript
 
@@ -287,9 +287,9 @@ A Worker is used to [access Durable Objects](https://developers.cloudflare.com/d
 
 To communicate with a Durable Object, the Worker's fetch handler should look like the following:
 
-* [  JavaScript ](#tab-panel-5847)
-* [  TypeScript ](#tab-panel-5848)
-* [  Python ](#tab-panel-5849)
+* [  JavaScript ](#tab-panel-8372)
+* [  TypeScript ](#tab-panel-8373)
+* [  Python ](#tab-panel-8374)
 
 JavaScript
 
@@ -376,8 +376,8 @@ Refer to [Access a Durable Object from a Worker](https://developers.cloudflare.c
 
 [Bindings](https://developers.cloudflare.com/workers/runtime-apis/bindings/) allow your Workers to interact with resources on the Cloudflare developer platform. The Durable Object bindings in your Worker project's [Wrangler configuration file](https://developers.cloudflare.com/workers/wrangler/configuration/) will include a binding name (for this guide, use `MY_DURABLE_OBJECT`) and the class name (`MyDurableObject`).
 
-* [  wrangler.jsonc ](#tab-panel-5840)
-* [  wrangler.toml ](#tab-panel-5841)
+* [  wrangler.jsonc ](#tab-panel-8365)
+* [  wrangler.toml ](#tab-panel-8366)
 
 JSONC
 
@@ -433,8 +433,8 @@ Migrations are performed through the `[[migrations]]` configurations key in your
 
 The Durable Object migration to create a new Durable Object class with SQLite storage backend will look like the following in your Worker's Wrangler file:
 
-* [  wrangler.jsonc ](#tab-panel-5842)
-* [  wrangler.toml ](#tab-panel-5843)
+* [  wrangler.jsonc ](#tab-panel-8367)
+* [  wrangler.toml ](#tab-panel-8368)
 
 JSONC
 
@@ -516,9 +516,9 @@ Preview your Durable Object Worker at `<YOUR_WORKER>.<YOUR_SUBDOMAIN>.workers.de
 
 Your final code should look like this:
 
-* [  JavaScript ](#tab-panel-5853)
-* [  TypeScript ](#tab-panel-5854)
-* [  Python ](#tab-panel-5855)
+* [  JavaScript ](#tab-panel-8378)
+* [  TypeScript ](#tab-panel-8379)
+* [  Python ](#tab-panel-8380)
 
 JavaScript
 
@@ -673,5 +673,6 @@ By finishing this tutorial, you have:
 * [Miniflare ↗](https://github.com/cloudflare/workers-sdk/tree/main/packages/miniflare) \- Helpful tools for mocking and testing your Durable Objects.
 
 ```json
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/durable-objects/get-started/#page","headline":"Getting started · Cloudflare Durable Objects docs","description":"Create and deploy your first Durable Object with SQLite storage and a companion Worker.","url":"https://developers.cloudflare.com/durable-objects/get-started/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/durable-objects/","name":"Durable Objects"}},{"@type":"ListItem","position":3,"item":{"@id":"/durable-objects/get-started/","name":"Getting started"}}]}
 ```

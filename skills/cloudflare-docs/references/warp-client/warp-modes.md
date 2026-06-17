@@ -79,5 +79,6 @@ WARP+ Unlimited is now active on this device. You can use your license key on up
 **Windows, macOS, and Linux**: 2025.6.1335.0 [↩](#user-content-fnref-1)
 
 ```json
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/warp-client/warp-modes/#page","headline":"WARP modes · Cloudflare WARP client docs","description":"Available WARP connection modes and their behavior.","url":"https://developers.cloudflare.com/warp-client/warp-modes/","inLanguage":"en","image":"https://developers.cloudflare.com/cf-twitter-card.png","dateModified":"2026-05-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Post-quantum"]}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/warp-client/","name":"WARP Client"}},{"@type":"ListItem","position":3,"item":{"@id":"/warp-client/warp-modes/","name":"WARP modes"}}]}
 ```

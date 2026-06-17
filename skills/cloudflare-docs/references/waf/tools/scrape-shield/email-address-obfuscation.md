@@ -30,9 +30,9 @@ Cloudflare injects a small decode script (`email-decode.min.js`) into the page u
 
 Cloudflare enables email address obfuscation automatically when you sign up.
 
-* [  New dashboard ](#tab-panel-10090)
-* [ Old dashboard ](#tab-panel-10091)
-* [ API ](#tab-panel-10092)
+* [  New dashboard ](#tab-panel-11267)
+* [ Old dashboard ](#tab-panel-11268)
+* [ API ](#tab-panel-11269)
 
 To disable **Email Address Obfuscation** in the dashboard:
 
@@ -87,5 +87,6 @@ Notes
 * Email Obfuscation might not work as expected when the HTML page includes `<template></template>` tags.
 
 ```json
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/waf/tools/scrape-shield/email-address-obfuscation/#page","headline":"Email Address Obfuscation · Cloudflare Web Application Firewall (WAF) docs","description":"Hide email addresses from bots while keeping them visible to visitors.","url":"https://developers.cloudflare.com/waf/tools/scrape-shield/email-address-obfuscation/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/waf/","name":"WAF"}},{"@type":"ListItem","position":3,"item":{"@id":"/waf/tools/","name":"Additional tools"}},{"@type":"ListItem","position":4,"item":{"@id":"/waf/tools/scrape-shield/","name":"Scrape Shield"}},{"@type":"ListItem","position":5,"item":{"@id":"/waf/tools/scrape-shield/email-address-obfuscation/","name":"Email Address Obfuscation"}}]}
 ```

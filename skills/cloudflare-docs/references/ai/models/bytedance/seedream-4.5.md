@@ -27,8 +27,8 @@ Seedream 4.5 builds on 4.0 with multi-reference image support, batch generation,
 
 ## Usage
 
-* [ TypeScript ](#tab-panel-414)
-* [ cURL ](#tab-panel-415)
+* [ TypeScript ](#tab-panel-420)
+* [ cURL ](#tab-panel-421)
 
 TypeScript
 
@@ -72,8 +72,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 ```
 
-* [ Output ](#tab-panel-416)
-* [ Raw response ](#tab-panel-417)
+* [ Output ](#tab-panel-422)
+* [ Raw response ](#tab-panel-423)
 
 ![Simple Generation](https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/bytedance__seedream-4.5/simple-generation-0.jpeg) 
 
@@ -108,8 +108,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 **High Resolution**  — 4K quality image generation 
 
-* [ TypeScript ](#tab-panel-420)
-* [ cURL ](#tab-panel-421)
+* [ TypeScript ](#tab-panel-426)
+* [ cURL ](#tab-panel-427)
 
 TypeScript
 
@@ -167,8 +167,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 ```
 
-* [ Output ](#tab-panel-418)
-* [ Raw response ](#tab-panel-419)
+* [ Output ](#tab-panel-424)
+* [ Raw response ](#tab-panel-425)
 
 ![High Resolution](https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/bytedance__seedream-4.5/high-resolution-0.jpeg) 
 
@@ -201,8 +201,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 **Image-to-Image**  — Edit using reference images 
 
-* [ TypeScript ](#tab-panel-424)
-* [ cURL ](#tab-panel-425)
+* [ TypeScript ](#tab-panel-430)
+* [ cURL ](#tab-panel-431)
 
 TypeScript
 
@@ -266,8 +266,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 ```
 
-* [ Output ](#tab-panel-422)
-* [ Raw response ](#tab-panel-423)
+* [ Output ](#tab-panel-428)
+* [ Raw response ](#tab-panel-429)
 
 ![Image-to-Image](https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/bytedance__seedream-4.5/image-to-image-0.jpeg) 
 
@@ -300,8 +300,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 **Sequential Generation**  — Generate multiple related images 
 
-* [ TypeScript ](#tab-panel-428)
-* [ cURL ](#tab-panel-429)
+* [ TypeScript ](#tab-panel-434)
+* [ cURL ](#tab-panel-435)
 
 TypeScript
 
@@ -361,8 +361,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 ```
 
-* [ Output ](#tab-panel-426)
-* [ Raw response ](#tab-panel-427)
+* [ Output ](#tab-panel-432)
+* [ Raw response ](#tab-panel-433)
 
 ![Sequential Generation](https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/bytedance__seedream-4.5/sequential-generation-0.jpeg) 
 
@@ -395,8 +395,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 **Multi-Image Edit**  — Combine multiple reference images 
 
-* [ TypeScript ](#tab-panel-432)
-* [ cURL ](#tab-panel-433)
+* [ TypeScript ](#tab-panel-438)
+* [ cURL ](#tab-panel-439)
 
 TypeScript
 
@@ -464,8 +464,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 ```
 
-* [ Output ](#tab-panel-430)
-* [ Raw response ](#tab-panel-431)
+* [ Output ](#tab-panel-436)
+* [ Raw response ](#tab-panel-437)
 
 ![Multi-Image Edit](https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/bytedance__seedream-4.5/multi-image-edit-0.jpeg) 
 
@@ -498,8 +498,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 ## Parameters
 
-* [ Input ](#tab-panel-434)
-* [ Output ](#tab-panel-435)
+* [ Input ](#tab-panel-440)
+* [ Output ](#tab-panel-441)
 
 aspect\_ratio
 
@@ -540,5 +540,6 @@ Input [ ](https://developers.cloudflare.com/ai/models/bytedance/seedream-4.5/sch
 Output [ ](https://developers.cloudflare.com/ai/models/bytedance/seedream-4.5/schema-output.json "Open") [ ](https://developers.cloudflare.com/ai/models/bytedance/seedream-4.5/schema-output.json "Download") 
 
 ```json
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai/models/bytedance/seedream-4.5/#page","headline":"Seedream 4.5 (ByteDance) · Cloudflare AI docs · Cloudflare AI docs","description":"Seedream 4.5 builds on 4.0 with multi-reference image support, batch generation, and sequential image generation.","url":"https://developers.cloudflare.com/ai/models/bytedance/seedream-4.5/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/ai/","name":"AI"}},{"@type":"ListItem","position":3,"item":{"@id":"/ai/models/","name":"Models"}}]}
 ```

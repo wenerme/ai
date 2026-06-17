@@ -506,7 +506,7 @@ query ContainersByLabel(
 
 ```
 
-[Run in GraphQL API Explorer](https://graphql.cloudflare.com/explorer?query=I4VwpgTgngBAwgewHYBcCGBLJkDOAhKAGTQCMwAbACgCgYYASNAYyYRFQBU0BzALhgDKKCFm60GAEzQowKDAFswQtBBT8OCsOPpSZcxQFEkE9ZuoBKGAG9xANwxgA7pGvi6zVuxQ5KAMwzkMhD8VjAebJw8-IwsEShc3DAAvpY2dOkwrKiY2BA4ALKyIkw4AIJSAA5ytmAA4hBsFT5uGTDkChhqMACMAAy9LRn+gZAhg626spoA+txgwNGT+kroquMZSzPk84vSU4bG6+nkpBQ40wAWaDj8AERgSLYAvBUNEiBMcsi3R0njqUcJJokDgMMgcK5Wq0HrZ+CcyFQkGhFHcYbdzEc6BAwNwwUg4adEciwHdsbjvhioXQ-lSYDgQPJIbTMhUQBpFAIwExfkd5GgAB5M2mKeQIaA8qE09JSv5JIA&variables=N4IghgxhD2CuB2AXAKmA5iAXCAggYTwHkBVAOWQH0BJAERABoQATMRAU0QEsBbNgZURgAToiwgATAAZxANgC0k+QEYZySQGZMAVgCcmACwAOAFoNmrDjzYBReEzFTZC5asl7dBkyAC+QA)
+[Run in GraphQL API Explorer](https://graphql.cloudflare.com/explorer?query=I4VwpgTgngBAwgewHYBcCGBLJkDOAhKAGTQCMwAbACgCgYYASNAYyYRFQBU0BzALhgDKKCFm60GAEzQowKDAFswQtBBT8OCsOPpSZcxQFEkE9ZuoBKGAG9xANwxgA7pGvi6zVuxQ5KAMwzkMhD8VjAebJw8-IwsEShc3DAAvpY2dOkwrKiY2BA4ALKyIkw4AIJSAA5ytmAA4hBsFT5uGTDkChhqMACMAAy9LRn+gZAhg626spoA+txgwNGT+kroquMZSzPk84vSU4bG6+nkpBQ40wAWaDj8AERgSLYAvBUNEiBMcsi3R0njqUcJJokDgMMgcK5Wq0HrZ+CcyFQkGhFHcYbdzEc6BAwNwwUg4adEciwHdsbjvhioXQ-lSYDgQPJIbTMhUQBpFAIwExfkd5GgAB5M2mKeQIaA8qE09JSv5JIA&variables=N4IghgxhD2CuB2AXAKmA5iAXCAggYTwHkBVAOWQH0BJAERABoQATMRAU0QEsBbNgZURgAToiwgATAAZxANgC0k+QEYZyJQA5MAVnGYlAFgBaDZqw482AUXhMxU2QuUB2ZJMnbdB4wF8gA)
 
 The aliased dimensions appear directly on each result:
 
@@ -578,5 +578,6 @@ The aliased dimensions appear directly on each result:
 1. Refer to [Configure an Analytics API token](https://developers.cloudflare.com/analytics/graphql-api/getting-started/authentication/api-token-auth/) for more information on configuration and permissions. [↩](#user-content-fnref-1)
 
 ```json
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/analytics/graphql-api/tutorials/querying-container-metrics/#page","headline":"Querying Containers metrics with GraphQL · Cloudflare Analytics docs","description":"Query Cloudflare Containers metrics with the GraphQL Analytics API.","url":"https://developers.cloudflare.com/analytics/graphql-api/tutorials/querying-container-metrics/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/analytics/","name":"Analytics"}},{"@type":"ListItem","position":3,"item":{"@id":"/analytics/graphql-api/","name":"GraphQL Analytics API"}},{"@type":"ListItem","position":4,"item":{"@id":"/analytics/graphql-api/tutorials/","name":"Tutorials"}},{"@type":"ListItem","position":5,"item":{"@id":"/analytics/graphql-api/tutorials/querying-container-metrics/","name":"Querying Containers metrics with GraphQL"}}]}
 ```

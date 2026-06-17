@@ -34,8 +34,8 @@ Use `exec()` for **advanced or custom workflows**:
 
 Code contexts maintain state between executions:
 
-* [  JavaScript ](#tab-panel-10066)
-* [  TypeScript ](#tab-panel-10067)
+* [  JavaScript ](#tab-panel-10307)
+* [  TypeScript ](#tab-panel-10308)
 
 JavaScript
 
@@ -111,8 +111,8 @@ const jsContext = await sandbox.createCodeContext({
 
 ### Simple execution
 
-* [  JavaScript ](#tab-panel-10068)
-* [  TypeScript ](#tab-panel-10069)
+* [  JavaScript ](#tab-panel-10309)
+* [  TypeScript ](#tab-panel-10310)
 
 JavaScript
 
@@ -190,8 +190,8 @@ console.log('Success:', result.success);
 
 Variables and imports remain available between executions in the same context, as long as the container stays active:
 
-* [  JavaScript ](#tab-panel-10074)
-* [  TypeScript ](#tab-panel-10075)
+* [  JavaScript ](#tab-panel-10315)
+* [  TypeScript ](#tab-panel-10316)
 
 JavaScript
 
@@ -299,8 +299,8 @@ Context state is lost if the container restarts due to inactivity. For critical 
 
 The code interpreter returns multiple output formats:
 
-* [  JavaScript ](#tab-panel-10078)
-* [  TypeScript ](#tab-panel-10079)
+* [  JavaScript ](#tab-panel-10319)
+* [  TypeScript ](#tab-panel-10320)
 
 JavaScript
 
@@ -436,8 +436,8 @@ if (result.outputs.json) {
 
 For long-running code, stream output in real-time:
 
-* [  JavaScript ](#tab-panel-10076)
-* [  TypeScript ](#tab-panel-10077)
+* [  JavaScript ](#tab-panel-10317)
+* [  TypeScript ](#tab-panel-10318)
 
 JavaScript
 
@@ -563,8 +563,8 @@ print("Done!")
 
 Run LLM-generated code safely in a sandbox:
 
-* [  JavaScript ](#tab-panel-10080)
-* [  TypeScript ](#tab-panel-10081)
+* [  JavaScript ](#tab-panel-10321)
+* [  TypeScript ](#tab-panel-10322)
 
 JavaScript
 
@@ -694,8 +694,8 @@ console.log('Success:', result.success);
 
 ### List all contexts
 
-* [  JavaScript ](#tab-panel-10070)
-* [  TypeScript ](#tab-panel-10071)
+* [  JavaScript ](#tab-panel-10311)
+* [  TypeScript ](#tab-panel-10312)
 
 JavaScript
 
@@ -737,8 +737,8 @@ for (const ctx of contexts) {
 
 ### Delete contexts
 
-* [  JavaScript ](#tab-panel-10072)
-* [  TypeScript ](#tab-panel-10073)
+* [  JavaScript ](#tab-panel-10313)
+* [  TypeScript ](#tab-panel-10314)
 
 JavaScript
 
@@ -806,5 +806,6 @@ console.log('All contexts deleted');
 * [Execute commands guide](https://developers.cloudflare.com/sandbox/guides/execute-commands/) \- Lower-level command execution
 
 ```json
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/sandbox/guides/code-execution/#page","headline":"Use code interpreter · Cloudflare Sandbox SDK docs","description":"Execute Python and JavaScript code with rich outputs.","url":"https://developers.cloudflare.com/sandbox/guides/code-execution/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/sandbox/","name":"Sandbox SDK"}},{"@type":"ListItem","position":3,"item":{"@id":"/sandbox/guides/","name":"How-to guides"}},{"@type":"ListItem","position":4,"item":{"@id":"/sandbox/guides/code-execution/","name":"Use code interpreter"}}]}
 ```

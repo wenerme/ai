@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 # Access a private API or website
 
-**Last reviewed:**  7 months ago 
+**Last reviewed:**  8 months ago 
 
 This example demonstrates how to access a private REST API that is not exposed to the public internet. In this guide, we will configure a VPC Service for an internal API, create a Worker that makes requests to that API, and deploy the Worker to validate our changes.
 
@@ -78,8 +78,8 @@ Note the service ID returned for the next step.
 
 Update your Wrangler configuration file:
 
-* [  wrangler.jsonc ](#tab-panel-10166)
-* [  wrangler.toml ](#tab-panel-10167)
+* [  wrangler.jsonc ](#tab-panel-11343)
+* [  wrangler.toml ](#tab-panel-11344)
 
 JSONC
 
@@ -95,7 +95,7 @@ JSONC
 
   // Set this to today's date
 
-  "compatibility_date": "2026-05-28",
+  "compatibility_date": "2026-06-17",
 
   "vpc_services": [
 
@@ -128,7 +128,7 @@ main = "src/index.js"
 
 # Set this to today's date
 
-compatibility_date = "2026-05-28"
+compatibility_date = "2026-06-17"
 
 
 [[vpc_services]]
@@ -212,5 +212,6 @@ curl https://private-api-gateway.workers.dev
 * Explore [other examples](https://developers.cloudflare.com/workers-vpc/examples/)
 
 ```json
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers-vpc/examples/private-api/#page","headline":"Access a private API or website · Cloudflare Workers VPC","description":"Use Workers VPC to fetch data from a private REST API behind Cloudflare Tunnel.","url":"https://developers.cloudflare.com/workers-vpc/examples/private-api/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-22","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/workers-vpc/","name":"Workers VPC"}},{"@type":"ListItem","position":3,"item":{"@id":"/workers-vpc/examples/","name":"Examples"}},{"@type":"ListItem","position":4,"item":{"@id":"/workers-vpc/examples/private-api/","name":"Access a private API or website"}}]}
 ```

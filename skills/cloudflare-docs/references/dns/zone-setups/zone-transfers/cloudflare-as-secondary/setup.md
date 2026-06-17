@@ -63,8 +63,8 @@ The TSIG names configured at your primary and secondary DNS providers have to be
 
 While optional, this step is highly recommended.
 
-* [ Dashboard ](#tab-panel-5649)
-* [ API ](#tab-panel-5650)
+* [ Dashboard ](#tab-panel-8161)
+* [ API ](#tab-panel-8162)
 
 To create a TSIG using the dashboard:
 
@@ -82,8 +82,8 @@ To create a TSIG using the API, send a [POST](https://developers.cloudflare.com/
 
 ## 2\. Create Peer Server
 
-* [ Dashboard ](#tab-panel-5645)
-* [ API ](#tab-panel-5646)
+* [ Dashboard ](#tab-panel-8159)
+* [ API ](#tab-panel-8160)
 
 To create a peer server using the dashboard:
 
@@ -102,8 +102,8 @@ To create a peer DNS server using the API, send a [POST request](https://develop
 
 ## 3\. Create the Secondary Zone
 
-* [ Dashboard ](#tab-panel-5647)
-* [ API ](#tab-panel-5648)
+* [ Dashboard ](#tab-panel-8163)
+* [ API ](#tab-panel-8164)
 
 To create a secondary zone using the dashboard:
 
@@ -141,5 +141,6 @@ To increase the reliability of your incoming zone transfers, [set up notificatio
 Normal incoming zone transfers only provide DNS resolution. If you also want your traffic to benefit from Cloudflare's performance and security features, you need to [set up Secondary DNS Override](https://developers.cloudflare.com/dns/zone-setups/zone-transfers/cloudflare-as-secondary/proxy-traffic/).
 
 ```json
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/dns/zone-setups/zone-transfers/cloudflare-as-secondary/setup/#page","headline":"Set up incoming zone transfers (Cloudflare as Secondary) · Cloudflare DNS docs","description":"With incoming zone transfers, you can keep your primary DNS provider and use Cloudflare as a secondary DNS provider.","url":"https://developers.cloudflare.com/dns/zone-setups/zone-transfers/cloudflare-as-secondary/setup/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-05-05","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/dns/","name":"DNS"}},{"@type":"ListItem","position":3,"item":{"@id":"/dns/zone-setups/","name":"DNS setups"}},{"@type":"ListItem","position":4,"item":{"@id":"/dns/zone-setups/zone-transfers/","name":"DNS Zone transfers"}},{"@type":"ListItem","position":5,"item":{"@id":"/dns/zone-setups/zone-transfers/cloudflare-as-secondary/","name":"Cloudflare as Secondary"}},{"@type":"ListItem","position":6,"item":{"@id":"/dns/zone-setups/zone-transfers/cloudflare-as-secondary/setup/","name":"Setup"}}]}
 ```

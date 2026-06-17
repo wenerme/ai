@@ -181,3 +181,7 @@ connection state. You now understand thefoundation of WARP client components.
 If you want to learn more,we also have additional resources on
 
 Cloudflare docs. Thanks for watching and seeyou soon!
+
+```json
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/videos/warp-1-basics/#page","headline":"WARP - Understand Cloudflare WARP basics | Cloudflare Docs","description":"In this episode, we explain the core features of the Cloudflare WARP client and how to troubleshoot common issues. After watching, you will have an understanding of the GUI, the differences between the consumer and corporate WARP, device profiles, the various operating modes of WARP, split tunneling, and more.","url":"https://developers.cloudflare.com/videos/warp-1-basics/","inLanguage":"en","image":"https://developers.cloudflare.com/cf-twitter-card.png","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+```

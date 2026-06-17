@@ -30,9 +30,9 @@ Go to [Deploy with Cloudflare Pages](#deploy-with-cloudflare-pages) if you alrea
 
 Install the Hugo CLI, using the specific instructions for your operating system.
 
-* [ macos ](#tab-panel-6771)
-* [ windows ](#tab-panel-6772)
-* [ linux ](#tab-panel-6773)
+* [ macos ](#tab-panel-9391)
+* [ windows ](#tab-panel-9392)
+* [ linux ](#tab-panel-9393)
 
 If you use the package manager [Homebrew ↗](https://brew.sh), run the `brew install` command in your terminal to install Hugo:
 
@@ -205,5 +205,6 @@ If you plan to use [preview deployments](https://developers.cloudflare.com/pages
 By completing this guide, you have successfully deployed your Hugo site to Cloudflare Pages. To get started with other frameworks, [refer to the list of Framework guides](https://developers.cloudflare.com/pages/framework-guides/).
 
 ```json
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/pages/framework-guides/deploy-a-hugo-site/#page","headline":"Hugo · Cloudflare Pages docs","description":"Deploy a Hugo static site to Cloudflare Pages.","url":"https://developers.cloudflare.com/pages/framework-guides/deploy-a-hugo-site/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/pages/","name":"Pages"}},{"@type":"ListItem","position":3,"item":{"@id":"/pages/framework-guides/","name":"Framework guides"}},{"@type":"ListItem","position":4,"item":{"@id":"/pages/framework-guides/deploy-a-hugo-site/","name":"Hugo"}}]}
 ```

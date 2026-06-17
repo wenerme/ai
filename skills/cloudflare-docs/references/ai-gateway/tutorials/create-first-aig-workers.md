@@ -25,8 +25,8 @@ This tutorial guides you through creating your first AI Gateway using Workers AI
 
 Then, create a new AI Gateway.
 
-* [ Dashboard ](#tab-panel-6426)
-* [ API ](#tab-panel-6427)
+* [ Dashboard ](#tab-panel-6566)
+* [ API ](#tab-panel-6567)
 
 [ Go to **AI Gateway** ](https://dash.cloudflare.com/?to=/:account/ai/ai-gateway)
 1. Log into the [Cloudflare dashboard ↗](https://dash.cloudflare.com/) and select your account.
@@ -92,5 +92,6 @@ To build more with Workers, refer to [Tutorials](https://developers.cloudflare.c
 If you have any questions, need assistance, or would like to share your project, join the Cloudflare Developer community on [Discord ↗](https://discord.cloudflare.com) to connect with other developers and the Cloudflare team.
 
 ```json
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai-gateway/tutorials/create-first-aig-workers/#page","headline":"Create your first AI Gateway using Workers AI · Cloudflare AI Gateway docs","description":"This tutorial guides you through creating your first AI Gateway using Workers AI on the Cloudflare dashboard.","url":"https://developers.cloudflare.com/ai-gateway/tutorials/create-first-aig-workers/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-06-15","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/ai-gateway/","name":"AI Gateway"}},{"@type":"ListItem","position":3,"item":{"@id":"/ai-gateway/tutorials/","name":"Tutorials"}},{"@type":"ListItem","position":4,"item":{"@id":"/ai-gateway/tutorials/create-first-aig-workers/","name":"Create your first AI Gateway using Workers AI"}}]}
 ```

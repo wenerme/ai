@@ -39,8 +39,8 @@ Use CIDR routes to forward traffic from your mesh node to devices on your local 
 
 ### Add a route
 
-* [ Dashboard ](#tab-panel-5161)
-* [ API ](#tab-panel-5162)
+* [ Dashboard ](#tab-panel-7245)
+* [ API ](#tab-panel-7246)
 
 1. In the Cloudflare dashboard, go to **Networking** \> **Mesh**.  
 [ Go to **Mesh** ](https://dash.cloudflare.com/?to=/:account/mesh)
@@ -82,8 +82,8 @@ curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/teamnet/routes" 
 
 ### Edit a route
 
-* [ Dashboard ](#tab-panel-5163)
-* [ API ](#tab-panel-5164)
+* [ Dashboard ](#tab-panel-7247)
+* [ API ](#tab-panel-7248)
 
 1. Go to **Networking** \> **Mesh** \> select your node > **Routes** tab.
 2. Select the edit icon next to the route you want to modify.
@@ -119,8 +119,8 @@ curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/teamnet/routes/$
 
 ### Delete a route
 
-* [ Dashboard ](#tab-panel-5159)
-* [ API ](#tab-panel-5160)
+* [ Dashboard ](#tab-panel-7243)
+* [ API ](#tab-panel-7244)
 
 1. Go to **Networking** \> **Mesh** \> select your node > **Routes** tab.
 2. Select the delete icon next to the route.
@@ -235,5 +235,6 @@ To filter DNS queries from the subnet using [Cloudflare Gateway](https://develop
 Gateway logs DNS queries with the private source IP of the originating device. You can use this to create [resolver policies](https://developers.cloudflare.com/cloudflare-one/traffic-policies/resolver-policies/) for internal DNS records.
 
 ```json
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-mesh/routes/#page","headline":"Configure routes for Cloudflare Mesh · Cloudflare One docs","description":"Routes in Zero Trust networking.","url":"https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-mesh/routes/","inLanguage":"en","image":"https://developers.cloudflare.com/zt-preview.png","dateModified":"2026-05-06","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Private networks"]}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/cloudflare-one/","name":"Cloudflare One"}},{"@type":"ListItem","position":3,"item":{"@id":"/cloudflare-one/networks/","name":"Networks"}},{"@type":"ListItem","position":4,"item":{"@id":"/cloudflare-one/networks/connectors/","name":"Connectors"}},{"@type":"ListItem","position":5,"item":{"@id":"/cloudflare-one/networks/connectors/cloudflare-mesh/","name":"Cloudflare Mesh"}},{"@type":"ListItem","position":6,"item":{"@id":"/cloudflare-one/networks/connectors/cloudflare-mesh/routes/","name":"Routes"}}]}
 ```

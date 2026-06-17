@@ -46,9 +46,9 @@ You must provide either `url` or `html`:
 
 ### Fetch rendered HTML from a URL
 
-* [ curl ](#tab-panel-6687)
-* [ TypeScript SDK ](#tab-panel-6688)
-* [ Workers binding ](#tab-panel-6689)
+* [ curl ](#tab-panel-6898)
+* [ TypeScript SDK ](#tab-panel-6899)
+* [ Workers binding ](#tab-panel-6900)
 
 Go to `https://developers.cloudflare.com/` and return the rendered HTML.
 
@@ -196,5 +196,6 @@ The `userAgent` parameter does not bypass bot protection. Requests from Browser 
 If you have questions or encounter an error, see the [Browser Run FAQ and troubleshooting guide](https://developers.cloudflare.com/browser-run/faq/).
 
 ```json
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/browser-run/quick-actions/content-endpoint/#page","headline":"/content - Fetch HTML · Cloudflare Browser Run docs","description":"Capture fully rendered HTML from a webpage after JavaScript execution using the Browser Run /content endpoint.","url":"https://developers.cloudflare.com/browser-run/quick-actions/content-endpoint/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-05-28","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/browser-run/","name":"Browser Run"}},{"@type":"ListItem","position":3,"item":{"@id":"/browser-run/quick-actions/","name":"Quick Actions"}},{"@type":"ListItem","position":4,"item":{"@id":"/browser-run/quick-actions/content-endpoint/","name":"/content - Fetch HTML"}}]}
 ```

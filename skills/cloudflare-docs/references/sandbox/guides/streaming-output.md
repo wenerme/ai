@@ -34,8 +34,8 @@ Use non-streaming (`exec()`) for:
 
 Use `execStream()` to get real-time output:
 
-* [  JavaScript ](#tab-panel-10260)
-* [  TypeScript ](#tab-panel-10261)
+* [  JavaScript ](#tab-panel-10501)
+* [  TypeScript ](#tab-panel-10502)
 
 JavaScript
 
@@ -143,8 +143,8 @@ for await (const event of parseSSEStream<ExecEvent>(stream)) {
 
 Return streaming output to users via Server-Sent Events:
 
-* [  JavaScript ](#tab-panel-10256)
-* [  TypeScript ](#tab-panel-10257)
+* [  JavaScript ](#tab-panel-10497)
+* [  TypeScript ](#tab-panel-10498)
 
 JavaScript
 
@@ -226,8 +226,8 @@ export default {
 
 Client-side consumption:
 
-* [  JavaScript ](#tab-panel-10254)
-* [  TypeScript ](#tab-panel-10255)
+* [  JavaScript ](#tab-panel-10495)
+* [  TypeScript ](#tab-panel-10496)
 
 JavaScript
 
@@ -295,8 +295,8 @@ eventSource.addEventListener('complete', (event) => {
 
 Monitor background process output:
 
-* [  JavaScript ](#tab-panel-10258)
-* [  TypeScript ](#tab-panel-10259)
+* [  JavaScript ](#tab-panel-10499)
+* [  TypeScript ](#tab-panel-10500)
 
 JavaScript
 
@@ -364,8 +364,8 @@ for await (const log of parseSSEStream<LogEvent>(logStream)) {
 
 Check exit codes and handle stream errors:
 
-* [  JavaScript ](#tab-panel-10262)
-* [  TypeScript ](#tab-panel-10263)
+* [  JavaScript ](#tab-panel-10503)
+* [  TypeScript ](#tab-panel-10504)
 
 JavaScript
 
@@ -462,5 +462,6 @@ for await (const event of parseSSEStream<ExecEvent>(stream)) {
 * [Code Interpreter guide](https://developers.cloudflare.com/sandbox/guides/code-execution/) \- Stream code execution output
 
 ```json
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/sandbox/guides/streaming-output/#page","headline":"Stream output · Cloudflare Sandbox SDK docs","description":"Handle real-time output from commands and processes.","url":"https://developers.cloudflare.com/sandbox/guides/streaming-output/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/sandbox/","name":"Sandbox SDK"}},{"@type":"ListItem","position":3,"item":{"@id":"/sandbox/guides/","name":"How-to guides"}},{"@type":"ListItem","position":4,"item":{"@id":"/sandbox/guides/streaming-output/","name":"Stream output"}}]}
 ```

@@ -195,5 +195,6 @@ Take note of the following considerations when creating indexes:
 * Indexes contribute to the overall storage required by your database: an index is effectively a table itself.
 
 ```json
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/d1/best-practices/use-indexes/#page","headline":"Use indexes · Cloudflare D1 docs","description":"Improve D1 query performance by creating indexes on frequently queried columns.","url":"https://developers.cloudflare.com/d1/best-practices/use-indexes/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/d1/","name":"D1"}},{"@type":"ListItem","position":3,"item":{"@id":"/d1/best-practices/","name":"Best practices"}},{"@type":"ListItem","position":4,"item":{"@id":"/d1/best-practices/use-indexes/","name":"Use indexes"}}]}
 ```

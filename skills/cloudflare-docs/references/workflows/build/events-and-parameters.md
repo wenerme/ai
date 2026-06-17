@@ -32,8 +32,8 @@ A `WorkflowEvent` and its associated `payload` property are effectively _immutab
 
 Store state durably by returning it from your `step.do` callbacks.
 
-* [  JavaScript ](#tab-panel-12209)
-* [  TypeScript ](#tab-panel-12210)
+* [  JavaScript ](#tab-panel-13001)
+* [  TypeScript ](#tab-panel-13002)
 
 JavaScript
 
@@ -150,8 +150,8 @@ The `waitForEvent` type parameter only supports letters, digits, `-`, and `_`. C
 
 For example, to wait for billing webhook:
 
-* [  JavaScript ](#tab-panel-12205)
-* [  TypeScript ](#tab-panel-12206)
+* [  JavaScript ](#tab-panel-12997)
+* [  TypeScript ](#tab-panel-12998)
 
 JavaScript
 
@@ -215,8 +215,8 @@ The above example:
 
 The default timeout for a `waitForEvent` call is 24 hours, which can be changed by passing `{ timeout: WorkflowTimeoutDuration }` as the second argument to your `waitForEvent` call.
 
-* [  JavaScript ](#tab-panel-12203)
-* [  TypeScript ](#tab-panel-12204)
+* [  JavaScript ](#tab-panel-12995)
+* [  TypeScript ](#tab-panel-12996)
 
 JavaScript
 
@@ -254,8 +254,8 @@ Timeout behavior
 
 When `waitForEvent` times out, the Workflow will throw an error and the instance will fail. If you want your Workflow to continue even if the event is not received, wrap the `waitForEvent` call in a `try...catch` block:
 
-* [  JavaScript ](#tab-panel-12207)
-* [  TypeScript ](#tab-panel-12208)
+* [  JavaScript ](#tab-panel-12999)
+* [  TypeScript ](#tab-panel-13000)
 
 JavaScript
 
@@ -315,8 +315,8 @@ try {
 
 Workflow instances that are waiting on events using the `waitForEvent` API can be sent events using the `instance.sendEvent` API:
 
-* [  JavaScript ](#tab-panel-12211)
-* [  TypeScript ](#tab-panel-12212)
+* [  JavaScript ](#tab-panel-13003)
+* [  TypeScript ](#tab-panel-13004)
 
 JavaScript
 
@@ -554,5 +554,6 @@ You can also provide a type parameter to the `Workflows` type when creating (tri
 1. Match pattern: `^[a-zA-Z0-9_][a-zA-Z0-9-_]*$` [↩](#user-content-fnref-1) [↩2](#user-content-fnref-1-2)
 
 ```json
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workflows/build/events-and-parameters/#page","headline":"Events and parameters · Cloudflare Workflows docs","description":"Pass data to Workflows using events and parameters, including request details, database records, and webhook payloads.","url":"https://developers.cloudflare.com/workflows/build/events-and-parameters/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-06-02","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/workflows/","name":"Workflows"}},{"@type":"ListItem","position":3,"item":{"@id":"/workflows/build/","name":"Build with Workflows"}},{"@type":"ListItem","position":4,"item":{"@id":"/workflows/build/events-and-parameters/","name":"Events and parameters"}}]}
 ```

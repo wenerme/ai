@@ -26,5 +26,6 @@ image: https://developers.cloudflare.com/core-services-preview.png
 * [ Workers ](https://developers.cloudflare.com/workers/platform/infrastructure-as-code/)
 
 ```json
+{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/terraform/additional-configurations/#page","headline":"Additional configurations · Cloudflare Terraform docs","description":"Terraform configuration examples for Cloudflare rulesets, redirects, caching, and more.","url":"https://developers.cloudflare.com/terraform/additional-configurations/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/terraform/","name":"Terraform"}},{"@type":"ListItem","position":3,"item":{"@id":"/terraform/additional-configurations/","name":"Additional configurations"}}]}
 ```

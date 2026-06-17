@@ -27,8 +27,8 @@ Note that the Context API is available strictly in stateless contexts, that is, 
 
 For example, imagine that you are configuring a Worker called "frontend-worker", which must talk to another Worker called "doc-worker" in order to manipulate documents. You might configure "frontend-worker" with a [Service Binding](https://developers.cloudflare.com/workers/runtime-apis/bindings/service-bindings) like:
 
-* [  wrangler.jsonc ](#tab-panel-11259)
-* [  wrangler.toml ](#tab-panel-11260)
+* [  wrangler.jsonc ](#tab-panel-11984)
+* [  wrangler.toml ](#tab-panel-11985)
 
 JSONC
 
@@ -99,8 +99,8 @@ The Workers platform is designed to ensure that `ctx.props` can only be set by s
 
 `ctx.props` can also be used to configure an RPC interface to represent a _specific_ resource, thus creating a "custom binding". For example, we could configure a Service Binding to our "doc-worker" which grants access only to a specific document:
 
-* [  wrangler.jsonc ](#tab-panel-11261)
-* [  wrangler.toml ](#tab-panel-11262)
+* [  wrangler.jsonc ](#tab-panel-11986)
+* [  wrangler.toml ](#tab-panel-11987)
 
 JSONC
 
@@ -217,8 +217,8 @@ In this example, the default fetch handler calls the `Greeter` class over RPC, l
 
 Loopback Service Bindings in `ctx.exports` have an extra capability that regular Service Bindings do not: the caller can specify the value of `ctx.props` that should be delivered to the callee.
 
-* [  JavaScript ](#tab-panel-11257)
-* [  TypeScript ](#tab-panel-11258)
+* [  JavaScript ](#tab-panel-11982)
+* [  TypeScript ](#tab-panel-11983)
 
 JavaScript
 
@@ -319,6 +319,39 @@ If using TypeScript, you should use [the wrangler types command](https://develop
 
 When declaring an entrypoint class that accepts `props`, make sure to declare it as `extends WorkerEntrypoint<Env, Props>`, where `Props` is the type of `ctx.props`. See the example above.
 
+## `tracing`
+
+`ctx.tracing` provides access to the [custom spans API](https://developers.cloudflare.com/workers/observability/traces/custom-spans/) for creating user-defined trace spans. This is the same object available via `import { tracing } from "cloudflare:workers"`.
+
+[Tracing must be enabled](https://developers.cloudflare.com/workers/observability/traces/#how-to-enable-tracing) on your Worker for spans to be recorded.
+
+JavaScript
+
+```
+
+export default {
+
+  async fetch(request, env, ctx) {
+
+    return ctx.tracing.enterSpan("handleRequest", async (span) => {
+
+      span.setAttribute("url.path", new URL(request.url).pathname);
+
+      const data = await env.MY_KV.get("key");
+
+      return new Response(data);
+
+    });
+
+  },
+
+};
+
+
+```
+
+For full API details, refer to [Custom spans](https://developers.cloudflare.com/workers/observability/traces/custom-spans/).
+
 ## `waitUntil`
 
 `ctx.waitUntil()` extends the lifetime of your Worker, allowing you to perform work without blocking returning a response, and that may continue after a response is returned. It accepts a `Promise`, which the Workers runtime will continue executing, even after a response has been returned by the Worker's [handler](https://developers.cloudflare.com/workers/runtime-apis/handlers/).
@@ -392,9 +425,11 @@ export default {
 
 Reuse of body
 
-The Workers Runtime uses streaming for request and response bodies. It does not buffer the body. Hence, if an exception occurs after the body has been consumed, `passThroughOnException()` cannot send the body again.
+The Workers runtime uses streaming for request and response bodies. It does not buffer the body. If an exception occurs after the body has been consumed, `passThroughOnException()` cannot send the body again.
 
-If this causes issues, we recommend cloning the request body and handling exceptions in code. This will protect against uncaught code exceptions. However some exception times such as exceed CPU or memory limits will not be mitigated.
+For a Worker that proxies requests to an origin, avoid relying on the runtime fallback when the origin `fetch()` fails. If the origin `fetch()` throws after consuming the request body, the fallback request may reach your origin without the original body and fail with an unrelated `4xx` error. Catch origin fetch errors and return a `5xx` response instead.
+
+This protects against uncaught code exceptions. It does not mitigate failures such as exceeding CPU or memory limits.
 
 The `passThroughOnException` method allows a Worker to [fail open ↗](https://community.microfocus.com/cyberres/b/sws-22/posts/security-fundamentals-part-1-fail-open-vs-fail-closed), and pass a request through to an origin server when a Worker throws an unhandled exception. This can be useful when using Workers as a layer in front of an existing service, allowing the service behind the Worker to handle any unexpected error cases that arise in your Worker.
 
@@ -406,11 +441,20 @@ export default {
 
   async fetch(request, env, ctx) {
 
-    // Proxy to origin on unhandled/uncaught exceptions
-
     ctx.passThroughOnException();
 
-    throw new Error("Oops");
+
+    try {
+
+      return await fetch(request);
+
+    } catch (error) {
+
+      console.error("Origin fetch failed", error);
+
+      return new Response("Bad Gateway", { status: 502 });
+
+    }
 
   },
 
@@ -420,5 +464,6 @@ export default {
 ```
 
 ```json
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/runtime-apis/context/#page","headline":"Context (ctx) · Cloudflare Workers docs","description":"The Context API in Cloudflare Workers, including props, exports, waitUntil and passThroughOnException.","url":"https://developers.cloudflare.com/workers/runtime-apis/context/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-06-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/workers/","name":"Workers"}},{"@type":"ListItem","position":3,"item":{"@id":"/workers/runtime-apis/","name":"Runtime APIs"}},{"@type":"ListItem","position":4,"item":{"@id":"/workers/runtime-apis/context/","name":"Context (ctx)"}}]}
 ```

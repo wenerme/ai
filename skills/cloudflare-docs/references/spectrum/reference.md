@@ -23,5 +23,6 @@ For more information related to Spectrum, refer to the sections below.
 * [ Why Spectrum-enabled hostnames might appear in Layer 7 Analytics ](https://developers.cloudflare.com/spectrum/reference/layer-7-analytics/)
 
 ```json
+{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/spectrum/reference/#page","headline":"Reference · Cloudflare Spectrum docs","description":"Reference information for Spectrum, including analytics, logs, and limitations.","url":"https://developers.cloudflare.com/spectrum/reference/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/spectrum/","name":"Spectrum"}},{"@type":"ListItem","position":3,"item":{"@id":"/spectrum/reference/","name":"Reference"}}]}
 ```

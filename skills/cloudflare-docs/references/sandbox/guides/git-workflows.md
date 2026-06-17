@@ -16,8 +16,8 @@ This guide shows you how to clone repositories, manage branches, and automate Gi
 
 ## Clone repositories
 
-* [  JavaScript ](#tab-panel-10164)
-* [  TypeScript ](#tab-panel-10165)
+* [  JavaScript ](#tab-panel-10405)
+* [  TypeScript ](#tab-panel-10406)
 
 JavaScript
 
@@ -111,8 +111,8 @@ await sandbox.gitCheckout('https://github.com/user/my-app', {
 
 Use a personal access token in the URL:
 
-* [  JavaScript ](#tab-panel-10154)
-* [  TypeScript ](#tab-panel-10155)
+* [  JavaScript ](#tab-panel-10395)
+* [  TypeScript ](#tab-panel-10396)
 
 JavaScript
 
@@ -150,8 +150,8 @@ Embedding a token in the URL passes the credential directly into the sandbox. Fo
 
 Clone a repository and run build steps:
 
-* [  JavaScript ](#tab-panel-10156)
-* [  TypeScript ](#tab-panel-10157)
+* [  JavaScript ](#tab-panel-10397)
+* [  TypeScript ](#tab-panel-10398)
 
 JavaScript
 
@@ -199,8 +199,8 @@ console.log('Build complete');
 
 ## Work with branches
 
-* [  JavaScript ](#tab-panel-10158)
-* [  TypeScript ](#tab-panel-10159)
+* [  JavaScript ](#tab-panel-10399)
+* [  TypeScript ](#tab-panel-10400)
 
 JavaScript
 
@@ -242,8 +242,8 @@ await sandbox.exec('cd repo && git checkout -b new-feature');
 
 ## Make changes and commit
 
-* [  JavaScript ](#tab-panel-10166)
-* [  TypeScript ](#tab-panel-10167)
+* [  JavaScript ](#tab-panel-10407)
+* [  TypeScript ](#tab-panel-10408)
 
 JavaScript
 
@@ -317,8 +317,8 @@ await sandbox.exec('cd repo && git commit -m "Update README"');
 
 Verify your token is set:
 
-* [  JavaScript ](#tab-panel-10162)
-* [  TypeScript ](#tab-panel-10163)
+* [  JavaScript ](#tab-panel-10403)
+* [  TypeScript ](#tab-panel-10404)
 
 JavaScript
 
@@ -360,8 +360,8 @@ await sandbox.gitCheckout(repoUrl);
 
 Use shallow clone:
 
-* [  JavaScript ](#tab-panel-10160)
-* [  TypeScript ](#tab-panel-10161)
+* [  JavaScript ](#tab-panel-10401)
+* [  TypeScript ](#tab-panel-10402)
 
 JavaScript
 
@@ -396,5 +396,6 @@ await sandbox.gitCheckout('https://github.com/user/large-repo', {
 * [Manage files guide](https://developers.cloudflare.com/sandbox/guides/manage-files/) \- Work with cloned files
 
 ```json
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/sandbox/guides/git-workflows/#page","headline":"Work with Git · Cloudflare Sandbox SDK docs","description":"Clone repositories, manage branches, and automate Git operations.","url":"https://developers.cloudflare.com/sandbox/guides/git-workflows/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/sandbox/","name":"Sandbox SDK"}},{"@type":"ListItem","position":3,"item":{"@id":"/sandbox/guides/","name":"How-to guides"}},{"@type":"ListItem","position":4,"item":{"@id":"/sandbox/guides/git-workflows/","name":"Work with Git"}}]}
 ```

@@ -29,10 +29,10 @@ The Monitoring API includes the following core entities, which each provide dist
 
 You can construct any query you'd like using the above datasets, but here are some example queries you can use.
 
-* [ Events ](#tab-panel-12966)
-* [ Loads ](#tab-panel-12967)
-* [ Triggers ](#tab-panel-12968)
-* [ Erroneous responses ](#tab-panel-12969)
+* [ Events ](#tab-panel-13112)
+* [ Loads ](#tab-panel-13113)
+* [ Triggers ](#tab-panel-13114)
+* [ Erroneous responses ](#tab-panel-13115)
 
 Query for the count of Zaraz events, grouped by time.
 
@@ -85,7 +85,7 @@ query ZarazEvents(
 
 ```
 
-[Run in GraphQL API Explorer](https://graphql.cloudflare.com/explorer?query=I4VwpgTgngBAWgQwggXgUQG5gHYBcDOAFAFAwwAkKA9tmACoIDmAXDPrhAJbaOkUA2nALadcrEN1wA2ACwBCPuXZIxMOsLCKcAE1bqhmsuSoRtkAEJRWcGmETIUdZAGMA1gEFtCAA65OWAHEIKhBvfAB5UwsoBQBKGABvPgxOMAB3SES+MmpaIgAzTn5cSFYEmFz6JlZKWwZGGABfeKSyNpgvXARWFCRUJwQ3Tx8-QODQomz2mEERVXJZ0Sn2wuLSxI6EEr8DAAkQiAB9RjBgGuUIXAAaTe2NfZAj-lOanSbltpMzCEtWAG1jFEflAALofFofMjOEJ4SEdDTYfCcGj4LLTaYEVidMA7MAPCBwxofIntEnvRpAA&variables=N4IgXg9gdgpgKgQwOYgFwgFoHkByBRAfQEkAREAGhABsBLAWxoBc0BGABjcoGdGEAnZugBMbIQDYAtG0ksxcNgBZUbFqgDMATgwUQMKABM0IEeKky57Zas3bKEPvph8AQgE8j+hIxiN6MABIQAK58BACCAMoAwiAAvkA)
+[Run in GraphQL API Explorer](https://graphql.cloudflare.com/explorer?query=I4VwpgTgngBAWgQwggXgUQG5gHYBcDOAFAFAwwAkKA9tmACoIDmAXDPrhAJbaOkUA2nALadcrEN1wA2ACwBCPuXZIxMOsLCKcAE1bqhmsuSoRtkAEJRWcGmETIUdZAGMA1gEFtCAA65OWAHEIKhBvfAB5UwsoBQBKGABvPgxOMAB3SES+MmpaIgAzTn5cSFYEmFz6JlZKWwZGGABfeKSyNpgvXARWFCRUJwQ3Tx8-QODQomz2mEERVXJZ0Sn2wuLSxI6EEr8DAAkQiAB9RjBgGuUIXAAaTe2NfZAj-lOanSbltpMzCEtWAG1jFEflAALofFofMjOEJ4SEdDTYfCcGj4LLTaYEVidMA7MAPCBwxofIntEnvRpAA&variables=N4IgXg9gdgpgKgQwOYgFwgFoHkByBRAfQEkAREAGhABsBLAWxoBc0BGABjcoGdGEAnZugBMbIQDYAtG0ksxcFgA5UAVgAsqNsowUQMKABM0IEeKkyA7HA4r1m7ZQh99MPgCEAnkf0JGMRvRgACQgAVz4CAEEAZQBhEABfIA)
 
 Query for the count of Zaraz loads, grouped by time.
 
@@ -138,7 +138,7 @@ query ZarazLoads(
 
 ```
 
-[Run in GraphQL API Explorer](https://graphql.cloudflare.com/explorer?query=I4VwpgTgngBAWgQwggXgGQPYICYGcAUAUDDACQoYB2YAKggOYBcMuALhAJaX3FkA2HALYdWzEF1YA2ACwBCXqTZJRMACIJWYBWErZm6zQowRskAEJRmcKmETIUNTvXqRcAQWwIADqw4A3MABxCAwQL1wAeRNzKHkAShgAb14-DjAAd0gk3hIKagIAMw4+TQhmRJg82gZmchs6ehgAXwTkknaYT1YEZhQkVEcOZ1cPb18A4NDwog6OgWEVUnmRHNmikshyzo0wAH0XYFqlCFYAGm3NXb4wQ7IdbHP2IZcIADkEQTBmAAUGMFSMs1Vh1jKYIBZmABtUigmIAXWBMFaiJIAGNQpRWCjOkIdLgOFRcNlZrNWLhmF0tCSSE1EbSOvSgU0gA&variables=N4IgXg9gdgpgKgQwOYgFwgFoHkByBRAfQEkAREAGhABsBLAWxoBc0BGABjcoGdGEAnZugBMbIQDYAtG0ksArBRAwoAEzQgR4qTLEKIfZTD4AhAJ5rlCRjAIBBAMoBhEAF8gA)
+[Run in GraphQL API Explorer](https://graphql.cloudflare.com/explorer?query=I4VwpgTgngBAWgQwggXgGQPYICYGcAUAUDDACQoYB2YAKggOYBcMuALhAJaX3FkA2HALYdWzEF1YA2ACwBCXqTZJRMACIJWYBWErZm6zQowRskAEJRmcKmETIUNTvXqRcAQWwIADqw4A3MABxCAwQL1wAeRNzKHkAShgAb14-DjAAd0gk3hIKagIAMw4+TQhmRJg82gZmchs6ehgAXwTkknaYT1YEZhQkVEcOZ1cPb18A4NDwog6OgWEVUnmRHNmikshyzo0wAH0XYFqlCFYAGm3NXb4wQ7IdbHP2IZcIADkEQTBmAAUGMFSMs1Vh1jKYIBZmABtUigmIAXWBMFaiJIAGNQpRWCjOkIdLgOFRcNlZrNWLhmF0tCSSE1EbSOvSgU0gA&variables=N4IgXg9gdgpgKgQwOYgFwgFoHkByBRAfQEkAREAGhABsBLAWxoBc0BGABjcoGdGEAnZugBMbIQDYAtG0ksxFEDCgATNCBHipMgOzyIfJTD4AhAJ6qlCRjAIBBAMoBhEAF8gA)
 
 Query for the total execution count of each trigger processed by Zaraz.
 
@@ -189,7 +189,7 @@ query ZarazTriggers(
 
 ```
 
-[Run in GraphQL API Explorer](https://graphql.cloudflare.com/explorer?query=I4VwpgTgngBAWgQwggXgFQgSwObcgZwAoAoGGAEhQHsA7MNBbALhnwBcsbtSKAbTALaY2LEJhpsAbABYAhD3LskImABEEbMArA0AJi3WbiAShgBvHgDdMYAO6RzPMtTpEAZpl6aILMzBf0jCyUtIHYMAC+phZksTC6GggsKEioGDh4EPgAggkADmyYlmAA4hBUIHlETnEw-EIq5PXCNXEeXpC+8RpgAPp4wMFKEGwANN2avbxggxQ6upGtsVQQupAAQlAsANoAxhUSvaoAogDKAMIAukvRS2T7IBJ38YI6+Ji0+I61tTQIAmAWBwMpAAHL-LQ-MgRJYwuJwxYRIA&variables=N4IgXg9gdgpgKgQwOYgFwgFoHkByBRAfQEkAREAGhABsBLAWxoBc0BGABjcoGdGEAnZugBMbIQDYAtG0ksArBRAwoAEzQgR4qTLEgAvkA)
+[Run in GraphQL API Explorer](https://graphql.cloudflare.com/explorer?query=I4VwpgTgngBAWgQwggXgFQgSwObcgZwAoAoGGAEhQHsA7MNBbALhnwBcsbtSKAbTALaY2LEJhpsAbABYAhD3LskImABEEbMArA0AJi3WbiAShgBvHgDdMYAO6RzPMtTpEAZpl6aILMzBf0jCyUtIHYMAC+phZksTC6GggsKEioGDh4EPgAggkADmyYlmAA4hBUIHlETnEw-EIq5PXCNXEeXpC+8RpgAPp4wMFKEGwANN2avbxggxQ6upGtsVQQupAAQlAsANoAxhUSvaoAogDKAMIAukvRS2T7IBJ38YI6+Ji0+I61tTQIAmAWBwMpAAHL-LQ-MgRJYwuJwxYRIA&variables=N4IgXg9gdgpgKgQwOYgFwgFoHkByBRAfQEkAREAGhABsBLAWxoBc0BGABjcoGdGEAnZugBMbIQDYAtG0ksxFEDCgATNCBHipMgOwgAvkA)
 
 Query for the count of 400 server-side responses, grouped by time and URL.
 
@@ -254,7 +254,7 @@ query ErroneousResponses(
 
 ```
 
-[Run in GraphQL API Explorer](https://graphql.cloudflare.com/explorer?query=I4VwpgTgngBAohCB7AdmJIDOAlMmAOqmeAFAFAwwAkAXqmACoCGA5gFwyYAuEAliiwrUANrwC2vLhxD8uANgAsAQiFVuTCFJgNxYVWBQATDjrF7KVJBEOQAQlA4Ateo41MaAMTBcAxgAsAQUMmfC5eADcwAHFkEHxMAHlrOygVAEoYAG8hcN4wAHdILKFKOjRMEgAzXmEuSA5MmDLGVg5aemYWGABfDOzKAZhgriYOGjdPb38gkLDImIx48kHB0QktKjXJEpXq2vrilZXh710ACQwIAH0WMGA29U0do5OwswuQa+E7toNDZ5Wn2EVzQ9xgACJwQDBuouFgOAoAAyI6E9VFWGwQewcADalmSWKgAF0AX1UT4MCguKjDLoUJheERDkcBlxMBxXudLqjKCgmGZpBBhKjugDRYNxWjukA&variables=N4IgXg9gdgpgKgQwOYgFwgFoHkByBRAfQEkAREAGhABsBLAWxoBc0BGABjcoGdGEAnZugBMbIQDYAtG0ksxcNgBZUbFqgDMATgwUQMKABM0IEeKky57Zas3bKEPvph8AQgE8j+hIxiN6MABIQAK58BACCAMoAwiAAvkA)
+[Run in GraphQL API Explorer](https://graphql.cloudflare.com/explorer?query=I4VwpgTgngBAohCB7AdmJIDOAlMmAOqmeAFAFAwwAkAXqmACoCGA5gFwyYAuEAliiwrUANrwC2vLhxD8uANgAsAQiFVuTCFJgNxYVWBQATDjrF7KVJBEOQAQlA4Ateo41MaAMTBcAxgAsAQUMmfC5eADcwAHFkEHxMAHlrOygVAEoYAG8hcN4wAHdILKFKOjRMEgAzXmEuSA5MmDLGVg5aemYWGABfDOzKAZhgriYOGjdPb38gkLDImIx48kHB0QktKjXJEpXq2vrilZXh710ACQwIAH0WMGA29U0do5OwswuQa+E7toNDZ5Wn2EVzQ9xgACJwQDBuouFgOAoAAyI6E9VFWGwQewcADalmSWKgAF0AX1UT4MCguKjDLoUJheERDkcBlxMBxXudLqjKCgmGZpBBhKjugDRYNxWjukA&variables=N4IgXg9gdgpgKgQwOYgFwgFoHkByBRAfQEkAREAGhABsBLAWxoBc0BGABjcoGdGEAnZugBMbIQDYAtG0ksxcFgA5UAVgAsqNsowUQMKABM0IEeKkyA7HA4r1m7ZQh99MPgCEAnkf0JGMRvRgACQgAVz4CAEEAZQBhEABfIA)
 
 ### Variables Example
 
@@ -336,5 +336,6 @@ This `curl` example will return a JSON response containing event counts and time
 Refer to the [full GraphQL Analytics API documentation](https://developers.cloudflare.com/analytics/graphql-api/) for more details on available fields, filters, and further customization options for Zaraz Monitoring API queries.
 
 ```json
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/zaraz/monitoring/monitoring-api/#page","headline":"Monitoring API · Cloudflare Zaraz docs","description":"Query Zaraz monitoring data with the GraphQL API.","url":"https://developers.cloudflare.com/zaraz/monitoring/monitoring-api/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/zaraz/","name":"Zaraz"}},{"@type":"ListItem","position":3,"item":{"@id":"/zaraz/monitoring/","name":"Monitoring"}},{"@type":"ListItem","position":4,"item":{"@id":"/zaraz/monitoring/monitoring-api/","name":"Monitoring API"}}]}
 ```

@@ -52,8 +52,8 @@ await env.KV_ASSETS.put(`project/${projectId}/assets${pathname}`, fileContent);
 
 You also need to store a manifest, a mapping that tells the asset handler which files exist and what their content types are. Use `buildAssetManifest()` from `@cloudflare/worker-bundler` to generate it from your assets:
 
-* [  JavaScript ](#tab-panel-6261)
-* [  TypeScript ](#tab-panel-6262)
+* [  JavaScript ](#tab-panel-8453)
+* [  TypeScript ](#tab-panel-8454)
 
 JavaScript
 
@@ -127,8 +127,8 @@ The examples on this page use KV for asset storage, but you can also use [R2](ht
 
 Grant the loader Worker access to the KV namespace where you stored the assets:
 
-* [  wrangler.jsonc ](#tab-panel-6259)
-* [  wrangler.toml ](#tab-panel-6260)
+* [  wrangler.jsonc ](#tab-panel-8451)
+* [  wrangler.toml ](#tab-panel-8452)
 
 JSONC
 
@@ -193,8 +193,8 @@ Instead of writing your own logic to match request paths to files, detect conten
 
 `handleAssetRequest()` serves the file if it finds a match in the manifest, with the correct headers for content type and caching.
 
-* [  JavaScript ](#tab-panel-6267)
-* [  TypeScript ](#tab-panel-6268)
+* [  JavaScript ](#tab-panel-8459)
+* [  TypeScript ](#tab-panel-8460)
 
 JavaScript
 
@@ -338,8 +338,8 @@ Once `AssetBinding` is exported, it becomes available on `ctx.exports` in the lo
 
 When you call `get()` to create the Dynamic Worker, include the `AssetBinding` in the `env` object so the Dynamic Worker can use it to serve static files. To reference the `AssetBinding` class you defined in the previous step, use `ctx.exports.AssetBinding()` and pass the `projectId` as a prop so it knows which project's assets to serve. This works the same way as custom bindings — `props` is how you pass information to the class, and the class reads it at `this.ctx.props` when it runs.
 
-* [  JavaScript ](#tab-panel-6265)
-* [  TypeScript ](#tab-panel-6266)
+* [  JavaScript ](#tab-panel-8457)
+* [  TypeScript ](#tab-panel-8458)
 
 JavaScript
 
@@ -367,7 +367,7 @@ export default {
 
         },
 
-        compatibilityDate: "2026-05-05",
+        compatibilityDate: "2026-06-17",
 
         env: {
 
@@ -419,7 +419,7 @@ export default {
 
         },
 
-        compatibilityDate: "2026-05-05",
+        compatibilityDate: "2026-06-17",
 
         env: {
 
@@ -451,8 +451,8 @@ The Dynamic Worker sees `ASSETS` as a binding and can call `env.ASSETS.fetch(req
 
 From the Dynamic Worker's perspective, `env.ASSETS` works like any other binding. The user writes their server code and calls `env.ASSETS.fetch()` to serve static files:
 
-* [  JavaScript ](#tab-panel-6263)
-* [  TypeScript ](#tab-panel-6264)
+* [  JavaScript ](#tab-panel-8455)
+* [  TypeScript ](#tab-panel-8456)
 
 JavaScript
 
@@ -523,5 +523,6 @@ export default {
 When the Dynamic Worker calls `env.ASSETS.fetch(request)`, the call goes through RPC to the loader Worker's `AssetBinding`, which looks up the file in the manifest and reads it from KV. The Dynamic Worker does not need to handle any of this — it calls `env.ASSETS.fetch(request)` and gets back the file with the correct headers, ready to return to the client.
 
 ```json
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/dynamic-workers/usage/static-assets/#page","headline":"Static assets · Cloudflare Dynamic Workers docs","description":"Serve static files alongside Dynamic Worker code.","url":"https://developers.cloudflare.com/dynamic-workers/usage/static-assets/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-05-05","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/dynamic-workers/","name":"Dynamic Workers"}},{"@type":"ListItem","position":3,"item":{"@id":"/dynamic-workers/usage/","name":"Usage"}},{"@type":"ListItem","position":4,"item":{"@id":"/dynamic-workers/usage/static-assets/","name":"Static assets"}}]}
 ```

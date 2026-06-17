@@ -22,8 +22,8 @@ Cloudflare R2 is an object storage service that provides a highly available, sca
 
 Using [Wrangler](https://developers.cloudflare.com/workers/wrangler/install-and-update/), [API](https://developers.cloudflare.com/api/resources/r2/subresources/buckets/methods/create/), or [Account View Dashboard ↗](https://dash.cloudflare.com/?to=/:account/r2/new) create an [R2 Bucket](https://developers.cloudflare.com/r2/buckets/create-buckets/).
 
-* [ Wrangler ](#tab-panel-10029)
-* [ API ](#tab-panel-10030)
+* [ Wrangler ](#tab-panel-10966)
+* [ API ](#tab-panel-10967)
 
 Terminal window
 
@@ -136,5 +136,6 @@ variable "account_id" { default = "<YOUR_ACCOUNT_ID>" }
 After updating your `cloudflare.tf` file you can issue the `terraform init -reconfigure` command to migrate from a local state to [remote state ↗](https://developer.hashicorp.com/terraform/language/state/remote).
 
 ```json
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/terraform/advanced-topics/remote-backend/#page","headline":"Remote R2 backend · Cloudflare Terraform docs","description":"Store Terraform state files remotely using Cloudflare R2 as an S3-compatible backend.","url":"https://developers.cloudflare.com/terraform/advanced-topics/remote-backend/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/terraform/","name":"Terraform"}},{"@type":"ListItem","position":3,"item":{"@id":"/terraform/advanced-topics/","name":"Advanced topics"}},{"@type":"ListItem","position":4,"item":{"@id":"/terraform/advanced-topics/remote-backend/","name":"Remote R2 backend"}}]}
 ```

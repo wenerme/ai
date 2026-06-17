@@ -126,8 +126,7 @@ browser use workflows.
 
 Check your Computer Use settings to review desktop-app access and related
 preferences after setup. On macOS, revoke system-level access by updating Screen
-Recording or Accessibility permissions in macOS Privacy & Security settings. The
-feature isn't available in the EEA, the United Kingdom, or Switzerland at launch.
+Recording or Accessibility permissions in macOS Privacy & Security settings.
 
 ## Personalization
 

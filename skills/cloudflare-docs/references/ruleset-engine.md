@@ -25,5 +25,6 @@ The Cloudflare Ruleset Engine allows you to create and deploy rules and rulesets
 The Ruleset Engine supports different Cloudflare products. Refer to [Phases list](https://developers.cloudflare.com/ruleset-engine/reference/phases-list/) and to each product's documentation for details.
 
 ```json
+{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/ruleset-engine/#page","headline":"Overview · Cloudflare Ruleset Engine docs","description":"Create and deploy rules and rulesets across Cloudflare products using the Ruleset Engine's powerful syntax and high-performance evaluation.","url":"https://developers.cloudflare.com/ruleset-engine/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/ruleset-engine/","name":"Ruleset Engine"}}]}
 ```

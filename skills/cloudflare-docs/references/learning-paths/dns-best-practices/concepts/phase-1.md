@@ -1,5 +1,5 @@
 ---
-title: Phase 1: Planning &#38; Inventory
+title: Phase 1: Planning &amp; Inventory
 description: Plan and inventory your DNS migration.
 image: https://developers.cloudflare.com/cf-twitter-card.png
 ---
@@ -68,5 +68,6 @@ Select a period of low traffic and activity to minimize potential impact and inf
 * Rollback Plan: Document steps to revert to your BIND servers if major issues arise. This primarily involves changing nameservers back at the registrar and potentially re-adding old DS records if DNSSEC was involved.
 
 ```json
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/learning-paths/dns-best-practices/concepts/phase-1/#page","headline":"Phase 1: Planning & Inventory · Cloudflare Learning Paths","description":"Plan and inventory your DNS migration.","url":"https://developers.cloudflare.com/learning-paths/dns-best-practices/concepts/phase-1/","inLanguage":"en","image":"https://developers.cloudflare.com/cf-twitter-card.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/learning-paths/","name":"Learning Paths"}},{"@type":"ListItem","position":3,"item":{"@id":"/learning-paths/dns-best-practices/concepts/","name":"Concepts"}},{"@type":"ListItem","position":4,"item":{"@id":"/learning-paths/dns-best-practices/concepts/phase-1/","name":"Phase 1: Planning & Inventory"}}]}
 ```

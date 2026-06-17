@@ -174,8 +174,8 @@ Hyperdrive will attempt to connect to your database with the provided credential
 
 This command outputs your Hyperdrive ID. You can now bind your Hyperdrive configuration to your Worker in your Wrangler configuration by replacing the content with the following:
 
-* [  wrangler.jsonc ](#tab-panel-6708)
-* [  wrangler.toml ](#tab-panel-6709)
+* [  wrangler.jsonc ](#tab-panel-8836)
+* [  wrangler.toml ](#tab-panel-8837)
 
 JSONC
 
@@ -191,7 +191,7 @@ JSONC
 
   // Set this to today's date
 
-  "compatibility_date": "2026-05-18",
+  "compatibility_date": "2026-06-17",
 
   "compatibility_flags": [
 
@@ -228,7 +228,7 @@ main = "src/index.ts"
 
 # Set this to today's date
 
-compatibility_date = "2026-05-18"
+compatibility_date = "2026-06-17"
 
 compatibility_flags = [ "nodejs_compat" ]
 
@@ -479,5 +479,6 @@ In this tutorial, you have learned how to create a working example to ingest and
 * Refer to the [troubleshooting guide](https://developers.cloudflare.com/hyperdrive/observability/troubleshooting/) to debug common issues.
 
 ```json
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/hyperdrive/tutorials/serverless-timeseries-api-with-timescale/#page","headline":"Create a serverless, globally distributed time-series API with Timescale · Cloudflare Hyperdrive docs","description":"In this tutorial, you will learn to build an API on Workers which will ingest and query time-series data stored in Timescale.","url":"https://developers.cloudflare.com/hyperdrive/tutorials/serverless-timeseries-api-with-timescale/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-02-06","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["PostgreSQL","TypeScript","SQL"]}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/hyperdrive/","name":"Hyperdrive"}},{"@type":"ListItem","position":3,"item":{"@id":"/hyperdrive/tutorials/","name":"Tutorials"}},{"@type":"ListItem","position":4,"item":{"@id":"/hyperdrive/tutorials/serverless-timeseries-api-with-timescale/","name":"Create a serverless, globally distributed time-series API with Timescale"}}]}
 ```

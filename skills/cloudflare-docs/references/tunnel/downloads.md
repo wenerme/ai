@@ -76,5 +76,6 @@ Cloudflare supports versions of `cloudflared` that are within one year of the mo
 To update `cloudflared`, refer to [these instructions](https://developers.cloudflare.com/tunnel/downloads/update-cloudflared/).
 
 ```json
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/tunnel/downloads/#page","headline":"Downloads · Cloudflare Docs","description":"Download the cloudflared daemon for your operating system.","url":"https://developers.cloudflare.com/tunnel/downloads/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/tunnel/","name":"Cloudflare Tunnel"}},{"@type":"ListItem","position":3,"item":{"@id":"/tunnel/downloads/","name":"Downloads"}}]}
 ```

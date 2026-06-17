@@ -20,8 +20,8 @@ Learn more about the [concepts](https://developers.cloudflare.com/waf/managed-ru
 
 ## Deploy the Cloudflare OWASP Core Ruleset
 
-* [  New dashboard ](#tab-panel-10059)
-* [ Old dashboard ](#tab-panel-10060)
+* [  New dashboard ](#tab-panel-11236)
+* [ Old dashboard ](#tab-panel-11237)
 
 1. In the Cloudflare dashboard, go to the Security **Settings** page.  
 [ Go to **Settings** ](https://dash.cloudflare.com/?to=/:account/:zone/security/settings)
@@ -65,8 +65,8 @@ You can configure (or override) the following Cloudflare OWASP Core Ruleset sett
 
 Once you have [deployed the Cloudflare OWASP Core Ruleset](#deploy-in-the-dashboard), do the following to configure it in the dashboard:
 
-* [  New dashboard ](#tab-panel-10061)
-* [ Old dashboard ](#tab-panel-10062)
+* [  New dashboard ](#tab-panel-11238)
+* [ Old dashboard ](#tab-panel-11239)
 
 1. In the Cloudflare dashboard, go to the **Security rules** page.  
 [ Go to **Security rules** ](https://dash.cloudflare.com/?to=/:account/:zone/security/security-rules)
@@ -104,8 +104,8 @@ Setting the rule status for specific tags affects all current and future rules w
 
 Once you have [deployed the Cloudflare OWASP Core Ruleset](#deploy-in-the-dashboard), do the following to configure rules with specific tags in the dashboard:
 
-* [  New dashboard ](#tab-panel-10065)
-* [ Old dashboard ](#tab-panel-10066)
+* [  New dashboard ](#tab-panel-11242)
+* [ Old dashboard ](#tab-panel-11243)
 
 1. In the Cloudflare dashboard, go to the **Security rules** page.  
 [ Go to **Security rules** ](https://dash.cloudflare.com/?to=/:account/:zone/security/security-rules)
@@ -147,8 +147,8 @@ You can configure (or override) the following setting in the dashboard for the s
 
 Once you have [deployed the Cloudflare OWASP Core Ruleset](#deploy-in-the-dashboard), do the following to configure individual ruleset rules in the dashboard:
 
-* [  New dashboard ](#tab-panel-10063)
-* [ Old dashboard ](#tab-panel-10064)
+* [  New dashboard ](#tab-panel-11240)
+* [ Old dashboard ](#tab-panel-11241)
 
 1. In the Cloudflare dashboard, go to the **Security rules** page.  
 [ Go to **Security rules** ](https://dash.cloudflare.com/?to=/:account/:zone/security/security-rules)
@@ -175,5 +175,6 @@ To configure multiple rules with the same value, select the checkboxes for all t
 3. Select **Next**, and then select **Save**.
 
 ```json
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/waf/managed-rules/reference/owasp-core-ruleset/configure-dashboard/#page","headline":"Configure the OWASP ruleset in the dashboard · Cloudflare Web Application Firewall (WAF) docs","description":"Configure the OWASP Core Ruleset in the dashboard.","url":"https://developers.cloudflare.com/waf/managed-rules/reference/owasp-core-ruleset/configure-dashboard/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/waf/","name":"WAF"}},{"@type":"ListItem","position":3,"item":{"@id":"/waf/managed-rules/","name":"Managed Rules"}},{"@type":"ListItem","position":4,"item":{"@id":"/waf/managed-rules/reference/","name":"Rulesets reference"}},{"@type":"ListItem","position":5,"item":{"@id":"/waf/managed-rules/reference/owasp-core-ruleset/","name":"Cloudflare OWASP Core Ruleset"}},{"@type":"ListItem","position":6,"item":{"@id":"/waf/managed-rules/reference/owasp-core-ruleset/configure-dashboard/","name":"Configure in the dashboard"}}]}
 ```

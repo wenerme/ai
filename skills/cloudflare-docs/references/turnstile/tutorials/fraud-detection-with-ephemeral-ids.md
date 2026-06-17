@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 # Fraud detection with Ephemeral IDs
 
-**Last reviewed:**  4 months ago 
+**Last reviewed:**  5 months ago 
 
 [Ephemeral IDs](https://developers.cloudflare.com/turnstile/additional-configuration/ephemeral-id/) let you detect fraud patterns that evade traditional IP-based detection. This tutorial will show you how to log Ephemeral IDs, detect suspicious patterns, and block bad actors.
 
@@ -392,5 +392,6 @@ Ephemeral IDs are privacy-preserving. They are scoped to your account, short-liv
 * [Integrate Turnstile, WAF, and Bot Management](https://developers.cloudflare.com/turnstile/tutorials/integrating-turnstile-waf-and-bot-management/)
 
 ```json
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/turnstile/tutorials/fraud-detection-with-ephemeral-ids/#page","headline":"Fraud detection with Ephemeral IDs · Cloudflare Turnstile docs","description":"Learn how to implement fraud detection using Turnstile's Ephemeral IDs to identify and block bad actors who rotate IP addresses.","url":"https://developers.cloudflare.com/turnstile/tutorials/fraud-detection-with-ephemeral-ids/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-05-05","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["JavaScript","Node.js","SQL","Account takeover"]}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/turnstile/","name":"Turnstile"}},{"@type":"ListItem","position":3,"item":{"@id":"/turnstile/tutorials/","name":"Tutorials"}},{"@type":"ListItem","position":4,"item":{"@id":"/turnstile/tutorials/fraud-detection-with-ephemeral-ids/","name":"Fraud detection with Ephemeral IDs"}}]}
 ```

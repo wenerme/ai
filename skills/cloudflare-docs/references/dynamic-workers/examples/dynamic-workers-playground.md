@@ -31,8 +31,8 @@ The playground uses [@cloudflare/worker-bundler ↗](https://www.npmjs.com/packa
 
 Pass source files and a `package.json` to `createWorker()`, which resolves dependencies and returns bundled modules ready to load as a Dynamic Worker:
 
-* [  JavaScript ](#tab-panel-6316)
-* [  TypeScript ](#tab-panel-6317)
+* [  JavaScript ](#tab-panel-8421)
+* [  TypeScript ](#tab-panel-8422)
 
 JavaScript
 
@@ -98,8 +98,8 @@ const { mainModule, modules, warnings } = await createWorker({
 
 `env.LOADER.load()` creates a new Dynamic Worker on every call. To avoid re-bundling unchanged code, use `env.LOADER.get(id, callback)` instead. The runtime returns an existing Worker on a cache hit, or calls your callback to build one on a miss:
 
-* [  JavaScript ](#tab-panel-6318)
-* [  TypeScript ](#tab-panel-6319)
+* [  JavaScript ](#tab-panel-8423)
+* [  TypeScript ](#tab-panel-8424)
 
 JavaScript
 
@@ -179,8 +179,8 @@ When you run code in the playground, console output from the Dynamic Worker stre
 
 To wire this up, include the Tail Worker in the `tails` array when creating the Dynamic Worker:
 
-* [  JavaScript ](#tab-panel-6314)
-* [  TypeScript ](#tab-panel-6315)
+* [  JavaScript ](#tab-panel-8419)
+* [  TypeScript ](#tab-panel-8420)
 
 JavaScript
 
@@ -238,5 +238,6 @@ npm run dev
 ```
 
 ```json
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/dynamic-workers/examples/dynamic-workers-playground/#page","headline":"Dynamic Workers Playground · Cloudflare Dynamic Workers docs","description":"Bundle, execute, and observe Dynamic Workers with real-time logs and timing.","url":"https://developers.cloudflare.com/dynamic-workers/examples/dynamic-workers-playground/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-05-05","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["JavaScript","TypeScript","Logging"]}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/dynamic-workers/","name":"Dynamic Workers"}},{"@type":"ListItem","position":3,"item":{"@id":"/dynamic-workers/examples/","name":"Examples"}},{"@type":"ListItem","position":4,"item":{"@id":"/dynamic-workers/examples/dynamic-workers-playground/","name":"Dynamic Workers Playground"}}]}
 ```

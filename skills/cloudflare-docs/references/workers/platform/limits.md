@@ -34,7 +34,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 Need a higher limit?
 
-To request an adjustment to a limit, complete the [Limit Increase Request Form ↗](https://forms.gle/ukpeZVLWLnKeixDu7). If the limit can be increased, Cloudflare will contact you with next steps.
+To request an adjustment to a limit, complete the [Limit Increase Request Form ↗](https://forms.gle/eX6pXvit1wBv77Yw5). If the limit can be increased, Cloudflare will contact you with next steps.
 
 ---
 
@@ -89,8 +89,8 @@ To resolve a CPU time limit error:
 
 On the Workers Paid plan, you can increase the maximum CPU time from the default 30 seconds to 5 minutes (300,000 ms).
 
-* [  wrangler.jsonc ](#tab-panel-11181)
-* [  wrangler.toml ](#tab-panel-11182)
+* [  wrangler.jsonc ](#tab-panel-11896)
+* [  wrangler.toml ](#tab-panel-11897)
 
 JSONC
 
@@ -237,8 +237,8 @@ Once response headers arrive for a connection, it no longer counts toward the si
 
 If you use `fetch()` but do not need the response body, calling `response.body.cancel()` is still good practice to free memory:
 
-* [  JavaScript ](#tab-panel-11183)
-* [  TypeScript ](#tab-panel-11184)
+* [  JavaScript ](#tab-panel-11898)
+* [  TypeScript ](#tab-panel-11899)
 
 src/index.js
 
@@ -355,7 +355,7 @@ To reduce startup time, avoid expensive work in global scope. Move initializatio
 
 Need a higher limit?
 
-To request an adjustment to a limit, complete the [Limit Increase Request Form ↗](https://forms.gle/ukpeZVLWLnKeixDu7). If the limit can be increased, Cloudflare will contact you with next steps.
+To request an adjustment to a limit, complete the [Limit Increase Request Form ↗](https://forms.gle/eX6pXvit1wBv77Yw5). If the limit can be increased, Cloudflare will contact you with next steps.
 
 ---
 
@@ -486,5 +486,6 @@ The following table summarizes the wall time limits for different types of Worke
 * [Workers errors reference](https://developers.cloudflare.com/workers/observability/errors/)
 
 ```json
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/platform/limits/#page","headline":"Limits · Cloudflare Workers docs","description":"Cloudflare Workers plan and platform limits.","url":"https://developers.cloudflare.com/workers/platform/limits/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-06-03","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/workers/","name":"Workers"}},{"@type":"ListItem","position":3,"item":{"@id":"/workers/platform/","name":"Platform"}},{"@type":"ListItem","position":4,"item":{"@id":"/workers/platform/limits/","name":"Limits"}}]}
 ```

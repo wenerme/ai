@@ -32,6 +32,11 @@ After setup, you can monitor origin performance and cache effectiveness through 
 
 Pro, Business, and Enterprise customers have access to [Health Checks](https://developers.cloudflare.com/smart-shield/configuration/health-checks/) for monitoring origin availability across all packages.
 
+* [ Enterprise ](#tab-panel-10538)
+* [ Free / Pro / Business ](#tab-panel-10539)
+
+Enterprise customers have access to all Smart Shield packages, including Smart Shield Advanced.
+
 ### Smart Shield
 
 The base package for reducing origin load through caching and connection optimization.
@@ -50,13 +55,27 @@ The full package with additional caching customization through regional and pers
 
 * Includes [Smart Tiered Cache](https://developers.cloudflare.com/smart-shield/configuration/smart-tiered-cache/), [Connection Reuse](https://developers.cloudflare.com/smart-shield/concepts/connection-reuse/), [Argo Smart Routing](https://developers.cloudflare.com/smart-shield/configuration/argo/), [Regional Tiered Cache](https://developers.cloudflare.com/smart-shield/configuration/regional-tiered-cache/), and [Cache Reserve](https://developers.cloudflare.com/smart-shield/configuration/cache-reserve/).
 
-Regional Tiered Cache for Enterprise
-
-Enterprise customers have access to [Regional Tiered Cache](https://developers.cloudflare.com/smart-shield/configuration/regional-tiered-cache/) as part of their plan, regardless of which Smart Shield package they use. Free, Pro, and Business plans receive Regional Tiered Cache through Smart Shield Advanced.
-
-Dedicated CDN Egress IPs
+Enterprise customers have access to [Regional Tiered Cache](https://developers.cloudflare.com/smart-shield/configuration/regional-tiered-cache/) as part of their plan, regardless of which Smart Shield package they use.
 
 Enterprise customers also have the option to configure [Dedicated CDN Egress IPs](https://developers.cloudflare.com/smart-shield/configuration/dedicated-egress-ips/), allowing you to increase origin security by only allowing traffic from a small list of IP addresses. If you are interested, reach out to your account team.
+
+Free, Pro, and Business customers can purchase Smart Shield and Smart Shield + Argo packages.
+
+### Smart Shield
+
+The base package for reducing origin load through caching and connection optimization.
+
+* Includes [Smart Tiered Cache](https://developers.cloudflare.com/smart-shield/configuration/smart-tiered-cache/) and [Connection Reuse](https://developers.cloudflare.com/smart-shield/concepts/connection-reuse/).
+
+### Smart Shield + Argo
+
+Adds network path optimization on top of the base package. Use when visitors are geographically distant from the origin server.
+
+* Includes [Smart Tiered Cache](https://developers.cloudflare.com/smart-shield/configuration/smart-tiered-cache/), [Connection Reuse](https://developers.cloudflare.com/smart-shield/concepts/connection-reuse/), and [Argo Smart Routing](https://developers.cloudflare.com/smart-shield/configuration/argo/).
+
+### Smart Shield Advanced
+
+Smart Shield Advanced is not currently available for Free, Pro, and Business customers. If you are interested in Smart Shield Advanced features such as [Regional Tiered Cache](https://developers.cloudflare.com/smart-shield/configuration/regional-tiered-cache/) and [Cache Reserve](https://developers.cloudflare.com/smart-shield/configuration/cache-reserve/), contact our [Enterprise Sales team ↗](https://www.cloudflare.com/resource/contact-enterprise-sales/).
 
 ## Further reading
 
@@ -64,5 +83,6 @@ Enterprise customers also have the option to configure [Dedicated CDN Egress IPs
 * [ Connection reuse ](https://developers.cloudflare.com/smart-shield/concepts/connection-reuse/)
 
 ```json
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/smart-shield/get-started/#page","headline":"Get started · Cloudflare Smart Shield docs","description":"Enable Smart Shield and configure origin protection features for your domain.","url":"https://developers.cloudflare.com/smart-shield/get-started/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-06-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/smart-shield/","name":"Smart Shield"}},{"@type":"ListItem","position":3,"item":{"@id":"/smart-shield/get-started/","name":"Get started"}}]}
 ```

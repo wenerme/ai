@@ -28,8 +28,8 @@ BART is a transformer encoder-encoder (seq2seq) model with a bidirectional (BERT
 
 ## Usage
 
-* [  TypeScript ](#tab-panel-4568)
-* [  curl ](#tab-panel-4569)
+* [  TypeScript ](#tab-panel-4729)
+* [  curl ](#tab-panel-4730)
 
 ```
 
@@ -82,8 +82,8 @@ curl https://api.cloudflare.com/client/v4/accounts/{cf_account_id}/ai/run/@cf/fa
 
 ## Parameters
 
-* [ Input ](#tab-panel-4570)
-* [ Output ](#tab-panel-4571)
+* [ Input ](#tab-panel-4731)
+* [ Output ](#tab-panel-4732)
 
 input\_text
 
@@ -104,5 +104,6 @@ Input [ ](https://developers.cloudflare.com/workers-ai/models/bart-large-cnn/sch
 Output [ ](https://developers.cloudflare.com/workers-ai/models/bart-large-cnn/schema-output.json "Open") [ ](https://developers.cloudflare.com/workers-ai/models/bart-large-cnn/schema-output.json "Download") 
 
 ```json
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers-ai/models/bart-large-cnn/#page","headline":"bart-large-cnn (Meta) · Cloudflare AI docs · Cloudflare Workers AI docs","description":"BART is a transformer encoder-encoder (seq2seq) model with a bidirectional (BERT-like) encoder and an autoregressive (GPT-like) decoder. You can use this model for text summarization.","url":"https://developers.cloudflare.com/workers-ai/models/bart-large-cnn/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/workers-ai/","name":"Workers AI"}},{"@type":"ListItem","position":3,"item":{"@id":"/workers-ai/models/","name":"Models"}}]}
 ```

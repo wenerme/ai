@@ -61,5 +61,6 @@ Stream accepts video uploads at any frame rate. During encoding, Stream re-encod
 For variable frame rate content, Stream drops extra frames. For example, if there is more than one frame within a 1/30 second window, Stream drops the extra frames within that period.
 
 ```json
+{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/stream/uploading-videos/#page","headline":"Upload videos · Cloudflare Stream docs","description":"Review upload methods, supported formats, and recommendations for Cloudflare Stream.","url":"https://developers.cloudflare.com/stream/uploading-videos/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/stream/","name":"Stream"}},{"@type":"ListItem","position":3,"item":{"@id":"/stream/uploading-videos/","name":"Upload videos"}}]}
 ```

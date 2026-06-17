@@ -114,8 +114,8 @@ You will use the namespace name, `my-agent`, in your Worker binding.
 
 Add an `agent_memory` binding to your Wrangler configuration. If you use the Agents SDK, also register your agent Durable Object.
 
-* [  wrangler.jsonc ](#tab-panel-4550)
-* [  wrangler.toml ](#tab-panel-4551)
+* [  wrangler.jsonc ](#tab-panel-5117)
+* [  wrangler.toml ](#tab-panel-5118)
 
 JSONC
 
@@ -131,7 +131,7 @@ JSONC
 
   // Set this to today's date
 
-  "compatibility_date": "2026-06-03",
+  "compatibility_date": "2026-06-17",
 
   "compatibility_flags": [
 
@@ -204,7 +204,7 @@ main = "src/server.ts"
 
 # Set this to today's date
 
-compatibility_date = "2026-06-03"
+compatibility_date = "2026-06-17"
 
 compatibility_flags = ["nodejs_compat"]
 
@@ -261,8 +261,8 @@ With the Agents SDK [Session API](https://developers.cloudflare.com/agents/runti
 
 Create `src/server.ts` and add the recall setup:
 
-* [  JavaScript ](#tab-panel-4558)
-* [  TypeScript ](#tab-panel-4559)
+* [  JavaScript ](#tab-panel-5125)
+* [  TypeScript ](#tab-panel-5126)
 
 src/server.js
 
@@ -477,8 +477,8 @@ Next, give your agent a way to add durable memories. In a chat agent, the usual 
 
 Change the `agents` import and add the AI SDK imports. Keep the `Session` import from step 4.
 
-* [  JavaScript ](#tab-panel-4554)
-* [  TypeScript ](#tab-panel-4555)
+* [  JavaScript ](#tab-panel-5121)
+* [  TypeScript ](#tab-panel-5122)
 
 src/server.js
 
@@ -511,8 +511,8 @@ import { createWorkersAI } from "workers-ai-provider";
 
 Add the ingestion delay near the top of the file, below the imports:
 
-* [  JavaScript ](#tab-panel-4552)
-* [  TypeScript ](#tab-panel-4553)
+* [  JavaScript ](#tab-panel-5119)
+* [  TypeScript ](#tab-panel-5120)
 
 src/server.js
 
@@ -534,8 +534,8 @@ const MEMORY_INGEST_DELAY_SECONDS = 10;
 
 Then update `ChatAgent` with the following shape. The comment marks where to keep the Session setup from step 4.
 
-* [  JavaScript ](#tab-panel-4560)
-* [  TypeScript ](#tab-panel-4561)
+* [  JavaScript ](#tab-panel-5127)
+* [  TypeScript ](#tab-panel-5128)
 
 src/server.js
 
@@ -901,8 +901,8 @@ export class ChatAgent extends Agent<Env, ChatAgentState> {
 
 Replace the default export with a small test endpoint. Each `conversationId` maps to a separate Agent instance with its own Session history.
 
-* [  JavaScript ](#tab-panel-4556)
-* [  TypeScript ](#tab-panel-4557)
+* [  JavaScript ](#tab-panel-5123)
+* [  TypeScript ](#tab-panel-5124)
 
 src/server.js
 
@@ -1082,5 +1082,6 @@ The model should call `search_context`, receive recalled memory from Agent Memor
 [ Workers API ](https://developers.cloudflare.com/agent-memory/api/workers-api/) Use \`ingest()\`, \`remember()\`, \`recall()\`, and \`getSummary()\` from Workers. 
 
 ```json
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/agent-memory/get-started/#page","headline":"Get started · Cloudflare Agent Memory docs","description":"Add durable memory recall and ingestion to an agent.","url":"https://developers.cloudflare.com/agent-memory/get-started/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-06-03","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/agent-memory/","name":"Agent Memory"}},{"@type":"ListItem","position":3,"item":{"@id":"/agent-memory/get-started/","name":"Get started"}}]}
 ```

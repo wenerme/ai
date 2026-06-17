@@ -31,8 +31,8 @@ For reply handling, include a stable identifier in the reply address, message me
 
 Implement `onEmail()` to handle inbound email, and use `sendEmail()` or `replyToEmail()` when the agent needs to send a response.
 
-* [  JavaScript ](#tab-panel-4716)
-* [  TypeScript ](#tab-panel-4717)
+* [  JavaScript ](#tab-panel-5283)
+* [  TypeScript ](#tab-panel-5284)
 
 JavaScript
 
@@ -170,8 +170,8 @@ export default {
 
 Add a `send_email` binding for outbound email, then configure an Email Service routing rule to send inbound mail to your Worker.
 
-* [  wrangler.jsonc ](#tab-panel-4714)
-* [  wrangler.toml ](#tab-panel-4715)
+* [  wrangler.jsonc ](#tab-panel-5281)
+* [  wrangler.toml ](#tab-panel-5282)
 
 JSONC
 
@@ -221,10 +221,11 @@ For a complete walkthrough, including domain setup, bindings, inbound routing, a
 
 ## Related resources
 
-[ Email Service ](https://developers.cloudflare.com/email-routing/) Route, receive, and send email with Cloudflare Email Service. 
+[ Email Service ](https://developers.cloudflare.com/email-service/) Route, receive, and send email with Cloudflare Email Service. 
 
 [ Send email from Workers ](https://developers.cloudflare.com/email-service/api/send-emails/workers-api/) Use the Workers API to send outbound email. 
 
 ```json
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/agents/communication-channels/email/#page","headline":"Email · Cloudflare Agents docs","description":"Connect agents to email so they can send outbound messages, process inbound mail, and handle follow-up replies.","url":"https://developers.cloudflare.com/agents/communication-channels/email/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-06-09","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/agents/","name":"Agents"}},{"@type":"ListItem","position":3,"item":{"@id":"/agents/communication-channels/","name":"Communication channels"}},{"@type":"ListItem","position":4,"item":{"@id":"/agents/communication-channels/email/","name":"Email"}}]}
 ```

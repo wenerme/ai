@@ -36,10 +36,10 @@ Try out this model with Workers AI LLM Playground. It does not require any setup
 
 ## Usage
 
-* [  Worker (Streaming) ](#tab-panel-4874)
-* [  TypeScript ](#tab-panel-4875)
-* [  Python ](#tab-panel-4876)
-* [  curl ](#tab-panel-4877)
+* [  Worker (Streaming) ](#tab-panel-5055)
+* [  TypeScript ](#tab-panel-5056)
+* [  Python ](#tab-panel-5057)
+* [  curl ](#tab-panel-5058)
 
 TypeScript
 
@@ -198,8 +198,8 @@ Workers AI also supports OpenAI compatible API endpoints for `/v1/chat/completio
 
 Synchronous — Send a request and receive a complete response 
 
-* [ Input ](#tab-panel-4878)
-* [ Output ](#tab-panel-4879)
+* [ Input ](#tab-panel-5059)
+* [ Output ](#tab-panel-5060)
 
 prompt
 
@@ -283,8 +283,8 @@ prompt\_logprobs{}
 
 Streaming — Send a request with \`stream: true\` and receive server-sent events 
 
-* [ Input ](#tab-panel-4880)
-* [ Output ](#tab-panel-4881)
+* [ Input ](#tab-panel-5061)
+* [ Output ](#tab-panel-5062)
 
 prompt
 
@@ -352,8 +352,8 @@ format
 
 Batch — Send multiple requests in a single API call 
 
-* [ Input ](#tab-panel-4882)
-* [ Output ](#tab-panel-4883)
+* [ Input ](#tab-panel-5063)
+* [ Output ](#tab-panel-5064)
 
 ▶requests\[\]
 
@@ -402,5 +402,6 @@ prompt\_logprobs{}
  Batch Output [ ](https://developers.cloudflare.com/workers-ai/models/qwen3-30b-a3b-fp8/batch-output.json "Open") [ ](https://developers.cloudflare.com/workers-ai/models/qwen3-30b-a3b-fp8/batch-output.json "Download") 
 
 ```json
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers-ai/models/qwen3-30b-a3b-fp8/#page","headline":"qwen3-30b-a3b-fp8 (Qwen) · Cloudflare AI docs · Cloudflare Workers AI docs","description":"Qwen3 is the latest generation of large language models in Qwen series, offering a comprehensive suite of dense and mixture-of-experts (MoE) models. Built upon extensive training, Qwen3 delivers groundbreaking advancements in reasoning, instruction-following, agent capabilities, and multilingual support.","url":"https://developers.cloudflare.com/workers-ai/models/qwen3-30b-a3b-fp8/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/workers-ai/","name":"Workers AI"}},{"@type":"ListItem","position":3,"item":{"@id":"/workers-ai/models/","name":"Models"}}]}
 ```

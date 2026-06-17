@@ -94,6 +94,20 @@ allow_appshots = false
 
 Codex treats only `allow_appshots = false` as disabling Appshots. If the key is omitted, Appshots remain unconstrained by requirements and use normal product availability checks. App-server clients that read effective requirements through `configRequirements/read` receive the same restriction as `allowAppshots`; an omitted or `null` `allowAppshots` value doesn't disable Appshots.
 
+### Disable device remote control
+
+To disable [device remote control](https://developers.openai.com/codex/remote-connections#pick-up-work-from-another-device)
+for managed users, set the top-level `allow_remote_control` requirement:
+
+```toml
+allow_remote_control = false
+```
+
+Codex treats only `allow_remote_control = false` as disabling device remote
+control. If the key is omitted, device remote control remains unconstrained by
+requirements and uses normal product availability checks. This requirement does
+not disable SSH remote connections.
+
 ### Control available permission profiles
 
 Use `allowed_permission_profiles` to control which built-in and custom

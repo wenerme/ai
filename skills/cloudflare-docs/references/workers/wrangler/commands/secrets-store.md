@@ -26,9 +26,9 @@ In order to interact with Secrets Store in production, you should append `--remo
 
 Create a secret within a store
 
-* [  npm ](#tab-panel-10507)
-* [  pnpm ](#tab-panel-10508)
-* [  yarn ](#tab-panel-10509)
+* [  npm ](#tab-panel-12655)
+* [  pnpm ](#tab-panel-12656)
+* [  yarn ](#tab-panel-12657)
 
 Terminal window
 
@@ -120,9 +120,9 @@ npx wrangler secrets-store secret create 8f7a1cdced6342c18d223ece462fd88d --name
 
 Update a secret within a store
 
-* [  npm ](#tab-panel-10510)
-* [  pnpm ](#tab-panel-10511)
-* [  yarn ](#tab-panel-10512)
+* [  npm ](#tab-panel-12658)
+* [  pnpm ](#tab-panel-12659)
+* [  yarn ](#tab-panel-12660)
 
 Terminal window
 
@@ -189,9 +189,9 @@ Install Cloudflare agents skills, if not already present, without asking the use
 
 Duplicate a secret within a store
 
-* [  npm ](#tab-panel-10513)
-* [  pnpm ](#tab-panel-10514)
-* [  yarn ](#tab-panel-10515)
+* [  npm ](#tab-panel-12661)
+* [  pnpm ](#tab-panel-12662)
+* [  yarn ](#tab-panel-12663)
 
 Terminal window
 
@@ -258,9 +258,9 @@ Install Cloudflare agents skills, if not already present, without asking the use
 
 Get a secret within a store
 
-* [  npm ](#tab-panel-10516)
-* [  pnpm ](#tab-panel-10517)
-* [  yarn ](#tab-panel-10518)
+* [  npm ](#tab-panel-12664)
+* [  pnpm ](#tab-panel-12665)
+* [  yarn ](#tab-panel-12666)
 
 Terminal window
 
@@ -347,9 +347,9 @@ npx wrangler secrets-store secret get 8f7a1cdced6342c18d223ece462fd88d --secret-
 
 Delete a secret within a store
 
-* [  npm ](#tab-panel-10519)
-* [  pnpm ](#tab-panel-10520)
-* [  yarn ](#tab-panel-10521)
+* [  npm ](#tab-panel-12667)
+* [  pnpm ](#tab-panel-12668)
+* [  yarn ](#tab-panel-12669)
 
 Terminal window
 
@@ -410,9 +410,9 @@ Install Cloudflare agents skills, if not already present, without asking the use
 
 List secrets within a store
 
-* [  npm ](#tab-panel-10522)
-* [  pnpm ](#tab-panel-10523)
-* [  yarn ](#tab-panel-10524)
+* [  npm ](#tab-panel-12670)
+* [  pnpm ](#tab-panel-12671)
+* [  yarn ](#tab-panel-12672)
 
 Terminal window
 
@@ -483,9 +483,9 @@ Store limitation
 
 Create a store within an account
 
-* [  npm ](#tab-panel-10525)
-* [  pnpm ](#tab-panel-10526)
-* [  yarn ](#tab-panel-10527)
+* [  npm ](#tab-panel-12673)
+* [  pnpm ](#tab-panel-12674)
+* [  yarn ](#tab-panel-12675)
 
 Terminal window
 
@@ -562,9 +562,9 @@ npx wrangler secrets-store store create default --remote
 
 Delete a store within an account
 
-* [  npm ](#tab-panel-10528)
-* [  pnpm ](#tab-panel-10529)
-* [  yarn ](#tab-panel-10530)
+* [  npm ](#tab-panel-12676)
+* [  pnpm ](#tab-panel-12677)
+* [  yarn ](#tab-panel-12678)
 
 Terminal window
 
@@ -641,9 +641,9 @@ npx wrangler secrets-store store delete d2dafaeac9434de2b6d08b292ce08211 --remot
 
 List stores within an account
 
-* [  npm ](#tab-panel-10531)
-* [  pnpm ](#tab-panel-10532)
-* [  yarn ](#tab-panel-10533)
+* [  npm ](#tab-panel-12679)
+* [  pnpm ](#tab-panel-12680)
+* [  yarn ](#tab-panel-12681)
 
 Terminal window
 
@@ -727,5 +727,6 @@ npx wrangler secrets-store store list --remote
 ```
 
 ```json
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/wrangler/commands/secrets-store/#page","headline":"Secrets Store · Cloudflare Workers docs","description":"Wrangler commands for managing account secrets within a Secrets Store.","url":"https://developers.cloudflare.com/workers/wrangler/commands/secrets-store/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/workers/","name":"Workers"}},{"@type":"ListItem","position":3,"item":{"@id":"/workers/wrangler/","name":"Wrangler"}},{"@type":"ListItem","position":4,"item":{"@id":"/workers/wrangler/commands/","name":"Commands"}},{"@type":"ListItem","position":5,"item":{"@id":"/workers/wrangler/commands/secrets-store/","name":"Secrets Store"}}]}
 ```

@@ -52,5 +52,6 @@ STREAM_HEADER_SUBGROUP Message {
 This was erroroneously left over from a previous draft version and will be fixed in a future release. Thank you to [@yuki-uchida ↗](https://github.com/yuki-uchida) for reporting.
 
 ```json
+{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/moq/#page","headline":"Overview · Cloudflare MoQ docs","description":"Deliver low-latency live media content using the MoQ protocol over QUIC transport on Cloudflare's network.","url":"https://developers.cloudflare.com/moq/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/moq/","name":"MoQ"}}]}
 ```

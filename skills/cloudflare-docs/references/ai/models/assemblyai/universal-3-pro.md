@@ -2017,5 +2017,6 @@ Input [ ](https://developers.cloudflare.com/ai/models/assemblyai/universal-3-pro
 Output [ ](https://developers.cloudflare.com/ai/models/assemblyai/universal-3-pro/schema-output.json "Open") [ ](https://developers.cloudflare.com/ai/models/assemblyai/universal-3-pro/schema-output.json "Download") 
 
 ```json
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai/models/assemblyai/universal-3-pro/#page","headline":"AssemblyAI Universal-3 Pro (AssemblyAI) · Cloudflare AI docs · Cloudflare AI docs","description":"AssemblyAI's Universal 3 Pro speech recognition model for high-accuracy transcription.","url":"https://developers.cloudflare.com/ai/models/assemblyai/universal-3-pro/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/ai/","name":"AI"}},{"@type":"ListItem","position":3,"item":{"@id":"/ai/models/","name":"Models"}}]}
 ```

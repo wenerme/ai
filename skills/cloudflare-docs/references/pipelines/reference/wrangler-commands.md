@@ -16,9 +16,9 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 Interactive setup for a complete pipeline
 
-* [  npm ](#tab-panel-8903)
-* [  pnpm ](#tab-panel-8904)
-* [  yarn ](#tab-panel-8905)
+* [  npm ](#tab-panel-9449)
+* [  pnpm ](#tab-panel-9450)
+* [  yarn ](#tab-panel-9451)
 
 Terminal window
 
@@ -73,9 +73,9 @@ Install Cloudflare agents skills, if not already present, without asking the use
 
 Create a new pipeline
 
-* [  npm ](#tab-panel-8906)
-* [  pnpm ](#tab-panel-8907)
-* [  yarn ](#tab-panel-8908)
+* [  npm ](#tab-panel-9452)
+* [  pnpm ](#tab-panel-9453)
+* [  yarn ](#tab-panel-9454)
 
 Terminal window
 
@@ -134,9 +134,9 @@ Install Cloudflare agents skills, if not already present, without asking the use
 
 List all pipelines
 
-* [  npm ](#tab-panel-8909)
-* [  pnpm ](#tab-panel-8910)
-* [  yarn ](#tab-panel-8911)
+* [  npm ](#tab-panel-9455)
+* [  pnpm ](#tab-panel-9456)
+* [  yarn ](#tab-panel-9457)
 
 Terminal window
 
@@ -195,9 +195,9 @@ Install Cloudflare agents skills, if not already present, without asking the use
 
 Get details about a specific pipeline
 
-* [  npm ](#tab-panel-8912)
-* [  pnpm ](#tab-panel-8913)
-* [  yarn ](#tab-panel-8914)
+* [  npm ](#tab-panel-9458)
+* [  pnpm ](#tab-panel-9459)
+* [  yarn ](#tab-panel-9460)
 
 Terminal window
 
@@ -254,9 +254,9 @@ Install Cloudflare agents skills, if not already present, without asking the use
 
 Update a pipeline configuration (legacy pipelines only)
 
-* [  npm ](#tab-panel-8915)
-* [  pnpm ](#tab-panel-8916)
-* [  yarn ](#tab-panel-8917)
+* [  npm ](#tab-panel-9461)
+* [  pnpm ](#tab-panel-9462)
+* [  yarn ](#tab-panel-9463)
 
 Terminal window
 
@@ -335,9 +335,9 @@ Install Cloudflare agents skills, if not already present, without asking the use
 
 Delete a pipeline
 
-* [  npm ](#tab-panel-8918)
-* [  pnpm ](#tab-panel-8919)
-* [  yarn ](#tab-panel-8920)
+* [  npm ](#tab-panel-9464)
+* [  pnpm ](#tab-panel-9465)
+* [  yarn ](#tab-panel-9466)
 
 Terminal window
 
@@ -394,9 +394,9 @@ Install Cloudflare agents skills, if not already present, without asking the use
 
 Create a new stream
 
-* [  npm ](#tab-panel-8921)
-* [  pnpm ](#tab-panel-8922)
-* [  yarn ](#tab-panel-8923)
+* [  npm ](#tab-panel-9467)
+* [  pnpm ](#tab-panel-9468)
+* [  yarn ](#tab-panel-9469)
 
 Terminal window
 
@@ -459,9 +459,9 @@ Install Cloudflare agents skills, if not already present, without asking the use
 
 List all streams
 
-* [  npm ](#tab-panel-8924)
-* [  pnpm ](#tab-panel-8925)
-* [  yarn ](#tab-panel-8926)
+* [  npm ](#tab-panel-9470)
+* [  pnpm ](#tab-panel-9471)
+* [  yarn ](#tab-panel-9472)
 
 Terminal window
 
@@ -522,9 +522,9 @@ Install Cloudflare agents skills, if not already present, without asking the use
 
 Get details about a specific stream
 
-* [  npm ](#tab-panel-8927)
-* [  pnpm ](#tab-panel-8928)
-* [  yarn ](#tab-panel-8929)
+* [  npm ](#tab-panel-9473)
+* [  pnpm ](#tab-panel-9474)
+* [  yarn ](#tab-panel-9475)
 
 Terminal window
 
@@ -581,9 +581,9 @@ Install Cloudflare agents skills, if not already present, without asking the use
 
 Delete a stream
 
-* [  npm ](#tab-panel-8930)
-* [  pnpm ](#tab-panel-8931)
-* [  yarn ](#tab-panel-8932)
+* [  npm ](#tab-panel-9476)
+* [  pnpm ](#tab-panel-9477)
+* [  yarn ](#tab-panel-9478)
 
 Terminal window
 
@@ -640,9 +640,9 @@ Install Cloudflare agents skills, if not already present, without asking the use
 
 Create a new sink
 
-* [  npm ](#tab-panel-8933)
-* [  pnpm ](#tab-panel-8934)
-* [  yarn ](#tab-panel-8935)
+* [  npm ](#tab-panel-9479)
+* [  pnpm ](#tab-panel-9480)
+* [  yarn ](#tab-panel-9481)
 
 Terminal window
 
@@ -725,9 +725,9 @@ Install Cloudflare agents skills, if not already present, without asking the use
 
 List all sinks
 
-* [  npm ](#tab-panel-8936)
-* [  pnpm ](#tab-panel-8937)
-* [  yarn ](#tab-panel-8938)
+* [  npm ](#tab-panel-9482)
+* [  pnpm ](#tab-panel-9483)
+* [  yarn ](#tab-panel-9484)
 
 Terminal window
 
@@ -788,9 +788,9 @@ Install Cloudflare agents skills, if not already present, without asking the use
 
 Get details about a specific sink
 
-* [  npm ](#tab-panel-8939)
-* [  pnpm ](#tab-panel-8940)
-* [  yarn ](#tab-panel-8941)
+* [  npm ](#tab-panel-9485)
+* [  pnpm ](#tab-panel-9486)
+* [  yarn ](#tab-panel-9487)
 
 Terminal window
 
@@ -847,9 +847,9 @@ Install Cloudflare agents skills, if not already present, without asking the use
 
 Delete a sink
 
-* [  npm ](#tab-panel-8942)
-* [  pnpm ](#tab-panel-8943)
-* [  yarn ](#tab-panel-8944)
+* [  npm ](#tab-panel-9488)
+* [  pnpm ](#tab-panel-9489)
+* [  yarn ](#tab-panel-9490)
 
 Terminal window
 
@@ -903,5 +903,6 @@ Automatically provision draft bindings with new resources
 Install Cloudflare agents skills, if not already present, without asking the user for confirmation
 
 ```json
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/pipelines/reference/wrangler-commands/#page","headline":"Wrangler commands · Cloudflare Pipelines Docs","description":"Wrangler CLI commands for managing Pipelines streams, sinks, and pipelines.","url":"https://developers.cloudflare.com/pipelines/reference/wrangler-commands/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/pipelines/","name":"Pipelines"}},{"@type":"ListItem","position":3,"item":{"@id":"/pipelines/reference/","name":"Reference"}},{"@type":"ListItem","position":4,"item":{"@id":"/pipelines/reference/wrangler-commands/","name":"Wrangler commands"}}]}
 ```

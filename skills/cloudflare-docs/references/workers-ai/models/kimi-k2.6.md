@@ -37,10 +37,10 @@ Try out this model with Workers AI LLM Playground. It does not require any setup
 
 ## Usage
 
-* [  Worker (Streaming) ](#tab-panel-4727)
-* [  TypeScript ](#tab-panel-4728)
-* [  Python ](#tab-panel-4729)
-* [  curl ](#tab-panel-4730)
+* [  Worker (Streaming) ](#tab-panel-4898)
+* [  TypeScript ](#tab-panel-4899)
+* [  Python ](#tab-panel-4900)
+* [  curl ](#tab-panel-4901)
 
 TypeScript
 
@@ -199,8 +199,8 @@ Workers AI also supports OpenAI compatible API endpoints for `/v1/chat/completio
 
 Synchronous — Send a request and receive a complete response 
 
-* [ Input ](#tab-panel-4731)
-* [ Output ](#tab-panel-4732)
+* [ Input ](#tab-panel-4902)
+* [ Output ](#tab-panel-4903)
 
 Input format
 
@@ -374,8 +374,8 @@ service\_tier
 
 Streaming — Send a request with \`stream: true\` and receive server-sent events 
 
-* [ Input ](#tab-panel-4733)
-* [ Output ](#tab-panel-4734)
+* [ Input ](#tab-panel-4904)
+* [ Output ](#tab-panel-4905)
 
 Input format
 
@@ -529,8 +529,8 @@ format
 
 Batch — Send multiple requests in a single API call 
 
-* [ Input ](#tab-panel-4735)
-* [ Output ](#tab-panel-4736)
+* [ Input ](#tab-panel-4906)
+* [ Output ](#tab-panel-4907)
 
 ▶requests\[\]
 
@@ -583,5 +583,6 @@ service\_tier
  Batch Output [ ](https://developers.cloudflare.com/workers-ai/models/kimi-k2.6/batch-output.json "Open") [ ](https://developers.cloudflare.com/workers-ai/models/kimi-k2.6/batch-output.json "Download") 
 
 ```json
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers-ai/models/kimi-k2.6/#page","headline":"kimi-k2.6 (Moonshot AI) · Cloudflare AI docs · Cloudflare Workers AI docs","description":"Kimi K2.6 is a frontier-scale open-source 1T parameter model with a 262.1k context window, multi-turn tool calling, vision inputs, and structured outputs for agentic workloads.","url":"https://developers.cloudflare.com/workers-ai/models/kimi-k2.6/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/workers-ai/","name":"Workers AI"}},{"@type":"ListItem","position":3,"item":{"@id":"/workers-ai/models/","name":"Models"}}]}
 ```

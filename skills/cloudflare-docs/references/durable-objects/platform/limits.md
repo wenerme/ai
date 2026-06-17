@@ -69,7 +69,7 @@ If you wish to downgrade from a Workers Paid plan to a Workers Free plan, you mu
 
 Need a higher limit?
 
-To request an adjustment to a limit, complete the [Limit Increase Request Form ↗](https://forms.gle/ukpeZVLWLnKeixDu7). If the limit can be increased, Cloudflare will contact you with next steps.
+To request an adjustment to a limit, complete the [Limit Increase Request Form ↗](https://forms.gle/eX6pXvit1wBv77Yw5). If the limit can be increased, Cloudflare will contact you with next steps.
 
 ## Frequently Asked Questions
 
@@ -98,8 +98,8 @@ Durable Objects are Worker scripts, and have the same [per invocation CPU limits
 
 By default, the maximum CPU time per Durable Objects invocation (HTTP request, WebSocket message, or Alarm) is set to 30 seconds, but can be increased for all Durable Objects associated with a Durable Object definition by setting `limits.cpu_ms` in your Wrangler configuration:
 
-* [  wrangler.jsonc ](#tab-panel-7726)
-* [  wrangler.toml ](#tab-panel-7727)
+* [  wrangler.jsonc ](#tab-panel-8383)
+* [  wrangler.toml ](#tab-panel-8384)
 
 JSONC
 
@@ -211,5 +211,6 @@ The following table summarizes the wall time limits for different types of Worke
 7. Each incoming HTTP request or WebSocket _message_ resets the remaining available CPU time to 30 seconds. This allows the Durable Object to consume up to 30 seconds of compute after each incoming network request, with each new network request resetting the timer. If you consume more than 30 seconds of compute between incoming network requests, there is a heightened chance that the individual Durable Object is evicted and reset. CPU time per request invocation [can be increased](https://developers.cloudflare.com/durable-objects/platform/limits/#can-i-increase-durable-objects-cpu-limit). [↩](#user-content-fnref-7)
 
 ```json
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/durable-objects/platform/limits/#page","headline":"Limits · Cloudflare Durable Objects docs","description":"Account, storage, CPU, and SQL limits for Durable Objects on Free and Workers Paid plans.","url":"https://developers.cloudflare.com/durable-objects/platform/limits/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-06-01","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/durable-objects/","name":"Durable Objects"}},{"@type":"ListItem","position":3,"item":{"@id":"/durable-objects/platform/","name":"Platform"}},{"@type":"ListItem","position":4,"item":{"@id":"/durable-objects/platform/limits/","name":"Limits"}}]}
 ```

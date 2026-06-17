@@ -20,8 +20,8 @@ All custom methods automatically have full agent context. The framework automati
 
 ## How it works
 
-* [  JavaScript ](#tab-panel-5682)
-* [  TypeScript ](#tab-panel-5683)
+* [  JavaScript ](#tab-panel-6281)
+* [  TypeScript ](#tab-panel-6282)
 
 JavaScript
 
@@ -105,8 +105,8 @@ No configuration is required. The framework automatically:
 
 ## Real-world example
 
-* [  JavaScript ](#tab-panel-5698)
-* [  TypeScript ](#tab-panel-5699)
+* [  JavaScript ](#tab-panel-6297)
+* [  TypeScript ](#tab-panel-6298)
 
 JavaScript
 
@@ -230,8 +230,8 @@ export class MyAgent extends AIChatAgent {
 
 ### The context flow
 
-* [  JavaScript ](#tab-panel-5680)
-* [  TypeScript ](#tab-panel-5681)
+* [  JavaScript ](#tab-panel-6279)
+* [  TypeScript ](#tab-panel-6280)
 
 JavaScript
 
@@ -271,8 +271,8 @@ agent.customMethod();
 
 ### Working with AI SDK tools
 
-* [  JavaScript ](#tab-panel-5692)
-* [  TypeScript ](#tab-panel-5693)
+* [  JavaScript ](#tab-panel-6291)
+* [  TypeScript ](#tab-panel-6292)
 
 JavaScript
 
@@ -358,8 +358,8 @@ export class MyAgent extends AIChatAgent {
 
 ### Calling external libraries
 
-* [  JavaScript ](#tab-panel-5690)
-* [  TypeScript ](#tab-panel-5691)
+* [  JavaScript ](#tab-panel-6289)
+* [  TypeScript ](#tab-panel-6290)
 
 JavaScript
 
@@ -433,8 +433,8 @@ export class MyAgent extends AIChatAgent {
 
 ### Accessing request and connection context
 
-* [  JavaScript ](#tab-panel-5694)
-* [  TypeScript ](#tab-panel-5695)
+* [  JavaScript ](#tab-panel-6293)
+* [  TypeScript ](#tab-panel-6294)
 
 JavaScript
 
@@ -506,8 +506,8 @@ function logRequestInfo() {
 
 Gets the current agent from any context where it is available.
 
-* [  JavaScript ](#tab-panel-5684)
-* [  TypeScript ](#tab-panel-5685)
+* [  JavaScript ](#tab-panel-6283)
+* [  TypeScript ](#tab-panel-6284)
 
 JavaScript
 
@@ -551,8 +551,8 @@ function getCurrentAgent<T extends Agent>(): {
 
 #### Usage:
 
-* [  JavaScript ](#tab-panel-5696)
-* [  TypeScript ](#tab-panel-5697)
+* [  JavaScript ](#tab-panel-6295)
+* [  TypeScript ](#tab-panel-6296)
 
 JavaScript
 
@@ -625,8 +625,8 @@ The context available depends on how the method was invoked:
 1. **Use `this` when possible**: Inside agent methods, prefer `this.name`, `this.state`, etc. over `getCurrentAgent()`.
 2. **Use `getCurrentAgent()` in external functions**: When you need agent context in utility functions or libraries that do not have access to `this`.
 3. **Check for undefined**: The returned values may be `undefined` if called outside an agent context.  
-   * [  JavaScript ](#tab-panel-5688)  
-   * [  TypeScript ](#tab-panel-5689)  
+   * [  JavaScript ](#tab-panel-6287)  
+   * [  TypeScript ](#tab-panel-6288)  
 JavaScript  
 ```  
 const { agent } = getCurrentAgent();  
@@ -644,8 +644,8 @@ if (agent) {
 }  
 ```
 4. **Type the agent**: Pass your agent class as a type parameter for proper typing.  
-   * [  JavaScript ](#tab-panel-5686)  
-   * [  TypeScript ](#tab-panel-5687)  
+   * [  JavaScript ](#tab-panel-6285)  
+   * [  TypeScript ](#tab-panel-6286)  
 JavaScript  
 ```  
 const { agent } = getCurrentAgent();  
@@ -666,5 +666,6 @@ const { agent } = getCurrentAgent<MyAgent>();
 [ State management ](https://developers.cloudflare.com/agents/runtime/lifecycle/state/) Manage and sync agent state. 
 
 ```json
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/agents/runtime/lifecycle/get-current-agent/#page","headline":"getCurrentAgent() · Cloudflare Agents docs","description":"Access the current Agent context from external utility functions using getCurrentAgent() in the Agents SDK.","url":"https://developers.cloudflare.com/agents/runtime/lifecycle/get-current-agent/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-06-03","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/agents/","name":"Agents"}},{"@type":"ListItem","position":3,"item":{"@id":"/agents/runtime/","name":"Runtime"}},{"@type":"ListItem","position":4,"item":{"@id":"/agents/runtime/lifecycle/","name":"Lifecycle"}},{"@type":"ListItem","position":5,"item":{"@id":"/agents/runtime/lifecycle/get-current-agent/","name":"getCurrentAgent()"}}]}
 ```

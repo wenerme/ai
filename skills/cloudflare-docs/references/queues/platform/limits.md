@@ -45,7 +45,7 @@ The following limits apply to both Workers Paid and Workers Free plans with the 
 
 Need a higher limit?
 
-To request an adjustment to a limit, complete the [Limit Increase Request Form ↗](https://forms.gle/ukpeZVLWLnKeixDu7). If the limit can be increased, Cloudflare will contact you with next steps.
+To request an adjustment to a limit, complete the [Limit Increase Request Form ↗](https://forms.gle/eX6pXvit1wBv77Yw5). If the limit can be increased, Cloudflare will contact you with next steps.
 
 ### Increasing Queue Consumer Worker CPU Limits
 
@@ -53,8 +53,8 @@ To request an adjustment to a limit, complete the [Limit Increase Request Form �
 
 By default, the maximum CPU time per consumer Worker invocation is set to 30 seconds, but can be increased by setting `limits.cpu_ms` in your Wrangler configuration:
 
-* [  wrangler.jsonc ](#tab-panel-8931)
-* [  wrangler.toml ](#tab-panel-8932)
+* [  wrangler.jsonc ](#tab-panel-9621)
+* [  wrangler.toml ](#tab-panel-9622)
 
 JSONC
 
@@ -106,5 +106,6 @@ The following table summarizes the wall time limits for different types of Worke
 | [Workflows](https://developers.cloudflare.com/workflows/) (per step)                                | Unlimited       | Each step can run for an unlimited wall time. Individual steps are subject to the configured [CPU time limit](https://developers.cloudflare.com/workers/platform/limits/#cpu-time).                                                                                                  |
 
 ```json
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/queues/platform/limits/#page","headline":"Limits · Cloudflare Queues docs","description":"Cloudflare Queues account limits for message size, throughput, retention, and concurrency.","url":"https://developers.cloudflare.com/queues/platform/limits/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/queues/","name":"Queues"}},{"@type":"ListItem","position":3,"item":{"@id":"/queues/platform/","name":"Platform"}},{"@type":"ListItem","position":4,"item":{"@id":"/queues/platform/limits/","name":"Limits"}}]}
 ```

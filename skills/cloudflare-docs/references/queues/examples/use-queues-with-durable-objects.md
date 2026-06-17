@@ -26,8 +26,8 @@ Prerequisites:
 
 Configure your Wrangler file as follows:
 
-* [  wrangler.jsonc ](#tab-panel-9471)
-* [  wrangler.toml ](#tab-panel-9472)
+* [  wrangler.jsonc ](#tab-panel-9615)
+* [  wrangler.toml ](#tab-panel-9616)
 
 JSONC
 
@@ -221,5 +221,6 @@ export class YourDurableObject extends DurableObject<Env> {
 ```
 
 ```json
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/queues/examples/use-queues-with-durable-objects/#page","headline":"Queues - Use Queues and Durable Objects · Cloudflare Queues docs","description":"Publish to a queue from within a Durable Object.","url":"https://developers.cloudflare.com/queues/examples/use-queues-with-durable-objects/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/queues/","name":"Queues"}},{"@type":"ListItem","position":3,"item":{"@id":"/queues/examples/","name":"Examples"}},{"@type":"ListItem","position":4,"item":{"@id":"/queues/examples/use-queues-with-durable-objects/","name":"Use Queues from Durable Objects"}}]}
 ```

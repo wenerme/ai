@@ -29,5 +29,6 @@ When you use a Cloudflare-owned IP space, you do not need a Letter of Agency (LO
 You can find your leased Anycast IPs for Magic Transit on the dashboard under [**Address space** \> **Leased IPs** ↗](https://dash.cloudflare.com/?to=/:account/ip-addresses/address-space).
 
 ```json
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/magic-transit/cloudflare-ips/#page","headline":"Cloudflare IPs · Cloudflare Magic Transit docs","description":"Cloudflare IP addresses used by Magic Transit.","url":"https://developers.cloudflare.com/magic-transit/cloudflare-ips/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-17","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/magic-transit/","name":"Magic Transit"}},{"@type":"ListItem","position":3,"item":{"@id":"/magic-transit/cloudflare-ips/","name":"Cloudflare IPs"}}]}
 ```

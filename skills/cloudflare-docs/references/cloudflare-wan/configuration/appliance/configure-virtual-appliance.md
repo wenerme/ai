@@ -79,8 +79,8 @@ Cloudflare One Virtual Appliance uses a DHCP connection at first boot to downloa
 
 Select the appropriate tab to configure Cloudflare One Virtual Appliance on VMWare ESXi or Proxmox Virtual Environment.
 
-* [ VMWare ESXi ](#tab-panel-5525)
-* [ Proxmox Virtual Environment (beta) ](#tab-panel-5526)
+* [ VMWare ESXi ](#tab-panel-7748)
+* [ Proxmox Virtual Environment (beta) ](#tab-panel-7749)
 
 **1\. Obtain the VMWare image**
 
@@ -218,8 +218,8 @@ For details, refer to [Configure a virtual machine](#configure-a-virtual-machine
 
 ### Create a WAN
 
-* [ Dashboard ](#tab-panel-5521)
-* [ API ](#tab-panel-5522)
+* [ Dashboard ](#tab-panel-7744)
+* [ API ](#tab-panel-7745)
 
 When you have more than one anycast IP configured in your account (set up during your Cloudflare WAN (formerly Magic WAN) onboarding), Cloudflare One Virtual Appliance will automatically create at most two tunnels per WAN port. This improves reliability and performance, and requires no additional configuration on your part.
 
@@ -275,8 +275,8 @@ curl https://api.cloudflare.com/client/v4/accounts/{account_id}/magic/sites/{sit
 
 ### Create a LAN
 
-* [ Dashboard ](#tab-panel-5523)
-* [ API ](#tab-panel-5524)
+* [ Dashboard ](#tab-panel-7746)
+* [ API ](#tab-panel-7747)
 
 1. In **LAN configuration**, select **Create**.
 2. Enter a descriptive name for your LAN in **Interface name**.
@@ -465,5 +465,6 @@ To check the IPsec tunnels and static routes created by your Cloudflare One Virt
 * [Troubleshooting](https://developers.cloudflare.com/cloudflare-wan/configuration/appliance/troubleshooting/)
 
 ```json
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-wan/configuration/appliance/configure-virtual-appliance/#page","headline":"Configure Virtual Appliance · Cloudflare WAN docs","description":"Learn how to configure Cloudflare One Virtual Appliance on VMWare ESXi or Proxmox Virtual Environment","url":"https://developers.cloudflare.com/cloudflare-wan/configuration/appliance/configure-virtual-appliance/","inLanguage":"en","image":"https://developers.cloudflare.com/zt-preview.png","dateModified":"2026-05-12","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/cloudflare-wan/","name":"Cloudflare WAN"}},{"@type":"ListItem","position":3,"item":{"@id":"/cloudflare-wan/configuration/","name":"Configuration"}},{"@type":"ListItem","position":4,"item":{"@id":"/cloudflare-wan/configuration/appliance/","name":"Configure with Appliance"}},{"@type":"ListItem","position":5,"item":{"@id":"/cloudflare-wan/configuration/appliance/configure-virtual-appliance/","name":"Configure Virtual Appliance"}}]}
 ```

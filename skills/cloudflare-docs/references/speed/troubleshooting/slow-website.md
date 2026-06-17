@@ -22,8 +22,8 @@ Before troubleshooting performance, confirm that your traffic is actually going 
 
 Every response served through Cloudflare includes a `cf-ray` header. Check for this header:
 
-* [ bash ](#tab-panel-10010)
-* [ PowerShell ](#tab-panel-10011)
+* [ bash ](#tab-panel-10558)
+* [ PowerShell ](#tab-panel-10559)
 
 Terminal window
 
@@ -49,8 +49,8 @@ If you see a `cf-ray` header (for example, `cf-ray: 8a1b2c3d4e5f6g7h-SJC`), your
 
 Your domain must resolve to Cloudflare IP addresses for traffic to be proxied:
 
-* [ bash ](#tab-panel-10012)
-* [ PowerShell ](#tab-panel-10013)
+* [ bash ](#tab-panel-10560)
+* [ PowerShell ](#tab-panel-10561)
 
 Terminal window
 
@@ -164,7 +164,8 @@ If your website is slow, the issue may be at your origin server. Use Origin Anal
 
 In the Cloudflare dashboard:
 
-1. Go to **Speed** \> **Origin Analytics**.
+1. Go to **Speed** \> **Origin Analytics**.  
+[ Go to **Origin Analytics** ](https://dash.cloudflare.com/?to=/:account/:zone/speed/origin-analytics)
 2. Review the **Origin Response Time** metrics.
 3. Look for patterns in slow responses (specific paths, times of day, or geographic regions).
 
@@ -173,6 +174,8 @@ High origin response times indicate your origin server is struggling. Consider:
 * Upgrading your hosting plan
 * Optimizing database queries
 * Implementing server-side caching
+
+For a full guide on available metrics, diagnostic flows, and how to interpret origin status codes, refer to [Origin Analytics](https://developers.cloudflare.com/speed/origin-analytics/).
 
 ### Check for slow Workers
 
@@ -199,8 +202,8 @@ For detailed timing metrics on specific requests, use command-line tools to meas
 
 ### Basic performance test
 
-* [ bash ](#tab-panel-10014)
-* [ PowerShell ](#tab-panel-10015)
+* [ bash ](#tab-panel-10562)
+* [ PowerShell ](#tab-panel-10563)
 
 Terminal window
 
@@ -295,8 +298,8 @@ Uncached content must travel from the visitor to Cloudflare, then to your origin
 
 Check the cache status of a specific asset:
 
-* [ bash ](#tab-panel-10016)
-* [ PowerShell ](#tab-panel-10017)
+* [ bash ](#tab-panel-10564)
+* [ PowerShell ](#tab-panel-10565)
 
 Terminal window
 
@@ -391,8 +394,8 @@ Poor results indicate issues with your local network or ISP.
 
 MTR combines traceroute and ping to show latency and packet loss at each network hop.
 
-* [ macOS/Linux ](#tab-panel-10018)
-* [ Windows ](#tab-panel-10019)
+* [ macOS/Linux ](#tab-panel-10566)
+* [ Windows ](#tab-panel-10567)
 
 Terminal window
 
@@ -438,8 +441,8 @@ How requests are routed to Cloudflare data centers can significantly impact perf
 
 Add `/cdn-cgi/trace` to your domain to see which Cloudflare data center is serving your requests:
 
-* [ bash ](#tab-panel-10020)
-* [ PowerShell ](#tab-panel-10021)
+* [ bash ](#tab-panel-10568)
+* [ PowerShell ](#tab-panel-10569)
 
 Terminal window
 
@@ -546,5 +549,6 @@ The more evidence you provide showing the slowness, the faster Support can ident
 * [Gathering information for troubleshooting](https://developers.cloudflare.com/support/troubleshooting/general-troubleshooting/gathering-information-for-troubleshooting-sites/) \- Collect diagnostic data
 
 ```json
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/speed/troubleshooting/slow-website/#page","headline":"Troubleshooting a slow website · Cloudflare Speed docs","description":"Identify and resolve performance issues affecting your website.","url":"https://developers.cloudflare.com/speed/troubleshooting/slow-website/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-06-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/speed/","name":"Speed"}},{"@type":"ListItem","position":3,"item":{"@id":"/speed/troubleshooting/","name":"Troubleshooting"}},{"@type":"ListItem","position":4,"item":{"@id":"/speed/troubleshooting/slow-website/","name":"Troubleshooting a slow website"}}]}
 ```

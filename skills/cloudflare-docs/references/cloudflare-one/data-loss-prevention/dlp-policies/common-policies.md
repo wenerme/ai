@@ -31,8 +31,8 @@ The following example logs any upload or download that matches your enabled [Fin
 
 Block the upload or download of files based on their type.
 
-* [ Dashboard ](#tab-panel-5110)
-* [ API ](#tab-panel-5111)
+* [ Dashboard ](#tab-panel-7184)
+* [ API ](#tab-panel-7185)
 
 | Selector            | Operator | Value                                   | Logic | Action |
 | ------------------- | -------- | --------------------------------------- | ----- | ------ |
@@ -116,5 +116,6 @@ In your [DLP logs](https://developers.cloudflare.com/cloudflare-one/data-loss-pr
 | Domain      | not in list | _Do not DLP - SSN_      |       |        |
 
 ```json
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/data-loss-prevention/dlp-policies/common-policies/#page","headline":"Common DLP policies · Cloudflare One docs","description":"Reference information for Common policies in Cloudflare One.","url":"https://developers.cloudflare.com/cloudflare-one/data-loss-prevention/dlp-policies/common-policies/","inLanguage":"en","image":"https://developers.cloudflare.com/zt-preview.png","dateModified":"2026-04-17","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Compliance","Logging"]}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/cloudflare-one/","name":"Cloudflare One"}},{"@type":"ListItem","position":3,"item":{"@id":"/cloudflare-one/data-loss-prevention/","name":"Data loss prevention"}},{"@type":"ListItem","position":4,"item":{"@id":"/cloudflare-one/data-loss-prevention/dlp-policies/","name":"Scan HTTP traffic"}},{"@type":"ListItem","position":5,"item":{"@id":"/cloudflare-one/data-loss-prevention/dlp-policies/common-policies/","name":"Common policies"}}]}
 ```

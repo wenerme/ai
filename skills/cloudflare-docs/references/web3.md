@@ -67,5 +67,6 @@ Compare available Cloudflare plans
 Explore pricing options for Web3 Gateways in the dashboard
 
 ```json
+{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/web3/#page","headline":"Overview · Cloudflare Web3 docs","description":"Cloudflare offers gateways to various networks to help Web3 developers do what they do best, develop applications without having to worry about running infrastructure.","url":"https://developers.cloudflare.com/web3/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-05-01","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/web3/","name":"Web3"}}]}
 ```

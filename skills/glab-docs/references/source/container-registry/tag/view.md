@@ -1,0 +1,50 @@
+---
+title: '`glab container-registry tag view`'
+stage: Create
+group: Code Review
+info: To determine the technical writer assigned to the Stage/Group associated with this page, see <https://handbook.gitlab.com/handbook/product/ux/technical-writing/#assignments>
+---
+
+View a container registry tag.
+
+## Synopsis
+
+View details for a single container registry tag.
+
+The repository ID must belong to the selected project. Use -R/--repo
+to specify the owning project when running this command outside that
+project's Git checkout.
+
+```plaintext
+glab container-registry tag view <repository-id> <tag-name> [flags]
+```
+
+## Aliases
+
+```plaintext
+show
+```
+
+## Examples
+
+```console
+# View a container registry tag
+glab container-registry tag view 123 latest
+
+# View a container registry tag in another project
+glab container-registry tag view 123 latest -R gitlab-org/cli
+```
+
+## Options
+
+```plaintext
+      --jq string       Filter JSON output with a jq expression.
+  -F, --output string   Format output as: text, json. (default "text")
+```
+
+## Options inherited from parent commands
+
+```plaintext
+  -h, --help          Show help for this command.
+  -R, --repo string   Select another repository. You can use either OWNER/REPO or GROUP/NAMESPACE/REPO. The full URL or Git URL is also accepted.
+```

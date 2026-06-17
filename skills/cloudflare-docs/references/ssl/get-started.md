@@ -66,5 +66,6 @@ After you have chosen your encryption mode and enforced HTTPS connections, evalu
 * [Notifications](https://developers.cloudflare.com/notifications/notification-available/): Set up alerts related to certificate validation status, issuance, renewal, and expiration.
 
 ```json
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ssl/get-started/#page","headline":"Get started with SSL/TLS · Cloudflare SSL/TLS docs","description":"Set up SSL/TLS encryption between visitors, Cloudflare, and your origin server.","url":"https://developers.cloudflare.com/ssl/get-started/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-05-06","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/ssl/","name":"SSL/TLS"}},{"@type":"ListItem","position":3,"item":{"@id":"/ssl/get-started/","name":"Get started"}}]}
 ```

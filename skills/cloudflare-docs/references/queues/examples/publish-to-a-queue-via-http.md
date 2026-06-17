@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 # Publish to a Queue via HTTP
 
-**Last reviewed:**  10 months ago 
+**Last reviewed:**  11 months ago 
 
 Publish to a Queue directly via HTTP.
 
@@ -54,5 +54,6 @@ This will issue a HTTP POST request, and if successful, return a HTTP 200 with a
 For full documentation about the HTTP Push API, refer to the [Cloudflare API documentation ↗](https://developers.cloudflare.com/api/resources/queues/subresources/messages/).
 
 ```json
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/queues/examples/publish-to-a-queue-via-http/#page","headline":"Queues - Publish Directly via HTTP · Cloudflare Queues docs","description":"Publish to a Queue directly via HTTP and Workers.","url":"https://developers.cloudflare.com/queues/examples/publish-to-a-queue-via-http/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/queues/","name":"Queues"}},{"@type":"ListItem","position":3,"item":{"@id":"/queues/examples/","name":"Examples"}},{"@type":"ListItem","position":4,"item":{"@id":"/queues/examples/publish-to-a-queue-via-http/","name":"Publish to a Queue via HTTP"}}]}
 ```

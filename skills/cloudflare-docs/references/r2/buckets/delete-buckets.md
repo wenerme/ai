@@ -161,5 +161,6 @@ curl -X DELETE "https://api.cloudflare.com/client/v4/accounts/<ACCOUNT_ID>/r2/bu
 [ Create buckets ](https://developers.cloudflare.com/r2/buckets/create-buckets/) Create a new R2 bucket after deleting an existing one. 
 
 ```json
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/r2/buckets/delete-buckets/#page","headline":"Delete buckets · Cloudflare R2 docs","description":"Empty all objects from an R2 bucket and permanently delete it.","url":"https://developers.cloudflare.com/r2/buckets/delete-buckets/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-30","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/r2/","name":"R2"}},{"@type":"ListItem","position":3,"item":{"@id":"/r2/buckets/","name":"Buckets"}},{"@type":"ListItem","position":4,"item":{"@id":"/r2/buckets/delete-buckets/","name":"Delete buckets"}}]}
 ```

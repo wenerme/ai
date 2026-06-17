@@ -27,5 +27,6 @@ If you connect through [GRE](https://developers.cloudflare.com/cloudflare-wan/co
 Refer to [Run traceroute](https://developers.cloudflare.com/cloudflare-wan/configuration/how-to/traceroute/) for more information.
 
 ```json
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-wan/network-interconnect/#page","headline":"Network Interconnect and Cloudflare WAN · Cloudflare WAN docs","description":"Connect to Cloudflare WAN with Network Interconnect.","url":"https://developers.cloudflare.com/cloudflare-wan/network-interconnect/","inLanguage":"en","image":"https://developers.cloudflare.com/zt-preview.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/cloudflare-wan/","name":"Cloudflare WAN"}},{"@type":"ListItem","position":3,"item":{"@id":"/cloudflare-wan/network-interconnect/","name":"Network Interconnect (CNI)"}}]}
 ```

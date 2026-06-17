@@ -12,8 +12,8 @@ image: https://developers.cloudflare.com/cf-twitter-card.png
 
 # Protect your users from Internet risks
 
-* [ Watch this episode ](#tab-panel-6528)
-* [ Series overview ](#tab-panel-6529)
+* [ Watch this episode ](#tab-panel-9146)
+* [ Series overview ](#tab-panel-9147)
 
 The Internet has become part of your corporate network, however browsing the web comes with hidden risks including malware, phishing attacks, and malicious websites. In this video, we will explore how Cloudflare's Secure Web Gateway (SWG) helps keep users safe by filtering and inspecting Internet traffic in real time. Whether you are protecting a remote workforce or securing an entire organization, Cloudflare ensures that users can access the web securely — without sacrificing speed or productivity.
 
@@ -52,5 +52,6 @@ If you want to dive into detail about modernizing your corporate network with Cl
 [ Watch Episode 5: Protect your users from Internet risks ](https://developers.cloudflare.com/learning-paths/sase-overview-course/series/protect-users-from-internet-risks-5/) In this video, we will explore how Cloudflare's Secure Web Gateway (SWG) helps keep users and devices safe by filtering and inspecting Internet traffic in real time. 
 
 ```json
+{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/learning-paths/sase-overview-course/series/protect-users-from-internet-risks-5/#page","headline":"Protect your users from Internet risks · Cloudflare Learning Paths","description":"Filter Internet traffic to protect users.","url":"https://developers.cloudflare.com/learning-paths/sase-overview-course/series/protect-users-from-internet-risks-5/","inLanguage":"en","image":"https://developers.cloudflare.com/cf-twitter-card.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/learning-paths/","name":"Learning Paths"}},{"@type":"ListItem","position":3,"item":{"@id":"/learning-paths/sase-overview-course/series/","name":"Overview"}},{"@type":"ListItem","position":4,"item":{"@id":"/learning-paths/sase-overview-course/series/protect-users-from-internet-risks-5/","name":"Protect your users from Internet risks"}}]}
 ```

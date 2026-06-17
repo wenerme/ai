@@ -28,8 +28,8 @@ xAI's next-generation video generation model. Generates, edits, and extends vide
 
 ## Usage
 
-* [ TypeScript ](#tab-panel-1968)
-* [ cURL ](#tab-panel-1969)
+* [ TypeScript ](#tab-panel-1978)
+* [ cURL ](#tab-panel-1979)
 
 TypeScript
 
@@ -89,8 +89,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 ```
 
-* [ Output ](#tab-panel-1966)
-* [ Raw response ](#tab-panel-1967)
+* [ Output ](#tab-panel-1976)
+* [ Raw response ](#tab-panel-1977)
 
 ```
 
@@ -117,8 +117,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 ## Parameters
 
-* [ Input ](#tab-panel-1970)
-* [ Output ](#tab-panel-1971)
+* [ Input ](#tab-panel-1980)
+* [ Output ](#tab-panel-1981)
 
 \_operation
 
@@ -175,5 +175,6 @@ Input [ ](https://developers.cloudflare.com/ai/models/xai/grok-imagine-video-1.5
 Output [ ](https://developers.cloudflare.com/ai/models/xai/grok-imagine-video-1.5-preview/schema-output.json "Open") [ ](https://developers.cloudflare.com/ai/models/xai/grok-imagine-video-1.5-preview/schema-output.json "Download") 
 
 ```json
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai/models/xai/grok-imagine-video-1.5-preview/#page","headline":"Grok Imagine Video 1.5 Preview (xAI) · Cloudflare AI docs · Cloudflare AI docs","description":"xAI's next-generation video generation model. Generates, edits, and extends videos from text and image inputs. Supports multiple aspect ratios and resolutions with improved quality over the previous generation.","url":"https://developers.cloudflare.com/ai/models/xai/grok-imagine-video-1.5-preview/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/ai/","name":"AI"}},{"@type":"ListItem","position":3,"item":{"@id":"/ai/models/","name":"Models"}}]}
 ```

@@ -38,5 +38,6 @@ image: https://developers.cloudflare.com/core-services-preview.png
 * [ Under Attack mode ](https://developers.cloudflare.com/fundamentals/reference/under-attack-mode/)
 
 ```json
+{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/fundamentals/reference/#page","headline":"Reference - Get started · Cloudflare Fundamentals docs","description":"Find Cloudflare reference material including network details, HTTP headers, policies, and troubleshooting resources.","url":"https://developers.cloudflare.com/fundamentals/reference/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-06-03","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/fundamentals/","name":"Cloudflare Fundamentals"}},{"@type":"ListItem","position":3,"item":{"@id":"/fundamentals/reference/","name":"Reference"}}]}
 ```

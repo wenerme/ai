@@ -208,5 +208,6 @@ This functionality requires Wrangler v2.0.11 or higher.
 * PR comments for Pages previews now include the branch alias.
 
 ```json
+{"@context":"https://schema.org","@type":"BlogPosting","@id":"https://developers.cloudflare.com/pages/platform/changelog/#page","headline":"Changelog · Cloudflare Pages docs","description":"Recent changes and updates to Cloudflare Pages.","url":"https://developers.cloudflare.com/pages/platform/changelog/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/pages/","name":"Pages"}},{"@type":"ListItem","position":3,"item":{"@id":"/pages/platform/","name":"Platform"}},{"@type":"ListItem","position":4,"item":{"@id":"/pages/platform/changelog/","name":"Changelog"}}]}
 ```

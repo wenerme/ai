@@ -30,7 +30,7 @@ foo:
 | `fallback` | boolean | `false` | Search `justfile` in parent directory if the first recipe on the command line is not found. |
 | `ignore-comments` | boolean | `false` | Ignore recipe lines beginning with `#`. |
 | `lazy`<sup>1.47.0</sup> | boolean | `false` | Don't evaluate unused variables. |
-| `lists`<sup>master</sup> | boolean | `false` | Values may be lists of strings instead of strings. Currently unstable. |
+| `lists`<sup>1.53.0</sup> | boolean | `false` | Values may be lists of strings instead of strings. Currently unstable. |
 | `no-cd`<sup>1.51.0</sup> | boolean | `false` | Don't change directory when executing recipes by recipe attribute. |
 | `no-exit-message`<sup>1.39.0</sup> | boolean | `false` | Don't print exit messages if recipes fail. |
 | `positional-arguments` | boolean | `false` | Pass positional arguments. |
@@ -215,7 +215,7 @@ evaluated.
 
 #### Lists
 
-The `lists` setting<sup>master</sup> allows values that are lists of strings.
+The `lists` setting<sup>1.53.0</sup> allows values that are lists of strings.
 It is currently unstable and will change in backwards incompatible ways. This
 section documents changes in behavior when `set lists` is enabled.
 
@@ -259,6 +259,8 @@ list are combined by concatenating the string with each element of the list.
 Two lists of the same length are combined into a list containing the pairwise
 concatenated elements of both operands. Combining two lists of different
 lengths is an error.
+
+The `++` operator performs list concatenation.
 
 ##### Booleans
 

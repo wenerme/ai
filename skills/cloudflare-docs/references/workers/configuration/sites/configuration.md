@@ -37,8 +37,8 @@ If your project uses [environments](https://developers.cloudflare.com/workers/wr
 
 Example of a [Wrangler configuration file](https://developers.cloudflare.com/workers/wrangler/configuration/):
 
-* [  wrangler.jsonc ](#tab-panel-10318)
-* [  wrangler.toml ](#tab-panel-10319)
+* [  wrangler.jsonc ](#tab-panel-11495)
+* [  wrangler.toml ](#tab-panel-11496)
 
 JSONC
 
@@ -127,8 +127,8 @@ This means that you should use gitignore semantics when declaring which director
 
 If you want to include only a certain set of files or directories in your `bucket`, you can add an `include` field to your `[site]` section of your Wrangler file:
 
-* [  wrangler.jsonc ](#tab-panel-10314)
-* [  wrangler.toml ](#tab-panel-10315)
+* [  wrangler.jsonc ](#tab-panel-11491)
+* [  wrangler.toml ](#tab-panel-11492)
 
 JSONC
 
@@ -172,8 +172,8 @@ Wrangler will only upload files or directories matching the patterns in the `inc
 
 If you want to exclude files or directories in your `bucket`, you can add an `exclude` field to your `[site]` section of your Wrangler file:
 
-* [  wrangler.jsonc ](#tab-panel-10316)
-* [  wrangler.toml ](#tab-panel-10317)
+* [  wrangler.jsonc ](#tab-panel-11493)
+* [  wrangler.toml ](#tab-panel-11494)
 
 JSONC
 
@@ -230,5 +230,6 @@ Wrangler will always ignore:
 Learn more about the standard patterns used for include and exclude in the [gitignore documentation ↗](https://git-scm.com/docs/gitignore).
 
 ```json
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/static-assets/#page","headline":"Workers Sites configuration · Cloudflare Workers docs","description":"Configure Workers Sites settings for static asset hosting in your Wrangler configuration file.","url":"https://developers.cloudflare.com/workers/static-assets/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/workers/","name":"Workers"}},{"@type":"ListItem","position":3,"item":{"@id":"/workers/configuration/","name":"Configuration"}},{"@type":"ListItem","position":4,"item":{"@id":"/workers/configuration/sites/","name":"Workers Sites"}},{"@type":"ListItem","position":5,"item":{"@id":"/workers/configuration/sites/configuration/","name":"Workers Sites configuration"}}]}
 ```

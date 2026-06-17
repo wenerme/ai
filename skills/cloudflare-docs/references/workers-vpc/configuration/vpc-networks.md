@@ -14,7 +14,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 VPC Networks allow your Workers to access any service in your private network without pre-registering individual hosts or ports. You can bind to a specific [Cloudflare Tunnel](https://developers.cloudflare.com/workers-vpc/configuration/tunnel/) to reach any service behind that tunnel, or bind to [Cloudflare Mesh](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-mesh/) to reach any Mesh node, client device, subnet route or hostname route announced through Cloudflare Tunnel or Mesh, or destination reachable through a [Cloudflare WAN](https://developers.cloudflare.com/cloudflare-wan/) on-ramp (GRE, IPsec, or CNI).
 
-At runtime, the URL you pass to `fetch()` determines the destination — any hostname or IP address reachable through the bound Cloudflare Tunnel or through Cloudflare Mesh. This differs from [VPC Services](https://developers.cloudflare.com/workers-vpc/configuration/vpc-services/), which require you to create a separate binding for each target host and port combination.
+At runtime, the URL you pass to `fetch()` or the address you pass to `connect()` determines the destination — any hostname or IP address reachable through the bound Cloudflare Tunnel or through Cloudflare Mesh. Use `fetch()` for HTTP traffic, and [connect()](https://developers.cloudflare.com/workers/runtime-apis/tcp-sockets/) for raw TCP connections (Redis, MQTT, custom protocols, and other non-HTTP services). This differs from [VPC Services](https://developers.cloudflare.com/workers-vpc/configuration/vpc-services/), which require you to create a separate binding for each target host and port combination.
 
 Note
 
@@ -28,8 +28,8 @@ Binding directly to a Cloudflare Tunnel through a VPC Network binding requires t
 
 Reference a specific Cloudflare Tunnel directly by its UUID:
 
-* [  wrangler.jsonc ](#tab-panel-10764)
-* [  wrangler.toml ](#tab-panel-10765)
+* [  wrangler.jsonc ](#tab-panel-11333)
+* [  wrangler.toml ](#tab-panel-11334)
 
 JSONC
 
@@ -99,8 +99,8 @@ For destinations behind Cloudflare WAN on-ramps (GRE, IPsec, or CNI), your netwo
 
 Bind to Cloudflare Mesh using `network_id: "cf1:network"`:
 
-* [  wrangler.jsonc ](#tab-panel-10766)
-* [  wrangler.toml ](#tab-panel-10767)
+* [  wrangler.jsonc ](#tab-panel-11335)
+* [  wrangler.toml ](#tab-panel-11336)
 
 JSONC
 
@@ -144,7 +144,9 @@ remote = true
 
 ## Runtime usage
 
-Access any service in your network at runtime:
+### HTTP via `fetch()`
+
+Access any HTTP service in your network at runtime using `fetch()`:
 
 TypeScript
 
@@ -175,6 +177,47 @@ export default {
 
 When a VPC Network cannot establish a connection to your target service, `fetch()` throws an exception.
 
+### TCP via `connect()`
+
+Open raw TCP connections to any private destination using [connect()](https://developers.cloudflare.com/workers/runtime-apis/tcp-sockets/). This is useful for non-HTTP protocols like Redis, Memcached, MQTT, or custom binary protocols:
+
+TypeScript
+
+```
+
+export default {
+
+  async fetch(request: Request, env: Env) {
+
+    // Open a TCP connection to a private Redis instance
+
+    const socket = await env.MY_VPC.connect("10.0.1.50:6379");
+
+
+    // Write a Redis PING command
+
+    const writer = socket.writable.getWriter();
+
+    await writer.write(new TextEncoder().encode("PING\r\n"));
+
+    await writer.close();
+
+
+    return new Response(socket.readable);
+
+  },
+
+};
+
+
+```
+
+When a VPC Network cannot establish a TCP connection, `connect()` throws an exception.
+
+Note
+
+`connect()` over VPC Networks currently supports plaintext TCP only.
+
 ## VPC Networks vs VPC Services
 
 VPC Networks and [VPC Services](https://developers.cloudflare.com/workers-vpc/configuration/vpc-services/) both connect Workers to private infrastructure, but they make different trade-offs.
@@ -184,12 +227,13 @@ VPC Networks and [VPC Services](https://developers.cloudflare.com/workers-vpc/co
 
 The following table summarizes the differences:
 
-| Feature              | VPC Networks                                                                  | VPC Services              |
-| -------------------- | ----------------------------------------------------------------------------- | ------------------------- |
-| Scope                | A single Cloudflare Tunnel, or Cloudflare Mesh and Cloudflare WAN routes      | Specific host + port      |
-| Configuration        | tunnel\_id (single Cloudflare Tunnel) or cf1:network (account-wide)           | service\_id               |
-| Service registration | Not required                                                                  | Required for each target  |
-| Use when             | Dynamic discovery, network-wide access, reaching services across your account | Fixed, cataloged services |
+| Feature              | VPC Networks                                                                  | VPC Services                                                                            |
+| -------------------- | ----------------------------------------------------------------------------- | --------------------------------------------------------------------------------------- |
+| Scope                | A single Cloudflare Tunnel, or Cloudflare Mesh and Cloudflare WAN routes      | Specific host + port                                                                    |
+| Configuration        | tunnel\_id (single Cloudflare Tunnel) or cf1:network (account-wide)           | service\_id                                                                             |
+| Protocols            | HTTP (fetch()) and TCP (connect())                                            | HTTP (fetch()) or TCP (via [Hyperdrive](https://developers.cloudflare.com/hyperdrive/)) |
+| Service registration | Not required                                                                  | Required for each target                                                                |
+| Use when             | Dynamic discovery, network-wide access, reaching services across your account | Fixed, cataloged services                                                               |
 
 ## Next steps
 
@@ -200,5 +244,6 @@ The following table summarizes the differences:
 * Learn about the [Workers Binding API](https://developers.cloudflare.com/workers-vpc/api/)
 
 ```json
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers-vpc/configuration/vpc-networks/#page","headline":"VPC Networks · Cloudflare Workers VPC","description":"Bind Workers to an entire Cloudflare Tunnel or Cloudflare Mesh without pre-registering hosts.","url":"https://developers.cloudflare.com/workers-vpc/configuration/vpc-networks/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-06-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/workers-vpc/","name":"Workers VPC"}},{"@type":"ListItem","position":3,"item":{"@id":"/workers-vpc/configuration/","name":"Configuration"}},{"@type":"ListItem","position":4,"item":{"@id":"/workers-vpc/configuration/vpc-networks/","name":"VPC Networks"}}]}
 ```

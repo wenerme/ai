@@ -201,8 +201,8 @@ bun add -d wrangler@latest
 ```
 3. **Add a Wrangler configuration file**  
 In your project root, create a [Wrangler configuration file](https://developers.cloudflare.com/workers/wrangler/configuration/) with the following content:  
-   * [  wrangler.jsonc ](#tab-panel-11227)  
-   * [  wrangler.toml ](#tab-panel-11228)  
+   * [  wrangler.jsonc ](#tab-panel-11796)  
+   * [  wrangler.toml ](#tab-panel-11797)  
 JSONC  
 ```  
 {  
@@ -210,7 +210,7 @@ JSONC
   "main": ".open-next/worker.js",  
   "name": "my-app",  
   // Set this to today's date  
-  "compatibility_date": "2026-06-05",  
+  "compatibility_date": "2026-06-17",  
   "compatibility_flags": [  
     "nodejs_compat"  
   ],  
@@ -226,7 +226,7 @@ TOML
 main = ".open-next/worker.js"  
 name = "my-app"  
 # Set this to today's date  
-compatibility_date = "2026-06-05"  
+compatibility_date = "2026-06-17"  
 compatibility_flags = [ "nodejs_compat" ]  
 [assets]  
 directory = ".open-next/assets"  
@@ -296,5 +296,6 @@ This ensures the Next build has the necessary access to both public `NEXT_PUBLIC
 Learn more in the [OpenNext environment variable guide ↗](https://opennext.js.org/cloudflare/howtos/env-vars#workers-builds)
 
 ```json
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/framework-guides/web-apps/nextjs/#page","headline":"Next.js · Cloudflare Workers docs","description":"Create an Next.js application and deploy it to Cloudflare Workers with Workers Assets.","url":"https://developers.cloudflare.com/workers/framework-guides/web-apps/nextjs/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-06-05","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["full-stack"]}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/workers/","name":"Workers"}},{"@type":"ListItem","position":3,"item":{"@id":"/workers/framework-guides/","name":"Framework guides"}},{"@type":"ListItem","position":4,"item":{"@id":"/workers/framework-guides/web-apps/","name":"Web applications"}},{"@type":"ListItem","position":5,"item":{"@id":"/workers/framework-guides/web-apps/nextjs/","name":"Next.js"}}]}
 ```

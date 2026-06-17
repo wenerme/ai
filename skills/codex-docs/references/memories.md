@@ -1,9 +1,9 @@
 # Memories
 
-Memories are off by default and aren't available in the European Economic
-  Area, the United Kingdom, or Switzerland at launch. Enable them in Codex
-  settings, or set `memories = true` in the `[features]` table in
-  `~/.codex/config.toml`.
+Memories are off by default. In the European Economic Area, the United
+  Kingdom, and Switzerland, Codex uses or generates memories only after you
+  enable them in Codex settings, or set `memories = true` in the `[features]`
+  table in `~/.codex/config.toml`.
 
 Memories let Codex carry useful context from earlier threads into future work.
 After you enable memories, Codex can remember stable preferences, recurring

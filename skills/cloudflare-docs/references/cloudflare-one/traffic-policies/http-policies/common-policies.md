@@ -26,8 +26,8 @@ Block attempts to reach sites by hostname or URL paths. Different approaches may
 
 Block all subdomains that use a host.
 
-* [ Dashboard ](#tab-panel-5524)
-* [ API ](#tab-panel-5525)
+* [ Dashboard ](#tab-panel-7614)
+* [ API ](#tab-panel-7615)
 
 | Selector | Operator      | Value            | Action |
 | -------- | ------------- | ---------------- | ------ |
@@ -76,8 +76,8 @@ curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/gateway/rules" \
 
 Block a section of a site without blocking the entire site. For example, you can block a specific subreddit, such as `reddit.com/r/gaming`, without blocking `reddit.com`.
 
-* [ Dashboard ](#tab-panel-5522)
-* [ API ](#tab-panel-5523)
+* [ Dashboard ](#tab-panel-7612)
+* [ API ](#tab-panel-7613)
 
 | Selector | Operator      | Value     | Action |
 | -------- | ------------- | --------- | ------ |
@@ -124,9 +124,9 @@ curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/gateway/rules" \
 
 Block content categories which go against your organization's acceptable use policy.
 
-* [ Dashboard ](#tab-panel-5552)
-* [ API ](#tab-panel-5553)
-* [ Terraform ](#tab-panel-5554)
+* [ Dashboard ](#tab-panel-7642)
+* [ API ](#tab-panel-7643)
+* [ Terraform ](#tab-panel-7644)
 
 | Selector           | Operator | Value                                                                                 | Action |
 | ------------------ | -------- | ------------------------------------------------------------------------------------- | ------ |
@@ -208,9 +208,9 @@ After seven days, view your [Shadow IT SaaS Analytics](https://developers.cloudf
 
 To minimize the risk of [shadow IT](https://www.cloudflare.com/learning/access-management/what-is-shadow-it/), some organizations choose to limit their users' access to certain web-based tools and applications. For example, the following policy blocks known AI tools:
 
-* [ Dashboard ](#tab-panel-5555)
-* [ API ](#tab-panel-5556)
-* [ Terraform ](#tab-panel-5557)
+* [ Dashboard ](#tab-panel-7645)
+* [ API ](#tab-panel-7646)
+* [ Terraform ](#tab-panel-7647)
 
 | Selector    | Operator | Value                     | Action |
 | ----------- | -------- | ------------------------- | ------ |
@@ -288,8 +288,8 @@ resource "cloudflare_zero_trust_gateway_policy" "all_http_application_blocklist"
 
 Configure access on a per user or group basis by adding [identity-based conditions](https://developers.cloudflare.com/cloudflare-one/traffic-policies/identity-selectors/) to your policies.
 
-* [ Dashboard ](#tab-panel-5526)
-* [ API ](#tab-panel-5527)
+* [ Dashboard ](#tab-panel-7616)
+* [ API ](#tab-panel-7617)
 
 | Selector         | Operator | Value         | Logic | Action |
 | ---------------- | -------- | ------------- | ----- | ------ |
@@ -339,8 +339,8 @@ Certain client applications, such as Zoom or Apple services, rely on certificate
 
 Gateway [evaluates Do Not Inspect policies first](https://developers.cloudflare.com/cloudflare-one/traffic-policies/order-of-enforcement/#http-policies), regardless of their position in the policy list. Cloudflare recommends moving your Do Not Inspect policies to the top of the list to reduce confusion.
 
-* [ Dashboard ](#tab-panel-5528)
-* [ API ](#tab-panel-5529)
+* [ Dashboard ](#tab-panel-7618)
+* [ API ](#tab-panel-7619)
 
 | Selector    | Operator | Value            | Action         |
 | ----------- | -------- | ---------------- | -------------- |
@@ -395,8 +395,8 @@ Require devices to have certain software installed or other configuration attrib
 
 Perform an [OS version check](https://developers.cloudflare.com/cloudflare-one/reusable-components/posture-checks/client-checks/os-version/) to ensure users are running at least a minimum version.
 
-* [ Dashboard ](#tab-panel-5530)
-* [ API ](#tab-panel-5531)
+* [ Dashboard ](#tab-panel-7620)
+* [ API ](#tab-panel-7621)
 
 | Selector                     | Operator | Value                | Action |
 | ---------------------------- | -------- | -------------------- | ------ |
@@ -447,8 +447,8 @@ Perform a [file check](https://developers.cloudflare.com/cloudflare-one/reusable
 
 Since the file path will be different for each operating system, you can configure a file check for each system and use the **Or** logical operator to only require one of the checks to pass.
 
-* [ Dashboard ](#tab-panel-5534)
-* [ API ](#tab-panel-5535)
+* [ Dashboard ](#tab-panel-7624)
+* [ API ](#tab-panel-7625)
 
 | Selector                     | Operator | Value              | Logic | Action |
 | ---------------------------- | -------- | ------------------ | ----- | ------ |
@@ -506,8 +506,8 @@ If you are using the [Browser Isolation add-on](https://developers.cloudflare.co
 
 When accessing origin servers with certificates not signed by a public certificate authority, you must bypass TLS decryption.
 
-* [ Dashboard ](#tab-panel-5532)
-* [ API ](#tab-panel-5533)
+* [ Dashboard ](#tab-panel-7622)
+* [ API ](#tab-panel-7623)
 
 | Selector | Operator | Value                | Action         |
 | -------- | -------- | -------------------- | -------------- |
@@ -554,8 +554,8 @@ curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/gateway/rules" \
 
 Block the upload or download of files based on their type.
 
-* [ Dashboard ](#tab-panel-5550)
-* [ API ](#tab-panel-5551)
+* [ Dashboard ](#tab-panel-7640)
+* [ API ](#tab-panel-7641)
 
 | Selector            | Operator | Value                                   | Logic | Action |
 | ------------------- | -------- | --------------------------------------- | ----- | ------ |
@@ -611,8 +611,8 @@ For more information on reviewing shadow IT applications, refer to [Review appli
 
 Isolate applications if their approval status is _Unreviewed_ or _In review_.
 
-* [ Dashboard ](#tab-panel-5536)
-* [ API ](#tab-panel-5537)
+* [ Dashboard ](#tab-panel-7626)
+* [ API ](#tab-panel-7627)
 
 | Selector           | Operator | Value        | Logic | Action  |
 | ------------------ | -------- | ------------ | ----- | ------- |
@@ -660,8 +660,8 @@ curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/gateway/rules" \
 
 Block applications if their approval status is _Unapproved_.
 
-* [ Dashboard ](#tab-panel-5538)
-* [ API ](#tab-panel-5539)
+* [ Dashboard ](#tab-panel-7628)
+* [ API ](#tab-panel-7629)
 
 | Selector           | Operator | Value        | Action |
 | ------------------ | -------- | ------------ | ------ |
@@ -712,8 +712,8 @@ To enable Gateway inspection for Google Drive traffic, you must [add a Cloudflar
 
 Block file downloads from Google Drive.
 
-* [ Dashboard ](#tab-panel-5540)
-* [ API ](#tab-panel-5541)
+* [ Dashboard ](#tab-panel-7630)
+* [ API ](#tab-panel-7631)
 
 | Selector         | Operator      | Value                      | Logic | Action |
 | ---------------- | ------------- | -------------------------- | ----- | ------ |
@@ -761,8 +761,8 @@ curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/gateway/rules" \
 
 Block file uploads from Google Drive.
 
-* [ Dashboard ](#tab-panel-5542)
-* [ API ](#tab-panel-5543)
+* [ Dashboard ](#tab-panel-7632)
+* [ API ](#tab-panel-7633)
 
 | Selector         | Operator      | Value                                | Logic | Action |
 | ---------------- | ------------- | ------------------------------------ | ----- | ------ |
@@ -811,8 +811,8 @@ curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/gateway/rules" \
 
 Block file downloads from Gmail.
 
-* [ Dashboard ](#tab-panel-5544)
-* [ API ](#tab-panel-5545)
+* [ Dashboard ](#tab-panel-7634)
+* [ API ](#tab-panel-7635)
 
 | Selector         | Operator | Value                                 | Logic | Action |
 | ---------------- | -------- | ------------------------------------- | ----- | ------ |
@@ -862,8 +862,8 @@ Block use of Google Translate to translate entire webpages.
 
 When translating a website, Google Translate proxies webpages with the `translate.goog` domain. Your users may be able to use this service to bypass other Gateway policies. If you block `translate.goog`, users will still be able to access other Google Translate features.
 
-* [ Dashboard ](#tab-panel-5546)
-* [ API ](#tab-panel-5547)
+* [ Dashboard ](#tab-panel-7636)
+* [ API ](#tab-panel-7637)
 
 | Selector | Operator      | Value                      | Action |
 | -------- | ------------- | -------------------------- | ------ |
@@ -910,8 +910,8 @@ curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/gateway/rules" \
 
 Gateway does not inspect or log [WebSocket ↗](https://datatracker.ietf.org/doc/html/rfc6455) traffic. Instead, Gateway will only log the HTTP details used to make the WebSocket connection, as well as [network session information](https://developers.cloudflare.com/logs/logpush/logpush-job/datasets/account/zero%5Ftrust%5Fnetwork%5Fsessions/). To filter your WebSocket traffic, create a policy with the `101` HTTP response code.
 
-* [ Dashboard ](#tab-panel-5548)
-* [ API ](#tab-panel-5549)
+* [ Dashboard ](#tab-panel-7638)
+* [ API ](#tab-panel-7639)
 
 | Selector      | Operator | Value                      | Action |
 | ------------- | -------- | -------------------------- | ------ |
@@ -955,5 +955,6 @@ curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/gateway/rules" \
 ```
 
 ```json
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/traffic-policies/http-policies/common-policies/#page","headline":"Common HTTP policies · Cloudflare One docs","description":"Reference information for Common policies in Gateway.","url":"https://developers.cloudflare.com/cloudflare-one/traffic-policies/http-policies/common-policies/","inLanguage":"en","image":"https://developers.cloudflare.com/zt-preview.png","dateModified":"2026-04-17","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["REST API","WebSockets","Google"]}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/cloudflare-one/","name":"Cloudflare One"}},{"@type":"ListItem","position":3,"item":{"@id":"/cloudflare-one/traffic-policies/","name":"Traffic policies"}},{"@type":"ListItem","position":4,"item":{"@id":"/cloudflare-one/traffic-policies/http-policies/","name":"HTTP policies"}},{"@type":"ListItem","position":5,"item":{"@id":"/cloudflare-one/traffic-policies/http-policies/common-policies/","name":"Common policies"}}]}
 ```

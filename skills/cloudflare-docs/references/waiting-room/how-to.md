@@ -25,5 +25,6 @@ When working with Cloudflare Waiting Room, you will commonly perform the followi
 * [ Get JSON response for mobile and other non-browser traffic ](https://developers.cloudflare.com/waiting-room/how-to/json-response/)
 
 ```json
+{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/waiting-room/how-to/#page","headline":"Common tasks · Cloudflare Waiting Room docs","description":"How-to guides for creating and managing waiting rooms.","url":"https://developers.cloudflare.com/waiting-room/how-to/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/waiting-room/","name":"Waiting Room"}},{"@type":"ListItem","position":3,"item":{"@id":"/waiting-room/how-to/","name":"How to"}}]}
 ```

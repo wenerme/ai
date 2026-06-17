@@ -26,7 +26,7 @@ The default User-Agent depends on how you access Browser Run:
 
 Note
 
-Because the User-Agent is configurable for most methods and the Chrome version may change as Browser Run updates its underlying browser engine, destination servers should use the non-configurable headers below to identify Browser Run requests rather than relying on the User-Agent string.
+The User-Agent header is not a reliable way to identify Browser Run requests. It is configurable for most Browser Run methods, changes when the underlying Chrome version updates, and any HTTP client can send any User-Agent string. Destination servers should use the [non-configurable headers](#non-configurable-headers) and [Web Bot Auth](#about-web-bot-auth) signatures below, which provide cryptographic proof that a request originated from Cloudflare Browser Run.
 
 ## Non-configurable headers
 
@@ -58,5 +58,6 @@ Browser Run uses different bot detection IDs depending on the method. [Quick Act
 If you are attempting to scan your own zone and want Browser Run to access your website freely without your bot protection configuration interfering, you can create a WAF skip rule to [allowlist Browser Run](https://developers.cloudflare.com/browser-run/faq/#can-i-allowlist-browser-run-on-my-own-website).
 
 ```json
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/browser-run/reference/automatic-request-headers/#page","headline":"Automatic request headers · Cloudflare Browser Run docs","description":"Review the headers Cloudflare automatically attaches to every Browser Run request, including User-Agent and bot detection identifiers.","url":"https://developers.cloudflare.com/browser-run/reference/automatic-request-headers/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-06-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/browser-run/","name":"Browser Run"}},{"@type":"ListItem","position":3,"item":{"@id":"/browser-run/reference/","name":"Reference"}},{"@type":"ListItem","position":4,"item":{"@id":"/browser-run/reference/automatic-request-headers/","name":"Automatic request headers"}}]}
 ```

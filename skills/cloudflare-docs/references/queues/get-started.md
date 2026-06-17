@@ -93,8 +93,8 @@ To expose your queue to the code inside your Worker, you need to connect your qu
 
 To create a binding, open your newly generated `wrangler.jsonc` file and add the following:
 
-* [  wrangler.jsonc ](#tab-panel-6995)
-* [  wrangler.toml ](#tab-panel-6996)
+* [  wrangler.jsonc ](#tab-panel-9617)
+* [  wrangler.toml ](#tab-panel-9618)
 
 JSONC
 
@@ -295,8 +295,8 @@ Each queue can only have one consumer Worker connected to it. If you try to conn
 
 To connect your queue to your consumer Worker, open your Wrangler file and add this to the bottom:
 
-* [  wrangler.jsonc ](#tab-panel-6997)
-* [  wrangler.toml ](#tab-panel-6998)
+* [  wrangler.jsonc ](#tab-panel-9619)
+* [  wrangler.toml ](#tab-panel-9620)
 
 JSONC
 
@@ -401,5 +401,6 @@ By completing this guide, you have now created a queue, a producer Worker that p
 * Learn more about [Cloudflare Workers](https://developers.cloudflare.com/workers/) and the applications you can build on Cloudflare.
 
 ```json
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/queues/get-started/#page","headline":"Getting started · Cloudflare Queues docs","description":"Create your first Cloudflare Queue, a producer Worker, and a consumer Worker.","url":"https://developers.cloudflare.com/queues/get-started/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/queues/","name":"Queues"}},{"@type":"ListItem","position":3,"item":{"@id":"/queues/get-started/","name":"Getting started"}}]}
 ```

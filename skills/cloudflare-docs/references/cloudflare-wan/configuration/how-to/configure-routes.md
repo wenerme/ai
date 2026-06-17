@@ -33,8 +33,8 @@ For prefixes outside RFC 1918, contact your Cloudflare customer service manager.
 
 ### Create a static route
 
-* [ Dashboard ](#tab-panel-5270)
-* [ API ](#tab-panel-5271)
+* [ Dashboard ](#tab-panel-7780)
+* [ API ](#tab-panel-7781)
 
 1. Go to **Routes** page.
 [ Go to **Routes** ](https://dash.cloudflare.com/?to=/:account/magic-networks/routes)
@@ -187,8 +187,8 @@ curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/magic/routes" \
 
 ### Edit a static route
 
-* [ Dashboard ](#tab-panel-5272)
-* [ API ](#tab-panel-5273)
+* [ Dashboard ](#tab-panel-7782)
+* [ API ](#tab-panel-7783)
 
 1. From the **Routes** tab, locate the route to modify.
 2. Select the three dots next to it > **Edit**.
@@ -330,8 +330,8 @@ curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/magic/routes/$RO
 
 ### Delete static route
 
-* [ Dashboard ](#tab-panel-5266)
-* [ API ](#tab-panel-5267)
+* [ Dashboard ](#tab-panel-7776)
+* [ API ](#tab-panel-7777)
 
 1. From the **Routes** tab, locate the static route to delete.
 2. Select the three dots next to it > **Delete**.
@@ -443,8 +443,8 @@ curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/magic/routes/$RO
 
 To enable ARR:
 
-* [ Dashboard ](#tab-panel-5268)
-* [ API ](#tab-panel-5269)
+* [ Dashboard ](#tab-panel-7778)
+* [ API ](#tab-panel-7779)
 
 1. Follow the [Add tunnels](https://developers.cloudflare.com/cloudflare-wan/configuration/how-to/configure-tunnel-endpoints/#add-tunnels) information to learn how to create an IPsec or GRE tunnel.
 2. On the tunnel's options, select **Automatic return routing**.
@@ -599,5 +599,6 @@ Sites represent the local network of a data center, office, or other physical lo
 Refer to [Set up a site](https://developers.cloudflare.com/cloudflare-wan/configuration/common-settings/sites/) for more information.
 
 ```json
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-wan/configuration/how-to/configure-routes/#page","headline":"Configure routes · Cloudflare WAN docs","description":"Cloudflare WAN uses a static configuration to route your traffic through anycast tunnels from Cloudflare's global network to your locations. If you are connected through CNI with Dataplane v2, you also have access to BGP peering (beta). Learn how to configure routing.","url":"https://developers.cloudflare.com/cloudflare-wan/configuration/how-to/configure-routes/","inLanguage":"en","image":"https://developers.cloudflare.com/zt-preview.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/cloudflare-wan/","name":"Cloudflare WAN"}},{"@type":"ListItem","position":3,"item":{"@id":"/cloudflare-wan/configuration/","name":"Configuration"}},{"@type":"ListItem","position":4,"item":{"@id":"/cloudflare-wan/configuration/how-to/","name":"How to"}},{"@type":"ListItem","position":5,"item":{"@id":"/cloudflare-wan/configuration/how-to/configure-routes/","name":"Configure routes"}}]}
 ```

@@ -22,7 +22,7 @@ Create a new video generation job by editing a source video or existing generate
 
   - `class VideoVideoReferenceInputParam: …`
 
-    Reference to the completed video.
+    Reference to the completed video to edit.
 
     - `id: str`
 

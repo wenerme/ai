@@ -27,9 +27,9 @@ Whisper is a pre-trained model for automatic speech recognition (ASR) and speech
 
 ## Usage
 
-* [  TypeScript ](#tab-panel-4925)
-* [  Python ](#tab-panel-4926)
-* [  curl ](#tab-panel-4927)
+* [  TypeScript ](#tab-panel-5106)
+* [  Python ](#tab-panel-5107)
+* [  curl ](#tab-panel-5108)
 
 ```
 
@@ -169,8 +169,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 ## Parameters
 
-* [ Input ](#tab-panel-4928)
-* [ Output ](#tab-panel-4929)
+* [ Input ](#tab-panel-5109)
+* [ Output ](#tab-panel-5110)
 
 ▶audio
 
@@ -247,5 +247,6 @@ Input [ ](https://developers.cloudflare.com/workers-ai/models/whisper-large-v3-t
 Output [ ](https://developers.cloudflare.com/workers-ai/models/whisper-large-v3-turbo/schema-output.json "Open") [ ](https://developers.cloudflare.com/workers-ai/models/whisper-large-v3-turbo/schema-output.json "Download") 
 
 ```json
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers-ai/models/whisper-large-v3-turbo/#page","headline":"whisper-large-v3-turbo (OpenAI) · Cloudflare AI docs · Cloudflare Workers AI docs","description":"Whisper is a pre-trained model for automatic speech recognition (ASR) and speech translation.","url":"https://developers.cloudflare.com/workers-ai/models/whisper-large-v3-turbo/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/workers-ai/","name":"Workers AI"}},{"@type":"ListItem","position":3,"item":{"@id":"/workers-ai/models/","name":"Models"}}]}
 ```

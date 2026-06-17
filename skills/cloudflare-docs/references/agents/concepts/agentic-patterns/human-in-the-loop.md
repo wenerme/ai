@@ -51,8 +51,8 @@ For durable, multi-step processes, use [Cloudflare Workflows](https://developers
 
 ### Basic pattern
 
-* [  JavaScript ](#tab-panel-5186)
-* [  TypeScript ](#tab-panel-5187)
+* [  JavaScript ](#tab-panel-5369)
+* [  TypeScript ](#tab-panel-5370)
 
 JavaScript
 
@@ -229,8 +229,8 @@ export class ExpenseWorkflow extends AgentWorkflow<
 
 The agent provides methods to approve or reject waiting workflows:
 
-* [  JavaScript ](#tab-panel-5190)
-* [  TypeScript ](#tab-panel-5191)
+* [  JavaScript ](#tab-panel-5373)
+* [  TypeScript ](#tab-panel-5374)
 
 JavaScript
 
@@ -502,8 +502,8 @@ export class ExpenseAgent extends Agent<Env, ExpenseState> {
 
 Set timeouts to prevent workflows from waiting indefinitely:
 
-* [  JavaScript ](#tab-panel-5180)
-* [  TypeScript ](#tab-panel-5181)
+* [  JavaScript ](#tab-panel-5363)
+* [  TypeScript ](#tab-panel-5364)
 
 JavaScript
 
@@ -557,8 +557,8 @@ if (!approval) {
 
 Use `schedule()` to set up escalation reminders:
 
-* [  JavaScript ](#tab-panel-5182)
-* [  TypeScript ](#tab-panel-5183)
+* [  JavaScript ](#tab-panel-5365)
+* [  TypeScript ](#tab-panel-5366)
 
 JavaScript
 
@@ -714,8 +714,8 @@ class ExpenseAgent extends Agent<Env, ExpenseState> {
 
 Use `this.sql` to maintain an immutable audit trail:
 
-* [  JavaScript ](#tab-panel-5184)
-* [  TypeScript ](#tab-panel-5185)
+* [  JavaScript ](#tab-panel-5367)
+* [  TypeScript ](#tab-panel-5368)
 
 JavaScript
 
@@ -863,8 +863,8 @@ class ExpenseAgent extends Agent<Env, ExpenseState> {
 
 ### Configuration
 
-* [  wrangler.jsonc ](#tab-panel-5178)
-* [  wrangler.toml ](#tab-panel-5179)
+* [  wrangler.jsonc ](#tab-panel-5361)
+* [  wrangler.toml ](#tab-panel-5362)
 
 JSONC
 
@@ -878,7 +878,7 @@ JSONC
 
   // Set this to today's date
 
-  "compatibility_date": "2026-06-10",
+  "compatibility_date": "2026-06-17",
 
   "compatibility_flags": ["nodejs_compat"],
 
@@ -919,7 +919,7 @@ main = "src/index.ts"
 
 # Set this to today's date
 
-compatibility_date = "2026-06-10"
+compatibility_date = "2026-06-17"
 
 compatibility_flags = [ "nodejs_compat" ]
 
@@ -955,8 +955,8 @@ When building MCP servers with `McpAgent`, you can request additional user input
 
 ### Basic pattern
 
-* [  JavaScript ](#tab-panel-5192)
-* [  TypeScript ](#tab-panel-5193)
+* [  JavaScript ](#tab-panel-5375)
+* [  TypeScript ](#tab-panel-5376)
 
 JavaScript
 
@@ -1316,8 +1316,8 @@ function PendingApprovals() {
 
 For sensitive operations requiring multiple approvers:
 
-* [  JavaScript ](#tab-panel-5188)
-* [  TypeScript ](#tab-panel-5189)
+* [  JavaScript ](#tab-panel-5371)
+* [  TypeScript ](#tab-panel-5372)
 
 JavaScript
 
@@ -1487,5 +1487,6 @@ class MultiApprovalAgent extends Agent<Env, State> {
 [ Schedule tasks ](https://developers.cloudflare.com/agents/runtime/execution/schedule-tasks/) Implement approval timeouts with schedules. 
 
 ```json
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/agents/concepts/agentic-patterns/human-in-the-loop/#page","headline":"Human-in-the-loop patterns · Cloudflare Agents docs","description":"Implement human-in-the-loop functionality using Cloudflare Agents for workflow approvals and MCP elicitation","url":"https://developers.cloudflare.com/agents/concepts/agentic-patterns/human-in-the-loop/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-06-09","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/agents/","name":"Agents"}},{"@type":"ListItem","position":3,"item":{"@id":"/agents/concepts/","name":"Concepts"}},{"@type":"ListItem","position":4,"item":{"@id":"/agents/concepts/agentic-patterns/","name":"Agentic patterns"}},{"@type":"ListItem","position":5,"item":{"@id":"/agents/concepts/agentic-patterns/human-in-the-loop/","name":"Human-in-the-loop patterns"}}]}
 ```

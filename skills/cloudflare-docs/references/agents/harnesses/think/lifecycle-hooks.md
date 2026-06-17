@@ -76,20 +76,21 @@ beforeTurn(ctx: TurnContext): TurnConfig | void | Promise<TurnConfig | void>
 
 All fields are optional. Return only what you want to change.
 
-| Field                    | Type                    | Description                                                                                                                                                                                                                              |
-| ------------------------ | ----------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| model                    | LanguageModel           | Override the model for this turn                                                                                                                                                                                                         |
-| system                   | string                  | Override the system prompt                                                                                                                                                                                                               |
-| messages                 | ModelMessage\[\]        | Override the assembled messages                                                                                                                                                                                                          |
-| tools                    | ToolSet                 | Extra tools to merge (additive)                                                                                                                                                                                                          |
-| activeTools              | string\[\]              | Limit which tools the model can call                                                                                                                                                                                                     |
-| toolChoice               | ToolChoice              | Force a specific tool call                                                                                                                                                                                                               |
-| maxSteps                 | number                  | Override maxSteps for this turn                                                                                                                                                                                                          |
-| sendReasoning            | boolean                 | Send reasoning chunks for this turn                                                                                                                                                                                                      |
-| chatStreamStallTimeoutMs | number                  | Override the stream-stall watchdog for this turn (0 disables it); auto-resets after the turn. Useful for a turn with a known-slow tool — refer to [Durable recovery](https://developers.cloudflare.com/agents/harnesses/think/recovery/) |
-| output                   | Output                  | Request structured output for this turn                                                                                                                                                                                                  |
-| providerOptions          | Record<string, unknown> | Provider-specific options                                                                                                                                                                                                                |
-| experimental\_telemetry  | object                  | AI SDK telemetry settings for this turn                                                                                                                                                                                                  |
+| Field                    | Type                                           | Description                                                                                                                                                                                                                              |
+| ------------------------ | ---------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| model                    | LanguageModel                                  | Override the model for this turn                                                                                                                                                                                                         |
+| system                   | string                                         | Override the system prompt                                                                                                                                                                                                               |
+| messages                 | ModelMessage\[\]                               | Override the assembled messages                                                                                                                                                                                                          |
+| tools                    | ToolSet                                        | Extra tools to merge (additive)                                                                                                                                                                                                          |
+| activeTools              | string\[\]                                     | Limit which tools the model can call                                                                                                                                                                                                     |
+| toolChoice               | ToolChoice                                     | Force a specific tool call                                                                                                                                                                                                               |
+| maxSteps                 | number                                         | Override maxSteps for this turn                                                                                                                                                                                                          |
+| sendReasoning            | boolean                                        | Send reasoning chunks for this turn                                                                                                                                                                                                      |
+| chatStreamStallTimeoutMs | number                                         | Override the stream-stall watchdog for this turn (0 disables it); auto-resets after the turn. Useful for a turn with a known-slow tool — refer to [Durable recovery](https://developers.cloudflare.com/agents/harnesses/think/recovery/) |
+| output                   | Output                                         | Request structured output for this turn                                                                                                                                                                                                  |
+| providerOptions          | Record<string, unknown>                        | Provider-specific options                                                                                                                                                                                                                |
+| experimental\_telemetry  | object                                         | AI SDK telemetry settings for this turn                                                                                                                                                                                                  |
+| experimental\_transform  | StreamTextTransform \| StreamTextTransform\[\] | AI SDK stream transform(s) for this turn — inspect or rewrite stream parts (for example, emit source parts derived from tool results). Applied in order.                                                                                 |
 
 ### Examples
 
@@ -456,8 +457,8 @@ The second argument is a [ChatErrorContext](#onchaterror). During overflow recov
 
 For the common case, assign the bundled `defaultContextOverflowClassifier`, which matches the context-overflow errors of Anthropic, OpenAI, Google, Bedrock, and others:
 
-* [  JavaScript ](#tab-panel-5118)
-* [  TypeScript ](#tab-panel-5119)
+* [  JavaScript ](#tab-panel-5597)
+* [  TypeScript ](#tab-panel-5598)
 
 JavaScript
 
@@ -493,8 +494,8 @@ export class MyAgent extends Think<Env> {
 
 Or write your own, optionally delegating to the bundled classifier:
 
-* [  JavaScript ](#tab-panel-5120)
-* [  TypeScript ](#tab-panel-5121)
+* [  JavaScript ](#tab-panel-5599)
+* [  TypeScript ](#tab-panel-5600)
 
 JavaScript
 
@@ -551,5 +552,6 @@ export class MyAgent extends Think<Env> {
 ```
 
 ```json
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/agents/harnesses/think/lifecycle-hooks/#page","headline":"Lifecycle hooks · Cloudflare Agents docs","description":"Hooks at each stage of a Think chat turn — beforeTurn, beforeStep, beforeToolCall, afterToolCall, onStepFinish, onChunk, onChatResponse, and onChatError.","url":"https://developers.cloudflare.com/agents/harnesses/think/lifecycle-hooks/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-06-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/agents/","name":"Agents"}},{"@type":"ListItem","position":3,"item":{"@id":"/agents/harnesses/","name":"Harnesses"}},{"@type":"ListItem","position":4,"item":{"@id":"/agents/harnesses/think/","name":"Think"}},{"@type":"ListItem","position":5,"item":{"@id":"/agents/harnesses/think/lifecycle-hooks/","name":"Lifecycle hooks"}}]}
 ```

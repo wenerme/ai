@@ -61,8 +61,8 @@ In this example, the TXT record and the A record for `www.example.com` will not 
 To enable advanced nameservers on an existing zone:
 
 1. Opt for advanced nameservers on your zone:  
-   * [ Dashboard ](#tab-panel-5557)  
-   * [ API ](#tab-panel-5558)  
+   * [ Dashboard ](#tab-panel-8071)  
+   * [ API ](#tab-panel-8072)  
    1. In the Cloudflare dashboard, go to the **DNS Records** page.  
    [ Go to **Records** ](https://dash.cloudflare.com/?to=/:account/:zone/dns/records)  
    2. In the **Cloudflare nameservers** card, enable **Advanced nameservers**.  
@@ -89,5 +89,6 @@ The response body will contain your assigned nameservers in the `nameservers` ob
    Make sure the values for your assigned nameservers are copied exactly.
 
 ```json
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/dns/foundation-dns/setup/#page","headline":"Set up advanced nameservers · Cloudflare DNS docs","description":"Set up advanced nameservers for your Foundation DNS zone.","url":"https://developers.cloudflare.com/dns/foundation-dns/setup/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-17","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/dns/","name":"DNS"}},{"@type":"ListItem","position":3,"item":{"@id":"/dns/foundation-dns/","name":"Foundation DNS"}},{"@type":"ListItem","position":4,"item":{"@id":"/dns/foundation-dns/setup/","name":"Set up advanced nameservers"}}]}
 ```

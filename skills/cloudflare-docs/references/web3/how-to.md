@@ -20,5 +20,6 @@ image: https://developers.cloudflare.com/core-services-preview.png
 * [ Restrict gateway access ](https://developers.cloudflare.com/web3/how-to/restrict-gateway-access/)
 
 ```json
+{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/web3/how-to/#page","headline":"Web3 - How to · Cloudflare Web3 docs","description":"How-to guides for configuring and using Web3 gateways.","url":"https://developers.cloudflare.com/web3/how-to/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/web3/","name":"Web3"}},{"@type":"ListItem","position":3,"item":{"@id":"/web3/how-to/","name":"How to"}}]}
 ```

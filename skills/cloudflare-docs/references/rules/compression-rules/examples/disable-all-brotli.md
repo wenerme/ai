@@ -14,8 +14,8 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 Create a compression rule to turn off Brotli compression for all incoming requests of a given zone.
 
-* [ Dashboard ](#tab-panel-7329)
-* [ API ](#tab-panel-7330)
+* [ Dashboard ](#tab-panel-9965)
+* [ API ](#tab-panel-9966)
 
 The following example rule will disable Brotli compression for all incoming requests of a given zone. The only available compression algorithm will be Gzip.
 
@@ -105,5 +105,6 @@ curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/rulesets/$RULESET_ID" 
 Use the `ref` field to get stable rule IDs across updates when using Terraform. Adding this field prevents Terraform from recreating the rule on changes. For more information, refer to [Troubleshooting](https://developers.cloudflare.com/terraform/troubleshooting/rule-id-changes/#how-to-keep-the-same-rule-id-between-modifications) in the Terraform documentation.
 
 ```json
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/rules/compression-rules/examples/disable-all-brotli/#page","headline":"Disable Brotli compression · Cloudflare Rules docs","description":"Create a compression rule to turn off Brotli compression for all incoming requests of a given zone.","url":"https://developers.cloudflare.com/rules/compression-rules/examples/disable-all-brotli/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2025-10-13","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/rules/","name":"Rules"}},{"@type":"ListItem","position":3,"item":{"@id":"/rules/compression-rules/","name":"Compression Rules"}},{"@type":"ListItem","position":4,"item":{"@id":"/rules/compression-rules/examples/","name":"Compression Rules examples"}},{"@type":"ListItem","position":5,"item":{"@id":"/rules/compression-rules/examples/disable-all-brotli/","name":"Disable Brotli compression"}}]}
 ```

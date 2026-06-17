@@ -36,6 +36,10 @@ List organization API keys
 
     The Unix timestamp (in seconds) of when the API key was created
 
+  - `expires_at: number`
+
+    The Unix timestamp (in seconds) of when the API key expires
+
   - `object: "organization.admin_api_key"`
 
     The object type, which is always `organization.admin_api_key`
@@ -105,6 +109,7 @@ curl https://api.openai.com/v1/organization/admin_api_keys \
     {
       "id": "key_abc",
       "created_at": 1711471533,
+      "expires_at": 1714063533,
       "object": "organization.admin_api_key",
       "owner": {
         "id": "sa_456",
@@ -146,6 +151,7 @@ curl https://api.openai.com/v1/organization/admin_api_keys?after=key_abc&limit=2
       "name": "Main Admin Key",
       "redacted_value": "sk-admin...def",
       "created_at": 1711471533,
+      "expires_at": 1714063533,
       "last_used_at": 1711471534,
       "owner": {
         "type": "service_account",
@@ -173,6 +179,10 @@ Create an organization admin API key
 
 - `name: string`
 
+- `expires_in_seconds: optional number`
+
+  The number of seconds until the API key expires. Omit this field for a key that does not expire.
+
 ### Returns
 
 - `value: string`
@@ -186,7 +196,8 @@ curl https://api.openai.com/v1/organization/admin_api_keys \
     -H 'Content-Type: application/json' \
     -H "Authorization: Bearer $OPENAI_ADMIN_KEY" \
     -d '{
-          "name": "New Admin Key"
+          "name": "New Admin Key",
+          "expires_in_seconds": 2592000
         }'
 ```
 
@@ -196,6 +207,7 @@ curl https://api.openai.com/v1/organization/admin_api_keys \
 {
   "id": "key_abc",
   "created_at": 1711471533,
+  "expires_at": 1714063533,
   "object": "organization.admin_api_key",
   "owner": {
     "id": "sa_456",
@@ -219,7 +231,8 @@ curl -X POST https://api.openai.com/v1/organization/admin_api_keys \
   -H "Authorization: Bearer $OPENAI_ADMIN_KEY" \
   -H "Content-Type: application/json" \
   -d '{
-      "name": "New Admin Key"
+      "name": "New Admin Key",
+      "expires_in_seconds": 2592000
   }'
 ```
 
@@ -232,6 +245,7 @@ curl -X POST https://api.openai.com/v1/organization/admin_api_keys \
   "name": "New Admin Key",
   "redacted_value": "sk-admin...xyz",
   "created_at": 1711471533,
+  "expires_at": 1714063533,
   "last_used_at": 1711471534,
   "owner": {
     "type": "user",
@@ -259,7 +273,7 @@ Retrieve a single organization API key
 
 ### Returns
 
-- `AdminAPIKey object { id, created_at, object, 4 more }`
+- `AdminAPIKey object { id, created_at, expires_at, 5 more }`
 
   Represents an individual Admin API key in an org.
 
@@ -270,6 +284,10 @@ Retrieve a single organization API key
   - `created_at: number`
 
     The Unix timestamp (in seconds) of when the API key was created
+
+  - `expires_at: number`
+
+    The Unix timestamp (in seconds) of when the API key expires
 
   - `object: "organization.admin_api_key"`
 
@@ -328,6 +346,7 @@ curl https://api.openai.com/v1/organization/admin_api_keys/$KEY_ID \
 {
   "id": "key_abc",
   "created_at": 1711471533,
+  "expires_at": 1714063533,
   "object": "organization.admin_api_key",
   "owner": {
     "id": "sa_456",
@@ -434,7 +453,7 @@ curl -X DELETE https://api.openai.com/v1/organization/admin_api_keys/key_abc \
 
 ### Admin API Key
 
-- `AdminAPIKey object { id, created_at, object, 4 more }`
+- `AdminAPIKey object { id, created_at, expires_at, 5 more }`
 
   Represents an individual Admin API key in an org.
 
@@ -445,6 +464,10 @@ curl -X DELETE https://api.openai.com/v1/organization/admin_api_keys/key_abc \
   - `created_at: number`
 
     The Unix timestamp (in seconds) of when the API key was created
+
+  - `expires_at: number`
+
+    The Unix timestamp (in seconds) of when the API key expires
 
   - `object: "organization.admin_api_key"`
 

@@ -31,5 +31,6 @@ To use Zaraz Monitoring:
 * **Server-side requests**: tracks the status codes returned from server-side requests that Zaraz makes to your third-party tools.
 
 ```json
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/zaraz/monitoring/#page","headline":"Monitoring · Cloudflare Zaraz docs","description":"Monitor Zaraz tool loading and event delivery.","url":"https://developers.cloudflare.com/zaraz/monitoring/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/zaraz/","name":"Zaraz"}},{"@type":"ListItem","position":3,"item":{"@id":"/zaraz/monitoring/","name":"Monitoring"}}]}
 ```

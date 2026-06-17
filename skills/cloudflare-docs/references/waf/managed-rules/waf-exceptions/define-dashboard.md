@@ -16,8 +16,8 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 To add an exception at the zone level:
 
-* [  New dashboard ](#tab-panel-10075)
-* [ Old dashboard ](#tab-panel-10076)
+* [  New dashboard ](#tab-panel-11252)
+* [ Old dashboard ](#tab-panel-11253)
 
 1. In the Cloudflare dashboard, go to the **Security rules** page.  
 [ Go to **Security rules** ](https://dash.cloudflare.com/?to=/:account/:zone/security/security-rules)
@@ -66,8 +66,8 @@ To add an exception at the account level (Enterprise plans only):
 
 To edit an exception at the zone level:
 
-* [  New dashboard ](#tab-panel-10077)
-* [ Old dashboard ](#tab-panel-10078)
+* [  New dashboard ](#tab-panel-11254)
+* [ Old dashboard ](#tab-panel-11255)
 
 1. In the Cloudflare dashboard, go to the **Security rules** page.  
 [ Go to **Security rules** ](https://dash.cloudflare.com/?to=/:account/:zone/security/security-rules)
@@ -97,5 +97,6 @@ Note
 Exceptions only apply to rules executing a managed ruleset listed after them. For example, if you are skipping a rule belonging to the Cloudflare OWASP Core Ruleset, make sure the exception is listed in the rules list before the _Execute_ rule deploying this managed ruleset.
 
 ```json
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/waf/managed-rules/waf-exceptions/define-dashboard/#page","headline":"Add a WAF exception in the dashboard · Cloudflare Web Application Firewall (WAF) docs","description":"Use the Cloudflare dashboard to create exceptions that skip the execution of WAF managed rulesets or specific ruleset rules.","url":"https://developers.cloudflare.com/waf/managed-rules/waf-exceptions/define-dashboard/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/waf/","name":"WAF"}},{"@type":"ListItem","position":3,"item":{"@id":"/waf/managed-rules/","name":"Managed Rules"}},{"@type":"ListItem","position":4,"item":{"@id":"/waf/managed-rules/waf-exceptions/","name":"Create exceptions"}},{"@type":"ListItem","position":5,"item":{"@id":"/waf/managed-rules/waf-exceptions/define-dashboard/","name":"Add an exception in the dashboard"}}]}
 ```

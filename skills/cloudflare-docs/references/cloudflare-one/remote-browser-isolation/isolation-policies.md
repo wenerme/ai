@@ -138,8 +138,8 @@ Custom block dialogs are still in beta. Contact your account team to start using
 
 Isolate security threats such as malware and phishing.
 
-* [ Dashboard ](#tab-panel-5308)
-* [ API ](#tab-panel-5309)
+* [ Dashboard ](#tab-panel-7392)
+* [ API ](#tab-panel-7393)
 
 | Selector            | Operator | Value                | Action  |
 | ------------------- | -------- | -------------------- | ------- |
@@ -186,8 +186,8 @@ curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/gateway/rules" \
 
 Isolate high risk content categories such as newly registered domains.
 
-* [ Dashboard ](#tab-panel-5310)
-* [ API ](#tab-panel-5311)
+* [ Dashboard ](#tab-panel-7394)
+* [ API ](#tab-panel-7395)
 
 | Selector           | Operator | Value            | Action  |
 | ------------------ | -------- | ---------------- | ------- |
@@ -234,8 +234,8 @@ curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/gateway/rules" \
 
 Isolate news and media sites, which are targets for malvertising attacks.
 
-* [ Dashboard ](#tab-panel-5312)
-* [ API ](#tab-panel-5313)
+* [ Dashboard ](#tab-panel-7396)
+* [ API ](#tab-panel-7397)
 
 | Selector           | Operator | Value            | Action  |
 | ------------------ | -------- | ---------------- | ------- |
@@ -282,8 +282,8 @@ curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/gateway/rules" \
 
 Isolate content that has not been categorized by [Cloudflare Radar](https://developers.cloudflare.com/radar/).
 
-* [ Dashboard ](#tab-panel-5314)
-* [ API ](#tab-panel-5315)
+* [ Dashboard ](#tab-panel-7398)
+* [ API ](#tab-panel-7399)
 
 | Selector           | Operator | Value                    | Action  |
 | ------------------ | -------- | ------------------------ | ------- |
@@ -330,8 +330,8 @@ curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/gateway/rules" \
 
 Isolate the use of ChatGPT.
 
-* [ Dashboard ](#tab-panel-5316)
-* [ API ](#tab-panel-5317)
+* [ Dashboard ](#tab-panel-7400)
+* [ API ](#tab-panel-7401)
 
 | Selector    | Operator | Value     | Action  |
 | ----------- | -------- | --------- | ------- |
@@ -377,5 +377,6 @@ curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/gateway/rules" \
 ```
 
 ```json
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/remote-browser-isolation/isolation-policies/#page","headline":"Isolation policies · Cloudflare One docs","description":"Reference information for Isolation policies in Browser Isolation.","url":"https://developers.cloudflare.com/cloudflare-one/remote-browser-isolation/isolation-policies/","inLanguage":"en","image":"https://developers.cloudflare.com/zt-preview.png","dateModified":"2026-04-17","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["REST API"]}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/cloudflare-one/","name":"Cloudflare One"}},{"@type":"ListItem","position":3,"item":{"@id":"/cloudflare-one/remote-browser-isolation/","name":"Remote browser isolation"}},{"@type":"ListItem","position":4,"item":{"@id":"/cloudflare-one/remote-browser-isolation/isolation-policies/","name":"Isolation policies"}}]}
 ```

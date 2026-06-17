@@ -332,5 +332,6 @@ In general, because Workers are fundamentally preemptible (unlike containers or 
 Cloudflare sees this as an ongoing investment — not something that will ever be done.
 
 ```json
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/reference/security-model/#page","headline":"Security model · Cloudflare Workers docs","description":"Understand the Workers security architecture, including V8 isolate sandboxing and Spectre mitigations.","url":"https://developers.cloudflare.com/workers/reference/security-model/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/workers/","name":"Workers"}},{"@type":"ListItem","position":3,"item":{"@id":"/workers/reference/","name":"Reference"}},{"@type":"ListItem","position":4,"item":{"@id":"/workers/reference/security-model/","name":"Security model"}}]}
 ```

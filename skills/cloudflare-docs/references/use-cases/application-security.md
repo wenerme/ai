@@ -71,5 +71,6 @@ Analyze security events and fine-tune your configuration.
 Explore how companies secure their applications with Cloudflare.
 
 ```json
+{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/use-cases/application-security/#page","headline":"Application security · Use cases · Cloudflare use cases","description":"Protect web applications and APIs with Cloudflare Application security (WAF), DDoS protection, bot security, API Shield, and client-side security.","url":"https://developers.cloudflare.com/use-cases/application-security/","inLanguage":"en","image":"https://developers.cloudflare.com/cf-twitter-card.png","dateModified":"2026-04-24","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/use-cases/","name":"Use cases"}},{"@type":"ListItem","position":3,"item":{"@id":"/use-cases/application-security/","name":"Application security"}}]}
 ```

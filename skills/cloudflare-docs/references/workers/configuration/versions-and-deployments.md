@@ -1,5 +1,5 @@
 ---
-title: Versions &#38; Deployments
+title: Versions &amp; Deployments
 description: Upload versions of Workers and create deployments to release new versions.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
@@ -109,5 +109,6 @@ Refer to [Migrate from Service Workers to ES modules](https://developers.cloudfl
 Uploading a version with [Durable Object migrations](https://developers.cloudflare.com/durable-objects/reference/durable-objects-migrations/) is not supported. Use [wrangler deploy](https://developers.cloudflare.com/workers/wrangler/commands/workers/#deploy) if you are applying a [Durable Object migration](https://developers.cloudflare.com/durable-objects/reference/durable-objects-migrations/).
 
 ```json
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/configuration/versions-and-deployments/#page","headline":"Versions & Deployments · Cloudflare Workers docs","description":"Upload versions of Workers and create deployments to release new versions.","url":"https://developers.cloudflare.com/workers/configuration/versions-and-deployments/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-05-18","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/workers/","name":"Workers"}},{"@type":"ListItem","position":3,"item":{"@id":"/workers/configuration/","name":"Configuration"}},{"@type":"ListItem","position":4,"item":{"@id":"/workers/configuration/versions-and-deployments/","name":"Versions & Deployments"}}]}
 ```

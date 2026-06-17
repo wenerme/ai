@@ -34,5 +34,6 @@ Email activity aggregates statistics about emails scanned and dispositions assig
 To view the live number of email scanned and dispositions scanned, enable **Live mode**.
 
 ```json
+{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/learning-paths/secure-your-email/monitor-your-inbox/#page","headline":"Monitor your email activity · Cloudflare Learning Paths","description":"Protect your organization from email phishing attacks.","url":"https://developers.cloudflare.com/learning-paths/secure-your-email/monitor-your-inbox/","inLanguage":"en","image":"https://developers.cloudflare.com/cf-twitter-card.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/learning-paths/","name":"Learning Paths"}},{"@type":"ListItem","position":3,"item":{"@id":"/learning-paths/secure-your-email/monitor-your-inbox/","name":"Monitor your email activity"}}]}
 ```

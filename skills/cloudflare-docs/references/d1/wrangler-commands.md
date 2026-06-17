@@ -20,9 +20,9 @@ Creates a new D1 database, and provides the binding and UUID that you will put i
 
 This command acts on remote D1 Databases.
 
-* [  npm ](#tab-panel-5963)
-* [  pnpm ](#tab-panel-5964)
-* [  yarn ](#tab-panel-5965)
+* [  npm ](#tab-panel-8003)
+* [  pnpm ](#tab-panel-8004)
+* [  yarn ](#tab-panel-8005)
 
 Terminal window
 
@@ -89,9 +89,9 @@ Get information about a D1 database, including the current database size and sta
 
 This command acts on remote D1 Databases.
 
-* [  npm ](#tab-panel-5966)
-* [  pnpm ](#tab-panel-5967)
-* [  yarn ](#tab-panel-5968)
+* [  npm ](#tab-panel-8006)
+* [  pnpm ](#tab-panel-8007)
+* [  yarn ](#tab-panel-8008)
 
 Terminal window
 
@@ -150,9 +150,9 @@ List all D1 databases in your account
 
 This command acts on remote D1 Databases.
 
-* [  npm ](#tab-panel-5969)
-* [  pnpm ](#tab-panel-5970)
-* [  yarn ](#tab-panel-5971)
+* [  npm ](#tab-panel-8009)
+* [  pnpm ](#tab-panel-8010)
+* [  yarn ](#tab-panel-8011)
 
 Terminal window
 
@@ -209,9 +209,9 @@ Delete a D1 database
 
 This command acts on remote D1 Databases.
 
-* [  npm ](#tab-panel-5972)
-* [  pnpm ](#tab-panel-5973)
-* [  yarn ](#tab-panel-5974)
+* [  npm ](#tab-panel-8012)
+* [  pnpm ](#tab-panel-8013)
+* [  yarn ](#tab-panel-8014)
 
 Terminal window
 
@@ -270,9 +270,9 @@ Execute a command or SQL file
 
 You must provide either --command or --file for this command to run successfully.
 
-* [  npm ](#tab-panel-5975)
-* [  pnpm ](#tab-panel-5976)
-* [  yarn ](#tab-panel-5977)
+* [  npm ](#tab-panel-8015)
+* [  pnpm ](#tab-panel-8016)
+* [  yarn ](#tab-panel-8017)
 
 Terminal window
 
@@ -343,9 +343,9 @@ Install Cloudflare agents skills, if not already present, without asking the use
 
 Export the contents or schema of your database as a .sql file
 
-* [  npm ](#tab-panel-5978)
-* [  pnpm ](#tab-panel-5979)
-* [  yarn ](#tab-panel-5980)
+* [  npm ](#tab-panel-8018)
+* [  pnpm ](#tab-panel-8019)
+* [  yarn ](#tab-panel-8020)
 
 Terminal window
 
@@ -418,9 +418,9 @@ This command acts on remote D1 Databases.
 
 For more information about Time Travel, see <https://developers.cloudflare.com/d1/reference/time-travel/>
 
-* [  npm ](#tab-panel-5981)
-* [  pnpm ](#tab-panel-5982)
-* [  yarn ](#tab-panel-5983)
+* [  npm ](#tab-panel-8021)
+* [  pnpm ](#tab-panel-8022)
+* [  yarn ](#tab-panel-8023)
 
 Terminal window
 
@@ -483,9 +483,9 @@ This command acts on remote D1 Databases.
 
 For more information about Time Travel, see <https://developers.cloudflare.com/d1/reference/time-travel/>
 
-* [  npm ](#tab-panel-5984)
-* [  pnpm ](#tab-panel-5985)
-* [  yarn ](#tab-panel-5986)
+* [  npm ](#tab-panel-8024)
+* [  pnpm ](#tab-panel-8025)
+* [  yarn ](#tab-panel-8026)
 
 Terminal window
 
@@ -555,9 +555,9 @@ This will generate a new versioned file inside the 'migrations' folder. Name you
 
 The filename will include a version number and the migration name you specify.
 
-* [  npm ](#tab-panel-5987)
-* [  pnpm ](#tab-panel-5988)
-* [  yarn ](#tab-panel-5989)
+* [  npm ](#tab-panel-8027)
+* [  pnpm ](#tab-panel-8028)
+* [  yarn ](#tab-panel-8029)
 
 Terminal window
 
@@ -614,9 +614,9 @@ Install Cloudflare agents skills, if not already present, without asking the use
 
 View a list of unapplied migration files
 
-* [  npm ](#tab-panel-5990)
-* [  pnpm ](#tab-panel-5991)
-* [  yarn ](#tab-panel-5992)
+* [  npm ](#tab-panel-8030)
+* [  pnpm ](#tab-panel-8031)
+* [  yarn ](#tab-panel-8032)
 
 Terminal window
 
@@ -687,9 +687,9 @@ When running the apply command in a CI/CD environment or another non-interactive
 
 If applying a migration results in an error, this migration will be rolled back, and the previous successful migration will remain applied.
 
-* [  npm ](#tab-panel-5993)
-* [  pnpm ](#tab-panel-5994)
-* [  yarn ](#tab-panel-5995)
+* [  npm ](#tab-panel-8033)
+* [  pnpm ](#tab-panel-8034)
+* [  yarn ](#tab-panel-8035)
 
 Terminal window
 
@@ -757,9 +757,9 @@ Get information about the queries run on a D1 database
 
 This command acts on remote D1 Databases.
 
-* [  npm ](#tab-panel-5996)
-* [  pnpm ](#tab-panel-5997)
-* [  yarn ](#tab-panel-5998)
+* [  npm ](#tab-panel-8036)
+* [  pnpm ](#tab-panel-8037)
+* [  yarn ](#tab-panel-8038)
 
 Terminal window
 
@@ -823,5 +823,6 @@ Automatically provision draft bindings with new resources
 Install Cloudflare agents skills, if not already present, without asking the user for confirmation
 
 ```json
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/d1/wrangler-commands/#page","headline":"Wrangler commands · Cloudflare D1 docs","description":"Use Wrangler CLI commands to create, manage, and query D1 databases.","url":"https://developers.cloudflare.com/d1/wrangler-commands/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/d1/","name":"D1"}},{"@type":"ListItem","position":3,"item":{"@id":"/d1/wrangler-commands/","name":"Wrangler commands"}}]}
 ```

@@ -31,5 +31,6 @@ Start building agents that can remember context, communicate with users, and act
 * [ Testing your Agents ](https://developers.cloudflare.com/agents/getting-started/testing-your-agent/)
 
 ```json
+{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/agents/getting-started/#page","headline":"Getting started · Cloudflare Agents docs","description":"Start building Agents on Cloudflare that maintain state, make decisions, and execute workflows.","url":"https://developers.cloudflare.com/agents/getting-started/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-06-03","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/agents/","name":"Agents"}},{"@type":"ListItem","position":3,"item":{"@id":"/agents/getting-started/","name":"Getting started"}}]}
 ```

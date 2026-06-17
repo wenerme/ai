@@ -29,8 +29,8 @@ When setting up DNS views, observe the following conditions:
 
 ## Create a view
 
-* [ Dashboard ](#tab-panel-5981)
-* [ API ](#tab-panel-5982)
+* [ Dashboard ](#tab-panel-8075)
+* [ API ](#tab-panel-8076)
 
 1. In the Cloudflare dashboard, go to the **Internal DNS** page.  
 [ Go to **Internal DNS** ](https://dash.cloudflare.com/?to=/:account/internal-dns)
@@ -48,8 +48,8 @@ DNS views can be deleted even if they still have internal zones linked to them. 
 
 It is also possible to delete a DNS view that is being referenced by a Gateway resolver policy. In this case, queries matching the policy will return SERVFAIL.
 
-* [ Dashboard ](#tab-panel-5979)
-* [ API ](#tab-panel-5980)
+* [ Dashboard ](#tab-panel-8073)
+* [ API ](#tab-panel-8074)
 
 1. In the Cloudflare dashboard, go to the **Internal DNS** page.  
 [ Go to **Internal DNS** ](https://dash.cloudflare.com/?to=/:account/internal-dns)
@@ -67,5 +67,6 @@ Use the [Delete Internal DNS View](https://developers.cloudflare.com/api/resourc
 * [List DNS views](https://developers.cloudflare.com/api/resources/dns/subresources/settings/subresources/account/subresources/views/methods/list/) (`GET`)
 
 ```json
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/dns/internal-dns/dns-views/#page","headline":"Manage DNS views · Cloudflare DNS docs","description":"Manage DNS views to return different responses by network.","url":"https://developers.cloudflare.com/dns/internal-dns/dns-views/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-17","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Private networks"]}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/dns/","name":"DNS"}},{"@type":"ListItem","position":3,"item":{"@id":"/dns/internal-dns/","name":"Internal DNS (beta)"}},{"@type":"ListItem","position":4,"item":{"@id":"/dns/internal-dns/dns-views/","name":"Manage DNS views"}}]}
 ```

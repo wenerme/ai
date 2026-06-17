@@ -45,8 +45,8 @@ await sandbox.mountBucket(
 * `mountPath` \- Local filesystem path to mount at (e.g., `"/data"`)
 * `options` (optional) - Mount configuration (see [MountBucketOptions](#mountbucketoptions))
 
-* [  JavaScript ](#tab-panel-10012)
-* [  TypeScript ](#tab-panel-10013)
+* [  JavaScript ](#tab-panel-10183)
+* [  TypeScript ](#tab-panel-10184)
 
 JavaScript
 
@@ -192,8 +192,8 @@ await sandbox.unmountBucket(mountPath: string): Promise<void>
 
 * `mountPath` \- Path where the bucket is mounted (e.g., `"/data"`)
 
-* [  JavaScript ](#tab-panel-10010)
-* [  TypeScript ](#tab-panel-10011)
+* [  JavaScript ](#tab-panel-10181)
+* [  TypeScript ](#tab-panel-10182)
 
 JavaScript
 
@@ -362,5 +362,6 @@ type BucketProvider = "r2" | "s3" | "gcs";
 * [Files API](https://developers.cloudflare.com/sandbox/api/files/) \- Read and write files
 
 ```json
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/sandbox/api/storage/#page","headline":"Storage · Cloudflare Sandbox SDK docs","description":"Mount S3-compatible storage buckets into the Sandbox SDK filesystem for persistent data access.","url":"https://developers.cloudflare.com/sandbox/api/storage/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-06-08","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/sandbox/","name":"Sandbox SDK"}},{"@type":"ListItem","position":3,"item":{"@id":"/sandbox/api/","name":"API reference"}},{"@type":"ListItem","position":4,"item":{"@id":"/sandbox/api/storage/","name":"Storage"}}]}
 ```

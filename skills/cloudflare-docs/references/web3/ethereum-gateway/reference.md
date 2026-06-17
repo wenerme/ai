@@ -18,5 +18,6 @@ image: https://developers.cloudflare.com/core-services-preview.png
 * [ Kill Switches ](https://developers.cloudflare.com/web3/ethereum-gateway/reference/kill-switches/)
 
 ```json
+{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/web3/ethereum-gateway/reference/#page","headline":"Reference - Ethereum · Cloudflare Web3 docs","description":"Reference information for the Cloudflare Ethereum Gateway.","url":"https://developers.cloudflare.com/web3/ethereum-gateway/reference/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/web3/","name":"Web3"}},{"@type":"ListItem","position":3,"item":{"@id":"/web3/ethereum-gateway/","name":"Ethereum Gateway"}},{"@type":"ListItem","position":4,"item":{"@id":"/web3/ethereum-gateway/reference/","name":"Reference"}}]}
 ```

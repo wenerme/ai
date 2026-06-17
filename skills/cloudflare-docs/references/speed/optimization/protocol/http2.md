@@ -33,8 +33,8 @@ HTTP/2 is enabled by default for all plans (though it does require an [SSL certi
 
 Domains on Free plans cannot disable Cloudflare's HTTP/2 setting.
 
-* [ Dashboard ](#tab-panel-10006)
-* [ API ](#tab-panel-10007)
+* [ Dashboard ](#tab-panel-10554)
+* [ API ](#tab-panel-10555)
 
 To disable **HTTP/2** in the dashboard:
 
@@ -73,5 +73,6 @@ You can try to disable compression at your origin web server and rely on Cloudfl
 You can also review your origin server's compression settings to make sure the compression is working as expected.
 
 ```json
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/speed/optimization/protocol/http2/#page","headline":"HTTP/2 · Cloudflare Speed docs","description":"Serve content over HTTP/2 for multiplexed, lower-latency connections.","url":"https://developers.cloudflare.com/speed/optimization/protocol/http2/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/speed/","name":"Speed"}},{"@type":"ListItem","position":3,"item":{"@id":"/speed/optimization/","name":"Settings"}},{"@type":"ListItem","position":4,"item":{"@id":"/speed/optimization/protocol/","name":"Protocol optimization"}},{"@type":"ListItem","position":5,"item":{"@id":"/speed/optimization/protocol/http2/","name":"HTTP/2"}}]}
 ```

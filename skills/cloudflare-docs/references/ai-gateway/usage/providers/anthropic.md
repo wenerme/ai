@@ -31,8 +31,8 @@ https://gateway.ai.cloudflare.com/v1/{account_id}/{gateway_id}/anthropic
 
 With API Key in Request
 
-* [ With Authenticated Gateway ](#tab-panel-4537)
-* [ Unauthenticated Gateway ](#tab-panel-4538)
+* [ With Authenticated Gateway ](#tab-panel-6570)
+* [ Unauthenticated Gateway ](#tab-panel-6571)
 
 Terminal window
 
@@ -129,8 +129,8 @@ curl https://gateway.ai.cloudflare.com/v1/{account_id}/{gateway_id}/anthropic/v1
 
 With Key in Request
 
-* [ With Authenticated Gateway ](#tab-panel-4539)
-* [ Unauthenticated Gateway ](#tab-panel-4540)
+* [ With Authenticated Gateway ](#tab-panel-6572)
+* [ Unauthenticated Gateway ](#tab-panel-6573)
 
 ```
 
@@ -259,5 +259,6 @@ Specify:
 ```
 
 ```json
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai-gateway/usage/providers/anthropic/#page","headline":"Anthropic · Cloudflare AI Gateway docs","description":"Route Anthropic API requests through AI Gateway for observability and control.","url":"https://developers.cloudflare.com/ai-gateway/usage/providers/anthropic/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-20","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/ai-gateway/","name":"AI Gateway"}},{"@type":"ListItem","position":3,"item":{"@id":"/ai-gateway/usage/","name":"Using AI Gateway"}},{"@type":"ListItem","position":4,"item":{"@id":"/ai-gateway/usage/providers/","name":"Provider Native"}},{"@type":"ListItem","position":5,"item":{"@id":"/ai-gateway/usage/providers/anthropic/","name":"Anthropic"}}]}
 ```

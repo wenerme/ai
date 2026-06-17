@@ -22,10 +22,10 @@ If you want to get started quickly, click on the button below.
 
 This creates a repository in your GitHub account and deploys the application to Cloudflare Workers.
 
-* [  JavaScript ](#tab-panel-10398)
-* [  TypeScript ](#tab-panel-10399)
-* [  Hono ](#tab-panel-10400)
-* [  Python ](#tab-panel-10401)
+* [  JavaScript ](#tab-panel-11577)
+* [  TypeScript ](#tab-panel-11578)
+* [  Hono ](#tab-panel-11579)
+* [  Python ](#tab-panel-11580)
 
 JavaScript
 
@@ -181,5 +181,6 @@ class Default(WorkerEntrypoint):
 ```
 
 ```json
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/examples/aggregate-requests/#page","headline":"Aggregate requests · Cloudflare Workers docs","description":"Send two GET request to two urls and aggregates the responses into one response.","url":"https://developers.cloudflare.com/workers/examples/aggregate-requests/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["JavaScript","TypeScript","Python"]}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/workers/","name":"Workers"}},{"@type":"ListItem","position":3,"item":{"@id":"/workers/examples/","name":"Examples"}},{"@type":"ListItem","position":4,"item":{"@id":"/workers/examples/aggregate-requests/","name":"Aggregate requests"}}]}
 ```

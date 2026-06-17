@@ -18,9 +18,9 @@ Securely connect your private cloud to Cloudflare to build cross-cloud apps.
 
 Workers VPC allows you to connect your Workers to your private APIs, services, and databases in external clouds (AWS, Azure, GCP, on-premise, and others) that are not accessible from the public Internet.
 
-With Workers VPC, you can configure a [Cloudflare Tunnel](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/) to establish secure, private connections from your private networks to Cloudflare. Then, you can configure a [VPC Service](https://developers.cloudflare.com/workers-vpc/configuration/vpc-services/) for each service in the external private network you need to connect to, and use [VPC Service bindings](https://developers.cloudflare.com/workers-vpc/api/) to connect from Workers. VPC Services support both HTTP and TCP service types, allowing you to connect to web APIs and databases (through [Hyperdrive](https://developers.cloudflare.com/hyperdrive/)).
+**[VPC Services](https://developers.cloudflare.com/workers-vpc/configuration/vpc-services/)** let you bind to a specific host and port in your private network. Connect a [Cloudflare Tunnel](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/) to your infrastructure, register each target as a VPC Service, and use the [binding API](https://developers.cloudflare.com/workers-vpc/api/) from your Worker. VPC Services support HTTP and TCP (TCP databases through [Hyperdrive](https://developers.cloudflare.com/hyperdrive/)).
 
-You can also use [VPC Network bindings](https://developers.cloudflare.com/workers-vpc/configuration/vpc-networks/) to give Workers broader access to your private infrastructure — services behind [Cloudflare Mesh](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-mesh/), subnet and hostname routes announced through Cloudflare Tunnel or Mesh, and destinations connected through [Cloudflare WAN](https://developers.cloudflare.com/cloudflare-wan/) on-ramps (GRE, IPsec, and CNI). The same binding can also egress to public Internet destinations through [Cloudflare Gateway](https://developers.cloudflare.com/cloudflare-one/traffic-policies/), so your existing Zero Trust traffic policies and logs apply to Worker requests.
+**[VPC Networks](https://developers.cloudflare.com/workers-vpc/configuration/vpc-networks/)** give Workers broader access — bind to an entire [Cloudflare Tunnel](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/), [Cloudflare Mesh](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-mesh/) network, or [Cloudflare WAN](https://developers.cloudflare.com/cloudflare-wan/) on-ramp (GRE, IPsec, CNI) without pre-registering individual hosts. The URL or address you pass at runtime determines the destination. VPC Networks support HTTP via `fetch()` and raw TCP via [connect()](https://developers.cloudflare.com/workers/runtime-apis/tcp-sockets/) for non-HTTP services like Redis, MQTT, and custom protocols. The same binding can also egress to public Internet destinations through [Cloudflare Gateway](https://developers.cloudflare.com/cloudflare-one/traffic-policies/), with your Zero Trust policies and logs applied.
 
 [Worker](https://developers.cloudflare.com/workers/) 
 
@@ -56,8 +56,8 @@ Note
 
 Workers VPC is currently in beta. Features and APIs may change before general availability. While in beta, Workers VPC is available for free to all Workers plans.
 
-* [ index.ts ](#tab-panel-10762)
-* [ wrangler.jsonc ](#tab-panel-10763)
+* [ index.ts ](#tab-panel-11331)
+* [ wrangler.jsonc ](#tab-panel-11332)
 
 TypeScript
 
@@ -155,5 +155,6 @@ Build serverless applications and deploy instantly across the globe for exceptio
 Connect to PostgreSQL and MySQL databases from Workers with connection pooling and caching built-in, available to all Workers plans.
 
 ```json
+{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/workers-vpc/#page","headline":"Overview · Cloudflare Workers VPC","description":"Securely connect your private cloud to Cloudflare to build cross-cloud apps.","url":"https://developers.cloudflare.com/workers-vpc/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-06-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/workers-vpc/","name":"Workers VPC"}}]}
 ```

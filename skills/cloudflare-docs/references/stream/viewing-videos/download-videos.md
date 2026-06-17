@@ -30,11 +30,11 @@ You can enable downloads for an uploaded video once it is ready to view by makin
 
 To get notified when a video is ready to view, refer to [Using webhooks](https://developers.cloudflare.com/stream/manage-video-library/using-webhooks/#notifications).
 
-* [ REST API ](#tab-panel-10080)
-* [ Workers Binding API ](#tab-panel-10081)
+* [ REST API ](#tab-panel-10841)
+* [ Workers Binding API ](#tab-panel-10842)
 
-* [ cURL ](#tab-panel-10064)
-* [ TypeScript ](#tab-panel-10065)
+* [ cURL ](#tab-panel-10825)
+* [ TypeScript ](#tab-panel-10826)
 
 Terminal window
 
@@ -106,8 +106,8 @@ The response includes the download type, URL, and processing status:
 
 See the full Stream [REST API and SDK reference](https://developers.cloudflare.com/api/resources/stream/) for details on using REST API from external applications, with pre-generated SDK's for external TypeScript, Python, or Go applications.
 
-* [ index.ts ](#tab-panel-10066)
-* [ wrangler.jsonc ](#tab-panel-10067)
+* [ index.ts ](#tab-panel-10827)
+* [ wrangler.jsonc ](#tab-panel-10828)
 
 TypeScript
 
@@ -165,11 +165,11 @@ See the full [Workers Stream binding API reference](https://developers.cloudflar
 
 To enable M4A support on a per video basis, follow steps similar to that of generating an MP4 download, but instead send a POST request to the `/downloads/audio` endpoint.
 
-* [ REST API ](#tab-panel-10082)
-* [ Workers Binding API ](#tab-panel-10083)
+* [ REST API ](#tab-panel-10843)
+* [ Workers Binding API ](#tab-panel-10844)
 
-* [ cURL ](#tab-panel-10068)
-* [ TypeScript ](#tab-panel-10069)
+* [ cURL ](#tab-panel-10829)
+* [ TypeScript ](#tab-panel-10830)
 
 Terminal window
 
@@ -241,8 +241,8 @@ The response includes the download type, URL, and processing status:
 
 See the full Stream [REST API and SDK reference](https://developers.cloudflare.com/api/resources/stream/) for details on using REST API from external applications, with pre-generated SDK's for external TypeScript, Python, or Go applications.
 
-* [ index.ts ](#tab-panel-10070)
-* [ wrangler.jsonc ](#tab-panel-10071)
+* [ index.ts ](#tab-panel-10831)
+* [ wrangler.jsonc ](#tab-panel-10832)
 
 TypeScript
 
@@ -300,11 +300,11 @@ See the full [Workers Stream binding API reference](https://developers.cloudflar
 
 You can view all available downloads for a video by making a `GET` HTTP request to the downloads API.
 
-* [ REST API ](#tab-panel-10084)
-* [ Workers Binding API ](#tab-panel-10085)
+* [ REST API ](#tab-panel-10845)
+* [ Workers Binding API ](#tab-panel-10846)
 
-* [ cURL ](#tab-panel-10072)
-* [ TypeScript ](#tab-panel-10073)
+* [ cURL ](#tab-panel-10833)
+* [ TypeScript ](#tab-panel-10834)
 
 Terminal window
 
@@ -386,8 +386,8 @@ Response
 
 See the full Stream [REST API and SDK reference](https://developers.cloudflare.com/api/resources/stream/) for details on using REST API from external applications, with pre-generated SDK's for external TypeScript, Python, or Go applications.
 
-* [ index.ts ](#tab-panel-10074)
-* [ wrangler.jsonc ](#tab-panel-10075)
+* [ index.ts ](#tab-panel-10835)
+* [ wrangler.jsonc ](#tab-panel-10836)
 
 TypeScript
 
@@ -468,11 +468,11 @@ curl -L https://customer-<CODE>.cloudflarestream.com/<VIDEO_UID>/downloads/defau
 
 You can delete a download for a video. Available types are `default` and `audio`. Defaults to `default` when omitted.
 
-* [ REST API ](#tab-panel-10086)
-* [ Workers Binding API ](#tab-panel-10087)
+* [ REST API ](#tab-panel-10847)
+* [ Workers Binding API ](#tab-panel-10848)
 
-* [ cURL ](#tab-panel-10076)
-* [ TypeScript ](#tab-panel-10077)
+* [ cURL ](#tab-panel-10837)
+* [ TypeScript ](#tab-panel-10838)
 
 Terminal window
 
@@ -513,8 +513,8 @@ await client.stream.downloads.default.delete({
 
 See the full Stream [REST API and SDK reference](https://developers.cloudflare.com/api/resources/stream/) for details on using REST API from external applications, with pre-generated SDK's for external TypeScript, Python, or Go applications.
 
-* [ index.ts ](#tab-panel-10078)
-* [ wrangler.jsonc ](#tab-panel-10079)
+* [ index.ts ](#tab-panel-10839)
+* [ wrangler.jsonc ](#tab-panel-10840)
 
 TypeScript
 
@@ -651,5 +651,6 @@ MP4 downloads are billed in the same way as streaming of the video. You will be 
 You will not incur any additional cost for storage when you enable MP4s.
 
 ```json
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/stream/viewing-videos/download-videos/#page","headline":"Download video or audio · Cloudflare Stream docs","description":"Generate downloadable MP4 video or M4A audio files from Cloudflare Stream.","url":"https://developers.cloudflare.com/stream/viewing-videos/download-videos/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-05-07","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/stream/","name":"Stream"}},{"@type":"ListItem","position":3,"item":{"@id":"/stream/viewing-videos/","name":"Play video"}},{"@type":"ListItem","position":4,"item":{"@id":"/stream/viewing-videos/download-videos/","name":"Download video or audio"}}]}
 ```

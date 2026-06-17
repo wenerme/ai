@@ -23,20 +23,26 @@ Tracing gives you end-to-end visibility into the life of a request as it travels
 
 ### Automatic instrumentation
 
-Cloudflare Workers provides tracing instrumentation **out of the box** \- no code changes or SDK are required. Simply enable tracing on your Worker and Cloudflare automatically captures telemetry data for:
+Cloudflare Workers provides tracing instrumentation **out of the box** — no code changes or SDK are required. Simply enable tracing on your Worker and Cloudflare automatically captures telemetry data for:
 
-* **Fetch calls** \- All outbound HTTP requests, capturing timing, status codes, and request metadata. This enables you to quickly identify how external dependencies affect your application's performance.
-* **Binding calls** \- Interactions with various Worker bindings such as KV reads and writes, R2 object storage operations and Durable Object invocations.
-* **Handler calls** \- The complete lifecycle of each Worker invocation, including triggers such as [fetch handlers](https://developers.cloudflare.com/workers/runtime-apis/handlers/fetch/),[scheduled handlers](https://developers.cloudflare.com/workers/runtime-apis/handlers/scheduled/), and [queue handlers](https://developers.cloudflare.com/queues/configuration/javascript-apis/#consumer).
+* **Fetch calls** — All outbound HTTP requests, capturing timing, status codes, and request metadata. This enables you to quickly identify how external dependencies affect your application's performance.
+* **Binding calls** — Interactions with various Worker bindings such as KV reads and writes, R2 object storage operations and Durable Object invocations.
+* **Handler calls** — The complete lifecycle of each Worker invocation, including triggers such as [fetch handlers](https://developers.cloudflare.com/workers/runtime-apis/handlers/fetch/),[scheduled handlers](https://developers.cloudflare.com/workers/runtime-apis/handlers/scheduled/), and [queue handlers](https://developers.cloudflare.com/queues/configuration/javascript-apis/#consumer).
 
-For a full list of instrumented operations , see the [spans and attributes documentation](https://developers.cloudflare.com/workers/observability/traces/spans-and-attributes).
+For a full list of instrumented operations, refer to the [spans and attributes documentation](https://developers.cloudflare.com/workers/observability/traces/spans-and-attributes/).
+
+### Custom spans
+
+You can also create your own spans to trace application-specific logic. Custom spans nest automatically with the built-in instrumentation, giving you end-to-end visibility across both platform operations and your own code.
+
+For more information, refer to [Custom spans](https://developers.cloudflare.com/workers/observability/traces/custom-spans/).
 
 ### How to enable tracing
 
 You can configure tracing by setting `observability.traces.enabled = true` in your [Wrangler configuration file](https://developers.cloudflare.com/workers/wrangler/configuration/#observability).
 
-* [  wrangler.jsonc ](#tab-panel-10691)
-* [  wrangler.toml ](#tab-panel-10692)
+* [  wrangler.jsonc ](#tab-panel-11870)
+* [  wrangler.toml ](#tab-panel-11871)
 
 JSONC
 
@@ -102,8 +108,8 @@ The valid sampling range is from `0` to `1`, where `0` indicates zero out of one
 
 If you have not specified a sampling rate, it defaults to `1`, meaning 100% of requests will be traced.
 
-* [  wrangler.jsonc ](#tab-panel-10693)
-* [  wrangler.toml ](#tab-panel-10694)
+* [  wrangler.jsonc ](#tab-panel-11872)
+* [  wrangler.toml ](#tab-panel-11873)
 
 JSONC
 
@@ -176,5 +182,6 @@ Starting on March 1, 2026, tracing will be billed as part of your usage on the W
 | **Workers Paid**                   | 10 million included per month +$0.60 per additional million events | 7 Days |
 
 ```json
+{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/workers/observability/traces/#page","headline":"Traces · Cloudflare Workers docs","description":"Gain end-to-end visibility into request flows across your Workers application with automatic tracing instrumentation.","url":"https://developers.cloudflare.com/workers/observability/traces/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-06-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/workers/","name":"Workers"}},{"@type":"ListItem","position":3,"item":{"@id":"/workers/observability/","name":"Observability"}},{"@type":"ListItem","position":4,"item":{"@id":"/workers/observability/traces/","name":"Traces"}}]}
 ```

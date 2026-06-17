@@ -12,6 +12,10 @@ Create an organization admin API key
 
   - `name: string`
 
+  - `expires_in_seconds?: number`
+
+    The number of seconds until the API key expires. Omit this field for a key that does not expire.
+
 ### Returns
 
 - `AdminAPIKeyCreateResponse extends AdminAPIKey`
@@ -42,6 +46,7 @@ console.log(adminAPIKey);
 {
   "id": "key_abc",
   "created_at": 1711471533,
+  "expires_at": 1714063533,
   "object": "organization.admin_api_key",
   "owner": {
     "id": "sa_456",

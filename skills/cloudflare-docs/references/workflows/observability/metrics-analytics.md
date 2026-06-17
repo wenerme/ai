@@ -158,7 +158,7 @@ query WorkflowInvocationsExample(
 
 ```
 
-[Run in GraphQL API Explorer](https://graphql.cloudflare.com/explorer?query=I4VwpgTgngBA6gewgawGYBsEHcCSA7ANwQGMBDAFwEsE8BnAUQA9SBbAB3TAAoAoGGACSlixBCDzkAKqQDmALhi1yESnhkBCPoIAmFMFRZgAyuVIRyCyZUNaBu8vuth6ebZae2sSNJiwA5VjAFJRU1HgBKGABvLQJKMCxIaK1+YVFxclouVEp0BwgFKJg0sQlpeUESjPKYAF9ImP4mmCxSdHQrQwUvFAxsWgBBXTYqAjAAcQgxNiyU5ph0a0oLGABGAAZN9bnmnLzIQp35+0dDAAkxCAB9GTBgBTs9A2NTcyPmk+eLkGvOe50nk4XNp3k0ej5sAEuoJwX1-IFQbVQUhtJAAEJQBQAbXSEiuABF6EYAMIAXSODVBuPIoNoIBYyXm81a7U6YERoO0Tjo1DojKZTROCk+Tm+EA5TKRzSldR4tSAA&variables=N4IghgxhD2CuB2AXAKmA5iAXCAggYTwHkBVAOWQH0BJAERABoQATMRAU0QEsBbNgZURgAToiwgATAAZxANgC0k+QEYZySQBZMkpZgDMATgBaDZqw482AUXhMxU2QuWqlkrToPHGAd2hCA1gBmADbQXqRgvGIASpYACgAy+JYUAOpUyAASFHzIUVSkAOIgAL5AA)
+[Run in GraphQL API Explorer](https://graphql.cloudflare.com/explorer?query=I4VwpgTgngBA6gewgawGYBsEHcCSA7ANwQGMBDAFwEsE8BnAUQA9SBbAB3TAAoAoGGACSlixBCDzkAKqQDmALhi1yESnhkBCPoIAmFMFRZgAyuVIRyCyZUNaBu8vuth6ebZae2sSNJiwA5VjAFJRU1HgBKGABvLQJKMCxIaK1+YVFxclouVEp0BwgFKJg0sQlpeUESjPKYAF9ImP4mmCxSdHQrQwUvFAxsWgBBXTYqAjAAcQgxNiyU5ph0a0oLGABGAAZN9bnmnLzIQp35+0dDAAkxCAB9GTBgBTs9A2NTcyPmk+eLkGvOe50nk4XNp3k0ej5sAEuoJwX1-IFQbVQUhtJAAEJQBQAbXSEiuABF6EYAMIAXSODVBuPIoNoIBYyXm81a7U6YERoO0Tjo1DojKZTROCk+Tm+EA5TKRzSldR4tSAA&variables=N4IghgxhD2CuB2AXAKmA5iAXCAggYTwHkBVAOWQH0BJAERABoQATMRAU0QEsBbNgZURgAToiwgATAAZxANgC0k+QEYZyJQA5MAVgAsmSToBaDZqw482AUXhMxU2QuUB2ZJMna9B44wDu0IQDWAGYANtA+pGC8YgBKlgAKADL4lhQA6lTIABIUfMgxVKQA4iAAvkA)
 
 Here we are doing the same for `wallTime`, `instanceRuns` and `stepCount` in the same query:
 
@@ -283,7 +283,7 @@ query WorkflowInvocationsExample2(
 
 ```
 
-[Run in GraphQL API Explorer](https://graphql.cloudflare.com/explorer?query=I4VwpgTgngBA6gewgawGYBsEHcCSA7ANwQGMBDAFwEsE8BnAUQA9SBbAB3TACYAKAKBgwAJKWLEEIPOQAqpAOYAuGLXIRKeOQEIBwgCYUwVFmADK5UhHJLplYzqH7yh22Hp5d1l-axI0mLAByrGBKKmoafACUMADeOgSUYFiQsTqCouKS5LQ8qJToThBKMTAZElKyisJlWZUwAL7RcYItMOoqpHjEYABKkrRKPigY2LQAgvpsVARgAOIQEmw5aa0w6LaUVjAAjAAM+7srrXkFkMVHq47OxgASEhAA+nJgwEoOBkam5pYXrVefdxAj04rz0Hxcbl0vxaQz82CCxjesJGgWC0MEYBmFSgbBCMAARHAAPI9ADSADEADJEuAPEzSMY9aT46H1aFIXSQABCUCUAG1MlIHgARegmADCAF0Lk1oYLyNDdC46NQ6KlVpcDEp-i5ARBWRc2RqVGA2OLyltkf5xpNpnMFiAlvwNYJ1ixNko9gdoSdCucXS0dbd7k8Xm8g18LAqA4II3qHiDw+DjJD0TArfDgkjfCiEWA05iwNjcUpCSSKdTafTGcyDQGOdzeTABRaRWKpTL1S75YrlbRVbQuwGrtrk2A9XXVkbVlhSOh0DZEemc9aJqQppQZvNFssA26PTsDocA76zkOXXGQ89Qe8nJ8zFG05egQmw2C7xD3GmM6il0If3mk4ag2EA8vy8pthK0oarKAY9gGtAgCw54arO86LvmAbThqSrGCqNCDs0MYjjAz76lhhorNObL1EAA&variables=N4IghgxhD2CuB2AXAKmA5iAXCAggYTwHkBVAOWQH0BJAERABoQATMRAU0QEsBbNgZURgAToiwgATAAZxANgC0k+QEYZySQBZMkpZgDMATgBaDZqw482AUXhMxU2QuWqlkrToPHGAd2hCA1gBmADbQXqRgvGIASpYACgAy+JYUAOpUyAASFHzIUVSkAOIgAL5AA)
+[Run in GraphQL API Explorer](https://graphql.cloudflare.com/explorer?query=I4VwpgTgngBA6gewgawGYBsEHcCSA7ANwQGMBDAFwEsE8BnAUQA9SBbAB3TACYAKAKBgwAJKWLEEIPOQAqpAOYAuGLXIRKeOQEIBwgCYUwVFmADK5UhHJLplYzqH7yh22Hp5d1l-axI0mLAByrGBKKmoafACUMADeOgSUYFiQsTqCouKS5LQ8qJToThBKMTAZElKyisJlWZUwAL7RcYItMOoqpHjEYABKkrRKPigY2LQAgvpsVARgAOIQEmw5aa0w6LaUVjAAjAAM+7srrXkFkMVHq47OxgASEhAA+nJgwEoOBkam5pYXrVefdxAj04rz0Hxcbl0vxaQz82CCxjesJGgWC0MEYBmFSgbBCMAARHAAPI9ADSADEADJEuAPEzSMY9aT46H1aFIXSQABCUCUAG1MlIHgARegmADCAF0Lk1oYLyNDdC46NQ6KlVpcDEp-i5ARBWRc2RqVGA2OLyltkf5xpNpnMFiAlvwNYJ1ixNko9gdoSdCucXS0dbd7k8Xm8g18LAqA4II3qHiDw+DjJD0TArfDgkjfCiEWA05iwNjcUpCSSKdTafTGcyDQGOdzeTABRaRWKpTL1S75YrlbRVbQuwGrtrk2A9XXVkbVlhSOh0DZEemc9aJqQppQZvNFssA26PTsDocA76zkOXXGQ89Qe8nJ8zFG05egQmw2C7xD3GmM6il0If3mk4ag2EA8vy8pthK0oarKAY9gGtAgCw54arO86LvmAbThqSrGCqNCDs0MYjjAz76lhhorNObL1EAA&variables=N4IghgxhD2CuB2AXAKmA5iAXCAggYTwHkBVAOWQH0BJAERABoQATMRAU0QEsBbNgZURgAToiwgATAAZxANgC0k+QEYZyJQA5MAVgAsmSToBaDZqw482AUXhMxU2QuUB2ZJMna9B44wDu0IQDWAGYANtA+pGC8YgBKlgAKADL4lhQA6lTIABIUfMgxVKQA4iAAvkA)
 
 Here lets query `workflowsAdaptive` for raw data about `$instanceId` between `$datetimeStart` and `$datetimeEnd`:
 
@@ -346,7 +346,7 @@ query WorkflowsAdaptiveExample(
 
 ```
 
-[Run in GraphQL API Explorer](https://graphql.cloudflare.com/explorer?query=I4VwpgTgngBA6gewgawGYBsEHcDOBBAEwEMAHAFwEsA3MAUQA8iBbE9MACgCgYYASIgMYCEIAHZkAKkQDmALhg4yECqOkBCbn2JkwlJmADKZIhDLyJFfZt7bdluqILn71lYqKiBYAJJOFSlWlOAEoYAG9NKgowLEhwzR5BYTEyHHZUCnQdCHkwmCSRcSk5PgKU4pgAX1CInjqYLCQ0TFxCUkoaLnr69EsKMxgARgAGYYTujKzIXPHumFs9MAB9aTBgeRsiHUWjEzJZ7oX7JbZ1rS27fVpHA-q3Y08fP157jy9fW6rPpAJIACEoPIANpHfRLPAGADCAF0DjVPqCwJ8wDQilASEi5jxGigMNgAHLMTFY16PD5Y-xgEiQwr7ClYIjodAWKxzSrjdk8dmVIA&variables=N4IghgxhD2CuB2AXAKmA5iAXCAggYTwHkBVAOWQH0BJAERABoQATMRAU0QEsBbNgZURgAToiwgATAAZxANgC0k+QEYZySQBZMkpZgDMATgBaDZqw482AUXhMxU2QuWqlkrToPHGneAGdB8CDYqW2wAJUsABQAZfEsKAHUqZAAJajoAXyA)
+[Run in GraphQL API Explorer](https://graphql.cloudflare.com/explorer?query=I4VwpgTgngBA6gewgawGYBsEHcDOBBAEwEMAHAFwEsA3MAUQA8iBbE9MACgCgYYASIgMYCEIAHZkAKkQDmALhg4yECqOkBCbn2JkwlJmADKZIhDLyJFfZt7bdluqILn71lYqKiBYAJJOFSlWlOAEoYAG9NKgowLEhwzR5BYTEyHHZUCnQdCHkwmCSRcSk5PgKU4pgAX1CInjqYLCQ0TFxCUkoaLnr69EsKMxgARgAGYYTujKzIXPHumFs9MAB9aTBgeRsiHUWjEzJZ7oX7JbZ1rS27fVpHA-q3Y08fP157jy9fW6rPpAJIACEoPIANpHfRLPAGADCAF0DjVPqCwJ8wDQilASEi5jxGigMNgAHLMTFY16PD5Y-xgEiQwr7ClYIjodAWKxzSrjdk8dmVIA&variables=N4IghgxhD2CuB2AXAKmA5iAXCAggYTwHkBVAOWQH0BJAERABoQATMRAU0QEsBbNgZURgAToiwgATAAZxANgC0k+QEYZyJQA5MAVgAsmSToBaDZqw482AUXhMxU2QuUB2ZJMna9B4407wAzoLwEGxUttgASpYACgAy+JYUAOpUyAAS1HQAvkA)
 
 #### GraphQL query variables
 
@@ -372,5 +372,6 @@ Example values for the query variables:
 ```
 
 ```json
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workflows/observability/metrics-analytics/#page","headline":"Metrics and analytics · Cloudflare Workflows docs","description":"Query Workflows execution metrics, error rates, and step durations via the dashboard or GraphQL Analytics API.","url":"https://developers.cloudflare.com/workflows/observability/metrics-analytics/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-06-05","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/workflows/","name":"Workflows"}},{"@type":"ListItem","position":3,"item":{"@id":"/workflows/observability/","name":"Observability"}},{"@type":"ListItem","position":4,"item":{"@id":"/workflows/observability/metrics-analytics/","name":"Metrics and analytics"}}]}
 ```

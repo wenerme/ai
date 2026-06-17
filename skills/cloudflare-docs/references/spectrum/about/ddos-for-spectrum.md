@@ -27,5 +27,6 @@ For protecting HTTP/S applications against L7 DDoS attacks and to benefit from c
 Refer to [Cloudflare DDoS Protection](https://developers.cloudflare.com/ddos-protection/) to learn more.
 
 ```json
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/spectrum/about/ddos-for-spectrum/#page","headline":"DDoS Protection for Spectrum · Cloudflare Spectrum docs","description":"Layer 3 and 4 DDoS protection for TCP and UDP Spectrum applications.","url":"https://developers.cloudflare.com/spectrum/about/ddos-for-spectrum/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/spectrum/","name":"Spectrum"}},{"@type":"ListItem","position":3,"item":{"@id":"/spectrum/about/","name":"About"}},{"@type":"ListItem","position":4,"item":{"@id":"/spectrum/about/ddos-for-spectrum/","name":"DDoS Protection for Spectrum"}}]}
 ```

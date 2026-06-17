@@ -100,8 +100,8 @@ HTTP transport is the default and requires no additional configuration.
 
 Enable RPC transport by adding `SANDBOX_TRANSPORT` to your Worker's `vars`:
 
-* [  wrangler.jsonc ](#tab-panel-10024)
-* [  wrangler.toml ](#tab-panel-10025)
+* [  wrangler.jsonc ](#tab-panel-10231)
+* [  wrangler.toml ](#tab-panel-10232)
 
 JSONC
 
@@ -115,7 +115,7 @@ JSONC
 
   // Set this to today's date
 
-  "compatibility_date": "2026-06-10",
+  "compatibility_date": "2026-06-17",
 
   "vars": {
 
@@ -166,7 +166,7 @@ main = "src/index.ts"
 
 # Set this to today's date
 
-compatibility_date = "2026-06-10"
+compatibility_date = "2026-06-17"
 
 
 [vars]
@@ -244,8 +244,8 @@ Using the `rpc` transport requires version 0.9.1 or newer. If you are using an o
 
 Add `SANDBOX_TRANSPORT` to your `wrangler.jsonc`:
 
-* [  wrangler.jsonc ](#tab-panel-10018)
-* [  wrangler.toml ](#tab-panel-10019)
+* [  wrangler.jsonc ](#tab-panel-10225)
+* [  wrangler.toml ](#tab-panel-10226)
 
 JSONC
 
@@ -290,8 +290,8 @@ npx wrangler deploy
 
 Remove the `SANDBOX_TRANSPORT` variable (or set it to `"http"`):
 
-* [  wrangler.jsonc ](#tab-panel-10020)
-* [  wrangler.toml ](#tab-panel-10021)
+* [  wrangler.jsonc ](#tab-panel-10227)
+* [  wrangler.toml ](#tab-panel-10228)
 
 JSONC
 
@@ -327,8 +327,8 @@ Using the `rpc` transport requires version 0.9.1 or newer. If you are using an o
 
 Set the `SANDBOX_TRANSPORT` variable to `"rpc"`:
 
-* [  wrangler.jsonc ](#tab-panel-10022)
-* [  wrangler.toml ](#tab-panel-10023)
+* [  wrangler.jsonc ](#tab-panel-10229)
+* [  wrangler.toml ](#tab-panel-10230)
 
 JSONC
 
@@ -366,5 +366,6 @@ SANDBOX_TRANSPORT = "rpc"
 * [Architecture](https://developers.cloudflare.com/sandbox/concepts/architecture/) \- How Sandbox SDK components communicate
 
 ```json
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/sandbox/configuration/transport/#page","headline":"Transport modes · Cloudflare Sandbox SDK docs","description":"Configure how Sandbox SDK communicates between Durable Objects and containers.","url":"https://developers.cloudflare.com/sandbox/configuration/transport/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-05-05","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/sandbox/","name":"Sandbox SDK"}},{"@type":"ListItem","position":3,"item":{"@id":"/sandbox/configuration/","name":"Configuration"}},{"@type":"ListItem","position":4,"item":{"@id":"/sandbox/configuration/transport/","name":"Transport modes"}}]}
 ```

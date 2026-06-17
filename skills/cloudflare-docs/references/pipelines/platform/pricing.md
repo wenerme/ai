@@ -86,5 +86,6 @@ To learn more about how usage is billed, refer to [Cloudflare Billing Policy](ht
 2. Sink egress is measured on uncompressed data. [↩](#user-content-fnref-2)
 
 ```json
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/pipelines/platform/pricing/#page","headline":"Cloudflare Pipelines - Pricing · Cloudflare Pipelines Docs","description":"Cloudflare Pipelines pricing for SQL transforms, sinks, and free tier details.","url":"https://developers.cloudflare.com/pipelines/platform/pricing/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-05-28","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/pipelines/","name":"Pipelines"}},{"@type":"ListItem","position":3,"item":{"@id":"/pipelines/platform/","name":"Platform"}},{"@type":"ListItem","position":4,"item":{"@id":"/pipelines/platform/pricing/","name":"Pricing"}}]}
 ```

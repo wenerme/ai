@@ -27,5 +27,6 @@ Streams currently accept events in JSON format and support both structured event
 [ Logpush as a source ](https://developers.cloudflare.com/pipelines/streams/logpush/) Use Cloudflare Logpush to send logs from Cloudflare products to a Pipelines stream. 
 
 ```json
+{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/pipelines/streams/#page","headline":"Streams · Cloudflare Pipelines Docs","description":"Durable, buffered queues that receive and store events for processing in Cloudflare Pipelines.","url":"https://developers.cloudflare.com/pipelines/streams/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/pipelines/","name":"Pipelines"}},{"@type":"ListItem","position":3,"item":{"@id":"/pipelines/streams/","name":"Streams"}}]}
 ```

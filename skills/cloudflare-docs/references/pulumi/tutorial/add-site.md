@@ -73,13 +73,13 @@ A Pulumi program is code written in a [supported programming language ↗](https
 
 To create a program, select your language of choice and run the `pulumi` command:
 
-* [  JavaScript ](#tab-panel-9351)
-* [  TypeScript ](#tab-panel-9352)
-* [  Python ](#tab-panel-9353)
-* [ go ](#tab-panel-9354)
-* [ Java ](#tab-panel-9355)
-* [ .NET ](#tab-panel-9356)
-* [ YAML ](#tab-panel-9357)
+* [  JavaScript ](#tab-panel-9495)
+* [  TypeScript ](#tab-panel-9496)
+* [  Python ](#tab-panel-9497)
+* [ go ](#tab-panel-9498)
+* [ Java ](#tab-panel-9499)
+* [ .NET ](#tab-panel-9500)
+* [ YAML ](#tab-panel-9501)
 
 Terminal window
 
@@ -233,13 +233,13 @@ You need to install the Cloudflare package for your language of choice in order 
 
 Install the Cloudflare package by running the following command:
 
-* [  JavaScript ](#tab-panel-9358)
-* [  TypeScript ](#tab-panel-9359)
-* [  Python ](#tab-panel-9360)
-* [ go ](#tab-panel-9361)
-* [ Java ](#tab-panel-9362)
-* [ .NET ](#tab-panel-9363)
-* [ YAML ](#tab-panel-9364)
+* [  JavaScript ](#tab-panel-9502)
+* [  TypeScript ](#tab-panel-9503)
+* [  Python ](#tab-panel-9504)
+* [ go ](#tab-panel-9505)
+* [ Java ](#tab-panel-9506)
+* [ .NET ](#tab-panel-9507)
+* [ YAML ](#tab-panel-9508)
 
 Terminal window
 
@@ -379,13 +379,13 @@ A domain, or site, is known as a Zone in Cloudflare. In Pulumi, the [Zone resour
 
 Replace the contents of your entrypoint file with the following:
 
-* [  JavaScript ](#tab-panel-9365)
-* [  TypeScript ](#tab-panel-9366)
-* [  Python ](#tab-panel-9367)
-* [ go ](#tab-panel-9368)
-* [ Java ](#tab-panel-9369)
-* [ .NET ](#tab-panel-9370)
-* [ YAML ](#tab-panel-9371)
+* [  JavaScript ](#tab-panel-9509)
+* [  TypeScript ](#tab-panel-9510)
+* [  Python ](#tab-panel-9511)
+* [ go ](#tab-panel-9512)
+* [ Java ](#tab-panel-9513)
+* [ .NET ](#tab-panel-9514)
+* [ YAML ](#tab-panel-9515)
 
 **Filename: `index.js`**
 
@@ -746,13 +746,13 @@ You will now add a DNS [Record resource ↗](https://www.pulumi.com/registry/pac
 
 Add the following code snippet to your entrypoint file **after** the Zone resource definition:
 
-* [  JavaScript ](#tab-panel-9372)
-* [  TypeScript ](#tab-panel-9373)
-* [  Python ](#tab-panel-9374)
-* [ go ](#tab-panel-9375)
-* [ Java ](#tab-panel-9376)
-* [ .NET ](#tab-panel-9377)
-* [ YAML ](#tab-panel-9378)
+* [  JavaScript ](#tab-panel-9516)
+* [  TypeScript ](#tab-panel-9517)
+* [  Python ](#tab-panel-9518)
+* [ go ](#tab-panel-9519)
+* [ Java ](#tab-panel-9520)
+* [ .NET ](#tab-panel-9521)
+* [ YAML ](#tab-panel-9522)
 
 **Filename: `index.js`**
 
@@ -1062,5 +1062,6 @@ You have incrementally defined Cloudflare resources needed to add a site to Clou
 To deploy a serverless app with Pulumi, follow the [Deploy a Worker tutorial](https://developers.cloudflare.com/pulumi/tutorial/hello-world/).
 
 ```json
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/pulumi/tutorial/add-site/#page","headline":"Add a site · Pulumi docs","description":"This tutorial uses Pulumi infrastructure as code (IaC) to familiarize yourself with the resource management lifecycle.","url":"https://developers.cloudflare.com/pulumi/tutorial/add-site/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["JavaScript","TypeScript","Python","Go","Java",".NET","YAML"]}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/pulumi/","name":"Pulumi"}},{"@type":"ListItem","position":3,"item":{"@id":"/pulumi/tutorial/","name":"Tutorials"}},{"@type":"ListItem","position":4,"item":{"@id":"/pulumi/tutorial/add-site/","name":"Add a site"}}]}
 ```

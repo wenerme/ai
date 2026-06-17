@@ -20,8 +20,8 @@ The `watch()` method returns an SSE (Server-Sent Events) stream that you consume
 
 Start by watching a directory for any changes:
 
-* [  JavaScript ](#tab-panel-10126)
-* [  TypeScript ](#tab-panel-10127)
+* [  JavaScript ](#tab-panel-10367)
+* [  TypeScript ](#tab-panel-10368)
 
 JavaScript
 
@@ -94,8 +94,8 @@ Filesystem change events (`event.eventType`) include:
 
 Use `include` patterns to watch only specific file types:
 
-* [  JavaScript ](#tab-panel-10128)
-* [  TypeScript ](#tab-panel-10129)
+* [  JavaScript ](#tab-panel-10369)
+* [  TypeScript ](#tab-panel-10370)
 
 JavaScript
 
@@ -169,8 +169,8 @@ Common include patterns:
 
 Use `exclude` patterns to skip certain directories or files:
 
-* [  JavaScript ](#tab-panel-10130)
-* [  TypeScript ](#tab-panel-10131)
+* [  JavaScript ](#tab-panel-10371)
+* [  TypeScript ](#tab-panel-10372)
 
 JavaScript
 
@@ -238,8 +238,8 @@ The following patterns are excluded by default: `.git`, `node_modules`, `.DS_Sto
 
 Trigger builds automatically when source files are modified:
 
-* [  JavaScript ](#tab-panel-10142)
-* [  TypeScript ](#tab-panel-10143)
+* [  JavaScript ](#tab-panel-10383)
+* [  TypeScript ](#tab-panel-10384)
 
 JavaScript
 
@@ -377,8 +377,8 @@ for await (const event of parseSSEStream<FileWatchSSEEvent>(stream)) {
 
 Re-run tests when test files are modified:
 
-* [  JavaScript ](#tab-panel-10132)
-* [  TypeScript ](#tab-panel-10133)
+* [  JavaScript ](#tab-panel-10373)
+* [  TypeScript ](#tab-panel-10374)
 
 JavaScript
 
@@ -448,8 +448,8 @@ for await (const event of parseSSEStream<FileWatchSSEEvent>(stream)) {
 
 Re-index only changed files instead of rescanning an entire directory tree:
 
-* [  JavaScript ](#tab-panel-10136)
-* [  TypeScript ](#tab-panel-10137)
+* [  JavaScript ](#tab-panel-10377)
+* [  TypeScript ](#tab-panel-10378)
 
 JavaScript
 
@@ -553,8 +553,8 @@ for await (const event of parseSSEStream<FileWatchSSEEvent>(stream)) {
 
 Extract event processing into a reusable function that handles stream lifecycle:
 
-* [  JavaScript ](#tab-panel-10152)
-* [  TypeScript ](#tab-panel-10153)
+* [  JavaScript ](#tab-panel-10393)
+* [  TypeScript ](#tab-panel-10394)
 
 JavaScript
 
@@ -716,8 +716,8 @@ await watchFiles(
 
 Avoid excessive operations by collecting changes before processing:
 
-* [  JavaScript ](#tab-panel-10146)
-* [  TypeScript ](#tab-panel-10147)
+* [  JavaScript ](#tab-panel-10387)
+* [  TypeScript ](#tab-panel-10388)
 
 JavaScript
 
@@ -827,8 +827,8 @@ for await (const event of parseSSEStream<FileWatchSSEEvent>(stream)) {
 
 Watch only the top level of a directory, without descending into subdirectories:
 
-* [  JavaScript ](#tab-panel-10134)
-* [  TypeScript ](#tab-panel-10135)
+* [  JavaScript ](#tab-panel-10375)
+* [  TypeScript ](#tab-panel-10376)
 
 JavaScript
 
@@ -906,8 +906,8 @@ The stream ends naturally when the container sleeps or shuts down. There are two
 
 Pass an `AbortSignal` to `parseSSEStream`. Aborting the signal cancels the stream reader, which propagates cleanup to the server. This is the recommended approach when you need to cancel the watch from outside the consuming loop:
 
-* [  JavaScript ](#tab-panel-10140)
-* [  TypeScript ](#tab-panel-10141)
+* [  JavaScript ](#tab-panel-10381)
+* [  TypeScript ](#tab-panel-10382)
 
 JavaScript
 
@@ -987,8 +987,8 @@ console.log("Watch stopped");
 
 Breaking out of the `for await` loop also cancels the stream:
 
-* [  JavaScript ](#tab-panel-10148)
-* [  TypeScript ](#tab-panel-10149)
+* [  JavaScript ](#tab-panel-10389)
+* [  TypeScript ](#tab-panel-10390)
 
 JavaScript
 
@@ -1080,8 +1080,8 @@ Note
 
 `include` and `exclude` are mutually exclusive. Use one or the other, not both. If you need to watch specific file types while ignoring certain directories, use `include` patterns that match the files you want.
 
-* [  JavaScript ](#tab-panel-10144)
-* [  TypeScript ](#tab-panel-10145)
+* [  JavaScript ](#tab-panel-10385)
+* [  TypeScript ](#tab-panel-10386)
 
 JavaScript
 
@@ -1159,8 +1159,8 @@ for await (const event of parseSSEStream<FileWatchSSEEvent>(stream2)) {
 
 Errors in your event handler do not stop the watch stream. Wrap handler logic in `try...catch` to prevent unhandled exceptions:
 
-* [  JavaScript ](#tab-panel-10150)
-* [  TypeScript ](#tab-panel-10151)
+* [  JavaScript ](#tab-panel-10391)
+* [  TypeScript ](#tab-panel-10392)
 
 JavaScript
 
@@ -1260,8 +1260,8 @@ for await (const event of parseSSEStream<FileWatchSSEEvent>(stream)) {
 
 Watching a non-existent path returns an error. Verify the path exists before starting a watch:
 
-* [  JavaScript ](#tab-panel-10138)
-* [  TypeScript ](#tab-panel-10139)
+* [  JavaScript ](#tab-panel-10379)
+* [  TypeScript ](#tab-panel-10380)
 
 JavaScript
 
@@ -1340,5 +1340,6 @@ File watchers are automatically stopped when the sandbox sleeps or shuts down. I
 * [Stream output guide](https://developers.cloudflare.com/sandbox/guides/streaming-output/) — Real-time output handling
 
 ```json
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/sandbox/guides/file-watching/#page","headline":"Watch filesystem changes · Cloudflare Sandbox SDK docs","description":"Monitor files and directories in real-time to build responsive development tools and automation workflows.","url":"https://developers.cloudflare.com/sandbox/guides/file-watching/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/sandbox/","name":"Sandbox SDK"}},{"@type":"ListItem","position":3,"item":{"@id":"/sandbox/guides/","name":"How-to guides"}},{"@type":"ListItem","position":4,"item":{"@id":"/sandbox/guides/file-watching/","name":"Watch filesystem changes"}}]}
 ```

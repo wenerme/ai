@@ -78,5 +78,6 @@ All flow data is processed on Cloudflare's servers in the US. If you enable data
 Cloudflare retains GraphQL analytics data for 90 days for enterprise customers and seven days for non-enterprise customers. Cloudflare also retains flow data for six hours for threshold crossing detection.
 
 ```json
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/network-flow/faq/#page","headline":"FAQ · Cloudflare Network Flow docs","description":"Answers to common questions about Network Flow.","url":"https://developers.cloudflare.com/network-flow/faq/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-05-07","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["IPsec"]}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/network-flow/","name":"Network Flow"}},{"@type":"ListItem","position":3,"item":{"@id":"/network-flow/faq/","name":"FAQ"}}]}
 ```

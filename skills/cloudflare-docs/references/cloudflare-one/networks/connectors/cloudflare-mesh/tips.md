@@ -18,8 +18,8 @@ Operational guidance for managing Cloudflare Mesh deployments — updating the c
 
 Updating a Mesh node means updating the `cloudflare-warp` package on the Linux host. The node briefly disconnects during the update, which interrupts traffic routed through it. If you have [high availability](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-mesh/high-availability/) enabled, traffic fails over to a standby replica automatically.
 
-* [ Debian / Ubuntu ](#tab-panel-6741)
-* [ RedHat / CentOS ](#tab-panel-6742)
+* [ Debian / Ubuntu ](#tab-panel-7249)
+* [ RedHat / CentOS ](#tab-panel-7250)
 
 1. Check the current version:  
 Terminal window  
@@ -153,5 +153,6 @@ If source devices send packets near the maximum size (1,460 bytes or more), the 
 * Modern applications using [Path MTU Discovery (PMTUD) ↗](https://www.cloudflare.com/learning/network-layer/what-is-mtu/) typically handle this automatically.
 
 ```json
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-mesh/tips/#page","headline":"Tips and best practices · Cloudflare One docs","description":"Reference information for Tips and best practices in Zero Trust networking.","url":"https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-mesh/tips/","inLanguage":"en","image":"https://developers.cloudflare.com/zt-preview.png","dateModified":"2026-06-05","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Private networks"]}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/cloudflare-one/","name":"Cloudflare One"}},{"@type":"ListItem","position":3,"item":{"@id":"/cloudflare-one/networks/","name":"Networks"}},{"@type":"ListItem","position":4,"item":{"@id":"/cloudflare-one/networks/connectors/","name":"Connectors"}},{"@type":"ListItem","position":5,"item":{"@id":"/cloudflare-one/networks/connectors/cloudflare-mesh/","name":"Cloudflare Mesh"}},{"@type":"ListItem","position":6,"item":{"@id":"/cloudflare-one/networks/connectors/cloudflare-mesh/tips/","name":"Tips and best practices"}}]}
 ```

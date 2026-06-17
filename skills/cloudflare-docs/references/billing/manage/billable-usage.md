@@ -24,11 +24,10 @@ To access the dashboard, you must have the Billing read permission on your accou
 
 ## Access the dashboard
 
-1. Log in to the [Cloudflare dashboard ↗](https://dash.cloudflare.com/).
-2. Select your account.
-3. Go to **Manage Account** \> **Billing**.  
+1. Log in to the [Cloudflare dashboard ↗](https://dash.cloudflare.com/) and select your account.
+2. Go to **Manage Account** \> **Billing**.  
 [ Go to **Billing** ](https://dash.cloudflare.com/?to=/:account/billing)
-4. Select **Billable Usage**.
+3. Select **Billable Usage**.
 
 ## Cost breakdown chart
 
@@ -73,5 +72,6 @@ To get notified when your spend crosses a dollar threshold, you can create budge
 * [How charges accrue](https://developers.cloudflare.com/billing/understand/how-charges-accrue/) — How a request generates charges across products
 
 ```json
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/billing/manage/billable-usage/#page","headline":"Monitor billable usage · Cloudflare Billing docs","description":"Track daily usage-based costs across products.","url":"https://developers.cloudflare.com/billing/manage/billable-usage/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-05-29","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/billing/","name":"Billing"}},{"@type":"ListItem","position":3,"item":{"@id":"/billing/manage/","name":"Manage"}},{"@type":"ListItem","position":4,"item":{"@id":"/billing/manage/billable-usage/","name":"Monitor billable usage"}}]}
 ```

@@ -20,5 +20,6 @@ image: https://developers.cloudflare.com/core-services-preview.png
 * [ Troubleshooting ](https://developers.cloudflare.com/speed/optimization/protocol/troubleshooting/)
 
 ```json
+{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/speed/optimization/protocol/#page","headline":"Protocol optimization · Cloudflare Speed docs","description":"Optimize connection protocols including HTTP/2, HTTP/3, and 0-RTT.","url":"https://developers.cloudflare.com/speed/optimization/protocol/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/speed/","name":"Speed"}},{"@type":"ListItem","position":3,"item":{"@id":"/speed/optimization/","name":"Settings"}},{"@type":"ListItem","position":4,"item":{"@id":"/speed/optimization/protocol/","name":"Protocol optimization"}}]}
 ```

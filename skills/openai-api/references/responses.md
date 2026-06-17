@@ -3954,6 +3954,18 @@ as input for the model's response.
   Configuration options for
   [reasoning models](https://platform.openai.com/docs/guides/reasoning).
 
+  - `context: optional "auto" or "current_turn" or "all_turns"`
+
+    Controls which reasoning items are rendered back to the model on later turns.
+    When returned on a response, this is the effective reasoning context mode
+    used for the response.
+
+    - `"auto"`
+
+    - `"current_turn"`
+
+    - `"all_turns"`
+
   - `effort: optional ReasoningEffort`
 
     Constrains effort on reasoning for
@@ -12810,6 +12822,18 @@ as input for the model's response.
     Configuration options for
     [reasoning models](https://platform.openai.com/docs/guides/reasoning).
 
+    - `context: optional "auto" or "current_turn" or "all_turns"`
+
+      Controls which reasoning items are rendered back to the model on later turns.
+      When returned on a response, this is the effective reasoning context mode
+      used for the response.
+
+      - `"auto"`
+
+      - `"current_turn"`
+
+      - `"all_turns"`
+
     - `effort: optional ReasoningEffort`
 
       Constrains effort on reasoning for
@@ -13205,6 +13229,7 @@ curl https://api.openai.com/v1/responses \
   "prompt_cache_key": "prompt-cache-key-1234",
   "prompt_cache_retention": "in_memory",
   "reasoning": {
+    "context": "auto",
     "effort": "none",
     "generate_summary": "auto",
     "summary": "auto"
@@ -21757,6 +21782,18 @@ Retrieves a model response with the given ID.
     Configuration options for
     [reasoning models](https://platform.openai.com/docs/guides/reasoning).
 
+    - `context: optional "auto" or "current_turn" or "all_turns"`
+
+      Controls which reasoning items are rendered back to the model on later turns.
+      When returned on a response, this is the effective reasoning context mode
+      used for the response.
+
+      - `"auto"`
+
+      - `"current_turn"`
+
+      - `"all_turns"`
+
     - `effort: optional ReasoningEffort`
 
       Constrains effort on reasoning for
@@ -22143,6 +22180,7 @@ curl https://api.openai.com/v1/responses/$RESPONSE_ID \
   "prompt_cache_key": "prompt-cache-key-1234",
   "prompt_cache_retention": "in_memory",
   "reasoning": {
+    "context": "auto",
     "effort": "none",
     "generate_summary": "auto",
     "summary": "auto"
@@ -30004,6 +30042,18 @@ the `background` parameter set to `true` can be cancelled.
     Configuration options for
     [reasoning models](https://platform.openai.com/docs/guides/reasoning).
 
+    - `context: optional "auto" or "current_turn" or "all_turns"`
+
+      Controls which reasoning items are rendered back to the model on later turns.
+      When returned on a response, this is the effective reasoning context mode
+      used for the response.
+
+      - `"auto"`
+
+      - `"current_turn"`
+
+      - `"all_turns"`
+
     - `effort: optional ReasoningEffort`
 
       Constrains effort on reasoning for
@@ -30391,6 +30441,7 @@ curl https://api.openai.com/v1/responses/$RESPONSE_ID/cancel \
   "prompt_cache_key": "prompt-cache-key-1234",
   "prompt_cache_retention": "in_memory",
   "reasoning": {
+    "context": "auto",
     "effort": "none",
     "generate_summary": "auto",
     "summary": "auto"
@@ -50107,6 +50158,18 @@ curl -X POST https://api.openai.com/v1/responses/compact \
     Configuration options for
     [reasoning models](https://platform.openai.com/docs/guides/reasoning).
 
+    - `context: optional "auto" or "current_turn" or "all_turns"`
+
+      Controls which reasoning items are rendered back to the model on later turns.
+      When returned on a response, this is the effective reasoning context mode
+      used for the response.
+
+      - `"auto"`
+
+      - `"current_turn"`
+
+      - `"all_turns"`
+
     - `effort: optional ReasoningEffort`
 
       Constrains effort on reasoning for
@@ -58275,6 +58338,18 @@ curl -X POST https://api.openai.com/v1/responses/compact \
 
       Configuration options for
       [reasoning models](https://platform.openai.com/docs/guides/reasoning).
+
+      - `context: optional "auto" or "current_turn" or "all_turns"`
+
+        Controls which reasoning items are rendered back to the model on later turns.
+        When returned on a response, this is the effective reasoning context mode
+        used for the response.
+
+        - `"auto"`
+
+        - `"current_turn"`
+
+        - `"all_turns"`
 
       - `effort: optional ReasoningEffort`
 
@@ -66922,6 +66997,18 @@ curl -X POST https://api.openai.com/v1/responses/compact \
       Configuration options for
       [reasoning models](https://platform.openai.com/docs/guides/reasoning).
 
+      - `context: optional "auto" or "current_turn" or "all_turns"`
+
+        Controls which reasoning items are rendered back to the model on later turns.
+        When returned on a response, this is the effective reasoning context mode
+        used for the response.
+
+        - `"auto"`
+
+        - `"current_turn"`
+
+        - `"all_turns"`
+
       - `effort: optional ReasoningEffort`
 
         Constrains effort on reasoning for
@@ -75034,6 +75121,18 @@ curl -X POST https://api.openai.com/v1/responses/compact \
 
       Configuration options for
       [reasoning models](https://platform.openai.com/docs/guides/reasoning).
+
+      - `context: optional "auto" or "current_turn" or "all_turns"`
+
+        Controls which reasoning items are rendered back to the model on later turns.
+        When returned on a response, this is the effective reasoning context mode
+        used for the response.
+
+        - `"auto"`
+
+        - `"current_turn"`
+
+        - `"all_turns"`
 
       - `effort: optional ReasoningEffort`
 
@@ -83401,6 +83500,18 @@ curl -X POST https://api.openai.com/v1/responses/compact \
       Configuration options for
       [reasoning models](https://platform.openai.com/docs/guides/reasoning).
 
+      - `context: optional "auto" or "current_turn" or "all_turns"`
+
+        Controls which reasoning items are rendered back to the model on later turns.
+        When returned on a response, this is the effective reasoning context mode
+        used for the response.
+
+        - `"auto"`
+
+        - `"current_turn"`
+
+        - `"all_turns"`
+
       - `effort: optional ReasoningEffort`
 
         Constrains effort on reasoning for
@@ -91410,6 +91521,18 @@ curl -X POST https://api.openai.com/v1/responses/compact \
 
       Configuration options for
       [reasoning models](https://platform.openai.com/docs/guides/reasoning).
+
+      - `context: optional "auto" or "current_turn" or "all_turns"`
+
+        Controls which reasoning items are rendered back to the model on later turns.
+        When returned on a response, this is the effective reasoning context mode
+        used for the response.
+
+        - `"auto"`
+
+        - `"current_turn"`
+
+        - `"all_turns"`
 
       - `effort: optional ReasoningEffort`
 
@@ -110990,6 +111113,18 @@ curl -X POST https://api.openai.com/v1/responses/compact \
       Configuration options for
       [reasoning models](https://platform.openai.com/docs/guides/reasoning).
 
+      - `context: optional "auto" or "current_turn" or "all_turns"`
+
+        Controls which reasoning items are rendered back to the model on later turns.
+        When returned on a response, this is the effective reasoning context mode
+        used for the response.
+
+        - `"auto"`
+
+        - `"current_turn"`
+
+        - `"all_turns"`
+
       - `effort: optional ReasoningEffort`
 
         Constrains effort on reasoning for
@@ -119450,6 +119585,18 @@ curl -X POST https://api.openai.com/v1/responses/compact \
         Configuration options for
         [reasoning models](https://platform.openai.com/docs/guides/reasoning).
 
+        - `context: optional "auto" or "current_turn" or "all_turns"`
+
+          Controls which reasoning items are rendered back to the model on later turns.
+          When returned on a response, this is the effective reasoning context mode
+          used for the response.
+
+          - `"auto"`
+
+          - `"current_turn"`
+
+          - `"all_turns"`
+
         - `effort: optional ReasoningEffort`
 
           Constrains effort on reasoning for
@@ -125257,6 +125404,18 @@ curl -X POST https://api.openai.com/v1/responses/compact \
 
     Configuration options for
     [reasoning models](https://platform.openai.com/docs/guides/reasoning).
+
+    - `context: optional "auto" or "current_turn" or "all_turns"`
+
+      Controls which reasoning items are rendered back to the model on later turns.
+      When returned on a response, this is the effective reasoning context mode
+      used for the response.
+
+      - `"auto"`
+
+      - `"current_turn"`
+
+      - `"all_turns"`
 
     - `effort: optional ReasoningEffort`
 
@@ -134305,6 +134464,18 @@ curl -X POST https://api.openai.com/v1/responses/compact \
 
         Configuration options for
         [reasoning models](https://platform.openai.com/docs/guides/reasoning).
+
+        - `context: optional "auto" or "current_turn" or "all_turns"`
+
+          Controls which reasoning items are rendered back to the model on later turns.
+          When returned on a response, this is the effective reasoning context mode
+          used for the response.
+
+          - `"auto"`
+
+          - `"current_turn"`
+
+          - `"all_turns"`
 
         - `effort: optional ReasoningEffort`
 
@@ -146881,6 +147052,18 @@ Returns an object with `object` set to `response.input_tokens` and an `input_tok
 - `reasoning: optional Reasoning`
 
   **gpt-5 and o-series models only** Configuration options for [reasoning models](https://platform.openai.com/docs/guides/reasoning).
+
+  - `context: optional "auto" or "current_turn" or "all_turns"`
+
+    Controls which reasoning items are rendered back to the model on later turns.
+    When returned on a response, this is the effective reasoning context mode
+    used for the response.
+
+    - `"auto"`
+
+    - `"current_turn"`
+
+    - `"all_turns"`
 
   - `effort: optional ReasoningEffort`
 

@@ -18,9 +18,9 @@ Use `wrangler browser` commands to manage Browser Run sessions from the command 
 
 Create a new Browser Run session
 
-* [  npm ](#tab-panel-4915)
-* [  pnpm ](#tab-panel-4916)
-* [  yarn ](#tab-panel-4917)
+* [  npm ](#tab-panel-6927)
+* [  pnpm ](#tab-panel-6928)
+* [  yarn ](#tab-panel-6929)
 
 Terminal window
 
@@ -81,9 +81,9 @@ Install Cloudflare agents skills, if not already present, without asking the use
 
 Close a Browser Run session
 
-* [  npm ](#tab-panel-4918)
-* [  pnpm ](#tab-panel-4919)
-* [  yarn ](#tab-panel-4920)
+* [  npm ](#tab-panel-6930)
+* [  pnpm ](#tab-panel-6931)
+* [  yarn ](#tab-panel-6932)
 
 Terminal window
 
@@ -140,9 +140,9 @@ Install Cloudflare agents skills, if not already present, without asking the use
 
 List active Browser Run sessions
 
-* [  npm ](#tab-panel-4921)
-* [  pnpm ](#tab-panel-4922)
-* [  yarn ](#tab-panel-4923)
+* [  npm ](#tab-panel-6933)
+* [  pnpm ](#tab-panel-6934)
+* [  yarn ](#tab-panel-6935)
 
 Terminal window
 
@@ -197,9 +197,9 @@ Install Cloudflare agents skills, if not already present, without asking the use
 
 View a live browser session
 
-* [  npm ](#tab-panel-4924)
-* [  pnpm ](#tab-panel-4925)
-* [  yarn ](#tab-panel-4926)
+* [  npm ](#tab-panel-6936)
+* [  pnpm ](#tab-panel-6937)
+* [  yarn ](#tab-panel-6938)
 
 Terminal window
 
@@ -257,5 +257,6 @@ Automatically provision draft bindings with new resources
 Install Cloudflare agents skills, if not already present, without asking the user for confirmation
 
 ```json
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/browser-run/reference/wrangler-commands/#page","headline":"Wrangler commands · Cloudflare Browser Run docs","description":"Manage Browser Run sessions from the command line using Wrangler.","url":"https://developers.cloudflare.com/browser-run/reference/wrangler-commands/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/browser-run/","name":"Browser Run"}},{"@type":"ListItem","position":3,"item":{"@id":"/browser-run/reference/","name":"Reference"}},{"@type":"ListItem","position":4,"item":{"@id":"/browser-run/reference/wrangler-commands/","name":"Wrangler commands"}}]}
 ```

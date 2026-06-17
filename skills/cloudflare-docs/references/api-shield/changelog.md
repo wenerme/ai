@@ -194,5 +194,6 @@ Customers can now build [Sequence mitigation](https://developers.cloudflare.com/
 Customers can now save endpoints in [Endpoint management](https://developers.cloudflare.com/api-shield/management-and-monitoring/) that contain variables in the hostname. Hostname variables are supported across all product features.
 
 ```json
+{"@context":"https://schema.org","@type":"BlogPosting","@id":"https://developers.cloudflare.com/api-shield/changelog/#page","headline":"Changelog · Cloudflare API Shield docs","description":"Track the latest updates and changes to API Shield features.","url":"https://developers.cloudflare.com/api-shield/changelog/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-15","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/api-shield/","name":"API Shield"}},{"@type":"ListItem","position":3,"item":{"@id":"/api-shield/changelog/","name":"Changelog"}}]}
 ```

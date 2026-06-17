@@ -35,10 +35,10 @@ Try out this model with Workers AI LLM Playground. It does not require any setup
 
 ## Usage
 
-* [  Worker (Streaming) ](#tab-panel-4857)
-* [  TypeScript ](#tab-panel-4858)
-* [  Python ](#tab-panel-4859)
-* [  curl ](#tab-panel-4860)
+* [  Worker (Streaming) ](#tab-panel-5038)
+* [  TypeScript ](#tab-panel-5039)
+* [  Python ](#tab-panel-5040)
+* [  curl ](#tab-panel-5041)
 
 TypeScript
 
@@ -286,5 +286,6 @@ format
  Streaming Output [ ](https://developers.cloudflare.com/workers-ai/models/phi-2/streaming-output.json "Open") [ ](https://developers.cloudflare.com/workers-ai/models/phi-2/streaming-output.json "Download") 
 
 ```json
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers-ai/models/phi-2/#page","headline":"phi-2 (Microsoft) · Cloudflare AI docs · Cloudflare Workers AI docs","description":"Phi-2 is a Transformer-based model with a next-word prediction objective, trained on 1.4T tokens from multiple passes on a mixture of Synthetic and Web datasets for NLP and coding.","url":"https://developers.cloudflare.com/workers-ai/models/phi-2/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/workers-ai/","name":"Workers AI"}},{"@type":"ListItem","position":3,"item":{"@id":"/workers-ai/models/","name":"Models"}}]}
 ```

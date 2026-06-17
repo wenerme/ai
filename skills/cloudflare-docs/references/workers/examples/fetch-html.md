@@ -22,10 +22,10 @@ If you want to get started quickly, click on the button below.
 
 This creates a repository in your GitHub account and deploys the application to Cloudflare Workers.
 
-* [  JavaScript ](#tab-panel-11524)
-* [  TypeScript ](#tab-panel-11525)
-* [  Python ](#tab-panel-11526)
-* [  Hono ](#tab-panel-11527)
+* [  JavaScript ](#tab-panel-11664)
+* [  TypeScript ](#tab-panel-11665)
+* [  Python ](#tab-panel-11666)
+* [  Hono ](#tab-panel-11667)
 
 JavaScript
 
@@ -53,7 +53,7 @@ export default {
 
 ```
 
-[Run Worker in Playground](https://workers.cloudflare.com/playground#LYVwNgLglgDghgJwgegGYHsHALQBM4RwDcABAEbogB2+CAngLzbPYZb6HbW5QDGU2AAwB2EQA4ArBICcYscOkAuFizbAOcLjT4CR4qbPnSAsACgAwuioQAptewARKAGcY6Z1GhXFJNXgLEJFRwwDYMAERQNDYAHgB0AFbO4aSoUGB2IWGR0fFJ4WaW1nYQ2AAqdDA2PnAwMGB8BFBWyAlwAG5wzrwIsBAA1MDouOA2ZmaxbkgkuDaocOAQJADepiQkXXRUvL42ELwAFgAUCDYAjiA2zhAAlCtr6yTIAFTPD4-PJABKNvVwvDYSAADU5DWxAkgAd08BxIEAOgIO7iWdEoUJcsIg6BIzjsuBIpwuVwgzjh6He62eyApvCs1wJNjBgIYJHCBwgEBgzkUyGQsRC9RscVpwBSpgppwgIAQVA2kLgnl2+2OoPQtgANAyidcbkQHgBfdWmfVEMwqZhqDRaHj8ISiYSSGRyBSFKy2exOVzuTzNKg+PwaUjBUIRUKEDQpXzpTIh8JkMDoMgFCxukrlSrVDZ1Bq8JotJJWcamZbhYAKqgAfSGIwy4UUOVmeWS+rN5stAWtOjt+idRmYZiAA)
+[Run Worker in Playground](https://workers.cloudflare.com/playground#LYVwNgLglgDghgJwgegGYHsHALQBM4RwDcABAEbogB2+CAngLzbPYZb6HbW5QDGU2AAwAWEQEYAnAFZhAZjGCA7AC4WLNsA5wuNPgJHjpchYoCwAKADC6KhACmt7ABEoAZxjpXUaDeUkNeATEJFRwwHYMAERQNHYAHgB0AFaukaSoUGAOYRHRsYkpkRbWtg4Q2AAqdDB2fnAwMGB8BFA2yElwAG5wrrwIsBAA1MDouOB2FhbxHkgkuHaocOAQJADe5iQkPXRUvP52ELwAFgAUCHYAjiB2rhAAlGsbmyTIAFSvT8+vJABKdo1wXh2EgAA3OI3sIJIAHdvEcSBAjsCjp4VnRKDC3PCIOgSK4HLgSOcrjcIK4EehPptXsgqbwbLciXYIcCGCRIkcIBAYK5lMhkPEwo07Al6cA0uYqecICAEFQttC4N59odTuD0PYADRMkm3O5EJ4AX015kNRAsamYGi0Oh4-CEomEkhk8iUxRs9kcLncnm8rSofgCWlIoXCUXChC0aX8mWyYciZDA6DIRSsHrKlWqtS2DSavBabRSNkm5lWkWASqoAH0RmMspFlHl5gVUoaLZbrUFbXoHYYXSZmBYgA)
 
 TypeScript
 
@@ -137,5 +137,6 @@ export default app;
 ```
 
 ```json
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/examples/fetch-html/#page","headline":"Fetch HTML · Cloudflare Workers docs","description":"Send a request to a remote server, read HTML from the response, and serve that HTML.","url":"https://developers.cloudflare.com/workers/examples/fetch-html/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["JavaScript","TypeScript","Python"]}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/workers/","name":"Workers"}},{"@type":"ListItem","position":3,"item":{"@id":"/workers/examples/","name":"Examples"}},{"@type":"ListItem","position":4,"item":{"@id":"/workers/examples/fetch-html/","name":"Fetch HTML"}}]}
 ```

@@ -1,5 +1,5 @@
 ---
-title: Integrate Turnstile, WAF, &#38; Bot Management
+title: Integrate Turnstile, WAF, &amp; Bot Management
 description: This tutorial will guide you on how to integrate Cloudflare Turnstile, Web Application Firewall (WAF), and Bot Management. This combination creates a robust defense against various threats, including automated attacks and malicious login attempts.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 # Integrate Turnstile, WAF, & Bot Management
 
-**Last reviewed:**  over 1 year ago 
+**Last reviewed:**  almost 2 years ago 
 
 This tutorial will guide you on how to integrate Cloudflare Turnstile, [Web Application Firewall (WAF)](https://developers.cloudflare.com/waf/), and [Bot Management](https://developers.cloudflare.com/bots/get-started/bot-management/) into an existing authentication system. This combination creates a robust defense against various threats, including automated attacks and malicious login attempts.
 
@@ -256,5 +256,6 @@ If you are interested in customizing Turnstile, refer to the resources below for
 * [Turnstile Analytics](https://developers.cloudflare.com/turnstile/turnstile-analytics/). Learn how to view Turnstile's analytics in the Cloudflare dashboard. This includes metrics on the number of challenges issued, as well as the [challenge solve rate (CSR)](https://developers.cloudflare.com/cloudflare-challenges/reference/challenge-solve-rate/).
 
 ```json
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/turnstile/tutorials/integrating-turnstile-waf-and-bot-management/#page","headline":"Integrate Turnstile, WAF, & Bot Management · Cloudflare Turnstile docs","description":"This tutorial will guide you on how to integrate Cloudflare Turnstile, Web Application Firewall (WAF), and Bot Management. This combination creates a robust defense against various threats, including automated attacks and malicious login attempts.","url":"https://developers.cloudflare.com/turnstile/tutorials/integrating-turnstile-waf-and-bot-management/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-05-05","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["JavaScript","Authentication"]}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/turnstile/","name":"Turnstile"}},{"@type":"ListItem","position":3,"item":{"@id":"/turnstile/tutorials/","name":"Tutorials"}},{"@type":"ListItem","position":4,"item":{"@id":"/turnstile/tutorials/integrating-turnstile-waf-and-bot-management/","name":"Integrate Turnstile, WAF, & Bot Management"}}]}
 ```

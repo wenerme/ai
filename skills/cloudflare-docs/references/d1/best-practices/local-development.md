@@ -55,8 +55,8 @@ Your worker has access to the following bindings:
 
 In this example, the Worker has access to local-only D1 database. The corresponding D1 binding in your [Wrangler configuration file](https://developers.cloudflare.com/workers/wrangler/configuration/) would resemble the following:
 
-* [  wrangler.jsonc ](#tab-panel-5348)
-* [  wrangler.toml ](#tab-panel-5349)
+* [  wrangler.jsonc ](#tab-panel-7860)
+* [  wrangler.toml ](#tab-panel-7861)
 
 JSONC
 
@@ -112,8 +112,8 @@ It is currently not possible to develop against a _remote_ D1 database when usin
 
 Your [Wrangler configuration file](https://developers.cloudflare.com/workers/wrangler/configuration/) should resemble the following:
 
-* [  wrangler.jsonc ](#tab-panel-5350)
-* [  wrangler.toml ](#tab-panel-5351)
+* [  wrangler.jsonc ](#tab-panel-7862)
+* [  wrangler.toml ](#tab-panel-7863)
 
 JSONC
 
@@ -194,8 +194,8 @@ Users of wrangler `2.x` must use the `--persist` flag: previous versions of wran
 
 You can use Miniflare's [support for D1 ↗](https://miniflare.dev/storage/d1) to create D1 databases you can use for testing:
 
-* [  wrangler.jsonc ](#tab-panel-5352)
-* [  wrangler.toml ](#tab-panel-5353)
+* [  wrangler.jsonc ](#tab-panel-7864)
+* [  wrangler.toml ](#tab-panel-7865)
 
 JSONC
 
@@ -279,8 +279,8 @@ Wrangler exposes an [unstable\_dev()](https://developers.cloudflare.com/workers/
 
 Given the below Wrangler configuration:
 
-* [  wrangler.jsonc ](#tab-panel-5354)
-* [  wrangler.toml ](#tab-panel-5355)
+* [  wrangler.jsonc ](#tab-panel-7866)
+* [  wrangler.toml ](#tab-panel-7867)
 
 JSONC
 
@@ -424,5 +424,6 @@ Review the [unstable\_dev()](https://developers.cloudflare.com/workers/wrangler/
 * Understand how to [access logs](https://developers.cloudflare.com/workers/observability/logs/) generated from your Worker and D1.
 
 ```json
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/d1/best-practices/local-development/#page","headline":"Local development · Cloudflare D1 docs","description":"Run D1 locally with Wrangler to test your Worker and database before deploying to production.","url":"https://developers.cloudflare.com/d1/best-practices/local-development/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/d1/","name":"D1"}},{"@type":"ListItem","position":3,"item":{"@id":"/d1/best-practices/","name":"Best practices"}},{"@type":"ListItem","position":4,"item":{"@id":"/d1/best-practices/local-development/","name":"Local development"}}]}
 ```

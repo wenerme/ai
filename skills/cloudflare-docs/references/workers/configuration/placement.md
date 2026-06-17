@@ -14,8 +14,8 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 By default, [Workers](https://developers.cloudflare.com/workers/) and [Pages Functions](https://developers.cloudflare.com/pages/functions/) run in a data center closest to where the request was received. If your Worker makes requests to back-end infrastructure such as databases or APIs, it may be more performant to run that Worker closer to your back-end than the end user.
 
-* [  wrangler.jsonc ](#tab-panel-10282)
-* [  wrangler.toml ](#tab-panel-10283)
+* [  wrangler.jsonc ](#tab-panel-11459)
+* [  wrangler.toml ](#tab-panel-11460)
 
 JSONC
 
@@ -105,8 +105,8 @@ Smart Placement is available on all Workers plans.
 
 Add the following to your Wrangler configuration file:
 
-* [  wrangler.jsonc ](#tab-panel-10280)
-* [  wrangler.toml ](#tab-panel-10281)
+* [  wrangler.jsonc ](#tab-panel-11457)
+* [  wrangler.toml ](#tab-panel-11458)
 
 JSONC
 
@@ -211,8 +211,8 @@ Workers run on [Cloudflare's global network ↗](https://www.cloudflare.com/netw
 
 If your infrastructure runs in AWS, GCP, or Azure, set the `placement.region` property using the format `{provider}:{region}`:
 
-* [  wrangler.jsonc ](#tab-panel-10284)
-* [  wrangler.toml ](#tab-panel-10285)
+* [  wrangler.jsonc ](#tab-panel-11461)
+* [  wrangler.toml ](#tab-panel-11462)
 
 JSONC
 
@@ -254,8 +254,8 @@ Host-based placement is experimental.
 
 Set `placement.host` to identify a layer 4 service. Cloudflare uses TCP CONNECT checks to measure latency and selects the best data center.
 
-* [  wrangler.jsonc ](#tab-panel-10286)
-* [  wrangler.toml ](#tab-panel-10287)
+* [  wrangler.jsonc ](#tab-panel-11463)
+* [  wrangler.toml ](#tab-panel-11464)
 
 JSONC
 
@@ -287,8 +287,8 @@ host = "my_database_host.com:5432"
 
 Set `placement.hostname` to identify a layer 7 service. Cloudflare uses HTTP HEAD checks to measure latency and selects the best data center.
 
-* [  wrangler.jsonc ](#tab-panel-10288)
-* [  wrangler.toml ](#tab-panel-10289)
+* [  wrangler.jsonc ](#tab-panel-11465)
+* [  wrangler.toml ](#tab-panel-11466)
 
 JSONC
 
@@ -372,11 +372,11 @@ This example shows two Workers:
 * `auth-worker` — runs at the edge (no placement), handles authentication
 * `app-worker` — placed near your database, handles data queries
 
-* [ auth-worker ](#tab-panel-10294)
-* [ app-worker ](#tab-panel-10295)
+* [ auth-worker ](#tab-panel-11471)
+* [ app-worker ](#tab-panel-11472)
 
-* [  wrangler.jsonc ](#tab-panel-10290)
-* [  wrangler.toml ](#tab-panel-10291)
+* [  wrangler.jsonc ](#tab-panel-11467)
+* [  wrangler.toml ](#tab-panel-11468)
 
 JSONC
 
@@ -469,8 +469,8 @@ async function validateToken(token: string): Promise<string | null> {
 
 ```
 
-* [  wrangler.jsonc ](#tab-panel-10292)
-* [  wrangler.toml ](#tab-panel-10293)
+* [  wrangler.jsonc ](#tab-panel-11469)
+* [  wrangler.toml ](#tab-panel-11470)
 
 JSONC
 
@@ -653,5 +653,6 @@ export class AgentHistory extends DurableObject {
 ```
 
 ```json
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/configuration/placement/#page","headline":"Placement · Cloudflare Workers docs","description":"Control where your Worker runs to reduce latency.","url":"https://developers.cloudflare.com/workers/configuration/placement/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/workers/","name":"Workers"}},{"@type":"ListItem","position":3,"item":{"@id":"/workers/configuration/","name":"Configuration"}},{"@type":"ListItem","position":4,"item":{"@id":"/workers/configuration/placement/","name":"Placement"}}]}
 ```

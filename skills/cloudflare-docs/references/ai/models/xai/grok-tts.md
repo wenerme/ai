@@ -28,8 +28,8 @@ xAI's Grok text-to-speech model. Generates high-fidelity spoken audio in 5 expre
 
 ## Usage
 
-* [ TypeScript ](#tab-panel-1994)
-* [ cURL ](#tab-panel-1995)
+* [ TypeScript ](#tab-panel-2004)
+* [ cURL ](#tab-panel-2005)
 
 TypeScript
 
@@ -75,8 +75,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 ```
 
-* [ Output ](#tab-panel-1992)
-* [ Raw response ](#tab-panel-1993)
+* [ Output ](#tab-panel-2002)
+* [ Raw response ](#tab-panel-2003)
 
 ```
 
@@ -105,8 +105,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 **Different Voice**  — Use the warm, conversational \`ara\` voice 
 
-* [ TypeScript ](#tab-panel-1998)
-* [ cURL ](#tab-panel-1999)
+* [ TypeScript ](#tab-panel-2008)
+* [ cURL ](#tab-panel-2009)
 
 TypeScript
 
@@ -154,8 +154,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 ```
 
-* [ Output ](#tab-panel-1996)
-* [ Raw response ](#tab-panel-1997)
+* [ Output ](#tab-panel-2006)
+* [ Raw response ](#tab-panel-2007)
 
 ```
 
@@ -182,8 +182,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 **High-Fidelity MP3**  — 44.1 kHz / 192 kbps MP3 for production use 
 
-* [ TypeScript ](#tab-panel-2006)
-* [ cURL ](#tab-panel-2007)
+* [ TypeScript ](#tab-panel-2016)
+* [ cURL ](#tab-panel-2017)
 
 TypeScript
 
@@ -251,8 +251,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 ```
 
-* [ Output ](#tab-panel-2000)
-* [ Raw response ](#tab-panel-2001)
+* [ Output ](#tab-panel-2010)
+* [ Raw response ](#tab-panel-2011)
 
 ```
 
@@ -279,8 +279,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 **Telephony (mulaw)**  — G.711 μ-law at 8 kHz for SIP / PSTN integration 
 
-* [ TypeScript ](#tab-panel-2012)
-* [ cURL ](#tab-panel-2013)
+* [ TypeScript ](#tab-panel-2022)
+* [ cURL ](#tab-panel-2023)
 
 TypeScript
 
@@ -346,8 +346,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 ```
 
-* [ Output ](#tab-panel-2002)
-* [ Raw response ](#tab-panel-2003)
+* [ Output ](#tab-panel-2012)
+* [ Raw response ](#tab-panel-2013)
 
 ```
 
@@ -374,8 +374,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 **Expressive Delivery**  — Inline speech tags for laughter, pauses, and whispers 
 
-* [ TypeScript ](#tab-panel-2008)
-* [ cURL ](#tab-panel-2009)
+* [ TypeScript ](#tab-panel-2018)
+* [ cURL ](#tab-panel-2019)
 
 TypeScript
 
@@ -431,8 +431,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 ```
 
-* [ Output ](#tab-panel-2004)
-* [ Raw response ](#tab-panel-2005)
+* [ Output ](#tab-panel-2014)
+* [ Raw response ](#tab-panel-2015)
 
 ```
 
@@ -459,8 +459,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 **Text Normalization**  — Convert written numbers and abbreviations to spoken form 
 
-* [ TypeScript ](#tab-panel-2014)
-* [ cURL ](#tab-panel-2015)
+* [ TypeScript ](#tab-panel-2024)
+* [ cURL ](#tab-panel-2025)
 
 TypeScript
 
@@ -520,8 +520,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 ```
 
-* [ Output ](#tab-panel-2010)
-* [ Raw response ](#tab-panel-2011)
+* [ Output ](#tab-panel-2020)
+* [ Raw response ](#tab-panel-2021)
 
 ```
 
@@ -548,8 +548,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 ## Parameters
 
-* [ Input ](#tab-panel-2016)
-* [ Output ](#tab-panel-2017)
+* [ Input ](#tab-panel-2026)
+* [ Output ](#tab-panel-2027)
 
 language
 
@@ -594,5 +594,6 @@ Input [ ](https://developers.cloudflare.com/ai/models/xai/grok-tts/schema-input.
 Output [ ](https://developers.cloudflare.com/ai/models/xai/grok-tts/schema-output.json "Open") [ ](https://developers.cloudflare.com/ai/models/xai/grok-tts/schema-output.json "Download") 
 
 ```json
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai/models/xai/grok-tts/#page","headline":"Grok TTS (xAI) · Cloudflare AI docs · Cloudflare AI docs","description":"xAI's Grok text-to-speech model. Generates high-fidelity spoken audio in 5 expressive voices (eve, ara, rex, sal, leo) with 20+ supported languages. Supports inline speech tags for laughter, whispers, and pauses.","url":"https://developers.cloudflare.com/ai/models/xai/grok-tts/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/ai/","name":"AI"}},{"@type":"ListItem","position":3,"item":{"@id":"/ai/models/","name":"Models"}}]}
 ```

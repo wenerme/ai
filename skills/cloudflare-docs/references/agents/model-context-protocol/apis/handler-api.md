@@ -115,8 +115,8 @@ The URL path where the MCP handler responds. Requests to other paths return a 40
 
 **Default:** `"/mcp"`
 
-* [  JavaScript ](#tab-panel-5150)
-* [  TypeScript ](#tab-panel-5151)
+* [  JavaScript ](#tab-panel-5757)
+* [  TypeScript ](#tab-panel-5758)
 
 JavaScript
 
@@ -154,8 +154,8 @@ When using the [OAuthProvider](https://developers.cloudflare.com/agents/model-co
 
 A custom `WorkerTransport` instance. If not provided, a new transport is created on every request.
 
-* [  JavaScript ](#tab-panel-5152)
-* [  TypeScript ](#tab-panel-5153)
+* [  JavaScript ](#tab-panel-5759)
+* [  TypeScript ](#tab-panel-5760)
 
 JavaScript
 
@@ -225,8 +225,8 @@ MCP SDK 1.26.0 introduces a guard that prevents connecting to a server instance 
 
 See the [migration guide](https://developers.cloudflare.com/agents/model-context-protocol/apis/handler-api/#migration-guide-for-mcp-sdk-1260) below for details.
 
-* [  JavaScript ](#tab-panel-5172)
-* [  TypeScript ](#tab-panel-5173)
+* [  JavaScript ](#tab-panel-5779)
+* [  TypeScript ](#tab-panel-5780)
 
 JavaScript
 
@@ -386,8 +386,8 @@ For stateful MCP servers that need to maintain session state across multiple req
 
 Provide a custom `WorkerTransport` with persistent storage. View the [complete example on GitHub ↗](https://github.com/cloudflare/agents/tree/main/examples/mcp-elicitation).
 
-* [  JavaScript ](#tab-panel-5174)
-* [  TypeScript ](#tab-panel-5175)
+* [  JavaScript ](#tab-panel-5781)
+* [  TypeScript ](#tab-panel-5782)
 
 JavaScript
 
@@ -528,8 +528,8 @@ export class MyStatefulMcpAgent extends Agent<Env, State> {
 
 In this case we are defining the `sessionIdGenerator` to return the Agent name as the session ID. To make sure we route to the correct Agent we can use `getAgentByName` in the Worker handler:
 
-* [  JavaScript ](#tab-panel-5158)
-* [  TypeScript ](#tab-panel-5159)
+* [  JavaScript ](#tab-panel-5765)
+* [  TypeScript ](#tab-panel-5766)
 
 JavaScript
 
@@ -625,8 +625,8 @@ The previous pattern of declaring `McpServer` instances in the global scope allo
 
 ### Before (broken with SDK 1.26.0)
 
-* [  JavaScript ](#tab-panel-5164)
-* [  TypeScript ](#tab-panel-5165)
+* [  JavaScript ](#tab-panel-5771)
+* [  TypeScript ](#tab-panel-5772)
 
 JavaScript
 
@@ -722,8 +722,8 @@ export default {
 
 ### After (correct)
 
-* [  JavaScript ](#tab-panel-5170)
-* [  TypeScript ](#tab-panel-5171)
+* [  JavaScript ](#tab-panel-5777)
+* [  TypeScript ](#tab-panel-5778)
 
 JavaScript
 
@@ -839,8 +839,8 @@ export default {
 
 If you are using the raw SDK transport directly (not via `createMcpHandler`), you must also create new transport instances per request:
 
-* [  JavaScript ](#tab-panel-5168)
-* [  TypeScript ](#tab-panel-5169)
+* [  JavaScript ](#tab-panel-5775)
+* [  TypeScript ](#tab-panel-5776)
 
 JavaScript
 
@@ -1064,8 +1064,8 @@ interface WorkerTransportOptions {
 
 Provides a custom session identifier. This session identifier is used to identify the session in the MCP Client.
 
-* [  JavaScript ](#tab-panel-5154)
-* [  TypeScript ](#tab-panel-5155)
+* [  JavaScript ](#tab-panel-5761)
+* [  TypeScript ](#tab-panel-5762)
 
 JavaScript
 
@@ -1097,8 +1097,8 @@ const transport = new WorkerTransport({
 
 Disables SSE streaming and returns responses as standard JSON.
 
-* [  JavaScript ](#tab-panel-5156)
-* [  TypeScript ](#tab-panel-5157)
+* [  JavaScript ](#tab-panel-5763)
+* [  TypeScript ](#tab-panel-5764)
 
 JavaScript
 
@@ -1130,8 +1130,8 @@ const transport = new WorkerTransport({
 
 A callback that fires when a session is initialized, either by creating a new session or restoring from storage.
 
-* [  JavaScript ](#tab-panel-5160)
-* [  TypeScript ](#tab-panel-5161)
+* [  JavaScript ](#tab-panel-5767)
+* [  TypeScript ](#tab-panel-5768)
 
 JavaScript
 
@@ -1192,8 +1192,8 @@ interface CORSOptions {
 
 ```
 
-* [  JavaScript ](#tab-panel-5162)
-* [  TypeScript ](#tab-panel-5163)
+* [  JavaScript ](#tab-panel-5769)
+* [  TypeScript ](#tab-panel-5770)
 
 JavaScript
 
@@ -1271,8 +1271,8 @@ interface TransportState {
 
 ```
 
-* [  JavaScript ](#tab-panel-5166)
-* [  TypeScript ](#tab-panel-5167)
+* [  JavaScript ](#tab-panel-5773)
+* [  TypeScript ](#tab-panel-5774)
 
 JavaScript
 
@@ -1365,8 +1365,8 @@ function getMcpAuthContext(): McpAuthContext | undefined;
 
 ```
 
-* [  JavaScript ](#tab-panel-5178)
-* [  TypeScript ](#tab-panel-5179)
+* [  JavaScript ](#tab-panel-5785)
+* [  TypeScript ](#tab-panel-5786)
 
 JavaScript
 
@@ -1474,8 +1474,8 @@ For a complete guide on setting up OAuth authentication with MCP servers, see th
 
 The `createMcpHandler` automatically catches errors and returns JSON-RPC error responses with code `-32603` (Internal error).
 
-* [  JavaScript ](#tab-panel-5176)
-* [  TypeScript ](#tab-panel-5177)
+* [  JavaScript ](#tab-panel-5783)
+* [  TypeScript ](#tab-panel-5784)
 
 JavaScript
 
@@ -1572,5 +1572,6 @@ server.tool("riskyOperation", "An operation that might fail", {}, async () => {
 [ McpAgent API ](https://developers.cloudflare.com/agents/model-context-protocol/apis/agent-api/) Build stateful MCP servers. 
 
 ```json
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/agents/model-context-protocol/apis/handler-api/#page","headline":"createMcpHandler · Cloudflare Agents docs","description":"Create a stateless MCP server fetch handler for a plain Worker using createMcpHandler and streamable HTTP transport.","url":"https://developers.cloudflare.com/agents/model-context-protocol/apis/handler-api/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-06-03","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["MCP"]}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/agents/","name":"Agents"}},{"@type":"ListItem","position":3,"item":{"@id":"/agents/model-context-protocol/","name":"Model Context Protocol (MCP)"}},{"@type":"ListItem","position":4,"item":{"@id":"/agents/model-context-protocol/apis/","name":"APIs"}},{"@type":"ListItem","position":5,"item":{"@id":"/agents/model-context-protocol/apis/handler-api/","name":"createMcpHandler"}}]}
 ```

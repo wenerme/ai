@@ -104,5 +104,6 @@ To enable DLP for your AI Gateway:
 * [DLP Detection Profiles](https://developers.cloudflare.com/cloudflare-one/data-loss-prevention/dlp-profiles/)
 
 ```json
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai-gateway/features/dlp/#page","headline":"Data Loss Prevention (DLP) · Cloudflare AI Gateway docs","description":"Protect sensitive data in AI Gateway prompts and responses using Cloudflare DLP detection engines.","url":"https://developers.cloudflare.com/ai-gateway/features/dlp/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-06-05","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/ai-gateway/","name":"AI Gateway"}},{"@type":"ListItem","position":3,"item":{"@id":"/ai-gateway/features/","name":"Features"}},{"@type":"ListItem","position":4,"item":{"@id":"/ai-gateway/features/dlp/","name":"Data Loss Prevention (DLP)"}}]}
 ```

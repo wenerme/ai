@@ -22,5 +22,6 @@ Learn more about SSL/TLS protection options for your origin servers:
 * [ Cipher suites ](https://developers.cloudflare.com/ssl/origin-configuration/cipher-suites/)
 
 ```json
+{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/ssl/origin-configuration/#page","headline":"Origin server · Cloudflare SSL/TLS docs","description":"Configure SSL/TLS encryption between Cloudflare and your origin server.","url":"https://developers.cloudflare.com/ssl/origin-configuration/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/ssl/","name":"SSL/TLS"}},{"@type":"ListItem","position":3,"item":{"@id":"/ssl/origin-configuration/","name":"Origin server"}}]}
 ```

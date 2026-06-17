@@ -61,8 +61,8 @@ Tools belong to the child agent. Define durable capabilities with the child's `g
 
 ### Example: parent calling a child
 
-* [  JavaScript ](#tab-panel-5046)
-* [  TypeScript ](#tab-panel-5047)
+* [  JavaScript ](#tab-panel-5647)
+* [  TypeScript ](#tab-panel-5648)
 
 JavaScript
 
@@ -228,8 +228,8 @@ export class ChildAgent extends Think<Env> {
 
 Use `onStart` and `cancelChat()` for RPC-safe cancellation across a sub-agent boundary:
 
-* [  JavaScript ](#tab-panel-5042)
-* [  TypeScript ](#tab-panel-5043)
+* [  JavaScript ](#tab-panel-5643)
+* [  TypeScript ](#tab-panel-5644)
 
 JavaScript
 
@@ -331,8 +331,8 @@ await turn;
 
 If the caller and callee are not separated by Workers RPC, you can also pass an `AbortSignal` to cancel mid-stream:
 
-* [  JavaScript ](#tab-panel-5036)
-* [  TypeScript ](#tab-panel-5037)
+* [  JavaScript ](#tab-panel-5637)
+* [  TypeScript ](#tab-panel-5638)
 
 JavaScript
 
@@ -408,8 +408,8 @@ Pass `options.signal` to cancel a programmatic turn from the Durable Object that
 
 ### Static messages
 
-* [  JavaScript ](#tab-panel-5038)
-* [  TypeScript ](#tab-panel-5039)
+* [  JavaScript ](#tab-panel-5639)
+* [  TypeScript ](#tab-panel-5640)
 
 JavaScript
 
@@ -457,8 +457,8 @@ await this.saveMessages([
 
 When multiple `saveMessages` calls queue up, the function form runs with the latest messages when the turn actually starts:
 
-* [  JavaScript ](#tab-panel-5040)
-* [  TypeScript ](#tab-panel-5041)
+* [  JavaScript ](#tab-panel-5641)
+* [  TypeScript ](#tab-panel-5642)
 
 JavaScript
 
@@ -510,8 +510,8 @@ await this.saveMessages((current) => [
 
 Trigger a recurring prompt turn with [getScheduledTasks()](https://developers.cloudflare.com/agents/harnesses/think/scheduled-tasks/):
 
-* [  JavaScript ](#tab-panel-5044)
-* [  TypeScript ](#tab-panel-5045)
+* [  JavaScript ](#tab-panel-5645)
+* [  TypeScript ](#tab-panel-5646)
 
 JavaScript
 
@@ -653,5 +653,6 @@ protected abortAllRequests(): void
 Use `abortRequest()` when you know the request ID. Use `abortAllRequests()` for single-purpose helpers that should cancel whatever turn is currently running. Prefer `SaveMessagesOptions.signal` for programmatic turns when you can pass a signal at the call site.
 
 ```json
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/agents/harnesses/think/sub-agents/#page","headline":"Sub-agent RPC and programmatic turns · Cloudflare Agents docs","description":"Stream Think turns through a child agent with chat(), and trigger turns programmatically with saveMessages(), continueLastTurn(), and abort.","url":"https://developers.cloudflare.com/agents/harnesses/think/sub-agents/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-06-03","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/agents/","name":"Agents"}},{"@type":"ListItem","position":3,"item":{"@id":"/agents/harnesses/","name":"Harnesses"}},{"@type":"ListItem","position":4,"item":{"@id":"/agents/harnesses/think/","name":"Think"}},{"@type":"ListItem","position":5,"item":{"@id":"/agents/harnesses/think/sub-agents/","name":"Sub-agent RPC and programmatic turns"}}]}
 ```

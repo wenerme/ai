@@ -44,8 +44,8 @@ bun add agents chat
 
 Create a parent Agent that owns your Chat SDK runtime. Pass `createChatSdkState()` as the Chat SDK `state` option.
 
-* [  JavaScript ](#tab-panel-5692)
-* [  TypeScript ](#tab-panel-5693)
+* [  JavaScript ](#tab-panel-5875)
+* [  TypeScript ](#tab-panel-5876)
 
 JavaScript
 
@@ -155,8 +155,8 @@ export class MessengerAgent extends Agent<Env> {
 
 Add the parent Agent to your Durable Object migration:
 
-* [  wrangler.jsonc ](#tab-panel-5682)
-* [  wrangler.toml ](#tab-panel-5683)
+* [  wrangler.jsonc ](#tab-panel-5865)
+* [  wrangler.toml ](#tab-panel-5866)
 
 JSONC
 
@@ -168,7 +168,7 @@ JSONC
 
   // Set this to today's date
 
-  "compatibility_date": "2026-06-10",
+  "compatibility_date": "2026-06-17",
 
   "compatibility_flags": [
 
@@ -219,7 +219,7 @@ TOML
 
 # Set this to today's date
 
-compatibility_date = "2026-06-10"
+compatibility_date = "2026-06-17"
 
 compatibility_flags = ["nodejs_compat"]
 
@@ -261,8 +261,8 @@ Unknown keys use the adapter's default shard name, `default`.
 
 Use `shardKey` to control how thread IDs map to state sub-agent names:
 
-* [  JavaScript ](#tab-panel-5684)
-* [  TypeScript ](#tab-panel-5685)
+* [  JavaScript ](#tab-panel-5867)
+* [  TypeScript ](#tab-panel-5868)
 
 JavaScript
 
@@ -300,8 +300,8 @@ const state = createChatSdkState({
 
 Use `keyShard` when an adapter stores non-thread-shaped keys that should still route to a provider-specific shard:
 
-* [  JavaScript ](#tab-panel-5690)
-* [  TypeScript ](#tab-panel-5691)
+* [  JavaScript ](#tab-panel-5873)
+* [  TypeScript ](#tab-panel-5874)
 
 JavaScript
 
@@ -363,8 +363,8 @@ Returning `undefined` falls back to the built-in key sharder and then to the def
 
 Creates a Chat SDK `StateAdapter` backed by a `ChatSdkStateAgent` sub-agent.
 
-* [  JavaScript ](#tab-panel-5688)
-* [  TypeScript ](#tab-panel-5689)
+* [  JavaScript ](#tab-panel-5871)
+* [  TypeScript ](#tab-panel-5872)
 
 JavaScript
 
@@ -418,8 +418,8 @@ Options:
 
 The sub-agent class that stores state in SQLite. Export it from your Worker entry point so the runtime can create it.
 
-* [  JavaScript ](#tab-panel-5686)
-* [  TypeScript ](#tab-panel-5687)
+* [  JavaScript ](#tab-panel-5869)
+* [  TypeScript ](#tab-panel-5870)
 
 JavaScript
 
@@ -473,5 +473,6 @@ Physical cleanup is lazy. `ChatSdkStateAgent` schedules one cleanup callback for
 [ Chat SDK messenger example ](https://github.com/cloudflare/agents/tree/main/examples/chat-sdk-messenger) Build a Telegram messenger bot with Chat SDK state in sub-agents, burst/debounce concurrency, and Think-backed AI replies running in managed fibers. 
 
 ```json
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/agents/runtime/communication/chat-sdk/#page","headline":"Chat SDK · Cloudflare Agents docs","description":"Integrate Chat SDK with Agents, including durable state for subscriptions, locks, queues, and message history.","url":"https://developers.cloudflare.com/agents/runtime/communication/chat-sdk/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-06-09","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/agents/","name":"Agents"}},{"@type":"ListItem","position":3,"item":{"@id":"/agents/runtime/","name":"Runtime"}},{"@type":"ListItem","position":4,"item":{"@id":"/agents/runtime/communication/","name":"Communication"}},{"@type":"ListItem","position":5,"item":{"@id":"/agents/runtime/communication/chat-sdk/","name":"Chat SDK"}}]}
 ```

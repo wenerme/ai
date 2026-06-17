@@ -65,12 +65,12 @@ When enrolled in Posture only mode, the Cloudflare One Client (formerly WARP) wi
 ## 3\. (Optional) Verify the client certificate
 
 1. To view the client certificates installed on the device:  
-   * [ Windows ](#tab-panel-5348)  
-   * [ macOS ](#tab-panel-5349)  
-   * [ Linux ](#tab-panel-5350)  
-   * [ iOS ](#tab-panel-5351)  
-   * [ Android ](#tab-panel-5352)  
-   * [ ChromeOS ](#tab-panel-5353)  
+   * [ Windows ](#tab-panel-7432)  
+   * [ macOS ](#tab-panel-7433)  
+   * [ Linux ](#tab-panel-7434)  
+   * [ iOS ](#tab-panel-7435)  
+   * [ Android ](#tab-panel-7436)  
+   * [ ChromeOS ](#tab-panel-7437)  
    1. Open the **Start** menu and select **Run**.  
    2. Enter `certlm.msc`.  
    3. Go to **Personal** \> **Certificates**.  
@@ -116,5 +116,6 @@ certificate](https://developers.cloudflare.com/_astro/device-information-only-br
 Posture only mode is not compatible with the [Windows pre-login](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/deployment/mdm-deployment/windows-prelogin/) feature. The user must be logged into Windows because the Cloudflare One Client needs to [install a certificate](#3-optional-verify-the-client-certificate) in the user store.
 
 ```json
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/modes/device-information-only/#page","headline":"Enable Posture only mode · Cloudflare One docs","description":"Enable Posture only mode in Zero Trust.","url":"https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/modes/device-information-only/","inLanguage":"en","image":"https://developers.cloudflare.com/zt-preview.png","dateModified":"2026-05-01","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Posture","mTLS"]}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/cloudflare-one/","name":"Cloudflare One"}},{"@type":"ListItem","position":3,"item":{"@id":"/cloudflare-one/team-and-resources/","name":"Team and resources"}},{"@type":"ListItem","position":4,"item":{"@id":"/cloudflare-one/team-and-resources/devices/","name":"Devices"}},{"@type":"ListItem","position":5,"item":{"@id":"/cloudflare-one/team-and-resources/devices/cloudflare-one-client/","name":"Cloudflare One Client"}},{"@type":"ListItem","position":6,"item":{"@id":"/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/","name":"Configure the Cloudflare One Client"}},{"@type":"ListItem","position":7,"item":{"@id":"/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/modes/","name":"Client modes"}},{"@type":"ListItem","position":8,"item":{"@id":"/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/modes/device-information-only/","name":"Enable Posture only mode"}}]}
 ```

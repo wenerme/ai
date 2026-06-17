@@ -44,8 +44,8 @@ Cookies do not help across origins. Pass credentials in the URL query, then veri
 
 ### Static authentication
 
-* [  JavaScript ](#tab-panel-5848)
-* [  TypeScript ](#tab-panel-5849)
+* [  JavaScript ](#tab-panel-6447)
+* [  TypeScript ](#tab-panel-6448)
 
 JavaScript
 
@@ -113,8 +113,8 @@ function ChatComponent() {
 
 Build query values right before connect. Use Suspense for async setup.
 
-* [  JavaScript ](#tab-panel-5854)
-* [  TypeScript ](#tab-panel-5855)
+* [  JavaScript ](#tab-panel-6453)
+* [  TypeScript ](#tab-panel-6454)
 
 JavaScript
 
@@ -238,8 +238,8 @@ function App() {
 
 Refresh the token when the connection fails due to authentication error.
 
-* [  JavaScript ](#tab-panel-5856)
-* [  TypeScript ](#tab-panel-5857)
+* [  JavaScript ](#tab-panel-6455)
+* [  TypeScript ](#tab-panel-6456)
 
 JavaScript
 
@@ -425,8 +425,8 @@ Pass credentials in the URL when connecting to another host, then verify on the 
 
 ### Static cross-domain auth
 
-* [  JavaScript ](#tab-panel-5850)
-* [  TypeScript ](#tab-panel-5851)
+* [  JavaScript ](#tab-panel-6449)
+* [  TypeScript ](#tab-panel-6450)
 
 JavaScript
 
@@ -496,8 +496,8 @@ function StaticCrossDomainAuth() {
 
 ### Async cross-domain auth
 
-* [  JavaScript ](#tab-panel-5852)
-* [  TypeScript ](#tab-panel-5853)
+* [  JavaScript ](#tab-panel-6451)
+* [  TypeScript ](#tab-panel-6452)
 
 JavaScript
 
@@ -595,8 +595,8 @@ function AsyncCrossDomainAuth() {
 
 On the server side, verify the token in the `onConnect` handler:
 
-* [  JavaScript ](#tab-panel-5858)
-* [  TypeScript ](#tab-panel-5859)
+* [  JavaScript ](#tab-panel-6457)
+* [  TypeScript ](#tab-panel-6458)
 
 JavaScript
 
@@ -784,5 +784,6 @@ export class SecureAgent extends Agent {
 [ Agents API ](https://developers.cloudflare.com/agents/runtime/agents-api/) Complete API reference for the Agents SDK. 
 
 ```json
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/agents/runtime/operations/cross-domain-authentication/#page","headline":"Cross-domain authentication · Cloudflare Agents docs","description":"Authenticate WebSocket connections to Cloudflare Agents across domains using signed tokens.","url":"https://developers.cloudflare.com/agents/runtime/operations/cross-domain-authentication/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-06-03","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/agents/","name":"Agents"}},{"@type":"ListItem","position":3,"item":{"@id":"/agents/runtime/","name":"Runtime"}},{"@type":"ListItem","position":4,"item":{"@id":"/agents/runtime/operations/","name":"Operations"}},{"@type":"ListItem","position":5,"item":{"@id":"/agents/runtime/operations/cross-domain-authentication/","name":"Cross-domain authentication"}}]}
 ```

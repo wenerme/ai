@@ -27,8 +27,8 @@ The namespace binding requires the following minimum package versions for TypeSc
 
 When you add an `ai_search_namespaces` binding to your Wrangler configuration, you specify which namespace the binding has access to. The binding grants full access to all instances within that namespace. You can get, list, create, and delete instances at runtime.
 
-* [  wrangler.jsonc ](#tab-panel-4187)
-* [  wrangler.toml ](#tab-panel-4188)
+* [  wrangler.jsonc ](#tab-panel-6610)
+* [  wrangler.toml ](#tab-panel-6611)
 
 JSONC
 
@@ -93,8 +93,8 @@ A `default` namespace is automatically created for every account. If you do not 
 
 You can also bind directly to specific instances in the default namespace using the `ai_search` binding. This binds each entry to a single pre-existing instance without needing to call `get()`.
 
-* [  wrangler.jsonc ](#tab-panel-4189)
-* [  wrangler.toml ](#tab-panel-4190)
+* [  wrangler.jsonc ](#tab-panel-6612)
+* [  wrangler.toml ](#tab-panel-6613)
 
 JSONC
 
@@ -155,8 +155,8 @@ The `ai_search` binding provides the same instance methods (`search()`, `chatCom
 
 You can declare multiple namespace bindings in the same Worker. Each binding maps to a different namespace and provides isolated access to its instances.
 
-* [  wrangler.jsonc ](#tab-panel-4191)
-* [  wrangler.toml ](#tab-panel-4192)
+* [  wrangler.jsonc ](#tab-panel-6614)
+* [  wrangler.toml ](#tab-panel-6615)
 
 JSONC
 
@@ -222,5 +222,6 @@ namespace = "support"
 An instance name must be unique within a namespace. This means you can have an instance named `docs` in both the `blog` and `support` namespaces without conflict.
 
 ```json
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai-search/concepts/namespaces/#page","headline":"Namespaces · Cloudflare AI Search docs","description":"Group AI Search instances into namespaces and manage them dynamically from a Workers binding.","url":"https://developers.cloudflare.com/ai-search/concepts/namespaces/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-20","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/ai-search/","name":"AI Search"}},{"@type":"ListItem","position":3,"item":{"@id":"/ai-search/concepts/","name":"Concepts"}},{"@type":"ListItem","position":4,"item":{"@id":"/ai-search/concepts/namespaces/","name":"Namespaces"}}]}
 ```

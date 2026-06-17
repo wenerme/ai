@@ -96,8 +96,8 @@ You must create a binding in your [Wrangler configuration file](https://develope
 
 To bind your Hyperdrive configuration to your Worker, add the following to the end of your Wrangler file:
 
-* [  wrangler.jsonc ](#tab-panel-10168)
-* [  wrangler.toml ](#tab-panel-10169)
+* [  wrangler.jsonc ](#tab-panel-11345)
+* [  wrangler.toml ](#tab-panel-11346)
 
 JSONC
 
@@ -143,8 +143,8 @@ Specifically:
 
 If you wish to use a local database during development, you can add a `localConnectionString` to your Hyperdrive configuration with the connection string of your database:
 
-* [  wrangler.jsonc ](#tab-panel-10170)
-* [  wrangler.toml ](#tab-panel-10171)
+* [  wrangler.jsonc ](#tab-panel-11347)
+* [  wrangler.toml ](#tab-panel-11348)
 
 JSONC
 
@@ -238,8 +238,8 @@ bun add -d @types/pg
 
 Add the required Node.js compatibility flags and Hyperdrive binding to your `wrangler.jsonc` file:
 
-* [  wrangler.jsonc ](#tab-panel-10172)
-* [  wrangler.toml ](#tab-panel-10173)
+* [  wrangler.jsonc ](#tab-panel-11349)
+* [  wrangler.toml ](#tab-panel-11350)
 
 JSONC
 
@@ -257,7 +257,7 @@ JSONC
 
   // Set this to today's date
 
-  "compatibility_date": "2026-05-28",
+  "compatibility_date": "2026-06-17",
 
   "hyperdrive": [
 
@@ -284,7 +284,7 @@ compatibility_flags = [ "nodejs_compat" ]
 
 # Set this to today's date
 
-compatibility_date = "2026-05-28"
+compatibility_date = "2026-06-17"
 
 
 [[hyperdrive]]
@@ -400,5 +400,6 @@ A successful response returns a JSON array of rows from your database.
 * Explore [other examples](https://developers.cloudflare.com/workers-vpc/examples/)
 
 ```json
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers-vpc/examples/private-database/#page","headline":"Connect to a private database · Cloudflare Workers VPC","description":"This example demonstrates how to query a private PostgreSQL database from a Worker using Workers VPC and Hyperdrive. The Worker connects to a database that is not exposed to the public Internet, with Hyperdrive providing connection pooling and query acceleration.","url":"https://developers.cloudflare.com/workers-vpc/examples/private-database/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-30","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/workers-vpc/","name":"Workers VPC"}},{"@type":"ListItem","position":3,"item":{"@id":"/workers-vpc/examples/","name":"Examples"}},{"@type":"ListItem","position":4,"item":{"@id":"/workers-vpc/examples/private-database/","name":"Connect to a private database"}}]}
 ```

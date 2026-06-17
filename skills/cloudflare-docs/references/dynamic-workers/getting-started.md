@@ -41,8 +41,8 @@ In order for a Worker to be able to create Dynamic Workers, it needs a Worker Lo
 
 Configure it like so, in your Worker's `wrangler.jsonc`:
 
-* [  wrangler.jsonc ](#tab-panel-7772)
-* [  wrangler.toml ](#tab-panel-7773)
+* [  wrangler.jsonc ](#tab-panel-8429)
+* [  wrangler.toml ](#tab-panel-8430)
 
 JSONC
 
@@ -82,8 +82,8 @@ Your Worker will then have access to the Worker Loader API via `env.LOADER`.
 
 Use `env.LOADER.load()` to create a Dynamic Worker and run it:
 
-* [  JavaScript ](#tab-panel-7780)
-* [  TypeScript ](#tab-panel-7781)
+* [  JavaScript ](#tab-panel-8437)
+* [  TypeScript ](#tab-panel-8438)
 
 JavaScript
 
@@ -97,7 +97,7 @@ export default {
 
     const worker = env.LOADER.load({
 
-      compatibilityDate: "2026-06-03",
+      compatibilityDate: "2026-06-17",
 
 
       mainModule: "src/index.js",
@@ -158,7 +158,7 @@ export default {
 
     const worker = env.LOADER.load({
 
-      compatibilityDate: "2026-06-03",
+      compatibilityDate: "2026-06-17",
 
 
       mainModule: "src/index.js",
@@ -217,8 +217,8 @@ If you expect to load the exact same Worker more than once, use [get(id, callbac
 
 The callback you provide will only be called if the Worker is not already loaded. This lets you skip loading the code from storage when the Worker is already running.
 
-* [  JavaScript ](#tab-panel-7774)
-* [  TypeScript ](#tab-panel-7775)
+* [  JavaScript ](#tab-panel-8431)
+* [  TypeScript ](#tab-panel-8432)
 
 JavaScript
 
@@ -240,7 +240,7 @@ const worker = env.LOADER.get("hello-v1", async () => {
 
   return {
 
-    compatibilityDate: "2026-06-03",
+    compatibilityDate: "2026-06-17",
 
     mainModule: "index.js",
 
@@ -275,7 +275,7 @@ const worker = env.LOADER.get("hello-v1", async () => {
 
   return {
 
-    compatibilityDate: "2026-06-03",
+    compatibilityDate: "2026-06-17",
 
     mainModule: "index.js",
 
@@ -300,8 +300,8 @@ For the full list of supported module types, refer to the [API reference](https:
 
 To run Python code in a Dynamic Worker, you must include the `python_workers` compatibility flag. Without this flag, the Dynamic Worker will fail to load the Python runtime.
 
-* [  JavaScript ](#tab-panel-7776)
-* [  TypeScript ](#tab-panel-7777)
+* [  JavaScript ](#tab-panel-8433)
+* [  TypeScript ](#tab-panel-8434)
 
 JavaScript
 
@@ -309,7 +309,7 @@ JavaScript
 
 const worker = env.LOADER.load({
 
-  compatibilityDate: "2026-06-03",
+  compatibilityDate: "2026-06-17",
 
   compatibilityFlags: ["python_workers"],
 
@@ -343,7 +343,7 @@ TypeScript
 
 const worker = env.LOADER.load({
 
-  compatibilityDate: "2026-06-03",
+  compatibilityDate: "2026-06-17",
 
   compatibilityFlags: ["python_workers"],
 
@@ -377,8 +377,8 @@ If your Dynamic Worker needs TypeScript compilation or npm dependencies, the cod
 
 [@cloudflare/worker-bundler ↗](https://www.npmjs.com/package/@cloudflare/worker-bundler) is a library that handles this for you. Use it to bundle source files into a format that `load()` and `get()` accept:
 
-* [  JavaScript ](#tab-panel-7778)
-* [  TypeScript ](#tab-panel-7779)
+* [  JavaScript ](#tab-panel-8435)
+* [  TypeScript ](#tab-panel-8436)
 
 JavaScript
 
@@ -416,7 +416,7 @@ const worker = env.LOADER.get("my-worker", async () => {
   });
 
 
-  return { mainModule, modules, compatibilityDate: "2026-06-03" };
+  return { mainModule, modules, compatibilityDate: "2026-06-17" };
 
 });
 
@@ -459,7 +459,7 @@ const worker = env.LOADER.get("my-worker", async () => {
   });
 
 
-  return { mainModule, modules, compatibilityDate: "2026-06-03" };
+  return { mainModule, modules, compatibilityDate: "2026-06-17" };
 
 });
 
@@ -469,5 +469,6 @@ const worker = env.LOADER.get("my-worker", async () => {
 `createWorker()` handles TypeScript compilation, dependency resolution from npm, and bundling. It returns `mainModule` and `modules` ready to pass directly to `load()` or `get()`.
 
 ```json
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/dynamic-workers/getting-started/#page","headline":"Getting started · Cloudflare Dynamic Workers docs","description":"Load and run a dynamic Worker.","url":"https://developers.cloudflare.com/dynamic-workers/getting-started/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-06-03","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/dynamic-workers/","name":"Dynamic Workers"}},{"@type":"ListItem","position":3,"item":{"@id":"/dynamic-workers/getting-started/","name":"Getting started"}}]}
 ```

@@ -42,5 +42,6 @@ Configure sandbox behavior with options like `keepAlive` for long-running proces
 * [Security model](https://developers.cloudflare.com/sandbox/concepts/security/) \- Understanding environment isolation
 
 ```json
+{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/sandbox/configuration/#page","headline":"Configuration · Cloudflare Sandbox SDK docs","description":"Configure Sandbox SDK deployments with Wrangler, Dockerfiles, environment variables, and transport modes.","url":"https://developers.cloudflare.com/sandbox/configuration/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/sandbox/","name":"Sandbox SDK"}},{"@type":"ListItem","position":3,"item":{"@id":"/sandbox/configuration/","name":"Configuration"}}]}
 ```

@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 # Single Page App (SPA) shell with bootstrap data
 
-**Last reviewed:**  3 months ago 
+**Last reviewed:**  4 months ago 
 
 Use HTMLRewriter to inject bootstrap data into an SPA shell — whether the shell is served from Workers Static Assets or fetched from an external origin.
 
@@ -37,8 +37,8 @@ Use this variant when your SPA build output is deployed as part of your Worker u
 
 Set `not_found_handling` to `"single-page-application"` so that every route returns `index.html`. Use `run_worker_first` to route all requests through your Worker except hashed assets under `/assets/*`, which are served directly.
 
-* [  wrangler.jsonc ](#tab-panel-10578)
-* [  wrangler.toml ](#tab-panel-10579)
+* [  wrangler.jsonc ](#tab-panel-11757)
+* [  wrangler.toml ](#tab-panel-11758)
 
 JSONC
 
@@ -52,7 +52,7 @@ JSONC
 
   // Set this to today's date
 
-  "compatibility_date": "2026-05-28",
+  "compatibility_date": "2026-06-17",
 
   "compatibility_flags": ["nodejs_compat"],
 
@@ -83,7 +83,7 @@ main = "src/worker.ts"
 
 # Set this to today's date
 
-compatibility_date = "2026-05-28"
+compatibility_date = "2026-06-17"
 
 compatibility_flags = [ "nodejs_compat" ]
 
@@ -109,8 +109,8 @@ The Worker starts fetching API data immediately, then fetches the SPA shell from
 
 If the API call fails, the shell still loads and the SPA falls back to client-side data fetching.
 
-* [  JavaScript ](#tab-panel-10582)
-* [  TypeScript ](#tab-panel-10583)
+* [  JavaScript ](#tab-panel-11761)
+* [  TypeScript ](#tab-panel-11762)
 
 JavaScript
 
@@ -348,8 +348,8 @@ Use this variant when your HTML, CSS, and JavaScript are deployed outside Cloudf
 
 Because the SPA is not in Workers Static Assets, you do not need an `assets` block. Instead, store the external origin URL as an environment variable. Attach the Worker to your domain with a [Custom Domain](https://developers.cloudflare.com/workers/configuration/routing/custom-domains/) or a [Route](https://developers.cloudflare.com/workers/configuration/routing/routes/).
 
-* [  wrangler.jsonc ](#tab-panel-10580)
-* [  wrangler.toml ](#tab-panel-10581)
+* [  wrangler.jsonc ](#tab-panel-11759)
+* [  wrangler.toml ](#tab-panel-11760)
 
 JSONC
 
@@ -363,7 +363,7 @@ JSONC
 
   // Set this to today's date
 
-  "compatibility_date": "2026-05-28",
+  "compatibility_date": "2026-06-17",
 
   "compatibility_flags": ["nodejs_compat"],
 
@@ -390,7 +390,7 @@ main = "src/worker.ts"
 
 # Set this to today's date
 
-compatibility_date = "2026-05-28"
+compatibility_date = "2026-06-17"
 
 compatibility_flags = [ "nodejs_compat" ]
 
@@ -408,8 +408,8 @@ API_BASE_URL = "https://api.example.com"
 
 The Worker fetches both the SPA shell and API data in parallel. When the SPA origin responds, HTMLRewriter streams the HTML while injecting bootstrap data into `<body>`. Static assets (CSS, JS, images) are passed through to the external origin without modification.
 
-* [  JavaScript ](#tab-panel-10584)
-* [  TypeScript ](#tab-panel-10585)
+* [  JavaScript ](#tab-panel-11763)
+* [  TypeScript ](#tab-panel-11764)
 
 JavaScript
 
@@ -832,5 +832,6 @@ new HTMLRewriter()
 * [Workers Best Practices](https://developers.cloudflare.com/workers/best-practices/workers-best-practices/) — Code patterns and configuration guidance for Workers.
 
 ```json
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/examples/spa-shell/#page","headline":"Single Page App (SPA) shell with bootstrap data · Cloudflare Workers docs","description":"Use HTMLRewriter to inject prefetched bootstrap data into an SPA shell, eliminating client-side data fetching on initial load. Works with Workers Static Assets or an externally hosted SPA.","url":"https://developers.cloudflare.com/workers/examples/spa-shell/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["TypeScript","SPA"]}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/workers/","name":"Workers"}},{"@type":"ListItem","position":3,"item":{"@id":"/workers/examples/","name":"Examples"}},{"@type":"ListItem","position":4,"item":{"@id":"/workers/examples/spa-shell/","name":"Single Page App (SPA) shell with bootstrap data"}}]}
 ```

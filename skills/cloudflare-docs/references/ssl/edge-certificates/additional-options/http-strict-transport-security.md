@@ -52,8 +52,8 @@ If you remove HTTPS before disabling HSTS or before waiting for the duration of 
 
 ## Enable HSTS
 
-* [ Dashboard ](#tab-panel-10027)
-* [ API ](#tab-panel-10028)
+* [ Dashboard ](#tab-panel-10588)
+* [ API ](#tab-panel-10589)
 
 To enable HSTS using the dashboard:
 
@@ -97,5 +97,6 @@ Note
 Once HSTS **Preload** is configured, submit requests for addition to each browser’s preload list. Chrome, Firefox/Mozilla, and Safari use the Chrome preload list. A minimum **Max Age Header** of 12 months is required for inclusion in HSTS preload lists.
 
 ```json
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ssl/edge-certificates/additional-options/http-strict-transport-security/#page","headline":"HTTP Strict Transport Security (HSTS) · Cloudflare SSL/TLS docs","description":"Enforce HTTPS connections with HSTS response headers.","url":"https://developers.cloudflare.com/ssl/edge-certificates/additional-options/http-strict-transport-security/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-17","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Headers"]}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/ssl/","name":"SSL/TLS"}},{"@type":"ListItem","position":3,"item":{"@id":"/ssl/edge-certificates/","name":"Edge certificates"}},{"@type":"ListItem","position":4,"item":{"@id":"/ssl/edge-certificates/additional-options/","name":"Additional options"}},{"@type":"ListItem","position":5,"item":{"@id":"/ssl/edge-certificates/additional-options/http-strict-transport-security/","name":"HTTP Strict Transport Security (HSTS)"}}]}
 ```

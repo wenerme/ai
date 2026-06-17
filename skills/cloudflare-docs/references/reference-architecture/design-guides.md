@@ -28,5 +28,6 @@ Design guides take your knowledge from a reference architecture and walk through
 * [ Building zero trust architecture into your startup ](https://developers.cloudflare.com/reference-architecture/design-guides/zero-trust-for-startups/)
 
 ```json
+{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/reference-architecture/design-guides/#page","headline":"Design Guides · Cloudflare Reference Architecture docs","description":"Browse Cloudflare design guides with best practices.","url":"https://developers.cloudflare.com/reference-architecture/design-guides/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-24","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/reference-architecture/","name":"Reference Architecture"}},{"@type":"ListItem","position":3,"item":{"@id":"/reference-architecture/design-guides/","name":"Design Guides"}}]}
 ```

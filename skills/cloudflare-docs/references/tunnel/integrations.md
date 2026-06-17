@@ -81,5 +81,6 @@ Use Tunnel with Cloudflare for SaaS to enhance your SaaS application origin secu
 Connect Hyperdrive to a private database through Cloudflare Tunnel.
 
 ```json
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/tunnel/integrations/#page","headline":"Integrations · Cloudflare Docs","description":"Use Cloudflare Tunnel with Cloudflare One, Workers VPC, Load Balancing, Access, Spectrum, and other Cloudflare services.","url":"https://developers.cloudflare.com/tunnel/integrations/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-05-05","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Integration","Private networks"]}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/tunnel/","name":"Cloudflare Tunnel"}},{"@type":"ListItem","position":3,"item":{"@id":"/tunnel/integrations/","name":"Integrations"}}]}
 ```

@@ -20,5 +20,6 @@ Cloudflare caches content at data centers close to your visitors so your origin 
 * [ Control cache access with WAF and Snippets ](https://developers.cloudflare.com/cache/interaction-cloudflare-products/waf-snippets/)
 
 ```json
+{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/cache/interaction-cloudflare-products/#page","headline":"Interaction with Cloudflare products · Cloudflare Cache (CDN) docs","description":"How caching interacts with Workers, R2, WAF, and other products.","url":"https://developers.cloudflare.com/cache/interaction-cloudflare-products/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-05-07","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/cache/","name":"Cache / CDN"}},{"@type":"ListItem","position":3,"item":{"@id":"/cache/interaction-cloudflare-products/","name":"Interaction with Cloudflare products"}}]}
 ```

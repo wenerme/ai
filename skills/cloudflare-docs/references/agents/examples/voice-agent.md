@@ -49,8 +49,8 @@ The starter gives you a working Vite + React + Cloudflare Workers setup. You wil
 
 Update `wrangler.jsonc` to include a Workers AI binding and a Durable Object for your voice agent:
 
-* [  wrangler.jsonc ](#tab-panel-4920)
-* [  wrangler.toml ](#tab-panel-4921)
+* [  wrangler.jsonc ](#tab-panel-5489)
+* [  wrangler.toml ](#tab-panel-5490)
 
 JSONC
 
@@ -62,7 +62,7 @@ JSONC
 
   // Set this to today's date
 
-  "compatibility_date": "2026-06-03",
+  "compatibility_date": "2026-06-17",
 
   "compatibility_flags": ["nodejs_compat"],
 
@@ -115,7 +115,7 @@ name = "voice-agent"
 
 # Set this to today's date
 
-compatibility_date = "2026-06-03"
+compatibility_date = "2026-06-17"
 
 compatibility_flags = [ "nodejs_compat" ]
 
@@ -147,8 +147,8 @@ new_sqlite_classes = [ "MyVoiceAgent" ]
 
 Replace `src/server.ts` with the following. The `withVoice` mixin adds the full voice pipeline — STT, sentence chunking, TTS, and conversation persistence — to a standard `Agent` class.
 
-* [  JavaScript ](#tab-panel-4926)
-* [  TypeScript ](#tab-panel-4927)
+* [  JavaScript ](#tab-panel-5495)
+* [  TypeScript ](#tab-panel-5496)
 
 JavaScript
 
@@ -523,8 +523,8 @@ Open the app in your browser, select **Start Call**, and speak. You will see the
 
 You can intercept and transform data at each stage of the pipeline. For example, filter out short transcripts (noise) and adjust pronunciation before TTS:
 
-* [  JavaScript ](#tab-panel-4922)
-* [  TypeScript ](#tab-panel-4923)
+* [  JavaScript ](#tab-panel-5491)
+* [  TypeScript ](#tab-panel-5492)
 
 JavaScript
 
@@ -608,8 +608,8 @@ Returning `null` from `afterTranscribe` drops the utterance entirely — useful 
 
 Swap in third-party STT or TTS providers without changing your agent logic:
 
-* [  JavaScript ](#tab-panel-4924)
-* [  TypeScript ](#tab-panel-4925)
+* [  JavaScript ](#tab-panel-5493)
+* [  TypeScript ](#tab-panel-5494)
 
 JavaScript
 
@@ -696,5 +696,6 @@ export class MyVoiceAgent extends VoiceAgent<Env> {
 [ Using AI models ](https://developers.cloudflare.com/agents/runtime/operations/using-ai-models/) Use Workers AI, OpenAI, Anthropic, Gemini, or any provider with your agents. 
 
 ```json
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/agents/examples/voice-agent/#page","headline":"Voice agent · Cloudflare Agents docs","description":"Build a real-time voice agent with speech-to-text, LLM processing, and text-to-speech on Cloudflare Workers.","url":"https://developers.cloudflare.com/agents/examples/voice-agent/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-06-03","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/agents/","name":"Agents"}},{"@type":"ListItem","position":3,"item":{"@id":"/agents/examples/","name":"Examples"}},{"@type":"ListItem","position":4,"item":{"@id":"/agents/examples/voice-agent/","name":"Voice agent"}}]}
 ```

@@ -18,8 +18,8 @@ When the parent zone is using a [CNAME setup (partial)](https://developers.cloud
 
 If you have not yet created a DNS record covering your subdomain in the parent zone:
 
-* [ child is full or secondary ](#tab-panel-5623)
-* [ child is partial ](#tab-panel-5624)
+* [ child is full or secondary ](#tab-panel-8137)
+* [ child is partial ](#tab-panel-8138)
 
 1. Add the subdomain to a Cloudflare account as a new zone. It can be the same account where the parent zone exists or a different one.
 2. Complete the configuration accordingly for [full](https://developers.cloudflare.com/dns/zone-setups/full-setup/setup/) or [secondary](https://developers.cloudflare.com/dns/zone-setups/zone-transfers/cloudflare-as-secondary/setup/) setup.
@@ -64,8 +64,8 @@ sub.example.com CNAME sub.example.com.cdn.cloudflare.net
 
 If you have already created a DNS record covering your subdomain in the parent zone:
 
-* [ child is full or secondary ](#tab-panel-5625)
-* [ child is partial ](#tab-panel-5626)
+* [ child is full or secondary ](#tab-panel-8139)
+* [ child is partial ](#tab-panel-8140)
 
 1. Add the subdomain to a Cloudflare account as a new zone. It can be the same account where the parent zone exists or a different one.
 2. Complete the configuration accordingly for [full](https://developers.cloudflare.com/dns/zone-setups/full-setup/setup/) or [secondary](https://developers.cloudflare.com/dns/zone-setups/zone-transfers/cloudflare-as-secondary/setup/) setup.
@@ -122,5 +122,6 @@ sub.example.com CNAME sub.example.com.cdn.cloudflare.net
 1. Meaning that another DNS provider - not Cloudflare - maintains your Authoritative DNS. [↩](#user-content-fnref-2)
 
 ```json
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/dns/zone-setups/subdomain-setup/setup/parent-on-partial/#page","headline":"Set up a child zone in Cloudflare with parent on partial setup · Cloudflare DNS docs","description":"Set up subdomain zone when parent uses partial setup.","url":"https://developers.cloudflare.com/dns/zone-setups/subdomain-setup/setup/parent-on-partial/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/dns/","name":"DNS"}},{"@type":"ListItem","position":3,"item":{"@id":"/dns/zone-setups/","name":"DNS setups"}},{"@type":"ListItem","position":4,"item":{"@id":"/dns/zone-setups/subdomain-setup/","name":"Subdomain setup"}},{"@type":"ListItem","position":5,"item":{"@id":"/dns/zone-setups/subdomain-setup/setup/","name":"Setup"}},{"@type":"ListItem","position":6,"item":{"@id":"/dns/zone-setups/subdomain-setup/setup/parent-on-partial/","name":"Parent zone on partial setup"}}]}
 ```

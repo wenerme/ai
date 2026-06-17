@@ -1,0 +1,53 @@
+---
+title: '`glab container-registry tag list`'
+stage: Create
+group: Code Review
+info: To determine the technical writer assigned to the Stage/Group associated with this page, see <https://handbook.gitlab.com/handbook/product/ux/technical-writing/#assignments>
+---
+
+List container registry repository tags.
+
+## Synopsis
+
+List tags for a container registry repository.
+
+The repository ID must belong to the selected project. Use -R/--repo
+to specify the owning project when running this command outside that
+project's Git checkout.
+
+```plaintext
+glab container-registry tag list <repository-id> [flags]
+```
+
+## Aliases
+
+```plaintext
+ls
+```
+
+## Examples
+
+```console
+# List tags for a container registry repository
+glab container-registry tag list 123
+
+# List tags for a container registry repository in another project
+glab container-registry tag list 123 -R gitlab-org/cli
+```
+
+## Options
+
+```plaintext
+      --details         Fetch digest, size, and creation time for each tag. Makes one API call per tag.
+      --jq string       Filter JSON output with a jq expression.
+  -F, --output string   Format output as: text, json. (default "text")
+  -p, --page int        Page number. (default 1)
+  -P, --per-page int    Number of items to list per page. (default 30)
+```
+
+## Options inherited from parent commands
+
+```plaintext
+  -h, --help          Show help for this command.
+  -R, --repo string   Select another repository. You can use either OWNER/REPO or GROUP/NAMESPACE/REPO. The full URL or Git URL is also accepted.
+```

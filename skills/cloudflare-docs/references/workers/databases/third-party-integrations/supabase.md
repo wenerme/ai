@@ -20,8 +20,8 @@ The Supabase client (`@supabase/supabase-js`) provides access to Supabase's vari
 
 If you want to connect directly to the Supabase Postgres database, connect using [Hyperdrive](https://developers.cloudflare.com/hyperdrive). Hyperdrive can provide lower latencies because it performs the database connection setup and connection pooling across Cloudflare's network. Hyperdrive supports native database drivers, libraries, and ORMs, and is included in all [Workers plans](https://developers.cloudflare.com/hyperdrive/platform/pricing/). Learn more about Hyperdrive in [How Hyperdrive Works](https://developers.cloudflare.com/hyperdrive/concepts/how-hyperdrive-works/).
 
-* [ Supabase client ](#tab-panel-10356)
-* [ Hyperdrive ](#tab-panel-10357)
+* [ Supabase client ](#tab-panel-11533)
+* [ Hyperdrive ](#tab-panel-11534)
 
 ### Supabase client setup
 
@@ -118,8 +118,8 @@ postgres://USERNAME:PASSWORD@HOSTNAME_OR_IP_ADDRESS:PORT/database_name
 
 Most database providers will provide a connection string you can directly copy-and-paste directly into Hyperdrive.
 
-* [ Dashboard ](#tab-panel-10352)
-* [ Wrangler CLI ](#tab-panel-10353)
+* [ Dashboard ](#tab-panel-11529)
+* [ Wrangler CLI ](#tab-panel-11530)
 
 To create a Hyperdrive configuration with the Cloudflare dashboard:
 
@@ -137,8 +137,8 @@ Terminal window
 npx wrangler hyperdrive create <NAME_OF_HYPERDRIVE_CONFIG> --connection-string="postgres://user:password@HOSTNAME_OR_IP_ADDRESS:PORT/database_name"  
 ```
 2. This command outputs a binding for the [Wrangler configuration file](https://developers.cloudflare.com/workers/wrangler/configuration/):  
-   * [  wrangler.jsonc ](#tab-panel-10350)  
-   * [  wrangler.toml ](#tab-panel-10351)  
+   * [  wrangler.jsonc ](#tab-panel-11527)  
+   * [  wrangler.toml ](#tab-panel-11528)  
 JSONC  
 ```  
 {  
@@ -146,7 +146,7 @@ JSONC
   "name": "hyperdrive-example",  
   "main": "src/index.ts",  
   // Set this to today's date  
-  "compatibility_date": "2026-05-28",  
+  "compatibility_date": "2026-06-17",  
   "compatibility_flags": [  
     "nodejs_compat"  
   ],  
@@ -165,7 +165,7 @@ TOML
 name = "hyperdrive-example"  
 main = "src/index.ts"  
 # Set this to today's date  
-compatibility_date = "2026-05-28"  
+compatibility_date = "2026-06-17"  
 compatibility_flags = [ "nodejs_compat" ]  
 [[hyperdrive]]  
 binding = "HYPERDRIVE"  
@@ -224,8 +224,8 @@ bun add -d @types/pg
 
 Add the required Node.js compatibility flags and Hyperdrive binding to your `wrangler.jsonc` file:
 
-* [  wrangler.jsonc ](#tab-panel-10354)
-* [  wrangler.toml ](#tab-panel-10355)
+* [  wrangler.jsonc ](#tab-panel-11531)
+* [  wrangler.toml ](#tab-panel-11532)
 
 JSONC
 
@@ -243,7 +243,7 @@ JSONC
 
   // Set this to today's date
 
-  "compatibility_date": "2026-05-28",
+  "compatibility_date": "2026-06-17",
 
   "hyperdrive": [
 
@@ -270,7 +270,7 @@ compatibility_flags = [ "nodejs_compat" ]
 
 # Set this to today's date
 
-compatibility_date = "2026-05-28"
+compatibility_date = "2026-06-17"
 
 
 [[hyperdrive]]
@@ -363,5 +363,6 @@ When connecting to a Supabase database with Hyperdrive, you should use a driver 
 * Understand more about other [storage options](https://developers.cloudflare.com/workers/platform/storage-options/) available to Cloudflare Workers.
 
 ```json
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/databases/third-party-integrations/supabase/#page","headline":"Supabase · Cloudflare Workers docs","description":"Connect Cloudflare Workers to a Supabase PostgreSQL database using the Supabase client or Hyperdrive.","url":"https://developers.cloudflare.com/workers/databases/third-party-integrations/supabase/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/workers/","name":"Workers"}},{"@type":"ListItem","position":3,"item":{"@id":"/workers/databases/","name":"Databases"}},{"@type":"ListItem","position":4,"item":{"@id":"/workers/databases/third-party-integrations/","name":"3rd Party Integrations"}},{"@type":"ListItem","position":5,"item":{"@id":"/workers/databases/third-party-integrations/supabase/","name":"Supabase"}}]}
 ```

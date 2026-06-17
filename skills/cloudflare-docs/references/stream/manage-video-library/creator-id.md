@@ -18,11 +18,11 @@ For basic uploads, you will need to add the Creator ID after you upload the vide
 
 ## Upload from URL
 
-* [ REST API ](#tab-panel-10044)
-* [ Workers Binding API ](#tab-panel-10045)
+* [ REST API ](#tab-panel-10805)
+* [ Workers Binding API ](#tab-panel-10806)
 
-* [ cURL ](#tab-panel-10026)
-* [ TypeScript ](#tab-panel-10027)
+* [ cURL ](#tab-panel-10787)
+* [ TypeScript ](#tab-panel-10788)
 
 Terminal window
 
@@ -184,8 +184,8 @@ const video = await client.stream.copy.create({
 
 See the full Stream [REST API and SDK reference](https://developers.cloudflare.com/api/resources/stream/) for details on using REST API from external applications, with pre-generated SDK's for external TypeScript, Python, or Go applications.
 
-* [ index.ts ](#tab-panel-10028)
-* [ wrangler.jsonc ](#tab-panel-10029)
+* [ index.ts ](#tab-panel-10789)
+* [ wrangler.jsonc ](#tab-panel-10790)
 
 TypeScript
 
@@ -253,10 +253,10 @@ See the full [Workers Stream binding API reference](https://developers.cloudflar
 
 You can associate videos with a single creator by setting a default creator ID value, which you can later use for searching for videos by creator ID or for analytics data.
 
-* [ REST API ](#tab-panel-10042)
+* [ REST API ](#tab-panel-10803)
 
-* [ cURL ](#tab-panel-10030)
-* [ TypeScript ](#tab-panel-10031)
+* [ cURL ](#tab-panel-10791)
+* [ TypeScript ](#tab-panel-10792)
 
 Terminal window
 
@@ -311,11 +311,11 @@ Setting default creator IDs for live inputs is only available via the API. The S
 
 To update the creator property in existing videos, make a `POST` request to the video object endpoint with a JSON payload specifying the creator property as show in the example below.
 
-* [ REST API ](#tab-panel-10046)
-* [ Workers Binding API ](#tab-panel-10047)
+* [ REST API ](#tab-panel-10807)
+* [ Workers Binding API ](#tab-panel-10808)
 
-* [ cURL ](#tab-panel-10032)
-* [ TypeScript ](#tab-panel-10033)
+* [ cURL ](#tab-panel-10793)
+* [ TypeScript ](#tab-panel-10794)
 
 Terminal window
 
@@ -360,8 +360,8 @@ const video = await client.stream.edit({
 
 See the full Stream [REST API and SDK reference](https://developers.cloudflare.com/api/resources/stream/) for details on using REST API from external applications, with pre-generated SDK's for external TypeScript, Python, or Go applications.
 
-* [ index.ts ](#tab-panel-10034)
-* [ wrangler.jsonc ](#tab-panel-10035)
+* [ index.ts ](#tab-panel-10795)
+* [ wrangler.jsonc ](#tab-panel-10796)
 
 TypeScript
 
@@ -419,11 +419,11 @@ See the full [Workers Stream binding API reference](https://developers.cloudflar
 
 ## Direct creator upload
 
-* [ REST API ](#tab-panel-10048)
-* [ Workers Binding API ](#tab-panel-10049)
+* [ REST API ](#tab-panel-10809)
+* [ Workers Binding API ](#tab-panel-10810)
 
-* [ cURL ](#tab-panel-10036)
-* [ TypeScript ](#tab-panel-10037)
+* [ cURL ](#tab-panel-10797)
+* [ TypeScript ](#tab-panel-10798)
 
 Terminal window
 
@@ -531,8 +531,8 @@ const directUpload = await client.stream.directUpload.create({
 
 See the full Stream [REST API and SDK reference](https://developers.cloudflare.com/api/resources/stream/) for details on using REST API from external applications, with pre-generated SDK's for external TypeScript, Python, or Go applications.
 
-* [ index.ts ](#tab-panel-10038)
-* [ wrangler.jsonc ](#tab-panel-10039)
+* [ index.ts ](#tab-panel-10799)
+* [ wrangler.jsonc ](#tab-panel-10800)
 
 TypeScript
 
@@ -606,10 +606,10 @@ See the full [Workers Stream binding API reference](https://developers.cloudflar
 
 ## Get videos by Creator ID
 
-* [ REST API ](#tab-panel-10043)
+* [ REST API ](#tab-panel-10804)
 
-* [ cURL ](#tab-panel-10040)
-* [ TypeScript ](#tab-panel-10041)
+* [ cURL ](#tab-panel-10801)
+* [ TypeScript ](#tab-panel-10802)
 
 Terminal window
 
@@ -778,5 +778,6 @@ Add the Creator ID via the `Upload-Creator` header. For more information, refer 
 After you set the creator property, you can use the [GraphQL API](https://developers.cloudflare.com/analytics/graphql-api/) to filter by a specific creator. Refer to [Fetching bulk analytics](https://developers.cloudflare.com/stream/getting-analytics/fetching-bulk-analytics) for more information about available metrics and filters.
 
 ```json
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/stream/manage-video-library/creator-id/#page","headline":"Manage creators · Cloudflare Stream docs","description":"Set and use creator IDs to associate Cloudflare Stream videos with internal user accounts.","url":"https://developers.cloudflare.com/stream/manage-video-library/creator-id/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-05-07","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/stream/","name":"Stream"}},{"@type":"ListItem","position":3,"item":{"@id":"/stream/manage-video-library/","name":"Manage videos"}},{"@type":"ListItem","position":4,"item":{"@id":"/stream/manage-video-library/creator-id/","name":"Manage creators"}}]}
 ```

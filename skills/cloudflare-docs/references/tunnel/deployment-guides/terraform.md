@@ -147,8 +147,8 @@ Terminal window
 touch providers.tf  
 ```
 2. Add the following providers to `providers.tf`. The `random` provider is used to generate a tunnel secret.  
-   * [ Terraform (v5) ](#tab-panel-10047)  
-   * [ Terraform (v4) ](#tab-panel-10048)  
+   * [ Terraform (v5) ](#tab-panel-10984)  
+   * [ Terraform (v4) ](#tab-panel-10985)  
 ```  
 terraform {  
   required_providers {  
@@ -209,8 +209,8 @@ Terminal window
 touch Cloudflare-config.tf  
 ```
 2. Add the following resources to `Cloudflare-config.tf`:  
-   * [ Terraform (v5) ](#tab-panel-10043)  
-   * [ Terraform (v4) ](#tab-panel-10044)  
+   * [ Terraform (v5) ](#tab-panel-10980)  
+   * [ Terraform (v4) ](#tab-panel-10981)  
 ```  
 # Creates a new remotely-managed tunnel for the GCP VM.  
 resource "cloudflare_zero_trust_tunnel_cloudflared" "gcp_tunnel" {  
@@ -358,8 +358,8 @@ Terminal window
 touch GCP-config.tf  
 ```
 2. Add the following content to `GCP-config.tf`:  
-   * [ Terraform (v5) ](#tab-panel-10045)  
-   * [ Terraform (v4) ](#tab-panel-10046)  
+   * [ Terraform (v5) ](#tab-panel-10982)  
+   * [ Terraform (v4) ](#tab-panel-10983)  
 ```  
 # OS the server will use  
 data "google_compute_image" "image" {  
@@ -508,5 +508,6 @@ If you configured Access, you will see the Access login page. Log in with your C
 4. You should see the HTTPBin homepage, confirming that your tunnel is routing traffic correctly.
 
 ```json
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/tunnel/deployment-guides/terraform/#page","headline":"Deploy Tunnels with Terraform · Cloudflare Docs","description":"Learn how to deploy a Cloudflare Tunnel using Terraform and our lightweight server-side daemon, cloudflared.","url":"https://developers.cloudflare.com/tunnel/deployment-guides/terraform/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-05-05","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Terraform","Integration"]}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/tunnel/","name":"Cloudflare Tunnel"}},{"@type":"ListItem","position":3,"item":{"@id":"/tunnel/deployment-guides/","name":"Deployment guides"}},{"@type":"ListItem","position":4,"item":{"@id":"/tunnel/deployment-guides/terraform/","name":"Terraform"}}]}
 ```

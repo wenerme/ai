@@ -121,5 +121,6 @@ When transforming assets via the Workers binding:
 * After beta, the costs for transforming via bindings will be the same as for transforming via URL, but **all operations will be billed individually,** not based on uniqueness. Cache or store results for cost optimization and performance.
 
 ```json
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/stream/pricing/#page","headline":"Pricing · Cloudflare Stream docs","description":"Cloudflare Stream pricing for minutes of video stored and minutes of video delivered.","url":"https://developers.cloudflare.com/stream/pricing/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/stream/","name":"Stream"}},{"@type":"ListItem","position":3,"item":{"@id":"/stream/pricing/","name":"Pricing"}}]}
 ```

@@ -44,8 +44,8 @@ To configure Workers Logpush for AI Gateway, follow these steps:
 
 You need to generate a key pair to encrypt and decrypt the logs. This script will output your RSA privateKey and publicKey. Keep the private key secure, as it will be used to decrypt the logs. Below is a sample script to generate the keys using Node.js and OpenSSL.
 
-* [ JavaScript ](#tab-panel-4145)
-* [ OpenSSL ](#tab-panel-4146)
+* [ JavaScript ](#tab-panel-6562)
+* [ OpenSSL ](#tab-panel-6563)
 
 JavaScript
 
@@ -122,8 +122,8 @@ After configuring Workers Logpush, logs will be sent encrypted using the public 
 
 To decrypt the encrypted log bodies and metadata from AI Gateway, you can use the following Node.js script or OpenSSL:
 
-* [ JavaScript ](#tab-panel-4147)
-* [ OpenSSL ](#tab-panel-4148)
+* [ JavaScript ](#tab-panel-6564)
+* [ OpenSSL ](#tab-panel-6565)
 
 To decrypt the encrypted log bodies and metadata from AI Gateway, download the logs to a folder, in this case its named `my_log.log.gz`.
 
@@ -343,5 +343,6 @@ cat decrypted_logs.txt
 This command will output the decrypted logs to the terminal.
 
 ```json
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai-gateway/observability/logging/logpush/#page","headline":"Workers Logpush · Cloudflare AI Gateway docs","description":"Export encrypted AI Gateway logs to external storage using Workers Logpush.","url":"https://developers.cloudflare.com/ai-gateway/observability/logging/logpush/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-20","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/ai-gateway/","name":"AI Gateway"}},{"@type":"ListItem","position":3,"item":{"@id":"/ai-gateway/observability/","name":"Observability"}},{"@type":"ListItem","position":4,"item":{"@id":"/ai-gateway/observability/logging/","name":"Logging"}},{"@type":"ListItem","position":5,"item":{"@id":"/ai-gateway/observability/logging/logpush/","name":"Workers Logpush"}}]}
 ```

@@ -49,8 +49,8 @@ Use a Node version manager like [Volta ↗](https://volta.sh/) or [nvm ↗](http
 
 Create a new Worker as the means to query your database.
 
-* [ CLI ](#tab-panel-7756)
-* [ Dashboard ](#tab-panel-7757)
+* [ CLI ](#tab-panel-7898)
+* [ Dashboard ](#tab-panel-7899)
 
 1. Create a new project named `d1-tutorial` by running:  
  npm  yarn  pnpm  
@@ -105,8 +105,8 @@ A D1 database is conceptually similar to many other SQL databases: a database ma
 
 To create your first D1 database:
 
-* [ CLI ](#tab-panel-7746)
-* [ Dashboard ](#tab-panel-7747)
+* [ CLI ](#tab-panel-7888)
+* [ Dashboard ](#tab-panel-7889)
 
 1. Change into the directory you just created for your Workers project:  
 Terminal window  
@@ -159,8 +159,8 @@ You must create a binding for your Worker to connect to your D1 database. [Bindi
 
 To bind your D1 database to your Worker:
 
-* [ CLI ](#tab-panel-7763)
-* [ Dashboard ](#tab-panel-7764)
+* [ CLI ](#tab-panel-7905)
+* [ Dashboard ](#tab-panel-7906)
 
 You can automatically add the binding to your Wrangler configuration file when you run the `wrangler d1 create` command (step 3 of [2\. Create a database](https://developers.cloudflare.com/d1/get-started/#2-create-a-database)).
 
@@ -168,8 +168,8 @@ But if you wish to add the binding manually, follow the steps below:
 
 1. Copy the lines obtained from step 2 of [2\. Create a database](https://developers.cloudflare.com/d1/get-started/#2-create-a-database) from your terminal.
 2. Add them to the end of your Wrangler file.  
-   * [  wrangler.jsonc ](#tab-panel-7758)  
-   * [  wrangler.toml ](#tab-panel-7759)  
+   * [  wrangler.jsonc ](#tab-panel-7900)  
+   * [  wrangler.toml ](#tab-panel-7901)  
 JSONC  
 ```  
 {  
@@ -214,8 +214,8 @@ You create bindings by adding them to the Worker you have created.
 
 ### Populate your D1 database
 
-* [ CLI ](#tab-panel-7754)
-* [ Dashboard ](#tab-panel-7755)
+* [ CLI ](#tab-panel-7896)
+* [ Dashboard ](#tab-panel-7897)
 
 After correctly preparing your [Wrangler configuration file](https://developers.cloudflare.com/workers/wrangler/configuration/), set up your database. Create a `schema.sql` file using the SQL syntax below to initialize your database.
 
@@ -280,15 +280,15 @@ INSERT INTO Customers (CustomerID, CompanyName, ContactName) VALUES (1, 'Alfreds
 
 After you have set up your database, run an SQL query from within your Worker.
 
-* [ CLI ](#tab-panel-7765)
-* [ Dashboard ](#tab-panel-7766)
+* [ CLI ](#tab-panel-7907)
+* [ Dashboard ](#tab-panel-7908)
 
 1. Navigate to your `d1-tutorial` Worker and open the `index.ts` file. The `index.ts` file is where you configure your Worker's interactions with D1.
 2. Clear the content of `index.ts`.
 3. Paste the following code snippet into your `index.ts` file:  
-   * [  JavaScript ](#tab-panel-7760)  
-   * [  TypeScript ](#tab-panel-7761)  
-   * [  Python ](#tab-panel-7762)  
+   * [  JavaScript ](#tab-panel-7902)  
+   * [  TypeScript ](#tab-panel-7903)  
+   * [  Python ](#tab-panel-7904)  
 index.js  
 ```  
 export default {  
@@ -397,8 +397,8 @@ export default {
 
 Deploy your application on Cloudflare's global network.
 
-* [ CLI ](#tab-panel-7752)
-* [ Dashboard ](#tab-panel-7753)
+* [ CLI ](#tab-panel-7894)
+* [ Dashboard ](#tab-panel-7895)
 
 To deploy your Worker to production using Wrangler, you must first repeat the [database configuration](https://developers.cloudflare.com/d1/get-started/#populate-your-d1-database) steps after replacing the `--local` flag with the `--remote` flag to give your Worker data to read. This creates the database tables and imports the data into the production version of your database.
 
@@ -500,8 +500,8 @@ You can only develop locally if you are using Wrangler. You cannot develop local
 
 To delete your database:
 
-* [ CLI ](#tab-panel-7748)
-* [ Dashboard ](#tab-panel-7749)
+* [ CLI ](#tab-panel-7890)
+* [ Dashboard ](#tab-panel-7891)
 
 Run:
 
@@ -527,8 +527,8 @@ Note that deleting your D1 database will stop your application from functioning 
 
 If you want to delete your Worker:
 
-* [ CLI ](#tab-panel-7750)
-* [ Dashboard ](#tab-panel-7751)
+* [ CLI ](#tab-panel-7892)
+* [ Dashboard ](#tab-panel-7893)
 
 Run:
 
@@ -565,5 +565,6 @@ If you have any feature requests or notice any bugs, share your feedback directl
 * Explore [community projects built on D1](https://developers.cloudflare.com/d1/reference/community-projects/).
 
 ```json
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/d1/get-started/#page","headline":"Getting started · Cloudflare D1 docs","description":"Create your first D1 database, define a schema, and query it from a Cloudflare Worker.","url":"https://developers.cloudflare.com/d1/get-started/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/d1/","name":"D1"}},{"@type":"ListItem","position":3,"item":{"@id":"/d1/get-started/","name":"Getting started"}}]}
 ```

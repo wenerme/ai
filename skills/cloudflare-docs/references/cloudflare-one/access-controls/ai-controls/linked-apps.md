@@ -37,8 +37,8 @@ accTitle: Self-hosted MCP server accessing internal applications
 
 On each self-hosted application that the MCP server needs to access (for example, the `Internal API` and `Company wiki` apps), create a Linked App Token policy:
 
-* [ Dashboard ](#tab-panel-6937)
-* [ API ](#tab-panel-6938)
+* [ Dashboard ](#tab-panel-7079)
+* [ API ](#tab-panel-7080)
 
 1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** \> **Access controls** \> **Applications**.
 2. Select the downstream application and select **Edit**.
@@ -137,8 +137,8 @@ accTitle: SaaS MCP server accessing internal applications
 
 On each self-hosted application that the MCP server needs to access (for example, the `Internal API` and `Company wiki` apps), create a Linked App Token policy:
 
-* [ Dashboard ](#tab-panel-6939)
-* [ API ](#tab-panel-6940)
+* [ Dashboard ](#tab-panel-7081)
+* [ API ](#tab-panel-7082)
 
 1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** \> **Access controls** \> **Applications**.
 2. Select the downstream application and select **Edit**.
@@ -219,5 +219,6 @@ Authorization: Bearer ACCESS_TOKEN
 * When the upstream application uses [Managed OAuth](https://developers.cloudflare.com/cloudflare-one/access-controls/applications/http-apps/managed-oauth/), the client receives an [opaque access token](https://developers.cloudflare.com/cloudflare-one/access-controls/applications/http-apps/managed-oauth/#token-format), not a JWT. The client cannot forward this token directly to downstream applications as a `Cf-Access-Token` header. Instead, the upstream application's origin must read the `Cf-Access-Jwt-Assertion` header (which contains the resolved JWT) and forward it as `Cf-Access-Token` to the downstream application. If you want clients to access multiple endpoints without a proxy, consider using a [multi-domain Access application](https://developers.cloudflare.com/cloudflare-one/access-controls/applications/http-apps/managed-oauth/#multi-domain-applications) instead.
 
 ```json
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/access-controls/ai-controls/linked-apps/#page","headline":"Allow MCP servers to access self-hosted applications · Cloudflare One docs","description":"Allow MCP servers to access self-hosted applications in Access.","url":"https://developers.cloudflare.com/cloudflare-one/access-controls/ai-controls/linked-apps/","inLanguage":"en","image":"https://developers.cloudflare.com/zt-preview.png","dateModified":"2026-04-20","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["MCP"]}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/cloudflare-one/","name":"Cloudflare One"}},{"@type":"ListItem","position":3,"item":{"@id":"/cloudflare-one/access-controls/","name":"Access controls"}},{"@type":"ListItem","position":4,"item":{"@id":"/cloudflare-one/access-controls/ai-controls/","name":"AI controls"}},{"@type":"ListItem","position":5,"item":{"@id":"/cloudflare-one/access-controls/ai-controls/linked-apps/","name":"Allow MCP servers to access self-hosted applications"}}]}
 ```

@@ -1,6 +1,6 @@
 ---
 title: Get started
-description: Create a Cloudflare account, set up member permissions, and explore the Build, Protect &#38; Connect, and Network services available to you.
+description: Create a Cloudflare account, set up member permissions, and explore the Build, Protect &amp; Connect, and Network services available to you.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 
@@ -33,5 +33,6 @@ Zero Trust protects private, internal users/devices and the resources they acces
 Network services extend protection and acceleration to cloud, on-premise, or hybrid networks, and you can also manage network connections and optimize Layer 3 (Network) and 4 (Transport) traffic. Get started with [Magic Transit](https://developers.cloudflare.com/magic-transit/) or [Cloudflare WAN](https://developers.cloudflare.com/cloudflare-wan/) (formerly Magic WAN).
 
 ```json
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/fundamentals/get-started/#page","headline":"Get started · Cloudflare Fundamentals docs","description":"Create a Cloudflare account, set up member permissions, and explore the Build, Protect & Connect, and Network services available to you.","url":"https://developers.cloudflare.com/fundamentals/get-started/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-20","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/fundamentals/","name":"Cloudflare Fundamentals"}},{"@type":"ListItem","position":3,"item":{"@id":"/fundamentals/get-started/","name":"Get started"}}]}
 ```

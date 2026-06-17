@@ -44,8 +44,8 @@ After updating the Cloudflare One Client, monitor the issue to see if it recurs.
 
 #### Via the device
 
-* [ Version 2026.2+ ](#tab-panel-5412)
-* [ Version 2026.1 and earlier ](#tab-panel-5413)
+* [ Version 2026.2+ ](#tab-panel-7502)
+* [ Version 2026.1 and earlier ](#tab-panel-7503)
 
 1. Open the Cloudflare One Client on your desktop.
 2. Select **About**.
@@ -208,9 +208,9 @@ Collect client diagnostic logs on your desktop using the `warp-diag` CLI.
 
 To view client logs on desktop devices:
 
-* [ macOS ](#tab-panel-5416)
-* [ Windows ](#tab-panel-5417)
-* [ Linux ](#tab-panel-5418)
+* [ macOS ](#tab-panel-7506)
+* [ Windows ](#tab-panel-7507)
+* [ Linux ](#tab-panel-7508)
 
 1. Open a Terminal window.
 2. Run the `warp-diag` tool:  
@@ -633,8 +633,8 @@ Both methods update the client with the latest configuration.
 
 **Option A: Disconnect and reconnect the client**
 
-* [ Version 2026.2+ ](#tab-panel-5414)
-* [ Version 2026.1 and earlier ](#tab-panel-5415)
+* [ Version 2026.2+ ](#tab-panel-7504)
+* [ Version 2026.1 and earlier ](#tab-panel-7505)
 
 1. On the end user device, open the Cloudflare One Client and select **Disconnect**.
 
@@ -662,8 +662,8 @@ The client will fetch new settings when it reconnects.
 
 To reset the encryption keys on an end user's desktop:
 
-* [ Version 2026.2+ ](#tab-panel-5419)
-* [ Version 2026.1 and earlier ](#tab-panel-5420)
+* [ Version 2026.2+ ](#tab-panel-7509)
+* [ Version 2026.1 and earlier ](#tab-panel-7510)
 
 1. Open the Cloudflare One Client on your device.
 2. Go to **Connectivity** \> **Encryption keys**
@@ -694,5 +694,6 @@ Avoid vague descriptions and include scenario, timestamps, and steps taken to tr
 Karen was on a train on July 17, 2025, at approximately 1:00 PM Central Time. She attempted to connect to a captive portal but received the following error message in Chrome: `ERR_CONNECTION_RESET`. A warp diag was collected immediately after and is attached.
 
 ```json
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/troubleshooting/troubleshooting-guide/#page","headline":"Cloudflare One Client troubleshooting guide · Cloudflare One docs","description":"Reference information for Cloudflare One Client troubleshooting guide in Zero Trust.","url":"https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/troubleshooting/troubleshooting-guide/","inLanguage":"en","image":"https://developers.cloudflare.com/zt-preview.png","dateModified":"2026-04-17","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Debugging"]}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/cloudflare-one/","name":"Cloudflare One"}},{"@type":"ListItem","position":3,"item":{"@id":"/cloudflare-one/team-and-resources/","name":"Team and resources"}},{"@type":"ListItem","position":4,"item":{"@id":"/cloudflare-one/team-and-resources/devices/","name":"Devices"}},{"@type":"ListItem","position":5,"item":{"@id":"/cloudflare-one/team-and-resources/devices/cloudflare-one-client/","name":"Cloudflare One Client"}},{"@type":"ListItem","position":6,"item":{"@id":"/cloudflare-one/team-and-resources/devices/cloudflare-one-client/troubleshooting/","name":"Troubleshoot the Cloudflare One Client"}},{"@type":"ListItem","position":7,"item":{"@id":"/cloudflare-one/team-and-resources/devices/cloudflare-one-client/troubleshooting/troubleshooting-guide/","name":"Cloudflare One Client troubleshooting guide"}}]}
 ```

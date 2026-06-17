@@ -36,8 +36,8 @@ Expose ports when you need to:
 
 The typical workflow is: start service → wait for ready → expose port → handle requests with `proxyToSandbox`.
 
-* [  JavaScript ](#tab-panel-10122)
-* [  TypeScript ](#tab-panel-10123)
+* [  JavaScript ](#tab-panel-10363)
+* [  TypeScript ](#tab-panel-10364)
 
 JavaScript
 
@@ -194,8 +194,8 @@ See [Sandbox options](https://developers.cloudflare.com/sandbox/configuration/sa
 
 For production deployments or when sharing URLs with users, use custom tokens to maintain consistent preview URLs across container restarts:
 
-* [  JavaScript ](#tab-panel-10104)
-* [  TypeScript ](#tab-panel-10105)
+* [  JavaScript ](#tab-panel-10345)
+* [  TypeScript ](#tab-panel-10346)
 
 JavaScript
 
@@ -298,8 +298,8 @@ return Response.json({
 
 When exposing multiple ports, use names to stay organized:
 
-* [  JavaScript ](#tab-panel-10120)
-* [  TypeScript ](#tab-panel-10121)
+* [  JavaScript ](#tab-panel-10361)
+* [  TypeScript ](#tab-panel-10362)
 
 JavaScript
 
@@ -409,8 +409,8 @@ console.log('- Frontend:', frontend.url);
 
 Always verify a service is ready before exposing. Use a simple delay for most cases:
 
-* [  JavaScript ](#tab-panel-10102)
-* [  TypeScript ](#tab-panel-10103)
+* [  JavaScript ](#tab-panel-10343)
+* [  TypeScript ](#tab-panel-10344)
 
 JavaScript
 
@@ -466,8 +466,8 @@ await sandbox.exposePort(8080, { hostname });
 
 For critical services, poll the health endpoint:
 
-* [  JavaScript ](#tab-panel-10116)
-* [  TypeScript ](#tab-panel-10117)
+* [  JavaScript ](#tab-panel-10357)
+* [  TypeScript ](#tab-panel-10358)
 
 JavaScript
 
@@ -547,8 +547,8 @@ await sandbox.exposePort(8080, { hostname });
 
 Expose multiple ports for full-stack applications:
 
-* [  JavaScript ](#tab-panel-10124)
-* [  TypeScript ](#tab-panel-10125)
+* [  JavaScript ](#tab-panel-10365)
+* [  TypeScript ](#tab-panel-10366)
 
 JavaScript
 
@@ -656,8 +656,8 @@ return Response.json({
 
 ### List currently exposed ports
 
-* [  JavaScript ](#tab-panel-10108)
-* [  TypeScript ](#tab-panel-10109)
+* [  JavaScript ](#tab-panel-10349)
+* [  TypeScript ](#tab-panel-10350)
 
 JavaScript
 
@@ -711,8 +711,8 @@ for (const port of ports) {
 
 ### Unexpose ports
 
-* [  JavaScript ](#tab-panel-10106)
-* [  TypeScript ](#tab-panel-10107)
+* [  JavaScript ](#tab-panel-10347)
+* [  TypeScript ](#tab-panel-10348)
 
 JavaScript
 
@@ -816,8 +816,8 @@ In production, all ports are available and controlled programmatically via `expo
 
 Port 3000 is used by the internal Bun server and cannot be exposed:
 
-* [  JavaScript ](#tab-panel-10112)
-* [  TypeScript ](#tab-panel-10113)
+* [  JavaScript ](#tab-panel-10353)
+* [  TypeScript ](#tab-panel-10354)
 
 JavaScript
 
@@ -869,8 +869,8 @@ await sandbox.exposePort(8080, { hostname });
 
 Wait for the service to start before exposing:
 
-* [  JavaScript ](#tab-panel-10110)
-* [  TypeScript ](#tab-panel-10111)
+* [  JavaScript ](#tab-panel-10351)
+* [  TypeScript ](#tab-panel-10352)
 
 JavaScript
 
@@ -912,8 +912,8 @@ await sandbox.exposePort(8080, { hostname });
 
 Check before exposing to avoid errors:
 
-* [  JavaScript ](#tab-panel-10118)
-* [  TypeScript ](#tab-panel-10119)
+* [  JavaScript ](#tab-panel-10359)
+* [  TypeScript ](#tab-panel-10360)
 
 JavaScript
 
@@ -963,8 +963,8 @@ if (!ports.some(p => p.port === 8080)) {
 
 **Solution**:
 
-* [  JavaScript ](#tab-panel-10114)
-* [  TypeScript ](#tab-panel-10115)
+* [  JavaScript ](#tab-panel-10355)
+* [  TypeScript ](#tab-panel-10356)
 
 JavaScript
 
@@ -1015,5 +1015,6 @@ See [Sandbox options - normalizeId](https://developers.cloudflare.com/sandbox/co
 * [Tunnels API reference](https://developers.cloudflare.com/sandbox/api/tunnels/) \- Recommended alternative for most public-URL use cases (quick or named tunnels)
 
 ```json
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/sandbox/guides/expose-services/#page","headline":"Expose services · Cloudflare Sandbox SDK docs","description":"Create preview URLs and expose ports for web services.","url":"https://developers.cloudflare.com/sandbox/guides/expose-services/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-06-09","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/sandbox/","name":"Sandbox SDK"}},{"@type":"ListItem","position":3,"item":{"@id":"/sandbox/guides/","name":"How-to guides"}},{"@type":"ListItem","position":4,"item":{"@id":"/sandbox/guides/expose-services/","name":"Expose services"}}]}
 ```

@@ -28,8 +28,8 @@ The Stream binding is enabled on a per-Worker basis.
 
 To bind Stream to your Worker, add the following to the end of your Wrangler configuration file:
 
-* [  wrangler.jsonc ](#tab-panel-10056)
-* [  wrangler.toml ](#tab-panel-10057)
+* [  wrangler.jsonc ](#tab-panel-10757)
+* [  wrangler.toml ](#tab-panel-10758)
 
 JSONC
 
@@ -193,8 +193,8 @@ Delete a watermark profile. Returns `Promise<void>`.
 
 ### Upload a video from a URL
 
-* [  JavaScript ](#tab-panel-10058)
-* [  TypeScript ](#tab-panel-10059)
+* [  JavaScript ](#tab-panel-10759)
+* [  TypeScript ](#tab-panel-10760)
 
 JavaScript
 
@@ -252,8 +252,8 @@ export default {
 
 ### Create a direct upload
 
-* [  JavaScript ](#tab-panel-10060)
-* [  TypeScript ](#tab-panel-10061)
+* [  JavaScript ](#tab-panel-10761)
+* [  TypeScript ](#tab-panel-10762)
 
 JavaScript
 
@@ -311,8 +311,8 @@ export default {
 
 ### List videos
 
-* [  JavaScript ](#tab-panel-10064)
-* [  TypeScript ](#tab-panel-10065)
+* [  JavaScript ](#tab-panel-10765)
+* [  TypeScript ](#tab-panel-10766)
 
 JavaScript
 
@@ -366,8 +366,8 @@ export default {
 
 ### Get video details
 
-* [  JavaScript ](#tab-panel-10062)
-* [  TypeScript ](#tab-panel-10063)
+* [  JavaScript ](#tab-panel-10763)
+* [  TypeScript ](#tab-panel-10764)
 
 JavaScript
 
@@ -409,8 +409,8 @@ export default {
 
 ### Update video metadata
 
-* [  JavaScript ](#tab-panel-10068)
-* [  TypeScript ](#tab-panel-10069)
+* [  JavaScript ](#tab-panel-10769)
+* [  TypeScript ](#tab-panel-10770)
 
 JavaScript
 
@@ -464,8 +464,8 @@ export default {
 
 ### Delete a video
 
-* [  JavaScript ](#tab-panel-10066)
-* [  TypeScript ](#tab-panel-10067)
+* [  JavaScript ](#tab-panel-10767)
+* [  TypeScript ](#tab-panel-10768)
 
 JavaScript
 
@@ -507,8 +507,8 @@ export default {
 
 ### Generate a signed URL token
 
-* [  JavaScript ](#tab-panel-10070)
-* [  TypeScript ](#tab-panel-10071)
+* [  JavaScript ](#tab-panel-10771)
+* [  TypeScript ](#tab-panel-10772)
 
 JavaScript
 
@@ -550,8 +550,8 @@ export default {
 
 ### Upload captions
 
-* [  JavaScript ](#tab-panel-10074)
-* [  TypeScript ](#tab-panel-10075)
+* [  JavaScript ](#tab-panel-10775)
+* [  TypeScript ](#tab-panel-10776)
 
 JavaScript
 
@@ -609,8 +609,8 @@ export default {
 
 ### Generate AI captions
 
-* [  JavaScript ](#tab-panel-10072)
-* [  TypeScript ](#tab-panel-10073)
+* [  JavaScript ](#tab-panel-10773)
+* [  TypeScript ](#tab-panel-10774)
 
 JavaScript
 
@@ -652,8 +652,8 @@ export default {
 
 ### List and delete captions
 
-* [  JavaScript ](#tab-panel-10076)
-* [  TypeScript ](#tab-panel-10077)
+* [  JavaScript ](#tab-panel-10777)
+* [  TypeScript ](#tab-panel-10778)
 
 JavaScript
 
@@ -703,8 +703,8 @@ export default {
 
 ### Generate and list downloads
 
-* [  JavaScript ](#tab-panel-10078)
-* [  TypeScript ](#tab-panel-10079)
+* [  JavaScript ](#tab-panel-10779)
+* [  TypeScript ](#tab-panel-10780)
 
 JavaScript
 
@@ -758,8 +758,8 @@ export default {
 
 ### Create a watermark profile
 
-* [  JavaScript ](#tab-panel-10082)
-* [  TypeScript ](#tab-panel-10083)
+* [  JavaScript ](#tab-panel-10783)
+* [  TypeScript ](#tab-panel-10784)
 
 JavaScript
 
@@ -837,8 +837,8 @@ export default {
 
 ### List and delete watermark profiles
 
-* [  JavaScript ](#tab-panel-10080)
-* [  TypeScript ](#tab-panel-10081)
+* [  JavaScript ](#tab-panel-10781)
+* [  TypeScript ](#tab-panel-10782)
 
 JavaScript
 
@@ -1220,8 +1220,8 @@ The following error subtypes may be thrown:
 
 Use a `try...catch` block to handle errors:
 
-* [  JavaScript ](#tab-panel-10084)
-* [  TypeScript ](#tab-panel-10085)
+* [  JavaScript ](#tab-panel-10785)
+* [  TypeScript ](#tab-panel-10786)
 
 JavaScript
 
@@ -1294,5 +1294,6 @@ export default {
 ```
 
 ```json
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/stream/manage-video-library/bindings/#page","headline":"Bind to Workers API · Cloudflare Stream docs","description":"A binding connects your Worker to external resources on the Developer Platform, like Stream, R2 buckets, or KV namespaces.","url":"https://developers.cloudflare.com/stream/manage-video-library/bindings/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-05-07","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/stream/","name":"Stream"}},{"@type":"ListItem","position":3,"item":{"@id":"/stream/manage-video-library/","name":"Manage videos"}},{"@type":"ListItem","position":4,"item":{"@id":"/stream/manage-video-library/bindings/","name":"Bind to Workers API"}}]}
 ```

@@ -26,8 +26,8 @@ For more information, refer to [WARP with firewall](https://developers.cloudflar
 3. Manually install the Cloudflare One Client on the device.  
 Window, macOS, and Linux  
 To enroll your device using the client GUI:  
-   * [ Version 2026.2+ ](#tab-panel-8735)  
-   * [ Version 2026.1 and earlier ](#tab-panel-8736)  
+   * [ Version 2026.2+ ](#tab-panel-9281)  
+   * [ Version 2026.1 and earlier ](#tab-panel-9282)  
    1. [Download](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/download/) and install the Cloudflare One Client.  
    2. Launch the Cloudflare One Client.  
    3. On the **What would you like to use the Cloudflare One Client for?** screen, select **Zero Trust security**.  
@@ -59,5 +59,6 @@ iOS, Android, and ChromeOS
 The Cloudflare One Client should show as **Connected**. The device is now connected to your organization and secured with Cloudflare Zero Trust.
 
 ```json
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/learning-paths/secure-internet-traffic/connect-devices-networks/install-agent/#page","headline":"Download and install the Cloudflare One Client · Cloudflare Learning Paths","description":"Install the Cloudflare One device client.","url":"https://developers.cloudflare.com/learning-paths/secure-internet-traffic/connect-devices-networks/install-agent/","inLanguage":"en","image":"https://developers.cloudflare.com/cf-twitter-card.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/learning-paths/","name":"Learning Paths"}},{"@type":"ListItem","position":3,"item":{"@id":"/learning-paths/secure-internet-traffic/connect-devices-networks/","name":"Connect devices and networks to Cloudflare"}},{"@type":"ListItem","position":4,"item":{"@id":"/learning-paths/secure-internet-traffic/connect-devices-networks/install-agent/","name":"Download and install the Cloudflare One Client"}}]}
 ```

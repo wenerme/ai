@@ -163,5 +163,6 @@ ZyXEL
 * **Supported hardware model or plugin**: MGS3520 series, XGS1900 series, XGS2210 series, XGS3700 series, XGS4600 series, XGS4700 series
 
 ```json
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/network-flow/routers/supported-routers/#page","headline":"Supported routers · Cloudflare Network Flow docs","description":"A list of open source, NetFlow, and sFlow routers.","url":"https://developers.cloudflare.com/network-flow/routers/supported-routers/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-05-07","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["NetFlow"]}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/network-flow/","name":"Network Flow"}},{"@type":"ListItem","position":3,"item":{"@id":"/network-flow/routers/","name":"Routers"}},{"@type":"ListItem","position":4,"item":{"@id":"/network-flow/routers/supported-routers/","name":"Supported routers"}}]}
 ```

@@ -36,10 +36,10 @@ Try out this model with Workers AI LLM Playground. It does not require any setup
 
 ## Usage
 
-* [  Worker (Streaming) ](#tab-panel-4849)
-* [  TypeScript ](#tab-panel-4850)
-* [  Python ](#tab-panel-4851)
-* [  curl ](#tab-panel-4852)
+* [  Worker (Streaming) ](#tab-panel-5030)
+* [  TypeScript ](#tab-panel-5031)
+* [  Python ](#tab-panel-5032)
+* [  curl ](#tab-panel-5033)
 
 TypeScript
 
@@ -387,5 +387,6 @@ format
  Streaming Output [ ](https://developers.cloudflare.com/workers-ai/models/nemotron-3-120b-a12b/streaming-output.json "Open") [ ](https://developers.cloudflare.com/workers-ai/models/nemotron-3-120b-a12b/streaming-output.json "Download") 
 
 ```json
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers-ai/models/nemotron-3-120b-a12b/#page","headline":"nemotron-3-120b-a12b (NVIDIA) · Cloudflare AI docs · Cloudflare Workers AI docs","description":"NVIDIA Nemotron 3 Super is a hybrid MoE model with leading accuracy for multi-agent applications and specialized agentic AI systems.","url":"https://developers.cloudflare.com/workers-ai/models/nemotron-3-120b-a12b/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/workers-ai/","name":"Workers AI"}},{"@type":"ListItem","position":3,"item":{"@id":"/workers-ai/models/","name":"Models"}}]}
 ```

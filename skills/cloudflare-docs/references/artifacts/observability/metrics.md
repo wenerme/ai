@@ -261,5 +261,6 @@ query ArtifactsPushesByRepo(
 ```
 
 ```json
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/artifacts/observability/metrics/#page","headline":"Metrics · Cloudflare Artifacts docs","description":"Review the metrics exposed by Artifacts.","url":"https://developers.cloudflare.com/artifacts/observability/metrics/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-25","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/artifacts/","name":"Artifacts"}},{"@type":"ListItem","position":3,"item":{"@id":"/artifacts/observability/","name":"Observability"}},{"@type":"ListItem","position":4,"item":{"@id":"/artifacts/observability/metrics/","name":"Metrics"}}]}
 ```

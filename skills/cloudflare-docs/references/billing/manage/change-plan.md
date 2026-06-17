@@ -30,8 +30,8 @@ For additional help, refer to [this Community thread ↗](https://community.clou
 
 ## Change plan type
 
-* [ Dashboard ](#tab-panel-5753)
-* [ API ](#tab-panel-5754)
+* [ Dashboard ](#tab-panel-6812)
+* [ API ](#tab-panel-6813)
 
 To change the Cloudflare plan for a domain in the dashboard:
 
@@ -52,8 +52,8 @@ If you are an Enterprise customer and cannot change your plan type, contact your
 
 ## Change plan duration
 
-* [ Dashboard ](#tab-panel-5755)
-* [ API ](#tab-panel-5756)
+* [ Dashboard ](#tab-panel-6814)
+* [ API ](#tab-panel-6815)
 
 To change the duration of your Cloudflare plan in the dashboard:
 
@@ -75,5 +75,6 @@ To change the duration of a Cloudflare plan for a domain using the API, send a [
 * [How Cloudflare billing works](https://developers.cloudflare.com/billing/understand/how-billing-works/) — When upgrades and downgrades take effect
 
 ```json
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/billing/manage/change-plan/#page","headline":"Change domain plan · Cloudflare Billing docs","description":"Upgrade or downgrade a domain's Cloudflare plan.","url":"https://developers.cloudflare.com/billing/manage/change-plan/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-05-29","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/billing/","name":"Billing"}},{"@type":"ListItem","position":3,"item":{"@id":"/billing/manage/","name":"Manage"}},{"@type":"ListItem","position":4,"item":{"@id":"/billing/manage/change-plan/","name":"Change domain plan"}}]}
 ```

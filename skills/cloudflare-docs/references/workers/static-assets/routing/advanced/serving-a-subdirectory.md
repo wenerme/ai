@@ -29,8 +29,8 @@ For example, to serve assets from `example.com/blog/*`, create a `blog` director
 
 With a [Wrangler configuration file](https://developers.cloudflare.com/workers/wrangler/configuration/) like so:
 
-* [  wrangler.jsonc ](#tab-panel-10937)
-* [  wrangler.toml ](#tab-panel-10938)
+* [  wrangler.jsonc ](#tab-panel-12137)
+* [  wrangler.toml ](#tab-panel-12138)
 
 JSONC
 
@@ -82,5 +82,6 @@ In this example, requests to `example.com/blog/` will serve the `index.html` fil
 If you have a file outside the configured path, it will not be served, unless it is part of the `assets.not_found_handling` for [Single Page Applications](https://developers.cloudflare.com/workers/static-assets/routing/single-page-application/) or [custom 404 pages](https://developers.cloudflare.com/workers/static-assets/routing/static-site-generation/). For example, if you have a `home.html` file in the root of your asset directory, it will not be served when requesting `example.com/blog/home`. However, if needed, these files can still be manually fetched over [the binding](https://developers.cloudflare.com/workers/static-assets/binding/#binding).
 
 ```json
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/static-assets/routing/advanced/serving-a-subdirectory/#page","headline":"Serving a subdirectory · Cloudflare Workers docs","description":"How to configure a Worker with static assets on a subpath.","url":"https://developers.cloudflare.com/workers/static-assets/routing/advanced/serving-a-subdirectory/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/workers/","name":"Workers"}},{"@type":"ListItem","position":3,"item":{"@id":"/workers/static-assets/","name":"Static Assets"}},{"@type":"ListItem","position":4,"item":{"@id":"/workers/static-assets/routing/","name":"Routing"}},{"@type":"ListItem","position":5,"item":{"@id":"/workers/static-assets/routing/advanced/","name":"Advanced"}},{"@type":"ListItem","position":6,"item":{"@id":"/workers/static-assets/routing/advanced/serving-a-subdirectory/","name":"Serving a subdirectory"}}]}
 ```

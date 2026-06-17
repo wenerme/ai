@@ -25,5 +25,6 @@ Review the content below to learn how to complete tasks using Cloudflare Network
 * [ Use IP lists ](https://developers.cloudflare.com/cloudflare-network-firewall/how-to/use-rules-list/)
 
 ```json
+{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/cloudflare-network-firewall/how-to/#page","headline":"How to · Cloudflare Network Firewall docs","description":"How-to guides for configuring the Network Firewall.","url":"https://developers.cloudflare.com/cloudflare-network-firewall/how-to/","inLanguage":"en","image":"https://developers.cloudflare.com/zt-preview.png","dateModified":"2026-04-17","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/cloudflare-network-firewall/","name":"Cloudflare Network Firewall"}},{"@type":"ListItem","position":3,"item":{"@id":"/cloudflare-network-firewall/how-to/","name":"How to"}}]}
 ```

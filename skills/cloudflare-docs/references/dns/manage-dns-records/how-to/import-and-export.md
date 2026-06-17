@@ -29,8 +29,8 @@ If you are using certain record types — for example, `CNAME`, `DNAME`, `MX`, `
 
 ### Import zone file to Cloudflare
 
-* [ Dashboard ](#tab-panel-5585)
-* [ API ](#tab-panel-5586)
+* [ Dashboard ](#tab-panel-8099)
+* [ API ](#tab-panel-8100)
 
 To import a zone file using the dashboard:
 
@@ -68,8 +68,8 @@ curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/dns_records/import" \
 
 You can also bulk export records from Cloudflare.
 
-* [ Dashboard ](#tab-panel-5587)
-* [ API ](#tab-panel-5588)
+* [ Dashboard ](#tab-panel-8101)
+* [ API ](#tab-panel-8102)
 
 To export records using the dashboard:
 
@@ -185,5 +185,6 @@ Cloudflare supports `$ORIGIN`, `$TTL`, and `$GENERATE` directives.
 `$INCLUDE` is not supported. When a zone file contains a `$INCLUDE` directive, Cloudflare responds with a parsing error `$INCLUDE directive not allowed`.
 
 ```json
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/dns/manage-dns-records/how-to/import-and-export/#page","headline":"Import and export records · Cloudflare DNS docs","description":"Import and export DNS records using zone files.","url":"https://developers.cloudflare.com/dns/manage-dns-records/how-to/import-and-export/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/dns/","name":"DNS"}},{"@type":"ListItem","position":3,"item":{"@id":"/dns/manage-dns-records/","name":"DNS records"}},{"@type":"ListItem","position":4,"item":{"@id":"/dns/manage-dns-records/how-to/","name":"How to"}},{"@type":"ListItem","position":5,"item":{"@id":"/dns/manage-dns-records/how-to/import-and-export/","name":"Import and export records"}}]}
 ```

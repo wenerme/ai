@@ -59,8 +59,8 @@ Upload certificates to Cloudflare with only SANs that you wish to use with Cloud
 
 You will have to upload each certificate used with Keyless SSL.
 
-* [ Dashboard ](#tab-panel-10067)
-* [ API ](#tab-panel-10068)
+* [ Dashboard ](#tab-panel-10628)
+* [ API ](#tab-panel-10629)
 
 To create a Keyless certificate in the dashboard:
 
@@ -95,12 +95,12 @@ These steps are also at the [Cloudflare package repository ↗](https://pkg.clou
 
 #### Debian/Ubuntu packages
 
-* [ Debian 13 (Trixie) ](#tab-panel-10069)
-* [ Debian 12 (Bookworm) ](#tab-panel-10070)
-* [ Debian 11 (Bullseye) ](#tab-panel-10071)
-* [ Ubuntu 24.04 (Noble) ](#tab-panel-10072)
-* [ Ubuntu 22.04 (Jammy) ](#tab-panel-10073)
-* [ Ubuntu 20.04 (Focal) ](#tab-panel-10074)
+* [ Debian 13 (Trixie) ](#tab-panel-10630)
+* [ Debian 12 (Bookworm) ](#tab-panel-10631)
+* [ Debian 11 (Bullseye) ](#tab-panel-10632)
+* [ Ubuntu 24.04 (Noble) ](#tab-panel-10633)
+* [ Ubuntu 22.04 (Jammy) ](#tab-panel-10634)
+* [ Ubuntu 20.04 (Focal) ](#tab-panel-10635)
 
 Terminal window
 
@@ -208,10 +208,10 @@ sudo apt-get update && sudo apt-get install gokeyless
 
 Gokeyless uses CGO for PKCS#11/HSM support, which creates glibc dependencies. Use the repository that matches your distribution.
 
-* [ RHEL 9 / CentOS Stream 9 ](#tab-panel-10075)
-* [ Amazon Linux 2023 ](#tab-panel-10076)
-* [ RHEL 8 / CentOS 8 ](#tab-panel-10077)
-* [ Amazon Linux 2 ](#tab-panel-10078)
+* [ RHEL 9 / CentOS Stream 9 ](#tab-panel-10636)
+* [ Amazon Linux 2023 ](#tab-panel-10637)
+* [ RHEL 8 / CentOS 8 ](#tab-panel-10638)
+* [ Amazon Linux 2 ](#tab-panel-10639)
 
 Terminal window
 
@@ -307,5 +307,6 @@ During TLS handshakes, Cloudflare's keyless client will initiate connections to 
 Create WAF custom rules that allow your key server to accept connections from only Cloudflare. You can get Cloudflare's IPv4 and IPv6 addresses via the [IP details API endpoint](https://developers.cloudflare.com/api/resources/ips/methods/list/).
 
 ```json
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ssl/keyless-ssl/configuration/public-dns/#page","headline":"Public DNS setup - Keyless SSL · Cloudflare SSL/TLS docs","description":"Deploy Keyless SSL with public DNS resolution.","url":"https://developers.cloudflare.com/ssl/keyless-ssl/configuration/public-dns/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-05-05","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["DNS"]}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/ssl/","name":"SSL/TLS"}},{"@type":"ListItem","position":3,"item":{"@id":"/ssl/keyless-ssl/","name":"Keyless SSL"}},{"@type":"ListItem","position":4,"item":{"@id":"/ssl/keyless-ssl/configuration/","name":"Get started"}},{"@type":"ListItem","position":5,"item":{"@id":"/ssl/keyless-ssl/configuration/public-dns/","name":"Public DNS"}}]}
 ```

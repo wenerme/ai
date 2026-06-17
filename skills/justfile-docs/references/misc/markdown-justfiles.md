@@ -2,7 +2,7 @@
 
 If the argument to `--justfile` ends in `.md`, `just` extracts the contents of
 unindented `just` fenced code blocks and writes them to a `justfile` in a
-temporary directory<sup>master</sup>:
+temporary directory<sup>1.53.0</sup>:
 
 ````markdown
 # Project

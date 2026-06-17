@@ -24,5 +24,6 @@ Review the definitions for terms used across Cloudflare's API Shield documentati
 | target endpoint    | The target endpoint is the ultimate destination that a request is sent to by API Shield's routing feature.                                                    |
 
 ```json
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/api-shield/glossary/#page","headline":"Glossary · Cloudflare API Shield docs","description":"Definitions for terms used across API Shield documentation.","url":"https://developers.cloudflare.com/api-shield/glossary/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-15","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/api-shield/","name":"API Shield"}},{"@type":"ListItem","position":3,"item":{"@id":"/api-shield/glossary/","name":"Glossary"}}]}
 ```

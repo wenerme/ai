@@ -256,8 +256,8 @@ Example user identity
 
 In the [Wrangler configuration file](https://developers.cloudflare.com/workers/wrangler/configuration/), [set up a route](https://developers.cloudflare.com/workers/configuration/routing/routes/) that maps the Worker to your Access application domain:
 
-* [  wrangler.jsonc ](#tab-panel-5642)
-* [  wrangler.toml ](#tab-panel-5643)
+* [  wrangler.jsonc ](#tab-panel-7732)
+* [  wrangler.toml ](#tab-panel-7733)
 
 JSONC
 
@@ -336,5 +336,6 @@ Example request headers
 You can verify that these headers are received by the origin server.
 
 ```json
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/tutorials/extend-sso-with-workers/#page","headline":"Send SSO attributes to Access-protected origins with Workers · Cloudflare One docs","description":"This tutorial will walk you through extending the single-sign-on (SSO) capabilities of Cloudflare Access with our serverless computing platform, Cloudflare Workers.","url":"https://developers.cloudflare.com/cloudflare-one/tutorials/extend-sso-with-workers/","inLanguage":"en","image":"https://developers.cloudflare.com/zt-preview.png","dateModified":"2026-04-17","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["SSO"]}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/cloudflare-one/","name":"Cloudflare One"}},{"@type":"ListItem","position":3,"item":{"@id":"/cloudflare-one/tutorials/","name":"Tutorials"}},{"@type":"ListItem","position":4,"item":{"@id":"/cloudflare-one/tutorials/extend-sso-with-workers/","name":"Send SSO attributes to Access-protected origins with Workers"}}]}
 ```

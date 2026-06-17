@@ -1,5 +1,5 @@
 ---
-title: Versions &#38; History
+title: Versions &amp; History
 description: Manage Zaraz configuration versions and history.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
@@ -20,5 +20,6 @@ When enabling Preview & Publish mode, you will also have access to [Zaraz Histor
 * [ Versions ](https://developers.cloudflare.com/zaraz/history/versions/)
 
 ```json
+{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/zaraz/history/#page","headline":"Versions & History · Cloudflare Zaraz docs","description":"Manage Zaraz configuration versions and history.","url":"https://developers.cloudflare.com/zaraz/history/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/zaraz/","name":"Zaraz"}},{"@type":"ListItem","position":3,"item":{"@id":"/zaraz/history/","name":"Versions & History"}}]}
 ```

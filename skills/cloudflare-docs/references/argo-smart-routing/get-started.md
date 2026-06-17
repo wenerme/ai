@@ -18,8 +18,8 @@ This functionality is now offered as part of Cloudflare's origin server safeguar
 
 Argo Smart Routing speeds up your global traffic by routing requests across the fastest network paths available.
 
-* [ Dashboard ](#tab-panel-4628)
-* [ API ](#tab-panel-4629)
+* [ Dashboard ](#tab-panel-6733)
+* [ API ](#tab-panel-6734)
 
 To enable [Argo Smart Routing ↗](https://dash.cloudflare.com/?to=/:account/:zone/traffic) in the dashboard:
 
@@ -65,5 +65,6 @@ Some plans also have access to alerts through [PagerDuty](https://developers.clo
 When used together, Argo Smart Routing optimizes the network path between Cloudflare data centers and your origin, while Tiered Cache reduces the number of requests that reach your origin. For more information, refer to [Tiered Cache](https://developers.cloudflare.com/cache/how-to/tiered-cache/).
 
 ```json
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/argo-smart-routing/get-started/#page","headline":"Get started · Cloudflare Argo Smart Routing docs","description":"Learn how to enable Argo Smart Routing in the Cloudflare dashboard.","url":"https://developers.cloudflare.com/argo-smart-routing/get-started/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-05-05","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/argo-smart-routing/","name":"Argo Smart Routing"}},{"@type":"ListItem","position":3,"item":{"@id":"/argo-smart-routing/get-started/","name":"Get started"}}]}
 ```

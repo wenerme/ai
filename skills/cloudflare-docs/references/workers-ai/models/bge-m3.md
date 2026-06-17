@@ -27,9 +27,9 @@ Multi-Functionality, Multi-Linguality, and Multi-Granularity embeddings model.
 
 ## Usage
 
-* [  TypeScript ](#tab-panel-4586)
-* [  Python ](#tab-panel-4587)
-* [  curl ](#tab-panel-4588)
+* [  TypeScript ](#tab-panel-4747)
+* [  Python ](#tab-panel-4748)
+* [  curl ](#tab-panel-4749)
 
 ```
 
@@ -142,8 +142,8 @@ Workers AI also supports OpenAI compatible API endpoints for `/v1/chat/completio
 
 Synchronous — Send a request and receive a complete response 
 
-* [ Input ](#tab-panel-4589)
-* [ Output ](#tab-panel-4590)
+* [ Input ](#tab-panel-4750)
+* [ Output ](#tab-panel-4751)
 
 query
 
@@ -163,8 +163,8 @@ request\_id
 
 Batch — Send multiple requests in a single API call 
 
-* [ Input ](#tab-panel-4591)
-* [ Output ](#tab-panel-4592)
+* [ Input ](#tab-panel-4752)
+* [ Output ](#tab-panel-4753)
 
 ▶requests\[\]
 
@@ -185,5 +185,6 @@ request\_id
  Batch Output [ ](https://developers.cloudflare.com/workers-ai/models/bge-m3/batch-output.json "Open") [ ](https://developers.cloudflare.com/workers-ai/models/bge-m3/batch-output.json "Download") 
 
 ```json
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers-ai/models/bge-m3/#page","headline":"bge-m3 (BAAI) · Cloudflare AI docs · Cloudflare Workers AI docs","description":"Multi-Functionality, Multi-Linguality, and Multi-Granularity embeddings model.","url":"https://developers.cloudflare.com/workers-ai/models/bge-m3/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/workers-ai/","name":"Workers AI"}},{"@type":"ListItem","position":3,"item":{"@id":"/workers-ai/models/","name":"Models"}}]}
 ```

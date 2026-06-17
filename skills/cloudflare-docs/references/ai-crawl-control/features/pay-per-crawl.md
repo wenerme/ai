@@ -18,5 +18,6 @@ image: https://developers.cloudflare.com/core-services-preview.png
 * [ Pay Per Crawl FAQ ](https://developers.cloudflare.com/ai-crawl-control/features/pay-per-crawl/faq/)
 
 ```json
+{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/ai-crawl-control/features/pay-per-crawl/#page","headline":"Pay Per Crawl · Cloudflare AI Crawl Control docs","description":"Charge AI crawlers for accessing your content.","url":"https://developers.cloudflare.com/ai-crawl-control/features/pay-per-crawl/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/ai-crawl-control/","name":"AI Crawl Control"}},{"@type":"ListItem","position":3,"item":{"@id":"/ai-crawl-control/features/","name":"Features"}},{"@type":"ListItem","position":4,"item":{"@id":"/ai-crawl-control/features/pay-per-crawl/","name":"Pay Per Crawl"}}]}
 ```

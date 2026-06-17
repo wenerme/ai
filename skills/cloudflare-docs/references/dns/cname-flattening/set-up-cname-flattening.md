@@ -24,8 +24,8 @@ CNAME flattening occurs by default for all plans when your domain uses a CNAME r
 
 For zones on paid plans, you can choose to flatten all CNAME records. This option is useful for DNS-only (unproxied) CNAME records. [Proxied records](https://developers.cloudflare.com/dns/proxy-status/) are flattened by default as they return Cloudflare anycast IPs.
 
-* [ Dashboard ](#tab-panel-5549)
-* [ API ](#tab-panel-5550)
+* [ Dashboard ](#tab-panel-8063)
+* [ API ](#tab-panel-8064)
 
 1. In the Cloudflare dashboard, go to the **DNS Settings** page.  
 [ Go to **Settings** ](https://dash.cloudflare.com/?to=/:account/:zone/dns/settings)
@@ -43,8 +43,8 @@ Paid zones also have the option of flattening specific CNAME records.
 
 If you use this option, a special [tag](https://developers.cloudflare.com/dns/manage-dns-records/reference/record-attributes/) `cf-flatten-cname` will be added to the respective flattened CNAME records in your zone file, allowing you to [export and import records](https://developers.cloudflare.com/dns/manage-dns-records/how-to/import-and-export/) without losing this configuration.
 
-* [ Dashboard ](#tab-panel-5547)
-* [ API ](#tab-panel-5548)
+* [ Dashboard ](#tab-panel-8061)
+* [ API ](#tab-panel-8062)
 
 1. On the [**DNS Settings** ↗](https://dash.cloudflare.com/?to=/:account/:zone/dns/settings) page, make sure that **CNAME flattening for all CNAME records** is turned off.
 2. Go to the [**DNS Records** ↗](https://dash.cloudflare.com/?to=/:account/:zone/dns/records) page and find the CNAME record you would like to flatten.
@@ -73,5 +73,6 @@ With the available [API endpoints](https://developers.cloudflare.com/api/resourc
 ```
 
 ```json
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/dns/cname-flattening/set-up-cname-flattening/#page","headline":"Set up CNAME flattening · Cloudflare DNS docs","description":"Configure CNAME flattening for your zone.","url":"https://developers.cloudflare.com/dns/cname-flattening/set-up-cname-flattening/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/dns/","name":"DNS"}},{"@type":"ListItem","position":3,"item":{"@id":"/dns/cname-flattening/","name":"CNAME flattening"}},{"@type":"ListItem","position":4,"item":{"@id":"/dns/cname-flattening/set-up-cname-flattening/","name":"Setup"}}]}
 ```

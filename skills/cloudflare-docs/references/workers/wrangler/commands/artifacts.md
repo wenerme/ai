@@ -18,9 +18,9 @@ Manage [Artifacts](https://developers.cloudflare.com/artifacts/) namespaces, rep
 
 List Artifacts namespaces
 
-* [  npm ](#tab-panel-10087)
-* [  pnpm ](#tab-panel-10088)
-* [  yarn ](#tab-panel-10089)
+* [  npm ](#tab-panel-12235)
+* [  pnpm ](#tab-panel-12236)
+* [  yarn ](#tab-panel-12237)
 
 Terminal window
 
@@ -75,9 +75,9 @@ Install Cloudflare agents skills, if not already present, without asking the use
 
 Get an Artifacts namespace
 
-* [  npm ](#tab-panel-10090)
-* [  pnpm ](#tab-panel-10091)
-* [  yarn ](#tab-panel-10092)
+* [  npm ](#tab-panel-12238)
+* [  pnpm ](#tab-panel-12239)
+* [  yarn ](#tab-panel-12240)
 
 Terminal window
 
@@ -134,9 +134,9 @@ Install Cloudflare agents skills, if not already present, without asking the use
 
 Create an Artifacts repository
 
-* [  npm ](#tab-panel-10093)
-* [  pnpm ](#tab-panel-10094)
-* [  yarn ](#tab-panel-10095)
+* [  npm ](#tab-panel-12241)
+* [  pnpm ](#tab-panel-12242)
+* [  yarn ](#tab-panel-12243)
 
 Terminal window
 
@@ -201,9 +201,9 @@ Install Cloudflare agents skills, if not already present, without asking the use
 
 List Artifacts repositories in a namespace
 
-* [  npm ](#tab-panel-10096)
-* [  pnpm ](#tab-panel-10097)
-* [  yarn ](#tab-panel-10098)
+* [  npm ](#tab-panel-12244)
+* [  pnpm ](#tab-panel-12245)
+* [  yarn ](#tab-panel-12246)
 
 Terminal window
 
@@ -260,9 +260,9 @@ Install Cloudflare agents skills, if not already present, without asking the use
 
 Get an Artifacts repository
 
-* [  npm ](#tab-panel-10099)
-* [  pnpm ](#tab-panel-10100)
-* [  yarn ](#tab-panel-10101)
+* [  npm ](#tab-panel-12247)
+* [  pnpm ](#tab-panel-12248)
+* [  yarn ](#tab-panel-12249)
 
 Terminal window
 
@@ -321,9 +321,9 @@ Install Cloudflare agents skills, if not already present, without asking the use
 
 Delete an Artifacts repository
 
-* [  npm ](#tab-panel-10102)
-* [  pnpm ](#tab-panel-10103)
-* [  yarn ](#tab-panel-10104)
+* [  npm ](#tab-panel-12250)
+* [  pnpm ](#tab-panel-12251)
+* [  yarn ](#tab-panel-12252)
 
 Terminal window
 
@@ -384,9 +384,9 @@ Install Cloudflare agents skills, if not already present, without asking the use
 
 Issue a repo-scoped Artifacts token
 
-* [  npm ](#tab-panel-10105)
-* [  pnpm ](#tab-panel-10106)
-* [  yarn ](#tab-panel-10107)
+* [  npm ](#tab-panel-12253)
+* [  pnpm ](#tab-panel-12254)
+* [  yarn ](#tab-panel-12255)
 
 Terminal window
 
@@ -446,5 +446,6 @@ Automatically provision draft bindings with new resources
 Install Cloudflare agents skills, if not already present, without asking the user for confirmation
 
 ```json
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/wrangler/commands/artifacts/#page","headline":"Artifacts · Cloudflare Workers docs","description":"Manage Artifacts namespaces, repositories, and repo-scoped tokens using Wrangler.","url":"https://developers.cloudflare.com/workers/wrangler/commands/artifacts/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-05-18","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/workers/","name":"Workers"}},{"@type":"ListItem","position":3,"item":{"@id":"/workers/wrangler/","name":"Wrangler"}},{"@type":"ListItem","position":4,"item":{"@id":"/workers/wrangler/commands/","name":"Commands"}},{"@type":"ListItem","position":5,"item":{"@id":"/workers/wrangler/commands/artifacts/","name":"Artifacts"}}]}
 ```

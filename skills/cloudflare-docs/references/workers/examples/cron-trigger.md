@@ -16,10 +16,10 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 Set a Cron Trigger for your Worker.
 
-* [  JavaScript ](#tab-panel-10465)
-* [  TypeScript ](#tab-panel-10466)
-* [  Python ](#tab-panel-10467)
-* [  Hono ](#tab-panel-10468)
+* [  JavaScript ](#tab-panel-11644)
+* [  TypeScript ](#tab-panel-11645)
+* [  Python ](#tab-panel-11646)
+* [  Hono ](#tab-panel-11647)
 
 JavaScript
 
@@ -148,8 +148,8 @@ Refer to [Cron Triggers](https://developers.cloudflare.com/workers/configuration
 
 If you are deploying with Wrangler, set the cron syntax (once per hour as shown below) by adding this to your Wrangler file:
 
-* [  wrangler.jsonc ](#tab-panel-10469)
-* [  wrangler.toml ](#tab-panel-10470)
+* [  wrangler.jsonc ](#tab-panel-11648)
+* [  wrangler.toml ](#tab-panel-11649)
 
 JSONC
 
@@ -196,8 +196,8 @@ crons = [ "0 * * * *" ]
 
 You also can set a different Cron Trigger for each [environment](https://developers.cloudflare.com/workers/wrangler/environments/) in your [Wrangler configuration file](https://developers.cloudflare.com/workers/wrangler/configuration/). You need to put the `[triggers]` table under your chosen environment. For example:
 
-* [  wrangler.jsonc ](#tab-panel-10471)
-* [  wrangler.toml ](#tab-panel-10472)
+* [  wrangler.jsonc ](#tab-panel-11650)
+* [  wrangler.toml ](#tab-panel-11651)
 
 JSONC
 
@@ -261,5 +261,6 @@ curl "http://localhost:8787/cdn-cgi/handler/scheduled?cron=*+*+*+*+*" # Python W
 ```
 
 ```json
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/examples/cron-trigger/#page","headline":"Setting Cron Triggers · Cloudflare Workers docs","description":"Set a Cron Trigger for your Worker.","url":"https://developers.cloudflare.com/workers/examples/cron-trigger/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Middleware","JavaScript","TypeScript"]}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/workers/","name":"Workers"}},{"@type":"ListItem","position":3,"item":{"@id":"/workers/examples/","name":"Examples"}},{"@type":"ListItem","position":4,"item":{"@id":"/workers/examples/cron-trigger/","name":"Setting Cron Triggers"}}]}
 ```

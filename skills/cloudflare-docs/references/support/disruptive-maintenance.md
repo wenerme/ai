@@ -69,5 +69,6 @@ In the Magic family of products, the routing is defined explicitly using [static
 * [API deprecations](https://developers.cloudflare.com/fundamentals/api/reference/deprecations/)
 
 ```json
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/support/disruptive-maintenance/#page","headline":"Disruptive Maintenance · Cloudflare Support docs","description":"Understand Cloudflare scheduled maintenance windows.","url":"https://developers.cloudflare.com/support/disruptive-maintenance/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/support/","name":"Support"}},{"@type":"ListItem","position":3,"item":{"@id":"/support/disruptive-maintenance/","name":"Disruptive Maintenance"}}]}
 ```

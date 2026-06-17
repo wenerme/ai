@@ -40,8 +40,8 @@ const stream = await sandbox.watch(path: string, options?: WatchOptions): Promis
 
 **Returns**: `Promise<ReadableStream<Uint8Array>>` — an SSE stream of `FileWatchSSEEvent` objects
 
-* [  JavaScript ](#tab-panel-8018)
-* [  TypeScript ](#tab-panel-8019)
+* [  JavaScript ](#tab-panel-10115)
+* [  TypeScript ](#tab-panel-10116)
 
 JavaScript
 
@@ -380,5 +380,6 @@ All paths must exist when starting a watch. Watching non-existent paths returns 
 * [Manage files guide](https://developers.cloudflare.com/sandbox/guides/manage-files/) — File operations
 
 ```json
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/sandbox/api/file-watching/#page","headline":"File watching · Cloudflare Sandbox SDK docs","description":"Monitor sandbox filesystem changes in real-time using the Sandbox SDK watch API.","url":"https://developers.cloudflare.com/sandbox/api/file-watching/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-05-27","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/sandbox/","name":"Sandbox SDK"}},{"@type":"ListItem","position":3,"item":{"@id":"/sandbox/api/","name":"API reference"}},{"@type":"ListItem","position":4,"item":{"@id":"/sandbox/api/file-watching/","name":"File watching"}}]}
 ```

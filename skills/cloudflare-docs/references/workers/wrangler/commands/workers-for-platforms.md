@@ -18,9 +18,9 @@ Wrangler commands for managing Workers for Platforms [dispatch namespace](https:
 
 List all dispatch namespaces
 
-* [  npm ](#tab-panel-10639)
-* [  pnpm ](#tab-panel-10640)
-* [  yarn ](#tab-panel-10641)
+* [  npm ](#tab-panel-12787)
+* [  pnpm ](#tab-panel-12788)
+* [  yarn ](#tab-panel-12789)
 
 Terminal window
 
@@ -72,9 +72,9 @@ Install Cloudflare agents skills, if not already present, without asking the use
 
 Get information about a dispatch namespace
 
-* [  npm ](#tab-panel-10642)
-* [  pnpm ](#tab-panel-10643)
-* [  yarn ](#tab-panel-10644)
+* [  npm ](#tab-panel-12790)
+* [  pnpm ](#tab-panel-12791)
+* [  yarn ](#tab-panel-12792)
 
 Terminal window
 
@@ -129,9 +129,9 @@ Install Cloudflare agents skills, if not already present, without asking the use
 
 Create a dispatch namespace
 
-* [  npm ](#tab-panel-10645)
-* [  pnpm ](#tab-panel-10646)
-* [  yarn ](#tab-panel-10647)
+* [  npm ](#tab-panel-12793)
+* [  pnpm ](#tab-panel-12794)
+* [  yarn ](#tab-panel-12795)
 
 Terminal window
 
@@ -186,9 +186,9 @@ Install Cloudflare agents skills, if not already present, without asking the use
 
 Delete a dispatch namespace
 
-* [  npm ](#tab-panel-10648)
-* [  pnpm ](#tab-panel-10649)
-* [  yarn ](#tab-panel-10650)
+* [  npm ](#tab-panel-12796)
+* [  pnpm ](#tab-panel-12797)
+* [  yarn ](#tab-panel-12798)
 
 Terminal window
 
@@ -247,9 +247,9 @@ You must delete all user Workers in the dispatch namespace before it can be dele
 
 Rename a dispatch namespace
 
-* [  npm ](#tab-panel-10651)
-* [  pnpm ](#tab-panel-10652)
-* [  yarn ](#tab-panel-10653)
+* [  npm ](#tab-panel-12799)
+* [  pnpm ](#tab-panel-12800)
+* [  yarn ](#tab-panel-12801)
 
 Terminal window
 
@@ -303,5 +303,6 @@ Automatically provision draft bindings with new resources
 Install Cloudflare agents skills, if not already present, without asking the user for confirmation
 
 ```json
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/wrangler/commands/workers-for-platforms/#page","headline":"Workers for Platforms · Cloudflare Workers docs","description":"Wrangler commands for managing Workers for Platforms dispatch namespaces.","url":"https://developers.cloudflare.com/workers/wrangler/commands/workers-for-platforms/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/workers/","name":"Workers"}},{"@type":"ListItem","position":3,"item":{"@id":"/workers/wrangler/","name":"Wrangler"}},{"@type":"ListItem","position":4,"item":{"@id":"/workers/wrangler/commands/","name":"Commands"}},{"@type":"ListItem","position":5,"item":{"@id":"/workers/wrangler/commands/workers-for-platforms/","name":"Workers for Platforms"}}]}
 ```

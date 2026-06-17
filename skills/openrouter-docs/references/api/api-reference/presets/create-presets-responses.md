@@ -3820,7 +3820,8 @@ components:
           description: >-
             Maximum number of search results to return per search call. Defaults
             to 5. Applies to Exa, Firecrawl, Parallel, and Perplexity engines;
-            ignored with native provider search.
+            ignored with native provider search. Perplexity supports a maximum
+            of 20; values above 20 are clamped.
         search_context_size:
           $ref: '#/components/schemas/SearchContextSizeEnum'
         type:
@@ -3848,7 +3849,8 @@ components:
           description: >-
             Maximum number of search results to return per search call. Defaults
             to 5. Applies to Exa, Firecrawl, Parallel, and Perplexity engines;
-            ignored with native provider search.
+            ignored with native provider search. Perplexity supports a maximum
+            of 20; values above 20 are clamped.
         search_context_size:
           $ref: '#/components/schemas/SearchContextSizeEnum'
         type:
@@ -3904,7 +3906,8 @@ components:
           description: >-
             Maximum number of search results to return per search call. Defaults
             to 5. Applies to Exa, Firecrawl, Parallel, and Perplexity engines;
-            ignored with native provider search.
+            ignored with native provider search. Perplexity supports a maximum
+            of 20; values above 20 are clamped.
         search_context_size:
           $ref: '#/components/schemas/SearchContextSizeEnum'
         type:
@@ -3932,7 +3935,8 @@ components:
           description: >-
             Maximum number of search results to return per search call. Defaults
             to 5. Applies to Exa, Firecrawl, Parallel, and Perplexity engines;
-            ignored with native provider search.
+            ignored with native provider search. Perplexity supports a maximum
+            of 20; values above 20 are clamped.
         search_context_size:
           $ref: '#/components/schemas/SearchContextSizeEnum'
         type:
@@ -5035,7 +5039,8 @@ components:
           description: >-
             Maximum number of search results to return per search call. Defaults
             to 5. Applies to Exa, Firecrawl, Parallel, and Perplexity engines;
-            ignored with native provider search.
+            ignored with native provider search. Perplexity supports a maximum
+            of 20; values above 20 are clamped.
         max_total_results:
           type: integer
           description: >-

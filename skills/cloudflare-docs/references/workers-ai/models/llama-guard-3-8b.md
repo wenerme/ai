@@ -34,9 +34,9 @@ Try out this model with Workers AI LLM Playground. It does not require any setup
 
 ## Usage
 
-* [  TypeScript ](#tab-panel-4809)
-* [  Python ](#tab-panel-4810)
-* [  curl ](#tab-panel-4811)
+* [  TypeScript ](#tab-panel-4990)
+* [  Python ](#tab-panel-4991)
+* [  curl ](#tab-panel-4992)
 
 ```
 
@@ -139,8 +139,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 ## Parameters
 
-* [ Input ](#tab-panel-4812)
-* [ Output ](#tab-panel-4813)
+* [ Input ](#tab-panel-4993)
+* [ Output ](#tab-panel-4994)
 
 ▶messages\[\]
 
@@ -173,5 +173,6 @@ Input [ ](https://developers.cloudflare.com/workers-ai/models/llama-guard-3-8b/s
 Output [ ](https://developers.cloudflare.com/workers-ai/models/llama-guard-3-8b/schema-output.json "Open") [ ](https://developers.cloudflare.com/workers-ai/models/llama-guard-3-8b/schema-output.json "Download") 
 
 ```json
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers-ai/models/llama-guard-3-8b/#page","headline":"llama-guard-3-8b (Meta) · Cloudflare AI docs · Cloudflare Workers AI docs","description":"Llama Guard 3 is a Llama-3.1-8B pretrained model, fine-tuned for content safety classification. Similar to previous versions, it can be used to classify content in both LLM inputs (prompt classification) and in LLM responses (response classification). It acts as an LLM – it generates text in its output that indicates whether a given prompt or response is safe or unsafe, and if unsafe, it also lists the content categories violated.","url":"https://developers.cloudflare.com/workers-ai/models/llama-guard-3-8b/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/workers-ai/","name":"Workers AI"}},{"@type":"ListItem","position":3,"item":{"@id":"/workers-ai/models/","name":"Models"}}]}
 ```

@@ -31,8 +31,8 @@ Provider adapters are exported from provider-specific subpaths so unused adapter
 
 ## Telegram
 
-* [  JavaScript ](#tab-panel-5426)
-* [  TypeScript ](#tab-panel-5427)
+* [  JavaScript ](#tab-panel-5611)
+* [  TypeScript ](#tab-panel-5612)
 
 JavaScript
 
@@ -137,8 +137,8 @@ https://<your-worker>/messengers/telegram/webhook
 
 If one Think agent owns multiple Telegram bots, give each provider a distinct Chat SDK adapter name:
 
-* [  JavaScript ](#tab-panel-5422)
-* [  TypeScript ](#tab-panel-5423)
+* [  JavaScript ](#tab-panel-5607)
+* [  TypeScript ](#tab-panel-5608)
 
 JavaScript
 
@@ -218,8 +218,8 @@ The root Think agent handles messenger webhook routes after framework sub-agent 
 
 By default, Think replies to direct messages and mentions. New mentions subscribe the Chat SDK thread so later mentions in the same thread are still observed, but ordinary subscribed-thread messages and button actions are ignored unless you opt in:
 
-* [  JavaScript ](#tab-panel-5416)
-* [  TypeScript ](#tab-panel-5417)
+* [  JavaScript ](#tab-panel-5601)
+* [  TypeScript ](#tab-panel-5602)
 
 JavaScript
 
@@ -267,8 +267,8 @@ The default conversation mode is one Think sub-agent per Chat SDK thread. This k
 
 Use the root agent as the conversation when all messenger traffic should share one Think session:
 
-* [  JavaScript ](#tab-panel-5418)
-* [  TypeScript ](#tab-panel-5419)
+* [  JavaScript ](#tab-panel-5603)
+* [  TypeScript ](#tab-panel-5604)
 
 JavaScript
 
@@ -310,8 +310,8 @@ telegramMessenger({
 
 Use a resolver when routing depends on tenant, channel, thread, or user:
 
-* [  JavaScript ](#tab-panel-5424)
-* [  TypeScript ](#tab-panel-5425)
+* [  JavaScript ](#tab-panel-5609)
+* [  TypeScript ](#tab-panel-5610)
 
 JavaScript
 
@@ -387,8 +387,8 @@ Delivery errors use a generic user-facing message by default so internal excepti
 
 During a messenger turn, `getMessengerContext()` returns provider, thread, author, message, capabilities, and attachment metadata for the initiating event. Use it from prompts, tools, or hooks that need channel-specific behavior.
 
-* [  JavaScript ](#tab-panel-5420)
-* [  TypeScript ](#tab-panel-5421)
+* [  JavaScript ](#tab-panel-5605)
+* [  TypeScript ](#tab-panel-5606)
 
 JavaScript
 
@@ -424,8 +424,8 @@ if (messenger?.thread.isDirectMessage === false) {
 
 Use `chatSdkMessenger()` for providers that do not have a Think helper yet:
 
-* [  JavaScript ](#tab-panel-5428)
-* [  TypeScript ](#tab-panel-5429)
+* [  JavaScript ](#tab-panel-5613)
+* [  TypeScript ](#tab-panel-5614)
 
 JavaScript
 
@@ -482,5 +482,6 @@ The `examples/think-chat-sdk` example demonstrates the Think-native `getMessenge
 The `examples/chat-sdk-messenger` example demonstrates a larger manual ingress agent with an admin dashboard, menu handling, and application-owned reply fibers. Use `getMessengers()` for the simple Think-native path. Use the example when you need to own the Chat SDK runtime and control-plane UI yourself. Refer to [Chat SDK state](https://developers.cloudflare.com/agents/runtime/communication/chat-sdk/) for the underlying state adapter.
 
 ```json
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/agents/harnesses/think/messengers/#page","headline":"Messengers · Cloudflare Agents docs","description":"Receive and reply to Chat SDK messenger webhooks directly from a Think agent, including Telegram setup, routing, conversation targets, and recovery.","url":"https://developers.cloudflare.com/agents/harnesses/think/messengers/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-06-09","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/agents/","name":"Agents"}},{"@type":"ListItem","position":3,"item":{"@id":"/agents/harnesses/","name":"Harnesses"}},{"@type":"ListItem","position":4,"item":{"@id":"/agents/harnesses/think/","name":"Think"}},{"@type":"ListItem","position":5,"item":{"@id":"/agents/harnesses/think/messengers/","name":"Messengers"}}]}
 ```

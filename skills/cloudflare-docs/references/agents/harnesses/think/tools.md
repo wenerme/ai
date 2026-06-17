@@ -49,8 +49,8 @@ To keep tool calls bounded, the Bash tool snapshots up to 1,000 workspace files 
 
 Disable the default Bash tool for conservative deployments:
 
-* [  JavaScript ](#tab-panel-5468)
-* [  TypeScript ](#tab-panel-5469)
+* [  JavaScript ](#tab-panel-5653)
+* [  TypeScript ](#tab-panel-5654)
 
 JavaScript
 
@@ -96,8 +96,8 @@ export class MyAgent extends Think<Env> {
 
 By default, the workspace stores everything in SQLite. For large files, override `workspace` to add R2 spillover:
 
-* [  JavaScript ](#tab-panel-5474)
-* [  TypeScript ](#tab-panel-5475)
+* [  JavaScript ](#tab-panel-5661)
+* [  TypeScript ](#tab-panel-5662)
 
 JavaScript
 
@@ -167,8 +167,8 @@ export class MyAgent extends Think<Env> {
 
 This requires an R2 bucket binding:
 
-* [  wrangler.jsonc ](#tab-panel-5464)
-* [  wrangler.toml ](#tab-panel-5465)
+* [  wrangler.jsonc ](#tab-panel-5649)
+* [  wrangler.toml ](#tab-panel-5650)
 
 JSONC
 
@@ -212,8 +212,8 @@ bucket_name = "agent-files"
 
 Override `getTools()` to add your own tools. These are standard AI SDK `tool()` definitions with Zod schemas:
 
-* [  JavaScript ](#tab-panel-5486)
-* [  TypeScript ](#tab-panel-5487)
+* [  JavaScript ](#tab-panel-5675)
+* [  TypeScript ](#tab-panel-5676)
 
 JavaScript
 
@@ -373,6 +373,10 @@ getTools(): ToolSet {
 
 When `needsApproval` returns `true`, the tool call is sent to the client for approval. The conversation pauses until the client responds with `CF_AGENT_TOOL_APPROVAL`.
 
+Note
+
+Inside the [code execution tool](#code-execution-tool)'s sandbox, `needsApproval` behaves differently: it maps to the codemode runtime's durable pause/approve/resume flow, and a function-valued `needsApproval` always requires approval. Refer to [Approvals (human-in-the-loop)](#approvals-human-in-the-loop).
+
 ## Per-turn tool overrides
 
 The `beforeTurn` hook can restrict or add tools for a specific turn:
@@ -404,8 +408,8 @@ Think inherits MCP client support from the `Agent` base class. MCP tools from co
 
 Set `waitForMcpConnections` to ensure MCP servers are connected before inference runs:
 
-* [  JavaScript ](#tab-panel-5472)
-* [  TypeScript ](#tab-panel-5473)
+* [  JavaScript ](#tab-panel-5657)
+* [  TypeScript ](#tab-panel-5658)
 
 JavaScript
 
@@ -453,8 +457,8 @@ export class MyAgent extends Think<Env> {
 
 Add MCP servers programmatically or via `@callable` methods:
 
-* [  JavaScript ](#tab-panel-5480)
-* [  TypeScript ](#tab-panel-5481)
+* [  JavaScript ](#tab-panel-5669)
+* [  TypeScript ](#tab-panel-5670)
 
 JavaScript
 
@@ -534,7 +538,7 @@ export class MyAgent extends Think<Env> {
 
 ## Code execution tool
 
-Let the LLM write and run JavaScript in a sandboxed Worker. Requires `@cloudflare/codemode` and a `worker_loaders` binding.
+Let the LLM write and run JavaScript in a sandboxed Worker, recorded on a durable codemode runtime (abort-and-replay, human approvals, audit trail, reusable snippets). Requires `@cloudflare/codemode` and a `worker_loaders` binding.
 
 Terminal window
 
@@ -545,8 +549,10 @@ npm install @cloudflare/codemode
 
 ```
 
-* [  JavaScript ](#tab-panel-5484)
-* [  TypeScript ](#tab-panel-5485)
+The one-liner infers everything from the agent — `state.*` from `this.workspace`, the executor from `env.LOADER`, and a live browser (`cdp.*`) from `env.BROWSER` if bound:
+
+* [  JavaScript ](#tab-panel-5665)
+* [  TypeScript ](#tab-panel-5666)
 
 JavaScript
 
@@ -555,8 +561,6 @@ JavaScript
 import { Think } from "@cloudflare/think";
 
 import { createExecuteTool } from "@cloudflare/think/tools/execute";
-
-import { createWorkspaceTools } from "@cloudflare/think/tools/workspace";
 
 
 export class MyAgent extends Think {
@@ -572,13 +576,7 @@ export class MyAgent extends Think {
 
     return {
 
-      execute: createExecuteTool({
-
-        tools: createWorkspaceTools(this.workspace),
-
-        loader: this.env.LOADER,
-
-      }),
+      execute: createExecuteTool(this),
 
     };
 
@@ -597,8 +595,6 @@ import { Think } from "@cloudflare/think";
 
 import { createExecuteTool } from "@cloudflare/think/tools/execute";
 
-import { createWorkspaceTools } from "@cloudflare/think/tools/workspace";
-
 
 export class MyAgent extends Think<Env> {
 
@@ -613,13 +609,7 @@ export class MyAgent extends Think<Env> {
 
     return {
 
-      execute: createExecuteTool({
-
-        tools: createWorkspaceTools(this.workspace),
-
-        loader: this.env.LOADER,
-
-      }),
+      execute: createExecuteTool(this),
 
     };
 
@@ -630,8 +620,10 @@ export class MyAgent extends Think<Env> {
 
 ```
 
-* [  wrangler.jsonc ](#tab-panel-5466)
-* [  wrangler.toml ](#tab-panel-5467)
+Setup checklist:
+
+* [  wrangler.jsonc ](#tab-panel-5651)
+* [  wrangler.toml ](#tab-panel-5652)
 
 JSONC
 
@@ -649,7 +641,13 @@ JSONC
 
     }
 
-  ]
+  ],
+
+  "browser": {
+
+    "binding": "BROWSER"
+
+  }
 
 }
 
@@ -665,12 +663,82 @@ TOML
 binding = "LOADER"
 
 
+[browser]
+
+binding = "BROWSER" # optional — enables cdp.*
+
+
 ```
 
-For richer filesystem access, pass a `state` backend:
+* [  JavaScript ](#tab-panel-5663)
+* [  TypeScript ](#tab-panel-5664)
 
-* [  JavaScript ](#tab-panel-5476)
-* [  TypeScript ](#tab-panel-5477)
+JavaScript
+
+```
+
+// worker entry — the runtime lives in a Durable Object facet, so the class
+
+// must be exported (the @cloudflare/codemode/vite plugin does this
+
+// automatically; the Think framework's generated entry already includes it)
+
+export { CodemodeRuntime } from "@cloudflare/codemode";
+
+
+```
+
+TypeScript
+
+```
+
+// worker entry — the runtime lives in a Durable Object facet, so the class
+
+// must be exported (the @cloudflare/codemode/vite plugin does this
+
+// automatically; the Think framework's generated entry already includes it)
+
+export { CodemodeRuntime } from "@cloudflare/codemode";
+
+
+```
+
+Each missing piece fails with an error naming the step.
+
+Inside the sandbox the model sees typed namespaces plus the platform SDK:
+
+* `tools.*` — your AI SDK tools (object args, validated against their schemas). Only tools with an `execute` function are exposed — client-side tools cannot run in the sandbox.
+* `state.*` — the workspace filesystem (`state.readFile({ path })`, `state.glob({ pattern })`, `state.planEdits(...)`, and so on).
+* `cdp.*` — the browser, when a Browser Run binding is configured. The execute tool defaults to `session: { mode: "dynamic" }`: sessions are per-execution unless the model promotes one with `cdp.startSession()`.
+* `codemode.search` / `codemode.describe` / `codemode.step` / `codemode.run` — discovery, side-effect boundaries, and saved snippets.
+
+Pass overrides for anything beyond the defaults — for example, custom `tools.*` alongside the agent-derived state:
+
+* [  JavaScript ](#tab-panel-5659)
+* [  TypeScript ](#tab-panel-5660)
+
+JavaScript
+
+```
+
+execute: createExecuteTool(this, { tools: myDomainTools });
+
+
+```
+
+TypeScript
+
+```
+
+execute: createExecuteTool(this, { tools: myDomainTools });
+
+
+```
+
+Or fully explicit options (no agent inference):
+
+* [  JavaScript ](#tab-panel-5671)
+* [  TypeScript ](#tab-panel-5672)
 
 JavaScript
 
@@ -681,9 +749,13 @@ import { createWorkspaceStateBackend } from "@cloudflare/shell";
 
 createExecuteTool({
 
+  ctx: this.ctx,
+
   tools: myDomainTools,
 
   state: createWorkspaceStateBackend(this.workspace),
+
+  browser: this.env.BROWSER,
 
   loader: this.env.LOADER,
 
@@ -701,9 +773,13 @@ import { createWorkspaceStateBackend } from "@cloudflare/shell";
 
 createExecuteTool({
 
+  ctx: this.ctx,
+
   tools: myDomainTools,
 
   state: createWorkspaceStateBackend(this.workspace),
+
+  browser: this.env.BROWSER,
 
   loader: this.env.LOADER,
 
@@ -712,12 +788,69 @@ createExecuteTool({
 
 ```
 
+### Approvals (human-in-the-loop)
+
+An AI SDK tool with `needsApproval` does not run immediately inside the sandbox — calling it **pauses the run durably**. The pause comes back as a normal tool output (`{ status: "paused", executionId, pending }`), the model tells the user what it needs, and the turn ends. This differs from the client-side approval flow for plain `getTools()` tools: inside the sandbox a function-valued `needsApproval` cannot be evaluated against the call's arguments ahead of time, so it conservatively **always** requires approval. Think ships built-in callables to resolve it:
+
+* `approveExecution(executionId)` — resumes the run where it stopped. Already-done work is replayed, not re-executed. The outcome replaces the paused output in the transcript and the chat auto-continues.
+* `rejectExecution(executionId, reason?)` — ends the run with `{ status: "rejected", reason }` so the model can adapt.
+* `pendingExecutions()` — pending actions (with full args) for rendering approval UI.
+
+Note
+
+**Render approval cards from `pendingExecutions()`, not the transcript.** The `pending` array in the paused tool output is a _truncated preview_ — args are bounded (\~2 KB each) so they do not blow up model context, but the full args (up to 1 MB) are what actually execute on approve. A human approving a gated call must see the authoritative args, so fetch them via `pendingExecutions(executionId)` before enabling the Approve button.
+
+For a working approval card, refer to the [assistant example ↗](https://github.com/cloudflare/agents/tree/main/examples/assistant).
+
+### The runtime handle
+
+`createExecuteRuntime` returns the moving parts when the host needs more than the tool — and the handle is also assigned to `this.codemode` when created from an agent:
+
+* [  JavaScript ](#tab-panel-5667)
+* [  TypeScript ](#tab-panel-5668)
+
+JavaScript
+
+```
+
+import { createExecuteRuntime } from "@cloudflare/think/tools/execute";
+
+
+const { runtime, connectors, tool } = createExecuteRuntime(this);
+
+await runtime.executions(); // audit trail
+
+await runtime.expirePaused(); // reclaim stale never-approved pauses (call from a scheduled task)
+
+await runtime.saveSnippet("name", { executionId }); // promote a script for reuse
+
+
+```
+
+TypeScript
+
+```
+
+import { createExecuteRuntime } from "@cloudflare/think/tools/execute";
+
+
+const { runtime, connectors, tool } = createExecuteRuntime(this);
+
+await runtime.executions(); // audit trail
+
+await runtime.expirePaused(); // reclaim stale never-approved pauses (call from a scheduled task)
+
+await runtime.saveSnippet("name", { executionId }); // promote a script for reuse
+
+
+```
+
 ## Browser tools
 
 Give your agent access to the Chrome DevTools Protocol (CDP) for web page inspection, scraping, screenshots, and debugging. Requires `@cloudflare/codemode` and a Browser Run binding.
 
-* [  JavaScript ](#tab-panel-5488)
-* [  TypeScript ](#tab-panel-5489)
+* [  JavaScript ](#tab-panel-5679)
+* [  TypeScript ](#tab-panel-5680)
 
 JavaScript
 
@@ -742,6 +875,8 @@ export class MyAgent extends Think {
     return {
 
       ...createBrowserTools({
+
+        ctx: this.ctx,
 
         browser: this.env.BROWSER,
 
@@ -782,6 +917,8 @@ export class MyAgent extends Think<Env> {
 
       ...createBrowserTools({
 
+        ctx: this.ctx,
+
         browser: this.env.BROWSER,
 
         loader: this.env.LOADER,
@@ -797,8 +934,8 @@ export class MyAgent extends Think<Env> {
 
 ```
 
-* [  wrangler.jsonc ](#tab-panel-5470)
-* [  wrangler.toml ](#tab-panel-5471)
+* [  wrangler.jsonc ](#tab-panel-5655)
+* [  wrangler.toml ](#tab-panel-5656)
 
 JSONC
 
@@ -845,23 +982,38 @@ binding = "LOADER"
 
 ```
 
-This adds two tools:
+This adds the durable CDP tool plus stateless [Quick Action](https://developers.cloudflare.com/agents/tools/browser/#quick-actions) tools when a `browser` binding is present:
 
-| Tool             | Description                                                                             |
-| ---------------- | --------------------------------------------------------------------------------------- |
-| browser\_search  | Query the CDP protocol spec to discover commands, events, and types                     |
-| browser\_execute | Run CDP commands against a live browser session (screenshots, DOM reads, JS evaluation) |
+| Tool              | Description                                                                             |
+| ----------------- | --------------------------------------------------------------------------------------- |
+| browser\_execute  | Run JavaScript against a live browser over CDP (screenshots, DOM reads, JS evaluation). |
+| browser\_markdown | Read a page or raw HTML as Markdown.                                                    |
+| browser\_extract  | Extract structured data from a page with AI.                                            |
+| browser\_links    | List links on a page.                                                                   |
+| browser\_scrape   | Scrape specific elements by CSS selector.                                               |
+
+Pass `quickActions: false` to keep only `browser_execute`, or pass `quickActions: { actions, maxChars, options }` to configure the stateless tools. The Quick Action tools share the `browser` binding, need no Worker Loader, and resolve `ctx` from the current Agent automatically. To use only the stateless tools, import `createQuickActionTools` from `@cloudflare/think/tools/browser`.
+
+The tool is backed by a codemode runtime with the `cdp` connector: the model writes async arrow functions that run in a sandboxed Worker isolate, with `cdp.send()`, `cdp.attachToTarget()`, `cdp.spec()` (the live, normalized protocol description), session helpers (`cdp.startSession()`, `cdp.sessionInfo()`, `cdp.closeSession()`), and debug-log helpers. Executions are recorded for abort-and-replay, so browser sessions survive approval pauses.
+
+By default each execution gets a fresh browser session (`one-shot`), torn down when the run ends. Pass `session: { mode: "dynamic" }` to let the model promote a session with `cdp.startSession()` so later executions continue in the same browser, or `session: { mode: "reuse", key }` for a named long-lived session. Stale sessions are reclaimed by the connector's `sweep()` — call it from a scheduled task.
+
+Note
+
+The simplest setup is the unified execute tool in [Code execution tool](#code-execution-tool): `createExecuteTool(this)` already includes `cdp.*` alongside `state.*` and `tools.*` when `env.BROWSER` is bound — one tool, one durable history. Use `createBrowserTools` when you want a separate, browser-only tool.
 
 For a custom Chrome endpoint, pass `cdpUrl` instead of `browser`:
 
-* [  JavaScript ](#tab-panel-5478)
-* [  TypeScript ](#tab-panel-5479)
+* [  JavaScript ](#tab-panel-5673)
+* [  TypeScript ](#tab-panel-5674)
 
 JavaScript
 
 ```
 
 createBrowserTools({
+
+  ctx: this.ctx,
 
   cdpUrl: "http://localhost:9222",
 
@@ -878,6 +1030,8 @@ TypeScript
 
 createBrowserTools({
 
+  ctx: this.ctx,
+
   cdpUrl: "http://localhost:9222",
 
   loader: this.env.LOADER,
@@ -887,7 +1041,7 @@ createBrowserTools({
 
 ```
 
-For the full CDP helper API, refer to [Browse the web](https://developers.cloudflare.com/agents/tools/browser/).
+For the full CDP connector API, refer to [Browse the web](https://developers.cloudflare.com/agents/tools/browser/).
 
 ## Extensions
 
@@ -895,8 +1049,8 @@ Extensions are dynamically loaded sandboxed Workers that add tools at runtime. T
 
 Extensions require a `worker_loaders` binding:
 
-* [  JavaScript ](#tab-panel-5482)
-* [  TypeScript ](#tab-panel-5483)
+* [  JavaScript ](#tab-panel-5677)
+* [  TypeScript ](#tab-panel-5678)
 
 JavaScript
 
@@ -948,8 +1102,8 @@ export class MyAgent extends Think<Env> {
 
 Define extensions that load at startup:
 
-* [  JavaScript ](#tab-panel-5498)
-* [  TypeScript ](#tab-panel-5499)
+* [  JavaScript ](#tab-panel-5689)
+* [  TypeScript ](#tab-panel-5690)
 
 JavaScript
 
@@ -1079,8 +1233,8 @@ Extension tools are namespaced — a `math` extension with an `add` tool becomes
 
 Give the model `createExtensionTools` so it can load extensions dynamically:
 
-* [  JavaScript ](#tab-panel-5496)
-* [  TypeScript ](#tab-panel-5497)
+* [  JavaScript ](#tab-panel-5687)
+* [  TypeScript ](#tab-panel-5688)
 
 JavaScript
 
@@ -1202,8 +1356,8 @@ The context block is registered as `notes_scratchpad` (namespaced by extension n
 
 The individual tool factories are exported for use with custom storage backends:
 
-* [  JavaScript ](#tab-panel-5490)
-* [  TypeScript ](#tab-panel-5491)
+* [  JavaScript ](#tab-panel-5681)
+* [  TypeScript ](#tab-panel-5682)
 
 JavaScript
 
@@ -1261,8 +1415,8 @@ import {
 
 Implement the operations interface for your storage backend:
 
-* [  JavaScript ](#tab-panel-5492)
-* [  TypeScript ](#tab-panel-5493)
+* [  JavaScript ](#tab-panel-5683)
+* [  TypeScript ](#tab-panel-5684)
 
 JavaScript
 
@@ -1305,8 +1459,8 @@ const readTool = createReadTool({ ops: myReadOps });
 
 Or create the full set from a `Workspace`, optionally disabling the Bash tool:
 
-* [  JavaScript ](#tab-panel-5494)
-* [  TypeScript ](#tab-panel-5495)
+* [  JavaScript ](#tab-panel-5685)
+* [  TypeScript ](#tab-panel-5686)
 
 JavaScript
 
@@ -1345,5 +1499,6 @@ const toolsWithoutBash = createWorkspaceTools(myCustomWorkspace, {
 ```
 
 ```json
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/agents/harnesses/think/tools/#page","headline":"Tools · Cloudflare Agents docs","description":"Built-in workspace tools (including bash), custom tools, approvals, MCP tools, code execution, browser tools, and extensions for Think agents.","url":"https://developers.cloudflare.com/agents/harnesses/think/tools/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-06-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/agents/","name":"Agents"}},{"@type":"ListItem","position":3,"item":{"@id":"/agents/harnesses/","name":"Harnesses"}},{"@type":"ListItem","position":4,"item":{"@id":"/agents/harnesses/think/","name":"Think"}},{"@type":"ListItem","position":5,"item":{"@id":"/agents/harnesses/think/tools/","name":"Tools"}}]}
 ```

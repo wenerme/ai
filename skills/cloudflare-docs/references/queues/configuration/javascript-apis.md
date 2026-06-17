@@ -24,9 +24,9 @@ These APIs allow a producer Worker to send messages to a Queue.
 
 An example of writing a single message to a Queue:
 
-* [  JavaScript ](#tab-panel-7278)
-* [  TypeScript ](#tab-panel-7279)
-* [  Python ](#tab-panel-7280)
+* [  JavaScript ](#tab-panel-9599)
+* [  TypeScript ](#tab-panel-9600)
+* [  Python ](#tab-panel-9601)
 
 index.js
 
@@ -119,9 +119,9 @@ class Default(WorkerEntrypoint):
 
 The Queues API also supports writing multiple messages at once:
 
-* [  JavaScript ](#tab-panel-7275)
-* [  TypeScript ](#tab-panel-7276)
-* [  Python ](#tab-panel-7277)
+* [  JavaScript ](#tab-panel-9596)
+* [  TypeScript ](#tab-panel-9597)
+* [  Python ](#tab-panel-9598)
 
 index.js
 
@@ -364,9 +364,9 @@ Note
 
 `waitUntil()` is the only supported method to run tasks (such as logging or metrics calls) that resolve after a queue handler has completed. Promises that have not resolved by the time the queue handler returns may not complete and will not block completion of execution.
 
-* [  JavaScript ](#tab-panel-7281)
-* [  TypeScript ](#tab-panel-7282)
-* [  Python ](#tab-panel-7283)
+* [  JavaScript ](#tab-panel-9602)
+* [  TypeScript ](#tab-panel-9603)
+* [  Python ](#tab-panel-9604)
 
 index.js
 
@@ -598,5 +598,6 @@ interface QueueRetryOptions {
    * Returns a [QueueSendResult](#queuesendresult) containing realtime metrics about the queue.
 
 ```json
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/queues/configuration/javascript-apis/#page","headline":"Cloudflare Queues - JavaScript APIs · Cloudflare Queues docs","description":"Produce and consume Cloudflare Queues messages using the Workers JavaScript API.","url":"https://developers.cloudflare.com/queues/configuration/javascript-apis/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-05-07","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/queues/","name":"Queues"}},{"@type":"ListItem","position":3,"item":{"@id":"/queues/configuration/","name":"Configuration"}},{"@type":"ListItem","position":4,"item":{"@id":"/queues/configuration/javascript-apis/","name":"JavaScript APIs"}}]}
 ```

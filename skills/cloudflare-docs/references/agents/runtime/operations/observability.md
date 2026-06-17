@@ -66,8 +66,8 @@ Events are routed to named channels based on their type:
 
 The `subscribe()` function from `agents/observability` provides type-safe access to events on a specific channel:
 
-* [  JavaScript ](#tab-panel-5986)
-* [  TypeScript ](#tab-panel-5987)
+* [  JavaScript ](#tab-panel-6463)
+* [  TypeScript ](#tab-panel-6464)
 
 JavaScript
 
@@ -147,8 +147,8 @@ The typed helper uses camelCase keys, so agent-tool recovery is `subscribe("agen
 
 You can also subscribe directly using the Node.js API:
 
-* [  JavaScript ](#tab-panel-5982)
-* [  TypeScript ](#tab-panel-5983)
+* [  JavaScript ](#tab-panel-6459)
+* [  TypeScript ](#tab-panel-6460)
 
 JavaScript
 
@@ -186,8 +186,8 @@ subscribe("agents:schedule", (event) => {
 
 In production, all diagnostics channel messages are automatically forwarded to [Tail Workers](https://developers.cloudflare.com/workers/observability/logs/tail-workers/). No subscription code is needed in the agent itself — attach a Tail Worker and access events via `event.diagnosticsChannelEvents`:
 
-* [  JavaScript ](#tab-panel-5988)
-* [  TypeScript ](#tab-panel-5989)
+* [  JavaScript ](#tab-panel-6465)
+* [  TypeScript ](#tab-panel-6466)
 
 JavaScript
 
@@ -253,8 +253,8 @@ This gives you structured, filterable observability in production with zero over
 
 You can override the default implementation by providing your own `Observability` interface:
 
-* [  JavaScript ](#tab-panel-5990)
-* [  TypeScript ](#tab-panel-5991)
+* [  JavaScript ](#tab-panel-6467)
+* [  TypeScript ](#tab-panel-6468)
 
 JavaScript
 
@@ -326,8 +326,8 @@ class MyAgent extends Agent {
 
 Set `observability` to `undefined` to disable all event emission:
 
-* [  JavaScript ](#tab-panel-5984)
-* [  TypeScript ](#tab-panel-5985)
+* [  JavaScript ](#tab-panel-6461)
+* [  TypeScript ](#tab-panel-6462)
 
 JavaScript
 
@@ -506,5 +506,6 @@ These events track chat message lifecycle, client-side tool interactions, and Th
 [ Agents API ](https://developers.cloudflare.com/agents/runtime/agents-api/) Complete API reference for the Agents SDK. 
 
 ```json
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/agents/runtime/operations/observability/#page","headline":"Observability · Cloudflare Agents docs","description":"Subscribe to structured Agent events for RPC calls, state changes, schedules, workflows, and MCP connections via diagnostics channels.","url":"https://developers.cloudflare.com/agents/runtime/operations/observability/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-06-05","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/agents/","name":"Agents"}},{"@type":"ListItem","position":3,"item":{"@id":"/agents/runtime/","name":"Runtime"}},{"@type":"ListItem","position":4,"item":{"@id":"/agents/runtime/operations/","name":"Operations"}},{"@type":"ListItem","position":5,"item":{"@id":"/agents/runtime/operations/observability/","name":"Observability"}}]}
 ```

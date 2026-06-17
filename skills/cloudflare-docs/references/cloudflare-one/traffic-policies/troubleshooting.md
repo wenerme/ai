@@ -108,8 +108,8 @@ These applications do not use the operating system's trust store and therefore d
 
 To resolve this issue:
 
-* [ Recommended ](#tab-panel-5604)
-* [ Workaround ](#tab-panel-5605)
+* [ Recommended ](#tab-panel-7694)
+* [ Workaround ](#tab-panel-7695)
 
 Create a targeted HTTP policy to bypass decryption for the specific domains these tools need to access. Place this policy at a higher precedence (lower order number) than your main TLS decryption policy.
 
@@ -144,5 +144,6 @@ You have configured Gateway to resolve internal hostnames, but users are unable 
 | Local Domain Fallback misconfiguration     | Use resolver policies for corporate DNS. Only use Local Domain Fallback for domains specific to a user's immediate physical network.                                                                                                         |
 
 ```json
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/traffic-policies/troubleshooting/#page","headline":"Troubleshooting · Cloudflare One docs","description":"Troubleshoot Troubleshooting issues in Gateway.","url":"https://developers.cloudflare.com/cloudflare-one/traffic-policies/troubleshooting/","inLanguage":"en","image":"https://developers.cloudflare.com/zt-preview.png","dateModified":"2026-04-17","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Debugging"]}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/cloudflare-one/","name":"Cloudflare One"}},{"@type":"ListItem","position":3,"item":{"@id":"/cloudflare-one/traffic-policies/","name":"Traffic policies"}},{"@type":"ListItem","position":4,"item":{"@id":"/cloudflare-one/traffic-policies/troubleshooting/","name":"Troubleshooting"}}]}
 ```

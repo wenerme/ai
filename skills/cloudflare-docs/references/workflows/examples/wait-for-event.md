@@ -45,8 +45,8 @@ The `index.ts` file defines the core logic of the Cloudflare Workflow responsibl
 
 For the complete implementation of the `index.ts` file, please refer to the [GitHub repository ↗](https://github.com/cloudflare/docs-examples/blob/main/workflows/waitForEvent/workflow/src/index.ts).
 
-* [  JavaScript ](#tab-panel-10835)
-* [  TypeScript ](#tab-panel-10836)
+* [  JavaScript ](#tab-panel-13063)
+* [  TypeScript ](#tab-panel-13064)
 
 JavaScript
 
@@ -220,8 +220,8 @@ export class MyWorkflow extends WorkflowEntrypoint<Env, WorkflowParams> {
 
 The Workflow configuration is defined in the `wrangler.jsonc` file. This file includes bindings for the R2 bucket, D1 database, Workers AI, and the Workflow itself. Ensure that all necessary bindings and environment variables are correctly set up to match your Cloudflare account and services.
 
-* [  wrangler.jsonc ](#tab-panel-10833)
-* [  wrangler.toml ](#tab-panel-10834)
+* [  wrangler.jsonc ](#tab-panel-13061)
+* [  wrangler.toml ](#tab-panel-13062)
 
 JSONC
 
@@ -237,7 +237,7 @@ JSONC
 
   // Set this to today's date
 
-  "compatibility_date": "2026-05-18",
+  "compatibility_date": "2026-06-17",
 
   "observability": {
 
@@ -310,7 +310,7 @@ main = "src/index.ts"
 
 # Set this to today's date
 
-compatibility_date = "2026-05-18"
+compatibility_date = "2026-06-17"
 
 
 [observability]
@@ -355,5 +355,6 @@ database_id = "66e4fbe9-06ac-4548-abba-2dc42088e13a"
 For access to the codebase, deployment instructions, and reference architecture, please visit the [GitHub repository ↗](https://github.com/cloudflare/docs-examples/tree/main/workflows/waitForEvent). This resource provides all the necessary tools and information to effectively implement the Workflow and Next.js frontend application.
 
 ```json
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workflows/examples/wait-for-event/#page","headline":"Human-in-the-Loop Image Tagging with waitForEvent · Cloudflare Workflows docs","description":"Human-in-the-loop Workflow with waitForEvent API","url":"https://developers.cloudflare.com/workflows/examples/wait-for-event/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-22","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Typescript"]}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/workflows/","name":"Workflows"}},{"@type":"ListItem","position":3,"item":{"@id":"/workflows/examples/","name":"Examples"}},{"@type":"ListItem","position":4,"item":{"@id":"/workflows/examples/wait-for-event/","name":"Human-in-the-Loop Image Tagging with waitForEvent"}}]}
 ```

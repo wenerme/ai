@@ -62,5 +62,6 @@ This approach lets you maintain a single zone-wide Google tag gateway configurat
 * [Google Help Center: Set up Google tag gateway for advertisers in Google Tag Manager with Cloudflare ↗](https://support.google.com/analytics/answer/16061641)
 
 ```json
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/google-tag-gateway/#page","headline":"Google tag gateway for advertisers · Google tag gateway for advertisers docs","description":"Deploy Google measurement tags from your domain for improved ad signal recovery.","url":"https://developers.cloudflare.com/google-tag-gateway/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-17","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Google"]}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/google-tag-gateway/","name":"Google tag gateway for advertisers"}}]}
 ```

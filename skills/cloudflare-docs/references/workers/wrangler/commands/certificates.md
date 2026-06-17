@@ -28,9 +28,9 @@ These certificates can be used in [mtls\_certificate bindings](https://developer
 
 Upload an mTLS certificate
 
-* [  npm ](#tab-panel-10120)
-* [  pnpm ](#tab-panel-10121)
-* [  yarn ](#tab-panel-10122)
+* [  npm ](#tab-panel-12268)
+* [  pnpm ](#tab-panel-12269)
+* [  yarn ](#tab-panel-12270)
 
 Terminal window
 
@@ -113,8 +113,8 @@ Expires: 1/01/2025
 
 You can then add this certificate as a [binding](https://developers.cloudflare.com/workers/runtime-apis/bindings/) in your [Wrangler configuration file](https://developers.cloudflare.com/workers/wrangler/configuration/):
 
-* [  wrangler.jsonc ](#tab-panel-10141)
-* [  wrangler.toml ](#tab-panel-10142)
+* [  wrangler.jsonc ](#tab-panel-12289)
+* [  wrangler.toml ](#tab-panel-12290)
 
 JSONC
 
@@ -158,9 +158,9 @@ Note that the certificate and private keys must be in separate (typically `.pem`
 
 List uploaded mTLS certificates
 
-* [  npm ](#tab-panel-10123)
-* [  pnpm ](#tab-panel-10124)
-* [  yarn ](#tab-panel-10125)
+* [  npm ](#tab-panel-12271)
+* [  pnpm ](#tab-panel-12272)
+* [  yarn ](#tab-panel-12273)
 
 Terminal window
 
@@ -247,9 +247,9 @@ Expires: 1/01/2025
 
 Delete an mTLS certificate
 
-* [  npm ](#tab-panel-10126)
-* [  pnpm ](#tab-panel-10127)
-* [  yarn ](#tab-panel-10128)
+* [  npm ](#tab-panel-12274)
+* [  pnpm ](#tab-panel-12275)
+* [  yarn ](#tab-panel-12276)
 
 Terminal window
 
@@ -338,9 +338,9 @@ These certificates can be used in Hyperdrive configurations, enabling them to pr
 
 Upload an mTLS certificate
 
-* [  npm ](#tab-panel-10129)
-* [  pnpm ](#tab-panel-10130)
-* [  yarn ](#tab-panel-10131)
+* [  npm ](#tab-panel-12277)
+* [  pnpm ](#tab-panel-12278)
+* [  yarn ](#tab-panel-12279)
 
 Terminal window
 
@@ -427,9 +427,9 @@ Note that the certificate and private keys must be in separate (typically `.pem`
 
 Upload a CA certificate chain
 
-* [  npm ](#tab-panel-10132)
-* [  pnpm ](#tab-panel-10133)
-* [  yarn ](#tab-panel-10134)
+* [  npm ](#tab-panel-12280)
+* [  pnpm ](#tab-panel-12281)
+* [  yarn ](#tab-panel-12282)
 
 Terminal window
 
@@ -512,9 +512,9 @@ Expires: 1/01/2025
 
 List uploaded mTLS certificates
 
-* [  npm ](#tab-panel-10135)
-* [  pnpm ](#tab-panel-10136)
-* [  yarn ](#tab-panel-10137)
+* [  npm ](#tab-panel-12283)
+* [  pnpm ](#tab-panel-12284)
+* [  yarn ](#tab-panel-12285)
 
 Terminal window
 
@@ -601,9 +601,9 @@ Expires: 1/01/2025
 
 Delete an mTLS certificate
 
-* [  npm ](#tab-panel-10138)
-* [  pnpm ](#tab-panel-10139)
-* [  yarn ](#tab-panel-10140)
+* [  npm ](#tab-panel-12286)
+* [  pnpm ](#tab-panel-12287)
+* [  yarn ](#tab-panel-12288)
 
 Terminal window
 
@@ -681,5 +681,6 @@ Deleted certificate 99f5fef1-6cc1-46b8-bd79-44a0d5082b8d successfully
 ```
 
 ```json
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/wrangler/commands/certificates/#page","headline":"Certificates · Cloudflare Workers docs","description":"Wrangler commands for managing mTLS and CA certificates, for use standalone or with Hyperdrive.","url":"https://developers.cloudflare.com/workers/wrangler/commands/certificates/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/workers/","name":"Workers"}},{"@type":"ListItem","position":3,"item":{"@id":"/workers/wrangler/","name":"Wrangler"}},{"@type":"ListItem","position":4,"item":{"@id":"/workers/wrangler/commands/","name":"Commands"}},{"@type":"ListItem","position":5,"item":{"@id":"/workers/wrangler/commands/certificates/","name":"Certificates"}}]}
 ```

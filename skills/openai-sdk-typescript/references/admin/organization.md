@@ -50,7 +50,7 @@ List user actions and configuration changes within this organization.
 
       Return only events whose `effective_at` (Unix seconds) is less than or equal to this value.
 
-  - `event_types?: Array<"api_key.created" | "api_key.updated" | "api_key.deleted" | 54 more>`
+  - `event_types?: Array<"api_key.created" | "api_key.updated" | "api_key.deleted" | 56 more>`
 
     Return only events with a `type` in one of these values. For example, `project.created`. For all options, see the documentation for the [audit log object](https://platform.openai.com/docs/api-reference/audit-logs/object).
 
@@ -152,6 +152,10 @@ List user actions and configuration changes within this organization.
 
     - `"role.assignment.deleted"`
 
+    - `"role.bound_to_resource"`
+
+    - `"role.unbound_from_resource"`
+
     - `"scim.enabled"`
 
     - `"scim.disabled"`
@@ -178,7 +182,11 @@ List user actions and configuration changes within this organization.
 
   - `resource_ids?: Array<string>`
 
-    Return only events performed on these targets. For example, a project ID updated.
+    Return only events performed on these targets. For example, a project ID updated. For ChatGPT connector role events, use the workspace connector resource ID shown in `details.id`, such as `<workspace_id>__<connector_id>`.
+
+  - `tenant_only?: boolean`
+
+    Return only tenant-scoped events associated with this organization. Required for tenant-scoped events such as `role.bound_to_resource` and `role.unbound_from_resource`. When `true`, all supplied event types must be tenant-scoped.
 
 ### Returns
 
@@ -194,7 +202,7 @@ List user actions and configuration changes within this organization.
 
     The Unix timestamp (in seconds) of the event.
 
-  - `type: "api_key.created" | "api_key.updated" | "api_key.deleted" | 54 more`
+  - `type: "api_key.created" | "api_key.updated" | "api_key.deleted" | 56 more`
 
     The event type.
 
@@ -295,6 +303,10 @@ List user actions and configuration changes within this organization.
     - `"role.assignment.created"`
 
     - `"role.assignment.deleted"`
+
+    - `"role.bound_to_resource"`
+
+    - `"role.unbound_from_resource"`
 
     - `"scim.enabled"`
 
@@ -916,6 +928,60 @@ List user actions and configuration changes within this organization.
 
       The type of resource the role assignment was scoped to.
 
+  - `"role.bound_to_resource"?: RoleBoundToResource`
+
+    The details for events with this `type`.
+
+    - `id?: string`
+
+      The ID of the resource the role was bound to. ChatGPT workspace connector resources use `<workspace_id>__<connector_id>`.
+
+    - `connector_id?: string`
+
+      The connector ID for a ChatGPT workspace connector resource.
+
+    - `connector_name?: string`
+
+      The connector display name for a ChatGPT workspace connector resource, or the connector ID when the display name could not be resolved.
+
+    - `enabled?: boolean`
+
+      Whether the connector is enabled for the role.
+
+    - `permissions?: Array<string>`
+
+      The permissions granted to the role for the resource.
+
+    - `resource_id?: string`
+
+      The ID of the resource the role was bound to.
+
+    - `resource_type?: string`
+
+      The type of resource the role was bound to.
+
+    - `role_id?: string`
+
+      The ID of the role that was bound to the resource.
+
+    - `source?: "role_toggle" | "role_connector_update" | "role_delete" | 2 more`
+
+      The connector role mutation path that produced the event.
+
+      - `"role_toggle"`
+
+      - `"role_connector_update"`
+
+      - `"role_delete"`
+
+      - `"workspace_permissions"`
+
+      - `"connector_publish"`
+
+    - `workspace_id?: string`
+
+      The workspace ID for a ChatGPT workspace connector resource.
+
   - `"role.created"?: RoleCreated`
 
     The details for events with this `type`.
@@ -947,6 +1013,60 @@ List user actions and configuration changes within this organization.
     - `id?: string`
 
       The role ID.
+
+  - `"role.unbound_from_resource"?: RoleUnboundFromResource`
+
+    The details for events with this `type`.
+
+    - `id?: string`
+
+      The ID of the resource the role was unbound from. ChatGPT workspace connector resources use `<workspace_id>__<connector_id>`.
+
+    - `connector_id?: string`
+
+      The connector ID for a ChatGPT workspace connector resource.
+
+    - `connector_name?: string`
+
+      The connector display name for a ChatGPT workspace connector resource, or the connector ID when the display name could not be resolved.
+
+    - `enabled?: boolean`
+
+      Whether the connector is enabled for the role.
+
+    - `permissions?: Array<string>`
+
+      The permissions remaining for the role after the change.
+
+    - `resource_id?: string`
+
+      The ID of the resource the role was unbound from.
+
+    - `resource_type?: string`
+
+      The type of resource the role was unbound from.
+
+    - `role_id?: string`
+
+      The ID of the role that was unbound from the resource.
+
+    - `source?: "role_toggle" | "role_connector_update" | "role_delete" | 2 more`
+
+      The connector role mutation path that produced the event.
+
+      - `"role_toggle"`
+
+      - `"role_connector_update"`
+
+      - `"role_delete"`
+
+      - `"workspace_permissions"`
+
+      - `"connector_publish"`
+
+    - `workspace_id?: string`
+
+      The workspace ID for a ChatGPT workspace connector resource.
 
   - `"role.updated"?: RoleUpdated`
 
@@ -1419,6 +1539,20 @@ for await (const auditLogListResponse of client.admin.organization.auditLogs.lis
         "resource_id": "resource_id",
         "resource_type": "resource_type"
       },
+      "role.bound_to_resource": {
+        "id": "id",
+        "connector_id": "connector_id",
+        "connector_name": "connector_name",
+        "enabled": true,
+        "permissions": [
+          "string"
+        ],
+        "resource_id": "resource_id",
+        "resource_type": "resource_type",
+        "role_id": "role_id",
+        "source": "role_toggle",
+        "workspace_id": "workspace_id"
+      },
       "role.created": {
         "id": "id",
         "permissions": [
@@ -1430,6 +1564,20 @@ for await (const auditLogListResponse of client.admin.organization.auditLogs.lis
       },
       "role.deleted": {
         "id": "id"
+      },
+      "role.unbound_from_resource": {
+        "id": "id",
+        "connector_id": "connector_id",
+        "connector_name": "connector_name",
+        "enabled": true,
+        "permissions": [
+          "string"
+        ],
+        "resource_id": "resource_id",
+        "resource_type": "resource_type",
+        "role_id": "role_id",
+        "source": "role_toggle",
+        "workspace_id": "workspace_id"
       },
       "role.updated": {
         "id": "id",
@@ -1536,7 +1684,7 @@ for await (const auditLogListResponse of client.admin.organization.auditLogs.lis
 
     The Unix timestamp (in seconds) of the event.
 
-  - `type: "api_key.created" | "api_key.updated" | "api_key.deleted" | 54 more`
+  - `type: "api_key.created" | "api_key.updated" | "api_key.deleted" | 56 more`
 
     The event type.
 
@@ -1637,6 +1785,10 @@ for await (const auditLogListResponse of client.admin.organization.auditLogs.lis
     - `"role.assignment.created"`
 
     - `"role.assignment.deleted"`
+
+    - `"role.bound_to_resource"`
+
+    - `"role.unbound_from_resource"`
 
     - `"scim.enabled"`
 
@@ -2258,6 +2410,60 @@ for await (const auditLogListResponse of client.admin.organization.auditLogs.lis
 
       The type of resource the role assignment was scoped to.
 
+  - `"role.bound_to_resource"?: RoleBoundToResource`
+
+    The details for events with this `type`.
+
+    - `id?: string`
+
+      The ID of the resource the role was bound to. ChatGPT workspace connector resources use `<workspace_id>__<connector_id>`.
+
+    - `connector_id?: string`
+
+      The connector ID for a ChatGPT workspace connector resource.
+
+    - `connector_name?: string`
+
+      The connector display name for a ChatGPT workspace connector resource, or the connector ID when the display name could not be resolved.
+
+    - `enabled?: boolean`
+
+      Whether the connector is enabled for the role.
+
+    - `permissions?: Array<string>`
+
+      The permissions granted to the role for the resource.
+
+    - `resource_id?: string`
+
+      The ID of the resource the role was bound to.
+
+    - `resource_type?: string`
+
+      The type of resource the role was bound to.
+
+    - `role_id?: string`
+
+      The ID of the role that was bound to the resource.
+
+    - `source?: "role_toggle" | "role_connector_update" | "role_delete" | 2 more`
+
+      The connector role mutation path that produced the event.
+
+      - `"role_toggle"`
+
+      - `"role_connector_update"`
+
+      - `"role_delete"`
+
+      - `"workspace_permissions"`
+
+      - `"connector_publish"`
+
+    - `workspace_id?: string`
+
+      The workspace ID for a ChatGPT workspace connector resource.
+
   - `"role.created"?: RoleCreated`
 
     The details for events with this `type`.
@@ -2289,6 +2495,60 @@ for await (const auditLogListResponse of client.admin.organization.auditLogs.lis
     - `id?: string`
 
       The role ID.
+
+  - `"role.unbound_from_resource"?: RoleUnboundFromResource`
+
+    The details for events with this `type`.
+
+    - `id?: string`
+
+      The ID of the resource the role was unbound from. ChatGPT workspace connector resources use `<workspace_id>__<connector_id>`.
+
+    - `connector_id?: string`
+
+      The connector ID for a ChatGPT workspace connector resource.
+
+    - `connector_name?: string`
+
+      The connector display name for a ChatGPT workspace connector resource, or the connector ID when the display name could not be resolved.
+
+    - `enabled?: boolean`
+
+      Whether the connector is enabled for the role.
+
+    - `permissions?: Array<string>`
+
+      The permissions remaining for the role after the change.
+
+    - `resource_id?: string`
+
+      The ID of the resource the role was unbound from.
+
+    - `resource_type?: string`
+
+      The type of resource the role was unbound from.
+
+    - `role_id?: string`
+
+      The ID of the role that was unbound from the resource.
+
+    - `source?: "role_toggle" | "role_connector_update" | "role_delete" | 2 more`
+
+      The connector role mutation path that produced the event.
+
+      - `"role_toggle"`
+
+      - `"role_connector_update"`
+
+      - `"role_delete"`
+
+      - `"workspace_permissions"`
+
+      - `"connector_publish"`
+
+    - `workspace_id?: string`
+
+      The workspace ID for a ChatGPT workspace connector resource.
 
   - `"role.updated"?: RoleUpdated`
 
@@ -2558,6 +2818,10 @@ List organization API keys
 
     The Unix timestamp (in seconds) of when the API key was created
 
+  - `expires_at: number | null`
+
+    The Unix timestamp (in seconds) of when the API key expires
+
   - `object: "organization.admin_api_key"`
 
     The object type, which is always `organization.admin_api_key`
@@ -2625,6 +2889,7 @@ for await (const adminAPIKey of client.admin.organization.adminAPIKeys.list()) {
     {
       "id": "key_abc",
       "created_at": 1711471533,
+      "expires_at": 1714063533,
       "object": "organization.admin_api_key",
       "owner": {
         "id": "sa_456",
@@ -2660,6 +2925,10 @@ Create an organization admin API key
 
   - `name: string`
 
+  - `expires_in_seconds?: number`
+
+    The number of seconds until the API key expires. Omit this field for a key that does not expire.
+
 ### Returns
 
 - `AdminAPIKeyCreateResponse extends AdminAPIKey`
@@ -2690,6 +2959,7 @@ console.log(adminAPIKey);
 {
   "id": "key_abc",
   "created_at": 1711471533,
+  "expires_at": 1714063533,
   "object": "organization.admin_api_key",
   "owner": {
     "id": "sa_456",
@@ -2733,6 +3003,10 @@ Retrieve a single organization API key
   - `created_at: number`
 
     The Unix timestamp (in seconds) of when the API key was created
+
+  - `expires_at: number | null`
+
+    The Unix timestamp (in seconds) of when the API key expires
 
   - `object: "organization.admin_api_key"`
 
@@ -2798,6 +3072,7 @@ console.log(adminAPIKey.id);
 {
   "id": "key_abc",
   "created_at": 1711471533,
+  "expires_at": 1714063533,
   "object": "organization.admin_api_key",
   "owner": {
     "id": "sa_456",
@@ -2878,6 +3153,10 @@ console.log(adminAPIKey.id);
   - `created_at: number`
 
     The Unix timestamp (in seconds) of when the API key was created
+
+  - `expires_at: number | null`
+
+    The Unix timestamp (in seconds) of when the API key expires
 
   - `object: "organization.admin_api_key"`
 
@@ -17020,6 +17299,101 @@ console.log(organizationSpendAlert.id);
 }
 ```
 
+## Retrieve organization spend alert
+
+`client.admin.organization.spendAlerts.retrieve(stringalertID, RequestOptionsoptions?): OrganizationSpendAlert`
+
+**get** `/organization/spend_alerts/{alert_id}`
+
+Retrieves an organization spend alert.
+
+### Parameters
+
+- `alertID: string`
+
+### Returns
+
+- `OrganizationSpendAlert`
+
+  Represents a spend alert configured at the organization level.
+
+  - `id: string`
+
+    The identifier, which can be referenced in API endpoints.
+
+  - `currency: "USD"`
+
+    The currency for the threshold amount.
+
+    - `"USD"`
+
+  - `interval: "month"`
+
+    The time interval for evaluating spend against the threshold.
+
+    - `"month"`
+
+  - `notification_channel: NotificationChannel`
+
+    Email notification settings for a spend alert.
+
+    - `recipients: Array<string>`
+
+      Email addresses that receive the spend alert notification.
+
+    - `type: "email"`
+
+      The notification channel type. Currently only `email` is supported.
+
+      - `"email"`
+
+    - `subject_prefix?: string | null`
+
+      Optional subject prefix for alert emails.
+
+  - `object: "organization.spend_alert"`
+
+    The object type, which is always `organization.spend_alert`.
+
+    - `"organization.spend_alert"`
+
+  - `threshold_amount: number`
+
+    The alert threshold amount, in cents.
+
+### Example
+
+```typescript
+import OpenAI from 'openai';
+
+const client = new OpenAI({
+  adminAPIKey: process.env['OPENAI_ADMIN_KEY'], // This is the default and can be omitted
+});
+
+const organizationSpendAlert = await client.admin.organization.spendAlerts.retrieve('alert_id');
+
+console.log(organizationSpendAlert.id);
+```
+
+#### Response
+
+```json
+{
+  "id": "id",
+  "currency": "USD",
+  "interval": "month",
+  "notification_channel": {
+    "recipients": [
+      "string"
+    ],
+    "type": "email",
+    "subject_prefix": "subject_prefix"
+  },
+  "object": "organization.spend_alert",
+  "threshold_amount": 0
+}
+```
+
 ## Update organization spend alert
 
 `client.admin.organization.spendAlerts.update(stringalertID, SpendAlertUpdateParamsbody, RequestOptionsoptions?): OrganizationSpendAlert`
@@ -23619,6 +23993,110 @@ const projectSpendAlert = await client.admin.organization.projects.spendAlerts.c
     notification_channel: { recipients: ['string'], type: 'email' },
     threshold_amount: 0,
   },
+);
+
+console.log(projectSpendAlert.id);
+```
+
+#### Response
+
+```json
+{
+  "id": "id",
+  "currency": "USD",
+  "interval": "month",
+  "notification_channel": {
+    "recipients": [
+      "string"
+    ],
+    "type": "email",
+    "subject_prefix": "subject_prefix"
+  },
+  "object": "project.spend_alert",
+  "threshold_amount": 0
+}
+```
+
+## Retrieve project spend alert
+
+`client.admin.organization.projects.spendAlerts.retrieve(stringalertID, SpendAlertRetrieveParamsparams, RequestOptionsoptions?): ProjectSpendAlert`
+
+**get** `/organization/projects/{project_id}/spend_alerts/{alert_id}`
+
+Retrieves a project spend alert.
+
+### Parameters
+
+- `alertID: string`
+
+- `params: SpendAlertRetrieveParams`
+
+  - `project_id: string`
+
+    The ID of the project.
+
+### Returns
+
+- `ProjectSpendAlert`
+
+  Represents a spend alert configured at the project level.
+
+  - `id: string`
+
+    The identifier, which can be referenced in API endpoints.
+
+  - `currency: "USD"`
+
+    The currency for the threshold amount.
+
+    - `"USD"`
+
+  - `interval: "month"`
+
+    The time interval for evaluating spend against the threshold.
+
+    - `"month"`
+
+  - `notification_channel: NotificationChannel`
+
+    Email notification settings for a spend alert.
+
+    - `recipients: Array<string>`
+
+      Email addresses that receive the spend alert notification.
+
+    - `type: "email"`
+
+      The notification channel type. Currently only `email` is supported.
+
+      - `"email"`
+
+    - `subject_prefix?: string | null`
+
+      Optional subject prefix for alert emails.
+
+  - `object: "project.spend_alert"`
+
+    The object type, which is always `project.spend_alert`.
+
+    - `"project.spend_alert"`
+
+  - `threshold_amount: number`
+
+    The alert threshold amount, in cents.
+
+### Example
+
+```typescript
+import OpenAI from 'openai';
+
+const client = new OpenAI({
+  adminAPIKey: process.env['OPENAI_ADMIN_KEY'], // This is the default and can be omitted
+});
+
+const projectSpendAlert = await client.admin.organization.projects.spendAlerts.retrieve(
+  'alert_id',
+  { project_id: 'project_id' },
 );
 
 console.log(projectSpendAlert.id);

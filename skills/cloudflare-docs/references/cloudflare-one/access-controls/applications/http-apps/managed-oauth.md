@@ -27,8 +27,8 @@ If you run your own OAuth server behind an Access application and rely on your o
 
 ## Enable managed OAuth on a self-hosted application
 
-* [ Dashboard ](#tab-panel-6959)
-* [ API ](#tab-panel-6960)
+* [ Dashboard ](#tab-panel-7101)
+* [ API ](#tab-panel-7102)
 
 1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** \> **Access controls** \> **Applications**.
 2. Find the application you want to configure, then select the three dots on the right > **Edit**.
@@ -69,8 +69,8 @@ To test, open an RFC 8707-compliant OAuth client and make a request to your appl
 
 Managed OAuth is available on [MCP server portals](https://developers.cloudflare.com/cloudflare-one/access-controls/ai-controls/mcp-portals/) and is the mechanism that allows MCP clients to authenticate users through the portal without a browser cookie flow.
 
-* [ Dashboard ](#tab-panel-6961)
-* [ API ](#tab-panel-6962)
+* [ Dashboard ](#tab-panel-7103)
+* [ API ](#tab-panel-7104)
 
 1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** \> **Access controls** \> **AI controls**.
 2. Find the portal you want to configure, then select the three dots on the right > **Edit**.
@@ -109,8 +109,8 @@ To test, open an MCP client and [connect to the MCP portal](https://developers.c
 
 ## Managed OAuth settings
 
-* [ Dashboard ](#tab-panel-6963)
-* [ API ](#tab-panel-6964)
+* [ Dashboard ](#tab-panel-7105)
+* [ API ](#tab-panel-7106)
 
 Configure these settings in the **Advanced settings** tab of your [self-hosted app](#enable-managed-oauth-on-a-self-hosted-application) or [MCP server portal](#enable-managed-oauth-on-an-mcp-server-portal).
 
@@ -228,5 +228,6 @@ Use managed OAuth when you want non-browser clients to authenticate users the sa
 Use service tokens when no human is involved and you need a machine identity to access your application programmatically.
 
 ```json
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/access-controls/applications/http-apps/managed-oauth/#page","headline":"Managed OAuth · Cloudflare One docs","description":"Allow non-browser clients to authenticate with Access-protected applications using a standard OAuth 2.0 flow.","url":"https://developers.cloudflare.com/cloudflare-one/access-controls/applications/http-apps/managed-oauth/","inLanguage":"en","image":"https://developers.cloudflare.com/zt-preview.png","dateModified":"2026-06-12","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Authentication","REST API"]}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/cloudflare-one/","name":"Cloudflare One"}},{"@type":"ListItem","position":3,"item":{"@id":"/cloudflare-one/access-controls/","name":"Access controls"}},{"@type":"ListItem","position":4,"item":{"@id":"/cloudflare-one/access-controls/applications/","name":"Applications"}},{"@type":"ListItem","position":5,"item":{"@id":"/cloudflare-one/access-controls/applications/http-apps/","name":"Add web applications"}},{"@type":"ListItem","position":6,"item":{"@id":"/cloudflare-one/access-controls/applications/http-apps/managed-oauth/","name":"Managed OAuth"}}]}
 ```

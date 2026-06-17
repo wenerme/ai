@@ -20,8 +20,8 @@ The Session API is under `agents/experimental/memory/session`. The API surface i
 
 ## Quick start
 
-* [  JavaScript ](#tab-panel-5838)
-* [  TypeScript ](#tab-panel-5839)
+* [  JavaScript ](#tab-panel-6315)
+* [  TypeScript ](#tab-panel-6316)
 
 JavaScript
 
@@ -127,8 +127,8 @@ class MyAgent extends Agent {
 
 Use `Session.create(agent)` with a chainable builder. Context providers without an explicit `provider` option are auto-wired to SQLite.
 
-* [  JavaScript ](#tab-panel-5824)
-* [  TypeScript ](#tab-panel-5825)
+* [  JavaScript ](#tab-panel-6301)
+* [  TypeScript ](#tab-panel-6302)
 
 JavaScript
 
@@ -172,8 +172,8 @@ const session = Session.create(this)
 
 For full control over providers:
 
-* [  JavaScript ](#tab-panel-5834)
-* [  TypeScript ](#tab-panel-5835)
+* [  JavaScript ](#tab-panel-6311)
+* [  TypeScript ](#tab-panel-6312)
 
 JavaScript
 
@@ -273,8 +273,8 @@ All builder methods return `this` for chaining. Order does not matter — provid
 
 Messages use the `SessionMessage` type — a minimal shape with `id`, `role`, `parts`, and optional `createdAt`. The AI SDK's `UIMessage` is structurally compatible and can be passed directly. The session stores messages in a tree structure via `parent_id`, enabling branching conversations.
 
-* [  JavaScript ](#tab-panel-5832)
-* [  TypeScript ](#tab-panel-5833)
+* [  JavaScript ](#tab-panel-6309)
+* [  TypeScript ](#tab-panel-6310)
 
 JavaScript
 
@@ -338,8 +338,8 @@ Session methods are async. SQLite-backed sessions are usually fast, but external
 
 ### Reading history
 
-* [  JavaScript ](#tab-panel-5840)
-* [  TypeScript ](#tab-panel-5841)
+* [  JavaScript ](#tab-panel-6317)
+* [  TypeScript ](#tab-panel-6318)
 
 JavaScript
 
@@ -407,8 +407,8 @@ const count = await session.getPathLength();
 
 Messages form a tree. When you `appendMessage` with a `parentId` that already has children, you create a branch. Use `getBranches()` to get all child messages branching from a given point:
 
-* [  JavaScript ](#tab-panel-5826)
-* [  TypeScript ](#tab-panel-5827)
+* [  JavaScript ](#tab-panel-6303)
+* [  TypeScript ](#tab-panel-6304)
 
 JavaScript
 
@@ -438,8 +438,8 @@ This powers features like response regeneration — pass the user message ID to 
 
 Full-text search over the conversation history using SQLite FTS5:
 
-* [  JavaScript ](#tab-panel-5828)
-* [  TypeScript ](#tab-panel-5829)
+* [  JavaScript ](#tab-panel-6305)
+* [  TypeScript ](#tab-panel-6306)
 
 JavaScript
 
@@ -484,8 +484,8 @@ There are four provider types, detected by duck-typing:
 
 **`AgentContextProvider`** — SQLite-backed writable context. This is the default when using the builder without an explicit provider.
 
-* [  JavaScript ](#tab-panel-5830)
-* [  TypeScript ](#tab-panel-5831)
+* [  JavaScript ](#tab-panel-6307)
+* [  TypeScript ](#tab-panel-6308)
 
 JavaScript
 
@@ -513,8 +513,8 @@ new AgentContextProvider(this, "memory");
 
 **`R2SkillProvider`** — Cloudflare R2 bucket for on-demand document loading. Skills are listed in the system prompt as metadata; the model loads full content on demand via `load_context`.
 
-* [  JavaScript ](#tab-panel-5836)
-* [  TypeScript ](#tab-panel-5837)
+* [  JavaScript ](#tab-panel-6313)
+* [  TypeScript ](#tab-panel-6314)
 
 JavaScript
 
@@ -550,8 +550,8 @@ Session.create(this).withContext("skills", {
 
 **`AgentSearchProvider`** — SQLite FTS5 searchable context. Entries are indexed and searchable by the model via `search_context`.
 
-* [  JavaScript ](#tab-panel-5842)
-* [  TypeScript ](#tab-panel-5843)
+* [  JavaScript ](#tab-panel-6319)
+* [  TypeScript ](#tab-panel-6320)
 
 JavaScript
 
@@ -593,8 +593,8 @@ Session.create(this).withContext("knowledge", {
 
 Blocks can be added and removed dynamically after initialization:
 
-* [  JavaScript ](#tab-panel-5848)
-* [  TypeScript ](#tab-panel-5849)
+* [  JavaScript ](#tab-panel-6325)
+* [  TypeScript ](#tab-panel-6326)
 
 JavaScript
 
@@ -656,8 +656,8 @@ Note
 
 ### Reading and writing context
 
-* [  JavaScript ](#tab-panel-5850)
-* [  TypeScript ](#tab-panel-5851)
+* [  JavaScript ](#tab-panel-6327)
+* [  TypeScript ](#tab-panel-6328)
 
 JavaScript
 
@@ -743,8 +743,8 @@ User prefers dark roast.
 
 ```
 
-* [  JavaScript ](#tab-panel-5846)
-* [  TypeScript ](#tab-panel-5847)
+* [  JavaScript ](#tab-panel-6323)
+* [  TypeScript ](#tab-panel-6324)
 
 JavaScript
 
@@ -784,8 +784,8 @@ The frozen prompt survives Durable Object hibernation and eviction when `withCac
 
 Session automatically generates tools based on the provider types of your context blocks. Pass these to your LLM alongside your own tools.
 
-* [  JavaScript ](#tab-panel-5844)
-* [  TypeScript ](#tab-panel-5845)
+* [  JavaScript ](#tab-panel-6321)
+* [  TypeScript ](#tab-panel-6322)
 
 JavaScript
 
@@ -835,8 +835,8 @@ Compaction summarizes older messages to keep conversations within token limits. 
 
 ### Setup
 
-* [  JavaScript ](#tab-panel-5856)
-* [  TypeScript ](#tab-panel-5857)
+* [  JavaScript ](#tab-panel-6333)
+* [  TypeScript ](#tab-panel-6334)
 
 JavaScript
 
@@ -923,8 +923,8 @@ When `getHistory()` is called, compaction overlays are applied transparently —
 
 ### Manual compaction
 
-* [  JavaScript ](#tab-panel-5852)
-* [  TypeScript ](#tab-panel-5853)
+* [  JavaScript ](#tab-panel-6329)
+* [  TypeScript ](#tab-panel-6330)
 
 JavaScript
 
@@ -981,8 +981,8 @@ The flowed counter is invoked **per message** during the boundary walk. A tokeni
 
 Use a custom counter when you have model-reported usage or your own tokenizer:
 
-* [  JavaScript ](#tab-panel-5862)
-* [  TypeScript ](#tab-panel-5863)
+* [  JavaScript ](#tab-panel-6339)
+* [  TypeScript ](#tab-panel-6340)
 
 JavaScript
 
@@ -1064,8 +1064,8 @@ The default token estimation is heuristic (not tiktoken). It uses `max(chars/4, 
 
 ### Creating a SessionManager
 
-* [  JavaScript ](#tab-panel-5858)
-* [  TypeScript ](#tab-panel-5859)
+* [  JavaScript ](#tab-panel-6335)
+* [  TypeScript ](#tab-panel-6336)
 
 JavaScript
 
@@ -1131,8 +1131,8 @@ Context blocks, prompt caching, and compaction settings are propagated to all se
 
 ### Session lifecycle
 
-* [  JavaScript ](#tab-panel-5870)
-* [  TypeScript ](#tab-panel-5871)
+* [  JavaScript ](#tab-panel-6347)
+* [  TypeScript ](#tab-panel-6348)
 
 JavaScript
 
@@ -1224,8 +1224,8 @@ await manager.delete(sessionId);
 
 ### Accessing sessions
 
-* [  JavaScript ](#tab-panel-5854)
-* [  TypeScript ](#tab-panel-5855)
+* [  JavaScript ](#tab-panel-6331)
+* [  TypeScript ](#tab-panel-6332)
 
 JavaScript
 
@@ -1257,8 +1257,8 @@ const session = manager.getSession(sessionId);
 
 These delegate to the underlying Session and update the session's `updated_at` timestamp:
 
-* [  JavaScript ](#tab-panel-5872)
-* [  TypeScript ](#tab-panel-5873)
+* [  JavaScript ](#tab-panel-6349)
+* [  TypeScript ](#tab-panel-6350)
 
 JavaScript
 
@@ -1346,8 +1346,8 @@ await manager.deleteMessages(sessionId, ["msg-1"]);
 
 Fork a session at a specific message — copies history up to that point into a new session:
 
-* [  JavaScript ](#tab-panel-5860)
-* [  TypeScript ](#tab-panel-5861)
+* [  JavaScript ](#tab-panel-6337)
+* [  TypeScript ](#tab-panel-6338)
 
 JavaScript
 
@@ -1373,8 +1373,8 @@ const forked = await manager.fork(sessionId, atMessageId, "Forked Chat");
 
 ### Compaction helpers
 
-* [  JavaScript ](#tab-panel-5868)
-* [  TypeScript ](#tab-panel-5869)
+* [  JavaScript ](#tab-panel-6345)
+* [  TypeScript ](#tab-panel-6346)
 
 JavaScript
 
@@ -1438,8 +1438,8 @@ const continuation = await manager.compactAndSplit(
 
 ### Usage tracking
 
-* [  JavaScript ](#tab-panel-5864)
-* [  TypeScript ](#tab-panel-5865)
+* [  JavaScript ](#tab-panel-6341)
+* [  TypeScript ](#tab-panel-6342)
 
 JavaScript
 
@@ -1461,8 +1461,8 @@ await manager.addUsage(sessionId, inputTokens, outputTokens, cost);
 
 ### Cross-session search
 
-* [  JavaScript ](#tab-panel-5866)
-* [  TypeScript ](#tab-panel-5867)
+* [  JavaScript ](#tab-panel-6343)
+* [  TypeScript ](#tab-panel-6344)
 
 JavaScript
 
@@ -1500,8 +1500,8 @@ const tools = await manager.tools();
 
 Implement any of the four provider interfaces to plug in your own storage:
 
-* [  JavaScript ](#tab-panel-5874)
-* [  TypeScript ](#tab-panel-5875)
+* [  JavaScript ](#tab-panel-6351)
+* [  TypeScript ](#tab-panel-6352)
 
 JavaScript
 
@@ -1613,8 +1613,8 @@ const mySearch: SearchProvider = {
 
 You can also implement `SessionProvider` to replace the SQLite storage entirely:
 
-* [  JavaScript ](#tab-panel-5876)
-* [  TypeScript ](#tab-panel-5877)
+* [  JavaScript ](#tab-panel-6353)
+* [  TypeScript ](#tab-panel-6354)
 
 JavaScript
 
@@ -1805,8 +1805,8 @@ npx wrangler hyperdrive create my-session-db \
 
 Then add the Hyperdrive binding to `wrangler.jsonc`:
 
-* [  wrangler.jsonc ](#tab-panel-5822)
-* [  wrangler.toml ](#tab-panel-5823)
+* [  wrangler.jsonc ](#tab-panel-6299)
+* [  wrangler.toml ](#tab-panel-6300)
 
 JSONC
 
@@ -1986,8 +1986,8 @@ pnpm add pg
 bun add pg
 ```
 
-* [  JavaScript ](#tab-panel-5878)
-* [  TypeScript ](#tab-panel-5879)
+* [  JavaScript ](#tab-panel-6355)
+* [  TypeScript ](#tab-panel-6356)
 
 JavaScript
 
@@ -2210,5 +2210,6 @@ By default, storage is in Durable Object SQLite and tables are created lazily on
 * [Store and sync state](https://developers.cloudflare.com/agents/runtime/lifecycle/state/) — `setState()` for simpler key-value persistence
 
 ```json
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/agents/runtime/lifecycle/sessions/#page","headline":"Sessions · Cloudflare Agents docs","description":"Persistent conversation storage with tree-structured messages, context blocks, compaction, full-text search, and AI-controllable tools.","url":"https://developers.cloudflare.com/agents/runtime/lifecycle/sessions/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-06-05","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["AI"]}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/agents/","name":"Agents"}},{"@type":"ListItem","position":3,"item":{"@id":"/agents/runtime/","name":"Runtime"}},{"@type":"ListItem","position":4,"item":{"@id":"/agents/runtime/lifecycle/","name":"Lifecycle"}},{"@type":"ListItem","position":5,"item":{"@id":"/agents/runtime/lifecycle/sessions/","name":"Sessions"}}]}
 ```

@@ -38,8 +38,8 @@ The Media binding is enabled on a per-Worker basis.
 
 To bind Media Transformations to your Worker, add the following to the end of your Wrangler configuration file:
 
-* [  wrangler.jsonc ](#tab-panel-10600)
-* [  wrangler.toml ](#tab-panel-10601)
+* [  wrangler.jsonc ](#tab-panel-10811)
+* [  wrangler.toml ](#tab-panel-10812)
 
 JSONC
 
@@ -484,8 +484,8 @@ The Media Transformations API is available _in remote mode_ for local developmen
 
 To enable usage in local development, add `remote` to the binding configuration:
 
-* [  wrangler.jsonc ](#tab-panel-10602)
-* [  wrangler.toml ](#tab-panel-10603)
+* [  wrangler.jsonc ](#tab-panel-10813)
+* [  wrangler.toml ](#tab-panel-10814)
 
 JSONC
 
@@ -537,5 +537,6 @@ Note
 The Media Transformation binding does not support local simulation. If `remote = true` is not specified, the binding will produce an error during local development.
 
 ```json
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/stream/transform-videos/bindings/#page","headline":"Bind to Workers API · Cloudflare Stream docs","description":"Bind the Media Transformations API to a Cloudflare Worker to transform videos programmatically.","url":"https://developers.cloudflare.com/stream/transform-videos/bindings/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-06-10","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/stream/","name":"Stream"}},{"@type":"ListItem","position":3,"item":{"@id":"/stream/transform-videos/","name":"Transform videos"}},{"@type":"ListItem","position":4,"item":{"@id":"/stream/transform-videos/bindings/","name":"Bind to Workers API"}}]}
 ```

@@ -28,8 +28,8 @@ For example, the following Worker implements the public method `add(a, b)`:
 
 For example, if Worker B implements the public method `add(a, b)`:
 
-* [  wrangler.jsonc ](#tab-panel-11818)
-* [  wrangler.toml ](#tab-panel-11819)
+* [  wrangler.jsonc ](#tab-panel-11966)
+* [  wrangler.toml ](#tab-panel-11967)
 
 JSONC
 
@@ -61,9 +61,9 @@ main = "./src/workerB.js"
 
 ```
 
-* [  JavaScript ](#tab-panel-11825)
-* [  TypeScript ](#tab-panel-11826)
-* [  Python ](#tab-panel-11827)
+* [  JavaScript ](#tab-panel-11973)
+* [  TypeScript ](#tab-panel-11974)
+* [  Python ](#tab-panel-11975)
 
 JavaScript
 
@@ -142,8 +142,8 @@ class Default(WorkerEntrypoint):
 
 Worker A can declare a [binding](https://developers.cloudflare.com/workers/runtime-apis/bindings) to Worker B:
 
-* [  wrangler.jsonc ](#tab-panel-11820)
-* [  wrangler.toml ](#tab-panel-11821)
+* [  wrangler.jsonc ](#tab-panel-11968)
+* [  wrangler.toml ](#tab-panel-11969)
 
 JSONC
 
@@ -196,9 +196,9 @@ service = "worker_b"
 
 Making it possible for Worker A to call the `add()` method from Worker B:
 
-* [  JavaScript ](#tab-panel-11822)
-* [  TypeScript ](#tab-panel-11823)
-* [  Python ](#tab-panel-11824)
+* [  JavaScript ](#tab-panel-11970)
+* [  TypeScript ](#tab-panel-11971)
+* [  Python ](#tab-panel-11972)
 
 JavaScript
 
@@ -262,8 +262,8 @@ You do not need to learn, implement, or think about special protocols to use the
 
 To provide RPC methods from your Worker, you must extend the `WorkerEntrypoint` class, as shown in the example below:
 
-* [  JavaScript ](#tab-panel-11798)
-* [  Python ](#tab-panel-11799)
+* [  JavaScript ](#tab-panel-11946)
+* [  Python ](#tab-panel-11947)
 
 JavaScript
 
@@ -305,8 +305,8 @@ The [env](https://developers.cloudflare.com/workers/runtime-apis/bindings) objec
 
 For example, a Worker that declares a binding to the [environment variable](https://developers.cloudflare.com/workers/configuration/environment-variables/) `GREETING`:
 
-* [  wrangler.jsonc ](#tab-panel-11808)
-* [  wrangler.toml ](#tab-panel-11809)
+* [  wrangler.jsonc ](#tab-panel-11956)
+* [  wrangler.toml ](#tab-panel-11957)
 
 JSONC
 
@@ -347,8 +347,8 @@ GREETING = "Hello"
 
 Can access it by calling `this.env.GREETING`:
 
-* [  JavaScript ](#tab-panel-11800)
-* [  Python ](#tab-panel-11801)
+* [  JavaScript ](#tab-panel-11948)
+* [  Python ](#tab-panel-11949)
 
 JavaScript
 
@@ -402,8 +402,8 @@ The [ctx](https://developers.cloudflare.com/workers/runtime-apis/context) object
 
 For example, you can extend the lifetime of the invocation context by calling the `waitUntil()` method:
 
-* [  JavaScript ](#tab-panel-11802)
-* [  Python ](#tab-panel-11803)
+* [  JavaScript ](#tab-panel-11950)
+* [  Python ](#tab-panel-11951)
 
 JavaScript
 
@@ -479,8 +479,8 @@ class Default(WorkerEntrypoint):
 
 If your Worker has a [static assets binding](https://developers.cloudflare.com/workers/static-assets/binding/), you can call `this.env.ASSETS.fetch()` from within an RPC method. Since RPC methods do not receive a `request` parameter, construct a `Request` or URL with any hostname — the hostname is ignored by the assets binding, only the pathname matters:
 
-* [  JavaScript ](#tab-panel-11816)
-* [  TypeScript ](#tab-panel-11817)
+* [  JavaScript ](#tab-panel-11964)
+* [  TypeScript ](#tab-panel-11965)
 
 JavaScript
 
@@ -528,8 +528,8 @@ export class ImageWorker extends WorkerEntrypoint {
 
 The caller can then invoke this method via RPC:
 
-* [  JavaScript ](#tab-panel-11812)
-* [  TypeScript ](#tab-panel-11813)
+* [  JavaScript ](#tab-panel-11960)
+* [  TypeScript ](#tab-panel-11961)
 
 JavaScript
 
@@ -559,8 +559,8 @@ You can also export any number of named `WorkerEntrypoint` classes from within a
 
 You can use this to group multiple pieces of compute together. For example, you might create a distinct `WorkerEntrypoint` for each permission role in your application, and use these to provide role-specific RPC methods:
 
-* [  wrangler.jsonc ](#tab-panel-11810)
-* [  wrangler.toml ](#tab-panel-11811)
+* [  wrangler.jsonc ](#tab-panel-11958)
+* [  wrangler.toml ](#tab-panel-11959)
 
 JSONC
 
@@ -611,8 +611,8 @@ database_id = "<unique-ID-for-your-database>"
 
 ```
 
-* [  JavaScript ](#tab-panel-11804)
-* [  Python ](#tab-panel-11805)
+* [  JavaScript ](#tab-panel-11952)
+* [  Python ](#tab-panel-11953)
 
 JavaScript
 
@@ -736,8 +736,8 @@ class Default(WorkerEntrypoint):
 
 You can then declare a Service binding directly to `AdminEntrypoint` in another Worker:
 
-* [  wrangler.jsonc ](#tab-panel-11814)
-* [  wrangler.toml ](#tab-panel-11815)
+* [  wrangler.jsonc ](#tab-panel-11962)
+* [  wrangler.toml ](#tab-panel-11963)
 
 JSONC
 
@@ -788,8 +788,8 @@ entrypoint = "AdminEntrypoint"
 
 ```
 
-* [  JavaScript ](#tab-panel-11806)
-* [  Python ](#tab-panel-11807)
+* [  JavaScript ](#tab-panel-11954)
+* [  Python ](#tab-panel-11955)
 
 JavaScript
 
@@ -841,5 +841,6 @@ You can try out a complete example of this to do app, as well as a Discord bot b
 * [ Error handling ](https://developers.cloudflare.com/workers/runtime-apis/rpc/error-handling/)
 
 ```json
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/runtime-apis/bindings/service-bindings/rpc/#page","headline":"Service bindings - RPC (WorkerEntrypoint) · Cloudflare Workers docs","description":"Facilitate Worker-to-Worker communication via RPC.","url":"https://developers.cloudflare.com/workers/runtime-apis/bindings/service-bindings/rpc/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-06-15","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["RPC"]}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/workers/","name":"Workers"}},{"@type":"ListItem","position":3,"item":{"@id":"/workers/runtime-apis/","name":"Runtime APIs"}},{"@type":"ListItem","position":4,"item":{"@id":"/workers/runtime-apis/bindings/","name":"Bindings (env)"}},{"@type":"ListItem","position":5,"item":{"@id":"/workers/runtime-apis/bindings/service-bindings/","name":"Service bindings"}},{"@type":"ListItem","position":6,"item":{"@id":"/workers/runtime-apis/bindings/service-bindings/rpc/","name":"RPC (WorkerEntrypoint)"}}]}
 ```
