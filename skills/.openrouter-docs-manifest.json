@@ -184,6 +184,11 @@
     "size": 7713,
     "updatedAt": "2026-06-16T00:53:30.273Z"
   },
+  "guides/features/classifiers.md": {
+    "url": "https://openrouter.ai/docs/guides/features/classifiers.md",
+    "size": 6838,
+    "updatedAt": "2026-06-18T11:39:25.152Z"
+  },
   "guides/features/response-caching.md": {
     "url": "https://openrouter.ai/docs/guides/features/response-caching.md",
     "size": 16510,

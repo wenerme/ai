@@ -36,7 +36,7 @@ In Cursor, run the following command or install from the [Cursor Marketplace ↗
 3. **Try a prompt**  
 For example:  
 ```  
-Add a cron trigger to my Worker that processes a job queue every hour.  
+Set up AI Gateway to route requests across OpenAI and Workers AI with automatic fallback and cost tracking.  
 ```
 
 ## Cloudflare platform access

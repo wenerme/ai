@@ -14,6 +14,22 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 [ Subscribe to RSS ](https://developers.cloudflare.com/realtime/realtimekit/release-notes/react-native-core/index.xml)
 
+## 2026-06-18
+
+**RealtimeKit React Native Core 1.1.0**
+
+**Features**
+
+* Added a dedicated error code `0014` for media (WebRTC) connection failures during room join, making it easier to distinguish media failures from socket and signaling failures.
+
+**Enhancements**
+
+* Init and join failures from `initMeeting()` and `meeting.join()` now surface specific error codes and descriptive messages instead of generic errors.
+
+**Fixes**
+
+* Fixed an issue where `ClientError` objects were wrapped inside each other when the SDK retried failed API requests, causing nested error messages and duplicate `onError` callbacks.
+
 ## 2026-05-05
 
 **RealtimeKit React Native Core 1.0.0**
