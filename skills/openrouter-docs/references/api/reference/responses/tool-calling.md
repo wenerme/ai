@@ -613,7 +613,28 @@ response = requests.post(
 )
 ```
 
-The `id` field is required for `function_call_output` objects when including tool responses in conversation history.
+The `id` field is optional for `function_call_output` objects. Only `type`, `call_id`, and `output` are required — `call_id` is what pairs the output with its originating `function_call`. The examples above include `id` for completeness, but you can safely omit it.
+
+### Multimodal tool outputs
+
+`function_call_output.output` accepts either a string or an array of input content parts (`input_text`, `input_image`, `input_file`) — the same shape as user-message content. Use the array form to return images or files from a tool; the non-text parts are only forwarded to supported multimodal models.
+
+```json
+{
+  "type": "function_call_output",
+  "call_id": "call_123",
+  "output": [
+    {
+      "type": "input_text",
+      "text": "{\"results\":[{\"title\":\"Golden Gate Bridge\"}]}"
+    },
+    {
+      "type": "input_image",
+      "image_url": "https://example.com/image.jpg"
+    }
+  ]
+}
+```
 
 ## Streaming Tool Calls
 

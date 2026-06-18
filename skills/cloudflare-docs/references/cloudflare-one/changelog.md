@@ -69,8 +69,8 @@ What you get by default:
 * **Visibility.** Worker egress shows up in Gateway [DNS](https://developers.cloudflare.com/cloudflare-one/traffic-policies/dns-policies/), [HTTP](https://developers.cloudflare.com/cloudflare-one/traffic-policies/http-policies/), and [Network](https://developers.cloudflare.com/cloudflare-one/traffic-policies/network-policies/) logs alongside your other traffic, so you can audit what your Workers are calling and when.
 * **Enforcement.** Any existing Gateway policy whose selectors match a Worker request will apply — including allow / block lists, DNS category filtering, and HTTP destination rules. If you have already blocked a category for your workforce, your Workers inherit that block.
 
-* [  wrangler.jsonc ](#tab-panel-7174)
-* [  wrangler.toml ](#tab-panel-7175)
+* [  wrangler.jsonc ](#tab-panel-7176)
+* [  wrangler.toml ](#tab-panel-7177)
 
 JSONC
 
@@ -112,8 +112,8 @@ remote = true
 
 ```
 
-* [  JavaScript ](#tab-panel-7176)
-* [  TypeScript ](#tab-panel-7177)
+* [  JavaScript ](#tab-panel-7178)
+* [  TypeScript ](#tab-panel-7179)
 
 JavaScript
 
@@ -4533,50 +4533,6 @@ This update is based on user feedback and aims to:
 
 To learn more, visit the [Gateway order of enforcement documentation](https://developers.cloudflare.com/cloudflare-one/traffic-policies/order-of-enforcement/).
 
-## 2025-06-17
-
-[ Cloudflare One Client ](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/) 
-
-  
-**WARP client for Windows (version 2025.5.828.1)**   
-
-A new Beta release for the Windows WARP client is now available on the [beta releases downloads page](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/download/beta-releases/).
-
-This release contains new improvements in addition to the features and improvements introduced in Beta client version 2025.5.735.1.
-
-**Changes and improvements**
-
-* Improvement to better handle multi-user fast user switching.
-* Fix for an issue causing WARP connectivity to fail without full system reboot.
-
-**Known issues**
-
-* Microsoft has confirmed a regression with Windows 11 starting around 24H2 that may cause performance issues for some users. These performance issues could manifest as mouse lag, audio cracking, or other slowdowns. A fix from Microsoft is expected in early July.
-* Devices with `KB5055523` installed may receive a warning about `Win32/ClickFix.ABA` being present in the installer. To resolve this false positive, update Microsoft Security Intelligence to [version 1.429.19.0](https://www.microsoft.com/en-us/wdsi/definitions/antimalware-definition-release-notes?requestVersion=1.429.19.0) or later.
-* DNS resolution may be broken when the following conditions are all true:  
-   * WARP is in Secure Web Gateway without DNS filtering (tunnel-only) mode.  
-   * A custom DNS server address is configured on the primary network adapter.  
-   * The custom DNS server address on the primary network adapter is changed while WARP is connected. To work around this issue, reconnect the WARP client by toggling off and back on.
-
-## 2025-06-17
-
-[ Cloudflare One Client ](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/) 
-
-  
-**WARP client for macOS (version 2025.5.828.1)**   
-
-A new Beta release for the macOS WARP client is now available on the [beta releases downloads page](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/download/beta-releases/).
-
-This release contains new improvements in addition to the features and improvements introduced in Beta client version 2025.5.735.1.
-
-**Changes and improvements**
-
-* Improvement for WARP connectivity issues on macOS due to the operating system not accepting DNS server configurations.
-
-**Known issues**
-
-* macOS Sequoia: Due to changes Apple introduced in macOS 15.0.x, the WARP client may not behave as expected. Cloudflare recommends the use of macOS 15.4 or later.
-
 ## 2025-06-05
 
 [ Access ](https://developers.cloudflare.com/cloudflare-one/access-controls/policies/)[ Cloudflare One ](https://developers.cloudflare.com/cloudflare-one/) 
@@ -4830,8 +4786,8 @@ Zero Trust Dashboard will automatically accept your user-level preferences for s
 
 ![Zero Trust dashboard supports dark mode](https://developers.cloudflare.com/_astro/dark-mode.DfLeS20d_Z2kTwNR.webp) 
 
-* [ Zero Trust Dashboard ](#tab-panel-7172)
-* [ Core Dashboard ](#tab-panel-7173)
+* [ Zero Trust Dashboard ](#tab-panel-7174)
+* [ Core Dashboard ](#tab-panel-7175)
 
 To update your view preference in the Zero Trust dashboard:
 

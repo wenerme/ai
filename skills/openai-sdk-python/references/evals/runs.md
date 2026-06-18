@@ -1280,8 +1280,8 @@ Get a list of runs for an evaluation.
             - `connector_id: Optional[Literal["connector_dropbox", "connector_gmail", "connector_googlecalendar", 5 more]]`
 
               Identifier for service connectors, like those available in ChatGPT. One of
-              `server_url` or `connector_id` must be provided. Learn more about service
-              connectors [here](https://platform.openai.com/docs/guides/tools-remote-mcp#connectors).
+              `server_url`, `connector_id`, or `tunnel_id` must be provided. Learn more
+              about service connectors [here](https://platform.openai.com/docs/guides/tools-remote-mcp#connectors).
 
               Currently supported `connector_id` values are:
 
@@ -1373,8 +1373,13 @@ Get a list of runs for an evaluation.
 
             - `server_url: Optional[str]`
 
-              The URL for the MCP server. One of `server_url` or `connector_id` must be
-              provided.
+              The URL for the MCP server. One of `server_url`, `connector_id`, or
+              `tunnel_id` must be provided.
+
+            - `tunnel_id: Optional[str]`
+
+              The Secure MCP Tunnel ID to use instead of a direct server URL. One of
+              `server_url`, `connector_id`, or `tunnel_id` must be provided.
 
           - `class CodeInterpreter: …`
 
@@ -3473,8 +3478,8 @@ Kicks off a new run for a given evaluation, specifying the data source, and what
           - `connector_id: Optional[Literal["connector_dropbox", "connector_gmail", "connector_googlecalendar", 5 more]]`
 
             Identifier for service connectors, like those available in ChatGPT. One of
-            `server_url` or `connector_id` must be provided. Learn more about service
-            connectors [here](https://platform.openai.com/docs/guides/tools-remote-mcp#connectors).
+            `server_url`, `connector_id`, or `tunnel_id` must be provided. Learn more
+            about service connectors [here](https://platform.openai.com/docs/guides/tools-remote-mcp#connectors).
 
             Currently supported `connector_id` values are:
 
@@ -3566,8 +3571,13 @@ Kicks off a new run for a given evaluation, specifying the data source, and what
 
           - `server_url: Optional[str]`
 
-            The URL for the MCP server. One of `server_url` or `connector_id` must be
-            provided.
+            The URL for the MCP server. One of `server_url`, `connector_id`, or
+            `tunnel_id` must be provided.
+
+          - `tunnel_id: Optional[str]`
+
+            The Secure MCP Tunnel ID to use instead of a direct server URL. One of
+            `server_url`, `connector_id`, or `tunnel_id` must be provided.
 
         - `class CodeInterpreter: …`
 
@@ -5391,8 +5401,8 @@ Kicks off a new run for a given evaluation, specifying the data source, and what
             - `connector_id: Optional[Literal["connector_dropbox", "connector_gmail", "connector_googlecalendar", 5 more]]`
 
               Identifier for service connectors, like those available in ChatGPT. One of
-              `server_url` or `connector_id` must be provided. Learn more about service
-              connectors [here](https://platform.openai.com/docs/guides/tools-remote-mcp#connectors).
+              `server_url`, `connector_id`, or `tunnel_id` must be provided. Learn more
+              about service connectors [here](https://platform.openai.com/docs/guides/tools-remote-mcp#connectors).
 
               Currently supported `connector_id` values are:
 
@@ -5484,8 +5494,13 @@ Kicks off a new run for a given evaluation, specifying the data source, and what
 
             - `server_url: Optional[str]`
 
-              The URL for the MCP server. One of `server_url` or `connector_id` must be
-              provided.
+              The URL for the MCP server. One of `server_url`, `connector_id`, or
+              `tunnel_id` must be provided.
+
+            - `tunnel_id: Optional[str]`
+
+              The Secure MCP Tunnel ID to use instead of a direct server URL. One of
+              `server_url`, `connector_id`, or `tunnel_id` must be provided.
 
           - `class CodeInterpreter: …`
 
@@ -7622,8 +7637,8 @@ Get an evaluation run by ID.
             - `connector_id: Optional[Literal["connector_dropbox", "connector_gmail", "connector_googlecalendar", 5 more]]`
 
               Identifier for service connectors, like those available in ChatGPT. One of
-              `server_url` or `connector_id` must be provided. Learn more about service
-              connectors [here](https://platform.openai.com/docs/guides/tools-remote-mcp#connectors).
+              `server_url`, `connector_id`, or `tunnel_id` must be provided. Learn more
+              about service connectors [here](https://platform.openai.com/docs/guides/tools-remote-mcp#connectors).
 
               Currently supported `connector_id` values are:
 
@@ -7715,8 +7730,13 @@ Get an evaluation run by ID.
 
             - `server_url: Optional[str]`
 
-              The URL for the MCP server. One of `server_url` or `connector_id` must be
-              provided.
+              The URL for the MCP server. One of `server_url`, `connector_id`, or
+              `tunnel_id` must be provided.
+
+            - `tunnel_id: Optional[str]`
+
+              The Secure MCP Tunnel ID to use instead of a direct server URL. One of
+              `server_url`, `connector_id`, or `tunnel_id` must be provided.
 
           - `class CodeInterpreter: …`
 
@@ -9893,8 +9913,8 @@ Cancel an ongoing evaluation run.
             - `connector_id: Optional[Literal["connector_dropbox", "connector_gmail", "connector_googlecalendar", 5 more]]`
 
               Identifier for service connectors, like those available in ChatGPT. One of
-              `server_url` or `connector_id` must be provided. Learn more about service
-              connectors [here](https://platform.openai.com/docs/guides/tools-remote-mcp#connectors).
+              `server_url`, `connector_id`, or `tunnel_id` must be provided. Learn more
+              about service connectors [here](https://platform.openai.com/docs/guides/tools-remote-mcp#connectors).
 
               Currently supported `connector_id` values are:
 
@@ -9986,8 +10006,13 @@ Cancel an ongoing evaluation run.
 
             - `server_url: Optional[str]`
 
-              The URL for the MCP server. One of `server_url` or `connector_id` must be
-              provided.
+              The URL for the MCP server. One of `server_url`, `connector_id`, or
+              `tunnel_id` must be provided.
+
+            - `tunnel_id: Optional[str]`
+
+              The Secure MCP Tunnel ID to use instead of a direct server URL. One of
+              `server_url`, `connector_id`, or `tunnel_id` must be provided.
 
           - `class CodeInterpreter: …`
 
@@ -12809,8 +12834,8 @@ print(deleted)
             - `connector_id: Optional[Literal["connector_dropbox", "connector_gmail", "connector_googlecalendar", 5 more]]`
 
               Identifier for service connectors, like those available in ChatGPT. One of
-              `server_url` or `connector_id` must be provided. Learn more about service
-              connectors [here](https://platform.openai.com/docs/guides/tools-remote-mcp#connectors).
+              `server_url`, `connector_id`, or `tunnel_id` must be provided. Learn more
+              about service connectors [here](https://platform.openai.com/docs/guides/tools-remote-mcp#connectors).
 
               Currently supported `connector_id` values are:
 
@@ -12902,8 +12927,13 @@ print(deleted)
 
             - `server_url: Optional[str]`
 
-              The URL for the MCP server. One of `server_url` or `connector_id` must be
-              provided.
+              The URL for the MCP server. One of `server_url`, `connector_id`, or
+              `tunnel_id` must be provided.
+
+            - `tunnel_id: Optional[str]`
+
+              The Secure MCP Tunnel ID to use instead of a direct server URL. One of
+              `server_url`, `connector_id`, or `tunnel_id` must be provided.
 
           - `class CodeInterpreter: …`
 
@@ -14825,8 +14855,8 @@ print(deleted)
             - `connector_id: Optional[Literal["connector_dropbox", "connector_gmail", "connector_googlecalendar", 5 more]]`
 
               Identifier for service connectors, like those available in ChatGPT. One of
-              `server_url` or `connector_id` must be provided. Learn more about service
-              connectors [here](https://platform.openai.com/docs/guides/tools-remote-mcp#connectors).
+              `server_url`, `connector_id`, or `tunnel_id` must be provided. Learn more
+              about service connectors [here](https://platform.openai.com/docs/guides/tools-remote-mcp#connectors).
 
               Currently supported `connector_id` values are:
 
@@ -14918,8 +14948,13 @@ print(deleted)
 
             - `server_url: Optional[str]`
 
-              The URL for the MCP server. One of `server_url` or `connector_id` must be
-              provided.
+              The URL for the MCP server. One of `server_url`, `connector_id`, or
+              `tunnel_id` must be provided.
+
+            - `tunnel_id: Optional[str]`
+
+              The Secure MCP Tunnel ID to use instead of a direct server URL. One of
+              `server_url`, `connector_id`, or `tunnel_id` must be provided.
 
           - `class CodeInterpreter: …`
 
@@ -16841,8 +16876,8 @@ print(deleted)
             - `connector_id: Optional[Literal["connector_dropbox", "connector_gmail", "connector_googlecalendar", 5 more]]`
 
               Identifier for service connectors, like those available in ChatGPT. One of
-              `server_url` or `connector_id` must be provided. Learn more about service
-              connectors [here](https://platform.openai.com/docs/guides/tools-remote-mcp#connectors).
+              `server_url`, `connector_id`, or `tunnel_id` must be provided. Learn more
+              about service connectors [here](https://platform.openai.com/docs/guides/tools-remote-mcp#connectors).
 
               Currently supported `connector_id` values are:
 
@@ -16934,8 +16969,13 @@ print(deleted)
 
             - `server_url: Optional[str]`
 
-              The URL for the MCP server. One of `server_url` or `connector_id` must be
-              provided.
+              The URL for the MCP server. One of `server_url`, `connector_id`, or
+              `tunnel_id` must be provided.
+
+            - `tunnel_id: Optional[str]`
+
+              The Secure MCP Tunnel ID to use instead of a direct server URL. One of
+              `server_url`, `connector_id`, or `tunnel_id` must be provided.
 
           - `class CodeInterpreter: …`
 
@@ -18857,8 +18897,8 @@ print(deleted)
             - `connector_id: Optional[Literal["connector_dropbox", "connector_gmail", "connector_googlecalendar", 5 more]]`
 
               Identifier for service connectors, like those available in ChatGPT. One of
-              `server_url` or `connector_id` must be provided. Learn more about service
-              connectors [here](https://platform.openai.com/docs/guides/tools-remote-mcp#connectors).
+              `server_url`, `connector_id`, or `tunnel_id` must be provided. Learn more
+              about service connectors [here](https://platform.openai.com/docs/guides/tools-remote-mcp#connectors).
 
               Currently supported `connector_id` values are:
 
@@ -18950,8 +18990,13 @@ print(deleted)
 
             - `server_url: Optional[str]`
 
-              The URL for the MCP server. One of `server_url` or `connector_id` must be
-              provided.
+              The URL for the MCP server. One of `server_url`, `connector_id`, or
+              `tunnel_id` must be provided.
+
+            - `tunnel_id: Optional[str]`
+
+              The Secure MCP Tunnel ID to use instead of a direct server URL. One of
+              `server_url`, `connector_id`, or `tunnel_id` must be provided.
 
           - `class CodeInterpreter: …`
 

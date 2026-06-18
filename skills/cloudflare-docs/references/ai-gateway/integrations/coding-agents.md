@@ -1,6 +1,6 @@
 ---
 title: Coding agents
-description: Configure coding agents such as Claude Code and GitHub Copilot CLI to route through AI Gateway for observability, caching, rate limiting, and cost tracking.
+description: Route coding agents such as Claude Code, GitHub Copilot CLI, and Pi through AI Gateway for observability, caching, rate limiting, and cost tracking.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
@@ -14,8 +14,6 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 Coding agents send model requests to a provider on your behalf. By pointing the agent at AI Gateway instead of the provider, you observe and control that traffic without changing how you work.
 
-This page describes how to configure individual coding agents to route through AI Gateway. Each agent reads its endpoint and credentials from environment variables, so in every case the setup is the same idea: change the base URL and authentication, then keep working as usual. Configuration for [Claude Code ↗](https://docs.anthropic.com/en/docs/claude-code/overview) and [GitHub Copilot CLI ↗](https://docs.github.com/en/copilot/concepts/agents/about-copilot-cli) is documented below.
-
 ## Why route a coding agent through AI Gateway
 
 Routing a coding agent through AI Gateway gives you:
@@ -26,122 +24,13 @@ Routing a coding agent through AI Gateway gives you:
 * **Cost tracking** — attribute spend across sessions and models.
 * **Data Loss Prevention** — scan prompts and responses for secrets, credentials, and other sensitive data with [DLP](https://developers.cloudflare.com/ai-gateway/features/dlp/).
 
-## Claude Code
+## Set up your agent
 
-[Claude Code ↗](https://docs.anthropic.com/en/docs/claude-code/overview) reads its endpoint and credentials from environment variables. Route it through your gateway's [Anthropic endpoint](https://developers.cloudflare.com/ai-gateway/usage/providers/anthropic/), which exposes the same `/v1/messages` API that Claude Code expects, authenticated with your own Anthropic API key.
+Follow the setup guide for your coding agent:
 
-To configure Claude Code, you need:
-
-* An [authenticated gateway](https://developers.cloudflare.com/ai-gateway/configuration/authentication/) and its gateway token with `Run` permissions.
-* Your Cloudflare account ID. To find it, refer to [Find your account and zone IDs](https://developers.cloudflare.com/fundamentals/account/find-account-and-zone-ids/).
-* An Anthropic API key. To create one, go to [Account Settings ↗](https://platform.claude.com/settings/keys) in the Claude Console. For more information, refer to [Anthropic's API overview ↗](https://docs.anthropic.com/en/api/overview).
-* Claude Code installed and updated to the latest version.
-
-Note
-
-This configuration does not use [BYOK (Store Keys)](https://developers.cloudflare.com/ai-gateway/configuration/bring-your-own-keys/). The Anthropic API key comes from the environment variable you set below, not from a key stored in AI Gateway. Anthropic bills you for model usage, and AI Gateway provides observability, caching, and rate limiting for the traffic. For details on where Claude Code reads credentials from, refer to [Anthropic's authentication documentation ↗](https://docs.anthropic.com/en/docs/claude-code/iam#credential-management).
-
-Set the base URL to your gateway's Anthropic endpoint, pass your Anthropic API key, and send your gateway token in the `cf-aig-authorization` header. To persist these variables, add them to your shell profile (for example, `~/.zshrc` or `~/.bashrc`) or to Claude Code's [settings.json ↗](https://docs.anthropic.com/en/docs/claude-code/settings#settings-files) under the `env` key.
-
-Replace `<ACCOUNT_ID>`, `<GATEWAY_ID>`, `<ANTHROPIC_API_KEY>`, and `<CF_AIG_TOKEN>` with your values.
-
-* [ macOS / Linux ](#tab-panel-6552)
-* [ Windows (PowerShell) ](#tab-panel-6553)
-
-Terminal window
-
-```
-
-export ANTHROPIC_BASE_URL="https://gateway.ai.cloudflare.com/v1/<ACCOUNT_ID>/<GATEWAY_ID>/anthropic"
-
-export ANTHROPIC_API_KEY="<ANTHROPIC_API_KEY>"
-
-export ANTHROPIC_CUSTOM_HEADERS="cf-aig-authorization: Bearer <CF_AIG_TOKEN>"
-
-
-```
-
-PowerShell
-
-```
-
-$env:ANTHROPIC_BASE_URL = "https://gateway.ai.cloudflare.com/v1/<ACCOUNT_ID>/<GATEWAY_ID>/anthropic"
-
-$env:ANTHROPIC_API_KEY = "<ANTHROPIC_API_KEY>"
-
-$env:ANTHROPIC_CUSTOM_HEADERS = "cf-aig-authorization: Bearer <CF_AIG_TOKEN>"
-
-
-```
-
-With these variables set, start Claude Code as usual with `claude`. Requests now route through AI Gateway.
-
-## GitHub Copilot CLI
-
-[GitHub Copilot CLI ↗](https://docs.github.com/en/copilot/concepts/agents/about-copilot-cli) supports bring-your-own-key (BYOK) model providers configured through environment variables. Route it through AI Gateway's [REST API](https://developers.cloudflare.com/ai-gateway/usage/rest-api/), an OpenAI-compatible `/chat/completions` endpoint authenticated with a Cloudflare API token. Third-party models are billed through [Unified Billing](https://developers.cloudflare.com/ai-gateway/features/unified-billing/), so no provider API keys are needed in your environment. Alternatively, you can store your own provider API keys in AI Gateway with [BYOK (Store Keys)](https://developers.cloudflare.com/ai-gateway/configuration/bring-your-own-keys/) and use the same Cloudflare API token to authenticate — AI Gateway resolves the stored key on each request.
-
-Unlike Claude Code, GitHub Copilot CLI authenticates the model provider with a single `Authorization` header and cannot send custom request headers. This is why the configuration below uses the REST API — it accepts a Cloudflare API token in the standard `Authorization` header — rather than the gateway token and `cf-aig-authorization` header flow used for Claude Code. Because Copilot CLI cannot set the `cf-aig-gateway-id` header either, requests route through your account's [default gateway](https://developers.cloudflare.com/ai-gateway/usage/rest-api/#specify-a-gateway).
-
-To configure GitHub Copilot CLI, you need:
-
-* GitHub Copilot CLI installed. To install it, refer to [Installing GitHub Copilot CLI ↗](https://docs.github.com/en/copilot/how-tos/set-up/install-copilot-cli).
-* A [Cloudflare API token](https://developers.cloudflare.com/fundamentals/api/get-started/create-token/) with `AI Gateway` permission.
-* [Credits loaded](https://developers.cloudflare.com/ai-gateway/features/unified-billing/#load-credits) on your account for third-party models.
-* A model that supports tool calling and streaming. For best results, use a model with a context window of at least 128k tokens.
-
-Set the provider environment variables. GitHub Copilot CLI reads these on startup and appends `/chat/completions` to the base URL. To persist them, add them to your shell profile (for example, `~/.zshrc` or `~/.bashrc`).
-
-Replace `<ACCOUNT_ID>` with your Cloudflare account ID and `<CF_API_TOKEN>` with your Cloudflare API token. Set `COPILOT_MODEL` to any supported model in `provider/model` format.
-
-* [ macOS / Linux ](#tab-panel-6554)
-* [ Windows (PowerShell) ](#tab-panel-6555)
-
-Terminal window
-
-```
-
-export COPILOT_PROVIDER_TYPE="openai"
-
-export COPILOT_PROVIDER_BASE_URL="https://api.cloudflare.com/client/v4/accounts/<ACCOUNT_ID>/ai/v1"
-
-export COPILOT_PROVIDER_API_KEY="<CF_API_TOKEN>"
-
-export COPILOT_MODEL="openai/gpt-4.1"
-
-
-```
-
-PowerShell
-
-```
-
-$env:COPILOT_PROVIDER_TYPE = "openai"
-
-$env:COPILOT_PROVIDER_BASE_URL = "https://api.cloudflare.com/client/v4/accounts/<ACCOUNT_ID>/ai/v1"
-
-$env:COPILOT_PROVIDER_API_KEY = "<CF_API_TOKEN>"
-
-$env:COPILOT_MODEL = "openai/gpt-4.1"
-
-
-```
-
-With these variables set, start GitHub Copilot CLI as usual with `copilot`. Requests now route through AI Gateway.
-
-Note
-
-GitHub Copilot CLI keeps a built-in catalog of known models and their token limits. If your selected model is not in the catalog, Copilot CLI prints a warning and falls back to default token limits. You can ignore the warning, or set the limits explicitly to match your model:
-
-Terminal window
-
-```
-
-export COPILOT_PROVIDER_MAX_PROMPT_TOKENS="200000"
-
-export COPILOT_PROVIDER_MAX_OUTPUT_TOKENS="32000"
-
-
-```
+* [Claude Code](https://developers.cloudflare.com/ai-gateway/integrations/coding-agents/claude-code/)
+* [GitHub Copilot CLI](https://developers.cloudflare.com/ai-gateway/integrations/coding-agents/github-copilot-cli/)
+* [Pi](https://developers.cloudflare.com/ai-gateway/integrations/coding-agents/pi/)
 
 ## Protect sensitive code with DLP
 
@@ -151,11 +40,11 @@ Coding agents routinely send source code, configuration files, and snippets to m
 
 Note
 
-Claude Code streams responses by default. When DLP response scanning is enabled, AI Gateway buffers the full provider response before returning it, which increases time-to-first-token. If you need low-latency streaming, set the DLP policy **Check** to **Request** only, or use a separate gateway for latency-sensitive traffic. Refer to [streaming behavior](https://developers.cloudflare.com/ai-gateway/features/dlp/#streaming-behavior).
+Many coding agents stream responses by default. When DLP response scanning is enabled, AI Gateway buffers the full provider response before returning it, which increases time-to-first-token. If you need low-latency streaming, set the DLP policy **Check** to **Request** only, or use a separate gateway for latency-sensitive traffic. Refer to [streaming behavior](https://developers.cloudflare.com/ai-gateway/features/dlp/#streaming-behavior).
 
-## Verify your configuration
+## Verify it works
 
-After you configure an agent, confirm that traffic reaches AI Gateway.
+After you configure a tool, confirm that traffic reaches AI Gateway.
 
 1. Send a prompt from the coding agent.
 2. In the Cloudflare dashboard, go to the **AI Gateway** page.  
@@ -165,6 +54,6 @@ After you configure an agent, confirm that traffic reaches AI Gateway.
 For more information on logs, refer to [Logging](https://developers.cloudflare.com/ai-gateway/observability/logging/).
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai-gateway/integrations/coding-agents/#page","headline":"Coding agents · Cloudflare AI Gateway docs","description":"Configure coding agents such as Claude Code and GitHub Copilot CLI to route through AI Gateway for observability, caching, rate limiting, and cost tracking.","url":"https://developers.cloudflare.com/ai-gateway/integrations/coding-agents/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-06-15","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/ai-gateway/integrations/coding-agents/#page","headline":"Coding agents · Cloudflare AI Gateway docs","description":"Route coding agents such as Claude Code, GitHub Copilot CLI, and Pi through AI Gateway for observability, caching, rate limiting, and cost tracking.","url":"https://developers.cloudflare.com/ai-gateway/integrations/coding-agents/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-06-18","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/ai-gateway/","name":"AI Gateway"}},{"@type":"ListItem","position":3,"item":{"@id":"/ai-gateway/integrations/","name":"Integrations"}},{"@type":"ListItem","position":4,"item":{"@id":"/ai-gateway/integrations/coding-agents/","name":"Coding agents"}}]}
 ```

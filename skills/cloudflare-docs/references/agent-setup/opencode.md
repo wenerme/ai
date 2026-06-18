@@ -59,7 +59,7 @@ opencode
 5. **Try a prompt**  
 For example:  
 ```  
-Optimize my Worker to serve WebP images with responsive resizing using Cloudflare Images.  
+Build an image upload and transformation service using R2 and Cloudflare Images.  
 ```
 
 ## Cloudflare platform access

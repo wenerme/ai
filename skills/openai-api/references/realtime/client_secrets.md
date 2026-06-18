@@ -603,7 +603,7 @@ Returns the created client secret and the effective session object. The client s
 
           - `"function"`
 
-      - `McpTool object { server_label, type, allowed_tools, 7 more }`
+      - `McpTool object { server_label, type, allowed_tools, 8 more }`
 
         Give the model access to additional tools via remote Model Context Protocol
         (MCP) servers. [Learn more about MCP](/docs/guides/tools-remote-mcp).
@@ -649,8 +649,8 @@ Returns the created client secret and the effective session object. The client s
         - `connector_id: optional "connector_dropbox" or "connector_gmail" or "connector_googlecalendar" or 5 more`
 
           Identifier for service connectors, like those available in ChatGPT. One of
-          `server_url` or `connector_id` must be provided. Learn more about service
-          connectors [here](/docs/guides/tools-remote-mcp#connectors).
+          `server_url`, `connector_id`, or `tunnel_id` must be provided. Learn more
+          about service connectors [here](/docs/guides/tools-remote-mcp#connectors).
 
           Currently supported `connector_id` values are:
 
@@ -742,8 +742,13 @@ Returns the created client secret and the effective session object. The client s
 
         - `server_url: optional string`
 
-          The URL for the MCP server. One of `server_url` or `connector_id` must be
-          provided.
+          The URL for the MCP server. One of `server_url`, `connector_id`, or
+          `tunnel_id` must be provided.
+
+        - `tunnel_id: optional string`
+
+          The Secure MCP Tunnel ID to use instead of a direct server URL. One of
+          `server_url`, `connector_id`, or `tunnel_id` must be provided.
 
     - `tracing: optional RealtimeTracingConfig`
 
@@ -1485,7 +1490,7 @@ Returns the created client secret and the effective session object. The client s
 
           The name of the tool to call on the server.
 
-    - `tools: optional array of RealtimeFunctionTool or object { server_label, type, allowed_tools, 7 more }`
+    - `tools: optional array of RealtimeFunctionTool or object { server_label, type, allowed_tools, 8 more }`
 
       Tools available to the model.
 
@@ -1511,7 +1516,7 @@ Returns the created client secret and the effective session object. The client s
 
           - `"function"`
 
-      - `McpTool object { server_label, type, allowed_tools, 7 more }`
+      - `McpTool object { server_label, type, allowed_tools, 8 more }`
 
         Give the model access to additional tools via remote Model Context Protocol
         (MCP) servers. [Learn more about MCP](/docs/guides/tools-remote-mcp).
@@ -1557,8 +1562,8 @@ Returns the created client secret and the effective session object. The client s
         - `connector_id: optional "connector_dropbox" or "connector_gmail" or "connector_googlecalendar" or 5 more`
 
           Identifier for service connectors, like those available in ChatGPT. One of
-          `server_url` or `connector_id` must be provided. Learn more about service
-          connectors [here](/docs/guides/tools-remote-mcp#connectors).
+          `server_url`, `connector_id`, or `tunnel_id` must be provided. Learn more
+          about service connectors [here](/docs/guides/tools-remote-mcp#connectors).
 
           Currently supported `connector_id` values are:
 
@@ -1650,8 +1655,13 @@ Returns the created client secret and the effective session object. The client s
 
         - `server_url: optional string`
 
-          The URL for the MCP server. One of `server_url` or `connector_id` must be
-          provided.
+          The URL for the MCP server. One of `server_url`, `connector_id`, or
+          `tunnel_id` must be provided.
+
+        - `tunnel_id: optional string`
+
+          The Secure MCP Tunnel ID to use instead of a direct server URL. One of
+          `server_url`, `connector_id`, or `tunnel_id` must be provided.
 
     - `tracing: optional "auto" or object { group_id, metadata, workflow_name }`
 
@@ -2516,7 +2526,7 @@ curl -X POST https://api.openai.com/v1/realtime/client_secrets \
 
         The name of the tool to call on the server.
 
-  - `tools: optional array of RealtimeFunctionTool or object { server_label, type, allowed_tools, 7 more }`
+  - `tools: optional array of RealtimeFunctionTool or object { server_label, type, allowed_tools, 8 more }`
 
     Tools available to the model.
 
@@ -2542,7 +2552,7 @@ curl -X POST https://api.openai.com/v1/realtime/client_secrets \
 
         - `"function"`
 
-    - `McpTool object { server_label, type, allowed_tools, 7 more }`
+    - `McpTool object { server_label, type, allowed_tools, 8 more }`
 
       Give the model access to additional tools via remote Model Context Protocol
       (MCP) servers. [Learn more about MCP](/docs/guides/tools-remote-mcp).
@@ -2588,8 +2598,8 @@ curl -X POST https://api.openai.com/v1/realtime/client_secrets \
       - `connector_id: optional "connector_dropbox" or "connector_gmail" or "connector_googlecalendar" or 5 more`
 
         Identifier for service connectors, like those available in ChatGPT. One of
-        `server_url` or `connector_id` must be provided. Learn more about service
-        connectors [here](/docs/guides/tools-remote-mcp#connectors).
+        `server_url`, `connector_id`, or `tunnel_id` must be provided. Learn more
+        about service connectors [here](/docs/guides/tools-remote-mcp#connectors).
 
         Currently supported `connector_id` values are:
 
@@ -2681,8 +2691,13 @@ curl -X POST https://api.openai.com/v1/realtime/client_secrets \
 
       - `server_url: optional string`
 
-        The URL for the MCP server. One of `server_url` or `connector_id` must be
-        provided.
+        The URL for the MCP server. One of `server_url`, `connector_id`, or
+        `tunnel_id` must be provided.
+
+      - `tunnel_id: optional string`
+
+        The Secure MCP Tunnel ID to use instead of a direct server URL. One of
+        `server_url`, `connector_id`, or `tunnel_id` must be provided.
 
   - `tracing: optional "auto" or object { group_id, metadata, workflow_name }`
 
@@ -3470,7 +3485,7 @@ curl -X POST https://api.openai.com/v1/realtime/client_secrets \
 
             The name of the tool to call on the server.
 
-      - `tools: optional array of RealtimeFunctionTool or object { server_label, type, allowed_tools, 7 more }`
+      - `tools: optional array of RealtimeFunctionTool or object { server_label, type, allowed_tools, 8 more }`
 
         Tools available to the model.
 
@@ -3496,7 +3511,7 @@ curl -X POST https://api.openai.com/v1/realtime/client_secrets \
 
             - `"function"`
 
-        - `McpTool object { server_label, type, allowed_tools, 7 more }`
+        - `McpTool object { server_label, type, allowed_tools, 8 more }`
 
           Give the model access to additional tools via remote Model Context Protocol
           (MCP) servers. [Learn more about MCP](/docs/guides/tools-remote-mcp).
@@ -3542,8 +3557,8 @@ curl -X POST https://api.openai.com/v1/realtime/client_secrets \
           - `connector_id: optional "connector_dropbox" or "connector_gmail" or "connector_googlecalendar" or 5 more`
 
             Identifier for service connectors, like those available in ChatGPT. One of
-            `server_url` or `connector_id` must be provided. Learn more about service
-            connectors [here](/docs/guides/tools-remote-mcp#connectors).
+            `server_url`, `connector_id`, or `tunnel_id` must be provided. Learn more
+            about service connectors [here](/docs/guides/tools-remote-mcp#connectors).
 
             Currently supported `connector_id` values are:
 
@@ -3635,8 +3650,13 @@ curl -X POST https://api.openai.com/v1/realtime/client_secrets \
 
           - `server_url: optional string`
 
-            The URL for the MCP server. One of `server_url` or `connector_id` must be
-            provided.
+            The URL for the MCP server. One of `server_url`, `connector_id`, or
+            `tunnel_id` must be provided.
+
+          - `tunnel_id: optional string`
+
+            The Secure MCP Tunnel ID to use instead of a direct server URL. One of
+            `server_url`, `connector_id`, or `tunnel_id` must be provided.
 
       - `tracing: optional "auto" or object { group_id, metadata, workflow_name }`
 

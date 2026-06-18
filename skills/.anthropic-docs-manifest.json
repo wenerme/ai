@@ -790,8 +790,8 @@
   "anthropic-docs/manage-claude/usage-cost-api.md": {
     "url": "https://platform.claude.com/docs/en/manage-claude/usage-cost-api",
     "skill": "anthropic-docs",
-    "size": 15073,
-    "updatedAt": "2026-06-13T10:48:54.724Z"
+    "size": 15065,
+    "updatedAt": "2026-06-18T00:37:16.086Z"
   },
   "anthropic-docs/manage-claude/rate-limits-api.md": {
     "url": "https://platform.claude.com/docs/en/manage-claude/rate-limits-api",
@@ -804,14 +804,14 @@
   "anthropic-docs/manage-claude/analytics-api.md": {
     "url": "https://platform.claude.com/docs/en/manage-claude/analytics-api",
     "skill": "anthropic-docs",
-    "size": 7331,
-    "updatedAt": "2026-06-16T00:40:33.076Z"
+    "size": 7229,
+    "updatedAt": "2026-06-18T00:37:16.718Z"
   },
   "anthropic-docs/manage-claude/claude-code-analytics-api.md": {
     "url": "https://platform.claude.com/docs/en/manage-claude/claude-code-analytics-api",
     "skill": "anthropic-docs",
-    "size": 12197,
-    "updatedAt": "2026-06-13T10:48:56.115Z"
+    "size": 12186,
+    "updatedAt": "2026-06-18T00:37:17.019Z"
   },
   "anthropic-docs/manage-claude/spend-limits-api.md": {
     "url": "https://platform.claude.com/docs/en/manage-claude/spend-limits-api",

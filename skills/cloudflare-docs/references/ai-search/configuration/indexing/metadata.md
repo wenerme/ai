@@ -1,6 +1,6 @@
 ---
-title: Metadata
-description: Use metadata attributes and custom schemas in AI Search to filter and contextualize search results.
+title: Metadata attributes
+description: Define built-in and custom metadata attributes on indexed documents.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
@@ -10,9 +10,9 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 [Skip to content](#%5Ftop) 
 
-# Metadata
+# Metadata attributes
 
-Use metadata to filter documents before retrieval and provide context to guide AI responses. This page covers built-in metadata attributes, custom metadata schemas, and filter syntax.
+Use metadata attributes to organize your indexed documents and provide context to guide AI responses. This page covers built-in metadata attributes and custom metadata schemas. To filter search results by these attributes at query time, refer to [Filtering](https://developers.cloudflare.com/ai-search/configuration/retrieval/filtering/).
 
 ## Built-in metadata attributes
 
@@ -24,7 +24,7 @@ AI Search automatically extracts the following metadata attributes from your ind
 | folder    | The folder or prefix to the object.                                                                 | For docs/getting-started/guide.pdf, the folder is docs/getting-started/ |
 | timestamp | Unix timestamp (milliseconds) when the object was last modified. Comparisons round down to seconds. | 1735689600000 (2025-01-01 00:00:00 UTC)                                 |
 
-## Custom metadata
+## Custom metadata attributes
 
 Custom metadata allows you to define additional fields for filtering search results. You can attach structured metadata to documents and filter queries by attributes such as category, version, or any custom field.
 
@@ -66,231 +66,13 @@ custom_metadata: [
 * Text values are truncated to 500 characters
 * Changing the schema triggers a full re-index of all documents
 
-### Add custom metadata to documents
+### Add custom metadata attributes to documents
 
-How you attach custom metadata depends on your data source:
+How you attach custom metadata attributes depends on your data source:
 
 * **R2 bucket**: Set metadata using S3-compatible custom headers (`x-amz-meta-*`). Refer to [R2 custom metadata](https://developers.cloudflare.com/ai-search/configuration/data-source/r2/#custom-metadata) for examples.
 * **Website**: Add `<meta>` tags to your HTML pages. Refer to [Website custom metadata](https://developers.cloudflare.com/ai-search/configuration/data-source/website/#custom-metadata) for details.
 * **Built-in storage**: Attach metadata when uploading files through the [Items API](https://developers.cloudflare.com/ai-search/api/items/workers-binding/#upload-with-metadata).
-
-## Metadata filtering
-
-Metadata filtering narrows down search results based on metadata, so only relevant content is retrieved. The filter is applied before retrieval, so you only query the documents that matter.
-
-Note
-
-If you are using the legacy AutoRAG API, refer to [Metadata filter format (legacy)](https://developers.cloudflare.com/ai-search/api/migration/autorag-filter-format/) for the filter syntax.
-
-Here is an example of metadata filtering using the [Workers binding](https://developers.cloudflare.com/ai-search/api/search/workers-binding/):
-
-TypeScript
-
-```
-
-const instance = env.AI_SEARCH.get("my-instance");
-
-
-const results = await instance.search({
-
-  messages: [{ role: "user", content: "What is Cloudflare?" }],
-
-  ai_search_options: {
-
-    retrieval: {
-
-      filters: {
-
-        folder: "docs/getting-started/",
-
-        timestamp: { $gte: 1735689600 },
-
-      },
-
-    },
-
-  },
-
-});
-
-
-```
-
-### Filter syntax
-
-Filters are JSON objects where keys are metadata attribute names and values specify the filter condition.
-
-#### Supported operators
-
-| Operator | Description                       |
-| -------- | --------------------------------- |
-| $eq      | Equals                            |
-| $ne      | Not equals                        |
-| $in      | In (matches any value in array)   |
-| $nin     | Not in (excludes values in array) |
-| $lt      | Less than                         |
-| $lte     | Less than or equal to             |
-| $gt      | Greater than                      |
-| $gte     | Greater than or equal to          |
-
-#### Implicit `$eq`
-
-When you provide a direct value without an operator, it is treated as an equality check:
-
-```
-
-{
-
-  "ai_search_options": {
-
-    "retrieval": {
-
-      "filters": { "folder": "docs/getting-started/" }
-
-    }
-
-  }
-
-}
-
-
-```
-
-This is equivalent to:
-
-```
-
-{
-
-  "ai_search_options": {
-
-    "retrieval": {
-
-      "filters": { "folder": { "$eq": "docs/getting-started/" } }
-
-    }
-
-  }
-
-}
-
-
-```
-
-#### Range queries
-
-Combine upper and lower bound operators to filter by ranges:
-
-```
-
-{
-
-  "ai_search_options": {
-
-    "retrieval": {
-
-      "filters": { "timestamp": { "$gte": 1735689600, "$lt": 1735900000 } }
-
-    }
-
-  }
-
-}
-
-
-```
-
-#### Multiple conditions (implicit AND)
-
-When you specify multiple keys, all conditions must match:
-
-```
-
-{
-
-  "ai_search_options": {
-
-    "retrieval": {
-
-      "filters": {
-
-        "folder": "docs/getting-started/",
-
-        "timestamp": { "$gte": 1735689600 }
-
-      }
-
-    }
-
-  }
-
-}
-
-
-```
-
-#### `$in` operator
-
-Match any value in an array:
-
-```
-
-{
-
-  "ai_search_options": {
-
-    "retrieval": {
-
-      "filters": { "folder": { "$in": ["docs/guides/", "docs/tutorials/"] } }
-
-    }
-
-  }
-
-}
-
-
-```
-
-### "Starts with" filter for folders
-
-Use range queries to filter for all files within a folder and its subfolders.
-
-For example, consider this file structure:
-
-* Directorydocs  
-   * guide.pdf  
-   * Directorytutorials  
-         * Directorygetting-started  
-                  * intro.pdf
-
-Using `{ "folder": "docs/" }` only matches files directly in that folder (like `guide.pdf`), not files in subfolders.
-
-To match all files starting with `docs/`, use a range query:
-
-```
-
-{
-
-  "ai_search_options": {
-
-    "retrieval": {
-
-      "filters": { "folder": { "$gte": "docs/", "$lt": "docs0" } }
-
-    }
-
-  }
-
-}
-
-
-```
-
-This works because:
-
-* `$gte` includes all paths starting with `docs/`
-* `$lt` with `docs0` excludes paths that do not start with `docs/` (since `0` comes after `/` in ASCII)
 
 ## Re-indexing behavior
 
@@ -326,6 +108,6 @@ If file metadata exceeds size limits, the metadata is replaced with an error ind
 To avoid this, keep individual metadata values concise.
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai-search/configuration/indexing/metadata/#page","headline":"Metadata · Cloudflare AI Search docs","description":"Use metadata attributes and custom schemas in AI Search to filter and contextualize search results.","url":"https://developers.cloudflare.com/ai-search/configuration/indexing/metadata/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-20","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/ai-search/","name":"AI Search"}},{"@type":"ListItem","position":3,"item":{"@id":"/ai-search/configuration/","name":"Configuration"}},{"@type":"ListItem","position":4,"item":{"@id":"/ai-search/configuration/indexing/","name":"Indexing"}},{"@type":"ListItem","position":5,"item":{"@id":"/ai-search/configuration/indexing/metadata/","name":"Metadata"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai-search/configuration/indexing/metadata/#page","headline":"Metadata attributes · Cloudflare AI Search docs","description":"Define built-in and custom metadata attributes on indexed documents.","url":"https://developers.cloudflare.com/ai-search/configuration/indexing/metadata/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-06-17","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/ai-search/","name":"AI Search"}},{"@type":"ListItem","position":3,"item":{"@id":"/ai-search/configuration/","name":"Configuration"}},{"@type":"ListItem","position":4,"item":{"@id":"/ai-search/configuration/indexing/","name":"Indexing"}},{"@type":"ListItem","position":5,"item":{"@id":"/ai-search/configuration/indexing/metadata/","name":"Metadata attributes"}}]}
 ```

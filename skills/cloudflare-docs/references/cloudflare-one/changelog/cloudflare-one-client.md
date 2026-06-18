@@ -1203,46 +1203,6 @@ A new GA release for the iOS Cloudflare One Agent is now available in the [iOS A
 * DNS over HTTPS traffic is now included in the WARP tunnel by default.
 * The WARP client now applies [post-quantum cryptography ↗](https://blog.cloudflare.com/pq-2024/) end-to-end on enabled devices accessing resources behind a Cloudflare Tunnel. This feature can be enabled by [MDM](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/deployment/mdm-deployment/parameters/#enable%5Fpost%5Fquantum).
 
-## 2025-06-17
-
-  
-**WARP client for Windows (version 2025.5.828.1)**   
-
-A new Beta release for the Windows WARP client is now available on the [beta releases downloads page](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/download/beta-releases/).
-
-This release contains new improvements in addition to the features and improvements introduced in Beta client version 2025.5.735.1.
-
-**Changes and improvements**
-
-* Improvement to better handle multi-user fast user switching.
-* Fix for an issue causing WARP connectivity to fail without full system reboot.
-
-**Known issues**
-
-* Microsoft has confirmed a regression with Windows 11 starting around 24H2 that may cause performance issues for some users. These performance issues could manifest as mouse lag, audio cracking, or other slowdowns. A fix from Microsoft is expected in early July.
-* Devices with `KB5055523` installed may receive a warning about `Win32/ClickFix.ABA` being present in the installer. To resolve this false positive, update Microsoft Security Intelligence to [version 1.429.19.0](https://www.microsoft.com/en-us/wdsi/definitions/antimalware-definition-release-notes?requestVersion=1.429.19.0) or later.
-* DNS resolution may be broken when the following conditions are all true:  
-   * WARP is in Secure Web Gateway without DNS filtering (tunnel-only) mode.  
-   * A custom DNS server address is configured on the primary network adapter.  
-   * The custom DNS server address on the primary network adapter is changed while WARP is connected. To work around this issue, reconnect the WARP client by toggling off and back on.
-
-## 2025-06-17
-
-  
-**WARP client for macOS (version 2025.5.828.1)**   
-
-A new Beta release for the macOS WARP client is now available on the [beta releases downloads page](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/download/beta-releases/).
-
-This release contains new improvements in addition to the features and improvements introduced in Beta client version 2025.5.735.1.
-
-**Changes and improvements**
-
-* Improvement for WARP connectivity issues on macOS due to the operating system not accepting DNS server configurations.
-
-**Known issues**
-
-* macOS Sequoia: Due to changes Apple introduced in macOS 15.0.x, the WARP client may not behave as expected. Cloudflare recommends the use of macOS 15.4 or later.
-
 ## 2025-03-17
 
   

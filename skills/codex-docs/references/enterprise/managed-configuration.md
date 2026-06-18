@@ -259,6 +259,14 @@ For example, `allowed_web_search_modes = ["cached"]` prevents live web search ev
 
 ### Configure network access requirements
 
+<WarningTip>
+  `[experimental_network]` is experimental and may change. Do not enable these
+  requirements broadly across an enterprise deployment without validating them
+  on the Codex client versions and operating systems your users run. Windows
+  support is still limited; avoid applying this policy to Windows users unless
+  you have tested it in your environment.
+</WarningTip>
+
 Use `[experimental_network]` in `requirements.toml` when administrators should
 define network access requirements centrally. These requirements are separate
 from the user `features.network_proxy` toggle: they can configure sandboxed
@@ -267,8 +275,6 @@ access when the active sandbox keeps networking off.
 
 ```toml
 experimental_network.enabled = true
-experimental_network.dangerously_allow_all_unix_sockets = true
-experimental_network.allow_local_binding = true
 experimental_network.allowed_domains = [
   "api.openai.com",
   "*.example.com",

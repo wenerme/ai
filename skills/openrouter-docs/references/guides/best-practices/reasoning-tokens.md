@@ -37,6 +37,32 @@ You can control reasoning tokens in your requests using the `reasoning` paramete
 
 The `reasoning` config object consolidates settings for controlling reasoning strength across different models. See the Note for each option below to see which models are supported and how other models will behave.
 
+### Discovering per-model reasoning options
+
+Each model in [`GET /api/v1/models`](/docs/api/api-reference/models/list-models) may include a `reasoning` object describing which effort levels it accepts and whether reasoning is mandatory:
+
+```json
+{
+  "id": "google/gemini-3.5-flash",
+  "reasoning": {
+    "supported_efforts": ["high", "medium", "low", "minimal"],
+    "default_effort": "medium",
+    "default_enabled": true,
+    "mandatory": true
+  }
+}
+```
+
+Use this when building client UIs:
+
+* **`supported_efforts`**: Filter effort selectors to these values, returned in descending effort order (highest first). When `null`, all gateway effort values are accepted. When omitted, the model does not expose effort selection.
+* **`default_effort`**: Pre-select this effort when enabling reasoning. Maps to `reasoning.effort` in chat requests. If the value is `"none"`, treat it as "reasoning off by default" rather than pre-selecting disable when the user explicitly turns reasoning on.
+* **`default_enabled`**: Default on/off state when the user has not set `reasoning.enabled`.
+* **`supports_max_tokens`**: When present and `true`, show a token budget control and send `reasoning.max_tokens` instead of (or alongside) `reasoning.effort`. Omitted when the model does not support token-budget reasoning.
+* **`mandatory`**: When `true`, hide disable controls and do not send `effort: "none"` — the model rejects it.
+
+Non-reasoning models and dynamic router models (`openrouter/auto`, `openrouter/free`) omit the `reasoning` field.
+
 ### Max Tokens for Reasoning
 
 Currently supported by:

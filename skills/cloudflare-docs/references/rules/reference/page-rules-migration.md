@@ -115,8 +115,8 @@ Also, to streamline common configurations, the Cloudflare dashboard now includes
 
 ### Migrate Always Use HTTPS
 
-* [ Dashboard ](#tab-panel-9996)
-* [ Visual guide ](#tab-panel-9997)
+* [ Dashboard ](#tab-panel-9998)
+* [ Visual guide ](#tab-panel-9999)
 
 **Context:**
 
@@ -143,8 +143,8 @@ You configured a Page Rule to perform an automatic redirect from HTTP to HTTPS f
 
 ### Migrate Automatic HTTPS Rewrites
 
-* [ Dashboard ](#tab-panel-9998)
-* [ Visual guide ](#tab-panel-9999)
+* [ Dashboard ](#tab-panel-10000)
+* [ Visual guide ](#tab-panel-10001)
 
 **Context:**
 
@@ -174,8 +174,8 @@ You configured a Page Rule turning on Automatic HTTPS Rewrites for all subdomain
 
 ### Migrate Browser Cache TTL
 
-* [ Dashboard ](#tab-panel-10028)
-* [ Visual guide ](#tab-panel-10029)
+* [ Dashboard ](#tab-panel-10030)
+* [ Visual guide ](#tab-panel-10031)
 
 **Context:**
 
@@ -208,8 +208,8 @@ The default behavior of Cache Rules is different from Page Rules. Refer to [Key 
 
 ### Migrate Browser Integrity Check
 
-* [ Dashboard ](#tab-panel-10000)
-* [ Visual guide ](#tab-panel-10001)
+* [ Dashboard ](#tab-panel-10002)
+* [ Visual guide ](#tab-panel-10003)
 
 **Context:**
 
@@ -239,8 +239,8 @@ You configured a Page Rule turning on Browser Integrity Check for all subdomains
 
 ### Migrate Bypass Cache on Cookie
 
-* [ Dashboard ](#tab-panel-10030)
-* [ Visual guide ](#tab-panel-10031)
+* [ Dashboard ](#tab-panel-10032)
+* [ Visual guide ](#tab-panel-10033)
 
 **Context:**
 
@@ -271,8 +271,8 @@ The default behavior of Cache Rules is different from Page Rules. Refer to [Key 
 
 ### Migrate Cache By Device Type
 
-* [ Dashboard ](#tab-panel-10032)
-* [ Visual guide ](#tab-panel-10033)
+* [ Dashboard ](#tab-panel-10034)
+* [ Visual guide ](#tab-panel-10035)
 
 **Context:**
 
@@ -305,8 +305,8 @@ The default behavior of Cache Rules is different from Page Rules. Refer to [Key 
 
 ### Migrate Cache Deception Armor
 
-* [ Dashboard ](#tab-panel-10034)
-* [ Visual guide ](#tab-panel-10035)
+* [ Dashboard ](#tab-panel-10036)
+* [ Visual guide ](#tab-panel-10037)
 
 **Context:**
 
@@ -338,8 +338,8 @@ The default behavior of Cache Rules is different from Page Rules. Refer to [Key 
 
 ### Migrate Cache Level (Cache Everything)
 
-* [ Dashboard ](#tab-panel-10036)
-* [ Visual guide ](#tab-panel-10037)
+* [ Dashboard ](#tab-panel-10038)
+* [ Visual guide ](#tab-panel-10039)
 
 **Context:**
 
@@ -370,8 +370,8 @@ The default behavior of Cache Rules is different from Page Rules. Refer to [Key 
 
 ### Migrate Cache on Cookie
 
-* [ Dashboard ](#tab-panel-10038)
-* [ Visual guide ](#tab-panel-10039)
+* [ Dashboard ](#tab-panel-10040)
+* [ Visual guide ](#tab-panel-10041)
 
 **Context:**
 
@@ -402,8 +402,8 @@ The default behavior of Cache Rules is different from Page Rules. Refer to [Key 
 
 ### Migrate Cache TTL by status code
 
-* [ Dashboard ](#tab-panel-10040)
-* [ Visual guide ](#tab-panel-10041)
+* [ Dashboard ](#tab-panel-10042)
+* [ Visual guide ](#tab-panel-10043)
 
 **Context:**
 
@@ -442,8 +442,8 @@ The default behavior of Cache Rules is different from Page Rules. Refer to [Key 
 
 ### Migrate Custom Cache Key
 
-* [ Dashboard ](#tab-panel-10042)
-* [ Visual guide ](#tab-panel-10043)
+* [ Dashboard ](#tab-panel-10044)
+* [ Visual guide ](#tab-panel-10045)
 
 **Context:**
 
@@ -476,8 +476,8 @@ The default behavior of Cache Rules is different from Page Rules. Refer to [Key 
 
 ### Migrate Disable Apps
 
-* [ Dashboard ](#tab-panel-10002)
-* [ Visual guide ](#tab-panel-10003)
+* [ Dashboard ](#tab-panel-10004)
+* [ Visual guide ](#tab-panel-10005)
 
 **Context:**
 
@@ -511,8 +511,8 @@ The **Disable Performance** setting is deprecated. Any Page Rules with this sett
 
 This Page Rules setting turned off Polish and Rocket Loader. You can still turn on or off relevant Cloudflare features one by one using Configuration Rules.
 
-* [ Dashboard ](#tab-panel-10004)
-* [ Visual guide ](#tab-panel-10005)
+* [ Dashboard ](#tab-panel-10006)
+* [ Visual guide ](#tab-panel-10007)
 
 **Context:**
 
@@ -547,7 +547,7 @@ The **Disable Security** setting is deprecated. Any Page Rules with this setting
 
 This Page Rules setting turns off Email Obfuscation, Rate Limiting (previous version), Scrape Shield, URL (Zone) Lockdown, and WAF managed rules (previous version). You can still turn on or off relevant Cloudflare features one by one using Configuration Rules and WAF custom rules.
 
-* [ Dashboard ](#tab-panel-9995)
+* [ Dashboard ](#tab-panel-9997)
 
 **Context:**
 
@@ -573,8 +573,8 @@ If you are still using [WAF managed rules (previous version)](https://developers
 
 ### Migrate Disable Zaraz
 
-* [ Dashboard ](#tab-panel-10006)
-* [ Visual guide ](#tab-panel-10007)
+* [ Dashboard ](#tab-panel-10008)
+* [ Visual guide ](#tab-panel-10009)
 
 **Context:**
 
@@ -602,8 +602,8 @@ You configured a Page Rule turning off [Zaraz](https://developers.cloudflare.com
 
 ### Migrate Edge Cache TTL
 
-* [ Dashboard ](#tab-panel-10044)
-* [ Visual guide ](#tab-panel-10045)
+* [ Dashboard ](#tab-panel-10046)
+* [ Visual guide ](#tab-panel-10047)
 
 **Context:**
 
@@ -637,8 +637,8 @@ The default behavior of Cache Rules is different from Page Rules. Refer to [Key 
 
 ### Migrate Email Obfuscation
 
-* [ Dashboard ](#tab-panel-10008)
-* [ Visual guide ](#tab-panel-10009)
+* [ Dashboard ](#tab-panel-10010)
+* [ Visual guide ](#tab-panel-10011)
 
 **Context:**
 
@@ -670,8 +670,8 @@ You configured a Page Rule turning off [Email Obfuscation](https://developers.cl
 
 **Example #1: Redirect `www` to root domain**
 
-* [ Dashboard ](#tab-panel-10054)
-* [ Visual guide ](#tab-panel-10055)
+* [ Dashboard ](#tab-panel-10056)
+* [ Visual guide ](#tab-panel-10057)
 
 **Context:**
 
@@ -712,8 +712,8 @@ This would require you to also change the **Target URL** to use the second wildc
 
 **Example #2: Redirect all pages under old path to new path**
 
-* [ Dashboard ](#tab-panel-10056)
-* [ Visual guide ](#tab-panel-10057)
+* [ Dashboard ](#tab-panel-10058)
+* [ Visual guide ](#tab-panel-10059)
 
 **Context:**
 
@@ -754,8 +754,8 @@ This would require you to also change the **Target URL** to use the second wildc
 
 ### Migrate Host Header Override
 
-* [ Dashboard ](#tab-panel-10010)
-* [ Visual guide ](#tab-panel-10011)
+* [ Dashboard ](#tab-panel-10012)
+* [ Visual guide ](#tab-panel-10013)
 
 **Context:**
 
@@ -785,8 +785,8 @@ You configured a Page Rule changing the `Host` HTTP header to `example.saas-prov
 
 ### Migrate IP Geolocation Header
 
-* [ Dashboard ](#tab-panel-10012)
-* [ Visual guide ](#tab-panel-10013)
+* [ Dashboard ](#tab-panel-10014)
+* [ Visual guide ](#tab-panel-10015)
 
 **Context:**
 
@@ -808,8 +808,8 @@ You configured a Page Rule adding a `CF-IPCountry` HTTP header, for all requests
 
 ### Migrate Opportunistic Encryption
 
-* [ Dashboard ](#tab-panel-10014)
-* [ Visual guide ](#tab-panel-10015)
+* [ Dashboard ](#tab-panel-10016)
+* [ Visual guide ](#tab-panel-10017)
 
 **Context:**
 
@@ -839,8 +839,8 @@ You configured a Page Rule turning off Opportunistic Encryption for all subdomai
 
 ### Migrate Origin Cache Control
 
-* [ Dashboard ](#tab-panel-10046)
-* [ Visual guide ](#tab-panel-10047)
+* [ Dashboard ](#tab-panel-10048)
+* [ Visual guide ](#tab-panel-10049)
 
 **Context:**
 
@@ -873,8 +873,8 @@ The default behavior of Cache Rules is different from Page Rules. Refer to [Key 
 
 ### Migrate Origin Error Page Pass-thru
 
-* [ Dashboard ](#tab-panel-10048)
-* [ Visual guide ](#tab-panel-10049)
+* [ Dashboard ](#tab-panel-10050)
+* [ Visual guide ](#tab-panel-10051)
 
 **Context:**
 
@@ -907,8 +907,8 @@ The default behavior of Cache Rules is different from Page Rules. Refer to [Key 
 
 ### Migrate Polish
 
-* [ Dashboard ](#tab-panel-10016)
-* [ Visual guide ](#tab-panel-10017)
+* [ Dashboard ](#tab-panel-10018)
+* [ Visual guide ](#tab-panel-10019)
 
 **Context:**
 
@@ -938,8 +938,8 @@ You configured a Page Rule turning off [Polish](https://developers.cloudflare.co
 
 ### Migrate Query String Sort
 
-* [ Dashboard ](#tab-panel-10050)
-* [ Visual guide ](#tab-panel-10051)
+* [ Dashboard ](#tab-panel-10052)
+* [ Visual guide ](#tab-panel-10053)
 
 **Context:**
 
@@ -972,8 +972,8 @@ The default behavior of Cache Rules is different from Page Rules. Refer to [Key 
 
 ### Migrate Resolve Override
 
-* [ Dashboard ](#tab-panel-10018)
-* [ Visual guide ](#tab-panel-10019)
+* [ Dashboard ](#tab-panel-10020)
+* [ Visual guide ](#tab-panel-10021)
 
 **Context:**
 
@@ -1002,8 +1002,8 @@ You configured a Page Rule changing the origin to `example.saas-provider.com`, f
 
 ### Migrate Respect Strong ETags
 
-* [ Dashboard ](#tab-panel-10052)
-* [ Visual guide ](#tab-panel-10053)
+* [ Dashboard ](#tab-panel-10054)
+* [ Visual guide ](#tab-panel-10055)
 
 **Context:**
 
@@ -1036,8 +1036,8 @@ The default behavior of Cache Rules is different from Page Rules. Refer to [Key 
 
 ### Migrate Rocket Loader
 
-* [ Dashboard ](#tab-panel-10020)
-* [ Visual guide ](#tab-panel-10021)
+* [ Dashboard ](#tab-panel-10022)
+* [ Visual guide ](#tab-panel-10023)
 
 **Context:**
 
@@ -1067,8 +1067,8 @@ You configured a Page Rule turning off Rocket Loader for all subdomains of `exam
 
 ### Migrate Security Level
 
-* [ Dashboard ](#tab-panel-10022)
-* [ Visual guide ](#tab-panel-10023)
+* [ Dashboard ](#tab-panel-10024)
+* [ Visual guide ](#tab-panel-10025)
 
 **Context:**
 
@@ -1098,8 +1098,8 @@ You configured a Page Rule setting Security Level to _I'm Under Attack_ for all 
 
 ### Migrate True Client IP Header
 
-* [ Dashboard ](#tab-panel-10024)
-* [ Visual guide ](#tab-panel-10025)
+* [ Dashboard ](#tab-panel-10026)
+* [ Visual guide ](#tab-panel-10027)
 
 **Context:**
 
@@ -1121,8 +1121,8 @@ You configured a Page Rule adding a `True-Client-IP` HTTP header for all request
 
 ### Migrate SSL
 
-* [ Dashboard ](#tab-panel-10026)
-* [ Visual guide ](#tab-panel-10027)
+* [ Dashboard ](#tab-panel-10028)
+* [ Visual guide ](#tab-panel-10029)
 
 **Context:**
 

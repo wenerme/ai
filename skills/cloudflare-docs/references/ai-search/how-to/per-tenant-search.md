@@ -18,8 +18,8 @@ AI Search supports per-tenant search isolation. You can either create a separate
 
 Create isolated AI Search instances for each tenant at runtime using the [namespace binding](https://developers.cloudflare.com/ai-search/concepts/namespaces/). Each tenant gets its own instance with separate storage and a search index.
 
-* [  wrangler.jsonc ](#tab-panel-6623)
-* [  wrangler.toml ](#tab-panel-6624)
+* [  wrangler.jsonc ](#tab-panel-6625)
+* [  wrangler.toml ](#tab-panel-6626)
 
 JSONC
 
@@ -59,8 +59,8 @@ namespace = "default"
 
 ```
 
-* [  JavaScript ](#tab-panel-6627)
-* [  TypeScript ](#tab-panel-6628)
+* [  JavaScript ](#tab-panel-6629)
+* [  TypeScript ](#tab-panel-6630)
 
 JavaScript
 
@@ -275,10 +275,10 @@ export default {
 
 ## Shared instance with metadata filtering
 
-Use a single AI Search instance and organize content by tenant using folder paths. This approach works with both [R2 buckets](https://developers.cloudflare.com/ai-search/configuration/data-source/r2/) and [built-in storage](https://developers.cloudflare.com/ai-search/configuration/data-source/built-in-storage/). Apply [metadata filters](https://developers.cloudflare.com/ai-search/configuration/indexing/metadata/) at query time to ensure each tenant only retrieves their own documents.
+Use a single AI Search instance and organize content by tenant using folder paths. This approach works with both [R2 buckets](https://developers.cloudflare.com/ai-search/configuration/data-source/r2/) and [built-in storage](https://developers.cloudflare.com/ai-search/configuration/data-source/built-in-storage/). Apply [metadata filters](https://developers.cloudflare.com/ai-search/configuration/retrieval/filtering/) at query time to ensure each tenant only retrieves their own documents.
 
-* [  wrangler.jsonc ](#tab-panel-6625)
-* [  wrangler.toml ](#tab-panel-6626)
+* [  wrangler.jsonc ](#tab-panel-6627)
+* [  wrangler.toml ](#tab-panel-6628)
 
 JSONC
 
@@ -360,9 +360,9 @@ const results = await env.SHARED_INSTANCE.search({
 
 ```
 
-This example uses a ["starts with" filter](https://developers.cloudflare.com/ai-search/configuration/indexing/metadata/#starts-with-filter-for-folders) to match all files under `customer-a/` including subfolders.
+This example uses a ["starts with" filter](https://developers.cloudflare.com/ai-search/configuration/retrieval/filtering/#starts-with-filter-for-folders) to match all files under `customer-a/` including subfolders.
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai-search/how-to/per-tenant-search/#page","headline":"Build per-tenant search · Cloudflare AI Search docs","description":"Isolate search results per tenant in AI Search using separate instances or metadata filtering.","url":"https://developers.cloudflare.com/ai-search/how-to/per-tenant-search/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-06-08","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai-search/how-to/per-tenant-search/#page","headline":"Build per-tenant search · Cloudflare AI Search docs","description":"Isolate search results per tenant in AI Search using separate instances or metadata filtering.","url":"https://developers.cloudflare.com/ai-search/how-to/per-tenant-search/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-06-17","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/ai-search/","name":"AI Search"}},{"@type":"ListItem","position":3,"item":{"@id":"/ai-search/how-to/","name":"How to"}},{"@type":"ListItem","position":4,"item":{"@id":"/ai-search/how-to/per-tenant-search/","name":"Build per-tenant search"}}]}
 ```

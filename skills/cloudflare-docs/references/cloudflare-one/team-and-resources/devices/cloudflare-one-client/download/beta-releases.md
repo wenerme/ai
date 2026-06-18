@@ -70,7 +70,7 @@ This release introduces the new Cloudflare One Client UI for Windows! You can ex
    * The custom DNS server address on the primary network adapter is changed while the client is connected.  
    To work around this issue, please reconnect the client by selecting "disconnect" and then "connect" in the client user interface.
 
-Previous version history (7)
+Previous version history (6)
 
 Windows 2026.3.566.1
 
@@ -250,30 +250,6 @@ This release contains minor fixes and improvements.
    * The custom DNS server address on the primary network adapter is changed while WARP is connected.  
 To work around this issue, reconnect the WARP client by toggling off and back on.
 
-Windows 2025.5.828.1
-
-**Version:**  Windows 2025.5.828.1 **Date:**  2025-06-17 **Size:** 129 MB 
-
-[Download](https://downloads.cloudflareclient.com/v1/download/windows/version/2025.5.828.1) 
-
-#### Release notes
-
-This release contains new improvements in addition to the features and improvements introduced in Beta client version 2025.5.735.1.
-
-**Changes and improvements**
-
-* Improvement to better handle multi-user fast user switching.
-* Fix for an issue causing WARP connectivity to fail without full system reboot.
-
-**Known issues**
-
-* Microsoft has confirmed a regression with Windows 11 starting around 24H2 that may cause performance issues for some users. These performance issues could manifest as mouse lag, audio cracking, or other slowdowns. A fix from Microsoft is expected in early July.
-* Devices with `KB5055523` installed may receive a warning about `Win32/ClickFix.ABA` being present in the installer. To resolve this false positive, update Microsoft Security Intelligence to [version 1.429.19.0](https://www.microsoft.com/en-us/wdsi/definitions/antimalware-definition-release-notes?requestVersion=1.429.19.0) or later.
-* DNS resolution may be broken when the following conditions are all true:  
-   * WARP is in Secure Web Gateway without DNS filtering (tunnel-only) mode.  
-   * A custom DNS server address is configured on the primary network adapter.  
-   * The custom DNS server address on the primary network adapter is changed while WARP is connected. To work around this issue, reconnect the WARP client by toggling off and back on.
-
 ## macOS
 
 [ Download latest beta release ](https://downloads.cloudflareclient.com/v1/download/macos/beta) 
@@ -320,7 +296,7 @@ This release introduces the new Cloudflare One Client UI for macOS! You can expe
 * Registration may hang at "Checking your organization configuration" due to IPC errors. A system reboot should resolve the error, allowing registration to proceed.
 * Split tunnel list configuration is not available in the new UI. Management of split tunnel entries is currently only possible via `warp-cli tunnel ip` and `warp-cli tunnel host`. UI support will be added in a future release.
 
-Previous version history (7)
+Previous version history (6)
 
 macOS 2026.3.566.1
 
@@ -443,24 +419,6 @@ This release contains minor fixes and improvements.
 
 * macOS Sequoia: Due to changes Apple introduced in macOS 15.0.x, the WARP client may not behave as expected. Cloudflare recommends the use of macOS 15.4 or later.
 * Devices using WARP client 2025.4.929.0 and up may experience Local Domain Fallback failures if a fallback server has not been configured. To configure a fallback server, refer to [Route traffic to fallback server](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/route-traffic/local-domains/#route-traffic-to-fallback-server).
-
-macOS 2025.5.828.1
-
-**Version:**  macOS 2025.5.828.1 **Date:**  2025-06-17 **Size:** 95.5 MB 
-
-[Download](https://downloads.cloudflareclient.com/v1/download/macos/version/2025.5.828.1) 
-
-#### Release notes
-
-This release contains new improvements in addition to the features and improvements introduced in Beta client version 2025.5.735.1.
-
-**Changes and improvements**
-
-* Improvement for WARP connectivity issues on macOS due to the operating system not accepting DNS server configurations.
-
-**Known issues**
-
-* macOS Sequoia: Due to changes Apple introduced in macOS 15.0.x, the WARP client may not behave as expected. Cloudflare recommends the use of macOS 15.4 or later.
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/download/beta-releases/#page","headline":"Download Cloudflare One Client beta releases · Cloudflare One docs","description":"Reference information for Download Cloudflare One Client beta releases in Zero Trust.","url":"https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/download/beta-releases/","inLanguage":"en","image":"https://developers.cloudflare.com/zt-preview.png","dateModified":"2026-04-17","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

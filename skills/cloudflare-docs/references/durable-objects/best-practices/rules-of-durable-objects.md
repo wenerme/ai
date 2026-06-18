@@ -36,8 +36,8 @@ Use plain Workers when you need:
 * **Maximum global distribution** — Requests should be handled at the nearest edge location
 * **High fan-out** — Each request is independent and can be processed in parallel
 
-* [  JavaScript ](#tab-panel-8257)
-* [  TypeScript ](#tab-panel-8258)
+* [  JavaScript ](#tab-panel-8259)
+* [  TypeScript ](#tab-panel-8260)
 
 index.js
 
@@ -252,8 +252,8 @@ The most important design decision is choosing what each Durable Object represen
 
 This is the key insight that makes Durable Objects powerful. Instead of a shared database with locks, each "atom" of your application gets its own single-threaded execution environment with private storage.
 
-* [  JavaScript ](#tab-panel-8245)
-* [  TypeScript ](#tab-panel-8246)
+* [  JavaScript ](#tab-panel-8247)
+* [  TypeScript ](#tab-panel-8248)
 
 index.js
 
@@ -390,8 +390,8 @@ If you have global application or user configuration that you need to access fre
 
 Do not create a single "global" Durable Object that handles all requests:
 
-* [  JavaScript ](#tab-panel-8243)
-* [  TypeScript ](#tab-panel-8244)
+* [  JavaScript ](#tab-panel-8245)
+* [  TypeScript ](#tab-panel-8246)
 
 index.js
 
@@ -539,8 +539,8 @@ Required DOs = (Total requests/second) / (Requests per DO capacity)
 
 Use `getByName()` with meaningful, deterministic strings for consistent routing. The same input always produces the same Durable Object ID, ensuring requests for the same logical entity always reach the same instance.
 
-* [  JavaScript ](#tab-panel-8247)
-* [  TypeScript ](#tab-panel-8248)
+* [  JavaScript ](#tab-panel-8249)
+* [  TypeScript ](#tab-panel-8250)
 
 index.js
 
@@ -657,8 +657,8 @@ Creating a stub does not instantiate or wake up the Durable Object. The Durable 
 
 Use `newUniqueId()` only when you need a new, random instance and will store the mapping externally:
 
-* [  JavaScript ](#tab-panel-8241)
-* [  TypeScript ](#tab-panel-8242)
+* [  JavaScript ](#tab-panel-8243)
+* [  TypeScript ](#tab-panel-8244)
 
 index.js
 
@@ -763,8 +763,8 @@ Do not put all your data in a single Durable Object. When you have hierarchical 
 
 This enables parallelism: operations on different children can happen concurrently, while each child maintains its own single-threaded consistency ([read more about this pattern](https://developers.cloudflare.com/reference-architecture/diagrams/storage/durable-object-control-data-plane-pattern/)).
 
-* [  JavaScript ](#tab-panel-8275)
-* [  TypeScript ](#tab-panel-8276)
+* [  JavaScript ](#tab-panel-8277)
+* [  TypeScript ](#tab-panel-8278)
 
 index.js
 
@@ -1031,8 +1031,8 @@ With this pattern:
 
 By default, a Durable Object is created near the location of the first request it receives. For most applications, this works well. However, you can provide a location hint to influence where the Durable Object is created.
 
-* [  JavaScript ](#tab-panel-8249)
-* [  TypeScript ](#tab-panel-8250)
+* [  JavaScript ](#tab-panel-8251)
+* [  TypeScript ](#tab-panel-8252)
 
 index.js
 
@@ -1133,8 +1133,8 @@ Location hints are suggestions, not guarantees. Refer to [Data location](https:/
 
 Configure your Durable Object class to use SQLite storage in your Wrangler configuration:
 
-* [  wrangler.jsonc ](#tab-panel-8237)
-* [  wrangler.toml ](#tab-panel-8238)
+* [  wrangler.jsonc ](#tab-panel-8239)
+* [  wrangler.toml ](#tab-panel-8240)
 
 JSONC
 
@@ -1168,8 +1168,8 @@ new_sqlite_classes = [ "ChatRoom" ]
 
 Then use the SQL API in your Durable Object:
 
-* [  JavaScript ](#tab-panel-8259)
-* [  TypeScript ](#tab-panel-8260)
+* [  JavaScript ](#tab-panel-8261)
+* [  TypeScript ](#tab-panel-8262)
 
 index.js
 
@@ -1354,8 +1354,8 @@ For production applications, use a migration library that handles version tracki
 
 If you prefer not to use a library, you can track schema versions manually using a `_sql_schema_migrations` table. The following example demonstrates this approach:
 
-* [  JavaScript ](#tab-panel-8271)
-* [  TypeScript ](#tab-panel-8272)
+* [  JavaScript ](#tab-panel-8273)
+* [  TypeScript ](#tab-panel-8274)
 
 index.js
 
@@ -1580,8 +1580,8 @@ Durable Objects provide multiple state management layers, each with different ch
 
 In-memory state is **not preserved** if the Durable Object is evicted from memory due to inactivity, or if it crashes from an uncaught exception. Always persist important state to SQLite storage.
 
-* [  JavaScript ](#tab-panel-8263)
-* [  TypeScript ](#tab-panel-8264)
+* [  JavaScript ](#tab-panel-8265)
+* [  TypeScript ](#tab-panel-8266)
 
 index.js
 
@@ -1751,8 +1751,8 @@ If an uncaught exception occurs in your Durable Object, the runtime may terminat
 
 Just like any database, indexes dramatically improve read performance for frequently-filtered columns. The cost is slightly more storage and marginally slower writes.
 
-* [  JavaScript ](#tab-panel-8261)
-* [  TypeScript ](#tab-panel-8262)
+* [  JavaScript ](#tab-panel-8263)
+* [  TypeScript ](#tab-panel-8264)
 
 index.js
 
@@ -1921,8 +1921,8 @@ While Durable Objects are single-threaded, JavaScript's `async`/`await` can allo
 
 **Input gates** block new events (incoming requests, fetch responses) while synchronous JavaScript execution is in progress. Awaiting async operations like `fetch()` or KV storage methods opens the input gate, allowing other requests to interleave. However, storage operations provide special protection:
 
-* [  JavaScript ](#tab-panel-8251)
-* [  TypeScript ](#tab-panel-8252)
+* [  JavaScript ](#tab-panel-8253)
+* [  TypeScript ](#tab-panel-8254)
 
 index.js
 
@@ -1993,8 +1993,8 @@ export class Counter extends DurableObject<Env> {
 
 **Output gates** hold outgoing network messages (responses, fetch requests) until pending storage writes complete. This ensures clients never see confirmation of data that has not been persisted:
 
-* [  JavaScript ](#tab-panel-8253)
-* [  TypeScript ](#tab-panel-8254)
+* [  JavaScript ](#tab-panel-8255)
+* [  TypeScript ](#tab-panel-8256)
 
 index.js
 
@@ -2083,8 +2083,8 @@ export class ChatRoom extends DurableObject<Env> {
 
 **Write coalescing:** Multiple storage writes without intervening `await` calls are automatically batched into a single atomic implicit transaction:
 
-* [  JavaScript ](#tab-panel-8265)
-* [  TypeScript ](#tab-panel-8266)
+* [  JavaScript ](#tab-panel-8267)
+* [  TypeScript ](#tab-panel-8268)
 
 index.js
 
@@ -2245,8 +2245,8 @@ For more details, see [Durable Objects: Easy, Fast, Correct — Choose three ↗
 
 Input gates only protect during storage operations. Non-storage I/O like `fetch()` or writing to R2 allows other requests to interleave, which can cause race conditions:
 
-* [  JavaScript ](#tab-panel-8255)
-* [  TypeScript ](#tab-panel-8256)
+* [  JavaScript ](#tab-panel-8257)
+* [  TypeScript ](#tab-panel-8258)
 
 index.js
 
@@ -2337,8 +2337,8 @@ With the legacy KV storage backend, use the [transaction()](https://developers.c
 
 The [blockConcurrencyWhile()](https://developers.cloudflare.com/durable-objects/api/state/#blockconcurrencywhile) method guarantees that no other events are processed until the provided callback completes, even if the callback performs asynchronous I/O. This is useful for operations that must be atomic, such as state initialization from storage in the constructor:
 
-* [  JavaScript ](#tab-panel-8273)
-* [  TypeScript ](#tab-panel-8274)
+* [  JavaScript ](#tab-panel-8275)
+* [  TypeScript ](#tab-panel-8276)
 
 index.js
 
@@ -2521,8 +2521,8 @@ Projects with a [compatibility date](https://developers.cloudflare.com/workers/c
 
 Define public methods on your Durable Object class, and call them directly from stubs with full TypeScript support:
 
-* [  JavaScript ](#tab-panel-8291)
-* [  TypeScript ](#tab-panel-8292)
+* [  JavaScript ](#tab-panel-8293)
+* [  TypeScript ](#tab-panel-8294)
 
 index.js
 
@@ -2770,8 +2770,8 @@ Refer to [Invoke methods](https://developers.cloudflare.com/durable-objects/best
 
 Durable Objects do not know their own name or ID from within. If your Durable Object needs to know its identity (for example, to store a reference to itself or to communicate with related objects), you must explicitly initialize it.
 
-* [  JavaScript ](#tab-panel-8283)
-* [  TypeScript ](#tab-panel-8284)
+* [  JavaScript ](#tab-panel-8285)
+* [  TypeScript ](#tab-panel-8286)
 
 index.js
 
@@ -2980,8 +2980,8 @@ export default {
 
 When calling methods on a Durable Object stub, always use `await`. Unawaited calls create dangling promises, causing errors to be swallowed and return values to be lost.
 
-* [  JavaScript ](#tab-panel-8269)
-* [  TypeScript ](#tab-panel-8270)
+* [  JavaScript ](#tab-panel-8271)
+* [  TypeScript ](#tab-panel-8272)
 
 index.js
 
@@ -3116,8 +3116,8 @@ export default {
 
 Uncaught exceptions in a Durable Object can leave it in an unknown state and may cause the runtime to terminate the instance. Wrap risky operations in `try...catch` blocks, and handle errors appropriately.
 
-* [  JavaScript ](#tab-panel-8277)
-* [  TypeScript ](#tab-panel-8278)
+* [  JavaScript ](#tab-panel-8279)
+* [  TypeScript ](#tab-panel-8280)
 
 index.js
 
@@ -3290,8 +3290,8 @@ Refer to [Error handling](https://developers.cloudflare.com/durable-objects/best
 
 The Hibernatable WebSockets API allows Durable Objects to sleep while maintaining WebSocket connections. This significantly reduces costs for applications with many idle connections.
 
-* [  JavaScript ](#tab-panel-8289)
-* [  TypeScript ](#tab-panel-8290)
+* [  JavaScript ](#tab-panel-8291)
+* [  TypeScript ](#tab-panel-8292)
 
 index.js
 
@@ -3513,8 +3513,8 @@ Refer to [WebSockets](https://developers.cloudflare.com/durable-objects/best-pra
 
 WebSocket attachments let you store metadata for each connection that survives hibernation. Use this for user IDs, session tokens, or other per-connection data.
 
-* [  JavaScript ](#tab-panel-8293)
-* [  TypeScript ](#tab-panel-8294)
+* [  JavaScript ](#tab-panel-8295)
+* [  TypeScript ](#tab-panel-8296)
 
 index.js
 
@@ -3796,8 +3796,8 @@ Key points about alarms:
 * **Alarms do not repeat automatically** — you must call `setAlarm()` again to schedule the next execution
 * **Only schedule alarms when there is work to do** — avoid waking up every Durable Object on short intervals (seconds), as each alarm invocation incurs costs
 
-* [  JavaScript ](#tab-panel-8287)
-* [  TypeScript ](#tab-panel-8288)
+* [  JavaScript ](#tab-panel-8289)
+* [  TypeScript ](#tab-panel-8290)
 
 index.js
 
@@ -3988,8 +3988,8 @@ export class GameMatch extends DurableObject<Env> {
 
 In rare cases, alarms may fire more than once. Your `alarm()` handler should be safe to run multiple times without causing issues.
 
-* [  JavaScript ](#tab-panel-8279)
-* [  TypeScript ](#tab-panel-8280)
+* [  JavaScript ](#tab-panel-8281)
+* [  TypeScript ](#tab-panel-8282)
 
 index.js
 
@@ -4140,8 +4140,8 @@ export class Subscription extends DurableObject<Env> {
 
 To fully clear a Durable Object's storage, call `deleteAll()`. Simply deleting individual keys or dropping tables is not sufficient, as some internal metadata may remain. Workers with a compatibility date before [2026-02-24](https://developers.cloudflare.com/workers/configuration/compatibility-flags/#durable-object-deleteall-deletes-alarms) and an alarm set should delete the alarm first with `deleteAlarm()`.
 
-* [  JavaScript ](#tab-panel-8267)
-* [  TypeScript ](#tab-panel-8268)
+* [  JavaScript ](#tab-panel-8269)
+* [  TypeScript ](#tab-panel-8270)
 
 index.js
 
@@ -4209,8 +4209,6 @@ export class ChatRoom extends DurableObject<Env> {
 
 Durable Objects may shut down at any time due to deployments, inactivity, or runtime decisions. Rather than relying on shutdown hooks (which are not provided), design your application to write state incrementally.
 
-Durable Objects may shut down due to deployments, inactivity, or runtime decisions. Rather than relying on shutdown hooks (which are not provided), design your application to write state incrementally.
-
 Shutdown hooks or lifecycle callbacks that run before shutdown are not provided because Cloudflare cannot guarantee these hooks would execute in all cases, and external software may rely too heavily on these (unreliable) hooks.
 
 Instead of relying on shutdown hooks, you can regularly write to storage to recover gracefully from shutdowns.
@@ -4252,8 +4250,8 @@ A single Durable Object handling all traffic becomes a bottleneck. While async o
 
 A common mistake is using a Durable Object for global rate limiting or global counters. This funnels all traffic through a single instance:
 
-* [  JavaScript ](#tab-panel-8281)
-* [  TypeScript ](#tab-panel-8282)
+* [  JavaScript ](#tab-panel-8283)
+* [  TypeScript ](#tab-panel-8284)
 
 index.js
 
@@ -4390,8 +4388,8 @@ This pattern does not scale. As traffic increases, the single Durable Object bec
 
 Use `@cloudflare/vitest-pool-workers` for testing Durable Objects. The integration provides utilities for direct instance access.
 
-* [  JavaScript ](#tab-panel-8285)
-* [  TypeScript ](#tab-panel-8286)
+* [  JavaScript ](#tab-panel-8287)
+* [  TypeScript ](#tab-panel-8288)
 
 test/chat-room.test.js
 
@@ -4568,8 +4566,8 @@ export default defineConfig({
 
 For schema changes, run migrations in the constructor using `blockConcurrencyWhile()`. For class renames or deletions, use Wrangler migrations:
 
-* [  wrangler.jsonc ](#tab-panel-8239)
-* [  wrangler.toml ](#tab-panel-8240)
+* [  wrangler.jsonc ](#tab-panel-8241)
+* [  wrangler.toml ](#tab-panel-8242)
 
 JSONC
 
@@ -4627,6 +4625,6 @@ Refer to [Durable Objects migrations](https://developers.cloudflare.com/durable-
 * [Rules of Workflows](https://developers.cloudflare.com/workflows/build/rules-of-workflows/): best practices for durable, multi-step Workflows — useful when combining Workflows with Durable Objects for long-running orchestration.
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/durable-objects/best-practices/rules-of-durable-objects/#page","headline":"Rules of Durable Objects · Cloudflare Durable Objects docs","description":"Design guidelines for building correct and effective Durable Objects applications, covering when and how to use them.","url":"https://developers.cloudflare.com/durable-objects/best-practices/rules-of-durable-objects/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-29","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/durable-objects/best-practices/rules-of-durable-objects/#page","headline":"Rules of Durable Objects · Cloudflare Durable Objects docs","description":"Design guidelines for building correct and effective Durable Objects applications, covering when and how to use them.","url":"https://developers.cloudflare.com/durable-objects/best-practices/rules-of-durable-objects/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-06-17","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/durable-objects/","name":"Durable Objects"}},{"@type":"ListItem","position":3,"item":{"@id":"/durable-objects/best-practices/","name":"Best practices"}},{"@type":"ListItem","position":4,"item":{"@id":"/durable-objects/best-practices/rules-of-durable-objects/","name":"Rules of Durable Objects"}}]}
 ```

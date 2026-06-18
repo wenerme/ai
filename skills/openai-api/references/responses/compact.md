@@ -1540,7 +1540,7 @@ Learn when and how to compact long-running conversations in the [conversation st
 
               - `"approximate"`
 
-        - `Mcp object { server_label, type, allowed_tools, 7 more }`
+        - `Mcp object { server_label, type, allowed_tools, 8 more }`
 
           Give the model access to additional tools via remote Model Context Protocol
           (MCP) servers. [Learn more about MCP](/docs/guides/tools-remote-mcp).
@@ -1586,8 +1586,8 @@ Learn when and how to compact long-running conversations in the [conversation st
           - `connector_id: optional "connector_dropbox" or "connector_gmail" or "connector_googlecalendar" or 5 more`
 
             Identifier for service connectors, like those available in ChatGPT. One of
-            `server_url` or `connector_id` must be provided. Learn more about service
-            connectors [here](/docs/guides/tools-remote-mcp#connectors).
+            `server_url`, `connector_id`, or `tunnel_id` must be provided. Learn more
+            about service connectors [here](/docs/guides/tools-remote-mcp#connectors).
 
             Currently supported `connector_id` values are:
 
@@ -1679,8 +1679,13 @@ Learn when and how to compact long-running conversations in the [conversation st
 
           - `server_url: optional string`
 
-            The URL for the MCP server. One of `server_url` or `connector_id` must be
-            provided.
+            The URL for the MCP server. One of `server_url`, `connector_id`, or
+            `tunnel_id` must be provided.
+
+          - `tunnel_id: optional string`
+
+            The Secure MCP Tunnel ID to use instead of a direct server URL. One of
+            `server_url`, `connector_id`, or `tunnel_id` must be provided.
 
         - `CodeInterpreter object { container, type }`
 
@@ -2488,7 +2493,7 @@ Learn when and how to compact long-running conversations in the [conversation st
 
               - `"approximate"`
 
-        - `Mcp object { server_label, type, allowed_tools, 7 more }`
+        - `Mcp object { server_label, type, allowed_tools, 8 more }`
 
           Give the model access to additional tools via remote Model Context Protocol
           (MCP) servers. [Learn more about MCP](/docs/guides/tools-remote-mcp).
@@ -2534,8 +2539,8 @@ Learn when and how to compact long-running conversations in the [conversation st
           - `connector_id: optional "connector_dropbox" or "connector_gmail" or "connector_googlecalendar" or 5 more`
 
             Identifier for service connectors, like those available in ChatGPT. One of
-            `server_url` or `connector_id` must be provided. Learn more about service
-            connectors [here](/docs/guides/tools-remote-mcp#connectors).
+            `server_url`, `connector_id`, or `tunnel_id` must be provided. Learn more
+            about service connectors [here](/docs/guides/tools-remote-mcp#connectors).
 
             Currently supported `connector_id` values are:
 
@@ -2627,8 +2632,13 @@ Learn when and how to compact long-running conversations in the [conversation st
 
           - `server_url: optional string`
 
-            The URL for the MCP server. One of `server_url` or `connector_id` must be
-            provided.
+            The URL for the MCP server. One of `server_url`, `connector_id`, or
+            `tunnel_id` must be provided.
+
+          - `tunnel_id: optional string`
+
+            The Secure MCP Tunnel ID to use instead of a direct server URL. One of
+            `server_url`, `connector_id`, or `tunnel_id` must be provided.
 
         - `CodeInterpreter object { container, type }`
 
@@ -4546,7 +4556,7 @@ Learn when and how to compact long-running conversations in the [conversation st
 
               - `"approximate"`
 
-        - `Mcp object { server_label, type, allowed_tools, 7 more }`
+        - `Mcp object { server_label, type, allowed_tools, 8 more }`
 
           Give the model access to additional tools via remote Model Context Protocol
           (MCP) servers. [Learn more about MCP](/docs/guides/tools-remote-mcp).
@@ -4592,8 +4602,8 @@ Learn when and how to compact long-running conversations in the [conversation st
           - `connector_id: optional "connector_dropbox" or "connector_gmail" or "connector_googlecalendar" or 5 more`
 
             Identifier for service connectors, like those available in ChatGPT. One of
-            `server_url` or `connector_id` must be provided. Learn more about service
-            connectors [here](/docs/guides/tools-remote-mcp#connectors).
+            `server_url`, `connector_id`, or `tunnel_id` must be provided. Learn more
+            about service connectors [here](/docs/guides/tools-remote-mcp#connectors).
 
             Currently supported `connector_id` values are:
 
@@ -4685,8 +4695,13 @@ Learn when and how to compact long-running conversations in the [conversation st
 
           - `server_url: optional string`
 
-            The URL for the MCP server. One of `server_url` or `connector_id` must be
-            provided.
+            The URL for the MCP server. One of `server_url`, `connector_id`, or
+            `tunnel_id` must be provided.
+
+          - `tunnel_id: optional string`
+
+            The Secure MCP Tunnel ID to use instead of a direct server URL. One of
+            `server_url`, `connector_id`, or `tunnel_id` must be provided.
 
         - `CodeInterpreter object { container, type }`
 
@@ -5490,7 +5505,7 @@ Learn when and how to compact long-running conversations in the [conversation st
 
               - `"approximate"`
 
-        - `Mcp object { server_label, type, allowed_tools, 7 more }`
+        - `Mcp object { server_label, type, allowed_tools, 8 more }`
 
           Give the model access to additional tools via remote Model Context Protocol
           (MCP) servers. [Learn more about MCP](/docs/guides/tools-remote-mcp).
@@ -5536,8 +5551,8 @@ Learn when and how to compact long-running conversations in the [conversation st
           - `connector_id: optional "connector_dropbox" or "connector_gmail" or "connector_googlecalendar" or 5 more`
 
             Identifier for service connectors, like those available in ChatGPT. One of
-            `server_url` or `connector_id` must be provided. Learn more about service
-            connectors [here](/docs/guides/tools-remote-mcp#connectors).
+            `server_url`, `connector_id`, or `tunnel_id` must be provided. Learn more
+            about service connectors [here](/docs/guides/tools-remote-mcp#connectors).
 
             Currently supported `connector_id` values are:
 
@@ -5629,8 +5644,13 @@ Learn when and how to compact long-running conversations in the [conversation st
 
           - `server_url: optional string`
 
-            The URL for the MCP server. One of `server_url` or `connector_id` must be
-            provided.
+            The URL for the MCP server. One of `server_url`, `connector_id`, or
+            `tunnel_id` must be provided.
+
+          - `tunnel_id: optional string`
+
+            The Secure MCP Tunnel ID to use instead of a direct server URL. One of
+            `server_url`, `connector_id`, or `tunnel_id` must be provided.
 
         - `CodeInterpreter object { container, type }`
 

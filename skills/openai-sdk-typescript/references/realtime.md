@@ -5042,8 +5042,8 @@
           - `connector_id?: "connector_dropbox" | "connector_gmail" | "connector_googlecalendar" | 5 more`
 
             Identifier for service connectors, like those available in ChatGPT. One of
-            `server_url` or `connector_id` must be provided. Learn more about service
-            connectors [here](https://platform.openai.com/docs/guides/tools-remote-mcp#connectors).
+            `server_url`, `connector_id`, or `tunnel_id` must be provided. Learn more
+            about service connectors [here](https://platform.openai.com/docs/guides/tools-remote-mcp#connectors).
 
             Currently supported `connector_id` values are:
 
@@ -5131,8 +5131,13 @@
 
           - `server_url?: string`
 
-            The URL for the MCP server. One of `server_url` or `connector_id` must be
-            provided.
+            The URL for the MCP server. One of `server_url`, `connector_id`, or
+            `tunnel_id` must be provided.
+
+          - `tunnel_id?: string`
+
+            The Secure MCP Tunnel ID to use instead of a direct server URL. One of
+            `server_url`, `connector_id`, or `tunnel_id` must be provided.
 
   - `SessionUpdateEvent`
 
@@ -5557,8 +5562,8 @@
             - `connector_id?: "connector_dropbox" | "connector_gmail" | "connector_googlecalendar" | 5 more`
 
               Identifier for service connectors, like those available in ChatGPT. One of
-              `server_url` or `connector_id` must be provided. Learn more about service
-              connectors [here](https://platform.openai.com/docs/guides/tools-remote-mcp#connectors).
+              `server_url`, `connector_id`, or `tunnel_id` must be provided. Learn more
+              about service connectors [here](https://platform.openai.com/docs/guides/tools-remote-mcp#connectors).
 
               Currently supported `connector_id` values are:
 
@@ -5646,8 +5651,13 @@
 
             - `server_url?: string`
 
-              The URL for the MCP server. One of `server_url` or `connector_id` must be
-              provided.
+              The URL for the MCP server. One of `server_url`, `connector_id`, or
+              `tunnel_id` must be provided.
+
+            - `tunnel_id?: string`
+
+              The Secure MCP Tunnel ID to use instead of a direct server URL. One of
+              `server_url`, `connector_id`, or `tunnel_id` must be provided.
 
         - `tracing?: RealtimeTracingConfig | null`
 
@@ -7292,8 +7302,8 @@
   - `connector_id?: "connector_dropbox" | "connector_gmail" | "connector_googlecalendar" | 5 more`
 
     Identifier for service connectors, like those available in ChatGPT. One of
-    `server_url` or `connector_id` must be provided. Learn more about service
-    connectors [here](https://platform.openai.com/docs/guides/tools-remote-mcp#connectors).
+    `server_url`, `connector_id`, or `tunnel_id` must be provided. Learn more
+    about service connectors [here](https://platform.openai.com/docs/guides/tools-remote-mcp#connectors).
 
     Currently supported `connector_id` values are:
 
@@ -7381,8 +7391,13 @@
 
   - `server_url?: string`
 
-    The URL for the MCP server. One of `server_url` or `connector_id` must be
-    provided.
+    The URL for the MCP server. One of `server_url`, `connector_id`, or
+    `tunnel_id` must be provided.
+
+  - `tunnel_id?: string`
+
+    The Secure MCP Tunnel ID to use instead of a direct server URL. One of
+    `server_url`, `connector_id`, or `tunnel_id` must be provided.
 
 ### Realtime Response Create Params
 
@@ -8207,8 +8222,8 @@
       - `connector_id?: "connector_dropbox" | "connector_gmail" | "connector_googlecalendar" | 5 more`
 
         Identifier for service connectors, like those available in ChatGPT. One of
-        `server_url` or `connector_id` must be provided. Learn more about service
-        connectors [here](https://platform.openai.com/docs/guides/tools-remote-mcp#connectors).
+        `server_url`, `connector_id`, or `tunnel_id` must be provided. Learn more
+        about service connectors [here](https://platform.openai.com/docs/guides/tools-remote-mcp#connectors).
 
         Currently supported `connector_id` values are:
 
@@ -8296,8 +8311,13 @@
 
       - `server_url?: string`
 
-        The URL for the MCP server. One of `server_url` or `connector_id` must be
-        provided.
+        The URL for the MCP server. One of `server_url`, `connector_id`, or
+        `tunnel_id` must be provided.
+
+      - `tunnel_id?: string`
+
+        The Secure MCP Tunnel ID to use instead of a direct server URL. One of
+        `server_url`, `connector_id`, or `tunnel_id` must be provided.
 
 ### Realtime Response Status
 
@@ -10779,8 +10799,8 @@
             - `connector_id?: "connector_dropbox" | "connector_gmail" | "connector_googlecalendar" | 5 more`
 
               Identifier for service connectors, like those available in ChatGPT. One of
-              `server_url` or `connector_id` must be provided. Learn more about service
-              connectors [here](https://platform.openai.com/docs/guides/tools-remote-mcp#connectors).
+              `server_url`, `connector_id`, or `tunnel_id` must be provided. Learn more
+              about service connectors [here](https://platform.openai.com/docs/guides/tools-remote-mcp#connectors).
 
               Currently supported `connector_id` values are:
 
@@ -10868,8 +10888,13 @@
 
             - `server_url?: string`
 
-              The URL for the MCP server. One of `server_url` or `connector_id` must be
-              provided.
+              The URL for the MCP server. One of `server_url`, `connector_id`, or
+              `tunnel_id` must be provided.
+
+            - `tunnel_id?: string`
+
+              The Secure MCP Tunnel ID to use instead of a direct server URL. One of
+              `server_url`, `connector_id`, or `tunnel_id` must be provided.
 
         - `tracing?: RealtimeTracingConfig | null`
 
@@ -12588,8 +12613,8 @@
       - `connector_id?: "connector_dropbox" | "connector_gmail" | "connector_googlecalendar" | 5 more`
 
         Identifier for service connectors, like those available in ChatGPT. One of
-        `server_url` or `connector_id` must be provided. Learn more about service
-        connectors [here](https://platform.openai.com/docs/guides/tools-remote-mcp#connectors).
+        `server_url`, `connector_id`, or `tunnel_id` must be provided. Learn more
+        about service connectors [here](https://platform.openai.com/docs/guides/tools-remote-mcp#connectors).
 
         Currently supported `connector_id` values are:
 
@@ -12677,8 +12702,13 @@
 
       - `server_url?: string`
 
-        The URL for the MCP server. One of `server_url` or `connector_id` must be
-        provided.
+        The URL for the MCP server. One of `server_url`, `connector_id`, or
+        `tunnel_id` must be provided.
+
+      - `tunnel_id?: string`
+
+        The Secure MCP Tunnel ID to use instead of a direct server URL. One of
+        `server_url`, `connector_id`, or `tunnel_id` must be provided.
 
   - `tracing?: RealtimeTracingConfig | null`
 
@@ -12877,8 +12907,8 @@
     - `connector_id?: "connector_dropbox" | "connector_gmail" | "connector_googlecalendar" | 5 more`
 
       Identifier for service connectors, like those available in ChatGPT. One of
-      `server_url` or `connector_id` must be provided. Learn more about service
-      connectors [here](https://platform.openai.com/docs/guides/tools-remote-mcp#connectors).
+      `server_url`, `connector_id`, or `tunnel_id` must be provided. Learn more
+      about service connectors [here](https://platform.openai.com/docs/guides/tools-remote-mcp#connectors).
 
       Currently supported `connector_id` values are:
 
@@ -12966,8 +12996,13 @@
 
     - `server_url?: string`
 
-      The URL for the MCP server. One of `server_url` or `connector_id` must be
-      provided.
+      The URL for the MCP server. One of `server_url`, `connector_id`, or
+      `tunnel_id` must be provided.
+
+    - `tunnel_id?: string`
+
+      The Secure MCP Tunnel ID to use instead of a direct server URL. One of
+      `server_url`, `connector_id`, or `tunnel_id` must be provided.
 
 ### Realtime Tools Config Union
 
@@ -13042,8 +13077,8 @@
     - `connector_id?: "connector_dropbox" | "connector_gmail" | "connector_googlecalendar" | 5 more`
 
       Identifier for service connectors, like those available in ChatGPT. One of
-      `server_url` or `connector_id` must be provided. Learn more about service
-      connectors [here](https://platform.openai.com/docs/guides/tools-remote-mcp#connectors).
+      `server_url`, `connector_id`, or `tunnel_id` must be provided. Learn more
+      about service connectors [here](https://platform.openai.com/docs/guides/tools-remote-mcp#connectors).
 
       Currently supported `connector_id` values are:
 
@@ -13131,8 +13166,13 @@
 
     - `server_url?: string`
 
-      The URL for the MCP server. One of `server_url` or `connector_id` must be
-      provided.
+      The URL for the MCP server. One of `server_url`, `connector_id`, or
+      `tunnel_id` must be provided.
+
+    - `tunnel_id?: string`
+
+      The Secure MCP Tunnel ID to use instead of a direct server URL. One of
+      `server_url`, `connector_id`, or `tunnel_id` must be provided.
 
 ### Realtime Tracing Config
 
@@ -16138,8 +16178,8 @@
         - `connector_id?: "connector_dropbox" | "connector_gmail" | "connector_googlecalendar" | 5 more`
 
           Identifier for service connectors, like those available in ChatGPT. One of
-          `server_url` or `connector_id` must be provided. Learn more about service
-          connectors [here](https://platform.openai.com/docs/guides/tools-remote-mcp#connectors).
+          `server_url`, `connector_id`, or `tunnel_id` must be provided. Learn more
+          about service connectors [here](https://platform.openai.com/docs/guides/tools-remote-mcp#connectors).
 
           Currently supported `connector_id` values are:
 
@@ -16227,8 +16267,13 @@
 
         - `server_url?: string`
 
-          The URL for the MCP server. One of `server_url` or `connector_id` must be
-          provided.
+          The URL for the MCP server. One of `server_url`, `connector_id`, or
+          `tunnel_id` must be provided.
+
+        - `tunnel_id?: string`
+
+          The Secure MCP Tunnel ID to use instead of a direct server URL. One of
+          `server_url`, `connector_id`, or `tunnel_id` must be provided.
 
 ### Response Created Event
 
@@ -19449,8 +19494,8 @@
           - `connector_id?: "connector_dropbox" | "connector_gmail" | "connector_googlecalendar" | 5 more`
 
             Identifier for service connectors, like those available in ChatGPT. One of
-            `server_url` or `connector_id` must be provided. Learn more about service
-            connectors [here](https://platform.openai.com/docs/guides/tools-remote-mcp#connectors).
+            `server_url`, `connector_id`, or `tunnel_id` must be provided. Learn more
+            about service connectors [here](https://platform.openai.com/docs/guides/tools-remote-mcp#connectors).
 
             Currently supported `connector_id` values are:
 
@@ -19538,8 +19583,13 @@
 
           - `server_url?: string`
 
-            The URL for the MCP server. One of `server_url` or `connector_id` must be
-            provided.
+            The URL for the MCP server. One of `server_url`, `connector_id`, or
+            `tunnel_id` must be provided.
+
+          - `tunnel_id?: string`
+
+            The Secure MCP Tunnel ID to use instead of a direct server URL. One of
+            `server_url`, `connector_id`, or `tunnel_id` must be provided.
 
       - `tracing?: RealtimeTracingConfig | null`
 
@@ -20374,8 +20424,8 @@
           - `connector_id?: "connector_dropbox" | "connector_gmail" | "connector_googlecalendar" | 5 more`
 
             Identifier for service connectors, like those available in ChatGPT. One of
-            `server_url` or `connector_id` must be provided. Learn more about service
-            connectors [here](https://platform.openai.com/docs/guides/tools-remote-mcp#connectors).
+            `server_url`, `connector_id`, or `tunnel_id` must be provided. Learn more
+            about service connectors [here](https://platform.openai.com/docs/guides/tools-remote-mcp#connectors).
 
             Currently supported `connector_id` values are:
 
@@ -20463,8 +20513,13 @@
 
           - `server_url?: string`
 
-            The URL for the MCP server. One of `server_url` or `connector_id` must be
-            provided.
+            The URL for the MCP server. One of `server_url`, `connector_id`, or
+            `tunnel_id` must be provided.
+
+          - `tunnel_id?: string`
+
+            The Secure MCP Tunnel ID to use instead of a direct server URL. One of
+            `server_url`, `connector_id`, or `tunnel_id` must be provided.
 
       - `tracing?: RealtimeTracingConfig | null`
 
@@ -21299,8 +21354,8 @@
           - `connector_id?: "connector_dropbox" | "connector_gmail" | "connector_googlecalendar" | 5 more`
 
             Identifier for service connectors, like those available in ChatGPT. One of
-            `server_url` or `connector_id` must be provided. Learn more about service
-            connectors [here](https://platform.openai.com/docs/guides/tools-remote-mcp#connectors).
+            `server_url`, `connector_id`, or `tunnel_id` must be provided. Learn more
+            about service connectors [here](https://platform.openai.com/docs/guides/tools-remote-mcp#connectors).
 
             Currently supported `connector_id` values are:
 
@@ -21388,8 +21443,13 @@
 
           - `server_url?: string`
 
-            The URL for the MCP server. One of `server_url` or `connector_id` must be
-            provided.
+            The URL for the MCP server. One of `server_url`, `connector_id`, or
+            `tunnel_id` must be provided.
+
+          - `tunnel_id?: string`
+
+            The Secure MCP Tunnel ID to use instead of a direct server URL. One of
+            `server_url`, `connector_id`, or `tunnel_id` must be provided.
 
       - `tracing?: RealtimeTracingConfig | null`
 
@@ -22520,8 +22580,8 @@ Returns the created client secret and the effective session object. The client s
           - `connector_id?: "connector_dropbox" | "connector_gmail" | "connector_googlecalendar" | 5 more`
 
             Identifier for service connectors, like those available in ChatGPT. One of
-            `server_url` or `connector_id` must be provided. Learn more about service
-            connectors [here](https://platform.openai.com/docs/guides/tools-remote-mcp#connectors).
+            `server_url`, `connector_id`, or `tunnel_id` must be provided. Learn more
+            about service connectors [here](https://platform.openai.com/docs/guides/tools-remote-mcp#connectors).
 
             Currently supported `connector_id` values are:
 
@@ -22609,8 +22669,13 @@ Returns the created client secret and the effective session object. The client s
 
           - `server_url?: string`
 
-            The URL for the MCP server. One of `server_url` or `connector_id` must be
-            provided.
+            The URL for the MCP server. One of `server_url`, `connector_id`, or
+            `tunnel_id` must be provided.
+
+          - `tunnel_id?: string`
+
+            The Secure MCP Tunnel ID to use instead of a direct server URL. One of
+            `server_url`, `connector_id`, or `tunnel_id` must be provided.
 
       - `tracing?: RealtimeTracingConfig | null`
 
@@ -23432,8 +23497,8 @@ Returns the created client secret and the effective session object. The client s
           - `connector_id?: "connector_dropbox" | "connector_gmail" | "connector_googlecalendar" | 5 more`
 
             Identifier for service connectors, like those available in ChatGPT. One of
-            `server_url` or `connector_id` must be provided. Learn more about service
-            connectors [here](https://platform.openai.com/docs/guides/tools-remote-mcp#connectors).
+            `server_url`, `connector_id`, or `tunnel_id` must be provided. Learn more
+            about service connectors [here](https://platform.openai.com/docs/guides/tools-remote-mcp#connectors).
 
             Currently supported `connector_id` values are:
 
@@ -23521,8 +23586,13 @@ Returns the created client secret and the effective session object. The client s
 
           - `server_url?: string`
 
-            The URL for the MCP server. One of `server_url` or `connector_id` must be
-            provided.
+            The URL for the MCP server. One of `server_url`, `connector_id`, or
+            `tunnel_id` must be provided.
+
+          - `tunnel_id?: string`
+
+            The Secure MCP Tunnel ID to use instead of a direct server URL. One of
+            `server_url`, `connector_id`, or `tunnel_id` must be provided.
 
       - `tracing?: "auto" | TracingConfiguration | null`
 
@@ -24370,8 +24440,8 @@ console.log(clientSecret.expires_at);
       - `connector_id?: "connector_dropbox" | "connector_gmail" | "connector_googlecalendar" | 5 more`
 
         Identifier for service connectors, like those available in ChatGPT. One of
-        `server_url` or `connector_id` must be provided. Learn more about service
-        connectors [here](https://platform.openai.com/docs/guides/tools-remote-mcp#connectors).
+        `server_url`, `connector_id`, or `tunnel_id` must be provided. Learn more
+        about service connectors [here](https://platform.openai.com/docs/guides/tools-remote-mcp#connectors).
 
         Currently supported `connector_id` values are:
 
@@ -24459,8 +24529,13 @@ console.log(clientSecret.expires_at);
 
       - `server_url?: string`
 
-        The URL for the MCP server. One of `server_url` or `connector_id` must be
-        provided.
+        The URL for the MCP server. One of `server_url`, `connector_id`, or
+        `tunnel_id` must be provided.
+
+      - `tunnel_id?: string`
+
+        The Secure MCP Tunnel ID to use instead of a direct server URL. One of
+        `server_url`, `connector_id`, or `tunnel_id` must be provided.
 
   - `tracing?: "auto" | TracingConfiguration | null`
 
@@ -25342,8 +25417,8 @@ console.log(clientSecret.expires_at);
           - `connector_id?: "connector_dropbox" | "connector_gmail" | "connector_googlecalendar" | 5 more`
 
             Identifier for service connectors, like those available in ChatGPT. One of
-            `server_url` or `connector_id` must be provided. Learn more about service
-            connectors [here](https://platform.openai.com/docs/guides/tools-remote-mcp#connectors).
+            `server_url`, `connector_id`, or `tunnel_id` must be provided. Learn more
+            about service connectors [here](https://platform.openai.com/docs/guides/tools-remote-mcp#connectors).
 
             Currently supported `connector_id` values are:
 
@@ -25431,8 +25506,13 @@ console.log(clientSecret.expires_at);
 
           - `server_url?: string`
 
-            The URL for the MCP server. One of `server_url` or `connector_id` must be
-            provided.
+            The URL for the MCP server. One of `server_url`, `connector_id`, or
+            `tunnel_id` must be provided.
+
+          - `tunnel_id?: string`
+
+            The Secure MCP Tunnel ID to use instead of a direct server URL. One of
+            `server_url`, `connector_id`, or `tunnel_id` must be provided.
 
       - `tracing?: "auto" | TracingConfiguration | null`
 
@@ -26198,8 +26278,8 @@ handle it.
       - `connector_id?: "connector_dropbox" | "connector_gmail" | "connector_googlecalendar" | 5 more`
 
         Identifier for service connectors, like those available in ChatGPT. One of
-        `server_url` or `connector_id` must be provided. Learn more about service
-        connectors [here](https://platform.openai.com/docs/guides/tools-remote-mcp#connectors).
+        `server_url`, `connector_id`, or `tunnel_id` must be provided. Learn more
+        about service connectors [here](https://platform.openai.com/docs/guides/tools-remote-mcp#connectors).
 
         Currently supported `connector_id` values are:
 
@@ -26287,8 +26367,13 @@ handle it.
 
       - `server_url?: string`
 
-        The URL for the MCP server. One of `server_url` or `connector_id` must be
-        provided.
+        The URL for the MCP server. One of `server_url`, `connector_id`, or
+        `tunnel_id` must be provided.
+
+      - `tunnel_id?: string`
+
+        The Secure MCP Tunnel ID to use instead of a direct server URL. One of
+        `server_url`, `connector_id`, or `tunnel_id` must be provided.
 
   - `tracing?: RealtimeTracingConfig | null`
 

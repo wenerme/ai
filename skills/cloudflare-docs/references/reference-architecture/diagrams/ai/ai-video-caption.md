@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 # Automatic captioning for video uploads
 
-**Last reviewed:**  about 2 years ago 
+**Last reviewed:**  over 2 years ago 
 
 ## Introduction
 

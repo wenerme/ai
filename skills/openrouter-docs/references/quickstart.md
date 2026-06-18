@@ -15,7 +15,7 @@ There are three ways to integrate with OpenRouter, depending on how much control
 | **[Agent SDK](#using-the-agent-sdk)**     | Building agents with tool use, loops, and state |
 
 ```
-Read https://openrouter.ai/skills/create-agent/SKILL.md and follow the instructions to build an agent using OpenRouter.
+Read https://github.com/OpenRouterTeam/skills/tree/main/skills/create-agent-tui and follow the instructions to build an agent using OpenRouter.
 ```
 
 Looking for information about free models and rate limits? Please see the [FAQ](/docs/faq#how-are-rate-limits-calculated)

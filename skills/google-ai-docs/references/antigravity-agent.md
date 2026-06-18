@@ -1,5 +1,3 @@
-# Antigravity Agent
-
 The Antigravity agent is a general-purpose managed agent on the Gemini API. A single API call gives you an agent that reasons, executes code, manages files, and browses the web inside your own secure Linux sandbox, hosted by Google.
 
 It is powered by Gemini 3.5 Flash and uses the same harness as the Antigravity IDE. Available through the [Interactions API](https://ai.google.dev/gemini-api/docs/interactions) and [Google AI Studio](https://aistudio.google.com).
@@ -57,7 +55,7 @@ See the [Quickstart](https://ai.google.dev/gemini-api/docs/managed-agents-quicks
 
 ## Supported tools
 
-By default, the agent has access to `code_execution`, `google_search`, and `url_context`. Filesystem tools are enabled automatically when you specify the `environment` parameter. You only need to specify the `tools` parameter when customizing or restricting the default set.
+By default, the agent has access to `code_execution`, `google_search`, and `url_context`. Filesystem tools are enabled automatically when you specify the `environment` parameter. You can also define **custom functions** to connect the agent to your own APIs and tools. You only need to specify the `tools` parameter when customizing or restricting the default set, or when adding custom functions.
 
 | Tool | Type value | Description |
 |---|---|---|
@@ -65,6 +63,7 @@ By default, the agent has access to `code_execution`, `google_search`, and `url_
 | Google Search | `google_search` | Search the public web. |
 | URL Context | `url_context` | Fetch and read web pages. |
 | Filesystem | *(enabled via `environment`)* | Read, write, edit, search, and list files in the sandbox. No separate tool type; enabled automatically when `environment` is set. |
+| Custom Functions | `function` | Define custom functions that the agent can request to execute. See [Function calling](https://ai.google.dev/gemini-api/docs/antigravity-agent#function-calling). |
 
 To limit the agent to specific tools, pass only the ones you need:
 
@@ -191,6 +190,220 @@ The Antigravity agent supports multimodal inputs. Currently, only `text` and `im
         \"environment\": \"remote\"
     }"
 
+## Function calling
+
+Function calling allows you to connect the Antigravity agent to external APIs and databases by defining custom tools the agent can invoke. For general concepts, see [Function calling with the Gemini API](https://ai.google.dev/gemini-api/docs/interactions/function-calling).
+
+The following example demonstrates a 2-turn interaction. The agent first requests a custom `get_weather` function call, and the client executes it and returns the result in the second turn.
+
+### Python
+
+    from google import genai
+
+    client = genai.Client()
+
+    # 1. Define the custom function
+    get_weather_tool = {
+        "type": "function",
+        "name": "get_weather",
+        "description": "Gets the current weather for a given location.",
+        "parameters": {
+            "type": "object",
+            "properties": {
+                "location": {
+                    "type": "string",
+                    "description": "The city and country, e.g. San Francisco, USA",
+                }
+            },
+            "required": ["location"],
+        },
+    }
+
+    # 2. Call the agent with the custom tool (Turn 1)
+    interaction = client.interactions.create(
+        agent="antigravity-preview-05-2026",
+        input="What is the weather in Tokyo?",
+        environment="remote",
+        tools=[
+            {"type": "code_execution"},  # Enable default code execution
+            get_weather_tool,            # Add custom function
+        ],
+    )
+
+    # Check if the agent requested a function call
+    if interaction.status == "requires_action":
+        # Find function calls that do not have a matching function result.
+        # Filesystem tools (like write_file) are also represented as function calls
+        # but are executed automatically by the environment.
+        executed_calls = {step.call_id for step in interaction.steps if step.type == "function_result"}
+        pending_calls = [step for step in interaction.steps if step.type == "function_call" and step.id not in executed_calls]
+
+        if pending_calls:
+            fc_step = pending_calls[0]
+            print(f"Function to call: {fc_step.name} (ID: {fc_step.id})")
+            print(f"Arguments: {fc_step.arguments}")
+
+            # 3. Execute the function locally (simulated get_weather()) and send the result back (Turn 2)
+            function_result = {
+                "temperature": 23,
+                "unit": "celsius"
+            }
+
+            final_interaction = client.interactions.create(
+                agent="antigravity-preview-05-2026",
+                previous_interaction_id=interaction.id,  # Reference the interaction ID
+                environment=interaction.environment_id,
+                input=[
+                    {
+                        "type": "function_result",
+                        "name": fc_step.name,
+                        "call_id": fc_step.id,
+                        "result": function_result,
+                    }
+                ],
+            )
+
+            print(final_interaction.output_text)
+            # Output: The current weather in Tokyo, Japan is 23°C (Celsius).
+        else:
+            print("No pending function calls.")
+    else:
+        print(f"Interaction completed with status: {interaction.status}")
+
+### JavaScript
+
+    import { GoogleGenAI } from "@google/genai";
+
+    const client = new GoogleGenAI({});
+
+    // 1. Define the custom function
+    const get_weather_tool = {
+      type: "function",
+      name: "get_weather",
+      description: "Gets the current weather for a given location.",
+      parameters: {
+        type: "object",
+        properties: {
+          location: {
+            type: "string",
+            description: "The city and country, e.g. San Francisco, USA",
+          },
+        },
+        required: ["location"],
+      },
+    };
+
+    // 2. Call the agent with the custom tool (Turn 1)
+    const interaction = await client.interactions.create({
+      agent: "antigravity-preview-05-2026",
+      input: "What is the weather in Tokyo?",
+      environment: "remote",
+      tools: [
+        { type: "code_execution" },
+        get_weather_tool,
+      ],
+    }, { timeout: 300000 });
+
+    if (interaction.status === "requires_action") {
+      // Find function calls that do not have a matching function result.
+      // Filesystem tools (like write_file) are also represented as function calls
+      // but are executed automatically by the environment.
+      const executedCalls = new Set(
+        interaction.steps
+          .filter(s => s.type === "function_result")
+          .map(s => s.call_id)
+      );
+      const pendingCalls = interaction.steps.filter(
+        s => s.type === "function_call" && !executedCalls.has(s.id)
+      );
+
+      if (pendingCalls.length > 0) {
+        const fcStep = pendingCalls[0];
+        console.log(`Function to call: ${fcStep.name} (ID: ${fcStep.id})`);
+
+        // 3. Execute the function locally (simulated get_weather()) and send the result back (Turn 2)
+        const functionResult = {
+          temperature: 23,
+          unit: "celsius"
+        };
+
+        const finalInteraction = await client.interactions.create({
+          agent: "antigravity-preview-05-2026",
+          previous_interaction_id: interaction.id, // Reference the interaction ID
+          environment: interaction.environment_id,
+          input: [
+            {
+              type: "function_result",
+              name: fcStep.name,
+              call_id: fcStep.id,
+              result: functionResult,
+            }
+          ],
+        }, { timeout: 300000 });
+
+        console.log(finalInteraction.output_text);
+      } else {
+        console.log("No pending function calls.");
+      }
+    } else {
+      console.log(`Interaction completed with status: ${interaction.status}`);
+    }
+
+### REST
+
+    # 1. Turn 1: Request function call
+    RESPONSE=$(curl -s -X POST "https://generativelanguage.googleapis.com/v1beta/interactions" \
+      -H "Content-Type: application/json" \
+      -H "x-goog-api-key: $GEMINI_API_KEY" \
+      -H "Api-Revision: 2026-05-20" \
+      -d '{
+          "agent": "antigravity-preview-05-2026",
+          "input": "What is the weather in Tokyo?",
+          "environment": "remote",
+          "tools": [
+              {"type": "code_execution"},
+              {
+                  "type": "function",
+                  "name": "get_weather",
+                  "description": "Gets the current weather for a given location.",
+                  "parameters": {
+                      "type": "object",
+                      "properties": {
+                          "location": {"type": "string"}
+                      },
+                      "required": ["location"]
+                  }
+              }
+          ]
+      }')
+
+    # Extract interaction ID, environment ID, and call ID (requires jq)
+    INTERACTION_ID=$(echo $RESPONSE | jq -r '.id')
+    ENVIRONMENT_ID=$(echo $RESPONSE | jq -r '.environment_id')
+    CALL_ID=$(echo $RESPONSE | jq -r '.steps[] | select(.type=="function_call") | .id')
+
+    # 2. Turn 2: Send function result back using variables
+    curl -X POST "https://generativelanguage.googleapis.com/v1beta/interactions" \
+      -H "Content-Type: application/json" \
+      -H "x-goog-api-key: $GEMINI_API_KEY" \
+      -H "Api-Revision: 2026-05-20" \
+      -d "{
+          \"agent\": \"antigravity-preview-05-2026\",
+          \"previous_interaction_id\": \"$INTERACTION_ID\",
+          \"environment\": \"$ENVIRONMENT_ID\",
+          \"input\": [
+              {
+                  \"type\": \"function_result\",
+                  \"name\": \"get_weather\",
+                  \"call_id\": \"$CALL_ID\",
+                  \"result\": {
+                      \"temperature\": 23,
+                      \"unit\": \"celsius\"
+                  }
+              }
+          ]
+      }"
+
 ## Customizing the agent
 
 You can extend the Antigravity agent by customizing its instructions, tools, and environment. The agent supports a filesystem-native approach to customization: you can mount files like `AGENTS.md` for instructions and skills under `.agents/skills/` directly into the sandbox, or pass configuration inline at interaction time. You can iterate on your configuration inline and then save it as a managed agent when you are ready.
@@ -238,9 +451,10 @@ Costs vary based on task complexity. The agent autonomously determines how many 
 - **Preview status:** The Antigravity agent and the Interactions API are in preview. Features and schemas may change.
 - **Unsupported generation config:** The following parameters are not supported and return a 400 error: `temperature`, `top_p`, `top_k`, `stop_sequences`, `max_output_tokens`.
 - **Structured output:** The Antigravity agent does not support structured outputs.
-- **Unavailable tools:** `file_search`, `computer_use`, `google_maps`, `function_calling` and `mcp` are not yet supported.
+- **Unavailable tools:** `file_search`, `computer_use`, `google_maps`, and `mcp` are not yet supported.
 - **Filesystem tool:** There is no filesystem tool at the moment. It is part of the `environment`.
 - **Background:** Agent does not support using `background=True` and requires `store=True`.
+- **Stateful only function calling:** Function calling is only supported in stateful mode. You must use `previous_interaction_id` to continue the turn; reconstructing history manually (stateless mode) is not supported.
 - **Unsupported multimodal types.** Audio, video, and document inputs are not supported at the moment. Only text and image are allowed.
 
 ## What's next

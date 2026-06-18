@@ -104,7 +104,11 @@ Blocked users can still connect to the server (and bypass your Access policies) 
 8. Select **Save and connect server**.
 9. If the MCP server supports OAuth, you will be redirected to log in to your OAuth provider. You can log in to any account on the MCP server. The account used to authenticate will serve as the admin credential for that MCP server. You can [configure an MCP portal](#create-a-portal) to use this admin credential to make requests.
 
-Cloudflare Access will validate the server connection and fetch a list of tools and prompts. Once the server is successfully connected, the [server status](#server-status) will change to **Ready**. You can now add the MCP server to an [MCP server portal](#create-a-portal).
+Cloudflare Access will validate the server connection and retrieve a list of resources, prompts, and tools. Once the server is successfully connected, the [server status](#server-status) will change to **Ready**. You can now add the MCP server to an [MCP server portal](#create-a-portal).
+
+### MCP Apps
+
+[MCP Apps ↗](https://modelcontextprotocol.io/extensions/apps/overview) — tools that declare a UI resource in their description — will also be available after successfully connecting to an MCP server. A list of MCP clients that support MCP Apps is available in the [Extension Support Matrix ↗](https://modelcontextprotocol.io/extensions/client-matrix).
 
 ### Server status
 
@@ -309,8 +313,8 @@ If no alias is set, the portal uses the original name and description from the u
 
 #### Set aliases in the dashboard
 
-* [ Portal-level alias ](#tab-panel-7083)
-* [ Server-level alias ](#tab-panel-7084)
+* [ Portal-level alias ](#tab-panel-7085)
+* [ Server-level alias ](#tab-panel-7086)
 
 To set an alias that applies to a specific portal:
 
@@ -737,8 +741,8 @@ For more information on building with code mode, refer to the [code mode SDK ref
 
 To turn off code mode for a portal:
 
-* [ Dashboard ](#tab-panel-7085)
-* [ API ](#tab-panel-7086)
+* [ Dashboard ](#tab-panel-7087)
+* [ API ](#tab-panel-7088)
 
 1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** \> **Access controls** \> **AI controls**.
 2. Find the portal you want to configure, then select the three dots > **Edit**.
@@ -776,6 +780,16 @@ Note
 
 Gateway routing only applies to real-time tool calls made by users through the portal. Background operations such as [admin credential synchronization](#synchronize-the-mcp-server) do not route through Gateway and will not use your egress policy IPs.
 
+### TLS decryption
+
+DLP inspection requires Gateway to decrypt TLS traffic. For portal traffic, Gateway decrypts and inspects the payload automatically — you do not need to turn on the account-level [TLS decryption](https://developers.cloudflare.com/cloudflare-one/traffic-policies/http-policies/tls-decryption/) setting. Because the portal terminates the connection from the MCP client and re-originates the request through Gateway, Gateway decrypts portal traffic regardless of whether the global TLS decryption setting is on.
+
+This automatic decryption applies only to traffic that flows through the portal. To inspect MCP traffic that does not pass through the portal — for example, an agent on a [device running the WARP client](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/) connecting directly to an upstream MCP server — you must turn on [TLS decryption](https://developers.cloudflare.com/cloudflare-one/traffic-policies/http-policies/tls-decryption/) as you would for any other [HTTP policy](https://developers.cloudflare.com/cloudflare-one/traffic-policies/http-policies/).
+
+Note
+
+Portal traffic ignores the global TLS decryption setting, but it still respects [Do Not Inspect](https://developers.cloudflare.com/cloudflare-one/traffic-policies/http-policies/#do-not-inspect) HTTP policies. If a Do Not Inspect policy matches portal traffic, Gateway does not decrypt it and DLP cannot scan it. Check that your Do Not Inspect policies do not unintentionally exempt your upstream MCP servers from inspection.
+
 ### Supported transports
 
 Gateway routing supports [Streamable HTTP ↗](https://spec.modelcontextprotocol.io/specification/2025-03-26/basic/transports/#streamable-http) connections only. If an upstream MCP server is configured with a Server-Sent Events (SSE) endpoint (a URL ending in `/sse`), the portal will automatically attempt to connect using Streamable HTTP instead. If the upstream server does not support Streamable HTTP, the connection will fail when Gateway routing is turned on.
@@ -803,6 +817,15 @@ For example, the following policy blocks traffic that contains [credentials and 
 | ----------- | -------- | -------------------------------------------------- | ----- | ------ |
 | Host        | in       | example-mcp-server.example.workers.dev             | And   | Block  |
 | DLP Profile | in       | _Credentials and Secrets_, _Financial Information_ |       |        |
+
+### What happens when a request is blocked
+
+When a tool call matches a Block DLP policy, Gateway blocks it and the portal surfaces the block to the MCP client as an error rather than completing the tool call. This applies in both directions:
+
+* **Tool call requests**: If the data the agent sends to a tool matches a DLP profile, Gateway blocks the outbound request and the agent receives an error indicating the request was blocked.
+* **Tool call responses**: If the data the upstream server returns matches a DLP profile, Gateway blocks the response and the portal returns an error instead of the matched content.
+
+The agent can retry the request, but it will continue to be blocked until the content no longer matches the policy.
 
 ### Limitations
 
@@ -1106,7 +1129,7 @@ MCP server portals have the following known limitations:
 
 ## Policy limitations
 
-MCP servers use a dedicated Access application type (_mcp_) that does not support the following Access policy features when the server is through a portal.
+MCP servers use a dedicated Access application type (_mcp_) that does not support the following Access policy features when the server is authorized through a portal.
 
 * **[Independent MFA](https://developers.cloudflare.com/cloudflare-one/access-controls/policies/mfa-requirements/#independent-mfa)** — Users will not be prompted to perform MFA through Cloudflare Access when authorizing a server, regardless of whether MFA global enforcement is enabled or whether an MFA policy is assigned to the server.
 * **[Purpose justification](https://developers.cloudflare.com/cloudflare-one/access-controls/policies/require-purpose-justification/)** — Users will not be prompted to provide a purpose justification when authorizing a server.
@@ -1184,6 +1207,6 @@ The portal homepage displays your Access organization name and branding. If the 
 2. Update your team name. The change will take effect the next time a user visits the portal homepage.
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/access-controls/ai-controls/mcp-portals/#page","headline":"MCP server portals · Cloudflare One docs","description":"MCP server portals in Access.","url":"https://developers.cloudflare.com/cloudflare-one/access-controls/ai-controls/mcp-portals/","inLanguage":"en","image":"https://developers.cloudflare.com/zt-preview.png","dateModified":"2026-06-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["MCP"]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/access-controls/ai-controls/mcp-portals/#page","headline":"MCP server portals · Cloudflare One docs","description":"MCP server portals in Access.","url":"https://developers.cloudflare.com/cloudflare-one/access-controls/ai-controls/mcp-portals/","inLanguage":"en","image":"https://developers.cloudflare.com/zt-preview.png","dateModified":"2026-06-18","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["MCP"]}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/cloudflare-one/","name":"Cloudflare One"}},{"@type":"ListItem","position":3,"item":{"@id":"/cloudflare-one/access-controls/","name":"Access controls"}},{"@type":"ListItem","position":4,"item":{"@id":"/cloudflare-one/access-controls/ai-controls/","name":"AI controls"}},{"@type":"ListItem","position":5,"item":{"@id":"/cloudflare-one/access-controls/ai-controls/mcp-portals/","name":"MCP server portals"}}]}
 ```

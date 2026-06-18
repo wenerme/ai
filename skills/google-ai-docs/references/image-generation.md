@@ -884,6 +884,7 @@ can include the following:
 |---|---|
 | Up to 10 images of objects with high-fidelity to include in the final image | Up to 6 images of objects with high-fidelity to include in the final image |
 | Up to 4 images of characters to maintain character consistency | Up to 5 images of characters to maintain character consistency |
+| N/A | Up to 3 images to be used as style references |
 
 ### Python
 

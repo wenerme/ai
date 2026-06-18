@@ -67,9 +67,9 @@
   },
   "changelog.md": {
     "url": "https://raw.githubusercontent.com/anthropics/claude-code/main/CHANGELOG.md",
-    "etag": "W/\"274e6734543c6c61da4559da8bc2703346cc53f1ac3f4d24ef25c61be945874f\"",
-    "size": 380626,
-    "updatedAt": "2026-06-17T00:35:39.696Z"
+    "etag": "W/\"dee715dbfc61d7b03b2a935addf807603ed45052092db445efcf4cfffd95c2c5\"",
+    "size": 385343,
+    "updatedAt": "2026-06-18T00:36:37.364Z"
   },
   "channels.md": {
     "url": "https://code.claude.com/docs/en/channels",
@@ -541,9 +541,9 @@
   },
   "sub-agents.md": {
     "url": "https://code.claude.com/docs/en/sub-agents",
-    "lastModified": "Wed, 17 Jun 2026 00:35:19 GMT",
-    "size": 68359,
-    "updatedAt": "2026-06-17T00:35:19.518Z"
+    "lastModified": "Thu, 18 Jun 2026 00:36:20 GMT",
+    "size": 68637,
+    "updatedAt": "2026-06-18T00:36:20.239Z"
   },
   "terminal-config.md": {
     "url": "https://code.claude.com/docs/en/terminal-config",

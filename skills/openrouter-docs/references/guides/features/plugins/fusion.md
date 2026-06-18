@@ -72,13 +72,13 @@ the panel and judge are chosen for you:
 
 Slugs follow `<task>-<tier>`: `task` is what you're optimizing the panel for,
 and `tier` is the quality/cost tradeoff (`high` = strongest models, `budget` =
-cheaper and faster). These mirror the presets shown in the
+cheaper panel with the same frontier judge). These mirror the presets shown in the
 [Fusion lab](/labs/fusion) UI.
 
-| Preset           | For                            |
-| ---------------- | ------------------------------ |
-| `general-high`   | The strongest all-round panel. |
-| `general-budget` | A fast, low-cost panel.        |
+| Preset           | For                                                                       |
+| ---------------- | ------------------------------------------------------------------------- |
+| `general-high`   | The strongest all-round panel.                                            |
+| `general-budget` | A cheaper panel with a frontier judge for strong synthesis at lower cost. |
 
 Explicit `analysis_models` or `model` always take precedence over a preset.
 

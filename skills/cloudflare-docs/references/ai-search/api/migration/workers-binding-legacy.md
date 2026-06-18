@@ -107,7 +107,7 @@ Returns a stream of results as they are available. Defaults to `false`.
 
 `filters` ` object ` optional
 
-Narrow down search results based on metadata, like folder and date, so only relevant content is retrieved. For more details, refer to [Metadata filtering](https://developers.cloudflare.com/ai-search/configuration/indexing/metadata/).
+Narrow down search results based on metadata, like folder and date, so only relevant content is retrieved. For more details, refer to [Metadata filtering](https://developers.cloudflare.com/ai-search/configuration/retrieval/filtering/).
 
 #### Response
 
@@ -250,7 +250,7 @@ An array of message objects. Each message has:
 
 Per-request overrides for retrieval and model behavior. Supports the following nested options:
 
-* `retrieval.filters` ` object ` \- Narrow down search results based on metadata. Refer to [Metadata filtering](https://developers.cloudflare.com/ai-search/configuration/indexing/metadata/) for syntax and examples.
+* `retrieval.filters` ` object ` \- Narrow down search results based on metadata. Refer to [Metadata filtering](https://developers.cloudflare.com/ai-search/configuration/retrieval/filtering/) for syntax and examples.
 * `retrieval.max_num_results` ` number ` \- Maximum number of chunks to return. Defaults to `10`, maximum `50`.
 * `retrieval.retrieval_type` ` string ` \- One of `vector`, `keyword`, or `hybrid`.
 * `retrieval.match_threshold` ` number ` \- Minimum similarity score (0-1). Defaults to `0.4`.

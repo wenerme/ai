@@ -60,7 +60,7 @@ image_maps:
         y_coord: 23
         content: |
           **Variables**
-          Use [variables](https://grafana.com/docs/grafana/<GRAFANA_VERSION>/visualizations/dashboards/variables/), including filters, to create more interactive and dynamic dashboards.
+          Use [variables](https://grafana.com/docs/grafana/<GRAFANA_VERSION>/visualizations/dashboards/variables/) and [filters](https://grafana.com/docs/grafana/<GRAFANA_VERSION>/visualizations/dashboards/build-dashboards/filter-group-by/), to create more interactive and dynamic dashboards.
       - x_coord: 45
         y_coord: 23
         content: |

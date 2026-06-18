@@ -1678,8 +1678,8 @@ Retrieves a model response with the given ID.
             - `connector_id: Optional[Literal["connector_dropbox", "connector_gmail", "connector_googlecalendar", 5 more]]`
 
               Identifier for service connectors, like those available in ChatGPT. One of
-              `server_url` or `connector_id` must be provided. Learn more about service
-              connectors [here](https://platform.openai.com/docs/guides/tools-remote-mcp#connectors).
+              `server_url`, `connector_id`, or `tunnel_id` must be provided. Learn more
+              about service connectors [here](https://platform.openai.com/docs/guides/tools-remote-mcp#connectors).
 
               Currently supported `connector_id` values are:
 
@@ -1771,8 +1771,13 @@ Retrieves a model response with the given ID.
 
             - `server_url: Optional[str]`
 
-              The URL for the MCP server. One of `server_url` or `connector_id` must be
-              provided.
+              The URL for the MCP server. One of `server_url`, `connector_id`, or
+              `tunnel_id` must be provided.
+
+            - `tunnel_id: Optional[str]`
+
+              The Secure MCP Tunnel ID to use instead of a direct server URL. One of
+              `server_url`, `connector_id`, or `tunnel_id` must be provided.
 
           - `class CodeInterpreter: …`
 

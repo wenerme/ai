@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/zt-preview.png
 
 # Use virtual networks to change user egress IPs
 
-**Last reviewed:**  about 2 years ago 
+**Last reviewed:**  over 2 years ago 
 
 Note
 
@@ -37,8 +37,8 @@ Make sure you have:
 
 First, create [virtual networks](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/private-net/cloudflared/tunnel-virtual-networks/) corresponding to your dedicated egress IPs.
 
-* [ Dashboard ](#tab-panel-7734)
-* [ API ](#tab-panel-7735)
+* [ Dashboard ](#tab-panel-7736)
+* [ API ](#tab-panel-7737)
 
 1. In [Cloudflare One ↗](https://one.dash.cloudflare.com/), go to **Networks** \> **Routes**.
 2. In **Virtual networks**, select **Create virtual network**.
@@ -69,8 +69,8 @@ For more information, refer to [Create a virtual network](https://developers.clo
 
 After creating your virtual networks, route your private network CIDRs over each virtual network. This ensures that users can reach all services on your network regardless of which egress IP they use.
 
-* [ Dashboard ](#tab-panel-7736)
-* [ API ](#tab-panel-7737)
+* [ Dashboard ](#tab-panel-7738)
+* [ API ](#tab-panel-7739)
 
 1. Go to **Networks** \> **Connectors** \> **Cloudflare Tunnels**.
 2. Select your tunnel routing `10.0.0.0/8`, then select **Configure**.
@@ -131,8 +131,8 @@ Each tunnel connected to your private network should have each of your virtual n
 
 Next, assign your dedicated egress IPs to each virtual network using Gateway egress policies.
 
-* [ Dashboard ](#tab-panel-7738)
-* [ API ](#tab-panel-7739)
+* [ Dashboard ](#tab-panel-7740)
+* [ API ](#tab-panel-7741)
 
 1. In [Cloudflare One ↗](https://one.dash.cloudflare.com/), go to **Traffic policies** \> **Egress policies**.
 2. Select **Add a policy**.

@@ -49,7 +49,7 @@ Inside Codex, run `/plugins`, then search for and install **Cloudflare**. This i
 4. **Try a prompt**  
 For example:  
 ```  
-Deploy a full-stack React app to Cloudflare Pages with a Workers API backend and D1 database.  
+Add a cron trigger to my Worker that processes a job queue every hour.  
 ```
 
 1. **Download Codex**  

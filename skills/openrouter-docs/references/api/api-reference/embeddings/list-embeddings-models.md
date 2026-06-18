@@ -334,6 +334,53 @@ components:
         - prompt
       description: Pricing information for the model
       title: PublicPricing
+    ReasoningEffort:
+      type: string
+      enum:
+        - xhigh
+        - high
+        - medium
+        - low
+        - minimal
+        - none
+      title: ReasoningEffort
+    ModelReasoning:
+      type: object
+      properties:
+        default_effort:
+          $ref: '#/components/schemas/ReasoningEffort'
+        default_enabled:
+          type: boolean
+          description: >-
+            Default reasoning enabled state when the client does not set
+            `reasoning.enabled`.
+        mandatory:
+          type: boolean
+          description: >-
+            When true, reasoning cannot be disabled and effort "none" is
+            rejected.
+        supported_efforts:
+          type:
+            - array
+            - 'null'
+          items:
+            $ref: '#/components/schemas/ReasoningEffort'
+          description: >-
+            Allowed reasoning effort values for this model, in descending effort
+            order (highest first). Null means no allowlist — all gateway effort
+            values are accepted.
+        supports_max_tokens:
+          type: boolean
+          description: >-
+            Present and `true` when the model accepts `reasoning.max_tokens` in
+            requests (Anthropic-style) instead of or in addition to
+            `reasoning.effort`. Omitted otherwise.
+      required:
+        - mandatory
+      description: >-
+        Reasoning effort configuration. Omitted for non-reasoning models and
+        dynamic router models.
+      title: ModelReasoning
     Parameter:
       type: string
       enum:
@@ -437,6 +484,8 @@ components:
           $ref: '#/components/schemas/PerRequestLimits'
         pricing:
           $ref: '#/components/schemas/PublicPricing'
+        reasoning:
+          $ref: '#/components/schemas/ModelReasoning'
         supported_parameters:
           type: array
           items:

@@ -233,7 +233,7 @@ Firecrawl is a BYOK (bring your own key) search engine. To use it:
 2. Accept the [Firecrawl Terms of Service](https://www.firecrawl.dev/terms-of-service) — this automatically creates a Firecrawl account linked to your email
 3. Your account starts with **10,000 free credits** (credits expire after 3 months)
 
-Once set up, Firecrawl searches use your Firecrawl credits directly — there is no additional charge from OpenRouter.
+Once set up, Firecrawl searches use your Firecrawl credits directly — there is no additional charge from OpenRouter. Each search costs 2 credits per 10 results, plus 5 credits per result scraped (1 base scrape + 4 for [highlights extraction](https://docs.firecrawl.dev/features/scrape#output-formats)). See [Firecrawl pricing](https://www.firecrawl.dev/pricing) for details.
 
 ```json
 {
@@ -274,7 +274,7 @@ Firecrawl supports `include_domains` and `exclude_domains`, but they are mutuall
 * **Exa search**: Uses OpenRouter credits at \$0.005 per request. Includes up to 10 results, then \$0.001 per additional result
 * **Parallel search**: Uses OpenRouter credits at \$0.005 per request. Includes up to 10 results in a request, then \$0.001 per additional result
 * **Perplexity search**: Uses OpenRouter credits at \$0.005 per request
-* **Firecrawl search**: Uses your Firecrawl credits directly, refill at [Firecrawl.dev](https://www.firecrawl.dev)
+* **Firecrawl search**: Uses your Firecrawl credits directly (2 credits per 10 results + 5 per result scraped with highlights). Refill at [Firecrawl.dev](https://www.firecrawl.dev)
 
 ## Pricing
 

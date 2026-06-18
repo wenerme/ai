@@ -29,8 +29,8 @@ To use AI Search with Workers, you must create an AI Search binding. You create 
 
 Access all instances within a [namespace](https://developers.cloudflare.com/ai-search/concepts/namespaces/). You can get, create, list, and delete instances at runtime.
 
-* [  wrangler.jsonc ](#tab-panel-6606)
-* [  wrangler.toml ](#tab-panel-6607)
+* [  wrangler.jsonc ](#tab-panel-6608)
+* [  wrangler.toml ](#tab-panel-6609)
 
 JSONC
 
@@ -85,8 +85,8 @@ namespace = "my-namespace"
 
 Bind directly to a single instance in the `default` namespace. Use this when you know which instance you need at deploy time.
 
-* [  wrangler.jsonc ](#tab-panel-6608)
-* [  wrangler.toml ](#tab-panel-6609)
+* [  wrangler.jsonc ](#tab-panel-6610)
+* [  wrangler.toml ](#tab-panel-6611)
 
 JSONC
 
@@ -194,7 +194,7 @@ Configuration options for the search operation.
    * `max_num_results` ` integer ` optional  
          * The maximum number of results to return. Must be between `1` and `50`. Defaults to `10`.  
    * `filters` ` object ` optional  
-         * Filter search results based on metadata. Supports comparison filters (`eq`, `ne`, `gt`, `gte`, `lt`, `lte`) and compound filters (`and`, `or`). For more details, refer to [Metadata filtering](https://developers.cloudflare.com/ai-search/configuration/indexing/metadata/).  
+         * Filter search results based on metadata. Supports comparison filters (`eq`, `ne`, `gt`, `gte`, `lt`, `lte`) and compound filters (`and`, `or`). For more details, refer to [Metadata filtering](https://developers.cloudflare.com/ai-search/configuration/retrieval/filtering/).  
    * `context_expansion` ` integer ` optional  
          * The number of surrounding chunks to include for additional context. Must be between `0` and `3`. Defaults to `0`.  
    * `fusion_method` ` string ` optional  
@@ -371,7 +371,7 @@ Configuration options for the search and generation operation.
    * `max_num_results` ` integer ` optional  
          * The maximum number of results to return. Must be between `1` and `50`. Defaults to `10`.  
    * `filters` ` object ` optional  
-         * Filter search results based on metadata. Supports comparison filters (`eq`, `ne`, `gt`, `gte`, `lt`, `lte`) and compound filters (`and`, `or`). For more details, refer to [Metadata filtering](https://developers.cloudflare.com/ai-search/configuration/indexing/metadata/).  
+         * Filter search results based on metadata. Supports comparison filters (`eq`, `ne`, `gt`, `gte`, `lt`, `lte`) and compound filters (`and`, `or`). For more details, refer to [Metadata filtering](https://developers.cloudflare.com/ai-search/configuration/retrieval/filtering/).  
    * `context_expansion` ` integer ` optional  
          * The number of surrounding chunks to include for additional context. Must be between `0` and `3`. Defaults to `0`.  
    * `fusion_method` ` string ` optional  

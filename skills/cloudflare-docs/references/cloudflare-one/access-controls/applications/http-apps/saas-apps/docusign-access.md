@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/zt-preview.png
 
 # DocuSign
 
-**Last reviewed:**  almost 2 years ago 
+**Last reviewed:**  about 2 years ago 
 
 This guide covers how to configure [Docusign ↗](https://support.docusign.com/s/document-item?bundleId=rrf1583359212854&topicId=ozd1583359139126.html) as a SAML application in Cloudflare One.
 

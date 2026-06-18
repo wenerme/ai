@@ -14,9 +14,10 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 * [ Reranking ](https://developers.cloudflare.com/ai-search/configuration/retrieval/reranking/)
 * [ System prompt ](https://developers.cloudflare.com/ai-search/configuration/retrieval/system-prompt/)
+* [ Filtering ](https://developers.cloudflare.com/ai-search/configuration/retrieval/filtering/)
 * [ Query rewriting ](https://developers.cloudflare.com/ai-search/configuration/retrieval/query-rewriting/)
 * [ Relevance boosting ](https://developers.cloudflare.com/ai-search/configuration/retrieval/boosting/)
-* [ Result filtering ](https://developers.cloudflare.com/ai-search/configuration/retrieval/result-filtering/)
+* [ Result controls ](https://developers.cloudflare.com/ai-search/configuration/retrieval/result-controls/)
 * [ Similarity cache ](https://developers.cloudflare.com/ai-search/configuration/retrieval/cache/)
 * [ Public endpoint settings ](https://developers.cloudflare.com/ai-search/configuration/retrieval/public-endpoint/)
 * [ UI snippets ](https://developers.cloudflare.com/ai-search/configuration/retrieval/embed-search-snippets/)
